@@ -1,0 +1,39 @@
+//******************************************************************************************
+instance Pal_207_Girion_DI (Npc_Default)
+{
+	// ------ General ------
+	name								=	"Girion";
+	guild 								=	GIL_PAL;
+	id 									=	2070;
+	voice 								=	8;
+	flags       						=	0;																	
+	npctype								=	NPCTYPE_FRIEND;
+	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+
+	// ------ Attributes ------
+	B_SetAttributesToLevel (self, 40);
+	B_SetFightSkills (self, FightTalent_Medium+5);
+
+	// ------ FT ------
+	fight_tactic						=	FAI_HUMAN_MASTER;
+
+	// ------ Weapons ------
+	EquipItem (self, ItMw_1H_Pal_Sword);
+
+	// ------ Inventory ------
+	B_CreateAmbientInv(self);
+
+	// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Lefty, 0, ITAR_PAL_L);
+	Mdl_SetModelFatness	(self, 1);
+	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
+
+	// ------ Rtn ------
+	daily_routine 						=	Rtn_Start_2070;
+};
+
+FUNC VOID Rtn_Start_2070()
+{
+	TA_Sit_Bench	(08,00,23,00, "SHIP_DECK_18");
+	TA_Sit_Bench	(23,00,08,00, "SHIP_DECK_18");
+};

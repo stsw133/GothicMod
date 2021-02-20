@@ -1,0 +1,42 @@
+//******************************************************************************************
+instance BDT_1092_Addon_Isabel (Npc_Default)
+{
+	// ------ General ------
+	name								=	"Isabel";
+	guild 								=	GIL_BDT;
+	id 									=	1092;
+	voice 								=	17;
+	flags  								=	0;
+	npctype								=	NPCTYPE_BL_MAIN;
+
+	// ------ Aivars ------
+	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor;
+
+	// ------ Attributes ------
+	B_SetAttributesToLevel (self, 20);
+	B_SetFightSkills (self, FightTalent_Initiate-5);
+
+	// ------ FT ------
+	fight_tactic						=	FAI_HUMAN_COWARD;
+
+	// ------ Weapons ------
+	EquipItem (self, ItMw_1h_Vlk_Dagger);
+
+	// ------ Inventory ------
+	B_CreateAmbientInv(self);
+
+	// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Dressed+2, BodySkin_N, "Hum_Head_Babe", FaceBabe_Velaya, Teeth_Pretty, -1);
+	Mdl_SetModelFatness	(self, 0);
+	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
+
+	// ------ Rtn ------
+	daily_routine						=	Rtn_Start_1092;
+};
+
+FUNC VOID Rtn_Start_1092()
+{
+    TA_Smalltalk		(07,01,12,00, "BL_INN_UP_07");
+    TA_Stand_Drinking	(12,00,01,05, "BL_INN_UP_05");
+	TA_Sleep			(01,05,07,01, "BL_INN_UPSIDE_SLEEP_02");
+};

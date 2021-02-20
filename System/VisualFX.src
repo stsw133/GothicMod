@@ -1,0 +1,7 @@
+// Classes
+_intern\visualfx.d
+
+// Instances
+visualfx\visualfxinst.d
+visualfx\MOD\visualfxinst_*.d
+visualfx\hero_hurt.d

@@ -1,0 +1,48 @@
+//******************************************************************************************
+instance SLD_803_Cipher (Npc_Default)
+{
+	// ------ General ------
+	name								=	"Cipher";
+	guild 								=	GIL_SLD;
+	id 									=	803;
+	voice 								=	7;
+	flags       						=	0;
+	npctype								=	NPCTYPE_MAIN;
+
+	// ------ Attributes ------
+	B_SetAttributesToLevel (self, 20);
+	B_SetFightSkills (self, FightTalent_Medium);
+
+	// ------ FT ------
+	fight_tactic						=	FAI_HUMAN_STRONG;
+
+	// ------ Weapons ------
+	EquipItem (self, ItMw_1h_Sld_Sword);
+
+	// ------ Inventory ------
+	B_CreateAmbientInv(self);
+	CreateInvItems (self, ItRw_Arrow, 50);
+	CreateInvItem (self, ItRw_Bow_L_02);
+	CreateInvItem (self, ItRw_Sld_Bow);
+	CreateInvItem (self, ItMw_2H_OrcAxe_01);
+	CreateInvItems (self, ItLsTorch, 8);
+
+	// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal37, 0, ITAR_SLD_L);
+	Mdl_SetModelFatness	(self, 0);
+	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
+
+	// ------ Rtn ------
+	daily_routine 						=	Rtn_Start_803;
+};
+
+FUNC VOID Rtn_Start_803()
+{
+	TA_Smalltalk	(07,35,23,35, "NW_BIGFARM_PATH_04_1");
+	TA_Sleep		(23,35,07,35, "NW_BIGFARM_HOUSE_SLD_SLEEP");
+};
+FUNC VOID Rtn_Tot_803()
+{
+	TA_Sleep	(08,00,23,00, "TOT");
+    TA_Sleep	(23,00,08,00, "TOT");
+};

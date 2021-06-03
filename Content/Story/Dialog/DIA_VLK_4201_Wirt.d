@@ -7,13 +7,13 @@ INSTANCE DIA_Wirt_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Wirt_EXIT_Condition;
 	information = DIA_Wirt_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Wirt_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Wirt_EXIT_Info()
@@ -30,24 +30,24 @@ INSTANCE DIA_Wirt_Hallo   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Wirt_Hallo_Condition;
 	information = DIA_Wirt_Hallo_Info;
-	permanent   = true;
-	important 	= true;
+	permanent   = TRUE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Wirt_Hallo_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wirt_Hallo_Info()
 {
 	var int randy;
-	randy = Hlp_Random(3);
+	randy = Hlp_Random (2);
 	
 	AI_Output (self, other,"DIA_Wirt_Hallo_14_00");//Hej, podejdŸ bli¿ej. Zrób sobie przerwê i napij siê ch³odnego piwka.
 	
-	if (self.aivar [AIV_TalkedToPlayer] == false) 
+	if (self.aivar [AIV_TalkedToPlayer] == FALSE) 
 	{
 		AI_Output (self, other,"DIA_Wirt_Hallo_14_01");//Lord Andre stawia kilka bary³ek przedniego piwa.
 		AI_StopProcessInfos (self);
@@ -70,3 +70,10 @@ FUNC VOID DIA_Wirt_Hallo_Info()
 		AI_StopProcessInfos (self);
 	};
 };
+
+/*
+	Wenn du ein Problem hast und es lässt sich lösen, dann denk nicht weiter drüber nach.
+	Und wenn du es nicht lösen kannst, dann brauchst du auch nicht weiter drüber nachzudenken. 
+*/
+
+

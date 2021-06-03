@@ -1,3 +1,23 @@
+
+const int	Value_Alarmhorn			= 10;
+
+const int	Value_Quartz			= 20;
+const int	Value_Pitch				= 10;
+const int	Value_Coal				= 15;
+const int	Value_DarkPearl			= 1000;
+
+const int 	Value_GoldPlate			=  200;
+const int	Value_GoldRing			=  250;
+const int	Value_GoldNecklace		=  300;
+const int	Value_GoldCandleHolder	=  120;
+const int	Value_GoldCup			=  350;
+const int	Value_BloodCup			=  200;
+const int   Value_GoldChalice		=  500;
+const int   Value_GoldChest			=  750;
+const int	Value_JeweleryChest		= 1000;
+
+const int	Value_Sextant			= 1500;
+
 ///******************************************************************************************
 prototype ItemPR_Misc (C_Item)
 {
@@ -83,15 +103,26 @@ instance ItMi_Broom (ItemPR_Misc)
 	visual 			=	"ItMi_Broom.3DS";
 	material 		=	MAT_WOOD;
 	scemeName		=	"BROOM";
+	on_state[0]		=	Use_Broom;
 	
 	description		= 	name;
 	COUNT[5]		= 	value;
+};
+func void Use_Broom()
+{
+	if (Npc_IsPlayer(self))
+	&& (Wld_GetPlayerPortalGuild() == GIL_NOV)
+	&& (MIS_ParlanFegen == LOG_RUNNING)
+	{
+		B_Say (self, self, "$NOSWEEPING");
+		Print(PRINT_NoSweeping);
+	};
 };
 instance ItMi_Rake (ItemPR_Misc)
 {
 	name 			=	"Grabie";
 	
-	value 			=	20;
+	value 			=	15;
 	visual 			=	"ItMi_Rake.3DS";
 	material 		=	MAT_WOOD;
 	scemeName		=	"RAKE";
@@ -136,7 +167,7 @@ instance ItMi_Lute (ItemPR_Misc)
 {
 	name 			=	"Lutnia";
 	
-	value 			=	20;
+	value 			=	15;
 	visual 			=	"ItMi_Lute.3DS";
 	material 		=	MAT_WOOD;
 	scemeName		=	"LUTE";
@@ -151,7 +182,7 @@ instance ItMi_MagicStone (ItemPR_Misc)
 {
 	name 			=	"Kamieñ zaklinania";
 	
-	value 			=	20;
+	value 			=	30;
 	visual 			=	"ItMi_MagicStone.3ds";
 	material 		=	MAT_STONE;
 //	scemeName		=	"FASTUSE";
@@ -197,7 +228,7 @@ instance ItMi_HolyWater (ItemPR_Misc)
 {
 	name 			=	"Woda œwiêcona";
 	
-	value 			=	10;
+	value 			=	15;
 	visual 			=	"ItMi_HolyWater.3ds";
 	material 		=	MAT_GLAS;
 //	scemeName		=	"FASTUSE";
@@ -229,6 +260,19 @@ instance ItMi_Shell (ItemPR_Misc)
 	COUNT[5]		=	value;
 	INV_ZBIAS		=	INVCAM_ENTF_MISC2_STANDARD;
 };
+instance ItMi_Wood (ItemPR_Misc)
+{
+	name 			=	"Drewno";
+	
+	value 			=	2;
+	visual 			=	"ITMI_WOOD.3DS";
+	material		=	MAT_WOOD;
+//	scemeName		=	"FASTUSE";
+//	on_state[0]		=	MOBSI_WOOD_S1;
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
 instance ItMi_Paper (ItemPR_Misc)
 {
 	name 			=	"Papier";
@@ -242,24 +286,11 @@ instance ItMi_Paper (ItemPR_Misc)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
-instance ItMi_Wood (ItemPR_Misc)
-{
-	name 			=	"Drewno";
-	
-	value 			=	2;
-	visual 			=	"ITMI_WOOD.3DS";
-	material		=	MAT_WOOD;
-	scemeName		=	"FASTUSE";
-	on_state[0]		=	MOBSI_WOOD_S1;
-	
-	description		= 	name;
-	COUNT[5]		=	value;
-};
 instance ItMi_Chest (ItemPR_Misc)
 {
 	name 			=	"Skrzynka";
 	
-	value 			=	20;
+	value 			=	30;
 	visual 			=	"CHESTSMALL_OCCHESTSMALLLOCKED.3DS";
 	material 		=	MAT_WOOD;
 	
@@ -375,6 +406,66 @@ instance ItMi_OrcCoin (ItemPR_Coin)
 	visual 			=	"ItMi_Coin_03.3DS";
 	description		= 	"Moneta orków";
 	COUNT[5]		= 	value;
+};
+///******************************************************************************************
+///	GoldPockets
+///******************************************************************************************
+prototype ItemPR_GoldPocket (C_Item)
+{
+	name 			=	"Skórzany mieszek";
+	mainflag 		=	ITEM_KAT_NONE;
+	flags 			=	ITEM_MULTI;
+	
+	visual 			=	"ItMi_Pocket_Gold.3ds";
+	scemename		=	"MAPSEALED";
+	material		=	MAT_LEATHER;
+	
+	description		= 	name;
+	TEXT[5]			= 	NAME_Value;
+};
+///******************************************************************************************
+instance ItSe_GoldPocket25 (ItemPR_GoldPocket)
+{
+	value 			=	25;
+	on_state[0]		=   GoldPocket25;
+	COUNT[5]		=	value;
+};
+func void GoldPocket25()
+{
+	B_PlayerFindItem (ItMi_Gold, 25);
+};
+
+instance ItSe_GoldPocket50 (ItemPR_GoldPocket)
+{
+	value 			=	50;
+	on_state[0]		=   GoldPocket50;
+	COUNT[5]		=	value;
+};
+func void GoldPocket50()
+{
+	B_PlayerFindItem (ItMi_Gold, 50);
+};
+
+instance ItSe_GoldPocket100	(ItemPR_GoldPocket)
+{
+	value 			=	100;
+	on_state[0]		=   GoldPocket100;
+	COUNT[5]		=	value;
+};
+func void GoldPocket100()
+{
+	B_PlayerFindItem (ItMi_Gold, 100);
+};
+
+instance ItSe_GoldPocket250	(ItemPR_GoldPocket)
+{
+	value 			=	250;
+	on_state[0]		=   GoldPocket250;
+	COUNT[5]		=	value;
+};
+func void GoldPocket250()
+{
+	B_PlayerFindItem (ItMi_Gold, 250);
 };
 ///******************************************************************************************
 ///	Silver & Gold
@@ -524,7 +615,7 @@ instance ItMi_GoldChest (ItemPR_Misc)
 {
 	name 			=	"Z³ota skrzyneczka";
 	
-	value 			=	200;
+	value 			=	300;
 	visual 			=	"ItMi_GoldChest.3DS";
 	material 		=	MAT_METAL;
 	
@@ -575,7 +666,7 @@ instance ItMi_GoldNugget (ItemPR_Nugget)
 instance ItMi_IronNugget (ItemPR_Nugget)
 {
 	name 			=	"Bry³ka ¿elaza";
-	value 			=	10;
+	value 			=	15;
 	visual 			=	"ItMi_IronNugget.3ds";
 	
 	description		= 	name;
@@ -584,7 +675,7 @@ instance ItMi_IronNugget (ItemPR_Nugget)
 instance ItMi_Sulfur (ItemPR_Nugget)
 {
 	name 			=	"Siarka";
-	value 			=	10;
+	value 			=	20;
 	visual 			=	"ItMi_SulfurNugget.3DS";
 	
 	description		= 	name;
@@ -593,7 +684,7 @@ instance ItMi_Sulfur (ItemPR_Nugget)
 instance ItMi_RockCrystal (ItemPR_Nugget)
 {
 	name 			=	"Kryszta³";
-	value 			=	15;
+	value 			=	30;
 	visual 			=	"ItMi_ShiningCrystal.3ds";
 	effect			=	"SPELLFX_CRYSTALGLOW";
 	
@@ -620,21 +711,17 @@ prototype ItemPR_Tabak (C_Item)
 instance ItMi_Tabak (ItemPR_Tabak)
 {
 	value 			=	10;
-	scemeName		=	"FASTUSE";
-	on_state[0]		=	MOBSI_TABAK_S1;
+//	scemeName		=	"FASTUSE";
+//	on_state[0]		=	MOBSI_TABAK_S1;
 	
 	description		=	name;
 	TEXT[1]			= 	"Baza do tworzenia";
 	TEXT[2]			=	"tytoniów smakowych.";
 	COUNT[5]		=	value;
 };
-instance ItMi_AppleTabak (ItemPR_Tabak)
+instance ItMi_FruitTabak (ItemPR_Tabak)
 {
-	description = "Tytoñ jab³kowy";
-};
-instance ItMi_PearTabak (ItemPR_Tabak)
-{
-	description = "Tytoñ gruszkowy";
+	description = "Tytoñ owocowy";
 };
 instance ItMi_CoconutTabak (ItemPR_Tabak)
 {
@@ -655,66 +742,6 @@ instance ItMi_HoneyTabak (ItemPR_Tabak)
 instance ItMi_ChocolateTabak (ItemPR_Tabak)
 {
 	description = "Tytoñ czekoladowy";
-};
-///******************************************************************************************
-///	GoldPockets
-///******************************************************************************************
-prototype ItemPR_GoldPocket (C_Item)
-{
-	name 			=	"Skórzany mieszek";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags 			=	ITEM_MULTI;
-	
-	visual 			=	"ItMi_Pocket_Gold.3ds";
-	scemename		=	"MAPSEALED";
-	material		=	MAT_LEATHER;
-	
-	description		= 	name;
-	TEXT[5]			= 	NAME_Value;
-};
-///******************************************************************************************
-instance ItSe_GoldPocket25 (ItemPR_GoldPocket)
-{
-	value 			=	25;
-	on_state[0]		=   GoldPocket25;
-	COUNT[5]		=	value;
-};
-FUNC VOID GoldPocket25()
-{
-	B_PlayerFindItem (ItMi_Gold, 25);
-};
-
-instance ItSe_GoldPocket50 (ItemPR_GoldPocket)
-{
-	value 			=	50;
-	on_state[0]		=   GoldPocket50;
-	COUNT[5]		=	value;
-};
-FUNC VOID GoldPocket50()
-{
-	B_PlayerFindItem (ItMi_Gold, 50);
-};
-
-instance ItSe_GoldPocket100	(ItemPR_GoldPocket)
-{
-	value 			=	100;
-	on_state[0]		=   GoldPocket100;
-	COUNT[5]		=	value;
-};
-FUNC VOID GoldPocket100()
-{
-	B_PlayerFindItem (ItMi_Gold, 100);
-};
-
-instance ItSe_GoldPocket250	(ItemPR_GoldPocket)
-{
-	value 			=	250;
-	on_state[0]		=   GoldPocket250;
-	COUNT[5]		=	value;
-};
-FUNC VOID GoldPocket250()
-{
-	B_PlayerFindItem (ItMi_Gold, 250);
 };
 ///******************************************************************************************
 ///	Joint
@@ -761,4 +788,208 @@ instance ItMi_SleJoint (ItemPR_Joint)
 func void Use_ItMi_SleJoint()
 {
 	Npc_ChangeAttribute	(self, ATR_MANA, self.attribute[ATR_MANA]);
+};
+
+
+
+
+
+
+
+
+
+/******************************************************************************************/
+/*
+INSTANCE ItMi_Alarmhorn (C_Item)
+{
+	name 				=	"Róg";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags				=	ITEM_MULTI;
+
+	value 				=	Value_Alarmhorn;
+
+	visual 				=	"ItMi_Alarmhorn.3DS";
+	material 			=	MAT_WOOD;
+
+	scemeName			=	"HORN";
+	on_state[0]			= 	Use_Alarmhorn;
+	description			= 	name;
+	
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+};
+func void Use_Alarmhorn()
+{
+	
+};
+
+*/
+//*******************************
+//Päckchen
+//*******************************
+INSTANCE ItMi_Packet(C_Item)
+{
+	name 				=	"Paczka";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	0;
+
+	value 				=	0;
+
+	visual 				=	"ItMi_Packet.3ds";
+	scemename			=	"MAPSEALED";	
+	material 			=	MAT_LEATHER;
+	//on_state[0]			=   UsePacket;
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	COUNT[5]	= value;
+};
+
+//in dieser Funktio steht der inhalt, die use Funkt dann bitte einkommentiren.
+FUNC VOID UsePacket ()
+{
+	
+};
+
+INSTANCE ItMi_Pocket(C_Item)//steht drin, weil auch in Welt verteilt!!
+{
+	name 				=	"Skórzany mieszek";
+
+	mainflag 			=	ITEM_KAT_NONE|ITEM_MULTI;
+	flags 				=	0;
+
+	value 				=	10;
+
+	visual 				=	"ItMi_Pocket.3ds";
+	scemename			=	"MAPSEALED";	
+	material 			=	MAT_LEATHER;
+	on_state[0]			=   UsePocket;
+	description			= 	name;
+	TEXT[2]				= 	"Ein schmaler Beutel,";
+	TEXT[3]				=   "wiegt nicht viel";
+	TEXT[5]				= 	NAME_Value;	COUNT[5]	= value;
+};
+
+//in dieser Funktio steht der inhalt, die use Funkt dann bitte einkommentiren.
+FUNC VOID UsePocket ()
+{
+		CreateInvItems (hero, ItMi_Gold ,10);
+		Print 	(PRINT_FoundGold10);
+		Snd_Play ("Geldbeutel");
+};
+
+/******************************************************************************************/
+INSTANCE ItMi_JeweleryChest (C_Item)
+{
+	name 				=	"Szkatu³ka z klejnotami";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_JeweleryChest;
+
+	visual 				=	"ItMi_JeweleryChest.3DS";
+	material 			=	MAT_METAL;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+};
+/******************************************************************************************/
+INSTANCE ItMi_Sextant (C_Item)
+{
+	name 				=	"Sekstans";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_Sextant;
+
+	visual 				=	"ItMi_Sextant.3DS";
+	material 			=	MAT_METAL;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+};
+
+//*****************************************************************************************
+//	Alchemy Ingredienzien
+//*****************************************************************************************
+
+INSTANCE ItMi_Quartz (C_Item)
+{
+	name 				=	"Kwarcyt";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_Quartz;
+
+	visual 				=	"ItMi_Quartz.3ds";
+	material 			=	MAT_STONE ;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+	
+	INV_ZBIAS				= INVCAM_ENTF_RING_STANDARD;
+};
+
+INSTANCE ItMi_Pitch (C_Item)
+{
+	name 				=	"Smo³a";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_Pitch;
+
+	visual 				=	"ItMi_Pitch.3DS";
+	material 			=	MAT_GLAS ;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+};
+
+INSTANCE ItMi_Coal (C_Item)
+{
+	name 				=	"Wêgiel";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_Coal;
+
+	visual 				=	"ItMi_Coal.3ds";
+	material 			=	MAT_STONE;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+	
+	INV_ZBIAS				= INVCAM_ENTF_MISC_STANDARD;
+	
+};
+
+
+INSTANCE ItMi_DarkPearl (C_Item)
+{
+	name 				=	"Czarna per³a";
+
+	mainflag 			=	ITEM_KAT_NONE;
+	flags 				=	ITEM_MULTI;
+
+	value 				=	Value_DarkPearl;
+
+	visual 				=	"ItMi_DarkPearl.3ds";
+	material 			=	MAT_STONE;
+
+	description			= 	name;
+	TEXT[5]				= 	NAME_Value;	
+	COUNT[5]			= 	value;
+	
+	INV_ZBIAS				= INVCAM_ENTF_MISC_STANDARD;
+	
 };

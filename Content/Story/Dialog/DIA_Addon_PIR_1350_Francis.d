@@ -7,14 +7,14 @@ INSTANCE DIA_Addon_Francis_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Francis_EXIT_Condition;
 	information	= DIA_Addon_Francis_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Francis_EXIT_Condition()
 {
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Francis_EXIT_Info()
@@ -34,23 +34,23 @@ INSTANCE DIA_Addon_Francis_First (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Francis_First_Condition;
 	information	= DIA_Addon_Francis_First_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "To twoja chata?";
 };                       
 FUNC INT DIA_Addon_Francis_First_Condition()
 {
-	if (Knows_GregsHut == false)
-	&& (Francis_ausgeschissen == false)
+	if (Knows_GregsHut == FALSE)
+	&& (Francis_ausgeschissen == FALSE)
 	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_First_Info()
 {	
 	AI_Output (other,self,"DIA_Addon_Francis_GregsHut_15_00"); //To twoja chata?
 	AI_Output (self,other,"DIA_Addon_Francis_GregsHut_13_01"); //Nie, nale¿y do Grega.
-	Knows_GregsHut = true;
+	Knows_GregsHut = TRUE;
 };
 // ------------------------------------------------------------
 // 			  			Ich muß da rein!
@@ -61,16 +61,16 @@ INSTANCE DIA_Addon_Francis_LetMeIn (C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Francis_LetMeIn_Condition;
 	information	= DIA_Addon_Francis_LetMeIn_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Muszê siê dostaæ do chaty Grega.";
 };                       
 FUNC INT DIA_Addon_Francis_LetMeIn_Condition()
 {
-	if ( (Npc_KnowsInfo (other, DIA_Addon_Francis_First)) || (Knows_GregsHut == true) )
-	&& (Francis_ausgeschissen == false)
+	if ( (Npc_KnowsInfo (other, DIA_Addon_Francis_First)) || (Knows_GregsHut == TRUE) )
+	&& (Francis_ausgeschissen == FALSE)
 	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_LetMeIn_Info()
@@ -89,15 +89,15 @@ INSTANCE DIA_Addon_Francis_AboutGreg (C_INFO)
 	nr			= 3;
 	condition	= DIA_Addon_Francis_AboutGreg_Condition;
 	information	= DIA_Addon_Francis_AboutGreg_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Greg jest waszym szefem?";
 };                       
 FUNC INT DIA_Addon_Francis_AboutGreg_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Francis_LetMeIn))
-	&& (Francis_ausgeschissen == false)
+	&& (Francis_ausgeschissen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_AboutGreg_Info()
@@ -124,7 +124,7 @@ INSTANCE DIA_Addon_Francis_Key (C_INFO)
 	nr			= 4;
 	condition	= DIA_Addon_Francis_Key_Condition;
 	information	= DIA_Addon_Francis_Key_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Daj mi klucz do chaty Grega!";
 };                       
 FUNC INT DIA_Addon_Francis_Key_Condition()
@@ -132,7 +132,7 @@ FUNC INT DIA_Addon_Francis_Key_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Francis_LetMeIn))
 	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_Key_Info()
@@ -152,28 +152,8 @@ func void DIA_Addon_Francis_Key_BACK()
 func void DIA_Addon_Francis_Key_1000Gold()
 {
 	AI_Output (other, self ,"DIA_Addon_Francis_Key_1000Gold_15_00"); //Dam ci za to 1000 sztuk z³ota!
-	if (Npc_HasItems(other,ItMi_Gold) >= 1000)
-	{
-		AI_Output (self ,other ,"DIA_Addon_Francis_Key_1000Gold_13_01"); //To trochê ma³o, zwa¿ywszy, ¿e nak³aniasz mnie do zdrady mego kapitana!
-		if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-		{
-			AI_Output (self ,other,"DIA_Addon_Francis_Key_2000Gold_13_02"); //Chocia¿ z drugiej strony...
-			AI_Output (self ,other,"DIA_Addon_Francis_Key_2000Gold_13_03"); //Czego siê boisz? Przecie¿ nikt siê nie dowie.
-			AI_Output (self ,other,"DIA_Addon_Francis_Key_2000Gold_13_04"); //Dobra, oto klucz.
-			AI_Output (self ,other,"DIA_Addon_Francis_Key_2000Gold_13_05"); //Tylko pospiesz siê, bo Greg mo¿e przyjœæ w ka¿dej chwili. I ani s³owa innym, jasne?
-			B_GiveInvItems (other, self, ItMi_Gold, 1000);
-			B_GiveInvItems (self ,other, ITKE_Greg_ADDON_MIS, 1);
-			Francis_bezahlt = true;
-		}
-		else
-		{
-			AI_Output (self ,other ,"DIA_Addon_Francis_Key_1000Gold_13_02"); //Lepiej uwa¿aj, co mówisz, albo bêdê musia³ przetrzepaæ ci skórê!
-		};
-	}
-	else 
-	{
-		AI_Output (self ,other,"DIA_Addon_FrancisNotEnoughGold_13_05"); //Nie masz przy sobie takiej sumy!
-	};
+	AI_Output (self ,other ,"DIA_Addon_Francis_Key_1000Gold_13_01"); //To trochê ma³o, zwa¿ywszy, ¿e nak³aniasz mnie do zdrady mego kapitana!
+	AI_Output (self ,other ,"DIA_Addon_Francis_Key_1000Gold_13_02"); //Lepiej uwa¿aj, co mówisz, albo bêdê musia³ przetrzepaæ ci skórê!
 };
 func void DIA_Addon_Francis_Key_2000Gold()
 {
@@ -188,7 +168,7 @@ func void DIA_Addon_Francis_Key_2000Gold()
 		AI_Output (self ,other,"DIA_Addon_Francis_Key_2000Gold_13_05"); //Tylko pospiesz siê, bo Greg mo¿e przyjœæ w ka¿dej chwili. I ani s³owa innym, jasne?
 		B_GiveInvItems (other, self,ItMi_Gold,2000);
 		B_GiveInvItems (self ,other,ITKE_Greg_ADDON_MIS,1);
-		Francis_bezahlt = true;
+		Francis_bezahlt = TRUE;
 	}
 	else 
 	{
@@ -205,7 +185,7 @@ INSTANCE DIA_Addon_Francis_AufsMaul (C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Francis_AufsMaul_Condition;
 	information	= DIA_Addon_Francis_AufsMaul_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "No to zobaczymy, co potrafisz. Stawaj!";
 };                       
 FUNC INT DIA_Addon_Francis_AufsMaul_Condition()
@@ -213,7 +193,7 @@ FUNC INT DIA_Addon_Francis_AufsMaul_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Francis_LetMeIn))
 	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_AufsMaul_Info()
@@ -234,14 +214,14 @@ INSTANCE DIA_Addon_Francis_Buch (C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Francis_Buch_Condition;
 	information	= DIA_Addon_Francis_Buch_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Znalaz³em twoj¹ kryjówkê i skarb. To twój dziennik, prawda?";
 };                       
 FUNC INT DIA_Addon_Francis_Buch_Condition()
 {
 	if (Npc_HasItems (other, ITWR_Addon_FrancisAbrechnung_Mis))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Francis_Buch_Info()
@@ -267,7 +247,7 @@ func VOID DIA_Addon_Francis_Buch_Info()
 	else
 	{
 		AI_Output (self, other, "DIA_Addon_Francis_Buch_13_09"); //Tylko nie zrób czegoœ g³upiego!
-		if (Francis_bezahlt == true)
+		if (Francis_bezahlt == TRUE)
 		&& (Npc_HasItems(self, itmi_gold) >= 2000)
 		{
 			AI_Output (self, other, "DIA_Addon_Francis_Buch_13_10"); //Oto twoje 2000 sztuk z³ota!
@@ -285,6 +265,56 @@ func VOID DIA_Addon_Francis_Buch_Info()
 	AI_StopProcessInfos (self);
 };
 
+// ------------------------------------------------------------
+// 			  				PICK POCKET
+// ------------------------------------------------------------
+instance DIA_Francis_PICKPOCKET (C_INFO)
+{
+	npc			= PIR_1350_Addon_Francis;
+	nr			= 900;
+	condition	= DIA_Francis_PICKPOCKET_Condition;
+	information	= DIA_Francis_PICKPOCKET_Info;
+	permanent	= TRUE;
+	description = "(Es wäre einfach seinen Schlüssel zu stehlen)";
+};                       
+func INT DIA_Francis_PICKPOCKET_Condition()
+{
+	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
+	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
+	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS) >= 1)
+	&& (other.attribute[ATR_DEXTERITY] >= (40 - Theftdiff))
+	{
+		return TRUE;
+	};
+};
+func VOID DIA_Francis_PICKPOCKET_Info()
+{	
+	Info_ClearChoices	(DIA_Francis_PICKPOCKET);
+	Info_AddChoice		(DIA_Francis_PICKPOCKET, DIALOG_BACK 		,DIA_Francis_PICKPOCKET_BACK);
+	Info_AddChoice		(DIA_Francis_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Francis_PICKPOCKET_DoIt);
+};
+func void DIA_Francis_PICKPOCKET_DoIt()
+{
+	if (other.attribute[ATR_DEXTERITY] >= 40)
+	{
+		B_GiveInvItems (self,other , ITKE_Greg_ADDON_MIS, 1);
+		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
+		B_GivePlayerXP (XP_Ambient);
+		Info_ClearChoices (DIA_Francis_PICKPOCKET);
+	}
+	else
+	{
+		AI_StopProcessInfos	(self);
+		B_Attack (self, other, AR_Theft, 1); //AR_Theft führt zu NEWS!
+	};
+	Info_ClearChoices (DIA_Francis_PICKPOCKET);
+};
+func void DIA_Francis_PICKPOCKET_BACK()
+{
+	Info_ClearChoices (DIA_Francis_PICKPOCKET);
+};
+
+
 // ************************************************************
 // 			  		Wenn von Greg weggeschickt 
 // ************************************************************
@@ -294,15 +324,15 @@ instance DIA_Francis_Ausgeschissen (C_INFO)
 	nr			= 900;
 	condition	= DIA_Francis_Ausgeschissen_Condition;
 	information	= DIA_Francis_Ausgeschissen_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };                       
 func INT DIA_Francis_Ausgeschissen_Condition()
 {
-	if (Francis_ausgeschissen == true)
+	if (Francis_ausgeschissen == TRUE)
 	&& (Npc_IsInState(self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Francis_Ausgeschissen_Info()
@@ -314,3 +344,5 @@ func VOID DIA_Francis_Ausgeschissen_Info()
 	AI_Output (self, other, "DIA_Addon_Francis_Ausgeschissen_13_01"); //IdŸ sobie!
 	AI_StopProcessInfos (self);
 };
+
+

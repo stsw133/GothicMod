@@ -1,6 +1,7 @@
-//******************************************************************************************
-//	Standard Voice Module
-//******************************************************************************************
+// *********************
+// Standard	Voice Module
+// *********************
+
 CLASS C_SVM
 {
 	// ------ B_Say_GuildGreetings ------
@@ -305,9 +306,7 @@ CLASS C_SVM
 	var string 	ADDON_SUMMONANCIENTGHOST;
 	var string 	ADDON_ANCIENTGHOST_NOTNEAR;
 	
-	var string 	ADDON_GOLD_DESCRIPTION; 
-	
-	var string SILENCE;
+	var string 	ADDON_GOLD_DESCRIPTION; 	
 };     
 
 
@@ -544,8 +543,6 @@ instance SVM_1 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_1_ADDON_DIEBANDIT";				//GiÒ, bandycki pomiocie!
 	ADDON_DIRTYPIRATE			= "SVM_1_ADDON_DIRTYPIRATE";			//Piracka úwinia!
-	
-	Silence      	= "SILENCE";
 };
 
 INSTANCE SVM_2	(C_SVM)	
@@ -773,8 +770,6 @@ instance SVM_3 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_3_ADDON_DIEBANDIT";				//CHODè TU, BANDYTO!
 	ADDON_DIRTYPIRATE			= "SVM_3_ADDON_DIRTYPIRATE";			//CHODè TU, PIRACIE!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_4 (C_SVM)
@@ -998,8 +993,6 @@ instance SVM_4 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_4_ADDON_DIEBANDIT";				//Jeszcze jeden bandyta!
 	ADDON_DIRTYPIRATE			= "SVM_4_ADDON_DIRTYPIRATE";			//Ty zawszony piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_5 (C_SVM)
@@ -1222,8 +1215,6 @@ instance SVM_5 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_5_ADDON_DIEBANDIT";				//A, bandyta!
 	ADDON_DIRTYPIRATE			= "SVM_5_ADDON_DIRTYPIRATE";			//Zaraz ciÍ za≥atwiÍ, piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 
@@ -1447,8 +1438,6 @@ instance SVM_6 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_6_ADDON_DIEBANDIT";				//GiÒ, bandycki pomiocie!
 	ADDON_DIRTYPIRATE			= "SVM_6_ADDON_DIRTYPIRATE";			//Piracka úwinia!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_7 (C_SVM)
@@ -1672,8 +1661,6 @@ instance SVM_7 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_7_ADDON_DIEBANDIT";				//GiÒ, nikczemny bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_7_ADDON_DIRTYPIRATE";			//GiÒ, øa≥osny piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_8 (C_SVM)
@@ -1896,8 +1883,6 @@ instance SVM_8 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_8_ADDON_DIEBANDIT";				//Ty pod≥y bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_8_ADDON_DIRTYPIRATE";			//PIRACI!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_9 (C_SVM)
@@ -2124,8 +2109,6 @@ instance SVM_9 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_9_ADDON_DIEBANDIT";				//A teraz dostaniesz, bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_9_ADDON_DIRTYPIRATE";			//Trzeba by≥o siÍ tu nie pokazywaÊ, piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_10 (C_SVM)
@@ -2349,8 +2332,6 @@ instance SVM_10 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_10_ADDON_DIEBANDIT";				//Ty parszywy bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_10_ADDON_DIRTYPIRATE";			//Ty parszywy piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_11 (C_SVM)
@@ -2575,8 +2556,6 @@ instance SVM_11 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_11_ADDON_DIEBANDIT";				//Znowu jakiú bandyta.
 	ADDON_DIRTYPIRATE			= "SVM_11_ADDON_DIRTYPIRATE";			//PIRACI!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_12 (C_SVM)
@@ -2800,8 +2779,6 @@ instance SVM_12 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_12_ADDON_DIEBANDIT";				//DostanÍ ciÍ, bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_12_ADDON_DIRTYPIRATE";			//DostanÍ ciÍ, piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_13 (C_SVM)
@@ -3024,8 +3001,6 @@ instance SVM_13 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_13_ADDON_DIEBANDIT";				//Ty pod≥y bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_13_ADDON_DIRTYPIRATE";			//Ty przeklÍty piracie!
-	
-	Silence      	= "SILENCE";
 };
 
 
@@ -3249,13 +3224,12 @@ instance SVM_14 (C_SVM)
 
 	ADDON_DIEBANDIT				= "SVM_14_ADDON_DIEBANDIT";				//GiÒ, bandyto!
 	ADDON_DIRTYPIRATE			= "SVM_14_ADDON_DIRTYPIRATE";			//GiÒ, piracie!
-	
-	Silence      	= "SILENCE";
 };
 
-//******************************************************************************************
-//	SPIELER
-//******************************************************************************************
+// ****************
+// 		SPIELER
+// ****************
+
 INSTANCE SVM_15	(C_SVM)		//	PLAYER	trocken,ernst
 {
 	// ------ Player-Only SVMs ---------------------------------------------------------------------
@@ -3329,13 +3303,12 @@ INSTANCE SVM_15	(C_SVM)		//	PLAYER	trocken,ernst
 	ADDON_OPENADANOSTEMPLE		=   "SVM_15_Addon_OPENADANOSTEMPLE";		//JHERHEDRA AKHANTAR!
 
 	//ADDON<
-	
-	Silence      	= "SILENCE";
 };
 
-//******************************************************************************************
-//	Frauen
-//******************************************************************************************
+// ***************
+// 		Frauen
+// ***************
+
 instance SVM_16 (C_SVM)
 {
 	// ------ B_Say_GuildGreetings ---------------------------------------------------------------------------------------
@@ -3540,8 +3513,6 @@ instance SVM_16 (C_SVM)
 	
 	ADDON_DIEBANDIT				= "SVM_16_ADDON_DIEBANDIT";				//BANDYTA!
 	ADDON_DIRTYPIRATE			= "SVM_16_ADDON_DIRTYPIRATE";			//PIRAT!
-	
-	Silence      	= "SILENCE";
 };
 
 instance SVM_17 (C_SVM)
@@ -3743,21 +3714,23 @@ instance SVM_17 (C_SVM)
 	Aargh_3						= "SVM_17_Aargh_3"					;//Aargh
 	
 	//-------------------------------- Addon ------------------------------------------------
-	
-	Silence      	= "SILENCE";
+
 };
 
-//******************************************************************************************
-//	Orks
-//******************************************************************************************
+
+// *************
+// 		Orks
+// *************
+
 INSTANCE SVM_18	(C_SVM)							
 {
-	Silence      	= "SILENCE";
+
 };
 
-//******************************************************************************************
-//	Dementor
-//******************************************************************************************
+// ****************
+// 	   Dementor
+// ****************
+
 INSTANCE SVM_19	(C_SVM)
 {
 	DieEnemy     	= "SVM_19_DieEnemy"     	;//Tam jesssssst!
@@ -3766,11 +3739,15 @@ INSTANCE SVM_19	(C_SVM)
 	Aargh_1      	= "SVM_19_Aargh_1"     	;//Aargh
 	Aargh_2      	= "SVM_19_Aargh_2"     	;//Aargh
 	Aargh_3      	= "SVM_19_Aargh_3"     	;//Aargh
-	
-	Silence      	= "SILENCE";
 };
+ 
 
-//******************************************************************************************
-//	Maximale SVMs
-//******************************************************************************************
+// ***********************
+// 		Maximale SVMs
+// ***********************
+
 CONST INT SVM_MODULES =	20;
+
+
+
+

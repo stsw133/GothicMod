@@ -8,12 +8,12 @@ instance DIA_Addon_Rhademes_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Rhademes_EXIT_Condition;
 	information = DIA_Addon_Rhademes_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Sam poszukam drogi! (KONIEC)";
 };
 FUNC INT DIA_Addon_Rhademes_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Rhademes_EXIT_Info()
 {
@@ -35,21 +35,21 @@ instance DIA_Addon_Rhademes_First   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Rhademes_First_Condition;
 	information = DIA_Addon_Rhademes_First_Info;
-	permanent   = true;
-	important	= true;
+	permanent   = TRUE;
+	important	= TRUE;
 };
 FUNC INT DIA_Addon_Rhademes_First_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (Rhademes_Understood == false)
+	&& (Rhademes_Understood == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Rhademes_First_Info()
 {
-//	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
-//	{
+	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	{
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_00"); //Mój duch by³ uwiêziony przez ca³¹ wiecznoœæ.
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_01"); //W koñcu jestem wolny. Miecz ma NOWEGO powiernika.
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_02"); //Ostatnia komnata zosta³a otwarta.
@@ -58,15 +58,16 @@ FUNC VOID DIA_Addon_Rhademes_First_Info()
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_05"); //TA brama prowadzi do poprzedniego pomieszczenia.
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_06"); //Powiernik... zamkn¹³ j¹ za sob¹.
 		
-		Rhademes_Understood = true;
-//	}
-//	else //Spieler spricht Sprache nicht
-//	{
-//		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_07"); //Ghanima en Kandra Adanos?
-//		B_Say (other, self, "$CANTUNDERSTANDTHIS");	
-//		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_08"); //Bengla anthani!
-//		AI_StopProcessInfos (self);
-//	};
+		Rhademes_Understood = TRUE;
+	}
+	else //Spieler spricht Sprache nicht
+	{
+		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_07"); //Ghanima en Kandra Adanos?
+		B_Say (other, self, "$CANTUNDERSTANDTHIS");	
+		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_08"); //Bengla anthani!
+		
+		AI_StopProcessInfos (self);
+	};
 };
 
 // ***********************************************************
@@ -79,12 +80,12 @@ instance DIA_Addon_Rhademes_Pforte (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Rhademes_Pforte_Condition;
 	information = DIA_Addon_Rhademes_Pforte_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Jak mogê otworzyæ bramê?";
 };
 FUNC INT DIA_Addon_Rhademes_Pforte_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Rhademes_Pforte_Info()
 {
@@ -104,7 +105,7 @@ instance DIA_Addon_Rhademes_Hebel (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Rhademes_Hebel_Condition;
 	information = DIA_Addon_Rhademes_Hebel_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Nie wszystkie dŸwignie uruchamiaj¹ pu³apkê, tak?";
 };
 FUNC INT DIA_Addon_Rhademes_Hebel_Condition()
@@ -112,7 +113,7 @@ FUNC INT DIA_Addon_Rhademes_Hebel_Condition()
 	if (Npc_KnowsInfo(other, DIA_Addon_Rhademes_Pforte))
 	&& (!Npc_KnowsInfo(other, DIA_Addon_Rhademes_DeinVater))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Rhademes_Hebel_Info()
@@ -131,7 +132,7 @@ instance DIA_Addon_Rhademes_DontBelieve (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Rhademes_DontBelieve_Condition;
 	information = DIA_Addon_Rhademes_DontBelieve_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Nie wierzê ci!";
 };
 FUNC INT DIA_Addon_Rhademes_DontBelieve_Condition()
@@ -139,7 +140,7 @@ FUNC INT DIA_Addon_Rhademes_DontBelieve_Condition()
 	if (Npc_KnowsInfo(other, DIA_Addon_Rhademes_Pforte))
 	&& (!Npc_KnowsInfo (other, DIA_Addon_Rhademes_DeinVater))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Rhademes_DontBelieve_Info()
@@ -158,7 +159,7 @@ instance DIA_Addon_Rhademes_DeinVater (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Rhademes_DeinVater_Condition;
 	information = DIA_Addon_Rhademes_DeinVater_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Twój ojciec zbudowa³ tê pu³apkê. Sk¹d mo¿esz wiedzieæ o jej dzia³aniu?";
 };
 FUNC INT DIA_Addon_Rhademes_DeinVater_Condition()
@@ -166,7 +167,7 @@ FUNC INT DIA_Addon_Rhademes_DeinVater_Condition()
 	if (Npc_KnowsInfo(other, DIA_Addon_Rhademes_Pforte))
 	&& (Npc_HasItems (other, ItMi_Addon_Stone_04) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Rhademes_DeinVater_Info()
@@ -207,7 +208,7 @@ FUNC VOID DIA_Addon_Rhademes_DeinVater_Info()
 				
 		AI_UseMob (self, "LEVER", 1);
 		
-		Rhademes_fertig = true;
+		Rhademes_fertig = TRUE;
 	};
 	
 func void DIA_Addon_Rhademes_DeinVater_Think()
@@ -238,21 +239,62 @@ instance DIA_Addon_Rhademes_PERM (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Rhademes_PERM_Condition;
 	information = DIA_Addon_Rhademes_PERM_Info;
-	permanent   = true;
-	important 	= true; 
+	permanent   = TRUE;
+	important 	= TRUE; 
 };
 FUNC INT DIA_Addon_Rhademes_PERM_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (Rhademes_fertig == true)
+	&& (Rhademes_fertig == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Rhademes_PERM_Info()
 {
 	AI_Output (self, other, "DIA_Addon_Rhademes_PERM_03_00"); //Jeœli masz doœæ si³y... wrzuæ go... w morskie odmêty...
-	SC_TookRhademesTrap = true;
-	SC_TalkedToRhademAfter = true;
+	SC_TookRhademesTrap = TRUE;
+	SC_TalkedToRhademAfter = TRUE;
 	AI_StopProcessInfos (self);
 };
+
+			
+			
+				
+		
+	
+		
+			
+	
+	
+	
+	
+	
+
+	
+		
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

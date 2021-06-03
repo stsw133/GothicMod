@@ -5,7 +5,7 @@
 const int SPL_Cost_Charm				=	50;
 
 ///******************************************************************************************
-INSTANCE Spell_Charm (C_Spell_Proto)
+instance Spell_Charm (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype 							=	SPELL_NEUTRAL;
@@ -14,7 +14,7 @@ INSTANCE Spell_Charm (C_Spell_Proto)
 
 func int Spell_Logic_Charm (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Charm/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Charm/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Charm)
 	{
 		if (other.aivar[AIV_NpcSawPlayerCommit] != CRIME_NONE)
@@ -27,11 +27,11 @@ func int Spell_Logic_Charm (var int manaInvested)
  		other.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
  		other.aivar[AIV_LastFightAgainstPlayer] = FIGHT_NONE;
 		
-		if (Wld_GetGuildAttitude(other.guild,self.guild) != ATT_HOSTILE)
+		if (Wld_GetGuildAttitude(other.guild, self.guild) != ATT_HOSTILE)
 		{
-			if (Npc_GetAttitude(other,self) == ATT_HOSTILE)
+			if (Npc_GetAttitude(other, self) == ATT_HOSTILE)
 			{
-				Npc_SetTempAttitude (other, Wld_GetGuildAttitude(other.guild,self.guild));
+				Npc_SetTempAttitude (other, Wld_GetGuildAttitude(other.guild, self.guild));
 			};
 		};
 		return SPL_SENDCAST;
@@ -44,13 +44,14 @@ func int Spell_Logic_Charm (var int manaInvested)
 
 func void Spell_Cast_Charm()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Charm/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Charm/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Charm/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Charm)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Charm;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

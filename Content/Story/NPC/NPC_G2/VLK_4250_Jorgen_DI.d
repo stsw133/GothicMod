@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4250_Jorgen_DI (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Jorgen";
 	guild 								=	GIL_NONE;
 	id 									=	42500;
@@ -9,34 +9,34 @@ instance VLK_4250_Jorgen_DI (Npc_Default)
 	flags       						=	NPC_FLAG_IMPORTANT;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_PARTYMEMBER]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Strong);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Normal04, 0, ITAR_VLK_L_03);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_42500;
 };
 
-FUNC VOID Rtn_Start_42500()
+func void Rtn_Start_42500()
 {
 	TA_Stand_WP	(08,00,23,00, "SHIP_CREW_CAPTAIN");
 	TA_Sleep	(23,00,08,00, "SHIP_IN_06");

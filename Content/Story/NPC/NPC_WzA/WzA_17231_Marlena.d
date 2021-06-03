@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17231_Marlena (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Marlena";
 	guild								=	GIL_NONE;
 	id									=	17231;
@@ -9,32 +9,32 @@ instance WzA_17231_Marlena (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attribute ------
+	/// ------ Attribute ------
 	B_SetAttributesToLevel (self, 35);
 	B_SetFightSkills (self, FightTalent_Weak);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_ChainSaw);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+2, BodySkin_N, "Hum_Head_Babe5", FaceBabe_Normal01, Teeth_Pretty, ITAR_BABE_NURSE);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17231;
 };
 

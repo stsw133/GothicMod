@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Elvrich_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Elvrich_EXIT_Condition;
 	information = DIA_Addon_Elvrich_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Elvrich_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Elvrich_EXIT_Info()
@@ -29,17 +29,17 @@ instance DIA_Addon_Elvrich_BanditsThere		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Elvrich_BanditsThere_Condition;
 	information	 = 	DIA_Addon_Elvrich_BanditsThere_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 var int DIA_Addon_Elvrich_BanditsThere_NoPerm;
 func int DIA_Addon_Elvrich_BanditsThere_Condition ()
 {
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (DIA_Addon_Elvrich_BanditsThere_NoPerm == false)
+	&& (DIA_Addon_Elvrich_BanditsThere_NoPerm == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -51,8 +51,8 @@ func void DIA_Addon_Elvrich_BanditsThere_Info ()
 	&& (Npc_IsDead(BDT_10310_Addon_RangerBandit_M))	
 	{
 		AI_Output	(self, other, "DIA_Addon_Elvrich_BanditsThere_04_00"); //Niebiosom niech bêd¹ dziêki! Nie ma ju¿ bandytów! Ocali³eœ mi ¿ycie!
-		DIA_Addon_Elvrich_BanditsThere_NoPerm = true;
-		self.aivar[AIV_NoFightParker] = false;
+		DIA_Addon_Elvrich_BanditsThere_NoPerm = TRUE;
+		self.aivar[AIV_NoFightParker] = FALSE;
 	}
 	else
 	{
@@ -76,7 +76,7 @@ instance DIA_Addon_Elvrich_Wer		(C_INFO)
 
 func int DIA_Addon_Elvrich_Wer_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Elvrich_Wer_Info ()
@@ -106,10 +106,10 @@ instance DIA_Addon_Elvrich_MissingPeople		(C_INFO)
 func int DIA_Addon_Elvrich_MissingPeople_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_Wer))
-	&& (SC_HearedAboutMissingPeople == true)
-	&& (SCKnowsMissingPeopleAreInAddonWorld == false)
+	&& (SC_HearedAboutMissingPeople == TRUE)
+	&& (SCKnowsMissingPeopleAreInAddonWorld == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -136,7 +136,7 @@ func int DIA_Addon_Elvrich_WhatExactly_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_Wer))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -169,7 +169,7 @@ func void DIA_Addon_Elvrich_WhatExactly_Pirates ()
 	AI_Output			(self, other, "DIA_Addon_Elvrich_WhatExactly_Pirates_04_05"); //Ale tamci nie zgodzili siê. Bandyci zaszyli siê tutaj i postanowili czekaæ na dalszy rozwój wypadków.
 	AI_Output			(self, other, "DIA_Addon_Elvrich_WhatExactly_Pirates_04_06"); //Wygl¹da³o na to, ¿e nie maj¹ ¿adnego pomys³u. A potem zjawi³eœ siê ty.
 	
-	Elvrich_SCKnowsPirats = true;
+	Elvrich_SCKnowsPirats = TRUE;
 	
 	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
@@ -226,7 +226,7 @@ func int DIA_Addon_Elvrich_Bromor_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhatExactly))
 	&& (MIS_Bromor_LuciaStoleGold == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -258,7 +258,7 @@ func int DIA_Addon_Elvrich_WhereIsLucia_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhatExactly))
 	&& (MIS_LuciasLetter != LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -273,7 +273,7 @@ func void DIA_Addon_Elvrich_WhereIsLucia_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_Lucia, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Lucia,"Lucia zosta³a zabrana przez bandytów do lasu, gdzieœ na pó³noc za farm¹ Sekoba."); 
 
-	SC_KnowsLuciaCaughtByBandits = true;
+	SC_KnowsLuciaCaughtByBandits = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -294,7 +294,7 @@ func int DIA_Addon_Elvrich_FernandosWaffen_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhatExactly))
 	&& (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)	
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -303,7 +303,7 @@ func void DIA_Addon_Elvrich_FernandosWaffen_Info ()
 	AI_Output	(other, self, "DIA_Addon_Elvrich_FernandosWaffen_15_00"); //Czy bandyci, którzy was porwali, mieli przy sobie wiêkszy ³adunek broni?
 	AI_Output	(self, other, "DIA_Addon_Elvrich_FernandosWaffen_04_01"); //O tak! Mieli jej tyle, ¿e ledwie byli w stanie wszystko udŸwign¹æ.
 	AI_Output	(self, other, "DIA_Addon_Elvrich_FernandosWaffen_04_02"); //Uciekli w kierunku farmy Sekoba, zabieraj¹c ca³y orê¿.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 
 	Log_CreateTopic (TOPIC_Addon_BanditTrader, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_BanditTrader, LOG_RUNNING);
@@ -328,7 +328,7 @@ func int DIA_Addon_Elvrich_LuciaLetter_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhatExactly))
 	&& (Npc_HasItems (other,ItWr_LuciasLoveLetter_Addon))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -345,7 +345,7 @@ func void DIA_Addon_Elvrich_LuciaLetter_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_Lucia, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Lucia,"Elvrich nie chce uwierzyæ, ¿e Lucia posz³a z bandytami z w³asnej woli. Nadal liczy na powrót ukochanej, mimo ¿e dosta³ od niej jednoznaczny po¿egnalny list."); 
 
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Addon_LuciasLetter);
 	MIS_LuciasLetter = LOG_SUCCESS;
 };
 
@@ -358,7 +358,7 @@ instance DIA_Addon_Elvrich_WasNun		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Elvrich_WasNun_Condition;
 	information	 = 	DIA_Addon_Elvrich_WasNun_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 
 	description	 = 	"Naprawdê powinieneœ wróciæ do miasta.";
 };
@@ -367,7 +367,7 @@ func int DIA_Addon_Elvrich_WasNun_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhereIsLucia))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -384,7 +384,7 @@ func void DIA_Addon_Elvrich_WasNun_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_MissingPeople, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_MissingPeople,"Elvrich wróci³ do stolarza Thorbena."); 
 
-	Elvrich_GoesBack2Thorben = true;
+	Elvrich_GoesBack2Thorben = TRUE;
 	Npc_ExchangeRoutine	(self,"BACKINTHECITY");
 	EquipItem	(self, ItMw_1h_Bau_Mace);
 };
@@ -398,19 +398,21 @@ instance DIA_Addon_Elvrich_PERM		(C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Addon_Elvrich_PERM_Condition;
 	information	= DIA_Addon_Elvrich_PERM_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };
 func int DIA_Addon_Elvrich_PERM_Condition ()
 {
-	if (Elvrich_GoesBack2Thorben == true)
+	if (Elvrich_GoesBack2Thorben == TRUE)
 	&& (Npc_IsInState(self, ZS_Talk))
 	&& (MIS_LuciasLetter != LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Elvrich_PERM_Info ()
 {
 	AI_Output (self, other, "DIA_Addon_Elvrich_PERM_04_00"); //Dziêkujê za ratunek.
 };
+
+

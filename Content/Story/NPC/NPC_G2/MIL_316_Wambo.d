@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_316_Wambo (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Wambo";
 	guild 								=	GIL_MIL;
 	id 									=	316;
 	voice 								=	3;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItem (self, ItKe_City_Tower_04);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal43, 0, ITAR_MIL_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_316;
 };
 
-FUNC VOID Rtn_Start_316()
+func void Rtn_Start_316()
 {
 	TA_Stand_Guarding		(12,00,14,00, "NW_CITY_UPTOWN_PATH_05");
 	TA_Stand_ArmsCrossed	(14,00,16,00, "NW_CITY_UPTOWN_PATH_09");
@@ -50,7 +49,7 @@ FUNC VOID Rtn_Start_316()
 	TA_Stand_ArmsCrossed	(08,00,10,00, "NW_CITY_UPTOWN_PATH_09");
 	TA_Stand_Guarding		(10,00,12,00, "NW_CITY_UPTOWN_PATH_13");
 };
-FUNC VOID Rtn_Drink_316()
+func void Rtn_Drink_316()
 {
 	TA_Stand_Guarding		(12,00,14,00, "NW_CITY_UPTOWN_PATH_05");
 	TA_Stand_ArmsCrossed	(14,00,16,00, "NW_CITY_UPTOWN_PATH_09");

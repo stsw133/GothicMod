@@ -8,13 +8,13 @@ INSTANCE DIA_Wambo_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wambo_EXIT_Condition;
 	information	= DIA_Wambo_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Wambo_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Wambo_EXIT_Info()
@@ -31,13 +31,13 @@ INSTANCE DIA_Wambo_Job(C_INFO)
 	nr			= 5;
 	condition	= DIA_Wambo_Job_Condition;
 	information	= DIA_Wambo_Job_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co tu porabiasz?";
 };                       
 
 FUNC INT DIA_Wambo_Job_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Wambo_Job_Info()
@@ -55,7 +55,7 @@ INSTANCE DIA_Wambo_Situation(C_INFO)
 	nr			= 10;
 	condition	= DIA_Wambo_Situation_Condition;
 	information	= DIA_Wambo_Situation_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jak leci?";
 };                       
 
@@ -63,7 +63,7 @@ FUNC INT DIA_Wambo_Situation_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Wambo_Job))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -81,7 +81,7 @@ INSTANCE DIA_Wambo_Ramirez(C_INFO)
 	nr			= 5;
 	condition	= DIA_Wambo_Ramirez_Condition;
 	information	= DIA_Wambo_Ramirez_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Przychodzê od naszego wspólnego przyjaciela, Ramireza.";
 };                       
 
@@ -89,7 +89,7 @@ FUNC INT DIA_Wambo_Ramirez_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Ramirez_Viertel))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -111,7 +111,7 @@ INSTANCE DIA_Wambo_Deal(C_INFO)
 	nr			= 5;
 	condition	= DIA_Wambo_Deal_Condition;
 	information	= DIA_Wambo_Deal_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "(Zap³aæ 250 sztuk z³ota)";
 };                       
 //-----------------------------------
@@ -120,9 +120,9 @@ var int DIA_Wambo_Deal_permanent;
 FUNC INT DIA_Wambo_Deal_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Wambo_Ramirez)
-	&& (DIA_Wambo_Deal_permanent == false)
+	&& (DIA_Wambo_Deal_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Wambo_Deal_Info()
@@ -134,7 +134,7 @@ FUNC VOID DIA_Wambo_Deal_Info()
 		AI_Output (self ,other,"DIA_Wambo_Deal_03_01"); //W porz¹dku, w nocy mnie tu nie bêdzie.
 		AI_Output (self ,other,"DIA_Wambo_Deal_03_02"); //Pamiêtaj, ¿e nie wiem nawet, jak siê nazywasz.
 		
-		DIA_Wambo_Deal_permanent = true;
+		DIA_Wambo_Deal_permanent = TRUE;
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine (self, "DRINK");
 	}

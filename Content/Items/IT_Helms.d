@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	Helm
-//******************************************************************************************
+///******************************************************************************************
+///	Helm
+///******************************************************************************************
 prototype ItemPR_Helm (C_Item)
 {
 	name					=	"He³m";
@@ -8,14 +8,14 @@ prototype ItemPR_Helm (C_Item)
 	wear					=	WEAR_Head;
 	material				=	MAT_METAL;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_Leather (ItemPR_Helm)
 {
 	visual			=	"ItHe_Leather.3ds";
 	material		=	MAT_LEATHER;
 	description		=	"Skórzany he³m";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_Fighter (ItemPR_Helm)
 {
 	visual			=	"ItHe_Helm1.3ds";
@@ -46,7 +46,7 @@ instance ItHe_Soldier (ItemPR_Helm)
 	visual			=	"ItHe_Helm6.3ds";
 	description		=	name;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_PAL_H (ItemPR_Helm)
 {
 	visual			=	"ItHe_Pal_00.3ds";
@@ -72,7 +72,7 @@ instance ItHe_PAL_O (ItemPR_Helm)
 	visual			=	"ItHe_Pal_06.3ds";
 	description		=	"He³m orka";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_Slave (ItemPR_Helm)
 {
 	visual			=	"ItHe_Slave.3ds";
@@ -84,7 +84,7 @@ instance ItHe_Spectacles (ItemPR_Helm)
 	material 		=	MAT_GLAS;
 	description 	=	"Okulary";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_Sleeper (ItemPR_Helm)
 {
 	visual			= 	"ItHe_Sleeper.3ds";
@@ -95,7 +95,7 @@ instance ItHe_Innos (ItemPR_Helm)
 	visual			=	"ItHe_Innos.3ds";
 	description		=	"He³m Innosa";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_Hat (ItemPR_Helm)
 {
 	visual			=	"ItHe_Hat.3ds";
@@ -114,7 +114,7 @@ instance ItHe_ChristmasCap (ItemPR_Helm)
 	material 		=	MAT_LEATHER;
 	description 	=	"Œwi¹teczna czapka";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItHe_OrcHead (ItemPR_Helm)
 {
 	visual 			=	"Orc_Head_Warrior.mms";
@@ -123,7 +123,7 @@ instance ItHe_OrcHead (ItemPR_Helm)
 	on_state[0]		=	Func_ItHe_OrcHead;
 	scemename		=	"FASTUSE";
 };
-FUNC VOID Func_ItHe_OrcHead()
+func void Func_ItHe_OrcHead()
 {
 	var oCNpc npc; npc = Hlp_GetNpc(self);
     Mdl_SetVisualBody (self, npc.body_visualName, (npc.bitfield[0]&oCNpc_bitfield0_body_TexVarNr)>>14, npc.bitfield[1]&oCNpc_bitfield1_body_TexColorNr, "Orc_Head_Warrior", 0, 0, -1);

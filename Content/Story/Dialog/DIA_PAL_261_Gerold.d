@@ -7,15 +7,15 @@ INSTANCE DIA_Gerold_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Gerold_EXIT_Condition;
 	information	= DIA_Gerold_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Gerold_EXIT_Condition()
 {
-	if (Kapitel < 10)
+	if (Kapitel < 4)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -32,14 +32,14 @@ INSTANCE DIA_Gerold_Hallo (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Hallo_Condition;
 	information	= DIA_Gerold_Hallo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kogo pilnujesz?";
 };                       
 FUNC INT DIA_Gerold_Hallo_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_Hallo_Info()
@@ -59,16 +59,16 @@ INSTANCE DIA_Gerold_Jail (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Jail_Condition;
 	information	= DIA_Gerold_Jail_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description ="Czy mo¿esz mnie wpuœciæ do lochu?";
 };                       
 FUNC INT DIA_Gerold_Jail_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	&& Npc_KnowsInfo (other, DIA_Gerold_Hallo)
-	&&   (Garond_Kerkerauf == false)
+	&&   (Garond_Kerkerauf == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_Jail_Info()
@@ -77,7 +77,7 @@ FUNC VOID DIA_Gerold_Jail_Info()
 	AI_Output	(self ,other,"DIA_Gerold_Jail_12_01");//Nie. NIKT nie wejdzie do lochu. Dotyczy to KA¯DEGO: ciebie, Miltena i ca³ej reszty.
 	AI_Output	(self ,other,"DIA_Gerold_Jail_12_02");//To nie jest knajpa, gdzie mo¿na wchodziæ i wychodziæ, kiedy ci siê tylko spodoba. Zapamiêtaj to sobie.
 	
-	KnowsAboutGorn = true;  
+	KnowsAboutGorn = TRUE;  
 };	
 // ************************************************************
 // 	Ausnahme
@@ -88,16 +88,16 @@ INSTANCE DIA_Gerold_Ausnahme (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Ausnahme_Condition;
 	information	= DIA_Gerold_Ausnahme_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description ="Nie zrobisz dla mnie wyj¹tku?";
 };                       
 FUNC INT DIA_Gerold_Ausnahme_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Gerold_Jail))
-	&& (Kapitel == 8)
-	&&   (Garond_Kerkerauf == false)
+	&& (Kapitel == 2)
+	&&   (Garond_Kerkerauf == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_Ausnahme_Info()
@@ -114,16 +114,16 @@ INSTANCE DIA_Gerold_Gold (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Gold_Condition;
 	information	= DIA_Gerold_Gold_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description ="A jeœli ci zap³acê?";
 };                       
 FUNC INT DIA_Gerold_Gold_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Gerold_Ausnahme))
-	&& (Kapitel == 8)
-	&&   (Garond_Kerkerauf == false)
+	&& (Kapitel == 2)
+	&&   (Garond_Kerkerauf == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_Gold_Info()
@@ -141,7 +141,7 @@ INSTANCE DIA_Gerold_Deal (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Deal_Condition;
 	information	= DIA_Gerold_Deal_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description ="Mam tu list dla jednego z wiêŸniów.";
 };                       
 
@@ -150,10 +150,10 @@ FUNC INT DIA_Gerold_Deal_Condition()
 	
 	IF 	 (MIS_RescueGorn == LOG_RUNNING)
 	&&	 (Npc_HasItems (other,ItWr_LetterForGorn_MIS) >=1)
-	&& 	 (Kapitel == 8)
-	&&   (Garond_Kerkerauf == false)
+	&& 	 (Kapitel == 2)
+	&&   (Garond_Kerkerauf == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
  
@@ -179,7 +179,7 @@ INSTANCE DIA_Gerold_Stuff (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Stuff_Condition;
 	information	= DIA_Gerold_Stuff_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mam coœ dla ciebie...";
 };
 //-----------------------------------                       
@@ -189,10 +189,10 @@ FUNC INT DIA_Gerold_Stuff_Condition()
 {
 	IF (Npc_HasItems (other,ItWr_LetterForGorn_MIS) >=1 )
 	&&	Npc_KnowsInfo (other,DIA_Gerold_Deal)
-	&& (Kapitel == 8)
-	&& (DIA_Gerold_Stuff_permanent == false)
+	&& (Kapitel == 2)
+	&& (DIA_Gerold_Stuff_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
  
@@ -203,18 +203,35 @@ FUNC VOID DIA_Gerold_Stuff_Info()
 	
 	//------------------HACK für deutliche Anzeige-------------------
 	
+	if (Npc_HasItems (other, ItFo_Honey) >= 1)
+	&& (Npc_HasItems (other, ItFo_Bread) >= 1)
+	&& (Npc_HasItems (other, ItFo_Wine) >= 1)
+	&& (Npc_HasItems (other, ItFo_Sausage) >= 1)
+	{
+		 AI_PrintScreen ("Honig gegeben",	 -1, 34, FONT_ScreenSmall, 2);
+		 AI_PrintScreen ("Brot gegeben",	 -1, 37, FONT_ScreenSmall, 2);
+		 AI_PrintScreen ("Wein gegeben",     -1, 40, FONT_ScreenSmall, 2);
+		 AI_PrintScreen ("Wurst gegeben",  	 -1, 43, FONT_ScreenSmall, 2);
+			
+		Npc_RemoveInvItems (other, ItFo_Honey,1);
+		Npc_RemoveInvItems (other, ItFo_Bread,1);
+		Npc_RemoveInvItems (other, ItFo_Wine,1);
+		Npc_RemoveInvItems (other, ItFo_Sausage,1);	
+	/*
 	if (B_GiveInvItems (other,self,ItFo_Honey  ,1)
 	&&  B_GiveInvItems (other,self,ItFo_Bread  ,1)
 	&&  B_GiveInvItems (other,self,ItFo_Wine   ,1)
 	&&  B_GiveInvItems (other,self,ItFo_Sausage,1))
 	{
+	*/
+	
 		AI_Output	(self ,other,"DIA_Gerold_Stuff_12_01");	//Dobrze, dawaj ¿arcie. Masz tê wiadomoœæ?
 		AI_Output   (other,self ,"DIA_Gerold_Stuff_15_02"); //Tak, proszê. Pamiêtaj, to dla Gorna.
 		AI_Output 	(self ,other,"DIA_Gerold_Stuff_12_03"); //Wróæ jutro, do tej pory odbierze ju¿ twój list.
 		
 		B_GiveInvItems (other,self ,ItWr_LetterForGorn_MIS,1); 
 		DayContactGorn = Wld_GetDay();
-		DIA_Gerold_Stuff_permanent = true;
+		DIA_Gerold_Stuff_permanent = TRUE;
 		
 		B_LogEntry (TOPIC_RescueGorn,"Gerold dosta³ wszystko, czego sobie za¿yczy³, i obieca³ przekazaæ wiadomoœæ.");
 	}
@@ -232,7 +249,7 @@ INSTANCE DIA_Gerold_Antwort (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_Antwort_Condition;
 	information	= DIA_Gerold_Antwort_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Czy Gorn dosta³ wiadomoœæ?";
 };                       
 //-------------------------------------
@@ -240,11 +257,11 @@ var int DIA_Gerold_Antwort_permanent;
 //-------------------------------------
 FUNC INT DIA_Gerold_Antwort_Condition()
 {	
-	if (DIA_Gerold_Stuff_permanent == true)
-	&& (Kapitel == 8)
-	&& (DIA_Gerold_Antwort_permanent == false)
+	if (DIA_Gerold_Stuff_permanent == TRUE)
+	&& (Kapitel == 2)
+	&& (DIA_Gerold_Antwort_permanent == FALSE)
 	{
-		return true;	
+		return TRUE;	
 	};
 };
 FUNC VOID DIA_Gerold_Antwort_Info()
@@ -261,8 +278,9 @@ FUNC VOID DIA_Gerold_Antwort_Info()
 		AI_Output	(other,self ,"DIA_Gerold_Antwort_15_06");//Byæ mo¿e. Nie zastanawiaj siê nad tym.
 		AI_Output	(self ,other,"DIA_Gerold_Antwort_12_07");//Tak, mo¿e tak bêdzie lepiej.
 		
-		GornsTreasure = true;	
-		DIA_Gerold_Antwort_permanent = true;
+		
+		GornsTreasure = TRUE;	
+		DIA_Gerold_Antwort_permanent = TRUE;
 		B_LogEntry (TOPIC_RescueGorn,"Gorn twierdzi, ¿e ukry³ swoje z³oto przy po³udniowej bramie.");
 	}
 	else
@@ -282,16 +300,16 @@ INSTANCE DIA_Gerold_SetGornFree (C_INFO)
 	nr			= 2;
 	condition	= DIA_Gerold_SetGornFree_Condition;
 	information	= DIA_Gerold_SetGornFree_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Uwolnij Gorna.";
 };                       
 
 FUNC INT DIA_Gerold_SetGornFree_Condition()
 {	
-	if (Garond_Kerkerauf == true)
-	&& (Kapitel == 8)	
+	if (Garond_Kerkerauf == TRUE)
+	&& (Kapitel == 2)	
 	{
-		return true;	
+		return TRUE;	
 	};
 };
  
@@ -313,15 +331,15 @@ INSTANCE DIA_Gerold_Perm (C_INFO)
 	nr			= 900;
 	condition	= DIA_Gerold_Perm_Condition;
 	information	= DIA_Gerold_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Czy ty nigdy nie sypiasz?";
 };                       
 FUNC INT DIA_Gerold_Perm_Condition()
 {
-	if (Kapitel < 10)
+	if (Kapitel < 4)
 	&& Npc_KnowsInfo (other,DIA_Gerold_Gold)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_Perm_Info()
@@ -348,14 +366,14 @@ INSTANCE DIA_Gerold_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Gerold_KAP4_EXIT_Condition;
 	information	= DIA_Gerold_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Gerold_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_KAP4_EXIT_Info()
@@ -380,9 +398,9 @@ instance DIA_Gerold_KAP4_ALLESRUHIG		(C_INFO)
 
 func int DIA_Gerold_KAP4_ALLESRUHIG_Condition ()
 {
-	if (Kapitel >= 10)	
+	if (Kapitel >= 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -402,7 +420,7 @@ func void DIA_Gerold_KAP4_ALLESRUHIG_geben ()
 {
 	AI_Output			(other, self, "DIA_Gerold_KAP4_ALLESRUHIG_geben_15_00"); //Mo¿e coœ ci przyniosê.
 	AI_Output			(self, other, "DIA_Gerold_KAP4_ALLESRUHIG_geben_12_01"); //Oszala³eœ? Na pewno nie tutaj. Jeœli ktoœ zauwa¿y, ¿e mam jedzenie, zaraz otocz¹ mnie dziesi¹tki nowych przyjació³, jeœli wiesz, co mam na myœli.
-	if 	(Wld_IsTime	(23,10,08,00) == false)
+	if 	(Wld_IsTime	(23,10,08,00) == FALSE)
 	{
 		AI_Output			(self, other, "DIA_Gerold_KAP4_ALLESRUHIG_geben_12_02"); //Znajdziesz mnie w œwi¹tyni maga, kiedy nikogo ju¿ tam nie bêdzie.
 	}
@@ -442,15 +460,15 @@ instance DIA_Gerold_FOOD		(C_INFO)
 	nr		 = 	31;
 	condition	 = 	DIA_Gerold_FOOD_Condition;
 	information	 = 	DIA_Gerold_FOOD_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Gerold_FOOD_Condition ()
 {
 	if (Npc_GetDistToWP(self,"OC_MAGE_IN")<500) 
-		&& (Kapitel >= 10)
+		&& (Kapitel >= 4)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -466,7 +484,7 @@ func void DIA_Gerold_MoreFood ()
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"Start");
 		MIS_GeroldGiveFood = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3);	
+		B_GivePlayerXP (XP_GeroldGiveFood);	
 		CreateInvItems 		(self, ItMi_Gold, 450);									
 		B_GiveInvItems 		(self, other, ItMi_Gold, 450);					
 	}
@@ -510,7 +528,7 @@ func void DIA_Gerold_MoreFood ()
 			{
 			Info_AddChoice	(DIA_Gerold_FOOD, "(Oddaj kie³basê)", DIA_Gerold_FOOD_Wurst );
 			};
-			Gerold_FoodCounter += 1;
+			Gerold_FoodCounter = (Gerold_FoodCounter +1);
 	};
 };
 
@@ -530,7 +548,7 @@ func void DIA_Gerold_FOOD_nichts ()
 	B_Attack (self, other, AR_NONE, 1);
 	Npc_ExchangeRoutine	(self,"Start"); 
 	MIS_GeroldGiveFood = LOG_FAILED;
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 
@@ -555,11 +573,11 @@ func void DIA_Gerold_FOOD_kaese_nichtmehr ()
 			Teiler = 2;
 		};
 	
-	XP_GeroldGiveFoodLow = (XP_BONUS_3/Teiler);
+	XP_GeroldGiveFoodLow = (XP_GeroldGiveFood/Teiler);
 	
 	Npc_ExchangeRoutine	(self,"Start");
 	MIS_GeroldGiveFood = LOG_OBSOLETE;
-	B_GivePlayerXP(XP_GeroldGiveFoodLow);	
+	B_GivePlayerXP (XP_GeroldGiveFoodLow);	
 };
 
 func void DIA_Gerold_FOOD_kaese ()
@@ -613,7 +631,7 @@ instance DIA_Gerold_PERM4		(C_INFO)
 	nr		 = 	41;
 	condition	 = 	DIA_Gerold_PERM4_Condition;
 	information	 = 	DIA_Gerold_PERM4_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wci¹¿ g³odny?";
 };
@@ -622,7 +640,7 @@ func int DIA_Gerold_PERM4_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Gerold_KAP4_ALLESRUHIG))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -630,7 +648,7 @@ func void DIA_Gerold_PERM4_Info ()
 {
 	AI_Output			(other, self, "DIA_Gerold_PERM4_15_00"); //Wci¹¿ g³odny?
 	
-	if (MIS_OCGateOpen == true)
+	if (MIS_OCGateOpen == TRUE)
 	{
 	AI_Output			(self, other, "DIA_Gerold_PERM4_12_01"); //Jeœli orkowie znowu zaatakuj¹, nawet pe³en brzuch mi nie pomo¿e.
 	}
@@ -675,14 +693,14 @@ INSTANCE DIA_Gerold_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Gerold_KAP5_EXIT_Condition;
 	information	= DIA_Gerold_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Gerold_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_KAP5_EXIT_Info()
@@ -711,14 +729,14 @@ INSTANCE DIA_Gerold_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Gerold_KAP6_EXIT_Condition;
 	information	= DIA_Gerold_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Gerold_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gerold_KAP6_EXIT_Info()

@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17080_Konrad (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name 								=	"Król Konrad";
 	guild 								=	GIL_NONE;
 	id 									=	17080;
@@ -9,33 +9,33 @@ instance WzA_17080_Konrad (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 80);
 	B_SetFightSkills (self, FightTalent_Master);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Sturmbringer);
 	CreateInvItem (self, ItHa_Rhobar);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Normal63, Teeth_Normal, ITAR_ACRONA_KING);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 0.5);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17080;
 };
 

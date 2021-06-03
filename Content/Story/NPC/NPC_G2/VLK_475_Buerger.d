@@ -1,41 +1,40 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_475_Buerger (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Buerger;
 	guild 								=	GIL_VLK;
 	id 									=	475;
 	voice 								=	1;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;	
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal53, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_475;
 };
 
-FUNC VOID Rtn_Start_475()
+func void Rtn_Start_475()
 {
 	TA_Stand_ArmsCrossed	(10,55,18,50, "NW_CITY_WATCH_FIGHT_02");
     TA_Smalltalk			(18,50,03,05, "NW_CITY_HABOUR_04");

@@ -8,15 +8,15 @@ INSTANCE DIA_Torlof_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Torlof_EXIT_Condition;
 	information	= DIA_Torlof_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Torlof_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -34,16 +34,16 @@ instance DIA_Torlof_Hallo (C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Torlof_HALLO_Condition;
 	information	= DIA_Torlof_HALLO_Info;
-	permanent 	= false;
-	important	= true;
+	permanent 	= FALSE;
+	important	= TRUE;
 };
 
 func int DIA_Torlof_HALLO_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -61,7 +61,7 @@ instance DIA_Torlof_WannaJoin (C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Torlof_WannaJoin_Condition;
 	information	= DIA_Torlof_WannaJoin_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Chcê siê przy³¹czyæ do najemników. Masz coœ przeciwko temu?";
 };
 
@@ -69,7 +69,7 @@ func int DIA_Torlof_WannaJoin_Condition ()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -90,7 +90,7 @@ instance DIA_Torlof_Probe (C_INFO)
 	nr		 	= 3;
 	condition	= DIA_Torlof_Probe_Condition;
 	information	= DIA_Torlof_Probe_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Poddaj mnie próbie!";
 };
 
@@ -98,9 +98,9 @@ func int DIA_Torlof_Probe_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Torlof_WannaJoin))
 	&& (hero.guild == GIL_NONE)
-	&& (Torlof_Go == false)
+	&& (Torlof_Go == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -115,7 +115,7 @@ func void DIA_Torlof_Probe_Info ()
 		AI_Output (self, other, "DIA_Torlof_Probe_01_03"); //Aj... No dobra, niech ju¿ bêdzie. Zanim pozwolimy ci do nas do³¹czyæ, musisz zrobiæ dwie rzeczy.
 		AI_Output (self, other, "DIA_Torlof_Probe_01_04"); //Po pierwsze: musisz udowodniæ, ¿e nadajesz siê do roboty najemnika. W tym celu poddam ciê próbie.
 		AI_Output (self, other, "DIA_Torlof_Probe_01_05"); //Po drugie: musisz zas³u¿yæ na szacunek pozosta³ych ch³opaków.
-		Torlof_Go = true;
+		Torlof_Go = TRUE;
 		Npc_ExchangeRoutine	(self,"Start"); 
 		
 		Log_CreateTopic (TOPIC_BecomeSLD,LOG_MISSION);
@@ -139,16 +139,16 @@ instance DIA_Torlof_Respekt (C_INFO)
 	nr		 	= 4;
 	condition	= DIA_Torlof_Respekt_Condition;
 	information	= DIA_Torlof_Respekt_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Jak mogê zdobyæ szacunek pozosta³ych najemników?";
 };
 
 func int DIA_Torlof_Respekt_Condition ()
 {
-	if (Torlof_Go == true)
+	if (Torlof_Go == TRUE)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -176,7 +176,7 @@ instance DIA_Torlof_Duellregeln (C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Torlof_Duellregeln_Condition;
 	information	= DIA_Torlof_Duellregeln_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Jakie s¹ regu³y pojedynku?";
 };
 
@@ -185,7 +185,7 @@ func int DIA_Torlof_Duellregeln_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Torlof_Respekt))
 	|| (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -209,18 +209,18 @@ instance DIA_Torlof_DeineStimme (C_INFO)
 	nr		 	= 6;
 	condition	= DIA_Torlof_DeineStimme_Condition;
 	information	= DIA_Torlof_DeineStimme_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "A co z tob¹? Mogê liczyæ na twój g³os?";
 };
 
 func int DIA_Torlof_DeineStimme_Condition ()
 {
-	if (Torlof_Go == true)
+	if (Torlof_Go == TRUE)
 	&& (other.guild == GIL_NONE)
 	&& (MIS_Torlof_HolPachtVonSekob != LOG_SUCCESS)
 	&& (MIS_Torlof_BengarMilizKlatschen != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -242,17 +242,17 @@ instance DIA_Torlof_RUF (C_INFO)
 	nr		 	= 7;
 	condition	= DIA_Torlof_RUF_Condition;
 	information	= DIA_Torlof_RUF_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Co s¹dz¹ o mnie najemnicy?";
 };
 
 func int DIA_Torlof_RUF_Condition ()
 {
-	if (Torlof_Go == true)
-	&& (Torlof_GenugStimmen == false)
+	if (Torlof_Go == TRUE)
+	&& (Torlof_GenugStimmen == FALSE)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -266,25 +266,25 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Wolf ------
 	if (Npc_IsDead(Sld_Wolf))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Sld_Wolf.aivar[AIV_TalkedToPlayer] == true)
+	else if (Sld_Wolf.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_02"); //Wilk mówi, ¿e nie ma nic przeciwko tobie.
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	};
 	
 	// ------ Jarvis ------
 	if (Npc_IsDead(Jarvis))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
 	else if (MIS_Jarvis_SldKO == LOG_SUCCESS)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_03"); //Jarvis s¹dzi, ¿e siê nadasz.
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Jarvis.aivar[AIV_TalkedToPlayer] == true)
+	else if (Jarvis.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_04"); //Jarvis ci¹gle nie jest pewien, czy siê nadasz.
 		AI_Output (self, other, "DIA_Torlof_RUF_01_05"); //Nie chce tutaj wiêcej idiotów pokroju Sylvia. Prawdê mówi¹c - ja te¿ nie.
@@ -293,14 +293,14 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Cord ------
 	if (Npc_IsDead(Cord))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Cord_Approved == true)
+	else if (Cord_Approved == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_06"); //Cord uwa¿a, ¿e mo¿esz do nas do³¹czyæ.
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Cord.aivar[AIV_TalkedToPlayer] == true)
+	else if (Cord.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_07"); //Cord uwa¿a, ¿e musisz najpierw podszkoliæ siê trochê w walce orê¿em.
 	};
@@ -308,15 +308,15 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Cipher ------
 	if (Npc_IsDead(Cipher))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
 	else if (MIS_Cipher_Paket == LOG_SUCCESS)
 	|| 		(MIS_Cipher_BringWeed == LOG_SUCCESS)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_08"); //Cipher mówi, ¿e musimy ciê koniecznie przyj¹æ. Chyba ma o tobie bardzo wysokie mniemanie.
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Cipher.aivar[AIV_TalkedToPlayer] == true)
+	else if (Cipher.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_09"); //Cipher mówi, ¿e jesteœ mu winien przys³ugê, i ¿e bêdziesz wiedzia³, o co chodzi.
 	};
@@ -324,38 +324,38 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Rod ------
 	if (Npc_IsDead(Rod))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
 	else if (Npc_HasItems (Rod, ItMw_2h_Rod) == 0)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_10"); //Rod chce po prostu odzyskaæ swój miecz.
 	}
-	else if (Rod.aivar[AIV_DefeatedByPlayer] == DBP_Defeated)
-	|| 		(Rod_WetteGewonnen == true)
+	else if (Rod.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| 		(Rod_WetteGewonnen == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_11"); //Chyba przekona³eœ Roda, ¿e jesteœ wystarczaj¹co silny.
-		if (Rod.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+		if (Rod.aivar[AIV_DefeatedByPlayer] == FALSE)
 		{
-			Points_Sld += 1;
+			Points_Sld = Points_Sld + 1; //### sonst Point bei Duell ###
 		};
 	}
-	else if (Rod.aivar[AIV_TalkedToPlayer] == true)
+	else if (Rod.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_12"); //Rod uwa¿a ciê za miêczaka.
 	};
-	
+		
 	// ------ Sentenza -------
 	if (Npc_IsDead(Sentenza))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
 	else if (Npc_HasItems (Sentenza, itmi_gold) >= 50)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_13"); //Sentenza bêdzie na ciebie g³osowa³. Twierdzi, ¿e równy z ciebie goœæ.
-		Points_Sld += 1;
-		Torlof_SentenzaCounted = true;
+		Points_Sld = Points_Sld + 1;
+		Torlof_SentenzaCounted = TRUE;
 	}
-	else if (Sentenza.aivar[AIV_TalkedToPlayer] == true)
+	else if (Sentenza.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_14"); //Sentenza nie bêdzie na ciebie g³osowa³. Podobno jesteœ mu winien 50 sztuk z³ota.
 	};
@@ -363,9 +363,9 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Raoul ------
 	if (Npc_IsDead(Raoul))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Raoul.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	else if (Raoul.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_15"); //Raoul jest przeciw tobie. Facet chyba ciê po prostu nie lubi.
 	};
@@ -373,9 +373,9 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Sylvio und Bullco ------
 	if (Npc_IsDead(Bullco))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Bullco.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	else if (Bullco.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_16"); //O Sylviu i Bullku nie muszê chyba nawet mówiæ. Ci dwaj kretyni nie popr¹ nikogo.
 	};
@@ -383,17 +383,18 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Buster ------
 	if (Npc_IsDead(Buster))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Buster_Duell == true)
+	else if (Buster_Duell == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_17"); //Buster mówi, ¿e jesteœ w porz¹dku.
-		if (Buster.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+		if (Buster.aivar[AIV_DefeatedByPlayer] == FALSE)
 		{
 			AI_Output (self, other, "DIA_Torlof_RUF_01_18"); //Chocia¿ z nim przegra³eœ.
 		};
+		//### Point bei Duell ###
 	}
-	else if (Buster.aivar[AIV_TalkedToPlayer] == true)
+	else if (Buster.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_19"); //Buster powiedzia³ mi, ¿e stchórzy³eœ, gdy wyzwa³ ciê na pojedynek.
 		AI_Output (self, other, "DIA_Torlof_RUF_01_20"); //To by³ kiepski pomys³. Mo¿e powinieneœ wróciæ i wyzwaæ go jeszcze raz?
@@ -402,9 +403,9 @@ func void DIA_Torlof_RUF_Info ()
 	// ------ Dar ------
 	if (Npc_IsDead(Dar))
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	}
-	else if (Dar_LostAgainstCipher == true)
+	else if (Dar_LostAgainstCipher == TRUE)
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_21"); //A Dar ma ciê za kapusia. Na szczêœcie dla ciebie jego g³osem nikt siê tutaj nie przejmuje.
 	};
@@ -429,10 +430,10 @@ func void DIA_Torlof_RUF_Info ()
 		
 		
 		//ADDON>
-		if (Cord_RangerHelp_TorlofsProbe == true)
+		if (Cord_RangerHelp_TorlofsProbe == TRUE)
 		{
 			AI_Output (self, other, "DIA_Addon_Torlof_RUF_01_00"); //Nawet jeœli Cord siê temu trochê przys³u¿y³...
-			Points_Sld += 4;
+			Points_Sld = Points_Sld + 4; 
 		}
 		//ADDON<
 		
@@ -440,14 +441,14 @@ func void DIA_Torlof_RUF_Info ()
 		else if (MIS_Torlof_HolPachtVonSekob == LOG_SUCCESS)
 		{
 			AI_Output (self, other, "DIA_Torlof_RUF_01_25"); //Chocia¿ niektórzy s¹dz¹, ¿e zmuszenie farmera do zap³acenia czynszu to zbyt ³atwe zadanie.
-			Points_Sld += 3;
+			Points_Sld = Points_Sld + 3;
 		}
 		else //miliz klatschen
 		{
-			Points_Sld += 5;
+			Points_Sld = Points_Sld + 5;
 		};
 		AI_Output (self, other, "DIA_Torlof_RUF_01_26"); //Na mój g³os mo¿esz w ka¿dym razie liczyæ.
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 	};
 	
 	// --------------------
@@ -455,7 +456,7 @@ func void DIA_Torlof_RUF_Info ()
 	// --------------------
 	if (Sld_Duelle_gewonnen >= 3)//geändert M.F.
 	{
-		Points_Sld += 1;
+		Points_Sld = Points_Sld + 1;
 		
 		if (Points_Sld >= 9)//geändert M.F.
 		{
@@ -476,7 +477,7 @@ func void DIA_Torlof_RUF_Info ()
 	{
 		AI_Output (self, other, "DIA_Torlof_RUF_01_30"); //Wiêkszoœæ najemników stoi za tob¹. Jeœli o mnie chodzi - mo¿esz zaczynaæ od zaraz.
 		AI_Output (self, other, "DIA_Torlof_RUF_01_31"); //IdŸ do Lee. On ci wyjaœni ca³¹ resztê.
-		Torlof_GenugStimmen = true;
+		Torlof_GenugStimmen = TRUE;
 		B_LogEntry (TOPIC_BecomeSLD,"Zdoby³em szacunek najemników. Czas na rozmowê z Lee."); 
 	}
 	else if (Points_Sld >= 7) 
@@ -500,16 +501,16 @@ instance DIA_Torlof_Aufgaben (C_INFO)
 	nr		 	= 8;
 	condition	= DIA_Torlof_Aufgaben_Condition;
 	information	= DIA_Torlof_Aufgaben_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Jakie bêd¹ moje obowi¹zki?";
 };
 
 func int DIA_Torlof_Aufgaben_Condition ()
 {
-	if (Torlof_Go == true)
+	if (Torlof_Go == TRUE)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -586,17 +587,17 @@ var int Torlof_TheOtherMission_Day;
 // ------------------------------------------------------------
 func void B_Torlof_TheOtherMissionDay()
 {
-	if (Torlof_TheOtherMission_Day < (Wld_GetDay()-1)) 
+	if (Torlof_TheOtherMission_Day < (Wld_GetDay() - 1)) 
 	{
 		AI_Output (self, other, "B_Torlof_TheOtherMissionDay_01_00"); //Cholernie d³ugo ci zesz³o. Onar nie bêdzie zachwycony.
-		Torlof_TheOtherMission_TooLate = true;
+		Torlof_TheOtherMission_TooLate = TRUE;
 		
-		if (EnterOW_Kapitel2 == true)
+		if (EnterOW_Kapitel >= 8)
 		{
 			AI_Output (self, other, "DIA_Torlof_Add_01_00"); //A los paladynów w Górniczej Dolinie ma g³êboko... w powa¿aniu.
 		};
 	}
-	else
+		else
 	{
 		AI_Output (self, other, "B_Torlof_TheOtherMissionDay_01_01"); //Dobra robota! Gdyby pojawi³o siê coœ nowego, dam ci znaæ!
 	};
@@ -608,7 +609,7 @@ instance DIA_Torlof_SekobSuccess (C_INFO)
 	nr		 	= 9;
 	condition	= DIA_Torlof_SekobSuccess_Condition;
 	information	= DIA_Torlof_SekobSuccess_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Odebra³em zaleg³y czynsz od Sekoba.";
 };
 
@@ -616,10 +617,10 @@ func int DIA_Torlof_SekobSuccess_Condition ()
 {
 	if (MIS_Torlof_HolPachtVonSekob == LOG_RUNNING)
 	{
-		if (Sekob.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
-		|| (Npc_IsDead(Sekob))
+		if (Sekob.aivar[AIV_DefeatedByPlayer] == TRUE)
+		|| (Npc_IsDead (Sekob))
 		{
-			return true;
+			return TRUE;
 		};
 	};
 };
@@ -629,8 +630,8 @@ func void DIA_Torlof_SekobSuccess_Info ()
 	AI_Output (other, self, "DIA_Torlof_SekobSuccess_15_00"); //Odebra³em zaleg³y czynsz od Sekoba.
 	if (B_GiveInvItems (other, self, ItMi_Gold, 50))
 	{
-		AI_Output (self, other, "DIA_Torlof_SekobSuccess_01_01"); //Tak? Stwarza³ jakieœ problemy?
-		if (Npc_IsDead(Sekob))
+		AI_Output (self, other, "DIA_Torlof_SekobSuccess_01_01"); //Tak? Stwarza jakieœ problemy?
+		if (Npc_IsDead (Sekob))
 		{
 			AI_Output (other, self, "DIA_Torlof_SekobTot_15_00"); //Có¿, mia³... œmiertelny wypadek.
 		}
@@ -649,9 +650,9 @@ func void DIA_Torlof_SekobSuccess_Info ()
 		};
 
 		MIS_Torlof_HolPachtVonSekob = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_1);				
+		B_GivePlayerXP (XP_Torlof_SekobsKohlebekommen);				
 		B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
-		Torlof_ProbeBestanden = true;
+		Torlof_ProbeBestanden = TRUE;
 	}
 	else
 	{
@@ -668,7 +669,7 @@ instance DIA_Torlof_BengarSuccess (C_INFO)
 	nr		 	= 10;
 	condition	= DIA_Torlof_BengarSuccess_Condition;
 	information	= DIA_Torlof_BengarSuccess_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Rozwi¹za³em problemy Bengara ze stra¿nikami.";
 };
 
@@ -678,7 +679,7 @@ func int DIA_Torlof_BengarSuccess_Condition ()
 	&& (Npc_IsDead (Rumbold))
 	&& (Npc_IsDead (Rick))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -699,9 +700,9 @@ func void DIA_Torlof_BengarSuccess_Info ()
 	};
 	
 	MIS_Torlof_BengarMilizKlatschen = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Bengar_MILIZKLATSCHEN);
 	B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
-	Torlof_ProbeBestanden = true;
+	Torlof_ProbeBestanden = TRUE;
 };
 
 
@@ -714,16 +715,16 @@ instance DIA_Torlof_Welcome (C_INFO)
 	nr		 	= 11;
 	condition	= DIA_Torlof_Welcome_Condition;
 	information	= DIA_Torlof_Welcome_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Torlof_Welcome_Condition ()
 {
 	if (other.guild == GIL_SLD)
-	&& (Kapitel <= 7)
+	&& (Kapitel <= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -746,7 +747,7 @@ func void DIA_Torlof_Welcome_Info ()
 		AI_Output (other, self, "DIA_Torlof_Add_15_02"); //By³em w Górniczej Dolinie. Tam s¹ smoki! Paladynom nieŸle siê od nich oberwa³o.
 		AI_Output (self, other, "DIA_Torlof_Add_01_03"); //Czy¿by? Zatem w tych opowieœciach jest jednak trochê prawdy.
 		AI_Output (self, other, "DIA_Torlof_Add_01_04"); //Lee na pewno siê tym zainteresuje.
-		Torlof_KnowsDragons = true;
+		Torlof_KnowsDragons = TRUE;
 	};
 
 instance DIA_Torlof_TheOtherMission (C_INFO)
@@ -755,23 +756,23 @@ instance DIA_Torlof_TheOtherMission (C_INFO)
 	nr		 	= 11;
 	condition	= DIA_Torlof_TheOtherMission_Condition;
 	information	= DIA_Torlof_TheOtherMission_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Torlof_TheOtherMission_Condition ()
 {
 	if (other.guild == GIL_SLD)
-	&& (Kapitel >= 8)
+	&& (Kapitel >= 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Torlof_TheOtherMission_Info ()
 {
-	if (Torlof_KnowsDragons == false)
-	&& (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == true)
+	if (Torlof_KnowsDragons == FALSE)
+	&& (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == TRUE)
 	{
 		B_Torlof_Dragons();
 	};
@@ -801,18 +802,18 @@ instance DIA_Torlof_Dragons (C_INFO)
 	nr		 	= 12;
 	condition	= DIA_Torlof_Dragons_Condition;
 	information	= DIA_Torlof_Dragons_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Torlof_Dragons_Condition ()
 {
-	if (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == true)
-	&& (Kapitel <= 9)
+	if (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == TRUE)
+	&& (Kapitel <= 3)
 	&& (other.guild == GIL_SLD)
-	&& (Torlof_KnowsDragons == false)
+	&& (Torlof_KnowsDragons == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -820,6 +821,146 @@ func void DIA_Torlof_Dragons_Info ()
 {
 	B_Torlof_Dragons();
 };
+/*
+//*******************************************
+//	WhatCanYouTeach
+//*******************************************
+
+INSTANCE DIA_Torlof_WhatCanYouTeach(C_INFO)
+{
+	npc			= SLD_801_Torlof;
+	nr			= 140;
+	condition	= DIA_Torlof_WhatCanYouTeach_Condition;
+	information	= DIA_Torlof_WhatCanYouTeach_Info;
+	permanent	= FALSE;
+	description = "Pomo¿esz mi popracowaæ nad moimi umiejêtnoœciami?";
+};                       
+
+FUNC INT DIA_Torlof_WhatCanYouTeach_Condition()
+{
+	return TRUE;
+};
+ 
+FUNC VOID DIA_Torlof_WhatCanYouTeach_Info()
+{	
+	AI_Output (other,self ,"DIA_Torlof_WhatCanYouTeach_15_00"); //Pomo¿esz mi popracowaæ nad moimi umiejêtnoœciami?
+	AI_Output (self ,other,"DIA_Torlof_WhatCanYouTeach_01_01"); //Móg³bym ci pokazaæ, jak wykorzystywaæ swoj¹ si³ê w bezpoœredniej walce.
+	AI_Output (self ,other,"DIA_Torlof_WhatCanYouTeach_01_02"); //Wielu wojowników dostaje baty, bo nie potrafi odpowiednio spo¿ytkowaæ swojej si³y.
+	AI_Output (self ,other,"DIA_Torlof_WhatCanYouTeach_01_03"); //Podobnie jest ze zrêcznoœci¹ i walk¹ na dystans.
+
+	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
+	B_LogEntry (Topic_SoldierTeacher,"Torlof mo¿e mi pokazaæ, jak staæ siê zrêczniejszym i silniejszym.");
+};
+
+// *******************************************
+//					Teach
+// *******************************************
+
+var int Torlof_Merke_STR;
+var int Torlof_Merke_DEX;
+// -------------------------------------------
+
+INSTANCE DIA_Torlof_Teach(C_INFO)
+{
+	npc			= SLD_801_Torlof;
+	nr			= 150;
+	condition	= DIA_Torlof_Teach_Condition;
+	information	= DIA_Torlof_Teach_Info;
+	permanent	= TRUE;
+	description = "Pomó¿ mi popracowaæ nad moimi umiejêtnoœciami.";
+};                       
+
+FUNC INT DIA_Torlof_Teach_Condition()
+{
+	if (Npc_KnowsInfo (other, DIA_Torlof_WhatCanYouTeach))
+	{
+		return TRUE;
+	};
+};
+ 
+FUNC VOID DIA_Torlof_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Torlof_Teach_15_00"); //Chcê zwiêkszyæ moje umiejêtnoœci.
+	if (other.guild == GIL_SLD) 
+	|| (other.guild == GIL_DJG)
+	|| (other.guild == GIL_NONE)
+	{
+		Torlof_Merke_STR = other.attribute[ATR_STRENGTH];
+		Torlof_Merke_DEX = other.attribute[ATR_DEXTERITY];
+		
+		Info_ClearChoices (DIA_Torlof_Teach);
+		Info_AddChoice		(DIA_Torlof_Teach, DIALOG_BACK, DIA_Torlof_Teach_Back);
+		Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Torlof_Teach_DEX_1);
+		Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Torlof_Teach_DEX_5);
+		Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Torlof_Teach_STR_1);
+		Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Torlof_Teach_STR_5);
+	}
+	else
+	{
+		AI_Output (self ,other,"DIA_Torlof_Teach_01_01"); //Powiedzia³em, ¿e MÓG£BYM ci pomóc, a nie, ¿e to ZROBIÊ.
+		AI_Output (self ,other,"DIA_Torlof_Teach_01_02"); //Dopóki nie zostaniesz jednym z nas, szukaj sobie innego nauczyciela.
+	};
+};
+
+FUNC VOID DIA_Torlof_Teach_Back ()
+{
+	if (Torlof_Merke_STR < other.attribute[ATR_STRENGTH])
+	|| (Torlof_Merke_DEX < other.attribute[ATR_DEXTERITY])
+	{
+		AI_Output (self, other, "DIA_Torlof_Teach_Back_01_00"); //Œwietnie! Teraz mo¿esz skuteczniej wykorzystywaæ swoje umiejêtnoœci.
+	};
+
+	Info_ClearChoices (DIA_Torlof_Teach);
+};
+
+FUNC VOID DIA_Torlof_Teach_STR_1 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MAX);
+	
+	Info_ClearChoices (DIA_Torlof_Teach);
+	Info_AddChoice		(DIA_Torlof_Teach, DIALOG_BACK, DIA_Torlof_Teach_Back);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Torlof_Teach_DEX_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Torlof_Teach_DEX_5);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR1		, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Torlof_Teach_STR_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Torlof_Teach_STR_5);
+};
+
+FUNC VOID DIA_Torlof_Teach_STR_5 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MAX);
+
+	Info_ClearChoices (DIA_Torlof_Teach);
+	Info_AddChoice		(DIA_Torlof_Teach, DIALOG_BACK, DIA_Torlof_Teach_Back);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Torlof_Teach_DEX_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Torlof_Teach_DEX_5);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Torlof_Teach_STR_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Torlof_Teach_STR_5);
+};
+
+FUNC VOID DIA_Torlof_Teach_DEX_1 ()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);	
+
+	Info_ClearChoices (DIA_Torlof_Teach);
+	Info_AddChoice		(DIA_Torlof_Teach, DIALOG_BACK, DIA_Torlof_Teach_Back);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Torlof_Teach_DEX_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Torlof_Teach_DEX_5);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Torlof_Teach_STR_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Torlof_Teach_STR_5);
+};
+
+FUNC VOID DIA_Torlof_Teach_DEX_5 ()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+
+	Info_ClearChoices (DIA_Torlof_Teach);
+	Info_AddChoice		(DIA_Torlof_Teach, DIALOG_BACK, DIA_Torlof_Teach_Back);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Torlof_Teach_DEX_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Torlof_Teach_DEX_5);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR1		, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Torlof_Teach_STR_1);
+	Info_AddChoice		(DIA_Torlof_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Torlof_Teach_STR_5);
+};
+*/
 
 //#####################################################################
 //##
@@ -839,14 +980,14 @@ INSTANCE DIA_Torlof_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Torlof_KAP3_EXIT_Condition;
 	information	= DIA_Torlof_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Torlof_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Torlof_KAP3_EXIT_Info()
@@ -869,9 +1010,9 @@ instance DIA_Torlof_DEMENTOREN		(C_INFO)
 
 func int DIA_Torlof_DEMENTOREN_Condition ()
 {
-	if (Kapitel >= 9)	
+	if (Kapitel >= 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -911,7 +1052,7 @@ func int DIA_Torlof_DmtSuccess_Condition ()
 	if (MIS_Torlof_Dmt == LOG_RUNNING) 
 	&& (Npc_IsDead(CastlemineDMT))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -922,7 +1063,7 @@ func void DIA_Torlof_DmtSuccess_Info ()
 	AI_Output (self, other, "DIA_Torlof_DmtSuccess_01_02"); //Coœ mi siê w nich nie podoba³o. Za³o¿ê siê, ¿e mielibyœmy przez nich niez³e k³opoty.
 	
 	MIS_Torlof_Dmt = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Torlof_DMT);
 };
 
 
@@ -947,14 +1088,14 @@ INSTANCE DIA_Torlof_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Torlof_KAP4_EXIT_Condition;
 	information	= DIA_Torlof_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Torlof_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Torlof_KAP4_EXIT_Info()
@@ -977,9 +1118,9 @@ instance DIA_Torlof_WOISTSYLVIO		(C_INFO)
 
 func int DIA_Torlof_WOISTSYLVIO_Condition ()
 {
-	if ((MIS_ReadyforChapter4 == true)	|| (Kapitel == 10))
+	if ((MIS_ReadyforChapter4 == TRUE)	|| (Kapitel == 4))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -990,6 +1131,7 @@ func void DIA_Torlof_WOISTSYLVIO_Info ()
 	AI_Output			(self, other, "DIA_Torlof_WOISTSYLVIO_01_02"); //Plotka g³osi, ¿e pokaza³y siê tam smoki. Jak Sylvio siê o tym dowiedzia³, nie mo¿na go by³o powstrzymaæ.
 	AI_Output			(self, other, "DIA_Torlof_WOISTSYLVIO_01_03"); //Kto wie? Za smoczy ³eb mo¿na pewnie dostaæ kupê pieniêdzy.
 	AI_Output			(self, other, "DIA_Torlof_WOISTSYLVIO_01_04"); //Ale to nie dla mnie. Jestem ¿eglarzem. Moje miejsce jest na morzu, a nie w cuchn¹cej smoczej jamie.
+
 };
 
 //#####################################################################
@@ -1010,14 +1152,14 @@ INSTANCE DIA_Torlof_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Torlof_KAP5_EXIT_Condition;
 	information	= DIA_Torlof_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Torlof_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Torlof_KAP5_EXIT_Info()
@@ -1041,10 +1183,10 @@ instance DIA_Torlof_BEMYCAPTAIN		(C_INFO)
 
 func int DIA_Torlof_BEMYCAPTAIN_Condition ()
 {
-	if (Kapitel == 11)
-		&& (MIS_SCKnowsWayToIrdorath == true)
+	if (Kapitel == 5)
+		&& (MIS_SCKnowsWayToIrdorath == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1078,10 +1220,10 @@ instance DIA_Torlof_BEMYCAPTAIN2		(C_INFO)
 
 func int DIA_Torlof_BEMYCAPTAIN2_Condition ()
 {
-	if (MIS_OCGateOpen == true)
+	if (MIS_OCGateOpen == TRUE)
 		&& (Npc_KnowsInfo(other, DIA_Torlof_BEMYCAPTAIN))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1091,7 +1233,8 @@ func void DIA_Torlof_BEMYCAPTAIN2_Info ()
  	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_01"); //Za³oga zamku ponios³a ciê¿kie straty.
 	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_02"); //Paladyni z miasta powinni wkrótce wyruszyæ do Doliny, by wyci¹gn¹æ swoich towarzyszy z oblê¿onego zamku.
 	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN2_01_03"); //To œwietna wiadomoœæ. Teraz nic mnie ju¿ nie powstrzyma przed wyrwaniem siê z tego przeklêtego miejsca.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info BeMyCaptain3
@@ -1102,7 +1245,7 @@ instance DIA_Torlof_BEMYCAPTAIN3		(C_INFO)
 	nr		 = 	53;
 	condition	 = 	DIA_Torlof_BEMYCAPTAIN3_Condition;
 	information	 = 	DIA_Torlof_BEMYCAPTAIN3_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Czy teraz pomo¿esz mi dostaæ siê na wyspê?";
 };
@@ -1110,10 +1253,10 @@ var int Torlof_PaidToBeCaptain;
 func int DIA_Torlof_BEMYCAPTAIN3_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Torlof_BEMYCAPTAIN2))
-		&& (Torlof_PaidToBeCaptain == false)
-		&& (SCGotCaptain == false)
+		&& (Torlof_PaidToBeCaptain == FALSE)
+		&& (SCGotCaptain == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1122,6 +1265,7 @@ func void DIA_Torlof_BEMYCAPTAIN3_Info ()
 	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN3_15_00"); //Czy teraz pomo¿esz mi dostaæ siê na wyspê?
 	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN3_01_01"); //A, fakt. Chcia³eœ, ¿ebym z tob¹ pop³yn¹³. S³uchaj, zrobimy tak:
 	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN3_01_02"); //Zap³aæ mi 2500 sztuk z³ota, a ja poprowadzê twój okrêt.
+	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN3_01_03"); //Za tê sumê nauczê ciê tak¿e wszystkiego, co wiem o sile i zrêcznoœci.
 
 	Info_ClearChoices	(DIA_Torlof_BEMYCAPTAIN3);
 	Info_AddChoice	(DIA_Torlof_BEMYCAPTAIN3, "To bardzo du¿a suma.", DIA_Torlof_BEMYCAPTAIN3_zuViel );
@@ -1143,7 +1287,7 @@ func void DIA_Torlof_BEMYCAPTAIN3_ok ()
 	if (B_GiveInvItems (other, self, ItMi_Gold,	2500))
 	{
 		AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN3_ok_01_01"); //Œwietnie. Teraz musisz mi tylko powiedzieæ, co mam zrobiæ.
-		Torlof_PaidToBeCaptain = true;
+		Torlof_PaidToBeCaptain = TRUE;
 		B_LogEntry (TOPIC_Captain,"Torlof dosta³ ode mnie 2500 sztuk z³ota i jest gotów wyruszyæ w ka¿dej chwili.");     
 	}
 	else
@@ -1163,17 +1307,17 @@ instance DIA_Torlof_BEMYCAPTAIN4		(C_INFO)
 	nr		 = 	54;
 	condition	 = 	DIA_Torlof_BEMYCAPTAIN4_Condition;
 	information	 = 	DIA_Torlof_BEMYCAPTAIN4_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Zostañ kapitanem mojego statku.";
 };
 
 func int DIA_Torlof_BEMYCAPTAIN4_Condition ()
 {
-	if  (SCGotCaptain == false)
-		&& (Torlof_PaidToBeCaptain == true)
+	if  (SCGotCaptain == FALSE)
+		&& (Torlof_PaidToBeCaptain == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1186,12 +1330,13 @@ func void DIA_Torlof_BEMYCAPTAIN4_Info ()
 		AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN4_01_04"); //Ciekaw jestem. jak tego dokonasz.
 	
 		AI_StopProcessInfos (self);
-		SCGotCaptain = true;
-		TorlofIsCaptain = true;
+		SCGotCaptain = TRUE;
+		TorlofIsCaptain = TRUE;
 		self.flags = NPC_FLAG_IMMORTAL;
 		Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 		
-		B_GivePlayerXP(XP_BONUS_10*2);
+		B_GivePlayerXP (XP_Captain_Success);              
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1203,17 +1348,17 @@ instance DIA_Torlof_LOSFAHREN		(C_INFO)
 	nr		 = 	59;
 	condition	 = 	DIA_Torlof_LOSFAHREN_Condition;
 	information	 = 	DIA_Torlof_LOSFAHREN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Mo¿emy ruszaæ w drogê.";
 };
 
 func int DIA_Torlof_LOSFAHREN_Condition ()
 {
-	if (TorlofIsCaptain == true)
-		&& (MIS_ReadyforChapter6 ==	false)
+	if (TorlofIsCaptain == TRUE)
+		&& (MIS_ReadyforChapter6 ==	FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1221,7 +1366,7 @@ func void DIA_Torlof_LOSFAHREN_Info ()
 {
 	AI_Output			(other, self, "DIA_Torlof_LOSFAHREN_15_00"); //Mo¿emy ruszaæ w drogê.
 
-	if ((B_CaptainConditions (self)) == true)
+	if ((B_CaptainConditions (self)) == TRUE)
 	{
 	AI_Output			(self, other, "DIA_Torlof_LOSFAHREN_01_01"); //Dobra. Daj mi mapê i odp³ywamy.
 	AI_Output			(self, other, "DIA_Torlof_LOSFAHREN_01_02"); //Wszyscy na pok³ad!
@@ -1247,18 +1392,18 @@ instance DIA_Torlof_PERM5_NOTCAPTAIN		(C_INFO)
 	nr		 = 	59;
 	condition	 = 	DIA_Torlof_PERM5_NOTCAPTAIN_Condition;
 	information	 = 	DIA_Torlof_PERM5_NOTCAPTAIN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Zdecydowa³em siê na innego kapitana.";
 };
 
 func int DIA_Torlof_PERM5_NOTCAPTAIN_Condition ()
 {
-	if	(SCGotCaptain == true)
-		&&	(TorlofIsCaptain == false)
-		&& 	(Torlof_PaidToBeCaptain == true)
+	if	(SCGotCaptain == TRUE)
+		&&	(TorlofIsCaptain == FALSE)
+		&& 	(Torlof_PaidToBeCaptain == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1289,14 +1434,14 @@ INSTANCE DIA_Torlof_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Torlof_KAP6_EXIT_Condition;
 	information	= DIA_Torlof_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Torlof_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Torlof_KAP6_EXIT_Info()

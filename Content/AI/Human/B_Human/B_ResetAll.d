@@ -7,7 +7,7 @@ func void B_ResetAll (var C_NPC slf)
 	B_StopLookAt(slf);
 
 	/// ------ NSC steckt ggf. Waffe weg ------
-	if (movieMode == false)
+	if (!movieMode)
 	{
 		AI_RemoveWeapon(slf);
 	};

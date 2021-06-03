@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_485_Buergerin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	Name_Buergerin;
 	guild 								=	GIL_VLK;
 	id 									=	485;
 	voice 								=	16;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Weak+5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant70, Teeth_Pretty, ITAR_WD_M_00);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_485;
 };
 
-FUNC VOID Rtn_Start_485()
+func void Rtn_Start_485()
 {
 	TA_Sit_Bench		(05,10,10,10, "NW_CITY_HABOUR_BENCH_02");
 	TA_Stand_Sweeping	(10,10,12,10, "NW_CITY_HABOUR_POOR_AREA_HUT_05_IN");

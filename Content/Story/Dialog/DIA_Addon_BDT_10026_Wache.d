@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_BDT_10026_Wache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_10026_Wache_EXIT_Condition;
 	information = DIA_Addon_10026_Wache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_10026_Wache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10026_Wache_EXIT_Info()
 {	
@@ -27,18 +27,18 @@ INSTANCE DIA_Addon_BDT_10026_Wache_Hi   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_10026_Wache_Hi_Condition;
 	information = DIA_Addon_10026_Wache_Hi_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Addon_10026_Wache_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10026_Wache_Hi_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_BDT_10026_Wache_Hi_15_00");//Co s³ychaæ?
 	
-	if (Sklaven_Flucht == false)
+	if (Sklaven_Flucht == FALSE)
 	{	
 		CreateInvItems (self, ItFo_Bacon,1);
 		AI_Output (self, other, "DIA_Addon_BDT_10026_Wache_Hi_13_01");//Szkoda, ¿e zosta³o tak ma³o niewolników. Wkrótce bêdziemy musieli zorganizowaæ nowych.
@@ -63,12 +63,12 @@ INSTANCE DIA_Addon_BDT_10026_Wache_Gruft   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10026_Wache_Gruft_Condition;
 	information = DIA_Addon_10026_Wache_Gruft_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co wiesz o krypcie?";
 };
 FUNC INT DIA_Addon_10026_Wache_Gruft_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10026_Wache_Gruft_Info()
 {	
@@ -76,3 +76,6 @@ FUNC VOID DIA_Addon_10026_Wache_Gruft_Info()
 	AI_Output (self, other, "DIA_Addon_BDT_10026_Wache_Gruft_13_01");//No... znajduje siê na koñcu tej œcie¿ki.
 	AI_Output (self, other, "DIA_Addon_BDT_10026_Wache_Gruft_13_02");//IdŸ po trupach, a znajdziesz j¹.
 };
+
+
+

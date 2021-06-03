@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_FireBolt
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_FireBolt
+///******************************************************************************************
 
 const int SPL_Cost_FireBolt				=	5;
 const int SPL_Damage_FireBolt			=	25;
 
-//******************************************************************************************
-INSTANCE Spell_FireBolt (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_FireBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_FireBolt;
@@ -15,7 +15,7 @@ INSTANCE Spell_FireBolt (C_Spell_Proto)
 
 func int Spell_Logic_FireBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_FireBolt (var int manaInvested)
 
 func void Spell_Cast_FireBolt()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_FireBolt/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_FireBolt/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_FireBolt;
 	};

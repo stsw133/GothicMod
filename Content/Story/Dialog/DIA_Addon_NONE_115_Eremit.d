@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Eremit_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Eremit_EXIT_Condition;
 	information = DIA_Addon_Eremit_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 func INT DIA_Addon_Eremit_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Eremit_EXIT_Info()
 {
@@ -29,14 +29,14 @@ instance DIA_Addon_Eremit_Hello (C_INFO)
 	condition	= DIA_Addon_Eremit_Hello_Condition;
 	information	= DIA_Addon_Eremit_Hello_Info;
 
-	important	= true;
+	important	= TRUE;
 };
 func int DIA_Addon_Eremit_Hello_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Eremit_Hello_Info ()
@@ -64,7 +64,7 @@ instance DIA_Addon_Eremit_SeekTafeln (C_INFO)
 };
 func int DIA_Addon_Eremit_SeekTafeln_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_Eremit_SeekTafeln_Info ()
 {
@@ -72,6 +72,120 @@ func void DIA_Addon_Eremit_SeekTafeln_Info ()
 	AI_Output (self, other, "DIA_Addon_Eremit_Add_04_06"); //No có¿, znalaz³em... Ale nie oddam ci!
 	AI_Output (self, other, "DIA_Addon_Eremit_Add_04_07"); //To jedyne, co mam tu do czytania.
 	AI_Output (self, other, "DIA_Addon_Eremit_Add_04_08"); //Nie rozumiem jeszcze wszystkiego, ale potrafiê rozszyfrowaæ wiêkszoœæ z nich.
+};
+
+// ********************************************************
+// 				Wegen Steintafeln - TEACH
+// ********************************************************
+var int Eremit_Teach_Once;
+// --------------------------------------------------------
+instance DIA_Addon_Eremit_Teach (C_INFO)
+{
+	npc		 	= NONE_ADDON_115_Eremit;
+	nr		 	= 3;
+	condition	= DIA_Addon_Eremit_Teach_Condition;
+	information	= DIA_Addon_Eremit_Teach_Info;
+	permanent 	= TRUE;
+	description = "Jeœli chodzi o te kamienne tablice...";
+};
+func int DIA_Addon_Eremit_Teach_Condition ()
+{
+	if (Npc_KnowsInfo (other, DIA_Addon_Eremit_SeekTafeln))
+	&& (Eremit_Teach_Once == FALSE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Addon_Eremit_Teach_Info ()
+{
+	AI_Output (other, self, "DIA_Addon_Eremit_Add_15_03"); //Jeœli chodzi o te kamienne tablice...
+	AI_Output (self, other, "DIA_Addon_Eremit_Add_04_25"); //Mam ci pokazaæ, jak je odczytywaæ?
+	if (MIS_Eremit_Klamotten != LOG_SUCCESS)
+	{
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_26"); //Ale nie oddam ci moich! Musisz za³atwiæ sobie w³asne.
+	};
+
+	Info_ClearChoices (DIA_Addon_Eremit_Teach);
+	Info_AddChoice (DIA_Addon_Eremit_Teach, DIALOG_BACK, DIA_Addon_Eremit_Teach_No);
+	
+	
+	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_1 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_1)),DIA_Addon_Eremit_Teach_Yes);
+	}	
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_2 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_2)),DIA_Addon_Eremit_Teach_Yes);
+	}	
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_3 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_3)),DIA_Addon_Eremit_Teach_Yes);
+	};
+};
+
+// ---------------------------------------------------------------
+	func void B_Addon_Eremit_TeachLanguage()
+	{	
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_27"); //To naprawdê bardzo proste. 'G' oznacza 'O', 'T' oznacza 'H', a 'I' to 'C'.
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_28"); //Kiedy to opanujesz, reszta przyjdzie z ³atwoœci¹...
+		
+		/*
+		
+		if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
+		{
+			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] = TRUE;
+		}
+		else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+		{
+			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] = TRUE;
+		}
+		else
+		{
+			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] = TRUE;
+		};
+			
+		*/	
+				
+		Eremit_Teach_Once = TRUE;
+	};
+// ---------------------------------------------------------------
+func void DIA_Addon_Eremit_Teach_No()
+{
+	Info_ClearChoices (DIA_Addon_Eremit_Teach);
+};
+
+func void DIA_Addon_Eremit_Teach_Yes()
+{
+	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == TRUE)
+	{
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_29"); //Nie s¹dzê, ¿ebym móg³ nauczyæ ciê czegoœ wiêcej...
+		Eremit_Teach_Once = TRUE;
+	}
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
+	{
+		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_3))
+		{
+			B_Addon_Eremit_TeachLanguage();
+		};
+	}
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	{
+		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_2))
+		{
+			B_Addon_Eremit_TeachLanguage();
+		};
+	}
+	else //Keine Language
+	{
+		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_1))
+		{
+			B_Addon_Eremit_TeachLanguage();
+		};
+	};
 };
 
 // ********************************************************
@@ -83,14 +197,14 @@ instance DIA_Addon_Eremit_Klamotten (C_INFO)
 	nr		 	= 4;
 	condition	= DIA_Addon_Eremit_Klamotten_Condition;
 	information	= DIA_Addon_Eremit_Klamotten_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Mam dla ciebie jakieœ ubranie...";
 };
 func int DIA_Addon_Eremit_Klamotten_Condition ()
 {
 	if (MIS_Eremit_Klamotten == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Eremit_Klamotten_Info ()
@@ -100,72 +214,202 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	
 	Info_ClearChoices (DIA_Addon_Eremit_Klamotten);
 	Info_AddChoice (DIA_Addon_Eremit_Klamotten, DIALOG_BACK, DIA_Addon_Eremit_Klamotten_BACK);
-
+	if (Npc_HasItems (other, ITAR_PIR_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekk¹ zbrojê piratów", DIA_Addon_Eremit_Klamotten_PIR_L);
+	};
+	if (Npc_HasItems (other, ITAR_PIR_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni¹ zbrojê piratów", DIA_Addon_Eremit_Klamotten_PIR_M);
+	};
+	if (Npc_HasItems (other, ITAR_PIR_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê kapitana piratów", DIA_Addon_Eremit_Klamotten_PIR_H);
+	};
+	//if (Npc_HasItems (other, ITAR_GRD_H) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿k¹ zbroj¹ stra¿nika", DIA_Addon_Eremit_Klamotten_Thorus);
+	//};
+	//if (Npc_HasItems (other, ITAR_EBR_M) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj pancerz magnata", DIA_Addon_Eremit_Klamotten_OreBaron);
+	//};
+	//if (Npc_HasItems (other, ITAR_GRD_M) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni¹ zbrojê stra¿nika", DIA_Addon_Eremit_Klamotten_Bloodwyn);
+	//};
+	//if (Npc_HasItems (other, ITAR_RVN_H) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿ki pancerz Kruka", DIA_Addon_Eremit_Klamotten_Raven);
+	//};
+	if (Npc_HasItems (other, ITAR_WaterRanger) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê Wodnego Krêgu", DIA_Addon_Eremit_Klamotten_Ranger);
+	};
+	if (Npc_HasItems (other, ITAR_Mag_A) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj szatê Maga Wody", DIA_Addon_Eremit_Klamotten_KDW_H);
+	};
+	if (Npc_HasItems (other, ITAR_Governor) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj tunikê gubernatora", DIA_Addon_Eremit_Klamotten_Governor);
+	};
+	if (Npc_HasItems (other, ITAR_JUDGE) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sêdziowsk¹ togê", DIA_Addon_Eremit_Klamotten_Judge);
+	};
 	if (Npc_HasItems (other, ITAR_SMITH) > 0)
-	|| (Npc_HasItems (other, ITAR_ALCHEMIST) > 0)
-	|| (Npc_HasItems (other, ITAR_SCYTHER) > 0)
-	|| (Npc_HasItems (other, ITAR_BARKEEPER) > 0)
-	|| (Npc_HasItems (other, ITAR_HUNTER) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj fartuch rzemieœlnika", DIA_Addon_Eremit_Klamotten_Craftsman);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj fartuch kowalski", DIA_Addon_Eremit_Klamotten_Smith);
 	};
-	if (Npc_HasItems (other, ITAR_VLK_L_00) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_01) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_02) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_03) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_04) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_05) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_06) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_07) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_08) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_09) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_10) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_11) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_12) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_13) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_14) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_L_15) > 0)
+	if (Npc_HasItems (other, ITAR_BARKEEPER) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój mieszczanina", DIA_Addon_Eremit_Klamotten_VLK_L);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj fartuch obszarnika", DIA_Addon_Eremit_Klamotten_Barkeeper);
 	};
-	if (Npc_HasItems (other, ITAR_VLK_H_00) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_01) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_02) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_03) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_04) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_05) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_06) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_07) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_08) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_09) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_10) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_11) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_12) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_13) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_14) > 0)
-	|| (Npc_HasItems (other, ITAR_VLK_H_15) > 0)
+	if (Npc_HasItems (other, ITAR_VLK_L) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój bogatego mieszczanina", DIA_Addon_Eremit_Klamotten_VLK_H);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój mieszczanina I", DIA_Addon_Eremit_Klamotten_VLK_L);
 	};
-	if (Npc_HasItems (other, ITAR_BAU_00) > 0)
-	|| (Npc_HasItems (other, ITAR_BAU_01) > 0)
+	if (Npc_HasItems (other, ITAR_VLK_M) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój farmera", DIA_Addon_Eremit_Klamotten_BAU);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój mieszczanina II", DIA_Addon_Eremit_Klamotten_VLK_M);
 	};
+	if (Npc_HasItems (other, ITAR_VLK_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój mieszczanina III", DIA_Addon_Eremit_Klamotten_VLK_H);
+	};
+	if (Npc_HasItems (other, ITAR_VlkBabe_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki I", DIA_Addon_Eremit_Klamotten_VlkBabe_L);
+	};
+	if (Npc_HasItems (other, ITAR_VlkBabe_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki II", DIA_Addon_Eremit_Klamotten_VlkBabe_M);
+	};
+	if (Npc_HasItems (other, ITAR_VlkBabe_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki III", DIA_Addon_Eremit_Klamotten_VlkBabe_H);
+	};
+	/*
+	if (Npc_HasItems (other, ITAR_MIL_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Leichte Milizrüstung geben", DIA_Addon_Eremit_Klamotten_MIL_L);
+	};
+	if (Npc_HasItems (other, ITAR_MIL_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Mittlere Milizrüstung geben", DIA_Addon_Eremit_Klamotten_MIL_M);
+	};
+	if (Npc_HasItems (other, ITAR_PAL_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Mittlere Paladinrüstung geben", DIA_Addon_Eremit_Klamotten_PAL_M);
+	};
+	if (Npc_HasItems (other, ITAR_PAL_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Schwere Paladinrüstung geben", DIA_Addon_Eremit_Klamotten_PAL_H);
+	};
+	*/
+	if (Npc_HasItems (other, ITAR_Skeleton) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj podniszczon¹ zbrojê paladyna", DIA_Addon_Eremit_Klamotten_PAL_SKEL);
+	};
+	if (Npc_HasItems (other, ITAR_BAU_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekki strój farmera", DIA_Addon_Eremit_Klamotten_BAU_L);
+	};
+	if (Npc_HasItems (other, ITAR_BAU_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni strój farmera", DIA_Addon_Eremit_Klamotten_BAU_M);
+	};
+	if (Npc_HasItems (other, ITAR_BauBabe_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekk¹ sukniê farmerki", DIA_Addon_Eremit_Klamotten_BauBabe_L);
+	};
+	if (Npc_HasItems (other, ITAR_BauBabe_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni¹ sukniê farmerki", DIA_Addon_Eremit_Klamotten_BauBabe_M);
+	};
+	/*
+	if (Npc_HasItems (other, ITAR_SLD_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Leichte Söldnerrüstung geben", DIA_Addon_Eremit_Klamotten_SLD_L);
+	};
+	if (Npc_HasItems (other, ITAR_SLD_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Mittlere Söldnerrüstung geben", DIA_Addon_Eremit_Klamotten_SLD_M);
+	};
+	if (Npc_HasItems (other, ITAR_SLD_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Schwere Söldnerrüstung geben", DIA_Addon_Eremit_Klamotten_SLD_H);
+	};
+	*/
+	if (Npc_HasItems (other, ITAR_DJG_Crawler) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê z pancerzy pe³zaczy", DIA_Addon_Eremit_Klamotten_DJG_Crawler);
+	};
+	/*
+	if (Npc_HasItems (other, ITAR_DJG_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Leichte Drachenjägerrüstung geben", DIA_Addon_Eremit_Klamotten_DJG_L);
+	};
+	if (Npc_HasItems (other, ITAR_DJG_M) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Mittlere Drachenjägerrüstung geben", DIA_Addon_Eremit_Klamotten_DJG_M);
+	};
+	if (Npc_HasItems (other, ITAR_DJG_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Schwere Drachenjägerrüstung geben", DIA_Addon_Eremit_Klamotten_DJG_H);
+	};
+	if (Npc_HasItems (other, ITAR_NOV_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Novizenrobe geben", DIA_Addon_Eremit_Klamotten_Nov_L);
+	};
+	if (Npc_HasItems (other, ITAR_KDF_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Leichte Robe des Feuers geben", DIA_Addon_Eremit_Klamotten_KdF_L);
+	};
+	if (Npc_HasItems (other, ITAR_KDF_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Schwere Robe des Feuers geben", DIA_Addon_Eremit_Klamotten_KdF_H);
+	};
+	*/
 	if (Npc_HasItems (other, ITAR_Leather_L) > 0)
-	|| (Npc_HasItems (other, ITAR_Leather_T) > 0)
-	|| (Npc_HasItems (other, ITAR_Leather_S) > 0)
-	|| (Npc_HasItems (other, ITAR_Leather_H) > 0)
-	|| (Npc_HasItems (other, ITAR_Leather_B) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz", DIA_Addon_Eremit_Klamotten_Leather);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzan¹ zbrojê", DIA_Addon_Eremit_Klamotten_Leather);
+	};
+	//if (Npc_HasItems (other, ITAR_BDT_M) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Mittlere Banditenrüstung geben", DIA_Addon_Eremit_Klamotten_BDT_M);
+	//};
+	//if (Npc_HasItems (other, ITAR_BDT_H) > 0)
+	//{
+	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Schwere Banditenrüstung geben", DIA_Addon_Eremit_Klamotten_BDT_H);
+	//};
+	if (Npc_HasItems (other, ITAR_XARDAS) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj szatê mrocznych sztuk", DIA_Addon_Eremit_Klamotten_Xardas);
+	};
+	if (Npc_HasItems (other, ITAR_SLN_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê nowicjusza Œni¹cego", DIA_Addon_Eremit_Klamotten_Lester);
+	};
+	if (Npc_HasItems (other, ITAR_STT_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê cienia", DIA_Addon_Eremit_Klamotten_Diego);
+	};
+	if (Npc_HasItems (other, ITAR_SLT_H) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿k¹ zbrojê stra¿nika œwi¹tynnego", DIA_Addon_Eremit_Klamotten_CorAngar);
+	};
+	if (Npc_HasItems (other, ITAR_Prisoner) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj spodnie kopacza", DIA_Addon_Eremit_Klamotten_Prisoner);
 	};
 	if (Npc_HasItems (other, ITAR_Dementor) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj szatê poszukiwacza (!)", DIA_Addon_Eremit_Klamotten_Dementor);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj szatê poszukiwacza", DIA_Addon_Eremit_Klamotten_Dementor);
 	};
 };
-
+// -------------------------------------------------------------
 	func void B_Eremit_Tatsache()
 	{
 		AI_EquipBestArmor (self);
@@ -174,7 +418,7 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_22"); //Mogê ci daæ parê starych kamiennych tablic.
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_23"); //Masz, weŸ je. Zawsze mogê znaleŸæ wiêcej.
 		
-//		B_GiveInvItems (self,other,ItWr_DexStonePlate3_Addon,1);
+		B_GiveInvItems (self,other,ItWr_DexStonePlate3_Addon,1);
 		B_GiveInvItems (self,other,ItWr_StonePlateCommon_Addon ,1);     
 		
 		MIS_Eremit_Klamotten = LOG_SUCCESS;
@@ -182,118 +426,241 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 		
 		Info_ClearChoices (DIA_Addon_Eremit_Klamotten);
 	};
+// -------------------------------------------------------------
 
 func void DIA_Addon_Eremit_Klamotten_BACK()
 {
 	AI_Output (self, other, "DIA_Addon_Eremit_Add_04_24"); //Œwietnie. Najpierw robisz mi nadziejê, a potem...
 	Info_ClearChoices (DIA_Addon_Eremit_Klamotten);
 };
-func void DIA_Addon_Eremit_Klamotten_CRAFTSMAN()
+func void DIA_Addon_Eremit_Klamotten_PIR_L()
 {
-	if (Npc_HasItems (other, ITAR_SMITH) > 0)
-	{	B_GiveInvItems (other, self, ITAR_SMITH, 1);		}
-	else if (Npc_HasItems (other, ITAR_ALCHEMIST) > 0)
-	{	B_GiveInvItems (other, self, ITAR_ALCHEMIST, 1);	}
-	else if (Npc_HasItems (other, ITAR_SCYTHER) > 0)
-	{	B_GiveInvItems (other, self, ITAR_SCYTHER, 1);		}
-	else if (Npc_HasItems (other, ITAR_BARKEEPER) > 0)
-	{	B_GiveInvItems (other, self, ITAR_BARKEEPER, 1);	}
-	else if (Npc_HasItems (other, ITAR_HUNTER) > 0)
-	{	B_GiveInvItems (other, self, ITAR_HUNTER, 1);		};
+	B_GiveInvItems (other, self, ITAR_PIR_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_PIR_M()
+{
+	B_GiveInvItems (other, self, ITAR_PIR_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_PIR_H()
+{
+	B_GiveInvItems (other, self, ITAR_PIR_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Thorus()
+{
+	B_GiveInvItems (other, self, ITAR_GRD_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_OreBaron()
+{
+	B_GiveInvItems (other, self, ITAR_EBR_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Bloodwyn()
+{
+	B_GiveInvItems (other, self, ITAR_GRD_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Raven()
+{
+	B_GiveInvItems (other, self, ITAR_RVN_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Ranger()
+{
+	B_GiveInvItems (other, self, ITAR_WaterRanger, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_KDW_H()
+{
+	B_GiveInvItems (other, self, ITAR_Mag_A, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Governor()
+{
+	B_GiveInvItems (other, self, ITAR_Governor, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Judge()
+{
+	B_GiveInvItems (other, self, ITAR_JUDGE, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Smith()
+{
+	B_GiveInvItems (other, self, ITAR_SMITH, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Barkeeper()
+{
+	B_GiveInvItems (other, self, ITAR_BARKEEPER, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_VLK_L()
 {
-	if (Npc_HasItems (other, ITAR_VLK_L_00) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_00, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_01) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_01, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_02) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_02, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_03) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_03, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_04) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_04, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_05) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_05, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_06) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_06, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_07) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_07, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_08) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_08, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_09) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_09, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_10) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_10, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_11) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_11, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_12) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_12, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_13) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_13, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_14) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_14, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_L_15) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_L_15, 1);	};
+	B_GiveInvItems (other, self, ITAR_VLK_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_VLK_M()
+{
+	B_GiveInvItems (other, self, ITAR_VLK_M, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_VLK_H()
 {
-	if (Npc_HasItems (other, ITAR_VLK_H_00) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_00, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_01) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_01, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_02) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_02, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_03) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_03, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_04) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_04, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_05) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_05, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_06) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_06, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_07) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_07, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_08) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_08, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_09) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_h_09, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_10) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_10, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_11) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_11, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_12) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_12, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_13) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_13, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_14) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_14, 1);	}
-	else if (Npc_HasItems (other, ITAR_VLK_H_15) > 0)
-	{	B_GiveInvItems (other, self, ITAR_VLK_H_15, 1);	};
+	B_GiveInvItems (other, self, ITAR_VLK_H, 1);
 	B_Eremit_Tatsache();
 };
-func void DIA_Addon_Eremit_Klamotten_BAU()
+func void DIA_Addon_Eremit_Klamotten_VlkBabe_L()
 {
-	if (Npc_HasItems (other, ITAR_BAU_00) > 0)
-	{	B_GiveInvItems (other, self, ITAR_BAU_00, 1);	}
-	else if (Npc_HasItems (other, ITAR_BAU_01) > 0)
-	{	B_GiveInvItems (other, self, ITAR_BAU_01, 1);	};
+	B_GiveInvItems (other, self, ITAR_VlkBabe_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_VlkBabe_M()
+{
+	B_GiveInvItems (other, self, ITAR_VlkBabe_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_VlkBabe_H()
+{
+	B_GiveInvItems (other, self, ITAR_VlkBabe_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_MIL_L()
+{
+	B_GiveInvItems (other, self, ITAR_MIL_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_MIL_M()
+{
+	B_GiveInvItems (other, self, ITAR_MIL_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_PAL_M()
+{
+	B_GiveInvItems (other, self, ITAR_PAL_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_PAL_H()
+{
+	B_GiveInvItems (other, self, ITAR_PAL_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_PAL_SKEL()
+{
+	B_GiveInvItems (other, self, ITAR_Skeleton, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BAU_L()
+{
+	B_GiveInvItems (other, self, ITAR_BAU_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BAU_M()
+{
+	B_GiveInvItems (other, self, ITAR_BAU_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BauBabe_L()
+{
+	B_GiveInvItems (other, self, ITAR_BauBabe_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BauBabe_M()
+{
+	B_GiveInvItems (other, self, ITAR_BauBabe_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_SLD_L()
+{
+	B_GiveInvItems (other, self, ITAR_SLD_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_SLD_M()
+{
+	B_GiveInvItems (other, self, ITAR_SLD_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_SLD_H()
+{
+	B_GiveInvItems (other, self, ITAR_SLD_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_DJG_Crawler()
+{
+	B_GiveInvItems (other, self, ITAR_DJG_Crawler, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_DJG_L()
+{
+	B_GiveInvItems (other, self, ITAR_DJG_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_DJG_M()
+{
+	B_GiveInvItems (other, self, ITAR_DJG_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_DJG_H()
+{
+	B_GiveInvItems (other, self, ITAR_DJG_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Nov_L()
+{
+	B_GiveInvItems (other, self, ITAR_NOV_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_KdF_L()
+{
+	B_GiveInvItems (other, self, ITAR_KDF_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_KdF_H()
+{
+	B_GiveInvItems (other, self, ITAR_KDF_H, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_Leather()
 {
-	if (Npc_HasItems (other, ITAR_LEATHER_L) > 0)
-	{	B_GiveInvItems (other, self, ITAR_LEATHER_L, 1);	}
-	else if (Npc_HasItems (other, ITAR_Leather_T) > 0)
-	{	B_GiveInvItems (other, self, ITAR_Leather_T, 1);	}
-	else if (Npc_HasItems (other, ITAR_Leather_S) > 0)
-	{	B_GiveInvItems (other, self, ITAR_Leather_S, 1);	}
-	else if (Npc_HasItems (other, ITAR_Leather_H) > 0)
-	{	B_GiveInvItems (other, self, ITAR_Leather_H, 1);	}
-	else if (Npc_HasItems (other, ITAR_Leather_B) > 0)
-	{	B_GiveInvItems (other, self, ITAR_Leather_B, 1);	};
+	B_GiveInvItems (other, self, ITAR_Leather_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BDT_M()
+{
+	B_GiveInvItems (other, self, ITAR_BDT_M, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_BDT_H()
+{
+	B_GiveInvItems (other, self, ITAR_BDT_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Xardas()
+{
+	B_GiveInvItems (other, self, ITAR_XARDAS, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Lester()
+{
+	B_GiveInvItems (other, self, ITAR_SLN_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Diego()
+{
+	B_GiveInvItems (other, self, ITAR_STT_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_CorAngar()
+{
+	B_GiveInvItems (other, self, ITAR_SLT_H, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Prisoner()
+{
+	B_GiveInvItems (other, self, ITAR_Prisoner, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_Dementor()
@@ -301,6 +668,8 @@ func void DIA_Addon_Eremit_Klamotten_Dementor()
 	B_GiveInvItems (other, self, ITAR_Dementor, 1);
 	B_Eremit_Tatsache();
 };
+
+
 
 // ********************************************************
 // 							PERM
@@ -311,18 +680,18 @@ instance DIA_Addon_Eremit_PERM (C_INFO)
 	nr		 	= 99;
 	condition	= DIA_Addon_Eremit_PERM_Condition;
 	information	= DIA_Addon_Eremit_PERM_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "No i? Jak siê ¿yje jako wyrzutek?";
 };
 func int DIA_Addon_Eremit_PERM_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_Eremit_PERM_Info ()
 {
 	AI_Output (other, self, "DIA_Addon_Eremit_Add_15_04"); //No i? Jak siê ¿yje jako wyrzutek?
 	
-	if (MIS_Eremit_Klamotten == false)
+	if (MIS_Eremit_Klamotten == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_09"); //Wszystko zrobi³em sam. Moj¹ broñ, narzêdzia, sza³as, po prostu wszystko.
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_10"); //A przyby³em tu, nie maj¹c nic oprócz dobrego humoru.
@@ -347,3 +716,6 @@ func void DIA_Addon_Eremit_PERM_Info ()
 		};
 	};
 };	
+	
+
+

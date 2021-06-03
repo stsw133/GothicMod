@@ -7,12 +7,12 @@ INSTANCE DIA_Mil_304_Torwache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Mil_304_Torwache_EXIT_Condition;
 	information = DIA_Mil_304_Torwache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Mil_304_Torwache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Mil_304_Torwache_EXIT_Info()
 {
@@ -27,14 +27,14 @@ instance DIA_Mil_304_Torwache_WASMACHSTDU		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Mil_304_Torwache_WASMACHSTDU_Condition;
 	information	 = 	DIA_Mil_304_Torwache_WASMACHSTDU_Info;
-	permanent	 =  true;	
+	permanent	 =  TRUE;	
 	description	 = 	"Jak leci?";
 };
 func int DIA_Mil_304_Torwache_WASMACHSTDU_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Mil_304_Torwache_WASMACHSTDU_Info ()

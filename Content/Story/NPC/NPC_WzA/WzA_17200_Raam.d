@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17200_Raam (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name 								=	"Raam";
 	guild 								=	GIL_NONE;
 	id 									=	17200;
@@ -10,7 +10,7 @@ instance WzA_17200_Raam (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
@@ -21,21 +21,21 @@ instance WzA_17200_Raam (Npc_Default)
 	B_SetAttributesToLevel (self, 90);
 	B_SetFightSkills (self, FightTalent_Master);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;
 
-	// ------ Weapons ------	
+	/// ------ Weapons ------	
 	EquipItem (self, ItMw_2h_OrcElite_Raam);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_ORC, MALE, 0, DEFAULT, "Orc_Head_Warrior", 11, DEFAULT, ITAR_Orc_King);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 //	Mdl_SetModelFatness	(self, 0.5);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17200;
 };
 

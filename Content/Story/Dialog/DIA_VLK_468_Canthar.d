@@ -1,4 +1,3 @@
-
 // ************************************************************
 // 			  				   EXIT 
 // ************************************************************
@@ -9,13 +8,13 @@ INSTANCE DIA_Canthar_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Canthar_EXIT_Condition;
 	information	= DIA_Canthar_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Muszê iœæ!";
 };                       
 
 FUNC INT DIA_Canthar_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Canthar_EXIT_Info()
@@ -34,17 +33,17 @@ INSTANCE DIA_Canthar_PersonalCRIMES (C_INFO)
 	nr			= 1;
 	condition	= DIA_Canthar_PersonalCRIMES_Condition;
 	information	= DIA_Canthar_PersonalCRIMES_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };                       
 
 func INT DIA_Canthar_PersonalCRIMES_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (self.aivar[AIV_LastFightComment] == false)
+	&& (self.aivar[AIV_LastFightComment] == FALSE)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -80,7 +79,7 @@ func void DIA_Canthar_PersonalCRIMES_Pay()
 	AI_Output (self, other,"DIA_Canthar_PersonalCRIMES_Pay_09_01"); //Bardzo rozs¹dnie!
 	
 	// ------ AIVARs resetten! ------
-	self.aivar[AIV_LastFightComment] = true;
+	self.aivar[AIV_LastFightComment] = TRUE;
 	
 	AI_StopProcessInfos(self);
 };
@@ -104,15 +103,15 @@ INSTANCE DIA_Canthar_Hallo (C_INFO)
 	nr			= 1;
 	condition	= DIA_Canthar_Hallo_Condition;
 	information	= DIA_Canthar_Hallo_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Canthar_Hallo_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -121,7 +120,7 @@ FUNC VOID DIA_Canthar_Hallo_Info()
 	var C_Item itm; itm = Npc_GetEquippedArmor(other);
 	
 	// ------ OHNE Rüstung ------
-	if (Npc_HasEquippedArmor(other) == false) 
+	if (Npc_HasEquippedArmor(other) == FALSE) 
 	{
 		AI_Output	(self, other,"DIA_Canthar_Hallo_09_00"); //Kogo my tu mamy?
 		AI_Output	(self, other,"DIA_Canthar_Hallo_09_01"); //Idziesz do miasta - mam racjê?
@@ -130,12 +129,12 @@ FUNC VOID DIA_Canthar_Hallo_Info()
 		AI_Output	(self, other,"DIA_Canthar_Hallo_09_04"); //Mo¿e nawet jesteœ by³ym skazañcem z kopalni.
 		AI_Output	(self, other,"DIA_Canthar_Hallo_09_05"); //Nie obchodzi mnie, sk¹d przyszed³eœ. Wydaje mi siê jednak, ¿e mam dla ciebie interesuj¹c¹ ofertê...
 		
-		Canthar_GotMe = true;
+		Canthar_GotMe = TRUE;
 	}
 	
 	// ------ Bauernkleidung ------
-	else if (Hlp_IsItem (itm, ItAr_Bau_00)) 
-	|| 		(Hlp_IsItem (itm, ItAr_Bau_01))
+	else if (Hlp_IsItem (itm, ItAr_Bau_L)) 
+	|| 		(Hlp_IsItem (itm, ItAr_Bau_M))
 	{
 		AI_Output (self, other,"DIA_Canthar_HelloArmor_09_06");	//Wie läuft die Arbeit, Bauersmann?
 			
@@ -165,7 +164,7 @@ func void DIA_Canthar_Hallo_NoBauer()
 	AI_Output	(self, other,"DIA_Canthar_Hallo_NoBauer_09_01"); //Wygl¹dasz jak wieœniak. Ale mówisz inaczej!
 	AI_Output	(self, other,"DIA_Canthar_Hallo_NoBauer_09_02"); //Je¿eli siê nie mylê, to mam dla ciebie interesuj¹c¹ ofertê...
 	
-	Canthar_GotMe = true;
+	Canthar_GotMe = TRUE;
 	
 	Info_ClearChoices	(DIA_Canthar_Hallo);
 };
@@ -181,7 +180,7 @@ INSTANCE DIA_Canthar_WhatOffer (C_INFO)
 	nr			= 1;
 	condition	= DIA_Canthar_WhatOffer_Condition;
 	information	= DIA_Canthar_WhatOffer_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Co chcesz mi zaproponowaæ?";
 };                       
 
@@ -189,7 +188,7 @@ FUNC INT DIA_Canthar_WhatOffer_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Canthar_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -197,9 +196,9 @@ FUNC VOID DIA_Canthar_WhatOffer_Info()
 {	
 	AI_Output (other, self,"DIA_Canthar_WhatOffer_15_00"); //Co chcesz mi zaproponowaæ?
 	
-	if (Canthar_GotME == true)
+	if (Canthar_GotME == TRUE)
 	{
-		if (Npc_HasEquippedArmor(other) == false)
+		if (Npc_HasEquippedArmor(other) == FALSE)
 		{	
 			AI_Output (self, other,"DIA_Canthar_WhatOffer_09_01"); //Z takim wygl¹dem stra¿nicy nigdy nie wpuszcz¹ ciê do miasta.
 		}
@@ -211,7 +210,7 @@ FUNC VOID DIA_Canthar_WhatOffer_Info()
 		AI_Output (self, other,"DIA_Canthar_WhatOffer_09_03"); //Mogê ci pomóc dostaæ siê do miasta.
 		AI_Output (self, other,"DIA_Canthar_WhatOffer_09_04"); //Mam tu taki ma³y kawa³ek papieru. Jest na nim królewska pieczêæ i podpis gubernatora. To glejt.
 				
-		if (Npc_HasEquippedArmor(other) == false)
+		if (Npc_HasEquippedArmor(other) == FALSE)
 		{	
 			AI_Output (self, other,"DIA_Canthar_WhatOffer_09_05"); //Maj¹c ten papier w kieszeni, mo¿esz siê pêtaæ, gdzie ci siê tam podoba, a stra¿nicy nie bêd¹ ciê niepokoiæ.
 		};
@@ -265,12 +264,13 @@ func void DIA_Canthar_WhatOffer_Ok()
 	AI_Output (self, other,"DIA_Canthar_WhatOffer_Ok_09_02"); //Jeszcze jedno: nawet nie myœl o z³amaniu danego s³owa!
 	AI_Output (self, other,"DIA_Canthar_WhatOffer_Ok_09_03"); //Jako kupiec mam spore wp³ywy w mieœcie - nie skoñczy³oby siê to dla ciebie za dobrze, wierz mi!
 	
-	Canthar_Gefallen = true;	
+	Canthar_Gefallen = TRUE;	
 	Info_ClearChoices	(DIA_Canthar_WhatOffer);
 	
 	Log_CreateTopic (TOPIC_City,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_City,LOG_RUNNING);
 	B_LogEntry (TOPIC_City,"Kupiec Canthar wrêczy³ mi przepustkê, dziêki której uzyskam wstêp do miasta. Jestem mu za to winien przys³ugê.");
+
 };
 
 func void DIA_Canthar_WhatOffer_No()
@@ -293,16 +293,16 @@ instance DIA_Canthar_TRADE		(C_INFO)
 	nr 			= 888;
 	condition	= DIA_Canthar_TRADE_Condition;
 	information	= DIA_Canthar_TRADE_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Poka¿ mi, co masz na sprzeda¿!";
-	trade		= true;
+	trade		= TRUE;
 };
 
 func int DIA_Canthar_TRADE_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Canthar_WhatOffer))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -313,6 +313,8 @@ func void DIA_Canthar_TRADE_Info ()
 	B_GiveTradeInv (self);
 	
 	AI_Output (self, other, "DIA_Canthar_TRADE_09_01"); //Wybierz sobie.
+	
+	
 };
 
 
@@ -338,22 +340,22 @@ instance DIA_Canthar_PAYPRICEINCITY		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Canthar_PAYPRICEINCITY_Condition;
 	information	 = 	DIA_Canthar_PAYPRICEINCITY_Info;
-	important	 = 	true;
-	permanent 	 =  false;
+	important	 = 	TRUE;
+	permanent 	 =  FALSE;
 };
 
 func int DIA_Canthar_PAYPRICEINCITY_Condition ()
 {
-	if (Canthar_InStadt == true)
-	&& (Npc_IsDead(Sarah) == false) 
-	&& (Canthar_GotMe == true)
+	if (Canthar_InStadt == TRUE)
+	&& (Npc_IsDead(Sarah) == FALSE) 
+	&& (Canthar_GotMe == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Canthar_PAYPRICEINCITY_Info ()
 {
-	if (Canthar_Gefallen == true)
+	if (Canthar_Gefallen == TRUE)
 	{
 		AI_Output (self, other, "DIA_Canthar_PAYPRICEINCITY_09_00"); //Wci¹¿ mi jesteœ winien przys³ugê. Pora, ¿ebyœ sp³aci³ swój d³ug.
 	}
@@ -370,7 +372,7 @@ func void DIA_Canthar_PAYPRICEINCITY_Info ()
 	AI_Output (self, other, "DIA_Canthar_PAYPRICEINCITY_09_08"); //Ona wyl¹duje w wiêzieniu, ty dostaniesz nagrodê, a ja odzyskam stragan.
 	AI_Output (self, other, "DIA_Canthar_PAYPRICEINCITY_09_09"); //Masz na to dwa dni.
 	
-	if (Canthar_Gefallen == false)
+	if (Canthar_Gefallen == FALSE)
 	{
 		AI_Output (other, self, "DIA_Canthar_PAYPRICEINCITY_15_10"); //A co JA bêdê z tego mia³?
 		AI_Output (self, other, "DIA_Canthar_PAYPRICEINCITY_09_11"); //Kiedy ju¿ bêdê mia³ stragan, dostaniesz ode mnie broñ - i to nie byle jak¹.
@@ -397,6 +399,7 @@ func void DIA_Canthar_PAYPRICEINCITY_Nein ()
 	MIS_Canthars_KomproBrief = LOG_OBSOLETE;
 	B_CheckLog ();
 	Info_ClearChoices (DIA_Canthar_PAYPRICEINCITY);
+	
 };
 
 func void DIA_Canthar_PAYPRICEINCITY_Ok ()
@@ -417,7 +420,7 @@ func void DIA_Canthar_PAYPRICEINCITY_Ok ()
 	Log_CreateTopic (TOPIC_Canthar,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_Canthar,LOG_RUNNING);
 	
-	if (Canthar_Gefallen == true)
+	if (Canthar_Gefallen == TRUE)
 	{
 		B_LogEntry (TOPIC_Canthar,"Canthar chce, abym mu siê odwdziêczy³.");
 	}
@@ -439,21 +442,21 @@ instance DIA_Canthar_SARAHERLEDIGT		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Canthar_SARAHERLEDIGT_Condition;
 	information	 = 	DIA_Canthar_SARAHERLEDIGT_Info;
-	permanent	 =	true;
+	permanent	 =	TRUE;
 	description	 = 	"Co do tej Sary...";
 };
 func int DIA_Canthar_SARAHERLEDIGT_Condition ()
 {
 	if 	(MIS_Canthars_KomproBrief == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Canthar_SARAHERLEDIGT_Info ()
 {
-	if ((Npc_IsDead(Sarah)) == false)
+	if ((Npc_IsDead(Sarah)) == FALSE)
 	{
-		if (MIS_Canthars_KomproBrief_Day <= (Wld_GetDay()+2))
+		if (MIS_Canthars_KomproBrief_Day <= (Wld_GetDay()+ 2))
 		{
 			AI_Output (self, other, "DIA_Canthar_SARAHERLEDIGT_09_00"); //Nie masz czegoœ do zrobienia?
 			AI_Output (self, other, "DIA_Canthar_SARAHERLEDIGT_09_01"); //Najpierw podrzuæ list Sarze, a potem idŸ do Andre i j¹ oskar¿.
@@ -470,7 +473,7 @@ func void DIA_Canthar_SARAHERLEDIGT_Info ()
 			AI_Output (self, other, "DIA_Canthar_SARAHERLEDIGT_09_05"); //Naprawdê? Wspaniale. Zatem wykona³eœ ju¿ pó³ naszej umowy.
 			
 			MIS_Canthars_KomproBrief = LOG_SUCCESS;
-			B_GivePlayerXP(XP_Ambient);
+			B_GivePlayerXP (XP_Ambient);
 			Npc_ExchangeRoutine	(self,"MARKTSTAND"); 
 	};
 	AI_StopProcessInfos (self);
@@ -484,46 +487,48 @@ instance DIA_Canthar_Success		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Canthar_Success_Condition;
 	information	 = 	DIA_Canthar_Success_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = "Co do tej Sary...";
 };
 func int DIA_Canthar_Success_Condition ()
 {
 	if (MIS_Canthars_KomproBrief == LOG_SUCCESS)
-	&& ((Npc_IsDead(Sarah)) == false)
-	{	return true;	};
+	&& ((Npc_IsDead(Sarah)) == FALSE)
+	{
+		return TRUE;
+	};
 };
 func void DIA_Canthar_Success_Info ()
 {
 	AI_Output (self, other, "DIA_Canthar_Success_09_00"); //Dobra robota. Sara jest tam, gdzie jej miejsce.
 	AI_Output (self, other, "DIA_Canthar_Success_09_01"); //Przej¹³em jej maj¹tek, wiêc przyjdŸ do mnie, jeœli potrzebujesz broni.
-
-	if (Kapitel == 7)
+	
+	if (Kapitel == 1)
 	{
-		CreateInvItems (self,ItMw_ShortSword3, 1); 
-		CreateInvItems (self,ItMw_ShortSword4, 1);
-		CreateInvItems (self,ItMw_ShortSword5, 1);
+		CreateInvItems (self,ItMw_ShortSword3 , 1); 
+		CreateInvItems (self,ItMw_ShortSword4 , 1);
+		CreateInvItems (self,ItMw_ShortSword5 , 1);
 		CreateInvItems (self,ItMw_Kriegshammer1, 1); 
 		
 		CreateInvItems (self, ItMw_1h_Vlk_Sword, 1); 
-		CreateInvItems (self, ItMw_2h_Nov_Mace, 1);
+		CreateInvItems (self, ItMw_1h_Nov_Mace, 1); 
 	};
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		CreateInvItems (self,ItMw_Stabkeule, 1);
+		CreateInvItems (self,ItMw_Stabkeule , 1);
 		CreateInvItems (self,ItMw_Steinbrecher, 1); 
-		CreateInvItems (self,ItMw_Schwert2, 1); 
-		CreateInvItems (self,ItMw_Bartaxt, 1); 
+		CreateInvItems (self,ItMw_Schwert2 , 1); 
+		CreateInvItems (self,ItMw_Bartaxt , 1); 
 	};
-
-	if (Canthar_Gefallen == false)
+	
+	if (Canthar_Gefallen == FALSE)
 	{
 		AI_Output (other, self, "DIA_Canthar_Success_15_02"); //Mia³eœ daæ mi broñ.
 		AI_Output (self, other, "DIA_Canthar_Success_09_03"); //Dok³adnie. Masz, ta broñ to mistrzowskie dzie³o sztuki kowalskiej.
 				
-		B_GiveInvItems (self, other, ItMW_Schiffsaxt, 1);
+		B_GiveInvItems (self, other, ItMW_Schiffsaxt,1);
 	};
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Canthars_KomproBrief);
 };
 
 //---------------------------------------------------------------------
@@ -541,15 +546,15 @@ instance DIA_Canthar_Again		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Canthar_Again_Condition;
 	information	 = 	DIA_Canthar_Again_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Canthar_Again_Condition ()
 {
-	if (Canthar_Sperre == true)
+	if (Canthar_Sperre == TRUE)
 	&&  Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Canthar_Again_Info ()
@@ -588,17 +593,17 @@ instance DIA_Canthar_Pay		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Canthar_Pay_Condition;
 	information	 = 	DIA_Canthar_Pay_Info;
-	permanent	 =  true;
-	important 	 =  true;
+	permanent	 =  TRUE;
+	important 	 =  TRUE;
 };
 
 func int DIA_Canthar_Pay_Condition ()
 {
 	if Npc_KnowsInfo (other,DIA_Canthar_Again)
-	&& (Canthar_Sperre == true)
+	&& (Canthar_Sperre == TRUE)
 	&& Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Canthar_Pay_Info ()
@@ -622,8 +627,8 @@ FUNC VOID DIA_Canthar_Pay_Ja()
 	B_GiveInvItems (other, self, Itmi_Gold,Canthar_Gold);
 	AI_Output (self, other, "DIA_Canthar_Pay_Ja_09_01"); //Dobrze. Zadbam o to, ¿eby twoja reputacja u kupców siê poprawi³a.
 	
-	Canthar_Sperre = false;
-	Canthar_Pay = true; 
+	Canthar_Sperre = FALSE;
+	Canthar_Pay = TRUE; 
 	Info_ClearChoices (DIA_Canthar_Pay);
 };
 FUNC VOID DIA_Canthar_Pay_Nein()
@@ -648,16 +653,16 @@ instance DIA_Canthar_CANTHARANGEPISST		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Canthar_CANTHARANGEPISST_Condition;
 	information	 = 	DIA_Canthar_CANTHARANGEPISST_Info;
-	important	 = 	true;
-	permanent	 =  true;
+	important	 = 	TRUE;
+	permanent	 =  TRUE;
 };
 func int DIA_Canthar_CANTHARANGEPISST_Condition ()
 {
-	if (Canthar_Ausgeliefert == true)  //SC hat Canthar bei Andre verpfiffen!
+	if (Canthar_Ausgeliefert == TRUE)  //SC hat Canthar bei Andre verpfiffen!
 	&& (Npc_GetDistToWP (self,"NW_CITY_HABOUR_KASERN_RENGARU") <= 1000)
 	&& Npc_IsInState  (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Canthar_CANTHARANGEPISST_Info ()
@@ -686,7 +691,7 @@ func int DIA_Canthar_MinenAnteil_Condition ()
 	&& (MIS_Serpentes_MinenAnteil_KDF == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Canthar_WhatOffer))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -694,5 +699,16 @@ func void DIA_Canthar_MinenAnteil_Info ()
 {
 	AI_Output (other, self, "DIA_Canthar_Minenanteil_15_00"); //Sprzedajesz nielegalne udzia³y w kopalni!
 	AI_Output (self, other, "DIA_Canthar_Minenanteil_09_01"); //Tak, i co? Co z tego! Jeœli ja tego nie zrobiê, zajmie siê tym ktoœ inny.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
+
+
+
+
+
+
+
+
+
+
+

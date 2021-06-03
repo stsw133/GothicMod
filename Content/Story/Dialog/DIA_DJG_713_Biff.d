@@ -28,7 +28,7 @@ func void B_BiffsAnteil_PrintScreen ()
 };
 func void B_Biff_SetRefuseTalk ()	//Joly: Biffs Geld eintreiberei kommt beim HalbeHalbe Deal nicht so häufig.
 {
-	if (DJG_Biff_HalbeHalbe == true)
+	if (DJG_Biff_HalbeHalbe == TRUE)
 	{
 		Npc_SetRefuseTalk (Biff,1000);//Joly:Biff stehet hier wegen INIT und setrefusetalk. SAVEGAMEFIX
 	}
@@ -46,13 +46,13 @@ INSTANCE DIA_Biff_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Biff_EXIT_Condition;
 	information = DIA_Biff_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Biff_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Biff_EXIT_Info()
@@ -75,7 +75,7 @@ instance DIA_Biff_HALLO		(C_INFO)
 
 func int DIA_Biff_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Biff_HALLO_Info ()
@@ -101,7 +101,7 @@ func void DIA_Biff_HALLO_spott ()
 
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_NONE, 1);
-	DJG_BiffParty_nomore += 1;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore +1);
 };
 
 func void DIA_Biff_HALLO_keineAhnung ()
@@ -117,6 +117,7 @@ func void DIA_Biff_HALLO_keineAhnung_was ()
 	AI_Output			(self, other, "DIA_Biff_HALLO_keineAhnung_was_07_01"); //Och, stary, naprawdê nie jesteœ specjalnie bystry. Gdybym to wiedzia³, to bym nie musia³ czekaæ.
 
 	Info_AddChoice	(DIA_Biff_HALLO, "Wiêc co mo¿e siê zdarzyæ?", DIA_Biff_HALLO_keineAhnung_was_was2 );
+
 };
 func void DIA_Biff_HALLO_keineAhnung_was_was2 ()
 {
@@ -124,13 +125,16 @@ func void DIA_Biff_HALLO_keineAhnung_was_was2 ()
 	AI_Output			(self, other, "DIA_Biff_HALLO_keineAhnung_was_was2_07_01"); //Dzia³asz mi na nerwy. S³uchaj, nie obchodzi mnie, co siê stanie. Wa¿ne, ¿eby w ogóle coœ siê sta³o.
 
 	Info_AddChoice	(DIA_Biff_HALLO, "Wiêc czemu czegoœ nie zrobisz?", DIA_Biff_HALLO_keineAhnung_was_was2_was3 );
+
 };
 func void DIA_Biff_HALLO_keineAhnung_was_was2_was3 ()
 {
 	AI_Output			(other, self, "DIA_Biff_HALLO_keineAhnung_was_was2_was3_15_00"); //Wiêc czemu czegoœ nie zrobisz?
 	AI_Output			(self, other, "DIA_Biff_HALLO_keineAhnung_was_was2_was3_07_01"); //Jak nie przestaniesz zadawaæ g³upich pytañ, to ci zamknê tê parszyw¹ gêbê.
 
+
 	Info_AddChoice	(DIA_Biff_HALLO, "Jeœli bêdziesz tak bezczynnie czeka³, to nic siê nie stanie!", DIA_Biff_HALLO_keineAhnung_was_was2_was3_was4 );
+
 };
 func void DIA_Biff_HALLO_keineAhnung_was_was2_was3_was4 ()
 {
@@ -139,8 +143,9 @@ func void DIA_Biff_HALLO_keineAhnung_was_was2_was3_was4 ()
 
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_NONE, 1);	
-	DJG_BiffParty_nomore += 1;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore +1);
 };
+
 
 ///////////////////////////////////////////////////////////////////////
 //	Info washierimTal
@@ -159,7 +164,7 @@ func int DIA_Biff_WASHIERIMTAL_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Biff_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -198,18 +203,18 @@ instance DIA_Biff_ARBEITEN		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Biff_ARBEITEN_Condition;
 	information	 = 	DIA_Biff_ARBEITEN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Mo¿e chcesz dla mnie od tej pory pracowaæ?";
 };
 
 func int DIA_Biff_ARBEITEN_Condition ()
 {
-	if 	(DJG_BiffParty == false)
+	if 	(DJG_BiffParty == FALSE)
 		&& (Npc_KnowsInfo(other, DIA_Biff_HALLO))
-		&& (DJG_Biff_Stay == false)	
+		&& (DJG_Biff_Stay == FALSE)	
 			{
-					return true;
+					return TRUE;
 			};
 };
 func void DIA_Biff_ARBEITEN_Info ()
@@ -244,14 +249,14 @@ func void DIA_Biff_ARBEITEN_100 ()
 			AI_StopProcessInfos (self);
 			Npc_ExchangeRoutine	(self,"Follow");
 			B_Biff_SetRefuseTalk ();
-			self.aivar[AIV_PARTYMEMBER] = true;
-			DJG_BiffParty = true;	
+			self.aivar[AIV_PARTYMEMBER] = TRUE;
+			DJG_BiffParty = TRUE;	
 		}
 		else
 		{
 			B_BIFF_VERARSCHEN ();
 			AI_StopProcessInfos (self);
-			DJG_BiffParty_nomore += 1;
+			DJG_BiffParty_nomore = (DJG_BiffParty_nomore +1);
 		};
 
 };
@@ -264,15 +269,15 @@ func void DIA_Biff_ARBEITEN_HalbeHalbe ()
 
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Follow");
-	self.aivar[AIV_PARTYMEMBER] = true;
-	DJG_BiffParty = true;
-	DJG_Biff_HalbeHalbe  = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	DJG_BiffParty = TRUE;
+	DJG_Biff_HalbeHalbe  = TRUE;
 	B_Biff_SetRefuseTalk ();
 
-	if (DJG_Biff_HalbeHalbe_again == false)
+	if (DJG_Biff_HalbeHalbe_again == FALSE)
 	{
 		DJG_Biff_SCGold = Npc_HasItems(hero,ItMi_Gold);	//Ale po co ja to mówiê. Ty ju¿ to przecie¿ wiesz.
-		DJG_Biff_HalbeHalbe_again = true;
+		DJG_Biff_HalbeHalbe_again = TRUE;
 	}
 	else
 	{
@@ -285,7 +290,7 @@ func void DIA_Biff_ARBEITEN_lebenlassen ()
 	AI_Output			(other, self, "DIA_Biff_ARBEITEN_lebenlassen_15_00"); //Bêdziesz móg³ uwa¿aæ siê za szczêœciarza, jeœli oszczêdzê ci ¿ycie.
 	B_BIFF_VERARSCHEN ();
 	AI_StopProcessInfos (self);
-	DJG_BiffParty_nomore += 1;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore +1);
 };
 
 
@@ -298,8 +303,8 @@ instance DIA_Biff_GELDEINTREIBEN		(C_INFO)
 	nr		 = 9;
 	condition	 = 	DIA_Biff_GELDEINTREIBEN_Condition;
 	information	 = 	DIA_Biff_GELDEINTREIBEN_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 var int BIFF_LABERT_GELDEINTREIBEN;
 func int DIA_Biff_GELDEINTREIBEN_Condition ()
@@ -307,14 +312,14 @@ func int DIA_Biff_GELDEINTREIBEN_Condition ()
 	if (DJG_Biff_SCGold < Npc_HasItems(hero,ItMi_Gold)-1)
 		&& ((Npc_GetBodyState(hero))!= BS_INVENTORY)				//Joly: wegen Truhen		 
 		&& ((Npc_GetBodyState(hero))!= BS_MOBINTERACT_INTERRUPT)
-		&& (((Npc_GetBodyState(hero))!= BS_STAND)||(BIFF_LABERT_GELDEINTREIBEN == true))//Joly: wegen Plündern von NSC-Invs	
-		&& (((Npc_GetBodyState(hero))!= BS_ITEMINTERACT)||(BIFF_LABERT_GELDEINTREIBEN == true))//Joly: wegen Geldbeutel	
-		&& (DJG_Biff_HalbeHalbe == true)
-		&& (DJG_BiffParty == true)	
-		&& (DJG_Biff_Stay == false)	
+		&& (((Npc_GetBodyState(hero))!= BS_STAND)||(BIFF_LABERT_GELDEINTREIBEN == TRUE))//Joly: wegen Plündern von NSC-Invs	
+		&& (((Npc_GetBodyState(hero))!= BS_ITEMINTERACT)||(BIFF_LABERT_GELDEINTREIBEN == TRUE))//Joly: wegen Geldbeutel	
+		&& (DJG_Biff_HalbeHalbe == TRUE)
+		&& (DJG_BiffParty == TRUE)	
+		&& (DJG_Biff_Stay == FALSE)	
 		{
-			BIFF_LABERT_GELDEINTREIBEN = true;
-			return true; 
+			BIFF_LABERT_GELDEINTREIBEN = TRUE;
+			return TRUE; 
 		};
 };
 
@@ -337,7 +342,7 @@ func void DIA_Biff_GELDEINTREIBEN_geben ()
 	AI_StopProcessInfos (self);
 	B_GiveInvItems (other, self, ItMi_Gold, BiffsAnteil);
 	B_Biff_SetRefuseTalk ();
-	BIFF_LABERT_GELDEINTREIBEN = false;
+	BIFF_LABERT_GELDEINTREIBEN = FALSE;
 	DJG_Biff_SCGold = Npc_HasItems(hero,ItMi_Gold);	// Biff schaut, wieviel Geld der Spieler jetzt hat.
 };
 
@@ -356,14 +361,14 @@ func void DIA_Biff_GELDEINTREIBEN_zuTeuer_trennen ()
 	AI_Output			(other, self, "DIA_Biff_GELDEINTREIBEN_zuTeuer_trennen_15_00"); //Obawiam siê, ¿e teraz musimy siê rozstaæ.
 	AI_Output			(self, other, "DIA_Biff_GELDEINTREIBEN_zuTeuer_trennen_07_01"); //Skoro tak mówisz. Wiêc chyba muszê zabraæ moj¹ czêœæ.
 
-	BIFF_LABERT_GELDEINTREIBEN = false;
+	BIFF_LABERT_GELDEINTREIBEN = FALSE;
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
 	B_Attack (self, other, AR_NONE, 1);
-	self.aivar[AIV_PARTYMEMBER] = false;
-	DJG_BiffParty = false;
-	DJG_Biff_HalbeHalbe = false;
-	DJG_BiffParty_nomore += 1;	
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	DJG_BiffParty = FALSE;
+	DJG_Biff_HalbeHalbe = FALSE;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore +1);	
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -375,8 +380,8 @@ instance DIA_Biff_ICHBLEIBHIER		(C_INFO)
 	nr		 = 6;
 	condition	 = 	DIA_Biff_ICHBLEIBHIER_Condition;
 	information	 = 	DIA_Biff_ICHBLEIBHIER_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Biff_ICHBLEIBHIER_Condition ()
@@ -384,16 +389,16 @@ func int DIA_Biff_ICHBLEIBHIER_Condition ()
 	if 		(
 				((Npc_GetBodyState(hero))!= BS_INVENTORY)				//Joly: wegen Truhen
 				&& ((Npc_GetBodyState(hero))!= BS_MOBINTERACT_INTERRUPT)
-				&& (DJG_BiffParty == true)
-				&& (DJG_Biff_Stay == false)	
+				&& (DJG_BiffParty == TRUE)
+				&& (DJG_Biff_Stay == FALSE)	
 				&& 	(
 						(
 							(
 								//Joly: Biff stört nicht das Drachengespräch!
-								((Npc_GetDistToWP(self,"OW_SWAMPDRAGON_01")<4000)	&& (Npc_IsDead(SwampDragon)== false)&& (SwampDragon.flags != 0))
-								||((Npc_GetDistToWP(self,"LOCATION_19_03_PATH_RUIN8")<2000)	&& (Npc_IsDead(RockDragon)== false) && (RockDragon.flags != 0))
-								||((Npc_GetDistToWP(self,"CASTLE_36")<4000)			&& (Npc_IsDead(FireDragon)== false) && (FireDragon.flags != 0))
-								||((Npc_GetDistToWP(self,"OW_ICEDRAGON_01")<4000)	&& (Npc_IsDead(IceDragon)== false) 	&& (IceDragon.flags != 0))
+								((Npc_GetDistToWP(self,"OW_SWAMPDRAGON_01")<4000)	&& (Npc_IsDead(SwampDragon)== FALSE)&& (SwampDragon.flags != 0))
+								||((Npc_GetDistToWP(self,"LOCATION_19_03_PATH_RUIN8")<2000)	&& (Npc_IsDead(RockDragon)== FALSE) && (RockDragon.flags != 0))
+								||((Npc_GetDistToWP(self,"CASTLE_36")<4000)			&& (Npc_IsDead(FireDragon)== FALSE) && (FireDragon.flags != 0))
+								||((Npc_GetDistToWP(self,"OW_ICEDRAGON_01")<4000)	&& (Npc_IsDead(IceDragon)== FALSE) 	&& (IceDragon.flags != 0))
 							) 	
 							&& (Npc_HasItems (hero,ItAm_InnosEye)>=1)
 						)
@@ -401,7 +406,7 @@ func int DIA_Biff_ICHBLEIBHIER_Condition ()
 					)
 			)
 				{
-					return true;
+					return TRUE;
 				};
 };
 
@@ -436,7 +441,7 @@ func void DIA_Biff_ICHBLEIBHIER_Info ()
 	{
 		Npc_ExchangeRoutine	(self,"Stay_AwayFromOC");
 	};
-	DJG_Biff_Stay = true;
+	DJG_Biff_Stay = TRUE;
 	DJG_Biff_SCGold = Npc_HasItems(hero,ItMi_Gold);	// Biff merkt sich wieder, wieviel Geld der Spieler jetzt hat.
 };
 
@@ -449,7 +454,7 @@ instance DIA_Biff_Stay_AwayFromOC		(C_INFO)
 	condition	 = 	DIA_Biff_Stay_AwayFromOC_Condition;
 	information	 = 	DIA_Biff_Stay_AwayFromOC_Info;
 	nr		 	 = 3;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"(Ponownie zabierz Biffa ze sob¹)";
 
@@ -461,10 +466,10 @@ func int DIA_Biff_Stay_AwayFromOC_Condition ()
 				(Npc_GetDistToWP(self,"OW_PATH_298")<500)
 				||(Npc_GetDistToWP(self,"LOCATION_19_01")<500)
 			)
-			&& (DJG_BiffParty == true)	
-			&& (DJG_Biff_Stay == true)	
+			&& (DJG_BiffParty == TRUE)	
+			&& (DJG_Biff_Stay == TRUE)	
 				{
-					return true;
+					return TRUE;
 				};
 };
 
@@ -473,7 +478,7 @@ func void DIA_Biff_Stay_AwayFromOC_Info ()
 	B_KommMit ();
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Follow");
-	DJG_Biff_Stay = false;
+	DJG_Biff_Stay = FALSE;
 	DJG_Biff_SCGold = Npc_HasItems(hero,ItMi_Gold);	// Biff merkt sich wieder, wieviel Geld der Spieler jetzt hat.
 };
 
@@ -486,18 +491,18 @@ instance DIA_Biff_KOHLEWEGGEBEN		(C_INFO)
 	condition	 = 	DIA_Biff_KOHLEWEGGEBEN_Condition;
 	information	 = 	DIA_Biff_KOHLEWEGGEBEN_Info;
 	nr		 	 = 10;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Biff_KOHLEWEGGEBEN_Condition ()
 {
 	if (DJG_Biff_SCGold > Npc_HasItems(hero,ItMi_Gold))
-		&& (DJG_Biff_HalbeHalbe == true)
-		&& (DJG_BiffParty == true)	
-		&& (DJG_Biff_Stay == false)	
+		&& (DJG_Biff_HalbeHalbe == TRUE)
+		&& (DJG_BiffParty == TRUE)	
+		&& (DJG_Biff_Stay == FALSE)	
 		{
-			//Joly:return true;
+			//Joly:return TRUE;
 		};
 };
 
@@ -520,16 +525,16 @@ instance DIA_Biff_BIFFLOSWERDEN		(C_INFO)
 	nr		 = 11;
 	condition	 = 	DIA_Biff_BIFFLOSWERDEN_Condition;
 	information	 = 	DIA_Biff_BIFFLOSWERDEN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"S¹dzê, ¿e tutaj powinna zakoñczyæ siê nasza wspó³praca.";
 };
 
 func int DIA_Biff_BIFFLOSWERDEN_Condition ()
 {
-	if (DJG_BiffParty == true)
+	if (DJG_BiffParty == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -540,10 +545,10 @@ func void DIA_Biff_BIFFLOSWERDEN_Info ()
 
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
-	self.aivar[AIV_PARTYMEMBER] = false;
-	DJG_Biff_HalbeHalbe = false;
-	DJG_BiffParty = false;
-	DJG_BiffParty_nomore += 1;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	DJG_Biff_HalbeHalbe = FALSE;
+	DJG_BiffParty = FALSE;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore + 1);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -555,17 +560,17 @@ instance DIA_Biff_MEHRGELD		(C_INFO)
 	nr			 = 12;
 	condition	 = 	DIA_Biff_MEHRGELD_Condition;
 	information	 = 	DIA_Biff_MEHRGELD_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Biff_MEHRGELD_Condition ()
 {
-	if 	(DJG_BiffParty == true)
-		&& (Npc_RefuseTalk(self) == false)
-		&& (DJG_Biff_Stay == false)	
+	if 	(DJG_BiffParty == TRUE)
+		&& (Npc_RefuseTalk(self) == FALSE)
+		&& (DJG_Biff_Stay == FALSE)	
 		{
-				return true;
+				return TRUE;
 		};
 };
 var int DIA_Biff_MEHRGELD_Info_OneTime;
@@ -573,14 +578,14 @@ func void DIA_Biff_MEHRGELD_Info ()
 {
 	AI_Output			(self, other, "DIA_Biff_MEHRGELD_07_00"); //Zaczynam uwa¿aæ, ¿e powinienem dostawaæ od ciebie wiêcej pieniêdzy.
 
-	if (DJG_Biff_HalbeHalbe == true)
+	if (DJG_Biff_HalbeHalbe == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Biff_MEHRGELD_07_01"); //100 sztuk z³ota powinno wystarczyæ.
-		if (DIA_Biff_MEHRGELD_Info_OneTime == false)
+		if (DIA_Biff_MEHRGELD_Info_OneTime == FALSE)
 		{
 			AI_Output			(self, other, "DIA_Biff_MEHRGELD_07_02"); //Spokojnie. Oczywiœcie, nie zapomnia³em, ¿e dzielimy ³upy.
 			AI_Output			(self, other, "DIA_Biff_MEHRGELD_07_03"); //Dlatego nie naprzykrzam ci siê zbyt czêsto, jeœli chodzi o pieni¹dze.
-			DIA_Biff_MEHRGELD_Info_OneTime = true;
+			DIA_Biff_MEHRGELD_Info_OneTime = TRUE;
 		};
 	}
 	else
@@ -605,7 +610,7 @@ func void DIA_Biff_MEHRGELD_ok ()
 
 			AI_StopProcessInfos (self);
 
-			if (DJG_Biff_HalbeHalbe == true)
+			if (DJG_Biff_HalbeHalbe == TRUE)
 			{
 				DJG_Biff_SCGold = Npc_HasItems(hero,ItMi_Gold);	// Biff schaut, wieviel Geld der Spieler jetzt hat.
 			};
@@ -618,10 +623,10 @@ func void DIA_Biff_MEHRGELD_ok ()
 			
 			AI_StopProcessInfos (self);
 			Npc_ExchangeRoutine	(self,"Start");
-			self.aivar[AIV_PARTYMEMBER] = false;
-			DJG_Biff_HalbeHalbe = false;
-			DJG_BiffParty = false;
-			DJG_BiffParty_nomore += 2;
+			self.aivar[AIV_PARTYMEMBER] = FALSE;
+			DJG_Biff_HalbeHalbe = FALSE;
+			DJG_BiffParty = FALSE;
+			DJG_BiffParty_nomore = (DJG_BiffParty_nomore + 2);
 		};
 };
 
@@ -632,9 +637,9 @@ func void DIA_Biff_MEHRGELD_zuTeuer ()
 	
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
-	self.aivar[AIV_PARTYMEMBER] = false;
-	DJG_BiffParty = false;
-	DJG_BiffParty_nomore += 2;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	DJG_BiffParty = FALSE;
+	DJG_BiffParty_nomore = (DJG_BiffParty_nomore + 2);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -646,16 +651,16 @@ instance DIA_Biff_HEILUNG		(C_INFO)
 	nr		 = 	4;
 	condition	 = 	DIA_Biff_HEILUNG_Condition;
 	information	 = 	DIA_Biff_HEILUNG_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Potrzebujesz mikstury leczniczej?";
 };
 
 func int DIA_Biff_HEILUNG_Condition ()
 {
-	if (DJG_BiffParty == true)
+	if (DJG_BiffParty == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -666,70 +671,48 @@ func void DIA_Biff_HEILUNG_Info ()
 
 	Info_ClearChoices	(DIA_Biff_HEILUNG);
 	Info_AddChoice	(DIA_Biff_HEILUNG, "Dam ci póŸniej.", DIA_Biff_HEILUNG_spaeter );
-	Info_AddChoice	(DIA_Biff_HEILUNG, "(najgorsza mikstura lecznicza)", DIA_Biff_HEILUNG_heiltrankLow );
-	Info_AddChoice	(DIA_Biff_HEILUNG, "(œrednia mikstura lecznicza)", DIA_Biff_HEILUNG_heiltrankMedium );
+	Info_AddChoice	(DIA_Biff_HEILUNG, "(najmniejsza mikstura lecznicza)", DIA_Biff_HEILUNG_heiltrankLow );
 	Info_AddChoice	(DIA_Biff_HEILUNG, "(najlepsza mikstura lecznicza)", DIA_Biff_HEILUNG_heiltrank );
 
 };
 func void DIA_Biff_HEILUNG_heiltrank ()
 {
-	if (B_GiveInvItems(other,self,ItPo_Health_03,1))
+	if (B_GiveInvItems (other, self, ItPo_Health_03,1))
 	{
-		B_UseItem (self, ItPo_Health_03);
+	B_UseItem (self, ItPo_Health_03);
 	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_02,1))
+	else if (B_GiveInvItems (other, self, ItPo_Health_02,1))
 	{
-		B_UseItem (self, ItPo_Health_02);
+	B_UseItem (self, ItPo_Health_02);
 	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_01,1))
+	else if (B_GiveInvItems (other, self, ItPo_Health_01,1))
 	{
-		B_UseItem (self, ItPo_Health_01);
-	}
-	else
-	{
-		AI_Output	(self, other, "DIA_Biff_HEILUNG_heiltrank_07_00"); //No to chyba musimy zaczekaæ, a¿ bêdziesz mia³ coœ dla mnie.
-	};
-
-	AI_StopProcessInfos (self);
-};
-func void DIA_Biff_HEILUNG_heiltrankMedium ()
-{
-	if (B_GiveInvItems(other,self,ItPo_Health_03,1))
-	{
-		B_UseItem (self, ItPo_Health_03);
-	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_02,1))
-	{
-		B_UseItem (self, ItPo_Health_02);
-	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_01,1))
-	{
-		B_UseItem (self, ItPo_Health_01);
+	B_UseItem (self, ItPo_Health_01);
 	}
 	else
 	{
-		AI_Output	(self, other, "DIA_Biff_HEILUNG_heiltrankLow_07_00"); //Niestety, nie mam nic w tej chwili. Wrócimy to tego póŸniej.
+	AI_Output			(self, other, "DIA_Biff_HEILUNG_heiltrank_07_00"); //No to chyba musimy zaczekaæ, a¿ bêdziesz mia³ coœ dla mnie.
 	};
 
 	AI_StopProcessInfos (self);
 };
 func void DIA_Biff_HEILUNG_heiltrankLow ()
 {
-	if (B_GiveInvItems(other,self,ItPo_Health_03,1))
+	if (B_GiveInvItems (other, self, ItPo_Health_01,1))
 	{
-		B_UseItem (self, ItPo_Health_03);
+	B_UseItem (self, ItPo_Health_01);
 	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_02,1))
+	else if (B_GiveInvItems (other, self, ItPo_Health_02,1))
 	{
-		B_UseItem (self, ItPo_Health_02);
+	B_UseItem (self, ItPo_Health_02);
 	}
-	else if (B_GiveInvItems(other,self,ItPo_Health_01,1))
+	else if (B_GiveInvItems (other, self, ItPo_Health_03,1))
 	{
-		B_UseItem (self, ItPo_Health_01);
+	B_UseItem (self, ItPo_Health_03);
 	}
 	else
 	{
-		AI_Output	(self, other, "DIA_Biff_HEILUNG_heiltrankLow_07_00"); //Niestety, nie mam nic w tej chwili. Wrócimy to tego póŸniej.
+	AI_Output			(self, other, "DIA_Biff_HEILUNG_heiltrankLow_07_00"); //Niestety, nie mam nic w tej chwili. Wrócimy to tego póŸniej.
 	};
 
 	AI_StopProcessInfos (self);
@@ -752,18 +735,16 @@ instance DIA_Biff_DRACHENTOT		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Biff_DRACHENTOT_Condition;
 	information	 = 	DIA_Biff_DRACHENTOT_Info;
-	important	 =  true;
-//	description	 = 	"Gotowe. Wszystkie smoki nie ¿yj¹.";
+
+	description	 = 	"Gotowe. Wszystkie smoki nie ¿yj¹.";
 };
 
 func int DIA_Biff_DRACHENTOT_Condition ()
 {
-	if (Npc_IsInState(self,ZS_Talk))
-	&& (DJG_BiffParty == true)
-	&& (MIS_AllDragonsDead == true)
-	{
-		return true;
-	};
+	if (DJG_BiffSurvivedLastDragon == TRUE) 
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Biff_DRACHENTOT_Info ()
@@ -773,7 +754,7 @@ func void DIA_Biff_DRACHENTOT_Info ()
 	AI_Output			(self, other, "DIA_Biff_DRACHENTOT_07_02"); //Jesteœ pewien, ¿e to by³ ostatni?
 	AI_Output			(other, self, "DIA_Biff_DRACHENTOT_15_03"); //Tak s¹dzê.
 	AI_Output			(self, other, "DIA_Biff_DRACHENTOT_07_04"); //Szkoda. Dopiero siê rozgrza³em.
-	B_GivePlayerXP(XP_BONUS_10);
+	B_GivePlayerXP (XP_BiffSurvivedLastDragon);
 };
 
 //#####################################################################
@@ -793,15 +774,15 @@ instance DIA_Biff_KnowWhereEnemy		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Biff_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Biff_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Masz ochotê na ma³¹ wycieczkê po œwiecie?";
 };
 func int DIA_Biff_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Biff_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Biff_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Biff_KnowWhereEnemy_Info ()
@@ -837,11 +818,11 @@ FUNC VOID DIA_Biff_KnowWhereEnemy_Yes ()
     Log_SetTopicStatus(TOPIC_Crew, LOG_RUNNING); 	                                                                                  	                       
     B_LogEntry (TOPIC_Crew,"Biff, zachêcony perspektyw¹ bogactwa, postanowi³ udaæ siê ze mn¹. Mogê na niego liczyæ, dopóki staæ mnie na jego us³ugi."); 
     
-    B_GivePlayerXP(XP_BONUS_5);   
+    B_GivePlayerXP (XP_Crewmember_Success);   
 
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Biff_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	Biff_FollowsThroughPass = LOG_RUNNING;
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"RunsToPass"); 
@@ -867,7 +848,7 @@ instance DIA_Biff_Pass		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_Biff_Pass_Condition;
 	information	 = 	DIA_Biff_Pass_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 
 	description	 = 	"Dasz radê przejœæ przez prze³êcz?";
 };
@@ -876,7 +857,7 @@ func int DIA_Biff_Pass_Condition ()
 	if (Npc_GetDistToWP(self,"START")<1000)
 	&& (Biff_IsOnBoard == LOG_SUCCESS) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 func void DIA_Biff_Pass_Info ()

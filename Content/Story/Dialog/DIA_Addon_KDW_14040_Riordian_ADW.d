@@ -8,12 +8,12 @@ INSTANCE DIA_Addon_Riordian_ADW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Riordian_ADW_EXIT_Condition;
 	information = DIA_Addon_Riordian_ADW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Riordian_ADW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Riordian_ADW_EXIT_Info()
 {
@@ -35,7 +35,7 @@ instance DIA_Addon_Riordian_HelloADW		(C_INFO)
 
 func int DIA_Addon_Riordian_HelloADW_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Riordian_HelloADW_Info ()
@@ -63,7 +63,7 @@ func int DIA_Addon_Riordian_WhatToFind_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Riordian_HelloADW))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -88,7 +88,7 @@ instance DIA_Addon_Riordian_Gegend		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Riordian_Gegend_Condition;
 	information	 = 	DIA_Addon_Riordian_Gegend_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Opowiedz mi wiêcej o tej okolicy.";
 };
@@ -96,9 +96,9 @@ instance DIA_Addon_Riordian_Gegend		(C_INFO)
 func int DIA_Addon_Riordian_Gegend_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Riordian_WhatToFind))
-	&& (Saturas_RiesenPlan == false)
+	&& (Saturas_RiesenPlan == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 var int DIA_Addon_Riordian_Gegend_Info_OneTime;
@@ -110,11 +110,11 @@ func void DIA_Addon_Riordian_Gegend_Info ()
 	Info_ClearChoices	(DIA_Addon_Riordian_Gegend);
 	Info_AddChoice	(DIA_Addon_Riordian_Gegend, DIALOG_BACK, DIA_Addon_Riordian_Gegend_Back );
 	
-	if (DIA_Addon_Riordian_Gegend_Info_OneTime == false)
-	&& (Npc_HasItems (other,ItWr_Map_AddonWorld) == false)
+	if (DIA_Addon_Riordian_Gegend_Info_OneTime == FALSE)
+	&& (Npc_HasItems (other,ItWr_Map_AddonWorld) == FALSE)
 	{
 		Info_AddChoice	(DIA_Addon_Riordian_Gegend, "Czy istnieje mapa tego regionu?", DIA_Addon_Riordian_Gegend_map );
-		DIA_Addon_Riordian_Gegend_Info_OneTime = true;
+		DIA_Addon_Riordian_Gegend_Info_OneTime = TRUE;
 	};
 	
 	Info_AddChoice	(DIA_Addon_Riordian_Gegend, "Gdzie widzia³eœ piratów?", DIA_Addon_Riordian_Gegend_Piraten );
@@ -174,13 +174,13 @@ func void DIA_Addon_Riordian_Gegend_west ()
 	AI_Output			(self, other, "DIA_Addon_Riordian_Gegend_west_10_01"); //Nie, ale tam na pewno jest wybrze¿e.
 	AI_Output			(self, other, "DIA_Addon_Riordian_Gegend_west_10_02"); //Podejrzewam, ¿e piraci maj¹ tam swój obóz.
 
-	if (DIA_Addon_Riordian_Gegend_west_OneTime == false)
-	&& (Npc_HasItems(VLK_4304_Addon_William,ItMi_OldCoin))
+	if (DIA_Addon_Riordian_Gegend_west_OneTime == FALSE)
+	&& (Npc_HasItems (VLK_4304_Addon_William,ITWr_Addon_William_01))
 	{
 		AI_Output			(self, other, "DIA_Addon_Riordian_Gegend_west_10_03"); //Na wschodzie, niedaleko st¹d, znaleŸliœmy zw³oki rybaka.
 		AI_Output			(self, other, "DIA_Addon_Riordian_Gegend_west_10_04"); //Powinieneœ siê temu przyjrzeæ.
 		B_LogEntry (TOPIC_Addon_MissingPeople,LogText_Addon_WilliamLeiche); 
-		DIA_Addon_Riordian_Gegend_west_OneTime = true;
+		DIA_Addon_Riordian_Gegend_west_OneTime = TRUE;
 	};
 };
 
@@ -201,7 +201,7 @@ func int DIA_Addon_Riordian_HousesOfRulers_Condition ()
 {
 	if (MIS_Saturas_LookingForHousesOfRulers == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -229,9 +229,9 @@ instance DIA_Addon_Riordian_WhereAreHouses		(C_INFO)
 func int DIA_Addon_Riordian_WhereAreHouses_Condition ()
 {
 	if (MIS_Riordian_HousesOfRulers == LOG_RUNNING)
-	&& (Saturas_SCBroughtAllToken == false)
+	&& (Saturas_SCBroughtAllToken == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 var int B_WhreAreHousesOfRulersOneTime;
@@ -242,15 +242,15 @@ func void B_WhreAreHousesOfRulers ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_WhereAreHouses_10_02"); //Die Priester und die Totenwächter hatten ihre Behausungen nahe beieinander. Du solltest sie im Südwesten finden.
 	AI_Output	(self, other, "DIA_Addon_Riordian_WhereAreHouses_10_03"); //Und die Heiler hatten ihr Haus der Genesung im Südosten.
 
-	if (B_WhreAreHousesOfRulersOneTime == false)
+	if (B_WhreAreHousesOfRulersOneTime == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Riordian_WhereAreHouses_10_04"); //Wenn diese Häuser noch stehen, dann wirst du sie an ihrer Bauweise erkennen.
-		B_WhreAreHousesOfRulersOneTime = true;
+		B_WhreAreHousesOfRulersOneTime = TRUE;
 	};
 
 	AI_Output	(self, other, "DIA_Addon_Riordian_WhereAreHouses_10_05"); //Sie sind erhöht. Eine steile Treppe führt in den von hohen Säulen verdeckten Eingang.
 
-	if (B_WhreAreHousesOfRulersOneTime == false)
+	if (B_WhreAreHousesOfRulersOneTime == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Riordian_WhereAreHouses_10_06"); //Ich hoffe, das hilft dir weiter.
 	};
@@ -278,7 +278,7 @@ instance DIA_Addon_Riordian_FoundHouse		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Riordian_FoundHouse_Condition;
 	information	 = 	DIA_Addon_Riordian_FoundHouse_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wegen der Herrenhäuser...";
 };
@@ -289,7 +289,7 @@ func int DIA_Addon_Riordian_FoundHouse_Condition ()
 	&& (Npc_KnowsInfo (other, DIA_Addon_Riordian_WhereAreHouses))
 	&& (RiordianHousesFoundCount < 5)
 		{
-			return true;
+			return TRUE;
 		};
 };
 var int FOUNDHOUSEINFO[6];
@@ -307,69 +307,69 @@ func void DIA_Addon_Riordian_FoundHouse_Info ()
 	AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_00"); //Äh, wegen der Herrenhäuser ...
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_01"); //Ja?
 	
-	if (SC_COMESINTO_CANYONLIBRARY_FUNC_OneTime == true)
-	&& (FOUNDHOUSEINFO [Library] == false)
+	if (SC_COMESINTO_CANYONLIBRARY_FUNC_OneTime == TRUE)
+	&& (FOUNDHOUSEINFO [Library] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_02"); //Die Orks scheinen sich für die Bibliothek der Gelehrten zu interessieren.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_03"); //Denkst du, dass sie die alte Sprache lesen können?
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_04"); //Ich denke nicht, aber wer weiß das schon.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_05"); //Vielleicht solltest du trotzdem besser dafür sorgen, dass sie verschwinden.
-		FOUNDHOUSEINFO[Library] = true;
-		RiordianHouseNeuigkeit += 1;
+		FOUNDHOUSEINFO[Library] = TRUE;
+		RiordianHouseNeuigkeit = (RiordianHouseNeuigkeit + 1);
 		
 		Log_CreateTopic (TOPIC_Addon_CanyonOrcs, LOG_MISSION);
 		Log_SetTopicStatus(TOPIC_Addon_CanyonOrcs, LOG_RUNNING);
 		B_LogEntry (TOPIC_Addon_CanyonOrcs,"Dem Wassermagier Riordian wäre es lieber, wenn die Orks aus dem Canyon verschwinden."); 
 	};
 	
-	if ((Npc_IsDead(StoneGuardian_Heiler)) || (Npc_HasItems (other,ItMi_Addon_Stone_04)) || (Saturas_SCFound_ItMi_Addon_Stone_04 == true) )
-	&& (FOUNDHOUSEINFO [Heiler] == false)
+	if ((Npc_IsDead(StoneGuardian_Heiler)) || (Npc_HasItems (other,ItMi_Addon_Stone_04)) || (Saturas_SCFound_ItMi_Addon_Stone_04 == TRUE) )
+	&& (FOUNDHOUSEINFO [Heiler] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_06"); //Das Haus der Heiler steht mitten in der Sumpfregion und wurde von einer Menge Steinwächtern verteidigt.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_07"); //Es steht also immer noch?
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_08"); //Ja, fragt sich nur, wie lange noch ...
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_09"); //Mich schmerzt es in der Seele, wenn ich die Zeugen der Vergangeheit in diesem zerfallenen Zustand sehe.
-		FOUNDHOUSEINFO[Heiler] = true;
-		RiordianHouseNeuigkeit += 1;
+		FOUNDHOUSEINFO[Heiler] = TRUE;
+		RiordianHouseNeuigkeit = (RiordianHouseNeuigkeit + 1);
 	};	
 
-	if (RavenIsInTempel == true)
-	&& (FOUNDHOUSEINFO [Warrior] == false)
+	if (RavenIsInTempel == TRUE)
+	&& (FOUNDHOUSEINFO [Warrior] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_10"); //Das Herrenhaus der Krieger wurde von Raven als Unterschlupf verwendet.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_11"); //(zynisch) Da hat er eine gute Wahl getroffen.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_12"); //Vermutlich ist es die sicherste Festung, die in dieser Region noch zu finden ist.
-		FOUNDHOUSEINFO[Warrior] = true;
-		RiordianHouseNeuigkeit += 1;
+		FOUNDHOUSEINFO[Warrior] = TRUE;
+		RiordianHouseNeuigkeit = (RiordianHouseNeuigkeit + 1);
 	};	
 
-	if ((Npc_IsDead(Minecrawler_Priest)) || (Npc_HasItems (other,ItMi_Addon_Stone_03)) || (Saturas_SCFound_ItMi_Addon_Stone_03 == true))
-	&& (FOUNDHOUSEINFO [Priest] == false)//crawler
+	if ((Npc_IsDead(Minecrawler_Priest)) || (Npc_HasItems (other,ItMi_Addon_Stone_03)) || (Saturas_SCFound_ItMi_Addon_Stone_03 == TRUE))
+	&& (FOUNDHOUSEINFO [Priest] == FALSE)//crawler
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_13"); //Im Haus der Priester waren jede Menge Minecrawler ...
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_14"); //Ist so eine Gegend nicht sehr ungewöhnlich für diese Tiere?
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_15"); //Allerdings.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_16"); //Bei Adanos. Seltsame Dinge geschehen in dieser Region.
 		
-		FOUNDHOUSEINFO[Priest] = true;
-		RiordianHouseNeuigkeit += 1;
+		FOUNDHOUSEINFO[Priest] = TRUE;
+		RiordianHouseNeuigkeit = (RiordianHouseNeuigkeit + 1);
 	};	
 
-	if ((Npc_IsDead(MayaZombie_Totenw)) || (Npc_HasItems (other,ItMi_Addon_Stone_02)) || (Saturas_SCFound_ItMi_Addon_Stone_02 == true))
-	&& (FOUNDHOUSEINFO[Totenw] == false)
+	if ((Npc_IsDead(MayaZombie_Totenw)) || (Npc_HasItems (other,ItMi_Addon_Stone_02)) || (Saturas_SCFound_ItMi_Addon_Stone_02 == TRUE))
+	&& (FOUNDHOUSEINFO [Totenw] == FALSE)//Zombies
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_17"); //Das Haus der Totenwächter wird beherrscht von der Macht des Bösen.
 		AI_Output	(other, self, "DIA_Addon_Riordian_FoundHouse_15_18"); //Ich glaub, ich habe selten so viele Zombies auf einem Haufen gesehen.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_19"); //Das ist bedauerlich. Die Totenwächter wurden offenbar Opfer ihrer speziellen Fähigkeiten.
 		AI_Output	(self, other, "DIA_Addon_Riordian_FoundHouse_10_20"); //Ihre Verbundenheit zur Totenwelt hat ihnen schwer geschadet. Ich hoffe, du hast sie von ihrem Leid erlösen können.
-		FOUNDHOUSEINFO[Totenw] = true;
-		RiordianHouseNeuigkeit += 1;
+		FOUNDHOUSEINFO[Totenw] = TRUE;
+		RiordianHouseNeuigkeit = (RiordianHouseNeuigkeit + 1);
 	};	
 	
 	if (RiordianHouseNeuigkeit > 0)
 	{
 		var int RiordianHouseXPs;
-		RiordianHouseXPs = (XP_BONUS_1 * RiordianHouseNeuigkeit);
+		RiordianHouseXPs = (XP_Addon_Riordian_FoundHouse * RiordianHouseNeuigkeit);
 		B_GivePlayerXP (RiordianHouseXPs);
 		
 		RiordianHousesFoundCount = (RiordianHousesFoundCount + RiordianHouseNeuigkeit);
@@ -397,9 +397,9 @@ instance DIA_Addon_Riordian_OrksWeg		(C_INFO)
 func int DIA_Addon_Riordian_OrksWeg_Condition ()
 {
 	if (Npc_IsDead(OrcShaman_Sit_CanyonLibraryKey))
-	&& (FOUNDHOUSEINFO[Library] == true)
+	&& (FOUNDHOUSEINFO [Library] == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -408,7 +408,7 @@ func void DIA_Addon_Riordian_OrksWeg_Info ()
 	AI_Output	(other, self, "DIA_Addon_Riordian_OrksWeg_15_00"); //Die Orks werden das Interesse an dieser Region bald verlieren.
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_01"); //Wie kommst du darauf?
 
-	if (OrcShaman_Sit_CanyonLibraryKey.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
+	if (OrcShaman_Sit_CanyonLibraryKey.aivar [AIV_KilledByPlayer] == TRUE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_OrksWeg_15_02"); //Ich habe ihren Anführer getötet.
 	}
@@ -420,8 +420,8 @@ func void DIA_Addon_Riordian_OrksWeg_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_04"); //Wollen wir hoffen, dass du Recht hast.
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_05"); //Störungen dieser Art können wir jetzt nun wirklich nicht gebrauchen.
 	
-	TOPIC_END_CanyonOrcs = true;
-	B_GivePlayerXP(XP_BONUS_3);
+	TOPIC_END_CanyonOrcs = TRUE;
+	B_GivePlayerXP (XP_Addon_Riordian_OrksWeg);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -442,7 +442,7 @@ func int DIA_Addon_Riordian_FoundAllHouses_Condition ()
 	if (RiordianHousesFoundCount >= 5)
 	&& (MIS_Riordian_HousesOfRulers == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -454,24 +454,25 @@ func void DIA_Addon_Riordian_FoundAllHouses_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_03"); //Sehr gut. Dann hat sich meine Arbeit ja DOCH gelohnt.
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_04"); //Ich danke dir.
 	MIS_Riordian_HousesOfRulers = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Addon_FoundAllHouses);
 };
 
 ///////////////////////////////////////////////////////////////////////
 //	Info PreTeach
 ///////////////////////////////////////////////////////////////////////
-instance DIA_Addon_Riordian_ADW_PreTeach (C_INFO)
+instance DIA_Addon_Riordian_ADW_PreTeach		(C_INFO)
 {
-	npc		 	= 	KDW_14040_Addon_Riordian_ADW;
-	nr		 	= 	5;
+	npc		 = 	KDW_14040_Addon_Riordian_ADW;
+	nr		 = 	5;
 	condition	 = 	DIA_Addon_Riordian_ADW_PreTeach_Condition;
 	information	 = 	DIA_Addon_Riordian_ADW_PreTeach_Info;
-	description	 = 	"Mo¿esz mnie czegoœ nauczyæ?";
+
+	description	 = 	"Kannst du mir deine Fähigkeiten beibringen?";
 };
 
-func int DIA_Addon_Riordian_ADW_PreTeach_Condition()
+func int DIA_Addon_Riordian_ADW_PreTeach_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Riordian_ADW_PreTeach_Info ()
@@ -479,8 +480,335 @@ func void DIA_Addon_Riordian_ADW_PreTeach_Info ()
 	AI_Output	(other, self, "DIA_Addon_Riordian_ADW_PreTeach_15_00"); //Kannst du mir deine Fähigkeiten beibringen?
 	AI_Output	(self, other, "DIA_Addon_Riordian_ADW_PreTeach_10_01"); //Ich kann dich in der Kunst der Alchemie unterrichten.
 
-	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
-	B_LogEntry (TOPIC_Addon_KDWTeacher, LogText_Addon_RiordianTeachAlchemy);
+	if  (Npc_HasItems (other,ItAm_Addon_WispDetector))
+	&& (DIA_Addon_Riordian_Teach_NoPerm == FALSE)
+	{
+		AI_Output	(self, other, "DIA_Addon_Riordian_ADW_PreTeach_10_02"); //Und ich kann dir zeigen, wie du deinem Irrlicht beibringst, nach Gegenständen zu suchen.
+	
+		Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
+		Log_AddEntry		(TOPIC_Addon_KDWTeacher, LogText_Addon_RiordianTeach);
+	};
 
-	self.aivar[AIV_CanTeach] = true;
+	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
+	B_LogEntry	(TOPIC_Addon_KDWTeacher, LogText_Addon_RiordianTeachAlchemy);
+
+	Riordian_ADW_ADDON_TeachWisp = TRUE;
+	Riordian_ADW_ADDON_TeachAlchemy = TRUE;
+	
 };
+
+instance DIA_Addon_Riordian_ADW_Teach		(C_INFO)
+{
+	npc		 = 	KDW_14040_Addon_Riordian_ADW;
+	nr		 = 	90;
+	condition	 = 	DIA_Addon_Riordian_ADW_Teach_Condition;
+	information	 = 	DIA_Addon_Riordian_ADW_Teach_Info;
+	permanent	 = 	TRUE;
+
+	description	 = 	"Zeig mir, wie ich mein Irrlicht unterrichte.";
+};
+var int DIA_Addon_Riordian_ADW_Teach_NoPerm;
+
+func int DIA_Addon_Riordian_ADW_Teach_Condition ()
+{
+	if (DIA_Addon_Riordian_ADW_Teach_NoPerm == FALSE)
+	&& (DIA_Addon_Riordian_Teach_NoPerm == FALSE)
+	&& (Riordian_ADW_ADDON_TeachWisp == TRUE)
+	&& (Npc_HasItems (other,ItAm_Addon_WispDetector))
+		{
+			return TRUE;
+		};
+};
+func void DIA_Addon_Riordian_ADW_Teach_Info ()
+{
+	B_DIA_Addon_Riordian_Teach_15_00 ();
+
+	if ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NF]	 	== FALSE)
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF]		== FALSE)
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] 	== FALSE)	
+	{                                            
+		Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+		Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,DIALOG_BACK,DIA_Addon_Riordian_ADW_Teach_BACK);
+		B_DIA_Addon_Riordian_Teach_10_01 ();
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF] == FALSE)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FF, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FF)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] == FALSE)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_NONE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_NONE)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE);
+		};	
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] == FALSE)
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_RUNE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_RUNE)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] == FALSE)
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_MAGIC, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_MAGIC)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] == FALSE)
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FOOD, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FOOD)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] == FALSE)
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_POTIONS, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_POTIONS)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS);
+		};
+	}
+	else 
+	{
+		B_DIA_Addon_Riordian_Teach_10_08 ();
+		DIA_Addon_Riordian_ADW_Teach_NoPerm = TRUE;
+	};
+};
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ()
+{
+	B_DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00 ();
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_BACK ()
+{
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF ()
+{
+	if B_TeachPlayerTalentWispDetector  (self, other, WISPSKILL_FF)
+	{
+		if (WISPSKILL_LEVEL < 2)
+		{
+			WISPSKILL_LEVEL = 2;
+		};
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_NONE)
+	{
+		if (WISPSKILL_LEVEL < 2)
+		{
+			WISPSKILL_LEVEL = 2;
+		};
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_RUNE)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_MAGIC)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_FOOD)
+	{
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_POTIONS)
+	{
+		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+};
+
+
+///////////////////////////////////////////////////////////////////////
+//	Info TeachAlchemy
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Riordian_ADW_TeachAlchemy   (C_INFO)
+{
+	npc         = KDW_14040_Addon_Riordian_ADW;
+	nr          = 2;
+	condition   = DIA_Riordian_ADW_TeachAlchemy_Condition;
+	information = DIA_Riordian_ADW_TeachAlchemy_Info;
+	permanent   = TRUE;
+	description = "Lehre mich die Kunst des Tränkebrauens.";
+};
+//----------------------------------------
+var int DIA_Riordian_ADW_TeachAlchemy_permanent;
+//----------------------------------------
+
+FUNC INT DIA_Riordian_ADW_TeachAlchemy_Condition()
+{	
+	if (DIA_Riordian_ADW_TeachAlchemy_permanent == FALSE)
+	&& (Riordian_ADW_ADDON_TeachAlchemy == TRUE)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Info()
+{
+	var int talente;
+	talente = 0;
+	AI_Output (other, self,"DIA_Addon_Riordian_ADW_TeachAlchemy_15_00");//Lehre mich die Kunst des Tränkebrauens.
+
+	if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Health] == FALSE)
+	{
+		Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,DIALOG_BACK,DIA_Riordian_ADW_TeachAlchemy_BACK);
+	};
+	if (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Essenz der Heilung", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)),DIA_Riordian_ADW_TeachAlchemy_Health_01);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == TRUE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Extrakt der Heilung", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_02)),DIA_Riordian_ADW_TeachAlchemy_Health_02);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Essenz", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)),DIA_Riordian_ADW_TeachAlchemy_Mana_01);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == TRUE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Extrakt", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_02)),DIA_Riordian_ADW_TeachAlchemy_Mana_02);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == TRUE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Elixier", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_03)),DIA_Riordian_ADW_TeachAlchemy_Mana_03);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Elixier des Geistes", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Mana)),DIA_Riordian_ADW_TeachAlchemy_Perm_Mana);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
+	{
+		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Elixier der Geschicklichkeit", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_DEX)),DIA_Riordian_ADW_TeachAlchemy_Perm_DEX);
+		talente = (talente + 1);
+	};
+
+	if (talente > 0)
+	{
+		if (Alchemy_Explain != TRUE)
+		{
+			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_01"); //Magische Tränke braut man an einem Alchemietisch. Wir haben einen davon in unserer Behausung hier oben.
+			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_02"); //Dafür benötigst du eine leere Laborflasche, die nötigen Ingredienzien und das Wissen, wie man den Trank herstellt.
+			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_03"); //Von mir kannst du das Wissen darüber bekommen. Die anderen Dinge wirst du dir selbst zusammensuchen müssen.
+			Alchemy_Explain = TRUE;
+		}
+		else
+		{
+			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_04"); //Was willst du brauen?
+		};
+	}
+	else 
+	{
+		AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_05"); //Ich kann dir nichts mehr zeigen, was du nicht schon kennst.
+		DIA_Riordian_ADW_TeachAlchemy_permanent = TRUE;
+	};
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_BACK ()
+{
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Health_01 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Health_02 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_02);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_01 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_02 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_02);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_03 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_03);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Perm_Mana ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Mana);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Perm_Dex ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_DEX);
+	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+};
+
+
+
+
+

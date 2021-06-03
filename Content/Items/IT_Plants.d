@@ -89,12 +89,12 @@ instance ItPl_Speed_Herb_01 (ItemPR_Plant)
 instance ItPl_SwampHerb (ItemPR_Plant)
 {
 	name 			=	"Bagienne ziele";
-
+	
 	value 			=	15;
 	visual 			=	"ItPl_SwampHerb.3ds";
 	scemeName		=	"MAPSEALED";
 	on_state[0]		=	Use_ItPl_SwampHerb;
-
+	
 	description		=	name;
 	TEXT[1]			=	"U¿ywane do tworzenia";
 	TEXT[2]			=	"mikstur zmiany percepcji.";
@@ -184,19 +184,19 @@ instance ItPl_Mushroom_01 (ItemPR_Plant)
 };
 instance ItPl_Mushroom_02 (ItemPR_Plant)
 {
+	name 			=	"Piekielnik";
+	value 			=	10;
+	visual			=	"ItPl_Mushroom_cave_small.3DS";
+	description		=	name;
+	COUNT[5]		=	value;
+};
+instance ItPl_Mushroom_03 (ItemPR_Plant)
+{
 	name 			=	"Truj¹cy grzyb";
 	value 			=	10;
 	visual 			=	"ItPl_Mushroom_venom_small.3DS";
 	description		=	name;
 	COUNT[5]		= 	value;
-};
-instance ItPl_Mushroom_03 (ItemPR_Plant)
-{
-	name 			=	"Jaskiniowy grzyb";
-	value 			=	10;
-	visual			=	"ItPl_Mushroom_cave_small.3DS";
-	description		=	name;
-	COUNT[5]		=	value;
 };
 instance ItPl_Mushroom_04 (ItemPR_Plant)
 {
@@ -213,8 +213,8 @@ instance ItPl_Forestberry (ItemPR_Plant)
 	value 			=	5;
 	visual 			=	"ItPl_Forestberry.3DS";
 
-	scemeName		=	"FASTUSE";
-	on_state[0]		=	MOBSI_MAKEALCOHOL_S1;
+//	scemeName		=	"FASTUSE";
+//	on_state[0]		=	MOBSI_MAKEALCOHOL_S1;
 
 	description		=	name;
 	COUNT[5]		=	value;
@@ -225,8 +225,8 @@ instance ItPl_Planeberry (ItemPR_Plant)
 	value 			=	5;
 	visual 			=	"ItPl_Planeberry.3DS";
 
-	scemeName		=	"FASTUSE";
-	on_state[0]		=	MOBSI_MAKEALCOHOL_S1;
+//	scemeName		=	"FASTUSE";
+//	on_state[0]		=	MOBSI_MAKEALCOHOL_S1;
 
 	description		=	name;
 	COUNT[5]		=	value;
@@ -238,4 +238,27 @@ instance ItPl_Blueplant (ItemPR_Plant)
 	visual 			=	"ItPl_Blueplant.3DS";
 	description		=	name;
 	COUNT[5]		= 	value;
+};
+
+
+/******************************************************************************************/
+
+INSTANCE ItPl_Weed(C_Item)
+{	
+	name 				=	"Chwasty";
+
+	mainflag 			=	ITEM_KAT_FOOD;
+	flags 				=	ITEM_MULTI;	
+
+	value 				=	0;
+
+	visual 				=	"ItPl_Weed.3ds";
+	material 			=	MAT_LEATHER;
+
+	scemeName			=	"FOOD";
+
+	description			= 	name;
+	
+	TEXT[5]				= 	NAME_Value;		
+	COUNT[5]			= 	value;
 };

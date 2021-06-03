@@ -1,44 +1,43 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DMT_1204_Dementor (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Dementor;
 	guild 								=	GIL_DMT;
 	id 									=	1204;
 	voice 								=	19;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
-
-	// ------ Aivars ------
-	aivar[AIV_EnemyOverride]			=	true;
 	bodyStateInterruptableOverride		=	true;
 
-	// ------ Attributes ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_EnemyOverride]			=	true;
+
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_MadPsi, 0, ITAR_Dementor);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1204;
 };
 
-FUNC VOID Rtn_Start_1204()
+func void Rtn_Start_1204()
 {
 	TA_Circle	(08,00,23,00, "NW_TROLLAREA_RITUAL_04");
     TA_Circle	(23,00,08,00, "NW_TROLLAREA_RITUAL_04");
 };
-FUNC VOID Rtn_AfterRitual_1204()
+func void Rtn_AfterRitual_1204()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_BIGFARM_ALLEE_07");
 	TA_Stand_Dementor	(07,00,08,00, "NW_BIGMILL_PATH_05");

@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Brandon_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Brandon_EXIT_Condition;
 	information	= DIA_Addon_Brandon_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Brandon_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Brandon_EXIT_Info()
 {	
@@ -29,14 +29,14 @@ INSTANCE DIA_Addon_Brandon_Hello(C_INFO)
 	condition	= DIA_Addon_Brandon_Hello_Condition;
 	information	= DIA_Addon_Brandon_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Brandon_Hello_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Brandon_Hello_Info()
@@ -55,18 +55,18 @@ INSTANCE DIA_Addon_Brandon_AnyNews(C_INFO)
 	nr			= 99;
 	condition	= DIA_Addon_Brandon_AnyNews_Condition;
 	information	= DIA_Addon_Brandon_AnyNews_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jakieœ wieœci?";
 };                       
 FUNC INT DIA_Addon_Brandon_AnyNews_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Brandon_AnyNews_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Brandon_AnyNews_15_00"); //Jakieœ wieœci?
 	
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
 		if (self.attribute[ATR_HITPOINTS] < 100)
 		{
@@ -74,7 +74,7 @@ FUNC VOID DIA_Addon_Brandon_AnyNews_Info()
 		}
 		else
 		{
-			if (C_AllCanyonRazorDead() == false)
+			if (C_AllCanyonRazorDead() == FALSE)
 			{
 				AI_Output (self ,other,"DIA_Addon_Brandon_Alright_04_02"); //A co potem? Wykoñczymy te bestie?
 			}
@@ -84,7 +84,7 @@ FUNC VOID DIA_Addon_Brandon_AnyNews_Info()
 			};
 		};
 	}
-	else if (GregIsBack == true)
+	else if (GregIsBack == TRUE)
 	&& (!Npc_IsDead(Greg))
 	&& (MIS_Addon_Greg_ClearCanyon != LOG_SUCCESS)
 	{
@@ -119,7 +119,7 @@ INSTANCE DIA_Addon_Brandon_WannaLearn (C_INFO)
 };                       
 FUNC INT DIA_Addon_Brandon_WannaLearn_Condition()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_Brandon_WannaLearn_Info()
 {
@@ -155,7 +155,7 @@ FUNC INT DIA_Addon_Brandon_HoleGrog_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Brandon_WannaLearn))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Brandon_HoleGrog_Info()
@@ -164,7 +164,7 @@ func void DIA_Addon_Brandon_HoleGrog_Info()
 	AI_Output (self ,other,"DIA_Addon_Brandon_HoleGrog_04_01"); //Chcesz mnie otruæ?
 	AI_Output (self ,other,"DIA_Addon_Brandon_HoleGrog_04_02"); //Chcesz mnie zabiæ?! Czy ty w ogóle masz pojêcie, z czego robi siê grog?
 	AI_Output (self ,other,"DIA_Addon_Brandon_HoleGrog_04_03"); //Stary Samuel pêdzi dobry trunek! Postaraj siê o niego.
-	if (Player_KnowsSchnellerHering == true)
+	if (Player_KnowsSchnellerHering == TRUE)
 	{
 		AI_Output (other,self ,"DIA_Addon_Brandon_Hello_15_05"); //Masz na myœli "Szybkiego œledzia"?
 		AI_Output (self ,other,"DIA_Addon_Brandon_HoleGrog_04_04"); //Tak w³aœnie!
@@ -194,64 +194,137 @@ INSTANCE DIA_Addon_Brandon_SchnellerHering (C_INFO)
 FUNC INT DIA_Addon_Brandon_SchnellerHering_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Brandon_WannaLearn))
-	&& (Npc_HasItems (other, ItFo_Hooch) > 0)
+	&& (Npc_HasItems (other, ItFo_Addon_SchnellerHering) > 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Brandon_SchnellerHering_Info()
 {
 	AI_Output (other,self ,"DIA_Addon_Pir_7_HenrysCrew_GiveGrog_15_00"); //Spróbuj tego.
-	B_GiveInvItems (other, self, ItFo_Hooch, 1);
-	B_UseItem (self, ItFo_Hooch);
+	B_GiveInvItems (other, self, ItFo_Addon_Schnellerhering, 1);
+	B_UseItem (self, ItFo_Addon_Schnellerhering);
 	AI_Output (self ,other,"DIA_Addon_Brandon_GiveGrog_04_01"); //Aaach! Smakuje jak p³ynny ogieñ!
 	
 	B_LogEntry (TOPIC_Addon_BrandonBooze,"Da³em Brandonowi te paskudne pomyje. Teraz jest zadowolony i bêdzie mnie uczy³.");
 	
 	MIS_Brandon_BringHering = LOG_SUCCESS;
-	B_GivePlayerXP(XP_AMBIENT);
+	B_GivePlayerXP (XP_AMBIENT);
 };
 
 
 // ------------------------------------------------------------
 // 			 Bring mir was bei! 
 // ------------------------------------------------------------
-
-var int Brandon_Bonus;
-
+var int	Brandon_Merke_Str;
+var int	Brandon_Merke_Dex;
+// ------------------------------------------------------------
 INSTANCE DIA_Addon_Brandon_TeachPlayer(C_INFO)
 {
 	npc			= PIR_1366_Addon_Brandon;
 	nr			= 777;
 	condition	= DIA_Addon_Brandon_TeachPlayer_Condition;
 	information	= DIA_Addon_Brandon_TeachPlayer_Info;
-	permanent	= true;
+	permanent	= FALSE;	//TRUE
 	description = "Naucz mnie czegoœ.";
 };                       
 FUNC INT DIA_Addon_Brandon_TeachPlayer_Condition()
 {
-	if (Npc_KnowsInfo (other, DIA_Addon_Brandon_WannaLearn))
-	&& (Brandon_Bonus == false)
+	//if (Npc_KnowsInfo (other, DIA_Addon_Brandon_WannaLearn))
+	if MIS_Brandon_BringHering == LOG_SUCCESS
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Brandon_TeachPlayer_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Francis_TeachPlayer_15_00"); //Naucz mnie czegoœ.
 	
-	if (MIS_Brandon_BringHering == LOG_SUCCESS)
-	&& (Brandon_Bonus == false)
+	Brandon_Merke_Str = other.attribute[ATR_STRENGTH];
+	Brandon_Merke_Dex = other.attribute[ATR_DEXTERITY];
+	
+	if MIS_Brandon_BringHering == LOG_SUCCESS
 	{
-		AI_Output (self ,other,"DIA_Addon_Brandon_TeachPlayer_Back_04_01"); //Im jesteœ zrêczniejszy, tym ³atwiej bêdzie ci trafiæ cel w walce.
-		B_RaiseAttribute (other, ATR_DEXTERITY, 2);
-		Brandon_Bonus = true;
+		/*
+		Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+		Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
+		Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Addon_Brandon_TeachPlayer_DEX_1);
+		Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Brandon_TeachPlayer_DEX_5);
+		Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Addon_Brandon_TeachPlayer_STR_1);
+		Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Addon_Brandon_TeachPlayer_STR_5);
+		*/
+		B_RaiseAttribute(other, ATR_STRENGTH, 2);
 	}
 	else
 	{
 		AI_Output (self ,other,"DIA_Addon_Brandon_TeachPlayer_04_01"); //Mia³eœ przynieœæ mi coœ dobrego, ch³opcze!
 	};
 };
+/*
+// ------------------------------------------------------------
+FUNC VOID DIA_Addon_Brandon_TeachPlayer_Back()
+{
+	if other.attribute[ATR_STRENGTH] > Brandon_Merke_Str
+	{
+		AI_Output (self ,other,"DIA_Addon_Brandon_TeachPlayer_Back_04_00"); //Dobrze. Widzê, ¿e zyska³eœ trochê krzepy.
+	};
+	
+	if other.attribute[ATR_DEXTERITY] > Brandon_Merke_Dex
+	{
+		AI_Output (self ,other,"DIA_Addon_Brandon_TeachPlayer_Back_04_01"); //Im jesteœ zrêczniejszy, tym ³atwiej bêdzie ci trafiæ cel w walce.
+	};
+	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+};
+// ------------------------------------------------------------
+FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	
+	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Addon_Brandon_TeachPlayer_DEX_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Brandon_TeachPlayer_DEX_5);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Addon_Brandon_TeachPlayer_STR_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Addon_Brandon_TeachPlayer_STR_5);	
+};
+// ------------------------------------------------------------
+FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	
+	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Addon_Brandon_TeachPlayer_DEX_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Brandon_TeachPlayer_DEX_5);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Addon_Brandon_TeachPlayer_STR_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Addon_Brandon_TeachPlayer_STR_5);	
+};
+// ------------------------------------------------------------
+FUNC VOID DIA_Addon_Brandon_TeachPlayer_STR_1()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	
+	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Addon_Brandon_TeachPlayer_DEX_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Brandon_TeachPlayer_DEX_5);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Addon_Brandon_TeachPlayer_STR_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Addon_Brandon_TeachPlayer_STR_5);
+};
+// ------------------------------------------------------------
+FUNC VOID DIA_Addon_Brandon_TeachPlayer_STR_5()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+
+	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_Addon_Brandon_TeachPlayer_DEX_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnDex5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Brandon_TeachPlayer_DEX_5);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Addon_Brandon_TeachPlayer_STR_1);
+	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Addon_Brandon_TeachPlayer_STR_5);	
+};
+*/
+
 
 // ************************************************************
 // *** 														***
@@ -267,14 +340,14 @@ instance DIA_Addon_Brandon_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_Brandon_Anheuern_Condition;
 	information	= DIA_Addon_Brandon_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Powinieneœ mi pomóc.";
 };                       
 FUNC INT DIA_Addon_Brandon_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Brandon_Anheuern_Info()
@@ -295,22 +368,22 @@ instance DIA_Addon_Brandon_ComeOn(C_INFO)
 	nr		 	= 	12;
 	condition	= 	DIA_Addon_Brandon_ComeOn_Condition;
 	information	= 	DIA_Addon_Brandon_ComeOn_Info;
-	permanent	= 	true;
+	permanent	= 	TRUE;
 	description	= 	"ChodŸ ze mn¹.";
 };
 func int DIA_Addon_Brandon_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Brandon_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Brandon_ComeOn_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Brandon_Weiter_15_00"); //ChodŸ ze mn¹.
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_Brandon_ComeOn_04_02"); //Najpierw pójdziemy kawa³ek w kierunku obozu.
 		AI_StopProcessInfos (self);
@@ -321,7 +394,7 @@ func void DIA_Addon_Brandon_ComeOn_Info ()
 		AI_StopProcessInfos (self);
 		B_Addon_PiratesFollowAgain();
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -334,14 +407,14 @@ INSTANCE DIA_Addon_Brandon_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_Brandon_GoHome_Condition;
 	information	= DIA_Addon_Brandon_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_Brandon_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -352,7 +425,7 @@ FUNC VOID DIA_Addon_Brandon_GoHome_Info()
 	AI_Output (self ,other,"DIA_Addon_Brandon_GoHome_04_02"); //Mo¿e kiedyœ spotkamy siê przy kufelku.
 
 	AI_StopProcessInfos (self); 
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START"); //START! HOGE
 };
 
@@ -365,15 +438,15 @@ INSTANCE DIA_Addon_Brandon_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_Brandon_TooFar_Condition;
 	information	= DIA_Addon_Brandon_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Brandon_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -393,3 +466,10 @@ FUNC VOID DIA_Addon_Brandon_TooFar_Info()
 	
 	AI_StopProcessInfos (self); 
 };
+
+
+
+
+
+
+

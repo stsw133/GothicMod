@@ -7,12 +7,12 @@ INSTANCE DIA_Thorben_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Thorben_EXIT_Condition;
 	information	= DIA_Thorben_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Thorben_EXIT_Condition()
 {
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Thorben_EXIT_Info()
 {	
@@ -28,15 +28,15 @@ INSTANCE DIA_Thorben_angepisst(C_INFO)
 	nr			= 1;
 	condition	= DIA_Thorben_angepisst_Condition;
 	information	= DIA_Thorben_angepisst_Info;
-	permanent	= true;
-	important   = true; 
+	permanent	= TRUE;
+	important   = TRUE; 
 };                       
 FUNC INT DIA_Thorben_angepisst_Condition()
 {	
 	if (Npc_IsDead (Gritta))
 	&& (Npc_IsInState (self, ZS_Talk))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_angepisst_Info()
@@ -54,16 +54,16 @@ INSTANCE DIA_Thorben_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_Hallo_Condition;
 	information	= DIA_Thorben_Hallo_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Thorben_Hallo_Condition()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_Hallo_Info()
@@ -82,12 +82,12 @@ INSTANCE DIA_Thorben_Arbeit(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_Arbeit_Condition;
 	information	= DIA_Thorben_Arbeit_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Szukam pracy.";
 };                       
 FUNC INT DIA_Thorben_Arbeit_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Thorben_Arbeit_Info()
 {	
@@ -113,7 +113,7 @@ INSTANCE DIA_Thorben_OtherMasters(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_OtherMasters_Condition;
 	information	= DIA_Thorben_OtherMasters_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A co jeœli chcia³bym zostaæ czeladnikiem u jednego z pozosta³ych mistrzów?";
 };                       
 FUNC INT DIA_Thorben_OtherMasters_Condition()
@@ -121,7 +121,7 @@ FUNC INT DIA_Thorben_OtherMasters_Condition()
 	if (Npc_KnowsInfo (other, DIA_Thorben_Arbeit))
 	&& (Player_IsApprentice == APP_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_OtherMasters_Info()
@@ -187,7 +187,7 @@ INSTANCE DIA_Thorben_ZUSTIMMUNG(C_INFO)
 	nr			= 1;
 	condition	= DIA_Thorben_ZUSTIMMUNG_Condition;
 	information	= DIA_Thorben_ZUSTIMMUNG_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co z twoj¹ zgod¹ Mistrzu?";
 };                       
 FUNC INT DIA_Thorben_ZUSTIMMUNG_Condition()
@@ -195,7 +195,7 @@ FUNC INT DIA_Thorben_ZUSTIMMUNG_Condition()
 	if (Player_IsApprentice == APP_NONE)
 	&& (MIS_Thorben_GetBlessings == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_ZUSTIMMUNG_Info()
@@ -203,21 +203,21 @@ FUNC VOID DIA_Thorben_ZUSTIMMUNG_Info()
 	AI_Output (other, self,"DIA_Thorben_ZUSTIMMUNG_15_00"); //Co z twoj¹ zgod¹ Mistrzu?
 	AI_Output (self, other,"DIA_Thorben_ZUSTIMMUNG_06_01"); //Czy Vatras da³ ci swoje b³ogos³awieñstwo?
 	
-	if (Vatras_Segen == true)
+	if (Vatras_Segen == TRUE)
 	{
 		AI_Output (other, self,"DIA_Thorben_ZUSTIMMUNG_15_02"); //Tak.
 		AI_Output (self, other,"DIA_Thorben_ZUSTIMMUNG_06_03"); //A czy otrzyma³eœ równie¿ b³ogos³awieñstwo od kap³ana Innosa?
 		
-		if (Daron_Segen == true)
-		|| (Isgaroth_Segen == true)
+		if (Daron_Segen == TRUE)
+		|| (Isgaroth_Segen == TRUE)
 		|| (other.guild == GIL_KDF)
 		{
 			AI_Output (other, self,"DIA_Thorben_ZUSTIMMUNG_15_04"); //Tak.
 			AI_Output (self, other,"DIA_Thorben_ZUSTIMMUNG_06_05"); //Wiêc otrzymasz tak¿e moje b³ogos³awieñstwo. Niezale¿nie od wybranej œcie¿ki b¹dŸ dumny z dobrze wykonywanej pracy, ch³opcze!
 			
 			MIS_Thorben_GetBlessings = LOG_SUCCESS;
-			B_GivePlayerXP(XP_BONUS_1);
-
+			B_GivePlayerXP (XP_Zustimmung);
+			
 			Log_CreateTopic (TOPIC_Lehrling,LOG_MISSION);
 			Log_SetTopicStatus (TOPIC_Lehrling,LOG_RUNNING);
 			B_LogEntry (TOPIC_Lehrling,"Thorben mo¿e mi pomóc zostaæ czeladnikiem u jednego z mistrzów.");
@@ -244,14 +244,14 @@ INSTANCE DIA_Thorben_Locksmith(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_Locksmith_Condition;
 	information	= DIA_Thorben_Locksmith_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A wiêc wiesz sporo o œlusarstwie?";
 };                       
 FUNC INT DIA_Thorben_Locksmith_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Thorben_Arbeit))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_Locksmith_Info()
@@ -271,14 +271,14 @@ INSTANCE DIA_Thorben_Schuldenbuch(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_Schuldenbuch_Condition;
 	information	= DIA_Thorben_Schuldenbuch_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mam tutaj ksiêgê rachunkow¹ Lehmara...";
 };                       
 FUNC INT DIA_Thorben_Schuldenbuch_Condition()
 {	
 	if (Npc_HasItems (other, ItWr_Schuldenbuch) > 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_Schuldenbuch_Info()
@@ -290,7 +290,7 @@ FUNC VOID DIA_Thorben_Schuldenbuch_Info()
 	B_GiveInvItems (other, self, ItWr_Schuldenbuch, 1);
 	AI_Output (other, self,"DIA_Thorben_Schuldenbuch_15_04"); //A co dostanê w zamian?
 	AI_Output (self, other,"DIA_Thorben_Schuldenbuch_06_05"); //Nie mam ¿adnych pieniêdzy i nie mogê ofiarowaæ ci nic wiêcej ni¿ moj¹ najszczersz¹ wdziêcznoœæ.
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Schuldenbuch);
 };
 
 // ************************************************************
@@ -302,16 +302,16 @@ INSTANCE DIA_Thorben_PleaseTeach(C_INFO)
 	nr			= 2;
 	condition	= DIA_Thorben_PleaseTeach_Condition;
 	information	= DIA_Thorben_PleaseTeach_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mo¿esz mnie nauczyæ, jak otwieraæ zamki?";
 };                       
 FUNC INT DIA_Thorben_PleaseTeach_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Thorben_Locksmith))
-	&& (self.aivar[AIV_CanTeach] < true)
-	&& (Npc_GetTalentSkill(other,NPC_TALENT_PICKLOCK) == 0)
+	&& (Thorben_TeachPlayer == FALSE)
+	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKLOCK) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_PleaseTeach_Info()
@@ -322,24 +322,108 @@ FUNC VOID DIA_Thorben_PleaseTeach_Info()
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_01"); //Gdyby nie ty, do koñca ¿ycia sp³aca³bym Lehmara.
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_02"); //Nauczê ciê tego, co chcesz wiedzieæ.
-		self.aivar[AIV_CanTeach] = true;
+		Thorben_TeachPlayer = TRUE;
 	}
-	else if (Thorben_GotGold == true) //100 Gold bekommen
+	else if (Thorben_GotGold == TRUE) //100 Gold bekommen
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_03"); //Przynios³eœ mi 100 sztuk z³ota. To dobry uczynek z twojej strony.
-		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_02"); //Nauczê ciê tego, co chcesz wiedzieæ.
-		self.aivar[AIV_CanTeach] = true;
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_04"); //Jest mi bardzo g³upio, ale muszê poprosiæ ciê o wiêcej.
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_05"); //Jeœli szybko nie sp³acê swego d³ugu u Lehmara, naœle na mnie swoich zbirów.
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_06"); //Daj mi jeszcze 100 sztuk z³ota, a bêdê ciê uczy³.
+
+		Info_ClearChoices (DIA_Thorben_PleaseTeach);
+		Info_AddChoice (DIA_Thorben_PleaseTeach, "Ile sobie liczysz?", DIA_Thorben_PleaseTeach_Later);
+		Info_AddChoice (DIA_Thorben_PleaseTeach, "Dobrze, oto 100 sztuk z³ota.", DIA_Thorben_PleaseTeach_Pay100);
 	}
 	else if (MIS_Matteo_Gold == LOG_SUCCESS) //Grittas Schulden bezahlt
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_07"); //Sp³aci³eœ d³ug Gritty u Mattea. Wygl¹da na to, ¿e porz¹dny z ciebie cz³owiek. Nauczê ciê tego, co chcesz wiedzieæ.
-		self.aivar[AIV_CanTeach] = true;
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_08"); //Jednak nie mogê zrobiæ tego za darmo. Jestem zad³u¿ony po uszy i potrzebne mi s¹ pieni¹dze.
+		AI_Output (other, self,"DIA_Thorben_PleaseTeach_15_09"); //Ile sobie liczysz?
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_10"); //200 sztuk z³ota.
+		
+		Info_ClearChoices (DIA_Thorben_PleaseTeach);
+		Info_AddChoice (DIA_Thorben_PleaseTeach, "Mo¿e póŸniej...", DIA_Thorben_PleaseTeach_Later);
+		Info_AddChoice (DIA_Thorben_PleaseTeach, "Dobrze. Oto 200 sztuk z³ota.", DIA_Thorben_PleaseTeach_Pay200);
 	}
 	else
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_11"); //Hmmm... Nie wiem, czy mo¿na ci zaufaæ.
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_12"); //Kto wie, mo¿esz byæ jednym z tych darmozjadów, którzy przychodz¹ do miasta tylko po to, ¿eby opró¿niaæ skrzynie uczciwych obywateli.
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_13"); //Nie nauczê ciê niczego, dopóki nie przekonasz mnie, ¿e jesteœ uczciwym cz³owiekiem.
+	};
+};
+
+func void DIA_Thorben_PleaseTeach_Pay200()
+{
+	AI_Output (other, self,"DIA_Thorben_PleaseTeach_Pay200_15_00"); //Dobrze. Oto 200 sztuk z³ota.
+	
+	if (B_GiveInvItems (other, self, ItMi_Gold, 200))
+	{
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay200_06_01"); //Te pieni¹dze naprawdê mi pomog¹. Mo¿emy zacz¹æ, gdy tylko bêdziesz gotów.
+		Thorben_TeachPlayer = TRUE;
+	}
+	else
+	{
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay200_06_02"); //Wci¹¿ nie masz 200 sztuk z³ota. A ja potrzebujê tych pieniêdzy.
+	};
+	
+	Info_ClearChoices (DIA_Thorben_PleaseTeach);
+};
+
+func void DIA_Thorben_PleaseTeach_Pay100()
+{	
+	AI_Output (other, self,"DIA_Thorben_PleaseTeach_Pay100_15_00"); //Dobrze, oto 100 sztuk z³ota.
+		
+	if (B_GiveInvItems (other, self, ItMi_Gold, 100))
+	{
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay100_06_01"); //W takim wypadku mo¿emy zacz¹æ, kiedy tylko bêdziesz gotów.
+		Thorben_TeachPlayer = TRUE;
+	}
+	else
+	{
+		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay100_06_02"); //Hej, ci¹gle trochê brakuje do 100.
+	};
+	
+	Info_ClearChoices (DIA_Thorben_PleaseTeach);
+};
+	
+func void DIA_Thorben_PleaseTeach_Later()
+{	
+	AI_Output (other, self,"DIA_Thorben_PleaseTeach_Later_15_00"); //Mo¿e póŸniej...
+
+	Info_ClearChoices (DIA_Thorben_PleaseTeach);
+};
+
+// ************************************************************
+// 		Schlösser knacken lernen		//E4
+// ************************************************************
+INSTANCE DIA_Thorben_Teach(C_INFO)
+{
+	npc			= VLK_462_Thorben;
+	nr			= 2;
+	condition	= DIA_Thorben_Teach_Condition;
+	information	= DIA_Thorben_Teach_Info;
+	permanent	= TRUE;
+	description = B_BuildLearnString("Naucz mnie otwieraæ zamki!", B_GetLearnCostTalent(other, NPC_TALENT_PICKLOCK, 1));
+};                       
+FUNC INT DIA_Thorben_Teach_Condition()
+{	
+	if (Thorben_TeachPlayer == TRUE)
+	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKLOCK) == 0)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Thorben_Teach_Info()
+{	
+	AI_Output (other, self,"DIA_Thorben_Teach_15_00"); //Naucz mnie otwieraæ zamki!
+	
+	if B_TeachThiefTalent (self, other, NPC_TALENT_PICKLOCK)
+	{
+		AI_Output (self, other,"DIA_Thorben_Teach_06_01"); //Potrzebny jest ci jedynie wytrych. Jeœli bêdziesz porusza³ nim w zamku ostro¿nie w prawo i w lewo, mo¿esz odblokowaæ mechanizm.
+		AI_Output (self, other,"DIA_Thorben_Teach_06_02"); //Ale jeœli przesuniesz go za daleko lub za szybko w z³ym kierunku, to od razu siê z³amie.
+		AI_Output (self, other,"DIA_Thorben_Teach_06_03"); //Im wiêcej masz doœwiadczenia, tym mniej wytrychów bêdziesz potrzebowaæ. To w³aœciwie wszystko.
 	};
 };
 
@@ -352,15 +436,15 @@ INSTANCE DIA_Thorben_TRADE(C_INFO)
 	nr			= 3;
 	condition	= DIA_Thorben_TRADE_Condition;
 	information	= DIA_Thorben_TRADE_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mo¿esz mi sprzedaæ parê wytrychów?";
-	trade		= true;
+	trade		= TRUE;
 };                       
 FUNC INT DIA_Thorben_TRADE_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Thorben_Locksmith))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_TRADE_Info()
@@ -380,7 +464,7 @@ FUNC VOID DIA_Thorben_TRADE_Info()
 	&& (Kapitel > Dietrichgeben) 
 	{
 		CreateInvItems (self, ITKE_LOCKPICK,5);
-		Dietrichgeben += 1;
+		Dietrichgeben = Dietrichgeben +1;
 	};
 	Log_CreateTopic (Topic_CityTrader,LOG_NOTE);
 	B_LogEntry (Topic_CityTrader,"Stolarz Thorben sprzedaje wytrychy."); 
@@ -402,10 +486,10 @@ instance DIA_Addon_Thorben_MissingPeople		(C_INFO)
 func int DIA_Addon_Thorben_MissingPeople_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Thorben_Arbeit))
-	&& (SC_HearedAboutMissingPeople == true)
-	&& (Elvrich_GoesBack2Thorben == false)
+	&& (SC_HearedAboutMissingPeople == TRUE)
+	&& (Elvrich_GoesBack2Thorben == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -471,10 +555,10 @@ instance DIA_Addon_Thorben_ElvrichIsBack		(C_INFO)
 
 func int DIA_Addon_Thorben_ElvrichIsBack_Condition ()
 {
-	if (Elvrich_GoesBack2Thorben == true)
-	&& ((Npc_IsDead(Elvrich)) == false)
+	if (Elvrich_GoesBack2Thorben == TRUE)
+	&& ((Npc_IsDead(Elvrich)) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -498,14 +582,14 @@ INSTANCE DIA_Thorben_Paladine(C_INFO)
 	nr			= 4;
 	condition	= DIA_Thorben_Paladine_Condition;
 	information	= DIA_Thorben_Paladine_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co wiesz o paladynach?";
 };                       
 FUNC INT DIA_Thorben_Paladine_Condition()
 {	
 	if (other.guild != GIL_PAL)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Thorben_Paladine_Info()
@@ -527,7 +611,7 @@ INSTANCE DIA_Thorben_Bauernaufstand(C_INFO)
 	nr			= 4;
 	condition	= DIA_Thorben_Bauernaufstand_Condition;
 	information	= DIA_Thorben_Bauernaufstand_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiesz coœ o tym ch³opskim buncie?";
 };                       
 FUNC INT DIA_Thorben_Bauernaufstand_Condition()
@@ -536,7 +620,7 @@ FUNC INT DIA_Thorben_Bauernaufstand_Condition()
 	&& (other.guild != GIL_SLD)
 	&& (other.guild != GIL_DJG)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_Bauernaufstand_Info()
@@ -558,7 +642,7 @@ INSTANCE DIA_Thorben_Gritta(C_INFO)
 	nr			= 5;
 	condition	= DIA_Thorben_Gritta_Condition;
 	information	= DIA_Thorben_Gritta_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Przyszed³em w sprawie Gritty...";
 };                       
 FUNC INT DIA_Thorben_Gritta_Condition()
@@ -566,7 +650,7 @@ FUNC INT DIA_Thorben_Gritta_Condition()
 	if (MIS_Matteo_Gold == LOG_RUNNING)
 	&& (!Npc_IsDead (Gritta))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_Gritta_Info()
@@ -598,7 +682,7 @@ INSTANCE DIA_Thorben_GrittaHatteGold(C_INFO)
 	nr			= 5;
 	condition	= DIA_Thorben_GrittaHatteGold_Condition;
 	information	= DIA_Thorben_GrittaHatteGold_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Twoja siostrzenica mia³a 100 sztuk z³ota.";
 };                       
 FUNC INT DIA_Thorben_GrittaHatteGold_Condition()
@@ -607,7 +691,7 @@ FUNC INT DIA_Thorben_GrittaHatteGold_Condition()
 	&& (Npc_HasItems(Gritta, itmi_gold) < 100)
 	&& (!Npc_IsDead (Gritta))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Thorben_GrittaHatteGold_Info()
@@ -634,7 +718,7 @@ FUNC VOID DIA_Thorben_GrittaHatteGold_Info()
 
 func void B_Thorben_DeletePetzCrimeGritta()
 {
-	if (Gritta_GoldGiven == false)
+	if (Gritta_GoldGiven == FALSE)
 	{
 		AI_Output (self, other,"B_Thorben_DeletePetzCrimeGritta_06_00"); //Z tego co wiem o tej ma³ej ¿mii, to pobiegnie prosto do stra¿y miejskiej i oskar¿y ciê.
 		AI_Output (self, other,"B_Thorben_DeletePetzCrimeGritta_06_01"); //Dopilnujê, ¿eby ta sprawa zosta³a za³atwiona.
@@ -672,7 +756,26 @@ func void DIA_Thorben_GrittaHatteGold_HereItIs()
 	
 	B_Thorben_DeletePetzCrimeGritta();
 	
-	Thorben_GotGold = true;
+	Thorben_GotGold = TRUE;
 	
 	Info_ClearChoices (DIA_Thorben_GrittaHatteGold);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

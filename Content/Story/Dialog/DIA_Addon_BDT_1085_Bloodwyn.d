@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Bloodwyn_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Bloodwyn_EXIT_Condition;
 	information = DIA_Addon_Bloodwyn_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Bloodwyn_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Bloodwyn_EXIT_Info()
 {
@@ -28,14 +28,14 @@ INSTANCE DIA_Addon_Bloodwyn_Dead   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Bloodwyn_Dead_Condition;
 	information = DIA_Addon_Bloodwyn_Dead_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Bloodwyn_Dead_Condition()
 {	
 	if (Npc_GetDistToWP (self, "BL_RAVEN_09") <= 1000)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Bloodwyn_Dead_Info()
@@ -79,15 +79,15 @@ INSTANCE DIA_Addon_Bloodwyn_Wait   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Bloodwyn_Wait_Condition;
 	information = DIA_Addon_Bloodwyn_Wait_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Addon_Bloodwyn_Wait_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& (MineCrawler_Killed >= 9)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Bloodwyn_Wait_Info()
@@ -132,9 +132,9 @@ FUNC VOID Bloodwyn_Wut()
 {
 	AI_Output (self, other, "DIA_Addon_Bloodwyn_Wut_04_00");//Aaagh! Ty psie!
 	
-	self.attribute[ATR_STRENGTH]	  -= 5;
-	self.attribute[ATR_HITPOINTS]	  -= 5*HP_PER_LP;
-	self.attribute[ATR_HITPOINTS_MAX] -= 5*HP_PER_LP;
+	self.attribute[ATR_STRENGTH]	  = self.attribute[ATR_STRENGTH] 		-  5;
+	self.attribute[ATR_HITPOINTS]	  = self.attribute[ATR_HITPOINTS] 		-  25;
+	self.attribute[ATR_HITPOINTS_MAX] = self.attribute[ATR_HITPOINTS_MAX] 	-  25;
 };
 FUNC VOID Bloodwyn_Next_1()
 {
@@ -160,6 +160,7 @@ FUNC VOID DIA_Addon_Bloodwyn_Wait_BAD1()
 	Bloodwyn_Lach();
 	Bloodwyn_Next_1();
 	
+
 	Bloodwyn_Choices_2(); 
 };
 //------------------------------------------------------------------------------
@@ -169,6 +170,7 @@ FUNC VOID DIA_Addon_Bloodwyn_Wait_GOOD2()
 	Bloodwyn_Wut();
 	Bloodwyn_Next_2();
 	
+
 	Bloodwyn_Choices_3(); 
 };
 
@@ -178,6 +180,7 @@ FUNC VOID DIA_Addon_Bloodwyn_Wait_BAD2()
 	Bloodwyn_Lach();
 	Bloodwyn_Next_2();
 	
+
 	Bloodwyn_Choices_3();
 };
 //------------------------------------------------------------------------------
@@ -192,8 +195,35 @@ FUNC VOID DIA_Addon_Bloodwyn_Wait_GOOD3()
 
 FUNC VOID DIA_Addon_Bloodwyn_Wait_BAD3()
 {
+
 	AI_Output (other, self, "DIA_Addon_Bloodwyn_Wait_Raven_BAD3_15_00");//Tak, to pewnie by³ jego najwiêkszy b³¹d....
 	Bloodwyn_Wut();
 	Info_ClearChoices (DIA_Addon_Bloodwyn_Wait);
 	Info_AddChoice (DIA_Addon_Bloodwyn_Wait,PRINT_ADDON_ENOUGHTALK,DIA_Addon_Bloodwyn_Wait_FIGHT);
 };
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+
+

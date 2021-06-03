@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_BDT_10019_Wache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_10019_Wache_EXIT_Condition;
 	information = DIA_Addon_10019_Wache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_10019_Wache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10019_Wache_EXIT_Info()
 {	
@@ -27,12 +27,12 @@ INSTANCE DIA_Addon_BDT_10019_Wache_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10019_Wache_Hi_Condition;
 	information = DIA_Addon_10019_Wache_Hi_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_10019_Wache_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10019_Wache_Hi_Info()
 {	
@@ -66,3 +66,7 @@ FUNC VOID DIA_Addon_BDT_10019_Wache_Hi_Ja()
 	B_Say_Wache_kaputt();
 	Info_ClearChoices (DIA_Addon_BDT_10019_Wache_Hi);
 };	
+	
+	
+	
+

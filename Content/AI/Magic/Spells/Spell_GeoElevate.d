@@ -40,7 +40,7 @@ var int SPL_GeoElevate_Dist;
 const int Elevate_Dist_max					=	1144700928;          // 747cm
 
 ///******************************************************************************************
-INSTANCE Spell_GeoElevate (C_Spell_Proto)
+instance Spell_GeoElevate (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -354,7 +354,7 @@ func int Spell_GeoElevate_Init(var C_NPC slf)
 ///******************************************************************************************
 func int Spell_Logic_GeoElevate(var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate)
 	{
 		return SPL_SENDCAST;
@@ -430,11 +430,11 @@ func int Spell_Logic_GeoElevate(var int manaInvested)
 
 func void Spell_Cast_GeoElevate (var int spellLevel)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_GeoElevate/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_GeoElevate/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_GeoElevate;
 	};

@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BAU_913_Thekla (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Thekla";
 	guild 								=	GIL_BAU;
 	id 									=	913;
 	voice 								=	17;
-	flags      							=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Weak);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Babe", FaceBabe_Normal02, Teeth_Pretty, ITAR_WD_L_04);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_913;
 };
 
-FUNC VOID Rtn_Start_913()
+func void Rtn_Start_913()
 {	
 	TA_Stand_Guarding	(08,00,08,30, "NW_BIGFARM_KITCHEN_BARKEEPER");
 	TA_Cook_Stove		(08,30,09,00, "NW_BIGFARM_KITCHEN_COOK");

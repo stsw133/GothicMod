@@ -7,12 +7,12 @@ INSTANCE DIA_Dyrian_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Dyrian_EXIT_Condition;
 	information = DIA_Dyrian_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Dyrian_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Dyrian_EXIT_Info()
 {
@@ -27,18 +27,18 @@ INSTANCE DIA_Dyrian_Hello   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dyrian_Hello_Condition;
 	information = DIA_Dyrian_Hello_Info;
-	permanent   = false;
-	important  	= true;
+	permanent   = FALSE;
+	important  	= TRUE;
 };
 FUNC INT DIA_Dyrian_Hello_Condition()
 {
-	if (Npc_IsInState (self, ZS_Talk))
-	&& (MIS_RUNE == false)
-	&& (MIS_SCHNITZELJAGD == false)
-	&& (MIS_GOLEM == false)
-	&& (other.guild == GIL_NOV)
+	if  (Npc_IsInState (self, ZS_Talk))
+	&&	(MIS_RUNE == FALSE)
+	&&	(MIS_SCHNITZELJAGD == FALSE)
+	&&	(MIS_GOLEM == FALSE)
+	&&  (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_Hello_Info()
@@ -54,18 +54,18 @@ INSTANCE DIA_Dyrian_Wurst(C_INFO)
 	nr			= 3;
 	condition	= DIA_Dyrian_Wurst_Condition;
 	information	= DIA_Dyrian_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jestem zajêty roznoszeniem kie³bas.";
 };                       
 
 FUNC INT DIA_Dyrian_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -75,7 +75,7 @@ FUNC VOID DIA_Dyrian_Wurst_Info()
 	AI_Output (self, other, "DIA_Dyrian_Wurst_13_01"); //Dziêkujê. Mam nadziejê, ¿e to nie jest ostatnia kie³basa, jak¹ przyjdzie mi tutaj zjeœæ.
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -95,17 +95,17 @@ INSTANCE DIA_Dyrian_Job   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dyrian_Job_Condition;
 	information = DIA_Dyrian_Job_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tu porabiasz?";
 };
 FUNC INT DIA_Dyrian_Job_Condition()
 {	
 	if Npc_KnowsInfo (hero,DIA_Dyrian_Hello)
-	&&	(MIS_RUNE == false)
-	&&	(MIS_SCHNITZELJAGD == false)
-	&&	(MIS_GOLEM == false)
+	&&	(MIS_RUNE == FALSE)
+	&&	(MIS_SCHNITZELJAGD == FALSE)
+	&&	(MIS_GOLEM == FALSE)
 	{
-		return true;	
+		return TRUE;	
 	};
 };
 FUNC VOID DIA_Dyrian_Job_Info()
@@ -124,17 +124,17 @@ INSTANCE DIA_Dyrian_WhatDone   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dyrian_WhatDone_Condition;
 	information = DIA_Dyrian_WhatDone_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Opowiedz mi, co zasz³o.";
 };
 FUNC INT DIA_Dyrian_WhatDone_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Dyrian_Job))
-	&&	(MIS_RUNE == false)
-	&&	(MIS_SCHNITZELJAGD == false)
-	&&	(MIS_GOLEM == false)
+	&&	(MIS_RUNE == FALSE)
+	&&	(MIS_SCHNITZELJAGD == FALSE)
+	&&	(MIS_GOLEM == FALSE)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dyrian_WhatDone_Info()
@@ -155,17 +155,17 @@ INSTANCE DIA_Dyrian_CanHelp   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Dyrian_CanHelp_Condition;
 	information = DIA_Dyrian_CanHelp_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Czy mogê ci jakoœ pomóc?";
 };
 FUNC INT DIA_Dyrian_CanHelp_Condition()
 {	
 	if Npc_KnowsInfo(hero,DIA_Dyrian_Job)
-	&&	(MIS_RUNE == false)
-	&&	(MIS_SCHNITZELJAGD == false)
-	&&	(MIS_GOLEM == false)
+	&&	(MIS_RUNE == FALSE)
+	&&	(MIS_SCHNITZELJAGD == FALSE)
+	&&	(MIS_GOLEM == FALSE)
 	{
-		return true;	
+		return TRUE;	
 	};
 };
 FUNC VOID DIA_Dyrian_CanHelp_Info()
@@ -182,8 +182,8 @@ INSTANCE DIA_Dyrian_Scroll   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dyrian_Scroll_Condition;
 	information = DIA_Dyrian_Scroll_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Dyrian_Scroll_Condition()
 {
@@ -191,7 +191,7 @@ FUNC INT DIA_Dyrian_Scroll_Condition()
 	||	(MIS_RUNE == LOG_RUNNING)
 	||	(MIS_GOLEM == LOG_RUNNING))
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dyrian_Scroll_Info()
@@ -228,6 +228,7 @@ FUNC VOID DIA_Dyrian_Scroll_How ()
 	Info_ClearChoices (DIA_Dyrian_Scroll);
 	Info_AddChoice (DIA_Dyrian_Scroll,"Nie, nie potrzebujê twojej pomocy.",DIA_Dyrian_Scroll_No);
 	Info_AddChoice (DIA_Dyrian_Scroll,"Dobrze, daj mi ten zwój.",DIA_Dyrian_Scroll_Yes);
+	
 };
 FUNC VOID DIA_Dyrian_Scroll_Yes ()
 {
@@ -251,7 +252,7 @@ INSTANCE DIA_Dyrian_Doch   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Dyrian_Doch_Condition;
 	information = DIA_Dyrian_Doch_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Zmieni³em zdanie. Daj mi zaklêcie nasenne.";
 };
 FUNC INT DIA_Dyrian_Doch_Condition()
@@ -260,7 +261,7 @@ FUNC INT DIA_Dyrian_Doch_Condition()
 	&& (MIS_HelpDyrian != LOG_RUNNING)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;	
+		return TRUE;	
 	};
 };
 FUNC VOID DIA_Dyrian_Doch_Info()
@@ -280,8 +281,8 @@ INSTANCE DIA_Dyrian_HelloAgain   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dyrian_HelloAgain_Condition;
 	information = DIA_Dyrian_HelloAgain_Info;
-	permanent   = false;
-	important  	= true;
+	permanent   = FALSE;
+	important  	= TRUE;
 };
 FUNC INT DIA_Dyrian_HelloAgain_Condition()
 {
@@ -289,7 +290,7 @@ FUNC INT DIA_Dyrian_HelloAgain_Condition()
 	&& (other.guild == GIL_KDF)
 	&& (MIS_HelpDyrian == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_HelloAgain_Info()
@@ -298,7 +299,7 @@ FUNC VOID DIA_Dyrian_HelloAgain_Info()
 	AI_Output (self ,other,"DIA_Dyrian_HelloAgain_13_01"); //Och - wybacz, Mistrzu - nie chcia³em siê narzucaæ.
 	AI_Output (self ,other,"DIA_Dyrian_HelloAgain_13_02"); //Dziêkujê z ca³ego serca za umo¿liwienie mi pozostania w klasztorze. Od dziœ moje ¿ycie siê zmieni...
 	
-	B_GivePlayerXP(XP_Ambient); 	
+	B_GivePlayerXP (XP_Ambient); 	
 	AI_StopProcessInfos (self); 
 };
 
@@ -316,14 +317,14 @@ INSTANCE DIA_Dyrian_HowIsIt   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dyrian_HowIsIt_Condition;
 	information = DIA_Dyrian_HowIsIt_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Dyrian_HowIsIt_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Dyrian_HelloAgain)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_HowIsIt_Info()
@@ -342,7 +343,7 @@ INSTANCE DIA_Dyrian_other   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dyrian_other_Condition;
 	information = DIA_Dyrian_other_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Dyrian_other_Condition()
@@ -352,7 +353,7 @@ FUNC INT DIA_Dyrian_other_Condition()
 	&& (other.guild != GIL_NONE)
 	
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_other_Info()
@@ -371,7 +372,7 @@ INSTANCE DIA_Dyrian_Kneipe   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dyrian_Kneipe_Condition;
 	information = DIA_Dyrian_Kneipe_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Dyrian_Kneipe_Condition()
@@ -379,7 +380,7 @@ FUNC INT DIA_Dyrian_Kneipe_Condition()
 	if  (MIS_HelpDyrian == LOG_FAILED)
 	&&  (other.guild == GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_Kneipe_Info()
@@ -392,6 +393,7 @@ FUNC VOID DIA_Dyrian_Kneipe_Info()
 	Info_AddChoice (DIA_Dyrian_Kneipe,"Proszê, oto 5 sztuk z³ota dla ciebie.",DIA_Dyrian_Kneipe_Gold);
 	Info_AddChoice (DIA_Dyrian_Kneipe,"Mogê wszystko wyjaœniæ.",DIA_Dyrian_Kneipe_CanExplain);
 	Info_AddChoice (DIA_Dyrian_Kneipe,"Uwa¿aj, co mówisz.",DIA_Dyrian_Kneipe_ShutUp);
+		
 };
 
 FUNC VOID DIA_Dyrian_Kneipe_Gold ()
@@ -431,14 +433,15 @@ INSTANCE DIA_Dyrian_nachher   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dyrian_nachher_Condition;
 	information = DIA_Dyrian_nachher_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Dyrian_nachher_Condition()
 {
 	if  Npc_KnowsInfo (other,DIA_Dyrian_Kneipe)
+	
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dyrian_nachher_Info()
@@ -447,3 +450,4 @@ FUNC VOID DIA_Dyrian_nachher_Info()
 	AI_Output (self ,other,"DIA_Dyrian_nachher_13_01"); //Po prostu zostaw mnie w spokoju! Nie chcê mieæ z tob¹ wiêcej nic wspólnego!
 	AI_StopProcessInfos (self);	
 };
+ 

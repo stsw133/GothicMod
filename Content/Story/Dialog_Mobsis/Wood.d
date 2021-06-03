@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	MOBSI_WOOD
-//******************************************************************************************
+///******************************************************************************************
+///	MOBSI_WOOD
+///******************************************************************************************
 func void MOBSI_WOOD_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
@@ -13,8 +13,8 @@ func void MOBSI_WOOD_S1()
 	};
 };
 
-//******************************************************************************************
-FUNC INT PC_Wood_Condition()
+///******************************************************************************************
+func int PC_Wood_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_WOOD)
 	{
@@ -22,7 +22,7 @@ FUNC INT PC_Wood_Condition()
 	};
 };
 
-INSTANCE PC_Wood_End (C_Info)
+instance PC_Wood_End (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -32,8 +32,8 @@ INSTANCE PC_Wood_End (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-//******************************************************************************************
-INSTANCE PC_Wood_Arrows (C_INFO)
+///******************************************************************************************
+instance PC_Wood_Arrows (C_INFO)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -43,10 +43,10 @@ INSTANCE PC_Wood_Arrows (C_INFO)
 	description							=	"Zrób 10 strza³ (drewno, 2 zêby)";
 };
 
-FUNC VOID PC_Wood_Arrows_Info()
+func void PC_Wood_Arrows_Info()
 {
-	if (Npc_HasItems(hero,ItMi_Wood) >= 1)
-	&& (Npc_HasItems(hero,ItAt_Teeth) >= 2)
+	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
+	&& (Npc_HasItems(hero, ItAt_Teeth) >= 2)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Wood);
 		Npc_RemoveInvItems (hero, ItAt_Teeth, 2);
@@ -61,8 +61,8 @@ FUNC VOID PC_Wood_Arrows_Info()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_Wood_FireArrows (C_INFO)
+///******************************************************************************************
+instance PC_Wood_FireArrows (C_INFO)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
@@ -72,11 +72,11 @@ INSTANCE PC_Wood_FireArrows (C_INFO)
 	description							=	"Zrób 10 ognistych strza³ (drewno, 2 zêby, 2 siarki)";
 };
 
-FUNC VOID PC_Wood_FireArrows_Info()
+func void PC_Wood_FireArrows_Info()
 {
-	if (Npc_HasItems(hero,ItMi_Wood) >= 1)
-	&& (Npc_HasItems(hero,ItAt_Teeth) >= 2)
-	&& (Npc_HasItems(hero,ItMi_Sulfur) >= 2)
+	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
+	&& (Npc_HasItems(hero, ItAt_Teeth) >= 2)
+	&& (Npc_HasItems(hero, ItMi_Sulfur) >= 2)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Wood);
 		Npc_RemoveInvItems (hero, ItAt_Teeth, 2);
@@ -92,8 +92,8 @@ FUNC VOID PC_Wood_FireArrows_Info()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_Wood_PoisonedArrows (C_INFO)
+///******************************************************************************************
+instance PC_Wood_PoisonedArrows (C_INFO)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
@@ -103,11 +103,11 @@ INSTANCE PC_Wood_PoisonedArrows (C_INFO)
 	description							=	"Zrób 10 zatrutych strza³ (drewno, 2 zêby, trucizna)";
 };
 
-FUNC VOID PC_Wood_PoisonedArrows_Info()
+func void PC_Wood_PoisonedArrows_Info()
 {
-	if (Npc_HasItems(hero,ItMi_Wood) >= 1)
-	&& (Npc_HasItems(hero,ItAt_Teeth) >= 2)
-	&& (Npc_HasItems(hero,ItPo_Poison) >= 1)
+	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
+	&& (Npc_HasItems(hero, ItAt_Teeth) >= 2)
+	&& (Npc_HasItems(hero, ItPo_Poison) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Wood);
 		Npc_RemoveInvItems (hero, ItAt_Teeth, 2);
@@ -122,28 +122,28 @@ FUNC VOID PC_Wood_PoisonedArrows_Info()
 		B_ENDPRODUCTIONDIALOG();
 	};
 };
-/*
-//******************************************************************************************
-INSTANCE PC_Wood_Torch (C_INFO)
+
+///******************************************************************************************
+instance PC_Wood_Torch (C_INFO)
 {
 	npc									=	PC_Hero;
 	nr									=	4;
 	condition							=	PC_Wood_Condition;
 	information							=	PC_Wood_Torch_Info;
 	permanent							=	true;
-	description							=	"Zrób 4 pochodnie (2 drewna, smo³a)";
+	description							=	"Zrób pochodniê (drewno, smo³a)";
 };
 
-FUNC VOID PC_Wood_Torch_Info()
+func void PC_Wood_Torch_Info()
 {
-	if (Npc_HasItems(hero,ItMi_Wood) >= 2)
-	&& (Npc_HasItems(hero,ItMi_Pitch) >= 1)
+	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
 	{
-		Npc_RemoveInvItems (hero, ItMi_Wood, 2);
+		Npc_RemoveInvItem (hero, ItMi_Wood);
 		Npc_RemoveInvItem (hero, ItMi_Pitch);
-
-		CreateInvItems (hero, ItLsTorch, 4);
-		Print("Zrobiono 4 pochodnie.");
+		
+		CreateInvItems (hero, ItLsTorch, 1);
+		Print("Zrobiono pochodniê.");
 	}
 	else
 	{
@@ -151,4 +151,3 @@ FUNC VOID PC_Wood_Torch_Info()
 		B_ENDPRODUCTIONDIALOG();
 	};
 };
-*/

@@ -1,41 +1,40 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_445_Ramirez (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Ramirez";
 	guild 								=	GIL_OUT;
 	id 									=	445;
 	voice 								=	14;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_DropDeadAndKill]			=	true;
 	aivar[AIV_EnemyOverride]			=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Meisterdegen);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Normal06, 0, ITAR_VLK_L_09);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_445;
 };
 
-FUNC VOID Rtn_Start_445()
+func void Rtn_Start_445()
 {
 	TA_Stand_ArmsCrossed	(07,00,23,00, "NW_CITY_KANAL_ROOM_04_01");
     TA_Sit_Throne			(23,00,07,00, "NW_CITY_KANAL_ROOM_05_02");

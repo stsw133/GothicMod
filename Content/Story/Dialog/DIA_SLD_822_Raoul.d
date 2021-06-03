@@ -7,15 +7,15 @@ INSTANCE DIA_Raoul_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Raoul_EXIT_Condition;
 	information	= DIA_Raoul_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Raoul_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -33,8 +33,8 @@ instance DIA_Raoul_NoSentenza (C_INFO)
 	nr			= 1;
 	condition	= DIA_Raoul_NoSentenza_Condition;
 	information	= DIA_Raoul_NoSentenza_Info;
-	permanent	= false;
-	important 	= true; 
+	permanent	= FALSE;
+	important 	= TRUE; 
 };                       
 
 FUNC INT DIA_Raoul_NoSentenza_Condition()
@@ -42,7 +42,7 @@ FUNC INT DIA_Raoul_NoSentenza_Condition()
 	if (!Npc_KnowsInfo(other, DIA_Sentenza_Hello))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -78,8 +78,8 @@ instance DIA_Raoul_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Raoul_Hello_Condition;
 	information	= DIA_Raoul_Hello_Info;
-	permanent	= true;
-	important 	= true; 
+	permanent	= TRUE;
+	important 	= TRUE; 
 };                       
 
 FUNC INT DIA_Raoul_Hello_Condition()
@@ -87,13 +87,13 @@ FUNC INT DIA_Raoul_Hello_Condition()
 	if (other.guild == GIL_NONE)
 	&& (Npc_IsInState(self,ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
 FUNC VOID DIA_Raoul_Hello_Info()
 {	
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Raoul_Hello_01_00"); //Czego chcesz?
 	}
@@ -115,7 +115,7 @@ instance DIA_Raoul_PERMNone (C_INFO)
 	nr			= 1;
 	condition	= DIA_Raoul_PERMNone_Condition;
 	information	= DIA_Raoul_PERMNone_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcia³bym obejrzeæ farmê."; 
 };                       
 
@@ -123,18 +123,18 @@ FUNC INT DIA_Raoul_PERMNone_Condition()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
 FUNC VOID DIA_Raoul_PERMNone_Info()
 {	
-	if (Raoul_gesagt == false)
+	if (Raoul_gesagt == FALSE)
 	{
 		AI_Output (other, self, "DIA_Raoul_PERMNone_15_00"); //Chcia³bym obejrzeæ farmê.
 		AI_Output (self, other, "DIA_Raoul_PERMNone_01_01"); //Nie zagl¹daj do budynku po lewej stronie. Siedzi tam Sylvio i lepiej mu teraz nie przeszkadzaæ. Jest w nie najlepszym nastroju.
 		AI_Output (self, other, "DIA_Raoul_PERMNone_01_02"); //Jeœli zobaczy takiego s³abeusza, i to jeszcze nie pracuj¹cego na farmie, mo¿e chcieæ wy³adowaæ na nim swoj¹ z³oœæ.
-		Raoul_gesagt = true;
+		Raoul_gesagt = TRUE;
 	}
 	else
 	{
@@ -152,7 +152,7 @@ instance DIA_Raoul_WannaJoin (C_INFO)
 	nr			= 2;
 	condition	= DIA_Raoul_WannaJoin_Condition;
 	information	= DIA_Raoul_WannaJoin_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcê siê przy³¹czyæ do Lee."; 
 };                       
 
@@ -160,7 +160,7 @@ FUNC INT DIA_Raoul_WannaJoin_Condition()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -182,16 +182,16 @@ instance DIA_Raoul_AboutSylvio (C_INFO)
 	nr			= 2;
 	condition	= DIA_Raoul_AboutSylvio_Condition;
 	information	= DIA_Raoul_AboutSylvio_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kim jest Sylvio?"; 
 };                       
 
 FUNC INT DIA_Raoul_AboutSylvio_Condition()
 {
-	if (Raoul_gesagt == true)
+	if (Raoul_gesagt == TRUE)
 	|| (Npc_KnowsInfo (other, DIA_Raoul_WannaJoin))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -211,15 +211,15 @@ instance DIA_Raoul_Stimme (C_INFO)
 	nr			= 2;
 	condition	= DIA_Raoul_Stimme_Condition;
 	information	= DIA_Raoul_Stimme_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcia³bym zostaæ najemnikiem, co ty na to?"; 
 };                       
 
 FUNC INT DIA_Raoul_Stimme_Condition()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_Defeated)
+	if (self.aivar[AIV_DefeatedByPlayer] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -242,17 +242,17 @@ instance DIA_Raoul_Duell (C_INFO)
 	nr			= 2;
 	condition	= DIA_Raoul_Duell_Condition;
 	information	= DIA_Raoul_Duell_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chyba przywalê ci w mordê..."; 
 };                       
 
 FUNC INT DIA_Raoul_Duell_Condition()
 {
-	if (Raoul_gesagt == true)
+	if (Raoul_gesagt == TRUE)
 	|| (Npc_KnowsInfo (other, DIA_Raoul_AboutSylvio))
 	|| (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -282,7 +282,7 @@ instance DIA_Raoul_PERM		(C_INFO)
 	nr		 	= 900;
 	condition	= DIA_Raoul_PERM_Condition;
 	information	= DIA_Raoul_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Oprócz tego, wszystko w porz¹dku?";
 };
 
@@ -290,7 +290,7 @@ func int DIA_Raoul_PERM_Condition ()
 {
 	if (other.guild != GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -323,7 +323,7 @@ instance DIA_Raoul_TROLL		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Raoul_TROLL_Condition;
 	information	 = 	DIA_Raoul_TROLL_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -331,7 +331,7 @@ func int DIA_Raoul_TROLL_Condition ()
 {
 	if (hero.guild != GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -431,6 +431,42 @@ func void DIA_Raoul_TROLL_rechnung_noProb ()
 	AI_Output			(other, self, "DIA_Raoul_TROLL_rechnung_noProb_15_00"); //Czarnego trolla? ¯aden problem.
 	B_Raoul_Blame ();
 };
+	
+///////////////////////////////////////////////////////////////////////
+//	Info TrophyFur
+///////////////////////////////////////////////////////////////////////
+
+instance DIA_Raoul_TrophyFur		(C_INFO)
+{
+	npc		 = 	Sld_822_Raoul;
+	nr		 = 	3;
+	condition	 = 	DIA_Raoul_TrophyFur_Condition;
+	information	 = 	DIA_Raoul_TrophyFur_Info;
+	permanent	 = 	TRUE;
+
+	description	 = 	"Najpierw mi powiedz, jak œci¹gn¹æ skórê z czarnego trolla.";
+};
+
+func int DIA_Raoul_TrophyFur_Condition ()
+{
+	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)		
+	&& (MIS_Raoul_KillTrollBlack == LOG_RUNNING)
+		{
+				return TRUE;
+		};
+};
+
+func void DIA_Raoul_TrophyFur_Info ()
+{
+	AI_Output			(other, self, "DIA_Raoul_TrophyFur_15_00"); //Najpierw mi powiedz, jak œci¹gn¹æ skórê z czarnego trolla.
+
+	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur))
+	{
+		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_01"); //S³uchaj uwa¿nie, bo rzadko udzielam rad za darmo.
+		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_02"); //Z³ap bestiê i natnij skórê na ka¿dej z jego nóg.
+		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_03"); //Potem mocno œci¹gnij skórê przez g³owê. To chyba nie trudne.
+	};	
+};
 
 ///////////////////////////////////////////////////////////////////////
 //	Info TrollFell
@@ -451,7 +487,7 @@ func int DIA_Raoul_TROLLFELL_Condition ()
 	if (Npc_HasItems (other,ItAt_TrollBlackFur))
 	&& (Npc_KnowsInfo(other, DIA_Raoul_TROLL))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -469,18 +505,19 @@ func void DIA_Raoul_TROLLFELL_Info ()
 	Info_AddChoice	(DIA_Raoul_TROLLFELL, "Zrobione.", DIA_Raoul_TROLLFELL_ja );
 
 	MIS_Raoul_KillTrollBlack = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_Raoul_KillTrollBlack);
 };
 
 func void DIA_Raoul_TROLLFELL_ja ()
 {
 	AI_Output			(other, self, "DIA_Raoul_TROLLFELL_ja_15_00"); //Sprzedane.
 	AI_Output			(self, other, "DIA_Raoul_TROLLFELL_ja_01_01"); //Interesy z tob¹ to sama przyjemnoœæ.
-	CreateInvItems (self, ItPo_Health_03, 3);
-	B_GiveInvItems (self, other, ItPo_Health_03, 3);
-	CreateInvItems (self, ItMi_Gold, 500);
-	B_GiveInvItems (self, other, ItMi_Gold, 500);
+	CreateInvItems (self, ItPo_Health_03, 3);									
+	B_GiveInvItems (self, other, ItPo_Health_03, 3);					
+	CreateInvItems (self, ItMi_Gold, 500);									
+	B_GiveInvItems (self, other, ItMi_Gold, 500);					
 	Info_ClearChoices	(DIA_Raoul_TROLLFELL);
+
 };
 
 func void DIA_Raoul_TROLLFELL_nein ()
@@ -501,7 +538,7 @@ instance DIA_Raoul_FELLZURUECK		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Raoul_FELLZURUECK_Condition;
 	information	 = 	DIA_Raoul_FELLZURUECK_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Oddawaj skórê trolla.";
 };
@@ -511,7 +548,7 @@ func int DIA_Raoul_FELLZURUECK_Condition ()
 	if (MIS_Raoul_DoesntPayTrollFur == LOG_RUNNING)
 	&& (Npc_HasItems (self,ItAt_TrollBlackFur))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -538,10 +575,10 @@ instance DIA_Raoul_GotTrollFurBack		(C_INFO)
 func int DIA_Raoul_GotTrollFurBack_Condition ()
 {
 	if (MIS_Raoul_DoesntPayTrollFur == LOG_RUNNING)
-	&& (Npc_HasItems (self,ItAt_TrollBlackFur) == false)
+	&& (Npc_HasItems (self,ItAt_TrollBlackFur) == FALSE)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -571,14 +608,14 @@ INSTANCE DIA_Raoul_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Raoul_KAP3_EXIT_Condition;
 	information	= DIA_Raoul_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Raoul_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Raoul_KAP3_EXIT_Info()
@@ -605,14 +642,14 @@ INSTANCE DIA_Raoul_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Raoul_KAP4_EXIT_Condition;
 	information	= DIA_Raoul_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Raoul_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Raoul_KAP4_EXIT_Info()
@@ -639,14 +676,14 @@ INSTANCE DIA_Raoul_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Raoul_KAP5_EXIT_Condition;
 	information	= DIA_Raoul_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Raoul_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Raoul_KAP5_EXIT_Info()
@@ -669,10 +706,10 @@ instance DIA_Raoul_Ship		(C_INFO)
 
 func int DIA_Raoul_Ship_Condition ()
 {
-	if (Kapitel >= 11)	
-	&& (MIS_SCKnowsWayToIrdorath == true)
+	if (Kapitel >= 5)	
+	&& (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -685,7 +722,7 @@ func void DIA_Raoul_Ship_Info ()
 	AI_Output			(self, other, "DIA_Raoul_Ship_01_04"); //Nie wiem, dlaczego mia³bym opuszczaæ Khorinis. Czy zarobiê tutaj, czy na kontynencie, to dla mnie bez ró¿nicy.
 	AI_Output			(self, other, "DIA_Raoul_Ship_01_05"); //Poszukaj sobie kogo innego.
 
-	if ((Npc_IsDead(Torlof))== false)
+	if ((Npc_IsDead(Torlof))== FALSE)
 	{
 		AI_Output			(self, other, "DIA_Raoul_Ship_01_06"); //Pogadaj z Torlofem, z tego co wiem, spêdzi³ wiele czasu na morzu.
 	};
@@ -710,14 +747,14 @@ INSTANCE DIA_Raoul_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Raoul_KAP6_EXIT_Condition;
 	information	= DIA_Raoul_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Raoul_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Raoul_KAP6_EXIT_Info()

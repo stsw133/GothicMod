@@ -12,9 +12,9 @@ instance DIA_Addon_Lares_Patch		(C_INFO)
 func int DIA_Addon_Lares_Patch_Condition ()
 {
 	if (Npc_HasItems  (self,ItMi_Ornament_Addon_Vatras))
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Patch_Info ()
@@ -30,14 +30,14 @@ INSTANCE DIA_Lares_Kap1_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lares_Kap1_EXIT_Condition;
 	information	= DIA_Lares_Kap1_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lares_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap1_EXIT_Info()
@@ -54,16 +54,16 @@ instance DIA_Addon_Lares_HaltsMaul		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Lares_HaltsMaul_Condition;
 	information	 = 	DIA_Addon_Lares_HaltsMaul_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Addon_Lares_HaltsMaul_Condition ()
 {
-	if (Lares_HaltsMaul == true)
+	if (Lares_HaltsMaul == TRUE)
 	&& (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -82,35 +82,82 @@ instance DIA_Lares_HALLO		(C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Lares_HALLO_Condition;
 	information	= DIA_Lares_HALLO_Info;
-	permanent 	= false;
-	important 	= true; 
+	permanent 	= FALSE;
+	important 	= TRUE; 
 };
 func int DIA_Lares_HALLO_Condition ()
 {	
 	if 	(RangerMeetingRunning == 0)//ADDON
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Lares_HALLO_Info ()
 {
 	AI_Output (self, other, "DIA_Lares_HALLO_09_00"); //Chyba oszala³em. Co ty tutaj robisz?
 	
-	if (Mil_310_schonmalreingelassen == false)
-	&& (Mil_333_schonmalreingelassen == false)
+	if (Mil_310_schonmalreingelassen == FALSE)
+	&& (Mil_333_schonmalreingelassen == FALSE)
 	{
 		AI_Output (self, other, "DIA_Lares_HALLO_09_01"); //PRZYP£YN¥£EŒ tu?
 		AI_Output (self, other, "DIA_Lares_HALLO_09_02"); //To niez³y sposób na ominiêcie stra¿ników przy bramie.
-		B_GivePlayerXP(XP_BONUS_5); //wer's schafft...	
+		B_GivePlayerXP (500); //wer's schafft...	
 	};
-
+			
+	Info_ClearChoices 	(DIA_Lares_HALLO);
+	
+	Info_AddChoice 		(DIA_Lares_HALLO,"Czy my siê znamy?",DIA_Lares_HALLO_NO);
+	Info_AddChoice 		(DIA_Lares_HALLO,"Hej! Lares, ty stary draniu...",DIA_Lares_HALLO_YES);
+};
+FUNC VOID DIA_Lares_HALLO_NO()
+{
+	AI_Output (other, self, "DIA_Lares_HALLO_NO_15_00"); //Czy my siê znamy?
+	AI_Output (self, other, "DIA_Lares_HALLO_NO_09_01"); //Ch³opie, nie pamiêtasz mnie? Trzyma³em siê w pobli¿u Nowego Obozu.
+	AI_Output (self, other, "DIA_Lares_HALLO_NO_09_02"); //Cz³owieku, ale by³o fajowo. Pamiêtasz Lee?
+	
+	Info_ClearChoices 	(DIA_Lares_HALLO);
+	
+	Info_AddChoice 		(DIA_Lares_HALLO,"Oczywiœcie, ¿e pamiêtam Lee!",DIA_Lares_HALLO_LEE);
+	Info_AddChoice 		(DIA_Lares_HALLO,"Lee...?",DIA_Lares_HALLO_NOIDEA);
+};
+FUNC VOID DIA_Lares_HALLO_YES()
+{
 	AI_Output (other, self, "DIA_Lares_HALLO_YES_15_00"); //Hej! Lares, ty stary draniu, jak siê tu dosta³eœ?
 	AI_Output (self, other, "DIA_Lares_HALLO_YES_09_01"); //Uda³o mi siê w sam¹ porê uciec z doliny, razem z Lee i paroma innymi ch³opakami.
-	AI_Output (self, other, "B_Lares_AboutLee_09_00"); //Wiêc wydosta³em siê z nim z Kolonii zaraz po tym, jak Bariera zosta³a zniszczona.
-	AI_Output (self, other, "B_Lares_AboutLee_09_01"); //Teraz on i jego ch³opcy s¹ w gospodarstwie Onara.
-	AI_Output (self, other, "B_Lares_AboutLee_09_02"); //Zawar³ uk³ad z w³aœcicielem. Lee i jego ch³opaki broni¹ gospodarstwa, a Onar ich karmi.
+	AI_Output (self, other, "DIA_Lares_HALLO_YES_09_02"); //Pamiêtasz Lee, prawda?
+	
+	Info_ClearChoices 	(DIA_Lares_HALLO);
+	
+	Info_AddChoice 		(DIA_Lares_HALLO,"Oczywiœcie, ¿e pamiêtam Lee!",DIA_Lares_HALLO_LEE);
+	Info_AddChoice 		(DIA_Lares_HALLO,"Lee...?",DIA_Lares_HALLO_NOIDEA);
+};
+
+// ------------------------------	
+	func void B_Lares_AboutLee()
+	{
+		AI_Output (self, other, "B_Lares_AboutLee_09_00"); //Wiêc wydosta³em siê z nim z Kolonii zaraz po tym, jak Bariera zosta³a zniszczona.
+		AI_Output (self, other, "B_Lares_AboutLee_09_01"); //Teraz on i jego ch³opcy s¹ w gospodarstwie Onara.
+		AI_Output (self, other, "B_Lares_AboutLee_09_02"); //Zawar³ uk³ad z w³aœcicielem. Lee i jego ch³opaki broni¹ gospodarstwa, a Onar ich karmi.
+	};
+// ------------------------------	
+
+FUNC VOID DIA_Lares_HALLO_LEE()
+{
+	AI_Output (other, self, "DIA_Lares_HALLO_LEE_15_00"); //Oczywiœcie, ¿e pamiêtam Lee!
+	B_Lares_AboutLee();
+	
 	Info_ClearChoices 	(DIA_Lares_HALLO);
 };
+FUNC VOID DIA_Lares_HALLO_NOIDEA()
+{
+	AI_Output (other, self, "DIA_Lares_HALLO_NOIDEA_15_00"); //Lee...?
+	AI_Output (self, other, "DIA_Lares_HALLO_NOIDEA_09_01"); //Wiele przeszed³eœ, co? Lee by³ przywódc¹ najemników w Nowym Obozie.
+	B_Lares_AboutLee();
+	
+	Info_ClearChoices 	(DIA_Lares_HALLO);
+};
+
+
 
 // ************************************************************
 // ***														***
@@ -132,9 +179,9 @@ instance DIA_Addon_Lares_Vatras		(C_INFO)
 };
 func int DIA_Addon_Lares_Vatras_Condition ()
 {
-	if (Vatras_GehZuLares == true)
+	if (Vatras_GehZuLares == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Vatras_Info ()
@@ -143,7 +190,7 @@ func void DIA_Addon_Lares_Vatras_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lares_Vatras_09_01"); //Pozna³eœ ju¿ Vatrasa... Musia³eœ zrobiæ na nim niema³e wra¿enie.
 	AI_Output	(self, other, "DIA_Addon_Lares_Vatras_09_02"); //Inaczej z pewnoœci¹ nie poda³by ci mojego imienia - zw³aszcza ¿e wci¹¿ trzeba rozwi¹zaæ sprawê zaginionych ludzi.
 	AI_Output	(self, other, "DIA_Addon_Lares_Vatras_09_03"); //Czego ci potrzeba?
-	Lares_RangerHelp = true;
+	Lares_RangerHelp = TRUE;
 
 	if (GregLocation == Greg_Farm1)
 	{
@@ -170,10 +217,10 @@ instance DIA_Addon_Lares_WhatAreYouGuys		(C_INFO)
 };
 func int DIA_Addon_Lares_WhatAreYouGuys_Condition ()
 {
-	if (Lares_RangerHelp == true)
-	&& (SC_IsRanger == false)
+	if (Lares_RangerHelp == TRUE)
+	&& (SC_IsRanger == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_WhatAreYouGuys_Info ()
@@ -206,9 +253,9 @@ instance DIA_Addon_Lares_Ranger		(C_INFO)
 func int DIA_Addon_Lares_Ranger_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Lares_WhatAreYouGuys))
-	&& (SC_IsRanger == false)
+	&& (SC_IsRanger == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Ranger_Info ()
@@ -237,9 +284,9 @@ instance DIA_Addon_Lares_WannaBeRanger		(C_INFO)
 func int DIA_Addon_Lares_WannaBeRanger_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Lares_Ranger))
-	&& (SC_IsRanger == false)
+	&& (SC_IsRanger == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_WannaBeRanger_Info ()
@@ -248,6 +295,7 @@ func void DIA_Addon_Lares_WannaBeRanger_Info ()
 	AI_Output (self, other, "DIA_Addon_Lares_WannaBeRanger_09_01"); //Dobry pomys³, choæ decyzja nale¿y do Magów Wody.
 	
 	B_LogEntry (TOPIC_Addon_RingOfWater, LogText_Addon_KDWRight); 
+
 
 	Info_ClearChoices	(DIA_Addon_Lares_WannaBeRanger);
 	Info_AddChoice	(DIA_Addon_Lares_WannaBeRanger, "Rozumiem.", DIA_Addon_Lares_WannaBeRanger_BACK );
@@ -294,28 +342,28 @@ instance DIA_Addon_Lares_RingBack		(C_INFO)
 };
 func int DIA_Addon_Lares_RingBack_Condition ()
 {
-	if (SC_IsRanger == true)
+	if (SC_IsRanger == TRUE)
 	&& (MIS_Addon_Lares_ComeToRangerMeeting != LOG_SUCCESS)
 	&& (((Npc_GetDistToWP(self,"NW_CITY_HABOUR_02_B")<1000) )||((Npc_GetDistToWP(self,"NW_CITY_HABOUR_TAVERN01_08")<1000)))
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Lares_RingBack_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lares_RingBack_15_00"); //Jestem ju¿ cz³onkiem Wodnego Krêgu.
 	
-	if (Lares_GotRingBack == false) 
-	&& (SC_GotLaresRing == true)
+	if (Lares_GotRingBack == FALSE) 
+	&& (SC_GotLaresRing == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_RingBack_09_01"); //Doskonale! Oddasz mi teraz mój pierœcieñ z akwamarynem?
 		
-		if (B_GiveInvItems (other, self, ItRi_Ranger_Lares,1))
+		if (B_GiveInvItems (other, self, ItRi_Ranger_Lares_Addon,1))
 		{
 			AI_Output	(other, self, "DIA_Addon_Lares_RingBack_15_02"); //Jasne.
 			AI_Output	(self, other, "DIA_Addon_Lares_RingBack_09_03"); //Mam nadziejê, ¿e siê przyda³. Cieszê siê, ¿e jesteœ ju¿ jednym z nas.
-			Lares_GotRingBack = true;
-			B_GivePlayerXP(XP_Ambient);
+			Lares_GotRingBack = TRUE;
+			B_GivePlayerXP (XP_Ambient);
 		}
 		else
 		{
@@ -345,20 +393,20 @@ instance DIA_Addon_Lares_RingBack2		(C_INFO)
 };
 func int DIA_Addon_Lares_RingBack2_Condition ()
 {
-	if (Npc_HasItems (other,ItRi_Ranger_Lares))
-	&& (Lares_GotRingBack == false)
+	if (Npc_HasItems (other,ItRi_Ranger_Lares_Addon))
+	&& (Lares_GotRingBack == FALSE)
 	&& (MIS_Addon_Lares_ComeToRangerMeeting != 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_RingBack2_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lares_RingBack2_15_00"); //Oto twój pierœcieñ.
-	B_GiveInvItems (other, self, ItRi_Ranger_Lares,1);
+	B_GiveInvItems (other, self, ItRi_Ranger_Lares_Addon,1);
 	AI_Output	(self, other, "DIA_Addon_Lares_RingBack2_09_01"); //Ach... Dobrze. Ju¿ s¹dzi³em, ¿e go zgubi³eœ.
-	B_GivePlayerXP(XP_Ambient);
-	Lares_GotRingBack = true;
+	B_GivePlayerXP (XP_Ambient);
+	Lares_GotRingBack = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -370,8 +418,8 @@ instance DIA_Addon_Lares_Geduld		(C_INFO)
 	nr		 =  2;
 	condition	 = 	DIA_Addon_Lares_Geduld_Condition;
 	information	 = 	DIA_Addon_Lares_Geduld_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Addon_Lares_Geduld_Condition ()
@@ -380,7 +428,7 @@ func int DIA_Addon_Lares_Geduld_Condition ()
 	&& (Npc_GetDistToWP(self,"NW_TAVERNE_IN_RANGERMEETING_LARES")>200)
 	&& (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -399,7 +447,7 @@ instance DIA_Addon_Lares_GetRangerArmor		(C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Addon_Lares_GetRangerArmor_Condition;
 	information	= DIA_Addon_Lares_GetRangerArmor_Info;
-	important	= true;
+	important	= TRUE;
 };
 func int DIA_Addon_Lares_GetRangerArmor_Condition ()
 {
@@ -408,7 +456,7 @@ func int DIA_Addon_Lares_GetRangerArmor_Condition ()
 	&& (RangerMeetingRunning == LOG_RUNNING)
 	&& (Npc_IsInState (self,ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_GetRangerArmor_Info ()
@@ -426,12 +474,13 @@ func void DIA_Addon_Lares_GetRangerArmor_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_08"); //Jeszcze jakieœ pytania?
 	
 	MIS_Addon_Lares_ComeToRangerMeeting = LOG_SUCCESS;
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	
 	Info_ClearChoices	(DIA_Addon_Lares_GetRangerArmor);
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, "Muszê siê zmywaæ.", DIA_Addon_Lares_GetRangerArmor_end );
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, "Jak mo¿esz mi pomóc?", DIA_Addon_Lares_GetRangerArmor_Learn );
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, "A co z broni¹?", DIA_Addon_Lares_GetRangerArmor_weapons );
+
 };
 func void DIA_Addon_Lares_GetRangerArmor_weapons ()
 {
@@ -450,7 +499,7 @@ func void DIA_Addon_Lares_GetRangerArmor_end ()
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_end_09_03"); //Bracia Krêgu - wracajmy do naszych zajêæ.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_end_09_04"); //Ci¹gle nie uda³o nam siê powstrzymaæ bandyckich porwañ - trzeba rozwi¹zaæ ten problem jak najszybciej.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_end_09_05"); //Adanosie, dbaj o równowagê tego œwiata...
-	Lares_TakeFirstMissionFromVatras = true;
+	Lares_TakeFirstMissionFromVatras = TRUE;
 
 	Info_ClearChoices	(DIA_Addon_Lares_GetRangerArmor);
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, DIALOG_ENDE, DIA_Addon_Lares_GetRangerArmor_weiter );
@@ -467,23 +516,23 @@ func void DIA_Addon_Lares_GetRangerArmor_Learn ()
 	AI_Output	(other, self, "DIA_Addon_Lares_GetRangerArmor_Learn_15_00"); //Jak mo¿esz mi pomóc?
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_01"); //Poprzez wspomo¿enie pracy nad twoj¹ zrêcznoœci¹.
 
-	if ((Npc_IsDead(SLD_805_Cord))== false)
+	if ((Npc_IsDead(SLD_805_Cord))== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_02"); //Jeœli chcesz lepiej walczyæ broni¹ bia³¹, pomów z Cordem - to mistrz w pos³ugiwaniu siê ró¿nego rodzaju ostrzami.
 	};
-	if ((Npc_IsDead(BAU_961_Gaan))== false)
+	if ((Npc_IsDead(BAU_961_Gaan))== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_03"); //Gann z kolei chêtnie nauczy ciê paru rzeczy o wyprawianiu skór zwierz¹t.
 	};	
-	if ((Npc_IsDead(Mil_350_Addon_Martin))== false)
+	if ((Npc_IsDead(Mil_350_Addon_Martin))== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_04"); //Od Martina mo¿esz nauczyæ siê wiele o paladynach.
 	};	
-	if ((Npc_IsDead(Bau_4300_Addon_Cavalorn))== false)
+	if ((Npc_IsDead(Bau_4300_Addon_Cavalorn))== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_05"); //Cavalorn z kolei umie siê podkradaæ, mo¿e ciê równie¿ nauczyæ walki broni¹ jednorêczn¹ oraz pos³ugiwania siê ³ukiem.
 	};
-	if ((Npc_IsDead(BAU_970_Orlan))== false)
+	if ((Npc_IsDead(BAU_970_Orlan))== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_Learn_09_06"); //Zwróæ siê do Orlana, jeœli potrzebujesz noclegu.
 	};
@@ -507,10 +556,10 @@ instance DIA_Addon_Lares_Teleportstation		(C_INFO)
 func int DIA_Addon_Lares_Teleportstation_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)//SC war schon bei den Wassermagiern
-	&& (SCUsed_TELEPORTER == true)			//SC hat schon mal einen Teleporter benutzt
+	&& (SCUsed_TELEPORTER == TRUE)			//SC hat schon mal einen Teleporter benutzt
 	&& (MIS_Lares_BringRangerToMe != 0) 				//hat Aquamarinring von Lares bekommen. -> für Orlan
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Teleportstation_Info ()
@@ -524,7 +573,7 @@ func void DIA_Addon_Lares_Teleportstation_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lares_Teleportstation_09_06"); //WyjdŸ z miasta przez wschodni¹ bramê i idŸ wzd³u¿ œcie¿ki. Na pewno trafisz.
 	
 	B_LogEntry (TOPIC_Addon_TeleportsNW,"Lares powiedzia³ mi, ¿e w pobli¿u gospody Orlana znajduje siê ukryty kamieñ teleportacyjny."); 
-	Orlan_Hint_Lares = true;
+	Orlan_Hint_Lares = TRUE;
 };
 
 
@@ -549,7 +598,7 @@ func int DIA_Addon_Lares_Ornament_Condition ()
 	if (Npc_HasItems (other,ItMi_Ornament_Addon_Vatras))
 	&& (Npc_KnowsInfo (other, DIA_Addon_Lares_Vatras))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Ornament_Info ()
@@ -576,7 +625,7 @@ func int DIA_Addon_Lares_OrnamentBringJob_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Lares_Ornament))
 	&& (MIS_Addon_Lares_Ornament2Saturas == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_OrnamentBringJob_Info ()
@@ -598,15 +647,15 @@ instance DIA_Addon_Lares_YourMission		(C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Addon_Lares_YourMission_Condition;
 	information	= DIA_Addon_Lares_YourMission_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Czym konkretnie siê tu zajmujesz?";
 };
 func int DIA_Addon_Lares_YourMission_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Lares_Ornament))
-	&& (MIS_Lares_BringRangerToMe == false)
+	&& (MIS_Lares_BringRangerToMe == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_YourMission_Info ()
@@ -626,9 +675,9 @@ func void DIA_Addon_Lares_YourMission_Info ()
 		AI_Output (self, other, "DIA_Addon_Lares_YourMission_09_06"); //Ale mo¿esz mi pomóc.
 		AI_Output (self, other, "DIA_Addon_Lares_YourMission_09_07"); //Dam ci mój pierœcieñ z akwamarynem. To znak Wodnego Krêgu.
 		
-		CreateInvItems (self, ItRi_Ranger_Lares, 1);									
-		B_GiveInvItems (self, other, ItRi_Ranger_Lares, 1);
-		SC_GotLaresRing = true;		
+		CreateInvItems (self, ItRi_Ranger_Lares_Addon, 1);									
+		B_GiveInvItems (self, other, ItRi_Ranger_Lares_Addon, 1);
+		SC_GotLaresRing = TRUE;		
 		AI_Output (self, other, "DIA_Addon_Lares_YourMission_09_08"); //Za³ó¿ go - dziêki temu inni rozpoznaj¹, ¿e pracujesz dla mnie.
 		AI_Output (self, other, "DIA_Addon_Lares_YourMission_09_09"); //ZnajdŸ mi zastêpcê tak, abym móg³ w spokoju odnieœæ ornament.
 		AI_Output (self, other, "DIA_Addon_Lares_YourMission_09_10"); //Ktoœ z nas z regu³y obserwuje targowisko, choæ nie mam pojêcia, kto zajmuje siê tym w tej chwili.
@@ -659,9 +708,9 @@ instance DIA_Addon_Lares_BaltramAbloese		(C_INFO)
 func int DIA_Addon_Lares_BaltramAbloese_Condition ()
 {
 	if (MIS_Lares_BringRangerToMe == LOG_RUNNING)
-	&& (Npc_KnowsInfo(other,DIA_Addon_Baltram_LaresAbloese))
+	&& (Baltram_Exchange4Lares == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -669,7 +718,7 @@ func void DIA_Addon_Lares_BaltramAbloese_Info ()
 {
 	AI_Output (other, self, "DIA_Addon_Lares_BaltramAbloese_15_00"); //Rozmawia³em z Baltramem - zorganizuje ci zastêpcê.
 	AI_Output (self, other, "DIA_Addon_Lares_BaltramAbloese_09_01"); //Doskonale. Nareszcie bêdzie sobie mo¿na st¹d pójœæ.
-	if (SC_IsRanger == false)
+	if (SC_IsRanger == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Lares_BaltramAbloese_09_02"); //Mo¿esz zatrzymaæ na razie mój pierœcieñ.
 		
@@ -683,7 +732,7 @@ func void DIA_Addon_Lares_BaltramAbloese_Info ()
 		};
 	};
 	MIS_Lares_BringRangerToMe = LOG_SUCCESS;
-	Lares_CanBringScToPlaces = true;
+	Lares_CanBringScToPlaces = TRUE;
 };
 
 
@@ -702,16 +751,16 @@ instance DIA_Addon_Lares_PeopleMissing		(C_INFO)
 	nr		 	= 3;
 	condition	= DIA_Addon_Lares_PeopleMissing_Condition;
 	information	= DIA_Addon_Lares_PeopleMissing_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Co do zaginionych...";
 };
 func int DIA_Addon_Lares_PeopleMissing_Condition ()
 {
-	if (Lares_RangerHelp == true)
-	&& (Lares_PeopleMissing_PERM == false)
-	&& ((SC_IsRanger == false)||(MissingPeopleReturnedHome == true))
+	if (Lares_RangerHelp == TRUE)
+	&& (Lares_PeopleMissing_PERM == FALSE)
+	&& ((SC_IsRanger == FALSE)||(MissingPeopleReturnedHome == TRUE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_PeopleMissing_Info ()
@@ -719,13 +768,13 @@ func void DIA_Addon_Lares_PeopleMissing_Info ()
 	AI_Output (other, self, "DIA_Addon_Lares_PeopleMissing_15_00"); //Co do zaginionych...
 	Info_ClearChoices (DIA_Addon_Lares_PeopleMissing);
 	Info_AddChoice (DIA_Addon_Lares_PeopleMissing, DIALOG_BACK, DIA_Addon_Lares_PeopleMissing_BACK);
-	if (MissingPeopleReturnedHome == true)
+	if (MissingPeopleReturnedHome == TRUE)
 	{
 		Info_AddChoice (DIA_Addon_Lares_PeopleMissing, "Uda³o mi siê ocaliæ czêœæ z zaginionych.", DIA_Addon_Lares_PeopleMissing_SAVED );
 	}
 	else if (MIS_Lares_BringRangerToMe != 0)
-	&& (SCKnowsMissingPeopleAreInAddonWorld == true)
-	&& (MissingPeopleReturnedHome == false)
+	&& (SCKnowsMissingPeopleAreInAddonWorld == TRUE)
+	&& (MissingPeopleReturnedHome == FALSE)
 	{
 		Info_AddChoice (DIA_Addon_Lares_PeopleMissing, "Wiem, gdzie przebywaj¹ zaginieni!", DIA_Addon_Lares_PeopleMissing_Success );
 	}
@@ -747,7 +796,7 @@ func void DIA_Addon_Lares_PeopleMissing_TellMe()
 	AI_Output (self, other, "DIA_Addon_Lares_PeopleMissing_TellMe_09_03"); //Wkrótce jednak zaczêli znikaæ inni; co gorsza, zupe³nie przypadkowi.
 	AI_Output (self, other, "DIA_Addon_Lares_PeopleMissing_TellMe_09_04"); //Dlatego te¿ nie mamy pojêcia, jak siê zabraæ do tej sprawy. Musimy chyba czekaæ na jakiœ œlad.
 
-		if (SC_HearedAboutMissingPeople == false)
+		if (SC_HearedAboutMissingPeople == FALSE)
 		{
 			Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 			Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
@@ -758,7 +807,7 @@ func void DIA_Addon_Lares_PeopleMissing_TellMe()
 	Log_SetTopicStatus(TOPIC_Addon_MissingPeople, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_MissingPeople, LogText_Addon_WilliamMissing); 
 
-	SC_HearedAboutMissingPeople = true;
+	SC_HearedAboutMissingPeople = TRUE;
 };
 func void DIA_Addon_Lares_PeopleMissing_MIL()
 {
@@ -775,16 +824,16 @@ func void DIA_Addon_Lares_PeopleMissing_Success()
 	AI_Output	(other, self, "DIA_Addon_Lares_PeopleMissing_Success_15_04"); //Pracujê nad tym.
 	AI_Output	(self, other, "DIA_Addon_Lares_PeopleMissing_Success_09_05"); //Dobra. Jeœli bêdzie ci potrzebna moja pomoc...
 	AI_Output	(other, self, "DIA_Addon_Lares_PeopleMissing_Success_15_06"); //...to wiem, gdzie ciê znaleŸæ. Jasne.
-	Lares_CanBringScToPlaces = true;
+	Lares_CanBringScToPlaces = TRUE;
 	Info_ClearChoices (DIA_Addon_Lares_PeopleMissing);
 };
 func void DIA_Addon_Lares_PeopleMissing_SAVED ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lares_PeopleMissing_SAVED_15_00"); //Uda³o mi siê ocaliæ czêœæ z zaginionych.
 	AI_Output	(self, other, "DIA_Addon_Lares_PeopleMissing_SAVED_09_01"); //Wiedzia³em, ¿e ci siê uda. Wreszcie mogê zaj¹æ siê swoimi sprawami...
-	B_GivePlayerXP(XP_Ambient);
-	Lares_PeopleMissing_PERM = true;
-	Lares_CanBringScToPlaces = true;
+	B_GivePlayerXP (XP_Ambient);
+	Lares_PeopleMissing_PERM = TRUE;
+	Lares_CanBringScToPlaces = TRUE;
 	Info_ClearChoices (DIA_Addon_Lares_PeopleMissing);
 };
 
@@ -803,21 +852,21 @@ instance DIA_Addon_Lares_RangerHelp		(C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Addon_Lares_RangerHelp_Condition;
 	information	= DIA_Addon_Lares_RangerHelp_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Potrzebujê pomocy.";
 };
 func int DIA_Addon_Lares_RangerHelp_Condition ()
 {
 	if 
 	(
-		   (Lares_RangerHelp == true)
-		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe == false)
-		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld == false)
-		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung == false)
+		   (Lares_RangerHelp == TRUE)
+		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe == FALSE)
+		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld == FALSE)
+		&& (DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung == FALSE)
 	)
 	|| (Npc_IsInState (Moe, ZS_Attack))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_RangerHelp_Info ()
@@ -833,20 +882,20 @@ func void DIA_Addon_Lares_RangerHelp_Info ()
 		Info_AddChoice (DIA_Addon_Lares_RangerHelp, "Denerwuje mnie taki jeden...", DIA_Addon_Lares_RangerHelp_Moe);
 	};
 		
-	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe == false)
-	&& (Lares_RangerHelp == true)
+	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe == FALSE)
+	&& (Lares_RangerHelp == TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Lares_RangerHelp, "Potrzeba mi lepszej broni.", DIA_Addon_Lares_RangerHelp_waffe );
 	};
 
-	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung == false)
-	&& (Lares_RangerHelp == true)
+	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung == FALSE)
+	&& (Lares_RangerHelp == TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Lares_RangerHelp, "Mo¿e jakimœ lepszym pancerzem?", DIA_Addon_Lares_RangerHelp_ruestung );
 	};
 
-	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld == false)
-	&& (Lares_RangerHelp == true)
+	if (DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld == FALSE)
+	&& (Lares_RangerHelp == TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Lares_RangerHelp, "Potrzeba mi pieniêdzy.", DIA_Addon_Lares_RangerHelp_geld );
 	};
@@ -860,21 +909,21 @@ func void DIA_Addon_Lares_RangerHelp_ruestung ()
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_ruestung_09_04"); //Przy domu Mattea znajduje siê magazynek, ale z³o¿one w nim towary zosta³y skonfiskowane przez stra¿.
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_ruestung_09_05"); //Udaj siê do Zurisa na targowisko i wydostañ od niego zaklêcie usypiaj¹ce, za pomoc¹ którego wyeliminujesz stra¿ników.
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_ruestung_09_06"); //Tam musi byæ coœ niez³ego.
-	DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung = true;
+	DIA_Addon_Lares_RangerHelp_gilde_OneTime_ruestung = TRUE;
 };
 func void DIA_Addon_Lares_RangerHelp_waffe ()
 {
 	AI_Output (other, self, "DIA_Addon_Lares_RangerHelp_waffe_15_00"); //Potrzeba mi lepszej broni.
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_waffe_09_01"); //Przykro mi, z tym ci nie pomogê. Zak³adam, ¿e odwiedzi³eœ ju¿ targowisko?
-	DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe = true;
+	DIA_Addon_Lares_RangerHelp_gilde_OneTime_Waffe = TRUE;
 };
 func void DIA_Addon_Lares_RangerHelp_geld ()
 {
 	AI_Output (other, self, "DIA_Addon_Lares_RangerHelp_geld_15_00"); //Potrzeba mi pieniêdzy.
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_geld_09_01"); //A kto ich nie potrzebuje? Nie mam nic na zbyciu. Chocia¿... Lichwiarz Lehmar ma u mnie d³ug wdziêcznoœci.
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_geld_09_02"); //IdŸ do niego i wyp³aæ tyle, ile ci potrzeba - ja zajmê siê reszt¹. Znajdziesz go w porcie, w pobli¿u przejœcia do dolnej czêœci miasta.
-	DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld = true;
-	RangerHelp_LehmarKohle = true;
+	DIA_Addon_Lares_RangerHelp_gilde_OneTime_geld = TRUE;
+	RangerHelp_LehmarKohle = TRUE;
 	Info_ClearChoices	(DIA_Addon_Lares_RangerHelp);
 };
 func void DIA_Addon_Lares_RangerHelp_nix ()
@@ -890,7 +939,7 @@ func void DIA_Addon_Lares_RangerHelp_Moe()
 	AI_Output (self, other, "DIA_Addon_Lares_Moe_09_01"); //Chwila...
 	Info_ClearChoices (DIA_Addon_Lares_RangerHelp);
 	AI_StopProcessInfos (self);
-	other.aivar[AIV_INVINCIBLE] = false;
+	other.aivar[AIV_INVINCIBLE] = FALSE;
 	B_Attack (self, Moe, AR_GuardStopsFight, 0);
 };
 
@@ -916,17 +965,17 @@ instance DIA_Lares_Paladine	(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lares_Paladine_Condition;
 	information	 = 	DIA_Lares_Paladine_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Za wszelk¹ cenê muszê siê skontaktowaæ z paladynami!";
 };
 func int DIA_Lares_Paladine_Condition ()
 {	
 	if (other.guild == GIL_NONE)
-	&& (RangerHelp_gildeMIL == false)
-	&& (RangerHelp_gildeSLD == false)
-	&& (RangerHelp_gildeKDF == false)
+	&& (RangerHelp_gildeMIL == FALSE)
+	&& (RangerHelp_gildeSLD == FALSE)
+	&& (RangerHelp_gildeKDF == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_Paladine_Info ()
@@ -955,7 +1004,7 @@ instance DIA_Lares_WhyPalHere		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lares_WhyPalHere_Condition;
 	information	 = 	DIA_Lares_WhyPalHere_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Czy wiesz, dlaczego s¹ tu paladyni?";
 };
 func int DIA_Lares_WhyPalHere_Condition ()
@@ -963,11 +1012,11 @@ func int DIA_Lares_WhyPalHere_Condition ()
 	if (other.guild == GIL_NONE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Lares_Paladine))
-		|| (RangerHelp_gildeMIL == true)
-		|| (RangerHelp_gildeSLD == true)
-		|| (RangerHelp_gildeKDF == true)
+		|| (RangerHelp_gildeMIL == TRUE)
+		|| (RangerHelp_gildeSLD == TRUE)
+		|| (RangerHelp_gildeKDF == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};
 };
@@ -987,18 +1036,18 @@ instance DIA_Addon_Lares_Gilde (C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_Lares_Gilde_Condition;
 	information	 = 	DIA_Addon_Lares_Gilde_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Vatras wspomnia³, ¿e mo¿esz mi pomóc do³¹czyæ do jednej z gildii.";
 };
 func int DIA_Addon_Lares_Gilde_Condition ()
 {	
-	if (Lares_RangerHelp == true)
+	if (Lares_RangerHelp == TRUE)
 	&& (other.guild == GIL_NONE)
-	&& (RangerHelp_gildeMIL == false)
-	&& (RangerHelp_gildeSLD == false)
-	&& (RangerHelp_gildeKDF == false)
+	&& (RangerHelp_gildeMIL == FALSE)
+	&& (RangerHelp_gildeSLD == FALSE)
+	&& (RangerHelp_gildeKDF == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Gilde_Info ()
@@ -1030,13 +1079,13 @@ func void DIA_Addon_Lares_Gilde_SLD ()
 	AI_Output (self, other, "DIA_Addon_Lares_Gilde_SLD_09_02"); //Pomów lepiej z Cordem na farmie Onara.
 	AI_Output (self, other, "DIA_Addon_Lares_Gilde_SLD_Add_09_02"); //On pomo¿e ci w tej sprawie.
 	AI_Output (self, other, "DIA_Addon_Lares_Gilde_SLD_09_03"); //Powiedz mu, ¿e jesteœ moim protegowanym. Zrozumie, o co chodzi.
-	RangerHelp_gildeSLD = true;
+	RangerHelp_gildeSLD = TRUE;
 	
 	Log_CreateTopic (TOPIC_Addon_RangerHelpSLD, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_RangerHelpSLD, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_RangerHelpSLD,"Lares s¹dzi, ¿e Cord, który jest na farmie bogatego ziemianina, mo¿e mi pomóc dostaæ siê do najemników."); 
 	
-	SC_KnowsCordAsRangerFromLares = true;
+	SC_KnowsCordAsRangerFromLares = TRUE;
 	Info_ClearChoices	(DIA_Addon_Lares_Gilde);
 };
 func void DIA_Addon_Lares_Gilde_MIL ()
@@ -1050,7 +1099,7 @@ func void DIA_Addon_Lares_Gilde_MIL ()
 	Log_SetTopicStatus(TOPIC_Addon_RangerHelpMIL, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_RangerHelpMIL,"Lares twierdzi, ¿e kwatermistrz Martin pomo¿e mi szybciej dostaæ siê w szeregi stra¿y. Zwykle przebywa w porcie, gdzie paladyni maj¹ swój magazyn."); 
 	
-	RangerHelp_gildeMIL = true;
+	RangerHelp_gildeMIL = TRUE;
 	Info_ClearChoices	(DIA_Addon_Lares_Gilde);
 };
 func void DIA_Addon_Lares_Gilde_KDF ()
@@ -1065,7 +1114,7 @@ func void DIA_Addon_Lares_Gilde_KDF ()
 	Log_SetTopicStatus(TOPIC_Addon_RangerHelpKDF, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_RangerHelpKDF,"Lares twierdzi, ¿e Vatras zna dobry sposób na wst¹pienie do klasztoru."); 
 
-	RangerHelp_gildeKDF = true;
+	RangerHelp_gildeKDF = TRUE;
 	Info_ClearChoices	(DIA_Addon_Lares_Gilde);
 };
 
@@ -1082,15 +1131,15 @@ instance DIA_Lares_AboutSld (C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Lares_AboutSld_Condition;
 	information	 = 	DIA_Lares_AboutSld_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Powiedz mi coœ o Lee i jego najemnikach.";
 };
 func int DIA_Lares_AboutSld_Condition ()
 {	
 	if (other.guild == GIL_NONE)
-	&& (Lares_WayToOnar == false)
+	&& (Lares_WayToOnar == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_AboutSld_Info ()
@@ -1120,7 +1169,8 @@ func void DIA_Lares_AboutSld_WhyNotYou()
 	AI_Output (other, self, "DIA_Lares_WhyInCity_15_00"); //A dlaczego TY nie jesteœ razem z Lee i jego najemnikami?
 	AI_Output (self, other, "DIA_Lares_WhyInCity_09_01"); //Ale¿ jestem! Tylko ¿e nie na farmie.
 	AI_Output (self, other, "DIA_Lares_WhyInCity_09_02"); //Mo¿na powiedzieæ, ¿e zosta³em tu wys³any na posterunek. Nie chcemy, aby statek odp³yn¹³ bez nas.
-	Lares_WorkForLee = true;
+	//AI_Output (self, other, "DIA_Lares_WhyInCity_09_03"); //Warum bist DU in die Stadt gekommen?
+	Lares_WorkForLee = TRUE;
 	
 	Info_AddChoice (DIA_Lares_AboutSld, "O jakim statku mówi³eœ?", DIA_Lares_AboutSld_Schiff);
 };
@@ -1137,7 +1187,9 @@ func void DIA_Lares_AboutSld_WayToOnar()
 	AI_Output (other,self, "DIA_Lares_WegZumHof_15_00"); //Jak dostanê siê do gospodarstwa tego w³aœciciela ziemskiego?
 	AI_Output (self, other, "DIA_Addon_Lares_WegZumHof_09_00"); //To doœæ proste. WyjdŸ z miasta wschodni¹ bram¹ i idŸ drog¹ na wschód.
 	AI_Output (self, other, "DIA_Addon_Lares_WegZumHof_09_01"); //Mogê wskazaæ ci drogê, jeœli chcesz.
-	Lares_WayToOnar = true;
+	//AI_Output (self, other, "DIA_Lares_WegZumHof_09_01"); //Ich kann dich hinbringen, wenn du willst. Hab sowieso schon zu lange hier rumgehangen.
+	//AI_Output (self, other, "DIA_Lares_WegZumHof_09_02"); //Hier im Hafen gibt es zwar für gewöhnlich keine Miliz, aber ich muss ja nicht riskieren, dass einer von ihnen Verdacht schöpft ...
+	Lares_WayToOnar = TRUE;
 };	
 
 
@@ -1154,14 +1206,14 @@ instance DIA_Lares_GuildOfThieves (C_INFO)
 	nr			 = 	14;
 	condition	 = 	DIA_Lares_GuildOfThieves_Condition;
 	information	 = 	DIA_Lares_GuildOfThieves_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Wiesz coœ o gildii z³odziei w mieœcie?";
 };
 func int DIA_Lares_GuildOfThieves_Condition ()
 {	
 	if (MIS_Andre_GuildOfThieves == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_GuildOfThieves_Info ()
@@ -1180,15 +1232,15 @@ instance DIA_Lares_WhereGuildOfThieves (C_INFO)
 	nr			 = 	15;
 	condition	 = 	DIA_Lares_WhereGuildOfThieves_Condition;
 	information	 = 	DIA_Lares_WhereGuildOfThieves_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Wiesz, gdzie mogê znaleŸæ gildiê z³odziei?";
 };
 func int DIA_Lares_WhereGuildOfThieves_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lares_GuildOfThieves))
-	&& (DG_gefunden == false)
+	&& (DG_gefunden == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_WhereGuildOfThieves_Info ()
@@ -1207,16 +1259,16 @@ instance DIA_Lares_GotKey (C_INFO)
 	nr			 = 	16;
 	condition	 = 	DIA_Lares_GotKey_Condition;
 	information	 = 	DIA_Lares_GotKey_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Mam tutaj klucz. Zardzewia³ od morskiej wody...";
 };
 func int DIA_Lares_GotKey_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lares_WhereGuildOfThieves))
 	&& (Npc_HasItems (other, ItKe_ThiefGuildKey_MIS))
-	&& (DG_gefunden == false) 
+	&& (DG_gefunden == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_GotKey_Info ()
@@ -1235,15 +1287,15 @@ instance DIA_Lares_Kanalisation (C_INFO)
 	nr			 = 	17;
 	condition	 = 	DIA_Lares_Kanalisation_Condition;
 	information	 = 	DIA_Lares_Kanalisation_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Gdzie znajdê kana³y?";
 };
 func int DIA_Lares_Kanalisation_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lares_GotKey))
-	&& (DG_gefunden == false) 
+	&& (DG_gefunden == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_Kanalisation_Info ()
@@ -1261,16 +1313,16 @@ instance DIA_Lares_OtherGuild (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lares_OtherGuild_Condition;
 	information	 = 	DIA_Lares_OtherGuild_Info;
-	permanent    =  false;
-	important 	 = 	true;
+	permanent    =  FALSE;
+	important 	 = 	TRUE;
 };
 func int DIA_Lares_OtherGuild_Condition ()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (other.guild != GIL_NONE)
-	&& (SC_IsRanger == false)//ADDON
+	&& (SC_IsRanger == FALSE)//ADDON
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_OtherGuild_Info ()
@@ -1290,7 +1342,7 @@ func void DIA_Lares_OtherGuild_Info ()
 	
 		AI_Output (self, other, "DIA_Lares_OtherGuild_09_03"); //Tylko ty mog³eœ wyci¹æ taki numer...
 	
-		if (Lares_WorkForLee == true)
+		if (Lares_WorkForLee == TRUE)
 		{
 			AI_Output (self, other, "DIA_Lares_OtherGuild_09_04"); //Nie bêdziesz robiæ mi problemów z powodu pracy u Lee, prawda?
 			AI_Output (other,self , "DIA_Lares_OtherGuild_15_05"); //Ale znasz mnie...
@@ -1308,6 +1360,7 @@ func void DIA_Lares_OtherGuild_Info ()
 	if (other.guild == GIL_SLD) 
 	|| (other.guild == GIL_DJG)
 	{
+		//AI_Output (self, other, "DIA_Lares_OtherGuild_09_09"); //Ich hab gehört, du bist aufgenommen worden.
 		AI_Output (self, other, "DIA_Addon_Lares_OtherGuild_09_00"); //Podobno Lee przyj¹³ ciê do kompanii.
 		AI_Output (self, other, "DIA_Lares_OtherGuild_09_10"); //Gratulacje.
 	};
@@ -1333,7 +1386,7 @@ func int DIA_Addon_Lares_Forest_Condition ()
 {	
 	if (MIS_Addon_Nefarius_BringMissingOrnaments == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1346,7 +1399,7 @@ func void DIA_Addon_Lares_Forest_info ()
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_Forest_09_04"); //Rozumiem. Samemu to zbyt niebezpieczne?
 	AI_Output (self, other, "DIA_Addon_Lares_RangerHelp_Forest_09_05"); //Nie ma sprawy. Daj znaæ, jak bêdziesz chcia³ ruszaæ.
 
-	RangerHelp_OrnamentForest = true;
+	RangerHelp_OrnamentForest = TRUE;
 };
 
 
@@ -1359,22 +1412,22 @@ instance DIA_Lares_GoNow (C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Lares_GoNow_Condition;
 	information	 = 	DIA_Lares_GoNow_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Dobra, chodŸmy.";
 };
 func int DIA_Lares_GoNow_Condition ()
 {	
 	if (
-		(Lares_WayToOnar == true)
+		(Lares_WayToOnar == TRUE)
 	 	|| (MIS_Addon_Lares_Ornament2Saturas == LOG_RUNNING)
-	 	|| (RangerHelp_OrnamentForest == true)
+	 	|| (RangerHelp_OrnamentForest == TRUE)
 	 	)
 	 	&& ((LaresGuide_ZumPortal == 0)||(LaresGuide_ZumPortal == 8))
-	 	&& ((LaresGuide_ZuOnar == false) || (LaresGuide_ZuOnar == LOG_SUCCESS))
+	 	&& ((LaresGuide_ZuOnar == FALSE) || (LaresGuide_ZuOnar == LOG_SUCCESS))
 	 	&& ((LaresGuide_OrnamentForest == 0)||(LaresGuide_OrnamentForest == 3))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 			{
-				return true;
+				return TRUE;
 			};
 };
 
@@ -1384,9 +1437,9 @@ func void DIA_Lares_GoNow_GoingConditions ()
 	AI_StopProcessInfos (self);
 	
 	Lares_Guide = Wld_GetDay();
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	
-	if (Npc_KnowsInfo (other, DIA_Moe_Hallo) == false)
+	if (Npc_KnowsInfo (other, DIA_Moe_Hallo) == FALSE)
 	{
 		Npc_SetRefuseTalk (Moe,30);
 	};
@@ -1396,7 +1449,7 @@ func void DIA_Lares_GoNow_Info ()
 {
 	AI_Output (other, self, "DIA_Lares_GoNow_15_00"); //Dobra, chodŸmy.
 	
-	if (Lares_CanBringScToPlaces == false)
+	if (Lares_CanBringScToPlaces == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Lares_GoNow_09_03"); //Nie mogê siê st¹d ruszyæ, dopóki ktoœ mnie nie zast¹pi lub nie zostanie rozwi¹zana sprawa gin¹cych ludzi.
 	}
@@ -1412,17 +1465,17 @@ func void DIA_Lares_GoNow_Info ()
 			Info_ClearChoices	(DIA_Lares_GoNow);
 			Info_AddChoice	(DIA_Lares_GoNow, DIALOG_BACK, DIA_Lares_GoNow_warte );
 		
-			if (Lares_WayToOnar == true) && (LaresGuide_ZuOnar != LOG_SUCCESS)
+			if (Lares_WayToOnar == TRUE) && (LaresGuide_ZuOnar != LOG_SUCCESS)
 			{
 				Info_AddChoice	(DIA_Lares_GoNow, "Na farmê Onara.", DIA_Lares_GoNow_Onar );
 			};
 		
-			if ((MIS_Addon_Lares_Ornament2Saturas == LOG_RUNNING) && (Lares_Angekommen == false))
+			if ((MIS_Addon_Lares_Ornament2Saturas == LOG_RUNNING) && (Lares_Angekommen == FALSE))
 			{
 				Info_AddChoice	(DIA_Lares_GoNow, "Odnieœmy ornament Vatrasa.", DIA_Lares_GoNow_Maya );
 			};
 			
-			if ((ORNAMENT_SWITCHED_FOREST == false) && (LaresGuide_OrnamentForest == 0) && (RangerHelp_OrnamentForest == true))
+			if ((ORNAMENT_SWITCHED_FOREST == FALSE) && (LaresGuide_OrnamentForest == 0) && (RangerHelp_OrnamentForest == TRUE))
 			{
 				Info_AddChoice	(DIA_Lares_GoNow, "Zapuœæmy siê w ten gêsty las na wschodzie.", DIA_Lares_GoNow_Forest );
 			};
@@ -1440,7 +1493,7 @@ func void DIA_Lares_GoNow_Maya ()
 func void DIA_Lares_GoNow_Onar ()
 {
 	AI_Output			(other, self, "DIA_Addon_Lares_GoNow_Onar_15_00"); //Na farmê Onara.
-	LaresGuide_ZuOnar = true;
+	LaresGuide_ZuOnar = TRUE;
 	Npc_ExchangeRoutine (self, "GUIDE");
 	DIA_Lares_GoNow_GoingConditions(); 
 };
@@ -1467,15 +1520,15 @@ instance DIA_Lares_GUIDE		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lares_GUIDE_Condition;
 	information	 = 	DIA_Lares_GUIDE_Info;
-	permanent    =  false;
-	important	 = 	true;
+	permanent    =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Lares_GUIDE_Condition ()
 {	
-	if (LaresGuide_ZuOnar == true)
+	if (LaresGuide_ZuOnar == TRUE)
 	&& Hlp_StrCmp 	 (Npc_GetNearestWP(self),"NW_TAVERNE_BIGFARM_05")
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_GUIDE_Info ()
@@ -1493,7 +1546,7 @@ func void DIA_Lares_GUIDE_Info ()
 	
 	AI_StopProcessInfos (self);
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	
 	Npc_ExchangeRoutine (self,"START");
 	LaresGuide_ZuOnar = LOG_SUCCESS; //Joly: schluss mit Onar guide
@@ -1508,7 +1561,8 @@ instance DIA_Addon_Lares_ArrivedPortalInter1		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInter1_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInter1_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
+
 };
 
 func int DIA_Addon_Lares_ArrivedPortalInter1_Condition ()
@@ -1517,7 +1571,7 @@ func int DIA_Addon_Lares_ArrivedPortalInter1_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_CITY_TO_FOREST_11")
 	&& (LaresGuide_ZumPortal == 1)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1525,22 +1579,45 @@ func void DIA_Addon_Lares_ArrivedPortalInter1_Info ()
 {
 	AI_Output 	(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_09_00"); //Jesteœmy ju¿ za miastem, tutaj nikt nas nie pods³ucha... Mam ci coœ do powiedzenia.
 	AI_Output 	(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_09_01"); //Ten ornament nale¿y zanieœæ Saturasowi. Pamiêtasz go, prawda?
-	AI_Output	(other, self, "DIA_Addon_Lares_ArrivedPortalInter1_ja_15_00"); //Jasne. By³ g³ównym Magiem Wody z Nowego Obozu.
+	
+	
+	Info_ClearChoices	(DIA_Addon_Lares_ArrivedPortalInter1);
+	Info_AddChoice	(DIA_Addon_Lares_ArrivedPortalInter1, "Jasne.", DIA_Addon_Lares_ArrivedPortalInter1_ja );
+	Info_AddChoice	(DIA_Addon_Lares_ArrivedPortalInter1, "Saturas? Kto to taki?", DIA_Addon_Lares_ArrivedPortalInter1_wer );
+
+	LaresGuide_ZumPortal = 2;
+};
+
+func void DIA_Addon_Lares_ArrivedPortalInter1_teil2 ()
+{
 	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_00"); //Jako dawni mieszkañcy Nowego Obozu mamy dobre stosunki z Magami Wody.
 	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_01"); //Nawet Lee bêdzie ich chroniæ w razie potrzeby.
 	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_02"); //Wiêkszoœæ mych wysi³ków w mieœcie koncentrowa³a siê na utrzymywaniu wraz z Vatrasem kontaktu z Magami Wody.
 	B_MakeRangerReadyForMeeting (self);
 	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_03"); //A to jest pancerz, który ka¿dy z nas od nich otrzyma³. Cz³onkowie Wodnego Krêgu nosili takie zbroje, jeszcze przed wojnami z orkami.
 	
-	if (Cavalorn_RangerHint == true)
+	if (Cavalorn_RangerHint == TRUE)
 	{
 		AI_Output (other, self, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_15_04"); //A sk¹d siê w tym wszystkim wzi¹³ Cavalorn? Nie pamiêtam go z Nowego Obozu.
 		AI_Output (self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_05"); //Masz racjê, nasza spo³ecznoœæ siê rozros³a. Nawet ja nie wiem, ilu nas dok³adnie jest.
 	};
 
 	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_teil2_09_06"); //Ale chodŸmy ju¿. Chcê siê bardziej oddaliæ od miasta - póŸniej pogadamy.
-	
-	LaresGuide_ZumPortal = 2;
+	Info_ClearChoices	(DIA_Addon_Lares_ArrivedPortalInter1);
+};
+
+func void DIA_Addon_Lares_ArrivedPortalInter1_wer ()
+{
+	AI_Output			(other, self, "DIA_Addon_Lares_ArrivedPortalInter1_wer_15_00"); //Saturas? Kto to taki?
+	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_wer_09_01"); //G³ówny Mag Wody z Nowego Obozu. Jeszcze z czasów, gdy Górnicz¹ Dolinê otacza³a Bariera.
+	AI_Output			(self, other, "DIA_Addon_Lares_ArrivedPortalInter1_wer_09_02"); //Wraz z Lee zawarliœmy umowê z Magami Wody i po³¹czyliœmy si³y przeciwko Staremu Obozowi.
+	DIA_Addon_Lares_ArrivedPortalInter1_teil2 ();
+};
+
+func void DIA_Addon_Lares_ArrivedPortalInter1_ja ()
+{
+	AI_Output			(other, self, "DIA_Addon_Lares_ArrivedPortalInter1_ja_15_00"); //Jasne. By³ g³ównym Magiem Wody z Nowego Obozu.
+	DIA_Addon_Lares_ArrivedPortalInter1_teil2 ();
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1552,7 +1629,7 @@ instance DIA_Addon_Lares_ArrivedPortalInterWeiter		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1562,7 +1639,7 @@ func int DIA_Addon_Lares_ArrivedPortalInterWeiter_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_TAVERN_TO_FOREST_02")
 	&& (LaresGuide_ZumPortal == 2)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1572,7 +1649,7 @@ func void DIA_Addon_Lares_ArrivedPortalInterWeiter_Info ()
 	
 	if (MIS_Addon_Erol_BanditStuff == LOG_RUNNING)
 	&& ((Npc_GetDistToWP(Erol,"NW_TAVERN_TO_FOREST_03")<1000))
-	&& ((Npc_IsDead(Erol))==false)
+	&& ((Npc_IsDead(Erol))==FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Lares_ArrivedPortalInterWeiter_15_01"); //Ten goœæ ma problemy z bandytami.
 		AI_Output	(self, other, "DIA_Addon_Lares_ArrivedPortalInterWeiter_09_02"); //Dobrze wiedzieæ, ale czasu to my mamy raczej ma³o.
@@ -1590,7 +1667,7 @@ instance DIA_Addon_Lares_ArrivedPortalInterWeiter2		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter2_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter2_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1600,7 +1677,7 @@ func int DIA_Addon_Lares_ArrivedPortalInterWeiter2_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_TAVERNE_TROLLAREA_14")
 	&& (LaresGuide_ZumPortal == 3)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1619,7 +1696,7 @@ instance DIA_Addon_Lares_ArrivedPortalInter2		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInter2_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInter2_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1629,7 +1706,7 @@ func int DIA_Addon_Lares_ArrivedPortalInter2_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_TROLLAREA_PATH_58")
 	&& (LaresGuide_ZumPortal == 4)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1654,7 +1731,7 @@ instance DIA_Addon_Lares_ArrivedPortalInterWeiter3		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter3_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter3_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1664,7 +1741,7 @@ func int DIA_Addon_Lares_ArrivedPortalInterWeiter3_Condition ()
 	&& (Npc_GetDistToWP(self,"NW_TROLLAREA_PATH_47") < 200) 	
 	&& (LaresGuide_ZumPortal == 5)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1683,7 +1760,7 @@ instance DIA_Addon_Lares_ArrivedPortalInterWeiter4		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter4_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortalInterWeiter4_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1693,7 +1770,7 @@ func int DIA_Addon_Lares_ArrivedPortalInterWeiter4_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_TROLLAREA_RUINS_02")
 	&& (LaresGuide_ZumPortal == 6)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1712,7 +1789,7 @@ instance DIA_Addon_Lares_ArrivedPortal		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_ArrivedPortal_Condition;
 	information	 = 	DIA_Addon_Lares_ArrivedPortal_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 func int DIA_Addon_Lares_ArrivedPortal_Condition ()
@@ -1721,7 +1798,7 @@ func int DIA_Addon_Lares_ArrivedPortal_Condition ()
 	&& Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_TROLLAREA_RUINS_41")
 	&& (LaresGuide_ZumPortal == 7)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Lares_ArrivedPortal_Info ()
@@ -1737,11 +1814,11 @@ func void DIA_Addon_Lares_ArrivedPortal_Info ()
 	
 	B_LogEntry (TOPIC_Addon_KDW,"Lares przekaza³ mi ornament. Mam go zanieœæ do Saturasa, Maga Wody."); 
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine (self,"START");
 	LaresGuide_ZumPortal = 8; //Joly: schluss mit guide Portal
 	
-	Lares_Angekommen = true;
+	Lares_Angekommen = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1753,15 +1830,15 @@ instance DIA_Addon_Lares_Albern	(C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Addon_Lares_Albern_Condition;
 	information	= DIA_Addon_Lares_Albern_Info;
-	important	= true;
+	important	= TRUE;
 };
 func int DIA_Addon_Lares_Albern_Condition ()
 {
-	if (Lares_Angekommen == true)
+	if (Lares_Angekommen == TRUE)
 	&& (Npc_GetDistToWP (self, "NW_TROLLAREA_RUINS_41") > 1000)
 	&& (MIS_Addon_Lares_Ornament2Saturas != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Lares_Albern_Info()
@@ -1779,7 +1856,7 @@ instance DIA_Addon_Lares_GOFORESTPRE		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_GOFORESTPRE_Condition;
 	information	 = 	DIA_Addon_Lares_GOFORESTPRE_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -1788,7 +1865,7 @@ func int DIA_Addon_Lares_GOFORESTPRE_Condition ()
 	if Hlp_StrCmp  (Npc_GetNearestWP(self),"NW_CITY_TO_FARM2_04") 
 	&& (LaresGuide_OrnamentForest == 1)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Lares_GOFORESTPRE_ja ()
@@ -1811,7 +1888,7 @@ func void DIA_Addon_Lares_GOFORESTPRE_nein ()
 
 func void DIA_Addon_Lares_GOFORESTPRE_Info ()
 {
-	if (ORNAMENT_SWITCHED_FOREST == true)
+	if (ORNAMENT_SWITCHED_FOREST == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Lares_GOFORESTPRE_09_00"); //Nadal chcesz, abym towarzyszy³ ci w drodze przez las?
 	}
@@ -1834,8 +1911,8 @@ instance DIA_Addon_Lares_GOFOREST		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_GOFOREST_Condition;
 	information	 = 	DIA_Addon_Lares_GOFOREST_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 
@@ -1845,26 +1922,26 @@ func int DIA_Addon_Lares_GOFOREST_Condition ()
 	&& (LaresGuide_OrnamentForest == 2)
 	&& (Npc_IsDead(Stoneguardian_Ornament))
 	{
-		if (ORNAMENT_SWITCHED_FOREST == false)
+		if (ORNAMENT_SWITCHED_FOREST == FALSE)
 		&& (Npc_IsInState (self,ZS_Talk))
 			{
-				return true;
+				return TRUE;
 			};	
-		if (ORNAMENT_SWITCHED_FOREST == true)
+		if (ORNAMENT_SWITCHED_FOREST == TRUE)
 			{
-				return true;
+				return TRUE;
 			};
 	};
 };
 
 func void DIA_Addon_Lares_GOFOREST_Info ()
 {
-	if (ORNAMENT_SWITCHED_FOREST == true)
+	if (ORNAMENT_SWITCHED_FOREST == TRUE)
 	{	
 		B_MakeRangerReadyToLeaveMeeting (self);
 		AI_Output 	(self, other, "DIA_Addon_Lares_GOFOREST_09_00"); //Moje zadanie ju¿ skoñczone, poradzisz sobie beze mnie. Czas siê zmywaæ.
 	 	AI_StopProcessInfos (self);
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine (self,"START");
 	 	LaresGuide_OrnamentForest = 3; //Joly: Schluss mit guide Forest!
  	}
@@ -1884,7 +1961,7 @@ instance DIA_Addon_Lares_PortalInterWEITER		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Lares_PortalInterWEITER_Condition;
 	information	 = 	DIA_Addon_Lares_PortalInterWEITER_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"ChodŸmy.";
 };
@@ -1894,7 +1971,7 @@ func int DIA_Addon_Lares_PortalInterWEITER_Condition ()
 	if (LaresGuide_ZumPortal != 0)
 	&& (LaresGuide_ZumPortal != 8)//Joly: schluss mit guide Portal
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1947,6 +2024,131 @@ func void DIA_Addon_Lares_PortalInterWEITER_Info ()
 		Npc_ExchangeRoutine (self,"GUIDEPORTALTEMPELEND");
 	};
 };
+/*
+// ************************************************************
+// 			  				  LEHRER
+// ************************************************************
+// ------------------------------------------------------------
+// Wanna Learn
+// ------------------------------------------------------------
+instance DIA_Lares_DEX		(C_INFO)
+{
+	npc			 = 	VLK_449_Lares;
+	nr			 = 	20;
+	condition	 = 	DIA_Lares_DEX_Condition;
+	information	 = 	DIA_Lares_DEX_Info;
+	permanent 	 =  FALSE;
+	description	 = 	"Mo¿esz mnie czegoœ nauczyæ?";
+};
+func int DIA_Lares_DEX_Condition ()
+{	
+	return TRUE;
+};
+func void DIA_Lares_DEX_Info ()
+{
+	AI_Output (other, self, "DIA_Lares_DEX_15_00"); //Mo¿esz mnie czegoœ nauczyæ?
+	AI_Output (self, other, "DIA_Addon_Lares_DEX_Add_09_01"); //Jasne - lepsza si³a i zrêcznoœæ na pewno ci nie zaszkodz¹.
+
+	Lares_TeachDEX = TRUE;
+	
+	Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
+	B_LogEntry (Topic_CityTeacher,"Lares mo¿e pomóc mi zwiêkszyæ si³ê i zrêcznoœæ.");
+};
+// ------------------------------------------------------------
+// 			  				   TEACH 
+// ------------------------------------------------------------
+var int Lares_MerkeDEX;
+var int Lares_MerkeSTR;
+//-----------------------------------
+instance DIA_Lares_TEACH		(C_INFO)
+{
+	npc		  	 = 	VLK_449_Lares;
+	nr			 = 	20;
+	condition	 = 	DIA_Lares_TEACH_Condition;
+	information	 = 	DIA_Lares_TEACH_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Ucz mnie.";
+};
+func int DIA_Lares_TEACH_Condition ()
+{	
+	if (Lares_TeachDEX == TRUE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Lares_TEACH_Info ()
+{
+	//AI_Output (other, self, "DIA_Lares_TEACH_15_00"); //Ich will geschickter werden!
+	AI_Output (other,self ,"DIA_Addon_Lares_Teach_15_00"); //Ucz mnie.
+	
+	Lares_MerkeDEX = other.attribute[ATR_DEXTERITY];
+	Lares_MerkeSTR = other.attribute[ATR_STRENGTH];
+	
+	Info_ClearChoices   (DIA_Lares_TEACH);
+	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Lares_TEACH_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Lares_TEACH_5);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_Lares_TEACHSTR_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Lares_TEACHSTR_5);
+};
+func void DIA_Lares_TEACH_BACK()
+{
+	if (other.attribute[ATR_DEXTERITY] > Lares_MerkeDEX)
+	{
+		AI_Output (self, other, "DIA_Lares_TEACH_BACK_09_00"); //Ju¿ sta³eœ siê bardziej zrêczny.
+	};
+	if (other.attribute[ATR_STRENGTH] > Lares_MerkeSTR)
+	{
+		AI_Output (self, other, "DIA_Addon_Lares_TEACH_BACK_Add_09_00"); //Dobrze - twoja si³a wzrasta.
+	};
+	
+	Info_ClearChoices (DIA_Lares_TEACH);
+};
+func void DIA_Lares_TEACH_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	
+	Info_ClearChoices   (DIA_Lares_TEACH);
+	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Lares_TEACH_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Lares_TEACH_5);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_Lares_TEACHSTR_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Lares_TEACHSTR_5);
+};
+func void DIA_Lares_TEACH_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	
+	Info_ClearChoices   (DIA_Lares_TEACH);
+	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Lares_TEACH_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Lares_TEACH_5);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_Lares_TEACHSTR_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Lares_TEACHSTR_5);
+};
+func void DIA_Lares_TEACHSTR_1()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_LOW);
+	
+	Info_ClearChoices   (DIA_Lares_TEACH);
+	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Lares_TEACH_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Lares_TEACH_5);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_Lares_TEACHSTR_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Lares_TEACHSTR_5);
+};
+func void DIA_Lares_TEACHSTR_5()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_LOW);
+	
+	Info_ClearChoices   (DIA_Lares_TEACH);
+	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Lares_TEACH_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Lares_TEACH_5);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_Lares_TEACHSTR_1);
+	Info_AddChoice		(DIA_Lares_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Lares_TEACHSTR_5);
+};
+*/
 
 //#################################
 //##
@@ -1963,14 +2165,14 @@ INSTANCE DIA_Lares_Kap2_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lares_Kap2_EXIT_Condition;
 	information	= DIA_Lares_Kap2_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lares_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap2_EXIT_Info()
@@ -1993,14 +2195,14 @@ INSTANCE DIA_Lares_Kap3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lares_Kap3_EXIT_Condition;
 	information	= DIA_Lares_Kap3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lares_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap3_EXIT_Info()
@@ -2017,14 +2219,14 @@ INSTANCE DIA_Lares_AnyNews(C_INFO)
 	nr			= 5;
 	condition	= DIA_Lares_AnyNews_Condition;
 	information	= DIA_Lares_AnyNews_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jakieœ wieœci?";
 };                       
 FUNC INT DIA_Lares_AnyNews_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_AnyNews_Info()
@@ -2064,14 +2266,14 @@ INSTANCE DIA_Lares_NewsAboutBennet(C_INFO)
 	nr			= 6;
 	condition	= DIA_Lares_NewsAboutBennet_Condition;
 	information	= DIA_Lares_NewsAboutBennet_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakieœ wieœci o Bennecie?";
 };                       
 FUNC INT DIA_Lares_NewsAboutBennet_Condition()
 {
 	if (MIS_RescueBennet == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_NewsAboutBennet_Info()
@@ -2098,14 +2300,14 @@ INSTANCE DIA_Lares_Kap4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lares_Kap4_EXIT_Condition;
 	information	= DIA_Lares_Kap4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lares_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap4_EXIT_Info()
@@ -2123,14 +2325,14 @@ INSTANCE DIA_Lares_Kap4_PERM(C_INFO)
 	nr			= 6;
 	condition	= DIA_Lares_Kap4_PERM_Condition;
 	information	= DIA_Lares_Kap4_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Dlaczego nie polujesz na smoki?";
 };                       
 FUNC INT DIA_Lares_Kap4_PERM_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap4_PERM_Info()
@@ -2155,14 +2357,14 @@ INSTANCE DIA_Lares_Kap5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lares_Kap5_EXIT_Condition;
 	information	= DIA_Lares_Kap5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lares_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lares_Kap5_EXIT_Info()
@@ -2183,15 +2385,15 @@ instance DIA_Lares_KnowWhereEnemy		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Lares_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Lares_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Masz mo¿e ochotê na opuszczenie wyspy?";
 };
 func int DIA_Lares_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Lares_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Lares_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_KnowWhereEnemy_Info ()
@@ -2222,9 +2424,9 @@ FUNC VOID DIA_Lares_KnowWhereEnemy_Yes ()
 	AI_Output (self ,other,"DIA_Lares_KnowWhereEnemy_Yes_09_02"); //Cz³owiek czynu - to mi siê podoba. Do zobaczenia.
 	
 	Lares_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -2262,15 +2464,15 @@ instance DIA_Lares_LeaveMyShip		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Lares_LeaveMyShip_Condition;
 	information	 = 	DIA_Lares_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Jednak wolê, ¿ebyœ zosta³.";
 };
 func int DIA_Lares_LeaveMyShip_Condition ()
 {	
 	if (Lares_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_LeaveMyShip_Info ()
@@ -2286,7 +2488,7 @@ func void DIA_Lares_LeaveMyShip_Info ()
 	{
 		Lares_IsOnBoard	 = LOG_FAILED;
 	};				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"ShipOff"); 
 };
@@ -2300,7 +2502,7 @@ instance DIA_Lares_StillNeedYou		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Lares_StillNeedYou_Condition;
 	information	 = 	DIA_Lares_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Wci¹¿ jesteœ zainteresowany podró¿¹?";
 };
 func int DIA_Lares_StillNeedYou_Condition ()
@@ -2309,7 +2511,7 @@ func int DIA_Lares_StillNeedYou_Condition ()
 	|| (Lares_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lares_StillNeedYou_Info ()
@@ -2322,9 +2524,9 @@ func void DIA_Lares_StillNeedYou_Info ()
 		AI_Output	(self, other, "DIA_Lares_StillNeedYou_09_02"); //Spotkamy siê na statku.
 		
 		Lares_IsOnBoard	 = LOG_SUCCESS;
-		crewmember_Count += 1;
+		crewmember_Count = (Crewmember_Count +1);
 	
-		if (MIS_ReadyforChapter6 == true)
+		if (MIS_ReadyforChapter6 == TRUE)
 			{
 				Npc_ExchangeRoutine (self,"SHIP"); 
 			}
@@ -2341,3 +2543,29 @@ func void DIA_Lares_StillNeedYou_Info ()
 		AI_StopProcessInfos (self);
 	};	
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

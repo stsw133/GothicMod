@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Garett_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Garett_EXIT_Condition;
 	information	= DIA_Addon_Garett_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Garett_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Garett_EXIT_Info()
@@ -30,14 +30,14 @@ INSTANCE DIA_Addon_Garett_Anheuern(C_INFO)
 	condition	= DIA_Addon_Garett_Anheuern_Condition;
 	information	= DIA_Addon_Garett_Anheuern_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Garett_Anheuern_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garett_Anheuern_Info()
@@ -58,15 +58,15 @@ INSTANCE DIA_Addon_Garett_Hello(C_INFO)
 	condition	= DIA_Addon_Garett_Hello_Condition;
 	information	= DIA_Addon_Garett_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Garett_Hello_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon != LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garett_Hello_Info()
@@ -90,15 +90,15 @@ INSTANCE DIA_Addon_Garett_Samuel(C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Garett_Samuel_Condition;
 	information	= DIA_Addon_Garett_Samuel_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kim jest Samuel?";
 };                       
 FUNC INT DIA_Addon_Garett_Samuel_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Addon_Garett_Hello))
-	&& (Samuel.aivar[AIV_TalkedToPlayer] == false)
+	&& (Samuel.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garett_Samuel_Info()
@@ -127,7 +127,7 @@ INSTANCE DIA_Addon_Garett_Warez(C_INFO)
 };                       
 FUNC INT DIA_Addon_Garett_Warez_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Garett_Warez_Info()
 {	
@@ -153,7 +153,7 @@ FUNC INT DIA_Addon_Garett_Bandits_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Garett_Warez))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Garett_Bandits_Info()
@@ -180,12 +180,12 @@ INSTANCE DIA_Addon_Garett_Greg(C_INFO)
 	nr			= 4;
 	condition	= DIA_Addon_Garett_Greg_Condition;
 	information	= DIA_Addon_Garett_Greg_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A ten wasz kapitan... Jaki on jest?";
 };                       
 FUNC INT DIA_Addon_Garett_Greg_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Garett_Greg_Info()
@@ -216,7 +216,7 @@ FUNC INT DIA_Addon_Garett_Tips_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Addon_Garett_Greg))
 	{
-		return true;
+		return TRUE;
 	};		
 };
 
@@ -245,45 +245,45 @@ INSTANCE DIA_Addon_Garett_GiveKompass(C_INFO)
 	nr			= 6;
 	condition	= DIA_Addon_Garett_GiveKompass_Condition;
 	information	= DIA_Addon_Garett_GiveKompass_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Oto twój kompas.";
 };                       
 FUNC INT DIA_Addon_Garett_GiveKompass_Condition()
 {
-	if (Npc_HasItems (other,ItMi_GoldCompass) >= 1)
+	if (Npc_HasItems (other,ItMI_Addon_Kompass_Mis) >= 1)
 	&& (MIS_Addon_Garett_BringKompass == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Addon_Garett_GiveKompass_Info()
 {	
 	AI_Output (other,self,"DIA_Addon_Garett_GiveKompass_15_00"); //Oto twój kompas.
 	
-	if B_GiveInvItems (other,self,ItMi_GoldCompass,1)
+	//Patch m.f. - weil Händler
+	if B_GiveInvItems (other,self,ItMI_Addon_Kompass_Mis,1)
 	{
-		Npc_RemoveInvItems (self, ItMi_GoldCompass,1);
+		Npc_RemoveInvItems (self, ItMI_Addon_Kompass_Mis,1);
 	};
 	AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_01"); //Ha, to rzeczywiœcie on! Nie spodziewa³em siê, ¿e ujrzê go ponownie.
 	AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_02"); //Wielkie dziêki!
-
-	if (Npc_HasItems (self, ItBe_Asa_01) > 0)
+	
+	if (Npc_HasItems (self, ItBE_Addon_Prot_EdgPoi) > 0)
 	{ 
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_03"); //Tym razem Greg ju¿ go nie dostanie.
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_04"); //WeŸ w nagrodê ten pas. Jest sporo wart.
-		B_GiveInvItems (self, other, ItBe_Asa_01, 1);
-	};
-
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+		B_GiveInvItems (self, other, ItBE_Addon_Prot_EdgPoi, 1);
+	}
+	else if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_05"); //Pamiêtasz ten pas, który ode mnie kupi³eœ?
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_06"); //Zap³aci³eœ za niego sporo, choæ, zwa¿ywszy na jego wartoœæ, na pewno nie przep³aci³eœ. Proszê, weŸ swoje pieni¹dze z powrotem i potraktuj go jako prezent.
-		B_GiveInvItems (self, other, itmi_gold, 350);
+		B_GiveInvItems (self, other, itmi_gold, Value_ItBE_Addon_Prot_EdgPoi);
 	};
 	
 	B_LogEntry (TOPIC_Addon_Kompass,"Garret by³ bardzo zadowolony, gdy odda³em mu kompas.");
 	MIS_Addon_Garett_BringKompass = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_ADDON_Garett_Bring_Kompass);
 };
 
 // ************************************************************
@@ -295,14 +295,14 @@ INSTANCE DIA_Addon_Garett_Francis(C_INFO)
 	nr			= 7;
 	condition	= DIA_Addon_Garett_Francis_Condition;
 	information	= DIA_Addon_Garett_Francis_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mo¿esz mi powiedzieæ o Francisie?";
 };                       
 FUNC INT DIA_Addon_Garett_Francis_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Garett_Greg))
 	{
-		return true;
+		return TRUE;
 	};		
 };
 
@@ -314,7 +314,7 @@ FUNC VOID DIA_Addon_Garett_Francis_Info()
 	AI_Output (self,other,"DIA_Addon_Garett_Francis_09_03"); //Nie potrafi nawet œci¹gn¹æ Morgana z ³ó¿ka.
 	AI_Output (self,other,"DIA_Addon_Garett_Francis_09_04"); //Tylko Henry i jego ch³opaki w ogóle coœ robi¹.
 	AI_Output (self,other,"DIA_Addon_Garett_Francis_09_05"); //Reszta obija siê, zamiast pracowaæ.
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Garett_Francis_09_06"); //Mam nadziejê, ¿e Greg szybko wróci.
 		AI_Output (self,other,"DIA_Addon_Garett_Francis_09_07"); //I porozstawia towarzystwo po k¹tach.
@@ -330,18 +330,18 @@ INSTANCE DIA_Addon_Garett_PERM   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Garett_PERM_Condition;
 	information = DIA_Addon_Garett_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jakieœ wieœci?";
 };
 FUNC INT DIA_Addon_Garett_PERM_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Garett_PERM_Info()
 {
 	AI_Output (other,self ,"DIA_Addon_Garett_PERM_15_00"); //Jakieœ wieœci?
 	
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	|| (Npc_IsDead(Greg))
 	{
 		AI_Output (self ,other,"DIA_Addon_Garett_PERM_09_02"); //Od kiedy Greg znikn¹³, nic tu siê nie dzieje.
@@ -361,15 +361,15 @@ INSTANCE DIA_Addon_Garett_Trade   (C_INFO)
 	nr          = 888;
 	condition   = DIA_Addon_Garett_Trade_Condition;
 	information = DIA_Addon_Garett_Trade_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_TRADE;
-	trade		= true;
+	trade		= TRUE;
 };
 FUNC INT DIA_Addon_Garett_Trade_Condition()
 {	
-	if (Npc_KnowsInfo (other,DIA_Addon_Garett_Hello) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Garett_Hello) == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Garett_Trade_Info()
@@ -389,7 +389,7 @@ FUNC VOID DIA_Addon_Garett_Trade_Info()
 	};	
 		
 	B_GiveTradeInv (self);
-	/*
+	
 	Npc_RemoveInvItems	(self, ItRw_Bolt, Npc_HasItems (self,ItRw_Bolt) );
 	var int McBolzenAmount;
 	McBolzenAmount = (Kapitel * 25);
@@ -399,5 +399,6 @@ FUNC VOID DIA_Addon_Garett_Trade_Info()
 	var int McArrowAmount;
 	McArrowAmount = (Kapitel * 25);
 	CreateInvItems 	(self, ItRw_Arrow, McArrowAmount );
-	*/
 };
+
+

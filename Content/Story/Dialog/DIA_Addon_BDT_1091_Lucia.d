@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Lucia_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Lucia_EXIT_Condition;
 	information = DIA_Addon_Lucia_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Lucia_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Lucia_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Lucia_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lucia_Hi_Condition;
 	information = DIA_Addon_Lucia_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Addon_Lucia_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Lucia_Hi_Info()
 {
@@ -49,14 +49,14 @@ INSTANCE DIA_Addon_Lucia_was   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lucia_was_Condition;
 	information = DIA_Addon_Lucia_was_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co mo¿esz mi zaproponowaæ?";
 };
 FUNC INT DIA_Addon_Lucia_was_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Lucia_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_was_Info()
@@ -79,16 +79,16 @@ INSTANCE DIA_Addon_Lucia_Khorinis   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lucia_Khorinis_Condition;
 	information = DIA_Addon_Lucia_Khorinis_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Hej, czy ty przypadkiem nie jesteœ z Khorinis?";
 };
 FUNC INT DIA_Addon_Lucia_Khorinis_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Bromor_Lucia)
-	|| (Nadja_GaveLuciaInfo == true)
+	|| (Nadja_GaveLuciaInfo == TRUE)
 	|| Npc_KnowsInfo (other, DIA_Addon_Elvrich_WhatExactly)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Khorinis_Info()
@@ -105,10 +105,10 @@ FUNC VOID DIA_Addon_Lucia_Khorinis_Info()
 		AI_Output (self, other, "DIA_Addon_Lucia_Khorinis_16_06"); //Zerwa³am ju¿ z Elvrichem!
 		AI_Output (other,self , "DIA_Addon_Lucia_Khorinis_15_04"); //Dlaczego?
 		AI_Output (self, other, "DIA_Addon_Lucia_Khorinis_16_05"); //Bo to tchórz. Gdy bandyci mnie porwali, nic nie zrobi³.
-		TOPIC_END_Lucia = true;
+		TOPIC_END_Lucia = TRUE;
 		B_GivePlayerXP (XP_Ambient);
 	};
-	TOPIC_END_Lucia = true;
+	TOPIC_END_Lucia = TRUE;
 };
 //---------------------------------------------------------------------
 //	Info Jetzt
@@ -119,14 +119,14 @@ INSTANCE DIA_Addon_Lucia_Jetzt   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lucia_Jetzt_Condition;
 	information = DIA_Addon_Lucia_Jetzt_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "I co zamierzasz teraz robiæ?";
 };
 FUNC INT DIA_Addon_Lucia_Jetzt_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Lucia_Khorinis)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Jetzt_Info()
@@ -145,14 +145,14 @@ INSTANCE DIA_Addon_Lucia_Paladine   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lucia_Paladine_Condition;
 	information = DIA_Addon_Lucia_Paladine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie lubisz paladynów, prawda?";
 };
 FUNC INT DIA_Addon_Lucia_Paladine_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Lucia_was)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Paladine_Info()
@@ -169,6 +169,7 @@ FUNC VOID DIA_Addon_Lucia_Paladine_Info()
 		Info_AddChoice (DIA_Addon_Lucia_Paladine,"Zakoñcz rozmowê.",DIA_Addon_Lucia_Paladine_BACK);
 		Info_AddChoice (DIA_Addon_Lucia_Paladine,"Paladyni nie walcz¹ w imieniu Innosa. On sam wybiera sobie wojowników.",DIA_Addon_Lucia_Paladine_WAHL);
 		Info_AddChoice (DIA_Addon_Lucia_Paladine,"Paladyni s¹ wojownikami Innosa. Nie s¹ mordercami.",DIA_Addon_Lucia_Paladine_MURDER);
+		
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Paladine_BACK()
@@ -215,14 +216,14 @@ INSTANCE DIA_Addon_Lucia_Attentat   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Lucia_Attentat_Condition;
 	information = DIA_Addon_Lucia_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= DIALOG_ADDON_ATTENTAT_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Lucia_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Attentat_Info()
@@ -239,15 +240,15 @@ INSTANCE DIA_Addon_Lucia_Trade   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Lucia_Trade_Condition;
 	information = DIA_Addon_Lucia_Trade_Info;
-	permanent   = true;
-	trade		= true;
+	permanent   = TRUE;
+	trade		= TRUE;
 	description = "Chcê siê czegoœ napiæ.";
 };
 FUNC INT DIA_Addon_Lucia_Trade_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Lucia_was)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_Trade_Info()
@@ -255,6 +256,7 @@ FUNC VOID DIA_Addon_Lucia_Trade_Info()
 	AI_Output (other, self, "DIA_Addon_Lucia_Trade_15_00");//Chcê siê czegoœ napiæ.
 	B_GiveTradeInv(self);
 };
+/*
 //---------------------------------------------------------------------
 //	Info lernen
 //---------------------------------------------------------------------
@@ -264,22 +266,79 @@ INSTANCE DIA_Addon_Lucia_lernen   (C_INFO)
 	nr          = 19;
 	condition   = DIA_Addon_Lucia_lernen_Condition;
 	information = DIA_Addon_Lucia_lernen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿esz mnie czegoœ nauczyæ?";
 };
 FUNC INT DIA_Addon_Lucia_lernen_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Lucia_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lucia_lernen_Info()
 {
 	AI_Output (other, self, "DIA_Addon_Lucia_lernen_15_00");//Mo¿esz mnie czegoœ nauczyæ?
 	AI_Output (self, other, "DIA_Addon_Lucia_lernen_16_01");//Oczywiœcie. Mogê ci pomóc w rozwiniêciu ZRÊCZNOŒCI!
-	self.aivar[AIV_CanTeach] = true;
 	
 	Log_CreateTopic (Topic_Addon_BDT_Teacher,LOG_NOTE);
 	B_LogEntry 	(Topic_Addon_BDT_Teacher,"Lucia mo¿e mi pomóc poprawiæ moj¹ zrêcznoœæ.");	
 };
+//*******************************************
+//	Info TEACH
+//*******************************************
+instance DIA_Addon_Lucia_TEACH		(C_INFO)
+{
+	npc		  	 = 	BDT_1091_Addon_Lucia;
+	nr			 = 	101;
+	condition	 = 	DIA_Addon_Lucia_TEACH_Condition;
+	information	 = 	DIA_Addon_Lucia_TEACH_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê siê staæ bardziej zrêczny.";
+};
+func int DIA_Addon_Lucia_TEACH_Condition ()
+{	
+	if Npc_KnowsInfo (other,DIA_Addon_Lucia_lernen)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Addon_Lucia_TEACH_Info ()
+{
+	AI_Output (other, self, "DIA_Addon_Lucia_TEACH_15_00"); //Chcê siê staæ bardziej zrêczny.
+	
+	Info_ClearChoices   (DIA_Addon_Lucia_TEACH);
+	Info_AddChoice 		(DIA_Addon_Lucia_TEACH, DIALOG_BACK, DIA_Addon_Lucia_TEACH_BACK);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Addon_Lucia_TEACH_1);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Lucia_TEACH_5);
+	
+};
+func void DIA_Addon_Lucia_TEACH_BACK()
+{
+	Info_ClearChoices (DIA_Addon_Lucia_TEACH);
+};
+func void DIA_Addon_Lucia_TEACH_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	
+	Info_ClearChoices   (DIA_Addon_Lucia_TEACH);
+	
+	Info_AddChoice 		(DIA_Addon_Lucia_TEACH, DIALOG_BACK, DIA_Addon_Lucia_TEACH_BACK);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Addon_Lucia_TEACH_1);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Lucia_TEACH_5);
+	
+	
+};
+func void DIA_Addon_Lucia_TEACH_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	
+	Info_ClearChoices   (DIA_Addon_Lucia_TEACH);
+	
+	Info_AddChoice 		(DIA_Addon_Lucia_TEACH, DIALOG_BACK, DIA_Addon_Lucia_TEACH_BACK);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Addon_Lucia_TEACH_1);
+	Info_AddChoice		(DIA_Addon_Lucia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Addon_Lucia_TEACH_5);
+	
+	
+};
+*/

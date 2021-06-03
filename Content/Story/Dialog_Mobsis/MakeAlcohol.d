@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	MOBSI_MAKEALCOHOL
-//******************************************************************************************
-FUNC VOID MOBSI_MAKEALCOHOL_S1()
+///******************************************************************************************
+///	MOBSI_MAKEALCOHOL
+///******************************************************************************************
+func void MOBSI_MAKEALCOHOL_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
 		self.aivar[AIV_INVINCIBLE] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKEALCOHOL;
@@ -13,8 +13,8 @@ FUNC VOID MOBSI_MAKEALCOHOL_S1()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_MakeAlcohol_End (C_Info)
+///******************************************************************************************
+instance PC_MakeAlcohol_End (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -24,7 +24,7 @@ INSTANCE PC_MakeAlcohol_End (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-FUNC INT PC_MakeAlcohol_End_Condition()
+func int PC_MakeAlcohol_End_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKEALCOHOL)
 	{
@@ -32,8 +32,8 @@ FUNC INT PC_MakeAlcohol_End_Condition()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_MakeAlcohol_Wine (C_Info)
+///******************************************************************************************
+instance PC_MakeAlcohol_Wine (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -43,19 +43,19 @@ INSTANCE PC_MakeAlcohol_Wine (C_Info)
 	description							=	"Wino (2 dzikie jagody, woda)";
 };
 
-FUNC INT PC_MakeAlcohol_Wine_Condition()
+func int PC_MakeAlcohol_Wine_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION	== MOBSI_MAKEALCOHOL)
-	&& (Npc_HasItems(hero,ItPl_Forestberry) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Forestberry) >= 1)
 	{
 		return true;
 	};
 };
 
-FUNC VOID PC_MakeAlcohol_Wine_Info()
+func void PC_MakeAlcohol_Wine_Info()
 {
-	if (Npc_HasItems(hero,ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero,ItPl_Forestberry) >= 2)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Forestberry) >= 2)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water);
 		Npc_RemoveInvItems (hero, ItPl_Forestberry, 2);
@@ -70,8 +70,8 @@ FUNC VOID PC_MakeAlcohol_Wine_Info()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_MakeAlcohol_Booze (C_Info)
+///******************************************************************************************
+instance PC_MakeAlcohol_Booze (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
@@ -81,19 +81,19 @@ INSTANCE PC_MakeAlcohol_Booze (C_Info)
 	description							=	"Gorza³a (2 alkojagody, woda)";
 };
 
-FUNC INT PC_MakeAlcohol_Booze_Condition()
+func int PC_MakeAlcohol_Booze_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION	== MOBSI_MAKEALCOHOL)
-	&& (Npc_HasItems(hero,ItPl_Planeberry) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Planeberry) >= 1)
 	{
 		return true;
 	};
 };
 
-FUNC VOID PC_MakeAlcohol_Booze_Info()
+func void PC_MakeAlcohol_Booze_Info()
 {
-	if (Npc_HasItems(hero,ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero,ItPl_Planeberry) >= 2)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Planeberry) >= 2)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water);
 		Npc_RemoveInvItems (hero, ItPl_Planeberry, 2);

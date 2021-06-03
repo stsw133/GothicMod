@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Patrick_NW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Patrick_NW_EXIT_Condition;
 	information = DIA_Addon_Patrick_NW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Patrick_NW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Patrick_NW_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Patrick_NW_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Patrick_NW_Hi_Condition;
 	information = DIA_Addon_Patrick_NW_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "I jak? Wszystko w porz¹dku?";
 };
 FUNC INT DIA_Addon_Patrick_NW_Hi_Condition()
 {		
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Patrick_NW_Hi_Info()
 {
@@ -44,3 +44,8 @@ FUNC VOID DIA_Addon_Patrick_NW_Hi_Info()
 	AI_Output (other, self, "DIA_Addon_Patrick_NW_Hi_15_04");//A póŸniej?
 	AI_Output (self, other, "DIA_Addon_Patrick_NW_Hi_07_05");//Zobaczy siê. Jeœli wojna wci¹¿ trwa, pójdê walczyæ z orkami. Ale kto wie, co siê jeszcze wydarzy...
 };
+
+
+
+
+

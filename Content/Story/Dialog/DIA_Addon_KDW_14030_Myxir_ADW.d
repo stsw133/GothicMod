@@ -8,12 +8,12 @@ INSTANCE DIA_Addon_Myxir_ADW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Myxir_ADW_EXIT_Condition;
 	information = DIA_Addon_Myxir_ADW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Myxir_ADW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Myxir_ADW_EXIT_Info()
 {
@@ -35,7 +35,7 @@ instance DIA_Addon_Myxir_ADWHello		(C_INFO)
 
 func int DIA_Addon_Myxir_ADWHello_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Myxir_ADWHello_Info ()
@@ -76,16 +76,16 @@ instance DIA_Addon_Myxir_PermADW		(C_INFO)
 	nr		 = 	10;
 	condition	 = 	DIA_Addon_Myxir_PermADW_Condition;
 	information	 = 	DIA_Addon_Myxir_PermADW_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeœli spotkam ducha, dam ci znaæ.";
 };
 func int DIA_Addon_Myxir_PermADW_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Myxir_ADWHello))
-	&& (Saturas_RiesenPlan == false)
+	&& (Saturas_RiesenPlan == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Myxir_PermADW_Info ()
@@ -108,10 +108,10 @@ instance DIA_Addon_Myxir_GeistTafel		(C_INFO)
 
 func int DIA_Addon_Myxir_GeistTafel_Condition ()
 {
-	if (Saturas_RiesenPlan == true)
+	if (Saturas_RiesenPlan == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Myxir_ADWHello))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -195,7 +195,7 @@ func int DIA_Addon_Myxir_GeistPerm_Condition ()
 {
 	if (MIS_ADDON_Myxir_GeistBeschwoeren == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -221,9 +221,9 @@ instance DIA_Addon_Myxir_TalkedToGhost		(C_INFO)
 func int DIA_Addon_Myxir_TalkedToGhost_Condition ()
 {
 	if (MIS_ADDON_Myxir_GeistBeschwoeren == LOG_RUNNING)
-	&& (SC_TalkedToGhost == true)
+	&& (SC_TalkedToGhost == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Myxir_TalkedToGhost_Info ()
@@ -234,10 +234,10 @@ func void DIA_Addon_Myxir_TalkedToGhost_Info ()
 	AI_Output	(self, other, "DIA_Addon_Myxir_TalkedToGhost_12_03"); //Kto wie, co mogliby osi¹gn¹æ, gdyby wci¹¿ istnieli...
 	MIS_ADDON_Myxir_GeistBeschwoeren = LOG_SUCCESS;
 	
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_Addon_Myxir_GeistBeschwoeren);
 	
-	if (Saturas_KnowsHow2GetInTempel == false)
-	&&	(Ghost_SCKnowsHow2GetInAdanosTempel == true)
+	if (Saturas_KnowsHow2GetInTempel == FALSE)
+	&&	(Ghost_SCKnowsHow2GetInAdanosTempel == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Myxir_TalkedToGhost_12_04"); //Co powiedzia³ duch?
 		AI_Output	(other, self, "DIA_Addon_Myxir_TalkedToGhost_15_05"); //Da³ mi coœ, dziêki czemu bêdê móg³ dostaæ siê do œwi¹tyni.
@@ -246,3 +246,122 @@ func void DIA_Addon_Myxir_TalkedToGhost_Info ()
 		B_LogEntry (TOPIC_Addon_Quarhodron,"Kiedy obudzê Quarhodrona, mam siê zg³osiæ do Saturasa."); 
 	};
 };
+
+///////////////////////////////////////////////////////////////////////
+instance DIA_Addon_Myxir_ADW_Teach		(C_INFO)
+{
+	npc		 = 	KDW_14030_Addon_Myxir_ADW;
+	nr		 = 	90;
+	condition	 = 	DIA_Addon_Myxir_ADW_Teach_Condition;
+	information	 = 	DIA_Addon_Myxir_ADW_Teach_Info;
+	permanent	 = 	TRUE;
+
+	description	 = 	"Naucz mnie tego dziwnego jêzyka.";
+};
+
+var int DIA_Addon_Myxir_ADW_Teach_NoPerm;
+var int DIA_Addon_Myxir_ADW_Teach_OneTime;
+
+func int DIA_Addon_Myxir_ADW_Teach_Condition ()
+{
+	if (DIA_Addon_Myxir_ADW_Teach_NoPerm == FALSE)	
+	&& (DIA_Addon_Myxir_Teach_NoPerm == FALSE)
+	&& (DIA_Addon_Myxir_ADW_Teach_NoPerm == FALSE)
+	&& (Npc_KnowsInfo (other, DIA_Addon_Myxir_ADWHello))
+		{
+			return TRUE;
+		};
+};
+
+func void DIA_Addon_Myxir_ADW_Teach_Info ()
+{
+	B_DIA_Addon_Myxir_TeachRequest ();
+
+	if (DIA_Addon_Myxir_ADW_Teach_OneTime == FALSE)
+	{
+		Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
+		B_LogEntry (TOPIC_Addon_KDWTeacher, LogText_Addon_MyxirTeach); 
+		DIA_Addon_Myxir_ADW_Teach_OneTime = TRUE;
+	};	
+	
+	if ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
+	|| ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
+	|| ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)	
+	{
+		Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
+		Info_AddChoice (DIA_Addon_Myxir_ADW_Teach,DIALOG_BACK,DIA_Addon_Myxir_ADW_Teach_BACK);
+	};
+
+	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
+	{
+		B_DIA_Addon_Myxir_TeachL1 ();
+		Info_AddChoice (DIA_Addon_Myxir_ADW_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_1 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_1)),DIA_Addon_Myxir_ADW_Teach_LANGUAGE_1);
+	}	
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	{
+		B_DIA_Addon_Myxir_TeachL2 ();
+		Info_AddChoice (DIA_Addon_Myxir_ADW_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_2 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_2)),DIA_Addon_Myxir_ADW_Teach_LANGUAGE_2);
+	}	
+	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
+	{
+		B_DIA_Addon_Myxir_TeachL3 ();
+		Info_AddChoice (DIA_Addon_Myxir_ADW_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_3 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_3)),DIA_Addon_Myxir_ADW_Teach_LANGUAGE_3);
+	}
+	else 
+	{
+		B_DIA_Addon_Myxir_TeachNoMore ();
+		DIA_Addon_Myxir_ADW_Teach_NoPerm = TRUE;
+	};
+};
+func void DIA_Addon_Myxir_ADW_Teach_LANGUAGE_X ()
+{
+	B_DIA_Addon_Myxir_Teach_LANGUAGE_X ();
+};
+FUNC VOID DIA_Addon_Myxir_ADW_Teach_BACK ()
+{
+	Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Myxir_ADW_Teach_LANGUAGE_1 ()
+{
+	if (B_TeachPlayerTalentForeignLanguage  (self, other, LANGUAGE_1))
+	{
+		DIA_Addon_Myxir_ADW_Teach_LANGUAGE_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Myxir_ADW_Teach_LANGUAGE_2 ()
+{
+	if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_2))
+	{
+		DIA_Addon_Myxir_ADW_Teach_LANGUAGE_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
+};
+FUNC VOID DIA_Addon_Myxir_ADW_Teach_LANGUAGE_3 ()
+{
+	if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_3))
+	{
+		DIA_Addon_Myxir_ADW_Teach_LANGUAGE_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

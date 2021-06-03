@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Miguel_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Miguel_EXIT_Condition;
 	information = DIA_Addon_Miguel_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Miguel_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Miguel_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Miguel_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Miguel_Hi_Condition;
 	information = DIA_Addon_Miguel_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tu robisz?";
 };
 FUNC INT DIA_Addon_Miguel_Hi_Condition()
 {		
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Miguel_Hi_Info()
 {
@@ -61,14 +61,14 @@ INSTANCE DIA_Addon_Miguel_Story   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Miguel_Story_Condition;
 	information = DIA_Addon_Miguel_Story_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Za co ciê zamknêli za barier¹?";
 };
 FUNC INT DIA_Addon_Miguel_Story_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Miguel_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_Story_Info()
@@ -89,12 +89,12 @@ INSTANCE DIA_Addon_Miguel_Lager   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Miguel_Lager_Condition;
 	information = DIA_Addon_Miguel_Lager_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co mo¿esz mi powiedzieæ o obozowisku?";
 };
 FUNC INT DIA_Addon_Miguel_Lager_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Miguel_Lager_Info()
 {
@@ -112,7 +112,7 @@ instance DIA_Addon_Miguel_WhereFrom (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Miguel_WhereFrom_Condition;
 	information = DIA_Addon_Miguel_WhereFrom_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak siê tu dosta³eœ?";
 };
 FUNC INT DIA_Addon_Miguel_WhereFrom_Condition()
@@ -120,7 +120,7 @@ FUNC INT DIA_Addon_Miguel_WhereFrom_Condition()
 	if Npc_KnowsInfo (other,DIA_Addon_Miguel_Hi)
 	|| Npc_KnowsInfo (other,DIA_Addon_Miguel_Lager)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_WhereFrom_Info()
@@ -140,14 +140,14 @@ instance DIA_Addon_Miguel_Angefordert (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Miguel_Angefordert_Condition;
 	information = DIA_Addon_Miguel_Angefordert_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Kiedy zwykle potrzebuj¹ nowych ludzi?";
 };
 FUNC INT DIA_Addon_Miguel_Angefordert_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Miguel_Lager)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_Angefordert_Info()
@@ -169,14 +169,14 @@ INSTANCE DIA_Addon_Miguel_Fortuno   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Miguel_Fortuno_Condition;
 	information = DIA_Addon_Miguel_Fortuno_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Fortuno sprawia wra¿enie ob³¹kanego.";
 };
 FUNC INT DIA_Addon_Miguel_Fortuno_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Fortuno_FREE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_Fortuno_Info()
@@ -187,11 +187,11 @@ FUNC VOID DIA_Addon_Miguel_Fortuno_Info()
 	AI_Output (self, other, "DIA_Addon_Miguel_Fortuno_11_03");//Kruk. Nigdy o nim wiele nie myœla³em. Hmm, dobra. Niestety, nie mogê warzyæ mikstur tutaj, na bagnach.
 	AI_Output (other, self, "DIA_Addon_Miguel_Fortuno_15_04");//Móg³bym przyrz¹dziæ miksturê. W obozie jest odpowiedni stó³. Gdybym tylko mia³ przepis...
 	AI_Output (self, other, "DIA_Addon_Miguel_Fortuno_11_05");//Lepiej b¹dŸ ostro¿ny z tym przepisem. Warzenie mikstur to niebezpieczne zajêcie.
-//	B_GiveInvItems (self, other, ITWr_Addon_MCELIXIER_01,1);
+	B_GiveInvItems (self, other, ITWr_Addon_MCELIXIER_01,1);
 	AI_Output (self, other, "DIA_Addon_Miguel_Fortuno_11_06");//Je¿eli u¿yjesz nieodpowiednich sk³adników albo coœ pójdzie nie tak, mikstura bêdzie œmierteln¹ trucizn¹.
 	AI_Output (other, self, "DIA_Addon_Miguel_Fortuno_15_07");//Bêdê uwa¿a³.
 	
-//	B_LogEntry (Topic_Addon_Fortuno,"Miguel da³ mi przepis na miksturê, która ma pomóc Fortuna w odzyskaniu pamiêci. Powinienem przyrz¹dziæ j¹ dopiero wtedy, gdy dobrze poznam dzia³anie wszystkich sk³adników. Inaczej mo¿e byæ zabójcza.");
+	B_LogEntry (Topic_Addon_Fortuno,"Miguel da³ mi przepis na miksturê, która ma pomóc Fortuna w odzyskaniu pamiêci. Powinienem przyrz¹dziæ j¹ dopiero wtedy, gdy dobrze poznam dzia³anie wszystkich sk³adników. Inaczej mo¿e byæ zabójcza.");
 };
 
 //---------------------------------------------------------------------
@@ -203,14 +203,14 @@ INSTANCE DIA_Addon_Miguel_BRAU   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Addon_Miguel_BRAU_Condition;
 	information = DIA_Addon_Miguel_BRAU_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿esz mnie czegoœ nauczyæ?";
 };
 FUNC INT DIA_Addon_Miguel_BRAU_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Miguel_Story)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_BRAU_Info()
@@ -232,15 +232,15 @@ INSTANCE DIA_Addon_Miguel_trade   (C_INFO)
 	nr          = 888;
 	condition   = DIA_Addon_Miguel_trade_Condition;
 	information = DIA_Addon_Miguel_trade_Info;
-	permanent   = true;
-	trade		= true;
+	permanent   = TRUE;
+	trade		= TRUE;
 	description = DIALOG_TRADE;
 };
 FUNC INT DIA_Addon_Miguel_trade_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Miguel_BRAU)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Miguel_trade_Info()
@@ -248,3 +248,6 @@ FUNC VOID DIA_Addon_Miguel_trade_Info()
 	B_Say (other,self,"$TRADE_1");
 	B_GiveTradeInv(self);
 };
+
+
+

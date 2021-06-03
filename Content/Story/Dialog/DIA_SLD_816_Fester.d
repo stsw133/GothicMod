@@ -8,13 +8,13 @@ INSTANCE DIA_Fester_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Fester_EXIT_Condition;
 	information	= DIA_Fester_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Fester_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Fester_EXIT_Info()
@@ -32,13 +32,13 @@ instance DIA_Fester_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Fester_Hello_Condition;
 	information	= DIA_Fester_Hello_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co tu porabiasz?";
 };                       
 
 FUNC INT DIA_Fester_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Fester_Hello_Info()
@@ -57,7 +57,7 @@ instance DIA_Fester_Auftrag (C_INFO)
 	nr			= 2;
 	condition	= DIA_Fester_Auftrag_Condition;
 	information	= DIA_Fester_Auftrag_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Dlaczego?";
 };                       
 
@@ -65,7 +65,7 @@ FUNC INT DIA_Fester_Auftrag_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Fester_Hello))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -89,7 +89,7 @@ instance DIA_Fester_YouFight (C_INFO)
 	nr			= 3;
 	condition	= DIA_Fester_YouFight_Condition;
 	information	= DIA_Fester_YouFight_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Dobry z ciebie wojownik?";
 };                       
 
@@ -97,9 +97,9 @@ FUNC INT DIA_Fester_YouFight_Condition()
 {
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Fester_Hello))
-	&& (MIS_Fester_KillBugs == false)
+	&& (MIS_Fester_KillBugs == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -120,16 +120,16 @@ instance DIA_Fester_WoNest (C_INFO)
 	nr			= 4;
 	condition	= DIA_Fester_WoNest_Condition;
 	information	= DIA_Fester_WoNest_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Gdzie jest gniazdo?";
 };                       
 
 FUNC INT DIA_Fester_WoNest_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Fester_Auftrag))
-	&& (MIS_Fester_KillBugs == false)
+	&& (MIS_Fester_KillBugs == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -154,7 +154,7 @@ instance DIA_Fester_Together (C_INFO)
 	nr			= 5;
 	condition	= DIA_Fester_Together_Condition;
 	information	= DIA_Fester_Together_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Moglibyœmy spróbowaæ razem...";
 };                       
 
@@ -163,7 +163,7 @@ FUNC INT DIA_Fester_Together_Condition()
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Fester_Auftrag))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -212,7 +212,7 @@ instance DIA_Fester_TogetherNOW (C_INFO)
 	nr			= 6;
 	condition	= DIA_Fester_TogetherNOW_Condition;
 	information	= DIA_Fester_TogetherNOW_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Zaatakujmy gniazdo!";
 };                       
 
@@ -220,9 +220,9 @@ FUNC INT DIA_Fester_TogetherNOW_Condition()
 {
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Fester_Together))
-	&& (MIS_Fester_KillBugs == false)
+	&& (MIS_Fester_KillBugs == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -266,6 +266,7 @@ func void DIA_Fester_TogetherNOW_Now()
 
 func void DIA_Fester_TogetherNOW_Later()
 {
+		
 	AI_Output (other, self, "DIA_Fester_TogetherNOW_Later_15_00"); //Dobrze, zaczekajmy jeszcze trochê...
 	AI_Output (self, other, "DIA_Fester_TogetherNOW_Later_08_01"); //Wiesz, gdzie mnie szukaæ...
 	Info_ClearChoices (DIA_Fester_TogetherNOW);
@@ -282,8 +283,8 @@ instance DIA_Fester_InCave (C_INFO)
 	nr			= 7;
 	condition	= DIA_Fester_InCave_Condition;
 	information	= DIA_Fester_InCave_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Fester_InCave_Condition()
@@ -291,14 +292,15 @@ FUNC INT DIA_Fester_InCave_Condition()
 	if (MIS_Fester_KillBugs == LOG_RUNNING)
 	&& (Npc_GetDistToWP (self, "NW_BIGFARM_FELDREUBER4") <= 500)
 	{
-		self.aivar[AIV_LastFightComment] = true; //NEWS darf nicht kommen!
+		self.aivar[AIV_LastFightComment] = TRUE; //NEWS darf nicht kommen!
 		
-		return true;
+		return TRUE;
 	};
 };
  
 FUNC VOID DIA_Fester_InCave_Info()
 {	
+
 	if (Wld_GetDay() > Fester_Losgeh_Day)
 	{
 		AI_Output (self, other, "DIA_Fester_InCave_08_00"); //Gdzie do diab³a siê podziewa³eœ?
@@ -327,7 +329,7 @@ instance DIA_Fester_WasMitAbmachung (C_INFO)
 	nr			= 8;
 	condition	= DIA_Fester_WasMitAbmachung_Condition;
 	information	= DIA_Fester_WasMitAbmachung_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Wracajmy!";
 };                       
 
@@ -335,7 +337,7 @@ FUNC INT DIA_Fester_WasMitAbmachung_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Fester_InCave))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -385,7 +387,7 @@ instance DIA_Fester_PERMPruegel (C_INFO)
 	nr			= 9;
 	condition	= DIA_Fester_PERMPruegel_Condition;
 	information	= DIA_Fester_PERMPruegel_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Trzeba ci bêdzie znowu przetrzepaæ skórê.";
 };                       
 
@@ -395,7 +397,7 @@ FUNC INT DIA_Fester_PERMPruegel_Condition()
 	|| (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 	|| (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -414,17 +416,17 @@ FUNC VOID DIA_Fester_PERMPruegel_Info()
 	};
 
 	if (Npc_KnowsInfo (other, DIA_Fester_WasMitAbmachung)) 
-	&& (Fester_FightVerarscht == false)
+	&& (Fester_FightVerarscht == FALSE)
 	{
 		AI_Output (other, self, "DIA_Fester_PERMPruegel_15_01"); //Nie lubiê, jak ktoœ ze mnie ¿artuje.
 		AI_Output (self, other, "DIA_Fester_PERMPruegel_08_02"); //Trzêsê siê, trzêsê...
-		Fester_FightVerarscht = true;
+		Fester_FightVerarscht = TRUE;
 	}
 	else if (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 	{
 		AI_Output (other, self, "DIA_Fester_PERMPruegel_15_03"); //Zbratanie siê z Sylviem nie by³o dobrym pomys³em.
 		AI_Output (self, other, "DIA_Fester_PERMPruegel_08_04"); //Jesteœ jednym z przydupasów Lee, prawda? Przyszed³eœ do niew³aœciwej osoby!
-		Fester_FightSylvio = true;
+		Fester_FightSylvio = TRUE;
 	}
 	else
 	{

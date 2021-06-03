@@ -1,52 +1,52 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Meatbug (C_Npc)			
+///******************************************************************************************
+prototype Mst_Default_Meatbug (C_Npc)			
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Chrz¹szcz";
 	guild								=	GIL_MEATBUG;
-
-	// ------ Attributes ------
+	
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 0);
-
-	// ------ FT ------
+	
+	/// ------ FT ------
 	damagetype 							=	DAM_EDGE;
-
-	// ------ Senses & Ranges ------
-	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
+	
+	/// ------ Senses & Ranges ------
+	senses								=	SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
-
+	
 	aivar[AIV_MM_FollowInWater]			=	false;
-
-	// ------ Rtn ------
+	
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Meatbug()
 {
 	Mdl_SetVisual		(self, "Meatbug.mds");
 	Mdl_SetVisualBody	(self, "Mbg_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
-//******************************************************************************************
-INSTANCE Meatbug (Mst_Default_Meatbug)
+///******************************************************************************************
+instance Meatbug (Mst_Default_Meatbug)
 {
 	B_SetVisuals_Meatbug();
 };
-//******************************************************************************************
-INSTANCE Meatbug_Brutus1 (Mst_Default_Meatbug)
+///******************************************************************************************
+instance Meatbug_Brutus1 (Mst_Default_Meatbug)
 {
 	B_SetVisuals_Meatbug();
 };
-INSTANCE Meatbug_Brutus2 (Mst_Default_Meatbug)
+instance Meatbug_Brutus2 (Mst_Default_Meatbug)
 {
 	B_SetVisuals_Meatbug();
 };
-INSTANCE Meatbug_Brutus3 (Mst_Default_Meatbug)
+instance Meatbug_Brutus3 (Mst_Default_Meatbug)
 {
 	B_SetVisuals_Meatbug();
 };
-INSTANCE Meatbug_Brutus4 (Mst_Default_Meatbug)
+instance Meatbug_Brutus4 (Mst_Default_Meatbug)
 {
 	B_SetVisuals_Meatbug();
 };

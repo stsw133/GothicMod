@@ -1,6 +1,6 @@
 FUNC VOID B_DaronSegen ()
 {
-	Daron_Segen = true;
+	Daron_Segen = TRUE;
 
 	var string concatText;
 	
@@ -12,42 +12,43 @@ FUNC VOID B_DaronSegen ()
 	{
 		if other.attribute[ATR_HITPOINTS] <  other.attribute[ATR_HITPOINTS_MAX]
 		{
-			other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
+			other.attribute [ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
 			PrintScreen (PRINT_FullyHealed, - 1, - 1, FONT_Screen, 2);   
 		};
 	}	 	
 	else if (Daron_Spende < 250)
-	&&		(Bonus_1 == false)
+	&&		(Bonus_1 == FALSE)
 	{
 		B_RaiseAttribute (other, ATR_MANA_MAX, 2);
-		other.attribute[ATR_MANA] = other.attribute[ATR_MANA_MAX];
-
-		Bonus_1 = true;
+		
+		other.attribute[ATR_MANA] =  other.attribute[ATR_MANA_MAX];
+				
+		Bonus_1 = TRUE;
 	}
 	else if (Daron_Spende < 500)
-	&&		(Bonus_2 == false)
+	&&		(Bonus_2 == FALSE)
 	{
-		B_GivePlayerXP(XP_Ambient);
-		Bonus_2 = true;
+		B_GivePlayerXP (XP_Ambient);
+		Bonus_2 = TRUE;
 	}
 	else if (Daron_Spende >= 750) 	
 	&&		(Daron_Spende < 1000) 	
-	&& 		(Bonus_3 == false)
+	&& 		(Bonus_3 == FALSE)
 	{
-		other.lp += 1;
+		other.lp = (other.lp + 1);
 		
 		concatText = ConcatStrings(PRINT_LearnLP, IntToString(1));
 		PrintScreen	(concatText, -1, -1, FONT_SCREEN, 2);
-		Bonus_3 = true;
+		Bonus_3 = TRUE;
 	}
 	else 
 	{
-		other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
-		other.attribute[ATR_MANA] = other.attribute[ATR_MANA_MAX];
+		other.attribute[ATR_HITPOINTS] =  other.attribute[ATR_HITPOINTS_MAX];
+		other.attribute[ATR_MANA] =  other.attribute[ATR_MANA_MAX];
 
-		other.attribute[ATR_HITPOINTS_MAX] += 2*HP_PER_LP;
-
-		concatText = ConcatStrings(PRINT_LearnHP,IntToString(2*HP_PER_LP));
+		other.attribute[ATR_HITPOINTS_MAX] = (other.attribute[ATR_HITPOINTS_MAX] + 5);
+		
+		concatText = ConcatStrings(PRINT_LearnHP, IntToString(5));
 		PrintScreen	(concatText, -1, -1, FONT_Screen, 2);
 	};
 };
@@ -60,13 +61,13 @@ INSTANCE DIA_Daron_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Daron_EXIT_Condition;
 	information	= DIA_Daron_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Daron_EXIT_Condition()
 {
 	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Daron_EXIT_Info()
 {	
@@ -81,15 +82,15 @@ INSTANCE DIA_Daron_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Daron_Hallo_Condition;
 	information	= DIA_Daron_Hallo_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Daron_Hallo_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& (hero.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Hallo_Info()
@@ -107,15 +108,15 @@ INSTANCE DIA_Daron_Paladine(C_INFO)
 	nr			= 2;
 	condition	= DIA_Daron_Paladine_Condition;
 	information	= DIA_Daron_Paladine_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Muszê porozmawiaæ z paladynami...";
 };                       
 FUNC INT DIA_Daron_Paladine_Condition()
 {	
 	if (other.guild != GIL_KDF)
-	&& (Kapitel < 8)
+	&& (Kapitel < 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Paladine_Info()
@@ -137,7 +138,7 @@ INSTANCE DIA_Daron_AboutSegen (C_INFO)
 	nr			= 2;
 	condition	= DIA_Daron_AboutSegen_Condition;
 	information	= DIA_Daron_AboutSegen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Przyszed³em po b³ogos³awieñstwo!";
 };                       
 FUNC INT DIA_Daron_AboutSegen_Condition()
@@ -146,7 +147,7 @@ FUNC INT DIA_Daron_AboutSegen_Condition()
 	&& (Player_IsApprentice == APP_NONE)
 	&& (hero.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_AboutSegen_Info()
@@ -154,7 +155,7 @@ FUNC VOID DIA_Daron_AboutSegen_Info()
 	AI_Output (other, self,"DIA_Daron_AboutSegen_15_00"); //Przyszed³em po b³ogos³awieñstwo!
 	AI_Output (self, other,"DIA_Daron_AboutSegen_10_01"); //To dobrze, to bardzo dobrze - z pewnoœci¹ zechcesz zasiliæ œwiêty koœció³ Innosa jak¹œ skromn¹ sumk¹?
 	AI_Output (other, self,"DIA_Daron_AboutSegen_15_02"); //W³aœciwie to potrzebujê twojego b³ogos³awieñstwa, ¿eby zostaæ czeladnikiem w dolnej czêœci miasta...
-	if (Daron_Segen == true)
+	if (Daron_Segen == TRUE)
 	{
 		AI_Output (self, other,"DIA_Daron_AboutSegen_10_03"); //Ju¿ dosta³eœ moje b³ogos³awieñstwo, synu.
 		AI_Output (self, other,"DIA_Daron_AboutSegen_10_04"); //Niech ciê Innos prowadzi, synu!
@@ -175,13 +176,13 @@ INSTANCE DIA_Daron_Spenden(C_INFO)
 	nr			= 3;
 	condition	= DIA_Daron_Spenden_Condition;
 	information	= DIA_Daron_Spenden_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Ile wynosi przeciêtna ofiara?";
 };                       
 FUNC INT DIA_Daron_Spenden_Condition()
 {	if (hero.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Spenden_Info()
@@ -190,7 +191,7 @@ FUNC VOID DIA_Daron_Spenden_Info()
 	AI_Output (self, other,"DIA_Daron_Spenden_10_01");//To zale¿y od twojego stanu maj¹tkowego. Zobaczmy, ile przynios³eœ.
 	AI_Output (self, other,"DIA_Daron_Spenden_10_02");//Mmmm hmmm...
 	
-	if (Npc_HasItems (other, ItMi_Gold) <= 10)
+	if (Npc_HasItems (other, ItMi_Gold) < 10)
 	{
 		AI_Output (self, other,"DIA_Daron_Spenden_10_03");//Nie nale¿ysz do bogaczy, co? Zostaw sobie te parê monet.
 		
@@ -199,15 +200,15 @@ FUNC VOID DIA_Daron_Spenden_Info()
 			B_LogEntry (TOPIC_Thorben,"Daron, Mag Ognia, nie udzieli³ mi b³ogos³awieñstwa. Chyba powinienem przekazaæ trochê z³ota na potrzeby klasztoru.");
 		};
 	}
-	else //Gold > 10
+	else //Gold >= 10
 	{
-		if (Npc_HasItems (other, ItMi_Gold) <= 50)
+		if (Npc_HasItems (other, ItMi_Gold) < 50)
 		{
 			AI_Output (self, other,"DIA_Daron_Spenden_10_04");//No có¿, bogaczem to ty nie jesteœ, ale nie nale¿ysz te¿ do biedaków. 10 sztuk z³ota w zupe³noœci wystarczy - ¿yjemy skromnie.
 			B_GiveInvItems (other, self, ItMi_Gold, 10);
 			
 		}
-		else if (Npc_HasItems (other, ItMi_Gold) <= 100)
+		else if (Npc_HasItems (other, ItMi_Gold) < 100)
 		{
 			AI_Output (self, other,"DIA_Daron_Spenden_10_05");//Masz ponad 50 monet. Oddaj 25 Innosowi, a otrzymasz jego b³ogos³awieñstwo.
 			B_GiveInvItems (other, self, ItMi_Gold, 25);
@@ -221,8 +222,8 @@ FUNC VOID DIA_Daron_Spenden_Info()
 		};
 		
 		AI_Output (self, other,"DIA_Daron_Spenden_10_08");//B³ogos³awiê ciê w imieniu Innosa. Albowiem on jest œwiat³em i sprawiedliwoœci¹.
-		Daron_Segen = true;
-		B_GivePlayerXP(XP_BONUS_0);
+		Daron_Segen = TRUE;
+		B_GivePlayerXP (XP_InnosSegen);
 		
 		if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 		{
@@ -240,7 +241,7 @@ INSTANCE DIA_Daron_Woher(C_INFO)
 	nr			= 9;
 	condition	= DIA_Daron_Woher_Condition;
 	information	= DIA_Daron_Woher_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Sk¹d pochodzisz?";
 };                       
 FUNC INT DIA_Daron_Woher_Condition()
@@ -248,7 +249,7 @@ FUNC INT DIA_Daron_Woher_Condition()
 	if (other.guild != GIL_KDF)
 	&& (other.guild != GIL_NOV)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Woher_Info()
@@ -271,7 +272,7 @@ INSTANCE DIA_Daron_Innos(C_INFO)
 	nr			= 9;
 	condition	= DIA_Daron_Innos_Condition;
 	information	= DIA_Daron_Innos_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Opowiedz mi o Innosie.";
 };                       
 FUNC INT DIA_Daron_Innos_Condition()
@@ -280,7 +281,7 @@ FUNC INT DIA_Daron_Innos_Condition()
 	&& (other.guild != GIL_KDF)
 	&& (other.guild != GIL_DJG)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Innos_Info()
@@ -300,7 +301,7 @@ INSTANCE DIA_Daron_Kloster(C_INFO)
 	nr			= 9;
 	condition	= DIA_Daron_Kloster_Condition;
 	information	= DIA_Daron_Kloster_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Powiedz mi coœ wiêcej na temat klasztoru.";
 };                       
 FUNC INT DIA_Daron_Kloster_Condition()
@@ -310,7 +311,7 @@ FUNC INT DIA_Daron_Kloster_Condition()
 	&& (other.guild != GIL_NOV)
 	&& (other.guild != GIL_KDF) 
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Kloster_Info()
@@ -330,14 +331,14 @@ INSTANCE DIA_Daron_Stadt(C_INFO)
 	nr			= 99;
 	condition	= DIA_Daron_Stadt_Condition;
 	information	= DIA_Daron_Stadt_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Co robisz w mieœcie?";
 };                       
 FUNC INT DIA_Daron_Stadt_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Daron_Woher)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Stadt_Info()
@@ -365,7 +366,7 @@ func int DIA_Addon_Daron_GuildHelp_Condition ()
 	if (MIS_Addon_Vatras_Go2Daron == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Daron_Stadt))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -391,21 +392,21 @@ func void DIA_Addon_Daron_GuildHelp_Info ()
 
 func void DIA_Addon_Daron_GuildHelp_wiederholen ()
 {
-	AI_Output		(other, self, "DIA_Addon_Daron_GuildHelp_wiederholen_15_00"); //Nie próbowa³eœ odzyskaæ pos¹¿ka?
-	AI_Output		(self, other, "DIA_Addon_Daron_GuildHelp_wiederholen_10_01"); //Oczywiœcie, ¿e próbowa³em! Przeszuka³em ca³¹ okolicê - niestety, bezskutecznie.
+	AI_Output			(other, self, "DIA_Addon_Daron_GuildHelp_wiederholen_15_00"); //Nie próbowa³eœ odzyskaæ pos¹¿ka?
+	AI_Output			(self, other, "DIA_Addon_Daron_GuildHelp_wiederholen_10_01"); //Oczywiœcie, ¿e próbowa³em! Przeszuka³em ca³¹ okolicê - niestety, bezskutecznie.
 };
 
 func void DIA_Addon_Daron_GuildHelp_gobbos ()
 {
-	AI_Output		(other, self, "DIA_Addon_Daron_GuildHelp_gobbos_15_00"); //Mówisz, ¿e maj¹ go teraz gobliny?
-	AI_Output		(self, other, "DIA_Addon_Daron_GuildHelp_gobbos_10_01"); //Zabra³y go i zwia³y, gdzie pieprz roœnie.
-	AI_Output		(self, other, "DIA_Addon_Daron_GuildHelp_gobbos_10_02"); //Nie widzia³em ich ju¿ póŸniej - musia³y siê gdzieœ ukryæ.
+	AI_Output			(other, self, "DIA_Addon_Daron_GuildHelp_gobbos_15_00"); //Mówisz, ¿e maj¹ go teraz gobliny?
+	AI_Output			(self, other, "DIA_Addon_Daron_GuildHelp_gobbos_10_01"); //Zabra³y go i zwia³y, gdzie pieprz roœnie.
+	AI_Output			(self, other, "DIA_Addon_Daron_GuildHelp_gobbos_10_02"); //Nie widzia³em ich ju¿ póŸniej - musia³y siê gdzieœ ukryæ.
 };
 
 func void DIA_Addon_Daron_GuildHelp_wo ()
 {
-	AI_Output		(other, self, "DIA_Addon_Daron_GuildHelp_wo_15_00"); //Gdzie straci³eœ ten pos¹¿ek?
-	AI_Output		(self, other, "DIA_Addon_Daron_GuildHelp_wo_10_01"); //W pobli¿u gospody Orlana. Szed³em w³aœnie do klasztoru i...
+	AI_Output			(other, self, "DIA_Addon_Daron_GuildHelp_wo_15_00"); //Gdzie straci³eœ ten pos¹¿ek?
+	AI_Output			(self, other, "DIA_Addon_Daron_GuildHelp_wo_10_01"); //W pobli¿u gospody Orlana. Szed³em w³aœnie do klasztoru i...
 
 	Info_AddChoice	(DIA_Addon_Daron_GuildHelp, "Mam ju¿ doœæ informacji. Znajdê dla ciebie ten pos¹¿ek.", DIA_Addon_Daron_GuildHelp_auftrag );
 	Info_AddChoice	(DIA_Addon_Daron_GuildHelp, "Gospoda Orlana? Gdzie j¹ znajdê?", DIA_Addon_Daron_GuildHelp_woTaverne );
@@ -445,10 +446,10 @@ instance DIA_Addon_Daron_FoundStatue		(C_INFO)
 func int DIA_Addon_Daron_FoundStatue_Condition ()
 {
 	if (Npc_HasItems (other,ItMi_LostInnosStatue_Daron))
-	&& (DIA_Gorax_GOLD_perm == false) 
+	&& (DIA_Gorax_GOLD_perm == FALSE) 
 	&& (MIS_Addon_Daron_GetStatue == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -482,10 +483,10 @@ instance DIA_Addon_Daron_ReturnedStatue		(C_INFO)
 
 func int DIA_Addon_Daron_ReturnedStatue_Condition ()
 {
-	if (DIA_Gorax_GOLD_perm == true) 
+	if (DIA_Gorax_GOLD_perm == TRUE) 
 	&& (MIS_Addon_Daron_GetStatue == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -496,8 +497,8 @@ func void DIA_Addon_Daron_ReturnedStatue_Info ()
 	AI_Output	(self, other, "DIA_Addon_Daron_ReturnedStatue_10_02"); //Przyjmij to jako wyraz mojej wdziêcznoœci, synu.
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);
-	TOPIC_End_RangerHelpKDF = true;		
-	B_GivePlayerXP(XP_BONUS_1);
+	TOPIC_End_RangerHelpKDF = TRUE;		
+	B_GivePlayerXP (XP_Addon_ReportLostInnosStatue2Daron);
 };
 
 // ************************************************************
@@ -509,7 +510,7 @@ INSTANCE DIA_Daron_arm(C_INFO)
 	nr			= 10;
 	condition	= DIA_Daron_arm_Condition;
 	information	= DIA_Daron_arm_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Jestem biedakiem!";
 };                       
 FUNC INT DIA_Daron_arm_Condition()
@@ -518,7 +519,7 @@ FUNC INT DIA_Daron_arm_Condition()
 	&& (Npc_HasItems  (other, ItMi_Gold) < 10) 
 	&& (other.guild == GIL_NONE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_arm_Info()
@@ -539,7 +540,7 @@ INSTANCE DIA_Daron_Spende(C_INFO)
 	nr			= 990;
 	condition	= DIA_Daron_Spende_Condition;
 	information	= DIA_Daron_Spende_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Chcia³bym z³o¿yæ ofiarê...";
 };      
 //-------------------------------------
@@ -548,11 +549,11 @@ var int DIA_Daron_Spende_permanent;
 FUNC INT DIA_Daron_Spende_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (DIA_Daron_Spende_permanent == false)
+	&& (DIA_Daron_Spende_permanent == FALSE)
 	&& Npc_KnowsInfo (other,DIA_Daron_Spenden)
 	&& (hero.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Daron_Spende_Info()
@@ -575,7 +576,7 @@ FUNC VOID DIA_Daron_Spende_Info()
 	 	AI_Output (self, other,"DIA_Daron_Spende_10_01");//W sumie otrzyma³em od ciebie ponad 1000 sztuk z³ota.
 	 	AI_Output (self, other,"DIA_Daron_Spende_10_02");//B³ogos³awieñstwo Innosa bêdzie ci zawsze towarzyszyæ.
 	 	
-	 	DIA_Daron_Spende_permanent = true;	
+	 	DIA_Daron_Spende_permanent = TRUE;	
 		B_DaronSegen ();
 	 };
 };
@@ -594,9 +595,9 @@ FUNC VOID DIA_Daron_Spende_50()
 	if B_GiveInvItems (other, self, ItMi_Gold, 50)
 	{
 		AI_Output (self, other,"DIA_Daron_Spende_50_10_00");//B³ogos³awiê ciê w imieniu Innosa. Albowiem on jest œwiat³em i sprawiedliwoœci¹.
-		Daron_Spende += 50;
+		Daron_Spende = (Daron_Spende + 50);
 		B_DaronSegen ();
-		Daron_Segen = true;
+		Daron_Segen = TRUE;
 		if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 		{
 			B_LogEntry (TOPIC_Thorben,"Daron, Mag Ognia, udzieli³ mi b³ogos³awieñstwa.");
@@ -614,9 +615,9 @@ FUNC VOID DIA_Daron_Spende_100()
 	{
 		AI_Output (self, other,"DIA_Daron_Spende_100_10_00");//Innosie, jesteœ blaskiem oœwietlaj¹cym œcie¿ki sprawiedliwych.
 		AI_Output (self, other,"DIA_Daron_Spende_100_10_01");//W twoim imieniu b³ogos³awiê tego cz³owieka. Niechaj twoje œwiat³o zawsze wskazuje mu w³aœciw¹ drogê.
-		Daron_Spende += 100;
+		Daron_Spende = (Daron_Spende + 100);
 		B_DaronSegen ();
-		Daron_Segen = true;
+		Daron_Segen = TRUE;
 		if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 		{
 			B_LogEntry (TOPIC_Thorben,"Daron, Mag Ognia, udzieli³ mi b³ogos³awieñstwa.");
@@ -634,9 +635,9 @@ FUNC VOID DIA_Daron_Spende_200()
 	{
 		AI_Output (self, other,"DIA_Daron_Spende_200_10_00");//Innosie, pob³ogos³aw tego mê¿czyznê. Niechaj twój blask zawsze oœwietla mu drogê.
 		AI_Output (self, other,"DIA_Daron_Spende_200_10_01");//Daj mu si³ê, aby móg³ zawsze postêpowaæ m¹drze i sprawiedliwie.
-		Daron_Spende += 200;
+		Daron_Spende = (Daron_Spende + 200);
 		B_DaronSegen ();
-		Daron_Segen = true;
+		Daron_Segen = TRUE;
 		if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 		{
 			B_LogEntry (TOPIC_Thorben,"Daron, Mag Ognia, udzieli³ mi b³ogos³awieñstwa.");

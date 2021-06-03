@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17153_JediClone (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name 								=	"Klon"; 
 	guild 								=	GIL_NONE;
 	id 									=	17153;
@@ -9,31 +9,31 @@ instance WzA_17153_JediClone (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Strong);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_LightSaber);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Fighter", Face_JangoFett, Teeth_Normal, ITAR_SW_Jedi_L);
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17153;
 };
 

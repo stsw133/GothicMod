@@ -1,6 +1,7 @@
 ///******************************************************************************************
 ///	B_StopMysRoot
 ///******************************************************************************************
+/*
 func void B_RestartMysRoot()
 {
 	if (Npc_GetLastHitSpellID(self) == SPL_MysRoot)
@@ -11,11 +12,10 @@ func void B_RestartMysRoot()
 
 func void B_StopMysRoot()
 {	
-	Npc_PercEnable (self, PERC_ASSESSMAGIC, B_AssessMagic);
-	
+	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_AssessMagic);
 	Npc_ClearAIQueue(self);
-	AI_StandUp(self);
-
+	AI_StandUp		(self);
+	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	{
 		B_AssessDamage();
@@ -31,14 +31,12 @@ func void B_StopMysRoot()
 ///******************************************************************************************
 func int ZS_MysRoot()
 {
-	Npc_PercEnable (self, PERC_ASSESSMAGIC, B_RestartMysRoot);
-	Npc_PercEnable (self, PERC_ASSESSDAMAGE, B_AssessDamage);
-	
-	Npc_StopAni (self, "S_FIRE_VICTIM");
-
+	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_RestartMysRoot);
+	Npc_PercEnable	(self, PERC_ASSESSDAMAGE, B_AssessDamage);
+	Npc_StopAni		(self, "S_FIRE_VICTIM");
 	Npc_ClearAIQueue(self);
-	AI_StandUp(self);
-
+	AI_StandUp		(self);
+	
 	if (!C_BodyStateContains(self, BS_UNCONSCIOUS)) 
 	{
 		AI_PlayAniBS (self, "T_STAND_2_FREEZE_VICTIM", BS_UNCONSCIOUS);
@@ -59,3 +57,4 @@ func int ZS_MysRoot_Loop()
 func void ZS_MysRoot_End()
 {
 };
+*/

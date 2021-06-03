@@ -17,26 +17,25 @@ func void ZS_Attack()
 	B_ValidateOther();
 	self.aivar[AIV_LASTTARGET] = Hlp_GetInstanceID(other);
 	
-	///EXIT IF...
-	if (C_WantToFlee(self,other))					
+	if (C_WantToFlee(self, other))
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
 		Npc_SetTarget 		(self, other);
-		AI_StartState 		(self, ZS_Flee, 0, "");
+		AI_StartState 		(self, ZS_Flee, false, "");
 		return;
 	};
 	
-	/// FUNC
-	if (self.aivar[AIV_LOADGAME] == false)
+	///FUNC
+	if (!self.aivar[AIV_LOADGAME])
 	{
 		B_Say_AttackReason();
 	};
 	
-	if (Npc_IsInFightMode(self,FMODE_NONE))
+	if (Npc_IsInFightMode(self, FMODE_NONE))
 	{
-		AI_EquipBestRangedWeapon(self);
-		AI_EquipBestMeleeWeapon(self);
+		AI_EquipBestRangedWeapon 	(self);
+		AI_EquipBestMeleeWeapon 	(self);
 	};
 	
 	AI_StandUp		(self);
@@ -63,23 +62,23 @@ func int ZS_Attack_Loop()
 	
 	Npc_GetTarget(self);
 	
-	/// EXIT LOOP IF...
-	if (Npc_GetDistToNpc(self,other) > self.aivar[AIV_FightDistCancel])
+	if (Npc_GetDistToNpc(self, other) > self.aivar[AIV_FightDistCancel])
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
 		self.aivar[AIV_PursuitEnd] = true;
+		
 		return LOOP_END;
 	};
 	
 	if (Npc_GetStateTime(self) > self.aivar[AIV_MM_FollowTime])
-	&& (self.aivar[AIV_PursuitEnd] == false)
+	&& (!self.aivar[AIV_PursuitEnd])
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
 		self.aivar[AIV_PursuitEnd] = true;
-		self.aivar[AIV_Dist] = Npc_GetDistToNpc(self,other);
-		self.aivar[AIV_StateTime] = Npc_GetStateTime(self); 
+		self.aivar[AIV_Dist] = Npc_GetDistToNpc(self, other);
+		self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 		
 		if (other.guild < GIL_SEPERATOR_HUM)
 		{
@@ -87,17 +86,17 @@ func int ZS_Attack_Loop()
 		};
 	};
 	
-	if (self.aivar[AIV_PursuitEnd] == true)
+	if (self.aivar[AIV_PursuitEnd])
 	{
-		if (Npc_GetDistToNpc(self,other) > (self.senses_range))
+		if (Npc_GetDistToNpc(self, other) > self.senses_range)
 		{
 			return LOOP_END;
 		};
-
+		
 		if (Npc_GetStateTime(self) > self.aivar[AIV_StateTime])
 		{
-			if (Npc_GetDistToNpc(self,other) < self.aivar[AIV_Dist])
-			|| ((!C_BodyStateContains(other,BS_RUN)) && (!C_BodyStateContains(other,BS_JUMP)))
+			if (Npc_GetDistToNpc(self, other) < self.aivar[AIV_Dist])
+			|| (!C_BodyStateContains(other, BS_RUN) && !C_BodyStateContains(other, BS_JUMP))
 			{
 				self.aivar[AIV_PursuitEnd] = false;
 				Npc_SetStateTime (self, 0);
@@ -106,11 +105,11 @@ func int ZS_Attack_Loop()
 			else
 			{
 				B_TurnToNpc (self, other);
-				self.aivar[AIV_Dist] = Npc_GetDistToNpc(self,other);
+				self.aivar[AIV_Dist] = Npc_GetDistToNpc(self, other);
 				self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 			};
 		};
-
+		
 		return LOOP_CONTINUE;
 	};
 	
@@ -118,18 +117,21 @@ func int ZS_Attack_Loop()
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
+		
 		return LOOP_END;
 	};
 	
-	if (C_BodyStateContains(other,BS_SWIM) || C_BodyStateContains(other,BS_DIVE))
-	&& (self.aivar[AIV_MM_FollowInWater] == false)
+	if (C_BodyStateContains(other, BS_SWIM) || C_BodyStateContains(other, BS_DIVE))
+	&& (!self.aivar[AIV_MM_FollowInWater])
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
 		self.aivar[AIV_PursuitEnd] = true;
+		
 		return LOOP_END;
 	};
 	
+	///FUNC
 	if (self.aivar[AIV_WaitBeforeAttack] >= 1)
 	{
 		AI_Wait (self, 0.8);
@@ -138,8 +140,8 @@ func int ZS_Attack_Loop()
 	
 	if (self.aivar[AIV_MaxDistToWp] > 0)
 	{
-		if (Npc_GetDistToWP(self,self.wp) > self.aivar[AIV_MaxDistToWp])
-		&& (Npc_GetDistToWP(other,self.wp) > self.aivar[AIV_MaxDistToWp])
+		if (Npc_GetDistToWP(self, self.wp) > self.aivar[AIV_MaxDistToWp])
+		&& (Npc_GetDistToWP(other, self.wp) > self.aivar[AIV_MaxDistToWp])
 		{
 			self.fight_tactic = FAI_NAILED;
 		}
@@ -149,7 +151,7 @@ func int ZS_Attack_Loop()
 		};
 	};
 	
-	if ((!C_BodyStateContains(other,BS_RUN)) && (!C_BodyStateContains(other,BS_JUMP)))
+	if (!C_BodyStateContains(other, BS_RUN) && !C_BodyStateContains(other, BS_JUMP))
 	{
 		Npc_SetStateTime (self, 0);
 	};
@@ -160,7 +162,6 @@ func int ZS_Attack_Loop()
 		B_CallGuards();
 		self.aivar[AIV_TAPOSITION] = 1;
 	};
-	
 	if (Npc_GetStateTime(self) > 8)
 	&& (self.aivar[AIV_TAPOSITION] == 1)
 	{
@@ -169,13 +170,12 @@ func int ZS_Attack_Loop()
 	};
 	
 	B_CreateAmmo(self);
-	
 	B_SelectWeapon (self, other);
 	
-	if ((Hlp_IsValidNpc(other)) 							
-	&& (C_NpcIsDown(other) == false))
+	if (Hlp_IsValidNpc(other))
+	&& (!C_NpcIsDown(other))
 	{
-		if (other.aivar[AIV_INVINCIBLE] == false)
+		if (!other.aivar[AIV_INVINCIBLE])
 		{
 			AI_Attack(self);
 		}
@@ -183,9 +183,9 @@ func int ZS_Attack_Loop()
 		{
 			Npc_ClearAIQueue(self);
 		};
-
+		
 		self.aivar[AIV_LASTTARGET] = Hlp_GetInstanceID(other);
-
+		
 		return LOOP_CONTINUE;
 	}
 	else
@@ -196,7 +196,7 @@ func int ZS_Attack_Loop()
 		&& (Npc_IsPlayer(other))
 		&& (C_NpcIsDown(other))
 		{
-			Npc_SetTempAttitude (self, Npc_GetPermAttitude(self,hero));
+			Npc_SetTempAttitude(self, Npc_GetPermAttitude(self, hero));
 		};
 		
 		if (self.aivar[AIV_ATTACKREASON] != AR_KILL)
@@ -207,15 +207,14 @@ func int ZS_Attack_Loop()
 		
 		if (Hlp_IsValidNpc(other))
 		&& (!C_NpcIsDown(other))
-		&& ((Npc_GetDistToNpc(self,other) < PERC_DIST_INTERMEDIAT) || (Npc_IsPlayer(other)))
-		&& (Npc_GetHeightToNpc(self,other) < PERC_DIST_HEIGHT)
-		&& (other.aivar[AIV_INVINCIBLE] == false)
-		&& (!(C_PlayerIsFakeBandit(self,other) && (self.guild == GIL_BDT)))
+		&& (Npc_GetDistToNpc(self, other) < PERC_DIST_INTERMEDIAT || Npc_IsPlayer(other))
+		&& (Npc_GetHeightToNpc(self, other) < PERC_DIST_HEIGHT)
+		&& (!other.aivar[AIV_INVINCIBLE])
+		&& (!(C_PlayerIsFakeBandit(self, other) && (self.guild == GIL_BDT)))
 		{
-			if (Wld_GetGuildAttitude(self.guild,other.guild) == ATT_HOSTILE)
+			if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_HOSTILE)
 			{
 				self.aivar[AIV_ATTACKREASON] = AR_GuildEnemy;
-				
 				if (Npc_IsPlayer(other))
 				{
 					self.aivar[AIV_LastPlayerAR] = AR_GuildEnemy;
@@ -223,7 +222,7 @@ func int ZS_Attack_Loop()
 					self.aivar[AIV_LastFightComment] = false;
 				};
 			}
-			else if (Npc_GetAttitude(self,other) == ATT_HOSTILE)
+			else if (Npc_GetAttitude(self, other) == ATT_HOSTILE)
 			{
 				self.aivar[AIV_ATTACKREASON] = self.aivar[AIV_LastPlayerAR];
 			};
@@ -248,24 +247,14 @@ func int ZS_Attack_Loop()
 ///******************************************************************************************
 func void ZS_Attack_End()
 {
-	if (self.aivar[AIV_PartyMember] == false)
+	if (!self.aivar[AIV_PartyMember])
 	{
-		self.attribute[ATR_HITPOINTS] += (self.attribute[ATR_HITPOINTS_MAX]-self.attribute[ATR_HITPOINTS])/2;
+		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];	///new!!!
 	};
-	/*
-	if (self.aivar[AIV_Penetrated] > 0)
-	{
-		self.protection[PROT_BLUNT] += self.aivar[AIV_Penetrated];
-		self.protection[PROT_EDGE] += self.aivar[AIV_Penetrated];
-		self.protection[PROT_POINT] += self.aivar[AIV_Penetrated];
-		self.aivar[AIV_Penetrated] = 0;
-	};
-	self.aivar[AIV_ComboHit] = 0;
-	*/
 	
-	other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);	
+	other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
 	
-	if (self.aivar[AIV_PursuitEnd] == true)
+	if (self.aivar[AIV_PursuitEnd])
 	{
 		if (Hlp_IsValidNpc(other))
 		&& (Npc_IsPlayer(other))
@@ -280,7 +269,7 @@ func void ZS_Attack_End()
 		};
 	};
 	
-	if (self.aivar[AIV_PursuitEnd] == false)
+	if (!self.aivar[AIV_PursuitEnd])
 	{
 		if (B_GetCurrentAbsolutionLevel(self) > self.aivar[AIV_LastAbsolutionLevel])
 		{
@@ -292,13 +281,13 @@ func void ZS_Attack_End()
 		};
 	};
 	
-	if (other.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
-	&& (Wld_GetGuildAttitude(self.guild,hero.guild) != ATT_HOSTILE)
+	if (other.aivar[AIV_KilledByPlayer])
+	&& (Wld_GetGuildAttitude(self.guild, hero.guild) != ATT_HOSTILE)
 	{
-		B_SetAttitude (self, ATT_FRIENDLY);
+		B_SetAttitude(self, ATT_FRIENDLY);
 	};
 	
-	if (Npc_IsInState(other,ZS_Unconscious))
+	if (Npc_IsInState(other, ZS_Unconscious))
 	&& (C_NpcHasAttackReasonToKill(self))
 	{
 		B_FinishingMove (self, other);
@@ -308,28 +297,25 @@ func void ZS_Attack_End()
 	
 	if (C_NpcIsDown(other))
 	&& (C_WantToRansack(self))
-	&& ((other.aivar[AIV_RANSACKED] == false) || C_NpcRansacksAlways(self))
-	&& (Npc_GetDistToNpc(self,other) < PERC_DIST_INTERMEDIAT)
+	&& (!other.aivar[AIV_RANSACKED] || C_NpcRansacksAlways(self))
+	&& (Npc_GetDistToNpc(self, other) < PERC_DIST_INTERMEDIAT)
 	{
 		other.aivar[AIV_RANSACKED] = true;
 		
-		if (other.guild < GIL_SEPERATOR_HUM)	
+		if (other.guild < GIL_SEPERATOR_HUM)
 		{
 			AI_StartState (self, ZS_RansackBody, false, "");
 			return;
 		}
-		else
+		else if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(AlligatorJack))
+		&& (Npc_HasItems(other, ItFoMuttonRaw) > 0)
 		{
-			if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(AlligatorJack))
-			&& (Npc_HasItems(other,ItFoMuttonRaw) > 0)
-			{
-				AI_StartState (self, ZS_GetMeat, false, "");
-				return;
-			};
+			AI_StartState (self, ZS_GetMeat, false, "");
+			return;
 		};
 	};
 	
-	if (self.attribute[ATR_HITPOINTS] < self.attribute[ATR_HITPOINTS_MAX]/2)
+	if (self.attribute[ATR_HITPOINTS] < (self.attribute[ATR_HITPOINTS_MAX]/2))
 	{
 		AI_StartState (self, ZS_HealSelf, false, "");
 		return;

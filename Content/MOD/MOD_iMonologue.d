@@ -151,11 +151,11 @@ func void PC_iMonologue_TEACH_HP_Info()
 };
 
 ///******************************************************************************************
-FUNC VOID PC_iMonologue_TEACH_STR_BACK()
+func void PC_iMonologue_TEACH_STR_BACK()
 {
 	Info_ClearChoices(PC_iMonologue_TEACH_STR);
 };
-FUNC VOID PC_iMonologue_TEACH_STR_1()
+func void PC_iMonologue_TEACH_STR_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 1))
 	{
@@ -164,7 +164,7 @@ FUNC VOID PC_iMonologue_TEACH_STR_1()
 	};
 	PC_iMonologue_TEACH_STR_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_STR_5()
+func void PC_iMonologue_TEACH_STR_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 5))
 	{
@@ -173,7 +173,7 @@ FUNC VOID PC_iMonologue_TEACH_STR_5()
 	};
 	PC_iMonologue_TEACH_STR_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_STR_10()
+func void PC_iMonologue_TEACH_STR_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 10))
 	{
@@ -182,7 +182,7 @@ FUNC VOID PC_iMonologue_TEACH_STR_10()
 	};
 	PC_iMonologue_TEACH_STR_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_STR_20()
+func void PC_iMonologue_TEACH_STR_20()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 20))
 	{
@@ -193,7 +193,7 @@ FUNC VOID PC_iMonologue_TEACH_STR_20()
 };
 
 ///******************************************************************************************
-FUNC VOID PC_iMonologue_TEACH_DEX_BACK()
+func void PC_iMonologue_TEACH_DEX_BACK()
 {
 	Info_ClearChoices(PC_iMonologue_TEACH_DEX);
 };
@@ -235,7 +235,7 @@ func void PC_iMonologue_TEACH_DEX_20()
 };
 
 ///******************************************************************************************
-FUNC VOID PC_iMonologue_TEACH_Power_BACK()
+func void PC_iMonologue_TEACH_Power_BACK()
 {
 	Info_ClearChoices(PC_iMonologue_TEACH_Power);
 };
@@ -277,7 +277,7 @@ func void PC_iMonologue_TEACH_Power_20()
 };
 
 ///******************************************************************************************
-FUNC VOID PC_iMonologue_TEACH_MP_BACK()
+func void PC_iMonologue_TEACH_MP_BACK()
 {
 	Info_ClearChoices(PC_iMonologue_TEACH_MP);
 };
@@ -319,11 +319,11 @@ func void PC_iMonologue_TEACH_MP_20()
 };
 
 ///******************************************************************************************
-FUNC VOID PC_iMonologue_TEACH_HP_BACK()
+func void PC_iMonologue_TEACH_HP_BACK()
 {
 	Info_ClearChoices(PC_iMonologue_TEACH_HP);
 };
-FUNC VOID PC_iMonologue_TEACH_HP_1()
+func void PC_iMonologue_TEACH_HP_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 1))
 	{
@@ -332,7 +332,7 @@ FUNC VOID PC_iMonologue_TEACH_HP_1()
 	};
 	PC_iMonologue_TEACH_HP_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_HP_5()
+func void PC_iMonologue_TEACH_HP_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 5))
 	{
@@ -341,7 +341,7 @@ FUNC VOID PC_iMonologue_TEACH_HP_5()
 	};
 	PC_iMonologue_TEACH_HP_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_HP_10()
+func void PC_iMonologue_TEACH_HP_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 10))
 	{
@@ -350,7 +350,7 @@ FUNC VOID PC_iMonologue_TEACH_HP_10()
 	};
 	PC_iMonologue_TEACH_HP_Info();
 };
-FUNC VOID PC_iMonologue_TEACH_HP_20()
+func void PC_iMonologue_TEACH_HP_20()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 20))
 	{

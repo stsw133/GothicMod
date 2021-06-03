@@ -7,7 +7,7 @@ const int SPL_Time_MysRoot				=	15;
 const int SPL_Damage_MysRoot			=	3;
 
 ///******************************************************************************************
-INSTANCE Spell_MysRoot (C_Spell_Proto)
+instance Spell_MysRoot (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -16,7 +16,7 @@ INSTANCE Spell_MysRoot (C_Spell_Proto)
 
 func int Spell_Logic_MysRoot (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot)
 	{
 		return SPL_SENDCAST;
@@ -29,13 +29,14 @@ func int Spell_Logic_MysRoot (var int manaInvested)
 
 func void Spell_Cast_MysRoot()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysRoot/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MysRoot/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MysRoot;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

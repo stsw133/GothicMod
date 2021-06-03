@@ -7,13 +7,13 @@ INSTANCE DIA_Abuyin_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Abuyin_EXIT_Condition;
 	information	= DIA_Abuyin_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Abuyin_EXIT_Condition()
 {
 	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Abuyin_EXIT_Info()
 {	
@@ -29,14 +29,14 @@ INSTANCE DIA_Abuyin_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Hallo_Condition;
 	information	= DIA_Abuyin_Hallo_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };                       
 FUNC INT DIA_Abuyin_Hallo_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Hallo_Info()
@@ -54,12 +54,12 @@ INSTANCE DIA_Abuyin_du(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_du_Condition;
 	information	= DIA_Abuyin_du_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Kim jesteœ?";
 };                       
 FUNC INT DIA_Abuyin_du_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Abuyin_du_Info()
 {	
@@ -75,14 +75,14 @@ INSTANCE DIA_Abuyin_Kraut(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Kraut_Condition;
 	information	= DIA_Abuyin_Kraut_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Jaki tytoñ proponujesz?";
 };                       
 FUNC INT DIA_Abuyin_Kraut_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Abuyin_du)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Kraut_Info()
@@ -100,14 +100,14 @@ INSTANCE DIA_Abuyin_anderen(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_anderen_Condition;
 	information	= DIA_Abuyin_anderen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy masz jeszcze jakiœ inny tytoñ?";
 };                       
 FUNC INT DIA_Abuyin_anderen_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Abuyin_Kraut)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_anderen_Info()
@@ -128,14 +128,14 @@ INSTANCE DIA_Abuyin_Woher(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Woher_Condition;
 	information	= DIA_Abuyin_Woher_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Gdzie mogê kupiæ tytoñ jab³kowy?";
 };                       
 FUNC INT DIA_Abuyin_Woher_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Abuyin_anderen)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Woher_Info()
@@ -143,8 +143,8 @@ FUNC VOID DIA_Abuyin_Woher_Info()
 	AI_Output (other, self,"DIA_Abuyin_Woher_15_00");//Gdzie mogê kupiæ tytoñ jab³kowy?
 	AI_Output (self, other,"DIA_Abuyin_Woher_13_01");//Dam ci dwie porcje. Od twojej m¹droœci zale¿y, jak je wykorzystasz.
 	AI_Output (self, other,"DIA_Abuyin_Woher_13_02");//Jeœli pragniesz wiêcej, udaj siê do Zurisa, Mistrza Mikstur. On robi ten tytoñ i go sprzedaje.
-
-	B_GiveInvItems (self, other, ItMi_AppleTabak, 2);
+	
+	B_GiveInvItems (self, other, ItMi_FruitTabak,2);
 };
 // ************************************************************
 FUNC VOID B_TabakProbieren()
@@ -163,22 +163,24 @@ INSTANCE DIA_Abuyin_Mischung(C_INFO)
 	nr			= 10;
 	condition	= DIA_Abuyin_Mischung_Condition;
 	information	= DIA_Abuyin_Mischung_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Mam now¹ mieszankê tytoniu...";
 };                       
 FUNC INT DIA_Abuyin_Mischung_Condition()
 {	
-	if (Npc_KnowsInfo(other,DIA_Abuyin_anderen))
-	&& (Abuyin_Honigtabak == false)
-	&& ((Npc_HasItems(other,ItMi_SwampTabak) >= 1)
-	|| (Npc_HasItems(other,ItMi_MushroomTabak) >= 1)
-	|| (Npc_HasItems(other,ItMi_CoconutTabak) >= 1)
-	|| (Npc_HasItems(other,ItMi_ChocolateTabak) >= 1)
-	|| (Npc_HasItems(other,ItMi_HoneyTabak) >= 1))
-	{	return true;	};
+	if Npc_KnowsInfo (other,DIA_Abuyin_anderen)
+	&& (Abuyin_Honigtabak == FALSE)
+	&& ((Npc_HasItems (other, ItMi_SwampTabak) >= 1)
+	|| (Npc_HasItems (other, ItMi_MushroomTabak) >= 1)
+	|| (Npc_HasItems (other, ItMi_CoconutTabak) >= 1)
+	|| (Npc_HasItems (other, ItMi_HoneyTabak) >= 1))
+	{	
+		return TRUE;
+	};
 };
 FUNC VOID DIA_Abuyin_Mischung_Info()
-{
+{	
+	
 	AI_Output (other, self,"DIA_Abuyin_Mischung_15_00");//Mam now¹ mieszankê tytoniu...
 	
 	Info_ClearChoices (DIA_Abuyin_Mischung);
@@ -186,57 +188,48 @@ FUNC VOID DIA_Abuyin_Mischung_Info()
 	
 	if (Npc_HasItems (other, ItMi_SwampTabak) >= 1)
 	{
-		Info_AddChoice (DIA_Abuyin_Mischung, "Tytoñ zio³owy", DIA_Abuyin_Mischung_Sumpf);
+		Info_AddChoice (DIA_Abuyin_Mischung,"Tytoñ zio³owy",DIA_Abuyin_Mischung_Sumpf);
 	};
 	if (Npc_HasItems (other, ItMi_MushroomTabak) >= 1)
 	{
-		Info_AddChoice (DIA_Abuyin_Mischung, "Tytoñ grzybowy", DIA_Abuyin_Mischung_Pilz);
+		Info_AddChoice (DIA_Abuyin_Mischung,"Grzybowy tytoñ",DIA_Abuyin_Mischung_Pilz);
 	};
 	if (Npc_HasItems (other, ItMi_CoconutTabak) >= 1)
 	{
-		Info_AddChoice (DIA_Abuyin_Mischung, "Tytoñ kokosowy", DIA_Abuyin_Mischung_Doppel);
-	};
-	if (Npc_HasItems (other, ItMi_ChocolateTabak) >= 1)
-	{
-		Info_AddChoice (DIA_Abuyin_Mischung, "Tytoñ czekoladowy", DIA_Abuyin_Mischung_Chocolate);
+		Info_AddChoice (DIA_Abuyin_Mischung,"Podwójne jab³ko",DIA_Abuyin_Mischung_Doppel);
 	};
 	if (Npc_HasItems (other, ItMi_HoneyTabak) >= 1)
 	{
-		Info_AddChoice (DIA_Abuyin_Mischung, "Tytoñ miodowy", DIA_Abuyin_Mischung_Super);
+		Info_AddChoice (DIA_Abuyin_Mischung,"Miodowy tytoñ",DIA_Abuyin_Mischung_Super);
 	};
-};
+};	
 FUNC VOID DIA_Abuyin_Mischung_BACK()
 {
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };
-FUNC VOID DIA_Abuyin_Mischung_Sumpf()
+FUNC VOID DIA_Abuyin_Mischung_Sumpf ()
 {
 	B_GiveInvItems (other, self, ItMi_SwampTabak, 1);
 	B_TabakProbieren();
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };
-FUNC VOID DIA_Abuyin_Mischung_Pilz()
+FUNC VOID DIA_Abuyin_Mischung_Pilz ()
 {
 	B_GiveInvItems (other, self, ItMi_MushroomTabak, 1);
 	B_TabakProbieren();
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };
-FUNC VOID DIA_Abuyin_Mischung_Doppel()
+FUNC VOID DIA_Abuyin_Mischung_Doppel ()
 {
 	B_GiveInvItems (other, self, ItMi_CoconutTabak, 1);
 	B_TabakProbieren();
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };
-FUNC VOID DIA_Abuyin_Mischung_Chocolate()
+FUNC VOID DIA_Abuyin_Mischung_Super ()
 {
-	B_GiveInvItems (other, self, ItMi_ChocolateTabak, 1);
-	B_TabakProbieren();
-	Info_ClearChoices (DIA_Abuyin_Mischung);
-};
-FUNC VOID DIA_Abuyin_Mischung_Super()
-{
+	
 	B_GiveInvItems (other, self, ItMi_HoneyTabak, 1);
-
+		
 	AI_Output (self, other,"DIA_Abuyin_Mischung_Super_13_00");//Daj mi spróbowaæ.
 	CreateInvItems (self, ItMi_Joint,1);
 	B_UseItem (self, ItMi_Joint);
@@ -246,9 +239,9 @@ FUNC VOID DIA_Abuyin_Mischung_Super()
 	AI_Output (self, other,"DIA_Abuyin_Mischung_Super_13_04");//Dobrze siê sprawi³eœ, Ojcze Sztuki Fajkowej. By³bym zachwycony, mog¹c nabiæ me niegodne fajki tym arcydzie³em.
 	AI_Output (other, self,"DIA_Abuyin_Mischung_Super_15_05");//A zatem nabij sobie.
 	AI_Output (self, other,"DIA_Abuyin_Mischung_Super_13_06");//Dziêki ci, Synu Szczodroœci. ¯aden inny tytoñ nie mo¿e siê z tym równaæ. Kupiê od ciebie ka¿de Ÿdziebe³ko, jakie mi dostarczysz.
-
-	Abuyin_Honigtabak = true;
-	B_GivePlayerXP(XP_Ambient*2);
+	
+	Abuyin_Honigtabak = TRUE;
+	B_GivePlayerXP ((XP_Ambient)*2);
 	
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };	
@@ -261,28 +254,28 @@ INSTANCE DIA_Abuyin_Trade(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Trade_Condition;
 	information	= DIA_Abuyin_Trade_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Mam dla ciebie trochê miodowego tytoniu.";
 };                       
 FUNC INT DIA_Abuyin_Trade_Condition()
 {	
-	if (Abuyin_Honigtabak == true)
+	if (Abuyin_Honigtabak == TRUE)
 	&& (Npc_HasItems (other, ItMi_HoneyTabak) >= 1) 
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Trade_Info()
 {	
 	Abuyin_Score = 0;
 	
-	Abuyin_Score = (Npc_HasItems(other,ItMi_HoneyTabak)*10);
-
+	Abuyin_Score = (Npc_HasItems (other, ItMi_HoneyTabak)* ItMi_HoneyTabak.value);
+	
 	AI_Output (other, self,"DIA_Abuyin_Trade_15_00");//Mam dla ciebie trochê miodowego tytoniu.
-
+	
 	B_GiveInvItems (other, self, ItMi_HoneyTabak, Npc_HasItems (other, ItMi_HoneyTabak));
 	B_GiveInvItems (self, other, ItmI_Gold, Abuyin_Score);
-
+	
 	AI_Output (self, other,"DIA_Abuyin_Trade_13_01");//Interesy z tob¹ to czysta przyjemnoœæ.
 };
 // ************************************************************
@@ -294,14 +287,14 @@ INSTANCE DIA_Abuyin_Herb(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Herb_Condition;
 	information	= DIA_Abuyin_Herb_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Mo¿e zainteresuje ciê ta paczuszka zió³?";
 };                       
 FUNC INT DIA_Abuyin_Herb_Condition()
 {	
-	if (Npc_HasItems(other,Itmi_Herbpaket) >= 1)
-	{
-		return true;
+	if (Npc_HasItems (other, Itmi_Herbpaket) >= 1)
+	{	
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Herb_Info()
@@ -321,15 +314,15 @@ INSTANCE DIA_Abuyin_Weissagung(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Weissagung_Condition;
 	information	= DIA_Abuyin_Weissagung_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy mo¿esz dla mnie powró¿yæ?";
 };                       
 FUNC INT DIA_Abuyin_Weissagung_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 7)
+	&& (Kapitel == 1)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Weissagung_Info()
@@ -349,7 +342,7 @@ INSTANCE DIA_Abuyin_Zukunft(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Zukunft_Condition;
 	information	= DIA_Abuyin_Zukunft_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Przepowiedz mi przysz³oœæ (zap³aæ 25 sztuk z³ota).";
 };                    
 //---------------------------------------   
@@ -358,10 +351,10 @@ var int DIA_Abuyin_Zukunft_permanent;
 FUNC INT DIA_Abuyin_Zukunft_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung)
-	&& (DIA_Abuyin_Zukunft_permanent == false)
-	&& (Kapitel == 7)
+	&& (DIA_Abuyin_Zukunft_permanent == FALSE)
+	&& (Kapitel == 1)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Zukunft_Info()
@@ -383,7 +376,7 @@ FUNC VOID DIA_Abuyin_Zukunft_Info()
 FUNC VOID DIA_Abuyin_Zukunft_Trance()
 {
 		AI_PlayAni  (self,"T_MAGRUN_2_HEASHOOT");
-		Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, false );
+		Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, FALSE );
 		
 		AI_Output (self, other,"DIA_Abuyin_Zukunft_Trance_13_00");//...Orkowie... pilnuj¹ wejœcia... stary tunel... Górnicza Dolina...
 		AI_Output (self, other,"DIA_Abuyin_Zukunft_Trance_13_01");//...Ludzie w lœni¹cych zbrojach... Mag... twój przyjaciel jest z nimi... czeka na ciebie...
@@ -395,11 +388,11 @@ FUNC VOID DIA_Abuyin_Zukunft_Trance()
 		AI_PlayAni  (self,"T_HEASHOOT_2_STAND");
 		AI_Output (self, other,"DIA_Abuyin_Zukunft_Trance_13_03");//...Przykro mi. Wizja siê skoñczy³a. Nie widzê nic wiêcej.
 		
-		DIA_Abuyin_Zukunft_permanent = true; 
-		Abuyin_Zukunft = 7;
+		DIA_Abuyin_Zukunft_permanent = TRUE; 
+		Abuyin_Zukunft = 1;
 		Info_ClearChoices (DIA_Abuyin_Zukunft);
 		
-		B_GivePlayerXP(XP_Ambient*4);
+		B_GivePlayerXP ((XP_Ambient*4));
 };
 // ************************************************************
 // 		Kannst du mir noch eine Weissagung geben?
@@ -410,14 +403,14 @@ INSTANCE DIA_Abuyin_Nochmal(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Nochmal_Condition;
 	information	= DIA_Abuyin_Nochmal_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Czy mo¿esz przygotowaæ dla mnie jeszcze jedn¹ wró¿bê?";
 };                       
 FUNC INT DIA_Abuyin_Nochmal_Condition()
 {	
 	if (Kapitel == Abuyin_Zukunft)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Nochmal_Info()
@@ -426,11 +419,11 @@ FUNC VOID DIA_Abuyin_Nochmal_Info()
 	AI_Output (self, other,"DIA_Abuyin_Nochmal_13_01");//Och, Synu Tajemniczej Przysz³oœci, nie w mojej mocy jest uchylenie zas³ony, która spowija tajemnice czasu.
 	AI_Output (self, other,"DIA_Abuyin_Nochmal_13_02");//Dopiero kiedy czas zeœle mi kolejny omen, znów bêdê móg³ spojrzeæ w przysz³oœæ dla ciebie.
 	
-	if (Abuyin_Erzaehlt == false)
+	if (Abuyin_Erzaehlt == FALSE)
 	{
 		AI_Output (other, self,"DIA_Abuyin_Nochmal_15_03");//To znaczy kiedy?
 		AI_Output (self, other,"DIA_Abuyin_Nochmal_13_04");//Kiedy przysz³oœæ stanie siê teraŸniejszoœci¹ i minie kolejny etep twojej wêdrówki.
-		Abuyin_Erzaehlt = true;
+		Abuyin_Erzaehlt = TRUE;
 	};
 };
 
@@ -459,15 +452,15 @@ INSTANCE DIA_Abuyin_Weissagung2(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Weissagung2_Condition;
 	information	= DIA_Abuyin_Weissagung2_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy mo¿esz dla mnie powró¿yæ?";
 };                       
 FUNC INT DIA_Abuyin_Weissagung2_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Weissagung2_Info()
@@ -484,7 +477,7 @@ INSTANCE DIA_Abuyin_Zukunft2(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Zukunft2_Condition;
 	information	= DIA_Abuyin_Zukunft2_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Przepowiedz mi przysz³oœæ (zap³aæ 100 sztuk z³ota).";
 };                    
 //---------------------------------------   
@@ -493,10 +486,10 @@ var int DIA_Abuyin_Zukunft2_permanent;
 FUNC INT DIA_Abuyin_Zukunft2_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung2)
-	&& (DIA_Abuyin_Zukunft2_permanent == false)
-	&& (Kapitel == 8)
+	&& (DIA_Abuyin_Zukunft2_permanent == FALSE)
+	&& (Kapitel == 2)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Zukunft2_Info()
@@ -519,7 +512,7 @@ FUNC VOID DIA_Abuyin_Zukunft2_Info()
 FUNC VOID DIA_Abuyin_Zukunft2_Trance()
 {
 	AI_PlayAni  (self,"T_MAGRUN_2_HEASHOOT");
-	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, false );
+	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, FALSE );
 	
 	AI_Output (self, other,"DIA_Abuyin_Zukunft2_Trance_13_00");//...Najemnik... on ciê bêdzie potrzebowa³... straszne morderstwo... Oko...
 	AI_Output (self, other,"DIA_Abuyin_Zukunft2_Trance_13_01");//...z³owrodzy sprzymierzeñcy... nadchodz¹... szukaj¹ ciê... stra¿nik zostanie pokonany...
@@ -528,11 +521,11 @@ FUNC VOID DIA_Abuyin_Zukunft2_Trance()
 	AI_PlayAni  (self,"T_HEASHOOT_2_STAND");
 	AI_Output (self, other,"DIA_Abuyin_Zukunft2_Trance_13_03");//To wszystko. Nie widzê nic wiêcej.
 	
-	DIA_Abuyin_Zukunft2_permanent = true; 
-	Abuyin_Zukunft = 8;
+	DIA_Abuyin_Zukunft2_permanent = TRUE; 
+	Abuyin_Zukunft = 2;
 	Info_ClearChoices (DIA_Abuyin_Zukunft2);
 	
-	B_GivePlayerXP (XP_Ambient*4);
+	B_GivePlayerXP ((XP_Ambient*4));
 };
 //#####################################################################
 //##
@@ -552,15 +545,15 @@ INSTANCE DIA_Abuyin_Weissagung3(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Weissagung3_Condition;
 	information	= DIA_Abuyin_Weissagung3_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy mo¿esz dla mnie powró¿yæ?";
 };                       
 FUNC INT DIA_Abuyin_Weissagung3_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 9)
+	&& (Kapitel == 3)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Weissagung3_Info()
@@ -577,7 +570,7 @@ INSTANCE DIA_Abuyin_Zukunft3(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Zukunft3_Condition;
 	information	= DIA_Abuyin_Zukunft3_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Przepowiedz mi przysz³oœæ (zap³aæ 250 sztuk z³ota).";
 };                    
 //---------------------------------------   
@@ -586,10 +579,10 @@ var int DIA_Abuyin_Zukunft3_permanent;
 FUNC INT DIA_Abuyin_Zukunft3_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung3)
-	&& (DIA_Abuyin_Zukunft3_permanent == false)
-	&& (Kapitel == 9)
+	&& (DIA_Abuyin_Zukunft3_permanent == FALSE)
+	&& (Kapitel == 3)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Zukunft3_Info()
@@ -612,7 +605,7 @@ FUNC VOID DIA_Abuyin_Zukunft3_Info()
 FUNC VOID  DIA_Abuyin_Zukunft3_Trance()
 {
 	AI_PlayAni  (self,"T_MAGRUN_2_HEASHOOT");
-	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, false );
+	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, FALSE );
 	
 	AI_Output (self, other,"DIA_Abuyin_Zukunft3_Trance_13_00");//...wymusisz... swoje w³asne przeznaczenie...
 	AI_Output (self, other,"DIA_Abuyin_Zukunft3_Trance_13_01");//...przez ogieñ i œnieg... przez lód i p³omienie...
@@ -621,11 +614,11 @@ FUNC VOID  DIA_Abuyin_Zukunft3_Trance()
 	AI_PlayAni  (self,"T_HEASHOOT_2_STAND");
 	AI_Output (self, other,"DIA_Abuyin_Zukunft3_Trance_13_03");//To wszystko. Nie widzê nic wiêcej.
 	
-	DIA_Abuyin_Zukunft3_permanent = true; 
-	Abuyin_Zukunft = 9;
+	DIA_Abuyin_Zukunft3_permanent = TRUE; 
+	Abuyin_Zukunft = 3;
 	Info_ClearChoices (DIA_Abuyin_Zukunft3);
 	
-	B_GivePlayerXP(XP_Ambient*4);
+	B_GivePlayerXP ((XP_Ambient*4));
 };
 //#####################################################################
 //##
@@ -645,15 +638,15 @@ INSTANCE DIA_Abuyin_Weissagung4(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Weissagung4_Condition;
 	information	= DIA_Abuyin_Weissagung4_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy mo¿esz dla mnie powró¿yæ?";
 };                       
 FUNC INT DIA_Abuyin_Weissagung4_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 10)
+	&& (Kapitel == 4)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Weissagung4_Info()
@@ -670,7 +663,7 @@ INSTANCE DIA_Abuyin_Zukunft4(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Zukunft4_Condition;
 	information	= DIA_Abuyin_Zukunft4_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Przepowiedz mi przysz³oœæ (zap³aæ 500 sztuk z³ota).";
 };                    
 //---------------------------------------   
@@ -679,10 +672,10 @@ var int DIA_Abuyin_Zukunft4_permanent;
 FUNC INT DIA_Abuyin_Zukunft4_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung4)
-	&& (DIA_Abuyin_Zukunft4_permanent == false)
-	&& (Kapitel == 10)
+	&& (DIA_Abuyin_Zukunft4_permanent == FALSE)
+	&& (Kapitel == 4)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Zukunft4_Info()
@@ -705,7 +698,7 @@ FUNC VOID DIA_Abuyin_Zukunft4_Info()
 FUNC VOID DIA_Abuyin_Zukunft4_Trance()
 {
 	AI_PlayAni  (self,"T_MAGRUN_2_HEASHOOT");
-	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, false );
+	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, FALSE );
 	
 	AI_Output (self, other,"DIA_Abuyin_Zukunft4_Trance_13_00");//...miejsce wiedzy... obcy kraj... ciemne miejsce daleko st¹d...
 	AI_Output (self, other,"DIA_Abuyin_Zukunft4_Trance_13_01");//...dzielni towarzysze... sam dokonasz wyboru...
@@ -714,11 +707,11 @@ FUNC VOID DIA_Abuyin_Zukunft4_Trance()
 	AI_PlayAni  (self,"T_HEASHOOT_2_STAND");
 	AI_Output (self, other,"DIA_Abuyin_Zukunft4_Trance_13_03");//To wszystko. Nie widzê nic wiêcej.
 	
-	DIA_Abuyin_Zukunft4_permanent = true; 
-	Abuyin_Zukunft = 10;
+	DIA_Abuyin_Zukunft4_permanent = TRUE; 
+	Abuyin_Zukunft = 4;
 	Info_ClearChoices (DIA_Abuyin_Zukunft4);
 	
-	B_GivePlayerXP(XP_Ambient*4);
+	B_GivePlayerXP ((XP_Ambient*4));
 };
 //#####################################################################
 //##
@@ -738,15 +731,15 @@ INSTANCE DIA_Abuyin_Weissagung5(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Weissagung5_Condition;
 	information	= DIA_Abuyin_Weissagung5_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy mo¿esz dla mnie powró¿yæ?";
 };                       
 FUNC INT DIA_Abuyin_Weissagung5_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 11)
+	&& (Kapitel == 5)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Weissagung5_Info()
@@ -763,7 +756,7 @@ INSTANCE DIA_Abuyin_Zukunft5(C_INFO)
 	nr			= 2;
 	condition	= DIA_Abuyin_Zukunft5_Condition;
 	information	= DIA_Abuyin_Zukunft5_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Przepowiedz mi przysz³oœæ (zap³aæ 1000 sztuk z³ota).";
 };                    
 //---------------------------------------   
@@ -772,10 +765,10 @@ var int DIA_Abuyin_Zukunft5_permanent;
 FUNC INT DIA_Abuyin_Zukunft5_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung5)
-	&& (DIA_Abuyin_Zukunft5_permanent == false)
-	&& (Kapitel == 11)
+	&& (DIA_Abuyin_Zukunft5_permanent == FALSE)
+	&& (Kapitel == 5)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Abuyin_Zukunft5_Info()
@@ -798,7 +791,7 @@ FUNC VOID DIA_Abuyin_Zukunft5_Info()
 FUNC VOID DIA_Abuyin_Zukunft5_Trance ()
 {
 	AI_PlayAni  (self,"T_MAGRUN_2_HEASHOOT");
-	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, false );
+	Wld_PlayEffect("SPELLFX_TELEPORT",  self, self, 0, 0, 0, FALSE );
 	
 	AI_Output (self, other,"DIA_Abuyin_Zukunft5_Trance_13_00");//...Ciemnoœæ przenika ziemie... z³o zatryumfuje...
 	AI_Output (self, other,"DIA_Abuyin_Zukunft5_Trance_13_01");//...Król przegra wojnê z orkami...
@@ -807,10 +800,11 @@ FUNC VOID DIA_Abuyin_Zukunft5_Trance ()
 	AI_PlayAni  (self,"T_HEASHOOT_2_STAND");
 	AI_Output (self, other,"DIA_Abuyin_Zukunft5_Trance_13_03");//To wszystko. Nie widzê nic wiêcej.
 		
-	DIA_Abuyin_Zukunft5_permanent = true; 
-	Abuyin_Zukunft = 11;
+	DIA_Abuyin_Zukunft5_permanent = TRUE; 
+	Abuyin_Zukunft = 5;
 	
 	Info_ClearChoices (DIA_Abuyin_Zukunft5);
 	
-	B_GivePlayerXP(XP_Ambient*4);
+	B_GivePlayerXP ((XP_Ambient*4));
 };
+

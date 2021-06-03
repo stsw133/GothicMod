@@ -12,7 +12,7 @@ var int SPL_AmountToHeal_MysGhost;
 var int SPL_AmountToProt_MysGhost;
 
 ///******************************************************************************************
-INSTANCE Spell_MysGhost (C_Spell_Proto)
+instance Spell_MysGhost (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype							=	SPELL_NEUTRAL;
@@ -22,7 +22,7 @@ INSTANCE Spell_MysGhost (C_Spell_Proto)
 
 func int Spell_Logic_MysGhost (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysGhost/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysGhost/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysGhost)
 	{
 		return SPL_SENDCAST;
@@ -35,14 +35,15 @@ func int Spell_Logic_MysGhost (var int manaInvested)
 
 func void Spell_Cast_MysGhost()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysGhost/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysGhost/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MysGhost/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MysGhost)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MysGhost;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 	
 	

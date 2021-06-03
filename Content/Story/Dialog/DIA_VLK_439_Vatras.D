@@ -14,18 +14,18 @@ instance DIA_Addon_Vatras_KillerWarning		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Vatras_KillerWarning_Condition;
 	information	 = 	DIA_Addon_Vatras_KillerWarning_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Vatras_KillerWarning_Condition ()
 {
-	if (Kapitel >= 11)
+	if (Kapitel >= 5)
 	&& (MadKillerCount >= 3)
 	&& (MadKillerCount < 7)
-	&& (VatrasPissedOffForever == false)
+	&& (VatrasPissedOffForever == FALSE)
 	&& (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -47,16 +47,16 @@ instance DIA_Addon_Vatras_LastWarning		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Vatras_LastWarning_Condition;
 	information	 = 	DIA_Addon_Vatras_LastWarning_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Vatras_LastWarning_Condition ()
 {
-	if (Kapitel >= 11)
+	if (Kapitel >= 5)
 	&& (MadKillerCount >= 7)
-	&& (VatrasPissedOffForever == false)
+	&& (VatrasPissedOffForever == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -96,16 +96,16 @@ instance DIA_Addon_Vatras_PissedOff		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Vatras_PissedOff_Condition;
 	information	 = 	DIA_Addon_Vatras_PissedOff_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Vatras_PissedOff_Condition ()
 {
 	if (MadKillerCount > VatrasMadKillerCount)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Vatras_LastWarning))
-	&& (Kapitel >= 11)
+	&& (Kapitel >= 5)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -124,20 +124,20 @@ instance DIA_Vatras_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Vatras_EXIT_Condition;
 	information = DIA_Vatras_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Vatras_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Vatras_EXIT_Info()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Vatras_HowToJoin))
-	&& (Vatras_LaresExit == false)
+	&& (Vatras_LaresExit == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_LaresExit_05_00"); //Chwila!
-		if (Vatras_GehZuLares == true) 
+		if (Vatras_GehZuLares == TRUE) 
 		{
 			AI_Output (self, other, "DIA_Addon_Vatras_LaresExit_05_01"); //Jeœli wpadniesz przypadkiem na Laresa...
 		}
@@ -145,19 +145,19 @@ FUNC VOID DIA_Vatras_EXIT_Info()
 		{
 			AI_Output (self, other, "DIA_Addon_Vatras_LaresExit_05_02"); //Jest coœ, co mo¿esz dla mnie zrobiæ.
 			AI_Output (self, other, "DIA_Addon_Vatras_LaresExit_05_03"); //IdŸ do portu - znajdziesz tam niejakiego Laresa.
-			Vatras_GehZuLares = true;
+			Vatras_GehZuLares = TRUE;
 		};	
-		
+			
 		AI_Output (self, other, "DIA_Addon_Vatras_LaresExit_05_04"); //Przeka¿ mu ten ornament i ka¿ mu go oddaæ. Bêdzie wiedzia³ co zrobiæ.
 		CreateInvItems (self, ItMi_Ornament_Addon_Vatras, 1);									
 		B_GiveInvItems (self, other, ItMi_Ornament_Addon_Vatras, 1);	
 		
-		Vatras_LaresExit = true;
+		Vatras_LaresExit = TRUE;
 	};
 	
-	AI_StopProcessInfos (self); Vatras_MORE = false;
+	AI_StopProcessInfos (self); Vatras_MORE = FALSE;
 	
-	if (Vatras_SchickeLeuteWeg == true)
+	if (Vatras_SchickeLeuteWeg == TRUE)
 	{
 		B_StartOtherRoutine  (VLK_455_Buerger,"VATRASAWAY");	
 		B_StartOtherRoutine  (VLK_454_Buerger,"VATRASAWAY");	
@@ -166,7 +166,7 @@ FUNC VOID DIA_Vatras_EXIT_Info()
 		B_StartOtherRoutine  (VLK_426_Buergerin,"VATRASAWAY");	
 		B_StartOtherRoutine  (VLK_421_Valentino,"VATRASAWAY");	
 		
-		Vatras_SchickeLeuteWeg = false;
+		Vatras_SchickeLeuteWeg = FALSE;
 	};
 };
 
@@ -180,14 +180,14 @@ instance DIA_Vatras_GREET		(C_INFO)
 	condition	 = 	DIA_Vatras_GREET_Condition;
 	information	 = 	DIA_Vatras_GREET_Info;
 
-	important	 =  true;
+	important	 =  TRUE;
 };
 func int DIA_Vatras_GREET_Condition ()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_GREET_Info ()
@@ -216,11 +216,11 @@ func int DIA_Addon_Vatras_Cavalorn_Condition ()
 {
 	if 	(
 			(Npc_HasItems (other,ItWr_SaturasFirstMessage_Addon_Sealed) >=1)
-			&& (QuestStep_CavalornLetter == LOG_RUNNING)
+			&& (MIS_Addon_Cavalorn_Letter2Vatras == LOG_RUNNING)
 		)
 		||	(Npc_HasItems (other,ItWr_SaturasFirstMessage_Addon)>=1) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_Cavalorn_Info ()
@@ -228,14 +228,14 @@ func void DIA_Addon_Vatras_Cavalorn_Info ()
 	AI_Output	(other, self, "DIA_Addon_Vatras_Cavalorn_15_00"); //Mam list adresowany do ciebie.
 	AI_Output	(self, other, "DIA_Addon_Vatras_Cavalorn_05_01"); //Do mnie?
 	
-	if (SaturasFirstMessageOpened == false)
+	if (SaturasFirstMessageOpened == FALSE)
 	{
-		B_GivePlayerXP(XP_BONUS_2);
+		B_GivePlayerXP (XP_Addon_Cavalorn_Letter2Vatras);
 		B_GiveInvItems (other, self, ItWr_SaturasFirstMessage_Addon_Sealed,1);
 	}
 	else
 	{
-		B_GivePlayerXP(XP_BONUS_0);
+		B_GivePlayerXP (XP_Addon_Cavalorn_Letter2Vatras_Opened);
 		B_GiveInvItems (other, self, ItWr_SaturasFirstMessage_Addon,1);
 		AI_Output	(self, other, "DIA_Addon_Vatras_Cavalorn_05_02"); //Owszem. Tylko... By³ otwarty. Mam nadziejê, ¿e nie przeczyta³ go nikt niepowo³any.
 	};
@@ -248,12 +248,12 @@ func void DIA_Addon_Vatras_Cavalorn_Info ()
 	Info_ClearChoices	(DIA_Addon_Vatras_Cavalorn);
 	Info_AddChoice	(DIA_Addon_Vatras_Cavalorn, "Zabra³em j¹ bandytom.", DIA_Addon_Vatras_Cavalorn_Bandit );
 
-	if (QuestStep_KillBrago == LOG_SUCCESS)
+	if (MIS_Addon_Cavalorn_KillBrago == LOG_SUCCESS)
 	{
 		Info_AddChoice	(DIA_Addon_Vatras_Cavalorn, "Od Cavalorna, myœliwego.", DIA_Addon_Vatras_Cavalorn_Cavalorn );
 	};
 
-	QuestStep_CavalornLetter = LOG_SUCCESS;
+	MIS_Addon_Cavalorn_Letter2Vatras = LOG_SUCCESS;
 };
 func void DIA_Addon_Vatras_Cavalorn_Bandit ()
 {
@@ -270,7 +270,7 @@ func void DIA_Addon_Vatras_Cavalorn_Cavalorn ()
 	AI_Output (other, self, "DIA_Addon_Vatras_Cavalorn_Cavalorn_15_02"); //Poleci³ mi przekazaæ, ¿e nie zd¹¿y³ na czas i ¿e zmierza na miejsce spotkania - gdziekolwiek by to nie by³o.
 	AI_Output (self, other, "DIA_Addon_Vatras_Cavalorn_Cavalorn_05_03"); //Widzê, ¿e zas³u¿y³eœ sobie na jego zaufanie... Ja równie¿ bêdê ci chyba musia³ zaufaæ.
 	
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_CavalornTrust);
 	Info_ClearChoices	(DIA_Addon_Vatras_Cavalorn);
 };
 
@@ -285,17 +285,17 @@ instance DIA_Addon_Vatras_CavalornSentMe (C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Addon_Vatras_CavalornSentMe_Condition;
 	information	= DIA_Addon_Vatras_CavalornSentMe_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Przysy³a mnie Cavalorn!";
 };
 func int DIA_Addon_Vatras_CavalornSentMe_Condition ()
 {
-	if (SC_KnowsRanger == true)
-	&& (SC_IsRanger == false)
+	if (SC_KnowsRanger == TRUE)
+	&& (SC_IsRanger == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Cavalorn_Ring))
-	&& (Vatras_Why == true)
+	&& (Vatras_Why == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_CavalornSentMe_Info ()
@@ -315,16 +315,16 @@ instance DIA_Addon_Vatras_TellMe (C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Addon_Vatras_TellMe_Condition;
 	information	= DIA_Addon_Vatras_TellMe_Info;
-	permanent	= true;
+	permanent	= TRUE;
 
 	description	= "Powiedz mi coœ o Wodnym Krêgu.";
 };
 func int DIA_Addon_Vatras_TellMe_Condition ()
 {
-	if (SC_KnowsRanger == true)
-	&& (SC_IsRanger == false)
+	if (SC_KnowsRanger == TRUE)
+	&& (SC_IsRanger == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_TellMe_Info ()
@@ -334,7 +334,7 @@ func void DIA_Addon_Vatras_TellMe_Info ()
 	if (!Npc_KnowsInfo (other, DIA_Addon_Vatras_WannaBeRanger))
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_TellMe_05_01"); //A czemu mia³bym to zrobiæ?
-		Vatras_Why = true;
+		Vatras_Why = TRUE;
 	}
 	else
 	{
@@ -375,7 +375,7 @@ func void DIA_Addon_Vatras_TellMe_Konkret()
 	AI_Output (self, other, "DIA_Addon_Vatras_TellMe_Konkret_05_05"); //Próbujemy dotrzeæ do takich osób, aby uniemo¿liwiæ im dzia³anie na szkodê miasta.
 	AI_Output (self, other, "DIA_Addon_Vatras_TellMe_Konkret_05_06"); //Daj znaæ, gdy zechcesz zaj¹æ siê t¹ spraw¹.
 	MIS_Vatras_FindTheBanditTrader = LOG_RUNNING;
-	Vatras_ToMartin = true;
+	Vatras_ToMartin = TRUE;
 	Log_CreateTopic (TOPIC_Addon_BanditTrader, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_BanditTrader, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_BanditTrader,"W Khorinis jest handlarz broni¹, który zaopatruje bandytów. Vatras chce, ¿ebym sprawdzi³ tê informacjê."); 
@@ -423,9 +423,9 @@ instance DIA_Addon_Vatras_WannaBeRanger		(C_INFO)
 };
 func int DIA_Addon_Vatras_WannaBeRanger_Condition ()
 {
-	if (SC_KnowsRanger == true)
+	if (SC_KnowsRanger == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_WannaBeRanger_Info ()
@@ -440,6 +440,7 @@ func void DIA_Addon_Vatras_WannaBeRanger_Info ()
 	};
 	
 	AI_Output (self, other, "DIA_Addon_Vatras_WannaBeRanger_05_04"); //Ale ja nic o tobie nie wiem...
+	//AI_Output (self, other, "DIA_Vatras_INFLUENCE_05_03"); //Ich will dich wohl segnen, Fremder, aber ich kenne dich nicht. Erzähle mir was über dich.
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_15_04"); //A co chcia³byœ wiedzieæ?
 	AI_Output (self, other, "DIA_Vatras_INFLUENCE_05_05"); //Powiedz mi, sk¹d pochodzisz... i co sprowadza ciê do tego miasta.
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_15_06"); //Mam wa¿n¹ wiadomoœæ dla przywódcy paladynów.
@@ -453,7 +454,7 @@ FUNC VOID DIA_Vatras_INFLUENCE_FIRST_TRUTH()
 {
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_FIRST_TRUTH_15_00"); //Niedaleko st¹d zbiera siê potê¿na armia. Jej przywódcami s¹ smoki, a celem podbój ca³ego kraju.
 	
-	if (Vatras_First == true)
+	if (Vatras_First == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_FIRST_TRUTH_05_01"); //Hmmm. Jeœli mówisz prawdê, to równowaga na tych ziemiach zosta³a zak³ócona. Kto ci o tym powiedzia³?
 	}
@@ -465,7 +466,7 @@ FUNC VOID DIA_Vatras_INFLUENCE_FIRST_TRUTH()
 	Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Ach, s³ysza³em jakieœ plotki...",DIA_Vatras_INFLUENCE_SECOND_LIE);
 	Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Powiedzia³ mi o tym mag Xardas...",DIA_Vatras_INFLUENCE_SECOND_TRUTH);
 	
-	Vatras_First = true;
+	Vatras_First = TRUE;
 };
 FUNC VOID DIA_Vatras_INFLUENCE_FIRST_LIE()
 {
@@ -489,7 +490,7 @@ FUNC VOID DIA_Vatras_INFLUENCE_SECOND_TRUTH()
 {
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_SECOND_TRUTH_15_00"); //Powiedzia³ mi o tym mag Xardas. To on wys³a³ mnie, bym ostrzeg³ paladynów.
 	
-	if (Vatras_Second == true)
+	if (Vatras_Second == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_SECOND_TRUTH_05_01"); //Wiem, ¿e jest on m¹drym i potê¿nym mistrzem magii. Powiedz mi jeszcze, sk¹d przybywasz?
 	}
@@ -501,7 +502,7 @@ FUNC VOID DIA_Vatras_INFLUENCE_SECOND_TRUTH()
 	Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Podró¿nikiem z dalekiego po³udnia...",DIA_Vatras_INFLUENCE_THIRD_LIE);
 	Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Dawnym skazañcem...",DIA_Vatras_INFLUENCE_THIRD_TRUTH);
 	
-	Vatras_Second = true;
+	Vatras_Second = TRUE;
 };
 FUNC VOID DIA_Vatras_INFLUENCE_SECOND_LIE()
 {
@@ -528,7 +529,7 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 	
 	AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_01"); //Dobrze, podsumujmy:
 	
-	if (Vatras_Third == true)
+	if (Vatras_Third == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_02"); //Jesteœ zbieg³ym wiêŸniem...
 	}
@@ -536,7 +537,7 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_03"); //Jesteœ podró¿nikiem z dalekiego po³udnia...
 	};
-	if (Vatras_Second  == true)
+	if (Vatras_Second  == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_04"); //...któremu nekromanta Xardas powiedzia³...
 	}
@@ -544,7 +545,7 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_05"); //...który us³ysza³ plotki...
 	};
-	if (Vatras_First  == true)
+	if (Vatras_First  == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_06"); //...¿e armia smoków zamierza podbiæ ca³y kraj.
 	}
@@ -554,9 +555,9 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 	};
 		
 	AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_08"); //I zamierzasz ostrzec o tym paladynów.
-	if (Vatras_First   == true)
-	&& (Vatras_Second  == true)
-	&& (Vatras_Third   == true)
+	if (Vatras_First   == TRUE)
+	&& (Vatras_Second  == TRUE)
+	&& (Vatras_Third   == TRUE)
 	{
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_09"); //Brzmi to doœæ niewiarygodnie, ale nie wyczuwam, byœ próbowa³ mnie ok³amaæ.
 		AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_10"); //Dlatego muszê przyj¹æ, ¿e kieruj¹ tob¹ szlachetne pobudki.
@@ -578,7 +579,7 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 		AI_Output (self, other, "DIA_Vatras_Add_05_05"); //Zacznijmy jeszcze raz, od pocz¹tku. Co to za wiadomoœæ?
 		
 		//ADDON - SC kann nicht mehr versagen!
-		//Vatras_Chance = true; 
+		//Vatras_Chance = TRUE; 
 		Info_ClearChoices   (DIA_Addon_Vatras_WannaBeRanger);
 		Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Przyby³y smoki...",DIA_Vatras_INFLUENCE_FIRST_TRUTH);
 		Info_AddChoice 		(DIA_Addon_Vatras_WannaBeRanger,"Wkrótce wydarz¹ siê straszliwe rzeczy.",DIA_Vatras_INFLUENCE_FIRST_LIE);
@@ -590,14 +591,14 @@ func VOID B_Vatras_INFLUENCE_REPEAT()
 FUNC VOID DIA_Vatras_INFLUENCE_THIRD_TRUTH()
 {
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_THIRD_TRUTH_15_00"); //Dawnym skazañcem z kolonii wiêziennej Khorinis.
-	Vatras_Third = true;
+	Vatras_Third = TRUE;
 	
 	B_Vatras_INFLUENCE_REPEAT();
 };
 FUNC VOID DIA_Vatras_INFLUENCE_THIRD_LIE()
 {
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_THIRD_LIE_15_00"); //Podró¿nikiem z dalekiego po³udnia...
-	Vatras_Third = false;
+	Vatras_Third = FALSE;
 		
 	B_Vatras_INFLUENCE_REPEAT();
 }; 
@@ -620,7 +621,7 @@ func int DIA_Addon_Vatras_HowToJoin_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Vatras_WannaBeRanger))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_HowToJoin_Info ()
@@ -666,7 +667,7 @@ func void DIA_Addon_Vatras_HowToJoin_WhatsGreat()
 	B_LogEntry (TOPIC_Addon_RingOfWater, LogText_Addon_KDWRight); 
 	B_LogEntry (TOPIC_Addon_RingOfWater,"Vatras nie pozwoli mi wst¹piæ do Wodnego Krêgu, jeœli nie rozwi¹¿ê zagadki zaginionych ludzi."); 
 
-	if (SC_HearedAboutMissingPeople == false)
+	if (SC_HearedAboutMissingPeople == FALSE)
 	{
 		Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 		Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
@@ -674,7 +675,7 @@ func void DIA_Addon_Vatras_HowToJoin_WhatsGreat()
 	};
 
 	MIS_Addon_Vatras_WhereAreMissingPeople = LOG_RUNNING;
-	SC_HearedAboutMissingPeople = true;
+	SC_HearedAboutMissingPeople = TRUE;
 
 	AI_Output (self, other, "DIA_Addon_Vatras_HowToJoin_WhatsGreat_05_04"); //Tylko ¿e...
 	AI_Output (other, self, "DIA_Addon_Vatras_HowToJoin_WhatsGreat_15_05"); //Tak?
@@ -703,7 +704,7 @@ func int DIA_Addon_Vatras_GuildBypass_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Vatras_HowToJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_GuildBypass_Info ()
@@ -724,7 +725,7 @@ func void DIA_Addon_Vatras_GuildBypass_Info ()
 func void DIA_Addon_Vatras_GuildBypass_BACK()
 {
 	AI_Output (other, self, "DIA_Addon_Vatras_GuildBypass_BACK_15_00"); //Tak zrobiê.
-	Vatras_GehZuLares = true;
+	Vatras_GehZuLares = TRUE;
 	
 	Info_ClearChoices (DIA_Addon_Vatras_GuildBypass);
 };
@@ -750,17 +751,17 @@ instance DIA_Addon_Vatras_NowRanger		(C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Addon_Vatras_NowRanger_Condition;
 	information	= DIA_Addon_Vatras_NowRanger_Info;
-	permanent	= true;
+	permanent	= TRUE;
 
 	description	= "Jestem gotów wst¹piæ w szeregi Wodnego Krêgu!";
 };
 func int DIA_Addon_Vatras_NowRanger_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Vatras_HowToJoin))
-	&& (SC_IsRanger == false)
+	&& (SC_IsRanger == FALSE)
 	&& (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_NowRanger_Info ()
@@ -768,7 +769,7 @@ func void DIA_Addon_Vatras_NowRanger_Info ()
 	AI_Output	(other, self, "DIA_Addon_Vatras_NowRanger_15_00"); //Jestem gotów wst¹piæ w szeregi Wodnego Krêgu!
 	AI_Output	(self, other, "DIA_Addon_Vatras_NowRanger_05_01"); //Dostarczy³eœ sw¹ wiadomoœæ Lordowi Hagenowi?
 	
-	if (Kapitel >= 8) //Pass-Schlüssel von Hagen
+	if (Kapitel >= 2) //Pass-Schlüssel von Hagen
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_NowRanger_15_02"); //Owszem.
 		if (MIS_OLDWORLD != LOG_SUCCESS)
@@ -785,8 +786,8 @@ func void DIA_Addon_Vatras_NowRanger_Info ()
 		
 		AI_Output	(self, other, "DIA_Addon_Vatras_NowRanger_05_08"); //Dowiod³eœ swej wartoœci - zostaniesz jednym z nas. Bêdziesz podró¿owa³ po tej krainie i wype³nia³ wolê Adanosa.
 		AI_Output	(self, other, "DIA_Addon_Vatras_NowRanger_05_09"); //Niniejszym dajê ci Pierœcieñ Wody - oby pomóg³ ci znaleŸæ sojuszników i utrzymaæ wraz z nimi równowagê tego œwiata.
-		CreateInvItems (self, ItRi_Ranger, 1);									
-		B_GiveInvItems (self, other, ItRi_Ranger, 1);		
+		CreateInvItems (self, ItRi_Ranger_Addon, 1);									
+		B_GiveInvItems (self, other, ItRi_Ranger_Addon, 1);		
 		if (hero.guild == GIL_KDF)
 		{
 			AI_Output	(self, other, "DIA_Addon_Vatras_NowRanger_05_10"); //Szczególnie cieszy mnie fakt, ¿e jesteœ pierwszym Magiem Ognia wœród nas.
@@ -798,10 +799,10 @@ func void DIA_Addon_Vatras_NowRanger_Info ()
 		
 		B_LogEntry (TOPIC_Addon_RingOfWater,"Nale¿ê teraz do Wodnego Krêgu i powinienem spotkaæ siê z mymi braæmi w gospodzie 'Martwa Harpia'."); 
 
-		SC_IsRanger = true;
-		Lares_CanBringScToPlaces = true;
+		SC_IsRanger = TRUE;
+		Lares_CanBringScToPlaces = TRUE;
 		MIS_Addon_Lares_ComeToRangerMeeting = LOG_RUNNING;
-		B_GivePlayerXP(XP_BONUS_4);
+		B_GivePlayerXP (XP_Addon_SC_IsRanger);
 	}
 	else
 	{
@@ -822,9 +823,9 @@ instance DIA_Addon_Vatras_CloseMeeting		(C_INFO)
 };
 func int DIA_Addon_Vatras_CloseMeeting_Condition ()
 {
-	if (Lares_TakeFirstMissionFromVatras == true)
+	if (Lares_TakeFirstMissionFromVatras == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_CloseMeeting_Info ()
@@ -852,7 +853,7 @@ func void DIA_Addon_Vatras_CloseMeeting_Info ()
 
 	RangerMeetingRunning = LOG_SUCCESS; //Joly:Muss hier stehen!Sonst Chaos mit Rangern! -> Meeting
 	B_SchlussMitRangerMeeting ();
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 
@@ -870,14 +871,14 @@ instance DIA_Addon_Vatras_MissingPeople (C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Addon_Vatras_MissingPeople_Condition;
 	information	= DIA_Addon_Vatras_MissingPeople_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Co do tych znikaj¹cych ludzi...";
 };
 func int DIA_Addon_Vatras_MissingPeople_Condition ()
 {
 	if (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int DIA_Addon_Vatras_MissingPeople_Wo_NoPerm;
@@ -888,7 +889,7 @@ func void DIA_Addon_Vatras_MissingPeople_Info ()
 	
 	Info_ClearChoices (DIA_Addon_Vatras_MissingPeople);
 	Info_AddChoice (DIA_Addon_Vatras_MissingPeople, DIALOG_BACK, DIA_Addon_Vatras_MissingPeople_BACK);
-	if (SCKnowsMissingPeopleAreInAddonWorld == true)
+	if (SCKnowsMissingPeopleAreInAddonWorld == TRUE)
 	{
 		Info_AddChoice (DIA_Addon_Vatras_MissingPeople, "Wiem, gdzie przebywaj¹ zaginieni.", DIA_Addon_Vatras_MissingPeople_Success);
 	}
@@ -897,7 +898,7 @@ func void DIA_Addon_Vatras_MissingPeople_Info ()
 		Info_AddChoice (DIA_Addon_Vatras_MissingPeople, "Powiem ci, co uda³o mi siê do tej pory ustaliæ.", DIA_Addon_Vatras_MissingPeople_Report);
 	};
 	
-	if (DIA_Addon_Vatras_MissingPeople_Wo_NoPerm == false)
+	if (DIA_Addon_Vatras_MissingPeople_Wo_NoPerm == FALSE)
 	{
 		Info_AddChoice (DIA_Addon_Vatras_MissingPeople, "Gdzie szukaæ ich œladu?", DIA_Addon_Vatras_MissingPeople_Wo);
 	};
@@ -915,7 +916,7 @@ func void DIA_Addon_Vatras_MissingPeople_Wo()
 	Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_WhoStolePeople,"W porcie w Khorinis zaginê³o najwiêcej osób. Tam powinienem zacz¹æ swoje poszukiwania."); 
 	
-	DIA_Addon_Vatras_MissingPeople_Wo_NoPerm = true;
+	DIA_Addon_Vatras_MissingPeople_Wo_NoPerm = TRUE;
 };
 func void DIA_Addon_Vatras_MissingPeople_Report()
 {
@@ -925,84 +926,84 @@ func void DIA_Addon_Vatras_MissingPeople_Report()
 	
 	 if ((MIS_Akil_BringMissPeopleBack != 0)
 	 || (MIS_Bengar_BringMissPeopleBack != 0))
-	 &&	(MISSINGPEOPLEINFO[1] == false)
+	 &&	(MISSINGPEOPLEINFO[1] == FALSE)
 	 {
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_01"); //Zaginê³o równie¿ paru farmerów.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[1] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[1] = TRUE;
 	 };
 	
-	if ((Elvrich_GoesBack2Thorben == true)
-	|| (Elvrich_SCKnowsPirats == true)
-	|| (SC_KnowsDexterAsKidnapper == true))
-	&& (MISSINGPEOPLEINFO[2] == false)
+	if ((Elvrich_GoesBack2Thorben == TRUE)
+	|| (Elvrich_SCKnowsPirats == TRUE)
+	|| (SC_KnowsDexterAsKidnapper == TRUE))
+	&& (MISSINGPEOPLEINFO[2] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_02"); //Podobno odpowiedzialni za to s¹ bandyci.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[2] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[2] = TRUE;
 	};
 
-	if (Elvrich_SCKnowsPirats == true)
-	&& (MISSINGPEOPLEINFO[3] == false)
+	if (Elvrich_SCKnowsPirats == TRUE)
+	&& (MISSINGPEOPLEINFO[3] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_03"); //Elvrich - czeladnik Thorbena - powiedzia³ mi, ¿e to w³aœnie oni transportuj¹ porwanych drog¹ morsk¹.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[3] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[3] = TRUE;
 	};
 	
-	if (Elvrich_SCKnowsPirats == true)
-	&& (MISSINGPEOPLEINFO[4] == false)
+	if (Elvrich_SCKnowsPirats == TRUE)
+	&& (MISSINGPEOPLEINFO[4] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_04"); //Wydaje siê, ¿e zamieszani s¹ w to jacyœ piraci, choæ nie wiem jeszcze na pewno, jak¹ odgrywaj¹ w tym wszystkim rolê.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[4] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[4] = TRUE;
 	};	
 	
-	if (Elvrich_GoesBack2Thorben == true)
-	&& (MISSINGPEOPLEINFO[5] == false)
+	if (Elvrich_GoesBack2Thorben == TRUE)
+	&& (MISSINGPEOPLEINFO[5] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_05"); //Uwolni³em Elvricha z ³ap bandytów.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[5] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[5] = TRUE;
 	};
 	
-	if (SC_KnowsLuciaCaughtByBandits == true)
-	&& (MISSINGPEOPLEINFO[6] == false)
+	if (SC_KnowsLuciaCaughtByBandits == TRUE)
+	&& (MISSINGPEOPLEINFO[6] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_06"); //Bandyci porwali dziewczynê imieniem Lucia.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[6] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[6] = TRUE;
 	};
 	
 	if ((Npc_HasItems (other,ItWr_LuciasLoveLetter_Addon))
 	|| (MIS_LuciasLetter == LOG_SUCCESS))
-	&& (MISSINGPEOPLEINFO[7] == false)
+	&& (MISSINGPEOPLEINFO[7] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_07"); //Porwana dziewczyna, Lucia, zadawa³a siê póŸniej z bandytami.
 		if (MIS_LuciasLetter == LOG_SUCCESS)
 		{
 			AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_08"); //Jak siê wydaje, ju¿ z w³asnej woli.
 		};
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[7] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[7] = TRUE;
 	};
 		
-	if (SC_KnowsDexterAsKidnapper == true)
-	&& (MISSINGPEOPLEINFO[8] == false)
+	if (SC_KnowsDexterAsKidnapper == TRUE)
+	&& (MISSINGPEOPLEINFO[8] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_09"); //Szajce przewodzi niejaki Dexter i to on odpowiada za porwania.
 		AI_Output	(other, self, "DIA_Addon_Vatras_MissingPeople_Report_15_10"); //Pamiêtam Dextera z kolonii karnej... Pracowa³ wtedy dla innego magnata, Gomeza.
 		AI_Output	(self, other, "DIA_Addon_Vatras_MissingPeople_Report_05_11"); //On ciebie te¿ z pewnoœci¹ zapamiêta³ - miej siê na bacznoœci.
-		Vatras_MissingPeopleReports += 1;
-		MISSINGPEOPLEINFO[8] = true;
+		Vatras_MissingPeopleReports = (Vatras_MissingPeopleReports + 1);
+		MISSINGPEOPLEINFO[8] = TRUE;
 	};
 
 	if (Vatras_MissingPeopleReports != 0)
 	{
 		AI_Output	(self, other, "DIA_Addon_Vatras_MissingPeople_Report_05_12"); //Chyba jesteœ na dobrym tropie - oby tak dalej.
 		var int XP_Vatras_MissingPeopleReports;
-		XP_Vatras_MissingPeopleReports = (XP_BONUS_0 * Vatras_MissingPeopleReports );
-		B_GivePlayerXP(XP_Vatras_MissingPeopleReports);
+		XP_Vatras_MissingPeopleReports = (XP_Addon_Vatras_MissingPeopleReport * Vatras_MissingPeopleReports );
+		B_GivePlayerXP (XP_Vatras_MissingPeopleReports);
 	}
 	else
 	{
@@ -1024,7 +1025,7 @@ func void DIA_Addon_Vatras_MissingPeople_Success()
 	};
 	AI_Output	(self, other, "DIA_Addon_Vatras_MissingPeople_Success_05_06"); //Dobra robota - a ju¿ zaczyna³em siê baæ, ¿e nigdy nie zdo³amy odkryæ prawdy.
 	MIS_Addon_Vatras_WhereAreMissingPeople = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_Addon_Vatras_WhereAreMissingPeople);
 };
 // ------------------------------------------------------------
 // Gefangene befreit
@@ -1035,14 +1036,14 @@ instance DIA_Addon_Vatras_Free (C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Addon_Vatras_Free_Condition;
 	information	 = 	DIA_Addon_Vatras_Free_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Zaginieni powrócili.";
 };
 func int DIA_Addon_Vatras_Free_Condition ()
 {
-	if (MissingPeopleReturnedHome == true)
+	if (MissingPeopleReturnedHome == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_Free_Info ()
@@ -1052,11 +1053,16 @@ func void DIA_Addon_Vatras_Free_Info ()
 	AI_Output	(self, other, "DIA_Addon_Vatras_Free_05_02"); //Jednak twoja podró¿ nie dobieg³a jeszcze koñca... Niech ciê Adanos b³ogos³awi.
 	AI_Output	(self, other, "DIA_Addon_Vatras_Free_05_03"); //Adanosie, b³ogos³aw temu mê¿owi. Oœwieæ œcie¿kê, po której st¹pa, i daj mu si³ê, aby opar³ siê wszystkim zagro¿eniom.
 	
-	B_RaiseAttribute (other, ATR_MANA_MAX, 4);
-	other.attribute[ATR_MANA] = other.attribute[ATR_MANA_MAX];
+	B_RaiseAttribute (other, ATR_MANA_MAX, 3);
+	other.attribute[ATR_MANA]	   = other.attribute[ATR_MANA_MAX];
 	other.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS_MAX];
 	
 	Snd_Play ("Levelup");
+	
+	// ***Mike** Auskommentiert, weil FALSCHE funktion - bitte Rücksprache, bevor du's wieder änderst
+	//var string concatText;
+	//concatText = ConcatStrings (NAME_Bonus_ManaMax,IntToString (4));
+	//PrintScreen (concatText, -1,-1,FONT_ScreenSmall,2); 
 };
 
 // ************************************************************
@@ -1068,14 +1074,14 @@ instance DIA_Addon_Vatras_Waffen (C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Addon_Vatras_Waffen_Condition;
 	information	= DIA_Addon_Vatras_Waffen_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Co do tego handlarza broni¹...";
 };
 func int DIA_Addon_Vatras_Waffen_Condition ()
 {
 	if (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Vatras_Waffen_Info ()
@@ -1084,8 +1090,8 @@ func void DIA_Addon_Vatras_Waffen_Info ()
 	
 	Info_ClearChoices (DIA_Addon_Vatras_Waffen);
 	Info_AddChoice (DIA_Addon_Vatras_Waffen, DIALOG_BACK, DIA_Addon_Vatras_Waffen_BACK);
-	if (Fernando_ImKnast == true)
-	|| (Fernando_HatsZugegeben == true)
+	if (Fernando_ImKnast == TRUE)
+	|| (Fernando_HatsZugegeben == TRUE)
 	{
 		Info_AddChoice (DIA_Addon_Vatras_Waffen, "Wiem, kto dostarcza uzbrojenie bandytom!", DIA_Addon_Vatras_Waffen_Success);
 	}
@@ -1105,7 +1111,7 @@ func void DIA_Addon_Vatras_Waffen_ToMartin()
 	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_ToMartin_05_02"); //Powierzono mu zadanie zdemaskowania handlarza broni¹.
 	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_ToMartin_05_03"); //Znajdziesz go w porcie. Jak zobaczysz parê skrzyñ, ¿ywnoœæ i paladynów, to i on bêdzie siê tam gdzieœ krêci³.
 		
-	Vatras_ToMartin = true;
+	Vatras_ToMartin = TRUE;
 };
 
 func void DIA_Addon_Vatras_Waffen_Success ()
@@ -1113,13 +1119,13 @@ func void DIA_Addon_Vatras_Waffen_Success ()
 	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_Success_15_00"); //Wiem, kto dostarcza uzbrojenie bandytom!
 	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_Success_15_01"); //Nazywa siê Fernando.
 	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_Success_05_02"); //Doskonale. Martin podj¹³ odpowiednie kroki, aby zakoñczyæ ten proceder?
-	if (Fernando_ImKnast == true)
+	if (Fernando_ImKnast == TRUE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_Waffen_Success_15_03"); //Tak. Zadba, aby drañ nie wyszed³ za szybko z lochu.
 		AI_Output	(self, other, "DIA_Addon_Vatras_Waffen_Success_05_04"); //Dobra robota, synu.
 
 		if (Npc_KnowsInfo (other, DIA_ADDON_Vatras_WannaBeRanger))
-		&& (SC_IsRanger == false)
+		&& (SC_IsRanger == FALSE)
 		{
 			AI_Output (other, self, "DIA_Addon_Vatras_Waffen_Success_15_05"); //To co, jestem ju¿ gotów na zostanie cz³onkiem Wodnego Krêgu?
 			AI_Output (self, other, "DIA_Addon_Vatras_Waffen_Success_05_06"); //Nie tak siê umówiliœmy i dobrze o tym wiesz.
@@ -1128,13 +1134,92 @@ func void DIA_Addon_Vatras_Waffen_Success ()
 		AI_Output (self, other, "DIA_Addon_Vatras_Waffen_Success_05_07"); //Oby Adanos oœwietli³ œcie¿kê, po której kroczysz.
 		
 		MIS_Vatras_FindTheBanditTrader = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_2);
+		B_GivePlayerXP (XP_Addon_Vatras_FindTheBanditTrader);
 	}
 	else
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_CaughtFernando_15_09"); //Jeszcze nie.
 		AI_Output	(self, other, "DIA_Addon_Vatras_CaughtFernando_05_10"); //Pospiesz siê i mu o tym donieœ! Trzeba jak najszybciej z tym skoñczyæ!
 	};
+};
+
+// ************************************************************
+// 			  				Waffenhändler
+// ************************************************************
+instance DIA_Addon_Vatras_WISP (C_INFO)
+{
+	npc			= VLK_439_Vatras;
+	nr		 	= 5;
+	condition	= DIA_Addon_Vatras_WISP_Condition;
+	information	= DIA_Addon_Vatras_WISP_Info;
+
+	description = "Móg³byœ mi jakoœ pomóc w poszukiwaniach?";
+};
+func int DIA_Addon_Vatras_WISP_Condition ()
+{
+	if (MIS_Vatras_FindTheBanditTrader != 0)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Addon_Vatras_WISP_Info ()
+{
+	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_WISP_15_00"); //Móg³byœ mi jakoœ pomóc w poszukiwaniach?
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_01"); //Strasznie uparty z ciebie cz³owiek. Prawdê mówi¹c... Chyba w czymœ mogê ci pomóc.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_02"); //Dam ci ten amulet z rudy - z pewnoœci¹ ci siê przyda.
+	CreateInvItems (self, ItAm_Addon_WispDetector, 1);									
+	B_GiveInvItems (self, other, ItAm_Addon_WispDetector, 1);
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_03"); //To amulet ognika.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_04"); //Istnieje ich tylko kilka - zaklêty w nim ognik ma specjalne zdolnoœci.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_05"); //Dziêki niemu mo¿na widzieæ rzeczy dla oka niewidoczne.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_06"); //Aby z niego skorzystaæ, trzeba go za³o¿yæ.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_07"); //Jeœli ognik s³abnie lub w ogóle zniknie, za³ó¿ amulet ponownie, aby go zregenerowaæ.
+	
+	B_LogEntry (TOPIC_Addon_BanditTrader,"Vatras da³ mi 'Amulet szukaj¹cego ognika', który przyda mi siê w poszukiwaniach handlarza broni¹."); 
+	Log_CreateTopic (TOPIC_WispDetector,LOG_NOTE);
+	B_LogEntry (TOPIC_WispDetector,LogText_Addon_WispLearned); 
+	B_LogEntry (TOPIC_WispDetector,LogText_Addon_WispLearned_NF); 
+
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_08"); //Ognik umie równie¿ wykrywaæ broñ.
+
+	if (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)
+	{
+		AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_09"); //Mo¿e ci siê to przydaæ w zadaniu zdemaskowania sprzedawcy mieczy.
+	};
+
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_WISP_05_10"); //Dbaj o amulet, a na pewno ci siê przyda.
+
+	Info_ClearChoices (DIA_Addon_Vatras_WISP);
+	Info_AddChoice (DIA_Addon_Vatras_WISP, "Dziêkujê! Bêdê o tym pamiêtaæ.", DIA_Addon_Vatras_WISP_Thanks);
+	Info_AddChoice (DIA_Addon_Vatras_WISP, "To wszystko, co ten ognik umie?", DIA_Addon_Vatras_WISP_MoreWISP);
+	Info_AddChoice (DIA_Addon_Vatras_WISP, "W tym amulecie jest ognik?", DIA_Addon_Vatras_WISP_Amulett);
+	SC_GotWisp = TRUE;	
+};
+func void DIA_Addon_Vatras_WISP_Thanks()
+{
+	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_Thanks_15_00"); //Dziêkujê! Bêdê o tym pamiêtaæ.
+	Info_ClearChoices (DIA_Addon_Vatras_WISP);
+};
+func void DIA_Addon_Vatras_WISP_MoreWISP()
+{
+	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_MoreWISP_15_00"); //To wszystko, co ten ognik umie?
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_01"); //Poza wykrywaniem uzbrojenia? Tylko jeœli go nauczysz.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_02"); //O ile mi wiadomo, to Riordan potrafi uczyæ te stworki nowych sztuczek. Przebywa teraz z Saturasem.
+	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_03"); //Mo¿e on ci wiêcej o nim opowie.
+
+	if (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)
+	{
+		B_LogEntry (TOPIC_Addon_BanditTrader,"Ogniki potrafi¹ znajdowaæ nie tylko broñ bia³¹. Mag Wody, Riordian, mo¿e nauczyæ moje ogniki szukania innych przedmiotów."); 
+	};
+};
+func void DIA_Addon_Vatras_WISP_Amulett()
+{
+	AI_Output (other, self, "DIA_Addon_Vatras_WISPDETECTOR_was_15_00"); //W tym amulecie jest ognik?
+	AI_Output (self, other, "DIA_Addon_Vatras_WISPDETECTOR_was_05_01"); //Ogniki to urocze stworzonka sk³adaj¹ce siê z czystej energii magicznej.
+	AI_Output (self, other, "DIA_Addon_Vatras_WISPDETECTOR_was_05_02"); //S¹ zwi¹zane z magiczn¹ rud¹ tego œwiata - ona stanowi Ÿród³o ich istnienia i ich mocy.
+	AI_Output (self, other, "DIA_Addon_Vatras_WISPDETECTOR_was_05_03"); //Nie dziwi mnie, ¿e wczeœniej o nich nie s³ysza³eœ - ujawniaj¹ siê tylko tym, którzy przynosz¹ odpowiadaj¹c¹ im rudê.
+	AI_Output (self, other, "DIA_Addon_Vatras_WISPDETECTOR_was_05_04"); //Dzikie ogniki zosta³y brutalnie wyrwane ze swego œrodowiska i atakuj¹ ka¿de stworzenie, które siê do nich zbli¿y.
+	AI_Output (self, other, "DIA_Addon_Vatras_WISPDETECTOR_was_05_05"); //Tym ¿a³osnym istotom nie mo¿na ju¿ pomóc - lepiej ich unikaæ.
 };
 
 // ********************************************************
@@ -1149,13 +1234,17 @@ instance DIA_Addon_Vatras_Stoneplate (C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Addon_Vatras_Stoneplate_Condition;
 	information	= DIA_Addon_Vatras_Stoneplate_Info;
+
 	description	= "Znalaz³em tê kamienn¹ tabliczkê...";
 };
 
 func int DIA_Addon_Vatras_Stoneplate_Condition ()
 {
-	if (Npc_HasItems (other,ItWr_StonePlateCommon_Addon) >= 1)
-	{	return true;	};
+	if (C_ScHasMagicStonePlate () == TRUE)
+	&& (Npc_HasItems (other,ItWr_StonePlateCommon_Addon) >= 1)
+	{
+		return TRUE;
+	};
 };
 
 func void DIA_Addon_Vatras_Stoneplate_Info ()
@@ -1172,6 +1261,7 @@ func void DIA_Addon_Vatras_Stoneplate_Info ()
 	
 	Log_CreateTopic (TOPIC_CityTrader,LOG_NOTE);
 	B_LogEntry (TOPIC_CityTrader, LogText_Addon_VatrasTrade);
+
 };
 // ---------------------------------------------------------
 // Sell Stonplate
@@ -1182,14 +1272,16 @@ instance DIA_Addon_Vatras_SellStonplate		(C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Addon_Vatras_SellStonplate_Condition;
 	information	= DIA_Addon_Vatras_SellStonplate_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Mam dla ciebie kolejn¹ kamienn¹ tabliczkê...";
 };
 func int DIA_Addon_Vatras_SellStonplate_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Vatras_Stoneplate))
 	&& (Npc_HasItems (other,ItWr_StonePlateCommon_Addon) >= 1)
-	{	return true;	};
+	{
+		return TRUE;
+	};
 };
 func void DIA_Addon_Vatras_SellStonplate_Info ()
 {
@@ -1198,6 +1290,10 @@ func void DIA_Addon_Vatras_SellStonplate_Info ()
 	if (anzahl == 1)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_SellStonplate_15_00"); //Mam dla ciebie kolejn¹ kamienn¹ tabliczkê...
+	}
+	else 
+	{
+		//Fixme Joly --> Hier SC-output "Hier.." oder ähnliche --Mike
 	};
 	
 	B_GiveInvItems (other, self, ItWr_StonePlateCommon_Addon, anzahl);
@@ -1207,21 +1303,21 @@ func void DIA_Addon_Vatras_SellStonplate_Info ()
 	if (anzahl >= 10)
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_SellStonplate_05_02"); //Zwiêkszê tw¹ moc magiczn¹.
-		B_RaiseAttribute (other, ATR_MANA_MAX, anzahl);
-		Npc_ChangeAttribute (other, ATR_MANA, anzahl);
+		B_RaiseAttribute	(other, ATR_MANA_MAX, anzahl);
+		Npc_ChangeAttribute	(other, ATR_MANA, anzahl);
 	}
 	else if (anzahl >= 5)
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_SellStonplate_05_04"); //Przyjmij w nagrodê te kilka zwojów...
-		B_GiveInvItems (self, other, ItSc_LightHeal, anzahl);
+		B_GiveInvItems (self, other, ItSc_InstantFireball, anzahl);
 	}
 	else // 1-4 Plates --> 2-5 Tränke
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_SellStonplate_05_03"); //Przyjmij w nagrodê te kilka eliksirów...
-		B_GiveInvItems (self, other, ItPo_Health_03, anzahl);
+		B_GiveInvItems (self, other, ItPo_Health_03, anzahl+1);
 	};
 	
-	B_GivePlayerXP(XP_BONUS_0 * anzahl);
+	B_GivePlayerXP (XP_Addon_VatrasStonplate * anzahl);
 };
 
 // *********************************************************
@@ -1235,14 +1331,15 @@ instance DIA_Addon_Vatras_GuildHelp		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Vatras_GuildHelp_Condition;
 	information	 = 	DIA_Addon_Vatras_GuildHelp_Info;
+
 	description	 = 	"Lares wspomnia³, ¿e mo¿esz pomóc mi dostaæ siê do klasztoru Magów Ognia.";
 };
 
 func int DIA_Addon_Vatras_GuildHelp_Condition ()
 {
-	if (RangerHelp_gildeKDF == true)
+	if (RangerHelp_gildeKDF == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1253,7 +1350,7 @@ func void DIA_Addon_Vatras_GuildHelp_Info ()
 	AI_Output	(other, self, "DIA_Addon_Vatras_GuildHelp_15_02"); //Owszem, mam zamiar zostaæ Magiem Ognia.
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_03"); //O ile pamiêtam, to oni chêtnie przyjmuj¹ nowicjuszy... Po co ci moja pomoc?
 
-	if (SC_KnowsKlosterTribut == true)
+	if (SC_KnowsKlosterTribut == TRUE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_GuildHelp_15_04"); //Potrzebna jest danina - owca i z³oto.
 	}
@@ -1264,7 +1361,7 @@ func void DIA_Addon_Vatras_GuildHelp_Info ()
 	
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_06"); //Bezpoœrednio pomóc ci nie mogê - jak zapewne wiesz, jestem Magiem Wody. Znam jednak doœæ dobrze Maga Ognia imieniem Daron.
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_07"); //Z regu³y zbiera datki w pobli¿u targowiska.
-	Vatras_SentToDaron = true;
+	Vatras_SentToDaron = TRUE;
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_08"); //S³ysza³em ponadto, ¿e to nie jedyne jego zadanie w tamtej okolicy...
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_09"); //Powiedzia³ mi kiedyœ o pos¹¿ku, który mu ukradziono.
 	AI_Output	(self, other, "DIA_Addon_Vatras_GuildHelp_05_10"); //Sprawa jest dla niego bardzo wa¿na i z pewnoœci¹ wesprze ciê, jeœli odzyskasz dla niego ten pos¹¿ek.
@@ -1293,19 +1390,19 @@ instance DIA_Vatras_MORE		(C_INFO)
 	nr			 = 	998;
 	condition	 = 	DIA_Vatras_MORE_Condition;
 	information	 = 	DIA_Vatras_MORE_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"(DALEJ)";
 };
 func int DIA_Vatras_MORE_Condition ()
 {
-	if (Vatras_MORE == false)
+	if (Vatras_MORE == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_MORE_Info ()
 {
-	Vatras_MORE = true;
+	Vatras_MORE = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1317,7 +1414,7 @@ instance DIA_Vatras_INFLUENCE		(C_INFO)
 	nr			 = 	92;
 	condition	 = 	DIA_Vatras_INFLUENCE_Condition;
 	information	 = 	DIA_Vatras_INFLUENCE_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Przybywam, by prosiæ ciê o b³ogos³awieñstwo.";
 };
 func int DIA_Vatras_INFLUENCE_Condition ()
@@ -1325,9 +1422,9 @@ func int DIA_Vatras_INFLUENCE_Condition ()
 	if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 	&& (Player_IsApprentice == APP_NONE)
 	// --------------------
-	&& (Vatras_MORE == true)
+	&& (Vatras_MORE == TRUE)
 	{
-		return true;
+		return TRUE;
 	}; 
 };
 func void DIA_Vatras_INFLUENCE_Info ()
@@ -1337,8 +1434,8 @@ func void DIA_Vatras_INFLUENCE_Info ()
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_15_02"); //Chcê zostaæ czeladnikiem u jednego z mistrzów w dolnej czêœci miasta.
 	AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_11"); //IdŸ wiêc z b³ogos³awieñstwem Adanosa, mój synu!
 	Snd_Play ("LevelUp");
-	B_GivePlayerXP(XP_BONUS_1);
-	Vatras_Segen = true;
+	B_GivePlayerXP (XP_VatrasTruth);
+	Vatras_Segen = TRUE;
 	B_LogEntry (TOPIC_Thorben,"Vatras, Mag Wody, udzieli³ mi b³ogos³awieñstwa.");
 };
 
@@ -1351,19 +1448,19 @@ instance DIA_Vatras_WoKdF (C_INFO)
 	nr			 =  93;
 	condition	 = 	DIA_Vatras_WoKdF_Condition;
 	information	 = 	DIA_Vatras_WoKdF_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Gdzie mogê znaleŸæ jakiegoœ kap³ana Innosa?";		
 };
 
 func int DIA_Vatras_WoKdF_Condition ()
 {	
 	if (MIS_Thorben_GetBlessings == LOG_RUNNING)
-	&& (Vatras_Segen == true)
-	&& (Vatras_SentToDaron == false)
+	&& (Vatras_Segen == TRUE)
+	&& (Vatras_SentToDaron == FALSE)
 	// --------------------
-	&& (Vatras_MORE == true)
+	&& (Vatras_MORE == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_WoKdF_Info ()
@@ -1381,16 +1478,16 @@ instance DIA_Vatras_Spende (C_INFO)
 	nr			 =  94;
 	condition	 = 	DIA_Vatras_Spende_Condition;
 	information	 = 	DIA_Vatras_Spende_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Chcia³bym przekazaæ datek na œwi¹tyniê Adanosa!";
 };
 
 func int DIA_Vatras_Spende_Condition ()
 {	
 	// --------------------
-	if (Vatras_MORE == true)
+	if (Vatras_MORE == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_Spende_Info ()
@@ -1433,14 +1530,110 @@ func void DIA_Vatras_Spende_100()
 	Snd_Play ("LevelUp");
 	AI_Output (self, other, "DIA_Vatras_Spende_100_05_02"); //Niech Adanos strze¿e ciê zawsze od z³ej przygody.
 	B_GiveInvItems (other, self, ITmi_Gold, 100);
-	Vatras_Segen = true;
+	Vatras_Segen = TRUE;
 	Info_ClearChoices   (DIA_Vatras_Spende);
 	if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 	{
 		B_LogEntry (TOPIC_Thorben,"Vatras, Mag Wody, udzieli³ mi b³ogos³awieñstwa.");
 	};
 };
+/*
+//*********************************************************************
+//	Info CanTeach
+//*********************************************************************
+instance DIA_Vatras_CanTeach		(C_INFO)
+{
+	npc		 	 = 	VLK_439_Vatras;
+	nr			 =  95;
+	condition	 = 	DIA_Vatras_CanTeach_Condition;
+	information	 = 	DIA_Vatras_CanTeach_Info;
+	permanent    =  FALSE;
+	description	 = 	"Mo¿esz nauczyæ mnie czegoœ o magii?";
+};
 
+func int DIA_Vatras_CanTeach_Condition ()
+{	
+	// --------------------
+	if (Vatras_MORE == TRUE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Vatras_CanTeach_Info ()
+{
+	AI_Output (other, self, "DIA_Vatras_CanTeach_15_00"); //Mo¿esz nauczyæ mnie czegoœ o magii?
+	AI_Output (self, other, "DIA_Vatras_CanTeach_05_01"); //Tylko Wybrañcy Innosa i Wybrañcy Adanosa mog¹ pos³ugiwaæ siê magi¹ run.
+	AI_Output (self, other, "DIA_Vatras_CanTeach_05_02"); //Ale magia dostêpna jest tak¿e zwyk³ym œmiertelnikom, pod postaci¹ magicznych zwojów.
+	AI_Output (self, other, "DIA_Vatras_CanTeach_05_03"); //Mogê ciê nauczyæ, jak lepiej wykorzystywaæ dostêpn¹ ci magiczn¹ moc.
+	
+	Vatras_TeachMANA = TRUE;
+	Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
+	B_LogEntry (Topic_CityTeacher,"Vatras, Mag Wody, mo¿e pomóc mi w zwiêkszeniu magicznych zdolnoœci.");
+};
+//*********************************************************************
+//	Info TEACH
+//*********************************************************************
+instance DIA_Vatras_Teach		(C_INFO)
+{
+	npc		  	 = 	VLK_439_Vatras;
+	nr			 = 	100;
+	condition	 = 	DIA_Vatras_Teach_Condition;
+	information	 = 	DIA_Vatras_Teach_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê zwiêkszyæ moj¹ magiczn¹ moc.";
+};
+func int DIA_Vatras_Teach_Condition ()
+{	
+	if (Vatras_TeachMANA == TRUE)
+	// --------------------
+	&& (Vatras_MORE == TRUE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Vatras_Teach_Info ()
+{
+	AI_Output (other, self, "DIA_Vatras_Teach_15_00"); //Chcê zwiêkszyæ moj¹ magiczn¹ moc.
+	
+	Info_ClearChoices   (DIA_Vatras_Teach);
+	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_Teach_BACK);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	
+};
+func void DIA_Vatras_Teach_BACK()
+{
+	if (other.attribute[ATR_MANA_MAX] >= T_HIGH)
+	{
+		AI_Output (self, other, "DIA_Vatras_Teach_05_00"); //Jesteœ ju¿ zbyt potê¿ny, bym móg³ ciê czegoœ nauczyæ.
+	};
+	Info_ClearChoices (DIA_Vatras_TEACH);
+};
+func void DIA_Vatras_Teach_1()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_HIGH);
+	
+	Info_ClearChoices   (DIA_Vatras_Teach);
+	
+	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_TEACH_BACK);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	
+	
+};
+func void DIA_Vatras_Teach_5()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_HIGH);
+	
+	Info_ClearChoices   (DIA_Vatras_Teach);
+	
+	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_Teach_BACK);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	
+	
+};
+*/
 ///////////////////////////////////////////////////////////////////////
 //	Info GODS
 ///////////////////////////////////////////////////////////////////////
@@ -1450,16 +1643,16 @@ instance DIA_Vatras_GODS		(C_INFO)
 	nr          = 	98;	//Joly: bracuht ne hohe Nummer, denn wird in den späteren Kapiteln auch verwendet.
 	condition	 = 	DIA_Vatras_GODS_Condition;
 	information	 = 	DIA_Vatras_GODS_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Opowiedz mi o bogach.";
 };
 
 func int DIA_Vatras_GODS_Condition ()
 {	
 	// --------------------
-	if (Vatras_MORE == true)
+	if (Vatras_MORE == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_GODS_Info ()
@@ -1471,7 +1664,8 @@ func void DIA_Vatras_GODS_Info ()
 	Info_AddChoice	  (DIA_Vatras_GODS,DIALOG_BACK             ,DIA_Vatras_GODS_BACK);
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Innosie.",DIA_Vatras_GODS_INNOS); 		 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Adanosie.",DIA_Vatras_GODS_ADANOS); 		 
-	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR);
+	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR); 		 
+	 		 
 };
 FUNC VOID DIA_Vatras_GODS_BACK()
 {
@@ -1489,6 +1683,7 @@ FUNC VOID DIA_Vatras_GODS_INNOS()
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Innosie.",DIA_Vatras_GODS_INNOS); 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Adanosie.",DIA_Vatras_GODS_ADANOS); 		 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR); 	
+	
 };
 FUNC VOID DIA_Vatras_GODS_ADANOS()
 {
@@ -1501,7 +1696,8 @@ FUNC VOID DIA_Vatras_GODS_ADANOS()
 	Info_AddChoice	  (DIA_Vatras_GODS,DIALOG_BACK             ,DIA_Vatras_GODS_BACK); 	
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Innosie.",DIA_Vatras_GODS_INNOS); 		 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Adanosie.",DIA_Vatras_GODS_ADANOS);
-	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR);
+	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR); 	
+
 };
 FUNC VOID DIA_Vatras_GODS_BELIAR()
 {
@@ -1514,7 +1710,8 @@ FUNC VOID DIA_Vatras_GODS_BELIAR()
 	Info_AddChoice	  (DIA_Vatras_GODS,DIALOG_BACK             ,DIA_Vatras_GODS_BACK); 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Innosie.",DIA_Vatras_GODS_INNOS); 		 
 	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Adanosie.",DIA_Vatras_GODS_ADANOS); 
-	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR);
+	Info_AddChoice	  (DIA_Vatras_GODS,"Opowiedz mi o Beliarze.",DIA_Vatras_GODS_BELIAR); 			 
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info HEAL
@@ -1525,26 +1722,26 @@ instance DIA_Vatras_HEAL		(C_INFO)
 	nr          = 	99;	//Joly: bracuht ne hohe Nummer, denn wird in den späteren Kapiteln auch verwendet.
 	condition	 = 	DIA_Vatras_HEAL_Condition;
 	information	 = 	DIA_Vatras_HEAL_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Mo¿esz mnie uzdrowiæ?";
 };
 
 func int DIA_Vatras_HEAL_Condition ()
 {	
 	// --------------------
-	if (Vatras_MORE == true)
+	if (Vatras_MORE == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_HEAL_Info ()
 {
 	AI_Output			(other, self, "DIA_Vatras_HEAL_15_00"); //Mo¿esz mnie uzdrowiæ?
 	
-	if hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX]
+	if hero.attribute [ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX]
 	{
 		AI_Output			(self, other, "DIA_Vatras_HEAL_05_01"); //Adanosie, pob³ogos³aw to cia³o, uwolnij je od ran i tchnij w nie nowe ¿ycie!
-		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
+		hero.attribute [ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		PrintScreen (PRINT_FullyHealed, - 1, - 1, FONT_Screen, 2);   
 	}
 	else 
@@ -1566,15 +1763,15 @@ instance DIA_Vatras_MISSION		(C_INFO)
 	condition	= DIA_Vatras_MISSION_Condition;
 	information	= DIA_Vatras_MISSION_Info;
 	
-	important	= true;
+	important	= TRUE;
 };
 func int DIA_Vatras_MISSION_Condition ()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_MISSION_Info ()
@@ -1596,7 +1793,7 @@ func VOID DIA_Vatras_MISSION_YES()
 	AI_Output (self, other, "DIA_Vatras_Add_05_11"); //Œwietnie. Zabierz zatem tê wiadomoœæ i wybierz jeden ze zwojów z zaklêciami.
 	AI_Output (self, other, "DIA_Vatras_Add_05_12"); //Gdy dostarczysz wiadomoœæ, otrzymasz odpowiedni¹ nagrodê.
 	
-	B_GiveInvItems (self, hero, ItWr_VatrasMessage, 1); 
+	B_GiveInvItems (self, hero, ItWr_VatrasMessage,1); 
 	MIS_Vatras_Message = LOG_RUNNING;
 	
 	Log_CreateTopic (TOPIC_Botschaft,LOG_MISSION);
@@ -1610,6 +1807,7 @@ func VOID DIA_Vatras_MISSION_YES()
 };
 FUNC VOID DIA_Vatras_MISSION_NO ()
 {	
+	//AI_Output	(other, self, "DIA_Vatras_MISSION_NO_15_00"); //Such dir einen anderen Laufburschen, alter Mann!
 	AI_Output (other, self, "DIA_ADDON_Vatras_MISSION_NO_15_00"); //Nie teraz!
 	AI_Output (self, other, "DIA_ADDON_Vatras_MISSION_NO_05_01"); //Nie ma sprawy - poœlê kogoœ innego.
 	MIS_Vatras_Message = LOG_OBSOLETE;
@@ -1620,7 +1818,7 @@ FUNC VOID DIA_Vatras_MISSION_HEAL()
 	AI_Output			(other, self, "DIA_Vatras_MISSION_HEAL_15_00"); //Wybieram zaklêcie uzdrawiaj¹ce.
 	 B_SayVatrasGo();
 	 
-	B_GiveInvItems (self, hero,ItSc_LightHeal,1);
+	B_GiveInvItems (self, hero,ItSc_LightHeal ,1);
 	Info_ClearChoices 	(DIA_Vatras_MISSION);
 };
 FUNC VOID DIA_Vatras_MISSION_ICE()
@@ -1628,7 +1826,7 @@ FUNC VOID DIA_Vatras_MISSION_ICE()
 	AI_Output			(other, self, "DIA_Vatras_MISSION_ICE_15_00"); //Daj mi Lodow¹ Strza³ê.
 	B_SayVatrasGo();
 	
-	B_GiveInvItems (self, hero,ItSc_Sleep,1);
+	B_GiveInvItems (self, hero,ItSc_Icebolt ,1);
 	Info_ClearChoices 	(DIA_Vatras_MISSION);
 };
 FUNC VOID DIA_Vatras_MISSION_LIGHT()
@@ -1636,7 +1834,7 @@ FUNC VOID DIA_Vatras_MISSION_LIGHT()
 	AI_Output			(other, self, "DIA_Vatras_MISSION_LIGHT_15_00"); //Wezmê zaklêcie œwiat³a.
 	B_SayVatrasGo();
 	
-	B_GiveInvItems (self, hero,ItSc_Light,1);
+	B_GiveInvItems (self, hero,ItSc_Light ,1);
 	Info_ClearChoices 	(DIA_Vatras_MISSION);
 };
 ///////////////////////////////////////////////////////////////////////
@@ -1655,9 +1853,9 @@ instance DIA_Vatras_MESSAGE_SUCCESS		(C_INFO)
 func int DIA_Vatras_MESSAGE_SUCCESS_Condition ()
 {	
 	if (MIS_Vatras_Message == LOG_RUNNING)
-	&& (Vatras_Return == true)
+	&& (Vatras_Return == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_MESSAGE_SUCCESS_Info ()
@@ -1666,7 +1864,7 @@ func void DIA_Vatras_MESSAGE_SUCCESS_Info ()
 	AI_Output (self, other, "DIA_Vatras_Add_05_14"); //Przyjmij wiêc moje podziêkowanie. Mo¿esz teraz wybraæ swoj¹ nagrodê.
 	
 	MIS_Vatras_Message = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP(XP_Vatras_Message);
 	
 	Info_ClearChoices (DIA_Vatras_MESSAGE_SUCCESS);
 	Info_AddChoice 	  (DIA_Vatras_MESSAGE_SUCCESS,"1 szczaw królewski",DIA_Vatras_MESSAGE_SUCCESS_Plant);
@@ -1709,7 +1907,7 @@ func void B_Vatras_GeheWeg (var int dauer)
 {
 	// EXIT IF
 	
-	if (Vatras_einmalLangWeg == true)
+	if (Vatras_einmalLangWeg == TRUE)
 	{
 		return;
 	};
@@ -1731,14 +1929,14 @@ func void B_Vatras_GeheWeg (var int dauer)
 		{
 			AI_Output (self, other, "DIA_Vatras_Add_05_08"); //Nie wiem, kiedy powrócê. Jeœli chcecie poznaæ zakoñczenie tej historii, przeczytajcie odpowiednie pisma.
 			
-			Vatras_einmalLangWeg = true;
+			Vatras_einmalLangWeg = TRUE;
 		};
 		AI_Output (self, other, "DIA_Vatras_Add_05_09"); //Niech Adanos bêdzie z wami!
 		
 		B_TurnToNpc (self, other);
 	};
 	
-	Vatras_SchickeLeuteWeg = true;
+	Vatras_SchickeLeuteWeg = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1756,12 +1954,12 @@ instance DIA_Addon_Vatras_AbloesePre		(C_INFO)
 
 func int DIA_Addon_Vatras_AbloesePre_Condition ()
 {
-	if ((Npc_HasItems (other,ItAm_InnosEye_Broken)) || (MIS_SCKnowsInnosEyeIsBroken  == true))
-	&& (Kapitel == 9)
-	&& (VatrasCanLeaveTown_Kap3 == false)
-	&& (RavenIsDead == false)
+	if ((Npc_HasItems (other,ItAm_InnosEye_Broken)) || (MIS_SCKnowsInnosEyeIsBroken  == TRUE))
+	&& (Kapitel == 3)
+	&& (VatrasCanLeaveTown_Kap3 == FALSE)
+	&& (RavenIsDead == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1772,7 +1970,7 @@ func void DIA_Addon_Vatras_AbloesePre_Info ()
 	AI_Output	(other, self, "DIA_Addon_Vatras_AbloesePre_15_02"); //Nie wiem. Byæ mo¿e.
 	AI_Output	(self, other, "DIA_Addon_Vatras_AbloesePre_05_03"); //Od kilku dni czekam na zmiennika. Inni Magowie Wody powinni byli wróciæ tu ju¿ jakiœ czas temu.
 	AI_Output	(self, other, "DIA_Addon_Vatras_AbloesePre_05_04"); //Postaraj siê, aby przys³ali mi zmiennika, a ja pomogê ci w rozwi¹zaniu twojego problemu.
-	MIS_SCKnowsInnosEyeIsBroken = true;
+	MIS_SCKnowsInnosEyeIsBroken = TRUE;
 	
 	Log_CreateTopic (TOPIC_Addon_VatrasAbloesung, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_VatrasAbloesung, LOG_RUNNING);
@@ -1794,9 +1992,9 @@ instance DIA_Addon_Vatras_AddonSolved		(C_INFO)
 
 func int DIA_Addon_Vatras_AddonSolved_Condition ()
 {
-	 if (RavenIsDead == true)
+	 if (RavenIsDead == TRUE)
 	 {
-		return true;
+		return TRUE;
 	 };
 };
 
@@ -1812,8 +2010,8 @@ func void DIA_Addon_Vatras_AddonSolved_Info ()
 		AI_Output	(self, other, "DIA_Addon_Vatras_AddonSolved_05_04"); //Teraz mogê ci pomóc rozwi¹zaæ problem.
 		AI_Output	(self, other, "DIA_Addon_Vatras_AddonSolved_05_05"); //O ile dobrze pamiêtam, wi¹za³ siê on z Okiem Innosa?
 	};
-	VatrasCanLeaveTown_Kap3 = true;
-	B_GivePlayerXP(XP_Ambient);
+	VatrasCanLeaveTown_Kap3 = TRUE;
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1831,11 +2029,11 @@ instance DIA_Vatras_INNOSEYEKAPUTT		(C_INFO)
 
 func int DIA_Vatras_INNOSEYEKAPUTT_Condition ()
 {
-		if 	(	(Npc_HasItems (other,ItAm_InnosEye_Broken)) || 	(MIS_SCKnowsInnosEyeIsBroken  == true)	)
-		&& (Kapitel == 9)
-		&& (VatrasCanLeaveTown_Kap3 == true)
+		if 	(	(Npc_HasItems (other,ItAm_InnosEye_Broken)) || 	(MIS_SCKnowsInnosEyeIsBroken  == TRUE)	)
+		&& (Kapitel == 3)
+		&& (VatrasCanLeaveTown_Kap3 == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1845,13 +2043,13 @@ func void DIA_Vatras_INNOSEYEKAPUTT_Info ()
 	{
 		AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_15_00"); //Przysy³a mnie Pyrokar.
 	}
-	else if (Npc_KnowsInfo(other,DIA_Xardas_INNOSEYEBROKEN))
+	else if (MIS_Xardas_GoToVatrasInnoseye == LOG_RUNNING)
 	{
 		AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_15_01"); //Przysy³a mnie Xardas.
 	};
 
-	MIS_SCKnowsInnosEyeIsBroken  = true;
-	B_GivePlayerXP(XP_Ambient);
+	MIS_SCKnowsInnosEyeIsBroken  = TRUE;
+	B_GivePlayerXP (XP_Ambient);
 
 	AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_15_02"); //Oko Innosa zosta³o uszkodzone.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_05_03"); //Wiem. Donieœli mi o tym napotkani nowicjusze.
@@ -1896,6 +2094,8 @@ func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Kraut ()
 	AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Kraut_15_00"); //Gdzie mogê znaleŸæ to bagienne ziele?
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Kraut_05_01"); //Podobno w tych lasach mieszka stara wiedŸma imieniem Sagitta. Mo¿e u niej znajdziesz takie ziele.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Kraut_05_02"); //Ewentualnie rozejrzyj siê trochê na przystani.
+	
+
 };
 
 func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer ()
@@ -1906,6 +2106,7 @@ func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer ()
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer_05_03"); //Ale nie wiem, kto móg³by reprezentowaæ Beliara. Potrzebujemy prawdziwego mistrza czarnej magii.
 
 	Info_AddChoice	(DIA_Vatras_INNOSEYEKAPUTT, "Czarnej magii? Mo¿e Xardas?", DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer_Xardas );
+
 };
 func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer_Xardas ()
 {
@@ -1931,12 +2132,14 @@ func void DIA_Vatras_INNOSEYEKAPUTT_warumdu ()
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_warumdu_05_03"); //I zosta³ za to ukarany - straci³ Oko Innosa.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_warumdu_05_04"); //Myœlê jednak, ¿e podœwiadomie polega na mocy powierzonej mi przez Adanosa.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_warumdu_05_05"); //Lepiej nie myœleæ, co by siê sta³o, gdyby mnie teraz zabrak³o.
+
 };
 
 func void DIA_Vatras_INNOSEYEKAPUTT_schnelleNachrichten ()
 {
 	AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_schnelleNachrichten_15_00"); //Wieœci szybko siê rozchodz¹.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_schnelleNachrichten_05_01"); //I bardzo dobrze. Nieprzyjaciel te¿ nie bêdzie czeka³ bezczynnie.
+
 };
 
 func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer_Xardas_weiter ()
@@ -1958,17 +2161,17 @@ func void DIA_Vatras_INNOSEYEKAPUTT_Auge_Stein_Wer_Xardas_weiter ()
 	
 	//Joly: Weg mit den Ritualdementoren!!!!!
 
-	DMT_1201.aivar[AIV_EnemyOverride] = true;	//Joly: Damit sie erstmal nicht die Welt entvölkern, ohne Zutun des Spielers!!!!!
-	DMT_1202.aivar[AIV_EnemyOverride] = true;
-	DMT_1203.aivar[AIV_EnemyOverride] = true;
-	DMT_1204.aivar[AIV_EnemyOverride] = true;
-	DMT_1205.aivar[AIV_EnemyOverride] = true;
-	DMT_1206.aivar[AIV_EnemyOverride] = true;
-	DMT_1207.aivar[AIV_EnemyOverride] = true;
-	DMT_1208.aivar[AIV_EnemyOverride] = true;
-	DMT_1209.aivar[AIV_EnemyOverride] = true;
-	DMT_1210.aivar[AIV_EnemyOverride] = true;
-	DMT_1211.aivar[AIV_EnemyOverride] = true;
+	DMT_1201.aivar[AIV_EnemyOverride] = TRUE;	//Joly: Damit sie erstmal nicht die Welt entvölkern, ohne Zutun des Spielers!!!!!
+	DMT_1202.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1203.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1204.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1205.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1206.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1207.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1208.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1209.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1210.aivar[AIV_EnemyOverride] = TRUE;
+	DMT_1211.aivar[AIV_EnemyOverride] = TRUE;
 
 	B_StartOtherRoutine (DMT_1201 ,"AfterRitual");
 	B_StartOtherRoutine	(DMT_1202 ,"AfterRitual");
@@ -1991,7 +2194,7 @@ instance DIA_Vatras_RitualInnosEyeRepair		(C_INFO)
 	nr		 = 	33;
 	condition	 = 	DIA_Vatras_RitualInnosEyeRepair_Condition;
 	information	 = 	DIA_Vatras_RitualInnosEyeRepair_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Co z Okiem Innosa?";
 };
@@ -1999,9 +2202,9 @@ instance DIA_Vatras_RitualInnosEyeRepair		(C_INFO)
 func int DIA_Vatras_RitualInnosEyeRepair_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_RUNNING)
-		&& (Kapitel == 9)
+		&& (Kapitel == 3)
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -2027,21 +2230,21 @@ instance DIA_Vatras_BEGINN		(C_INFO)
 
 func int DIA_Vatras_BEGINN_Condition ()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 		&& (Npc_GetDistToWP(self,		"NW_TROLLAREA_RITUAL_02")<2000) 
 		&& (Npc_GetDistToWP(Xardas,		"NW_TROLLAREA_RITUAL_02")<2000) 
 		&& (Npc_GetDistToWP(Pyrokar,	"NW_TROLLAREA_RITUAL_02")<2000) 
 		&& (Npc_HasItems (other,ItAm_InnosEye_Broken))
 		&& (MIS_Bennet_InnosEyeRepairedSetting == LOG_SUCCESS)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 func void DIA_Vatras_BEGINN_Info ()
 {
 	AI_Output			(other, self, "DIA_Vatras_BEGINN_15_00"); //Zrobi³em wszystko, o co prosi³eœ. Oto naprawione Oko.
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_RitualInnosEyeRuns);
 
 	B_GiveInvItems 		(other, self, ItAm_InnosEye_Broken, 1);
 	Npc_RemoveInvItem 	(self, ItAm_InnosEye_Broken);
@@ -2055,7 +2258,7 @@ func void DIA_Vatras_BEGINN_Info ()
 	{
 		AI_Output			(other, self, "DIA_Vatras_BEGINN_15_04"); //Tak. Oto one.
 		AI_Output			(self, other, "DIA_Vatras_BEGINN_05_05"); //Znakomicie.
-		B_GivePlayerXP(XP_Ambient);
+		B_GivePlayerXP (XP_Ambient);
 	}
 	else
 	{
@@ -2067,10 +2270,11 @@ func void DIA_Vatras_BEGINN_Info ()
  	
 	Info_ClearChoices	(DIA_Vatras_BEGINN);
 	Info_AddChoice	(DIA_Vatras_BEGINN, DIALOG_ENDE, DIA_Vatras_BEGINN_los );
+
 };
 func void DIA_Vatras_BEGINN_los ()
 {
-	AI_StopProcessInfos (self); Vatras_MORE = false;
+	AI_StopProcessInfos (self); Vatras_MORE = FALSE;
  	
  	Npc_ExchangeRoutine	(self,"RITUALINNOSEYE");
 	B_StartOtherRoutine   (Xardas,"RITUALINNOSEYE");
@@ -2090,16 +2294,16 @@ instance DIA_Vatras_AUGEGEHEILT		(C_INFO)
 	nr		 = 	33;
 	condition	 = 	DIA_Vatras_AUGEGEHEILT_Condition;
 	information	 = 	DIA_Vatras_AUGEGEHEILT_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Vatras_AUGEGEHEILT_Condition ()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 		&& (RitualInnosEyeRuns == LOG_RUNNING)
-		&& (Npc_RefuseTalk(self) == false)
+		&& (Npc_RefuseTalk(self) == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -2110,7 +2314,7 @@ func void DIA_Vatras_AUGEGEHEILT_Info ()
 	AI_Output			(self, other, "DIA_Vatras_AUGEGEHEILT_05_02"); //Mam nadziejê, ¿e spotkamy siê jeszcze, gdy wype³nisz ju¿ swoj¹ misjê. Bywaj!
  	
  	B_LogEntry (TOPIC_INNOSEYE, "Oko zosta³o uzdrowione. Kiedy Pyrokar mi je wrêczy, udam siê na polowanie na smoki.");
-	AI_StopProcessInfos (self); Vatras_MORE = false;
+	AI_StopProcessInfos (self); Vatras_MORE = FALSE;
  
  	RitualInnosEyeRuns = LOG_SUCCESS;
  	MIS_RitualInnosEyeRepair = LOG_SUCCESS;	
@@ -2145,7 +2349,7 @@ func int DIA_Vatras_PERMKAP3_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -2154,12 +2358,13 @@ func void DIA_Vatras_PERMKAP3_Info ()
 	AI_Output			(other, self, "DIA_Vatras_PERMKAP3_15_00"); //Dziêki ci za pomoc w naprawieniu Oka Innosa.
 	AI_Output			(self, other, "DIA_Vatras_PERMKAP3_05_01"); //Zachowaj podziêkowania na póŸniej. Czeka ciê teraz najwiêksze wyzwanie.
 
-	if (MIS_ReadyforChapter4 == false)
+	if (MIS_ReadyforChapter4 == FALSE)
 	{
 		AI_Output			(self, other, "DIA_Vatras_PERMKAP3_05_02"); //Porozmawiaj z Pyrokarem. On ci wszystko wyt³umaczy.
 	};
 
 	AI_Output			(self, other, "DIA_Vatras_PERMKAP3_05_03"); //Mam nadziejê, ¿e jeszcze siê kiedyœ spotkamy, mój synu.
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -2180,7 +2385,7 @@ func int DIA_Vatras_HILDAKRANK_Condition ()
 	if (MIS_HealHilda == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Vatras_GREET))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -2209,8 +2414,10 @@ instance DIA_Vatras_OBSESSION		(C_INFO)
 
 func int DIA_Vatras_OBSESSION_Condition ()
 {
-	if (SC_IsObsessed == true)
-	{	return true;	};
+	if (SC_IsObsessed == TRUE)
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Vatras_OBSESSION_Info ()
@@ -2219,6 +2426,7 @@ func void DIA_Vatras_OBSESSION_Info ()
 	AI_Output			(self, other, "DIA_Vatras_OBSESSION_05_01"); //Nie wygl¹dasz najlepiej. Chyba zbyt d³ugo wystawia³eœ siê na czarne spojrzenia Poszukiwaczy.
 	AI_Output			(self, other, "DIA_Vatras_OBSESSION_05_02"); //Mogê uzdrowiæ twoje cia³o, ale spokój duszy odzyskasz jedynie w klasztorze. Porozmawiaj z Pyrokarem. On ci pomo¿e.
 };
+
 
 //#####################################################################
 //##
@@ -2243,9 +2451,9 @@ INSTANCE DIA_Vatras_AllDragonsDead(C_INFO)
 };                       
 FUNC INT DIA_Vatras_AllDragonsDead_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Vatras_AllDragonsDead_Info()
@@ -2265,15 +2473,15 @@ instance DIA_Vatras_KnowWhereEnemy		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_Vatras_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Vatras_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Wiem, gdzie czai siê nasz nieprzyjaciel.";
 };
 func int DIA_Vatras_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Vatras_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Vatras_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_KnowWhereEnemy_Info ()
@@ -2305,13 +2513,14 @@ FUNC VOID DIA_Vatras_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Vatras_KnowWhereEnemy_Yes_15_00"); //Jestem zaszczycony twoj¹ propozycj¹. Spotkamy siê na przystani.
 	AI_Output (self ,other,"DIA_Vatras_KnowWhereEnemy_Yes_05_01"); //Spiesz siê. Nieprzyjaciel nie zasypia gruszek w popiele.
 	
-	B_GivePlayerXP(XP_BONUS_5);                                                                    
+	B_GivePlayerXP (XP_Crewmember_Success);                                                                    
 	                                                                                                           
+	
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Vatras_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -2344,15 +2553,15 @@ instance DIA_Vatras_LeaveMyShip		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_Vatras_LeaveMyShip_Condition;
 	information	 = 	DIA_Vatras_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Lepiej bêdzie, jeœli tu zostaniesz. To miasto ciê potrzebuje.";
 };
 func int DIA_Vatras_LeaveMyShip_Condition ()
 {	
 	if (Vatras_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Vatras_LeaveMyShip_Info ()
@@ -2361,7 +2570,7 @@ func void DIA_Vatras_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_Vatras_LeaveMyShip_05_01"); //Mo¿e masz racjê... Mimo to, jeœli zechcesz, wyruszê z tob¹! Pamiêtaj o tym.
 	
 	Vatras_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"PRAY"); 
 };
@@ -2375,7 +2584,7 @@ instance DIA_Vatras_StillNeedYou		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_Vatras_StillNeedYou_Condition;
 	information	 = 	DIA_Vatras_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Chcê ciê zabraæ na wyspê nieprzyjaciela.";
 };
 
@@ -2385,7 +2594,7 @@ func int DIA_Vatras_StillNeedYou_Condition ()
 	|| (Vatras_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -2396,14 +2605,14 @@ func void DIA_Vatras_StillNeedYou_Info ()
 		
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Vatras_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 
 	// ------ Zuhörer weg -------
 	B_Vatras_GeheWeg (lang);
 	
-	AI_StopProcessInfos (self); Vatras_MORE = false;
+	AI_StopProcessInfos (self); Vatras_MORE = FALSE;
 
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 	{
 		Npc_ExchangeRoutine (self,"SHIP"); 
 	}
@@ -2422,21 +2631,23 @@ instance DIA_Addon_Vatras_PISSOFFFOREVVER		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Vatras_PISSOFFFOREVVER_Condition;
 	information	 = 	DIA_Addon_Vatras_PISSOFFFOREVVER_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Addon_Vatras_PISSOFFFOREVVER_Condition ()
 {
-	if (VatrasPissedOffForever == true)
-	&& (Kapitel >= 11)
+	if (VatrasPissedOffForever == TRUE)
+	&& (Kapitel >= 5)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
 func void DIA_Addon_Vatras_PISSOFFFOREVVER_Info ()
 {
 	B_VatrasPissedOff ();
-	AI_StopProcessInfos (self);  Vatras_MORE = false;
+	AI_StopProcessInfos (self);  Vatras_MORE = FALSE;
 };
+
+

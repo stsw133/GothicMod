@@ -7,13 +7,13 @@ INSTANCE DIA_Sergio_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Sergio_EXIT_Condition;
 	information = DIA_Sergio_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Sergio_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Sergio_EXIT_Info()
 {
@@ -32,7 +32,7 @@ instance DIA_Sergio_WELCOME		(C_INFO)
 	nr 			 =  5;
 	condition	 = 	DIA_Sergio_WELCOME_Condition;
 	information	 = 	DIA_Sergio_WELCOME_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Sergio_WELCOME_Condition ()
@@ -40,9 +40,9 @@ func int DIA_Sergio_WELCOME_Condition ()
 	if Npc_IsInState (self, ZS_Talk)
 	&& (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	&& (other.guild == GIL_NOV)
-	&& (Npc_KnowsInfo (other, DIA_Sergio_Isgaroth) == false)
+	&& (Npc_KnowsInfo (other, DIA_Sergio_Isgaroth) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_WELCOME_Info ()
@@ -58,16 +58,16 @@ instance DIA_Sergio_Isgaroth		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Sergio_Isgaroth_Condition;
 	information	 = 	DIA_Sergio_Isgaroth_Info;
-	permanent	 =  false;
-	important	 =  true;
+	permanent	 =  FALSE;
+	important	 =  TRUE;
 };
 func int DIA_Sergio_Isgaroth_Condition ()
 {	
 	if Npc_KnowsInfo (hero,PC_PrayShrine_Paladine)
 	&&  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
-	&& (Kapitel == 7)
+	&& (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Isgaroth_Info ()
@@ -90,8 +90,9 @@ FUNC VOID DIA_Sergio_Isgaroth_XP()
 {
 	AI_Output (other, self, "DIA_Sergio_Isgaroth_XP_15_00"); //Podziel siê ze mn¹ swoim doœwiadczeniem i wiedz¹ na temat walki.
 	AI_Output (self, other, "DIA_Sergio_Isgaroth_XP_04_01"); //Kiedy walczysz, zawsze pamiêtaj, by chroniæ siê przed atakiem z ty³u.
-
-	B_AddFightSkill (other, NPC_TALENT_2H, 2);
+	
+	other.HitChance[NPC_TALENT_2H] = (other.HitChance[NPC_TALENT_2H] + 2);
+	PrintScreen	(PRINT_Learn2H, -1, -1, FONT_ScreenSmall, 2);
 	Info_ClearChoices (DIA_Sergio_Isgaroth);
 };
 
@@ -108,11 +109,11 @@ instance DIA_Sergio_Aufgabe		(C_INFO)
 };
 func int DIA_Sergio_Aufgabe_Condition ()
 {	
-	if (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
+	if  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	&& (other.guild == GIL_NOV)
 	&& (Npc_KnowsInfo (other,DIA_Sergio_Isgaroth))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Aufgabe_Info ()
@@ -121,8 +122,8 @@ func void DIA_Sergio_Aufgabe_Info ()
 	AI_Output (self, other, "DIA_Sergio_Aufgabe_04_01"); //Obawiam siê, ¿e to niemo¿liwe. Najpierw musisz wykonaæ przydzielone ci zadania.
 	AI_Output (self, other, "DIA_Sergio_Aufgabe_04_02"); //Mogê ci jednak pomóc. Udaj siê do Mistrza Isgarotha i porozmawiaj z nim. S³ysza³em, ¿e potrzebuje pomocy, sam mia³em siê tym zaj¹æ, ale chyba mogê ci zaufaæ.
 	
-	Sergio_Sends = true;
-	Wld_InsertNpc (Wolf_Black, "NW_PATH_TO_MONASTER_AREA_01"); //ist richtig geschrieben! 
+	Sergio_Sends = TRUE;
+	Wld_InsertNpc (BlackWolf,"NW_PATH_TO_MONASTER_AREA_01"); //ist richtig geschrieben! 
 	
 	Log_CreateTopic (Topic_IsgarothWolf,LOG_MISSION);
 	Log_SetTopicStatus	 (Topic_IsgarothWolf,LOG_RUNNING);
@@ -142,10 +143,10 @@ instance DIA_Sergio_WHAT		(C_INFO)
 };
 func int DIA_Sergio_WHAT_Condition ()
 {	
-	if (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
+	if  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	&& (other.guild == GIL_NOV)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_WHAT_Info ()
@@ -169,11 +170,11 @@ instance DIA_Sergio_Babo		(C_INFO)
 };
 func int DIA_Sergio_Babo_Condition ()
 {	
-	if (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
+	if  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	&& (other.guild == GIL_NOV)
 	&& Npc_KnowsInfo (other, DIA_Babo_Anliegen)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Babo_Info ()
@@ -204,7 +205,7 @@ func int DIA_Sergio_WHY_Condition ()
 	if Npc_KnowsInfo (hero,DIA_Sergio_WELCOME)
 	&&  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_WHY_Info ()
@@ -212,6 +213,7 @@ func void DIA_Sergio_WHY_Info ()
 	AI_Output (other, self, "DIA_Sergio_WHY_15_00"); //Dlaczego nie przebywasz z pozosta³ymi paladynami?
 	AI_Output (self, other, "DIA_Sergio_WHY_04_01"); //To, ¿e tu jestem, mo¿e siê wydawaæ dziwne, jednak my, paladyni, s³u¿ymy tak¿e magom, gdy¿ i oni, tak jak my, czcz¹ Innosa.
 	AI_Output (self, other, "DIA_Sergio_WHY_04_02"); //My, paladyni, walczymy w imiê Innosa. Jego wola jest naszym prawem. W tej chwili oczekujê na rozkazy od magów.
+
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info ORDERS
@@ -222,16 +224,16 @@ instance DIA_Sergio_ORDERS		(C_INFO)
 	nr			 =  10;
 	condition	 = 	DIA_Sergio_ORDERS_Condition;
 	information	 = 	DIA_Sergio_ORDERS_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Dosta³eœ ju¿ nowe rozkazy?";
 };
 func int DIA_Sergio_ORDERS_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Sergio_WHY)
-	&& (self.aivar[AIV_PARTYMEMBER] == false) 
+	&& (self.aivar[AIV_PARTYMEMBER] == FALSE) 
 	&&  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_ORDERS_Info ()
@@ -248,16 +250,16 @@ instance DIA_Sergio_Start		(C_INFO)
 	nr			 =  10;
 	condition	 = 	DIA_Sergio_Start_Condition;
 	information	 = 	DIA_Sergio_Start_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Masz mnie eskortowaæ do prze³êczy.";
 };
 func int DIA_Sergio_Start_Condition ()
 {	
 	if  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
-	&&	(Sergio_Follow == true)
+	&&	(Sergio_Follow == TRUE)
 	&&  (other.guild == GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Start_Info ()
@@ -267,7 +269,7 @@ func void DIA_Sergio_Start_Info ()
 	
 	AI_StopProcessInfos (self);
 	
-	self.aivar[AIV_PARTYMEMBER] = true;  
+	self.aivar[AIV_PARTYMEMBER] = TRUE;  
 	self.npctype = NPCTYPE_FRIEND;
 	Npc_ExchangeRoutine (self,"GUIDE"); 
 };
@@ -280,15 +282,15 @@ instance DIA_Sergio_Guide		(C_INFO)
 	nr			 =  10;
 	condition	 = 	DIA_Sergio_Guide_Condition;
 	information	 = 	DIA_Sergio_Guide_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Idziemy?";
 };
 func int DIA_Sergio_Guide_Condition ()
 {	
-	if (self.aivar[AIV_PARTYMEMBER] == true) 
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE) 
 	&& (Npc_GetDistToWP (self,"NW_TO_PASS_01") > 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Guide_Info ()
@@ -309,15 +311,15 @@ instance DIA_Sergio_Ende		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Sergio_Ende_Condition;
 	information	 = 	DIA_Sergio_Ende_Info;
-	permanent	 =  false;
-	important 	 =  true;
+	permanent	 =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Sergio_Ende_Condition ()
 {	
-	if (self.aivar[AIV_PARTYMEMBER] == true) 
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE) 
 	&& (Npc_GetDistToWP (self,"NW_TO_PASS_01") <= 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Ende_Info ()
@@ -326,7 +328,7 @@ func void DIA_Sergio_Ende_Info ()
 	AI_Output (other, self, "DIA_Sergio_Ende_15_01"); //Nie obawiaj siê - wrócê.
 	AI_Output (self, other, "DIA_Sergio_Ende_04_02"); //Niech Innos prowadzi ciê i ochrania.
 	
-	self.aivar[AIV_PARTYMEMBER] = false; 
+	self.aivar[AIV_PARTYMEMBER] = FALSE; 
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"START"); 
 };
@@ -339,15 +341,15 @@ instance DIA_Sergio_Perm		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Sergio_Perm_Condition;
 	information	 = 	DIA_Sergio_Perm_Info;
-	permanent	 =  false;
-	important 	 =  true;
+	permanent	 =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Sergio_Perm_Condition ()
 {	
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (other.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sergio_Perm_Info ()
@@ -361,4 +363,5 @@ func void DIA_Sergio_Perm_Info ()
 		AI_Output (self, other, "DIA_Sergio_Perm_04_01"); //S³ysza³em o tobie. Jesteœ cz³owiekiem z farm, który powróci³ z Górniczej Doliny. Przyjmij mój szacunek.
 	};
 	AI_StopProcessInfos (self);
+	
 };

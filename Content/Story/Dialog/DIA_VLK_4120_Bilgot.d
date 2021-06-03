@@ -7,13 +7,13 @@ INSTANCE DIA_Bilgot_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Bilgot_EXIT_Condition;
 	information = DIA_Bilgot_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Bilgot_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Bilgot_EXIT_Info()
@@ -29,12 +29,12 @@ instance DIA_Bilgot_HALLO		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Bilgot_HALLO_Condition;
 	information	 = 	DIA_Bilgot_HALLO_Info;
-	important	 = 	true;
-	permanent 	 =  false;
+	important	 = 	TRUE;
+	permanent 	 =  FALSE;
 };
 func int DIA_Bilgot_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Bilgot_HALLO_Info ()
 {
@@ -72,12 +72,12 @@ instance DIA_Bilgot_Job		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Bilgot_Job_Condition;
 	information	 = 	DIA_Bilgot_Job_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"A co tu w³aœciwie robisz?";
 };
 func int DIA_Bilgot_Job_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Bilgot_Job_Info ()
 {
@@ -97,14 +97,14 @@ instance DIA_Bilgot_Hilfe		(C_INFO)
 	nr 			 =  3;
 	condition	 = 	DIA_Bilgot_Hilfe_Condition;
 	information	 = 	DIA_Bilgot_Hilfe_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Co wiesz o zêbaczach?";
 };
 func int DIA_Bilgot_Hilfe_Condition ()
 {
 	if	(MIS_Fajeth_Kill_Snapper == LOG_RUNNING)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Bilgot_Hilfe_Info ()
@@ -118,7 +118,7 @@ func void DIA_Bilgot_Hilfe_Info ()
 	AI_Output (other, self, "DIA_Bilgot_Hilfe_15_06"); //Czego chcesz?
 	AI_Output (self, other, "DIA_Bilgot_Hilfe_05_07"); //Jeœli uda ci siê pozabijaæ zêbacze, to mnie st¹d wyci¹gniesz!
 	
-	if ((Npc_IsDead (Fed)) == false)
+	if ((Npc_IsDead (Fed)) == FALSE)
 	{
 		AI_Output (self, other, "DIA_Bilgot_Hilfe_05_08"); //Nie wytrzymam tu d³u¿ej. Rozmawia³eœ z Fedem? Ten facet to kompletny wrak - nie chcê skoñczyæ jak on.
 	};
@@ -134,7 +134,7 @@ instance DIA_Bilgot_KNOWSLEADSNAPPER		(C_INFO)
 	nr			 =  4;
 	condition	 = 	DIA_Bilgot_KNOWSLEADSNAPPER_Condition;
 	information	 = 	DIA_Bilgot_KNOWSLEADSNAPPER_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Powiedz mi, co wiesz. Wtedy ciê st¹d zabiorê.";
 };
 
@@ -143,7 +143,7 @@ func int DIA_Bilgot_KNOWSLEADSNAPPER_Condition ()
 	if ((Npc_KnowsInfo(other, DIA_Bilgot_Hilfe))
 	&& (MIS_Fajeth_Kill_Snapper == LOG_RUNNING))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -179,7 +179,7 @@ instance DIA_Bilgot_TAKEYOUWITHME		(C_INFO)
 	nr 			 =  2;
 	condition	 = 	DIA_Bilgot_TAKEYOUWITHME_Condition;
 	information	 = 	DIA_Bilgot_TAKEYOUWITHME_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"(Dotrzymaj obietnicy)";
 };
 func int DIA_Bilgot_TAKEYOUWITHME_Condition ()
@@ -187,18 +187,20 @@ func int DIA_Bilgot_TAKEYOUWITHME_Condition ()
 	if (MIS_Fajeth_Kill_Snapper == LOG_SUCCESS)
  	&& Npc_KnowsInfo(other, DIA_Bilgot_KNOWSLEADSNAPPER)
  			{
-				return true;
+				return TRUE;
  			};
 };
 func void DIA_Bilgot_TAKEYOUWITHME_Info ()
 {
 	AI_Output (other, self, "DIA_Bilgot_TAKEYOUWITHME_15_00"); //Pora ruszaæ, Bilgot! Pakuj manatki.
+	//Joly: SC bringt den Typ bis zum Pass AI_Output (self, other, "DIA_Bilgot_TAKEYOUWITHME_05_01"); //Großartig! Es reicht mir schon, wenn du mich über die große Brücke am Fluss vor der belagerten Burg bringst. Den Rest schaff ich dann schon.
+	//Joly: SC bringt den Typ bis zum Pass AI_Output (other, self, "DIA_Bilgot_TAKEYOUWITHME_15_02"); //Dann beeil dich!
 	AI_Output (self, other, "DIA_Bilgot_TAKEYOUWITHME_05_03"); //Jestem gotowy!
 
 	Npc_ExchangeRoutine	(self, "FOLLOWTOOCBRIDGE");
 	Bilgot.flags	= 0;	
 	MIS_RescueBilgot = LOG_RUNNING;
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	AI_StopProcessInfos (self);
 };
 ///////////////////////////////////////////////////////////////////////
@@ -210,16 +212,16 @@ instance DIA_Bilgot_LAUFSCHNELLER		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Bilgot_LAUFSCHNELLER_Condition;
 	information	 = 	DIA_Bilgot_LAUFSCHNELLER_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Nie mo¿esz iœæ trochê szybciej?!";
 };
 
 func int DIA_Bilgot_LAUFSCHNELLER_Condition ()
 {
 	if ((Npc_KnowsInfo(other, DIA_Bilgot_TAKEYOUWITHME))
-	&& ((Npc_KnowsInfo(other, DIA_Bilgot_BEIBRUECKEANGEKOMMEN))==false))
+	&& ((Npc_KnowsInfo(other, DIA_Bilgot_BEIBRUECKEANGEKOMMEN))==FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -237,14 +239,14 @@ instance DIA_Bilgot_BEIBRUECKEANGEKOMMEN		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Bilgot_BEIBRUECKEANGEKOMMEN_Condition;
 	information	 = 	DIA_Bilgot_BEIBRUECKEANGEKOMMEN_Info;
-	important	 = 	true;
-	permanent	 =  false;
+	important	 = 	TRUE;
+	permanent	 =  FALSE;
 };
 func int DIA_Bilgot_BEIBRUECKEANGEKOMMEN_Condition ()
 {
 	if (Npc_GetDistToWP(self,"START")<8000) 				
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -256,11 +258,11 @@ func void DIA_Bilgot_BEIBRUECKEANGEKOMMEN_Info ()
 	AI_Output (self, other, "DIA_Bilgot_BEIBRUECKEANGEKOMMEN_05_03"); //¯egnaj!
 	
 	AI_StopProcessInfos (self);	
-	TschuessBilgot = true;
+	TschuessBilgot = TRUE;
 	MIS_RescueBilgot = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_BilgotEscort);
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self, "FLEEOUTOFOW");
 };
 ///////////////////////////////////////////////////////////////////////
@@ -272,7 +274,7 @@ instance DIA_Bilgot_LetztePause		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Bilgot_LetztePause_Condition;
 	information	 = 	DIA_Bilgot_LetztePause_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co tu robisz? Myœla³em, ¿e szed³eœ do prze³êczy?";
 };
 
@@ -280,7 +282,7 @@ func int DIA_Bilgot_LetztePause_Condition ()
 {
 	if (Npc_GetDistToWP(self,"START")<1000) 				
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -302,16 +304,16 @@ instance DIA_Bilgot_Olav		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Bilgot_Olav_Condition;
 	information	 = 	DIA_Bilgot_Olav_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Znalaz³em Olava.";
 };
 
 func int DIA_Bilgot_Olav_Condition ()
 {
-	if (Npc_HasItems(Olav,ItMi_OldCoin) == 0)
-	&& (Npc_KnowsInfo(other,DIA_Bilgot_Job))
+	if (Npc_HasItems (Olav, ItSe_GoldPocket25) == 0)	
+	&& (Npc_KnowsInfo (other,DIA_Bilgot_Job))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -322,5 +324,5 @@ func void DIA_Bilgot_Olav_Info ()
 	AI_Output (other, self, "DIA_Bilgot_Olav_15_02"); //Nie ¿yje. Wilki go zjad³y.
 	AI_Output (self, other, "DIA_Bilgot_Olav_05_03"); //O, cholera. Mam nadziejê, ¿e chocia¿ ja zdo³am siê st¹d wyrwaæ.
 	
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };

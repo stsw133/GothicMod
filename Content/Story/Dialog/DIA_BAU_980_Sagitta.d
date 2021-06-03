@@ -8,15 +8,15 @@ INSTANCE DIA_Sagitta_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Sagitta_EXIT_Condition;
 	information = DIA_Sagitta_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Sagitta_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -40,7 +40,7 @@ instance DIA_Sagitta_HALLO		(C_INFO)
 
 func int DIA_Sagitta_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Sagitta_HALLO_Info ()
@@ -96,7 +96,7 @@ instance DIA_Sagitta_TeachAlchemyRequest		(C_INFO)
 	nr          = 	6;	
 	condition	 = 	DIA_Sagitta_TeachAlchemyRequest_Condition;
 	information	 = 	DIA_Sagitta_TeachAlchemyRequest_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Czy mog³abyœ przekazaæ mi sw¹ wiedzê o zio³ach?";
 };
@@ -104,9 +104,9 @@ instance DIA_Sagitta_TeachAlchemyRequest		(C_INFO)
 func int DIA_Sagitta_TeachAlchemyRequest_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
-	&& (MIS_Sagitta_Herb == false)
+	&& (MIS_Sagitta_Herb == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 var int DIA_Sagitta_TeachAlchemyRequest_OneTime;
@@ -114,13 +114,13 @@ func void DIA_Sagitta_TeachAlchemyRequest_Info ()
 {
 	AI_Output			(other, self, "DIA_Sagitta_TeachAlchemyRequest_15_00"); //Czy mog³abyœ przekazaæ mi sw¹ wiedzê o zio³ach?
 
-	if (DIA_Sagitta_TeachAlchemyRequest_OneTime ==false)
+	if (DIA_Sagitta_TeachAlchemyRequest_OneTime ==FALSE)
 	{
 		AI_Output			(self, other, "DIA_Sagitta_TeachAlchemyRequest_17_01"); //Interesuj¹ce. Ludzie nieczêsto mnie o to prosz¹.
 		AI_Output			(self, other, "DIA_Sagitta_TeachAlchemyRequest_17_02"); //Chcesz wiêc zostaæ moim uczniem? Jeœli tak, bêdziesz musia³ dowieœæ uczciwoœci swoich intencji.
 		AI_Output			(self, other, "DIA_Sagitta_TeachAlchemyRequest_17_03"); //Od jakiegoœ czasu pracujê nad bardzo rzadk¹ mikstur¹ z unikalnych zió³ i soków.
 		AI_Output			(self, other, "DIA_Sagitta_TeachAlchemyRequest_17_04"); //Jeœli zdobêdziesz dla mnie brakuj¹cy sk³adnik mikstury, zostanê twoj¹ nauczycielk¹.
-		DIA_Sagitta_TeachAlchemyRequest_OneTime = true;
+		DIA_Sagitta_TeachAlchemyRequest_OneTime = TRUE;
 	}
 	else
 	{
@@ -188,7 +188,7 @@ func int DIA_Sagitta_Sagitta_Herb_Condition ()
 	&& (MIS_Sagitta_Herb == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 func void DIA_Sagitta_Sagitta_Herb_Info ()
@@ -196,11 +196,170 @@ func void DIA_Sagitta_Sagitta_Herb_Info ()
 	AI_Output			(other, self, "DIA_Sagitta_Sagitta_Herb_15_00"); //Znalaz³em s³oneczny aloes.
 	AI_Output			(self, other, "DIA_Sagitta_Sagitta_Herb_17_01"); //Dziêkujê. Mo¿esz mnie pytaæ, o co tylko zechcesz.
 	B_GiveInvItems (other,self,ItPl_SunHerb,1);
+	Sagitta_TeachAlchemy = TRUE;	
 	MIS_Sagitta_Herb = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
-	self.aivar[AIV_CanTeach] = true;
+	B_GivePlayerXP (XP_Sagitta_Sonnenaloe);
 };
 
+
+///////////////////////////////////////////////////////////////////////
+//	Info Teach
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Sagitta_Teach   (C_INFO)
+{
+	npc         = BAU_980_Sagitta;
+	nr          = 2;
+	condition   = DIA_Sagitta_Teach_Condition;
+	information = DIA_Sagitta_Teach_Info;
+	permanent   = TRUE;
+	description = "Jakie mikstury mo¿esz mnie nauczyæ przyrz¹dzaæ?";
+};
+//----------------------------------------
+var int DIA_Sagitta_Teach_permanent;
+//----------------------------------------
+
+FUNC INT DIA_Sagitta_Teach_Condition()
+{	
+	if (DIA_Sagitta_Teach_permanent == FALSE)
+	&& (Sagitta_TeachAlchemy == TRUE)
+	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Sagitta_Teach_Info()
+{
+	var int talente;
+	talente = 0;
+	AI_Output (other, self,"DIA_Sagitta_Teach_15_00");//Jakie mikstury mo¿esz mnie nauczyæ przyrz¹dzaæ?
+
+	if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Health] == FALSE)
+	|| (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
+	{
+		Info_ClearChoices (DIA_Sagitta_Teach);
+		Info_AddChoice (DIA_Sagitta_Teach,DIALOG_BACK,DIA_Sagitta_Teach_BACK);
+	};
+	if (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Esencja lecznicza", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)),DIA_Sagitta_Teach_Health_01);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == TRUE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Ekstrakt leczniczy", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_02)),DIA_Sagitta_Teach_Health_02);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Esencja many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)),DIA_Sagitta_Teach_Mana_01);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == TRUE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Ekstrakt many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_02)),DIA_Sagitta_Teach_Mana_02);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == TRUE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_03)),DIA_Sagitta_Teach_Mana_03);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
+	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir ducha", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Mana)),DIA_Sagitta_Teach_Perm_Mana);
+		talente = (talente + 1);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
+	{
+		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir zrêcznoœci", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_DEX)),DIA_Sagitta_Teach_Perm_DEX);
+		talente = (talente + 1);
+	};
+
+	if (talente > 0)
+	{
+		if (Alchemy_Explain != TRUE)
+		{
+			AI_Output (self, other,"DIA_Sagitta_Teach_17_01"); //Nim nauczê ciê trudnej sztuki alchemii, powiem ci, co jest potrzebne do sporz¹dzania mikstur.
+			AI_Output (self, other,"DIA_Sagitta_Teach_17_02"); //Stó³ alchemika s³u¿y jako swego rodzaju kuchnia dla sporz¹dzania mikstur. Bêdziesz tak¿e potrzebowa³ pustego flakonu, by przechowywaæ w nim gotow¹ miksturê.
+			AI_Output (self, other,"DIA_Sagitta_Teach_17_03"); //Nastêpnie wystarczy po³¹czyæ odpowiednie sk³adniki i mikstura gotowa.
+			AI_Output (self, other,"DIA_Sagitta_Teach_17_04"); //Tej wiedzy nauczysz siê jedynie ode mnie.
+			Alchemy_Explain = TRUE;
+		}
+		else
+		{
+			AI_Output (self, other,"DIA_Sagitta_Teach_17_05"); //O której z mikstur chcesz pos³uchaæ?
+		};
+	}
+	else 
+	{
+		AI_Output (self, other,"DIA_Sagitta_Teach_17_06"); //Wiesz ju¿ wszystko, czego mog³abym ciê nauczyæ.
+		DIA_Sagitta_Teach_permanent = TRUE;
+	};
+};
+
+FUNC VOID DIA_Sagitta_Teach_BACK ()
+{
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Health_01 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+FUNC VOID DIA_Sagitta_Teach_Health_02 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_02);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Mana_01 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Mana_02 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_02);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Mana_03 ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_03);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Perm_Mana ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Mana);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+
+FUNC VOID DIA_Sagitta_Teach_Perm_Dex ()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_DEX);
+	Info_ClearChoices (DIA_Sagitta_Teach);
+};
+	
 ///////////////////////////////////////////////////////////////////////
 //	Info HEAL
 ///////////////////////////////////////////////////////////////////////
@@ -210,7 +369,7 @@ instance DIA_Sagitta_HEAL		(C_INFO)
 	nr          = 	99;	//Joly: braucht ne hohe Nummer, denn wird in den späteren Kapiteln auch verwendet.
 	condition	 = 	DIA_Sagitta_HEAL_Condition;
 	information	 = 	DIA_Sagitta_HEAL_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Ulecz moje rany.";
 };
 
@@ -218,7 +377,7 @@ func int DIA_Sagitta_HEAL_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 func void DIA_Sagitta_HEAL_Info ()
@@ -228,7 +387,7 @@ func void DIA_Sagitta_HEAL_Info ()
 	if hero.attribute [ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX]
 	{
 		AI_Output			(self, other, "DIA_Sagitta_HEAL_17_01"); //Chwileczkê. Mmm. Moja maœæ powinna wyleczyæ najgorsze z twoich ran.
-		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
+		hero.attribute [ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		PrintScreen (PRINT_FullyHealed, - 1, - 1, FONT_Screen, 2);   
 	}
 	else 
@@ -245,8 +404,8 @@ instance DIA_Sagitta_TRADE		(C_INFO)
 	npc		 = 	BAU_980_Sagitta;
 	condition	 = 	DIA_Sagitta_TRADE_Condition;
 	information	 = 	DIA_Sagitta_TRADE_Info;
-	permanent	 = 	true;
-	trade		 = 	true;
+	permanent	 = 	TRUE;
+	trade		 = 	TRUE;
 
 	description	 = 	"Co mo¿esz mi zaoferowaæ?";
 };
@@ -255,7 +414,7 @@ func int DIA_Sagitta_TRADE_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -284,14 +443,14 @@ INSTANCE DIA_Sagitta_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sagitta_KAP3_EXIT_Condition;
 	information	= DIA_Sagitta_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Sagitta_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Sagitta_KAP3_EXIT_Info()
@@ -314,9 +473,11 @@ instance DIA_Sagitta_OBSESSION		(C_INFO)
 
 func int DIA_Sagitta_OBSESSION_Condition ()
 {
-	if (SC_IsObsessed == true)
+	if (SC_IsObsessed == TRUE)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
-	{	return true;	};
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Sagitta_OBSESSION_Info ()
@@ -344,7 +505,7 @@ func int DIA_Sagitta_Thekla_Condition ()
 	if (MIS_Thekla_Paket == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -353,7 +514,7 @@ func void DIA_Sagitta_Thekla_Info ()
 	AI_Output			(other, self, "DIA_Sagitta_Thekla_15_00"); //Thekla przysy³a mnie po odbiór przesy³ki.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_01"); //Ach, tak. W³aœciwie spodziewa³am siê jej ju¿ kilka dni temu.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_02"); //Oto paczka, dbaj o ni¹!
-	B_GivePlayerXP(XP_BONUS_1);								
+	B_GivePlayerXP (XP_AmbientKap3);								
 	B_GiveInvItems (self, other, ItMi_TheklasPaket, 1);					
 };
 
@@ -376,14 +537,14 @@ INSTANCE DIA_Sagitta_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sagitta_KAP4_EXIT_Condition;
 	information	= DIA_Sagitta_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Sagitta_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Sagitta_KAP4_EXIT_Info()
@@ -400,7 +561,7 @@ instance DIA_Sagitta_HEALRANDOLPH		(C_INFO)
 	nr		 = 	30;
 	condition	 = 	DIA_Sagitta_HEALRANDOLPH_Condition;
 	information	 = 	DIA_Sagitta_HEALRANDOLPH_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Randolph cierpi na syndrom odstawienia alkoholu.";
 };
@@ -414,7 +575,7 @@ func int DIA_Sagitta_HEALRANDOLPH_Condition ()
 	&& (Npc_HasItems (other,ItPo_HealRandolph_MIS) == 0)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -422,13 +583,13 @@ func void DIA_Sagitta_HEALRANDOLPH_Info ()
 {
 	AI_Output			(other, self, "DIA_Sagitta_HEALRANDOLPH_15_00"); //Randolph Ÿle siê czuje, odk¹d przesta³ piæ.
 
-	if (DIA_Sagitta_HEALRANDOLPH_KnowsPrice == false)
+	if (DIA_Sagitta_HEALRANDOLPH_KnowsPrice == FALSE)
 		{
 			AI_Output			(self, other, "DIA_Sagitta_HEALRANDOLPH_17_01"); //Kiedy ten cz³owiek w koñcu zm¹drzeje?
-			DIA_Sagitta_HEALRANDOLPH_KnowsPrice = true;
+			DIA_Sagitta_HEALRANDOLPH_KnowsPrice = TRUE;
 		};
 	
-	if(DIA_Sagitta_HEALRANDOLPH_GotOne == true)
+	if(DIA_Sagitta_HEALRANDOLPH_GotOne == TRUE)
 		{
 			AI_Output			(self, other, "DIA_Sagitta_HEALRANDOLPH_17_02"); //Da³am ci ju¿ odpowiedni¹ dawkê dla niego. Lepiej b¹dŸ ostro¿ny.
 		}
@@ -439,7 +600,7 @@ func void DIA_Sagitta_HEALRANDOLPH_Info ()
 
 	AI_Output			(self, other, "DIA_Sagitta_HEALRANDOLPH_17_04"); //Bêdzie ciê to kosztowaæ 300 sztuk z³ota.
 
-	if (DIA_Sagitta_HEALRANDOLPH_KnowsPrice == false)
+	if (DIA_Sagitta_HEALRANDOLPH_KnowsPrice == FALSE)
 	{
 		AI_Output			(other, self, "DIA_Sagitta_HEALRANDOLPH_15_05"); //Ile?
 		AI_Output			(self, other, "DIA_Sagitta_HEALRANDOLPH_17_06"); //Jedyna rzecz, jak¹ mo¿esz dostaæ za darmo, to œmieræ.
@@ -459,7 +620,7 @@ func void DIA_Sagitta_HEALRANDOLPH_geld ()
 			AI_Output			(self, other, "DIA_Sagitta_HEALRANDOLPH_geld_17_01"); //Doskonale. Zawsze mo¿esz poprosiæ go o ich zwrot.
 			CreateInvItems 		(self, ItPo_HealRandolph_MIS, 1);									
 			B_GiveInvItems 		(self, other, ItPo_HealRandolph_MIS, 1);					
-			DIA_Sagitta_HEALRANDOLPH_GotOne = true;
+			DIA_Sagitta_HEALRANDOLPH_GotOne = TRUE;
 		B_LogEntry (TOPIC_HealRandolph,"Sagitta da³a mi lekarstwo dla Randolpha."); 
 		}
 	else
@@ -495,14 +656,14 @@ INSTANCE DIA_Sagitta_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sagitta_KAP5_EXIT_Condition;
 	information	= DIA_Sagitta_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Sagitta_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Sagitta_KAP5_EXIT_Info()
@@ -530,14 +691,14 @@ INSTANCE DIA_Sagitta_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sagitta_KAP6_EXIT_Condition;
 	information	= DIA_Sagitta_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Sagitta_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Sagitta_KAP6_EXIT_Info()

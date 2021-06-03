@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Owen_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Owen_EXIT_Condition;
 	information	= DIA_Addon_Owen_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Owen_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Owen_EXIT_Info()
 {	
@@ -29,14 +29,14 @@ instance DIA_Addon_Owen_Hello		(C_INFO)
 	condition	= DIA_Addon_Owen_Hello_Condition;
 	information	= DIA_Addon_Owen_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };
 func int DIA_Addon_Owen_Hello_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_Hello_Info ()
@@ -47,16 +47,15 @@ func void DIA_Addon_Owen_Hello_Info ()
 
 	var C_Item itm; itm = Npc_GetEquippedArmor(other);
 	
-	if ((Hlp_IsItem(itm, ItAr_Pir_M) == true)
-	|| (Hlp_IsItem(itm, ItAr_Pir_L) == true)
-	|| (Hlp_IsItem(itm, ItAr_Pir_H) == true))
+	if	((Hlp_IsItem(itm, ItAr_Pir_M) == TRUE)
+	||	 (Hlp_IsItem(itm, ItAr_Pir_L) == TRUE)
+	||	 (Hlp_IsItem(itm, ItAr_Pir_H) == TRUE))
 	{
 		AI_Output	(self, other, "DIA_Addon_Owen_Hello_13_03"); //Nosisz nasze barwy, ale nie znam ciê.
 	}
-	else if ((Hlp_IsItem(itm, ItAr_Bandit) == true)
-	|| (Hlp_IsItem(itm, ItAr_RVN_L) == true)
-	|| (Hlp_IsItem(itm, ItAr_RVN_M) == true)
-	|| (Hlp_IsItem(itm, ItAr_RVN_H) == true))
+	else if ((Hlp_IsItem(itm, ItAr_BDT_M) == TRUE)
+	|| (Hlp_IsItem(itm, ItAr_BDT_H) == TRUE))
+	
 	{
 	 	AI_Output	(self, other, "DIA_Addon_Owen_Hello_13_04"); //Prawdê mówi¹c, to tak.
 	}
@@ -80,9 +79,9 @@ instance DIA_Addon_Owen_WasMachen		(C_INFO)
 };
 func int DIA_Addon_Owen_WasMachen_Condition ()
 {
-	if (Malcom_Accident == false)
+	if (Malcom_Accident == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_WasMachen_Info ()
@@ -101,7 +100,7 @@ instance DIA_Addon_Owen_Perm		(C_INFO)
 	nr		 	= 99;
 	condition	= DIA_Addon_Owen_Perm_Condition;
 	information	= DIA_Addon_Owen_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Coœ jeszcze?";
 };
 func int DIA_Addon_Owen_Perm_Condition ()
@@ -109,7 +108,7 @@ func int DIA_Addon_Owen_Perm_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_WasMachen))
 	|| (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -128,15 +127,15 @@ instance DIA_Addon_Owen_Henry		(C_INFO)
 	nr		 	= 3;
 	condition	= DIA_Addon_Owen_Henry_Condition;
 	information	= DIA_Addon_Owen_Henry_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Henry czeka na dostawê drewna do budowy palisady.";
 };
 func int DIA_Addon_Owen_Henry_Condition ()
 {
 	if (MIS_Henry_HolOwen == LOG_RUNNING)
-	&& (Owen_ComesToHenry == false)
+	&& (Owen_ComesToHenry == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_Henry_Info ()
@@ -157,7 +156,7 @@ func void DIA_Addon_Owen_Henry_Info ()
 		B_LogEntry (TOPIC_Addon_HolOwen,"Mam powiedzieæ Henry'emu, ¿e Owen dostarczy drewno.");
 		
 		AI_StopProcessInfos (self);
-		Owen_ComesToHenry = true;
+		Owen_ComesToHenry = TRUE;
 	};
 };
 
@@ -182,9 +181,9 @@ instance DIA_Addon_Owen_MalcomStunt		(C_INFO)
 };
 func int DIA_Addon_Owen_MalcomStunt_Condition ()
 {
-	if (Malcom_Accident == true)
+	if (Malcom_Accident == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_MalcomStunt_Info ()
@@ -223,9 +222,9 @@ func int DIA_Addon_Owen_runter_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-//	&& (Npc_HasItems (Malcom, ItWr_TwoHStonePlate3_Addon) > 0)
+	&& (Npc_HasItems (Malcom, ItWr_TwoHStonePlate3_Addon) > 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_runter_Info ()
@@ -250,16 +249,16 @@ func int DIA_Addon_Owen_MalcomDead_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-//	&& (Npc_HasItems (Malcom, ItWr_TwoHStonePlate3_Addon) == 0)
+	&& (Npc_HasItems (Malcom, ItWr_TwoHStonePlate3_Addon) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Owen_MalcomDead_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Owen_MalcomDead_15_00"); //Niestety, Malcolm nie ¿yje.
 	AI_Output	(self, other, "DIA_Addon_Owen_MalcomDead_13_01"); //No tego siê obawia³em. A teraz bêdê sobie wyrzuca³, ¿e mu nie pomog³em.
-	if (SC_MadeStunt == true)
+	if (SC_MadeStunt == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Owen_MalcomDead_13_02"); //Jesteœ naprawdê odwa¿ny, wiesz?
 		AI_Output	(self, other, "DIA_Addon_Owen_MalcomDead_13_03"); //Ja nigdy bym siê na to nie zdoby³.
@@ -268,5 +267,5 @@ func void DIA_Addon_Owen_MalcomDead_Info ()
 	B_LogEntry	(TOPIC_Addon_MalcomsStunt,"Powiedzia³em Owenowi, ¿e Malcolm nie ¿yje. Nie przej¹³ siê tym za bardzo.");
 	
 	MIS_Owen_FindMalcom = LOG_SUCCESS;
-	B_GivePlayerXP (XP_BONUS_3);
+	B_GivePlayerXP (XP_Addon_Owen_MalcomDead);
 };

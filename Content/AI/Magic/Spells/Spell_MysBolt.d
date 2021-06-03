@@ -12,7 +12,7 @@ const int SPL_Timing_MysBolt			=	800;
 var int SPL_Combo_MysBolt;
 */
 ///******************************************************************************************
-INSTANCE Spell_MysBolt (C_Spell_Proto)
+instance Spell_MysBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 //	spelltype 							=	SPELL_NEUTRAL;
@@ -29,7 +29,7 @@ func void FF_MysBolt()
 */
 func int Spell_Logic_MysBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt)
 	{
 		/*
@@ -67,13 +67,14 @@ func int Spell_Logic_MysBolt (var int manaInvested)
 
 func void Spell_Cast_MysBolt()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysBolt/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MysBolt/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MysBolt;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

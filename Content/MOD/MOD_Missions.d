@@ -13,7 +13,6 @@ const int XP_BONUS_10		=	1000;
 var int XP_Ambient;
 
 const int XP_BONUS_MULTIPLIER = 1000;
-
 func int XP_BONUS(var int xp)
 {
 	return (xp * XP_BONUS_MULTIPLIER / 1000);
@@ -253,41 +252,41 @@ func int SetQuestStatus (var string QuestName, var int NewStatus, var int OldSta
 	{
 		Log_CreateTopic (QuestName, LOG_MISSION);
 		Log_SetTopicStatus (QuestName, LOG_RUNNING);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestRunning,QuestName), FONT_ScreenSmall, COL_QuestRunning, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestRunning,QuestName), FONT_ScreenSmall, COL_QuestRunning, TIME_Print*1000);
 		return LOG_RUNNING;
 	};
 	if (NewStatus >= LOG_PROGRESS) /// zadanie w trakcie
 	&& (OldStatus == LOG_RUNNING)
 	{
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestProgress,QuestName), FONT_ScreenSmall, COL_QuestProgress, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestProgress,QuestName), FONT_ScreenSmall, COL_QuestProgress, TIME_Print*1000);
 		return LOG_RUNNING;
 	};
 	if (NewStatus == LOG_SUCCESS) /// zadanie wykonane
 	&& ((OldStatus == LOG_RUNNING) || (OldStatus == 0))
 	{
 		Log_SetTopicStatus (QuestName, LOG_SUCCESS);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestSuccess,QuestName), FONT_ScreenSmall, COL_QuestSuccess, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestSuccess,QuestName), FONT_ScreenSmall, COL_QuestSuccess, TIME_Print*1000);
 		return LOG_SUCCESS;
 	};
 	if (NewStatus == LOG_FAILED) /// zadanie nieudane
 	&& (OldStatus == LOG_RUNNING)
 	{
 		Log_SetTopicStatus (QuestName, LOG_FAILED);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestFailed,QuestName), FONT_ScreenSmall, COL_QuestFailed, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestFailed,QuestName), FONT_ScreenSmall, COL_QuestFailed, TIME_Print*1000);
 		return LOG_FAILED;
 	};
 	if (NewStatus == LOG_CANCELED) /// zadanie anulowane
 	&& (OldStatus == LOG_RUNNING)
 	{
 		Log_SetTopicStatus (QuestName, 0);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestCanceled,QuestName), FONT_ScreenSmall, COL_QuestCanceled, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestCanceled,QuestName), FONT_ScreenSmall, COL_QuestCanceled, TIME_Print*1000);
 		return 0;
 	};
 	if (NewStatus == LOG_OBSOLETE) /// przestarza³e zadanie
 	&& (OldStatus == LOG_RUNNING)
 	{
 		Log_SetTopicStatus (QuestName, LOG_OBSOLETE);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestObsolete,QuestName), FONT_ScreenSmall, COL_QuestObsolete, TIME_Print * 1000);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestObsolete,QuestName), FONT_ScreenSmall, COL_QuestObsolete, TIME_Print*1000);
 		return LOG_OBSOLETE;
 	};
 	return OldStatus;
@@ -303,6 +302,6 @@ func void SetNoteEntry (var string Topic, var int Type, var string Entry)
 		Log_CreateTopic (Topic, Type);
 	};
 	Log_AddEntry (Topic, Entry);
-	Print_ExtPrcnt (-1, YPOS_LogEntry, PRINT_NewLogEntry, FONT_ScreenSmall, COL_White, TIME_Print * 1000);
+	Print_ExtPrcnt (-1, YPOS_LogEntry, PRINT_NewLogEntry, FONT_ScreenSmall, COL_White, TIME_Print*1000);
 	Snd_Play("LogEntry");
 };

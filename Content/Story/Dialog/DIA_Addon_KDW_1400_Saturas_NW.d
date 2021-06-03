@@ -7,18 +7,18 @@ INSTANCE DIA_Addon_Saturas_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Saturas_EXIT_Condition;
 	information = DIA_Addon_Saturas_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Addon_Saturas_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Saturas_EXIT_Info()
 {
-	if (MIS_Addon_Saturas_BringRiordian2Me == false)
+	if (MIS_Addon_Saturas_BringRiordian2Me == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Saturas_auftrag_14_01"); //Poniewa¿ nie s¹dzê, ¿eby uda³o ci siê odci¹gn¹æ innych magów od pracy, mo¿esz zanieœæ jednemu z nich wiadomoœæ ode mnie.
 		AI_Output	(self, other, "DIA_Addon_Saturas_auftrag_14_02"); //Powiedz Riordianowi, ¿e chcê z nim porozmawiaæ.
@@ -50,7 +50,7 @@ func int DIA_Addon_Saturas_Nefarius_Condition ()
 {
 	if (MIS_Addon_Nefarius_BringMissingOrnaments == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Saturas_Nefarius_Info ()
@@ -59,13 +59,13 @@ func void DIA_Addon_Saturas_Nefarius_Info ()
 	AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_01"); //Co? Niemo¿liwe! Te¿ siê w to wpl¹ta³eœ?
 	AI_Output (other, self, "DIA_ADDON_Saturas_Nefarius_15_02"); //Nie obawiaj siê. Znajdê je i przyniosê tutaj.
 	
-	if (ORNAMENT_SWITCHED_FOREST == false)
+	if (ORNAMENT_SWITCHED_FOREST == FALSE)
 	&& (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments_Addon))
 	{
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_03"); //Wiesz przynajmniej, gdzie masz szukaæ?
 		AI_Output (other, self, "DIA_ADDON_Saturas_Nefarius_15_04"); //Nefarius da³ mi mapê...
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_05"); //Poka¿ mi j¹!
-		B_UseFakeScroll();
+		B_UseFakeScroll ();
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_06"); //Hmmm. W wielkim lesie jest bardzo niebezpiecznie. Nie powinieneœ iœæ tam sam.
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_07"); //Poszukaj w Khorinis kogoœ, kto bêdzie ci towarzyszyæ.
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_08"); //Nie chcê, ¿eby po¿ar³y ciê potwory – a razem z tob¹ ornament.
@@ -86,16 +86,16 @@ instance DIA_Addon_Saturas_Hallo		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Addon_Saturas_Hallo_Condition;
 	information	 = 	DIA_Addon_Saturas_Hallo_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Saturas_Hallo_Condition ()
 {
-	Npc_PerceiveAll(self);
-	if (Wld_DetectNpc(self,Skeleton_Gobbo,ZS_MM_Attack,-1) == false)
+	Npc_PerceiveAll (self);
+	if (Wld_DetectNpc (self,Gobbo_Skeleton,ZS_MM_Attack,-1) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Saturas_Hallo_weißtdu ()
@@ -175,7 +175,7 @@ func int DIA_Addon_Saturas_keineAhnung_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == 0)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -201,8 +201,8 @@ instance DIA_Addon_Saturas_raus		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Saturas_raus_Condition;
 	information	 = 	DIA_Addon_Saturas_raus_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 
@@ -212,7 +212,7 @@ func int DIA_Addon_Saturas_raus_Condition ()
 	&& (MIS_Addon_Lares_Ornament2Saturas == 0)
 	&& (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -237,9 +237,9 @@ instance DIA_Addon_Saturas_Lares		(C_INFO)
 
 func int DIA_Addon_Saturas_Lares_Condition ()
 {
-	if (Lares_Angekommen == true)
+	if (Lares_Angekommen == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -268,10 +268,10 @@ func int DIA_Addon_Saturas_Ornament_Condition ()
 {
 	//if (Npc_KnowsInfo (other, DIA_Addon_Saturas_Lares))
 	//&& (MIS_Addon_Lares_Ornament2Saturas == LOG_RUNNING)
-	if ( Npc_HasItems (other,ItMi_Ornament_Addon_Vatras) && (Lares_Angekommen == false) )
-	|| ( (Lares_Angekommen == true) && Npc_KnowsInfo(other, DIA_Addon_Saturas_Lares) && Npc_HasItems (other,ItMi_Ornament_Addon_Vatras) )
+	if ( Npc_HasItems (other,ItMi_Ornament_Addon_Vatras) && (Lares_Angekommen == FALSE) )
+	|| ( (Lares_Angekommen == TRUE) && Npc_KnowsInfo(other, DIA_Addon_Saturas_Lares) && Npc_HasItems (other,ItMi_Ornament_Addon_Vatras) )
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -281,7 +281,7 @@ func void DIA_Addon_Saturas_Ornament_Info ()
 	B_GiveInvItems (other, self, ItMi_Ornament_Addon_Vatras,1);
 	AI_Output	(self, other, "DIA_Addon_Saturas_Ornament_ADD_14_00"); //Jak to?
 
-	if (Lares_Angekommen == true)
+	if (Lares_Angekommen == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Saturas_Ornament_14_01"); //Kto ci to da³? Nie dosta³eœ go chyba od Laresa?
 	};
@@ -331,10 +331,10 @@ instance DIA_Addon_Saturas_geheimbund		(C_INFO)
 func int DIA_Addon_Saturas_geheimbund_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)
-	&& (SC_KnowsRanger == true)
-	&& (SC_IsRanger == false)
+	&& (SC_KnowsRanger == TRUE)
+	&& (SC_IsRanger == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -342,7 +342,7 @@ func void DIA_Addon_Saturas_geheimbund_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Saturas_geheimbund_15_00"); //Chcê wst¹piæ do Wodnego Krêgu.
 
-	if (Lares_Angekommen == true)
+	if (Lares_Angekommen == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Saturas_geheimbund_14_01"); //CO? Sk¹d siê o tym dowiedzia³eœ? Kto...? LARES... Zabijê go!
 		AI_Output	(self, other, "DIA_Addon_Saturas_geheimbund_14_02"); //Z³ama³ nasze zasady. Nikt nie mo¿e mówiæ o Wodnym Krêgu.
@@ -377,7 +377,7 @@ func int DIA_Addon_Saturas_wasmachstdu_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -409,7 +409,7 @@ func int DIA_Addon_Saturas_Erdbeben_Condition ()
 	&& (Npc_KnowsInfo (other, DIA_Addon_Saturas_wasmachstdu))
 	&& (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Bedrohung))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -437,10 +437,10 @@ instance DIA_Addon_Saturas_WhatsOrnament		(C_INFO)
 func int DIA_Addon_Saturas_WhatsOrnament_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)
-	&& (SC_KnowsOrnament == false)
+	&& (SC_KnowsOrnament == FALSE)
 	&& (RitualRingRuns == 0)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -459,17 +459,17 @@ instance DIA_Addon_Saturas_ScRanger		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Saturas_ScRanger_Condition;
 	information	 = 	DIA_Addon_Saturas_ScRanger_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Teraz nale¿ê do Wodnego Krêgu.";
 };
 
 func int DIA_Addon_Saturas_ScRanger_Condition ()
 {
-	if (SaturasKnows_SC_IsRanger == false)
-	&& (SC_IsRanger == true)
+	if (SaturasKnows_SC_IsRanger == FALSE)
+	&& (SC_IsRanger == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -480,11 +480,11 @@ func void DIA_Addon_Saturas_ScRanger_Info ()
 	itm = Npc_GetEquippedArmor(other);
 		
 	if 	(
-		((SCIsWearingRangerRing == true) && (RangerRingIsLaresRing == false))	//-> Der SC IST Ranger! SC trägt eigenen (nicht Lares') Ring
-		|| (Hlp_IsItem(itm, ITAR_WaterRanger) == true)							//-> Der SC IST Ranger! Nur als Ranger hat er diese Rüstung bekommen.
+		((SCIsWearingRangerRing == TRUE) && (RangerRingIsLaresRing == FALSE))	//-> Der SC IST Ranger! SC trägt eigenen (nicht Lares') Ring
+		|| (Hlp_IsItem(itm, ITAR_WaterRanger) == TRUE)							//-> Der SC IST Ranger! Nur als Ranger hat er diese Rüstung bekommen.
 		)
 		{
-			if (Hlp_IsItem(itm, ITAR_WaterRanger) == true)
+			if (Hlp_IsItem(itm, ITAR_WaterRanger) == TRUE)
 			{
 				AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_01"); //Widzê, ¿e nosisz zbrojê naszego bractwa.
 			}
@@ -497,14 +497,14 @@ func void DIA_Addon_Saturas_ScRanger_Info ()
 			AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_04"); //Dobrze. Pozwolê ci wst¹piæ w nasze szeregi.
 			AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_05"); //Pamiêtaj, ¿e wi¹¿e siê to z wielk¹ odpowiedzialnoœci¹.
 			AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_06"); //I mam nadziejê, ¿e oka¿esz siê godny.
-			SaturasKnows_SC_IsRanger = true;
+			SaturasKnows_SC_IsRanger = TRUE;
 			B_LogEntry (TOPIC_Addon_RingOfWater,"Saturas przyj¹³ mnie do Wodnego Krêgu."); 
 		}
 		else
 		{
 			AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_07"); //A sk¹d masz wiedzieæ, ¿e jesteœ jednym z nas?
 	
-			if (RangerRingIsLaresRing == true)
+			if (RangerRingIsLaresRing == TRUE)
 			{
 				AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_08"); //Pierœcieñ z akwamarynem noszony przez ciebie nale¿y do Laresa. Rozpoznajê go.
 			};
@@ -523,7 +523,7 @@ instance DIA_Addon_Saturas_OpenPortal		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Saturas_OpenPortal_Condition;
 	information	 = 	DIA_Addon_Saturas_OpenPortal_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Daj mi pierœcieñ. Otworzê portal.";
 };
@@ -531,9 +531,9 @@ var int DIA_Addon_Saturas_OpenPortal_NoPerm;
 func int DIA_Addon_Saturas_OpenPortal_Condition ()
 {
 	if (RitualRingRuns == LOG_SUCCESS)
-	&& (DIA_Addon_Saturas_OpenPortal_NoPerm == false)
+	&& (DIA_Addon_Saturas_OpenPortal_NoPerm == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -541,28 +541,32 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Saturas_OpenPortal_15_00"); //Daj mi pierœcieñ. Otworzê portal.
 
-	if (SaturasKnows_SC_IsRanger == true)
+	if (SaturasKnows_SC_IsRanger == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_01"); //Dobrze! Jako nowy cz³onek naszego bractwa zas³ugujesz na ten honor.
 		AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_02"); //Ale ca³y czas czekam na wiadomoœæ od Vatrasa. Wyruszymy, gdy j¹ otrzymam.
 	
 		
 		if (RangerMeetingRunning == LOG_SUCCESS)
-		&& (Npc_HasItems (other,ItWr_Vatras2Saturas_FindRaven)) 
+		&& (Npc_HasItems (other,ItWr_Vatras2Saturas_FindRaven))
 		{	
 			AI_Output	(other, self, "DIA_Addon_Saturas_OpenPortal_15_03"); //MAM dla ciebie wiadomoœæ od Vatrasa.
 	
 			B_GiveInvItems (other, self, ItWr_Vatras2Saturas_FindRaven,(Npc_HasItems (other,ItWr_Vatras2Saturas_FindRaven)));
 		
 			B_UseFakeScroll ();
-
-//			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_04"); //Hmm. I oczywiœcie nie mog³eœ siê powstrzymaæ przed jej otwarciem, prawda?
-//			AI_Output	(other, self, "DIA_Addon_Saturas_OpenPortal_15_05"); //Có¿, eee...
-//			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_06"); //Dla twojego dobra... obym nie po¿a³owa³, ¿e ci zaufa³em.
-
-			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_07"); //Bardzo interesuj¹ce.
-			B_GivePlayerXP(XP_Ambient);
-
+			/*if (Vatras2Saturas_FindRaven_Open == TRUE)
+			{
+				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_04"); //Hmm. I oczywiœcie nie mog³eœ siê powstrzymaæ przed jej otwarciem, prawda?
+				AI_Output	(other, self, "DIA_Addon_Saturas_OpenPortal_15_05"); //Có¿, eee...
+				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_06"); //Dla twojego dobra... obym nie po¿a³owa³, ¿e ci zaufa³em.
+			}
+			else
+			{*/
+				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_07"); //Bardzo interesuj¹ce.
+				B_GivePlayerXP (XP_Ambient);
+			//};		
+			
 			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_08"); //WeŸ ten pierœcieñ. Spotkamy siê przy portalu. Bêdê tam na ciebie czekaæ.
 		
 			CreateInvItems (self, ItMi_PortalRing_Addon, 1);									
@@ -570,7 +574,7 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 		
 			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_09"); //Jeœli Nefarius ma racjê, portal otworzy siê, kiedy tylko umieœcisz tam pierœcieñ.
 			
-			DIA_Addon_Saturas_OpenPortal_NoPerm = true;
+			DIA_Addon_Saturas_OpenPortal_NoPerm = TRUE;
 			B_LogEntry (TOPIC_Addon_Ornament,"Saturas da³ mi zdobiony pierœcieñ. Chce, ¿ebym go wsadzi³ w mechanizm portalu i przeszed³ na drug¹ stronê."); 
 
 			AI_StopProcessInfos (self);		
@@ -589,7 +593,7 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 	else
 	{
 		AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_10"); //Dopóki Vatras nie da mi znaku, ¿e mogê ci zaufaæ, pierœcieñ bêdzie u mnie.
-		Saturas_WillVertrauensBeweis = true;
+		Saturas_WillVertrauensBeweis = TRUE;
 		B_LogEntry (TOPIC_Addon_Ornament,"Saturas nie da mi zdobionego pierœcienia, dopóki nie otrzyma znaku od Vatrasa, ¿e jestem godny zaufania."); 
 		AI_StopProcessInfos (self);		
 	};
@@ -604,7 +608,7 @@ instance DIA_Addon_Saturas_PERM		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Saturas_PERM_Condition;
 	information	 = 	DIA_Addon_Saturas_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Mo¿esz nauczyæ mnie czegoœ o magii?";
 };
@@ -613,7 +617,7 @@ func int DIA_Addon_Saturas_PERM_Condition ()
 {
 	if (MIS_Addon_Saturas_BringRiordian2Me != 0)
 		{
-			return true;
+			return TRUE;
 		};
 };
 

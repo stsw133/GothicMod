@@ -7,13 +7,13 @@ INSTANCE DIA_Pal_212_Schiffswache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Pal_212_Schiffswache_EXIT_Condition;
 	information = DIA_Pal_212_Schiffswache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Pal_212_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Pal_212_Schiffswache_EXIT_Info()
@@ -36,7 +36,7 @@ func int DIA_Pal_212_Schiffswache_WERSEIDIHR_Condition ()
 {
 	if ((hero.guild != GIL_PAL) && (hero.guild != GIL_KDF))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -61,14 +61,14 @@ instance DIA_Pal_212_Schiffswache_WASMACHSTDU2		(C_INFO)
 
 func int DIA_Pal_212_Schiffswache_WASMACHSTDU2_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Pal_212_Schiffswache_WASMACHSTDU2_Info ()
 {
 	AI_Output			(other, self, "DIA_Pal_212_Schiffswache_WASMACHSTDU2_15_00"); //Co tu robicie?
 
-	if (MIS_ShipIsFree == false)
+	if (MIS_ShipIsFree == FALSE)
 	{
 		if ((hero.guild != GIL_PAL) && (hero.guild != GIL_KDF))
 		{
@@ -85,3 +85,4 @@ func void DIA_Pal_212_Schiffswache_WASMACHSTDU2_Info ()
 	};
 	AI_StopProcessInfos (self);
 };
+

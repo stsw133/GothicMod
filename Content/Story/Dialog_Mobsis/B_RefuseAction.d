@@ -1,4 +1,6 @@
-//******************************************************************************************
+///******************************************************************************************
+///	B_RefuseAction
+///******************************************************************************************
 func void PLAYER_MOB_MISSING_KEY_OR_LOCKPICK()
 {
 	Print(PRINT_Picklock_or_KeyMissing);
@@ -15,16 +17,16 @@ func void PLAYER_MOB_MISSING_KEY()
 
 func void PLAYER_MOB_MISSING_LOCKPICK()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_PICKLOCK) == false)
+	if (!Npc_GetTalentSkill(hero, NPC_TALENT_PICKLOCK))
 	{
 		Print(PRINT_NoPicklockTalent);
-		AI_PlayAni (self, "T_DONTKNOW");
+		AI_PlayAni (self,"T_DONTKNOW");
 		B_Say_Overlay (self, self, "$NOPICKLOCKTALENT");
 	}
 	else
 	{
 		Print(PRINT_PicklockMissing);
-		AI_PlayAni (self, "T_DONTKNOW");
+		AI_PlayAni (self,"T_DONTKNOW");
 		B_Say_Overlay (self, self, "$PICKLOCKMISSING");
 	};
 };
@@ -60,7 +62,7 @@ func void PLAYER_MOB_WRONG_SIDE()
 	AI_PlayAni (self, "T_DONTKNOW");
 };
 
-//******************************************************************************************
+///******************************************************************************************
 func void PLAYER_TRADE_NOT_ENOUGH_GOLD()
 {
 	Print(PRINT_Trade_Not_Enough_Gold);

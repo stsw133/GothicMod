@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Quarhodron_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Quarhodron_EXIT_Condition;
 	information = DIA_Addon_Quarhodron_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Quarhodron_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Quarhodron_EXIT_Info()
 {
@@ -27,23 +27,25 @@ instance DIA_Addon_Quarhodron_Hello		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Quarhodron_Hello_Condition;
 	information	 = 	DIA_Addon_Quarhodron_Hello_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 var int DIA_Addon_Quarhodron_Hello_NoPerm;
 func int DIA_Addon_Quarhodron_Hello_Condition ()
 {
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (DIA_Addon_Quarhodron_Hello_NoPerm == false)
+	&& (DIA_Addon_Quarhodron_Hello_NoPerm == FALSE)
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
 func void DIA_Addon_Quarhodron_Hello_Info ()
 {
-//	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
-//	{
+	IF (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	|| (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
+	|| (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == TRUE)
+	{
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_00"); //Dlaczego zak³ócasz mój spokój, stra¿niku?
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_01"); //Powiedz mi, z czym do mnie przychodzisz?
 		 
@@ -52,27 +54,27 @@ func void DIA_Addon_Quarhodron_Hello_Info ()
 		Info_AddChoice	(DIA_Addon_Quarhodron_Hello, "Ktoœ dosta³ siê do œwi¹tyni Adanosa.", DIA_Addon_Quarhodron_Hello_raven );
 		Info_AddChoice	(DIA_Addon_Quarhodron_Hello, "Pozwól mi wejœæ do œwi¹tyni Adanosa.", DIA_Addon_Quarhodron_Hello_tempel );
 		Info_AddChoice	(DIA_Addon_Quarhodron_Hello, "Kraj rozdzieraj¹ trzêsienia ziemi.", DIA_Addon_Quarhodron_Hello_erdbeben );
-		DIA_Addon_Quarhodron_Hello_NoPerm = true;
+		DIA_Addon_Quarhodron_Hello_NoPerm = TRUE;
 		Npc_RemoveInvItems 	(hero, ItWr_Addon_SUMMONANCIENTGHOST,1); //Joly: sonst gammelt das ding unnütz herum.
-		SC_TalkedToGhost = true;
-//	}
-//	else
-//	{
-//		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_02"); //Bengla anthani, Osiri?
-//		B_Say (other, self, "$CANTUNDERSTANDTHIS");	
-//		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_03"); //Bengla anthani?
-//		AI_StopProcessInfos (self);
-//	};
+		SC_TalkedToGhost = TRUE;
+	}
+	else
+	{
+		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_02"); //Bengla anthani, Osiri?
+		B_Say (other, self, "$CANTUNDERSTANDTHIS");	
+		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_03"); //Bengla anthani?
+		AI_StopProcessInfos (self);
+	};
 };
 var int DIA_Addon_Quarhodron_Hello_ChoiceCounter;
 var int B_Quarhodron_Hello_KommZumPunkt_OneTime;
 func void B_Quarhodron_Hello_KommZumPunkt ()
 {
 	if (DIA_Addon_Quarhodron_Hello_ChoiceCounter >= 3)
-	&& (B_Quarhodron_Hello_KommZumPunkt_OneTime == false)
+	&& (B_Quarhodron_Hello_KommZumPunkt_OneTime == FALSE)
 	{
 		Info_AddChoice	(DIA_Addon_Quarhodron_Hello, "Wielka m¹droœæ staro¿ytnych musi ciê przyt³aczaæ.", DIA_Addon_Quarhodron_Hello_frech );
-		B_Quarhodron_Hello_KommZumPunkt_OneTime = true;
+		B_Quarhodron_Hello_KommZumPunkt_OneTime = TRUE;
 	};
 };
 
@@ -130,16 +132,16 @@ instance DIA_Addon_Quarhodron_Fragen		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Quarhodron_Fragen_Condition;
 	information	 = 	DIA_Addon_Quarhodron_Fragen_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Zadawaj swe pytania.";
 };
 
 func int DIA_Addon_Quarhodron_Fragen_Condition ()
 {
-	if (QuarhodronIstZufrieden == false)
+	if (QuarhodronIstZufrieden == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -177,13 +179,13 @@ func void B_Quarhodron_Fragen_Choices ()
 		{
 			if (Quarhodrons_NextQuestion == 1)
 			{
-				if (B_Quarhodron_Fragen_ChoicesOneTime == false)
+				if (B_Quarhodron_Fragen_ChoicesOneTime == FALSE)
 				{
 					AI_Output	(self, other, "DIA_Addon_Quarhodron_Fragen_Choices_11_02"); //Zdolnoœci stra¿nika umar³ych pozwoli³y ci mnie obudziæ, to prawda.
 					AI_Output	(self, other, "DIA_Addon_Quarhodron_Fragen_Choices_11_03"); //Jeœli naprawdê jesteœ tym, za kogo siê podajesz, zdo³asz odpowiedzieæ na wszystkie moje pytania.
 					AI_Output (self, other, "DIA_Addon_Quarhodron_Add_11_00"); //Za wyj¹tkiem jednego...
 					
-					B_Quarhodron_Fragen_ChoicesOneTime = true;
+					B_Quarhodron_Fragen_ChoicesOneTime = TRUE;
 				};
 				Quarhodrons_NextQuestion = 2;
 			};
@@ -252,12 +254,12 @@ func void DIA_Addon_Quarhodron_Fragen_Info ()
 	Quarhodrons_RichtigeAntworten 	= 0;
 	AI_Output	(other, self, "DIA_Addon_Quarhodron_Fragen_15_00"); //Zadawaj swe pytania.
 	
-	if (DIA_Addon_Quarhodron_Fragen_Info_OneTime == false)
+	if (DIA_Addon_Quarhodron_Fragen_Info_OneTime == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Fragen_11_01"); //Jestem Quarhodron, dawny genera³ Jarkendaru.
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Fragen_11_02"); //Przebudzi³eœ mnie.
 		
-		DIA_Addon_Quarhodron_Fragen_Info_OneTime = true;
+		DIA_Addon_Quarhodron_Fragen_Info_OneTime = TRUE;
 	};
 	
 	AI_Output	(self, other, "DIA_Addon_Quarhodron_Fragen_11_03"); //Do której kasty nale¿ysz?
@@ -309,7 +311,7 @@ func void DIA_Addon_Quarhodron_Fragen_NoPlan ()
 	&& (Quarhodrons_RichtigeAntworten >= 6) 
 	{
 		AI_Output			(self, other, "DIA_Addon_Quarhodron_Fragen_NoPlan_11_01"); //Dobrze. Ufam ci i udzielê pomocy.
-		QuarhodronIstZufrieden = true;
+		QuarhodronIstZufrieden = TRUE;
 		Info_ClearChoices	(DIA_Addon_Quarhodron_Fragen);
 	}
 	else if (Quarhodrons_NextQuestion == Quarhodron_AlleFragenGestellt)
@@ -337,9 +339,9 @@ instance DIA_Addon_Quarhodron_GibMirKey		(C_INFO)
 };
 func int DIA_Addon_Quarhodron_GibMirKey_Condition ()
 {
-	if (QuarhodronIstZufrieden == true)
+	if (QuarhodronIstZufrieden == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Quarhodron_GibMirKey_Info ()
@@ -366,5 +368,7 @@ func void DIA_Addon_Quarhodron_GibMirKey_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_Kammern, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Kammern,"Quarhodron wspomnia³ o 'Komnatach Adanosa' i ostrzeg³, bym mia³ siê na bacznoœci. Jeœli nie chcê zgin¹æ w œwi¹tyni Adanosa, muszê siê dowiedzieæ, o co mu chodzi³o."); 
 
-	Ghost_SCKnowsHow2GetInAdanosTempel = true;
+	Ghost_SCKnowsHow2GetInAdanosTempel = TRUE;
 };
+
+

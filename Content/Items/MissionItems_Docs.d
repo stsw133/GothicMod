@@ -132,7 +132,7 @@ instance ItWr_Poster_MIS (ItemPR_Mission)
 	description		=	name;
 	TEXT[3]			=	"Moja podobizna!";
 };
-FUNC VOID UsePoster()
+func void UsePoster()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -151,7 +151,7 @@ instance ItWr_Schuldenbuch (ItemPR_Mission)
 	on_state[0]		=	UseSchuldBuch;
 	description		= 	"Ksiêga D³ugów Lehmara";
 };
-FUNC VOID UseSchuldBuch()
+func void UseSchuldBuch()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -317,10 +317,36 @@ instance ItWr_Passage_MIS (ItemPR_Mission)
 {
 	name 			=	"Propozycja Lee dla paladynów";
 	visual 			=	"ItWr_Scroll_01.3DS";
+	scemeName		=	"MAP";
+	on_state[0]		=   UsePassage;
 	description		=	name;
 	TEXT[3]			=	"Dziêki tej wiadomoœci byæ mo¿e uda";
 	TEXT[4]			=   "mi siê porozmawiaæ z Lordem Hagenem.";
 };
+func void UsePassage()
+{   
+	var int nDocID;
+	nDocID = 	Doc_Create		();
+				Doc_SetPages	(nDocID,  1);
+				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
+				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "Szanowny Lordzie Hagenie,");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLines	(nDocID,  0, "obydwaj zdajemy sobie sprawê z sytuacji, wiêc przejdê od razu do rzeczy:");
+				Doc_PrintLines	(nDocID,  0, "uniewinnij mnie i moich ludzi wobec Jego Wysokoœci i samego Innosa.");
+				Doc_PrintLines	(nDocID,  0, "W zamian zobowi¹zujemy siê pomóc Ci w obronie miasta i okolicznych ziem.");
+				Doc_PrintLines	(nDocID,  0, "Osobiœcie dopilnujê te¿, by moi ludzie trzymali siê z dala od tutejszych farm - naturalnie oprócz zagród Onara, gdzie nadal bêdziemy stacjonowali.");
+				Doc_PrintLines	(nDocID,  0, "Wiem, ¿e statek, którym zamierzacie wróciæ na kontynent, mo¿e zabraæ kilka dodatkowych osób. Gdy bêdziecie ruszaæ w drogê, chcê pop³yn¹æ z wami.");
+				Doc_PrintLines	(nDocID,  0, "Zaklinam ciê: rozwa¿ dobrze moje s³owa i podejmij rozs¹dn¹ decyzjê.");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "Podpisano   Genera³ Lee");
+				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
+				Doc_Show		(nDocID);
+}; 
+
 instance ItWr_ForgedShipLetter_MIS (ItemPR_Mission)
 {
 	name 			=	"Akt okrêtowy";
@@ -333,8 +359,40 @@ instance ItWr_Canthars_KomproBrief_MIS (ItemPR_Mission)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
+	scemeName		=	"MAP";
+	on_state[0]		=   Use_Canthars_KomproBrief;
 	description		= 	"List Canthara do Sary";
 };
+func void Use_Canthars_KomproBrief()
+{   
+	var int nDocID;
+	nDocID = 	Doc_Create		();
+				Doc_SetPages	(nDocID,  1);
+				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
+				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, " Ostatnie ostrze¿enie");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetFont		(nDocID,  0, FONT_Book);
+				Doc_PrintLine	(nDocID,  0, " Wielokrotnie ju¿ ostrzega³em ciê");
+				Doc_PrintLine	(nDocID,  0, " w niezwykle przyjazny sposób,");
+				Doc_PrintLine	(nDocID,  0, " ¿e broñ zamówiona u ciebie tydzieñ");
+				Doc_PrintLine	(nDocID,  0, " temu jest mi wyj¹tkowo pilnie");
+				Doc_PrintLine	(nDocID,  0, " potrzebna.");
+				Doc_PrintLine	(nDocID,  0, " Jeœli szybko siê nie odezwiesz w tej");
+				Doc_PrintLine	(nDocID,  0, " sprawie, to zmusisz mnie do zmiany");
+				Doc_PrintLine	(nDocID,  0, " sposobu, w jaki ciê traktujê. Mam");
+				Doc_PrintLine	(nDocID,  0, " nadziejê, ¿e siê dobrze rozumiemy!!!!");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "     Onar");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
+				Doc_Show		(nDocID);
+}; 
+
 instance ItWr_PaladinLetter_MIS (ItemPR_Mission)
 {
 	name 			=	"List";
@@ -345,8 +403,33 @@ instance ItWr_LetterForGorn_MIS (ItemPR_Mission)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
+	scemeName		=	"MAP";
+	on_state[0]		=   UseLetterForGorn;
 	description		=	"List Miltena do Gorna";
 };
+func void UseLetterForGorn()
+{
+	var int nDocID;
+	nDocID = 	Doc_Create		();
+				Doc_SetPages	(nDocID,  1);
+				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
+				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, "Gorn!");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLines	(nDocID,  0, "Garond zgodzi³ siê wypuœciæ ciê na wolnoœæ - za 1000 sztuk z³ota.");
+				Doc_PrintLines	(nDocID,  0, "Jeœli masz wiêc jakieœ z³oto, lepiej powiedz, gdzie je ukry³eœ.");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, " ");
+				Doc_PrintLine	(nDocID,  0, "Milten ");
+				Doc_Show		(nDocID);
+};
+
 instance ItWr_PermissionToWearInnosEye_MIS (ItemPR_Mission)
 {
 	name 			=	"List polecaj¹cy";
@@ -370,7 +453,7 @@ instance ItWr_XardasBookForPyrokar_Mis (ItemPR_Mission)
 	on_state[0]		=	Use_XardasBookForPyrokar;
 	description		=	name;
 };
-FUNC VOID Use_XardasBookForPyrokar()
+func void Use_XardasBookForPyrokar()
 {  
 	Print(PRINT_IrdorathBookDoesntOpen);
 	Wld_PlayEffect ("spellFX_Fear", self, self, 0, 0, 0, false);
@@ -389,10 +472,10 @@ instance ItWr_CorneliusTagebuch_Mis (ItemPR_Mission)
 	description		=	name;
 	TEXT[0]			=	"Dziennik Corneliusa.";
 };
-FUNC VOID UseCorneliusTagebuch()
+func void UseCorneliusTagebuch()
 {
 	Cornelius_IsLiar = true;
-	B_LogEntry (TOPIC_RESCUEBENNET, "Das Tagebuch ist der Beweis, den ich brauche um Bennet zu entlasten.");	
+	B_LogEntry (TOPIC_RESCUEBENNET, "Dziennik jest dowodem którego potrzebujê, aby uniewinniæ Benneta.");	
 	
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -426,7 +509,7 @@ instance ITWR_DementorObsessionBook_MIS (ItemPR_Mission)
 	on_state[0]		=	Use_DementorObsessionBook;
 	description		=	name;
 };
-FUNC VOID Use_DementorObsessionBook()
+func void Use_DementorObsessionBook()
 {
 	Wld_PlayEffect ("spellFX_Fear", hero, hero, 0, 0, 0, false);
 	Snd_Play ("MFX_FEAR_CAST");
@@ -574,7 +657,7 @@ func void Use_BabosLetter()
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Drogi Babo,");
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_PrintLines	(nDocID,  0, "pewnie zastanawiasz siê, jak napisa³yœmy ten list. Otó¿ zabra³yœmy wszystkie nasze oszczêdnoœci do Mistrza Marlasa i poprosi³yœmy, aby go dla nas napisa³. ¿yczymy ci wszystkiego najlepszego i przesy³amy ten obrazek jako prezent po¿egnalny - niechaj przypomina ci o nas podczas nocy, które spêdzisz w klasztorze.");
+				Doc_PrintLines	(nDocID,  0, "Pewnie zastanawiasz siê, jak napisa³yœmy ten list. Otó¿ zabra³yœmy wszystkie nasze oszczêdnoœci do Mistrza Marlasa i poprosi³yœmy, aby go dla nas napisa³. ¿yczymy ci wszystkiego najlepszego i przesy³amy ten obrazek jako prezent po¿egnalny - niechaj przypomina ci o nas podczas nocy, które spêdzisz w klasztorze.");
 				Doc_PrintLines	(nDocID,  0, "Mamy nadziejê, ¿e lubisz takie obrazki.");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Fehta i Bonka");
@@ -688,7 +771,7 @@ func void Use_MinenAnteil_Mis()
 	
 	SC_KnowsProspektorSalandril = true;
 	
-	if (ItWr_MinenAnteil_Mis_OneTime == false)
+	if (!ItWr_MinenAnteil_Mis_OneTime)
 	{
 		B_LogEntry (TOPIC_MinenAnteile, "Goœæ, który sprzeda³ te udzia³y kupcom, ma na imiê Salandril. Pewnie naj³atwiej go bêdzie znaleŸæ w górnym Khorinis - chyba ¿e ju¿ zwia³ przed d³ugim ramieniem sprawiedliwoœci.");
 		
@@ -821,7 +904,7 @@ func void Use_Map_NewWorld_Orcelite_MIS()
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 	
-	if (Use_Map_NewWorld_Orcelite_MIS_OneTime == false)
+	if (!Use_Map_NewWorld_Orcelite_MIS_OneTime)
 	&& (MIS_KillOrkOberst != 0)
 	{
 		B_LogEntry (TOPIC_OrcElite, "Przy orkowym pu³kowniku znalaz³em dziwn¹ mapê. Wygl¹da jak plan dzia³añ wojennych tych stworzeñ.");
@@ -893,7 +976,7 @@ func void Use_XardasLetterToOpenBook()
 				Doc_PrintLine	(nDocID,  0, "                             Xardas.");
 				Doc_Show		(nDocID);
 	
-	if (MIS_Xardas_SCCanOpenIrdorathBook == false)
+	if (!MIS_Xardas_SCCanOpenIrdorathBook)
 	{
 		B_LogEntry (TOPIC_BuchHallenVonIrdorath, "W swoim liœcie Xardas poinformowa³ mnie, jakie s³owa otwieraj¹ ksiêgê DWÓR IRDORATH.");
 	};
@@ -910,18 +993,18 @@ instance ItWr_HallsofIrdorath_Mis (ItemPR_Mission)
 	on_state[0]		=	Use_HallsofIrdorath;
 	description		=	name;
 };
-FUNC VOID Use_HallsofIrdorath()
+func void Use_HallsofIrdorath()
 {  
-	if (MIS_Xardas_SCCanOpenIrdorathBook == true)
+	if (MIS_Xardas_SCCanOpenIrdorathBook)
 	{
 		B_Say (self, self, "$SCOPENSIRDORATHBOOK");
 		
-  		Wld_PlayEffect ("spellFX_LIGHTSTAR_WHITE", hero, hero, 0, 0, 0, false);
+  		Wld_PlayEffect ("spellFX_LIGHTSTAR_WHITE", self, self, 0, 0, 0, false);
 		Snd_Play("SFX_HealObsession");
 		
-		CreateInvItem (hero, ItWr_HallsofIrdorath_Open_Mis);
-		CreateInvItem (hero, ItKe_MonastarySecretLibrary_Mis);
-		CreateInvItem (hero, ItWr_UseLampIdiot_Mis);
+		CreateInvItem (self, ItWr_HallsofIrdorath_Open_Mis);
+		CreateInvItem (self, ItKe_MonastarySecretLibrary_Mis);
+		CreateInvItem (self, ItWr_UseLampIdiot_Mis);
 		
 		Print("W ok³adce tej ksiêgi schowano klucz!");
 		B_GivePlayerXP(XP_BONUS_10);
@@ -931,7 +1014,7 @@ FUNC VOID Use_HallsofIrdorath()
 	}
 	else
 	{
-		CreateInvItem (hero, ItWr_HallsofIrdorath_Mis);
+		CreateInvItem (self, ItWr_HallsofIrdorath_Mis);
 		
 		Print(PRINT_IrdorathBookDoesntOpen);
 		Wld_PlayEffect ("spellFX_Fear", self, self, 0, 0, 0, false);
@@ -949,9 +1032,9 @@ instance ItWr_HallsofIrdorath_Open_Mis (ItemPR_Mission)
 	on_state[0]		=	Use_HallsofIrdorath_Open;
 	description		=	name;
 };
-FUNC VOID Use_HallsofIrdorath_Open()
+func void Use_HallsofIrdorath_Open()
 {
-	if (ItWr_SCReadsHallsofIrdorath == false)
+	if (!ItWr_SCReadsHallsofIrdorath)
 	{
 		B_LogEntry (TOPIC_BuchHallenVonIrdorath, "Przeczyta³em ksiêgê Xardasa. Jest w niej wzmianka o tajnej bibliotece, która zapewne znajduje siê w podziemiach klasztoru."); 
 	};
@@ -996,7 +1079,7 @@ instance ItWr_XardasSeamapBook_Mis (ItemPR_Mission)
 	on_state[0]		=	Use_XardasSeamapBook_Mis;
 	description		=	name;
 };
-FUNC VOID Use_XardasSeamapBook_Mis()
+func void Use_XardasSeamapBook_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1098,7 +1181,7 @@ instance ItWr_Seamap_Irdorath (ItemPR_Mission)
 	on_state[0]		=	Use_Seamap_Irdorath;
 	description		=	name;
 };
-FUNC VOID Use_Seamap_Irdorath()
+func void Use_Seamap_Irdorath()
 {
 	var int nDocID;
 	nDocID = 	Doc_CreateMap	();
@@ -1106,18 +1189,18 @@ FUNC VOID Use_Seamap_Irdorath()
 				Doc_SetPage 	(nDocID, 0, "Map_NewWorld_Seamap.tga", true);
 				Doc_Show		(nDocID);
 	
-	if (MIS_ShipIsFree == false)
+	if (!MIS_ShipIsFree)
 	&& (Kapitel < 12)
 	{
 		B_Say (self, self, "$IRDORATHTHEREYOUARE");
 	};
 	
-	if (MIS_SCKnowsWayToIrdorath == false)
+	if (!MIS_SCKnowsWayToIrdorath)
 	{
 		Log_CreateTopic (TOPIC_SHIP, LOG_MISSION);
 	    Log_SetTopicStatus (TOPIC_SHIP, LOG_RUNNING);
 	    B_LogEntry (TOPIC_SHIP, "Wygl¹da na to, ¿e muszê siê dostaæ na wyspê nieprzyjaciela. Bêdê potrzebowa³ statku, za³ogi i kapitana.");
-		B_GivePlayerXP(XP_BONUS(2000));
+		B_GivePlayerXP(XP_BONUS_10*2);
 	};
 	
 	MIS_SCKnowsWayToIrdorath = true;
@@ -1141,6 +1224,7 @@ func void Use_ItWr_LastDoorToUndeadDrgDI_MIS()
 				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont 	(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
 				Doc_PrintLines	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "KHADOSH");
@@ -1154,7 +1238,7 @@ func void Use_ItWr_LastDoorToUndeadDrgDI_MIS()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 	
-	B_LogEntry (TOPIC_HallenVonIrdorath, "In der Schriftrolle des Schwarzmagiers waren die Worte KHADOSH EMEM KADAR zu lesen. Das hört sich an wie eine Beschwörungsformel, aber worauf läßt sich das anwenden und was ist das Auge der Macht?"); 
+	B_LogEntry (TOPIC_HallenVonIrdorath, "S³owa KHADOSH EMEM KADAR mo¿na by³o odczytaæ ze zwoju czarnego maga. Brzmi jak zaklêcie, ale do czego siê odnosi i czym jest Oko Mocy? "); 
 };
 ///******************************************************************************************
 instance ItWr_Diary_BlackNovice_MIS (ItemPR_Mission)
@@ -1167,7 +1251,7 @@ instance ItWr_Diary_BlackNovice_MIS (ItemPR_Mission)
 	on_state[0]		=	Use_Diary_BlackNovice;
 	description		=	name;
 };
-FUNC VOID Use_Diary_BlackNovice()
+func void Use_Diary_BlackNovice()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1215,7 +1299,8 @@ func void Use_Joint_Rezept_01()
 				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
-				Doc_PrintLine	(nDocID,  0, "Der grüne Novize");
+				
+				Doc_PrintLine	(nDocID,  0, "Zielony nowicjusz");
 				Doc_SetFont 	(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "(...) Te ³odygi mo¿na ca³kiem nieŸle zwijaæ, ale nie ma porównania z tym, co mieliœmy w obozie na bagnie.");
@@ -1242,7 +1327,7 @@ instance ItWr_Addon_SUMMONANCIENTGHOST (ItemPR_Mission)
 };
 func void UseSummonAncientGhost()
 {
-	if (SC_SummonedAncientGhost == false)
+	if (!SC_SummonedAncientGhost)
 	{
 		B_Say (self, self, "$ADDON_SUMMONANCIENTGHOST");
 		
@@ -1284,6 +1369,7 @@ func void Use_SaturasFirstMessage()
 				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont 	(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
 				Doc_PrintLine	(nDocID,  0, "Szanowny Vatrasie,");
 				Doc_PrintLines	(nDocID,  0, "Dotarliœmy do portalu. Mia³eœ racjê.");
 				Doc_PrintLines	(nDocID,  0, "S¹ znaki wskazuj¹ce na to, ¿e naprawdê czcili Adanosa. SprawdŸ, proszê, moje notatki i potwierdŸ nasze ustalenia.");
@@ -1304,13 +1390,13 @@ func void Use_SaturasFirstMessage()
 		Log_SetTopicStatus (TOPIC_Addon_KDW, LOG_RUNNING);
 		B_LogEntry (TOPIC_Addon_KDW, "Zabra³em bandycie wiadomoœæ, któr¹ Cavalorn mia³ dostarczyæ Vatrasowi, Magowi Wody. To teraz moje zadanie.");
 	};
-	if (SC_KnowsRanger == false)
+	if (!SC_KnowsRanger)
 	{
 		Log_CreateTopic (TOPIC_Addon_RingOfWater, LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_Addon_RingOfWater, LOG_RUNNING);
 		Log_AddEntry (TOPIC_Addon_RingOfWater, "Istnieje stowarzyszenie zw¹ce siê Wodnym Krêgiem. Wygl¹da na to, ¿e rz¹dz¹ nim Magowie Wody.");
 	};
-	if (SC_IsRanger == false)
+	if (!SC_IsRanger)
 	{
 		Log_CreateTopic (TOPIC_Addon_RingOfWater, LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_Addon_RingOfWater, LOG_RUNNING);
@@ -1323,7 +1409,7 @@ func void Use_SaturasFirstMessage()
 ///******************************************************************************************
 instance ItWr_SaturasFirstMessage_Addon (ItemPR_Mission)
 {
-	name 			=	"Zapieczêtowana wiadomoœæ";
+	name 			=	"Otwarta wiadomoœæ";
 	mainflag 		=	ITEM_KAT_DOCS;
 	
 	visual 			=	"ItWr_Scroll_01.3DS";
@@ -1393,7 +1479,7 @@ var int Use_RavensKidnapperMission_Addon_OneTime;
 
 func void Use_RavensKidnapperMission_Addon()
 {
- 	if (Use_RavensKidnapperMission_Addon_OneTime == false)
+ 	if (!Use_RavensKidnapperMission_Addon_OneTime)
  	&& (MIS_Addon_Vatras_WhereAreMissingPeople != 0)
  	{
 	 	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
@@ -1410,6 +1496,7 @@ func void Use_RavensKidnapperMission_Addon()
 				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
 				Doc_PrintLines	(nDocID,  0, "Dexter, ty draniu!");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Kiedy jeszcze by³em magnatem, mo¿na by³o bardziej na tobie polegaæ.");
@@ -1457,6 +1544,7 @@ func void Use_LuciasLoveLetter_Addon()
 				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont 	(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1527,6 +1615,7 @@ func void Use_ItWr_Addon_BanditTrader()
 				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
 				Doc_SetFont 	(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
+				
 				Doc_PrintLines	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "15 krótkich mieczy");
@@ -1541,7 +1630,7 @@ func void Use_ItWr_Addon_BanditTrader()
 				Doc_Show		(nDocID);
 	
 	if (MIS_Vatras_FindTheBanditTrader != 0)
-	&& (Use_ItWr_Addon_BanditTrader_OneTime == false)
+	&& (!Use_ItWr_Addon_BanditTrader_OneTime)
 	{
 		B_LogEntry (TOPIC_Addon_BanditTrader, "Znalaz³em dokument potwierdzaj¹cy, ¿e Fernando jest handlarzem broni¹, którego szukam.");
 		Use_ItWr_Addon_BanditTrader_OneTime = true;
@@ -1569,9 +1658,9 @@ instance ItMi_Addon_Stone_01 (ItemPR_Mission)
 	TEXT[2]			= 	"Czerwona kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-FUNC VOID Use_Addon_Stone_01()
+func void Use_Addon_Stone_01()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID =	Doc_Create		();
@@ -1604,9 +1693,9 @@ instance ItMi_Addon_Stone_05 (ItemPR_Mission)
 	TEXT[2]			= 	"¯ó³ta kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-FUNC VOID Use_Addon_Stone_05()
+func void Use_Addon_Stone_05()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID = 	Doc_Create		();
@@ -1639,9 +1728,9 @@ instance ItMi_Addon_Stone_03 (ItemPR_Mission)
 	TEXT[2]			= 	"Niebieska kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-FUNC VOID Use_Addon_Stone_03()
+func void Use_Addon_Stone_03()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID = 	Doc_Create		();
@@ -1676,9 +1765,9 @@ instance ItMi_Addon_Stone_04 (ItemPR_Mission)
 	TEXT[2]			= 	"Zielona kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-FUNC VOID Use_Addon_Stone_04()
+func void Use_Addon_Stone_04()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID = 	Doc_Create		();
@@ -1711,9 +1800,9 @@ instance ItMi_Addon_Stone_02 (ItemPR_Mission)
 	TEXT[2]			= 	"Fioletowa kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-FUNC VOID Use_Addon_Stone_02()
+func void Use_Addon_Stone_02()
 {
-	if (Npc_GetTalentSkill(hero,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID = 	Doc_Create		();
@@ -1746,7 +1835,7 @@ instance ITWR_Addon_FrancisAbrechnung_Mis (ItemPR_Mission)
 	on_state[0]		=	UseFrancisAbrechnung_Mis;
 	description		=	name;
 };
-FUNC VOID UseFrancisAbrechnung_Mis()
+func void UseFrancisAbrechnung_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1830,7 +1919,7 @@ instance ITWR_Addon_GregsLogbuch_Mis (ItemPR_Mission)
 	
 	description		= 	"Dziennik Grega";
 };
-FUNC VOID UseGregsLogbuch()
+func void UseGregsLogbuch()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();

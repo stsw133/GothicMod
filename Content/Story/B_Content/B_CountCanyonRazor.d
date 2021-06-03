@@ -1,7 +1,7 @@
-//******************************************************************************************
-FUNC INT C_AllCanyonRazorDead()
+///******************************************************************************************
+func int C_AllCanyonRazorDead()
 {
-	if (GregIsBack == true)
+	if (GregIsBack)
 	&& (Npc_IsDead(CanyonRazor01))
 	&& (Npc_IsDead(CanyonRazor02))
 	&& (Npc_IsDead(CanyonRazor03))
@@ -21,8 +21,8 @@ FUNC INT C_AllCanyonRazorDead()
 	};
 };
 
-//******************************************************************************************
-FUNC int C_IAmCanyonRazor (var C_NPC slf)
+///******************************************************************************************
+func int C_IAmCanyonRazor (var C_NPC slf)
 {
 	var C_NPC RAZ01;	RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
 	var C_NPC RAZ02;	RAZ02 = Hlp_GetNpc(CANYONRAZOR02);
@@ -54,14 +54,14 @@ FUNC int C_IAmCanyonRazor (var C_NPC slf)
 	};
 };
 
-//******************************************************************************************
-FUNC VOID B_CountCanyonRazor()
+///******************************************************************************************
+func void B_CountCanyonRazor()
 {
 	var string CanyonRazorLeft;
 	var string CanyonRazorText;
-
-	CanyonRazorLeft = IntToString(10-CanyonRazorBodyCount);
-	CanyonRazorText = ConcatStrings(CanyonRazorLeft,PRINT_Addon_CanyonRazorsLeft);
-
+	
+	CanyonRazorLeft = IntToString(10 - CanyonRazorBodyCount);
+	CanyonRazorText = ConcatStrings(CanyonRazorLeft, PRINT_Addon_CanyonRazorsLeft);
+	
 	AI_PrintScreen (CanyonRazorText, -1, YPOS_GOLDGIVEN, FONT_ScreenSmall, 2);
 };

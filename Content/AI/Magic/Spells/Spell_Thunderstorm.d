@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_Thunderstorm
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_Thunderstorm
+///******************************************************************************************
 
 const int SPL_Cost_Thunderstorm			=	100;
 const int SPL_Damage_Thunderstorm		=	250;
 
-//******************************************************************************************
-INSTANCE Spell_Thunderstorm (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_Thunderstorm (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_Thunderstorm;
@@ -16,7 +16,7 @@ INSTANCE Spell_Thunderstorm (C_Spell_Proto)
 
 func int Spell_Logic_Thunderstorm (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Thunderstorm/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Thunderstorm/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Thunderstorm)
 	{
 		return SPL_SENDCAST;
@@ -29,11 +29,11 @@ func int Spell_Logic_Thunderstorm (var int manaInvested)
 
 func void Spell_Cast_Thunderstorm()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Thunderstorm/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Thunderstorm/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Thunderstorm/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Thunderstorm)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Thunderstorm;
 	};

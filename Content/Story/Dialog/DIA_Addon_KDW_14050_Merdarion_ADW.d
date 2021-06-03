@@ -8,12 +8,12 @@ INSTANCE DIA_Addon_Merdarion_ADW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Merdarion_ADW_EXIT_Condition;
 	information = DIA_Addon_Merdarion_ADW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Merdarion_ADW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Merdarion_ADW_EXIT_Info()
 {
@@ -35,7 +35,7 @@ instance DIA_Addon_Merdarion_ADWHello		(C_INFO)
 
 func int DIA_Addon_Merdarion_ADWHello_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Merdarion_ADWHello_Back ()
@@ -121,7 +121,7 @@ func int DIA_Addon_Merdarion_FokusGeben_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_ADWHello))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -155,7 +155,7 @@ func int DIA_Addon_Merdarion_FirstFocus_Condition ()
 {
 	if (TriggeredTeleporterADW != 0)
 		{
-			return true;
+			return TRUE;
 		};
 };
 var int Merdarion_GotFocusCount;
@@ -172,7 +172,7 @@ func void DIA_Addon_Merdarion_FirstFocus_Info ()
 	Merdarion_GotFocusCount = 1;
 	AI_Output	(self, other, "DIA_Addon_Merdarion_FirstFocus_06_06"); //Postaraj siê uaktywniæ je wszystkie.
 	AI_Output	(other, self, "DIA_Addon_Merdarion_FirstFocus_15_07"); //Zobaczê, co da siê zrobiæ.
-	B_GivePlayerXP (XP_BONUS_5);
+	B_GivePlayerXP (XP_Addon_ActivatedTeleportStone);
 	B_LogEntry (TOPIC_Addon_TeleportsADW,"Merdarion da³ mi kolejny kamieñ ogniskuj¹cy. Jeœli uruchomiê kamieñ teleportacyjny, dostanê nastêpny kamieñ ogniskuj¹cy. Dziêki temu uruchomiê wszystkie kamienie teleportacyjne."); 
 };
 
@@ -185,7 +185,7 @@ instance DIA_Addon_Merdarion_ActivateTeleports		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Merdarion_ActivateTeleports_Condition;
 	information	 = 	DIA_Addon_Merdarion_ActivateTeleports_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Uruchomi³em kolejny kamieñ teleportacyjny.";
 };
@@ -195,7 +195,7 @@ func int DIA_Addon_Merdarion_ActivateTeleports_Condition ()
 	&&	(TriggeredTeleporterADW > Merdarion_GotFocusCount)
 	&& (Merdarion_GotFocusCount < 6)
 			{
-				return true;
+				return TRUE;
 			};
 };
 
@@ -205,7 +205,7 @@ func void DIA_Addon_Merdarion_ActivateTeleports_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Merdarion_ActivateTeleports_15_00"); //Uruchomi³em kolejny kamieñ teleportacyjny.
 
-	if (SC_ADW_ActivatedAllTelePortStones == false)
+	if (SC_ADW_ActivatedAllTelePortStones == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Merdarion_ActivateTeleports_15_01"); //Daj mi nastêpny kamieñ ogniskuj¹cy.
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_02"); //Oczywiœcie. Proszê.
@@ -213,34 +213,123 @@ func void DIA_Addon_Merdarion_ActivateTeleports_Info ()
 		B_GiveInvItems (self, other, ItMi_Focus, 1);		
 	};
 	
-	if (DIA_Addon_Merdarion_ActivateTeleports_OneTime == false)
+	if (DIA_Addon_Merdarion_ActivateTeleports_OneTime == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_03"); //Czy to by³o trudne?
 		AI_Output	(other, self, "DIA_Addon_Merdarion_ActivateTeleports_15_04"); //I tak, i nie. Przyda³oby mi siê ma³e wsparcie.
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_05"); //Mogê daæ ci trochê z³ota. To ci pomo¿e?
 		AI_Output	(other, self, "DIA_Addon_Merdarion_ActivateTeleports_15_06"); //Na pewno nie zaszkodzi.
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_07"); //Niech zobaczê...
-		DIA_Addon_Merdarion_ActivateTeleports_OneTime = true;
+		DIA_Addon_Merdarion_ActivateTeleports_OneTime = TRUE;
 	};
 	
-	if (SC_ADW_ActivatedAllTelePortStones == true)
+	if (SC_ADW_ActivatedAllTelePortStones == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_08"); //Naprawdê dobrze siê spisa³eœ. Mogê ci jedynie pogratulowaæ wykonanej pracy.
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_09"); //Teraz dzia³aj¹ ju¿ wszystkie. Fascynuj¹cy widok, nie s¹dzisz?
 	};
 	
 	AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_10"); //Masz tu trochê z³otych monet.
-	B_GivePlayerXP (XP_BONUS_5);
+	B_GivePlayerXP (XP_Addon_ActivatedTeleportStone);
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);		
-	Merdarion_GotFocusCount += 1;
+	Merdarion_GotFocusCount = (Merdarion_GotFocusCount + 1);
 	
 	if (Merdarion_GotFocusCount >= 1)
-	&& (Saturas_SCBroughtAllToken == false)
-	&& (Ghost_SCKnowsHow2GetInAdanosTempel == false)
+	&& (Saturas_SCBroughtAllToken == FALSE)
+	&& (Ghost_SCKnowsHow2GetInAdanosTempel == FALSE)
  	&& (MIS_Saturas_LookingForHousesOfRulers == 0)
  	{
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_11"); //O, zanim zapomnê... Saturas chcia³by siê z tob¹ widzieæ.
 		AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_12"); //Powinieneœ udaæ siê do niego jak najszybciej.
 	};
 };
+/*
+//*******************************************
+//	Info PreTeachMana
+//*******************************************
+instance DIA_Addon_Merdarion_ADW_PreTeachMana		(C_INFO)
+{
+	npc		 = 	KDW_14050_Addon_Merdarion_ADW;
+	nr		 = 	5;
+	condition	 = 	DIA_Addon_Merdarion_ADW_PreTeachMana_Condition;
+	information	 = 	DIA_Addon_Merdarion_ADW_PreTeachMana_Info;
+
+	description	 = 	"Mo¿esz mnie nauczyæ czegoœ na temat magii?";
+};
+func int DIA_Addon_Merdarion_ADW_PreTeachMana_Condition ()
+{
+	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_ADWHello))
+		{
+			return TRUE;
+		};
+};
+func void DIA_Addon_Merdarion_ADW_PreTeachMana_Info ()
+{
+	AI_Output	(other, self, "DIA_Addon_Merdarion_ADW_PreTeachMana_15_00"); //Mo¿esz mnie nauczyæ czegoœ na temat magii?
+	AI_Output	(self, other, "DIA_Addon_Merdarion_ADW_PreTeachMana_06_01"); //Mogê ci pokazaæ, jak zwiêkszyæ moc magiczn¹.
+	Merdarion_Addon_TeachMana = TRUE;
+
+	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
+	B_LogEntry (TOPIC_Addon_KDWTeacher,"Merdarion mo¿e zwiêkszyæ moj¹ manê."); 
+};
+//*******************************************
+//	Info TEACH_MANA
+//*******************************************
+instance DIA_Addon_Merdarion_ADW_TEACH_MANA		(C_INFO)
+{
+	npc			 = 	KDW_14050_Addon_Merdarion_ADW;
+	nr 			 =  99;
+	condition	 = 	DIA_Addon_Merdarion_ADW_TEACH_MANA_Condition;
+	information	 = 	DIA_Addon_Merdarion_ADW_TEACH_MANA_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê zwiêkszyæ swoje zasoby magicznej energii.";
+};
+var int Merdarion_ADW_Empty;
+func int DIA_Addon_Merdarion_ADW_TEACH_MANA_Condition ()
+{	
+		if (Merdarion_ADW_Empty == FALSE)
+		&& (Merdarion_Addon_TeachMana == TRUE)
+		{
+			return TRUE;
+		};
+};
+func void DIA_Addon_Merdarion_ADW_TEACH_MANA_Info ()
+{
+		AI_Output (other, self, "DIA_Addon_Merdarion_ADW_TEACH_MANA_15_00"); //Chcê zwiêkszyæ swoje zasoby magicznej energii.
+		
+		Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
+		Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
+		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5		, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+};
+FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK()
+{
+	if (other.attribute[ATR_MANA_MAX] >= T_HIGH)  
+	{
+		AI_Output (self, other, "DIA_Addon_Merdarion_ADW_TEACH_MANA_06_00"); //Nie mogê spe³niæ twojej proœby.
+		AI_Output (self, other, "DIA_Addon_Merdarion_ADW_TEACH_MANA_06_01"); //Nie mogê nauczyæ ciê ju¿ nic wiêcej.
+		Merdarion_ADW_Empty = TRUE;
+	};
+	
+	Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
+};
+FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_1()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_HIGH);
+	
+	Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
+	Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+};
+FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_5()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_HIGH);
+	
+	Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
+	Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+};
+*/

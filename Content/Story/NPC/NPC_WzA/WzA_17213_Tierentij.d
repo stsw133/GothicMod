@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17213_Tierentij (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name 								=	"Tierentij";
 	guild 								=	GIL_NONE;
 	id 									=	17213;
@@ -9,33 +9,33 @@ instance WzA_17213_Tierentij (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItRw_Gun5);
 	CreateInvItems (self, ItRw_Ammo, 20);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Fighter", Face_Normal69, Teeth_Normal, ITAR_NA_SAT);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 1);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17213;
 };
 

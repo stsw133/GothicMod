@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4106_Dobar (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Dobar";
 	guild 								=	GIL_MIL;
 	id 									=	4106;
 	voice 								=	8;
-	flags       						=	0;
 	npctype								=	NPCTYPE_OCMAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1H_Vlk_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItem (self, ItMi_Nugget);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Snaf, 0, ITAR_Smith);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4106;
 };
 
-FUNC VOID Rtn_Start_4106()
+func void Rtn_Start_4106()
 {
 	TA_Smith_Fire	(08,00,08,30, "OC_SMITH_FIRE");
     TA_Smith_Anvil	(08,30,09,00, "OC_SMITH_ANVIL");
@@ -60,7 +59,7 @@ FUNC VOID Rtn_Start_4106()
     TA_Smith_Cool	(19,30,20,00, "OC_SMITH_COOL");
     TA_Sleep		(20,00,08,00, "OC_GUARD_ROOM_01_SLEEP_01");
 };
-FUNC VOID Rtn_Tot_4106() 
+func void Rtn_Tot_4106() 
 {
 	TA_Sleep	(08,00,23,00, "TOT");
     TA_Sleep	(23,00,08,00, "TOT");

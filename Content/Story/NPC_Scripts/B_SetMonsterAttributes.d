@@ -67,7 +67,7 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 	Npc_SetTalentSkill (slf, NPC_TALENT_MAGIC, 5);
 	Npc_SetTalentSkill (slf, NPC_TALENT_TYPEOFMAGIC, slf.aivar[AIV_MagicUser]);
 	
-	///fast monsters have less hp
+	/// fast monsters have less hp
 	if (slf.guild == GIL_MEATBUG)
 	|| (slf.aivar[AIV_MM_REAL_ID] == ID_HARE)
 	|| (slf.guild == GIL_BLOODFLY)
@@ -78,7 +78,7 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 		slf.attribute[ATR_HITPOINTS_MAX] = slf.attribute[ATR_HITPOINTS_MAX] * 3 / 5;
 	};
 	
-	///hard monsters have more point prot but less blunt/edge prot
+	/// hard monsters have more point prot but less blunt/edge prot
 	if (slf.guild == GIL_GOBBO_SKELETON)
 	|| (slf.guild == GIL_SKELETON)
 	|| (slf.guild == GIL_SUMMONED_SKELETON)
@@ -108,5 +108,5 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 	//POWER_CHECK(slf);
 	
 	///#DEBUG
-	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULT, dLevel);
+	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY, dLevel);
 };

@@ -196,16 +196,16 @@ Edit: März 2010: Haha! Mit direktem Zugriff auf zEngine Objekte ist dies mitnich
 
 */
 
-//#################################################################
-//
-//  DIE FUNKTIONEN
-//
-//#################################################################
+///#################################################################
+///
+///  DIE FUNKTIONEN
+///
+///#################################################################
 
-const int BIT_VZ = 1; //Vorzeichen hat 1 Bit (was auch sonst?!)
-const int BIT_EXP = 8; //nach IEEE 754 ist 8 die Norm
-const int BIT_MT = 23; //bleiben 23 bit für die Mantisse
-const int EXP_OFFSET = 127; //exp = characteristic - EXP_OFFSET
+const int BIT_VZ = 1; ///Vorzeichen hat 1 Bit (was auch sonst?!)
+const int BIT_EXP = 8; ///nach IEEE 754 ist 8 die Norm
+const int BIT_MT = 23; ///bleiben 23 bit für die Mantisse
+const int EXP_OFFSET = 127; ///exp = characteristic - EXP_OFFSET
 
 const int EXP_PATTERN = ((1 << BIT_EXP) - 1) << BIT_MT;
 const int MT_PATTERN = ((1 << BIT_MT) - 1);
@@ -214,57 +214,65 @@ const int MINUS = 1 << 31;
 const int MININT = 1 << 31;
 const int MAXINT = MININT - 1;
 
-const int FLOATNULL = 0; //vz 0, exp -128, mt 1.0 //nicht echt 0! Aber so ziemlich. Damit die Vergleiche gut funktionieren. Letztendlich ist der Wert aber egal. FLOATNULL ist ein Symbol mit dem nicht gerechnet wird.
-const int FLOATEINS = 1065353216; //vz 0, exp 0 (also 127), mt 1.0
-const int FLOATHALB = 1056964608; //vz 0, exp -1 (also 126), mt 1.0
+const int FLOATNULL = 0; ///vz 0, exp -128, mt 1.0 //nicht echt 0! Aber so ziemlich. Damit die Vergleiche gut funktionieren. Letztendlich ist der Wert aber egal. FLOATNULL ist ein Symbol mit dem nicht gerechnet wird.
+const int FLOATEINS = 1065353216; ///vz 0, exp 0 (also 127), mt 1.0
+const int FLOATHALB = 1056964608; ///vz 0, exp -1 (also 126), mt 1.0
 
 const int PI = 1078530011;
 const int E =  1076754516;
 
-//************************************
-//  Interne Hilfsfunktionen
-//************************************
+///************************************
+///  Interne Hilfsfunktionen
+///************************************
 
-func int HighestBitPos (var int x) {
-    if (x == 0) {
+func int HighestBitPos (var int x)
+{
+    if (x == 0)
+	{
         return 0;
     }
-    else {
-        return 1 + HighestBitPos (x >> 1);
+    else
+	{
+        return 1 + HighestBitPos(x >> 1);
     };
 };
 
-func int extractExp (var int x) {
+func int extractExp (var int x)
+{
     var int exp;
     exp = x & EXP_PATTERN;
     exp = exp >> BIT_MT;
-    exp = exp - EXP_OFFSET; //wegen Vergleichen ist der exponent verschoben
+    exp = exp - EXP_OFFSET; ///wegen Vergleichen ist der exponent verschoben
 
     return exp;
 };
 
-func int extractMt (var int x) {
+func int extractMt (var int x)
+{
     var int mt;
     mt = x & MT_PATTERN;
-    //das erste bit, was gespart wurde wieder hin:
+    ///das erste bit, was gespart wurde wieder hin:
     mt = mt | (1 << BIT_MT);
 
     return mt;
 };
 
-func int packExp (var int exp) {
-    //exponent -> Charakteristik -> und schieben
+func int packExp (var int exp)
+{
+    ///exponent -> Charakteristik -> und schieben
     return (exp + EXP_OFFSET) << BIT_MT;
 };
 
-//************************************
-//      float bauen:
-//************************************
+///************************************
+///      float bauen:
+///************************************
 
-func int mkf (var int x) {
+func int mkf (var int x)
+{
     var int result; result = 0;
-    //das Vorzeichen bit
-    if (x < 0) {
+    ///das Vorzeichen bit
+    if (x < 0)
+	{
         result = MINUS;
         x = -x;
     };
@@ -272,95 +280,113 @@ func int mkf (var int x) {
     var int exp;
     exp = HighestBitPos (x) - 1;
 
-    if (exp < 0) { //kann nur heißen, dass die Zahl null ist
+    if (exp < 0) ///kann nur heißen, dass die Zahl null ist
+	{
         return FLOATNULL;
     };
 
-    //Dass die erste Zahl eine 1 ist, ist ja wohl klar, also wird sie abgeschnitten:
+    ///Dass die erste Zahl eine 1 ist, ist ja wohl klar, also wird sie abgeschnitten:
     x = x & (~(1 << exp));
 
-    //Und jetzt packe ich das ganze in einen float:
-    result = result | packExp(exp); //den Exponenten neben die Mantisse schieben.
+    ///Und jetzt packe ich das ganze in einen float:
+    result = result | packExp(exp); ///den Exponenten neben die Mantisse schieben.
 
-    if (BIT_MT > exp) {
-        return result | (x << (BIT_MT - exp)); //Die Mantisse wird nach vorne geschoben, aber eben nur soweit Platz ist
+    if (BIT_MT > exp)
+	{
+        return result | (x << (BIT_MT - exp)); ///Die Mantisse wird nach vorne geschoben, aber eben nur soweit Platz ist
     }
-    else {
+    else
+	{
         return result | (x >> (exp - BIT_MT));
     };
 };
 
-//************************************
-//  Rückumwandlung zu integer
-//************************************
+///************************************
+///  Rückumwandlung zu integer
+///************************************
 
-func int truncf (var int x) {
-    //Sonderbehandlung für das Symbol NULL
-    if (x == FLOATNULL) {
+func int truncf (var int x)
+{
+    ///Sonderbehandlung für das Symbol NULL
+    if (x == FLOATNULL)
+	{
         return 0;
     };
 
-    var int exp; exp = extractExp (x); //Exponenten holen
-    var int mt; mt = extractMt (x); //Mantisse holen
+    var int exp; exp = extractExp (x); ///Exponenten holen
+    var int mt; mt = extractMt (x); ///Mantisse holen
 
     var int result;
 
-    //Überläufe:
-    if (exp >= 31) { //2^31 * 1.0 läuft ins Vorzeichenbit rein!
-        if (x > 0) {
+    ///Überläufe:
+    if (exp >= 31) ///2^31 * 1.0 läuft ins Vorzeichenbit rein!
+	{
+        if (x > 0)
+		{
             return MAXINT;
-        } else {
+        }
+		else
+		{
             return MININT;
         };
     };
 
-    //schneidet
-    if (exp > BIT_MT) {
-        result = mt << (exp - BIT_MT); //Mantisse zurechtschieben
+    ///schneidet
+    if (exp > BIT_MT)
+	{
+        result = mt << (exp - BIT_MT); ///Mantisse zurechtschieben
     }
-    else {
-        //32 bit oder mehr schieben geht schief.
-        if (BIT_MT - exp > 31) {
+    else
+	{
+        ///32 bit oder mehr schieben geht schief.
+        if (BIT_MT - exp > 31)
+		{
             return 0;
         };
 
         result = mt >> (BIT_MT - exp);
     };
 
-    if (x < 0) {
+    if (x < 0)
+	{
         return - result;
     }
-    else {
+    else
+	{
         return result + 0;
     };
 };
 
-//************************************
-//  Addition
-//************************************
+///************************************
+///  Addition
+///************************************
 
-func int addf (var int x, var int y) {
-    var int expX; expX = extractExp (x);
-    var int expY; expY = extractExp (y);
-    var int mtX; mtX = extractMt (x);
-    var int mtY; mtY = extractMt (y);
+func int addf (var int x, var int y)
+{
+    var int expX; expX = extractExp(x);
+    var int expY; expY = extractExp(y);
+    var int mtX; mtX = extractMt(x);
+    var int mtY; mtY = extractMt(y);
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung für das Symbol NULL
-    if (x == FLOATNULL) {
+    ///Sonderbehandlung für das Symbol NULL
+    if (x == FLOATNULL)
+	{
         return y + 0;
     }
-    else if (y == FLOATNULL) {
+    else if (y == FLOATNULL)
+	{
         return x + 0;
     };
 
-    //Die Betragsmäßig kleinere Zahl an die größere anpassen
+    ///Die Betragsmäßig kleinere Zahl an die größere anpassen
     if (expX > expY)
     {
-        if (expX - expY > 31) {
-            //dann schlagen die folgenden shiftoperationen fehl.
-            //Aber x ist soviel größer als y, einfach x zurückgeben.
+        if (expX - expY > 31)
+		{
+            ///dann schlagen die folgenden shiftoperationen fehl.
+            ///Aber x ist soviel größer als y, einfach x zurückgeben.
             return x + 0;
         };
 
@@ -369,9 +395,10 @@ func int addf (var int x, var int y) {
     }
     else
     {
-        if (expY - expX > 31) {
-            //dann schlagen die folgenden shiftoperationen fehl.
-            //Aber y ist soviel größer als x, einfach y zurückgeben.
+        if (expY - expX > 31)
+		{
+            ///dann schlagen die folgenden shiftoperationen fehl.
+            ///Aber y ist soviel größer als x, einfach y zurückgeben.
             return y + 0;
         };
 
@@ -379,47 +406,56 @@ func int addf (var int x, var int y) {
         expX = expY;
     };
 
-    //Das Ergebnis berechnen:
+    ///Das Ergebnis berechnen:
     var int mtRes;
-    if (isnegX) {
+    if (isnegX)
+	{
         mtRes = -mtX;
     }
-    else {
+    else
+	{
         mtRes = mtX;
     };
 
-    if (isnegY) {
+    if (isnegY)
+	{
         mtRes -= mtY;
     }
-    else {
+    else
+	{
         mtRes += mtY;
     };
 
     var int isnegRes;
-    if (mtRes < 0) {
+    if (mtRes < 0)
+	{
         isnegRes = MINUS;
         mtRes = -mtRes;
     }
-    else {
+    else
+	{
         isnegRes = 0;
     };
 
-    //Präzisierung:
-    if (!mtRes) { //damit abziehen eines Wertes von sich selbst präzise ist.
+    ///Präzisierung:
+    if (!mtRes) ///damit abziehen eines Wertes von sich selbst präzise ist.
+	{
         return FLOATNULL;
     };
 
     var int shift;
     shift = HighestBitPos (mtRes) - (BIT_MT + 1);
 
-    if  (shift > 0) {
+    if (shift > 0)
+	{
         mtRes = mtRes >> shift;
     }
-    else {
+    else
+	{
         mtRes = mtRes << (-shift);
     };
 
-    //Noch die erste Zahl abschneiden (also zuschneiden):
+    ///Noch die erste Zahl abschneiden (also zuschneiden):
     mtRes = mtRes & ((1 << BIT_MT) - 1);
 
     var int expRes;
@@ -428,57 +464,66 @@ func int addf (var int x, var int y) {
     return isnegRes | packExp(expRes) | mtRes;
 };
 
-//************************************
-//  Es lassen sich vier kleine
-//  nützliche Hilfsfunktionen
-//  definieren:
-//************************************
+///************************************
+///  Es lassen sich vier kleine
+///  nützliche Hilfsfunktionen
+///  definieren:
+///************************************
 
-func int negf (var int x) {
+func int negf (var int x)
+{
     if (x < 0) { return x & (~MINUS); }
     else { return x | MINUS; };
 };
 
-func int absf (var int x) {
+func int absf (var int x)
+{
     if (x < 0) { return negf (x); }
     else       { return x + 0; };
 };
 
-func int subf (var int x, var int y) {
+func int subf (var int x, var int y)
+{
     return addf (x, negf (y));
 };
 
-func int roundf (var int x) {
-    if (x < 0) {
+func int roundf (var int x)
+{
+    if (x < 0)
+	{
         return truncf (subf (x, FLOATHALB));
-    } else {
+    }
+	else
+	{
         return truncf (addf (x, FLOATHALB));
     };
 };
 
-//************************************
-//  Multiplikation
-//************************************
+///************************************
+///  Multiplikation
+///************************************
 
-func int mulf (var int x, var int y) {
-    var int expX; expX = extractExp (x);
-    var int expY; expY = extractExp (y);
-    var int mtX; mtX = extractMt (x);
-    var int mtY; mtY = extractMt (y);
+func int mulf (var int x, var int y)
+{
+    var int expX; expX = extractExp(x);
+    var int expY; expY = extractExp(y);
+    var int mtX; mtX = extractMt(x);
+    var int mtY; mtY = extractMt(y);
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung für das Symbol NULL
+    ///Sonderbehandlung für das Symbol NULL
     if (x == FLOATNULL)
-    || (y == FLOATNULL) {
+    || (y == FLOATNULL)
+	{
         return FLOATNULL;
     };
 
-    //Die Exponenten werden addiert
+    ///Die Exponenten werden addiert
     var int expRes;
     expRes = expX + expY;
 
-    //Die Mantissen multipliziert (wobei auf die 32 bit Grenze geachtet werden muss)
+    ///Die Mantissen multipliziert (wobei auf die 32 bit Grenze geachtet werden muss)
     var int mtRes;
     mtRes = (mtX >> (BIT_MT - 14)) * (mtY >> (BIT_MT - 14));
     mtRes = mtRes >> (28 - BIT_MT);
@@ -489,133 +534,149 @@ func int mulf (var int x, var int y) {
         expRes += 1;
     };
 
-    //Noch die erste Zahl abschneiden (also die Mantisse zuschneiden):
+    ///Noch die erste Zahl abschneiden (also die Mantisse zuschneiden):
     mtRes = mtRes & ((1 << BIT_MT) - 1);
 
     var int isNegRes;
-    if (isnegX == isnegY) {
+    if (isnegX == isnegY)
+	{
         isNegRes = 0;
     }
-    else {
+    else
+	{
         isNegRes = MINUS;
     };
 
-    //noch Erkenntnisse zusammenfügen
+    ///noch Erkenntnisse zusammenfügen
     return isnegRes | packExp(expRes) | mtRes;
 };
 
-//************************************
-//  Die Division lässt sich
-//  nicht auf die Multiplikation
-//  zurückführen. Das multiplikative
-//  Inverse ist schließlich schwerer
-//  zu finden, als das additive
-//  Inverse. Also, gesonderte Funktion:
-//************************************
+///************************************
+///  Die Division lässt sich
+///  nicht auf die Multiplikation
+///  zurückführen. Das multiplikative
+///  Inverse ist schließlich schwerer
+///  zu finden, als das additive
+///  Inverse. Also, gesonderte Funktion:
+///************************************
 
-func int divf (var int x, var int y) {
-    var int expX; expX = extractExp (x);
-    var int expY; expY = extractExp (y);
-    var int mtX; mtX = extractMt (x);
-    var int mtY; mtY = extractMt (y);
+func int divf (var int x, var int y)
+{
+    var int expX; expX = extractExp(x);
+    var int expY; expY = extractExp(y);
+    var int mtX; mtX = extractMt(x);
+    var int mtY; mtY = extractMt(y);
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    //Sonderbehandlung für das Symbol NULL
-    if (y == FLOATNULL) {
+    ///Sonderbehandlung für das Symbol NULL
+    if (y == FLOATNULL)
+	{
         Print ("### ERROR: DIVISION BY ZERO ###");
         return FLOATNULL;
     }
-    else if (x == FLOATNULL) {
+    else if (x == FLOATNULL)
+	{
         return FLOATNULL;
     };
 
-    //Exponent subtrahieren
+    ///Exponent subtrahieren
     var int expRes;
     expRes = expX - expY;
 
-    //Die Mantissen dividieren, davor Divident und Divisor passend hinschieben
+    ///Die Mantissen dividieren, davor Divident und Divisor passend hinschieben
     var int mtRes;
-    mtRes = (mtX << (7)) / (mtY >> 9); //X soweit es geht nach links, Y auf die Mitte
+    mtRes = (mtX << (7)) / (mtY >> 9); ///X soweit es geht nach links, Y auf die Mitte
     mtRes = mtRes << (BIT_MT - 7 - 9);
 
-    //Und das Ergebnis wieder zurückschieben
+    ///Und das Ergebnis wieder zurückschieben
     if (mtRes < (1 << (BIT_MT))) {
         mtRes = mtRes << 1;
         expRes -= 1;
     };
 
-    //Noch die erste Zahl abschneiden (also die Mantisse zuschneiden):
+    ///Noch die erste Zahl abschneiden (also die Mantisse zuschneiden):
     mtRes = mtRes & ((1 << BIT_MT) - 1);
 
     var int isNegRes;
-    if (isnegX == isnegY) {
+    if (isnegX == isnegY)
+	{
         isNegRes = 0;
     }
-    else {
+    else
+	{
         isNegRes = MINUS;
     };
 
-    //noch Erkenntnisse zusammenfügen
+    ///noch Erkenntnisse zusammenfügen
     return isnegRes | packExp(expRes) | mtRes;
 };
 
-//************************************
-//  Kleine Hilfsfunktion
-//************************************
+///************************************
+///  Kleine Hilfsfunktion
+///************************************
 
-func int invf (var int x) {
+func int invf (var int x)
+{
     return divf (FLOATEINS, x);
 };
 
 /* thanks to orcwarriorPL for the idea! */
-func int fracf (var int p, var int q) {
+func int fracf (var int p, var int q)
+{
     return divf(mkf(p), mkf(q));
 };
 
-//************************************
-//  Wurzelziehen
-//************************************
+///************************************
+///  Wurzelziehen
+///************************************
 
-func int sqrtf_hlp (var int target, var int guess, var int steps) {
-    //babylonisches Wurzelziehen / Heron
+func int sqrtf_hlp (var int target, var int guess, var int steps)
+{
+    ///babylonisches Wurzelziehen / Heron
     guess = addf (guess, divf (target, guess));
     guess = mulf (FLOATHALB, guess);
 
-    if (steps == 0) {
+    if (steps == 0)
+	{
         return guess;
-    } else {
+    }
+	else
+	{
         return sqrtf_hlp (target, guess, steps - 1);
     };
 };
 
-func int sqrtf (var int x) {
-    if (x < FLOATNULL) {
+func int sqrtf (var int x)
+{
+    if (x < FLOATNULL)
+	{
         Print ("ERROR: sqrtf: x must be nonnegative.");
-
         return FLOATNULL;
     };
     
-    //guess wird der Startwert des Heronverfahrens
-    //der Exponent von guess soll der halbe Exponent von x sein.
+    ///guess wird der Startwert des Heronverfahrens
+    ///der Exponent von guess soll der halbe Exponent von x sein.
     var int e;
 	e = ExtractExp(x);
 	e = e/2;
     var int guess;
-    guess = packExp(e); //Mantisse ist egal.
+    guess = packExp(e); ///Mantisse ist egal.
     
-    //4 ist schon eher viel. Man kann hier auch auf 3 runtergehen.
-    //ab 4 dürfte sich das Ergebnis spätestens stabilisiert haben.
+    ///4 ist schon eher viel. Man kann hier auch auf 3 runtergehen.
+    ///ab 4 dürfte sich das Ergebnis spätestens stabilisiert haben.
     return sqrtf_hlp (x, guess, 4) + 0;
 };
 
-//Schnelles Wurzelziehen von Lehona getreu dem Wikipedia Artikel:
-// http://en.wikipedia.org/wiki/Fast_inverse_square_root
+///Schnelles Wurzelziehen von Lehona getreu dem Wikipedia Artikel:
+/// http://en.wikipedia.org/wiki/Fast_inverse_square_root
 
-func int sqrtf_approx(var int f) {
+func int sqrtf_approx(var int f)
+{
     var int x2f;
     var int threehalfs;
-    if (!threehalfs) {
+    if (!threehalfs)
+	{
         threehalfs = addf(FLOATEINS, FLOATHALB);
     };
 
@@ -625,21 +686,26 @@ func int sqrtf_approx(var int f) {
     return invf(mulf(f, subf(threehalfs, mulf(x2f, mulf(f,f)))));
 };
 
-//************************************
-//  Ordnungsrelationen
-//************************************
+///************************************
+///  Ordnungsrelationen
+///************************************
 
-func int gf (var int x, var int y) {
+func int gf (var int x, var int y)
+{
     var int isnegX; isnegX = x & MINUS;
     var int isnegY; isnegY = y & MINUS;
 
-    if (isNegX && isNegY) { //beide negativ
-        if (x < y) {
+    if (isNegX && isNegY) ///beide negativ
+	{
+        if (x < y)
+		{
             return true;
         };
     }
-    else {
-        if (x > y) {
+    else
+	{
+        if (x > y)
+		{
             return true;
         };
     };
@@ -647,60 +713,72 @@ func int gf (var int x, var int y) {
     return false;
 };
 
-func int gef (var int x, var int y) {
-    if (gf (x,y)) || (x == y) {
+func int gef (var int x, var int y)
+{
+    if (gf (x,y)) || (x == y)
+	{
         return true;
     };
     return false;
 };
 
-func int lef (var int x, var int y) {
-    if (!gf (x,y)) {
+func int lef (var int x, var int y)
+{
+    if (!gf (x,y))
+	{
         return true;
     };
     return false;
 };
 
-func int lf (var int x, var int y) {
-    if (!gef (x,y)) {
+func int lf (var int x, var int y)
+{
+    if (!gef (x,y))
+	{
         return true;
     };
     return false;
 };
 
-//************************************
-//  Ausgabefunktionen
-//************************************
+///************************************
+///  Ausgabefunktionen
+///************************************
 
-func string BuildNumberHlp (var string res, var int x, var int kommapos) {
-    if (kommapos == 0) {
-        res = ConcatStrings (",", res);
-        res = ConcatStrings (IntToString (x), res);
+func string BuildNumberHlp (var string res, var int x, var int kommapos)
+{
+    if (kommapos == 0)
+	{
+        res = ConcatStrings(",", res);
+        res = ConcatStrings(IntToString(x), res);
 
         return res;
     };
 
-    res = ConcatStrings (IntToString (x % 10), res);
+    res = ConcatStrings(IntToString(x % 10), res);
 
-    return BuildNumberHlp (res, x / 10, kommapos - 1);
+    return BuildNumberHlp(res, x / 10, kommapos - 1);
 };
 
-func string BuildNumber (var string res, var int x, var int kommapos) {
-    if (x < 0) {
-        return ConcatStrings ("-", BuildNumberHlp (res, -x, kommapos));
+func string BuildNumber (var string res, var int x, var int kommapos)
+{
+    if (x < 0)
+	{
+        return ConcatStrings("-", BuildNumberHlp(res, -x, kommapos));
     }
-    else {
-        return BuildNumberHlp (res, x, kommapos);
+    else
+	{
+        return BuildNumberHlp(res, x, kommapos);
     };
 };
 
-func void printf (var int x) { //Ok, ok sorry c-ler. Aber ich will konsistente Namen haben.
-    //Ich bekomme nur eine primitive Darstellung als Kommazahl hin.
-    //für die Darstellung als X * 10^EXP fehlen mir Ideen oder Logarithmusfunktionen
-
-    x = mulf (x, mkf (10000));
-    x = truncf (x);
-
-    Print (BuildNumber ("", x, 4));
+func void printf (var int x)
+{
+	///Ok, ok sorry c-ler. Aber ich will konsistente Namen haben.
+    ///Ich bekomme nur eine primitive Darstellung als Kommazahl hin.
+    ///für die Darstellung als X * 10^EXP fehlen mir Ideen oder Logarithmusfunktionen
+	
+    x = mulf(x, mkf(10000));
+    x = truncf(x);
+	
+    Print(BuildNumber("", x, 4));
 };
-

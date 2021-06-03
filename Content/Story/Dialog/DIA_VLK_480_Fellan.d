@@ -7,13 +7,13 @@ INSTANCE DIA_Fellan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Fellan_EXIT_Condition;
 	information = DIA_Fellan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Fellan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Fellan_EXIT_Info()
@@ -30,16 +30,16 @@ instance DIA_Fellan_News		(C_INFO)
 	nr			 =  1;
 	condition	 = 	DIA_Fellan_News_Condition;
 	information	 = 	DIA_Fellan_News_Info;
-	permanent	 =  true;
-	important 	 = 	true;
+	permanent	 =  TRUE;
+	important 	 = 	TRUE;
 };
 func int DIA_Fellan_News_Condition ()
 {	
 	if  Npc_IsInState (self, ZS_Talk)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
-	&& (self.aivar[AIV_LastFightComment] == false)
+	&& (self.aivar[AIV_LastFightComment] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fellan_News_Info ()
@@ -50,14 +50,15 @@ func void DIA_Fellan_News_Info ()
 		 AI_Output (self, other, "DIA_Fellan_News_06_00"); //No dobrze, pokona³eœ mnie. Brawo, bohaterze.
 	
 		 if (MIS_AttackFellan == LOG_RUNNING)
-		 && (FellanGeschlagen == false)
+		 && (FellanGeschlagen == FALSE)
 		 {
 		 	AI_Output (other, self, "DIA_Fellan_News_15_01"); //Przestaniesz waliæ tym m³otkiem, czy mam ci jeszcze raz spuœciæ lanie?
 		 	AI_Output (self, other, "DIA_Fellan_News_06_02"); //Nie, proszê, nie bij mnie. Ale jeœli cokolwiek siê zawali, to bêdzie to twoja wina!
 		 	
-		 	FellanGeschlagen = true;
+		 	FellanGeschlagen = TRUE;
 		 	Npc_ExchangeRoutine (self,"OHNEHAMMER");
 		 	AI_StopProcessInfos (self);
+		 	
 		 };
 	}; 
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
@@ -68,7 +69,7 @@ func void DIA_Fellan_News_Info ()
 	{
 		 AI_Output (self, other, "DIA_Fellan_News_06_04"); //O co ci w³aœciwie chodzi? Chcesz siê biæ? Chcesz rozmawiaæ? Mo¿e chcesz siê wreszcie na coœ zdecydowaæ?
 	};
-	self.aivar[AIV_LastFightComment] = true;
+	self.aivar[AIV_LastFightComment] = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -80,14 +81,14 @@ instance DIA_Fellan_HALLO		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Fellan_HALLO_Condition;
 	information	 = 	DIA_Fellan_HALLO_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Co tam przybijasz?";
 };
 func int DIA_Fellan_HALLO_Condition ()
 {	
-	if (FellanGeschlagen == false)
+	if (FellanGeschlagen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fellan_HALLO_Info ()
@@ -107,7 +108,7 @@ instance DIA_Fellan_Stop		(C_INFO)
 	nr 			 =  3;
 	condition	 = 	DIA_Fellan_Stop_Condition;
 	information	 = 	DIA_Fellan_Stop_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Mo¿esz na moment przestaæ przybijaæ?";
 };
 
@@ -115,7 +116,7 @@ func int DIA_Fellan_Stop_Condition ()
 {
 	if (MIS_AttackFellan == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fellan_Stop_Info ()
@@ -154,21 +155,21 @@ instance DIA_Fellan_klar		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Fellan_klar_Condition;
 	information	 = 	DIA_Fellan_klar_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Hej - wszystko w porz¹dku?";
 };
 func int DIA_Fellan_klar_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Fellan_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fellan_klar_Info ()
 {
 	AI_Output (other, self, "DIA_Fellan_klar_15_00"); //Hej - wszystko w porz¹dku?
 	
-	if (FellanGeschlagen == false) 
+	if (FellanGeschlagen == FALSE) 
 	{
 		AI_Output (self, other, "DIA_Fellan_klar_06_01"); //Taaa, muszê to tylko zreperowaæ na czas.
 	}
@@ -178,3 +179,9 @@ func void DIA_Fellan_klar_Info ()
 	};
 	AI_StopProcessInfos (self);
 };
+//Kapitel 2 Miliz Kandidat 
+
+
+
+
+

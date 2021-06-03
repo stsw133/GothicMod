@@ -9,13 +9,13 @@ INSTANCE DIA_GornDJG_EXIT(C_INFO)
 	nr		= 999;
 	condition	= DIA_GornDJG_EXIT_Condition;
 	information	= DIA_GornDJG_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_GornDJG_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_GornDJG_EXIT_Info()
@@ -39,7 +39,7 @@ func int DIA_GornDJG_STARTCAMP_Condition ()
 {
 	if (Npc_GetDistToWP(self,"OW_DJG_STARTCAMP_01")<1000) 				
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -52,12 +52,15 @@ func void DIA_GornDJG_STARTCAMP_Info ()
 
 	Info_AddChoice	(DIA_GornDJG_STARTCAMP, "Do zobaczenia!", DIA_GornDJG_STARTCAMP_By );
 	Info_AddChoice	(DIA_GornDJG_STARTCAMP, "Co zamierzasz teraz robiæ?", DIA_GornDJG_STARTCAMP_Wohin );
+
+
 };
 func void DIA_GornDJG_STARTCAMP_Wohin ()
 {
 	AI_Output			(other, self, "DIA_GornDJG_STARTCAMP_Wohin_15_00"); //Co zamierzasz teraz robiæ?
 	AI_Output			(self, other, "DIA_GornDJG_STARTCAMP_Wohin_12_01"); //Najpierw pójdê z ch³opakami do Górniczej Doliny. Potem pewnie siê st¹d ulotniê.
 	AI_Output			(self, other, "DIA_GornDJG_STARTCAMP_Wohin_12_02"); //Muszê siê dowiedzieæ, co planuj¹ orkowie.
+
 };
 
 func void DIA_GornDJG_STARTCAMP_By ()
@@ -84,7 +87,7 @@ func int DIA_GornDJG_HALLO_Condition ()
 {
 	if (Npc_GetDistToWP(self,"OW_DJG_ROCKCAMP_01")<1500) 				
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -92,6 +95,7 @@ func void DIA_GornDJG_HALLO_Info ()
 {
 	AI_Output			(other, self, "DIA_GornDJG_HALLO_15_00"); //A wiêc tutaj siê schowa³eœ!
 	AI_Output			(self, other, "DIA_GornDJG_HALLO_12_01"); //Ty te¿ nie dasz siê tak ³atwo zabiæ, co?
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -110,7 +114,7 @@ func int DIA_GornDJG_WHATSUP_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_GornDJG_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -137,7 +141,7 @@ func void DIA_GornDJG_WHATSUP_A_Dragon ()
 	AI_Output			(self, other, "DIA_GornDJG_WHATSUP_A_Dragon_12_01"); //Bardzo mo¿liwe. Tamten p³askowy¿ jest lepiej strze¿ony ni¿ królewski skarbiec, a koniec koñców - to jedyna droga do fortecy.
 	AI_Output			(self, other, "DIA_GornDJG_WHATSUP_A_Dragon_12_02"); //Jakby ma³o by³o samych smoków - krêci siê tam mnóstwo innego plugastwa.
 
-	GornDJG_WhatMonsters = true;
+	GornDJG_WhatMonsters = TRUE;
 
 	B_LogEntry (TOPIC_Dragonhunter,"Gorn twierdzi, ¿e w starej skalnej fortecy przebywa smok."); 
 	
@@ -158,9 +162,9 @@ instance DIA_GornDJG_WHATMONSTERS		(C_INFO)
 
 func int DIA_GornDJG_WHATMONSTERS_Condition ()
 {
-	if (GornDJG_WhatMonsters == true)
+	if (GornDJG_WhatMonsters == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -169,6 +173,7 @@ func void DIA_GornDJG_WHATMONSTERS_Info ()
 	AI_Output			(other, self, "DIA_GornDJG_WHATMONSTERS_15_00"); //O czym mówisz?
 	AI_Output			(self, other, "DIA_GornDJG_WHATMONSTERS_12_01"); //Nie przyjrza³em im siê jeszcze dok³adniej, ale czymkolwiek s¹ - chodz¹ wyprostowane i maj¹ ³uskowat¹ skórê. Skacz¹ po ska³ach jak stado zêbaczy w poœcigu za ofiar¹.
 	AI_Output			(self, other, "DIA_GornDJG_WHATMONSTERS_12_02"); //S³ysza³em parê razy, jak wêszy³y po okolicy. Myœlê, ¿e zajê³y ca³¹ wy¿ynê.
+
 };
 
 
@@ -188,7 +193,7 @@ func int DIA_GornDJG_WAHTABOUTORCS_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_GornDJG_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -219,10 +224,10 @@ func int DIA_GornDJG_HELPKILLDRACONIANS_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_GornDJG_WHATMONSTERS))
 		&& (Npc_KnowsInfo(other, DIA_GornDJG_WAHTABOUTORCS))
-		&& ((Npc_IsDead(RockDragon))== false)
+		&& ((Npc_IsDead(RockDragon))== FALSE)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -237,6 +242,7 @@ func void DIA_GornDJG_HELPKILLDRACONIANS_Info ()
 	AI_Output			(self, other, "DIA_GornDJG_HELPKILLDRACONIANS_12_06"); //Daj mi znaæ, kiedy bêdziesz gotowy.
 
 	B_LogEntry (TOPIC_Dragonhunter,"Gorn chce mi pomóc przedostaæ siê do skalnej fortecy na p³askowy¿u."); 
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -255,7 +261,7 @@ func int DIA_GornDJG_LOSGEHTS_Condition ()
 {
 if (Npc_KnowsInfo(other, DIA_GornDJG_HELPKILLDRACONIANS))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -265,7 +271,7 @@ func void DIA_GornDJG_LOSGEHTS_Info ()
 	AI_Output			(self, other, "DIA_GornDJG_LOSGEHTS_12_01"); //Jak za dawnych czasów, co? Ale coœ sobie wyjaœnijmy: to MOJA bitwa. Tym razem to JA idê z przodu!
 
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	Npc_ExchangeRoutine	(self,"RunToRockRuinBridge"); 
 };
 
@@ -280,14 +286,14 @@ instance DIA_GornDJG_BISHIERHIN		(C_INFO)
 	npc		 = 	PC_Fighter_DJG;
 	condition	 = 	DIA_GornDJG_BISHIERHIN_Condition;
 	information	 = 	DIA_GornDJG_BISHIERHIN_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_GornDJG_BISHIERHIN_Condition ()
 {
 	if (Npc_GetDistToWP(self,"LOCATION_19_01")<1000) 				
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -299,11 +305,11 @@ func void DIA_GornDJG_BISHIERHIN_Info ()
 
 	B_LogEntry (TOPIC_Dragonhunter,"Gorn powróci³ na swój posterunek. Zamierza nadal obserwowaæ poczynania orków."); 
 
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP (XP_GornDJGPlateauClear);
  	
  	AI_StopProcessInfos (self);
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"Start");
 };
 
@@ -324,10 +330,10 @@ func int DIA_GornDJG_DRAGONDEAD_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_GornDJG_WHATSUP))
 		&& (Npc_GetDistToWP(self,"OW_DJG_ROCKCAMP_01")<1000)
-		&&  ((Npc_IsDead(RockDragon))== true)
+		&&  ((Npc_IsDead(RockDragon))== TRUE)
 		)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -341,5 +347,5 @@ func void DIA_GornDJG_DRAGONDEAD_Info ()
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_05"); //Zostanê tu jeszcze trochê, a potem wrócê do Lee. Mo¿e spotkamy siê u niego!
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_06"); //Mam ju¿ doœæ tej okolicy. Najwy¿sza pora zwijaæ manatki.
 	AI_Output			(other, self, "DIA_GornDJG_DRAGONDEAD_15_07"); //Na razie!
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };

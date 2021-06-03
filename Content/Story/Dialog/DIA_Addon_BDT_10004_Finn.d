@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Finn_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Finn_EXIT_Condition;
 	information = DIA_Addon_Finn_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Finn_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Finn_EXIT_Info()
 {	
@@ -28,14 +28,15 @@ INSTANCE DIA_Addon_Finn_Hacker   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Finn_Hacker_Condition;
 	information = DIA_Addon_Finn_Hacker_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Znowu w pracy?"; 
 };
 FUNC INT DIA_Addon_Finn_Hacker_Condition()
 {	
+	
 	if (Npc_GetDistToWP (self,"ADW_MINE_PICK_06") <= 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Hacker_Info()
@@ -52,14 +53,14 @@ INSTANCE DIA_Addon_Finn_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Finn_Hi_Condition;
 	information = DIA_Addon_Finn_Hi_Info;
-	permanent   = false;
-	important 	= true; 
+	permanent   = FALSE;
+	important 	= TRUE; 
 };
 FUNC INT DIA_Addon_Finn_Hi_Condition()
 {	
 	if (Npc_IsInState(self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Hi_Info()
@@ -77,12 +78,12 @@ INSTANCE DIA_Addon_Finn_Hacke   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Finn_Hacke_Condition;
 	information = DIA_Addon_Finn_Hacke_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie dostanê kilof?";
 };
 FUNC INT DIA_Addon_Finn_Hacke_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Finn_Hacke_Info()
 {	
@@ -101,14 +102,14 @@ INSTANCE DIA_Addon_Finn_Esteban   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Finn_Esteban_Condition;
 	information = DIA_Addon_Finn_Esteban_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co myœlisz o Estebanie?";
 };
 FUNC INT DIA_Addon_Finn_Esteban_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Finn_Hacke)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Esteban_Info()
@@ -127,14 +128,14 @@ INSTANCE DIA_Addon_Finn_Profi (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Finn_Profi_Condition;
 	information = DIA_Addon_Finn_Profi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Znasz siê na górnictwie?";
 };
 FUNC INT DIA_Addon_Finn_Profi_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Finn_Esteban)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Profi_Info()
@@ -152,7 +153,7 @@ INSTANCE DIA_Addon_BDT_10004_Finn_Mine   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Finn_Mine_Condition;
 	information = DIA_Addon_Finn_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ADDON_MINE_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Finn_Mine_Condition()
@@ -161,7 +162,7 @@ FUNC INT DIA_Addon_Finn_Mine_Condition()
 	&& (Player_SentBuddler < 3)
 	&& (Npc_HasItems (other, ItmI_Addon_Stone_01) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Mine_Info()
@@ -176,11 +177,11 @@ FUNC VOID DIA_Addon_Finn_Mine_Info()
 	AI_Output (self, other, "DIA_Addon_BDT_10004_Finn_Mine_07_04");//Przy odrobinie szczêœcia zdobêdziesz sporo kawa³ków.
 	
 	B_Upgrade_hero_HackChance(10);
-	Knows_Truemmerschlag = true;
+	Knows_Truemmerschlag = TRUE;
 	
-	Player_SentBuddler += 1;
-	B_GivePlayerXP(XP_BONUS_1);
-	AI_StopProcessInfos(self);
+	Player_SentBuddler = (Player_SentBuddler +1);
+	B_GivePlayerXP (XP_Addon_MINE);
+	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };
 
@@ -193,14 +194,14 @@ INSTANCE DIA_Addon_Finn_Gold   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Finn_Gold_Condition;
 	information = DIA_Addon_Finn_Gold_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ADDON_GOLD_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Finn_Gold_Condition()
 {	
 	if (Npc_KnowsInfo(other, DIA_Addon_Finn_Profi))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Gold_Info()
@@ -222,14 +223,14 @@ INSTANCE DIA_Addon_Finn_ein   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Addon_Finn_ein_Condition;
 	information = DIA_Addon_Finn_ein_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Potrafisz oceniæ moje umiejêtnoœci kopania z³ota?";
 };
 FUNC INT DIA_Addon_Finn_ein_Condition()
 {	
 	if (Npc_KnowsInfo(other, DIA_Addon_Finn_Profi))
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int Finn_einmal;
@@ -238,10 +239,10 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 {
 	AI_Output (other, self, "DIA_Addon_Finn_ein_15_00");//Potrafisz oceniæ moje umiejêtnoœci kopania z³ota?
 	
-	if (Finn_einmal == false)
+	if (Finn_einmal == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Finn_ein_07_01");//Pewnie. Robiê tu ju¿ od ponad 35 lat. Wszystko poznam!
-		Finn_einmal = true;
+		Finn_einmal = TRUE;
 	};
 	AI_Output (self, other, "DIA_Addon_Finn_ein_07_02");//Powiedzia³bym, ¿e jesteœ...
 
@@ -273,12 +274,12 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 	{
 		AI_Output (self, other, "DIA_Addon_Finn_ein_07_09"); //guru kopaczy.
 		
-		if (Finn_Gratulation == false)
+		if (Finn_Gratulation == FALSE)
 		{
 			AI_Output (self, other, "DIA_Addon_Finn_ein_07_10");//Teraz jesteœ tak dobry, jak ja. Gratulujê, partnerze!
 			B_GivePlayerXP (XP_Ambient*2);
 			Snd_Play ("LevelUP");
-			Finn_Gratulation = true;
+			Finn_Gratulation = TRUE;
 		};
 	};
 	
@@ -286,7 +287,7 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 	var string ConcatText;
 	
 	ConcatText = ConcatStrings ("Kopanie z³ota: ", IntToString (Hero_HackChance));
-	ConcatText = ConcatStrings (ConcatText, " procent");
+	ConcatText = ConcatStrings (ConcatText, " Prozent");
 	PrintScreen (concatText, -1, -1, FONT_ScreenSmall,2);
 };
 
@@ -299,14 +300,14 @@ INSTANCE DIA_Addon_Finn_Attentat   (C_INFO)
 	nr          = 8;
 	condition   = DIA_Addon_Finn_Attentat_Condition;
 	information = DIA_Addon_Finn_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "A co do próby zabójstwa Estebana...";
 };
 FUNC INT DIA_Addon_Finn_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Attentat_Info()
@@ -328,7 +329,7 @@ func void B_Addon_Finn_TellAll()
 	AI_Output (other, self, "DIA_Addon_Finn_TellAll_15_02"); //No i?
 	AI_Output (self, other, "DIA_Addon_Finn_TellAll_07_03"); //On ZAWSZE tam jest. Wed³ug mnie to DOŒÆ podejrzane.
 	
-	Finn_TellAll = true;
+	Finn_TellAll = TRUE;
 	B_LogEntry (Topic_Addon_Esteban, "Finn mówi, ¿e Huno by³ nieobecny w czasie próby zabójstwa.");
 };
 	
@@ -359,7 +360,7 @@ func void DIA_Addon_Finn_Attentat_KillEsteban()
 	AI_Output (other, self, "DIA_Addon_Finn_KillEsteban_15_00"); //Chcê za³atwiæ Estebana i szukam sprzymierzeñca!
 	AI_Output (self, other, "DIA_Addon_Finn_KillEsteban_07_01"); //Nie chcê mieæ z tym nic wspólnego!
 	
-	Finn_Petzt = true;
+	Finn_Petzt = TRUE;
 	
 	Info_ClearChoices (DIA_Addon_Finn_Attentat);
 	AI_StopProcessInfos(self);
@@ -402,7 +403,7 @@ INSTANCE DIA_Addon_Finn_Again  (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Finn_Again_Condition;
 	information = DIA_Addon_Finn_Again_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "A wracaj¹c do tej próby zabójstwa...";
 };
 FUNC INT DIA_Addon_Finn_Again_Condition()
@@ -410,13 +411,13 @@ FUNC INT DIA_Addon_Finn_Again_Condition()
 	if (Npc_KnowsInfo(other,DIA_Addon_Finn_Attentat))
 	&& (!Npc_IsDead(Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Finn_Again_Info()
 {
 	AI_Output (other, self, "DIA_Addon_Finn_Again_15_00"); //A wracaj¹c do tej próby zabójstwa...
-	if (Finn_TellAll == true)
+	if (Finn_TellAll == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Finn_Again_07_01"); //Powiedzia³em ci ju¿ wszystko...
 		
@@ -445,3 +446,5 @@ func void DIA_Addon_Finn_Again_Nochmal()
 	
 	Info_ClearChoices (DIA_Addon_Finn_Again);	
 };
+
+

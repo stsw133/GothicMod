@@ -7,14 +7,14 @@ INSTANCE DIA_Marduk_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Marduk_Kap1_EXIT_Condition;
 	information = DIA_Marduk_Kap1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Marduk_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap1_EXIT_Info()
@@ -29,12 +29,12 @@ instance DIA_Marduk_JOB		(C_INFO)
 	npc			 = 	KDF_505_Marduk;
 	condition	 = 	DIA_Marduk_JOB_Condition;
 	information	 = 	DIA_Marduk_JOB_Info;
-	permanent	 =	false;	
+	permanent	 =	FALSE;	
 	description	 = 	"Czym siê zajmujesz?";
 };
 func int DIA_Marduk_JOB_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Marduk_JOB_Info ()
 {
@@ -50,14 +50,14 @@ instance DIA_Marduk_Arbeit		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Marduk_Arbeit_Condition;
 	information	 = 	DIA_Marduk_Arbeit_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Czy mogê coœ dla ciebie zrobiæ, Mistrzu?";
 };
 func int DIA_Marduk_Arbeit_Condition ()
 {	
 	if (MIS_KlosterArbeit == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Marduk_Arbeit_Info ()
@@ -81,7 +81,7 @@ instance DIA_Marduk_Gebetet		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Marduk_Gebetet_Condition;
 	information	 = 	DIA_Marduk_Gebetet_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Modli³em siê za paladynów.";
 };
 func int DIA_Marduk_Gebetet_Condition ()
@@ -89,7 +89,7 @@ func int DIA_Marduk_Gebetet_Condition ()
 	if (MIS_MardukBeten == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, PC_PrayShrine_Paladine))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Marduk_Gebetet_Info ()
@@ -98,7 +98,7 @@ func void DIA_Marduk_Gebetet_Info ()
 	AI_Output (self, other, "DIA_Marduk_Gebetet_05_01"); //To bardzo dobrze. A teraz wracaj do swoich zajêæ.
 	
 	MIS_MardukBeten = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_0);
+	B_GivePlayerXP (XP_MardukBeten);
 	B_StartOtherRoutine (Sergio,"START");
 };
 ///////////////////////////////////////////////////////////////////////
@@ -109,14 +109,14 @@ instance DIA_Marduk_Evil		(C_INFO)
 	npc			 = 	KDF_505_Marduk;
 	condition	 = 	DIA_Marduk_Evil_Condition;
 	information	 = 	DIA_Marduk_Evil_Info;
-	permanent	 =	true;
+	permanent	 =	TRUE;
 	description	 = 	"Co to s¹ 'si³y Z³a'?";
 };
 func int DIA_Marduk_Evil_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Marduk_JOB)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Marduk_Evil_Info ()
@@ -135,14 +135,14 @@ instance DIA_Marduk_Pal		(C_INFO)
 	npc			 = 	KDF_505_Marduk;
 	condition	 = 	DIA_Marduk_Pal_Condition;
 	information	 = 	DIA_Marduk_Pal_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Ale w klasztorze ¿yj¹ jedynie magowie i nowicjusze.";
 };
 func int DIA_Marduk_Pal_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Marduk_JOB)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Marduk_Pal_Info ()
@@ -152,6 +152,141 @@ func void DIA_Marduk_Pal_Info ()
 	AI_Output (self, other, "DIA_Marduk_Pal_05_02"); //...paladyni s³awi¹ przede wszystkim wielkie czyny naszego Pana.
 	AI_Output (self, other, "DIA_Marduk_Pal_05_03"); //My reprezentujemy naukê Innosa, podczas gdy paladyni s¹ jego wojownikami, ruszaj¹cymi do bitwy z jego imieniem na ustach i zwyciê¿aj¹cymi ku jego chwale.
 };
+///////////////////////////////////////////////////////////////////////
+//	Info BEFORETEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Marduk_BEFORETEACH		(C_INFO)
+{
+	npc			 = 	KDF_505_Marduk;
+	nr			 = 	3;
+	condition	 = 	DIA_Marduk_BEFORETEACH_Condition;
+	information	 = 	DIA_Marduk_BEFORETEACH_Info;
+	permanent	 = 	FALSE;
+	description	 = 	"Czy móg³byœ mnie czegoœ nauczyæ?";
+};
+func int DIA_Marduk_BEFORETEACH_Condition ()
+{	
+	if Npc_KnowsInfo (hero,DIA_Marduk_JOB)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Marduk_BEFORETEACH_Info ()
+{
+	AI_Output (other, self, "DIA_Marduk_BEFORETEACH_15_00"); //Czy móg³byœ mnie czegoœ nauczyæ?
+	AI_Output (self, other, "DIA_Marduk_BEFORETEACH_05_01"); //Jestem ekspertem w dziedzinie magii lodu i pioruna. Mogê ciê nauczyæ, jak okie³znaæ ich moc.
+	
+	if (other.guild != GIL_KDF)
+	{
+		AI_Output (self, other, "DIA_Marduk_BEFORETEACH_05_02"); //Jednak szkolê jedynie magów.
+	};
+	
+};
+///////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Marduk_TEACH		(C_INFO)
+{
+	npc			 = 	KDF_505_Marduk;
+	nr			 =  10;
+	condition	 = 	DIA_Marduk_TEACH_Condition;
+	information	 = 	DIA_Marduk_TEACH_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Nauczaj mnie (tworzenie run)";
+};
+func int DIA_Marduk_TEACH_Condition ()
+{	
+	if Npc_KnowsInfo (hero,DIA_Marduk_BEFORETEACH)
+	&& (other.guild == GIL_KDF)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Marduk_TEACH_Info ()
+{
+		var int abletolearn;
+		
+		abletolearn = 0;
+		
+		AI_Output (other, self, "DIA_Marduk_TEACH_15_00"); //Zostañ moim nauczycielem.
+
+		Info_ClearChoices 	(DIA_Marduk_TEACH);
+		Info_AddChoice 		(DIA_Marduk_TEACH,DIALOG_BACK,DIA_Marduk_TEACH_BACK);
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
+		&& (PLAYER_TALENT_RUNES [SPL_Zap] == FALSE) 
+		{
+			Info_AddChoice 		(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_Zap, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Zap)),DIA_Marduk_TEACH_ZAP);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
+		&& (PLAYER_TALENT_RUNES [SPL_Icebolt] == FALSE)
+		{
+			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_Icebolt, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Icebolt)) ,DIA_Marduk_TEACH_Icebolt);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3) 
+		&& (PLAYER_TALENT_RUNES [SPL_IceCube] == FALSE) 
+		{
+			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_IceCube, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_IceCube)) ,DIA_Marduk_TEACH_IceCube);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
+		&& (PLAYER_TALENT_RUNES [SPL_ChargeZap] == FALSE) 
+		{
+			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_ChargeZap, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_ChargeZap)) ,DIA_Marduk_TEACH_ThunderBall);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4) 
+		&& (PLAYER_TALENT_RUNES [SPL_LightningFlash] == FALSE) 
+		{
+			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_LightningFlash, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_LightningFlash)) ,DIA_Marduk_TEACH_LightningFlash);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5)
+		&& (PLAYER_TALENT_RUNES [SPL_IceWave] == FALSE)
+		{
+			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_IceWave, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_IceWave)) ,DIA_Marduk_TEACH_IceWave);
+			abletolearn = (abletolearn +1);
+		};
+		if (abletolearn < 1)
+		{
+			AI_Output (self, other, "DIA_Marduk_TEACH_05_01"); //Teraz nie mogê ciê uczyæ.
+			Info_ClearChoices 	(DIA_Marduk_TEACH);
+		};
+	
+};
+FUNC VOID DIA_Marduk_TEACH_BACK()
+{
+	Info_ClearChoices 	(DIA_Marduk_TEACH);
+};
+///////////////////////////////////////////////////////////////////////
+//	MAGIER ZAUBER 
+///////////////////////////////////////////////////////////////////////
+FUNC VOID DIA_Marduk_TEACH_ZAP()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_Zap);	
+};
+FUNC VOID DIA_Marduk_TEACH_Icebolt()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_Icebolt);	
+};
+FUNC VOID DIA_Marduk_TEACH_LightningFlash()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_LightningFlash);	
+};
+FUNC VOID DIA_Marduk_TEACH_IceCube()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_IceCube);	
+};
+FUNC VOID DIA_Marduk_TEACH_ThunderBall()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_ChargeZap);	
+};
+FUNC VOID DIA_Marduk_TEACH_IceWave()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_IceWave);	
+};
+
 
 //#####################################################################
 //##
@@ -168,14 +303,14 @@ INSTANCE DIA_Marduk_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Marduk_Kap2_EXIT_Condition;
 	information = DIA_Marduk_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Marduk_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap2_EXIT_Info()
@@ -200,14 +335,14 @@ INSTANCE DIA_Marduk_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Marduk_Kap3_EXIT_Condition;
 	information = DIA_Marduk_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Marduk_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap3_EXIT_Info()
@@ -224,16 +359,16 @@ INSTANCE DIA_Marduk_Kap3_Hello   (C_INFO)
 	nr          = 30;
 	condition   = DIA_Marduk_Kap3_Hello_Condition;
 	information = DIA_Marduk_Kap3_Hello_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Marduk_Kap3_Hello_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	&& ((hero.guild == GIL_PAL)
 	|| (hero.guild == GIL_DJG))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap3_Hello_Info()
@@ -260,6 +395,7 @@ FUNC VOID DIA_Marduk_Kap3_Hello_Info()
 	{
 		Info_AddChoice (DIA_Marduk_Kap3_Hello,"Przyby³em z farmy.",DIA_Marduk_Kap3_Hello_DJG);
 	};
+	
 };
 
 FUNC VOID DIA_Marduk_Kap3_Hello_NotYourConcern ()
@@ -306,7 +442,7 @@ INSTANCE DIA_Marduk_TrainPals   (C_INFO)
 	nr          = 32;
 	condition   = DIA_Marduk_TrainPals_Condition;
 	information = DIA_Marduk_TrainPals_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Czego mo¿esz mnie nauczyæ?";
 };
 
@@ -316,9 +452,9 @@ INSTANCE DIA_Marduk_TrainPals   (C_INFO)
 FUNC INT DIA_Marduk_TrainPals_Condition()
 {
 	if (hero.guild == GIL_PAL)
-	&& (Marduk_TrainPals_permanent == false)
+	&& (Marduk_TrainPals_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_TrainPals_Info()
@@ -333,7 +469,7 @@ FUNC VOID DIA_Marduk_TrainPals_Info()
 	Info_ClearChoices (DIA_Marduk_TrainPals); 
 	Info_AddChoice (DIA_Marduk_TrainPals,"Mo¿e póŸniej.",DIA_Marduk_TrainPals_Later);
 	Info_AddChoice (DIA_Marduk_TrainPals,"Co przez to rozumiesz?",DIA_Marduk_TrainPals_Meaning);
-	Info_AddChoice (DIA_Marduk_TrainPals,"Co to jest Konsekracja Miecza?",DIA_Marduk_TrainPals_Blessing);
+	Info_AddChoice (DIA_Marduk_TrainPals,"Was ist die Schwertweihe?",DIA_Marduk_TrainPals_Blessing);
 };
 
 FUNC VOID DIA_Marduk_TrainPals_Later()
@@ -360,7 +496,7 @@ FUNC VOID DIA_Marduk_TrainPals_Blessing()
 	AI_Output (self ,other,"DIA_Marduk_TrainPals_Blessing_05_02"); //Podczas tej ceremonii œwiêta moc Innosa przep³ywa przez miecz paladyna, obdarzaj¹c go niewiarygodn¹ moc¹.
 	AI_Output (self ,other,"DIA_Marduk_TrainPals_Blessing_05_03"); //Wyœwiêcony w ten sposób miecz towarzyszyæ bêdzie paladynowi do koñca jego dni jako najcenniejszy skarb.
 
-	Marduk_TrainPals_permanent = true;
+	Marduk_TrainPals_permanent = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -372,14 +508,14 @@ INSTANCE DIA_Marduk_SwordBlessing   (C_INFO)
 	nr          = 33;
 	condition   = DIA_Marduk_SwordBlessing_Condition;
 	information = DIA_Marduk_SwordBlessing_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Chcia³bym konsekrowaæ mój miecz.";
 };
 FUNC INT DIA_Marduk_SwordBlessing_Condition()
 {
-	if (Marduk_TrainPals_permanent == true)
+	if (Marduk_TrainPals_permanent == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_SwordBlessing_Info()
@@ -413,7 +549,7 @@ FUNC VOID DIA_Marduk_SwordBlessing_OreBlade ()
 	AI_Output (other,self ,"DIA_Marduk_SwordBlessing_OreBlade_15_00"); //Gdzie mogê zdobyæ magiczne ostrze?
 	AI_Output (self ,other,"DIA_Marduk_SwordBlessing_OreBlade_05_01"); //Spróbuj u kowala Harada.
 	AI_Output (self ,other,"DIA_Marduk_SwordBlessing_OreBlade_05_02"); //Dopóki paladyni przebywaj¹ na wyspach, to on zaopatruje ich w broñ.
-	if (Npc_IsDead(HARAD) == true)
+	if (Npc_IsDead (HARAD) == TRUE)
 	{
 		AI_Output (other,self ,"DIA_Marduk_SwordBlessing_OreBlade_15_03"); //Harad nie ¿yje.
 		AI_Output (self ,other,"DIA_Marduk_SwordBlessing_OreBlade_05_04"); //Przykro mi, wobec tego bêdziesz musia³ poczekaæ, a¿ wrócisz na kontynent wraz z innymi paladynami.
@@ -429,14 +565,14 @@ INSTANCE DIA_Marduk_Kap3_PERM   (C_INFO)
 	nr          = 39;
 	condition   = DIA_Marduk_Kap3_PERM_Condition;
 	information = DIA_Marduk_Kap3_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jakieœ wieœci?";
 };
 FUNC INT DIA_Marduk_Kap3_PERM_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap3_PERM_Info()
@@ -447,6 +583,7 @@ FUNC VOID DIA_Marduk_Kap3_PERM_Info()
 	{
 		AI_Output (self, other,"DIA_Marduk_Kap3_PERM_05_01"); //Tak, do naszego klasztoru przenikn¹³ szpieg.
 		AI_Output (self, other,"DIA_Marduk_Kap3_PERM_05_02"); //Ukrad³ nam Oko Innosa, jeden z naszych najwa¿niejszych artefaktów. A to tylko wierzcho³ek góry lodowej.
+		//Joly:AI_Output (other,self ,"DIA_Marduk_Kap3_PERM_15_03"); //Was meinst du?
 	};
 	
 	AI_Output (self ,other,"DIA_Marduk_Kap3_PERM_05_04"); //Wróg najwyraŸniej wkroczy³ ju¿ do miasta.
@@ -532,14 +669,14 @@ INSTANCE DIA_Marduk_Kap4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Marduk_Kap4_EXIT_Condition;
 	information = DIA_Marduk_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Marduk_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap4_EXIT_Info()
@@ -556,15 +693,15 @@ INSTANCE DIA_Marduk_Kap4U5_PERM   (C_INFO)
 	nr          = 49;
 	condition   = DIA_Marduk_Kap4U5_PERM_Condition;
 	information = DIA_Marduk_Kap4U5_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jakieœ wieœci?";
 };
 FUNC INT DIA_Marduk_Kap4U5_PERM_Condition()
 {
-	if (Kapitel == 10)
-	|| (Kapitel == 11)
+	if (Kapitel == 4)
+	|| (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap4U5_PERM_Info()
@@ -588,14 +725,14 @@ INSTANCE DIA_Marduk_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Marduk_Kap5_EXIT_Condition;
 	information = DIA_Marduk_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Marduk_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Marduk_Kap5_EXIT_Info()

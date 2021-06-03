@@ -7,13 +7,13 @@ INSTANCE DIA_Parlaf_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Parlaf_EXIT_Condition;
 	information = DIA_Parlaf_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Parlaf_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Parlaf_EXIT_Info()
@@ -34,14 +34,14 @@ instance DIA_Parlaf_HALLO		(C_INFO)
 
 func int DIA_Parlaf_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Parlaf_HALLO_Info ()
 {
 	AI_Output (other, self, "DIA_Parlaf_HALLO_15_00"); //Hej! Co u ciebie?
 	AI_Output (self, other, "DIA_Parlaf_HALLO_03_01"); //A jak ci siê wydaje? Ca³e dnie spêdzam przy toczydle, ostrz¹c broñ.
-	if ((Npc_IsDead(Engor))== false)
+	if ((Npc_IsDead(Engor))== FALSE)
 	{
 		AI_Output (self, other, "DIA_Parlaf_HALLO_03_02"); //Wczoraj Engor znów zmniejszy³ nam racje ¿ywnoœciowe. Jak tak dalej pójdzie - pozdychamy z g³odu.
 		AI_Output (self, other, "DIA_Parlaf_HALLO_03_03"); //Chyba ¿e wczeœniej powybijaj¹ nas orkowie. Tak czy siak - niemi³a perspektywa.
@@ -62,9 +62,9 @@ instance DIA_Parlaf_ENGOR		(C_INFO)
 func int DIA_Parlaf_ENGOR_Condition ()
 {	
 	if Npc_KnowsInfo (hero, DIA_Parlaf_HALLO)
-	&& ((Npc_IsDead(Engor))== false)
+	&& ((Npc_IsDead(Engor))== FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parlaf_ENGOR_Info ()
@@ -87,16 +87,16 @@ instance DIA_Parlaf_Wo		(C_INFO)
 	nr		 	 = 	3;
 	condition	 = 	DIA_Parlaf_Wo_Condition;
 	information	 = 	DIA_Parlaf_Wo_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Gdzie znajdê tego Engora?";
 };
 
 func int DIA_Parlaf_Wo_Condition ()
 {
 	if Npc_KnowsInfo (other,DIA_Parlaf_ENGOR)
-	&& ((Npc_IsDead(Engor))== false)
+	&& ((Npc_IsDead(Engor))== FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parlaf_Wo_Info ()
@@ -113,7 +113,7 @@ instance DIA_Parlaf_HUNGRIG		(C_INFO)
 	nr		     = 	2;
 	condition	 = 	DIA_Parlaf_HUNGRIG_Condition;
 	information	 = 	DIA_Parlaf_HUNGRIG_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co s³ychaæ?";
 };
 
@@ -121,9 +121,9 @@ func int DIA_Parlaf_HUNGRIG_Condition ()
 {
 	if (MIS_Engor_BringMeat != LOG_SUCCESS)
 	&& Npc_KnowsInfo (hero,DIA_Parlaf_HALLO)
-	&& ((Npc_IsDead(Engor))== false)
+	&& ((Npc_IsDead(Engor))== FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parlaf_HUNGRIG_Info ()
@@ -140,7 +140,7 @@ instance DIA_Parlaf_SATT		(C_INFO)
 	nr		 	 = 	3;
 	condition	 = 	DIA_Parlaf_SATT_Condition;
 	information	 = 	DIA_Parlaf_SATT_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co s³ychaæ?";
 };
 
@@ -149,7 +149,7 @@ func int DIA_Parlaf_SATT_Condition ()
 	if ((MIS_Engor_BringMeat == LOG_SUCCESS) || (Npc_IsDead(Engor)))
 	&& (Npc_KnowsInfo (hero,DIA_Parlaf_HALLO))
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int DIA_Parlaf_SATT_OneTime;
@@ -157,11 +157,11 @@ func void DIA_Parlaf_SATT_Info ()
 {
 	AI_Output (other, self, "DIA_Parlaf_SATT_15_00"); //Co s³ychaæ?
 	
-	if (DIA_Parlaf_SATT_OneTime == false)
-	&& ((Npc_IsDead(Engor))== false)
+	if (DIA_Parlaf_SATT_OneTime == FALSE)
+	&& ((Npc_IsDead(Engor))== FALSE)
 	{
 		AI_Output (self, other, "DIA_Parlaf_SATT_03_01"); //Engor rozdzieli³ nowy zapas miêsa. Najwy¿szy czas.
-		DIA_Parlaf_SATT_OneTime = true;
+		DIA_Parlaf_SATT_OneTime = TRUE;
 	}
 	else
 	{

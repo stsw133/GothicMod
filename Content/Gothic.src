@@ -24,113 +24,105 @@ STORY\SVM.d
 
 AI\HUMAN\B_RefreshArmor.d
 AI\HUMAN\Guilds.d
-AI\HUMAN\TA.d
 
-AI\HUMAN\B_Human\B_LookAtNpc.d 
-AI\HUMAN\B_Human\B_ResetAll.d 
+AI\HUMAN\B_Human\B_LookAtNpc.d
+AI\HUMAN\B_Human\B_ResetAll.d
 AI\HUMAN\B_Human\B_Say.d
 AI\HUMAN\B_Human\B_SetAttitude.d
 AI\HUMAN\B_Human\B_ValidateOther.d
 
 AI\HUMAN\C_Human\C_BodyStateContains.d
-AI\HUMAN\C_Human\C_NpcIsBotheredByPlayerRoomGuild.d
 AI\HUMAN\C_Human\C_DropUnconscious.d
 AI\HUMAN\C_Human\C_NpcIs.d
+AI\HUMAN\C_Human\C_NpcIsBotheredByPlayerRoomGuild.d
 
 STORY\Log_Entries\Log_Constants_*.d
-STORY\Events\B_AWAKE_STONEGUARDIAN.d
+STORY\Log_Entries\B_CloseTopic.d
+STORY\Log_Entries\B_CloseTopics_*.d
+STORY\Log_Entries\B_Checklog.d
+STORY\XP_Constants.d
 
 MOD\MOD_AttributesCheck.d
 MOD\MOD_Bars.d
 MOD\MOD_BodyStates.d
-MOD\MOD_Difficult.d
+MOD\MOD_Difficulty.d
 MOD\MOD_Girlfriends.d
-MOD\MOD_HeroReset.d
-
-STORY\B_Story\B_GivePlayer*.d
-
-MOD\MOD_Missions.d
 
 STORY\B_Story\C_NpcIsInQuarter.d
 STORY\B_Story\C_DiegoTooFar.d
 STORY\B_Story\B_AddFightSkill.d
+STORY\B_Story\B_GivePlayerExp.d
+
+MOD\MOD_HeroReset.d
+MOD\MOD_Missions.d
+MOD\MOD_SelfFightTeach.d
 
 STORY\Npc_Scripts\B_NpcFunctions.d
 
 STORY\B_Story\B_RaiseAttribute.d
 STORY\B_Story\B_LogEntry.d
 STORY\B_Story\B_GetDayPlus.d
+STORY\B_Story\B_BlessAttribute.d
 STORY\B_Story\B_StartOtherRoutine.d
+STORY\B_Story\B_KillOrRemoveNpc.d
+STORY\B_Story\B_PlayerMap.d
+
 STORY\B_Content\B_RangerMeeting.d
 STORY\B_Content\B_SCObsession.d
 STORY\B_Content\B_Extro_Avi.d
 STORY\B_Content\B_Greg_ComesToDexter.d
 STORY\B_Content\B_Upgrade_Hero_HackChance.d
 STORY\B_Content\B_CountCanyonRazor.d
-STORY\B_Content\B_MALCOMEXIDENT.d
-
-STORY\Dialog_Mobsis\B_PlayerMap.d
-
-STORY\Log_Entries\B_CloseTopic.d
-STORY\Log_Entries\B_CloseTopics_*.d
-STORY\Log_Entries\B_Checklog.d
-
+STORY\B_Content\B_MalcomExident.d
 STORY\B_Content\B_SCUsesRake.d
-
-STORY\B_Story\B_KillOrRemoveNpc.d
 STORY\B_Content\B_RemoveQuarhodron.d
 STORY\B_Content\B_PlayerFindItem.d
 
-STORY\Npc_Scripts\B_SetNpcVisual.d
+STORY\B_Story\B_GetLearnCost.d
+STORY\B_Story\B_BuildLearnString.d
+STORY\B_Story\B_TeachAttributePoints.d
+STORY\B_Story\B_TeachTalents.d
 
+ITEMS\Tuning_*.d
 ITEMS\IT_*.d
 ITEMS\MissionItems*.d
 ITEMS\SpecialItems.d
 ITEMS\GiveAll.d
 
-STORY\B_Story\B_GiveAmbientInv.d
-STORY\B_Story\B_GiveDeathInv.d
-STORY\B_GiveTradeInv\B_ClearRuneInv.d
-STORY\B_GiveTradeInv\B_ClearJunkInv.d
-STORY\B_GiveTradeInv\B_GiveTradeInv_*.d
-STORY\B_GiveTradeInv\B_GiveTradeInv.d
-
+MOD\MOD_AmbientTalks.d
 MOD\MOD_Defeated.d
 MOD\MOD_ItemsCheck.d
+MOD\MOD_Masteries.d
 MOD\MOD_QuickSlot.d
 
 AI\MAGIC\B_MagicHurtNpc.d
 
-MOD\MOD_Masteries.d
-
 STORY\B_Content\B_ScHasBeliarsWeapon.d
-STORY\B_Content\B_BeliarsWeaponSpecialDamage.d
+STORY\B_Content\B_WeaponSpecialDamage.d
+STORY\B_Content\B_GhostSpecialDamage.d
 
+AI\MONSTER\B_Monster\B_MM_WispDetect.d
 AI\MONSTER\B_Monster\B_MM_DeSynchronize.d
 
 AI\AI_INTERN\PERCEPTION.D
-STORY\B_Content\B_GhostSpecialDamage.d
+AI\AI_INTERN\Npc_Plunder_Is_Empty.d
 AI\AI_INTERN\B_RefreshAtInsert.d
 
-AI\HUMAN\C_HUMAN\C_IsUsedMobMyPossession.d
+AI\HUMAN\C_Human\C_IsUsedMobMyPossession.d
 AI\HUMAN\C_Human\C_IsTakenItemMyPossession.d
-AI\HUMAN\C_Human\C_PlayerIsFakeBandit.d
-AI\HUMAN\C_Human\C_PlayerIsFakePirate.d
 AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
 
 STORY\B_Story\B_UseItem.d
 
 STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
-STORY\B_AssignAmbientInfos\B_Bartok_ShitAnOrc.d
-STORY\B_AssignAmbientInfos\B_Koch_Hackebeil.d
+STORY\B_AssignAmbientInfos\B_Addon_Myxir_TeachRequest.d
+STORY\B_AssignAmbientInfos\B_Addon_Riordian_TeachWisp.d
 
 AI\HUMAN\B_Human\B_CommentFakeGuild.d
 AI\HUMAN\B_Human\B_Say_AttackEnd.d
 AI\HUMAN\B_Human\B_Say_AttackReason.d
 AI\HUMAN\B_Human\B_Say_GuildGreetings.d
 AI\HUMAN\B_Human\B_Say_Smalltalk.d
-
-AI\AI_INTERN\Npc_Plunder_Is_Empty.d
 
 AI\HUMAN\C_Human\C_NpcIsBotheredByWeapon.d
 AI\HUMAN\C_Human\C_WantToFlee.d
@@ -160,11 +152,7 @@ AI\HUMAN\C_Human\C_WantToReactToSneaker.d
 
 AI\MAGIC\B_ReadySpell.d
 AI\MAGIC\B_SelectSpell.d
-
-STORY\B_Story\B_GiveInvItems.d
-
-MOD\MOD_Pickpocket.d
-MOD\MOD_SelfFightTeach.d
+AI\MAGIC\C_Spell_Proto.d
 
 AI\HUMAN\B_Human\B_FinishingMove.d
 AI\HUMAN\B_Human\B_SelectWeapon.d
@@ -186,41 +174,42 @@ AI\HUMAN\B_Human\B_AssessPlayer.d
 AI\HUMAN\B_Human\B_MoveMob.d
 AI\HUMAN\B_Human\B_RemoveWeapon.d
 
+STORY\B_Story\B_GiveInvItems.d
+MOD\MOD_Pickpocket.d
+
 STORY\B_AssignAmbientInfos\B_Announce_Herold.d
 STORY\B_AssignAmbientInfos\B_Preach_Vatras.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos_*.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientNEWS.d
 STORY\B_AssignAmbientInfos\B_AssignToughGuyNEWS.d
+STORY\B_AssignAmbientInfos\B_AssignCityGuide.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos.d
 
-AI\MAGIC\C_Spell_Proto.d
 AI\MAGIC\B_AssessMagic.d
 AI\MAGIC\C_CanNpcCollideWithSpell.d
 AI\MAGIC\Spells\Spell_*.d
 AI\MAGIC\Spell_ProcessMana.d
 AI\MAGIC\ZS_Magic\ZS_*.d
 
+STORY\B_Story\B_GiveAmbientInv.d
+STORY\B_Story\B_GiveDeathInv.d
+
+STORY\Events\B_AWAKE_STONEGUARDIAN.d
 Story\Events\B_EVENT_PORTAL_EARTHQUAKE.d
 Story\Events\EVT_TELEPORTSTATION_FUNC.d
 
+AI\HUMAN\TA.d
 AI\HUMAN\TA_Human\ZS*.d
 
 STORY\Dialog_Mobsis\*.d
 
+STORY\Npc_Scripts\B_GiveNpcTalents.d
+STORY\Npc_Scripts\B_SetAttributesToChapter.d
+
 STORY\Npc_Scripts\B_SetMonsterAttributes.d
 STORY\Npc_Scripts\B_SetAttributesToLevel.d
+STORY\Npc_Scripts\B_SetNpcVisual.d
 STORY\Npc_Scripts\Npc_Default.d
-
-STORY\B_Content\B_DragonKillCounter.d
-
-STORY\B_Story\B_GetLearnCost.d
-STORY\B_Story\B_BuildLearnString.d
-STORY\B_Story\B_TeachAttributePoints.d
-STORY\B_Story\B_TeachTalents.d
-
-MOD\MOD_iMonologue.d
-
-STORY\DIALOG\DIALOG_Test\DIA_*.d
 
 STORY\NPC\*.d
 STORY\NPC\NPC_G2\*.d
@@ -228,12 +217,20 @@ STORY\NPC\NPC_WzA\*.d
 STORY\NPC\Monster\MST_*.d
 STORY\NPC\Monster\Demon\MST_*.d
 STORY\NPC\Monster\Golem\MST_*.d
-STORY\NPC\Monster\Minecrawler\MST_*.d
 STORY\NPC\Monster\Neutral\MST_*.d
 STORY\NPC\Monster\Orc\MST_*.d
 STORY\NPC\Monster\Undead\MST_*.d
 
+MOD\MOD_iMonologue.d
+
+STORY\B_GiveTradeInv\B_ClearRuneInv.d
+STORY\B_GiveTradeInv\B_GiveTradeInv_*.d
+STORY\B_GiveTradeInv\B_GiveTradeInv.d
+
 STORY\B_AssignAmbientInfos\B_GivePotion.d
+STORY\B_AssignAmbientInfos\DIA_*.d
+
+STORY\B_Content\B_DragonKillCounter.d
 
 AI\HUMAN\ZS_Human\ZS_ClearRoom.d
 AI\HUMAN\ZS_Human\ZS_Dead.d
@@ -253,8 +250,17 @@ STORY\G_Functions\G_CanNotUse.d
 STORY\G_Functions\G_CanSteal.d
 STORY\G_Functions\G_PickLock.d
 
+STORY\B_Story\B_TeachFightTalentPercent.d
+STORY\B_Story\B_TeachMagicCircle.d
+STORY\B_Story\B_TeachPlayerTalentAlchemy.d
+STORY\B_Story\B_TeachPlayerTalentForeignLanguage.d
+STORY\B_Story\B_TeachPlayerTalentWispDetector.d
+STORY\B_Story\B_TeachPlayerTalentRunes.d
+STORY\B_Story\B_TeachPlayerTalentSmith.d
+STORY\B_Story\B_TeachPlayerTalentTakeAnimalTrophy.d
+STORY\B_Story\B_TeachThiefTalent.d
 STORY\B_Story\B_InitGuildAttitudes.d
-STORY\B_Story\B_Npc_IsAliveCheck.d
+STORY\B_Story\B_NPC_IsAliveCheck.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk_Main.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk_*.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk.d
@@ -271,11 +277,10 @@ STORY\B_Content\B_CaptainConditions.d
 STORY\B_Content\B_CaptainCallsAllOnBoard.d
 STORY\B_Content\B_PiratesGoHome.d
 
-STORY\DIALOG\DIA_*.d
+STORY\DIALOG\DIA*.d
 STORY\B_AssignAmbientInfos\B_*.d
 
 AI\MONSTER\C_Monster\C_*.d
-
 AI\MONSTER\B_Monster\B_SetMonsterAttitude.d
 AI\MONSTER\B_Monster\B_InitMonsterAttitudes.d
 AI\MONSTER\B_Monster\B_MM_AssessBody.d
@@ -284,10 +289,8 @@ AI\MONSTER\B_Monster\B_MM_AssessEnemy.d
 AI\MONSTER\B_Monster\B_MM_AssessOthersDamage.d
 AI\MONSTER\B_Monster\B_MM_AssessPlayer.d
 AI\MONSTER\B_Monster\B_MM_AssessWarn.d
-
 AI\MONSTER\Rtn_Monster\ZS_MM_Rtn_*.d
 AI\MONSTER\Rtn_Monster\ZS_MM_AllScheduler.d
-
 AI\MONSTER\ZS_Monster\ZS_MM_*.d
 
 STORY\B_Story\B_MAGECAVETRIGGER.d
@@ -296,6 +299,7 @@ STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
 MOD\MOD_MovieMode.d
 MOD\TICK_TOCK.d
+
 STORY\Startup.d
 
 TestFunctions.d

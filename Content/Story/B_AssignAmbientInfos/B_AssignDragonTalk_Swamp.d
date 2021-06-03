@@ -7,23 +7,20 @@ INSTANCE DIA_Dragon_Swamp_Exit(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dragon_Swamp_Exit_Condition;
 	information	= DIA_Dragon_Swamp_Exit_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Dragon_Swamp_Exit_Condition()
 {
-	if (DragonTalk_Exit_Free == true)
+	if (DragonTalk_Exit_Free == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 FUNC VOID DIA_Dragon_Swamp_Exit_Info()
 {	
-//	Npc_RemoveInvItems (other,ItAm_InnosEye,1);
-//	CreateInvItems 	   (other,ItMi_InnosEye_Discharged_MIS,1);	 
-
 	AI_Output			(self, other, "DIA_Dragon_Swamp_Exit_20_00"); //Wyczerpa³a siê moc Oka. Nadszed³ twój kres, cz³owieku.
 
 	Swampdragon = Hlp_GetNpc (dragon_swamp);
@@ -31,22 +28,22 @@ FUNC VOID DIA_Dragon_Swamp_Exit_Info()
 	Swampdragon.flags = 0;
 
 	AI_StopProcessInfos	(self);
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 
-	if (DJG_SwampParty_GoGoGo == true)
+	if (DJG_SwampParty_GoGoGo == TRUE)
 	{
-		if (DJG_SwampParty == true) 
-		&& (Npc_IsDead(DJG_Cipher) == false)
+		if (DJG_SwampParty == TRUE) 
+		&& (Npc_IsDead(DJG_Cipher) == FALSE)
 		{
 			B_StartOtherRoutine	(DJG_Rod,"SwampDragon");
 		};
 		B_StartOtherRoutine	(DJG_Cipher,"SwampDragon");
 	};
 
-	if (DJG_Biff_Stay == true)
+	if (DJG_Biff_Stay == TRUE)
 	{
 		B_StartOtherRoutine (Biff,"Follow");
-		DJG_Biff_Stay = false;
+		DJG_Biff_Stay = FALSE;
 	};
 };
 
@@ -58,8 +55,8 @@ INSTANCE DIA_Dragon_Swamp_Hello(C_INFO)
 	nr			= 5;
 	condition	= DIA_Dragon_Swamp_Hello_Condition;
 	information	= DIA_Dragon_Swamp_Hello_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Dragon_Swamp_Hello_Condition()
@@ -103,7 +100,7 @@ func int DIA_Dragon_Swamp_WERBISTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Dragon_Swamp_Hello))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -131,7 +128,7 @@ func int DIA_Dragon_Swamp_WOSINDDIEANDEREN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Dragon_Swamp_Hello))
 		{
-				return true;
+				return TRUE;
 		};
 };
 

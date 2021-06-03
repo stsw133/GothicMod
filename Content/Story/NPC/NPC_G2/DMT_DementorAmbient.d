@@ -1,53 +1,52 @@
-//******************************************************************************************
-PROTOTYPE Default_AmbientDementor (C_NPC)
+///******************************************************************************************
+prototype Default_AmbientDementor (C_NPC)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Dementor;
 	guild 								=	GIL_DMT;
 	voice 								=	19;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
-
-	// ------ Aivars ------
-	aivar[AIV_MM_FollowTime]			=	NPC_TIME_FOLLOW;
-	aivar[AIV_FightDistCancel]			=	FIGHT_DIST_CANCEL;
 	bodyStateInterruptableOverride		=	true;
 
-	// ------ Attributes ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MM_FollowTime]			=	NPC_TIME_FOLLOW;
+	aivar[AIV_FightDistCancel]			=	FIGHT_DIST_CANCEL;
+
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_MadPsi, 0, ITAR_Dementor);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 };
 
-//******************************************************************************************
-//	DMT_DementorAmbient
-//******************************************************************************************
+///******************************************************************************************
+///	DMT_DementorAmbient
+///******************************************************************************************
 instance DMT_DementorAmbient (Default_AmbientDementor)
 {	start_aistate = ZS_Stand_Dementor;	};
 
-//******************************************************************************************
-//	DMT_DementorAmbientSpeaker
-//******************************************************************************************
+///******************************************************************************************
+///	DMT_DementorAmbientSpeaker
+///******************************************************************************************
 instance DMT_DementorAmbientSpeaker (Default_AmbientDementor)
 {
 	aivar[AIV_EnemyOverride]			=	true;
 	start_aistate						=	ZS_Stand_Dementor;
 };
 
-//******************************************************************************************
-//	DMT_DementorAmbientWalker
-//******************************************************************************************
+///******************************************************************************************
+///	DMT_DementorAmbientWalker
+///******************************************************************************************
 instance DMT_DementorAmbientWalker1 (Default_AmbientDementor)
 {
 	id 									=	1221;
@@ -55,7 +54,7 @@ instance DMT_DementorAmbientWalker1 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1221;
 };
 
-FUNC VOID Rtn_Start_1221()
+func void Rtn_Start_1221()
 {	
 	TA_Stand_Dementor	(06,00,07,00, "NW_XARDAS_TOWER_VIEW_03");
 	TA_Stand_Dementor	(07,00,08,00, "NW_FARM1_CITYWALL_05");
@@ -95,7 +94,7 @@ instance DMT_DementorAmbientWalker2 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1222;
 };
 
-FUNC VOID Rtn_Start_1222()
+func void Rtn_Start_1222()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_XARDAS_TOWER_SECRET_CAVE_04");
 	TA_Stand_Dementor	(07,00,08,00, "NW_XARDAS_VALLEY_03");
@@ -135,7 +134,7 @@ instance DMT_DementorAmbientWalker3 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1223;
 };
 
-FUNC VOID Rtn_Start_1223()
+func void Rtn_Start_1223()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_FARM3_PATH_12_MONSTER_03");
 	TA_Stand_Dementor	(07,00,08,00, "NW_CITY_TO_FARM2_10");
@@ -175,7 +174,7 @@ instance DMT_DementorAmbientWalker4 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1224;
 };
 
-FUNC VOID Rtn_Start_1224()
+func void Rtn_Start_1224()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_BIGMILL_PATH_05");
 	TA_Stand_Dementor	(07,00,08,00, "NW_TAVERNE_BIGFARM_05");
@@ -215,7 +214,7 @@ instance DMT_DementorAmbientWalker5 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1225;
 };
 
-FUNC VOID Rtn_Start_1225()
+func void Rtn_Start_1225()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_FARM3_BIGWOOD_04");
 	TA_Stand_Dementor	(07,00,08,00, "NW_BIGMILL_FARM3_03");
@@ -255,7 +254,7 @@ instance DMT_DementorAmbientWalker6 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1226;
 };
 
-FUNC VOID Rtn_Start_1226()
+func void Rtn_Start_1226()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_PATH_TO_MONASTERY_07");
 	TA_Stand_Dementor	(07,00,08,00, "NW_BIGMILL_PATH_06");
@@ -295,7 +294,7 @@ instance DMT_DementorAmbientWalker7 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1227;
 };
 
-FUNC VOID Rtn_Start_1227()
+func void Rtn_Start_1227()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_TROLLAREA_PATH_62");
 	TA_Stand_Dementor	(07,00,08,00, "NW_TROLLAREA_RIVERSIDE_10");
@@ -335,7 +334,7 @@ instance DMT_DementorAmbientWalker8 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1228;
 };
 
-FUNC VOID Rtn_Start_1228()
+func void Rtn_Start_1228()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_TROLLAREA_PATH_49");
 	TA_Stand_Dementor	(07,00,08,00, "NW_TROLLAREA_PLANE_08");
@@ -375,7 +374,7 @@ instance DMT_DementorAmbientWalker9 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1229;
 };
 
-FUNC VOID Rtn_Start_1229()
+func void Rtn_Start_1229()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_TROLLAREA_PATH_31");
 	TA_Stand_Dementor	(07,00,08,00, "BIGCROSS");
@@ -415,7 +414,7 @@ instance DMT_DementorAmbientWalker10 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1230;
 };
 
-FUNC VOID Rtn_Start_1230()
+func void Rtn_Start_1230()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_TROLLAREA_PATH_42");
 	TA_Stand_Dementor	(07,00,08,00, "NW_TROLLAREA_RITUALFOREST_17");
@@ -455,7 +454,7 @@ instance DMT_DementorAmbientWalker11 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1231;
 };
 
-FUNC VOID Rtn_Start_1231()
+func void Rtn_Start_1231()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_CITY_TO_FARM2_05");
 	TA_Stand_Dementor	(07,00,08,00, "NW_FOREST_PATH_79");
@@ -488,9 +487,9 @@ FUNC VOID Rtn_Start_1231()
 	TA_Stand_Dementor	(05,00,06,00, "NW_FOREST_PATH_79");
 };
 
-//******************************************************************************************
-//	DMT_DementorSpeakerVino
-//******************************************************************************************
+///******************************************************************************************
+///	DMT_DementorSpeakerVino
+///******************************************************************************************
 instance DMT_DementorSpeakerVino1 (Default_AmbientDementor)
 {
 	id 									=	1232;
@@ -519,9 +518,9 @@ instance DMT_DementorSpeakerVino4 (Default_AmbientDementor)
 	start_aistate						=	ZS_Stand_Dementor;
 };
 
-//******************************************************************************************
-//	DMT_DementorAmbientSekob
-//******************************************************************************************
+///******************************************************************************************
+///	DMT_DementorAmbientSekob
+///******************************************************************************************
 instance DMT_DementorAmbientSekob1 (Default_AmbientDementor)
 {
 	start_aistate						=	ZS_Stand_Dementor;
@@ -542,19 +541,19 @@ instance DMT_DementorAmbientSekob4 (Default_AmbientDementor)
 	start_aistate						=	ZS_Stand_Dementor;
 };
 
-//******************************************************************************************
-//	CastlemineDMT
-//******************************************************************************************
+///******************************************************************************************
+///	CastlemineDMT
+///******************************************************************************************
 instance CastlemineDMT (Default_AmbientDementor)
 {
 	aivar[AIV_EnemyOverride]			=	true;
 	start_aistate						=	ZS_Stand_Dementor;
 };
 
-//******************************************************************************************
-//	KeyMaster	Dragonisland
-//******************************************************************************************
-INSTANCE DragonIsle_Keymaster	(Default_AmbientDementor)
+///******************************************************************************************
+///	KeyMaster	Dragonisland
+///******************************************************************************************
+instance DragonIsle_Keymaster	(Default_AmbientDementor)
 {
 	name								=	"Schlüsselmeister";
 	id 									=	1236;
@@ -563,16 +562,16 @@ INSTANCE DragonIsle_Keymaster	(Default_AmbientDementor)
 	start_aistate						=	ZS_Stand_Dementor;
 };
 
-//******************************************************************************************
-//	Akademie	Dragonisland
-//******************************************************************************************
+///******************************************************************************************
+///	Akademie	Dragonisland
+///******************************************************************************************
 instance DMT_DementorAmbientWalker_DI_01 (Default_AmbientDementor)
 {
 	id 									=	1237;
 	daily_routine 						=	Rtn_Start_1237;
 };
 
-FUNC VOID Rtn_Start_1237()
+func void Rtn_Start_1237()
 {
 	TA_Stand_Dementor	(06,00,06,10, "DI_UNDEADDRAGONTEMPEL_06");
 	TA_Stand_Dementor	(06,10,06,20, "DI_UNDEADDRAGONTEMPEL_03");
@@ -749,7 +748,7 @@ instance DMT_DementorAmbientWalker_DI_02 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1238;
 };
 
-FUNC VOID Rtn_Start_1238()
+func void Rtn_Start_1238()
 {
 	TA_Stand_Dementor	(06,00,06,10, "DI_UNDEADDRAGONTEMPEL_09");
 	TA_Stand_Dementor	(06,10,06,20, "DI_UNDEADDRAGONTEMPEL_02");
@@ -926,7 +925,7 @@ instance DMT_DementorAmbientWalker_DI_03 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1239;
 };
 
-FUNC VOID Rtn_Start_1239()
+func void Rtn_Start_1239()
 {
 	TA_Stand_Dementor	(06,00,06,10, "DI_UNDEADDRAGONTEMPEL_07");
 	TA_Stand_Dementor	(06,10,06,20, "DI_UNDEADDRAGONTEMPEL_12");
@@ -1103,7 +1102,7 @@ instance DMT_DementorAmbientWalker_DI_04 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1240;
 };
 
-FUNC VOID Rtn_Start_1240()
+func void Rtn_Start_1240()
 {
 	TA_Stand_Dementor	(06,05,06,15, "DI_UNDEADDRAGONTEMPEL_09");
 	TA_Stand_Dementor	(06,15,06,25, "DI_UNDEADDRAGONTEMPEL_01");
@@ -1280,7 +1279,7 @@ instance DMT_DementorAmbientWalker_DI_05 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1242;
 };
 
-FUNC VOID Rtn_Start_1242()
+func void Rtn_Start_1242()
 {
 	TA_Stand_Dementor	(06,05,06,15, "DI_UNDEADDRAGONTEMPEL_02");
 	TA_Stand_Dementor	(06,15,06,25, "DI_UNDEADDRAGONTEMPEL_11");
@@ -1457,7 +1456,7 @@ instance DMT_DementorAmbientWalker_DI_06 (Default_AmbientDementor)
 	daily_routine 						=	Rtn_Start_1243;
 };
 
-FUNC VOID Rtn_Start_1243()
+func void Rtn_Start_1243()
 {
 	TA_Stand_Dementor	(06,05,06,15, "DI_UNDEADDRAGONTEMPEL_11");
 	TA_Stand_Dementor	(06,15,06,25, "DI_UNDEADDRAGONTEMPEL_05");

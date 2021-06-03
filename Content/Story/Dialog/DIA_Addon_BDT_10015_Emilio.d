@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Emilio_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Emilio_EXIT_Condition;
 	information = DIA_Addon_Emilio_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Emilio_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Emilio_EXIT_Info()
 {
@@ -28,26 +28,26 @@ INSTANCE DIA_Addon_BDT_10015_Emilio_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Emilio_Hi_Condition;
 	information = DIA_Addon_Emilio_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Wygl¹dasz jak kopacz.";
 };
 FUNC INT DIA_Addon_Emilio_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Emilio_Hi_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_BDT_10015_Emilio_Hi_15_00");//Wygl¹dasz jak kopacz.
 	AI_Output (self, other, "DIA_Addon_BDT_10015_Emilio_Hi_10_01");//Bo JESTEM kopaczem. Gdy ostatnio by³em w kopalni, tyra³em jak wó³.
 
-	if (SC_KnowsRavensGoldmine == false)
+	if (SC_KnowsRavensGoldmine == FALSE)
 	{
 		B_LogEntry (TOPIC_Addon_RavenKDW, LogText_Addon_RavensGoldmine); 
 		Log_AddEntry (TOPIC_Addon_Sklaven, LogText_Addon_RavensGoldmine); 
 		B_LogEntry (TOPIC_Addon_ScoutBandits,Log_Text_Addon_ScoutBandits);
 	};
 
-	SC_KnowsRavensGoldmine = true;
+	SC_KnowsRavensGoldmine = TRUE;
 };
 //----------------------------------------------------------------------
 //	Info Gold
@@ -58,14 +58,14 @@ INSTANCE DIA_Addon_BDT_10015_Emilio_Gold   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Emilio_Gold_Condition;
 	information = DIA_Addon_Emilio_Gold_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Co siê dzieje ze z³otem z kopalni?";
 };
 FUNC INT DIA_Addon_Emilio_Gold_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_BDT_10015_Emilio_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Gold_Info()
@@ -84,14 +84,14 @@ INSTANCE DIA_Addon_BDT_10015_Emilio_Stein   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Emilio_Stein_Condition;
 	information = DIA_Addon_Emilio_Stein_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "O co chodzi z tymi czerwonymi kamieniami?";
 };
 FUNC INT DIA_Addon_Emilio_Stein_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Emilio_Jetzt)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Stein_Info()
@@ -113,7 +113,7 @@ INSTANCE DIA_Addon_Emilio_Attentat   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Emilio_Attentat_Condition;
 	information = DIA_Addon_Emilio_Attentat_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Co wiesz o próbie zabójstwa?";
 };
 FUNC INT DIA_Addon_Emilio_Attentat_Condition()
@@ -121,15 +121,15 @@ FUNC INT DIA_Addon_Emilio_Attentat_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Emilio_VonEmilio)) 
 	&& (Npc_IsDead (Senyan))
 	{
-		return false;		//selbe Condition wie 'Hilf mir...'
+		return FALSE;		//selbe Condition wie 'Hilf mir...'
 	}
 	else if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	}
 	else
 	{
-		return false;
+		return FALSE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Attentat_Info()
@@ -156,19 +156,19 @@ INSTANCE DIA_Addon_BDT_10015_Emilio_Senyan   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Emilio_Senyan_Condition;
 	information = DIA_Addon_Emilio_Senyan_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Addon_Emilio_Senyan_Condition()
 {	
 	if Npc_IsDead (Senyan)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Senyan_Info()
 {	
-	if (Senyan_Called == true)
+	if (Senyan_Called == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_BDT_10015_Emilio_Senyan_10_00");//Powiedz mi, DLACZEGO Senyan zawo³a³ "Patrzcie, kogo tu mamy?"
 		AI_Output (other, self, "DIA_Addon_BDT_10015_Emilio_Senyan_15_01");//Chodzi³o o nieuregulowany d³ug.
@@ -194,14 +194,14 @@ INSTANCE DIA_Addon_Emilio_Jetzt   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Emilio_Jetzt_Condition;
 	information = DIA_Addon_Emilio_Jetzt_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Dlaczego nie jesteœ teraz w kopalni?";
 };
 FUNC INT DIA_Addon_Emilio_Jetzt_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_BDT_10015_Emilio_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Jetzt_Info()
@@ -220,7 +220,7 @@ INSTANCE DIA_Addon_Emilio_VonEmilio (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Emilio_VonEmilio_Condition;
 	information = DIA_Addon_Emilio_VonEmilio_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Lennar powiedzia³ mi o tobie kilka ciekawych rzeczy...";
 };
 FUNC INT DIA_Addon_Emilio_VonEmilio_Condition()
@@ -228,7 +228,7 @@ FUNC INT DIA_Addon_Emilio_VonEmilio_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Emilio_Jetzt))
 	&& (Npc_KnowsInfo (other, DIA_Addon_Lennar_Attentat))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_VonEmilio_Info()
@@ -257,7 +257,7 @@ INSTANCE DIA_Addon_Emilio_HilfMir (C_INFO)
 	nr          = 7;
 	condition   = DIA_Addon_Emilio_HilfMir_Condition;
 	information = DIA_Addon_Emilio_HilfMir_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Pomó¿ mi znaleŸæ kolesia, który zorganizowa³ próbê zabójstwa!";
 };
 FUNC INT DIA_Addon_Emilio_HilfMir_Condition()
@@ -265,7 +265,7 @@ FUNC INT DIA_Addon_Emilio_HilfMir_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Emilio_VonEmilio))
 	&& (Npc_IsDead (Senyan))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_HilfMir_Info()
@@ -276,7 +276,7 @@ FUNC VOID DIA_Addon_Emilio_HilfMir_Info()
 	AI_Output (self, other, "DIA_Addon_Emilio_HilfMir_10_03"); //Ja... Cholera! Podam ci tylko imiê. Nie powiem nic wiêcej.
 	AI_Output (other, self, "DIA_Addon_Emilio_HilfMir_15_04"); //S³ucham.
 	AI_Output (self, other, "DIA_Addon_Emilio_HilfMir_10_05"); //Huno, idŸ do Huno. On musi coœ wiedzieæ.
-	Emilio_TellAll = true;
+	Emilio_TellAll = TRUE;
 	
 	B_LogEntry (Topic_Addon_Esteban, "Emilio w koñcu wykrztusi³ imiê: Huno.");
 };
@@ -290,14 +290,14 @@ INSTANCE DIA_Addon_Emilio_GegenEsteban (C_INFO)
 	nr          = 8;
 	condition   = DIA_Addon_Emilio_GegenEsteban_Condition;
 	information = DIA_Addon_Emilio_GegenEsteban_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Jaki masz problem z Estebanem?";
 };
 FUNC INT DIA_Addon_Emilio_GegenEsteban_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_BDT_10015_Emilio_Senyan))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_GegenEsteban_Info()
@@ -319,7 +319,7 @@ INSTANCE DIA_Addon_BDT_10015_Emilio_Mine   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Emilio_Mine_Condition;
 	information = DIA_Addon_Emilio_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ADDON_MINE_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Emilio_Mine_Condition()
@@ -328,7 +328,7 @@ FUNC INT DIA_Addon_Emilio_Mine_Condition()
 	&& (Player_SentBuddler < 3)
 	&& (Npc_HasItems (other, ItmI_Addon_Stone_01) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Mine_Info()
@@ -338,10 +338,13 @@ FUNC VOID DIA_Addon_Emilio_Mine_Info()
 	
 	AI_Output (self, other, "DIA_Addon_BDT_10015_Emilio_Mine_10_00");//Wiêc teraz ty tu jesteœ szefem. W takim razie ruszam w swoj¹ drogê.
 	
-	Player_SentBuddler += 1;
-	B_GivePlayerXP(XP_BONUS_1);
+	
+	Player_SentBuddler = (Player_SentBuddler +1);
+	B_GivePlayerXP (XP_Addon_MINE);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
+	
+	
 };
 //----------------------------------------------------------------------
 //	Info Hacker
@@ -352,14 +355,14 @@ INSTANCE DIA_Addon_Emilio_Hacker   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Emilio_Hacker_Condition;
 	information = DIA_Addon_Emilio_Hacker_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	Description = "Co nowego?"; 
 };
 FUNC INT DIA_Addon_Emilio_Hacker_Condition()
 {	
 	if (Npc_GetDistToWP (self,"ADW_MINE_09_PICK") <= 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Emilio_Hacker_Info()
@@ -367,3 +370,7 @@ FUNC VOID DIA_Addon_Emilio_Hacker_Info()
 	AI_Output (other, self, "DIA_Addon_BDT_10004_Emilio_Hacker_15_00"); //Co nowego?
 	AI_Output (self, other, "DIA_Addon_BDT_10004_Emilio_Hacker_10_01"); //Ciê¿ko pracujê, ale nie zostanê po¿arty przez pe³zacza.
 };
+
+
+
+

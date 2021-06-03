@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Greg_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Greg_EXIT_Condition;
 	information	= DIA_Addon_Greg_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Greg_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Greg_EXIT_Info()
 {	
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Greg_ImNew(C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Greg_ImNew_Condition;
 	information	= DIA_Addon_Greg_ImNew_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Greg_ImNew_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Greg_ImNew_Info()
@@ -46,8 +46,8 @@ FUNC VOID DIA_Addon_Greg_ImNew_Info()
 	//AI_Output (self,other,"DIA_Addon_Greg_ImNew_01_02"); //Hier entscheide immer noch ICH, wer bei uns mitmacht.
 	AI_Output (self,other,"DIA_Addon_Greg_ImNew_01_03"); //Dobrze, ale co tu siê dzieje?
 	AI_Output (self,other,"DIA_Addon_Greg_ImNew_01_04"); //A co, palisada jest skoñczona? A mo¿e w kanionie nie roi siê ju¿ od potworów? Wszyscy maj¹ to gdzieœ i le¿¹ brzuchem do góry!
-	
-	GregIsBack = true;
+		
+	GregIsBack = TRUE;
 	
 	if (!Npc_IsDead (Francis))
 	{
@@ -76,7 +76,7 @@ FUNC VOID DIA_Addon_Greg_ImNew_Info()
 			&& (Npc_IsDead(BeachShadowbeast1))
 			&& (MIS_Addon_MorganLurker != 0 )
 		)
-		|| (C_TowerBanditsDead() == true)
+		|| (C_TowerBanditsDead() == TRUE)
 			{
 				Info_AddChoice	(DIA_Addon_Greg_ImNew, "Pracowa³em.", DIA_Addon_Greg_ImNew_turm );
 			};
@@ -86,7 +86,7 @@ FUNC VOID DIA_Addon_Greg_ImNew_Info()
 func void B_UseRakeBilanz ()
 {
 	if (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
-	&& (Greg_SuchWeiter == true)
+	&& (Greg_SuchWeiter == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Greg_UseRakeBilanz_01_00"); //Nie myœl, ¿e zapomnê o tym, co jesteœ mi winien!
 		AI_Output (self, other, "DIA_Addon_Greg_UseRakeBilanz_01_01"); //Na ca³ej wyspie zakopa³em rzeczy warte parê setek sztuk z³ota.
@@ -102,7 +102,7 @@ func void B_UseRakeBilanz ()
 	{
 		Npc_ExchangeRoutine  (Francis,"GREGISBACK");
 		AI_StartState (Francis, ZS_Saw, 1, "ADW_PIRATECAMP_BEACH_19"); //HACK - REDUNDANT!!!
-		Francis_ausgeschissen = true;
+		Francis_ausgeschissen = TRUE;
 	};
 	
 	Info_ClearChoices	(DIA_Addon_Greg_ImNew);
@@ -119,7 +119,7 @@ func void DIA_Addon_Greg_ImNew_turm ()
 	AI_Output			(other, self, "DIA_Addon_Greg_ImNew_turm_15_00"); //Pracowa³em.
 	AI_Output			(self, other, "DIA_Addon_Greg_ImNew_turm_01_01"); //Co takiego?
 
-	if (C_TowerBanditsDead() == true)
+	if (C_TowerBanditsDead() == TRUE)
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_ImNew_turm_15_02"); //Pozby³em siê bandytów z wie¿y.
 	};
@@ -132,7 +132,7 @@ func void DIA_Addon_Greg_ImNew_turm ()
 	&& (Npc_IsDead(BeachShadowbeast1))
 	&& (MIS_Addon_MorganLurker != 0)
 	{
-		AI_Output			(other, self, "DIA_Addon_Greg_ImNew_turm_15_03"); //Pla¿a na pó³nocy jest ju¿ bezpieczna.
+		AI_Output			(other, self, "DIA_Addon_Greg_ImNew_turm_15_03"); ///Pla¿a na pó³nocy jest ju¿ bezpieczna.
 	};
 
 	AI_Output			(self, other, "DIA_Addon_Greg_ImNew_turm_01_04"); //Dobrze. Ale to i tak dopiero pocz¹tek.
@@ -149,14 +149,14 @@ INSTANCE DIA_Addon_Greg_JoinPirates(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Greg_JoinPirates_Condition;
 	information	= DIA_Addon_Greg_JoinPirates_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mam zrobiæ?";
 };                       
 FUNC INT DIA_Addon_Greg_JoinPirates_Condition()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_Greg_ImNew) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Greg_ImNew) == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -165,7 +165,7 @@ FUNC VOID DIA_Addon_Greg_JoinPirates_Info()
 	AI_Output (other,self,"DIA_Addon_Greg_JoinPirates_15_00"); //Co mam zrobiæ?
 	AI_Output (self,other,"DIA_Addon_Greg_JoinPirates_01_01"); //Najpierw musimy doprowadziæ to miejsce do porz¹dku.
 
-	if ((Npc_IsDead(Morgan))== false)
+	if ((Npc_IsDead(Morgan))== FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Greg_JoinPirates_01_02"); //Morgan, ten obibok, bêdzie pi³owa³ deski.
 	};
@@ -181,8 +181,8 @@ FUNC VOID DIA_Addon_Greg_JoinPirates_Info()
 	Info_ClearChoices (DIA_Addon_Greg_JoinPirates);
 	Info_AddChoice (DIA_Addon_Greg_JoinPirates,"No to idê.",DIA_Addon_Greg_JoinPirates_Leave);
 
-	if (((Npc_IsDead(Brandon))== false)
-	|| ((Npc_IsDead(Matt))== false))
+	if (((Npc_IsDead(Brandon))== FALSE)
+	|| ((Npc_IsDead(Matt))== FALSE))
 	{
 		Info_AddChoice (DIA_Addon_Greg_JoinPirates,"Mam tam pójœæ sam?",DIA_Addon_Greg_JoinPirates_Compadres);
 	};
@@ -201,6 +201,7 @@ FUNC VOID DIA_Addon_Greg_JoinPirates_Leave()
 	AI_EquipArmor(hero,ItAr_Pir_M);
 	AI_Output (self,other,"DIA_Addon_Greg_JoinPirates_Leave_01_04"); //I nie oci¹gaj siê z robot¹.
 	
+
 	Info_ClearChoices (DIA_Addon_Greg_JoinPirates);
 };
 
@@ -231,14 +232,14 @@ INSTANCE DIA_Addon_Greg_AboutCanyon(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Greg_AboutCanyon_Condition;
 	information	= DIA_Addon_Greg_AboutCanyon_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "W sprawie kanionu...";
 };                       
 FUNC INT DIA_Addon_Greg_AboutCanyon_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -248,11 +249,11 @@ FUNC VOID DIA_Addon_Greg_AboutCanyon_Info()
 	AI_Output (self ,other,"DIA_Addon_Greg_AboutCanyon_01_01"); //Tak, o co chodzi?
 	
 	Info_ClearChoices (DIA_Addon_Greg_AboutCanyon);
-	if (C_AllCanyonRazorDead() == false)
+	if (C_AllCanyonRazorDead() == FALSE)
 	{
 		Info_AddChoice (DIA_Addon_Greg_AboutCanyon,DIALOG_BACK,DIA_Addon_Greg_AboutCanyon_Back);	
-		if (((Npc_IsDead(Brandon))== false)
-		|| ((Npc_IsDead(Matt))== false))
+		if (((Npc_IsDead(Brandon))== FALSE)
+		|| ((Npc_IsDead(Matt))== FALSE))
 		{
 			Info_AddChoice (DIA_Addon_Greg_AboutCanyon,"Ktoœ mo¿e mi w tym pomóc?",DIA_Addon_Greg_AboutCanyon_Compadres);
 		};
@@ -293,7 +294,7 @@ FUNC VOID DIA_Addon_Greg_AboutCanyon_RazorsDead()
 	
 	MIS_Addon_Greg_ClearCanyon = LOG_SUCCESS;
 	B_Addon_PiratesGoHome();
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_ADDON_CLEARCANYON);
 	Info_ClearChoices (DIA_Addon_Greg_AboutCanyon);
 };
 
@@ -307,14 +308,14 @@ INSTANCE DIA_Addon_Greg_BanditArmor(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Greg_BanditArmor_Condition;
 	information	= DIA_Addon_Greg_BanditArmor_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Potrzebujê pancerza, jaki nosz¹ bandyci.";
 };                       
 FUNC INT DIA_Addon_Greg_BanditArmor_Condition()
 {
-	if (MIS_Greg_ScoutBandits == false)
+	if (MIS_Greg_ScoutBandits == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -368,18 +369,18 @@ func int DIA_Addon_Greg_Auftraege2_Condition ()
 {
 	if (MIS_Greg_ScoutBandits != 0)
 	&& (
-		(C_TowerBanditsDead() == false)
+		(C_TowerBanditsDead() == FALSE)
 		|| (
-				 (Npc_IsDead(BeachLurker1)== false)
-				&& (Npc_IsDead(BeachLurker2)== false)
-				&& (Npc_IsDead(BeachLurker3)== false)
-				&& (Npc_IsDead(BeachWaran1)== false)
-				&& (Npc_IsDead(BeachWaran2)== false)
-				&& (Npc_IsDead(BeachShadowbeast1)== false)
+				 (Npc_IsDead(BeachLurker1)== FALSE)
+				&& (Npc_IsDead(BeachLurker2)== FALSE)
+				&& (Npc_IsDead(BeachLurker3)== FALSE)
+				&& (Npc_IsDead(BeachWaran1)== FALSE)
+				&& (Npc_IsDead(BeachWaran2)== FALSE)
+				&& (Npc_IsDead(BeachShadowbeast1)== FALSE)
 		   )
 		)
 				{
-					return true;
+					return TRUE;
 				};
 };
 
@@ -387,12 +388,12 @@ func void DIA_Addon_Greg_Auftraege2_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Greg_Auftraege2_15_00"); //Masz dla mnie jeszcze jakieœ zadanie?
 
-	if (Npc_IsDead(BeachLurker1)== false)
-	&& (Npc_IsDead(BeachLurker2)== false)
-	&& (Npc_IsDead(BeachLurker3)== false)
-	&& (Npc_IsDead(BeachWaran1)== false)
-	&& (Npc_IsDead(BeachWaran2)== false)
-	&& (Npc_IsDead(BeachShadowbeast1)== false)
+	if (Npc_IsDead(BeachLurker1)== FALSE)
+	&& (Npc_IsDead(BeachLurker2)== FALSE)
+	&& (Npc_IsDead(BeachLurker3)== FALSE)
+	&& (Npc_IsDead(BeachWaran1)== FALSE)
+	&& (Npc_IsDead(BeachWaran2)== FALSE)
+	&& (Npc_IsDead(BeachShadowbeast1)== FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Greg_Auftraege2_01_01"); //Pla¿a na pó³nocy wci¹¿ jest pe³na stworów.
 		AI_Output	(self, other, "DIA_Addon_Greg_Auftraege2_01_02"); //Morgan jak zwykle siê obija.
@@ -404,7 +405,7 @@ func void DIA_Addon_Greg_Auftraege2_Info ()
 		MIS_Addon_MorganLurker = LOG_RUNNING;
 	};
 	
-	if	(C_TowerBanditsDead() == false)
+	if	(C_TowerBanditsDead() == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Greg_Auftraege2_01_03"); //W wie¿y stoj¹cej wœród po³udniowych klifów wci¹¿ gnie¿d¿¹ siê bandyci.
 		AI_Output	(self, other, "DIA_Addon_Greg_Auftraege2_01_04"); //W sumie to Francis mia³ siê tym zaj¹æ.
@@ -443,7 +444,7 @@ func int DIA_Addon_Greg_Sauber2_Condition ()
 	&& (Npc_IsDead(BeachWaran2))
 	&& (Npc_IsDead(BeachShadowbeast1))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -451,22 +452,13 @@ func void DIA_Addon_Greg_Sauber2_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Greg_Sauber2_15_00"); //Pó³nocna pla¿a jest ju¿ bezpieczna.
 	AI_Output	(self, other, "DIA_Addon_Greg_Sauber2_01_01"); //Wspaniale. Oto twoja nagroda.
-
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{
-		CreateInvItems (self, ItMi_Gold, 220);
-		B_GiveInvItems (self, other, ItMi_Gold, 220);
-	}
-	else
-	{
-		CreateInvItems (self, ItMi_Gold, 200);
-		B_GiveInvItems (self, other, ItMi_Gold, 200);
-	};
+	CreateInvItems (self, ItMi_Gold, 200);									
+	B_GiveInvItems (self, other, ItMi_Gold, 200);
 	
 	B_LogEntry	(TOPIC_Addon_MorganBeach,"Powiedzia³em Gregowi, ¿e oczyœci³em pó³nocn¹ pla¿ê.");
 	
 	MIS_Addon_MorganLurker = LOG_SUCCESS;	
-	B_GivePlayerXP(XP_BONUS_3);	
+	B_GivePlayerXP (XP_Addon_Morgan_LurkerPlatt);	
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -485,9 +477,9 @@ instance DIA_Addon_Greg_BanditPlatt2		(C_INFO)
 func int DIA_Addon_Greg_BanditPlatt2_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Greg_Auftraege2))
-	&& (C_TowerBanditsDead() == true)
+	&& (C_TowerBanditsDead() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -495,22 +487,13 @@ func void DIA_Addon_Greg_BanditPlatt2_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Greg_BanditPlatt2_15_00"); //Bandyci ju¿ nie wróc¹ do wie¿y.
 	AI_Output	(self, other, "DIA_Addon_Greg_BanditPlatt2_01_01"); //Doskonale. Œwietnie siê spisa³eœ. Oto zap³ata za twój trud.
-	
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{
-		CreateInvItems (self, ItMi_Gold, 220);
-		B_GiveInvItems (self, other, ItMi_Gold, 220);
-	}
-	else
-	{
-		CreateInvItems (self, ItMi_Gold, 200);
-		B_GiveInvItems (self, other, ItMi_Gold, 200);
-	};
+	CreateInvItems (self, ItMi_Gold, 200);									
+	B_GiveInvItems (self, other, ItMi_Gold, 200);	
 	
 	B_LogEntry (TOPIC_Addon_BanditsTower,"Bandyci w wie¿y nie ¿yj¹. Greg jest bardzo zadowolony.");
 	
 	MIS_Henry_FreeBDTTower = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);	
+	B_GivePlayerXP (XP_Addon_Henry_FreeBDTTower);	
 };
 
 
@@ -524,15 +507,15 @@ INSTANCE DIA_Addon_Greg_BanditGoldmine(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Greg_BanditGoldmine_Condition;
 	information	= DIA_Addon_Greg_BanditGoldmine_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Bandyci odkryli kopalniê z³ota.";
 };                       
 FUNC INT DIA_Addon_Greg_BanditGoldmine_Condition()
 {
-	if (SC_KnowsRavensGoldmine == true)
+	if (SC_KnowsRavensGoldmine == TRUE)
 	&& (MIS_Greg_ScoutBandits == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -543,13 +526,12 @@ FUNC VOID DIA_Addon_Greg_BanditGoldmine_Info()
 	AI_Output (self,other,"DIA_Addon_Greg_BanditGoldmine_01_02"); //Nikt nie mieszka³by wœród tych bagien roj¹cych siê od potworów, jeœli nie mia³by naprawdê solidnego powodu.
 	AI_Output (self,other,"DIA_Addon_Greg_BanditGoldmine_01_03"); //Dobra robota. Tu jest coœ dla ciebie.
 	
-//	B_GiveInvItems (self,other,ItRi_Addon_STR_01,1);
-	B_GiveInvItems (self,other,ItRi_Dex_01,1);
+	B_GiveInvItems (self,other,ItRi_STR_02,1);
 	
 	B_LogEntry (TOPIC_Addon_ScoutBandits,"Poinformowa³em Grega o kopalni z³ota.");	
 	
 	MIS_Greg_ScoutBandits = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Greg_ScoutBandits);
 };
 
 
@@ -562,15 +544,15 @@ INSTANCE DIA_Addon_Greg_WhoAreYou(C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Greg_WhoAreYou_Condition;
 	information	= DIA_Addon_Greg_WhoAreYou_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kim jesteœ?";
 };                       
 FUNC INT DIA_Addon_Greg_WhoAreYou_Condition()
 {
-	if (PlayerTalkedToGregNW == false)//Joly:WAR VOHER npc_gLOBAL -> GREG_NW
+	if (PlayerTalkedToGregNW == FALSE)//Joly:WAR VOHER npc_gLOBAL -> GREG_NW
 	&& (SC_MeetsGregTime == 0)//Joly:zur sicherheit
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -590,15 +572,15 @@ INSTANCE DIA_Addon_Greg_NiceToSeeYou(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Greg_NiceToSeeYou_Condition;
 	information	= DIA_Addon_Greg_NiceToSeeYou_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jak siê tu dosta³eœ?";
 };                       
 FUNC INT DIA_Addon_Greg_NiceToSeeYou_Condition()
 {
-	if (PlayerTalkedToGregNW	 == true)
+	if (PlayerTalkedToGregNW	 == TRUE)
 	&& (MIS_Greg_ScoutBandits == 0)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -619,16 +601,16 @@ INSTANCE DIA_Addon_Greg_Story(C_INFO)
 	nr			= 99;
 	condition	= DIA_Addon_Greg_Story_Condition;
 	information	= DIA_Addon_Greg_Story_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Interesuje mnie jeszcze jedna rzecz.";
 };                       
 FUNC INT DIA_Addon_Greg_Story_Condition()
 {
-	if ((Npc_KnowsInfo (other,DIA_Addon_Greg_WhoAreYou) == true)
-	|| (Npc_KnowsInfo (other,DIA_Addon_Greg_NiceToSeeYou) == true))
+	if ((Npc_KnowsInfo (other,DIA_Addon_Greg_WhoAreYou) == TRUE)
+	|| (Npc_KnowsInfo (other,DIA_Addon_Greg_NiceToSeeYou) == TRUE))
 	&& (MIS_Greg_ScoutBandits != 0)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -642,7 +624,7 @@ FUNC VOID DIA_Addon_Greg_Story_Info()
 	Info_AddChoice (DIA_Addon_Greg_Story,"Jak siê tu dosta³eœ?",DIA_Addon_Greg_Story_Way);
 	Info_AddChoice (DIA_Addon_Greg_Story,"Gdzie jest twój statek?",DIA_Addon_Greg_Story_Ship);
 
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{
 		Info_AddChoice (DIA_Addon_Greg_Story,"Co wiesz o Kruku?",DIA_Addon_Greg_Story_Raven);
 	};
@@ -695,9 +677,9 @@ instance DIA_Addon_Greg_RavenDead		(C_INFO)
 
 func int DIA_Addon_Greg_RavenDead_Condition ()
 {
-	if (RavenIsDead == true)
+	if (RavenIsDead == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -709,5 +691,8 @@ func void DIA_Addon_Greg_RavenDead_Info ()
 	CreateInvItems (self, ItMi_Gold, 500);									
 	B_GiveInvItems (self, other, ItMi_Gold, 500);		
 	AI_Output	(self, other, "DIA_Addon_Greg_RavenDead_01_03"); //Masz charakter. Podobasz mi siê.
-	B_GivePlayerXP(XP_BONUS_10);
+	B_GivePlayerXP (XP_ADDON_GregRavenLohn);
 };
+
+
+

@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Raven_EXIT (C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Raven_EXIT_Condition;
 	information	= DIA_Addon_Raven_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= DIALOG_ENDE;
 };        
 FUNC INT DIA_Addon_Raven_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Raven_EXIT_Info()
@@ -31,12 +31,12 @@ INSTANCE DIA_Addon_Raven_Hi (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Raven_Hi_Condition;
 	information	= DIA_Addon_Raven_Hi_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };        
 FUNC INT DIA_Addon_Raven_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Raven_Hi_Info()
 {
@@ -101,3 +101,39 @@ FUNC VOID DIA_Addon_Raven_Hi_Attack()
 	AI_StopProcessInfos	(self); 
 	B_Attack (self, other, AR_SuddenEnemyInferno,1);
 };
+/*
+--------------
+10 *NEU* DIA_Addon_Raven_Add_10_00 //Seht wer gekommen ist. 
+10 *NEU* DIA_Addon_Raven_Add_10_01 //Mein Meister hat mich davor gewarnt, daß Innos seine Schergen schicken würde.
+10 *NEU* DIA_Addon_Raven_Add_10_02 //Aber das du so früh auftauchst, hätte ich nicht erwartet.
+10 *NEU* DIA_Addon_Raven_Add_10_03 //Nun, da du so schnell warst (lacht) werde ich dir auch einen schnellen Tod schenken.
+--------------
+15 *NEU* DIA_Addon_Raven_Add_15_00 //DU bist derjenige der sterben wird.
+10 *NEU* DIA_Addon_Raven_Add_10_04 //(lacht) Du bist keine Bedrohung für mich. Ich trage Beliars Schwert.
+10 *NEU* DIA_Addon_Raven_Add_10_05 //Ich werde die Drachen auf's Festland führen. Zusammen werden wir die Welt der Menschen in tiefste Dunkelheit tauchen.
+--------------
+15 *NEU* DIA_Addon_Raven_Add_15_01 //Du hast deine Seele an Beliar verkauft!
+10 *NEU* DIA_Addon_Raven_Add_10_06 //Zu einem guten Preis. Als General werde ich seine Armeen befehligen.
+10 *NEU* DIA_Addon_Raven_Add_10_07 //Und was ist mit dir? Weißt du wieviel DEINE Seele wert ist?
+--------------
+15 *NEU* DIA_Addon_Raven_Add_15_02 //Ich mache nur das, was getan werden muss.
+10 *NEU* DIA_Addon_Raven_Add_10_08 //(lacht) Hört ihn euch an. Einen bescheidenen Diener schickst du mir Innos! (Lacht laut)
+--------------
+15 *NEU* DIA_Addon_Raven_Add_15_03 //Bist du sicher, dass ich ein Diener Innos bin? 
+10 *NEU* DIA_Addon_Raven_Add_10_09 //Was? Was redest du da?
+15 *NEU* DIA_Addon_Raven_Add_15_04 //Hältst du es nicht für möglich das ich ein Diener Adanos bin?
+10 *NEU* DIA_Addon_Raven_Add_10_10 //(lacht) Unsinn!
+15 *NEU* DIA_Addon_Raven_Add_15_05 //Vielleicht diene auch ICH Beliar - oder nur mir selbst. 
+10 *NEU* DIA_Addon_Raven_Add_10_11 //(höhnt) Nun, in diesem Fall wirst du nicht einmal ein würdiger Gegner für mich sein!
+--------------
+15 *NEU* DIA_Addon_Raven_Add_15_06 //Mir reichts jetzt. Lass uns anfangen...
+10 *NEU* DIA_Addon_Raven_Add_10_12 //(höhnt) Hast du es so eilig zu sterben? Ganz, wie du willst...
+--------------
+
+*/
+
+
+
+
+ 
+

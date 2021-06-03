@@ -8,12 +8,12 @@ INSTANCE DIA_Addon_Cronos_ADW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Cronos_ADW_EXIT_Condition;
 	information = DIA_Addon_Cronos_ADW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Cronos_ADW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Cronos_ADW_EXIT_Info()
 {
@@ -29,14 +29,14 @@ instance DIA_Addon_Cronos_ADWHello		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Cronos_ADWHello_Condition;
 	information	 = 	DIA_Addon_Cronos_ADWHello_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Cronos_ADWHello_Condition ()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -66,7 +66,7 @@ instance DIA_Addon_Cronos_WaechterADW		(C_INFO)
 
 func int DIA_Addon_Cronos_WaechterADW_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Cronos_WaechterADW_Info ()
@@ -88,14 +88,14 @@ instance DIA_Addon_Cronos_ADW_Trade		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Cronos_ADW_Trade_Condition;
 	information	 = 	DIA_Addon_Cronos_ADW_Trade_Info;
-	Trade 		 = 	true;
-	permanent	 = 	true;
+	Trade 		 = 	TRUE;
+	permanent	 = 	TRUE;
 	description	 = 	"Pohandlujmy.";
 };
 
 func int DIA_Addon_Cronos_ADW_Trade_Condition ()
 {
-		return true;
+		return TRUE;
 };
 
 var int DIA_Addon_Cronos_ADW_Trade_OneTime;
@@ -105,3 +105,4 @@ func void DIA_Addon_Cronos_ADW_Trade_Info ()
 	B_GiveTradeInv (self);
 	B_Say (other,self,"$TRADE_1");
 };
+

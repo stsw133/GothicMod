@@ -7,13 +7,13 @@ INSTANCE DIA_Halvor_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Halvor_EXIT_Condition;
 	information = DIA_Halvor_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Halvor_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Halvor_EXIT_Info()
@@ -30,8 +30,8 @@ instance DIA_Halvor_Hallo		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Halvor_Hallo_Condition;
 	information	 = 	DIA_Halvor_Hallo_Info;
-	permanent    =  false;
-	important	 =  true;
+	permanent    =  FALSE;
+	important	 =  TRUE;
 };
 
 func int DIA_Halvor_Hallo_Condition ()
@@ -39,7 +39,7 @@ func int DIA_Halvor_Hallo_Condition ()
 	if Npc_IsInState (self, ZS_Talk)
 	&& (Wld_IsTime (05,00,20,00))
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Halvor_Hallo_Info ()
@@ -58,8 +58,8 @@ instance DIA_Halvor_TRADE		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Halvor_TRADE_Condition;
 	information	 = 	DIA_Halvor_TRADE_Info;
-	permanent	 =  true;
-	trade		 =  true;
+	permanent	 =  TRUE;
+	trade		 =  TRUE;
 	description	 = 	"Poka¿ mi swoje ryby.";
 };
 
@@ -67,9 +67,9 @@ func int DIA_Halvor_TRADE_Condition ()
 {
 	if Npc_KnowsInfo (hero, DIA_Halvor_Hallo)
 	&& (Wld_IsTime (05,00,20,00))
-	&& (Halvor_Ausgeliefert == false)
+	&& (Halvor_Ausgeliefert == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Halvor_TRADE_Info ()
@@ -87,16 +87,16 @@ instance DIA_Halvor_Night		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Halvor_Night_Condition;
 	information	 = 	DIA_Halvor_Night_Info;
-	permanent	 =  true;
-	important 	 =  true;
+	permanent	 =  TRUE;
+	important 	 =  TRUE;
 };
 func int DIA_Halvor_Night_Condition ()
 {
 	if (Wld_IsTime (20,00,00,00))
 	&& Npc_IsInState (self, ZS_Talk)
-	&& (Halvor_Ausgeliefert == false)
+	&& (Halvor_Ausgeliefert == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Halvor_Night_Info ()
@@ -119,11 +119,11 @@ instance DIA_Addon_Halvor_MissingPeople		(C_INFO)
 
 func int DIA_Addon_Halvor_MissingPeople_Condition ()
 {
-	if (SC_HearedAboutMissingPeople == true)
-	&& (MissingPeopleReturnedHome == false)
-	&& (Halvor_Ausgeliefert == false)
+	if (SC_HearedAboutMissingPeople == TRUE)
+	&& (MissingPeopleReturnedHome == FALSE)
+	&& (Halvor_Ausgeliefert == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -174,26 +174,26 @@ instance DIA_Halvor_MESSAGE		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Halvor_MESSAGE_Condition;
 	information	 = 	DIA_Halvor_MESSAGE_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Wydaje mi siê, ¿e ten kawa³ek papieru nale¿y do ciebie...";
-	trade		 =  false;
+	trade		 =  FALSE;
 };
 
 func int DIA_Halvor_MESSAGE_Condition ()
 {	
-	if (Knows_Halvor == true)
+	if (Knows_Halvor == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Halvor_MESSAGE_Info ()
 {
 	AI_Output (other, self, "DIA_Halvor_MESSAGE_15_00"); //Wydaje mi siê, ¿e ten kawa³ek papieru nale¿y do ciebie...
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_06_01"); //Co...? Poka¿ go.
-	B_UseFakeScroll();
+	B_UseFakeScroll 	();
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_06_02"); //Ale przecie¿ nie trzeba iœæ z tym od razu do stra¿y miejskiej, prawda? Z pewnoœci¹ uda nam siê dojœæ do porozumienia, co?
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_06_03"); //Ale przecie¿ nie trzeba iœæ z tym od razu do stra¿y miejskiej, prawda? Z pewnoœci¹ uda nam siê dojœæ do porozumienia, co?
-
+	
 	Info_ClearChoices (DIA_Halvor_MESSAGE);
 	Info_AddChoice    (DIA_Halvor_MESSAGE,"Czekam na twoj¹ ofertê.",DIA_Halvor_MESSAGE_OFFER);
 	Info_AddChoice    (DIA_Halvor_MESSAGE,"Wygl¹da na to, ze pójdziesz siedzieæ.",DIA_Halvor_MESSAGE_PRISON);
@@ -208,7 +208,7 @@ FUNC VOID DIA_Halvor_MESSAGE_OFFER()
 	Info_ClearChoices (DIA_Halvor_MESSAGE);
 	Info_AddChoice    (DIA_Halvor_MESSAGE,"Dobra, umowa stoi.",DIA_Halvor_MESSAGE_Okay);
 	Info_AddChoice    (DIA_Halvor_MESSAGE,"Wygl¹da na to, ze pójdziesz siedzieæ.",DIA_Halvor_MESSAGE_PRISON);
-//	Info_AddChoice    (DIA_Halvor_MESSAGE,"Doprawdy? A jakie jeszcze towary rozprowadzasz?",DIA_Halvor_MESSAGE_DEAL);
+	Info_AddChoice    (DIA_Halvor_MESSAGE,"Doprawdy? A jakie jeszcze towary rozprowadzasz?",DIA_Halvor_MESSAGE_DEAL);
 };	
 FUNC VOID DIA_Halvor_MESSAGE_PRISON()
 {
@@ -217,19 +217,18 @@ FUNC VOID DIA_Halvor_MESSAGE_PRISON()
 	AI_Output (other, self, "DIA_Halvor_MESSAGE_PRISON_15_02"); //Powinieneœ by³ o tym pomyœleæ wczeœniej. Teraz jest ju¿ za póŸno - Lord Andre dowie siê, co zrobi³eœ.
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_PRISON_06_03"); //Po¿a³ujesz tego.
 	
-	Betrayal_Halvor = true;
+	Betrayal_Halvor = TRUE;
 	
 	AI_StopProcessInfos (self);
 };
-/*
 FUNC VOID DIA_Halvor_MESSAGE_DEAL()
 {
 	AI_Output (other, self, "DIA_Halvor_MESSAGE_DEAL_15_00"); //Doprawdy? A jakie jeszcze towary rozprowadzasz?
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_DEAL_06_01"); //Móg³bym ci na przyk³ad zaoferowaæ... specjaln¹ rybê. Nie tak¹ zwyk³¹ rybê do jedzenia.
 	AI_Output (other, self, "DIA_Halvor_MESSAGE_DEAL_15_02"); //Masz na myœli tak¹ rybê z niespodziank¹, jak ta, która zawiera³a sekretn¹ wiadomoœæ?
 	AI_Output (self, other, "DIA_Halvor_MESSAGE_DEAL_06_03"); //Dok³adnie. Mam kilka takich... ryb.
+	
 };
-*/
 FUNC VOID DIA_Halvor_MESSAGE_Okay()
 {
 	AI_Output (other, self, "DIA_Halvor_MESSAGE_Okay_15_00"); //Dobrze, umowa stoi. A zatem ca³a sprawa pozostanie tylko miêdzy nami.
@@ -238,11 +237,14 @@ FUNC VOID DIA_Halvor_MESSAGE_Okay()
 	B_GiveInvItems 	   (other, self, ItWr_HalvorMessage,1);
 	Npc_RemoveInvItems (self, ItWr_HalvorMessage,1);
 	
-	Halvor_Deal = true;
-	Diebesgilde_Okay += 1;
-
-	CreateInvItems (self, ItMi_FortuneCoin, 40);
-
+	Halvor_Deal = TRUE;
+	Diebesgilde_Okay = (Diebesgilde_Okay + 1);
+	//------------------------------------------------------
+	CreateInvItems 	   (self,ItSe_ErzFisch , 1);
+	CreateInvItems 	   (self,ItSe_GoldFisch, 1);
+	CreateInvItems 	   (self,ItSe_Ringfisch , 1);
+	CreateInvItems 	   (self,ItSe_LockpickFisch , 1);
+	//------------------------------------------------------
 	Info_ClearChoices (DIA_Halvor_MESSAGE);
 };
 
@@ -255,16 +257,16 @@ INSTANCE DIA_Halvor_Zeichen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Halvor_Zeichen_Condition;
 	information = DIA_Halvor_Zeichen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "(Poka¿ z³odziejski gest)";
 };
 
 FUNC INT DIA_Halvor_Zeichen_Condition()
 {
-	if (Knows_SecretSign == true)
-	&& (Betrayal_Halvor ==  false)
+	if (Knows_SecretSign == TRUE)
+	&& (Betrayal_Halvor ==  FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Halvor_Zeichen_Info()
@@ -287,16 +289,16 @@ INSTANCE DIA_Halvor_Hehlerei   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Halvor_Hehlerei_Condition;
 	information = DIA_Halvor_Hehlerei_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "(Sprzeda¿ starych talerzy i kielichów)";
 };
 
 FUNC INT DIA_Halvor_Hehlerei_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Halvor_Zeichen)
-	&& (Betrayal_Halvor == false)
+	&& (Betrayal_Halvor == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Halvor_Hehlerei_Info()
@@ -309,7 +311,7 @@ FUNC VOID DIA_Halvor_Hehlerei_Info()
 		if (Npc_HasItems (other,ItMi_SilverPlate) >= 1)
 		|| (Npc_HasItems (other,ItMi_SilverCup) >= 1)
 		{
-			Halvor_Score =  (Npc_HasItems (other,ItMi_SilverPlate) * 50) + (Npc_HasItems (other,ItMi_SilverCup) * 50);
+			Halvor_Score =  (Npc_HasItems (other,ItMi_SilverPlate) * (ItMi_SilverPlate.value/2)) + (Npc_HasItems (other,ItMi_SilverCup) * (ItMi_SilverCup.value/2));
 			
 			if (Halvor_Score <=  1000)  //weil sonst kein B_Say_Gold mehr...
 			{
@@ -344,6 +346,11 @@ FUNC VOID DIA_Halvor_Hehlerei_Info()
 };
 FUNC VOID DIA_Halvor_Hehlerei_Annehmen()
 {
+	/*
+	CreateInvItems (other, ItRW_Arrow,(Npc_HasItems (other, ItMi_SilverPlate)+ Npc_HasItems (other, ItMi_SilverCup)));//Für Textausgabe -> ist ziemlich dreckig, aber wie sonst? 
+	B_GiveInvItems (other, self, ItRW_Arrow,(Npc_HasItems (other, ItMi_SilverPlate)+ Npc_HasItems (other, ItMi_SilverCup)) ); 
+ 	*/
+ 	
  	//--------- Patch 2.5a-----------------------------------------
  	var int amount;
  	var string concatText;
@@ -385,16 +392,16 @@ instance DIA_Halvor_Crew		(C_INFO)
 	nr			 = 	51;
 	condition	 = 	DIA_Halvor_Crew_Condition;
 	information	 = 	DIA_Halvor_Crew_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 =  "Szukam za³ogi.";
 };
 
 func int DIA_Halvor_Crew_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Halvor_Ausgeliefert == false)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Halvor_Ausgeliefert == FALSE)
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Halvor_Crew_Info ()
@@ -405,6 +412,7 @@ func void DIA_Halvor_Crew_Info ()
 	Info_ClearChoices (DIA_Halvor_Crew);
 	Info_AddChoice (DIA_Halvor_Crew,"To ju¿ moje zmartwienie.",DIA_Halvor_Crew_MyThing);
 	Info_AddChoice (DIA_Halvor_Crew,"Zamierzam przej¹æ statek.",DIA_Halvor_Crew_StealShip);
+	
 };
 
 FUNC VOID DIA_Halvor_Crew_MyThing()
@@ -427,7 +435,7 @@ FUNC VOID DIA_Halvor_Crew_StealShip()
 	Info_ClearChoices (DIA_Halvor_Crew);
 	Info_AddChoice (DIA_Halvor_Crew,DIALOG_BACK,DIA_Halvor_Crew_BACK);
 	Info_AddChoice (DIA_Halvor_Crew,"Chcesz siê ze mn¹ zabraæ?",DIA_Halvor_Crew_JoinMe);
-	if (Npc_IsDead (JACK) == false)
+	if (Npc_IsDead (JACK) == FALSE)
 	{
 		Info_AddChoice (DIA_Halvor_Crew,"Mo¿esz mi pomóc?",DIA_Halvor_Crew_HelpMe); 
 	};
@@ -450,3 +458,7 @@ FUNC VOID DIA_Halvor_Crew_Back()
 {
 	Info_ClearChoices (DIA_Halvor_Crew);
 };
+
+
+
+

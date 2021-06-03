@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Garaz_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Garaz_EXIT_Condition;
 	information = DIA_Addon_Garaz_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Garaz_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Garaz_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Garaz_Probleme   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Garaz_Probleme_Condition;
 	information = DIA_Addon_Garaz_Probleme_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Garaz_Probleme_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Garaz_Probleme_Info()
 {
@@ -50,15 +50,15 @@ INSTANCE DIA_Addon_Garaz_Hi   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Garaz_Hi_Condition;
 	information = DIA_Addon_Garaz_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dlaczego nie zaatakujemy pe³zaczy?";
 };
 FUNC INT DIA_Addon_Garaz_Hi_Condition()
 {	
-	if (!Npc_IsDead(Bloodwyn))
+	if !Npc_IsDead (Bloodwyn)
 	&& (Minecrawler_Killed < 9)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garaz_Hi_Info()
@@ -81,16 +81,16 @@ INSTANCE DIA_Addon_Garaz_Bloodwyn   (C_INFO)
 	nr          = 8;
 	condition   = DIA_Addon_Garaz_Bloodwyn_Condition;
 	information = DIA_Addon_Garaz_Bloodwyn_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jest coœ jeszcze, co mo¿esz mi powiedzieæ o Bloodwynie?";
 };
 FUNC INT DIA_Addon_Garaz_Bloodwyn_Condition()
 {	
-	if (Npc_KnowsInfo(other,DIA_Addon_Garaz_Hi))
+	if Npc_KnowsInfo (other,DIA_Addon_Garaz_Hi)
 	&& (Minecrawler_Killed < 9)
-	&& (!Npc_IsDead(Bloodwyn))
+	&& !Npc_IsDead (Bloodwyn)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garaz_Bloodwyn_Info()
@@ -114,15 +114,15 @@ INSTANCE DIA_Addon_Garaz_Sieg   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Garaz_Sieg_Condition;
 	information = DIA_Addon_Garaz_Sieg_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Za³atwione. Pe³zacze s¹ martwe.";
 };
 FUNC INT DIA_Addon_Garaz_Sieg_Condition()
 {	
-	if (Minecrawler_Killed >= 9)
-	&& (!Npc_IsDead(Bloodwyn))
+	if  (Minecrawler_Killed >= 9)
+	&&  !Npc_IsDead (Bloodwyn)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garaz_Sieg_Info()
@@ -130,7 +130,7 @@ FUNC VOID DIA_Addon_Garaz_Sieg_Info()
 	AI_Output (other, self, "DIA_Addon_Garaz_Sieg_15_00");//Za³atwione. Pe³zacze s¹ martwe.
 	AI_Output (self, other, "DIA_Addon_Garaz_Sieg_08_01");//Bloodwyn tu idzie. Tego chcia³eœ, prawda?
 	AI_Output (self, other, "DIA_Addon_Garaz_Sieg_08_02");//Zabi³eœ pe³zacza, ¿eby œci¹gn¹æ tu Bloodwyna? No to TERAZ zrób to, co zamierza³eœ.
-
+	
 	B_StartOtherRoutine (Bloodwyn,"GOLD");	
 	
 };
@@ -143,15 +143,15 @@ INSTANCE DIA_Addon_Garaz_Blood   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Garaz_Blood_Condition;
 	information = DIA_Addon_Garaz_Blood_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Addon_Garaz_Blood_Condition()
 {	
 	if Npc_IsDead (Bloodwyn)
 	&& Npc_IsInState (self, ZS_Talk)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garaz_Blood_Info()
@@ -159,8 +159,8 @@ FUNC VOID DIA_Addon_Garaz_Blood_Info()
 	AI_Output (self, other, "DIA_Addon_Garaz_Blood_08_00");//Da³eœ temu bydlakowi nauczkê. Dobra robota.
 	AI_Output (self, other, "DIA_Addon_Garaz_Blood_08_01");//W takim razie rozejrzê siê po okolicy.
 	
-	B_GivePlayerXP(XP_Ambient);
-	AI_StopProcessInfos(self);
+	B_GivePlayerXP (XP_Ambient);
+	AI_StopProcessInfos  (self);
 	Npc_ExchangeRoutine (self,"GOLD");
 	B_StartOtherRoutine (Thorus, "TALK");
 };
@@ -173,15 +173,15 @@ INSTANCE DIA_Addon_Garaz_Gold   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Garaz_Gold_Condition;
 	information = DIA_Addon_Garaz_Gold_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Addon_Garaz_Gold_Condition()
 {	
 	if (Npc_GetDistToWP (self, "ADW_MINE_MC_GARAZ") <= 500)
 	&&  Npc_IsInState (self, ZS_Talk)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Garaz_Gold_Info()
@@ -190,3 +190,7 @@ FUNC VOID DIA_Addon_Garaz_Gold_Info()
 	AI_Output (self, other, "DIA_Addon_Garaz_Gold_08_01");//Bêdziemy potrzebowaæ drabiny, ¿eby dotrzeæ do tego z³ota.
 	AI_Output (self, other, "DIA_Addon_Garaz_Gold_08_02");//Tylko ¿e nikt nie korzysta z drabin od czasu upadku bariery.. Szkoda.
 };
+
+
+
+

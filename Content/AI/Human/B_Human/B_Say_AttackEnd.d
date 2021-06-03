@@ -27,9 +27,10 @@ func void B_Say_AttackEnd()
 		}
 		else
 		{
-			if (self.aivar[AIV_PARTYMEMBER] == true)
+			if (self.aivar[AIV_PARTYMEMBER])
 			{
-				if (Hlp_Random(5) > 0)
+				var int rnd; rnd = Hlp_Random(100);
+				if (rnd > 15)
 				&& (other.guild != GIL_DRAGON)
 				{
 					return;
@@ -40,7 +41,7 @@ func void B_Say_AttackEnd()
 			{
 				if (self.voice == 9)
 				{
-					if (Hlp_Random(2) == 0) 
+					if (Hlp_Random(2) == 0)
 					{
 						B_Say (self, other, "$ADDON_MONSTERKILLED");
 					}
@@ -51,11 +52,11 @@ func void B_Say_AttackEnd()
 				}
 				else if (self.voice == 12)
 				{
-					if ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(GornOW))
+					if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(GornOW))
 					|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(GornDJG))
 					|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(GornNW_vor_DJG))
 					|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(GornNW_nach_DJG))
-					|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gorn_DI)))
+					|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gorn_DI))
 					{
 						if (Hlp_Random(2) == 0)
 						{
@@ -215,6 +216,5 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ kein Grund ------
 	return;
 };

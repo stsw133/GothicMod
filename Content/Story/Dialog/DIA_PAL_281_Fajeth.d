@@ -9,7 +9,7 @@ FUNC INT C_SnapperDeath()
 	&& 	Npc_IsDead(NewMine_Snapper7)
 	&& 	Npc_IsDead(NewMine_Snapper8)
 	{
-		return true;
+		return TRUE;
 	}; 
 
 };
@@ -22,13 +22,13 @@ INSTANCE DIA_Fajeth_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Fajeth_EXIT_Condition;
 	information = DIA_Fajeth_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Fajeth_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Fajeth_EXIT_Info()
@@ -36,6 +36,13 @@ FUNC VOID DIA_Fajeth_EXIT_Info()
 	AI_StopProcessInfos (self);
 };
 
+/* 
+	Seit einiger Zeit suchen wir in diesem verfluchten Gebiet eine Stelle, die noch erzhaltiges Gestein enthält, 
+	nicht ständig von Orkpatroullien heimgesucht wird, wo die dauernden Drachenangriffe ausbleiben!
+	Wir sind völlig verdreckt und ausgehungert, haben unzählige Kämpfe ausgetragen 
+	und haben endlich hier den Funken einer Hoffnung gefunden bei diesem dreckigen Loch in der Erde dort drüben unseren praktisch unmöglichen Auftrag zu erledigen.
+	Und da kommt einer wie du daher und besitzt die Frechheit uns zu sagen, wir seien überfällig! Entweder bist du völlig verrückt oder einfach nur unverschämt!
+*/
 ///////////////////////////////////////////////////////////////////////	
 //	Info First
 ///////////////////////////////////////////////////////////////////////
@@ -45,14 +52,14 @@ instance DIA_Fajeth_First		(C_INFO)
 	nr           = 	2;	
 	condition	 = 	DIA_Fajeth_First_Condition;
 	information	 = 	DIA_Fajeth_First_Info;
-	permanent 	 =  false;
-	important	 = 	true;
+	permanent 	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Fajeth_First_Condition ()
 {
-	if (Garond.aivar[AIV_TalkedToPlayer] == false) 
+	if (Garond.aivar[AIV_TalkedToPlayer] == FALSE) 
 	{
-		return true;
+			return TRUE;
 	};
 };
 func void DIA_Fajeth_First_Info ()
@@ -72,15 +79,15 @@ instance DIA_Fajeth_Hallo		(C_INFO)
 	nr           = 	2;	
 	condition	 = 	DIA_Fajeth_Hallo_Condition;
 	information	 = 	DIA_Fajeth_Hallo_Info;
-	permanent 	 =  false;
-	important	 = 	true;
+	permanent 	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Fajeth_Hallo_Condition ()
 {
 	if (MIS_ScoutMine == LOG_RUNNING) 
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fajeth_Hallo_Info ()
@@ -96,7 +103,8 @@ func void DIA_Fajeth_Hallo_Info ()
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_06"); //Wielki magu, twoja obecnoœæ nape³nia mnie i moich ludzi odwag¹.
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_07"); //Z pewnoœci¹ móg³byœ nam pomóc, gdybyœ zechcia³ u¿yæ mocy, któr¹ obdarzy³ ciê Innos.
-
+		
+		
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Co mogê dla ciebie zrobiæ?",DIA_Fajeth_Hallo_Tun);	
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Moja misja jest wa¿niejsza.",DIA_Fajeth_Hallo_KDFNein);	
 	}
@@ -104,7 +112,8 @@ func void DIA_Fajeth_Hallo_Info ()
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_08"); //Moje zadanie polega na wydobywaniu rudy i chronieniu naszych zapasów.
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_09"); //Do tego potrzebujê ludzi. Jesteœ s³ug¹ Innosa - a zatem musisz s³uchaæ moich poleceñ.
-
+		
+		
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Co mogê dla ciebie zrobiæ?",DIA_Fajeth_Hallo_Tun);	
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Ale ja otrzyma³em ju¿ rozkazy i to od Garonda.",DIA_Fajeth_Hallo_MILNein);	
 	}
@@ -112,7 +121,8 @@ func void DIA_Fajeth_Hallo_Info ()
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_10"); //S³uchaj, nie wiem, czemu Garond przys³a³ tu najemnika, ale z pewnoœci¹ mia³ w tym jakiœ cel.
 		AI_Output (self, other, "DIA_Fajeth_Hallo_12_11"); //Zanim ciê odeœlê, chcia³bym ci zleciæ jedno zadanie.
-
+		
+		
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Wszystko ma swoj¹ cenê.",DIA_Fajeth_Hallo_SLDJa);	
 		Info_AddChoice 	  (DIA_Fajeth_Hallo,"Nie, nie mam czasu...",DIA_Fajeth_Hallo_SLDNein);	
 	};
@@ -123,17 +133,17 @@ FUNC VOID DIA_Fajeth_Hallo_Tun () //Mission
 	AI_Output (self, other, "DIA_Fajeth_Hallo_Tun_12_01"); //Horda zêbaczy ju¿ od dawna grasuje w tej okolicy. Ostatnio kr¹¿¹ dooko³a naszego obozu, jakby czekaj¹c na okazjê do ataku.
 	AI_Output (self, other, "DIA_Fajeth_Hallo_Tun_12_02"); //Nie wiem dok³adnie, o co mo¿e im chodziæ, ale dopóki tu s¹, w obozie nie zapanuje spokój.
 
-	if ((Npc_IsDead(Fed)) == false)
+	if ((Npc_IsDead(Fed)) == FALSE)
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_Tun_12_03"); //Najwiêcej problemów sprawia Fed. Nie doœæ, ¿e sam jest œmiertelnie przera¿ony, to jeszcze rozsiewa panikê wœród pozosta³ych skazañców.
 	};
 
-	if ((Npc_IsDead(Bilgot)) == false)
+	if ((Npc_IsDead(Bilgot)) == FALSE)
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_Tun_12_04"); //Bilgot te¿ siê do niczego nie nadaje.
 	};
 
-	if ((Npc_IsDead(Tengron)) == false)
+	if ((Npc_IsDead(Tengron)) == FALSE)
 	{
 		AI_Output (self, other, "DIA_Fajeth_Hallo_Tun_12_05"); //Tengron co prawda potrafi walczyæ, ale brakuje mu sprytu.
 	};
@@ -150,7 +160,9 @@ FUNC VOID DIA_Fajeth_Hallo_Tun () //Mission
 	
 	Info_ClearChoices (DIA_Fajeth_Hallo);
 	
+
 	PrintScreen ("", -1, -1, FONT_Screen, 0);
+
 };
 FUNC VOID DIA_Fajeth_Hallo_KDFNein ()
 {
@@ -171,7 +183,7 @@ FUNC VOID DIA_Fajeth_Hallo_SLDJa ()
 	AI_Output (self, other, "DIA_Fajeth_Hallo_SLDJa_12_01"); //Nie jestem przyzwyczajony do ubijania interesów z najemnikami. Nie znoszê siê targowaæ.
 	AI_Output (self, other, "DIA_Fajeth_Hallo_SLDJa_12_02"); //Jednak na znak mojej przychylnoœci zap³acê ci za twoj¹ pracê 100 sztuk z³ota.
 	AI_Output (self, other, "DIA_Fajeth_Hallo_SLDJa_12_03"); //Zgoda?
-	Fajeth_Pay = true;
+	Fajeth_Pay = TRUE;
 	Info_ClearChoices (DIA_Fajeth_Hallo);
 	Info_AddChoice 	  (DIA_Fajeth_Hallo,"Co mogê dla ciebie zrobiæ?",DIA_Fajeth_Hallo_Tun);	
 	Info_AddChoice 	  (DIA_Fajeth_Hallo,"Nie, nie mam czasu...",DIA_Fajeth_Hallo_SLDNein);	
@@ -193,7 +205,7 @@ instance DIA_Fajeth_Leader		(C_INFO)
 	nr           = 	2;	
 	condition	 = 	DIA_Fajeth_Leader_Condition;
 	information	 = 	DIA_Fajeth_Leader_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 =  "Zabi³em przywódcê stada.";
 };
 func int DIA_Fajeth_Leader_Condition ()
@@ -202,7 +214,7 @@ func int DIA_Fajeth_Leader_Condition ()
   	&&  Npc_IsDead(NewMine_LeadSnapper) 
 	&& (MIS_Fajeth_Kill_Snapper == LOG_RUNNING)
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Fajeth_Leader_Info ()
@@ -210,7 +222,7 @@ func void DIA_Fajeth_Leader_Info ()
 	AI_Output (other, self, "DIA_Fajeth_Leader_15_00"); //Zabi³em przywódcê stada.
 	AI_Output (self, other, "DIA_Fajeth_Leader_12_01"); //Dobrze. Pozbawione przywódcy bestie nie s¹ nawet w po³owie tak groŸne. Nie s¹dzê, ¿eby mia³y nas jeszcze zaatakowaæ.
 	
-	if (Fajeth_Pay == true)
+	if (Fajeth_Pay == TRUE)
 	{
 		AI_Output (self, other, "DIA_Fajeth_Leader_12_02"); //Oto twoje z³oto, zgodnie z umow¹.
 		B_GiveInvItems (self, other, ItMi_Gold,100); 
@@ -218,7 +230,9 @@ func void DIA_Fajeth_Leader_Info ()
 	
 	Fajeth.flags = 0;
 	MIS_Fajeth_Kill_Snapper = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_FajethKillSnapper);
+		
+		
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info SNAPPER_Killed
@@ -229,16 +243,16 @@ instance DIA_Fajeth_SNAPPER_KILLED		(C_INFO)
 	nr           = 	9;	
 	condition	 = 	DIA_Fajeth_SNAPPER_KILLED_Condition;
 	information	 = 	DIA_Fajeth_SNAPPER_KILLED_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Zêbacze ju¿ nie sprawi¹ wam problemów.";
 };
 
 func int DIA_Fajeth_SNAPPER_KILLED_Condition ()
 {
 	if (MIS_Fajeth_Kill_Snapper == LOG_RUNNING)
-	&& (C_SnapperDeath() == true)
+	&& (C_SnapperDeath() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fajeth_SNAPPER_KILLED_Info ()
@@ -247,14 +261,14 @@ func void DIA_Fajeth_SNAPPER_KILLED_Info ()
 	AI_Output (hero, self, "DIA_Fajeth_SNAPPER_KILLED_15_00"); //Zêbacze ju¿ nie sprawi¹ wam problemów.
 	AI_Output (self, hero, "DIA_Fajeth_SNAPPER_KILLED_12_01"); //Dobra robota. Powinniœmy poradziæ sobie z reszt¹ tych bestii.
 	
-	if (Fajeth_Pay == true)
+	if (Fajeth_Pay == TRUE)
 	{
 		AI_Output (self, hero, "DIA_Fajeth_SNAPPER_KILLED_12_02"); //Zas³ugujesz na nagrodê - oto 100 sztuk z³ota, tak jak siê umawialiœmy.
 		B_GiveInvItems (self, other, ItmI_Gold,100); 
 	};					
 	Fajeth.flags = 0;
 	MIS_Fajeth_Kill_Snapper = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_FajethKillSnapper);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Running
@@ -265,7 +279,7 @@ instance DIA_Fajeth_Running		(C_INFO)
 	nr           = 	9;	
 	condition	 = 	DIA_Fajeth_Running_Condition;
 	information	 = 	DIA_Fajeth_Running_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description  =  "Jak tam morale twoich ludzi?";
 };
 
@@ -273,7 +287,7 @@ func int DIA_Fajeth_Running_Condition ()
 {
 	if  (MIS_Fajeth_Kill_Snapper == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fajeth_Running_Info ()
@@ -291,7 +305,7 @@ instance DIA_Fajeth_BELOHNUNG		(C_INFO)
 	nr           = 	3;	
 	condition	 = 	DIA_Fajeth_BELOHNUNG_Condition;
 	information	 = 	DIA_Fajeth_BELOHNUNG_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Powiedz mi, ile rudy uda³o wam siê wydobyæ do tej pory.";
 };
 
@@ -300,7 +314,7 @@ func int DIA_Fajeth_BELOHNUNG_Condition ()
 	if (MIS_Fajeth_Kill_Snapper == LOG_SUCCESS)
 	|| (MIS_Fajeth_Kill_Snapper == LOG_OBSOLETE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -313,7 +327,7 @@ func void DIA_Fajeth_BELOHNUNG_Info ()
 	AI_Output (other, self, "DIA_Fajeth_BELOHNUNG_15_04"); //Rozumiem. Zawiadomiê go.
 	AI_Output (self, other, "DIA_Fajeth_BELOHNUNG_12_05"); //Dobrze. Reszta nale¿y do ciebie. My postaramy siê jak najd³u¿ej utrzymaæ pozycje.
 	
-	Fajeth_Ore = true;
+	Fajeth_Ore = TRUE;
 	
 	B_LogEntry (TOPIC_ScoutMine,"Górnicy Fajetha wydobyli do tej pory DWIE skrzynie rudy.");
 	
@@ -328,16 +342,16 @@ instance DIA_Fajeth_Perm2		(C_INFO)
 	nr           = 	9;	
 	condition	 = 	DIA_Fajeth_Perm2_Condition;
 	information	 = 	DIA_Fajeth_Perm2_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description  =  "Jak idzie produkcja rudy?";
 };
 
 func int DIA_Fajeth_Perm2_Condition ()
 {
 	if  Npc_KnowsInfo (other,DIA_Fajeth_BELOHNUNG)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fajeth_Perm2_Info ()
@@ -364,16 +378,16 @@ instance DIA_Fajeth_ERZABBAU		(C_INFO)
 	nr			 = 	11;
 	condition	 = 	DIA_Fajeth_ERZABBAU_Condition;
 	information	 = 	DIA_Fajeth_ERZABBAU_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak idzie wydobycie?";
 };
 
 func int DIA_Fajeth_ERZABBAU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Fajeth_BELOHNUNG))
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -381,7 +395,7 @@ func void DIA_Fajeth_ERZABBAU_Info ()
 {
 	AI_Output (other, self, "DIA_Fajeth_ERZABBAU_15_00"); //Jak idzie wydobycie?
 	
-	if (MIS_AllDragonsDead == true)
+	if (MIS_AllDragonsDead == TRUE)
 	{
 		AI_Output (self, other, "DIA_Fajeth_ERZABBAU_12_01"); //Ostatnio zrobi³o siê tu trochê ciszej. Zastanawiam siê dlaczego.
 		AI_Output (other, self, "DIA_Fajeth_ERZABBAU_15_02"); //Wszystkie smoki nie ¿yj¹.

@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	NSC - Wahrnehmungsreichweiten
-//******************************************************************************************
+///******************************************************************************************
+///	NSC - Wahrnehmungsreichweiten
+///******************************************************************************************
 func void InitPerceptions()
 {
 	// Die Reichweite der aktiven Wahrnehmungen
@@ -14,20 +14,19 @@ func void InitPerceptions()
 	// wird durch den senses_range = PERC_DIST_ACTIVE_MAX gesetzt.
 
 	// *** ACHTUNG *** Die Reihenfolge der aktiven Wn bestimmt, welche zuerst gecheckt und (bei Erfolg) aufgerufen wird - der Rest wird IGNORIERT!
-	// Aktive Wahrnehmungen werden NUR über die aktivierten senses getriggert -Humans haben KEIN sense_smell, d.h. ein Aufruf von z.B.
-	// B_AssessPlayer beinhaltet schon einen Sichtcheck (etwa 180° vor dem NSC)
+	// Aktive Wahrnehmungen werden NUR über die aktivierten senses getriggert -Humans haben KEIN sense_smell, d.h. ein Aufruf von z.B. B_AssessPlayer beinhaltet schon einen Sichtcheck (etwa 180° vor dem NSC)
 
 	// *** ACHTUNG *** Passive Wahrnehmungen sind sense-unabhängig (sie gehen immer an alle NSCs, egal ob's gesehen/gehört wird oder nicht)
 
 	// --- KAMPF -----------------------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSDAMAGE		, 9999							); //Reichweite wird nicht vom Programm benutzt!
 	// wird an den NSC gesendet, der getroffen worden ist
 	Perc_SetRange		(PERC_ASSESSOTHERSDAMAGE, PERC_DIST_INTERMEDIAT			); //wird i.d.R. nur von Monster-AI benutz (einige ZS) und lokal in ZS_WatchFight
 	// wird an alle NSCs gesendet, wenn ein NSC getroffen worden ist
 	Perc_SetRange		(PERC_ASSESSDEFEAT		, WATCHFIGHT_DIST_MAX			); //wird NUR in ZS_WatchFight (lokal) benutzt
 	// wird an alle NSCs gesendet, wenn ein NSC bewußtlos wird
-	Perc_SetRange		(PERC_ASSESSMURDER		, PERC_DIST_ACTIVE_MAX 			); //eigentlich INTERMEDIAT, ist hier größer, weil Mörder direkt hinter mir,
-																				   //aber Opfer 11m entfernt stehen kann
+	Perc_SetRange		(PERC_ASSESSMURDER		, PERC_DIST_ACTIVE_MAX 			); //eigentlich INTERMEDIAT, ist hier größer, weil Mörder direkt hinter mir, aber Opfer 11m entfernt stehen kann
 	// wird an alle NSCs gesendet, wenn ein NSC stirbt
 	Perc_SetRange		(PERC_ASSESSTHREAT		, PERC_DIST_INTERMEDIAT			); //BUG!  Reichweite interessiert hier vermutlich nicht --Mike
 	// wird alle 2 Sekunden an den NSC gesendet, auf den der Spieler zielt (Bogen oder Magie)
@@ -35,6 +34,7 @@ func void InitPerceptions()
 	// wird an alle NSCs gesendet, wenn der Spieler eine Waffe (oder Spruch) zieht
 
 	// --- HÖREN -----------------------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSFIGHTSOUND	, 3000							); //wird in fast allen Fällen auf PERC_DIST_INTERMEDIAT verkürzt!
 	// wird an alle NSCs gesendet, wenn SC oder NSC jemanden mit Waffe trifft
 	Perc_SetRange		(PERC_ASSESSQUIETSOUND	, PERC_DIST_INTERMEDIAT			);
@@ -42,6 +42,7 @@ func void InitPerceptions()
 	// wird jedesmal gesendet, wenn ein Item mit der Welt kollidiert (fallengelassen wird)
 
 	// --- DIEB ------------------------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSTHEFT		, PERC_DIST_INTERMEDIAT			);
 	// geht an alle, wenn SC (oder NSC!) ein Item aufgenommen hat
 	// Relikt: Wenn SC alten Taschendiebstahl macht an alle NSCs ausser den Beklauten
@@ -52,6 +53,7 @@ func void InitPerceptions()
 	// geht an alle, wenn der SC einen Portalraum betritt
 
 	// --- MAGIER ----------------------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSMAGIC		, 9999							); //Reichweite wird nicht vom Programm benutzt!
 	// wird gesendet von VisualFXInst.d - Wahrnehmungs-Sendung hängt am Magie Effekt
 	// Ein NSC, der diese Wahrnehmung bekommt, kann in der AI ZUSÄTZLICH auf Magie reagieren (i.d.R. mit ZS-Wechsel)
@@ -60,21 +62,27 @@ func void InitPerceptions()
 	// Wird an das / die Opfer gesendet, wenn der Spell aufhört zu wirken
 
 	// --- TALK ------------------------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSTALK		, PERC_DIST_DIALOG				);
 
 	// --- NSC-NSC-Kommunikation -------------------------------------------------
+
 	Perc_SetRange		(PERC_ASSESSWARN		, PERC_DIST_INTERMEDIAT			);
 	// REIN scriptgenerierte Wahrnehmung!
 
 	// --- Türen aufmachen -------------------------------------------------------
+
 	Perc_SetRange		(PERC_MOVEMOB			, PERC_DIST_DIALOG				);
 	// Wenn NSC eine Tür im Weg ist
 
 	// --- SC verwandelt sich / - zurück ------------------------------------------
+	
 	Perc_SetRange		(PERC_ASSESSSURPRISE	, FIGHT_DIST_CANCEL			 	);	// nur in ZS_Attack und ZS_MM_Attack
 	// geht an alle, wenn der SC sich zurückverwandelt
 
+
 		// --- RAUS (wird nicht gebraucht) -------------------------------------------
+
 		Perc_SetRange		(PERC_OBSERVEINTRUDER	, 100							);
 		// geht an alle, wenn SC stehenbleibt (außer aus dem Schleichen heraus)
 		Perc_SetRange		(PERC_ASSESSREMOVEWEAPON, 100							);
@@ -93,9 +101,9 @@ func void InitPerceptions()
 		// geht alle 2 Sekunden an alle, wenn der SC schleicht (NICHT, wenn er geduckt steht)
 };
 
-//******************************************************************************************
-//	Normale Wahrnehmung
-//******************************************************************************************
+///******************************************************************************************
+///	Normale Wahrnehmung
+///******************************************************************************************
 func void Perception_Set_Normal()				//Für Humans
 {
 	// --- Die Senses bei jedem Zustand neu setzen (Weil in ZS_Guide_Player die Senses & Ranges verändert werden) ------
@@ -105,19 +113,19 @@ func void Perception_Set_Normal()				//Für Humans
 	// --- Takt der aktiven Wahrnehmungen ------------------------------------------------
 	if (Npc_KnowsInfo(self, 1))
 	|| (C_NpcIsGateGuard (self))
-	{	Npc_SetPercTime (self, 0.3);	}
+	{
+		Npc_SetPercTime		(self, 0.3);
+	}
 	else
-	{	Npc_SetPercTime (self, 1);	};
+	{
+		Npc_SetPercTime		(self, 1);
+	};
 
-	// --- aktiv -------------------------------------------------------------------------
-	//aktive Wahrnehmungen werden IMMER den passiven bevorzugt (priorisiert)
-	Npc_PercEnable  	(self, 	PERC_ASSESSPLAYER		,	B_AssessPlayer				);
-	//Player wird VOR Enemy erfasst! - Geht in ZS_Attack, ZS_ReactToWeapon, B_AssessEnterRoom oder B_AssessTalk
-	Npc_PercEnable  	(self, 	PERC_ASSESSENEMY		,	B_AssessEnemy				);
-	//geht in ZS_Attack
+	// --- aktiv ------------------------------------------------------------------------- //aktive Wahrnehmungen werden IMMER den passiven bevorzugt (priorisiert)
+	Npc_PercEnable  	(self, 	PERC_ASSESSPLAYER		,	B_AssessPlayer				); //Player wird VOR Enemy erfasst! - Geht in ZS_Attack, ZS_ReactToWeapon, B_AssessEnterRoom oder B_AssessTalk
+	Npc_PercEnable  	(self, 	PERC_ASSESSENEMY		,	B_AssessEnemy				); //geht in ZS_Attack
 
-	// --- passiv ------------------------------------------------------------------------
-	//Passive Wahrnehmungen werden durch die Reihenfolge der Anmeldung priorisiert!
+	// --- passiv ------------------------------------------------------------------------ //Passive Wahrnehmungen werden durch die Reihenfolge der Anmeldung priorisiert!
 	Npc_PercEnable  	(self, 	PERC_ASSESSMAGIC		,	B_AssessMagic				);
 	Npc_PercEnable  	(self,	PERC_ASSESSDAMAGE		,	B_AssessDamage				); //geht in ZS_Attack oder in ZS_ReactToDamage (bei Freunden)
 	Npc_PercEnable  	(self, 	PERC_ASSESSMURDER		,	B_AssessMurder				); //geht in ZS_Attack
@@ -133,9 +141,9 @@ func void Perception_Set_Normal()				//Für Humans
 	Npc_PercEnable  	(self, 	PERC_MOVEMOB			,	B_MoveMob					); //öffnet Türen, die auf dem Weg liegen
 };
 
-//******************************************************************************************
-//	Minimale Wahrnehmung - sollten IMMER aktiv sein
-//******************************************************************************************
+///******************************************************************************************
+///	Minimale Wahrnehmung - sollten IMMER aktiv sein
+///******************************************************************************************
 func void Perception_Set_Minimal()				//Für Männer und Frauen
 {
 	// --- Die Senses bei jedem Zustand neu setzen (nur falls in ZS mit Perc_Set_Minimal noch ZUSÄTLZLICH (lokal) aktive Wahrnehmungen angemeldet werden) ------
@@ -151,9 +159,9 @@ func void Perception_Set_Minimal()				//Für Männer und Frauen
 	Npc_PercEnable  	(self,	PERC_ASSESSENTERROOM	,	B_AssessPortalCollision		);
 };
 
-//******************************************************************************************
-//	B_ClearPerceptions
-//******************************************************************************************
+///******************************************************************************************
+///	B_ClearPerceptions
+///******************************************************************************************
 func void B_ClearPerceptions (var C_NPC slf)
 {
 	// ------ Aktive Wahrnehmungen der Perception_Set_Normal und Minimal disablen -------
@@ -197,15 +205,15 @@ func void B_ClearPerceptions (var C_NPC slf)
 	//Npc_PercDisable  	(slf, 	PERC_OBSERVESUSPECT		);
 };
 
-//******************************************************************************************
-//	Monster und Orks - Daily Routines
-//******************************************************************************************
+///******************************************************************************************
+///	Monster und Orks - Daily Routines
+///******************************************************************************************
 func void Perception_Set_Monster_Rtn()
 {
 	Npc_SetPercTime 	(self, 1);
 
-	Npc_PercEnable		(self, PERC_ASSESSENEMY			,	B_MM_AssessEnemy); 		//geht in ZS_MM_ThreatenEnemy, ZS_MM_Hunt oder ZS_MM_Attack / Orks immer in Attack
-	Npc_PercEnable 		(self, PERC_ASSESSBODY			, 	B_MM_AssessBody);		//geht in ZS_MM_EatBody / Orks ignorieren
+	Npc_PercEnable		(self, PERC_ASSESSENEMY			,	B_MM_AssessEnemy); 			//geht in ZS_MM_ThreatenEnemy, ZS_MM_Hunt oder ZS_MM_Attack / Orks immer in Attack
+	Npc_PercEnable 		(self, PERC_ASSESSBODY			, 	B_MM_AssessBody);			//geht in ZS_MM_EatBody / Orks ignorieren
 
 	Npc_PercEnable		(self, PERC_ASSESSMAGIC			,	B_AssessMagic); 			//selbe Rkt wie Humans
 	Npc_PercEnable		(self, PERC_ASSESSDAMAGE		,	B_MM_AssessDamage); 		//geht in ZS_MM_Attack

@@ -11,5 +11,6 @@ func int C_NpcHasAttackReasonToKill (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };

@@ -7,13 +7,13 @@ INSTANCE DIA_Addon_Riordian_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Riordian_EXIT_Condition;
 	information = DIA_Addon_Riordian_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Addon_Riordian_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Riordian_EXIT_Info()
@@ -35,7 +35,7 @@ instance DIA_Addon_Riordian_Hallo		(C_INFO)
 
 func int DIA_Addon_Riordian_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Riordian_Hallo_Info ()
@@ -61,7 +61,7 @@ func int DIA_Addon_Riordian_Alter_Condition ()
 {
 	if Npc_KnowsInfo (other, DIA_Addon_Riordian_Hallo)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Riordian_Alter_Info ()
@@ -85,7 +85,7 @@ func int DIA_Addon_Riordian_Atlantis_Condition ()
 {
 	if Npc_KnowsInfo (other, DIA_Addon_Riordian_Hallo)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -117,7 +117,7 @@ func int DIA_Addon_Riordian_SaturasWantYou_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Riordian_Hallo))
 	&& (MIS_Addon_Saturas_BringRiordian2Me == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -126,7 +126,7 @@ func void DIA_Addon_Riordian_SaturasWantYou_Info ()
 	AI_Output	(other, self, "DIA_Addon_Riordian_SaturasWantYou_15_00"); //Saturas chce ciê widzieæ.
 	AI_Output	(self, other, "DIA_Addon_Riordian_SaturasWantYou_10_01"); //Czy¿by posun¹³ siê naprzód ze swym dochodzeniem? W takim razie natychmiast siê z nim zobaczê.
 	
-	if (Nefarius_NW.aivar[AIV_TalkedToPlayer] == false)
+	if (Nefarius_NW.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Riordian_SaturasWantYou_10_02"); //Jeœli chcesz siê dowiedzieæ wiêcej o tym miejscu, porozmawiaj z Nefariusem.
 		AI_Output	(self, other, "DIA_Addon_Riordian_SaturasWantYou_10_03"); //Znajdziesz go w g³êbi krypt.
@@ -149,7 +149,7 @@ instance DIA_Addon_Riordian_Perm		(C_INFO)
 	nr			 = 	99;
 	condition	 = 	DIA_Addon_Riordian_Perm_Condition;
 	information	 = 	DIA_Addon_Riordian_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Dowiedzia³eœ siê czegoœ nowego?";
 };
@@ -158,17 +158,17 @@ func int DIA_Addon_Riordian_Perm_Condition ()
 {
 	if (MIS_Addon_Saturas_BringRiordian2Me == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
 func void DIA_Addon_Riordian_Perm_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Riordian_Perm_15_00"); //Dowiedzia³eœ siê czegoœ nowego?
-	if (Riordian_PermNews == false)
+	if (Riordian_PermNews == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Riordian_Perm_10_01"); //Wiem, ¿e ta prastara cywilizacja czci³a Adanosa!
-		Riordian_PermNews = true;
+		Riordian_PermNews = TRUE;
 	}
 	else
 	{
@@ -176,3 +176,193 @@ func void DIA_Addon_Riordian_Perm_Info ()
 	};
 	AI_StopProcessInfos (self);
 };
+
+///////////////////////////////////////////////////////////////////////
+//	Info TeachPre
+///////////////////////////////////////////////////////////////////////
+instance DIA_Addon_Riordian_TeachPre		(C_INFO)
+{
+	npc			 = 	KDW_1404_Addon_Riordian_NW;
+	nr			 = 	5;
+	condition	 = 	DIA_Addon_Riordian_TeachPre_Condition;
+	information	 = 	DIA_Addon_Riordian_TeachPre_Info;
+
+	description	 = 	"Vatras da³ mi Amulet Szukaj¹cego Ognika...";
+};
+func int DIA_Addon_Riordian_TeachPre_Condition ()
+{
+	if (Npc_KnowsInfo (other, DIA_Addon_Riordian_Hallo))
+	&& (Npc_HasItems (other,ItAm_Addon_WispDetector))
+		{
+			return TRUE;
+		};
+};
+func void DIA_Addon_Riordian_TeachPre_Info ()
+{
+	AI_Output	(other, self, "DIA_Addon_Riordian_TeachPre_15_00"); //Vatras da³ mi Amulet Szukaj¹cego Ognika...
+	AI_Output	(self, other, "DIA_Addon_Riordian_TeachPre_10_01"); //Ach! To rzadki artefakt. Za jego pomoc¹ mo¿esz wyszkoliæ ognika.
+	AI_Output	(other, self, "DIA_Addon_Riordian_TeachPre_15_02"); //Mo¿esz mi w tym pomóc?
+	AI_Output	(self, other, "DIA_Addon_Riordian_TeachPre_10_03"); //Oczywiœcie. Przez d³ugi czas zajmowa³em siê tym rodzajem magii.
+	Riordian_Addon_TeachPlayer = TRUE;
+
+	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
+	B_LogEntry		(TOPIC_Addon_KDWTeacher, LogText_Addon_RiordianTeach);
+};
+///////////////////////////////////////////////////////////////////////
+//	Info Teach
+///////////////////////////////////////////////////////////////////////
+instance DIA_Addon_Riordian_Teach		(C_INFO)
+{
+	npc		 = 	KDW_1404_Addon_Riordian_NW;
+	nr		 = 	90;
+	condition	 = 	DIA_Addon_Riordian_Teach_Condition;
+	information	 = 	DIA_Addon_Riordian_Teach_Info;
+	permanent	 = 	TRUE;
+
+	description	 = 	"Poka¿ mi, jak wyszkoliæ mojego ognika.";
+};
+var int DIA_Addon_Riordian_Teach_NoPerm;
+
+func int DIA_Addon_Riordian_Teach_Condition ()
+{
+	if (Riordian_Addon_TeachPlayer == TRUE)
+	&& (DIA_Addon_Riordian_Teach_NoPerm == FALSE)
+	&& (Npc_HasItems (other,ItAm_Addon_WispDetector))
+		{
+			return TRUE;
+		};
+};
+func void DIA_Addon_Riordian_Teach_Info ()
+{
+	B_DIA_Addon_Riordian_Teach_15_00 ();
+
+	if ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NF]	 	== FALSE)
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF]		== FALSE)
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] 	== FALSE)	
+	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] 	== FALSE)	
+	{                                            
+		Info_ClearChoices (DIA_Addon_Riordian_Teach);
+		Info_AddChoice (DIA_Addon_Riordian_Teach,DIALOG_BACK,DIA_Addon_Riordian_Teach_BACK);
+		B_DIA_Addon_Riordian_Teach_10_01 ();
+
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF] == FALSE)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FF, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FF)),DIA_Addon_Riordian_Teach_WISPSKILL_FF);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] == FALSE)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_NONE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_NONE)),DIA_Addon_Riordian_Teach_WISPSKILL_NONE);
+		};
+			
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] == FALSE)
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_RUNE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_RUNE)),DIA_Addon_Riordian_Teach_WISPSKILL_RUNE);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] == FALSE)
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_MAGIC, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_MAGIC)),DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC);
+		};
+			
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] == FALSE)
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FOOD, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FOOD)),DIA_Addon_Riordian_Teach_WISPSKILL_FOOD);
+		};
+		
+		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] == FALSE)
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_POTIONS, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_POTIONS)),DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS);
+		};
+	}
+	else 
+	{
+		B_DIA_Addon_Riordian_Teach_10_08 ();
+		DIA_Addon_Riordian_Teach_NoPerm = TRUE;
+	};
+};
+func void DIA_Addon_Riordian_Teach_WISPSKILL_X ()
+{
+	B_DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00 ();
+};
+FUNC VOID DIA_Addon_Riordian_Teach_BACK ()
+{
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_FF ()
+{
+	if B_TeachPlayerTalentWispDetector  (self, other, WISPSKILL_FF)
+	{
+		if (WISPSKILL_LEVEL < 2)
+		{
+			WISPSKILL_LEVEL = 2;
+		};
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_NONE ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_NONE)
+	{
+		if (WISPSKILL_LEVEL < 2)
+		{
+			WISPSKILL_LEVEL = 2;
+		};
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_RUNE ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_RUNE)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_MAGIC)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};
+	
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_FOOD ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_FOOD)
+	{
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};	
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS ()
+{
+	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_POTIONS)
+	{
+		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+	};
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+
+

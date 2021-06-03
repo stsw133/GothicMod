@@ -1,5 +1,5 @@
-//******************************************************************************************
-INSTANCE PC_SharpWeapon_End (C_Info)
+///******************************************************************************************
+instance PC_SharpWeapon_End (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -9,7 +9,7 @@ INSTANCE PC_SharpWeapon_End (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-FUNC INT PC_SharpWeapon_End_Condition()
+func int PC_SharpWeapon_End_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SharpWeapon)
 	{
@@ -17,7 +17,7 @@ FUNC INT PC_SharpWeapon_End_Condition()
 	};
 };
 
-FUNC VOID PC_SharpWeapon_End_Info()
+func void PC_SharpWeapon_End_Info()
 {
 	B_ENDPRODUCTIONDIALOG();
 };

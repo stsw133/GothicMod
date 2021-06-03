@@ -7,15 +7,15 @@ INSTANCE DIA_Malak_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Malak_EXIT_Condition;
 	information = DIA_Malak_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Malak_EXIT_Condition()
 {
-		if (Kapitel < 9)
+		if (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -39,9 +39,9 @@ instance DIA_Malak_HALLO		(C_INFO)
 
 func int DIA_Malak_HALLO_Condition ()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -77,9 +77,9 @@ instance DIA_Malak_WASMACHSTDU		(C_INFO)
 func int DIA_Malak_WASMACHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_HALLO))
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -108,9 +108,9 @@ instance DIA_Malak_PASS		(C_INFO)
 func int DIA_Malak_PASS_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_WASMACHSTDU))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -139,9 +139,9 @@ instance DIA_Malak_WOPASS		(C_INFO)
 func int DIA_Malak_WOPASS_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_HALLO))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -170,9 +170,9 @@ instance DIA_Malak_MINENTAL		(C_INFO)
 func int DIA_Malak_MINENTAL_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_PASS))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -202,9 +202,9 @@ instance DIA_Malak_WARSTDUSCHONDA		(C_INFO)
 func int DIA_Malak_WARSTDUSCHONDA_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_PASS))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -236,10 +236,10 @@ func int DIA_Malak_PALADINE_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Malak_WARSTDUSCHONDA))
 		&& 	(Npc_KnowsInfo(other, DIA_Malak_MINENTAL))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -267,9 +267,9 @@ instance DIA_Malak_KEINEFRAUEN		(C_INFO)
 func int DIA_Malak_KEINEFRAUEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_WASMACHSTDU))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -290,7 +290,7 @@ instance DIA_Malak_PERMKAP1		(C_INFO)
 	nr		 = 	11;
 	condition	 = 	DIA_Malak_PERMKAP1_Condition;
 	information	 = 	DIA_Malak_PERMKAP1_Info;
-	permanent	 =  true;	
+	permanent	 =  TRUE;	
 
 	description	 = 	"Tylko siê nie przepracuj.";
 };
@@ -305,10 +305,10 @@ func int DIA_Malak_PERMKAP1_Condition ()
 		&& (Npc_KnowsInfo(other, DIA_Malak_WARSTDUSCHONDA))
 		&& (Npc_KnowsInfo(other, DIA_Malak_PALADINE))
 		&& (Npc_KnowsInfo(other, DIA_Malak_KEINEFRAUEN))
-		&& (Kapitel < 9)
+		&& (Kapitel < 3)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -338,14 +338,14 @@ INSTANCE DIA_Malak_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Malak_KAP3_EXIT_Condition;
 	information	= DIA_Malak_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Malak_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Malak_KAP3_EXIT_Info()
@@ -368,15 +368,15 @@ instance DIA_Malak_FLEEFROMPASS		(C_INFO)
 
 func int DIA_Malak_FLEEFROMPASS_Condition ()
 {
-	if (Kapitel >= 9)	
+	if (Kapitel >= 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Malak_FLEEFROMPASS_Info ()
 {
-	if 	(NpcObsessedByDMT_Malak == false)
+	if 	(NpcObsessedByDMT_Malak == FALSE)
 	&& (hero.guild == GIL_KDF)
 	{
 	B_NpcObsessedByDMT (self);
@@ -388,7 +388,7 @@ func void DIA_Malak_FLEEFROMPASS_Info ()
 	AI_Output			(self, other, "DIA_Malak_FLEEFROMPASS_08_02"); //Nawet sobie nie wyobra¿asz, jakie paskudztwa wy³oni³y siê stamt¹d w ci¹gu kilku ostatnich dni.
 	AI_Output			(other, self, "DIA_Malak_FLEEFROMPASS_15_03"); //Chyba jednak mogê to sobie wyobraziæ.
 	B_LogEntry (TOPIC_BengarALLEIN,"Malak schroni³ siê na po³udniu, poniewa¿ obawia siê stworzeñ przybywaj¹cych na pastwiska od strony prze³êczy."); 
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_FoundMalakFLEEFROMPASS);
 	};
 };
 
@@ -401,18 +401,18 @@ instance DIA_Malak_Heilung		(C_INFO)
 	nr		 = 	55;
 	condition	 = 	DIA_Malak_Heilung_Condition;
 	information	 = 	DIA_Malak_Heilung_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Potrzebujesz pomocy.";
 };
 
 func int DIA_Malak_Heilung_Condition ()
 {
- 	if (NpcObsessedByDMT_Malak == true) && (NpcObsessedByDMT == false)
+ 	if (NpcObsessedByDMT_Malak == TRUE) && (NpcObsessedByDMT == FALSE)
 	&& (hero.guild == GIL_KDF)
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 	 {
-				return true;
+				return TRUE;
 	 };
 };
 var int DIA_Malak_Heilung_oneTime;
@@ -420,7 +420,7 @@ func void DIA_Malak_Heilung_Info ()
 {
 	AI_Output			(other, self, "DIA_Malak_Heilung_15_00"); //Potrzebujesz pomocy.
 
-	if (DIA_Malak_Heilung_oneTime == false)
+	if (DIA_Malak_Heilung_oneTime == FALSE)
 	{
 	AI_Output			(self, other, "DIA_Malak_Heilung_08_01"); //Po prostu chcê wróciæ do domu. Do Bengara. Mam nadziejê, ¿e jeszcze ¿yje.
 
@@ -434,7 +434,7 @@ func void DIA_Malak_Heilung_Info ()
 		B_StartOtherRoutine   (BAU_968_Bauer,"Start"); 
 		B_StartOtherRoutine   (BAU_969_Bauer,"Start"); 
 
-	DIA_Malak_Heilung_oneTime = true;
+	DIA_Malak_Heilung_oneTime = TRUE;
 	}
 	else
 	{
@@ -452,7 +452,7 @@ instance DIA_Malak_PERMCASTLE		(C_INFO)
 	nr		 = 	31;
 	condition	 = 	DIA_Malak_PERMCASTLE_Condition;
 	information	 = 	DIA_Malak_PERMCASTLE_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jak ci siê tu ¿yje?";
 };
@@ -462,11 +462,11 @@ func int DIA_Malak_PERMCASTLE_Condition ()
 	if (Npc_GetDistToWP(self,"CASTLEMINE")<4000) 
 	&& (MIS_GetMalakBack != LOG_SUCCESS)
 	&& (Npc_KnowsInfo(other, DIA_Malak_FLEEFROMPASS))
-	&& (NpcObsessedByDMT_Malak == false)	
+	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >= 9)
+	&& (Kapitel >=3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -485,7 +485,7 @@ instance DIA_Malak_BACKTOBENGAR		(C_INFO)
 	nr		 = 	31;
 	condition	 = 	DIA_Malak_BACKTOBENGAR_Condition;
 	information	 = 	DIA_Malak_BACKTOBENGAR_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Bengar ciê potrzebuje.";
 };
@@ -494,12 +494,12 @@ func int DIA_Malak_BACKTOBENGAR_Condition ()
 {
 	if (MIS_GetMalakBack == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Malak_FLEEFROMPASS))
-	&& ((Npc_IsDead(Bengar))==false)
-	&& (NpcObsessedByDMT_Malak == false)	
+	&& ((Npc_IsDead(Bengar))==FALSE)
+	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -526,7 +526,7 @@ func void DIA_Malak_BACKTOBENGAR_los ()
 	AI_Output			(other, self, "DIA_Malak_BACKTOBENGAR_los_15_00"); //Prawda.
 	AI_Output			(self, other, "DIA_Malak_BACKTOBENGAR_los_08_01"); //Dobrze. A zatem wrócê na farmê. Mam nadziejê, ¿e ten twój najemnik zna siê na rzeczy.
 	MIS_GetMalakBack = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Malak_BACKTOBENGAR);
 	B_NpcClearObsessionByDMT (self);
 	Npc_ExchangeRoutine	 (self,"Start");
 	B_StartOtherRoutine   (BAU_962_Bauer,"Start"); 
@@ -547,7 +547,7 @@ instance DIA_Malak_BACK		(C_INFO)
 	nr		 = 	32;
 	condition	 = 	DIA_Malak_BACK_Condition;
 	information	 = 	DIA_Malak_BACK_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Czy teraz zamieszkasz na farmie Bengara?";
 };
@@ -555,11 +555,11 @@ instance DIA_Malak_BACK		(C_INFO)
 func int DIA_Malak_BACK_Condition ()
 {
 	if (MIS_GetMalakBack == LOG_SUCCESS)
-	&& (NpcObsessedByDMT_Malak == false)	
+	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -589,14 +589,14 @@ INSTANCE DIA_Malak_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Malak_KAP4_EXIT_Condition;
 	information	= DIA_Malak_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Malak_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Malak_KAP4_EXIT_Info()
@@ -623,14 +623,14 @@ INSTANCE DIA_Malak_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Malak_KAP5_EXIT_Condition;
 	information	= DIA_Malak_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Malak_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Malak_KAP5_EXIT_Info()
@@ -658,14 +658,14 @@ INSTANCE DIA_Malak_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Malak_KAP6_EXIT_Condition;
 	information	= DIA_Malak_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Malak_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Malak_KAP6_EXIT_Info()

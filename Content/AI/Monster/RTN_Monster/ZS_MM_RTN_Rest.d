@@ -1,14 +1,14 @@
-// ************** 
-// ZS_MM_Rtn_Rest
-// **************
-
-func void ZS_MM_Rtn_Rest()  
+///******************************************************************************************
+///	ZS_MM_Rtn_Rest
+///******************************************************************************************
+func void ZS_MM_Rtn_Rest()
 {
 	Perception_Set_Monster_Rtn();
-
+	
 	AI_SetWalkmode 	(self, NPC_WALK);
 	B_MM_DeSynchronize();
-	if (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)==false) //damit die Monster beim Inserten nicht immer erst zum WP rennen, sondern nur, wenn sie der Heimat zu fern sind
+	
+	if (!Hlp_StrCmp(Npc_GetNearestWP(self), self.wp))
 	{
 		AI_GotoWP (self, self.WP);
 	};
@@ -16,20 +16,19 @@ func void ZS_MM_Rtn_Rest()
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
 };
 
-func int ZS_MM_Rtn_Rest_Loop ()
+///******************************************************************************************
+func int ZS_MM_Rtn_Rest_Loop()
 {
-	//ADDON>
 	if (self.guild == GIL_STONEGUARDIAN)
-	&& (RavenIsDead == true)
-	{	
-		B_KillNpc (self);
-	};
-	//ADDON<
-	
-	
-	if ((!Wld_IsTime (self.aivar[AIV_MM_RestStart],00,self.aivar[AIV_MM_RestEnd],00)) && (self.aivar[AIV_MM_RestStart] != OnlyRoutine))
+	&& (RavenIsDead)
 	{
-		AI_StartState (self, ZS_MM_AllScheduler, 1, "");
+		B_KillNpc(self);
+	};
+	
+	if (!Wld_IsTime(self.aivar[AIV_MM_RestStart],00,self.aivar[AIV_MM_RestEnd],00))
+	&& (self.aivar[AIV_MM_RestStart] != OnlyRoutine)
+	{
+		AI_StartState (self, ZS_MM_AllScheduler, true, "");
 		return LOOP_END;
 	};
 	
@@ -39,35 +38,23 @@ func int ZS_MM_Rtn_Rest_Loop ()
 		{
 			AI_GotoFP (self, "FP_ROAM");
 		};
-		
 		if (Npc_IsOnFP(self, "FP_ROAM"))
 		{
 			self.aivar[AIV_TAPOSITION] = ISINPOS;
 		};
 	}
-	else //ISINPOS
+	else if (Hlp_Random(1000) <= 5)
 	{
-		if (Hlp_Random(1000) <= 5)
-		{
-			var int randomMove;
-			randomMove = Hlp_Random(3);
-			if (randomMove == 0) {AI_PlayAni(self, "R_ROAM1");};
-			if (randomMove == 1) {AI_PlayAni(self, "R_ROAM2");};
-			if (randomMove == 2) {AI_PlayAni(self, "R_ROAM3");};
-		};
+		var int randomMove; randomMove = Hlp_Random(3);
+		if (randomMove == 0)	{	AI_PlayAni(self, "R_ROAM1");	};
+		if (randomMove == 1)	{	AI_PlayAni(self, "R_ROAM2");	};
+		if (randomMove == 2)	{	AI_PlayAni(self, "R_ROAM3");	};
 	};
 	
 	return LOOP_CONTINUE;
 };
 
-func void ZS_MM_Rtn_Rest_End ()
+///******************************************************************************************
+func void ZS_MM_Rtn_Rest_End()
 {
-
 };
-
-
-
-
-
-
-

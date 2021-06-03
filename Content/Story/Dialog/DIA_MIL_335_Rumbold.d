@@ -7,13 +7,13 @@ INSTANCE DIA_Rumbold_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Rumbold_EXIT_Condition;
 	information = DIA_Rumbold_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Rumbold_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Rumbold_EXIT_Info()
@@ -30,7 +30,7 @@ instance DIA_Rumbold_PrePerm (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Rumbold_PrePerm_Condition;
 	information	= DIA_Rumbold_PrePerm_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Co tu porabiasz?";
 };
 
@@ -38,7 +38,7 @@ func int DIA_Rumbold_PrePerm_Condition ()
 {
 	if (!Npc_KnowsInfo (other, DIA_Bengar_MILIZKLATSCHEN))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -59,15 +59,15 @@ instance DIA_Rumbold_Hallo		(C_INFO)
 	nr          = 1;
 	condition	= DIA_Rumbold_Hallo_Condition;
 	information	= DIA_Rumbold_Hallo_Info;
-	permanent 	= false;
-	important	= true;
+	permanent 	= FALSE;
+	important	= TRUE;
 };
 
 func int DIA_Rumbold_Hallo_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Bengar_MILIZKLATSCHEN))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -144,7 +144,7 @@ func void DIA_Rumbold_HALLO_geld_ok ()
 	
 	AI_StopProcessInfos (self);
 
-	Rumbold_Bezahlt = true;	
+	Rumbold_Bezahlt = TRUE;	
 
 	Npc_ExchangeRoutine	(self,"Start");
 
@@ -199,16 +199,16 @@ instance DIA_Rumbold_FightNow (C_INFO)
 	nr          = 1;
 	condition	= DIA_Rumbold_FightNow_Condition;
 	information	= DIA_Rumbold_FightNow_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Zostawcie farmera w spokoju!";
 };
 
 func int DIA_Rumbold_FightNow_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Rumbold_Hallo))
-	&& (Rumbold_Bezahlt == false)
+	&& (Rumbold_Bezahlt == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -242,16 +242,16 @@ instance DIA_Rumbold_StillThere (C_INFO)
 	nr          = 1;
 	condition	= DIA_Rumbold_StillThere_Condition;
 	information	= DIA_Rumbold_StillThere_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Hej, ci¹gle tutaj?";
 };
 
 func int DIA_Rumbold_StillThere_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Rumbold_Hallo))
-	&& (Rumbold_Bezahlt == true)
+	&& (Rumbold_Bezahlt == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 

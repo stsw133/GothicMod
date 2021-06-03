@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Telbor_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Telbor_EXIT_Condition;
 	information = DIA_Addon_Telbor_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Telbor_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Telbor_EXIT_Info()
 {
@@ -30,8 +30,8 @@ INSTANCE DIA_Addon_Telbor_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Telbor_Hi_Condition;
 	information = DIA_Addon_Telbor_Hi_Info;
-	permanent   = true;
-	important  	= true;
+	permanent   = TRUE;
+	important  	= TRUE;
 };
 FUNC INT DIA_Addon_Telbor_Hi_Condition()
 {	
@@ -39,16 +39,16 @@ FUNC INT DIA_Addon_Telbor_Hi_Condition()
 	&& !Npc_IsDead (Patrick)
 	&& !Npc_IsDead (Pardos)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Telbor_Hi_Info()
 {
 	AI_Output (self, other, "DIA_Addon_Telbor_Hi_12_00");//Hej, ze mn¹ wszystko w porz¹dku!
 	
-	if (Sklaven_Flucht == false)
+	if (Sklaven_Flucht == FALSE)
 	{
-		if (Pardos_Geheilt == false)
+		if (Pardos_Geheilt == FALSE)
 		{
 			AI_Output (self, other, "DIA_Addon_Telbor_Hi_12_01");//Niestety, Pardos paskudnie oberwa³.
 		}
@@ -56,10 +56,10 @@ FUNC VOID DIA_Addon_Telbor_Hi_Info()
 		{
 			AI_Output (self, other, "DIA_Addon_Telbor_Hi_12_02");//Dziêki za to, ¿e pomog³eœ Pardosowi.
 			
-			if Telbor_once == false
+			if Telbor_once == FALSE
 			{
-				B_GivePlayerXP(XP_Ambient);
-				Telbor_Once = true;
+				B_GivePlayerXP (XP_Ambient);
+				Telbor_Once = TRUE;
 			};	
 		};
 	};
@@ -67,3 +67,4 @@ FUNC VOID DIA_Addon_Telbor_Hi_Info()
 	
 	AI_StopProcessInfos (self);
 };
+

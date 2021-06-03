@@ -8,13 +8,13 @@ INSTANCE DIA_Sengrath_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sengrath_EXIT_Condition;
 	information	= DIA_Sengrath_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Sengrath_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Sengrath_EXIT_Info()
@@ -31,13 +31,13 @@ INSTANCE DIA_Sengrath_Hello (C_INFO)
 	nr			= 2;
 	condition	= DIA_Sengrath_Hello_Condition;
 	information	= DIA_Sengrath_Hello_Info;
-	permanent	= false;
-	IMPORTANT 	= true;
+	permanent	= FALSE;
+	IMPORTANT 	= TRUE;
 };                       
 
 FUNC INT DIA_Sengrath_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };	 
 FUNC VOID DIA_Sengrath_Hello_Info()
 {	
@@ -56,13 +56,13 @@ INSTANCE DIA_Sengrath_Equipment (C_INFO)
 	nr			= 2;
 	condition	= DIA_Sengrath_Equipment_Condition;
 	information	= DIA_Sengrath_Equipment_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy mogê uzupe³niæ tu gdzieœ zapasy?";
 };                       
 
 FUNC INT DIA_Sengrath_Equipment_Condition()
 {
-	return true;
+	return TRUE;
 };	 
 FUNC VOID DIA_Sengrath_Equipment_Info()
 {	
@@ -83,20 +83,20 @@ INSTANCE DIA_Sengrath_Perm (C_INFO)
 	nr			= 2;
 	condition	= DIA_Sengrath_Perm_Condition;
 	information	= DIA_Sengrath_Perm_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kto mo¿e mnie czegoœ tutaj nauczyæ?";
 };                       
 
 FUNC INT DIA_Sengrath_Perm_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Sengrath_Perm_Info()
 {	
 	AI_Output (other ,self,"DIA_Sengrath_Perm_15_00"); //Kto mo¿e mnie czegoœ tutaj nauczyæ?
 	
 	if (other.guild == GIL_KDF)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
 		AI_Output (self ,other,"DIA_Sengrath_Perm_03_01"); //Pogadaj z Miltenem - jest tu jedynym magiem.
 	}
@@ -117,16 +117,17 @@ INSTANCE DIA_Sengrath_Scrolls (C_INFO)
 	nr			= 9;
 	condition	= DIA_Sengrath_Scrolls_Condition;
 	information	= DIA_Sengrath_Scrolls_Info;
-	permanent	= true;
-	trade		= true;
+	permanent	= TRUE;
+	trade		= TRUE;
 	description = "Poka¿ mi, jakie zwoje oferujesz.";
+
 };                       
 
 FUNC INT DIA_Sengrath_Scrolls_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Sengrath_Equipment)
 	{
-		return true;
+		return TRUE;
 	};	 
 };
 FUNC VOID DIA_Sengrath_Scrolls_Info()

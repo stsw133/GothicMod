@@ -1,13 +1,13 @@
-//******************************************************************************************
-//	SPL_Pyrokinesis
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_Pyrokinesis
+///******************************************************************************************
 
 const int SPL_Cost_Pyrokinesis			=	200;
 const int STEP_Pyrokinesis				=	50;
 const int SPL_Damage_Pyrokinesis 		=	75;
 
-//******************************************************************************************
-INSTANCE Spell_Pyrokinesis (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_Pyrokinesis (C_Spell_Proto)
 {
 	time_per_mana						=	30;
 	damage_per_level					=	SPL_Damage_Pyrokinesis;
@@ -77,7 +77,7 @@ func int Spell_Logic_Pyrokinesis (var int manaInvested)
 
 func void Spell_Cast_Pyrokinesis (var int spellLevel)
 {
-	self.attribute[ATR_MANA] = (self.attribute[ATR_MANA] - STEP_Pyrokinesis);
+	self.attribute[ATR_MANA] -= STEP_Pyrokinesis;
 	
 	if (self.attribute[ATR_MANA] < 0)
 	{

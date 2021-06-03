@@ -1,32 +1,31 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BDT_1050_Landstreicher (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"W³óczêga";
 	guild 								=	GIL_NONE;
 	id 									=	1050;
 	voice 								=	9;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_SLD_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Normal10, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_Stand_ArmsCrossed;
 };

@@ -24,9 +24,9 @@ instance ItWr_StonePlate (ItemPR_StonePlate)
 	COUNT[1]		= 	2;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate()
+func void Use_ItWr_StonePlate()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		self.lp += 2;
 		var string concatText;
@@ -50,9 +50,9 @@ instance ItWr_StonePlate_STR (ItemPR_StonePlate)
 	COUNT[1]		= 	2;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate_STR()
+func void Use_ItWr_StonePlate_STR()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_STRENGTH, 2);
 	}
@@ -73,9 +73,9 @@ instance ItWr_StonePlate_DEX (ItemPR_StonePlate)
 	COUNT[1]		= 	2;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate_DEX()
+func void Use_ItWr_StonePlate_DEX()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_DEXTERITY, 2);
 	}
@@ -96,9 +96,9 @@ instance ItWr_StonePlate_Power (ItemPR_StonePlate)
 	COUNT[1]		= 	2;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate_Power()
+func void Use_ItWr_StonePlate_Power()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_POWER, 2);
 	}
@@ -119,9 +119,9 @@ instance ItWr_StonePlate_Mana (ItemPR_StonePlate)
 	COUNT[1]		= 	2;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate_Mana()
+func void Use_ItWr_StonePlate_Mana()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_MANA_MAX, 2);
 	}
@@ -142,9 +142,9 @@ instance ItWr_StonePlate_HP (ItemPR_StonePlate)
 	COUNT[1]		= 	2*HP_PER_LP;
 	COUNT[5]		= 	value;
 };
-FUNC VOID Use_ItWr_StonePlate_HP()
+func void Use_ItWr_StonePlate_HP()
 {
-	if (Npc_GetTalentSkill(self,NPC_TALENT_LANGUAGE) == true)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
 	}
@@ -159,9 +159,21 @@ func void Wld_InsertRandomStoneplate (var string spawnPoint)
 {
 	var int rand; rand = Hlp_Random(5);
 	
-	if (rand == 0)		{	Wld_InsertItem (ItWr_StonePlate_STR, spawnPoint);	}
+	if		(rand == 0)	{	Wld_InsertItem (ItWr_StonePlate_STR, spawnPoint);	}
 	else if (rand == 1)	{	Wld_InsertItem (ItWr_StonePlate_DEX, spawnPoint);	}
 	else if (rand == 2)	{	Wld_InsertItem (ItWr_StonePlate_Power, spawnPoint);	}
 	else if (rand == 3)	{	Wld_InsertItem (ItWr_StonePlate_Mana, spawnPoint);	}
 	else				{	Wld_InsertItem (ItWr_StonePlate_HP, spawnPoint);	};
+};
+///******************************************************************************************
+func int C_ScHasMagicStonePlate()
+{
+	if (Npc_HasItems(hero, ItWr_StonePlate_STR))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_DEX))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_Power))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_Mana))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_HP))
+	{
+		return true;
+	};
 };

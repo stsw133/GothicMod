@@ -1,38 +1,37 @@
-//******************************************************************************************
-INSTANCE KDW_14040_Addon_Riordian_ADW (Npc_Default)
+///******************************************************************************************
+instance KDW_14040_Addon_Riordian_ADW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Riordian";
 	guild 								=	GIL_KDW;
 	id 									=	14040;
 	voice 								=	10;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal13, 0, ITAR_MgA);
+	/// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal13, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_14040;
 };
 
-FUNC VOID Rtn_Start_14040()
+func void Rtn_Start_14040()
 {	
 	TA_Study_WP	(07,05,07,20, "ADW_ENTRANCE_PLATEAU_06A");
 	TA_Study_WP	(07,20,08,25, "ADW_ENTRANCE_PLATEAU_10A");

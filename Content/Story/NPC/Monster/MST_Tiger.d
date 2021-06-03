@@ -1,19 +1,19 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Tiger (C_Npc)
+///******************************************************************************************
+prototype Mst_Default_Tiger (C_Npc)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Tygrys";
 	guild								=	GIL_SHADOWBEAST;
 	aivar[AIV_MM_REAL_ID]				= 	ID_TIGER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 20);
 
-	// ------ FT ------
+	/// ------ FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SHADOWBEAST;
 
-	// ------ Senses & Ranges ------
+	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 
@@ -22,7 +22,7 @@ PROTOTYPE Mst_Default_Tiger (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_Packhunter] 			=	true;
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_SleepStart]			=	6;	
 	aivar[AIV_MM_SleepEnd]				=	20;
@@ -30,7 +30,7 @@ PROTOTYPE Mst_Default_Tiger (C_Npc)
 	aivar[AIV_MM_RoamEnd]				=	6;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Tiger()
 {
 	Mdl_SetVisual		(self, "Shadow.mds");
@@ -49,18 +49,18 @@ func void B_SetVisuals_Leopard()
 	Mdl_SetVisualBody	(self, "Tiger_Body", 2, DEFAULT, "", DEFAULT, DEFAULT, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
-//******************************************************************************************
-INSTANCE Tiger (Mst_Default_Tiger)
+///******************************************************************************************
+instance Tiger (Mst_Default_Tiger)
 {
 	B_SetVisuals_Tiger();
 };
-INSTANCE Tiger_Snow (Mst_Default_Tiger)
+instance Tiger_Snow (Mst_Default_Tiger)
 {
 	B_SetVisuals_SnowTiger();
 };
-INSTANCE Leopard (Mst_Default_Tiger)
+instance Leopard (Mst_Default_Tiger)
 {
-	name								=	"Lampart";
+	name						=	"Lampart";
 	B_SetMonsterAttributes (self, Tiger.level);
 	B_SetVisuals_Leopard();
 };

@@ -9,13 +9,13 @@ func void MOD_HeroReset (var C_NPC slf)
 	slf.level								=	START_LEVEL;
 	slf.exp									=	0;
 	slf.exp_next							=	XP_PER_LEVEL;
-	slf.LP									=	DIFF_Multiplier(LP_PER_LEVEL,DECREASE);
+	slf.LP									=	DIFF_Multiplier(LP_PER_LEVEL, DECREASE);
 	
-	slf.attribute[ATR_HITPOINTS_MAX]		=	DIFF_Multiplier(50,DECREASE)*HP_PER_LP + HP_PER_LEVEL;
-	slf.attribute[ATR_MANA_MAX]				=	DIFF_Multiplier(50,DECREASE);
-	slf.attribute[ATR_STRENGTH]				=	DIFF_Multiplier(50,DECREASE);
-	slf.attribute[ATR_DEXTERITY]			=	DIFF_Multiplier(50,DECREASE);
-	slf.aivar[AIV_Power]					=	DIFF_Multiplier(50,DECREASE);
+	slf.attribute[ATR_HITPOINTS_MAX]		=	DIFF_Multiplier(50, DECREASE)*HP_PER_LP + HP_PER_LEVEL;
+	slf.attribute[ATR_MANA_MAX]				=	DIFF_Multiplier(50, DECREASE);
+	slf.attribute[ATR_STRENGTH]				=	DIFF_Multiplier(50, DECREASE);
+	slf.attribute[ATR_DEXTERITY]			=	DIFF_Multiplier(50, DECREASE);
+	slf.aivar[AIV_Power]					=	DIFF_Multiplier(50, DECREASE);
 	
 	Npc_SetTalentSkill (slf, NPC_TALENT_1H,				0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_2H,				0);
@@ -40,7 +40,7 @@ func void MOD_HeroReset (var C_NPC slf)
 	
 	Npc_SetTalentSkill (slf, NPC_TALENT_TYPEOFMAGIC,	0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_GUILD,			0);
-	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULT,		dLevel);
+	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY,		dLevel);
 	
 	slf.hitchance[NPC_TALENT_1H]			=	FightTalent_Weak;
 	slf.hitchance[NPC_TALENT_2H]			=	FightTalent_Weak;

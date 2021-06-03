@@ -21,7 +21,7 @@ func int B_PrintTeleportTooFarAway (var int Level, var string TelWP)
 };
 
 ///******************************************************************************************
-INSTANCE Spell_Teleport (C_Spell_Proto)
+instance Spell_Teleport (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype							=	SPELL_NEUTRAL;
@@ -34,7 +34,7 @@ INSTANCE Spell_Teleport (C_Spell_Proto)
 
 func int Spell_Logic_Teleport (var int manaInvested)
 {
-	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Teleport/5))
+	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Teleport/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Teleport))
 	&& (self.aivar[AIV_TelStone] > 0)
 	{
@@ -50,69 +50,70 @@ func void Spell_Cast_Teleport()
 {
 	if (self.aivar[AIV_TelStone] == ItTe_MonasteryUnderground)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"NW_PAL_SECRETCHAMBER"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "NW_PAL_SECRETCHAMBER"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_Khorinis)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"HAFEN"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "HAFEN"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_Monastery)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"KLOSTER"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "KLOSTER"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_BigFarm)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"BIGFARM"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "BIGFARM"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_Xardas)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"XARDAS"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "XARDAS"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_Taverne)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"NW_TAVERNE_04"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "NW_TAVERNE_04"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_PassNW)
 	{
-		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN,"LEVELCHANGE"))
+		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "LEVELCHANGE"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_PassOW)
 	{
-		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN,"SPAWN_MOLERAT02_SPAWN01"))
+		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN, "SPAWN_MOLERAT02_SPAWN01"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_Castle)
 	{
-		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN,"OC_MAGE_CENTER"))
+		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN, "OC_MAGE_CENTER"))
 		{ return; };
 	}
 	else if (self.aivar[AIV_TelStone] == ItTe_DemonTower)
 	{
-		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN,"DT_E3_03"))
+		if (B_PrintTeleportTooFarAway(OLDWORLD_ZEN, "DT_E3_03"))
 		{ return; };
 	}
 	else
 	{
-		if (B_PrintTeleportTooFarAway(CurrentLevel,"XXX"))
+		if (B_PrintTeleportTooFarAway(CurrentLevel, "XXX"))
 		{ return; };
 	};
 	
 	
 	
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Teleport/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Teleport/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Teleport/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Teleport)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Teleport;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

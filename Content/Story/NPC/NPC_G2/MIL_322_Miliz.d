@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_322_Miliz (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	Name_Miliz;
 	guild 								=	GIL_MIL;
 	id 									=	322;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Bald", Face_Normal01, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_322;
 };
 
-FUNC VOID Rtn_Start_322()
+func void Rtn_Start_322()
 {
 	TA_Stand_Guarding	(01,00,03,00, "NW_CITY_MERCHANT_TEMPLE_PLACE_01");
 	TA_Stand_Guarding	(03,00,05,00, "NW_CITY_MERCHANT_PATH_22");

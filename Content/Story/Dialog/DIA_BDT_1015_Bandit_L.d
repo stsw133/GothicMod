@@ -7,13 +7,13 @@ INSTANCE DIA_1015_BANDIT_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_1015_BANDIT_EXIT_Condition;
 	information = DIA_1015_BANDIT_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_1015_BANDIT_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_1015_BANDIT_EXIT_Info()
@@ -29,15 +29,15 @@ instance DIA_1015_BANDIT_AMBUSH		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_1015_BANDIT_AMBUSH_Condition;
 	information	 = 	DIA_1015_BANDIT_AMBUSH_Info;
-	permanent    =  false;
-	IMPORTANT 	 =  true; 
+	permanent    =  FALSE;
+	IMPORTANT 	 =  TRUE; 
 };
 func int DIA_1015_BANDIT_AMBUSH_Condition ()
 {	
 	if (Npc_IsDead (Ambusher_1014))
 	|| (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1015_BANDIT_AMBUSH_Info ()
@@ -48,3 +48,9 @@ func void DIA_1015_BANDIT_AMBUSH_Info ()
 	
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
 };
+
+
+ 
+
+
+

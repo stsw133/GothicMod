@@ -1,40 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_460_Buerger (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_BUERGER;
 	guild 								=	GIL_VLK;
 	id 									=	460;
 	voice 								=	8;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Medium-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_DAGGER);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal09, 0, ITAR_Vlk_L_01);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_460;
 };
 
-FUNC VOID Rtn_Start_460()
+func void Rtn_Start_460()
 {
 	TA_Smalltalk		(05,35,11,30, "NW_CITY_HABOUR_05");
 	TA_Stand_Drinking	(11,30,13,35, "NW_CITY_HABOUR_03");

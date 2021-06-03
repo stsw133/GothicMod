@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17020_Burak (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Burak";
 	guild 								=	GIL_NONE;
 	id 									=	17020;
@@ -9,34 +9,34 @@ instance WzA_17020_Burak (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	//B_SetFightSkills (self, FightTalent_Initiate);
 	B_SetFightSkills (self, FightTalent_Weak);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	//EquipItem (self, ItMw_ShortSword2);
 	EquipItem (self, ItMw_Pan);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Normal57, Teeth_Normal, ITAR_ACRONA_BAU_00);
 //	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_17020;
 };
 

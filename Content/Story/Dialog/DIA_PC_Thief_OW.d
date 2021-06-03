@@ -7,12 +7,12 @@ instance DIA_DiegoOw_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_DiegoOw_EXIT_Condition;
 	information	= DIA_DiegoOw_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 func INT DIA_DiegoOw_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_DiegoOw_EXIT_Info()
 {	
@@ -29,11 +29,11 @@ INSTANCE DIA_DiegoOw_Hallo(C_INFO)
 	condition	= DIA_DiegoOw_Hallo_Condition;
 	information	= DIA_DiegoOw_Hallo_Info;
 
-	Important	= true;
+	Important	= TRUE;
 };                       
 FUNC INT DIA_DiegoOw_Hallo_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_DiegoOw_Hallo_Info()
 {	
@@ -68,7 +68,7 @@ INSTANCE DIA_DiegoOw_Beweise(C_INFO)
 };                       
 FUNC INT DIA_DiegoOw_Beweise_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_DiegoOw_Beweise_Info()
 {	
@@ -108,7 +108,7 @@ FUNC VOID DIA_DiegoOw_Beweise_Info()
 		AI_Output (self ,other,"DIA_Addon_DiegoOw_Silvestro_11_02"); //Niech je sobie Garond bierze - mnie siÍ i tak nie przydadzπ.
 	};
 	
-	Silvestro_Ore = true;
+	Silvestro_Ore = TRUE;
 	
 	B_LogEntry (TOPIC_ScoutMine,"Diego zabezpieczy≥ CZTERY skrzynie rudy wydobytej przez gÛrnikÛw Silvestra.");
 };
@@ -121,7 +121,7 @@ INSTANCE DIA_DiegoOw_Mine(C_INFO)
 	nr			= 3;
 	condition	= DIA_DiegoOw_Mine_Condition;
 	information	= DIA_DiegoOw_Mine_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "W jaki sposÛb zdoby≥eú tÍ rudÍ?";
 };                       
 
@@ -129,7 +129,7 @@ FUNC INT DIA_DiegoOw_Mine_Condition()
 {	
 	if (Npc_KnowsInfo (other,DIA_DiegoOw_Beweise))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoOw_Mine_Info()
@@ -149,7 +149,7 @@ INSTANCE DIA_DiegoOw_Ritter(C_INFO)
 	nr			= 4;
 	condition	= DIA_DiegoOw_Ritter_Condition;
 	information	= DIA_DiegoOw_Ritter_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Przed twojπ kryjÛwkπ leøπ zw≥oki dwÛch rycerzy...";
 };                       
 
@@ -158,7 +158,7 @@ FUNC INT DIA_DiegoOw_Ritter_Condition()
 	if (Npc_HasItems (PAL_Leiche4,ItMI_OldCoin) == 0)
 	|| (Npc_HasItems (PAL_Leiche5,ItMI_OldCoin) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoOw_Ritter_Info()
@@ -176,12 +176,12 @@ INSTANCE DIA_DiegoOw_Perm(C_INFO)
 	nr			= 5;
 	condition	= DIA_DiegoOw_Perm_Condition;
 	information	= DIA_DiegoOw_Perm_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co powinienem wiedzieÊ o dolinie?";
 };                       
 FUNC INT DIA_DiegoOw_Perm_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_DiegoOw_Perm_Info()
 {	
@@ -200,7 +200,7 @@ INSTANCE DIA_DiegoOw_Gorn(C_INFO)
 	nr			= 6;
 	condition	= DIA_DiegoOw_Gorn_Condition;
 	information	= DIA_DiegoOw_Gorn_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcia≥bym wykupiÊ Gorna...";
 };                       
 
@@ -208,7 +208,7 @@ FUNC INT DIA_DiegoOw_Gorn_Condition()
 {	
 	if (MIS_RescueGorn == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoOw_Gorn_Info()
@@ -220,32 +220,100 @@ FUNC VOID DIA_DiegoOw_Gorn_Info()
 	
 	B_LogEntry (TOPIC_RescueGorn,"Diego przekaza≥ 300 sztuk z≥ota na uwolnienie Gorna.");
 };
-
+/*
 //******************************************************************
 //		Kannst du mir was beibringen?
 //******************************************************************
-
+var int Diego_MerkeDEX;
+var int Diego_MerkeSTR;
+// -----------------------------------------------------------------
 instance DIA_DiegoOw_Teach(C_INFO)
 {
 	npc			= PC_ThiefOW;
 	nr			= 100;
 	condition	= DIA_DiegoOw_Teach_Condition;
 	information	= DIA_DiegoOw_Teach_Info;
-	permanent	= false;
+	permanent	= TRUE;
 	description = "Moøesz mnie czegoú nauczyÊ?";
 };                       
 func INT DIA_DiegoOw_Teach_Condition()
 {	
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_DiegoOw_Teach_info ()
 {	
 	AI_Output (other ,self,"DIA_DiegoOw_Teach_15_00");//Moøesz mnie czegoú nauczyÊ?
 	AI_Output (self, other,"DIA_Addon_DiegoOw_Teach_11_01");//Jasne. W czym mogÍ ci pomÛc?
-	self.aivar[AIV_CanTeach] = true;
+		
+	Diego_MerkeDEX = other.attribute[ATR_DEXTERITY];
+	Diego_MerkeSTR = other.attribute[ATR_STRENGTH];
+	
+	Info_ClearChoices   (DIA_DiegoOw_TEACH);
+	Info_AddChoice 		(DIA_DiegoOw_Teach, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
+	Info_AddChoice		(DIA_DiegoOw_Teach, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_DiegoOw_TEACHDEX_1);
+	Info_AddChoice		(DIA_DiegoOw_Teach, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoOw_TEACHDEX_5);
+	Info_AddChoice		(DIA_DiegoOw_Teach, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_DiegoOw_TEACHSTR_1);
+	Info_AddChoice		(DIA_DiegoOw_Teach, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_DiegoOw_TEACHSTR_5);
 };
-
+func void DIA_DiegoOw_TEACH_BACK()
+{
+	if (other.attribute[ATR_DEXTERITY] > Diego_MerkeDEX)
+	{
+		AI_Output (self, other, "DIA_Addon_DiegoOw_Teach_11_02"); //Nabierasz zrÍcznoúci.
+	};
+	if (other.attribute[ATR_STRENGTH] > Diego_MerkeSTR)
+	{
+		AI_Output (self, other, "DIA_Addon_DiegoOw_Teach_11_03"); //Dobrze - twoja si≥a wzrasta.
+	};
+	
+	Info_ClearChoices (DIA_DiegoOw_TEACH);
+};
+func void DIA_DiegoOw_TEACHDEX_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
+	
+	Info_ClearChoices   (DIA_DiegoOw_TEACH);
+	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_DiegoOw_TEACHDEX_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoOw_TEACHDEX_5);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_DiegoOw_TEACHSTR_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_DiegoOw_TEACHSTR_5);
+};
+func void DIA_DiegoOw_TEACHDEX_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
+	
+	Info_ClearChoices   (DIA_DiegoOw_TEACH);
+	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_DiegoOw_TEACHDEX_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoOw_TEACHDEX_5);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_DiegoOw_TEACHSTR_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_DiegoOw_TEACHSTR_5);
+};
+func void DIA_DiegoOw_TEACHSTR_1()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	
+	Info_ClearChoices   (DIA_DiegoOw_TEACH);
+	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_DiegoOw_TEACHDEX_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoOw_TEACHDEX_5);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_DiegoOw_TEACHSTR_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_DiegoOw_TEACHSTR_5);
+};
+func void DIA_DiegoOw_TEACHSTR_5()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	
+	Info_ClearChoices   (DIA_DiegoOw_TEACH);
+	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_DiegoOw_TEACHDEX_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoOw_TEACHDEX_5);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH)),DIA_DiegoOw_TEACHSTR_1);
+	Info_AddChoice		(DIA_DiegoOw_TEACH, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_DiegoOw_TEACHSTR_5);
+};
+*/
 // ************************************************************
 // *** 														***
 // 					Mit Diego Durch die Gegend
@@ -265,7 +333,7 @@ instance DIA_Addon_ThiefOW_Together(C_INFO)
 };
 func int DIA_Addon_ThiefOW_Together_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_ThiefOW_Together_Info ()
 {
@@ -288,16 +356,16 @@ instance DIA_Addon_ThiefOW_ComeOn(C_INFO)
 	nr		 	= 	12;
 	condition	= 	DIA_Addon_ThiefOW_ComeOn_Condition;
 	information	= 	DIA_Addon_ThiefOW_ComeOn_Info;
-	permanent	= 	true;
+	permanent	= 	TRUE;
 	description	= 	"Chodümy.";
 };
 func int DIA_Addon_ThiefOW_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_ThiefOW_Together))
-	&& (Diego_angekommen == false)
+	&& (Diego_angekommen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_ThiefOW_ComeOn_Info ()
@@ -316,7 +384,7 @@ func void DIA_Addon_ThiefOW_ComeOn_Info ()
 
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -329,14 +397,14 @@ INSTANCE DIA_Addon_ThiefOW_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_ThiefOW_GoHome_Condition;
 	information	= DIA_Addon_ThiefOW_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Poczekaj tutaj!";
 };                       
 FUNC INT DIA_Addon_ThiefOW_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -348,35 +416,35 @@ FUNC VOID DIA_Addon_ThiefOW_GoHome_Info()
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_01"); //Dobra.
 		AI_StopProcessInfos (self); 
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"START");
 	}
 	else if (Npc_GetDistToWP (self, "DT_E1_04") < (1500+1000)) //XARDAS
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_02"); //Poczekam przed wejúciem do wieøy.
 		AI_StopProcessInfos (self);
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"XARDAS");
 	}
 	else if (Npc_GetDistToWP (self, "OW_NEWMINE_11") < (4000+1000)) //FAJETHMINE
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_03"); //Zaczekam w pobliøu kopalni.
 		AI_StopProcessInfos (self); 
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"FAJETH");
 	}
 	else if (Npc_GetDistToWP (self, "OW_MINE3_OUT") < (1200+1000)) //SILVESTROMINE
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_04"); //BÍdÍ czekaÊ przed kopalniπ.
 		AI_StopProcessInfos (self); 
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"SILVESTRO");
 	}
 	else if (Npc_GetDistToWP (self, "OW_PATH_266") < (3000+1000)) //GRIMESMINE
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_05"); //Poczekam tu w okolicy.
 		AI_StopProcessInfos (self);
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"GRIMES");
 	}
 	else if (Npc_GetDistToWP (self, "LOCATION_02_05") < 15000) //Orcbarrier FIRE ANGAR LAKE
@@ -385,7 +453,7 @@ FUNC VOID DIA_Addon_ThiefOW_GoHome_Info()
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_07"); //Zajrzyj do mnie, gdy juø za≥atwisz swoje sprawy.
 		AI_Output (self, other, "DIA_Addon_Diego_GoHome_11_08"); //Jeúli jednak zamarudzisz zbyt d≥ugo, zajmÍ siÍ w≥asnymi sprawami.
 		AI_StopProcessInfos (self);
-		self.aivar[AIV_PARTYMEMBER] = false;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
 		Npc_ExchangeRoutine	(self,"START");
 	}
 	else //zu weit weg
@@ -423,23 +491,23 @@ INSTANCE DIA_Addon_ThiefOW_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_ThiefOW_TooFar_Condition;
 	information	= DIA_Addon_ThiefOW_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_ThiefOW_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{	
 		if (C_DiegoTooFar(0))
 		{
-			if (Diego_TooFarComment == false)
+			if (Diego_TooFarComment == FALSE)
 			{
-				return true;
+				return TRUE;
 			};
 		}
 		else
 		{
-			Diego_TooFarComment = false;
+			Diego_TooFarComment = FALSE;
 		};
 	};
 };
@@ -495,7 +563,7 @@ FUNC VOID DIA_Addon_ThiefOW_TooFar_Info()
 		{
 			B_Addon_Diego_WillWaitOutside();
 			AI_StopProcessInfos (self);
-			self.aivar[AIV_PARTYMEMBER] = false;
+			self.aivar[AIV_PARTYMEMBER] = FALSE;
 			Npc_ExchangeRoutine	(self,"XARDAS");
 		};
 	}
@@ -527,7 +595,7 @@ FUNC VOID DIA_Addon_ThiefOW_TooFar_Info()
 		{
 			B_Addon_Diego_WillWaitOutside();
 			AI_StopProcessInfos (self);
-			self.aivar[AIV_PARTYMEMBER] = false;
+			self.aivar[AIV_PARTYMEMBER] = FALSE;
 			Npc_ExchangeRoutine	(self,"SILVESTRO");
 		};
 	}
@@ -573,7 +641,7 @@ FUNC VOID DIA_Addon_ThiefOW_TooFar_Info()
 		AI_Output (self, other, "DIA_Addon_Diego_TooFar_11_30"); //Ruszajmy ku prze≥Íczy!
 	};
 
-	Diego_TooFarComment = true;
+	Diego_TooFarComment = TRUE;
 };
 
 // ------------------------------------------------------------
@@ -586,10 +654,10 @@ func void B_Diego_WirSindDa()
 	AI_Output (self, other, "DIA_Addon_Diego_Angekommen_11_04"); //DziÍkujÍ ci, przyjacielu - do zobaczenia w mieúcie.
 	
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"PASS");
 	
-	Diego_angekommen = true;
+	Diego_angekommen = TRUE;
 };
 // ------------------------------------------------------------
 INSTANCE DIA_Addon_ThiefOW_Angekommen (C_INFO)
@@ -599,19 +667,19 @@ INSTANCE DIA_Addon_ThiefOW_Angekommen (C_INFO)
 	condition	= DIA_Addon_ThiefOW_Angekommen_Condition;
 	information	= DIA_Addon_ThiefOW_Angekommen_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_ThiefOW_Angekommen_Condition()
 {
 	if (Npc_GetDistToWP (self, "OW_VM_ENTRANCE") < 800)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_ThiefOW_Angekommen_Info()
 {	
 	AI_Output (self, other, "DIA_Addon_Diego_Angekommen_11_01"); //Jesteúmy na miejscu.
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (500);
 	B_Diego_WirSindDa();
 };
 
@@ -625,13 +693,13 @@ instance DIA_Addon_ThiefOW_Nostalgie (C_INFO)
 	condition	= DIA_Addon_ThiefOW_Nostalgie_Condition;
 	information	= DIA_Addon_ThiefOW_Nostalgie_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_ThiefOW_Nostalgie_Condition()
 {
 	if (Npc_GetDistToWP (self, "WP_INTRO14") < 2000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_ThiefOW_Nostalgie_Info()
@@ -641,11 +709,14 @@ func VOID DIA_Addon_ThiefOW_Nostalgie_Info()
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_03"); //To by≥o tak dawno...
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_04"); //Hmm... By≥o jeszcze coú wyjπtkowego w tej okolicy, tylko nie pamiÍtam dok≥adnie co.
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_05"); //Skoro tak twierdzisz...
-	B_GivePlayerXP(XP_BONUS_10);
-	PrintScreen (ConcatStrings("Premia za nostalgiÍ:",IntToString(500)), -1, 60, FONT_Screen, 2);
+	B_GivePlayerXP (500);
+	hero.exp = hero.exp + 500;
+	PrintScreen (ConcatStrings("Premia za nostalgiÍ:", IntToString(500)), -1, 60, FONT_Screen, 2);
+	
 	
 	B_Diego_WirSindDa();
 };
+
 
 // ------------------------------------------------------------
 // 							PERM
@@ -656,7 +727,7 @@ instance DIA_Addon_ThiefOW_PERM (C_INFO)
 	nr			= 10;
 	condition	= DIA_Addon_ThiefOW_PERM_Condition;
 	information	= DIA_Addon_ThiefOW_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Wszystko w porzπdku?";
 };                       
 FUNC INT DIA_Addon_ThiefOW_PERM_Condition()
@@ -664,7 +735,7 @@ FUNC INT DIA_Addon_ThiefOW_PERM_Condition()
 	if (Npc_KnowsInfo(other, DIA_DiegoOw_Perm))
 	&& (Npc_KnowsInfo(other, DIA_Addon_ThiefOW_Together))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_ThiefOW_PERM_Info()
@@ -674,12 +745,12 @@ func VOID DIA_Addon_ThiefOW_PERM_Info()
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_PERM_11_01"); //Przyda≥by mi siÍ eliksir leczniczy. Nie masz przypadkiem jakiegoú na zbyciu?
 	}
-	else if (DiegoOW.aivar[AIV_PARTYMEMBER] == false)
-	&& 		(Diego_angekommen == false)
+	else if (DiegoOW.aivar[AIV_PARTYMEMBER] == FALSE)
+	&& 		(Diego_angekommen == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_PERM_11_02"); //Daj znaÊ, gdy trzeba juø bÍdzie ruszaÊ.
 	}
-	else if (Diego_angekommen == true)
+	else if (Diego_angekommen == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Diego_PERM_11_03"); //Tak sobie tylko odpoczywam.
 	}
@@ -688,3 +759,5 @@ func VOID DIA_Addon_ThiefOW_PERM_Info()
 		AI_Output (self, other, "DIA_Addon_Diego_PERM_11_04"); //åwietnie.
 	};
 };
+
+

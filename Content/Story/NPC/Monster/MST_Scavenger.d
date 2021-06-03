@@ -1,19 +1,19 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Scavenger (C_Npc)
+///******************************************************************************************
+prototype Mst_Default_Scavenger (C_Npc)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Œcierwojad";
 	guild								=	GIL_SCAVENGER;
 	aivar[AIV_MM_REAL_ID]				=	ID_SCAVENGER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 4);
 
-	// ------ FT ------
+	/// ------ FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SCAVENGER;
 
-	// ------ Senses & Ranges ------
+	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 
@@ -22,7 +22,7 @@ PROTOTYPE Mst_Default_Scavenger (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_Packhunter] 			=	true;
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_SleepStart] 			=	22;	
 	aivar[AIV_MM_SleepEnd]				=	6;
@@ -30,16 +30,29 @@ PROTOTYPE Mst_Default_Scavenger (C_Npc)
 	aivar[AIV_MM_EatGroundEnd]			=	22;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Scavenger()
 {
 	Mdl_SetVisual		(self, "Scavenger.mds");
 	Mdl_SetVisualBody	(self, "Sca_Body", self.aivar[AIV_BodyTex], DEFAULT, "", DEFAULT, DEFAULT, -1);
 	Mdl_SetModelScale	(self, 1, 0.8, 1);
 };
-//******************************************************************************************
-INSTANCE Scavenger (Mst_Default_Scavenger)
+func void B_SetVisuals_Scavenger_Demon()
+{
+	Mdl_SetVisual		(self, "ScavengerGL.mds");
+	Mdl_SetVisualBody	(self, "Scavenger_Demon_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
+};
+///******************************************************************************************
+instance Scavenger (Mst_Default_Scavenger)
 {
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Scavenger();
+};
+instance Scavenger_Demon (Mst_Default_Scavenger)
+{
+	name						=	"Preriowy œcierwojad";
+	aivar[AIV_MM_REAL_ID]		= 	ID_SCAVENGER_DEMON;
+	
+	B_SetMonsterAttributes (self, 9);
+	B_SetVisuals_Scavenger_Demon();
 };

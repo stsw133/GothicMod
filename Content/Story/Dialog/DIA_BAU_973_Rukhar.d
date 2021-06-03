@@ -7,13 +7,13 @@ INSTANCE DIA_Rukhar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Rukhar_EXIT_Condition;
 	information = DIA_Rukhar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Rukhar_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Rukhar_EXIT_Info()
@@ -37,7 +37,7 @@ instance DIA_Rukhar_HALLO		(C_INFO)
 
 func int DIA_Rukhar_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Rukhar_HALLO_Info ()
@@ -64,7 +64,7 @@ func int DIA_Rukhar_WASMACHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rukhar_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -99,7 +99,7 @@ func int DIA_Rukhar_WETTKAMPF_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rukhar_WASMACHSTDU))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -132,7 +132,7 @@ func int DIA_Rukhar_HOLERANDOLPH_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rukhar_WETTKAMPF))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -155,7 +155,7 @@ instance DIA_Rukhar_RANDOLPHWILL		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Rukhar_RANDOLPHWILL_Condition;
 	information	 = 	DIA_Rukhar_RANDOLPHWILL_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Znam kogoœ, kto chcia³by siê z tob¹ zmierzyæ.";
 };
@@ -167,10 +167,10 @@ func int DIA_Rukhar_RANDOLPHWILL_Condition ()
 	if  (
 		(Npc_KnowsInfo(other, DIA_Randolph_GEGENWEN))
 		&& (Npc_KnowsInfo(other, DIA_Rukhar_HOLERANDOLPH))
-		&& (DIA_Rukhar_RANDOLPHWILL_noPerm == false)
+		&& (DIA_Rukhar_RANDOLPHWILL_noPerm == FALSE)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -190,13 +190,13 @@ func void DIA_Rukhar_RANDOLPHWILL_Info ()
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "100", DIA_Rukhar_RANDOLPHWILL_100 );
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "50", DIA_Rukhar_RANDOLPHWILL_50 );
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "20", DIA_Rukhar_RANDOLPHWILL_20 );
-	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "10 sztuk z³ota.", DIA_Rukhar_RANDOLPHWILL_10 );
+	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "10 Goldmünzen", DIA_Rukhar_RANDOLPHWILL_10 );
 };
 func void DIA_Rukhar_RANDOLPHWILL_annehmen ()
 {
 	Info_ClearChoices	(DIA_Rukhar_RANDOLPHWILL);
 	AI_Output			(self, other, "DIA_Rukhar_RANDOLPHWILL_annehmen_12_00"); //Wezmê pieni¹dze na przechowanie, dopóki konkurs siê nie skoñczy, dobra?
-	DIA_Rukhar_RANDOLPHWILL_noPerm = true;
+	DIA_Rukhar_RANDOLPHWILL_noPerm = TRUE;
 };
 
 func void DIA_Rukhar_RANDOLPHWILL_mehr ()
@@ -207,7 +207,7 @@ func void DIA_Rukhar_RANDOLPHWILL_mehr ()
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "100", DIA_Rukhar_RANDOLPHWILL_100 );
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "50", DIA_Rukhar_RANDOLPHWILL_50 );
 	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "20", DIA_Rukhar_RANDOLPHWILL_20 );
-	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "10 sztuk z³ota.", DIA_Rukhar_RANDOLPHWILL_10 );
+	Info_AddChoice	(DIA_Rukhar_RANDOLPHWILL, "10 Goldmünzen", DIA_Rukhar_RANDOLPHWILL_10 );
 };
 
 
@@ -280,7 +280,7 @@ instance DIA_Rukhar_ICHSEHEDICH		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Rukhar_ICHSEHEDICH_Condition;
 	information	 = 	DIA_Rukhar_ICHSEHEDICH_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	
 	description	=	"Oto mój wk³ad.";
 };
@@ -290,12 +290,12 @@ var int DIA_Rukhar_ICHSEHEDICH_noPerm;
 func int DIA_Rukhar_ICHSEHEDICH_Condition ()
 {
 	if 	(
-		(DIA_Rukhar_ICHSEHEDICH_noPerm == false)
-		&& (DIA_Rukhar_RANDOLPHWILL_noPerm == true)
+		(DIA_Rukhar_ICHSEHEDICH_noPerm == FALSE)
+		&& (DIA_Rukhar_RANDOLPHWILL_noPerm == TRUE)
 		&& (Rukhar_Einsatz != 0)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -306,9 +306,9 @@ func void DIA_Rukhar_ICHSEHEDICH_Info ()
 	if (B_GiveInvItems (other, self, ItMi_Gold, Rukhar_Einsatz))
 		{
 			AI_Output			(self, other, "DIA_Rukhar_ICHSEHEDICH_12_01"); //W porz¹dku. IdŸ po Randolpha, i niech ci to nie zajmie ca³ego dnia, s³yszysz?
-			DIA_Rukhar_ICHSEHEDICH_noPerm = true;
+			DIA_Rukhar_ICHSEHEDICH_noPerm = TRUE;
 			MIS_Rukhar_Wettkampf = LOG_RUNNING; 
-			B_GivePlayerXP(XP_Ambient);
+			B_GivePlayerXP (XP_Ambient);
 		}
 	else
 		{
@@ -327,7 +327,7 @@ instance DIA_Rukhar_GELDZURUECK		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Rukhar_GELDZURUECK_Condition;
 	information	 = 	DIA_Rukhar_GELDZURUECK_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	
 	description	 = 	"¯¹dam zwrotu pieniêdzy.";
 };
@@ -336,10 +336,10 @@ func int DIA_Rukhar_GELDZURUECK_Condition ()
 {
 	if 	(
 		(MIS_Rukhar_Wettkampf == LOG_SUCCESS)
-		&& (Rukhar_Won_Wettkampf == true)
+		&& (Rukhar_Won_Wettkampf == TRUE)
 		)
 	{
-				return true;
+				return TRUE;
 	};
 };
 
@@ -361,7 +361,7 @@ instance DIA_Rukhar_HAENSELN		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Rukhar_HAENSELN_Condition;
 	information	 = 	DIA_Rukhar_HAENSELN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Chyba przeliczy³eœ siê nieco z si³ami.";
 };
@@ -370,10 +370,10 @@ func int DIA_Rukhar_HAENSELN_Condition ()
 {
 	if 	(
 		(MIS_Rukhar_Wettkampf == LOG_SUCCESS)
-		&& (Rukhar_Won_Wettkampf == false)
+		&& (Rukhar_Won_Wettkampf == FALSE)
 		)
 	{
-				return true;
+				return TRUE;
 	};
 };
 
@@ -383,17 +383,17 @@ func void DIA_Rukhar_HAENSELN_Info ()
 {
 	AI_Output			(other, self, "DIA_Rukhar_HAENSELN_15_00"); //Chyba przeliczy³eœ siê nieco z si³ami.
 
-	if	(DIA_Rukhar_HAENSELN_nureimalgeld == false)
+	if	(DIA_Rukhar_HAENSELN_nureimalgeld == FALSE)
 		{
 			AI_Output			(self, other, "DIA_Rukhar_HAENSELN_12_01"); //Bierz swoje pieni¹dze i ani s³owa wiêcej.
-			B_GivePlayerXP(XP_BONUS_0);
+			B_GivePlayerXP (XP_Rukhar_Lost);
 
 			IntToFloat (Rukhar_Gewinn);
 					
 			CreateInvItems (self, ItMi_Gold, Rukhar_Gewinn);									
 			B_GiveInvItems (self, other, ItMi_Gold, Rukhar_Gewinn);					
 
-			DIA_Rukhar_HAENSELN_nureimalgeld = true;
+			DIA_Rukhar_HAENSELN_nureimalgeld = TRUE;
 		}
 		else
 		{
@@ -412,7 +412,7 @@ instance DIA_Rukhar_Perm		(C_INFO)
 	nr		 = 	7;
 	condition	 = 	DIA_Rukhar_Perm_Condition;
 	information	 = 	DIA_Rukhar_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Czy dzia³o siê tu jeszcze coœ interesuj¹cego?";
 };
 
@@ -420,7 +420,7 @@ func int DIA_Rukhar_Perm_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Rukhar_WASMACHSTDU))
 		{
-				return true;
+				return TRUE;
 		};
 };
 func void DIA_Rukhar_Perm_Info ()

@@ -4,7 +4,7 @@
 //****************************
 func void EVT_OC_MAINGATE_FUNC_S1 ()
 {
-	if (MIS_OCGateOpen == false)
+	if (MIS_OCGateOpen == FALSE)
 	{
 	Wld_InsertNpc		(OrcElite_Roam,"OC_TO_GUARD");
 	Wld_InsertNpc		(OrcWarrior_Roam,"OC_TO_GUARD");
@@ -56,7 +56,7 @@ func void EVT_OC_MAINGATE_FUNC_S1 ()
 
 	PlayVideo ("ORCATTACK.BIK");  
 
-	MIS_OCGateOpen = true;
+	MIS_OCGateOpen = TRUE;
 	};
 };
 

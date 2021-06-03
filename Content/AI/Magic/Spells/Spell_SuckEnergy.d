@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_SuckEnergy
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_SuckEnergy
+///******************************************************************************************
 
 const int SPL_Cost_SuckEnergy			=	30;
 const int SPL_Damage_SuckEnergy			=	100;
 const int SPL_Time_SuckEnergy			=	9;
 
-//******************************************************************************************
+///******************************************************************************************
 instance Spell_SuckEnergy (C_Spell_Proto)
 {
 	time_per_mana						=	50;
@@ -21,7 +21,7 @@ func int Spell_Logic_SuckEnergy (var int manaInvested)
 		return SPL_RECEIVEINVEST;
 	};
 	
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SuckEnergy/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SuckEnergy/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_SuckEnergy)
 	{
 		return SPL_SENDCAST;
@@ -34,11 +34,11 @@ func int Spell_Logic_SuckEnergy (var int manaInvested)
 
 func void Spell_Cast_SuckEnergy()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SuckEnergy/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_SuckEnergy/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_SuckEnergy/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_SuckEnergy)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_SuckEnergy;
 	};

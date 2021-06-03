@@ -18,13 +18,13 @@ INSTANCE DIA_CipherDJG_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_CipherDJG_EXIT_Condition;
 	information = DIA_CipherDJG_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_CipherDJG_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_CipherDJG_EXIT_Info()
@@ -46,7 +46,7 @@ instance DIA_Cipher_HALLO		(C_INFO)
 
 func int DIA_Cipher_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Cipher_HALLO_Info ()
@@ -71,11 +71,11 @@ instance DIA_CipherDJG_HELLOAGAIN		(C_INFO)
 func int DIA_CipherDJG_HELLOAGAIN_Condition ()
 {
 	if	(
-	 	((Npc_IsDead(SwampDragon))== false)
+	 	((Npc_IsDead(SwampDragon))== FALSE)
 		&&(Npc_KnowsInfo(other, DIA_Cipher_HALLO))
 		)
 		{
-				return true;
+				return TRUE;
 		};
 
 };
@@ -89,7 +89,7 @@ func void DIA_CipherDJG_HELLOAGAIN_Info ()
 	AI_Output			(self, other, "DIA_CipherDJG_HELLOAGAIN_07_04"); //Dobrze pamiêtam czasy, kiedy nie trzeba by³o tutaj brodziæ...
 	AI_Output			(self, other, "DIA_CipherDJG_HELLOAGAIN_07_05"); //Teraz jednak nie odwa¿y³bym siê przyjœæ tutaj sam.
 
-	if ((Npc_IsDead(DJG_Rod)) == false)
+	if ((Npc_IsDead(DJG_Rod)) == FALSE)
 		{
 			AI_Output			(self, other, "DIA_CipherDJG_HELLOAGAIN_07_06"); //Có¿. Rod wci¹¿ tu jest. A on by zwia³, gdyby zobaczy³ nawet jednego chrz¹szcza.
 		};
@@ -116,7 +116,7 @@ func void DIA_CipherDJG_HELLOAGAIN_GoTogether ()
 	AI_Output			(other, self, "DIA_CipherDJG_HELLOAGAIN_GoTogether_15_00"); //Czemu nie - przyda mi siê pomoc.
 	AI_Output			(self, other, "DIA_CipherDJG_HELLOAGAIN_GoTogether_07_01"); //To dobrze. Czyli w koñcu siê st¹d wydostanê. Ten smród jest nie do zniesienia. Daj mi tylko znaæ kiedy!
 
-	DJG_SwampParty = true;
+	DJG_SwampParty = TRUE;
 	Info_ClearChoices	(DIA_CipherDJG_HELLOAGAIN);
 };
 
@@ -139,11 +139,11 @@ func int DIA_CipherDJG_GOTOGETHERAGAIN_Condition ()
 	if
 	( 
 	(Npc_KnowsInfo(other, DIA_CipherDJG_HELLOAGAIN)) 
-	&& (DJG_SwampParty == false) 
-	&& ((Npc_IsDead(Swampdragon)) == false)
+	&& (DJG_SwampParty == FALSE) 
+	&& ((Npc_IsDead(Swampdragon)) == FALSE)
 	)
 		{
-		return true;
+		return TRUE;
 		};
 };
 
@@ -151,7 +151,7 @@ func void DIA_CipherDJG_GOTOGETHERAGAIN_Info ()
 {
 	AI_Output			(other, self, "DIA_CipherDJG_GOTOGETHERAGAIN_15_00"); //Zmieni³em zdanie! ChodŸmy razem!
 	AI_Output			(self, other, "DIA_CipherDJG_GOTOGETHERAGAIN_07_01"); //Daj mi tylko znaæ kiedy!
-	DJG_SwampParty = true;
+	DJG_SwampParty = TRUE;
 };
 
 
@@ -174,12 +174,12 @@ func int DIA_CipherDJG_GO_Condition ()
 {	
 	if 
 	(
-	(DJG_SwampParty == true)
-	&& ((Npc_IsDead(SwampDragon))== false)
+	(DJG_SwampParty == TRUE)
+	&& ((Npc_IsDead(SwampDragon))== FALSE)
 	)
 	
 	{
-	return true;
+	return TRUE;
 	};
 };
 var int DJG_SwampParty_GoGoGo;
@@ -189,9 +189,9 @@ func void DIA_CipherDJG_GO_Info ()
 	AI_Output			(self, other, "DIA_CipherDJG_GO_07_01"); //ChodŸmy wiêc!
 
 	AI_StopProcessInfos	(self);	
-	DJG_SwampParty_GoGoGo = true;
-	self.aivar[AIV_PARTYMEMBER] = true;
-	DJG_Rod.aivar[AIV_PARTYMEMBER] = true;
+	DJG_SwampParty_GoGoGo = TRUE;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	DJG_Rod.aivar[AIV_PARTYMEMBER] = TRUE;
 	Npc_ExchangeRoutine	(self,	"SwampWait1");
 	B_StartOtherRoutine  (DJG_Rod,"SwampWait1");
 };
@@ -205,7 +205,7 @@ INSTANCE DIA_CipherDJG_SwampWait2 (C_INFO)
 	npc			= DJG_703_Cipher;
 	condition	= DIA_CipherDJG_SwampWait2_Condition;
 	information	= DIA_CipherDJG_SwampWait2_Info;
-	important	= true;	
+	important	= TRUE;	
 
 };                       
 
@@ -213,11 +213,11 @@ FUNC INT DIA_CipherDJG_SwampWait2_Condition()
 {	
 	if (
 		(Npc_GetDistToWP(self,"OW_DJG_SWAMP_WAIT1_01")<700)
-		&& ((Npc_IsDead(SwampDragon))== false)
+		&& ((Npc_IsDead(SwampDragon))== FALSE)
 		)
 	 				
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -235,10 +235,10 @@ func void DIA_CipherDJG_SwampWait2_weiter ()
 
 	AI_StopProcessInfos	(self);
 	
-	DJG_SwampParty = true; 
-	DJG_SwampParty_GoGoGo = true; 
-	self.aivar[AIV_PARTYMEMBER] = true;
-	DJG_Rod.aivar[AIV_PARTYMEMBER] = true;
+	DJG_SwampParty = TRUE; 
+	DJG_SwampParty_GoGoGo = TRUE; 
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	DJG_Rod.aivar[AIV_PARTYMEMBER] = TRUE;
 	Npc_ExchangeRoutine	(self,	"SwampWait2");
 	B_StartOtherRoutine  (DJG_Rod,"SwampWait2");
 
@@ -253,18 +253,18 @@ INSTANCE DIA_CipherDJG_GoForSwampDragon (C_INFO)
 	npc			= DJG_703_Cipher;
 	condition	= DIA_CipherDJG_GoForSwampDragon_Condition;
 	information	= DIA_CipherDJG_GoForSwampDragon_Info;
-	important	= true;	
-	permanent	= false;
+	important	= 1;	
+	permanent	= 0;
 };                       
 
 FUNC INT DIA_CipherDJG_GoForSwampDragon_Condition()
 {
 	if (
 		(Npc_GetDistToWP(self,"OW_DJG_SWAMP_WAIT2_01")<1000) 
-		&& ((Npc_IsDead(SwampDragon))== false)
+		&& ((Npc_IsDead(SwampDragon))== FALSE)
 		)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -295,18 +295,18 @@ instance DIA_CipherDJG_SWAMPDRAGONDEAD		(C_INFO)
 	npc		 	 = 	DJG_703_Cipher;
 	condition	 = 	DIA_CipherDJG_SWAMPDRAGONDEAD_Condition;
 	information	 = 	DIA_CipherDJG_SWAMPDRAGONDEAD_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_CipherDJG_SWAMPDRAGONDEAD_Condition ()
 {
 	if 	(
-		((Npc_IsDead(SwampDragon))== true)	
-		&& (DJG_SwampParty == true)
-		&& (DJG_SwampParty_GoGoGo == true)
+		((Npc_IsDead(SwampDragon))== TRUE)	
+		&& (DJG_SwampParty == TRUE)
+		&& (DJG_SwampParty_GoGoGo == TRUE)
 		)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -317,12 +317,12 @@ func void DIA_CipherDJG_SWAMPDRAGONDEAD_Info ()
 	AI_Output			(self, other, "DIA_CipherDJG_SWAMPDRAGONDEAD_07_02"); //O rany, ale w dechê koleœ!
 	
 	AI_StopProcessInfos	(self);
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP (XP_CipherDJGDeadDragon);
 
-	DJG_SwampParty = false;
-	DJG_SwampParty_GoGoGo = false;
-	self.aivar[AIV_PARTYMEMBER] = false;
-	DJG_Rod.aivar[AIV_PARTYMEMBER] = false;
+	DJG_SwampParty = FALSE;
+	DJG_SwampParty_GoGoGo = FALSE;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	DJG_Rod.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,	"Start");
 	B_StartOtherRoutine	(DJG_Rod,"Start");
 };
@@ -335,16 +335,16 @@ instance DIA_CipherDJG_WHATNEXT		(C_INFO)
 	npc		     = 	DJG_703_Cipher;
 	condition	 = 	DIA_CipherDJG_WHATNEXT_Condition;
 	information	 = 	DIA_CipherDJG_WHATNEXT_Info;
-	permanent	 = 	false;
+	permanent	 = 	TRUE;
+
 	description	 = 	"Bagienny smok nie ¿yje!";
 };
 
 func int DIA_CipherDJG_WHATNEXT_Condition ()
 {
-	if ((Npc_IsDead(SwampDragon))== true)	
-	&& (!Npc_KnowsInfo(other,DIA_CipherDJG_SWAMPDRAGONDEAD))
+	if ((Npc_IsDead(SwampDragon))== TRUE)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -354,7 +354,7 @@ func void DIA_CipherDJG_WHATNEXT_Info ()
 	AI_Output	(self, other, "DIA_CipherDJG_WHATNEXT_07_01"); //Nie mam pojêcia. Nie zastanawia³em siê nad tym, naprawdê. W ka¿dym razie mo¿esz wróciæ do Khorinis jako bohater.
 	AI_Output	(self, other, "DIA_CipherDJG_WHATNEXT_07_02"); //Za³o¿ê siê, ¿e mo¿na na tym zarobiæ. Zastanów siê.
 
-	B_LogEntry (TOPIC_Dragonhunter,"Kiedy bagienny smok zosta³ zabity, Cipher stwierdzi³, ¿e zbijê fortunê jako 'bohater'. To siê jeszcze oka¿e."); 
+	B_LogEntry (TOPIC_Dragonhunter,"Kiedy bagienny smok zosta³ zabity, Cipher stwierdzi³, ¿e zbije fortunê jako 'bohater'. To siê jeszcze oka¿e."); 
 
 	AI_StopProcessInfos	(self);
 };

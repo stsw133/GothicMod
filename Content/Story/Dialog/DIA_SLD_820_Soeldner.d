@@ -8,13 +8,13 @@ INSTANCE DIA_Sld_820_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sld_820_EXIT_Condition;
 	information	= DIA_Sld_820_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Sld_820_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Sld_820_EXIT_Info()
@@ -32,8 +32,8 @@ INSTANCE DIA_Sld_820_Halt (C_INFO)
 	nr			= 1;
 	condition	= DIA_Sld_820_Halt_Condition;
 	information	= DIA_Sld_820_Halt_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Sld_820_Halt_Condition()
@@ -41,7 +41,7 @@ FUNC INT DIA_Sld_820_Halt_Condition()
 	if (other.guild != GIL_SLD)
 	&& (other.guild != GIL_DJG)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -99,13 +99,13 @@ INSTANCE DIA_Sld_820_PERM(C_INFO)
 	nr			= 1;
 	condition	= DIA_Sld_820_PERM_Condition;
 	information	= DIA_Sld_820_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co s³ychaæ?";
 };                       
 
 FUNC INT DIA_Sld_820_PERM_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Sld_820_PERM_Info()
@@ -114,3 +114,43 @@ FUNC VOID DIA_Sld_820_PERM_Info()
 	AI_Output (self, other, "DIA_Sld_820_PERM_07_01"); //WejdŸ, jeœli chcesz, ale nie odzywaj siê do mnie.
 	AI_StopProcessInfos	(self);
 };
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

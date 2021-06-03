@@ -1,43 +1,44 @@
-//****************************************************************************************** 
+///****************************************************************************************** 
 instance Pal_212_Schiffswache (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Schiffswache;
 	guild 								=	GIL_PAL;
 	id 									=	212;
 	voice 								=	8;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 60);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_NAILED;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2H_PAL_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_FatBald", Face_Scatty, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_212;
 };
 
-FUNC VOID Rtn_Start_212()
+func void Rtn_Start_212()
 {
 	TA_Guard_Passage	(08,00,23,00, "NW_CITY_SHIP_GUARD_02");
 	TA_Guard_Passage	(23,00,08,00, "NW_CITY_SHIP_GUARD_02");
 };
-FUNC VOID Rtn_ShipFree_212()
+func void Rtn_ShipFree_212()
 {
 	TA_Smalltalk	(08,00,23,00, "NW_CITY_PALCAMP_01");
 	TA_Smalltalk	(23,00,08,00, "NW_CITY_PALCAMP_01");

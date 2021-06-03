@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4005_Arbeiter (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Arbeiter;
 	guild 								=	GIL_VLK;
 	id 									=	4005;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal09, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4005;
 };
 
-FUNC VOID Rtn_Start_4005()
+func void Rtn_Start_4005()
 {
 	TA_Stand_Sweeping	(06,33,08,00, "NW_CITY_UPTOWN_PATH_07");
     TA_Stand_Sweeping	(08,00,10,00, "NW_CITY_UPTOWN_PATH_18");

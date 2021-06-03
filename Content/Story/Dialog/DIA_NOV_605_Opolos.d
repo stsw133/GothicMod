@@ -8,14 +8,14 @@ INSTANCE DIA_Opolos_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Opolos_Kap1_EXIT_Condition;
 	information = DIA_Opolos_Kap1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Opolos_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 7)
+	if (Kapitel <= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap1_EXIT_Info()
@@ -32,15 +32,15 @@ INSTANCE DIA_Opolos_Hello   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Opolos_Hello_Condition;
 	information = DIA_Opolos_Hello_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Opolos_Hello_Condition()
 {
-	if (Npc_IsInState (self, ZS_Talk))
+	if Npc_IsInState (self, ZS_Talk)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Opolos_Hello_Info()
@@ -57,18 +57,18 @@ INSTANCE DIA_Opolos_Wurst(C_INFO)
 	nr			= 2;
 	condition	= DIA_Opolos_Wurst_Condition;
 	information	= DIA_Opolos_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mam tu kie³basê z baraniny...";
 };                       
 
 FUNC INT DIA_Opolos_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -77,7 +77,7 @@ FUNC VOID DIA_Opolos_Wurst_Info()
 	AI_Output (other, self, "DIA_Opolos_Wurst_15_00"); //Mam tu kie³basê z baraniny...
 	AI_Output (self, other, "DIA_Opolos_Wurst_12_01"); //To fantastycznie. Uwielbiam kie³basê z baraniny.
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -97,14 +97,14 @@ INSTANCE DIA_Opolos_HowLong   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Opolos_HowLong_Condition;
 	information = DIA_Opolos_HowLong_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Od jak dawna jesteœ w klasztorze?";
 };
 FUNC INT DIA_Opolos_HowLong_Condition()
 {
 	if Npc_KnowsInfo (hero, DIA_Opolos_Hello)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_HowLong_Info()
@@ -129,15 +129,15 @@ INSTANCE DIA_Opolos_Monastery   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Opolos_Monastery_Condition;
 	information = DIA_Opolos_Monastery_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Jak mam siê zachowywaæ w klasztorze?";
 };
 FUNC INT DIA_Opolos_Monastery_Condition()
 {	
 	if Npc_KnowsInfo (hero, DIA_Opolos_Hello)
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Monastery_Info()
@@ -156,17 +156,16 @@ INSTANCE DIA_Opolos_beibringen   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Opolos_beibringen_Condition;
 	information = DIA_Opolos_beibringen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Czy móg³byœ mnie czegoœ nauczyæ?";
 };
-var int Opolos_TeachSTR;
 FUNC INT DIA_Opolos_beibringen_Condition()
 {	
 	if Npc_KnowsInfo (hero, DIA_Opolos_Hello)
 	&& ((other.guild == GIL_NOV)
 	|| (other.guild == GIL_KDF))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_beibringen_Info()
@@ -191,7 +190,7 @@ INSTANCE DIA_Opolos_rezept   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Opolos_rezept_Condition;
 	information = DIA_Opolos_rezept_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Co do tej receptury...";
 };
 //-----------------------------------
@@ -201,9 +200,9 @@ FUNC INT DIA_Opolos_rezept_Condition()
 {	
 	if Npc_KnowsInfo (hero, DIA_Opolos_beibringen)
 	&& (other.guild == GIL_NOV)
-	&& (DIA_Opolos_rezept_permanent == false)
+	&& (DIA_Opolos_rezept_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_rezept_Info()
@@ -217,11 +216,11 @@ FUNC VOID DIA_Opolos_rezept_Info()
 		B_UseFakeScroll ();
 		AI_Output (self ,other,"DIA_Opolos_rezept_12_03"); //Doskonale, wielkie dziêki. Jeœli chcesz, mo¿emy razem potrenowaæ.
 		
-		DIA_Opolos_rezept_permanent = true;
-		Opolos_TeachSTR = true;
+		DIA_Opolos_rezept_permanent = TRUE;
+		Opolos_TeachSTR = TRUE;
 		
 		Opolos_Rezept = LOG_SUCCESS;
-		B_GivePlayerXP(XP_Ambient);
+		B_GivePlayerXP (XP_Ambient);
 		
 		Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
 		B_LogEntry (Topic_KlosterTeacher,"Opolos mo¿e mi pokazaæ, jak staæ siê silniejszym.");
@@ -234,8 +233,8 @@ FUNC VOID DIA_Opolos_rezept_Info()
 		
 		Opolos_Rezept = LOG_FAILED;
 		
-		DIA_Opolos_rezept_permanent = true;
-		Opolos_TeachSTR = true;
+		DIA_Opolos_rezept_permanent = TRUE;
+		Opolos_TeachSTR = TRUE;
 		
 		Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
 		B_LogEntry (Topic_KlosterTeacher,"Opolos mo¿e mi pokazaæ, jak staæ siê silniejszym.");
@@ -254,28 +253,58 @@ instance DIA_Opolos_TEACH_STR		(C_INFO)
 	nr 			 =  99;
 	condition	 = 	DIA_Opolos_TEACH_STR_Condition;
 	information	 = 	DIA_Opolos_TEACH_STR_Info;
-	permanent	 = 	true;
+	permanent	 = 	FALSE;	//TRUE
 	description	 = 	"Chcê byæ silniejszy.";
 };
-var int Opolos_Bonus;
-func int DIA_Opolos_TEACH_STR_Condition()
+func int DIA_Opolos_TEACH_STR_Condition ()
 {	
-	if (hero.guild == GIL_KDF)
-	|| (other.guild == GIL_NOV)
-	&& (Opolos_TeachSTR == true)
-	&& (Opolos_Bonus == false)
+	if (hero.guild == GIL_KDF
+	||  hero.guild == GIL_NOV) 
+	&& (Opolos_TeachSTR == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
-func void DIA_Opolos_TEACH_STR_Info()
+func void DIA_Opolos_TEACH_STR_Info ()
 {
-	AI_Output (other, self, "DIA_Opolos_TEACH_STR_15_00"); //Chcia³bym staæ siê silniejszy.
-	AI_Output (self ,other,"DIA_Opolos_beibringen_12_01"); //Jasne, zawsze by³em dobry w bitce. Mogê ci pokazaæ, jak wzmocniæ miêœnie ramion.
-	B_RaiseAttribute (other, ATR_STRENGTH, 2);
-	Opolos_Bonus = true;
+		AI_Output (other, self, "DIA_Opolos_TEACH_STR_15_00"); //Chcia³bym staæ siê silniejszy.
+		/*
+		Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
+		Info_AddChoice 		(DIA_Opolos_TEACH_STR,DIALOG_BACK,DIA_Opolos_TEACH_STR_BACK);		
+		Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Opolos_TEACH_STR_1);
+		Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Opolos_TEACH_STR_5);
+		*/
+	B_RaiseAttribute(other, ATR_STRENGTH, 2);
 };
-
+/*
+FUNC VOID DIA_Opolos_TEACH_STR_BACK()
+{
+	if (other.attribute[ATR_STRENGTH] >= T_MED)  
+	{
+		AI_Output (self, other, "DIA_Opolos_TEACH_STR_12_00"); //Jesteœ ju¿ doœæ silny. Niczego wiêcej nie mogê ciê nauczyæ.
+	};
+	
+	Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
+};
+FUNC VOID DIA_Opolos_TEACH_STR_1()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	
+	Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
+	Info_AddChoice 		(DIA_Opolos_TEACH_STR,DIALOG_BACK,DIA_Opolos_TEACH_STR_BACK);		
+	Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR1		, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Opolos_TEACH_STR_1);
+	Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Opolos_TEACH_STR_5);
+};
+FUNC VOID DIA_Opolos_TEACH_STR_5()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	
+	Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
+	Info_AddChoice 		(DIA_Opolos_TEACH_STR,DIALOG_BACK,DIA_Opolos_TEACH_STR_BACK);		
+	Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Opolos_TEACH_STR_1);
+	Info_AddChoice		(DIA_Opolos_TEACH_STR, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Opolos_TEACH_STR_5);
+};
+*/
 //*********************************************************************
 //		Wer ist Agon?
 //*********************************************************************
@@ -285,15 +314,15 @@ INSTANCE DIA_Opolos_Agon   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Opolos_Agon_Condition;
 	information = DIA_Opolos_Agon_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Kim s¹ Agon i Babo?";
 };
 FUNC INT DIA_Opolos_Agon_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Opolos_Monastery))
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Agon_Info()
@@ -314,19 +343,21 @@ instance DIA_Opolos_LIESEL		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Opolos_LIESEL_Condition;
 	information	 = 	DIA_Opolos_LIESEL_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Spójrz, przyprowadzi³em Betsy.";
 };
 func int DIA_Opolos_LIESEL_Condition ()
 {	
 	if (other.guild == GIL_NOV)
-	&& (Liesel_Giveaway == false)
+	&& (Liesel_Giveaway == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Opolos_LIESEL_Info ()
 {
+	
+	
 	AI_Output (other, self, "DIA_Opolos_LIESEL_15_00"); //Spójrz, przyprowadzi³em Betsy. Zaopiekujesz siê ni¹?
 	
 	Npc_PerceiveAll (self);
@@ -334,12 +365,12 @@ func void DIA_Opolos_LIESEL_Info ()
 	if  Wld_DetectNpc (self,Follow_Sheep,NOFUNC,-1) 
 	&& (Npc_GetDistToNpc(self, other) < 800)
 	{
-		other.aivar[AIV_PARTYMEMBER] = false;
-		other.aivar[AIV_TAPOSITION] = true;
+		other.aivar[AIV_PARTYMEMBER] = FALSE;
+		other.aivar[AIV_TAPOSITION] = TRUE;
 		other.wp = "FP_ROAM_MONASTERY_04";
 		other.start_aistate = ZS_MM_AllScheduler; 
 		
-		Liesel_Giveaway = true;
+		Liesel_Giveaway = TRUE;
 		AI_Output (self, hero, "DIA_Opolos_LIESEL_12_01"); //Oczywiœcie. Bardzo ³adne zwierzê. Dobrze siê ni¹ zajmê.
 		AI_StopProcessInfos (self);
 	}
@@ -347,6 +378,9 @@ func void DIA_Opolos_LIESEL_Info ()
 	{
 		AI_Output (other, self, "DIA_Opolos_Add_15_00"); //Hm... Gdzieœ mi siê chyba zapodzia³a. Wrócê póŸniej.
 	};
+	
+	
+	
 };
 //*********************************************************************
 //	Wegen der  Biblothek... 
@@ -357,7 +391,7 @@ INSTANCE DIA_Opolos_Biblothek   (C_INFO)
 	nr          = 98;
 	condition   = DIA_Opolos_Biblothek_Condition;
 	information = DIA_Opolos_Biblothek_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Jeœli chodzi o bibliotekê...";
 };
 FUNC INT DIA_Opolos_Biblothek_Condition()
@@ -365,14 +399,14 @@ FUNC INT DIA_Opolos_Biblothek_Condition()
 	if (other.guild == GIL_NOV)
 	&& Npc_KnowsInfo (other, DIA_Opolos_HowLong)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Opolos_Biblothek_Info()
 {
 	AI_Output (other ,self,"DIA_Opolos_Biblothek_15_00"); //Jeœli chodzi o bibliotekê...
 	
-	if (Parlan_Erlaubnis == false)
+	if (Parlan_Erlaubnis == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Opolos_Biblothek_12_01"); //To ta zamkniêta sala na lewo, obok bramy.
 		AI_Output (self ,other,"DIA_Opolos_Biblothek_12_02"); //Klucz do niej dostaniesz jednak tylko wtedy, kiedy Mistrz Parlan uzna, ¿e mo¿esz rozpocz¹æ nauki.
@@ -382,6 +416,7 @@ FUNC VOID DIA_Opolos_Biblothek_Info()
 		AI_Output (self ,other,"DIA_Opolos_Biblothek_12_03"); //Szczêœciarzu! Masz klucz do biblioteki, mimo ¿e jesteœ tu tak krótko.
 		AI_Output (self ,other,"DIA_Opolos_Biblothek_12_04"); //Wykorzystaj swoj¹ szansê, poczytaj dok³adnie stare manuskrypty.
 	};
+	
 	
 	AI_StopProcessInfos (self);
 };
@@ -394,8 +429,8 @@ INSTANCE DIA_Opolos_HelloAgain   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Opolos_HelloAgain_Condition;
 	information = DIA_Opolos_HelloAgain_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Opolos_HelloAgain_Condition()
 {
@@ -403,7 +438,7 @@ FUNC INT DIA_Opolos_HelloAgain_Condition()
 	&& (MIS_HelpOpolos == LOG_SUCCESS)
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Opolos_HelloAgain_Info()
@@ -411,7 +446,7 @@ FUNC VOID DIA_Opolos_HelloAgain_Info()
 	AI_Output (self ,other,"DIA_Opolos_HelloAgain_12_00"); //Witam. Dziêkujê za pomoc. Postaram siê skorzystaæ z szansy, jak¹ otrzyma³em, i nauczyæ siê jak najwiêcej.
 	AI_Output (self ,other,"DIA_Opolos_HelloAgain_12_01"); //Nie masz pewnie czasu, ¿eby rozmawiaæ ze zwyk³ym nowicjuszem, Mistrzu.
 	
-	B_GivePlayerXP(XP_Ambient); 
+	B_GivePlayerXP (XP_Ambient); 
 	AI_StopProcessInfos (self);
 };
 
@@ -424,14 +459,14 @@ INSTANCE DIA_Opolos_HowIsIt   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Opolos_HowIsIt_Condition;
 	information = DIA_Opolos_HowIsIt_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Co s³ychaæ?";
 };
 FUNC INT DIA_Opolos_HowIsIt_Condition()
 {
 	if (other.guild == GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Opolos_HowIsIt_Info()
@@ -463,14 +498,14 @@ INSTANCE DIA_Opolos_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Opolos_Kap2_EXIT_Condition;
 	information = DIA_Opolos_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Opolos_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap2_EXIT_Info()
@@ -490,14 +525,14 @@ INSTANCE DIA_Opolos_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Opolos_Kap3_EXIT_Condition;
 	information = DIA_Opolos_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Opolos_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap3_EXIT_Info()
@@ -515,15 +550,15 @@ INSTANCE DIA_Opolos_Kap3_PERM   (C_INFO)
 	nr          = 39;
 	condition   = DIA_Opolos_Kap3_PERM_Condition;
 	information = DIA_Opolos_Kap3_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak tam owce?";
 };
 FUNC INT DIA_Opolos_Kap3_PERM_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (other.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap3_PERM_Info()
@@ -558,10 +593,10 @@ FUNC VOID DIA_Opolos_Kap3_PERM_DRAGONS()
 	AI_Output (self ,other,"DIA_Opolos_Kap3_PERM_DRAGONS_12_03"); //Królewscy paladyni chyba sobie z nimi poradz¹, prawda?
 	AI_Output (other,self ,"DIA_Opolos_Kap3_PERM_DRAGONS_15_04"); //Zobaczymy.
 	
-	if (Opolos_Dragons == false)
+	if (Opolos_Dragons == FALSE)
 	{
-		B_GivePlayerXP(XP_AMBIENT);
-		Opolos_Dragons = true;
+		B_GivePlayerXP (XP_AMBIENT);
+		Opolos_Dragons = TRUE;
 	};	
 };
 
@@ -575,10 +610,10 @@ FUNC VOID DIA_Opolos_Kap3_PERM_DMT()
 	AI_Output (other,self ,"DIA_Opolos_Kap3_PERM_DMT_15_03"); //Wygl¹da na to, ¿e s¹ jakiegoœ rodzaju magami. A przynajmniej znaj¹ czary.
 	AI_Output (self ,other,"DIA_Opolos_Kap3_PERM_DMT_12_04"); //To brzmi niepokoj¹co. Mam jednak nadziejê, ¿e Najwy¿sza Rada poradzi sobie z tym problemem.
 	
-	if (Opolos_DMT == false)
+	if (Opolos_DMT == FALSE)
 	{
-		B_GivePlayerXP(XP_AMBIENT);
-		Opolos_DMT = true;
+		B_GivePlayerXP (XP_AMBIENT);
+		Opolos_DMT = TRUE;
 	};	
 };
 
@@ -591,10 +626,10 @@ FUNC VOID DIA_Opolos_Kap3_PERM_PEDRO()
 	AI_Output (self ,other,"DIA_Opolos_Kap3_PERM_PEDRO_12_02"); //Czy wróg jest silniejszy od nas - to znaczy, czy mo¿emy go jakoœ pokonaæ?
 	AI_Output (other,self ,"DIA_Opolos_Kap3_PERM_PEDRO_15_03"); //Wszystko jest mo¿liwe. Póki ¿ycia, póty nadziei.
 	
-	if (Opolos_Pedro == false)
+	if (Opolos_Pedro == FALSE)
 	{
-		B_GivePlayerXP(XP_AMBIENT);
-		Opolos_Pedro = true;
+		B_GivePlayerXP (XP_AMBIENT);
+		Opolos_Pedro = TRUE;
 	};
 };
 //##########################################
@@ -609,14 +644,14 @@ INSTANCE DIA_Opolos_Kap4_EXIT   (C_INFO)
 	nr          = 999; 
 	condition   = DIA_Opolos_Kap4_EXIT_Condition;
 	information = DIA_Opolos_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Opolos_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap4_EXIT_Info()
@@ -636,14 +671,14 @@ INSTANCE DIA_Opolos_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Opolos_Kap5_EXIT_Condition;
 	information = DIA_Opolos_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Opolos_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Opolos_Kap5_EXIT_Info()

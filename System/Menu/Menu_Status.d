@@ -113,7 +113,7 @@ instance MENU_ITEM_STATUS_HEADING(C_MENU_ITEM_DEF)
 	flags = (flags & ~IT_SELECTABLE) | IT_TXT_CENTER;
 };
 
-instance MENU_ITEM_TALENT_21_TITLE(C_MENU_ITEM_DEF)	//difficult
+instance MENU_ITEM_TALENT_21_TITLE(C_MENU_ITEM_DEF)	//difficulty
 {
 	posx = STAT_A_X1;
 	posy = STAT_PLY_Y + (STAT_DY * 0);

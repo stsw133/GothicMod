@@ -8,22 +8,22 @@ INSTANCE DIA_Dragon_Fire_Island_Exit(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dragon_Fire_Island_Exit_Condition;
 	information	= DIA_Dragon_Fire_Island_Exit_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Dragon_Fire_Island_Exit_Condition()
 {
-	if (DragonTalk_Exit_Free == true)
+	if (DragonTalk_Exit_Free == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 FUNC VOID DIA_Dragon_Fire_Island_Exit_Info()
 {	
 	AI_StopProcessInfos	(self);
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 	self.flags =  0;
 };
 
@@ -38,14 +38,14 @@ INSTANCE DIA_Dragon_Fire_Island_Hello(C_INFO)
 	condition	= DIA_Dragon_Fire_Island_Hello_Condition;
 	information	= DIA_Dragon_Fire_Island_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Dragon_Fire_Island_Hello_Condition()
 {
 	if (Npc_HasItems (other,ItAm_InnosEye) >= 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -65,20 +65,18 @@ FUNC VOID DIA_Dragon_Fire_Island_Hello_Info()
 	if (hero.guild == GIL_DJG)
 	&& (DragonEggCounter >= 7)
 	{
-	AI_Output			(other, self, "DIA_Dragon_Fire_Island_Hello_15_04"); //Bez obaw. Resztê twoich pobratymców te¿ dopadnê.
-	AI_Output			(self, other, "DIA_Dragon_Fire_Island_Hello_20_05"); //Arrrrh. Spalê ciê na popió³ i zrobiê to z prawdziw¹ przyjemnoœci¹.
+		AI_Output			(other, self, "DIA_Dragon_Fire_Island_Hello_15_04"); //Bez obaw. Resztê twoich pobratymców te¿ dopadnê.
+		AI_Output			(self, other, "DIA_Dragon_Fire_Island_Hello_20_05"); //Arrrrh. Spalê ciê na popió³ i zrobiê to z prawdziw¹ przyjemnoœci¹.
 	};
 
 	AI_Output			(other, self, "DIA_Dragon_Fire_Island_Hello_15_06"); //Wiêc daruj sobie tê przemowê i przejdŸmy od razu do rzeczy.
 	AI_Output			(self, other, "DIA_Dragon_Fire_Island_Hello_20_07"); //Daleko zaszed³eœ, ma³y cz³owieczku, ale ju¿ nigdy nie opuœcisz tych sal.
 
-//	Npc_RemoveInvItems (other,ItAm_InnosEye_MIS,1);
-//	CreateInvItems 	   (other,ItMi_InnosEye_Discharged_MIS,1);	 
 	AI_StopProcessInfos	(self);
 	
 	B_LogEntry (TOPIC_HallenVonIrdorath,"Nastêpny ognisty smok. Zaczynam ich mieæ po dziurki w nosie. Jedyne, czego teraz chcê, to przedostaæ siê przez rozpadlinê, któr¹ widaæ za smokiem."); 
 
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 	self.flags =  0;
 };
 

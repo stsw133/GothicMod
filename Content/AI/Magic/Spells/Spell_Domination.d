@@ -5,7 +5,7 @@
 const int SPL_Cost_Domination			=	90;
 
 ///******************************************************************************************
-INSTANCE Spell_Domination (C_Spell_Proto)
+instance Spell_Domination (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -14,7 +14,7 @@ INSTANCE Spell_Domination (C_Spell_Proto)
 
 func int Spell_Logic_Domination (var int manaInvested)
 {	
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Domination/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Domination/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Domination)
 	{
 		return SPL_SENDCAST;
@@ -27,21 +27,20 @@ func int Spell_Logic_Domination (var int manaInvested)
 
 func void Spell_Cast_Domination()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Domination/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Domination/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Domination/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Domination)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Domination;
 	};
-	self.aivar[AIV_SelectSpell] += 1;
-	
-	
 	
 	if (other.guild < GIL_SEPERATOR_HUM)
 	&& (other.level < self.level)
 	{
 		other.aivar[AIV_PartyMember] = true;	///temp
 	};
+	
+	self.aivar[AIV_SelectSpell] += 1;
 };

@@ -8,12 +8,12 @@ INSTANCE DIA_GornNW_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_GornNW_KAP3_EXIT_Condition;
 	information	= DIA_GornNW_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_GornNW_KAP3_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_GornNW_KAP3_EXIT_Info()
 {	
@@ -30,12 +30,12 @@ INSTANCE DIA_GornNW_Hallo (C_INFO)
 	nr			= 1;
 	condition	= DIA_GornNW_Hallo_Condition;
 	information	= DIA_GornNW_Hallo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wszystko w porz¹dku?";
 };                       
 FUNC INT DIA_GornNW_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_GornNW_Hallo_Info()
 {	
@@ -44,7 +44,7 @@ FUNC VOID DIA_GornNW_Hallo_Info()
 	{
 		AI_Output (self ,other,"DIA_GornNW_Add_12_01"); //Uratowa³eœ mój ty³ek, kolego.
 		AI_Output (self ,other,"DIA_GornNW_Add_12_02"); //Nigdy ci tego nie zapomnê.
-		B_GivePlayerXP(XP_Ambient);
+		B_GivePlayerXP (XP_Ambient);
 	}
 	else
 	{
@@ -63,12 +63,12 @@ INSTANCE DIA_GornNW_WhatNext (C_INFO)
 	nr			= 1;
 	condition	= DIA_GornNW_WhatNext_Condition;
 	information	= DIA_GornNW_WhatNext_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co bêdziesz teraz robi³?";
 };                       
 FUNC INT DIA_GornNW_WhatNext_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_GornNW_WhatNext_Info()
 {	

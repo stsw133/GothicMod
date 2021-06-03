@@ -4,11 +4,11 @@
 prototype ItemPR_Belt (C_Item)
 {
 	name 					=	"Pas";
-
+	
 	mainflag 				=	ITEM_KAT_MAGIC;
 	flags 					=	ITEM_BELT;
 	material 				=	MAT_METAL;
-
+	
 	on_equip				=	Attributes_CHECK;
 	on_unequip				=	Attributes_CHECK;
 	
@@ -21,20 +21,20 @@ prototype ItemPR_Belt (C_Item)
 var int Belt_AtrPoints;
 
 ///******************************************************************************************
-instance ItBe_Grd_01 (ItemPR_Belt)
+instance ItBe_Roy_01 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_03.3ds";
 	
 	value			=	350;
-	on_equip		=	Equip_ItBe_Grd_01;
-	on_unequip		=	UnEquip_ItBe_Grd_01;
-
+	on_equip		=	Equip_ItBe_Roy_01;
+	on_unequip		=	UnEquip_ItBe_Roy_01;
+	
 	description		=	"Pas stra¿nika";
 	TEXT[0]			=	"Dzia³a tylko z pancerzem stra¿nika.";
 	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 5% nauczonych.";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Grd_01()
+func void Equip_ItBe_Roy_01()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -42,7 +42,7 @@ func void Equip_ItBe_Grd_01()
 		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, Belt_AtrPoints);
 	};
 };
-func void UnEquip_ItBe_Grd_01()
+func void UnEquip_ItBe_Roy_01()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -52,20 +52,20 @@ func void UnEquip_ItBe_Grd_01()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Grd_02 (ItemPR_Belt)
+instance ItBe_Roy_02 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_03.3ds";
 	
 	value			=	900;
-	on_equip		=	Equip_ItBe_Grd_02;
-	on_unequip		=	UnEquip_ItBe_Grd_02;
+	on_equip		=	Equip_ItBe_Roy_02;
+	on_unequip		=	UnEquip_ItBe_Roy_02;
 
 	description		=	"Pas gwardzisty";
 	TEXT[0]			=	"Dzia³a tylko z pancerzem gwardzisty.";
 	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 10% nauczonych.";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Grd_02()
+func void Equip_ItBe_Roy_02()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -73,7 +73,7 @@ func void Equip_ItBe_Grd_02()
 		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, Belt_AtrPoints);
 	};
 };
-func void UnEquip_ItBe_Grd_02()
+func void UnEquip_ItBe_Roy_02()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -83,20 +83,20 @@ func void UnEquip_ItBe_Grd_02()
 	};
 };
 ///******************************************************************************************
-instance ItBe_DrH_01 (ItemPR_Belt)
+instance ItBe_Djg_01 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_05.3ds";
 	
 	value			=	350;
-	on_equip		=	Equip_ItBe_DrH_01;
-	on_unequip		=	UnEquip_ItBe_DrH_01;
+	on_equip		=	Equip_ItBe_Djg_01;
+	on_unequip		=	UnEquip_ItBe_Djg_01;
 
 	description		=	"Pas najemnika";
 	TEXT[0]			=	"Dzia³a tylko z pancerzem najemnika.";
 	TEXT[1]			=	"Zwiêksza si³ê o 5% nauczonej.";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_DrH_01()
+func void Equip_ItBe_Djg_01()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -104,7 +104,7 @@ func void Equip_ItBe_DrH_01()
 		B_RaiseAttribute (self, ATR_STRENGTH, Belt_AtrPoints);
 	};
 };
-func void UnEquip_ItBe_DrH_01()
+func void UnEquip_ItBe_Djg_01()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -113,20 +113,20 @@ func void UnEquip_ItBe_DrH_01()
 	};
 };
 ///******************************************************************************************
-instance ItBe_DrH_02 (ItemPR_Belt)
+instance ItBe_Djg_02 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_05.3ds";
 	
 	value			=	900;
-	on_equip		=	Equip_ItBe_DrH_02;
-	on_unequip		=	UnEquip_ItBe_DrH_02;
+	on_equip		=	Equip_ItBe_Djg_02;
+	on_unequip		=	UnEquip_ItBe_Djg_02;
 
 	description		=	"Pas ³owcy smoków";
 	TEXT[0]			=	"Dzia³a tylko z pancerzem ³owcy smoków.";
 	TEXT[1]			=	"Zwiêksza si³ê o 10% nauczonej.";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_DrH_02()
+func void Equip_ItBe_Djg_02()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -134,7 +134,7 @@ func void Equip_ItBe_DrH_02()
 		B_RaiseAttribute (self, ATR_STRENGTH, Belt_AtrPoints);
 	};
 };
-func void UnEquip_ItBe_DrH_02()
+func void UnEquip_ItBe_Djg_02()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -326,7 +326,3 @@ func void UnEquip_ItBe_Asa_02()
 		Belt_AtrPoints = 0;
 	};
 };
-
-///******************************************************************************************
-///	IT_Amulets_Special
-///******************************************************************************************

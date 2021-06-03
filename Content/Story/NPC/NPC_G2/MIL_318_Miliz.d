@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_318_Miliz (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	Name_Miliz;
 	guild 								=	GIL_MIL;
 	id 									=	318;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal43, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_318;
 };
 
-FUNC VOID Rtn_Start_318()
+func void Rtn_Start_318()
 {
 	TA_Stand_Guarding	(06,45,21,05, "NW_CITY_HABOUR_KASERN_OFFICE");
 	TA_Smalltalk		(21,05,23,59, "NW_CITY_HABOUR_KASERN_BARRACK02_IN");

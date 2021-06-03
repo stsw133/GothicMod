@@ -4,7 +4,7 @@
 var int ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME;
 func void ENTER_OLDWORLD_FIRSTTIME_TRIGGER ()
 {
-	if (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == false)
+	if (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == FALSE)
 		{
 			// ------ Tote NPCs (Leichen)------
 			// Start 
@@ -36,10 +36,10 @@ func void ENTER_OLDWORLD_FIRSTTIME_TRIGGER ()
 			B_KillNpc (Olav);
 			
 			PlayVideo ( "DRAGONATTACK.BIK");	
-			ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME = true;
+			ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME = TRUE;
 		};
 		
-	if (TschuessBilgot == true)
+	if (TschuessBilgot == TRUE)
 	{
 		B_RemoveNpc (Bilgot);
 	};	

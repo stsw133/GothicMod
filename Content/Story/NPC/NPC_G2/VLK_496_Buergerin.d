@@ -1,34 +1,33 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_496_Buergerin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Buergerin;
 	guild 								=	GIL_VLK;
 	id 									=	496;
 	voice 								=	17;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Babe1", FaceBabe_Normal08, Teeth_Pretty, ITAR_WD_M_05);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_496;
 };
 
-FUNC VOID Rtn_Start_496()
+func void Rtn_Start_496()
 {
 	TA_Smalltalk		(06,00,07,00,"NW_CITY_MERCHANT_PATH_28_D");
 	TA_Stand_Drinking	(07,00,08,00,"NW_CITY_MERCHANT_PATH_28_D");

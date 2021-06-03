@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Sancho_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Sancho_EXIT_Condition;
 	information = DIA_Addon_Sancho_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Sancho_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Sancho_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Sancho_HI   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Sancho_HI_Condition;
 	information = DIA_Addon_Sancho_HI_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Sancho_HI_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Sancho_HI_Info()
 {	
@@ -43,7 +43,7 @@ FUNC VOID DIA_Addon_Sancho_HI_Info()
 	AI_Output (self,other,"DIA_Addon_Sancho_HI_06_03"); //Wszyscy nowi chc¹ wejœæ do kopalni.
 	AI_Output (self,other,"DIA_Addon_Sancho_HI_06_04"); //Nie oczekuj jednak, ¿e bêdzie to ³atwe!
 
-	if (SC_KnowsRavensGoldmine == false)
+	if (SC_KnowsRavensGoldmine == FALSE)
 	{
 		B_LogEntry (TOPIC_Addon_RavenKDW, LogText_Addon_RavensGoldmine); 
 		Log_AddEntry (TOPIC_Addon_Sklaven, LogText_Addon_RavensGoldmine); 
@@ -51,7 +51,7 @@ FUNC VOID DIA_Addon_Sancho_HI_Info()
 	};
 
 	
-	SC_KnowsRavensGoldmine = true;
+	SC_KnowsRavensGoldmine = TRUE;
 };
 
 //---------------------------------------------------------------------
@@ -63,12 +63,12 @@ INSTANCE DIA_Addon_Sancho_Lager   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Sancho_Lager_Condition;
 	information = DIA_Addon_Sancho_Lager_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak mogê siê dostaæ do obozu?";
 };
 FUNC INT DIA_Addon_Sancho_Lager_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Sancho_Lager_Info()
 {	
@@ -94,14 +94,14 @@ INSTANCE DIA_Addon_Sancho_Mine   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Sancho_Mine_Condition;
 	information = DIA_Addon_Sancho_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Powiedz mi coœ wiêcej o kopalni.";
 };
 FUNC INT DIA_Addon_Sancho_Mine_Condition()
 {	
 	if (!Npc_IsDead(Franco))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Sancho_Mine_Info()
@@ -124,7 +124,7 @@ INSTANCE DIA_Addon_Sancho_Franco (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Sancho_Franco_Condition;
 	information = DIA_Addon_Sancho_Franco_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie znajdê tego Franka?";
 };
 FUNC INT DIA_Addon_Sancho_Franco_Condition()
@@ -132,7 +132,7 @@ FUNC INT DIA_Addon_Sancho_Franco_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Sancho_Mine))
 	&& (!Npc_IsDead(Franco))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Sancho_Franco_Info()
@@ -153,7 +153,7 @@ INSTANCE DIA_Addon_Sancho_Spitzel (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Sancho_Spitzel_Condition;
 	information = DIA_Addon_Sancho_Spitzel_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Musisz tu siedzieæ przez ca³y czas?";
 };
 FUNC INT DIA_Addon_Sancho_Spitzel_Condition()
@@ -161,7 +161,7 @@ FUNC INT DIA_Addon_Sancho_Spitzel_Condition()
 	if (Npc_KnowsInfo (other, DIA_Addon_Sancho_Franco))
 	|| (Npc_IsDead(Franco))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Sancho_Spitzel_Info()
@@ -181,14 +181,14 @@ INSTANCE DIA_Addon_Sancho_Perm   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Sancho_Perm_Condition;
 	information = DIA_Addon_Sancho_Perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co nowego?";
 };
 FUNC INT DIA_Addon_Sancho_Perm_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Sancho_Spitzel)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 var int Comment_Franco;
@@ -198,7 +198,7 @@ FUNC VOID DIA_Addon_Sancho_Perm_Info()
 	AI_Output (other,self,"DIA_Addon_Sancho_Perm_15_00");//Co nowego?
 	
 	if Npc_IsDead (Franco)
-	&& (Comment_Franco == false)
+	&& (Comment_Franco == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Sancho_Perm_06_01");//S³ysza³em, ¿e wys³a³eœ Franka do piek³a. Dobra robota...
 		
@@ -211,14 +211,14 @@ FUNC VOID DIA_Addon_Sancho_Perm_Info()
 			AI_Output (self,other,"DIA_Addon_Sancho_Perm_06_03");//Carlosa te¿ wys³a³eœ na cmentarz? Ch³opie, lepiej trzymaj siê ode mnie z daleka.
 		};
 		
-		Comment_Franco = true;
+		Comment_Franco = TRUE;
 	}
 	else if Npc_IsDead (Esteban)
-	&& (Comment_Esteban == false)
+	&& (Comment_Esteban == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Sancho_Perm_06_04");//S³ysza³em, ¿e ukatrupi³eœ Estebana. Ch³opie, do czego ty zmierzasz, co?
 		
-		Comment_Esteban = true;
+		Comment_Esteban = TRUE;
 	}
 	else
 	{
@@ -226,3 +226,8 @@ FUNC VOID DIA_Addon_Sancho_Perm_Info()
 	};
 	
 };
+
+
+
+
+

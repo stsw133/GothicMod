@@ -3,16 +3,15 @@
 ///******************************************************************************************
 func void ZS_MM_EatBody()
 {
-	Npc_SetPercTime	(self, 1);
-	
+	Npc_SetPercTime (self, 1);
 	Npc_PercEnable (self, PERC_ASSESSMAGIC, B_AssessMagic);
 	Npc_PercEnable (self, PERC_ASSESSDAMAGE, B_MM_AssessDamage);
 	Npc_PercEnable (self, PERC_ASSESSOTHERSDAMAGE, B_MM_AssessOthersDamage);
 	Npc_PercEnable (self, PERC_ASSESSMURDER, B_MM_AssessOthersDamage);
 	
-	AI_GotoNpc (self, other);
-	AI_TurnToNpc (self, other);
-	AI_PlayAni (self, "T_STAND_2_EAT");
+	AI_GotoNpc 	(self, other);
+	AI_TurnToNpc(self, other);
+	AI_PlayAni	(self, "T_STAND_2_EAT");
 	
 	self.aivar[AIV_MM_PRIORITY] = PRIO_EAT;
 	self.aivar[AIV_MM_LASTBODY] = Hlp_GetInstanceID(other);

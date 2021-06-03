@@ -6,28 +6,27 @@ func void ZS_CommentFakeGuild()
 	Perception_Set_Minimal();
 	AI_StandUp(self);
 	
-	/// ------ NSC dreht sich zum Spieler ------
-	if (!C_BodystateContains(self,BS_SIT))
+	/// ------ NSC dreht sich zum Spieler ------------------------------------------
+	if (!C_BodystateContains(self, BS_SIT))
 	{
-		B_TurnToNpc (self, other);
+		B_TurnToNpc (self,	other);
 	};
 	
-	/// ------ Spieler dreht sich zum Npc ------
-	if (!C_BodystateContains(other,BS_SIT))
+	/// ------ Spieler dreht sich zum Npc ------------------------------------------
+	if (!C_BodystateContains(other, BS_SIT))
 	{
 		B_TurnToNpc (other, self);
-
+		
 		/// ------ Spieler zu nah dran ------
-		if (Npc_GetDistToNpc(other,self) < 80)
+		if (Npc_GetDistToNpc(other, self) < 80) 
 		{
 			AI_Dodge(other);
 		};
 	};
 	
-	if (Npc_HasEquippedArmor(other) == true)
+	if (Npc_HasEquippedArmor(other))
 	{
-		var C_Item itm;
-		itm = Npc_GetEquippedArmor(other);
+		var C_Item itm; itm = Npc_GetEquippedArmor(other);
 		
 		if (self.guild == GIL_MIL || self.guild == GIL_PAL)
 		{
@@ -44,7 +43,7 @@ func void ZS_CommentFakeGuild()
 		else
 		{
 			B_Say (self, other, "$ADDON_WRONGARMOR");
-		};
+		};	
 	}
 	else
 	{

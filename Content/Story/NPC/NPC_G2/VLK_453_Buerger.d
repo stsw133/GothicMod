@@ -1,40 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_453_Buerger (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Arbeiter;
 	guild 								=	GIL_VLK;
 	id 									=	453;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal49, 0, ITAR_Bau_00);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_453;
 };
 
-FUNC VOID Rtn_Start_453()
+func void Rtn_Start_453()
 {
 	TA_Saw	 		(05,10,06,10,"NW_CITY_POOR_SAW");
 	TA_Smith_Sharp	(06,10,07,10,"NW_CITY_POOR_SMITH_SHARP");

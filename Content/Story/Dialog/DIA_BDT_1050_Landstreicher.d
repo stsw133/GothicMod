@@ -7,13 +7,13 @@ INSTANCE DIA_Landstreicher_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Landstreicher_EXIT_Condition;
 	information = DIA_Landstreicher_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Landstreicher_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Landstreicher_EXIT_Info()
@@ -30,12 +30,12 @@ instance DIA_Landstreicher_HALLO		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Landstreicher_HALLO_Condition;
 	information	 = 	DIA_Landstreicher_HALLO_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Landstreicher_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Landstreicher_HALLO_Info ()
@@ -108,14 +108,14 @@ instance DIA_Landstreicher_WASMACHSTDU		(C_INFO)
 	nr		 = 	6;
 	condition	 = 	DIA_Landstreicher_WASMACHSTDU_Condition;
 	information	 = 	DIA_Landstreicher_WASMACHSTDU_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Czego tu szukasz?";
 };
 
 func int DIA_Landstreicher_WASMACHSTDU_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Landstreicher_WASMACHSTDU_Info ()
@@ -132,3 +132,15 @@ func void DIA_Landstreicher_WASMACHSTDU_Info ()
 
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,13 +7,13 @@ INSTANCE DIA_Nagur_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Nagur_EXIT_Condition;
 	information = DIA_Nagur_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Nagur_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Nagur_EXIT_Info()
@@ -30,21 +30,21 @@ INSTANCE DIA_Nagur_Hallo   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Nagur_Hallo_Condition;
 	information = DIA_Nagur_Hallo_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Nagur_Hallo_Condition()
 {	
 	if (Npc_IsInState (self, ZS_Talk)
-	&& (DIA_Kardif_Diebeswerk_permanent == false))
+	&& (DIA_Kardif_Diebeswerk_permanent == FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Hallo_Info()
 {
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Nagur_Hallo_08_00");//Hej, nie mam czasu na pogawêdki. Jeœli szukasz informacji, porozmawiaj z Kardifem.
 		AI_StopProcessInfos (self);
@@ -63,19 +63,22 @@ FUNC VOID DIA_Nagur_Hallo_Info()
 	func void B_Nagur_Abfertigen()
 	{
 		var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
-//		if (Hlp_IsItem (heroArmor, ItAr_MIL_N) == false)
-//		&& (Hlp_IsItem (heroArmor, ItAr_MIL_L) == false)
-//		&& (Hlp_IsItem (heroArmor, ItAr_MIL_M) == false)
-//		&& (Hlp_IsItem (heroArmor, ItAr_MIL_H) == false)
-//		{
+		if (Hlp_IsItem (heroArmor, ItAr_MIL_L) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_MIL_M) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_PAL_M) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_PAL_H) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_NOV_L) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_KDF_L) == FALSE)
+		&& (Hlp_IsItem (heroArmor, ItAr_KDF_H) == FALSE)
+		{
 			AI_Output (self ,other,"DIA_Nagur_Add_08_02"); //I nie myœl, ¿e ciê nie poznam tylko dlatego, ¿e za³o¿y³eœ inne szaty.
-//		};
+		};
 		
 		AI_Output (self ,other,"DIA_Nagur_Add_08_03"); //Radzê ci jak przyjaciel, nie wtykaj nosa w cudze sprawy!
 		AI_Output (self ,other,"DIA_Nagur_Add_08_04"); //Spadaj!
 		
 		MIS_Nagur_Bote = LOG_SUCCESS; //HACK: Attila kommt bei 3* Success oder 1* suckt --> nur noch die anderen beiden Missionen sind Trigger
-		NagurHack = true;
+		NagurHack = TRUE;
 		AI_StopProcessInfos (self);
 	};
 
@@ -85,14 +88,14 @@ INSTANCE DIA_Nagur_Job   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Nagur_Job_Condition;
 	information = DIA_Nagur_Job_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Kardif powiedzia³, ¿e masz dla mnie pracê.";
 };
 FUNC INT DIA_Nagur_Job_Condition()
 {	
-	if (DIA_Kardif_Diebeswerk_permanent == true)
+	if (DIA_Kardif_Diebeswerk_permanent == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Job_Info()
@@ -102,13 +105,13 @@ FUNC VOID DIA_Nagur_Job_Info()
 	|| (other.guild == GIL_KDF)
 	{
 		AI_Output (self ,other,"DIA_Nagur_Add_08_00"); //NIE MA w porcie pracy dla ludzi z klasztoru!
-//		B_Nagur_Abfertigen();
+		B_Nagur_Abfertigen();
 	}
 	else if (other.guild == GIL_MIL)
 	|| 		(other.guild == GIL_PAL)
 	{
 		AI_Output (self ,other,"DIA_Nagur_Add_08_01"); //Jeœli nale¿ysz do ludzi Króla, to raczej nie licz na jak¹kolwiek pracê w porcie.
-//		B_Nagur_Abfertigen();
+		B_Nagur_Abfertigen();
 	}
 	else
 	{
@@ -145,7 +148,7 @@ INSTANCE DIA_Nagur_Auftrag   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Nagur_Auftrag_Condition;
 	information = DIA_Nagur_Auftrag_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dobra, wiêc jaki masz plan?";
 };
 
@@ -154,7 +157,7 @@ FUNC INT DIA_Nagur_Auftrag_Condition()
 	if (Npc_KnowsInfo (other,DIA_Nagur_Job))
 	&& (MIS_Nagur_Bote != LOG_SUCCESS) //also hier NICHT B_Nagur_Abfertigen durchlaufen
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Auftrag_Info()
@@ -173,6 +176,7 @@ FUNC VOID DIA_Nagur_Auftrag_Info()
 	Info_AddChoice    (DIA_Nagur_Auftrag,"Kiedy mam siê spotkaæ z Baltramem?",DIA_Nagur_Auftrag_Wann);
 	Info_AddChoice    (DIA_Nagur_Auftrag,"Jak dojœæ do farmy Akila?",DIA_Nagur_Auftrag_Akil);
 	Info_AddChoice    (DIA_Nagur_Auftrag,"A co ja bêdê z tego mia³?",DIA_Nagur_Auftrag_Gewinn);
+
 };
 FUNC VOID DIA_Nagur_Auftrag_Akil()
 {
@@ -217,7 +221,7 @@ INSTANCE DIA_Nagur_Success   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Nagur_Success_Condition;
 	information = DIA_Nagur_Success_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Przynios³em przesy³kê.";
 };
 
@@ -225,9 +229,9 @@ FUNC INT DIA_Nagur_Success_Condition()
 {	
 	if (MIS_Nagur_Bote == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItMi_BaltramPaket) >=1)
-	&& (Nagur_Ausgeliefert == false)
+	&& (Nagur_Ausgeliefert == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Success_Info()
@@ -254,7 +258,7 @@ INSTANCE DIA_Nagur_Deal   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Nagur_Deal_Condition;
 	information = DIA_Nagur_Deal_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "I co, sprzeda³eœ ju¿ ca³y towar?";
 };
 //---------------------------------
@@ -262,12 +266,12 @@ var int DIA_Nagur_Deal_permanent;
 //---------------------------------
 FUNC INT DIA_Nagur_Deal_Condition()
 {	
-	if (DIA_Nagur_Deal_permanent == false)
+	if (DIA_Nagur_Deal_permanent == FALSE)
 	&& (MIS_Nagur_Bote == LOG_RUNNING)
-	&& (Nagur_Ausgeliefert == false)
+	&& (Nagur_Ausgeliefert == FALSE)
 	&& Npc_KnowsInfo (other,DIA_Nagur_Success)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Deal_Info()
@@ -286,9 +290,9 @@ FUNC VOID DIA_Nagur_Deal_Info()
 		B_GiveInvItems (self,other,ItMi_Gold,Nagur_Deal);
 		MIS_Nagur_Bote = LOG_SUCCESS;
 		MIS_Baltram_ScoutAkil = LOG_FAILED;
-		B_GivePlayerXP(XP_BONUS_1);
-		DIA_Nagur_Deal_permanent = true;
-		Diebesgilde_Okay += 1;
+		B_GivePlayerXP (XP_Nagur_Bote);
+		DIA_Nagur_Deal_permanent = TRUE;
+		Diebesgilde_Okay = (Diebesgilde_Okay + 1);
 		AI_StopProcessInfos (self);
 	}
 	else 
@@ -305,7 +309,7 @@ INSTANCE DIA_Nagur_Auftraggeber   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Nagur_Auftraggeber_Condition;
 	information = DIA_Nagur_Auftraggeber_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Kto jest twoim pracodawc¹?";
 };
 
@@ -313,7 +317,7 @@ FUNC INT DIA_Nagur_Auftraggeber_Condition()
 {	
 	if (MIS_Nagur_Bote == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Auftraggeber_Info()
@@ -330,18 +334,18 @@ INSTANCE DIA_Nagur_Fazit   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Nagur_Fazit_Condition;
 	information = DIA_Nagur_Fazit_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Nagur_Fazit_Condition()
 {	
 	if (Npc_KnowsInfo (other,DIA_Nagur_Auftraggeber)
 	&& Npc_IsInState (self,ZS_Talk))
-	&& (Knows_SecretSign == false) 
-	&& (NagurHack == false)
+	&& (Knows_SecretSign == FALSE) 
+	&& (NagurHack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Fazit_Info()
@@ -358,17 +362,17 @@ INSTANCE DIA_Nagur_Knast   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Nagur_Knast_Condition;
 	information = DIA_Nagur_Knast_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Nagur_Knast_Condition()
 {	
 	if Npc_IsInState (self,ZS_Talk)
 	&& (Npc_GetDistToWP (self,"NW_CITY_HABOUR_KASERN_NAGUR") <= 1000)
-	&& (Nagur_ausgeliefert == true)
+	&& (Nagur_ausgeliefert == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Knast_Info()
@@ -385,16 +389,16 @@ INSTANCE DIA_Nagur_Sign   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Nagur_Sign_Condition;
 	information = DIA_Nagur_Sign_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "(Poka¿ z³odziejski gest)";
 };
 
 FUNC INT DIA_Nagur_Sign_Condition()
 {	
 	if (MIS_Nagur_Bote == LOG_SUCCESS)
-	&& (Knows_SecretSign == true) 
+	&& (Knows_SecretSign == TRUE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Sign_Info()
@@ -413,8 +417,8 @@ INSTANCE DIA_Nagur_Perm   (C_INFO)
 	nr          = 7;
 	condition   = DIA_Nagur_Perm_Condition;
 	information = DIA_Nagur_Perm_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Nagur_Perm_Condition()
@@ -423,7 +427,7 @@ FUNC INT DIA_Nagur_Perm_Condition()
 	&&  Npc_KnowsInfo (other,DIA_Nagur_Sign) 
 	&& Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Nagur_Perm_Info()
@@ -431,3 +435,27 @@ FUNC VOID DIA_Nagur_Perm_Info()
 	AI_Output (self, other, "DIA_Nagur_Perm_08_00");//Poszukaj sobie kogoœ innego. Naoko³o jest sporo ludzi. My nie mamy ju¿ o czym rozmawiaæ.
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

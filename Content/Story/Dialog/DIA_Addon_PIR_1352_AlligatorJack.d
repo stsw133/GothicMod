@@ -7,23 +7,23 @@ INSTANCE DIA_Addon_AlligatorJack_Exit(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_AlligatorJack_Exit_Condition;
 	information	= DIA_Addon_AlligatorJack_Exit_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_AlligatorJack_Exit_Condition()
 {
-	return true;	
+	return TRUE;	
 };
 var int DIA_Addon_AlligatorJack_Exit_Info_OneTime;
 FUNC VOID DIA_Addon_AlligatorJack_Exit_Info()
 {	
 	
 	if (MIS_KrokoJagd == LOG_SUCCESS)
-	&& (DIA_Addon_AlligatorJack_Exit_Info_OneTime == false)
+	&& (DIA_Addon_AlligatorJack_Exit_Info_OneTime == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_Exit_12_00"); //Jeœli bêdziesz mnie szukaæ, to najprawdopodobniej bêdê siedzia³ gdzieœ w pobli¿u palisady.
 	
-		if (PIR_1354_Addon_Henry.aivar [AIV_TalkedToPlayer] == false)
+		if (PIR_1354_Addon_Henry.aivar [AIV_TalkedToPlayer] == FALSE)
 		{
 			AI_Output (other ,self,"DIA_Addon_AlligatorJack_Exit_15_01"); //Palisady?
 			AI_Output (self ,other,"DIA_Addon_AlligatorJack_Exit_12_02"); //PrzejdŸ siê na zachód, a zobaczysz, o co mi chodzi
@@ -32,8 +32,8 @@ FUNC VOID DIA_Addon_AlligatorJack_Exit_Info()
 		AI_StopProcessInfos	(self);
 		Npc_ExchangeRoutine (self, "START");
 		
-		self.aivar[AIV_PARTYMEMBER] = false;
-		DIA_Addon_AlligatorJack_Exit_Info_OneTime = true;
+		self.aivar[AIV_PARTYMEMBER] = FALSE;
+		DIA_Addon_AlligatorJack_Exit_Info_OneTime = TRUE;
 	};
 	AI_StopProcessInfos	(self);
 };
@@ -47,14 +47,14 @@ INSTANCE DIA_Addon_AlligatorJack_Hello(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_AlligatorJack_Hello_Condition;
 	information	= DIA_Addon_AlligatorJack_Hello_Info;
-	permanent	= false;
-	Important	= true;
+	permanent	= FALSE;
+	Important	= TRUE;
 };                       
 FUNC INT DIA_Addon_AlligatorJack_Hello_Condition()
 {
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -82,7 +82,7 @@ instance DIA_Addon_AlligatorJack_WerBistDu		(C_INFO)
 
 func int DIA_Addon_AlligatorJack_WerBistDu_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_AlligatorJack_WerBistDu_Info ()
@@ -111,9 +111,9 @@ instance DIA_Addon_AlligatorJack_Vorschlag		(C_INFO)
 func int DIA_Addon_AlligatorJack_Vorschlag_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_WerBistDu))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_AlligatorJack_Vorschlag_Info ()
@@ -173,9 +173,9 @@ instance DIA_Addon_AlligatorJack_BDTRuestung		(C_INFO)
 func int DIA_Addon_AlligatorJack_BDTRuestung_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_Vorschlag))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -225,9 +225,9 @@ instance DIA_Addon_AlligatorJack_Greg		(C_INFO)
 func int DIA_Addon_AlligatorJack_Greg_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_WerBistDu))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -260,9 +260,9 @@ instance DIA_Addon_AlligatorJack_PIRLager		(C_INFO)
 func int DIA_Addon_AlligatorJack_PIRLager_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_WerBistDu))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -300,7 +300,7 @@ func int DIA_Addon_AlligatorJack_WasJagen_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_PIRLager))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -326,14 +326,14 @@ INSTANCE DIA_Addon_AlligatorJack_Pirates(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_AlligatorJack_Pirates_Condition;
 	information	= DIA_Addon_AlligatorJack_Pirates_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Opowiedz mi o piratach.";
 };                       
 FUNC INT DIA_Addon_AlligatorJack_Pirates_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_PIRLager))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -358,16 +358,16 @@ INSTANCE DIA_Addon_AlligatorJack_LetsGoHunting(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_AlligatorJack_LetsGoHunting_Condition;
 	information	= DIA_Addon_AlligatorJack_LetsGoHunting_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "ChodŸmy zapolowaæ.";
 };                       
 FUNC INT DIA_Addon_AlligatorJack_LetsGoHunting_Condition()
 {
-	if (MIS_KrokoJagd == false)
+	if (MIS_KrokoJagd == FALSE)
 	&& (Npc_KnowsInfo (other,DIA_Addon_AlligatorJack_WasJagen)) 
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_AlligatorJack_LetsGoHunting_Info()
@@ -391,17 +391,17 @@ FUNC VOID DIA_Addon_AlligatorJack_LetsGoHunting_Yes()
 	
 	AI_StopProcessInfos (self);
 	
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	Npc_ExchangeRoutine (self, "HUNT1");
 		
 		
-	Wld_InsertNpc (Molerat ,"ADW_PIRATECAMP_WATERHOLE_06");
-	Wld_InsertNpc (Molerat ,"ADW_PIRATECAMP_WATERHOLE_07");
-	Wld_InsertNpc (Molerat ,"ADW_PIRATECAMP_WATERHOLE_07");
+	Wld_InsertNpc (Swamprat ,"ADW_PIRATECAMP_WATERHOLE_06");
+	Wld_InsertNpc (Swamprat ,"ADW_PIRATECAMP_WATERHOLE_07");
+	Wld_InsertNpc (Swamprat ,"ADW_PIRATECAMP_WATERHOLE_07");
 
-	Wld_InsertNpc (Molerat ,"ADW_CANYON_TELEPORT_PATH_06");
-	Wld_InsertNpc (Molerat ,"ADW_CANYON_TELEPORT_PATH_06");
-	Wld_InsertNpc (Molerat ,"ADW_CANYON_TELEPORT_PATH_06");
+	Wld_InsertNpc (Swamprat ,"ADW_CANYON_TELEPORT_PATH_06");
+	Wld_InsertNpc (Swamprat ,"ADW_CANYON_TELEPORT_PATH_06");
+	Wld_InsertNpc (Swamprat ,"ADW_CANYON_TELEPORT_PATH_06");
 		
 	AlligatorJack_JagdStart = AlligatorJack_Inter1;
 	
@@ -425,7 +425,7 @@ instance DIA_Addon_AlligatorJack_AlligatorJackInter1		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_AlligatorJackInter1_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_AlligatorJackInter1_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -434,7 +434,7 @@ func int DIA_Addon_AlligatorJack_AlligatorJackInter1_Condition ()
 	if (AlligatorJack_JagdStart == AlligatorJack_Inter1)
 	&& Npc_GetDistToWP (self,"ADW_PIRATECAMP_WAY_16") <= 500  
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -460,8 +460,8 @@ instance DIA_Addon_AlligatorJack_TheHunt		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_TheHunt_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_TheHunt_Info;
-	permanent 	 = 	false;
-	important	 = 	true;
+	permanent 	 = 	FALSE;
+	important	 = 	TRUE;
 
 };
 
@@ -469,9 +469,9 @@ func int DIA_Addon_AlligatorJack_TheHunt_Condition ()
 {
 	if (AlligatorJack_JagdStart == AlligatorJack_Kessel)
 	&& (Npc_GetDistToWP (self,"ADW_PIRATECAMP_WATERHOLE_07") <= 500)
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -518,7 +518,7 @@ instance DIA_Addon_AlligatorJack_AlligatorJackInter2		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_AlligatorJackInter2_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_AlligatorJackInter2_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -526,9 +526,9 @@ func int DIA_Addon_AlligatorJack_AlligatorJackInter2_Condition ()
 {
 	if (AlligatorJack_JagdStart == AlligatorJack_Inter2)
 	&& (Npc_GetDistToWP (self,"ADW_PIRATECAMP_WAY_16") <= 500)
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -551,8 +551,8 @@ instance DIA_Addon_AlligatorJack_HuntEnd		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_HuntEnd_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_HuntEnd_Info;
-	permanent 	 = 	false;
-	important	 = 	true;
+	permanent 	 = 	FALSE;
+	important	 = 	TRUE;
 
 };
 
@@ -560,9 +560,9 @@ func int DIA_Addon_AlligatorJack_HuntEnd_Condition ()
 {
 	if (AlligatorJack_JagdStart == AlligatorJack_Canyon)
 	&& (Npc_GetDistToWP (self,"ADW_CANYON_TELEPORT_PATH_06") <= 500)
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -590,7 +590,7 @@ func void DIA_Addon_AlligatorJack_HuntEnd_Info ()
 	AI_Output (self ,other,"DIA_Addon_AlligatorJack_PassHenry_12_08"); //Znajdziesz go w obozie.
 	AI_Output (self ,other,"DIA_Addon_AlligatorJack_PassHenry_12_09"); //Pewnie bêdzie siê wygrzewa³ na pla¿y, czekaj¹c na ciebie.
 	
-	if (PIR_1354_Addon_Henry.aivar[AIV_Guardpassage_Status] != GP_PassGate)
+	if (PIR_1354_Addon_Henry.aivar[AIV_GuardPassage_Status] != GP_PassGate)
 	{
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_PassHenry_12_10"); //Przy wejœciu spotkasz Henry'ego, który pilnuje, ¿eby nie podkradli siê tu bandyci.
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_PassHenry_12_11"); //Powiedz mu, ¿e to ja ciê przys³a³em.
@@ -608,7 +608,7 @@ func void DIA_Addon_AlligatorJack_HuntEnd_Info ()
 	
 	B_GiveInvItems (self ,other,ItFoMuttonRaw,10);
 	MIS_KrokoJagd = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_KrokoJagd);
 };
 
 
@@ -621,16 +621,16 @@ instance DIA_Addon_AlligatorJack_Angus		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_Angus_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_Angus_Info;
-	permanent 	 = 	false;
+	permanent 	 = 	FALSE;
 	description	 = 	"Znasz mo¿e Angusa i jego kumpla, Hanka?";
 
 };
 
 func int DIA_Addon_AlligatorJack_Angus_Condition ()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_Bill_AngusnHank)	== true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Bill_AngusnHank)	== TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -652,16 +652,16 @@ instance DIA_Addon_AlligatorJack_Lake		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_Lake_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_Lake_Info;
-	permanent 	 = 	false;
+	permanent 	 = 	FALSE;
 	description	 = 	"A jak myœlisz, nad którym jeziorem przebywaj¹ najczêœciej?";
 };
 
 func int DIA_Addon_AlligatorJack_Lake_Condition ()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_AlligatorJack_Angus) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_AlligatorJack_Angus) == TRUE)
 	&& (MIS_Addon_Morgan_SeekTraitor != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -695,19 +695,19 @@ instance DIA_Addon_AlligatorJack_CanLearn		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Addon_AlligatorJack_CanLearn_Condition;
 	information	 = 	DIA_Addon_AlligatorJack_CanLearn_Info;
-	permanent 	 = 	true;
+	permanent 	 = 	TRUE;
 	description	 = 	"Mo¿esz mnie czegoœ nauczyæ?";
 
 };
-var int AlligatorJack_TeachHunting;
+
 func int DIA_Addon_AlligatorJack_CanLearn_Condition ()
 {
-	if (self.aivar[AIV_CanTeach] < true)
+	if (AlligatorJack_Addon_TeachPlayer == FALSE)
 	{
-		if ((Npc_KnowsInfo (other,DIA_Addon_AlligatorJack_HuntEnd) == true)
-		|| (GregIsBack == true))
+		if ((Npc_KnowsInfo (other,DIA_Addon_AlligatorJack_HuntEnd) == TRUE)
+		|| (GregIsBack == TRUE))
 		{
-			return true;
+			return TRUE;
 		};	
 	};
 };
@@ -723,14 +723,95 @@ func void DIA_Addon_AlligatorJack_CanLearn_Info ()
 		
 		Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 		B_LogEntry		(Topic_Addon_PIR_Teacher,"Jack Aligator mo¿e pokazaæ mi, jak obdzieraæ zwierzêta ze skór i jak wyci¹gaæ ich zêby. Mo¿e te¿ nauczyæ mnie strzelania z ³uku.");
-
-		self.aivar[AIV_CanTeach] = true;
+		
+		AlligatorJack_Addon_TeachPlayer = TRUE;
 	}
 	else
 	{
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_CanLearn_12_03"); //Najpierw musisz jednak pokazaæ, ¿e wiesz cokolwiek o polowaniu.
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_CanLearn_12_04"); //Jeœli pójdziesz ze mn¹ na polowanie, mogê ciê tego nauczyæ.
 	};
+};
+///////////////////////////////////////////////////////////////////////
+FUNC VOID B_AJ_Teach()
+{
+	Info_ClearChoices (DIA_Addon_AlligatorJack_Teach);
+		
+	Info_AddChoice (DIA_Addon_AlligatorJack_Teach,DIALOG_BACK,DIA_Addon_AlligatorJack_Teach_Back);
+	Info_AddChoice (DIA_Addon_AlligatorJack_Teach, B_BuildLearnString(PRINT_LearnBow5, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5) ,DIA_Addon_AlligatorJack_Teach_Bow_5);
+	Info_AddChoice (DIA_Addon_AlligatorJack_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	 ,DIA_Addon_AlligatorJack_Teach_Bow_1);
+	Info_AddChoice	(DIA_Addon_AlligatorJack_Teach, B_BuildLearnString ("Skórowanie zwierz¹t",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_ReptileSkin)),  DIA_Addon_AlligatorJack_Teach_FUR);
+	Info_AddChoice	(DIA_Addon_AlligatorJack_Teach, B_BuildLearnString ("Wyci¹ganie zêbów",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Teeth)),  DIA_Addon_AlligatorJack_Teach_Teeth);
+};
+///////////////////////////////////////////////////////////////////////
+//	Info Unterrichte mich!
+///////////////////////////////////////////////////////////////////////
+instance DIA_Addon_AlligatorJack_Teach		(C_INFO)
+{
+	npc			 = 	PIR_1352_Addon_AlligatorJack;
+	nr			 = 	5;
+	condition	 = 	DIA_Addon_AlligatorJack_Teach_Condition;
+	information	 = 	DIA_Addon_AlligatorJack_Teach_Info;
+	permanent 	 = 	TRUE;
+	description	 = 	"Naucz mnie.";
+};
+func int DIA_Addon_AlligatorJack_Teach_Condition ()
+{
+	if (AlligatorJack_Addon_TeachPlayer == TRUE)
+	{
+		return TRUE;
+	};	
+};
+func void DIA_Addon_AlligatorJack_Teach_Info ()
+{
+	AI_Output	(other,self ,"DIA_Addon_AlligatorJack_Teach_15_00"); //Naucz mnie.
+	AI_Output 	(self ,other,"DIA_Addon_AlligatorJack_Teach_12_01"); //Czego chcesz siê dowiedzieæ?
+		
+	B_AJ_Teach();
+
+	//Wird nicht mehr gebraucht M.F. 
+	//AI_Output 	(self ,other,"DIA_Addon_AlligatorJack_Teach_12_02"); //Ich kann dir nichts mehr beibringen.
+};
+FUNC VOID DIA_Addon_AlligatorJack_Teach_Back ()
+{
+	Info_ClearChoices	(DIA_Addon_AlligatorJack_Teach);
+};
+func void DIA_Addon_AlligatorJack_Teach_Bow_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 75);
+	B_AJ_Teach();
+};
+func void DIA_Addon_AlligatorJack_Teach_Bow_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 75);
+	B_AJ_Teach();
+};
+FUNC VOID DIA_Addon_AlligatorJack_Teach_FUR()
+{
+	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ReptileSkin] == FALSE)
+	{
+		if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_ReptileSkin))
+		{
+			AI_Output (self, other, "DIA_Addon_AlligatorJack_Teach_Fur_12_00"); //Zawsze rozcinaj skórê wzd³u¿ brzucha, inaczej nie bêdzie siê do niczego nadawaæ.
+		};
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNYOUREBETTER");
+	};
+	B_AJ_Teach();
+};
+FUNC VOID DIA_Addon_AlligatorJack_Teach_Teeth()
+{
+	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
+	{
+		 B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Teeth);
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNYOUREBETTER");
+	};
+	B_AJ_Teach();
 };
 
 // ************************************************************
@@ -752,14 +833,14 @@ instance DIA_Addon_AlligatorJack_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_AlligatorJack_Anheuern_Condition;
 	information	= DIA_Addon_AlligatorJack_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "ChodŸmy na polowanie.";
 };                       
 FUNC INT DIA_Addon_AlligatorJack_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_AlligatorJack_Anheuern_Info()
@@ -769,7 +850,7 @@ func VOID DIA_Addon_AlligatorJack_Anheuern_Info()
 	AI_StopProcessInfos (self);
 	B_Addon_PiratesFollowAgain();
 	Npc_ExchangeRoutine	(self,"FOLLOW");
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 };
 
 // ------------------------------------------------------------
@@ -781,22 +862,22 @@ instance DIA_Addon_AlligatorJack_ComeOn(C_INFO)
 	nr		 	= 	12;
 	condition	= 	DIA_Addon_AlligatorJack_ComeOn_Condition;
 	information	= 	DIA_Addon_AlligatorJack_ComeOn_Info;
-	permanent	= 	true;
+	permanent	= 	TRUE;
 	description	= 	"ChodŸ ze mn¹.";
 };
 func int DIA_Addon_AlligatorJack_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_AlligatorJack_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_AlligatorJack_ComeOn_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_AlligatorJack_KommMit_15_00"); //ChodŸ ze mn¹.
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		B_Say (self, other, "$NOTNOW");
 		AI_StopProcessInfos (self);
@@ -806,7 +887,7 @@ func void DIA_Addon_AlligatorJack_ComeOn_Info ()
 		B_AlliJack_AlliKlar();
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -819,15 +900,15 @@ INSTANCE DIA_Addon_AlligatorJack_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_AlligatorJack_GoHome_Condition;
 	information	= DIA_Addon_AlligatorJack_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_AlligatorJack_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -837,7 +918,7 @@ FUNC VOID DIA_Addon_AlligatorJack_GoHome_Info()
 	B_AlliJack_AlliKlar();
 
 	AI_StopProcessInfos (self); 
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START"); //START! HOGE
 };
 
@@ -850,16 +931,16 @@ INSTANCE DIA_Addon_AlligatorJack_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_AlligatorJack_TooFar_Condition;
 	information	= DIA_Addon_AlligatorJack_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_AlligatorJack_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_AlligatorJack_TooFar_Info()
@@ -870,3 +951,53 @@ func VOID DIA_Addon_AlligatorJack_TooFar_Info()
 	
 	AI_StopProcessInfos (self); 
 };
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

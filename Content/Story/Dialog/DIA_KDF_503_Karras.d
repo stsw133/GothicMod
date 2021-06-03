@@ -7,14 +7,14 @@ INSTANCE DIA_Karras_KAP1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Karras_KAP1_EXIT_Condition;
 	information = DIA_Karras_KAP1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Karras_KAP1_EXIT_Condition()
 {
-	if (Kapitel <= 7)
+	if (Kapitel <= 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_KAP1_EXIT_Info()
@@ -30,20 +30,20 @@ instance DIA_Karras_Hello 		(C_INFO)
 	nr          = 1;
 	condition	= DIA_Karras_Hello_Condition;
 	information	= DIA_Karras_Hello_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 func int DIA_Karras_Hello_Condition ()
 {
 	if Npc_IsInState (self, ZS_Talk)
 	&& (MIS_NOVIZENCHASE != LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_Hello_Info ()
 {
-	if (other.guild == GIL_NOV)
+	if (hero.guild == GIL_NOV)
 	{
 		AI_Output			(self, other, "DIA_Karras_Hello_10_00"); //Co mogê dla ciebie uczyniæ, nowicjuszu?
 	}
@@ -71,14 +71,14 @@ instance DIA_Karras_Mission		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Karras_Mission_Condition;
 	information	 = 	DIA_Karras_Mission_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Przyszed³em studiowaæ pisma.";
 };
 func int DIA_Karras_Mission_Condition ()
 {	
 	if (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_Mission_Info ()
@@ -96,14 +96,14 @@ instance DIA_Karras_Aufgabe		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Karras_Aufgabe_Condition;
 	information	 = 	DIA_Karras_Aufgabe_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Masz dla mnie jakieœ zadanie?";
 };
 func int DIA_Karras_Aufgabe_Condition ()
 {	
 	if Npc_KnowsInfo (other, DIA_Karras_Mission)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_Aufgabe_Info ()
@@ -134,18 +134,18 @@ instance DIA_Karras_Success		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Karras_Success_Condition;
 	information	 = 	DIA_Karras_Success_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Oto zwoje, o które prosi³eœ.";
 };
 func int DIA_Karras_Success_Condition ()
 {	
 	if (MIS_KarrasVergessen == LOG_RUNNING)
-	&& (Npc_HasItems(other,ItSc_Charm) >= 3)
+	&& (Npc_HasItems (other, ItSc_Charm) >= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
-func void DIA_Karras_Success_Info()
+func void DIA_Karras_Success_Info ()
 {
 	AI_Output (other, self, "DIA_Karras_Success_15_00"); //Oto zwoje, o które prosi³eœ.
 	AI_Output (self, other, "DIA_Karras_Success_10_01"); //Dobra robota, mój m³ody przyjacielu.
@@ -153,9 +153,9 @@ func void DIA_Karras_Success_Info()
 	AI_Output (self, other, "DIA_Karras_Success_10_03"); //Aha, przyjmij ten zwój w nagrodê za dobrze wykonane zadanie.
 	
 	MIS_KarrasVergessen = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_KarrasCharm);
 	B_GiveInvItems (other, self, ItSc_Charm,3);
-	B_GiveInvItems (self, other, ItSc_Sleep,1);
+	B_GiveInvItems (self, other, ItSc_SumWolf,1);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Trade
@@ -166,15 +166,15 @@ instance DIA_Karras_Trade		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Karras_Trade_Condition;
 	information	 = 	DIA_Karras_Trade_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Poka¿ mi swoje towary.";
-	trade		 =  true; 
+	trade		 =  TRUE; 
 };
 func int DIA_Karras_Trade_Condition ()
 {	
-	if (other.guild == GIL_NOV)
+	if (hero.guild != GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_Trade_Info ()
@@ -191,12 +191,12 @@ instance DIA_Karras_JOB		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Karras_JOB_Condition;
 	information	 = 	DIA_Karras_JOB_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Na czym dok³adnie polega twoja praca?";
 };
 func int DIA_Karras_JOB_Condition ()
 {	
-	return true;
+		return TRUE;
 };
 func void DIA_Karras_JOB_Info ()
 {
@@ -205,15 +205,192 @@ func void DIA_Karras_JOB_Info ()
 	AI_Output (other, self, "DIA_Karras_JOB_15_02"); //Co to znaczy?
 	AI_Output (self, other, "DIA_Karras_JOB_10_03"); //Mniej wiêcej tyle, ¿e uczê ich, jak przywo³ywaæ przeró¿ne istoty z innych wymiarów lub sfer.
 	AI_Output (self, other, "DIA_Karras_JOB_10_04"); //Zwykle nazywa siê to przyzywaniem, choæ ta nazwa nie opisuje w zadowalaj¹cym stopniu sztuki wzywania pomocnika.
+	AI_Output (self, other, "DIA_Karras_JOB_10_05"); //Co wiêcej, jestem w posiadaniu pewnych interesuj¹cych zwojów magicznych, których nie ma Gorax.
 	
 	if (other.guild == GIL_NOV)
 	{
 		AI_Output (self, other, "DIA_Karras_JOB_10_06"); //Ale udostêpniam je tylko cz³onkom Zakonu.
 	};
-
-	self.aivar[AIV_CanTeach] = true;
+	Log_CreateTopic (Topic_KlosterTrader,LOG_NOTE);
+	B_LogEntry (Topic_KlosterTrader,"Mistrz Karras mo¿e mnie zaopatrzyæ w magiczne zwoje. Najpierw jednak muszê zostaæ Magiem Ognia.");
+};
+///////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Karras_TEACH		(C_INFO)
+{
+	npc			 = 	KDF_503_Karras;
+	nr 			 =  10;
+	condition	 = 	DIA_Karras_TEACH_Condition;
+	information	 = 	DIA_Karras_TEACH_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Nauczaj mnie (tworzenie run)";
 };
 
+func int DIA_Karras_TEACH_Condition ()
+{	
+	if (other.guild == GIL_KDF)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Karras_TEACH_Info ()
+{
+	var int abletolearn;
+	abletolearn = 0;
+	AI_Output (other, self, "DIA_Karras_TEACH_15_00"); //Zostañ moim nauczycielem.
+	
+		Info_ClearChoices   (DIA_Karras_TEACH);
+		
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
+		&& (PLAYER_TALENT_RUNES [SPL_SummonGoblinSkeleton] == FALSE) 
+		{
+			Info_AddChoice 		(DIA_Karras_TEACH,B_BuildLearnString (NAME_SPL_SummonGoblinSkeleton, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonGoblinSkeleton)),DIA_Karras_TEACH_SUMGOBL);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
+		&& (PLAYER_TALENT_RUNES [SPL_SummonWolf] == FALSE) 
+		{
+			Info_AddChoice	    (DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonWolf, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonWolf)) ,DIA_Karras_TEACHSummonWolf);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
+		&& (PLAYER_TALENT_RUNES [SPL_SummonSkeleton] == FALSE) 
+		{
+			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonSkeleton, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonSkeleton)) ,DIA_Karras_TEACH_SummonSkeleton);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4)
+		&& (PLAYER_TALENT_RUNES [SPL_SummonGolem] == FALSE) 
+		{
+			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonGolem, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonGolem)) ,DIA_Karras_TEACH_SummonGolem);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5)
+		&& (PLAYER_TALENT_RUNES [SPL_SummonDemon] == FALSE)
+		{
+			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonDemon, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonDemon)) ,DIA_Karras_TEACH_SummonDemon);
+			abletolearn = (abletolearn +1);
+		};
+		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 6)
+		&& (PLAYER_TALENT_RUNES [SPL_ArmyOfDarkness] == FALSE)
+		{
+			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_ArmyOfDarkness, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_ArmyOfDarkness)) ,DIA_Karras_TEACH_ArmyOfDarkness);
+			abletolearn = (abletolearn +1);
+		};
+		if 	(abletolearn < 1)
+		{
+			AI_Output (self, other, "DIA_Karras_TEACH_10_01"); //W tym momencie nie ma nic, czego móg³byœ siê ode mnie nauczyæ.
+		}
+		else
+		{
+			Info_AddChoice 		(DIA_Karras_TEACH,DIALOG_BACK,DIA_Karras_TEACH_BACK);
+		};
+
+};
+FUNC VOID DIA_Karras_TEACH_BACK()
+{
+	Info_ClearChoices   (DIA_Karras_TEACH);
+};
+FUNC VOID DIA_Karras_TEACH_SUMGOBL()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_SummonGoblinSkeleton);	
+};
+FUNC VOID DIA_Karras_TEACHSummonWolf()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_SummonWolf);	
+};
+FUNC VOID DIA_Karras_TEACH_SummonSkeleton()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_SummonSkeleton);	
+};
+FUNC VOID DIA_Karras_TEACH_SummonGolem()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_SummonGolem);	
+};
+FUNC VOID DIA_Karras_TEACH_SummonDemon()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_SummonDemon);	
+};
+FUNC VOID DIA_Karras_TEACH_ArmyOfDarkness()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_ArmyOfDarkness);	
+};
+///////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Karras_CIRCLE4		(C_INFO)
+{
+	npc			 = 	KDF_503_Karras;
+	nr			 = 	3;
+	condition	 = 	DIA_Karras_CIRCLE4_Condition;
+	information	 = 	DIA_Karras_CIRCLE4_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê zg³êbiaæ czwarty kr¹g magii.";
+};
+func int DIA_Karras_CIRCLE4_Condition ()
+{	
+	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 3)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Karras_CIRCLE4_Info ()
+{
+	AI_Output (other, self, "DIA_Karras_CIRCLE4_15_00"); //Chcê zg³êbiaæ czwarty kr¹g magii.
+	
+	if (MIS_ReadyforChapter4 == TRUE)
+	{
+		if B_TeachMagicCircle (self,other, 4)
+		{
+			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_01"); //Dobrze. Wszystkie znaki siê wype³ni³y. Wkrocz zatem do czwartego krêgu, aby przepe³ni³a ciê moc nowej magii.
+			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_02"); //Przeby³eœ dalek¹ drogê, a Innos nadal bêdzie rozœwietla³ przed tob¹ ciemnoœci.
+		};
+	}
+	else
+	{
+			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_03"); //Bowiem to jeszcze nie koniec.
+	};
+};
+/////////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Karras_CIRCLE5		(C_INFO)
+{
+	npc			 = 	KDF_503_Karras;
+	nr			 = 	3;
+	condition	 = 	DIA_Karras_CIRCLE5_Condition;
+	information	 = 	DIA_Karras_CIRCLE5_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê zg³êbiaæ pi¹ty kr¹g magii.";
+};
+func int DIA_Karras_CIRCLE5_Condition ()
+{	
+	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Karras_CIRCLE5_Info ()
+{
+	AI_Output (other, self, "DIA_Karras_CIRCLE5_15_00"); //Chcê zg³êbiaæ pi¹ty kr¹g magii.
+	
+	if (Kapitel >= 5)
+	{
+		if B_TeachMagicCircle (self,other, 5)
+		{
+			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_01"); //Wkrocz zatem do pi¹tego krêgu. Poznasz magiê potê¿niejsz¹ ni¿ wszystko, czego do tej pory doœwiadczy³eœ.
+			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_02"); //U¿ywaj tej mocy w rozwa¿ny sposób, Bracie - albowiem mrok wci¹¿ jeszcze posiada ogromn¹ moc, tak samo jak twoi wrogowie.
+			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_03"); //Nie mogê ci towarzyszyæ w twojej podró¿y do szóstego, najwy¿szego krêgu magii. Kiedy nadejdzie w³aœciwy czas, wprowadzi ciê do niego sam Pyrokar.
+			
+			B_LogEntry (Topic_KlosterTeacher,"Mistrz Pyrokar wprowadzi mnie w szósty Kr¹g Magii.");
+		};
+	}
+	else
+	{
+			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_04"); //Czas jeszcze nie nadszed³.
+	};
+};
 //#####################################################################
 //##
 //##		Kapitel 2
@@ -229,14 +406,14 @@ INSTANCE DIA_Karras_KAP2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Karras_KAP2_EXIT_Condition;
 	information = DIA_Karras_KAP2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Karras_KAP2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_KAP2_EXIT_Info()
@@ -259,14 +436,14 @@ INSTANCE DIA_Karras_KAP3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Karras_KAP3_EXIT_Condition;
 	information = DIA_Karras_KAP3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Karras_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_KAP3_EXIT_Info()
@@ -283,17 +460,17 @@ instance DIA_Karras_ChasePedro		(C_INFO)
 	nr			 =	31;
 	condition	 = 	DIA_Karras_ChasePedro_Condition;
 	information	 = 	DIA_Karras_ChasePedro_Info;
-	permanent	 = 	false;
-	important 	 =  true;
+	permanent	 = 	FALSE;
+	important 	 =  TRUE;
 };
 
 func int DIA_Karras_ChasePedro_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (KAPITEL == 9)
+	&& (KAPITEL == 3)
 	&& (MIS_NOVIZENCHASE == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -345,19 +522,19 @@ instance DIA_Karras_NeedInfo		(C_INFO)
 	nr			 =	31;
 	condition	 = 	DIA_Karras_NeedInfo_Condition;
 	information	 = 	DIA_Karras_NeedInfo_Info;
-	permanent	 = 	true;
-	important	 =	true;
+	permanent	 = 	TRUE;
+	important	 =	TRUE;
 };
 
 func int DIA_Karras_NeedInfo_Condition ()
 {	
 	if (Npc_KnowsInfo  (other ,DIA_Karras_ChasePedro))
-	&& (KAPITEL == 9)
+	&& (KAPITEL == 3)
 	&& (hero.Guild != GIL_KDF)
 	&& (MIS_NOVIZENCHASE == LOG_RUNNING)
 	&& (Npc_IsInState (self,ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_NeedInfo_Info ()
@@ -381,16 +558,16 @@ instance DIA_Karras_InnosEyeRetrieved		(C_INFO)
 	nr			 =	1;	//damit auch ganz sicher diese Info kommt (wg hello)!!!!
 	condition	 = 	DIA_Karras_InnosEyeRetrieved_Condition;
 	information	 = 	DIA_Karras_InnosEyeRetrieved_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 =	"Odzyska³em Oko Innosa.";
 };
 
 func int DIA_Karras_InnosEyeRetrieved_Condition ()
 {	
-	if	(KAPITEL == 9)
+	if	(KAPITEL == 3)
 	&& 	(MIS_NOVIZENCHASE == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Karras_InnosEyeRetrieved_Info ()
@@ -403,7 +580,7 @@ func void DIA_Karras_InnosEyeRetrieved_Info ()
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_04"); //Nie drwij ze mnie. Sytuacja jest powa¿na, bardzo powa¿na, i nie bardzo wiemy, komu mo¿emy zaufaæ.
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_05"); //Skoro wrogowi uda³o siê zwieœæ Pedra na drogê wystêpku, nale¿y siê spodziewaæ, ¿e inni równie¿ mu ulegn¹.
 
-	B_GivePlayerXP(XP_AMBIENT);
+	B_GivePlayerXP (XP_AMBIENT);
 };
 	
 ///////////////////////////////////////////////////////////////////////
@@ -415,23 +592,23 @@ INSTANCE DIA_Karras_KAP3_Perm   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Karras_KAP3_Perm_Condition;
 	information = DIA_Karras_KAP3_Perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak twoje studia?";
 };
 FUNC INT DIA_Karras_KAP3_Perm_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Npc_KnowsInfo(other, DIA_Karras_JOB))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 FUNC VOID DIA_Karras_KAP3_Perm_Info()
 {
 	AI_Output (other,self ,"DIA_Karras_KAP3_Perm_15_00"); //Jak twoje studia?
 
-	if (MIS_KarrasResearchDMT == false)
-	&& (PyrokarToldKarrasToResearchDMT == true)
+	if (MIS_KarrasResearchDMT == FALSE)
+	&& (PyrokarToldKarrasToResearchDMT == TRUE)
 	&& (hero.guild == GIL_KDF)
 	{
 		
@@ -509,7 +686,7 @@ INSTANCE DIA_Karras_HaveBook   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Karras_HaveBook_Condition;
 	information = DIA_Karras_HaveBook_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mam Almanach Potêpionych.";
 };
 FUNC INT DIA_Karras_HaveBook_Condition()
@@ -518,7 +695,7 @@ FUNC INT DIA_Karras_HaveBook_Condition()
 	&& (Npc_HasItems (hero, ITWR_DementorObsessionBook_MIS) >= 1)
 	&& (hero.guild == GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 var int KarrasGotResearchDMTBook_Day;
@@ -539,7 +716,7 @@ FUNC VOID DIA_Karras_HaveBook_Info()
 	MIS_KarrasResearchDMT = LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras u¿yje w swoich dalszych badaniach Almanachu Opêtanych. Mam do niego wróciæ póŸniej."); 
 	KarrasGotResearchDMTBook_Day = Wld_GetDay(); 
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_KarrasResearchDMT);
 };
 
 //********************************************************************
@@ -552,7 +729,7 @@ INSTANCE DIA_Karras_ResearchDMTEnd   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Karras_ResearchDMTEnd_Condition;
 	information = DIA_Karras_ResearchDMTEnd_Info;
-	permanent   = true;
+	permanent   = TRUE;
 
 	description = "Dowiedzia³eœ siê czegoœ nowego o Poszukiwaczach?";
 };
@@ -560,9 +737,9 @@ FUNC INT DIA_Karras_ResearchDMTEnd_Condition()
 {
 	if (MIS_KarrasResearchDMT == LOG_SUCCESS)
 	&& (hero.guild == GIL_KDF)
-	&& (SC_KnowsMadPsi == false)
+	&& (SC_KnowsMadPsi == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -588,9 +765,9 @@ FUNC VOID DIA_Karras_ResearchDMTEnd_Info()
 		CreateInvItems	(other,	ITWR_DementorObsessionBook_MIS,	1);
 		AI_PrintScreen	(PRINT_ItemErhalten, -1, YPOS_ItemTaken, FONT_ScreenSmall, 2);	// "1 Gegenstand erhalten"
 
-		SC_KnowsMadPsi = true;
+		SC_KnowsMadPsi = TRUE;
 		B_LogEntry (TOPIC_DEMENTOREN,"Badania Karrasa zosta³y uwieñczone sukcesem. Miêdzy Bractwem œni¹cego a Poszukiwaczami istnieje jakieœ powi¹zanie."); 
-		B_GivePlayerXP(XP_BONUS_3);
+		B_GivePlayerXP (XP_SC_KnowsMadPsi);
 	}
 	else
 	{
@@ -608,25 +785,25 @@ INSTANCE DIA_Karras_Prot_BlackEye   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Karras_Prot_BlackEye_Condition;
 	information = DIA_Karras_Prot_BlackEye_Info;
-	permanent   = true;
+	permanent   = TRUE;
 
 	description = "Czy istnieje jakiœ skuteczny sposób obrony przed atakami Poszukiwaczy?";
 };
 FUNC INT DIA_Karras_Prot_BlackEye_Condition()
 {
 	if (hero.guild == GIL_KDF)
-	&& (Pyrokar_AskKarrasAboutDMTAmulett == true)
-	&& (MIS_Karras_FindBlessedStone == false)
+	&& (Pyrokar_AskKarrasAboutDMTAmulett == TRUE)
+	&& (MIS_Karras_FindBlessedStone == FALSE)
 	&& (Npc_KnowsInfo(other, DIA_Karras_JOB))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_Prot_BlackEye_Info()
 {
 	AI_Output (other,self ,"DIA_Karras_Prot_BlackEye_15_00"); //Czy istnieje jakiœ skuteczny sposób obrony przed atakami Poszukiwaczy?
 
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Karras_Prot_BlackEye_10_01"); //Tak. S¹dzê, ¿e amulet zrobiony z kamienia z b³ogos³awionej ziemi mo¿e zapewniæ tak¹ ochronê.
 		AI_Output (self ,other,"DIA_Karras_Prot_BlackEye_10_02"); //Niestety, nie mam akurat ¿adnego pod rêk¹.
@@ -661,7 +838,7 @@ FUNC INT DIA_Karras_KarrasBlessedStone_Condition()
 	&& (Npc_HasItems (other,ItMi_KarrasBlessedStone_Mis))
 	&& (MIS_Karras_FindBlessedStone == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 var int KarrasMakesBlessedStone_Day;
@@ -675,7 +852,7 @@ FUNC VOID DIA_Karras_KarrasBlessedStone_Info()
 	KarrasMakesBlessedStone_Day = Wld_GetDay(); 
 	MIS_Karras_FindBlessedStone	= LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przed mentalnymi atakami Poszukiwaczy. To powinno mi trochê u³atwiæ ¿ycie."); 
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_Karras_FoundBlessedStone);
 	AI_StopProcessInfos (self);
 };
 
@@ -689,7 +866,7 @@ INSTANCE DIA_Karras_ItAm_Prot_BlackEye_Mis   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Karras_ItAm_Prot_BlackEye_Mis_Condition;
 	information = DIA_Karras_ItAm_Prot_BlackEye_Mis_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description = "Co z ochronnym amuletem, który mi obieca³eœ?";
 };
@@ -698,9 +875,9 @@ FUNC INT DIA_Karras_ItAm_Prot_BlackEye_Mis_Condition()
 {
 	if (hero.guild == GIL_KDF)
 	&& (MIS_Karras_FindBlessedStone == LOG_SUCCESS)
-	&& (DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm == false)
+	&& (DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -716,8 +893,8 @@ FUNC VOID DIA_Karras_ItAm_Prot_BlackEye_Mis_Info()
 		AI_Output (self ,other,"DIA_Karras_ItAm_Prot_BlackEye_Mis_10_02"); //Miej go zawsze przy sobie, a Poszukiwacze nie bêd¹ mogli wnikn¹æ w twój umys³.
 		AI_Output (other,self ,"DIA_Karras_ItAm_Prot_BlackEye_Mis_15_03"); //Dziêkujê.
 		B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przez mrocznym spojrzeniem Poszukiwaczy."); 
-		DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm = true;
-		B_GivePlayerXP(XP_Ambient);
+		DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm = TRUE;
+		B_GivePlayerXP (XP_Ambient);
 	}
 	else
 	{
@@ -740,14 +917,14 @@ INSTANCE DIA_Karras_KAP4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Karras_KAP4_EXIT_Condition;
 	information = DIA_Karras_KAP4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Karras_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_KAP4_EXIT_Info()
@@ -771,14 +948,14 @@ INSTANCE DIA_Karras_KAP5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Karras_KAP5_EXIT_Condition;
 	information = DIA_Karras_KAP5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Karras_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Karras_KAP5_EXIT_Info()

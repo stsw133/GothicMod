@@ -7,13 +7,13 @@ INSTANCE DIA_Orlan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Orlan_EXIT_Condition;
 	information = DIA_Orlan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Orlan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Orlan_EXIT_Info()
@@ -30,7 +30,7 @@ instance DIA_Orlan_Wein		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Orlan_Wein_Condition;
 	information	 = 	DIA_Orlan_Wein_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Przynoszê wino z klasztoru.";
 };
 func int DIA_Orlan_Wein_Condition ()
@@ -38,7 +38,7 @@ func int DIA_Orlan_Wein_Condition ()
 	if (MIS_GoraxWein == LOG_RUNNING)
 	&& (Npc_HasItems (other, ItFo_Wine) >= 12)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Orlan_Wein_Info ()
@@ -89,16 +89,19 @@ FUNC VOID DIA_Orlan_Wein_Okay()
 		
 	Text = ConcatStrings( "4" , PRINT_ItemsErhalten);		
 	PrintScreen	(Text, -1, -1, FONT_ScreenSmall, 2);
-
+	
 	B_GiveInvItems (self, other, ItmI_Gold, 100);
-
+	
 	AI_Output (other, self, "DIA_Orlan_Wein_Okay_15_00"); //Brzmi nieŸle. Daj mi te magiczne zwoje.
 	AI_Output (self, other, "DIA_Orlan_Wein_Okay_05_01"); //Oto zwoje i z³oto.
-
+	
 	B_GiveInvItems (other, self, ItFo_Wine, 12);
-
-	CreateInvItems (other, ItSc_Light, 4);
-
+	
+	
+	CreateInvItems  (hero,ITSC_Light,2);
+	CreateInvItems  (hero,ItSc_LightHeal,1);
+	CreateInvItems  (hero,ItSc_SumGobSkel,1);
+	
 	Info_ClearChoices (DIA_Orlan_Wein);
 };
 FUNC VOID DIA_Orlan_Wein_Was()
@@ -121,7 +124,7 @@ instance DIA_Orlan_WERBISTDU		(C_INFO)
 
 func int DIA_Orlan_WERBISTDU_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Orlan_WERBISTDU_Info ()
@@ -149,11 +152,11 @@ instance DIA_Addon_Orlan_Greg		(C_INFO)
 
 func int DIA_Addon_Orlan_Greg_Condition ()
 {
-	if (SC_SawGregInTaverne == true)
-	&& (Kapitel <= 9)
+	if (SC_SawGregInTaverne == TRUE)
+	&& (Kapitel <= 3)
 	&& (Npc_KnowsInfo (other, DIA_Orlan_WERBISTDU))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -181,9 +184,9 @@ instance DIA_Addon_Orlan_Ranger		(C_INFO)
 func int DIA_Addon_Orlan_Ranger_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Orlan_WERBISTDU))
-	&& (SCIsWearingRangerRing == true)
+	&& (SCIsWearingRangerRing == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Orlan_Ranger_Info ()
@@ -191,7 +194,7 @@ func void DIA_Addon_Orlan_Ranger_Info ()
 	AI_Output (other, self, "DIA_Addon_Orlan_Ranger_15_00"); //Hmm... Odnoszê wra¿enie, ¿e gapisz siê na mój pierœcieñ.
 	AI_Output (self, other, "DIA_Addon_Orlan_Ranger_05_01"); //Nie wiem do koñca, co o nim s¹dziæ.
 
-	Orlan_KnowsSCAsRanger = true;
+	Orlan_KnowsSCAsRanger = TRUE;
 
 	Info_ClearChoices	(DIA_Addon_Orlan_Ranger);
 	Info_AddChoice	(DIA_Addon_Orlan_Ranger, "Stary! Ale jazda! Nale¿ê do Wodnego Krêgu!", DIA_Addon_Orlan_Ranger_Idiot);
@@ -207,7 +210,7 @@ func void DIA_Addon_Orlan_Ranger_Aqua()
 	};
 	AI_Output (self, other, "DIA_Addon_Orlan_Ranger_Aqua_05_03"); //Czym mogê s³u¿yæ?
 	Info_ClearChoices	(DIA_Addon_Orlan_Ranger);
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 func void DIA_Addon_Orlan_Ranger_Idiot ()
 {
@@ -232,10 +235,10 @@ instance DIA_Addon_Orlan_Teleportstein		(C_INFO)
 
 func int DIA_Addon_Orlan_Teleportstein_Condition ()
 {
-	if (Orlan_KnowsSCAsRanger == true)
-	&& (SCUsed_TELEPORTER == true)			//SC hat schon mal einen Teleporter benutzt
+	if (Orlan_KnowsSCAsRanger == TRUE)
+	&& (SCUsed_TELEPORTER == TRUE)			//SC hat schon mal einen Teleporter benutzt
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -245,7 +248,7 @@ func void DIA_Addon_Orlan_Teleportstein_Info ()
 	AI_Output	(self, other, "DIA_Addon_Orlan_Teleportstein_05_01"); //A tobie zamieniæ z kretynem na mózgi?! Dopóki Mag Wody nie powie, ¿e to ustrojstwo jest niegroŸne, nawet siê do niego nie zbli¿ê!
 	AI_Output	(self, other, "DIA_Addon_Orlan_Teleportstein_05_02"); //Przydzielono mnie do pilnowania jednego z takich kamieni - to mi w zupe³noœci wystarczy.
 
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	Info_ClearChoices	(DIA_Addon_Orlan_Teleportstein);
 	Info_AddChoice	(DIA_Addon_Orlan_Teleportstein, "Mo¿na rzuciæ okiem na ten kamieñ teleportacyjny?", DIA_Addon_Orlan_Teleportstein_sehen );
 	Info_AddChoice	(DIA_Addon_Orlan_Teleportstein, "Gdzie znajdê kamieñ teleportacyjny?", DIA_Addon_Orlan_Teleportstein_wo );
@@ -284,10 +287,10 @@ func int DIA_Addon_Orlan_NoMeeting_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Orlan_WERBISTDU))
 	&& (!Npc_KnowsInfo (other, DIA_Addon_Orlan_Ranger))
-	&& (SCIsWearingRangerRing == false)
+	&& (SCIsWearingRangerRing == FALSE)
 	&& (MIS_Addon_Lares_ComeToRangerMeeting == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Orlan_NoMeeting_Info ()
@@ -314,7 +317,7 @@ func int DIA_Addon_Orlan_WhenRangerMeeting_Condition ()
 	if (MIS_Addon_Lares_ComeToRangerMeeting == LOG_RUNNING)
  	&& (Npc_KnowsInfo (other, DIA_Addon_Orlan_Ranger))
  	{
-		return true;
+		return TRUE;
  	};
 };
 
@@ -324,7 +327,7 @@ func void DIA_Addon_Orlan_WhenRangerMeeting_Info ()
 	AI_Output	(self, other, "DIA_Addon_Orlan_WhenRangerMeeting_05_01"); //Zgadza siê... Powinno siê ju¿ by³o zacz¹æ.
 	AI_Output	(self, other, "DIA_Addon_Orlan_WhenRangerMeeting_05_02"); //Ciekawi mnie, co ich wstrzymuje.
 
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	B_Addon_Orlan_RangersReadyForcoming ();
 	self.flags = 0;
 
@@ -365,7 +368,7 @@ instance DIA_Orlan_RUESTUNG		(C_INFO)
 	nr		= 	5;
 	condition	 = 	DIA_Orlan_RUESTUNG_Condition;
 	information	 = 	DIA_Orlan_RUESTUNG_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jakie zbroje mo¿esz mi zaoferowaæ?";
 };
@@ -376,11 +379,11 @@ func int DIA_Orlan_RUESTUNG_Condition ()
 {
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Orlan_WERBISTDU))
-		&& (DIA_Orlan_RUESTUNG_noPerm == false)
+		&& (DIA_Orlan_RUESTUNG_noPerm == FALSE)
 		&& (hero.guild == GIL_NONE)
 		)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -399,14 +402,14 @@ func void DIA_Orlan_RUESTUNG_Buy ()
 {
 	AI_Output				(other, self,"DIA_Orlan_RUESTUNG_Buy_15_00"); //Kupiê ten skórzany pancerz.
 
-	if (B_GiveInvItems		(other, self, ItMi_Gold, 250))
+	if (B_GiveInvItems		(other, self, ItMi_Gold, VALUE_ITAR_Leather_L))
 		{
 			AI_Output			(self, other,"DIA_Orlan_RUESTUNG_Buy_05_01"); //M¹dra decyzja.
 
-			CreateInvItems 		(self, ITAR_LEATHER_L, 1);
-			B_GiveInvItems		(self, other, ITAR_LEATHER_L, 1);
+			CreateInvItems 		(self, ItAr_Leather_L, 1);
+			B_GiveInvItems		(self, other, ItAr_Leather_L, 1);
 			AI_EquipBestArmor	(other);
-			DIA_Orlan_RUESTUNG_noPerm = true;
+			DIA_Orlan_RUESTUNG_noPerm = TRUE;
 		}
 	else
 		{
@@ -434,8 +437,8 @@ instance DIA_Orlan_TRADE		(C_INFO)
 	nr		 = 	70;
 	condition	 = 	DIA_Orlan_TRADE_Condition;
 	information	 = 	DIA_Orlan_TRADE_Info;
-	trade		 = 	true;
-	permanent	 = 	true;
+	trade		 = 	TRUE;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Poka¿ mi swoje towary.";
 };
@@ -444,7 +447,7 @@ func int DIA_Orlan_TRADE_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Orlan_WERBISTDU))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -454,10 +457,10 @@ func void DIA_Orlan_TRADE_Info ()
 	B_GiveTradeInv (self);
 	
 		//ADDON>
-		if ((SC_IsRanger == true) || (Orlan_KnowsSCAsRanger == true)||(SCIsWearingRangerRing == true))
+		if ((SC_IsRanger == TRUE) || (Orlan_KnowsSCAsRanger == TRUE)||(SCIsWearingRangerRing == TRUE))
 			{
 				AI_Output			(self, other, "DIA_Addon_Orlan_TRADE_05_00"); //Oczywiœcie, bracie pierœcienia.
-				Orlan_KnowsSCAsRanger = true;
+				Orlan_KnowsSCAsRanger = TRUE;
 			}
 		//ADDON<
 		else if ((hero.guild == GIL_PAL) || (hero.guild == GIL_KDF))
@@ -484,7 +487,7 @@ instance DIA_Orlan_HotelZimmer		(C_INFO)
 	nr		 = 	6;
 	condition	 = 	DIA_Orlan_HotelZimmer_Condition;
 	information	 = 	DIA_Orlan_HotelZimmer_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Ile bierzesz za pokój?";
 };
@@ -493,9 +496,9 @@ var int Orlan_SCGotHotelZimmerDay;
 func int DIA_Orlan_HotelZimmer_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Orlan_WERBISTDU))
-	&& (Orlan_SCGotHotelZimmer == false)
+	&& (Orlan_SCGotHotelZimmer == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -503,14 +506,14 @@ func void DIA_Orlan_HotelZimmer_Info ()
 {
 	AI_Output			(other, self, "DIA_Orlan_HotelZimmer_15_00"); //Ile bierzesz za pokój?
 	
-	if ((hero.guild == GIL_PAL) || (hero.guild == GIL_KDF)|| (SC_IsRanger == true)||(SCIsWearingRangerRing == true)|| (Orlan_KnowsSCAsRanger == true))
+	if ((hero.guild == GIL_PAL) || (hero.guild == GIL_KDF)|| (SC_IsRanger == TRUE)||(SCIsWearingRangerRing == TRUE)|| (Orlan_KnowsSCAsRanger == TRUE))
 		{
 			//ADDON>
-			if ((SC_IsRanger == true)||(SCIsWearingRangerRing == true)|| (Orlan_KnowsSCAsRanger == true))
+			if ((SC_IsRanger == TRUE)||(SCIsWearingRangerRing == TRUE)|| (Orlan_KnowsSCAsRanger == TRUE))
 			{
 				AI_Output			(self, other, "DIA_Addon_Orlan_HotelZimmer_05_00"); //Dla brata pierœcienia? Zupe³nie nic.
-				Orlan_RangerHelpZimmer = true;
-				Orlan_KnowsSCAsRanger = true;
+				Orlan_RangerHelpZimmer = TRUE;
+				Orlan_KnowsSCAsRanger = TRUE;
 			}
 			//ADDON<
 			else if (hero.guild == GIL_PAL)
@@ -525,7 +528,7 @@ func void DIA_Orlan_HotelZimmer_Info ()
 			AI_Output			(self, other, "DIA_Orlan_HotelZimmer_05_03"); //Oto klucz od pokoi na piêtrze. Wybierz, który zechcesz.
 			CreateInvItems (self, ITKE_ORLAN_HOTELZIMMER, 1);									
 			B_GiveInvItems (self, other, ITKE_ORLAN_HOTELZIMMER, 1);					
-			Orlan_SCGotHotelZimmer = true;
+			Orlan_SCGotHotelZimmer = TRUE;
 			Orlan_SCGotHotelZimmerDay = Wld_GetDay();
 		}
 		else
@@ -546,7 +549,7 @@ func void DIA_Orlan_HotelZimmer_ja ()
 			CreateInvItems (self, ITKE_ORLAN_HOTELZIMMER, 1);									
 			B_GiveInvItems (self, other, ITKE_ORLAN_HOTELZIMMER, 1);					
 			Orlan_SCGotHotelZimmerDay = Wld_GetDay(); 
-			Orlan_SCGotHotelZimmer = true;
+			Orlan_SCGotHotelZimmer = TRUE;
 		}
 		else
 		{
@@ -575,8 +578,8 @@ instance DIA_Orlan_MieteFaellig		(C_INFO)
 	nr		 = 	10;
 	condition	 = 	DIA_Orlan_MieteFaellig_Condition;
 	information	 = 	DIA_Orlan_MieteFaellig_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 
@@ -584,39 +587,39 @@ var int DIA_Orlan_MieteFaellig_NoMore;
 func int DIA_Orlan_MieteFaellig_Condition ()
 {
 	//ADDON>
-	if ((SC_IsRanger == true)|| (Orlan_RangerHelpZimmer == true))
+	if ((SC_IsRanger == TRUE)|| (Orlan_RangerHelpZimmer == TRUE))
 	{
-		return false;
+		return FALSE;
 	};
 	//ADDON<
 	
 	// GEFRUDEL wegen kein Labern nach Kampf!
 	
-	if (Orlan_AngriffWegenMiete == true)
-	&& (DIA_Orlan_MieteFaellig_NoMore == false)
+	if (Orlan_AngriffWegenMiete == TRUE)
+	&& (DIA_Orlan_MieteFaellig_NoMore == FALSE)
 	{	
 		// ------ keine Miete, wenn Kampf verloren ------
 		if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)
 		{
-			return false;
+			return FALSE;
 		};
 		
 		// ------ wenn gewonnen, Gold genommen --> Miete in 7 Tagen ------
 		if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
 		{
 			Orlan_SCGotHotelZimmerDay = Wld_GetDay();
-			Orlan_AngriffWegenMiete = false;
-			return false;
+			Orlan_AngriffWegenMiete = FALSE;
+			return FALSE;
 		};
 	};
 	
 	// CONDITION
 	
-	if (Orlan_SCGotHotelZimmer == true)
+	if (Orlan_SCGotHotelZimmer == TRUE)
 	&& (Orlan_SCGotHotelZimmerDay <= (Wld_GetDay()-7))
-	&& (DIA_Orlan_MieteFaellig_NoMore == false)
+	&& (DIA_Orlan_MieteFaellig_NoMore == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Orlan_MieteFaellig_Info ()
@@ -624,7 +627,7 @@ func void DIA_Orlan_MieteFaellig_Info ()
 	if ((hero.guild == GIL_PAL) || (hero.guild == GIL_KDF))
 	{
 		AI_Output	(self, other, "DIA_Orlan_MieteFaellig_05_00"); //Twa wizyta bardzo mnie raduje, proszê, zostañ, jak d³ugo zechcesz.
-		DIA_Orlan_MieteFaellig_NoMore = true;
+		DIA_Orlan_MieteFaellig_NoMore = TRUE;
 	}
 	else
 	{
@@ -645,12 +648,12 @@ func void DIA_Orlan_MieteFaellig_ja ()
 		{
 			AI_Output			(self, other, "DIA_Orlan_MieteFaellig_ja_05_01"); //Ach... Czas najwy¿szy.
 
-			if (DIA_Orlan_MieteFaellig_OneTime == false)
+			if (DIA_Orlan_MieteFaellig_OneTime == FALSE)
 			{
 				AI_Output			(self, other, "DIA_Orlan_MieteFaellig_ja_05_02"); //Gdzie¿ ty siê podziewasz ca³ymi dniami?
 				AI_Output			(other, self, "DIA_Orlan_MieteFaellig_ja_15_03"); //Nie chcesz wiedzieæ.
 				AI_Output			(self, other, "DIA_Orlan_MieteFaellig_ja_05_04"); //Mmh. Có¿, to nie moja sprawa.
-				DIA_Orlan_MieteFaellig_OneTime = true;
+				DIA_Orlan_MieteFaellig_OneTime = TRUE;
 			};
 			
 			Orlan_SCGotHotelZimmerDay = Wld_GetDay(); 
@@ -668,7 +671,7 @@ func void DIA_Orlan_MieteFaellig_nein ()
 {
 	AI_Output			(other, self, "DIA_Orlan_MieteFaellig_nein_15_00"); //Daruj sobie. Ju¿ nic wiêcej nie dostaniesz.
 	AI_Output			(self, other, "DIA_Orlan_MieteFaellig_nein_05_01"); //Ju¿ ja ciê nauczê, ty ¿a³osny oszuœcie.
-	Orlan_AngriffWegenMiete = true;
+	Orlan_AngriffWegenMiete = TRUE;
 	
 	Info_ClearChoices	(DIA_Orlan_MieteFaellig);
 	AI_StopProcessInfos (self);
@@ -684,18 +687,18 @@ instance DIA_Orlan_WETTKAMPFLAEUFT		(C_INFO)
 	nr		 = 	7;
 	condition	 = 	DIA_Orlan_WETTKAMPFLAEUFT_Condition;
 	information	 = 	DIA_Orlan_WETTKAMPFLAEUFT_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 	 
 };
 
 func int DIA_Orlan_WETTKAMPFLAEUFT_Condition ()
 {
 	if 	(
-		(DIA_Randolph_ICHGEBEDIRGELD_noPerm == true)
+		(DIA_Randolph_ICHGEBEDIRGELD_noPerm == TRUE)
 		&& (MIS_Rukhar_Wettkampf_Day <= (Wld_GetDay()-2))
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -707,8 +710,8 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 			AI_Output			(other, self, "DIA_Orlan_WETTKAMPFLAEUFT_15_03"); //Kto wygra³?
 	
 			if 	(
-				((Mob_HasItems	("CHEST_RUKHAR", ItFo_Booze)) == false)
-				&& ((Mob_HasItems	("CHEST_RUKHAR", ItFo_Water)) == true)
+				((Mob_HasItems	("CHEST_RUKHAR", ItFo_Booze)) == FALSE)
+				&& ((Mob_HasItems	("CHEST_RUKHAR", ItFo_Water)) == TRUE)
 				)
 					{
 						AI_Output			(self, other, "DIA_Orlan_WETTKAMPFLAEUFT_05_04"); //Tym razem zwyciê¿y³ Randolph. Rukhar chyba mia³ z³y dzieñ.
@@ -716,7 +719,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 				else
 				{
 					AI_Output			(self, other, "DIA_Orlan_WETTKAMPFLAEUFT_05_05"); //Rukhar po raz kolejny nie da³ Randolphowi szans. Mo¿na siê by³o tego spodziewaæ.
-					Rukhar_Won_Wettkampf = true;
+					Rukhar_Won_Wettkampf = TRUE;
 				};
 			
 			if ((hero.guild != GIL_PAL) && (hero.guild != GIL_KDF))
@@ -724,7 +727,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 					AI_Output			(self, other, "DIA_Orlan_WETTKAMPFLAEUFT_05_06"); //Mam nadziejê, ¿e to ju¿ ostatni raz. Nie chcê tu wiêcej takich podejrzanych zabaw.
 				};
 			
-			B_GivePlayerXP(XP_BONUS_0);	
+			B_GivePlayerXP (XP_Rukhar_WettkampfVorbei);	
 
 			AI_StopProcessInfos (self);
 		
@@ -733,7 +736,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 
 			if (Hlp_IsValidNpc (Rukhar))
 				{
-				 if (Rukhar_Won_Wettkampf == true)
+				 if (Rukhar_Won_Wettkampf == TRUE)
 				 	{
 						B_StartotherRoutine (Rukhar,"WettkampfRukharWon");
 					}
@@ -744,7 +747,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 				};		
 			
 			MIS_Rukhar_Wettkampf = LOG_SUCCESS;
-			B_GivePlayerXP(XP_Ambient);
+			B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -756,17 +759,17 @@ instance DIA_Orlan_EINGEBROCKT		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Orlan_EINGEBROCKT_Condition;
 	information	 = 	DIA_Orlan_EINGEBROCKT_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Orlan_EINGEBROCKT_Condition ()
 {
 	if 	(
-		(DIA_Randolph_ICHGEBEDIRGELD_noPerm == true)
+		(DIA_Randolph_ICHGEBEDIRGELD_noPerm == TRUE)
 		&& (MIS_Rukhar_Wettkampf == LOG_RUNNING)
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -786,7 +789,7 @@ instance DIA_Orlan_Perm		(C_INFO)
 	nr			 = 	99;
 	condition	 = 	DIA_Orlan_Perm_Condition;
 	information	 = 	DIA_Orlan_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak id¹ interesy?";
 };
 
@@ -794,7 +797,7 @@ func int DIA_Orlan_Perm_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Orlan_WERBISTDU))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -802,12 +805,12 @@ func void DIA_Orlan_Perm_Info ()
 {
 	AI_Output (other, self, "DIA_Orlan_Perm_15_00"); //Jak id¹ interesy?
 	
-	if (Kapitel <= 8)
+	if (Kapitel <= 2)
 	{
 		AI_Output (self, other, "DIA_Orlan_Perm_05_01"); //Wiesz, bywa³o lepiej.
 		AI_Output (self, other, "DIA_Orlan_Perm_05_02"); //Ludzie niezbyt ochoczo wydaj¹ teraz pieni¹dze.
 	}
-	else if (Kapitel >= 9)
+	else if (Kapitel >= 3)
 	{
 		AI_Output (self, other, "DIA_Orlan_Perm_05_03"); //Mam nadziejê, ¿e czarni magowie wkrótce siê st¹d wynios¹, inaczej bêdê musia³ zamkn¹æ gospodê.
 		AI_Output (self, other, "DIA_Orlan_Perm_05_04"); //Ludzie boj¹ siê tu przychodziæ.
@@ -833,7 +836,7 @@ FUNC INT DIA_Orlan_Minenanteil_Condition()
 	&& (MIS_Serpentes_MinenAnteil_KDF == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Orlan_WERBISTDU))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -841,5 +844,5 @@ FUNC VOID DIA_Orlan_Minenanteil_Info()
 {	
 	AI_Output (other, self, "DIA_Orlan_Minenanteil_15_00"); //Sprzedajesz udzia³y w kopalni?
 	AI_Output (self, other, "DIA_Orlan_Minenanteil_05_01"); //Jasne. U mnie dostaniesz wszystko, czego dusza zapragnie.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };	

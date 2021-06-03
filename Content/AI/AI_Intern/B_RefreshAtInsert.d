@@ -8,14 +8,14 @@ func void B_RefreshAtInsert()
 		return;
 	};
 	
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_NPC her; her = Hlp_GetNpc(PC_Hero); 
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	&& (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(her))
 	{
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 		
-		if (Npc_HasEquippedWeapon(self) == false)
+		if (!Npc_HasEquippedWeapon(self))
 		{
 			if (self.guild == GIL_MIL)
 			|| (self.guild == GIL_PAL)

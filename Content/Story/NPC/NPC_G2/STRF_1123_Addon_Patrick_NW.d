@@ -1,40 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance STRF_1123_Addon_Patrick_NW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Patrick";
 	guild 								=	GIL_SLD;
 	id 									=	1123;
 	voice 								=	7;
-	flags      							=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Bald", Face_Normal07, 0, ITAR_SLD_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1123;
 };
 
-FUNC VOID Rtn_Start_1123()
+func void Rtn_Start_1123()
 {
 	TA_Stand_Drinking	(00,00,12,00, "NW_BIGFARM_PATRICK");
 	TA_Stand_Drinking	(12,00,00,00, "NW_BIGFARM_PATRICK");

@@ -7,15 +7,15 @@ INSTANCE DIA_Ingmar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Ingmar_EXIT_Condition;
 	information = DIA_Ingmar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Ingmar_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -33,8 +33,8 @@ instance DIA_Ingmar_Hallo		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Ingmar_Hallo_Condition;
 	information	 = 	DIA_Ingmar_Hallo_Info;
-	permanent    =  true;
-	important	 = 	true;
+	permanent    =  TRUE;
+	important	 = 	TRUE;
 };
 //------------------------------------
 var int DIA_Ingmar_Hallo_permanent;
@@ -42,25 +42,25 @@ var int DIA_Ingmar_Hallo_permanent;
 func int DIA_Ingmar_Hallo_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (DIA_Ingmar_Hallo_permanent == false)
-	&& (Kapitel < 10)
+	&& (DIA_Ingmar_Hallo_permanent == FALSE)
+	&& (Kapitel < 4)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ingmar_Hallo_Info ()
 {
-	if (EnterOW_Kapitel2 == false)
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == true)
+	if (EnterOW_Kapitel < 8)
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == TRUE)
 	{ 
 		AI_Output (self, other, "DIA_Ingmar_Hallo_06_00"); //Z otrzymanych przeze mnie raportów wynika, ¿e Górnicza Dolina to niebezpieczne miejsce.
 		AI_Output (self, other, "DIA_Ingmar_Hallo_06_01"); //Pamiêtaj, aby zabraæ ze sob¹ odpowiednie wyposa¿enie.
 	}
 	else if (MIS_OLDWORLD == LOG_SUCCESS)
-	&& 		(LordHagen.aivar[AIV_TalkedToPlayer] == true)
+	&& 		(LordHagen.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Ingmar_Hallo_06_02"); //Sytuacja w Górniczej Dolinie jest doœæ niepokoj¹ca. Potrzebny nam plan, dziêki któremu za¿egnane zostanie niebezpieczeñstwo, a nasi ch³opcy wróc¹ do domu wraz z wydobyt¹ rud¹.
-		DIA_Ingmar_Hallo_permanent = true;
+		DIA_Ingmar_Hallo_permanent = TRUE;
 	}
 	else 
 	{
@@ -76,14 +76,14 @@ instance DIA_Ingmar_Krieg		(C_INFO)
 	nr			 =  99;
 	condition	 = 	DIA_Ingmar_Krieg_Condition;
 	information	 = 	DIA_Ingmar_Krieg_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 =  "Jak sytuacja na kontynencie?";
 };
 func int DIA_Ingmar_Krieg_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ingmar_Krieg_Info ()
@@ -94,6 +94,106 @@ func void DIA_Ingmar_Krieg_Info ()
 	AI_Output (self, other, "DIA_Ingmar_Krieg_06_03"); //Te stworzenia nie znaj¹ honoru ani wiary - dlatego wierzê w nasze ostateczne zwyciêstwo.
 };	
 
+///////////////////////////////////////////////////////////////////////
+//	Info CanTeach
+///////////////////////////////////////////////////////////////////////
+instance DIA_Ingmar_CanTeach		(C_INFO)
+{ 
+	npc		 	 = 	Pal_201_Ingmar;
+	nr			 =  100;
+	condition	 = 	DIA_Ingmar_CanTeach_Condition;
+	information	 = 	DIA_Ingmar_CanTeach_Info;
+	permanent    =  TRUE;
+	description	 = 	"Mo¿esz mnie przeszkoliæ?";
+};
+
+func int DIA_Ingmar_CanTeach_Condition ()
+{	
+	if (Ingmar_TeachSTR == FALSE)
+	{	
+		return TRUE;
+	};
+};
+func void DIA_Ingmar_CanTeach_Info ()
+{
+	AI_Output (other, self, "DIA_Ingmar_CanTeach_15_00"); //Bêdziesz moim nauczycielem?
+	
+	if (other.guild == GIL_PAL)
+	{
+		AI_Output (self, other, "DIA_Ingmar_CanTeach_06_01"); //Mogê nauczyæ ciê specjalnych metod treningowych, dziêki którym wzroœnie twoja bieg³oœæ w pos³ugiwaniu siê ró¿nymi rodzajami orê¿a.
+			Ingmar_TeachSTR = TRUE;
+			B_LogEntry (TOPIC_CityTeacher,"Paladyn Igmar mo¿e mi pokazaæ, jak staæ siê silniejszym.");
+	}
+	else 
+	{
+		AI_Output (self, other, "DIA_Ingmar_CanTeach_06_02"); //Uczê tylko cz³onków naszego Zakonu.
+	};
+};
+///////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Ingmar_Teach		(C_INFO)
+{
+	npc		  	 = 	Pal_201_Ingmar;
+	nr			 = 	6;
+	condition	 = 	DIA_Ingmar_Teach_Condition;
+	information	 = 	DIA_Ingmar_Teach_Info;
+	permanent	 = 	FALSE;	//TRUE
+	description	 = 	"Chcê byæ silniejszy.";
+};
+func int DIA_Ingmar_Teach_Condition ()
+{	
+	if (Ingmar_TeachSTR == TRUE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Ingmar_Teach_Info ()
+{
+	AI_Output (other, self, "DIA_Ingmar_Teach_15_00"); //Chcê byæ silniejszy.
+	
+	/*
+	Info_ClearChoices   (DIA_Ingmar_Teach);
+	Info_AddChoice 		(DIA_Ingmar_Teach, DIALOG_BACK, DIA_Ingmar_Teach_BACK);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Ingmar_Teach_1);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Ingmar_Teach_5);
+	*/
+	B_RaiseAttribute(other, ATR_STRENGTH, 2);
+};
+/*
+func void DIA_Ingmar_Teach_BACK()
+{
+	if (other.attribute [ATR_STRENGTH] >= T_MAX)
+	{
+		AI_Output (self, other, "DIA_Ingmar_Teach_06_00"); //Jesteœ silny niczym troll, nie potrzebujesz ju¿ treningu.
+	};
+	Info_ClearChoices (DIA_Ingmar_TEACH);
+};
+func void DIA_Ingmar_Teach_1()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MAX);
+	
+	Info_ClearChoices   (DIA_Ingmar_Teach);
+	
+	Info_AddChoice 		(DIA_Ingmar_Teach, DIALOG_BACK, DIA_Ingmar_TEACH_BACK);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Ingmar_Teach_1);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Ingmar_Teach_5);
+	
+	
+};
+func void DIA_Ingmar_Teach_5()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MAX);
+	
+	Info_ClearChoices   (DIA_Ingmar_Teach);
+	
+	Info_AddChoice 		(DIA_Ingmar_Teach, DIALOG_BACK, DIA_Ingmar_Teach_BACK);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR1	, B_GetLearnCostAttribute(other, ATR_STRENGTH))		,DIA_Ingmar_Teach_1);
+	Info_AddChoice		(DIA_Ingmar_Teach, B_BuildLearnString(PRINT_LearnSTR5	, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)	,DIA_Ingmar_Teach_5);
+	
+	
+}; 
+*/
 //#####################################################################
 //##
 //##
@@ -112,14 +212,14 @@ INSTANCE DIA_Ingmar_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ingmar_KAP3_EXIT_Condition;
 	information	= DIA_Ingmar_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ingmar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ingmar_KAP3_EXIT_Info()
@@ -147,14 +247,14 @@ INSTANCE DIA_Ingmar_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ingmar_KAP4_EXIT_Condition;
 	information	= DIA_Ingmar_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ingmar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ingmar_KAP4_EXIT_Info()
@@ -172,16 +272,17 @@ instance DIA_Ingmar_ORKELITE		(C_INFO)
 	nr		 = 	40;
 	condition	 = 	DIA_Ingmar_ORKELITE_Condition;
 	information	 = 	DIA_Ingmar_ORKELITE_Info;
+
 	description	 = 	"Orkowie planuj¹ ogromny atak.";
 };
 
 func int DIA_Ingmar_ORKELITE_Condition ()
 {
-	if ((TalkedTo_AntiPaladin == true) || (Npc_HasItems (other,ItRi_OrcElite)) || (Hagen_SawOrcRing == true))
+	if ((TalkedTo_AntiPaladin == TRUE) || (Npc_HasItems (other,ItRi_OrcEliteRing)) || (Hagen_SawOrcRing == TRUE))
 	&& (hero.guild == GIL_PAL)
-	{
-		return true;
-	};
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Ingmar_ORKELITE_Info ()
@@ -190,7 +291,7 @@ func void DIA_Ingmar_ORKELITE_Info ()
 	AI_Output (other, self, "DIA_Ingmar_ORKELITE_15_00"); //Orkowie planuj¹ ogromny atak.
 	AI_Output (self, other, "DIA_Ingmar_ORKELITE_06_01"); //Doprawdy? Bardzo interesuj¹ce. A sk¹d niby o tym wiesz?
 
-	if (TalkedTo_AntiPaladin == true)
+	if (TalkedTo_AntiPaladin == TRUE)
 	{
 	AI_Output (other, self, "DIA_Ingmar_ORKELITE_15_02"); //Rozmawia³em z nimi.
 	};
@@ -251,7 +352,7 @@ instance DIA_Ingmar_HAUPTQUARTIER		(C_INFO)
 	nr			 = 	41;
 	condition	 = 	DIA_Ingmar_HAUPTQUARTIER_Condition;
 	information	 = 	DIA_Ingmar_HAUPTQUARTIER_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Uda³o mi siê odnaleŸæ siedzibê orków.";
 };
 
@@ -259,9 +360,9 @@ func int DIA_Ingmar_HAUPTQUARTIER_Condition ()
 {
 	if (Npc_IsDead(OrkElite_AntiPaladinOrkOberst))
 	&& (Npc_KnowsInfo(other, DIA_Ingmar_ORKELITE))
-	{
-		return true;
-	};
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Ingmar_HAUPTQUARTIER_Info ()
@@ -271,7 +372,7 @@ func void DIA_Ingmar_HAUPTQUARTIER_Info ()
 	AI_Output (self, other, "DIA_Ingmar_HAUPTQUARTIER_06_02"); //Muszê przyznaæ, ¿e nieŸle siê spisa³eœ. Gdybyœmy mieli wiêcej rycerzy takich jak ty, nadchodz¹ca bitwa by³aby dla nas bu³k¹ z mas³em.
 	AI_Output (self, other, "DIA_Ingmar_HAUPTQUARTIER_06_03"); //Proszê, weŸ to z³oto i kup sobie za nie trochê ekwipunku.
 
-	B_GivePlayerXP(XP_BONUS_10);
+	B_GivePlayerXP (XP_KilledOrkOberst);
 	CreateInvItems (self, ItMi_Gold, 300);									
 	B_GiveInvItems (self, other, ItMi_Gold, 300);					
 	MIS_KillOrkOberst = LOG_SUCCESS;
@@ -296,14 +397,14 @@ INSTANCE DIA_Ingmar_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ingmar_KAP5_EXIT_Condition;
 	information	= DIA_Ingmar_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ingmar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ingmar_KAP5_EXIT_Info()
@@ -331,14 +432,14 @@ INSTANCE DIA_Ingmar_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ingmar_KAP6_EXIT_Condition;
 	information	= DIA_Ingmar_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ingmar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ingmar_KAP6_EXIT_Info()

@@ -7,13 +7,13 @@ INSTANCE DIA_PAL_263_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_PAL_263_EXIT_Condition;
 	information = DIA_PAL_263_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_PAL_263_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_263_EXIT_Info()
@@ -29,16 +29,16 @@ instance DIA_PAL_263_PERM		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_PAL_263_PERM_Condition;
 	information	 = 	DIA_PAL_263_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Melduj, ¿o³nierzu!";
 };
 
 func int DIA_PAL_263_PERM_Condition ()
 {
-	if (hero.guild == GIL_MIL)
-	|| (hero.guild == GIL_PAL)
+	if hero.guild == GIL_MIL
+	|| hero.guild == GIL_PAL
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_263_PERM_Info ()
@@ -57,16 +57,16 @@ instance DIA_PAL_263_PERM_OTH		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_PAL_263_PERM_OTH_Condition;
 	information	 = 	DIA_PAL_263_PERM_OTH_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak wygl¹da sytuacja?";
 };
 
 func int DIA_PAL_263_PERM_OTH_Condition ()
 {
-	if (hero.guild != GIL_MIL)
-	|| (hero.guild != GIL_PAL)
+	if hero.guild != GIL_MIL
+	|| hero.guild != GIL_PAL
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_263_PERM_OTH_Info ()
@@ -74,3 +74,11 @@ func void DIA_PAL_263_PERM_OTH_Info ()
 	AI_Output			(other, self, "DIA_PAL_263_PERM_OTH_15_00"); //Jak wygl¹da sytuacja?
 	AI_Output			(self, other, "DIA_PAL_263_PERM_OTH_04_01"); //Kontrolujemy sytuacjê. Nie martw siê, cywilu. Wszystko dobrze siê skoñczy.
 };
+
+
+
+ 
+
+
+
+

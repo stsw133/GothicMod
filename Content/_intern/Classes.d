@@ -22,7 +22,7 @@ class C_NPC
 	var int		protection[PROT_INDEX_MAX];
 	var int		damage[DAM_INDEX_MAX];
 	var int		damagetype;
-	var int		guild,level;
+	var int		guild, level;
 	
 	var func	mission[MAX_MISSIONS];
 	var int		fight_tactic;
@@ -89,11 +89,11 @@ class C_Item
 {
 	/// Für alle Items
 	var int		id;
-	var string  name,nameID;
-	var int		hp,hp_max;
+	var string  name, nameID;
+	var int		hp, hp_max;
 	
-	var int     mainflag,flags;
-	var int		weight,value;
+	var int     mainflag, flags;
+	var int		weight, value;
 	
 	/// Für Waffen
 	var int		damageType;
@@ -222,7 +222,7 @@ class C_Spell
 ///	Globale Klasseninstanzen
 ///******************************************************************************************
 /// Aktueller Npc und der SC
-instance self,other (C_NPC);
+instance self, other (C_NPC);
 
 /// Opfer bei "witness"-Aktionen
 instance victim (C_NPC);

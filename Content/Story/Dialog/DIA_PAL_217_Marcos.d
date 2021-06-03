@@ -7,13 +7,13 @@ INSTANCE DIA_Marcos_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Marcos_EXIT_Condition;
 	information	= DIA_Marcos_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Marcos_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Marcos_EXIT_Info()
@@ -29,15 +29,15 @@ INSTANCE DIA_Marcos_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Marcos_Hallo_Condition;
 	information	= DIA_Marcos_Hallo_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Marcos_Hallo_Condition()
 {	
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Marcos_Hallo_Info()
@@ -72,16 +72,16 @@ INSTANCE DIA_Marcos_Hagen(C_INFO)
 	nr			= 2;
 	condition	= DIA_Marcos_Hagen_Condition;
 	information	= DIA_Marcos_Hagen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Muszê dostarczyæ Lordowi Hagenowi dowód na istnienie smoków.";
 };                       
 
 FUNC INT DIA_Marcos_Hagen_Condition()
 {	
-	if (Kapitel == 8)
-	&& (Garond.aivar[AIV_TalkedToPlayer] == false) 
+	if (Kapitel == 2)
+	&& (Garond.aivar [AIV_TalkedToPlayer] == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Marcos_Hagen_Info()
@@ -102,16 +102,16 @@ INSTANCE DIA_Marcos_Garond(C_INFO)
 	nr			= 2;
 	condition	= DIA_Marcos_Garond_Condition;
 	information	= DIA_Marcos_Garond_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Przysy³a mnie Garond...";
 };                       
 
 FUNC INT DIA_Marcos_Garond_Condition()
 {	
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	&& (MIS_OLDWORLD == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Marcos_Garond_Info()
@@ -131,7 +131,7 @@ FUNC VOID DIA_Marcos_Garond_Info()
 	B_LogEntry (Topic_MarcosJungs,"Marcos chce, aby Garond wys³a³ mu posi³ki.");
 	
 	MIS_Marcos_Jungs = LOG_RUNNING;
-	Marcos_Ore = true;
+	Marcos_Ore = TRUE;
 	self.flags = 0;
 };	
 	
@@ -144,17 +144,17 @@ INSTANCE DIA_Marcos_Perm(C_INFO)
 	nr			= 9;
 	condition	= DIA_Marcos_Perm_Condition;
 	information	= DIA_Marcos_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jak wygl¹da sytuacja?";
 };                       
 
 FUNC INT DIA_Marcos_Perm_Condition()
 {	
-	if (Kapitel >= 8)
+	if (Kapitel >= 2)
 	&& (Npc_KnowsInfo (other, DIA_Marcos_Hagen)
 	|| Npc_KnowsInfo (other, DIA_Marcos_Garond))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Marcos_Perm_Info()
@@ -162,10 +162,11 @@ FUNC VOID DIA_Marcos_Perm_Info()
 
 	AI_Output (other, self, "DIA_Marcos_Perm_15_00");//Jak sytuacja?
 	
-	if (self.attribute[ATR_HITPOINTS]) < (self.attribute[ATR_HITPOINTS_MAX]/2)  
+	if (self.attribute [ATR_HITPOINTS]) < (self.attribute [ATR_HITPOINTS_MAX] /2)  
 	{
 		AI_Output (self, other, "DIA_Marcos_Perm_04_01");//Potrzebujê solidnego ³yka mikstury leczniczej!
-		B_UseItem (self, ItPo_Health_03);
+		B_UseItem (self, ItPo_Health_03);  
+		
 	}
 	else if (MIS_Marcos_Jungs == LOG_RUNNING)
 	{
@@ -175,10 +176,10 @@ FUNC VOID DIA_Marcos_Perm_Info()
 	{
 		AI_Output (self, other, "DIA_Marcos_Perm_04_03");//Dziêkujê ci za pomoc. Niechaj Innos da nam si³ê.
 		
-		if (Marcos_einmalig == false)
+		if (Marcos_einmalig == FALSE)
 		{
-			B_GivePlayerXP(XP_BONUS_1);
-			Marcos_einmalig = true;
+			B_GivePlayerXP(XP_Marcos_Jungs);
+			Marcos_einmalig = TRUE;
 		};
 	}
 	else 
@@ -187,4 +188,4 @@ FUNC VOID DIA_Marcos_Perm_Info()
 	};
 	
 	AI_StopProcessInfos (self);
-};
+};		

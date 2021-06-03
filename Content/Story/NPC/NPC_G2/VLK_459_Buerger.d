@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_459_Buerger (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_BUERGER;
 	guild 								=	GIL_VLK;
 	id 									=	459;
 	voice 								=	1;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal15, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_459;
 };
 
-FUNC VOID Rtn_Start_459()
+func void Rtn_Start_459()
 {
 	TA_Smalltalk		(05,30,11,35, "NW_CITY_HABOUR_06");
 	TA_Stand_Drinking	(11,35,13,30, "NW_CITY_HABOUR_TAVERN01_01");

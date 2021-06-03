@@ -3,13 +3,12 @@
 ///******************************************************************************************
 func void B_UseItem (var C_NPC slf, var int itmInstance)
 {
-	if (C_BodyStateContains(slf,BS_SIT))
+	if (C_BodyStateContains(slf, BS_SIT))
 	{
 		return;
 	};
 	
-	var C_NPC target;
-	target = Npc_GetLookAtTarget(slf);
+	var C_NPC target; target = Npc_GetLookAtTarget(slf);
 	
 	if (Hlp_IsValidNpc(target))
 	{
@@ -25,7 +24,7 @@ func void B_UseItem (var C_NPC slf, var int itmInstance)
 ///******************************************************************************************
 func void B_UseFakeScroll()
 {
-	if (C_BodystateContains(self,BS_SIT))
+	if (C_BodystateContains(self, BS_SIT))
 	{
 		AI_StandUp	(self);
 		B_TurnToNpc	(self, hero);

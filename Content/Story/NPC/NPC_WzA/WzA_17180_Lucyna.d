@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17180_Lucyna (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Lucyna";
 	guild								=	GIL_NONE;
 	id									=	17180;
@@ -9,32 +9,32 @@ instance WzA_17180_Lucyna (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attribute ------
+	/// ------ Attribute ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Assassin_03);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Dressed+0, BodySkin_N, "Hum_Head_Babe2", /* FaceBabe_Lucyna */ 56, Teeth_Pretty, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17180;
 };
 

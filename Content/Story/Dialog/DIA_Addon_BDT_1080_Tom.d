@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Tom_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Tom_EXIT_Condition;
 	information = DIA_Addon_Tom_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Tom_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Tom_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Tom_HI   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Tom_HI_Condition;
 	information = DIA_Addon_Tom_HI_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dlaczego tu siedzisz?";
 };
 FUNC INT DIA_Addon_Tom_HI_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Tom_HI_Info()
 {	
@@ -54,14 +54,14 @@ INSTANCE DIA_Addon_Tom_Juan   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Tom_Juan_Condition;
 	information = DIA_Addon_Tom_Juan_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "W jaki sposób?";
 };
 FUNC INT DIA_Addon_Tom_Juan_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Tom_HI)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Tom_Juan_Info()
@@ -70,7 +70,7 @@ FUNC VOID DIA_Addon_Tom_Juan_Info()
 	AI_Output (self,other,"DIA_Addon_Tom_Juan_11_01"); //Esteban wys³a³ jednego ze swoich ludzi, Juana. Koleœ obserwowa³ nas.
 	AI_Output (self,other,"DIA_Addon_Tom_Juan_11_02"); //A póŸniej, jak omawia³em interes z piratami, wyszed³ z ciemnoœci i ich pobi³.
 	AI_Output (self,other,"DIA_Addon_Tom_Juan_11_03"); //Ch³opie, ale ten goœæ by³ szybki! Na szczêœcie zdo³a³em uciec.
-	SC_Knows_JuanMurderedAngus = true;
+	SC_Knows_JuanMurderedAngus = TRUE;
 	
 	B_LogEntry	(TOPIC_Addon_KillJuan,"A wiêc to Juan jest odpowiedzialny za zabójstwo Hanka i Angusa. Urz¹dzi³ na nich zasadzkê, a nastêpnie zamordowa³.");
 };
@@ -84,14 +84,14 @@ INSTANCE DIA_Addon_Tom_Esteban   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Tom_Esteban_Condition;
 	information = DIA_Addon_Tom_Esteban_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "I od tamtej pory siê tu ukrywasz?";
 };
 FUNC INT DIA_Addon_Tom_Esteban_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Tom_Juan)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Tom_Esteban_Info()
@@ -102,7 +102,7 @@ FUNC VOID DIA_Addon_Tom_Esteban_Info()
 	AI_Output (self,other,"DIA_Addon_Tom_Esteban_11_03"); //Jeœli Esteban dowie siê, kto doniós³ ch³opakom, ¿e to on za tym stoi, bêdê martwy.
 	AI_Output (self,other,"DIA_Addon_Tom_Esteban_11_04"); //Dlatego nie wracam do obozu.
 	
-	Tom_tells = true;
+	Tom_tells = TRUE;
 };
 
 //---------------------------------------------------------------------
@@ -114,7 +114,7 @@ INSTANCE DIA_Addon_Tom_Dead   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Tom_Dead_Condition;
 	information = DIA_Addon_Tom_Dead_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Esteban nie ¿yje.";
 };
 FUNC INT DIA_Addon_Tom_Dead_Condition()
@@ -122,7 +122,7 @@ FUNC INT DIA_Addon_Tom_Dead_Condition()
 	if (Npc_IsDead (Esteban))
 	&& (Npc_KnowsInfo (other,DIA_Addon_Tom_Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Tom_Dead_Info()
@@ -147,14 +147,14 @@ INSTANCE DIA_Addon_Tom_PERM   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Tom_PERM_Condition;
 	information = DIA_Addon_Tom_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Coœ jeszcze?";
 };
 FUNC INT DIA_Addon_Tom_PERM_Condition()
 {	
 	if (Npc_KnowsInfo (other,DIA_Addon_Tom_Esteban))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Tom_PERM_Info()
@@ -177,3 +177,7 @@ FUNC VOID DIA_Addon_Tom_PERM_Info()
 		};
 	};
 };
+
+
+
+

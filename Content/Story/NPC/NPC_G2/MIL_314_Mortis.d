@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_314_Mortis (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Mortis";
 	guild 								=	GIL_MIL;
 	id 									=	314;
 	voice 								=	13;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium+5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal06, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_314;
 };
 
-FUNC VOID Rtn_Start_314()
+func void Rtn_Start_314()
 {
 	TA_Smith_Fire	(07,00,07,10, "NW_CITY_KASERN_ARMORY_FIRE");
 	TA_Smith_Anvil	(07,10,07,20, "NW_CITY_KASERN_ARMORY_ANVIL");

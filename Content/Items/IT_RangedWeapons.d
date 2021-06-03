@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	Bows
-//******************************************************************************************
+///******************************************************************************************
+///	Bows
+///******************************************************************************************
 prototype ItemPR_Bow (C_Item)
 {
 	name 					=	"£uk";
@@ -23,7 +23,7 @@ prototype ItemPR_Bow (C_Item)
 	TEXT[3] 				=	NAME_Str_needed;
 	TEXT[5]					=	NAME_Value;
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Equip_Bow_CHECK()
 {
 	if (Npc_IsPlayer(self))
@@ -43,20 +43,20 @@ func void UnEquip_Bow_CHECK()
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void SetItRwAttributes_Bow (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*100;
-	itm.damageTotal		=	kap*20;
-	itm.cond_value[1]  	= 	kap*20;
-	itm.cond_value[2]  	= 	kap*5;
+	itm.value			=	kap*150;
+	itm.damageTotal		=	kap*15;
+	itm.cond_value[1]  	= 	kap*15;
+	itm.cond_value[2]  	= 	kap*3;
 	
 	itm.COUNT[1]		=	itm.damageTotal;
 	itm.COUNT[2]		=	itm.cond_value[1];
 	itm.COUNT[3]		=	itm.cond_value[2];
 	itm.COUNT[5]		=	itm.value;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Bow_L_01 (ItemPR_Bow)
 {
 	visual 			=	"ItRw_Bow_L_01.mms";
@@ -81,7 +81,7 @@ instance ItRw_Bow_L_04 (ItemPR_Bow)
 	description		=	"£uk z wi¹zu";
 	SetItRwAttributes_Bow (self, 4);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Bow_M_01 (ItemPR_Bow)
 {
 	visual 			=	"ItRw_Bow_M_01.mms";
@@ -106,7 +106,7 @@ instance ItRw_Bow_M_04 (ItemPR_Bow)
 	description		=	"£uk bukowy";
 	SetItRwAttributes_Bow (self, 8);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Bow_H_01 (ItemPR_Bow)
 {
 	visual 			=	"ItRw_Bow_H_01.mms";
@@ -131,9 +131,9 @@ instance ItRw_Bow_H_04 (ItemPR_Bow)
 	description		=	"Smoczy ³uk";
 	SetItRwAttributes_Bow (self, 12);
 };
-//******************************************************************************************
-//	Crossbows
-//******************************************************************************************
+///******************************************************************************************
+///	Crossbows
+///******************************************************************************************
 prototype ItemPR_Crossbow (C_Item)
 {
 	name					=	"Kusza";
@@ -156,7 +156,7 @@ prototype ItemPR_Crossbow (C_Item)
 	TEXT[3] 				=	NAME_Dex_needed;
 	TEXT[5]					=	NAME_Value;
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Equip_Crossbow_CHECK()
 {
 	if (Npc_IsPlayer(self))
@@ -176,12 +176,12 @@ func void UnEquip_Crossbow_CHECK()
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void SetItRwAttributes_Crossbow (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*250;
-	itm.damageTotal		=	kap*45;
-	itm.cond_value[1]  	= 	kap*40;
+	itm.value			=	kap*500;
+	itm.damageTotal		=	kap*35;
+	itm.cond_value[1]  	= 	kap*30;
 	itm.cond_value[2]  	= 	kap*15;
 	
 	itm.COUNT[1]		=	itm.damageTotal;
@@ -189,7 +189,7 @@ func void SetItRwAttributes_Crossbow (var C_ITEM itm, var int kap)
 	itm.COUNT[3]		=	itm.cond_value[2];
 	itm.COUNT[5]		=	itm.value;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Crossbow_L_01 (ItemPR_Crossbow)
 {
 	visual 			=	"ItRw_Crossbow_L_01.mms";
@@ -202,7 +202,7 @@ instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)
 	description		=	"Ma³a kusza";
 	SetItRwAttributes_Crossbow (self, 2);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Crossbow_M_01 (ItemPR_Crossbow)
 {
 	visual 			=	"ItRw_Crossbow_M_01.mms";
@@ -215,7 +215,7 @@ instance ItRw_Crossbow_M_02 (ItemPR_Crossbow)
 	description		=	"Kusza bojowa";
 	SetItRwAttributes_Crossbow (self, 4);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Crossbow_H_01 (ItemPR_Crossbow)
 {
 	visual 			=	"ItRw_Crossbow_H_01.mms";
@@ -228,9 +228,9 @@ instance ItRw_Crossbow_H_02 (ItemPR_Crossbow)
 	description		=	"Kusza ³owcy smoków";
 	SetItRwAttributes_Crossbow (self, 6);
 };
-//******************************************************************************************
-//	Guns
-//******************************************************************************************
+///******************************************************************************************
+///	Guns
+///******************************************************************************************
 prototype ItemPR_Gun (C_Item)
 {
 	mainflag 				=	ITEM_KAT_FF;
@@ -251,7 +251,7 @@ prototype ItemPR_Gun (C_Item)
 	TEXT[3] 				=	NAME_Str_needed;
 	TEXT[5]					=	NAME_Value;
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Equip_Gun_CHECK()
 {
 	if (Npc_IsPlayer(self))
@@ -271,13 +271,13 @@ func void UnEquip_Gun_CHECK()
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void SetItRwAttributes_Gun (var C_ITEM itm, var int kap, var int fast)
 {
-	itm.value			=	kap*300;
-	if (fast == false)	{	itm.damageTotal = kap*60;								}
-	else				{	itm.damageTotal = kap*15; itm.TEXT[4] = NAME_FastGun;	};
-	itm.cond_value[1]  	= 	kap*30;
+	itm.value			=	kap*500;
+	if (fast == true)	{	itm.damageTotal = kap*25; itm.TEXT[4] = NAME_FastGun;	}
+	else				{	itm.damageTotal = kap*50;								};
+	itm.cond_value[1]  	= 	kap*40;
 	itm.cond_value[2]  	= 	kap*10;
 	
 	itm.COUNT[1]		=	itm.damageTotal;
@@ -285,7 +285,7 @@ func void SetItRwAttributes_Gun (var C_ITEM itm, var int kap, var int fast)
 	itm.COUNT[3]		=	itm.cond_value[2];
 	itm.COUNT[5]		=	itm.value;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_Gun1 (ItemPR_Gun)
 {
 	name 			=	"Karabin M16";
@@ -349,9 +349,9 @@ instance ItRw_Gun9 (ItemPR_Gun)
 	description		=	name;
 	SetItRwAttributes_Gun (self, 8, true);
 };
-//******************************************************************************************
-//	Heavy Guns
-//******************************************************************************************
+///******************************************************************************************
+///	Heavy Guns
+///******************************************************************************************
 prototype ItemPR_HeavyGun (C_Item)
 {
 	mainflag 				=	ITEM_KAT_FF;
@@ -372,7 +372,7 @@ prototype ItemPR_HeavyGun (C_Item)
 	TEXT[3] 				=	NAME_Dex_needed;
 	TEXT[5]					=	NAME_Value;
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Equip_HeavyGun_CHECK()
 {
 	if (Npc_IsPlayer(self))
@@ -392,20 +392,20 @@ func void UnEquip_HeavyGun_CHECK()
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void SetItRwAttributes_HeavyGun (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*1200;
+	itm.value			=	kap*1500;
 	itm.damageTotal		=	kap*200;
-	itm.cond_value[1]  	= 	kap*90;
-	itm.cond_value[2]  	= 	kap*30;
+	itm.cond_value[1]  	= 	kap*100;
+	itm.cond_value[2]  	= 	kap*25;
 	
 	itm.COUNT[1]		=	itm.damageTotal;
 	itm.COUNT[2]		=	itm.cond_value[1];
 	itm.COUNT[3]		=	itm.cond_value[2];
 	itm.COUNT[5]		=	itm.value;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItRw_HGun1 (ItemPR_HeavyGun)
 {
 	name 			=	"Wyrzutnia rakiet";
@@ -434,16 +434,16 @@ instance ItRw_HGun4 (ItemPR_HeavyGun)
 	description		=	name;
 	SetItRwAttributes_HeavyGun (self, 5);
 };
-//******************************************************************************************
-//	NPC's ranged weapons
-//******************************************************************************************
+///******************************************************************************************
+///	NPC's ranged weapons
+///******************************************************************************************
 instance ItRw_Sld_Bow (ItemPR_Bow)
 {
-	value 			=	25;
+	value 			=	50;
 	
-	damageTotal		=	100;
+	damageTotal		=	50;
 	cond_value[1]  	= 	50;
-	cond_value[2]  	= 	15;
+	cond_value[2]  	= 	10;
 	visual 			=	"ItRw_Sld_Bow.mms";
 	
 	description		=	name;
@@ -454,10 +454,10 @@ instance ItRw_Sld_Bow (ItemPR_Bow)
 };
 instance ItRw_Mil_Crossbow (ItemPR_Crossbow)
 {
-	value 			=	35;
+	value 			=	75;
 	
-	damageTotal		= 	135;
-	cond_value[1]  	= 	60;
+	damageTotal		= 	60;
+	cond_value[1]  	= 	50;
 	cond_value[2]  	= 	25;
 	visual 			=	"ItRw_Mil_Crossbow.mms";
 	
@@ -469,11 +469,11 @@ instance ItRw_Mil_Crossbow (ItemPR_Crossbow)
 };
 instance ItRw_Orc_Crossbow (ItemPR_Crossbow)
 {
-	value 			=	26;
+	value 			=	150;
 	
 	damageTotal		= 	120;
-	cond_value[1]  	= 	200;
-	cond_value[2]  	= 	0;
+	cond_value[1]  	= 	100;
+	cond_value[2]  	= 	50;
 	visual 			=	"ItRw_Crossbow_M_01.mms";
 	
 	description		=	"Orkowa kusza";

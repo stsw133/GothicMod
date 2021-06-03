@@ -1,41 +1,40 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4301_Addon_Farim (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Farim";
 	guild 								=	GIL_VLK;
 	id 									=	4301;
 	voice 								=	11;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	CreateInvItem (self, ItMi_Aquamarine);
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Fighter", Face_Normal35, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4301;
 };
 
-FUNC VOID Rtn_Start_4301()
+func void Rtn_Start_4301()
 {
 	TA_Repair_Hut 		(08,00,12,00, "NW_CITY_WAY_TO_SHIP_FISCHER_05");
 	TA_Stand_Guarding	(12,00,16,00, "NW_CITY_WAY_TO_SHIP_FISCHER_06");

@@ -7,15 +7,15 @@ INSTANCE DIA_Parcival_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Parcival_EXIT_Condition;
 	information = DIA_Parcival_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Parcival_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-			return true;
+			return TRUE;
 	};
 };
 
@@ -32,14 +32,14 @@ instance DIA_Parcival_Schurfer		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Parcival_Schurfer_Condition;
 	information	 = 	DIA_Parcival_Schurfer_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 =	"Co mo¿esz mi powiedzieæ na temat kretów?";
 };
 func int DIA_Parcival_Schurfer_Condition ()	
 {	
 	if (MIS_ScoutMine == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_Schurfer_Info ()
@@ -65,15 +65,15 @@ instance DIA_Parcival_Diego		(C_INFO)
 	nr			 =  9;
 	condition	 = 	DIA_Parcival_Diego_Condition;
 	information	 = 	DIA_Parcival_Diego_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 =	"Z któr¹ grup¹ kretów poszed³ Diego?";
 };
 func int DIA_Parcival_Diego_Condition ()	
 {	
 	if (SearchForDiego == LOG_RUNNING)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_Diego_Info ()
@@ -92,14 +92,14 @@ instance DIA_Parcival_Weg		(C_INFO)
 	nr			 =  8;
 	condition	 = 	DIA_Parcival_Weg_Condition;
 	information	 = 	DIA_Parcival_Weg_Info;
-	permanent 	 =  false;
-	description	 =	"Wiesz, jak mogê dostaæ siê na teren wydobycia?";
+	permanent 	 =  FALSE;
+	description	 =	"Kennst du einen Weg zu den Schürfstellen?";
 };
 func int DIA_Parcival_Weg_Condition ()	
 {	
 	if (MIS_ScoutMine == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_Weg_Info ()
@@ -124,7 +124,7 @@ instance DIA_Parcival_DRAGON		(C_INFO)
 };
 func int DIA_Parcival_DRAGON_Condition ()	
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Parcival_DRAGON_Info ()
 {
@@ -148,9 +148,9 @@ instance DIA_Parcival_DRAGONS		(C_INFO)
 func int DIA_Parcival_DRAGONS_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Parcival_DRAGON)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_DRAGONS_Info ()
@@ -171,18 +171,18 @@ instance DIA_Parcival_BRAVE		(C_INFO)
 	nr			 = 	8;
 	condition	 = 	DIA_Parcival_BRAVE_Condition;
 	information	 = 	DIA_Parcival_BRAVE_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Parcival_BRAVE_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& Npc_KnowsInfo (hero,DIA_Parcival_DRAGONS)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	&& (Parcival_BRAVE_LaberCount <= 6)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -210,11 +210,11 @@ func void DIA_Parcival_BRAVE_Info ()
 	}
 	else 
 	{
-		AI_Output			(self, other, "DIA_Parcival_BRAVE_13_03"); //Hej, nie masz nic lepszego do roboty, ni¿ zawracanie mi g³owy? Wynoœ siê!
-		B_GivePlayerXP(XP_Ambient);
+	AI_Output			(self, other, "DIA_Parcival_BRAVE_13_03"); //Hej, nie masz nic lepszego do roboty, ni¿ zawracanie mi g³owy? Wynoœ siê!
+	B_GivePlayerXP (XP_Ambient);
 	};
 	
-	Parcival_BRAVE_LaberCount += 1;
+	Parcival_BRAVE_LaberCount = Parcival_BRAVE_LaberCount + 1;
 };
 
 
@@ -236,14 +236,14 @@ INSTANCE DIA_Parcival_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Parcival_KAP3_EXIT_Condition;
 	information	= DIA_Parcival_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Parcival_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Parcival_KAP3_EXIT_Info()
@@ -260,18 +260,18 @@ instance DIA_Parcival_ALLESKLAR		(C_INFO)
 	nr		 = 	31;
 	condition	 = 	DIA_Parcival_ALLESKLAR_Condition;
 	information	 = 	DIA_Parcival_ALLESKLAR_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wszystko w porz¹dku?";
 };
 
 func int DIA_Parcival_ALLESKLAR_Condition ()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 		&& 	(DIA_Parcival_ALLESKLAR_NervCounter < 3)
 		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 		{
-				return true;
+				return TRUE;
 		};
 };
 var int DIA_Parcival_ALLESKLAR_NervCounter;
@@ -296,7 +296,7 @@ func void DIA_Parcival_ALLESKLAR_Info ()
 		AI_Output			(self, other, "DIA_Parcival_ALLESKLAR_13_04"); //Nie przeszkadzaj mi.
 	};
 
-	DIA_Parcival_ALLESKLAR_NervCounter += 1;
+	DIA_Parcival_ALLESKLAR_NervCounter = DIA_Parcival_ALLESKLAR_NervCounter + 1;
 };
 
 //#####################################################################
@@ -318,14 +318,14 @@ INSTANCE DIA_Parcival_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Parcival_KAP4_EXIT_Condition;
 	information	= DIA_Parcival_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Parcival_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Parcival_KAP4_EXIT_Info()
@@ -349,10 +349,10 @@ instance DIA_Parcival_AnyNews		(C_INFO)
 
 func int DIA_Parcival_AnyNews_Condition ()
 {	
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_AnyNews_Info ()
@@ -362,6 +362,7 @@ func void DIA_Parcival_AnyNews_Info ()
 	{
 		AI_Output 	(self ,other,"DIA_Parcival_AnyNews_13_01"); //Nale¿ysz do tych szumowin, które nazywaj¹ siê ³owcami smoków?
 		AI_Output 	(self ,other,"DIA_Parcival_AnyNews_13_02"); //Naprawdê, spodziewa³em siê po tobie troszkê wiêcej godnoœci, ty zaœ przy³¹czasz siê do takich ludzi.
+	
 	}
 	else
 	{
@@ -376,6 +377,7 @@ func void DIA_Parcival_AnyNews_Info ()
 	Info_AddChoice	(DIA_Parcival_AnyNews,"Ale oni, w przeciwieñstwie do Lorda Hagena, s¹ tutaj.",DIA_Parcival_AnyNews_LordHagen); 
 	Info_AddChoice	(DIA_Parcival_AnyNews,"Powinieneœ daæ im szansê.",DIA_Parcival_AnyNews_Chance);
 	Info_AddChoice	(DIA_Parcival_AnyNews,"Nie s¹dzisz, ¿e trochê przesadzasz?",DIA_Parcival_AnyNews_Overact);
+	
 };
 
 FUNC VOID DIA_Parcival_AnyNews_LordHagen ()
@@ -415,16 +417,16 @@ instance DIA_Parcival_Jan		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Parcival_Jan_Condition;
 	information	 = 	DIA_Parcival_Jan_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description  =	"Muszê porozmawiaæ z tob¹ o Janie.";		
 };
 
 func int DIA_Parcival_Jan_Condition ()
 {	
 	if (MIS_JanBecomesSmith == LOG_RUNNING)
-	&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
+		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_Jan_Info ()
@@ -447,7 +449,7 @@ instance DIA_Parcival_ThinkAgain		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Parcival_ThinkAgain_Condition;
 	information	 = 	DIA_Parcival_ThinkAgain_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description  =	"Proszê, rozwa¿ jeszcze sprawê Jana.";		
 };
 
@@ -456,7 +458,7 @@ func int DIA_Parcival_ThinkAgain_Condition ()
 	if (Npc_KnowsInfo (other,DIA_Parcival_Jan)) 
 	&& (MIS_JanBecomesSmith == LOG_RUNNING)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_ThinkAgain_Info ()
@@ -483,9 +485,9 @@ func int DIA_Parcival_TalkedGarond_Condition ()
 {	
 	if (Npc_KnowsInfo (other,DIA_Parcival_Jan))
 	&& (MIS_JanBecomesSmith == LOG_SUCCESS)	 
-	&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
+		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Parcival_TalkedGarond_Info ()
@@ -504,24 +506,25 @@ instance DIA_Parcival_PERMKAP4		(C_INFO)
 	nr		 = 	43;
 	condition	 = 	DIA_Parcival_PERMKAP4_Condition;
 	information	 = 	DIA_Parcival_PERMKAP4_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Coœ jeszcze?";
 };
 
 func int DIA_Parcival_PERMKAP4_Condition ()
 {
-	if (Kapitel >= 10)
-	&& (Npc_KnowsInfo(other, DIA_Parcival_AnyNews))
-	{
-		return true;
-	};
+	if (Kapitel >= 4)
+		&& (Npc_KnowsInfo(other, DIA_Parcival_AnyNews))
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Parcival_PERMKAP4_Info ()
 {
 	AI_Output			(other, self, "DIA_Parcival_PERMKAP4_15_00"); //Coœ jeszcze?
 	AI_Output			(self, other, "DIA_Parcival_PERMKAP4_13_01"); //Ach, zostaw mnie w spokoju.
+
 };
 
 //#####################################################################
@@ -542,14 +545,14 @@ INSTANCE DIA_Parcival_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Parcival_KAP5_EXIT_Condition;
 	information	= DIA_Parcival_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Parcival_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Parcival_KAP5_EXIT_Info()
@@ -565,16 +568,16 @@ instance DIA_Parcival_VERRAETER		(C_INFO)
 	npc		 = 	PAL_252_Parcival;
 	condition	 = 	DIA_Parcival_VERRAETER_Condition;
 	information	 = 	DIA_Parcival_VERRAETER_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Parcival_VERRAETER_Condition ()
 {
-	if (Npc_RefuseTalk(self) == false)
-		&& (MIS_OCGateOpen == true)
+	if (Npc_RefuseTalk(self) == FALSE)
+		&& (MIS_OCGateOpen == TRUE)
 		{
-			return true;		
+			return TRUE;		
 		};
 };
 
@@ -609,14 +612,14 @@ INSTANCE DIA_Parcival_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Parcival_KAP6_EXIT_Condition;
 	information	= DIA_Parcival_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Parcival_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Parcival_KAP6_EXIT_Info()

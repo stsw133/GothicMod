@@ -1,38 +1,39 @@
-//******************************************************************************************
-INSTANCE KDF_511_Daron (Npc_Default)
+///******************************************************************************************
+instance KDF_511_Daron (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Daron";
 	guild 								=	GIL_KDF;
 	id 									=	511;
 	voice 								=	10;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_PYR;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Nov_Mace);
+	/// ------ Weapons ------
+	EquipItem (self, ItMw_1h_Nov_Mace);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Raven, 0, ITAR_Mag_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_511;
 };
 
-FUNC VOID Rtn_Start_511()
+func void Rtn_Start_511()
 {
 	TA_Stand_Guarding	(07,35,11,35, "NW_CITY_MERCHANT_PATH_29_B");
 	TA_Stand_Eating		(11,35,12,05, "NW_CITY_MERCHANT_PATH_28_F");

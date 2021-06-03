@@ -7,13 +7,13 @@ instance DIA_Jarvis_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jarvis_EXIT_Condition;
 	information	= DIA_Jarvis_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Jarvis_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Jarvis_EXIT_Info()
@@ -30,16 +30,16 @@ instance DIA_Jarvis_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Jarvis_Hello_Condition;
 	information	= DIA_Jarvis_Hello_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Jarvis_Hello_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -59,13 +59,13 @@ instance DIA_Jarvis_DieLage (C_INFO)
 	nr			= 2;
 	condition	= DIA_Jarvis_DieLage_Condition;
 	information	= DIA_Jarvis_DieLage_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jak wygl¹da sytuacja?";
 };                       
 
 FUNC INT DIA_Jarvis_DieLage_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Jarvis_DieLage_Info()
@@ -84,7 +84,7 @@ instance DIA_Jarvis_TwoFronts (C_INFO)
 	nr			= 3;
 	condition	= DIA_Jarvis_TwoFronts_Condition;
 	information	= DIA_Jarvis_TwoFronts_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co was tak poró¿ni³o?";
 };                       
 
@@ -92,7 +92,7 @@ FUNC INT DIA_Jarvis_TwoFronts_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Jarvis_DieLage))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -117,7 +117,7 @@ instance DIA_Jarvis_LeesPlan (C_INFO)
 	nr			= 4;
 	condition	= DIA_Jarvis_LeesPlan_Condition;
 	information	= DIA_Jarvis_LeesPlan_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy wiesz, co zmierza Lee?";
 };                       
 
@@ -125,7 +125,7 @@ FUNC INT DIA_Jarvis_LeesPlan_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Jarvis_DieLage))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -149,7 +149,7 @@ instance DIA_Jarvis_SylviosPlan (C_INFO)
 	nr			= 5;
 	condition	= DIA_Jarvis_SylviosPlan_Condition;
 	information	= DIA_Jarvis_SylviosPlan_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy wiesz, co planuje Sylvio?";
 };                       
 
@@ -157,7 +157,7 @@ FUNC INT DIA_Jarvis_SylviosPlan_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Jarvis_DieLage))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -179,7 +179,7 @@ instance DIA_Jarvis_WannaJoin (C_INFO)
 	nr			= 6;
 	condition	= DIA_Jarvis_WannaJoin_Condition;
 	information	= DIA_Jarvis_WannaJoin_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcê zostaæ najemnikiem!";
 };                       
 
@@ -187,7 +187,7 @@ FUNC INT DIA_Jarvis_WannaJoin_Condition()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -209,7 +209,7 @@ instance DIA_Jarvis_MissionKO (C_INFO)
 	nr			= 7;
 	condition	= DIA_Jarvis_MissionKO_Condition;
 	information	= DIA_Jarvis_MissionKO_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiêc co powinienem zrobiæ?";
 };                       
 
@@ -218,7 +218,7 @@ FUNC INT DIA_Jarvis_MissionKO_Condition()
 	if (Npc_KnowsInfo (other, DIA_Jarvis_WannaJoin))
 	&& (Npc_KnowsInfo (other, DIA_Jarvis_DieLage))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -229,7 +229,7 @@ FUNC VOID DIA_Jarvis_MissionKO_Info()
 	AI_Output (self, other, "DIA_Jarvis_MissionKO_04_02"); //A jeœli do tego bêdziesz siê trzyma³ zasad pojedynku, to zaskarbisz sobie szacunek pozosta³ych.
 	
 	MIS_Jarvis_SldKO = LOG_RUNNING;
-	self.aivar[AIV_IgnoreCrime] = IGNORE_Murder;
+	self.aivar[AIV_IGNORE_Murder] = TRUE;
 	Log_CreateTopic (TOPIC_JarvisSLDKo,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_JarvisSLDKo,LOG_RUNNING);
 	B_LogEntry (TOPIC_JarvisSLDKo,"Jarvis chce przetrzepaæ skórê kilku ch³opakom Sylvia. Kiedy ta sprawa bêdzie ju¿ za³atwiona, udzieli mi swojego poparcia.");
@@ -244,7 +244,7 @@ instance DIA_Jarvis_DuellRegeln (C_INFO)
 	nr			= 8;
 	condition	= DIA_Jarvis_DuellRegeln_Condition;
 	information	= DIA_Jarvis_DuellRegeln_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakie s¹ regu³y pojedynku?";
 };                       
 
@@ -252,7 +252,7 @@ FUNC INT DIA_Jarvis_DuellRegeln_Condition()
 {
 	if (MIS_Jarvis_SldKO == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -274,7 +274,7 @@ instance DIA_Jarvis_SylviosMen (C_INFO)
 	nr			= 8;
 	condition	= DIA_Jarvis_SylviosMen_Condition;
 	information	= DIA_Jarvis_SylviosMen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Którzy z najemników to ludzie Sylvia?";
 };                       
 
@@ -282,7 +282,7 @@ FUNC INT DIA_Jarvis_SylviosMen_Condition()
 {
 	if (MIS_Jarvis_SldKO == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -305,7 +305,7 @@ instance DIA_Jarvis_HowMany (C_INFO)
 	nr			= 8;
 	condition	= DIA_Jarvis_HowMany_Condition;
 	information	= DIA_Jarvis_HowMany_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Ilu ludzi Sylvia muszê pokonaæ?";
 };                       
 
@@ -313,7 +313,7 @@ FUNC INT DIA_Jarvis_HowMany_Condition()
 {
 	if (MIS_Jarvis_SldKO == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -336,7 +336,7 @@ instance DIA_Jarvis_HowManyLeft (C_INFO)
 	nr			= 8;
 	condition	= DIA_Jarvis_HowManyLeft_Condition;
 	information	= DIA_Jarvis_HowManyLeft_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Ilu ludzi Sylvia jest jeszcze na mojej liœcie?";
 };                       
 
@@ -345,7 +345,7 @@ FUNC INT DIA_Jarvis_HowManyLeft_Condition()
 	if (MIS_Jarvis_SldKO == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Jarvis_HowMany))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -356,18 +356,22 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 	var int victories;
 	victories = 0;
 	
-	if (Bullco.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
+	if (Bullco.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| (Bullco.aivar[AIV_KilledByPlayer] == TRUE)
 	{
 		AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_01"); //Pokona³em Bullka.
 		AI_Output (self, other, "DIA_Jarvis_HowManyLeft_04_02"); //S³ysza³em. NieŸle.
-		victories += 1; 
+		victories = victories + 1; 
+
 	};
-	if (Rod.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
+	if (Rod.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| (Rod.aivar[AIV_KilledByPlayer] == TRUE)
 	{
 		AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_03"); //Rod wygl¹da, jakby przytrafi³ mu siê ma³y wypadek.
-		victories += 1; 
+		victories = victories + 1;
 	};
-	if (Sentenza.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
+	if (Sentenza.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| (Sentenza.aivar[AIV_KilledByPlayer] == TRUE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Sentenza_Hello))
 		{
@@ -377,10 +381,12 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		{
 			AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_05"); //Powali³em Sentenzê.
 		};
-		victories += 1; 
+
+		victories = victories + 1;
 	};
 
-	if (Fester.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
+	if (Fester.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| (Fester.aivar[AIV_KilledByPlayer] == TRUE)
 	{
 		if (MIS_Fester_KillBugs == LOG_OBSOLETE)
 		{
@@ -390,10 +396,11 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		{
 			AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_07"); //Fester dosta³ to, co mu siê nale¿a³o.
 		};
-		victories += 1; 
+		victories = victories + 1;
 	};
 	
-	if (Raoul.aivar[AIV_DefeatedByPlayer] != DBP_NONE)
+	if (Raoul.aivar[AIV_DefeatedByPlayer] == TRUE)
+	|| (Raoul.aivar[AIV_KilledByPlayer] == TRUE)
 	{
 		if (victories == 0)
 		{
@@ -403,10 +410,12 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		{
 			AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_09"); //Poszed³em zobaczyæ siê z Raoulem...
 		};
+	
 		AI_Output (self, other, "DIA_Jarvis_HowManyLeft_04_10"); //I?
 		AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_11"); //Koniecznie potrzebowa³ porz¹dnego obicia pyska.
-		victories += 1; 
+		victories = victories + 1;
 	};
+	
 	
 	// ------------------------
 	if (victories < 3)
@@ -432,9 +441,9 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		
 		MIS_Jarvis_SldKO = LOG_SUCCESS;
 		
-		self.aivar[AIV_IgnoreCrime] = false;
+		self.aivar[AIV_IGNORE_Murder] = FALSE;
 		
-		B_GivePlayerXP(XP_Ambient*victories);
+		B_GivePlayerXP ((XP_Ambient)*victories);
 		B_LogEntry (TOPIC_SLDRespekt,"Jarvis udzieli mi swojego poparcia, jeœli zechcê wst¹piæ w szeregi najemników.");
 	};
 };
@@ -459,7 +468,7 @@ instance DIA_Jarvis_PERM (C_INFO)
 	nr			= 8;
 	condition	= DIA_Jarvis_PERM_Condition;
 	information	= DIA_Jarvis_PERM_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakieœ wieœci?";
 };                       
 
@@ -467,7 +476,7 @@ FUNC INT DIA_Jarvis_PERM_Condition()
 {
 	if (other.guild != GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -475,9 +484,9 @@ FUNC VOID DIA_Jarvis_PERM_Info()
 {	
 	AI_Output (other, self, "DIA_Jarvis_PERM_15_00"); //Jakieœ wieœci?
 	
-	if (Kapitel <= 9)
+	if (Kapitel <= 3)
 	{
-		if (Jarvis_GuildComment == false)
+		if (Jarvis_GuildComment == FALSE)
 		{
 			if (other.guild == GIL_SLD)
 			|| (other.guild == GIL_DJG)
@@ -489,7 +498,7 @@ FUNC VOID DIA_Jarvis_PERM_Info()
 				AI_Output (self, other, "DIA_Jarvis_PERM_04_02"); //Dokona³eœ z³ego wyboru - mog³eœ byæ jednym z nas.
 			};
 		
-			Jarvis_GuildComment = true;
+			Jarvis_GuildComment = TRUE;
 		}
 		else
 		{
@@ -497,13 +506,13 @@ FUNC VOID DIA_Jarvis_PERM_Info()
 		};
 	};
 	
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 	{
-		if (Jarvis_SylvioComment == false)
+		if (Jarvis_SylvioComment == FALSE)
 		{
 			AI_Output (self, other, "DIA_Jarvis_PERM_04_04"); //Silvio w koñcu siê zmy³. Gdy dowiedzia³ siê o smokach, to razem z czêœci¹ swoich ch³opaków wyruszy³ do Kolonii.
 			AI_Output (self, other, "DIA_Jarvis_PERM_04_05"); //Pewnie myœli, ¿e tam mo¿na siê ob³owiæ.
-			Jarvis_SylvioComment = true;
+			Jarvis_SylvioComment = TRUE;
 		}
 		else
 		{

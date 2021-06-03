@@ -8,22 +8,22 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_EXIT (C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_BDT_10018_Torwache_EXIT_Condition;
 	information	= DIA_Addon_BDT_10018_Torwache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jeszcze porozmawiamy.";
 };        
          
 FUNC INT DIA_Addon_BDT_10018_Torwache_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_BDT_10018_Torwache_EXIT_Info()
 {
 	AI_Output (other, self,"DIA_Addon_BDT_10018_Torwache_EXIT_15_00"); //Jeszcze porozmawiamy.
 	
-	if (BDT_100018_Einmal == false)
+	if (BDT_100018_Einmal == FALSE)
 	{
 		AI_Output (self, other,"DIA_Addon_BDT_10018_Torwache_EXIT_04_01"); //Wiesz, co ci powiem.
-		BDT_100018_Einmal = true;
+		BDT_100018_Einmal = TRUE;
 	}
 	else
 	{
@@ -47,8 +47,8 @@ instance DIA_Addon_BDT_10018_Torwache_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_BDT_10018_Torwache_FirstWarn_Condition;
 	information	= DIA_Addon_BDT_10018_Torwache_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_Addon_BDT_10018_Torwache_FirstWarn_Condition()
@@ -56,26 +56,26 @@ func int DIA_Addon_BDT_10018_Torwache_FirstWarn_Condition()
 	if (Npc_GetDistToWP(other, BDT_10018_Checkpoint) <= 700) //NICHT von hinten!
 	{
 		Npc_SetRefuseTalk(self,5);
-		return false;
+		return FALSE;
 	};
 	
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_RefuseTalk(self) == false))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			)
+	&&  (Npc_RefuseTalk(self) 							== FALSE 		))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Addon_BDT_10018_Torwache_FirstWarn_Info()
 {
 	
-	if ( BDT_100018_Tells == false)
+	if ( BDT_100018_Tells == FALSE)
 	{
 		AI_Output (self, other,"DIA_Addon_BDT_10018_Torwache_FirstWarn_04_00"); //Hej, spokojnie! Nie mo¿esz wejœæ, wiêc zje¿d¿aj!
 		AI_Output (other, self,"DIA_Addon_BDT_10018_Torwache_FirstWarn_15_01"); //Z drogi - muszê siê widzieæ z Krukiem.
 		AI_Output (self, other,"DIA_Addon_BDT_10018_Torwache_FirstWarn_04_02"); //Nikt nie mo¿e tam wejœæ. Kruk wyda³ wyraŸny rozkaz.
-		BDT_100018_Tells = true;
+		BDT_100018_Tells = TRUE;
 		
 		Log_CreateTopic (Topic_Addon_Tempel,LOG_MISSION);
 		Log_SetTopicStatus (Topic_Addon_Tempel,LOG_RUNNING);
@@ -99,17 +99,17 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_BDT_10018_Torwache_SecondWarn_Condition;
 	information	= DIA_Addon_BDT_10018_Torwache_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Addon_BDT_10018_Torwache_SecondWarn_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_10018_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50))) 
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_10018_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -133,28 +133,28 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_Addon_BDT_10018_Torwache_Attack_Condition;
 	information	= DIA_Addon_BDT_10018_Torwache_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Addon_BDT_10018_Torwache_Attack_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_10018_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_10018_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Addon_BDT_10018_Torwache_Attack_Info()
 {
 	other.aivar[AIV_LastDistToWP] 			= 0;
-	self.aivar[AIV_Guardpassage_Status] = GP_NONE;						//wird auch in ZS_Attack resettet
-
+	self.aivar[AIV_Guardpassage_Status]	= GP_NONE;						//wird auch in ZS_Attack resettet
+	
 	AI_Output (self, other,"DIA_Addon_BDT_10018_Torwache_Attack_04_00"); //Za Kruka!
-
-	AI_StopProcessInfos(self);
+	
+	AI_StopProcessInfos	(self);
 	B_Attack (self, other, AR_GuardStopsIntruder, 0); 
 };
 //----------------------------------------------------------------------
@@ -166,12 +166,12 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10018_Torwache_Hi_Condition;
 	information = DIA_Addon_10018_Torwache_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "To piekielnie wa¿ne! Muszê siê z nim widzieæ.";
 };
 FUNC INT DIA_Addon_10018_Torwache_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10018_Torwache_Hi_Info()
 {	
@@ -189,7 +189,7 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_Bloodwyn   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10018_Torwache_Bloodwyn_Condition;
 	information = DIA_Addon_10018_Torwache_Bloodwyn_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Bloodwyn? A on nie jest martwy?";
 };
 FUNC INT DIA_Addon_10018_Torwache_Bloodwyn_Condition()
@@ -197,7 +197,7 @@ FUNC INT DIA_Addon_10018_Torwache_Bloodwyn_Condition()
 	if Npc_KnowsInfo (other, DIA_Addon_BDT_10018_Torwache_Hi)
 	&& !Npc_IsDead (Bloodwyn)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_10018_Torwache_Bloodwyn_Info()
@@ -214,7 +214,7 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_Bribe   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_10018_Torwache_Bribe_Condition;
 	information = DIA_Addon_10018_Torwache_Bribe_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jeœli mnie przepuœcisz, dam ci tysi¹c sztuk z³ota.";
 };
 FUNC INT DIA_Addon_10018_Torwache_Bribe_Condition()
@@ -222,7 +222,7 @@ FUNC INT DIA_Addon_10018_Torwache_Bribe_Condition()
 	if Npc_KnowsInfo (other, DIA_Addon_BDT_10018_Torwache_Hi)
 	&& !Npc_IsDead (Bloodwyn)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_10018_Torwache_Bribe_Info()
@@ -239,7 +239,7 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_Drin   (C_INFO)
 	nr          = 90;
 	condition   = DIA_Addon_10018_Torwache_Drin_Condition;
 	information = DIA_Addon_10018_Torwache_Drin_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Bloodwyn jest w œrodku? No to zabierz go stamt¹d!";
 };
 FUNC INT DIA_Addon_10018_Torwache_Drin_Condition()
@@ -247,7 +247,7 @@ FUNC INT DIA_Addon_10018_Torwache_Drin_Condition()
 	if Npc_KnowsInfo (other, DIA_Addon_BDT_10018_Torwache_Hi)
 	&& !Npc_IsDead (Bloodwyn)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_10018_Torwache_Drin_Info()
@@ -270,14 +270,14 @@ INSTANCE DIA_Addon_BDT_10018_Torwache_kopf   (C_INFO)
 	nr          = 90;
 	condition   = DIA_Addon_10018_Torwache_kopf_Condition;
 	information = DIA_Addon_10018_Torwache_kopf_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "(Poka¿ g³owê Bloodwyna)";
 };
 FUNC INT DIA_Addon_10018_Torwache_kopf_Condition()
 {	
 	if( Npc_HasItems (other, ItMi_Addon_Bloodwyn_Kopf) >= 1)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_10018_Torwache_kopf_Info()
@@ -287,7 +287,7 @@ FUNC VOID DIA_Addon_10018_Torwache_kopf_Info()
 	AI_Output (self, other, "DIA_Addon_BDT_10018_Torwache_kopf_04_02");//Ee, tak, echem, nie, to znaczy... Mo¿esz wejœæ.
 	
 	MIS_BloodwynRaus = LOG_SUCCESS;
-
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;	
+	
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;	
 	AI_StopProcessInfos(self);
 };	

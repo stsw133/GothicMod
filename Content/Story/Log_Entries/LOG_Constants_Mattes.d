@@ -1,8 +1,14 @@
-//******************************************************************************************
-//	LOG_Constants für Missionen
-//******************************************************************************************
+// ***************************
+// LOG_Constants für Missionen
+// ---------------------------
+// (LOG_MISSION)
+// ***************************
+
+
+//--------Addon-----------
 
 //-------Banditen----------------
+const string Topic_Addon_Logan		= "Polowanie na b³otne wê¿e";	
 const string Topic_Addon_Stoneplate	= "Kamienna tablica na bagnie";
 const string Topic_Addon_Franco		= "WejdŸ (do obozu bandytów)";
 
@@ -15,6 +21,8 @@ const string Topic_Addon_Tempel		= "Dojœcie do œwi¹tyni";
 
 const string Topic_Addon_Fortuno	= "Meandry umys³u";
 const string Topic_Addon_Hammer		= "Mocna gorza³ka";	
+
+
 
 const string Topic_Addon_BDT_Trader  = "Handel w obozie bandytów";	
 const string Topic_Addon_BDT_Teacher = "Nauka w obozie bandytów";	
@@ -64,14 +72,19 @@ const string 	TOPIC_Ignaz					= 	"Eksperyment";
 const string 	TOPIC_AlrikSchwert			= 	"Miecz Alrika";
 const string 	TOPIC_Garvell				= 	"Informacje dla Garvella";
 
+
+
 //---------Milizaufträge-------------------------------
 const string	TOPIC_Peck					= 	"Gdzie jest Peck?";
 const string	TOPIC_Warehouse				= 	"Paczuszka pe³na ziela";
 const string	TOPIC_Redlight				= 	"Afera z zielem";
 const string	TOPIC_Feldraeuber			= 	"Problemy na farmie Lobarta";
 
+
+
 //---------Kloster-----------------------------
-const string	TOPIC_BecomeKdF				=	"Mag Ognia";
+const string	TOPIC_BecomeKdF				=	"Mag Ognia"; 
+
 const string	Topic_Kloster				=	"Jak siê dostaæ do klasztoru";
 const string    Topic_Gemeinschaft			=	"S³u¿ba spo³ecznoœci";
 
@@ -104,6 +117,7 @@ const string 	Topic_OpolosStudy			=   "Opolos i biblioteka";
 const string	Topic_KlosterTrader			=	"Handel w klasztorze";
 const string	Topic_KlosterTeacher		=	"Nauka w klasztorze";
 
+
 //---------Söldner----------------------------------
 const string	TOPIC_BecomeSLD				=	"Jeden z najemników"; 
 const string	TOPIC_TorlofPacht			=	"Zebraæ czynsz";
@@ -123,7 +137,7 @@ const string 	TOPIC_KickBullco			=	"Skopaæ ty³ek Bullkowi";
  
 const string 	TOPIC_Frieden				=	"Oferta pokoju";  
  
-//const string 	TOPIC_WolfJob				=	"Wilk";  
+//const string 	TOPIC_WolfJob				=	"Wolf";  
 
 //-------------------------------------------------------------------------------------
 

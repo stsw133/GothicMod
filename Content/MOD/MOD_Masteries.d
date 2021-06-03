@@ -182,18 +182,26 @@ func void SPECIALWEAPONDAMAGE_CHECK()
 //		self.protection[PROT_POINT] -= 1;
 //		self.aivar[AIV_Penetrated] += 1;
 //	};
-
+	
+	var int dmg;
+	
 	if (other.aivar[AIV_LifeSteal] > 0)
 	{
 		if (other.guild > GIL_SEPERATOR_HUM)
-		{	Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal]*other.attribute[ATR_STRENGTH])/100);		}
-		else if (Npc_IsInFightMode(other,FMODE_MELEE))
-		{	Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal]*other.attribute[ATR_STRENGTH])/100);		}
-		else if (Npc_IsInFightMode(other,FMODE_FAR))
-		{	Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal]*other.attribute[ATR_DEXTERITY])/100);		}
-		else if (Npc_IsInFightMode(other,FMODE_MAGIC))
-		{	Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal]*other.damage[DAM_INDEX_MAGIC])/100);		}
-		else
-		{	Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal]*other.attribute[ATR_STRENGTH])/100);		};
+		{
+			dmg = other.attribute[ATR_STRENGTH] - self.protection[PROT_EDGE];
+			if (dmg > 0)
+			{
+				Npc_ChangeAttribute (other, ATR_HITPOINTS, (other.aivar[AIV_LifeSteal] * dmg)/100);
+			};
+		}
+		else if (Npc_IsInFightMode(other, FMODE_MELEE))
+		{
+			dmg = other.attribute[ATR_STRENGTH] /*+ Npc_GetEquippedMeleeWeapon(other).damageTotal*/ - self.protection[PROT_EDGE];
+			if (dmg > 0)
+			{
+				Npc_ChangeAttribute (other, ATR_HITPOINTS, other.aivar[AIV_LifeSteal]/2 + (other.aivar[AIV_LifeSteal]*dmg/200));
+			};
+		};
 	};
 };

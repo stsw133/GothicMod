@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	SPL_SummonDemon
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_SummonDemon
+///******************************************************************************************
 
 const int SPL_Cost_SummonDemon			=	120;
 
-//******************************************************************************************
-INSTANCE Spell_SummonDemon (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_SummonDemon (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
@@ -13,7 +13,7 @@ INSTANCE Spell_SummonDemon (C_Spell_Proto)
 
 func int Spell_Logic_SummonDemon (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonDemon/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonDemon/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_SummonDemon)
 	{
 		return SPL_SENDCAST;
@@ -26,23 +26,25 @@ func int Spell_Logic_SummonDemon (var int manaInvested)
 
 func void Spell_Cast_SummonDemon()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonDemon/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_SummonDemon/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_SummonDemon/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_SummonDemon)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_SummonDemon;
 	};
 	
-	self.aivar[AIV_SelectSpell] += 1;
-	
 	if (Npc_IsPlayer(self))
 	{
-		Wld_SpawnNpcRange (self, Summoned_Demon, 1, 1000);
+		Wld_SpawnNpcRange (self, Summoned_Demon, 1, 500);
 	}
 	else
 	{
-		Wld_SpawnNpcRange (self, Demon, 1, 1000);
+		Wld_SpawnNpcRange (self, Demon, 1, 500);
 	};
+	
+	self.aivar[AIV_SelectSpell] += 1;
 };
+
+

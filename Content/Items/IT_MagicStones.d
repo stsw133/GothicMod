@@ -1,86 +1,80 @@
-//******************************************************************************************
-//	MagicStones
-//******************************************************************************************
+///******************************************************************************************
+///	MagicStones
+///******************************************************************************************
 prototype ItemPR_Teleport (C_Item)
 {
 	name 					=	"Kamieñ teleportacji";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MULTI;
 	effect					=	"spellfx_weakglimmer_blue";
-
+	
 	value					=	100;
 	visual 					=	"ItMi_MagicStone_Blue.3DS";
 	material				=	MAT_STONE;
 	scemename				=	"FASTUSE";
-
+	
 	description				= 	name;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-//******************************************************************************************
+///******************************************************************************************
 prototype ItemPR_Transform (C_Item)
 {
 	name 					=	"Kamieñ transformacji";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MULTI;
 	effect					=	"spellfx_weakglimmer_green";
-
+	
 	value					=	100;
 	visual 					=	"ItMi_MagicStone_Green.3DS";
 	material				=	MAT_STONE;
 	scemename				=	"FASTUSE";
-
+	
 	description				= 	name;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-//******************************************************************************************
+///******************************************************************************************
 prototype ItemPR_Summon (C_Item)
 {
 	name 					=	"Kamieñ przyzwania";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MULTI;
 	effect					=	"spellfx_weakglimmer_red";
-
+	
 	value					=	100;
 	visual 					=	"ItMi_MagicStone_Red.3DS";
 	material				=	MAT_STONE;
 	scemename				=	"FASTUSE";
-
+	
 	description				= 	name;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-//******************************************************************************************
-//	SetItMSAttributes
-//******************************************************************************************
+///******************************************************************************************
+///	SetItMSAttributes
+///******************************************************************************************
 func void SetItMSAttributes (var C_ITEM itm, var int type)
 {
 	if (type == AIV_TelStone)
 	{
-		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_TelStone])
-		{	itm.flags = ITEM_MULTI;				}
-		else
-		{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
+		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_TelStone])	{	itm.flags = ITEM_MULTI;				}
+		else													{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 	}
 	else if (type == AIV_TrfStone)
 	{
-		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_TrfStone])
-		{	itm.flags = ITEM_MULTI;				}
-		else
-		{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
+		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_TrfStone])	{	itm.flags = ITEM_MULTI;				}
+		else													{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 	}
 	else if (type == AIV_SumStone)
 	{
-		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_SumStone])
-		{	itm.flags = ITEM_MULTI;				}
-		else
-		{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
+		if (Hlp_GetinstanceID(itm) != hero.aivar[AIV_SumStone])	{	itm.flags = ITEM_MULTI;				}
+		else													{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 	};
 };
-//******************************************************************************************
-//	MagicStone Items
-//******************************************************************************************
+///******************************************************************************************
+///	MagicStone Items
+///******************************************************************************************
 instance ItTe_MonasteryUnderground (ItemPR_Teleport) 
 {
 	on_state[0]		=	Use_ItTe_MonasteryUnderground;
@@ -141,7 +135,7 @@ instance ItTe_DemonTower (ItemPR_Teleport)
 	TEXT[1]			= 	"Do starej wie¿y demonów";
 	SetItMSAttributes (self, AIV_TelStone);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItTr_GiantBug (ItemPR_Transform) 
 {
 	on_state[0]		=	Use_ItTr_GiantBug;
@@ -196,7 +190,7 @@ instance ItTr_Wolf (ItemPR_Transform)
 	TEXT[1]			=	"W wilka";
 	SetItMSAttributes (self, AIV_TrfStone);
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItSu_Demon (ItemPR_Summon)
 {
 	on_state[0]		=	Use_ItSu_Demon;
@@ -221,161 +215,161 @@ instance ItSu_Wolf_Skeleton (ItemPR_Summon)
 	TEXT[1]			=	"Wilk-szkielet";
 	SetItMSAttributes (self, AIV_SumStone);
 };
-//******************************************************************************************
-//	MagicStones Check
-//******************************************************************************************
+///******************************************************************************************
+///	MagicStones Check
+///******************************************************************************************
 func void TELEPORT_CHECK()
 {
 	var int Teleports;
-
-	Teleports = Npc_HasItems(self,ItTe_MonasteryUnderground);
+	
+	Teleports = Npc_HasItems(self, ItTe_MonasteryUnderground);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_MonasteryUnderground, Teleports);
 		CreateInvItems (self, ItTe_MonasteryUnderground, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_Khorinis);
+	Teleports = Npc_HasItems(self, ItTe_Khorinis);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_Khorinis, Teleports);
 		CreateInvItems (self, ItTe_Khorinis, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_Monastery);
+	Teleports = Npc_HasItems(self, ItTe_Monastery);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_Monastery, Teleports);
 		CreateInvItems (self, ItTe_Monastery, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_BigFarm);
+	Teleports = Npc_HasItems(self, ItTe_BigFarm);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_BigFarm, Teleports);
 		CreateInvItems (self, ItTe_BigFarm, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_Xardas);
+	Teleports = Npc_HasItems(self, ItTe_Xardas);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_Xardas, Teleports);
 		CreateInvItems (self, ItTe_Xardas, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_Taverne);
+	Teleports = Npc_HasItems(self, ItTe_Taverne);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_Taverne, Teleports);
 		CreateInvItems (self, ItTe_Taverne, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_PassNW);
+	Teleports = Npc_HasItems(self, ItTe_PassNW);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_PassNW, Teleports);
 		CreateInvItems (self, ItTe_PassNW, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_PassOW);
+	Teleports = Npc_HasItems(self, ItTe_PassOW);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_PassOW, Teleports);
 		CreateInvItems (self, ItTe_PassOW, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_Castle);
+	Teleports = Npc_HasItems(self, ItTe_Castle);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_Castle, Teleports);
 		CreateInvItems (self, ItTe_Castle, Teleports);
 	};
-	Teleports = Npc_HasItems(self,ItTe_DemonTower);
+	Teleports = Npc_HasItems(self, ItTe_DemonTower);
 	if (Teleports > 0)
 	{
 		Npc_RemoveInvItems (self, ItTe_DemonTower, Teleports);
 		CreateInvItems (self, ItTe_DemonTower, Teleports);
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void TRANSFORM_CHECK()
 {
 	var int Transforms;
 	
-	Transforms = Npc_HasItems(self,ItTr_GiantBug);
+	Transforms = Npc_HasItems(self, ItTr_GiantBug);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_GiantBug, Transforms);
 		CreateInvItems (self, ItTr_GiantBug, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_GiantRat);
+	Transforms = Npc_HasItems(self, ItTr_GiantRat);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_GiantRat, Transforms);
 		CreateInvItems (self, ItTr_GiantRat, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Lurker);
+	Transforms = Npc_HasItems(self, ItTr_Lurker);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Lurker, Transforms);
 		CreateInvItems (self, ItTr_Lurker, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Shadowbeast);
+	Transforms = Npc_HasItems(self, ItTr_Shadowbeast);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Shadowbeast, Transforms);
 		CreateInvItems (self, ItTr_Shadowbeast, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Sheep);
+	Transforms = Npc_HasItems(self, ItTr_Sheep);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Sheep, Transforms);
 		CreateInvItems (self, ItTr_Sheep, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Snapper);
+	Transforms = Npc_HasItems(self, ItTr_Snapper);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Snapper, Transforms);
 		CreateInvItems (self, ItTr_Snapper, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Waran);
+	Transforms = Npc_HasItems(self, ItTr_Waran);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Waran, Transforms);
 		CreateInvItems (self, ItTr_Waran, Transforms);
 	};
-	Transforms = Npc_HasItems(self,ItTr_Wolf);
+	Transforms = Npc_HasItems(self, ItTr_Wolf);
 	if (Transforms > 0)
 	{
 		Npc_RemoveInvItems (self, ItTr_Wolf, Transforms);
 		CreateInvItems (self, ItTr_Wolf, Transforms);
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void SUMMON_CHECK()
 {
 	var int Summons;
 
-	Summons = Npc_HasItems(self,ItSu_Demon);
+	Summons = Npc_HasItems(self, ItSu_Demon);
 	if (Summons > 0)
 	{
 		Npc_RemoveInvItems (self, ItSu_Demon, Summons);
 		CreateInvItems (self, ItSu_Demon, Summons);
 	};
-	Summons = Npc_HasItems(self,ItSu_Golem);
+	Summons = Npc_HasItems(self, ItSu_Golem);
 	if (Summons > 0)
 	{
 		Npc_RemoveInvItems (self, ItSu_Golem, Summons);
 		CreateInvItems (self, ItSu_Golem, Summons);
 	};
-	Summons = Npc_HasItems(self,ItSu_Skeleton);
+	Summons = Npc_HasItems(self, ItSu_Skeleton);
 	if (Summons > 0)
 	{
 		Npc_RemoveInvItems (self, ItSu_Skeleton, Summons);
 		CreateInvItems (self, ItSu_Skeleton, Summons);
 	};
-	Summons = Npc_HasItems(self,ItSu_Wolf_Skeleton);
+	Summons = Npc_HasItems(self, ItSu_Wolf_Skeleton);
 	if (Summons > 0)
 	{
 		Npc_RemoveInvItems (self, ItSu_Wolf_Skeleton, Summons);
 		CreateInvItems (self, ItSu_Wolf_Skeleton, Summons);
 	};
 };
-//******************************************************************************************
-//	MagicStones Functions
-//******************************************************************************************
+///******************************************************************************************
+///	MagicStones Functions
+///******************************************************************************************
 func void Use_ItTe_MonasteryUnderground()
 {
 	self.aivar[AIV_TelStone] = ItTe_MonasteryUnderground;
@@ -426,7 +420,7 @@ func void Use_ItTe_DemonTower()
 	self.aivar[AIV_TelStone] = ItTe_DemonTower;
 	TELEPORT_CHECK();
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Use_ItTr_GiantBug()
 {
 	self.aivar[AIV_TrfStone] = ItTr_GiantBug;
@@ -472,7 +466,7 @@ func void Use_ItTr_Wolf()
 	self.aivar[AIV_TrfStone] = ItTr_Wolf;
 	TRANSFORM_CHECK();
 };
-//******************************************************************************************
+///******************************************************************************************
 func void Use_ItSu_Demon()
 {
 	self.aivar[AIV_SumStone] = ItSu_Demon;
@@ -494,16 +488,16 @@ func void Use_ItSu_Wolf_Skeleton()
 	SUMMON_CHECK();
 };
 
-//******************************************************************************************
-//	MagicDust
-//******************************************************************************************
+///******************************************************************************************
+///	MagicDust
+///******************************************************************************************
 prototype ItemPR_MagicDust (C_Item)
 {
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MULTI|ITEM_MISSION;
 	visual 					=	"ItMi_MagicDust.3ds";
 };
-//******************************************************************************************
+///******************************************************************************************
 instance ItMi_LifeDust (ItemPR_MagicDust)
 {
 	name 			=	"Esencja ¿ycia";
@@ -543,7 +537,7 @@ instance ItMi_TimeDust (ItemPR_MagicDust)
 	name 			=	"Esencja czasu";
 	effect			=	"spellfx_weakglimmer_yellow";
 	description		= 	name;
-
+	
 //	scemeName		=	"FASTUSED";
 	on_state[0]		=	Use_ItMi_TimeDust;
 };

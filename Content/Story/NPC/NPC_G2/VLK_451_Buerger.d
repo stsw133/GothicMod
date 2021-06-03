@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_451_Buerger (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_BUERGER;
 	guild 								=	GIL_VLK;
 	id 									=	451;
 	voice 								=	8;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Dagger);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Lefty, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_451;
 };
 
-FUNC VOID Rtn_Start_451()
+func void Rtn_Start_451()
 {
 	TA_Smalltalk	(06,10,13,00, "NW_CITY_MERCHANT_SHOP01_FRONT_03");
 	TA_Smalltalk	(13,00,14,02, "NW_CITY_MAINSTREET_05");

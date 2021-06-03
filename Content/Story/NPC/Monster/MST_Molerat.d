@@ -1,19 +1,19 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Molerat (C_Npc)
+///******************************************************************************************
+prototype Mst_Default_Molerat (C_Npc)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Kretoszczur";
 	guild								=	GIL_MOLERAT;
 	aivar[AIV_MM_REAL_ID]				= 	ID_MOLERAT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 3);
 
-	// ------ FT ------
+	/// ------ FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_MOLERAT;
 
-	// ------ Senses & Ranges ------
+	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 
@@ -22,19 +22,30 @@ PROTOTYPE Mst_Default_Molerat (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_Packhunter] 			=	true;
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart] 			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Molerat()
 {
 	Mdl_SetVisual		(self, "Molerat.mds");
 	Mdl_SetVisualBody	(self, "Mol_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
-//******************************************************************************************
-INSTANCE Molerat (Mst_Default_Molerat)
+func void B_SetVisuals_Swamprat()
+{
+	Mdl_SetVisual		(self, "Swamprat.mds");
+	Mdl_SetVisualBody	(self, "Swamprat_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
+};
+///******************************************************************************************
+instance Molerat (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
+};
+instance Swamprat (Mst_Default_Molerat)
+{
+	name						=	"Bagnoszczur";
+	aivar[AIV_MM_REAL_ID]		=	ID_SWAMPRAT;
+	B_SetVisuals_Swamprat();
 };

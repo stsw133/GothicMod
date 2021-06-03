@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Matt_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Matt_EXIT_Condition;
 	information	= DIA_Addon_Matt_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Matt_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Matt_EXIT_Info()
 {	
@@ -28,15 +28,15 @@ INSTANCE DIA_Addon_Matt_Hello(C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Matt_Hello_Condition;
 	information	= DIA_Addon_Matt_Hello_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Matt_Hello_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Matt_Hello_Info()
@@ -53,18 +53,18 @@ INSTANCE DIA_Addon_Matt_PERM (C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Matt_PERM_Condition;
 	information	= DIA_Addon_Matt_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	Description  = "Jak leci?";
 };                       
 FUNC INT DIA_Addon_Matt_PERM_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Matt_PERM_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_Matt_Alright_15_01"); //Jak leci?
 	
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
 		if (self.attribute[ATR_HITPOINTS] < 100)
 		{
@@ -75,7 +75,7 @@ func VOID DIA_Addon_Matt_PERM_Info()
 			AI_Output (self ,other,"DIA_Addon_Matt_Alright_10_01"); //Wszystko w porz¹dku, 'kapitanie'!
 		};
 	}
-	else if (GregIsBack == true)
+	else if (GregIsBack == TRUE)
 	&& (!Npc_IsDead(Greg))
 	{
 		AI_Output (self ,other,"DIA_Addon_Matt_Job_10_01"); //Nie dra¿nij mnie. Nie mamy ju¿ naszych statków.
@@ -103,7 +103,7 @@ INSTANCE DIA_Addon_Matt_Bandits(C_INFO)
 };                       
 FUNC INT DIA_Addon_Matt_Bandits_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Matt_Bandits_Info()
 {	
@@ -130,12 +130,12 @@ INSTANCE DIA_Addon_Matt_Francis(C_INFO)
 };                       
 FUNC INT DIA_Addon_Matt_Francis_Condition()
 {
-	if (Francis_ausgeschissen == false)
+	if (Francis_ausgeschissen == FALSE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Addon_Skip_GregsHut))
-		|| (Francis.aivar[AIV_TalkedToPlayer] == true)
+		|| (Francis.aivar[AIV_TalkedToPlayer] == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};	
 };
@@ -163,14 +163,14 @@ instance DIA_Addon_Matt_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_Matt_Anheuern_Condition;
 	information	= DIA_Addon_Matt_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "ChodŸ ze mn¹.";
 };                       
 FUNC INT DIA_Addon_Matt_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Matt_Anheuern_Info()
@@ -193,7 +193,7 @@ func VOID DIA_Addon_Matt_Anheuern_ShutUp()
 	Info_ClearChoices (DIA_Addon_Matt_Anheuern);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"FOLLOW");
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 };
 func VOID DIA_Addon_Matt_Anheuern_ClearCanyon()
 {
@@ -205,7 +205,7 @@ func VOID DIA_Addon_Matt_Anheuern_ClearCanyon()
 	Info_ClearChoices (DIA_Addon_Matt_Anheuern);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"FOLLOW");
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 };
 
 // ------------------------------------------------------------
@@ -217,23 +217,23 @@ instance DIA_Addon_Matt_ComeOn(C_INFO)
 	nr		 	= 	12;
 	condition	= 	DIA_Addon_Matt_ComeOn_Condition;
 	information	= 	DIA_Addon_Matt_ComeOn_Info;
-	permanent	= 	true;
+	permanent	= 	TRUE;
 	description	= 	"ChodŸ.";
 };
 func int DIA_Addon_Matt_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Matt_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Matt_ComeOn_Info ()
 {
 	AI_Output (other, self, "DIA_Addon_Matt_ComeOn_15_00"); //ChodŸ.
 	
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		B_Say(self, other, "$RUNAWAY");
 		AI_StopProcessInfos (self);
@@ -244,7 +244,7 @@ func void DIA_Addon_Matt_ComeOn_Info ()
 		AI_StopProcessInfos (self);
 		B_Addon_PiratesFollowAgain();
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -257,14 +257,14 @@ INSTANCE DIA_Addon_Matt_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_Matt_GoHome_Condition;
 	information	= DIA_Addon_Matt_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_Matt_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -274,7 +274,7 @@ FUNC VOID DIA_Addon_Matt_GoHome_Info()
 	AI_Output (self, other, "DIA_Addon_Matt_GoHome_10_01"); //Chocia¿ ³yczek grogu!
 		
 	AI_StopProcessInfos (self); 
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START"); //START! HOGE
 };
 
@@ -287,15 +287,15 @@ INSTANCE DIA_Addon_Matt_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_Matt_TooFar_Condition;
 	information	= DIA_Addon_Matt_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Matt_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -325,15 +325,15 @@ INSTANCE DIA_Addon_Matt_Healing(C_INFO)
 	nr			= 15;
 	condition	= DIA_Addon_Matt_Healing_Condition;
 	information	= DIA_Addon_Matt_Healing_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Matt_Healing_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	&& (self.attribute[ATR_HITPOINTS] < (self.attribute[ATR_HITPOINTS_MAX] - 100))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Matt_Healing_Info()

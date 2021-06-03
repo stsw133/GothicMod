@@ -8,15 +8,15 @@ INSTANCE DIA_Brutus_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Brutus_EXIT_Condition;
 	information = DIA_Brutus_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE ;
 };
 
 FUNC INT DIA_Brutus_EXIT_Condition()
 {	
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Brutus_EXIT_Info()
@@ -34,22 +34,24 @@ instance DIA_Brutus_AFTER_FIGHT		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Brutus_AFTER_FIGHT_Condition;
 	information	 = 	DIA_Brutus_AFTER_FIGHT_Info;
-	permanent	 = 	true;
-	important	 =  true;
+	permanent	 = 	TRUE;
+	important	 =  TRUE;
 };
 
 func int DIA_Brutus_AFTER_FIGHT_Condition ()
 {	
 	if (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
-	&& (self.aivar[AIV_LastFightComment] == false)
+	&& (self.aivar[AIV_LastFightComment] == FALSE)
 	&& Npc_IsInState (self, ZS_Talk)
-	&& (NpcObsessedByDMT_Brutus == false)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Brutus_AFTER_FIGHT_Info ()
 {
+
+	
 	if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)
 	{
 		AI_Output (other, self, "DIA_Brutus_AFTER_FIGHT_15_00"); //Co tam, dalej masz wszystkie zêby?
@@ -60,13 +62,13 @@ func void DIA_Brutus_AFTER_FIGHT_Info ()
 		AI_Output (other, self, "DIA_Brutus_AFTER_FIGHT_15_02"); //Chyba po³ama³eœ mi wszystkie ¿ebra.
 		AI_Output (self, other, "DIA_Brutus_AFTER_FIGHT_06_03"); //A przecie¿ nie uderzy³em ciê zbyt mocno. Zreszt¹ niewa¿ne, lubiê kolesi, którzy potrafi¹ przyj¹æ kilka ciosów.
 		
-		if (Brutus_einmalig == false)
+		if (Brutus_einmalig == FALSE)
 		{
 			AI_Output (self, other, "DIA_Brutus_AFTER_FIGHT_06_04"); //Ta mikstura pomo¿e ci stan¹æ z powrotem na nogi. A poza tym œwietnie dzia³a na ¿o³¹dek!
 		
 			CreateInvItems (self, ItPo_Health_01,1);
 			B_GiveInvItems (self, hero, ItPo_Health_01,1); 
-			Brutus_einmalig = true;
+			Brutus_einmalig = TRUE;
 		};
 	}
 	else //Cancel
@@ -74,7 +76,7 @@ func void DIA_Brutus_AFTER_FIGHT_Info ()
 		AI_Output (self, other, "DIA_Brutus_AFTER_FIGHT_06_05"); //Nie mam nic przeciwko dobrej walce. Ale kiedy jak¹œ zaczynam, to tak¿e j¹ koñczê.
 	};
 	// ------ AIVAR resetten ------
-	self.aivar[AIV_LastFightComment] = true;
+	self.aivar[AIV_LastFightComment] = TRUE;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info PRISONER
@@ -90,10 +92,10 @@ instance DIA_Brutus_PRISONER		(C_INFO)
 
 func int DIA_Brutus_PRISONER_Condition ()
 {	
-	if (Kapitel < 9)
-	&& (NpcObsessedByDMT_Brutus == false)
+	if (Kapitel < 3)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Brutus_PRISONER_Info ()
@@ -109,8 +111,10 @@ func void DIA_Brutus_PRISONER_Info ()
 	{
 		AI_Output (self, other, "DIA_Brutus_PRISONER_06_06"); //I nie pozwalaj¹ mi zaj¹æ siê tym Gornem.
 		
-		KnowsAboutGorn = true; 
+		KnowsAboutGorn = TRUE; 
 	};
+	
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info PERM
@@ -121,17 +125,17 @@ instance DIA_Brutus_PERM		(C_INFO)
 	nr			 =  90;
 	condition	 = 	DIA_Brutus_PERM_Condition;
 	information	 = 	DIA_Brutus_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Coœ nowego?";
 };
 
 func int DIA_Brutus_PERM_Condition ()
 {	
 	if  Npc_KnowsInfo (hero,DIA_Brutus_PRISONER) 
-	&& (Kapitel < 9)
-	&& (NpcObsessedByDMT_Brutus == false)
+	&& (Kapitel < 3)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Brutus_PERM_Info ()
@@ -140,7 +144,175 @@ func void DIA_Brutus_PERM_Info ()
 	AI_Output (self, other, "DIA_Brutus_PERM_06_01"); //Wszystko jest takie ciche. Nie ma nowych wiêŸniów - nikogo, kto potrzebuje pomocy w znalezieniu w³aœciwych s³ów - szkoda.
 	B_NpcClearObsessionByDMT (self);
 };
+///////////////////////////////////////////////////////////////////////
+//	Info Kasse
+///////////////////////////////////////////////////////////////////////
+instance DIA_Brutus_Kasse		(C_INFO)
+{
+	npc			 = 	VLK_4100_Brutus;
+	nr			 = 	2;
+	condition	 = 	DIA_Brutus_Kasse_Condition;
+	information	 = 	DIA_Brutus_Kasse_Info;
+	permanent	 = 	FALSE;
+	description	 = 	"Mo¿esz mnie przeszkoliæ?";
+};
 
+func int DIA_Brutus_Kasse_Condition ()
+{	
+	if  Npc_KnowsInfo (hero,DIA_Brutus_PRISONER) 
+	&& (Kapitel < 3)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Brutus_Kasse_Info ()
+{
+	AI_Output (other, self, "DIA_Brutus_Kasse_15_00"); //Mo¿esz mnie przeszkoliæ?
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_01"); //Pewnie, pomogê ci staæ siê silniejszym, ale nic za darmo.
+	AI_Output (other, self, "DIA_Brutus_Kasse_15_02"); //Ile chcesz?
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_03"); //Hmmm... wychodzisz poza zamek, prawda? Oto moja propozycja.
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_04"); //Mój czeladnik, Den, uciek³ podczas ostatniego ataku. Zawsze strasznie ³atwo ulega³ panice.
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_05"); //Ale nie zwia³ z pustymi rêkami. Zabra³ ze sob¹ zawartoœæ naszej skarbony.
+	AI_Output (other, self, "DIA_Brutus_Kasse_15_06"); //Jakiej skarbony?
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_07"); //Mamy skrzyniê, w której przechowujemy eee... zgromadzone rzeczy.
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_08"); //To by³a okr¹g³a sumka. W skrzyni znajdowa³o siê 200 sztuk z³ota i trochê cennej bi¿uterii.
+	AI_Output (self, other, "DIA_Brutus_Kasse_06_09"); //Je¿eli przyniesiesz mi z³oto, bêdziesz móg³ zatrzymaæ bi¿uteriê, a ja ciê przeszkolê.
+	
+	Log_CreateTopic (TopicBrutusKasse,LOG_MISSION);
+	Log_SetTopicStatus (TopicBrutusKasse,LOG_RUNNING);
+	B_LogEntry (TopicBrutusKasse,"Czeladnik Brutusa, Den, uciek³, zabieraj¹c ze sob¹ 200 sztuk z³ota i trochê bi¿uterii. Jeœli przyniosê Brutusowi jego 200 sztuk z³ota, uczyni mnie silniejszym.");
+};
+///////////////////////////////////////////////////////////////////////
+//	Info Wo ist Den?
+///////////////////////////////////////////////////////////////////////
+instance DIA_Brutus_Den		(C_INFO)
+{
+	npc			 = 	VLK_4100_Brutus;
+	nr			 = 	2;
+	condition	 = 	DIA_Brutus_Den_Condition;
+	information	 = 	DIA_Brutus_Den_Info;
+	permanent	 = 	FALSE;
+	description	 = 	"Wiesz, gdzie skierowa³ siê Den?";
+};
+
+func int DIA_Brutus_Den_Condition ()
+{	
+	if  Npc_KnowsInfo (hero,DIA_Brutus_Kasse) 
+	&& (Kapitel < 3)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Brutus_Den_Info ()
+{
+	AI_Output (other, self, "DIA_Brutus_Den_15_00"); //Wiesz, gdzie skierowa³ siê Den?
+	AI_Output (self, other, "DIA_Brutus_Den_06_01"); //Jak najdalej st¹d. Myœlê, ¿e móg³ udaæ siê w stronê prze³êczy.
+	AI_Output (other, self, "DIA_Brutus_Den_15_02"); //Dziêkujê, to bardzo pomocne.
+	AI_Output (self, other, "DIA_Brutus_Den_06_03"); //Có¿ mogê powiedzieæ? Nie mam pojêcia, dok¹d poszed³.
+	
+	B_LogEntry (TopicBrutusKasse,"Den chcia³ spróbowaæ przekroczyæ prze³êcz.");
+};
+///////////////////////////////////////////////////////////////////////
+//	Info Gold
+///////////////////////////////////////////////////////////////////////
+instance DIA_Brutus_Gold		(C_INFO)
+{
+	npc			 = 	VLK_4100_Brutus;
+	nr			 = 	2;
+	condition	 = 	DIA_Brutus_Gold_Condition;
+	information	 = 	DIA_Brutus_Gold_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Mam coœ dla ciebie (oddaj 200 sztuk z³ota)";
+};
+
+func int DIA_Brutus_Gold_Condition ()
+{	
+	if  Npc_KnowsInfo (hero,DIA_Brutus_Kasse) 
+	&& (NpcObsessedByDMT_Brutus == FALSE)
+	&& (Brutus_TeachSTR == FALSE)
+	{
+		return TRUE;
+	};
+};
+func void DIA_Brutus_Gold_Info ()
+{
+	AI_Output (other, self, "DIA_Brutus_Gold_15_00"); //Mam coœ dla ciebie.
+	
+	if B_GiveInvItems (other,self,Itmi_Gold,200)
+	{
+		AI_Output (self, other, "DIA_Brutus_Gold_06_01"); //Znakomicie. Jeœli chcesz, mogê ciê szkoliæ.
+		Brutus_TeachSTR = TRUE;
+		Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
+		B_LogEntry		(TOPIC_Teacher_OC, "Brutus mo¿e mi pokazaæ, jak staæ siê silniejszym.");
+		B_GivePlayerXP  (XP_Ambient);
+	}
+	else 
+	{
+		AI_Output (self, other, "DIA_Brutus_Gold_06_02"); //S³uchaj, po prostu przynieœ mi 200 sztuk z³ota. Nie obchodzi mnie, sk¹d je weŸmiesz - wa¿ne, ¿eby to by³o z³oto.
+	};
+};
+//*******************************************
+//	TechPlayer
+//*******************************************
+INSTANCE DIA_Brutus_Teach(C_INFO)
+{
+	npc			= VLK_4100_Brutus;
+	nr			= 7;
+	condition	= DIA_Brutus_Teach_Condition;
+	information	= DIA_Brutus_Teach_Info;
+	permanent	= FALSE;	//TRUE
+	description = "Chcê byæ silniejszy.";
+};                       
+
+FUNC INT DIA_Brutus_Teach_Condition()
+{
+	if (Brutus_TeachSTR == TRUE)
+	&& (NpcObsessedByDMT_Brutus == FALSE)
+	{
+		return TRUE;
+	};
+};
+ 
+FUNC VOID DIA_Brutus_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Brutus_Teach_15_00"); //Chcê byæ silniejszy.
+	/*
+	Info_ClearChoices (DIA_Brutus_Teach);
+	Info_AddChoice		(DIA_Brutus_Teach, DIALOG_BACK, DIA_Brutus_Teach_Back);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Brutus_Teach_STR_1);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Brutus_Teach_STR_5);
+	*/
+	B_RaiseAttribute(other, ATR_STRENGTH, 2);
+};
+/*
+FUNC VOID DIA_Brutus_Teach_Back ()
+{
+	Info_ClearChoices (DIA_Brutus_Teach);
+};
+
+FUNC VOID DIA_Brutus_Teach_STR_1 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	
+	Info_ClearChoices 	(DIA_Brutus_Teach);
+	Info_AddChoice		(DIA_Brutus_Teach, DIALOG_BACK, DIA_Brutus_Teach_Back);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR1		, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Brutus_Teach_STR_1);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Brutus_Teach_STR_5);
+};
+
+FUNC VOID DIA_Brutus_Teach_STR_5 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	
+	Info_ClearChoices 	(DIA_Brutus_Teach);
+	Info_AddChoice		(DIA_Brutus_Teach, DIALOG_BACK, DIA_Brutus_Teach_Back);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR1		, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Brutus_Teach_STR_1);
+	Info_AddChoice		(DIA_Brutus_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Brutus_Teach_STR_5);
+	
+};
+*/
 //#####################################################################
 //##
 //##
@@ -159,14 +331,14 @@ INSTANCE DIA_Brutus_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brutus_KAP3_EXIT_Condition;
 	information	= DIA_Brutus_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brutus_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brutus_KAP3_EXIT_Info()
@@ -183,16 +355,16 @@ instance DIA_Brutus_DUSCHONWIEDER		(C_INFO)
 	nr			 = 	30;
 	condition	 = 	DIA_Brutus_DUSCHONWIEDER_Condition;
 	information	 = 	DIA_Brutus_DUSCHONWIEDER_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Torturowa³eœ dzisiaj ju¿ kogoœ?";
 };
 
 func int DIA_Brutus_DUSCHONWIEDER_Condition ()
 {
-	if (Kapitel == 9)	
-		&& (NpcObsessedByDMT_Brutus == false)
+	if (Kapitel == 3)	
+		&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -224,14 +396,14 @@ INSTANCE DIA_Brutus_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brutus_KAP4_EXIT_Condition;
 	information	= DIA_Brutus_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brutus_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brutus_KAP4_EXIT_Info()
@@ -255,11 +427,11 @@ instance DIA_Brutus_WARUMNICHTARBBEIT		(C_INFO)
 
 func int DIA_Brutus_WARUMNICHTARBBEIT_Condition ()
 {
-	if (Kapitel >= 10)
-		&& (NpcObsessedByDMT_Brutus == false)
-		&& (MIS_OCGateOpen == false)
+	if (Kapitel >= 4)
+		&& (NpcObsessedByDMT_Brutus == FALSE)
+		&& (MIS_OCGateOpen == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -274,6 +446,7 @@ func void DIA_Brutus_WARUMNICHTARBBEIT_Info ()
 	Log_CreateTopic (TOPIC_BrutusMeatbugs, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_BrutusMeatbugs, LOG_RUNNING);
 	B_LogEntry (TOPIC_BrutusMeatbugs,"Brutus, oprawca z zamku, boi siê zupe³nie nieszkodliwych chrz¹szczy. Prawdziwy z niego twardziel."); 
+
 };
 
 
@@ -297,11 +470,11 @@ func int DIA_Brutus_MEATBUGSWEG_Condition ()
 		&& (Npc_IsDead(Meatbug_Brutus2))
 		&& (Npc_IsDead(Meatbug_Brutus3))
 		&& (Npc_IsDead(Meatbug_Brutus4))
-		&& (Kapitel >= 10)
-		&& (NpcObsessedByDMT_Brutus == false)
-		&& (MIS_OCGateOpen == false)
+		&& (Kapitel >= 4)
+		&& (NpcObsessedByDMT_Brutus == FALSE)
+		&& (MIS_OCGateOpen == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -313,9 +486,9 @@ func void DIA_Brutus_MEATBUGSWEG_Info ()
 	AI_Output			(self, other, "DIA_Brutus_MEATBUGSWEG_06_03"); //Dobrze wiêc. Przyjmij to z³oto jako dowód mojej wdziêcznoœci.
 	AI_Output			(other, self, "DIA_Brutus_MEATBUGSWEG_15_04"); //Au, zaraz siê rozp³aczê.
 
-	TOPIC_END_BrutusMeatbugs = true;
+	TOPIC_END_BrutusMeatbugs = TRUE;
 	
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_BrutusMeatbugs);
 	B_NpcClearObsessionByDMT (self);
 
 	CreateInvItems (self, ItMi_Gold, 150);									
@@ -333,7 +506,7 @@ instance DIA_Brutus_PERM4		(C_INFO)
 	nr		 = 	32;
 	condition	 = 	DIA_Brutus_PERM4_Condition;
 	information	 = 	DIA_Brutus_PERM4_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wszystko w porz¹dku?";
 };
@@ -341,10 +514,10 @@ instance DIA_Brutus_PERM4		(C_INFO)
 func int DIA_Brutus_PERM4_Condition ()
 {
 	if 	((Npc_KnowsInfo(other, DIA_Brutus_MEATBUGSWEG))
-	 	||(MIS_OCGateOpen == true))
-	 	&& (NpcObsessedByDMT_Brutus == false)
+	 	||(MIS_OCGateOpen == TRUE))
+	 	&& (NpcObsessedByDMT_Brutus == FALSE)
 	 {
-				return true;
+				return TRUE;
 	 };
 };
 
@@ -352,8 +525,8 @@ func void DIA_Brutus_PERM4_Info ()
 {
 
 	if 	(
-			(MIS_OCGateOpen == true) 
-			|| ((hero.guild == GIL_KDF)&& (Kapitel >= 11))
+			(MIS_OCGateOpen == TRUE) 
+			|| ((hero.guild == GIL_KDF)&& (Kapitel >= 5))
 		)
 		{						
 			B_NpcObsessedByDMT (self);
@@ -370,8 +543,8 @@ func void DIA_Brutus_PERM4_Info ()
 			
 			Npc_SetTarget 		(self, other);
 			
-			self.aivar[AIV_INVINCIBLE] = false; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
-			other.aivar[AIV_INVINCIBLE] = false;
+			self.aivar[AIV_INVINCIBLE] = FALSE; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
+			other.aivar[AIV_INVINCIBLE] = FALSE;
 			
 			AI_StartState 		(self, ZS_Flee, 0, "");
 		 };		
@@ -386,17 +559,17 @@ instance DIA_Brutus_BESSEN		(C_INFO)
 	nr		 = 	55;
 	condition	 = 	DIA_Brutus_BESSEN_Condition;
 	information	 = 	DIA_Brutus_BESSEN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jesteœ opêtany!";
 };
 
 func int DIA_Brutus_BESSEN_Condition ()
 {
- 	if (NpcObsessedByDMT_Brutus == true)
- 		&& (NpcObsessedByDMT == false)
+ 	if (NpcObsessedByDMT_Brutus == TRUE)
+ 		&& (NpcObsessedByDMT == FALSE)
 	 {
-				return true;
+				return TRUE;
 	 };
 };
 
@@ -419,8 +592,8 @@ func void DIA_Brutus_BESSEN_Info ()
 		
 	Npc_SetTarget 		(self, other);
 	
-	self.aivar[AIV_INVINCIBLE] = false; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
-	other.aivar[AIV_INVINCIBLE] = false;
+	self.aivar[AIV_INVINCIBLE] = FALSE; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
+	other.aivar[AIV_INVINCIBLE] = FALSE;
 			
 	AI_StartState 		(self, ZS_Flee, 0, "");	
 	};
@@ -444,14 +617,14 @@ INSTANCE DIA_Brutus_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brutus_KAP5_EXIT_Condition;
 	information	= DIA_Brutus_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brutus_KAP5_EXIT_Condition()
 {
-	if (Kapitel >= 11)	
+	if (Kapitel >= 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brutus_KAP5_EXIT_Info()

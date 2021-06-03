@@ -6,13 +6,13 @@ INSTANCE DIA_NOV_3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_NOV_3_EXIT_Condition;
 	information	= DIA_NOV_3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_NOV_3_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_NOV_3_EXIT_Info()
@@ -27,7 +27,7 @@ INSTANCE DIA_NOV_3_Fegen(C_INFO)
 	nr			= 2;
 	condition	= DIA_NOV_3_Fegen_Condition;
 	information	= DIA_NOV_3_Fegen_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Potrzebujê pomocy w sprz¹taniu sal nowicjuszy.";
 };                       
 //------------------------------------
@@ -36,11 +36,11 @@ var int Feger2_Permanent;
 //------------------------------------
 FUNC INT DIA_NOV_3_Fegen_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_KlosterArbeit == LOG_RUNNING)
 	&& (NOV_Helfer < 4)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -52,27 +52,27 @@ FUNC VOID DIA_NOV_3_Fegen_Info()
 	if (Hlp_GetInstanceID (Feger1)  == Hlp_GetInstanceID (self))
 	{
 		if (NOV_Helfer < 1)
-		&& (Feger1_Permanent == false)
+		&& (Feger1_Permanent == FALSE)
 		{
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_01"); //Czy¿by nikt nie zgodzi³ ci siê pomóc? Dobrze... Bêdê ci towarzyszy³ przy tym zajêciu, jeœli znajdziesz jeszcze przynajmniej jedn¹ osobê, która zgodzi siê na to samo.
 			
 			B_LogEntry 	(Topic_ParlanFegen,"Nowicjusz sprz¹taj¹cy piwnicê pomo¿e mi, jeœli zdo³am znaleŸæ innego chêtnego do pomocy w sprz¹taniu komnat.");
 		}
 		else if  (NOV_Helfer >= 1)
-		&& (Feger1_Permanent == false)
+		&& (Feger1_Permanent == FALSE)
 		{	
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_02"); //Czy bêdê jedyn¹ osob¹ pomagaj¹c¹ ci w pracy?
 			AI_Output (other, self, "DIA_NOV_3_Fegen_15_03"); //Nie, ju¿ ktoœ mi pomaga.
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_04"); //A wiêc i ja do was do³¹czê.
-			NOV_Helfer += 1;
-			Feger1_Permanent = true;
-			B_GivePlayerXP(XP_BONUS_0);
+			NOV_Helfer = (NOV_Helfer +1);
+			Feger1_Permanent = TRUE;
+			B_GivePlayerXP (XP_Feger);
 			AI_StopProcessInfos (self);
 			Npc_ExchangeRoutine (self,"FEGEN");
 			
 			B_LogEntry 	(Topic_ParlanFegen,"Nowicjusz z piwnicy pomo¿e mi teraz posprz¹taæ komnaty.");
 		}
-		else if (Feger1_Permanent == true)
+		else if (Feger1_Permanent == TRUE)
 		{
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_05"); //Bracie! Ju¿ przecie¿ ci pomagam, nie musisz mnie dalej nak³aniaæ.
 		};
@@ -81,7 +81,7 @@ FUNC VOID DIA_NOV_3_Fegen_Info()
 	
 	if (Hlp_GetInstanceID (Feger2) ==  Hlp_GetInstanceID (self))
 	{	
-		if (Feger2_Permanent == false)
+		if (Feger2_Permanent == FALSE)
 		{
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_08"); //Oczywiœcie, ¿e ci pomogê. My nowicjusze powinniœmy trzymaæ siê razem. Rêka rêkê myje, jeœli wiesz co mam na myœli.
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_09"); //Potrzebujê jednak 50 sztuk z³ota, w koñcu muszê sp³aciæ Parlana.
@@ -96,7 +96,7 @@ FUNC VOID DIA_NOV_3_Fegen_Info()
 				Info_AddChoice (DIA_NOV_3_Fegen,"W porz¹dku, ju¿ p³acê.",DIA_NOV_3_Fegen_Ja);
 			};
 		}
-		else //if (Feger2_Permanent == true)
+		else //if (Feger2_Permanent == TRUE)
 		{
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_06"); //Przecie¿ obieca³em. Ty pomog³eœ mnie, ja pomogê tobie.
 		};
@@ -122,9 +122,9 @@ FUNC VOID DIA_NOV_3_Fegen_Ja()
 	AI_Output (self, other, "DIA_NOV_3_Fegen_Ja_03_01"); //Biorê siê wiêc do pracy.
 	
 	B_GiveInvItems (other,self,ItMi_Gold,50);
-	NOV_Helfer += 1;
-	B_GivePlayerXP(XP_BONUS_0);
-	Feger2_Permanent = true;
+	NOV_Helfer = (NOV_Helfer +1);
+	B_GivePlayerXP (XP_Feger);
+	Feger2_Permanent = TRUE;
 	Info_ClearChoices  (DIA_NOV_3_Fegen);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"FEGEN");
@@ -141,18 +141,18 @@ INSTANCE DIA_NOV_3_Wurst(C_INFO)
 	nr			= 3;
 	condition	= DIA_NOV_3_Wurst_Condition;
 	information	= DIA_NOV_3_Wurst_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcesz spróbowaæ kie³basy?";
 };                       
 
 FUNC INT DIA_NOV_3_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -162,7 +162,7 @@ FUNC VOID DIA_NOV_3_Wurst_Info()
 	AI_Output (self, other, "DIA_NOV_3_Wurst_03_01"); //Jasne, czemu nie. Wygl¹da smakowicie.
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -181,7 +181,7 @@ INSTANCE DIA_NOV_3_JOIN(C_INFO)
 	nr			= 4;
 	condition	= DIA_NOV_3_JOIN_Condition;
 	information	= DIA_NOV_3_JOIN_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcia³bym zostaæ magiem.";
 };                       
 
@@ -189,7 +189,7 @@ FUNC INT DIA_NOV_3_JOIN_Condition()
 {
 	if (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -209,13 +209,13 @@ INSTANCE DIA_NOV_3_PEOPLE(C_INFO)
 	nr			= 5;
 	condition	= DIA_NOV_3_PEOPLE_Condition;
 	information	= DIA_NOV_3_PEOPLE_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Kto jest przywódc¹ klasztoru?";
 };                       
 
 FUNC INT DIA_NOV_3_PEOPLE_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_NOV_3_PEOPLE_Info()
@@ -233,13 +233,13 @@ INSTANCE DIA_NOV_3_LOCATION(C_INFO)
 	nr			= 6;
 	condition	= DIA_NOV_3_LOCATION_Condition;
 	information	= DIA_NOV_3_LOCATION_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co mo¿esz mi powiedzieæ o tym klasztorze?";
 };                       
 
 FUNC INT DIA_NOV_3_LOCATION_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_NOV_3_LOCATION_Info()
@@ -258,18 +258,18 @@ INSTANCE DIA_NOV_3_STANDARD(C_INFO)
 	nr			= 10;
 	condition	= DIA_NOV_3_STANDARD_Condition;
 	information	= DIA_NOV_3_STANDARD_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co nowego?";
 };                       
 func INT DIA_NOV_3_STANDARD_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_NOV_3_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_NOV_3_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
 		if (hero.guild == GIL_KDF)
 		{
@@ -283,10 +283,10 @@ FUNC VOID DIA_NOV_3_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel == 8)
-	|| (Kapitel == 9)
+	if (Kapitel == 2)
+	|| (Kapitel == 3)
 	{
-		if (Pedro_Traitor == true)
+		if (Pedro_Traitor == TRUE)
 		&& (MIS_NovizenChase != LOG_SUCCESS)	//Kap 3b - SC weiss, das Pedro das Auge Innos geklaut hat
 		{
 	 		AI_Output (self,other,"DIA_NOV_3_STANDARD_03_05"); //Beliar zdo³a³ przenikn¹æ do naszego klasztoru! Jego potêga roœnie, skoro nawet tutaj ma ju¿ swoich sojuszników...
@@ -310,12 +310,12 @@ FUNC VOID DIA_NOV_3_STANDARD_Info()
 		};	
 	};
 
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
 		AI_Output (self,other,"DIA_NOV_3_STANDARD_03_11"); //Zniszczymy smoki z pomoc¹ naszego Pana! Jedynie gniew Innosa jest w stanie przeciwstawiæ siê bestiom Beliara.
 	};
 	
-	if (Kapitel >= 11)
+	if (Kapitel >= 5)
 	{
 		AI_Output (self,other,"DIA_NOV_3_STANDARD_03_12"); //Chwa³a Innosowi, ¿e nie dopuœci³ do nastêpnego konfliktu. Jedynie powrót na œcie¿kê naszego Pana da nam si³ê do przeciwstawienia siê Z³u.
 

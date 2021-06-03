@@ -7,13 +7,13 @@ INSTANCE DIA_Jergan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Jergan_EXIT_Condition;
 	information = DIA_Jergan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Jergan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Jergan_EXIT_Info()
@@ -29,13 +29,13 @@ INSTANCE DIA_Jergan_Hallo   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Jergan_Hallo_Condition;
 	information = DIA_Jergan_Hallo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Czemu tu tak stoisz?";
 };
 
 FUNC INT DIA_Jergan_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Jergan_Hallo_Info()
@@ -52,7 +52,7 @@ INSTANCE DIA_Jergan_Vermisste   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Jergan_Vermisste_Condition;
 	information = DIA_Jergan_Vermisste_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zaginionych?";
 };
 
@@ -60,7 +60,7 @@ FUNC INT DIA_Jergan_Vermisste_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Jergan_Hallo)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jergan_Vermisste_Info()
@@ -78,7 +78,7 @@ INSTANCE DIA_Jergan_Burg   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Jergan_Burg_Condition;
 	information = DIA_Jergan_Burg_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿esz mi pomóc dostaæ siê do zamku?";
 };
 
@@ -87,7 +87,7 @@ FUNC INT DIA_Jergan_Burg_Condition()
 	if Npc_KnowsInfo (other,DIA_Jergan_Hallo)
 	&& (Npc_GetDistToWP (self, "OW_STAND_JERGAN") <= 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jergan_Burg_Info()
@@ -109,7 +109,7 @@ INSTANCE DIA_Jergan_Gegend   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Jergan_Gegend_Condition;
 	information = DIA_Jergan_Gegend_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co powinienem wiedzieæ o tej okolicy?";
 };
 
@@ -117,20 +117,20 @@ FUNC INT DIA_Jergan_Gegend_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Jergan_Hallo)
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int Jergan_Tell;
 FUNC VOID DIA_Jergan_Gegend_Info()
 {
-	if (Jergan_Tell == false)
+	if (Jergan_Tell == FALSE)
 	{
 		AI_Output (other, self,"DIA_Jergan_Gegend_15_00");//Co powinienem wiedzieæ o tej okolicy?
 		AI_Output (self, other,"DIA_Jergan_Gegend_13_01");//Wracaj, sk¹d przyszed³eœ, jeœli ci ¿ycie mi³e.
 		AI_Output (self, other,"DIA_Jergan_Gegend_13_02");//Zielonoskórzy ju¿ od kilku tygodni oblegaj¹ zamek. A smoki gdzieœ siê ukrywaj¹.
 	};
 	AI_Output (self, other,"DIA_Jergan_Gegend_13_03");//Ca³a Górnicza Dolina a¿ roi siê od orków. Niezale¿nie od tego dok¹d zmierzasz, to nie bêdzie majówka.
-	Jergan_Tell = true;
+	Jergan_Tell = TRUE;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Hilfe
@@ -141,7 +141,7 @@ INSTANCE DIA_Jergan_Hilfe   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Jergan_Hilfe_Condition;
 	information = DIA_Jergan_Hilfe_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak mogê dostaæ siê do zamku?";
 };
 
@@ -150,7 +150,7 @@ FUNC INT DIA_Jergan_Hilfe_Condition()
 	if Npc_KnowsInfo (other,DIA_Jergan_Burg)
 	&& (Npc_GetDistToWP (self, "OW_STAND_JERGAN") <= 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jergan_Hilfe_Info()
@@ -173,7 +173,7 @@ INSTANCE DIA_Jergan_Mine   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Jergan_Mine_Condition;
 	information = DIA_Jergan_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tu porabiasz?";
 };
 
@@ -181,7 +181,7 @@ FUNC INT DIA_Jergan_Mine_Condition()
 {	
 	if( Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
 	{	
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Jergan_Mine_Info()
@@ -190,7 +190,64 @@ FUNC VOID DIA_Jergan_Mine_Info()
 	AI_Output (self, other,"DIA_Jergan_Mine_13_01");//Jestem zwiadowc¹. Przemierzam kraj. Zêbacze nie u³atwiaj¹ mi jednak zadania.
 	AI_Output (self, other,"DIA_Jergan_Mine_13_02");//To dobry czas, ¿eby zdobyæ kilka trofeów - zak³adaj¹c, ¿e wiesz, co robiæ.
 };
+///////////////////////////////////////////////////////////////////////
+//	Klauen reissen
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Jergan_Claw   (C_INFO)
+{
+	npc         = VLK_4110_Jergan;
+	nr          = 3;
+	condition   = DIA_Jergan_Claw_Condition;
+	information = DIA_Jergan_Claw_Info;
+	permanent   = FALSE;
+	description = "Mo¿esz mnie tego nauczyæ?";
+};
 
+FUNC INT DIA_Jergan_Claw_Condition()
+{	
+	if (Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
+	&& Npc_KnowsInfo (other, DIA_Jergan_Mine)
+	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Claws] == FALSE)
+	{	
+		return TRUE;
+	};	
+};
+FUNC VOID DIA_Jergan_Claw_Info()
+{
+	AI_Output (other, self,"DIA_Jergan_Claw_15_00");//Mo¿esz mnie tego nauczyæ?
+	AI_Output (self, other,"DIA_Jergan_Claw_13_01");//Mogê ci pokazaæ, jak zdj¹æ z tych stworów pazury, kiedy ju¿ bêd¹ martwe.
+};
+///////////////////////////////////////////////////////////////////////
+//	Klauen reissen lernen
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Jergan_Teach   (C_INFO)
+{
+	npc         = VLK_4110_Jergan;
+	nr          = 9;
+	condition   = DIA_Jergan_Teach_Condition;
+	information = DIA_Jergan_Teach_Info;
+	permanent   = TRUE;
+	description = "(Nauka usuwania pazurów)";
+};
+FUNC INT DIA_Jergan_Teach_Condition()
+{	
+	if (Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
+	&& Npc_KnowsInfo (other, DIA_Jergan_Claw)
+	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Claws] == FALSE)
+	{	
+		return TRUE;
+	};	
+};
+FUNC VOID DIA_Jergan_Teach_Info()
+{
+	AI_Output (other, self,"DIA_Jergan_Teach_15_00");//Poka¿ mi, jak usuwaæ pazury.
+	
+	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws))
+	{
+		AI_Output (self, other,"DIA_Jergan_Teach_13_01");//Najwa¿niejsze jest to, ¿eby usun¹æ pazur jednym szarpniêciem. Nie wolno siê wahaæ ani d³ubaæ no¿em.
+		AI_Output (self, other,"DIA_Jergan_Teach_13_02");//Tym sposobem mo¿na zdobyæ pazury nie tylko zêbaczy, ale tak¿e jaszczurek i cieniostworów.
+	};
+};
 ///////////////////////////////////////////////////////////////////////
 //	Diego
 ///////////////////////////////////////////////////////////////////////
@@ -200,17 +257,17 @@ INSTANCE DIA_Jergan_Diego   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Jergan_Diego_Condition;
 	information = DIA_Jergan_Diego_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Wiesz, gdzie siê podzia³ Diego?";
 };
 
 FUNC INT DIA_Jergan_Diego_Condition()
 {	
 	if (Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
-	&& (Npc_KnowsInfo (other, DIA_DiegoOw_Hallo) == false)
+	&& (Npc_KnowsInfo (other, DIA_DiegoOw_Hallo) == FALSE)
 	&& Npc_KnowsInfo (other,DIA_Parcival_Diego)
 	{	
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Jergan_Diego_Info()
@@ -231,8 +288,8 @@ INSTANCE DIA_Jergan_Leader   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Jergan_Leader_Condition;
 	information = DIA_Jergan_Leader_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Jergan_Leader_Condition()
@@ -241,7 +298,7 @@ FUNC INT DIA_Jergan_Leader_Condition()
 	&& Npc_IsDead(NewMine_LeadSnapper) 
 	&& Npc_KnowsInfo (other,DIA_Bilgot_KNOWSLEADSNAPPER)
 	{	
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Jergan_Leader_Info()

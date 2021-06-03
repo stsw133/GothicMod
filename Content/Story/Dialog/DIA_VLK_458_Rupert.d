@@ -7,12 +7,12 @@ INSTANCE DIA_Rupert_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Rupert_EXIT_Condition;
 	information	= DIA_Rupert_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Rupert_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Rupert_EXIT_Info()
 {	
@@ -28,14 +28,14 @@ INSTANCE DIA_Rupert_Hello(C_INFO)
 	nr			= 1;
 	condition	= DIA_Rupert_Hello_Condition;
 	information	= DIA_Rupert_Hello_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Rupert_Hello_Condition()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rupert_Hello_Info()
@@ -53,14 +53,14 @@ INSTANCE DIA_Rupert_ZuPal(C_INFO)
 	nr			= 1;
 	condition	= DIA_Rupert_ZuPal_Condition;
 	information	= DIA_Rupert_ZuPal_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "W³aœciwie, to chcia³em siê widzieæ z paladynami...";
 };                       
 FUNC INT DIA_Rupert_ZuPal_Condition()
 {
-	if (Kapitel < 8)
+	if (Kapitel < 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Rupert_ZuPal_Info()
@@ -78,7 +78,7 @@ INSTANCE DIA_Rupert_HelpMeIntoOV(C_INFO)
 	nr			= 1;
 	condition	= DIA_Rupert_HelpMeIntoOV_Condition;
 	information	= DIA_Rupert_HelpMeIntoOV_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy mo¿esz mi pomóc dostaæ siê do górnego miasta?";
 };                       
 FUNC INT DIA_Rupert_HelpMeIntoOV_Condition()
@@ -86,7 +86,7 @@ FUNC INT DIA_Rupert_HelpMeIntoOV_Condition()
 	if (Npc_KnowsInfo(other, DIA_Rupert_ZuPal))
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rupert_HelpMeIntoOV_Info()
@@ -111,7 +111,7 @@ INSTANCE DIA_Rupert_WoMatteo(C_INFO)
 	nr			= 1;
 	condition	= DIA_Rupert_WoMatteo_Condition;
 	information	= DIA_Rupert_WoMatteo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Gdzie go znajdê?";
 };                      
 FUNC INT DIA_Rupert_WoMatteo_Condition()
@@ -119,13 +119,20 @@ FUNC INT DIA_Rupert_WoMatteo_Condition()
 	if (Npc_KnowsInfo (other,DIA_Rupert_HelpMeIntoOV))
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Rupert_WoMatteo_Info()
 {	
 	AI_Output (other,self ,"DIA_Rupert_WoMatteo_15_00"); //Gdzie go znajdê?
 	AI_Output (self ,other,"DIA_Rupert_WoMatteo_03_01"); //Stoisz w³aœnie przed jego sklepem. Prawie go nie opuszcza. WejdŸ do œrodka.
+	
+	if (Knows_Matteo == FALSE)
+	{
+		Log_CreateTopic (TOPIC_CityTrader, LOG_NOTE);
+		B_LogEntry (TOPIC_CityTrader,"Sklep Mattea znajduje siê przy po³udniowej bramie miasta. Mo¿na tam kupiæ orê¿, ¿ywnoœæ oraz wyposa¿enie.");
+		Knows_Matteo = TRUE;
+	};
 };
 
 // ***************************************************************
@@ -137,7 +144,7 @@ INSTANCE DIA_Rupert_WerEinfluss(C_INFO)
 	nr			= 2;
 	condition	= DIA_Rupert_WerEinfluss_Condition;
 	information	= DIA_Rupert_WerEinfluss_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakich innych wp³ywowych obywateli mia³eœ na myœli?";
 };                      
 FUNC INT DIA_Rupert_WerEinfluss_Condition()
@@ -145,7 +152,7 @@ FUNC INT DIA_Rupert_WerEinfluss_Condition()
 	if (Npc_KnowsInfo (other,DIA_Rupert_HelpMeIntoOV))
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Rupert_WerEinfluss_Info()
@@ -167,14 +174,14 @@ INSTANCE DIA_Rupert_Work(C_INFO)
 	nr			= 3;
 	condition	= DIA_Rupert_Work_Condition;
 	information	= DIA_Rupert_Work_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Potrzebujê pieniêdzy. Szukam pracy.";
 };                      
 FUNC INT DIA_Rupert_Work_Condition()
 {
 	if (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Rupert_Work_Info()
@@ -193,12 +200,12 @@ INSTANCE DIA_Rupert_YourOffer(C_INFO)
 	nr			= 4;
 	condition	= DIA_Rupert_YourOffer_Condition;
 	information	= DIA_Rupert_YourOffer_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co chcesz mi zaproponowaæ?";
 };                      
 FUNC INT DIA_Rupert_YourOffer_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Rupert_YourOffer_Info()
 {	
@@ -220,15 +227,15 @@ INSTANCE DIA_Rupert_Trade(C_INFO)
 	nr			= 900;
 	condition	= DIA_Rupert_Trade_Condition;
 	information	= DIA_Rupert_Trade_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Poka¿ mi swoje towary.";
-	trade		= true;
+	trade		= TRUE;
 };                       
 FUNC INT DIA_Rupert_Trade_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Rupert_YourOffer))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Rupert_Trade_Info()
@@ -255,7 +262,7 @@ INSTANCE DIA_Rupert_Bauernaufstand(C_INFO)
 	nr			= 4;
 	condition	= DIA_Rupert_Bauernaufstand_Condition;
 	information	= DIA_Rupert_Bauernaufstand_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Powiedz mi proszê coœ wiêcej o buncie ch³opów.";
 };                       
 FUNC INT DIA_Rupert_Bauernaufstand_Condition()
@@ -263,7 +270,7 @@ FUNC INT DIA_Rupert_Bauernaufstand_Condition()
 	if (Npc_KnowsInfo (other,DIA_Rupert_YourOffer))
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rupert_Bauernaufstand_Info()
@@ -285,7 +292,7 @@ INSTANCE DIA_Rupert_Mercs(C_INFO)
 	nr			= 4;
 	condition	= DIA_Rupert_Mercs_Condition;
 	information	= DIA_Rupert_Mercs_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co wiesz o najemnikach Onara?";
 };                       
 FUNC INT DIA_Rupert_Mercs_Condition()
@@ -294,7 +301,7 @@ FUNC INT DIA_Rupert_Mercs_Condition()
 	&& (hero.guild != GIL_SLD)
 	&& (hero.guild != GIL_DJG)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rupert_Mercs_Info()
@@ -304,3 +311,6 @@ FUNC VOID DIA_Rupert_Mercs_Info()
 	AI_Output (self	,other,"DIA_Rupert_Mercs_03_02"); //Ich przywódca by³ chyba jak¹œ grub¹ ryb¹ na królewskim dworze - genera³em, czy kimœ takim. Wygnano go jako zdrajcê.
 	AI_Output (self	,other,"DIA_Rupert_Mercs_03_03"); //Ciê¿kie czasy nasta³y.
 };
+
+
+

@@ -3,15 +3,14 @@
 ///******************************************************************************************
 func void B_AssessWarn()
 {
-	/// EXIT IF...
 	/// ------ wenn ich selber das Opfer bin -----
 	if (Hlp_GetInstanceID(victim) == Hlp_GetInstanceID(self))
 	{
 		return;
 	};
 	
-	if (Npc_IsInState(self,ZS_ReactToWeapon))
-	|| (Npc_IsInState(self,ZS_ObservePlayer))
+	if (Npc_IsInState(self, ZS_ReactToWeapon))
+	|| (Npc_IsInState(self, ZS_ObservePlayer))
 	{
 		return;
 	};
@@ -28,7 +27,6 @@ func void B_AssessWarn()
 		return;
 	};
 	
-	/// FUNC
 	Npc_ClearAIQueue 	(self);
 	B_ClearPerceptions	(self);
 	AI_StartState 		(self, ZS_ObservePlayer, false, "");

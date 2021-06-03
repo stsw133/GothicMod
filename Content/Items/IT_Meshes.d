@@ -138,7 +138,7 @@ instance ItMe_WaterBucket (ItemPR_Mesh)
 	COUNT[0]		=	Hlp_GetinstanceID(self);
 };
 ///******************************************************************************************
-instance ItMe_WaterPipe (ItemPR_Mesh	// fajka wodna
+instance ItMe_WaterPipe (ItemPR_Mesh)	// fajka wodna
 {
 	name 			=	"ItMe_WaterPipe";
 	visual 			=	"SMOKE_WATERPIPE.MDS";

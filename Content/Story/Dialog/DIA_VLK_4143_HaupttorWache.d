@@ -7,13 +7,13 @@ INSTANCE DIA_Haupttorwache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Haupttorwache_EXIT_Condition;
 	information = DIA_Haupttorwache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Haupttorwache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Haupttorwache_EXIT_Info()
@@ -30,14 +30,14 @@ instance DIA_Haupttorwache_AUFGABE		(C_INFO)
 	nr		 = 	4;
 	condition	 = 	DIA_Haupttorwache_AUFGABE_Condition;
 	information	 = 	DIA_Haupttorwache_AUFGABE_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jakie jest twoje zadanie?";
 };
 
 func int DIA_Haupttorwache_AUFGABE_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Haupttorwache_AUFGABE_Info ()
@@ -56,16 +56,16 @@ instance DIA_Haupttorwache_TOROEFFNEN		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Haupttorwache_TOROEFFNEN_Condition;
 	information	 = 	DIA_Haupttorwache_TOROEFFNEN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Co trzeba zrobiæ, aby otworzyæ g³ówn¹ bramê?";
 };
 
 func int DIA_Haupttorwache_TOROEFFNEN_Condition ()
 {
-	if (Kapitel >= 11)
+	if (Kapitel >= 5)
 		{
-				return true;
+				return TRUE;
 		};
 };
 func void DIA_Haupttorwache_TOROEFFNEN_Info ()
@@ -97,3 +97,68 @@ func void DIA_Haupttorwache_TOROEFFNEN_frage ()
 	AI_Output			(self, other, "DIA_Haupttorwache_TOROEFFNEN_frage_13_01"); //Nawet tak nie mów, bo jeszcze wykraczesz. I tak jest ju¿ wystarczaj¹co ciê¿ko. A teraz odejdŸ, jestem zajêty.
 	AI_StopProcessInfos (self);
 };
+
+// ************************************************************
+// 			  				PICK POCKET
+// ************************************************************
+
+INSTANCE DIA_Haupttorwache_PICKPOCKET (C_INFO)
+{
+	npc			= VLK_4143_HaupttorWache;
+	nr			= 900;
+	condition	= DIA_Haupttorwache_PICKPOCKET_Condition;
+	information	= DIA_Haupttorwache_PICKPOCKET_Info;
+	permanent	= TRUE;
+	description = "(Kradzie¿ tego klucza bêdzie dziecinnie ³atwa)";
+};                       
+
+FUNC INT DIA_Haupttorwache_PICKPOCKET_Condition()
+{
+	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
+	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
+	&& (Npc_HasItems(self, ITKE_OC_MAINGATE_MIS) >= 1)
+	&& (Kapitel >= 5)
+	&& (other.attribute[ATR_DEXTERITY] >= (20 - Theftdiff))
+	{
+		return TRUE;
+	};
+};
+ 
+FUNC VOID DIA_Haupttorwache_PICKPOCKET_Info()
+{	
+	Info_ClearChoices	(DIA_Haupttorwache_PICKPOCKET);
+	Info_AddChoice		(DIA_Haupttorwache_PICKPOCKET, DIALOG_BACK 		,DIA_Haupttorwache_PICKPOCKET_BACK);
+	Info_AddChoice		(DIA_Haupttorwache_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Haupttorwache_PICKPOCKET_DoIt);
+};
+
+func void DIA_Haupttorwache_PICKPOCKET_DoIt()
+{
+	if (other.attribute[ATR_DEXTERITY] >= 20)
+	{
+		B_GiveInvItems (self, other, ITKE_OC_MAINGATE_MIS, 1);
+		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
+		B_GivePlayerXP (XP_Ambient);
+		Info_ClearChoices (DIA_Haupttorwache_PICKPOCKET);
+	}
+	else
+	{
+		AI_StopProcessInfos	(self);
+		B_Attack (self, other, AR_Theft, 1); 
+	};
+};
+	
+func void DIA_Haupttorwache_PICKPOCKET_BACK()
+{
+	Info_ClearChoices (DIA_Haupttorwache_PICKPOCKET);
+};
+
+
+
+
+
+
+
+
+
+
+

@@ -1,33 +1,33 @@
-//******************************************************************************************
-PROTOTYPE Mst_Skeleton_Lord	(C_NPC)
+///******************************************************************************************
+prototype Mst_Skeleton_Lord (C_NPC)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Szkielet-lord";
 	guild								=	GIL_SKELETON;
 	aivar[AIV_MM_REAL_ID]				= 	ID_SKELETON;
-
-	// ------ Attributes ------
+	
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
-
-	// ------ FT ------
+	
+	/// ------ FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_HUMAN_MASTER;	
-
-	// ------ Senses & Ranges ------
+	
+	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
-
+	
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_Packhunter] 			=	true;
-
-	// ------ Rtn ------
+	
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Skeleton_Lord()
 {
 	Mdl_SetVisual		(self, "HumanS.mds");
@@ -35,31 +35,31 @@ func void B_SetVisuals_Skeleton_Lord()
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds"); Mdl_ApplyOverlayMds (self, "humans_CBowT2.mds");
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Ske_Head", 0, 0, ITAR_SKELETON);
 };
-//******************************************************************************************
-INSTANCE Skeleton_Lord (Mst_Skeleton_Lord)
+///******************************************************************************************
+instance Skeleton_Lord (Mst_Skeleton_Lord)
 {
 	B_SetVisuals_Skeleton_Lord();
 	EquipItem (self, ItMw_2H_Sword_M_01);
 };
-//******************************************************************************************
-INSTANCE Crypt_Skeleton_Lord (Mst_Skeleton_Lord)
+///******************************************************************************************
+instance Crypt_Skeleton_Lord (Mst_Skeleton_Lord)
 {
-	name						=	"Nieumar≥y dowÛdca, Inubis";
-
+	name						=	"Nieumar≈Çy dow√≥dca, Inubis";
+	
 	B_SetMonsterAttributes (self, 50);
-
 	B_SetVisuals_Skeleton_Lord();
+	
 	EquipItem (self, ItMw_2H_Sword_M_01);
 	CreateInvItems (self, ItMi_Gold, 300);
 };
-//******************************************************************************************
-INSTANCE Skeleton_Lord_Archol (Mst_Skeleton_Lord)
+///******************************************************************************************
+instance Skeleton_Lord_Archol (Mst_Skeleton_Lord)
 {
-	name						=	"Nieumar≥y dowÛdca, Archol";
-
+	name						=	"Nieumar≈Çy dow√≥dca, Archol";
+	
 	B_SetMonsterAttributes (self, 60);
-
 	B_SetVisuals_Skeleton_Lord();
+	
 	EquipItem (self, ItMw_2H_Sword_M_01);
 	CreateInvItems (self, ItMi_Gold, 600);
 	CreateInvItem (self, ItKe_EVT_UNDEAD_01);

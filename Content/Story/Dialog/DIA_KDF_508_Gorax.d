@@ -7,14 +7,14 @@ INSTANCE DIA_Gorax_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Gorax_Kap1_EXIT_Condition;
 	information = DIA_Gorax_KAp1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Gorax_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Gorax_Kap1_EXIT_Info()
@@ -31,14 +31,14 @@ instance DIA_Gorax_HELP		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Gorax_HELP_Condition;
 	information	 = 	DIA_Gorax_HELP_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Gorax_HELP_Condition ()
 {
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_HELP_Info ()
@@ -54,7 +54,7 @@ instance DIA_Gorax_GOLD		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Gorax_GOLD_Condition;
 	information	 = 	DIA_Gorax_GOLD_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Przynios³em z³oto.";
 };
 //-----------------------------------
@@ -63,10 +63,10 @@ var int DIA_Gorax_GOLD_perm;
 func int DIA_Gorax_GOLD_Condition ()
 {	
 	if (other.guild == GIL_NOV)
-	&& (DIA_Gorax_GOLD_perm == false) 
-	&& (Pedro_NOV_Aufnahme_LostInnosStatue_Daron == false)//ADDON
+	&& (DIA_Gorax_GOLD_perm == FALSE) 
+	&& (Pedro_NOV_Aufnahme_LostInnosStatue_Daron == FALSE)//ADDON
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_GOLD_Info ()
@@ -78,7 +78,7 @@ func void DIA_Gorax_GOLD_Info ()
 		AI_Output (self, other, "DIA_Gorax_GOLD_14_01"); //Rozumiem - chcesz z³o¿yæ Innosowi ofiarê. To bardzo dobrze, mój synu.
 		AI_Output (self, other, "DIA_Gorax_GOLD_14_02"); //Twoja ofiara zostanie wykorzystana na potrzeby klasztoru zgodnie z wol¹ Innosa.
 	
-		DIA_Gorax_GOLD_perm = true; //WICHTIG
+		DIA_Gorax_GOLD_perm = TRUE; //WICHTIG
 		B_GiveInvItems (other, self, ItMi_Gold, Summe_Kloster);
 	}
 	else
@@ -97,7 +97,7 @@ instance DIA_Addon_Gorax_DaronsStatue		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Gorax_DaronsStatue_Condition;
 	information	 = 	DIA_Addon_Gorax_DaronsStatue_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Mam tu pos¹¿ek, który za spraw¹ Darona mia³ trafiæ do klasztoru.";
 };
@@ -105,10 +105,10 @@ instance DIA_Addon_Gorax_DaronsStatue		(C_INFO)
 func int DIA_Addon_Gorax_DaronsStatue_Condition ()
 {
 	if (other.guild == GIL_NOV)
-	&& (DIA_Gorax_GOLD_perm == false) 
-	&& (Pedro_NOV_Aufnahme_LostInnosStatue_Daron == true)//ADDON
+	&& (DIA_Gorax_GOLD_perm == FALSE) 
+	&& (Pedro_NOV_Aufnahme_LostInnosStatue_Daron == TRUE)//ADDON
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -127,10 +127,11 @@ func void DIA_Addon_Gorax_DaronsStatue_Info ()
 			Npc_RemoveInvItems (self, ItMi_LostInnosStatue_Daron,1);
 		};
 		
+		
 		AI_Output	(self, other, "DIA_Addon_Gorax_DaronsStatue_14_03"); //Mo¿esz liczyæ na m¹ wdziêcznoœæ, m³odzieñcze.
 		MIS_Addon_Daron_GetStatue = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3);
-		DIA_Gorax_GOLD_perm = true; //WICHTIG
+		B_GivePlayerXP (XP_Addon_ReturnedLostInnosStatue_Daron);
+		DIA_Gorax_GOLD_perm = TRUE; //WICHTIG
 	}
 	else
 	{
@@ -151,10 +152,10 @@ instance DIA_Gorax_SLEEP		(C_INFO)
 };
 func int DIA_Gorax_SLEEP_Condition ()
 {
-	if (DIA_Gorax_GOLD_perm == true)
-	&& (other.guild == GIL_NOV)
+	if (DIA_Gorax_GOLD_perm == TRUE)
+	&& (other.guild == GIL_NOV) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_SLEEP_Info ()
@@ -173,14 +174,14 @@ instance DIA_Gorax_Aufgabe		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Gorax_Aufgabe_Condition;
 	information	 = 	DIA_Gorax_Aufgabe_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Czy masz dla mnie jakieœ zadanie?";
 };
 func int DIA_Gorax_Aufgabe_Condition ()
 {
 	if (MIS_KlosterArbeit == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_Aufgabe_Info ()
@@ -207,7 +208,7 @@ instance DIA_Gorax_Wurst		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Gorax_Wurst_Condition;
 	information	 = 	DIA_Gorax_Wurst_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Rozda³em kie³basê (ukoñczenie zadania).";
 };
 func int DIA_Gorax_Wurst_Condition ()
@@ -215,7 +216,7 @@ func int DIA_Gorax_Wurst_Condition ()
 	if (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Mob_HasItems ("WURSTTRUHE",ItFo_SchafsWurst) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_Wurst_Info ()
@@ -227,8 +228,8 @@ func void DIA_Gorax_Wurst_Info ()
 		AI_Output (self, other, "DIA_Gorax_Wurst_14_01"); //Doskonale siê spisa³eœ. WeŸ te zwoje leczenia - i wracaj do pracy.
 		
 		MIS_GoraxEssen = LOG_SUCCESS; 
-		B_GivePlayerXP(XP_BONUS_2);
-		B_GiveInvItems (self, other, ItPo_Health_01, 2);
+		B_GivePlayerXP (XP_GoraxEssen);
+		B_GiveInvItems (self, other, ItSc_LightHeal,2);
 	}
 	else 
 	{
@@ -248,16 +249,16 @@ instance DIA_Gorax_Aufgabe2		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Gorax_Aufgabe2_Condition;
 	information	 = 	DIA_Gorax_Aufgabe2_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Czy masz dla mnie jeszcze jakieœ zadania?";
 };
 func int DIA_Gorax_Aufgabe2_Condition ()
 {
 	if ((MIS_GoraxEssen == LOG_SUCCESS)
 	|| (MIS_GoraxEssen == LOG_FAILED))
-	&& (Npc_IsDead (Orlan) == false)
+	&& (Npc_IsDead (Orlan) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_Aufgabe2_Info ()
@@ -283,7 +284,7 @@ instance DIA_Gorax_Orlan		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Gorax_Orlan_Condition;
 	information	 = 	DIA_Gorax_Orlan_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"By³em u Orlana.";
 };
 //----------------------------------
@@ -293,9 +294,9 @@ func int DIA_Gorax_Orlan_Condition ()
 {
 	if (MIS_GoraxWein == LOG_RUNNING)
 	&& Npc_KnowsInfo (other, DIA_Orlan_Wein)
-	&& (DIA_Gorax_Orlan_permanent == false)
+	&& (DIA_Gorax_Orlan_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_Orlan_Info ()
@@ -305,7 +306,7 @@ func void DIA_Gorax_Orlan_Info ()
 		AI_Output (other, self, "DIA_Gorax_Orlan_15_00"); //By³em u Orlana.
 		AI_Output (self, other, "DIA_Gorax_Orlan_14_01"); //I co, dosta³eœ 240 sztuk z³ota?
 	
-		DIA_Gorax_Orlan_permanent = true;
+		DIA_Gorax_Orlan_permanent = TRUE;
 		Info_ClearChoices (DIA_Gorax_Orlan);
 	
 		Info_AddChoice (DIA_Gorax_Orlan,"Oszuka³ mnie! (oddaj 100 sztuk z³ota)",DIA_Gorax_Orlan_100);
@@ -338,14 +339,13 @@ FUNC VOID DIA_Gorax_Orlan_240 ()
 	{
 		AI_Output (self, other, "DIA_Gorax_Orlan_240_14_01"); //Doskonale. Przyjmij ten zwój leczenia jako swoj¹ zap³atê. A teraz idŸ, znajdŸ sobie jakieœ zajêcie.
 		MIS_GoraxWein = LOG_SUCCESS;
-		B_GiveInvItems (self, other, ItPo_Health_01, 1);
-		B_GivePlayerXP(XP_BONUS_1);			
+		B_GivePlayerXP (XP_Goraxwein);			
 	}
 	else
 	{
 		AI_Output (self, other, "DIA_Gorax_Orlan_240_14_02"); //Ju¿ zd¹¿y³eœ wydaæ czêœæ tych pieniêdzy, prawda? Do niczego siê nie nadajesz - zejdŸ mi z oczu!
 		MIS_GoraxWein = LOG_FAILED; 
-		B_GiveInvItems (other, self, ItMI_Gold, Npc_HasItems(other,ItmI_Gold));
+		B_GiveInvItems (other, self, ItMI_Gold, Npc_HasItems (other, ItmI_Gold));
 	};
 	
 	Info_ClearChoices (DIA_Gorax_Orlan);
@@ -359,12 +359,12 @@ instance DIA_Gorax_JOB		(C_INFO)
 	nr			 =  35;
 	condition	 = 	DIA_Gorax_JOB_Condition;
 	information	 = 	DIA_Gorax_JOB_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Czym siê tu zajmujesz?";
 };
 func int DIA_Gorax_JOB_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Gorax_JOB_Info ()
 {
@@ -385,15 +385,15 @@ instance DIA_Gorax_TRADE		(C_INFO)
 	nr			 =  99;
 	condition	 = 	DIA_Gorax_TRADE_Condition;
 	information	 = 	DIA_Gorax_TRADE_Info;
-	permanent	 = 	true;
-	trade		 =  true;
+	permanent	 = 	TRUE;
+	trade		 =  TRUE;
 	description	 = 	"Potrzebujê paru rzeczy...";
 };
 func int DIA_Gorax_TRADE_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Gorax_JOB)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_TRADE_Info ()
@@ -410,14 +410,14 @@ instance DIA_Gorax_KDF		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Gorax_KDF_Condition;
 	information	 = 	DIA_Gorax_KDF_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Potrzebujê miejsca do spania.";
 };
 func int DIA_Gorax_KDF_Condition ()
 {
 	if (other.guild == GIL_KDF) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Gorax_KDF_Info ()
@@ -443,14 +443,14 @@ INSTANCE DIA_Gorax_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Gorax_Kap2_EXIT_Condition;
 	information = DIA_Gorax_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Gorax_Kap2_EXIT_Condition()
 {
-	if (kapitel == 8)
+	if (kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Gorax_Kap2_EXIT_Info()
@@ -473,14 +473,14 @@ INSTANCE DIA_Gorax_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Gorax_Kap3_EXIT_Condition;
 	information = DIA_Gorax_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Gorax_Kap3_EXIT_Condition()
 {
-	if (kapitel == 9)
+	if (kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gorax_Kap3_EXIT_Info()
@@ -497,15 +497,15 @@ instance DIA_Gorax_KILLPEDRO		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Gorax_KILLPEDRO_Condition;
 	information	 = 	DIA_Gorax_KILLPEDRO_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Gorax_KILLPEDRO_Condition ()
 {
-	if (Pedro_Traitor == true)
+	if (Pedro_Traitor == TRUE)
 	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -539,7 +539,7 @@ func void DIA_Gorax_KILLPEDRO_ja ()
 
  	B_LogEntry (TOPIC_TraitorPedro, "Gorax przekaza³ mi, ¿e Serpentes chce, abym zabi³ zdrajcê Pedra, jeœli gdzieœ go spotkam.");
 	
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP (XP_Gorax_KILLPEDRO_GotMission);
 	MIS_Gorax_KillPedro = LOG_RUNNING;
 	AI_StopProcessInfos (self);
 };
@@ -559,14 +559,14 @@ INSTANCE DIA_Gorax_Kap4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Gorax_Kap4_EXIT_Condition;
 	information = DIA_Gorax_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Gorax_Kap4_EXIT_Condition()
 {
-	if (kapitel == 10)
+	if (kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gorax_Kap4_EXIT_Info()
@@ -588,17 +588,52 @@ INSTANCE DIA_Gorax_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Gorax_Kap5_EXIT_Condition;
 	information = DIA_Gorax_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Gorax_Kap5_EXIT_Condition()
 {
-	if (kapitel == 11)
+	if (kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Gorax_Kap5_EXIT_Info()
 {
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

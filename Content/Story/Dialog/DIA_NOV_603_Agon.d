@@ -9,13 +9,13 @@ INSTANCE DIA_Agon_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Agon_EXIT_Condition;
 	information = DIA_Agon_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Agon_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Agon_EXIT_Info()
@@ -33,17 +33,17 @@ INSTANCE DIA_Agon_Hello   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Agon_Hello_Condition;
 	information = DIA_Agon_Hello_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Agon_Hello_Condition()
 {
-	if (Npc_IsInState (self,ZS_Talk))
-	&& (MIS_SCHNITZELJAGD == false)
-	&& (other.guild == GIL_NOV)
+	if  (Npc_IsInState (self,ZS_Talk))
+	&&	(MIS_SCHNITZELJAGD == FALSE)
+	&&  (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -61,18 +61,18 @@ INSTANCE DIA_Agon_Wurst(C_INFO)
 	nr			= 2;
 	condition	= DIA_Agon_Wurst_Condition;
 	information	= DIA_Agon_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Masz, mam dla ciebie kie³basê z barana.";
 };                       
 
 FUNC INT DIA_Agon_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -84,7 +84,7 @@ FUNC VOID DIA_Agon_Wurst_Info()
 	AI_Output (self, other, "DIA_Agon_Wurst_07_03"); //Och, dawaj!
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -105,16 +105,16 @@ INSTANCE DIA_Agon_New   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Agon_New_Condition;
 	information = DIA_Agon_New_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jestem tu nowy.";
 };
 
 FUNC INT DIA_Agon_New_Condition()
 {
-	if (MIS_SCHNITZELJAGD == false)
+	if (MIS_SCHNITZELJAGD == FALSE)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -134,17 +134,17 @@ INSTANCE DIA_Agon_YouAndBabo   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Agon_YouAndBabo_Condition;
 	information = DIA_Agon_YouAndBabo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co zasz³o miêdzy tob¹ a Babo?";
 };
 
 FUNC INT DIA_Agon_YouAndBabo_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Opolos_Monastery)
-	&& (MIS_SCHNITZELJAGD == false))
+	&& (MIS_SCHNITZELJAGD == FALSE))
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -194,15 +194,15 @@ INSTANCE DIA_Agon_GetHerb   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Agon_GetHerb_Condition;
 	information = DIA_Agon_GetHerb_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co tu sadzicie?";
 };
 
 FUNC INT DIA_Agon_GetHerb_Condition()
 {
-	if (MIS_SCHNITZELJAGD == false)
+	if (MIS_SCHNITZELJAGD == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Agon_GetHerb_Info()
@@ -220,8 +220,8 @@ INSTANCE DIA_Agon_GolemDead   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Agon_GolemDead_Condition;
 	information = DIA_Agon_GolemDead_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 
 FUNC INT DIA_Agon_GolemDead_Condition()
@@ -229,7 +229,7 @@ FUNC INT DIA_Agon_GolemDead_Condition()
 	if (MIS_SCHNITZELJAGD == LOG_RUNNING)
 	&& (Npc_IsDead (Magic_Golem))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -262,6 +262,7 @@ FUNC VOID DIA_Agon_GolemDead_ShutUp ()
 	Info_ClearChoices (DIA_Agon_GolemDead);
 	Info_AddChoice (DIA_Agon_GolemDead,"Mam w dupie przeznaczenie. Skrzynia jest moja.",DIA_Agon_GolemDead_ShutUp_MyChest);
 	Info_AddChoice (DIA_Agon_GolemDead,"Wygra³eœ.",DIA_Agon_GolemDead_ShutUp_YouWin);
+
 };
 
 FUNC VOID DIA_Agon_GolemDead_ShutUp_MyChest ()
@@ -305,16 +306,16 @@ INSTANCE DIA_Agon_GolemLives   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Agon_GolemLives_Condition;
 	information = DIA_Agon_GolemLives_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 
 FUNC INT DIA_Agon_GolemLives_Condition()
 {
 	if (MIS_SCHNITZELJAGD == LOG_RUNNING)
-	&& (Npc_IsDead (Magic_Golem)== false)
+	&& (Npc_IsDead (Magic_Golem)== FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -328,6 +329,38 @@ FUNC VOID DIA_Agon_GolemLives_Info()
 	B_Attack (self,other,AR_NONE, 0);
 };
 
+//****************************************
+//	Sc hat Agon am Leben gelassen
+//****************************************
+/*
+INSTANCE DIA_Agon_StillAlive   (C_INFO)
+{
+	npc         = NOV_603_Agon;
+	nr          = 1;
+	condition   = DIA_Agon_StillAlive_Condition;
+	information = DIA_Agon_StillAlive_Info;
+	permanent   = TRUE;
+	description = "Was machst Du hier?";
+};
+
+FUNC INT DIA_Agon_StillAlive_Condition()
+{
+	if ((Kapitel >= 2)
+	&& 	(hero.guild == GIL_KDF))
+	{
+		return TRUE;
+	};	
+};
+
+FUNC VOID DIA_Agon_StillAlive_Info()
+{
+	AI_Output (other,self ,"DIA_Agon_StillAlive_15_00"); //Was machst Du hier? 
+	AI_Output (self ,other,"DIA_Agon_StillAlive_07_01"); //Hättest Du mich nicht töten können? Dann müsste ich das ganze hier wenigstens nicht mehr ertragen. 
+	AI_Output (self ,other,"DIA_Agon_StillAlive_07_02"); //Jetzt lass mich in Ruhe! Geh zurück ins Kloster!
+	
+	AI_StopProcessInfos (self);
+};
+*/
 //***********************************************************************
 // Perm
 //***********************************************************************
@@ -338,16 +371,16 @@ INSTANCE DIA_Agon_Perm   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Agon_Perm_Condition;
 	information = DIA_Agon_Perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "I jak idzie?";
 };
 
 FUNC INT DIA_Agon_Perm_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (other.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Agon_Perm_Info()

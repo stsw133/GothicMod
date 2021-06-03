@@ -1,7 +1,8 @@
-//******************************************************************************************
-//	LOG_Constants für Missionen
-//******************************************************************************************
-
+// ***************************
+// LOG_Constants für Missionen
+// ---------------------------
+// (LOG_MISSION)
+// ***************************
 //ADDON
 const string	TOPIC_Addon_PickForConstantino	=	"Zio³a dla Constantina";			
 const string	TOPIC_Addon_Greg_NW				=	"Cz³owiek z opask¹ na oku";			
@@ -9,6 +10,9 @@ const string	TOPIC_Addon_Ornament			=	"Portal";
 const string	TOPIC_Addon_HolRiordian			=	"Riordian";			
 const string	TOPIC_Addon_RingOfWater			=	"Wodny Kr¹g";
 const string	TOPIC_Addon_KDW					=	"Magowie Wody";
+const string	TOPIC_Addon_CavalornTheHut		=	"Stara chata Cavalorna";
+var int			TOPIC_End_CavalornTheHut;
+const string	TOPIC_Addon_KillBrago			=	"Bandyci Cavalorna";
 const string	TOPIC_Addon_Bandittrader		=	"Handlarz broni¹ dla bandytów";
 const string	TOPIC_Addon_MissingPeople		=	"Zaginieni ludzie";
 const string	TOPIC_Addon_WhoStolePeople		=	"Gdzie s¹ zaginieni ludzie?";
@@ -47,9 +51,11 @@ const string	TOPIC_Addon_Lucia				=	"Lucia";
 var int			TOPIC_END_Lucia;
 const string	TOPIC_Addon_Erol				=	"Napadniêci kupcy"; 
 
+
 const string	TOPIC_Addon_VatrasAbloesung		=	"Pomoc dla Vatrasa";
 
 // ******** Texte, die in alte Topics gepackt werden müssen *************
+
 const string	LogText_Addon_SCKnowsMisspeapl 		=	"Wielu mieszkañców Khorinis zniknê³o. Nie wiadomo, co siê mog³o z nimi staæ.";
 const string	LogText_Addon_WilliamLeiche	 		=	"Zw³oki rybaka le¿¹ w ruinach na wschód od obozu Magów Wody.";
 const string	LogText_Addon_RavensGoldmine	 	=	"Kruk ma kopalniê, w której ka¿e wydobywaæ z³oto niewolnikom.";
@@ -59,6 +65,7 @@ const string	LogText_Addon_Relicts	 			=	"W œwi¹tyni Adanosa w³adcy Jarkendaru w
 const string	LogText_Addon_SkipsRumToBaltram		=	"Skip da³ mi rum dla Baltrama.";
 
 // Teach
+const string	LogText_Addon_Cavalorn_Teach		=	"Cavalorn mo¿e mi pokazaæ, jak korzystaæ z ³uku oraz jak siê skradaæ.";
 const string	LogText_Addon_SaturasTeach	 		=	"Saturas mo¿e nauczyæ mnie krêgów magii.";
 const string	LogText_Addon_MyxirTeach	 		=	"Myxir mo¿e nauczyæ mnie czytaæ w prastarym jêzyku budowniczych.";
 const string	LogText_Addon_RiordianTeach	 		=	"Riordian mo¿e nauczyæ mojego ognika szukania przedmiotów.";
@@ -72,6 +79,43 @@ const string	LogText_Addon_VatrasTrade	 		=	"Vatras weŸmie ode mnie dziwne kamie
 const string	LogText_Addon_MartinTrade	 		=	"Martin, kwatermistrz paladynów, mo¿e sprzedaæ mi rzeczy z ich magazynu.";
 const string	LogText_Addon_ErolTrade	 			=	"Kupiec Erol mo¿e sprzedaæ mi ró¿ne rzeczy. Jego chata znajduje siê pomiêdzy karczm¹ 'Martwa Harpia', a farm¹ Onara.";
 
+//WispDetector
+const string	LogText_Addon_WispLearned 			=	"Mój ognik mo¿e wykryæ nastêpuj¹ce przedmioty:";
+const string	LogText_Addon_WispLearned_NF 		=	"Broñ do walki wrêcz";
+const string	LogText_Addon_WispLearned_FF	 	=	"Broñ dystansow¹ i amunicjê";
+const string	LogText_Addon_WispLearned_NONE 		=	"Z³oto, klucze i narzêdzia";
+const string	LogText_Addon_WispLearned_RUNE 		=	"Runy i zwoje";
+const string	LogText_Addon_WispLearned_MAGIC   	=	"Pierœcienie i amulety";
+const string	LogText_Addon_WispLearned_FOOD 		=	"¯ywnoœæ i roœliny";
+const string	LogText_Addon_WispLearned_POTIONS 	=	"Wszelkiego rodzaju mikstury";
+
+//Language
+const string	LogText_Addon_Language_1 			=	"Nauczy³em siê jêzyka wieœniaków. To podstawowy jêzyk ludu budowniczych.";
+const string	LogText_Addon_Language_2 			=	"Nauczy³em siê jêzyka wojowników.";
+const string	LogText_Addon_Language_3 			=	"Nauczy³em siê jêzyka kap³anów.";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Gothic 2
 // ------ Kapitel 1 ------
 const string	TOPIC_Bronkoeingeschuechtert	=	"Leniwy farmer";			
@@ -83,6 +127,7 @@ const string	TOPIC_GaanSchnaubi				=	"Prychaj¹ca istota";
 const string	TOPIC_GromAskTeacher			=	"G³odny myœliwy";			
 const string	TOPIC_DragomirsArmbrust			=	"Kusza Dragomira";			
 const string	TOPIC_KillLighthouseBandits		=	"Bandyci w latarni morskiej Jacka";			
+const string	TOPIC_HannaRetrieveLetter		=	"Ktoœ coœ zgubi³?";			
 
 // ------ Kapitel 2 ------
 // ------ Kapitel 3 ------

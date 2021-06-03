@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	G_PickLock
-//******************************************************************************************
+///******************************************************************************************
+///	G_PickLock
+///******************************************************************************************
 func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 {
 	if (bSuccess)
@@ -22,7 +22,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		{
 			Snd_Play3D (self, "PICKLOCK_BROKEN");
 			Print(PRINT_PICKLOCK_BROKEN);
-
+			
 			if (Hlp_Random(4) == 0)
 			{
 				Npc_SendPassivePerc (hero, PERC_ASSESSQUIETSOUND, hero, hero);

@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_444_Jack_DI (Npc_Default)
 {
-	// ------ NSC ------
+	/// ------ NSC ------
 	name								=	"Jack";
 	guild 								=	GIL_VLK;
 	id 									=	4440;
@@ -9,39 +9,39 @@ instance VLK_444_Jack_DI (Npc_Default)
 	flags       						=	NPC_FLAG_IMPORTANT;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_PARTYMEMBER]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal02, 0, ITAR_Leather_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4440;
 };
 
-FUNC VOID Rtn_Start_4440()
+func void Rtn_Start_4440()
 {
 	TA_Stand_WP	(08,00,23,00, "SHIP_CREW_CAPTAIN");
 	TA_Sleep	(23,00,08,00, "SHIP_IN_06");
 };
-FUNC VOID Rtn_OrkSturmDI_4440()
+func void Rtn_OrkSturmDI_4440()
 {
 	TA_Stand_WP	(08,00,23,00, "SHIP_DECK_03");
 	TA_Stand_WP	(23,00,08,00, "SHIP_DECK_03");

@@ -7,7 +7,7 @@ const int SPL_Damage_MysEchoes			=	75;
 const int SPL_Heal_MysEchoes			=	15;
 
 ///******************************************************************************************
-INSTANCE Spell_MysEchoes (C_Spell_Proto)
+instance Spell_MysEchoes (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_MysEchoes;
@@ -17,7 +17,7 @@ INSTANCE Spell_MysEchoes (C_Spell_Proto)
 
 func int Spell_Logic_MysEchoes (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes)
 	{
 		return SPL_SENDCAST;
@@ -30,13 +30,14 @@ func int Spell_Logic_MysEchoes (var int manaInvested)
 
 func void Spell_Cast_MysEchoes()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysEchoes/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MysEchoes/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MysEchoes;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

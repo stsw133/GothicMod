@@ -5,34 +5,28 @@ func int C_IsTakenItemMyPossession (var C_NPC slf, var C_NPC oth, var C_ITEM itm
 {
 	var int portalguild; portalguild = Wld_GetPlayerPortalGuild();
 	
-	/// FUNC
-	/// ------ Persönliches Besitzflag ------
-	if (Npc_OwnedByNpc(itm,slf))
+	if (Npc_OwnedByNpc(itm, slf)) 
 	{
-		/// ------ Story: Der Hammer Innos ------
-		if (Hlp_IsItem(itm,Holy_Hammer_MIS))
-		/// kann nur Nov_608_Garwig sein, weil Hammer persönlicher Besitz
+		if (Hlp_IsItem(itm, Holy_Hammer_MIS))
 		{
 			Hammer_Taken = true;
 		};
+		
 		return true;
 	};
 	
-	/// ------ wenn Spieler Item geDROPt hat ------
 	if ((itm.flags & ITEM_DROPPED) == ITEM_DROPPED)
 	{
 		return false;
 	};
 	
-	/// ------ wenn item in meinem Portalraum (oder Raum von befreundeter Gilde) genommen wurde ------
 	if (C_NpcIsBotheredByPlayerRoomGuild(self))
 	|| (Wld_GetPlayerPortalGuild() == GIL_PUBLIC)
 	{
 		return true;
 	};
 	
-	/// ------ Gildenbesitz BEFREUNDETER Gilde (ACHTUNG: Klappt nicht, wenn ich zu meiner eigenen Gilde nicht befreundet bin) ------
-	if (Wld_GetGuildAttitude(slf.guild,itm.ownerguild) == ATT_FRIENDLY)
+	if (Wld_GetGuildAttitude(slf.guild, itm.ownerguild) == ATT_FRIENDLY)
 	{
 		return true;
 	};

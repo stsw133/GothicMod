@@ -1,94 +1,104 @@
-//******************************************************************************************
-//	EXIT
-//******************************************************************************************
-INSTANCE DIA_Liesel_EXIT (C_INFO)
+// ************************************************************
+// 			  				   EXIT 
+// ************************************************************
+INSTANCE DIA_Liesel_EXIT(C_INFO)
 {
 	npc			= Follow_Sheep;
 	nr			= 999;
 	condition	= DIA_Liesel_EXIT_Condition;
 	information	= DIA_Liesel_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
-};
-FUNC INT DIA_Liesel_EXIT_Condition()
-{	return true;	};
-FUNC VOID DIA_Liesel_EXIT_Info()
-{	AI_StopProcessInfos(self);	};
+};                       
 
-//******************************************************************************************
-//	Hallo (Durchsuchen)
-//******************************************************************************************
+FUNC INT DIA_Liesel_EXIT_Condition()
+{
+	return TRUE;
+};
+ 
+FUNC VOID DIA_Liesel_EXIT_Info()
+{	
+	AI_StopProcessInfos	(self);
+};
+// ************************************************************
+// 			  			Hallo (Durchsuchen)
+// ************************************************************
 INSTANCE DIA_Liesel_Hallo (C_INFO)
 {
 	npc			= Follow_Sheep;
 	nr			= 1;
 	condition	= DIA_Liesel_Hallo_Condition;
 	information	= DIA_Liesel_Hallo_Info;
-	permanent	= false;
-	description = "Czeœæ...";
-};
+	permanent	= FALSE;
+	description = "Czeœæ..."; 
+};                       
 FUNC INT DIA_Liesel_Hallo_Condition()
-{	return true;	};
-FUNC VOID DIA_Liesel_Hallo_Info()
 {
-	AI_Output (other, self, "DIA_Liesel_Hallo_15_00");	//Czeœæ... khm... owco.
-	AI_Output (self, other, "DIA_Liesel_15_00");		//Meeee!
+	return TRUE;
 };
-
-//******************************************************************************************
-//	Komm mit
-//******************************************************************************************
+FUNC VOID DIA_Liesel_Hallo_Info()
+{	
+	AI_Output (other, self, "DIA_Liesel_Hallo_15_00"); //Czeœæ... khm... owco.
+	AI_Output (self, other, "DIA_Liesel_15_00");	//Meeee!
+};
+// ************************************************************
+// 			  			Komm mit
+// ************************************************************
 INSTANCE DIA_Liesel_KommMit (C_INFO)
 {
 	npc			= Follow_Sheep;
 	nr			= 1;
 	condition	= DIA_Liesel_KommMit_Condition;
 	information	= DIA_Liesel_KommMit_Info;
-	permanent	= true;
-	description = "ChodŸ ze mn¹.";
-};
+	permanent	= TRUE;
+	description = "ChodŸ ze mn¹."; 
+};                       
 FUNC INT DIA_Liesel_KommMit_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
-	&& (Npc_KnowsInfo(other,DIA_Liesel_Hallo))
-	&& (self.aivar[AIV_TAPOSITION] == false)
-	{	return true;	};
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
+	&& (Npc_KnowsInfo(other, DIA_Liesel_Hallo))
+	&& (self.aivar[AIV_TAPOSITION] == FALSE)
+	{
+		return TRUE;
+	};
 };
+ 
 FUNC VOID DIA_Liesel_KommMit_Info()
 {	
 	AI_Output (other, self, "DIA_Liesel_KommMit_15_00");	//ChodŸ ze mn¹.
-	AI_Output (self, other, "DIA_Liesel_15_00");			//Meeee!
-
-	self.aivar[AIV_PARTYMEMBER] = true;
-
-	AI_StopProcessInfos(self);
+	AI_Output (self, other, "DIA_Liesel_15_00");	//Meeee!
+	
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	
+	AI_StopProcessInfos	(self);
 };
-
-//******************************************************************************************
-//	Warte hier
-//******************************************************************************************
+// ************************************************************
+// 			  			Warte hier
+// ************************************************************
 INSTANCE DIA_Liesel_WarteHier (C_INFO)
 {
 	npc			= Follow_Sheep;
 	nr			= 1;
 	condition	= DIA_Liesel_WarteHier_Condition;
 	information	= DIA_Liesel_WarteHier_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Zaczekaj tutaj!";
-};
+};                       
 FUNC INT DIA_Liesel_WarteHier_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true) 
-	&& (Npc_KnowsInfo(other,DIA_Liesel_Hallo))
-	&& (self.aivar[AIV_TAPOSITION] == false)
-	{	return true;	};
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE) 
+	&& (Npc_KnowsInfo(other, DIA_Liesel_Hallo))
+	&& (self.aivar[AIV_TAPOSITION] == FALSE)
+	{
+		return TRUE;
+	};
 };
 FUNC VOID DIA_Liesel_WarteHier_Info()
-{
+{	
 	AI_Output (other, self, "DIA_Liesel_WarteHier_15_00");	//Zaczekaj tutaj!
-	AI_Output (self, other, "DIA_Liesel_15_00");			//Meeee!
-
-	self.aivar[AIV_PARTYMEMBER] = false;
-
-	AI_StopProcessInfos(self);
+	AI_Output (self, other, "DIA_Liesel_15_00");	//Meeee!
+	
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
+	
+	AI_StopProcessInfos	(self);
 };

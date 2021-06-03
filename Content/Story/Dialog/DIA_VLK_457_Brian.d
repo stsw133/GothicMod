@@ -7,15 +7,15 @@ INSTANCE DIA_Brian_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Brian_EXIT_Condition;
 	information = DIA_Brian_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Brian_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -33,16 +33,16 @@ instance DIA_Brian_HALLO		(C_INFO)
 	nr 			= 1;
 	condition	= DIA_Brian_HALLO_Condition;
 	information	= DIA_Brian_HALLO_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Brian_HALLO_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -60,7 +60,7 @@ instance DIA_Brian_AboutLehrling (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Brian_AboutLehrling_Condition;
 	information	= DIA_Brian_AboutLehrling_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description = "Jak to jest byæ czeladnikiem u kowala?";
 };
 
@@ -69,7 +69,7 @@ func int DIA_Brian_AboutLehrling_Condition ()
 	if (hero.guild == GIL_NONE)
 	&& (Player_IsApprentice == APP_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -80,6 +80,7 @@ func void DIA_Brian_AboutLehrling_Info ()
 	AI_Output (other, self, "DIA_Brian_AboutLehrling_15_02"); //Mo¿e.
 	AI_Output (self, other, "DIA_Brian_AboutLehrling_04_03"); //Czemu nie... Okres nauki mam ju¿ prawie za sob¹, a po nim wyjadê z miasta.
 	AI_Output (self, other, "DIA_Brian_AboutLehrling_04_04"); //Ale nie z powodu Harada. To dobry mistrz - wiele siê od niego nauczy³em.
+	
 };
 
 // *****************************************************
@@ -91,7 +92,7 @@ instance DIA_Brian_WhyLeave (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Brian_WhyLeave_Condition;
 	information	= DIA_Brian_WhyLeave_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description = "Dlaczego chcesz wyjechaæ z miasta?";
 };
 
@@ -99,7 +100,7 @@ func int DIA_Brian_WhyLeave_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Brian_AboutLehrling))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -121,7 +122,7 @@ instance DIA_Brian_OtherMasters (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Brian_OtherMasters_Condition;
 	information	= DIA_Brian_OtherMasters_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description = "Kim s¹ pozostali mistrzowie?";
 };
 func int DIA_Brian_OtherMasters_Condition ()
@@ -129,7 +130,7 @@ func int DIA_Brian_OtherMasters_Condition ()
 	if (Npc_KnowsInfo(other, DIA_Brian_WhyLeave))
 	&&  (Player_IsApprentice == APP_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -153,7 +154,7 @@ instance DIA_Brian_AboutHarad (C_INFO)
 	nr 			= 2;
 	condition	= DIA_Brian_AboutHarad_Condition;
 	information	= DIA_Brian_AboutHarad_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description = "Powiedz mi coœ wiêcej o Mistrzu Haradzie.";
 };
 
@@ -161,7 +162,7 @@ func int DIA_Brian_AboutHarad_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Brian_AboutLehrling))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -183,13 +184,13 @@ instance DIA_Brian_NEEDWEAPONS		(C_INFO)
 	nr 			= 4;
 	condition	= DIA_Brian_NEEDWEAPONS_Condition;
 	information	= DIA_Brian_NEEDWEAPONS_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Mogê od ciebie kupiæ broñ?";
 };
 
 func int DIA_Brian_NEEDWEAPONS_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Brian_NEEDWEAPONS_Info ()
@@ -214,16 +215,16 @@ instance DIA_Brian_WASKAUFEN		(C_INFO)
 	nr			= 4;
 	condition	= DIA_Brian_WASKAUFEN_Condition;
 	information	= DIA_Brian_WASKAUFEN_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Co mogê u ciebie dostaæ?";
-	trade		= true;
+	trade		= TRUE;
 };
 
 func int DIA_Brian_WASKAUFEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Brian_NEEDWEAPONS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -247,11 +248,11 @@ func void DIA_Brian_WASKAUFEN_Info ()
 		AI_Output			(self, other, "DIA_Brian_WASKAUFEN_04_05"); //Mogê ci sprzedaæ kilka stalowych prêtów.
 	};
 	
-	if (Brian_Trade_Einmal == false)
+	if (Brian_Trade_Einmal == FALSE)
 	{
 		Log_CreateTopic (Topic_CityTrader,LOG_NOTE);
 		B_LogEntry (Topic_CityTrader,"Brian, asystent Harada, sprzedaje stalowe prêty."); 
-		Brian_Trade_Einmal = true;
+		Brian_Trade_Einmal = TRUE;
 	};
 	Npc_RemoveInvItems (self,ItMiSwordblade,Npc_HasItems (self,ItMiSwordblade));
 };
@@ -276,14 +277,14 @@ INSTANCE DIA_Brian_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brian_KAP3_EXIT_Condition;
 	information	= DIA_Brian_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brian_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brian_KAP3_EXIT_Info()
@@ -301,7 +302,7 @@ instance DIA_Brian_RepairNecklace		(C_INFO)
 	nr           = 	8;
 	condition	 = 	DIA_Brian_RepairNecklace_Condition;
 	information	 = 	DIA_Brian_RepairNecklace_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Potrafisz naprawiæ bi¿uteriê?";
 };
 
@@ -311,11 +312,11 @@ func int DIA_Brian_RepairNecklace_Condition ()
 		(MIS_Bennet_InnosEyeRepairedSetting   != LOG_SUCCESS)
 		&&	 	(
 				(Npc_HasItems (other,ItAm_InnosEye_Broken)) 
-				|| 	(MIS_SCKnowsInnosEyeIsBroken  == true)
+				|| 	(MIS_SCKnowsInnosEyeIsBroken  == TRUE)
 				)
 		) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -324,12 +325,12 @@ func void DIA_Brian_RepairNecklace_Info ()
 	AI_Output (other,self ,"DIA_Brian_RepairNecklace_15_00"); //Potrafisz naprawiæ bi¿uteriê?
 	AI_Output (self	,other,"DIA_Brian_RepairNecklace_04_01"); //Jestem tylko czeladnikiem. Cieszê siê, gdy pozwol¹ mi zrobiæ choæ sztylet.
 	
-	if ((Npc_IsDead (Harad))== false)
+	if ((Npc_IsDead (Harad))== FALSE)
 	{
 		AI_Output (self ,other,"DIA_Brian_RepairNecklace_04_02"); //Bi¿uteriê? Musisz zapytaæ mistrza.
 	};
 	
-	MIS_SCKnowsInnosEyeIsBroken  = true; 	
+	MIS_SCKnowsInnosEyeIsBroken  = TRUE; 	
 };
 
 
@@ -353,14 +354,14 @@ INSTANCE DIA_Brian_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brian_KAP4_EXIT_Condition;
 	information	= DIA_Brian_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brian_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brian_KAP4_EXIT_Info()
@@ -387,14 +388,14 @@ INSTANCE DIA_Brian_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Brian_KAP5_EXIT_Condition;
 	information	= DIA_Brian_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Brian_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Brian_KAP5_EXIT_Info()
@@ -417,11 +418,11 @@ instance DIA_Brian_NEWLIGHTHOUSEOFFICER		(C_INFO)
 
 func int DIA_Brian_NEWLIGHTHOUSEOFFICER_Condition ()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	&& (MIS_Jack_NewLighthouseOfficer == LOG_RUNNING)	
 	&& (Npc_KnowsInfo(other, DIA_Brian_NEEDWEAPONS))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -448,7 +449,9 @@ instance DIA_Brian_LIGHTHOUSEFREE		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Brian_LIGHTHOUSEFREE_Condition;
 	information	 = 	DIA_Brian_LIGHTHOUSEFREE_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
+
 	description	 = 	"I co ty na to?";
 };
 
@@ -456,9 +459,9 @@ func int DIA_Brian_LIGHTHOUSEFREE_Condition ()
 {
 	if (MIS_Jack_NewLighthouseOfficer == LOG_SUCCESS)
 		&&	(Npc_GetDistToWP(self,"NW_LIGHTHOUSE_IN_01")<1000)
-		&& (Kapitel == 11) 
+		&& (Kapitel == 5) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -467,3 +470,33 @@ func void DIA_Brian_LIGHTHOUSEFREE_Info ()
 	AI_Output			(other, self, "DIA_Brian_LIGHTHOUSEFREE_15_00"); //I co ty na to?
 	AI_Output			(self, other, "DIA_Brian_LIGHTHOUSEFREE_04_01"); //Ale ba³agan. Jak skoñczê, Jack nie rozpozna tego miejsca.
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

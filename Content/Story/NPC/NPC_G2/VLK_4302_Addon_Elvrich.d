@@ -1,42 +1,41 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4302_Addon_Elvrich (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Elvrich";
 	guild 								=	GIL_NONE;
 	id 									=	4302;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_NoFightParker]			=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Axe);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Pony", Face_Normal03, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4302;
 };
 
-FUNC VOID Rtn_Start_4302()
+func void Rtn_Start_4302()
 {
 	TA_Sit_Campfire	(08,00,23,00, "NW_BIGMILL_FARM3_RANGERBANDITS_ELVRICH");
     TA_Sit_Campfire	(23,00,08,00, "NW_BIGMILL_FARM3_RANGERBANDITS_ELVRICH");
 };
-FUNC VOID Rtn_BackInTheCity_4302()
+func void Rtn_BackInTheCity_4302()
 {
 	TA_Repair_Hut	(06,00,09,00, "NW_CITY_MERCHANT_SHOP01_FRONT_01");
 	TA_Saw			(09,00,13,05, "NW_CITY_MERCHANT_SHOP01_FRONT_01");

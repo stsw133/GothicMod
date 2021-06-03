@@ -43,12 +43,12 @@ func int oCNpc_GetSlotItem (var c_npc slf, var string slot)
 
 func void Equip_FarWeapon (var C_NPC slf, var int ItemInst)
 {
-	if (!Npc_HasItems(slf,ItemInst))
+	if (!Npc_HasItems(slf, ItemInst))
 	{
 		CreateInvItems (slf, ItemInst, 1);
 	};
 	
-	if (!Npc_GetInvItem(slf,ItemInst))
+	if (!Npc_GetInvItem(slf, ItemInst))
 	{
 		MEM_AssertFail("Unexpected behaviour in EquipWeapon.");
 		return;
@@ -75,12 +75,12 @@ func void Equip_FarWeapon (var C_NPC slf, var int ItemInst)
 
 func void oCNpc_UseItem (var c_npc slf, var int ItemInst)
 {
-	if (!Npc_HasItems(slf,ItemInst))
+	if (!Npc_HasItems(slf, ItemInst))
 	{
-		CreateInvItems (slf, ItemInst, 1);
+		CreateInvItem (slf, ItemInst);
 	};
 	
-	if (!Npc_GetInvItem(slf,ItemInst))
+	if (!Npc_GetInvItem(slf, ItemInst))
 	{
 		return;
 	};
@@ -272,7 +272,7 @@ func void QS_ClearSlot(var int slot)
 func int QS_GetSlotItem(var int Slot)
 {
 	var int QS_Ptr; QS_Ptr = MEM_ReadStatArr(QS_Data, slot);
-	if(!QS_Ptr){ return 0; };
+	if (!QS_Ptr) { return 0; };
 	var CQuickSlot QS; QS = get(QS_Ptr);
 	return QS.ItemID;
 };
@@ -387,9 +387,9 @@ func void QS_Hook()
 	var c_item it; it = _^(MEM_ReadInt(ESP+324+4));
 	var int InstID; InstID = Hlp_GetInstanceID(it);
 	
-	if (!Npc_HasItems(hero, InstID)
-	|| !her.inventory2_oCItemContainer_frame
-	|| !CanInsertThis(it))
+	if (!Npc_HasItems(hero, InstID))
+	|| (!her.inventory2_oCItemContainer_frame)
+	|| (!CanInsertThis(it))
 	{
 		return;
 	};
@@ -440,9 +440,9 @@ func void QS_UseItem(var int slot)
 				AI_UseItem(hero, QS.ItemID);
 			};
 			        
-			if (QS.Category == QS_Category_Torch
-			&& her.fmode == 0
-			&& !oCNpc_GetSlotItem(hero, "ZS_RIGHTHAND"))
+			if (QS.Category == QS_Category_Torch)
+			&& (her.fmode == 0)
+			&& (!oCNpc_GetSlotItem(hero, "ZS_RIGHTHAND"))
 			{
 				var int islot; islot = oCNpc_GetSlotItem(hero, "ZS_LEFTHAND");
 				var int DontUse; DontUse = false;
@@ -500,7 +500,7 @@ func void OpenInv()
 	
 	if (Hlp_IsValidHandle(QS_Background))
 	{
-		QS_MoveTo(QS_Background, Print_Screen[PS_X] / 2, QS_SlotBackMargin);
+		QS_MoveTo(QS_Background, Print_Screen[PS_X]/2, QS_SlotBackMargin);
 	};
 	var int i; i = 0;
 	repeat(i, 10);
@@ -513,7 +513,7 @@ func void CloseInv()
 	QS_InvOpen = false;
 	if (Hlp_IsValidHandle(QS_Background))
 	{
-		QS_MoveTo(QS_Background, Print_Screen[PS_X] / 2, Print_Screen[PS_Y] - QS_SlotBackMargin);
+		QS_MoveTo(QS_Background, Print_Screen[PS_X]/2, Print_Screen[PS_Y] - QS_SlotBackMargin);
 	};
 	
 	var int i; i = 0;
@@ -524,7 +524,7 @@ func void CloseInv()
 
 func void QS_HasItems(var int slot)
 {
-	if(!Npc_HasItems(hero, QS_GetSlotItem(slot)))
+	if (!Npc_HasItems(hero, QS_GetSlotItem(slot)))
 	{
 		QS_ClearSlot(slot);
 	};
@@ -646,14 +646,14 @@ func void QS_AddNums()
 func void Close_InvFix()
 {
 	var oCNpc her; her = Hlp_GetNpc(hero);
-	if (QS_InvOpen
-	&& !her.inventory2_oCItemContainer_frame
-	&& !her.inventory2_oCItemContainer_viewItemInfo)
+	if (QS_InvOpen)
+	&& (!her.inventory2_oCItemContainer_frame)
+	&& (!her.inventory2_oCItemContainer_viewItemInfo)
 	{
 		QS_InvOpen = false;
 		if (Hlp_IsValidHandle(QS_Background))
 		{
-			QS_MoveTo(QS_Background, Print_Screen[PS_X] / 2, Print_Screen[PS_Y] - QS_SlotBackMargin);
+			QS_MoveTo(QS_Background, Print_Screen[PS_X]/2, Print_Screen[PS_Y] - QS_SlotBackMargin);
 			var int i; i = 0;
 			repeat(i, 10);
 				QS_RefreshRender(i);
@@ -664,7 +664,7 @@ func void Close_InvFix()
 
 func void QS_DoFrame()
 {
-	if (Npc_IsInState(hero,ZS_Dead) == false) && (hero.attribute[0] > 1) && (movieMode == false)
+	if (!Npc_IsInState(hero, ZS_Dead)) && (hero.attribute[0] > 1) && (!movieMode)
 	{
 		if (Hlp_IsValidHandle(QS_Background))
 		{
@@ -687,7 +687,7 @@ func void QS_DoFrame()
 			QS_Use();
 			QS_AddNums();
 			
-			if(MEM_Game.singleStep || !InfoManager_HasFinished())
+			if (MEM_Game.singleStep || !InfoManager_HasFinished())
 			{
 				View_DeleteText(QS_Background);
 			};

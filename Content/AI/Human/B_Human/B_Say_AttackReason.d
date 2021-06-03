@@ -4,13 +4,15 @@
 func void B_Say_AttackReason()
 {
 	/// ------ wenn ich temp_hostile (= upset) bin ------
-	if (Wld_GetGuildAttitude(self.guild,other.guild) != ATT_HOSTILE)
-	&& (Npc_GetAttitude(self,other) == ATT_HOSTILE)
+	if (Wld_GetGuildAttitude(self.guild, other.guild) != ATT_HOSTILE)
+	&& (Npc_GetAttitude(self, other) == ATT_HOSTILE)
 	{
 		/// ------ nicht bei AR_Kill, da wird autom. auf perm hostile gesetzt ------
 		if (self.aivar[AIV_ATTACKREASON] == AR_KILL)
-		{	return;	};
-
+		{
+			return;
+		};
+		
 		B_Say_Overlay (self, other, "$IGETYOUSTILL");
 		return;
 	};
@@ -18,10 +20,9 @@ func void B_Say_AttackReason()
 	/// ------ Enemy = Mensch oder Monster ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
 	{
-		if (self.aivar[AIV_PARTYMEMBER] == true)
+		if (self.aivar[AIV_PARTYMEMBER])
 		{
-			var int rnd; rnd = Hlp_Random(100);
-			if (rnd > 15)
+			if (Hlp_Random(100) > 15)
 			{
 				return;
 			};
@@ -29,12 +30,12 @@ func void B_Say_AttackReason()
 		
 		if (other.guild < GIL_SEPERATOR_HUM)
 		{
-			if (C_PlayerIsFakeBandit(self,other) == true)
+			if (C_PlayerIsFakeBandit(self, other))
 			{
 				B_Say_Overlay (self, other, "$ADDON_DIEBANDIT");
 				Npc_SendPassivePerc	(self, PERC_ASSESSFIGHTSOUND, self, other);
 			}
-			else if (C_PlayerIsFakePirate(self,other) == true)
+			else if (C_PlayerIsFakePirate(self, other))
 			{
 				B_Say_Overlay (self, other, "$ADDON_DIRTYPIRATE");
 				Npc_SendPassivePerc	(self, PERC_ASSESSFIGHTSOUND, self, other);
@@ -48,13 +49,13 @@ func void B_Say_AttackReason()
 		else
 		{
 			if (self.voice == 9)
-			{	
+			{
 				var int random; random = Hlp_Random(3);
-				if (random < 1) 
+				if (random < 1)
 				{
-					B_Say_Overlay (self, other, "$DIEMONSTER");
+					B_Say_Overlay (self, other, "$DIEMONSTER");	
 				}
-				else if (random == 1) 
+				else if (random == 1)
 				{
 					B_Say_Overlay (self, other, "$ADDON_DIEMONSTER");
 				}
@@ -86,7 +87,7 @@ func void B_Say_AttackReason()
 		B_Say_Overlay (self, other, "$HANDSOFF");
 		return;
 	};
-
+	
 	/// ------ Schaf wurde angegriffen oder getötet (von Mensch oder Monster) ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_SheepKiller)
 	{
@@ -114,7 +115,7 @@ func void B_Say_AttackReason()
 	{
 		return;
 	};
-
+	
 	/// ------ Monster kämpft gegen Human - ich helfe Human ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterVsHuman)
 	{
@@ -122,14 +123,14 @@ func void B_Say_AttackReason()
 		Npc_SendPassivePerc	(self, PERC_ASSESSFIGHTSOUND, self, other);
 		return;
 	};
-
+	
 	/// ------ GateGuards halten nicht-feindliches Monster auf ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
 	{
 		B_Say_Overlay (self, other, "$DIESTUPIDBEAST");
 		return;
 	};
-
+	
 	/// ------ Täter hat mich verletzt ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
 	{
@@ -187,6 +188,5 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ kein Grund ------
 	return;
 };

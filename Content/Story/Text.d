@@ -87,7 +87,6 @@ const string MOBNAME_GRAVETEAM_12	=	"Andre - 'Jak szybko opada przeciêtny ¿agiel
 const string MOBNAME_GRAVETEAM_13	=	"Mihai - 'ChodŸ dziecinko, coœ ci poka¿ê...'";
 const string MOBNAME_GRAVETEAM_14	=	"Uwe - 'Na którym poziomie masz tego paladyna?'";
 
-//Grabsteine
 const string MOBNAME_GRAVE_01		=	"Baron Heinrich von Stahl 551 - 589 'Przyby³em i wypi³em'";
 const string MOBNAME_GRAVE_02		=	"Bertran 465 - 480 'Bycie ¿abojadem wcale nie jest fajne'";
 const string MOBNAME_GRAVE_03		=	"Izolda 525 - 550";
@@ -144,85 +143,87 @@ const string MOBNAME_ADDON_TELEPORT_05			=	"Do kanionu";
 ///******************************************************************************************
 const string TXT_GUILDS[GIL_MAX] =
 {
-	"Brak przyn."		,
-	"Paladyn"			,
-	"Stra¿nik"			,
-	"Obywatel"			,
-	"Mag"				,
-	"Nowicjusz"			,
-	"£owca smoków"		,
-	"Najemnik"			,
-	"Farmer"			,
-	"Bandyta"			,
-	"Skazaniec"			,
-	"Poszukiwacz"		,
-	"Mieszkaniec"		,
-	"Pirat"				,
-	"Mag"				,
-	"D"					,
-	""					, ///16 - Gil_Seperator_Hum
-	"Chrz¹szcz"			,
-	"Owca"				,
-	"Goblin"			,
-	"Szkielet-goblin"	,
+	"Brak przyn."	,
+	"Paladyn"		,
+	"Stra¿nik"		,
+	"Obywatel"		,
+	"Mag"			,
+	"Nowicjusz"		,
+	"£owca smoków"	,
+	"Najemnik"		,
+	"Farmer"		,
+	"Bandyta"		,
+	"Skazaniec"		,
+	"Poszukiwac"	,
+	"Mieszkaniec"	,
+	"Pirat"			,
+	"Mag Wody"		,
+	"D"				,
+	""				, /// 16 - Gil_Seperator_Hum
+	"Chrz¹szcz"		,
+	"Owca"			,
+	"Goblin"		,
+	"Szkielet-goblin",
 	"Prz. szkielet-goblin",
-	"Œcierwojad"		,
-	"Olbrzymi szczur"	,
-	"Polna bestia"		,
-	"Krwiopijca"		,
-	"Jaszczur"			,
-	"Wilk"				,
-	"Prz. Wilk"			,
-	"Pe³zacz"			,
-	"Topielec"			,
-	"Szkielet"			,
-	"Prz. Szkielet"		,
-	"Szkielet-mag"		,
-	"Zombie"			,
-	"Zêbacz"			,
-	"Cieniostwór"		,
-	"Szkielet-potwór"	,
-	"Harpia"			,
-	"Kamienny golem"	,
-	"Ognisty golem"		,
-	"Lodowy golem"		,
-	"Prz. golem"		,
-	"Demon"				,
-	"Prz. demon"		,
-	"Troll"				,
-	"W¹¿ b³otny"		,
-	"Smok"				,
-	"Kretoszczur"		,
-	"Aligator"			, ///Addon
-	"B³otny golem"		,
-	"Stra¿nik"			,
-	"Kamienna puma"		,
-	"Neutralny"			,
-	"Prz. stra¿nik"		,
-	"Prz. zombie"		,
-	"Przyzwany"			,
-	"C"					,
-	""					, ///58 - Gil_Seperator_Orc
-	"Ork"				,
-	"Ork"				,
-	"Ork-o¿ywieniec"	,
-	"Smokowiec"			,
-	"X"					,
-	"Y"					,
-	"Z"
+	"Œcierwojad"	,
+	"Olbrzymi szczur",
+	"Polna bestia"	,
+	"Krwiopijca"	,
+	"Jaszczur"		,
+	"Wilk"			,
+	"Prz. Wilk"		,
+	"Pe³zacz"		,
+	"Topielec"		,
+	"Szkielet"		,
+	"Prz. Szkielet"	,
+	"Szkielet-mag"	,
+	"Zombie"		,
+	"Zêbacz"		,
+	"Cieniostwór"	,
+	"Szkielet-potwór",
+	"Harpia"		,
+	"Kamienny golem",
+	"Ognisty golem"	,
+	"Lodowy golem"	,
+	"Prz. golem"	,
+	"Demon"			,
+	"Prz. demon"	,
+	"Troll"			,
+	"W¹¿ b³otny"	,
+	"Smok"			,
+	"Kretoszczur"	,
+	"Aligator"		,
+	"B³otny golem"	,
+	"Stra¿nik"		,
+	"Kamienna puma"	,
+	"Przyzwany"		,
+	"Stra¿nik"		,
+	"Zombie"		,
+	"Neutralny"		,
+	"Dziki"			,
+	""				, /// 58 - Gil_Seperator_Orc
+	"Ork"			,
+	"Ork"			,
+	"Ork-o¿ywieniec",
+	"Smokowiec"		,
+	"X"				,
+	"Y"				,
+	"Z"				
 };
+
 
 ///******************************************************************************************
 ///	SPELL NAMES
 ///******************************************************************************************
 const string TXT_SPELLS[MAX_SPELL] =
 {
+	/*
 	"Œwiat³o",					/// 0	SPL_nLight
 	"Uleczenie",				/// 1	SPL_nHeal
-	"Œwiat³o",					/// 2	SPL_PalLight
-	"£adowanie many",			/// 3	SPL_PalRemana
+	"B³ogos³awieñstwo",			/// 2	SPL_PalBless
+	"Boska ochrona",			/// 3	SPL_PalProtection
 	"Œwiêta strza³a",			/// 4	SPL_PalHolyBolt
-	"B³ogos³awieñstwo",			/// 5	SPL_PalBless
+	"Bo¿a ³aska",				/// 5	SPL_PalDivineGrace
 	"Zniszczenie z³a",			/// 6	SPL_PalDestroyEvil
 	"Spowolnienie czasu",		/// 7	SPL_SlowTime
 	"Teleportacja",				/// 8	SPL_Teleport
@@ -326,10 +327,153 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"",							/// 97	SPL_Reserved_97
 	"",							/// 98	SPL_Reserved_98
 	""							/// 99	SPL_Reserved_99
+	*/
+	
+	// Paladin-Runen
+	"Œwiêty p³omieñ",			// 0	SPL_PalLight
+	"Ma³e uleczenie",			// 1	SPL_PalLightHeal
+	"Œwiêta strza³a",			// 2	SPL_PalHolyBolt
+	"Œrednie uleczenie",		// 3	SPL_PalMediumHeal
+	"Wypêdzenie z³a",			// 4	SPL_PalRepelEvil
+	"Du¿e uleczenie",			// 5	SPL_PalFullHeal
+	"Zniszczenie z³a",			// 6	SPL_PalDestroyEvil
+
+	// Teleport-Runen
+	"Teleportacja",				// 7	SPL_PalTeleportSecret
+	"Do miasta portowego",		// 8	SPL_TeleportSeaport
+	"Do klasztoru",				// 9	SPL_TeleportMonastery
+	"Do maj¹tku ziemskiego",	// 10	SPL_TeleportFarm
+	"Do Xardasa",				// 11	SPL_TeleportXardas
+	"Do prze³êczy Khorinis",	// 12	SPL_TeleportPassNW
+	"Do prze³êczy Górniczej Doliny",	// 13	SPL_TeleportPassOW
+	"Do zamku",					// 14	SPL_TeleportOC
+	"Do starej wie¿y demonów",	// 15	SPL_TeleportOWDemonTower
+	"Do gospody",				// 16	SPL_TeleportTaverne
+	"TXT_SPL_TELEPORT_3",		// 17	SPL_Teleport_3
+
+	// Kreis 1
+	"Œwiat³o",					// 18	SPL_Light
+	"Ognista strza³a",			// 19	SPL_Firebolt
+
+	// Kreis 2
+	"Lodowa strza³a",			// 20	SPL_Icebolt
+
+	// Kreis 1
+	"Leczenie lekkich ran",		// 21	SPL_LightHeal
+	"Szkielet-goblin",			// 22	SPL_SummonGoblinSkeleton
+
+	// Kreis 2
+	"Kula ognia",				// 23	SPL_InstantFireball
+
+	// Kreis 1
+	"Ma³a b³yskawica",			// 24	SPL_Zap
+
+	// Kreis 2
+	"Przyzwanie wilka",			// 25	SPL_SummonWolf
+	"Piêœæ wichru",				// 26	SPL_WindFist
+	"Sen",						// 27	SPL_Sleep
+
+	// Kreis 3
+	"Leczenie œrednich ran",	// 28	SPL_MediumHeal
+	"B³yskawica",				// 29	SPL_LightningFlash
+	"Du¿a kula ognia",			// 30	SPL_ChargeFireball
+	"Szkielet",					// 31	SPL_SummonSkeleton
+	"Strach",					// 32	SPL_Fear
+	"Bry³a lodu",				// 33	SPL_IceCube
+	"Piorun kulisty",			// 34	SPL_ChargeZap
+
+	// Kreis 4
+	"Tworzenie golema",			// 35	SPL_SummonGolem
+	"Zniszczenie o¿ywieñca",	// 36	SPL_DestroyUndead
+	"Du¿a burza ognista",		// 37	SPL_Pyrokinesis
+
+	// Kreis 5
+	"Ma³a burza ognista",		// 38	SPL_Firestorm
+	"Lodowa fala",				// 39	SPL_IceWave
+	"Demon",					// 40	SPL_SummonDemon
+	"Uleczenie ca³kowite",		// 41	SPL_FullHeal
+
+	// Kreis 6
+	"Ognisty deszcz",			// 42	SPL_Firerain
+	"Tchnienie œmierci",		// 43	SPL_BreathOfDeath
+	"Masowe zniszczenie",		// 44	SPL_MassDeath
+	"Armia ciemnoœci",			// 45	SPL_ArmyOfDarkness
+	"Zmniejszenie",				// 46	SPL_Shrink
+
+	// Scrolls
+	"Owca",						// 47	SPL_TrfSheep
+	"Œcierwojad",				// 48	SPL_TrfScavenger
+	"Olbrzymi szczur",			// 49	SPL_TrfGiantRat
+	"Polna bestia",				// 50	SPL_TrfGiantBug
+	"Wilk",						// 51	SPL_TrfWolf
+	"Jaszczur",					// 52	SPL_TrfWaran
+	"Zêbacz",					// 53	SPL_TrfSnapper
+	"Warg",						// 54	SPL_TrfWarg
+	"Ognisty jaszczur",			// 55	SPL_TrfFireWaran
+	"Topielec",					// 56	SPL_TrfLurker
+	"Cieniostwór",				// 57	SPL_TrfShadowbeast
+	"Smoczy zêbacz",			// 58	SPL_TrfDragonSnapper
+	"Niepamiêæ"	,				// 59	SPL_Charm
+
+	// Kreis 5
+	"Œwiêty pocisk",			// 60	SPL_MasterOfDisaster
+
+	// ???
+	"TXT_SPL_DEATHBOLT",		// 61	SPL_Deathbolt
+	"TXT_SPL_DEATHBALL",		// 62	SPL_Deathball
+	"TXT_SPL_CONCUSSIONBOLT",	// 63	SPL_ConcussionBolt
+	"TXT_SPL_RESERVED_64",		// 64	SPL_Reserved_64
+	"TXT_SPL_RESERVED_65",		// 65	SPL_Reserved_65
+	"TXT_SPL_RESERVED_66",		// 66	SPL_Reserved_66
+	"TXT_SPL_RESERVED_67",		// 67	SPL_Reserved_67
+  	"TXT_SPL_RESERVED_68",		// 68	SPL_Reserved_68
+  	"TXT_SPL_RESERVED_69",		// 69	SPL_Reserved_69
+  
+  	// Magick (Wasser)
+ 	"Grom",						// 70	SPL_Thunderstorm
+	"Wir",						// 71	SPL_Whirlwind
+	"Wodna piêœæ",				// 72	SPL_WaterFist
+	"Lodowa lanca",				// 73	SPL_IceLance
+	"Spuchniêcie",				// 74	SPL_Inflate
+	"Gejzer",					// 75	SPL_Geyser
+	"Wodna ró¿d¿ka",			// 76	SPL_Waterwall
+	"TXT_SPL_RESERVED_77",		// 77	SPL_Reserved_77
+	"TXT_SPL_RESERVED_78",		// 78	SPL_Reserved_78
+	"TXT_SPL_RESERVED_79",		// 79	SPL_Reserved_79
+
+	// Magick (Maya)
+	"Plaga owadów",				// 80	SPL_Plague
+	"Rój owadów",				// 81	SPL_Swarm
+	"Korzeñ",					// 82	SPL_GreenTentacle
+	"Trzêsienie ziemi",			// 83	SPL_Earthquake
+	"Stworzenie Stra¿nika",		// 84	SPL_SummonGodzilla
+	"Sza³ Beliara",				// 85	SPL_Energyball
+	"Kradzie¿ energii",			// 86	SPL_SuckEnergy
+	"Krzyk umar³ych",			// 87	SPL_Skull
+	"Stworzenie zombie",		// 88	SPL_SummonZombie
+	"Przyzwanie b³otniaka",		// 89	SPL_SummonMud
+
+	// ...
+	"TXT_SPL_RESERVED_90",		// 90	SPL_Reserved_90
+	"TXT_SPL_RESERVED_91",		// 91	SPL_Reserved_91
+	"TXT_SPL_RESERVED_92",		// 92	SPL_Reserved_92
+	"TXT_SPL_RESERVED_93",		// 93	SPL_Reserved_93
+	"TXT_SPL_RESERVED_94",		// 94	SPL_Reserved_94
+	"TXT_SPL_RESERVED_95",		// 95	SPL_Reserved_95
+	"TXT_SPL_RESERVED_96",		// 96	SPL_Reserved_96
+	"TXT_SPL_RESERVED_97",		// 97	SPL_Reserved_97
+	"TXT_SPL_RESERVED_98",		// 98	SPL_Reserved_98
+	"TXT_SPL_RESERVED_99"		// 99	SPL_Reserved_99
 };
 
 const string NAME_SPL_Light				=	"Œwiat³o";
 const string NAME_SPL_Heal				=	"Uleczenie";
+
+const string NAME_SPL_PalBless			=	"B³ogos³awieñstwo";
+const string NAME_SPL_PalProtection		=	"Boska ochrona";
+const string NAME_SPL_PalHolyBolt		=	"Œwiêta strza³a";
+const string NAME_SPL_PalDivineGrace	=	"Bo¿a ³aska";
+const string NAME_SPL_PalDestroyEvil	=	"Zniszczenie z³a";
 
 const string NAME_SPL_Teleport			=	"Teleportacja";
 const string NAME_SPL_Telekinesis		=	"Telekineza";
@@ -385,11 +529,6 @@ const string NAME_SPL_Swarm				=	"Rój insektów";
 const string NAME_SPL_SuckEnergy		=	"Kradzie¿ energii";
 const string NAME_SPL_Skull				=	"Krzyk umar³ych";
 
-const string NAME_SPL_PalRemana			=	"£adowanie many";
-const string NAME_SPL_PalHolyBolt		=	"Œwiêta strza³a";
-const string NAME_SPL_PalBless			=	"B³ogos³awieñstwo";
-const string NAME_SPL_PalDestroyEvil	=	"Zniszczenie z³a";
-
 const string NAME_SPL_MysBolt			=	"Mistyczny pocisk";
 const string NAME_SPL_MysGhost			=	"Duch";
 const string NAME_SPL_MysRoot			=	"Ciernie";
@@ -427,6 +566,68 @@ const string NAME_SPL_cR_Fireball		=	"Czar Azazela";
 const string NAME_SPL_cG_Fireball		=	"Czar Methiona";
 const string NAME_SPL_cY_Fireball		=	"Czar Yataru";
 
+
+const string NAME_SPL_PalLight				= "Œwiêty p³omieñ";
+const string NAME_SPL_PalLightHeal			= "Pomniejsze uleczenie";
+const string NAME_SPL_PalMediumHeal			= "Œrednie uleczenie";
+const string NAME_SPL_PalRepelEvil			= "Szkodzenie z³u";
+const string NAME_SPL_PalFullHeal			= "Wiêksze uleczenie";
+
+// Teleport	Runen
+const string NAME_SPL_PalTeleportSecret		= "Teleportacja";
+const string NAME_SPL_TeleportSeaport		= "Teleportacja do miasta portowego";
+const string NAME_SPL_TeleportMonastery		= "Teleportacja do klasztoru";
+const string NAME_SPL_TeleportFarm			= "Teleportacja do maj¹tku ziemskiego";
+const string NAME_SPL_TeleportXardas		= "Teleportacja do Xardasa";
+const string NAME_SPL_TeleportPassNW		= "Teleportacja do prze³êczy Khorinis";
+const string NAME_SPL_TeleportPassOW		= "Teleportacja do prze³êczy Górniczej Doliny";
+const string NAME_SPL_TeleportOC			= "Teleportacja do zamku";
+const string NAME_SPL_TeleportOWDemonTower	= "Teleportacja do starej wie¿y demonów";
+const string NAME_SPL_TeleportTaverne		= "Teleportacja do tawerny";
+
+// Kreis 1
+const string NAME_SPL_LightHeal				= "Leczenie lekkich ran";
+const string NAME_SPL_SummonGoblinSkeleton	= "Tworzenie szkieletu-goblina";
+
+// Kreis 2
+const string NAME_SPL_SummonWolf			= "Przyzwanie wilka";
+
+// Kreis 3
+const string NAME_SPL_MediumHeal			= "Leczenie œrednich ran";
+
+// Kreis 4
+const string NAME_SPL_SummonGolem			= "Obudzenie golema";
+const string NAME_SPL_DestroyUndead			= "Zniszczenie o¿ywieñca";
+
+// Kreis 5
+const string NAME_SPL_FullHeal				= "Leczenie ciê¿kich ran";
+
+// Scrolls
+const string NAME_SPL_TrfSheep				= "Przemiana w owcê";
+const string NAME_SPL_TrfScavenger			= "Przemiana w œcierwojada";
+const string NAME_SPL_TrfGiantRat			= "Przemiana w olbrzymiego szczura";
+const string NAME_SPL_TrfGiantBug			= "Przemiana w poln¹ bestiê";
+const string NAME_SPL_TrfWolf				= "Przemiana w wilka";
+const string NAME_SPL_TrfWaran				= "Przemiana w jaszczura";
+const string NAME_SPL_TrfSnapper			= "Przemiana w zêbacza";
+const string NAME_SPL_TrfWarg				= "Przemiana w warga";
+const string NAME_SPL_TrfFireWaran			= "Przemiana w ognistego jaszczura";
+const string NAME_SPL_TrfLurker				= "Przemiana w topielca";
+const string NAME_SPL_TrfShadowbeast		= "Przemiana w cieniostwora";
+const string NAME_SPL_TrfDragonSnapper		= "Przemiana w smoczego zêbacza";
+
+// ???
+const string NAME_SPL_Deathball				= "NAME_SPL_DEATHBALL";
+
+// Magick (Maya)
+const string NAME_SPL_Plague				= "Plaga owadów";
+const string NAME_SPL_GreenTentacle			= "Korzeñ";
+const string NAME_SPL_Earthquake			= "Trzêsienie ziemi";
+const string NAME_SPL_SummonGuardian		= "Stworzenie Stra¿nika";
+const string NAME_SPL_BeliarsRage			= "Sza³ Beliara";
+const string NAME_SPL_SummonZombie			= "Stworzenie zombie";
+const string NAME_SPL_SummonMud				= "Przyzwanie b³otniaka";
+
 ///******************************************************************************************
 ///	TALENTS NAMES
 ///******************************************************************************************
@@ -444,42 +645,42 @@ const string TXT_TALENTS[NPC_TALENT_MAX] =
 	"Perswazja:",			///NPC_TALENT_PERSUASION		= 9;
 	"Druga broñ:",			///NPC_TALENT_2ndH				= 10;
 	"Akrobatyka:",			///NPC_TALENT_ACROBATIC			= 11;
-	"Kowalstwo:",			///NPC_TALENT_SMITH				= 12;
-	"Jubilerstwo:",			///NPC_TALENT_JEWELERY			= 13;
-	"Alchemia:",			///NPC_TALENT_ALCHEMY			= 14;
-	"Myœliwstwo:",			///NPC_TALENT_HUNTING			= 15;
-	"Piœmiennictwo:",		///NPC_TALENT_WRITING			= 16;
+	"Jubilerstwo:",			///NPC_TALENT_JEWELERY			= 12;
+	"Kowalstwo:",			///NPC_TALENT_SMITH				= 13;
+	"Piœmiennictwo:",		///NPC_TALENT_WRITING			= 14;
+	"Alchemia:",			///NPC_TALENT_ALCHEMY			= 15;
+	"Myœliwstwo:",			///NPC_TALENT_HUNTING			= 16;
 	"Staro¿. jêzyk:",		///NPC_TALENT_LANGUAGE			= 17;
 	"Rozdzia³:",			///NPC_TALENT_CHAPTER			= 18;
 	"Typ magii:",			///NPC_TALENT_TYPEOFMAGIC		= 19;
 	"",						///NPC_TALENT_GUILD				= 20;
-	"Poz. trudn.:"			///NPC_TALENT_DIFFICULT			= 21;
+	"Poz. trudn.:"			///NPC_TALENT_DIFFICULTY		= 21;
 };
 
 const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 {
-	"",												///NPC_TALENT_UNKNOWN		= 0;
-	"s³aby|œredni|silny",							///NPC_TALENT_1H			= 1;
-	"s³aby|œredni|silny",							///NPC_TALENT_2H			= 2;
-	"s³aby|œredni|silny",							///NPC_TALENT_BOW			= 3;
-	"s³aby|œredni|silny",							///NPC_TALENT_CROSSBOW		= 4;
-	"-|uczony",										///NPC_TALENT_PICKLOCK		= 5;
-	"-|uczony",										///NPC_TALENT_PICKPOCKET	= 6;
-	"0|1|2|3|4|5",									///NPC_TALENT_MAGIC			= 7;
-	"-|uczony",										///NPC_TALENT_SNEAK			= 8;
-	"-|uczony",										///NPC_TALENT_PERSUASION	= 9;
-	"-|tarcza|miecz|tarcza lub miecz",				///NPC_TALENT_2ndH			= 10;
-	"-|uczony",										///NPC_TALENT_ACROBATIC		= 11;
-	"0|1|2|3|4|5",									///NPC_TALENT_SMITH			= 12;
-	"0|1|2|3|4|5",									///NPC_TALENT_JEWELERY		= 13;
-	"0|1|2|3|4|5",									///NPC_TALENT_ALCHEMY		= 14;
-	"0|1|2|3|4|5",									///NPC_TALENT_HUNTING		= 15;
-	"0|1|2|3|4|5",									///NPC_TALENT_WRITING		= 16;
-	"-|uczony",										///NPC_TALENT_LANGUAGE		= 17;
-	"0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",		///NPC_TALENT_CHAPTER		= 18;
-	"brak|mistycyzm|geomancja|elementaryzm|pyromancja|nekromancja|inny",		///NPC_TALENT_TYPEOFMAGIC	= 19;
-	"Brak przyn.|Paladyn|Zakonnik|Gwardzista|Stra¿nik|Arcymag|Mag|St. nowicjusz|Nowicjusz|£owca smoków|Najemnik|Elit. zabójca|Zabójca|Inne",	///NPC_TALENT_GUILD	= 20;
-	"³atwy|œredni|trudny|b. trudny|niemo¿liwy"		///NPC_TALENT_DIFFICULT		= 21;
+	"",											///NPC_TALENT_UNKNOWN		= 0;
+	"s³aby|œredni|silny",						///NPC_TALENT_1H			= 1;
+	"s³aby|œredni|silny",						///NPC_TALENT_2H			= 2;
+	"s³aby|œredni|silny",						///NPC_TALENT_BOW			= 3;
+	"s³aby|œredni|silny",						///NPC_TALENT_CROSSBOW		= 4;
+	"-|uczony",									///NPC_TALENT_PICKLOCK		= 5;
+	"-|uczony",									///NPC_TALENT_PICKPOCKET	= 6;
+	"0|1|2|3|4|5",								///NPC_TALENT_MAGIC			= 7;
+	"-|uczony",									///NPC_TALENT_SNEAK			= 8;
+	"-|uczony",									///NPC_TALENT_PERSUASION	= 9;
+	"-|tarcza|miecz|dowolna",					///NPC_TALENT_2ndH			= 10;
+	"-|uczony",									///NPC_TALENT_ACROBATIC		= 11;
+	"0|1|2|3|4|5",								///NPC_TALENT_JEWELERY		= 12;
+	"0|1|2|3|4|5",								///NPC_TALENT_SMITH			= 13;
+	"0|1|2|3|4|5",								///NPC_TALENT_WRITING		= 14;
+	"0|1|2|3|4|5",								///NPC_TALENT_ALCHEMY		= 15;
+	"0|1|2|3|4|5",								///NPC_TALENT_HUNTING		= 16;
+	"-|uczony",									///NPC_TALENT_LANGUAGE		= 17;
+	"0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",	///NPC_TALENT_CHAPTER		= 18;
+	"brak|mistycyzm|geomancja|elementaryzm|pyromancja|nekromancja|inny",	///NPC_TALENT_TYPEOFMAGIC = 19;
+	"",											///NPC_TALENT_GUILD			= 20;
+	"³atwy|œredni|trudny|b. trudny|niemo¿liwy"	///NPC_TALENT_DIFFICULTY	= 21;
 };
 
 ///******************************************************************************************
@@ -544,6 +745,7 @@ const string DIALOG_BACK			=	"WRÓÆ";
 const string DIALOG_PERSUASION		=	"(Perswazja)";
 const string DIALOG_TEACH			=	"(Nauka)";
 const string DIALOG_TRADE			=	"(Handel)";
+const string DIALOG_PICKPOCKET		=	"(Kradzie¿ kiesz.)";
 
 ///******************************************************************************************
 ///	TEXT FOR INVENTORY
@@ -562,11 +764,10 @@ const string NAME_Mag_Circle		=	"Wymagany kr¹g: ";
 const string NAME_Manakosten		=	"Wydatek many: ";
 const string NAME_MinManakosten		=	"Min. wydatek many: ";
 const string NAME_MaxManakosten		=	"Max. wydatek many: ";
-const string NAME_NeedsAllMana		=	"Potrzebuje ca³ej many.";
 const string NAME_ManaPerSec		=	"Mana/sek.: ";
 const string NAME_EffectPerSec		=	"Efekt/sek.: ";
 const string NAME_Duration			=	"Czas trwania (sek.): ";
-const string NAME_SecToRestore		=	" sekund do odnowienia.";
+const string NAME_Sec_Duration		=	"Czas trwania (sek.)";
 
 const string NAME_Lev_needed		=	"Wymagany poziom: ";
 const string NAME_Str_needed		=	"Wymagana si³a: ";
@@ -591,6 +792,9 @@ const string NAME_Prot_Physical		=	"Odpornoœæ fizyczna: ";
 const string NAME_Prot_Magic		=	"Odpornoœæ magiczna: ";
 const string NAME_Prot_Fire			=	"Ognio-odpornoœæ: ";
 
+const string NAME_Prot_Edge		= "Obrona przed broni¹:";
+const string NAME_Prot_Point	= "Obrona przed strza³ami:";
+
 const string NAME_Bonus_HP			=	"Premia punktów ¿ycia: ";
 const string NAME_Bonus_Mana		=	"Premia many: ";
 const string NAME_Bonus_Energy		=	"Premia energii: ";
@@ -606,6 +810,7 @@ const string NAME_Bonus_Power		=	"Premia do mocy: ";
 const string NAME_Bonus_ManaMax		=	"Premia do max. many: ";
 const string NAME_Bonus_HpMax		=	"Premia do max. punktów ¿ycia: ";
 const string NAME_Bonus_EneMax		=	"Premia do max. energii: ";
+const string NAME_Bonus_RgHp		=	"Premia do regen. ¿ycia: ";
 const string NAME_Bonus_LifeSteal	=	"Premia do kradzie¿y ¿ycia: ";
 
 const string NAME_Taken_Str			=	"Kara do si³y: ";
@@ -624,11 +829,40 @@ const string NAME_Bonus_1H			=	"Broñ jednorêczna +1%";
 const string NAME_Bonus_2H			=	"Broñ dwurêczna +1%";
 const string NAME_Bonus_Bow			=	"£uki +1%";
 const string NAME_Bonus_Crossbow	=	"Kusze +1%";
-
 const string NAME_dBonus_1H			=	"Broñ jednorêczna +2%";
 const string NAME_dBonus_2H			=	"Broñ dwurêczna +2%";
 const string NAME_dBonus_Bow		=	"£uki +2%";
 const string NAME_dBonus_Crossbow	=	"Kusze +2%";
+
+//ADDON
+const string NAME_ADDON_WISPSKILL_FF 		= "Broñ dystansowa i amunicja";
+const string NAME_ADDON_WISPSKILL_NONE  	= "Z³oto, klucze i narzêdzia";
+const string NAME_ADDON_WISPSKILL_RUNE 		= "Runy i zwoje";
+const string NAME_ADDON_WISPSKILL_MAGIC 	= "Pierœcienie i amulety";
+const string NAME_ADDON_WISPSKILL_FOOD 		= "¯ywnoœæ i roœliny";
+const string NAME_ADDON_WISPSKILL_POTIONS 	= "Magia i mikstury";
+
+const string NAME_ADDON_LEARNLANGUAGE_1 	= "Naucz siê jêzyka wieœniaków";
+const string NAME_ADDON_LEARNLANGUAGE_2 	= "Naucz siê jêzyka wojowników";
+const string NAME_ADDON_LEARNLANGUAGE_3 	= "Naucz siê jêzyka kap³anów";
+
+// *************************************************************
+// NAMEN FÜR Produktionsitems
+// *************************************************************
+const string NAME_ItMw_1H_Common_01	 = "Miecz"; //(40/30)
+const string NAME_ItMw_1H_Special_01 = "D³ugi miecz magiczny";
+const string NAME_ItMw_2H_Special_01 = "Magiczny miecz dwurêczny";
+const string NAME_ItMw_1H_Special_02 = "Magiczny miecz pó³torarêczny";
+const string NAME_ItMw_2H_Special_02 = "Ciê¿ki magiczny miecz dwurêczny";
+const string NAME_ItMw_1H_Special_03 = "Magiczne ostrze bojowee";
+const string NAME_ItMw_2H_Special_03 = "Ciê¿kie magiczne ostrze bojowe";
+const string NAME_ItMw_1H_Special_04 = "Magiczne ostrze na smoki";
+const string NAME_ItMw_2H_Special_04 = "Du¿e magiczne ostrze na smoki";
+
+const string NAME_Addon_Harad_01 = "Dobry miecz"; //ItMw_Schwert1 (60/50)
+const string NAME_Addon_Harad_02 = "Dobry d³ugi miecz"; //ItMw_Schwert4 (80/70)
+const string NAME_Addon_Harad_03 = "Rubinowe Ostrze"; //ItMw_Rubinklinge (100/90)
+const string NAME_Addon_Harad_04 = "El Bastardo"; //ItMw_ElBastardo (120/110)
 
 ///******************************************************************************************
 ///	B_GiveInvItems
@@ -650,11 +884,11 @@ const string PRINT_ItemsErhalten		=	" przedm. - otrzymano";
 
 const string PRINT_Kosten					=	". Koszt: ";
 const string PRINT_LP						=	" PN, ";
-const string PRINT_MONEY					=	" szt. z³ota";
-		
+const string PRINT_Money					=	" szt. z³ota";
+
 const string PRINT_NotEnoughLP				=	"Za ma³o punktów nauki!";
 const string Print_NotEnoughGold			=	"Za ma³o z³ota!";
-		
+
 const string PRINT_LearnSTR					=	"Si³a + ";
 const string PRINT_LearnDEX					=	"Zrêcznoœæ + ";
 const string PRINT_LearnPower				=	"Moc + ";
@@ -692,31 +926,34 @@ const string PRINT_LearnFight_Crossbow_4	=	"Kusze: poziom 4/4";
 const string PRINT_LearnFight_2ndH_1		=	"Tarcze: poziom 1/1";
 const string PRINT_LearnFight_2ndH_2		=	"Dwa miecze: poziom 1/1";
 
-const string PRINT_LearnTalent_Smith_1		=	"Kowalstwo: poziom 1/5";
-const string PRINT_LearnTalent_Smith_2		=	"Kowalstwo: poziom 2/5";
-const string PRINT_LearnTalent_Smith_3		=	"Kowalstwo: poziom 3/5";
-const string PRINT_LearnTalent_Smith_4		=	"Kowalstwo: poziom 4/5";
-const string PRINT_LearnTalent_Smith_5		=	"Kowalstwo: poziom 5/5";
-const string PRINT_LearnTalent_Alchemy_1	=	"Alchemia: poziom 1/5";
-const string PRINT_LearnTalent_Alchemy_2	=	"Alchemia: poziom 2/5";
-const string PRINT_LearnTalent_Alchemy_3	=	"Alchemia: poziom 3/5";
-const string PRINT_LearnTalent_Alchemy_4	=	"Alchemia: poziom 4/5";
-const string PRINT_LearnTalent_Alchemy_5	=	"Alchemia: poziom 5/5";
-const string PRINT_LearnTalent_Hunting_1	=	"Myœlistwo: poziom 1/5";
-const string PRINT_LearnTalent_Hunting_2	=	"Myœlistwo: poziom 2/5";
-const string PRINT_LearnTalent_Hunting_3	=	"Myœlistwo: poziom 3/5";
-const string PRINT_LearnTalent_Hunting_4	=	"Myœlistwo: poziom 4/5";
-const string PRINT_LearnTalent_Hunting_5	=	"Myœlistwo: poziom 5/5";
-const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/5";
-const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/5";
-const string PRINT_LearnTalent_Jewelery_3	=	"Jubilerstwo: poziom 3/5";
-const string PRINT_LearnTalent_Jewelery_4	=	"Jubilerstwo: poziom 4/5";
-const string PRINT_LearnTalent_Jewelery_5	=	"Jubilerstwo: poziom 5/5";
-const string PRINT_LearnTalent_Writing_1	=	"Piœmiennictwo: poziom 1/5";
-const string PRINT_LearnTalent_Writing_2	=	"Piœmiennictwo: poziom 2/5";
-const string PRINT_LearnTalent_Writing_3	=	"Piœmiennictwo: poziom 3/5";
-const string PRINT_LearnTalent_Writing_4	=	"Piœmiennictwo: poziom 4/5";
-const string PRINT_LearnTalent_Writing_5	=	"Piœmiennictwo: poziom 5/5";
+// ------ 1H -------------------------------------------------------------------------------------
+const string PRINT_Learn1H					= "Trening: pos³ugiwanie siê broni¹ jednorêczn¹";
+const string PRINT_Learn1H_and_2H			= "Trening: pos³ugiwanie siê broni¹ jedno- i dwurêczn¹"; //ADDON geändert M.F. 
+// ------ 2H -------------------------------------------------------------------------------------
+const string PRINT_Learn2H					= "Trening: pos³ugiwanie siê broni¹ dwurêczn¹";
+const string PRINT_Learn2H_and_1H			= "Trening: pos³ugiwanie siê broni¹ dwu- i jednorêczn¹";//ADDON geändert M.F. 
+// ------ Bow ------------------------------------------------------------------------------------
+const string PRINT_LearnBow					= "Trening: pos³ugiwanie siê ³ukiem";
+const string PRINT_LearnBow_and_Crossbow	= "Trening: pos³ugiwanie siê ³ukiem i kusz¹";
+// ------ Crossbow -------------------------------------------------------------------------------
+const string PRINT_LearnCrossbow			= "Trening: pos³ugiwanie siê kusz¹";
+const string PRINT_LearnCrossbow_and_Bow	= "Trening: pos³ugiwanie siê kusz¹ i ³ukiem";
+
+const string PRINT_LearnTalent_Smith_1		=	"Kowalstwo: poziom 1/3";
+const string PRINT_LearnTalent_Smith_2		=	"Kowalstwo: poziom 2/3";
+const string PRINT_LearnTalent_Smith_3		=	"Kowalstwo: poziom 3/3";
+const string PRINT_LearnTalent_Alchemy_1	=	"Alchemia: poziom 1/3";
+const string PRINT_LearnTalent_Alchemy_2	=	"Alchemia: poziom 2/3";
+const string PRINT_LearnTalent_Alchemy_3	=	"Alchemia: poziom 3/3";
+const string PRINT_LearnTalent_Hunting_1	=	"Myœlistwo: poziom 1/3";
+const string PRINT_LearnTalent_Hunting_2	=	"Myœlistwo: poziom 2/3";
+const string PRINT_LearnTalent_Hunting_3	=	"Myœlistwo: poziom 3/3";
+const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/3";
+const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/3";
+const string PRINT_LearnTalent_Jewelery_3	=	"Jubilerstwo: poziom 3/3";
+const string PRINT_LearnTalent_Writing_1	=	"Piœmiennictwo: poziom 1/3";
+const string PRINT_LearnTalent_Writing_2	=	"Piœmiennictwo: poziom 2/3";
+const string PRINT_LearnTalent_Writing_3	=	"Piœmiennictwo: poziom 3/3";
 
 const string PRINT_LearnTalent_Sneak		=	"Skradanie siê: poziom 1/1";
 const string PRINT_LearnTalent_Acrobatic	=	"Akrobatyka: poziom 1/1";
@@ -724,6 +961,25 @@ const string PRINT_LearnTalent_Picklock		=	"W³amywanie siê: poziom 1/1";
 const string PRINT_LearnTalent_Pickpocket	=	"Kradzie¿ kiesz.: poziom 1/1";
 const string PRINT_LearnTalent_Persuasion	=	"Perswazja: poziom 1/1";
 const string PRINT_LearnTalent_Language		=	"Jêzyk staro¿ytnych: poziom 1/1";
+
+// ------ Diebestalente	--------------------------------------------------------------------------
+const string PRINT_LearnPicklock			= "Nauka: w³amywanie siê";
+const string PRINT_LearnSneak				= "Nauka: skradanie siê";
+const string PRINT_LearnAcrobat				= "Nauka: akrobatyka";
+const string PRINT_Addon_AcrobatBonus		= "Premia do akrobatyki!";
+const string PRINT_LearnPickpocket			= "Nauka: kradzie¿ kieszonkowa";
+
+// ------ Player Talents -------------------------------------------------------------------------
+const string PRINT_LearnSmith				= "Nauka: kowalstwo";
+const string PRINT_LearnRunes				= "Nauka: tworzenie run";
+const string PRINT_LearnAlchemy				= "Nauka: warzenie mikstur";
+const string PRINT_LearnAlchemyInnosEye		= "Nauka: na³adowanie Oka Innosa";
+const string PRINT_LearnTakeAnimalTrophy	= "Nauka: zbieranie trofeów zwierzêcych";
+const string PRINT_LearnForeignLanguage		= "Nauka: jêzyk budowniczych";//ADDON
+const string PRINT_LearnWispDetector		= "Zwiêkszy³y siê umiejêtnoœci ognika";//ADDON
+const string PRINT_LearnPalTeleportSecret	= "Nauka: tworzenie tajnej runy teleportu";
+
+const string PRINT_NotEnoughLearnPoints		= "Za ma³o Punktów Nauki!";
 
 const string PRINT_LearnSTR1				=	"Si³a + 1";
 const string PRINT_LearnSTR5				=	"Si³a + 5";
@@ -745,6 +1001,22 @@ const string PRINT_LearnHP1					=	"Punkty ¿ycia + 4";
 const string PRINT_LearnHP5					=	"Punkty ¿ycia + 20";
 const string PRINT_LearnHP10				=	"Punkty ¿ycia + 40";
 const string PRINT_LearnHP20				=	"Punkty ¿ycia + 80";
+
+//-------- Lern	Konstanten der Descriptions	---------------------------------------------------
+const string PRINT_LearnMANA1				= "Mana + 1";
+const string PRINT_LearnMANA5				= "Mana + 5";
+
+const string PRINT_Learn1h1					= "Broñ jednorêczna + 1";
+const string PRINT_Learn1h5					= "Broñ jednorêczna + 5";
+
+const string PRINT_Learn2h1					= "Broñ dwurêczna + 1";
+const string PRINT_Learn2h5					= "Broñ dwurêczna + 5";
+
+const string PRINT_LearnBow1				= "£uki + 1";
+const string PRINT_LearnBow5				= "£uki + 5";
+
+const string PRINT_LearnCrossBow1			= "Kusze + 1";
+const string PRINT_LearnCrossBow5			= "Kusze + 5";
 
 ///******************************************************************************************
 ///	Dialog_Mobsi
@@ -796,9 +1068,7 @@ const string PRINT_ADDON_KNOWSBF					=	"Zdobyto wiedzê na temat ¿¹d³owej wydziel
 const string PRINT_ADDON_HACKCHANCE					=	"Zwiêkszy³a siê umiejêtnoœæ wydobywania z³ota! (+";
 
 const string PRINT_ADDON_ENOUGHTALK					=	"Dosyæ gadania. Walczmy!";	
-
 const string PRINT_FullyHealed						=	"Ca³kowite uleczenie.";
-
 const string PRINT_IrdorathBookDoesntOpen			=	"Nie mo¿na otworzyæ ok³adki tej ksiêgi.";
 
 const string PRINT_SCIsObsessed						=	"Czujesz, ¿e coœ ciê ciœnie i dusi!";
@@ -812,18 +1082,45 @@ const string PRINT_FoundGold25			=	"Znaleziono 25 szt. z³ota";
 const string PRINT_FoundGold50			=	"Znaleziono 50 szt. z³ota";
 const string PRINT_FoundGold100			=	"Znaleziono 100 szt. z³ota";
 const string PRINT_FoundGold250			=	"Znaleziono 250 szt. z³ota";
-const string PRINT_FoundRing			=	"Znaleziono pierœcieñ";
 const string PRINT_FoundScroll			=	"Znaleziono magiczny zwój";
 const string PRINT_FoundPotion			=	"Znaleziono miksturê";
 const string PRINT_FoundMap				=	"Znaleziono mapê";
 const string PRINT_FoundRuneBlank		=	"Znaleziono runê";
-const string PRINT_FoundOreNugget		=	"Znaleziono bry³kê rudy";
 const string PRINT_FoundLockpick		=	"Znaleziono wytrych";
 
 const string PRINT_BiffsAnteil			=	"Dzia³ka Biffa: ";
 const string PRINT_BiffGold				=	" szt. z³ota";
 
 const string PRINT_BanditArmor			=	"Kto nosi tê zbrojê, nale¿y do bandytów.";
+
+
+// ------ Smith	Weapon ------
+const string PRINT_Smith_1H_Special_01			= " (1 bry³ka rudy)";
+const string PRINT_Smith_2H_Special_01			= " (2 bry³ki rudy)";
+const string PRINT_Smith_1H_Special_02			= " (2 bry³ki rudy)";
+const string PRINT_Smith_2H_Special_02			= " (3 bry³ki rudy)";
+const string PRINT_Smith_1H_Special_03			= " (3 bry³ki rudy)";
+const string PRINT_Smith_2H_Special_03			= " (4 bry³ki rudy)";
+const string PRINT_Smith_1H_Special_04			= " (4 bry³ki rudy, 5 porcji smoczej krwi)";
+const string PRINT_Smith_2H_Special_04			= " (5 bry³ek rudy, 5 porcji smoczej krwi)";
+
+
+const string NAME_MageScroll			= "Zwój";
+
+
+
+//----------- Items	in Items finden	--------------------
+
+const string PRINT_FoundAmulett					= "Znaleziono amulet";
+
+const string PRINT_HannasBeutel					= "Ma³y klucz i kilka wytrychów...";
+const string PRINT_GotPlants					= "Znaleziono trochê zió³";
+
+//-------------
+const string PRINT_NoSweeping					= "Posprz¹tanie wszystkich komnat zajmie ca³e wieki!";
+
+const string PRINT_Mandibles					= "Wydzielina zdaje siê nie dzia³aæ.";
+const string PRINT_Bloodfly						= "Gorzki smak - smak trucizny.";
 
 ///******************************************************************************************
 ///	TEXT FOR QUESTS
@@ -842,6 +1139,23 @@ const string PRINT_QuestCanceled		=	"ZADANIE ANULOWANE: ";
 const string PRINT_QuestObsolete		=	"PRZESTARZA£E ZADANIE: ";
 const string PRINT_QuestProgress		=	"ZADANIE W TRAKCIE: ";
 const string PRINT_NewLogEntry			=	"Nowy wpis w dzienniku";
+
+// ***************************************************************************************
+// Diebtstahl Text Konstanten
+// ***************************************************************************************
+const string Pickpocket_20	=	"(Kradzie¿ tego mieszka bêdzie dziecinnie ³atwa.)";
+const string Pickpocket_40	=	"(Kradzie¿ tego mieszka bêdzie doœæ prosta.)";
+const string Pickpocket_60	=	"(Kradzie¿ tego mieszka bêdzie doœæ ryzykowna.)";
+const string Pickpocket_80	=	"(Kradzie¿ tego mieszka bêdzie trudna.)";
+const string Pickpocket_100	=	"(Kradzie¿ tego mieszka bêdzie diabelsko trudna.)";
+const string Pickpocket_120	=	"(Kradzie¿ tego mieszka bêdzie graniczy³a z cudem.)";
+
+const string Pickpocket_20_Female	=	"(Kradzie¿ tego mieszka bêdzie dziecinnie ³atwa.)";
+const string Pickpocket_40_Female	=	"(Kradzie¿ tego mieszka bêdzie doœæ prosta.)";
+const string Pickpocket_60_Female	=	"(Kradzie¿ tego mieszka bêdzie doœæ ryzykowna.)";
+const string Pickpocket_80_Female	=	"(Kradzie¿ tego mieszka bêdzie trudna.)";
+const string Pickpocket_100_Female	=	"(Kradzie¿ tego mieszka bêdzie diabelsko trudna.)";
+const string Pickpocket_120_Female	=	"(Kradzie¿ tego mieszka bêdzie graniczy³a z cudem.)";
 
 ///******************************************************************************************
 ///	TEXT POSITIONS
@@ -875,6 +1189,34 @@ const string PRINT_MANA_MAX_MISSING			=	" max. pkt. many za ma³o";
 const string PRINT_HITPOINTS_MAX_MISSING	=	" max. pkt. ¿ycia za ma³o";
 const string PRINT_MAGCIRCLES_MISSING		=	" kr. magii za ma³o";
 
+
+
+// ------ G_CanNotUse ------
+const string PRINT_HITPOINTS_MISSING		= "pkt. trafieñ za ma³o";
+const string PRINT_MANA_MISSING				= "pkt. many za ma³o";
+
+
+// ************************************
+// Vom Programm	ausgelagerte Konstanten
+// ------------------------------------
+// NAMEN NICHT ÄNDERN!
+// ************************************
+
+// Bidschrimausgabe	zum	Thema Schloß öffnen/knacken
+const string _STR_MESSAGE_INTERACT_NO_KEY	= "Brak wytrycha b¹dŸ w³aœciwego klucza.";
+
+// Bidschrimausgabe	fürs Tausch-Fenster
+const string _STR_MESSAGE_TRADE_FAILURE		= "Zaproponowane przez ciebie na wymianê towary nie s¹ doœæ cenne."	;
+
+// Trade-Manager
+const string STR_INFO_TRADE_ACCEPT						= "Przyjmij"			;
+const string STR_INFO_TRADE_RESET						= "Odrzuæ"				;
+const string STR_INFO_TRADE_EXIT						= "Wróæ"				;
+
+// Menuetext-Konstanten	(max 60	Zeichen)
+const string MENU_TEXT_NEEDS_APPLY		= "Wciœnij klawisz [Enter], aby w³¹czyæ!";
+const string MENU_TEXT_NEEDS_RESTART	= "Niektóre ustawienia zostan¹ wprowadzone dopiero po ponownym uruchomieniu gry.";
+
 ///******************************************************************************************
 ///	CHAPTER NAMES
 ///******************************************************************************************
@@ -893,3 +1235,18 @@ const string TEXT_Chapter_09	=	"Oko Innosa";
 const string TEXT_Chapter_10	=	"Polowanie na smoki";
 const string TEXT_Chapter_11	=	"Rozstanie";
 const string TEXT_Chapter_12	=	"Dwór Irdorath";
+
+
+
+const string KapWechsel_1			= "Rozdzia³ 1"					;
+const string KapWechsel_1_Text		= "Zagro¿enie"					;
+const string KapWechsel_2			= "Rozdzia³ 2"					;
+const string KapWechsel_2_Text		= "Powrót do Kolonii"			;
+const string KapWechsel_3			= "Rozdzia³ 3"					;
+const string KapWechsel_3_Text		= "Oko Innosa"					;
+const string KapWechsel_4			= "Rozdzia³ 4"					;
+const string KapWechsel_4_Text		= "Polowanie na smoki"			;
+const string KapWechsel_5			= "Rozdzia³ 5"					;
+const string KapWechsel_5_Text		= "Rozstanie"					;
+const string KapWechsel_6			= "Rozdzia³ 6"					;
+const string KapWechsel_6_Text		= "Dwór Irdorath"				;

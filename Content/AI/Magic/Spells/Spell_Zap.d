@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_Zap
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_Zap
+///******************************************************************************************
 
-const int SPL_Cost_Zap					=	5;
-const int SPL_Damage_Zap				=	25;
+const int SPL_Cost_Zap					=	15;
+const int SPL_Damage_Zap				=	30;
 
-//******************************************************************************************
-INSTANCE Spell_Zap (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_Zap (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_Zap;
@@ -15,7 +15,7 @@ INSTANCE Spell_Zap (C_Spell_Proto)
 
 func int Spell_Logic_Zap (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Zap/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Zap/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Zap)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_Zap (var int manaInvested)
 
 func void Spell_Cast_Zap (var int spellLevel)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Zap/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Zap/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Zap/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Zap)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Zap;
 	};

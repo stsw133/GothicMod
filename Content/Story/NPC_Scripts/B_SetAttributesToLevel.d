@@ -54,5 +54,5 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 	//POWER_CHECK(slf);
 	
 	///#DEBUG
-	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULT, dLevel);
+	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY, dLevel);
 };

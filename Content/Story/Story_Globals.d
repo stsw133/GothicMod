@@ -1,13 +1,104 @@
-//******************************************************************************************
-//	Globalvariablen für Story
-//******************************************************************************************
+// *************************
+// Globalvariablen für Story
+// *************************
+
+// ------ Teacher MAX Werte ------
+const int T_MEGA = 300; //Pyrokar MANA
+const int T_MAX = 200;
+const int T_HIGH = 120;
+const int T_MED = 90;
+const int T_LOW = 60;
+
+//**************
+//	ADDON
+//**************
+var int Saturas_KlaueInsMeer;
 var int Saturas_AboutWilliam;
 var int MIS_Eremit_Klamotten;
 var int Diego_angekommen;
 var int Diego_IsDead;
 var int PlayerTalkedToSkipNW;
 var int PlayerTalkedToGregNW;
+//---------------------------------------------------
+// ITEMS 
 
+//----- Artefakt Set der Bauern (HP)-----------------
+var int	HP_Ring_1_Equipped;		
+var int	HP_Ring_2_Equipped;	  
+var int HP_Amulett_Equipped;     
+/*                              
+var int HP_Ring_Double_Bonus;	  
+var int HP_Artefakt_Bonus;       
+var int HP_Amulett_EinRing_Bonus;
+*/
+var int HP_Artefakt_Effekt;	  
+
+//----- Artefakt Set der Priester (Mana)-----------------
+
+var int	MA_Ring_1_Equipped;		
+var int	MA_Ring_2_Equipped;	  
+var int MA_Amulett_Equipped;     
+/*                              
+var int MA_Ring_Double_Bonus;	  
+var int MA_Artefakt_Bonus;       
+var int MA_Amulett_EinRing_Bonus;
+*/
+var int MA_Artefakt_Effekt;	  
+
+//----- Artefakt Set der Krieger (STR)-----------------
+
+var int	STR_Ring_1_Equipped;		
+var int	STR_Ring_2_Equipped;	  
+var int STR_Amulett_Equipped;     
+ /*                             
+var int STR_Ring_Double_Bonus;	  
+var int STR_Artefakt_Bonus;       
+var int STR_Amulett_EinRing_Bonus;
+*/
+var int STR_Artefakt_Effekt;	  
+
+//------------Rüstungen---------
+var int LeatherArmor_Equipped;
+var int	SLDArmor_Equipped;
+var int NOVArmor_Equipped;
+var int KDFArmor_Equipped;
+var int	MILArmor_Equipped;
+var int MCArmor_Equipped;
+//----------Guertel-----------
+/*+ Specials (Diebesgürtel --> DEX zusammen mit?)
+	Minecrawler Gürtel Protection Bonus?
+	Gürtel der täglichen Erfahrung  XP Ambient *2
+	Gürtel des tiere ausnehmens (alle AT TALENTS)
+	Gürtel der Heilung (1. Rezept heiltrank oder alle ...)
+*/
+var int KDF01_Equipped;
+var int KDF02_Equipped;
+var int KDF03_Equipped;
+
+var int MIL01_Equipped;
+var int MIL02_Equipped;
+var int MIL03_Equipped;
+
+var int NOV01_Equipped;
+
+var int SLD01_Equipped;
+var int SLD02_Equipped;
+var int SLD03_Equipped;
+
+var int Leather01_Equipped;
+var int Leather02_Equipped;
+
+var int Rhobar_Equipped;
+var int MC_Equipped;
+//-----------------------------------------------------
+
+var INT WISPSKILL_LEVEL;
+
+
+//---------------------------------------------------
+var int MIS_Addon_Cavalorn_TheHut;					//SC soll nach Cavalorns Hütte sehen.
+var int MIS_Addon_Cavalorn_KillBrago;				//BanditenKlatschen mit Cavalorn
+var int MIS_Addon_Cavalorn_Letter2Vatras;			//übergebe Cavalorns Brief an Vatras
 var int MIS_Addon_Lester_PickForConstantino;		//SC Alternativweg in die Stadt.
 var int MIS_Addon_Greg_BringMeToTheCity;			//SC verhilft Greg in die Stadt zu kommen.
 var int MIS_Addon_Lares_Ornament2Saturas;			//Lares : bring datt ding zu SAturas
@@ -30,7 +121,7 @@ var int MIS_Addon_Baltram_Paket4Skip;				//SC soll Handel zwischen Baltram und S
 var int MIS_Addon_Erol_BanditStuff;					//SC soll dem Händler Erol seine Waren von den Banditen zurück bringen.
 
 const int MinimumPassagePlants = 10;			//Anzahl der zu sammelnden Planzen für Constantino um in die Stadt zu kommen (Spielstart)
-var int SaturasFirstMessageOpened;				//= true wenn den Brief geöffnet
+var int SaturasFirstMessageOpened;				//= TRUE wenn den Brief geöffnet
 var int Vatras_SC_Liar;							//Lügencounter für Vatras
 var int Vatras_ToMartin;
 var int SC_GotWisp;
@@ -39,86 +130,88 @@ var int Lares_RangerHelp;						//Lares hilft dem Spieler
 var int LaresGuide_ZumPortal;					//Lares bringt im moment den SC zu...
 var int LaresGuide_ZuOnar;						//Lares bringt im moment den SC zu...
 var int LaresGuide_OrnamentForest;				//Lares bringt im moment den SC zu...
-var int Andre_Knows_MartinEmpfehlung;			//= true Lord Andre lässt SC zu bei Miliz wegen Martins Empfehlung
-var int SC_KnowsKlosterTribut;					//= true Pedro hat ihm die Klosterkosten (Schaf und 1000 GM) offenbart
-var int Pedro_NOV_Aufnahme_LostInnosStatue_Daron;	//= true Pedro lässt SC ein aufgrund des LostInnosStatue von Daron
-var int SC_GotRangar;							//= true SC hat Rangar beim Plüdern des Proviantlagers erwischt!
+var int Andre_Knows_MartinEmpfehlung;			//= TRUE Lord Andre lässt SC zu bei Miliz wegen Martins Empfehlung
+var int SC_KnowsKlosterTribut;					//= TRUE Pedro hat ihm die Klosterkosten (Schaf und 1000 GM) offenbart
+var int Pedro_NOV_Aufnahme_LostInnosStatue_Daron;	//= TRUE Pedro lässt SC ein aufgrund des LostInnosStatue von Daron
+var int SCKnowsBaltramAsPirateTrader;			//= TRUE SC weiß, dass Baltram mit Piraten handelt.
+var int SC_GotRangar;							//= TRUE SC hat Rangar beim Plüdern des Proviantlagers erwischt!
 var int SC_MeetsGregTime;						//wann und wo hat der SC Greg_NW schon getroffen
 var int GregLocation;							//Wo befindet sich Greg_NW gerade
 const int Greg_Farm1 	= 0;					//Vor der Stadt
 const int Greg_Taverne 	= 1;					//Orlans Kneipe
 const int Greg_Bigcross	= 2;					//Auf den Feldern von Onar
 const int Greg_Dexter	= 3;					//Dexter
-var int SC_KnowsGregsSearchsDexter;			//= true SC weiß, dass Greg Dexter sucht.
-var int SC_KnowsConnectionSkipGreg;			//= true SC weiß, dass Greg und Skip zusammen gehören.
-var int SC_SawGregInTaverne;				//= true SC hat mit Greg in der Taverne gesprochen.
-var int Greg_SuchWeiter;					//= true SC soll auch die anderen Schätze für ihn finden.
-var int Skip_Rum4Baltram;					//= true Skip gibt Rum für Baltram mit
-var int Skip_Rum4Baltram_All;
+var int SC_KnowsGregsSearchsDexter;			//= TRUE SC weiß, dass Greg Dexter sucht.
+var int SC_KnowsConnectionSkipGreg;			//= TRUE SC weiß, dass Greg und Skip zusammen gehören.
+var int SC_SawGregInTaverne;				//= TRUE SC hat mit Greg in der Taverne gesprochen.
+var int Greg_SuchWeiter;					//= TRUE SC soll auch die anderen Schätze für ihn finden.
+var int Skip_Rum4Baltram;					//= TRUE Skip gibt Rum für Baltram mit
 var int Knows_GregsHut;
 var int Francis_ausgeschissen;				//bei Greg
 var int MIS_Brandon_BringHering;
 
 //Missing People
-var int Lares_CanBringScToPlaces;				//= true Lares braucht die Boote im Hafen nicht mehr im Auge behalten.
-var int SC_HearedAboutMissingPeople;			//= true SC weiß, dass in der Stadt Leute verschwinden.
-var int SC_KnowsDexterAsKidnapper;				//= true SC weiß, dass Dexter in der Sache mit den verschwundenen Leuten mit drin hängt
-var int Ranger_SCKnowsDexter;					//= true SC weiß, dass Dexter im Castlemine sitzt von einem AddonNPC
-var int Dexter_KnowsPatrick;					//= true Dexter kennt Patrick
-var int SCKnowsFarimAsWilliamsFriend;			//= true SC kann Farim nach dem verschwundenen William befragen
-var int SCKnowsSkipAsKidnapper;					//= true die Spur führt den SC zu Skip
-var int SCKnowsMissingPeopleAreInAddonWorld;	//= true die Spur führt den SC zur Addonworld
+var int Lares_CanBringScToPlaces;				//= TRUE Lares braucht die Boote im Hafen nicht mehr im Auge behalten.
+var int SC_HearedAboutMissingPeople;			//= TRUE SC weiß, dass in der Stadt Leute verschwinden.
+var int SC_KnowsDexterAsKidnapper;				//= TRUE SC weiß, dass Dexter in der Sache mit den verschwundenen Leuten mit drin hängt
+var int Ranger_SCKnowsDexter;					//= TRUE SC weiß, dass Dexter im Castlemine sitzt von einem AddonNPC
+var int Dexter_KnowsPatrick;					//= TRUE Dexter kennt Patrick
+var int SCKnowsFarimAsWilliamsFriend;			//= TRUE SC kann Farim nach dem verschwundenen William befragen
+var int SCKnowsSkipAsKidnapper;					//= TRUE die Spur führt den SC zu Skip
+var int SCKnowsMissingPeopleAreInAddonWorld;	//= TRUE die Spur führt den SC zur Addonworld
 var int SCKnowsExactlyWhereMissingPeopleAre;	//  wird nicht verwendet
 var int SCMetMissingPeople;						//	wird nicht verwendet
-var int MissingPeopleReturnedHome;				//= true SC hat die Leute befreit und nach Hause gebracht.
+var int MissingPeopleReturnedHome;				//= TRUE SC hat die Leute befreit und nach Hause gebracht.
 var int MIS_Akil_BringMissPeopleBack;			//Akil will Tonak und Telbor wieder zurück.
 var int MIS_Bengar_BringMissPeopleBack;			//Bengar will Pardos wieder zurück.
 var int MIS_Addon_Andre_MissingPeople;			//(nur MIL) Andre will die Leute zurück.
 var int MIS_Addon_Vatras_WhereAreMissingPeople;	//Vatras will wissen, was mit den Vermissten passiert ist.
-var int MIS_Bromor_LuciaStoleGold;				//= true Bromor vermisst seine Ersparnisse. Lucia hat sie mitgehen lassen.
-var int Bromor_Hausverbot;						//= true Bromor schmeißt den Spieler aus seinem Laden.
-var int MIS_Thorben_BringElvrichBack;			//= true Thorben will Elvrich wieder zurück bei der Arbeit haben.
-var int Elvrich_GoesBack2Thorben;				//= true Elvrich geht zurück zu Thorben
-var int MIS_LuciasLetter;						//= true Elvrich hat den Abschiedsbrief von Lucia gelesen.
-var int MIS_Bartok_MissingTrokar;				//= true Bartok will seinen Jägerfreund Trokar wieder haben.
-var int SC_KnowsLuciaCaughtByBandits;			//= true Lucia ist mit den Banditen hinter Sekobs Hof verschwunden.
-var int Elvrich_SCKnowsPirats;					//= true Elvrich erzählt von Skip!
-var int Dexter_NoMoreSmallTalk;					//= true Noch einmal Dexter anlabern und Dexter greift an.
-var int Saturas_WillVertrauensBeweis;			//= true saturas wartet auf antwort von Vatras!
-var int SC_GotPORTALTEMPELWALKTHROUGHKey;		//= true SC kann die Tür PORTALTEMPELWALKTHROUGH in NW potentiel öffnen.
+var int MIS_Bromor_LuciaStoleGold;				//= TRUE Bromor vermisst seine Ersparnisse. Lucia hat sie mitgehen lassen.
+var int Bromor_Hausverbot;						//= TRUE Bromor schmeißt den Spieler aus seinem Laden.
+var int MIS_Thorben_BringElvrichBack;			//= TRUE Thorben will Elvrich wieder zurück bei der Arbeit haben.
+var int Elvrich_GoesBack2Thorben;				//= TRUE Elvrich geht zurück zu Thorben
+var int MIS_LuciasLetter;						//= TRUE Elvrich hat den Abschiedsbrief von Lucia gelesen.
+var int MIS_Bartok_MissingTrokar;				//= TRUE Bartok will seinen Jägerfreund Trokar wieder haben.
+var int SC_KnowsLuciaCaughtByBandits;			//= TRUE Lucia ist mit den Banditen hinter Sekobs Hof verschwunden.
+var int Elvrich_SCKnowsPirats;					//= TRUE Elvrich erzählt von Skip!
+var int Dexter_NoMoreSmallTalk;					//= TRUE Noch einmal Dexter anlabern und Dexter greift an.
+var int Saturas_WillVertrauensBeweis;			//= TRUE saturas wartet auf antwort von Vatras!
+var int SC_GotPORTALTEMPELWALKTHROUGHKey;		//= TRUE SC kann die Tür PORTALTEMPELWALKTHROUGH in NW potentiel öffnen.
 
 //Ranger 
-var int SC_KnowsRanger;							//= true SC hat vom RING des Wassers gehört.
-var int SC_IsRanger;							//= true  Name ist programm
-var int SaturasKnows_SC_IsRanger;				//= true  Saturas akzeptiert die Aufnahme des SC bei den Rangern
-var int SCIsWearingRangerRing;					//= true  Name ist programm
-var int RangerRingIsLaresRing;					//= true  Name ist programm
-var int SC_KnowsCordAsRangerFromLares;			//= true  SC weiß von Lares, dass Cord zum RING gehört
-var int SC_KnowsCordAsRangerFromLee;			//= true  SC weiß von Lares, dass Cord zum RING gehört
-var int Cavalorn_RangerHint;					//= true  Cavalorn gibt Hint auf Ranger!
-var int SC_KnowsBaltramAsRanger;				//= true  Baltram gehört zum RING
-var int Lares_GotRingBack;						//= true  Lares hat seinen Aquamarinring wieder
-var int Lares_HaltsMaul;						//= true  Lares hälts Maul nach Ranger meeting
-var int RangerHelp_gildeSLD;					//= true Lares hilft dem Spieler schneller bei SLD aufgenommen zu werden.
-var int RangerHelp_gildeMIL;					//= true Lares hilft dem Spieler schneller bei MIL aufgenommen zu werden.
-var int RangerHelp_gildeKDF;					//= true Lares hilft dem Spieler schneller bei KDF aufgenommen zu werden.
-var int RangerHelp_LehmarKohle;					//= true Lares zahlt Schulden des SC bei Lehmar
-var int RangerHelp_OrnamentForest;				//= true Lares Boxt SC durch den Medium Wald
-var int Orlan_RangerHelpZimmer;					//= true SC kann umsonst bei Orlan wohnen.
-var int Cord_RangerHelp_GetSLD;					//= true Cord hilft dem SC SLD zu werden.
-var int Cord_RangerHelp_TorlofsProbe;			//= true Cord erledigt die SC Probe von Torlof
-var int RangerMeetingRunning;					//= true Die Ranger meeten in Orlans Taverne
-var int Lares_ComeToRangerMeeting;				//= true Lares schickt den Spieler zum Rangermeeting.
-var int Lares_TakeFirstMissionFromVatras;		//= true Lares schickt den Spieler zum Vatras um seinen ersten Auftrag abzuholen.
+var int SC_KnowsRanger;							//= TRUE SC hat vom RING des Wassers gehört.
+var int SC_IsRanger;							//= TRUE  Name ist programm
+var int SaturasKnows_SC_IsRanger;				//= TRUE  Saturas akzeptiert die Aufnahme des SC bei den Rangern
+var int SCIsWearingRangerRing;					//= TRUE  Name ist programm
+var int RangerRingIsLaresRing;					//= TRUE  Name ist programm
+var int SC_KnowsCordAsRangerFromLares;			//= TRUE  SC weiß von Lares, dass Cord zum RING gehört
+var int SC_KnowsCordAsRangerFromLee;			//= TRUE  SC weiß von Lares, dass Cord zum RING gehört
+var int Cavalorn_RangerHint;					//= TRUE  Cavalorn gibt Hint auf Ranger!
+var int Baltram_Exchange4Lares;					//= TRUE  Baltram kümmert sich um eine Ablöse am Hafen für Lares
+var int SC_KnowsBaltramAsRanger;				//= TRUE  Baltram gehört zum RING
+var int Lares_GotRingBack;						//= TRUE  Lares hat seinen Aquamarinring wieder
+var int Lares_HaltsMaul;						//= TRUE  Lares hälts Maul nach Ranger meeting
+var int RangerHelp_gildeSLD;					//= TRUE Lares hilft dem Spieler schneller bei SLD aufgenommen zu werden.
+var int RangerHelp_gildeMIL;					//= TRUE Lares hilft dem Spieler schneller bei MIL aufgenommen zu werden.
+var int RangerHelp_gildeKDF;					//= TRUE Lares hilft dem Spieler schneller bei KDF aufgenommen zu werden.
+var int RangerHelp_LehmarKohle;					//= TRUE Lares zahlt Schulden des SC bei Lehmar
+var int RangerHelp_OrnamentForest;				//= TRUE Lares Boxt SC durch den Medium Wald
+var int Orlan_RangerHelpZimmer;					//= TRUE SC kann umsonst bei Orlan wohnen.
+var int Cord_RangerHelp_GetSLD;					//= TRUE Cord hilft dem SC SLD zu werden.
+var int Cord_RangerHelp_Fight;					//= TRUE Cord hilft dem SC besser im Kampf zu werden.
+var int Cord_RangerHelp_TorlofsProbe;			//= TRUE Cord erledigt die SC Probe von Torlof
+var int RangerMeetingRunning;					//= TRUE Die Ranger meeten in Orlans Taverne
+var int Lares_ComeToRangerMeeting;				//= TRUE Lares schickt den Spieler zum Rangermeeting.
+var int Lares_TakeFirstMissionFromVatras;		//= TRUE Lares schickt den Spieler zum Vatras um seinen ersten Auftrag abzuholen.
 var int MIS_Vatras_FindTheBanditTrader;			//Vatras will den Namen des Händler aus dem oberen Viertel, der den Banditen Waffen liefert.
 var int MIs_Martin_FindTheBanditTrader;			//Martin will den Namen des Händler aus dem oberen Viertel, der den Banditen Waffen liefert.
-var int BanditTrader_Lieferung_Gelesen;			//= true SC hat den Lieferungsschein gelesen.
+var int BanditTrader_Lieferung_Gelesen;			//= TRUE SC hat den Lieferungsschein gelesen.
 var int Fernando_HatsZugegeben;					//Fernando hat zugegeben Waffen an die Banditen geliefert zu haben.
 var int Fernando_ImKnast;						//Fernando Wird inhaftiert
 var int SC_ShowedRangerArmor;					//SC Hat die RangerRüstung angehabt als er mit einem NSC geredet hat, der nicht zum 'Ring' gehört.
-var int Orlan_KnowsSCAsRanger;					//= true Orlan weiß, dass SC Ranger ist!
-var int Orlan_Hint_Lares;						//= true Lares erzählt von Orlan.
-var int Martin_KnowsFarim;						//= true  Martin hilft Farim bei seinem Milizproblem
+var int Orlan_KnowsSCAsRanger;					//= TRUE Orlan weiß, dass SC Ranger ist!
+var int Orlan_Hint_Lares;						//= TRUE Lares erzählt von Orlan.
+var int Martin_KnowsFarim;						//= TRUE  Martin hilft Farim bei seinem Milizproblem
 var int MadKillerCount;							//SC's Counter für Ermordung unschuldiger Zivilisten.
 var int VatrasPissedOffForever;
 var int VatrasMadKillerCount;
@@ -126,64 +219,67 @@ var int VatrasMadKillerCount;
 
 // Ornamnet Portal
 var int RitualRingRuns;							//= LOG_RUNNING Ritual den Ornamentring zu heilen.
-var int SC_KnowsOrnament;						//= true SC weiß, was es mit den Ornamenten auf sich hat.
-var int ORNAMENT_SWITCHED_BIGFARM;				//= true  Das Steinkreis-Ornamentevent bei Onars Hof ist aktiviert worden
-var int ORNAMENT_SWITCHED_FARM;					//= true  Das Steinkreis-Ornamentevent bei Lobarts Hof ist aktiviert worden
-var int ORNAMENT_SWITCHED_FOREST;				//= true  Das Steinkreis-Ornamentevent im Medium Wald ist aktiviert worden
-var int SCUsed_AllNWTeleporststones;			//= true SC benutzte alle Teleportstationen in der Newworld
-var int SC_SAW_ORNAMENT_MAP;					//= true  SC hat gesehen, wo er hin muss zu den teinkreisen
-var int Lord_Hagen_GotOrnament;					//= true  SC hat das fehlende Ornament von hagen bekommen
+var int SC_KnowsOrnament;						//= TRUE SC weiß, was es mit den Ornamenten auf sich hat.
+var int ORNAMENT_SWITCHED_BIGFARM;				//= TRUE  Das Steinkreis-Ornamentevent bei Onars Hof ist aktiviert worden
+var int ORNAMENT_SWITCHED_FARM;					//= TRUE  Das Steinkreis-Ornamentevent bei Lobarts Hof ist aktiviert worden
+var int ORNAMENT_SWITCHED_FOREST;				//= TRUE  Das Steinkreis-Ornamentevent im Medium Wald ist aktiviert worden
+var int SCUsed_AllNWTeleporststones;			//= TRUE SC benutzte alle Teleportstationen in der Newworld
+var int SC_SAW_ORNAMENT_MAP;					//= TRUE  SC hat gesehen, wo er hin muss zu den teinkreisen
+var int Lord_Hagen_GotOrnament;					//= TRUE  SC hat das fehlende Ornament von hagen bekommen
 var int Hagen_BringProof;						// Ohne Guild reinflippern FIX
-var int Vatras2Saturas_FindRaven_Open;			//= true SC hat den Brief von Vatras an Saturas geöffnet.
+var int Vatras2Saturas_FindRaven_Open;			//= TRUE SC hat den Brief von Vatras an Saturas geöffnet.
 
 //Teleportsteine
-var int SCUsed_TELEPORTER;						//= true SC benutzte irgendeinen Teleporter
-var int SCUsed_NW_TELEPORTSTATION_CITY;			//= true SC benutzte die Teleportstation bei...
-var int SCUsed_NW_TELEPORTSTATION_TAVERNE;		//= true SC benutzte die Teleportstation bei...
-var int SCUsed_NW_TELEPORTSTATION_MAYA;			//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_PORTALTEMPEL;//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_ADANOSTEMPEL;//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_SOUTHEAST;	//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_SOUTHWEST;	//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_PIRATES;		//= true SC benutzte die Teleportstation bei...
-var int SCUsed_ADW_TELEPORTSTATION_RAVENTELEPORT_OUT;		//= true RAUS AUS aDANOSTEMPEL
+var int SCUsed_TELEPORTER;						//= TRUE SC benutzte irgendeinen Teleporter
+var int SCUsed_NW_TELEPORTSTATION_CITY;			//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_NW_TELEPORTSTATION_TAVERNE;		//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_NW_TELEPORTSTATION_MAYA;			//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_PORTALTEMPEL;//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_ADANOSTEMPEL;//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_SOUTHEAST;	//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_SOUTHWEST;	//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_PIRATES;		//= TRUE SC benutzte die Teleportstation bei...
+var int SCUsed_ADW_TELEPORTSTATION_RAVENTELEPORT_OUT;		//= TRUE RAUS AUS aDANOSTEMPEL
 
-var int SCUsed_ADW_TELEPORTSTATION_PIRATES_JACKSMONSTER;//= true Monster gespawnt, die bei AlligatorJack stören
+var int SCUsed_ADW_TELEPORTSTATION_PIRATES_JACKSMONSTER;//= TRUE Monster gespawnt, die bei AlligatorJack stören
 
-var int SC_ADW_ActivatedAllTelePortStones;		//= true Alle ADW Teleporter sind aktiviert.
+
+var int SC_ADW_ActivatedAllTelePortStones;		//= TRUE Alle ADW Teleporter sind aktiviert.
 
 //ADDONWORLD KDW
-var int NefariusADW_Talk2Saturas;				//= true Infos über die Flut
+var int NefariusADW_Talk2Saturas;				//= TRUE Infos über die Flut
 var int MIS_ADDON_Myxir_GeistBeschwoeren;		//Myxir will, dass SC Quarhodron beschwört
 var int SC_KnowsRavensGoldmine;					//SC hörte von der Goldmine.
 var int StPl_nDocID;
 var int Myxir_CITY_IstDa;						//Ablöse von Vatras ist da.
+var int SC_OpenedCavalornsBeutel;				//= TRUE SC hat einen Nugget erhalten, Cavalornsbeutel
 var int MIS_Saturas_LookingForHousesOfRulers;	//SC soll die 5 Herrenhäuser finden.
 var int MIS_Riordian_HousesOfRulers;			//SC soll die 5 Herrenhäuser finden.
 
 
-var int 	ENTERED_ADDONWORLD;					//= true war schon in der Addonworld
-var int 	VatrasCanLeaveTown_Kap3;			//= true Vatras kann nun zum Umkehrritual aufbrechen (Kapitelbremse fürs Addon)
-var int 	VatrasAbloeseIstDa;					//= true Vatras Ablösung (ein KDW aus der ADW) ist in Khorinis eingetroffen.
-var int 	Ghost_SCKnowsHow2GetInAdanosTempel;	//= true Quarhodron erzählt SC wie man Ravens Tür aufmacht und in den Tempel kommt.
-var int 	Saturas_KnowsHow2GetInTempel;		//= true Saturas weiß wie man Ravens Tür aufmacht und in den Tempel kommt.
-var int 	MIS_ADDON_Saturas_GoToRaven; 		//= true SC muss einen Weg finden zu Raven zu gelangen.
-var int 	Saturas_RiesenPlan;					//= true SC soll zu Myxir, Geist erwecken geschichte abholen.
-var int 	SC_Knows_WeaponInAdanosTempel;		//= true SC weiß vom Schwert im Tempel
-var int 	Saturas_KnowsWeaponIsInAdanosTempel;//= true Saturas weiß vom Schwert im Tempel
-var int		SC_SummonedAncientGhost;			//= true Quarhodron ist erschienen.
-var int 	SC_TalkedToGhost;					//= true SC hat mit Ghost gesprochen.
+var int 	ENTERED_ADDONWORLD;					//= TRUE war schon in der Addonworld
+var int 	VatrasCanLeaveTown_Kap3;			//= TRUE Vatras kann nun zum Umkehrritual aufbrechen (Kapitelbremse fürs Addon)
+var int 	VatrasAbloeseIstDa;					//= TRUE Vatras Ablösung (ein KDW aus der ADW) ist in Khorinis eingetroffen.
+var int 	Ghost_SCKnowsHow2GetInAdanosTempel;	//= TRUE Quarhodron erzählt SC wie man Ravens Tür aufmacht und in den Tempel kommt.
+var int 	Saturas_KnowsHow2GetInTempel;		//= TRUE Saturas weiß wie man Ravens Tür aufmacht und in den Tempel kommt.
+var int 	MIS_ADDON_Saturas_GoToRaven; 		//= TRUE SC muss einen Weg finden zu Raven zu gelangen.
+var int 	Saturas_RiesenPlan;					//= TRUE SC soll zu Myxir, Geist erwecken geschichte abholen.
+var int 	SC_Knows_WeaponInAdanosTempel;		//= TRUE SC weiß vom Schwert im Tempel
+var int 	Saturas_KnowsWeaponIsInAdanosTempel;//= TRUE Saturas weiß vom Schwert im Tempel
+var int		SC_SummonedAncientGhost;			//= TRUE Quarhodron ist erschienen.
+var int 	SC_TalkedToGhost;					//= TRUE SC hat mit Ghost gesprochen.
 
-var int 	RavenIsInTempel;					//= true Raven Video. Raven haut ab in den Temepl Adanos
+var int 	RavenIsInTempel;					//= TRUE Raven Video. Raven haut ab in den Temepl Adanos
 var int 	GhostAttackWarn;
-var int 	SC_TookRhademesTrap;				//= true SC ist an Rhademes vorbei gekommen
-var int 	SC_TalkedToRhademAfter;				//= true SC hat danach nochmal mit Rhademes gesprochen
-var int 	RavenIsDead;						//= true Raven ist tot und das Hauptziel vom Addon erreicht. 
+var int 	SC_TookRhademesTrap;				//= TRUE SC ist an Rhademes vorbei gekommen
+var int 	SC_TalkedToRhademAfter;				//= TRUE SC hat danach nochmal mit Rhademes gesprochen
+var int 	RavenIsDead;						//= TRUE Raven ist tot und das Hauptziel vom Addon erreicht. 
 var int  	BeliarsWeaponSpecialDamage;			//Grundwert für Speziellen Schaden Beliars Klaue
 var int  	BeliarDamageChance;					//Chance auf Extraschaden
-var int  	SC_FailedToEquipBeliarsWeapon;		//= true SC hat versucht die Waffe anzulegen. -> Blitz in Arsch.
-var int  	BeliarsWeaponUpgrated;				//= true SC hat die Waffe wenigstens einmal verbessert!
+var int  	SC_FailedToEquipBeliarsWeapon;		//= TRUE SC hat versucht die Waffe anzulegen. -> Blitz in Arsch.
+var int  	BeliarsWeaponUpgrated;				//= TRUE SC hat die Waffe wenigstens einmal verbessert!
 
+ 
 //--------------Banditenlager (Addonwelt)------------------
 var int 	Player_HasTalkedToBanditCamp;				//Spieler war schon mal im BDT Camp
 
@@ -191,8 +287,10 @@ var int 	Franco_Exit;
 var int 	MIS_HlpLogan;
 var int		MIS_HlpEdgor;
 var int 	Logan_Inside;
+var int		Edgor_Teach;
 var int 	Sumpfi_Counter;
 
+var int 	LennarPaket_Open; //ist jetzt FISKs Paket
 var int 	Emilio_TellAll;
 var int 	Paul_TellAll;
 var int 	Finn_TellAll;
@@ -224,6 +322,8 @@ var int 	Senyan_Erpressung;
 var int 	Senyan_CONTRA;
 var int		Senyan_Gold;
 
+var int 	Erol_Bonus;
+
 var int 	PC_KnowsRedStone;
 var int 	MIS_Huno_Stahl;
 var int		MIS_Lennar_Lockpick;
@@ -241,6 +341,7 @@ var int		MIS_Send_Buddler;
 var int		Player_SentBuddler;
 
 var int		Juan_Parole;
+var int 	Knows_MCELIXIER;
 var int		BDT_100018_Einmal;
 var int 	BDT_100018_Tells;
 var int 	MIS_BloodwynRaus;
@@ -274,6 +375,9 @@ var int		BDT_1_Ausbuddeln;
 var int		Minecrawler_Killed;
 var int		Bloodwyn_Spawn;
 
+
+
+
 //-------------GOLDHACKEN---------------------------------
 var int 	Hero_HackChance;
 var int 	Knows_Truemmerschlag;
@@ -293,6 +397,9 @@ var int MIS_Addon_MorganLurker;
 var int SC_MadeStunt;
 var int TowerBanditsDead;	
 
+
+
+
 var int Francis_100_Told;
 var int Francis_500_Told;
 var int Francis_HasProof;						//Player hat Beweise für Schmuggel
@@ -308,6 +415,7 @@ var int Malcom_Accident;
 var int MIS_Owen_FindMalcom;
 var int MIS_Henry_HolOwen;
 
+
 VAR int Bill_addon_deal;
 var int MIS_Addon_Morgan_SeekTraitor;
 
@@ -315,6 +423,7 @@ var int MIS_Addon_JoinHenrysCrew;
 var int Henrys_CrewCount;
 var int MIS_Addon_JoinMorgansCrew;
 var int MalcomBotschaft;
+
 
 var int MIS_ADDON_GARett_BringKompass;
 var int MIS_Addon_Bill_SearchAngusMurder;
@@ -352,7 +461,7 @@ var int MIS_Addon_ProofMorganCrew_Count;
 //--------------- SCHNAPSBRENNEN - Rezept Kenntnis -----------------------
 var int 	Knows_LousHammer;						//Lous Rezept
 var int 	Knows_Schlafhammer;						//erweitertes Rezept von Lou mit doppelter Menge Rum 
-var int 	Knows_SchnellerHering;					//verbesserte SpeedPotionSchnaps von Samuel
+var int 	Knows_SchnellerHering;					//verbesserte SpeedPotionSchnaps von Samuel 
  
 //---obligatorisch angelegt -----------------------------
 
@@ -362,12 +471,20 @@ var int 	Knows_PiratenSchnaps;	//Weißer Rum
 var int 	Knows_Magierschnaps;
 var int 	Knows_Sumpfkrautschnaps;
 
+//---weitere Knows geschichten -----------------------------
+var int 	Knows_Banditenaxt;
+
 //--- Stunt Bonus ----
 
 var int StuntBonus_Once;
 
+
+
+
 //Lehrer
+var int Cavalorn_Addon_TeachPlayer; 		//Bogen (bis 90),1H (bis 30) und Schleichen
 var int Myxir_Addon_TeachPlayer; 			//TeachLanguage
+var int AlligatorJack_Addon_TeachPlayer; 	//Häute und Zähne
 var int Francis_Addon_TeachPlayer;			//Stärke und Geschick bis 90
 var int Henry_Addon_TeachPlayer;			//2h bis 90
 var int Morgan_Addon_TeachPlayer;			//1h bis 75
@@ -379,6 +496,8 @@ var int Saturas_Addon_TeachCircle;			//magische Kreise
 var int Merdarion_Addon_TeachMana;			//Mana
 var int Nefarius_Addon_TeachRunes;			//Runen erschaffen
 var int Bill_Addon_TeachPickPocket;
+
+
 
 //**************
 // Gothic 2
@@ -414,15 +533,18 @@ var int Bdt_1013_Away;			//weggeschickt wegen Cavalorn ODER Maleth
 var int Knows_Dexter;		 	//Spieler hat bei Wache korrekt geantwortet 
 var int MIS_Steckbriefe;
 // ------ Farm 1 ------
+var int Wert_LobartsRuestung;
 var int Lobart_Kleidung_Verkauft;
 var int Lobart_Kleidung_gestohlen;
 
-
+var int Lobart_AgainstKing;
 var int MIS_Maleth_Bandits;
 var int MIS_Vino_Wein;
 var int MIS_Lobart_Rueben;
 var int MIS_Lobart_RuebenToHilda;
-var int	MIS_Hilda_PfanneKaufen;
+var int	MIS_Hilda_PfanneKaufen;			
+var int	MIS_Hilda_PfanneKaufen_Day;	
+var int Hilda_Stew_Day;
 
 var int	MIS_LobartKillBugs;			//Lobart: Töte alle Feldräuber
 
@@ -452,6 +574,7 @@ var int Constantino_Lehrling_Day;
 var int 	MIS_Harad_Orc;
 var int 	Harad_HakonMission; //Verweis auf HakonMission
 var int 	MIS_HakonBandits;
+var int 	MIS_HakonBanditsPay;
 
 var int 	MIS_Constantino_BringHerbs;
 var int 	MIS_Constantino_Mushrooms;
@@ -479,6 +602,8 @@ const int 	Canthar_Gold = 500;
 
 var int Andre_EyeInnos;
 
+
+
 const int 	Kopfgeld = 100;			//Gold pro ausgeleifertem Verbrecher (*3 für Diebesgilde)
 var int 	Andre_Diebesgilde_aufgeraeumt; 	//Wenn Andre sich selbst drum kümmert...
 var int 	Diebesgilde_Verraten;			//Wenn man Andre vom Versteck erzählt hat...
@@ -502,6 +627,8 @@ var int		MIS_Canthars_KomproBrief; 	//Canthar sagt SC er soll Sarah den KomproBr
 var int		MIS_Canthars_KomproBrief_Day;
 var int 	MIS_Meldor_BringGold;		//SC kann Geld von Meldor an Gedlverleiher abgeben
 var int 	MIS_Meldor_BringGold_Day;
+var int 	MIS_Coragon_Silber;
+var int 	Regis_Ring;
 var int 	Pablo_AndreMelden;
 
 var int 	Alrik_Kaempfe;				//wie oft schon mit Alrik gekämpft
@@ -527,6 +654,7 @@ var int 	Alchemy_Explain;
 
 // --------- DIEBE & CO ---------------------------------
 var int 	MIS_Andre_GuildOfThieves;
+
 
 //---------- Halvor der Hehler ---------------------
 var int		Knows_Halvor;				//Spieler hat Zettel von Halvor gelesen
@@ -566,13 +694,16 @@ var int     Halvor_Score;
 var int		Halvor_Day;
 var int 	Attila_Key;
 
+
 var int 	Edda_Day;
 var int		Edda_Schlafplatz;
 
 var int     Knows_Ork;					//Spieler hat vom Ork vor der Stadt gehört
 var int 	MIS_Matteo_Gold;			//Schulden von Gritta eintreiben (von Matteo)
+var int 	Knows_Matteo;				//fürs Log
 var int 	Gritta_GoldGiven;			//Gritta hat Gold per Dialog rausgerückt!
 var int 	Thorben_GotGold;
+
 
 var int 	MIS_Thorben_GetBlessings;
 var int 	Vatras_Segen;
@@ -600,10 +731,12 @@ var int 	MIS_Garvell_Infos;			//Mission von Garvell (wer hätte das gedacht?)
 var int     Tell_Garvell;				//eine var die sich reimt, kann nicht schlecht sein;) --> damit der Spieler nur einmal den Sermon erzählen muss M.F.
 var int 	KnowsPaladins_Ore;			//Weiß warum die paladine da sind
 
+
 var int  	Lares_Guide; 				//Wie lange ist Spieler mit Lares unterwegs?
 
 var int 	MIS_Lee_Friedensangebot;
 var int 	MIS_Bennet_BringOre;
+var int 	Sekob_Pachtbezahlt;
 var int 	MIS_Sekob_RedeMitOnar;
 
 var int Sekob_RoomFree; //wenn Xardas dich zur Truhe schickt (für Portalraum)
@@ -624,13 +757,14 @@ var int Lee_SendToOnar;
 var int SOLD;
 var int Onar_WegenSldWerden;
 var int Onar_WegenPepe;
+var int Onar_WegenSekob;
 var int Maria_MehrGold;
 var int MIS_Maria_BringPlate;
 
 var int MIS_Torlof_Dmt;
 var int Wolf_ProduceCrawlerArmor;
 
-var int		MIS_ThiefGuild_sucked; 		//Wenn SC Rengaru, Halvor oder anderes Mitglied verknackt => true		
+var int		MIS_ThiefGuild_sucked; 		//Wenn SC Rengaru, Halvor oder anderes Mitglied verknackt => TRUE		
 var int     Knows_Ruga_Answer;			// für interne Dialogauswahl	
 var int		Miliz_Points;				//Punkte für Milizaufnahme 
 var int 	Nadja_Money;				//Je nach Spieler Antwort muss er mehr Kohle für die Info locker machen
@@ -686,17 +820,19 @@ var int   	MIS_RUNE;
 var int		MIS_RescueGorn;				//Die "Befreie Gorn" Mission. Wir von Lee und Milten vergeben!
 const int   CostRescueGorn  = 500;      //Preis für Gorns Freilassung für Garond!!!!
 
-var int 	Canthar_GotMe;				//== true : Canthar weiß, daß SC Sträfling ist!
-var int 	Canthar_Passierschein_Accept; //Deal mit dem Passierschein ist abgeschlossen worden => true
+var int 	Canthar_GotMe;				//== TRUE : Canthar weiß, daß SC Sträfling ist!
+var int 	Canthar_Passierschein_Accept; //Deal mit dem Passierschein ist abgeschlossen worden => TRUE
 var int 	Canthar_Passierschein_Accept_Day; // Tag des Abschlusses!
 var int 	Canthar_AccusePlayerAndre;		//== True wenn Canthar den Player bei Andre angschwärzt hat (Sträfling)
 var int 	Canthar_AccusePlayerAndre_Day;	// Tag des Verrats
+
 
 var int 	Sentenza_GoldTaken;
 var int 	Torlof_SentenzaCounted; 
 var int 	MIS_Jarvis_SldKO;
 var int 	MIS_Fester_KillBugs;
 var int 	Festers_Giant_Bug_Killed;		//Wieviele hat SC gekillt?
+var int		BusterLOG;
 var int		BennetLOG;
 
 var int 	MIS_Pepe_KillWolves;				//SC soll für Pepe die Wölfe töten.
@@ -713,6 +849,7 @@ var int 	MIS_Rukhar_Wettkampf_Day;
 var int 	Rukhar_Won_Wettkampf;				//Rukhar hat gewonnen
 var int 	Rukhar_Einsatz;
 var int 	Rukhar_Gewinn;
+
 
 var int 	Soeldner_Points;			//Punkte-Sammeln zur Sld-Aufnahme
 var int 	Sentenza_Friend;			//Wenn Sentenza dir seine Stimme gegeben hat
@@ -733,6 +870,7 @@ var int		MIS_Wasili_BringOldCoin; 	//Wasili sammelt OLDCOINs
 var int 	MIS_Sagitta_Herb; 			//Sonnenaloe für Sagitta
 
 // ------ KAPITEL 2 ------
+
 var int 	Lutero_Krallen;
 var int 	Fernando_Erz;
 var int		MIS_ScoutMine;				// AL Kommandant Garond schickt SC in die neue Mine!
@@ -756,10 +894,12 @@ var int 	Brutus_einmalig;
 var int 	Garond_Kerkerauf;
 var int		TengronRing;
 var int		OricBruder;
+var int 	MIS_Kervo_KillLurker;  
 
 // ------ KAPITEL 3 ------
 var int 	MIS_NovizenChase;					//Pyrokar schickt SC hinter den Novizen her, der das Auge Innos gestohlen hat.
 var int 	MIS_Pyrokar_GoToVatrasInnoseye; 	//Pyrokar schickt SC zu Vatras, wegen dem kaputten Auge Innos.
+var int 	MIS_Xardas_GoToVatrasInnoseye;		//Xardas schickt SC zu Vatras, wegen dem kaputten Auge Innos.
 var int 	MIS_RitualInnosEyeRepair; 			//Vatras wartet auf Xardas und Pyrokar am Sonnenkreis 
 var int 	MIS_ReadyforChapter4; 				//Mit dieser Varible in den Levelchange zur OW -> Kapitel 4
 var int		MIS_Bennet_InnosEyeRepairedSetting; //Bennet hat die Fassung des Auge Innos repariert.
@@ -778,6 +918,7 @@ var int		MIS_DiegosResidence;				//Diego hat ein neues Haus!
 var int		MIS_Akil_SchafDiebe;				//banditen haben Akils schafe gestohlen.
 var int 	MIS_Lee_JudgeRichter;  				//Beweise gegen Richter finden.
 var int 	MIS_Richter_BringHolyHammer;  		//Dem Richter den heiligen Hammer der Magier bringen.
+var int 	MIS_Richter_KillMorgahard;  		//Richter will, dass SC entflohenen Morgahard tötet.
 var int 	MIS_InnosEyeStolen;  				//die Kacke is am Dampfen. DMT\Pedro haben das Auge geklaut.
 var int 	MIS_RescueBilgot;					//Bilgot aus OW rausholen
 
@@ -785,6 +926,7 @@ var int 	MIS_RescueBilgot;					//Bilgot aus OW rausholen
 var int		MIS_Buster_KillShadowbeasts_DJG;	//Buster schickt dich los Shadowbiester zu erledigen. 					SLD oder DJG
 var int		MIS_Ulthar_HeileSchreine_PAL;		//Ulthar schickt dich los die verhexten Schreine zu heilen. 			PAL oder MIL
 var int		MIS_Serpentes_MinenAnteil_KDF;		//Serpentes schickt dich los die gefälschten Minenanteile einzusammeln. KDF
+
 
 // ------ KAPITEL 4 ------
 var int 	MIS_DJG_Sylvio_KillIceGolem;//Sylvio will, daß der SC ihm den Weg frei killt.
@@ -815,6 +957,7 @@ var int 	MIS_Raoul_DoesntPayTrollFur;
 var int 	MIS_RichtersPermissionForShip;	//Ermächtigungsschreiben fürs Schiff beim Richter erpressen.
 var int 	MIS_RosisFlucht;		
 
+
 var int 	Crewmember_Count;			//Die Anzahl der Crewmitglieder
 const int 	Max_Crew = 9;				//Max. Crewmitglieder
 const int   Min_Crew = 5;				//Min. Crewmitglieder //Joly: wenn dieser Wert geändert wird, müssen auch die Dialoge angepasst werden!!!!!!!!!
@@ -835,14 +978,18 @@ var int		Angar_IsOnBoard;			//Ist Angar an Bord?		-> == LOG_SUCCESS
 var int 	Girion_IsOnBoard;  			//Ist Girion an Bord?		-> == LOG_SUCCESS
 
 var int 	MIS_ShipIsFree;				//Das Schiff ist frei und SC kann mit seinen Jungs draufgehen.
-var int 	SCGotCaptain;	 			//== true ->SC hat sich für einen Kapitän entschieden.
-var int 	JorgenIsCaptain;  			//== true Jorgen ist der Käptain!
-var int 	TorlofIsCaptain;  			// == true Torlof ist der Käptain!
-var int 	JackIsCaptain;  			// == true Jack ist der Käptain!
+var int 	SCGotCaptain;	 			//== TRUE ->SC hat sich für einen Kapitän entschieden.
+var int 	JorgenIsCaptain;  			//== TRUE Jorgen ist der Käptain!
+var int 	TorlofIsCaptain;  			// == TRUE Torlof ist der Käptain!
+var int 	JackIsCaptain;  			// == TRUE Jack ist der Käptain!
 
 var int 	MIS_ReadyforChapter6; 		//Alles klar für Kapitel 6
-var int 	MIS_OCGateOpen;				//== true -> Das Tor vom OC ist geöffnet worden (ORCSturm)
+var int 	MIS_OCGateOpen;				//== TRUE -> Das Tor vom OC ist geöffnet worden (ORCSturm)
 var int 	MIS_Jack_NewLighthouseOfficer; //Jack braucht jemanden, der auf seinen Leuchtturm auspasst!
+
+// ------ KAPITEL 6 ------
+var int 	MIS_Mario_Ambush; 			//Mario verrät den SC
+
 
 //**************************
 // Allgemeine Hilfsvariablen
@@ -852,6 +999,7 @@ var int B_Chapter4_OneTime;
 var int B_Chapter5_OneTime;
 
 // ------ KAPITEL 1 ------
+var int	Maleth_ersterWolf;  		//Wolf wird erst insertet und macht Trouble wenn Important abgefeuert!
 var int	Lobart_DIA_HALT_WegDamit;	//Important Info ausschalten!
 var int Lobart_MILCHANGEBOT;		//Lobart bietet SC den MilchholAuftrag an!
 
@@ -912,8 +1060,12 @@ var int Torlof_SC_DarfZuLee;		//Torlof lässt SC ins Haupthaus von Onar
 var int Torlof_SauerWegenSekob;  	//Torlof verteilt Rüffel, weilSC Sekob zu sanft angefasst hat!
 var int Babera_BronkoKeinBauer;		//Babera verrät dem Spieler, daß Bronko gar nicht der Bauer ist!
 var int Sekob_ersteChancevertan;  	//falls SC erste mal schon Weichei raushängen läßt, muß er zu Torlof gehen und sich Rüffel abholen.
+var int Till_Angebot;				//Die Kohle, die der SC von Till erfeilscht.
+var int Till_HatSeinGeldBehalten;	//Till hat dem SC gar nicht gegeben.
+var int Till_IchMachsNurEinmal;		//Ich mach´s Bestätigung kommtz nur einmal!
 var int Bengar_MILIZKLATSCHEN_Kohle;//Lohn fürs Milizenklatschen auf Hof 4.
 var int Rumbold_Bezahlt;			//Miliz von Farm3 bekommen durch Bezahlung.
+
 
 // ---------------------------
 var int Mika_Helps;					//Miliz Mika hilft SC bei den SLD auf Akils Hof.
@@ -953,12 +1105,13 @@ var int Knows_WEAPON_1H_Special_01;	// (für ItWr_Silverblade) Spieler lernt WEAP
 var int Pedro_Traitor;			//SC erfährt von Pedros Auge Innos Klau
 var int RitualInnosEyeRuns;		//Das Umkehrritual läuft
 var int Bennet_RepairDay;		//Repariere das Auge Innos
-var int heroGIL_KDF2;			//== true -> SC ist hoher KDF
+var int heroGIL_KDF2;			//== TRUE -> SC ist hoher KDF
 var int Xardas_GoesToRitualInnosEye; //Xardas geht zum Umkehrritual
 var int Pyrokar_GoesToRitualInnosEye; //Pyrokar geht zum Umkehrritual
+var int Pyrokar_DeniesInnosEyeRitual; //Pyrokar will erst einen Beweis für Xardas Vertrauen
 var int CorneliusFlee;			//Cornelius macht die Biege
-
-
+var int Cornelius_TellTruth;	//Cornelius beichtet alles
+var int Cornelius_PayForProof;
 var int MiltenNW_GivesMonasteryKey; //Der SC hat den Klosterschlüssel erhalten.
 var int Parlan_DontTalkToNovice;	//Rede nicht mit den Novizen
 var int NeorasBrewsForYou;			//Neoras braut Tränke für dich!
@@ -967,21 +1120,21 @@ var int Igaraz_ISPartner;			//igaraz und Player erpressen babo
 var int MIS_Gorax_KillPedro;		//Serpentes gibt Gorax Geld den SLD-SC dazu zu bringen Pedro zu töten.
 var int OpenedDiegosBag;			//Player hat den Sack geöffnet!
 const int DiegosTreasure	= 2000;	//Diegos Schatz!
-var int SC_KnowsProspektorSalandril;	//== true MinanteilBetrug von Salandril ist aufgeflogen.
-var int PyrokarToldKarrasToResearchDMT;	//== true Karras macht DMT Research
-var int Pyrokar_AskKarrasAboutDMTAmulett;	//== true Karras fragen, wegen Schutzamulett gegen den Schwarzen Blick
+var int SC_KnowsProspektorSalandril;	//== TRUE MinanteilBetrug von Salandril ist aufgeflogen.
+var int PyrokarToldKarrasToResearchDMT;	//== TRUE Karras macht DMT Research
+var int Pyrokar_AskKarrasAboutDMTAmulett;	//== TRUE Karras fragen, wegen Schutzamulett gegen den Schwarzen Blick
 var int MIS_Karras_FindBlessedStone;		//== LOG_SUCCESS SC bringt Karras gesegnetes Gestein, für Schutzamulett gegen den Schwarzen Blick
-var int Angar_KnowsMadPsi;			//== true Angar kennt die Wahrheit über die Bruderschaft des Schläfers.
+var int Angar_KnowsMadPsi;			//== TRUE Angar kennt die Wahrheit über die Bruderschaft des Schläfers.
 var int Cornelius_IsLiar;
 var int RescueBennet_KnowsWitness;	//Der SC hat erfahren, dass es einen Zeugen für den Mord gibt
 var int RecueBennet_KnowsCornelius;	//Der SC hat erfahren, dass Cornelius der Zeuge ist.
 var int Cornelius_ThreatenByMilSC;
-
+var int SCIstRichtersLakai;
 var int SCFoundMorgahard;
+const int Gold_BlessSword 	= 5000; //Soviel kostet die erste Segnung deines PalSchwertes (Hoshi: bei Änderung bitte auch in der Text.d ändern!!!!(const string Bless_Sword))
 const int CostForPAlSpells = 5; //Soviel kosten Pal Spells!!
 var int SalandrilMinenAnteil_MAINCounter; 
 var int SalandrilVerteilteMinenAnteil;
-
 
 var int Girion_Labercount;
 var int TschuessBilgot;
@@ -989,10 +1142,11 @@ var int TschuessBilgot;
 // ------ KAPITEL 4 ------
 var int DJG_SwampParty;			//Rod und Cipher greifen mit SC den Drachen an.
 var int DJG_BiffParty;			//SCs eigener kleiner Söldner.
+var int DJG_BiffSurvivedLastDragon;
 var int Angar_willDJGwerden;	//Angar will DJG werden 
 var int DJG_Angar_SentToStones; //Angar macht sich auf zum STonehenge
 var int DJG_AngarGotAmulett;	//SC gibt Angar das Amulett zurück.
-var int DJG_AngarAngriff;		//SC greift SkeletonMage zusammen mit Angar an!
+var int DJG_AngarAngriff;		//SC greift Skeleton_Mage zusammen mit Angar an!
 
 var int HokurnLastDrink;		//Wann hat Hokurn letztes mal getrunken
 var int	HokurnGetsDrink;		//Er hat was zu trrinken bekommen
@@ -1014,7 +1168,7 @@ var int Biff_FollowsThroughPass;	//SC bringt Talbin über den Pass!
 var int EngromIsGone;				//Engrom lebte zu Kapitel 4 noch. ist jetzt verschwunden!
 var int TalkedTo_AntiPaladin;		//Paladin SC hat mit den Eliteorkanführer gesprochen.
 var int Hyglas_SendsToKarras;		//Karras soll dir über die Sterne erzählen
-var int Jan_WantsDragonBlood;		//== true Jan kauft (PAL und KDF) Drachenblut ab.
+var int Jan_WantsDragonBlood;		//== TRUE Jan kauft (PAL und KDF) Drachenblut ab.
 const int Garond_KilledDragonGeld = 300;	//Geld für jeden getöteten Drachen.
 
 var int DJG_BiffParty_nomore;
@@ -1032,6 +1186,7 @@ var int PlayerHasFinalArmor;		//Sc hat DJG Rüstung
 var int RosiFoundKap5;				//Rosi steht in der Wildnis
 var int PAL_KnowsAbout_FINAL_BLESSING; //Paladine Sc hat rezept für Finale Waffensegnung gelesen!
 
+
 // ------ KAPITEL 6 ------
 var int ORkSturmDI;					//Ork haben das Schiff angegriffen.
 var int Angar_DI_Party;				//Angar followt dem SC
@@ -1040,10 +1195,246 @@ var int SCFoundPedro;
 var int UndeadDragonIsDead;			//UndeadDragon ist tot
 var int DiegAndGornAreOnboard;		//fürs Video Extro_AllesWirdGut!
 
+
+//****************************
+//	Lehrer (hier sollten alle variablen für die Freischaltung der einzelnen Lehrer stehen
+//****************************
+
+//********************************
+var int Alrik_TeachPlayer;		//1-hand Lerer in der city (bis 30)
+var int Moe_TeachPlayer; 		//Stärkelehrer im Hafen (bis 30)
+var int Bartok_TeachPlayer;     //Bogenlehrer in der Stadt (bis 30)
+var int Boltan_TeachPlayer;		//Armbrustlehrer der Miliz (bis 60)
+var int Wulfgar_TeachPlayer;	//1h Lehrer der Miliz (bis 60)
+var int Girion_TeachPlayer;		//2h Lehrer für Pal (bis 60)
+var int Thorben_TeachPlayer;	//Picklock Lehrer in Khorinis 
+var int Buster_TeachPlayer;		//Einhand und Zweikampf (bis 30)
+var int Cord_TeachPlayer;		//Einhand und Zweikampf (bis 60)
+var int Lee_TeachPlayer;		//2h (bis 100)
+var int Torlof_TeachPlayer;		//Stärkelehrer	(bis 90)
+var int Dar_TeachPlayer;		//Geschicklichkeitslehrer (bis 90)
+var int Cassia_TeachPlayer;		//Geschicklichkeit bis 90 + Schleichen
+var int Jesper_TeachPlayer;		//Taschendiebstahl  
+var int Ramirez_TeachPlayer;	//Schlösser öffnen
+var int Carl_TeachPlayer;		//Stärke (-30)
+var int Gaan_TeachPlayer; 		//Fell, Krallen!
+
+//********************************
+
+//-------------------
+//City - ab Kapitel 1
+//-------------------
+//STR
+var int Carl_TeachSTR;				//STR - 30
+var int Harad_TeachSTR;				//STR - 45 wenn Schmieden gelernt
+var int Mortis_TeachSTR;			//STR - 60 für Miliz oder Pal
+var int Ingmar_TeachSTR;			//STR - 90
+//DEX
+var int Lares_TeachDEX;				//DEX - 30
+var int Ruga_TeachDEX;				//DEX - 60 für Miliz oder Pal
+var int Cassia_TeachDEX;			//DEX - 90 für 100 Gold oder umsonst (Attila)
+//MAN
+var int Vatras_TeachMANA;			//MANA - 50
+var int Albrecht_TeachMANA;			//MANA - 100 für Pal
+//1H
+var int Alrik_Teach1H;				//1h - 30
+var int Wulfgar_Teach1H;			//1h - 60 für Miliz oder Pal (oder 100 Gold)
+var int Cedric_Teach1H;				//1h - 90 für Pal
+//2H
+var int Wulfgar_Teach2H;			//2h - 60 für Miliz oder Pal (oder 100 Gold)
+var int Girion_Teach2H;				//2h - 90 für Pal
+var int LordHagen_Teach2H;			//2h - 100 für Pal - Meister, ab 90% (Girion schickt dich auch)
+//Bogen
+var int Bartok_TeachBow;     		//Bow - 30 
+//Armbrust
+var int Ruga_TeachCrossbow;			//Crossbow - 60 für Miliz oder Pal
+//Diebestalente
+var int Cassia_TeachPickpocket;		//für 100 Gold oder umsonst (Attila)
+var int Jesper_TeachSneak;			//für 100 Gold ...
+var int Ramirez_TeachPicklock;		//für 100 Gold ...
+var int Thorben_TeachPicklock;		//für 200, wenn Gritta bezahlt für 100, wenn Schuldenbuch zurück umsonst
+//sonstige Talente
+var int Harad_TeachSmith;			//Common
+var int Constantino_TeachAlchemy; 	//Health_01, Health_02, Health 03, Perm_Health, Mana_01, Mana_02, Perm_STR
+var int Ignaz_TeachAlchemy;			//Health_01, Mana_01, Speed, Perm_DEX
+
+//Ignaz verkauft Scrolls...
+/*
+ SPL_TrfSheep		
+ SPL_TrfScavenger	
+ SPL_TrfGiantRat	
+ SPL_TrfGiantBug	
+ SPL_TrfWolf		
+ SPL_TrfWaran		
+ SPL_TrfSnapper		
+ SPL_TrfWarg		
+ SPL_TrfFireWaran	
+ SPL_TrfLurker		
+ SPL_TrfShadowbeast	
+ SPL_TrfDragonSnapper
+ SPL_Charm		
+*/
+
+//----------------------
+//BigFarm - ab Kapitel 1
+//----------------------
+//STR
+
+//var int 
+var int Torlof_TeachSTR;			//STR - bis 100
+var int Torlof_TeachDEX;			//DEX - bis 100
+//DEX
+//var int 
+
+//var int 
+//MAN
+var int XXX_TeachMANA;				//Mana - 50
+//1H
+var int Buster_Teach1H;				//???
+//var int 
+//var int 
+//2H
+//var int 
+var int Rod_Teach2H;				//2H bis 30
+var int Cord_Teach2H;				//1H und 2H - 60 für SLD
+var int Lee_Teach2H;				//2H - 100 für SLD und DJG - Meister, ab 90% (wer tot???)
+
+var int Wolf_TeachBow;
+//Bow
+//var int 
+//var int 
+//var int 
+//Crossbow
+//var int 
+//var int 
+//var int 
+//Sonstige Talente
+var int Bennet_TeachCommon;
+var int Bennet_TeachSmith; 			//wenn Spieler ihm Common-Waffe zeigt
+	//Kapitel 2	oder 1+SLD		//WEAPON_1H_Special_01, WEAPON_2H_Special_01
+	//Kapitel 3					//WEAPON_1H_Special_02, WEAPON_2H_Special_02	
+	//Kapitel 4					//WEAPON_1H_Special_03, WEAPON_2H_Special_03	
+	//Kapitel 5					//WEAPON_1H_Special_04, WEAPON_2H_Special_04
+
+//-------------------------------
+//NewWorld Surface - ab Kapitel 1
+//-------------------------------
+var int Sagitta_TeachAlchemy;		//Health_01 _02 _03, Mana_01_02_03, Perm_Mana, Perm_Health
+
+//Animaltrophy
+/*
+	TROPHY_Claws			 
+ 	TROPHY_Fur				
+ 	TROPHY_Heart			 Golem/Dämon
+ 	TROPHY_ShadowHorn 		
+ 	TROPHY_FireTongue		 
+ 	TROPHY_BFWing			 
+ 	TROPHY_BFSting			
+ 	TROPHY_Mandibles		 
+ 	TROPHY_CrawlerPlate	 
+ 	TROPHY_DrgSnapperHorn	 
+ 	TROPHY_DragonScale		
+ 	TROPHY_DragonBlood		
+*/
+
+var int Gaan_TeachAnimalTrophy;		//TROPHY_Claws, TROPHY_Fur, TROPHY_BFSting, TROPHY_BFWing, TROPHY_Teeth, TROPHY_DrgSnapperHorn
+var int Grom_TeachAnimalTrophy;  	//TROPHY_Fur, TROPHY_Teeth, TROPHY_Heart, TROPHY_Mandibles, TROPHY_ShadowHorn
+var int Grimbald_TeachAnimalTrophy; //TROPHY_BFSting, TROPHY_BFWing, TROPHY_Claws, TROPHY_Mandibles, TROPHY_CrawlerPlate
+var int Gestath_TeachAnimalTrophy; 	//TROPHY_FireTongue, TROPHY_CrawlerPlate, TROPHY_Mandibles, TROPHY_DrgSnapperHorn, TROPHY_DragonScale, TROPHY_DragonBlood
+var int Godar_TeachAnimalTrophy; 	//NPC_TALENT_SNEAK, TROPHY_Teeth, TROPHY_BFSting, TROPHY_BFWing, TROPHY_DragonScale, TROPHY_DragonBlood
+var int Talbin_TeachAnimalTrophy; 	//TROPHY_Fur, TROPHY_Claws, TROPHY_Heart, TROPHY_ShadowHorn
+
+//--------------------
+//Kloster ab Kapitel 1
+//--------------------
+//KREISE
+//	Ulthar 		Kreis 1-3 		
+//	Serpentes 	Kreis 1-5		//Wenn Ultar tot ODER Kreis 3 erreicht 
+//	Pyrokar 	Kreis 1-6		//Wenn Serpentes tot oder Kreis 5 erreicht
+//MANA
+var int Parlan_TeachMANA; 		//Mana - 100, wenn GIL_KdF
+var int Pyrokar_TeachMANA;		//Mana - 250, wenn von Parlan geschickt (schickt nur KdF)
+//STR
+var int Opolos_TeachSTR;		//STR - 50
+//2H
+var int XXX_Teach2H;			//2H - 70 für Nov/KdF
+//PalRunes
+var int Ulthar_TeachPalRunes;	//PalLightHeal, PalMediumHeal, PalFullHeal
+var int Pyrokar_TeachPalRunes;	//PalLight
+var int Serpentes_TeachPalRunes;//PalHolyBolt, PalRepelEvil, PalDestroyEvil
+//Runes
+var int Hyglas_TeachRunes; 		//Firebolt (Aufnahme), ***InstantFireball2***, ChargeFireball3, Pyrokinesis4, Firestorm5, FireRain6
+var int Karras_TeachRunes; 		//SummonGoblinSkeleton1, SummonWolf2, SummonSkeleton3, SummonGolem4, SummonDemon5, ArmyOfDarkness6
+var int Parlan_TeachRunes;		//LightHeal1, Light1, Windfist2, Sleep2, MediumHeal3, Fear3, DestroyUndead4, FullHeal5, Shrink6
+var int Marduk_TeachRunes;		//IceBolt1, Zap2, LightningFlash3, IceCube3, Thunderball4, IceWave5
+//*** BIBLIOTHEK - BreathOfDeath6, MassDeath6 ***
+//Alchemy
+var int Neoras_TeachAlchemy;	//Health_01, Health_02, Mana_01 _02 _03, Perm_Mana, Perm_STR (für Magier und Paladine)
+var int Babo_TeachPlayer;		//1H + 2H - 70 für Nov/KdF
+
+// ------ Scroll-Händler -------
+
+// *** wo Runen-Scrolls kaufen ??? ***
+
+//--------------------
+//Oldcamp ab Kapitel 2
+//--------------------
+var int	Dobar_Learnsmith;		//(Common) Schmied Burg im Minental
+var int Keroloth_TeachPlayer; 	//1-Hand Lehrer Burg im Minental (bis 60) 
+var int Udar_TeachPlayer;		//Armbrustlehrer Burg im Minental (bis 30) 
+var int Brutus_TeachSTR;		//Stärke Lehrer bis 75
+//-----------------------------
+//Oldworld Surface ab Kapitel 2
+//-----------------------------
+
+//-----------------------------
+//Oldworld Surface ab Kapitel 4
+//-----------------------------
+var int Godar_TeachPlayer;		//Zähne, BFSting, BFWing, Schleichen, - DJG - OW Anfang, später Djg-Lager
+var int Jan_TeachPlayer;		//Schmieden, Common, Special 1 beide, Special 2 beide. im OC
+var int Hokurn_TeachPlayer;		//Kampflehrer bis 100 - DJG - OW Anfang, später Djg-Lager
+
 //-------------  Sonstige Variablen -------------------------------------
+var int Apple_Bonus;
+var int Dunkelpilz_Bonus;
+var int Mandibles_Bonus;
 var int Knows_Bloodfly;
+var int Bloodfly_Bonus;
 var int Player_KnowsDunkelpilzBonus;
 var int Skelett_Spawn;
 var int TruheSfx;
+var int GoblinGreen_Randomizer;
+var int GoblinBlack_Randomizer;
+var int Orc_Randomizer;
 
 var int CurrentLevel; 	//Newworld_zen, Oldworld_Zen, Dragonisland_zen -> Level in dem sich der Player befindet!
+
+//--------------------
+//DragonIsland Kapitel 6
+//--------------------
+
+	/*		
+	
+	//Kapitäne:
+	
+	Jack
+	Torlof			STR
+	Jorgen
+	
+	//Crew
+	
+	Lee				1H + 2H 
+	Girion			1H + 2H
+	Milten			Mana Runen
+	Lester			
+	Gorn			2H
+	Diego			Bow + Lockpick + Dex
+	Angar			
+	Bennet			Schmieden + STR
+	Biff
+	Wolf			Bow + Crossbow
+	Lares			Dex + 1H
+	Mario			
+	Vatras			Alchemy + Kreise
+	
+	*/	

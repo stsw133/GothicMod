@@ -1,38 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance PAL_259_Wache (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Wache;
 	guild 								=	GIL_PAL;
 	id 									=	259;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_OCAMBIENT;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Pal_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_FatBald", Face_Normal04, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_259;
 };
 
-FUNC VOID Rtn_Start_259()
+func void Rtn_Start_259()
 {
 	TA_Stand_Guarding	(08,00,23,00, "OC_OPEN_ROOM_GUARD_01");
 	TA_Stand_Guarding	(23,00,08,00, "OC_OPEN_ROOM_GUARD_01");

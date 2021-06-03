@@ -7,13 +7,13 @@ INSTANCE DIA_Boltan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Boltan_EXIT_Condition;
 	information = DIA_Boltan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "W³aœnie wychodzi³em.";
 };
 
 FUNC INT DIA_Boltan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Boltan_EXIT_Info()
@@ -31,13 +31,13 @@ instance DIA_Boltan_HALLO		(C_INFO)
 	nr 			= 1;
 	condition	= DIA_Boltan_HALLO_Condition;
 	information = DIA_Boltan_HALLO_Info;
-	permanent 	= false;
-	important	= true;
+	permanent 	= FALSE;
+	important	= TRUE;
 };
 
 func int DIA_Boltan_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Boltan_HALLO_Info ()
@@ -54,20 +54,21 @@ instance DIA_Boltan_ToConvicts		(C_INFO)
 	nr 			= 2;
 	condition	= DIA_Boltan_ToConvicts_Condition;
 	information = DIA_Boltan_ToConvicts_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description = "Chcê zobaczyæ wiêŸniów.";
 };
 
 func int DIA_Boltan_ToConvicts_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Boltan_ToConvicts_Info ()
 {
 	AI_Output (other, self, "DIA_Boltan_Add_15_01"); //Chcê zobaczyæ wiêŸniów.
 	
-	if (Kapitel == 9) 
+	
+	if (Kapitel == 3) 
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	{
 		if (other.guild == GIL_SLD)
@@ -79,10 +80,10 @@ func void DIA_Boltan_ToConvicts_Info ()
 			AI_Output (self ,other, "DIA_Boltan_Add_05_06"); //Zamknêliœmy tê œwiniê, która zamordowa³a paladyna Lothara.
 		};
 	}
-	else if (Canthar_Ausgeliefert == false)
-	&& (Sarah_Ausgeliefert == false)
-	&& (Rengaru_Ausgeliefert == false)
-	&& (Nagur_Ausgeliefert == false)
+	else if (Canthar_Ausgeliefert == FALSE)
+	&& (Sarah_Ausgeliefert == FALSE)
+	&& (Rengaru_Ausgeliefert == FALSE)
+	&& (Nagur_Ausgeliefert == FALSE)
 	{
 		AI_Output (self ,other, "DIA_Boltan_Add_05_02"); //Wszystkie cele s¹ puste.
 	}
@@ -102,7 +103,7 @@ func void DIA_Boltan_ToConvicts_Info ()
 		};
 	};
 };		
-
+		
 // ************************************************
 // 					HalloBennet
 // ************************************************
@@ -112,17 +113,17 @@ instance DIA_Boltan_HalloBennet (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Boltan_HalloBennet_Condition;
 	information = DIA_Boltan_HalloBennet_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Boltan_HalloBennet_Condition ()
 {
-	if (Kapitel == 9) 
+	if (Kapitel == 3) 
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	&& (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -142,17 +143,17 @@ instance DIA_Boltan_HalloCanthar (C_INFO)
 	nr 			= 1;
 	condition	= DIA_Boltan_HalloCanthar_Condition;
 	information = DIA_Boltan_HalloCanthar_Info;
-	permanent 	= false;
-	important 	= true;
+	permanent 	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Boltan_HalloCanthar_Condition ()
 {
-	if ( (Kapitel != 9) || ( (Kapitel == 9) && ( (MIS_RescueBennet == LOG_SUCCESS) || (other.guild != GIL_SLD) ) ) )
-	&& (Canthar_WiederRaus == true)
-	&& (Canthar_Ausgeliefert == true)
+	if ( (Kapitel != 3) || ( (Kapitel == 3) && ( (MIS_RescueBennet == LOG_SUCCESS) || (other.guild != GIL_SLD) ) ) )
+	&& (Canthar_WiederRaus == TRUE)
+	&& (Canthar_Ausgeliefert == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -163,3 +164,18 @@ func void DIA_Boltan_HalloCanthar_Info ()
 	AI_Output (self ,other, "DIA_Boltan_Add_05_13"); //Ta sprawa to jakieœ nieporozumienie. To siê czasem zdarza.
 	AI_Output (self ,other, "DIA_Boltan_Add_05_14"); //Na przysz³oœæ uwa¿aj, kogo wysy³asz do wiêzienia.
 };		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

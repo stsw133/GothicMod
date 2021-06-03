@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Fortuno_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Fortuno_EXIT_Condition;
 	information = DIA_Addon_Fortuno_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Fortuno_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Fortuno_EXIT_Info()
 {
@@ -28,25 +28,25 @@ INSTANCE DIA_Addon_Fortuno_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Fortuno_Hi_Condition;
 	information = DIA_Addon_Fortuno_Hi_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Fortuno_Hi_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (Fortuno_Geheilt_01 == false)
+	&& (Fortuno_Geheilt_01 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_Hi_Info()
 {
-	if (Fortuno_Einmal == false)
+	if (Fortuno_Einmal == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Fortuno_Hi_13_00");//Czarna chmura nad domem... ON nadchodzi....
 		AI_Output (self, other, "DIA_Addon_Fortuno_Hi_13_01");//Krwi¹... Przyzywa³em go... ON, który mnie obserwuje... Och, nie, odejdŸ, zostaw mnie...
 		AI_Output (other, self, "DIA_Addon_Fortuno_Hi_15_02");//Dobrze siê czujesz?
-		Fortuno_Einmal = true;
+		Fortuno_Einmal = TRUE;
 		
 		Log_CreateTopic (Topic_Addon_Fortuno,LOG_MISSION);
 		Log_SetTopicStatus (Topic_Addon_Fortuno,LOG_RUNNING);
@@ -65,7 +65,7 @@ FUNC VOID DIA_Addon_Fortuno_Hi_Info()
 	{
 		Info_AddChoice 	  (DIA_Addon_Fortuno_Hi,"Masz, weŸ to bagienne ziele.",DIA_Addon_Fortuno_Hi_JOINT);
 	};
-	if Npc_HasItems (other, ItMi_SleJoint ) >= 1
+	if Npc_HasItems (other, ItMi_Addon_Joint_01 ) >= 1
 	{ 
 		Info_AddChoice 	  (DIA_Addon_Fortuno_Hi,"Dobrze, spróbuj tego zielonego nowicjusza.",DIA_Addon_Fortuno_Hi_GREEN);
 	};
@@ -84,7 +84,7 @@ FUNC VOID DIA_Addon_Fortuno_Hi_JOINT()
 {
 	AI_Output (other, self, "DIA_Addon_Fortuno_Hi_JOINT_15_00");//Masz, weŸ to bagienne ziele.
 	
-	if B_GiveInvItems (other,self, ItMi_Joint, 1)
+	if B_GiveInvItems (other, self,ItMi_Joint,1)
 	{
 		AI_UseItem (self, ItMI_Joint);
 	};
@@ -94,17 +94,18 @@ FUNC VOID DIA_Addon_Fortuno_Hi_GREEN()
 {
 	AI_Output (other, self, "DIA_Addon_Fortuno_Hi_GREEN_15_00");//Dobrze, spróbuj tego zielonego nowicjusza.
 	
-	if (B_GiveInvItems (other,self, ItMi_SleJoint, 1))
+	if B_GiveInvItems (other, self,ItMi_Addon_Joint_01,1)
 	{
-		AI_UseItem (self, ItMi_SleJoint);
+		AI_UseItem (self, ItMI_Addon_Joint_01);
+		
 	};
 	AI_Output (self, other, "DIA_Addon_Fortuno_Hi_GREEN_13_01");//AAACH...
 	AI_Output (self, other, "DIA_Addon_Fortuno_Hi_GREEN_13_02");//Moja g³owa... Kim... Jestem... Fortuno... Co... Co siê dzieje?
 	
 	Info_ClearChoices (DIA_Addon_Fortuno_Hi);
-	Fortuno_Geheilt_01 = true;
+	Fortuno_Geheilt_01 = TRUE;
 	
-	B_GivePlayerXP (XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_Fortuno_01);
 	
 	B_LogEntry (Topic_Addon_Fortuno,"Zielony nowicjusz przywróci³ zmys³y Fortuna.");
 };
@@ -119,14 +120,14 @@ INSTANCE DIA_Addon_Fortuno_wer   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Fortuno_wer_Condition;
 	information = DIA_Addon_Fortuno_wer_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Dobrze, a teraz powiedz mi, co z tob¹.";
 };
 FUNC INT DIA_Addon_Fortuno_wer_Condition()
 {	
-	if (Fortuno_Geheilt_01 == true)
+	if (Fortuno_Geheilt_01 == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_wer_Info()
@@ -150,14 +151,14 @@ INSTANCE DIA_Addon_Fortuno_FREE   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Fortuno_FREE_Condition;
 	information = DIA_Addon_Fortuno_FREE_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Musi byæ jakiœ sposób, ¿eby przywróciæ ci wspomnienia.";
 };
 FUNC INT DIA_Addon_Fortuno_FREE_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Fortuno_wer)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_FREE_Info()
@@ -186,14 +187,14 @@ INSTANCE DIA_Addon_Fortuno_Herb   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Fortuno_Herb_Condition;
 	information = DIA_Addon_Fortuno_Herb_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Potrzebujesz wiêcej bagiennego ziela?";
 };
 FUNC INT DIA_Addon_Fortuno_Herb_Condition()
 {
-	if (Fortuno_Geheilt_01 == true)
+	if (Fortuno_Geheilt_01 == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_Herb_Info()
@@ -221,7 +222,7 @@ INSTANCE DIA_Addon_Fortuno_Trade   (C_INFO)
 	nr          = 100;
 	condition   = DIA_Addon_Fortuno_Trade_Condition;
 	information = DIA_Addon_Fortuno_Trade_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Mam dla ciebie bagienne ziele...";
 };
 FUNC INT DIA_Addon_Fortuno_Trade_Condition()
@@ -229,7 +230,7 @@ FUNC INT DIA_Addon_Fortuno_Trade_Condition()
 	if (Npc_HasItems (other, ITPl_SwampHerb) >= 1)
 	&& Npc_KnowsInfo (other, DIA_Addon_Fortuno_Herb)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_Trade_Info()
@@ -251,7 +252,7 @@ FUNC VOID DIA_Addon_Fortuno_Trade_all()
 		Npc_RemoveInvItems (self, ITPL_Swampherb, Npc_HasItems (self, ITPL_Swampherb));
 	};
 	
-	B_GiveInvItems (self, other, ItMi_Gold, amount * 10);
+	B_GiveInvItems (self, other, ItMi_Gold, amount * ITPL_Swampherb.value);
 	
 	B_GivePlayerXP (amount * 10);
 	B_Fortuno_InfoManager();
@@ -263,7 +264,7 @@ FUNC VOID DIA_Addon_Fortuno_Trade_1()
 		Npc_RemoveInvItems (self, ITPL_Swampherb, Npc_HasItems (self, ITPL_Swampherb));
 	};
 	
-	B_GiveInvItems (self, other, ItMi_Gold, 10);
+	B_GiveInvItems (self, other, ItMi_Gold, ITPL_Swampherb.value);
 	
 	B_GivePlayerXP (10);
 	B_Fortuno_InfoManager();
@@ -278,24 +279,28 @@ INSTANCE DIA_Addon_Fortuno_Trank   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Fortuno_Trank_Condition;
 	information = DIA_Addon_Fortuno_Trank_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Mam dla ciebie miksturê. Powinna pomóc ci odzyskaæ pamiêæ.";
 };
 FUNC INT DIA_Addon_Fortuno_Trank_Condition()
 {
-	if (Fortuno_Geheilt_01 == true)
-	&& Npc_KnowsInfo(other,DIA_Addon_Fortuno_FREE)
+	if (Fortuno_Geheilt_01 == TRUE)
+	&&   Npc_KnowsInfo(other,DIA_Addon_Fortuno_FREE)
 	&& (Npc_HasItems (other, ItPo_Geist) >= 1)
-	{	return true;	};
+	{	
+		return TRUE;
+	};
 };
 FUNC VOID DIA_Addon_Fortuno_Trank_Info()
 {
 	AI_Output (other, self, "DIA_Addon_Fortuno_Trank_15_00");//Mam dla ciebie miksturê. Powinna pomóc ci odzyskaæ pamiêæ.
 	AI_Output (self, other, "DIA_Addon_Fortuno_Trank_13_01");//Ufam ci.
-
-	if (B_GiveInvItems(other,self,ItPo_Geist,1))
-	{	AI_UseItem (self, ItPo_Geist);	};
-	B_GivePlayerXP(XP_BONUS_2);
+	
+	if B_GiveInvItems (other, self, ItPo_Geist,1)
+	{
+		AI_UseItem (self, ItPo_Geist);
+	};
+	B_GivePlayerXP (XP_Addon_Fortuno_02);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info No more Secrets
@@ -306,14 +311,14 @@ INSTANCE DIA_Addon_Fortuno_more   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Fortuno_more_Condition;
 	information = DIA_Addon_Fortuno_more_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "No i jak?";
 };
 FUNC INT DIA_Addon_Fortuno_more_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Addon_Fortuno_Trank)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_more_Info()
@@ -334,15 +339,15 @@ FUNC VOID DIA_Addon_Fortuno_more_Info()
 	AI_Output (self, other, "DIA_Addon_Fortuno_more_13_13");//Przypominam sobie te¿ kamienne tabliczki. Kruk wierzy³, ¿e wska¿¹ mu drogê.
 	AI_Output (self, other, "DIA_Addon_Fortuno_more_13_14");//Gdy tylko zdo³a³ odcyfrowaæ inskrypcje, sta³em siê zbêdny.
 	AI_Output (self, other, "DIA_Addon_Fortuno_more_13_15");//Rzuci³ na mnie zaklêcie, które sprawi³o, ¿e wszystko zapomnia³em. A ty mnie uwolni³eœ.
-
-	SC_KnowsFortunoInfos = true;
-
-	B_LogEntry (TOPIC_Addon_RavenKDW, "Kruk chce wydobyæ potê¿ny artefakt ze œwi¹tyni Adanosa."); 
-	Log_AddEntry (TOPIC_Addon_RavenKDW, "Z jakiegoœ powodu Kruk rozkopa³ w kopalni z³ota grób jednego z kap³anów prastarej kultury."); 
-	Log_AddEntry (TOPIC_Addon_RavenKDW, "Kruk s¹dzi, ¿e w realizacji jego planu pomog¹ jakieœ kamienne tablice."); 
-
+	
+	SC_KnowsFortunoInfos = TRUE;
+	
+	B_LogEntry (TOPIC_Addon_RavenKDW,"Kruk chce wydobyæ potê¿ny artefakt ze œwi¹tyni Adanosa."); 
+	Log_AddEntry (TOPIC_Addon_RavenKDW,"Z jakiegoœ powodu Kruk rozkopa³ w kopalni z³ota grób jednego z kap³anów prastarej kultury."); 
+	Log_AddEntry (TOPIC_Addon_RavenKDW,"Kruk s¹dzi, ¿e w realizacji jego planu pomog¹ jakieœ kamienne tablice."); 
+	
 	Npc_ExchangeRoutine (self, "START");
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_Fortuno_03);
 };
 //---------------------------------------------------------------------
 //	Info Attentat
@@ -353,15 +358,15 @@ INSTANCE DIA_Addon_Fortuno_Attentat   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Fortuno_Attentat_Condition;
 	information = DIA_Addon_Fortuno_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= DIALOG_ADDON_ATTENTAT_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Fortuno_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
-	&& (Npc_KnowsInfo(other,DIA_Addon_Fortuno_Trank))
+	&&  Npc_KnowsInfo (other,DIA_Addon_Fortuno_Trank)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Fortuno_Attentat_Info()
@@ -369,3 +374,4 @@ FUNC VOID DIA_Addon_Fortuno_Attentat_Info()
 	B_Say 	  (other, self, "$ATTENTAT_ADDON_DESCRIPTION");
 	AI_Output (self, other, "DIA_Addon_Fortuno_Attentat_13_00");//Próba zabójstwa? Wybacz, przez jakiœ czas mnie... nie by³o. Nie wiem nic na ten temat.
 };
+

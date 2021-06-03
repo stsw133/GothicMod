@@ -3,5 +3,5 @@
 ///******************************************************************************************
 func void B_InitGuildAttitudes()
 {
-//	Wld_ExchangeGuildAttitudes("GIL_ATTITUDES");
+	//Wld_ExchangeGuildAttitudes("GIL_ATTITUDES");
 };

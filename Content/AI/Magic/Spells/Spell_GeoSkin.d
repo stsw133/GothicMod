@@ -10,7 +10,7 @@ var int SPL_IsActive_GeoSkin;
 var int SPL_AmountToProt_GeoSkin;
 
 ///******************************************************************************************
-INSTANCE Spell_GeoSkin (C_Spell_Proto)
+instance Spell_GeoSkin (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype							=	SPELL_NEUTRAL;
@@ -20,9 +20,9 @@ INSTANCE Spell_GeoSkin (C_Spell_Proto)
 
 func int Spell_Logic_GeoSkin (var int manaInvested)
 {
-	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoSkin/5))
+	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoSkin/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoSkin))
-	|| (SPL_IsActive_GeoSkin == true)
+	|| (SPL_IsActive_GeoSkin)
 	{
 		return SPL_SENDCAST;
 	}
@@ -34,24 +34,25 @@ func int Spell_Logic_GeoSkin (var int manaInvested)
 
 func void Spell_Cast_GeoSkin()
 {
-	if (SPL_IsActive_GeoSkin == false)
+	if (!SPL_IsActive_GeoSkin)
 	{
-		if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoSkin/5))
+		if (Npc_GetActiveSpellIsScroll(self))
 		{
-			self.attribute[ATR_MANA] -= SPL_Cost_GeoSkin/5;
+			self.attribute[ATR_MANA] -= SPL_Cost_GeoSkin/SPL_Cost_Scroll;
 		}
-		else if (self.attribute[ATR_MANA] >= SPL_Cost_GeoSkin)
+		else
 		{
 			self.attribute[ATR_MANA] -= SPL_Cost_GeoSkin;
 		};
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 	
 	
 	
 	if (Npc_IsPlayer(self))
 	{
-		if (SPL_IsActive_GeoSkin == false)
+		if (!SPL_IsActive_GeoSkin)
 		{
 			SPL_IsActive_GeoSkin = true;
 			
@@ -68,7 +69,7 @@ func void Spell_Cast_GeoSkin()
 			SPL_IsActive_GeoSkin = false;
 			
 			Wld_PlayEffect ("spellFX_GeoSkin_GLOW", self, self, 0, 0, 0, false);
-			B_UpdateNpcVisual(self);
+			//B_UpdateNpcVisual(self);
 			
 			self.protection[PROT_BLUNT] -= SPL_AmountToProt_GeoSkin;
 			self.protection[PROT_EDGE] -= SPL_AmountToProt_GeoSkin;
@@ -81,7 +82,7 @@ func void Spell_Cast_GeoSkin()
 ///******************************************************************************************
 func void Spell_Active_GeoSkin()
 {
-	if (SPL_IsActive_GeoSkin == true)
+	if (SPL_IsActive_GeoSkin)
 	{
 		if (self.attribute[ATR_MANA] >= SPL_Time_GeoSkin)
 		{
@@ -92,7 +93,7 @@ func void Spell_Active_GeoSkin()
 			SPL_IsActive_GeoSkin = false;
 			
 			Wld_PlayEffect ("spellFX_GeoSkin_GLOW", self, self, 0, 0, 0, false);
-			B_UpdateNpcVisual(self);
+			//B_UpdateNpcVisual(self);
 			
 			self.protection[PROT_BLUNT] -= SPL_AmountToProt_GeoSkin;
 			self.protection[PROT_EDGE] -= SPL_AmountToProt_GeoSkin;

@@ -7,20 +7,20 @@ INSTANCE DIA_Addon_Franco_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Franco_EXIT_Condition;
 	information = DIA_Addon_Franco_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Franco_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Franco_EXIT_Info()
 {
-	if (Franco_Exit == false)
+	if (Franco_Exit == FALSE)
 	&& (MIS_HlpLogan == LOG_RUNNING)
 	{
 		AI_Output(self,other,"DIA_Addon_Franco_EXIT_08_00");//Nie zab³¹dŸ, bo skoñczysz jako miêso dla wê¿y.
-		Franco_Exit = true;
+		Franco_Exit = TRUE;
 	};
 	AI_StopProcessInfos (self);
 };
@@ -34,12 +34,12 @@ INSTANCE DIA_Addon_Franco_HI   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Franco_HI_Condition;
 	information = DIA_Addon_Franco_HI_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Franco_HI_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Addon_Franco_HI_Info()
 {	
@@ -52,7 +52,7 @@ FUNC VOID DIA_Addon_Franco_HI_Info()
 	AI_Output (self,other,"DIA_Addon_Franco_HI_08_02");//Nie interesuje mnie, coœ ty za jeden. Jestem Franko, przywódca tego obozu.
 	AI_Output (self,other,"DIA_Addon_Franco_HI_08_03");//Je¿eli wyka¿esz siê poza obozem, zabiorê ciê do œrodka.
 	
-	if (Ramon_News == false)
+	if (Ramon_News == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Franco_HI_08_04");//Stra¿nik bramy, Ramon, powie ci, kiedy w obozie bêd¹ potrzebni nowi ludzie. Porozmawiaj z nim.
 		B_LogEntry (Topic_Addon_Franco,"Mam zapytaæ Ramona, stra¿nika przy bramie, czy potrzebuj¹ w obozie nowych ludzi.");
@@ -67,14 +67,14 @@ INSTANCE DIA_Addon_Franco_Hai   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Franco_Hai_Condition;
 	information = DIA_Addon_Franco_Hai_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Thorus potrzebuje nowego cz³owieka.";
 };
 FUNC INT DIA_Addon_Franco_Hai_Condition()
 {	
-	if (Ramon_News == true)
+	if (Ramon_News == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_Hai_Info()
@@ -99,16 +99,16 @@ INSTANCE DIA_Addon_Franco_Wo   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Franco_Wo_Condition;
 	information = DIA_Addon_Franco_Wo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie znajdê tego Logana?";
 };
 FUNC INT DIA_Addon_Franco_Wo_Condition()
 {	
 	if (Npc_KnowsInfo(other,DIA_Addon_Franco_Hai))
 	&& (!Npc_IsDead (Logan))
-	&& (MIS_HlpLogan == false)
+	&& (MIS_HlpLogan == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_Wo_Info()
@@ -126,7 +126,7 @@ INSTANCE DIA_Addon_Franco_tot   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Franco_tot_Condition;
 	information = DIA_Addon_Franco_tot_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Logan nie ¿yje.";
 };
 FUNC INT DIA_Addon_Franco_tot_Condition()
@@ -135,7 +135,7 @@ FUNC INT DIA_Addon_Franco_tot_Condition()
 	&&  Npc_IsDead (Logan)
 	&& Npc_KnowsInfo (other,DIA_Addon_Franco_Hai)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_tot_Info()
@@ -159,7 +159,7 @@ INSTANCE DIA_Addon_Franco_HaiSuccess   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Franco_HaiSuccess_Condition;
 	information = DIA_Addon_Franco_HaiSuccess_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Pomog³em Loganowi...";
 };
 FUNC INT DIA_Addon_Franco_HaiSuccess_Condition()
@@ -167,7 +167,7 @@ FUNC INT DIA_Addon_Franco_HaiSuccess_Condition()
 	if (MIS_HlpLogan == LOG_SUCCESS)
 	&& Npc_KnowsInfo (other,DIA_Addon_Franco_Hai)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_HaiSuccess_Info()
@@ -179,7 +179,7 @@ FUNC VOID DIA_Addon_Franco_HaiSuccess_Info()
 		AI_Output (other,self,"DIA_Addon_Franco_HaiSuccess_15_01");//...ale on tego nie prze¿y³.
 	};
 	AI_Output (self,other,"DIA_Addon_Franco_HaiSuccess_08_02");//Dobra, walczy³eœ z wê¿ami - mo¿esz siê przydaæ - przynajmniej bardziej ni¿ wiêkszoœæ tutejszych ch³opaków.
-	B_GivePlayerXP (XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_HlpLogan);
 	
 	B_LogEntry (Topic_Addon_Franco,"Pomog³em Loganowi, ale to nie wystarczy³o, aby Franko wpuœci³ mnie do obozu.");
 };
@@ -193,7 +193,7 @@ INSTANCE DIA_Addon_Franco_Mis2 (C_INFO)
 	nr          = 7;
 	condition   = DIA_Addon_Franco_Mis2_Condition;
 	information = DIA_Addon_Franco_Mis2_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Czyli mogê wejœæ do obozu?";
 };
 FUNC INT DIA_Addon_Franco_Mis2_Condition()
@@ -201,11 +201,11 @@ FUNC INT DIA_Addon_Franco_Mis2_Condition()
 	if (Npc_KnowsInfo(other,DIA_Addon_Franco_HaiSuccess))
 	|| (Npc_KnowsInfo (other, DIA_Addon_Franco_tot))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_Mis2_Info()
-{
+{	
 	AI_Output (other,self,"DIA_Addon_Franco_MIS2_15_00");//Czyli mogê wejœæ do obozu?
 	AI_Output (self,other,"DIA_Addon_Franco_MIS2_08_01");//S³uchaj - jest jeszcze jedna rzecz, do której mi siê przydasz.
 	AI_Output (self,other,"DIA_Addon_Franco_MIS2_08_02");//Kilka dni temu wys³a³em na bagna Edgora.
@@ -230,14 +230,14 @@ INSTANCE DIA_Addon_Franco_While   (C_INFO)
 	nr          = 8;
 	condition   = DIA_Addon_Franco_While_Condition;
 	information = DIA_Addon_Franco_While_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A jak to wygl¹da od strony z³ota?";
 };
 FUNC INT DIA_Addon_Franco_While_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Franco_HaiSuccess))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_While_Info()
@@ -260,7 +260,7 @@ INSTANCE DIA_Addon_Franco_WOEDGOR   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Franco_WOEDGOR_Condition;
 	information = DIA_Addon_Franco_WOEDGOR_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Wiêc gdzie znajdê tego Edgora?";
 };
 FUNC INT DIA_Addon_Franco_WOEDGOR_Condition()
@@ -268,7 +268,7 @@ FUNC INT DIA_Addon_Franco_WOEDGOR_Condition()
 	if (MIS_HlpEdgor == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItMi_Addon_Stone_04 ) < 1)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_WOEDGOR_Info()
@@ -314,7 +314,7 @@ INSTANCE DIA_Addon_Franco_tafel   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Addon_Franco_tafel_Condition;
 	information = DIA_Addon_Franco_tafel_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Tu masz tê kamienn¹ tabliczkê.";
 };
 FUNC INT DIA_Addon_Franco_tafel_Condition()
@@ -322,7 +322,7 @@ FUNC INT DIA_Addon_Franco_tafel_Condition()
 	if (Npc_HasItems (other,ItMi_Addon_Stone_04 ) >= 1)
 	&& (MIS_HlpEdgor == LOG_RUNNING)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_tafel_Info()
@@ -332,7 +332,7 @@ FUNC VOID DIA_Addon_Franco_tafel_Info()
 	
 	AI_Output (self,other,"DIA_Addon_Franco_tafel_08_01");//Dobrze, znakomicie. Kruk bêdzie z ciebie zadowolony.
 	MIS_HlpEdgor = LOG_SUCCESS;
-	B_GivePlayerXP (XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_HlpEdgor);
 	
 	B_LogEntry (Topic_Addon_Franco,"Przynios³em Frankowi kamienn¹ tablicê, której szuka³.");
 };
@@ -346,14 +346,14 @@ INSTANCE DIA_Addon_Franco_JemandAnderen   (C_INFO)
 	nr          = 11;
 	condition   = DIA_Addon_Franco_JemandAnderen_Condition;
 	information = DIA_Addon_Franco_JemandAnderen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A co z obozem? Mogê w koñcu wejœæ?";
 };
 FUNC INT DIA_Addon_Franco_JemandAnderen_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Franco_tafel))
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_JemandAnderen_Info()
@@ -364,7 +364,7 @@ FUNC VOID DIA_Addon_Franco_JemandAnderen_Info()
 	{
 		AI_Output (self,other,"DIA_Addon_Franco_JemandAnderen_08_01");//Nie, wys³a³em tam Logana. Zajmowa³ wy¿sz¹ pozycjê na mojej liœcie.
 		
-		Logan_Inside = true;
+		Logan_Inside = TRUE;
 		AI_Teleport (Logan,"BL_INN_CORNER_02");
 		B_StartOtherRoutine (Logan,"LAGER");
 	}
@@ -375,7 +375,7 @@ FUNC VOID DIA_Addon_Franco_JemandAnderen_Info()
 	
 	AI_Output (self,other,"DIA_Addon_Franco_JemandAnderen_08_03");//W obozie nie potrzebuj¹ nikogo wiêcej.
 	AI_Output (self,other,"DIA_Addon_Franco_JemandAnderen_08_04");//Poza tym przydasz mi siê tutaj, skoro nie ma ju¿ Logana.
-	
+		
 	B_LogEntry (Topic_Addon_Franco,"Franko nie wpuœci mnie do obozu. Coœ mi siê zdaje, ¿e bêdê musia³ siê jakoœ pozbyæ tego 'frankowego problemu'...");
 };
 
@@ -388,12 +388,12 @@ INSTANCE DIA_Addon_Franco_Fight   (C_INFO)
 	nr          = 12;
 	condition   = DIA_Addon_Franco_Fight_Condition;
 	information = DIA_Addon_Franco_Fight_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Wpuœæ mnie, NATYCHMIAST!";
 };
 FUNC INT DIA_Addon_Franco_Fight_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Franco_Fight_Info()
 {	
@@ -432,14 +432,14 @@ INSTANCE DIA_Addon_Franco_Pig   (C_INFO)
 	nr          = 13;
 	condition   = DIA_Addon_Franco_Pig_Condition;
 	information = DIA_Addon_Franco_Pig_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Ty œwinio! Zaraz ciê za³atwiê!";
 };
 FUNC INT DIA_Addon_Franco_Pig_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Franco_JemandAnderen))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Franco_Pig_Info()
@@ -450,3 +450,7 @@ FUNC VOID DIA_Addon_Franco_Pig_Info()
 	AI_StopProcessInfos(self);
 	B_Attack (self, other, AR_NONE, 1);
 };
+
+
+
+

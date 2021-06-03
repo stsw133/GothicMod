@@ -183,19 +183,19 @@ Es gelten die gewöhnlichen Einschränkungen und Empfehlungen für floats. Zum Beis
 
 */
 
-//#################################################################
-//
-//  DIE FUNKTIONEN
-//
-//#################################################################
+///#################################################################
+///
+///  DIE FUNKTIONEN
+///
+///#################################################################
 
 const int FLOAT_SIGN_MASK = 1 << 31;
 
 const int FLOATNULL = 0;
-const int FLOATEINS = 1065353216; //vz 0, exp 0 (also char 127), mt 1.0
-const int FLOATONE  = FLOATEINS;  //EN
-const int FLOATHALB = 1056964608; //vz 0, exp -1 (also char 126), mt 1.0
-const int FLOATHALF = FLOATHALB;  //EN
+const int FLOATEINS = 1065353216; ///vz 0, exp 0 (also char 127), mt 1.0
+const int FLOATONE  = FLOATEINS;  ///EN
+const int FLOATHALB = 1056964608; ///vz 0, exp -1 (also char 126), mt 1.0
+const int FLOATHALF = FLOATHALB;  ///EN
 
 const int PI = 1078530011;
 const int E =  1076754516;
@@ -208,15 +208,19 @@ const int FLTINT_add_code  [3] = { -639268523, 1171786821, 12830984 };
 const int FLTINT_mk_code   [2] = { -605714091, -1010235323 };
 
 /* Helper Function: */
-func int _FLT_Build_Func(var int codePtr, var int param1Ptr, var int param2Ptr, var int retValIsFloat, var int resultPtr) {
+func int _FLT_Build_Func(var int codePtr, var int param1Ptr, var int param2Ptr, var int retValIsFloat, var int resultPtr)
+{
     CALL_Open();
-    if (param2Ptr) {
+    if (param2Ptr)
+	{
         CALL_IntParam(param2Ptr);
     };
-    if (param1Ptr) {
+    if (param1Ptr)
+	{
         CALL_IntParam(param1Ptr);
     };
-    if (retValIsFloat) {
+    if (retValIsFloat)
+	{
         CALL_RetValIsFloat();
     };
     CALL_PutRetValTo(resultPtr);
@@ -224,13 +228,15 @@ func int _FLT_Build_Func(var int codePtr, var int param1Ptr, var int param2Ptr, 
     return CALL_Close();
 };
 
-//************************************
-//      Wrapper:
-//************************************
+///************************************
+///      Wrapper:
+///************************************
 
-func int mkf (var int x) {
+func int mkf (var int x)
+{
     const int code = 0;
-    if (!code) {
+    if (!code)
+	{
         code = _FLT_Build_Func(_@(FLTINT_mk_code), _@(x), 0, 1, _@(result));
     };
     ASM_Run(code);
@@ -238,9 +244,11 @@ func int mkf (var int x) {
     return +result;
 };
 
-func int truncf (var int x) {
+func int truncf (var int x)
+{
     const int code = 0;
-    if (!code) {
+    if (!code)
+	{
         code = _FLT_Build_Func(_@(FLTINT_trunc_code), _@(x), 0, 0, _@(result));
     };
     ASM_Run(code);
@@ -248,9 +256,11 @@ func int truncf (var int x) {
     return +result;
 };
 
-func int addf (var int x, var int y) {
+func int addf (var int x, var int y)
+{
     const int code = 0;
-    if (!code) {
+    if (!code)
+	{
         code = _FLT_Build_Func(_@(FLTINT_add_code), _@(x), _@(y), 1, _@(result));
     };
     ASM_Run(code);
@@ -258,9 +268,11 @@ func int addf (var int x, var int y) {
     return +result;
 };
 
-func int mulf (var int x, var int y) {
+func int mulf (var int x, var int y)
+{
     const int code = 0;
-    if (!code) {
+    if (!code)
+	{
         code = _FLT_Build_Func(_@(FLTINT_mul_code), _@(x), _@(y), 1, _@(result));
     };
     ASM_Run(code);
@@ -268,9 +280,11 @@ func int mulf (var int x, var int y) {
     return +result;
 };
 
-func int divf (var int x, var int y) {
+func int divf (var int x, var int y)
+{
     const int code = 0;
-    if (!code) {
+    if (!code)
+	{
         code = _FLT_Build_Func(_@(FLTINT_div_code), _@(x), _@(y), 1, _@(result));
     };
     ASM_Run(code);
@@ -278,62 +292,74 @@ func int divf (var int x, var int y) {
     return +result;
 };
 
-//************************************
-//  Quadrieren und Wurzelziehen
-//************************************
+///************************************
+///  Quadrieren und Wurzelziehen
+///************************************
 
-func int sqrf(var int f) {
+func int sqrf(var int f)
+{
     return mulf(f,f);
 };
 
-func int sqrtf(var int f) {
-    const int sqrtf_G1 = 7757593; //0x765F19
-    const int sqrtf_G2 = 8123917; //0x7BF60D
+func int sqrtf(var int f)
+{
+    const int sqrtf_G1 = 7757593; ///0x765F19
+    const int sqrtf_G2 = 8123917; ///0x7BF60D
     
     const int code = 0;
-    if (!code) {
-        code = _FLT_Build_Func(MEMINT_SwitchG1G2(sqrtf_G1, sqrtf_G2),
-                               _@(f), 0, 1, _@(result));
+    if (!code)
+	{
+        code = _FLT_Build_Func(MEMINT_SwitchG1G2(sqrtf_G1, sqrtf_G2), _@(f), 0, 1, _@(result));
     };
     ASM_Run(code);
     var int result;
     return +result;
 };
 
-//************************************
-//  Es lassen sich vier kleine
-//  nützliche Hilfsfunktionen
-//  definieren:
-//************************************
+///************************************
+///  Es lassen sich vier kleine
+///  nützliche Hilfsfunktionen
+///  definieren:
+///************************************
 
-func int negf (var int x) {
+func int negf (var int x)
+{
     if (x < 0) { return x & (~FLOAT_SIGN_MASK); }
     else       { return x |   FLOAT_SIGN_MASK ; };
 };
 
-func int absf (var int x) {
+func int absf (var int x)
+{
     return x & (~FLOAT_SIGN_MASK);
 };
 
-func int subf (var int x, var int y) {
+func int subf (var int x, var int y)
+{
     return addf(x, negf(y));
 };
 
-func int roundf (var int x) {
-    if (x < 0) {
+func int roundf (var int x)
+{
+    if (x < 0)
+	{
         return truncf(subf(x, FLOATHALB));
-    } else {
+    }
+	else
+	{
         return truncf(addf(x, FLOATHALB));
     };
 };
 
-func int invf (var int x) {
+func int invf (var int x)
+{
     return divf(FLOATEINS, x);
 };
 
 /* thanks to orcwarriorPL for the idea! */
-func int fracf (var int p, var int q) {
-    if (!q) {
+func int fracf (var int p, var int q)
+{
+    if (!q)
+	{
         MEM_Error("fracf: Denominator is 0.");
     };
     return divf(mkf(p), mkf(q));
@@ -342,21 +368,26 @@ func int fracf (var int p, var int q) {
  /* deprecated */
 func int sqrtf_approx(var int f) { return sqrtf(f); };
 
-//************************************
-//  Ordnungsrelationen
-//************************************
+///************************************
+///  Ordnungsrelationen
+///************************************
 
-func int gf (var int x, var int y) {
+func int gf (var int x, var int y)
+{
     var int isnegX; isnegX = x & FLOAT_SIGN_MASK;
     var int isnegY; isnegY = y & FLOAT_SIGN_MASK;
 
-    if (isNegX && isNegY) { //beide negativ
-        if (x < y) {
+    if (isNegX && isNegY) ///beide negativ
+	{
+        if (x < y)
+		{
             return true;
         };
     }
-    else {
-        if (x > y) {
+    else
+	{
+        if (x > y)
+		{
             return true;
         };
     };
@@ -364,33 +395,37 @@ func int gf (var int x, var int y) {
     return false;
 };
 
-func int gef (var int x, var int y) {
+func int gef (var int x, var int y)
+{
     if (x == y) { return true; };
     return gf (x,y);
 };
 
-func int lef (var int x, var int y) {
+func int lef (var int x, var int y)
+{
     return !gf(x,y);
 };
 
-func int lf (var int x, var int y) {
+func int lf (var int x, var int y)
+{
     return !gef (x,y);
 };
 
-//*****************************************
-//  Ausgabefunktionen, danke an Gottfried!
-//*****************************************
+///*****************************************
+///  Ausgabefunktionen, danke an Gottfried!
+///*****************************************
 
 func float castFromIntf(var int   f) { f; };
 func int   castToIntf  (var float f) { return MEM_ReadInt(_@f(f)); };
 
-func string toStringf(var int x) {
+func string toStringf(var int x)
+{
     var float f; f = castFromIntf(x);
     return FloatToString(f);
 };
 
 /* schlechter Name, aus Kompatibilitätsgründen trotzdem drin. */
-func void printf(var int x) {
+func void printf(var int x)
+{
     Print(toStringf(x));
 };
-

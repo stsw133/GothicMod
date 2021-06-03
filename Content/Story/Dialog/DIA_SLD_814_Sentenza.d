@@ -8,13 +8,13 @@ INSTANCE DIA_Sentenza_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Sentenza_EXIT_Condition;
 	information	= DIA_Sentenza_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Sentenza_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Sentenza_EXIT_Info()
@@ -35,15 +35,15 @@ instance DIA_Sentenza_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Sentenza_Hello_Condition;
 	information	= DIA_Sentenza_Hello_Info;
-	permanent	= false;
-	important 	= true; 
+	permanent	= FALSE;
+	important 	= TRUE; 
 };                       
 
 FUNC INT DIA_Sentenza_Hello_Condition()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -51,7 +51,7 @@ FUNC VOID DIA_Sentenza_Hello_Info()
 {	
 	AI_Output (self ,other,"DIA_Sentenza_Hello_09_00");	//A ty gdzie siê wybierasz?
 	
-	self.aivar[AIV_LastFightComment] = true;
+	self.aivar[AIV_LastFightComment] = TRUE;
 	Sentenza_SearchDay = B_GetDayPlus();
 	
 	Info_ClearChoices	(DIA_Sentenza_Hello);
@@ -93,7 +93,7 @@ func void DIA_Sentenza_Hello_NotYourBusiness()
 			AI_Output (self ,other,"DIA_Sentenza_Hello_SearchMe_09_02"); //Ach! Z³oto! Niebezpiecznie jest nosiæ przy sobie z³oto.
 			AI_Output (self ,other,"DIA_Sentenza_Hello_SearchMe_09_03"); //Wiêkszoœæ najemników to zwyk³e rzezimieszki. Nie uczciwi ludzie jak ja.
 			B_GiveInvItems (other, self, ItMi_Gold, 50);
-			Sentenza_GoldTaken = true;
+			Sentenza_GoldTaken = TRUE;
 		}
 		else if (playerGold > 0)
 		{
@@ -108,7 +108,7 @@ func void DIA_Sentenza_Hello_NotYourBusiness()
 			AI_Output (self ,other,"DIA_Sentenza_Hello_SearchMe_09_09"); //Tylko ty wiesz, gdzie schowa³eœ z³oto!
 		};
 		
-		Sentenza_Wants50 = true;
+		Sentenza_Wants50 = TRUE;
 
 		AI_Output (self ,other,"DIA_Sentenza_Hello_SearchMe_09_10"); //Chcê tylko 50 sztuk z³ota - tyle wynosi myto. P³acisz tylko raz. To chyba rozs¹dne rozwi¹zanie, prawda?
 	};
@@ -149,17 +149,17 @@ INSTANCE DIA_Sentenza_Vzwei (C_INFO)
 	nr			= 2;
 	condition	= DIA_Sentenza_Vzwei_Condition;
 	information	= DIA_Sentenza_Vzwei_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Sentenza_Vzwei_Condition()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
-	&& (Sentenza_GoldTaken == false)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
+	&& (Sentenza_GoldTaken == FALSE)
 	&& (Sentenza_SearchDay < Wld_GetDay())
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -167,12 +167,14 @@ FUNC VOID DIA_Sentenza_Vzwei_Info()
 {	
 	AI_Output (self ,other,"DIA_Sentenza_Vzwei_09_00");	//To znowu ty. SprawdŸmy, co tam masz przy sobie!
 
-	self.aivar[AIV_LastFightComment] = true;
+	self.aivar[AIV_LastFightComment] = TRUE;
 	Sentenza_SearchDay = B_GetDayPlus();
 	
 	Info_ClearChoices	(DIA_Sentenza_Vzwei);
 	Info_AddChoice		(DIA_Sentenza_Vzwei, "Zabieraj ode mnie swoje obleœne ³apska!"		,DIA_Sentenza_Vzwei_HandsOff);
-
+	
+	
+	
 	Info_AddChoice		(DIA_Sentenza_Vzwei, "Jak tam sobie chcesz, mo¿esz mnie przeszukaæ." 	,DIA_Sentenza_Vzwei_SearchMe);
 };
 
@@ -202,7 +204,7 @@ INSTANCE DIA_Sentenza_WannaJoin (C_INFO)
 	nr			= 3;
 	condition	= DIA_Sentenza_WannaJoin_Condition;
 	information	= DIA_Sentenza_WannaJoin_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Chcê siê do was przy³¹czyæ!";
 };                       
 
@@ -210,7 +212,7 @@ FUNC INT DIA_Sentenza_WannaJoin_Condition()
 {
 	if (hero.guild == GIL_NONE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -231,7 +233,7 @@ INSTANCE DIA_Sentenza_Vote (C_INFO)
 	nr			= 4;
 	condition	= DIA_Sentenza_Vote_Condition;
 	information	= DIA_Sentenza_Vote_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Czy bêdziesz g³osowa³ na tak?";
 };                       
 
@@ -240,7 +242,7 @@ FUNC INT DIA_Sentenza_Vote_Condition()
 	if (Npc_KnowsInfo (other, DIA_Sentenza_WannaJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -253,14 +255,14 @@ FUNC VOID DIA_Sentenza_Vote_Info()
 		AI_Output (self, other, "DIA_Sentenza_Vote_09_01"); //Dlaczego? Dlatego, ¿e mnie pobi³eœ? Nie ma szans.
 	}
 	else if (Npc_HasItems (self, itmi_gold) >= 50)
-	&& 		( (Sentenza_GoldTaken == true) ||	(Sentenza_GoldGiven == true) )
+	&& 		( (Sentenza_GoldTaken == TRUE) ||	(Sentenza_GoldGiven == TRUE) )
 	{
 		AI_Output (self, other, "DIA_Sentenza_Vote_09_02"); //W³aœciwie, czemu nie? 50 sztuk z³ota to chyba niewygórowana cena za pozytywny g³os, nie uwa¿asz?
 		
-		Sentenza_Stimme = true;
+		Sentenza_Stimme = TRUE;
 		B_LogEntry (TOPIC_SLDRespekt,"Sentenza nie sprzeciwia siê mojemu wst¹pieniu w szeregi najemników.");
 	}
-	else if (Sentenza_Stimme == true)
+	else if (Sentenza_Stimme == TRUE)
 	&& 		(Npc_HasItems (self, itmi_gold) < 50)
 	{
 		AI_Output (self, other, "DIA_Sentenza_Vote_09_03"); //Po tym, jak odebra³eœ mi z³oto? Nie licz na to, ch³opcze.
@@ -270,7 +272,7 @@ FUNC VOID DIA_Sentenza_Vote_Info()
 		AI_Output (self, other, "DIA_Sentenza_Vote_09_04"); //Tak nic nie za³atwimy. Jeœli mam na ciebie g³osowaæ, musisz wysup³aæ trochê z³ota.
 		AI_Output (other, self, "DIA_Sentenza_Vote_15_05"); //Ile?
 		AI_Output (self, other, "DIA_Sentenza_Vote_09_06"); //50 sztuk z³ota, tyle ile wynosi myto.
-		Sentenza_Wants50 = true;
+		Sentenza_Wants50 = TRUE;
 	};
 };
 
@@ -286,17 +288,17 @@ INSTANCE DIA_Sentenza_Pay50 (C_INFO)
 	nr			= 5;
 	condition	= DIA_Sentenza_Pay50_Condition;
 	information	= DIA_Sentenza_Pay50_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Oto twoje 50 sztuk z³ota.";
 };                       
 
 FUNC INT DIA_Sentenza_Pay50_Condition()
 {
-	if (Sentenza_Wants50 == true)
+	if (Sentenza_Wants50 == TRUE)
 	&& (Npc_HasItems (self, itmi_gold) < 50)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -306,7 +308,7 @@ FUNC VOID DIA_Sentenza_Pay50_Info()
 	if (B_GiveInvItems (other, self, ItMi_Gold, 50))
 	{
 		AI_Output (self, other, "DIA_Sentenza_Pay50_09_01"); //Dziêki, to powinno wystarczyæ.
-		Sentenza_GoldGiven = true;
+		Sentenza_GoldGiven = TRUE;
 	}
 	else
 	{
@@ -326,7 +328,7 @@ INSTANCE DIA_Sentenza_GoldBack (C_INFO)
 	nr			= 6;
 	condition	= DIA_Sentenza_GoldBack_Condition;
 	information	= DIA_Sentenza_GoldBack_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Oddawaj moje z³oto!";
 };                       
 
@@ -334,10 +336,10 @@ FUNC INT DIA_Sentenza_GoldBack_Condition()
 {
 	if (Npc_HasItems (self, itmi_gold) >= 50)
 	{
-		if (Sentenza_GoldGiven == false)
+		if (Sentenza_GoldGiven == FALSE)
 		|| (other.guild == GIL_SLD)
 		{
-			return true;
+			return TRUE;
 		};
 	};
 };
@@ -346,13 +348,13 @@ FUNC VOID DIA_Sentenza_GoldBack_Info()
 {	
 	AI_Output (other, self, "DIA_Sentenza_GoldBack_15_00"); //Oddawaj moje z³oto!
 	if (other.guild == GIL_SLD)
-	&& (Torlof_SentenzaCounted == true)
-	&& (Sentenza_Einmal == false)
+	&& (Torlof_SentenzaCounted == TRUE)
+	&& (Sentenza_Einmal == FALSE)
 	{
 		AI_Output (self, other, "DIA_Sentenza_GoldBack_09_01"); //Teraz, kiedy odda³em na ciebie g³os?
 		AI_Output (self, other, "DIA_Sentenza_GoldBack_09_02"); //Ty œmierdz¹cy ¿ebraku!
 		
-		Sentenza_Einmal = true;
+		Sentenza_Einmal = TRUE;
 		AI_StopProcessInfos(self);
 		B_Attack(self, other, AR_NONE, 1);
 	}
@@ -372,7 +374,7 @@ INSTANCE DIA_Sentenza_AufsMaul (C_INFO)
 	nr			= 7;
 	condition	= DIA_Sentenza_AufsMaul_Condition;
 	information	= DIA_Sentenza_AufsMaul_Info;
-	permanent	= false; //false!!!!!!!!!
+	permanent	= FALSE; //FALSE!!!!!!!!!
 	description = "Powiedz no, czy to coœ z przodu twojej g³owy to twarz czy dupa?";
 };                       
 
@@ -381,7 +383,7 @@ FUNC INT DIA_Sentenza_AufsMaul_Condition()
 	if (Npc_HasItems (self, itmi_gold) >= 50)
 	|| (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -404,7 +406,7 @@ INSTANCE DIA_Sentenza_AufsMaulAgain (C_INFO)
 	nr			= 8;
 	condition	= DIA_Sentenza_AufsMaulAgain_Condition;
 	information	= DIA_Sentenza_AufsMaulAgain_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Koniec z mi³ym goœciem!";
 };                       
 
@@ -415,7 +417,7 @@ FUNC INT DIA_Sentenza_AufsMaulAgain_Condition()
 		if (Npc_HasItems (self, itmi_gold) >= 50)
 		|| (Npc_KnowsInfo (other, DIA_Jarvis_MissionKO))
 		{
-			return true;
+			return TRUE;
 		};
 	};
 };
@@ -439,13 +441,13 @@ INSTANCE DIA_Sentenza_PERM (C_INFO)
 	nr			= 1;
 	condition	= DIA_Sentenza_PERM_Condition;
 	information	= DIA_Sentenza_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "I jak tam interes?";
 };                       
 
 FUNC INT DIA_Sentenza_PERM_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Sentenza_PERM_Info()

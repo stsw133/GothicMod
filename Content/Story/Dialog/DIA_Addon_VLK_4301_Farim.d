@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Farim_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Farim_EXIT_Condition;
 	information = DIA_Addon_Farim_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Farim_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Farim_EXIT_Info()
 {
@@ -34,7 +34,7 @@ instance DIA_Addon_Farim_Hallo		(C_INFO)
 
 func int DIA_Addon_Farim_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Farim_Hallo_Info ()
@@ -69,14 +69,14 @@ func int DIA_Addon_Farim_MilizProbs_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Farim_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
 func void DIA_Addon_Farim_MilizProbs_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Farim_MilizProbs_15_00"); //K³opoty ze stra¿¹?
-	if (((hero.guild == GIL_MIL)||(hero.guild == GIL_PAL)) == false)
+	if (((hero.guild == GIL_MIL)||(hero.guild == GIL_PAL)) == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Farim_MilizProbs_11_01"); //Ci dranie regularnie mnie nachodz¹ i zabieraj¹, co im siê ¿ywnie podoba!
 	};
@@ -108,7 +108,7 @@ func void DIA_Addon_Farim_MilizProbs_klauen ()
 	};
 	
 	AI_Output			(self, other, "DIA_Addon_Farim_MilizProbs_klauen_11_04"); //Myœlê, ¿e ju¿ czas na ciebie.
-	Farim_PissedOff = true;
+	Farim_PissedOff = TRUE;
 	Info_ClearChoices	(DIA_Addon_Farim_MilizProbs);
 };
 func void DIA_Addon_Farim_MilizProbs_helfen ()
@@ -142,9 +142,9 @@ instance DIA_Addon_Farim_MartinHelps		(C_INFO)
 func int DIA_Addon_Farim_MartinHelps_Condition ()
 {
 	if (MIS_Addon_Farim_PaladinFisch == LOG_RUNNING)
-	&& (Martin_KnowsFarim == true)
+	&& (Martin_KnowsFarim == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -169,7 +169,7 @@ func void DIA_Addon_Farim_MartinHelps_Info ()
 	B_GiveInvItems (self, other, ItMi_Aquamarine, 1);		
 	
 	MIS_Addon_Farim_PaladinFisch = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Addon_Farim_PaladinFisch);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -190,7 +190,7 @@ func int DIA_Addon_Farim_Landstreicher_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Farim_Hallo))
 	&& (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_RUNNING) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -199,7 +199,7 @@ func void DIA_Addon_Farim_Landstreicher_Info ()
 	AI_Output (other, self, "DIA_Addon_Farim_Landstreicher_15_01"); //Mo¿esz mi coœ powiedzieæ o zaginionych ludziach?
 	AI_Output (self, other, "DIA_Addon_Farim_Landstreicher_11_02"); //Mój kumpel, William, zadawa³ siê ostatnio z podejrzanymi typkami i do czego to doprowadzi³o?
 	AI_Output (self, other, "DIA_Addon_Farim_Landstreicher_11_03"); //Pewnego dnia nie przyszed³ do pracy i od tego czasu nikt go ju¿ nie widzia³.
-	SCKnowsFarimAsWilliamsFriend = true;
+	SCKnowsFarimAsWilliamsFriend = TRUE;
 };
 
 
@@ -218,10 +218,10 @@ instance DIA_Addon_Farim_William		(C_INFO)
 
 func int DIA_Addon_Farim_William_Condition ()
 {
-	if (SCKnowsFarimAsWilliamsFriend == true)
+	if (SCKnowsFarimAsWilliamsFriend == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Farim_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -305,7 +305,7 @@ instance DIA_Addon_Farim_Perm		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Farim_Perm_Condition;
 	information	 = 	DIA_Addon_Farim_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"I jak tam ryby? Bior¹?";
 };
@@ -314,7 +314,7 @@ func int DIA_Addon_Farim_Perm_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Farim_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -322,7 +322,7 @@ func void DIA_Addon_Farim_Perm_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Farim_Perm_15_00"); //I jak tam ryby? Bior¹?
 
-	if (Farim_PissedOff == true)
+	if (Farim_PissedOff == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Farim_Perm_11_01"); //Ech, nie udawaj, ¿e ciê to interesuje!
 	}
@@ -342,15 +342,18 @@ instance DIA_Addon_Farim_WilliamReport (C_INFO)
 	condition	= DIA_Addon_Farim_WilliamReport_Condition;
 	information	= DIA_Addon_Farim_WilliamReport_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };
 
 func int DIA_Addon_Farim_WilliamReport_Condition ()
 {
-	if (Npc_KnowsInfo(other,DIA_Addon_Farim_William))
-	&& (Saturas_AboutWilliam == true)
+	if (Npc_KnowsInfo (other, DIA_Addon_Farim_William))
 	{
-		return true;
+		if (Npc_HasItems (other, ITWr_Addon_William_01) > 0)
+		|| (Saturas_AboutWilliam == TRUE)
+		{
+			return TRUE;
+		};
 	};
 };
 
@@ -363,3 +366,9 @@ func void DIA_Addon_Farim_WilliamReport_Info ()
 	AI_Output (self, other, "DIA_Addon_Farim_Add_11_04"); //Dziêki, ¿e wróci³eœ, by mi to powiedzieæ.
 	AI_Output (self, other, "DIA_Addon_Farim_Add_11_05"); //Pójdê do knajpy i za czêœæ zdobyczy Williama wypijê za jego pamiêæ. Wiem, ¿e on post¹pi³by tak samo, gdybym to ja zgin¹³.
 };
+
+
+
+
+
+

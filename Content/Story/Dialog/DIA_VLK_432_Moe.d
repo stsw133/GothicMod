@@ -7,13 +7,13 @@ INSTANCE DIA_Moe_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Moe_EXIT_Condition;
 	information = DIA_Moe_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Moe_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Moe_EXIT_Info()
@@ -30,8 +30,8 @@ INSTANCE DIA_Moe_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Moe_Hallo_Condition;
 	information	= DIA_Moe_Hallo_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 
 FUNC INT DIA_Moe_Hallo_Condition()
@@ -40,10 +40,10 @@ FUNC INT DIA_Moe_Hallo_Condition()
 	&& (hero.guild != GIL_PAL)
 	&& (hero.guild != GIL_KDF)
 	&& (hero.guild != GIL_MIL)
-	&& (other.guild != GIL_NOV)
-	&& (Npc_RefuseTalk(self) == false) 
+	&& (hero.guild != GIL_NOV)
+	&& (Npc_RefuseTalk(self) == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Moe_Hallo_Info()
@@ -125,6 +125,7 @@ FUNC VOID DIA_Moe_Hallo_Ruhig()
 	Info_ClearChoices (DIA_Moe_Hallo);
 	Info_AddChoice    (DIA_Moe_Hallo,"Zapomnij o tym, nie dostaniesz nawet z³amanego grosza!",DIA_Moe_Hallo_Vergisses);
 	Info_AddChoice    (DIA_Moe_Hallo,"W porz¹dku, zap³acê.",DIA_Moe_Hallo_Zahlen);
+	
 };
 FUNC VOID DIA_Moe_Hallo_Zahlen()
 {
@@ -184,13 +185,13 @@ INSTANCE DIA_Moe_Harbor(C_INFO)
 	nr			= 998;
 	condition	= DIA_Moe_Harbor_Condition;
 	information	= DIA_Moe_Harbor_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Wiesz, co dzieje siê w porcie, prawda?";
 };                       
 
 FUNC INT DIA_Moe_Harbor_Condition()
 {
-		return true;
+		return TRUE;
 };
  
 FUNC VOID DIA_Moe_Harbor_Info()
@@ -228,11 +229,11 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 {
 	AI_Output (other,self ,"DIA_Moe_Harbor_Rumors_15_00"); //S³ysza³eœ ostatnio jakieœ plotki?
 	
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
 		AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_01"); //W tych okolicach nie lubimy, kiedy ktoœ zadaje zbyt du¿o pytañ. Szczególnie jeœli jest to ktoœ obcy.
 	}
-	else if (Kapitel == 8)
+	else if (Kapitel == 2)
 	{
 		if (hero.guild == GIL_MIL)
 		{
@@ -252,7 +253,7 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 		};
 		
 	}
-	else if (Kapitel == 9)
+	else if (Kapitel == 3)
 	{
 		if (Mis_RescueBennet == LOG_SUCCESS)
 		{
@@ -276,7 +277,7 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 			AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_14"); //Pewnie obawiaj¹ siê tych paru mieszkaj¹cych tutaj pijaków, he, he. I dobrze.
 		};
 	}
-	else if (Kapitel == 10)
+	else if (Kapitel == 4)
 	{
 		AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_15"); //Nic siê tu nie dzieje.
 	}
@@ -295,17 +296,17 @@ instance DIA_Moe_LEHMARGELDEINTREIBEN		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Moe_LEHMARGELDEINTREIBEN_Condition;
 	information	 = 	DIA_Moe_LEHMARGELDEINTREIBEN_Info;
-	permanent 	 =  false;
-	important	 = 	true;
+	permanent 	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Moe_LEHMARGELDEINTREIBEN_Condition ()
 {
 	if 	((Lehmar_GeldGeliehen_Day <= (Wld_GetDay()-2))
 	&&   (Lehmar_GeldGeliehen != 0))
-	&& (RangerHelp_LehmarKohle == false)
-	&& (Lehmar.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	&& (RangerHelp_LehmarKohle == FALSE)
+	&& (Lehmar.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Moe_LEHMARGELDEINTREIBEN_Info ()
@@ -316,3 +317,10 @@ func void DIA_Moe_LEHMARGELDEINTREIBEN_Info ()
 
 	B_Attack (self, other, AR_NONE, 1);	
 };
+
+
+
+
+
+
+

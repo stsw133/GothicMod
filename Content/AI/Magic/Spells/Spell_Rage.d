@@ -5,7 +5,7 @@
 const int SPL_Cost_Rage					=	45;
 
 ///******************************************************************************************
-INSTANCE Spell_Rage (C_Spell_Proto)
+instance Spell_Rage (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -14,7 +14,7 @@ INSTANCE Spell_Rage (C_Spell_Proto)
 
 func int Spell_Logic_Rage (var int manaInvested)
 {	
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Rage/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Rage/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Rage)
 	{
 		//AI_PlayAni (other, "T_PSI_VICTIM");
@@ -29,21 +29,20 @@ func int Spell_Logic_Rage (var int manaInvested)
 
 func void Spell_Cast_Rage()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Rage/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Rage/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_Rage/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_Rage)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_Rage;
 	};
+	
+	Npc_ClearAIQueue	(other);
+    B_ClearPerceptions	(other);
+    AI_StartState		(other, ZS_MagicRage, 0, "");
+	
 	self.aivar[AIV_SelectSpell] += 1;
-	
-	
-	
-	Npc_ClearAIQueue(other);
-    B_ClearPerceptions(other);
-    AI_StartState(other, ZS_MagicRage, 0, "");
 };
 
 ///******************************************************************************************
@@ -53,7 +52,7 @@ func void Spell_Cast_Rage()
 const int SPL_Cost_MassRage				=	180;
 
 ///******************************************************************************************
-INSTANCE Spell_MassRage (C_Spell_Proto)
+instance Spell_MassRage (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -62,7 +61,7 @@ INSTANCE Spell_MassRage (C_Spell_Proto)
 
 func int Spell_Logic_MassRage (var int manaInvested)
 {	
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MassRage/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MassRage/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MassRage)
 	{
 		return SPL_SENDCAST;
@@ -75,20 +74,19 @@ func int Spell_Logic_MassRage (var int manaInvested)
 
 func void Spell_Cast_MassRage()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MassRage/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MassRage/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MassRage/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MassRage)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MassRage;
 	};
-	self.aivar[AIV_SelectSpell] += 1;
-	
-	
 	
 	if (other.guild != GIL_DRAGON)
 	{
 		AI_SetNpcsToState (self, ZS_MagicRage, 1000);
 	};
+	
+	self.aivar[AIV_SelectSpell] += 1;
 };

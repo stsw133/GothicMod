@@ -1,44 +1,43 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BDT_1099_Addon_Huno (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Huno";
 	guild 								=	GIL_BDT;
 	id 									=	1099;
 	voice 								=	6;
-	flags      							=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal45, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_PreStart_1099;
 };
 
-FUNC VOID RTN_PreStart_1099()
+func void RTN_PreStart_1099()
 {
 	TA_Smith_Anvil	(06,00,12,00, "BL_UP_02");
 	TA_Smith_Sharp	(12,00,18,00, "BL_SMITH_YARD_02");
 	TA_Smith_Anvil	(18,00,23,00, "BL_UP_02");
 	TA_Sleep		(23,00,06,00, "BL_SMITH_SLEEP");
 };
-FUNC VOID Rtn_Start_1099()
+func void Rtn_Start_1099()
 {
 	TA_Sleep		(22,00,07,00, "BL_SMITH_SLEEP");
 

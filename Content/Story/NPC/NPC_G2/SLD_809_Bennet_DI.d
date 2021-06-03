@@ -1,42 +1,41 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_809_Bennet_DI (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Bennet";
 	guild 								=	GIL_SLD;
 	id 									=	8090;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_PARTYMEMBER]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_CoolPock, 0, ITAR_Smith);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_8090;
 };
 
-FUNC VOID Rtn_Start_8090()
+func void Rtn_Start_8090()
 {
 	TA_Smith_Fire	(08,00,08,10, "SHIP_SMITH_FIRE");
 	TA_Smith_Anvil	(08,10,08,20, "SHIP_SMITH_ANVIL");

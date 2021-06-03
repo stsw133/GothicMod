@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_IceWave
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_IceWave
+///******************************************************************************************
 
 const int SPL_Cost_IceWave				=	120;
 const int SPL_Damage_IceWave			=	60;
 
-//******************************************************************************************
-INSTANCE Spell_IceWave (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_IceWave (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_IceWave;
@@ -16,7 +16,7 @@ INSTANCE Spell_IceWave (C_Spell_Proto)
 
 func int Spell_Logic_IceWave (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceWave/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceWave/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_IceWave)
 	{
 		return SPL_SENDCAST;
@@ -29,11 +29,11 @@ func int Spell_Logic_IceWave (var int manaInvested)
 
 func void Spell_Cast_IceWave()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceWave/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_IceWave/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_IceWave/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_IceWave)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_IceWave;
 	};

@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Bones_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Bones_EXIT_Condition;
 	information	= DIA_Addon_Bones_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Bones_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Bones_EXIT_Info()
@@ -42,7 +42,7 @@ FUNC INT DIA_Addon_Bones_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Bones_Anheuern_Info()
@@ -60,12 +60,12 @@ INSTANCE DIA_Addon_Bones_Hello(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Bones_Hello_Condition;
 	information	= DIA_Addon_Bones_Hello_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co s³ychaæ?";
 };                       
 FUNC INT DIA_Addon_Bones_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Bones_Hello_Info()
@@ -89,14 +89,14 @@ INSTANCE DIA_Addon_Bones_Train(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Bones_Train_Condition;
 	information	= DIA_Addon_Bones_Train_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mo¿esz mnie czegoœ nauczyæ?";
 };                       
 FUNC INT DIA_Addon_Bones_Train_Condition()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_Bones_Hello) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Bones_Hello) == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Bones_Train_Info()
@@ -114,14 +114,14 @@ INSTANCE DIA_Addon_Bones_Teacher(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Bones_Teacher_Condition;
 	information	= DIA_Addon_Bones_Teacher_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kto mo¿e mnie czegoœ nauczyæ?";
 };                       
 FUNC INT DIA_Addon_Bones_Teacher_Condition()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_Bones_Train) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Bones_Train) == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Bones_Teacher_Info()
@@ -134,7 +134,7 @@ FUNC VOID DIA_Addon_Bones_Teacher_Info()
 	AI_Output (other,self ,"DIA_Addon_Bones_Teacher_15_09"); //Kto jeszcze?
 	AI_Output (self ,other,"DIA_Addon_Bones_Teacher_01_10"); //Nie mam pojêcia. Nigdy nie interesowa³em siê innymi rzeczami.
 	AI_Output (self ,other,"DIA_Addon_Bones_Teacher_01_11"); //Wydaje mi siê jednak, ¿e Jack Aligator i Samuel mog¹ ci pokazaæ jak¹œ przydatn¹ sztuczkê.
-	Knows_HenrysEntertrupp = true;
+	Knows_HenrysEntertrupp = TRUE;
 	
 	Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 	B_LogEntry (Topic_Addon_PIR_Teacher,Log_Text_Addon_HenryTeach);
@@ -151,17 +151,17 @@ INSTANCE DIA_Addon_Bones_Francis(C_INFO)
 	nr			= 3;
 	condition	= DIA_Addon_Bones_Francis_Condition;
 	information	= DIA_Addon_Bones_Francis_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mo¿esz mi powiedzieæ o Francisie?";
 };                       
 FUNC INT DIA_Addon_Bones_Francis_Condition()
 {
-	if (Francis_ausgeschissen == false)
+	if (Francis_ausgeschissen == FALSE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Addon_Skip_GregsHut))
-		|| (Francis.aivar[AIV_TalkedToPlayer] == true)
+		|| (Francis.aivar[AIV_TalkedToPlayer] == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};	
 };
@@ -183,15 +183,15 @@ instance DIA_Addon_Bones_WantArmor(C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Bones_WantArmor_Condition;
 	information	= DIA_Addon_Bones_WantArmor_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Daj mi pancerz bandytów.";
 };                       
 FUNC INT DIA_Addon_Bones_WantArmor_Condition()
 {
-	if (Greg_GaveArmorToBones == true)
+	if (Greg_GaveArmorToBones == TRUE)
 	&& (MIS_Greg_ScoutBandits == 0)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -200,7 +200,7 @@ FUNC VOID DIA_Addon_Bones_WantArmor_Info()
 	AI_Output (other,self ,"DIA_Addon_Bones_WantArmor_15_00"); //Daj mi pancerz bandytów.
 	AI_Output (self ,other,"DIA_Addon_Bones_WantArmor_01_01"); //Wygl¹dam na wariata? Za coœ takiego Greg urwa³by mi g³owê!
 	AI_Output (self ,other,"DIA_Addon_Bones_WantArmor_01_02"); //Nawet specjalnie zaznaczy³, ¿ebym nie dawa³ nikomu tego pancerza bez jego wyraŸnego rozkazu.
-	if (GregIsBack == true)
+	if (GregIsBack == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_Bones_WantArmor_01_03"); //Nie mogê ci go daæ. Na pewno nie teraz, gdy Greg ju¿ wróci³.
 	};
@@ -217,14 +217,14 @@ instance DIA_Addon_Bones_GiveArmor(C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Bones_GiveArmor_Condition;
 	information	= DIA_Addon_Bones_GiveArmor_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Greg kaza³ wydaæ mi pancerz.";
 };                       
 FUNC INT DIA_Addon_Bones_GiveArmor_Condition()
 {
 	if (MIS_Greg_ScoutBandits == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Bones_GiveArmor_Info()
@@ -235,12 +235,13 @@ func VOID DIA_Addon_Bones_GiveArmor_Info()
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_03"); //Wolê ju¿ najciê¿sz¹ robotê u Grega.
 	AI_Output (other,self ,"DIA_Addon_Bones_GiveArmor_15_04"); //Pancerz.
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_05"); //A, tak. Oto on.
-	B_GiveInvItems (self,other,ItAr_BANDIT,1);
+	B_GiveInvItems (self,other,ItAr_BDT_M,1);
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_06"); //Uwa¿aj na siebie. I lepiej nie rób g³upich ¿artów pod nosem tych bandziorów.
 	self.flags = 0;
 	PIR_1320_Addon_Greg.flags = 0;
 	
 	B_LogEntry (TOPIC_Addon_BDTRuestung,"Rozkaz Grega potrafi czyniæ cuda. Mam zbrojê bandytów!"); 
 	
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Bones_GetBDTArmor);
 };
+

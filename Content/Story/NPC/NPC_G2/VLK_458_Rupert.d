@@ -1,39 +1,38 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_458_Rupert (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Rupert";
 	guild 								=	GIL_VLK;
 	id 									=	458;
 	voice 								=	3;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Dagger);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	CreateInvItems (self, ItFo_Apple, 12);
 	CreateInvItems (self, ItFo_Bread, 5);
 	CreateInvItems (self, ItFo_Milk, 5);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal27, 0, ITAR_Vlk_L_04);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_458;
 };
 
-FUNC VOID Rtn_Start_458()
+func void Rtn_Start_458()
 {
 	TA_Stand_Sweeping	(05,00,06,00, "NW_CITY_MAINSTREET_02");
 	TA_Stand_WP		 	(06,00,09,30, "NW_CITY_MERCHANT_TRADE_01");

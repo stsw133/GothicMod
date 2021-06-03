@@ -1,19 +1,19 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Warg (C_Npc)
+///******************************************************************************************
+prototype Mst_Default_Warg (C_Npc)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Warg";
 	guild								=	GIL_WOLF;
 	aivar[AIV_MM_REAL_ID]				=	ID_WARG;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 18);
 
-	// ------ FT ------
+	/// ------ FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
 
-	// ------ Senses & Ranges ------
+	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 
@@ -22,19 +22,19 @@ PROTOTYPE Mst_Default_Warg (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_Packhunter]			=	true;
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart] 			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Warg()
 {
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Warg_Body", self.aivar[AIV_BodyTex], DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
-//******************************************************************************************
-INSTANCE Warg (Mst_Default_Warg)
+///******************************************************************************************
+instance Warg (Mst_Default_Warg)
 {
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Warg();

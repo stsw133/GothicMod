@@ -1,34 +1,33 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_4002_Buergerin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Buergerin;
 	guild 								=	GIL_VLK;
 	id 									=	4002;
 	voice 								=	17;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Babe1", FaceBabe_Normal11, Teeth_Pretty, ITAR_WD_M_02);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_4002;
 };
 
-FUNC VOID Rtn_Start_4002()
+func void Rtn_Start_4002()
 {
 	TA_Cook_Stove 		(06,00,08,00, "NW_CITY_RICHTER_COOK");
     TA_Stand_Sweeping	(08,00,10,00, "NW_CITY_UPTOWN_JUDGE_02");

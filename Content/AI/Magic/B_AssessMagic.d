@@ -3,67 +3,54 @@
 ///******************************************************************************************
 func void B_AssessMagic()
 {
+	/// ------ Bei ALLEN Spells. Damit andere NSCs den Angriff wahrnehmen können ------
 	if (Npc_GetLastHitSpellCat(self) == SPELL_BAD)
 	{
 		Npc_SendPassivePerc	(self, PERC_ASSESSFIGHTSOUND, self, other);
 	};
 	
-	/// ------ Mage ------
-	if (Npc_GetLastHitSpellID(self) == SPL_MysRoot)
-	{
-		Npc_ClearAIQueue	(self);
-		B_ClearPerceptions	(self);
-		AI_StartState		(self, ZS_MysRoot, 0, "");
-		return;
-	};
-	
-	if (Npc_GetLastHitSpellID(self) == SPL_GeoQuake)
-	{
-        if (self.guild < GIL_SEPERATOR_HUM)
-		{
-            Npc_ClearAIQueue(self);
-            B_ClearPerceptions(self);
-			
-            Npc_SetTarget(self, other);
-            B_AssessDamage();
-        };
-		
-        Npc_SetTarget(self, other);
-        Npc_SetTempAttitude(self, ATT_HOSTILE);
-        return;
-    };
-	
-	/*
+	/// ------ Whirlwind ------
 	if (Npc_GetLastHitSpellID(self) == SPL_Whirlwind)
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-//		AI_StartState		(self, ZS_Whirlwind, 0, "");
+		AI_StartState		(self, ZS_Whirlwind, 0, "");
 		return;
 	};
+	/// ---- SuckEnergy ----
 	if (Npc_GetLastHitSpellID(self) == SPL_SuckEnergy)
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-//		AI_StartState		(self, ZS_SuckEnergy, 0, "");
+		AI_StartState		(self, ZS_SuckEnergy, 0, "");
 		return;
 	};
-	
+	/// ---- GreenTentacle ----
+	if (Npc_GetLastHitSpellID(self) == SPL_Greententacle)	
+	{
+		Npc_ClearAIQueue	(self);
+		B_ClearPerceptions	(self);
+		AI_StartState		(self, ZS_Greententacle, 0, "");
+		return;
+	};
+	/// ---- Swarm ----
 	if (Npc_GetLastHitSpellID(self) == SPL_Swarm)
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-//		AI_StartState		(self, ZS_Swarm, 0, "");
+		AI_StartState		(self, ZS_Swarm, 0, "");
 		return;
 	};
+	/// ------ IceCube, IceWave ------
 	if (Npc_GetLastHitSpellID(self) == SPL_IceCube)
 	|| (Npc_GetLastHitSpellID(self) == SPL_IceWave)
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-//		AI_StartState		(self, ZS_MagicFreeze, 0, "");
+		AI_StartState		(self, ZS_MagicFreeze, 0, "");
 		return;
 	};
+	/// ------ ChargeZap ------
 	if (Npc_GetLastHitSpellID(self) == SPL_ChargeZap)
 	{
 		Npc_ClearAIQueue	(self);
@@ -71,18 +58,19 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_ShortZapped, 0, "");
 		return;
 	};
-	if (Npc_GetLastHitSpellID(self) == SPL_Fear)
+	/// ------ Fear ------
+	if (Npc_GetLastHitSpellID(self) == SPL_Fear)	
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-		Npc_SetTarget		(self, other);
+		Npc_SetTarget		(self,	other);
 		
 		if (self.guild < GIL_SEPERATOR_HUM)
 		&& (self.guild != GIL_KDF)
 		&& (self.guild != GIL_PAL)
 		{
 			//AI_StartState	(self, ZS_Flee, 0, "");
-//			AI_StartState	(self, ZS_MagicFlee, 0, "");
+			AI_StartState	(self, ZS_MagicFlee, 0, "");
 			return;
 		}
 		else if (self.guild > GIL_SEPERATOR_HUM)
@@ -96,13 +84,15 @@ func void B_AssessMagic()
 			return;
 		};
 	};
-	if (Npc_GetLastHitSpellID(self) == SPL_FireRain)		
+	/// Firespells senden ein ASSESSMAGIC bei Kollision
+	if (Npc_GetLastHitSpellID(self) == SPL_Firerain)		
 	{	
 		Npc_ClearAIQueue	(self);
-//		AI_StartState		(self, ZS_MagicBurnShort, 0, "");
+		//B_ClearPerceptions	(self);	//Sonst reagiert der NPC nicht!
+		AI_StartState		(self, ZS_MagicBurnShort, 0, "");
 		return;
 	};
-	*/
 };
 
+///******************************************************************************************
 const func PLAYER_PERC_ASSESSMAGIC = B_AssessMagic; 	

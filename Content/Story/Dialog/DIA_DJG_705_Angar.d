@@ -7,13 +7,13 @@ INSTANCE DIA_AngarDJG_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_AngarDJG_EXIT_Condition;
 	information = DIA_AngarDJG_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_AngarDJG_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_AngarDJG_EXIT_Info()
@@ -36,7 +36,7 @@ instance DIA_AngarDJG_HALLO		(C_INFO)
 
 func int DIA_AngarDJG_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_AngarDJG_HALLO_Info ()
@@ -55,7 +55,7 @@ func void DIA_AngarDJG_HALLO_Info ()
 ///////////////////////////////////////////////////////////////////////
 func void B_SCTellsAngarAboutMadPsi ()
 {	
-	if (Angar_KnowsMadPsi == false)
+	if (Angar_KnowsMadPsi == FALSE)
 	{
 		AI_Output			(other, self, "DIA_Angar_B_SCTellsAngarAboutMadPsi_15_00"); //Bractwo Œni¹cego pad³o ofiar¹ si³ ciemnoœci.
 		AI_Output			(other, self, "DIA_Angar_B_SCTellsAngarAboutMadPsi_15_01"); //Twoi dawni kompani z obozu na bagnie snuj¹ siê teraz po bezdro¿ach, atakuj¹c wszystko, co im stanie na drodze.
@@ -65,12 +65,12 @@ func void B_SCTellsAngarAboutMadPsi ()
 
 func void B_SCTellsAngarAboutMadPsi2 ()
 {	
-	if (Angar_KnowsMadPsi == false)
+	if (Angar_KnowsMadPsi == FALSE)
 	{
 		AI_Output			(other, self, "DIA_Angar_B_SCTellsAngarAboutMadPsi2_15_00"); //Przeszli na stronê nieprzyjaciela, staj¹c siê bezdusznymi narzêdziami z³a.
 		AI_Output			(self, other, "DIA_Angar_B_SCTellsAngarAboutMadPsi2_04_01"); //Bogowie! Dlaczego by³em taki zaœlepiony?! To siê ju¿ nigdy nie powtórzy. Przysiêgam!
-		B_GivePlayerXP(XP_BONUS_3);
-		Angar_KnowsMadPsi = true;
+		B_GivePlayerXP (XP_Angar_KnowsMadPsi);
+		Angar_KnowsMadPsi = TRUE;
 	};
 };
 
@@ -92,7 +92,7 @@ func int DIA_Angar_WIEKOMMSTDUHIERHER_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_AngarDJG_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -111,7 +111,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_Info ()
 	Info_AddChoice	(DIA_Angar_WIEKOMMSTDUHIERHER, DIALOG_BACK, DIA_Angar_WIEKOMMSTDUHIERHER_gehen );
 	Info_AddChoice	(DIA_Angar_WIEKOMMSTDUHIERHER, "Gdzie dok³adnie zgubi³eœ ten amulet?", DIA_Angar_WIEKOMMSTDUHIERHER_amulett );
 
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 	Info_AddChoice	(DIA_Angar_WIEKOMMSTDUHIERHER, "Bractwo œni¹cego pad³o ofiar¹ si³ ciemnoœci.", DIA_Angar_WIEKOMMSTDUHIERHER_andere );
 	}
@@ -120,7 +120,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_Info ()
 	Info_AddChoice	(DIA_Angar_WIEKOMMSTDUHIERHER, "A co siê sta³o z pozosta³ymi cz³onkami Bractwa?", DIA_Angar_WIEKOMMSTDUHIERHER_andere );
 	};
 
-	if (DJG_Angar_SentToStones == false)
+	if (DJG_Angar_SentToStones == FALSE)
 	{
 	Info_AddChoice	(DIA_Angar_WIEKOMMSTDUHIERHER, "Co zamierzasz teraz robiæ?", DIA_Angar_WIEKOMMSTDUHIERHER_nun );
 	};
@@ -129,7 +129,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_amulett ()
 {
 	AI_Output			(other, self, "DIA_Angar_WIEKOMMSTDUHIERHER_amulett_15_00"); //Gdzie dok³adnie zgubi³eœ ten amulet?
 
-	if (DJG_Angar_SentToStones ==false)
+	if (DJG_Angar_SentToStones ==FALSE)
 	{
 		AI_Output			(self, other, "DIA_Angar_WIEKOMMSTDUHIERHER_amulett_04_01"); //Gdzieœ na po³udniu, zanim trafi³em do zamku.
 		B_LogEntry (TOPIC_AngarsAmulett,"Prawdopodobnie amulet znajduje siê gdzieœ na po³udniu. Angar wybiera siê na poszukiwania zguby."); 
@@ -144,7 +144,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_amulett ()
 
 func void DIA_Angar_WIEKOMMSTDUHIERHER_andere ()
 {
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		B_SCTellsAngarAboutMadPsi ();
 	}
@@ -158,7 +158,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_andere ()
 	AI_Output			(self, other, "DIA_Angar_WIEKOMMSTDUHIERHER_andere_04_03"); //A¿ nagle nast¹pi³ koniec i wszyscy rozbiegli siê w ciemn¹ noc, wrzeszcz¹c jak opêtani.
 	AI_Output			(self, other, "DIA_Angar_WIEKOMMSTDUHIERHER_andere_04_04"); //Nigdy ju¿ ich nie zobaczy³em.
 	
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		B_SCTellsAngarAboutMadPsi2 ();
 	};
@@ -172,7 +172,7 @@ func void DIA_Angar_WIEKOMMSTDUHIERHER_nun ()
 	AI_Output			(self, other, "DIA_Angar_WIEKOMMSTDUHIERHER_nun_04_03"); //Ludzie mówi¹, ¿e wojownicy przybywaj¹ do Górniczej Doliny, by z nimi walczyæ.
 	AI_Output			(self, other, "DIA_Angar_WIEKOMMSTDUHIERHER_nun_04_04"); //Mo¿e siê do nich przy³¹czê?
 
-	Angar_willDJGwerden = true;
+	Angar_willDJGwerden = TRUE;
 
 };
 
@@ -191,16 +191,16 @@ instance DIA_Angar_SCTellsAngarAboutMadPsi2		(C_INFO)
 	condition	 = 	DIA_Angar_SCTellsAngarAboutMadPsi2_Condition;
 	information	 = 	DIA_Angar_SCTellsAngarAboutMadPsi2_Info;
 
-	description	 = 	"Bractwo œni¹cego pad³o ofiar¹ si³ ciemnoœci."; //Joly: falls erst nach DIA_Angar_WIEKOMMSTDUHIERHER  (SC_KnowsMadPsi == true)
+	description	 = 	"Bractwo œni¹cego pad³o ofiar¹ si³ ciemnoœci."; //Joly: falls erst nach DIA_Angar_WIEKOMMSTDUHIERHER  (SC_KnowsMadPsi == TRUE)
 };
 
 func int DIA_Angar_SCTellsAngarAboutMadPsi2_Condition ()
 {
-	if (SC_KnowsMadPsi == true)
-	&& (Angar_KnowsMadPsi == false)
+	if (SC_KnowsMadPsi == TRUE)
+	&& (Angar_KnowsMadPsi == FALSE)
 	&& (Npc_KnowsInfo(other, DIA_Angar_WIEKOMMSTDUHIERHER))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -228,7 +228,7 @@ func int DIA_Angar_FOUNDAMULETT_Condition ()
 	if 	(Npc_HasItems (other,ItAm_Mana_Angar_MIS))
 		&& (Npc_KnowsInfo(other, DIA_Angar_WIEKOMMSTDUHIERHER))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -239,8 +239,8 @@ func void B_AngarsAmulettAbgeben()
 
 	B_GiveInvItems (other, self, ItAm_Mana_Angar_MIS,1);
 	
-	DJG_AngarGotAmulett = true;
-	B_GivePlayerXP(XP_BONUS_8); 
+	DJG_AngarGotAmulett = TRUE;
+	B_GivePlayerXP (XP_AngarDJGUndeadMage); 
 };
 
 func void DIA_Angar_FOUNDAMULETT_Info ()
@@ -267,7 +267,7 @@ func void DIA_Angar_FOUNDAMULETT_nun ()
 	AI_Output			(self, other, "DIA_Angar_FOUNDAMULETT_nun_04_02"); //Kto wie - mo¿e siê jeszcze kiedyœ spotkamy. Bywaj!
 
 	AI_StopProcessInfos (self);
-	if 	((Npc_GetDistToWP(self,"OC_TO_MAGE")<1000) == false) //Joly: Damit Angar nicht am OC Tor rumkronkelt, wenn er noch im OC ist.
+	if 	((Npc_GetDistToWP(self,"OC_TO_MAGE")<1000) == FALSE) //Joly: Damit Angar nicht am OC Tor rumkronkelt, wenn er noch im OC ist.
 	{ 
 		Npc_ExchangeRoutine	(self,"LeavingOW");
 	};
@@ -289,9 +289,9 @@ instance DIA_Angar_DJG_ANWERBEN		(C_INFO)
 func int DIA_Angar_DJG_ANWERBEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Angar_WIEKOMMSTDUHIERHER))
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -301,14 +301,14 @@ func void DIA_Angar_DJG_ANWERBEN_Info ()
 	AI_Output			(self, other, "DIA_Angar_DJG_ANWERBEN_04_01"); //Czemu nie. ¯adna pomoc nie zaszkodzi.
 
 
-	if (DJG_Angar_SentToStones == false)
+	if (DJG_Angar_SentToStones == FALSE)
 		{
 		Info_AddChoice	(DIA_Angar_DJG_ANWERBEN, "Muszê ju¿ iœæ.", DIA_Angar_DJG_ANWERBEN_gehen );
 		Info_AddChoice	(DIA_Angar_DJG_ANWERBEN, "A gdzie zamierzasz szukaæ?", DIA_Angar_DJG_ANWERBEN_wo );
 		Info_AddChoice	(DIA_Angar_DJG_ANWERBEN, "Kiedy zamierzasz wyruszyæ?", DIA_Angar_DJG_ANWERBEN_wann );
 		};
 	
-	if (Angar_willDJGwerden == true)
+	if (Angar_willDJGwerden == TRUE)
 		{
 		Info_AddChoice	(DIA_Angar_DJG_ANWERBEN, "A co z ³owcami smoków?", DIA_Angar_DJG_ANWERBEN_DJG );
 		};
@@ -362,10 +362,10 @@ func int DIA_AngarDJG_WASMACHSTDU_Condition ()
 	if 	(
 		(Npc_GetDistToWP(self,"OW_DJG_WATCH_STONEHENGE_01")<8000) 
 		&&	(Npc_KnowsInfo(other, DIA_Angar_DJG_ANWERBEN)) 
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		)
 			{
-				return true;
+				return TRUE;
 			};
 };
 
@@ -378,7 +378,7 @@ func void DIA_AngarDJG_WASMACHSTDU_Info ()
 	AI_Output			(self, other, "DIA_AngarDJG_WASMACHSTDU_04_04"); //To kryjówka mrocznej, z³owrogiej si³y, której poddani nawiedzaj¹ nasz œwiat.
 	AI_Output			(self, other, "DIA_AngarDJG_WASMACHSTDU_04_05"); //Jestem prawie pewien, ¿e mój amulet jest gdzieœ tutaj.
 
-	if (Angar_willDJGwerden == true)
+	if (Angar_willDJGwerden == TRUE)
 	{
 	Info_AddChoice	(DIA_AngarDJG_WASMACHSTDU, "Rozmawia³eœ ju¿ z ³owcami smoków?", DIA_AngarDJG_WASMACHSTDU_DJG );
 	};
@@ -407,9 +407,9 @@ instance DIA_AngarDJG_WHATSINTHERE		(C_INFO)
 func int DIA_AngarDJG_WHATSINTHERE_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_AngarDJG_WASMACHSTDU))
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -440,9 +440,9 @@ instance DIA_AngarDJG_WANTTOGOINTHERE		(C_INFO)
 func int DIA_AngarDJG_WANTTOGOINTHERE_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_AngarDJG_WHATSINTHERE))
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -460,9 +460,9 @@ func void DIA_AngarDJG_WANTTOGOINTHERE_Info ()
 	else
 	{
 		Npc_ExchangeRoutine	(self,"Angriff");
-		DJG_AngarAngriff = true; 
+		DJG_AngarAngriff = TRUE; 
 	};
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -474,19 +474,19 @@ instance DIA_AngarDJG_UndeadMageDead		(C_INFO)
 	nr		 = 	13;
 	condition	 = 	DIA_AngarDJG_UndeadMageDead_Condition;
 	information	 = 	DIA_AngarDJG_UndeadMageDead_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_AngarDJG_UndeadMageDead_Condition ()
 {
 	if 	(
 		(Npc_GetDistToWP(self,"OW_UNDEAD_DUNGEON_02")<1000) 
-		&& (DJG_AngarAngriff == true)
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarAngriff == TRUE)
+		&& (DJG_AngarGotAmulett == FALSE)
 		&& (Npc_IsDead(Skeleton_Mage_Angar))
 		)
 			{
-				return true;
+				return TRUE;
 			};
 };
 
@@ -494,7 +494,7 @@ func void DIA_AngarDJG_UndeadMageDead_Info ()
 {
 	AI_Output			(self, other, "DIA_AngarDJG_UndeadMageDead_04_00"); //Tylko... œmieræ i zniszczenie. Muszê siê st¹d wydostaæ!
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"RunToEntrance");
 };
 
@@ -507,7 +507,7 @@ instance DIA_AngarDJG_UNDEADMAGECOMES		(C_INFO)
 	nr		 = 	13;
 	condition	 = 	DIA_AngarDJG_UNDEADMAGECOMES_Condition;
 	information	 = 	DIA_AngarDJG_UNDEADMAGECOMES_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_AngarDJG_UNDEADMAGECOMES_Condition ()
@@ -516,12 +516,12 @@ func int DIA_AngarDJG_UNDEADMAGECOMES_Condition ()
 	if 	(
 		(Npc_GetDistToWP(self,"OW_PATH_3_13")<500) 				
 		&&	(Npc_KnowsInfo(other, DIA_AngarDJG_WANTTOGOINTHERE))
-		&& ((Npc_KnowsInfo(other, DIA_AngarDJG_UndeadMageDead))==false)
-		&& (DJG_AngarGotAmulett == false)
+		&& ((Npc_KnowsInfo(other, DIA_AngarDJG_UndeadMageDead))==FALSE)
+		&& (DJG_AngarGotAmulett == FALSE)
 		&& (Npc_IsDead(Skeleton_Mage_Angar))
 		)
 			{
-				return true;
+				return TRUE;
 			};
 };
 
@@ -552,11 +552,11 @@ func int DIA_Angar_WASISTLOS_Condition ()
 {
 	if 	(
 		(Npc_GetDistToWP(self,"OW_PATH_3_STONES")<1000) 				
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		&& (Npc_IsDead(Skeleton_Mage_Angar))
 		)	
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -567,7 +567,7 @@ func void DIA_Angar_WASISTLOS_Info ()
 	AI_Output			(self, other, "DIA_Angar_WASISTLOS_04_02"); //Coœ mi mówi, ¿e nie wyjdê z tego ¿ywy.
 	AI_Output			(self, other, "DIA_Angar_WASISTLOS_04_03"); //Nie potrafiê tego wyt³umaczyæ, ale...
 	
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Angar_WASISTLOS_04_04"); //Muszê czym prêdzej opuœciæ to przeklête miejsce, zanim podzielê los moich dawnych kompanów.
 	}
@@ -580,7 +580,7 @@ func void DIA_Angar_WASISTLOS_Info ()
 
 	B_LogEntry (TOPIC_Dragonhunter,"Angar odszed³. Przez tych wszystkich o¿ywieñców mia³ wra¿enie, jakby walczy³ ze swoimi w³asnymi ludŸmi.");
 			
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"LeavingOW");
 };
 
@@ -601,7 +601,7 @@ func int DIA_Angar_WHYAREYOUHERE_Condition ()
 {
 	if (Npc_GetDistToWP(self,"OW_CAVALORN_01")<1000) 				
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -612,7 +612,7 @@ func void DIA_Angar_WHYAREYOUHERE_Info ()
 	AI_Output			(self, other, "DIA_Angar_WHYAREYOUHERE_04_02"); //Odczekam trochê i spróbujê znowu. Zobaczymy siê po drugiej stronie!
 
 	B_LogEntry (TOPIC_Dragonhunter,"Znowu spotka³em Angara. Utkn¹³ w Górniczej Dolinie na dobre.");
-	B_GivePlayerXP(XP_BONUS_3); 
+	B_GivePlayerXP (XP_AngarDJGAgain); 
 	AI_StopProcessInfos (self);
 };
 
@@ -624,7 +624,7 @@ instance DIA_Angar_PERMKAP4		(C_INFO)
 	npc		 = 	DJG_705_Angar;
 	condition	 = 	DIA_Angar_PERMKAP4_Condition;
 	information	 = 	DIA_Angar_PERMKAP4_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Nie lubiê zostawiaæ ciê bez towarzystwa.";
 };
@@ -633,7 +633,7 @@ func int DIA_Angar_PERMKAP4_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Angar_WHYAREYOUHERE))
 		{
-				return true;
+				return TRUE;
 		};
 };
 

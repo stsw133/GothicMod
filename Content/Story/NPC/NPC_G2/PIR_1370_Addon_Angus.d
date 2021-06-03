@@ -1,37 +1,36 @@
-//******************************************************************************************
-INSTANCE PIR_1370_Addon_Angus (Npc_Default)
+///******************************************************************************************
+instance PIR_1370_Addon_Angus (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Angus";
 	guild 								=	GIL_PIR;
 	id 									=	1370;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Addon_PIR2hAxe);
 
-	// ------ Inventory ------
-	CreateInvItem (self, ItRi_Morgan);
+	/// ------ Inventory ------
+	CreateInvItem (self, ItRi_Addon_MorgansRing_Mission);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal48, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1.3);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1370;
 };
 
-FUNC VOID Rtn_Start_1370()
+func void Rtn_Start_1370()
 {
 	TA_Smalltalk	(05,00,20,00, "ADW_PIRATECAMP_WATERHOLE_CAVE");
 	TA_Smalltalk	(20,00,05,00, "ADW_PIRATECAMP_WATERHOLE_CAVE");

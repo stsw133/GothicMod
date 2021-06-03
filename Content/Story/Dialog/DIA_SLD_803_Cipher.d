@@ -8,13 +8,13 @@ INSTANCE DIA_Cipher_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Cipher_EXIT_Condition;
 	information	= DIA_Cipher_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Cipher_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Cipher_EXIT_Info()
@@ -32,13 +32,13 @@ instance DIA_Cipher_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Cipher_Hello_Condition;
 	information	= DIA_Cipher_Hello_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jak leci?";
 };                       
 
 FUNC INT DIA_Cipher_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Cipher_Hello_Info()
@@ -59,7 +59,7 @@ instance DIA_Cipher_TradeWhat (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_TradeWhat_Condition;
 	information	= DIA_Cipher_TradeWhat_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A w czym teraz siedzisz?";
 };                       
 
@@ -67,7 +67,7 @@ FUNC INT DIA_Cipher_TradeWhat_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Cipher_Hello))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -82,6 +82,7 @@ FUNC VOID DIA_Cipher_TradeWhat_Info()
 	Log_CreateTopic (Topic_CipherPaket,LOG_MISSION);
 	Log_SetTopicStatus (Topic_CipherPaket,LOG_RUNNING);
 	B_LogEntry (Topic_CipherPaket, "Najemnik Cipher straci³ paczkê bagiennego ziela.");
+	
 	
 	if (!Npc_IsDead (Bodo))
 	{
@@ -102,7 +103,7 @@ instance DIA_Cipher_DoWithThief (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_DoWithThief_Condition;
 	information	= DIA_Cipher_DoWithThief_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co w takim razie zrobisz ze z³odziejem?";
 };                       
 
@@ -110,7 +111,7 @@ FUNC INT DIA_Cipher_DoWithThief_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Cipher_TradeWhat))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -136,7 +137,7 @@ instance DIA_Cipher_WannaJoin (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_WannaJoin_Condition;
 	information	= DIA_Cipher_WannaJoin_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcê do³¹czyæ do ludzi Lee!";
 };                       
 
@@ -145,7 +146,7 @@ FUNC INT DIA_Cipher_WannaJoin_Condition()
 	if (Npc_KnowsInfo (other, DIA_Cipher_Hello))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -171,7 +172,7 @@ instance DIA_Cipher_YesJoin (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_YesJoin_Condition;
 	information	= DIA_Cipher_YesJoin_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Tak! Bez wzglêdu na wszystko!";
 };                       
 
@@ -180,7 +181,7 @@ FUNC INT DIA_Cipher_YesJoin_Condition()
 	if (Npc_KnowsInfo (other, DIA_Cipher_WannaJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -209,7 +210,7 @@ instance DIA_Cipher_Joints (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_Joints_Condition;
 	information	= DIA_Cipher_Joints_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jeœli chodzi o to bagienne ziele...";
 };                       
 
@@ -217,7 +218,7 @@ FUNC INT DIA_Cipher_Joints_Condition()
 {
 	if (MIS_Cipher_BringWeed == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -267,7 +268,8 @@ func void DIA_Cipher_Joints_Success()
 		};
 		MIS_Cipher_BringWeed = LOG_SUCCESS;
 		B_LogEntry (TOPIC_SLDRespekt,"Cipher poprze mnie, jeœli zechcê siê przy³¹czyæ do najemników.");
-		B_GivePlayerXP(XP_BONUS_1);
+		B_GivePlayerXP (XP_CipherWeed);
+		
 	}
 	else
 	{
@@ -293,16 +295,16 @@ instance DIA_Cipher_TRADE (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_TRADE_Condition;
 	information	= DIA_Cipher_TRADE_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Poka¿ mi swoje towary.";
-	trade		= true;
+	trade		= TRUE;
 };                       
 
 FUNC INT DIA_Cipher_TRADE_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Cipher_TradeWhat))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -329,16 +331,16 @@ instance DIA_Cipher_DarDieb (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_DarDieb_Condition;
 	information	= DIA_Cipher_DarDieb_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiem, kto zabra³ twoje ziele.";
 };                       
 
 FUNC INT DIA_Cipher_DarDieb_Condition()
 {
-	if ( (Dar_Dieb == true) || (Dar_Verdacht == true) )
+	if ( (Dar_Dieb == TRUE) || (Dar_Verdacht == TRUE) )
 	&& (!Npc_IsDead (Dar))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -354,7 +356,7 @@ FUNC VOID DIA_Cipher_DarDieb_Info()
 	AI_Output (self, other, "DIA_Cipher_DarDieb_07_07"); //SKASUJÊ GNOJKA!
 	
 	AI_StopProcessInfos(self);
-	other.aivar[AIV_INVINCIBLE] = false;
+	other.aivar[AIV_INVINCIBLE] = FALSE;
 	B_Attack (self, Dar, AR_NONE, 0);
 };
 
@@ -368,15 +370,15 @@ instance DIA_Cipher_DarLOST (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_DarLOST_Condition;
 	information	= DIA_Cipher_DarLOST_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Naprawdê da³eœ Darowi popaliæ... czujesz siê teraz lepiej?";
 };                       
 
 FUNC INT DIA_Cipher_DarLOST_Condition()
 {
-	if (Dar_LostAgainstCipher == true)
+	if (Dar_LostAgainstCipher == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -387,7 +389,7 @@ FUNC VOID DIA_Cipher_DarLOST_Info()
 	AI_Output (other, self, "DIA_Cipher_DarLOST_15_02"); //Chyba nie dla NIEGO...
 	AI_Output (self, other, "DIA_Cipher_DarLOST_07_03"); //Ten ma³y ¿ebrak nie ma po co przeszukiwaæ mojej skrzyni!
 	
-	B_GivePlayerXP(XP_Ambient*2);
+	B_GivePlayerXP ((XP_Ambient)*2);
 };
 
 // ************************************************************
@@ -400,7 +402,7 @@ instance DIA_Cipher_KrautPaket (C_INFO)
 	nr			= 2;
 	condition	= DIA_Cipher_KrautPaket_Condition;
 	information	= DIA_Cipher_KrautPaket_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy ta paczka bagiennego ziela przypadkiem nie nale¿y do ciebie?";
 };                       
 
@@ -409,7 +411,7 @@ FUNC INT DIA_Cipher_KrautPaket_Condition()
 	if (Npc_HasItems (other, ItMi_HerbPaket) > 0)
 	&& (MIS_Cipher_Paket == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -424,12 +426,12 @@ FUNC VOID DIA_Cipher_KrautPaket_Info()
 	AI_Output (self, other, "DIA_Cipher_KrautPaket_07_04"); //Masz, weŸ to jako nagrodê. Dobrej zabawy!
 	B_GiveInvItems (self, other, itmi_gold, 200);
 	B_GiveInvItems (self, other, itmi_joint, 10);
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Cipher_KrautPaket);
 	
 	AI_Output (self, other, "DIA_Cipher_KrautPaket_07_05"); //Najpierw pozwól, ¿e sobie skrêcê...
 	CreateInvItems (self, itmi_joint, 40);
 	Npc_RemoveInvItems (self, ItMi_HerbPaket, 1);
 	
 	MIS_Cipher_Paket = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_CipherPaket);
 };

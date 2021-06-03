@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Juan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Juan_EXIT_Condition;
 	information = DIA_Addon_Juan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Juan_EXIT_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Addon_Juan_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Juan_HI   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Juan_HI_Condition;
 	information = DIA_Addon_Juan_HI_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Addon_Juan_HI_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Addon_Juan_HI_Info()
 {	
@@ -56,15 +56,15 @@ INSTANCE DIA_Addon_Juan_Losung   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Juan_Losung_Condition;
 	information = DIA_Addon_Juan_Losung_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Podobno masz wiele ciekawych rzeczy...";
 };
 FUNC INT DIA_Addon_Juan_Losung_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Juan_HI)
-	&& ( (Tom_tells == true) || (MIS_Huno_Stahl == LOG_RUNNING) )
+	&& ( (Tom_tells == TRUE) || (MIS_Huno_Stahl == LOG_RUNNING) )
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Juan_Losung_Info()
@@ -86,14 +86,14 @@ INSTANCE DIA_Addon_Juan_AufsMaul (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Juan_AufsMaul_Condition;
 	information = DIA_Addon_Juan_AufsMaul_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie przychodzê od Estebana!";
 };
 FUNC INT DIA_Addon_Juan_AufsMaul_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Juan_Losung))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Juan_AufsMaul_Info()
@@ -115,18 +115,23 @@ INSTANCE DIA_Addon_Juan_Trade   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Juan_Trade_Condition;
 	information = DIA_Addon_Juan_Trade_Info;
-	permanent   = true;
-	trade		= true;
+	permanent   = TRUE;
+	trade		= TRUE;
 	description = DIALOG_TRADE;
 };
 FUNC INT DIA_Addon_Juan_Trade_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Juan_Losung)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Juan_Trade_Info()
 {	
 	B_Say (other,self,"$TRADE_3");
 };	
+
+
+
+
+

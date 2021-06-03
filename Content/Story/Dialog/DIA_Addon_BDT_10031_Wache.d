@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_BDT_10031_Wache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_10031_Wache_EXIT_Condition;
 	information = DIA_Addon_10031_Wache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_10031_Wache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10031_Wache_EXIT_Info()
 {	
@@ -27,12 +27,12 @@ INSTANCE DIA_Addon_BDT_10031_Wache_Scatty   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10031_Wache_Scatty_Condition;
 	information = DIA_Addon_10031_Wache_Scatty_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Addon_10031_Wache_Scatty_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10031_Wache_Scatty_Info()
 {	
@@ -53,23 +53,23 @@ INSTANCE DIA_Addon_BDT_10031_Wache_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10031_Wache_Hi_Condition;
 	information = DIA_Addon_10031_Wache_Hi_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Wszystko w porz¹dku?";
 };
 FUNC INT DIA_Addon_10031_Wache_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10031_Wache_Hi_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_BDT_10031_Wache_Hi_15_00");//Wszystko w porz¹dku?
 	
-	if (Sklaven_Flucht == true)
-	&& (Wache_Joker == false)
+	if (Sklaven_Flucht == TRUE)
+	&& (Wache_Joker == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_BDT_10031_Wache_Hi_06_01");//Oj, ch³opcze, niewolnicy na pewno siê spiesz¹.
 		AI_Output (self, other, "DIA_Addon_BDT_10031_Wache_Hi_06_02");//Gdy dowiedzieli siê, ¿e zostan¹ uwolnieni, kiedy tylko skoñcz¹, zaczêli uwijaæ siê jak mrówki!
-		Wache_Joker = true;
+		Wache_Joker = TRUE;
 	};
 	AI_Output (self, other, "DIA_Addon_BDT_10031_Wache_Hi_06_03");//Tak. Nie rób problemów, to wszystko bêdzie w porz¹dku.
 	

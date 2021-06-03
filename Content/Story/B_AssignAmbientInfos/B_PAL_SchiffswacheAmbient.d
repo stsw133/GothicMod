@@ -16,13 +16,13 @@ INSTANCE DIA_PAL_220_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_220_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_220_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_220_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_220_Schiffswache_EXIT_Info()
@@ -39,8 +39,8 @@ instance DIA_PAL_220_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_220_Schiffswache_Condition;
 	information	= 	DIA_PAL_220_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -65,13 +65,13 @@ INSTANCE DIA_PAL_221_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_221_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_221_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_221_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_221_Schiffswache_EXIT_Info()
@@ -88,8 +88,8 @@ instance DIA_PAL_221_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_221_Schiffswache_Condition;
 	information	= 	DIA_PAL_221_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -113,13 +113,13 @@ INSTANCE DIA_PAL_222_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_222_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_222_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_222_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_222_Schiffswache_EXIT_Info()
@@ -136,8 +136,8 @@ instance DIA_PAL_222_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_222_Schiffswache_Condition;
 	information	= 	DIA_PAL_222_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -161,13 +161,13 @@ INSTANCE DIA_PAL_223_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_223_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_223_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_223_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_223_Schiffswache_EXIT_Info()
@@ -184,8 +184,8 @@ instance DIA_PAL_223_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_223_Schiffswache_Condition;
 	information	= 	DIA_PAL_223_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -209,13 +209,13 @@ INSTANCE DIA_PAL_224_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_224_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_224_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_224_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_224_Schiffswache_EXIT_Info()
@@ -232,8 +232,8 @@ instance DIA_PAL_224_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_224_Schiffswache_Condition;
 	information	= 	DIA_PAL_224_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -257,13 +257,13 @@ INSTANCE DIA_PAL_225_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_225_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_225_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_225_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_225_Schiffswache_EXIT_Info()
@@ -280,8 +280,8 @@ instance DIA_PAL_225_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_225_Schiffswache_Condition;
 	information	= 	DIA_PAL_225_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -305,13 +305,13 @@ INSTANCE DIA_PAL_226_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_226_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_226_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_226_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_226_Schiffswache_EXIT_Info()
@@ -328,8 +328,8 @@ instance DIA_PAL_226_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_226_Schiffswache_Condition;
 	information	= 	DIA_PAL_226_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -353,13 +353,13 @@ INSTANCE DIA_PAL_227_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_227_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_227_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_227_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_227_Schiffswache_EXIT_Info()
@@ -376,8 +376,8 @@ instance DIA_PAL_227_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_227_Schiffswache_Condition;
 	information	= 	DIA_PAL_227_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 
@@ -401,13 +401,13 @@ INSTANCE DIA_PAL_228_Schiffswache_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_228_Schiffswache_EXIT_Condition;
 	information	= DIA_PAL_228_Schiffswache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_PAL_228_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_228_Schiffswache_EXIT_Info()
@@ -424,8 +424,8 @@ instance DIA_PAL_228_Schiffswache		(C_INFO)
 	nr		 	= 	1;
 	condition	= 	DIA_PAL_228_Schiffswache_Condition;
 	information	= 	DIA_PAL_228_Schiffswache_Info;
-	important   =	true;
-	permanent 	= 	true;
+	important   =	TRUE;
+	permanent 	= 	TRUE;
 
 };
 

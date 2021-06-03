@@ -3,8 +3,7 @@
 ///******************************************************************************************
 func int C_NpcHasAmbientNews (var C_NPC slf)
 {
-	/// ------ NSC petzt, hat aber hat keinen automatischen NEWS-Dialog ------
-	if (slf.aivar[AIV_NewsOverride] == true)
+	if (slf.aivar[AIV_NewsOverride])
 	{
 		return false;
 	};

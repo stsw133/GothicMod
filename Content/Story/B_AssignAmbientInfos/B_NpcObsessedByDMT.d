@@ -32,11 +32,11 @@ func void B_NpcClearObsessionByDMT (VAR C_NPC medium)	//Joly: WARUNG:  B_NpcClea
 {														
 	AI_StopProcessInfos	(medium);
 
-	if (NpcObsessedByDMT == true)
+	if (NpcObsessedByDMT == TRUE)
 		{
 			Npc_RemoveInvItems	(medium, ITAR_Dementor,	1);
 			AI_EquipBestArmor (medium);
-			NpcObsessedByDMT = false;
+			NpcObsessedByDMT = FALSE;
 			medium.flags = 0;
 			B_Attack (medium, other, AR_NONE, 1);
 		 	Wld_StopEffect("DEMENTOR_FX");
@@ -68,18 +68,18 @@ func void B_NpcClearObsessionByDMT (VAR C_NPC medium)	//Joly: WARUNG:  B_NpcClea
 
 func void B_NpcObsessedByDMT (VAR C_NPC medium)
 {
-	if (NpcObsessedByDMT == false)
+	if (NpcObsessedByDMT == FALSE)
 		{
-			Wld_PlayEffect("DEMENTOR_FX",  hero, hero, 0, 0, 0, false );
+			Wld_PlayEffect("DEMENTOR_FX",  hero, hero, 0, 0, 0, FALSE );
 			CreateInvItems 	(medium, ITAR_Dementor, 1 );	
 			AI_UnequipArmor	(medium);
 			AI_EquipArmor 	(medium, ITAR_Dementor);
 			AI_PlayAni (medium,"T_PRACTICEMAGIC5");	
-			Wld_PlayEffect("spellFX_Fear",  medium, medium, 0, 0, 0, false );
+			Wld_PlayEffect("spellFX_Fear",  medium, medium, 0, 0, 0, FALSE );
 
-			NpcObsessedByDMT = true;
+			NpcObsessedByDMT = TRUE;
 	
-			if (Npc_HasItems (medium,ITWR_DementorObsessionBook_MIS) == false) 
+			if (Npc_HasItems (medium,ITWR_DementorObsessionBook_MIS) == FALSE) 
 			{
 			CreateInvItems 	(medium, ITWR_DementorObsessionBook_MIS, 1 );	
 			};
@@ -89,7 +89,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			///////////////////////////////////////////////////////////////////////
 			if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Brutus))
 			{
-				if (MIS_OCGateOpen == true)
+				if (MIS_OCGateOpen == TRUE)
 					{
 						AI_Output	(self, other, "DIA_Brutus_ObsessedByDMT_19_00"); //Otwarcie wrót to wielka przys³uga dla naszego Mistrza, marny œmiertelniku. Na twym grobie postawimy kaplicê ku jego chwale.
 					}
@@ -98,7 +98,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 							B_DMTWurm ();
 					};
 				
-					NpcObsessedByDMT_Brutus = true;
+					NpcObsessedByDMT_Brutus = TRUE;
 			}
 
 			///////////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			else if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Engrom))
 			{
 				AI_Output	(self, other, "DIA_Engrom_ObsessedByDMT_19_00"); //Zawróæ. Póki jeszcze mo¿esz.
-				NpcObsessedByDMT_Engrom = true;
+				NpcObsessedByDMT_Engrom = TRUE;
 			}	
 
 			///////////////////////////////////////////////////////////////////////
@@ -116,7 +116,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			else if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Vino))
 			{
 				AI_Output	(self, other, "DIA_Vino_ObsessedByDMT_19_00"); //Wkrótce wszyscy bêd¹ naszymi s³ugami. Twoje magiczne sztuczki na nic siê nie zdadz¹.
-				NpcObsessedByDMT_Vino = true;
+				NpcObsessedByDMT_Vino = TRUE;
 			}		
 
 			///////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			else if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Malak))
 			{
 				AI_Output	(self, other, "DIA_Malak_ObsessedByDMT_19_00"); //Nigdy nie zdo³asz ocaliæ tej duszy, magu.
-				NpcObsessedByDMT_Malak = true;
+				NpcObsessedByDMT_Malak = TRUE;
 			}		
 		
 			///////////////////////////////////////////////////////////////////////
@@ -134,7 +134,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			else if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Sekob))
 			{
 				AI_Output	(self, other, "DIA_Sekob_ObsessedByDMT_19_00"); //Poddaj siê, magu, nie mo¿esz nas pokonaæ.
-				NpcObsessedByDMT_Sekob = true;
+				NpcObsessedByDMT_Sekob = TRUE;
 			}		
 	
 			///////////////////////////////////////////////////////////////////////
@@ -143,7 +143,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 			else if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Randolph))
 			{
 				AI_Output	(self, other, "DIA_Randolph_ObsessedByDMT_19_00"); //Nie zawracaj sobie g³owy s³abeuszami. Zniewolimy ich wszystkich.
-				NpcObsessedByDMT_Randolph = true;
+				NpcObsessedByDMT_Randolph = TRUE;
 			}	
 				
 			else //Joly: für alle anderen
@@ -151,15 +151,15 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 				B_DMTWurm ();
 				if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Bromor))
 				{
-					NpcObsessedByDMT_Bromor = true;
+					NpcObsessedByDMT_Bromor = TRUE;
 				};
 				if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Fernando))
 				{
-					NpcObsessedByDMT_Fernando = true;
+					NpcObsessedByDMT_Fernando = TRUE;
 				};
 			};
 			
-			B_GivePlayerXP(XP_BONUS_4);
+			B_GivePlayerXP (XP_BONUS_4);
 		}
 	else
 		{

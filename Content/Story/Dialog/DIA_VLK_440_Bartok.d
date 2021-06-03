@@ -7,13 +7,13 @@ INSTANCE DIA_Bartok_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Bartok_EXIT_Condition;
 	information = DIA_Bartok_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Bartok_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Bartok_EXIT_Info()
@@ -30,12 +30,12 @@ INSTANCE DIA_Bartok_Hallo (C_INFO)
 	nr			= 1;
 	condition	= DIA_Bartok_Hallo_Condition;
 	information	= DIA_Bartok_Hallo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co s³ychaæ?";
 };                       
 FUNC INT DIA_Bartok_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Bartok_Hallo_Info()
 {	
@@ -54,14 +54,14 @@ INSTANCE DIA_Bartok_Jaeger(C_INFO)
 	nr			= 2;
 	condition	= DIA_Bartok_Jaeger_Condition;
 	information	= DIA_Bartok_Jaeger_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Gdzie mogê znaleŸæ innych myœliwych?";
 };                       
 FUNC INT DIA_Bartok_Jaeger_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Bartok_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_Jaeger_Info()
@@ -91,7 +91,7 @@ func int DIA_Addon_Bartok_MissingPeople_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Bartok_Jaeger))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -133,7 +133,7 @@ INSTANCE DIA_Bartok_Bosper (C_INFO)
 	nr			= 3;
 	condition	= DIA_Bartok_Bosper_Condition;
 	information	= DIA_Bartok_Bosper_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Bosper mówi³, ¿e kiedyœ dla niego pracowa³eœ...";
 };                       
 FUNC INT DIA_Bartok_Bosper_Condition()
@@ -141,7 +141,7 @@ FUNC INT DIA_Bartok_Bosper_Condition()
 	if (Npc_KnowsInfo (other, DIA_Bosper_Bartok))
 	&& (Npc_KnowsInfo (other, DIA_Bartok_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_Bosper_Info()
@@ -170,28 +170,132 @@ INSTANCE DIA_Bartok_WannaLearn (C_INFO)
 	nr			= 4;
 	condition	= DIA_Bartok_WannaLearn_Condition;
 	information	= DIA_Bartok_WannaLearn_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Mo¿esz nauczyæ mnie czegoœ o polowaniu?";
 };                       
 FUNC INT DIA_Bartok_WannaLearn_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Bartok_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_WannaLearn_Info()
 {	
 	AI_Output (other ,self,"DIA_Bartok_WannaLearn_15_00"); //Mo¿esz nauczyæ mnie czegoœ o polowaniu?
 	AI_Output (self ,other,"DIA_Bartok_WannaLearn_04_01"); //Mogê ci pokazaæ, jak siê cicho skradaæ i pos³ugiwaæ siê ³ukiem.
-	if (Npc_GetTalentSkill(other,NPC_TALENT_HUNTING) == 0)
+	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Bartok_WannaLearn_04_02"); //Jeœli chcesz siê nauczyæ, jak zdejmowaæ skóry ze zwierz¹t, idŸ do Bospera. To on mnie tego nauczy³.
 	};
-
-	self.aivar[AIV_CanTeach] = true;
+	
+	Bartok_TeachPlayer = TRUE;
+	
 	Log_CreateTopic (Topic_CityTeacher, LOG_NOTE);
 	B_LogEntry (Topic_CityTeacher, "Bartok mo¿e mnie nauczyæ strzelania z ³uku oraz skradania siê.");
+};
+
+// *****************************************************
+//						TeachSneak
+// *****************************************************
+INSTANCE DIA_Bartok_TeachSneak (C_INFO)
+{
+	npc			= VLK_440_Bartok;
+	nr			= 4;
+	condition	= DIA_Bartok_TeachSneak_Condition;
+	information	= DIA_Bartok_TeachSneak_Info;
+	permanent	= TRUE;
+	description	= B_BuildLearnString ("Naucz mnie, jak siê nale¿y skradaæ!", B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1));
+};                       
+FUNC INT DIA_Bartok_TeachSneak_Condition()
+{
+	if (Bartok_TeachPlayer == TRUE)
+	&& (Npc_GetTalentSkill(other, NPC_TALENT_SNEAK) == 0)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Bartok_TeachSneak_Info()
+{	
+	AI_Output (other ,self,"DIA_Bartok_TeachSneak_15_00"); //Poka¿ mi, jak siê skradaæ.
+	
+	if (B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK))
+	{
+		AI_Output (self ,other,"DIA_Bartok_TeachSneak_04_01"); //Dobrze. Najpierw musisz nauczyæ siê odpowiednio roz³o¿yæ ciê¿ar swojego cia³a.
+		AI_Output (self ,other,"DIA_Bartok_TeachSneak_04_02"); //Aby to zrobiæ, ugnij kolana i zawsze stawiaj stopê, zaczynaj¹c od piêty.
+		AI_Output (self ,other,"DIA_Bartok_TeachSneak_04_03"); //Zanim ruszysz drug¹ nogê, znajdŸ dobre oparcie i przenieœ ca³y ciê¿ar cia³a na pierwsz¹ nogê.
+		AI_Output (self ,other,"DIA_Bartok_TeachSneak_04_04"); //Do wiêkszoœci stworzeñ nie uda ci siê podejœæ, chyba ¿e œpi¹. Zwierzêta po prostu ciê wyczuj¹.
+		AI_Output (self ,other,"DIA_Bartok_TeachSneak_04_05"); //A wiêc zawsze zwracaj uwagê, sk¹d wieje wiatr.
+	};
+};
+
+// *****************************************************
+//						TEACH
+// *****************************************************
+var int Bosper_MerkeBow;
+// ---------------------
+
+INSTANCE DIA_Bartok_Teach (C_INFO)
+{
+	npc			= VLK_440_Bartok;
+	nr			= 4;
+	condition	= DIA_Bartok_Teach_Condition;
+	information	= DIA_Bartok_Teach_Info;
+	permanent	= TRUE;
+	Description = "Chcia³bym lepiej strzelaæ z ³uku.";
+};                       
+FUNC INT DIA_Bartok_Teach_Condition()
+{
+	if (Bartok_TeachPlayer == TRUE)
+	{
+		return TRUE;
+	};
+};
+func VOID DIA_Bartok_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Bartok_TeachBow_15_00"); //Chcia³bym lepiej strzelaæ z ³uku.
+	AI_Output (self ,other,"DIA_Bartok_TeachBow_04_01"); //W porz¹dku, zobaczymy, czy uda mi siê ciebie czegoœ nauczyæ...
+	
+	Bosper_MerkeBow = other.HitChance[NPC_TALENT_BOW];
+	
+	Info_ClearChoices (DIA_Bartok_Teach);
+	
+	Info_AddChoice		(DIA_Bartok_Teach,DIALOG_BACK,DIA_Bartok_Teach_Back);
+	Info_AddChoice		(DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow1, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Bartok_Teach_BOW_1);
+	Info_AddChoice		(DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow5, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Bartok_Teach_BOW_5);
+};
+
+FUNC VOID DIA_Bartok_Teach_BACK()
+{
+	if (other.HitChance[NPC_TALENT_BOW] >= 60)
+	{
+		AI_Output(self,other,"DIA_Bartok_TeachBow_BACK_04_00"); //Teraz powinieneœ poszukaæ kogoœ, kto zna siê na tym lepiej ni¿ ja.
+	}
+	else if (Bosper_MerkeBow < other.HitChance[NPC_TALENT_BOW])
+	{
+		AI_Output(self,other,"DIA_Bartok_TeachBow_BACK_04_01"); //W porz¹dku, twoja celnoœæ ju¿ siê poprawi³a.
+	};
+	
+	Info_ClearChoices (DIA_Bartok_Teach);
+};
+
+FUNC VOID DIA_Bartok_Teach_Bow_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 60);
+	
+	Info_ClearChoices (DIA_Bartok_Teach);
+	Info_AddChoice	  (DIA_Bartok_Teach,DIALOG_BACK,DIA_Bartok_Teach_Back);
+	Info_AddChoice	  (DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Bartok_Teach_Bow_1);
+	Info_AddChoice	  (DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow5, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Bartok_Teach_BOW_5);
+};
+FUNC VOID DIA_Bartok_Teach_Bow_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 60);
+
+	Info_ClearChoices (DIA_Bartok_Teach);
+	Info_AddChoice	  (DIA_Bartok_Teach,DIALOG_BACK,DIA_Bartok_Teach_Back);
+	Info_AddChoice	  (DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Bartok_Teach_Bow_1);
+	Info_AddChoice	  (DIA_Bartok_Teach, B_BuildLearnString(PRINT_LearnBow5, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Bartok_Teach_BOW_5);	
 };
 
 // *****************************************************
@@ -207,20 +311,20 @@ INSTANCE DIA_Bartok_Zusammen (C_INFO)
 	nr			= 5;
 	condition	= DIA_Bartok_Zusammen_Condition;
 	information	= DIA_Bartok_Zusammen_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Czemu nie pójdziemy na polowanie razem?";
 };                       
 FUNC INT DIA_Bartok_Zusammen_Condition()
 {
-	if (Bartok_Bereit == false)
+	if (Bartok_Bereit == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Bartok_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_Zusammen_Info()
 {	
-	if (Bartok_Later == false)
+	if (Bartok_Later == FALSE)
 	{
 		AI_Output (other ,self,"DIA_Bartok_Zusammen_15_00"); //Czemu nie pójdziemy na polowanie razem?
 		AI_Output (self ,other,"DIA_Bartok_Zusammen_04_01"); //Hmmm. We dwóch jest bezpieczniej, to prawda...
@@ -228,9 +332,9 @@ FUNC VOID DIA_Bartok_Zusammen_Info()
 		AI_Output (self ,other,"DIA_Bartok_Zusammen_04_03"); //To znaczy, umiesz zdejmowaæ skórê ze zwierzêcia?
 	};
 	
-	if (Npc_GetTalentSkill(other,NPC_TALENT_HUNTING) > 0)
+	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == TRUE)
 	{
-		if (Bartok_Later == true)
+		if (Bartok_Later == TRUE)
 		{
 			AI_Output (self ,other,"DIA_Bartok_HuntNOW_04_01"); //Masz 50 sztuk z³ota?
 		}
@@ -243,7 +347,7 @@ FUNC VOID DIA_Bartok_Zusammen_Info()
 		
 		Info_ClearChoices (DIA_Bartok_Zusammen);
 		Info_AddChoice	  (DIA_Bartok_Zusammen, "Na razie...", DIA_Bartok_Zusammen_Later);
-		Info_AddChoice	  (DIA_Bartok_Zusammen, "Tak.", DIA_Bartok_Zusammen_Pay);
+		Info_AddChoice	  (DIA_Bartok_Zusammen, "Hier sind sie...", DIA_Bartok_Zusammen_Pay);
 	}
 	else
 	{
@@ -256,7 +360,7 @@ FUNC VOID DIA_Bartok_Zusammen_Info()
 func void DIA_Bartok_Zusammen_Later()
 {
 	AI_Output (other ,self,"DIA_Bartok_HuntNOW_Later_15_00"); //Na razie...
-	Bartok_Later = true;
+	Bartok_Later = TRUE;
 	Info_ClearChoices (DIA_Bartok_Zusammen);
 };
 
@@ -267,7 +371,7 @@ func void DIA_Bartok_Zusammen_Pay()
 	if (B_GiveInvItems (other, self, itmi_gold, 50))
 	{
 		AI_Output (other ,self,"DIA_Bartok_HuntNOW_GO_15_00"); //Proszê bardzo...
-		Bartok_Bereit = true;
+		Bartok_Bereit = TRUE;
 	}
 	else
 	{
@@ -288,14 +392,14 @@ INSTANCE DIA_Bartok_HuntNOW (C_INFO)
 	nr			= 5;
 	condition	= DIA_Bartok_HuntNOW_Condition;
 	information	= DIA_Bartok_HuntNOW_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "ChodŸmy na polowanie!";
 };                       
 FUNC INT DIA_Bartok_HuntNOW_Condition()
 {
-	if (Bartok_Bereit == true)
+	if (Bartok_Bereit == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_HuntNOW_Info()
@@ -303,15 +407,12 @@ FUNC VOID DIA_Bartok_HuntNOW_Info()
 	AI_Output (other ,self,"DIA_Bartok_HuntNOW_15_00"); //ChodŸmy na polowanie!
 	AI_Output (self ,other,"DIA_Bartok_HuntNOW_GO_04_01"); //W porz¹dku, idŸ za mn¹. Za po³udniow¹ bram¹ zaczyna siê las. Tam znajdziemy du¿o zwierz¹t.
 	AI_Output (self ,other,"DIA_Bartok_HuntNOW_GO_04_02"); //Pewnie wiêcej, ni¿ byœmy chcieli...
-	Bartok_Los = true;
-	
+	Bartok_Los = TRUE;
+		
 	AI_StopProcessInfos (self);
 	
-	self.aivar[AIV_PARTYMEMBER] = true;
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
 	Npc_ExchangeRoutine (self, "GUIDEMITTE");
-
-	CreateInvItem	(self, ITAR_LEATHER_L);
-	AI_EquipArmor	(self, ITAR_LEATHER_L);
 	
 	Wld_InsertNpc		(Wolf, 		"NW_FARM1_CITYWALL_FOREST_02"); 
 	Wld_InsertNpc		(Wolf, 		"NW_FARM1_CITYWALL_FOREST_02");
@@ -330,15 +431,15 @@ INSTANCE DIA_Bartok_ImWald (C_INFO)
 	nr			= 1;
 	condition	= DIA_Bartok_ImWald_Condition;
 	information	= DIA_Bartok_ImWald_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Bartok_ImWald_Condition()
 {
-	if (Bartok_Los == true)
+	if (Bartok_Los == TRUE)
 	&& (Npc_GetDistToWP (self, "NW_FARM1_CITYWALL_FOREST_03") < 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_ImWald_Info()
@@ -357,10 +458,8 @@ func void DIA_Bartok_ImWald_NachHause()
 	
 	Info_ClearChoices (DIA_Bartok_ImWald);
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine (self, "START");
-
-	AI_EquipArmor	(self, ITAR_VLK_L_03);
 };
 
 func void DIA_Bartok_ImWald_Weiter()
@@ -370,7 +469,7 @@ func void DIA_Bartok_ImWald_Weiter()
 	
 	if (!Npc_IsDead(CityOrc))
 	{
-		Bartok_OrkStillThere = true;
+		Bartok_OrkStillThere = TRUE;
 	};
 	
 	Info_ClearChoices (DIA_Bartok_ImWald);
@@ -390,15 +489,15 @@ INSTANCE DIA_Bartok_Angekommen (C_INFO)
 	nr			= 1;
 	condition	= DIA_Bartok_Angekommen_Condition;
 	information	= DIA_Bartok_Angekommen_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Bartok_Angekommen_Condition()
 {
-	if (Bartok_Los == true)
+	if (Bartok_Los == TRUE)
 	&& (Npc_GetDistToWP (self, "NW_FARM1_CITYWALL_FOREST_07") < 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_Angekommen_Info()
@@ -406,23 +505,22 @@ FUNC VOID DIA_Bartok_Angekommen_Info()
 	AI_Output (self ,other,"DIA_Bartok_Angekommen_04_00"); //Doœæ tego! Wracam do miasta.
 	AI_Output (self ,other,"DIA_Bartok_Angekommen_04_01"); //Tutaj jest zbyt niebezpiecznie jak dla mnie - nawet we dwóch.
 	
-	if (Bartok_OrkStillThere == true)
+	if (Bartok_OrkStillThere == TRUE)
 	//&& (Npc_IsDead (CityOrc))
 	{
-		B_Bartok_ShitAnOrc();
+		AI_Output (self ,other,"DIA_Bartok_Angekommen_04_02");
 		
-		Bartok_OrkGesagt = true;
+		Bartok_OrkGesagt = TRUE;
 	};
 	
 	AI_Output (self ,other,"DIA_Bartok_Angekommen_04_03"); //No to na razie!
 	AI_Output (self ,other,"DIA_Bartok_Angekommen_04_04"); //Mo¿esz sprzedaæ te skóry Bosperowi.
 	
-	Bartok_Ende = true;
+	Bartok_Ende = TRUE;
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine (self, "START");
 	
-	AI_EquipArmor	(self, ITAR_VLK_L_03);
 };
 
 // *****************************************************
@@ -434,24 +532,24 @@ INSTANCE DIA_Bartok_PERM (C_INFO)
 	nr			= 1;
 	condition	= DIA_Bartok_PERM_Condition;
 	information	= DIA_Bartok_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Wszystko w porz¹dku?";
 };                       
 FUNC INT DIA_Bartok_PERM_Condition()
 {
-	if (Bartok_Los == true)
+	if (Bartok_Los == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Bartok_PERM_Info()
 {	
 	AI_Output (other ,self,"DIA_Bartok_PERM_15_00"); //Wszystko w porz¹dku?
 	
-	if (Bartok_Ende == true)
+	if (Bartok_Ende == TRUE)
 	{		
 		AI_Output (self ,other,"DIA_Bartok_PERM_04_01"); //Tak. Ale ju¿ nie wychodzê z miasta. Przynajmniej w najbli¿szym czasie.
-		if (Bartok_OrkGesagt == true)
+		if (Bartok_OrkGesagt == TRUE)
 		{
 			AI_Output (self ,other,"DIA_Bartok_PERM_04_02"); //Ci¹gle mi dr¿¹ kolana, jak sobie przypomnê tego orka.
 		};
@@ -461,3 +559,11 @@ FUNC VOID DIA_Bartok_PERM_Info()
 		AI_Output (self ,other,"DIA_Bartok_PERM_04_03"); //Jasne. Upolujmy kilka bestii!
 	};
 };
+
+
+
+
+
+
+
+

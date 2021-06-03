@@ -16,7 +16,7 @@ prototype Npc_Default (C_NPC)
 	attribute[ATR_HITPOINTS]			=	attribute[ATR_HITPOINTS_MAX];
 	//POWER_CHECK(self);
 
-	Npc_SetTalentSkill (self, NPC_TALENT_DIFFICULT, dLevel);
+	Npc_SetTalentSkill (self, NPC_TALENT_DIFFICULTY, dLevel);
 
 	exp									=	0;
 	exp_next							=	START_LEVEL * XP_PER_LEVEL;

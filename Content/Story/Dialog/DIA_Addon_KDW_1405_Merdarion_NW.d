@@ -7,13 +7,13 @@ INSTANCE DIA_Addon_Merdarion_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Merdarion_EXIT_Condition;
 	information = DIA_Addon_Merdarion_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Addon_Merdarion_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Merdarion_EXIT_Info()
@@ -36,7 +36,7 @@ instance DIA_Addon_Merdarion_Hallo		(C_INFO)
 
 func int DIA_Addon_Merdarion_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Merdarion_Hallo_Info ()
@@ -64,7 +64,7 @@ func int DIA_Addon_Merdarion_Aufgabe_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -79,7 +79,7 @@ func void DIA_Addon_Merdarion_Aufgabe_Info ()
 	Npc_ExchangeRoutine (self, "START");
 	B_StartOtherRoutine (Cronos_NW, "START");
 	
-	if (Nefarius_NW.aivar [AIV_TalkedToPlayer] == false)
+	if (Nefarius_NW.aivar [AIV_TalkedToPlayer] == FALSE)
 	{
 		B_LogEntry (TOPIC_Addon_KDW,"Nefarius szuka brakuj¹cego ornamentu."); 
 	};	
@@ -101,7 +101,7 @@ func int DIA_Addon_Merdarion_DaDurch_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Aufgabe))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -129,7 +129,7 @@ func int DIA_Addon_Merdarion_Bedrohung_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_DaDurch))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -158,7 +158,7 @@ func int DIA_Addon_Merdarion_Wasdahinter2_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Aufgabe))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -178,7 +178,7 @@ instance DIA_Addon_Merdarion_PERM		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Merdarion_PERM_Condition;
 	information	 = 	DIA_Addon_Merdarion_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Mo¿esz nauczyæ mnie czegoœ o magii?";
 };
@@ -187,7 +187,7 @@ func int DIA_Addon_Merdarion_PERM_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Aufgabe))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -215,7 +215,7 @@ func int DIA_Addon_Merdarion_Teleportstein_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Aufgabe))
 	&& (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -256,7 +256,7 @@ func void DIA_Addon_Merdarion_Teleportstein_key ()
 	CreateInvItems (self, ITKE_PORTALTEMPELWALKTHROUGH_ADDON, 1);									
 	B_GiveInvItems (self, other, ITKE_PORTALTEMPELWALKTHROUGH_ADDON, 1);		
 
-	SC_GotPORTALTEMPELWALKTHROUGHKey = true;
+	SC_GotPORTALTEMPELWALKTHROUGHKey = TRUE;
 
 	Log_CreateTopic (TOPIC_Addon_TeleportsNW, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_TeleportsNW, LOG_RUNNING);
@@ -282,7 +282,7 @@ func int DIA_Addon_Merdarion_WHereOtherTeleports_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Teleportstein))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -310,9 +310,9 @@ instance DIA_Addon_Merdarion_TeleportsteinSuccess		(C_INFO)
 func int DIA_Addon_Merdarion_TeleportsteinSuccess_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Merdarion_Teleportstein))
-	&& (SCUsed_NW_TELEPORTSTATION_MAYA == true)
+	&& (SCUsed_NW_TELEPORTSTATION_MAYA == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -324,3 +324,5 @@ func void DIA_Addon_Merdarion_TeleportsteinSuccess_Info ()
 	AI_Output	(other, self, "DIA_Addon_Merdarion_TeleportsteinSuccess_15_02"); //Tak. Wychodzi na to, ¿e wci¹¿ dzia³aj¹.
 	AI_Output	(self, other, "DIA_Addon_Merdarion_TeleportsteinSuccess_06_03"); //Niewiarygodne. PóŸniej bêdê musia³ siê temu bli¿ej przyjrzeæ.
 };
+
+

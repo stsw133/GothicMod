@@ -1,34 +1,33 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_495_Buergerin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Magd;
 	guild 								=	GIL_VLK;
 	id 									=	495;
 	voice 								=	16;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant70, Teeth_Pretty, ITAR_WD_L_03);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_495;
 };
 
-FUNC VOID Rtn_Start_495()
+func void Rtn_Start_495()
 {
 	TA_Smalltalk		(06,00,08,00, "NW_CITY_MERCHANT_PATH_28_B");
     TA_Stand_Eating		(08,00,09,00, "NW_CITY_MERCHANT_PATH_30");

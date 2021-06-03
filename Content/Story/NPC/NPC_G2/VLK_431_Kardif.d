@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_431_Kardif (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Kardif";
 	guild 								=	GIL_VLK;
 	id 									=	431;
 	voice 								=	14;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal31, 0, ITAR_Barkeeper);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_431;
 };
 
-FUNC VOID Rtn_Start_431()
+func void Rtn_Start_431()
 {
 	TA_Stand_Sweeping		(08,00,11,00, "NW_CITY_HABOUR_TAVERN01_SMALLTALK_01");
 	TA_Stand_ArmsCrossed	(11,00,13,00, "NW_CITY_KARDIF");

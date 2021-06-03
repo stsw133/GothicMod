@@ -1,43 +1,43 @@
-//******************************************************************************************
-INSTANCE KDW_14000_Addon_Saturas_ADW (Npc_Default)
+///******************************************************************************************
+instance KDW_14000_Addon_Saturas_ADW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Saturas";
 	guild 								=	GIL_KDW;
 	id 									=	14000;
 	voice 								=	14;
 	flags       						=	NPC_FLAG_IMPORTANT;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Bald", Face_Saturas, 0, ITAR_MgA);
+	/// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Bald", Face_Saturas, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_PreStart_14000;
 };
 
-FUNC VOID Rtn_PreStart_14000()
+func void Rtn_PreStart_14000()
 {
 	TA_Study_WP	(08,25,21,35, "ADW_SATURAS_START");
 	TA_Study_WP	(21,35,08,25, "ADW_SATURAS_START");
 };
-FUNC VOID Rtn_Start_14000()
+func void Rtn_Start_14000()
 {
 	TA_Study_WP		(08,25,09,35, "ADW_ENTRANCE_BUILDING2_01A");
 	TA_Study_WP		(09,35,10,45, "ADW_ENTRANCE_BUILDING2_04");

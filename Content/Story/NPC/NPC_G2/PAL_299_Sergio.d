@@ -1,61 +1,62 @@
-//******************************************************************************************
+///******************************************************************************************
 instance PAL_299_Sergio (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Sergio";
 	guild 								=	GIL_PAL;
 	id 									=	299;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Pal_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItem (self, ITKE_INNOS_MIS);
-	CreateInvItems (self, ItPo_Health_03, 4);
+	CreateInvItems (self, ItPo_Health_02, 4);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Fighter", Face_Normal18, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_299;
 };
 
-FUNC VOID Rtn_Start_299()
+func void Rtn_Start_299()
 {
 	TA_Pray_Innos	(08,00,23,00, "NW_MONASTERY_CHAPELL_02");
 	TA_Pray_Innos	(23,00,08,00, "NW_MONASTERY_CHAPELL_02");
 };
-FUNC VOID Rtn_WaitForPlayer_299()
+func void Rtn_WaitForPlayer_299()
 {
 	TA_Stand_Guarding	(08,00,23,00, "NW_MONASTERY_PLACE_09");
 	TA_Stand_Guarding	(23,00,08,00, "NW_MONASTERY_PLACE_09");
 };
-FUNC VOID Rtn_Train_299()
+func void Rtn_Train_299()
 {
 	TA_Pray_Innos		(07,00,23,00, "NW_MONASTERY_CHAPELL_02");
 	TA_Pray_Innos		(23,00,05,00, "NW_MONASTERY_CHAPELL_02");
 	TA_Practice_Sword	(05,00,07,00, "NW_MONASTERY_TRAIN_01");
 };
-FUNC VOID Rtn_Wait_299()
+func void Rtn_Wait_299()
 {
 	TA_Stand_Guarding	(08,00,23,00, "NW_MONASTERY_CHAPELL_03");
 	TA_Stand_Guarding	(23,00,08,00, "NW_MONASTERY_CHAPELL_03");
 };
-FUNC VOID Rtn_Guide_299()
+func void Rtn_Guide_299()
 {
 	TA_Guide_Player	(08,00,23,00, "NW_TO_PASS_01");
 	TA_Guide_Player	(23,00,08,00, "NW_TO_PASS_01");

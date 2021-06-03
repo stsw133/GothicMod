@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_BDT_10029_Buddler_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_10029_Buddler_EXIT_Condition;
 	information = DIA_Addon_10029_Buddler_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_10029_Buddler_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10029_Buddler_EXIT_Info()
 {	
@@ -27,18 +27,18 @@ INSTANCE DIA_Addon_BDT_10029_Buddler_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10029_Buddler_Hi_Condition;
 	information = DIA_Addon_10029_Buddler_Hi_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co s³ychaæ?";
 };
 FUNC INT DIA_Addon_10029_Buddler_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10029_Buddler_Hi_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_BDT_10029_Buddler_Hi_15_00");//Co s³ychaæ?
 	
-	if (Sklaven_Flucht == false)
+	if (Sklaven_Flucht == FALSE)
 	{	
 		AI_Output (self, other, "DIA_Addon_BDT_10029_Buddler_Hi_06_01");//Niewolnicy odwalaj¹ ca³¹ robotê, wiêc nic nie robiê.
 	}
@@ -57,12 +57,12 @@ INSTANCE DIA_Addon_10029_Buddler_Hacken   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_10029_Buddler_Hacken_Condition;
 	information = DIA_Addon_10029_Buddler_Hacken_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ADDON_GOLD_DESCRIPTION;
 };
 FUNC INT DIA_Addon_10029_Buddler_Hacken_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10029_Buddler_Hacken_Info()
 {

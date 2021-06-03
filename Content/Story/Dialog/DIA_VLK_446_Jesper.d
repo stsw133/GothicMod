@@ -7,12 +7,12 @@ INSTANCE DIA_Jesper_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Jesper_EXIT_Condition;
 	information = DIA_Jesper_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Jesper_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Jesper_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Jesper_Hallo   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Jesper_Hallo_Condition;
 	information = DIA_Jesper_Hallo_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Jesper_Hallo_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Jesper_Hallo_Info()
 {
@@ -44,7 +44,7 @@ FUNC VOID DIA_Jesper_Hallo_Info()
 	Info_AddChoice 	  (DIA_Jesper_Hallo,"Zamierzam ciê zabiæ.",DIA_Jesper_Hallo_Kill);	
 	Info_AddChoice 	  (DIA_Jesper_Hallo,"Chcia³em trochê pozwiedzaæ.",DIA_Jesper_Hallo_NurSo);
 		
-	if  (Attila_Key == true)
+	if  (Attila_Key == TRUE)
 	{
 		Info_AddChoice 	  (DIA_Jesper_Hallo,"Attila da³ mi klucz...",DIA_Jesper_Hallo_Willkommen);
 	}	
@@ -53,13 +53,14 @@ FUNC VOID DIA_Jesper_Hallo_Info()
 		Info_AddChoice 	  (DIA_Jesper_Hallo,"Za³atwi³em Attilê...",DIA_Jesper_Hallo_Umgelegt);
 	};
 	
-	DG_gefunden = true;
+	DG_gefunden = TRUE;
 	
 };
 FUNC VOID DIA_Jesper_Hallo_Kill()
 {
 	AI_Output (other, self,"DIA_Jesper_Hallo_Kill_15_00");//Zamierzam ciê zabiæ.
 	AI_Output (self, other,"DIA_Jesper_Hallo_Kill_09_01");//Có¿ za wspania³y pomys³. Sam na niego wpad³eœ, co? A co tam. Nie bêdê przed³u¿a³.
+	
 	
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"START");
@@ -112,25 +113,95 @@ INSTANCE DIA_Jesper_Bezahlen   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Jesper_Bezahlen_Condition;
 	information = DIA_Jesper_Bezahlen_Info;
-	permanent   = false;
+	permanent   = TRUE;
 	description	= "Mo¿esz mnie czegoœ nauczyæ?";
 };
 FUNC INT DIA_Jesper_Bezahlen_Condition()
 {	
-	if (Join_Thiefs == true)
-	&& (Npc_KnowsInfo(other,DIA_Cassia_Lernen))
-	&& (Npc_GetTalentSkill(other,NPC_TALENT_SNEAK) == 0) 
+	if (Join_Thiefs == TRUE)
+	&& (Jesper_TeachSneak == FALSE)
+	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
+	&& (Npc_GetTalentSkill (other, NPC_TALENT_SNEAK) == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jesper_Bezahlen_Info()
 {	
 	AI_Output (other, self, "DIA_Jesper_Bezahlen_15_00");//Mo¿esz mnie czegoœ nauczyæ?
-	AI_Output (self, other, "DIA_Jesper_Bezahlen_09_01");//Pewnie, poka¿ê ci, jak siê skradaæ - za darmo.
-	self.aivar[AIV_CanTeach] = true;
+	
+	if (MIS_ThiefGuild_sucked == FALSE)
+	{
+		AI_Output (self, other, "DIA_Jesper_Bezahlen_09_01");//Pewnie, poka¿ê ci, jak siê skradaæ - za darmo.
+		Jesper_TeachSneak = TRUE;
+		Info_ClearChoices (DIA_Jesper_Bezahlen);
+	}
+	else
+	{
+		AI_Output (self, other, "DIA_Jesper_Bezahlen_09_02");//Chcesz siê nauczyæ, jak siê bezszelestnie poruszaæ? To ciê bêdzie kosztowaæ 100 sztuk z³ota.
+		B_Say_Gold (self, other, Jesper_Cost);
+		
+		Info_ClearChoices (DIA_Jesper_Bezahlen);
+		Info_AddChoice (DIA_Jesper_Bezahlen,"Mo¿e póŸniej... (POWRÓT)",DIA_Jesper_Bezahlen_Spaeter);
+		Info_AddChoice (DIA_Jesper_Bezahlen,"Chcê siê nauczyæ sztuki skradania (zap³aæ 100 sztuk z³ota).",DIA_Jesper_Bezahlen_Okay);
+	};
 };
-
+FUNC VOID DIA_Jesper_Bezahlen_Spaeter()
+{
+	Info_ClearChoices (DIA_Jesper_Bezahlen);
+};
+FUNC VOID DIA_Jesper_Bezahlen_Okay()
+{
+	AI_Output (other, self, "DIA_Jesper_Bezahlen_Okay_15_00");//Dobra, chcê siê nauczyæ skradania.
+	
+	if B_GiveInvItems (other, self, ItMi_Gold, 100)
+	{
+		AI_Output (other, self, "DIA_Jesper_Bezahlen_Okay_15_01");//Oto z³oto.
+		AI_Output (self, other, "DIA_Jesper_Bezahlen_Okay_09_02");//Daj mi znaæ, jak bêdziesz gotowy.
+		Jesper_TeachSneak = TRUE;
+		Info_ClearChoices (DIA_Jesper_Bezahlen);
+	}
+	else 
+	{
+		AI_Output (self, other, "DIA_Jesper_Bezahlen_Okay_09_03");//Bez z³ota niczego siê nie nauczysz.
+		Info_ClearChoices (DIA_Jesper_Bezahlen);
+	};
+};
+//////////////////////////////////////////////////////////////////////
+//	Info Schleichen 
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Jesper_Schleichen   (C_INFO)
+{
+	npc         = VLK_446_Jesper;
+	nr          = 10;
+	condition   = DIA_Jesper_Schleichen_Condition;
+	information = DIA_Jesper_Schleichen_Info;
+	permanent   = TRUE;
+	description = "Naucz mnie zasad skradania i ukrywania siê.";
+};
+//--------------------------------------
+var int DIA_Jesper_Schleichen_permanent;
+//-------------------------------------- 
+FUNC INT DIA_Jesper_Schleichen_Condition()
+{	
+	if (Jesper_TeachSneak == TRUE) 
+	&& (DIA_Jesper_Schleichen_permanent == FALSE)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Jesper_Schleichen_Info()
+{
+	AI_Output (other, self, "DIA_Jesper_Schleichen_15_00");//Naucz mnie zasad skradania i ukrywania siê.
+	
+	if B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK)
+	{
+		AI_Output (self, other, "DIA_Jesper_Schleichen_09_01");//Umiejêtnoœæ skradania siê jest niezwykle wa¿na dla ka¿dego z³odzieja. Przede wszystkim do poruszania siê po cudzych domach.
+		AI_Output (self, other, "DIA_Jesper_Schleichen_09_02");//Nie tup tak. Wiêkszoœæ ludzi ma bardzo czujny sen.
+		AI_Output (self, other, "DIA_Jesper_Schleichen_09_03");//Jeœli bêdziesz siê skrada³, nikt ciê nie us³yszy - wtedy bêdziesz móg³ pracowaæ bez przeszkód.
+		DIA_Jesper_Schleichen_permanent = TRUE;
+	};
+};
 //////////////////////////////////////////////////////////////////////
 //	Info Freunde getötet
 ///////////////////////////////////////////////////////////////////////
@@ -140,15 +211,15 @@ INSTANCE DIA_Jesper_Killer   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Jesper_Killer_Condition;
 	information = DIA_Jesper_Killer_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Jesper_Killer_Condition()
 {	
 	if Npc_IsDead (Cassia)
 	|| Npc_IsDead (Ramirez)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jesper_Killer_Info()
@@ -174,6 +245,7 @@ FUNC VOID DIA_Jesper_Killer_Info()
 		AI_StopProcessInfos (self);
 		B_Attack (self, other, AR_NONE,1); 
 	};
+	
 };
 //////////////////////////////////////////////////////////////////////
 //	Info Bogen
@@ -184,7 +256,7 @@ INSTANCE DIA_Jesper_Bogen   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Jesper_Bogen_Condition;
 	information = DIA_Jesper_Bogen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie wiesz przypadkiem czegoœ o ³uku Bospera?";
 };
 
@@ -192,9 +264,9 @@ FUNC INT DIA_Jesper_Bogen_Condition()
 {	
 	if (Npc_HasItems (other, ItRw_Bow_L_03_MIS) < 1)
 	&& (MIS_Bosper_Bogen == LOG_RUNNING)
-	&& (Join_Thiefs == true)
+	&& (Join_Thiefs == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jesper_Bogen_Info()
@@ -217,16 +289,16 @@ INSTANCE DIA_Jesper_Tuer   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Jesper_Tuer_Condition;
 	information = DIA_Jesper_Tuer_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co jest za tymi zamkniêtymi drzwiami?";
 };
 
 FUNC INT DIA_Jesper_Tuer_Condition()
 {	
 	if (MIS_CassiaRing == LOG_SUCCESS)
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jesper_Tuer_Info()
@@ -248,7 +320,7 @@ INSTANCE DIA_Jesper_Truhe   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Jesper_Truhe_Condition;
 	information = DIA_Jesper_Truhe_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Uda³o mi siê otworzyæ skrzyniê.";
 };
 
@@ -260,7 +332,7 @@ FUNC INT DIA_Jesper_Truhe_Condition()
 	|| (Mob_HasItems ("MOB_FINGERS", ItAM_Str_01) < 1)
 	|| (Mob_HasItems ("MOB_FINGERS", ItPO_perm_Dex) < 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jesper_Truhe_Info()
@@ -269,5 +341,7 @@ FUNC VOID DIA_Jesper_Truhe_Info()
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_01");//Niemo¿liwe! Wygl¹da na to, ¿e mamy nowego mistrza otwierania zamków.
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_02");//Gratulacje!
 	
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_JesperTruhe);
 };  
+
+

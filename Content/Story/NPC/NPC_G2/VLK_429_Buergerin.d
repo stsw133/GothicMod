@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_429_Buergerin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	Name_Buergerin;
 	guild 								=	GIL_VLK;
 	id 									=	429;
 	voice 								=	16;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Babe4", FaceBabe_Normal03, Teeth_Pretty, ITAR_WD_M_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_429;
 };
 
-FUNC VOID Rtn_Start_429()
+func void Rtn_Start_429()
 {
 	TA_Smalltalk	(05,05,12,05, "NW_CITY_HABOUR_POOR_AREA_PATH_06");
     TA_Stomp_Herb	(12,05,22,05, "NW_CITY_HABOUR_POOR_AREA_PATH_08_A");

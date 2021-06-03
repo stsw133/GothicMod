@@ -8,13 +8,13 @@ INSTANCE DIA_Khaled_EXIT (C_INFO)
 	nr          = 999;
 	condition   = DIA_Khaled_EXIT_Condition;
 	information = DIA_Khaled_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Khaled_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Khaled_EXIT_Info()
@@ -33,15 +33,15 @@ instance DIA_Khaled_Hallo		(C_INFO)
 	nr          = 1;
 	condition	= DIA_Khaled_Hallo_Condition;
 	information	= DIA_Khaled_Hallo_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jak leci?";
 };
 
 func int DIA_Khaled_Hallo_Condition ()
 {
-	if (Khaled_weiter == false)
+	if (Khaled_weiter == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -51,7 +51,7 @@ func void DIA_Khaled_Hallo_Info ()
 	if (Npc_KnowsInfo (other, DIA_Lee_WannaJoin))
 	{
 		AI_Output (self, other, "DIA_Khaled_Hallo_11_01"); //A zatem chcesz siê do nas przy³¹czyæ? Masz jak¹œ przyzwoit¹ broñ?
-		Khaled_weiter = true;
+		Khaled_weiter = TRUE;
 		Log_CreateTopic (Topic_SoldierTrader,LOG_NOTE);
 		B_LogEntry (Topic_SoldierTrader,"Khaled sprzedaje broñ.");
 	}
@@ -71,16 +71,16 @@ instance DIA_Khaled_TRADE		(C_INFO)
 	nr          = 700;
 	condition	= DIA_Khaled_TRADE_Condition;
 	information	= DIA_Khaled_TRADE_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jak¹ broñ mo¿esz mi zaoferowaæ?";
-	trade		= true;
+	trade		= TRUE;
 };
 
 func int DIA_Khaled_TRADE_Condition ()
 {
-	if (Khaled_weiter == true)
+	if (Khaled_weiter == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -100,16 +100,16 @@ instance DIA_Khaled_WannaJoin		(C_INFO)
 	nr          = 10;
 	condition	= DIA_Khaled_WannaJoin_Condition;
 	information	= DIA_Khaled_WannaJoin_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Czy móg³bym siê do was przy³¹czyæ?";
 };
 
 func int DIA_Khaled_WannaJoin_Condition ()
 {
-	if (Khaled_weiter == true)
+	if (Khaled_weiter == TRUE)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -134,15 +134,15 @@ instance DIA_Khaled_Woher		(C_INFO)
 	nr          = 3;
 	condition	= DIA_Khaled_Woher_Condition;
 	information	= DIA_Khaled_Woher_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Jak trafi³eœ do najemników?";
 };
 
 func int DIA_Khaled_Woher_Condition ()
 {
-	if (Khaled_weiter == true)
+	if (Khaled_weiter == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -161,7 +161,7 @@ instance DIA_Khaled_AboutSylvio		(C_INFO)
 	nr          = 4;
 	condition	= DIA_Khaled_AboutSylvio_Condition;
 	information	= DIA_Khaled_AboutSylvio_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Jaka jest twoja opinia na temat Sylvia?";
 };
 
@@ -169,7 +169,7 @@ func int DIA_Khaled_AboutSylvio_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Khaled_Woher))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -188,7 +188,7 @@ instance DIA_Khaled_AboutLee		(C_INFO)
 	nr          = 5;
 	condition	= DIA_Khaled_AboutLee_Condition;
 	information	= DIA_Khaled_AboutLee_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Jaka jest twoja opinia o Lee?";
 };
 
@@ -196,7 +196,7 @@ func int DIA_Khaled_AboutLee_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Khaled_Woher))
 	{
-		return true;
+		return TRUE;
 	};
 };
 

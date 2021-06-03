@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_10023_Wache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_10023_Wache_EXIT_Condition;
 	information = DIA_Addon_10023_Wache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_10023_Wache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_10023_Wache_EXIT_Info()
 {
@@ -27,14 +27,14 @@ INSTANCE DIA_Addon_10023_Wache_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_10023_Wache_Hi_Condition;
 	information = DIA_Addon_10023_Wache_Hi_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Addon_10023_Wache_Hi_Condition()
 {	
 	if (Npc_GetDistToNpc (self,other) <= 300)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_10023_Wache_Hi_Info()
@@ -48,7 +48,7 @@ FUNC VOID DIA_Addon_10023_Wache_Hi_Info()
 	AI_Output (other, self, "DIA_Addon_10023_Wache_Hi_15_06");//Wydawa³o mi siê, ¿e szefem jest tu Kruk.
 	AI_Output (self, other, "DIA_Addon_10023_Wache_Hi_11_07");//To prawda. Niewolników da³ jednak w prezencie Bloodwynowi. Ju¿ ich nie potrzebuje.
 	
-	Pardos.attribute[ATR_HITPOINTS] /= 2;
+	Pardos.attribute[ATR_HITPOINTS] 		= 70;
 	B_LogEntry (Topic_Addon_Sklaven,"Kruk nie potrzebuje ju¿ niewolników. Teraz ich w³aœcicielem jest Bloodwyn."); 
 };
 //---------------------------------------------------------------------
@@ -62,22 +62,22 @@ INSTANCE DIA_Addon_10023_Wache_go   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_10023_Wache_go_Condition;
 	information = DIA_Addon_10023_Wache_go_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Uwolnij niewolników!";
 };
 FUNC INT DIA_Addon_10023_Wache_go_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Addon_10023_Wache_go_Info()
 {
 	AI_Output (other, self, "DIA_Addon_10023_Wache_go_15_00");//Uwolnij niewolników!
 	
-	if (PrisonGuard_Rules == false)
+	if (PrisonGuard_Rules == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_10023_Wache_go_11_01");//S³uchaj, rozkazy wydaje tu Bloodwyn. Niewolnicy s¹ jego w³asnoœci¹ i tylko on mo¿e ich uwolniæ.
 		AI_Output (self, other, "DIA_Addon_10023_Wache_go_11_02");//Poza tym Thorus tak¿e ma tutaj pewn¹ w³adzê. A ty co robisz?
-		PrisonGuard_Rules = true;
+		PrisonGuard_Rules = TRUE;
 		B_LogEntry (Topic_Addon_Sklaven,"Tylko Bloodwyn i Thorus mog¹ pozwoliæ na uwolnienie niewolników.");
 	};
 	AI_Output (self, other, "DIA_Addon_10023_Wache_go_11_03");//Sprawujesz tu jak¹œ wa¿n¹ funkcjê?
@@ -127,12 +127,12 @@ FUNC VOID DIA_Addon_10023_Wache_go_Blood()
 	}
 	else
 	{
-		if (Wache_einmal == false)
+		if (Wache_einmal == FALSE)
 		{
 			AI_Output (other, self, "DIA_Addon_10023_Wache_go_Blood_15_04");//Mówi³eœ, ¿e niewolnicy nale¿¹ do Bloodwyna.
 			AI_Output (self, other, "DIA_Addon_10023_Wache_go_Blood_11_05");//Tak. Ale wspomina³em te¿, ¿e nie mogê ich zwolniæ bez pozwolenia Thorusa.
 			AI_Output (other, self, "DIA_Addon_10023_Wache_go_Blood_15_06");//Jesteœ z tych typów, którzy nawet nie pójd¹ siê odlaæ bez pozwolenia, co?
-			Wache_einmal = true;
+			Wache_einmal = TRUE;
 		}
 		else
 		{
@@ -141,6 +141,8 @@ FUNC VOID DIA_Addon_10023_Wache_go_Blood()
 		};
 		Info_ClearChoices 	(DIA_Addon_10023_Wache_go);
 	}; 
+	
+	
 };
 FUNC VOID DIA_Addon_10023_Wache_go_Thorus()
 {
@@ -149,7 +151,7 @@ FUNC VOID DIA_Addon_10023_Wache_go_Thorus()
 	AI_Output (other, self, "DIA_Addon_10023_Wache_go_Thorus_15_02");//...ale nie p³ac¹ ci za zadawanie pytañ.
 	AI_Output (self, other, "DIA_Addon_10023_Wache_go_Thorus_11_03");//Dobrze, dobrze - widzê, ¿e nie mam ju¿ kogo pilnowaæ. Idê zjeœæ trochê tej smacznej zupy.
 	
-	Ready_Togo = true;
+	Ready_Togo = TRUE;
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self, "SOUP");
 };

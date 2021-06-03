@@ -16,13 +16,13 @@ INSTANCE DIA_Talbin_NW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talbin_EXIT_Condition;
 	information = DIA_Talbin_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talbin_NW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Talbin_NW_EXIT_Info()
@@ -46,7 +46,7 @@ instance DIA_Talbin_NW		(C_INFO)
 
 func int DIA_Talbin_NW_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Talbin_NW_Info ()
@@ -73,10 +73,11 @@ func void DIA_Talbin_NW_Info ()
 	AI_StopProcessInfos (self);
 
 	Npc_ExchangeRoutine	(self,"Farm"); 
-	TOPIC_END_Talbin_Runs = true;
-	B_GivePlayerXP(XP_BONUS_6);
+	TOPIC_END_Talbin_Runs = TRUE;
+	B_GivePlayerXP (XP_SavedTalbin);
 };
 
+ 
 ///////////////////////////////////////////////////////////////////////
 //	Info verschwinde
 ///////////////////////////////////////////////////////////////////////
@@ -86,7 +87,7 @@ instance DIA_Talbin_NW_PERM		(C_INFO)
 	nr		 = 	15;
 	condition	 = 	DIA_Talbin_NW_PERM_Condition;
 	information	 = 	DIA_Talbin_NW_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wszystko w porz¹dku?";
 };
@@ -95,7 +96,7 @@ func int DIA_Talbin_NW_PERM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Talbin_NW))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -105,3 +106,7 @@ func void DIA_Talbin_NW_PERM_Info ()
 	AI_Output			(self, other, "DIA_Talbin_NW_PERM_07_01"); //Tak, dziêkujê. IdŸ ju¿, poradzê sobie.
 	AI_StopProcessInfos (self);
 };
+
+
+
+

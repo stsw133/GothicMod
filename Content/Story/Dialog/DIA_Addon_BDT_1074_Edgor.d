@@ -6,20 +6,20 @@ INSTANCE DIA_Addon_Edgor_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Edgor_EXIT_Condition;
 	information = DIA_Addon_Edgor_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Edgor_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Edgor_EXIT_Info()
 {
 	if Npc_KnowsInfo (other, DIA_Addon_Edgor_MIS2)
-	&& (Edgor_Exiteinmal == false)
+	&& (Edgor_Exiteinmal == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Edgor_EXIT_06_00"); //Mi³o mi ciê poznaæ...
-		Edgor_Exiteinmal = true;
+		Edgor_Exiteinmal = TRUE;
 	};
 	AI_StopProcessInfos (self);
 };
@@ -33,12 +33,12 @@ INSTANCE DIA_Addon_Edgor_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Edgor_Hi_Condition;
 	information = DIA_Addon_Edgor_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak leci?";
 };
 FUNC INT DIA_Addon_Edgor_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Edgor_Hi_Info()
 {
@@ -49,14 +49,14 @@ FUNC VOID DIA_Addon_Edgor_Hi_Info()
 	AI_Output (self, other, "DIA_Addon_Edgor_Hi_06_04"); //Franko zosta³ przywódc¹ myœliwych i zabije ka¿dego, kto mu siê przeciwstawi.
 	AI_Output (self, other, "DIA_Addon_Edgor_Hi_06_05"); //Czyli mówi¹c ogólnie, leci doœæ marnie.
 
-	if (SC_KnowsRavensGoldmine == false)
+	if (SC_KnowsRavensGoldmine == FALSE)
 	{
 		B_LogEntry (TOPIC_Addon_RavenKDW, LogText_Addon_RavensGoldmine); 
 		Log_AddEntry (TOPIC_Addon_Sklaven, LogText_Addon_RavensGoldmine); 
 		B_LogEntry (TOPIC_Addon_ScoutBandits,Log_Text_Addon_ScoutBandits);
 	};
 
-	SC_KnowsRavensGoldmine = true;
+	SC_KnowsRavensGoldmine = TRUE;
 };
 //---------------------------------------------------------------------
 //	Franco
@@ -67,14 +67,14 @@ INSTANCE DIA_Addon_Edgor_Franco (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Edgor_Franco_Condition;
 	information = DIA_Addon_Edgor_Franco_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "W jaki sposób Franko zosta³ przywódc¹ tej bandy?";
 };
 FUNC INT DIA_Addon_Edgor_Franco_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Edgor_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Edgor_Franco_Info()
@@ -93,7 +93,7 @@ INSTANCE DIA_Addon_Edgor_MIS2   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Edgor_MIS2_Condition;
 	information = DIA_Addon_Edgor_MIS2_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Franko pyta³ mnie o tê kamienn¹ tabliczkê. Uda³o ci siê j¹ znaleŸæ?";
 };
 FUNC INT DIA_Addon_Edgor_MIS2_Condition()
@@ -101,7 +101,7 @@ FUNC INT DIA_Addon_Edgor_MIS2_Condition()
 	if Npc_KnowsInfo (other, DIA_Addon_Edgor_Hi)
 	&& (MIS_HlpEdgor == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Edgor_MIS2_Info()
@@ -122,14 +122,14 @@ INSTANCE DIA_Addon_Edgor_Weg   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Edgor_Weg_Condition;
 	information = DIA_Addon_Edgor_Weg_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿esz powtórzyæ, gdzie jest ten stary budynek?";
 };
 FUNC INT DIA_Addon_Edgor_Weg_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Edgor_MIS2)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Edgor_Weg_Info()
@@ -149,7 +149,7 @@ INSTANCE DIA_Addon_Edgor_Found   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Edgor_Found_Condition;
 	information = DIA_Addon_Edgor_Found_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Znalaz³em kamienn¹ tabliczkê!";
 };
 FUNC INT DIA_Addon_Edgor_Found_Condition()
@@ -158,7 +158,7 @@ FUNC INT DIA_Addon_Edgor_Found_Condition()
 	&& !Npc_IsDead (Franco)
 	&& (MIS_HlpEdgor == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Edgor_Found_Info()
@@ -176,14 +176,14 @@ INSTANCE DIA_Addon_Edgor_Teach   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Edgor_Teach_Condition;
 	information = DIA_Addon_Edgor_Teach_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Potrafisz mnie czegoœ nauczyæ?";
 };
 FUNC INT DIA_Addon_Edgor_Teach_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Edgor_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Edgor_Teach_Info()
@@ -197,5 +197,115 @@ FUNC VOID DIA_Addon_Edgor_Teach_Info()
 	
 	Log_CreateTopic (Topic_Addon_BDT_Teacher,LOG_NOTE);
 	B_LogEntry 	(Topic_Addon_BDT_Teacher,"Edgor wie du¿o na temat krwiopijców i ich oporz¹dzania.");	
-	self.aivar[AIV_CanTeach] = true;
+	Edgor_Teach = TRUE;
 };
+FUNC VOID B_Edgor_NotEnoughGold()
+{
+	AI_Output (self, other, "DIA_Addon_Edgor_NotEnoughGold_06_00");//Za³atw trochê z³ota. Przyjmujê tylko monety, ¿adnych kawa³ków ani okruchów.
+};
+//---------------------------------------------------------------------
+//	Info Train (Bloodflys)
+//---------------------------------------------------------------------
+INSTANCE DIA_Addon_Edgor_TrainStart   (C_INFO)
+{
+	npc         = BDT_1074_Addon_Edgor;
+	nr          = 9;
+	condition   = DIA_Addon_Edgor_Start_Condition;
+	information = DIA_Addon_Edgor_Start_Info;
+	permanent   = TRUE;
+	description = "A co do krwiopijców...";
+};
+FUNC INT DIA_Addon_Edgor_Start_Condition()
+{	
+	if (Edgor_Teach == TRUE)
+	{	
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Addon_Edgor_Start_Info()
+{
+	AI_Output (other, self, "DIA_Addon_Edgor_TrainStart_SEKRET_15_00");//A co do krwiopijców...
+	AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_SEKRET_06_01");//Co chcesz wiedzieæ?
+	
+	Info_ClearChoices (DIA_Addon_Edgor_TrainStart);
+	Info_AddChoice    (DIA_Addon_Edgor_TrainStart,DIALOG_BACK,DIA_Addon_Edgor_TrainStart_BACK);
+	
+	
+	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
+	{ 
+		Info_AddChoice    (DIA_Addon_Edgor_TrainStart, "Wyci¹gnij ¿¹d³o krwiopijcy. (Koszt: 1 PN, 100 szt. z³ota)",DIA_Addon_Edgor_TrainStart_Sting);
+	};
+	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
+	{ 
+		Info_AddChoice 	  (DIA_Addon_Edgor_TrainStart, "Oderwij skrzyd³a krwiopijcy. (Koszt: 1 PN, 100 szt. z³ota)",DIA_Addon_Edgor_TrainStart_Wing);
+	};
+	if (Knows_Bloodfly == FALSE)
+	{
+		Info_AddChoice 	  (DIA_Addon_Edgor_TrainStart,"Wydob¹dŸ wydzielinê z krwiopijcy. (Koszt: 1 PN, 100 szt. z³ota)",DIA_Addon_Edgor_TrainStart_GIFT);
+	};
+};	
+FUNC VOID DIA_Addon_Edgor_TrainStart_BACK()
+{
+	Info_ClearChoices (DIA_Addon_Edgor_TrainStart);
+};
+FUNC VOID DIA_Addon_Edgor_TrainStart_Sting()
+{
+	if B_GiveInvItems (other, self, ItmI_Gold, 100)
+	{
+		if B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFSting)
+		{
+			AI_Output (other, self, "DIA_Addon_Edgor_TrainStart_Sting_15_00");//Jak wydobyæ ¿¹d³o krwiopijcy?
+			AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_Sting_06_01");//Trzeba przewróciæ truch³o i je rozp³ataæ. A potem przebiæ siê przez wnêtrznoœci w okolicy ogona.
+			AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_Sting_06_02");//Wtedy ³atwo bêdzie wyrwaæ ¿¹d³o.
+		};
+	}
+	else
+	{
+		B_Edgor_NotEnoughGold();
+	};
+	Info_ClearChoices (DIA_Addon_Edgor_TrainStart);
+};
+FUNC VOID DIA_Addon_Edgor_TrainStart_Wing()
+{
+	if B_GiveInvItems (other, self, ItmI_Gold, 100)
+	{
+		if B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFWing)
+		{
+			AI_Output (other, self, "DIA_Addon_Edgor_TrainStart_Wing_15_00");//Jaki jest najlepszy sposób, ¿eby usun¹æ skrzyd³a?
+			AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_Wing_06_01");//To doœæ proste. Z³ap jedn¹ rêk¹ za skrzyd³o, a drug¹ przetnij wierzchni¹ warstwê skóry.
+		};
+	}
+	else
+	{
+		B_Edgor_NotEnoughGold();
+	};
+	Info_ClearChoices (DIA_Addon_Edgor_TrainStart);
+};	
+FUNC VOID DIA_Addon_Edgor_TrainStart_GIFT()
+{
+	if B_GiveInvItems (other, self, ItmI_Gold, 100)
+	{
+		if (other.lp >= 1)
+		{
+			AI_Output (other, self, "DIA_Addon_Edgor_TrainStart_GIFT_15_00");//Jak uzyskaæ wydzielinê krwiopijcy?
+			AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_GIFT_06_01");//Trzeba rozci¹æ zewnêtrzn¹ warstwê ¿¹d³a. Wtedy powinieneœ zobaczyæ, jak œcieka uzdrawiaj¹ca wydzielina.
+			AI_Output (self, other, "DIA_Addon_Edgor_TrainStart_GIFT_06_02");//Mo¿na wypiæ ten p³yn albo wykorzystaæ go do sporz¹dzenia mikstury.
+			
+			other.lp = (other.lp - 1);
+			Knows_Bloodfly = TRUE; 
+			PrintScreen (PRINT_ADDON_KNOWSBF, -1, -1, FONT_Screen, 2);
+		}
+		else
+		{
+			PrintScreen	(PRINT_NotEnoughLP, -1, -1, FONT_Screen, 2);
+			B_Say (self, other, "$NOLEARNNOPOINTS");
+		};
+	}
+	else
+	{
+		B_Edgor_NotEnoughGold();
+	};
+	Info_ClearChoices (DIA_Addon_Edgor_TrainStart);
+};		
+
+

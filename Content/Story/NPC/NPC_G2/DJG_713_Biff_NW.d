@@ -1,52 +1,51 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DJG_713_Biff_NW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Biff";
 	guild 								=	GIL_DJG;
 	id 									=	7130;
 	voice 								=	7;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride] 	=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Sld_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal23, 0, ITAR_DJG_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_7130;
 };
 
-FUNC VOID Rtn_Start_7130()
+func void Rtn_Start_7130()
 {
 	TA_Stand_Guarding	(08,00,23,00, "LEVELCHANGE");
     TA_Stand_Guarding	(23,00,08,00, "LEVELCHANGE");
 };
-FUNC VOID Rtn_WAITFORSHIP_7130()
+func void Rtn_WAITFORSHIP_7130()
 {
 	TA_Stand_Guarding	(08,00,23,00, "NW_WAITFOR_SHIP_03");
     TA_Stand_Guarding	(23,00,08,00, "NW_WAITFOR_SHIP_03");
 };
-FUNC VOID Rtn_SHIP_7130()
+func void Rtn_SHIP_7130()
 {	
     TA_Stand_Guarding	(06,00,07,00, "SHIP_DECK_32");
 

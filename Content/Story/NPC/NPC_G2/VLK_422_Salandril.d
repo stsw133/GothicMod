@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_422_Salandril (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Salandril";
 	guild 								=	GIL_VLK;
 	id 									=	422;
 	voice 								=	13;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 20);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_VLK_Dagger);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal57, 0, ITAR_VLK_L_13);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_422;
 };
 
-FUNC VOID Rtn_Start_422()
+func void Rtn_Start_422()
 {
 	TA_Stand_ArmsCrossed	(08,00,10,00, "NW_CITY_SALANDRIL");
 	TA_Potion_Alchemy		(10,00,13,00, "NW_CITY_SALANDRIL");
@@ -41,7 +40,7 @@ FUNC VOID Rtn_Start_422()
 	TA_Read_Bookstand 		(19,00,22,00, "NW_CITY_SHOP_SALANDRIL_03");
 	TA_Sleep				(22,00,08,00, "NW_CITY_SHOP_SALANDRIL_BED");
 };
-FUNC VOID Rtn_KlosterUrteil_422()
+func void Rtn_KlosterUrteil_422()
 {
 	TA_Stand_ArmsCrossed	(08,00,22,00, "ALTAR");
 	TA_Stand_ArmsCrossed	(22,00,08,00, "ALTAR");

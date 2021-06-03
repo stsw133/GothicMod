@@ -7,14 +7,14 @@ INSTANCE DIA_Andre_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Andre_EXIT_Condition;
 	information = DIA_Andre_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Andre_EXIT_Condition()
 {	
-	if (self.aivar[AIV_TalkedToPlayer] == true)
+	if (self.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Andre_EXIT_Info()
@@ -31,14 +31,14 @@ INSTANCE DIA_Andre_FIRSTEXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Andre_FIRSTEXIT_Condition;
 	information = DIA_Andre_FIRSTEXIT_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Andre_FIRSTEXIT_Condition()
 {	
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Andre_FIRSTEXIT_Info()
@@ -47,6 +47,9 @@ FUNC VOID DIA_Andre_FIRSTEXIT_Info()
 	Npc_ExchangeRoutine (self,"START");
 	B_StartOtherRoutine (Wulfgar,"START"); 
 };
+
+
+
 
 // ************************************************************
 // 	  				   		Steckbrief
@@ -64,7 +67,7 @@ func void B_Andre_Steckbrief()
 	AI_Output (self ,other,"DIA_Andre_Add_08_05"); //Nie mogê tolerowaæ w stra¿y kogoœ, kto ma coœ na sumieniu.
 	AI_Output (self ,other,"DIA_Andre_Add_08_06"); //Wiêkszoœæ bandytów to dawni wiêŸniowie z kolonii górniczej.
 	AI_Output (self ,other,"DIA_Andre_Add_08_07"); //Mam nadziejê, ¿e nie zadawa³eœ siê z tymi bandziorami!
-	Andre_Steckbrief = true;
+	Andre_Steckbrief = TRUE;
 };
 
 // ************************************************************
@@ -80,19 +83,20 @@ func void B_Andre_CantharFalle()
 	
 	B_RemoveNpc (Sarah);
 	
+			
 	B_StartOtherRoutine (Canthar,"MARKTSTAND");
 	AI_Teleport (Canthar,"NW_CITY_SARAH");
 					
-	if (Canthar_Sperre == false)
-	&& (Canthar_Pay == false)
+	if (Canthar_Sperre == FALSE)
+	&& (Canthar_Pay == FALSE)
 	{
-		Canthar_Sperre = true; 
+		Canthar_Sperre = TRUE; 
 	};
 	
 	MIS_Canthars_KomproBrief = LOG_OBSOLETE;
 	B_CheckLog();
 	
-	Andre_CantharFalle = true;
+	Andre_CantharFalle = TRUE;
 };
 
 // ************************************************************
@@ -105,36 +109,36 @@ INSTANCE DIA_Andre_CantharFalle (C_INFO)
 	nr          = 3;
 	condition   = DIA_Andre_CantharFalle_Condition;
 	information = DIA_Andre_CantharFalle_Info;
-	permanent   = true;
-	important 	= true; 
+	permanent   = TRUE;
+	important 	= TRUE; 
 };
 
 FUNC INT DIA_Andre_CantharFalle_Condition()
 {
 	if (MIS_Canthars_KomproBrief == LOG_RUNNING) 
-	&& (MIS_Canthars_KomproBrief_Day <= Wld_GetDay()-2)
-	&& (Andre_CantharFalle == false)
+	&& (MIS_Canthars_KomproBrief_Day <= Wld_GetDay() - 2)
+	&& (Andre_CantharFalle == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 	
-	if (Pablo_AndreMelden == true)
+	if (Pablo_AndreMelden == TRUE)
 	&& (!Npc_IsDead(Pablo))
-	&& (Andre_Steckbrief == false)
+	&& (Andre_Steckbrief == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 FUNC INT DIA_Andre_CantharFalle_Info()
 {
-	if (Andre_Steckbrief == false)
+	if (Andre_Steckbrief == FALSE)
 	{
 		B_Andre_Steckbrief();
 	};
 	
-	if (Andre_CantharFalle == false)
-	&& (MIS_Canthars_KomproBrief_Day <= Wld_GetDay()-2)
+	if (Andre_CantharFalle == FALSE)
+	&& (MIS_Canthars_KomproBrief_Day <= Wld_GetDay() - 2)
 	{
 		B_Andre_CantharFalle();
 	};
@@ -155,8 +159,8 @@ INSTANCE DIA_Andre_PMSchulden (C_INFO)
 	nr          = 1;
 	condition   = DIA_Andre_PMSchulden_Condition;
 	information = DIA_Andre_PMSchulden_Info;
-	permanent   = true;
-	important 	= true; 
+	permanent   = TRUE;
+	important 	= TRUE; 
 };
 
 FUNC INT DIA_Andre_PMSchulden_Condition()
@@ -165,7 +169,7 @@ FUNC INT DIA_Andre_PMSchulden_Condition()
 	&& (Andre_Schulden > 0)
 	&& (B_GetGreatestPetzCrime(self) <= Andre_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -173,10 +177,11 @@ FUNC VOID DIA_Andre_PMSchulden_Info()
 {
 	AI_Output (self, other, "DIA_Andre_PMSchulden_08_00"); //Przyszed³eœ, ¿eby zap³aciæ grzywnê?
 
+						
 						// ------ STECKBRIEF ------
-						if (Pablo_AndreMelden == true)
+						if (Pablo_AndreMelden == TRUE)
 						&& (!Npc_IsDead(Pablo))
-						&& (Andre_Steckbrief == false)
+						&& (Andre_Steckbrief == FALSE)
 						{
 							B_Andre_Steckbrief();
 						};
@@ -184,7 +189,7 @@ FUNC VOID DIA_Andre_PMSchulden_Info()
 						// ------- CANTHAR -------
 						if (MIS_Canthars_KomproBrief == LOG_RUNNING) 
 						&& (MIS_Canthars_KomproBrief_Day <= (Wld_GetDay() - 2))
-						&& (Andre_CantharFalle == false)
+						&& (Andre_CantharFalle == FALSE)
 						{
 							B_Andre_CantharFalle();	
 						};
@@ -202,7 +207,7 @@ FUNC VOID DIA_Andre_PMSchulden_Info()
 		
 			if (diff > 0)
 			{
-				Andre_Schulden += (diff * 50);
+				Andre_Schulden = Andre_Schulden + (diff * 50);
 			};
 		
 			if (Andre_Schulden > 1000)	{	Andre_Schulden = 1000;	};
@@ -302,14 +307,14 @@ instance DIA_Andre_PETZMASTER   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Andre_PETZMASTER_Condition;
 	information = DIA_Andre_PETZMASTER_Info;
-	permanent   = true;
-	important	= true;
+	permanent   = TRUE;
+	important	= TRUE;
 };
 FUNC INT DIA_Andre_PETZMASTER_Condition()
 {
 	if (B_GetGreatestPetzCrime(self) > Andre_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Andre_PETZMASTER_Info()
@@ -317,15 +322,15 @@ FUNC VOID DIA_Andre_PETZMASTER_Info()
 	Andre_Schulden = 0; //weil Funktion nochmal durchlaufen wird, wenn Crime höher ist...
 	
 	// ------ SC hat mit Andre noch nicht gesprochen ------
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Andre_PETZMASTER_08_00"); //Musisz byæ tym nowym, który narobi³ w mieœcie sporo zamieszania.
 	};
 	
 						// ------ STECKBRIEF ------
-						if (Pablo_AndreMelden == true)
+						if (Pablo_AndreMelden == TRUE)
 						&& (!Npc_IsDead(Pablo))
-						&& (Andre_Steckbrief == false)
+						&& (Andre_Steckbrief == FALSE)
 						{
 							B_Andre_Steckbrief();
 						};	
@@ -333,17 +338,18 @@ FUNC VOID DIA_Andre_PETZMASTER_Info()
 						// ------- CANTHAR -------
 						if (MIS_Canthars_KomproBrief == LOG_RUNNING) 
 						&& (MIS_Canthars_KomproBrief_Day <= (Wld_GetDay() - 2))
-						&& (Andre_CantharFalle == false)
+						&& (Andre_CantharFalle == FALSE)
 						{
 							B_Andre_CantharFalle();	
 						};
+	
 	
 	if (B_GetGreatestPetzCrime(self) == CRIME_MURDER) 
 	{
 		AI_Output (self, other, "DIA_Andre_PETZMASTER_08_01"); //Dobrze, ¿e do mnie przyszed³eœ, zanim twoja sytuacja sta³a siê beznadziejna.
 		AI_Output (self, other, "DIA_Andre_PETZMASTER_08_02"); //Morderstwo to powa¿ne przestêpstwo!
-		Andre_Schulden = (B_GetTotalPetzCounter(self) * 50); 	//Anzahl der Zeugen * 50
-		Andre_Schulden += 500;									//PLUS Mörder-Malus
+		Andre_Schulden = (B_GetTotalPetzCounter(self) * 50); 		//Anzahl der Zeugen * 50
+		Andre_Schulden = Andre_Schulden + 500;						//PLUS Mörder-Malus
 		if ((PETZCOUNTER_City_Theft + PETZCOUNTER_City_Attack + PETZCOUNTER_City_Sheepkiller) > 0)
 		{
 			AI_Output (self, other, "DIA_Andre_PETZMASTER_08_03"); //Nie mówi¹c ju¿ o innych twoich wystêpkach.
@@ -443,15 +449,15 @@ instance DIA_Andre_Hallo		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_Hallo_Condition;
 	information	 = 	DIA_Andre_Hallo_Info;
-	permanent 	 =  false; 
-	important    =  true;
+	permanent 	 =  FALSE; 
+	important    =  TRUE;
 };
 func int DIA_Andre_Hallo_Condition ()
 {
 	if Npc_IsInState (self, ZS_Talk)
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Hallo_Info ()
@@ -470,16 +476,16 @@ instance DIA_Andre_Message		(C_INFO)
 	nr			= 1;
 	condition	= DIA_Andre_Message_Condition;
 	information	= DIA_Andre_Message_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "Mam wa¿n¹ wiadomoœæ dla Lorda Hagena.";
 };
 func int DIA_Andre_Message_Condition ()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	&& ((hero.guild == GIL_NONE)
-	|| (other.guild == GIL_NOV))
+	|| (hero.guild == GIL_NOV))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func void DIA_Andre_Message_Info ()
@@ -506,7 +512,7 @@ func void DIA_Andre_Message_EyeInnos()
 	AI_Output (self, other, "DIA_Andre_Message_EyeInnos_08_02"); //Jeœli naprawdê istnieje artefakt o takiej nazwie, bêd¹ o nim wiedzieæ tylko najwa¿niejsi przedstawiciele naszego zakonu.
 	AI_Output (other, self, "DIA_Andre_Message_EyeInnos_15_03"); //Dlatego muszê porozmawiaæ z samym Lordem Hagenem.
 	
-	Andre_EyeInnos = true;
+	Andre_EyeInnos = TRUE;
 	
 	B_Andre_LordHagenNichtZuSprechen();
 	
@@ -538,15 +544,15 @@ instance DIA_Andre_Paladine		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Andre_Paladine_Condition;
 	information	 = 	DIA_Andre_Paladine_Info;
-	permanent 	 =  false; 
+	permanent 	 =  FALSE; 
 	description	 = 	"Co robicie w mieœcie?";	
 };
 func int DIA_Andre_Paladine_Condition ()
 {	
 	if (other.guild != GIL_MIL)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Paladine_Info ()
@@ -565,15 +571,15 @@ instance DIA_Andre_PaladineAgain		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Andre_PaladineAgain_Condition;
 	information	 = 	DIA_Andre_PaladineAgain_Info;
-	permanent 	 =  false; 
+	permanent 	 =  FALSE; 
 	description	 = 	"Co robicie w mieœcie?";	
 };
 func int DIA_Andre_PaladineAgain_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_PaladineAgain_Info ()
@@ -592,7 +598,7 @@ func void DIA_Andre_PaladineAgain_Info ()
 	AI_Output (self, other, "DIA_Andre_PaladineAgain_08_04"); //Król Rhobar wyznaczy³ nam zadanie. Po zniszczeniu Bariery zmniejszy³y siê dostawy rudy.
 	AI_Output (self, other, "DIA_Andre_PaladineAgain_08_05"); //Dlatego sprowadzamy j¹ na kontynent. Z rudy ¿elaza wykujemy now¹ broñ i odeprzemy orków.
 	
-	KnowsPaladins_Ore = true;
+	KnowsPaladins_Ore = TRUE;
 };
 // *********************************************************
 //						AskToJoin
@@ -603,14 +609,14 @@ instance DIA_Andre_AskToJoin		(C_INFO)
 	nr			= 2;
 	condition	= DIA_Andre_AskToJoin_Condition;
 	information	= DIA_Andre_AskToJoin_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "Chcê wst¹piæ na s³u¿bê u paladynów!";
 };
 func int DIA_Andre_AskToJoin_Condition ()
 {
 	if (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func void DIA_Andre_AskToJoin_Info ()
@@ -646,7 +652,7 @@ instance DIA_Andre_AboutMiliz (C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Andre_AboutMiliz_Condition;
 	information	 = 	DIA_Andre_AboutMiliz_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Czego mogê siê spodziewaæ w stra¿y?";
 };
 
@@ -655,7 +661,7 @@ func int DIA_Andre_AboutMiliz_Condition ()
 	if (other.guild == GIL_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Andre_AskToJoin))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -685,7 +691,7 @@ func int DIA_Addon_Andre_MartinEmpfehlung_Condition ()
 	if (Npc_HasItems (other,ItWr_Martin_MilizEmpfehlung_Addon))
 	&& (Npc_KnowsInfo(other,DIA_Andre_AskToJoin))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -697,7 +703,7 @@ func void DIA_Addon_Andre_MartinEmpfehlung_Info ()
 	B_UseFakeScroll();
 	AI_Output	(self, other, "DIA_Addon_Andre_MartinEmpfehlung_08_02"); //Niesamowite! Musia³eœ siê nieŸle przys³u¿yæ, ¿eby wywrzeæ na nim a¿ takie wra¿enie... Martin rzadko tak hojnie rozdaje pochwa³y.
 	AI_Output	(self, other, "DIA_Addon_Andre_MartinEmpfehlung_08_03"); //Przekona³eœ mnie - jeœli masz poparcie Martina, to i my ciê nie odrzucimy. Daj znaæ, gdy bêdziesz gotów.
-	Andre_Knows_MartinEmpfehlung = true;
+	Andre_Knows_MartinEmpfehlung = TRUE;
 };
 
 // *********************************************************
@@ -709,7 +715,7 @@ instance DIA_Andre_Alternative (C_INFO)
 	nr			= 2;
 	condition	= DIA_Andre_Alternative_Condition;
 	information	= DIA_Andre_Alternative_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "Nie ma jakiegoœ szybszego sposobu, ¿eby do was do³¹czyæ?";
 };
 func int DIA_Andre_Alternative_Condition ()
@@ -717,7 +723,7 @@ func int DIA_Andre_Alternative_Condition ()
 	if (Npc_KnowsInfo(other,DIA_Andre_AskToJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Alternative_Info ()
@@ -726,6 +732,8 @@ func void DIA_Andre_Alternative_Info ()
 	AI_Output (self, other, "DIA_Andre_Alternative_08_01"); //Hmmm - widzê, ¿e ci na tym zale¿y.
 	AI_Output (self, other, "DIA_Andre_Alternative_08_02"); //Dobrze, s³uchaj. Mam k³opot. Jeœli go dla mnie rozwi¹¿esz, dopilnujê, ¿ebyœ zosta³ przyjêty do stra¿y.
 	AI_Output (self, other, "DIA_Andre_Alternative_08_03"); //Ale najwa¿niejsze, ¿ebyœ nikomu nie szepn¹³ ani s³owa na ten temat!
+	
+	
 };
 
 // *********************************************************
@@ -737,14 +745,14 @@ instance DIA_Andre_GuildOfThieves (C_INFO)
 	nr			= 2;
 	condition	= DIA_Andre_GuildOfThieves_Condition;
 	information	= DIA_Andre_GuildOfThieves_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "W czym problem?";
 };
 func int DIA_Andre_GuildOfThieves_Condition ()
 {
 	if (Npc_KnowsInfo(other,DIA_Andre_Alternative))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_GuildOfThieves_Info ()
@@ -761,6 +769,7 @@ func void DIA_Andre_GuildOfThieves_Info ()
 	
 	MIS_Andre_GuildOfThieves = LOG_RUNNING;
 	B_LogEntry (TOPIC_BecomeMIL,"Istnieje inna droga wst¹pienia w szeregi stra¿y. Muszê tylko rozprawiæ siê z gildi¹ z³odziei w Khorinis.");
+	
 };
 
 // *********************************************************
@@ -772,7 +781,7 @@ instance DIA_Andre_WhereThieves (C_INFO)
 	nr			= 2;
 	condition	= DIA_Andre_WhereThieves_Condition;
 	information	= DIA_Andre_WhereThieves_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "Gdzie powinienem szukaæ tych z³odziei?";
 };
 func int DIA_Andre_WhereThieves_Condition ()
@@ -780,7 +789,7 @@ func int DIA_Andre_WhereThieves_Condition ()
 	if (Npc_KnowsInfo(other,DIA_Andre_GuildOfThieves))
 	&& (MIS_Andre_GuildOfThieves == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_WhereThieves_Info ()
@@ -804,7 +813,7 @@ instance DIA_Andre_WhatToDo (C_INFO)
 	nr			= 3;
 	condition	= DIA_Andre_WhatToDo_Condition;
 	information	= DIA_Andre_WhatToDo_Info;
-	permanent 	= false; 
+	permanent 	= FALSE; 
 	description = "Co mam zrobiæ, kiedy znajdê jednego ze z³odziei?";
 };
 func int DIA_Andre_WhatToDo_Condition ()
@@ -812,7 +821,7 @@ func int DIA_Andre_WhatToDo_Condition ()
 	if (Npc_KnowsInfo(other,DIA_Andre_GuildOfThieves))
 	&& (MIS_Andre_GuildOfThieves == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_WhatToDo_Info ()
@@ -837,18 +846,18 @@ instance DIA_Andre_Auslieferung		(C_INFO)
 	nr			 = 	200;
 	condition	 = 	DIA_Andre_Auslieferung_Condition;
 	information	 = 	DIA_Andre_Auslieferung_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Chcê odebraæ nagrodê za przestêpcê.";
 };
 
 func int DIA_Andre_Auslieferung_Condition ()
 {	
-	if (Rengaru_Ausgeliefert == false)
-	|| (Halvor_Ausgeliefert == false)
-	|| (Nagur_Ausgeliefert == false)
+	if (Rengaru_Ausgeliefert == FALSE)
+	|| (Halvor_Ausgeliefert == FALSE)
+	|| (Nagur_Ausgeliefert == FALSE)
 	|| (MIS_Canthars_KomproBrief == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -861,20 +870,20 @@ func void DIA_Andre_Auslieferung_Info ()
 	Info_AddChoice (DIA_Andre_Auslieferung,"Wrócê tu jeszcze (POWRÓT)",DIA_Andre_Auslieferung_Back);
 	
 	// ------ Rengaru -----
-	if (Rengaru_InKnast == true)
-	&& (Rengaru_Ausgeliefert == false)
+	if (Rengaru_InKnast == TRUE)
+	&& (Rengaru_Ausgeliefert == FALSE)
 	{
 		Info_AddChoice (DIA_Andre_Auslieferung,"Rengaru okrad³ kupca Jorê.",DIA_Andre_Auslieferung_Rengaru);
 	};
 	// ------ Halvor ------
-	if (Betrayal_Halvor == true)
-	&& (Halvor_Ausgeliefert == false)
+	if (Betrayal_Halvor == TRUE)
+	&& (Halvor_Ausgeliefert == FALSE)
 	{
 		Info_AddChoice (DIA_Andre_Auslieferung,"Halvor sprzedaje towary pochodz¹ce z kradzie¿y.",DIA_Andre_Auslieferung_Halvor);
 	};
 	// ------ Nagur ------
 	if (MIS_Nagur_Bote == LOG_RUNNING)
-	&& (Nagur_Ausgeliefert == false)
+	&& (Nagur_Ausgeliefert == FALSE)
 	{
 		Info_AddChoice (DIA_Andre_Auslieferung,"Nagur zabi³ wys³annika Baltrama.",DIA_Andre_Auslieferung_Nagur);
 	};
@@ -907,9 +916,9 @@ func void DIA_Andre_Auslieferung_Rengaru()
 	AI_Output (self, other, "DIA_Andre_Auslieferung_Rengaru_08_02"); //Oto twoje pieni¹dze.
 	B_GiveInvItems (self, other, itmi_gold, Kopfgeld);
 	
-	Rengaru_Ausgeliefert = true;
-	MIS_ThiefGuild_sucked = true; 
-	B_GivePlayerXP(XP_BONUS_1);
+	Rengaru_Ausgeliefert = TRUE;
+	MIS_ThiefGuild_sucked = TRUE; 
+	B_GivePlayerXP (XP_Andre_Auslieferung);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 	
 	B_StartOtherRoutine (Rengaru,"PRISON");	
@@ -927,9 +936,9 @@ func void DIA_Andre_Auslieferung_Halvor()
 	
 	
 	B_StartOtherRoutine (Halvor,"PRISON");
-	MIS_ThiefGuild_sucked = true;
-	Halvor_Ausgeliefert = true;
-	B_GivePlayerXP(XP_BONUS_1);
+	MIS_ThiefGuild_sucked = TRUE;
+	Halvor_Ausgeliefert = TRUE;
+	B_GivePlayerXP (XP_Andre_Auslieferung);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
 
@@ -944,9 +953,9 @@ func void DIA_Andre_Auslieferung_Nagur()
 	B_GiveInvItems (self, other, itmi_gold, Kopfgeld);
 	
 	B_StartOtherRoutine (Nagur,"PRISON");
-	MIS_ThiefGuild_sucked = true; 
-	Nagur_Ausgeliefert = true;
-	B_GivePlayerXP(XP_BONUS_1);
+	MIS_ThiefGuild_sucked = TRUE; 
+	Nagur_Ausgeliefert = TRUE;
+	B_GivePlayerXP (XP_Andre_Auslieferung);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
 
@@ -961,13 +970,14 @@ func void DIA_Andre_Auslieferung_Canthar()
 	AI_Output (self, other, "DIA_Andre_Auslieferung_Canthar_08_03"); //Rozumiem. Z radoœci¹ wyp³acê nagrodê za tego drania. Mo¿esz uznaæ, ¿e ju¿ siedzi za kratami.
 	B_GiveInvItems (self, other, itmi_gold, Kopfgeld);
 	
+	
 	B_StartOtherRoutine (Canthar,"KNAST"); 
 	
 	MIS_Canthars_KomproBrief  = LOG_FAILED;
 	B_CheckLog ();
 	
-	Canthar_Ausgeliefert = true;
-	B_GivePlayerXP(XP_BONUS_1);
+	Canthar_Ausgeliefert = TRUE;
+	B_GivePlayerXP (XP_Andre_Auslieferung);
 	
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
@@ -989,10 +999,10 @@ func void DIA_Andre_Auslieferung_Sarah()
 	
 	B_StartOtherRoutine (Canthar,"MARKTSTAND"); 
 	
-	Sarah_Ausgeliefert = true;
+	Sarah_Ausgeliefert = TRUE;
 	
 	MIS_Canthars_KomproBrief  = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Andre_Auslieferung);
 	
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
@@ -1007,7 +1017,7 @@ instance DIA_Andre_DGRunning (C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Andre_DGRunning_Condition;
 	information	 = 	DIA_Andre_DGRunning_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Co do gildii z³odziei...";
 };
 
@@ -1015,7 +1025,7 @@ func int DIA_Andre_DGRunning_Condition ()
 {	
 	if (MIS_Andre_GuildOfThieves == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1023,7 +1033,7 @@ func void DIA_Andre_DGRunning_Info ()
 {
 	AI_Output (other, self, "DIA_Andre_DGRunning_15_00"); //Co do gildii z³odziei...
 	
-	if (Andre_Diebesgilde_aufgeraeumt == true)
+	if (Andre_Diebesgilde_aufgeraeumt == TRUE)
 	{
 		AI_Output (self, other, "DIA_Andre_DGRunning_08_01"); //Mo¿esz zapomnieæ o tej sprawie. Wys³a³em kilku ludzi do kana³ów.
 		AI_Output (self, other, "DIA_Andre_DGRunning_08_02"); //Gildia z³odziei to ju¿ tylko smutny rozdzia³ w historii tego miasta.
@@ -1052,8 +1062,8 @@ func void DIA_Andre_DGRunning_Info ()
 		Info_AddChoice(DIA_Andre_DGRunning, "Wytropi³em ich wszystkich!", DIA_Andre_DGRunning_Success);
 	};
 	
-	if ( (Cassia.aivar[AIV_TalkedToPlayer] == true) || (Jesper.aivar[AIV_TalkedToPlayer] == true) || (Ramirez.aivar[AIV_TalkedToPlayer] == true) )
-	&& (Diebesgilde_verraten == false)
+	if ( (Cassia.aivar[AIV_TalkedToPlayer] == TRUE) || (Jesper.aivar[AIV_TalkedToPlayer] == TRUE) || (Ramirez.aivar[AIV_TalkedToPlayer] == TRUE) )
+	&& (Diebesgilde_verraten == FALSE)
 	{
 		Info_AddChoice(DIA_Andre_DGRunning, "Znalaz³em kryjówkê gildii z³odziei!", DIA_Andre_DGRunning_Verrat);
 	};
@@ -1062,7 +1072,7 @@ func void DIA_Andre_DGRunning_Info ()
 func void DIA_Andre_DGRunning_BACK()
 {
 	AI_Output (other, self, "DIA_Andre_DGRunning_BACK_15_00"); //Pracujê nad tym...
-	if (Diebesgilde_verraten == true)
+	if (Diebesgilde_verraten == TRUE)
 	{
 		AI_Output (self, other, "DIA_Andre_DGRunning_BACK_08_01"); //Dobrze. Dam ci jeszcze trochê czasu na wykonanie tego zadania.
 	}
@@ -1081,17 +1091,17 @@ func void DIA_Andre_DGRunning_Verrat()
 	AI_Output (self, other, "DIA_Andre_DGRunning_Verrat_08_03"); //Co? Zamknêliœmy kana³y...
 	AI_Output (other, self, "DIA_Andre_DGRunning_Verrat_15_04"); //Wygl¹da jednak na to, ¿e to wcale nie ograniczy³o ich dostêpu do miasta.
 	AI_Output (self, other, "DIA_Andre_DGRunning_Verrat_08_05"); //Odnalaz³eœ przestêpców?
-	Diebesgilde_verraten = true;
-	DG_gefunden = true;
+	Diebesgilde_verraten = TRUE;
+	DG_gefunden = TRUE;
 };
 
 func void DIA_Andre_DGRunning_Success()
 {
 	AI_Output (other, self, "DIA_Andre_DGRunning_Success_15_00"); //Wytropi³em ich wszystkich!
 	AI_Output (self, other, "DIA_Andre_DGRunning_Success_08_01"); //Wyœwiadczy³eœ temu miastu wielk¹ przys³ugê.
-	DG_gefunden = true;
+	DG_gefunden = TRUE;
 	MIS_Andre_GuildOfThieves = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_GuildOfThievesPlatt);
 	
 	if (MIS_CassiaKelche == LOG_RUNNING)
 	{
@@ -1122,7 +1132,7 @@ instance DIA_Andre_JOIN	(C_INFO)
 	nr			 = 	100;
 	condition	 = 	DIA_Andre_JOIN_Condition;
 	information	 = 	DIA_Andre_JOIN_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Jestem gotów wst¹piæ do stra¿y!";
 };
 
@@ -1131,7 +1141,7 @@ func int DIA_Andre_JOIN_Condition ()
 	if (hero.guild == GIL_NONE) 
 	&& (Npc_KnowsInfo (other,  DIA_Andre_AskToJoin))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1140,7 +1150,7 @@ func void DIA_Andre_JOIN_Info ()
 	AI_Output (other, self, "DIA_Andre_JOIN_15_00"); //Jestem gotów wst¹piæ do stra¿y!
 	
 	//ADDON
-	if (Andre_Knows_MartinEmpfehlung == true)
+	if (Andre_Knows_MartinEmpfehlung == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Andre_JOIN_08_00"); //Martin - nasz kwatermistrz - nie tylko za ciebie rêczy, ale i gor¹co nam ciê poleca. To mnie przekonuje.
 	}
@@ -1217,7 +1227,7 @@ func void DIA_Andre_JOIN_Yes()
 	SLD_Aufnahme = LOG_OBSOLETE;
 	KDF_Aufnahme = LOG_OBSOLETE;
 	MIL_Aufnahme = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_BecomeMiliz);
 	
 	Info_ClearChoices (DIA_Andre_JOIN);
 };
@@ -1240,15 +1250,15 @@ instance DIA_Andre_LORDHAGEN		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_LORDHAGEN_Condition;
 	information	 = 	DIA_Andre_LORDHAGEN_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Czy teraz mogê siê w koñcu zobaczyæ z Lordem Hagenem?";
 };
 func int DIA_Andre_LORDHAGEN_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_LORDHAGEN_Info ()
@@ -1267,15 +1277,15 @@ instance DIA_Andre_Waffe		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_Waffe_Condition;
 	information	 = 	DIA_Andre_Waffe_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Czy ja te¿ dostanê broñ?";
 };
 func int DIA_Andre_Waffe_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Waffe_Info ()
@@ -1304,7 +1314,7 @@ instance DIA_Andre_FOUND_PECK		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_FOUND_PECK_Condition;
 	information	 = 	DIA_Andre_FOUND_PECK_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Uda³o mi siê znaleŸæ Pecka.";
 };
 
@@ -1312,9 +1322,9 @@ func int DIA_Andre_FOUND_PECK_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Peck_FOUND_PECK)
 	&& (MIS_Andre_Peck == LOG_RUNNING)
-	&& (Npc_IsDead (Peck) == false)
+	&& (Npc_IsDead (Peck) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_FOUND_PECK_Info ()
@@ -1333,7 +1343,7 @@ FUNC VOID DIA_Andre_FOUND_PECK_SOMEWHERE()
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_SOMEWHERE_08_01"); //W porz¹dku, wiêc idŸ do niego i weŸ broñ.
 	
 	MIS_Andre_Peck = LOG_OBSOLETE;// wird hier benutzt, um Unterscheidung bei Waffenausgabe zu haben, aber Mission ist trotzdem geschafft! M.F.
-	B_GivePlayerXP(XP_BONUS_0);
+	B_GivePlayerXP 		(XP_FoundPeck);
 	Info_ClearChoices 	(DIA_Andre_FOUND_PECK);
 };
 FUNC VOID DIA_Andre_FOUND_PECK_REDLIGHT()
@@ -1342,7 +1352,7 @@ FUNC VOID DIA_Andre_FOUND_PECK_REDLIGHT()
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_REDLIGHT_08_01"); //Proszê... A wiêc krêci siê ko³o dziewczynek, zamiast pe³niæ s³u¿bê.
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_REDLIGHT_08_02"); //Wydaje mi siê, ¿e muszê z nim zamieniæ s³ówko.
 	
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP 		(XP_FoundPeck*2);
 	MIS_Andre_Peck = LOG_SUCCESS;
 	Info_ClearChoices 	(DIA_Andre_FOUND_PECK);
 };
@@ -1372,14 +1382,14 @@ instance DIA_Andre_FIRSTMISSION		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_FIRSTMISSION_Condition;
 	information	 = 	DIA_Andre_FIRSTMISSION_Info;
-	permanent 	 =  false; 
+	permanent 	 =  FALSE; 
 	description	 = 	"Masz dla mnie jakieœ zadanie?";
 };
 func int DIA_Andre_FIRSTMISSION_Condition ()
 {
 	if (other.guild == GIL_MIL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_FIRSTMISSION_Info ()
@@ -1399,6 +1409,8 @@ func void DIA_Andre_FIRSTMISSION_Info ()
 	Log_CreateTopic (TOPIC_WAREHOUSE,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_WAREHOUSE,LOG_RUNNING);
 	B_LogEntry (TOPIC_WAREHOUSE,"W porcie pojawi³a siê paczka bagiennego ziela. Mortis natkn¹³ siê na ni¹ w tamtejszej knajpie. Muszê znaleŸæ tê paczkê i zanieœæ j¹ Lordowi Andre.");
+	
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info FOUND_STUFF
@@ -1410,14 +1422,14 @@ instance DIA_Andre_FOUND_STUFF		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_FOUND_STUFF_Condition;
 	information	 = 	DIA_Andre_FOUND_STUFF_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Co do tej paczki...";
 };
 func int DIA_Andre_FOUND_STUFF_Condition ()
 {	
 	if (MIS_ANDRE_WAREHOUSE == LOG_RUNNING) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_FOUND_STUFF_Info ()
@@ -1452,8 +1464,9 @@ FUNC VOID DIA_Andre_FOUND_STUFF_Ja()
 	
 	MIS_ANDRE_WAREHOUSE = LOG_SUCCESS;
 	MIS_Cipher_Paket = LOG_FAILED;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Warehouse_Super*2);
 	Info_ClearChoices 	(DIA_Andre_FOUND_STUFF);
+	
 };
 FUNC VOID DIA_Andre_FOUND_STUFF_Becken()
 {
@@ -1462,7 +1475,7 @@ FUNC VOID DIA_Andre_FOUND_STUFF_Becken()
 	B_AndreSold ();
 	
 	MIS_ANDRE_WAREHOUSE = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Warehouse_Super);
 	Info_ClearChoices 	(DIA_Andre_FOUND_STUFF);
 };	
 	
@@ -1477,16 +1490,16 @@ instance DIA_Andre_FIND_DEALER		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_FIND_DEALER_Condition;
 	information	 = 	DIA_Andre_FIND_DEALER_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Masz dla mnie inne zadanie?";
 };
 
 func int DIA_Andre_FIND_DEALER_Condition ()
 {	
 	if (MIS_ANDRE_WAREHOUSE == LOG_SUCCESS)
-	&& (Npc_IsDead (Borka)== false)
+	&& (Npc_IsDead (Borka)== FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_FIND_DEALER_Info ()
@@ -1518,36 +1531,36 @@ instance DIA_Andre_REDLIGHT_SUCCESS		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Andre_REDLIGHT_SUCCESS_Condition;
 	information	 = 	DIA_Andre_REDLIGHT_SUCCESS_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Co do tego ziela...";
 };
 func int DIA_Andre_REDLIGHT_SUCCESS_Condition ()
 {
 	if  (MIS_Andre_REDLIGHT == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_REDLIGHT_SUCCESS_Info ()
 {
 	AI_Output (other, self, "DIA_Andre_REDLIGHT_SUCCESS_15_00"); //Co do tego ziela...
 	
-	if (Npc_IsDead (Borka) == true)
-	|| (Undercover_Failed == true)
+	if (Npc_IsDead (Borka) == TRUE)
+	|| (Undercover_Failed == TRUE)
 	{
 		AI_Output (self, other, "DIA_Andre_REDLIGHT_SUCCESS_08_01"); //W¹tpiê, ¿ebyœmy teraz dowiedzieli siê czegoœ w dzielnicy portowej.
 		
-		if  (Npc_IsDead (Borka) == true)
+		if  (Npc_IsDead (Borka) == TRUE)
 		{
 			AI_Output (self, other, "DIA_Andre_REDLIGHT_SUCCESS_08_02"); //Skoro ten wykidaj³o nie ¿yje...
 		};
 		
-		if (Nadja_Victim == true)
+		if (Nadja_Victim == TRUE)
 		{
 			AI_Output (self, other, "DIA_Andre_REDLIGHT_SUCCESS_08_03"); //Ta dziewczyna z 'Czerwonej Latarni', Nadia, nie ¿yje. To by³ pewnie jakiœ dziwaczny wypadek.
 			B_RemoveNpc (Nadja);
 		};
-		if (Undercover_Failed == true)
+		if (Undercover_Failed == TRUE)
 		{
 			AI_Output (self, other, "DIA_Andre_REDLIGHT_SUCCESS_08_04"); //By³eœ za ma³o dyskretny.
 		};
@@ -1563,7 +1576,7 @@ func void DIA_Andre_REDLIGHT_SUCCESS_Info ()
 		
 		B_StartOtherRoutine (Borka, "PRISON");
 		MIS_Andre_REDLIGHT = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_1);
+		B_GivePlayerXP (XP_Redlight);
 		B_AndreSold ();
 	}
 	else 
@@ -1588,7 +1601,7 @@ func int DIA_Andre_HILFBAUERLOBART_Condition ()
 {	
 	if (MIS_ANDRE_WAREHOUSE == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_HILFBAUERLOBART_Info ()
@@ -1639,14 +1652,14 @@ func int DIA_Andre_LOBART_SUCCESS_Condition ()
 {	
 	if (MIS_AndreHelpLobart == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_LOBART_SUCCESS_Info ()
 {
 	AI_Output (other, self, "DIA_Andre_LOBART_SUCCESS_15_00"); //Pomog³em Lobartowi.
 	AI_Output (self, other, "DIA_Andre_LOBART_SUCCESS_08_01"); //Doskonale. Skoro Lobart jest zadowolony, to bêdzie nadal sprzedawa³ swoje rzepy w mieœcie.
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_LobartBugs);
 	B_AndreSold ();
 };
 
@@ -1667,7 +1680,7 @@ func int DIA_Addon_Andre_MissingPeople_Condition ()
 	if (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_RUNNING)
 	&& (other.guild == GIL_MIL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Andre_MissingPeople_Info ()
@@ -1699,9 +1712,9 @@ func int DIA_Addon_Andre_MissingPeople2_Condition ()
 {
 	if (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_RUNNING)
 	&& (other.guild != GIL_MIL)
-	&& (SCKnowsMissingPeopleAreInAddonWorld == false)
+	&& (SCKnowsMissingPeopleAreInAddonWorld == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Andre_MissingPeople2_Info ()
@@ -1726,10 +1739,10 @@ instance DIA_Addon_Andre_ReturnedMissingPeople		(C_INFO)
 
 func int DIA_Addon_Andre_ReturnedMissingPeople_Condition ()
 {
-	if (MissingPeopleReturnedHome == true)
+	if (MissingPeopleReturnedHome == TRUE)
 	&& (MIS_Addon_Andre_MissingPeople == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1753,7 +1766,7 @@ func void DIA_Addon_Andre_ReturnedMissingPeople_Info ()
 	AI_Output (self, other, "DIA_Addon_Andre_ReturnedMissingPeople_08_08"); //To wspania³e osi¹gniêcie.
 
 	MIS_Addon_Andre_MissingPeople = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP (XP_Addon_Andre_MissingPeople);
 };
 
 
@@ -1780,15 +1793,15 @@ instance DIA_Andre_BerichtDrachen		(C_INFO)
 	nr 			= 1;
 	condition	 = 	DIA_Andre_BerichtDrachen_Condition;
 	information	 = 	DIA_Andre_BerichtDrachen_Info;
-	permanent	 =	false;
+	permanent	 =	FALSE;
 	description	 = 	"By³em w Górniczej Dolinie i widzia³em smoki!";
 };
 func int DIA_Andre_BerichtDrachen_Condition ()
 {	
-	if (EnterOW_Kapitel2 == true)
+	if (EnterOW_Kapitel < 2)
 	&& (MIS_OLDWORLD != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_BerichtDrachen_Info ()
@@ -1813,14 +1826,14 @@ instance DIA_Andre_BennetInPrison		(C_INFO)
 	npc			 = 	Mil_311_Andre;
 	condition	 = 	DIA_Andre_BennetInPrison_Condition;
 	information	 = 	DIA_Andre_BennetInPrison_Info;
-	permanent	 =	true;
+	permanent	 =	TRUE;
 	description	 = 	"Co siê dzieje z kowalem Bennetem?";
 };
 func int DIA_Andre_BennetInPrison_Condition ()
 {	
 	if (MIS_RescueBennet == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_BennetInPrison_Info ()
@@ -1840,15 +1853,15 @@ instance DIA_Andre_Cornelius_Liar		(C_INFO)
 	npc			 = 	Mil_311_Andre;
 	condition	 = 	DIA_Andre_Cornelius_Liar_Condition;
 	information	 = 	DIA_Andre_Cornelius_Liar_Info;
-	permanent	 =	true;
+	permanent	 =	TRUE;
 	description	 = 	"Myœlê, ¿e Cornelius k³amie.";
 };
 func int DIA_Andre_Cornelius_Liar_Condition ()
 {	
-	if (Cornelius_ThreatenByMilSC == true)
-	&& (CorneliusFlee != true)
+	if (Cornelius_ThreatenByMilSC == TRUE)
+	&& (CorneliusFlee != TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Cornelius_Liar_Info ()
@@ -1876,7 +1889,7 @@ FUNC VOID DIA_Andre_Cornelius_Liar_Yes()
 	AI_Output (other,self ,"DIA_Andre_Cornelius_Liar_Yes_15_00"); //Tak.
 	AI_Output (self ,other,"DIA_Andre_Cornelius_Liar_Yes_08_01"); //Jaki masz na to dowód?
 	
-	if (Cornelius_IsLiar == true)
+	if (Cornelius_IsLiar == TRUE)
 	{
 		AI_Output (other,self ,"DIA_Andre_Cornelius_Liar_Yes_15_02"); //Czyta³em jego dziennik! Przekupili go. To wszystko by³ stek k³amstw.
 		AI_Output (self ,other,"DIA_Andre_Cornelius_Liar_Yes_08_03"); //Skoro tak, musisz natychmiast iœæ do Lorda Hagena.
@@ -1901,14 +1914,14 @@ instance DIA_Andre_Paladin		(C_INFO)
 	npc			 = 	Mil_311_Andre;
 	condition	 = 	DIA_Andre_Paladin_Condition;
 	information	 = 	DIA_Andre_Paladin_Info;
-	permanent	 =	false;
-	important	 = 	true;
+	permanent	 =	FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Andre_Paladin_Condition ()
 {	
 	if (other.guild == GIL_PAL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_Paladin_Info ()
@@ -1927,14 +1940,14 @@ instance DIA_Andre_PERM		(C_INFO)
 	nr 			 = 100;
 	condition	 = DIA_Andre_PERM_Condition;
 	information	 = DIA_Andre_PERM_Info;
-	permanent	 = true;
+	permanent	 = TRUE;
 	description	 = "Jak wygl¹da sytuacja w mieœcie?";
 };
 func int DIA_Andre_PERM_Condition ()
 {	
 	if (other.guild != GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_PERM_Info ()
@@ -1968,14 +1981,14 @@ instance DIA_Andre_BerichtDrachenTot		(C_INFO)
 	nr 			= 1;
 	condition	 = 	DIA_Andre_BerichtDrachenTot_Condition;
 	information	 = 	DIA_Andre_BerichtDrachenTot_Info;
-	permanent	 =	false;
+	permanent	 =	FALSE;
 	description	 = 	"Zabi³em wszystkie smoki w Górniczej Dolinie!";
 };
 func int DIA_Andre_BerichtDrachenTot_Condition ()
 {	
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_BerichtDrachenTot_Info ()
@@ -1995,16 +2008,16 @@ instance DIA_Andre_BerichtTorAuf (C_INFO)
 	nr 			= 1;
 	condition	 = 	DIA_Andre_BerichtTorAuf_Condition;
 	information	 = 	DIA_Andre_BerichtTorAuf_Info;
-	permanent	 =	false;
+	permanent	 =	FALSE;
 	description	 = 	"Zamek w Górniczej Dolinie zosta³ zaatakowany przez orków!";
 };
 func int DIA_Andre_BerichtTorAuf_Condition ()
 {	
-	if (Kapitel == 11)
-	&& (MIS_OCGateOpen == true)
+	if (Kapitel == 5)
+	&& (MIS_OCGateOpen == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Andre_BerichtDrachenTot))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Andre_BerichtTorAuf_Info ()
@@ -2013,3 +2026,24 @@ func void DIA_Andre_BerichtTorAuf_Info ()
 	AI_Output (self ,other,"DIA_Andre_Add_08_09"); //Nie! Lord Hagen musi o tym us³yszeæ.
 	B_Andre_GotoLordHagen();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,15 +8,15 @@ INSTANCE DIA_Keroloth_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Keroloth_EXIT_Condition;
 	information	= DIA_Keroloth_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Keroloth_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -34,15 +34,15 @@ INSTANCE DIA_Keroloth_HELLO(C_INFO)
 	nr			= 2;
 	condition	= DIA_Keroloth_HELLO_Condition;
 	information	= DIA_Keroloth_HELLO_Info;
-	permanent	= false;
-	important	= true;	
+	permanent	= FALSE;
+	important	= TRUE;	
 };                       
 
 FUNC INT DIA_Keroloth_HELLO_Condition()
 {
 	if Npc_IsInState (self,ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -61,15 +61,15 @@ INSTANCE DIA_Keroloth_WantTeach(C_INFO)
 	nr			= 3;
 	condition	= DIA_Keroloth_WantTeach_Condition;
 	information	= DIA_Keroloth_WantTeach_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mo¿esz mnie te¿ czegoœ nauczyæ?";
 };                       
 
 FUNC INT DIA_Keroloth_WantTeach_Condition()
 {
-	if (Keroloths_BeutelLeer == false)
+	if (Keroloths_BeutelLeer == FALSE)
 	{
-	 	return true;
+	 	return TRUE;
 	};
 };
  
@@ -80,14 +80,158 @@ FUNC VOID DIA_Keroloth_WantTeach_Info()
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_02"); //Jeœli chcesz tu przetrwaæ, to poza talentem bêdziesz potrzebowa³ dobrej broni.
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_03"); //Zapytaj rycerza Tandora. On siê tob¹ zajmie.
 		
-	self.aivar[AIV_CanTeach] = true;
+	Keroloth_TeachPlayer = TRUE;
 	Log_CreateTopic (TOPIC_Teacher_OC,LOG_NOTE);
 	B_LogEntry (TOPIC_Teacher_OC,"Keroloth udziela na zamku lekcji walki mieczem.");
 	
 	Log_CreateTopic (TOPIC_Trader_OC,LOG_NOTE);
 	B_LogEntry (TOPIC_Trader_OC,"Tandor handluje na zamku broni¹.");
 };
+//***********************************************
+//	Kampflehrer EINHAND
+//***********************************************
 
+INSTANCE DIA_Keroloth_Teacher(C_INFO)
+{
+	npc			= PAL_258_Keroloth;
+	nr			= 6;
+	condition	= DIA_Keroloth_Teacher_Condition;
+	information	= DIA_Keroloth_Teacher_Info;
+	permanent	= TRUE;
+	description = "(Nauka walki broni¹ jednorêczn¹)";
+};                       
+
+FUNC INT DIA_Keroloth_Teacher_Condition()
+{
+	if (Keroloth_TeachPlayer == TRUE)
+	&& (Keroloths_BeutelLeer == FALSE)
+	{
+		return TRUE;
+	};
+};
+ 
+FUNC VOID DIA_Keroloth_Teacher_Info()
+{	
+	AI_Output 	(other,self ,"DIA_Keroloth_Teacher_15_00"); //Chcê siê szkoliæ!
+	
+	Info_ClearChoices 	(DIA_Keroloth_Teacher);
+	Info_AddChoice 		(DIA_Keroloth_Teacher,DIALOG_BACK,DIA_Keroloth_Teacher_Back);
+	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Keroloth_Teacher_1H_1);
+	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Keroloth_Teacher_1H_5);
+};
+
+FUNC VOID DIA_Keroloth_Teacher_Back ()
+{
+	Info_ClearChoices (DIA_Keroloth_Teacher);
+};
+
+FUNC VOID B_Keroloth_TeachNoMore1 ()
+{
+	AI_Output(self,other,"B_Keroloth_TeachNoMore1_07_00"); //Jesteœ bardzo dobry. Niczego ju¿ ciê nie mogê nauczyæ.
+};
+
+FUNC VOID B_Keroloth_TeachNoMore2 ()
+{
+	AI_Output(self,other,"B_Keroloth_TeachNoMore2_07_00"); //Teraz mo¿e ci pomóc tylko wyszkolony mistrz miecza.
+};
+
+FUNC VOID DIA_Keroloth_Teacher_1H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
+	
+	if (other.HitChance[NPC_TALENT_1H] >= 60)
+	{
+		B_Keroloth_TeachNoMore1	();
+		
+		if (Npc_GetTalentSkill (other, NPC_TALENT_1H) == 2)
+		{
+			B_Keroloth_TeachNoMore2	();
+		};
+	};
+	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Keroloth_Teacher_1H_1);
+};
+
+FUNC VOID DIA_Keroloth_Teacher_1H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
+	
+	if (other.HitChance[NPC_TALENT_1H] >= 60)
+	{
+		B_Keroloth_TeachNoMore1	();
+		
+		if (Npc_GetTalentSkill (other, NPC_TALENT_1H) == 2)
+		{
+			B_Keroloth_TeachNoMore2	();
+		};
+	};
+	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Keroloth_Teacher_1H_5);
+};
+//**************************************
+//		Kampflehrer ZWEIHAND
+//**************************************
+INSTANCE DIA_Keroloth_Teach(C_INFO)
+{
+	npc			= PAL_258_Keroloth;
+	nr			= 100;
+	condition	= DIA_Keroloth_Teach_Condition;
+	information	= DIA_Keroloth_Teach_Info;
+	permanent	= TRUE;
+	description = "(Nauka walki broni¹ dwurêczn¹)";
+};                       
+//----------------------------------
+var int DIA_Keroloth_Teach_permanent;
+//----------------------------------
+FUNC INT DIA_Keroloth_Teach_Condition()
+{
+	if (Keroloth_TeachPlayer == TRUE)
+	&& (Keroloths_BeutelLeer == FALSE)
+	&& (DIA_Keroloth_Teach_permanent == FALSE)
+	&& (other.HitChance[NPC_TALENT_2H] < 60)
+	{
+		return TRUE;
+	};	
+};
+ 
+FUNC VOID DIA_Keroloth_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Keroloth_Teach_15_00"); //Zaczynajmy.
+	
+	Info_ClearChoices 	(DIA_Keroloth_Teach);
+	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);
+
+};
+FUNC VOID DIA_Keroloth_Teach_Back ()
+{
+	if (other.HitChance[NPC_TALENT_2H] >= 60)
+	{
+		B_Keroloth_TeachNoMore1	();
+		
+		DIA_Keroloth_Teach_permanent = TRUE;
+	};
+	Info_ClearChoices (DIA_Keroloth_Teach);
+};
+
+FUNC VOID DIA_Keroloth_Teach_2H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 60);
+	
+	Info_ClearChoices 	(DIA_Keroloth_Teach);
+	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);	
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);	
+};
+
+FUNC VOID DIA_Keroloth_Teach_2H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 60);
+	
+	Info_ClearChoices 	(DIA_Keroloth_Teach);
+	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);	
+	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);	
+};
 //************************************
 //	Suche andere Lehrer
 //************************************
@@ -98,16 +242,16 @@ INSTANCE DIA_Keroloth_Udar(C_INFO)
 	nr			= 4;
 	condition	= DIA_Keroloth_Udar_Condition;
 	information	= DIA_Keroloth_Udar_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A co z walk¹ na dystans?";
 };                       
 
 FUNC INT DIA_Keroloth_Udar_Condition()
 {
-	if (self.aivar[AIV_CanTeach] > false)
-	&& (Keroloths_BeutelLeer == false)
+	if (Keroloth_TeachPlayer == TRUE)
+	&& (Keroloths_BeutelLeer == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -117,6 +261,7 @@ FUNC VOID DIA_Keroloth_Udar_Info()
 	AI_Output	(self ,other,"DIA_Keroloth_Udar_07_01"); //O co chodzi?
 	AI_Output 	(other,self ,"DIA_Keroloth_Udar_15_02"); //Czy tego te¿ mo¿esz mnie nauczyæ?
 	AI_Output	(self ,other,"DIA_Keroloth_Udar_07_03"); //Nie, ale mo¿esz zapytaæ Udara, to dobry - nie, to NAJLEPSZY kusznik, jakiego znam.
+	
 	
 	Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
 	B_LogEntry		(TOPIC_Teacher_OC, "Udar, mieszkaniec zamku w Górniczej Dolinie, wie wszystko na temat pos³ugiwania siê kusz¹.");
@@ -139,14 +284,14 @@ INSTANCE DIA_Keroloth_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Keroloth_KAP3_EXIT_Condition;
 	information	= DIA_Keroloth_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Keroloth_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Keroloth_KAP3_EXIT_Info()
@@ -173,14 +318,14 @@ INSTANCE DIA_Keroloth_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Keroloth_KAP4_EXIT_Condition;
 	information	= DIA_Keroloth_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Keroloth_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Keroloth_KAP4_EXIT_Info()
@@ -203,9 +348,9 @@ instance DIA_Keroloth_KAP4_HELLO		(C_INFO)
 
 func int DIA_Keroloth_KAP4_HELLO_Condition ()
 {
-	if (Kapitel >= 10)	
+	if (Kapitel >= 4)	
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -219,6 +364,8 @@ func void DIA_Keroloth_KAP4_HELLO_Info ()
 	Info_AddChoice	(DIA_Keroloth_KAP4_HELLO, "Paladyn nie powinien traciæ panowania nad sob¹.", DIA_Keroloth_KAP4_HELLO_ruhig );
  	Info_AddChoice	(DIA_Keroloth_KAP4_HELLO, "Ktoœ ciê okrad³?", DIA_Keroloth_KAP4_HELLO_bestohlen );
 	Info_AddChoice	(DIA_Keroloth_KAP4_HELLO, "Ale o kim mowa?", DIA_Keroloth_KAP4_HELLO_pack );
+
+
 };
 func void DIA_Keroloth_KAP4_HELLO_ende ()
 {
@@ -245,6 +392,7 @@ func void DIA_Keroloth_KAP4_HELLO_bestohlen_wasfehlt ()
 	Log_SetTopicStatus(TOPIC_KerolothsGeldbeutel, LOG_RUNNING);
 	B_LogEntry (TOPIC_KerolothsGeldbeutel,"Paladyn Keroloth straci³ swoj¹ sakiewkê. Twierdzi, ¿e ukradli mu j¹ ³owcy smoków."); 
 
+
 	Info_ClearChoices	(DIA_Keroloth_KAP4_HELLO);
 };
 
@@ -270,6 +418,7 @@ func void DIA_Keroloth_KAP4_HELLO_ruhig ()
 	AI_Output			(self, other, "DIA_Keroloth_KAP4_HELLO_ruhig_07_01"); //Nie chcê siê uspokoiæ. To by³o wszystko co mia³em, niech to cholera!
 };
 
+
 ///////////////////////////////////////////////////////////////////////
 //	Info GELDGEFUNDEN
 ///////////////////////////////////////////////////////////////////////
@@ -291,20 +440,20 @@ func int DIA_Keroloth_KAP4_GELDGEFUNDEN_Condition ()
 			|| (Npc_HasItems (other,ItMi_KerolothsGeldbeutelLeer_MIS))
 			)		
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 func void DIA_Keroloth_KAP4_GELDGEFUNDEN_Info ()
 {
 	AI_Output			(other, self, "DIA_Keroloth_KAP4_GELDGEFUNDEN_15_00"); //Chyba znalaz³em twoj¹ sakiewkê.
-	TOPIC_END_KerolothsGeldbeutel = true;
-	B_GivePlayerXP(XP_BONUS_4);
+	TOPIC_END_KerolothsGeldbeutel = TRUE;
+	B_GivePlayerXP (XP_KerolothsGeldbeutel);
 	if (B_GiveInvItems (other, self, ItMi_KerolothsGeldbeutelLeer_MIS,1))
 	{
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_GELDGEFUNDEN_07_01"); //Sakiewka jest pusta. Co za œwinia to zrobi³a?
 	
-		Keroloths_BeutelLeer = true;
+		Keroloths_BeutelLeer = TRUE;
 	};
 	if (B_GiveInvItems (other, self, ItMi_KerolothsGeldbeutel_MIS,1))
 	{
@@ -363,19 +512,19 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_DJG ()
 		};
 
 	AI_StopProcessInfos	(self);
-	other.aivar[AIV_INVINCIBLE] = false;
+	other.aivar[AIV_INVINCIBLE] = FALSE;
 
-	if (Npc_IsDead(Ferros) == false)
+	if (Npc_IsDead(Ferros) == FALSE)
 		&& ((Npc_GetDistToNpc(self, Ferros)) <= 2000)
 		{
 			B_Attack (self, Ferros, AR_NONE, 1);
 		}
-	else if (Npc_IsDead(Jan) == false)
+	else if (Npc_IsDead(Jan) == FALSE)
 		&& ((Npc_GetDistToNpc(self, Jan)) <= 2000)
 		{
 			B_Attack (self, Jan, AR_NONE, 1);
 		}
-	else if (Npc_IsDead(Rethon) == false)
+	else if (Npc_IsDead(Rethon) == FALSE)
 		&& ((Npc_GetDistToNpc(self, Rethon)) <= 2000)
 		{
 			B_Attack (self, Rethon, AR_NONE, 1);
@@ -392,7 +541,7 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_Lohn ()
 {
 	AI_Output			(other, self, "DIA_Keroloth_KAP4_GELDGEFUNDEN_Lohn_15_00"); //Chwileczkê. A co z nagrod¹?
 	
- 	if (Keroloths_BeutelLeer == true)
+ 	if (Keroloths_BeutelLeer == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_GELDGEFUNDEN_Lohn_07_01"); //To twoja ostatnia deska ratunku. Ju¿ dawno nie dosta³eœ po zêbach, co?
 		AI_StopProcessInfos	(self);
@@ -403,7 +552,7 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_Lohn ()
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_GELDGEFUNDEN_Lohn_07_02"); //Argh. Dobra. Masz tu parê monet. A teraz gadaj, kto to zrobi³?
 		CreateInvItems (self, ItMi_Gold, 50);									
 		B_GiveInvItems (self, other, ItMi_Gold, 50);					
-		Keroloth_HasPayed = true;
+		Keroloth_HasPayed = TRUE;
 	};
 };
 
@@ -416,7 +565,7 @@ instance DIA_Keroloth_KAP4_BELOHNUNG		(C_INFO)
 	nr		 = 	43;
 	condition	 = 	DIA_Keroloth_KAP4_BELOHNUNG_Condition;
 	information	 = 	DIA_Keroloth_KAP4_BELOHNUNG_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Chcê moje znaleŸne za sakiewkê.";
 };
@@ -424,10 +573,10 @@ instance DIA_Keroloth_KAP4_BELOHNUNG		(C_INFO)
 func int DIA_Keroloth_KAP4_BELOHNUNG_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Keroloth_KAP4_GELDGEFUNDEN))
- 		&& (Keroloth_HasPayed == false)
+ 		&& (Keroloth_HasPayed == FALSE)
  		&& (hero.guild != GIL_KDF)
  		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -435,7 +584,7 @@ func void DIA_Keroloth_KAP4_BELOHNUNG_Info ()
 {
  	AI_Output			(other, self, "DIA_Keroloth_KAP4_BELOHNUNG_15_00"); //Chcê moje znaleŸne za sakiewkê.
 
-	if ((Keroloths_BeutelLeer == true) || (hero.guild == GIL_DJG))
+	if ((Keroloths_BeutelLeer == TRUE) || (hero.guild == GIL_DJG))
 	{
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_BELOHNUNG_07_01"); //Mo¿esz dostaæ w szczêkê!
 		AI_StopProcessInfos	(self);
@@ -448,7 +597,7 @@ func void DIA_Keroloth_KAP4_BELOHNUNG_Info ()
 		CreateInvItems (self, ItMi_Gold, 50);									
 		B_GiveInvItems (self, other, ItMi_Gold, 50);					
 		
-		Keroloth_HasPayed = true;
+		Keroloth_HasPayed = TRUE;
 	};
 };
 
@@ -461,7 +610,7 @@ instance DIA_Keroloth_KAP4_ENTSPANNDICH		(C_INFO)
 	nr		 = 	44;
 	condition	 = 	DIA_Keroloth_KAP4_ENTSPANNDICH_Condition;
 	information	 = 	DIA_Keroloth_KAP4_ENTSPANNDICH_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Spokojnie.";
 };
@@ -469,10 +618,10 @@ instance DIA_Keroloth_KAP4_ENTSPANNDICH		(C_INFO)
 func int DIA_Keroloth_KAP4_ENTSPANNDICH_Condition ()
 {
 	if ((Npc_KnowsInfo(other, DIA_Keroloth_KAP4_GELDGEFUNDEN))
-		&& (Kapitel >= 10))
-		|| (MIS_OCGateOpen == true)
+		&& (Kapitel >= 4))
+		|| (MIS_OCGateOpen == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -484,7 +633,7 @@ func void DIA_Keroloth_KAP4_ENTSPANNDICH_Info ()
 	{
 	AI_Output			(self, other, "DIA_Keroloth_KAP4_ENTSPANNDICH_07_01"); //Tak Mistrzu. Postaram siê.
 	}
-	else if (MIS_OCGateOpen == true)
+	else if (MIS_OCGateOpen == TRUE)
 	{
 	AI_Output			(self, other, "DIA_Keroloth_KAP4_ENTSPANNDICH_07_02"); //Nie mogê tego udowodniæ, ale uwa¿am, ¿e ty jesteœ zdrajc¹, który otworzy³ wrota.
 	AI_Output			(self, other, "DIA_Keroloth_KAP4_ENTSPANNDICH_07_03"); //Teraz za to zap³acisz.
@@ -517,14 +666,14 @@ INSTANCE DIA_Keroloth_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Keroloth_KAP5_EXIT_Condition;
 	information	= DIA_Keroloth_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Keroloth_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Keroloth_KAP5_EXIT_Info()
@@ -552,14 +701,14 @@ INSTANCE DIA_Keroloth_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Keroloth_KAP6_EXIT_Condition;
 	information	= DIA_Keroloth_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Keroloth_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Keroloth_KAP6_EXIT_Info()

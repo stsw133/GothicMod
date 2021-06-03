@@ -7,13 +7,13 @@ INSTANCE DIA_Cassia_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Cassia_EXIT_Condition;
 	information = DIA_Cassia_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Cassia_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Cassia_EXIT_Info()
@@ -30,18 +30,18 @@ INSTANCE DIA_Cassia_Gilde   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Cassia_Gilde_Condition;
 	information = DIA_Cassia_Gilde_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Cassia_Gilde_Condition()
 {	
-	if (Cassia_Gildencheck == true)
-	&& (Join_Thiefs == true)
+	if (Cassia_Gildencheck == TRUE)
+	&& (Join_Thiefs == TRUE)
 	&& ((other.guild == GIL_MIL)
 	|| (other.guild == GIL_PAL)
 	|| (other.guild == GIL_KDF))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Gilde_Info()
@@ -57,7 +57,9 @@ FUNC VOID DIA_Cassia_Gilde_Info()
 		AI_Output (self, other, "DIA_Cassia_Gilde_16_02");//Nale¿ysz teraz do koœcio³a Innosa, ale wci¹¿ jesteœ jednym z nas - mam nadziejê, ¿e o tym nie zapomnisz.
 	};
 	
+	
 	AI_StopProcessInfos (self);
+	
 };
 //////////////////////////////////////////////////////////////////////
 //	Info Frist abgelaufen
@@ -68,17 +70,17 @@ INSTANCE DIA_Cassia_Abgelaufen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Abgelaufen_Condition;
 	information = DIA_Cassia_Abgelaufen_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 
 FUNC INT DIA_Cassia_Abgelaufen_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (Cassia_Frist == true)  
-	&& (Cassia_Day < (B_GetDayPlus()-2))
+	&& (Cassia_Frist == TRUE)  
+	&& (Cassia_Day < (B_GetDayPlus() -2))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Abgelaufen_Info()
@@ -96,20 +98,20 @@ INSTANCE DIA_Cassia_News   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Cassia_News_Condition;
 	information = DIA_Cassia_News_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Cassia_News_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (self.aivar [AIV_TalkedToPlayer] == false)
+	&& (self.aivar [AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_News_Info()
 {
-	if (MIS_ThiefGuild_sucked == false)
+	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Cassia_News_16_00");//Widzê, ¿e dosta³eœ nasz prezent. Jestem Cassia.
 		AI_Output (other, self, "DIA_Cassia_News_15_01");//W porz¹dku, powiedz mi, dlaczego tu jestem?
@@ -127,11 +129,11 @@ FUNC VOID DIA_Cassia_News_Info()
 	};
 	if  (Npc_GetTrueGuild (other) == GIL_NONE)
 	||  (Npc_GetTrueGuild (other) == GIL_NOV)
-	{
-		Cassia_Gildencheck = true;
+	{	
+		Cassia_Gildencheck = TRUE;
 	};
 	
-	DG_gefunden = true;
+	DG_gefunden = TRUE;
 };
 //////////////////////////////////////////////////////////////////////
 //	Info Erzähle mir mehr 
@@ -142,13 +144,13 @@ INSTANCE DIA_Cassia_mehr   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_mehr_Condition;
 	information = DIA_Cassia_mehr_Info;
-	permanent   = false;
-	description = "Opowiedz mi wiêcej o waszej organizacji.";
+	permanent   = FALSE;
+	description = "Erzähl mir mehr von euch.";
 };
 
 FUNC INT DIA_Cassia_mehr_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Cassia_mehr_Info()
@@ -168,16 +170,16 @@ INSTANCE DIA_Cassia_MissingPeople   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_MissingPeople_Condition;
 	information = DIA_Cassia_MissingPeople_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿esz mi coœ powiedzieæ o zaginionych mieszkañcach miasta?";
 };
 
 FUNC INT DIA_Cassia_MissingPeople_Condition()
 {
-	if (SC_HearedAboutMissingPeople == true)
-	&& (MissingPeopleReturnedHome == false)
+	if (SC_HearedAboutMissingPeople == TRUE)
+	&& (MissingPeopleReturnedHome == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -200,13 +202,13 @@ INSTANCE DIA_Cassia_Vorteil   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Cassia_Vorteil_Condition;
 	information = DIA_Cassia_Vorteil_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jeœli do was do³¹czê, to co bêdê z tego mia³?";
 };
 
 FUNC INT DIA_Cassia_Vorteil_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Cassia_Vorteil_Info()
@@ -225,7 +227,7 @@ INSTANCE DIA_Cassia_Lernen  (C_INFO)
 	nr          = 4;
 	condition   = DIA_Cassia_Lernen_Condition;
 	information = DIA_Cassia_Lernen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Czego mogê siê od was nauczyæ?";
 };
 
@@ -233,7 +235,7 @@ FUNC INT DIA_Cassia_Lernen_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Cassia_Vorteil)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Lernen_Info()
@@ -258,7 +260,7 @@ INSTANCE DIA_Cassia_Regeln   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Cassia_Regeln_Condition;
 	information = DIA_Cassia_Regeln_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jakie s¹ wasze zasady?";
 };
 
@@ -266,12 +268,13 @@ FUNC INT DIA_Cassia_Regeln_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Cassia_Vorteil)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Regeln_Info()
 {
 	AI_Output (other, self, "DIA_Cassia_Regeln_15_00");//Jakie s¹ wasze zasady?
+	//AI_Output (self, other, "DIA_Cassia_Regeln_16_01");//Wir richten uns nach drei Regeln.
 	AI_Output (self, other, "DIA_Cassia_Regeln_16_02");//Zasada pierwsza: ani s³owa o nas. Nikomu. Nigdy.
 	AI_Output (self, other, "DIA_Cassia_Regeln_16_03");//Druga: nie daj siê z³apaæ.
 	AI_Output (self, other, "DIA_Cassia_Regeln_16_04");//Trzecia: je¿eli wyci¹gniesz tu broñ, ¿eby kogoœ zaatakowaæ, zabijemy ciê.
@@ -286,7 +289,7 @@ INSTANCE DIA_Cassia_Erwischen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Erwischen_Condition;
 	information = DIA_Cassia_Erwischen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co siê stanie, jak mnie z³api¹?";
 };
 
@@ -294,7 +297,7 @@ FUNC INT DIA_Cassia_Erwischen_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Cassia_Regeln)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Erwischen_Info()
@@ -311,7 +314,7 @@ INSTANCE DIA_Cassia_beweisen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_beweisen_Condition;
 	information = DIA_Cassia_beweisen_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak mam dowieœæ swojej wartoœci?";
 };
 //--------------------------------------
@@ -320,16 +323,16 @@ var int DIA_Cassia_beweisen_permanent;
 FUNC INT DIA_Cassia_beweisen_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Cassia_Regeln)
-	&& (DIA_Cassia_beweisen_permanent == false)
+	&& (DIA_Cassia_beweisen_permanent == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_beweisen_Info()
 {
 	AI_Output (other, self, "DIA_Cassia_beweisen_15_00");//Jak mam dowieœæ swojej wartoœci?
 	
-	if (Join_Thiefs == false)
+	if (Join_Thiefs == FALSE)
 	{
 		AI_Output (self, other, "DIA_Cassia_beweisen_16_01");//Do³¹czysz do nas czy nie?
 	}
@@ -339,7 +342,7 @@ FUNC VOID DIA_Cassia_beweisen_Info()
 		AI_Output (self, other, "DIA_Cassia_beweisen_16_03");//Nie jest mu on potrzebny. Chcê, by przyozdobi³ moj¹ d³oñ.
 		
 		MIS_CassiaRing = LOG_RUNNING;
-		DIA_Cassia_beweisen_permanent = true;
+		DIA_Cassia_beweisen_permanent = TRUE;
 		
 		Log_CreateTopic(Topic_CassiaRing,LOG_MISSION);
 		Log_SetTopicStatus (Topic_CassiaRing,LOG_RUNNING);
@@ -355,16 +358,16 @@ INSTANCE DIA_Cassia_Beitreten   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Cassia_Beitreten_Condition;
 	information = DIA_Cassia_Beitreten_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dobra, niech bêdzie.";
 };
 
 FUNC INT DIA_Cassia_Beitreten_Condition()
 {	
-	if (Join_Thiefs == false)
+	if (Join_Thiefs == FALSE)
 	&& Npc_KnowsInfo (other, DIA_Cassia_Regeln)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Beitreten_Info()
@@ -372,7 +375,7 @@ FUNC VOID DIA_Cassia_Beitreten_Info()
 	AI_Output (other, self, "DIA_Cassia_Beitreten_15_00");//Dobra, niech bêdzie.
 	AI_Output (self, other, "DIA_Cassia_Beitreten_16_01");//Œwietnie. Bêdziesz mia³ okazjê dowieœæ swej wartoœci. Jeœli chcesz siê od nas uczyæ, to nie widzê ku temu ¿adnych przeszkód.
 	
-	Join_Thiefs = true;
+	Join_Thiefs = TRUE;
 };
 //////////////////////////////////////////////////////////////////////
 //	Info Und wenn ich euch nicht beitrete...? 
@@ -383,23 +386,23 @@ INSTANCE DIA_Cassia_Ablehnen   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Cassia_Ablehnen_Condition;
 	information = DIA_Cassia_Ablehnen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A co jeœli nie chcê do was do³¹czyæ...?";
 };
 
 FUNC INT DIA_Cassia_Ablehnen_Condition()
 {	
-	if (Join_Thiefs == false)
+	if (Join_Thiefs == FALSE)
 	&& Npc_KnowsInfo (other, DIA_Cassia_Regeln)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Ablehnen_Info()
 {
 	AI_Output (other, self, "DIA_Cassia_Ablehnen_15_00");//A co jeœli nie chcê do was do³¹czyæ...?
 	
-	if (MIS_ThiefGuild_sucked == false)
+	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Cassia_Ablehnen_16_01");//Tracisz jedyn¹ w swoim rodzaju szansê, ale mo¿esz odejœæ.
 		AI_Output (self, other, "DIA_Cassia_Ablehnen_16_02");//I nawet nie myœl o zdradzie. Gorzko byœ tego po¿a³owa³.
@@ -422,7 +425,7 @@ FUNC VOID DIA_Cassia_Ablehnen_Okay()
 	AI_Output (other, self, "DIA_Cassia_Ablehnen_Okay_15_00");//Dobra, niech bêdzie.
 	AI_Output (self, other, "DIA_Cassia_Ablehnen_Okay_16_01");//Podj¹³eœ m¹dr¹ decyzjê. Je¿eli uda ci siê dowieœæ swojej wartoœci, bêdziesz móg³ wst¹piæ w nasze szeregi.
 	AI_Output (self, other, "DIA_Cassia_Ablehnen_Okay_16_02");//Je¿eli chcesz wczeœniej opanowaæ umiejêtnoœci z³odziejskie, to nie krêpuj siê - na pewno ci siê przydadz¹.
-	Join_Thiefs = true; 
+	Join_Thiefs = TRUE; 
 	Info_ClearChoices (DIA_Cassia_Ablehnen);
 };
 FUNC VOID DIA_Cassia_Ablehnen_Kill()
@@ -439,7 +442,7 @@ FUNC VOID DIA_Cassia_Ablehnen_Frist()
 	AI_Output (self, other, "DIA_Cassia_Ablehnen_Frist_16_01");//Zrób tak. Dajê ci dwa dni na podjêcie decyzji. Potem nie bêdziesz tu mile widziany.
 	
 	Cassia_Day = B_GetDayPlus ();
-	Cassia_Frist = true;
+	Cassia_Frist = TRUE;
 	Info_ClearChoices (DIA_Cassia_Ablehnen);
 };
 
@@ -453,24 +456,174 @@ INSTANCE DIA_Cassia_BevorLernen   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Cassia_BevorLernen_Condition;
 	information = DIA_Cassia_BevorLernen_Info;
-	permanent   = false;
+	permanent   = TRUE;
 	description = "Mo¿esz mnie przeszkoliæ?";
 };
 FUNC INT DIA_Cassia_BevorLernen_Condition()
 {	
-	if (Join_Thiefs == true)
+	if (Join_Thiefs == TRUE)
 	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
+	&& ((Cassia_TeachPickpocket == FALSE)
+	|| (Cassia_TeachDEX == FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_BevorLernen_Info()
 {
 	AI_Output (other, self, "DIA_Cassia_BevorLernen_15_00");//Mo¿esz mnie przeszkoliæ?
-	AI_Output (self, other, "DIA_Cassia_BevorLernen_16_01");//Pewnie, nie ma problemu. Daj mi tylko znaæ, jak bêdziesz gotów.
-	self.aivar[AIV_CanTeach] = true;
+	
+	if (MIS_ThiefGuild_sucked == FALSE)
+	{
+		AI_Output (self, other, "DIA_Cassia_BevorLernen_16_01");//Pewnie, nie ma problemu. Daj mi tylko znaæ, jak bêdziesz gotów.
+		Cassia_TeachPickpocket = TRUE;
+		Cassia_TeachDEX = TRUE;
+	}
+	else
+	{
+		AI_Output (self, other, "DIA_Cassia_BevorLernen_16_02");//Pewnie. Szkolenie w zakresie kradzie¿y kieszonkowej i zrêcznoœci bêdzie ciê kosztowaæ 100 sztuk z³ota ka¿de.
+	
+		Info_ClearChoices (DIA_Cassia_BevorLernen);
+		Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Mo¿e póŸniej... (POWRÓT)",DIA_Cassia_BevorLernen_Spaeter);
+		
+		if (Cassia_TeachPickpocket == FALSE)
+		{
+			Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Chcê poznaæ zasady kradzie¿y kieszonkowej (zap³aæ 100 sztuk z³ota).",DIA_Cassia_BevorLernen_Pickpocket);
+		};
+		
+		if (Cassia_TeachDEX == FALSE)
+		{
+			Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Chcê siê staæ zrêczniejszy (zap³aæ 100 sztuk z³ota).",DIA_Cassia_BevorLernen_DEX);
+		};
+	};
+};
+FUNC VOID DIA_Cassia_BevorLernen_Spaeter()
+{
+	Info_ClearChoices (DIA_Cassia_BevorLernen);
+};
+FUNC VOID DIA_Cassia_BevorLernen_DEX()
+{
+	if B_GiveInvItems (other, self, ItMi_Gold, 100)
+	{
+		AI_Output (other, self, "DIA_Cassia_BevorLernen_DEX_15_00");//Chcê byæ zrêczniejszy. Tu masz z³oto.
+		AI_Output (self, other, "DIA_Cassia_BevorLernen_DEX_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
+		Cassia_TeachDEX = TRUE;
+		Info_ClearChoices (DIA_Cassia_BevorLernen);
+	}
+	else 
+	{
+		AI_Output (self, other, "DIA_Cassia_DIA_Cassia_BevorLernen_DEX_16_02");//Wróæ, jak bêdziesz mia³ z³oto.
+		Info_ClearChoices (DIA_Cassia_BevorLernen);
+	};	
+};
+FUNC VOID DIA_Cassia_BevorLernen_Pickpocket()
+{
+	if B_GiveInvItems (other, self, ItMi_Gold, 100)
+	{
+		AI_Output (other, self, "DIA_Cassia_BevorLernen_Pickpocket_15_00");//Chcê siê nauczyæ kradzie¿y kieszonkowej. Oto z³oto.
+		AI_Output (self, other, "DIA_Cassia_BevorLernen_Pickpocket_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
+		Cassia_TeachPickpocket = TRUE;
+		Info_ClearChoices (DIA_Cassia_BevorLernen);
+	}
+	else 
+	{
+		AI_Output (self, other, "DIA_Cassia_BevorLernen_Pickpocket_16_02");//Wróæ, jak bêdziesz mia³ z³oto.
+		Info_ClearChoices (DIA_Cassia_BevorLernen);
+	};	
+};
+///////////////////////////////////////////////////////////////////////
+//	Info TEACH
+///////////////////////////////////////////////////////////////////////
+instance DIA_Cassia_TEACH		(C_INFO)
+{
+	npc		  	 = 	VLK_447_Cassia;
+	nr			 = 	12;
+	condition	 = 	DIA_Cassia_TEACH_Condition;
+	information	 = 	DIA_Cassia_TEACH_Info;
+	permanent	 = 	FALSE;	//TRUE
+	description	 = 	"Chcê byæ zrêczniejszy.";
+};
+func int DIA_Cassia_TEACH_Condition ()
+{	
+	if (Cassia_TeachDEX == TRUE) 
+	{
+		return TRUE;
+	};
+};
+func void DIA_Cassia_TEACH_Info ()
+{
+	AI_Output (other, self, "DIA_Cassia_TEACH_15_00"); //Chcê byæ zrêczniejszy.
+	/*
+	Info_ClearChoices   (DIA_Cassia_TEACH);
+	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
+	*/
+	B_RaiseAttribute(other, ATR_DEXTERITY, 2);
+};
+/*
+func void DIA_Cassia_TEACH_BACK()
+{
+	Info_ClearChoices (DIA_Cassia_TEACH);
+};
+func void DIA_Cassia_TEACH_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
+	
+	Info_ClearChoices   (DIA_Cassia_TEACH);
+	
+	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
+	
+	
+};
+func void DIA_Cassia_TEACH_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
+	
+	Info_ClearChoices   (DIA_Cassia_TEACH);
+	
+	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
+	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
+	
+	
+};
+*/
+//////////////////////////////////////////////////////////////////////
+//	Info Teach
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Cassia_Pickpocket   (C_INFO)
+{
+	npc         = VLK_447_Cassia;
+	nr          = 10;
+	condition   = DIA_Cassia_Pickpocket_Condition;
+	information = DIA_Cassia_Pickpocket_Info;
+	permanent   = TRUE;
+	description = "Poka¿ mi, jak okradaæ innych (10 punktów nauki).";
 };
 
+FUNC INT DIA_Cassia_Pickpocket_Condition()
+{	
+	if (Cassia_TeachPickpocket == TRUE)
+	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKPOCKET) == FALSE)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Cassia_Pickpocket_Info()
+{
+	AI_Output (other, self, "DIA_Cassia_Pickpocket_15_00");//Poka¿ mi, jak opró¿niæ czyjeœ kieszenie.
+	
+	if B_TeachThiefTalent (self, other, NPC_TALENT_PICKPOCKET)
+	{
+		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_01");//Wenn du jemandem die Taschen ausleeren willst, lenke ihn ab. Quatsch ihn einfach an, sprich mit ihm.
+		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_02");//Beim Gespräch guckst du dir ihn an. Achte auf ausgebeulte Taschen, Schmuck oder Lederschnüre am Hals. Und achte vor allem darauf, wie aufmerksam der Kerl ist.
+		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_03");//Einen betrunkenen Tagelöhner auszurauben, ist was anderes, als einen wachsamen Händler, klar?
+		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_04");//Wenn du dich natürlich ungeschickt anstellst, kriegt er's mit. Also immer ruhig bleiben.
+	};
+};
 //////////////////////////////////////////////////////////////////////
 //	Info Aufnahme
 ///////////////////////////////////////////////////////////////////////
@@ -480,22 +633,22 @@ INSTANCE DIA_Cassia_Aufnahme   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Aufnahme_Condition;
 	information = DIA_Cassia_Aufnahme_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mam pierœcieñ Constantina.";
 };
 
 FUNC INT DIA_Cassia_Aufnahme_Condition()
 {	
 	if (MIS_CassiaRing == LOG_RUNNING)
-	&& (Npc_HasItems (other, ItRi_Constantino) >= 1)
+	&& (Npc_HasItems (other, ItRi_Prot_Point_01_MIS) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Aufnahme_Info()
 {
 	AI_Output (other, self, "DIA_Cassia_Aufnahme_15_00");//Mam pierœcieñ Constantina.
-	B_GiveInvItems (other, self,ItRi_Constantino,1);
+	B_GiveInvItems (other, self,ItRi_Prot_Point_01_MIS,1);
 	
 	AI_Output (self, other, "DIA_Cassia_Aufnahme_16_01");//Gratulacje. Przeszed³eœ inicjacjê. Teraz jesteœ jednym z nas.
 	AI_Output (self, other, "DIA_Cassia_Aufnahme_16_02");//WeŸ ten klucz. Otwiera drzwi do gospody. Nie bêdziesz musia³ taplaæ siê w wodzie za ka¿dym razem.
@@ -506,11 +659,13 @@ FUNC VOID DIA_Cassia_Aufnahme_Info()
 	AI_Output  (self, other, "DIA_Cassia_Aufnahme_16_04");//W³aœnie tak. Kiedy bêdziesz z kimœ rozmawiaæ i zrobisz ten znak, jasne bêdzie, ¿e jesteœ jednym z nas.
 		
 	MIS_CassiaRing = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
-//	Knows_SecretSign = true;
+	B_GivePlayerXP (XP_CassiaRing);
+	Knows_SecretSign = TRUE;
 	Log_CreateTopic (Topic_Diebesgilde, LOG_NOTE);
 	B_LogEntry (Topic_Diebesgilde,"Zosta³em przyjêty do gildii z³odziei."); 
 	B_LogEntry (Topic_Diebesgilde,"Pozna³em tajny znak z³odziei. Jeœli poka¿ê go innemu z³odziejowi, bêdzie wiedzia³, ¿e ja równie¿ jestem cz³onkiem gildii.");
+	 
+	
 };
 //////////////////////////////////////////////////////////////////////
 //	Info Versteck
@@ -521,16 +676,16 @@ INSTANCE DIA_Cassia_Versteck   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Versteck_Condition;
 	information = DIA_Cassia_Versteck_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie ukrywacie swoje ³upy?";
 };
 
 FUNC INT DIA_Cassia_Versteck_Condition()
-{
+{	
 	if (MIS_CassiaRing == LOG_SUCCESS)
 	&& Npc_KnowsInfo (other,DIA_Ramirez_Beute)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Versteck_Info()
@@ -548,7 +703,7 @@ INSTANCE DIA_Cassia_Blutkelche   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Blutkelche_Condition;
 	information = DIA_Cassia_Blutkelche_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Masz dla mnie jak¹œ robotê?";
 };
 
@@ -557,7 +712,7 @@ FUNC INT DIA_Cassia_Blutkelche_Condition()
 	if (MIS_CassiaRing == LOG_SUCCESS)
 	&& (MIS_CassiaKelche != LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Blutkelche_Info()
@@ -596,15 +751,16 @@ INSTANCE DIA_Cassia_abgeben   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_abgeben_Condition;
 	information = DIA_Cassia_abgeben_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jeœli chodzi o te Krwawe Kielichy...";
 };
 
 FUNC INT DIA_Cassia_abgeben_Condition()
 {	
 	if (MIS_CassiaKelche == LOG_RUNNING)
+	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_abgeben_Info()
@@ -617,9 +773,10 @@ FUNC VOID DIA_Cassia_abgeben_Info()
 		AI_Output (self, other, "DIA_Cassia_abgeben_16_02");//Dobra robota. W miêdzyczasie uda³o mi siê znaleŸæ na nie kupca.
 		AI_Output (self, other, "DIA_Cassia_abgeben_16_03");//Mo¿esz odebraæ swoj¹ nagrodê. Dziêkujê, ¿e to dla mnie zrobi³eœ.
 		AI_Output (self, other, "DIA_Cassia_abgeben_16_04");//Nie muszê dla ciebie robiæ nic wiêcej - ale w ka¿dej chwili mo¿esz przyjœæ do mnie na naukê. A poza tym na tej wyspie jest doœæ ³upów dla ka¿dego.
+		    
 		
 		MIS_CassiaKelche = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3);
+		B_GivePlayerXP (XP_CassiaBlutkelche);
 	}
 	else 
 	{
@@ -635,15 +792,16 @@ INSTANCE DIA_Cassia_Belohnung   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Cassia_Belohnung_Condition;
 	information = DIA_Cassia_Belohnung_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Przyszed³em odebraæ swoj¹ nagrodê.";
 };
 
 FUNC INT DIA_Cassia_Belohnung_Condition()
 {	
 	if (MIS_CassiaKelche == LOG_SUCCESS)
+	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Cassia_Belohnung_Info()
@@ -656,6 +814,7 @@ FUNC VOID DIA_Cassia_Belohnung_Info()
 	Info_AddChoice (DIA_Cassia_Belohnung,"400 sztuk z³ota.",DIA_Cassia_Belohnung_Gold);
 	Info_AddChoice (DIA_Cassia_Belohnung,"4 eliksiry lecznicze",DIA_Cassia_Belohnung_Trank);
 	Info_AddChoice (DIA_Cassia_Belohnung, NAME_ADDON_CASSIASBELOHNUNGSRING ,DIA_Cassia_Belohnung_Ring);
+	
 };
 FUNC VOID DIA_Cassia_Belohnung_Gold()
 {
@@ -674,7 +833,7 @@ FUNC VOID DIA_Cassia_Belohnung_Trank()
 FUNC VOID DIA_Cassia_Belohnung_Ring()
 {
 	AI_Output (other, self, "DIA_Cassia_Belohnung_15_04");//Daj mi pierœcieñ.
-	B_GiveInvItems (self, other, ItRi_Hp_02,1);
+	B_GiveInvItems (self, other, ItRi_Hp_01,1);
 	
 	Info_ClearChoices (DIA_Cassia_Belohnung);
 };

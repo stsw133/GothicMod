@@ -12,7 +12,7 @@ func void B_ClearSCObsession (var C_NPC heiler)
 	{
 		AI_StopProcessInfos(heiler);
 	};
-
+	
 	SC_IsObsessed = false;
 	SC_ObsessionCounter = 0;
 	PrintScreen	(PRINT_ClearSCObsession, -1, -1, FONT_Screen, 3);
@@ -25,8 +25,8 @@ func void B_SCIsObsessed (var C_NPC dementor)
 	{
 		AI_StopProcessInfos(dementor);
 	};
-
-	if (Npc_HasItems(hero,ItAm_ProtDementor) == false)
+	
+	if (!Npc_HasItems(hero, ItAm_ProtDementor))
 	{
 		if (SC_ObsessionCounter >= 2)
 		{

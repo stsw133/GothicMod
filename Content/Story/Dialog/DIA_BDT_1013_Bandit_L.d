@@ -7,16 +7,16 @@ INSTANCE DIA_BDT_1013_BANDIT_FIRSTEXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1013_BANDIT_FIRSTEXIT_Condition;
 	information = DIA_BDT_1013_BANDIT_FIRSTEXIT_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1013_BANDIT_FIRSTEXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1013_BANDIT_FIRSTEXIT_Info()
 {
-	if (Bdt13_Friend == true)
+	if (Bdt13_Friend == TRUE)
 	&& (!Npc_IsDead (Ambusher_1014)) 
 	&& (!Npc_IsDead (Ambusher_1015))
 	{
@@ -34,14 +34,14 @@ INSTANCE DIA_BDT_1013_BANDIT_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1013_BANDIT_EXIT_Condition;
 	information = DIA_BDT_1013_BANDIT_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1013_BANDIT_EXIT_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_BDT_1013_BANDIT_FIRSTEXIT)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_BDT_1013_BANDIT_EXIT_Info()
@@ -57,13 +57,13 @@ instance DIA_BDT_1013_BANDIT_WHERE		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_BDT_1013_BANDIT_WHERE_Condition;
 	information	 = 	DIA_BDT_1013_BANDIT_WHERE_Info;
-	PERMANENT	 =  false;
-	important	 = 	true;
+	PERMANENT	 =  FALSE;
+	important	 = 	TRUE;
 };
 
 func int DIA_BDT_1013_BANDIT_WHERE_Condition ()
 {	
-	return true;
+	return TRUE;
 };
 
 func void DIA_BDT_1013_BANDIT_WHERE_Info ()
@@ -173,10 +173,10 @@ func void DIA_BDT_1013_BANDIT_WHERE_PRISONER()
 	AI_Output (other, self, "DIA_BDT_1013_BANDIT_WHERE_PRISONER_15_08"); //Powinienem ci chyba podziêkowaæ...
 	AI_Output (self, other, "DIA_BDT_1013_BANDIT_WHERE_PRISONER_01_09"); //Nie ma za co. Próbujê po prostu utrzymaæ siê przy ¿yciu.
 	
-	Bdt13_Friend = true;
+	Bdt13_Friend = TRUE;
 	B_SetAttitude (self, ATT_FRIENDLY);
 	self.npctype = NPCTYPE_FRIEND;
-	self.aivar[AIV_EnemyOverride] = false;
+	self.aivar[AIV_EnemyOverride] = FALSE;
 		
 	Info_ClearChoices (DIA_BDT_1013_BANDIT_WHERE);
 };
@@ -210,15 +210,15 @@ instance DIA_1013_BANDIT_AMBUSH		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_1013_BANDIT_AMBUSH_Condition;
 	information	 = 	DIA_1013_BANDIT_AMBUSH_Info;
-	PERMANENT	 =  false;
-	important	 = 	true;
+	PERMANENT	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_1013_BANDIT_AMBUSH_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "NW_XARDAS_BANDITS_RIGHT") <= 300)
-	&& (Bdt13_Friend == false)
+	&& (Bdt13_Friend == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_AMBUSH_Info ()
@@ -246,14 +246,14 @@ instance DIA_1013_BANDIT_NAME (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_1013_BANDIT_NAME_Condition;
 	information	 = 	DIA_1013_BANDIT_NAME_Info;
-	PERMANENT	 =  false;	
+	PERMANENT	 =  FALSE;	
 	description	 = 	"Kto wyznaczy³ tê nagrodê?";
 };
 func int DIA_1013_BANDIT_NAME_Condition ()
 {	
-	if (Bdt13_Friend == true) 
+	if (Bdt13_Friend == TRUE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_NAME_Info ()
@@ -267,18 +267,6 @@ func void DIA_1013_BANDIT_NAME_Info ()
 	Log_SetTopicStatus (Topic_Bandits,LOG_RUNNING);
 	B_LogEntry (Topic_Bandits,"Œcigaj¹ mnie bandyci. Maj¹ list goñczy z moj¹ podobizn¹. Zastanawiam siê, kto lub co siê za tym kryje.");
 	MIS_Steckbriefe = LOG_RUNNING;
-
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{
-		AI_Output (other, self, "DIA_1013_BANDIT_DEXTER_15_02"); //No, wykrztuœ to w koñcu!
-		AI_Output (self, other, "DIA_1013_BANDIT_DEXTER_01_03"); //Och, stary! No dobra. Nazywa siê Dexter. Ko³o du¿ego gospodarstwa jest stroma ska³a.
-		AI_Output (self, other, "DIA_1013_BANDIT_DEXTER_01_04"); //Na niej jest wie¿a stra¿nicza, a obok kilka kopalni. Gdzieœ w pobli¿u jest jego kryjówka.
-		AI_Output (self, other, "DIA_1013_BANDIT_DEXTER_01_08"); //Tylko nie mów im, kto ci to powiedzia³.
-
-		B_LogEntry (Topic_Bandits,"Przywódc¹ bandytów jest Dexter. Ukrywa siê w kopalni w pobli¿u farmy w³aœciciela ziemskiego.");
-
-		Bdt13_Dexter_verraten = true;
-	};
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -290,16 +278,16 @@ instance DIA_1013_BANDIT_DEXTER		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_1013_BANDIT_DEXTER_Condition;
 	information	 = 	DIA_1013_BANDIT_DEXTER_Info;
-	PERMANENT	 =  true;	
+	PERMANENT	 =  TRUE;	
 	description	 = 	"10 sztuk z³ota za imiê tego goœcia!";
 };
 func int DIA_1013_BANDIT_DEXTER_Condition ()
 {	
-	if (Bdt13_Friend == true) 
-	&& (Bdt13_Dexter_verraten == false) 
+	if (Bdt13_Friend == TRUE) 
+	&& (Bdt13_Dexter_verraten == FALSE) 
 	&& (Npc_KnowsInfo (other, DIA_1013_BANDIT_NAME))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_DEXTER_Info ()
@@ -324,7 +312,7 @@ func void DIA_1013_BANDIT_DEXTER_Info ()
 	
 	AI_Output (self, other, "DIA_1013_BANDIT_DEXTER_01_08"); //Tylko nie mów im, kto ci to powiedzia³.
 			
-	Bdt13_Dexter_verraten = true;
+	Bdt13_Dexter_verraten = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -336,14 +324,14 @@ instance DIA_1013_BANDIT_PIC		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_1013_BANDIT_PIC_Condition;
 	information	 = 	DIA_1013_BANDIT_PIC_Info;
-	PERMANENT	 =  false;	
+	PERMANENT	 =  FALSE;	
 	description	 = 	"Dasz mi ten portret?";
 };
 func int DIA_1013_BANDIT_PIC_Condition ()
 {	
-	if (Bdt13_Friend == true) 
+	if (Bdt13_Friend == TRUE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_PIC_Info ()
@@ -362,15 +350,15 @@ instance DIA_1013_BANDIT_FromMaleth		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_1013_BANDIT_FromMaleth_Condition;
 	information	 = 	DIA_1013_BANDIT_FromMaleth_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Przys³a³ mnie jeden z ch³opów spoza miasta...";
 };
 func int DIA_1013_BANDIT_FromMaleth_Condition ()
 {	
-	if (Bdt13_Friend == true) 
+	if (Bdt13_Friend == TRUE) 
 	&& ( (MIS_Maleth_Bandits == LOG_RUNNING) || (MIS_Maleth_Bandits == LOG_SUCCESS) )
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_FromMaleth_Info ()
@@ -394,8 +382,8 @@ func void DIA_1013_BANDIT_FromMaleth_Info ()
 		AI_Output (self, other, "DIA_1013_BANDIT_FromMaleth_01_06"); //No to idŸ i porozbijaj ³by pozosta³ym, skoro tak pragniesz rozlewu krwi - ja w to nie wchodzê!
 	};
 	
-	Bdt_1013_Away = true;
-	B_GivePlayerXP(XP_BONUS_0);
+	Bdt_1013_Away = TRUE;
+	B_GivePlayerXP (XP_BanditWeg);
 	
 	Npc_ExchangeRoutine	(self,"AWAY");
 	
@@ -411,15 +399,15 @@ instance DIA_1013_BANDIT_FromCavalorn (C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_1013_BANDIT_FromCavalorn_Condition;
 	information	 = 	DIA_1013_BANDIT_FromCavalorn_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Wkrótce rozpêta siê tu prawdziwe piek³o!";
 };
 func int DIA_1013_BANDIT_FromCavalorn_Condition ()
 {	
-	if (Bdt13_Friend == true) 
-	&& (QuestStep_KillBrago == LOG_RUNNING)
+	if (Bdt13_Friend == TRUE) 
+	&& (MIS_Addon_Cavalorn_KillBrago == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_FromCavalorn_Info ()
@@ -429,8 +417,8 @@ func void DIA_1013_BANDIT_FromCavalorn_Info ()
 	AI_Output (other, self, "DIA_ADDON_1013_BANDIT_FromCavalorn_15_02"); //Idzie tu po ciebie niejaki Cavalorn!
 	AI_Output (self, other, "DIA_ADDON_1013_BANDIT_FromCavalorn_01_03"); //Cholera! Muszê siê st¹d wynieœæ.
 
-	Bdt_1013_Away = true;
-	B_GivePlayerXP(XP_BONUS_0);
+	Bdt_1013_Away = TRUE;
+	B_GivePlayerXP (XP_BanditWeg);
 	
 	Npc_ExchangeRoutine	(self,"AWAY2");
 	
@@ -452,29 +440,40 @@ instance DIA_1013_BANDIT_PERM		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_1013_BANDIT_PERM_Condition;
 	information	 = 	DIA_1013_BANDIT_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Wiesz coœ jeszcze, co mog³oby mnie zainteresowaæ?";
 };
 func int DIA_1013_BANDIT_PERM_Condition ()
 {	
-	if (Bdt13_Friend == true)
+	if (Bdt13_Friend == TRUE)
 	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_1013_BANDIT_PERM_Info ()
 {
 	AI_Output (other, self, "DIA_1013_BANDIT_PERM_15_00"); //Wiesz coœ jeszcze, co mog³oby mnie zainteresowaæ?
 
-	if (bdt13_Gossip_Wildnis == false)
+	if (bdt13_Gossip_Wildnis == FALSE)
 	{
 		AI_Output (self, other, "DIA_1013_BANDIT_PERM_01_01"); //Chodzi ci o tutejsz¹ okolicê? Jeœli chcesz prze¿yæ, trzymaj siê œcie¿ek.
 		AI_Output (self, other, "DIA_1013_BANDIT_PERM_01_02"); //Im dalej zapuœcisz siê w dzicz, tym wiêksze grozi ci niebezpieczeñstwo.
-		bdt13_Gossip_Wildnis = true;
+		bdt13_Gossip_Wildnis = TRUE;
 	}
 	else
 	{
 		AI_Output (self, other, "DIA_1013_BANDIT_PERM_01_03"); //Powiedzia³em ci wszystko, co wiem.
 	};
 };
+
+
+
+
+
+
+
+
+
+
+

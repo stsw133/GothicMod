@@ -7,15 +7,15 @@ INSTANCE DIA_garond_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Garond_EXIT_Condition;
 	information	= DIA_Garond_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Garond_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -38,8 +38,8 @@ INSTANCE DIA_Garond_PMSchulden (C_INFO)
 	nr          = 1;
 	condition   = DIA_Garond_PMSchulden_Condition;
 	information = DIA_Garond_PMSchulden_Info;
-	permanent   = true;
-	important 	= true; 
+	permanent   = TRUE;
+	important 	= TRUE; 
 };
 
 FUNC INT DIA_Garond_PMSchulden_Condition()
@@ -48,7 +48,7 @@ FUNC INT DIA_Garond_PMSchulden_Condition()
 	&& (Garond_Schulden > 0)
 	&& (B_GetGreatestPetzCrime(self) <= Garond_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -74,7 +74,7 @@ FUNC VOID DIA_Garond_PMSchulden_Info()
 		
 		if (diff > 0)
 		{
-			Garond_Schulden += (diff * 50);
+			Garond_Schulden = Garond_Schulden + (diff * 50);
 		};
 		
 		if (Garond_Schulden > 1000)	{	Garond_Schulden = 1000;	};
@@ -169,14 +169,14 @@ instance DIA_Garond_PETZMASTER   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Garond_PETZMASTER_Condition;
 	information = DIA_Garond_PETZMASTER_Info;
-	permanent   = true;
-	important	= true;
+	permanent   = TRUE;
+	important	= TRUE;
 };
 FUNC INT DIA_Garond_PETZMASTER_Condition()
 {
 	if (B_GetGreatestPetzCrime(self) > Garond_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_PETZMASTER_Info()
@@ -184,7 +184,7 @@ FUNC VOID DIA_Garond_PETZMASTER_Info()
 	Garond_Schulden = 0; //weil Funktion nochmal durchlaufen wird, wenn Crime höher ist...
 	
 	// ------ SC hat mit Garond noch nicht gesprochen ------
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Garond_PETZMASTER_10_00"); //Podobno stwarza³eœ problemy moim podw³adnym.
 	};
@@ -194,8 +194,8 @@ FUNC VOID DIA_Garond_PETZMASTER_Info()
 		AI_Output (self, other, "DIA_Garond_PETZMASTER_10_01"); //By³em ciekaw, ile czasu minie, zanim trafisz do mnie.
 		AI_Output (self, other, "DIA_Garond_PETZMASTER_10_02"); //Morderstwo to ostatnia rzecz, której nam tutaj potrzeba.
 		AI_Output (self, other, "DIA_Garond_PETZMASTER_10_03"); //Ka¿dy z moich ludzi jest mi teraz potrzebny, a ty zabi³eœ jednego z nich!
-		Garond_Schulden = (B_GetTotalPetzCounter(self) * 50); 	//Anzahl der Zeugen * 50
-		Garond_Schulden += 500;									//PLUS Mörder-Malus
+		Garond_Schulden = (B_GetTotalPetzCounter(self) * 50); 		//Anzahl der Zeugen * 50
+		Garond_Schulden = Garond_Schulden + 500;						//PLUS Mörder-Malus
 		if ((PETZCOUNTER_City_Theft + PETZCOUNTER_City_Attack + PETZCOUNTER_City_Sheepkiller) > 0)
 		{
 			AI_Output (self, other, "DIA_Garond_PETZMASTER_10_04"); //Nie wspomnê ju¿ o twoich pozosta³ych wybrykach.
@@ -294,16 +294,16 @@ INSTANCE DIA_Garond_Hello (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Hello_Condition;
 	information	= DIA_Garond_Hello_Info;
-	IMPORTANT 	= true;
-	permanent	= false;
+	IMPORTANT 	= TRUE;
+	permanent	= FALSE;
 };                       
 
 FUNC INT DIA_Garond_Hello_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	&& Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Garond_Hello_Info()
@@ -343,9 +343,9 @@ FUNC INT DIA_Garond_NeedProof_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Garond_Hello))
 	&& (MIS_OLDWORLD == LOG_RUNNING)
-	&&	(Kapitel == 8)
+	&&	(Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -372,6 +372,7 @@ FUNC VOID DIA_Garond_NeedProof_Info()
 	
 	B_LogEntry (TOPIC_ScoutMine,"Kapitan Garond wys³a³ trzy ekipy górników na poszukiwania magicznej rudy. ¿adna z nich nie wróci³a.");
 	B_LogEntry (TOPIC_ScoutMine,"Moim zadaniem jest odnalezienie wszystkich trzech ekip i sprawdzenie, ile rudy uda³o im siê wydobyæ.");
+
 };
 // ************************************************************
 // 			  Warum ich?
@@ -383,16 +384,16 @@ INSTANCE DIA_Garond_Why (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Why_Condition;
 	information	= DIA_Garond_Why_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Ale dlaczego w³aœnie ja?";
 };                       
 
 FUNC INT DIA_Garond_Why_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Why_Info()
@@ -411,18 +412,18 @@ INSTANCE DIA_Garond_Equipment (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Equipment_Condition;
 	information	= DIA_Garond_Equipment_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Potrzebujê lepszego wyposa¿enia.";
 };                       
 
 FUNC INT DIA_Garond_Equipment_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	&& ((other.guild == GIL_KDF)
 	||  (other.guild == GIL_MIL))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Equipment_Info()
@@ -441,7 +442,6 @@ FUNC VOID DIA_Garond_Equipment_Info()
 		B_LogEntry (TOPIC_Trader_OC,"Tandor handluje na zamku broni¹.");
 	};
 };
-
 // ************************************************************
 // 			Zahlen
 // ************************************************************
@@ -452,17 +452,17 @@ INSTANCE DIA_Garond_zahlen (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_zahlen_Condition;
 	information	= DIA_Garond_zahlen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co dostanê za wykonanie tego zadania?";
 };                       
 
 FUNC INT DIA_Garond_zahlen_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	&& (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_zahlen_Info()
@@ -481,17 +481,17 @@ INSTANCE DIA_Garond_Wo (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Wo_Condition;
 	information	= DIA_Garond_Wo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Gdzie mam szukaæ twoich górników?";
 };                       
 
 FUNC INT DIA_Garond_Wo_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Wo_Info()
@@ -523,17 +523,17 @@ INSTANCE DIA_Garond_Fajeth (C_INFO)
 	nr			= 2;
 	condition	= DIA_Garond_Fajeth_Condition;
 	information	= DIA_Garond_Fajeth_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Rozmawia³em z Fajethem.";
 };                       
 
 FUNC INT DIA_Garond_Fajeth_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
-	&& (Fajeth_Ore == true)
+	&& (Kapitel == 2)
+	&& (Fajeth_Ore == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Fajeth_Info()
@@ -545,12 +545,12 @@ FUNC VOID DIA_Garond_Fajeth_Info()
  	AI_Output (other,self ,"DIA_Garond_Fajeth_15_04"); //Mam ci te¿ przekazaæ, ¿e potrzebuje dodatkowych ludzi.
  	AI_Output (self ,other,"DIA_Garond_Fajeth_10_05"); //Co? Mam wys³aæ kolejnych ludzi na pewn¹ œmieræ? Nie ma mowy!
  	
- 	Ore_Counter += 1;
- 	B_GivePlayerXP(XP_BONUS_3);
+ 	Ore_Counter = (Ore_Counter +1);
+ 	B_GivePlayerXP (XP_Fajeth_Ore);
  	
  	if (Ore_Counter >= 3)
 	{
-		B_Garond_OreCounter3();
+		B_Garond_OreCounter3 ();
 	};
 };
 
@@ -563,17 +563,18 @@ INSTANCE DIA_Garond_Silvestro (C_INFO)
 	nr			= 2;
 	condition	= DIA_Garond_Silvestro_Condition;
 	information	= DIA_Garond_Silvestro_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jeœli chodzi o grupê Silvestra...";
 };                       
 
 FUNC INT DIA_Garond_Silvestro_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
-	&& (Silvestro_Ore == true)
+	&& (Kapitel == 2)
+	&& (Silvestro_Ore == TRUE)
+	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Silvestro_Info()
@@ -585,12 +586,12 @@ FUNC VOID DIA_Garond_Silvestro_Info()
 	AI_Output (other,self ,"DIA_Garond_Silvestro_15_04"); //Zd¹¿yli zabezpieczyæ kilka skrzyñ. Ukryli je w jaskini, przy œcie¿ce prowadz¹cej z zamku do miejsca wydobycia.
 	AI_Output (self ,other,"DIA_Garond_Silvestro_10_05"); //Do diaska... To byli dobrzy ludzie. Niech Innos ulituje siê nad ich duszami.
 	
-	Ore_Counter += 1;
-	B_GivePlayerXP(XP_BONUS_3);
+	Ore_Counter = (Ore_Counter +1);
+	B_GivePlayerXP (XP_Silvestro_Ore);
 	
 	if (Ore_Counter >= 3)
 	{
-		B_Garond_OreCounter3();
+		B_Garond_OreCounter3 ();
 	};
 };
 // ************************************************************
@@ -602,17 +603,17 @@ INSTANCE DIA_Garond_Marcos (C_INFO)
 	nr			= 2;
 	condition	= DIA_Garond_Marcos_Condition;
 	information	= DIA_Garond_Marcos_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Rozmawia³em z Marcosem.";
 };                       
 
 FUNC INT DIA_Garond_Marcos_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
-	&& (Marcos_Ore == true)
+	&& (Kapitel == 2)
+	&& (Marcos_Ore == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Marcos_Info()
@@ -624,6 +625,7 @@ FUNC VOID DIA_Garond_Marcos_Info()
 	AI_Output (self ,other,"DIA_Garond_Marcos_10_04"); //Tylko cztery skrzynie? I opuœci³ ju¿ kopalniê? Niedobrze. Bardzo niedobrze.
 	AI_Output (self ,other,"DIA_Garond_Marcos_10_05"); //Mam mu wys³aæ dodatkowych ludzi? Trudno... dwóch bêdzie musia³o mu wystarczyæ.
 	
+	
 	Marcos_Guard1.flags = 0;
 	Marcos_Guard2.flags = 0;
 	
@@ -633,14 +635,14 @@ FUNC VOID DIA_Garond_Marcos_Info()
 	AI_Teleport (Marcos_Guard1,"OW_STAND_GUARDS");
 	AI_Teleport (Marcos_Guard1,"OW_STAND_GUARDS");
 	
-	Ore_Counter += 1;
+	Ore_Counter = (Ore_Counter +1);
 	MIS_Marcos_Jungs = LOG_SUCCESS;
 
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Marcos_Ore);
 	
 	if (Ore_Counter >= 3)
 	{
-		B_Garond_OreCounter3();
+		B_Garond_OreCounter3 ();
 	};
 };		
 // ************************************************************
@@ -649,21 +651,21 @@ FUNC VOID DIA_Garond_Marcos_Info()
 
 INSTANCE DIA_Garond_Success (C_INFO)
 {
-	npc		= PAL_250_Garond;
-	nr		= 4;
-	condition		= DIA_Garond_Success_Condition;
+	npc			= PAL_250_Garond;
+	nr			= 4;
+	condition	= DIA_Garond_Success_Condition;
 	information	= DIA_Garond_Success_Info;
-	permanent	= true;
-	description	= "Co z listem do Lorda Hagena?";
+	permanent	= FALSE;
+	description = "Co z listem do Lorda Hagena?";
 };                       
 
 FUNC INT DIA_Garond_Success_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	&& (Ore_Counter >= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Success_Info()
@@ -675,16 +677,14 @@ FUNC VOID DIA_Garond_Success_Info()
 	CreateInvItems (self,ItWr_PaladinLetter_MIS,1);
 	B_GiveInvItems (self,other,ItWr_PaladinLetter_MIS,1);
 	
-	KnowsPaladins_Ore = true;
+	KnowsPaladins_Ore = TRUE;
 	
 	B_LogEntry (TOPIC_MISOLDWORLD,"Kapitan Garond wrêczy³ mi list. Muszê zanieœæ go Lordowi Hagenowi - mam nadziejê, ¿e taki dowód mu wystarczy.");
 	
 	MIS_ScoutMine = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_5);
-	MIS_ReadyForChapter3  = true; 	//Joly: Bei Levelchange ab hier in die Newworld  -> Kapitel 3!!!!!!
+	B_GivePlayerXP (XP_ScoutMine);
+	MIS_ReadyForChapter3  = TRUE; 	//Joly: Bei Levelchange ab hier in die Newworld  -> Kapitel 3!!!!!!
 	B_NPC_IsAliveCheck (OldWorld_Zen);
-
-	Info_ClearChoices (DIA_Garond_Success);
 };
 // ************************************************************
 // SLD bezahlen
@@ -696,7 +696,7 @@ INSTANCE DIA_Garond_SLD (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_SLD_Condition;
 	information	= DIA_Garond_SLD_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co z moj¹ zap³at¹?";
 };                       
 
@@ -705,7 +705,7 @@ FUNC INT DIA_Garond_SLD_Condition()
 	if (MIS_ScoutMine == LOG_SUCCESS)
 	&& (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_SLD_Info()
@@ -723,17 +723,17 @@ INSTANCE DIA_Garond_Running (C_INFO)
 	nr			= 10;
 	condition	= DIA_Garond_Running_Condition;
 	information	= DIA_Garond_Running_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jak wygl¹da sytuacja?";
 };                       
 
 FUNC INT DIA_Garond_Running_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	&& (Ore_Counter < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Running_Info()
@@ -765,17 +765,17 @@ INSTANCE DIA_Garond_Gorn (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Gorn_Condition;
 	information	= DIA_Garond_Gorn_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcê, ¿ebyœ wypuœci³ na wolnoœæ Gorna.";
 };                       
 
 FUNC INT DIA_Garond_Gorn_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_MiltenOW_Gorn))
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	&& (Npc_KnowsInfo (other, DIA_Garond_NeedProof))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Gorn_Info()
@@ -800,16 +800,16 @@ INSTANCE DIA_Garond_Pay (C_INFO)
 	nr			= 4;
 	condition	= DIA_Garond_Pay_Condition;
 	information	= DIA_Garond_Pay_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcê wykupiæ Gorna (zap³aæ 1000 sztuk z³ota).";
 };                       
 FUNC INT DIA_Garond_Pay_Condition()
 {
 	if (MIS_RescueGorn == LOG_RUNNING)
-	&& (Kapitel == 8)
-	&& (Garond_Kerkerauf == false)
+	&& (Kapitel == 2)
+	&& (Garond_Kerkerauf == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Pay_Info()
@@ -820,7 +820,7 @@ FUNC VOID DIA_Garond_Pay_Info()
 	{
 		AI_Output (self ,other,"DIA_Garond_Pay_10_01"); //Dobrze. IdŸ do Gerolda i powiedz mu, ¿e z mojego rozkazu ma wypuœciæ wiêŸnia.
 		
-		Garond_Kerkerauf = true;
+		Garond_Kerkerauf = TRUE;
 		B_LogEntry (TOPIC_RescueGorn,"Zap³aci³em Garondowi. Teraz mogê pójœæ po Gorna do wiêzienia. Stra¿nik Gerold go wypuœci.");
 	}
 	else
@@ -837,16 +837,16 @@ INSTANCE DIA_Garond_Perm2 (C_INFO)
 	nr			= 9;
 	condition	= DIA_Garond_Perm2_Condition;
 	information	= DIA_Garond_Perm2_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co zamierzasz teraz zrobiæ?";
 };                       
 
 FUNC INT DIA_Garond_Perm2_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Garond_Success)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_Perm2_Info()
@@ -873,14 +873,14 @@ INSTANCE DIA_Garond_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Garond_KAP3_EXIT_Condition;
 	information	= DIA_Garond_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Garond_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_KAP3_EXIT_Info()
@@ -897,15 +897,15 @@ instance DIA_Garond_WASGIBTSNEUES		(C_INFO)
 	nr			 = 	30;
 	condition	 = 	DIA_Garond_WASGIBTSNEUES_Condition;
 	information	 = 	DIA_Garond_WASGIBTSNEUES_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co nowego?";
 };
 
 func int DIA_Garond_WASGIBTSNEUES_Condition ()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -934,14 +934,14 @@ INSTANCE DIA_Garond_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Garond_KAP4_EXIT_Condition;
 	information	= DIA_Garond_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Garond_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_KAP4_EXIT_Info()
@@ -958,16 +958,16 @@ instance DIA_Garond_BACKINKAP4		(C_INFO)
 	nr		 = 	12;
 	condition	 = 	DIA_Garond_BACKINKAP4_Condition;
 	information	 = 	DIA_Garond_BACKINKAP4_Info;
-	Permanent	 =	false;
+	Permanent	 =	FALSE;
 	description	 = 	"Wróci³em.";
 };
 
 func int DIA_Garond_BACKINKAP4_Condition ()
 {
-	if (Kapitel == 10)
-	{
-		return true;
-	};
+	if (Kapitel == 4)
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Garond_BACKINKAP4_Info ()
@@ -995,7 +995,7 @@ func void DIA_Garond_BACKINKAP4_Info ()
 	//-----------------------------------------
 	AI_Teleport 		 (DJG_Angar,"OW_DJG_WATCH_STONEHENGE_01");	
 	B_StartOtherRoutine 	(DJG_Angar,"Start");
-	DJG_Angar_SentToStones = true;
+	DJG_Angar_SentToStones = TRUE;
 
 
 	// Die Drachenjäger vom Spielstart verziehen sich in ihr Lager.
@@ -1006,7 +1006,7 @@ func void DIA_Garond_BACKINKAP4_Info ()
 	B_StartOtherRoutine 	(PC_Fighter_DJG,"START");
 	B_StartOtherRoutine  (Kurgan,"START");
 
-	if 	(DJG_BiffParty == false)
+	if 	(DJG_BiffParty == FALSE)
 	{
 	B_StartOtherRoutine 	(Biff,"START");
 	};
@@ -1021,18 +1021,18 @@ instance DIA_Garond_DragonPlettBericht		(C_INFO)
 	nr			 = 	11;
 	condition	 = 	DIA_Garond_DragonPlettBericht_Condition;
 	information	 = 	DIA_Garond_DragonPlettBericht_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co do tych smoków...";
 };
 
 var int DIA_Garond_DragonPlettBericht_NoPerm;
 func int DIA_Garond_DragonPlettBericht_Condition ()
 {
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 	&& (Npc_KnowsInfo(other, DIA_Garond_BACKINKAP4))
-	&& (DIA_Garond_DragonPlettBericht_NoPerm == false)
+	&& (DIA_Garond_DragonPlettBericht_NoPerm == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1058,65 +1058,65 @@ func void DIA_Garond_DragonPlettBericht_Info ()
 		CurrentDragonCount = 0;	//Joly: funzt sonst nicht. Keine Ahnung warum!
 	
 		if (Npc_IsDead(Swampdragon))
-		&& (Garond_SwampdragonKilled_OneTime == false)
+		&& (Garond_SwampdragonKilled_OneTime == FALSE)
 		{
 			AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_02"); //Zabi³em smoka z bagien na wschód st¹d.
-			Garond_SwampdragonKilled_OneTime = true;
-			CurrentDragonCount += 1;
+			Garond_SwampdragonKilled_OneTime = TRUE;
+			CurrentDragonCount = (CurrentDragonCount + 1);
 		};
 		
 		if (Npc_IsDead(Rockdragon))
-		&& (Garond_RockdragonKilled_OneTime == false)
+		&& (Garond_RockdragonKilled_OneTime == FALSE)
 		{
 			AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_03"); //Smok z fortecy na po³udniu ju¿ nie ¿yje.
-			Garond_RockdragonKilled_OneTime = true;
-			CurrentDragonCount += 1;
+			Garond_RockdragonKilled_OneTime = TRUE;
+			CurrentDragonCount = (CurrentDragonCount + 1);
 		};
 		
 		if (Npc_IsDead(FireDragon))
-		&& (Garond_FireDragonKilled_OneTime == false)
+		&& (Garond_FireDragonKilled_OneTime == FALSE)
 		{
 			AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_04"); //Ognisty smok z wulkanu na po³udniu ju¿ nikogo nie zaatakuje.
-			Garond_FireDragonKilled_OneTime = true;
-			CurrentDragonCount += 1;
+			Garond_FireDragonKilled_OneTime = TRUE;
+			CurrentDragonCount = (CurrentDragonCount + 1);
 		};
 		
 		if (Npc_IsDead(Icedragon))
-		&& (Garond_IcedragonKilled_OneTime == false)
+		&& (Garond_IcedragonKilled_OneTime == FALSE)
 		{
 			AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_05"); //Uda³em siê na zachód i rozprawi³em siê z lodowym smokiem.
-			Garond_IcedragonKilled_OneTime = true;
-			CurrentDragonCount += 1;
+			Garond_IcedragonKilled_OneTime = TRUE;
+			CurrentDragonCount = (CurrentDragonCount + 1);
 		};
 
 		AI_Output (self, other, "DIA_Garond_DragonPlettBericht_10_06"); //To dobra wiadomoœæ. Masz tu trochê pieniêdzy na lepszy ekwipunek.
 		
 		DrachenGeld = (CurrentDragonCount * Garond_KilledDragonGeld);
-		XP_LocalGarond =  (CurrentDragonCount * XP_BONUS_5);
+		XP_LocalGarond =  (CurrentDragonCount * XP_Garond_KilledDragon);
 
-		B_GivePlayerXP(XP_LocalGarond);
+		B_GivePlayerXP (XP_LocalGarond);
 
 		CreateInvItems (self, ItMi_Gold, DrachenGeld);									
 		B_GiveInvItems (self, other, ItMi_Gold, DrachenGeld);					
 
 		Garond_DragonCounter = MIS_KilledDragons;
 
-		if (MIS_AllDragonsDead == true)
+		if (MIS_AllDragonsDead == TRUE)
 		{
-			DIA_Garond_DragonPlettBericht_NoPerm = true;
+			DIA_Garond_DragonPlettBericht_NoPerm = TRUE;
 		};
 	};
 		
-	if (Garond_OricExperte_OneTime == false)
-	&& ((Npc_IsDead(Oric))	== false)
-	&& (MIS_AllDragonsDead == false)
+	if (Garond_OricExperte_OneTime == FALSE)
+	&& ((Npc_IsDead(Oric))	== FALSE)
+	&& (MIS_AllDragonsDead == FALSE)
 	{
 		AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_07"); //Mo¿esz mi powiedzieæ coœ wiêcej na temat tych smoków?
 		AI_Output (self, other, "DIA_Garond_DragonPlettBericht_10_08"); //Mam teraz inne zmartwienie. Mój doradca, Orik, powie ci o wszystkim.
 		B_LogEntry (TOPIC_DRACHENJAGD,"Doradca Garonda, Orik, mo¿e mieæ dla mnie po¿yteczne informacje."); 
-		Garond_OricExperte_OneTime = true;
+		Garond_OricExperte_OneTime = TRUE;
 	}
-	else if (MIS_AllDragonsDead == false)
+	else if (MIS_AllDragonsDead == FALSE)
 	{
 		AI_Output (other, self, "DIA_Garond_DragonPlettBericht_15_09"); //Czy w miêdzyczasie zaatakowa³y was smoki?
 		AI_Output (self, other, "DIA_Garond_DragonPlettBericht_10_10"); //Na szczêœcie nie. Na razie mamy spokój.
@@ -1136,17 +1136,17 @@ instance DIA_Garond_AllDragonDead		(C_INFO)
 	nr			 = 	12;
 	condition	 = 	DIA_Garond_AllDragonDead_Condition;
 	information	 = 	DIA_Garond_AllDragonDead_Info;
-	Permanent	 =	false;
+	Permanent	 =	FALSE;
 	description	 = 	"Wszystkie smoki nie ¿yj¹.";
 };
 
 func int DIA_Garond_AllDragonDead_Condition ()
 {
-	if (MIS_AllDragonsDead == true)
-	&& (DIA_Garond_DragonPlettBericht_NoPerm == true)	
-	&& (Kapitel >= 10)
+	if (MIS_AllDragonsDead == TRUE)
+	&& (DIA_Garond_DragonPlettBericht_NoPerm == TRUE)	
+	&& (Kapitel >= 4)
 	{
-		return true;
+			return TRUE;
 	};
 };
 
@@ -1171,16 +1171,16 @@ instance DIA_Garond_JanBecomeSmith		(C_INFO)
 	nr		 	= 	12;
 	condition	= 	DIA_Garond_JanBecomeSmith_Condition;
 	information	= 	DIA_Garond_JanBecomeSmith_Info;
-	Permanent	=	true;
+	Permanent	=	TRUE;
 	description	= 	"Jest pewien problem z kowalem.";
 };
 
 func int DIA_Garond_JanBecomeSmith_Condition ()
 {
 	if (MIS_JanBecomesSmith == LOG_RUNNING)
-	&& (Kapitel >= 10)
+		&& (Kapitel >= 4)
 	{
-		return true;
+			return TRUE;
 	};
 };
 
@@ -1228,7 +1228,7 @@ FUNC VOID DIA_Garond_JanBecomeSmith_Yes()
 	
 	Info_ClearChoices 	(DIA_Garond_JanBecomeSmith);
 	MIS_JanBecomesSmith = LOG_SUCCESS; 
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 
@@ -1250,14 +1250,14 @@ INSTANCE DIA_Garond_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Garond_KAP5_EXIT_Condition;
 	information	= DIA_Garond_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Garond_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_KAP5_EXIT_Info()
@@ -1274,16 +1274,16 @@ instance DIA_Garond_PERM5		(C_INFO)
 	nr		 = 	59;
 	condition	 = 	DIA_Garond_PERM5_Condition;
 	information	 = 	DIA_Garond_PERM5_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jak wygl¹da sytuacja?";
 };
 
 func int DIA_Garond_PERM5_Condition ()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1291,7 +1291,7 @@ func void DIA_Garond_PERM5_Info ()
 {
 	AI_Output			(other, self, "DIA_Garond_PERM5_15_00"); //Co nowego?
 
-	if (MIS_OCGateOpen == true)
+	if (MIS_OCGateOpen == TRUE)
 	{
 	AI_Output			(self, other, "DIA_Garond_PERM5_10_01"); //Przeklête miejsce! Jakiœ sukinsyn otworzy³ g³ówn¹ bramê! Teraz mo¿emy ju¿ tylko czekaæ na egzekucjê.
 	AI_Output			(self, other, "DIA_Garond_PERM5_10_02"); //Jak siê dowiem, kto nas zdradzi³...
@@ -1321,17 +1321,49 @@ INSTANCE DIA_Garond_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Garond_KAP6_EXIT_Condition;
 	information	= DIA_Garond_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Garond_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garond_KAP6_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

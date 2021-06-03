@@ -8,12 +8,12 @@ INSTANCE DIA_Jorgen_DI_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jorgen_DI_KAP3_EXIT_Condition;
 	information	= DIA_Jorgen_DI_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Jorgen_DI_KAP3_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Jorgen_DI_KAP3_EXIT_Info()
 {	
@@ -29,7 +29,7 @@ INSTANCE DIA_Jorgen_DI_Hallo   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Jorgen_DI_Hallo_Condition;
 	information = DIA_Jorgen_DI_Hallo_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description = "Wszystko w porz¹dku?";
 
@@ -37,9 +37,9 @@ INSTANCE DIA_Jorgen_DI_Hallo   (C_INFO)
 
 FUNC INT DIA_Jorgen_DI_Hallo_Condition()
 {
-	if (Npc_IsDead(UndeadDragon) == false)
+	if (Npc_IsDead(UndeadDragon) == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -47,7 +47,7 @@ FUNC VOID DIA_Jorgen_DI_Hallo_Info()
 {
 	AI_Output (other,self ,"DIA_Jorgen_DI_Hallo_15_00"); //Wszystko w porz¹dku?
 
-	if (ORkSturmDI == false)
+	if (ORkSturmDI == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Jorgen_DI_Hallo_07_01"); //Jasne. Przynajmniej tak d³ugo, jak te potwory trzymaj¹ siê od nas z dala...
 	}
@@ -68,15 +68,17 @@ instance DIA_Jorgen_DI_UndeadDragonDead		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Jorgen_DI_UndeadDragonDead_Condition;
 	information	 = 	DIA_Jorgen_DI_UndeadDragonDead_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+	
 	description = 	"Nieprzyjaciel nie ¿yje.";
+
 };
 
 func int DIA_Jorgen_DI_UndeadDragonDead_Condition ()
 {	
 	if (Npc_IsDead(UndeadDragon))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jorgen_DI_UndeadDragonDead_Info ()
@@ -87,6 +89,7 @@ func void DIA_Jorgen_DI_UndeadDragonDead_Info ()
 	Info_ClearChoices	(DIA_Jorgen_DI_UndeadDragonDead);
 	Info_AddChoice	(DIA_Jorgen_DI_UndeadDragonDead, "Jeszcze chwila.", DIA_Jorgen_DI_UndeadDragonDead_moment );
 	Info_AddChoice	(DIA_Jorgen_DI_UndeadDragonDead, "Tak, to jest to. ChodŸmy.", DIA_Jorgen_DI_UndeadDragonDead_over );
+	
 };
 func void DIA_Jorgen_DI_UndeadDragonDead_moment ()
 {
@@ -100,3 +103,8 @@ func void DIA_Jorgen_DI_UndeadDragonDead_over ()
 	AI_StopProcessInfos (self);
 	B_Extro_Avi ();
 };
+
+
+
+
+

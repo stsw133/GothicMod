@@ -7,13 +7,13 @@ INSTANCE DIA_Ulf_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Ulf_EXIT_Condition;
 	information = DIA_Ulf_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Ulf_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Ulf_EXIT_Info()
@@ -29,17 +29,17 @@ instance DIA_Ulf_Hallo		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Ulf_Hallo_Condition;
 	information	 = 	DIA_Ulf_Hallo_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Co tu porabiasz?";
 };
 
 func int DIA_Ulf_Hallo_Condition ()
 {
-	if (other.guild != GIL_NOV)
+	if (hero.guild != GIL_NOV)
 	&& (hero.guild != GIL_KDF)
-	&& (MIS_SCHNITZELJAGD == false)
+	&& (MIS_SCHNITZELJAGD == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func void DIA_Ulf_Hallo_Info ()
@@ -65,7 +65,7 @@ instance DIA_Ulf_Wirte		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Ulf_Wirte_Condition;
 	information	 = 	DIA_Ulf_Wirte_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Kim s¹ w³aœciciele trzech knajp?";
 };
 
@@ -73,9 +73,9 @@ func int DIA_Ulf_Wirte_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Ulf_Hallo)
 	&& (hero.guild != GIL_KDF)
-	&& (other.guild != GIL_NOV)
+	&& (hero.guild != GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Wirte_Info ()
@@ -93,7 +93,7 @@ instance DIA_Ulf_Kloster		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Ulf_Kloster_Condition;
 	information	 = 	DIA_Ulf_Kloster_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Co mo¿esz mi powiedzieæ o klasztorze?";
 };
 
@@ -101,9 +101,9 @@ func int DIA_Ulf_Kloster_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Ulf_Hallo)
 	&& (hero.guild != GIL_KDF)
-	&& (other.guild != GIL_NOV)
+	&& (hero.guild != GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Kloster_Info ()
@@ -121,7 +121,7 @@ instance DIA_Ulf_Bringen	(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Ulf_Bringen_Condition;
 	information	 = 	DIA_Ulf_Bringen_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Zabierz mnie do klasztoru.";
 };
 
@@ -129,10 +129,10 @@ func int DIA_Ulf_Bringen_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Ulf_Hallo)
 	&& (hero.guild != GIL_KDF)
-	&& (other.guild != GIL_NOV)
+	&& (hero.guild != GIL_NOV)
 	&& (hero.guild != GIL_PAL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Bringen_Info ()
@@ -153,7 +153,7 @@ instance DIA_Ulf_Aufnahme		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Ulf_Aufnahme_Condition;
 	information	 = 	DIA_Ulf_Aufnahme_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Jak mogê zostaæ nowicjuszem?";
 };
 
@@ -162,7 +162,7 @@ func int DIA_Ulf_Aufnahme_Condition ()
 	if Npc_KnowsInfo (hero,DIA_Ulf_Bringen)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Aufnahme_Info ()
@@ -186,7 +186,7 @@ instance DIA_Ulf_Gold		(C_INFO)
 	nr			 = 	8;
 	condition	 = 	DIA_Ulf_Gold_Condition;
 	information	 = 	DIA_Ulf_Gold_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Sk¹d mam wzi¹æ tyle z³ota?";
 };
 
@@ -195,7 +195,7 @@ func int DIA_Ulf_Gold_Condition ()
 	if Npc_KnowsInfo (hero,DIA_Ulf_Aufnahme)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Gold_Info ()
@@ -212,7 +212,7 @@ instance DIA_Ulf_Schaf		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Schaf_Condition;
 	information	 = 	DIA_Ulf_Schaf_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Sk¹d mogê wzi¹æ owcê?";
 };
 
@@ -221,7 +221,7 @@ func int DIA_Ulf_Schaf_Condition ()
 	if Npc_KnowsInfo (hero,DIA_Ulf_Aufnahme)
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Schaf_Info ()
@@ -240,8 +240,8 @@ instance DIA_Ulf_Suche		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Suche_Condition;
 	information	 = 	DIA_Ulf_Suche_Info;
-	permanent	 = 	false;
-	important	 =  true;
+	permanent	 = 	FALSE;
+	important	 =  TRUE;
 };
 func int DIA_Ulf_Suche_Condition ()
 {	
@@ -249,7 +249,7 @@ func int DIA_Ulf_Suche_Condition ()
 	&& (other.guild == GIL_NOV)
 	&& (Npc_GetDistToWP (self,"NW_TROLLAREA_PATH_42") <= 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Suche_Info ()
@@ -271,7 +271,7 @@ instance DIA_Ulf_Rausgefunden		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Rausgefunden_Condition;
 	information	 = 	DIA_Ulf_Rausgefunden_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description  = "I co, znalaz³eœ ju¿ coœ?";
 };
 func int DIA_Ulf_Rausgefunden_Condition ()
@@ -280,7 +280,7 @@ func int DIA_Ulf_Rausgefunden_Condition ()
 	&& (other.guild == GIL_NOV)
 	&& (Npc_GetDistToWP (self,"NW_TROLLAREA_PATH_42") <= 1000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Rausgefunden_Info ()
@@ -303,7 +303,7 @@ instance DIA_Ulf_Folgen		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Folgen_Condition;
 	information	 = 	DIA_Ulf_Folgen_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description  = "Hej, czy ty mnie œledzisz?";
 };
 func int DIA_Ulf_Folgen_Condition ()
@@ -312,7 +312,7 @@ func int DIA_Ulf_Folgen_Condition ()
 	&& (other.guild == GIL_NOV)
 	&& Npc_KnowsInfo (other,DIA_Ulf_Rausgefunden)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Folgen_Info ()
@@ -331,7 +331,7 @@ instance DIA_Ulf_Stop		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Stop_Condition;
 	information	 = 	DIA_Ulf_Stop_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description  = "Przestañ za mn¹ ³aziæ.";
 };
 func int DIA_Ulf_Stop_Condition ()
@@ -340,7 +340,7 @@ func int DIA_Ulf_Stop_Condition ()
 	&& (other.guild == GIL_NOV)
 	&& Npc_KnowsInfo (other,DIA_Ulf_Folgen)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Stop_Info ()
@@ -360,8 +360,8 @@ instance DIA_Ulf_Abrechnung		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Abrechnung_Condition;
 	information	 = 	DIA_Ulf_Abrechnung_Info;
-	permanent	 = 	false;
-	important 	 =  true;
+	permanent	 = 	FALSE;
+	important 	 =  TRUE;
 };	
 func int DIA_Ulf_Abrechnung_Condition ()
 {	
@@ -369,7 +369,7 @@ func int DIA_Ulf_Abrechnung_Condition ()
 	&& (other.guild == GIL_NOV)
 	&& (Npc_HasItems (other, ItmI_RuneBlank) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Abrechnung_Info ()
@@ -422,8 +422,8 @@ instance DIA_Ulf_Troll		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Ulf_Troll_Condition;
 	information	 = 	DIA_Ulf_Troll_Info;
-	permanent	 = 	false;
-	important 	 =  true;
+	permanent	 = 	FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Ulf_Troll_Condition ()
 {	
@@ -433,7 +433,7 @@ func int DIA_Ulf_Troll_Condition ()
 	&& ((Npc_GetDistToWP (self, "NW_TROLLAREA_PATH_14") <= 1000)
 	|| (Npc_GetDistToWP (self, "NW_TROLLAREA_PATH_15") <= 1000))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulf_Troll_Info ()

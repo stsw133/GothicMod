@@ -7,7 +7,7 @@ INSTANCE DIA_Grimes_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Grimes_EXIT_Condition;
 	information	= DIA_Grimes_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };
 //--------------------                       
@@ -15,7 +15,7 @@ var int Grimes_First;
 //--------------------
 FUNC INT DIA_Grimes_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Grimes_EXIT_Info()
@@ -31,15 +31,15 @@ INSTANCE DIA_Grimes_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Grimes_Hallo_Condition;
 	information	= DIA_Grimes_Hallo_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Grimes_Hallo_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 }; 
 FUNC VOID DIA_Grimes_Hallo_Info()
@@ -47,7 +47,7 @@ FUNC VOID DIA_Grimes_Hallo_Info()
 	AI_Output (self,other,"DIA_Grimes_Hallo_05_00");//To ty? Kto by pomyœla³, ¿e siê jeszcze spotkamy.
 	AI_Output (self,other,"DIA_Grimes_Hallo_05_01");//Wygl¹da na to, ¿e obaj wiemy, jak utrzymaæ siê przy ¿yciu. Jak widzisz, zajmujê siê teraz górnictwem.
 	
-	if (Grimes_First == false)
+	if (Grimes_First == FALSE)
 	{
 		Wld_InsertNpc (Snapper,"OW_PATH_148_A");
 		Wld_InsertNpc (Snapper,"OW_PATH_146");
@@ -55,7 +55,7 @@ FUNC VOID DIA_Grimes_Hallo_Info()
 		Wld_InsertNpc (Snapper,"OW_PATH_148");
 		Wld_InsertNpc (Snapper,"OW_PATH_264");
 		
-		Grimes_First = true;
+		Grimes_First = TRUE;
 	};
 };
 // ************************************************************
@@ -67,16 +67,16 @@ INSTANCE DIA_Grimes_Erz(C_INFO)
 	nr			= 2;
 	condition	= DIA_Grimes_Erz_Condition;
 	information	= DIA_Grimes_Erz_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Ile rudy uda³o wam siê wydobyæ? ";
 };                       
 
 FUNC INT DIA_Grimes_Erz_Condition()
 {	
-	if (Kapitel == 8) 
+	if (Kapitel == 2) 
 	&& (MIS_ScoutMine == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 }; 
 FUNC VOID DIA_Grimes_Erz_Info()
@@ -94,16 +94,16 @@ INSTANCE DIA_Grimes_Weg(C_INFO)
 	nr			= 3;
 	condition	= DIA_Grimes_Weg_Condition;
 	information	= DIA_Grimes_Weg_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy wiesz, w któr¹ stronê uda³ siê Marcos?";
 };                       
 
 FUNC INT DIA_Grimes_Weg_Condition()
 {	
 	if  Npc_KnowsInfo (other, DIA_Grimes_Erz)
-	&& (Npc_KnowsInfo (other, DIA_Marcos_Garond) == false)
+	&& (Npc_KnowsInfo (other, DIA_Marcos_Garond) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 }; 
 FUNC VOID DIA_Grimes_Weg_Info()
@@ -121,15 +121,15 @@ INSTANCE DIA_Grimes_Grimes(C_INFO)
 	nr			= 2;
 	condition	= DIA_Grimes_Grimes_Condition;
 	information	= DIA_Grimes_Grimes_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Czy chcia³byœ opuœciæ dolinê?";
 };                       
 
 FUNC INT DIA_Grimes_Grimes_Condition()
 {	
-	if (Kapitel == 8) 
+	if (Kapitel == 2) 
 	{
-		return true;
+		return TRUE;
 	};
 }; 
 FUNC VOID DIA_Grimes_Grimes_Info()
@@ -149,15 +149,15 @@ INSTANCE DIA_Grimes_PERM(C_INFO)
 	nr			= 2;
 	condition	= DIA_Grimes_PERM_Condition;
 	information	= DIA_Grimes_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jak idzie praca?";
 };                       
 
 FUNC INT DIA_Grimes_PERM_Condition()
 {	
-	if (Kapitel >= 8) 
+	if (Kapitel >= 2) 
 	{
-		return true;
+		return TRUE;
 	};
 }; 
 FUNC VOID DIA_Grimes_PERM_Info()

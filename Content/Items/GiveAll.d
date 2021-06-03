@@ -13,7 +13,7 @@ func void Func_All_Items_MeleeWeapons (var C_NPC slf)
 	CreateInvItem (slf, ItMw_1H_Mace_L_04);
 	CreateInvItem (slf, ItMw_Addon_BanditTrader);
 	CreateInvItem (slf, ItMw_1h_Vlk_Sword);
-	CreateInvItem (slf, ItMw_2h_Nov_Mace);
+	CreateInvItem (slf, ItMw_1h_Nov_Mace);
 	CreateInvItem (slf, ItMw_RangerStaff_Addon);
 	CreateInvItem (slf, ItMw_1h_MISC_Sword);
 	CreateInvItem (slf, ItMw_1h_Misc_Axe);
@@ -289,8 +289,9 @@ func void Func_All_Items_Armor (var C_NPC slf)
 	CreateInvItem (slf, ITAR_Mag_L);
 	CreateInvItem (slf, ITAR_Mag_M);
 	CreateInvItem (slf, ITAR_Mag_H);
-	CreateInvItem (slf, ITAR_Mag_A);
-	CreateInvItem (slf, ITAR_Mag_G);
+	CreateInvItem (slf, ITAR_Amg_L);
+	CreateInvItem (slf, ITAR_Amg_M);
+	CreateInvItem (slf, ITAR_Amg_H);
 	
 	CreateInvItem (slf, ITAR_PAL_L);
 	CreateInvItem (slf, ITAR_PAL_H);
@@ -313,8 +314,8 @@ func void Func_All_Items_Armor (var C_NPC slf)
 												CreateInvItem (slf, ITAR_aChaos_Pink);
 	
 	CreateInvItem (slf, ITAR_SLD_O);
-	CreateInvItem (slf, ITAR_MgA);
-	CreateInvItem (slf, ITAR_MgB);
+	CreateInvItem (slf, ITAR_Mag_A);
+	CreateInvItem (slf, ITAR_Mag_B);
 	CreateInvItem (slf, ITAR_Dementor);
 	CreateInvItem (slf, ITAR_Death);
 	CreateInvItem (slf, ITAR_Jarkhendar);
@@ -451,6 +452,13 @@ func void Func_All_Items_Spells (var C_NPC slf)
 	CreateInvItem (slf, ItRu_Light);
 	CreateInvItem (slf, ItRu_Heal);
 	
+	/// PAL
+	CreateInvItem (slf, ItRu_PalBless);
+	CreateInvItem (slf, ItRu_PalProtection);
+	CreateInvItem (slf, ItRu_PalHolyBolt);
+	CreateInvItem (slf, ItRu_PalDivineGrace);
+	CreateInvItem (slf, ItRu_PalDestroyEvil);
+	
 	CreateInvItem (slf, ItRu_Teleport);
 	CreateInvItem (slf, ItRu_Telekinesis);
 	CreateInvItem (slf, ItRu_Transform);
@@ -468,13 +476,7 @@ func void Func_All_Items_Spells (var C_NPC slf)
 	CreateInvItem (slf, ItRu_Domination);
 	CreateInvItem (slf, ItRu_Charm);
 	
-	/// PAL & KDF
-	CreateInvItem (slf, ItRu_PalLight);
-	CreateInvItem (slf, ItRu_PalRemana);
-	CreateInvItem (slf, ItRu_PalHolyBolt);
-	CreateInvItem (slf, ItRu_PalBless);
-	CreateInvItem (slf, ItRu_PalDestroyEvil);
-	
+	/// KDF
 	CreateInvItem (slf, ItRu_MysBolt);
 	CreateInvItem (slf, ItRu_MysGhost);
 	CreateInvItem (slf, ItRu_MysRoot);
@@ -526,46 +528,47 @@ func void Func_All_Items_MagicStones (var C_NPC slf)
 func void Func_All_Items_Amulets (var C_NPC slf)
 {
 	/// Amulety
+	CreateInvItem (slf, ItAm_Armor_01);
 	CreateInvItem (slf, ItAm_Armor_02);
 	CreateInvItem (slf, ItAm_Armor_03);
 	CreateInvItem (slf, ItAm_Armor_04);
 	CreateInvItem (slf, ItAm_Armor_05);
+	CreateInvItem (slf, ItAm_Resist_01);
 	CreateInvItem (slf, ItAm_Resist_02);
 	CreateInvItem (slf, ItAm_Resist_03);
 	CreateInvItem (slf, ItAm_Resist_04);
 	CreateInvItem (slf, ItAm_Resist_05);
+	CreateInvItem (slf, ItAm_ProtTotal_01);
 	CreateInvItem (slf, ItAm_ProtTotal_02);
 	CreateInvItem (slf, ItAm_ProtTotal_03);
 	CreateInvItem (slf, ItAm_ProtTotal_04);
 	CreateInvItem (slf, ItAm_ProtTotal_05);
+	CreateInvItem (slf, ItAm_Str_01);
 	CreateInvItem (slf, ItAm_Str_02);
 	CreateInvItem (slf, ItAm_Str_03);
 	CreateInvItem (slf, ItAm_Str_04);
 	CreateInvItem (slf, ItAm_Str_05);
+	CreateInvItem (slf, ItAm_Dex_01);
 	CreateInvItem (slf, ItAm_Dex_02);
 	CreateInvItem (slf, ItAm_Dex_03);
 	CreateInvItem (slf, ItAm_Dex_04);
 	CreateInvItem (slf, ItAm_Dex_05);
+	CreateInvItem (slf, ItAm_Power_01);
 	CreateInvItem (slf, ItAm_Power_02);
 	CreateInvItem (slf, ItAm_Power_03);
 	CreateInvItem (slf, ItAm_Power_04);
 	CreateInvItem (slf, ItAm_Power_05);
-	CreateInvItem (slf, ItAm_Splendor_02);
-	CreateInvItem (slf, ItAm_Splendor_03);
-	CreateInvItem (slf, ItAm_Splendor_04);
-	CreateInvItem (slf, ItAm_Splendor_05);
+	CreateInvItem (slf, ItAm_Mana_01);
 	CreateInvItem (slf, ItAm_Mana_02);
 	CreateInvItem (slf, ItAm_Mana_03);
 	CreateInvItem (slf, ItAm_Mana_04);
 	CreateInvItem (slf, ItAm_Mana_05);
+	CreateInvItem (slf, ItAm_Hp_01);
 	CreateInvItem (slf, ItAm_Hp_02);
 	CreateInvItem (slf, ItAm_Hp_03);
 	CreateInvItem (slf, ItAm_Hp_04);
 	CreateInvItem (slf, ItAm_Hp_05);
-	CreateInvItem (slf, ItAm_Eternity_02);
-	CreateInvItem (slf, ItAm_Eternity_03);
-	CreateInvItem (slf, ItAm_Eternity_04);
-	CreateInvItem (slf, ItAm_Eternity_05);
+	CreateInvItem (slf, ItAm_Energy_01);
 	CreateInvItem (slf, ItAm_Energy_02);
 	CreateInvItem (slf, ItAm_Energy_03);
 	CreateInvItem (slf, ItAm_Energy_04);
@@ -575,46 +578,42 @@ func void Func_All_Items_Amulets (var C_NPC slf)
 func void Func_All_Items_Rings (var C_NPC slf)
 {
 	/// Pierœcienie
+	CreateInvItem (slf, ItRi_Armor_01);
 	CreateInvItem (slf, ItRi_Armor_02);
 	CreateInvItem (slf, ItRi_Armor_03);
 	CreateInvItem (slf, ItRi_Armor_04);
 	CreateInvItem (slf, ItRi_Armor_05);
+	CreateInvItem (slf, ItRi_Resist_01);
 	CreateInvItem (slf, ItRi_Resist_02);
 	CreateInvItem (slf, ItRi_Resist_03);
 	CreateInvItem (slf, ItRi_Resist_04);
 	CreateInvItem (slf, ItRi_Resist_05);
-	CreateInvItem (slf, ItRi_ProtTotal_02);
-	CreateInvItem (slf, ItRi_ProtTotal_03);
-	CreateInvItem (slf, ItRi_ProtTotal_04);
-	CreateInvItem (slf, ItRi_ProtTotal_05);
+	CreateInvItem (slf, ItRi_Str_01);
 	CreateInvItem (slf, ItRi_Str_02);
 	CreateInvItem (slf, ItRi_Str_03);
 	CreateInvItem (slf, ItRi_Str_04);
 	CreateInvItem (slf, ItRi_Str_05);
+	CreateInvItem (slf, ItRi_Dex_01);
 	CreateInvItem (slf, ItRi_Dex_02);
 	CreateInvItem (slf, ItRi_Dex_03);
 	CreateInvItem (slf, ItRi_Dex_04);
 	CreateInvItem (slf, ItRi_Dex_05);
+	CreateInvItem (slf, ItRi_Power_01);
 	CreateInvItem (slf, ItRi_Power_02);
 	CreateInvItem (slf, ItRi_Power_03);
 	CreateInvItem (slf, ItRi_Power_04);
 	CreateInvItem (slf, ItRi_Power_05);
-	CreateInvItem (slf, ItRi_Splendor_02);
-	CreateInvItem (slf, ItRi_Splendor_03);
-	CreateInvItem (slf, ItRi_Splendor_04);
-	CreateInvItem (slf, ItRi_Splendor_05);
+	CreateInvItem (slf, ItRi_Mana_01);
 	CreateInvItem (slf, ItRi_Mana_02);
 	CreateInvItem (slf, ItRi_Mana_03);
 	CreateInvItem (slf, ItRi_Mana_04);
 	CreateInvItem (slf, ItRi_Mana_05);
+	CreateInvItem (slf, ItRi_Hp_01);
 	CreateInvItem (slf, ItRi_Hp_02);
 	CreateInvItem (slf, ItRi_Hp_03);
 	CreateInvItem (slf, ItRi_Hp_04);
 	CreateInvItem (slf, ItRi_Hp_05);
-	CreateInvItem (slf, ItRi_Eternity_02);
-	CreateInvItem (slf, ItRi_Eternity_03);
-	CreateInvItem (slf, ItRi_Eternity_04);
-	CreateInvItem (slf, ItRi_Eternity_05);
+	CreateInvItem (slf, ItRi_Energy_01);
 	CreateInvItem (slf, ItRi_Energy_02);
 	CreateInvItem (slf, ItRi_Energy_03);
 	CreateInvItem (slf, ItRi_Energy_04);
@@ -624,10 +623,10 @@ func void Func_All_Items_Rings (var C_NPC slf)
 func void Func_All_Items_Belts (var C_NPC slf)
 {
 	/// Pasy
-	CreateInvItem (slf, ItBe_Grd_01);
-	CreateInvItem (slf, ItBe_Grd_02);
-	CreateInvItem (slf, ItBe_DrH_01);
-	CreateInvItem (slf, ItBe_DrH_02);
+	CreateInvItem (slf, ItBe_Roy_01);
+	CreateInvItem (slf, ItBe_Roy_02);
+	CreateInvItem (slf, ItBe_Djg_01);
+	CreateInvItem (slf, ItBe_Djg_02);
 	CreateInvItem (slf, ItBe_Mag_01);
 	CreateInvItem (slf, ItBe_Mag_02);
 	CreateInvItem (slf, ItBe_Pal_01);
@@ -747,7 +746,7 @@ func void Func_All_Items_AnimalTrophy (var C_NPC slf)
 	CreateInvItems (slf, ItAt_Claw, 10);
 	CreateInvItems (slf, ItAt_Teeth, 10);
 	CreateInvItems (slf, ItAt_Sting, 10);
-	CreateInvItems (slf, ItAt_WaranTongue, 10);
+	CreateInvItems (slf, ItAt_WaranFireTongue, 10);
 	CreateInvItems (slf, ItAt_LurkerClaw, 10);
 	CreateInvItems (slf, ItAt_DragonBlood, 10);
 	
@@ -872,7 +871,7 @@ func void Func_All_Items_Misc (var C_NPC slf)
 	CreateInvItem (slf, ItSe_GoldPocket250);
 	
 	CreateInvItems (slf, ItMi_Tabak, 10);
-	CreateInvItems (slf, ItMi_AppleTabak, 10);
+	CreateInvItems (slf, ItMi_FruitTabak, 10);
 	CreateInvItems (slf, ItMi_MushroomTabak, 10);
 	CreateInvItems (slf, ItMi_CoconutTabak, 10);
 	CreateInvItems (slf, ItMi_HoneyTabak, 10);

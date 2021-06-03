@@ -7,12 +7,12 @@ INSTANCE DIA_1061_Wache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_1061_Wache_EXIT_Condition;
 	information = DIA_1061_Wache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_1061_Wache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_1061_Wache_EXIT_Info()
 {
@@ -27,12 +27,12 @@ INSTANCE DIA_1061_Wache_Hallo   (C_INFO)
 	nr          = 1;
 	condition   = DIA_1061_Wache_Hallo_Condition;
 	information = DIA_1061_Wache_Hallo_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_1061_Wache_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_1061_Wache_Hallo_Info()
 {
@@ -43,8 +43,8 @@ FUNC VOID DIA_1061_Wache_Hallo_Info()
 	
 	Info_ClearChoices (DIA_1061_Wache_Hallo);
 	Info_AddChoice (DIA_1061_Wache_Hallo,"Lee.",DIA_1061_Wache_Hallo_Lee);
-	if (Bdt13_Dexter_verraten == true) 
-	|| (Ranger_SCKnowsDexter == true)//ADDON
+	if (Bdt13_Dexter_verraten == TRUE) 
+	|| (Ranger_SCKnowsDexter == TRUE)//ADDON
 	{
 		Info_AddChoice (DIA_1061_Wache_Hallo,"Dexter.",DIA_1061_Wache_Hallo_Dexter);
 	};
@@ -67,8 +67,8 @@ FUNC VOID DIA_1061_Wache_Hallo_Dexter()
 	AI_Output (self, other, "DIA_1061_Wache_Hallo_Dexter_01_02");//Jeœli za bardzo siê do kogoœ zbli¿ysz, nie wyjdziesz st¹d ¿ywy!
 	AI_Output (self, other, "DIA_1061_Wache_Hallo_Dexter_01_03");//WeŸ wiêc g³êboki oddech i nie wyci¹gaj broni. Dextera znajdziesz w domu.
 	
-	Knows_Dexter = true;
-	BanditGuard.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+	Knows_Dexter = TRUE;
+	BanditGuard.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 	Info_ClearChoices (DIA_1061_Wache_Hallo);
 	AI_StopProcessInfos (self);
 };
@@ -101,15 +101,15 @@ INSTANCE DIA_1061_Wache_Perm   (C_INFO)
 	nr          = 2;
 	condition   = DIA_1061_Wache_Perm_Condition;
 	information = DIA_1061_Wache_Perm_Info;
-	permanent   = true;
-	important 	= true;
+	permanent   = TRUE;
+	important 	= TRUE;
 };
 FUNC INT DIA_1061_Wache_Perm_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (Knows_Dexter == true)
+	&& (Knows_Dexter == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_1061_Wache_Perm_Info()
@@ -117,3 +117,5 @@ FUNC VOID DIA_1061_Wache_Perm_Info()
 	AI_Output (self, other, "DIA_1061_Wache_Perm_01_00");//Pamiêtaj, zachowuj siê spokojnie, a wyjdziesz st¹d ¿ywy.
 	AI_StopProcessInfos (self);
 };
+	 
+	

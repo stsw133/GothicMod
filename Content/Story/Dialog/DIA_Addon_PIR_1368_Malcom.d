@@ -7,18 +7,18 @@ INSTANCE DIA_Addon_Malcom_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Malcom_EXIT_Condition;
 	information	= DIA_Addon_Malcom_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Muszê iœæ.";
-};
+};                       
 FUNC INT DIA_Addon_Malcom_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Malcom_EXIT_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_Malcom_perm_15_00"); //Muszê iœæ.
 	
-	if (MalcomBotschaft == true)
+	if (MalcomBotschaft == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Malcom_perm_04_01"); //Nie daj siê po¿reæ ¿adnym bestiom. To niebezpieczna okolica.
 	}
@@ -27,7 +27,7 @@ func VOID DIA_Addon_Malcom_EXIT_Info()
 		AI_Output	(self, other, "DIA_Addon_Malcom_Add_04_03"); //Hej! Je¿eli wracasz do obozu, to przeka¿ coœ Henry'emu.
 		AI_Output	(self, other, "DIA_Addon_Malcom_Lager_04_04"); //Te drzewa s¹ strasznie twarde.
 		AI_Output	(self, other, "DIA_Addon_Malcom_Lager_04_05"); //Wycinka jest ciê¿ka, wiêc jeszcze przez jakiœ czas drewna nie bêdzie. Powiedz mu to.
-		MalcomBotschaft = true;
+		MalcomBotschaft = TRUE;
 	};
 	
 	AI_StopProcessInfos	(self);
@@ -43,15 +43,15 @@ instance DIA_Addon_Malcom_Hello		(C_INFO)
 	condition	= DIA_Addon_Malcom_Hello_Condition;
 	information	= DIA_Addon_Malcom_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };
 
 func int DIA_Addon_Malcom_Hello_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -75,13 +75,13 @@ instance DIA_Addon_Malcom_WasMachen		(C_INFO)
 };
 func int DIA_Addon_Malcom_WasMachen_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_Malcom_WasMachen_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Malcom_WasMachen_15_00"); //Zajêty?
 	AI_Output	(self, other, "DIA_Addon_Malcom_WasMachen_04_01"); //S³uchaj uwa¿nie, bo nie bêdê powtarza³. Henry chce drewna, co oznacza, ¿e muszê wyci¹æ jeszcze sporo drzew.
-	if (Henry.aivar[AIV_TalkedToPlayer] == false)
+	if (Henry.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Malcom_WasMachen_15_02"); //Henry?
 		AI_Output	(self, other, "DIA_Addon_Malcom_Add_04_00"); //Dowodzi nasz¹ grup¹.
@@ -107,7 +107,7 @@ func int DIA_Addon_Malcom_Entertrupp_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Malcom_WasMachen))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Malcom_Entertrupp_Info ()
@@ -115,7 +115,7 @@ func void DIA_Addon_Malcom_Entertrupp_Info ()
 	AI_Output	(other, self, "DIA_Addon_Malcom_Entertrupp_15_00"); //Henry jest waszym przywódc¹?
 	AI_Output	(self, other, "DIA_Addon_Malcom_WasMachen_04_03"); //Tak. Jest dowódc¹ naszej grupy aborda¿owej.
 	AI_Output	(self, other, "DIA_Addon_Malcom_Add_04_01"); //Za to naszym kapitanem jest Greg.
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Malcom_Add_04_02"); //Ale nie ma go w tej chwili.
 	};
@@ -137,7 +137,7 @@ func int DIA_Addon_Malcom_Lager_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Malcom_WasMachen))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Malcom_Lager_Info ()
@@ -146,3 +146,4 @@ func void DIA_Addon_Malcom_Lager_Info ()
 	AI_Output	(self, other, "DIA_Addon_Malcom_Lager_04_01"); //IdŸ t¹ œcie¿k¹ na zachód.
 	AI_Output	(self, other, "DIA_Addon_Malcom_Lager_04_02"); //Na pewno spotkasz Henry'ego.
 };
+

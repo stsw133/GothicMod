@@ -7,7 +7,7 @@ INSTANCE DIA_DragonTalk_Main_1(C_INFO)
 	nr			= 10;
 	condition	= DIA_DragonTalk_Main_1_Condition;
 	information	= DIA_DragonTalk_Main_1_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co ciê sprowadza do tego miejsca?";
 };                       
 
@@ -28,7 +28,7 @@ FUNC VOID DIA_DragonTalk_Main_1_Info()
 	Info_AddChoice	(DIA_DragonTalk_Main_1, "Jak mam zmusiæ do mówienia pozosta³e smoki?", DIA_DragonTalk_Main_1_reden );
 	Info_AddChoice	(DIA_DragonTalk_Main_1, "Co muszê zrobiæ, aby ponownie ciê wygnaæ?", DIA_DragonTalk_Main_1_verbannen );
 
-	DragonTalk_Exit_Free = true;
+	DragonTalk_Exit_Free = TRUE;
 };
 func void DIA_DragonTalk_Main_1_verbannen ()
 {
@@ -72,7 +72,7 @@ INSTANCE DIA_DragonTalk_Main_2(C_INFO)
 	nr			= 10;
 	condition	= DIA_DragonTalk_Main_2_Condition;
 	information	= DIA_DragonTalk_Main_2_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Kto was tu przys³a³?";
 };                       
 
@@ -95,7 +95,7 @@ FUNC VOID DIA_DragonTalk_Main_2_Info()
 
 	B_LogEntry (TOPIC_DRACHENJAGD,"Te smoki nie s¹ samodzielnymi istotami. S³u¿¹ jakiemuœ panu, o którym nie chc¹ mówiæ - no, mo¿e poza bezwartoœciowymi przepowiedniami w stylu 'nasz pan przyjdzie i zniszczy œwiat, bla bla bla'. Nic nowego."); 
 	
-	DragonTalk_Exit_Free = true;
+	DragonTalk_Exit_Free = TRUE;
 };
 
 
@@ -108,7 +108,7 @@ INSTANCE DIA_DragonTalk_Main_3(C_INFO)
 	nr			= 10;
 	condition	= DIA_DragonTalk_Main_3_Condition;
 	information	= DIA_DragonTalk_Main_3_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jak mogê pokonaæ twego pana?";
 };                       
 
@@ -146,7 +146,7 @@ FUNC VOID DIA_DragonTalk_Main_3_Info()
 	AI_Output			(self, other, "DIA_DragonTalk_Main_3_20_08"); //Ale najtrudniejszym do spe³nienia warunkiem jest znalezienie piêciu towarzyszy gotowych pójœæ za tob¹ na pewn¹ œmieræ.
 	AI_Output			(self, other, "DIA_DragonTalk_Main_3_20_09"); //Dopiero wtedy mo¿esz stawiæ czo³a mojemu Panu.
 	
-	DragonTalk_Exit_Free = true;
+	DragonTalk_Exit_Free = TRUE;
 };
 
 
@@ -159,7 +159,7 @@ INSTANCE DIA_DragonTalk_Main_4(C_INFO)
 	nr			= 10;
 	condition	= DIA_DragonTalk_Main_4_Condition;
 	information	= DIA_DragonTalk_Main_4_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description 	= "Gdzie znajdê twego pana?";
 };                       
 
@@ -186,7 +186,7 @@ FUNC VOID DIA_DragonTalk_Main_4_Info()
 	B_LogEntry (TOPIC_BuchHallenVonIrdorath,"W³adca smoków skry³ siê podobno w potê¿nym i œwiêtym Dworze Irdorath. To brzmi jakoœ znajomo. Gdzie to ja mog³em o tym czytaæ?"); 
 
 	B_NPC_IsAliveCheck (OLDWORLD_ZEN);  //Joly: bringt Angar und Gorn in die NW.
-	DragonTalk_Exit_Free = true;
+	DragonTalk_Exit_Free = TRUE;
 };
 
 

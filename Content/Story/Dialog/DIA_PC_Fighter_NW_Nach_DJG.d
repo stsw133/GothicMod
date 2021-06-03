@@ -9,12 +9,12 @@ INSTANCE DIA_GornNW_nach_DJG_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_GornNW_nach_DJG_KAP5_EXIT_Condition;
 	information	= DIA_GornNW_nach_DJG_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_GornNW_nach_DJG_KAP5_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_GornNW_nach_DJG_KAP5_EXIT_Info()
 {	
@@ -31,7 +31,7 @@ INSTANCE DIA_GornNW_nach_DJG_AllDragonsDead(C_INFO)
 	nr			= 59;
 	condition	= DIA_GornNW_nach_DJG_AllDragonsDead_Condition;
 	information	= DIA_GornNW_nach_DJG_AllDragonsDead_Info;
-	permanent	= true;
+	permanent	= TRUE;
 
 	description = "Odprê¿y³eœ siê wreszcie?";
 };                       
@@ -39,7 +39,7 @@ FUNC INT DIA_GornNW_nach_DJG_AllDragonsDead_Condition()
 {
 	if (Gorn_IsOnBoard != LOG_SUCCESS) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_GornNW_nach_DJG_AllDragonsDead_Info()
@@ -59,15 +59,15 @@ instance DIA_GornNW_nach_DJG_KnowWhereEnemy		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_GornNW_nach_DJG_KnowWhereEnemy_Condition;
 	information	 = 	DIA_GornNW_nach_DJG_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Potrzebujê twojej pomocy.";
 };
 func int DIA_GornNW_nach_DJG_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Gorn_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Gorn_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_GornNW_nach_DJG_KnowWhereEnemy_Info ()
@@ -101,12 +101,12 @@ FUNC VOID DIA_GornNW_nach_DJG_KnowWhereEnemy_Yes ()
 	AI_Output (self ,other,"DIA_GornNW_nach_DJG_KnowWhereEnemy_Yes_12_01"); //Masz statek? Ho, ho! Jedno ci powiem - z tob¹ nie mo¿na siê nudziæ!
 	
 	
-	B_GivePlayerXP(XP_BONUS_5); 
+	B_GivePlayerXP (XP_Crewmember_Success); 
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Gorn_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -136,15 +136,15 @@ instance DIA_GornNW_nach_DJG_LeaveMyShip		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_GornNW_nach_DJG_LeaveMyShip_Condition;
 	information	 = 	DIA_GornNW_nach_DJG_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Mo¿e jednak lepiej bêdzie, jeœli tu zostaniesz.";
 };
 func int DIA_GornNW_nach_DJG_LeaveMyShip_Condition ()
 {	
 	if (Gorn_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_GornNW_nach_DJG_LeaveMyShip_Info ()
@@ -153,7 +153,7 @@ func void DIA_GornNW_nach_DJG_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_GornNW_nach_DJG_LeaveMyShip_12_01"); //Mam ciê puœciæ samego? Hmmm. Nie jestem zachwycony, ale przecie¿ to twoja wojna. Gdybyœ zmieni³ zdanie, wiesz, gdzie mnie szukaæ.
 	
 	Gorn_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"Start"); 
 };
@@ -167,7 +167,7 @@ instance DIA_GornNW_nach_DJG_StillNeedYou		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_GornNW_nach_DJG_StillNeedYou_Condition;
 	information	 = 	DIA_GornNW_nach_DJG_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Jednak bêdziesz mi potrzebny.";
 };
 
@@ -177,7 +177,7 @@ func int DIA_GornNW_nach_DJG_StillNeedYou_Condition ()
 	|| (Gorn_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -188,11 +188,11 @@ func void DIA_GornNW_nach_DJG_StillNeedYou_Info ()
 		
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Gorn_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
 	AI_StopProcessInfos (self);
 
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 	{
 		Npc_ExchangeRoutine (self,"SHIP"); 
 	}

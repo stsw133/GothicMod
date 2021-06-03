@@ -7,13 +7,13 @@ INSTANCE DIA_Addon_Nefarius_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Nefarius_EXIT_Condition;
 	information = DIA_Addon_Nefarius_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Addon_Nefarius_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Nefarius_EXIT_Info()
@@ -36,7 +36,7 @@ instance DIA_Addon_Nefarius_Hallo		(C_INFO)
 
 func int DIA_Addon_Nefarius_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Nefarius_Hallo_Info ()
@@ -66,7 +66,7 @@ func int DIA_Addon_Nefarius_keineahnung_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Nefarius_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -95,7 +95,7 @@ func int DIA_Addon_Nefarius_WieMechanik_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Nefarius_keineahnung))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -124,7 +124,7 @@ func int DIA_Addon_Nefarius_SCbringOrnaments_Condition ()
 {
 	if (MIS_Addon_Lares_Ornament2Saturas == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -172,7 +172,7 @@ func int DIA_Addon_Nefarius_WhyPortalClosed_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Nefarius_SCbringOrnaments))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -194,7 +194,7 @@ instance DIA_Addon_Nefarius_MissingOrnaments		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Nefarius_MissingOrnaments_Condition;
 	information	 = 	DIA_Addon_Nefarius_MissingOrnaments_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeœli chodzi o zaginione ornamenty...";
 };
@@ -203,7 +203,7 @@ func int DIA_Addon_Nefarius_MissingOrnaments_Condition ()
 {
 	if (MIS_Addon_Nefarius_BringMissingOrnaments == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -228,10 +228,10 @@ func void DIA_Addon_Nefarius_MissingOrnaments_Info ()
 			if (MissingOrnamentsCount == 1)
 				{
 					AI_Output		(other, self, "DIA_Addon_Nefarius_MissingOrnaments_15_02"); //Proszê. Znalaz³em kolejny.
-					B_GivePlayerXP (XP_BONUS_2);
+					B_GivePlayerXP (XP_Addon_BringMissingOrnament);
 					Npc_RemoveInvItems	(other,	ItMi_Ornament_Addon,	1);
 					AI_PrintScreen (PRINT_ItemGegeben, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);	// "1 Gegenstand gegeben"	
-					MissingOrnamentsCounter += 1;
+					MissingOrnamentsCounter = MissingOrnamentsCounter + 1;
 				}
 				else
 				{
@@ -241,10 +241,10 @@ func void DIA_Addon_Nefarius_MissingOrnaments_Info ()
 					concatText = ConcatStrings(IntToString(MissingOrnamentsCount), PRINT_ItemsGegeben);		// "x Gegenstände gegeben"
 					AI_PrintScreen (concatText, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
 		
-					XP_Addon_BringMissingOrnaments = (MissingOrnamentsCount * XP_BONUS_2);
+					XP_Addon_BringMissingOrnaments = (MissingOrnamentsCount * XP_Addon_BringMissingOrnament);
 					MissingOrnamentsCounter = (MissingOrnamentsCounter + MissingOrnamentsCount); 
 		
-					B_GivePlayerXP(XP_Addon_BringMissingOrnaments);
+					B_GivePlayerXP (XP_Addon_BringMissingOrnaments);
 				};
 		
 			AI_Output			(self, other, "DIA_Addon_Nefarius_MissingOrnaments_05_04"); //To naprawdê wspaniale.
@@ -302,7 +302,7 @@ instance DIA_Addon_Nefarius_Ringritual		(C_INFO)
 	condition	 = 	DIA_Addon_Nefarius_Ringritual_Condition;
 	information	 = 	DIA_Addon_Nefarius_Ringritual_Info;
 
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Nefarius_Ringritual_Condition ()
@@ -310,7 +310,7 @@ func int DIA_Addon_Nefarius_Ringritual_Condition ()
 	if (MIS_Addon_Nefarius_BringMissingOrnaments == LOG_SUCCESS)
 	&& (Npc_GetDistToWP(self,"NW_TROLLAREA_PORTALTEMPEL_42")<1000) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -339,15 +339,15 @@ instance DIA_Addon_Nefarius_RingRitualEnds		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Nefarius_RingRitualEnds_Condition;
 	information	 = 	DIA_Addon_Nefarius_RingRitualEnds_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Nefarius_RingRitualEnds_Condition ()
 {
-	if (Npc_RefuseTalk(self) == false)
+	if (Npc_RefuseTalk(self) == FALSE)
 	&& (RitualRingRuns == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -387,7 +387,7 @@ func int DIA_Addon_Nefarius_OpenedPortal_Condition ()
 {
 	if (RitualRingRuns == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -396,3 +396,4 @@ func void DIA_Addon_Nefarius_OpenedPortal_Info ()
 	AI_Output	(other, self, "DIA_Addon_Nefarius_OpenedPortal_15_00"); //Co dalej?
 	AI_Output	(self, other, "DIA_Addon_Nefarius_OpenedPortal_05_01"); //Na co czekasz? Ruszaj i oczyœæ drogê.
 };
+

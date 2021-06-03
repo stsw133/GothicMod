@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	SPL_ConcussionBolt
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_ConcussionBolt
+///******************************************************************************************
 
 const int SPL_Cost_ConcussionBolt		=	40;
 const int SPL_Damage_ConcussionBolt		=	200;
 
-//******************************************************************************************
+///******************************************************************************************
 INSTANCE Spell_ConcussionBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
@@ -15,7 +15,7 @@ INSTANCE Spell_ConcussionBolt (C_Spell_Proto)
 
 func int Spell_Logic_ConcussionBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_ConcussionBolt (var int manaInvested)
 
 func void Spell_Cast_ConcussionBolt()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_ConcussionBolt/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_ConcussionBolt/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_ConcussionBolt;
 	};

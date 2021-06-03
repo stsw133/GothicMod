@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	FocusNames
-//******************************************************************************************
+///******************************************************************************************
+///	FocusNames
+///******************************************************************************************
 func void _Focusnames()
 {
 	var int col; col = -1;
@@ -9,7 +9,7 @@ func void _Focusnames()
 	if (Hlp_Is_oCNpc(o_hero.focus_vob))
 	{
 		o_other = MEM_PtrToInst(o_hero.focus_vob);
-		var int att; att = Npc_GetPermAttitude(hero,o_other);
+		var int att; att = Npc_GetPermAttitude(hero, o_other);
 		
 		if (o_other.aivar[AIV_PARTYMEMBER] == true)
 		{
@@ -26,12 +26,12 @@ func void _Focusnames()
 		else if (att == ATT_HOSTILE)
 		{
 			col = RGBA (255, 32, 32, 255);
-		}
+		}/*
 		else if (o_other.aivar[AIV_Love] > 0)
 		{
-			var int colLove; colLove = o_other.aivar[AIV_Love]+(MAX_LOVE/10);
-			col = RGBA (255, 255-(((o_other.aivar[AIV_Love]*255)/colLove)/2), 255-(((o_other.aivar[AIV_Love]*255)/colLove)/4), 255);
-		}
+			var int colLove; colLove = o_other.aivar[AIV_Love] + (MAX_LOVE/10);
+			col = RGBA (255, 255 - (((o_other.aivar[AIV_Love]*255)/colLove)/2), 255 - (((o_other.aivar[AIV_Love]*255)/colLove)/4), 255);
+		}*/
 		else if (o_other.npctype == NPCTYPE_VILLAIN)
 		{
 			col = RGBA (192, 32, 96, 255);
@@ -55,7 +55,7 @@ func void _Focusnames()
 		else
 		{
 			var int itemVal; itemVal = o_item.value;
-			col = RGBA (255-(((itemVal*255)/(itemVal+100))/6), 255-(((itemVal*255)/(itemVal+100))/4), 255-((itemVal*255)/(itemVal+100)), 255);
+			col = RGBA (255 - (((itemVal*255)/(itemVal+100))/6), 255 - (((itemVal*255)/(itemVal+100))/4), 255 - ((itemVal*255)/(itemVal+100)), 255);
 		};
 	}
 	else

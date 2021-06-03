@@ -7,15 +7,15 @@ INSTANCE DIA_Wolf_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Wolf_EXIT_Condition;
 	information = DIA_Wolf_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Wolf_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -33,13 +33,13 @@ instance DIA_Wolf_Hallo		(C_INFO)
 	nr		 	= 4;
 	condition	= DIA_Wolf_Hallo_Condition;
 	information	= DIA_Wolf_Hallo_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Wszystko w porz¹dku?";
 };
 
 func int DIA_Wolf_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Wolf_Hallo_Info ()
@@ -58,16 +58,16 @@ instance DIA_Wolf_WannaJoin		(C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Wolf_WannaJoin_Condition;
 	information	= DIA_Wolf_WannaJoin_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Chcê siê do was przy³¹czyæ.";
 };
 
 func int DIA_Wolf_WannaJoin_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Wolf_Hallo))
-	&& (Kapitel < 8)
+	&& (Kapitel < 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -93,7 +93,7 @@ instance DIA_Wolf_WannaBuy		(C_INFO)
 	nr		 	= 6;
 	condition	= DIA_Wolf_WannaBuy_Condition;
 	information	= DIA_Wolf_WannaBuy_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Masz coœ do sprzedania?";
 };
 
@@ -101,7 +101,7 @@ func int DIA_Wolf_WannaBuy_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Wolf_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -124,7 +124,7 @@ instance DIA_Wolf_WannaLearn (C_INFO)
 	nr		 	= 7;
 	condition	= DIA_Wolf_WannaLearn_Condition;
 	information	= DIA_Wolf_WannaLearn_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Mo¿esz mnie czegoœ nauczyæ?";
 };
 
@@ -132,7 +132,7 @@ func int DIA_Wolf_WannaLearn_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Wolf_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -141,9 +141,76 @@ func void DIA_Wolf_WannaLearn_Info ()
 	AI_Output (other, self, "DIA_Wolf_WannaLearn_15_00"); //Mo¿esz mnie czegoœ nauczyæ?
 	AI_Output (self, other, "DIA_Wolf_WannaLearn_08_01"); //Jeœli chcesz, mogê ci pokazaæ, jak sprawniej pos³ugiwaæ siê ³ukiem. I tak nie mam teraz nic lepszego do roboty.
 	
-	self.aivar[AIV_CanTeach] = true;
+	Wolf_TeachBow = TRUE;
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Wilk mo¿e mnie nauczyæ, jak pos³ugiwaæ siê ³ukiem.");
+};
+
+// ************************************************************
+// 			  				TEACH
+// ************************************************************
+var int Wolf_Merke_Bow;
+// ------------------------------------------------------
+
+instance DIA_Wolf_TEACH (C_INFO)
+{
+	npc		 	= SLD_811_Wolf;
+	nr		 	= 8;
+	condition	= DIA_Wolf_TEACH_Condition;
+	information	= DIA_Wolf_TEACH_Info;
+	permanent 	= TRUE;
+	description	= "Chcê siê nauczyæ czegoœ o ³ucznictwie.";
+};
+
+func int DIA_Wolf_TEACH_Condition ()
+{
+	if (Wolf_TeachBow == TRUE)
+	{
+		return TRUE;
+	};
+};
+
+func void DIA_Wolf_TEACH_Info ()
+{
+	AI_Output (other, self, "DIA_Wolf_TEACH_15_00"); //Chcê siê nauczyæ czegoœ o ³ucznictwie.
+	AI_Output (self, other, "DIA_Wolf_TEACH_08_01"); //Czego mogê ciê nauczyæ?
+	
+	Wolf_Merke_Bow = other.HitChance[NPC_TALENT_BOW];
+	
+	Info_ClearChoices (DIA_Wolf_Teach);
+	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_Bow_1);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_Bow_5);
+};
+
+FUNC VOID DIA_Wolf_Teach_Back ()
+{
+	if (Wolf_Merke_Bow < other.HitChance[NPC_TALENT_BOW])
+	{
+		AI_Output (self ,other,"DIA_Wolf_Teach_BACK_08_00"); //No i proszê. Od razu poprawi³a siê twoja celnoœæ.
+	};
+	
+	Info_ClearChoices (DIA_Wolf_Teach);
+};
+
+FUNC VOID DIA_Wolf_Teach_BOW_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 90);
+	
+	Info_ClearChoices (DIA_Wolf_Teach);
+	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_Bow_1);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_Bow_5);
+};
+
+FUNC VOID DIA_Wolf_Teach_BOW_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 90);
+	
+	Info_ClearChoices (DIA_Wolf_Teach);
+	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_BOW_1);
+	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_BOW_5);
 };
 
 // ************************************************************
@@ -155,7 +222,7 @@ instance DIA_Wolf_PERM		(C_INFO)
 	nr			= 9;
 	condition	= DIA_Wolf_PERM_Condition;
 	information	= DIA_Wolf_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Co s³ychaæ? Znalaz³eœ ju¿ jak¹œ pracê?";
 };
 
@@ -165,7 +232,7 @@ func int DIA_Wolf_PERM_Condition ()
 	&& (MIS_BengarsHelpingSLD == 0)
 	&& (Wolf_IsOnBoard	!= LOG_FAILED)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -184,7 +251,7 @@ instance DIA_Wolf_Stadt		(C_INFO)
 	nr			= 10;
 	condition	= DIA_Wolf_Stadt_Condition;
 	information	= DIA_Wolf_Stadt_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Próbowa³eœ szukaæ pracy w mieœcie?";
 };
 
@@ -194,7 +261,7 @@ func int DIA_Wolf_Stadt_Condition ()
 	&& (MIS_BengarsHelpingSLD == 0)
 	&& (Wolf_IsOnBoard	!= LOG_FAILED)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -218,7 +285,6 @@ func void DIA_Wolf_Stadt_Info ()
 // ************************************************************
 // 	  				   Wegen CrawlerArmor
 // ************************************************************
-/*
 var int MIS_Wolf_BringCrawlerPlates;
 var int Wolf_MakeArmor;
 var int Player_GotCrawlerArmor;
@@ -230,15 +296,15 @@ INSTANCE DIA_Wolf_AboutCrawler(C_INFO)
 	nr			= 1;
 	condition	= DIA_Wolf_AboutCrawler_Condition;
 	information	= DIA_Wolf_AboutCrawler_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Podobno umiesz sporz¹dzaæ zbroje z pancerzy pe³zaczy?";
 };                       
 FUNC INT DIA_Wolf_AboutCrawler_Condition()
 {
-	if (Kapitel >= 8)
-	&& (Wolf_ProduceCrawlerArmor == true)
+	if (Kapitel >= 2)
+	&& (Wolf_ProduceCrawlerArmor == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_AboutCrawler_Info()
@@ -258,6 +324,41 @@ FUNC VOID DIA_Wolf_AboutCrawler_Info()
 	B_LogEntry (TOPIC_Wolf_BringCrawlerPlates,"Wilk mo¿e zrobiæ dla mnie zbrojê z 10 pancerzy pe³zacza.");
 };
 
+
+// ************************************************************
+// 	  				  TeachCrawlerPlates
+// ************************************************************
+
+INSTANCE DIA_Wolf_TeachCrawlerPlates(C_INFO)
+{
+	npc			= SLD_811_Wolf;
+	nr			= 2;
+	condition	= DIA_Wolf_TeachCrawlerPlates_Condition;
+	information	= DIA_Wolf_TeachCrawlerPlates_Info;
+	permanent	= TRUE;
+	description = B_BuildLearnString ("Naucz mnie zdzierania p³yt pancerza z pe³zaczy!", B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, TROPHY_CrawlerPlate));
+};                       
+FUNC INT DIA_Wolf_TeachCrawlerPlates_Condition()
+{
+	if (Npc_KnowsInfo (other, DIA_Wolf_AboutCrawler))
+	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_CrawlerPlate] == FALSE)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Wolf_TeachCrawlerPlates_Info()
+{	
+	AI_Output (other, self, "DIA_Wolf_TeachCrawlerPlates_15_00"); //Naucz mnie zdejmowaæ pancerze z martwych pe³zaczy.
+	
+	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_CrawlerPlate))
+	{
+		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_01"); //To proste. Pancerze przylegaj¹ do cia³a tylko na krawêdziach. WeŸ po prostu ostry nó¿ i wytnij je wzd³u¿ brzegów.
+		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_02"); //Zapamiêta³eœ?
+		AI_Output (other, self, "DIA_Wolf_TeachCrawlerPlates_15_03"); //To nic trudnego.
+		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_04"); //W rzeczy samej.
+	};
+};
+
 // ************************************************************
 // 	  				   BringPlates
 // ************************************************************
@@ -268,15 +369,15 @@ INSTANCE DIA_Wolf_BringPlates(C_INFO)
 	nr			= 3;
 	condition	= DIA_Wolf_BringPlates_Condition;
 	information	= DIA_Wolf_BringPlates_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mam dla ciebie pancerze pe³zaczy na zbrojê.";
-};
+};                       
 FUNC INT DIA_Wolf_BringPlates_Condition()
 {
 	if (MIS_Wolf_BringCrawlerPlates == LOG_RUNNING)
 	&& (Npc_HasItems (other, ItAt_CrawlerPlate) >= 10)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_BringPlates_Info()
@@ -301,15 +402,15 @@ INSTANCE DIA_Wolf_ArmorReady(C_INFO)
 	nr			= 4;
 	condition	= DIA_Wolf_ArmorReady_Condition;
 	information	= DIA_Wolf_ArmorReady_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "I co z t¹ zbroj¹?";
 };                       
 FUNC INT DIA_Wolf_ArmorReady_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Wolf_AboutCrawler))
-	&& (Player_GotCrawlerArmor == false)
+	&& (Player_GotCrawlerArmor == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_ArmorReady_Info()
@@ -318,37 +419,37 @@ FUNC VOID DIA_Wolf_ArmorReady_Info()
 
 	if (Npc_HasItems (self, ItAt_CrawlerPlate) >= 10)
 	{
-		if (Wolf_MakeArmor == false)
+		if (Wolf_MakeArmor == FALSE)
 		{
-			Wolf_Armor_Day = (Wld_GetDay()+1);
-			Wolf_MakeArmor = true;
+			Wolf_Armor_Day = (Wld_GetDay() + 1);
+			Wolf_MakeArmor = TRUE;
 		};
 		
-		if (Wolf_MakeArmor == true)
+		if (Wolf_MakeArmor == TRUE)
 		&& (Wolf_Armor_Day > Wld_GetDay())
 		{
 			AI_Output (self, other, "DIA_Wolf_ArmorReady_08_01"); //Bez obaw, zrobiê j¹ dla ciebie. Bêdzie gotowa na jutro.
 		}
 		else
 		{
-			CreateInvItems (self, ITAR_Leather_H, 1);
+			CreateInvItems (self, ItAr_Djg_Crawler, 1);
 			Npc_RemoveInvItems (self, ItAt_CrawlerPlate, 10);
 			AI_Output (self, other, "DIA_Wolf_ArmorReady_08_02"); //Ju¿ skoñczona. Proszê.
-			B_GiveInvItems (self, other, ITAR_Leather_H, 1);
+			B_GiveInvItems (self, other, ItAr_Djg_Crawler, 1);
 			AI_Output (self, other, "DIA_Wolf_ArmorReady_08_03"); //Moim zdaniem wygl¹da ca³kiem nieŸle.
 			AI_Output (other, self, "DIA_Wolf_ArmorReady_15_04"); //Dziêki!
 			AI_Output (self, other, "DIA_Wolf_ArmorReady_08_05"); //Nie ma sprawy.
-			Player_GotCrawlerArmor = true;
+			Player_GotCrawlerArmor = TRUE;
 		};
 	}
 	else
 	{
 		AI_Output (self, other, "DIA_Wolf_ArmorReady_08_06"); //¯arty siê ciebie trzymaj¹? A gdzie masz pancerze pe³zaczy?
-		Wolf_MakeArmor = false;
+		Wolf_MakeArmor = FALSE;
 		MIS_Wolf_BringCrawlerPlates = LOG_RUNNING;
 	};
 };
-*/
+
 
 //#####################################################################
 //##
@@ -368,14 +469,14 @@ INSTANCE DIA_Wolf_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wolf_KAP3_EXIT_Condition;
 	information	= DIA_Wolf_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Wolf_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_KAP3_EXIT_Info()
@@ -392,7 +493,7 @@ instance DIA_Wolf_BENGAR		(C_INFO)
 	nr		 = 	31;
 	condition	 = 	DIA_Wolf_BENGAR_Condition;
 	information	 = 	DIA_Wolf_BENGAR_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Chyba znalaz³em na farmie Bengara pracê w sam raz dla ciebie.";
 };
@@ -401,10 +502,10 @@ func int DIA_Wolf_BENGAR_Condition ()
 {
 	 if (Npc_KnowsInfo(other, DIA_Wolf_HALLO))
 	 && (MIS_BengarsHelpingSLD == LOG_RUNNING)
-	 && (Kapitel >= 9)
+	 && (Kapitel >= 3)
 	 && (Wolf_IsOnBoard	 != LOG_SUCCESS)
 	  		{
-				return true;
+				return TRUE;
 	 		};
 };
 
@@ -415,13 +516,13 @@ func void DIA_Wolf_BENGAR_Info ()
 {
 	AI_Output			(other, self, "DIA_Wolf_BENGAR_15_00"); //Chyba znalaz³em na farmie Bengara pracê w sam raz dla ciebie.
 
-	if (DIA_Wolf_BENGAR_oneTime == false)
+	if (DIA_Wolf_BENGAR_oneTime == FALSE)
 	{
 	AI_Output			(self, other, "DIA_Wolf_BENGAR_08_01"); //S³ucham.
 	AI_Output			(other, self, "DIA_Wolf_BENGAR_15_02"); //Prze³êcz do Górniczej Doliny koñczy siê tu¿ przy farmie Bengara. Biedak ma wiêc mnóstwo problemów z ró¿nymi bestiami, które schodz¹ z gór.
 	AI_Output			(other, self, "DIA_Wolf_BENGAR_15_03"); //Przyda³by mu siê ktoœ o obrony farmy.
 	AI_Output			(self, other, "DIA_Wolf_BENGAR_08_04"); //To rzeczywiœcie niez³a propozycja. Przynajmniej nie musia³bym tu siedzieæ i gapiæ siê têsknym wzrokiem na kuŸniê.
-	DIA_Wolf_BENGAR_oneTime = true;
+	DIA_Wolf_BENGAR_oneTime = TRUE;
 	};
 	
 	if ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
@@ -450,8 +551,9 @@ func void DIA_Wolf_BENGAR_geld ()
 		AI_Output			(self, other, "DIA_Wolf_BENGAR_geld_08_01"); //Œwietnie. Nim wyruszê na farmê Bengara, zastanowiê siê, kogo móg³bym zabraæ ze sob¹.
 		AI_Output			(self, other, "DIA_Wolf_BENGAR_geld_08_02"); //Do zobaczenia!
 		
+	
 		MIS_BengarsHelpingSLD = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3);
+		B_GivePlayerXP (XP_BengarsHelpingSLD);
 		AI_StopProcessInfos (self);
 		AI_UseMob			(self,"BENCH",-1);
 		Npc_ExchangeRoutine	(self,"BengarsFarm");
@@ -481,19 +583,19 @@ instance DIA_Wolf_PERMKAP3		(C_INFO)
 	nr		 = 	80;
 	condition	 = 	DIA_Wolf_PERMKAP3_Condition;
 	information	 = 	DIA_Wolf_PERMKAP3_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Wszystko w porz¹dku?";
 };
 
 func int DIA_Wolf_PERMKAP3_Condition ()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Npc_GetDistToWP(self,"FARM3")<3000) 
 	&& (MIS_BengarsHelpingSLD == LOG_SUCCESS)
 	&& (Wolf_IsOnBoard	 != LOG_SUCCESS)
 		{
-				return true;
+				return TRUE;
 		};
 };
 var int DIA_Wolf_PERMKAP3_onetime;
@@ -501,12 +603,12 @@ func void DIA_Wolf_PERMKAP3_Info ()
 {
 	AI_Output			(other, self, "DIA_Wolf_PERMKAP3_15_00"); //Wszystko w porz¹dku?
 
-	if ((Npc_IsDead(Bengar))&&(DIA_Wolf_PERMKAP3_onetime == false))
+	if ((Npc_IsDead(Bengar))&&(DIA_Wolf_PERMKAP3_onetime == FALSE))
 	{
 		AI_Output			(self, other, "DIA_Wolf_PERMKAP3_08_01"); //Mój pracodawca nie ¿yje. Ale co robiæ? Zawsze chcia³em mieæ w³asn¹ farmê.
 		AI_StopProcessInfos (self);	
 		Npc_ExchangeRoutine	(self,"BengarDead");
-		DIA_Wolf_PERMKAP3_onetime = true;
+		DIA_Wolf_PERMKAP3_onetime = TRUE;
 	}
 	else
 	{
@@ -535,14 +637,14 @@ INSTANCE DIA_Wolf_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wolf_KAP4_EXIT_Condition;
 	information	= DIA_Wolf_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Wolf_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_KAP4_EXIT_Info()
@@ -569,14 +671,14 @@ INSTANCE DIA_Wolf_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wolf_KAP5_EXIT_Condition;
 	information	= DIA_Wolf_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Wolf_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_KAP5_EXIT_Info()
@@ -601,10 +703,10 @@ instance DIA_Wolf_SHIP		(C_INFO)
 
 func int DIA_Wolf_SHIP_Condition ()
 {
-	if (MIS_SCKnowsWayToIrdorath == true)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	&& (Npc_KnowsInfo(other, DIA_Wolf_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -616,7 +718,7 @@ func void DIA_Wolf_SHIP_Info ()
 	&& (!Npc_IsDead (Bengar))
 	{
 	AI_Output			(self, other, "DIA_Wolf_SHIP_08_01"); //Nie, ju¿ nie. Znalaz³em dla siebie odpowiednie miejsce. Mo¿e innym razem.
-	wolf_SaidNo = true;
+	wolf_SaidNo = TRUE;
 	}
 	else
 	{
@@ -639,17 +741,17 @@ instance DIA_Wolf_KnowWhereEnemy		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Wolf_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Wolf_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Niedaleko. Na poblisk¹ wyspê.";
 };
 func int DIA_Wolf_KnowWhereEnemy_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Wolf_SHIP))
-	&& (Wolf_SaidNo == false)
-	&& (MIS_SCKnowsWayToIrdorath == true)
-	&& (Wolf_IsOnBoard == false) 
+	&& (Wolf_SaidNo == FALSE)
+	&& (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Wolf_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Wolf_KnowWhereEnemy_Info ()
@@ -678,15 +780,16 @@ FUNC VOID DIA_Wolf_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Wolf_KnowWhereEnemy_Yes_15_01"); //ZejdŸ na przystañ. Wkrótce odp³ywamy.
 	AI_Output (self ,other,"DIA_Wolf_KnowWhereEnemy_Yes_08_02"); //Ju¿ idê.
 	
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_Crewmember_Success);                                                              
+	                                                                                                     
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Wolf_IsOnBoard	 = LOG_SUCCESS;
 	
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	AI_StopProcessInfos (self);	
 
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -714,15 +817,15 @@ instance DIA_Wolf_LeaveMyShip		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_Wolf_LeaveMyShip_Condition;
 	information	 = 	DIA_Wolf_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Jednak mi siê nie przydasz.";
 };
 func int DIA_Wolf_LeaveMyShip_Condition ()
 {	
 	if (Wolf_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Wolf_LeaveMyShip_Info ()
@@ -731,7 +834,7 @@ func void DIA_Wolf_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_Wolf_LeaveMyShip_08_01"); //Najpierw dajesz mi nadziejê, a potem ka¿esz spadaæ? Jesteœ draniem, jakich ma³o. Zap³acisz mi za to.
 	
 	Wolf_IsOnBoard	 = LOG_FAILED;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_NONE, 1);
 	Npc_ExchangeRoutine (self,"Start"); 
@@ -746,7 +849,7 @@ instance DIA_Wolf_SHIPOFF		(C_INFO)
 	nr		 = 	56;
 	condition	 = 	DIA_Wolf_SHIPOFF_Condition;
 	information	 = 	DIA_Wolf_SHIPOFF_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"S³uchaj.";
 };
@@ -755,7 +858,7 @@ func int DIA_Wolf_SHIPOFF_Condition ()
 {
 	if (Wolf_IsOnBoard	== LOG_FAILED)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -787,14 +890,14 @@ INSTANCE DIA_Wolf_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wolf_KAP6_EXIT_Condition;
 	information	= DIA_Wolf_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Wolf_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Wolf_KAP6_EXIT_Info()

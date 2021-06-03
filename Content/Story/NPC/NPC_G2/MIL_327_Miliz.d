@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_327_Miliz (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	Name_Miliz;
 	guild 								=	GIL_MIL;
 	id 									=	327;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal27, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_327;
 };
 
-FUNC VOID Rtn_Start_327()
+func void Rtn_Start_327()
 {
 	TA_Smalltalk		(21,00,23,59, "NW_CITY_BARRACK02_SMALLTALK_01");
     TA_Sleep			(23,59,06,30, "NW_CITY_BARRACK01_BED_02");

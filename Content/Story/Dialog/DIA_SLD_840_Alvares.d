@@ -7,13 +7,13 @@ INSTANCE DIA_Alvares_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Alvares_EXIT_Condition;
 	information = DIA_Alvares_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Alvares_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Alvares_EXIT_Info()
@@ -29,20 +29,20 @@ instance DIA_Alvares_HAUAB		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Alvares_HAUAB_Condition;
 	information	 = 	DIA_Alvares_HAUAB_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 
 func int DIA_Alvares_HAUAB_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Alvares_HAUAB_Info ()
 {
-	Akils_SLDStillthere = true;
+	Akils_SLDStillthere = TRUE;
 	AI_Output (self, other, "DIA_Alvares_HAUAB_11_00"); //Nie wiem, co ciê tu przygna³o, ale lepiej zapomnij o tym i ruszaj w dalsz¹ drogê.
 	Log_CreateTopic (TOPIC_AkilsSLDStillthere, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_AkilsSLDStillthere, LOG_RUNNING);
@@ -58,15 +58,15 @@ instance DIA_Alvares_ATTACK		(C_INFO)
 	nr			 = 	6;
 	condition	 = 	DIA_Alvares_ATTACK_Condition;
 	information	 = 	DIA_Alvares_ATTACK_Info;
-	permanent	 = 	false;
-	important	 = 	true;
+	permanent	 = 	FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Alvares_ATTACK_Condition ()
 {
 	if	(Npc_KnowsInfo(other, DIA_Alvares_HAUAB))
 	&&  (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Alvares_ATTACK_Info ()
@@ -83,6 +83,8 @@ func void DIA_Alvares_ATTACK_Info ()
 	{
 		Info_AddChoice 	  (DIA_Alvares_ATTACK,"Przyszed³em tylko coœ zabraæ.",DIA_Alvares_ATTACK_Lieferung);
 	};
+	
+	
 };
 FUNC VOID DIA_Alvares_ATTACK_Witz()
 {
@@ -94,6 +96,7 @@ FUNC VOID DIA_Alvares_ATTACK_Witz()
 	
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
+
 };
 FUNC VOID DIA_Alvares_ATTACK_Kerle()
 {
@@ -103,6 +106,7 @@ FUNC VOID DIA_Alvares_ATTACK_Kerle()
 	
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
+
 };
 FUNC VOID DIA_Alvares_ATTACK_Aerger()
 {
@@ -135,8 +139,8 @@ instance DIA_Alvares_Schluss		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Alvares_Schluss_Condition;
 	information	 = 	DIA_Alvares_Schluss_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 
 func int DIA_Alvares_Schluss_Condition ()
@@ -144,7 +148,7 @@ func int DIA_Alvares_Schluss_Condition ()
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (Npc_KnowsInfo (other,DIA_Alvares_ATTACK))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Alvares_Schluss_Info ()
@@ -153,5 +157,7 @@ func void DIA_Alvares_Schluss_Info ()
 	AI_Output (self, other, "DIA_Alvares_Schluss_11_01"); //Dobra - no to teraz ciê zabijê. Engardo, za³atwmy ich!
 	
 	AI_StopProcessInfos (self);
-	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
+	B_Attack (self, other, AR_SuddenEnemyInferno, 1);	
+
+	
 };

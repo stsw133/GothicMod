@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BDT_1078_Addon_Bandit (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_BANDIT;
 	guild 								=	GIL_BDT;
 	id 									=	1078;
 	voice 								=	13;
-	flags      							=	0;
 	npctype								=	NPCTYPE_TAL_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Nagelknueppel);
 	EquipItem (self, ItRw_Bow_M_02);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Richter, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, -0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_1078;
 };
 
-FUNC VOID Rtn_Start_1078()
+func void Rtn_Start_1078()
 {
 	TA_Sit_Campfire		(20,00,12,05, "ADW_BANDIT_VP1_08_B");
 	TA_Stand_Guarding	(12,05,20,00, "ADW_BANDIT_VP1_07_B");

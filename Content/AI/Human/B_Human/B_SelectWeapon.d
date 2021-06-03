@@ -3,22 +3,21 @@
 ///******************************************************************************************
 func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
 {
-	/// EXIT IF...
 	/// ------ NSC im Wasser / beim Fallen ------
-	if (C_BodyStateContains(slf,BS_FALL))
-	|| (C_BodyStateContains(slf,BS_SWIM))
-	|| (C_BodyStateContains(slf,BS_DIVE))
+	if (C_BodyStateContains(slf, BS_FALL))
+	|| (C_BodyStateContains(slf, BS_SWIM))
+	|| (C_BodyStateContains(slf, BS_DIVE))
 	{
 		return;
 	};
 	
 	/// ------ Magie wählen oder behalten ------
-	if (B_SelectSpell(slf,oth))
+	if (B_SelectSpell(slf, oth))
 	{
 		return;
 	};
 	
-	if (Npc_IsInFightMode(slf,FMODE_MAGIC))	
+	if (Npc_IsInFightMode(slf, FMODE_MAGIC))	
 	{
 		if (!Npc_IsInFightMode(slf, FMODE_NONE))
 		{
@@ -30,9 +29,9 @@ func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ Fernkampfwaffe behalten ------
-	if (Npc_IsInFightMode(slf,FMODE_FAR))
+	if (Npc_IsInFightMode(slf, FMODE_FAR))
 	{
-		if (Npc_GetDistToNpc(slf,oth) > FIGHT_DIST_RANGED_INNER) 
+		if (Npc_GetDistToNpc(slf, oth) > FIGHT_DIST_RANGED_INNER) 
 		|| (!Npc_HasEquippedMeleeWeapon(slf))
 		{
 			return;
@@ -40,21 +39,20 @@ func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ Nahkampfwaffe behalten ------
-	if (Npc_IsInFightMode(slf,FMODE_MELEE))
+	if (Npc_IsInFightMode(slf, FMODE_MELEE))
 	{
-		if (Npc_GetDistToNpc(slf,oth) <= FIGHT_DIST_RANGED_OUTER)
+		if (Npc_GetDistToNpc(slf, oth) <= FIGHT_DIST_RANGED_OUTER)
 		|| (!Npc_HasEquippedRangedWeapon(slf))
 		{
 			return;
 		};
 	};
 	
-	/// FUNC
 	/// ------ NK-Waffe ziehen ------
 	if (Npc_HasEquippedMeleeWeapon(slf))
-	&& (Npc_GetDistToNpc(slf,oth) <= FIGHT_DIST_RANGED_OUTER)
+	&& (Npc_GetDistToNpc(slf, oth) <= FIGHT_DIST_RANGED_OUTER)
 	{
-		if (!Npc_IsInFightMode(slf,FMODE_NONE))
+		if (!Npc_IsInFightMode(slf, FMODE_NONE))
 		{
 			AI_RemoveWeapon(slf);
 		};
@@ -65,10 +63,10 @@ func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
 	
 	/// ------ Bogen ziehen ------
 	if (Npc_HasEquippedRangedWeapon(slf))
-	&& (Npc_GetDistToNpc(slf,oth) > FIGHT_DIST_RANGED_INNER)
+	&& (Npc_GetDistToNpc(slf, oth) > FIGHT_DIST_RANGED_INNER)
 	&& (C_NpcHasAttackReasonToKill(slf))
 	{
-		if (!Npc_IsInFightMode(slf,FMODE_NONE))
+		if (!Npc_IsInFightMode(slf, FMODE_NONE))
 		{
 			AI_RemoveWeapon(slf);
 		};
@@ -78,7 +76,7 @@ func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ immer noch keine Waffe ------
-	if (Npc_IsInFightMode(slf,FMODE_NONE))
+	if (Npc_IsInFightMode(slf, FMODE_NONE))
 	{
 		/// ------ dann Schwert, egal welche Distanz ------
 		if (Npc_HasEquippedMeleeWeapon(slf))

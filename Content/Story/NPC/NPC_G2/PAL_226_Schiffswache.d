@@ -1,38 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Pal_226_Schiffswache (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Schiffswache;
 	guild 								=	GIL_PAL;
 	id 									=	226;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1H_Pal_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Fighter", Face_Normal02, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_226;
 };
 
-FUNC VOID Rtn_Start_226()
+func void Rtn_Start_226()
 {
 	TA_Stand_Guarding	(06,00,07,00, "SHIP_DECK_32");
 
@@ -150,7 +151,7 @@ FUNC VOID Rtn_Start_226()
 	TA_Stand_Guarding	(04,00,05,00, "SHIP_DECK_32");
 	TA_Stand_Guarding	(05,00,06,00, "SHIP_DECK_29");
 };
-FUNC VOID Rtn_ShipFree_226()
+func void Rtn_ShipFree_226()
 {
 	TA_Stand_WP	(08,00,23,00, "NW_CITY_UPTOWNPARADE_07");
 	TA_Stand_WP	(23,00,08,00, "NW_CITY_UPTOWNPARADE_07");

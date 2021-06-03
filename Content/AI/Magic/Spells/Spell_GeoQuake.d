@@ -6,7 +6,7 @@ const int SPL_Cost_GeoQuake				=	100;
 const int SPL_Damage_GeoQuake			=	100;
 
 ///******************************************************************************************
-INSTANCE Spell_GeoQuake (C_Spell_Proto)
+instance Spell_GeoQuake (C_Spell_Proto)
 {
     time_per_mana						=	0;
     damage_per_level					=	SPL_Damage_GeoQuake;
@@ -22,7 +22,7 @@ func int Spell_Logic_GeoQuake (var int manaInvested)
         return SPL_SENDCAST;
     };
 	
-    if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoQuake/5))
+    if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoQuake/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoQuake)
 	{
         return SPL_NEXTLEVEL;
@@ -35,13 +35,14 @@ func int Spell_Logic_GeoQuake (var int manaInvested)
 
 func void Spell_Cast_GeoQuake()
 {
-    if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoQuake/5))
+    if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_GeoQuake/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_GeoQuake/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_GeoQuake)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_GeoQuake;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 };

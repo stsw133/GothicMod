@@ -7,13 +7,13 @@ INSTANCE DIA_Bullco_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Bullco_EXIT_Condition;
 	information = DIA_Bullco_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Bullco_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Bullco_EXIT_Info()
@@ -30,13 +30,13 @@ instance DIA_Bullco_Hallo		(C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Bullco_Hallo_Condition;
 	information	= DIA_Bullco_Hallo_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jest coœ, o czym powinniœmy pogadaæ...";
 };
 
 func int DIA_Bullco_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Bullco_Hallo_Info ()
@@ -62,16 +62,16 @@ instance DIA_Bullco_Quatscher (C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Bullco_Quatscher_Condition;
 	information	= DIA_Bullco_Quatscher_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Bullco_Quatscher_Condition ()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	&& (Sylvio_angequatscht >= 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -96,18 +96,18 @@ instance DIA_Bullco_PleaseLeave (C_INFO)
 	nr		 	= 3;
 	condition	= DIA_Bullco_PleaseLeave_Condition;
 	information	= DIA_Bullco_PleaseLeave_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Bullco_PleaseLeave_Condition ()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		if (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
-		|| (Sylvio_MenDefeated == true)
+		|| (Sylvio_MenDefeated == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};
 };
@@ -120,7 +120,7 @@ func void DIA_Bullco_PleaseLeave_Info ()
 	AI_Output (self, other, "DIA_Bullco_PleaseLeave_06_03"); //Jutro ma ciê tu nie byæ. Rozumiesz?
 
 	Bullco_Leave_Day = B_GetDayPlus();	
-	Bullco_scharf = true;
+	Bullco_scharf = TRUE;
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self, "PEE");
 };
@@ -137,17 +137,17 @@ instance DIA_Bullco_DailyCheck (C_INFO)
 	nr		 	= 4;
 	condition	= DIA_Bullco_DailyCheck_Condition;
 	information	= DIA_Bullco_DailyCheck_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };
 
 func int DIA_Bullco_DailyCheck_Condition ()
 {
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
-	&& (Bullco_scharf == true)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
+	&& (Bullco_scharf == TRUE)
 	&& (Wld_GetDay() > Bullco_Leave_Day)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -164,7 +164,7 @@ func void DIA_Bullco_DailyCheck_Info ()
 		AI_Output (self, other, "DIA_Bullco_DailyCheck_06_03"); //Nie wierzê! Ten kole¿ka wci¹¿ tu jest!
 	};
 	
-	Bullco_HitCounter += 1;
+	Bullco_HitCounter = Bullco_HitCounter + 1;
 	Bullco_Leave_Day == B_GetDayPlus();
 	
 	AI_StopProcessInfos (self);
@@ -182,15 +182,15 @@ instance DIA_Bullco_WontLeave (C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Bullco_WontLeave_Condition;
 	information	= DIA_Bullco_WontLeave_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "NIE zamierzam st¹d odejœæ!";
 };
 
 func int DIA_Bullco_WontLeave_Condition ()
 {
-	if (Bullco_scharf == true)
+	if (Bullco_scharf == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -198,7 +198,7 @@ func void DIA_Bullco_WontLeave_Info ()
 {
 	AI_Output (other, self, "DIA_Bullco_WontLeave_15_00"); //NIE zamierzam st¹d odejœæ!
 
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_NONE)
+	if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Bullco_WontLeave_06_01"); //No to chyba bêdziemy gadali o tym jeszcze raz.
 		AI_StopProcessInfos (self);
@@ -207,7 +207,7 @@ func void DIA_Bullco_WontLeave_Info ()
 	else
 	{
 		AI_Output (self, other, "DIA_Bullco_WontLeave_06_02"); //Taak, taak, idŸ to powiedz komuœ, kogo to obchodzi.
-		Bullco_scharf = false;
+		Bullco_scharf = FALSE;
 		AI_StopProcessInfos (self);
 	};
 };
@@ -223,17 +223,17 @@ instance DIA_Bullco_PepesSchafe (C_INFO)
 	nr		 	= 6;
 	condition	= DIA_Bullco_PepesSchafe_Condition;
 	information	= DIA_Bullco_PepesSchafe_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Czy imiê Pepe coœ ci mówi?";
 };
 
 func int DIA_Bullco_PepesSchafe_Condition ()
 {
 	if (MIS_Pepe_KillWolves == LOG_SUCCESS)
-	&& (Bullco_scharf == true)
-	&& (Onar_WegenPepe == true)
+	&& (Bullco_scharf == TRUE)
+	&& (Onar_WegenPepe == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -251,7 +251,7 @@ func void DIA_Bullco_PepesSchafe_Info ()
 	AI_Output (other, self, "DIA_Bullco_PepesSchafe_15_09"); //Tak?
 	AI_Output (self, other, "DIA_Bullco_PepesSchafe_06_10"); //Ty wstrêtna kreaturo...
 	
-	Bullco_scharf = false;
-	B_GivePlayerXP(XP_Ambient);
+	Bullco_scharf = FALSE;
+	B_GivePlayerXP (XP_Ambient);
 	AI_StopProcessInfos (self);
 };

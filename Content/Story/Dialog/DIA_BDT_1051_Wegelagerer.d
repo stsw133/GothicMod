@@ -7,7 +7,7 @@ INSTANCE DIA_1051_Wegelagerer_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_1051_Wegelagerer_EXIT_Condition;
 	information = DIA_1051_Wegelagerer_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 var int BDT_1051_Wegelagerer_Angriff;
@@ -15,20 +15,20 @@ var int BDT_1051_Wegelagerer_Angriff;
 FUNC INT DIA_1051_Wegelagerer_EXIT_Condition()
 {
 	if ((Npc_KnowsInfo(other, DIA_1051_Wegelagerer_Question))
-		|| (BDT_1051_Wegelagerer_Angriff == true))
+		|| (BDT_1051_Wegelagerer_Angriff == TRUE))
 
 		{
-				return true;
+				return TRUE;
 		};
 };
 FUNC VOID DIA_1051_Wegelagerer_EXIT_Info()
 {
 	AI_StopProcessInfos (self);
 	
-	if (BDT_1051_Wegelagerer_Angriff == true)
+	if (BDT_1051_Wegelagerer_Angriff == TRUE)
 	{
-			self.aivar[AIV_EnemyOverride] = false; 
-			BDT_1052_Wegelagerer.aivar[AIV_EnemyOverride] = false; 
+			self.aivar[AIV_EnemyOverride] = FALSE; 
+			BDT_1052_Wegelagerer.aivar[AIV_EnemyOverride] = FALSE; 
 	};
 };
 
@@ -41,15 +41,15 @@ INSTANCE DIA_1051_Wegelagerer_Hello   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Wegelagerer_Hello_Condition;
 	information = DIA_Wegelagerer_Hello_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tu porabiasz?";
 };
 
 FUNC INT DIA_Wegelagerer_Hello_Condition()
 {
-	if (BDT_1051_Wegelagerer_Angriff == false)
+	if (BDT_1051_Wegelagerer_Angriff == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -68,17 +68,17 @@ INSTANCE DIA_1051_Wegelagerer_Novice   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Wegelagerer_Novice_Condition;
 	information = DIA_Wegelagerer_Novice_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Szukam nowicjusza.";
 };
 
 FUNC INT DIA_Wegelagerer_Novice_Condition()
 {
 	if (MIS_Novizenchase == LOG_RUNNING)
-		&& (MIS_SCKnowsInnosEyeIsBroken  == false)
-		&& (BDT_1051_Wegelagerer_Angriff == false)
+		&& (MIS_SCKnowsInnosEyeIsBroken  == FALSE)
+		&& (BDT_1051_Wegelagerer_Angriff == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -101,16 +101,16 @@ INSTANCE DIA_1051_Wegelagerer_Question   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Wegelagerer_Question_Condition;
 	information = DIA_Wegelagerer_Question_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Tak tylko pytam.";
 };
 
 FUNC INT DIA_Wegelagerer_Question_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_1051_Wegelagerer_Hello))
-		&& (BDT_1051_Wegelagerer_Angriff == false)
+		&& (BDT_1051_Wegelagerer_Angriff == FALSE)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 
@@ -122,7 +122,7 @@ FUNC VOID DIA_Wegelagerer_Question_Info()
 	
 	Info_ClearChoices (DIA_1051_Wegelagerer_Question);
 	if (MIS_Novizenchase == LOG_RUNNING)
-		&& (MIS_SCKnowsInnosEyeIsBroken  == false)
+		&& (MIS_SCKnowsInnosEyeIsBroken  == FALSE)
 	{
 		Info_AddChoice (DIA_1051_Wegelagerer_Question,"Szukam nowicjusza.",DIA_1051_Wegelagerer_Question_Novice);
 	};	
@@ -144,7 +144,7 @@ FUNC VOID DIA_1051_Wegelagerer_Question_Novice_Who ()
 {
 	AI_Output (other,self ,"DIA_1051_Wegelagerer_Question_Novice_Who_15_00"); //Tak? A kogo?
 	AI_Output (self ,other,"DIA_1051_Wegelagerer_Question_Novice_Who_07_01"); //Ciebie!
-	BDT_1051_Wegelagerer_Angriff = true;
+	BDT_1051_Wegelagerer_Angriff = TRUE;
 	Npc_SetRefuseTalk (self,40);
 	Info_ClearChoices (DIA_1051_Wegelagerer_Question);
 
@@ -174,7 +174,7 @@ FUNC VOID DIA_1051_Wegelagerer_Question_MyConcern_Yes ()
 	AI_Output (self ,other,"DIA_1051_Wegelagerer_Question_MyConcern_Yes_07_01"); //He, he, mocny w gêbie.
 	AI_Output (self ,other,"DIA_1051_Wegelagerer_Question_MyConcern_Yes_07_02"); //Pora ci j¹ zamkn¹æ.
 
-	BDT_1051_Wegelagerer_Angriff = true;
+	BDT_1051_Wegelagerer_Angriff = TRUE;
 	Npc_SetRefuseTalk (self,40);
 	Info_ClearChoices (DIA_1051_Wegelagerer_Question);
 };
@@ -196,8 +196,8 @@ instance DIA_Wegelagerer_ANGRIFF		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Wegelagerer_ANGRIFF_Condition;
 	information	 = 	DIA_Wegelagerer_ANGRIFF_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Wegelagerer_ANGRIFF_Condition ()
@@ -205,10 +205,10 @@ func int DIA_Wegelagerer_ANGRIFF_Condition ()
 		var C_NPC Pal;
 		Pal = Hlp_GetNpc (BDT_1052_Wegelagerer);
 
-		if 	(Npc_RefuseTalk(self) == false)
-			&& ((BDT_1051_Wegelagerer_Angriff == true)	|| (C_NpcIsDown(Pal)))
+		if 	(Npc_RefuseTalk(self) == FALSE)
+			&& ((BDT_1051_Wegelagerer_Angriff == TRUE)	|| (C_NpcIsDown(Pal)))
 				{
-					return true;
+					return TRUE;
 				};
 };
 
@@ -220,6 +220,9 @@ func void DIA_Wegelagerer_ANGRIFF_Info ()
 
 	Npc_SetRefuseTalk (self,40);
 
-	self.aivar[AIV_EnemyOverride] = false; 
-	BDT_1052_Wegelagerer.aivar[AIV_EnemyOverride] = false; 
+	self.aivar[AIV_EnemyOverride] = FALSE; 
+	BDT_1052_Wegelagerer.aivar[AIV_EnemyOverride] = FALSE; 
 };
+
+
+

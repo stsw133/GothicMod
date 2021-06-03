@@ -7,12 +7,12 @@ instance DIA_Schwarzmagier_HELLO		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Schwarzmagier_HELLO_Condition;
 	information	 = 	DIA_Schwarzmagier_HELLO_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Schwarzmagier_HELLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 var int SC_KnowsMadPsi;		
 func void DIA_Schwarzmagier_HELLO_Info ()
@@ -32,7 +32,7 @@ func void DIA_Schwarzmagier_HELLO_Info ()
 	Info_AddChoice	(DIA_Schwarzmagier_HELLO, "Co kryje w sobie ten portal?", DIA_Schwarzmagier_HELLO_hinterTor );
 	Info_AddChoice	(DIA_Schwarzmagier_HELLO, "Kto jest twoim Mistrzem?", DIA_Schwarzmagier_HELLO_wer );
 
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		Info_AddChoice	(DIA_Schwarzmagier_HELLO, "By³eœ wyznawc¹ œni¹cego.", DIA_Schwarzmagier_HELLO_schlaefer );
 	};
@@ -59,8 +59,8 @@ func void DIA_Schwarzmagier_HELLO_schlaefer ()
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_schlaefer_09_01"); //To odleg³a przesz³oœæ. Pan otworzy³ mi oczy. Nikt nas ju¿ nie powstrzyma.
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_schlaefer_09_02"); //Mój Mistrz ukaza³ mi jedyny sposób postêpowania z wami, niewiernymi.
 
-	TOPIC_END_DEMENTOREN = true;
-	B_GivePlayerXP(XP_Ambient);
+	TOPIC_END_DEMENTOREN = TRUE;
+	B_GivePlayerXP (XP_Ambient);
 };
 
 func void DIA_Schwarzmagier_HELLO_dmt ()
@@ -74,10 +74,10 @@ func void DIA_Schwarzmagier_HELLO_dmt ()
 
 func void DIA_Schwarzmagier_HELLO_meister ()
 {
-	Wld_PlayEffect("DEMENTOR_FX",  hero, hero, 0, 0, 0, false );
-	Wld_PlayEffect("spellFX_INCOVATION_RED",  self, self, 0, 0, 0, false );
-	Wld_PlayEffect("FX_EarthQuake",  self, self, 0, 0, 0, false );
-	Wld_PlayEffect("SFX_Circle",  self, self, 0, 0, 0, false );
+	Wld_PlayEffect("DEMENTOR_FX",  hero, hero, 0, 0, 0, FALSE );
+	Wld_PlayEffect("spellFX_INCOVATION_RED",  self, self, 0, 0, 0, FALSE );
+	Wld_PlayEffect("FX_EarthQuake",  self, self, 0, 0, 0, FALSE );
+	Wld_PlayEffect("SFX_Circle",  self, self, 0, 0, 0, FALSE );
 	AI_PlayAni (self,"T_PRACTICEMAGIC5");	
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_00"); //Doœæ tych bredni! Teraz nadejdzie twój koniec.
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_01"); //Twoje oczy zakryje ciemnoœæ, a twa dusza zniknie w zaœwiatach.
@@ -101,13 +101,17 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 
 	Info_ClearChoices	(DIA_Schwarzmagier_HELLO);
 	Info_AddChoice	(DIA_Schwarzmagier_HELLO, DIALOG_ENDE, DIA_Schwarzmagier_HELLO_back );
+
 };
 
-func void DIA_Schwarzmagier_HELLO_back()
+func void DIA_Schwarzmagier_HELLO_back ()
 {
-	AI_StopProcessInfos(self);
+	AI_StopProcessInfos (self);
 	Wld_StopEffect("DEMENTOR_FX");
 	self.flags = 0;
-	Snd_Play("MFX_FEAR_CAST" );
+	Snd_Play 	("MFX_FEAR_CAST" );
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
 };
+
+
+

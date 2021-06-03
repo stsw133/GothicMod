@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Thorus_EXIT_Condition;
 	information = DIA_Addon_Thorus_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Thorus_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Thorus_EXIT_Info()
 {	
@@ -27,14 +27,14 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Thorus_Hi_Condition;
 	information = DIA_Addon_Thorus_Hi_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Thorus_Hi_Condition()
 {	
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Hi_Info()
@@ -60,14 +60,14 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Raven   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Thorus_Raven_Condition;
 	information = DIA_Addon_Thorus_Raven_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "To naprawdê wa¿ne, abym dosta³ siê do Kruka...";
 };
 FUNC INT DIA_Addon_Thorus_Raven_Condition()
 {	
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Raven_Info()
@@ -90,14 +90,14 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Zeit   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Thorus_Zeit_Condition;
 	information = DIA_Addon_Thorus_Zeit_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie pamiêtasz mnie? Ze Starego Obozu?";
 };
 FUNC INT DIA_Addon_Thorus_Zeit_Condition()
 {	
-	if (RavenIsDead == false) 
+	if (RavenIsDead == FALSE) 
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Zeit_Info()
@@ -126,28 +126,28 @@ instance DIA_Addon_BDT_10014_Thorus_GoodOldPerm  (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Thorus_GoodOldPerm_Condition;
 	information = DIA_Addon_Thorus_GoodOldPerm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Daj spokój, wpuœæ mnie. Przez wzgl¹d na stare, dobre czasy.";
 };
 FUNC INT DIA_Addon_Thorus_GoodOldPerm_Condition()
 {	
 	if (MIS_Send_Buddler != LOG_SUCCESS)
 	&& (Npc_KnowsInfo (other, DIA_Addon_BDT_10014_Thorus_Zeit))
-	&& (RavenIsDead == false)
+	&& (RavenIsDead == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_GoodOldPerm_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_Thorus_Add_15_00"); //Daj spokój, wpuœæ mnie. Przez wzgl¹d na stare, dobre czasy.
-	if (Thorus_GoodOldPerm == false)
+	if (Thorus_GoodOldPerm == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Thorus_Add_12_01"); //Pozwól, ¿e ci coœ wyjaœniê. Wiesz, dlaczego wci¹¿ ¿yjê?
 		AI_Output (self, other, "DIA_Addon_Thorus_Add_12_02"); //Bo zawsze by³em lojalny wzglêdem moich ludzi.
 		AI_Output (self, other, "DIA_Addon_Thorus_Add_12_03"); //Nie musi mi siê podobaæ to, co robi Kruk. Ale mimo to bêdê przestrzegaæ zasad.
 		AI_Output (self, other, "DIA_Addon_Thorus_Add_12_04"); //I ty tak¿e!
-		Thorus_GoodOldPerm = true;
+		Thorus_GoodOldPerm = TRUE;
 	}
 	else
 	{
@@ -160,13 +160,16 @@ FUNC VOID DIA_Addon_Thorus_GoodOldPerm_Info()
 //----------------------------------------------------------------------
 FUNC INT C_PlayerHasWrongToken ()
 {
-	if (Npc_HasItems (other,ItWr_StonePlateCommon_Addon) >= 1)
+	if (C_ScHasMagicStonePlate () == TRUE)
+	|| (Npc_HasItems (hero, ItWr_StonePlateCommon_Addon) >= 1)//Klar.
 	|| (Npc_HasItems (hero, ItMi_Addon_Stone_02) >= 1)
 	|| (Npc_HasItems (hero, ItMi_Addon_Stone_03) >= 1)
 	|| (Npc_HasItems (hero, ItMi_Addon_Stone_04) >= 1)
 	|| (Npc_HasItems (hero, ItMi_Addon_Stone_05) >= 1)
-	{	return true;	};
-	return false;
+	{
+		return TRUE;
+	};
+	return FALSE;
 };
 //----------------------------------------------------------------------
 //	Info Stein
@@ -177,17 +180,17 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Stein   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Thorus_Stein_Condition;
 	information = DIA_Addon_Thorus_Stein_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Mam dla ciebie kamienn¹ tabliczkê.";
 };
 FUNC INT DIA_Addon_Thorus_Stein_Condition()
 {	
-	if (C_PlayerHasWrongToken() == true)
-	&& (RavenIsDead == false)
+	if (C_PlayerHasWrongToken () == TRUE)
+	&& (RavenIsDead == FALSE)
 	&& (MIS_Send_Buddler != LOG_RUNNING)
 	&& (MIS_Send_Buddler != LOG_SUCCESS)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Stein_Info()
@@ -204,15 +207,15 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Rein   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Thorus_Rein_Condition;
 	information = DIA_Addon_Thorus_Rein_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mam tabliczkê z czerwonego kamienia...";
 };
 FUNC INT DIA_Addon_Thorus_Rein_Condition()
 {	
-	if (Npc_HasItems(other,ItMi_Addon_Stone_01) >= 1)
-	&& (RavenIsDead == false)
+	if (Npc_HasItems (other, ItMi_Addon_Stone_01) >= 1)
+	&& (RavenIsDead == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Rein_Info()
@@ -239,15 +242,15 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Sent   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Thorus_Sent_Condition;
 	information = DIA_Addon_Thorus_Sent_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Przys³a³em trzech ludzi.";
 };
 FUNC INT DIA_Addon_Thorus_Sent_Condition()
 {	
 	if (Player_SentBuddler >= 3)
-	&& (RavenIsDead == false)
+	&& (RavenIsDead == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Sent_Info()
@@ -256,7 +259,7 @@ FUNC VOID DIA_Addon_Thorus_Sent_Info()
 	AI_Output (self, other, "DIA_Addon_BDT_10014_Thorus_Sent_12_01");//W porz¹dku. Jeœli o mnie chodzi, mo¿esz wejœæ.
 
 	MIS_Send_Buddler = LOG_SUCCESS;
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 //----------------------------------------------------------------------
 //	Info Armor
@@ -267,14 +270,14 @@ INSTANCE DIA_Addon_BDT_10014_Thorus_Armor   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Thorus_Armor_Condition;
 	information = DIA_Addon_Thorus_Armor_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Hej, a co z pancerzem? Gdzie go dostanê?";
 };
 FUNC INT DIA_Addon_Thorus_Armor_Condition()
 {	
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{		
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Armor_Info()
@@ -292,7 +295,7 @@ INSTANCE DIA_Addon_Thorus_Gefangene   (C_INFO)
 	nr          = 88;
 	condition   = DIA_Addon_Thorus_Gefangene_Condition;
 	information = DIA_Addon_Thorus_Gefangene_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co siê dzieje z wiêŸniami?";
 };
 FUNC INT DIA_Addon_Thorus_Gefangene_Condition()
@@ -300,7 +303,7 @@ FUNC INT DIA_Addon_Thorus_Gefangene_Condition()
 	if !Npc_IsDead (Bloodwyn)
 	&&  Npc_KnowsInfo (other,DIA_Addon_Patrick_Hi)
 	{		
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Gefangene_Info()
@@ -323,14 +326,14 @@ INSTANCE DIA_Addon_Thorus_Speech   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Thorus_Speech_Condition;
 	information = DIA_Addon_Thorus_Speech_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Addon_Thorus_Speech_Condition()
 {	
 	if Npc_IsDead (Bloodwyn)
 	{		
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Speech_Info()
@@ -339,7 +342,7 @@ FUNC VOID DIA_Addon_Thorus_Speech_Info()
 	AI_Output (self, other, "DIA_Addon_Thorus_Speech_12_00");//Co zamierzasz zrobiæ?
 	AI_Output (other, self, "DIA_Addon_Thorus_Speech_15_01");//S³ucham?!
 	
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Thorus_Speech_12_02");//Bloodwyn nie stoi ci ju¿ na drodze. Zastanawiam siê, kto bêdzie nastêpny. Kruk? A mo¿e ja?
 		AI_Output (other, self, "DIA_Addon_Thorus_Speech_15_03");//Boisz siê?
@@ -363,21 +366,21 @@ INSTANCE DIA_Addon_Thorus_Answer   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Thorus_Answer_Condition;
 	information = DIA_Addon_Thorus_Answer_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dlaczego wiêc nie zostaniesz przywódc¹ obozu?";
 };
 FUNC INT DIA_Addon_Thorus_Answer_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Thorus_Speech)
 	{		
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Answer_Info()
 {	
 	AI_Output (other, self, "DIA_Addon_BDT_10014_Thorus_Answer_15_00");//Dlaczego wiêc nie zostaniesz przywódc¹ obozu?
 	
-	if (RavenIsDead == false)
+	if (RavenIsDead == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_BDT_10014_Thorus_Answer_12_01");//Dobrze, ale co z Krukiem?
 		AI_Output (other, self, "DIA_Addon_BDT_10014_Thorus_Answer_15_02");//Kruk nied³ugo bêdzie mia³ inne k³opoty. Ja ju¿ o to zadbam.
@@ -405,14 +408,14 @@ INSTANCE DIA_Addon_Thorus_Raventot   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Thorus_Raventot_Condition;
 	information = DIA_Addon_Thorus_Raventot_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Uda³o mi siê. Kruka ju¿ nie ma.";
 };
 FUNC INT DIA_Addon_Thorus_Raventot_Condition()
 {	
-	if (RavenIsDead == true)
+	if (RavenIsDead == TRUE)
 	{		
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Thorus_Raventot_Info()
@@ -428,3 +431,6 @@ FUNC VOID DIA_Addon_Thorus_Raventot_Info()
 	AI_StopProcessInfos (self);
 	
 };
+
+
+

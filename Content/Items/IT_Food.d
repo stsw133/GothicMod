@@ -31,7 +31,7 @@ prototype ItemPR_LightFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Fruit()
+func void Use_ItFo_Fruit()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -81,7 +81,7 @@ prototype ItemPR_NormalFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Normal()
+func void Use_ItFo_Normal()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -131,7 +131,7 @@ prototype ItemPR_MeatFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Meat()
+func void Use_ItFo_Meat()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -166,20 +166,20 @@ prototype ItemPR_SweetFood (C_Item)
 	flags 					=	ITEM_MULTI;
 	material 				=	MAT_STONE;
 	
-	value 					=	10;
+	value 					=	12;
 	on_state[0]				=	Use_ItFo_Sweet;
 	scemeName				=	"FOODHUGE";
 	
 	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	10;
+	COUNT[1]				=	8;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Sweet()
+func void Use_ItFo_Sweet()
 {
 	if (Npc_IsPlayer(self))
 	{
-		sattribute[ATR_FoodTime] += 10;
+		sattribute[ATR_FoodTime] += 8;
 	};
 };
 ///******************************************************************************************
@@ -216,21 +216,21 @@ prototype ItemPR_StewFood (C_Item)
 	flags 					=	ITEM_MULTI;
 	material 				=	MAT_WOOD;
 	
-	value 					=	40;
+	value 					=	24;
 	on_state[0]				=	Use_ItFo_Stew;
 	scemeName				=	"RICE";
 	
 	description				=	name;
 	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	100;
+	COUNT[1]				=	60;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Stew()
+func void Use_ItFo_Stew()
 {
 	if (Npc_IsPlayer(self))
 	{
-		sattribute[ATR_FoodTime] += 100;
+		sattribute[ATR_FoodTime] += 60;
 	};
 };
 ///******************************************************************************************
@@ -249,20 +249,20 @@ prototype ItemPR_SoupFood (C_Item)
 	flags 					=	ITEM_MULTI;
 	material 				=	MAT_WOOD;
 	
-	value 					=	20;
+	value 					=	12;
 	on_state[0]				=	Use_ItFo_Soup;
 	scemeName				=	"RICE";
 	
 	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	50;
+	COUNT[1]				=	30;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_Soup()
+func void Use_ItFo_Soup()
 {
 	if (Npc_IsPlayer(self))
 	{
-		sattribute[ATR_FoodTime] += 50;
+		sattribute[ATR_FoodTime] += 30;
 	};
 };
 ///******************************************************************************************
@@ -388,7 +388,7 @@ instance ItFo_Water (ItemPR_Food)
 	COUNT[1]		=	100;
 	COUNT[5]		=	value;
 };
-FUNC VOID Use_ItFo_Water()
+func void Use_ItFo_Water()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -415,7 +415,7 @@ instance ItFo_Milk (ItemPR_Food)
 	COUNT[2]		=	2;
 	COUNT[5]		=	value;
 };
-FUNC VOID Use_ItFo_Milk()
+func void Use_ItFo_Milk()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -442,7 +442,7 @@ prototype ItemPR_BeerFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-FUNC VOID Use_ItFo_Beer()
+func void Use_ItFo_Beer()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -474,7 +474,7 @@ prototype ItemPR_AlcoholFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-FUNC VOID Use_ItFo_Alcohol()
+func void Use_ItFo_Alcohol()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -513,7 +513,7 @@ prototype ItemPR_AlcoholFastFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-FUNC VOID Use_ItFo_AlcoholFast()
+func void Use_ItFo_AlcoholFast()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -533,3 +533,35 @@ instance ItFo_Hooch (ItemPR_AlcoholFastFood)
 	visual 			=	"ItMi_Rum_01.3ds";
 	description 	=	name;
 };
+
+
+
+
+
+INSTANCE ItFo_XPStew (C_Item)
+{	
+	name 				=	"Gulasz Thekli";
+
+	mainflag 			=	ITEM_KAT_FOOD;
+	flags 				=	ITEM_MULTI;
+	
+	value 				=	20;
+	
+	visual 				=	"ItFo_Stew.3ds";
+	material 			=	MAT_WOOD;
+	scemeName			=	"RICE";
+	on_state[0]			=	Use_XPStew;
+
+	description			= 	name;
+	TEXT[1]				= 	NAME_Bonus_HP;		COUNT[1]	= 20;
+	TEXT[2]				=  	NAME_Bonus_Str; 	COUNT[2]	= 1;
+	TEXT[5]				= 	NAME_Value;			COUNT[5]	= value;
+
+};
+
+	FUNC VOID Use_XPStew()
+	{
+		Npc_ChangeAttribute	(self,	ATR_HITPOINTS,	20);
+		Snd_Play	("LevelUp");
+		B_RaiseAttribute (self, ATR_STRENGTH, 1);
+	};

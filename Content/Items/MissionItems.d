@@ -35,8 +35,39 @@ instance ItWr_StonePlateCommon_Addon (ItemPR_Mission)
 {
 	name 			=	"Stara kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_06.3ds"; 
+	scemeName		=	"MAP";
+	on_state[0]		=	Use_StonePlateCommon;
 	description		=	name;
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+};
+func void Use_StonePlateCommon()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
+	{
+		var int nDocID;
+		
+		nDocID = 	Doc_Create		();
+					Doc_SetPages	(nDocID,  1);
+					Doc_SetPage 	(nDocID,  0, "Maya_Stoneplate_03.TGA", false);
+					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Kasta wojowników wywo³a³a gniew naszego boga.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "RADEMES, nastêpca QUARHODRONA, zosta³ wypêdzony. Ale jego z³owroga moc dotar³a do nas nawet z jego miejsca wygnania.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Byliœmy wobec niej bezsilni.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Na JARKENDAR spad³ gniew ADANOSA!");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_Show		(nDocID);
+	}
+	else
+	{
+		B_Say (self, self, "$CANTREADTHIS");
+		CreateInvItem (self, ItWr_StonePlate);
+	};
 };
 instance ItMi_TempelTorKey (ItemPR_Mission)
 {
@@ -58,7 +89,7 @@ instance ItAt_TalbinsLurkerSkin (ItemPR_Mission)
 	description		=	name;
 	TEXT[0]			= 	"Na wewnêtrznej stronie wygarbowano imiê 'Talbin'.";
 };
-instance ItFo_Grog (ItemPR_Mission)
+instance ItFo_Addon_Grog (ItemPR_Mission)
 {
 	name			=	"Grog";
 	visual 			=	"ItMi_Rum_02.3ds";
@@ -130,7 +161,7 @@ instance ItRw_DragomirsArmbrust_MIS (ItemPR_Mission)
 instance ItRw_SengrathsArmbrust_MIS (ItemPR_Mission)
 {
 	name 			=	"Kusza Sengratha";
-	visual 			=	"ItRw_Crossbow_L_02.mms";
+	visual 			=	"ItRw_Mil_Crossbow.mms";
 	description		=	name;
 };
 ///******************************************************************************************
@@ -267,11 +298,11 @@ instance ItFo_TastyStew (ItemPR_StewFood)
 	on_state[0]		=	Use_ItFo_TastyStew;
 	name			=	"Smaczny gulasz";
 };
-FUNC VOID Use_ItFo_TastyStew()
+func void Use_ItFo_TastyStew()
 {
 	if (Npc_IsPlayer(self))
 	{
-		sattribute[ATR_FoodTime] += 100;
+		sattribute[ATR_FoodTime] += 60;
 	};
 	B_RaiseAttribute (self, ATR_STRENGTH, 1);
 };
@@ -284,7 +315,7 @@ instance ItFo_CoragonsBeer (ItemPR_BeerFood)
 	on_state[0]		=	Use_ItFo_CoragonsBeer;
 	description		=	"Piwo Coragona";
 };
-FUNC VOID Use_ItFo_CoragonsBeer()
+func void Use_ItFo_CoragonsBeer()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -301,7 +332,7 @@ instance ItFo_SouthWine (ItemPR_AlcoholFood)
 	on_state[0]		=	Use_ItFo_SouthWine;
 	description		= 	"Wino z Wysp Po³udniowych";
 };
-FUNC VOID Use_ItFo_SouthWine()
+func void Use_ItFo_SouthWine()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -322,7 +353,7 @@ instance ItPo_HealObsession_MIS (ItemPR_Mission)
 
 	description		= 	"Uleczenie z opêtania";
 };
-FUNC VOID Use_HealObsession()
+func void Use_HealObsession()
 {
 	B_ClearSCObsession(self);
 	Wld_PlayEffect ("spellFX_LIGHTSTAR_VIOLET", hero, hero, 0, 0, 0, false);
@@ -339,7 +370,7 @@ instance ItPo_InnosTears (ItemPR_Mission)
 
 	description		= 	name;
 };
-FUNC VOID Use_ItPo_InnosTears()
+func void Use_ItPo_InnosTears()
 {
 	if (hero.guild == GIL_KDF)
 	{
@@ -358,19 +389,19 @@ FUNC VOID Use_ItPo_InnosTears()
 	};
 };
 ///******************************************************************************************
-instance ItRi_Valentino (ItemPR_Mission)
+instance ItRi_ValentinosRing (ItemPR_Mission)
 {
 	name 			=	"Pierœcieñ Valentina";
 	visual 			=	"ItRi_Prot_Edge_01.3ds";
 	description		=	name;
 };
-instance ItRi_Constantino (ItemPR_Mission)
+instance ItRi_Prot_Point_01_MIS (ItemPR_Mission)
 {
 	name 			=	"Pierœcieñ Constantina";
 	visual 			=	"ItRi_Prot_Point_01.3ds";
 	description		=	name;
 };
-instance ItRi_Morgan (ItemPR_Mission)
+instance ItRi_Addon_MorgansRing_Mission (ItemPR_Mission)
 {
 	name 			=	"Pierœcieñ Morgana";
 	visual 			=	"ItRi_Prot_Total_02.3DS";
@@ -382,14 +413,14 @@ instance ItRi_Tengron (ItemPR_Mission)
 	visual 			=	"ItRi_Hp_01.3ds";
 	description		=	name;
 };
-instance ItRi_BanditTrader (ItemPR_Mission)
+instance ItRi_Addon_BanditTrader (ItemPR_Mission)
 {
 	name 			=	"Pierœcieñ gildii";
 	visual 			=	"ItRi_Prot_Point_02.3ds";
 	description		= 	"RzeŸbiony pierœcieñ";
 	TEXT[2]			= 	"zamorskiej gildii Araxos";
 };
-instance ItRi_OrcElite (ItemPR_Mission)
+instance ItRi_OrcEliteRing (ItemPR_Mission)
 {
 	name 			=	"Pierœcieñ orkowych przywódców";
 	visual 			=	"ItRi_Str_02.3ds";
@@ -420,33 +451,38 @@ prototype Rangerring_prototype (C_Item)
 	INV_ROTZ		=	INVCAM_Z_RING_STANDARD;
 	INV_ROTX		=	INVCAM_X_RING_STANDARD;
 };
-FUNC VOID Equip_ItRi_Ranger()
+func void Equip_ItRi_Ranger()
 {
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
 	{
-		if (ENTERED_ADDONWORLD == false)
+		if (!ENTERED_ADDONWORLD)
 		{
-			if (Npc_HasItems(hero,ItRi_Ranger) == false)
-			{	RangerRingIsLaresRing = true;	};
+			if (!Npc_HasItems(hero, ItRi_Ranger_Addon))
+			{
+				RangerRingIsLaresRing = true;
+			};
 		};
 		SCIsWearingRangerRing = true;
 		Print(PRINT_SCIsWearingRangerRing);
 	};
 };
-FUNC VOID UnEquip_ItRi_Ranger()
+func void UnEquip_ItRi_Ranger()
 {
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
 	{
-		if (SC_IsRanger == false)
-		{	SCIsWearingRangerRing = false;	};
+		if (!SC_IsRanger)
+		{
+			SCIsWearingRangerRing = false;
+		};
 		RangerRingIsLaresRing = false;
 	};
 };
-instance ItRi_Ranger_Lares (Rangerring_prototype)
+
+instance ItRi_Ranger_Lares_Addon (Rangerring_prototype)
 {
 	TEXT[1] = "Ten pierœcieñ nale¿y do Laresa.";
 };
-instance ItRi_Ranger (Rangerring_prototype)
+instance ItRi_Ranger_Addon (Rangerring_prototype)
 {
 	TEXT[1] = "To mój pierœcieñ.";
 };
@@ -463,7 +499,7 @@ instance ItSe_HannasBeutel (ItemPR_Mission)
 	on_state[0]		=   HannasBeutel;
 	description		=	name;
 };
-FUNC VOID HannasBeutel()
+func void HannasBeutel()
 {
 	CreateInvItems (self, ItKe_Lockpick, 10);
 	CreateInvItem (self, ItKe_ThiefTreasure);
@@ -482,7 +518,7 @@ instance ItFo_HalvorFish_MIS (ItemPR_Mission)
 	TEXT[2]			=	"Z t¹ ryb¹ jest coœ nie tak.";		
 	TEXT[3]			=	"Wygl¹da, jakby ktoœ j¹ pozszywa³...";
 };
-FUNC VOID Use_HalvorFish()
+func void Use_HalvorFish()
 {
 	CreateInvItem (self, ItWr_HalvorMessage);
 	Print("W tej rybie schowano jak¹œ notatkê.");
@@ -498,9 +534,9 @@ instance ItSE_Addon_FrancisChest (ItemPR_Mission)
 };
 func void FrancisChest()
 {
+	CreateInvItem (hero, ItMi_GoldChest);
+	CreateInvItem (hero, ItMw_FrancisDagger_Mis);
 	CreateInvItems (self, Itmi_Gold, 150);
-	CreateInvItem (self, ItMi_GoldPlate);
-	CreateInvItem (self, ItMi_SilverRing);
 	CreateInvItem (self, ItMi_GoldCup);
 	CreateInvItem (self, ItMi_SilverNecklace);
 	CreateInvItem (self, ITWR_Addon_FrancisAbrechnung_Mis);
@@ -529,7 +565,18 @@ instance ItSe_CavalornsBeutel (ItemPR_Mission)
 {
 	name 			=	"Skórzana torba Cavalorna";
 	visual 			=	"ItMi_Pocket.3ds";
+	scemename		=	"MAPSEALED";
+	on_state[0]		=   Use_CavalornsBeutel;
 	description		=	name;
+};
+func void Use_CavalornsBeutel()
+{
+	CreateInvItem (self, ItMi_Nugget);
+	Print("Znaleziono bry³kê rudy");
+	SC_OpenedCavalornsBeutel = true;
+	Log_CreateTopic (TOPIC_Addon_CavalornTheHut, LOG_MISSION);
+	Log_SetTopicStatus (TOPIC_Addon_CavalornTheHut, LOG_RUNNING);
+	B_LogEntry (TOPIC_Addon_CavalornTheHut, "W chacie Cavalorna w Górniczej Dolinie znalaz³em torbê z bry³k¹ rudy. Ten stary drañ na pewno o niej zapomnia³.");
 };
 
 instance ItMi_GornsTreasure_MIS (ItemPR_Mission)
@@ -540,7 +587,7 @@ instance ItMi_GornsTreasure_MIS (ItemPR_Mission)
 	on_state[0]		=   UseGornsTreasure;
 	description		=	name;
 };
-FUNC VOID UseGornsTreasure()
+func void UseGornsTreasure()
 {
 	B_PlayerFindItem (ItMi_Gold, 250);
 	Gorns_Beutel = true;
@@ -554,7 +601,7 @@ instance ItMi_MalethsBanditGold (ItemPR_Mission)
 	on_state[0]		=   Use_MalethsBanditGold;
 	description		=	name;
 };
-FUNC VOID Use_MalethsBanditGold()
+func void Use_MalethsBanditGold()
 {
 	B_PlayerFindItem (ItMi_Gold, 300);
 };
@@ -567,10 +614,10 @@ instance ItSe_Golemchest_Mis (ItemPR_Mission)
 	on_state[0]		=   Use_GolemChest;
 	description		=	name;
 };
-FUNC VOID Use_GolemChest()
+func void Use_GolemChest()
 {
 	B_PlayerFindItem (ItMi_Gold, 50);
-	Print(PRINT_FoundRing);
+	Print("Znaleziono pierœcieñ");
 	CreateInvItem (self, ItRi_ProtTotal_02);
 	Snd_Play("Geldbeutel");
 };
@@ -579,7 +626,14 @@ instance ItSe_DiegosTreasure_Mis (ItemPR_Mission)
 {
 	name 			=	"Skórzana torba Diega";
 	visual 			=	"ItMi_Pocket.3ds";
+	scemename		=	"MAPSEALED";
+	on_state[0]		=   Use_DiegosTreasure;
 	description		=	name;
+};
+func void Use_DiegosTreasure()
+{
+	OpenedDiegosBag = true;
+	B_PlayerFindItem (ItMi_Gold, 2000);
 };
 
 instance ItMi_KerolothsGeldbeutel_MIS (ItemPR_Mission)
@@ -590,7 +644,7 @@ instance ItMi_KerolothsGeldbeutel_MIS (ItemPR_Mission)
 	on_state[0]		=   UseKerolothsGeldbeutel;
 	description		=	name;
 };
-FUNC VOID UseKerolothsGeldbeutel()
+func void UseKerolothsGeldbeutel()
 {
 	B_PlayerFindItem (ItMi_Gold, 300);
 	CreateInvItem (self, ItMi_KerolothsGeldbeutelLeer_MIS);
@@ -646,7 +700,7 @@ instance ItAm_InnosEye (ItemPR_Mission)
 	TEXT[0]			=	"Pulsuje energi¹.";
 	INV_ZBIAS		=	INVCAM_ENTF_AMULETTE_STANDARD;
 };
-FUNC VOID Equip_InnosEye()	 
+func void Equip_InnosEye()	 
 {
 	Wld_PlayEffect ("spellFX_Innoseye", self, self, 0, 0, 0, false);
 	Wld_PlayEffect ("spellFX_LIGHTSTAR_RED", self, self, 0, 0, 0, false);

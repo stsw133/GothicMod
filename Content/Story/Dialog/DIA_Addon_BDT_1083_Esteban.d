@@ -7,14 +7,14 @@ INSTANCE DIA_Addon_Esteban_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Esteban_EXIT_Condition;
 	information = DIA_Addon_Esteban_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Esteban_EXIT_Condition()
 {	
-	if (Bodyguard_Killer == false)
+	if (Bodyguard_Killer == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_EXIT_Info()
@@ -31,15 +31,15 @@ INSTANCE DIA_Addon_Esteban_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Esteban_Hi_Condition;
 	information = DIA_Addon_Esteban_Hi_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Esteban_Hi_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Hi_Info()
@@ -58,14 +58,14 @@ INSTANCE DIA_Addon_Esteban_Mine   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Esteban_Mine_Condition;
 	information = DIA_Addon_Esteban_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Chcê wejœæ do kopalni!";
 };
 FUNC INT DIA_Addon_Esteban_Mine_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Esteban_Hi)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Mine_Info()
@@ -84,14 +84,14 @@ INSTANCE DIA_Addon_Esteban_Rot   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Esteban_Rot_Condition;
 	information = DIA_Addon_Esteban_Rot_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Daj mi jeden z tych czerwonych kamieni.";
 };
 FUNC INT DIA_Addon_Esteban_Rot_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Esteban_Mine)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Rot_Info()
@@ -121,14 +121,14 @@ INSTANCE DIA_Addon_Esteban_MIS   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Esteban_MIS_Condition;
 	information = DIA_Addon_Esteban_MIS_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Tak?";
 };
 FUNC INT DIA_Addon_Esteban_MIS_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Esteban_Rot)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_MIS_Info()
@@ -152,6 +152,7 @@ FUNC VOID DIA_Addon_Esteban_MIS_Info()
 	Log_CreateTopic (Topic_Addon_Esteban,LOG_MISSION);
 	Log_SetTopicStatus (Topic_Addon_Esteban,LOG_RUNNING);
 	B_LogEntry (Topic_Addon_Esteban, "Mia³a miejsce próba zabójstwa Estebana. Mam siê dowiedzieæ, kto za tym stoi.");
+
 };
 //--------------------------------------------------------------------
 //	Info Attentäter (Kerl)
@@ -162,14 +163,14 @@ INSTANCE DIA_Addon_Esteban_Kerl   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Esteban_Kerl_Condition;
 	information = DIA_Addon_Esteban_Kerl_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Od czego mam zacz¹æ?";
 };
 FUNC INT DIA_Addon_Esteban_Kerl_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Kerl_Info()
@@ -190,14 +191,14 @@ INSTANCE DIA_Addon_Esteban_Armor   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Esteban_Armor_Condition;
 	information = DIA_Addon_Esteban_Armor_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Potrzebujê lepszego pancerza.";
 };
 FUNC INT DIA_Addon_Esteban_Armor_Condition()
 {	
-	if (Huno_ArmorCheap == false)
+	if (Huno_ArmorCheap == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Armor_Info()
@@ -218,16 +219,16 @@ INSTANCE DIA_Addon_Esteban_Auftrag   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Esteban_Auftrag_Condition;
 	information = DIA_Addon_Esteban_Auftrag_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co do tego zadania...";
 };
 FUNC INT DIA_Addon_Esteban_Auftrag_Condition()
 {	
 	if ((MIS_Judas == LOG_RUNNING)
 	|| (MIS_Judas == LOG_SUCCESS))
-	&& (Bodyguard_Killer == false)	
+	&& (Bodyguard_Killer == FALSE)	
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Auftrag_Info()
@@ -246,7 +247,7 @@ FUNC VOID DIA_Addon_Esteban_Auftrag_Info()
 		AI_Output (self, other, "DIA_Addon_Esteban_Auftrag_07_06");//Ch³opaki, s³yszeliœcie! IdŸcie po tego Fiska.
 		AI_TurnToNpc (self, other);
 		
-		Bodyguard_Killer = true;
+		Bodyguard_Killer = TRUE;
 	}
 	else
 	{
@@ -263,14 +264,14 @@ INSTANCE DIA_Addon_Esteban_Away   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Esteban_Away_Condition;
 	information = DIA_Addon_Esteban_Away_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "I co teraz?";
 };
 FUNC INT DIA_Addon_Esteban_Away_Condition()
 {	
-	if (Bodyguard_Killer == true)
+	if (Bodyguard_Killer == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Away_Info()
@@ -292,15 +293,15 @@ INSTANCE DIA_Addon_Esteban_Stone   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Esteban_Stone_Condition;
 	information = DIA_Addon_Esteban_Stone_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dobra, a czy dostanê teraz czerwony kamieñ?";
 };
 FUNC INT DIA_Addon_Esteban_Stone_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Esteban_Away)
-	&& (Bodyguard_Killer == true)
+	&& (Bodyguard_Killer == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Stone_Info()
@@ -318,14 +319,14 @@ INSTANCE DIA_Addon_Esteban_not   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Esteban_not_Condition;
 	information = DIA_Addon_Esteban_not_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zastanowiê siê nad tym.";
 };
 FUNC INT DIA_Addon_Esteban_not_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Esteban_Stone)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_not_Info()
@@ -343,14 +344,14 @@ INSTANCE DIA_Addon_Esteban_fight   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Esteban_fight_Condition;
 	information = DIA_Addon_Esteban_fight_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Chyba ¿artujesz?";
 };
 FUNC INT DIA_Addon_Esteban_fight_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Esteban_Stone)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_fight_Info()
@@ -362,11 +363,11 @@ FUNC VOID DIA_Addon_Esteban_fight_Info()
 	AI_Output (other, self, "DIA_Addon_Esteban_fight_15_04");//Jacy stra¿nicy?
 	AI_Output (self, other, "DIA_Addon_Esteban_fight_07_05");//Co? Ach, rozumiem. Chcesz mnie zdradziæ. Kiepski pomys³.
 	
-	Bodyguard_Killer = false;
+	Bodyguard_Killer = FALSE;
 	
 	B_KillNpc (Wache_01);
 	B_KillNpc (Wache_02);
-	
+		
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_NONE,1);
 };
@@ -379,15 +380,15 @@ INSTANCE DIA_Addon_Esteban_Duell   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Esteban_Duell_Condition;
 	information = DIA_Addon_Esteban_Duell_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "DAWAJ czerwony kamieñ, bo sam go sobie wezmê.";
 };
 FUNC INT DIA_Addon_Esteban_Duell_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Esteban_Rot))
-	&& (Bodyguard_Killer != true)
+	&& (Bodyguard_Killer != TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Esteban_Duell_Info()
@@ -398,3 +399,7 @@ FUNC VOID DIA_Addon_Esteban_Duell_Info()
 	AI_StopProcessInfos(self);
 	B_Attack (self, other, AR_NONE, 1);
 };
+
+
+
+

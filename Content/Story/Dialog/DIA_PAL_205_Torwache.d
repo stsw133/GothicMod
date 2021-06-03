@@ -7,13 +7,13 @@ INSTANCE DIA_PAL_205_Torwache_EXIT (C_INFO)
 	nr			= 999;
 	condition	= DIA_PAL_205_Torwache_EXIT_Condition;
 	information	= DIA_PAL_205_Torwache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= DIALOG_ENDE;
 };        
          
 FUNC INT DIA_PAL_205_Torwache_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_PAL_205_Torwache_EXIT_Info()
@@ -36,8 +36,8 @@ instance DIA_PAL_205_Torwache_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_PAL_205_Torwache_FirstWarn_Condition;
 	information	= DIA_PAL_205_Torwache_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_PAL_205_Torwache_FirstWarn_Condition()
@@ -45,27 +45,27 @@ func int DIA_PAL_205_Torwache_FirstWarn_Condition()
 	if (Npc_GetDistToWP(other, PAL_205_Checkpoint) <= 550) //NICHT von hinten!
 	{
 		Npc_SetRefuseTalk(self,5);
-		return false;
+		return FALSE;
 	};
 	
 	if (B_GetGreatestPetzCrime(self) >= CRIME_ATTACK) //wenn CRIME in Stadt bekannt
-	&& (PAL_205_schonmalreingelassen == true)
+	&& (PAL_205_schonmalreingelassen == TRUE)
 	{
-		self.aivar[AIV_Guardpassage_Status] = false;
+		self.aivar[AIV_GuardPassage_Status] = GP_NONE;
 	}
-	else //CRIME_NONE (oder Sheepkiller) - wenn Crime rehabilitiert, wird hier PASSGATE automatisch wieder auf true gesetzt
+	else //CRIME_NONE (oder Sheepkiller) - wenn Crime rehabilitiert, wird hier PASSGATE automatisch wieder auf TRUE gesetzt
 	{
-		if (PAL_205_schonmalreingelassen == true)
+		if (PAL_205_schonmalreingelassen == TRUE)
 		{
-			self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+			self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 		};
 	};
 	
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_RefuseTalk(self) == false))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			)
+	&&  (Npc_RefuseTalk(self) 							== FALSE 		))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -118,17 +118,17 @@ INSTANCE DIA_PAL_205_Torwache_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_PAL_205_Torwache_SecondWarn_Condition;
 	information	= DIA_PAL_205_Torwache_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_PAL_205_Torwache_SecondWarn_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,PAL_205_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,PAL_205_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -152,17 +152,17 @@ INSTANCE DIA_PAL_205_Torwache_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_PAL_205_Torwache_Attack_Condition;
 	information	= DIA_PAL_205_Torwache_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_PAL_205_Torwache_Attack_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,PAL_205_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,PAL_205_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -184,14 +184,14 @@ INSTANCE DIA_PAL_205_Torwache_Hagen (C_INFO)
 	nr			= 2;
 	condition	= DIA_PAL_205_Torwache_Hagen_Condition;
 	information	= DIA_PAL_205_Torwache_Hagen_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Muszê porozmawiaæ z Lordem Hagenem!";
 };                       
 FUNC INT DIA_PAL_205_Torwache_Hagen_Condition()
 {	
-	if (PAL_205_schonmalreingelassen == false)
+	if (PAL_205_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_PAL_205_Torwache_Hagen_Info()
@@ -212,17 +212,17 @@ INSTANCE DIA_PAL_205_Torwache_PassAsMil (C_INFO)
 	nr			= 3;
 	condition	= DIA_PAL_205_Torwache_PassAsMil_Condition;
 	information	= DIA_PAL_205_Torwache_PassAsMil_Info;
-	permanent 	= true; 
+	permanent 	= TRUE; 
 	description	= "Nale¿ê do stra¿y miejskiej.";
 };                       
 
 FUNC INT DIA_PAL_205_Torwache_PassAsMil_Condition()
 {	
 	if (Npc_GetTrueGuild(other) == GIL_MIL)
-	&& (PAL_205_schonmalreingelassen == false)
+	&& (PAL_205_schonmalreingelassen == FALSE)
 	&& (B_GetGreatestPetzCrime(self) < CRIME_ATTACK)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -231,8 +231,8 @@ FUNC VOID DIA_PAL_205_Torwache_PassAsMil_Info()
 	AI_Output (other, self,"DIA_PAL_205_Torwache_PassAsMil_15_00"); //Nale¿ê do stra¿y miejskiej.
 	AI_Output (self, other,"DIA_PAL_205_Torwache_PassAsMil_12_01"); //W porz¹dku, mo¿esz wejœæ.
 	
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-	PAL_205_schonmalreingelassen = true;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+	PAL_205_schonmalreingelassen = TRUE;
 	AI_StopProcessInfos	(self);
 };
 
@@ -246,17 +246,17 @@ INSTANCE DIA_PAL_205_Torwache_PassAsMage (C_INFO)
 	nr			= 3;
 	condition	= DIA_PAL_205_Torwache_PassAsMage_Condition;
 	information	= DIA_PAL_205_Torwache_PassAsMage_Info;
-	permanent 	= true; 
+	permanent 	= TRUE; 
 	description	= "Jestem Magiem Ognia.";
 };                       
 
 FUNC INT DIA_PAL_205_Torwache_PassAsMage_Condition()
 {	
 	if (Npc_GetTrueGuild(other) == GIL_KDF)
-	&& (PAL_205_schonmalreingelassen == false)
+	&& (PAL_205_schonmalreingelassen == FALSE)
 	&& (B_GetGreatestPetzCrime(self) < CRIME_ATTACK)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -265,8 +265,8 @@ FUNC VOID DIA_PAL_205_Torwache_PassAsMage_Info()
 	AI_Output (other, self,"DIA_PAL_205_Torwache_PassAsMage_15_00"); //Jestem Magiem Ognia.
 	AI_Output (self, other,"DIA_PAL_205_Torwache_PassAsMage_12_01"); //Tak, oczywiœcie. Wybacz mi, Wybrañcze, wykonujê tylko polecenia.
 	
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-	PAL_205_schonmalreingelassen = true;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+	PAL_205_schonmalreingelassen = TRUE;
 	AI_StopProcessInfos	(self);
 };
 // ************************************************************
@@ -279,17 +279,17 @@ INSTANCE DIA_PAL_205_Torwache_PassAsSld (C_INFO)
 	nr			= 3;
 	condition	= DIA_PAL_205_Torwache_PassAsSld_Condition;
 	information	= DIA_PAL_205_Torwache_PassAsSld_Info;
-	permanent 	= true; 
+	permanent 	= TRUE; 
 	description	= "Przepuœæ mnie, przynoszê wieœci od najemników.";
 };                       
 
 FUNC INT DIA_PAL_205_Torwache_PassAsSld_Condition()
 {	
 	if (Npc_GetTrueGuild(other) == GIL_SLD)
-	&& (PAL_205_schonmalreingelassen == false)
+	&& (PAL_205_schonmalreingelassen == FALSE)
 	&& (B_GetGreatestPetzCrime(self) < CRIME_ATTACK)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -298,8 +298,8 @@ FUNC VOID DIA_PAL_205_Torwache_PassAsSld_Info()
 	AI_Output (other, self,"DIA_PAL_205_Torwache_PassAsSld_15_00"); //Przepuœæ mnie, przynoszê wieœci od najemników.
 	AI_Output (self, other,"DIA_PAL_205_Torwache_PassAsSld_12_01"); //Dobrze, ale ostrzegam ciê. Jeœli bêdziesz sprawia³ k³opoty, nie zd¹¿ysz tego nawet po¿a³owaæ.
 	
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-	PAL_205_schonmalreingelassen = true;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+	PAL_205_schonmalreingelassen = TRUE;
 	AI_StopProcessInfos	(self);
 };
 
@@ -312,16 +312,16 @@ INSTANCE DIA_PAL_205_Torwache_PERM (C_INFO)
 	nr			= 2;
 	condition	= DIA_PAL_205_Torwache_PERM_Condition;
 	information	= DIA_PAL_205_Torwache_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jak tam na s³u¿bie?";
 };        
          
 FUNC INT DIA_PAL_205_Torwache_PERM_Condition()
 {	
-	if (PAL_205_schonmalreingelassen == true)
+	if (PAL_205_schonmalreingelassen == TRUE)
 	&& (B_GetGreatestPetzCrime(self) < CRIME_ATTACK)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -350,3 +350,28 @@ FUNC VOID DIA_PAL_205_Torwache_PERM_Info()
 	
 	AI_StopProcessInfos	(self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

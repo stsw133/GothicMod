@@ -7,13 +7,13 @@ INSTANCE DIA_Garvell_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Garvell_EXIT_Condition;
 	information = DIA_Garvell_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Garvell_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Garvell_EXIT_Info()
@@ -36,7 +36,7 @@ func int DIA_Garvell_GREET_Condition ()
 {	
 	if (Wld_IsTime (05,00,19,00))
 	{	
-		return true;
+			return TRUE;
 	};
 };
 func void DIA_Garvell_GREET_Info ()
@@ -60,7 +60,7 @@ func int DIA_Garvell_eilig_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Garvell_GREET)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 func void DIA_Garvell_eilig_Info ()
@@ -87,7 +87,7 @@ func int DIA_Garvell_Schiff_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Garvell_GREET)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 func void DIA_Garvell_Schiff_Info ()
@@ -109,16 +109,17 @@ instance DIA_Addon_Garvell_MissingPeople		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Garvell_MissingPeople_Condition;
 	information	 = 	DIA_Addon_Garvell_MissingPeople_Info;
+
 	description	 = 	"Zagin¹³ jeden z twoich pracowników?";
 };
 
 func int DIA_Addon_Garvell_MissingPeople_Condition ()
 {
 	if Npc_KnowsInfo (other,DIA_Garvell_Schiff)
-	&& (SC_HearedAboutMissingPeople == true)
-	&& (MissingPeopleReturnedHome == false)
+	&& (SC_HearedAboutMissingPeople == TRUE)
+	&& (MissingPeopleReturnedHome == FALSE)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 
@@ -134,7 +135,7 @@ func void DIA_Addon_Garvell_MissingPeople_Info ()
 
 	Info_ClearChoices	(DIA_Addon_Garvell_MissingPeople);
 	Info_AddChoice	(DIA_Addon_Garvell_MissingPeople, "Podobno nie on jeden zagin¹³?", DIA_Addon_Garvell_MissingPeople_more );
-	if (SCKnowsFarimAsWilliamsFriend == false)
+	if (SCKnowsFarimAsWilliamsFriend == FALSE)
 	{
 	Info_AddChoice	(DIA_Addon_Garvell_MissingPeople, "Kiedy ostatnio widzia³eœ Monty'ego?", DIA_Addon_Garvell_MissingPeople_wo );
 	};
@@ -145,7 +146,7 @@ func void DIA_Addon_Garvell_MissingPeople_more ()
 	AI_Output			(self, other, "DIA_Addon_Garvell_MissingPeople_more_04_01"); //Tak - i tutaj zaczyna siê ca³y problem.
 	AI_Output			(self, other, "DIA_Addon_Garvell_MissingPeople_more_04_02"); //Rybak Farim wspomnia³, ¿e zapodzia³ siê gdzieœ równie¿ jego znajomy, William.
 	AI_Output			(self, other, "DIA_Addon_Garvell_MissingPeople_more_04_03"); //Za³o¿ê siê, ¿e stoj¹ za tym orkowie.
-	SCKnowsFarimAsWilliamsFriend = true;
+	SCKnowsFarimAsWilliamsFriend = TRUE;
 
 	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
@@ -157,7 +158,7 @@ func void DIA_Addon_Garvell_MissingPeople_more ()
 
 	Info_AddChoice	(DIA_Addon_Garvell_MissingPeople, DIALOG_BACK, DIA_Addon_Garvell_MissingPeople_BACK );
 
-	if (Farim.aivar[AIV_TalkedToPlayer] == false)
+	if (Farim.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 	Info_AddChoice	(DIA_Addon_Garvell_MissingPeople, "Gdzie znajdê tego Farima?", DIA_Addon_Garvell_MissingPeople_Farim );
 	};
@@ -192,9 +193,9 @@ instance DIA_Garvell_ReturnMonty		(C_INFO)
 func int DIA_Garvell_ReturnMonty_Condition ()
 {	
 	if (Npc_GetDistToWP (Monty_NW, "NW_CITY_HABOUR_WERFT_IN_01") <= 1000)
-	&& (MissingPeopleReturnedHome == true)
+	&& (MissingPeopleReturnedHome == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_ReturnMonty_Info ()
@@ -202,7 +203,7 @@ func void DIA_Garvell_ReturnMonty_Info ()
 	AI_Output (other, self, "DIA_Addon_Garvell_ReturnMonty_15_00"); //Co s³ychaæ?
 	AI_Output (self, other, "DIA_Addon_Garvell_ReturnMonty_04_01"); //Monty wróci³! Przegl¹da w³aœnie plany.
 	AI_Output (self, other, "DIA_Addon_Garvell_ReturnMonty_04_02"); //Mo¿e jednak uda siê skonstruowaæ ten statek...
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info MISSION
@@ -213,16 +214,16 @@ instance DIA_Garvell_MISSION		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Garvell_MISSION_Condition;
 	information	 = 	DIA_Garvell_MISSION_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Czy mogê ci jakoœ pomóc?";
 };
 
 func int DIA_Garvell_MISSION_Condition ()
 {	
 	if Npc_KnowsInfo (other, DIA_Garvell_eilig)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_MISSION_Info ()
@@ -235,7 +236,7 @@ func void DIA_Garvell_MISSION_Info ()
 	AI_Output (self ,other, "DIA_Garvell_Add_04_00"); //Chcê wiedzieæ, ile mam jeszcze czasu na dokoñczenie budowy okrêtu.
 
 	MIS_Garvell_Infos = LOG_RUNNING;
-	Knows_Ork = true;
+	Knows_Ork = TRUE;
 	
 	Log_CreateTopic (TOPIC_Garvell,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_Garvell,LOG_RUNNING);
@@ -249,7 +250,7 @@ FUNC VOID B_GarvellSuccess()
 {
 	AI_Output (self, other, "DIA_Garvell_Success_04_00"); //Dziêkujê za informacje. Wygl¹da na to, ¿e mamy ca³¹ masê czasu na ukoñczenie naszego statku.
 	MIS_Garvell_Infos = LOG_SUCCESS;
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Orks
@@ -260,7 +261,7 @@ instance DIA_Garvell_Orks		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Garvell_Orks_Condition;
 	information	 = 	DIA_Garvell_Orks_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Mam informacje dotycz¹ce orków.";
 };
 func int DIA_Garvell_Orks_Condition ()
@@ -268,7 +269,7 @@ func int DIA_Garvell_Orks_Condition ()
 	if (MIS_Garvell_Infos == LOG_RUNNING)
 	&& (Knows_Paladins >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_Orks_Info ()
@@ -278,8 +279,8 @@ func void DIA_Garvell_Orks_Info ()
 	AI_Output (other, self, "DIA_Garvell_Orks_15_02"); //Utknêli w Górniczej Dolinie, i wygl¹da na to, ¿e ju¿ tam pozostan¹.
 	AI_Output (other, self, "DIA_Garvell_Orks_15_03"); //Paladyni strzeg¹ prze³êczy.
 
-	Tell_Garvell += 1;
-	B_GivePlayerXP(XP_Ambient);
+	Tell_Garvell = (Tell_Garvell +1);
+	B_GivePlayerXP (XP_Ambient);
 	
 	if (Tell_Garvell >= 3)
 	{
@@ -299,15 +300,15 @@ instance DIA_Garvell_Paladine		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Garvell_Paladine_Condition;
 	information	 = 	DIA_Garvell_Paladine_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Wiem, co tu robi¹ paladyni.";
 };
 func int DIA_Garvell_Paladine_Condition ()
 {	
 	if (MIS_Garvell_Infos == LOG_RUNNING)
-	&& (KnowsPaladins_Ore == true)
+	&& (KnowsPaladins_Ore == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_Paladine_Info ()
@@ -317,8 +318,8 @@ func void DIA_Garvell_Paladine_Info ()
 	AI_Output (other, self, "DIA_Garvell_Paladine_15_02"); //Paladyni nie przybyli tutaj, dlatego ¿e spodziewaj¹ siê ataku orków. Ich celem jest zdobycie magicznej rudy z Górniczej Doliny.
 	AI_Output (other, self, "DIA_Garvell_Paladine_15_03"); //Kiedy tylko j¹ zdobêd¹, powróc¹ na kontynent.
 
-	Tell_Garvell += 1;
-	B_GivePlayerXP(XP_Ambient);
+	Tell_Garvell = (Tell_Garvell +1);
+	B_GivePlayerXP (XP_Ambient);
 	
 	if (Tell_Garvell >= 3)
 	{
@@ -338,7 +339,7 @@ instance DIA_Garvell_City		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Garvell_City_Condition;
 	information	 = 	DIA_Garvell_City_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Co do tego orka za miastem...";
 };
 func int DIA_Garvell_City_Condition ()
@@ -346,7 +347,7 @@ func int DIA_Garvell_City_Condition ()
 	if (MIS_Garvell_Infos == LOG_RUNNING)
 	&& (Knows_Paladins >= 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_City_Info ()
@@ -355,8 +356,9 @@ func void DIA_Garvell_City_Info ()
 	AI_Output (self, other, "DIA_Garvell_City_04_01"); //Taaak...?
 	AI_Output (other, self, "DIA_Garvell_City_15_02"); //Nie przejmuj siê nim. Stra¿ da sobie radê.
 	
-	Tell_Garvell += 1;
-	B_GivePlayerXP(XP_Ambient);
+
+	Tell_Garvell = (Tell_Garvell +1);
+	B_GivePlayerXP (XP_Ambient);
 	
 	if (Tell_Garvell >= 3)
 	{
@@ -376,14 +378,14 @@ instance DIA_Garvell_Perm		(C_INFO)
 	nr			 = 	13;
 	condition	 = 	DIA_Garvell_Perm_Condition;
 	information	 = 	DIA_Garvell_Perm_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Co siê dzieje w porcie?";
 };
 func int DIA_Garvell_Perm_Condition ()
 {	
 	if Npc_KnowsInfo (other, DIA_Garvell_MISSION)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garvell_Perm_Info ()
@@ -402,3 +404,26 @@ func void DIA_Garvell_Perm_Info ()
 		AI_Output (self, other, "DIA_Garvell_Perm_04_05"); //Mo¿esz siê rozejrzeæ. Jak widzisz, nic siê tu nie dzieje.
 	};
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

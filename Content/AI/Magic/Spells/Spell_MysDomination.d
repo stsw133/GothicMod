@@ -6,7 +6,7 @@ const int SPL_Cost_MysDomination		=	80;
 const int SPL_Level_MysDomination		=	(MAX_LEVEL)/10;
 
 ///******************************************************************************************
-INSTANCE Spell_MysDomination (C_Spell_Proto)
+instance Spell_MysDomination (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	0;
@@ -17,7 +17,7 @@ INSTANCE Spell_MysDomination (C_Spell_Proto)
 
 func int Spell_Logic_MysDomination (var int manaInvested)
 {
-	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysDomination/5))
+	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysDomination/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysDomination))
 	&& (other.level <= SPL_Level_MysDomination + (self.damage[DAM_INDEX_MAGIC]/10))
 	{
@@ -31,14 +31,15 @@ func int Spell_Logic_MysDomination (var int manaInvested)
 
 func void Spell_Cast_MysDomination()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysDomination/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysDomination/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MysDomination/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MysDomination)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MysDomination;
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 	
 	

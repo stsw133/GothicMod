@@ -11,15 +11,15 @@ INSTANCE DIA_MiltenNW_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_MiltenNW_EXIT_Condition;
 	information	= DIA_MiltenNW_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_MiltenNW_EXIT_Condition()
 {
-	if (Kapitel < 9)	
+	if (Kapitel < 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -48,14 +48,14 @@ INSTANCE DIA_MiltenNW_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_MiltenNW_KAP3_EXIT_Condition;
 	information	= DIA_MiltenNW_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_MiltenNW_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_KAP3_EXIT_Info()
@@ -73,15 +73,15 @@ INSTANCE DIA_MiltenNW_KAP3_Hello(C_INFO)
 	nr			= 31;
 	condition	= DIA_MiltenNW_KAP3_Hello_Condition;
 	information	= DIA_MiltenNW_KAP3_Hello_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_MiltenNW_KAP3_Hello_Condition()
 {
 	if hero.guild == GIL_PAL
 	|| hero.guild == GIL_DJG
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -125,14 +125,14 @@ INSTANCE DIA_MiltenNW_Monastery(C_INFO)
 	nr			= 35;
 	condition	= DIA_MiltenNW_Monastery_Condition;
 	information	= DIA_MiltenNW_Monastery_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakim cudem uda³o ci siê tak szybko dostaæ do klasztoru?";
 };                       
 FUNC INT DIA_MiltenNW_Monastery_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_Monastery_Info()
@@ -152,20 +152,20 @@ INSTANCE DIA_MiltenNW_FourFriends(C_INFO)
 	nr			= 35;
 	condition	= DIA_MiltenNW_FourFriends_Condition;
 	information	= DIA_MiltenNW_FourFriends_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiesz mo¿e, gdzie s¹ pozostali?";
 };                       
 FUNC INT DIA_MiltenNW_FourFriends_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_FourFriends_Info()
 {	
 	AI_Output (other,self ,"DIA_MiltenNW_FourFriends_15_00"); //Wiesz mo¿e, gdzie s¹ pozostali?
-	if (Npc_IsDead (PC_FIGHTER_NW_vor_DJG) == false)
+	if (Npc_IsDead (PC_FIGHTER_NW_vor_DJG) == FALSE)
 	{
 		AI_Output (self ,other,"DIA_MiltenNW_FourFriends_03_01"); //Gorn ca³kiem nieŸle zniós³ pobyt w wiêzieniu Garonda.
 		
@@ -183,7 +183,7 @@ FUNC VOID DIA_MiltenNW_FourFriends_Info()
 	{
 		AI_Output (self ,other,"DIA_MiltenNW_FourFriends_03_07"); //Gornowi niestety siê nie uda³o.
 	};
-	if (Npc_IsDead (PC_THIEF_NW) == false)
+	if (Npc_IsDead (PC_THIEF_NW) == FALSE)
 	{
 		AI_Output (self ,other,"DIA_MiltenNW_FourFriends_03_08"); //Diego mamrota³ coœ o wyrównaniu rachunków, ale nie wiem, o co mu chodzi³o.
 		AI_Output (self ,other,"DIA_MiltenNW_FourFriends_03_09"); //Podejrzewam, ¿e wróci³ do miasta. Znasz go przecie¿ - zawsze szuka okazji do zarobku.
@@ -203,16 +203,16 @@ INSTANCE DIA_MiltenNW_KAP3_Entry(C_INFO)
 	nr			= 32;
 	condition	= DIA_MiltenNW_KAP3_Entry_Condition;
 	information	= DIA_MiltenNW_KAP3_Entry_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Muszê siê dostaæ do klasztoru. To bardzo pilne!";
 };                       
 FUNC INT DIA_MiltenNW_KAP3_Entry_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	&& (hero.guild != GIL_KDF)
-	&& (MiltenNW_GivesMonasteryKey == false)
+	&& (MiltenNW_GivesMonasteryKey == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_KAP3_Entry_Info()
@@ -225,7 +225,7 @@ FUNC VOID DIA_MiltenNW_KAP3_Entry_Info()
 		CreateInvItems (self,ItKe_Innos_Mis,1);
 		B_GiveInvItems (self,other,ItKe_Innos_Mis,1); 
 	
-		MiltenNW_GivesMonasteryKey = true;
+		MiltenNW_GivesMonasteryKey = TRUE;
 	}
 	else
 	{
@@ -270,7 +270,7 @@ FUNC VOID DIA_MiltenNW_KAP3_Entry_Permit ()
 	B_GiveInvItems (self,other,ItKe_Innos_Mis,1); 
 	B_GiveInvItems (self,other,ItWr_PermissionToWearInnosEye_MIS,1);
 	
-	MiltenNW_GivesMonasteryKey = true;
+	MiltenNW_GivesMonasteryKey = TRUE;
 	
 	Info_ClearChoices (DIA_MiltenNW_KAP3_Entry);
 };
@@ -285,16 +285,16 @@ INSTANCE DIA_MiltenNW_KAP3_NovizenChase(C_INFO)
 	nr			= 31;
 	condition	= DIA_MiltenNW_KAP3_NovizenChase_Condition;
 	information	= DIA_MiltenNW_KAP3_NovizenChase_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiesz mo¿e, dok¹d uciek³ Pedro?";
 };                       
 FUNC INT DIA_MiltenNW_KAP3_NovizenChase_Condition()
 {
-	IF 	(Kapitel == 9) 
+	IF 	(Kapitel == 3) 
 	&&	(MIS_NOVIZENCHASE == LOG_RUNNING) 
-	&& 	(MIS_SCKnowsInnosEyeIsBroken == false)
+	&& 	(MIS_SCKnowsInnosEyeIsBroken == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -304,6 +304,7 @@ FUNC VOID DIA_MiltenNW_KAP3_NovizenChase_Info()
 	AI_Output (self ,other,"DIA_MiltenNW_KAP3_NovizenChase_03_01"); //A myœlisz, ¿e sta³bym tutaj, gdybym wiedzia³, gdzie ukry³a siê ta szuja?
 	AI_Output (self ,other,"DIA_MiltenNW_KAP3_NovizenChase_03_02"); //Zobaczysz, zap³aci za to œwiêtokradztwo! Mam tylko nadziejê, ¿e zdo³amy odzyskaæ Oko!
 	AI_Output (self ,other,"DIA_MiltenNW_KAP3_NovizenChase_03_03"); //Musisz nam pomóc. ZnajdŸ go i odzyskaj œwiête Oko Innosa!
+	//Joly: AI_Output (self ,other,"DIA_MiltenNW_KAP3_NovizenChase_03_04"); //Ich werde sehen, was ich tun kann.
 };	
 
 //***************************************************************
@@ -316,14 +317,14 @@ INSTANCE DIA_MiltenNW_KAP3_Perm(C_INFO)
 	nr			= 39;
 	condition	= DIA_MiltenNW_KAP3_Perm_Condition;
 	information	= DIA_MiltenNW_KAP3_Perm_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mo¿esz mi coœ powiedzieæ o tych zakapturzonych postaciach?";
 };                       
 FUNC INT DIA_MiltenNW_KAP3_Perm_Condition()
 {
-	IF 	(Kapitel == 9)
+	IF 	(Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -351,14 +352,14 @@ INSTANCE DIA_MiltenNW_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_MiltenNW_KAP4_EXIT_Condition;
 	information	= DIA_MiltenNW_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_MiltenNW_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_KAP4_EXIT_Info()
@@ -376,14 +377,14 @@ INSTANCE DIA_MiltenNW_KAP4_PERM(C_INFO)
 	nr			= 49;
 	condition	= DIA_MiltenNW_KAP4_PERM_Condition;
 	information	= DIA_MiltenNW_KAP4_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jakieœ wieœci?";
 };                       
 FUNC INT DIA_MiltenNW_KAP4_PERM_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_KAP4_PERM_Info()
@@ -429,14 +430,14 @@ INSTANCE DIA_MiltenNW_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_MiltenNW_KAP5_EXIT_Condition;
 	information	= DIA_MiltenNW_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_MiltenNW_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_KAP5_EXIT_Info()
@@ -454,14 +455,14 @@ INSTANCE DIA_MiltenNW_AllDragonsDead(C_INFO)
 	nr			= 900;
 	condition	= DIA_MiltenNW_AllDragonsDead_Condition;
 	information	= DIA_MiltenNW_AllDragonsDead_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Zabi³em wszystkie smoki.";
 };                       
 FUNC INT DIA_MiltenNW_AllDragonsDead_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_MiltenNW_AllDragonsDead_Info()
@@ -472,7 +473,7 @@ FUNC VOID DIA_MiltenNW_AllDragonsDead_Info()
 	AI_Output (other,self ,"DIA_MiltenNW_AllDragonsDead_15_03"); //Kto? Ja?!
 	AI_Output (self ,other,"DIA_MiltenNW_AllDragonsDead_03_04"); //Naturalnie! A kto inny?
 	
-	if (MiltenNW_IsOnBoard == LOG_SUCCESS)
+	if (MiltenNW_IsOnBoard	 == LOG_SUCCESS)
 	{
 		AI_Output (self ,other,"DIA_MiltenNW_AllDragonsDead_03_05"); //Nie mamy czasu do stracenia. Ka¿da chwila jest na wagê z³ota.
 	};
@@ -487,13 +488,14 @@ instance DIA_MiltenNW_SCWasInLib		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_MiltenNW_SCWasInLib_Condition;
 	information	 = 	DIA_MiltenNW_SCWasInLib_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
+
 };
 func int DIA_MiltenNW_SCWasInLib_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_MiltenNW_SCWasInLib_Info ()
@@ -510,16 +512,16 @@ instance DIA_MiltenNW_KnowWhereEnemy		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_MiltenNW_KnowWhereEnemy_Condition;
 	information	 = 	DIA_MiltenNW_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Wiem ju¿, gdzie kryje siê nieprzyjaciel!";
 };
 
 func int DIA_MiltenNW_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (MiltenNW_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (MiltenNW_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int SCToldMiltenHeKnowWhereEnemy;
@@ -527,23 +529,23 @@ func void DIA_MiltenNW_KnowWhereEnemy_Info ()
 {
 	AI_Output			(other, self, "DIA_MiltenNW_KnowWhereEnemy_15_00"); //Wiem ju¿, gdzie kryje siê nieprzyjaciel! Jest ca³kiem niedaleko st¹d.
 	AI_Output			(self, other, "DIA_MiltenNW_KnowWhereEnemy_03_01"); //Zatem musimy czym prêdzej wyruszyæ w drogê. To mo¿e byæ nasza jedyna szansa!
-	SCToldMiltenHeKnowWhereEnemy = true;
+	SCToldMiltenHeKnowWhereEnemy = TRUE;
 	
 	Log_CreateTopic (TOPIC_Crew, LOG_MISSION);  
   	Log_SetTopicStatus(TOPIC_Crew, LOG_RUNNING);
-  	if ((Npc_IsDead(DiegoNW))== false)
+  	if ((Npc_IsDead(DiegoNW))== FALSE)
   	{
  		AI_Output			(self, other, "DIA_MiltenNW_KnowWhereEnemy_03_02"); //A co Diego s¹dzi na ten temat? Myœlê, ¿e chêtnie bêdzie ci towarzyszyæ.
  		B_LogEntry (TOPIC_Crew,"Diego móg³by byæ bardzo pomocny. Nigdy nie potrafi³ wytrzymaæ d³ugo w jednym miejscu.");
  	};
 
-  	if ((Npc_IsDead(GornNW_nach_DJG))== false)
+  	if ((Npc_IsDead(GornNW_nach_DJG))== FALSE)
   	{
  		AI_Output			(self, other, "DIA_MiltenNW_KnowWhereEnemy_03_03"); //Co z Gornem? Podobno wróci³ z Górniczej Doliny. Koniecznie z nim porozmawiaj.
  		B_LogEntry (TOPIC_Crew,"Gorn móg³by byæ bardzo pomocny. Zawsze dobrze jest mieæ u swego boku doskona³ego wojownika. Mo¿e zgodzi siê mnie szkoliæ.");
  	};
 	
-	if ((Npc_IsDead(Lester))== false)
+	if ((Npc_IsDead(Lester))== FALSE)
   	{
  		AI_Output			(self, other, "DIA_MiltenNW_KnowWhereEnemy_03_04"); //I nie zapomnij o Lesterze! Gdybyœ nie wyci¹gn¹³ go z tej doliny, by³oby po nim.
  		B_LogEntry (TOPIC_Crew,"Jeœli nie wezmê ze sob¹ Lestera, prawdopodobnie nigdy nie wydostanie siê z doliny.");
@@ -576,11 +578,11 @@ FUNC VOID DIA_MiltenNW_KnowWhereEnemy_Yes ()
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	MiltenNW_IsOnBoard	 = LOG_SUCCESS;
 	
-	B_GivePlayerXP(XP_BONUS_5);
+	B_GivePlayerXP (XP_Crewmember_Success);
 	
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -616,11 +618,11 @@ instance DIA_MiltenNW_WhereCaptain		(C_INFO)
 };
 func int DIA_MiltenNW_WhereCaptain_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (SCToldMiltenHeKnowWhereEnemy == true)
-	&& (SCGotCaptain == false)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (SCToldMiltenHeKnowWhereEnemy == TRUE)
+	&& (SCGotCaptain == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_MiltenNW_WhereCaptain_Info ()
@@ -645,15 +647,15 @@ instance DIA_MiltenNW_LeaveMyShip		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_MiltenNW_LeaveMyShip_Condition;
 	information	 = 	DIA_MiltenNW_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Obawiam siê, ¿e jednak nie mo¿esz ze mn¹ pop³yn¹æ.";
 };
 func int DIA_MiltenNW_LeaveMyShip_Condition ()
 {	
 	if (MiltenNW_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_MiltenNW_LeaveMyShip_Info ()
@@ -662,7 +664,7 @@ func void DIA_MiltenNW_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_MiltenNW_LeaveMyShip_03_01"); //Trudno. Wiesz najlepiej, kto ci siê przyda, a kto nie. Gdybyœ zmieni³ zdanie, znajdziesz mnie w klasztorze.
 	
 	MiltenNW_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"ShipOff"); 
 };
@@ -676,7 +678,7 @@ instance DIA_MiltenNW_StillNeedYou		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_MiltenNW_StillNeedYou_Condition;
 	information	 = 	DIA_MiltenNW_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Potrzebujê twojej pomocy.";
 };
 func int DIA_MiltenNW_StillNeedYou_Condition ()
@@ -685,7 +687,7 @@ func int DIA_MiltenNW_StillNeedYou_Condition ()
 	|| (MiltenNW_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_MiltenNW_StillNeedYou_Info ()
@@ -697,9 +699,9 @@ func void DIA_MiltenNW_StillNeedYou_Info ()
 		
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	MiltenNW_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-		if (MIS_ReadyforChapter6 == true)
+		if (MIS_ReadyforChapter6 == TRUE)
 			{
 				Npc_ExchangeRoutine (self,"SHIP"); 
 			}
@@ -710,3 +712,130 @@ func void DIA_MiltenNW_StillNeedYou_Info ()
 	
 		AI_StopProcessInfos (self);
 };
+
+
+/*
+// ************************************************************
+// 		Teach
+// ************************************************************
+INSTANCE DIA_MiltenNW_Teach(C_INFO)
+{
+	npc			= PC_Mage_NW;
+	nr			= 90;
+	condition	= DIA_MiltenNW_Teach_Condition;
+	information	= DIA_MiltenNW_Teach_Info;
+	permanent	= TRUE;
+	description = "Chcê siê nauczyæ nowych zaklêæ.";
+};                       
+
+FUNC INT DIA_MiltenNW_Teach_Condition()
+{	
+	if (other.guild == GIL_KDF)
+	{
+		return TRUE;
+	};
+}; 
+FUNC VOID DIA_MiltenNW_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_MiltenNW_Teach_15_00");//Chcê siê nauczyæ nowych zaklêæ.
+	
+	if  (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
+	{
+		Info_ClearChoices (DIA_MiltenNW_Teach);
+		Info_AddChoice (DIA_MiltenNW_Teach,DIALOG_BACK,DIA_MiltenNW_Teach_BACK);
+		
+		if (PLAYER_TALENT_RUNES [SPL_WINDFIST] == FALSE) 
+		{
+			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_WINDFIST, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_WINDFIST)) ,DIA_MiltenNW_Teach_Windfist);
+		};
+		if (PLAYER_TALENT_RUNES [SPL_InstantFireball] == FALSE) 
+		{
+			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_InstantFireball, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_InstantFireball)) ,DIA_MiltenNW_Teach_Feuerball);
+		};
+		if (PLAYER_TALENT_RUNES [SPL_Icebolt] == FALSE) 
+		{
+			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_Icebolt, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Icebolt)) ,DIA_MiltenNW_Teach_Eispfeil);
+		};
+	}
+	else
+	{
+		AI_Output (self ,other,"DIA_MiltenNW_Teach_03_01");//Nie pozna³eœ jeszcze drugiego krêgu magii! Nie mogê ciê niczego nauczyæ.
+	};
+};	
+FUNC VOID DIA_MiltenNW_Teach_BACK()
+{
+	Info_ClearChoices (DIA_MiltenNW_Teach);
+};
+FUNC VOID DIA_MiltenNW_Teach_WINDFIST()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_WINDFIST);	
+};
+FUNC VOID DIA_MiltenNW_Teach_Feuerball()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_InstantFireball);	
+};
+FUNC VOID DIA_MiltenNW_Teach_Eispfeil()
+{
+	B_TeachPlayerTalentRunes (self, other, SPL_Icebolt);	
+};
+//*********************************************************************
+//	Info TEACH
+//*********************************************************************
+instance DIA_MiltenNW_Mana		(C_INFO)
+{
+	npc		  	 = 	PC_Mage_NW;
+	nr			 = 	100;
+	condition	 = 	DIA_MiltenNW_Mana_Condition;
+	information	 = 	DIA_MiltenNW_Mana_Info;
+	permanent	 = 	TRUE;
+	description	 = 	"Chcê zwiêkszyæ moj¹ magiczn¹ moc.";
+};
+func int DIA_MiltenNW_Mana_Condition ()
+{	
+	if (other.guild == GIL_KDF)	
+	{
+		return TRUE;
+	};
+};
+func void DIA_MiltenNW_Mana_Info ()
+{
+	AI_Output (other, self, "DIA_MiltenNW_Mana_15_00"); //Chcê zwiêkszyæ moj¹ magiczn¹ moc.
+	
+	Info_ClearChoices   (DIA_MiltenNW_Mana);
+	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
+	
+};
+func void DIA_MiltenNW_Mana_BACK()
+{
+	if (other.attribute[ATR_MANA_MAX] >= T_MED)
+	{
+		AI_Output (self, other, "DIA_MiltenNW_Mana_03_00"); //Twoja magiczna moc i tak jest ogromna. Obawiam siê, ¿e nie mogê ci pomóc.
+	};
+	Info_ClearChoices (DIA_MiltenNW_Mana);
+};
+func void DIA_MiltenNW_Mana_1()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MED);
+	
+	Info_ClearChoices   (DIA_MiltenNW_Mana);
+	
+	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
+	
+	
+};
+func void DIA_MiltenNW_Mana_5()
+{
+	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MED);
+	
+	Info_ClearChoices   (DIA_MiltenNW_Mana);
+	
+	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
+	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
+	
+};
+*/

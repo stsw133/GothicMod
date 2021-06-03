@@ -1,7 +1,7 @@
-//******************************************************************************************
-INSTANCE PC_Fighter_NW_nach_DJG (Npc_Default)
+///******************************************************************************************
+instance PC_Fighter_NW_nach_DJG (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Gorn";
 	guild 								=	GIL_DJG;
 	id 									=	706;
@@ -9,45 +9,45 @@ INSTANCE PC_Fighter_NW_nach_DJG (Npc_Default)
 	flags       						=	NPC_FLAG_IMPORTANT;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 60);
 	B_SetFightSkills (self, FightTalent_Strong);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Sld_Axe);
 	EquipItem (self, ItRw_Crossbow_M_01);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Fighter", Face_Gorn, 0, ITAR_DJG_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_706;
 };
 
-FUNC VOID Rtn_Start_706()
+func void Rtn_Start_706()
 {
 	TA_Sit_Chair	(08,00,23,00, "NW_BIGFARM_HOUSE_14");
     TA_Sit_Chair	(23,00,08,00, "NW_BIGFARM_HOUSE_14");
 };
-FUNC VOID Rtn_Tot_706()
+func void Rtn_Tot_706()
 {
 	TA_Sit_Campfire	(08,00,23,00, "TOT");
     TA_Sit_Campfire	(23,00,08,00, "TOT");
 };
-FUNC VOID Rtn_WAITFORSHIP_706()
+func void Rtn_WAITFORSHIP_706()
 {
 	TA_Stand_Guarding	(08,00,23,00, "NW_WAITFOR_SHIP_05");
     TA_Stand_Guarding	(23,00,08,00, "NW_WAITFOR_SHIP_05");
 };
-FUNC VOID Rtn_Ship_706()
+func void Rtn_Ship_706()
 {
 	TA_Stand_Guarding	(06,00,07,00, "SHIP_DECK_03");
 

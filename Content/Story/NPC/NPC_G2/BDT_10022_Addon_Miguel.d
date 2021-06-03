@@ -1,39 +1,38 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BDT_10022_Addon_Miguel (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Miguel";
 	guild 								=	GIL_BDT;
 	id 									=	10022;
 	voice 								=	11;
-	flags      							=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Nagelknueppel);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItems (self, Itpo_health_01, 33);
 	CreateInvItems (self, Itpo_mana_01, 7);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Thief", Face_Normal14, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_10022;
 };
 
-FUNC VOID Rtn_Start_10022()
+func void Rtn_Start_10022()
 {
 	TA_Pick_FP		(06,00,12,00, "ADW_PATH_TO_VP3_01");
 	TA_Pick_FP		(12,00,18,00, "ADW_PATH_TO_VP3_02");

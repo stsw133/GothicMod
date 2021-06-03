@@ -1,13 +1,13 @@
-//******************************************************************************************
-//	EVT_MONASTERY_SECRETLIBRARY_FUNC
-//******************************************************************************************
+///******************************************************************************************
+///	EVT_MONASTERY_SECRETLIBRARY_FUNC
+///******************************************************************************************
 func void EVT_MONASTERY_SECRETLIBRARY_S1()
 {
-	if (SecretLibraryIsOpen == false)
+	if (!SecretLibraryIsOpen)
 	{
 		B_GivePlayerXP(XP_BONUS_10);
 		SecretLibraryIsOpen = true;
-
+		
 		Wld_InsertNpc (Skeleton_Warrior, "FP_ROAM_NW_KDF_LIBRARY_01");
 		Wld_InsertNpc (Skeleton_Warrior, "FP_ROAM_NW_KDF_LIBRARY_02");
 		Wld_InsertNpc (Skeleton_Warrior, "FP_ROAM_NW_KDF_LIBRARY_04");
@@ -25,6 +25,6 @@ func void EVT_MONASTERY_SECRETLIBRARY_S1()
 		Wld_InsertNpc (Skeleton_Warrior, "FP_ROAM_NW_KDF_LIBRARY_10");
 		Wld_InsertNpc (SecretLibrarySkeleton, "FP_ROAM_NW_KDF_LIBRARY_29");
 	};
-
-	PrintScreen ("", -1, -1, FONT_Screen, 0);
+	
+	//PrintScreen ("", -1, -1, FONT_Screen, 0);
 };

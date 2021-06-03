@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance WzA_17150_Yoda (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name 								=	"Mistrz Yoda";
 	guild 								=	GIL_NONE;
 	id 									=	17150;
@@ -10,32 +10,32 @@ instance WzA_17150_Yoda (Npc_Default)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 90);
 	B_SetFightSkills (self, FightTalent_Master);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_GOBBO;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 //	Npc_SetToFightMode (self, ItMw_LightSaber);
 	EquipItem (self, ItMw_LightSaber);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	Mdl_SetVisual		(self, "Gobbo.mds");
 	Mdl_SetVisualBody	(self, "Gob_Body", 5, DEFAULT, "", DEFAULT, DEFAULT, -1);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_17150;
 };
 

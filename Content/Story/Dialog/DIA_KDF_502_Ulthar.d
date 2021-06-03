@@ -7,14 +7,15 @@ INSTANCE DIA_Ulthar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Ulthar_EXIT_Condition;
 	information = DIA_Ulthar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Ulthar_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+	
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ulthar_EXIT_Info()
@@ -30,16 +31,16 @@ instance DIA_Ulthar_GREET		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Ulthar_GREET_Condition;
 	information	 = 	DIA_Ulthar_GREET_Info;
-	permanent	 =  false;
-	important	 = 	true;
+	permanent	 =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Ulthar_GREET_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&&(!Npc_KnowsInfo (hero,DIA_Pyrokar_FIRE))
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_GREET_Info ()
@@ -68,7 +69,7 @@ func int DIA_Ulthar_MAGETEST_Condition ()
 {	
 	if Npc_KnowsInfo (hero, DIA_Ulthar_GREET)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_MAGETEST_Info ()
@@ -86,15 +87,15 @@ instance DIA_Ulthar_WHEN		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Ulthar_WHEN_Condition;
 	information	 = 	DIA_Ulthar_WHEN_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Kiedy odbêdzie siê Próba?";
 };
 func int DIA_Ulthar_WHEN_Condition ()
 {
 	if  Npc_KnowsInfo (hero, DIA_Ulthar_MAGETEST)
-	&& (KNOWS_FIRE_CONTEST == false)
+	&& (KNOWS_FIRE_CONTEST == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_WHEN_Info ()
@@ -112,14 +113,14 @@ instance DIA_Ulthar_TEST		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Ulthar_TEST_Condition;
 	information	 = 	DIA_Ulthar_TEST_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Mistrzu, jestem gotów poddaæ siê Próbie.";
 };
 func int DIA_Ulthar_TEST_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Pyrokar_FIRE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_TEST_Info ()
@@ -149,16 +150,16 @@ instance DIA_Ulthar_RUNNING		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Ulthar_RUNNING_Condition;
 	information	 = 	DIA_Ulthar_RUNNING_Info;
-	permanent	 = 	true;
-	important	 = 	true;
+	permanent	 = 	TRUE;
+	important	 = 	TRUE;
 };
 func int DIA_Ulthar_RUNNING_Condition ()
 {	
 	if (MIS_RUNE == LOG_RUNNING)
-	&& (Npc_IsInState(self,ZS_Talk))
-	&& (Npc_HasItems(other,ItRu_Heal) == 0)
+	&& Npc_IsInState	(self, ZS_Talk) 
+	&& (Npc_HasItems    (other, ItRu_FireBolt) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_RUNNING_Info ()
@@ -176,15 +177,15 @@ instance DIA_Ulthar_SUCCESS		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Ulthar_SUCCESS_Condition;
 	information	 = 	DIA_Ulthar_SUCCESS_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Uda³o mi siê stworzyæ runê.";
 };
 func int DIA_Ulthar_SUCCESS_Condition ()
 {
 	if (MIS_RUNE == LOG_RUNNING)
-	&& (Npc_HasItems(hero,ItRu_Heal) >= 1)
+	&& (Npc_HasItems (hero, ItRu_FireBolt) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_SUCCESS_Info ()
@@ -195,13 +196,14 @@ func void DIA_Ulthar_SUCCESS_Info ()
 	AI_Output (self, other, "DIA_Ulthar_SUCCESS_05_03"); //Ku mojej radoœci uda³o ci siê przejœæ próbê!
 	
 	if (MIS_GOLEM == LOG_RUNNING)
-	&& ((Npc_IsDead (Magic_Golem)) == false)
+	&& ((Npc_IsDead (Magic_Golem)) == FALSE)
 	{
 		AI_Output (self, other, "DIA_Ulthar_SUCCESS_05_04"); //Wci¹¿ jednak masz do wykonania zlecone ci przez Serpentesa zadanie.
 	};
 	
 	MIS_RUNE = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_RUNE);
+	
 };
 //#####################################################################
 //##
@@ -221,14 +223,14 @@ INSTANCE DIA_Ulthar_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ulthar_KAP3_EXIT_Condition;
 	information	= DIA_Ulthar_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ulthar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ulthar_KAP3_EXIT_Info()
@@ -245,15 +247,15 @@ instance DIA_Ulthar_PermAbKap3		(C_INFO)
 	nr           =  99;
 	condition	 = 	DIA_Ulthar_PermAbKap3_Condition;
 	information	 = 	DIA_Ulthar_PermAbKap3_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description  =  "Jakieœ wieœci?";
 };
 func int DIA_Ulthar_PermAbKap3_Condition ()
 {	
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	|| Npc_KnowsInfo (other,DIA_Ulthar_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Ulthar_PermAbKap3_Info ()
@@ -280,14 +282,14 @@ instance DIA_Ulthar_SCHREINEVERGIFTET		(C_INFO)
 	nr		 = 	30;
 	condition	 = 	DIA_Ulthar_SCHREINEVERGIFTET_Condition;
 	information	 = 	DIA_Ulthar_SCHREINEVERGIFTET_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Ulthar_SCHREINEVERGIFTET_Condition ()
 {
-	if (Pedro_Traitor == true)
+	if (Pedro_Traitor == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -303,10 +305,10 @@ func void DIA_Ulthar_SCHREINEVERGIFTET_Info ()
 			AI_Output			(self, other, "DIA_Ulthar_SCHREINEVERGIFTET_05_03"); //WeŸ tê wodê œwiêcon¹ i wlej do ka¿dej z kapliczek po kilka kropli.
 			AI_Output			(self, other, "DIA_Ulthar_SCHREINEVERGIFTET_05_04"); //Dziêki œwiêtym s³owom oczyszczenia kapliczki powinny odzyskaæ sw¹ dawn¹ moc.
 
-			if ((Npc_HasItems (other,ItWr_Map_Shrine_MIS))==false)
+			if ((Npc_HasItems (other,ItWr_Map_Shrine_MIS))==FALSE)
 			{
 				if ((Npc_HasItems (Gorax,ItWr_Map_Shrine_MIS)))
-				&& ((Npc_IsDead(Gorax))== false)
+				&& ((Npc_IsDead(Gorax))== FALSE)
 				{
 					AI_Output			(self, other, "DIA_Ulthar_SCHREINEVERGIFTET_05_05"); //Gorax sprzeda ci mapê, na której zaznaczono odpowiednie kapliczki.
 				}
@@ -353,7 +355,7 @@ func int DIA_Ulthar_SchreineGeheilt_Condition ()
 {
 	if (MIS_Ulthar_HeileSchreine_PAL == LOG_SUCCESS)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -362,9 +364,9 @@ func void DIA_Ulthar_SchreineGeheilt_Info ()
 	AI_Output			(other, self, "DIA_Ulthar_SchreineGeheilt_15_00"); //Uda³o mi siê oczyœciæ wszystkie kapliczki.
 	AI_Output			(self, other, "DIA_Ulthar_SchreineGeheilt_05_01"); //Œwietna robota. Jestem z ciebie dumny, moje dziecko. Niech Innos ciê b³ogos³awi.
 	AI_Output			(self, other, "DIA_Ulthar_SchreineGeheilt_05_02"); //W podziêce weŸ ten amulet si³y. Jestem pewien, ¿e oka¿e siê pomocny w walce z wrogiem.
-	CreateInvItems (self, ItAm_Power_01, 1);									
-	B_GiveInvItems (self, other, ItAm_Power_01, 1);
-	B_GivePlayerXP(XP_BONUS_5);
+	CreateInvItems (self, ItAm_Energy_01, 1);									
+	B_GiveInvItems (self, other, ItAm_Energy_01, 1);
+	B_GivePlayerXP (XP_Ulthar_SchreineGereinigt);
 	AI_StopProcessInfos (self);
 };
 
@@ -388,14 +390,14 @@ INSTANCE DIA_Ulthar_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ulthar_KAP4_EXIT_Condition;
 	information	= DIA_Ulthar_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ulthar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ulthar_KAP4_EXIT_Info()
@@ -413,16 +415,16 @@ instance DIA_Ulthar_SchreineGeheiltNoPAL		(C_INFO)
 	nr		 = 	30;
 	condition	 = 	DIA_Ulthar_SchreineGeheiltNoPAL_Condition;
 	information	 = 	DIA_Ulthar_SchreineGeheiltNoPAL_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
 func int DIA_Ulthar_SchreineGeheiltNoPAL_Condition ()
 {
 	if ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG)|| (hero.guild == GIL_KDF))
-	&& (Kapitel >= 10)
+	&& (Kapitel >= 4)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -451,14 +453,14 @@ INSTANCE DIA_Ulthar_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ulthar_KAP5_EXIT_Condition;
 	information	= DIA_Ulthar_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ulthar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ulthar_KAP5_EXIT_Info()
@@ -486,14 +488,14 @@ INSTANCE DIA_Ulthar_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Ulthar_KAP6_EXIT_Condition;
 	information	= DIA_Ulthar_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Ulthar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ulthar_KAP6_EXIT_Info()

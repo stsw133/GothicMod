@@ -20,7 +20,7 @@ func void ENE_CHECK()
 
 func void POWER_CHECK (var C_NPC slf)
 {
-	slf.damage[DAM_INDEX_MAGIC] = slf.aivar[AIV_Power] + slf.aivar[AIV_Power] * Npc_GetTalentSkill(slf, NPC_TALENT_MAGIC) / 20;
+	slf.damage[DAM_INDEX_MAGIC] = slf.aivar[AIV_Power];
 	Npc_SetTalentValue (slf, NPC_TALENT_MAGIC, slf.damage[DAM_INDEX_MAGIC]);
 };
 
@@ -85,6 +85,37 @@ func void PotionRG_ADD (var int attribute, var int points)
 		if (enepottime < points)
 		{
 			enepottime = points;
+		};
+	};
+};
+///******************************************************************************************
+func void Potions_Process()
+{
+	if (hppottime > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hero.attribute[ATR_HITPOINTS_MAX] / 10);
+		hppottime -= 1;
+		if (hppottime == 0)
+		{
+			Wld_StopEffect("SPELLFX_HEALTHPOTION");
+		};
+	};
+	if (mppottime > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_MANA, hero.attribute[ATR_MANA_MAX] / 10);
+		mppottime -= 1;
+		if (mppottime == 0)
+		{
+			Wld_StopEffect("SPELLFX_MANAPOTION");
+		};
+	};
+	if (enepottime > 0)
+	{
+		sattribute[ATR_ENERGY] += sattribute[ATR_ENERGY_MAX] / 10;
+		enepottime -= 1;
+		if (enepottime == 0)
+		{
+			Wld_StopEffect("SPELLFX_YELLOWPOTION");
 		};
 	};
 };

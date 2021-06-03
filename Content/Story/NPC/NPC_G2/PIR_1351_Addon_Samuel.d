@@ -1,34 +1,33 @@
-//******************************************************************************************
-INSTANCE PIR_1351_Addon_Samuel (Npc_Default)
+///******************************************************************************************
+instance PIR_1351_Addon_Samuel (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Samuel";
 	guild 								=	GIL_PIR;
 	id 									=	1351;
 	voice 								=	14;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1H_Mace_L_03);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_FatBald", Face_Saturas, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1351;
 };
 
-FUNC VOID Rtn_Start_1351()
+func void Rtn_Start_1351()
 {
 	TA_Potion_Alchemy	(06,00,08,00, "ADW_PIRATECAMP_CAVE1_04");
 	TA_Stand_Drinking	(08,00,10,00, "ADW_PIRATECAMP_CAVE1_02");

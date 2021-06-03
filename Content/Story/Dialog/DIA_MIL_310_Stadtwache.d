@@ -7,13 +7,13 @@ INSTANCE DIA_Mil_310_Stadtwache_EXIT (C_INFO)
 	nr			= 999;
 	condition	= DIA_Mil_310_Stadtwache_EXIT_Condition;
 	information	= DIA_Mil_310_Stadtwache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= DIALOG_ENDE;
 };        
          
 FUNC INT DIA_Mil_310_Stadtwache_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Mil_310_Stadtwache_EXIT_Info()
@@ -37,8 +37,8 @@ instance DIA_Mil_310_Stadtwache_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_Mil_310_Stadtwache_FirstWarn_Condition;
 	information	= DIA_Mil_310_Stadtwache_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_Mil_310_Stadtwache_FirstWarn_Condition()
@@ -46,27 +46,27 @@ func int DIA_Mil_310_Stadtwache_FirstWarn_Condition()
 	if (Npc_GetDistToWP(other, Mil_310_Checkpoint) <= 700) //NICHT von hinten!
 	{
 		Npc_SetRefuseTalk(self,5);
-		return false;
+		return FALSE;
 	};
 	
 	if (B_GetGreatestPetzCrime(self) >= CRIME_ATTACK) //wenn CRIME in Stadt bekannt
 	&& (B_GetCurrentAbsolutionLevel(self) == MIL_310_Personal_AbsolutionLevel) //und noch nicht bezahlt
 	{
-		self.aivar[AIV_Guardpassage_Status] = false;
+		self.aivar[AIV_GuardPassage_Status] = GP_NONE;
 	}
-	else //CRIME_NONE (oder Sheepkiller) - wenn Crime rehabilitiert, wird hier PASSGATE automatisch wieder auf true gesetzt
+	else //CRIME_NONE (oder Sheepkiller) - wenn Crime rehabilitiert, wird hier PASSGATE automatisch wieder auf TRUE gesetzt
 	{
-		if (Mil_310_schonmalreingelassen == true)
+		if (Mil_310_schonmalreingelassen == TRUE)
 		{
-			self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+			self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 		};
 	};
 	
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_RefuseTalk(self) == false))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			)
+	&&  (Npc_RefuseTalk(self) 							== FALSE 		))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -87,7 +87,7 @@ func void DIA_Mil_310_Stadtwache_FirstWarn_Info()
 	
 		if (B_GetGreatestPetzCrime(self) == CRIME_THEFT)
 		{
-			AI_Output (self, other,"DIA_Mil_310_Stadtwache_FirstWarn_07_04"); //Nie potrzebujemy tu ¿adnych brudnych z³odziei!
+			AI_Output (self, other,"DIA_Mil_310_Stadtwache_FirstWarn_07_04"); //Nie potrzebujemy to ¿adnych brudnych z³odziei!
 		};
 	
 		if (B_GetGreatestPetzCrime(self) == CRIME_ATTACK)
@@ -102,7 +102,7 @@ func void DIA_Mil_310_Stadtwache_FirstWarn_Info()
 		 var C_Item itm; itm = Npc_GetEquippedArmor(other);
 		
 		// ------ ohne Rüstung ------
-		if (Npc_HasEquippedArmor(other) == false)
+		if (Npc_HasEquippedArmor(other) == FALSE)
 		&& (hero.guild == GIL_NONE) 
 		{
 			AI_Output (other, self,"DIA_Mil_310_Stadtwache_FirstWarn_15_07"); //A dlaczego nie?
@@ -117,10 +117,10 @@ func void DIA_Mil_310_Stadtwache_FirstWarn_Info()
 		}
  	 	 
  		// ------ als Bauer ------		
-		else if (Hlp_IsItem(itm, ItAr_Bau_00) == true)
-		|| 		(Hlp_IsItem(itm, ItAr_Bau_01) == true)
+		else if (Hlp_IsItem(itm, ItAr_Bau_L) == TRUE)
+		|| 		(Hlp_IsItem(itm, ItAr_Bau_M) == TRUE)
 		{
-			if (self.aivar[AIV_TalkedToPlayer] == true)
+			if (self.aivar[AIV_TalkedToPlayer] == TRUE)
 			{
 				AI_Output (self, other,"DIA_Mil_310_Stadtwache_FirstWarn_07_12"); //Czego chcesz tym razem?
 				AI_Output (other, self,"DIA_Mil_310_Stadtwache_FirstWarn_15_13"); //Przys³ano mnie z farmy.
@@ -150,9 +150,9 @@ func void DIA_Mil_310_Stadtwache_FirstWarn_Info()
 			{
 				AI_Output (self, other,"DIA_Mil_310_Stadtwache_FirstWarn_07_22"); //Chcia³em ci siê tylko przyjrzeæ. Wygl¹da na to, ¿e masz pieni¹dze. Mo¿esz wejœæ.
 			};
-			self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-			Stadtwache_333.aivar[AIV_Guardpassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
-			Mil_310_schonmalreingelassen = true;
+			self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+			Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
+			Mil_310_schonmalreingelassen = TRUE;
 			B_CheckLog();
 			
 			AI_StopProcessInfos(self);
@@ -173,17 +173,17 @@ INSTANCE DIA_Mil_310_Stadtwache_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_Mil_310_Stadtwache_SecondWarn_Condition;
 	information	= DIA_Mil_310_Stadtwache_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Mil_310_Stadtwache_SecondWarn_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,Mil_310_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,Mil_310_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -207,17 +207,17 @@ INSTANCE DIA_Mil_310_Stadtwache_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_Mil_310_Stadtwache_Attack_Condition;
 	information	= DIA_Mil_310_Stadtwache_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Mil_310_Stadtwache_Attack_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,Mil_310_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,Mil_310_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -243,15 +243,15 @@ INSTANCE DIA_Mil_310_Stadtwache_Bribe (C_INFO)
 	nr			= 5;
 	condition	= DIA_Mil_310_Stadtwache_Bribe_Condition;
 	information	= DIA_Mil_310_Stadtwache_Bribe_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Masz tu 100 sztuk z³ota i wpuœæ mnie!";
 };                       
 
 FUNC INT DIA_Mil_310_Stadtwache_Bribe_Condition()
 {	
-	if (self.aivar[AIV_Guardpassage_Status] != GP_PassGate)
+	if (self.aivar[AIV_GuardPassage_Status] != GP_PassGate)
 	{
-		return true;
+		return TRUE;
 	};
 };
 	
@@ -268,9 +268,9 @@ func void DIA_Mil_310_Stadtwache_Bribe_Info()
 			AI_Output (self, other,"DIA_Mil_310_Stadtwache_Bribe_07_02"); //I kieruj siê od razu do Lorda Andre! W przeciwnym wypadku nastêpny taki numer bêdzie ciê kosztowa³ 100 sztuk wiêcej!
 		};
 		
-		self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-		Stadtwache_333.aivar[AIV_Guardpassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
-		Mil_310_schonmalreingelassen = true;
+		self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+		Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
+		Mil_310_schonmalreingelassen = TRUE;
 		B_CheckLog();
 		
 		// ------ wenn bezahlt, persönliche Absolution erteilen -------
@@ -294,7 +294,7 @@ INSTANCE DIA_Mil_310_Stadtwache_Passierschein (C_INFO)
 	nr			= 4;
 	condition	= DIA_Mil_310_Stadtwache_Passierschein_Condition;
 	information	= DIA_Mil_310_Stadtwache_Passierschein_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Mam przepustkê!";
 };
 
@@ -302,9 +302,9 @@ FUNC INT DIA_Mil_310_Stadtwache_Passierschein_Condition()
 {	
 	if (Npc_HasItems (other,ItWr_Passierschein))
 	&& (B_GetGreatestPetzCrime(self) < CRIME_ATTACK)
-	&& (Mil_310_schonmalreingelassen == false)
+	&& (Mil_310_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -312,7 +312,7 @@ FUNC VOID DIA_Mil_310_Stadtwache_Passierschein_Info()
 {
 	AI_Output (other, self,"DIA_Mil_310_Stadtwache_Passierschein_15_00"); //Mam przepustkê!
 	
-	if (Npc_HasEquippedArmor(other) == false) //ohne Rüstung
+	if (Npc_HasEquippedArmor(other) == FALSE) //ohne Rüstung
 	{
 		AI_Output (self, other,"DIA_Mil_310_Stadtwache_Passierschein_07_01"); //Naprawdê? A kogoœ zabi³ bandyto, ¿eby j¹ dostaæ?
 		AI_Output (other, self,"DIA_Mil_310_Stadtwache_Passierschein_15_02"); //Pozwolisz mi przejœæ czy nie?
@@ -323,9 +323,9 @@ FUNC VOID DIA_Mil_310_Stadtwache_Passierschein_Info()
 		AI_Output (self, other,"DIA_Mil_310_Stadtwache_Passierschein_07_04"); //Wygl¹da na orygina³. Mo¿esz przejœæ.
 	};
 
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-	Stadtwache_333.aivar[AIV_Guardpassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
-	Mil_310_schonmalreingelassen = true;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+	Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
+	Mil_310_schonmalreingelassen = TRUE;
 	B_CheckLog();
 	
 	AI_StopProcessInfos	(self);
@@ -341,7 +341,7 @@ INSTANCE DIA_Mil_310_Stadtwache_ZumSchmied (C_INFO)
 	nr			= 3;
 	condition	= DIA_Mil_310_Stadtwache_ZumSchmied_Condition;
 	information	= DIA_Mil_310_Stadtwache_ZumSchmied_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Chcia³bym zobaczyæ siê z kowalem, muszê naprawiæ ekwipunek.";
 };
 
@@ -349,12 +349,11 @@ FUNC INT DIA_Mil_310_Stadtwache_ZumSchmied_Condition()
 {	
 	var C_Item itm; itm = Npc_GetEquippedArmor(other);
 	
-	if ((Hlp_IsItem(itm, ItAr_Bau_00) == true)
-	|| (Hlp_IsItem(itm, ItAr_Bau_01) == true))
+	if ( (Hlp_IsItem(itm, ItAr_Bau_L) == TRUE) || (Hlp_IsItem(itm, ItAr_Bau_M) == TRUE) )
 	&& (Npc_KnowsInfo (other, DIA_Maleth_ToTheCity))
-	&& (Mil_310_schonmalreingelassen == false)
+	&& (Mil_310_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -362,7 +361,7 @@ FUNC VOID DIA_Mil_310_Stadtwache_ZumSchmied_Info()
 {
 	AI_Output (other, self,"DIA_Mil_310_Stadtwache_ZumSchmied_15_00"); //Chcia³bym zobaczyæ siê z kowalem, muszê naprawiæ ekwipunek.
 	
-	if (Mil_310_Scheisse_erzaehlt == true)
+	if (Mil_310_Scheisse_erzaehlt == TRUE)
 	{
 		AI_Output (self, other,"DIA_Mil_310_Stadtwache_ZumSchmied_07_01"); //Ach tak? Dlaczegoœ od razu tak nie gada³?
 		AI_Output (other, self,"DIA_Mil_310_Stadtwache_ZumSchmied_15_02"); //Zastanawia³em siê, jak zareagujesz.
@@ -375,11 +374,11 @@ FUNC VOID DIA_Mil_310_Stadtwache_ZumSchmied_Info()
 	
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_ZumSchmied_07_05"); //Gdybyœ spotka³ Lobarta, ka¿ mu porz¹dnie karmiæ owce, nied³ugo wracamy!
 
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-	Stadtwache_333.aivar[AIV_Guardpassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
-	Mil_310_schonmalreingelassen = true;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+	Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
+	Mil_310_schonmalreingelassen = TRUE;
 	B_CheckLog();
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	
 	AI_StopProcessInfos	(self);
 };
@@ -394,16 +393,16 @@ INSTANCE DIA_Addon_Mil_310_Stadtwache_Constantino (C_INFO)
 	nr			= 2;
 	condition	= DIA_Addon_Mil_310_Stadtwache_Constantino_Condition;
 	information	= DIA_Addon_Mil_310_Stadtwache_Constantino_Info;
-	permanent 	= true;
+	permanent 	= TRUE;
 	description	= "Mam tu zio³a dla alchemika Constantina.";
 };
 
 FUNC INT DIA_Addon_Mil_310_Stadtwache_Constantino_Condition()
 {	
 	if (MIS_Addon_Lester_PickForConstantino == LOG_RUNNING)
-	&& (Mil_310_schonmalreingelassen == false)
+	&& (Mil_310_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -440,12 +439,12 @@ FUNC VOID DIA_Addon_Mil_310_Stadtwache_Constantino_Info()
 		{
 			AI_Output (self, other,"DIA_Addon_Mil_310_Stadtwache_Constantino_07_02"); //Taaak... Wygl¹da w porz¹dku. Dobra, wchodŸ - tylko ¿adnych burd. Rozumiemy siê?
 
-			self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
-			Stadtwache_333.aivar[AIV_Guardpassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
-			Mil_310_schonmalreingelassen = true;
+			self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
+			Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
+			Mil_310_schonmalreingelassen = TRUE;
 			MIS_Addon_Lester_PickForConstantino = LOG_SUCCESS;
 			B_CheckLog();
-			B_GivePlayerXP(XP_BONUS_1);
+			B_GivePlayerXP (XP_Addon_PickForConstantino);
 			AI_StopProcessInfos (self);
 		}
 		else 
@@ -480,15 +479,15 @@ INSTANCE DIA_Mil_310_Stadtwache_MilizWerden (C_INFO)
 	nr			= 2;
 	condition	= DIA_Mil_310_Stadtwache_MilizWerden_Condition;
 	information	= DIA_Mil_310_Stadtwache_MilizWerden_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Chcê siê przy³¹czyæ do stra¿y!";
 };
 
 FUNC INT DIA_Mil_310_Stadtwache_MilizWerden_Condition()
 {	
-	if (Mil_310_schonmalreingelassen == false)
+	if (Mil_310_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -497,7 +496,7 @@ FUNC VOID DIA_Mil_310_Stadtwache_MilizWerden_Info()
 	AI_Output (other, self,"DIA_Mil_310_Stadtwache_MilizWerden_15_00"); //Chcê siê przy³¹czyæ do stra¿y!
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_MilizWerden_07_01"); //A to dobre! Spróbuj przy innej bramie, mo¿e TAM ci uwierz¹.
 	
-	Mil_310_Scheisse_erzaehlt = true;
+	Mil_310_Scheisse_erzaehlt = TRUE;
 };
 
 // ************************************************************
@@ -510,15 +509,15 @@ INSTANCE DIA_Mil_310_Stadtwache_Paladine (C_INFO)
 	nr			= 1;
 	condition	= DIA_Mil_310_Stadtwache_Paladine_Condition;
 	information	= DIA_Mil_310_Stadtwache_Paladine_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Muszê porozmawiaæ z przywódc¹ paladynów!";
 };
 
 FUNC INT DIA_Mil_310_Stadtwache_Paladine_Condition()
 {	
-	if (Mil_310_schonmalreingelassen == false)
+	if (Mil_310_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -527,7 +526,7 @@ FUNC VOID DIA_Mil_310_Stadtwache_Paladine_Info()
 	AI_Output (other, self,"DIA_Mil_310_Stadtwache_Paladine_15_00"); //Muszê porozmawiaæ z przywódc¹ paladynów!
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_07_01"); //Och? A có¿ to za informacje?
 	
-	Mil_310_Scheisse_erzaehlt = true;
+	Mil_310_Scheisse_erzaehlt = TRUE;
 	
 	Info_ClearChoices (DIA_Mil_310_Stadtwache_Paladine);
 	Info_AddChoice    (DIA_Mil_310_Stadtwache_Paladine,"Wkrótce miasto zostanie zaatakowane!",DIA_Mil_310_Stadtwache_Paladine_AttackSoon);
@@ -578,7 +577,7 @@ func void DIA_Mil_310_Stadtwache_Paladine_NoDragons() //+1
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_NoDragons_07_01"); //Jasne! A moja babka robi u orkowych genera³ów za adiutanta.
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_NoDragons_07_02"); //Chyba nie myœlisz, ¿e wpuœcimy ciê do Lorda Hagena z tak¹ naci¹gan¹ historyjk¹.
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_NoDragons_07_03"); //Spadaj!
-	Player_KnowsLordHagen = true;
+	Player_KnowsLordHagen = TRUE;
 	
 	AI_StopProcessInfos(self);	
 };
@@ -641,7 +640,7 @@ func void DIA_Mil_310_Stadtwache_Paladine_DepecheDragons() //+++1
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_DepecheDragons_07_01"); //Co? To nie mo¿e byæ prawda. A ju¿ prawie mia³em ciê wpuœciæ.
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_DepecheDragons_07_02"); //Gdybyœ opowiedzia³ tê historiê Lordowi Hagenowi, kaza³by sobie przynieœæ moj¹ g³owê na srebrnej tacy.
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_DepecheDragons_07_03"); //Spadaj!
-	Player_KnowsLordHagen = true;	
+	Player_KnowsLordHagen = TRUE;	
 	
 	AI_StopProcessInfos(self);
 };
@@ -651,7 +650,7 @@ func void DIA_Mil_310_Stadtwache_Paladine_OnlyPaladins() //+++2 --> 2b
 	AI_Output (other, self,"DIA_Mil_310_Stadtwache_Paladine_OnlyPaladins_15_00"); //Tê wiadomoœæ mogê przekazaæ jedynie paladynom!
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_OnlyPaladins_07_01"); //Nic z tego, ch³opcze!
 	AI_Output (self, other,"DIA_Mil_310_Stadtwache_Paladine_OnlyPaladins_07_02"); //Jak mam ciê u diab³a wpuœciæ do Lorda Hagena, jeœli nie bêdê mia³ pewnoœci, ¿e nie zmarnujesz jego cennego czasu?
-	Player_KnowsLordHagen = true;
+	Player_KnowsLordHagen = TRUE;
 	
 	Info_ClearChoices (DIA_Mil_310_Stadtwache_Paladine);
 	Info_AddChoice    (DIA_Mil_310_Stadtwache_Paladine,"Nic z tego. Te informacje przeznaczone s¹ TYLKO dla paladynów.",DIA_Mil_310_Stadtwache_Paladine_Only2);
@@ -676,16 +675,16 @@ INSTANCE DIA_Mil_310_Stadtwache_PERM (C_INFO)
 	nr			= 5;
 	condition	= DIA_Mil_310_Stadtwache_PERM_Condition;
 	information	= DIA_Mil_310_Stadtwache_PERM_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Mil_310_Stadtwache_PERM_Condition()
 {	
-	if (self.aivar[AIV_Guardpassage_Status] == GP_PassGate)
+	if (self.aivar[AIV_GuardPassage_Status] == GP_PassGate)
 	&& (Npc_IsInState(self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 	
@@ -695,3 +694,41 @@ func void DIA_Mil_310_Stadtwache_PERM_Info()
 	
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

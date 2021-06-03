@@ -66,10 +66,8 @@ func void Loop_healthBar()
 {
 	if (!Hlp_IsValidHandle(Bar_healthBar))
 	{
-		if (bState[BS_Poison] == false)
-		{	Bar_healthBar = Bar_Create(healthBar);	}
-		else
-		{	Bar_healthBar = Bar_Create(poisonBar);	};
+		if (bState[BS_Poison] == true)	{	Bar_healthBar = Bar_Create(poisonBar);	}
+		else							{	Bar_healthBar = Bar_Create(healthBar);	};
 	};
 
 	Bar_SetMax (Bar_healthBar, hero.attribute[ATR_HITPOINTS_MAX]);
@@ -80,7 +78,9 @@ func void Loop_healthBar()
 func void Loop_manaBar()
 {
 	if (!Hlp_IsValidHandle(Bar_manaBar))
-	{	Bar_manaBar = Bar_Create(manaBar);	};
+	{
+		Bar_manaBar = Bar_Create(manaBar);
+	};
 
 	Bar_SetMax (Bar_manaBar, hero.attribute[ATR_MANA_MAX]);
 	Bar_SetValue (Bar_manaBar, hero.attribute[ATR_MANA]);
@@ -91,10 +91,8 @@ func void Loop_energyBar()
 {
 	if (!Hlp_IsValidHandle(Bar_energyBar))
 	{
-		if (bState[BS_hArmor] == false)
-		{	Bar_energyBar = Bar_Create(energyBar);	}
-		else
-		{	Bar_energyBar = Bar_Create(harmorBar);	};
+		if (bState[BS_hArmor] == true)	{	Bar_energyBar = Bar_Create(harmorBar);	}
+		else							{	Bar_energyBar = Bar_Create(energyBar);	};
 	};
 
 	Bar_SetMax (Bar_energyBar, sattribute[ATR_ENERGY_MAX]);
@@ -106,10 +104,8 @@ func void Loop_expBar()
 {
 	if (!Hlp_IsValidHandle(Bar_expBar))
 	{
-		if (talkingWithGirl == true)
-		{	Bar_expBar = Bar_Create(loveBar);	}
-		else
-		{	Bar_expBar = Bar_Create(expBar);	};
+		if (talkingWithGirl == true)	{	Bar_expBar = Bar_Create(loveBar);	}
+		else							{	Bar_expBar = Bar_Create(expBar);	};
 	};
 
 	if (talkingWithGirl == true)
@@ -145,45 +141,65 @@ func void ShowBarText()
 		BarText_healthBar = ConcatStrings(BarText_healthBar, IntToString(sattribute[ATR_FoodTime]));
 		BarText_healthBar = ConcatStrings(BarText_healthBar, ")");
 	};
+	
 	if (Hlp_IsValidHandle(BarTextPrint_healthBar))
-	{	Print_DeleteText(BarTextPrint_healthBar);	};
+	{
+		Print_DeleteText(BarTextPrint_healthBar);
+	};
 	if (!Hlp_IsValidHandle(BarTextPrint_healthBar))
-	{	BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Health, -1);	};
+	{
+		BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Health, -1);
+	};
 	
 	/// BAR MP
 	BarText_manaBar = ConcatStrings(IntToString(hero.attribute[ATR_MANA]), " / ");
 	BarText_manaBar = ConcatStrings(BarText_manaBar, IntToString(hero.attribute[ATR_MANA_MAX]));
+	
 	if (Hlp_IsValidHandle(BarTextPrint_manaBar))
-	{	Print_DeleteText(BarTextPrint_manaBar);	};
+	{
+		Print_DeleteText(BarTextPrint_manaBar);
+	};
 	if (!Hlp_IsValidHandle(BarTextPrint_manaBar))
-	{	BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Mana, -1);	};
+	{
+		BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Mana, -1);
+	};
 	
 	/// BAR ENE
 	BarText_energyBar = ConcatStrings(IntToString(sattribute[ATR_ENERGY]), " / ");
 	BarText_energyBar = ConcatStrings(BarText_energyBar, IntToString(sattribute[ATR_ENERGY_MAX]));
+	
 	if (Hlp_IsValidHandle(BarTextPrint_energyBar))
-	{	Print_DeleteText(BarTextPrint_energyBar);	};
+	{
+		Print_DeleteText(BarTextPrint_energyBar);
+	};
 	if (!Hlp_IsValidHandle(BarTextPrint_energyBar))
-	{	BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Energy, -1);	};
+	{
+		BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Energy, -1);
+	};
 	
 	/// BAR EXP & BAR LOVE
 	if (Hlp_IsValidHandle(BarTextPrint_expBar))
-	{	Print_DeleteText(BarTextPrint_expBar);	};
+	{
+		Print_DeleteText(BarTextPrint_expBar);
+	};
+	
 	if (talkingWithGirl == true)
 	{
 		BarText_expBar = ConcatStrings(IntToString(gLevelA*100/MAX_LOVE), "%");
-
+		
 		if (!Hlp_IsValidHandle(BarTextPrint_expBar))
-		{	BarTextPrint_expBar = Print_ExtPxl (200, Print_Screen[PS_Y]-30, BarText_expBar, FONT_ScreenSmall, COL_Love, -1);	};
+		{
+			BarTextPrint_expBar = Print_ExtPxl (200, Print_Screen[PS_Y]-30, BarText_expBar, FONT_ScreenSmall, COL_Love, -1);
+		};
 	}
 	else
 	{
-		if (hero.level < MAX_LEVEL)
-		{	BarText_expBar = ConcatStrings(IntToString(hero.exp_next-hero.exp), " do nast.");	}
-		else
-		{	BarText_expBar = "max. poziom";	};
-
+		if (hero.level < MAX_LEVEL)	{	BarText_expBar = ConcatStrings(IntToString(hero.exp_next-hero.exp), " do nast.");	}
+		else						{	BarText_expBar = "max. poziom";	};
+		
 		if (!Hlp_IsValidHandle(BarTextPrint_expBar))
-		{	BarTextPrint_expBar = Print_ExtPxl (200, Print_Screen[PS_Y]-30, BarText_expBar, FONT_ScreenSmall, COL_Exp, -1);		};
+		{
+			BarTextPrint_expBar = Print_ExtPxl (200, Print_Screen[PS_Y]-30, BarText_expBar, FONT_ScreenSmall, COL_Exp, -1);
+		};
 	};
 };

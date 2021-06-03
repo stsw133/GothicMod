@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	SPL_SummonSkeleton
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_SummonSkeleton
+///******************************************************************************************
 
 const int SPL_Cost_SummonSkeleton		=	60;
 
-//******************************************************************************************
-INSTANCE Spell_SummonSkeleton (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_SummonSkeleton (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
@@ -13,7 +13,7 @@ INSTANCE Spell_SummonSkeleton (C_Spell_Proto)
 
 func int Spell_Logic_SummonSkeleton (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonSkeleton/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonSkeleton/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_SummonSkeleton)
 	{
 		return SPL_SENDCAST;
@@ -26,16 +26,14 @@ func int Spell_Logic_SummonSkeleton (var int manaInvested)
 
 func void Spell_Cast_SummonSkeleton()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SummonSkeleton/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_SummonSkeleton/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_SummonSkeleton/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_SummonSkeleton)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_SummonSkeleton;
 	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
 	
 	if (Npc_IsPlayer(self))
 	{
@@ -45,4 +43,6 @@ func void Spell_Cast_SummonSkeleton()
 	{
 		Wld_SpawnNpcRange (self, Skeleton, 1, 500);
 	};
+	
+	self.aivar[AIV_SelectSpell] += 1;
 };

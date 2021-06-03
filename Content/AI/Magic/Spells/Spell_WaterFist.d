@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_WaterFist
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_WaterFist
+///******************************************************************************************
 
 const int SPL_Cost_WaterFist			=	25;
 const int SPL_Damage_WaterFist			=	125;
 
-//******************************************************************************************
-INSTANCE Spell_WaterFist (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_WaterFist (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_WaterFist;
@@ -15,7 +15,7 @@ INSTANCE Spell_WaterFist (C_Spell_Proto)
 
 func int Spell_Logic_WaterFist (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_WaterFist (var int manaInvested)
 
 func void Spell_Cast_WaterFist()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_WaterFist/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_WaterFist/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_WaterFist;
 	};

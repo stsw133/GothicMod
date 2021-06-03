@@ -7,12 +7,12 @@ INSTANCE DIA_Dexter_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Dexter_EXIT_Condition;
 	information = DIA_Dexter_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Dexter_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Dexter_EXIT_Info()
 {
@@ -27,14 +27,14 @@ INSTANCE DIA_Dexter_Hallo   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dexter_Hallo_Condition;
 	information = DIA_Dexter_Hallo_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Dexter_Hallo_Condition()
 {	
-	if (Knows_Dexter == true)
+	if (Knows_Dexter == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dexter_Hallo_Info()
@@ -42,7 +42,7 @@ FUNC VOID DIA_Dexter_Hallo_Info()
 	AI_Output (self, other, "DIA_Dexter_Hallo_09_00");//Proszê, proszê, kogo tutaj mamy. Nasz wielki liberator we w³asnej osobie! Co tu robisz, bohaterze?
 	AI_Output (other, self, "DIA_Dexter_Hallo_15_01");//Potrzebujê paru odpowiedzi.
 	
-	if (Ranger_SCKnowsDexter == true)//ADDON
+	if (Ranger_SCKnowsDexter == TRUE)//ADDON
 	{
 		//ADDON>
 		AI_Output (self, other, "DIA_Addon_Dexter_Hallo_09_00");//Nie s¹dzi³em, ¿e pojawisz siê tu z w³asnej woli.
@@ -51,7 +51,7 @@ FUNC VOID DIA_Dexter_Hallo_Info()
 		AI_Output (self, other, "DIA_Addon_Dexter_Hallo_09_03");//Jest na nich TWOJA gêba. Tak... jesteœ poszukiwanym cz³owiekiem. Nie wiedzia³eœ o tym?
 		//ADDON<
 	}
-	else // (Bdt13_Dexter_verraten == true) //Gothic2
+	else // (Bdt13_Dexter_verraten == TRUE) //Gothic2
 	{
 		AI_Output (other, self, "DIA_Dexter_Hallo_15_02");//Ktoœ rozprowadza ulotki z moj¹ podobizn¹. I ktoœ mi powiedzia³, ¿e to w³aœnie ty.
 		AI_Output (self, other, "DIA_Dexter_Hallo_09_03");//Ktoœ tu gada za du¿o.
@@ -70,7 +70,7 @@ FUNC VOID DIA_Dexter_Hallo_Info()
 		
 		
 		MIS_Steckbriefe = LOG_SUCCESS;
-		B_GivePlayerXP(XP_Ambient);
+		B_GivePlayerXP (XP_Ambient);
 	};
 	AI_Output (other, self, "DIA_Addon_Dexter_Hallo_15_05");//Czego ode mnie chcesz?
 	AI_Output (self, other, "DIA_Addon_Dexter_Hallo_09_06");//Ja? Nic. Ale mój szef strasznie chcia³by ciê za³atwiæ.
@@ -86,14 +86,14 @@ INSTANCE DIA_Dexter_Glaube   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Dexter_Glaube_Condition;
 	information = DIA_Dexter_Glaube_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie wierzê nawet w jedno twoje s³owo.";
 };
 FUNC INT DIA_Dexter_Glaube_Condition()
 {	
-	if (Knows_Dexter == true)
+	if (Knows_Dexter == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dexter_Glaube_Info()
@@ -118,9 +118,9 @@ instance DIA_Addon_Dexter_Patrick		(C_INFO)
 func int DIA_Addon_Dexter_Patrick_Condition ()
 {
 	if (MIS_Addon_Cord_Look4Patrick == LOG_RUNNING)
-	&& (Knows_Dexter == true)
+	&& (Knows_Dexter == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -136,8 +136,8 @@ func void DIA_Addon_Dexter_Patrick_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_MissingPeople, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_MissingPeople,"Dexter twierdzi, ¿e nie zna najemnika o imieniu Patrick."); 
 
-	Dexter_KnowsPatrick = true;
-	B_GivePlayerXP(XP_BONUS_1);
+	Dexter_KnowsPatrick = TRUE;
+	B_GivePlayerXP (XP_Addon_Dexter_KnowsPatrick);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Greg
@@ -154,10 +154,10 @@ instance DIA_Addon_Dexter_Greg		(C_INFO)
 
 func int DIA_Addon_Dexter_Greg_Condition ()
 {
-	if (SC_KnowsGregsSearchsDexter == true)
-	&& (Knows_Dexter == true)
+	if (SC_KnowsGregsSearchsDexter == TRUE)
+	&& (Knows_Dexter == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -166,7 +166,7 @@ func void DIA_Addon_Dexter_Greg_Info ()
 	AI_Output	(other, self, "DIA_Addon_Dexter_Greg_15_00"); //Jest taki goœæ z zas³oniêtym okiem. Szuka ciebie!
 	AI_Output	(self, other, "DIA_Addon_Dexter_Greg_09_01"); //Wszyscy mnie ostatnio szukaj¹... Mam siê tym przejmowaæ?
 	AI_Output	(self, other, "DIA_Addon_Dexter_Greg_09_02"); //Jak czegoœ ode mnie chce, to niech tu przyjdzie.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info missingPeople
@@ -183,10 +183,10 @@ instance DIA_Addon_Dexter_missingPeople		(C_INFO)
 
 func int DIA_Addon_Dexter_missingPeople_Condition ()
 {
-	if (SC_KnowsDexterAsKidnapper == true)
-	&& (Knows_Dexter == true)
+	if (SC_KnowsDexterAsKidnapper == TRUE)
+	&& (Knows_Dexter == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Dexter_missingPeople_Info ()
@@ -252,10 +252,10 @@ instance DIA_Addon_Dexter_Boss		(C_INFO)
 
 func int DIA_Addon_Dexter_Boss_Condition ()
 {
-	if (Knows_Dexter == true)
-	&& (SC_KnowsDexterAsKidnapper == false)
+	if (Knows_Dexter == TRUE)
+	&& (SC_KnowsDexterAsKidnapper == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -275,14 +275,14 @@ INSTANCE DIA_Dexter_Vor   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Dexter_Vor_Condition;
 	information = DIA_Dexter_Vor_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co zamierzasz zrobiæ?";
 };
 FUNC INT DIA_Dexter_Vor_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Dexter_missingPeople))
 		{
-			return true;
+			return TRUE;
 		};
 };
 FUNC VOID DIA_Dexter_Vor_Info()
@@ -293,7 +293,7 @@ FUNC VOID DIA_Dexter_Vor_Info()
 	AI_Output (self, other, "DIA_Addon_Dexter_Vor_09_01");//Jasne. Mo¿e spróbujesz mnie zmusiæ?
 	AI_Output (self, other, "DIA_Addon_Dexter_Vor_09_02");//Lepiej ju¿ sobie idŸ!
 	AI_Output (self, other, "DIA_Dexter_Vor_09_02");//Jeœli jeszcze raz ciê tutaj zobaczê, zabijê bez wahania.
-	Dexter_NoMoreSmallTalk = true;
+	Dexter_NoMoreSmallTalk = TRUE;
 	AI_StopProcessInfos (self);
 };
 // ************************************************************
@@ -305,21 +305,21 @@ INSTANCE DIA_Dexter_Kill   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dexter_Kill_Condition;
 	information = DIA_Dexter_Kill_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Dexter_Kill_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& ((Dexter_NoMoreSmallTalk == true)
-	|| (Knows_Dexter == false)) 
+	&& ((Dexter_NoMoreSmallTalk == TRUE)
+	|| (Knows_Dexter == FALSE)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dexter_Kill_Info()
 {
-	if (Knows_Dexter == true)
+	if (Knows_Dexter == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Dexter_Add_09_02"); //Skoro tego chcesz...
 	}
@@ -341,7 +341,7 @@ func void DIA_Dexter_Kill_ENDE ()
 	var C_ITEM itm;
 	itm = Npc_GetEquippedArmor(Greg_NW);
 
-	if (Hlp_IsItem(itm, ITAR_PIR_H) == false)
+	if (Hlp_IsItem(itm, ITAR_PIR_H) == FALSE)
 	{
 		AI_EquipArmor	(Greg_NW, ITAR_PIR_H);	
 	};
@@ -357,14 +357,14 @@ INSTANCE DIA_Dexter_Kopf (C_INFO)
 	nr          = 5;
 	condition   = DIA_Dexter_Kopf_Condition;
 	information = DIA_Dexter_Kopf_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Chcesz mojej g³owy? To spróbuj j¹ zdobyæ!";
 };
 FUNC INT DIA_Dexter_Kopf_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Dexter_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dexter_Kopf_Info()

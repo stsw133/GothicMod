@@ -1,41 +1,40 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_807_Bullco (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Bullko";
 	guild 								=	GIL_SLD;
 	id 									=	807;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ----- Aivars -----
+	// ----- AI vars -----
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Theft|IGNORE_Sheepkiller;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal09, 0, ITAR_SLD_M);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_807;
 };
 
-FUNC VOID Rtn_Start_807()
+func void Rtn_Start_807()
 {
 	TA_Sit_Chair	(08,00,22,00, "NW_BIGFARM_KITCHEN_SYLVIO");
     TA_Sit_Chair	(22,00,08,00, "NW_BIGFARM_KITCHEN_SYLVIO");
@@ -57,7 +56,7 @@ func void Rtn_Pee_807()
 	TA_Pee			(20,00,20,15, "NW_BIGFARM_TREE");
 	TA_Sit_Chair	(20,15,08,00, "NW_BIGFARM_KITCHEN_SYLVIO");
 };
-FUNC VOID Rtn_Tot_807()
+func void Rtn_Tot_807()
 {
 	TA_Sleep	(08,00,23,00, "TOT");
     TA_Sleep	(23,00,08,00, "TOT");

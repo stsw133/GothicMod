@@ -13,7 +13,7 @@ func void B_AssessDamage()
 		return;
 	};
 	
-	B_BeliarsWeaponSpecialDamage (other, self);
+	B_WeaponSpecialDamage (other, self);
 	
 	/// MASTERIES & SPECIAL WEAPONS & SELF FIGHT TEACH
 	if (Npc_IsPlayer(other))
@@ -31,7 +31,7 @@ func void B_AssessDamage()
 		self.aivar[AIV_ArenaFight] = AF_AFTER_PLUS_DAMAGE;
 	};
 	
-	if (self.aivar[AIV_EnemyOverride] == true)
+	if (self.aivar[AIV_EnemyOverride])
 	{
 		var C_NPC RAV; RAV = Hlp_GetNpc(BDT_1090_Addon_Raven);
 		
@@ -44,7 +44,6 @@ func void B_AssessDamage()
 	/// ------ Wenn NSC im ZS_Attack ------
 	if (Npc_IsInState(self,ZS_Attack))
 	{
-		/// EXIT IF...
 		/// ------ Freunde ignorieren Treffer vom Spieler im Kampf ------
 		if (Npc_IsPlayer(other))
 		&& (self.npctype == NPCTYPE_FRIEND)
@@ -54,8 +53,10 @@ func void B_AssessDamage()
 		
 		/// ------ Partymember ignorieren Treffer vom Spieler im Kampf ------
 		if (Npc_IsPlayer(other))
-		&& (self.aivar[AIV_PARTYMEMBER] == true)
-		{	return;	};
+		&& (self.aivar[AIV_PARTYMEMBER])
+		{
+			return;
+		};
 		
 		/// ------ Wenn ich von jemand ANDEREM getroffen werde ------
 		if (Hlp_GetInstanceID(other) != self.aivar[AIV_LASTTARGET])
@@ -74,7 +75,6 @@ func void B_AssessDamage()
 		return;
 	};
 	
-	/// EXIT IF...
 	/// ------ NSC ist ENEMY -----
 	if (B_AssessEnemy())
 	{
@@ -90,16 +90,16 @@ func void B_AssessDamage()
 	};
 	
 	/// ------ Spieler hat mit NK-Waffe angegriffen ------
-	if (Npc_IsInFightMode(other,FMODE_MELEE))
-	|| (Npc_IsInFightMode(other,FMODE_FIST))
-	|| (Npc_IsInFightMode(other,FMODE_NONE))
+	if (Npc_IsInFightMode(other, FMODE_MELEE))
+	|| (Npc_IsInFightMode(other, FMODE_FIST))
+	|| (Npc_IsInFightMode(other, FMODE_NONE))
 	{
 		/// ------ NSC ist freundlich ODER npctype_friend ------
-		if (Npc_GetAttitude(self,other) == ATT_FRIENDLY)
+		if (Npc_GetAttitude(self, other) == ATT_FRIENDLY)
 		|| ((self.npctype == NPCTYPE_FRIEND) && Npc_IsPlayer(other))
 		{
 			/// ------- nur wenn ich zum ERSTEN Mal geschlagen werde -------
-			if (!Npc_IsInState(self,ZS_ReactToDamage))
+			if (!Npc_IsInState(self, ZS_ReactToDamage))
 			{
 				Npc_ClearAIQueue	(self);
 				B_ClearPerceptions	(self);							///schaltet alle Wahrnehmungen ab - so kann keine später priorisierte diesen Stateaufruf verhindern (s. z.B. AssessFightSound + AssessDamage)
@@ -110,7 +110,6 @@ func void B_AssessDamage()
 		};
 	};	
 	
-	/// FUNC
 	B_Attack (self, other, AR_ReactToDamage, 0);
 	return;
 };

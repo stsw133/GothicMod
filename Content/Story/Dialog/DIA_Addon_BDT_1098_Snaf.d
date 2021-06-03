@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Snaf_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Snaf_EXIT_Condition;
 	information = DIA_Addon_Snaf_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Snaf_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Snaf_EXIT_Info()
 {
@@ -28,15 +28,15 @@ INSTANCE DIA_Addon_Snaf_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Snaf_Hi_Condition;
 	information = DIA_Addon_Snaf_Hi_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Addon_Snaf_Hi_Condition()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_Hi_Info()
@@ -52,12 +52,12 @@ INSTANCE DIA_Addon_Snaf_Cook (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Snaf_Cook_Condition;
 	information = DIA_Addon_Snaf_Cook_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Masz coú dobrego do jedzenia?";
 };
 FUNC INT DIA_Addon_Snaf_Cook_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Snaf_Cook_Info()
 {
@@ -98,6 +98,7 @@ FUNC VOID DIA_Addon_Snaf_Cook_YES()
 	AI_Output (other, self, "DIA_Addon_Snaf_Cook_HAMMER_YES_15_00");//Dobrze, zrobiÍ to.
 	AI_Output (self, other, "DIA_Addon_Snaf_Cook_HAMMER_YES_01_01");//Super. Oto przepis.
 	
+	B_GiveInvItems (self, other,ItWr_Addon_Lou_Rezept,1);
 	MIS_SnafHammer = LOG_RUNNING;
 	Info_ClearChoices (DIA_Addon_Snaf_Cook);
 	
@@ -116,15 +117,15 @@ INSTANCE DIA_Addon_Snaf_Booze   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Snaf_Booze_Condition;
 	information = DIA_Addon_Snaf_Booze_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Przygotowa≥em bimber.";
 };
 FUNC INT DIA_Addon_Snaf_Booze_Condition()
 {	
-	if (Npc_HasItems (other, ItFo_Hooch) >= 1)
+	if (Npc_HasItems (other, ItFo_Addon_LousHammer) >= 1)
 	&& (MIS_SnafHammer == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_Booze_Info()
@@ -132,15 +133,15 @@ FUNC VOID DIA_Addon_Snaf_Booze_Info()
 	AI_Output (other, self, "DIA_Addon_Snaf_Booze_15_00");//Przygotowa≥em bimber.
 
 	//PATCH N.B.
-	B_GiveInvItems (other, self, ItFo_Hooch, 1);
+	B_GiveInvItems (other, self, ItFo_Addon_LousHammer, 1);
 
 	AI_Output (self, other, "DIA_Addon_Snaf_Booze_01_01");//Doskonale, zaraz to dokoÒczÍ.
 	AI_Output (self, other, "DIA_Addon_Snaf_Booze_01_02");//Teraz moøesz trochÍ skosztowaÊ. To doda ci si≥.
 	AI_Output (self, other, "DIA_Addon_Snaf_Booze_01_03");//Poczekaj, jeúli bÍdziesz potrzebowaÊ pomocy, wszystkie informacje masz u mnie za darmo.
 	Snaf_Tip_Kosten = 0;
-	B_GiveInvItems (self, other, ItFo_TastyStew, 1);
+	B_GiveInvItems (self, other, ItFo_Addon_FireStew,1);
 	MIS_SnafHammer = LOG_SUCCESS;
-	B_GivePlayerXP (XP_BONUS_1);
+	B_GivePlayerXP (XP_Addon_Loushammer);
 };
 
 //---------------------------------------------------------------------
@@ -152,14 +153,14 @@ INSTANCE DIA_Addon_Snaf_Attentat   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Snaf_Attentat_Condition;
 	information = DIA_Addon_Snaf_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co wiesz na temat prÛby zabÛjstwa?";
 };
 FUNC INT DIA_Addon_Snaf_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_Attentat_Info()
@@ -205,16 +206,16 @@ instance DIA_Addon_Snaf_Abrechnung   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Snaf_Abrechnung_Condition;
 	information = DIA_Addon_Snaf_Abrechnung_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "No to jakie mam szanse na znalezienie tego cz≥owieka?";
 };
 FUNC INT DIA_Addon_Snaf_Abrechnung_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Snaf_Attentat)
 	&& (MIS_JUDAS == LOG_RUNNING)
-	&& (Huno_zuSnaf == false)
+	&& (Huno_zuSnaf == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_Abrechnung_Info()
@@ -228,10 +229,10 @@ FUNC VOID DIA_Addon_Snaf_Abrechnung_Info()
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_02"); //èle to widzÍ. NiektÛrzy zauwaøyli, øe krÍcisz siÍ ko≥o Senyana.
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_03"); //Musisz zrezygnowaÊ ze swoich kontaktÛw. Inaczej nie znajdziesz osoby, ktÛra zleci≥a zabÛjstwo.
 		
-		if (Snaf_Tip_Senyan == false)
+		if (Snaf_Tip_Senyan == FALSE)
 		{
 			B_LogEntry (Topic_Addon_Senyan,"Powinienem zakoÒczyÊ kontakty z Senyanem. Jednak lepiej bezpoúrednio go nie atakowaÊ. Wczeúniej powinienem z nim jeszcze raz porozmawiaÊ.");
-			Snaf_Tip_Senyan = true;
+			Snaf_Tip_Senyan = TRUE;
 		};
 	}
 	else if (Npc_IsDead(Senyan))
@@ -239,7 +240,7 @@ FUNC VOID DIA_Addon_Snaf_Abrechnung_Info()
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_04"); //Musisz za≥atwiÊ jednego z ludzi Estebana. Cz≥owiek, ktÛrego szukasz, uwierzy, øe jesteú po jego stronie.
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_05"); //Ale tak ≥atwo nie ujawni swojej toøsamoúci. Musisz wymyúliÊ coú wiÍcej.
 	}
-	else if (Finn_Petzt == true)
+	else if (Finn_Petzt == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_06"); //Od czasu rozmowy z tobπ Finn wyglπda na bardzo podekscytowanego.
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_07"); //A kaødy wie, øe trzyma siÍ blisko Estebana.
@@ -247,7 +248,7 @@ FUNC VOID DIA_Addon_Snaf_Abrechnung_Info()
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_09"); //Cz≥owiek, ktÛrego szukasz, bÍdzie bardzo zadowolony...
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_10"); //Ale istnieje ryzyko, øe pobiegnie do Estebana ñ ale sam o tym przecieø wiesz.
 	}
-	if (Finn_TellAll == true)
+	if (Finn_TellAll == TRUE)
 	{
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_11"); //Podobno powiedzia≥eú Finnowi, øe chÍtnie pracowa≥byú dla Estebana.
 		AI_Output (self, other, "DIA_Addon_Snaf_Abrechnung_01_12"); //Nie wiem, co planujesz, ale cz≥owiek, ktÛrego szukasz, bÍdzie teraz bardzo ostroøny.
@@ -258,14 +259,14 @@ FUNC VOID DIA_Addon_Snaf_Abrechnung_Info()
 	};
 	
 	//------------------- Abschied ----------------------------------
-	if (Snaf_Rechnung == false)
+	if (Snaf_Rechnung == FALSE)
 	{
-		if (Snaf_Einmal == false)
+		if (Snaf_Einmal == FALSE)
 		{
 			AI_Output (other, self, "DIA_Addon_Snaf_Abschied_15_14"); //DziÍkujÍ.
 			AI_Output (self, other, "DIA_Addon_Snaf_Abschied_01_15"); //Hej, nie powiedzia≥em ci nic, czego byú wczeúniej nie wiedzia≥, jasne?
 			
-			Snaf_Einmal = true;
+			Snaf_Einmal = TRUE;
 		}
 		else
 		{
@@ -284,14 +285,14 @@ instance DIA_Addon_Snaf_HOCH (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Snaf_HOCH_Condition;
 	information = DIA_Addon_Snaf_HOCH_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Huno mÛwi, øe mam kogoú tu spotkaÊ.";
 };
 FUNC INT DIA_Addon_Snaf_HOCH_Condition()
 {	
-	if (Huno_zuSnaf == true)
+	if (Huno_zuSnaf == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_HOCH_Info()
@@ -299,12 +300,12 @@ FUNC VOID DIA_Addon_Snaf_HOCH_Info()
 	AI_Output (other, self, "DIA_Addon_Snaf_HOCH_15_00"); //Przysy≥a mnie Huno.
 	AI_Output (self, other, "DIA_Addon_Snaf_HOCH_01_01"); //Wyglπda na to, øe znalaz≥eú swojego cz≥owieka.
 	AI_Output (self, other, "DIA_Addon_Snaf_HOCH_01_02"); //Idü na gÛrÍ. Ktoú tam na ciebie czeka.
-	
+		
 	AI_StopProcessInfos (self);
 	AI_Teleport (Fisk,"BL_INN_UP_06");
 	B_StartotherRoutine (Fisk,"MEETING");
 
-	B_GivePlayerXP (XP_BONUS_5);
+	B_GivePlayerXP (XP_Addon_Auftraggeber);
 };
 
 //---------------------------------------------------------------------
@@ -318,7 +319,7 @@ instance DIA_Addon_Snaf_People (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Snaf_People_Condition;
 	information = DIA_Addon_Snaf_People_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Co ludzie sπdzπ o Estebanie?";
 };
 FUNC INT DIA_Addon_Snaf_People_Condition()
@@ -326,7 +327,7 @@ FUNC INT DIA_Addon_Snaf_People_Condition()
 	if (Npc_KnowsInfo (other,DIA_Addon_Snaf_Attentat))
 	&& (!Npc_IsDead (Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_People_Info()
@@ -334,7 +335,7 @@ FUNC VOID DIA_Addon_Snaf_People_Info()
 	
 	AI_Output (other, self, "DIA_Addon_Snaf_People_15_00"); //Co ludzie sπdzπ o Estebanie?
 	AI_Output (self, other, "DIA_Addon_Snaf_People_01_01"); //O kogo ci dok≥adnie chodzi?
-	if (Kosten_Einmal == false)
+	if (Kosten_Einmal == FALSE)
 	&& (MIS_SnafHammer != LOG_SUCCESS)
 	{
 		AI_Output (self, other, "DIA_Addon_Snaf_People_01_02"); //Kaøda informacja kosztuje.
@@ -342,7 +343,7 @@ FUNC VOID DIA_Addon_Snaf_People_Info()
 		AI_Output (self, other, "DIA_Addon_Snaf_People_01_04"); //10 sztuk z≥ota.
 		
 		Snaf_Tip_Kosten = 10;
-		Kosten_Einmal = true;
+		Kosten_Einmal = TRUE;
 	};
 	
 	Info_ClearChoices (DIA_Addon_Snaf_People);
@@ -452,7 +453,7 @@ instance DIA_Addon_Snaf_Himself (C_INFO)
 	nr          = 7;
 	condition   = DIA_Addon_Snaf_Himself_Condition;
 	information = DIA_Addon_Snaf_Himself_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A jakie jest TWOJE zdanie o Estebanie?";
 };
 FUNC INT DIA_Addon_Snaf_Himself_Condition()
@@ -460,7 +461,7 @@ FUNC INT DIA_Addon_Snaf_Himself_Condition()
 	if (Npc_KnowsInfo (other,DIA_Addon_Snaf_Attentat))
 	&& (!Npc_IsDead (Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_Himself_Info()
@@ -480,14 +481,14 @@ instance DIA_Addon_Snaf_PERM (C_INFO)
 	nr          = 8;
 	condition   = DIA_Addon_Snaf_PERM_Condition;
 	information = DIA_Addon_Snaf_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak idπ interesy?";
 };
 FUNC INT DIA_Addon_Snaf_PERM_Condition()
 {	
 	if (Npc_IsDead (Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Snaf_PERM_Info()
@@ -495,3 +496,5 @@ FUNC VOID DIA_Addon_Snaf_PERM_Info()
 	AI_Output (other, self, "DIA_Addon_Snaf_PERM_15_00"); //Jak idπ interesy?
 	AI_Output (self, other, "DIA_Addon_Snaf_PERM_01_01"); //CÛø. åmierÊ Estebana jest dla paru osÛb okazjπ do úwiÍtowania...
 };
+
+

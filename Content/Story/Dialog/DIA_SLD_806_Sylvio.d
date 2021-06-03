@@ -7,13 +7,13 @@ INSTANCE DIA_Sylvio_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Sylvio_EXIT_Condition;
 	information = DIA_Sylvio_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Sylvio_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Sylvio_EXIT_Info()
@@ -30,13 +30,13 @@ instance DIA_Sylvio_Hallo		(C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Sylvio_Hallo_Condition;
 	information	= DIA_Sylvio_Hallo_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Co s³ychaæ?";
 };
 
 func int DIA_Sylvio_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Sylvio_Hallo_Info ()
@@ -44,7 +44,7 @@ func void DIA_Sylvio_Hallo_Info ()
 	AI_Output (other, self, "DIA_Sylvio_Hallo_15_00"); //Jak leci?
 	AI_Output (self, other, "DIA_Sylvio_Hallo_09_01"); //Czy pozwoli³em ci siê do mnie odezwaæ?
 	
-	Sylvio_angequatscht += 1;
+	Sylvio_angequatscht = Sylvio_angequatscht + 1;
 	AI_StopProcessInfos (self);
 };
 
@@ -57,7 +57,7 @@ instance DIA_Sylvio_Thekla		(C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Sylvio_Thekla_Condition;
 	information	= DIA_Sylvio_Thekla_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Thekla ma z tob¹ pewien problem.";
 };
 
@@ -65,7 +65,7 @@ func int DIA_Sylvio_Thekla_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Thekla_Problem))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -76,7 +76,7 @@ func void DIA_Sylvio_Thekla_Info ()
 	AI_Output (other, self, "DIA_Sylvio_Thekla_15_02"); //Dobrze wiesz, czemu...
 	AI_Output (self, other, "DIA_Sylvio_Thekla_09_03"); //Mo¿e chcesz o tym pomówiæ z moim przyjacielem, Bullkiem?
 
-	Sylvio_angequatscht += 1;
+	Sylvio_angequatscht = Sylvio_angequatscht + 1;
 	AI_StopProcessInfos (self);
 };
 
@@ -89,13 +89,13 @@ instance DIA_Sylvio_Gossip		(C_INFO)
 	nr		 	= 3;
 	condition	= DIA_Sylvio_Gossip_Condition;
 	information	= DIA_Sylvio_Gossip_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Wiele osób o tobie mówi...";
 };
 
 func int DIA_Sylvio_Gossip_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Sylvio_Gossip_Info ()
@@ -103,7 +103,7 @@ func void DIA_Sylvio_Gossip_Info ()
 	AI_Output (other, self, "DIA_Sylvio_Gossip_15_00"); //Wiele osób o tobie mówi...
 	AI_Output (self, other, "DIA_Sylvio_Gossip_09_01"); //Wiele osób gada za du¿o.
 	
-	Sylvio_angequatscht += 1;
+	Sylvio_angequatscht = Sylvio_angequatscht + 1;
 	AI_StopProcessInfos (self);
 };
 	
@@ -116,13 +116,13 @@ instance DIA_Sylvio_AboutLee (C_INFO)
 	nr		 	= 4;
 	condition	= DIA_Sylvio_AboutLee_Condition;
 	information	= DIA_Sylvio_AboutLee_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Co myœlisz o Lee?";
 };
 
 func int DIA_Sylvio_AboutLee_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Sylvio_AboutLee_Info ()
@@ -131,7 +131,7 @@ func void DIA_Sylvio_AboutLee_Info ()
 	AI_Output (self, other, "DIA_Sylvio_AboutLee_09_01"); //Och, to œwietny wojownik. Nie œmia³bym siê z nim mierzyæ.
 	AI_Output (self, other, "DIA_Sylvio_AboutLee_09_02"); //Chyba, ma siê rozumieæ, ¿e nie by³oby wyjœcia.
 	
-	Sylvio_angequatscht += 1;
+	Sylvio_angequatscht = Sylvio_angequatscht + 1;
 	AI_StopProcessInfos (self);
 };
 	
@@ -145,23 +145,23 @@ instance DIA_Sylvio_MenDefeated (C_INFO)
 	nr		 	= 5;
 	condition	= DIA_Sylvio_MenDefeated_Condition;
 	information	= DIA_Sylvio_MenDefeated_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };
 
 func int DIA_Sylvio_MenDefeated_Condition ()
 {
 	var int victories;
 	victories = 0;
-	if (Rod.aivar[AIV_DefeatedByPlayer] != DBP_NONE)		{	victories += 1;	};
-	if (Sentenza.aivar[AIV_DefeatedByPlayer] != DBP_NONE)	{	victories += 1;	};
-	if (Fester.aivar[AIV_DefeatedByPlayer] != DBP_NONE)		{	victories += 1;	};
-	if (Raoul.aivar[AIV_DefeatedByPlayer] != DBP_NONE)		{	victories += 1;	};
-	if (Bullco.aivar[AIV_DefeatedByPlayer] != DBP_NONE)		{	victories += 1;	};
-	if (MIS_Jarvis_SldKO != false)
+	if (Rod.aivar[AIV_DefeatedByPlayer] == TRUE)		{	victories = victories + 1;	};
+	if (Sentenza.aivar[AIV_DefeatedByPlayer] == TRUE)	{	victories = victories + 1;	};
+	if (Fester.aivar[AIV_DefeatedByPlayer] == TRUE)		{	victories = victories + 1;	};
+	if (Raoul.aivar[AIV_DefeatedByPlayer] == TRUE)		{	victories = victories + 1;	};
+	if (Bullco.aivar[AIV_DefeatedByPlayer] == TRUE)		{	victories = victories + 1;	};
+	if (MIS_Jarvis_SldKO != FALSE)
 	&& (victories >= 2) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -171,7 +171,7 @@ func void DIA_Sylvio_MenDefeated_Info ()
 	AI_Output (self, other, "DIA_Sylvio_MenDefeated_09_01"); //A z tego, co wiem, jesteœ jednym z pupilków Lee.
 	AI_Output (self, other, "DIA_Sylvio_MenDefeated_09_02"); //Ostrzegam ciê! Wkrótce wiele siê tu zmieni, a wtedy... Wtedy sobie pogadamy!
 	
-	Sylvio_MenDefeated = true;
+	Sylvio_MenDefeated = TRUE;
 	
 	AI_StopProcessInfos (self);
 };
@@ -185,7 +185,7 @@ instance DIA_Sylvio_Asshole (C_INFO)
 	nr		 	= 2;
 	condition	= DIA_Sylvio_Asshole_Condition;
 	information	= DIA_Sylvio_Asshole_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Hej, palancie...";
 };
 
@@ -193,7 +193,7 @@ func int DIA_Sylvio_Asshole_Condition ()
 {
 	if (Sylvio_angequatscht >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -203,7 +203,7 @@ func void DIA_Sylvio_Asshole_Info ()
 	AI_Output (self, other, "DIA_Sylvio_Asshole_09_01"); //Nie chcesz mnie chyba sprowokowaæ?
 	AI_Output (self, other, "DIA_Sylvio_Asshole_09_02"); //OdejdŸ, nêdzna glisto, poszukaj sobie kamienia i schowaj siê pod nim.
 	
-	Sylvio_angequatscht += 1;
+	Sylvio_angequatscht = Sylvio_angequatscht + 1;
 	
 	AI_StopProcessInfos (self);
 };

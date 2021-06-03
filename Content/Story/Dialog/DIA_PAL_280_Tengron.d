@@ -7,13 +7,13 @@ INSTANCE DIA_Tengron_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Tengron_EXIT_Condition;
 	information = DIA_Tengron_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Tengron_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Tengron_EXIT_Info()
@@ -29,8 +29,8 @@ instance DIA_Tengron_First		(C_INFO)
 	nr		 	 = 	2;
 	condition	 = 	DIA_Tengron_First_Condition;
 	information	 = 	DIA_Tengron_First_Info;
-	permanent 	 =  false;
-	important 	 =  true;
+	permanent 	 =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Tengron_First_Condition ()
 {	
@@ -38,7 +38,7 @@ func int DIA_Tengron_First_Condition ()
 	&& (MIS_ScoutMine != LOG_RUNNING)
 	&& (MIS_ScoutMine != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Tengron_First_Info ()
@@ -56,8 +56,8 @@ instance DIA_Tengron_HALLO		(C_INFO)
 	nr		 	 = 	2;
 	condition	 = 	DIA_Tengron_HALLO_Condition;
 	information	 = 	DIA_Tengron_HALLO_Info;
-	permanent 	 =  false;
-	important 	 =  true;
+	permanent 	 =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Tengron_HALLO_Condition ()
 {	
@@ -65,14 +65,14 @@ func int DIA_Tengron_HALLO_Condition ()
 	&& (MIS_ScoutMine == LOG_RUNNING)
 	|| (MIS_ScoutMine == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Tengron_HALLO_Info ()
 {
 	AI_Output (self, other, "DIA_Tengron_HALLO_07_00"); //Niech Innos bêdzie z tob¹! Przynosisz wieœci z zamku? Czy w koñcu przybêd¹ posi³ki?
 	
-	if (Npc_IsDead(Fajeth) == false)
+	if (Npc_IsDead(Fajeth) == FALSE)
 	{
 		AI_Output (other, self, "DIA_Tengron_HALLO_15_01"); //Nie przychodzê z wieœciami, przychodzê po wieœci.
 		AI_Output (self, other, "DIA_Tengron_HALLO_07_02"); //W takim razie porozmawiaj z Fajethem. On tutaj dowodzi. Jeœli bêdziesz mia³ jakieœ wieœci z zamku, natychmiast przyjdŸ z nimi do mnie.
@@ -87,7 +87,7 @@ instance DIA_Tengron_News		(C_INFO)
 	nr		 	 = 	7;
 	condition	 = 	DIA_Tengron_News_Condition;
 	information	 = 	DIA_Tengron_News_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Ja w sprawie informacji...";
 };
 
@@ -95,7 +95,7 @@ func int DIA_Tengron_News_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Tengron_HALLO))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -141,14 +141,14 @@ instance DIA_Tengron_Situation		(C_INFO)
 	nr		 	 = 	70;
 	condition	 = 	DIA_Tengron_Situation_Condition;
 	information	 = 	DIA_Tengron_Situation_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak wygl¹da wasza sytuacja?";
 };
 func int DIA_Tengron_Situation_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Tengron_HALLO))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Tengron_Situation_Info ()
@@ -166,7 +166,7 @@ instance DIA_Tengron_HELP		(C_INFO)
 	nr		 	 = 	9;
 	condition	 = 	DIA_Tengron_HELP_Condition;
 	information	 = 	DIA_Tengron_HELP_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Przyda³aby mi siê twoja pomoc..."; 
 };
 func int DIA_Tengron_HELP_Condition ()
@@ -174,7 +174,7 @@ func int DIA_Tengron_HELP_Condition ()
 	if	(MIS_Fajeth_Kill_Snapper == LOG_RUNNING)	
 	&&  Npc_KnowsInfo(other, DIA_Tengron_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Tengron_HELP_Info ()

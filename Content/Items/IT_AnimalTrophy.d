@@ -77,7 +77,7 @@ instance ItAt_WargFur (ItemPR_AnimalTrophy)
 {
 	name 			=	"Skóra warga";
 	
-	value 			=	100;
+	value 			=	50;
 	visual 			=	"ItAt_WargFur.3DS";
 	
 	description		= 	name;
@@ -87,7 +87,7 @@ instance ItAt_TigerFur (ItemPR_AnimalTrophy)
 {
 	name 			=	"Skóra tygrysa";
 	
-	value 			=	150;
+	value 			=	100;
 	visual 			=	"ItAt_TigerFur.3DS";
 	
 	description		= 	name;
@@ -125,19 +125,29 @@ instance ItAt_TrollBlackFur (ItemPR_AnimalTrophy)
 	COUNT[5]		=	value;
 };
 ///******************************************************************************************
-///	Misc
-///******************************************************************************************
-instance ItAt_Skull (ItemPR_AnimalTrophy)
+instance itat_LurkerSkin (ItemPR_AnimalTrophy)
 {
-	name 			=	"Czaszka";
+	name 			=	"Skóra topielca";
 	
-	value 			=	5;
-	visual 			=	"DT_SKELETON_V01_HEAD.3ds";
-	material 		=	MAT_STONE;
+	value 			=	20;
+	visual 			=	"ItAt_LurkerSkin.3DS";
+	
+	description		= 	"Skóra topielca";
+	COUNT[5]		=	value;
+};
+instance ItAt_SharkSkin (ItemPR_AnimalTrophy)
+{
+	name 			=	"Skóra b³otnego wê¿a";
+	
+	value 			=	100;
+	visual 			=	"ItAt_SharkSkin.3DS";
 	
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+///******************************************************************************************
+/// Claws & Teeth & Wings
+///******************************************************************************************
 instance ItAt_Claw (ItemPR_AnimalTrophy)
 {
 	name 			=	"Pazury";
@@ -158,42 +168,34 @@ instance ItAt_Teeth (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
-instance ItAt_Sting (ItemPR_AnimalTrophy)
+instance ItAt_SharkTeeth (ItemPR_AnimalTrophy)
 {
-	name 			=	"¯¹d³o";
-	
-	value 			=	10;
-	visual 			=	"ItAt_Sting.3DS";
-	
-	description		= 	name;
-	COUNT[5]		=	value;
-};
-instance ItAt_WaranTongue (ItemPR_AnimalTrophy)
-{
-	name 			=	"Jêzyk jaszczura";
-	
-	value 			=	20;
-	visual 			=	"ItAt_WaranFireTongue.3DS";
-	
-	description		= 	name;
-	COUNT[5]		=	value;
-};
-instance ItAt_LurkerClaw (ItemPR_AnimalTrophy)
-{
-	name 			=	"Szpony topielca";
-	
-	value 			=	20;
-	visual 			=	"ItAt_LurkerClaw.3DS";
-	
-	description		= 	name;
-	COUNT[5]		=	value;
-};
-instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
-{
-	name 			=	"Smocza krew";
+	name 			=	"K³y b³otnego wê¿a";
 	
 	value 			=	100;
-	visual 			=	"ItAt_DragonBlood.3DS";
+	visual 			=	"ItAt_SharkTeeth.3DS";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
+{
+	name 			=	"Kie³ trolla";
+	
+	value 			=	100;
+	visual 			=	"ItAt_TrollTooth.3DS";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+	
+	INV_ZBIAS		=	INVCAM_ENTF_RING_STANDARD;
+};
+instance ItAt_Wing (ItemPR_AnimalTrophy)
+{
+	name 			=	"Skrzyd³a";
+	
+	value 			=	5;
+	visual 			=	"ItAt_Wing.3DS";
 	
 	description		= 	name;
 	COUNT[5]		=	value;
@@ -302,6 +304,19 @@ instance ItAt_DragonHeart (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+instance ItAt_UndeadDragonSoulStone (ItemPR_AnimalTrophy)
+{
+	name 			=	"Kamieñ duszy smoka-o¿ywieñca";
+	
+	value 			=	500;
+	visual 			=	"ItAt_UndeadDragonSoulStone.3DS";
+	material 		=	MAT_STONE;
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+	
+	INV_ZBIAS		=	INVCAM_ENTF_MISC_STANDARD;
+};
 ///******************************************************************************************
 ///	Eggs
 ///******************************************************************************************
@@ -321,6 +336,71 @@ instance ItAt_DragonEgg_MIS	(ItemPR_AnimalTrophy)
 	
 	value 			=	400;
 	visual 			=	"ItAt_DragonEgg.3ds";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+///******************************************************************************************
+///	Misc
+///******************************************************************************************
+instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
+{
+	name 			=	"Koœæ szkieletu";
+	
+	value 			=	1;
+	visual 			=	"ItAt_SkeletonBone.3DS";
+	material 		=	MAT_STONE;
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_Skull (ItemPR_AnimalTrophy)
+{
+	name 			=	"Czaszka";
+	
+	value 			=	5;
+	visual 			=	"DT_SKELETON_V01_HEAD.3ds";
+	material 		=	MAT_STONE;
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_Sting (ItemPR_AnimalTrophy)
+{
+	name 			=	"¯¹d³o";
+	
+	value 			=	10;
+	visual 			=	"ItAt_Sting.3DS";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_LurkerClaw (ItemPR_AnimalTrophy)
+{
+	name 			=	"Szpony topielca";
+	
+	value 			=	20;
+	visual 			=	"ItAt_LurkerClaw.3DS";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_WaranFireTongue (ItemPR_AnimalTrophy)
+{
+	name 			=	"Jêzyk ognistego jaszczura";
+	
+	value 			=	100;
+	visual 			=	"ItAt_WaranFireTongue.3DS";
+	
+	description		= 	name;
+	COUNT[5]		=	value;
+};
+instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
+{
+	name 			=	"Smocza krew";
+	
+	value 			=	100;
+	visual 			=	"ItAt_DragonBlood.3DS";
 	
 	description		= 	name;
 	COUNT[5]		=	value;

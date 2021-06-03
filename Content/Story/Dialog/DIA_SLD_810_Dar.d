@@ -8,15 +8,15 @@ INSTANCE DIA_Dar_EXIT (C_INFO)
 	nr          = 999;
 	condition   = DIA_Dar_EXIT_Condition;
 	information = DIA_Dar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Dar_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -35,13 +35,13 @@ INSTANCE DIA_Dar_Hallo (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dar_Hallo_Condition;
 	information = DIA_Dar_Hallo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tam palisz?";
 };
 
 FUNC INT DIA_Dar_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Dar_Hallo_Info()
@@ -84,7 +84,7 @@ INSTANCE DIA_Dar_PERM (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dar_PERM_Condition;
 	information = DIA_Dar_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Czy poza paleniem masz jeszcze jakieœ zajêcie?";
 };
 
@@ -92,7 +92,7 @@ FUNC INT DIA_Dar_PERM_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Dar_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -100,13 +100,13 @@ FUNC VOID DIA_Dar_PERM_Info()
 {
 	AI_Output (other, self, "DIA_Dar_PERM_15_00"); //Czy poza paleniem masz jeszcze jakieœ zajêcie?
 	
-	if (Dar_LostAgainstCipher == true)
-	&& (Dar_einmal == false)
+	if (Dar_LostAgainstCipher == TRUE)
+	&& (Dar_einmal == FALSE)
 	{
 		AI_Output (self, other, "DIA_Dar_PERM_03_01"); //Tak, czasami pozwalam siê pobiæ jakimœ pal¹cym ziele œmieciom...
-		Dar_einmal = true;
+		Dar_einmal = TRUE;
 	}
-	else //DEFAULT
+		else //DEFAULT
 	{
 		AI_Output (self, other, "DIA_Dar_PERM_03_02"); //Nie w tej chwili.
 	};
@@ -122,7 +122,7 @@ INSTANCE DIA_Dar_WannaJoin (C_INFO)
 	nr          = 3;
 	condition   = DIA_Dar_WannaJoin_Condition;
 	information = DIA_Dar_WannaJoin_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Chcê siê przy³¹czyæ do najemników. Masz coœ przeciwko temu?";
 };
 
@@ -130,9 +130,9 @@ FUNC INT DIA_Dar_WannaJoin_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Dar_Hallo))
 	&& (other.guild == GIL_NONE)
-	&& (Dar_LostAgainstCipher == false)
+	&& (Dar_LostAgainstCipher == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -152,7 +152,7 @@ INSTANCE DIA_Dar_DuDieb (C_INFO)
 	nr          = 4;
 	condition   = DIA_Dar_DuDieb_Condition;
 	information = DIA_Dar_DuDieb_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Cipher powiedzia³ mi, ¿e ktoœ mu ukrad³ paczkê bagiennego ziela.";
 };
 
@@ -161,7 +161,7 @@ FUNC INT DIA_Dar_DuDieb_Condition()
 	if (Npc_KnowsInfo (other, DIA_Cipher_TradeWhat)) //von Diebstahl gehört
 	&& (MIS_Cipher_Paket == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -172,7 +172,7 @@ FUNC VOID DIA_Dar_DuDieb_Info()
 	AI_Output (other, self, "DIA_Dar_DuDieb_15_02"); //Wiesz coœ mo¿e na ten temat?
 	AI_Output (self, other, "DIA_Dar_DuDieb_03_03"); //Nie.
 	
-	Dar_Verdacht = true;
+	Dar_Verdacht = TRUE;
 };
 
 // ************************************************************
@@ -185,17 +185,17 @@ INSTANCE DIA_Dar_WoPaket (C_INFO)
 	nr          = 4;
 	condition   = DIA_Dar_WoPaket_Condition;
 	information = DIA_Dar_WoPaket_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Gdzie jest paczka?";
 };
 
 FUNC INT DIA_Dar_WoPaket_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Dar_DuDieb))
-	&& (Dar_Dieb == false)
+	&& (Dar_Dieb == FALSE)
 	&& (MIS_Cipher_Paket == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -211,7 +211,7 @@ FUNC VOID DIA_Dar_WoPaket_Info()
 		AI_Output (self, other, "DIA_Dar_WoPaket_03_04"); //Powa¿nie cz³owieku, by³em kompletnie najarany. Nie mam zielonego pojêcia, jak wygl¹da³ ten goœæ.
 		AI_Output (self, other, "DIA_Dar_WoPaket_03_05"); //Pamiêtam tylko tyle, ¿e by³o to w porcie niedaleko miejsca, gdzie buduj¹ ³odzie.
 	
-		Dar_Dieb = true;
+		Dar_Dieb = TRUE;
 		B_LogEntry (Topic_CipherPaket,"Dar przyzna³ siê do kradzie¿y paczki ziela. Sprzeda³ j¹ w dzielnicy portowej Khorinis, niedaleko stoczni.");
 	}
 	else
@@ -230,17 +230,17 @@ INSTANCE DIA_Dar_AufsMaul (C_INFO)
 	nr          = 5;
 	condition   = DIA_Dar_AufsMaul_Condition;
 	information = DIA_Dar_AufsMaul_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Wyduszê to z ciebie!";
 };
 
 FUNC INT DIA_Dar_AufsMaul_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Dar_DuDieb))
-	&& (Dar_Dieb == false)
+	&& (Dar_Dieb == FALSE)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_LOST)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -262,16 +262,16 @@ INSTANCE DIA_Dar_Kameradenschwein (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dar_Kameradenschwein_Condition;
 	information = DIA_Dar_Kameradenschwein_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 
 FUNC INT DIA_Dar_Kameradenschwein_Condition()
 {
-	if (Dar_LostAgainstCipher == true)
+	if (Dar_LostAgainstCipher == TRUE)
 	{
-		self.aivar[AIV_LastFightComment] == false; //geht NUR bei ECHTER Important-Info!
-		return true;
+		self.aivar[AIV_LastFightComment] == FALSE; //geht NUR bei ECHTER Important-Info!
+		return TRUE;
 	};
 };
 
@@ -295,7 +295,7 @@ INSTANCE DIA_Dar_Pilztabak (C_INFO)
 	nr          = 6;
 	condition   = DIA_Dar_Pilztabak_Condition;
 	information = DIA_Dar_Pilztabak_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Czy kiedykolwiek próbowa³eœ grzybowego tytoniu?";
 };
 
@@ -303,7 +303,7 @@ FUNC INT DIA_Dar_Pilztabak_Condition()
 {
 	if (Npc_HasItems (other, ItMi_MushroomTabak) > 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -326,7 +326,7 @@ FUNC VOID DIA_Dar_Pilztabak_Info()
 	AI_Output (self, other, "DIA_Dar_Pilztabak_03_08"); //Na œwiêtego Rhobara!
 	AI_PlayAni (self, "T_HEASHOOT_2_STAND");
 	AI_Output (self, other, "DIA_Dar_Pilztabak_03_09"); //Ten towar jest za mocny! Lepiej go nawet nie próbuj!
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 
@@ -348,15 +348,15 @@ INSTANCE DIA_Dar_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dar_KAP3_EXIT_Condition;
 	information	= DIA_Dar_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 }; 
                       
 FUNC INT DIA_Dar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -384,14 +384,14 @@ INSTANCE DIA_Dar_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dar_KAP4_EXIT_Condition;
 	information	= DIA_Dar_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Dar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dar_KAP4_EXIT_Info()
@@ -414,9 +414,9 @@ instance DIA_Dar_ORCRING		(C_INFO)
 
 func int DIA_Dar_ORCRING_Condition ()
 {
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -474,7 +474,7 @@ func void DIA_Dar_ORCRING_necken ()
 var int Dar_FightAgainstPaladin;
 func void DIA_Dar_ORCRING_necken_schlagen ()
 {
-	Dar_FightAgainstPaladin = true;
+	Dar_FightAgainstPaladin = TRUE;
 	AI_Output			(other, self, "DIA_Dar_ORCRING_necken_schlagen_15_00"); //Dobrze. Tylko spróbuj.
 	AI_Output			(self, other, "DIA_Dar_ORCRING_necken_schlagen_03_01"); //Och, nie mogê siê doczekaæ.
 	AI_StopProcessInfos (self);
@@ -519,15 +519,15 @@ instance DIA_Dar_FIGHTAGAINSTPALOVER		(C_INFO)
 	nr		 = 	4;
 	condition	 = 	DIA_Dar_FIGHTAGAINSTPALOVER_Condition;
 	information	 = 	DIA_Dar_FIGHTAGAINSTPALOVER_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Dar_FIGHTAGAINSTPALOVER_Condition ()
 {
-	if 	(Dar_FightAgainstPaladin == true)
+	if 	(Dar_FightAgainstPaladin == TRUE)
 	&&	((hero.guild == GIL_MIL) || (hero.guild == GIL_PAL))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -535,7 +535,7 @@ func void DIA_Dar_FIGHTAGAINSTPALOVER_Info ()
 {
 	AI_Output			(self, other, "DIA_Dar_FIGHTAGAINSTPALOVER_03_00"); //No có¿, chyba nie zyskam uznania Lee, ponownie wdaj¹c siê z tob¹ w walkê.
 	AI_Output			(self, other, "DIA_Dar_FIGHTAGAINSTPALOVER_03_01"); //Nie potrzebujê wrogów. Wiêc mo¿e po prostu zapomnijmy o tych bzdurach, co ty na to?
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	AI_StopProcessInfos (self);
 };
 
@@ -556,9 +556,9 @@ func int DIA_Dar_BRINGORCELITERING_Condition ()
 {
 	if (MIS_Dar_BringOrcEliteRing == LOG_RUNNING)
 	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG) || (hero.guild == GIL_KDF))
-	&& (Npc_HasItems (other,ItRi_OrcElite))
+	&& (Npc_HasItems (other,ItRi_OrcEliteRing))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -606,12 +606,12 @@ func void DIA_Dar_BRINGORCELITERING_geld ()
 func void DIA_Dar_BRINGORCELITERING_geld_ok ()
 {
 	AI_Output			(other, self, "DIA_Dar_BRINGORCELITERING_geld_ok_15_00"); //Umowa stoi. Oto pierœcieñ.
-	B_GiveInvItems 		(other, self, ItRi_OrcElite, 1);					
+	B_GiveInvItems 		(other, self, ItRi_OrcEliteRing, 1);					
 	AI_Output			(self, other, "DIA_Dar_BRINGORCELITERING_geld_ok_03_01"); //Dziêki. Ju¿ siê nie mogê doczekaæ, co powiedz¹ na to inni.
 
 	CreateInvItems 		(self, ItMi_Gold, 1200);									
 	B_GiveInvItems 		(self, other, ItMi_Gold, 1200);					
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP 		(XP_Dar_BringOrcEliteRing);
 
 	Info_ClearChoices	(DIA_Dar_BRINGORCELITERING);
 };
@@ -639,13 +639,14 @@ func void DIA_Dar_BRINGORCELITERING_was_am ()
 	AI_Output			(other, self, "DIA_Dar_BRINGORCELITERING_was_am_15_00"); //Daj mi amulet.
 	AI_Output			(self, other, "DIA_Dar_BRINGORCELITERING_was_am_03_01"); //Jasne. Mi³ej zabawy. A teraz poproszê pierœcieñ.
 
-	B_GiveInvItems 		(other, self, ItRi_OrcElite, 1);					
+	B_GiveInvItems 		(other, self, ItRi_OrcEliteRing, 1);					
 	CreateInvItems 		(self, ItAm_Dex_01, 1);									
 	B_GiveInvItems 		(self, other, ItAm_Dex_01, 1);					
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP 		(XP_Dar_BringOrcEliteRing);
 
 	AI_Output			(self, other, "DIA_Dar_BRINGORCELITERING_was_am_03_02"); //Interesy z tob¹ to sama przyjemnoœæ.
 	Info_ClearChoices	(DIA_Dar_BRINGORCELITERING);
+
 };
 
 
@@ -667,14 +668,14 @@ INSTANCE DIA_Dar_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dar_KAP5_EXIT_Condition;
 	information	= DIA_Dar_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Dar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dar_KAP5_EXIT_Info()
@@ -702,14 +703,14 @@ INSTANCE DIA_Dar_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dar_KAP6_EXIT_Condition;
 	information	= DIA_Dar_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Dar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Dar_KAP6_EXIT_Info()

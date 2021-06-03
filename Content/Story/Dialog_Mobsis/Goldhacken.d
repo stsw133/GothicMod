@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	MOBSI_GOLDHACKEN
-//******************************************************************************************
+///******************************************************************************************
+///	MOBSI_GOLDHACKEN
+///******************************************************************************************
 
 var int GoldMob_01_Amount; const int GoldMob_01_AmounT_MAX = 5;
 var int GoldMob_02_Amount; const int GoldMob_02_AmounT_MAX = 5;
@@ -23,8 +23,8 @@ var int GoldMob_18_Amount; const int GoldMob_18_AmounT_MAX = 17;
 var int GoldMob_19_Amount; const int GoldMob_19_AmounT_MAX = 18;
 var int GoldMob_20_Amount; const int GoldMob_20_AmounT_MAX = 19;
 
-//******************************************************************************************
-FUNC INT B_GoldMob_Bestimmung()
+///******************************************************************************************
+func int B_GoldMob_Bestimmung()
 {
 	if (Hlp_StrCmp(Npc_GetNearestWP(self),"ADW_MINE_PICK_01") && GoldMob_01_Amount_MAX > GoldMob_01_Amount)
 	{
@@ -130,7 +130,7 @@ FUNC INT B_GoldMob_Bestimmung()
 	return false;
 };
 
-FUNC VOID Goldhacken_S1()
+func void Goldhacken_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	
@@ -142,16 +142,16 @@ FUNC VOID Goldhacken_S1()
 	};
 };
 
-//******************************************************************************************
-//	Goldhacken Dialog abbrechen
-//******************************************************************************************
+///******************************************************************************************
+///	Goldhacken Dialog abbrechen
+///******************************************************************************************
 
 var int GoldCounter;
 var int Learn_by_doing;
 var int Truemmer_Count;
 
-//******************************************************************************************
-INSTANCE PC_Goldhacken_End (C_Info)
+///******************************************************************************************
+instance PC_Goldhacken_End (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -161,7 +161,7 @@ INSTANCE PC_Goldhacken_End (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-FUNC INT PC_Goldhacken_End_Condition()
+func int PC_Goldhacken_End_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
 	{	
@@ -169,16 +169,16 @@ FUNC INT PC_Goldhacken_End_Condition()
 	};
 };
 
-FUNC VOID PC_Goldhacken_End_Info()
+func void PC_Goldhacken_End_Info()
 {
 	Truemmer_Count = 0;
 	B_ENDPRODUCTIONDIALOG();
 };
 
-//******************************************************************************************
-//	Goldhacken
-//******************************************************************************************
-INSTANCE PC_Goldhacken_Addon_Hour (C_Info)
+///******************************************************************************************
+///	Goldhacken
+///******************************************************************************************
+instance PC_Goldhacken_Addon_Hour (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
@@ -188,7 +188,7 @@ INSTANCE PC_Goldhacken_Addon_Hour (C_Info)
 	description							=	"Od³up trochê."; 
 };
 
-FUNC INT PC_Goldhacken_Addon_Hour_Condition()
+func int PC_Goldhacken_Addon_Hour_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
 	{
@@ -196,7 +196,7 @@ FUNC INT PC_Goldhacken_Addon_Hour_Condition()
 	};
 };
 
-FUNC VOID PC_Goldhacken_Addon_Hour_Info()
+func void PC_Goldhacken_Addon_Hour_Info()
 {
 	Learn_by_doing += 1;
 	
@@ -219,7 +219,7 @@ FUNC VOID PC_Goldhacken_Addon_Hour_Info()
 	var int MultiNugget;
 	MultiNugget = Hlp_Random(10);
 	
-	if (B_GoldMob_Bestimmung() == true)
+	if (B_GoldMob_Bestimmung())
 	{
 		if (CurrentChance <= Hero_HackChance)
 		{
@@ -259,10 +259,10 @@ FUNC VOID PC_Goldhacken_Addon_Hour_Info()
 	};
 };
 
-//******************************************************************************************
-//	Goldhacken Trümmerschlag
-//******************************************************************************************
-INSTANCE PC_Goldhacken_Addon_TSchlag (C_Info)
+///******************************************************************************************
+///	Goldhacken Trümmerschlag
+///******************************************************************************************
+instance PC_Goldhacken_Addon_TSchlag (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	997;
@@ -272,17 +272,17 @@ INSTANCE PC_Goldhacken_Addon_TSchlag (C_Info)
 	description							=	"Mocno uderz.";
 };
 
-FUNC INT PC_Goldhacken_Addon_TSchlag_Condition()
+func int PC_Goldhacken_Addon_TSchlag_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
 	&& (Truemmer_Count >= 2)
-	&& (Knows_Truemmerschlag == true)
+	&& (Knows_Truemmerschlag)
 	{	
 		return true;
 	};
 };
 
-FUNC VOID PC_Goldhacken_Addon_TSchlag_Info()
+func void PC_Goldhacken_Addon_TSchlag_Info()
 {
 	var int TruemmerChance; TruemmerChance = Hlp_Random(100);
 	
@@ -314,10 +314,10 @@ FUNC VOID PC_Goldhacken_Addon_TSchlag_Info()
 	Truemmer_Count = 0;
 };
 
-//******************************************************************************************
-//	Goldhacken Chance
-//******************************************************************************************
-INSTANCE PC_Goldhacken_Addon_Chance (C_Info)
+///******************************************************************************************
+///	Goldhacken Chance
+///******************************************************************************************
+instance PC_Goldhacken_Addon_Chance (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	998;
@@ -327,7 +327,7 @@ INSTANCE PC_Goldhacken_Addon_Chance (C_Info)
 	description							=	"(Ocena zdolnoœci)";
 };
 
-FUNC INT PC_Goldhacken_Addon_Chance_Condition()
+func int PC_Goldhacken_Addon_Chance_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
 	{
@@ -335,7 +335,7 @@ FUNC INT PC_Goldhacken_Addon_Chance_Condition()
 	};
 };
 
-FUNC VOID PC_Goldhacken_Addon_Chance_Info()
+func void PC_Goldhacken_Addon_Chance_Info()
 {
 	var string ConcatText;
 	

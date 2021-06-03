@@ -13,6 +13,7 @@ func int C_NpcBelongsToOldCamp (var C_NPC slf)
 			return true;
 		};
 	};
+	
 	return false;
 };
 
@@ -28,6 +29,7 @@ func int C_NpcBelongsToCity (var C_NPC slf)
 			return true;
 		};
 	};
+	
 	return false;
 };
 
@@ -39,6 +41,7 @@ func int C_NpcBelongsToMonastery (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 
@@ -50,6 +53,7 @@ func int C_NpcBelongsToFarm (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 
@@ -61,5 +65,6 @@ func int C_NpcBelongsToBL (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };

@@ -97,20 +97,20 @@ INSTANCE spellFX_nHeal_ORIGIN_KEY_CAST (C_ParticleFXEmitKey)
 };
 
 ///******************************************************************************************
-instance spellFX_PalRemana (CFx_Base_Proto)
+instance spellFX_PalProtection (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_Heal_INIT";
 	emtrjmode_s 			=	"FIXED";
 	emTrjOriginNode 		=	"ZS_RIGHTHAND";
 };
 
-instance spellFX_PalRemana_KEY_CAST (C_ParticleFXEmitKey)
+instance spellFX_PalProtection_KEY_CAST (C_ParticleFXEmitKey)
 {
 	pfx_ppsisloopingChg		=	1;
 	emCreateFXID			=	"spellFX_Heal_ORIGIN";
 };
 
-instance spellFX_PalRemana_START (CFx_Base_Proto)
+instance spellFX_PalProtection_START (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_Heal_Start";
 	sfxID			  		=	"MFX_Heal_CAST";
@@ -119,22 +119,22 @@ instance spellFX_PalRemana_START (CFx_Base_Proto)
 	emTrjOriginNode 		=	"BIP01 R FOOT";
 };
 
-instance spellFX_PalRemana_ORIGIN	(CFx_Base_Proto)
+instance spellFX_PalProtection_ORIGIN	(CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_Heal_HEAVENLIGHT";
 	emTrjOriginNode 		=	"BIP01";
 	visAlpha				=	1;
-	emFXCreate_S	 		=	"spellFX_PalRemana_START";
+	emFXCreate_S	 		=	"spellFX_PalProtection_START";
 	emtrjmode_s 			=	"FIXED";
 	LightPresetname			=	"AURA";
 };
 
-INSTANCE spellFX_PalRemana_ORIGIN_KEY_INIT (C_ParticleFXEmitKey)
+INSTANCE spellFX_PalProtection_ORIGIN_KEY_INIT (C_ParticleFXEmitKey)
 {
 	lightrange 				=	0.001;
 };
 
-INSTANCE spellFX_PalRemana_ORIGIN_KEY_CAST (C_ParticleFXEmitKey)
+INSTANCE spellFX_PalProtection_ORIGIN_KEY_CAST (C_ParticleFXEmitKey)
 {
 	lightrange 				=	150;
 };

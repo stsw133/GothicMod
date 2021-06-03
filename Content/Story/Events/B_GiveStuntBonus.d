@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 func void B_GiveStuntBonus_FUNC()
 {
-	if (StuntBonus_Once == false)
+	if (!StuntBonus_Once)
 	{
 		PrintScreen	("Premia za wyczyn", -1, 45, FONT_Screen, 2);
 		B_GivePlayerXP(XP_BONUS_1);
@@ -15,5 +15,6 @@ func void B_GiveStuntBonus_FUNC()
 		StuntBonus_Once = false;
 		Snd_Play("MFX_BELIARWEAP");
 	};
+	
 	SC_MadeStunt = true;
 };

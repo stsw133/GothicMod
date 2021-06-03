@@ -8,13 +8,13 @@ INSTANCE DIA_DJG_715_Ferros_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_DJG_715_Ferros_EXIT_Condition;
 	information = DIA_DJG_715_Ferros_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_DJG_715_Ferros_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_DJG_715_Ferros_EXIT_Info()
@@ -31,13 +31,13 @@ INSTANCE DIA_DJG_715_Ferros_Hello   (C_INFO)
 	nr          = 4;
 	condition   = DIA_DJG_715_Ferros_Hello_Condition;
 	information = DIA_DJG_715_Ferros_Hello_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Sk¹d pochodzisz?";
 };
 
 FUNC INT DIA_DJG_715_Ferros_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_DJG_715_Ferros_Hello_Info()
@@ -62,7 +62,7 @@ INSTANCE DIA_DJG_715_Ferros_Friends   (C_INFO)
 	nr          = 5;
 	condition   = DIA_DJG_715_Ferros_Friends_Condition;
 	information = DIA_DJG_715_Ferros_Friends_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie jest teraz twój lud?";
 };
 
@@ -70,7 +70,7 @@ FUNC INT DIA_DJG_715_Ferros_Friends_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_DJG_715_Ferros_Hello))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -90,7 +90,7 @@ INSTANCE DIA_DJG_715_Ferros_War   (C_INFO)
 	nr          = 6;
 	condition   = DIA_DJG_715_Ferros_War_Condition;
 	information = DIA_DJG_715_Ferros_War_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co jeszcze wiesz na temat wojny?";
 };
 
@@ -98,7 +98,7 @@ FUNC INT DIA_DJG_715_Ferros_War_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_DJG_715_Ferros_Hello))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -124,13 +124,13 @@ INSTANCE DIA_DJG_715_Ferros_OldCamp   (C_INFO)
 	nr          = 7;
 	condition   = DIA_DJG_715_Ferros_OldCamp_Condition;
 	information = DIA_DJG_715_Ferros_OldCamp_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co porabiasz w zamku?";
 };
 
 FUNC INT DIA_DJG_715_Ferros_OldCamp_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_DJG_715_Ferros_OldCamp_Info()
@@ -187,7 +187,7 @@ INSTANCE DIA_DJG_715_Ferros_FerrosAnySword   (C_INFO)
 	nr          = 6;
 	condition   = DIA_DJG_715_Ferros_FerrosAnySword_Condition;
 	information = DIA_DJG_715_Ferros_FerrosAnySword_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mo¿e mia³bym dla ciebie jakiœ inny miecz.";
 };
 
@@ -197,7 +197,7 @@ FUNC INT DIA_DJG_715_Ferros_FerrosAnySword_Condition()
 	&&	(	(Npc_HasItems (other,ItMW_1H_Special_01) >= 1)
 	|| 		(Npc_HasItems (other,ItMW_1H_Special_02) >= 1)))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -278,7 +278,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Silverblade_Yes ()
 
 	Info_ClearChoices (DIA_DJG_715_Ferros_FerrosAnySword);
 	MIS_FerrosSword = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_FerrosSword);
 };
 
 FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Silverblade_No ()
@@ -296,7 +296,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Oreblade_Yes ()
 
 	Info_ClearChoices (DIA_DJG_715_Ferros_FerrosAnySword);
 	MIS_FerrosSword = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_FerrosSword);
 };
 
 FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Oreblade_No ()
@@ -315,7 +315,7 @@ INSTANCE DIA_DJG_715_Ferros_FerrosHisSword   (C_INFO)
 	nr          = 6;
 	condition   = DIA_DJG_715_Ferros_FerrosHisSword_Condition;
 	information = DIA_DJG_715_Ferros_FerrosHisSword_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Znalaz³em twój miecz.";
 };
 
@@ -324,7 +324,7 @@ FUNC INT DIA_DJG_715_Ferros_FerrosHisSword_Condition()
 	IF 	(	(MIS_FerrosSword == LOG_RUNNING) 
 	&&	(Npc_HasItems (other,ItMW_1H_FerrosSword_Mis) >= 1))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -334,7 +334,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosHisSword_Info()
 	B_GiveInvItems (other,self,ItMw_1h_FerrosSword_Mis,1);
 	B_Ferros_FerrosAnySword_Yes2 ();
 	MIS_FerrosSword = LOG_SUCCESS;	
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_FerrosSword);
 };
 
 //*******************************************
@@ -347,7 +347,7 @@ INSTANCE DIA_Ferros_Teach(C_INFO)
 	nr			= 1;
 	condition	= DIA_Ferros_Teach_Condition;
 	information	= DIA_Ferros_Teach_Info;
-	permanent	= false;
+	permanent	= FALSE;	//TRUE
 	description = "Poka¿ mi, jak mogê udoskonaliæ swoje umiejêtnoœci.";
 };                       
 
@@ -355,19 +355,63 @@ FUNC INT DIA_Ferros_Teach_Condition()
 {
 	if (MIS_FerrosSword == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
 FUNC VOID DIA_Ferros_Teach_Info()
 {	
 	AI_Output (other,self ,"DIA_Ferros_Teach_15_00"); //Poka¿ mi, jak mogê udoskonaliæ swoje umiejêtnoœci.
+
+	if (MIS_OCGateOpen == TRUE)
+	{
 	AI_Output (self ,other,"DIA_Ferros_Teach_01_01"); //Po tych atakach orków mam dosyæ. Szczêœcie, ¿e w ogóle jeszcze ¿yjê.
-	B_RaiseAttribute (other, ATR_STRENGTH, 1);
+	}
+	else
+	{
 	AI_Output (self ,other,"DIA_Ferros_Teach_01_02"); //Dobry wojownik musi umieæ przekazaæ broni czêœæ swojej energii.
-	B_RaiseAttribute (other, ATR_DEXTERITY, 1);
+	/*
+	Info_ClearChoices (DIA_Ferros_Teach);
+	Info_AddChoice		(DIA_Ferros_Teach, DIALOG_BACK, DIA_Ferros_Teach_Back);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Ferros_Teach_STR_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Ferros_Teach_STR_5);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Ferros_Teach_DEX_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Ferros_Teach_DEX_5);
+	*/
+	B_RaiseAttribute(other, ATR_STRENGTH, 2);
+	};
+
+};
+/*
+FUNC VOID DIA_Ferros_Teach_Back ()
+{
+	Info_ClearChoices (DIA_Ferros_Teach);
 };
 
+FUNC VOID DIA_Ferros_Teach_STR_1 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Ferros_Teach_STR_1);
+};
+
+FUNC VOID DIA_Ferros_Teach_STR_5 ()
+{
+	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Ferros_Teach_STR_5);
+};
+
+FUNC VOID DIA_Ferros_Teach_DEX_1 ()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Ferros_Teach_DEX_1);
+};
+
+FUNC VOID DIA_Ferros_Teach_DEX_5 ()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Ferros_Teach_DEX_5);
+};
+*/
 //*********************************************************************
 //	AllDragonsDead 
 //*********************************************************************
@@ -377,15 +421,16 @@ INSTANCE DIA_Ferros_AllDragonsDead   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Ferros_AllDragonsDead_Condition;
 	information = DIA_Ferros_AllDragonsDead_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Wszystkie smoki nie ¿yj¹.";
+				
 };
 
 FUNC INT DIA_Ferros_AllDragonsDead_Condition()
 {
-	if (MIS_AllDragonsDead == true)
+	if (MIS_AllDragonsDead == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 

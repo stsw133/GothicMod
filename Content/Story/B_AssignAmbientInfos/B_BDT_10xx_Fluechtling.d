@@ -22,12 +22,12 @@ INSTANCE DIA_BDT_1031_Fluechtling_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1031_Fluechtling_EXIT_Condition;
 	information = DIA_BDT_1031_Fluechtling_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1031_Fluechtling_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1031_Fluechtling_EXIT_Info()
 {
@@ -43,22 +43,22 @@ instance DIA_BDT_1031_Fluechtling_Tip1		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_BDT_1031_Fluechtling_Tip1_Condition;
 	information	 = 	DIA_BDT_1031_Fluechtling_Tip1_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 func int DIA_BDT_1031_Fluechtling_Tip1_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1031_Fluechtling_Tip1_Info ()
 {
 	AI_Output			(self, other, "DIA_BDT_1031_Fluechtling_Tip1_07_00"); //Trzymaj siê ode mnie z daleka, chyba ¿e chcesz wyl¹dowaæ w wiêzieniu.
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_AmbientKap3);
 	
-	if (SCFoundMorgahard == false)
+	if (SCFoundMorgahard == FALSE)
 	{
 		Info_ClearChoices	(DIA_BDT_1031_Fluechtling_Tip1);
 		Info_AddChoice	(DIA_BDT_1031_Fluechtling_Tip1, "Nie bój siê, nie chcê ciê wydaæ.", DIA_BDT_1031_Fluechtling_Tip1_frei );
@@ -112,15 +112,15 @@ instance DIA_BDT_1031_Fluechtling_PERM		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_BDT_1031_Fluechtling_PERM_Condition;
 	information	 = 	DIA_BDT_1031_Fluechtling_PERM_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 func int DIA_BDT_1031_Fluechtling_PERM_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1031_Fluechtling_PERM_Info ()
@@ -138,12 +138,12 @@ INSTANCE DIA_BDT_1032_Fluechtling_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1032_Fluechtling_EXIT_Condition;
 	information = DIA_BDT_1032_Fluechtling_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1032_Fluechtling_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1032_Fluechtling_EXIT_Info()
 {
@@ -158,15 +158,15 @@ instance DIA_BDT_1032_Fluechtling_PERM		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_BDT_1032_Fluechtling_PERM_Condition;
 	information	 = 	DIA_BDT_1032_Fluechtling_PERM_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 func int DIA_BDT_1032_Fluechtling_PERM_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1032_Fluechtling_PERM_Info ()
@@ -184,12 +184,12 @@ INSTANCE DIA_BDT_1033_Fluechtling_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1033_Fluechtling_EXIT_Condition;
 	information = DIA_BDT_1033_Fluechtling_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1033_Fluechtling_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1033_Fluechtling_EXIT_Info()
 {
@@ -205,22 +205,22 @@ instance DIA_BDT_1033_Fluechtling_Tip2		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_BDT_1033_Fluechtling_Tip2_Condition;
 	information	 = 	DIA_BDT_1033_Fluechtling_Tip2_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 func int DIA_BDT_1033_Fluechtling_Tip2_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1033_Fluechtling_Tip2_Info ()
 {
 	AI_Output			(self, other, "DIA_BDT_1033_Fluechtling_Tip2_07_00"); //Czego ode mnie chcesz?
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_AmbientKap3);
 	
-	if (SCFoundMorgahard == false)
+	if (SCFoundMorgahard == FALSE)
 	{
 		Info_ClearChoices	(DIA_BDT_1033_Fluechtling_Tip2);
 		Info_AddChoice	(DIA_BDT_1033_Fluechtling_Tip2, "Uspokój siê. Chcê tylko porozmawiaæ.", DIA_BDT_1033_Fluechtling_Tip2_frei );
@@ -266,15 +266,15 @@ instance DIA_BDT_1033_Fluechtling_PERM		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_BDT_1033_Fluechtling_PERM_Condition;
 	information	 = 	DIA_BDT_1033_Fluechtling_PERM_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 func int DIA_BDT_1033_Fluechtling_PERM_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1033_Fluechtling_PERM_Info ()
@@ -292,12 +292,12 @@ INSTANCE DIA_BDT_1034_Fluechtling_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1034_Fluechtling_EXIT_Condition;
 	information = DIA_BDT_1034_Fluechtling_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1034_Fluechtling_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1034_Fluechtling_EXIT_Info()
 {
@@ -312,15 +312,15 @@ instance DIA_BDT_1034_Fluechtling_PERM		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_BDT_1034_Fluechtling_PERM_Condition;
 	information	 = 	DIA_BDT_1034_Fluechtling_PERM_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 func int DIA_BDT_1034_Fluechtling_PERM_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1034_Fluechtling_PERM_Info ()
@@ -338,12 +338,12 @@ INSTANCE DIA_BDT_1035_Fluechtling_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_BDT_1035_Fluechtling_EXIT_Condition;
 	information = DIA_BDT_1035_Fluechtling_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_BDT_1035_Fluechtling_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_BDT_1035_Fluechtling_EXIT_Info()
 {
@@ -358,15 +358,15 @@ instance DIA_BDT_1035_Fluechtling_PERM		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_BDT_1035_Fluechtling_PERM_Condition;
 	information	 = 	DIA_BDT_1035_Fluechtling_PERM_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 func int DIA_BDT_1035_Fluechtling_PERM_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_BDT_1035_Fluechtling_PERM_Info ()

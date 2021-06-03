@@ -7,13 +7,13 @@ INSTANCE DIA_Mil_309_Stadtwache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Mil_309_Stadtwache_EXIT_Condition;
 	information = DIA_Mil_309_Stadtwache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Mil_309_Stadtwache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Mil_309_Stadtwache_EXIT_Info()
@@ -29,12 +29,12 @@ instance DIA_Mil_309_Stadtwache_Hallo		(C_INFO)
 	nr 		 	 =  2;
 	condition	 = 	DIA_Mil_309_Stadtwache_Hallo_Condition;
 	information	 = 	DIA_Mil_309_Stadtwache_Hallo_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Co s³ychaæ?";
 };
 func int DIA_Mil_309_Stadtwache_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Mil_309_Stadtwache_Hallo_Info ()
 {
@@ -45,7 +45,7 @@ func void DIA_Mil_309_Stadtwache_Hallo_Info ()
 	{
 		AI_Output (self, other, "DIA_Mil_309_Stadtwache_Hallo_06_01"); //Ogólnie spokój. Mamy na wszystko baczenie.
 	}
-	else if (Stadtwache_310.aivar[AIV_Guardpassage_Status] != GP_PassGate)
+	else if (Stadtwache_310.aivar[AIV_GuardPassage_Status] != GP_PassGate)
 	&& (MIl_309_News < 1)
 	{
 		AI_Output (self, other, "DIA_Mil_309_Stadtwache_Hallo_06_02"); //Pos³uchaj mnie uwa¿nie: nie mo¿emy ciê wpuœciæ do miasta.
@@ -54,13 +54,13 @@ func void DIA_Mil_309_Stadtwache_Hallo_Info ()
 		
 		MIl_309_News = 1;
 	}
-	else if  (Stadtwache_310.aivar[AIV_Guardpassage_Status] != GP_PassGate)
+	else if  (Stadtwache_310.aivar[AIV_GuardPassage_Status] != GP_PassGate)
 	&&		 (MIl_309_News == 1)
 	{	
 		AI_Output (self, other, "DIA_Mil_309_Stadtwache_Hallo_06_05"); //Wpe³znij lepiej pod bezpieczny kamieñ, robaku.
 	};
 	
-	if  (Stadtwache_310.aivar[AIV_Guardpassage_Status] == GP_PassGate)
+	if  (Stadtwache_310.aivar[AIV_GuardPassage_Status] == GP_PassGate)
 	&&  (MIl_309_News < 2)
 	{
 		AI_Output (self, other, "DIA_Mil_309_Stadtwache_Hallo_06_06"); //Pos³uchaj - masz zezwolenie na wejœcie do miasta, nie znaczy to jednak, ¿e mo¿esz robiæ, co ci siê ¿ywnie spodoba.
@@ -68,11 +68,14 @@ func void DIA_Mil_309_Stadtwache_Hallo_Info ()
 		
 		MIl_309_News = 2;
 	}
-	else if (Stadtwache_310.aivar[AIV_Guardpassage_Status] == GP_PassGate)
+	else if (Stadtwache_310.aivar[AIV_GuardPassage_Status] == GP_PassGate)
 	&& 		(MIl_309_News == 2)
 	{
 		AI_Output (self, other, "DIA_Mil_309_Stadtwache_Hallo_06_08"); //No dalej - idŸ ju¿!
 	};
 	
+	
 	AI_StopProcessInfos (self);
 };
+
+

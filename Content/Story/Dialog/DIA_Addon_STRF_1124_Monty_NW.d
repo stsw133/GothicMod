@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Monty_NW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Monty_NW_EXIT_Condition;
 	information = DIA_Addon_Monty_NW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Monty_NW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Monty_NW_EXIT_Info()
 {
@@ -27,12 +27,12 @@ INSTANCE DIA_Addon_Monty_NW_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Monty_NW_Hi_Condition;
 	information = DIA_Addon_Monty_NW_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Z powrotem do pracy?";
 };
 FUNC INT DIA_Addon_Monty_NW_Hi_Condition()
 {		
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Monty_NW_Hi_Info()
 {

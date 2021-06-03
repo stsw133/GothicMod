@@ -7,13 +7,13 @@ INSTANCE DIA_Addon_Cronos_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Cronos_EXIT_Condition;
 	information = DIA_Addon_Cronos_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Addon_Cronos_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Cronos_EXIT_Info()
@@ -36,7 +36,7 @@ instance DIA_Addon_Cronos_Hallo		(C_INFO)
 
 func int DIA_Addon_Cronos_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Cronos_Hallo_Info ()
@@ -64,7 +64,7 @@ func int DIA_Addon_Cronos_WasMachstdu_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Cronos_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -93,7 +93,7 @@ func int DIA_Addon_Cronos_Waechter_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Cronos_WasMachstdu))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -115,8 +115,8 @@ instance DIA_Addon_Cronos_NW_Trade		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Cronos_NW_Trade_Condition;
 	information	 = 	DIA_Addon_Cronos_NW_Trade_Info;
-	Trade 		 = 	true;
-	permanent	 = 	true;
+	Trade 		 = 	TRUE;
+	permanent	 = 	TRUE;
 	description	 = 	"Mo¿esz mi sprzedaæ trochê sprzêtu?";
 };
 
@@ -124,7 +124,7 @@ func int DIA_Addon_Cronos_NW_Trade_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Cronos_WasMachstdu))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -135,11 +135,11 @@ func void DIA_Addon_Cronos_NW_Trade_Info ()
 	B_GiveTradeInv (self);
 	AI_Output	(other, self, "DIA_Addon_Cronos_NW_Trade_15_00"); //Mo¿esz mi sprzedaæ trochê sprzêtu?
 
-	if (DIA_Addon_Cronos_NW_Trade_OneTime==false)
+	if (DIA_Addon_Cronos_NW_Trade_OneTime==FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Cronos_NW_Trade_04_01"); //Czemu nie? Jeœli dobrze pamiêtam, ostatnim razem tak¿e handlowaliœmy.
 		
-		DIA_Addon_Cronos_NW_Trade_OneTime = true;
+		DIA_Addon_Cronos_NW_Trade_OneTime = TRUE;
 	};
 
 	AI_Output	(self, other, "DIA_Addon_Cronos_NW_Trade_04_02"); //Powiedz mi, czego potrzebujesz.

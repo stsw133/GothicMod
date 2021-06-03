@@ -7,12 +7,12 @@ INSTANCE DIA_PAL_298_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_PAL_298_EXIT_Condition;
 	information = DIA_PAL_298_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_PAL_298_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_PAL_298_EXIT_Info()
 {
@@ -27,14 +27,14 @@ instance DIA_PAL_298_Pass		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_PAL_298_Pass_Condition;
 	information	 = 	DIA_PAL_298_Pass_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Dok¹d prowadzi ta œcie¿ka?";
 };
 func int DIA_PAL_298_Pass_Condition ()
 {	
-	if (Kapitel == 7) 
+	if (Kapitel == 1) 
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_298_Pass_Info ()
@@ -53,14 +53,14 @@ instance DIA_PAL_298_TRESPASS		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_PAL_298_TRESPASS_Condition;
 	information	 = 	DIA_PAL_298_TRESPASS_Info;
-	permanent	 = 	false;
-	important	 =  true;
+	permanent	 = 	FALSE;
+	important	 =  TRUE;
 };
 func int DIA_PAL_298_TRESPASS_Condition ()
 {	
 	if (MIS_OLDWORLD == LOG_RUNNING) 
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_298_TRESPASS_Info ()
@@ -78,15 +78,15 @@ instance DIA_PAL_298_Perm1		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_PAL_298_Perm1_Condition;
 	information	 = 	DIA_PAL_298_Perm1_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Wiêc jeœli pójdê, to na w³asne ryzyko?";
 };
 func int DIA_PAL_298_Perm1_Condition ()
 {	
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& Npc_KnowsInfo (other, DIA_PAL_298_Pass)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_298_Perm1_Info ()
@@ -103,14 +103,14 @@ instance DIA_PAL_298_Perm2		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_PAL_298_Perm2_Condition;
 	information	 = 	DIA_PAL_298_Perm2_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak wygl¹da sytuacja?";
 };
 func int DIA_PAL_298_Perm2_Condition ()
 {	
-	if (Kapitel >= 8)
+	if  (Kapitel >= 2)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_PAL_298_Perm2_Info ()
@@ -118,3 +118,5 @@ func void DIA_PAL_298_Perm2_Info ()
 	AI_Output (other, self, "DIA_PAL_298_Perm2_15_00");//Jak wygl¹da sytuacja?
 	AI_Output (self, other, "DIA_PAL_298_Perm2_09_01");//Wszystko jakby siê uspokoi³o. Sytuacja jest pod nasz¹ kontrol¹.
 };
+
+

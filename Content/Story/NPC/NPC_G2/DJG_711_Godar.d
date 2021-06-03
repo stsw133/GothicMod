@@ -1,42 +1,41 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DJG_711_Godar (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Godar";
 	guild 								=	GIL_DJG;
 	id 									=	711;
 	voice 								=	13;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal21, 0, ITAR_DJG_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_PreStart_711;
 };
 
-FUNC VOID Rtn_PreStart_711()
+func void Rtn_PreStart_711()
 {
 	TA_Smalltalk	(08,00,23,00, "OW_PATH_1_5_3A");
     TA_Smalltalk	(23,00,08,00, "OW_PATH_1_5_3A");
 };
-FUNC VOID Rtn_Start_711()
+func void Rtn_Start_711()
 {
 	TA_Roast_Scavenger	(08,00,23,00, "OW_DJG_VORPOSTEN_01");
     TA_Roast_Scavenger	(23,00,08,00, "OW_DJG_VORPOSTEN_01");

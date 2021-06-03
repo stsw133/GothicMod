@@ -1,12 +1,11 @@
 //******************************************************************************************
-INSTANCE BAU_981_Grom (Npc_Default)
+instance BAU_981_Grom (Npc_Default)
 {
 	// ------ General ------
 	name								=	"Grom";
 	guild 								=	GIL_OUT;
 	id 									=	981;
 	voice 								=	8;
-	flags       						=	0;																	
 	npctype								=	NPCTYPE_MAIN;
 
 	// ------ Attributes ------
@@ -31,7 +30,7 @@ INSTANCE BAU_981_Grom (Npc_Default)
 	daily_routine						=	Rtn_Start_981;
 };
 
-FUNC VOID Rtn_Start_981()
+func void Rtn_Start_981()
 {
 	TA_Saw		(08,00,23,00, "NW_CASTLEMINE_TROLL_04_C");
     TA_Sleep	(23,00,08,00, "NW_CASTLEMINE_TROLL_04");

@@ -11,321 +11,53 @@ prototype ItemPR_Spell (C_Item)
 instance ItRu_Light (ItemPR_Spell)
 {
 	visual			=	"ItRu_Light.3DS";
-	spell			= 	SPL_nLight;
+//	spell			= 	SPL_nLight;
 	
 	description		=	NAME_SPL_Light;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_nLight;
+//	COUNT[1]		=	SPL_Cost_nLight;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_nLight;
+//	COUNT[2]		=	SPL_Time_nLight;
 };
 instance ItRu_Heal (ItemPR_Spell)
 {
 	visual			=	"ItRu_MediumHeal.3DS";
-	spell			= 	SPL_nHeal;
+//	spell			= 	SPL_nHeal;
 	
 	description		=	NAME_SPL_Heal;
 	TEXT[1]			=	NAME_MaxManakosten;
-	COUNT[1]		=	SPL_Cost_nHeal;
+//	COUNT[1]		=	SPL_Cost_nHeal;
 	TEXT[2]			= 	NAME_Percent_HP;
-	COUNT[2]		=	SPL_Heal_nHeal;
+//	COUNT[2]		=	SPL_Heal_nHeal;
 	TEXT[3]			=	NAME_Duration;
-	COUNT[3]		=	SPL_Heal_nHeal/10;
-};
-///*******************************************************************************************
-instance ItRu_Teleport (ItemPR_Spell)
-{
-	visual			=	"ITRU_TELEPORT_3.3ds";
-	spell			= 	SPL_Teleport;
-	
-	description		=	NAME_SPL_Teleport;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Teleport;
-	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
-	TEXT[3]			=	"wybraæ kamieñ teleportacji.";
-};
-instance ItRu_Telekinesis (ItemPR_Spell)
-{
-	visual			=	"ItRu_Water15.3ds";
-	spell			= 	SPL_Telekinesis;
-	
-	description		=	NAME_SPL_Telekinesis;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Telekinesis;
-};
-instance ItRu_Transform (ItemPR_Spell)
-{
-	visual 			=	"ITRU_TELEPORT_3.3ds";
-	spell			= 	SPL_Transform;
-	
-	description		=	NAME_SPL_Transform;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Transform;
-	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
-	TEXT[3]			=	"wybraæ kamieñ transformacji.";
-};
-instance ItRu_Summon (ItemPR_Spell)
-{
-	visual 			=	"ITRU_TELEPORT_3.3ds";
-	spell			= 	SPL_Summon;
-	
-	description		=	NAME_SPL_Summon;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Summon;
-	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
-	TEXT[3]			=	"wybraæ kamieñ przyzwania.";
-};
-instance ItRu_SlowTime (ItemPR_Spell)
-{
-	visual			=	"ItRu_Shrink.3ds";
-	spell			= 	SPL_SlowTime;
-	
-	description		=	NAME_SPL_SlowTime;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_SlowTime;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_SlowTime;
-};
-///*******************************************************************************************
-instance ItRu_Sleep (ItemPR_Spell)
-{
-	visual			=	"ItRu_Sleep.3ds";
-	spell			= 	SPL_Sleep;
-	
-	description		=	NAME_SPL_Sleep;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Sleep;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Sleep;
-};
-instance ItRu_MassSleep (ItemPR_Spell)
-{
-	visual			=	"ItRu_Sleep.3ds";
-	spell			= 	SPL_MassSleep;
-	
-	description		=	NAME_SPL_MassSleep;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MassSleep;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Sleep;
-};
-instance ItRu_Fear (ItemPR_Spell)
-{
-	visual 			=	"ItRu_Fear.3ds";
-	spell			= 	SPL_Fear;
-	
-	description		=	NAME_SPL_Fear;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Fear;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Fear * 60;
-};
-instance ItRu_MassFear (ItemPR_Spell)
-{
-	visual 			=	"ItRu_Fear.3ds";
-	spell			= 	SPL_MassFear;
-	
-	description		=	NAME_SPL_MassFear;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MassFear;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Fear * 60;
-};
-instance ItRu_Rage (ItemPR_Spell)
-{
-	visual			=	"ItRu_Fear.3ds";
-	spell			= 	SPL_Rage;
-	
-	description		=	NAME_SPL_Rage;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Rage;
-};
-instance ItRu_MassRage (ItemPR_Spell)
-{
-	visual			=	"ItRu_Fear.3ds";
-	spell			= 	SPL_MassRage;
-	
-	description		=	NAME_SPL_MassRage;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MassRage;
-};
-instance ItRu_Shrink (ItemPR_Spell)
-{
-	visual			=	"ItRu_Shrink.3ds";
-	spell			= 	SPL_Shrink;
-	
-	description		=	NAME_SPL_Shrink;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Shrink;
-};
-instance ItRu_Control (ItemPR_Spell)
-{
-	visual			=	"ItRu_Fear.3ds";
-	spell			= 	SPL_Control;
-	
-	description		=	NAME_SPL_Control;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Domination;
-};
-instance ItRu_Domination (ItemPR_Spell)
-{
-	visual			=	"ItRu_Shrink.3ds";
-	spell			= 	SPL_Shrink;
-	
-	description		=	NAME_SPL_Domination;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Domination;
-};
-instance ItRu_Charm (ItemPR_Spell)
-{
-	visual			=	"ItRu_Sleep.3ds";
-	spell			= 	SPL_Charm;
-	
-	description		=	NAME_SPL_Charm;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_Charm;
-};
-///*******************************************************************************************
-///	npc spells
-///*******************************************************************************************
-instance ItRu_DeathBolt (ItemPR_Spell)
-{
-	visual 			=	"ItRu_PalRepelEvil.3ds";
-	spell			= 	SPL_DeathBolt;
-
-	description		=	NAME_SPL_DeathBolt;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_DeathBolt;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_DeathBolt;
-};
-instance ItRu_ConcussionBolt (ItemPR_Spell)
-{
-	visual 			=	"ItRu_PalRepelEvil.3ds";
-	spell			= 	SPL_ConcussionBolt;
-
-	description		=	NAME_SPL_ConcussionBolt;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_ConcussionBolt;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_ConcussionBolt;
-};
-///*******************************************************************************************
-instance ItRu_SkeletonSpell (ItemPR_Spell)
-{
-	visual 			=	"ItRu_Beliar02.3ds";
-	spell			= 	SPL_SkeletonSpell;
-
-	description		=	NAME_SPL_SkeletonSpell;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_mSpells;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_mSpells;
-};
-instance ItRu_GolemSpell (ItemPR_Spell)
-{
-	visual 			=	"ItRu_InstantFireball.3ds";
-	spell			= 	SPL_GolemSpell;
-
-	description		=	NAME_SPL_GolemSpell;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_mSpells;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_mSpells;
-};
-instance ItRu_OrcSpell (ItemPR_Spell)
-{
-	visual 			=	"ItRu_InstantFireball.3ds";
-	spell			= 	SPL_OrcSpell;
-
-	description		=	NAME_SPL_OrcSpell;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_mSpells;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_mSpells;
-};
-instance ItRu_DementorSpell (ItemPR_Spell)
-{
-	visual 			=	"ItRu_InstantFireball.3ds";
-	spell			= 	SPL_DementorSpell;
-
-	description		=	NAME_SPL_DementorSpell;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_mSpells;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_mSpells;
-};
-instance ItRu_DemasterSpell (ItemPR_Spell)
-{
-	visual 			=	"ItRu_FireStorm.3ds";
-	spell			= 	SPL_DemasterSpell;
-
-	description		=	NAME_SPL_DemasterSpell;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_mSpells;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_mSpells;
-};
-instance ItRu_DragonBall (ItemPR_Spell)
-{
-	visual 			=	"ItRu_InstantFireball.3ds";
-	spell			= 	SPL_DragonBall;
-
-	description		=	NAME_SPL_DragonBall;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_DragonBall;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_DragonBall;
-};
-///*******************************************************************************************
-instance ItRu_MasterOfDisaster (ItemPR_Spell)
-{
-	visual 			=	"ItRu_MasterOfDesaster.3ds";
-	spell			= 	SPL_MasterOfDisaster;
-
-	description		=	NAME_SPL_MasterOfDisaster;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MasterOfDisaster;
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_MasterOfDisaster;
-};
-instance ItRu_BeliarRage (ItemPR_Spell)
-{
-	visual 			=	"ItRu_Beliar02.3ds";
-	spell			= 	SPL_BeliarRage;
-
-	description		=	NAME_SPL_BeliarRage;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	20+(BeliarWeapon_LastUpgradeLvl*1);
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	100+(BeliarWeapon_LastUpgradeLvl*5);
+//	COUNT[3]		=	SPL_Heal_nHeal/10;
 };
 ///*******************************************************************************************
 ///	PAL spells
 ///*******************************************************************************************
-instance ItRu_PalLight (ItemPR_Spell)
+instance ItRu_PalBless (ItemPR_Spell)
 {
 	visual			=	"ItRu_PalLight.3DS";
-	spell			= 	SPL_PalLight;
+//	spell			= 	SPL_PalBless;
 	
-	description		=	NAME_SPL_Light;
-	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_PalLight;
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_PalLight;
+	description		=	NAME_SPL_PalBless;
+	TEXT[1]			=	NAME_MinManakosten;
+//	COUNT[1]		=	SPL_Cost_PalBless;
+	TEXT[2]			=	"Dodatkowe obra¿enia równe 10% max. many.";
+	TEXT[3]			=	"U¿yj ponownie by wy³¹czyæ.";
 };
-instance ItRu_PalRemana (ItemPR_Spell)
+instance ItRu_PalProtection (ItemPR_Spell)
 {
 	visual			=	"ItRu_PalMediumHeal.3DS";
-	spell			= 	SPL_PalRemana;
+//	spell			= 	SPL_PalProtection;
 	
-	description		=	NAME_SPL_PalRemana;
+	description		=	NAME_SPL_PalProtection;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_PalRemana;
-	TEXT[2]			= 	NAME_Percent_Mana;
-	COUNT[2]		=	SPL_Restore_PalRemana;
-	TEXT[3]			=	NAME_Duration;
-	COUNT[3]		=	SPL_Restore_PalRemana/10;
+//	COUNT[1]		=	SPL_Cost_PalProtection;
+	//TEXT[2]			= 	NAME_MinDamage;
+	//COUNT[2]		=	SPL_Damage_PalProtection;
+	//TEXT[3]			=	NAME_Duration;
+	//COUNT[3]		=	SPL_Duration_PalProtection;
 };
 instance ItRu_PalHolyBolt (ItemPR_Spell)
 {
@@ -338,16 +70,14 @@ instance ItRu_PalHolyBolt (ItemPR_Spell)
 	TEXT[2]			=	NAME_Dam_Magic;
 	COUNT[2]		=	SPL_Damage_PalHolyBolt;
 };
-instance ItRu_PalBless (ItemPR_Spell)
+instance ItRu_PalDivineGrace (ItemPR_Spell)
 {
 	visual			=	"ItRu_PalFullHeal.3DS";
-	spell			= 	SPL_PalBless;
+//	spell			= 	SPL_PalDivineGrace;
 	
-	description		=	NAME_SPL_PalBless;
-	TEXT[1]			=	NAME_ManaPerSec;
-	COUNT[1]		=	SPL_Cost_PalBless;
-	TEXT[2]			=	"Dodatkowe obra¿enia równe 10% max. many.";
-	TEXT[3]			=	"U¿yj ponownie by wy³¹czyæ.";
+	description		=	NAME_SPL_PalDivineGrace;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_PalDivineGrace;
 };
 instance ItRu_PalDestroyEvil (ItemPR_Spell)
 {
@@ -361,124 +91,406 @@ instance ItRu_PalDestroyEvil (ItemPR_Spell)
 	COUNT[2]		=	SPL_Damage_PalDestroyEvil;
 };
 ///*******************************************************************************************
+/// common spells
+///*******************************************************************************************
+instance ItRu_Teleport (ItemPR_Spell)
+{
+	visual			=	"ITRU_TELEPORT_3.3ds";
+//	spell			= 	SPL_Teleport;
+	
+	description		=	NAME_SPL_Teleport;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Teleport;
+	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
+	TEXT[3]			=	"wybraæ kamieñ teleportacji.";
+};
+instance ItRu_Telekinesis (ItemPR_Spell)
+{
+	visual			=	"ItRu_Water15.3ds";
+//	spell			= 	SPL_Telekinesis;
+	
+	description		=	NAME_SPL_Telekinesis;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Telekinesis;
+};
+instance ItRu_Transform (ItemPR_Spell)
+{
+	visual 			=	"ITRU_TELEPORT_3.3ds";
+//	spell			= 	SPL_Transform;
+	
+	description		=	NAME_SPL_Transform;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Transform;
+	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
+	TEXT[3]			=	"wybraæ kamieñ transformacji.";
+};
+instance ItRu_Summon (ItemPR_Spell)
+{
+	visual 			=	"ITRU_TELEPORT_3.3ds";
+//	spell			= 	SPL_Summon;
+	
+	description		=	NAME_SPL_Summon;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Summon;
+	TEXT[2]			=	"Aby runa dzia³a³a nale¿y";
+	TEXT[3]			=	"wybraæ kamieñ przyzwania.";
+};
+instance ItRu_SlowTime (ItemPR_Spell)
+{
+	visual			=	"ItRu_Shrink.3ds";
+//	spell			= 	SPL_SlowTime;
+	
+	description		=	NAME_SPL_SlowTime;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_SlowTime;
+	TEXT[2]			=	NAME_Duration;
+//	COUNT[2]		=	SPL_Time_SlowTime;
+};
+///*******************************************************************************************
+instance ItRu_Sleep (ItemPR_Spell)
+{
+	visual			=	"ItRu_Sleep.3ds";
+	spell			= 	SPL_Sleep;
+	mag_circle 		=	1;
+	
+	description		=	NAME_SPL_Sleep;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_Sleep;
+	TEXT[2]			=	NAME_Duration;
+	COUNT[2]		=	SPL_Time_Sleep;
+};
+instance ItRu_MassSleep (ItemPR_Spell)
+{
+	visual			=	"ItRu_Sleep.3ds";
+//	spell			= 	SPL_MassSleep;
+	mag_circle 		=	2;
+	
+	description		=	NAME_SPL_MassSleep;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_MassSleep;
+	TEXT[2]			=	NAME_Duration;
+//	COUNT[2]		=	SPL_Time_Sleep;
+};
+instance ItRu_Fear (ItemPR_Spell)
+{
+	visual 			=	"ItRu_Fear.3ds";
+	spell			= 	SPL_Fear;
+	mag_circle 		=	1;
+	
+	description		=	NAME_SPL_Fear;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_Fear;
+	TEXT[2]			=	NAME_Duration;
+	COUNT[2]		=	SPL_Time_Fear * 60;
+};
+instance ItRu_MassFear (ItemPR_Spell)
+{
+	visual 			=	"ItRu_Fear.3ds";
+//	spell			= 	SPL_MassFear;
+	mag_circle 		=	2;
+	
+	description		=	NAME_SPL_MassFear;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_MassFear;
+	TEXT[2]			=	NAME_Duration;
+	COUNT[2]		=	SPL_Time_Fear * 60;
+};
+instance ItRu_Rage (ItemPR_Spell)
+{
+	visual			=	"ItRu_Fear.3ds";
+//	spell			= 	SPL_Rage;
+	mag_circle 		=	2;
+	
+	description		=	NAME_SPL_Rage;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Rage;
+};
+instance ItRu_MassRage (ItemPR_Spell)
+{
+	visual			=	"ItRu_Fear.3ds";
+//	spell			= 	SPL_MassRage;
+	mag_circle 		=	4;
+	
+	description		=	NAME_SPL_MassRage;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_MassRage;
+};
+instance ItRu_Shrink (ItemPR_Spell)
+{
+	visual			=	"ItRu_Shrink.3ds";
+	spell			= 	SPL_Shrink;
+	mag_circle 		=	5;
+	
+	description		=	NAME_SPL_Shrink;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_Shrink;
+};
+instance ItRu_Control (ItemPR_Spell)
+{
+	visual			=	"ItRu_Fear.3ds";
+//	spell			= 	SPL_Control;
+	mag_circle 		=	3;
+	
+	description		=	NAME_SPL_Control;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Domination;
+};
+instance ItRu_Domination (ItemPR_Spell)
+{
+	visual			=	"ItRu_Shrink.3ds";
+//	spell			= 	SPL_Shrink;
+	mag_circle 		=	5;
+	
+	description		=	NAME_SPL_Domination;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_Domination;
+};
+instance ItRu_Charm (ItemPR_Spell)
+{
+	visual			=	"ItRu_Sleep.3ds";
+	spell			= 	SPL_Charm;
+	mag_circle 		=	1;
+	
+	description		=	NAME_SPL_Charm;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_Charm;
+};
+///*******************************************************************************************
+///	npc spells
+///*******************************************************************************************
+instance ItRu_DeathBolt (ItemPR_Spell)
+{
+	visual 			=	"ItRu_PalRepelEvil.3ds";
+	spell			= 	SPL_DeathBolt;
+	mag_circle 		=	1;
+	
+	description		=	NAME_SPL_DeathBolt;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_DeathBolt;
+	TEXT[2]			=	NAME_Dam_Magic;
+	COUNT[2]		=	SPL_Damage_DeathBolt;
+};
+instance ItRu_ConcussionBolt (ItemPR_Spell)
+{
+	visual 			=	"ItRu_PalRepelEvil.3ds";
+	spell			= 	SPL_ConcussionBolt;
+	mag_circle 		=	2;
+	
+	description		=	NAME_SPL_ConcussionBolt;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_ConcussionBolt;
+	TEXT[2]			=	NAME_Dam_Magic;
+	COUNT[2]		=	SPL_Damage_ConcussionBolt;
+};
+///*******************************************************************************************
+instance ItRu_SkeletonSpell (ItemPR_Spell)
+{
+	visual 			=	"ItRu_Beliar02.3ds";
+//	spell			= 	SPL_SkeletonSpell;
+	
+	description		=	NAME_SPL_SkeletonSpell;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_mSpells;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_mSpells;
+};
+instance ItRu_GolemSpell (ItemPR_Spell)
+{
+	visual 			=	"ItRu_InstantFireball.3ds";
+//	spell			= 	SPL_GolemSpell;
+	
+	description		=	NAME_SPL_GolemSpell;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_mSpells;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_mSpells;
+};
+instance ItRu_OrcSpell (ItemPR_Spell)
+{
+	visual 			=	"ItRu_InstantFireball.3ds";
+//	spell			= 	SPL_OrcSpell;
+	
+	description		=	NAME_SPL_OrcSpell;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_mSpells;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_mSpells;
+};
+instance ItRu_DementorSpell (ItemPR_Spell)
+{
+	visual 			=	"ItRu_InstantFireball.3ds";
+//	spell			= 	SPL_DementorSpell;
+	
+	description		=	NAME_SPL_DementorSpell;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_mSpells;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_mSpells;
+};
+instance ItRu_DemasterSpell (ItemPR_Spell)
+{
+	visual 			=	"ItRu_FireStorm.3ds";
+//	spell			= 	SPL_DemasterSpell;
+	
+	description		=	NAME_SPL_DemasterSpell;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_mSpells;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_mSpells;
+};
+instance ItRu_DragonBall (ItemPR_Spell)
+{
+	visual 			=	"ItRu_InstantFireball.3ds";
+//	spell			= 	SPL_DragonBall;
+	
+	description		=	NAME_SPL_DragonBall;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	SPL_Cost_DragonBall;
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	SPL_Damage_DragonBall;
+};
+///*******************************************************************************************
+instance ItRu_MasterOfDisaster (ItemPR_Spell)
+{
+	visual 			=	"ItRu_MasterOfDesaster.3ds";
+	spell			= 	SPL_MasterOfDisaster;
+	
+	description		=	NAME_SPL_MasterOfDisaster;
+	TEXT[1]			=	NAME_Manakosten;
+	COUNT[1]		=	SPL_Cost_MasterOfDisaster;
+	TEXT[2]			=	NAME_Dam_Magic;
+	COUNT[2]		=	SPL_Damage_MasterOfDisaster;
+};
+instance ItRu_BeliarRage (ItemPR_Spell)
+{
+	visual 			=	"ItRu_Beliar02.3ds";
+//	spell			= 	SPL_BeliarRage;
+	
+	description		=	NAME_SPL_BeliarRage;
+	TEXT[1]			=	NAME_Manakosten;
+//	COUNT[1]		=	20+(BeliarWeapon_LastUpgradeLvl*1);
+	TEXT[2]			=	NAME_Dam_Magic;
+//	COUNT[2]		=	100+(BeliarWeapon_LastUpgradeLvl*5);
+};
+///*******************************************************************************************
 ///	MYS & GEO & ELE & PYR & NEC spells
 ///*******************************************************************************************
 instance ItRu_MysBolt (ItemPR_Spell)
 {
 	visual 			=	"ItRu_FireBolt.3ds";
-	spell			= 	SPL_MysBolt;
-
+//	spell			= 	SPL_MysBolt;
+	
 	description		=	NAME_SPL_MysBolt;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MysBolt;
+//	COUNT[1]		=	SPL_Cost_MysBolt;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_MysBolt;
+//	COUNT[2]		=	SPL_Damage_MysBolt;
 	TEXT[3]			=	NAME_Bonus_HP;
-	COUNT[3]		=	SPL_Heal_MysBolt;
+//	COUNT[3]		=	SPL_Heal_MysBolt;
 };
 instance ItRu_MysGhost (ItemPR_Spell)
 {
 	visual 			=	"ItRu_MediumHeal.3ds";
-	spell			= 	SPL_MysGhost;
-
+//	spell			= 	SPL_MysGhost;
+	
 	description		=	NAME_SPL_MysGhost;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MysGhost;
+//	COUNT[1]		=	SPL_Cost_MysGhost;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_MysGhost;
+//	COUNT[2]		=	SPL_Time_MysGhost;
 	TEXT[3]			=	NAME_Bonus_HP;
-	COUNT[3]		=	SPL_Heal_MysGhost;
+//	COUNT[3]		=	SPL_Heal_MysGhost;
 	//TEXT[4]			=	NAME_Prot_Fire;
 	//COUNT[4]		=	SPL_Prot_MysGhost;
 };
 instance ItRu_MysRoot (ItemPR_Spell)
 {
 	visual 			=	"ItRu_IceCube.3ds";
-	spell			= 	SPL_MysRoot;
-
+//	spell			= 	SPL_MysRoot;
+	
 	description		=	NAME_SPL_MysRoot;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MysRoot;
+//	COUNT[1]		=	SPL_Cost_MysRoot;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_MysRoot;
+//	COUNT[2]		=	SPL_Time_MysRoot;
 	TEXT[3]			=	NAME_DamagePerSec;
-	COUNT[3]		=	SPL_Damage_MysRoot;
+//	COUNT[3]		=	SPL_Damage_MysRoot;
 };
 instance ItRu_MysDomination (ItemPR_Spell)
 {
 	visual 			=	"ItRu_Sleep.3ds";
-	spell			= 	SPL_MysDomination;
-
+//	spell			= 	SPL_MysDomination;
+	
 	description		=	NAME_SPL_MysDomination;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MysDomination;
+//	COUNT[1]		=	SPL_Cost_MysDomination;
 };
 instance ItRu_MysEchoes (ItemPR_Spell)
 {
 	visual 			=	"ItRu_IceWave.3ds";
-	spell			= 	SPL_MysEchoes;
-
+//	spell			= 	SPL_MysEchoes;
+	
 	description		=	NAME_SPL_MysEchoes;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_MysEchoes;
+//	COUNT[1]		=	SPL_Cost_MysEchoes;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_MysEchoes;
+//	COUNT[2]		=	SPL_Damage_MysEchoes;
 };
 ///*******************************************************************************************
 instance ItRu_GeoStone (ItemPR_Spell)
 {
 	visual 			=	"ItRu_FireBolt.3ds";
-	spell			= 	SPL_GeoStone;
-
+//	spell			= 	SPL_GeoStone;
+	
 	description		=	NAME_SPL_GeoStone;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_GeoStone;
+//	COUNT[1]		=	SPL_Cost_GeoStone;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_GeoStone;
+//	COUNT[2]		=	SPL_Damage_GeoStone;
 };
 instance ItRu_GeoSkin (ItemPR_Spell)
 {
 	visual 			=	"ItRu_MediumHeal.3ds";
-	spell			= 	SPL_GeoSkin;
-
+//	spell			= 	SPL_GeoSkin;
+	
 	description		=	NAME_SPL_GeoSkin;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_GeoSkin;
+//	COUNT[1]		=	SPL_Cost_GeoSkin;
 	TEXT[2]			=	NAME_ManaPerSec;
-	COUNT[2]		=	SPL_Time_GeoSkin;
+//	COUNT[2]		=	SPL_Time_GeoSkin;
 	TEXT[3]			=	NAME_Prot_Physical;
-	COUNT[3]		=	SPL_Prot_GeoSkin;
+//	COUNT[3]		=	SPL_Prot_GeoSkin;
 };
 instance ItRu_GeoElevate (ItemPR_Spell)
 {
 	visual 			=	"ItRu_IceCube.3ds";
-	spell			= 	SPL_GeoElevate;
-
+//	spell			= 	SPL_GeoElevate;
+	
 	description		=	NAME_SPL_GeoElevate;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_GeoElevate;
+//	COUNT[1]		=	SPL_Cost_GeoElevate;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_GeoElevate;
+//	COUNT[2]		=	SPL_Time_GeoElevate;
 };
 instance ItRu_GeoGolem (ItemPR_Spell)
 {
 	visual 			=	"ItRu_SumGol.3ds";
-	spell			= 	SPL_GeoGolem;
-
+//	spell			= 	SPL_GeoGolem;
+	
 	description		=	NAME_SPL_GeoGolem;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_GeoGolem;
+//	COUNT[1]		=	SPL_Cost_GeoGolem;
 };
 instance ItRu_GeoQuake (ItemPR_Spell)
 {
 	visual 			=	"ItRu_IceWave.3ds";
-	spell			= 	SPL_GeoQuake;
-
+//	spell			= 	SPL_GeoQuake;
+	
 	description		=	NAME_SPL_GeoQuake;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_GeoQuake;
+//	COUNT[1]		=	SPL_Cost_GeoQuake;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_GeoQuake;
+//	COUNT[2]		=	SPL_Damage_GeoQuake;
 };
 /*
 ///*******************************************************************************************
@@ -680,44 +692,44 @@ instance ItRu_Lum5 (ItemPR_Spell)
 instance ItRu_cB_Fireball (ItemPR_Spell)
 {
 	visual			=	"ItRu_InstantFireball.3DS";
-	spell			= 	SPL_cB_Fireball;
-
+//	spell			= 	SPL_cB_Fireball;
+	
 	description		=	NAME_SPL_cB_Fireball;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_cSpells;
+//	COUNT[1]		=	SPL_Cost_cSpells;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_cSpells;
+//	COUNT[2]		=	SPL_Damage_cSpells;
 };
 instance ItRu_cR_Fireball (ItemPR_Spell)
 {
 	visual			=	"ItRu_InstantFireball.3DS";
-	spell			= 	SPL_cR_Fireball;
-
+//	spell			= 	SPL_cR_Fireball;
+	
 	description		=	NAME_SPL_cR_Fireball;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_cSpells;
+//	COUNT[1]		=	SPL_Cost_cSpells;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_cSpells;
+//	COUNT[2]		=	SPL_Damage_cSpells;
 };
 instance ItRu_cG_Fireball (ItemPR_Spell)
 {
 	visual			=	"ItRu_InstantFireball.3DS";
-	spell			= 	SPL_cG_Fireball;
-
+//	spell			= 	SPL_cG_Fireball;
+	
 	description		=	NAME_SPL_cG_Fireball;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_cSpells;
+//	COUNT[1]		=	SPL_Cost_cSpells;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_cSpells;
+//	COUNT[2]		=	SPL_Damage_cSpells;
 };
 instance ItRu_cY_Fireball (ItemPR_Spell)
 {
 	visual			=	"ItRu_InstantFireball.3DS";
-	spell			= 	SPL_cY_Fireball;
-
+//	spell			= 	SPL_cY_Fireball;
+	
 	description		=	NAME_SPL_cY_Fireball;
 	TEXT[1]			=	NAME_Manakosten;
-	COUNT[1]		=	SPL_Cost_cSpells;
+//	COUNT[1]		=	SPL_Cost_cSpells;
 	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_cSpells;
+//	COUNT[2]		=	SPL_Damage_cSpells;
 };

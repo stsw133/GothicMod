@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Martin_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Martin_EXIT_Condition;
 	information = DIA_Addon_Martin_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Martin_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Martin_EXIT_Info()
 {
@@ -28,8 +28,8 @@ instance DIA_Addon_Martin_MeetingIsRunning		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Martin_MeetingIsRunning_Condition;
 	information	 = 	DIA_Addon_Martin_MeetingIsRunning_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Addon_Martin_MeetingIsRunning_Condition ()
@@ -37,16 +37,16 @@ func int DIA_Addon_Martin_MeetingIsRunning_Condition ()
 	if (Npc_IsInState (self,ZS_Talk))
 	&& (RangerMeetingRunning == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};	
 };
 var int DIA_Addon_Martin_MeetingIsRunning_OneTime;
 func void DIA_Addon_Martin_MeetingIsRunning_Info ()
 {
-	if (DIA_Addon_Martin_MeetingIsRunning_OneTime == false)
+	if (DIA_Addon_Martin_MeetingIsRunning_OneTime == FALSE)
 	{
 		AI_Output			(self, other, "DIA_Addon_Cord_MeetingIsRunning_07_00"); //A wiêc to ty jesteœ ten nowy? Witaj wœród nas, bracie Krêgu.
-		DIA_Addon_Martin_MeetingIsRunning_OneTime = true;
+		DIA_Addon_Martin_MeetingIsRunning_OneTime = TRUE;
 	}
 	else
 	{
@@ -65,19 +65,19 @@ instance DIA_Addon_Martin_Hallo		(C_INFO)
 	condition	 = 	DIA_Addon_Martin_Hallo_Condition;
 	information	 = 	DIA_Addon_Martin_Hallo_Info;
 	
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Martin_Hallo_Condition ()
 {
 	if (Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<1000)
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	&& (RangerMeetingRunning != LOG_SUCCESS)
-	&& (SC_IsRanger == false)
+	&& (SC_IsRanger == FALSE)
 	&& (other.guild != GIL_MIL)
 	&& (other.guild != GIL_PAL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -104,7 +104,7 @@ func int DIA_Addon_Martin_WasMachstDu_Condition ()
 {
 	if (Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<1000)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -114,7 +114,7 @@ func void DIA_Addon_Martin_WasMachstDu_Info ()
 	AI_Output	(self, other, "DIA_Addon_Martin_WasMachstDu_07_01"); //Jesteœ w magazynie królewskich paladynów.
 	
 	if (other.guild == GIL_NONE)
-	&& (SC_IsRanger == false)
+	&& (SC_IsRanger == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Martin_WasMachstDu_07_02"); //Jestem tu kwatermistrzem i mam zadanie dopilnowaæ, ¿eby z zapasu paladynów nic nie znik³o. A ty nie jesteœ tu mile widziany.
 		AI_Output	(self, other, "DIA_Addon_Martin_WasMachstDu_07_03"); //Wiêc trzymaj rêce przy sobie albo ci je obetnê.
@@ -138,7 +138,7 @@ func int DIA_Addon_Martin_PreTrade_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_WasMachstDu))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -169,7 +169,7 @@ func int DIA_Addon_Martin_Farim_Condition ()
 	if (MIS_Addon_Farim_PaladinFisch == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Martin_PreTrade))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -186,8 +186,8 @@ func void DIA_Addon_Martin_Farim_Info ()
 	
 	B_LogEntry (TOPIC_Addon_FarimsFish,	"T¹ spraw¹ zajmie siê kwatermistrz Martin."); 
 
-	Martin_KnowsFarim = true;
-	B_GivePlayerXP(XP_BONUS_0);
+	Martin_KnowsFarim = TRUE;
+	B_GivePlayerXP (XP_Addon_FarimSchutz);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -199,8 +199,8 @@ instance DIA_Addon_Martin_Trade		(C_INFO)
 	nr		 = 	80;
 	condition	 = 	DIA_Addon_Martin_Trade_Condition;
 	information	 = 	DIA_Addon_Martin_Trade_Info;
-	Trade		 = 	true;
-	permanent	 = 	true;
+	Trade		 = 	TRUE;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Co masz do zaoferowania?";
 };
@@ -209,17 +209,17 @@ func int DIA_Addon_Martin_Trade_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_PreTrade))
 		{
-			return true;
+			return TRUE;
 		};
 };
 var int DIA_Addon_Martin_Trade_OneTime;
 func void DIA_Addon_Martin_Trade_Info ()
 {
-	if (DIA_Addon_Martin_Trade_OneTime == false)
+	if (DIA_Addon_Martin_Trade_OneTime == FALSE)
 	{
 		Log_CreateTopic	(TOPIC_CityTrader, LOG_NOTE);
 		B_LogEntry (TOPIC_CityTrader, LogText_Addon_MartinTrade); 
-		DIA_Addon_Martin_Trade_OneTime = true;
+		DIA_Addon_Martin_Trade_OneTime = TRUE;
 	};
 	
 	
@@ -244,11 +244,11 @@ instance DIA_Addon_Martin_Rangerhelp		(C_INFO)
 
 func int DIA_Addon_Martin_Rangerhelp_Condition ()
 {
-	if (RangerHelp_gildeMIL == true)
+	if (RangerHelp_gildeMIL == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Martin_WasMachstDu))
 	&& (hero.guild == GIL_NONE)
 		{
-			return true;
+			return TRUE;
 		};		
 };
 
@@ -288,11 +288,11 @@ instance DIA_Addon_Martin_Auftrag		(C_INFO)
 
 func int DIA_Addon_Martin_Auftrag_Condition ()
 {
-	if (RangerHelp_gildeMIL == true)
+	if (RangerHelp_gildeMIL == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Martin_Rangerhelp))
 	&& (hero.guild == GIL_NONE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -347,9 +347,9 @@ instance DIA_Addon_Martin_FromVatras (C_INFO)
 };
 func int DIA_Addon_Martin_FromVatras_Condition ()
 {
-	if (Vatras_ToMartin == true)
+	if (Vatras_ToMartin == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Martin_FromVatras_Info ()
@@ -377,7 +377,7 @@ func int DIA_Addon_Martin_TellAll_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_FromVatras))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Martin_TellAll_Info ()
@@ -405,7 +405,7 @@ func int DIA_Addon_Martin_AboutBandits_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_TellAll))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Martin_AboutBandits_Info ()
@@ -429,7 +429,7 @@ instance DIA_Addon_Martin_Fernando		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Martin_Fernando_Condition;
 	information	 = 	DIA_Addon_Martin_Fernando_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeœli chodzi o tego handlarza broni¹...";
 };
@@ -438,7 +438,7 @@ func int DIA_Addon_Martin_Fernando_Condition ()
 {
 	if (MIs_Martin_FindTheBanditTrader == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -449,9 +449,9 @@ func void DIA_Addon_Martin_Fernando_Info ()
 	AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_00"); //Jeœli chodzi o tego handlarza broni¹...
 
 	if 	(Npc_HasItems (other,ItMw_Addon_BanditTrader))
-	||(Npc_HasItems (other,ItRi_BanditTrader))
-	||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == true))
-	||(Fernando_HatsZugegeben == true)
+	||(Npc_HasItems (other,ItRi_Addon_BanditTrader))
+	||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
+	||(Fernando_HatsZugegeben == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_01"); //Poka¿, co tam masz.
 	
@@ -460,8 +460,8 @@ func void DIA_Addon_Martin_Fernando_Info ()
 		
 		if 	(
 			(Npc_HasItems (other,ItMw_Addon_BanditTrader))
-			||(Npc_HasItems (other,ItRi_BanditTrader))
-			||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == true))
+			||(Npc_HasItems (other,ItRi_Addon_BanditTrader))
+			||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
 			)
 			{
 				
@@ -470,18 +470,18 @@ func void DIA_Addon_Martin_Fernando_Info ()
 					AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_02"); //Ten pa³asz zabra³em bandytom. Na g³owicy wyciêto literê F.
 					FernandoHints = (FernandoHints + 1);
 				};
-				if (Npc_HasItems (other,ItRi_BanditTrader))
+				if (Npc_HasItems (other,ItRi_Addon_BanditTrader))
 				{
 					AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_03"); //To pierœcieñ od jednego z bandytów. Nale¿a³ do zamorskiego kupca.
 					FernandoHints = (FernandoHints + 1);
 				};
-				if ((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == true))
+				if ((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
 				{
 					AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_04"); //Na liœcie broni i innych towarów dostarczonych bandytom widnieje podpis niejakiego Fernando.
 					FernandoHints = (FernandoHints + 3);
 				};
 			
-				if (Fernando_HatsZugegeben == true)
+				if (Fernando_HatsZugegeben == TRUE)
 				{
 					AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_05"); //Fernando, kupiec z górnego miasta, przyzna³ siê do robienia interesów z bandytami.
 					FernandoHints = (FernandoHints + 1);
@@ -500,18 +500,18 @@ func void DIA_Addon_Martin_Fernando_Info ()
 			AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_10"); //Naprawdê siê spisa³eœ. Czapki z g³ów.
 			AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_11"); //Vatras bêdzie zachwycony tymi wiadomoœciami.
 			B_StartOtherRoutine	(Fernando,"Prison");
-			Fernando_ImKnast = true;
+			Fernando_ImKnast = TRUE;
 			MIs_Martin_FindTheBanditTrader = LOG_SUCCESS;
 			B_LogEntry (TOPIC_Addon_BanditTrader,"Martin przypilnuje, by Fernando zap³aci³ za swoje grzechy. Muszê powiedzieæ o tym Vatrasowi."); 
 
-			B_GivePlayerXP(XP_BONUS_2);
+			B_GivePlayerXP (XP_Addon_FernandoMartin);
 		}
 		else
 		{
 			AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_12"); //Coœ jeszcze?
 			AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_13"); //To wszystko.
 		
-			if (Fernando_HatsZugegeben == true)
+			if (Fernando_HatsZugegeben == TRUE)
 			{
 				AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_14"); //Mi³o z jego strony, ¿e tak powiedzia³, ale bez dowodów nic nie mogê zrobiæ.
 				AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_15"); //Nie mam zamiaru siê oœmieszyæ przed Lordem Hagenem. Bêdziesz musia³ dostarczyæ wiêcej dowodów.
@@ -520,10 +520,10 @@ func void DIA_Addon_Martin_Fernando_Info ()
 			{
 				AI_Output (self, other, "DIA_Addon_Martin_Fernando_07_16"); //To nie wystarczy. To móg³by byæ niemal ka¿dy z górnego miasta.
 				AI_Output (self, other, "DIA_Addon_Martin_Fernando_07_17"); //Wychodzi na to, ¿e trzeba bêdzie pójœæ trochê dalej œladem bandytów i ich ³upów. A¿ dowiemy siê, kto za tym stoi.
-				if (Martin_IrrlichtHint == false)
+				if (Martin_IrrlichtHint == FALSE)
 				{
 					AI_Output	(self, other, "DIA_Addon_Martin_Fernando_07_18"); //Mo¿e znów powinieneœ porozmawiaæ z Vatrasem.
-					Martin_IrrlichtHint = true;
+					Martin_IrrlichtHint = TRUE;
 				};
 			};
 		};
@@ -545,7 +545,7 @@ instance DIA_Addon_Martin_Perm		(C_INFO)
 	nr		 = 	90;
 	condition	 = 	DIA_Addon_Martin_Perm_Condition;
 	information	 = 	DIA_Addon_Martin_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Skrzynie wci¹¿ tu s¹?";
 };
@@ -554,7 +554,7 @@ func int DIA_Addon_Martin_Perm_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_WasMachstDu))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -576,7 +576,7 @@ func void DIA_Addon_Martin_Perm_Info ()
 			AI_Output	(self, other, "DIA_Addon_Martin_Perm_07_03"); //Dziœ w nocy lepiej uwa¿aj, kiedy mnie nie bêdzie, jasne?
 		};	
 	}	
-	else if ((MIS_Addon_Martin_GetRangar != 0) || (hero.guild != GIL_NONE) || (Sc_IsRanger == true))
+	else if ((MIS_Addon_Martin_GetRangar != 0) || (hero.guild != GIL_NONE) || (Sc_IsRanger == TRUE))
 	{
 		AI_Output	(self, other, "DIA_Addon_Martin_Perm_07_04"); //Tak, tak, œmiej siê, ile chcesz. Chêtnie bym zobaczy³, jak stoisz tu przez ca³y dzieñ, próbuj¹c zapanowaæ nad tym chaosem.
 		AI_Output	(self, other, "DIA_Addon_Martin_Perm_07_05"); //Paladyni przywieŸli tyle z³omu, ¿e g³owa ma³a.
@@ -603,9 +603,9 @@ instance DIA_Addon_Martin_GotRangar		(C_INFO)
 func int DIA_Addon_Martin_GotRangar_Condition ()
 {
 	if (MIS_Addon_Martin_GetRangar == LOG_RUNNING)
-	&& (SC_GotRangar == true)
+	&& (SC_GotRangar == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -621,7 +621,7 @@ func void DIA_Addon_Martin_GotRangar_Info ()
 	AI_Output	(self, other, "DIA_Addon_Martin_GotRangar_07_07"); //Daj mi znaæ, jeœli mogê ci w czymœ pomóc.
 
 	MIS_Addon_Martin_GetRangar = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_Addon_Martin_GotRangar_Report);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -641,7 +641,7 @@ func int DIA_Addon_Martin_GetMiliz_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Martin_GotRangar))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -658,3 +658,5 @@ func void DIA_Addon_Martin_GetMiliz_Info ()
 
 	B_LogEntry (TOPIC_Addon_RangerHelpMIL,"Martin da³ mi list polecaj¹cy do g³ównodowodz¹cego paladyna, Andre, dziêki czemu zostanê przyjêty do stra¿y. Andre mo¿na znaleŸæ w koszarach."); 
 };
+
+

@@ -2,8 +2,6 @@
 ///	MOD_MovieMode
 ///******************************************************************************************
 
-var int movieMode;
-
 var int MemoKey1;
 var int MemoKey2;
 
@@ -60,8 +58,8 @@ func void MovieMode_DialogGesture()
 	
 	if (MemoKey2 != -1)
 	{
-		var string shlp; shlp = IntToString(MemoKey1); shlp = ConcatStrings(shlp,IntToString(MemoKey2));
-		shlp = ConcatStrings("Z ",shlp);
+		var string shlp; shlp = IntToString(MemoKey1); shlp = ConcatStrings(shlp, IntToString(MemoKey2));
+		shlp = ConcatStrings("Z ", shlp);
 		Print(shlp);
 		
 		if (MemoKey1 != 6)			{	Mdl_StartFaceAni (hero, "VISEME", 1, -1);	}
@@ -105,16 +103,16 @@ func void MovieMode_ExecSubScript()
 	
 	if (MemoKey1 != -1)
 	{
-		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp,IntToString(MemoKey2));
-		shlp = ConcatStrings("NumDel ",shlp);
+		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp, IntToString(MemoKey2));
+		shlp = ConcatStrings("NumDel ", shlp);
 		Print(shlp);
 		
 		o_hero = Hlp_GetNpc(hero);
 		o_other = MEM_PtrToInst(o_hero.focus_vob);
 		
-		if (MemoKey1 == 1)			{	B_LookAtNpc(o_other,hero);								}
+		if (MemoKey1 == 1)			{	B_LookAtNpc(o_other, hero);								}
 		else if (MemoKey1 == 2)		{	B_StopLookAt(o_other);									}
-		else if (MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other,"VISEME",1,-1);				}
+		else if (MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other, "VISEME", 1, -1);				}
 		else if (MemoKey1 == 4)		{	AI_DrawWeapon(o_other);									}
 		else if (MemoKey1 == 5)		{	AI_RemoveWeapon(o_other);								}
 		else if (MemoKey1 == 6)		{	B_Say_Overlay (o_other, o_other, "$Aargh_1");			};
@@ -129,8 +127,8 @@ func void MovieMode_SetHeadDirection()
 	
 	if (MemoKey1 != -1)
 	{
-		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp,IntToString(MemoKey2));
-		shlp = ConcatStrings(", ",shlp);
+		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp, IntToString(MemoKey2));
+		shlp = ConcatStrings(", ", shlp);
 		Print(shlp);
 		
 		if (MemoKey1 == 1)			{	AI_PlayAni (hero, "C_LOOK_4");	}
@@ -149,8 +147,8 @@ func void MovieMode_SetArmDirection()
 	
 	if (MemoKey1 != -1)
 	{
-		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp,IntToString(MemoKey2));
-		shlp = ConcatStrings(". ",shlp);
+		var string shlp; shlp = IntToString(MemoKey1); //shlp = ConcatStrings(shlp, IntToString(MemoKey2));
+		shlp = ConcatStrings(". ", shlp);
 		Print(shlp);
 		
 		if (MemoKey1 == 1)			{	AI_PlayAni (hero, "C_POINT_4");	}

@@ -8,13 +8,13 @@
 // ************************************
 
 // ------ Gegner attackiert mich ------
-instance FA_ENEMY_PREHIT_40 (C_FightAI)
+INSTANCE FA_ENEMY_PREHIT_40 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK;
 };
 
 // ------ Gegner macht Sturmattacke ------
-instance FA_ENEMY_STORMPREHIT_40 (C_FightAI)
+INSTANCE FA_ENEMY_STORMPREHIT_40 (C_FightAI)
 {
 	move[0] = MOVE_STRAFE;
 };
@@ -25,7 +25,7 @@ instance FA_ENEMY_STORMPREHIT_40 (C_FightAI)
 // *******************************************
 
 // ------ Ich renne auf den Gegner zu ------
-instance FA_MY_W_RUNTO_40 (C_FightAI)
+INSTANCE FA_MY_W_RUNTO_40 (C_FightAI)
 {
 	//move[0] = MOVE_TURN; // --- Stehenbleiben ---
 	move[0] = MOVE_ATTACK;
@@ -35,20 +35,20 @@ instance FA_MY_W_RUNTO_40 (C_FightAI)
 };
 
 // ------- Ich Strafe gerade ------
-instance FA_MY_W_STRAFE_40 (C_FightAI)
+INSTANCE FA_MY_W_STRAFE_40 (C_FightAI)
 {
  	move[0] = MOVE_STRAFE; // --- STANDARDEINTRAG ---
 };
 
 // ------- Ich habe Gegner im Fokus (kann treffen) -------
-instance FA_MY_W_FOCUS_40 (C_FightAI)
+INSTANCE FA_MY_W_FOCUS_40 (C_FightAI)
 {
  	move[0] = MOVE_ATTACK;
  	move[1] = MOVE_WAIT;
 };
 
 // ------- Ich habe Gegner NICHT im Fokus -------
-instance FA_MY_W_NOFOCUS_40 (C_FightAI)
+INSTANCE FA_MY_W_NOFOCUS_40 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -59,20 +59,20 @@ instance FA_MY_W_NOFOCUS_40 (C_FightAI)
 // *************************************************
 
 // ------ Ich renne auf den Gegner zu (kann treffen) ------
-instance FA_MY_G_RUNTO_40 (C_FightAI)
+INSTANCE FA_MY_G_RUNTO_40 (C_FightAI)
 {
  	//move[0] = MOVE_ATTACK; //Sturmattacke
  	move[0] = MOVE_TURN;
 };
 
 // ------- Ich Strafe gerade ------
-instance FA_MY_G_STRAFE_40 (C_FightAI)
+INSTANCE FA_MY_G_STRAFE_40 (C_FightAI)
 {
  	 move[0] = MOVE_STRAFE; // --- STANDARDEINTRAG ---
 };
 
 // ------- Ich habe Gegner im Fokus -------
-instance FA_MY_G_FOCUS_40 (C_FightAI)
+INSTANCE FA_MY_G_FOCUS_40 (C_FightAI)
 {
  	//move[0] = MOVE_RUN; // --- STANDARDEINTRAG ---
  	move[0] = MOVE_WAIT;
@@ -84,13 +84,13 @@ instance FA_MY_G_FOCUS_40 (C_FightAI)
 // ***************************************
 
 // ------- Ich habe Gegner im Fokus -------
-instance FA_MY_FK_FOCUS_40 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_40 (C_FightAI)
 {
 	move[0] = MOVE_RUN; // --- STANDARDEINTRAG ---
 };
 
 // ------- Ich habe Gegner NICHT im Fokus (gilt auch für G-Distanz!) -------
-instance FA_MY_G_FK_NOFOCUS_40 (C_FightAI)
+INSTANCE FA_MY_G_FK_NOFOCUS_40 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -103,13 +103,13 @@ instance FA_MY_G_FK_NOFOCUS_40 (C_FightAI)
 // ***********************************
 
 // ------ Gegner im Fokus ------
-instance FA_MY_FK_FOCUS_FAR_40 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_FAR_40 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK; // --- STANDARDEINTRAG ---
 };
 
 // ------ Gegner NICHT im Fokus ------
-instance FA_MY_FK_NOFOCUS_FAR_40 (C_FightAI)
+INSTANCE FA_MY_FK_NOFOCUS_FAR_40 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -122,7 +122,7 @@ instance FA_MY_FK_NOFOCUS_FAR_40 (C_FightAI)
 // ***********************************
 
 // ------ Gegner im Fokus ------
-instance FA_MY_FK_FOCUS_MAG_40 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_MAG_40 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK; // --- STANDARDEINTRAG ---
 	move[1] = MOVE_WAIT_LONGER;
@@ -133,7 +133,7 @@ instance FA_MY_FK_FOCUS_MAG_40 (C_FightAI)
 };
 
 // ------ Gegner NICHT im Fokus -------
-instance FA_MY_FK_NOFOCUS_MAG_40 (C_FightAI)
+INSTANCE FA_MY_FK_NOFOCUS_MAG_40 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };

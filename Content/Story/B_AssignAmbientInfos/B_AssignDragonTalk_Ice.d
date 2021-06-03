@@ -7,33 +7,30 @@ INSTANCE DIA_Dragon_Ice_Exit(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dragon_Ice_Exit_Condition;
 	information	= DIA_Dragon_Ice_Exit_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Dragon_Ice_Exit_Condition()
 {
-	if (DragonTalk_Exit_Free == true)
+	if (DragonTalk_Exit_Free == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 FUNC VOID DIA_Dragon_Ice_Exit_Info()
 {	
-//	Npc_RemoveInvItems (other,ItAm_InnosEye,1);
-//	CreateInvItems 	   (other,ItMi_InnosEye_Discharged_MIS,1);	 
-
 	AI_Output			(self, other, "DIA_Dragon_Ice_Exit_20_00"); //W³adza Oka nade mn¹ dobieg³a koñca. Twój czas na tym œwiecie równie¿.
 
 	AI_StopProcessInfos	(self);
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 	self.flags =  0;
 
-	if (DJG_Biff_Stay == true)
+	if (DJG_Biff_Stay == TRUE)
 	{
 		B_StartOtherRoutine (Biff,"Follow");
-		DJG_Biff_Stay = false;
+		DJG_Biff_Stay = FALSE;
 	};	
 	
 	Wld_InsertNpc		(Draconian,"FP_ROAM_OW_ICEREGION_29_02");
@@ -54,8 +51,8 @@ INSTANCE DIA_Dragon_Ice_Hello(C_INFO)
 	nr			= 1;
 	condition	= DIA_Dragon_Ice_Hello_Condition;
 	information	= DIA_Dragon_Ice_Hello_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Dragon_Ice_Hello_Condition()
@@ -97,7 +94,7 @@ func int DIA_Dragon_Ice_WERBISTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Dragon_Ice_Hello))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -124,7 +121,7 @@ func int DIA_Dragon_Ice_BELIAR_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Dragon_Ice_Hello))
 		{
-				return true;
+				return TRUE;
 		};
 };
 

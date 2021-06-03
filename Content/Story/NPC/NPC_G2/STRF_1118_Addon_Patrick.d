@@ -1,15 +1,14 @@
-//******************************************************************************************
+///******************************************************************************************
 instance STRF_1118_Addon_Patrick (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Patrick";
 	guild 								=	GIL_STRF;
 	id 									=	1118;
 	voice 								=	7;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_NoFightParker] 			=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
@@ -17,34 +16,34 @@ instance STRF_1118_Addon_Patrick (Npc_Default)
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor;
 	aivar[AIV_NewsOverride]				=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2H_Axe_L_01);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Dressed+1, BodySkin_L, "Hum_Head_Bald", Face_Normal07, 0, -1);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1118;
 };
 
-FUNC VOID Rtn_Start_1118()
+func void Rtn_Start_1118()
 {
 	TA_Pick_Ore	(08,00,23,00, "ADW_MINE_LAGER_05");
 	TA_Pick_Ore	(23,00,08,00, "ADW_MINE_LAGER_05");
 };
-FUNC VOID Rtn_Flucht_1118()
+func void Rtn_Flucht_1118()
 {
 	TA_RunToWP	(08,00,23,00, "ADW_BL_HOEHLE_04");
 	TA_RunToWP	(23,00,08,00, "ADW_BL_HOEHLE_04");

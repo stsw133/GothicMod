@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	PC_Sleep
-//******************************************************************************************
+///******************************************************************************************
+///	PC_Sleep
+///******************************************************************************************
 func void PC_Sleep (var int t)
 {
 	AI_StopProcessInfos(self);
@@ -27,17 +27,15 @@ func void PC_Sleep (var int t)
 	else
 	{
 		PrintScreen	(PRINT_SleepOver, -1, -1, FONT_Screen, 2);
-		
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-		sattribute[ATR_ENERGY] = sattribute[ATR_ENERGY_MAX];
 	};
 	
 	PrintGlobals(PD_ITEM_MOBSI);
-	Npc_SendPassivePerc	(hero, PERC_ASSESSENTERROOM, null, hero);
+	Npc_SendPassivePerc (hero, PERC_ASSESSENTERROOM, null, hero);
 };
 
-//******************************************************************************************
+///******************************************************************************************
 func void SLEEPABIT_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
@@ -48,15 +46,15 @@ func void SLEEPABIT_S1()
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
 		Ai_ProcessInfos(her);
 		
-		if (SC_IsObsessed == true)
+		if (SC_IsObsessed)
 		{
 			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
 		};
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_NoSleep (C_Info)
+///******************************************************************************************
+instance PC_NoSleep (c_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -66,7 +64,7 @@ INSTANCE PC_NoSleep (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-FUNC INT PC_NoSleep_Condition()
+func int PC_NoSleep_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SLEEPABIT)
 	{
@@ -74,7 +72,7 @@ FUNC INT PC_NoSleep_Condition()
 	};
 };
 
-func VOID PC_NoSleep_Info()
+func void PC_NoSleep_Info()
 {
 	AI_StopProcessInfos(self);
  	Wld_StopEffect("DEMENTOR_FX");
@@ -82,25 +80,62 @@ func VOID PC_NoSleep_Info()
 	PLAYER_MOBSI_PRODUCTION = MOBSI_NONE;
 };
 
-//******************************************************************************************
-INSTANCE PC_SleepTime_Morning (C_INFO)
+///******************************************************************************************
+instance PC_SleepTime_Morning (C_INFO)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_SleepTime_Morning_Condition;
+	condition							=	PC_NoSleep_Condition;
 	information							=	PC_SleepTime_Morning_Info;
 	permanent							=	true;
-	description							=	"Œpij";
-};
-
-FUNC INT PC_SleepTime_Morning_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SLEEPABIT)
-	{
-		return true;
-	};
+	description							=	"Odpoczywaj do rana";
 };
 
 func void PC_SleepTime_Morning_Info()
 {
-	PC_Sleep(+8);
+	PC_Sleep(8);
+};
+
+///******************************************************************************************
+instance PC_SleepTime_Noon (C_INFO)
+{
+	npc									=	PC_Hero;
+	condition							=	PC_NoSleep_Condition;
+	information							=	PC_SleepTime_Noon_Info;
+	permanent							=	true;
+	description							=	"Odpoczywaj do po³udnia";
+};
+
+func void PC_SleepTime_Noon_Info()
+{
+	PC_Sleep(12);
+};
+
+///******************************************************************************************
+instance PC_SleepTime_Evening (C_INFO)
+{
+	npc									=	PC_Hero;
+	condition							=	PC_NoSleep_Condition;
+	information							=	PC_SleepTime_Evening_Info;
+	permanent							=	true;
+	description							=	"Odpoczywaj do nastêpnego wieczora";
+};
+
+func void PC_SleepTime_Evening_Info()
+{
+	PC_Sleep(20);
+};
+
+///******************************************************************************************
+instance PC_SleepTime_Midnight (C_INFO)
+{
+	npc									=	PC_Hero;
+	condition							=	PC_NoSleep_Condition;
+	information							=	PC_SleepTime_Midnight_Info;
+	permanent							=	true;
+	description							=	"Odpoczywaj do pó³nocy";
+};
+
+func void PC_SleepTime_Midnight_Info()
+{
+	PC_Sleep(0);
 };

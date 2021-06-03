@@ -8,18 +8,18 @@ INSTANCE DIA_Addon_Skip_NW_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Skip_NW_EXIT_Condition;
 	information = DIA_Addon_Skip_NW_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Skip_NW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Skip_NW_EXIT_Info()
 {
 	AI_StopProcessInfos (self);
 	
-	PlayerTalkedToSkipNW = true;
+	PlayerTalkedToSkipNW = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -31,11 +31,11 @@ instance DIA_Addon_Skip_NW_Hallo		(C_INFO)
 	nr		 = 	1;
 	condition	 = 	DIA_Addon_Skip_NW_Hallo_Condition;
 	information	 = 	DIA_Addon_Skip_NW_Hallo_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 func int DIA_Addon_Skip_NW_Hallo_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Skip_NW_Hallo_Info ()
@@ -60,7 +60,7 @@ instance DIA_Addon_Skip_NW_WerBistDu		(C_INFO)
 
 func int DIA_Addon_Skip_NW_WerBistDu_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Addon_Skip_NW_WerBistDu_Info ()
@@ -130,7 +130,7 @@ func int DIA_Addon_Skip_NW_Baltram_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -150,6 +150,8 @@ func void DIA_Addon_Skip_NW_Baltram_Info ()
 	Log_CreateTopic (TOPIC_Addon_BaltramSkipTrade, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_BaltramSkipTrade, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_BaltramSkipTrade,"Pirat Skip powiedzia³ mi, ¿e Baltram, kupiec z miasta, robi interesy z piratami."); 
+	
+	SCKnowsBaltramAsPirateTrader = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -168,9 +170,9 @@ instance DIA_Addon_Skip_BaltramPaket		(C_INFO)
 func int DIA_Addon_Skip_BaltramPaket_Condition ()
 {
 	if (MIS_Addon_Baltram_Paket4Skip == LOG_RUNNING)
-	&& (Npc_HasItems(other,ItMi_SkipPaket))
+	&& (Npc_HasItems (other,ItMi_SkipPaket))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -179,26 +181,16 @@ func void DIA_Addon_Skip_BaltramPaket_Info ()
 	AI_Output	(other, self, "DIA_Addon_Skip_BaltramPaket_15_00"); //Mam dla ciebie przesy³kê od Baltrama.
 	AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_01"); //Co u licha? To on teraz wysy³a ch³opców na posy³ki?
 	AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_02"); //Ma pe³ne gacie strachu, co? Ale czego mo¿na spodziewaæ siê po takim kiepskim kupczyku, jak on?
-	B_GiveInvItems (other, self, ItMi_SkipPaket, 1);
+	B_GiveInvItems (other, self, ItMi_SkipPaket,1);
 	AI_Output	(other, self, "DIA_Addon_Skip_BaltramPaket_15_03"); //Mówi, ¿e chce za to trzy butelki rumu.
 	AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_04"); //A to dobre! Najpierw ka¿e mi tu czekaæ, bogowie wiedz¹ ile, a potem nie ma odwagi targowaæ siê ze mn¹ osobiœcie.
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{
-		CreateInvItems (self, ItFo_Rum, 3);
-		B_GiveInvItems (self, other, ItFo_Rum, 3);
-		Skip_Rum4Baltram_All = true;
-	}
-	else
-	{
-		AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_05"); //Daj mu dwie butelki. Powinno wystarczyæ.
-		CreateInvItems (self, ItFo_Rum, 2);
-		B_GiveInvItems (self, other, ItFo_Rum, 2);
-	};
-	
-	B_GivePlayerXP(XP_BONUS_1);
+	AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_05"); //Daj mu dwie butelki. Powinno wystarczyæ.
+	CreateInvItems (self, ItFo_Addon_Rum, 2);									
+	B_GiveInvItems (self, other, ItFo_Addon_Rum, 2);		
+	B_GivePlayerXP (XP_Addon_Skip_BaltramPaket);
 
 	B_LogEntry (TOPIC_Addon_BaltramSkipTrade,LogText_Addon_SkipsRumToBaltram); 
-	Skip_Rum4Baltram = true;
+	Skip_Rum4Baltram = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -218,7 +210,7 @@ func int DIA_Addon_Skip_NW_Woher_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_WerBistDu))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -259,9 +251,9 @@ instance DIA_Addon_Skip_SCSawGreg		(C_INFO)
 func int DIA_Addon_Skip_SCSawGreg_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Woher))
-	&& (SC_KnowsConnectionSkipGreg == true)
+	&& (SC_KnowsConnectionSkipGreg == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -273,7 +265,7 @@ func void DIA_Addon_Skip_SCSawGreg_Info ()
 	AI_Output	(self, other, "DIA_Addon_Skip_SCSawGreg_08_03"); //Niemo¿liwe. Nie znam ¿adnych szczurów l¹dowych.
 	AI_Output	(other, self, "DIA_Addon_Skip_SCSawGreg_15_04"); //Ale...
 	AI_Output	(self, other, "DIA_Addon_Skip_SCSawGreg_08_05"); //Daj mi spokój. Nie obchodzi mnie to.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -294,7 +286,7 @@ func int DIA_Addon_Skip_NW_MissingPeople_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Woher))
 	&& (MIS_Addon_Vatras_WhereAreMissingPeople == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -317,22 +309,36 @@ instance DIA_Addon_Skip_NW_Dexter		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Skip_NW_Dexter_Condition;
 	information	 = 	DIA_Addon_Skip_NW_Dexter_Info;
+
 	description	 = 	"Co to za 'oni'?";
 };
 
 func int DIA_Addon_Skip_NW_Dexter_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_MissingPeople))
-	{
-		return true;
-	};
+		{
+			return TRUE;
+		};
 };
 
-func void DIA_Addon_Skip_NW_Dexter_Info()
+func void DIA_Addon_Skip_NW_Dexter_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Skip_NW_Dexter_15_00"); //Co to za 'oni'?
 	AI_Output	(self, other, "DIA_Addon_Skip_NW_Dexter_08_01"); //Bandyci, a kto inny? Szumowiny, które kryj¹ siê na ca³ej wyspie.
 	AI_Output	(self, other, "DIA_Addon_Skip_NW_Dexter_08_02"); //I dzia³aj¹ nie tylko w pobli¿u Khorinis.
+};
+
+
+func void B_Skip_SaysDextersName ()
+{
+	AI_Output	(self, other, "DIA_Addon_Skip_SaysDextersName_08_00"); //O, przypomnia³em sobie w³aœnie jedno imiê. Dexter. Tak, jeden z nich na pewno nazywa siê Dexter.
+
+	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
+	Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
+	B_LogEntry (TOPIC_Addon_WhoStolePeople,"Zaginieni ludzie zostali porwani na rozkaz kapitana bandytów, Dextera. Chodz¹ plotki, ¿e ukrywa siê on gdzieœ na po³udnie od farmy Onara."); 
+
+	SC_KnowsDexterAsKidnapper = TRUE;			
+	Ranger_SCKnowsDexter = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -344,16 +350,17 @@ instance DIA_Addon_Skip_NW_Name		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Skip_NW_Name_Condition;
 	information	 = 	DIA_Addon_Skip_NW_Name_Info;
+
 	description	 = 	"'Bandyci' mówi¹ mi niewiele. Mów konkretnie. Imiona, miejsca, kontakty...";
 };
 
 func int DIA_Addon_Skip_NW_Name_Condition ()
 {
-	if (Npc_KnowsInfo(other,DIA_Addon_Skip_NW_Dexter))
-	&& (SCKnowsMissingPeopleAreInAddonWorld == false)
-	{
-		return true;
-	};
+	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Dexter))
+	&& (SCKnowsMissingPeopleAreInAddonWorld == FALSE)
+		{
+			return TRUE;
+		};
 };
 
 func void DIA_Addon_Skip_NW_Name_Info ()
@@ -362,17 +369,64 @@ func void DIA_Addon_Skip_NW_Name_Info ()
 	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_01"); //Imiona? Chcesz wiedzieæ, jak siê nazywa ich herszt? Szlag by to trafi³, pamiêta³em przecie¿... No, jak ten pies siê nazywa?
 	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_02"); //Ech, nie mogê sobie przypomnieæ. Chocia¿ jego imiê by³o krótkie i ³atwe do zapamiêtania.
 	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_03"); //Ale mogê ci powiedzieæ, gdzie go spotkaæ.
-	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_09"); //Na wschodzie znajdziesz farmê. Jej w³aœciciel ma na imiê Onar, o ile dobrze pamiêtam.
-	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_10"); //Farma otoczona jest przez du¿e po³acie pól, a na po³udnie od niej, na wysokiej skale, wznosi siê twierdza.
-	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_11"); //W niej znajdziesz tego cz³owieka.
-	AI_Output	(self, other, "DIA_Addon_Skip_SaysDextersName_08_00"); //O, przypomnia³em sobie w³aœnie jedno imiê. Dexter. Tak, jeden z nich na pewno nazywa siê Dexter.
+	AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_04"); //Masz przy sobie porz¹dn¹ mapê?
+	
+	if (Npc_HasItems (other,ItWr_Map_NewWorld) == FALSE)
+	{
+		if (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments_Addon) == TRUE)
+		|| (Npc_HasItems (other,ItWr_Map_Shrine_MIS) == TRUE)
+		|| (Npc_HasItems (other,ItWr_Map_Caves_MIS) == TRUE)
+		{
+			AI_Output	(other, self, "DIA_Addon_Skip_NW_Name_15_05"); //Mam tu tak¹ mapê. Mo¿e byæ?
+			AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_06"); //Ta mapa jest ju¿ ca³a zabazgrana.
+		}
+		else
+		{
+			AI_Output	(other, self, "DIA_Addon_Skip_NW_Name_15_07"); //Nie.
+		};
+		
+		AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_08"); //W takim razie chyba muszê ci opisaæ to miejsce.
+		AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_09"); //Na wschodzie znajdziesz farmê. Jej w³aœciciel ma na imiê Onar, o ile dobrze pamiêtam.
+		AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_10"); //Farma otoczona jest przez du¿e po³acie pól, a na po³udnie od niej, na wysokiej skale, wznosi siê twierdza.
+		AI_Output	(self, other, "DIA_Addon_Skip_NW_Name_08_11"); //W niej znajdziesz tego cz³owieka.
+		B_Skip_SaysDextersName ();
+	};
+};
 
-	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
-	Log_SetTopicStatus (TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
-	B_LogEntry (TOPIC_Addon_WhoStolePeople, "Zaginieni ludzie zostali porwani na rozkaz kapitana bandytów, Dextera. Chodz¹ plotki, ¿e ukrywa siê on gdzieœ na po³udnie od farmy Onara."); 
+///////////////////////////////////////////////////////////////////////
+//	Info Landkarte
+///////////////////////////////////////////////////////////////////////
+instance DIA_Addon_Skip_NW_Landkarte		(C_INFO)
+{
+	npc		 = 	PIR_1301_Addon_Skip_NW;
+	nr		 = 	5;
+	condition	 = 	DIA_Addon_Skip_NW_Landkarte_Condition;
+	information	 = 	DIA_Addon_Skip_NW_Landkarte_Info;
 
-	SC_KnowsDexterAsKidnapper = true;			
-	Ranger_SCKnowsDexter = true;
+	description	 = 	"Mam tu tak¹ mapê. Mo¿e byæ?";
+};
+
+func int DIA_Addon_Skip_NW_Landkarte_Condition ()
+{
+	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Name))
+	&& (Npc_HasItems (other,ItWr_Map_NewWorld))
+	&& (SCKnowsMissingPeopleAreInAddonWorld == FALSE)
+		{
+			return TRUE;
+		};
+};
+
+func void DIA_Addon_Skip_NW_Landkarte_Info ()
+{
+	AI_Output	(other, self, "DIA_Addon_Skip_NW_Landkarte_15_00"); //Mam tu tak¹ mapê. Mo¿e byæ?
+	AI_Output	(self, other, "DIA_Addon_Skip_NW_Landkarte_08_01"); //Mo¿e. Zaznaczê ci, gdzie znaleŸæ tego cz³owieka.
+	B_GiveInvItems (other, self, ItWr_Map_NewWorld,1);
+	B_Skip_SaysDextersName ();
+	AI_Output	(self, other, "DIA_Addon_Skip_NW_Landkarte_08_02"); //Proszê, oto twoja mapa.
+	
+	Npc_RemoveInvItems	(self,ItWr_Map_NewWorld ,1 );
+	CreateInvItems (self, ItWr_Map_NewWorld_Dexter, 1);									
+	B_GiveInvItems (self, other, ItWr_Map_NewWorld_Dexter, 1);		
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -384,17 +438,18 @@ instance DIA_Addon_Skip_NW_Wohin		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Skip_NW_Wohin_Condition;
 	information	 = 	DIA_Addon_Skip_NW_Wohin_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
 	description	 = 	"Dok¹d zawozicie tych ludzi?";
 };
 
 func int DIA_Addon_Skip_NW_Wohin_Condition ()
 {
-	if (Npc_KnowsInfo(other,DIA_Addon_Skip_NW_Woher))
-	&& (Npc_KnowsInfo(other,DIA_Addon_Skip_NW_MissingPeople))
-	{
-		return true;
-	};
+	if (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_Woher))
+	&& (Npc_KnowsInfo (other, DIA_Addon_Skip_NW_MissingPeople))
+		{
+			return TRUE;
+		};
 };
 
 func void DIA_Addon_Skip_NW_Wohin_Info ()

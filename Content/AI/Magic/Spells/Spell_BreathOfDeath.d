@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_BreathOfDeath
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_BreathOfDeath
+///******************************************************************************************
 
 const int SPL_Cost_BreathOfDeath		=	100;
 const int SPL_Damage_BreathOfDeath		=	500;
 
-//******************************************************************************************
-INSTANCE Spell_BreathOfDeath (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_BreathOfDeath (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_BreathOfDeath;
@@ -16,7 +16,7 @@ INSTANCE Spell_BreathOfDeath (C_Spell_Proto)
 
 func int Spell_Logic_BreathOfDeath (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_BreathOfDeath/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_BreathOfDeath/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_BreathOfDeath)
 	{
 		return SPL_SENDCAST;
@@ -29,11 +29,11 @@ func int Spell_Logic_BreathOfDeath (var int manaInvested)
 
 func void Spell_Cast_BreathOfDeath (var int spellLevel)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_BreathOfDeath/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_BreathOfDeath/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_BreathOfDeath/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_BreathOfDeath)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_BreathOfDeath;
 	};

@@ -7,13 +7,13 @@ INSTANCE DIA_Edda_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Edda_EXIT_Condition;
 	information	= DIA_Edda_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Edda_EXIT_Condition()
 {
-		return true;
+		return TRUE;
 };
 
 FUNC VOID DIA_Edda_EXIT_Info()
@@ -29,15 +29,15 @@ INSTANCE DIA_Edda_Hallo(C_INFO)
 	nr			= 2;
 	condition	= DIA_Edda_Hallo_Condition;
 	information	= DIA_Edda_Hallo_Info;
-	permanent	= false;
-	Important   = true;
+	permanent	= FALSE;
+	Important   = TRUE;
 };                       
 
 FUNC INT DIA_Edda_Hallo_Condition()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Edda_Hallo_Info()
@@ -56,13 +56,13 @@ INSTANCE DIA_Edda_Stadt(C_INFO)
 	nr			= 5;
 	condition	= DIA_Edda_Stadt_Condition;
 	information	= DIA_Edda_Stadt_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mo¿esz mi powiedzieæ o mieœcie?";
 };                       
 
 FUNC INT DIA_Edda_Stadt_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Edda_Stadt_Info()
 {	
@@ -73,7 +73,7 @@ FUNC VOID DIA_Edda_Stadt_Info()
 	AI_Output (self ,other,"DIA_Edda_Stadt_17_04"); //Jedyna wartoœciowa rzecz, jaka kiedykolwiek nale¿a³a do mnie, zosta³a mi odebrana.
 	AI_Output (self ,other,"DIA_Edda_Stadt_17_05"); //Ktoœ ukrad³ mój pos¹¿ek Innosa.
 	
-	Edda_Schlafplatz = true;
+	Edda_Schlafplatz = TRUE;
 	Wld_AssignRoomToGuild ("hafen08",	GIL_NONE);
 };			
 // ************************************************************
@@ -85,13 +85,13 @@ INSTANCE DIA_Edda_Kochen(C_INFO)
 	nr			= 6;
 	condition	= DIA_Edda_Kochen_Condition;
 	information	= DIA_Edda_Kochen_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mo¿esz mi ugotowaæ zupê?";
 };                       
 
 FUNC INT DIA_Edda_Kochen_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Edda_Kochen_Info()
 {	
@@ -107,7 +107,7 @@ INSTANCE DIA_Edda_Suppe(C_INFO)
 	nr			= 6;
 	condition	= DIA_Edda_Suppe_Condition;
 	information	= DIA_Edda_Suppe_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mo¿esz mi ugotowaæ zupê?";
 };                       
 
@@ -115,7 +115,7 @@ FUNC INT DIA_Edda_Suppe_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Edda_Kochen)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Edda_Suppe_Info()
@@ -154,7 +154,7 @@ INSTANCE DIA_Edda_Statue(C_INFO)
 	nr			= 6;
 	condition	= DIA_Edda_Statue_Condition;
 	information	= DIA_Edda_Statue_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Patrz, przynios³em ci pos¹¿ek Innosa.";
 };                       
 FUNC INT DIA_Edda_Statue_Condition()
@@ -162,7 +162,7 @@ FUNC INT DIA_Edda_Statue_Condition()
 	if Npc_KnowsInfo (other,DIA_Edda_Stadt)
 	&& (Npc_HasItems (other, ItMI_InnosStatue) >= 1) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Edda_Statue_Info()
@@ -170,7 +170,7 @@ FUNC VOID DIA_Edda_Statue_Info()
 	AI_Output (other ,self,"DIA_Edda_Statue_15_00"); //Patrz, przynios³em ci pos¹¿ek Innosa.
 	AI_Output (self ,other,"DIA_Edda_Statue_17_01"); //Dziêkujê, bardzo dziêkujê. Niechaj œwiat³o Innosa zawsze oœwietla ci drogê...
 	AI_Output (other ,self,"DIA_Edda_Statue_15_02"); //Drobiazg.
-
+	
 	B_GiveInvItems (other, self,ItMI_InnosStatue, 1); 
-	B_GivePlayerXP(XP_BONUS_1);
-};
+	B_GivePlayerXP (XP_Edda_Statue);
+};				 

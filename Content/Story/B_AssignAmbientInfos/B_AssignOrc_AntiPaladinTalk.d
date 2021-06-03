@@ -25,9 +25,9 @@ func void B_AssignORC_AntiPaladinTalk (var C_NPC Antipaladin)
 			AI_Output			(self ,other, "DIA_ORC_AntiPaladin_18_06"); //KHROKGNAR! My ciê zabiæ, paladynie.
 		};
 		AntiPaladinTalkcount = AntiPaladinTalkcount + 1;
-		TalkedTo_AntiPaladin = true;
+		TalkedTo_AntiPaladin = TRUE;
 		
 		AI_StopProcessInfos (Antipaladin);
-		Antipaladin.aivar[AIV_EnemyOverride] = false;
+		Antipaladin.aivar[AIV_EnemyOverride] = FALSE;
 		Npc_SetRefuseTalk (Antipaladin,20);
 };

@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Pardos_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Pardos_EXIT_Condition;
 	information = DIA_Addon_Pardos_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Pardos_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Pardos_EXIT_Info()
 {
@@ -27,14 +27,14 @@ INSTANCE DIA_Addon_Pardos_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Pardos_Hi_Condition;
 	information = DIA_Addon_Pardos_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co z tob¹?";
 };
 FUNC INT DIA_Addon_Pardos_Hi_Condition()
 {	
-	if (Sklaven_Flucht == false)
+	if (Sklaven_Flucht == FALSE)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Pardos_Hi_Info()
@@ -53,15 +53,15 @@ INSTANCE DIA_Addon_Pardos_save   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Pardos_save_Condition;
 	information = DIA_Addon_Pardos_save_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Trzymaj siê. Pomoc ju¿ nadchodzi.";
 };
 FUNC INT DIA_Addon_Pardos_save_Condition()
 {	
 	if Npc_KnowsInfo (other,DIA_Addon_Pardos_Hi)
-	&& (Sklaven_Flucht == false)
+	&& (Sklaven_Flucht == FALSE)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Pardos_save_Info()
@@ -81,15 +81,15 @@ INSTANCE DIA_Addon_Pardos_trank   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Pardos_trank_Condition;
 	information = DIA_Addon_Pardos_trank_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Wypij to. (Daj napój)";
 };
 FUNC INT DIA_Addon_Pardos_trank_Condition()
 {	
-	if (Pardos_Geheilt == false)
+	if (Pardos_Geheilt == FALSE)
 	&& Npc_KnowsInfo (other, DIA_Addon_Pardos_save)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Pardos_trank_Info()
@@ -103,20 +103,22 @@ FUNC VOID DIA_Addon_Pardos_trank_Info()
 	
 	if Npc_HasItems (other, ItPo_Health_01)
 	{
-		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj s³ab¹ miksturê lecznicz¹",DIA_Addon_Pardos_trank_01);
+		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj esencjê lecznicz¹",DIA_Addon_Pardos_trank_01);
 	};
 	if Npc_HasItems (other, ItPo_Health_02)
 	{
-		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj miksturê lecznicz¹",DIA_Addon_Pardos_trank_02);
+		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj ekstrakt leczniczy",DIA_Addon_Pardos_trank_02);
 	};
 	if Npc_HasItems (other, ItPo_Health_03)
 	{
-		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj siln¹ miksturê lecznicz¹",DIA_Addon_Pardos_trank_03);
+		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj eliksir leczniczy",DIA_Addon_Pardos_trank_03);
 	};
-	if Npc_HasItems (other, ItFo_Stew)
+	if Npc_HasItems (other, ItFo_Addon_Meatsoup)
 	{
 		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj gulasz",DIA_Addon_Pardos_trank_Soup);
 	};
+	
+	
 };
 FUNC VOID B_SayPardosThanks()
 {
@@ -135,9 +137,9 @@ FUNC VOID DIA_Addon_Pardos_trank_01()
 	};
 	
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
-	Pardos_Geheilt = true;
+	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(XP_Ambient); 
+	B_GivePlayerXP (XP_Ambient); 
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_02()
@@ -148,34 +150,34 @@ FUNC VOID DIA_Addon_Pardos_trank_02()
 	};
 	
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
-	Pardos_Geheilt = true;
+	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(XP_Ambient*2);
+	B_GivePlayerXP (XP_Ambient*2);
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_03()
 {
-	if B_GiveInvItems (other, self, ItPo_Health_03,1)
+	if B_GiveInvItems (other, self, ItPo_Health_01,3)
 	{
 		B_UseItem (self,ItPo_Health_03);
 	};
 	
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
-	Pardos_Geheilt = true;
+	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(XP_Ambient*3);
+	B_GivePlayerXP (XP_Ambient*3);
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_Soup()
 {
 	AI_Output (other, self, "DIA_Addon_Pardos_trank_soup_15_00");//Zjedz trochê gulaszu.
 	
-	if B_GiveInvItems (other, self, ItFo_Stew, 1)
+	if B_GiveInvItems (other, self, ItFo_Addon_Meatsoup,1)
 	{
-		B_UseItem (self, ItFo_Stew);
+		B_UseItem 	(self,ItFo_Addon_Meatsoup);
 	};	
 	AI_Output (self, other, "DIA_Addon_Pardos_trank_03_01");//Dziêkujê. Powinienem szybko odzyskaæ si³y.
-	B_GivePlayerXP(XP_Ambient *3);
+	B_GivePlayerXP (XP_Ambient *3);
 };
 //---------------------------------------------------------------------
 //	Info perm
@@ -186,14 +188,14 @@ INSTANCE DIA_Addon_Pardos_perm   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Pardos_perm_Condition;
 	information = DIA_Addon_Pardos_perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak siê trzymasz?";
 };
 FUNC INT DIA_Addon_Pardos_perm_Condition()
 {	
-	if (Pardos_Geheilt == true)
+	if (Pardos_Geheilt == TRUE)
 	{		
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Pardos_perm_Info()
@@ -201,3 +203,9 @@ FUNC VOID DIA_Addon_Pardos_perm_Info()
 	AI_Output (other, self, "DIA_Addon_Pardos_perm_15_00");//Jak siê trzymasz?
 	AI_Output (self, other, "DIA_Addon_Pardos_perm_03_01");//Dziêki twoim staraniom czujê siê znacznie lepiej. Wraca mi dawna si³a.
 };
+
+
+
+
+
+

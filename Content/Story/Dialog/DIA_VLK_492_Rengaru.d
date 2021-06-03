@@ -7,13 +7,13 @@ INSTANCE DIA_Rengaru_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Rengaru_EXIT_Condition;
 	information = DIA_Rengaru_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Rengaru_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Rengaru_EXIT_Info()
@@ -30,15 +30,15 @@ instance DIA_Rengaru_Hauab		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Rengaru_Hauab_Condition;
 	information	 = 	DIA_Rengaru_Hauab_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Co tu porabiasz?";
 };
 func int DIA_Rengaru_Hauab_Condition ()
 {	
 	if (Jora_Dieb != LOG_RUNNING)
-	&& (Npc_KnowsInfo (other,DIA_Rengaru_GOTYOU) == false)
+	&& (Npc_KnowsInfo (other,DIA_Rengaru_GOTYOU) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Rengaru_Hauab_Info ()
@@ -56,14 +56,14 @@ instance DIA_Rengaru_HALLODIEB		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Rengaru_HALLODIEB_Condition;
 	information	 = 	DIA_Rengaru_HALLODIEB_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Jora mówi, ¿e masz jego pieni¹dze.";
 };
 func int DIA_Rengaru_HALLODIEB_Condition ()
 {
 	if (Jora_Dieb == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -85,7 +85,7 @@ instance DIA_Rengaru_GOTYOU		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Rengaru_GOTYOU_Condition;
 	information	 = 	DIA_Rengaru_GOTYOU_Info;
-	permanent	 =  false;	
+	permanent	 =  FALSE;	
 	description	 = 	"Mam ciê!";
 };
 
@@ -93,13 +93,13 @@ func int DIA_Rengaru_GOTYOU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rengaru_HALLODIEB))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Rengaru_GOTYOU_Info ()
 {
-	B_GivePlayerXP(XP_BONUS_0);
+	B_GivePlayerXP (XP_RengaruGotThief);
 	
 	AI_Output (other, self, "DIA_Rengaru_GOTYOU_15_00"); //Mam ciê!
 	AI_Output (self, other, "DIA_Rengaru_GOTYOU_07_01"); //Czego ode mnie chcesz?
@@ -199,7 +199,7 @@ instance DIA_Rengaru_INKNAST		(C_INFO)
 	nr 			 =  4;
 	condition	 = 	DIA_Rengaru_INKNAST_Condition;
 	information	 = 	DIA_Rengaru_INKNAST_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Powinienem wydaæ ciê stra¿y.";
 };
 
@@ -207,7 +207,7 @@ func int DIA_Rengaru_INKNAST_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rengaru_GOTYOU))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -228,7 +228,7 @@ func void DIA_Rengaru_INKNAST_HauAb ()
 	Npc_ExchangeRoutine	(self,"Start"); 	
 	AI_StopProcessInfos (self);
 	
-	Diebesgilde_Okay += 1;
+	Diebesgilde_Okay = (Diebesgilde_Okay + 1);
 };
 func void DIA_Rengaru_INKNAST_Knast ()
 {
@@ -236,7 +236,8 @@ func void DIA_Rengaru_INKNAST_Knast ()
 	AI_Output (self, other, "DIA_Rengaru_INKNAST_Knast_07_01"); //Nie chcê wiêcej k³opotów, jeœli uwa¿asz, ¿e tak w³aœnie powinieneœ post¹piæ, proszê bardzo.
 	AI_Output (self, other, "DIA_Rengaru_INKNAST_Knast_07_02"); //Uwa¿aj jednak, moim przyjacio³om nie spodoba siê to, jak mnie potraktowa³eœ...
 
-	Rengaru_InKnast		= true; 	
+	
+	Rengaru_InKnast		= TRUE; 	
 	
 	AI_StopProcessInfos (self);
 };
@@ -256,14 +257,14 @@ instance DIA_Rengaru_LastInfoKap1		(C_INFO)
 	nr			 =  6;
 	condition	 = 	DIA_Rengaru_LastInfoKap1_Condition;
 	information	 = 	DIA_Rengaru_LastInfoKap1_Info;
-	permanent	 =  true;	
+	permanent	 =  TRUE;	
 	description	 = 	"I jak? Wszystko w porz¹dku?";
 };
 func int DIA_Rengaru_LastInfoKap1_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rengaru_INKNAST))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -271,7 +272,7 @@ func void DIA_Rengaru_LastInfoKap1_Info ()
 {
 	AI_Output (other, self, "DIA_Rengaru_LastInfoKap1_15_00"); //I jak? Wszystko w porz¹dku?
 	
-	if (Rengaru_InKnast	== true)
+	if (Rengaru_InKnast	== TRUE)
 	{
 		AI_Output (self, other, "DIA_Rengaru_LastInfoKap1_07_01"); //No dalej, nabijaj siê ze mnie. W koñcu ci siê oberwie, przysiêgam!
 	}
@@ -289,28 +290,28 @@ INSTANCE DIA_Rengaru_Zeichen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Rengaru_Zeichen_Condition;
 	information = DIA_Rengaru_Zeichen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "(Poka¿ z³odziejski gest)";
 };
 
 FUNC INT DIA_Rengaru_Zeichen_Condition()
 {
-	if (Knows_SecretSign == true)
-	&& (Rengaru_InKnast == false)
+	if (Knows_SecretSign == TRUE)
+	&& (Rengaru_InKnast == FALSE)
 	&& Npc_KnowsInfo (other, DIA_Rengaru_GOTYOU)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rengaru_Zeichen_Info()
 {
 	AI_PlayAni (other, "T_YES");
-
+	
 	AI_Output (self, other, "DIA_Rengaru_Zeichen_07_00");//Hej, jesteœ jednym z nas.
 	AI_Output (self, other, "DIA_Rengaru_Zeichen_07_01");//Pozwól, ¿e coœ ci powiem. Jeœli chcesz obrobiæ parê kieszonek w mieœcie, to uwa¿aj na kupców!
 	AI_Output (self, other, "DIA_Rengaru_Zeichen_07_02");//Te psubraty nieŸle pilnuj¹ swojego towaru. Dam ci jednak wskazówkê.
 	AI_Output (self, other, "DIA_Rengaru_Zeichen_07_03");//Kiedy bêdziesz ³apa³ przedmiot, który chcesz ukraœæ, jedn¹ rêk¹, machaj drug¹. To ich rozprasza.
-
-	B_RaiseAttribute (other, ATR_DEXTERITY, 2);
-	Snd_Play("LEVELUP"); 
+	
+	B_RaiseAttribute(other, ATR_DEXTERITY, 1);
+	Snd_Play ("LEVELUP"); 
 };

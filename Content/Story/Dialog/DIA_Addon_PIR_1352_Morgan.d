@@ -9,16 +9,16 @@ INSTANCE DIA_Addon_Morgan_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Morgan_EXIT_Condition;
 	information	= DIA_Addon_Morgan_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Morgan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func int DIA_Addon_Morgan_EXIT_Info ()
 {
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Morgan_Perm_15_00"); //IdŸ spaæ.
 		if (Morgan_Perm_Counter == 0)
@@ -55,14 +55,14 @@ instance DIA_Addon_Morgan_Anheuern(C_INFO)
 	condition	= DIA_Addon_Morgan_Anheuern_Condition;
 	information	= DIA_Addon_Morgan_Anheuern_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Addon_Morgan_Anheuern_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (GregIsBack == true)
+	&& (GregIsBack == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func int DIA_Addon_Morgan_Anheuern_Info ()
@@ -83,17 +83,17 @@ INSTANCE DIA_Addon_Morgan_Hello(C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Morgan_Hello_Condition;
 	information	= DIA_Addon_Morgan_Hello_Info;
-	permanent 	= true;
-	important	= true;
+	permanent 	= TRUE;
+	important	= TRUE;
 };                      
 FUNC INT DIA_Addon_Morgan_Hello_Condition()
 {
-	if (MIS_AlligatorJack_BringMeat == false)
+	IF (MIS_AlligatorJack_BringMeat == FALSE)
 	&& (Npc_IsInState (self,ZS_Talk))
-	&& ((Npc_IsDead(AlligatorJack)) == false)
-	&& (GregIsBack == false)
+	&& ((Npc_IsDead(AlligatorJack)) == FALSE)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Morgan_Hello_Info()
@@ -119,17 +119,17 @@ INSTANCE DIA_Addon_Morgan_Meat(C_INFO)
 };                       
 FUNC INT DIA_Addon_Morgan_Meat_Condition()
 {
-	if (MIS_AlligatorJack_BringMeat == LOG_RUNNING)
+	IF (MIS_AlligatorJack_BringMeat == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItFoMuttonRaw) >= 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Morgan_Meat_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Morgan_Meat_15_00"); //Przynoszê miêso.
 
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Addon_Morgan_Meat_07_01"); //Zaraz. Najpierw muszê siê napiæ.
 		
@@ -159,7 +159,7 @@ func VOID DIA_Addon_Morgan_Meat_Info()
 	B_LogEntry (TOPIC_Addon_BringMeat,"Odda³em miêso Morganowi.");
 	
 	MIS_AlligatorJack_BringMeat = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_ALLIGatORJACK_BringMeat);
 };
 
 // ************************************************************
@@ -178,7 +178,7 @@ FUNC INT DIA_Addon_Morgan_Job_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Morgan_Meat))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Morgan_Job_Info()
@@ -188,7 +188,7 @@ FUNC VOID DIA_Addon_Morgan_Job_Info()
 	AI_Output (self, other, "DIA_Addon_Morgan_Job_07_02"); //Jestem odpowiedzialny za zaopatrzenie, które dostarcza nam Jack Aligator.
 	AI_Output (self, other, "DIA_Addon_Morgan_Job_07_03"); //Odpowiadam te¿ za to, aby okoliczne stwory nie zbli¿y³y siê zanadto do obozu.
 	AI_Output (self, other, "DIA_Addon_Morgan_Job_07_04"); //Pomagaj¹ mi w tym moi ch³opcy.
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output (self, other, "DIA_Addon_Morgan_Job_07_05"); //Powiedzia³em im, ¿e ma tu byæ spokojnie, kiedy kapitan Greg wróci.
 	};
@@ -210,7 +210,7 @@ FUNC INT DIA_Addon_Morgan_Sleep_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Morgan_Job))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Morgan_Sleep_Info()
@@ -244,9 +244,9 @@ instance DIA_Addon_Morgan_JoinMorgan(C_INFO)
 FUNC INT DIA_Addon_Morgan_JoinMorgan_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Morgan_Sleep))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Morgan_JoinMorgan_Info()
@@ -276,7 +276,7 @@ instance DIA_Addon_Morgan_LurkerPlatt		(C_INFO)
 	nr		 	= 6;
 	condition	= DIA_Addon_Morgan_LurkerPlatt_Condition;
 	information	= DIA_Addon_Morgan_LurkerPlatt_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Pó³nocna pla¿a zosta³a oczyszczona.";
 };
 func int DIA_Addon_Morgan_LurkerPlatt_Condition ()
@@ -288,7 +288,7 @@ func int DIA_Addon_Morgan_LurkerPlatt_Condition ()
 	&& (Npc_IsDead(BeachWaran2))
 	&& (MIS_Addon_MorganLurker == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Morgan_LurkerPlatt_Info ()
@@ -308,7 +308,7 @@ func void DIA_Addon_Morgan_LurkerPlatt_Info ()
 		
 		MIS_Addon_MorganLurker = LOG_SUCCESS;
 				
-		B_GivePlayerXP(XP_BONUS_3);
+		B_GivePlayerXP (XP_Addon_Morgan_LurkerPlatt);
 	}
 	else
 	{
@@ -330,21 +330,21 @@ instance DIA_Addon_Morgan_Auftrag2		(C_INFO)
 	nr		 	= 99;
 	condition	= DIA_Addon_Morgan_Auftrag2_Condition;
 	information	= DIA_Addon_Morgan_Auftrag2_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jest jeszcze coœ, co mogê zrobiæ?";
 };
 func int DIA_Addon_Morgan_Auftrag2_Condition ()
 {
 	if (MIS_Addon_MorganLurker == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Morgan_Auftrag2_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Morgan_Auftrag2_15_00"); //Jest jeszcze coœ, co mogê zrobiæ?
 
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Morgan_Auftrag2_07_01"); //Na razie nie.
 		AI_Output	(self, other, "DIA_Addon_Morgan_Auftrag2_07_02"); //ZnajdŸ sobie jak¹œ kojê i zdob¹dŸ solidn¹ butelkê rumu.
@@ -373,7 +373,7 @@ instance DIA_Addon_Morgan_FOUNDTHEM(C_INFO)
 	nr			= 7;
 	condition	= DIA_Addon_Morgan_FOUNDTHEM_Condition;
 	information	= DIA_Addon_Morgan_FOUNDTHEM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Jeœli chodzi o Angusa i Hanka...";
 };                       
 FUNC INT DIA_Addon_Morgan_FOUNDTHEM_Condition()
@@ -381,7 +381,7 @@ FUNC INT DIA_Addon_Morgan_FOUNDTHEM_Condition()
 	if (MIS_Addon_Morgan_SeekTraitor != LOG_SUCCESS)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Skip_AngusHank))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -389,18 +389,18 @@ FUNC VOID DIA_Addon_Morgan_FOUNDTHEM_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Morgan_FOUNDTHEM_15_00"); //Jeœli chodzi o Angusa i Hanka...
 	
-	if (Morgan_AngusStory == false)
+	if (Morgan_AngusStory == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Addon_Morgan_FOUNDTHEM_07_01"); //Nawet mi o tym nie mów!
 		AI_Output (self ,other,"DIA_Addon_Morgan_FOUNDTHEM_07_02"); //Pewnie dorwali ich bandyci.
 		AI_Output (self ,other,"DIA_Addon_Morgan_FOUNDTHEM_07_03"); //A ten drañ Angus mia³ przy sobie mój pierœcieñ.
 		AI_Output (self ,other,"DIA_Addon_Morgan_FOUNDTHEM_07_04"); //No dobra, to by³ ju¿ jego pierœcieñ. Uczciwie wygra³ go w koœci.
 		AI_Output (self ,other,"DIA_Addon_Morgan_FOUNDTHEM_07_05"); //Ale ja pewnie bym siê odegra³, a tak - jak kamieñ w wodê.
-		Morgan_AngusStory = true;
+		Morgan_AngusStory = TRUE;
 	};
 
 	Info_ClearChoices (DIA_Addon_Morgan_FOUNDTHEM);
-	if (Npc_HasItems (other, ItRi_Morgan) > 0)
+	if (Npc_HasItems (other, ItRi_Addon_MorgansRing_Mission) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Morgan_FOUNDTHEM, "Znalaz³em ich.", DIA_Addon_Morgan_FOUNDTHEM_Now);
 	}
@@ -430,12 +430,12 @@ func void DIA_Addon_Morgan_FOUNDTHEM_NoRing()
 func void DIA_Addon_Morgan_FOUNDTHEM_GiveRing()
 {
 	AI_Output (other, self ,"DIA_Addon_Morgan_FOUNDTHEM_GiveRing_15_00"); //Oto on.
-	B_GiveInvItems (other, self ,ItRi_Morgan,1);
+	B_GiveInvItems (other, self ,ItRi_Addon_MorgansRing_Mission,1);
 	AI_Output (self, other,"DIA_Addon_Morgan_FOUNDTHEM_GiveRing_07_01"); //Tak, to on! Jesteœ naprawdê dobrym cz³owiekiem, wiesz?
 	AI_Output (self, other,"DIA_Addon_Morgan_FOUNDTHEM_GiveRing_07_02"); //WeŸ tê kamienn¹ tabliczkê. Mo¿e wygl¹da niepozornie, ale Garett da ci za ni¹ niez³¹ sumkê.
 	
 	MIS_Addon_Morgan_SeekTraitor = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_MorgansRing);
 	Info_ClearChoices (DIA_Addon_Morgan_FOUNDTHEM);
 	
 	//PATCH M.F.
@@ -459,12 +459,12 @@ INSTANCE DIA_Addon_Morgan_Francis(C_INFO)
 };                       
 FUNC INT DIA_Addon_Morgan_Francis_Condition()
 {
-	if (Francis_ausgeschissen == false)
+	if (Francis_ausgeschissen == FALSE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Addon_Skip_GregsHut))
-		|| (Francis.aivar[AIV_TalkedToPlayer] == true)
+		|| (Francis.aivar[AIV_TalkedToPlayer] == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};	
 };
@@ -501,15 +501,114 @@ FUNC INT DIA_Addon_Morgan_TRAIN_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Addon_Morgan_Sleep))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Morgan_TRAIN_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Morgan_TRAIN_15_00"); //Mo¿esz mnie czegoœ nauczyæ?
 	AI_Output (self ,other,"DIA_Addon_Morgan_TRAIN_07_01"); //Pewnie. Mogê ciê podszkoliæ w walce broni¹ jednorêczn¹.
-	self.aivar[AIV_CanTeach] = true;
 	
 	Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 	B_LogEntry (Topic_Addon_PIR_Teacher,Log_Text_Addon_MorganTeach);
+	
+	Morgan_Addon_TeachPlayer = TRUE;
 };
+
+// ------------------------------------------------------------
+// 		  		Unterrichte mich!
+// ------------------------------------------------------------
+var int Morgan_merke1h;
+var int Morgan_Labercount;
+// ------------------------------------------------------------
+instance DIA_Addon_Morgan_Teach(C_INFO)
+{
+	npc			= PIR_1353_Addon_Morgan;
+	nr			= 99;
+	condition	= DIA_Addon_Morgan_Teach_Condition;
+	information	= DIA_Addon_Morgan_Teach_Info;
+	permanent	= TRUE;
+	description	= "Naucz mnie tego!";
+};                       
+FUNC INT DIA_Addon_Morgan_Teach_Condition()
+{
+	if (Morgan_Addon_TeachPlayer == TRUE)
+	{
+		return TRUE;
+	};	
+};
+func VOID DIA_Addon_Morgan_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Addon_Morgan_Teach_15_00"); //Naucz mnie tego!
+	
+	Morgan_merke1h = other.HitChance[NPC_TALENT_1H];  
+	
+	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
+	Info_AddChoice 		(DIA_Addon_Morgan_Teach, DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
+};
+func VOID DIA_Addon_Morgan_Teach_Back()
+{
+	if (other.HitChance[NPC_TALENT_1H] > Morgan_Merke1h)
+	{
+		if (Morgan_Labercount == 0)
+		{
+			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_00"); //Pamiêtaj o jednym. Ca³a ta gadka o honorze to jeden wielki stek bzdur. Albo ty jego, albo on ciebie. To wszystko.
+			Morgan_Labercount = 1;	
+		}
+		else if (Morgan_Labercount == 1)
+		{
+			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_01"); //Musisz nauczyæ siê zadawaæ mocniejsze ciosy.
+			Morgan_Labercount = 2;	
+		}
+		else if (Morgan_Labercount == 2)
+		{
+			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_02"); //Ha ha ha! Przynajmniej umiesz ju¿ prawid³owo trzymaæ broñ.
+			Morgan_Labercount = 0;	
+		};
+	}
+	else if (other.HitChance[NPC_TALENT_1H] >= 75)
+	{
+		AI_Output (self ,other,"DIA_Addon_Morgan_Teach_Back_07_00"); //Jeœli chcesz nauczyæ siê czegoœ wiêcej, musisz znaleŸæ innego nauczyciela.
+	};
+	Info_ClearChoices (DIA_Addon_Morgan_Teach);
+};
+func VOID DIA_Addon_Morgan_Teach_1H_1()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 75);
+			
+	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
+	Info_AddChoice 		(DIA_Addon_Morgan_Teach,	DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
+};
+
+FUNC VOID DIA_Addon_Morgan_Teach_1H_5()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 75);
+
+	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
+	Info_AddChoice 		(DIA_Addon_Morgan_Teach,	DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
+	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

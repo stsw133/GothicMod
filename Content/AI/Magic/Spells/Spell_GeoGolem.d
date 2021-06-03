@@ -8,7 +8,7 @@ const int SPL_Level_GeoGolem			=	15;
 var C_NPC NPC_GeoGolem;
 
 ///******************************************************************************************
-INSTANCE Spell_GeoGolem (C_Spell_Proto)
+instance Spell_GeoGolem (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
@@ -16,7 +16,7 @@ INSTANCE Spell_GeoGolem (C_Spell_Proto)
 
 func int Spell_Logic_GeoGolem (var int manaInvested)
 {
-	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoGolem/5))
+	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoGolem/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoGolem))
 	|| (!Npc_IsDead(NPC_GeoGolem))
 	{
@@ -32,15 +32,16 @@ func void Spell_Cast_GeoGolem()
 {
 	if (Npc_IsDead(NPC_GeoGolem))
 	{
-		if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoGolem/5))
+		if (Npc_GetActiveSpellIsScroll(self))
 		{
-			self.attribute[ATR_MANA] -= SPL_Cost_GeoGolem/5;
+			self.attribute[ATR_MANA] -= SPL_Cost_GeoGolem/SPL_Cost_Scroll;
 		}
-		else if (self.attribute[ATR_MANA] >= SPL_Cost_GeoGolem)
+		else
 		{
 			self.attribute[ATR_MANA] -= SPL_Cost_GeoGolem;
 		};
 	};
+	
 	self.aivar[AIV_SelectSpell] += 1;
 	
 	
@@ -71,6 +72,6 @@ func void Spell_Cast_GeoGolem()
 	}
 	else
 	{
-		Wld_SpawnNpcRange (self, Golem, 1, 500);
+		//Wld_SpawnNpcRange (self, Golem, 1, 500);
 	};
 };

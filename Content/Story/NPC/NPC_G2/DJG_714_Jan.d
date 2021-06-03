@@ -1,42 +1,41 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DJG_714_Jan (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Jan";
 	guild 								=	GIL_DJG;
 	id 									=	714;
 	voice 								=	10;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Strong-5);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Richter, 0, ITAR_DJG_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_714;
 };
 
-FUNC VOID Rtn_Start_714()
+func void Rtn_Start_714()
 {
 	TA_Sit_Bench	(08,00,23,00, "OC_JAN");
     TA_Sit_Bench	(23,00,08,00, "OC_JAN");
 };
-FUNC VOID Rtn_Smith_714()
+func void Rtn_Smith_714()
 {
 	TA_Smith_Fire	(08,00,08,30, "OC_SMITH_FIRE");
     TA_Smith_Anvil	(08,30,09,00, "OC_SMITH_ANVIL");

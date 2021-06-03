@@ -7,15 +7,15 @@ INSTANCE DIA_Tandor_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Tandor_EXIT_Condition;
 	information = DIA_Tandor_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Tandor_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -32,14 +32,14 @@ instance DIA_Tandor_Hallo		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Tandor_Hallo_Condition;
 	information	 = 	DIA_Tandor_Hallo_Info;
-	permanent 	 =  false;
-	important 	 =  true;
+	permanent 	 =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_Tandor_Hallo_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Tandor_Hallo_Info ()
@@ -60,14 +60,14 @@ instance DIA_Tandor_Trupp		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Tandor_Trupp_Condition;
 	information	 = 	DIA_Tandor_Trupp_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description  =  "Co siê sta³o z oddzia³em?";
 };
 func int DIA_Tandor_Trupp_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Tandor_Hallo)
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Tandor_Trupp_Info ()
@@ -87,13 +87,13 @@ instance DIA_Tandor_Trade		(C_INFO)
 	nr			 = 	900;
 	condition	 = 	DIA_Tandor_Trade_Condition;
 	information	 = 	DIA_Tandor_Trade_Info;
-	permanent 	 =  true;
-	trade		 =	true;
+	permanent 	 =  TRUE;
+	trade		 =	TRUE;
 	description	 = 	"Poka¿ mi swoje towary.";
 };
 func int DIA_Tandor_Trade_Condition ()
 {
-		return true;
+		return TRUE;
 };
 func void DIA_Tandor_Trade_Info ()
 {
@@ -116,9 +116,9 @@ func int DIA_Tandor_Equipment_Condition ()
 {
 	if  Npc_KnowsInfo (hero, DIA_Garond_Equipment)
 	&& (other.guild == GIL_MIL)
-	&& (Kapitel == 8)
+	&& (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Tandor_Equipment_Info ()
@@ -196,14 +196,14 @@ INSTANCE DIA_Tandor_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Tandor_KAP3_EXIT_Condition;
 	information	= DIA_Tandor_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Tandor_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Tandor_KAP3_EXIT_Info()
@@ -231,14 +231,14 @@ INSTANCE DIA_Tandor_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Tandor_KAP4_EXIT_Condition;
 	information	= DIA_Tandor_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Tandor_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Tandor_KAP4_EXIT_Info()
@@ -255,16 +255,16 @@ instance DIA_Tandor_News		(C_INFO)
 	nr			 = 	40;
 	condition	 = 	DIA_Tandor_News_Condition;
 	information	 = 	DIA_Tandor_News_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Masz jakieœ wieœci?";
 };
 
 func int DIA_Tandor_News_Condition ()
 {
-	if (Kapitel	== 10)
+	if (Kapitel	== 4)
 	&& (Npc_KnowsInfo (hero,DIA_Tandor_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -300,14 +300,14 @@ INSTANCE DIA_Tandor_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Tandor_KAP5_EXIT_Condition;
 	information	= DIA_Tandor_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Tandor_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Tandor_KAP5_EXIT_Info()
@@ -324,17 +324,17 @@ instance DIA_Tandor_WASISTLOS		(C_INFO)
 	nr		 = 	51;
 	condition	 = 	DIA_Tandor_WASISTLOS_Condition;
 	information	 = 	DIA_Tandor_WASISTLOS_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Czemu jesteœ taki przybity?";
 };
 
 func int DIA_Tandor_WASISTLOS_Condition ()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 		&& (Npc_KnowsInfo (hero,DIA_Tandor_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -342,7 +342,7 @@ func void DIA_Tandor_WASISTLOS_Info ()
 {
 	AI_Output			(other, self, "DIA_Tandor_WASISTLOS_15_00"); //Czemu jesteœ taki przybity?
 
-	if (MIS_OCGateOpen == true)
+	if (MIS_OCGateOpen == TRUE)
 	{
 	AI_Output			(self, other, "DIA_Tandor_WASISTLOS_08_01"); //To przez orków, tych kreatur jest coraz wiêcej, w koñcu wszystkich nas pozabijaj¹.
 	}
@@ -372,14 +372,14 @@ INSTANCE DIA_Tandor_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Tandor_KAP6_EXIT_Condition;
 	information	= DIA_Tandor_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Tandor_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Tandor_KAP6_EXIT_Info()

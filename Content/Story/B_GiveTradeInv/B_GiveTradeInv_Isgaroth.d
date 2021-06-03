@@ -1,79 +1,138 @@
-//******************************************************************************************
+///******************************************************************************************
 
 var int Isgaroth_ItemsGiven_Chapter;
 
-//******************************************************************************************
-FUNC VOID B_GiveTradeInv_Isgaroth (var C_NPC slf)
+///******************************************************************************************
+func void B_GiveTradeInv_Isgaroth (var C_NPC slf)
 {
 	if (Kapitel >= 7)
 	&& (Isgaroth_ItemsGiven_Chapter < 1)
 	{
-		CreateInvItems (slf, ItMi_Gold, 100+Hlp_Random(200));
-
-		CreateInvItems (slf, ItSc_Sleep, 1+Hlp_Random(2)); 
-		CreateInvItems (slf, ItMi_Sulfur, 2+Hlp_Random(4));
-		CreateInvItems (slf, ItPo_Mana_01, 2+Hlp_Random(4));
-		CreateInvItems (slf, ItPo_Health_01, 3+Hlp_Random(6));
-
-		CreateInvItems (slf, ItRi_Eternity_01, 1+Hlp_Random(2));
-
+		CreateInvItems	 (slf, ItMi_Gold, 100);
+		
+		CreateInvItems   (slf, ItSc_Sleep, 1);
+		CreateInvItems   (slf, ItMi_Sulfur, 2);
+		CreateInvItems   (slf, ItPo_Mana_01, 2);
+		CreateInvItems   (slf, ItPo_Health_01, 3);
+		CreateInvItems   (slf, ItMi_Pitch, 1);
+		
+		CreateInvItems   (slf, ItSc_Light, 5);
+		CreateInvItems   (slf, ItSc_Firebolt, 5);
+		CreateInvItems   (slf, ItSc_Zap, 5);
+		CreateInvItems   (slf, ItSc_LightHeal, 5);
+		CreateInvItems   (slf, ItSc_SumGobSkel, 2);
+		
+		CreateInvItems   (slf, ItRi_Energy_01, 1);
+		
 		Isgaroth_ItemsGiven_Chapter = 1;
 	};
-
+	
 	if (Kapitel >= 8)
 	&& (Isgaroth_ItemsGiven_Chapter < 2)
 	{
-		CreateInvItems (slf, ItMi_Gold, 100+Hlp_Random(200));
-
-		CreateInvItems (slf, ItMi_Sulfur, 5+Hlp_Random(10));
-
-		CreateInvItems (slf, ItPo_Health_01, 9+Hlp_Random(18));
-		CreateInvItems (slf, ItPo_Mana_01, 7+Hlp_Random(14));
-		CreateInvItems (slf, ItSc_Sleep, 2+Hlp_Random(4));
-
+		CreateInvItems (slf, ItMi_Gold, 100);
+		
+		CreateInvItems   (slf, ItMi_Sulfur, 5);
+		CreateInvItems   (slf, ItMi_Quartz, 3);
+		CreateInvItems   (slf, ItMi_Pitch, 1);
+		
+		CreateInvItems   (slf, ItPo_Health_01, 7);
+		CreateInvItems   (slf, ItPo_Health_02, 2);
+		CreateInvItems   (slf, ItPo_Mana_01, 7);
+		CreateInvItems   (slf, ItSc_InstantFireball, 5);
+		CreateInvItems   (slf, ItSc_SumWolf, 5);
+		CreateInvItems   (slf, ItSc_Windfist, 4);
+		CreateInvItems   (slf, ItSc_Sleep, 2);
+		CreateInvItems   (slf, ItSc_Icebolt, 5);
+		
 		Isgaroth_ItemsGiven_Chapter = 2;
 	};
-
+	
 	if (Kapitel >= 9)
 	&& (Isgaroth_ItemsGiven_Chapter < 3)
 	{
-		CreateInvItems (slf, ItMi_Gold, 100+Hlp_Random(200));
-
-		CreateInvItems (slf, ItMi_Sulfur, 4+Hlp_Random(8));
-
-		CreateInvItems (slf, ItPo_Health_01, 15+Hlp_Random(30));
-		CreateInvItems (slf, ItPo_Mana_01, 25+Hlp_Random(50));
-
+		CreateInvItems (slf, ItMi_Gold, 100);
+		
+		CreateInvItems   (slf, ItMi_Sulfur, 4);
+		CreateInvItems   (slf, ItMi_Quartz, 5);
+		CreateInvItems   (slf, ItMi_Rockcrystal, 2);
+		CreateInvItems   (slf, ItMi_Coal, 3);
+		CreateInvItems   (slf, ItMi_Pitch, 1);
+		
+		CreateInvItems   (slf, ItPo_Health_02, 9);
+		CreateInvItems   (slf, ItPo_Health_03, 6);
+		CreateInvItems   (slf, ItPo_Mana_01, 25);
+		
+		CreateInvItems   (slf, ItSc_MediumHeal,	5);
+		
+		CreateInvItems   (slf, ItSc_Firestorm, 5);
+		CreateInvItems   (slf, ItSc_SumSkel, 3);
+		CreateInvItems   (slf, ItSc_Fear, 2);
+		CreateInvItems   (slf, ItSc_IceCube, 3);
+		CreateInvItems   (slf, ItSc_ThunderBall, 5);
+		CreateInvItems   (slf, ItSc_TrfScavenger, 1);
+		CreateInvItems   (slf, ItSc_TrfSheep, 1);
+		
 		Isgaroth_ItemsGiven_Chapter = 3;
 	};
-
+	
 	if (Kapitel >= 10)
 	&& (Isgaroth_ItemsGiven_Chapter < 4)
 	{
-		CreateInvItems (slf, ItMi_Gold, 150+Hlp_Random(300));
-
-		CreateInvItems (slf, ItMi_Sulfur, 5+Hlp_Random(10));
-		CreateInvItems (slf, ItMi_Aquamarine, 2+Hlp_Random(4));
-
-		CreateInvItems (slf, ItPo_Health_01, 25+Hlp_Random(50));
-		CreateInvItems (slf, ItPo_Mana_01, 50+Hlp_Random(100));
-
-		CreateInvItems (slf, ItAm_Mana_01, 1+Hlp_Random(2));
-
+		CreateInvItems (slf, ItMi_Gold, 150);
+		
+		CreateInvItems   (slf, ItMi_Sulfur, 5);
+		CreateInvItems   (slf, ItMi_Quartz, 6);
+		CreateInvItems   (slf, ItMi_Rockcrystal, 3);
+		CreateInvItems   (slf, ItMi_Coal, 4);
+		CreateInvItems   (slf, ItMi_Aquamarine, 2);
+		
+		CreateInvItems   (slf, ItPo_Health_02, 15);
+		CreateInvItems   (slf, ItPo_Health_03, 10);
+		CreateInvItems   (slf, ItPo_Mana_01, 25);
+		CreateInvItems   (slf, ItPo_Mana_02, 25);
+		
+		CreateInvItems   (slf, ItSc_SumGol, 4);
+		CreateInvItems   (slf, ItSc_HarmUndead, 2);
+		
+		CreateInvItems   (slf, ItSc_TrfGiantBug, 1);
+		CreateInvItems   (slf, ItSc_TrfWolf, 1);
+		CreateInvItems   (slf, ItSc_TrfSnapper, 1);
+		CreateInvItems   (slf, ItSc_TrfWarg, 1);
+		CreateInvItems   (slf, ItSc_LightningFlash, 4);
+		CreateInvItems   (slf, ItSc_ChargeFireball, 2);
+		
+		CreateInvItems   (slf, ItAm_Mana_01, 1);
+		
 		Isgaroth_ItemsGiven_Chapter = 4;
 	};
-
+	
 	if (Kapitel >= 11)
 	&& (Isgaroth_ItemsGiven_Chapter < 5)
 	{
-		CreateInvItems (slf, ItMi_Gold, 200+Hlp_Random(400));
-
-		CreateInvItems (slf, ItMi_Sulfur, 6+Hlp_Random(12));
-		CreateInvItems (slf, ItMi_Aquamarine, 3+Hlp_Random(6));
-
-		CreateInvItems (slf, ItPo_Health_01, 35+Hlp_Random(70));
-		CreateInvItems (slf, ItPo_Mana_01, 100+Hlp_Random(200));
-
+		CreateInvItems (slf, ItMi_Gold, 200);
+		
+		CreateInvItems   (slf, ItMi_Sulfur, 6);
+		CreateInvItems   (slf, ItMi_Quartz, 4);
+		CreateInvItems   (slf, ItMi_Rockcrystal, 6);
+		CreateInvItems   (slf, ItMi_Coal, 3);
+		CreateInvItems   (slf, ItMi_Aquamarine, 3);
+		CreateInvItems   (slf, ItMi_DarkPearl, 1);
+		CreateInvItems   (slf, ItMi_HolyWater, 1);
+		
+		CreateInvItems   (slf, ItPo_Health_02, 20);
+		CreateInvItems   (slf, ItPo_Health_03, 15);
+		CreateInvItems   (slf, ItPo_Mana_01, 50);
+		CreateInvItems   (slf, ItPo_Mana_02, 50);
+		
+		CreateInvItems   (slf, ItSc_IceWave, 4);
+		CreateInvItems   (slf, ItSc_SumDemon, 2);
+		CreateInvItems   (slf, ItSc_FullHeal, 3);
+		CreateInvItems   (slf, ItSc_Pyrokinesis, 3);
+		
+		CreateInvItems   (slf, ItSc_TrfLurker, 1);
+		CreateInvItems   (slf, ItSc_TrfDragonSnapper, 1);
+		
 		Isgaroth_ItemsGiven_Chapter = 5;
 	};
 };

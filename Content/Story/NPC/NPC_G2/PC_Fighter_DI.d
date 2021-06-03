@@ -1,44 +1,43 @@
-//******************************************************************************************
-INSTANCE PC_Fighter_DI (Npc_Default)
+///******************************************************************************************
+instance PC_Fighter_DI (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Gorn";
 	guild 								=	GIL_DJG;
 	id 									=	23;
 	voice 								=	12;
-	flags       						=	0;
 	npctype								=	NPCTYPE_FRIEND;
 
-	// ------ Aivars ------
-	aivar[AIV_PARTYMEMBER]				=	true;	
+	/// ------ AI vars ------
+	aivar[AIV_PARTYMEMBER]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 60);
 	B_SetFightSkills (self, FightTalent_Strong);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Sld_Axe);
 	EquipItem (self, ItRw_Crossbow_M_01);
-	CreateInvItems (self, ItPo_Health_03, 6);
+	CreateInvItems (self, ItPo_Health_02, 6);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Fighter", Face_Gorn, 0, ITAR_DJG_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_23;
 };
 
-FUNC VOID Rtn_Start_23()
+func void Rtn_Start_23()
 {
 	TA_Stand_Guarding	(06,00,07,00, "SHIP_DECK_03");
 
@@ -156,7 +155,7 @@ FUNC VOID Rtn_Start_23()
 	TA_Stand_Guarding	(04,00,05,00, "SHIP_DECK_03");
 	TA_Stand_Guarding	(05,00,06,00, "SHIP_DECK_37");
 };
-FUNC VOID Rtn_UNDEADDRAGONDEAD_23()
+func void Rtn_UNDEADDRAGONDEAD_23()
 {
 	TA_Stand_Guarding	(08,00,23,00, "DI_SHIP_03");
 	TA_Stand_Guarding	(23,00,08,00, "DI_SHIP_03");

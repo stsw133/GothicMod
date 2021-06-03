@@ -7,14 +7,14 @@ INSTANCE DIA_Babo_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Babo_Kap1_EXIT_Condition;
 	information = DIA_Babo_Kap1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Babo_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap1_EXIT_Info()
@@ -30,19 +30,21 @@ INSTANCE DIA_Babo_Hello   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Babo_Hello_Condition;
 	information = DIA_Babo_Hello_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Babo_Hello_Condition()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 	&& (other.guild == GIL_NOV)
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Hello_Info()
 {
+	
+	
 	AI_Output (self ,other,"DIA_Babo_Hello_03_00"); //Ty te¿ tu jesteœ nowy, prawda?
 	AI_Output (other,self ,"DIA_Babo_Hello_15_01"); //Tak. D³ugo tu jesteœ?
 	AI_Output (self ,other,"DIA_Babo_Hello_03_02"); //Od czterech tygodni. Dosta³eœ ju¿ kij do walki?
@@ -51,8 +53,9 @@ FUNC VOID DIA_Babo_Hello_Info()
 	AI_Output (other,self ,"DIA_Babo_Hello_15_05"); //No có¿, mia³em ju¿ kiedyœ w rêkach broñ...
 	AI_Output (self ,other,"DIA_Babo_Hello_03_06"); //Jeœli chcesz, mogê ciê czegoœ nauczyæ. Ale mam proœbê...
 
-	B_GiveInvItems (self, other, ITMW_2h_NOV_Mace, 1);
-	AI_EquipBestMeleeWeapon(self);
+	B_GiveInvItems (self,other,ITMW_1h_NOV_Mace,1);
+	AI_EquipBestMeleeWeapon (self);
+	
 };
 //***********************************************************************
 //	Info Anliegen
@@ -63,15 +66,15 @@ INSTANCE DIA_Babo_Anliegen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Babo_Anliegen_Condition;
 	information = DIA_Babo_Anliegen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Co to za proœba?";
 };
 FUNC INT DIA_Babo_Anliegen_Condition()
 {
-	if (other.guild == GIL_NOV)
+	if  (other.guild == GIL_NOV)
 	&& (Npc_KnowsInfo (other, DIA_Babo_Hello))
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Anliegen_Info()
@@ -83,7 +86,7 @@ FUNC VOID DIA_Babo_Anliegen_Info()
 	
 	Log_CreateTopic (Topic_BaboTrain,LOG_MISSION);
 	Log_SetTopicStatus (Topic_BaboTrain,LOG_RUNNING);
-	B_LogEntry (Topic_BaboTrain, "Jeœli przekonam paladyna Sergia, aby poæwiczy³ z Babo, ten ostatni nauczy mnie walczyæ orê¿em dwurêcznym.");
+	B_LogEntry (Topic_BaboTrain,"Jeœli przekonam paladyna Sergia, aby poæwiczy³ z Babo, ten ostatni nauczy mnie walczyæ orê¿em dwurêcznym.");
 	
 };
 //***********************************************************************
@@ -95,15 +98,17 @@ INSTANCE DIA_Babo_Sergio   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Babo_Sergio_Condition;
 	information = DIA_Babo_Sergio_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Rozmawia³em z Sergiem.";
 };
 FUNC INT DIA_Babo_Sergio_Condition()
 {
 	if Npc_KnowsInfo (other, DIA_Sergio_Babo)
 	&& (other.guild == GIL_NOV)
+	
+	
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Sergio_Info()
@@ -112,14 +117,135 @@ FUNC VOID DIA_Babo_Sergio_Info()
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_01"); //Dziêkujê! To dla mnie zaszczyt!
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_02"); //Jeœli chcesz, wyjaœniê ci te¿ tajniki walki.
 	
-	self.aivar[AIV_CanTeach] = true;
-	Babo_Training = true;
-	B_GivePlayerXP(XP_Ambient*2);
+	Babo_TeachPlayer = TRUE;	
+	Babo_Training = TRUE;
+	B_GivePlayerXP ((XP_Ambient)*2);
 	
 	Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
-	B_LogEntry (Topic_KlosterTeacher, "Babo mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
+	B_LogEntry (Topic_KlosterTeacher,"Babo mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
+};
+//***************************************************************************************
+//			Ich will trainieren
+//***************************************************************************************
+INSTANCE DIA_Babo_Teach(C_INFO)
+{
+	npc			= NOV_612_Babo;
+	nr			= 100;
+	condition	= DIA_Babo_Teach_Condition;
+	information	= DIA_Babo_Teach_Info;
+	permanent	= TRUE;
+	description = "Jestem gotów do treningu.";
+};                       
+//----------------------------------
+var int DIA_Babo_Teach_permanent;
+var int Babo_Labercount;
+//----------------------------------
+FUNC INT DIA_Babo_Teach_Condition()
+{
+	if ((Babo_TeachPlayer == TRUE)
+	&& (DIA_Babo_Teach_permanent == FALSE))
+	|| (other.guild == GIL_KDF)
+	{
+		return TRUE;
+	};	
+};
+ 
+// -------------------------------
+var int  babo_merk2h;
+// -------------------------------
+FUNC VOID DIA_Babo_Teach_Info()
+{	
+	babo_merk2h = other.HitChance [NPC_TALENT_2H]; 
+	
+	AI_Output (other,self ,"DIA_Babo_Teach_15_00"); //Jestem gotów do treningu.
+	
+	Info_ClearChoices 	(DIA_Babo_Teach);
+	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);
+
+};
+FUNC VOID DIA_Babo_Teach_Back ()
+{
+	if (other.HitChance[NPC_TALENT_2H] >= 75)
+	{
+		AI_Output (self,other,"DIA_DIA_Babo_Teach_Back_03_00"); //Przekaza³em ci ju¿ ca³¹ swoj¹ wiedzê o walce orê¿em oburêcznym.
+		
+		DIA_Babo_Teach_permanent = TRUE;
+	};
+	Info_ClearChoices (DIA_Babo_Teach);
 };
 
+FUNC VOID DIA_Babo_Teach_2H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 75);
+	
+	if (other.HitChance [NPC_TALENT_2H]  >  babo_merk2h)
+	{
+		if (Babo_Labercount == 0)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_00"); //Walcz za Innosa. Innos jest naszym ¿yciem, a wiara - najpotê¿niejszym orê¿em.
+		};
+		if (Babo_Labercount == 1)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_01"); //S³uga Innosa nigdy nie prowokuje swojego przeciwnika - zawsze dzia³a z zaskoczenia!
+		};
+		if (Babo_Labercount == 2)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_02"); //Wszêdzie, gdzie siê udasz, miej ze sob¹ swój kostur.
+		};
+		if (Babo_Labercount == 3)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_03"); //S³uga Innosa zawsze jest gotów do walki. Jeœli nie posiadasz mocy magicznej, twoj¹ podstawow¹ broni¹ jest kostur.
+		};
+		
+		Babo_Labercount = Babo_Labercount +1;
+		if (Babo_Labercount >= 3)
+		{
+			Babo_Labercount = 0;	
+		};
+	};
+	Info_ClearChoices 	(DIA_Babo_Teach);
+	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);	
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);	
+};
+
+FUNC VOID DIA_Babo_Teach_2H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 75);
+	
+	if (other.HitChance [NPC_TALENT_2H]  >  babo_merk2h)
+	{
+		if (Babo_Labercount == 0)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_00"); //Broni¹ s³ugi Innosa jest nie tylko jego kostur, lecz równie¿ waleczne serce.
+		};
+		if (Babo_Labercount == 1)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_01"); //Musisz wiedzieæ, kiedy mo¿esz siê wycofaæ.
+		};
+		if (Babo_Labercount == 2)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_02"); //Pamiêtaj, dobra walka to taka, w której to ty kontrolujesz swojego przeciwnika, nie daj¹c mu najmniejszej szansy na przejêcie kontroli nad tob¹.
+		};
+		if (Babo_Labercount == 3)
+		{
+			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_03"); //Przegrywasz tylko wtedy, gdy siê poddasz.
+		};
+		
+		Babo_Labercount = Babo_Labercount +1;
+		if (Babo_Labercount >= 3)
+		{
+			Babo_Labercount = 0;	
+		};
+	};
+	
+	Info_ClearChoices 	(DIA_Babo_Teach);
+	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);	
+	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);	
+};
 // *************************************************************************
 // 							Wurst verteilen
 // *************************************************************************
@@ -129,18 +255,18 @@ INSTANCE DIA_Babo_Wurst(C_INFO)
 	nr			= 2;
 	condition	= DIA_Babo_Wurst_Condition;
 	information	= DIA_Babo_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Proszê, weŸ kie³basê.";
 };                       
 
 FUNC INT DIA_Babo_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Babo_Wurst_Info()
@@ -152,7 +278,7 @@ FUNC VOID DIA_Babo_Wurst_Info()
 	AI_Output (self, other, "DIA_Babo_Wurst_03_04"); //Daj spokój. Dam ci za ni¹ zwój z czarem 'Ognista strza³a'.
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -173,7 +299,7 @@ FUNC VOID DIA_Babo_Wurst_JA()
 	AI_Output (self, other, "DIA_Babo_Wurst_JA_03_01"); //Dobrze. Oto twój zwój z czarem.
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	B_GiveInvItems (self, other, ItSC_Sleep, 1);
+	B_GiveInvItems (self, other, ItSC_Firebolt, 1);
 	
 	Info_ClearChoices (DIA_Babo_Wurst);
 };
@@ -193,7 +319,7 @@ INSTANCE DIA_Babo_YouAndAgon   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Babo_YouAndAgon_Condition;
 	information = DIA_Babo_YouAndAgon_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Co zasz³o miêdzy tob¹ i Agonem?";
 };
 
@@ -202,7 +328,7 @@ FUNC INT DIA_Babo_YouAndAgon_Condition()
 	if Npc_KnowsInfo (other,DIA_Opolos_Monastery)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 
@@ -223,15 +349,15 @@ INSTANCE DIA_Babo_WhyDidAgon  (C_INFO)
 	nr          = 4;
 	condition   = DIA_Babo_WhyDidAgon_Condition;
 	information = DIA_Babo_WhyDidAgon_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Dlaczego Agon to zrobi³?";
 };
 FUNC INT DIA_Babo_WhyDidAgon_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Babo_YouAndAgon))
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Babo_WhyDidAgon_Info()
@@ -248,15 +374,15 @@ INSTANCE DIA_Babo_PlantLore  (C_INFO)
 	nr          = 5;
 	condition   = DIA_Babo_PlantLore_Condition;
 	information = DIA_Babo_PlantLore_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Wygl¹da na to, ¿e wiesz co nieco o roœlinach?";
 };
 FUNC INT DIA_Babo_PlantLore_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Babo_YouAndAgon))
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Babo_PlantLore_Info()
@@ -279,28 +405,76 @@ INSTANCE DIA_Babo_Fegen  (C_INFO)
 	nr          = 2;
 	condition   = DIA_Babo_Fegen_Condition;
 	information = DIA_Babo_Fegen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Mam posprz¹taæ komnaty nowicjuszy.";
 };
 FUNC INT DIA_Babo_Fegen_Condition()
 {
 	if (MIS_ParlanFegen == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Babo_Fegen_Info()
 {
 	AI_Output (other,self ,"DIA_Babo_Fegen_15_00"); //Mam posprz¹taæ komnaty nowicjuszy.
 	AI_Output (self ,other,"DIA_Babo_Fegen_03_01"); //Wzi¹³eœ spory ciê¿ar na barki. Wiesz co - pomogê ci. Sam nigdy tego nie skoñczysz.
+	AI_Output (self ,other,"DIA_Babo_Fegen_03_02"); //Ale naprawdê potrzebujê zwoju z czarem 'Piêœæ wichru' - wiesz, mia³em szczêœcie i pozwolili mi przeczytaæ o tym ksi¹¿kê.
+	AI_Output (self ,other,"DIA_Babo_Fegen_03_03"); //No i teraz, oczywiœcie, chcê wypróbowaæ ten czar. Wiêc przynieœ mi ten zwój, a chêtnie ci pomogê.
 	
-	NOV_Helfer += 1;
-	B_GivePlayerXP(XP_BONUS_0);
-	AI_StopProcessInfos(self);
-	Npc_ExchangeRoutine (self, "FEGEN");
-
-	B_LogEntry 	(Topic_ParlanFegen,"Babo pomo¿e mi pozamiataæ komnaty nowicjuszy.");
+	B_LogEntry 	(Topic_ParlanFegen,"Babo pomo¿e mi pozamiataæ komnaty nowicjuszy, jeœli przyniosê mu zwój Piêœci wichru.");
 };
+//***********************************************************************
+//	Windfaust abgeben
+//***********************************************************************
+INSTANCE DIA_Babo_Windfaust  (C_INFO)
+{
+	npc         = NOV_612_Babo;
+	nr          = 3;
+	condition   = DIA_Babo_Windfaust_Condition;
+	information = DIA_Babo_Windfaust_Info;
+	permanent   = TRUE;
+	description	= "Co do tego zwoju... (oddaj zwój Piêœci wichru)";
+};
+//---------------------------------
+var int DIA_Babo_Windfaust_permanent;
+//---------------------------------
+FUNC INT DIA_Babo_Windfaust_Condition()
+{
+	if (MIS_ParlanFegen == LOG_RUNNING)
+	&& (Npc_KnowsInfo (other, DIA_Babo_Fegen))
+	&& (DIA_Babo_Windfaust_permanent == FALSE)
+	{
+		return TRUE;
+	};		
+};
+FUNC VOID DIA_Babo_Windfaust_Info()
+{
+	AI_Output (other,self ,"DIA_Babo_Windfaust_15_00"); //Co do tego zwoju z zaklêciem...
+	AI_Output (self ,other,"DIA_Babo_Windfaust_03_01"); //Czy masz dla mnie zaklêcie 'Piêœæ wichru'?
+	
+	if B_GiveInvItems (other, self, ItSc_Windfist,1)
+	{ 
+		AI_Output (other,self ,"DIA_Babo_Windfaust_15_02"); //Tu jest zwój, o który ci chodzi³o.
+		AI_Output (self ,other,"DIA_Babo_Windfaust_03_03"); //To dobrze. A wiêc pomogê ci posprz¹taæ komnaty.
+		
+		NOV_Helfer = (NOV_Helfer +1);
+		DIA_Babo_Windfaust_permanent = TRUE; 
+		B_GivePlayerXP (XP_Feger);
+		AI_StopProcessInfos (self);
+		Npc_ExchangeRoutine (self,"FEGEN");
+		
+		B_LogEntry 	(Topic_ParlanFegen,"Babo pomo¿e mi pozamiataæ komnaty nowicjuszy.");
+		
+	}
+	else
+	{
+		AI_Output (other,self ,"DIA_Babo_Windfaust_15_04"); //Nie, jeszcze nie.
+		AI_Output (self ,other,"DIA_Babo_Windfaust_03_05"); //A wiêc poczekam, a¿ je zdobêdziesz.
+	};
+	AI_StopProcessInfos (self);
+};
+
 
 //***********************************************************************
 //	 Wie ist das Leben hier im Kloster?
@@ -311,14 +485,14 @@ INSTANCE DIA_Babo_Life   (C_INFO)
 	nr          = 10;
 	condition   = DIA_Babo_Life_Condition;
 	information = DIA_Babo_Life_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Jak tu siê ¿yje, w klasztorze?";
 };
 FUNC INT DIA_Babo_Life_Condition()
 {
 	if (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Life_Info()
@@ -328,7 +502,7 @@ FUNC VOID DIA_Babo_Life_Info()
 	AI_Output (self ,other,"DIA_Babo_Life_03_02"); //Oczywiœcie, wielu nowicjuszy chce studiowaæ nauki Innosa w bibliotece. Pragn¹ byæ gotowi, kiedy zostan¹ wybrani.
 	AI_Output (self ,other,"DIA_Babo_Life_03_03"); //Ale ja myœlê, ¿e najlepszym przygotowaniem do Próby Magii jest wykonywanie w³asnych zadañ.
 	
-	if (Npc_KnowsInfo (other,DIA_Igaranz_Choosen) == false)
+	if (Npc_KnowsInfo (other,DIA_Igaranz_Choosen) == FALSE)
 	{
 		AI_Output (other,self ,"DIA_Babo_Life_15_04"); //O co chodzi z tym Wybranym i Prób¹?
 		AI_Output (self ,other,"DIA_Babo_Life_03_05"); //Porozmawiaj z bratem Igarazem. On wie du¿o na ten temat.
@@ -343,15 +517,15 @@ INSTANCE DIA_Babo_HowIsIt   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Babo_HowIsIt_Condition;
 	information = DIA_Babo_HowIsIt_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Jak siê masz?";
 };
 FUNC INT DIA_Babo_HowIsIt_Condition()
 {
 	if (hero.guild == GIL_KDF)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 //--------------------
@@ -366,10 +540,10 @@ FUNC VOID DIA_Babo_HowIsIt_Info()
 		AI_Output (self ,other,"DIA_Babo_HowIsIt_03_01"); //Dziêkujê magom za moje zadanie.
 		AI_Output (self ,other,"DIA_Babo_HowIsIt_03_02"); //Cieszy mnie praca w ogrodzie i mam nadziejê, ¿e magowie s¹ ze mnie zadowoleni, Panie.
 		
-		if (Babo_XPgiven == false)
+		if (Babo_XPgiven == FALSE)
 		{
-			B_GivePlayerXP(XP_Ambient);
-			Babo_XPgiven = true;
+			B_GivePlayerXP (XP_Ambient);
+			Babo_XPgiven = TRUE;
 		};
 	}
 	else
@@ -393,14 +567,14 @@ INSTANCE DIA_Babo_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Babo_Kap2_EXIT_Condition;
 	information = DIA_Babo_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Babo_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap2_EXIT_Info()
@@ -420,14 +594,14 @@ INSTANCE DIA_Babo_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Babo_Kap3_EXIT_Condition;
 	information = DIA_Babo_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Babo_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_EXIT_Info()
@@ -447,14 +621,14 @@ INSTANCE DIA_Babo_Kap3_Hello   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Babo_Kap3_Hello_Condition;
 	information = DIA_Babo_Kap3_Hello_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tu porabiasz?";
 };
 FUNC INT DIA_Babo_Kap3_Hello_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_Hello_Info()
@@ -481,16 +655,16 @@ INSTANCE DIA_Babo_Kap3_KeepTheFaith   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Babo_Kap3_KeepTheFaith_Condition;
 	information = DIA_Babo_Kap3_KeepTheFaith_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie wolno ci traciæ wiary.";
 };
 FUNC INT DIA_Babo_Kap3_KeepTheFaith_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Npc_KnowsInfo (other,DIA_Babo_Kap3_Hello))
 	&& (hero.guild == GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_KeepTheFaith_Info()
@@ -500,7 +674,7 @@ FUNC VOID DIA_Babo_Kap3_KeepTheFaith_Info()
 	AI_Output (other,self ,"DIA_Babo_Kap3_KeepTheFaith_15_02"); //Ka¿dy z nas wystawiany jest na ciê¿kie próby.
 	AI_Output (self ,other,"DIA_Babo_Kap3_KeepTheFaith_03_03"); //Tak, Panie. Bêdê o tym pamiêta³. Dziêkujê ci.
 	
-	B_GivePlayerXP(XP_Ambient); 
+	B_GivePlayerXP (XP_Ambient); 
 };
 
 //*********************************************
@@ -513,16 +687,16 @@ INSTANCE DIA_Babo_Kap3_Unhappy   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Babo_Kap3_Unhappy_Condition;
 	information = DIA_Babo_Kap3_Unhappy_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "To nie brzmia³o, jakbyœ by³ zadowolony.";
 };
 FUNC INT DIA_Babo_Kap3_Unhappy_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (hero.guild != GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Babo_Kap3_Hello))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_Unhappy_Info()
@@ -630,13 +804,14 @@ FUNC VOID DIA_Babo_Kap3_Unhappy_Info()
 //********************************
 //Ich hab deine Dokumente
 //********************************
+
 INSTANCE DIA_Babo_Kap3_HaveYourDocs   (C_INFO)
 {
 	npc         = NOV_612_Babo;
 	nr          = 31;
 	condition   = DIA_Babo_Kap3_HaveYourDocs_Condition;
 	information = DIA_Babo_Kap3_HaveYourDocs_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Mam twoje dokumenty.";
 };
 FUNC INT DIA_Babo_Kap3_HaveYourDocs_Condition()
@@ -646,7 +821,7 @@ FUNC INT DIA_Babo_Kap3_HaveYourDocs_Condition()
 	||  ((Npc_HasItems (other,ItWr_BabosPinUp_MIS) 	>= 1)
 	&&   (Npc_HasItems (other,ItWr_BabosLetter_MIS) >= 1)))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_HaveYourDocs_Info()
@@ -659,7 +834,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_Info()
 	Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	Info_AddChoice (DIA_Babo_Kap3_HaveYourDocs,"Zamierzam je na razie zatrzymaæ.",DIA_Babo_Kap3_HaveYourDocs_KeepThem);
 	
-	if (BaboSDocsOpen == true)
+	if (BaboSDocsOpen == TRUE)
 	{
 		Info_AddChoice (DIA_Babo_Kap3_HaveYourDocs,"Pewne okolicznoœci spowodowa³y, ¿e cena posz³a w górê.",DIA_Babo_Kap3_HaveYourDocs_IWantMore);
 	};
@@ -704,7 +879,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_KeepThem()
 		AI_Output (other,self ,"DIA_Babo_Kap3_HaveYourDocs_KeepThem_JustJoke_15_04"); //W porz¹dku. Mi³ej zabawy z tymi DOKUMENTAMI.
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3);
+		B_GivePlayerXP (XP_BabosDocs);
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -779,13 +954,13 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_IWantMore()
 		AI_Output (other,self ,"DIA_Babo_Kap3_HaveYourDocs_IWantMore_ThatsEnough_15_00"); //Zgoda.
 		AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_IWantMore_ThatsEnough_03_01"); //Tu masz pieni¹dze i zwój z czarem.
 		
-		CreateInvItems (self ,ItPo_Health_01,1);
+		CreateInvItems (self ,ItSc_MediumHeal,1);
 		CreateInvItems (self ,ItMi_Gold,121);
-		B_GiveInvItems (self,other,ItPo_Health_01,1);
+		B_GiveInvItems (self,other,ItSc_MediumHeal,1);
 		B_GiveInvItems (self ,other,ItMi_Gold,121);
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_3); 
+		B_GivePlayerXP (XP_BabosDocs); 
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -811,11 +986,11 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_HereTheyAre()
 	AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_HereTheyAre_03_04"); //Nie, pod warunkiem, ¿e dostanê je z powrotem.
 	AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_HereTheyAre_03_05"); //Mam nadziejê, ¿e teraz bêdê móg³ odpocz¹æ w spokoju.
 	
-	CreateInvItems (self ,ItPo_Health_01,1);
-	B_GiveInvItems (self,other,ItPo_Health_01,1);
+	CreateInvItems (self ,ItSc_MediumHeal,1);
+	B_GiveInvItems (self,other,ItSc_MediumHeal,1);
 	
 	MIS_BabosDocs = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_BabosDocs);
 	
 	Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 };
@@ -830,14 +1005,14 @@ INSTANCE DIA_Babo_Kap3_Perm   (C_INFO)
 	nr          = 39;
 	condition   = DIA_Babo_Kap3_Perm_Condition;
 	information = DIA_Babo_Kap3_Perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Czy jesteœ zadowolony ze swojego zadania?";
 };
 FUNC INT DIA_Babo_Kap3_Perm_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Babo_Kap3_Hello))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap3_Perm_Info()
@@ -873,14 +1048,14 @@ INSTANCE DIA_Babo_Kap4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Babo_Kap4_EXIT_Condition;
 	information = DIA_Babo_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Babo_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap4_EXIT_Info()
@@ -900,14 +1075,14 @@ INSTANCE DIA_Babo_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Babo_Kap5_EXIT_Condition;
 	information = DIA_Babo_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Babo_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Babo_Kap5_EXIT_Info()

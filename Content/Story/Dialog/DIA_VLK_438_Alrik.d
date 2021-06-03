@@ -8,13 +8,13 @@ INSTANCE DIA_Alrik_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Alrik_EXIT_Condition;
 	information	= DIA_Alrik_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Alrik_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Alrik_EXIT_Info()
@@ -32,13 +32,13 @@ INSTANCE DIA_Alrik_Hallo(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_Hallo_Condition;
 	information	= DIA_Alrik_Hallo_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co tu porabiasz?";
 };                       
 
 FUNC INT DIA_Alrik_Hallo_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_Alrik_Hallo_Info()
@@ -73,7 +73,7 @@ INSTANCE DIA_Alrik_YouFight(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_YouFight_Condition;
 	information	= DIA_Alrik_YouFight_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Ty organizujesz walki?";
 };                       
 
@@ -81,7 +81,7 @@ FUNC INT DIA_Alrik_YouFight_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Alrik_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -107,7 +107,7 @@ INSTANCE DIA_Alrik_Regeln(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_Regeln_Condition;
 	information	= DIA_Alrik_Regeln_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jakie s¹ zasady walk?";
 };                       
 
@@ -115,7 +115,7 @@ FUNC INT DIA_Alrik_Regeln_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Alrik_YouFight))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -146,24 +146,24 @@ INSTANCE DIA_Alrik_NewFights3(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_NewFights3_Condition;
 	information	= DIA_Alrik_NewFights3_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Alrik_NewFights3_Condition()
 {
-	if (Kapitel >= 9)
-	&& (Kapitel <= 10)
+	if (Kapitel >= 3)
+	&& (Kapitel <= 4)
 	&& (Alrik_ArenaKampfVerloren <= 6)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 FUNC VOID DIA_Alrik_NewFights3_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToLevel (self, 20);
+	B_SetAttributesToChapter (self, 4);
 	B_Alrik_Again();
 };
 
@@ -177,23 +177,23 @@ INSTANCE DIA_Alrik_NewFights5(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_NewFights5_Condition;
 	information	= DIA_Alrik_NewFights5_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Alrik_NewFights5_Condition()
 {
-	if (Kapitel >= 11)
+	if (Kapitel >= 5)
 	&& (Alrik_ArenaKampfVerloren <= 9)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 FUNC VOID DIA_Alrik_NewFights5_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToLevel (self, 30);
+	B_SetAttributesToChapter (self, 6);
 	B_Alrik_Again();
 };
 
@@ -219,7 +219,7 @@ INSTANCE DIA_Alrik_WannaFight(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_WannaFight_Condition;
 	information	= DIA_Alrik_WannaFight_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcê z tob¹ walczyæ!";
 };                       
 
@@ -228,7 +228,7 @@ FUNC INT DIA_Alrik_WannaFight_Condition()
 	if (Npc_KnowsInfo(other, DIA_Alrik_Regeln))
 	&& (self.aivar[AIV_ArenaFight] == AF_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -240,7 +240,7 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 	
 	// ------ EXIT: Wenn Alrik schonmal verloren, nächster Kampf erst, wenn Alrik das bessere Schwert hat ------
 	if ( (Alrik_ArenaKampfVerloren > 0) && (Npc_HasItems (self, ItMW_AlriksSword_Mis) == 0) )
-	|| (Npc_HasEquippedMeleeWeapon (self) == false)
+	|| (Npc_HasEquippedMeleeWeapon (self) == FALSE)
 	{
 		if (MIS_Alrik_Sword == LOG_SUCCESS) //Wenn nach Schwert-Mission niedergeschlagen und Schwert weggenommen
 		{
@@ -252,7 +252,7 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 			AI_Output (self ,other,"DIA_Alrik_WannaFight_09_03"); //Kilka dni temu musia³em sprzedaæ swój miecz.
 			AI_Output (self ,other,"DIA_Alrik_WannaFight_09_04"); //Z tym maleñstwem jestem niepokonany! Jeœli je odzyskasz, znowu siê z tob¹ zmierzê!
 			
-			Alrik_VomSchwertErzaehlt = true;
+			Alrik_VomSchwertErzaehlt = TRUE;
 			
 			Log_CreateTopic (TOPIC_AlrikSchwert,LOG_MISSION);
 			Log_SetTopicStatus (TOPIC_AlrikSchwert,LOG_RUNNING);
@@ -261,7 +261,7 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 	}
 	
 	// ----- EXIT: ÜBER DREI MAL Alrik_ArenaKampfVerloren ------
-	else if (Kapitel <= 8)
+	else if (Kapitel <= 2)
 	&& (Alrik_ArenaKampfVerloren > 3)
 	{
 		AI_Output (self, other, "DIA_Alrik_Add_09_00"); //Chyba na razie wystarczy...
@@ -269,15 +269,15 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 		B_Alrik_ComeBackLater();
 	}
 	
-	else if (Kapitel >= 9)
-	&& (Kapitel <= 10)
+	else if (Kapitel >= 3)
+	&& (Kapitel <= 4)
 	&& (Alrik_ArenaKampfVerloren > 6)
 	{
 		B_Alrik_Enough();
 		B_Alrik_ComeBackLater();
 	}
 	
-	else if (Kapitel >= 11)
+	else if (Kapitel >= 5)
 	&& (Alrik_ArenaKampfVerloren > 9)
 	{
 		B_Alrik_Enough();
@@ -326,7 +326,7 @@ func void DIA_Alrik_WannaFight_Gold()
 	
 	//--------------------------------------
 	self.aivar[AIV_ArenaFight] = AF_RUNNING;
-	Alrik_Kaempfe += 1;
+	Alrik_Kaempfe 		= Alrik_Kaempfe + 1;
 	//--------------------------------------
 	
 	Info_ClearChoices 	(DIA_Alrik_WannaFight);
@@ -383,22 +383,22 @@ INSTANCE DIA_Alrik_AfterFight(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_AfterFight_Condition;
 	information	= DIA_Alrik_AfterFight_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Alrik_AfterFight_Condition()
 {
-	if (self.aivar[AIV_LastFightComment] == false)
+	if (self.aivar[AIV_LastFightComment] == FALSE)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_NONE)
 	{
 		if (self.aivar[AIV_ArenaFight] != AF_NONE)
 		{	
-			return true;	//direkt ansprechen
+			return TRUE;	//direkt ansprechen
 		}
 		else if (Npc_IsInState (self, ZS_Talk))
 		{
-			return true; 	//wenn kein Kampf war, nur reagieren, wenn SC ihn angesprochen hat
+			return TRUE; 	//wenn kein Kampf war, nur reagieren, wenn SC ihn angesprochen hat
 		};
 	};
 };
@@ -430,7 +430,7 @@ FUNC VOID DIA_Alrik_AfterFight_Info()
 				B_GiveInvItems (self, other, itmi_gold, Npc_HasItems(self, itmi_gold) );
 			};
 			
-			Alrik_ArenaKampfVerloren += 1;
+			Alrik_ArenaKampfVerloren = Alrik_ArenaKampfVerloren + 1;
 		}
 		else if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
 		{
@@ -457,7 +457,7 @@ FUNC VOID DIA_Alrik_AfterFight_Info()
 		self.aivar[AIV_ArenaFight] = AF_NONE;
 		
 		// ------ AIVAR resetten! ------	
-		self.aivar[AIV_LastFightComment] = true;
+		self.aivar[AIV_LastFightComment] = TRUE;
 	}
 	else //anderer Kampfgrund gegen den Spieler ODER kein sauberer Kampf
 	{
@@ -499,7 +499,7 @@ INSTANCE DIA_Alrik_DuWohnst(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_DuWohnst_Condition;
 	information	= DIA_Alrik_DuWohnst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "'Mieszkasz' za tym magazynem?";
 };                       
 
@@ -507,7 +507,7 @@ FUNC INT DIA_Alrik_DuWohnst_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Alrik_YouFight))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -519,7 +519,7 @@ FUNC VOID DIA_Alrik_DuWohnst_Info()
 	AI_Output (self ,other,"DIA_Alrik_DuWohnst_09_03"); //A teraz ugrzêz³em w tej dziurze. Moje ostatnie 100 sztuk z³ota zniknê³o w kieszeniach stra¿ników przy bramie.
 	AI_Output (self ,other,"DIA_Alrik_DuWohnst_09_04"); //Wiêc staram siê znowu zdobyæ trochê pieniêdzy. Musia³em nawet sprzedaæ swój miecz.
 	
-	Alrik_VomSchwertErzaehlt = true;
+	Alrik_VomSchwertErzaehlt = TRUE;
 };
 
 
@@ -533,16 +533,16 @@ INSTANCE DIA_Alrik_WerSchwert(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_WerSchwert_Condition;
 	information	= DIA_Alrik_WerSchwert_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Komu sprzeda³eœ ten miecz?";
 };                       
 
 FUNC INT DIA_Alrik_WerSchwert_Condition()
 {
-	if (Alrik_VomSchwertErzaehlt == true)
+	if (Alrik_VomSchwertErzaehlt == TRUE)
 	&& (MIS_Alrik_Sword != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -568,7 +568,7 @@ INSTANCE DIA_Alrik_HaveSword(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_HaveSword_Condition;
 	information	= DIA_Alrik_HaveSword_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mam twój miecz!";
 };                       
 
@@ -576,7 +576,7 @@ FUNC INT DIA_Alrik_HaveSword_Condition()
 {
 	IF (Npc_HasItems (other,ItMw_AlriksSword_Mis) > 0)
 	{
-		return true;
+		return TRUE;
 	};	
 };
  
@@ -590,17 +590,17 @@ FUNC VOID DIA_Alrik_HaveSword_Info()
 		AI_Output (self ,other,"DIA_Alrik_HaveSword_09_01"); //Ach! To znacznie lepsze, ni¿ wymachiwanie starym kijem!
 		
 		MIS_Alrik_Sword = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_1);
+		B_GivePlayerXP (XP_AlriksSword);
 	}
 	else
 	{	
 		AI_Output (self ,other,"DIA_Alrik_HaveSword_09_02"); //Dobrze! Ciekaw jestem, kiedy odwa¿ysz siê wyzwaæ mnie ponownie!
 	};
 		
-	if (Alrik_EinmalSchwertBonus == false)
+	if (Alrik_EinmalSchwertBonus == FALSE)
 	{
 		B_AddFightSkill (self, NPC_TALENT_1H, 20);
-		Alrik_EinmalSchwertBonus = true;
+		Alrik_EinmalSchwertBonus = TRUE;
 	};
 	AI_EquipBestMeleeWeapon (self);
 };
@@ -615,7 +615,7 @@ INSTANCE DIA_Alrik_Krieg(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_Krieg_Condition;
 	information	= DIA_Alrik_Krieg_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co wiesz o wojnie z orkami?";
 };                       
 
@@ -624,7 +624,7 @@ FUNC INT DIA_Alrik_Krieg_Condition()
 	if (Npc_KnowsInfo(other, DIA_Alrik_DuWohnst))
 	|| (hero.guild != GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -651,7 +651,7 @@ instance DIA_Alrik_Ausbilden(C_INFO)
 	nr			= 1;
 	condition	= DIA_Alrik_Ausbilden_Condition;
 	information	= DIA_Alrik_Ausbilden_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Czy mo¿esz mnie wyszkoliæ?";
 };                       
 
@@ -659,9 +659,9 @@ FUNC INT DIA_Alrik_Ausbilden_Condition()
 {
 	if ((Npc_KnowsInfo(other, DIA_Alrik_DuWohnst))
 	|| (hero.guild != GIL_NONE))
-	&& (self.aivar[AIV_CanTeach] < true)
+	&& (Alrik_Teach1H == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -673,11 +673,11 @@ FUNC VOID DIA_Alrik_Ausbilden_Info()
 	&& (hero.guild == GIL_NONE)
 	{
 		AI_Output (self ,other,"DIA_Alrik_Ausbilden_09_01"); //Jeœli naprawdê chcesz nauczyæ siê walczyæ, to zmierz siê ze mn¹. Ta lekcja bêdzie za darmo.
-		Alrik_VorausErzaehlt = true; 
+		Alrik_VorausErzaehlt = TRUE; 
 	}
 	else //>0
 	{
-		if (Alrik_VorausErzaehlt == true)
+		if (Alrik_VorausErzaehlt == TRUE)
 		{
 			AI_Output (self ,other,"DIA_Alrik_Ausbilden_09_02"); //Dotrzymujê s³owa. Nauczê ciê wszystkiego, co umiem - jeœli jesteœ wystarczaj¹co doœwiadczony.
 		}
@@ -686,8 +686,99 @@ FUNC VOID DIA_Alrik_Ausbilden_Info()
 			AI_Output (self ,other,"DIA_Alrik_Ausbilden_09_03"); //Jasne, pod warunkiem, ¿e masz doœæ doœwiadczenia.
 		};
 		
-		self.aivar[AIV_CanTeach] = true;
+		
+		Alrik_Teach1H = TRUE;
 		Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 		B_LogEntry (Topic_CityTeacher,"Alrik, który krêci siê za magazynem w dzielnicy portowej, mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 	};
 };
+
+//**************************************
+//			Ich will trainieren
+//**************************************
+
+// -------------------------------------
+	var int Alrik_Merke_1h;
+// -------------------------------------
+
+instance DIA_Alrik_Teach(C_INFO)
+{
+	npc			= VLK_438_Alrik;
+	nr			= 1;
+	condition	= DIA_Alrik_Teach_Condition;
+	information	= DIA_Alrik_Teach_Info;
+	permanent	= TRUE;
+	description = "Wyszkol mnie we w³adaniu mieczem!";
+};                       
+
+FUNC INT DIA_Alrik_Teach_Condition()
+{
+	if (Alrik_Teach1H == TRUE)
+	{
+		return TRUE;
+	};	
+};
+ 
+FUNC VOID DIA_Alrik_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Alrik_Teach_15_00"); //Wyszkol mnie we w³adaniu mieczem!
+	
+	Alrik_Merke_1h =  other.HitChance[NPC_TALENT_1H];
+	
+	Info_ClearChoices 	(DIA_Alrik_Teach);
+	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
+};
+
+FUNC VOID DIA_Alrik_Teach_Back ()
+{
+	if (other.HitChance[NPC_TALENT_1H] >= (60-30))
+	{
+		AI_Output (self ,other,"DIA_Alrik_Teach_Back_09_00"); //Ju¿ nie jesteœ pocz¹tkuj¹cy!
+	}
+	else if (other.HitChance[NPC_TALENT_1H] > Alrik_Merke_1h)
+	{
+		AI_Output (self ,other,"DIA_Alrik_Teach_Back_09_01"); //Jesteœ ju¿ lepszy. Nied³ugo staniesz siê prawdziwym wojownikiem!
+	};
+	
+	Info_ClearChoices (DIA_Alrik_Teach);
+};
+
+FUNC VOID DIA_Alrik_Teach_1H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
+	
+	Info_ClearChoices 	(DIA_Alrik_Teach);
+	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
+};
+
+FUNC VOID DIA_Alrik_Teach_1H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
+
+	Info_ClearChoices 	(DIA_Alrik_Teach);
+	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
+	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
+};
+
+
+
+		
+
+
+
+
+
+
+		
+
+
+
+
+
+
+

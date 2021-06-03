@@ -16,17 +16,18 @@ const int ATR_Energy_Bonus	=	2;
 const int ATR_FoodTime		=	3;
 var int sattribute[4];
 
-const int BS_Sprint		=	0;
+const int BS_fRun		=	0;
 const int BS_hArmor		=	1;
 const int BS_Poison		=	2;
 var int bState[3];
 
-var int dLevel;		/// określa poziom trudności gry
-var int gLevelA;	/// określa aktualny stan postępu z dziewczyną
-var int talkingWithGirl;
+var int dLevel;				/// difficulty level: Easy -> Medium -> Hard -> Very Hard -> Hardcore
+var int gLevelA;			/// girlfriend love level (not sure/don't remember)
+var int talkingWithGirl;	/// also don't remember what was this for
 
-var int selectedHero;	/// określa skórkę sterowanej postaci (wybieraną przed rozpoczęciem nowej gry)
-var int fastItemTake;	/// określa czy jest włączone podnoszenie przedmiotów PPM bez animacji
+var int selectedHero;	/// hero skin (selected in New Game menu)
+var int fastItemTake;	/// fast item take (with no animation) on RMB
+var int movieMode;		/// movie mode = enabled cheat mode etc.
 
 ///******************************************************************************************
 ///	Colors & Time
@@ -69,12 +70,12 @@ func int atrue()
 
 func int Hlp_RandomRange (var int start, var int end)
 {
-	return (start + Hlp_Random(end-start+1));
+	return (start + Hlp_Random(end - start + 1));
 };
 
 ///******************************************************************************************
 var int scaleTime;
-func void B_ScaleTime (var int x)
+func void B_ScaleTime(var int x)
 {
    var int world_timer; world_timer = MEM_Timer.frameTimeFloat;
    var int acceleration; acceleration = fracf(x, 100);
@@ -83,12 +84,12 @@ func void B_ScaleTime (var int x)
 };
 
 ///******************************************************************************************
-func void B_SetGhost(var oCNpc slf, var int transparency)
+func void B_SetGhost (var oCNpc slf, var int visibility)
 {
-	if (transparency == 100)	{	slf.bloodEnabled = true;	}
+	if (visibility == 100)	{	slf.bloodEnabled = true;	}
 	else					{	slf.bloodEnabled = false;	};
 	
 	slf._zCVob_bitfield[0] = slf._zCVob_bitfield[0] | zCVob_bitfield0_visualAlphaEnabled;
-	slf._zCVob_visualAlpha = divf(mkf(100-transparency), mkf(100));
+	slf._zCVob_visualAlpha = divf(mkf(visibility), mkf(100));
 	slf._zCVob_bitfield[0] = slf._zCVob_bitfield[0] & ~zCVob_bitfield0_castDynShadow;
 };

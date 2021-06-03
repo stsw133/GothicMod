@@ -1,34 +1,33 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_411_Gaertner (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Ogrodnik";
 	guild 								=	GIL_VLK;
 	id 									=	411;
 	voice 								=	9;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 10);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Normal41, 0, ITAR_BAU_01);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_411;
 };
 
-FUNC VOID Rtn_Start_411()
+func void Rtn_Start_411()
 {
 	TA_Rake_FP		(06,30,08,30, "NW_CITY_CITYHALL_04");
 	TA_Rake_FP		(08,30,10,30, "NW_CITY_CITYHALL_10");

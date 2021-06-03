@@ -7,13 +7,13 @@ INSTANCE DIA_Sarah_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Sarah_EXIT_Condition;
 	information = DIA_Sarah_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Sarah_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Sarah_EXIT_Info()
@@ -30,16 +30,16 @@ instance DIA_Sarah_Greet		(C_INFO)
 	nr 			 =  1;
 	condition	 = 	DIA_Sarah_Greet_Condition;
 	information	 = 	DIA_Sarah_Greet_Info;
-	permanent 	 =  true;
-	important	 =  true;
+	permanent 	 =  TRUE;
+	important	 =  TRUE;
 };
 
 func int DIA_Sarah_Greet_Condition ()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (Canthar_Ausgeliefert == true)
+	&& (Canthar_Ausgeliefert == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sarah_Greet_Info ()
@@ -55,13 +55,13 @@ instance DIA_Sarah_HALLO		(C_INFO)
 	npc			 = 	VLK_470_Sarah;
 	condition	 = 	DIA_Sarah_HALLO_Condition;
 	information	 = 	DIA_Sarah_HALLO_Info;
-	permanent 	 =  false;
-	description	 = 	"Jak idzie interes?";
+	permanent 	 =  FALSE;
+	description	 = 	"Wie läuft das Geschäft? ";
 };
 
 func int DIA_Sarah_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Sarah_HALLO_Info ()
 {
@@ -83,7 +83,7 @@ instance DIA_Sarah_Bauern		(C_INFO)
 	nr 			 =  2;
 	condition	 = 	DIA_Sarah_Bauern_Condition;
 	information	 = 	DIA_Sarah_Bauern_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Na czym polega problem z ch³opami?";
 };
 
@@ -91,7 +91,7 @@ func int DIA_Sarah_Bauern_Condition ()
 {
 	if Npc_KnowsInfo (other, DIA_Sarah_HALLO)
 	{
-			return true;
+			return TRUE;
 	};
 };
 func void DIA_Sarah_Bauern_Info ()
@@ -114,7 +114,7 @@ instance DIA_Sarah_AkilsHof		(C_INFO)
 	nr 			 =  3;
 	condition	 = 	DIA_Sarah_AkilsHof_Condition;
 	information	 = 	DIA_Sarah_AkilsHof_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Gdzie znajduje siê farma Akila?";
 };
 
@@ -122,7 +122,7 @@ func int DIA_Sarah_AkilsHof_Condition ()
 {
 	if Npc_KnowsInfo (other, DIA_Sarah_Bauern)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sarah_AkilsHof_Info ()
@@ -143,8 +143,8 @@ instance DIA_Sarah_Trade		(C_INFO)
 	nr			 =  99;
 	condition	 = 	DIA_Sarah_Trade_Condition;
 	information	 = 	DIA_Sarah_Trade_Info;
-	Trade		 = 	true;
-	permanent	 =	true;
+	Trade		 = 	TRUE;
+	permanent	 =	TRUE;
 	description	 = 	"Poka¿ mi swoje towary.";
 };
 
@@ -153,7 +153,7 @@ func int DIA_Sarah_Trade_Condition ()
 	if 	((Npc_KnowsInfo(other, DIA_Sarah_HALLO))
 	&& (MIS_Canthars_KomproBrief != LOG_SUCCESS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -162,7 +162,8 @@ func void DIA_Sarah_Trade_Info ()
 	B_GiveTradeInv (self);
 	AI_Output (other, self, "DIA_Sarah_Trade_15_00"); //Poka¿ mi swoje towary.
 	
-	Sarah_WaffenGesehen = true;
+	Sarah_WaffenGesehen = TRUE;
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info ImKnast
@@ -173,8 +174,8 @@ instance DIA_Sarah_IMKNAST		(C_INFO)
 	nr			 =  99;
 	condition	 = 	DIA_Sarah_IMKNAST_Condition;
 	information	 = 	DIA_Sarah_IMKNAST_Info;
-	permanent	 = 	true;
-	important 	 =  true;
+	permanent	 = 	TRUE;
+	important 	 =  TRUE;
 };
 
 func int DIA_Sarah_IMKNAST_Condition ()
@@ -182,7 +183,7 @@ func int DIA_Sarah_IMKNAST_Condition ()
 	if (MIS_Canthars_KomproBrief == LOG_SUCCESS)	
 	&&  Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sarah_IMKNAST_Info ()
@@ -202,16 +203,16 @@ instance DIA_Sarah_Success		(C_INFO)
 	nr			 =  4;
 	condition	 = 	DIA_Sarah_Success_Condition;
 	information	 = 	DIA_Sarah_Success_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Canthar próbowa³ ciê wrobiæ...";
 };
 
 func int DIA_Sarah_Success_Condition ()
 {	
-	if (Canthar_Ausgeliefert == true)
+	if (Canthar_Ausgeliefert == TRUE)
 	//|| (MIS_Canthars_KomproBrief == LOG_OBSOLETE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Sarah_Success_Info ()
@@ -220,6 +221,16 @@ func void DIA_Sarah_Success_Info ()
 	AI_Output (self, other, "DIA_Sarah_Success_16_01"); //W ten sposób sprowadzi³eœ na siebie gniew potê¿nego cz³owieka. Znam tego drania od dawna, zawsze chcia³ zaj¹æ moje miejsce.
 	AI_Output (self, other, "DIA_Sarah_Success_16_02"); //Przyjmij tê broñ jako wyraz mojej wdziêcznoœci.
 	
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_CantharImKnast);
 	B_GiveInvItems (self, other, ItMw_Piratensaebel,1);
+	
 };
+	
+	  
+	  
+	   
+
+
+
+
+

@@ -25,14 +25,14 @@ MOVE_WAIT				200 ms
 // ************************************
 
 // ------ Gegner attackiert mich ------
-instance FA_ENEMY_PREHIT_10 (C_FightAI)
+INSTANCE FA_ENEMY_PREHIT_10 (C_FightAI)
 {
 	move[0] = MOVE_JUMPBACK;
 	move[1] = MOVE_STRAFE;
 };
 
 // ------ Gegner macht Sturmattacke ------
-instance FA_ENEMY_STORMPREHIT_10 (C_FightAI)
+INSTANCE FA_ENEMY_STORMPREHIT_10 (C_FightAI)
 {
 	move[0] = MOVE_WAIT;
 };
@@ -43,25 +43,25 @@ instance FA_ENEMY_STORMPREHIT_10 (C_FightAI)
 // *******************************************
 
 // ------ Ich bin im Combo-Fenster ------
-instance FA_MY_W_COMBO_10 (C_FightAI)
+INSTANCE FA_MY_W_COMBO_10 (C_FightAI)
 {
 	// --- Wird nie erreicht (Neue FAI-Bewertung erst wenn Ani zuende gespielt) ---
 };
 
 // ------ Ich renne auf den Gegner zu ------
-instance FA_MY_W_RUNTO_10 (C_FightAI)
+INSTANCE FA_MY_W_RUNTO_10 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG (Stehenbleiben) ---
 };
 
 // ------- Ich Strafe gerade ------
-instance FA_MY_W_STRAFE_10 (C_FightAI)
+INSTANCE FA_MY_W_STRAFE_10 (C_FightAI)
 {
 	// --- Wird nie erreicht (Neue FAI-Bewertung erst wenn Ani zuende gespielt) ---
 };
 
 // ------- Ich habe Gegner im Fokus (kann treffen) -------
-instance FA_MY_W_FOCUS_10 (C_FightAI)
+INSTANCE FA_MY_W_FOCUS_10 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK;
 	move[1] = MOVE_WAIT;
@@ -70,7 +70,7 @@ instance FA_MY_W_FOCUS_10 (C_FightAI)
 };
 
 // ------- Ich habe Gegner NICHT im Fokus -------
-instance FA_MY_W_NOFOCUS_10 (C_FightAI)
+INSTANCE FA_MY_W_NOFOCUS_10 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -81,26 +81,26 @@ instance FA_MY_W_NOFOCUS_10 (C_FightAI)
 // *************************************************
 
 // ------ Ich bin im Combo-Fenster ------
-instance FA_MY_G_COMBO_10 (C_FightAI)
+INSTANCE FA_MY_G_COMBO_10 (C_FightAI)
 {
 	// --- Wird nie erreicht (Neue FAI-Bewertung erst wenn Ani zuende gespielt) ---
 };
 
 // ------ Ich renne auf den Gegner zu (kann Sturmattacke machen) ------
-instance FA_MY_G_RUNTO_10 (C_FightAI)
+INSTANCE FA_MY_G_RUNTO_10 (C_FightAI)
 {
 	//move[0] = MOVE_ATTACK; //Sturmattacke
 	move[0] = MOVE_RUN;
 };
 
 // ------- Ich Strafe gerade ------
-instance FA_MY_G_STRAFE_10 (C_FightAI)
+INSTANCE FA_MY_G_STRAFE_10 (C_FightAI)
 {
 	// --- Wird nie erreicht (Neue FAI-Bewertung erst wenn Ani zuende gespielt) ---
 };
 
 // ------- Ich habe Gegner im Fokus -------
-instance FA_MY_G_FOCUS_10 (C_FightAI)
+INSTANCE FA_MY_G_FOCUS_10 (C_FightAI)
 {
 	move[0] = MOVE_RUN; // --- STANDARDEINTRAG ---
 };
@@ -111,13 +111,13 @@ instance FA_MY_G_FOCUS_10 (C_FightAI)
 // ***************************************
 
 // ------- Ich habe Gegner im Fokus -------
-instance FA_MY_FK_FOCUS_10 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_10 (C_FightAI)
 {
 	move[0] = MOVE_RUN; // --- STANDARDEINTRAG ---
 };
 
 // ------- Ich habe Gegner NICHT im Fokus (gilt auch für G-Distanz!) -------
-instance FA_MY_G_FK_NOFOCUS_10 (C_FightAI)
+INSTANCE FA_MY_G_FK_NOFOCUS_10 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -130,13 +130,13 @@ instance FA_MY_G_FK_NOFOCUS_10 (C_FightAI)
 // ***********************************
 
 // ------ Gegner im Fokus ------
-instance FA_MY_FK_FOCUS_FAR_10 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_FAR_10 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK; // --- STANDARDEINTRAG ---
 };
 
 // ------ Gegner NICHT im Fokus ------
-instance FA_MY_FK_NOFOCUS_FAR_10 (C_FightAI)
+INSTANCE FA_MY_FK_NOFOCUS_FAR_10 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };
@@ -149,7 +149,7 @@ instance FA_MY_FK_NOFOCUS_FAR_10 (C_FightAI)
 // ***********************************
 
 // ------ Gegner im Fokus ------
-instance FA_MY_FK_FOCUS_MAG_10 (C_FightAI)
+INSTANCE FA_MY_FK_FOCUS_MAG_10 (C_FightAI)
 {
 	move[0] = MOVE_ATTACK; // --- STANDARDEINTRAG ---
 	move[1] = MOVE_WAIT_LONGER;
@@ -160,7 +160,7 @@ instance FA_MY_FK_FOCUS_MAG_10 (C_FightAI)
 };
 
 // ------ Gegner NICHT im Fokus -------
-instance FA_MY_FK_NOFOCUS_MAG_10 (C_FightAI)
+INSTANCE FA_MY_FK_NOFOCUS_MAG_10 (C_FightAI)
 {
 	move[0] = MOVE_TURN; // --- STANDARDEINTRAG ---
 };

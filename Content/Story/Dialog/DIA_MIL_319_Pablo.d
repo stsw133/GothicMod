@@ -7,13 +7,13 @@ INSTANCE DIA_Pablo_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Pablo_EXIT_Condition;
 	information = DIA_Pablo_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Pablo_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Pablo_EXIT_Info()
@@ -33,7 +33,7 @@ instance DIA_Pablo_WANTED		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Pablo_WANTED_Condition;
 	information	 = 	DIA_Pablo_WANTED_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 func int DIA_Pablo_WANTED_Condition ()
 {
@@ -41,7 +41,7 @@ func int DIA_Pablo_WANTED_Condition ()
 	&& (hero.guild != GIL_PAL)
 	&& (hero.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func void DIA_Pablo_WANTED_Info ()
@@ -54,6 +54,7 @@ func void DIA_Pablo_WANTED_Info ()
 	B_GiveInvItems (self, other, ItWr_Poster_MIS,1);
 	AI_Output (self, other, "DIA_Pablo_WANTED_12_04"); //Ci kolesie chyba ciê szukali.
 	
+	
 	Info_ClearChoices (DIA_Pablo_WANTED);
 	
 	Info_AddChoice  (DIA_Pablo_WANTED,"Nie, mylisz siê.",DIA_Pablo_WANTED_NOTHING);
@@ -63,9 +64,10 @@ FUNC VOID DIA_Pablo_WANTED_NOTHING()
 {
 	AI_Output (other, self, "DIA_Pablo_WANTED_NOTHING_15_00"); //Mylisz siê. Jak widzisz, wszystko ze mn¹ w porz¹dku...
 	AI_Output (self, other, "DIA_Pablo_WANTED_NOTHING_12_01"); //Jak uwa¿asz, nieznajomy...
+	//AI_Output (self, other, "DIA_Pablo_WANTED_NOTHING_12_02"); //Aber wenn du Probleme hast - dann lass sie außerhalb der Stadt. Wir haben hier schon genug Schwierigkeiten.
 	AI_Output (self ,other,"DIA_Pablo_Add_12_00"); //Jeœli jednak portret przedstawia TWOJ¥ gêbê, a ty wmiesza³eœ siê w jakieœ k³opoty, to trzymaj siê z dala od miasta. Nie potrzeba nam wiêcej problemów.
 	AI_Output (self, other, "DIA_Pablo_WANTED_NOTHING_12_03"); //Nie potrzebujemy tu ¿adnych zabijaków - mam nadziejê, ¿e wyra¿am siê jasno.
-	Pablo_belogen = true;
+	Pablo_belogen = TRUE;
 	
 	AI_StopProcessInfos (self);
 };
@@ -73,9 +75,11 @@ FUNC VOID DIA_Pablo_WANTED_IRONY()
 {
 	AI_Output (other, self, "DIA_Pablo_WANTED_IRONY_15_00"); //No, no. Sam bym na to nie wpad³.
 	AI_Output (self, other, "DIA_Pablo_WANTED_IRONY_12_01"); //Bardzo œmieszne... gadaj lepiej, czego chcieli od ciebie ci ludzie?
+	//AI_Output (other, self, "DIA_Pablo_WANTED_IRONY_15_02"); //Ich werde sie fragen, wenn ich sie sehe. Ihr habt doch die Kerle eingelocht, die den Wisch dabei hatten, oder?
 	AI_Output (other, self,"DIA_Pablo_Add_15_01"); //Zapytaj ich o to sam. Chyba ich zamkn¹³eœ, prawda?
 	AI_Output (self, other, "DIA_Pablo_WANTED_IRONY_12_03"); //Nie - nie ¿yj¹.
 	AI_Output (other, self, "DIA_Pablo_WANTED_IRONY_15_04"); //W takim razie nigdy siê nie dowiemy.
+	//AI_Output (self, other, "DIA_Pablo_WANTED_IRONY_12_05"); //Nun, wenn du in Schwierigkeiten steckst, dann sprich mal mit Lord Andre. Den Wisch kannst du behalten. Schönen Tag noch.
 	AI_Output (self ,other,"DIA_Pablo_Add_12_02"); //Jeœli masz jakieœ k³opoty, porozmawiaj z Lordem Andre. Mo¿e on bêdzie w stanie ci pomóc. Znajdziesz go w koszarach.
 	
 	AI_StopProcessInfos (self);
@@ -90,16 +94,17 @@ INSTANCE DIA_Pablo_Banditen   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Pablo_Banditen_Condition;
 	information = DIA_Pablo_Banditen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co wiesz na temat bandytów?";
 };
 FUNC INT DIA_Pablo_Banditen_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Pablo_Banditen_Info()
 {
 	AI_Output (other, self,"DIA_Pablo_Add_15_03"); //Co wiesz na temat bandytów?
+	//AI_Output (other, self, "DIA_Pablo_Banditen_15_00"); //Was weißt du über die Banditen, die vor der Stadt ihr Unwesen treiben?
 	AI_Output (self ,other,"DIA_Pablo_Add_12_04"); //Przybyli z tej zakichanej kolonii górniczej. Jest jednak kilka oddzielnych grup.
 	AI_Output (self ,other,"DIA_Pablo_Add_12_05"); //Niektórzy ukryli siê w górach, inni do³¹czyli do Onara, w³aœciciela ziemskiego.
 	AI_Output (self ,other,"DIA_Pablo_Add_12_06"); //Jednak to bandyci na obrze¿ach miasta powoduj¹ najwiêcej problemów.
@@ -115,7 +120,7 @@ INSTANCE DIA_Pablo_HakonBandits   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Pablo_HakonBandits_Condition;
 	information = DIA_Pablo_HakonBandits_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co wiesz o bandytach, którzy obrabowali kupca Hakona?";
 };
 FUNC INT DIA_Pablo_HakonBandits_Condition()
@@ -123,7 +128,7 @@ FUNC INT DIA_Pablo_HakonBandits_Condition()
 	if (Npc_KnowsInfo (other, DIA_Hakon_Miliz))
 	&& (Npc_KnowsInfo (other, DIA_Pablo_Banditen))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Pablo_HakonBandits_Info()
@@ -138,7 +143,7 @@ FUNC VOID DIA_Pablo_HakonBandits_Info()
 	
 	B_LogEntry(TOPIC_HakonBanditen,"Bandyci, którzy obrabowali Hakona, ukrywaj¹ siê w lasach w pobli¿u miasta." );
 	
-	if (Pablo_AndreMelden == false)
+	if (Pablo_AndreMelden == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Pablo_Add_12_23"); //Jest jeszcze coœ...
 		AI_Output (self, other, "DIA_Pablo_Banditen_12_04"); //Niektóre ze skradzionych towarów pojawi³y siê w Khorinis.
@@ -159,7 +164,7 @@ INSTANCE DIA_Pablo_MyBandits   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Pablo_MyBandits_Condition;
 	information = DIA_Pablo_MyBandits_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Sk¹d przybyli bandyci, którzy mieli list goñczy z moj¹ podobizn¹?";
 };
 FUNC INT DIA_Pablo_MyBandits_Condition()
@@ -167,20 +172,20 @@ FUNC INT DIA_Pablo_MyBandits_Condition()
 	if (Npc_KnowsInfo (other, DIA_Pablo_Banditen))
 	&& (Npc_KnowsInfo (other, DIA_Pablo_Wanted))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Pablo_MyBandits_Info()
 {
 	AI_Output (other, self,"DIA_Pablo_Add_15_08"); //Sk¹d przybyli bandyci, którzy mieli list goñczy z moj¹ podobizn¹?
-	if (Pablo_belogen == true)
+	if (Pablo_belogen == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Pablo_Add_12_09"); //Aha! Wiêc to jednak TWOJA gêba znajduje siê na tym papierze. Dlaczego siê od razu nie przyzna³eœ, co?
 		AI_Output (self ,other,"DIA_Pablo_Add_12_10"); //Za co jesteœ poszukiwany?
 		AI_Output (other, self,"DIA_Pablo_Add_15_11"); //Nie wiem - szczerze!
 		AI_Output (self ,other,"DIA_Pablo_Add_12_12"); //Tak, tak. Wiem. Pozwól, ¿e coœ ci powiem - gdybym wiedzia³, ¿e trzymasz sztamê z tymi bandytami, dawno siedzia³byœ w pierdlu, rozumiesz?
 		AI_Output (self ,other,"DIA_Pablo_Add_12_13"); //Mimo to muszê zg³osiæ ten przypadek Lordowi Andre...
-		Pablo_AndreMelden = true;
+		Pablo_AndreMelden = TRUE;
 		AI_Output (self ,other,"DIA_Pablo_Add_12_14"); //Wracaj¹c jednak do twojego pytania...
 	};
 
@@ -200,18 +205,18 @@ INSTANCE DIA_Pablo_Perm   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Pablo_Perm_Condition;
 	information = DIA_Pablo_Perm_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jak wygl¹da sytuacja?";
 };
 FUNC INT DIA_Pablo_Perm_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Pablo_Perm_Info()
 {
 	AI_Output (other, self, "DIA_Pablo_Perm_15_00"); //Jak wygl¹da sytuacja?
 	
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
 		if (MIS_RescueBennet != LOG_SUCCESS)
 		{
@@ -237,7 +242,7 @@ FUNC VOID DIA_Pablo_Perm_Info()
 			AI_Output (self, other, "DIA_Pablo_Perm_12_07"); //Gdyby nie uda³o ci siê odnaleŸæ prawdziwego winowajcy, orkowie mieliby znacznie u³atwion¹ sprawê.
 		};
 	}
-	else if (Kapitel == 11)
+	else if (Kapitel == 5)
 	{
 		AI_Output (self, other, "DIA_Pablo_Perm_12_08"); //Martwi mnie to, co mo¿e siê staæ, jeœli paladyni opuszcz¹ to miejsce.
 	}
@@ -254,4 +259,7 @@ FUNC VOID DIA_Pablo_Perm_Info()
 	{
 		AI_Output (self, other, "DIA_Pablo_Perm_12_11"); //W tej chwili panuje tu spokój. Jedynie bandyci spoza miasta sprawiaj¹ pewne problemy.
 	};	
-};
+
+}; 
+
+

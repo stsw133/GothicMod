@@ -1,21 +1,21 @@
 const int GOTHIC_BASE_VERSION = 2;
 
-//--------------------------------------
-// Nutzervariablen:
-//--------------------------------------
+///--------------------------------------
+/// Nutzervariablen:
+///--------------------------------------
 
-const string MEM_FARFARAWAY = "TOT";		//dort wird der Mem-Helper gespawnt
-const string MEM_HELPER_NAME = "MEMHLP";    //so heißt er
+const string MEM_FARFARAWAY = "TOT";		///dort wird der Mem-Helper gespawnt
+const string MEM_HELPER_NAME = "MEMHLP";    ///so heißt er
 
-const int zERR_TYPE_OK    = 0; /* [ungenutzt]        */
-const int zERR_TYPE_INFO  = 1; /* MEM_Info           */
-const int zERR_TYPE_WARN  = 2; /* MEM_Warn           */
-const int zERR_TYPE_FAULT = 3; /* MEM_Error          */
-const int zERR_TYPE_FATAL = 4; /* [ungenutzt]        */
+const int zERR_TYPE_OK    = 0; /* [ungenutzt] */
+const int zERR_TYPE_INFO  = 1; /* MEM_Info    */
+const int zERR_TYPE_WARN  = 2; /* MEM_Warn    */
+const int zERR_TYPE_FAULT = 3; /* MEM_Error   */
+const int zERR_TYPE_FATAL = 4; /* [ungenutzt] */
 
-const int zERR_ReportToZSpy     = zERR_TYPE_INFO;  //alles ab zERR_TYPE_INFO
-const int zERR_ShowErrorBox     = zERR_TYPE_FAULT; //Messageboxen nur für Errors
-const int zERR_PrintStackTrace  = zERR_TYPE_WARN; //Tracktrace printen für Warnings.
+const int zERR_ReportToZSpy     = zERR_TYPE_INFO;  ///alles ab zERR_TYPE_INFO
+const int zERR_ShowErrorBox     = zERR_TYPE_FAULT; ///Messageboxen nur für Errors
+const int zERR_PrintStackTrace  = zERR_TYPE_WARN; ///Tracktrace printen für Warnings.
 
 const int zERR_ErrorBoxOnlyForFirst   = 1; /* nie mehr als eine Error-Box anzeigen */
 const int zERR_StackTraceOnlyForFirst = 0; /* nur für den ersten Error Stack Trace anzeigen */
@@ -24,76 +24,76 @@ const int zERR_StackTraceOnlyForFirst = 0; /* nur für den ersten Error Stack Tra
  * MEM_Debug wird nicht von Ikarus verwendet und stellt einen
  * frei konfigurierbaren Nachrichtenkanal dar. */
  
-const string zERR_DEBUG_PREFIX   = "Debug: ";      //dieses Präfix immer vor die Nachricht setzen.
-const int    zERR_DEBUG_TOSPY    = 1;              //MEM_Debug Nachrichten an zSpy senden?
-const int    zERR_DEBUG_TYPE     = zERR_TYPE_INFO; //Wenn ja als was an den Spy schicken?
-const int    zERR_DEBUG_TOSCREEN = 0;              //MEM_Debug Nachrichten per "Print" ausgeben.
-const int    zERR_DEBUG_ERRORBOX = 0;              //Eine Error-Box anzeigen (zum OK Klicken).
+const string zERR_DEBUG_PREFIX   = "Debug: ";      ///dieses Präfix immer vor die Nachricht setzen.
+const int    zERR_DEBUG_TOSPY    = 1;              ///MEM_Debug Nachrichten an zSpy senden?
+const int    zERR_DEBUG_TYPE     = zERR_TYPE_INFO; ///Wenn ja als was an den Spy schicken?
+const int    zERR_DEBUG_TOSCREEN = 0;              ///MEM_Debug Nachrichten per "Print" ausgeben.
+const int    zERR_DEBUG_ERRORBOX = 0;              ///Eine Error-Box anzeigen (zum OK Klicken).
 
-//--------------------------------------
-// Adressen
-//--------------------------------------
+///--------------------------------------
+/// Adressen
+///--------------------------------------
 
-//Parser
-const int ContentParserAddress      = 11223232; //0xAB40C0;
-const int vfxParserPointerAddress   =  9234156; //0x8CE6EC
-const int menuParserPointerAddress  =  9248360; //0x8D1E68
-const int pfxParserPointerAddress   =  9278004; //0x8D9234
+///Parser
+const int ContentParserAddress      = 11223232; ///0xAB40C0;
+const int vfxParserPointerAddress   =  9234156; ///0x8CE6EC
+const int menuParserPointerAddress  =  9248360; ///0x8D1E68
+const int pfxParserPointerAddress   =  9278004; ///0x8D9234
 
-//ShowDebug-Einstellung
-const int showDebugAddress = 11232372; //0xAB6474
+///ShowDebug-Einstellung
+const int showDebugAddress = 11232372; ///0xAB6474
 
-//Array mit alle erzeugten (und nicht wieder zerstörten) Menüs
-const int MEMINT_MenuArrayOffset = 9248324; //0x8D1E44
-const int MEMINT_MenuItemArrayAddres = 9248508; //0x8D1EFC
+///Array mit alle erzeugten (und nicht wieder zerstörten) Menüs
+const int MEMINT_MenuArrayOffset = 9248324; ///0x8D1E44
+const int MEMINT_MenuItemArrayAddres = 9248508; ///0x8D1EFC
 
-//Ein paar nützliche statische Objekte
-const int MEMINT_oGame_Pointer_Address = 11208836; //0xAB0884
-const int MEMINT_zTimer_Address = 10073044; //0x99B3D4
-const int MEMINT_oCInformationManager_Address = 11191384; //0xAAC458
-const int MEMINT_gameMan_Pointer_address = 9185624; //0x8C2958
+///Ein paar nützliche statische Objekte
+const int MEMINT_oGame_Pointer_Address = 11208836; ///0xAB0884
+const int MEMINT_zTimer_Address = 10073044; ///0x99B3D4
+const int MEMINT_oCInformationManager_Address = 11191384; ///0xAAC458
+const int MEMINT_gameMan_Pointer_address = 9185624; ///0x8C2958
 
-//Zufallszahlenarray der Engine (für Hashwerte):
-const int crc_table_address = 8598048; //0x833220
+///Zufallszahlenarray der Engine (für Hashwerte):
+const int crc_table_address = 8598048; ///0x833220
 
-//Arrays mit Informationen zu gedrückten Tasten
-const int MEMINT_KeyEvent_Offset  = 9246328; //0x8D1678
+///Arrays mit Informationen zu gedrückten Tasten
+const int MEMINT_KeyEvent_Offset  = 9246328; ///0x8D1678
 const int MEMINT_KeyToggle_Offset = 9246904;
-const int MEMINT_KeyBuffer_offset = 9248080; //0x8D1D50
+const int MEMINT_KeyBuffer_offset = 9248080; ///0x8D1D50
 
-//Statisches Zeug vom Spawnmanager
-const int SPAWN_INSERTTIME_MAX_Address = 9153740;/*8BACCC*/ //zREAL*
-const int SPAWN_INSERTRANGE_Address    = 9153744;/*8BACD0*/ //zREAL*
-const int SPAWN_REMOVERANGE_Address    = 9153748;/*8BACD4*/ //zREAL*
+///Statisches Zeug vom Spawnmanager
+const int SPAWN_INSERTTIME_MAX_Address = 9153740;	/*8BACCC*/ ///zREAL*
+const int SPAWN_INSERTRANGE_Address    = 9153744;	/*8BACD0*/ ///zREAL*
+const int SPAWN_REMOVERANGE_Address    = 9153748;	/*8BACD4*/ ///zREAL*
 
-//Die Weltzeit wird nicht weiter gezählt, falls gesetzt
-const int game_holdTime_Address = 11208840; //0xAB0888 //zBOOL*
+///Die Weltzeit wird nicht weiter gezählt, falls gesetzt
+const int game_holdTime_Address = 11208840;	///0xAB0888 //zBOOL*
 
-//Statische Eigenschaften betreffend der Untertitelanzeige:
-const int oCNpc_isEnabledTalkBox_Address        =  9142548; //0x8B8114 //zBOOL* //dominiert die drei folgenden Einstellungen
-const int oCNpc_isEnabledTalkBoxPlayer_Address  =  9142552; //0x8B8118 //zBOOL*
-const int oCNpc_isEnabledTalkBoxAmbient_Address = 11216504; //0xAB2678 //zBOOL*
-const int oCNpc_isEnabledTalkBoxNoise_Address   = 11216508; //0xAB267C //zBOOL*
+///Statische Eigenschaften betreffend der Untertitelanzeige:
+const int oCNpc_isEnabledTalkBox_Address        =  9142548; ///0x8B8114 //zBOOL* //dominiert die drei folgenden Einstellungen
+const int oCNpc_isEnabledTalkBoxPlayer_Address  =  9142552; ///0x8B8118 //zBOOL*
+const int oCNpc_isEnabledTalkBoxAmbient_Address = 11216504; ///0xAB2678 //zBOOL*
+const int oCNpc_isEnabledTalkBoxNoise_Address   = 11216508; ///0xAB267C //zBOOL*
 
-//globaler Screen (vom Typ zCView), da liegt z.B HP-Bar etc drin.
-const int screen_offset = 11232360;	//0xAB6468
+///globaler Screen (vom Typ zCView), da liegt z.B HP-Bar etc drin.
+const int screen_offset = 11232360;	///0xAB6468
 
-//Gekapselte Gothic.ini (zum Zugriff stehen Funktionen bereit)
-const int zoptions_Pointer_Address = 9230728; //0x8CD988
-//[modname].ini (zum Zugriff stehen Funktionen bereit)
-const int zgameoptions_Pointer_Address = 9230732; //0x8CD98C
+///Gekapselte Gothic.ini (zum Zugriff stehen Funktionen bereit)
+const int zoptions_Pointer_Address = 9230728; ///0x8CD988
+///[modname].ini (zum Zugriff stehen Funktionen bereit)
+const int zgameoptions_Pointer_Address = 9230732; ///0x8CD98C
 
-//bspFrameCtr:
-const int bspFrameCtr_Address = 9259332; //0x8D4944;
+///bspFrameCtr:
+const int bspFrameCtr_Address = 9259332; ///0x8D4944;
 
-//Performance Counter Ticks per Millisecond
-const int PC_TicksPerMS_Address = 9255828; //0x8D3B94
+///Performance Counter Ticks per Millisecond
+const int PC_TicksPerMS_Address = 9255828; ///0x8D3B94
 
-//--------------------------------------
-// Sonstige Konstanten
-//--------------------------------------
+///--------------------------------------
+/// Sonstige Konstanten
+///--------------------------------------
 
-//Adresse der Methodentabellen zur Unterscheidung von Objekten
+///Adresse der Methodentabellen zur Unterscheidung von Objekten
 const int oCMobFire_vtbl        = 8638876;
 const int zCMover_vtbl          = 8627324;
 const int oCMob_vtbl            = 8639700;
@@ -105,12 +105,12 @@ const int oCItem_vtbl           = 8636420;
 const int oCNpc_vtbl            = 8640292;
 const int zCVobLight_vtbl		= 8624756;
 
-//--------------------------------------
-// Tasten
-//--------------------------------------
+///--------------------------------------
+/// Tasten
+///--------------------------------------
 
-//Diese Liste kommt von hier:
-//http://community.bistudio.com/wiki/DIK_KeyCodes
+///Diese Liste kommt von hier:
+///http://community.bistudio.com/wiki/DIK_KeyCodes
 
 const int KEY_ESCAPE          = 01;
 const int KEY_1               = 02;
@@ -257,10 +257,10 @@ const int KEY_MYCOMPUTER      = 235;
 const int KEY_MAIL            = 236;
 const int KEY_MEDIASELECT     = 237;
 
-const int MOUSE_BUTTONLEFT	= 524; //linke Maustaste
-const int MOUSE_BUTTONRIGHT	= 525; //rechte Maustaste
-const int MOUSE_BUTTONMID	= 526; //mittlere Maustaste
-const int MOUSE_XBUTTON1	= 527; //Sonderbuttons...
+const int MOUSE_BUTTONLEFT	= 524; ///linke Maustaste
+const int MOUSE_BUTTONRIGHT	= 525; ///rechte Maustaste
+const int MOUSE_BUTTONMID	= 526; ///mittlere Maustaste
+const int MOUSE_XBUTTON1	= 527; ///Sonderbuttons...
 const int MOUSE_XBUTTON2	= 528;
 const int MOUSE_XBUTTON3	= 529;
 const int MOUSE_XBUTTON4	= 530;

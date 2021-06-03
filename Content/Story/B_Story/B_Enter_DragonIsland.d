@@ -1,18 +1,17 @@
 ///******************************************************************************************
 ///	B_ENTER_DRAGONISLAND
 ///******************************************************************************************
-FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01()
+func void STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01()
 {
-	Wld_InsertNpc (Waran, "FP_ROAM_DI_WARAN_01");
-	Wld_InsertNpc (Waran, "FP_ROAM_DI_WARAN_02");
-	Wld_InsertNpc (Waran, "FP_ROAM_DI_WARAN_03");
+	Wld_InsertNpc (Firewaran, "FP_ROAM_DI_WARAN_01");
+	Wld_InsertNpc (Firewaran, "FP_ROAM_DI_WARAN_02");
+	Wld_InsertNpc (Firewaran, "FP_ROAM_DI_WARAN_03");
 	
-	Wld_InsertNpc (Troll_DI, "DI_ORKAREA_TROLL");
-	
-	Wld_InsertItem (ItMi_Diamond, "FP_ITEM_DI_ENTER_03");
+	Wld_InsertNpc (Troll_DI, "DI_ORKAREA_TROLL");		
+	Wld_InsertItem (ItMi_DarkPearl, "FP_ITEM_DI_ENTER_03");
 	Wld_InsertItem (ItMi_Sulfur, "FP_ITEM_DI_ENTER_07");
-//	Wld_InsertItem (ItWr_ZugBruecke_MIS, "FP_ITEM_DI_ENTER_09");
-
+	Wld_InsertItem (ItWr_ZugBruecke_MIS, "FP_ITEM_DI_ENTER_09");
+	
 	Wld_InsertNpc (OrcWarrior_Rest, "FP_ROAM_DI_ORK_01");
 	Wld_InsertNpc (OrcWarrior_Rest, "FP_ROAM_DI_ORK_02");
 	Wld_InsertNpc (Warg, "FP_ROAM_DI_ORK_03");
@@ -33,27 +32,27 @@ FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01()
 	Wld_InsertNpc (OrcElite_Rest, "FP_ROAM_DI_ORK_21");
 	Wld_InsertNpc (OrcElite_Rest, "FP_ROAM_DI_ORK_22");
 	Wld_InsertNpc (OrcElite_Rest, "FP_ROAM_DI_ORK_23");
-
+	
 	Wld_InsertNpc (OrcWarrior_Roam, "FP_ROAM_DI_ORK_28");
 	Wld_InsertNpc (OrcElite_Roam, "FP_ROAM_DI_ORK_29");
 	Wld_InsertNpc (OrcWarrior_Roam, "FP_ROAM_DI_ORK_30");
 	Wld_InsertNpc (OrcElite_Roam, "FP_ROAM_DI_ORK_33");
 	Wld_InsertNpc (OrcElite_Roam, "FP_ROAM_DI_ORK_34");
 	Wld_InsertNpc (OrcWarrior_Roam, "FP_ROAM_DI_ORK_35");
-
+	
 	Wld_InsertNpc (Warg, "FP_ROAM_DI_ORK_12");
 	Wld_InsertNpc (OrcShaman_Sit, "FP_ROAM_DI_ORK_13");
 	Wld_InsertNpc (OrkElite_AntiPaladinOrkOberst_DI, "DI_ORKOBERST");
 	Wld_InsertNpc (OrcElite_DIOberst1_Rest, "FP_ROAM_DI_ORK_24");
 	Wld_InsertNpc (OrcElite_DIOberst2_Rest, "FP_ROAM_DI_ORK_26");
 	Wld_InsertNpc (OrcElite_DIOberst3_Rest, "FP_ROAM_DI_ORK_27");
-
+	
 	Wld_InsertNpc (DMT_DementorAmbientSpeaker, "DI_ORKAREA_24");
 	Wld_InsertNpc (DMT_DementorAmbientSpeaker, "DI_DRACONIANAREA_22");
 	Wld_InsertNpc (DMT_DementorAmbientSpeaker, "DI_DRACONIANAREA_08");
-
+	
 	Wld_InsertNpc (Dragon_Black, "DI_DRACONIANAREA_FIREDRAGON");
-
+	
 	Wld_InsertNpc (Draconian, "FP_ROAM_DI_DRACONIAN_01");
 	Wld_InsertNpc (Draconian, "FP_ROAM_DI_DRACONIAN_02");
 	Wld_InsertNpc (Draconian, "FP_ROAM_DI_DRACONIAN_03");
@@ -81,7 +80,8 @@ FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01()
 	Wld_InsertNpc (Draconian, "FP_ROAM_DI_DRACONIAN_25");
 };
 
-FUNC VOID INIT_NEWWORLD_PART_DRAGON_ISLAND_01()
+///******************************************************************************************
+func void INIT_NEWWORLD_PART_DRAGON_ISLAND_01()
 {
 	B_InitMonsterAttitudes(); 
 	B_InitGuildAttitudes();
@@ -89,11 +89,11 @@ FUNC VOID INIT_NEWWORLD_PART_DRAGON_ISLAND_01()
 };
 
 ///******************************************************************************************
-FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_UNDEAD_01()
+func void STARTUP_NEWWORLD_PART_DRAGON_UNDEAD_01()
 {
-//	Wld_InsertItem (ItWr_Rezept_MegaDrink_MIS, "FP_ITEM_DI_BLACKNOV_01");
+	Wld_InsertItem (ItWr_Rezept_MegaDrink_MIS, "FP_ITEM_DI_BLACKNOV_01");
 	Wld_InsertItem (ItWr_Diary_BlackNovice_MIS, "FP_ITEM_DI_BLACKNOV_02");
-
+	
 	Wld_InsertNpc (Skeleton_Lord_Archol, "DI_ARCHOL");
 	Wld_InsertNpc (Skeleton_Archol1, "DI_ARCHOL_SKELETON_01");
 	Wld_InsertNpc (Skeleton_Archol2, "DI_ARCHOL_SKELETON_02");
@@ -101,7 +101,7 @@ FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_UNDEAD_01()
 	Wld_InsertNpc (Skeleton_Archol4, "DI_ARCHOL_SKELETON_04");
 	Wld_InsertNpc (Skeleton_Archol5, "DI_ARCHOL_SKELETON_05");
 	Wld_InsertNpc (Skeleton_Archol6, "DI_ARCHOL_SKELETON_06");
-
+	
 	Wld_InsertNpc (DMT_DementorAmbient, "DI_DRACONIANAREA_53");
 	Wld_InsertNpc (DMT_DementorAmbient, "DI_DRACONIANAREA_52");
 	Wld_InsertNpc (Skeleton, "DI_DRACONIANAREA_55");
@@ -111,30 +111,31 @@ FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_UNDEAD_01()
 	Wld_InsertNpc (Skeleton_Warrior, "DI_DRACONIANAREA_51");
 	Wld_InsertNpc (Skeleton, "DI_DRACONIANAREA_51");
 	Wld_InsertNpc (Skeleton_Warrior, "DI_DRACONIANAREA_51");
-
+	
 	Wld_InsertNpc (Shadowbeast_Skeleton, "WP_UNDEAD_SPAWN_POINT_01");
-
-	Wld_InsertNpc (Skeleton_Lord,	"WP_UNDEAD_LEFT_DOWN_06");
-
+	
+	Wld_InsertNpc (Skeleton_Lord, "WP_UNDEAD_LEFT_DOWN_06");
+	
 	Wld_InsertNpc (OrcElite_Rest, "WP_UNDEAD_SPAWN_POINT_02");
 	Wld_InsertNpc (OrcElite_Rest, "WP_UNDEAD_SPAWN_POINT_03");
 	Wld_InsertNpc (OrcShaman_Sit, "WP_UNDEAD_SPAWN_POINT_04");
-
+	
 	Wld_InsertNpc (Zombie, "WP_UNDEAD_SPAWN_POINT_05");
 	Wld_InsertNpc (Zombie, "WP_UNDEAD_SPAWN_POINT_06");
 	Wld_InsertNpc (Zombie, "WP_UNDEAD_SPAWN_POINT_07");
 	Wld_InsertNpc (Zombie, "WP_UNDEAD_SPAWN_POINT_08");
-
+	
 	Wld_InsertNpc (Skeleton_Warrior, "DRAGONISLAND_UNDEAD_04_01");
 	Wld_InsertNpc (Skeleton_Warrior, "DRAGONISLAND_UNDEAD_04_02");
-
+	
 	Wld_InsertNpc (Skeleton_Warrior, "DRAGONISLAND_UNDEAD_08_01");
 	Wld_InsertNpc (Skeleton_Lord, "DRAGONISLAND_UNDEAD_08_02");
 	Wld_InsertNpc (Skeleton_Lord, "DRAGONISLAND_UNDEAD_08_03");
 	Wld_InsertNpc (Skeleton_Warrior, "DRAGONISLAND_UNDEAD_08_04");
 };
 
-FUNC VOID INIT_NEWWORLD_PART_DRAGON_UNDEAD_01()
+///******************************************************************************************
+func void INIT_NEWWORLD_PART_DRAGON_UNDEAD_01()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
@@ -142,7 +143,7 @@ FUNC VOID INIT_NEWWORLD_PART_DRAGON_UNDEAD_01()
 };
 
 ///******************************************************************************************
-FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_FINAL_01()
+func void STARTUP_NEWWORLD_PART_DRAGON_FINAL_01()
 {
 	Wld_InsertNpc (DMT_DementorAmbientWalker_DI_01, "DI_UNDEADDRAGONTEMPEL_01");
 	Wld_InsertNpc (DMT_DementorAmbientWalker_DI_02, "DI_UNDEADDRAGONTEMPEL_01");
@@ -152,17 +153,18 @@ FUNC VOID STARTUP_NEWWORLD_PART_DRAGON_FINAL_01()
 	Wld_InsertNpc (DMT_DementorAmbientWalker_DI_06, "DI_UNDEADDRAGONTEMPEL_01");
 	Wld_InsertNpc (DMT_DementorAmbient, "DI_UNDEADDRAGONTEMPEL_20");
 	Wld_InsertNpc (DMT_DementorAmbient, "DI_UNDEADDRAGONTEMPEL_23");
-
+	
 	Wld_InsertNpc (DMT_1299_OberDementor_DI, "DI_SCHWARZMAGIER");
-
-	Wld_InsertNpc (Dragon_Undead, "DI_UNDEADDRAGON");	
-
+	
+	Wld_InsertNpc (Dragon_Undead, "DI_UNDEADDRAGON");
+	
 	Wld_InsertNpc (UndeadOrcWarrior, "DI_UNDEADDRAGON_TRAP_01");
 	Wld_InsertNpc (UndeadOrcWarrior, "DI_UNDEADDRAGON_TRAP_02");
 	Wld_InsertNpc (UndeadOrcWarrior, "DI_UNDEADDRAGON_TRAP_03");
 };
 
-FUNC VOID INIT_NEWWORLD_PART_DRAGON_FINAL_01()
+///******************************************************************************************
+func void INIT_NEWWORLD_PART_DRAGON_FINAL_01()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
@@ -170,105 +172,122 @@ FUNC VOID INIT_NEWWORLD_PART_DRAGON_FINAL_01()
 };
 
 ///******************************************************************************************
-FUNC VOID STARTUP_DRAGONISLAND()
+func void STARTUP_DRAGONISLAND()
 {
-	if (JorgenIsCaptain == true)
-	{	Wld_InsertNpc (VLK_4250_Jorgen_DI, "SHIP_DECK_01");	};
-
-	if (TorlofIsCaptain == true)
-	{	Wld_InsertNpc (SLD_801_Torlof_DI, "SHIP_DECK_01");	};
-
-	if (JackIsCaptain == true)
-	{	Wld_InsertNpc (VLK_444_Jack_DI, "SHIP_DECK_01");	};
-
+	if (JorgenIsCaptain)
+	{
+		Wld_InsertNpc (VLK_4250_Jorgen_DI, "SHIP_DECK_01");
+	};
+	if (TorlofIsCaptain)
+	{
+		Wld_InsertNpc (SLD_801_Torlof_DI, "SHIP_DECK_01");
+	};
+	if (JackIsCaptain)
+	{
+		Wld_InsertNpc (VLK_444_Jack_DI, "SHIP_DECK_01");
+	};
+	
 	if (Lee_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (SLD_800_Lee_DI, "SHIP_DECK_01");		};
-
+	{
+		Wld_InsertNpc (SLD_800_Lee_DI, "SHIP_DECK_01");
+	};
 	if (MiltenNW_IsOnBoard == LOG_SUCCESS)
 	{
 		Wld_InsertNpc (PC_Mage_DI, "SHIP_DECK_01");
 		if (Lester_IsOnBoard != LOG_SUCCESS)
-		{	B_StartOtherRoutine (PC_Mage_DI, "SittingShipDI");	};
+		{
+			B_StartOtherRoutine	(PC_Mage_DI, "SittingShipDI");
+		};
 	};
-
 	if (Lester_IsOnBoard == LOG_SUCCESS)
 	{
 		Wld_InsertNpc (PC_Psionic_DI, "SHIP_DECK_01");
 		if (MiltenNW_IsOnBoard != LOG_SUCCESS)
-		{	B_StartOtherRoutine	(PC_Psionic_DI, "SittingShipDI");	};
+		{
+			B_StartOtherRoutine	(PC_Psionic_DI, "SittingShipDI");
+		};
 	};
-
 	if (Mario_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (None_101_Mario_DI, "SHIP_DECK_01");	};
-
-	if (Wolf_IsOnBoard== LOG_SUCCESS)
-	{	Wld_InsertNpc (SLD_811_Wolf_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (None_101_Mario_DI, "SHIP_DECK_01");
+	};
+	if (Wolf_IsOnBoard == LOG_SUCCESS)
+	{
+		Wld_InsertNpc (SLD_811_Wolf_DI, "SHIP_DECK_01");
+	};
 	if (Vatras_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (VLK_439_Vatras_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (VLK_439_Vatras_DI, "SHIP_DECK_01");
+	};
 	if (Bennet_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (SLD_809_Bennet_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (SLD_809_Bennet_DI, "SHIP_DECK_01");
+	};
 	if (Diego_IsOnBoard == LOG_SUCCESS)
 	{
 		Wld_InsertNpc (PC_Thief_DI, "SHIP_DECK_01");
+		
 		if (Lares_IsOnBoard != LOG_SUCCESS)
-		{	B_StartOtherRoutine	(PC_Thief_DI, "SittingShipDI");	};
+		{
+			B_StartOtherRoutine	(PC_Thief_DI, "SittingShipDI");
+		};
 	};
-
 	if (Gorn_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (PC_Fighter_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (PC_Fighter_DI, "SHIP_DECK_01");
+	};
 	if (Lares_IsOnBoard == LOG_SUCCESS)
 	{
 		Wld_InsertNpc (VLK_449_Lares_DI, "SHIP_DECK_01");
-		if (Diego_IsOnBoard != LOG_SUCCESS) 
-		{	B_StartOtherRoutine	(VLK_449_Lares_DI, "SittingShipDI");	};
-	};	
-
+		
+		if (Diego_IsOnBoard != LOG_SUCCESS)
+		{
+			B_StartOtherRoutine	(VLK_449_Lares_DI, "SittingShipDI");
+		};
+	};
 	if (Biff_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (DJG_713_Biff_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (DJG_713_Biff_DI, "SHIP_DECK_01");
+	};
 	if (Angar_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (DJG_705_Angar_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (DJG_705_Angar_DI, "SHIP_DECK_01");
+	};
+	
 	if (Girion_IsOnBoard == LOG_SUCCESS)
-	{	Wld_InsertNpc (Pal_207_Girion_DI, "SHIP_DECK_01");	};
-
+	{
+		Wld_InsertNpc (Pal_207_Girion_DI, "SHIP_DECK_01");
+	};
+	
 	Wld_InsertNpc (NOV_600_Pedro_DI, "SHIP_DECK_01");
-
+	
 	Wld_InsertItem (ItMi_Flask, "FP_ITEM_SHIP_03");
 	Wld_InsertItem (ItMi_Flask, "FP_ITEM_SHIP_07");
-
+	
 	STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01();
 	STARTUP_NEWWORLD_PART_DRAGON_UNDEAD_01();
 	STARTUP_NEWWORLD_PART_DRAGON_FINAL_01();
-
-	PlayVideo ("SHIP.BIK");
-
+	
+	PlayVideo("SHIP.BIK");
+	
 	Log_CreateTopic (TOPIC_HallenVonIrdorath, LOG_MISSION);
-	Log_SetTopicStatus (TOPIC_HallenVonIrdorath, LOG_RUNNING);
+	Log_SetTopicStatus(TOPIC_HallenVonIrdorath, LOG_RUNNING);
 	Log_AddEntry (TOPIC_HallenVonIrdorath, "Wir haben die Insel des Feindes erreicht. Innos weiß, welche Kreaturen im Innern dieses Berges auf mich warten werden.");
-
-	B_ChangeChapter (12, DRAGONISLAND_ZEN);
+	
+	B_ChangeChapter (6, DRAGONISLAND_ZEN);
 };
 
 ///******************************************************************************************
-///	B_ENTER_DRAGONISLAND (wird über INIT_DRAGONISLAND)
-///******************************************************************************************
-FUNC VOID INIT_DRAGONISLAND()
+func void INIT_DRAGONISLAND()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
-	
 	CurrentLevel = DRAGONISLAND_ZEN;
 	
-	if (Npc_HasItems(hero,ITKE_SHIP_LEVELCHANGE_MIS))
+	if (Npc_HasItems(hero, ITKE_SHIP_LEVELCHANGE_MIS))
 	{
-		Npc_RemoveInvItem (hero, ITKE_SHIP_LEVELCHANGE_MIS);
+		Npc_RemoveInvItems (hero, ITKE_SHIP_LEVELCHANGE_MIS, 1);
 	};
-	
 	B_InitNpcGlobals();
 };

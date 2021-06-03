@@ -12,14 +12,14 @@ INSTANCE DIA_Lothar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Lothar_EXIT_Condition;
 	information = DIA_Lothar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Lothar_EXIT_Condition()
 {	
-	if (Lothar_ImOV == true)
+	if (Lothar_ImOV == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lothar_EXIT_Info() 
@@ -37,27 +37,27 @@ INSTANCE DIA_Lothar_FirstEXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Lothar_FirstEXIT_Condition;
 	information = DIA_Lothar_FirstEXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Muszê iœæ! (KONIEC)";
 };
 FUNC INT DIA_Lothar_FirstEXIT_Condition()
 {	
-	if (Lothar_ImOV == false)
+	if (Lothar_ImOV == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lothar_FirstEXIT_Info() 
 {
 	AI_Output (other, self, "DIA_Lothar_FirstEXIT_15_00"); //Muszê iœæ!
-	if (Lothar_Regeln == false)
+	if (Lothar_Regeln == FALSE)
 	{
 		AI_Output (self, other, "DIA_Lothar_FirstEXIT_01_01"); //Zaczekaj! Nie znasz nowych przepisów obowi¹zuj¹cych w mieœcie!
 		AI_Output (other, self, "DIA_Lothar_FirstEXIT_15_02"); //Na razie.
 	}
 	else
 	{
-		if (Player_TalkedAboutDragons == true)
+		if (Player_TalkedAboutDragons == TRUE)
 		&& ((hero.guild != GIL_PAL)	&&	(hero.guild != GIL_KDF))
 		{
 			AI_Output (self, other, "DIA_Lothar_FirstEXIT_01_03"); //Jeœli jeszcze raz us³yszê, ¿e opowiadasz mieszkañcom tego miasta jakieœ brednie o smokach, wpadniesz w tarapaty, rozumiemy siê?
@@ -72,15 +72,15 @@ FUNC VOID DIA_Lothar_FirstEXIT_Info()
 			};
 		};
 
-		Lothar_ImOV = true;
+		Lothar_ImOV = TRUE;
 		Npc_ExchangeRoutine (self, "START");
 	};
 
 	// ------- Canthars TA auswechseln -------
-	if (Canthar_InStadt == false)
+	if (Canthar_InStadt == FALSE)
 	{
 		Npc_ExchangeRoutine (Canthar, "START");
-		Canthar_InStadt = true;
+		Canthar_InStadt = TRUE;
 	};
 
 	AI_StopProcessInfos (self);
@@ -97,14 +97,14 @@ instance DIA_Lothar_Hallo (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lothar_Hallo_Condition;
 	information	 = 	DIA_Lothar_Hallo_Info;
-	permanent    =  false;
-	important	 = 	true;
+	permanent    =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Lothar_Hallo_Condition ()
 {
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -112,8 +112,8 @@ func void DIA_Lothar_Hallo_Info ()
 {
 	AI_Output (self, other, "DIA_Lothar_Hallo_01_00"); //Stój, nieznajomy!
 
-	if (Mil_310_schonmalreingelassen == false)
-	&& (Mil_333_schonmalreingelassen == false)
+	if (Mil_310_schonmalreingelassen == FALSE)
+	&& (Mil_333_schonmalreingelassen == FALSE)
 	&& ((hero.guild != GIL_PAL)	&&	(hero.guild != GIL_KDF))
 	{
 		AI_Output (self, other, "DIA_Lothar_Hallo_01_01"); //Nie widzia³em, ¿ebyœ przechodzi³ przez tê bramê.
@@ -146,15 +146,15 @@ instance DIA_Lothar_MESSAGE		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lothar_MESSAGE_Condition;
 	information	 = 	DIA_Lothar_MESSAGE_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Mam wa¿n¹ wiadomoœæ dla przywódcy paladynów!";
 };
 func int DIA_Lothar_MESSAGE_Condition ()
 {	
-	if (Mil_305_schonmalreingelassen == false) 
+	if (Mil_305_schonmalreingelassen == FALSE) 
 	&& (hero.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_MESSAGE_Info ()
@@ -173,15 +173,15 @@ instance DIA_Lothar_EyeInnos (C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lothar_EyeInnos_Condition;
 	information	 = 	DIA_Lothar_EyeInnos_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Przybywam, aby zdobyæ Oko Innosa!";
 };
 func int DIA_Lothar_EyeInnos_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lothar_MESSAGE))
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_EyeInnos_Info ()
@@ -200,7 +200,7 @@ func void DIA_Lothar_EyeInnos_Info ()
 		AI_Output (self, other, "DIA_Lothar_EyeInnos_01_05"); //Z pewnoœci¹ nie chodzi³o mu o to, abyœ po³o¿y³ swoje brudne ³apska na naszej œwiêtej relikwii.
 		AI_Output (other, self, "DIA_Lothar_EyeInnos_15_06"); //Ale...
 		AI_Output (self, other, "DIA_Lothar_EyeInnos_01_07"); //Nie chcê wiêcej o tym s³yszeæ!
-		if (Player_TalkedAboutDragons == true)
+		if (Player_TalkedAboutDragons == TRUE)
 		{
 			AI_Output (self, other, "DIA_Lothar_EyeInnos_01_08"); //Najpierw te opowieœci o smokach, a teraz jeszcze coœ takiego - to oburzaj¹ce!
 		};
@@ -216,15 +216,15 @@ instance DIA_Lothar_Dragons (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lothar_Dragons_Condition;
 	information	 = 	DIA_Lothar_Dragons_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Pos³uchaj - miastu zagra¿aj¹ smoki!";
 };
 func int DIA_Lothar_Dragons_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lothar_MESSAGE))
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_Dragons_Info ()
@@ -243,7 +243,7 @@ func void DIA_Lothar_Dragons_Info ()
 		AI_Output (self, other, "DIA_Lothar_Dragons_01_06"); //Ju¿ o tym s³ysza³em. Jednak trudno mi w to uwierzyæ.
 		AI_Output (self, other, "DIA_Lothar_Dragons_01_07"); //By³oby lepiej, gdybyœ zachowa³ tê wiedzê dla siebie. Musimy zapobiegaæ wybuchowi paniki.
 	};
-	Player_TalkedAboutDragons = true;
+	Player_TalkedAboutDragons = TRUE;
 };	
 
 ///////////////////////////////////////////////////////////////////////
@@ -261,10 +261,10 @@ instance DIA_Addon_Lothar_Ornament		(C_INFO)
 
 func int DIA_Addon_Lothar_Ornament_Condition ()
 {
-	if (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	if (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	&& (MIS_Addon_Cavalorn_GetOrnamentFromPAL == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -304,15 +304,15 @@ instance DIA_Lothar_WhoDragons (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lothar_WhoDragons_Condition;
 	information	 = 	DIA_Lothar_WhoDragons_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Czy ktoœ ju¿ ostrzega³ was o zagro¿eniu ze strony smoków?";
 };
 func int DIA_Lothar_WhoDragons_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lothar_Dragons))
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_WhoDragons_Info ()
@@ -335,12 +335,12 @@ instance DIA_Lothar_Regeln (C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Lothar_Regeln_Condition;
 	information	 = 	DIA_Lothar_Regeln_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Opowiedz mi o przepisach obowi¹zuj¹cych w mieœcie!";
 };
 func int DIA_Lothar_Regeln_Condition ()
 {	
-	return true;
+	return TRUE;
 };
 func void DIA_Lothar_Regeln_Info ()
 {
@@ -351,7 +351,7 @@ func void DIA_Lothar_Regeln_Info ()
 	AI_Output (self ,other, "DIA_Lothar_Add_01_05"); //Po trzecie: ktokolwiek zostanie oskar¿ony o pope³nienie przestêpstwa, musi siê oczyœciæ z zarzutów przed dowódc¹ stra¿y.
 	AI_Output (self, other, "DIA_Lothar_Regeln_01_05"); //Jakieœ pytania?
 	
-	Lothar_Regeln = true;
+	Lothar_Regeln = TRUE;
 };	
 
 ///////////////////////////////////////////////////////////////////////
@@ -369,10 +369,10 @@ instance DIA_Addon_Lothar_MissingPeople		(C_INFO)
 
 func int DIA_Addon_Lothar_MissingPeople_Condition ()
 {
-	if (SC_HearedAboutMissingPeople == false)
+	if (SC_HearedAboutMissingPeople == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Lothar_Hallo))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -384,14 +384,14 @@ func void DIA_Addon_Lothar_MissingPeople_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lothar_MissingPeople_01_03"); //Nic wiêc dziwnego, ¿e ludnoœæ miasta zachowuje siê nieufnie w stosunku do obcych.
 	AI_Output	(self, other, "DIA_Addon_Lothar_MissingPeople_01_04"); //Bêd¹c w mieœcie, staraj siê nie zwracaæ na siebie uwagi.
 	
-		if (SC_HearedAboutMissingPeople == false)
+		if (SC_HearedAboutMissingPeople == FALSE)
 		{
 			Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 			Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
 			B_LogEntry (TOPIC_Addon_WhoStolePeople, LogText_Addon_SCKnowsMisspeapl); 
 		};
 	
-	SC_HearedAboutMissingPeople = true;
+	SC_HearedAboutMissingPeople = TRUE;
 };
 
 // ***************************************************************
@@ -403,7 +403,7 @@ instance DIA_Lothar_HowCitizen (C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lothar_HowCitizen_Condition;
 	information	 = 	DIA_Lothar_HowCitizen_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Jak mogê zostaæ obywatelem miasta?";
 };
 func int DIA_Lothar_HowCitizen_Condition ()
@@ -412,7 +412,7 @@ func int DIA_Lothar_HowCitizen_Condition ()
 	&& (Player_IsApprentice == APP_NONE)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_HowCitizen_Info ()
@@ -433,7 +433,7 @@ instance DIA_Lothar_WoArbeit (C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Lothar_WoArbeit_Condition;
 	information	 = 	DIA_Lothar_WoArbeit_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Gdzie mogê znaleŸæ pracê?";
 };
 func int DIA_Lothar_WoArbeit_Condition ()
@@ -442,7 +442,7 @@ func int DIA_Lothar_WoArbeit_Condition ()
 	&& (Player_IsApprentice == APP_NONE)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_WoArbeit_Info ()
@@ -464,17 +464,17 @@ instance DIA_Lothar_ToOV (C_INFO)
 	nr			 = 	6;
 	condition	 = 	DIA_Lothar_ToOV_Condition;
 	information	 = 	DIA_Lothar_ToOV_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Jak dojœæ do górnego miasta?";
 };
 func int DIA_Lothar_ToOV_Condition ()
 {	
 	if (Npc_KnowsInfo(other, DIA_Lothar_Regeln))
-	&& (Mil_305_schonmalreingelassen == false)
+	&& (Mil_305_schonmalreingelassen == FALSE)
 	&& (Player_IsApprentice == APP_NONE)
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_ToOV_Info ()
@@ -494,7 +494,7 @@ instance DIA_Lothar_ToMiliz (C_INFO)
 	nr			 = 	7;
 	condition	 = 	DIA_Lothar_ToMiliz_Condition;
 	information	 = 	DIA_Lothar_ToMiliz_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Jak mogê zostaæ cz³onkiem stra¿y?";
 };
 func int DIA_Lothar_ToMiliz_Condition ()
@@ -502,7 +502,7 @@ func int DIA_Lothar_ToMiliz_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Lothar_Regeln))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_ToMiliz_Info ()
@@ -525,7 +525,7 @@ instance DIA_Lothar_ToPaladins (C_INFO)
 	nr			 = 	7;
 	condition	 = 	DIA_Lothar_ToPaladins_Condition;
 	information	 = 	DIA_Lothar_ToPaladins_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Co muszê zrobiæ, ¿eby zdobyæ tak¹ zbrojê jak twoja?";
 };
 func int DIA_Lothar_ToPaladins_Condition ()
@@ -534,7 +534,7 @@ func int DIA_Lothar_ToPaladins_Condition ()
 	&& (other.guild != GIL_PAL)
 	&& (other.guild != GIL_KDF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_ToPaladins_Info ()
@@ -562,15 +562,15 @@ instance DIA_Lothar_WoAndre (C_INFO)
 	nr			 = 	8;
 	condition	 = 	DIA_Lothar_WoAndre_Condition;
 	information	 = 	DIA_Lothar_WoAndre_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Gdzie mogê znaleŸæ przywódcê stra¿y miejskiej?";
 };
 func int DIA_Lothar_WoAndre_Condition ()
 {	
 	if ( Npc_KnowsInfo(other, DIA_Lothar_Regeln) || Npc_KnowsInfo(other, DIA_Lothar_MESSAGE) )
-	&& (Andre.aivar[AIV_TalkedToPlayer] == false)
+	&& (Andre.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_WoAndre_Info ()
@@ -588,14 +588,14 @@ instance DIA_Lothar_Schlafen (C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Lothar_Schlafen_Condition;
 	information	 = 	DIA_Lothar_Schlafen_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Gdzie mogê spêdziæ noc?";
 };
 func int DIA_Lothar_Schlafen_Condition ()
 {	
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_Schlafen_Info ()
@@ -615,16 +615,16 @@ instance DIA_Lothar_PermB4OV (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lothar_PermB4OV_Condition;
 	information	= DIA_Lothar_PermB4OV_Info;
-	permanent   = true;
-	important 	= true;
+	permanent   = TRUE;
+	important 	= TRUE;
 };
 func int DIA_Lothar_PermB4OV_Condition ()
 {	
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (Mil_305_schonmalreingelassen == false)
-	&& (Lothar_Regeln == true)
+	&& (Mil_305_schonmalreingelassen == FALSE)
+	&& (Lothar_Regeln == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_PermB4OV_Info ()
@@ -695,14 +695,14 @@ instance DIA_Lothar_HelloAgain (C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Lothar_HelloAgain_Condition;
 	information	 = 	DIA_Lothar_HelloAgain_Info;
-	permanent    =  false;
-	important 	 = 	true;
+	permanent    =  FALSE;
+	important 	 = 	TRUE;
 };
 func int DIA_Lothar_HelloAgain_Condition ()
 {	
-	if (Mil_305_schonmalreingelassen == true) //Torwache zu oberem Viertel.
+	if (Mil_305_schonmalreingelassen == TRUE) //Torwache zu oberem Viertel.
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_HelloAgain_Info ()
@@ -729,7 +729,7 @@ func void DIA_Lothar_HelloAgain_Info ()
 	AI_Output (self, other, "DIA_Lothar_HelloAgain_01_03"); //Wolno ci wchodziæ jedynie do budynków przeznaczonych dla handlarzy. Rozpoznasz je po znakach na drzwiach. Chcê, ¿ebyœmy siê dobrze zrozumieli.
 	AI_Output (self, other, "DIA_Lothar_HelloAgain_01_04"); //Inne domy nale¿¹ do bogatych obywateli - nie masz tam czego szukaæ!
 	if (other.guild == GIL_KDF) 
-	|| (other.guild == GIL_NOV)
+	|| (other.guild == GIL_NOV) 
 	{
 		AI_Output (self, other, "DIA_Lothar_HelloAgain_01_05"); //Nawet jeœli nale¿ysz do zakonu Innosa.
 	};
@@ -752,15 +752,15 @@ instance DIA_Lothar_Hagen (C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lothar_Hagen_Condition;
 	information	 = 	DIA_Lothar_Hagen_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description  = 	"Gdzie mogê znaleŸæ Lorda Hagena?";
 };
 func int DIA_Lothar_Hagen_Condition ()
 {	
-	if (Mil_305_schonmalreingelassen == true) //Torwache zu oberem Viertel.
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	if (Mil_305_schonmalreingelassen == TRUE) //Torwache zu oberem Viertel.
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_Hagen_Info ()
@@ -779,7 +779,7 @@ instance DIA_Lothar_OWRunning (C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lothar_OWRunning_Condition;
 	information	 = 	DIA_Lothar_OWRunning_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description  = 	"Poszed³em do Lorda Hagena...";
 };
 func int DIA_Lothar_OWRunning_Condition ()
@@ -787,7 +787,7 @@ func int DIA_Lothar_OWRunning_Condition ()
 	if (MIS_OLDWORLD == LOG_RUNNING)
 	&& (Npc_HasItems (hero, ItWr_PaladinLetter_MIS) == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_OWRunning_Info ()
@@ -811,7 +811,7 @@ instance DIA_Lothar_OWRunningBrief (C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lothar_OWRunningBrief_Condition;
 	information	 = 	DIA_Lothar_OWRunningBrief_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description  = 	"Mam dowód! Oto list od kapitana Garonda!";
 };
 func int DIA_Lothar_OWRunningBrief_Condition ()
@@ -819,7 +819,7 @@ func int DIA_Lothar_OWRunningBrief_Condition ()
 	if (MIS_OLDWORLD == LOG_RUNNING)
 	&& (Npc_HasItems (hero, ItWr_PaladinLetter_MIS) > 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_OWRunningBrief_Info ()
@@ -827,7 +827,7 @@ func void DIA_Lothar_OWRunningBrief_Info ()
 	AI_Output (other, self, "DIA_Lothar_Add_15_59"); //Mam dowód! Oto list od kapitana Garonda!
 	AI_Output (self ,other, "DIA_Lothar_Add_01_60"); //A wiêc smoki naprawdê istniej¹?
 	AI_Output (self ,other, "DIA_Lothar_Add_01_61"); //By³em wobec ciebie niesprawiedliwy. Z³o¿ê ofiarê Innosowi, aby wybaczy³ mi moje zachowanie.
-	B_GivePlayerXP(XP_BONUS_3);
+	
 	AI_StopProcessInfos (self);
 };
 
@@ -840,15 +840,15 @@ instance DIA_Lothar_PERM (C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Lothar_PERM_Condition;
 	information	 = 	DIA_Lothar_PERM_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description  = 	"Czy ostatnio wydarzy³o siê tu coœ niezwyk³ego?";
 };
 func int DIA_Lothar_PERM_Condition ()
 {	
-	if (Mil_305_schonmalreingelassen == true) //Torwache zu oberem Viertel.
-	&& (LordHagen.aivar[AIV_TalkedToPlayer] == false)
+	if (Mil_305_schonmalreingelassen == TRUE) //Torwache zu oberem Viertel.
+	&& (LordHagen.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lothar_PERM_Info ()

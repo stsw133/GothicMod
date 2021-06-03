@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Senyan_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Senyan_EXIT_Condition;
 	information = DIA_Addon_Senyan_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "To do zobaczenia...";
 };
 FUNC INT DIA_Addon_Senyan_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Senyan_EXIT_Info()
 {
@@ -29,7 +29,7 @@ FUNC VOID B_Senyan_Attack()
 	AI_Output (self, other, "DIA_Addon_Senyan_Attack_12_00");//Do czego móg³byœ mi siê przydaæ?
 	AI_Output (self, other, "DIA_Addon_Senyan_Attack_12_01");//Hej, ch³opaki, patrzcie, kogo tu mamy!
 	
-	Senyan_Called = true;	
+	Senyan_Called = TRUE;	
 	Senyan_Erpressung = LOG_OBSOLETE;
 	B_CheckLog();
 	
@@ -59,12 +59,12 @@ INSTANCE DIA_Addon_BDT_1084_Senyan_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Senyan_Hi_Condition;
 	information = DIA_Addon_Senyan_Hi_Info;
-	permanent   = false;
-	Important 	= true;
+	permanent   = FALSE;
+	Important 	= TRUE;
 };
 FUNC INT DIA_Addon_Senyan_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 //--------------------
 var int Senyan_Msg;
@@ -84,10 +84,10 @@ FUNC VOID DIA_Addon_Senyan_Hi_Info()
 };
 FUNC VOID DIA_Addon_BDT_1084_Senyan_Hi_good()
 {
-	if (Senyan_Msg == false)
+	if (Senyan_Msg == FALSE)
 	{
 		AI_Output (other, self, "DIA_Addon_BDT_1084_Senyan_Hi_good_15_00");//Najpierw chcê us³yszeæ te dobre.
-		Senyan_Msg = true;
+		Senyan_Msg = TRUE;
 	}
 	else
 	{
@@ -98,11 +98,11 @@ FUNC VOID DIA_Addon_BDT_1084_Senyan_Hi_good()
 	AI_Output (self, other, "DIA_Addon_BDT_1084_Senyan_Hi_good_12_04");//Jestem cz³owiekiem pe³nym zrozumienia, który potrafi ¿yæ w spo³ecznoœci.
 	
 	
-	Senyan_Good = true;
+	Senyan_Good = TRUE;
 	
 	Info_ClearChoices (DIA_Addon_BDT_1084_Senyan_Hi);
 	
-	if (Senyan_Bad == true)
+	if (Senyan_Bad == TRUE)
 	{
 		B_Senyan_Erpressung();
 	}
@@ -113,10 +113,10 @@ FUNC VOID DIA_Addon_BDT_1084_Senyan_Hi_good()
 };
 FUNC VOID DIA_Addon_BDT_1084_Senyan_Hi_bad()
 {
-	if (Senyan_Msg == false)
+	if (Senyan_Msg == FALSE)
 	{
 		AI_Output (other, self, "DIA_Addon_BDT_1084_Senyan_Hi_bad_15_00");//Chcê najpierw us³yszeæ z³¹ wiadomoœæ.
-		Senyan_Msg = true;
+		Senyan_Msg = TRUE;
 	}
 	else
 	{
@@ -128,11 +128,11 @@ FUNC VOID DIA_Addon_BDT_1084_Senyan_Hi_bad()
 	AI_Output (self, other, "DIA_Addon_BDT_1084_Senyan_Hi_bad_12_05");//Twoja sprawnoœæ w walce dorównuje przebieg³oœci. Zak³adaj¹c jeden z naszych pancerzy i przychodz¹c do obozu...
 	AI_Output (self, other, "DIA_Addon_BDT_1084_Senyan_Hi_bad_12_06");//...zachowa³eœ siê jak owca wstêpuj¹ca miêdzy wilki. St¹pasz po grz¹skim gruncie, panie ryzykancie.
 	
-	Senyan_Bad = true;
+	Senyan_Bad = TRUE;
 	
 	Info_ClearChoices (DIA_Addon_BDT_1084_Senyan_Hi);
 	
-	if (Senyan_Good == true)
+	if (Senyan_Good == TRUE)
 	{
 		B_Senyan_Erpressung();
 	}
@@ -150,7 +150,7 @@ INSTANCE DIA_Addon_Senyan_unterwegs   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Senyan_unterwegs_Condition;
 	information = DIA_Addon_Senyan_unterwegs_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "A co do Estebana...";
 };
 FUNC INT DIA_Addon_Senyan_unterwegs_Condition()
@@ -158,7 +158,7 @@ FUNC INT DIA_Addon_Senyan_unterwegs_Condition()
 	if (MIS_Judas != LOG_RUNNING)
 	&& Npc_KnowsInfo (other,DIA_Addon_BDT_1084_Senyan_Hi)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Senyan_unterwegs_Info()
@@ -177,7 +177,7 @@ INSTANCE DIA_Addon_Senyan_Attentat   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Senyan_Attentat_Condition;
 	information = DIA_Addon_Senyan_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Ju¿ z nim rozmawia³em.";
 };
 FUNC INT DIA_Addon_Senyan_Attentat_Condition()
@@ -185,7 +185,7 @@ FUNC INT DIA_Addon_Senyan_Attentat_Condition()
 	if (MIS_Judas == LOG_RUNNING)
 	&& Npc_KnowsInfo (other,DIA_Addon_BDT_1084_Senyan_Hi)
 	{	
-			return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Senyan_Attentat_Info()
@@ -232,15 +232,15 @@ INSTANCE DIA_Addon_Senyan_ChangePlan   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Senyan_ChangePlan_Condition;
 	information = DIA_Addon_Senyan_ChangePlan_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zastanowi³em siê nad tym. Nie chcê z tob¹ wspó³pracowaæ!";
 };
 FUNC INT DIA_Addon_Senyan_ChangePlan_Condition()
 {	
 	if (Senyan_Erpressung == LOG_RUNNING)
-	&& (Snaf_Tip_Senyan == true)
+	&& (Snaf_Tip_Senyan == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Senyan_ChangePlan_Info()
@@ -260,7 +260,7 @@ INSTANCE DIA_Addon_BDT_1084_Senyan_Found   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Senyan_Found_Condition;
 	information = DIA_Addon_Senyan_Found_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Znalaz³em zdrajcê. To Fisk. ";
 };
 FUNC INT DIA_Addon_Senyan_Found_Condition()
@@ -268,7 +268,7 @@ FUNC INT DIA_Addon_Senyan_Found_Condition()
 	if (Senyan_Erpressung == LOG_RUNNING)
 	&& (MIS_Judas == LOG_SUCCESS)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Senyan_Found_Info()
@@ -285,8 +285,8 @@ INSTANCE DIA_Addon_BDT_1084_Senyan_derbe   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Senyan_derbe_Condition;
 	information = DIA_Addon_Senyan_derbe_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Senyan_derbe_Condition()
 {	
@@ -295,7 +295,7 @@ FUNC INT DIA_Addon_Senyan_derbe_Condition()
 	&& (Npc_IsDead (Fisk)
 	|| Npc_IsDead (Esteban))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Senyan_derbe_Info()
@@ -304,3 +304,8 @@ FUNC VOID DIA_Addon_Senyan_derbe_Info()
 	
 	B_Senyan_Attack();		
 };
+
+
+	
+
+

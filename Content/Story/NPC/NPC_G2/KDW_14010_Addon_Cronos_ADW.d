@@ -1,38 +1,37 @@
-//******************************************************************************************
-INSTANCE KDW_14010_Addon_Cronos_ADW (Npc_Default)
+///******************************************************************************************
+instance KDW_14010_Addon_Cronos_ADW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Cronos";
 	guild 								=	GIL_KDW;
 	id 									=	14010;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
-	fight_tactic						=	FAI_HUMAN_STRONG;	
+	/// ------ FT ------
+	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Thief", Face_Normal11, 0, ITAR_MgA);
+	/// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Thief", Face_Normal11, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_14010;
 };
 
-FUNC VOID Rtn_Start_14010()
+func void Rtn_Start_14010()
 {
 	TA_Study_WP		(06,35,07,35, "ADW_ENTRANCE_PLATEAU_13A");
 	TA_Study_WP		(07,35,08,35, "ADW_ENTRANCE_PLATEAU_04A");

@@ -1,43 +1,42 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_447_Cassia (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Cassia";
 	guild 								=	GIL_OUT;
 	id 									=	447;
 	voice 								=	16;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_DropDeadAndKill]			=	true;
 	aivar[AIV_EnemyOverride]			=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_Meisterdegen);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItem (self, ITKE_Thiefguildkey_Hotel_MIS);
 	CreateInvItem (self, ItKe_ThiefTreasure);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Babe", FaceBabe_Velaya, Teeth_Pretty, ITAR_WD_M_02);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_447;
 };
 
-FUNC VOID Rtn_Start_447()
+func void Rtn_Start_447()
 {
 	TA_Read_Bookstand	(07,00,23,00, "NW_CITY_KANAL_ROOM_05_02");
     TA_Sleep			(23,00,07,00, "NW_CITY_KANAL_ROOM_05_BED_01");

@@ -1,36 +1,35 @@
-//******************************************************************************************
-INSTANCE NONE_ADDON_115_Eremit (Npc_Default)
+///******************************************************************************************
+instance NONE_ADDON_115_Eremit (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Eremita";
 	guild 								=	GIL_NONE;
 	id 									=	115;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy] 				=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Nude+3, BodySkin_N, "Hum_Head_Psionic", Face_Normal52, 0, -1);
 	Mdl_SetModelFatness	(self, 1);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_115;
 };
 
-FUNC VOID Rtn_Start_115()
+func void Rtn_Start_115()
 {
 	TA_Sit_Bench	(07,00,09,00, "ADW_VALLEY_BENCH");
 	TA_Cook_Pan 	(09,00,11,00, "ADW_VALLEY_BENCH");

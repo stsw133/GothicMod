@@ -7,14 +7,14 @@ INSTANCE DIA_Lee_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Lee_EXIT_Condition;
 	information = DIA_Lee_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Lee_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_EXIT_Info()
@@ -35,11 +35,11 @@ func void B_Lee_Teleport()
 	AI_Output (self ,other, "DIA_Lee_Add_04_05"); //Aaa... Dobrze, ¿e jesteœ.
 	AI_Output (other, self, "DIA_Lee_Add_15_06"); //Co siê sta³o?
 	AI_Output (self ,other, "DIA_Lee_Add_04_07"); //Zobacz, co znalaz³em w starej kaplicy.
-	B_GiveInvItems (self, other, ItTe_BigFarm, 1);
+	B_GiveInvItems (self, other, ItRu_TeleportFarm, 1);
 	AI_Output (self ,other, "DIA_Lee_Add_04_08"); //To magiczna runa. Jeœli siê nie mylê, przeniesie ciê z powrotem na tê farmê.
 	AI_Output (self ,other, "DIA_Lee_Add_04_09"); //Pomyœla³em, ¿e mo¿e ci siê przydaæ.
 	
-	Lee_Teleport = true;
+	Lee_Teleport = TRUE;
 };
 
 
@@ -58,8 +58,8 @@ INSTANCE DIA_Lee_PMSchulden (C_INFO)
 	nr          = 1;
 	condition   = DIA_Lee_PMSchulden_Condition;
 	information = DIA_Lee_PMSchulden_Info;
-	permanent   = true;
-	important 	= true; 
+	permanent   = TRUE;
+	important 	= TRUE; 
 };
 
 FUNC INT DIA_Lee_PMSchulden_Condition()
@@ -68,14 +68,14 @@ FUNC INT DIA_Lee_PMSchulden_Condition()
 	&& (Lee_Schulden > 0)
 	&& (B_GetGreatestPetzCrime(self) <= Lee_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 FUNC VOID DIA_Lee_PMSchulden_Info()
 {
-				if (Kapitel >= 9)
-				&& (Lee_Teleport == false)
+				if (Kapitel >= 3)
+				&& (Lee_Teleport == FALSE)
 				{
 					B_Lee_Teleport();
 				};
@@ -96,7 +96,7 @@ FUNC VOID DIA_Lee_PMSchulden_Info()
 		
 			if (diff > 0)
 			{
-				Lee_Schulden += (diff * 50);
+				Lee_Schulden = Lee_Schulden + (diff * 50);
 			};
 		
 			if (Lee_Schulden > 1000)	{	Lee_Schulden = 1000;	};
@@ -196,20 +196,20 @@ instance DIA_Lee_PETZMASTER   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Lee_PETZMASTER_Condition;
 	information = DIA_Lee_PETZMASTER_Info;
-	permanent   = true;
-	important	= true;
+	permanent   = TRUE;
+	important	= TRUE;
 };
 FUNC INT DIA_Lee_PETZMASTER_Condition()
 {
 	if (B_GetGreatestPetzCrime(self) > Lee_LastPetzCrime)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_PETZMASTER_Info()
 {
-				if (Kapitel >= 9)
-				&& (Lee_Teleport == false)
+				if (Kapitel >= 3)
+				&& (Lee_Teleport == FALSE)
 				{
 					B_Lee_Teleport();
 				};
@@ -218,7 +218,7 @@ FUNC VOID DIA_Lee_PETZMASTER_Info()
 	Lee_Schulden = 0; //weil Funktion nochmal durchlaufen wird, wenn Crime höher ist...
 	
 	// ------ SC hat mit Lee noch nicht gesprochen ------
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		AI_Output (self, other, "DIA_Lee_PETZMASTER_04_00"); //Kto ciê tu do cholery... To TY jesteœ tym nowym, który stwarza³ tyle k³opotów?
 		AI_Output (self, other, "DIA_Lee_PETZMASTER_04_01"); //S³ysza³em od Gorna, ¿e wci¹¿ ¿yjesz.. ale ¿e tu przyszed³eœ... mniejsza z tym...
@@ -228,8 +228,8 @@ FUNC VOID DIA_Lee_PETZMASTER_Info()
 	{
 		AI_Output (self, other, "DIA_Lee_PETZMASTER_04_02"); //Dobrze, ¿e przyszed³eœ do mnie, zanim sytuacja sta³a siê naprawdê paskudna.
 		AI_Output (self, other, "DIA_Lee_PETZMASTER_04_03"); //Najemnicy to twarde sztuki, a ch³opi te¿ nie dadz¹ sobie w kaszê dmuchaæ. Nie mo¿esz tak po prostu zabijaæ kogo popadnie.
-		Lee_Schulden = (B_GetTotalPetzCounter(self) * 50); 	//Anzahl der Zeugen * 50
-		Lee_Schulden += 500;								//PLUS Mörder-Malus
+		Lee_Schulden = (B_GetTotalPetzCounter(self) * 50); 		//Anzahl der Zeugen * 50
+		Lee_Schulden = Lee_Schulden + 500;						//PLUS Mörder-Malus
 		if ((PETZCOUNTER_Farm_Theft + PETZCOUNTER_Farm_Attack + PETZCOUNTER_Farm_Sheepkiller) > 0)
 		{
 			AI_Output (self, other, "DIA_Lee_PETZMASTER_04_04"); //Nie wspominaj¹c ju¿ o twoich pozosta³ych wyczynach.
@@ -328,14 +328,14 @@ INSTANCE DIA_Lee_Hallo   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Lee_Hallo_Condition;
 	information = DIA_Lee_Hallo_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Lee_Hallo_Condition()
 {
-	if (self.aivar[AIV_TalkedToPlayer] == false)
+	if (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Hallo_Info()
@@ -356,14 +356,14 @@ INSTANCE DIA_Lee_Paladine   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Lee_Paladine_Condition;
 	information = DIA_Lee_Paladine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Muszê koniecznie porozmawiaæ z paladynami w mieœcie...";
 };
 FUNC INT DIA_Lee_Paladine_Condition()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Paladine_Info()
@@ -387,7 +387,7 @@ INSTANCE DIA_Lee_PaladineHOW (C_INFO)
 	nr          = 3;
 	condition   = DIA_Lee_PaladineHOW_Condition;
 	information = DIA_Lee_PaladineHOW_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "W jaki sposób mo¿esz mi pomóc w skontaktowaniu siê z paladynami?";
 };
 FUNC INT DIA_Lee_PaladineHOW_Condition()
@@ -395,7 +395,7 @@ FUNC INT DIA_Lee_PaladineHOW_Condition()
 	if (other.guild == GIL_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Lee_Paladine))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_PaladineHOW_Info()
@@ -414,14 +414,14 @@ INSTANCE DIA_Lee_LeesPlan (C_INFO)
 	nr          = 4;
 	condition   = DIA_Lee_LeesPlan_Condition;
 	information = DIA_Lee_LeesPlan_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co ty tu w³aœciwie robisz?";
 };
 FUNC INT DIA_Lee_LeesPlan_Condition()
 {
-	if (Lee_IsOnBoard == false)
+	if (Lee_IsOnBoard == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Lee_LeesPlan_Info()
@@ -450,14 +450,14 @@ INSTANCE DIA_Lee_WannaJoin (C_INFO)
 	nr          = 5;
 	condition   = DIA_Lee_WannaJoin_Condition;
 	information = DIA_Lee_WannaJoin_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Chcê do was do³¹czyæ!";
 };
 FUNC INT DIA_Lee_WannaJoin_Condition()
 {
 	if (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_WannaJoin_Info()
@@ -477,7 +477,7 @@ INSTANCE DIA_Lee_ClearWhat (C_INFO)
 	nr          = 6;
 	condition   = DIA_Lee_ClearWhat_Condition;
 	information = DIA_Lee_ClearWhat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co dok³adnie mam 'wyjaœniæ', ¿eby móc do was do³¹czyæ?";
 };
 FUNC INT DIA_Lee_ClearWhat_Condition()
@@ -485,7 +485,7 @@ FUNC INT DIA_Lee_ClearWhat_Condition()
 	if (Npc_KnowsInfo (other, DIA_Lee_WannaJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_ClearWhat_Info()
@@ -509,7 +509,7 @@ INSTANCE DIA_Lee_OtherSld (C_INFO)
 	nr          = 7;
 	condition   = DIA_Lee_OtherSld_Condition;
 	information = DIA_Lee_OtherSld_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak mam przekonaæ najemników, ¿eby mnie poparli?";
 };
 FUNC INT DIA_Lee_OtherSld_Condition()
@@ -517,7 +517,7 @@ FUNC INT DIA_Lee_OtherSld_Condition()
 	if (Npc_KnowsInfo (other, DIA_Lee_WannaJoin))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_OtherSld_Info()
@@ -547,9 +547,9 @@ instance DIA_Addon_Lee_Ranger		(C_INFO)
 func int DIA_Addon_Lee_Ranger_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Lee_OtherSld))
-	&& (SC_KnowsRanger == true)
+	&& (SC_KnowsRanger == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -563,8 +563,8 @@ func void DIA_Addon_Lee_Ranger_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lee_Ranger_04_05"); //Oczywiœcie spróbujê ci pomóc, jeœli czegokolwiek ci potrzeba. Nie mam jednak zbyt wiele czasu - muszê siê troszczyæ przede wszystkim o swoje sprawy.
 	AI_Output	(self, other, "DIA_Addon_Lee_Ranger_04_06"); //Jeœli chcesz zdobyæ wiêcej informacji o tym krêgu, to pogadaj z Cordem. On nale¿y do tej organizacji, o ile mi wiadomo.
 		
-	RangerHelp_gildeSLD = true;	
-	SC_KnowsCordAsRangerFromLee = true;
+	RangerHelp_gildeSLD = TRUE;	
+	SC_KnowsCordAsRangerFromLee = TRUE;
 };			
 			
 // ************************************************************
@@ -580,16 +580,16 @@ INSTANCE DIA_Lee_JoinNOW (C_INFO)
 	nr          = 8;
 	condition   = DIA_Lee_JoinNOW_Condition;
 	information = DIA_Lee_JoinNOW_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Jestem gotowy, by do was do³¹czyæ!";
 };
 FUNC INT DIA_Lee_JoinNOW_Condition()
 {
 	if (other.guild == GIL_NONE)
 	&& (Npc_KnowsInfo (other, DIA_Lee_OtherSld))
-	&& (Lee_OnarOK == false)
+	&& (Lee_OnarOK == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_JoinNOW_Info()
@@ -597,7 +597,7 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 	AI_Output (other, self, "DIA_Lee_JoinNOW_15_00"); //Jestem gotowy, by do was do³¹czyæ!
 		
 	// ------ Probe ------
-	if (Lee_ProbeOK == false)
+	if (Lee_ProbeOK == FALSE)
 	{
 		if (MIS_Torlof_HolPachtVonSekob != LOG_SUCCESS)
 		&& (MIS_Torlof_BengarMilizKlatschen != LOG_SUCCESS)
@@ -609,16 +609,16 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_02"); //Czyli przeszed³eœ ju¿ próbê Torlofa?
 			AI_Output (other, self, "DIA_Lee_JoinNOW_15_03"); //Tak.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_04"); //Bardzo dobrze.
-			Lee_ProbeOK = true;
+			Lee_ProbeOK = TRUE;
 		};
 	};
 	
 	// ------ Stimmen -------
-	if (Lee_ProbeOK == true)
-	&& (Lee_StimmenOK == false)
+	if (Lee_ProbeOK == TRUE)
+	&& (Lee_StimmenOK == FALSE)
 	{
 		AI_Output (self, other, "DIA_Lee_JoinNOW_04_05"); //Co s¹dz¹ o tobie pozostali najemnicy?
-		if (Torlof_GenugStimmen == false)
+		if (Torlof_GenugStimmen == FALSE)
 		{
 			AI_Output (other, self, "DIA_Lee_JoinNOW_15_06"); //Nie jestem pewien, czy wystarczaj¹co wielu z nich jest po mojej stronie.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_07"); //No to pogadaj z Torlofem. On wie o wszystkim, o czym siê mówi na farmie.
@@ -626,26 +626,26 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 		else //genug Stimmen
 		{
 			AI_Output (other, self, "DIA_Lee_JoinNOW_15_08"); //Wiêkszoœæ z nich jest po mojej stronie.
-			Lee_StimmenOK = true;
+			Lee_StimmenOK = TRUE;
 		};	
 	};
 
 	// ------ Onar ------	
-	if (Lee_StimmenOK == true)
-	&& (Lee_OnarOK == false)
+	if (Lee_StimmenOK == TRUE)
+	&& (Lee_OnarOK == FALSE)
 	{		
-		if (Onar_Approved == false)
+		if (Onar_Approved == FALSE)
 		{
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_09"); //W takim razie idŸ do Onara. Ja ju¿ z nim rozmawia³em.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_10"); //Ale wynagrodzenie musisz sam sobie wynegocjowaæ.
-			Lee_SendToOnar = true;
+			Lee_SendToOnar = TRUE;
 			B_LogEntry (TOPIC_BecomeSLD,"Teraz potrzebujê tylko zgody Onara.");
 		}
 		else //Onar ist einverstanden
-	{
+		{
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_11"); //Rozmawia³eœ z Onarem?
 			AI_Output (other, self, "DIA_Lee_JoinNOW_15_12"); //Tak. Zgodzi³ siê.
-			Lee_OnarOK = true;
+			Lee_OnarOK = TRUE;
 			
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_13"); //No to witamy na pok³adzie!
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_14"); //Masz tu przyzwoity pancerz. Przyda ci siê.
@@ -655,20 +655,18 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 			
 			CreateInvItems (other, ItAr_Sld_L, 1);
 			AI_EquipArmor (other, ItAr_Sld_L);
-			
+						
 			Snd_Play ("LEVELUP"); 
 	
 			KDF_Aufnahme = LOG_OBSOLETE;
 			SLD_Aufnahme = LOG_SUCCESS;
 			MIL_Aufnahme = LOG_OBSOLETE;
-			B_GivePlayerXP(XP_BONUS_4);
+			B_GivePlayerXP (XP_BecomeMercenary);
 			
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_15"); //Cieszê siê, ¿e jesteœ z nami.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_16"); //Mam ju¿ dla ciebie pierwsze zadanie.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_17"); //Chodzi o paladynów. Pora, byœ z³o¿y³ im wizytê.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_18"); //I tak chcia³eœ tam iœæ, nie?
-
-	Info_ClearChoices (DIA_Lee_AboutGorn);
 		};
 	};
 };
@@ -682,16 +680,16 @@ INSTANCE DIA_Lee_KeinSld (C_INFO)
 	nr          = 4;
 	condition   = DIA_Lee_KeinSld_Condition;
 	information = DIA_Lee_KeinSld_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Lee_KeinSld_Condition()
 {
 	if ( (other.guild == GIL_MIL) || (other.guild == GIL_PAL) || (other.guild == GIL_NOV) || (other.guild == GIL_KDF) )
-	&& (Lee_IsOnBoard == false)
+	&& (Lee_IsOnBoard == FALSE)
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KeinSld_Info()
@@ -721,14 +719,14 @@ INSTANCE DIA_Lee_ToHagen(C_INFO)
 	nr          = 4;
 	condition   = DIA_Lee_ToHagen_Condition;
 	information = DIA_Lee_ToHagen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak mam siê teraz dostaæ do paladynów?";
 };
 FUNC INT DIA_Lee_ToHagen_Condition()
 {
 	if (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_ToHagen_Info()
@@ -757,14 +755,14 @@ INSTANCE DIA_Lee_AngebotSuccess (C_INFO)
 	nr          = 1;
 	condition   = DIA_Lee_AngebotSuccess_Condition;
 	information = DIA_Lee_AngebotSuccess_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zanios³em twoj¹ propozycjê Lordowi Hagenowi.";
 };
 FUNC INT DIA_Lee_AngebotSuccess_Condition()
 {
-	if (Hagen_FriedenAbgelehnt == true)
+	if (Hagen_FriedenAbgelehnt == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_AngebotSuccess_Info()
@@ -789,14 +787,14 @@ INSTANCE DIA_Lee_Background (C_INFO)
 	nr          = 1;
 	condition   = DIA_Lee_Background_Condition;
 	information = DIA_Lee_Background_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dlaczego tak bardzo chcesz siê dostaæ na kontynent?";
 };
 FUNC INT DIA_Lee_Background_Condition()
 {
 	if (MIS_Lee_Friedensangebot == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Background_Info()
@@ -820,16 +818,16 @@ INSTANCE DIA_Lee_RescueGorn (C_INFO)
 	nr          = 2;
 	condition   = DIA_Lee_RescueGorn_Condition;
 	information = DIA_Lee_RescueGorn_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zamierzam wyruszyæ do Górniczej Doliny.";
 };
 FUNC INT DIA_Lee_RescueGorn_Condition()
 {
-	if (Hagen_BringProof == true)
-	&& (Kapitel < 9)
+	if (Hagen_BringProof == TRUE)
+	&& (Kapitel < 3)
 	&& (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_RescueGorn_Info()
@@ -839,7 +837,7 @@ FUNC VOID DIA_Lee_RescueGorn_Info()
 	AI_Output (self, other, "DIA_Lee_RescueGorn_04_02"); //W takim razie rozejrzyj siê trochê za Gornem. Paladyni zawlekli go z powrotem do Kolonii.
 	AI_Output (self, other, "DIA_Lee_RescueGorn_04_03"); //Gorn to równy facet. Przyda³by mi siê tutaj ktoœ taki jak on. Gdybyœ mia³ okazjê go uwolniæ - zrób to.
 	
-	KnowsAboutGorn = true;
+	KnowsAboutGorn = TRUE;
 };
 // ************************************************************
 // 			 RescueGorn Success
@@ -850,16 +848,16 @@ INSTANCE DIA_Lee_Success (C_INFO)
 	nr          = 2;
 	condition   = DIA_Lee_Success_Condition;
 	information = DIA_Lee_Success_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Uwolni³em Gorna.";
 };
 FUNC INT DIA_Lee_Success_Condition()
 {
 	if (MIS_RescueGorn == LOG_SUCCESS)
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 	&& (other.guild == GIL_SLD)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Success_Info()
@@ -868,7 +866,8 @@ FUNC VOID DIA_Lee_Success_Info()
 	AI_Output (self, other, "DIA_Lee_Success_04_01"); //Tak, ju¿ mi mówi³eœ. Dobra robota.
 	AI_Output (self, other, "DIA_Lee_Success_04_02"); //Ten facet jest wiêcej wart, ni¿ Sylvio i jego ch³opcy razem wziêci.
 	
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
+	
 };
 // ************************************************************
 // 			  				AboutGorn
@@ -879,26 +878,40 @@ INSTANCE DIA_Lee_AboutGorn (C_INFO)
 	nr          = 5;
 	condition   = DIA_Lee_AboutGorn_Condition;
 	information = DIA_Lee_AboutGorn_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Rozmawia³eœ z Gornem? Co siê z nim dzieje?";
 };
 FUNC INT DIA_Lee_AboutGorn_Condition()
 {
-	if (Kapitel < 9) 
-	&& (Npc_KnowsInfo (other,DIA_Lee_RescueGorn) == false)
+	if (Kapitel < 3) 
+	&& (Npc_KnowsInfo (other,DIA_Lee_RescueGorn) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_AboutGorn_Info()
 {
 	AI_Output (other, self, "DIA_Lee_AboutGorn_15_00"); //Rozmawia³eœ z Gornem? Co siê z nim dzieje?
 	AI_Output (self, other, "DIA_Lee_AboutGorn_04_01"); //Chyba go jeszcze pamiêtasz?
+	
+	Info_ClearChoices (DIA_Lee_AboutGorn);
+	Info_AddChoice (DIA_Lee_AboutGorn, "Niech pomyœlê...", DIA_Lee_AboutGorn_Who);
+	Info_AddChoice (DIA_Lee_AboutGorn, "Jasne.", DIA_Lee_AboutGorn_Yes);
+};
+
+func void DIA_Lee_AboutGorn_Yes()
+{
 	AI_Output (other, self, "DIA_Lee_AboutGorn_Yes_15_00"); //Jasne.
 	AI_Output (self, other, "DIA_Lee_AboutGorn_Yes_04_01"); //Z³apali go paladyni i wys³ali z powrotem do Górniczej Doliny, w karnym konwoju.
 	AI_Output (self, other, "DIA_Lee_AboutGorn_Yes_04_02"); //Gdyby drogi do Doliny nie roi³y siê od paladynów i orków, wys³a³bym paru moich ch³opców, ¿eby go wyci¹gnêli.
 	AI_Output (self, other, "DIA_Lee_AboutGorn_Yes_04_03"); //Ale nie mogê ryzykowaæ. Szkoda cz³owieka.
 	Info_ClearChoices (DIA_Lee_AboutGorn);
+};
+
+func void DIA_Lee_AboutGorn_Who()
+{
+	AI_Output (other, self, "DIA_Lee_AboutGorn_Who_15_00"); //Niech pomyœlê...
+	AI_Output (self, other, "DIA_Lee_AboutGorn_Who_04_01"); //Du¿y, ciemnow³osy, z wielkim toporem... Pomóg³ ci odbiæ nasz¹ kopalniê w Kolonii.
 };
 
 // ************************************************************
@@ -910,23 +923,23 @@ INSTANCE DIA_Lee_WegenBullco (C_INFO)
 	nr          = 6;
 	condition   = DIA_Lee_WegenBullco_Condition;
 	information = DIA_Lee_WegenBullco_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Onar straci³ w³aœnie kilka owiec. Wszystko przez Bullka...";
 };
 FUNC INT DIA_Lee_WegenBullco_Condition()
 {
-	if (Kapitel < 10) 
+	if (Kapitel < 4) 
 	&& (MIS_Pepe_KillWolves == LOG_SUCCESS)
-	&& (Onar_WegenPepe == true)
+	&& (Onar_WegenPepe == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_WegenBullco_Info()
 {
 	AI_Output (other, self, "DIA_Lee_Add_15_00"); //Onar straci³ w³aœnie kilka owiec. Wszystko przez Bullka...
 	AI_Output (self ,other, "DIA_Lee_Add_04_01"); //A daj mi spokój z tym gównem! Mam doœæ k³opotów i bez tego.
-	if (Bullco_scharf == true)
+	if (Bullco_scharf == TRUE)
 	&& (!Npc_IsDead(Bullco))
 	{
 		AI_Output (other, self, "DIA_Lee_Add_15_02"); //Ja te¿. Bullko chyba za mn¹ nie przepada. Chce, ¿ebym opuœci³ farmê...
@@ -953,15 +966,15 @@ instance DIA_Lee_Report (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_Report_Condition;
 	information	= DIA_Lee_Report_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Wracam z Górniczej Doliny...";
 };                       
 FUNC INT DIA_Lee_Report_Condition()
 {
-	if (EnterOW_Kapitel2 == true)
-	&& (Kapitel <= 9)
+	if (EnterOW_Kapitel >= 8)
+	&& (Kapitel <= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Report_Info()
@@ -995,16 +1008,16 @@ instance DIA_Lee_ArmorM (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_ArmorM_Condition;
 	information	= DIA_Lee_ArmorM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Przyda³aby mi siê lepsza zbroja.";
 };                       
 FUNC INT DIA_Lee_ArmorM_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	&& (other.guild == GIL_SLD)
-	&& (Lee_Give_Sld_M == false)
+	&& (Lee_Give_Sld_M == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_ArmorM_Info()
@@ -1017,7 +1030,7 @@ FUNC VOID DIA_Lee_ArmorM_Info()
 		AI_Output (self ,other,"DIA_Lee_ArmorM_04_01"); //Wype³ni³eœ swoje zadanie.
 		AI_Output (self ,other,"DIA_Lee_ArmorM_04_02"); //Mam dla ciebie solidniejsz¹ zbrojê. Oczywiœcie, jeœli masz odpowiedni¹ iloœæ kruszcu.
 		
-		Lee_Give_Sld_M = true;
+		Lee_Give_Sld_M = TRUE;
 	}
 	else
 	{
@@ -1038,15 +1051,15 @@ instance DIA_Lee_BuyArmorM (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_BuyArmorM_Condition;
 	information	= DIA_Lee_BuyArmorM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Kup œredni pancerz najemnika. Ochrona (broñ i strza³y) 50, 1000 sztuk z³ota.";
 };                       
 FUNC INT DIA_Lee_BuyArmorM_Condition()
 {
-	if (Lee_Give_Sld_M == true)
-	&& (Lee_SldMGiven == false)
+	if (Lee_Give_Sld_M == TRUE)
+	&& (Lee_SldMGiven == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_BuyArmorM_Info()
@@ -1060,7 +1073,7 @@ FUNC VOID DIA_Lee_BuyArmorM_Info()
 		CreateInvItems (other, ItAr_Sld_M, 1);
 		AI_EquipArmor (other, ItAr_Sld_M);
 			
-		Lee_SldMGiven = true;
+		Lee_SldMGiven = TRUE;
 	}
 	else
 	{
@@ -1087,14 +1100,14 @@ INSTANCE DIA_Lee_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lee_KAP3_EXIT_Condition;
 	information	= DIA_Lee_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lee_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KAP3_EXIT_Info()
@@ -1112,16 +1125,16 @@ INSTANCE DIA_Lee_Teleport(C_INFO)
 	nr			= 1;
 	condition	= DIA_Lee_Teleport_Condition;
 	information	= DIA_Lee_Teleport_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_Lee_Teleport_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Npc_IsInState (self, ZS_Talk))
-	&& (Lee_Teleport == false)
+	&& (Lee_Teleport == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Teleport_Info()
@@ -1139,15 +1152,15 @@ instance DIA_Lee_ArmorH (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_ArmorH_Condition;
 	information	= DIA_Lee_ArmorH_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Nie masz dla mnie jakiejœ lepszej zbroi?";
 };                       
 FUNC INT DIA_Lee_ArmorH_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	&& ( (other.guild == GIL_SLD) || (other.guild == GIL_DJG) )
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_ArmorH_Info()
@@ -1168,15 +1181,15 @@ instance DIA_Lee_BuyArmorH (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_BuyArmorH_Condition;
 	information	= DIA_Lee_BuyArmorH_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Kup ciê¿ki pancerz najemnika. Ochrona (broñ i strza³y) 80, 2500 sztuk z³ota.";
 };                       
 FUNC INT DIA_Lee_BuyArmorH_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Lee_ArmorH))
-	&& (Lee_SldHGiven == false)
+	&& (Lee_SldHGiven == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_BuyArmorH_Info()
@@ -1192,7 +1205,7 @@ FUNC VOID DIA_Lee_BuyArmorH_Info()
 		CreateInvItems (other, ItAr_Sld_H, 1);
 		AI_EquipArmor (other, ItAr_Sld_H);
 		
-		Lee_SldHGiven = true;
+		Lee_SldHGiven = TRUE;
 	}
 	else
 	{
@@ -1211,16 +1224,16 @@ INSTANCE DIA_Lee_Richter (C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_Richter_Condition;
 	information	= DIA_Lee_Richter_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Nie masz dla mnie ¿adnej roboty?";
 };                       
 FUNC INT DIA_Lee_Richter_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& ((hero.guild == GIL_SLD)	|| (hero.guild == GIL_DJG))
-	&& ((Npc_IsDead(Richter))== false)
+	&& ((Npc_IsDead(Richter))== FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_Richter_Info()
@@ -1237,6 +1250,7 @@ FUNC VOID DIA_Lee_Richter_Info()
 	AI_Output (self ,other,"DIA_Lee_Richter_04_09"); //Tylko przynieœ mi SOLIDNE dowody. Chcê, ¿eby po ich ujawnieniu facet trafi³ do paki na resztê swojego ¿ycia.
 	AI_Output (self ,other,"DIA_Lee_Richter_04_10"); //I pod ¿adnym pozorem go nie zabijaj! To by by³o zbyt proste. On ma najpierw trochê pocierpieæ, zrozumiano?
 	AI_Output (self ,other,"DIA_Lee_Richter_04_11"); //I jak myœlisz? Dasz radê?
+	
 	
 	Log_CreateTopic (TOPIC_RichterLakai, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_RichterLakai, LOG_RUNNING);
@@ -1262,6 +1276,8 @@ func void DIA_Lee_Richter_nein ()
 	Info_ClearChoices	(DIA_Lee_Richter);
 };
 
+
+
 // ************************************************************
 // 	RichterBeweise
 // ************************************************************
@@ -1277,12 +1293,12 @@ INSTANCE DIA_Lee_RichterBeweise (C_INFO)
 };                       
 FUNC INT DIA_Lee_RichterBeweise_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (MIS_Lee_JudgeRichter == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItWr_RichterKomproBrief_MIS))
 	&& ((hero.guild == GIL_SLD)	|| (hero.guild == GIL_DJG))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_RichterBeweise_Info()
@@ -1296,14 +1312,14 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 	B_GiveInvItems (other, self, ItWr_RichterKomproBrief_MIS,1);
 	B_UseFakeScroll();
 
-	if  ((Npc_IsDead(Richter))== false)
+	if  ((Npc_IsDead(Richter))== FALSE)
 		{
 			AI_Output (self ,other,"DIA_Lee_RichterBeweise_04_06"); //Nareszcie! No, panie sêdzio - pora wyrównaæ rachunki. Dobra robota!
 			AI_Output (self ,other,"DIA_Lee_RichterBeweise_04_07"); //Zas³u¿y³eœ na sowite wynagrodzenie. Proszê, oto twoja nagroda.
 			CreateInvItems (self, ItMi_Gold, 500);									
 			B_GiveInvItems (self, other, ItMi_Gold, 500);		
 			MIS_Lee_JudgeRichter = LOG_SUCCESS;
-			B_GivePlayerXP(XP_BONUS_3);			
+			B_GivePlayerXP (XP_JudgeRichter);			
 			AI_Output (self ,other,"DIA_Lee_RichterBeweise_04_08"); //Tylko nikomu ani s³owa, jasne?
 		}
 	else
@@ -1314,7 +1330,7 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 			CreateInvItems (self, ItMi_Gold, 50);									
 			B_GiveInvItems (self, other, ItMi_Gold, 50);		
 			MIS_Lee_JudgeRichter = LOG_FAILED;
-			B_GivePlayerXP(XP_Ambient);			
+			B_GivePlayerXP (XP_Ambient);			
 		};
 };
 
@@ -1328,15 +1344,15 @@ INSTANCE DIA_Lee_TalkAboutBennet(C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_TalkAboutBennet_Condition;
 	information	= DIA_Lee_TalkAboutBennet_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co z Bennetem?";
 };                       
 FUNC INT DIA_Lee_TalkAboutBennet_Condition()
 {
 	if (MIS_RescueBennet == LOG_RUNNING)
-	&& (KApitel == 9)
+	&& (KApitel == 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_TalkAboutBennet_Info()
@@ -1359,7 +1375,7 @@ INSTANCE DIA_Lee_DoAboutBennet(C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_DoAboutBennet_Condition;
 	information	= DIA_Lee_DoAboutBennet_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co zamierzasz zrobiæ w sprawie Benneta?";
 };                       
 FUNC INT DIA_Lee_DoAboutBennet_Condition()
@@ -1367,7 +1383,7 @@ FUNC INT DIA_Lee_DoAboutBennet_Condition()
 	if (MIS_RescueBennet == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other,DIA_Lee_TalkAboutBennet))	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_DoAboutBennet_Info()
@@ -1403,7 +1419,7 @@ INSTANCE DIA_Lee_CanHelpYou(C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_CanHelpYou_Condition;
 	information	= DIA_Lee_CanHelpYou_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Mogê ci jakoœ pomóc w tej sprawie z Bennetem?";
 };                       
 FUNC INT DIA_Lee_CanHelpYou_Condition()
@@ -1411,7 +1427,7 @@ FUNC INT DIA_Lee_CanHelpYou_Condition()
 	if (MIS_RescueBennet == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other,DIA_Lee_DoAboutBennet))	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_CanHelpYou_Info()
@@ -1437,16 +1453,16 @@ INSTANCE DIA_Lee_AnyNews(C_INFO)
 	nr			= 3;
 	condition	= DIA_Lee_AnyNews_Condition;
 	information	= DIA_Lee_AnyNews_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Jakieœ wieœci w sprawie Benneta?";
 };                       
 FUNC INT DIA_Lee_AnyNews_Condition()
 {
-	if (MIS_RescueBennet != false)
+	if (MIS_RescueBennet != FALSE)
 	&& (Npc_KnowsInfo (other,DIA_Lee_DoAboutBennet))
-	&& (DIA_Lee_AnyNews_OneTime == false) 	
+	&& (DIA_Lee_AnyNews_OneTime == FALSE) 	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1459,10 +1475,10 @@ FUNC VOID DIA_Lee_AnyNews_Info()
 		AI_Output (self ,other,"DIA_Lee_AnyNews_04_01"); //Wygl¹da na to, ¿e nie poturbowali go za bardzo w wiêzieniu.
 		AI_Output (self ,other,"DIA_Lee_AnyNews_04_02"); //Dobra robota.
 
-		if (DIA_Lee_AnyNews_OneTime == false)
+		if (DIA_Lee_AnyNews_OneTime == FALSE)
 		{
-			B_GivePlayerXP(XP_AMBIENT);
-			DIA_Lee_AnyNews_OneTime = true;
+			B_GivePlayerXP (XP_AMBIENT);
+			DIA_Lee_AnyNews_OneTime = TRUE;
 		};
 	}
 	else
@@ -1486,9 +1502,9 @@ instance DIA_Lee_SYLVIO		(C_INFO)
 
 func int DIA_Lee_SYLVIO_Condition ()
 {
-	if (MIS_ReadyforChapter4 == true)
+	if (MIS_ReadyforChapter4 == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -1521,14 +1537,14 @@ INSTANCE DIA_Lee_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lee_KAP4_EXIT_Condition;
 	information	= DIA_Lee_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lee_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KAP4_EXIT_Info()
@@ -1545,26 +1561,141 @@ instance DIA_Lee_CanTeach		(C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Lee_CanTeach_Condition;
 	information	 = 	DIA_Lee_CanTeach_Info;
-	PERMANENT 	 =  false;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Czy mo¿esz mnie wyszkoliæ?";
 };
 func int DIA_Lee_CanTeach_Condition ()
 {	
-	if (Kapitel >= 10)
-	&& (Npc_GetTalentSkill(other,NPC_TALENT_2H) == 3)
+	if Kapitel >= 4
+	&& Lee_TeachPlayer == FALSE
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lee_CanTeach_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_CanTeach_15_00"); //Czy mo¿esz mnie wyszkoliæ?
+	
 	AI_Output			(self, other, "DIA_Lee_CanTeach_04_01"); //Mogê ci pokazaæ, jak pos³ugiwaæ siê dwurêcznym.
-	AI_Output			(self, other, "DIA_Lee_CanTeach_04_04"); //S³ysza³em, ¿e jesteœ ca³kiem niez³y, ale mogê ci pokazaæ parê nowych sztuczek.
+	
+	if (other.HitChance[NPC_TALENT_2H] < 75)
+	{
+		AI_Output			(self, other, "DIA_Lee_CanTeach_04_02"); //Ale nie mam czasu, ¿eby wbijaæ ci do g³owy podstawy.
+		AI_Output			(self, other, "DIA_Lee_CanTeach_04_03"); //Poducz siê trochê u kogoœ innego. Jak bêdziesz gotowy, poka¿ê ci parê ciekawych sztuczek.
+	}
+	else
+	{
+		AI_Output			(self, other, "DIA_Lee_CanTeach_04_04"); //S³ysza³em, ¿e jesteœ ca³kiem niez³y, ale mogê ci pokazaæ parê nowych sztuczek.
+		if (other.guild == GIL_SLD)
+		|| (other.guild == GIL_DJG)
+		{
+			Lee_TeachPlayer = TRUE;
+			Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
+			B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
+		}
+		else
+		{
+			AI_Output			(self, other, "DIA_Lee_CanTeach_04_05"); //Wiêc jeœli chcesz, mogê ciê uczyæ. Ale to bêdzie kosztowa³o...
+			AI_Output			(other,self , "DIA_Lee_CanTeach_15_06"); //Ile?
+			AI_Output			(self, other, "DIA_Lee_CanTeach_04_07"); //1000 sztuk z³ota i mo¿emy zaczynaæ.
+		
+			Info_ClearChoices (DIA_Lee_CanTeach);
+			Info_AddChoice (DIA_Lee_CanTeach,"To trochê za drogo.",DIA_Lee_CanTeach_No);
+		
+			if (Npc_HasItems (other,ItMi_Gold) >= 1000)
+			{
+				Info_AddChoice (DIA_Lee_CanTeach,"Umowa stoi. Oto twoje z³oto.",DIA_Lee_CanTeach_Yes);
+			};
+		};
+	};		
+};
+ 
+FUNC VOID DIA_Lee_CanTeach_No ()
+{
+	AI_Output (other,self ,"DIA_Lee_CanTeach_No_15_00"); //To trochê za drogo.
+	AI_Output (self ,other,"DIA_Lee_CanTeach_No_04_01"); //Zastanów siê. Trudno o drugiego takiego nauczyciela jak ja.
+	
+	Info_ClearChoices (DIA_Lee_CanTeach);
+}; 
 
-	self.aivar[AIV_CanTeach] = true;
+FUNC VOID DIA_Lee_CanTeach_Yes ()
+{
+	AI_Output (other,self ,"DIA_Lee_CanTeach_Yes_15_00"); //Umowa stoi. Oto twoje z³oto.
+	AI_Output (self ,other,"DIA_Lee_CanTeach_Yes_04_01"); //Œwietnie. Nie po¿a³ujesz tego.
+	
+	B_GiveInvItems (other,self,ItMi_Gold,1000);
+	Lee_TeachPlayer = TRUE;
+	Info_ClearChoices (DIA_Lee_CanTeach);
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
+};
+ 
+//**************************************
+//			Ich will trainieren
+//**************************************
+INSTANCE DIA_Lee_Teach(C_INFO)
+{
+	npc			= SLD_800_Lee;
+	nr			= 10;
+	condition	= DIA_Lee_Teach_Condition;
+	information	= DIA_Lee_Teach_Info;
+	permanent	= TRUE;
+	description = "Dobra. Bierzmy siê do nauki.";
+};                       
+
+FUNC INT DIA_Lee_Teach_Condition()
+{
+	IF (Lee_Teachplayer == TRUE)
+	{
+		return TRUE;
+	};	
+};
+ 
+FUNC VOID DIA_Lee_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_Lee_Teach_15_00"); //Dobra. Bierzmy siê do nauki.
+	
+	Info_ClearChoices 	(DIA_Lee_Teach);
+	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
+
+};
+
+FUNC VOID DIA_Lee_Teach_Back ()
+{
+	Info_ClearChoices (DIA_Lee_Teach);
+};
+
+
+FUNC VOID DIA_Lee_Teach_2H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100);
+	
+	if (other.HitChance[NPC_TALENT_2H] >= 100)
+	{
+		AI_Output(self,other,"DIA_DIA_Lee_Teach_2H_1_04_00"); //Teraz jesteœ prawdziwym mistrzem walki dwurêcznym orê¿em.
+		AI_Output(self,other,"DIA_DIA_Lee_Teach_2H_1_04_01"); //Nie potrzebujesz ju¿ nauczyciela.
+	};
+	Info_ClearChoices 	(DIA_Lee_Teach);
+	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
+};
+
+FUNC VOID DIA_Lee_Teach_2H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100);
+	
+	if (other.HitChance[NPC_TALENT_2H] >= 100)
+	{
+		AI_Output(self,other,"DIA_Lee_Teach_2H_5_04_00"); //Teraz jesteœ prawdziwym mistrzem walki dwurêcznym orê¿em.
+		AI_Output(self,other,"DIA_Lee_Teach_2H_5_04_01"); //Nie potrzebujesz ju¿ nauczyciela.
+	};
+	Info_ClearChoices 	(DIA_Lee_Teach);
+	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
+	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1582,16 +1713,17 @@ instance DIA_Lee_DRACHENEI		(C_INFO)
 
 func int DIA_Lee_DRACHENEI_Condition ()
 {
+
 	if (Npc_HasItems (other,ItAt_DragonEgg_MIS))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Lee_DRACHENEI_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_DRACHENEI_15_00"); //Jaszczuroludzie roznosz¹ smocze jaja po ca³ym kraju.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	AI_Output			(self, other, "DIA_Lee_DRACHENEI_04_01"); //Mo¿na siê by³o tego spodziewaæ. Najwy¿szy czas, ¿ebyœmy siê st¹d wynieœli.
 	
 	if (hero.guild == GIL_DJG)
@@ -1614,14 +1746,14 @@ INSTANCE DIA_Lee_KAP4_Perm(C_INFO)
 	nr			= 49;
 	condition	= DIA_Lee_KAP4_Perm_Condition;
 	information	= DIA_Lee_KAP4_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co s³ychaæ na farmie?";
 };                       
 FUNC INT DIA_Lee_KAP4_Perm_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KAP4_Perm_Info()
@@ -1651,14 +1783,14 @@ INSTANCE DIA_Lee_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lee_KAP5_EXIT_Condition;
 	information	= DIA_Lee_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lee_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KAP5_EXIT_Info()
@@ -1680,9 +1812,9 @@ instance DIA_Lee_GetShip		(C_INFO)
 };
 func int DIA_Lee_GetShip_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lee_GetShip_Info ()
@@ -1694,9 +1826,9 @@ func void DIA_Lee_GetShip_Info ()
 	
 	Log_CreateTopic (TOPIC_Ship, LOG_MISSION);   	                                                                                                                                                                                                                                             
 	Log_SetTopicStatus(TOPIC_Ship, LOG_RUNNING);                                                                                                                                                                                                                                                 
-	
+			
 		if (MIS_Lee_JudgeRichter == LOG_SUCCESS)
-		&& ((Npc_IsDead(Richter))== false)
+		&& ((Npc_IsDead(Richter))== FALSE)
 		{
 			AI_Output	(self, other, "DIA_Lee_GetShip_04_04"); //Przecie¿ mamy w garœci sêdziego! IdŸ do niego i wyduœ odpowiednie pismo uprawniaj¹ce do zajêcia okrêtu.
 			MIS_RichtersPermissionForShip = LOG_RUNNING;
@@ -1714,18 +1846,19 @@ func void DIA_Lee_GetShip_Info ()
 	
 	Log_CreateTopic (TOPIC_Crew, LOG_MISSION);   
 	Log_SetTopicStatus(TOPIC_Crew, LOG_RUNNING); 
-	
+	                  
 	Log_CreateTopic (TOPIC_Captain, LOG_MISSION);  
 	Log_SetTopicStatus(TOPIC_Captain, LOG_RUNNING);
-	
+	                  
 	Info_ClearChoices	(DIA_Lee_GetShip);
 	Info_AddChoice	(DIA_Lee_GetShip, DIALOG_BACK, DIA_Lee_GetShip_back );
 	Info_AddChoice	(DIA_Lee_GetShip, "Kogo powinienem wzi¹æ do za³ogi?", DIA_Lee_GetShip_crew );
 	
-	if ((Npc_IsDead(Torlof))== false)
+	if ((Npc_IsDead(Torlof))== FALSE)
 	{
 		Info_AddChoice	(DIA_Lee_GetShip, "Znasz kogoœ, kto móg³by stan¹æ za sterem statku?", DIA_Lee_GetShip_torlof );
 	};
+
 };
 func void DIA_Lee_GetShip_torlof ()
 {
@@ -1765,14 +1898,14 @@ func int DIA_Lee_GotRichtersPermissionForShip_Condition ()
 {	
 	if (MIS_RichtersPermissionForShip == LOG_SUCCESS)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lee_GotRichtersPermissionForShip_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_GotRichtersPermissionForShip_15_00"); //Sztuczka z pisemnym upowa¿nieniem zadzia³a³a! Statek nale¿y teraz do mnie. Pan sêdzia by³ bardzo... pomocny.
 	AI_Output			(self, other, "DIA_Lee_GotRichtersPermissionForShip_04_01"); //A nie mówi³em? Wiedzia³em, ¿e ten sukinsyn jeszcze siê do czegoœ przyda.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1784,7 +1917,7 @@ instance DIA_Lee_StealShip		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lee_StealShip_Condition;
 	information	 = 	DIA_Lee_StealShip_Info;
-	PERMANENT 	 =  false;
+	PERMANENT 	 =  FALSE;
 	description	 = 	"Zamierzam ukraœæ okrêt.";
 };
 
@@ -1794,7 +1927,7 @@ func int DIA_Lee_StealShip_Condition ()
 	&& (hero.guild == GIL_DJG)
 	&& (MIS_RichtersPermissionForShip == 0)	//Joly: kein Richter Erpressen nötig!
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -1820,16 +1953,16 @@ instance DIA_Lee_KnowWhereEnemy		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lee_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Lee_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Pop³yniesz ze mn¹?";
 };
 func int DIA_Lee_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Lee_IsOnBoard == false)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Lee_IsOnBoard == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Lee_GetShip))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lee_KnowWhereEnemy_Info ()
@@ -1861,12 +1994,13 @@ FUNC VOID DIA_Lee_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Lee_KnowWhereEnemy_Yes_15_02"); //Tak, podnosimy ¿agle. Jeœli chcesz siê ze mn¹ zabraæ, przyjdŸ na przystañ. Spotkamy siê na statku.
 	AI_Output (self ,other,"DIA_Lee_KnowWhereEnemy_Yes_04_03"); //D³ugo czeka³em na tê chwilê. Mo¿esz na mnie liczyæ.
 	
-	B_GivePlayerXP(XP_BONUS_5);                                                                    
+	B_GivePlayerXP (XP_Crewmember_Success);                                                                    
+	                                                                                                           
 	
-	Lee_IsOnBoard = LOG_SUCCESS;
-	crewmember_Count += 1;
+	Lee_IsOnBoard	 = LOG_SUCCESS;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -1884,7 +2018,7 @@ FUNC VOID DIA_Lee_KnowWhereEnemy_No ()
 	AI_Output (self ,other,"DIA_Lee_KnowWhereEnemy_No_04_01"); //Có¿, ty wiesz najlepiej. Ale dobrych ¿o³nierzy nigdy nie za wielu.
 	AI_Output (self ,other,"DIA_Lee_KnowWhereEnemy_No_04_02"); //No, chyba ¿e to idioci pokroju Sylvio.
 
-	Lee_IsOnBoard = LOG_OBSOLETE;
+	Lee_IsOnBoard	 = LOG_OBSOLETE;
 	Info_ClearChoices (DIA_Lee_KnowWhereEnemy);
 };
 
@@ -1897,16 +2031,16 @@ instance DIA_Lee_LeaveMyShip		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lee_LeaveMyShip_Condition;
 	information	 = 	DIA_Lee_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Chyba jednak mi siê nie przydasz!";
 };
 
 func int DIA_Lee_LeaveMyShip_Condition ()
 {	
 	if (Lee_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -1915,8 +2049,8 @@ func void DIA_Lee_LeaveMyShip_Info ()
 	AI_Output			(other, self, "DIA_Lee_LeaveMyShip_15_00"); //Chyba jednak mi siê nie przydasz!
 	AI_Output			(self, other, "DIA_Lee_LeaveMyShip_04_01"); //Jak chcesz. Wiesz, gdzie mnie szukaæ, prawda?
 	
-	Lee_IsOnBoard = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	Lee_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"ShipOff"); 
 };
@@ -1931,7 +2065,7 @@ instance DIA_Lee_StillNeedYou		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lee_StillNeedYou_Condition;
 	information	 = 	DIA_Lee_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Chyba jednak bêdê ciê potrzebowa³!";
 };
 func int DIA_Lee_StillNeedYou_Condition ()
@@ -1940,7 +2074,7 @@ func int DIA_Lee_StillNeedYou_Condition ()
 	|| (Lee_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lee_StillNeedYou_Info ()
@@ -1951,10 +2085,10 @@ func void DIA_Lee_StillNeedYou_Info ()
 	{
 		AI_Output	(self, other, "DIA_Lee_StillNeedYou_04_01"); //Wiedzia³em, ¿e tak bêdzie! Do zobaczenia na statku!
 		
-		Lee_IsOnBoard = LOG_SUCCESS;
-		crewmember_Count += 1;
+		Lee_IsOnBoard	 = LOG_SUCCESS;
+		crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -1991,17 +2125,52 @@ INSTANCE DIA_Lee_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lee_KAP6_EXIT_Condition;
 	information	= DIA_Lee_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lee_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lee_KAP6_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

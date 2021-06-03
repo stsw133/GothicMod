@@ -1,58 +1,57 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_811_Wolf (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Wilk";
 	guild 								=	GIL_SLD;
 	id 									=	811;
 	voice 								=	8;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Axe);
 	EquipItem (self, ItRw_Sld_Bow);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Wolf, 0, ITAR_SLD_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_811;
 };
 
-FUNC VOID Rtn_Start_811()
+func void Rtn_Start_811()
 {
 	TA_Sit_Bench	(08,00,22,00, "NW_BIGFARM_PATH_03");
     TA_Stand_Eating	(22,00,08,00, "NW_BIGFARM_KITCHEN_03");
 };
-FUNC VOID Rtn_BengarsFarm_811()
+func void Rtn_BengarsFarm_811()
 {
 	TA_Stand_Guarding	(08,00,22,00, "NW_FARM3_PATH_01");
     TA_Stand_Guarding	(22,00,08,00, "NW_FARM3_PATH_01");
 };
-FUNC VOID Rtn_BengarDead_811()
+func void Rtn_BengarDead_811()
 {
 	TA_Stand_Guarding	(08,00,22,00, "NW_FARM3_BENGAR");
     TA_Stand_Guarding	(22,00,08,00, "NW_FARM3_BENGAR");
 };
-FUNC VOID Rtn_WaitForShip_811()
+func void Rtn_WaitForShip_811()
 {
 	TA_Sit_Bench	(08,00,19,00, "NW_WAITFOR_SHIP_01");
 	TA_Sit_Bench	(19,00,08,00, "NW_WAITFOR_SHIP_01");
 };
-FUNC VOID Rtn_Ship_811()
+func void Rtn_Ship_811()
 {
 	TA_Stand_Guarding	(06,00,07,00, "SHIP_DECK_29");
 

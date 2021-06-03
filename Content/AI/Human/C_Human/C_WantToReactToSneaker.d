@@ -4,7 +4,7 @@
 func int C_WantToReactToSneaker (var C_NPC slf, var C_NPC oth)
 {
     /// ------ zu weit weg ------
-    if (Npc_GetDistToNpc(slf,oth) > /*700*/ 750)
+    if (Npc_GetDistToNpc(slf, oth) > 700)
     {
 		return false;
 	};
@@ -12,9 +12,7 @@ func int C_WantToReactToSneaker (var C_NPC slf, var C_NPC oth)
     /// ------ ausgenommene Gilden ------
     if (slf.guild == GIL_DMT)
 	|| (slf.guild == GIL_STRF)
-	///Addon: Banditen im Lager sollen auf Schleicher reagieren
-	|| ((slf.guild == GIL_BDT)
-	&& !C_NpcBelongsToBL(slf))
+	|| ((slf.guild == GIL_BDT) && !C_NpcBelongsToBL(slf))
 	{
 		return false;
 	};
@@ -26,7 +24,7 @@ func int C_WantToReactToSneaker (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ ATT_FRIENDLY ------
-	if (Npc_GetAttitude(slf,oth) == ATT_FRIENDLY)
+	if (Npc_GetAttitude(slf, oth) == ATT_FRIENDLY)
 	{
 		return false;
 	};

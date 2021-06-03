@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SC (NPC_DEFAULT)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Kreator Umiejêtnoœci";
 	guild								=	GIL_NONE;
 	id									=	51;
@@ -9,35 +9,34 @@ instance SC (NPC_DEFAULT)
 	flags								=	NPC_FLAG_IMMORTAL;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ Aivars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, MAX_LEVEL);
 	B_SetFightSkills (self, 100);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Player, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_start_51;
 };
-
 func void Rtn_Start_51()
 {
-	TA_Stand_ArmsCrossed	(08,00,23,00, "XXX");
-	TA_Stand_ArmsCrossed	(23,00,08,00, "XXX");
+	TA_Stand_ArmsCrossed (08,00,23,00, "XXX");
+	TA_Stand_ArmsCrossed (23,00,08,00, "XXX");
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance SC_Exit (C_INFO)
 {
 	npc									=	SC;
@@ -47,13 +46,12 @@ instance SC_Exit (C_INFO)
 	permanent							=	true;
 	description							=	DIALOG_ENDE;
 };
-
-FUNC VOID SC_Exit_Info()
+func void SC_Exit_Info()
 {
 	AI_StopProcessInfos(self);
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance SC_Gold (C_INFO)
 {
 	npc									=	SC;
@@ -63,15 +61,14 @@ instance SC_Gold (C_INFO)
 	permanent							=	true;
 	description							=	"Daj z³oto (10k)";
 };
-
-FUNC VOID SC_Gold_Info()
+func void SC_Gold_Info()
 {
 	CreateInvItems (hero, ItMi_Gold, 10000);
 	PrintScreen ("Otrzymano 10000 sztuk z³ota", -1, -1, FONT_Screen, 2);
 };
 
-//******************************************************************************************
-INSTANCE DIA_SC_Attribute_Start (C_INFO)
+///******************************************************************************************
+instance DIA_SC_Attribute_Start (C_INFO)
 {
 	npc									=	SC;
 	nr									=	2;
@@ -81,7 +78,7 @@ INSTANCE DIA_SC_Attribute_Start (C_INFO)
 	description							=	"Si³a, zrêcznoœæ, mana, punkty ¿ycia";
 };
 
-FUNC VOID DIA_SC_Attribute_Start_Info()
+func void DIA_SC_Attribute_Start_Info()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 
@@ -92,56 +89,56 @@ FUNC VOID DIA_SC_Attribute_Start_Info()
 	Info_AddChoice (DIA_SC_Attribute_Start, "Wzrost si³y", DIA_SC_STR);
 };
 
-FUNC VOID DIA_SC_Attribute_BACK()
+func void DIA_SC_Attribute_BACK()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 };
 
-//******************************************************************************************
-FUNC VOID DIA_SC_STR()
+///******************************************************************************************
+func void DIA_SC_STR()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 
 	Info_AddChoice (DIA_SC_Attribute_Start, DIALOG_BACK, DIA_SC_Attribute_BACK);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR20,B_GetLearnCostAttribute(other,ATR_STRENGTH)*20), DIA_SC_STR_20);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR10,B_GetLearnCostAttribute(other,ATR_STRENGTH)*10), DIA_SC_STR_10);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR5,B_GetLearnCostAttribute(other,ATR_STRENGTH)*5), DIA_SC_STR_5);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR1,B_GetLearnCostAttribute(other,ATR_STRENGTH)*1), DIA_SC_STR_1);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR20, B_GetLearnCostAttribute(other, ATR_STRENGTH) * 20), DIA_SC_STR_20);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR10, B_GetLearnCostAttribute(other, ATR_STRENGTH) * 10), DIA_SC_STR_10);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR5, B_GetLearnCostAttribute(other, ATR_STRENGTH) * 5), DIA_SC_STR_5);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnSTR1, B_GetLearnCostAttribute(other, ATR_STRENGTH) * 1), DIA_SC_STR_1);
 };
-//******************************************************************************************
-FUNC VOID DIA_SC_STR_1()
+///******************************************************************************************
+func void DIA_SC_STR_1()
 {
 	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1);
 	DIA_SC_STR();
 };
-FUNC VOID DIA_SC_STR_5()
+func void DIA_SC_STR_5()
 {
 	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5);
 	DIA_SC_STR();
 };
-FUNC VOID DIA_SC_STR_10()
+func void DIA_SC_STR_10()
 {
 	B_TeachAttributePoints (self, other, ATR_STRENGTH, 10);
 	DIA_SC_STR();
 };
-FUNC VOID DIA_SC_STR_20()
+func void DIA_SC_STR_20()
 {
 	B_TeachAttributePoints (self, other, ATR_STRENGTH, 20);
 	DIA_SC_STR();
 };
 
-//******************************************************************************************
-FUNC VOID DIA_SC_DEX()
+///******************************************************************************************
+func void DIA_SC_DEX()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 
 	Info_AddChoice (DIA_SC_Attribute_Start, DIALOG_BACK, DIA_SC_Attribute_BACK);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX20,B_GetLearnCostAttribute(other,ATR_DEXTERITY)*20), DIA_SC_DEX_20);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX10,B_GetLearnCostAttribute(other,ATR_DEXTERITY)*10), DIA_SC_DEX_10);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX5,B_GetLearnCostAttribute(other,ATR_DEXTERITY)*5), DIA_SC_DEX_5);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX1,B_GetLearnCostAttribute(other,ATR_DEXTERITY)*1), DIA_SC_DEX_1);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX20, B_GetLearnCostAttribute(other, ATR_DEXTERITY) * 20), DIA_SC_DEX_20);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX10, B_GetLearnCostAttribute(other, ATR_DEXTERITY) * 10), DIA_SC_DEX_10);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY) * 5), DIA_SC_DEX_5);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY) * 1), DIA_SC_DEX_1);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_SC_DEX_1()
 {
 	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1);
@@ -163,18 +160,18 @@ func void DIA_SC_DEX_20()
 	DIA_SC_DEX();
 };
 
-//******************************************************************************************
-FUNC VOID DIA_SC_Mana()
+///******************************************************************************************
+func void DIA_SC_Mana()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 
 	Info_AddChoice (DIA_SC_Attribute_Start, DIALOG_BACK, DIA_SC_Attribute_BACK);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP20,B_GetLearnCostAttribute(other,ATR_MANA_MAX)*20), DIA_SC_Mana_20);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP10,B_GetLearnCostAttribute(other,ATR_MANA_MAX)*10), DIA_SC_Mana_10);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP5,B_GetLearnCostAttribute(other,ATR_MANA_MAX)*5), DIA_SC_Mana_5);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP1,B_GetLearnCostAttribute(other,ATR_MANA_MAX)*1), DIA_SC_Mana_1);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP20, B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 20), DIA_SC_Mana_20);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP10, B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 10), DIA_SC_Mana_10);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 5), DIA_SC_Mana_5);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 1), DIA_SC_Mana_1);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_SC_Mana_1()
 {
 	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1);
@@ -196,41 +193,41 @@ func void DIA_SC_Mana_20()
 	DIA_SC_Mana();
 };
 
-//******************************************************************************************
-FUNC VOID DIA_SC_HP()
+///******************************************************************************************
+func void DIA_SC_HP()
 {
 	Info_ClearChoices(DIA_SC_Attribute_Start);
 
 	Info_AddChoice (DIA_SC_Attribute_Start, DIALOG_BACK, DIA_SC_Attribute_BACK);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP20,B_GetLearnCostAttribute(other,ATR_HITPOINTS_MAX)*20), DIA_SC_HP_20);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP10,B_GetLearnCostAttribute(other,ATR_HITPOINTS_MAX)*10), DIA_SC_HP_10);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP5,B_GetLearnCostAttribute(other,ATR_HITPOINTS_MAX)*5), DIA_SC_HP_5);
-	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP1,B_GetLearnCostAttribute(other,ATR_HITPOINTS_MAX)*1), DIA_SC_HP_1);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP20, B_GetLearnCostAttribute(other, ATR_HITPOINTS_MAX) * 20), DIA_SC_HP_20);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP10, B_GetLearnCostAttribute(other, ATR_HITPOINTS_MAX) * 10), DIA_SC_HP_10);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP5, B_GetLearnCostAttribute(other, ATR_HITPOINTS_MAX) * 5), DIA_SC_HP_5);
+	Info_AddChoice (DIA_SC_Attribute_Start, B_BuildLearnString(PRINT_LearnHP1, B_GetLearnCostAttribute(other, ATR_HITPOINTS_MAX) * 1), DIA_SC_HP_1);
 };
-//******************************************************************************************
-FUNC VOID DIA_SC_HP_1()
+///******************************************************************************************
+func void DIA_SC_HP_1()
 {
 	B_TeachAttributePoints (self, other, ATR_HITPOINTS_MAX, 1);
 	DIA_SC_HP();
 };
-FUNC VOID DIA_SC_HP_5()
+func void DIA_SC_HP_5()
 {
 	B_TeachAttributePoints (self, other, ATR_HITPOINTS_MAX, 5);
 	DIA_SC_HP();
 };
-FUNC VOID DIA_SC_HP_10()
+func void DIA_SC_HP_10()
 {
 	B_TeachAttributePoints (self, other, ATR_HITPOINTS_MAX, 10);
 	DIA_SC_HP();
 };
-FUNC VOID DIA_SC_HP_20()
+func void DIA_SC_HP_20()
 {
 	B_TeachAttributePoints (self, other, ATR_HITPOINTS_MAX, 20);
 	DIA_SC_HP();
 };
 
-//******************************************************************************************
-INSTANCE DIA_SC_Fight_Start (C_INFO)
+///******************************************************************************************
+instance DIA_SC_Fight_Start (C_INFO)
 {
 	npc									=	SC;
 	nr									=	3;
@@ -239,58 +236,57 @@ INSTANCE DIA_SC_Fight_Start (C_INFO)
 	permanent							=	true;
 	description							=	"Talenty bojowe";
 };
-FUNC VOID DIA_SC_Fight_Start_Info()
+func void DIA_SC_Fight_Start_Info()
 {
 	Info_ClearChoices(DIA_SC_Fight_Start);
-
 	Info_AddChoice (DIA_SC_Fight_Start, DIALOG_BACK, DIA_SC_Fight_BACK);
 
 	MOD_PrintLearn();
 	if (Npc_GetTalentSkill(other,NPC_TALENT_CROSSBOW) < 4)
 	{
-		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_Crossbow,B_GetLearnCostTalent(other,NPC_TALENT_CROSSBOW,Npc_GetTalentSkill(other,NPC_TALENT_CROSSBOW)+1)), SC_Training_Combat_Crossbow);
+		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_Crossbow, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1)), SC_Training_Combat_Crossbow);
 	};
 	if (Npc_GetTalentSkill(other,NPC_TALENT_BOW) < 4)
 	{
-		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_Bow,B_GetLearnCostTalent(other,NPC_TALENT_BOW,Npc_GetTalentSkill(other,NPC_TALENT_BOW)+1)), SC_Training_Combat_Bow);
+		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_Bow, B_GetLearnCostTalent(other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1)), SC_Training_Combat_Bow);
 	};
 	if (Npc_GetTalentSkill(other,NPC_TALENT_2H) < 4)
 	{
-		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_2h,B_GetLearnCostTalent(other,NPC_TALENT_2H,Npc_GetTalentSkill(other,NPC_TALENT_2H)+1)), SC_Training_Combat_2h);
+		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_2h, B_GetLearnCostTalent(other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1)), SC_Training_Combat_2h);
 	};
 	if (Npc_GetTalentSkill(other,NPC_TALENT_1H) < 4)
 	{
-		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_1h,B_GetLearnCostTalent(other,NPC_TALENT_1H,Npc_GetTalentSkill(other,NPC_TALENT_1H)+1)), SC_Training_Combat_1h);
+		Info_AddChoice (DIA_SC_Fight_Start, B_BuildLearnString(PRINT_LearnFight_1h, B_GetLearnCostTalent(other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1)), SC_Training_Combat_1h);
 	};
 };
-//******************************************************************************************
-FUNC VOID DIA_SC_Fight_BACK()
+///******************************************************************************************
+func void DIA_SC_Fight_BACK()
 {
 	Info_ClearChoices(DIA_SC_Fight_Start);
 };
 func void SC_Training_Combat_1h()
 {
-	B_TeachTalents (self, other, NPC_TALENT_1H, Npc_GetTalentSkill(other,NPC_TALENT_1H)+1);
+	B_TeachTalents (self, other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_2h()
 {
-	B_TeachTalents (self, other, NPC_TALENT_2H, Npc_GetTalentSkill(other,NPC_TALENT_2H)+1);
+	B_TeachTalents (self, other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_Bow()
 {
-	B_TeachTalents (self, other, NPC_TALENT_BOW, Npc_GetTalentSkill(other,NPC_TALENT_BOW)+1);
+	B_TeachTalents (self, other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_Crossbow()
 {
-	B_TeachTalents (self, other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other,NPC_TALENT_CROSSBOW)+1);
+	B_TeachTalents (self, other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 
-//******************************************************************************************
-INSTANCE DIA_SC_Thief_Start (C_INFO)
+///******************************************************************************************
+instance DIA_SC_Thief_Start (C_INFO)
 {
 	npc									=	SC;
 	nr									=	4;
@@ -299,67 +295,65 @@ INSTANCE DIA_SC_Thief_Start (C_INFO)
 	permanent							=	true;
 	description							=	"Talenty z³odziejskie";
 };
-
-FUNC VOID DIA_SC_Thief_Start_Info()
+func void DIA_SC_Thief_Start_Info()
 {
 	Info_ClearChoices(DIA_SC_Thief_Start);
-
 	Info_AddChoice (DIA_SC_Thief_Start, DIALOG_BACK, DIA_SC_Thief_BACK);
 
-	if (Npc_GetTalentSkill (other, NPC_TALENT_PERSUASION) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PERSUASION) == 0)
 	{
-		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Persuasion,B_GetLearnCostTalent(other,NPC_TALENT_PERSUASION,1)), SC_Training_Thief_Persuasion);
+		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Persuasion, B_GetLearnCostTalent(other, NPC_TALENT_PERSUASION, 1)), SC_Training_Thief_Persuasion);
 	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_ACROBATIC) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_ACROBATIC) == 0)
 	{
-		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Acrobatic,B_GetLearnCostTalent(other,NPC_TALENT_ACROBATIC,1)), SC_Training_Thief_Acrobatic);
+		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Acrobatic, B_GetLearnCostTalent(other, NPC_TALENT_ACROBATIC, 1)), SC_Training_Thief_Acrobatic);
 	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_PICKPOCKET) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKPOCKET) == 0)
 	{
-		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Pickpocket,B_GetLearnCostTalent(other,NPC_TALENT_PICKPOCKET,1)), SC_Training_Thief_Pickpocket);
+		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Pickpocket, B_GetLearnCostTalent(other, NPC_TALENT_PICKPOCKET, 1)), SC_Training_Thief_Pickpocket);
 	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_PICKLOCK) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) == 0)
 	{
-		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Picklock,B_GetLearnCostTalent(other,NPC_TALENT_PICKLOCK,1)), SC_Training_Thief_Picklock);
+		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Picklock, B_GetLearnCostTalent(other, NPC_TALENT_PICKLOCK, 1)), SC_Training_Thief_Picklock);
 	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_SNEAK) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SNEAK) == 0)
 	{
-		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Sneak,B_GetLearnCostTalent(other,NPC_TALENT_SNEAK,1)), SC_Training_Thief_Sneak);
+		Info_AddChoice (DIA_SC_Thief_Start, B_BuildLearnString(PRINT_LearnTalent_Sneak, B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1)), SC_Training_Thief_Sneak);
 	};
 };
-//******************************************************************************************
-FUNC VOID DIA_SC_Thief_BACK()
+///******************************************************************************************
+func void DIA_SC_Thief_BACK()
 {
 	Info_ClearChoices(DIA_SC_Thief_Start);
 };
-FUNC VOID SC_Training_Thief_Sneak()
+func void SC_Training_Thief_Sneak()
 {
 	B_TeachTalents (self, other, NPC_TALENT_SNEAK, 1);
 	DIA_SC_Thief_Start_Info();
 };
-FUNC VOID SC_Training_Thief_Picklock()
+func void SC_Training_Thief_Picklock()
 {
 	B_TeachTalents (self, other, NPC_TALENT_PICKLOCK, 1);
 	DIA_SC_Thief_Start_Info();
 };
-FUNC VOID SC_Training_Thief_Pickpocket()
+func void SC_Training_Thief_Pickpocket()
 {
 	B_TeachTalents (self, other, NPC_TALENT_PICKPOCKET, 1);
 	DIA_SC_Thief_Start_Info();
 };
-FUNC VOID SC_Training_Thief_Acrobatic()
+func void SC_Training_Thief_Acrobatic()
 {
 	B_TeachTalents (self, other, NPC_TALENT_ACROBATIC, 1);
 	DIA_SC_Thief_Start_Info();
 };
-FUNC VOID SC_Training_Thief_Persuasion()
+func void SC_Training_Thief_Persuasion()
 {
 	B_TeachTalents (self, other, NPC_TALENT_PERSUASION, 1);
 	DIA_SC_Thief_Start_Info();
 };
 
-//******************************************************************************************
-INSTANCE DIA_SC_Magic (C_INFO)
+///******************************************************************************************
+instance DIA_SC_Magic (C_INFO)
 {
 	npc									=	SC;
 	nr									=	5;
@@ -368,21 +362,19 @@ INSTANCE DIA_SC_Magic (C_INFO)
 	permanent							=	true;
 	description							=	"Magia";
 };
-
-FUNC VOID DIA_SC_Magic_Info()
+func void DIA_SC_Magic_Info()
 {
 	Info_ClearChoices(DIA_SC_Magic);
 
 	Info_AddChoice (DIA_SC_Magic, DIALOG_BACK, DIA_SC_Magic_BACK);
 };
-
-//******************************************************************************************
-FUNC VOID DIA_SC_Magic_BACK()
+///******************************************************************************************
+func void DIA_SC_Magic_BACK()
 {
 	Info_ClearChoices(DIA_SC_Magic);
 };
 
-//******************************************************************************************
+///******************************************************************************************
 /*
 INSTANCE DIA_SC_KREISE (C_INFO)
 {
@@ -618,8 +610,8 @@ FUNC VOID DIA_SC_Runen_6()
 	
 };
 */
-//******************************************************************************************
-INSTANCE DIA_SC_Misc_Start (C_INFO)
+///******************************************************************************************
+instance DIA_SC_Misc_Start (C_INFO)
 {
 	npc									=	SC;
 	nr									=	6;
@@ -628,60 +620,59 @@ INSTANCE DIA_SC_Misc_Start (C_INFO)
 	permanent							=	true;
 	description							=	"Talenty rzemieœlnicze";
 };
-FUNC VOID DIA_SC_Misc_Start_Info()
+func void DIA_SC_Misc_Start_Info()
 {
 	Info_ClearChoices(DIA_SC_Misc_Start);
-
 	Info_AddChoice (DIA_SC_Misc_Start, DIALOG_BACK, DIA_SC_Misc_BACK);
 
-	if (Npc_GetTalentSkill(other,NPC_TALENT_WRITING) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_WRITING) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Writing,B_GetLearnCostTalent(other,NPC_TALENT_WRITING,Npc_GetTalentSkill(other,NPC_TALENT_WRITING)+1)), SC_Training_Writing);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Writing, B_GetLearnCostTalent(other, NPC_TALENT_WRITING, Npc_GetTalentSkill(other, NPC_TALENT_WRITING) + 1)), SC_Training_Writing);
 	};
-	if (Npc_GetTalentSkill(other,NPC_TALENT_HUNTING) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Hunting,B_GetLearnCostTalent(other,NPC_TALENT_HUNTING,Npc_GetTalentSkill(other,NPC_TALENT_HUNTING)+1)), SC_Training_Hunting);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), SC_Training_Hunting);
 	};
-	if (Npc_GetTalentSkill(other,NPC_TALENT_ALCHEMY) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Alchemy,B_GetLearnCostTalent(other,NPC_TALENT_ALCHEMY,Npc_GetTalentSkill(other,NPC_TALENT_ALCHEMY)+1)), SC_Training_Alchemy);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), SC_Training_Alchemy);
 	};
-	if (Npc_GetTalentSkill(other,NPC_TALENT_JEWELERY) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Jewelery,B_GetLearnCostTalent(other,NPC_TALENT_JEWELERY,Npc_GetTalentSkill(other,NPC_TALENT_JEWELERY)+1)), SC_Training_Jewelery);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Jewelery, B_GetLearnCostTalent(other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) + 1)), SC_Training_Jewelery);
 	};
-	if (Npc_GetTalentSkill(other,NPC_TALENT_SMITH) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Smith,B_GetLearnCostTalent(other,NPC_TALENT_SMITH,Npc_GetTalentSkill(other,NPC_TALENT_SMITH)+1)), SC_Training_Smith);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), SC_Training_Smith);
 	};
 };
-//******************************************************************************************
-FUNC VOID DIA_SC_Misc_BACK()
+///******************************************************************************************
+func void DIA_SC_Misc_BACK()
 {
 	Info_ClearChoices(DIA_SC_Misc_Start);
 };
 func void SC_Training_Smith()
 {
-	B_TeachTalents (self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other,NPC_TALENT_SMITH)+1);
+	B_TeachTalents (self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Jewelery()
 {
-	B_TeachTalents (self, other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other,NPC_TALENT_JEWELERY)+1);
+	B_TeachTalents (self, other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Alchemy()
 {
-	B_TeachTalents (self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other,NPC_TALENT_ALCHEMY)+1);
+	B_TeachTalents (self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Hunting()
 {
-	B_TeachTalents (self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other,NPC_TALENT_HUNTING)+1);
+	B_TeachTalents (self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Writing()
 {
-	B_TeachTalents (self, other, NPC_TALENT_WRITING, Npc_GetTalentSkill(other,NPC_TALENT_WRITING)+1);
+	B_TeachTalents (self, other, NPC_TALENT_WRITING, Npc_GetTalentSkill(other, NPC_TALENT_WRITING) + 1);
 	DIA_SC_Misc_Start_Info();
 };

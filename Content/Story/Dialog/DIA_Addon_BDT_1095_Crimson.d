@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Crimson_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Crimson_EXIT_Condition;
 	information = DIA_Addon_Crimson_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Crimson_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Crimson_EXIT_Info()
 {
@@ -29,12 +29,12 @@ INSTANCE DIA_Addon_Crimson_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Crimson_Hi_Condition;
 	information = DIA_Addon_Crimson_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co robisz? Topisz z³oto?";
 };
 FUNC INT DIA_Addon_Crimson_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Crimson_Hi_Info()
 {
@@ -52,14 +52,14 @@ INSTANCE DIA_Addon_Crimson_How   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Crimson_How_Condition;
 	information = DIA_Addon_Crimson_How_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Ile monet dasz mi za samorodek?";
 };
 FUNC INT DIA_Addon_Crimson_How_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Crimson_Hi)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Crimson_How_Info()
@@ -77,14 +77,14 @@ INSTANCE DIA_Addon_Crimson_Feilsch   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Crimson_Feilsch_Condition;
 	information = DIA_Addon_Crimson_Feilsch_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Umowa stoi!";
 };
 FUNC INT DIA_Addon_Crimson_Feilsch_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Crimson_How)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Crimson_Feilsch_Info()
@@ -103,14 +103,14 @@ INSTANCE DIA_Addon_Crimson_Gold   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Addon_Crimson_Gold_Condition;
 	information = DIA_Addon_Crimson_Gold_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Wymieñ samorodki z³ota...";
 };
 FUNC INT DIA_Addon_Crimson_Gold_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Crimson_How)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Crimson_Gold_Info()
@@ -120,7 +120,7 @@ FUNC VOID DIA_Addon_Crimson_Gold_Info()
 	Info_ClearChoices (DIA_Addon_Crimson_Gold);
 	Info_AddChoice (DIA_Addon_Crimson_Gold,DIALOG_BACK,DIA_Addon_Crimson_Gold_BACK);
 	
-	if (Npc_HasItems (other,ItMi_GoldNugget) >= 1)
+	if (Npc_HasItems (other,ItMi_GoldNugget_Addon ) >= 1)
 	{
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ wszystkie samorodki z³ota",DIA_Addon_Crimson_Gold_ALLE);
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ 1 samorodek z³ota",DIA_Addon_Crimson_Gold_1);
@@ -137,15 +137,15 @@ FUNC VOID DIA_Addon_Crimson_Gold_BACK()
 FUNC VOID DIA_Addon_Crimson_Gold_ALLE()
 {
 	var int CurrentNuggets;
-	CurrentNuggets = Npc_HasItems (other, ItMi_GoldNugget);
+	CurrentNuggets = Npc_HasItems (other, ItMi_GoldNugget_Addon);
 	
-	B_GiveInvItems (other, self, ItMi_GoldNugget, CurrentNuggets);
+	B_GiveInvItems (other, self, ItMi_GoldNugget_Addon, CurrentNuggets);
 	B_GiveInvItems (self, other, ItMI_Gold, (CurrentNuggets * 10));
 	
 	Info_ClearChoices (DIA_Addon_Crimson_Gold);
 	Info_AddChoice (DIA_Addon_Crimson_Gold,DIALOG_BACK,DIA_Addon_Crimson_Gold_BACK);
 	
-	if (Npc_HasItems (other,ItMi_GoldNugget ) >= 1)
+	if (Npc_HasItems (other,ItMi_GoldNugget_Addon ) >= 1)
 	{
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ wszystkie samorodki z³ota",DIA_Addon_Crimson_Gold_ALLE);
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ 1 samorodek z³ota",DIA_Addon_Crimson_Gold_1);
@@ -153,13 +153,13 @@ FUNC VOID DIA_Addon_Crimson_Gold_ALLE()
 };
 FUNC VOID DIA_Addon_Crimson_Gold_1()
 {
-	B_GiveInvItems (other, self, ItMi_GoldNugget, 1);
+	B_GiveInvItems (other, self, ItMi_GoldNugget_Addon, 1);
 	B_GiveInvItems (self, other, ItMI_Gold, 10);
 	
 	Info_ClearChoices (DIA_Addon_Crimson_Gold);
 	Info_AddChoice (DIA_Addon_Crimson_Gold,DIALOG_BACK,DIA_Addon_Crimson_Gold_BACK);
 	
-	if (Npc_HasItems (other,ItMi_GoldNugget) >= 1)
+	if (Npc_HasItems (other,ItMi_GoldNugget_Addon ) >= 1)
 	{
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ wszystkie samorodki z³ota",DIA_Addon_Crimson_Gold_ALLE);
 		Info_AddChoice (DIA_Addon_Crimson_Gold,"Wymieñ 1 samorodek z³ota",DIA_Addon_Crimson_Gold_1);
@@ -179,14 +179,14 @@ INSTANCE DIA_Addon_Crimson_Raven   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Crimson_Raven_Condition;
 	information = DIA_Addon_Crimson_Raven_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co wiesz o Kruku?";
 };
 FUNC INT DIA_Addon_Crimson_Raven_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Crimson_How)
-	{
-		return true;
+	{	
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Crimson_Raven_Info()
@@ -209,7 +209,7 @@ INSTANCE DIA_Addon_Crimson_FATAGN   (C_INFO)
 	nr          = 98;
 	condition   = DIA_Addon_Crimson_FATAGN_Condition;
 	information = DIA_Addon_Crimson_FATAGN_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Mo¿esz jeszcze raz powtórzyæ s³owa Kruka?";
 };
 FUNC INT DIA_Addon_Crimson_FATAGN_Condition()
@@ -217,12 +217,12 @@ FUNC INT DIA_Addon_Crimson_FATAGN_Condition()
 	if Npc_KnowsInfo (other, DIA_Addon_Crimson_Raven)
 	&& (Crimson_SayBeliar < 4)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Crimson_FATAGN_Info()
 {
-	Crimson_SayBeliar += 1;
+	Crimson_SayBeliar = (Crimson_SayBeliar +1);
 	
 	AI_Output (other, self, "DIA_Addon_Crimson_FATAGN_15_00");//Mo¿esz jeszcze raz powtórzyæ s³owa Kruka?
 	
@@ -237,7 +237,7 @@ FUNC VOID DIA_Addon_Crimson_FATAGN_Info()
 	{
 		AI_Output (self, other, "DIA_Addon_Crimson_FATAGN_10_02");//Myœlê, ¿e lepiej daæ temu spokój.
 	};
-};
+};	
 FUNC VOID DIA_Addon_Crimson_FATAGN_LOS()
 {
 	Snd_Play ("Mystery_09");
@@ -245,8 +245,8 @@ FUNC VOID DIA_Addon_Crimson_FATAGN_LOS()
 	
 	if (Crimson_SayBeliar == 3)
 	{
-		Wld_PlayEffect("FX_EARTHQUAKE",  self, self, 0, 0, 0, false );
-		Wld_PlayEffect("DEMENTOR_FX",  self, self, 0, 0, 0, false );
+		Wld_PlayEffect("FX_EARTHQUAKE",  self, self, 0, 0, 0, FALSE );
+		Wld_PlayEffect("DEMENTOR_FX",  self, self, 0, 0, 0, FALSE );
 	};
 	Info_ClearChoices (DIA_Addon_Crimson_FATAGN);
 };

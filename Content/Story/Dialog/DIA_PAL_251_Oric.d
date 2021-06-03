@@ -7,15 +7,15 @@ INSTANCE DIA_Oric_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Oric_EXIT_Condition;
 	information = DIA_Oric_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Oric_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -32,17 +32,17 @@ instance DIA_Oric_HALLO		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Oric_HALLO_Condition;
 	information	 = 	DIA_Oric_HALLO_Info;
-	permanent	 =  false;
-	description	 = 	"Na czym polega twoje zadanie?";
+	permanent	 =  FALSE;
+	description	 = 	"a czym polega twoje zadanie?";
 };
 
 func int DIA_Oric_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Oric_HALLO_Info ()
 {
-	AI_Output (other, self, "DIA_Oric_HALLO_15_00"); //Na czym polega twoje zadanie?
+	AI_Output (other, self, "DIA_Oric_HALLO_15_00"); //a czym polega twoje zadanie?
 	AI_Output (self, other, "DIA_Oric_HALLO_11_01"); //Jestem oficerem strategicznym Króla, aktualnie podlegam wielmo¿nemu kapitanowi Garondowi.
 	AI_Output (self, other, "DIA_Oric_HALLO_11_02"); //Jesteœmy ostatnimi paladynami na zamku. Pozostali albo uciekli, albo polegli.
 	AI_Output (self, other, "DIA_Oric_HALLO_11_03"); //Naszym zadaniem jest doprowadziæ tê ekspedycjê do szczêœliwego koñca i tak te¿ uczynimy. Na Innosa, tak uczynimy.
@@ -58,7 +58,7 @@ instance DIA_Oric_Bruder		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Oric_Bruder_Condition;
 	information	 = 	DIA_Oric_Bruder_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Mam dla ciebie wiadomoœæ.";
 };
 
@@ -67,7 +67,7 @@ func int DIA_Oric_Bruder_Condition ()
 	if Npc_KnowsInfo (other, DIA_Jergan_Burg)
 	&& Npc_KnowsInfo (other, DIA_Oric_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Oric_Bruder_Info ()
@@ -78,9 +78,9 @@ func void DIA_Oric_Bruder_Info ()
 	AI_Output (self, other, "DIA_Oric_Bruder_11_03"); //...mój brat...
 	AI_Output (self, other, "DIA_Oric_Bruder_11_04"); //Innos wystawia mnie na ciê¿k¹ próbê. Mój brat zgin¹³ jako jego oddany s³uga.
 	AI_Output (self, other, "DIA_Oric_Bruder_11_05"); //Ta wiadomoœæ przeszy³a me serce jak strza³a. Jedynie w modlitwie odnajdê si³ê.
-	OricBruder = true;
+	OricBruder = TRUE;
 	
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 	
@@ -94,20 +94,20 @@ INSTANCE DIA_Oric_ScoutMine   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Oric_ScoutMine_Condition;
 	information = DIA_Oric_ScoutMine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Wybieram siê w okolice kopalni.";
 };
 
 FUNC INT DIA_Oric_ScoutMine_Condition()
 {
 	if 	(MIS_ScoutMine == LOG_RUNNING)
-	&&	(Kapitel < 9)
+	&&	(Kapitel < 3)
 	&& 	(Npc_KnowsInfo(other, DIA_Oric_HALLO))
-	&&  (Fajeth_Ore == false)
-	&&  (Marcos_Ore == false)
-	&&  (Silvestro_Ore == false)
+	&&  (Fajeth_Ore == FALSE)
+	&&  (Marcos_Ore == FALSE)
+	&&  (Silvestro_Ore == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -126,16 +126,16 @@ instance DIA_Oric_Perm		(C_INFO)
 	nr			 = 	99;
 	condition	 = 	DIA_Oric_Perm_Condition;
 	information	 = 	DIA_Oric_Perm_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Jak wygl¹da sytuacja?";
 };
 
 func int DIA_Oric_Perm_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Oric_HALLO))
-	&& (Kapitel <= 9)
+	&& (Kapitel <= 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Oric_Perm_Info ()
@@ -177,14 +177,14 @@ INSTANCE DIA_Oric_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Oric_KAP3_EXIT_Condition;
 	information	= DIA_Oric_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Oric_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Oric_KAP3_EXIT_Info()
@@ -212,14 +212,14 @@ INSTANCE DIA_Oric_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Oric_KAP4_EXIT_Condition;
 	information	= DIA_Oric_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Oric_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Oric_KAP4_EXIT_Info()
@@ -243,10 +243,10 @@ INSTANCE DIA_Oric_IAmBack   (C_INFO)
 
 FUNC INT DIA_Oric_IAmBack_Condition()
 {
-	if 	(Kapitel >= 10)
+	if 	(Kapitel >= 4)
 		&& (Npc_KnowsInfo(other, DIA_Oric_HALLO))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -283,11 +283,11 @@ INSTANCE DIA_Oric_CanHelp   (C_INFO)
 
 FUNC INT DIA_Oric_CanHelp_Condition()
 {
-	if 	(Kapitel >= 10)
+	if 	(Kapitel >= 4)
 	&&	(Npc_KnowsInfo (other,DIA_Oric_IAmBack))
-	&& 	(MIS_KillHoshPak == false)
+	&& 	(MIS_KillHoshPak == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -337,7 +337,7 @@ FUNC VOID DIA_Oric_CanHelp_WhatYouMean ()
 	
 
 	Info_ClearChoices (DIA_Oric_CanHelp);
-	OrikToldMissionChapter4 = true;
+	OrikToldMissionChapter4 = TRUE;
 };
 
 //***********************************************
@@ -356,10 +356,10 @@ INSTANCE DIA_Oric_NeedStuff   (C_INFO)
 
 FUNC INT DIA_Oric_NeedStuff_Condition()
 {
-	if 	(OrikToldMissionChapter4 == true)
-	&& 	(MIS_KillHoshPak == false)
+	if 	(OrikToldMissionChapter4 == TRUE)
+	&& 	(MIS_KillHoshPak == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -436,10 +436,10 @@ INSTANCE DIA_Oric_NoMurder   (C_INFO)
 
 FUNC INT DIA_Oric_NoMurder_Condition()
 {
-	if 	(OrikToldMissionChapter4 == true)
-	&& 	(MIS_KillHoshPak == false)
+	if 	(OrikToldMissionChapter4 == TRUE)
+	&& 	(MIS_KillHoshPak == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -462,16 +462,16 @@ INSTANCE DIA_Oric_WillHelp   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Oric_WillHelp_Condition;
 	information = DIA_Oric_WillHelp_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dobrze. Zg³adzê Hosh-Paka.";
 };
 
 FUNC INT DIA_Oric_WillHelp_Condition()
 {
-	if 	(OrikToldMissionChapter4 == true)
-	&& 	MIS_KillHoshPak == false
+	if 	(OrikToldMissionChapter4 == TRUE)
+	&& 	MIS_KillHoshPak == FALSE
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -499,7 +499,7 @@ INSTANCE DIA_Oric_HoshDead   (C_INFO)
 	nr          = 8;
 	condition   = DIA_Oric_HoshDead_Condition;
 	information = DIA_Oric_HoshDead_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Hosh-Pak nie ¿yje.";
 };
 
@@ -508,7 +508,7 @@ FUNC INT DIA_Oric_HoshDead_Condition()
 	if 	(Npc_IsDead (Hosh_Pak))
 	&& 	(MIS_KillHoshPak == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -519,8 +519,10 @@ FUNC VOID DIA_Oric_HoshDead_Info()
 	AI_Output (self ,other,"DIA_Oric_HoshDead_11_02"); //Mam nadziejê, ¿e to wydarzenie pozwoli nam nadrobiæ straty ostatniego tygodnia.
 	
 	MIS_KillHoshPak = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_6);
+	B_GivePlayerXP (XP_KillHosh_Pak);
 };
+
+
 
 //***********************************************
 //	Irgendwelche Neuigkeiten?
@@ -532,29 +534,30 @@ INSTANCE DIA_Oric_AnyNews   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Oric_AnyNews_Condition;
 	information = DIA_Oric_AnyNews_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description = "Jakieœ wieœci?";
 };
 
 FUNC INT DIA_Oric_AnyNews_Condition()
 {
-	if (Kapitel >= 10)
-	&& (Npc_KnowsInfo(other, DIA_Oric_IAmBack))
+	if 	(Kapitel >= 4)
+		&& (Npc_KnowsInfo(other, DIA_Oric_IAmBack))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
 FUNC VOID DIA_Oric_AnyNews_Info()
 {
+
 	AI_Output (other,self ,"DIA_Oric_AnyNews_15_00"); //Jakieœ wieœci?
 	
-	if (MIS_OCGateOpen == true)
+	if (MIS_OCGateOpen == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Oric_AnyNews_11_01"); //Poza tym, ¿e najechali na nas orkowie?
 	}
-	else if (MIS_AllDragonsDead == true)
+	else if (MIS_AllDragonsDead == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Oric_AnyNews_11_02"); //Tak. Jesteœ tu bohaterem. Pozbycie siê smoków to niew¹tpliwie nie³atwe zadanie.
 	}
@@ -577,17 +580,17 @@ instance DIA_Oric_DragonPlettBericht		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Oric_DragonPlettBericht_Condition;
 	information	 = 	DIA_Oric_DragonPlettBericht_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Potrzebujê wiêcej informacji o smokach.";
 };
 
 func int DIA_Oric_DragonPlettBericht_Condition ()
 {
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 	&& (Npc_KnowsInfo(other, DIA_Oric_IAmBack))
-	&& (MIS_AllDragonsDead == false)
+	&& (MIS_AllDragonsDead == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -610,43 +613,43 @@ func void DIA_Oric_DragonPlettBericht_Info ()
 		AI_Output (other, self, "DIA_Oric_DragonPlettBericht_15_02"); //Wydaje mi siê, ¿e nie dotar³em jeszcze do wszystkich smoków. Mo¿e coœ usz³o mojej uwadze?
 	};
 	
-	if ((Oric_DragonCounter < MIS_KilledDragons) || (Oric_FirstQuestion == false))
-	&& 	((Oric_SwampdragonInfo_OneTime == false)
-		||	(Oric_RockdragonInfo_OneTime == false)
-		||	(Oric_FiredragonInfo_OneTime == false)
-		||	(Oric_IcedragonInfo_OneTime == false))
+	if ((Oric_DragonCounter < MIS_KilledDragons) || (Oric_FirstQuestion == FALSE))
+	&& 	((Oric_SwampdragonInfo_OneTime == FALSE)
+		||	(Oric_RockdragonInfo_OneTime == FALSE)
+		||	(Oric_FiredragonInfo_OneTime == FALSE)
+		||	(Oric_IcedragonInfo_OneTime == FALSE))
 	{
-		if ((Npc_IsDead(Swampdragon))== false)
-		&& (Oric_SwampdragonInfo_OneTime == false)
+		if ((Npc_IsDead(Swampdragon))== FALSE)
+		&& (Oric_SwampdragonInfo_OneTime == FALSE)
 		{
 			AI_Output (self, other, "DIA_Oric_DragonPlettBericht_11_03"); //W ci¹gu kilku ostatnich dni na zachód od zamku pojawi³o siê wielkie bagno. Jest w tym coœ podejrzanego, nie s¹dzisz?
 			B_LogEntry (TOPIC_DRACHENJAGD,"Orik da³ mi wskazówkê: kilka dni temu na zachód od zamku pojawi³o siê wielkie bagno. Ca³a ta sprawa jest doœæ podejrzana."); 
-			Oric_SwampdragonInfo_OneTime = true;
+			Oric_SwampdragonInfo_OneTime = TRUE;
 		}
-		else if ((Npc_IsDead(Rockdragon))==false)
-		&& (Oric_RockdragonInfo_OneTime == false)
+		else if ((Npc_IsDead(Rockdragon))==FALSE)
+		&& (Oric_RockdragonInfo_OneTime == FALSE)
 		{
 			AI_Output (self, other, "DIA_Oric_DragonPlettBericht_11_04"); //Na po³udnie st¹d, daleko za wulkanem, wznosi siê kamienna forteca.
 			AI_Output (self, other, "DIA_Oric_DragonPlettBericht_11_05"); //Nasi szpiedzy donieœli, ¿e jest silnie strze¿ona. Byæ mo¿e tam ukrywa siê jeden ze smoków?
 			B_LogEntry (TOPIC_DRACHENJAGD,"Zwiadowcy donieœli Orikowi, ¿e skalna forteca za wulkanem na po³udniu jest dobrze chroniona. Orik podejrzewa, ¿e mo¿e tam przebywaæ smok."); 
-			Oric_RockdragonInfo_OneTime = true;
+			Oric_RockdragonInfo_OneTime = TRUE;
 		}
-		else if ((Npc_IsDead(FireDragon))==false)
-		&& (Oric_FiredragonInfo_OneTime == false)
+		else if ((Npc_IsDead(FireDragon))==FALSE)
+		&& (Oric_FiredragonInfo_OneTime == FALSE)
 		{
 			AI_Output (self, other, "DIA_Oric_DragonPlettBericht_11_06"); //Po ostatnim ataku dosz³y mnie wieœci, jakoby jeden ze smoków znikn¹³ gdzieœ na po³udniu, za wulkanem. Wydaje mi siê, ¿e tam powinieneœ skierowaæ swe kroki.
 			B_LogEntry (TOPIC_DRACHENJAGD,"Podobno smok, który zaatakowa³ zamek w Górniczej Dolinie, pojawi³ siê póŸniej w okolicach wulkanu."); 
-			Oric_FiredragonInfo_OneTime = true;
+			Oric_FiredragonInfo_OneTime = TRUE;
 		}
-		else if ((Npc_IsDead(IceDragon))==false)
-		&& (Oric_IcedragonInfo_OneTime == false)
+		else if ((Npc_IsDead(IceDragon))==FALSE)
+		&& (Oric_IcedragonInfo_OneTime == FALSE)
 		{
 			AI_Output (self, other, "DIA_Oric_DragonPlettBericht_11_07"); //Na zachód st¹d rozci¹ga siê wielka po³aæ pokrytych lodem pustkowi. Nie zdziwi³oby mnie, gdyby jeden ze smoków ukry³ siê w³aœnie tam.
 			B_LogEntry (TOPIC_DRACHENJAGD,"Orik twierdzi, ¿e lodowe pustkowie na zachodzie mo¿e byæ siedzib¹ smoka."); 
-			Oric_IcedragonInfo_OneTime = true;
+			Oric_IcedragonInfo_OneTime = TRUE;
 		};
 		Oric_DragonCounter = MIS_KilledDragons;
-		Oric_FirstQuestion = true;
+		Oric_FirstQuestion = TRUE;
 	}
 	else
 	{
@@ -672,14 +675,14 @@ INSTANCE DIA_Oric_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Oric_KAP5_EXIT_Condition;
 	information	= DIA_Oric_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Oric_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Oric_KAP5_EXIT_Info()
@@ -706,14 +709,14 @@ INSTANCE DIA_Oric_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Oric_KAP6_EXIT_Condition;
 	information	= DIA_Oric_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Oric_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Oric_KAP6_EXIT_Info()

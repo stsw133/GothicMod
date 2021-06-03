@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_809_Bennet (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Bennet";
 	guild 								=	GIL_SLD;
 	id 									=	809;
@@ -9,29 +9,29 @@ instance SLD_809_Bennet (Npc_Default)
 	flags       						=	NPC_FLAG_IMPORTANT;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_CoolPock, 0, ITAR_Smith);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_809;
 };
 
-FUNC VOID Rtn_Start_809()
+func void Rtn_Start_809()
 {
 	TA_Smith_Fire	(08,00,08,10, "NW_BIGFARM_SMITH_FIRE");
 	TA_Smith_Anvil	(08,10,08,20, "NW_BIGFARM_SMITH_ANVIL");
@@ -133,17 +133,17 @@ FUNC VOID Rtn_Start_809()
 
 	TA_Sleep		(22,00,08,00, "NW_BIGFARM_STABLE_SLEEP_04");
 };
-FUNC VOID Rtn_PRISON_809()
+func void Rtn_PRISON_809()
 {
 	TA_Stand_ArmsCrossed	(08,00,23,00, "NW_CITY_HABOUR_KASERN_BORKA");
 	TA_Stand_ArmsCrossed	(23,00,08,00, "NW_CITY_HABOUR_KASERN_BORKA");
 };
-FUNC VOID Rtn_WaitForShip_809()
+func void Rtn_WaitForShip_809()
 {
 	TA_Stand_ArmsCrossed	(08,00,19,00, "NW_WAITFOR_SHIP_05");
 	TA_Stand_ArmsCrossed	(19,00,08,00, "NW_WAITFOR_SHIP_05");
 };
-FUNC VOID Rtn_Ship_809()
+func void Rtn_Ship_809()
 {
 	TA_Smith_Fire	(08,00,08,10, "SHIP_SMITH_FIRE");
 	TA_Smith_Anvil	(08,10,08,20, "SHIP_SMITH_ANVIL");

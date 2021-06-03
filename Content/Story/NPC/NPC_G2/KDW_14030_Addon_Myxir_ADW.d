@@ -1,38 +1,37 @@
-//******************************************************************************************
-INSTANCE KDW_14030_Addon_Myxir_ADW (Npc_Default)
+///******************************************************************************************
+instance KDW_14030_Addon_Myxir_ADW (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Myxir";
 	guild 								=	GIL_KDW;
 	id 									=	14030;
 	voice 								=	12;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_ELE;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 50);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Pony", Face_Normal11, 0, ITAR_MgA);
+	/// ------ Visuals ------
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Pony", Face_Normal11, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_14030;
 };
 
-FUNC VOID Rtn_Start_14030()
+func void Rtn_Start_14030()
 {
 	TA_Study_WP		(06,50,07,15, "ADW_ENTRANCE_PLATEAU_12C");
 	TA_Study_WP		(07,15,08,40, "ADW_ENTRANCE_PLATEAU_07A");
@@ -55,7 +54,7 @@ FUNC VOID Rtn_Start_14030()
 
 	TA_Smalltalk	(22,00,06,50, "ADW_ENTRANCE_BUILDING2_03");
 };
-FUNC VOID Rtn_TOT_14030()
+func void Rtn_TOT_14030()
 {
 	TA_Stand_ArmsCrossed	(08,00,23,00, "TOT");
     TA_Stand_ArmsCrossed	(23,00,08,00, "TOT");

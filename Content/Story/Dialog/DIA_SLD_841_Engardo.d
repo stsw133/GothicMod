@@ -7,13 +7,13 @@ INSTANCE DIA_Engardo_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Engardo_EXIT_Condition;
 	information = DIA_Engardo_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Engardo_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Engardo_EXIT_Info()
@@ -31,15 +31,15 @@ instance DIA_Engardo_HALLO		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Engardo_HALLO_Condition;
 	information	 = 	DIA_Engardo_HALLO_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Engardo_HALLO_Condition ()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 //-----------------------------------
@@ -47,8 +47,8 @@ var int Chance;
 //-----------------------------------
 func void DIA_Engardo_HALLO_Info ()
 {
-	Akils_SLDStillthere = true;
-	if (Chance == false)
+	Akils_SLDStillthere = TRUE;
+	if (Chance == FALSE)
 	{
 		AI_Output (self, other, "DIA_Engardo_HALLO_13_00"); //Hej, prostaku, zgubi³eœ siê? Wracaj lepiej na pole, dogl¹daæ swojej brukwi.
 		Chance = 1;
@@ -67,5 +67,6 @@ func void DIA_Engardo_HALLO_Info ()
 		
 		AI_StopProcessInfos (self);
 		B_Attack (self, other, AR_SuddenEnemyInferno, 1);
+		
 	};
 };

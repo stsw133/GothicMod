@@ -7,12 +7,12 @@ instance DIA_Addon_BenchPirate_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_BenchPirate_EXIT_Condition;
 	information	= DIA_Addon_BenchPirate_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 func INT DIA_Addon_BenchPirate_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_BenchPirate_EXIT_Info()
 {	
@@ -28,12 +28,12 @@ instance DIA_Addon_BenchPirate_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_BenchPirate_Hello_Condition;
 	information	= DIA_Addon_BenchPirate_Hello_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co siê dzieje?";
 };                       
 func INT DIA_Addon_BenchPirate_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_BenchPirate_Hello_Info()
 {	
@@ -41,7 +41,7 @@ func VOID DIA_Addon_BenchPirate_Hello_Info()
 	var int randy;
 	randy = Hlp_Random (3);
 	
-	if (GregIsBack == true)
+	if (GregIsBack == TRUE)
 	{
 		if (randy == 0)
 		{
@@ -89,14 +89,14 @@ INSTANCE DIA_Addon_BenchPirate_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_BenchPirate_Anheuern_Condition;
 	information	= DIA_Addon_BenchPirate_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Powinieneœ mi pomóc.";
 };                       
 FUNC INT DIA_Addon_BenchPirate_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_BenchPirate_Anheuern_Info()
@@ -115,22 +115,22 @@ instance DIA_Addon_BenchPirate_ComeOn(C_INFO)
 	nr		 	= 12;
 	condition	= DIA_Addon_BenchPirate_ComeOn_Condition;
 	information	= DIA_Addon_BenchPirate_ComeOn_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Kanion czeka.";
 };
 func int DIA_Addon_BenchPirate_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_BenchPirate_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_BenchPirate_ComeOn_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_BenchPirate_ComeOn_15_01"); //Kanion czeka.
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_BenchPirate_ComeOn_07_02"); //Doskonale! Tak, wracam tam...
 		AI_StopProcessInfos (self);
@@ -146,7 +146,7 @@ func void DIA_Addon_BenchPirate_ComeOn_Info ()
 		AI_StopProcessInfos (self);
 		B_Addon_PiratesFollowAgain();
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -159,14 +159,14 @@ INSTANCE DIA_Addon_BenchPirate_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_BenchPirate_GoHome_Condition;
 	information	= DIA_Addon_BenchPirate_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_BenchPirate_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -175,7 +175,7 @@ FUNC VOID DIA_Addon_BenchPirate_GoHome_Info()
 	AI_Output (other,self ,"DIA_Addon_BenchPirate_GoHome_15_00"); //Nie potrzebujê ju¿ twojej pomocy.
 	AI_Output (self ,other,"DIA_Addon_BenchPirate_GoHome_07_01"); //Bêdê czekaæ w obozie, kapitanie!
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START");
 };
 
@@ -188,15 +188,15 @@ INSTANCE DIA_Addon_BenchPirate_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_BenchPirate_TooFar_Condition;
 	information	= DIA_Addon_BenchPirate_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_BenchPirate_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 

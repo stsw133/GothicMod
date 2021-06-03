@@ -1,25 +1,25 @@
 ///******************************************************************************************
-PROTOTYPE Mst_Default_Golem (C_Npc)
+prototype Mst_Default_Golem (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Golem";
 	guild								=	GIL_STONEGOLEM;
 	aivar[AIV_MM_REAL_ID]				=	ID_GOLEM;
-
+	
 	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 40);
-
+	
 	/// ------ FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
-
+	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
-
+	
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_FollowInWater] 		=	true;
-
+	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
@@ -67,48 +67,47 @@ func void B_SetVisuals_SwampGolem()
 	Mdl_SetVisualBody	(self, "Gol_Swamp_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
 ///******************************************************************************************
-INSTANCE Golem (Mst_Default_Golem)
+instance Golem (Mst_Default_Golem)
 {
 	B_SetVisuals_Golem();
 };
-INSTANCE AncientGolem (Mst_Default_Golem)
+instance AncientGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_AncientGolem();
 };
-INSTANCE DesertGolem (Mst_Default_Golem)
+instance DesertGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_DesertGolem();
 };
-INSTANCE FireGolem (Mst_Default_Golem)
+instance FireGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_FireGolem();
 };
-INSTANCE IceGolem (Mst_Default_Golem)
+instance IceGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_IceGolem();
 };
-INSTANCE OreGolem (Mst_Default_Golem)
+instance OreGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_OreGolem();
 };
-INSTANCE SteelGolem (Mst_Default_Golem)
+instance SteelGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_SteelGolem();
 };
-INSTANCE SwampGolem (Mst_Default_Golem)
+instance SwampGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_SwampGolem();
 };
 ///******************************************************************************************
 /// Summoned_Golem
 ///******************************************************************************************
-INSTANCE Summoned_Golem (Mst_Default_Golem)
+instance Summoned_Golem (Mst_Default_Golem)
 {
 	name						=	"Przyzwany golem";
 	guild						=	GIL_SUMMONED;
 	
-	B_SetMonsterAttributes (self, SPL_Level_GeoGolem);
-	level						=	0;
+	B_SetMonsterAttributes (self, Golem.level);
 	
 	B_SetVisuals_Golem();
 	aivar[AIV_SummonTime]		=	-1;
@@ -155,7 +154,7 @@ func void B_GolemRise()
 	};	
 };
 ///******************************************************************************************
-INSTANCE Shattered_Golem (Mst_Default_Golem)
+instance Shattered_Golem (Mst_Default_Golem)
 {
 	name						=	"";
 	guild						=	GIL_STONEGOLEM;
@@ -172,25 +171,25 @@ INSTANCE Shattered_Golem (Mst_Default_Golem)
 ///******************************************************************************************
 /// QuestMonsters
 ///******************************************************************************************
-INSTANCE Golem_Magic (Mst_Default_Golem)
+instance Golem_Magic (Mst_Default_Golem)
 {
 	name						=	"Magiczny golem";
 	B_SetMonsterAttributes (self, Golem.level-10);
 	B_SetVisuals_OreGolem();
 };
 ///******************************************************************************************
-INSTANCE Golem_Valley (Mst_Default_Golem)
+instance Golem_Valley (Mst_Default_Golem)
 {
 	B_SetVisuals_SwampGolem();
 	aivar[AIV_MaxDistToWp]		=	1500;
 	aivar[AIV_OriginalFightTactic]	=	FAI_GOLEM;
 };
 ///******************************************************************************************
-INSTANCE Golem_Sylvio1 (Mst_Default_Golem)
+instance Golem_Sylvio1 (Mst_Default_Golem)
 {
 	B_SetVisuals_IceGolem();
 };
-INSTANCE Golem_Sylvio2 (Mst_Default_Golem)
+instance Golem_Sylvio2 (Mst_Default_Golem)
 {
 	B_SetVisuals_IceGolem();
 };

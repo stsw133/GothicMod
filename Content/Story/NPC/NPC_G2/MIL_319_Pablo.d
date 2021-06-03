@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_319_Pablo (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Pablo";
 	guild 								=	GIL_MIL;
 	id 									=	319;
 	voice 								=	12;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItem (self, ItKe_City_Tower_01);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal42, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_319;
 };
 
-FUNC VOID Rtn_Start_319()
+func void Rtn_Start_319()
 {
 	TA_Stand_Guarding	(01,00,03,00, "NW_CITY_MAINSTREET_07");
 	TA_Stand_Guarding	(03,00,05,00, "NW_CITY_MERCHANT_TEMPLE_PLACE_01");

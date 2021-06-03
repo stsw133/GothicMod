@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func int C_WantToCallGuards (var C_NPC slf)
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (!self.aivar[AIV_PARTYMEMBER])
 	{
 		if (slf.guild == GIL_PAL)
 		|| (slf.guild == GIL_MIL)
@@ -14,19 +14,18 @@ func int C_WantToCallGuards (var C_NPC slf)
 			return true;
 		};
 	};
+	
 	return false;
 };
 
 ///******************************************************************************************
 func void B_CallGuards()
 {
-	///EXIT IF...
 	if (!C_WantToCallGuards(self))
 	{
 		return;
 	};
 	
-	///FUNC
 	/// ------ ACHTUNG: Wachen-Ketten-Aufrufe! ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToKill)
 	|| (self.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
@@ -109,5 +108,6 @@ func void B_CallGuards()
 		};
 		return;
 	};
+	
 	return;
 };

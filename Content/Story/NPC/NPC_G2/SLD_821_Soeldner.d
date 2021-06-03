@@ -1,38 +1,37 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_821_Soeldner (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_SOELDNER;
 	guild 								=	GIL_SLD;
 	id 									=	821;
 	voice 								=	6;
-	flags       						=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 	EquipItem (self, ItRw_Sld_Bow);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Gomez, 0, ITAR_SLD_M);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_821;
 };
 
-FUNC VOID Rtn_Start_821()
+func void Rtn_Start_821()
 {
 	TA_Smalltalk	(07,30,23,30, "NW_BIGFARM_PATH_04_1");
 	TA_Sleep		(23,30,07,30, "NW_BIGFARM_HOUSE_08");

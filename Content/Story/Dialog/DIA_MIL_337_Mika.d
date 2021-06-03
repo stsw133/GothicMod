@@ -7,15 +7,15 @@ INSTANCE DIA_Mika_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Mika_EXIT_Condition;
 	information = DIA_Mika_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Mika_EXIT_Condition()
 {
-	if (Kapitel <= 8)
+	if Kapitel <=2
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -33,16 +33,16 @@ INSTANCE DIA_Mika_Refuse   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Mika_Refuse_Condition;
 	information = DIA_Mika_Refuse_Info;
-	permanent   = true;
-	important 	= true;
+	permanent   = TRUE;
+	important 	= TRUE;
 };
 
 FUNC INT DIA_Mika_Refuse_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
-	&& (Lares.aivar[AIV_PARTYMEMBER] == true)
+	&& (Lares.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -61,14 +61,14 @@ instance DIA_Mika_WOHIN		(C_INFO)
 	nr    	 = 4;     
 	condition	 = 	DIA_Mika_WOHIN_Condition;
 	information	 = 	DIA_Mika_WOHIN_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Mika_WOHIN_Condition ()
 {
-	if (Lares.aivar[AIV_PARTYMEMBER] == false)
+	if (Lares.aivar[AIV_PARTYMEMBER] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -121,14 +121,14 @@ instance DIA_Mika_WASGEFAEHRLICH		(C_INFO)
 
 func int DIA_Mika_WASGEFAEHRLICH_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Mika_WASGEFAEHRLICH_Info ()
 {
 	AI_Output			(other, self, "DIA_Mika_WASGEFAEHRLICH_15_00"); //Co to za straszliwe niebezpieczeñstwa?
 	AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_01"); //Wiele rzeczy.
-	if (other.protection[PROT_EDGE]	< ITAR_LEATHER_L.protection [PROT_EDGE])	//Joly: kleiner als die Lederrüstung
+	if (other.protection[PROT_EDGE]	< ITAR_Leather_L.protection [PROT_EDGE])	//Joly: kleiner als die Lederrüstung
 	{
 		AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_02"); //Na przyk³ad bandyci. Takiego s³abeusza jak ty zjedz¹ ¿ywcem na œniadanie.
 		AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_03"); //Jeœli nie wpadniesz w rêce bandytów, zajm¹ siê tob¹ dzikie bestie i najemnicy grasuj¹cy w tych lasach.
@@ -155,7 +155,7 @@ func int DIA_Mika_WASKOSTETHILFE_Condition ()
 {
 	if 	(Npc_KnowsInfo(other, DIA_Mika_WASGEFAEHRLICH))
 				{
-						return true;
+						return TRUE;
 				};
 };
 
@@ -182,7 +182,7 @@ func void DIA_Mika_WASKOSTETHILFE_ja ()
 				AI_Output			(self, other, "DIA_Mika_WASKOSTETHILFE_ja_12_01"); //Wspaniale. Jeœli bêdziesz potrzebowa³ mojej pomocy, wiesz, gdzie mnie znaleŸæ.
 				AI_Output			(self, other, "DIA_Mika_WASKOSTETHILFE_ja_12_02"); //Mam tylko jedn¹ proœbê: nie przybiegaj do mnie z ka¿dym nieistotnym drobiazgiem, rozumiesz?
 				
-				Mika_Helps = true;
+				Mika_Helps = TRUE;
 			}
 		else
 			{
@@ -208,7 +208,7 @@ instance DIA_Mika_UEBERLEGT		(C_INFO)
 	nr		 = 	7;
 	condition	 = 	DIA_Mika_UEBERLEGT_Condition;
 	information	 = 	DIA_Mika_UEBERLEGT_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Zmieni³em zdanie. Oto 10 z³otych monet.";
 };
@@ -216,9 +216,9 @@ instance DIA_Mika_UEBERLEGT		(C_INFO)
 func int DIA_Mika_UEBERLEGT_Condition ()
 {
 	if 	((Npc_KnowsInfo(other, DIA_Mika_WASKOSTETHILFE))
-	&&	(Mika_Helps == false))
+	&&	(Mika_Helps == FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Mika_UEBERLEGT_Info ()
@@ -229,7 +229,7 @@ func void DIA_Mika_UEBERLEGT_Info ()
 		{
 			AI_Output			(self, other, "DIA_Mika_UEBERLEGT_12_01"); //Doskonale. Lepiej póŸno ni¿ wcale. A teraz?
 			
-			Mika_Helps = true;
+			Mika_Helps = TRUE;
 		}
 		else
 		{
@@ -247,16 +247,16 @@ instance DIA_Mika_HILFE		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Mika_HILFE_Condition;
 	information	 = 	DIA_Mika_HILFE_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Potrzebujê pomocy.";
 };
 
 func int DIA_Mika_HILFE_Condition ()
 {
-	if (Mika_Helps == true)
+	if (Mika_Helps == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -272,7 +272,7 @@ func void DIA_Mika_HILFE_Info ()
 
 	if (!Npc_IsDead (Alvares)) 
 	&& (!Npc_IsDead (Engardo))
-	&& ( (Akils_SLDstillthere == true) || (Npc_KnowsInfo (other, DIA_Sarah_Bauern)) )
+	&& ( (Akils_SLDstillthere == TRUE) || (Npc_KnowsInfo (other, DIA_Sarah_Bauern)) )
 	{
 		Info_AddChoice	(DIA_Mika_HILFE, "Farmer Akil zosta³ zaatakowany przez najemników.", DIA_Mika_HILFE_Akil );
 	};
@@ -284,8 +284,8 @@ func void DIA_Mika_HILFE_Akil ()
 	AI_Output			(self, other, "DIA_Mika_HILFE_Akil_12_01"); //Co? Ta ho³ota panoszy siê na farmie Akila? A zatem nie traæmy wiêcej czasu. Za mn¹.
 
 	AI_StopProcessInfos (self);
-	self.aivar[AIV_PARTYMEMBER] = true;
-	B_GivePlayerXP(Xp_Ambient);
+	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	B_GivePlayerXP (Xp_Ambient);
 	B_LogEntry (TOPIC_AkilsSLDStillthere,"Mika chce mi pomóc w rozwi¹zaniu problemu Akila z najemnikami."); 
 
 	Npc_ExchangeRoutine	(self,"Akil"); 
@@ -307,6 +307,8 @@ func void DIA_Mika_HILFE_schongut ()
 	AI_StopProcessInfos (self);	
 };
 
+
+
 ///////////////////////////////////////////////////////////////////////
 //	Info Zack
 ///////////////////////////////////////////////////////////////////////
@@ -316,7 +318,7 @@ instance DIA_Mika_Zack		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Mika_Zack_Condition;
 	information	 = 	DIA_Mika_Zack_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -325,7 +327,7 @@ func int DIA_Mika_Zack_Condition ()
 	if (Npc_GetDistToWP(self,"NW_FARM2_PATH_03")<500)
 	&& ((!Npc_IsDead (Alvares))||(!Npc_IsDead (Engardo)))	
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -340,11 +342,11 @@ func void DIA_Mika_Zack_los ()
 	//Joly: B_attack funzt hier nicht und ist auch nicht nötig!!!!!!!!!!!
 	if(!Npc_IsDead (Alvares))
 	{
-		Alvares.aivar[AIV_EnemyOverride] = false;
+		Alvares.aivar[AIV_EnemyOverride] = FALSE;
 	};	
 	if (!Npc_IsDead (Engardo))
 	{
-		Engardo.aivar[AIV_EnemyOverride] = false;
+		Engardo.aivar[AIV_EnemyOverride] = FALSE;
 	};	
 };
 
@@ -357,7 +359,7 @@ instance DIA_Mika_WIEDERNACHHAUSE		(C_INFO)
 	nr 		 = 9;
 	condition	 = 	DIA_Mika_WIEDERNACHHAUSE_Condition;
 	information	 = 	DIA_Mika_WIEDERNACHHAUSE_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Mika_WIEDERNACHHAUSE_Condition ()
@@ -366,7 +368,7 @@ func int DIA_Mika_WIEDERNACHHAUSE_Condition ()
 	&& 	(Npc_IsDead (Alvares))
 	&&  (Npc_IsDead (Engardo))	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -375,9 +377,9 @@ func void DIA_Mika_WIEDERNACHHAUSE_Info ()
 	AI_Output			(self, other, "DIA_Mika_WIEDERNACHHAUSE_12_00"); //Dobrze, wystarczy. Bêdê siê zmywa³.
 
 	AI_StopProcessInfos (self);		
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"Start"); 
-	B_GivePlayerXP(Xp_Ambient);
+	B_GivePlayerXP (Xp_Ambient);
 };
 
 //############################################
@@ -395,15 +397,15 @@ INSTANCE DIA_Mika_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Mika_Kap3_EXIT_Condition;
 	information = DIA_Mika_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Mika_Kap3_EXIT_Condition()
 {
-	if (Kapitel >= 9)
+	if Kapitel >= 3
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -425,18 +427,18 @@ INSTANCE DIA_Mika_Kap3u4u5_PERM   (C_INFO)
 	nr          = 39;
 	condition   = DIA_Mika_Kap3u4u5_PERM_Condition;
 	information = DIA_Mika_Kap3u4u5_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Wszystko w porz¹dku?";
 };
 
 FUNC INT DIA_Mika_Kap3u4u5_PERM_Condition()
 {
-	if  (Kapitel >= 9)
+	if  (Kapitel >= 3)
 	&& 	(Npc_KnowsInfo(other, DIA_Mika_WOHIN))
 	&& 	(Npc_IsDead (Alvares))
 	&&  (Npc_IsDead (Engardo))	
 	{
-		return true;
+		return TRUE;
 	};	
 };
 

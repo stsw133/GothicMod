@@ -7,13 +7,13 @@ INSTANCE DIA_Borka_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Borka_EXIT_Condition;
 	information = DIA_Borka_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Borka_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Borka_EXIT_Info()
@@ -29,15 +29,15 @@ instance DIA_Borka_PISSOFF		(C_INFO)
 	npc			 = 	VLK_434_Borka;
 	condition	 = 	DIA_Borka_PISSOFF_Condition;
 	information	 = 	DIA_Borka_PISSOFF_Info;
-	important	 = 	true;
-	permanent	 =  false;
+	important	 = 	TRUE;
+	permanent	 =  FALSE;
 };
 func int DIA_Borka_PISSOFF_Condition ()
 {
-	if (Knows_Borka_Dealer != true)
+	if (Knows_Borka_Dealer != TRUE)
 	&& (Npc_GetDistToNpc(self, other) <= ZivilAnquatschDist)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Borka_PISSOFF_Info ()
@@ -59,18 +59,18 @@ instance DIA_Borka_TROUBLE		(C_INFO)
 	nr 			 =  3;
 	condition	 = 	DIA_Borka_TROUBLE_Condition;
 	information	 = 	DIA_Borka_TROUBLE_Info;
-	permanent	 =  true;
-	important	 =  true;
+	permanent	 =  TRUE;
+	important	 =  TRUE;
 };
 
 func int DIA_Borka_TROUBLE_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& (MIS_Andre_REDLIGHT != LOG_RUNNING) 
-	&& (Npc_IsDead (Nadja) == false) 
+	&& (Npc_IsDead (Nadja) == FALSE) 
 	&& (Npc_GetDistToWP (self, "NW_CITY_HABOUR_PUFF_ENTRANCE") <= 500)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Borka_TROUBLE_Info ()
@@ -88,16 +88,16 @@ instance DIA_Borka_Smoke		(C_INFO)
 	nr 			 =  3;
 	condition	 = 	DIA_Borka_Smoke_Condition;
 	information	 = 	DIA_Borka_Smoke_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 =  "Nie wiesz, gdzie móg³bym kupiæ trochê ziela?";
 };
 
 func int DIA_Borka_Smoke_Condition ()
 {	
 	if  (MIS_Andre_REDLIGHT == LOG_RUNNING) 
-	&&  (Knows_Borka_Dealer == false)
+	&&  (Knows_Borka_Dealer == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Borka_Smoke_Info ()
@@ -115,17 +115,17 @@ instance DIA_Borka_BUYHERB		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Borka_BUYHERB_Condition;
 	information	 = 	DIA_Borka_BUYHERB_Info;
-	permanent 	 =  true;
+	permanent 	 =  TRUE;
 	description	 = 	"S³ysza³em, ¿e sprzedajesz ziele.";
 };
 func int DIA_Borka_BUYHERB_Condition ()
 {
-	if (Knows_Borka_Dealer == true)
+	if (Knows_Borka_Dealer == TRUE)
 	&& (MIS_Andre_REDLIGHT == LOG_RUNNING) 
-	&& (Borka_Deal == false)
-	&& (Undercover_Failed == false)
+	&& (Borka_Deal == FALSE)
+	&& (Undercover_Failed == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Borka_BUYHERB_Info ()
@@ -134,10 +134,7 @@ func void DIA_Borka_BUYHERB_Info ()
 	
 	AI_Output (other, self, "DIA_Borka_BUYHERB_15_00"); //S³ysza³em, ¿e sprzedajesz ziele.
 	
-	if (Hlp_IsItem (heroArmor, ItAR_MIl_L) == true)
-	|| (Hlp_IsItem (heroArmor, ItAR_MIl_M) == true)
-	|| (Hlp_IsItem (heroArmor, ItAR_MIl_H) == true)
-	|| (Hlp_IsItem (heroArmor, ItAR_MIl_N) == true)
+	if (Hlp_IsItem (heroArmor, ItAR_MIl_L) == TRUE) 
 	{
 		AI_Output (self, other, "DIA_Borka_BUYHERB_11_01"); //Przepraszam, panie Stra¿niku. To jakaœ pomy³ka. Ja nic nie wiem o zielu.
 	}
@@ -164,8 +161,8 @@ FUNC VOID DIA_Borka_BUYHERB_NADJA ()
 	AI_Output (other, self, "DIA_Borka_BUYHERB_NADJA_15_00"); //Tak mówi Nadja.
 	AI_Output (self, other, "DIA_Borka_BUYHERB_NADJA_11_01"); //No proszê, ma³y ptaszek zaœpiewa³. Wiesz co, nie powinieneœ wierzyæ we wszystko, co ta dziewka wygaduje.
 	
-	Nadja_Victim = true; 
-	Undercover_Failed = true;
+	Nadja_Victim = TRUE; 
+	Undercover_Failed = TRUE;
 	Info_ClearChoices 	(DIA_Borka_BUYHERB);
 };
 FUNC VOID DIA_Borka_BUYHERB_Deal ()
@@ -174,7 +171,7 @@ FUNC VOID DIA_Borka_BUYHERB_Deal ()
 	AI_PlayAni (self, "T_SEARCH");
 	AI_Output (self, other, "DIA_Borka_BUYHERB_Deal_11_01"); //...w porz¹dku... dogadajmy siê. Ty dajesz mi 50 sztuk z³ota, wtedy ja ci dajê ziele. Bez targowania siê.
 	Info_ClearChoices 	(DIA_Borka_BUYHERB);
-	Borka_Deal = true;
+	Borka_Deal = TRUE;
 };	
 ///////////////////////////////////////////////////////////////////////
 //	Info SECOND_CHANCE
@@ -185,21 +182,18 @@ instance DIA_Borka_SECOND_CHANCE		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Borka_SECOND_CHANCE_Condition;
 	information	 = 	DIA_Borka_SECOND_CHANCE_Info;
-	permanent	 =  true;  	
+	permanent	 =  TRUE;  	
 	description	 = 	"Dogadajmy siê (zap³aæ 50 sztuk z³ota).";
 };
 func int DIA_Borka_SECOND_CHANCE_Condition ()
 {	
 	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
-	if 	(Borka_Deal == true)
+	if 	(Borka_Deal == TRUE)
 	&&  (Npc_HasItems (other, ItmI_Gold) >= 50)
-	&&  (Hlp_IsItem (heroArmor, ItAR_MIl_L) == false)
-	&&  (Hlp_IsItem (heroArmor, ItAR_MIl_M) == false)
-	&&  (Hlp_IsItem (heroArmor, ItAR_MIl_H) == false)
-	&&  (Hlp_IsItem (heroArmor, ItAR_MIl_N) == false)
+	&&  (Hlp_IsItem (heroArmor, ItAR_MIl_L) == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Borka_SECOND_CHANCE_Info ()
@@ -213,3 +207,9 @@ func void DIA_Borka_SECOND_CHANCE_Info ()
 	Borka_Deal = 2;
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+
+

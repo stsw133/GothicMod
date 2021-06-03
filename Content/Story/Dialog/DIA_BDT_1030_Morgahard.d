@@ -7,13 +7,13 @@ INSTANCE DIA_Morgahard_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Morgahard_EXIT_Condition;
 	information = DIA_Morgahard_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Morgahard_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Morgahard_EXIT_Info()
@@ -37,7 +37,7 @@ instance DIA_Morgahard_HALLO		(C_INFO)
 
 func int DIA_Morgahard_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Morgahard_HALLO_Info ()
@@ -56,8 +56,8 @@ func void DIA_Morgahard_HALLO_Info ()
 	Info_AddChoice	(DIA_Morgahard_HALLO, "Czy mo¿emy w jakiœ sposób zdemaskowaæ sêdziego?", DIA_Morgahard_HALLO_richter );
 	Info_AddChoice	(DIA_Morgahard_HALLO, "Sêdzia kaza³ mi was zabiæ.", DIA_Morgahard_HALLO_tot );
 	B_LogEntry (TOPIC_RichterLakai,"Znalaz³em Morgaharda, przywódcê zbiegów."); 
-	SCFoundMorgahard = true;
-	B_GivePlayerXP(XP_BONUS_5);
+	SCFoundMorgahard = TRUE;
+	B_GivePlayerXP (XP_FoundMorgahard);
 };
 func void DIA_Morgahard_HALLO_tot ()
 {
@@ -85,7 +85,7 @@ func void DIA_Morgahard_HALLO_attack ()
 	AI_Output			(other, self, "DIA_Morgahard_HALLO_attack_15_00"); //Przestañ jêczeæ i stawaj do walki. Najwy¿szy czas po³o¿yæ temu kres.
 	AI_Output			(self, other, "DIA_Morgahard_HALLO_attack_07_01"); //Jeœli o mnie chodzi, to i tak nie mam nic do stracenia.
 	AI_StopProcessInfos (self);
-	MorgahardSucked = true;
+	MorgahardSucked = TRUE;
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
 };
 
@@ -98,8 +98,8 @@ instance DIA_Morgahard_Perm		(C_INFO)
 	nr		 = 	3;
 	condition	 = 	DIA_Morgahard_Perm_Condition;
 	information	 = 	DIA_Morgahard_Perm_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 
 };
 
@@ -107,10 +107,10 @@ func int DIA_Morgahard_Perm_Condition ()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 	&& (Npc_KnowsInfo(other, DIA_Morgahard_HALLO))
-	&& (MorgahardSucked == false)
+	&& (MorgahardSucked == FALSE)
 
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -130,16 +130,16 @@ instance DIA_Morgahard_Perm2		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Morgahard_Perm2_Condition;
 	information	 = 	DIA_Morgahard_Perm2_Info;
-	important	 = 	true;
-	Permanent	 = 	true;
+	important	 = 	TRUE;
+	Permanent	 = 	TRUE;
 
 };
 func int DIA_Morgahard_Perm2_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (MorgahardSucked == true)
+	&& (MorgahardSucked == TRUE)
 		{
-			return true;
+			return TRUE;
 		};	
 };
 func void DIA_Morgahard_Perm2_Info ()

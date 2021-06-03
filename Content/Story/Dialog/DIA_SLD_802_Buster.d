@@ -8,15 +8,15 @@ INSTANCE DIA_Buster_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Buster_EXIT_Condition;
 	information	= DIA_Buster_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Buster_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -36,8 +36,8 @@ INSTANCE DIA_Buster_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Buster_Hello_Condition;
 	information	= DIA_Buster_Hello_Info;
-	permanent	= false;
-	important 	= true; 
+	permanent	= FALSE;
+	important 	= TRUE; 
 };                       
 
 FUNC INT DIA_Buster_Hello_Condition()
@@ -45,7 +45,7 @@ FUNC INT DIA_Buster_Hello_Condition()
 	if (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_LOST) //Wegen News - Info kommt nicht mehr gut, wenn schonmal geprügelt
 	&& ((hero.guild != GIL_SLD) && (hero.guild != GIL_DJG))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -227,8 +227,8 @@ INSTANCE DIA_Buster_FightNone (C_INFO)
 	nr			= 1;
 	condition	= DIA_Buster_FightNone_Condition;
 	information	= DIA_Buster_FightNone_Info;
-	permanent	= false;
-	important 	= true;
+	permanent	= FALSE;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Buster_FightNone_Condition()
@@ -237,7 +237,7 @@ FUNC INT DIA_Buster_FightNone_Condition()
 	&& (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -257,7 +257,7 @@ INSTANCE DIA_Buster_Duell (C_INFO)
 	nr			= 3;
 	condition	= DIA_Buster_Duell_Condition;
 	information	= DIA_Buster_Duell_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Wyzywam ciê na pojedynek.";
 };                       
 
@@ -265,7 +265,7 @@ FUNC INT DIA_Buster_Duell_Condition()
 {
 	if (self.aivar[AIV_LastFightAgainstPlayer] != FIGHT_LOST)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -299,16 +299,16 @@ INSTANCE DIA_Buster_WannaJoin (C_INFO)
 	nr			= 2;
 	condition	= DIA_Buster_WannaJoin_Condition;
 	information	= DIA_Buster_WannaJoin_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Chcê siê przy³¹czyæ do najemników. Masz coœ przeciwko temu?";
 };                       
 
 FUNC INT DIA_Buster_WannaJoin_Condition()
 {
 	if (other.guild == GIL_NONE)
-	&& (Buster_Duell == false)
+	&& (Buster_Duell == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -327,7 +327,7 @@ FUNC VOID DIA_Buster_WannaJoin_Info()
 			AI_Output (self, other,"DIA_Buster_WannaJoin_13_02"); //Nie jesteœ mo¿e najlepszym z wojowników, ale trudno nazwaæ ciê tchórzem.
 		};
 		AI_Output (self, other,"DIA_Buster_WannaJoin_13_03"); //Mój g³os nie ma wielkiego znaczenia, bo jestem tu od niedawna, ale kiedy Lee mnie zapyta, bêdê g³osowaæ na ciebie.
-		Buster_Duell = true;
+		Buster_Duell = TRUE;
 		Log_CreateTopic (TOPIC_SLDRespekt,LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_SLDRespekt,LOG_RUNNING);
 		B_LogEntry (TOPIC_SLDRespekt,"Od kiedy pokona³em Bustera, nie ma nic przeciwko mojemu przy³¹czeniu siê do najemników.");
@@ -353,7 +353,7 @@ INSTANCE DIA_Buster_OtherSld (C_INFO)
 	nr			= 1;
 	condition	= DIA_Buster_OtherSld_Condition;
 	information	= DIA_Buster_OtherSld_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcê siê dowiedzieæ czegoœ wiêcej o najemnikach i okolicznych terenach.";
 };                       
 
@@ -361,7 +361,7 @@ FUNC INT DIA_Buster_OtherSld_Condition()
 {
 	if ((hero.guild != GIL_SLD) && (hero.guild != GIL_DJG))
 		{
-				return true;	
+				return TRUE;	
 		};
 };
  
@@ -376,7 +376,7 @@ FUNC VOID DIA_Buster_OtherSld_Info()
 		AI_Output (self, other,"DIA_Buster_OtherSld_13_04"); //Nie myœl se jednak, ¿e w naszej ostatniej walce brak³o ci szczêœcia.
 		AI_Output (self, other,"DIA_Buster_OtherSld_13_05"); //Na farmie jest mnóstwo ch³opaków, którzy s¹ lepsi ode mnie...
 		AI_Output (self, other,"DIA_Buster_OtherSld_13_06"); //Na przyk³ad Sentenza. Pilnuje wejœcia na farmê. Nie zaczynaj z nim walki.
-		Buster_SentenzaTip = true;
+		Buster_SentenzaTip = TRUE;
 	}
 	else if (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
 	{
@@ -401,15 +401,15 @@ INSTANCE DIA_Buster_AboutSentenza (C_INFO)
 	nr			= 1;
 	condition	= DIA_Buster_AboutSentenza_Condition;
 	information	= DIA_Buster_AboutSentenza_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A co z tym Sentenz¹?";
 };                       
 
 FUNC INT DIA_Buster_AboutSentenza_Condition()
 {
-	if (Buster_SentenzaTip == true)
+	if (Buster_SentenzaTip == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -432,7 +432,7 @@ func void DIA_Buster_AboutSentenza_Give()
 {
 	AI_Output (other, self,"DIA_Buster_AboutSentenza_Give_15_00"); //Proszê – 5 sztuk z³ota.
 	AI_Output (self, other,"DIA_Buster_AboutSentenza_Give_13_01"); //Dziêki. Koniec koñców wygl¹da na to, ¿e jednak mogê dzisiaj wieczorem coœ ³ykn¹æ. Nie zapomnê ci tego.
-	Buster_GoldZumBrennen = true;
+	Buster_GoldZumBrennen = TRUE;
 	Buster_Bonus = 50;
 	Info_ClearChoices (DIA_Buster_AboutSentenza);
 };
@@ -454,15 +454,15 @@ INSTANCE DIA_Buster_LeeLeader (C_INFO)
 	nr			= 2;
 	condition	= DIA_Buster_LeeLeader_Condition;
 	information	= DIA_Buster_LeeLeader_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Lee jest dowódc¹ najemników, tak?";
 };                       
 
 FUNC INT DIA_Buster_LeeLeader_Condition()
 {
-	if (Buster_Duell == true)
+	if (Buster_Duell == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -487,7 +487,7 @@ INSTANCE DIA_Buster_WhatHappened (C_INFO)
 	nr			= 2;
 	condition	= DIA_Buster_WhatHappened_Condition;
 	information	= DIA_Buster_WhatHappened_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co siê sta³o z najemnikami z Kolonii?";
 };                       
 
@@ -496,7 +496,7 @@ FUNC INT DIA_Buster_WhatHappened_Condition()
 	if (Npc_KnowsInfo(other,DIA_Buster_LeeLeader))
 	&& ((hero.guild != GIL_SLD)&& (hero.guild != GIL_DJG))
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -519,21 +519,21 @@ INSTANCE DIA_Buster_Teach (C_INFO)
 	nr			= 8;
 	condition	= DIA_Buster_Teach_Condition;
 	information	= DIA_Buster_Teach_Info;
-	permanent	= false;
+	permanent	= TRUE;
 	description = "Mo¿esz mnie nauczyæ lepiej walczyæ?";
 };                       
 
 FUNC INT DIA_Buster_Teach_Condition()
 {	
-	if (Npc_GetTalentSkill(other,NPC_TALENT_1H) < 2) 
+	if (Npc_GetTalentSkill (other, NPC_TALENT_1H) <= 60) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Buster_Teach_Info()
 {	
 	AI_Output (other, self, "DIA_Buster_Teach_15_00"); //Mo¿esz mnie nauczyæ lepiej walczyæ?
-	if (self.aivar[AIV_DefeatedByPlayer] == DBP_Defeated)
+	if (self.aivar[AIV_DefeatedByPlayer] == TRUE)
 	{
 		AI_Output (self, other, "DIA_Buster_Teach_13_01"); //Mo¿e bêdê móg³ daæ ci wskazówkê czy dwie...
 	}
@@ -541,9 +541,42 @@ FUNC VOID DIA_Buster_Teach_Info()
 	{
 		AI_Output (self, other, "DIA_Buster_Teach_13_02"); //Nie jesteœ tak têpy na jakiego wygl¹dasz. Dobrze, powiem ci, co wiem. Wtedy mo¿e bêdziesz mia³ ze mn¹ jakieœ szanse...
 	};
-	self.aivar[AIV_CanTeach] = true;
-	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
-	B_LogEntry (Topic_SoldierTeacher,"Buster mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
+	
+	if (BusterLOG == FALSE)
+	{
+		Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
+		B_LogEntry (Topic_SoldierTeacher,"Buster mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
+		BusterLOG = TRUE;
+	};
+	Info_ClearChoices 	(DIA_Buster_Teach);
+	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
+};
+
+FUNC VOID DIA_Buster_Teach_Back ()
+{
+	Info_ClearChoices (DIA_Buster_Teach);
+};
+
+FUNC VOID DIA_Buster_Teach_1H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
+	
+	Info_ClearChoices 	(DIA_Buster_Teach);
+	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
+};
+
+FUNC VOID DIA_Buster_Teach_1H_5 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
+	
+	Info_ClearChoices 	(DIA_Buster_Teach);
+	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
+	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
 };
 
 //#####################################################################
@@ -564,14 +597,14 @@ INSTANCE DIA_Buster_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Buster_KAP3_EXIT_Condition;
 	information	= DIA_Buster_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Buster_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Buster_KAP3_EXIT_Info()
@@ -588,16 +621,16 @@ instance DIA_Buster_SHADOWBEASTS		(C_INFO)
 	nr		 	= 30;
 	condition	= DIA_Buster_SHADOWBEASTS_Condition;
 	information	= DIA_Buster_SHADOWBEASTS_Info;
-	permanent	= false;
-	important	= true;
+	permanent	= FALSE;
+	important	= TRUE;
 };
 
 func int DIA_Buster_SHADOWBEASTS_Condition ()
 {
-	if ((Kapitel == 9) || (Kapitel == 10))
+	if ((Kapitel == 3) || (Kapitel == 4))
 	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -641,7 +674,7 @@ func void DIA_Buster_SHADOWBEASTS_was_wieviel ()
 {
 	AI_Output			(other, self, "DIA_Buster_SHADOWBEASTS_was_wieviel_15_00"); //Ile mo¿na na tym zarobiæ?
 	AI_Output			(self, other, "DIA_Buster_SHADOWBEASTS_was_wieviel_13_01"); //Kupa kasy, powiadam ci. Wystarczy dla nas dwóch.
-	if (Buster_GoldZumBrennen == true)
+	if (Buster_GoldZumBrennen == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Buster_SHADOWBEASTS_was_wieviel_13_02"); //A skoro odda³eœ mi wtedy ca³e z³oto, za³atwiê ci specjaln¹ cenê.
 	};
@@ -659,6 +692,7 @@ func void DIA_Buster_SHADOWBEASTS_wer ()
 	AI_Output			(other, self, "DIA_Buster_SHADOWBEASTS_wer_15_00"); //Kim jest ten kupiec, o którym mówisz?
 	AI_Output			(self, other, "DIA_Buster_SHADOWBEASTS_wer_13_01"); //Nie mogê, ch³opie. Musia³bym byæ naprawdê g³upi, ¿eby powiedzieæ ci o moim Ÿródle. Chcesz mnie wykiwaæ?
 	AI_Output			(self, other, "DIA_Buster_SHADOWBEASTS_wer_13_02"); //Zrobisz interes ze MN¥ albo w ogóle, capisce?
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -670,18 +704,18 @@ instance DIA_Buster_BringTrophyShadowbeast		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Buster_BringTrophyShadowbeast_Condition;
 	information	 = 	DIA_Buster_BringTrophyShadowbeast_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Co do tych rogów cieniostworów...";
 };
 
-func int DIA_Buster_BringTrophyShadowbeast_Condition()
+func int DIA_Buster_BringTrophyShadowbeast_Condition ()
 {
 	if (MIS_Buster_KillShadowbeasts_DJG == LOG_RUNNING)
-//	&& ((Npc_HasItems (other,ItAt_ShadowHorn))||(PLAYER_TALENT_HUNTING[TROPHY_Horns] == false))
+	&& ((Npc_HasItems (other,ItAt_ShadowHorn))||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE))
 	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -689,13 +723,22 @@ var int BusterTrophyShadowbeastCounter;
 
 func void DIA_Buster_BringTrophyShadowbeast_Info ()
 {
-	if ((Kapitel >= 11))
+	if ((Kapitel >= 5))
 	{
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_00"); //Mój kupiec wyjecha³ z miasta.
 		AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_15_01"); //Co to ma znaczyæ?
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_02"); //Nie ¿yje. Mo¿esz zatrzymaæ rogi. Nie wiem, co z nimi teraz zrobiæ.
 		MIS_Buster_KillShadowbeasts_DJG = LOG_SUCCESS; //Joly: Feierabend ab Kapitel 5!!!!!!!
-		B_GivePlayerXP(XP_Ambient);
+		B_GivePlayerXP (XP_Ambient);
+	}
+	else if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE)
+	{
+		AI_Output			(other, self, "DIA_Buster_ANIMALTROPHYSHADOWBEAST_15_03"); //Jak wypatroszyæ cieniostwora?
+		AI_Output			(self, other, "DIA_Buster_ANIMALTROPHYSHADOWBEAST_13_04"); //Nie wiesz? Oj ch³opie, spodziewa³em siê po tobie wiêcej.
+	
+		Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
+		Info_AddChoice	(DIA_Buster_BringTrophyShadowbeast, "Jeszcze do tego wrócimy.", DIA_Buster_BringTrophyShadowbeast_back );
+		Info_AddChoice	(DIA_Buster_BringTrophyShadowbeast, B_BuildLearnString ("Bring es mir bei",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_ShadowHorn)),  DIA_Buster_BringTrophyShadowbeast_teach );
 	}
 	else 
 	{
@@ -706,16 +749,16 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		var int BusterTrophyShadowbeastGeld;
 	
 		BusterTrophyShadowbeastCount = Npc_HasItems(other, ItAt_ShadowHorn);
-		XP_BringBusterTrophyShadowbeast = (Shadowbeast.level * XP_PER_VICTORY);
-		BustersBusterTrophyShadowbeastOffer = 200 + Buster_Bonus; //Joly: Wert ohne Handelmultiplier!!!!!!!!!!!!!
+		XP_BringBusterTrophyShadowbeast = 	(Shadowbeast.level * XP_PER_VICTORY);			
+		BustersBusterTrophyShadowbeastOffer = ItAt_ShadowHorn.value + Buster_Bonus; //Joly: Wert ohne Handelmultiplier!!!!!!!!!!!!!
 		
 	
 		if (BusterTrophyShadowbeastCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Buster_BringTrophyShadowbeast_15_05"); //Mam dla ciebie róg cieniostwora.
-				B_GivePlayerXP(XP_BringBusterTrophyShadowbeast);
+				B_GivePlayerXP (XP_BringBusterTrophyShadowbeast);
 				B_GiveInvItems (other, self, ItAt_ShadowHorn,1);
-				BusterTrophyShadowbeastCounter += 1;
+				BusterTrophyShadowbeastCounter = BusterTrophyShadowbeastCounter + 1;
 			}
 			else
 			{
@@ -724,9 +767,9 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 				B_GiveInvItems (other, self, ItAt_ShadowHorn,  BusterTrophyShadowbeastCount);
 	
 				XP_BringBusterTrophyShadowbeasts = (BusterTrophyShadowbeastCount * XP_BringBusterTrophyShadowbeast);
-				BusterTrophyShadowbeastCounter += BusterTrophyShadowbeastCount; 
+				BusterTrophyShadowbeastCounter = (BusterTrophyShadowbeastCounter + BusterTrophyShadowbeastCount); 
 	
-				B_GivePlayerXP(XP_BringBusterTrophyShadowbeasts);
+				B_GivePlayerXP (XP_BringBusterTrophyShadowbeasts);
 			};
 	
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_07"); //Œwietnie. Daj je tutaj. I przynieœ wiêcej. Kto wie, jak d³ugo jeszcze ten kupiec bêdzie chcia³ te rzeczy.
@@ -737,19 +780,19 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		CreateInvItems (self, ItMi_Gold, BusterTrophyShadowbeastGeld); 
 		B_GiveInvItems (self, other, ItMi_Gold, BusterTrophyShadowbeastGeld);
 	};
+
 };
-/*
-func void DIA_Buster_BringTrophyShadowbeast_teach()
+func void DIA_Buster_BringTrophyShadowbeast_teach ()
 {
 	AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_teach_15_00"); //Naucz mnie.
 
-//	if (B_TeachTalentHunting (self, other, TROPHY_Horns))
-//		{
+	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_ShadowHorn))
+		{
 			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_01"); //No to s³uchaj. Zabijasz cieniostwora, a potem ³apiesz praw¹ rêk¹ za róg, najmocniej jak potrafisz.
 			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_02"); //Potem wbijasz nó¿ w jego czo³o i wycinasz bruzdê w ciele dooko³a rogu.
 			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_03"); //Potem u¿ywasz no¿a jak dŸwigni, ¿eby wyrwaæ róg z czaszki i ju¿ jest twój.
 			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_04"); //No, a potem musisz go przynieœæ do mnie. Nie powinieneœ mieæ z tym problemów.
-//		};		
+		};		
 	Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
 };
 
@@ -759,7 +802,7 @@ func void DIA_Buster_BringTrophyShadowbeast_back ()
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_back_13_01"); //Mam nadziejê.
 		Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
 };
-*/
+
 //#####################################################################
 //##
 //##
@@ -779,14 +822,14 @@ INSTANCE DIA_Buster_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Buster_KAP4_EXIT_Condition;
 	information	= DIA_Buster_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Buster_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Buster_KAP4_EXIT_Info()
@@ -804,15 +847,15 @@ INSTANCE DIA_Buster_Perm4 (C_INFO)
 	nr			= 2;
 	condition	= DIA_Buster_Perm4_Condition;
 	information	= DIA_Buster_Perm4_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co myœlisz o tym ca³ym polowaniu na smoki?";
 };                       
 
 FUNC INT DIA_Buster_Perm4_Condition()
 {
-	if (Kapitel >= 10) 
+	if (Kapitel >= 4) 
 	{
-		return true;
+		return TRUE;
 	};
 };
  
@@ -841,14 +884,14 @@ INSTANCE DIA_Buster_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Buster_KAP5_EXIT_Condition;
 	information	= DIA_Buster_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Buster_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Buster_KAP5_EXIT_Info()
@@ -876,14 +919,14 @@ INSTANCE DIA_Buster_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Buster_KAP6_EXIT_Condition;
 	information	= DIA_Buster_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Buster_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Buster_KAP6_EXIT_Info()

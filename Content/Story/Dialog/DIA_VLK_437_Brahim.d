@@ -4,7 +4,7 @@
 var int Brahim_ShowedMaps;
 FUNC VOID B_BrahimNewMaps ()
 {
-	if (Brahim_ShowedMaps == true)
+	if (Brahim_ShowedMaps == TRUE)
 	{
 		AI_Output			(self, other, "B_BrahimNewMaps_07_00"); //PrzyjdŸ do mnie póŸniej. Na pewno bêdê mia³ dla ciebie coœ nowego.
 	};
@@ -15,15 +15,15 @@ INSTANCE DIA_Brahim_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Brahim_EXIT_Condition;
 	information = DIA_Brahim_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Brahim_EXIT_Condition()
 {
-	if (Kapitel <= 8)
+	if (Kapitel <= 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -42,12 +42,12 @@ instance DIA_Brahim_GREET		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Brahim_GREET_Condition;
 	information	 = 	DIA_Brahim_GREET_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Co tu porabiasz?";
 };
 func int DIA_Brahim_GREET_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Brahim_GREET_Info ()
 {
@@ -69,15 +69,16 @@ instance DIA_Addon_Brahim_MissingPeople		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Brahim_MissingPeople_Condition;
 	information	 = 	DIA_Addon_Brahim_MissingPeople_Info;
+
 	description	 = 	"To prawda, ¿e mieszkañcy miasta znikaj¹ bez œladu?";
 };
 
 func int DIA_Addon_Brahim_MissingPeople_Condition ()
 {
-	if (SC_HearedAboutMissingPeople == true)
-	&& (ENTERED_ADDONWORLD == false)
+	if (SC_HearedAboutMissingPeople == TRUE)
+	&& (ENTERED_ADDONWORLD == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -90,6 +91,32 @@ func void DIA_Addon_Brahim_MissingPeople_Info ()
 };
 
 ///////////////////////////////////////////////////////////////////////
+//	Info Perm
+///////////////////////////////////////////////////////////////////////
+/*
+instance DIA_Brahim_Perm		(C_INFO)
+{
+	npc			 = 	VLK_437_Brahim;
+	nr			 = 	99;
+	condition	 = 	DIA_Brahim_Perm_Condition;
+	information	 = 	DIA_Brahim_Perm_Info;
+	permanent	 =  TRUE;
+	description	 = 	"";
+};
+func int DIA_Brahim_Perm_Condition ()
+{	
+	
+	{
+		return TRUE;
+	};
+};
+func void DIA_Brahim_Perm_Info ()
+{
+	AI_Output (other, self, "DIA_Brahim_Perm_15_00"); //
+	AI_Output (self, other, "DIA_Brahim_Perm_07_01"); //
+};
+*/
+///////////////////////////////////////////////////////////////////////
 //	Info BUY
 ///////////////////////////////////////////////////////////////////////
 instance DIA_Brahim_BUY		(C_INFO)
@@ -98,8 +125,8 @@ instance DIA_Brahim_BUY		(C_INFO)
 	nr			 = 	9;
 	condition	 = 	DIA_Brahim_BUY_Condition;
 	information	 = 	DIA_Brahim_BUY_Info;
-	permanent 	 =  true;
-	trade 		 =  true;
+	permanent 	 =  TRUE;
+	trade 		 =  TRUE;
 	description	 = 	"Poka¿ mi swoje mapy.";
 };
 
@@ -107,7 +134,7 @@ func int DIA_Brahim_BUY_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Brahim_GREET)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Brahim_BUY_Info ()
@@ -123,7 +150,7 @@ func void DIA_Brahim_BUY_Info ()
 	{
 		AI_Output (self ,other, "DIA_Brahim_BUY_07_02"); //Dobre mapy to podstawa, szczególnie dla ludzi, którzy przybyli z kontynentu, panie Paladynie.
 	};
-	Brahim_ShowedMaps = true;
+	Brahim_ShowedMaps = TRUE;
 };
 
 //######################################
@@ -141,23 +168,23 @@ INSTANCE DIA_Brahim_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Brahim_Kap3_EXIT_Condition;
 	information = DIA_Brahim_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Brahim_Kap3_EXIT_Condition()	//siehe auch First Exit
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& ((Npc_KnowsInfo (other,DIA_Brahim_Kap3_First_EXIT))
 	|| (Npc_HasItems (other,ItWr_ShatteredGolem_MIS) == 0))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
 FUNC VOID DIA_Brahim_Kap3_EXIT_Info()
 {
-	if (Kapitel <= 10)
+	if (Kapitel <= 4)
 	{
 		B_BrahimNewMaps ();
 	};
@@ -173,16 +200,16 @@ INSTANCE DIA_Brahim_Kap3_First_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Brahim_Kap3_First_EXIT_Condition;
 	information = DIA_Brahim_Kap3_First_EXIT_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Brahim_Kap3_First_EXIT_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Npc_HasItems (other,ItWr_ShatteredGolem_MIS) >=1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -224,3 +251,5 @@ FUNC VOID DIA_Brahim_Kap3_First_EXIT_KeepIt()
 	AI_Output (self ,other,"DIA_Brahim_Kap3_First_EXIT_KeepIt_07_01"); //Jestem ju¿ stary i czasy, kiedy wypuszcza³em siê na dalekie wêdrówki, dawno mam ju¿ za sob¹.
 	AI_Output (self ,other,"DIA_Brahim_Kap3_First_EXIT_KeepIt_07_02"); //Zostawiam to m³odszym.
 };
+
+

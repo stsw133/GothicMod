@@ -25,36 +25,32 @@ func void ENTER_DI_FIRSTTIME_TRIGGER ()
 //##
 //###############################################
 
-	if (EnterDI_Kapitel6 == false)
+	if (EnterDI_Kapitel6 == FALSE)
 		{
 		
-//			if (hero.guild == GIL_PAL)
-//			{
-//				CreateInvItems (Archol,ItRu_PalDestroy,1);
-//			};
+			if (hero.guild == GIL_PAL)
+			{
+				CreateInvItems (Archol,ItRu_PalDestroyEvil,1);
+			};
 		
 		Wld_InsertItem	(ItMi_Flask, "FP_ITEM_SHIP_12");
 			
 		//##############################################################################################################
 		//##	"Auge-Innos-zu-Hause-vergessen"-NotfallPlan
 		//##############################################################################################################
-		/*
-			if (Npc_HasItems (hero,ItAm_InnosEye) == false)
+			if (!Npc_HasItems (hero,ItAm_InnosEye))
 				{
-					if (Npc_HasItems (hero,ItMi_InnosEye_Discharged_Mis) == false)
-					{
-						Wld_InsertItem	(ItSe_XardasNotfallBeutel_MIS, "FP_ITEM_SHIP_12");
-						SC_InnosEyeVergessen_DI = true;
-						B_LogEntry (TOPIC_HallenVonIrdorath,"Ostatniej nocy mia³em dziwny sen. Widzia³em Xardasa, który kaza³ mi przynieœæ coœ ze sto³u alchemicznego na statku. Bardzo dziwne. Zw³aszcza ¿e nic nie pi³em przed snem."); 
-					};
+					Wld_InsertItem	(ItSe_XardasNotfallBeutel_MIS, "FP_ITEM_SHIP_12");
+					SC_InnosEyeVergessen_DI = TRUE;
+					B_LogEntry (TOPIC_HallenVonIrdorath,"Ostatniej nocy mia³em dziwny sen. Widzia³em Xardasa, który kaza³ mi przynieœæ coœ ze sto³u alchemicznego na statku. Bardzo dziwne. Zw³aszcza ¿e nic nie pi³em przed snem."); 
+					
 					Wld_InsertItem	(ItMi_Flask, "FP_ITEM_SHIP_06");
 					
-					if 	((Npc_HasItems (hero, ItAt_DragonHeart) >= 1)== false)
-						{
-							CreateInvItems	(OrkElite_AntiPaladinOrkOberst_DI,	ItAt_DragonHeart ,1);
-						};	
+					if (!(Npc_HasItems (hero, ItAt_DragonHeart) >= 1))
+					{
+						CreateInvItems	(OrkElite_AntiPaladinOrkOberst_DI,	ItAt_DragonHeart ,1);
+					};	
 				};
-		*/
 		//##############################################################################################################
 	//Lehrer Logs
 	
@@ -63,17 +59,17 @@ func void ENTER_DI_FIRSTTIME_TRIGGER ()
 
 			//----- Die Kapitäne -----
 	
-				if ( JorgenIsCaptain == true)	//Jorgen
+				if ( JorgenIsCaptain == TRUE)	//Jorgen
 				{
 					Log_AddEntry (TOPIC_MyCrew,"Mój kapitan, Jorgen, poczeka na mnie na statku."); 
 				};
 			
-				if ( TorlofIsCaptain == true)	//Torlof
+				if ( TorlofIsCaptain == TRUE)	//Torlof
 				{
 					Log_AddEntry (TOPIC_MyCrew,"Mój kapitan, Torlof, bêdzie broni³ statku tak d³ugo, a¿ nie wrócê z wyspy. Dziêki niemu stanê siê silniejszy i zrêczniejszy."); 
 				};
 			
-				if ( JackIsCaptain == true)		//Jack
+				if ( JackIsCaptain == TRUE)		//Jack
 				{
 					Log_AddEntry (TOPIC_MyCrew,"Mój kapitan, Jack, poczeka na mnie na statku. Wygl¹da na przestraszonego i mam nadziejê, ¿e poradzi sobie. Potrzebujê jego pomocy!"); 
 				};
@@ -155,7 +151,7 @@ func void ENTER_DI_FIRSTTIME_TRIGGER ()
 					Log_AddEntry (TOPIC_MyCrew,"Girion jest niezmiernie cierpliwy. Dobra cecha u nauczyciela pos³ugiwania siê broni¹."); 
 				};	
 	
-		//IntroduceChapter (ConcatStrings(TEXT_Chapter,IntToString(6)), TEXT_Chapter_06, "chapter_06.tga", "chapter_01.wav", 6000);
-		EnterDI_Kapitel6 = true;
+		IntroduceChapter (KapWechsel_6,KapWechsel_6_Text,"chapter6.tga","chapter_01.wav", 6000);
+		EnterDI_Kapitel6 = TRUE;
 		};
 };

@@ -7,13 +7,13 @@ INSTANCE DIA_Ignaz_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Ignaz_EXIT_Condition;
 	information = DIA_Ignaz_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Ignaz_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Ignaz_EXIT_Info()
@@ -30,14 +30,14 @@ INSTANCE DIA_Ignaz_Hallo   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Ignaz_Hallo_Condition;
 	information = DIA_Ignaz_Hallo_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Ignaz_Hallo_Condition()
 {
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_Hallo_Info()
@@ -57,7 +57,7 @@ INSTANCE DIA_Ignaz_Traenke   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Ignaz_Traenke_Condition;
 	information = DIA_Ignaz_Traenke_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co bêdê z tego mia³?";
 };
 
@@ -65,7 +65,7 @@ FUNC INT DIA_Ignaz_Traenke_Condition()
 {	
 	if (MIS_Ignaz_Charm != LOG_SUCCESS)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_Traenke_Info()
@@ -73,6 +73,8 @@ FUNC VOID DIA_Ignaz_Traenke_Info()
 	AI_Output (other, self, "DIA_Ignaz_Traenke_15_00");//Co bêdê z tego mia³?
 	AI_Output (self, other, "DIA_Ignaz_Traenke_14_01");//Móg³bym ciê nauczyæ przygotowywaæ ró¿ne mikstury.
 	AI_Output (self, other, "DIA_Ignaz_Traenke_14_02");//Znam przepisy na esencje lecznicze, regeneruj¹ce manê i zwiêkszaj¹ce szybkoœæ.
+	//AI_Output (self, other, "DIA_Ignaz_Traenke_14_03");//Außerdem kann ich dir beibringen, wie du ein Elixier der Geschicklichkeit herstellst.
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Experiment
@@ -83,13 +85,13 @@ INSTANCE DIA_Ignaz_Experiment   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Ignaz_Experiment_Condition;
 	information = DIA_Ignaz_Experiment_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Powiedz mi wiêcej o tym eksperymencie i o samym zaklêciu.";
 };
 
 FUNC INT DIA_Ignaz_Experiment_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Ignaz_Experiment_Info()
 {
@@ -113,7 +115,7 @@ INSTANCE DIA_Ignaz_teilnehmen   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Ignaz_teilnehmen_Condition;
 	information = DIA_Ignaz_teilnehmen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Dobrze, wypróbujê to zaklêcie.";
 };
 
@@ -121,7 +123,7 @@ FUNC INT DIA_Ignaz_teilnehmen_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Ignaz_Experiment)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_teilnehmen_Info()
@@ -149,16 +151,16 @@ INSTANCE DIA_Ignaz_Running   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Ignaz_Running_Condition;
 	information = DIA_Ignaz_Running_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co do eksperymentu...";
 };
 
 FUNC INT DIA_Ignaz_Running_Condition()
 {	
 	if (MIS_Ignaz_Charm == LOG_RUNNING)
-	&& (Charm_Test == false)
+	&& (Charm_Test == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_Running_Info()
@@ -177,15 +179,15 @@ INSTANCE DIA_Ignaz_Danach   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Ignaz_Danach_Condition;
 	information = DIA_Ignaz_Danach_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "U¿y³em zwoju z twoim zaklêciem.";
 };
 FUNC INT DIA_Ignaz_Danach_Condition()
 {	
-	if (Charm_Test == true)
+	if (Charm_Test == TRUE)
 	&& (MIS_Ignaz_Charm == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_Danach_Info()
@@ -197,12 +199,12 @@ FUNC VOID DIA_Ignaz_Danach_Info()
 	AI_Output (self, other, "DIA_Ignaz_Danach_14_04");//Teraz mogê ciê nauczyæ paru rzeczy o sztuce alchemii.
 	AI_Output (self, other, "DIA_Ignaz_Danach_14_05");//Mogê ci równie¿ daæ kilka przydatnych przedmiotów, jeœli chcesz.
 	
-	self.aivar[AIV_CanTeach] = true;
+	Ignaz_TeachAlchemy = TRUE;
 	Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 	B_LogEntry (Topic_CityTeacher,"Ignaz mo¿e mi pokazaæ receptury na ró¿ne mikstury. Mieszka w dzielnicy portowej.");
 	MIS_Ignaz_Charm = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
-
+	B_GivePlayerXP (XP_MIS_Ignaz_Charm);
+	
 	//PATCH fallls alle Scrolls aufgekauft oder geplündert wurden
 	CreateInvItems (self,ITSC_Charm		, 3);
 };
@@ -215,8 +217,8 @@ INSTANCE DIA_Ignaz_Trade   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Ignaz_Trade_Condition;
 	information = DIA_Ignaz_Trade_Info;
-	permanent   = true;
-	trade 		= true;
+	permanent   = TRUE;
+	trade 		= TRUE;
 	description = "Poka¿ mi swoje towary.";
 };
 FUNC INT DIA_Ignaz_Trade_Condition()
@@ -224,7 +226,7 @@ FUNC INT DIA_Ignaz_Trade_Condition()
 	if (MIS_Ignaz_Charm == LOG_SUCCESS)
 	|| (Npc_KnowsInfo (other,DIA_Ignaz_Running))
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Ignaz_Trade_Info()
@@ -232,3 +234,101 @@ FUNC VOID DIA_Ignaz_Trade_Info()
 	B_GiveTradeInv (self);
 	AI_Output (other, self, "DIA_Ignaz_Trade_15_00");//Poka¿ mi swoje towary.
 };
+
+///////////////////////////////////////////////////////////////////////
+//	Info Teach
+///////////////////////////////////////////////////////////////////////
+INSTANCE DIA_Ignaz_Teach   (C_INFO)
+{
+	npc         = VLK_498_Ignaz;
+	nr          = 2;
+	condition   = DIA_Ignaz_Teach_Condition;
+	information = DIA_Ignaz_Teach_Info;
+	permanent   = TRUE;
+	description = "Opowiedz mi o sztuce alchemii.";
+};
+//----------------------------------------
+var int DIA_Ignaz_Teach_permanent;
+//----------------------------------------
+
+FUNC INT DIA_Ignaz_Teach_Condition()
+{	
+	if (DIA_Ignaz_Teach_permanent == FALSE)
+	&& (Ignaz_TeachAlchemy == TRUE)
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_Ignaz_Teach_Info()
+{
+	var int talente;
+	talente = 0;
+	AI_Output (other, self,"DIA_Ignaz_Teach_15_00");//Opowiedz mi o sztuce alchemii.
+	
+	
+	if ( PLAYER_TALENT_ALCHEMY[POTION_Speed] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	{
+		Info_ClearChoices (DIA_Ignaz_Teach);
+		Info_AddChoice (DIA_Ignaz_Teach,DIALOG_BACK,DIA_Ignaz_Teach_BACK);
+	};
+	
+	if (PLAYER_TALENT_ALCHEMY[POTION_Speed] == FALSE)
+	{
+		Info_AddChoice (DIA_Ignaz_Teach,B_BuildLearnString ("Mikstura szybkoœci", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Speed)),DIA_Ignaz_Teach_Speed);
+		talente = (talente + 1);
+	};
+	
+	if ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Ignaz_Teach,B_BuildLearnString ("Esencja many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)),DIA_Ignaz_Teach_Mana);
+		talente = (talente + 1);
+	};
+	
+	if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
+	{
+		Info_AddChoice (DIA_Ignaz_Teach,B_BuildLearnString ("Esencja lecznicza", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)) ,DIA_Ignaz_Teach_Health);
+		talente = (talente + 1);
+	};
+	if (talente > 0)
+	{
+		if (Alchemy_Explain != TRUE)
+		{
+			AI_Output (self, other,"DIA_Ignaz_Teach_14_01"); //Aby przygotowaæ miksturê, potrzebujesz menzurki.
+			AI_Output (self, other,"DIA_Ignaz_Teach_14_02"); //Bêd¹ ci równie¿ potrzebne odpowiednie sk³adniki.
+			//AI_Output (self, other,"DIA_Ignaz_Teach_14_03"); //Eins noch. Falls du vorhast, das Wissen um Elixiere der Geschicklichkeit zu lernen, solltest du wissen, dass die benötigten Pflanzen dafür sehr selten sind.
+			Alchemy_Explain = TRUE;
+		}
+		else
+		{
+			AI_Output (self, other,"DIA_Ignaz_Teach_14_04"); //Co chcesz wiedzieæ?
+		};
+	}
+	else 
+	{
+		AI_Output (self, other,"DIA_Ignaz_Teach_14_05"); //Wiesz ju¿ wszystko, czego móg³bym ciê nauczyæ.
+		DIA_Ignaz_Teach_permanent = TRUE;
+	};
+};
+	
+FUNC VOID DIA_Ignaz_Teach_Health()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
+	Info_ClearChoices (DIA_Ignaz_Teach);
+};
+FUNC VOID DIA_Ignaz_Teach_Mana()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
+	Info_ClearChoices (DIA_Ignaz_Teach);
+};
+FUNC VOID DIA_Ignaz_Teach_Speed()
+{
+	B_TeachPlayerTalentAlchemy (self, other, POTION_Speed);
+	Info_ClearChoices (DIA_Ignaz_Teach);
+};
+FUNC VOID DIA_Ignaz_Teach_BACK()
+{
+	Info_ClearChoices (DIA_Ignaz_Teach);
+};
+

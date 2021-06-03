@@ -1,38 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance PAL_256_Ritter (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_RITTER;
 	guild 								=	GIL_PAL;
 	id 									=	256;
 	voice 								=	4;
-	flags       						=	0;
 	npctype								=	NPCTYPE_OCAMBIENT;
+	
+	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Pal_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_FatBald", Face_Normal11, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_256;
 };
 
-FUNC VOID Rtn_Start_256()
+func void Rtn_Start_256()
 {
 	TA_Practice_Sword	(08,00,19,00, "OC_TRAIN_02");
 	TA_Sit_Campfire		(19,00,08,00, "OC_CAMPFIRE_OUT_02");

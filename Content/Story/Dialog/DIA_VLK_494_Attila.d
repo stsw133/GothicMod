@@ -7,13 +7,13 @@ INSTANCE DIA_Attila_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Attila_EXIT_Condition;
 	information = DIA_Attila_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Attila_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Attila_EXIT_Info()
@@ -30,14 +30,14 @@ instance DIA_Attila_Hallo		(C_INFO)
 	nr 			 =  1;
 	condition	 = 	DIA_Attila_Hallo_Condition;
 	information	 = 	DIA_Attila_Hallo_Info;
-	permanent    =  false;
-	important	 = 	true;
+	permanent    =  FALSE;
+	important	 = 	TRUE;
 };
 func int DIA_Attila_Hallo_Condition ()
 {	
-	if (MIS_ThiefGuild_sucked == true)
+	if (MIS_ThiefGuild_sucked == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Attila_Hallo_Info ()
@@ -48,7 +48,7 @@ func void DIA_Attila_Hallo_Info ()
 	Info_AddChoice		(DIA_Attila_Hallo,"Czego ode mnie chcesz?",DIA_Attila_Hallo_Was);
 	Info_AddChoice		(DIA_Attila_Hallo,"Kim jesteœ?",DIA_Attila_Hallo_Wer);
 	
-	B_GivePlayerXP(XP_BONUS_0);
+	B_GivePlayerXP (XP_Attila_MetHim);
 };
 FUNC VOID DIA_Attila_Hallo_Wer()
 {
@@ -56,10 +56,10 @@ FUNC VOID DIA_Attila_Hallo_Wer()
 	AI_Output (self, other, "DIA_Attila_Hallo_Wer_09_01"); //Nazywaj¹ mnie Attila... Ale czy to wa¿ne? Nasze imiona nie maj¹ znaczenia.
 	AI_Output (self, other, "DIA_Attila_Hallo_Wer_09_02"); //Sam to powinieneœ najlepiej wiedzieæ, nieznajomy.
 	
-	Knows_Attila_Wer = true;
+	Knows_Attila_Wer = TRUE;
 	
 	Info_ClearChoices 	(DIA_Attila_Hallo);
-	if (Knows_Attila_Was == false)
+	if (Knows_Attila_Was == FALSE)
 	{
 		Info_AddChoice		(DIA_Attila_Hallo,"Czego ode mnie chcesz?",DIA_Attila_Hallo_Was);
 	};
@@ -69,10 +69,10 @@ FUNC VOID DIA_Attila_Hallo_Was()
 {
 	AI_Output (other, self, "DIA_Attila_Hallo_Was_15_00"); //Czego ode mnie chcesz?
 	AI_Output (self, other, "DIA_Attila_Hallo_Was_09_01"); //Jestem tu po to, ¿eby ci wyjaœniæ kilka spraw. A potem ciê zabijê.
-	Knows_Attila_Was = true;
+	Knows_Attila_Was = TRUE;
 	
 	Info_ClearChoices 	(DIA_Attila_Hallo);
-	if (Knows_Attila_Wer == false)
+	if (Knows_Attila_Wer == FALSE)
 	{
 		Info_AddChoice		(DIA_Attila_Hallo,"Kim jesteœ?",DIA_Attila_Hallo_Wer);
 	};
@@ -113,15 +113,15 @@ FUNC VOID DIA_Attila_Hallo_Warum()
 {
 	AI_Output (other, self, "DIA_Attila_Hallo_Warum_15_00"); //Czemu chcesz mnie zabiæ?
 	
-	if (Betrayal_Halvor == true)
+	if (Betrayal_Halvor == TRUE)
 	{
 		AI_Output (self, other, "DIA_Attila_Hallo_Warum_09_01"); //Œci¹gn¹³eœ uwagê na Halvora. Teraz on siedzi w wiêzieniu. Tego nie by³o w planie.
 	}; 
-	if (Rengaru_InKnast == true)
+	if (Rengaru_InKnast == TRUE)
 	{
 		AI_Output (self, other, "DIA_Attila_Hallo_Warum_09_02"); //Sprzeda³eœ Rengara stra¿nikom miejskim. To tylko drobny z³odziej, ale nie powinieneœ by³ tego robiæ.
 	};
-	if (Nagur_Ausgeliefert == true)
+	if (Nagur_Ausgeliefert == TRUE)
 	{
 		AI_Output (self, other, "DIA_Attila_Hallo_Warum_09_03"); //Przez ciebie Nagur wyl¹dowa³ za kratami. Pewni ludzie uznali to za twój niewybaczalny b³¹d.
 	};
@@ -144,7 +144,7 @@ FUNC VOID DIA_Attila_Hallo_Gold()
 FUNC VOID DIA_Attila_Hallo_Attacke()
 {
 	AI_Output (other, self, "DIA_Attila_Hallo_Attacke_15_00"); //Pozwól mi przynajmniej wyci¹gn¹æ broñ.
-	if (Npc_HasEquippedWeapon (other) == true)
+	if (Npc_HasEquippedWeapon (other) == TRUE)
 	{
 		AI_Output (self, other, "DIA_Attila_Hallo_Attacke_09_01"); //Dobrze, a wiêc przygotuj siê do swej ostatniej walki.
 		AI_StopProcessInfos (self);
@@ -167,23 +167,23 @@ instance DIA_Attila_Willkommen  	(C_INFO)
 	nr			 =  1;
 	condition	 = 	DIA_Attila_Willkommen_Condition;
 	information	 = 	DIA_Attila_Willkommen_Info;
-	permanent	 =	false;					
-	important    = 	true;
+	permanent	 =	FALSE;					
+	important    = 	TRUE;
 };
 
 func int DIA_Attila_Willkommen_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk)
-	&& (MIS_ThiefGuild_sucked == false))
+	&& (MIS_ThiefGuild_sucked == FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_Attila_Willkommen_Info ()
 {
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_00"); //Ach - nareszcie. Czeka³em na ciebie, nieznajomy.
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Attila_Friend);
 	AI_Output (other, self, "DIA_Attila_Willkommen_15_01"); //Kim jesteœ? I czego ode mnie chcesz?
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_02"); //To nieistotne. Wa¿ne jest to, co zrobi³eœ. Pozosta³eœ lojalny - nawet jeœli nie zdawa³eœ sobie z tego sprawy.
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_03"); //Pewni dobroczyñcy zwrócili uwagê na twoj¹ lojalnoœæ. I zaoferowali ci szansê. Wiêc lepiej j¹ wykorzystaj.
@@ -191,7 +191,7 @@ func void DIA_Attila_Willkommen_Info ()
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_05"); //Mam dla ciebie prezent. Reszta zale¿y od ciebie, nieznajomy.
 	
 	B_GiveInvItems (self,other,ItKe_ThiefGuildKey_MIS,1);
-	Attila_Key = true;
+	Attila_Key = TRUE;
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self, "AFTER");
 };
@@ -204,8 +204,8 @@ instance DIA_Attila_NachSchluessel		(C_INFO)
 	nr			 =  1;
 	condition	 = 	DIA_Attila_NachSchluessel_Condition;
 	information	 = 	DIA_Attila_NachSchluessel_Info;
-	permanent	 =	true;					
-	important    = 	true;
+	permanent	 =	TRUE;					
+	important    = 	TRUE;
 };
 
 func int DIA_Attila_NachSchluessel_Condition ()
@@ -213,7 +213,7 @@ func int DIA_Attila_NachSchluessel_Condition ()
 	if (Npc_KnowsInfo(other, DIA_Attila_Wer))
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -232,7 +232,7 @@ instance DIA_Attila_Wer		(C_INFO)
 	nr			 =  1;
 	condition	 = 	DIA_Attila_Wer_Condition;
 	information	 = 	DIA_Attila_Wer_Info;
-	permanent	 =	false;					
+	permanent	 =	FALSE;					
 	description	 =  "Kim jesteœ?";
 };
 
@@ -240,7 +240,7 @@ func int DIA_Attila_Wer_Condition ()
 {
 	if Npc_KnowsInfo(other, DIA_Attila_Willkommen)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -252,3 +252,9 @@ func void DIA_Attila_Wer_Info ()
 	
 	AI_StopProcessInfos (self);
 };
+
+
+
+
+
+

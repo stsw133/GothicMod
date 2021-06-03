@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance BDT_10020_Addon_Wache (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Guard;
 	guild 								=	GIL_BDT;
 	id 									=	10020;
 	voice 								=	6;
-	flags      							=	0;
 	npctype								=	NPCTYPE_BL_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_2h_Sld_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal48, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_10020;
 };
 
-FUNC VOID Rtn_Start_10020()
+func void Rtn_Start_10020()
 {
 	TA_Stand_Guarding	(00,00,01,00, "BL_RAVEN_GUARD_03");
 	TA_Stand_Guarding	(01,00,02,00, "BL_MINE_ENTRANCE_GUARD_SCATTY");

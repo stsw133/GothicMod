@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Skip_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Skip_EXIT_Condition;
 	information	= DIA_Addon_Skip_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Skip_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Skip_EXIT_Info()
@@ -30,14 +30,14 @@ INSTANCE DIA_Addon_Skip_Hello(C_INFO)
 	condition	= DIA_Addon_Skip_Hello_Condition;
 	information	= DIA_Addon_Skip_Hello_Info;
 
-	important   = true;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Skip_Hello_Condition()
 {
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (PlayerTalkedToSkipNW == true)
+	&& PlayerTalkedToSkipNW == TRUE
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Skip_Hello_Info()
@@ -49,7 +49,7 @@ func VOID DIA_Addon_Skip_Hello_Info()
 	AI_Output (self ,other,"DIA_Addon_Skip_Hello_08_04"); //Jak widaæ, trudno mnie zapomnieæ.
 	AI_Output (self ,other,"DIA_Addon_Skip_Hello_08_05"); //Ale wydaje mi siê, ¿e jeszcze gdzieœ ciê widzia³em...
 	AI_Output (self ,other,"DIA_Addon_Skip_Hello_08_06"); //A, no tak!
-	B_UseFakeScroll();
+	B_UseFakeScroll ();
 	AI_Output (self ,other,"DIA_Addon_Skip_Hello_08_07"); //Rysownik siê nie popisa³, ale to by³eœ ty.
 	AI_Output (self ,other,"DIA_Addon_Skip_Hello_08_08"); //Ale nie ma o czym gadaæ. Na swoim liœcie goñczym te¿ wygl¹dam doœæ szpetnie.
 	Npc_ExchangeRoutine	(self,"Start");
@@ -69,21 +69,21 @@ instance DIA_Addon_SkipADW_BaltramPaket		(C_INFO)
 };
 func int DIA_Addon_SkipADW_BaltramPaket_Condition ()
 {
-	if (Npc_HasItems(other,ItMi_SkipPaket))
+	if (Npc_HasItems (other,ItMi_SkipPaket))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_SkipADW_BaltramPaket_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_SkipADW_BaltramPaket_15_00"); //Mam dla ciebie paczkê od Baltrama.
 	AI_Output	(self, other, "DIA_Addon_SkipADW_BaltramPaket_08_01"); //Chyba naprawdê potrzebuje rumu, bo po co wysy³a³by towar w taki sposób?
-	B_GiveInvItems (other, self, ItMi_SkipPaket, 1);
+	B_GiveInvItems (other, self, ItMi_SkipPaket,1);
 	AI_Output	(self, other, "DIA_Addon_SkipADW_BaltramPaket_08_02"); //Oto dwie butelki rumu. Niestety, trzeci¹ opró¿ni³em, czekaj¹c tu na niego.
-	B_GiveInvItems (self, other, ItFo_Rum, 2);		
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GiveInvItems (self, other, ItFo_Addon_Rum, 2);		
+	B_GivePlayerXP (XP_Addon_Skip_BaltramPaket);
 	B_LogEntry (TOPIC_Addon_BaltramSkipTrade,LogText_Addon_SkipsRumToBaltram); 
-	Skip_Rum4Baltram = true;
+	Skip_Rum4Baltram = TRUE;
 };
 
 // ************************************************************
@@ -100,7 +100,7 @@ INSTANCE DIA_Addon_Skip_Job(C_INFO)
 };                       
 FUNC INT DIA_Addon_Skip_Job_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Skip_Job_Info()
@@ -123,11 +123,11 @@ instance DIA_Addon_Skip_ADW_GregGetroffen		(C_INFO)
 };
 func int DIA_Addon_Skip_ADW_GregGetroffen_Condition ()
 {
-	if (PlayerTalkedToGregNW  == true)
-	&& (GregIsBack == false)
+	if (PlayerTalkedToGregNW  == TRUE)
+	&& (GregIsBack == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Skip_Job))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Skip_ADW_GregGetroffen_Info ()
@@ -137,7 +137,7 @@ func void DIA_Addon_Skip_ADW_GregGetroffen_Info ()
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_02"); //Powinien ju¿ dawno wróciæ z naszym statkiem.
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_03"); //Najlepiej bêdzie, jeœli wrócê do Khorinis i poczekam tam na niego...
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_04"); //Ale nie dzisiaj. Dopiero co wróci³em.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 // ************************************************************
@@ -151,21 +151,21 @@ instance DIA_Addon_Skip_Transport(C_INFO)
 	nr			= 99;
 	condition	= DIA_Addon_Skip_Transport_Condition;
 	information	= DIA_Addon_Skip_Transport_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Mo¿esz mnie zabraæ do Khorinis?";
 };                       
 FUNC INT DIA_Addon_Skip_Transport_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Addon_Skip_Job))
-	&& (self.aivar[AIV_PARTYMEMBER] == false)
+	&& (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Skip_Transport_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_Skip_Transport_15_00"); //Mo¿esz mnie zabraæ do Khorinis?
-	if (GregIsBack == false)
+	if (GregIsBack == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Addon_Skip_Transport_08_01"); //Nie. Wyruszam póŸniej. Najpierw muszê odpocz¹æ i napiæ siê grogu.
 	}
@@ -198,7 +198,7 @@ INSTANCE DIA_Addon_Skip_Bandits(C_INFO)
 };                       
 FUNC INT DIA_Addon_Skip_Bandits_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_Skip_Bandits_Info()
 {	
@@ -235,9 +235,9 @@ INSTANCE DIA_Addon_Skip_ArmorPrice(C_INFO)
 FUNC INT DIA_Addon_Skip_ArmorPrice_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Addon_Skip_Bandits))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};			
 };
 func VOID DIA_Addon_Skip_ArmorPrice_Info()
@@ -262,15 +262,15 @@ INSTANCE DIA_Addon_Skip_GregsHut(C_INFO)
 	nr			= 6;
 	condition	= DIA_Addon_Skip_GregsHut_Condition;
 	information	= DIA_Addon_Skip_GregsHut_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "A jak siê dostaæ do chaty?";
 };                       
 FUNC INT DIA_Addon_Skip_GregsHut_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_ArmorPrice))
-	&& (GregIsBack == false)
+	&& (GregIsBack == FALSE)
 	{
-		return true;
+		return TRUE;
 	};			
 };
 
@@ -283,7 +283,7 @@ FUNC VOID DIA_Addon_Skip_GregsHut_Info()
 	
 	B_LogEntry (TOPIC_Addon_BDTRuestung,"Francis ma klucz do chaty Grega, ale nie wpuœci nikogo do œrodka."); 
 	
-	Knows_GregsHut = true;
+	Knows_GregsHut = TRUE;
 };
 
 // ------------------------------------------------------------
@@ -295,14 +295,14 @@ INSTANCE DIA_Addon_Skip_Francis (C_INFO)
 	nr			= 6;
 	condition	= DIA_Addon_Skip_Francis_Condition;
 	information	= DIA_Addon_Skip_Francis_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mo¿esz mi powiedzieæ o Francisie?";
 };   
 FUNC INT DIA_Addon_Skip_Francis_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_GregsHut))
 	{
-		return true;
+		return TRUE;
 	};			
 };
 
@@ -332,14 +332,14 @@ INSTANCE DIA_Addon_Skip_Raven(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Skip_Raven_Condition;
 	information	= DIA_Addon_Skip_Raven_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Spotka³eœ kiedyœ Kruka?";
 };                       
 FUNC INT DIA_Addon_Skip_Raven_Condition()
 {
-	if (Npc_KnowsInfo (other,DIA_Addon_Skip_Bandits) == true)
+	if (Npc_KnowsInfo (other,DIA_Addon_Skip_Bandits) == TRUE)
 	{
-		return true;
+		return TRUE;
 	};			
 };
 FUNC VOID DIA_Addon_Skip_Raven_Info()
@@ -376,7 +376,7 @@ FUNC INT DIA_Addon_Skip_AngusHank_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_Bandits))
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Skip_AngusHank_Info()
@@ -409,15 +409,15 @@ INSTANCE DIA_Addon_Skip_AngusHankDead(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Skip_AngusHankDead_Condition;
 	information	= DIA_Addon_Skip_AngusHankDead_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jeœli chodzi o Angusa i Hanka...";
 };                       
 FUNC INT DIA_Addon_Skip_AngusHankDead_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_Bandits))
-	&& (!Npc_HasItems (Angus, ItRi_Morgan))
+	&& (!Npc_HasItems (Angus, ItRi_Addon_MorgansRing_Mission))
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Skip_AngusHankDead_Info()
@@ -442,15 +442,15 @@ INSTANCE DIA_Addon_Skip_AngusHankMurder(C_INFO)
 	nr			= 5;
 	condition	= DIA_Addon_Skip_AngusHankMurder_Condition;
 	information	= DIA_Addon_Skip_AngusHankMurder_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Wiem, kto zamordowa³ Angusa i Hanka.";
 };                       
 FUNC INT DIA_Addon_Skip_AngusHankMurder_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Skip_AngusHankDead))
-	&& (SC_Knows_JuanMurderedAngus == true)
+	&& (SC_Knows_JuanMurderedAngus == TRUE)
 	{ 
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Skip_AngusHankMurder_Info()
@@ -477,21 +477,21 @@ instance DIA_Addon_Skip_Grog		(C_INFO)
 	nr		 	= 9;
 	condition	= DIA_Addon_Skip_Grog_Condition;
 	information	= DIA_Addon_Skip_Grog_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "W sprawie grogu...";
 };
 func int DIA_Addon_Skip_Grog_Condition ()
 {
 	if (MIS_ADDON_SkipsGrog == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Skip_Grog_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Skip_Grog_15_00"); //W sprawie grogu...
 		
-	if (Npc_HasItems (other,ItFo_Grog)>= 20)
+	if (Npc_HasItems (other,Itfo_Addon_Grog)>= 20)
 	{
 		Info_ClearChoices	(DIA_Addon_Skip_Grog);
 		Info_AddChoice	(DIA_Addon_Skip_Grog, DIALOG_BACK, DIA_Addon_Skip_Grog_back );
@@ -510,12 +510,12 @@ func void DIA_Addon_Skip_Grog_back ()
 func void DIA_Addon_Skip_Grog_geben ()
 {
 	AI_Output			(other, self, "DIA_Addon_Skip_Grog_geben_15_00"); //Oto twoje 20 flaszek.
-	B_GiveInvItems (other, self, ItFo_Grog, 20);
+	B_GiveInvItems (other, self, Itfo_Addon_Grog, 20);
 	
 	B_LogEntry	(TOPIC_Addon_SkipsGrog,"Skip odzyska³ swoje 20 butelek grogu i jest zadowolony.");
 	
 	MIS_ADDON_SkipsGrog = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_Addon_SkipsGrog);
 
 	AI_Output			(self, other, "DIA_Addon_Skip_Grog_geben_08_01"); //Niech mnie kule bij¹! Tak za darmo?
 	AI_Output			(other, self, "DIA_Addon_Skip_Grog_geben_15_02"); //No có¿...
@@ -542,9 +542,7 @@ func void DIA_Addon_Skip_Grog_gold ()
 	AI_Output			(other, self, "DIA_Addon_Skip_Grog_gold_15_00"); //Wezmê pieni¹dze.
 	AI_Output			(self, other, "DIA_Addon_Skip_Grog_gold_08_01"); //Nie ma sprawy.
 	var int GrogKohle;
-	GrogKohle = (20 * 20);
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{	GrogKohle = (20 * 22);	};
+	GrogKohle = (Value_Grog * 20);
 	B_GiveInvItems (self, other, ItMi_Gold, GrogKohle);		
 	Info_ClearChoices	(DIA_Addon_Skip_Grog);
 };
@@ -560,12 +558,12 @@ INSTANCE DIA_Addon_Skip_News(C_INFO)
 	nr			= 888;
 	condition	= DIA_Addon_Skip_News_Condition;
 	information	= DIA_Addon_Skip_News_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Masz mo¿e coœ do sprzedania?";
 };                       
 FUNC INT DIA_Addon_Skip_News_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Skip_News_Info()
@@ -593,14 +591,14 @@ INSTANCE DIA_Addon_Skip_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_Skip_Anheuern_Condition;
 	information	= DIA_Addon_Skip_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Powinieneœ mi pomóc.";
 };                       
 FUNC INT DIA_Addon_Skip_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_Skip_Anheuern_Info()
@@ -628,22 +626,22 @@ instance DIA_Addon_Skip_ComeOn(C_INFO)
 	nr		 	= 12;
 	condition	= DIA_Addon_Skip_ComeOn_Condition;
 	information	= DIA_Addon_Skip_ComeOn_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "ChodŸ ze mn¹.";
 };
 func int DIA_Addon_Skip_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Skip_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Skip_ComeOn_Info ()
 {
 	AI_Output (other, self, "DIA_Addon_Skip_ComeOn_15_00"); //ChodŸ ze mn¹.
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		AI_Output (self ,other, "DIA_Addon_Skip_ComeOn_08_02"); //Czekaj. Wróæmy do kanionu.
 		AI_StopProcessInfos (self);
@@ -661,7 +659,7 @@ func void DIA_Addon_Skip_ComeOn_Info ()
 		B_Addon_PiratesFollowAgain();
 		
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -674,14 +672,14 @@ INSTANCE DIA_Addon_Skip_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_Skip_GoHome_Condition;
 	information	= DIA_Addon_Skip_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_Skip_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -690,7 +688,7 @@ FUNC VOID DIA_Addon_Skip_GoHome_Info()
 	AI_Output (other, self, "DIA_Addon_Skip_GoHome_15_00"); //Nie potrzebujê ju¿ twojej pomocy.
 	AI_Output (self, other, "DIA_Addon_Skip_GoHome_08_01"); //No to idê. Znajdziesz mnie w obozie, jakby co.
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START");
 };
 
@@ -703,15 +701,15 @@ INSTANCE DIA_Addon_Skip_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_Skip_TooFar_Condition;
 	information	= DIA_Addon_Skip_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Skip_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Skip_TooFar_Info()
@@ -740,16 +738,16 @@ INSTANCE DIA_Addon_Skip_Treffpunkt (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Skip_Treffpunkt_Condition;
 	information	= DIA_Addon_Skip_Treffpunkt_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Skip_Treffpunkt_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	&& (Npc_GetDistToWP (self, "ADW_CANYON_TELEPORT_PATH_06") <= 800)
-	&& (C_AllCanyonRazorDead() == false)
+	&& (C_AllCanyonRazorDead() == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Skip_Treffpunkt_Info()
@@ -769,15 +767,15 @@ INSTANCE DIA_Addon_Skip_Orks (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Skip_Orks_Condition;
 	information	= DIA_Addon_Skip_Orks_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Skip_Orks_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	&& (Npc_GetDistToWP (self, "ADW_CANYON_PATH_TO_LIBRARY_14") <= 2000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Skip_Orks_Info()
@@ -796,15 +794,15 @@ INSTANCE DIA_Addon_Skip_AllRazorsDead (C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_Skip_AllRazorsDead_Condition;
 	information	= DIA_Addon_Skip_AllRazorsDead_Info;
-	permanent	= false;
-	important   = true;
+	permanent	= FALSE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_Skip_AllRazorsDead_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_AllCanyonRazorDead() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_AllCanyonRazorDead() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_Skip_AllRazorsDead_Info()
@@ -815,3 +813,5 @@ func VOID DIA_Addon_Skip_AllRazorsDead_Info()
 	
 	AI_StopProcessInfos (self); 
 };
+
+

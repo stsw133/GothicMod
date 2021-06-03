@@ -9,13 +9,13 @@ INSTANCE DIA_DiegoNW_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_DiegoNW_EXIT_Condition;
 	information	= DIA_DiegoNW_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_DiegoNW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
  
 FUNC VOID DIA_DiegoNW_EXIT_Info()
@@ -41,15 +41,15 @@ INSTANCE DIA_DiegoNW_Perm(C_INFO)
 	nr			= 998;
 	condition	= DIA_DiegoNW_Perm_Condition;
 	information	= DIA_DiegoNW_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 
 	description = "Jak idzie interes?";
 };                       
 FUNC INT DIA_DiegoNW_Perm_Condition()
 {
-	if (Diego_IsOnBoard == false) 
+	if (Diego_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoNW_Perm_Info()
@@ -78,18 +78,18 @@ INSTANCE DIA_DiegoNW_NeedHelp(C_INFO)
 	condition	= DIA_DiegoNW_NeedHelp_Condition;
 	information	= DIA_DiegoNW_NeedHelp_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 FUNC INT DIA_DiegoNW_NeedHelp_Condition()
 {
-	if (Diego_IsOnBoard == false) 
+	if (Diego_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoNW_NeedHelp_Info()
 {	
-	if (Diego_IsDead == true)
+	if (Diego_IsDead == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_DiegoNW_NeedHelp_11_01"); //Co siê tak dziwisz?
 		AI_Output (self ,other,"DIA_Addon_DiegoNW_NeedHelp_11_02"); //Naprawdê s¹dzi³eœ, ¿e nie ¿yjê?
@@ -103,7 +103,7 @@ FUNC VOID DIA_DiegoNW_NeedHelp_Info()
 	};
 	Info_ClearChoices (DIA_DiegoNW_NeedHelp);
 	
-	if (DiegoOW.aivar[AIV_TalkedToPlayer] == false)
+	if (DiegoOW.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 	//	Info_AddChoice (DIA_DiegoNW_NeedHelp,"Wer bist du?",DIA_DiegoNW_NeedHelp_WhoAreYou);//Joly:macht keinen Sinn. Ohne mit Diego gesprochen zu haben -> Kein DiegoNW !! Hauptstory Kapitel 2 OW!!!!
 	};
@@ -218,7 +218,7 @@ FUNC VOID DIA_DiegoNW_NeedHelp_Problem_WillHelpYou_WhereGold()
 {
 	AI_Output (other,self ,"DIA_DiegoNW_NeedHelp_Problem_WillHelpYou_WhereGold_15_00"); //Gdzie schowa³eœ z³oto?
 	AI_Output (self ,other,"DIA_DiegoNW_NeedHelp_Problem_WillHelpYou_WhereGold_11_01"); //Na placu wymian, nad opuszczon¹ kopalni¹, w skórzanej torbie.
-	if (Diego_angekommen == true)
+	if (Diego_angekommen == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_DiegoNW_WillHelpYou_WhereGold_11_01"); //Nie musisz komentowaæ - dobrze wiem, ¿e nie zauwa¿yliœmy tego na czas.
 		AI_Output (self ,other,"DIA_Addon_DiegoNW_WillHelpYou_WhereGold_11_02"); //Zdob¹dŸ torbê i mi j¹ przynieœ.
@@ -250,16 +250,16 @@ INSTANCE DIA_DiegoNW_HelpYou(C_INFO)
 	nr			= 30;
 	condition	= DIA_DiegoNW_HelpYou_Condition;
 	information	= DIA_DiegoNW_HelpYou_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "W porz¹dku, jednak ci pomogê.";
 };                       
 FUNC INT DIA_DiegoNW_HelpYou_Condition()
 {
-	if (Diego_IsOnBoard == false)
+	if (Diego_IsOnBoard == FALSE)
 	&& (MIS_HElpDiegoNW == LOG_FAILED) 
 	&& (Diego_IsOnBOard != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoNW_HelpYou_Info()
@@ -288,18 +288,18 @@ INSTANCE DIA_DiegoNW_HaveYourGold(C_INFO)
 	nr			= 31;
 	condition	= DIA_DiegoNW_HaveYourGold_Condition;
 	information	= DIA_DiegoNW_HaveYourGold_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Znalaz³em twoje z³oto!";
 };            
 
 FUNC INT DIA_DiegoNW_HaveYourGold_Condition()
 {
-	if ((OpenedDiegosBag == true)
+	if ((OpenedDiegosBag == TRUE)
 	|| (Npc_HasItems (other,ItSe_DiegosTreasure_Mis) >=1))
 	&& (MIS_HelpDiegoNW == LOG_RUNNING)
 	&& (Diego_IsOnBOard != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -319,7 +319,7 @@ FUNC VOID DIA_DiegoNW_HaveYourGold_Info()
 	{
 		B_GiveInvItems (other,self ,ItSe_DiegosTreasure_Mis,1);
 		B_DIEGONW_DIEGOSREVENGE ();
-		DiegosRevenge = true;
+		DiegosRevenge = TRUE;
 	}
 	else if (Npc_HasItems (other,ItMi_Gold < DiegosTreasure))
 	{
@@ -331,11 +331,11 @@ FUNC VOID DIA_DiegoNW_HaveYourGold_Info()
 	{
 		B_GiveInvItems (other,self ,ItMi_Gold,DiegosTreasure);
 		B_DIEGONW_DIEGOSREVENGE ();
-		DiegosRevenge = true;
+		DiegosRevenge = TRUE;
 	};	
 	
-	if (Npc_IsDead (Gerbrandt) == false)
-	&& (DiegosRevenge == true)
+	if (Npc_IsDead (Gerbrandt) == FALSE)
+	&& (DiegosRevenge == TRUE)
 	{
 		AI_Output (self ,other,"DIA_DiegoNW_HaveYourGold_11_06"); //S³uchaj, muszê siê teraz zaj¹æ stra¿nikami.
 		AI_Output (self ,other,"DIA_DiegoNW_HaveYourGold_11_07"); //Chcê, ¿ebyœ zaniós³ ten list Gerbrandtowi. To jeden z bogatych kupców z górnego miasta.
@@ -348,14 +348,16 @@ FUNC VOID DIA_DiegoNW_HaveYourGold_Info()
 		
 		MIS_HelpDiegoNW = LOG_SUCCESS;
 		MIS_DiegosResidence = LOG_RUNNING;
-		B_GivePlayerXP(XP_BONUS_6);
+		B_GivePlayerXP (XP_HelpDiegoNW);
 
 		Log_CreateTopic (TOPIC_DiegosResidence,LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_DiegosResidence,LOG_RUNNING);
 		B_LogEntry (TOPIC_DiegosResidence,"Diego da³ mi list dla kupca Gerbrandta.");
 		
 		AI_StopProcessInfos (self);
-	};
+	};		
+		
+	
 };
 
 
@@ -369,16 +371,16 @@ INSTANCE DIA_DiegoNW_DeliveredLetter(C_INFO)
 	nr			= 30;
 	condition	= DIA_DiegoNW_DeliveredLetter_Condition;
 	information	= DIA_DiegoNW_DeliveredLetter_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description	= "Dostarczy³em twój list.";
 };
                        
 FUNC INT DIA_DiegoNW_DeliveredLetter_Condition()
 {
-	if (Diego_IsOnBoard == false)
+	if (Diego_IsOnBoard == FALSE)
 	&& (MIS_DiegosResidence == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -391,7 +393,7 @@ FUNC VOID DIA_DiegoNW_DeliveredLetter_Info()
 	AI_Output (self ,other,"DIA_DiegoNW_DeliveredLetter_11_03"); //No, ja myœlê.
 	AI_Output (self ,other,"DIA_DiegoNW_DeliveredLetter_11_04"); //Obawiam siê, ¿e najpierw muszê poœwiêciæ trochê czasu na urz¹dzenie mojego nowego domu. Jeœli dobrze pamiêtam, Gerbrandt ma fatalny gust.
 	  
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_DiegoHasANewHome);
 
 	Wld_AssignRoomToGuild ("reich01",		GIL_PUBLIC);
 
@@ -450,10 +452,14 @@ FUNC VOID DIA_DiegoNW_DeliveredLetter_YourTrick_BACK()
 	Info_ClearChoices (DIA_DiegoNW_DeliveredLetter);
 };
 
-
+/*
 // ************************************************************
 // 	  	  Kannst du mir was beibringen?
 // ************************************************************
+
+//---------------------------
+var int Diego_Teach;
+//---------------------------
 
 INSTANCE DIA_DiegoNW_CanYouTeach(C_INFO)
 {
@@ -461,16 +467,16 @@ INSTANCE DIA_DiegoNW_CanYouTeach(C_INFO)
 	nr			= 995;
 	condition	= DIA_DiegoNW_CanYouTeach_Condition;
 	information	= DIA_DiegoNW_CanYouTeach_Info;
-	permanent	= true;
+	permanent	= TRUE;
 
 	description = "Mo¿esz mnie czegoœ nauczyæ?";
 };                       
 FUNC INT DIA_DiegoNW_CanYouTeach_Condition()
 {
-	if (Diego_IsOnBoard == false)
-	&& (self.aivar[AIV_CanTeach] < true) 
+	if (Diego_IsOnBoard == FALSE)
+	&& (Diego_Teach == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_DiegoNW_CanYouTeach_Info()
@@ -479,7 +485,8 @@ FUNC VOID DIA_DiegoNW_CanYouTeach_Info()
 	if (Npc_KnowsInfo (other,DIA_DiegoNW_DeliveredLetter))
 	{
 		AI_Output (self ,other,"DIA_DiegoNW_CanYouTeach_11_01"); //Jasne. Daj znaæ, jak bêdziesz gotowy.
-		self.aivar[AIV_CanTeach] = true;
+		
+		Diego_Teach = TRUE;
 	}
 	else
 	{
@@ -487,6 +494,78 @@ FUNC VOID DIA_DiegoNW_CanYouTeach_Info()
 	};
 };
 
+
+
+// ************************************************************
+// 	  	  Bring mir was bei.
+// ************************************************************
+
+//-----------------------
+var int DiegoNW_Merke_DEX;
+//-------------------------
+
+INSTANCE DIA_DiegoNW_Teach(C_INFO)
+{
+	npc			= PC_Thief_NW;
+	nr			= 995;
+	condition	= DIA_DiegoNW_Teach_Condition;
+	information	= DIA_DiegoNW_Teach_Info;
+	permanent	= TRUE;
+
+	description = "Naucz mnie.";
+};                       
+FUNC INT DIA_DiegoNW_Teach_Condition()
+{
+	if (Diego_IsOnBoard == FALSE)
+	&& (Diego_Teach == TRUE) 
+	{
+		return TRUE;
+	};
+};
+FUNC VOID DIA_DiegoNW_Teach_Info()
+{	
+	AI_Output (other,self ,"DIA_DiegoNW_Teach_15_00"); //Naucz mnie.
+	AI_Output (self ,other,"DIA_DiegoNW_Teach_11_01"); //Mogê popracowaæ trochê nad twoj¹ zrêcznoœci¹.
+	
+	DiegoNW_Merke_Dex = other.attribute[ATR_DEXTERITY];
+	
+	Info_ClearChoices	(DIA_DiegoNW_Teach);
+	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+};
+
+func void DIA_DiegoNW_Teach_BACK()
+{
+	if (DiegoNW_Merke_DEX < other.attribute[ATR_DEXTERITY])
+	{
+		AI_Output (self, other, "DIA_DiegoNW_Teach_BACK_11_00"); //Ju¿ jesteœ bardziej zrêczny. Tak trzymaæ.
+	};
+	Info_ClearChoices	(DIA_DiegoNW_Teach);
+};
+
+// ------ 1 Geschick -----
+func void DIA_DiegoNW_TeachDEX_1()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
+
+	Info_ClearChoices	(DIA_DiegoNW_Teach);
+	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+};
+
+// ------ 5 Geschick ------
+func void DIA_DiegoNW_TeachDEX_5()
+{
+	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
+	
+	Info_ClearChoices	(DIA_DiegoNW_Teach);
+	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+};
+*/
 //######################################
 //##
 //##	Kapitel 5
@@ -502,16 +581,16 @@ instance DIA_DiegoNW_KnowWhereEnemy		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_DiegoNW_KnowWhereEnemy_Condition;
 	information	 = 	DIA_DiegoNW_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Zamierzam opuœciæ Khorinis.";
 };
 
 func int DIA_DiegoNW_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Diego_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Diego_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -544,26 +623,29 @@ FUNC VOID DIA_DiegoNW_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_DiegoNW_KnowWhereEnemy_Yes_15_00"); //Pop³yñ ze mn¹. Mo¿emy siê spotkaæ na przystani.
 	AI_Output (self ,other,"DIA_DiegoNW_KnowWhereEnemy_Yes_11_01"); //Hmmm... Masz racjê. Khorinis to rynsztok. P³ynê z tob¹!
 	
+	
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Diego_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	B_GivePlayerXP(XP_BONUS_5); 
+	
+	B_GivePlayerXP (XP_Crewmember_Success); 
 	
 	if (Hlp_StrCmp(Npc_GetNearestWP(self), "NW_CITY_UPTOWN_PATH_23" )== 1)
     {
 		AI_Output (self ,other,"DIA_DiegoNW_KnowWhereEnemy_Yes_11_02"); //Daj mi jedn¹ chwilê. Zaraz bêdê gotowy.
 		AI_SetWalkmode 	(self, NPC_WALK);		
 		AI_GotoWP (self,"NW_CITY_UPTOWN_HUT_01_01");
-//		CreateInvItems (self,ItAR_STT_H,1);
-//		AI_EquipArmor (self,ItAR_STT_H);
+		CreateInvItems (self,ITAR_STT_H,1);
+		AI_EquipArmor (self,ITAR_STT_H);
 		AI_Wait (self ,1);
 		AI_GotoWP (self,self.wp);
 	};
 	
 	AI_Output (self ,other,"DIA_DiegoNW_KnowWhereEnemy_Yes_11_03"); //Mogê ju¿ ruszaæ. Do zobaczenia na statku!
 	
-	if (MIS_ReadyforChapter6 == true)
+	
+	if (MIS_ReadyforChapter6 == TRUE)
 	{
 		Npc_ExchangeRoutine (self,"SHIP"); 
 	}
@@ -593,15 +675,15 @@ instance DIA_DiegoNW_LeaveMyShip		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_DiegoNW_LeaveMyShip_Condition;
 	information	 = 	DIA_DiegoNW_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Mo¿esz ju¿ wracaæ do miasta.";
 };
 func int DIA_DiegoNW_LeaveMyShip_Condition ()
 {	
 	if (Diego_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_DiegoNW_LeaveMyShip_Info ()
@@ -612,8 +694,9 @@ func void DIA_DiegoNW_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_DiegoNW_LeaveMyShip_11_03"); //Nigdy nie zapomnê wyrazu twojej twarzy podczas naszego pierwszego spotkania, gdy Bullit powali³ ciê na ziemiê.
 	AI_Output			(self, other, "DIA_DiegoNW_LeaveMyShip_11_04"); //Takich jak ty nie mo¿na pokonaæ. Jeszcze siê spotkamy. Bywaj!
 	
+	
 	Diego_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"Start"); 
 };
@@ -627,7 +710,7 @@ instance DIA_DiegoNW_StillNeedYou		(C_INFO)
 	nr			 = 	55;
 	condition	 = 	DIA_DiegoNW_StillNeedYou_Condition;
 	information	 = 	DIA_DiegoNW_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"ChodŸ ze mn¹. Chcê, ¿ebyœ mi towarzyszy³.";
 };
 
@@ -637,7 +720,7 @@ func int DIA_DiegoNW_StillNeedYou_Condition ()
 	|| (Diego_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -648,16 +731,14 @@ func void DIA_DiegoNW_StillNeedYou_Info ()
 		
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Diego_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
 	if (Hlp_StrCmp(Npc_GetNearestWP(self), "NW_CITY_UPTOWN_PATH_23" )== 1)
     {
 		AI_Output (self ,other,"DIA_DiegoNW_StillNeedYou_11_02"); //Czekaj, za chwilê bêdê gotowy.
 		AI_GotoWP (self,"NW_CITY_UPTOWN_HUT_01_01");
-//		CreateInvItems (self,ItAR_STT_H,1);
-//		AI_EquipArmor (self,ItAR_STT_H);
-		CreateInvItems (self,ItAr_Leather_L,1);
-		AI_EquipArmor (self,ItAr_Leather_L);
+		CreateInvItems (self,ITAR_STT_H,1);
+		AI_EquipArmor (self,ITAR_STT_H);
 		AI_GotoWP (self,self.wp);
 	};
 	
@@ -665,7 +746,7 @@ func void DIA_DiegoNW_StillNeedYou_Info ()
 	
 	AI_StopProcessInfos (self);
 
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 	{
 		Npc_ExchangeRoutine (self,"SHIP"); 
 	}

@@ -1,9 +1,9 @@
 FUNC VOID EVT_Truhe_OW_01_S1()
 {
-	if (TruheSfx == false)
+	if (TruheSfx == FALSE)
 	{
 		Snd_Play ("ORC_ANGRY");
-		TruheSfx = true;
+		TruheSfx = TRUE;
 		
 		Wld_InsertNpc (Gobbo_Black,"FP_ROAM_OW_MOLERAT_03_02");
 		Wld_InsertNpc (Gobbo_Black,"FP_ROAM_OW_MOLERAT_03_03");

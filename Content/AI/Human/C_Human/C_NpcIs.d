@@ -3,8 +3,8 @@
 ///******************************************************************************************
 func int C_NpcIsDown (var C_NPC slf)
 {
-	if ((Npc_IsInState(slf,ZS_Unconscious))
-	|| (Npc_IsInState(slf,ZS_MagicSleep))
+	if ((Npc_IsInState(slf, ZS_Unconscious))
+	|| (Npc_IsInState(slf, ZS_MagicSleep))
 	|| (Npc_IsDead(slf)))
 	{
 		return true;
@@ -17,7 +17,7 @@ func int C_NpcIsDown (var C_NPC slf)
 ///******************************************************************************************
 func int C_NpcIsGateGuard (var C_NPC slf)
 {
-	if (Npc_IsInState(slf,ZS_Guard_Passage))
+	if (Npc_IsInState(slf, ZS_Guard_Passage))
 	{
 		return true;
 	};
@@ -29,11 +29,11 @@ func int C_NpcIsGateGuard (var C_NPC slf)
 ///******************************************************************************************
 func int C_NpcIsToughGuy (var C_NPC slf)
 {
-	if (slf.guild == GIL_SLD)
+	if (slf.aivar[AIV_ToughGuy] == true)
+	|| (slf.guild == GIL_SLD)
 	|| (slf.guild == GIL_DJG)
 	|| (slf.guild == GIL_BDT)
 	|| (slf.guild == GIL_PIR)
-	|| (slf.aivar[AIV_ToughGuy] == true)
 	{
 		return true;
 	};

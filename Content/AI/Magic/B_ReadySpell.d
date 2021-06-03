@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_ReadySpell
 ///******************************************************************************************
-func void B_ReadySpell(var C_NPC slf, var int spell, var int mana)
+func void B_ReadySpell (var C_NPC slf, var int spell, var int mana)
 {
 	if (slf.attribute[ATR_MANA_MAX] < mana)
 	{
@@ -11,12 +11,14 @@ func void B_ReadySpell(var C_NPC slf, var int spell, var int mana)
 	{
 		Npc_ChangeAttribute	(slf, ATR_MANA, mana);
 	};
-
+	
+	/// ------ NSC zieht diesen Zauber bereits ------
 	if (Npc_IsDrawingSpell(slf) == spell)
 	{
 		return;
 	};
-
+	
+	/// ------ NSC hat Zauber schon auf der Hand ------
 	if (Npc_GetActiveSpell(slf) == spell)
 	{
 		return;
@@ -25,6 +27,6 @@ func void B_ReadySpell(var C_NPC slf, var int spell, var int mana)
 	{
 		AI_RemoveWeapon(slf);
 	};
-
+	
 	AI_ReadySpell (slf, spell, mana);
 };

@@ -7,15 +7,15 @@ INSTANCE DIA_Jack_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Jack_EXIT_Condition;
 	information = DIA_Jack_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Jack_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -33,14 +33,15 @@ instance DIA_Jack_GREET		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Jack_GREET_Condition;
 	information	 = 	DIA_Jack_GREET_Info;
-	important 	 =  true; 
+	important 	 =  TRUE; 
+
 };
 
 func int DIA_Jack_GREET_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jack_GREET_Info ()
@@ -49,6 +50,7 @@ func void DIA_Jack_GREET_Info ()
 	AI_Output			(self ,other, "DIA_Jack_GREET_14_01"); //He, he... Trochê blado wygl¹dasz.
 	AI_Output			(self ,other, "DIA_Jack_GREET_14_02"); //Ale nie przejmuj siê, ch³opcze. Przyda ci siê trochê œwie¿ej, morskiej bryzy, ot i wszystko!
 };
+
 
 ///////////////////////////////////////////////////////////////////////
 //	Was machst Du hier
@@ -59,6 +61,7 @@ instance DIA_Jack_Job		(C_INFO)
 	nr			 = 	5;
 	condition	 = 	DIA_Jack_Job_Condition;
 	information	 = 	DIA_Jack_Job_Info;
+
 	description	 = 	"Co tu porabiasz?";
 };
 
@@ -66,7 +69,7 @@ func int DIA_Jack_Job_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Jack_GREET)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jack_Job_Info ()
@@ -88,6 +91,7 @@ func void DIA_Jack_Job_Info ()
 	B_LogEntry (TOPIC_KillLighthouseBandits,"Stary marynarz, Jack, nie mo¿e wróciæ do latarni morskiej, dopóki przebywaj¹ tam bandyci."); 
 	
 	MIS_Jack_KillLighthouseBandits = LOG_RUNNING;
+	
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -99,6 +103,7 @@ instance DIA_Jack_City		(C_INFO)
 	nr			 = 	6;
 	condition	 = 	DIA_Jack_City_Condition;
 	information	 = 	DIA_Jack_City_Info;
+
 	description	 = 	"Czêsto odwiedzasz miasto?";
 };
 
@@ -106,7 +111,7 @@ func int DIA_Jack_City_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Jack_Job)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jack_City_Info ()
@@ -126,17 +131,18 @@ instance DIA_Jack_Harbor		(C_INFO)
 	nr			 = 	70;
 	condition	 = 	DIA_Jack_Harbor_Condition;
 	information	 = 	DIA_Jack_Harbor_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
+
 	description	 = 	"Opowiedz mi o przystani.";
 };
 
 func int DIA_Jack_Harbor_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Jack_City)
-	&& ((Npc_GetDistToWP(self,"LIGHTHOUSE")< 3000) == false)
-	&& (JackIsCaptain == false)
+		&&	((Npc_GetDistToWP(self,"LIGHTHOUSE")< 3000) == FALSE)
+		&& 	(JackIsCaptain == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jack_Harbor_Info ()
@@ -190,18 +196,19 @@ instance DIA_Jack_BANDITENWEG		(C_INFO)
 	nr		 = 	7;
 	condition	 = 	DIA_Jack_BANDITENWEG_Condition;
 	information	 = 	DIA_Jack_BANDITENWEG_Info;
+
 	description	 = 	"Nie musisz siê ju¿ martwiæ o bandytów zajmuj¹cych twoj¹ latarniê.";
 };
 
 func int DIA_Jack_BANDITENWEG_Condition ()
 {
 	if (Npc_IsDead(LeuchtturmBandit_1021))
-	&& (Npc_IsDead(LeuchtturmBandit_1022))
-	&& (Npc_IsDead(LeuchtturmBandit_1023))
-	&& (MIS_Jack_KillLighthouseBandits == LOG_RUNNING)
-	{
-		return true;
-	};
+		&& (Npc_IsDead(LeuchtturmBandit_1022))
+		&& (Npc_IsDead(LeuchtturmBandit_1023))
+		&& (MIS_Jack_KillLighthouseBandits == LOG_RUNNING)
+		{
+			return TRUE;
+		};
 };
 
 func void DIA_Jack_BANDITENWEG_Info ()
@@ -212,7 +219,7 @@ func void DIA_Jack_BANDITENWEG_Info ()
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Lighthouse");
 	MIS_Jack_KillLighthouseBandits = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_4);
+	B_GivePlayerXP (XP_KillLighthouseBandits);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -224,18 +231,20 @@ instance DIA_Jack_LIGHTHOUSEFREE		(C_INFO)
 	nr		 = 	8;
 	condition	 = 	DIA_Jack_LIGHTHOUSEFREE_Condition;
 	information	 = 	DIA_Jack_LIGHTHOUSEFREE_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
+
 	description	 = 	"£adna latarnia.";
 };
 
 func int DIA_Jack_LIGHTHOUSEFREE_Condition ()
 {
 	if (MIS_Jack_KillLighthouseBandits == LOG_SUCCESS)
-	&&	(Npc_GetDistToWP(self,"LIGHTHOUSE")<3000) 
-	&& (MIS_SCKnowsWayToIrdorath == false) 
-	{
-		return true;
-	};
+		&&	(Npc_GetDistToWP(self,"LIGHTHOUSE")<3000) 
+		&& (MIS_SCKnowsWayToIrdorath == FALSE) 
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Jack_LIGHTHOUSEFREE_Info ()
@@ -243,6 +252,7 @@ func void DIA_Jack_LIGHTHOUSEFREE_Info ()
 	AI_Output			(other, self, "DIA_Jack_LIGHTHOUSEFREE_15_00"); //£adna latarnia.
 	AI_Output			(self, other, "DIA_Jack_LIGHTHOUSEFREE_14_01"); //Dziêki! Wdrap siê po schodach na górê, a zobaczysz widok jakich ma³o, ch³opcze. Czuj siê jak u siebie w domu.
 };
+
 
 //#####################################################################
 //##
@@ -262,20 +272,21 @@ INSTANCE DIA_Jack_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jack_KAP3_EXIT_Condition;
 	information	= DIA_Jack_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Jack_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jack_KAP3_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
 
 //#####################################################################
 //##
@@ -284,6 +295,7 @@ FUNC VOID DIA_Jack_KAP3_EXIT_Info()
 //##
 //##
 //#####################################################################
+
 
 // ************************************************************
 // 	  				   EXIT KAP4
@@ -295,20 +307,21 @@ INSTANCE DIA_Jack_KAP4_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jack_KAP4_EXIT_Condition;
 	information	= DIA_Jack_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Jack_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jack_KAP4_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
 
 //#####################################################################
 //##
@@ -328,20 +341,21 @@ INSTANCE DIA_Jack_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jack_KAP5_EXIT_Condition;
 	information	= DIA_Jack_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Jack_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jack_KAP5_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
 
 ///////////////////////////////////////////////////////////////////////
 //	Info BeMyCaptain
@@ -352,19 +366,20 @@ instance DIA_Jack_BEMYCAPTAIN		(C_INFO)
 	nr		 = 	51;
 	condition	 = 	DIA_Jack_BEMYCAPTAIN_Condition;
 	information	 = 	DIA_Jack_BEMYCAPTAIN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
 	description	 = 	"Nie chcia³byœ znowu wyp³yn¹æ w morze?";
 };
 
 func int DIA_Jack_BEMYCAPTAIN_Condition ()
 {
-	if (Kapitel == 11)
-	&& (MIS_SCKnowsWayToIrdorath == true)
-	&& (MIS_Jack_KillLighthouseBandits == LOG_SUCCESS)
-	&& (MIS_Jack_NewLighthouseOfficer == 0)
-	{
-		return true;
-	};
+	if (Kapitel == 5)
+		&& (MIS_SCKnowsWayToIrdorath == TRUE)
+		&& (MIS_Jack_KillLighthouseBandits == LOG_SUCCESS)
+		&& (MIS_Jack_NewLighthouseOfficer == 0)
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Jack_BEMYCAPTAIN_Info ()
@@ -376,6 +391,7 @@ func void DIA_Jack_BEMYCAPTAIN_Info ()
 	Info_ClearChoices	(DIA_Jack_BEMYCAPTAIN);
 	Info_AddChoice	(DIA_Jack_BEMYCAPTAIN, "Mniejsza z tym. Tak siê tylko zastanawia³em.", DIA_Jack_BEMYCAPTAIN_no );
 	Info_AddChoice	(DIA_Jack_BEMYCAPTAIN, "Przyda mi siê taki doœwiadczony ¿eglarz jak ty.", DIA_Jack_BEMYCAPTAIN_seaman );
+
 };
 
 func void DIA_Jack_BEMYCAPTAIN_seaman ()
@@ -392,6 +408,7 @@ func void DIA_Jack_BEMYCAPTAIN_seaman ()
 	Info_ClearChoices	(DIA_Jack_BEMYCAPTAIN);
 	Info_AddChoice	(DIA_Jack_BEMYCAPTAIN, "Mniejsza z tym. Tak siê tylko zastanawia³em.", DIA_Jack_BEMYCAPTAIN_no );
 	Info_AddChoice	(DIA_Jack_BEMYCAPTAIN, "A gdybym sprowadzi³ tu kogoœ...?", DIA_Jack_BEMYCAPTAIN_seaman_NewOfficer );
+
 };
 func void DIA_Jack_BEMYCAPTAIN_seaman_NewOfficer ()
 {
@@ -404,6 +421,7 @@ func void DIA_Jack_BEMYCAPTAIN_seaman_NewOfficer ()
 	Info_ClearChoices	(DIA_Jack_BEMYCAPTAIN);
 	MIS_Jack_NewLighthouseOfficer = LOG_RUNNING;
 };
+
 
 func void DIA_Jack_BEMYCAPTAIN_no ()
 {
@@ -427,10 +445,10 @@ instance DIA_Jack_BEMYCAPTAIN2		(C_INFO)
 func int DIA_Jack_BEMYCAPTAIN2_Condition ()
 {
 	if 	((MIS_Jack_NewLighthouseOfficer == LOG_SUCCESS)
-	|| 	((MIS_Jack_NewLighthouseOfficer == LOG_RUNNING)	&& 	(Npc_IsDead(Brian))))
-	{
-		return true;
-	};
+		|| 	((MIS_Jack_NewLighthouseOfficer == LOG_RUNNING)	&& 	(Npc_IsDead(Brian))))
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Jack_BEMYCAPTAIN2_Info ()
@@ -445,9 +463,10 @@ func void DIA_Jack_BEMYCAPTAIN2_Info ()
 	{
 			AI_Output			(other, self, "DIA_Jack_BEMYCAPTAIN2_15_02"); //Od dziœ o twoj¹ latarniê bêdzie siê troszczy³ Brian.
 			AI_Output			(self, other, "DIA_Jack_BEMYCAPTAIN2_14_03"); //Mia³em nadziejê, ¿e to powiesz.
-			B_GivePlayerXP(XP_BONUS_10);
+			B_GivePlayerXP (XP_Jack_NewLighthouseOfficer);
  
-			if (SCGotCaptain == false)
+		
+			if (SCGotCaptain == FALSE)
 			{
 			AI_Output			(self, other, "DIA_Jack_BEMYCAPTAIN2_14_04"); //Potrzebujesz mnie jeszcze?
 			}
@@ -468,17 +487,18 @@ instance DIA_Jack_BEMYCAPTAIN3		(C_INFO)
 	nr		 = 	53;
 	condition	 = 	DIA_Jack_BEMYCAPTAIN3_Condition;
 	information	 = 	DIA_Jack_BEMYCAPTAIN3_Info;
+
 	description	 = 	"Zostañ kapitanem mojego statku.";
 };
 
 func int DIA_Jack_BEMYCAPTAIN3_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Jack_BEMYCAPTAIN2))
-	&& (SCGotCaptain == false)
-	&& (MIS_Jack_NewLighthouseOfficer == LOG_SUCCESS)
-	{
-		return true;
-	};
+		&& (SCGotCaptain == FALSE)
+		&& (MIS_Jack_NewLighthouseOfficer == LOG_SUCCESS)
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Jack_BEMYCAPTAIN3_Info ()
@@ -491,12 +511,12 @@ func void DIA_Jack_BEMYCAPTAIN3_Info ()
 	AI_Output			(other, self, "DIA_Jack_BEMYCAPTAIN3_15_05"); //Czekaj na mnie na przystani. O resztê siê nie martw.
 	AI_Output			(self, other, "DIA_Jack_BEMYCAPTAIN3_14_06"); //Jak uwa¿asz.
 	AI_StopProcessInfos (self);
-	SCGotCaptain = true;
-	JackIsCaptain = true;
+	SCGotCaptain = TRUE;
+	JackIsCaptain = TRUE;
 	self.flags = NPC_FLAG_IMMORTAL;
 	Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 	
-	B_GivePlayerXP(XP_BONUS_10*2);        
+	B_GivePlayerXP (XP_Captain_Success);        
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -508,24 +528,25 @@ instance DIA_Jack_LOSFAHREN		(C_INFO)
 	nr		 = 	59;
 	condition	 = 	DIA_Jack_LOSFAHREN_Condition;
 	information	 = 	DIA_Jack_LOSFAHREN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
 	description	 = 	"No, staruszku. Ruszajmy w drogê.";
 };
 
 func int DIA_Jack_LOSFAHREN_Condition ()
 {
-	if (JackIsCaptain == true)
-	&& (MIS_ReadyforChapter6 ==	false)
-	{
-		return true;
-	};
+	if (JackIsCaptain == TRUE)
+		&& (MIS_ReadyforChapter6 ==	FALSE)
+		{
+				return TRUE;
+		};
 };
 
 func void DIA_Jack_LOSFAHREN_Info ()
 {
 	AI_Output			(other, self, "DIA_Jack_LOSFAHREN_15_00"); //No, staruszku. Ruszajmy w drogê.
 
-	if ((B_CaptainConditions (self)) == true)
+	if ((B_CaptainConditions (self)) == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Jack_LOSFAHREN_14_01"); //Wszystko w najlepszym porz¹dku. Masz tê mapê?
 		AI_Output			(self, other, "DIA_Jack_LOSFAHREN_14_02"); //Czeka nas niez³a przeprawa. Mam tylko nadziejê, ¿e dotrzemy na miejsce w jednym kawa³ku.
@@ -552,18 +573,19 @@ instance DIA_Jack_PERM5_NOTCAPTAIN		(C_INFO)
 	nr		 = 	59;
 	condition	 = 	DIA_Jack_PERM5_NOTCAPTAIN_Condition;
 	information	 = 	DIA_Jack_PERM5_NOTCAPTAIN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
 	description	 = 	"Co zamierzasz robiæ dalej?";
 };
 
 func int DIA_Jack_PERM5_NOTCAPTAIN_Condition ()
 {
 		if	((Npc_KnowsInfo(other, DIA_Jack_BEMYCAPTAIN2))
-		&& 	(SCGotCaptain == true)
-		&&	(JackIsCaptain == false))
+		&& 	(SCGotCaptain == TRUE)
+		&&	(JackIsCaptain == FALSE))
 		|| 	(MIS_Jack_NewLighthouseOfficer == LOG_OBSOLETE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -594,17 +616,81 @@ INSTANCE DIA_Jack_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Jack_KAP6_EXIT_Condition;
 	information	= DIA_Jack_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Jack_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Jack_KAP6_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

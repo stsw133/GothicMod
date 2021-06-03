@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Patrick_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Patrick_EXIT_Condition;
 	information = DIA_Addon_Patrick_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Patrick_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Patrick_EXIT_Info()
 {
@@ -27,12 +27,12 @@ INSTANCE DIA_Addon_Patrick_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Patrick_Hi_Condition;
 	information = DIA_Addon_Patrick_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Przybywam tu z polecenia Magów Wody.";
 };
 FUNC INT DIA_Addon_Patrick_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Patrick_Hi_Info()
 {
@@ -83,12 +83,12 @@ INSTANCE DIA_Addon_Patrick_ready   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Patrick_ready_Condition;
 	information = DIA_Addon_Patrick_ready_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Droga wolna. Uciekajcie!";
 };
 FUNC INT DIA_Addon_Patrick_ready_Condition()
 {	
-	if (Ready_Togo == true)
+	if (Ready_Togo == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Patrick_Hi))
 	
 	|| (Npc_IsDead (PrisonGuard)
@@ -99,7 +99,7 @@ FUNC INT DIA_Addon_Patrick_ready_Condition()
 	&&  Npc_IsDead (Bloodwyn)
 	&&  Npc_IsDead (PrisonGuard))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Patrick_ready_Info()
@@ -110,12 +110,12 @@ FUNC VOID DIA_Addon_Patrick_ready_Info()
 	AI_Output (other, self, "DIA_Addon_Patrick_ready_15_03");//Oni poka¿¹ wam drogê.
 	AI_Output (self, other, "DIA_Addon_Patrick_ready_07_04");//Wielkie dziêki, naprawdê. Jesteœmy g³êboko wdziêczni za okazane nam mi³osierdzie i pozostajemy zobowi¹zani...
 	AI_Output (other, self, "DIA_Addon_Patrick_ready_15_05");//Spokojnie, po co ta ceremonia...
-
-	Sklaven_Flucht = true; 
-	B_GivePlayerXP(XP_BONUS_5);
-
+	
+	Sklaven_Flucht = TRUE; 
+	B_GivePlayerXP (XP_Addon_Flucht);
+	
 	AI_StopProcessInfos (self);
-
+	
 	//AI_UseMob			(self,"ORE",-1);
 
 	Npc_ExchangeRoutine (self,"FLUCHT");
@@ -150,16 +150,16 @@ INSTANCE DIA_Addon_Patrick_Killer   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Patrick_Killer_Condition;
 	information = DIA_Addon_Patrick_Killer_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zaj¹³em siê stra¿nikiem. Mo¿ecie uciekaæ.";
 };
 FUNC INT DIA_Addon_Patrick_Killer_Condition()
 {	
 	if Npc_IsDead (PrisonGuard)
-	&& (Ready_Togo == false)
+	&& (Ready_Togo == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Patrick_Hi))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Patrick_Killer_Info()
@@ -176,14 +176,14 @@ INSTANCE DIA_Addon_Patrick_Hoehle   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Patrick_Hoehle_Condition;
 	information = DIA_Addon_Patrick_Hoehle_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Chcecie uciekaæ?";
 };
 FUNC INT DIA_Addon_Patrick_Hoehle_Condition()
 {	
 	if (Npc_GetDistToWP (self,"ADW_BL_HOEHLE_04") <= 1000)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Patrick_Hoehle_Info()
@@ -191,3 +191,8 @@ FUNC VOID DIA_Addon_Patrick_Hoehle_Info()
 	AI_Output (other, self, "DIA_Addon_Patrick_Hoehle_15_00");//Chcecie uciekaæ?
 	AI_Output (self, other, "DIA_Addon_Patrick_Hoehle_07_01");//Pewnie. Po prostu czekamy na odpowiedni¹ chwilê.
 };
+
+
+
+	
+	

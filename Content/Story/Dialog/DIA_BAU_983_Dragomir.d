@@ -9,12 +9,12 @@ INSTANCE DIA_Dragomir_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Dragomir_EXIT_Condition;
 	information = DIA_Dragomir_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Dragomir_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Dragomir_EXIT_Info()
 {
@@ -30,14 +30,14 @@ INSTANCE DIA_Dragomir_Hello   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Dragomir_Hello_Condition;
 	information = DIA_Dragomir_Hello_Info;
-	permanent   = false;
-	important   = true;
+	permanent   = FALSE;
+	important   = TRUE;
 };
 FUNC INT DIA_Dragomir_Hello_Condition()
 {
 	if (Npc_IsInState (self,ZS_TALK))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Dragomir_Hello_Info()
@@ -55,12 +55,12 @@ INSTANCE DIA_Dragomir_OutHere   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dragomir_OutHere_Condition;
 	information = DIA_Dragomir_OutHere_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co tutaj robisz?";
 };
 FUNC INT DIA_Dragomir_OutHere_Condition()
 {
-	return true;	
+	return TRUE;	
 };
 FUNC VOID DIA_Dragomir_OutHere_Info()
 {
@@ -78,14 +78,14 @@ INSTANCE DIA_Dragomir_Settlers   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dragomir_Settlers_Condition;
 	information = DIA_Dragomir_Settlers_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Kto mieszka³ w tym obozie?";
 };
 FUNC INT DIA_Dragomir_Settlers_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Dragomir_OutHere))
 	{ 
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dragomir_Settlers_Info()
@@ -104,14 +104,14 @@ INSTANCE DIA_Dragomir_Dangerous   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dragomir_Dangerous_Condition;
 	information = DIA_Dragomir_Dangerous_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A czy tutaj nie JEST zbyt niebezpiecznie?";
 };
 FUNC INT DIA_Dragomir_Dangerous_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Dragomir_OutHere))
 	{ 
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dragomir_Dangerous_Info()
@@ -141,7 +141,7 @@ INSTANCE DIA_Dragomir_Armbrust   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Dragomir_Armbrust_Condition;
 	information = DIA_Dragomir_Armbrust_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Proszê. Znalaz³em twoj¹ kuszê.";
 };
 FUNC INT DIA_Dragomir_Armbrust_Condition()
@@ -149,7 +149,7 @@ FUNC INT DIA_Dragomir_Armbrust_Condition()
 	if (MIS_DragomirsArmbrust == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItRw_DragomirsArmbrust_MIS))
 	{ 
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dragomir_Armbrust_Info()
@@ -164,27 +164,33 @@ FUNC VOID DIA_Dragomir_Armbrust_Info()
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);					
 	MIS_DragomirsArmbrust = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP (XP_DragomirsArmbrust);
 };
 
 // ***********************************************************
 // 							Kannst du mir was beibringen?
 // ***********************************************************
-INSTANCE DIA_Dragomir_Learn (C_INFO)
+
+//---------------------------------------
+var int Dragomir_TeachPlayer;
+const int Dragomir_TeachingCost = 150;
+//---------------------------------------
+
+INSTANCE DIA_Dragomir_Learn   (C_INFO)
 {
 	npc         = BAU_983_Dragomir;
 	nr          = 2;
 	condition   = DIA_Dragomir_Learn_Condition;
 	information = DIA_Dragomir_Learn_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Mo¿esz mnie czegoœ nauczyæ?";
 };
 FUNC INT DIA_Dragomir_Learn_Condition()
 {
-	if (Npc_KnowsInfo(other,DIA_Dragomir_Dangerous))
-	&& (self.aivar[AIV_CanTeach] < true)
+	if (Npc_KnowsInfo (other,DIA_Dragomir_Dangerous))
+	&& (Dragomir_TeachPlayer == FALSE)
 	{ 
-		return true;
+		return TRUE;
 	};		
 };
 FUNC VOID DIA_Dragomir_Learn_Info()
@@ -197,9 +203,99 @@ FUNC VOID DIA_Dragomir_Learn_Info()
 	}
 	else
 	{
-		AI_Output (self ,other,"DIA_Dragomir_Learn_Here_12_01"); //Dobrze, jeœli o mnie chodzi, mo¿emy zaczynaæ natychmiast.
-
-		self.aivar[AIV_CanTeach] = true;
-		Info_ClearChoices(DIA_Dragomir_Learn);
+		AI_Output (self ,other,"DIA_Dragomir_Learn_12_02"); //Jeœli jesteœ w stanie zap³aciæ za naukê. Jak ju¿ mówi³em, w obecnej chwili krucho u mnie z gotówk¹.
+		AI_Output (other,self ,"DIA_Dragomir_Learn_15_03"); //Ile sobie ¿yczysz?
+		B_Say_Gold (self,other,Dragomir_TeachingCost);
+		
+		Info_ClearChoices (DIA_Dragomir_Learn);
+		Info_AddChoice (DIA_Dragomir_Learn,"Mo¿e póŸniej.",DIA_Dragomir_Learn_Later);
+		if (Npc_HasItems (other,ItMi_Gold) >= Dragomir_TeachingCost)
+		{ 
+			Info_AddChoice (DIA_Dragomir_Learn,"Oto twoje z³oto.",DIA_Dragomir_Learn_Here);
+		};
 	};	
 };
+
+FUNC VOID DIA_Dragomir_Learn_Later()
+{
+	AI_Output (other,self ,"DIA_Dragomir_Learn_Later_15_00"); //Mo¿e póŸniej.
+	Info_ClearChoices (DIA_Dragomir_Learn);
+};
+
+FUNC VOID DIA_Dragomir_Learn_Here()
+{
+	AI_Output (other,self ,"DIA_Dragomir_Learn_Here_15_00"); //Oto twoje z³oto.
+	B_GiveInvItems (other,self,ItMi_Gold,Dragomir_TeachingCost);
+	AI_Output (self ,other,"DIA_Dragomir_Learn_Here_12_01"); //Dobrze, jeœli o mnie chodzi, mo¿emy zaczynaæ natychmiast.
+	
+	Dragomir_TeachPlayer = TRUE;
+	Info_ClearChoices (DIA_Dragomir_Learn);
+};
+
+// ***********************************************************
+// 							Teach
+// ***********************************************************
+
+//------------------------------------------------------------
+var int DIA_Dragomir_Teach_permanent;
+//------------------------------------------------------------
+
+INSTANCE DIA_Dragomir_Teach   (C_INFO)
+{
+	npc         = BAU_983_Dragomir;
+	nr          = 2;
+	condition   = DIA_Dragomir_Teach_Condition;
+	information = DIA_Dragomir_Teach_Info;
+	permanent   = TRUE;
+	description = "Naucz mnie czegoœ.";
+};
+FUNC INT DIA_Dragomir_Teach_Condition()
+{
+	if (Dragomir_TeachPlayer == TRUE)
+	&& (DIA_Dragomir_Teach_permanent == FALSE)
+	{ 
+		return TRUE;
+	};		
+};
+FUNC VOID DIA_Dragomir_Teach_Info()
+{
+	AI_Output (other,self ,"DIA_Dragomir_Teach_15_00"); //Naucz mnie czegoœ.
+		
+	Info_ClearChoices 	(DIA_Dragomir_Teach);
+	Info_AddChoice 		(DIA_Dragomir_Teach,	DIALOG_BACK		,DIA_Dragomir_Teach_Back);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))		,DIA_Dragomir_Teach_1H_1);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1)*5)	,DIA_Dragomir_Teach_1H_5);
+
+};
+
+
+func void DIA_Dragomir_Teach_Back ()
+{
+	if (other.HitChance[NPC_TALENT_CROSSBOW] >= 75)
+	{
+		AI_Output(self,other,"DIA_Dragomir_Teach_12_00"); //Nie potrafiê ciê ju¿ niczego nauczyæ. Czas, abyœ poszuka³ sobie innego nauczyciela.
+		DIA_Dragomir_Teach_permanent = TRUE;
+		
+	};
+	Info_ClearChoices (DIA_Dragomir_Teach);
+};
+
+func void DIA_Dragomir_Teach_1H_1 ()
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 1, 75);
+	
+	Info_ClearChoices 	(DIA_Dragomir_Teach);
+	Info_AddChoice 		(DIA_Dragomir_Teach,	DIALOG_BACK		,DIA_Dragomir_Teach_Back);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))		,DIA_Dragomir_Teach_1H_1);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1)*5)	,DIA_Dragomir_Teach_1H_5);
+};
+
+func void DIA_Dragomir_Teach_1H_5 ()	
+{
+	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 5, 75);
+	
+	Info_ClearChoices 	(DIA_Dragomir_Teach);
+	Info_AddChoice 		(DIA_Dragomir_Teach,	DIALOG_BACK		,DIA_Dragomir_Teach_Back);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))		,DIA_Dragomir_Teach_1H_1);
+	Info_AddChoice		(DIA_Dragomir_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1)*5)	,DIA_Dragomir_Teach_1H_5);
+};	

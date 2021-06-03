@@ -1,7 +1,7 @@
-//******************************************************************************************
+///******************************************************************************************
 instance HC (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Kreator Postaci";
 	guild								=	GIL_NONE;
 	id									=	50;
@@ -9,25 +9,25 @@ instance HC (Npc_Default)
 	flags								=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ Aivars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, MAX_LEVEL);
 	B_SetFightSkills (self, FightTalent_Weak);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_50;
 };
 
@@ -92,8 +92,8 @@ func void Rtn_Smoke_Joint_50()
 	TA_Smoke_Joint	(20,00,08,00, "XXX");
 };
 
-//******************************************************************************************
-FUNC VOID Change_HC_Visual()
+///******************************************************************************************
+func void Change_HC_Visual()
 {
 	if (self.aivar[AIV_BodyTex] < 0)
 	{
@@ -122,7 +122,7 @@ FUNC VOID Change_HC_Visual()
 		self.aivar[AIV_FaceTex] = FaceTex_MAX-1;
 	};
 
-	// gender and races differencies
+	/// gender and races differencies
 	self.aivar[AIV_TeethTex] = self.aivar[AIV_Gender]*Teeth_Pretty;
 	if (self.aivar[AIV_Race] == RACE_Zombie)
 	{
@@ -134,21 +134,21 @@ FUNC VOID Change_HC_Visual()
 	
 	PrintScreen	("Rasa:", -1, 10, "FONT_OLD_10_WHITE.TGA", 2);
 	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 12, "FONT_OLD_10_WHITE.TGA", 2);
-
+	
 	PrintScreen	("Twarz:", -1, 16, "FONT_OLD_10_WHITE.TGA", 2);
 	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 18, "FONT_OLD_10_WHITE.TGA", 2);
-
+	
 	PrintScreen	("G³owa:", -1, 22, "FONT_OLD_10_WHITE.TGA", 2);
 	PrintScreen	(npc.name_3, -1, 24, "FONT_OLD_10_WHITE.TGA", 2);
-
+	
 	PrintScreen	("Cia³o:", -1, 28, "FONT_OLD_10_WHITE.TGA", 2);
 	PrintScreen	(IntToString(self.aivar[AIV_BodyTex]), -1, 30, "FONT_OLD_10_WHITE.TGA", 2);
-
+	
 	PrintScreen	("Skóra:", -1, 34, "FONT_OLD_10_WHITE.TGA", 2);
 	PrintScreen	(IntToString(self.aivar[AIV_SkinTex]), -1, 36, "FONT_OLD_10_WHITE.TGA", 2);
 };
-//******************************************************************************************
-INSTANCE DIA_HC_EXIT (C_INFO)
+///******************************************************************************************
+instance DIA_HC_EXIT (C_INFO)
 {
 	npc									=	HC;
 	nr									=	999;
@@ -157,14 +157,14 @@ INSTANCE DIA_HC_EXIT (C_INFO)
 	permanent							=	true;
 	description 						=	DIALOG_ENDE;
 };
-FUNC VOID DIA_HC_EXIT_Info()
+func void DIA_HC_EXIT_Info()
 {
 	AI_StopProcessInfos(self);
 };
-//******************************************************************************************
-//	RANDOM
-//******************************************************************************************
-INSTANCE DIA_HC_Race (C_INFO)
+///******************************************************************************************
+///	RACE
+///******************************************************************************************
+instance DIA_HC_Race (C_INFO)
 {
 	npc									=	HC;
 	nr									=	1;
@@ -173,7 +173,7 @@ INSTANCE DIA_HC_Race (C_INFO)
 	permanent							=	true;
 	description							=	"Rasa"; 
 };
-func VOID DIA_HC_Race_Info()
+func void DIA_HC_Race_Info()
 {
 	Info_ClearChoices(DIA_HC_Race);
 
@@ -187,64 +187,64 @@ func VOID DIA_HC_Race_Info()
 	Info_AddChoice (DIA_HC_Race, "Elf", DIA_HC_Race_Elf);
 	Info_AddChoice (DIA_HC_Race, "Cz³owiek", DIA_HC_Race_Human);
 };
-//******************************************************************************************
-FUNC VOID DIA_HC_Race_BACK()
+///******************************************************************************************
+func void DIA_HC_Race_BACK()
 {
 	Info_ClearChoices(DIA_HC_Race);
 };
-FUNC VOID DIA_HC_Race_Human()
+func void DIA_HC_Race_Human()
 {
 	self.aivar[AIV_Race] = RACE_Human;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Elf()
+func void DIA_HC_Race_Elf()
 {
 	self.aivar[AIV_Race] = RACE_Elf;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Dwarf()
+func void DIA_HC_Race_Dwarf()
 {
 	self.aivar[AIV_Race] = RACE_Dwarf;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Orc()
+func void DIA_HC_Race_Orc()
 {
 	self.aivar[AIV_Race] = RACE_Orc;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Draconian()
+func void DIA_HC_Race_Draconian()
 {
 	self.aivar[AIV_Race] = RACE_Draconian;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Demon()
+func void DIA_HC_Race_Demon()
 {
 	self.aivar[AIV_Race] = RACE_Demon;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Zombie()
+func void DIA_HC_Race_Zombie()
 {
 	self.aivar[AIV_Race] = RACE_Zombie;
 	Change_HC_Visual();
 };
-FUNC VOID DIA_HC_Race_Beast()
+func void DIA_HC_Race_Beast()
 {
 	self.aivar[AIV_Race] = RACE_Beast;
 	Change_HC_Visual();
 };
-//******************************************************************************************
-//	SEX
-//******************************************************************************************
-INSTANCE DIA_HC_Sex (C_INFO)
+///******************************************************************************************
+///	GENDER
+///******************************************************************************************
+instance DIA_HC_Gender (C_INFO)
 {
 	npc									=	HC;
 	nr									=	2;
 	condition							=	atrue;
-	information							=	DIA_HC_Sex_Info;
+	information							=	DIA_HC_Gender_Info;
 	permanent							=	true;
 	description							=	"P³eæ";
 };
-FUNC VOID DIA_HC_Sex_Info()
+func void DIA_HC_Gender_Info()
 {
 	if (self.aivar[AIV_Gender] == MALE)
 	{
@@ -256,8 +256,10 @@ FUNC VOID DIA_HC_Sex_Info()
 	};
 	Change_HC_Visual();
 };
-//******************************************************************************************
-INSTANCE DIA_HC_Face (C_INFO)
+///******************************************************************************************
+///	FACE
+///******************************************************************************************
+instance DIA_HC_Face (C_INFO)
 {
 	npc									=	HC;
 	nr									=	3;
@@ -266,7 +268,7 @@ INSTANCE DIA_HC_Face (C_INFO)
 	permanent							=	true;
 	description							=	"Wybór twarzy";
 };
-func VOID DIA_HC_Face_Info()
+func void DIA_HC_Face_Info()
 {
 	Info_ClearChoices(DIA_HC_Face);
 
@@ -279,57 +281,57 @@ func VOID DIA_HC_Face_Info()
 	Info_AddChoice (DIA_HC_Face, "Poprzednia twarz", DIA_HC_PreviousFace);
 	Info_AddChoice (DIA_HC_Face, "Nastêpna twarz", DIA_HC_NextFace);
 };
-//******************************************************************************************
-FUNC VOID DIA_HC_Face_BACK()
+///******************************************************************************************
+func void DIA_HC_Face_BACK()
 {
 	Info_ClearChoices(DIA_HC_Face);
 };
-FUNC VOID DIA_HC_NextFace()
+func void DIA_HC_NextFace()
 {
 	self.aivar[AIV_FaceTex] += 1;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_PreviousFace()
+func void DIA_HC_PreviousFace()
 {
 	self.aivar[AIV_FaceTex] -= 1;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_NextFace10()
+func void DIA_HC_NextFace10()
 {
 	self.aivar[AIV_FaceTex] += 10;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_PreviousFace10()
+func void DIA_HC_PreviousFace10()
 {
 	self.aivar[AIV_FaceTex] -= 10;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_NextFace50()
+func void DIA_HC_NextFace50()
 {
 	self.aivar[AIV_FaceTex] += 50;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_PreviousFace50()
+func void DIA_HC_PreviousFace50()
 {
 	self.aivar[AIV_FaceTex] -= 50;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-FUNC VOID DIA_HC_ResetFace()
+func void DIA_HC_ResetFace()
 {
 	self.aivar[AIV_FaceTex] = 0;
 	Change_HC_Visual();
 	DIA_HC_Face_Info();
 };
-//******************************************************************************************
-//	HEAD
-//******************************************************************************************
-INSTANCE DIA_HC_Choose_HeadMesh (C_INFO)
+///******************************************************************************************
+///	HEAD
+///******************************************************************************************
+instance DIA_HC_Choose_HeadMesh (C_INFO)
 {
 	npc									=	HC;
 	nr									=	4;
@@ -338,9 +340,9 @@ INSTANCE DIA_HC_Choose_HeadMesh (C_INFO)
 	permanent							=	true;
 	description							=	"Wybór kszta³tu g³owy";
 };
-FUNC VOID DIA_HC_Choose_HeadMesh_Info()
-{	
-	Info_ClearChoices	(DIA_HC_Choose_HeadMesh);
+func void DIA_HC_Choose_HeadMesh_Info()
+{
+	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
 
 	Info_AddChoice	(DIA_HC_Choose_HeadMesh, DIALOG_BACK, DIA_HC_Choose_HeadMesh_Back);
 
@@ -377,7 +379,7 @@ FUNC VOID DIA_HC_Choose_HeadMesh_Info()
 		Info_AddChoice	(DIA_HC_Choose_HeadMesh, "Hum_Head_Bald", DIA_HC_Choose_HeadMesh_M_1);
 	};
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_HC_Choose_HeadMesh_W_1()
 {
 //	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
@@ -448,7 +450,7 @@ func void DIA_HC_Choose_HeadMesh_W_10()
 	npc.name_3 = "Hum_Head_BabeHair";
 	Change_HC_Visual();
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_HC_Choose_HeadMesh_M_1()
 {
 //	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
@@ -551,10 +553,10 @@ func void DIA_HC_Choose_HeadMesh_Back()
 {
 	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
 };
-//******************************************************************************************
-//	BODY
-//******************************************************************************************
-INSTANCE DIA_HC_Body (C_INFO)
+///******************************************************************************************
+///	BODY
+///******************************************************************************************
+instance DIA_HC_Body (C_INFO)
 {
 	npc									=	HC;
 	nr									=	5;
@@ -563,7 +565,7 @@ INSTANCE DIA_HC_Body (C_INFO)
 	permanent							=	true;
 	description							=	"Wybór tekstury cia³a"; 
 };
-func VOID DIA_HC_Body_Info()
+func void DIA_HC_Body_Info()
 {
 	Info_ClearChoices(DIA_HC_Body);
 
@@ -574,45 +576,45 @@ func VOID DIA_HC_Body_Info()
 	Info_AddChoice (DIA_HC_Body, "Poprzednia tekstura cia³a", DIA_HC_PreviousBody);
 	Info_AddChoice (DIA_HC_Body, "Nastêpna tekstura cia³a", DIA_HC_NextBody);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_HC_Body_BACK()
 {
 	Info_ClearChoices(DIA_HC_Body);
 };
-FUNC VOID DIA_HC_NextBody()
+func void DIA_HC_NextBody()
 {
 	self.aivar[AIV_BodyTex] += 1;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
 };             
-FUNC VOID DIA_HC_PreviousBody()
+func void DIA_HC_PreviousBody()
 {
 	self.aivar[AIV_BodyTex] -= 1;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
 };
-FUNC VOID DIA_HC_NextBody5()
+func void DIA_HC_NextBody5()
 {
 	self.aivar[AIV_BodyTex] += 5;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
 };
-FUNC VOID DIA_HC_PreviousBody5()
+func void DIA_HC_PreviousBody5()
 {
 	self.aivar[AIV_BodyTex] -= 5;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
 };
-FUNC VOID DIA_HC_DefaultBody()
+func void DIA_HC_DefaultBody()
 {
 	self.aivar[AIV_BodyTex] = 0;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
 };
-//******************************************************************************************
-//	SKIN
-//******************************************************************************************
-INSTANCE DIA_HC_Skin (C_INFO)
+///******************************************************************************************
+///	SKIN
+///******************************************************************************************
+instance DIA_HC_Skin (C_INFO)
 {
 	npc									=	HC;
 	nr									=	6;
@@ -621,7 +623,7 @@ INSTANCE DIA_HC_Skin (C_INFO)
 	permanent							=	true;
 	description							=	"Wybór tekstury skóry"; 
 };
-func VOID DIA_HC_Skin_Info()
+func void DIA_HC_Skin_Info()
 {
 	Info_ClearChoices(DIA_HC_Skin);
 
@@ -630,24 +632,24 @@ func VOID DIA_HC_Skin_Info()
 	Info_AddChoice (DIA_HC_Skin, "Poprzednia tekstura skóry", DIA_HC_PreviousSkin);
 	Info_AddChoice (DIA_HC_Skin, "Nastêpna tekstura skóry", DIA_HC_NextSkin);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void DIA_HC_Skin_BACK()
 {
 	Info_ClearChoices(DIA_HC_Skin);
 };
-FUNC VOID DIA_HC_NextSkin()
+func void DIA_HC_NextSkin()
 {	
 	self.aivar[AIV_SkinTex] += 1;
 	Change_HC_Visual();
 	DIA_HC_Skin_Info();
 };                
-FUNC VOID DIA_HC_PreviousSkin()
+func void DIA_HC_PreviousSkin()
 {	
 	self.aivar[AIV_SkinTex] -= 1;
 	Change_HC_Visual();
 	DIA_HC_Skin_Info();
 };
-FUNC VOID DIA_HC_DefaultSkin()
+func void DIA_HC_DefaultSkin()
 {
 	self.aivar[AIV_SkinTex] = 0;
 	Change_HC_Visual();

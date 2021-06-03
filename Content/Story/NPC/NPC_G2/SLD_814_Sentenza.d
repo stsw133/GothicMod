@@ -1,40 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance SLD_814_Sentenza (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Sentenza";
 	guild 								=	GIL_SLD;
 	id 									=	814;
 	voice 								=	9;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_MM_FollowTime]			=	60;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Medium);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	CreateInvItem (self, ItFo_Apple);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_SLD_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_814;
 };
 
-FUNC VOID Rtn_Start_814()
+func void Rtn_Start_814()
 {
 	TA_Stand_Eating	(08,00,22,00, "NW_BIGFARM_ALLEE_01");
 	TA_Stand_Eating	(22,00,08,00, "NW_BIGFARM_ALLEE_01");

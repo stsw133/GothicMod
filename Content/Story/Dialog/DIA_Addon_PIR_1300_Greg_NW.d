@@ -7,18 +7,18 @@ INSTANCE DIA_Addon_Greg_NW_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_Greg_NW_EXIT_Condition;
 	information	= DIA_Addon_Greg_NW_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Addon_Greg_NW_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Addon_Greg_NW_EXIT_Info()
 {	
 	AI_StopProcessInfos	(self);
-	PlayerTalkedToGregNW	= true;
+	PlayerTalkedToGregNW	= TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -38,7 +38,7 @@ instance DIA_Addon_Greg_NW_Hallo		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_Hallo_Condition;
 	information	 = 	DIA_Addon_Greg_NW_Hallo_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -46,7 +46,7 @@ func int DIA_Addon_Greg_NW_Hallo_Condition ()
 {
 	if (GregLocation == Greg_Farm1)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -60,7 +60,7 @@ func void DIA_Addon_Greg_NW_Hallo_Info ()
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_Hallo_01_04"); //Od razu widaæ, ¿e nie dasz siê ³atwo nabraæ.
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_Hallo_01_05"); //Mo¿e chcia³byœ dorobiæ sobie trochê na boku, co?
 
-	PlayerTalkedToGregNW	= true;
+	PlayerTalkedToGregNW	= TRUE;
 	SC_MeetsGregTime = 1; //Joly: erste Mal getroffen.
 
 	Info_ClearChoices	(DIA_Addon_Greg_NW_Hallo);
@@ -132,7 +132,7 @@ instance DIA_Addon_Greg_NW_Stadtwachen		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_Stadtwachen_Condition;
 	information	 = 	DIA_Addon_Greg_NW_Stadtwachen_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeœli chodzi o stra¿ników...";
 };
@@ -142,7 +142,7 @@ func int DIA_Addon_Greg_NW_Stadtwachen_Condition ()
 	if (MIS_Addon_Greg_BringMeToTheCity == LOG_RUNNING)
 	&& (GregLocation == Greg_Farm1)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -158,25 +158,24 @@ func void DIA_Addon_Greg_NW_Stadtwachen_Info ()
 	Info_ClearChoices	(DIA_Addon_Greg_NW_Stadtwachen);
 	Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Bêdê musia³ o tym pomyœleæ.", DIA_Addon_Greg_NW_Stadtwachen_nochnicht );
 
-	if (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_geld == false)
+	if (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_geld == FALSE)
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "A mo¿e spróbujesz ³apówki?", DIA_Addon_Greg_NW_Stadtwachen_geld );
 	};
 
-	if (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_Schein == false)
+	if (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_Schein == FALSE)
 	&& (Npc_HasItems (other,ItWr_Passierschein))
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Mam przepustkê do miasta.", DIA_Addon_Greg_NW_Stadtwachen_Schein );
 	};
 	
 	if (MIS_Addon_Lester_PickForConstantino != 0)
-	&& (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_constantino == false)
+	&& (DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_constantino == FALSE)
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Do miasta mog¹ wejœæ zbieracze zió³.", DIA_Addon_Greg_NW_Stadtwachen_constantino );
 	};
 
-	if (Npc_HasItems(other,ItAr_BAU_00))
-	|| (Npc_HasItems(other,ItAr_BAU_01))
+	IF	((Npc_HasItems (other,ItAr_BAU_L)) || (Npc_HasItems (other,ItAr_BAU_M)))
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Powinni ciê wpuœciæ, jeœli za³o¿ysz ten strój rolnika.", DIA_Addon_Greg_NW_Stadtwachen_klamotten );
 	};
@@ -186,41 +185,32 @@ func void DIA_Addon_Greg_NW_Stadtwachen_klamotten ()
 {
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_15_00"); //Powinni ciê wpuœciæ, jeœli za³o¿ysz ten strój rolnika.
 
-	if (Npc_HasItems(other,ItAr_BAU_00))
+	if (Npc_HasItems (other,ItAr_BAU_L))
 	{
-		B_GiveInvItems (other, self, ItAr_BAU_00, 1);
+		B_GiveInvItems 		(other, self, ItAr_BAU_L,1);
 	}
-	else if (Npc_HasItems(other,ItAr_BAU_01))
+	else //ITAR_BAU_M
 	{
-		B_GiveInvItems (other, self, ITAR_BAU_01, 1);
+		B_GiveInvItems 		(other, self, ITAR_BAU_M,1);
 	};
 
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_01"); //Tego mi w³aœnie trzeba. Wiedzia³em, ¿e mogê na ciebie liczyæ.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_02"); //Nikt na mnie nie zwróci uwagi, jeœli przebiorê siê za wsiowego g³upka. Ha, ha!
 
-	if (Npc_HasItems(self,ItAr_BAU_00))
+	if (Npc_HasItems (self,ItAr_BAU_L))
 	{
-		AI_EquipArmor (self,ItAr_BAU_00);
+		AI_EquipArmor 		(self,ItAr_BAU_L);
 	}
-	else if (Npc_HasItems(self,ItAr_BAU_01))
+	else //ITAR_BAU_M
 	{
-		AI_EquipArmor (self,ITAR_BAU_01);
+		AI_EquipArmor 		(self,ITAR_BAU_M);
 	};
 	
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_03"); //Doskonale. Dobrze siê spisa³eœ. Oto obiecana zap³ata.
-
-	if (Npc_GetTalentSkill(other,NPC_TALENT_PERSUASION) == true)
-	{
-		CreateInvItems (self, ItMi_Gold, 55);
-		B_GiveInvItems (self, other, ItMi_Gold, 55);
-	}
-	else
-	{
-		CreateInvItems (self, ItMi_Gold, 50);
-		B_GiveInvItems (self, other, ItMi_Gold, 50);
-	};
-
-	B_GivePlayerXP(XP_BONUS_1);
+	
+	CreateInvItems (self, ItMi_Gold, 50);									
+	B_GiveInvItems (self, other, ItMi_Gold, 50);	
+	B_GivePlayerXP (XP_Greg_NW_GiveBauArmor);				
 	
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_15_04"); //Co? Nêdzne 50 z³otych monet? Chyba ¿artujesz.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_05"); //Z³oto to nie wszystko, przyjacielu. Niech ci to na razie wystarczy.
@@ -245,19 +235,19 @@ func void DIA_Addon_Greg_NW_Stadtwachen_Schein ()
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_Schein_15_00"); //Mam przepustkê do miasta.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_Schein_01_01"); //Oczywiœcie. Po prostu bêdê udawaæ mieszkañca tego piêknego miasta...
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_Schein_01_02"); //Przyjrzyj mi siê uwa¿nie, ch³opcze. Nabra³by siê na to chyba tylko œlepiec.
-	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_Schein = true;
+	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_Schein = TRUE;
 };
 func void DIA_Addon_Greg_NW_Stadtwachen_constantino ()
 {
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_constantino_15_00"); //Do miasta mog¹ wejœæ zbieracze zió³.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_constantino_01_01"); //Co? Czy ja wygl¹dam, jakbym hasa³ po lesie, zbieraj¹c kwiatki?
-	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_constantino = true;
+	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_constantino = TRUE;
 };
 func void DIA_Addon_Greg_NW_Stadtwachen_geld ()
 {
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_geld_15_00"); //A mo¿e spróbujesz ³apówki?
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_geld_01_01"); //Tak, gdyby to mog³o siê udaæ, ju¿ pewnie bym spróbowa³.
-	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_geld = true;
+	DIA_Addon_Greg_NW_Stadtwachen_ChoiceClose_geld = TRUE;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info PERM
@@ -268,7 +258,7 @@ instance DIA_Addon_Greg_NW_PERM		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_PERM_Condition;
 	information	 = 	DIA_Addon_Greg_NW_PERM_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeszcze jedno...";
 };
@@ -277,7 +267,7 @@ func int DIA_Addon_Greg_NW_PERM_Condition ()
 	if ((MIS_Addon_Greg_BringMeToTheCity == LOG_SUCCESS)||(MIS_Addon_Greg_BringMeToTheCity == LOG_FAILED))
 	&& (GregLocation == Greg_Farm1)
 		{
-			return true;
+			return TRUE;
 		};
 };
 func void DIA_Addon_Greg_NW_PERM_Info ()
@@ -305,14 +295,14 @@ instance DIA_Addon_Greg_NW_MeetGregSecondTime		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_MeetGregSecondTime_Condition;
 	information	 = 	DIA_Addon_Greg_NW_MeetGregSecondTime_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Greg_NW_MeetGregSecondTime_Condition ()
 {
 	if (GregLocation == Greg_Taverne)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -336,7 +326,7 @@ func void DIA_Addon_Greg_NW_MeetGregSecondTime_Info ()
 	};
 
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_MeetGregSecondTime_01_06"); //Zreszt¹ potrzebujê w³aœnie kogoœ takiego jak ty.
-	SC_SawGregInTaverne = true;
+	SC_SawGregInTaverne = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -356,7 +346,7 @@ func int DIA_Addon_Greg_NW_wer_Condition ()
 {
 	if (GregLocation >= Greg_Taverne)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -386,7 +376,7 @@ func int DIA_Addon_Greg_NW_was_Condition ()
 {
 	if (GregLocation == Greg_Taverne)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -400,7 +390,7 @@ func VOID B_Greg_Search_Dexter ()
 	Log_SetTopicStatus(TOPIC_Addon_Greg_NW, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Greg_NW,"Cz³owiek z opask¹ na oku szuka kogoœ, kogo imiê zaczyna siê na 'D'."); 
 
-	SC_KnowsGregsSearchsDexter = true;
+	SC_KnowsGregsSearchsDexter = TRUE;
 };
 
 func void DIA_Addon_Greg_NW_was_Info ()
@@ -418,8 +408,8 @@ func void DIA_Addon_Greg_NW_was_Info ()
 	Info_ClearChoices	(DIA_Addon_Greg_NW_was);
 	Info_AddChoice	(DIA_Addon_Greg_NW_was, "Mówisz o Diego.", DIA_Addon_Greg_NW_was_Diego );
 
-	if (Bdt13_Dexter_verraten == true) 
-	|| (Ranger_SCKnowsDexter == true)
+	if (Bdt13_Dexter_verraten == TRUE) 
+	|| (Ranger_SCKnowsDexter == TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_was, "Czy ma na imiê Dexter?", DIA_Addon_Greg_NW_was_Dexter );
 	};
@@ -554,7 +544,7 @@ func int DIA_Addon_Greg_NW_RakeCaveLos_Condition ()
 	&& (GregLocation >= Greg_Taverne)
 	&& (GregLocation < Greg_Dexter)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -582,7 +572,7 @@ instance DIA_Addon_Greg_NW_RakeCaveThere		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_RakeCaveThere_Condition;
 	information	 = 	DIA_Addon_Greg_NW_RakeCaveThere_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
@@ -593,7 +583,7 @@ func int DIA_Addon_Greg_NW_RakeCaveThere_Condition ()
 	&& (GregLocation < Greg_Dexter)
 	&& ((Npc_GetDistToWP(self,"NW_BIGFARM_LAKE_CAVE_01")<1000) )
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -623,18 +613,18 @@ instance DIA_Addon_Greg_NW_RakeCavePlundered		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_RakeCavePlundered_Condition;
 	information	 = 	DIA_Addon_Greg_NW_RakeCavePlundered_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Greg_NW_RakeCavePlundered_Condition ()
 {
-	if ((MIS_Addon_Greg_RakeCave_Day <= (Wld_GetDay()-2)) || (RAKEPLACE[Greg_FirstSecret] == true))
+	if ((MIS_Addon_Greg_RakeCave_Day <= (Wld_GetDay()-2)) || (RAKEPLACE[Greg_FirstSecret] == TRUE))
 	&& (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
 	&& (GregLocation >= Greg_Taverne)
 	&& (GregLocation < Greg_Dexter)
 	&& (Npc_GetDistToWP(self,"NW_BIGFARM_LAKE_CAVE_01")<1000) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -642,7 +632,7 @@ func void DIA_Addon_Greg_NW_RakeCavePlundered_Info ()
 {
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_RakeCavePlundered_01_00"); //Czemu tak d³ugo ciê nie by³o? Znalaz³eœ coœ?
 	
-	if (RAKEPLACE[Greg_FirstSecret] == true)
+	if (RAKEPLACE[Greg_FirstSecret] == TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_RakeCavePlundered, "Tak. Wykopa³em sakiewkê ze z³otem.", DIA_Addon_Greg_NW_RakeCavePlundered_gold );
 	};
@@ -651,7 +641,7 @@ func void DIA_Addon_Greg_NW_RakeCavePlundered_Info ()
 func void DIA_Addon_Greg_NW_RakeCavePlundered_No ()
 {
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_RakeCavePlundered_No_15_00"); //Nie.
-	if (RAKEPLACE[Greg_FirstSecret] == true)
+	if (RAKEPLACE[Greg_FirstSecret] == TRUE)
 	{
 		AI_Output			(self, other, "DIA_Addon_Greg_NW_RakeCavePlundered_No_01_01"); //Jaja sobie robisz?
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_RakeCavePlundered_No_15_02"); //Tam NAPRAWDÊ nic nie by³o.
@@ -672,10 +662,10 @@ func void B_Greg_RakePlaceBriefing ()
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_RakePlaceBriefing_01_03"); //S¹ tam schody prowadz¹ce z pól do Onara.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_RakePlaceBriefing_01_04"); //U podnó¿y schodów jest wg³êbienie, a w nim kolejne miejsce.
 
-	if (B_Greg_RakePlaceBriefing_OneTime == false)
+	if (B_Greg_RakePlaceBriefing_OneTime == FALSE)
 	{
 		B_LogEntry (TOPIC_Addon_Greg_NW,"S¹ te¿ inne schowki. 1) Na wysepce na jeziorze z dwoma wodospadami. 2) Na pastwisku za farm¹. 3) Obok wejœcia do prze³êczy, w pobli¿u wodospadów. 4) W jarze pod schodami, które prowadz¹ z pastwiska na pola bogatego farmera. Mam odzyskaæ jego rzeczy. Bêdzie na mnie czeka³ na skrzy¿owaniu miêdzy polami.");
-		B_Greg_RakePlaceBriefing_OneTime = true;
+		B_Greg_RakePlaceBriefing_OneTime = TRUE;
 	};
 };                                                                                             
                                                                                                
@@ -698,12 +688,12 @@ func void DIA_Addon_Greg_NW_RakeCavePlundered_gold ()
 			AI_Output			(self, other, "DIA_Addon_Greg_NW_RakeCavePlundered_gold_01_05"); //Okazuje siê, ¿e jednak na coœ siê przydajesz.
 			AI_Output			(self, other, "DIA_Addon_Greg_NW_RakeCavePlundered_gold_01_06"); //Dobra, s³uchaj. Zakopa³em wiêcej z³ota w innych skrytkach. A ty je dla mnie znajdziesz.
 			B_Greg_RakePlaceBriefing ();
-			Greg_SuchWeiter = true;
+			Greg_SuchWeiter = TRUE;
 			AI_Output			(self, other, "DIA_Addon_Greg_NW_RakeCavePlundered_gold_01_07"); //Bêdê na ciebie czekaæ na rozdro¿u pomiêdzy polami tego bogatego farmera. Nie zawiedŸ mnie, bo bêdziesz tego ¿a³owa³, jasne?
 			AI_StopProcessInfos (self);
 			GregLocation = Greg_Bigcross;
 			Npc_ExchangeRoutine	(self,"Bigcross");
-			B_GivePlayerXP(XP_BONUS_1);
+			B_GivePlayerXP (XP_Addon_RakeCavePlundered);
 		}
 	else
 		{
@@ -726,8 +716,8 @@ instance DIA_Addon_Greg_NW_LakeCave	(C_INFO)
 	nr		 	= 100; //alle anderen importants wichtiger
 	condition	= DIA_Addon_Greg_NW_LakeCave_Condition;
 	information	= DIA_Addon_Greg_NW_LakeCave_Info;
-	permanent	= true;
-	important 	= true;
+	permanent	= TRUE;
+	important 	= TRUE;
 };
 
 func int DIA_Addon_Greg_NW_LakeCave_Condition ()
@@ -737,9 +727,9 @@ func int DIA_Addon_Greg_NW_LakeCave_Condition ()
 	&& (GregLocation >= Greg_Taverne)
 	&& (GregLocation < Greg_Dexter)
 	&& (Npc_GetDistToWP(self,"NW_BIGFARM_LAKE_CAVE_01")<1000) 	
-	&& (Greg_SuchWeiter == false)
+	&& (Greg_SuchWeiter == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -757,7 +747,7 @@ instance DIA_Addon_Greg_NW_WhereTreasures		(C_INFO)
 	nr		 = 	10;
 	condition	 = 	DIA_Addon_Greg_NW_WhereTreasures_Condition;
 	information	 = 	DIA_Addon_Greg_NW_WhereTreasures_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Przypomnij mi, gdzie dok³adnie zakopa³eœ swoje rzeczy?";
 };
@@ -765,9 +755,9 @@ instance DIA_Addon_Greg_NW_WhereTreasures		(C_INFO)
 func int DIA_Addon_Greg_NW_WhereTreasures_Condition ()
 {
 	if (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
-	&& (Greg_SuchWeiter == true)
+	&& (Greg_SuchWeiter == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -786,7 +776,7 @@ instance DIA_Addon_Greg_NW_PermTaverne		(C_INFO)
 	nr		 = 	99;
 	condition	 = 	DIA_Addon_Greg_NW_PermTaverne_Condition;
 	information	 = 	DIA_Addon_Greg_NW_PermTaverne_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Jeszcze jedno...";
 };
@@ -795,15 +785,15 @@ func int DIA_Addon_Greg_NW_PermTaverne_Condition ()
 {
 	if 	(
 		(GregLocation == Greg_Bigcross)
-		&& (Npc_KnowsInfo (other, DIA_Addon_Greg_NW_Bigcross) == false)
-		&& (((Npc_GetDistToWP(self,"BIGCROSS")<1000) == false)||(MIS_Addon_Greg_RakeCave == LOG_SUCCESS))
+		&& (Npc_KnowsInfo (other, DIA_Addon_Greg_NW_Bigcross) == FALSE)
+		&& (((Npc_GetDistToWP(self,"BIGCROSS")<1000) == FALSE)||(MIS_Addon_Greg_RakeCave == LOG_SUCCESS))
 		)
 	|| 	(
 		(GregLocation == Greg_Dexter)
 		&& (Npc_KnowsInfo (other, DIA_Addon_Greg_NW_WasWillstDu))
 		)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -812,7 +802,7 @@ func void DIA_Addon_Greg_NW_PermTaverne_Info ()
 	AI_Output	(other, self, "DIA_Addon_Greg_NW_PermTaverne_15_00"); //Jeszcze jedno...
 
 	if (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
-	&& (Greg_SuchWeiter == true)
+	&& (Greg_SuchWeiter == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Greg_NW_PermTaverne_01_01"); //Najpierw przynieœ moje zakopane rzeczy. PóŸniej bêdziemy mogli porozmawiaæ o innych sprawach.
 	}
@@ -853,7 +843,7 @@ func int DIA_Addon_Greg_NW_Bigcross_Condition ()
 	if (GregLocation == Greg_Bigcross)
 	&& (Npc_GetDistToWP(self,"BIGCROSS")<1000) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -870,14 +860,14 @@ func void DIA_Addon_Greg_NW_Bigcross_Info ()
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_Bigcross_01_04"); //Ale wychodzi na to, ¿e to zgraja zadufanych w sobie pysza³ków.
 	
 	if (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
-	&& (Greg_SuchWeiter == true)
+	&& (Greg_SuchWeiter == TRUE)
 	{
 		AI_Output	(self, other, "DIA_Addon_Greg_NW_Bigcross_01_05"); //Jak ci idzie poszukiwanie moich zakopanych skarbów? Znalaz³eœ ju¿ coœ?
-		if (RAKEPLACE[1]==false)
-		|| (RAKEPLACE[2]==false)
-		|| (RAKEPLACE[3]==false)
-		|| (RAKEPLACE[4]==false)
-		|| (RAKEPLACE[5]==false)
+		if (RAKEPLACE[1]==FALSE)
+		|| (RAKEPLACE[2]==FALSE)
+		|| (RAKEPLACE[3]==FALSE)
+		|| (RAKEPLACE[4]==FALSE)
+		|| (RAKEPLACE[5]==FALSE)
 		{
 			AI_Output	(other, self, "DIA_Addon_Greg_NW_Bigcross_15_06"); //Nie, jeszcze nie wszystko.
 			AI_Output	(self, other, "DIA_Addon_Greg_NW_Bigcross_01_07"); //No to bierz siê do roboty. To chyba nie takie trudne, co?
@@ -904,7 +894,7 @@ func int DIA_Addon_Greg_NW_WhatWantFromSLD_Condition ()
 	&& (GregLocation == Greg_Bigcross)
 	&& (Npc_GetDistToWP(self,"BIGCROSS")<1000) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -912,7 +902,7 @@ func void DIA_Addon_Greg_NW_WhatWantFromSLD_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Greg_NW_WhatWantFromSLD_15_00"); //Czego chcia³eœ od najemników?
 	
-	if (SC_KnowsGregsSearchsDexter == false)
+	if (SC_KnowsGregsSearchsDexter == FALSE)
 	{
 		B_Greg_Search_Dexter ();
 	}
@@ -940,9 +930,9 @@ func int DIA_Addon_Greg_NW_DexterFound_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Greg_NW_Bigcross))
 	&& (GregLocation == Greg_Bigcross)
-	&& ((Bdt13_Dexter_verraten == true) || (Ranger_SCKnowsDexter == true))
+	&& ((Bdt13_Dexter_verraten == TRUE) || (Ranger_SCKnowsDexter == TRUE))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -973,7 +963,7 @@ func void DIA_Addon_Greg_NW_DexterFound_wo ()
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_DexterFound_wo_01_06"); //Muszê teraz jedynie zajrzeæ do wszystkich nor i dziur na tym terenie.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_DexterFound_wo_01_07"); //Znajdê tê œwiniê. Nie potrzebujê ju¿ twojej pomocy.
 	Info_ClearChoices	(DIA_Addon_Greg_NW_DexterFound);
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 func void DIA_Addon_Greg_NW_DexterFound_together ()
@@ -999,15 +989,15 @@ instance DIA_Addon_Greg_NW_CaughtDexter		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_CaughtDexter_Condition;
 	information	 = 	DIA_Addon_Greg_NW_CaughtDexter_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Greg_NW_CaughtDexter_Condition ()
 {
 	if (GregLocation == Greg_Dexter)
-	&& (Npc_IsDead(Dexter) == false)
+	&& (Npc_IsDead(Dexter) == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1029,16 +1019,16 @@ instance DIA_Addon_Greg_NW_WodennNu		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_WodennNu_Condition;
 	information	 = 	DIA_Addon_Greg_NW_WodennNu_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Greg_NW_WodennNu_Condition ()
 {
 	if (GregLocation == Greg_Dexter)
-	&& (Npc_IsDead(Dexter) == false)
+	&& (Npc_IsDead(Dexter) == FALSE)
 	&& (Npc_GetDistToWP(self,"NW_CASTLEMINE_HUT_10")<500) 
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1059,7 +1049,7 @@ instance DIA_Addon_Greg_NW_CaughtDexter2		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_CaughtDexter2_Condition;
 	information	 = 	DIA_Addon_Greg_NW_CaughtDexter2_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Addon_Greg_NW_CaughtDexter2_Condition ()
@@ -1067,7 +1057,7 @@ func int DIA_Addon_Greg_NW_CaughtDexter2_Condition ()
 	if (GregLocation == Greg_Dexter)
 	&& (Npc_IsDead(Dexter))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1077,7 +1067,7 @@ func void DIA_Addon_Greg_NW_CaughtDexter2_Info ()
 	AI_Output	(other, self, "DIA_Addon_Greg_NW_CaughtDexter2_15_01"); //Wygl¹da na to, ¿e nie ¿yje.
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_CaughtDexter2_01_02"); //Najwy¿szy czas. SprawdŸ, co mia³ przy sobie.
 	Npc_ExchangeRoutine	(self,"DexterHouseWalk");
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1100,7 +1090,7 @@ func int DIA_Addon_Greg_NW_RavensLetter_Condition ()
 	&& (Npc_HasItems (other,ItWr_RavensKidnapperMission_Addon))
 	&& (Npc_IsDead(Dexter))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1113,8 +1103,8 @@ func void DIA_Addon_Greg_NW_RavensLetter_Info ()
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_RavensLetter_01_03"); //Nie powinniœmy byli pozwoliæ temu gnojkowi tak szybko zdechn¹æ.
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_RavensLetter_01_04"); //Nie wiesz mo¿e, jak da³oby siê przekroczyæ góry w pó³nocno-wschodniej czêœci Khorinis?
 	
-	if (Nefarius_NW.aivar[AIV_TalkedToPlayer] == true)
-	&& (Saturas_NW.aivar[AIV_TalkedToPlayer] == true)
+	if (Nefarius_NW.aivar[AIV_TalkedToPlayer] == TRUE)
+	&& (Saturas_NW.aivar[AIV_TalkedToPlayer] == TRUE)
 	{
 		AI_Output	(other, self, "DIA_Addon_Greg_NW_RavensLetter_15_05"); //Mo¿e przez podziemny tunel? Magowie Wody badaj¹ w³aœnie portal, który prowadzi w g³¹b gór na pó³nocnym wschodzie.
 		AI_Output	(self, other, "DIA_Addon_Greg_NW_RavensLetter_01_06"); //Co to znowu za bzdura?
@@ -1144,7 +1134,7 @@ func int DIA_Addon_Greg_NW_WasWillstDu_Condition ()
 	if (GregLocation == Greg_Dexter)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Greg_NW_RavensLetter))
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1159,7 +1149,7 @@ func void DIA_Addon_Greg_NW_WasWillstDu_Info ()
 	Info_ClearChoices	(DIA_Addon_Greg_NW_WasWillstDu);
 	Info_AddChoice	(DIA_Addon_Greg_NW_WasWillstDu, "Co znajduje siê po drugiej stronie gór?", DIA_Addon_Greg_NW_WasWillstDu_da );
 	
-	if (Skip_NW.aivar[AIV_TalkedToPlayer]==true)
+	if (Skip_NW.aivar[AIV_TalkedToPlayer]==TRUE)
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_WasWillstDu, "W pobli¿u miasta portowego widzia³em pirata, niejakiego Skipa.", DIA_Addon_Greg_NW_WasWillstDu_Skip );
 	};
@@ -1177,8 +1167,8 @@ func void DIA_Addon_Greg_NW_WasWillstDu_Skip ()
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_WasWillstDu_Skip_15_00"); //W pobli¿u miasta portowego widzia³em pirata, niejakiego Skipa.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_WasWillstDu_Skip_01_01"); //Co za idiota. Czeka³em tam przez 3 dni. Dlaczego pojawi³ siê dopiero teraz?
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_WasWillstDu_Skip_01_02"); //Jak tylko wróc¹ mi si³y, spotka go nauczka.
-	SC_KnowsConnectionSkipGreg = true;
-	B_GivePlayerXP(XP_Ambient);
+	SC_KnowsConnectionSkipGreg = TRUE;
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1190,22 +1180,22 @@ instance DIA_Addon_Greg_NW_FoundTreasure		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_Greg_NW_FoundTreasure_Condition;
 	information	 = 	DIA_Addon_Greg_NW_FoundTreasure_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Znalaz³em twoje ukryte ³upy.";
 };
 
 func int DIA_Addon_Greg_NW_FoundTreasure_Condition ()
 {
-	if (RAKEPLACE[1]==true)
-	&& (RAKEPLACE[2]==true)
-	&& (RAKEPLACE[3]==true)
-	&& (RAKEPLACE[4]==true)
-	&& (RAKEPLACE[5]==true)
+	if (RAKEPLACE[1]==TRUE)
+	&& (RAKEPLACE[2]==TRUE)
+	&& (RAKEPLACE[3]==TRUE)
+	&& (RAKEPLACE[4]==TRUE)
+	&& (RAKEPLACE[5]==TRUE)
 	&& (MIS_Addon_Greg_RakeCave == LOG_RUNNING)
-	&& (Greg_SuchWeiter == true)
+	&& (Greg_SuchWeiter == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -1220,7 +1210,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_Info ()
 	if ((Npc_HasItems (other,ItSe_GoldPocket100)) || (Npc_HasItems (other,itmi_gold)>= 100))
 	&& (Npc_HasItems (other,ItMi_GoldCup))
 	&& (Npc_HasItems (other,ItMi_SilverChalice))
-	&& (Npc_HasItems (other,ItAm_Splendor_01))
+	&& (Npc_HasItems (other,ItAm_TrueDamage_01))
 		{
 			Info_AddChoice	(DIA_Addon_Greg_NW_FoundTreasure, "Oto twoje rzeczy.", DIA_Addon_Greg_NW_FoundTreasure_ja );
 		};
@@ -1246,7 +1236,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_ja ()
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_04"); //Srebrna misa.
 	};
-	if (B_GiveInvItems (other, self, ItAm_Splendor_01,1))
+	if (B_GiveInvItems (other, self, ItAm_TrueDamage_01,1))
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_05"); //Amulet.
 	};
@@ -1258,7 +1248,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_ja ()
 	Info_ClearChoices	(DIA_Addon_Greg_NW_FoundTreasure);	
 		
 	MIS_Addon_Greg_RakeCave = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Addon_Greg_RakeCave);
 };
 
 func void DIA_Addon_Greg_NW_FoundTreasure_not ()
@@ -1267,3 +1257,4 @@ func void DIA_Addon_Greg_NW_FoundTreasure_not ()
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_FoundTreasure_not_01_01"); //Lepiej dostarcz mi te rzeczy, zanim wpadnê we wœciek³oœæ.
 	AI_StopProcessInfos (self);
 };
+

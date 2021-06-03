@@ -7,12 +7,12 @@ INSTANCE DIA_Garwig_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Garwig_EXIT_Condition;
 	information = DIA_Garwig_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Garwig_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Garwig_EXIT_Info()
 {
@@ -27,18 +27,18 @@ INSTANCE DIA_Garwig_Wurst(C_INFO)
 	nr			= 3;
 	condition	= DIA_Garwig_Wurst_Condition;
 	information	= DIA_Garwig_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Chcesz spróbowaæ kie³basy?";
 };                       
 
 FUNC INT DIA_Garwig_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -48,7 +48,7 @@ FUNC VOID DIA_Garwig_Wurst_Info()
 	AI_Output (self, other, "DIA_Garwig_Wurst_06_01"); //Jest pyszna. Bardzo dziêkujê, Bracie.
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -68,14 +68,14 @@ INSTANCE DIA_Garwig_Hello   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Garwig_Hello_Condition;
 	information = DIA_Garwig_Hello_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 FUNC INT DIA_Garwig_Hello_Condition()
 {	
 	if (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Garwig_Hello_Info()
@@ -93,12 +93,12 @@ INSTANCE DIA_Garwig_Room   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Garwig_Room_Condition;
 	information = DIA_Garwig_Room_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Co to za pomieszczenie?";
 };
 FUNC INT DIA_Garwig_Room_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Garwig_Room_Info()
 {
@@ -116,14 +116,14 @@ INSTANCE DIA_Garwig_Hammer  (C_INFO)
 	nr          = 99;
 	condition   = DIA_Garwig_Hammer_Condition;
 	information = DIA_Garwig_Hammer_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Opowiedz mi o tym M³ocie.";
 };
 FUNC INT DIA_Garwig_Hammer_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Garwig_Room))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Garwig_Hammer_Info()
@@ -142,14 +142,14 @@ INSTANCE DIA_Garwig_Shield  (C_INFO)
 	nr          = 98;
 	condition   = DIA_Garwig_Shield_Condition;
 	information = DIA_Garwig_Shield_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Opowiedz mi o tej Tarczy.";
 };
 FUNC INT DIA_Garwig_Shield_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Garwig_Room))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Garwig_Shield_Info()
@@ -167,15 +167,15 @@ INSTANCE DIA_Garwig_Auge  (C_INFO)
 	nr          = 4;
 	condition   = DIA_Garwig_Auge_Condition;
 	information = DIA_Garwig_Auge_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Czy znajduje siê tutaj tak¿e Oko Innosa?";
 };
 FUNC INT DIA_Garwig_Auge_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Garwig_Room)
-	&& (Kapitel <= 8)
+	&& (Kapitel <= 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Garwig_Auge_Info()
@@ -192,14 +192,14 @@ instance DIA_Garwig_SLEEP		(C_INFO)
 	nr			 = 	23;
 	condition	 = 	DIA_Garwig_SLEEP_Condition;
 	information	 = 	DIA_Garwig_SLEEP_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co tu porabiasz?";
 };
 func int DIA_Garwig_SLEEP_Condition ()
 {
 	if (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func void DIA_Garwig_SLEEP_Info ()
@@ -236,13 +236,15 @@ FUNC VOID DIA_Garwig_SLEEP_NEVER()
 	AI_Output			(self, other, "DIA_Garwig_SLEEP_NEVER_06_02"); //Jak inaczej móg³bym pe³niæ moje œwiête powo³anie stra¿nika?
 	
 	Info_ClearChoices 	(DIA_Garwig_SLEEP);
-	Info_AddChoice (DIA_Garwig_SLEEP,"Naprawdê NIGDY nie sypiasz?",DIA_Garwig_SLEEP_AGAIN);
+	Info_AddChoice (DIA_Garwig_SLEEP,"Du schläfst wirklich NIE?  ",DIA_Garwig_SLEEP_AGAIN);
 };
 FUNC VOID DIA_Garwig_SLEEP_AGAIN()
 {
 	AI_Output			(other, self, "DIA_Garwig_SLEEP_AGAIN_15_00"); //Naprawdê NIGDY nie sypiasz?
 	AI_Output			(self, other, "DIA_Garwig_SLEEP_AGAIN_06_01"); //Nie. Jeœli stra¿nik zapada w sen, oznacza to jego ca³kowit¹ pora¿kê.
 	AI_Output			(self, other, "DIA_Garwig_SLEEP_AGAIN_06_02"); //Ale ja nie zawiodê, albowiem Innos zapewnia mi si³ê i wytrwa³oœæ, abym móg³ wiecznie trwaæ na posterunku.
+	
+	
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info THIEF Der Hammer ist nicht mehr da
@@ -253,24 +255,25 @@ instance DIA_Garwig_THIEF		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Garwig_THIEF_Condition;
 	information	 = 	DIA_Garwig_THIEF_Info;
-	permanent	 =  true;
-	important 	 = 	true;
+	permanent	 =  TRUE;
+	important 	 = 	TRUE;
 };
 func int DIA_Garwig_THIEF_Condition ()
 {	
 	if  (Npc_IsInState (self, ZS_Talk))
 	&&  (Npc_HasItems (hero, Holy_Hammer_MIS) == 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garwig_THIEF_Info ()
 {		
 					
-	if (Hammer_Taken == true) 
+	if (Hammer_Taken == TRUE) 
 	{ 
 		AI_Output (self, other, "DIA_Garwig_THIEF_06_00"); //Z³odzieju! Zniewa¿y³eœ nie tylko mnie i siebie, lecz równie¿ ca³y ten klasztor!
 		AI_Output (self, other, "DIA_Garwig_THIEF_06_01"); //Odpokutujesz za to œwiêtokradztwo. Ale przede wszystkim - ODDAJ MI TEN M£OT!!!
+		
 	}
 	else
 	{
@@ -287,21 +290,21 @@ instance DIA_Garwig_Abgeben		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Garwig_Abgeben_Condition;
 	information	 = 	DIA_Garwig_Abgeben_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 =  "Przyszed³em oddaæ ci twój M³ot.";
 };
 func int DIA_Garwig_Abgeben_Condition ()
 {	
 	if (Npc_HasItems (other, Holy_Hammer_MIS) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Garwig_Abgeben_Info ()
 {
 	AI_Output (other, self, "DIA_Garwig_Abgeben_15_00"); //Przyszed³em oddaæ ci twój M³ot.
 	
-	if (Hammer_Taken == true)
+	if (Hammer_Taken == TRUE)
 	{
 		AI_Output (self, other, "DIA_Garwig_Abgeben_06_01"); //Ty wstrêtny z³odzieju!
 	}
@@ -312,5 +315,5 @@ func void DIA_Garwig_Abgeben_Info ()
 	AI_Output (self, other, "DIA_Garwig_Abgeben_06_03"); //Jednak nie mnie s¹dziæ twoje czyny. Innos bêdzie twym sêdzi¹ i zeœle na ciebie sprawiedliw¹ karê!
 	
 	B_GiveInvItems (other,self, Holy_Hammer_MIS,1);
-	Hammer_Taken = false;
+	Hammer_Taken = FALSE;
 };

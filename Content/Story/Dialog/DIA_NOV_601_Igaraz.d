@@ -7,15 +7,15 @@ INSTANCE DIA_Igaranz_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Igaraz_Kap1_EXIT_Condition;
 	information = DIA_Igaraz_Kap1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Igaraz_Kap1_EXIT_Condition ()
 {
-	if (kapitel == 7)
+	if (kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Kap1_EXIT_Info()
@@ -35,16 +35,16 @@ INSTANCE DIA_Igaranz_Hello   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Igaraz_Hello_Condition;
 	information = DIA_Igaraz_Hello_Info;
-	permanent   = false;
-	important	= true;
+	permanent   = FALSE;
+	important	= TRUE;
 };
 FUNC INT DIA_Igaraz_Hello_Condition()
 {
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (self.aivar[AIV_TalkedToPlayer] == false)
-	&& (KNOWS_FIRE_CONTEST == false)
+	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
+	&& (KNOWS_FIRE_CONTEST == FALSE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Hello_Info()
@@ -67,18 +67,18 @@ INSTANCE DIA_Igaraz_Wurst(C_INFO)
 	nr			= 2;
 	condition	= DIA_Igaraz_Wurst_Condition;
 	information	= DIA_Igaraz_Wurst_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jestem zajêty roznoszeniem kie³bas.";
 };                       
 
 FUNC INT DIA_Igaraz_Wurst_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -88,7 +88,7 @@ FUNC VOID DIA_Igaraz_Wurst_Info()
 	AI_Output (self, other, "DIA_Igaraz_Wurst_13_01"); //A zatem pracujesz dla Goraxa, tak? Dobrze, poproszê o kie³basê
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
-	Wurst_Gegeben += 1;
+	Wurst_Gegeben = (Wurst_Gegeben +1);
 	
 	CreateInvItems (self, ITFO_Sausage,1);
 	B_UseItem (self, ITFO_Sausage);
@@ -108,16 +108,16 @@ INSTANCE DIA_Igaranz_NotWork   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Igaraz_NotWork_Condition;
 	information = DIA_Igaraz_NotWork_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Dlaczego nie pracujesz?";
 };
 FUNC INT DIA_Igaraz_NotWork_Condition()
 {	
 	if (Npc_GetDistToWP (self, "NW_MONASTERY_GRASS_01") <= 500)
-	&& (KNOWS_FIRE_CONTEST == false)
+	&& (KNOWS_FIRE_CONTEST == FALSE)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;	
+			return TRUE;	
 	};
 };
 FUNC VOID DIA_Igaraz_NotWork_Info()
@@ -135,7 +135,7 @@ INSTANCE DIA_Igaranz_Choosen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Igaraz_Choosen_Condition;
 	information = DIA_Igaraz_Choosen_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description	= "Kim s¹ Wybrañcy?";
 };
 
@@ -143,10 +143,10 @@ FUNC INT DIA_Igaraz_Choosen_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Igaranz_NotWork))
 	&& (Npc_GetDistToWP (self, "NW_MONASTERY_GRASS_01") <= 500)
-	&& (KNOWS_FIRE_CONTEST == false)
-	&& (other.guild == GIL_NOV)
+	&& (KNOWS_FIRE_CONTEST == FALSE)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Choosen_Info()
@@ -188,7 +188,7 @@ INSTANCE DIA_Igaranz_StudyInnos   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Igaraz_StudyInnos_Condition;
 	information = DIA_Igaraz_StudyInnos_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Jak mogê uzyskaæ dostêp do pism?";
 };
 
@@ -196,10 +196,10 @@ FUNC INT DIA_Igaraz_StudyInnos_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Igaranz_NotWork)
 	&& (Npc_GetDistToWP (self, "NW_MONASTERY_GRASS_01") <= 500)
-	&& (Parlan_Erlaubnis == false)
+	&& (Parlan_Erlaubnis == FALSE)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_StudyInnos_Info()
@@ -220,15 +220,15 @@ instance DIA_Igaraz_IMTHEMAN		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Igaraz_IMTHEMAN_Condition;
 	information	 = 	DIA_Igaraz_IMTHEMAN_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 func int DIA_Igaraz_IMTHEMAN_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "NW_TAVERNE_TROLLAREA_05") <= 3500) 
 	&& (Npc_IsInState 	(self, ZS_Talk))
-	&& (other.guild == GIL_NOV)
+	&& (other.guild == GIL_NOV) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Igaraz_IMTHEMAN_Info ()
@@ -244,7 +244,7 @@ instance DIA_Igaraz_METOO		(C_INFO)
 	nr			 = 	19;
 	condition	 = 	DIA_Igaraz_METOO_Condition;
 	information	 = 	DIA_Igaraz_METOO_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Ja te¿ biorê w niej udzia³.";
 };
 var int DIA_Igaraz_METOO_NOPERM ;
@@ -255,7 +255,7 @@ func int DIA_Igaraz_METOO_Condition ()
 	//&&  Npc_KnowsInfo (hero,DIA_Igaraz_IMTHEMAN)
 	&& (other.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Igaraz_METOO_Info ()
@@ -264,6 +264,7 @@ func void DIA_Igaraz_METOO_Info ()
 	AI_Output (self, other, "DIA_Igaraz_METOO_13_01"); //Za¿¹da³eœ CZEGO? Albo jesteœ ulubieñcem Innosa, albo kompletnym szaleñcem.
 	AI_Output (other, self, "DIA_Igaraz_METOO_15_02"); //Zrobi³em wiele szalonych rzeczy, wiêc tym razem mo¿e te¿ mi siê jakoœ uda...
 	AI_Output (self, other, "DIA_Igaraz_METOO_13_03"); //Strze¿e mnie Innos - zatem nie mogê przegraæ.
+	
 
 	Info_ClearChoices	 (DIA_Igaraz_METOO);
 	Info_AddChoice 		 (DIA_Igaraz_METOO,DIALOG_BACK,DIA_Igaraz_METOO_BACK);
@@ -300,18 +301,18 @@ instance DIA_Igaraz_ADD		(C_INFO)
 	nr			 = 	23;
 	condition	 = 	DIA_Igaraz_ADD_Condition;
 	information	 = 	DIA_Igaraz_ADD_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Czy wiesz coœ na temat '¿ywej ska³y'?";
 };
 func int DIA_Igaraz_ADD_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "NW_TAVERNE_TROLLAREA_05") <= 3500) 
 	&& (MIS_GOLEM == LOG_RUNNING) 
-	&& (Npc_IsDead (Magic_Golem) == false)
-	&& (Npc_KnowsInfo (other,DIA_Igaraz_Stein) == false)
+	&& (Npc_IsDead (Magic_Golem) == FALSE)
+	&& (Npc_KnowsInfo (other,DIA_Igaraz_Stein) == FALSE)
 	&& Npc_KnowsInfo (other,DIA_Igaraz_METOO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Igaraz_ADD_Info ()
@@ -341,11 +342,11 @@ instance DIA_Igaraz_Pruefung		(C_INFO)
 };
 func int DIA_Igaraz_Pruefung_Condition ()
 {	
-	if (other.guild == GIL_NOV)
+	if (other.guild == GIL_NOV) 
 	&& (Npc_HasItems (other, ItMi_Runeblank) < 1)
 	&& (Npc_KnowsInfo (other,DIA_Igaraz_METOO))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Igaraz_Pruefung_Info ()
@@ -355,11 +356,11 @@ func void DIA_Igaraz_Pruefung_Info ()
 	
 	AI_StopProcessInfos (self); 
 	
-	if (Igaraz_Wait == false) 
+	if (Igaraz_Wait == FALSE) 
 	{
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine (self,"CONTESTWAIT");
-		Igaraz_Wait = true;
+		Igaraz_Wait = TRUE;
 	};
 };	
 ///////////////////////////////////////////////////////////////////////
@@ -371,16 +372,16 @@ instance DIA_Igaraz_Stein		(C_INFO)
 	nr			 = 	1;
 	condition	 = 	DIA_Igaraz_Stein_Condition;
 	information	 = 	DIA_Igaraz_Stein_Info;
-	important	 = 	true;
-	permanent 	 =  false; 
+	important	 = 	TRUE;
+	permanent 	 =  FALSE; 
 };
 func int DIA_Igaraz_Stein_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "NW_TAVERNE_TROLLAREA_66") <= 3500) 
-	&& (other.guild == GIL_NOV)
+	&& (other.guild == GIL_NOV) 
 	&& (Npc_HasItems (other, ItMi_Runeblank) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Igaraz_Stein_Info ()
@@ -398,6 +399,7 @@ func void DIA_Igaraz_Stein_Info ()
 		AI_Output (other, self, "DIA_Igaraz_Seufz_15_04"); //Nie jesteœ pierwszym, który tak mówi.
 	};
 	AI_Output (self, other, "DIA_Igaraz_Seufz_13_05"); //Doœæ gadania. Potrzebujê twojego znaleziska. Przygotuj siê na œmieræ!
+	
 	
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_KILL,0);
@@ -419,14 +421,14 @@ INSTANCE DIA_Igaranz_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Igaraz_Kap2_EXIT_Condition;
 	information = DIA_Igaraz_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Igaraz_Kap2_EXIT_Condition()
 {
-	if (kapitel == 8)
+	if (kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Kap2_EXIT_Info()
@@ -449,14 +451,14 @@ INSTANCE DIA_Igaranz_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Igaraz_Kap3_EXIT_Condition;
 	information = DIA_Igaraz_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Igaraz_Kap3_EXIT_Condition()
 {
-	if (kapitel == 9)
+	if (kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Kap3_EXIT_Info()
@@ -473,14 +475,14 @@ INSTANCE DIA_Igaranz_TalkAboutBabo   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_TalkAboutBabo_Condition;
 	information = DIA_Igaraz_TalkAboutBabo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Musimy porozmawiaæ o Babo.";
 };
 FUNC INT DIA_Igaraz_TalkAboutBabo_Condition()
 {
 	if (MIS_BabosDocs == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_TalkAboutBabo_Info()
@@ -498,14 +500,14 @@ INSTANCE DIA_Igaranz_BabosBelongings   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_BabosBelongings_Condition;
 	information = DIA_Igaraz_BabosBelongings_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Masz coœ, co nale¿y do Babo.";
 };
 FUNC INT DIA_Igaraz_BabosBelongings_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Igaranz_TalkAboutBabo))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_BabosBelongings_Info()
@@ -525,14 +527,14 @@ INSTANCE DIA_Igaranz_WhereDocs   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_WhereDocs_Condition;
 	information = DIA_Igaraz_WhereDocs_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Gdzie trzymasz te papiery?";
 };
 FUNC INT DIA_Igaraz_WhereDocs_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Igaranz_BabosBelongings))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_WhereDocs_Info()
@@ -552,14 +554,14 @@ INSTANCE DIA_Igaranz_BabosJob   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_BabosJob_Condition;
 	information = DIA_Igaraz_BabosJob_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co mia³ dla ciebie zrobiæ Babo?";
 };
 FUNC INT DIA_Igaraz_BabosJob_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Igaranz_BabosBelongings))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_BabosJob_Info()
@@ -580,14 +582,14 @@ INSTANCE DIA_Igaranz_Price   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_Price_Condition;
 	information = DIA_Igaraz_Price_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Ile chcesz za te papiery?";
 };
 FUNC INT DIA_Igaraz_Price_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Igaranz_BabosBelongings))
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Price_Info()
@@ -607,7 +609,7 @@ INSTANCE DIA_Igaranz_BuyIt   (C_INFO)
 	nr          = 31;
 	condition   = DIA_Igaraz_BuyIt_Condition;
 	information = DIA_Igaraz_BuyIt_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Kupiê od ciebie te papiery.";
 };
 FUNC INT DIA_Igaraz_BuyIt_Condition()
@@ -615,7 +617,7 @@ FUNC INT DIA_Igaraz_BuyIt_Condition()
 	if (Npc_KnowsInfo (other,DIA_Igaranz_Price))
 	&& (Npc_HasItems (other,ItMi_Gold)>=300)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_BuyIt_Info()
@@ -642,14 +644,14 @@ INSTANCE DIA_Igaranz_Kap4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Igaraz_Kap4_EXIT_Condition;
 	information = DIA_Igaraz_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Igaraz_Kap4_EXIT_Condition()
 {
-	if (kapitel == 10)
+	if (kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Kap4_EXIT_Info()
@@ -672,14 +674,14 @@ INSTANCE DIA_Igaranz_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Igaraz_Kap5_EXIT_Condition;
 	information = DIA_Igaraz_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Igaraz_Kap5_EXIT_Condition()
 {
-	if (kapitel == 11)
+	if (kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Kap5_EXIT_Info()
@@ -695,16 +697,16 @@ INSTANCE DIA_Igaranz_Perm   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Igaraz_Perm_Condition;
 	information = DIA_Igaraz_Perm_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Masz dla mnie coœ ciekawego?";
 };
 FUNC INT DIA_Igaraz_Perm_Condition()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (other.guild != GIL_KDF)
 	&& (MIS_BabosDocs != LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Igaraz_Perm_Info()
@@ -713,4 +715,9 @@ FUNC VOID DIA_Igaraz_Perm_Info()
 	AI_Output (self ,other,"DIA_Igaranz_Perm_13_01"); //Ehm... nie.
 	
 	AI_StopProcessInfos(self); 
+		
 };
+
+
+
+

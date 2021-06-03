@@ -7,14 +7,14 @@ INSTANCE DIA_Lester_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lester_EXIT_Condition;
 	information	= DIA_Lester_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lester_EXIT_Condition()
 {
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_EXIT_Info()
@@ -31,14 +31,14 @@ INSTANCE DIA_Lester_Hello (C_INFO)
 	nr			= 1;
 	condition	= DIA_Lester_Hello_Condition;
 	information	= DIA_Lester_Hello_Info;
-	permanent	= false;
-	important 	= true; 
+	permanent	= FALSE;
+	important 	= TRUE; 
 };                       
 FUNC INT DIA_Lester_Hello_Condition()
 {	
-	if (Kapitel < 9)
+	if (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_Hello_Info()
@@ -49,14 +49,48 @@ FUNC VOID DIA_Lester_Hello_Info()
 		B_TurnToNpc (self,other);
 	};
 	AI_Output	(self ,other,"DIA_Lester_Hello_13_00");	//To naprawdê TY? Cz³owieku, jak siê cieszê, ¿e ciê widzê!
+
+	Info_ClearChoices	(DIA_Lester_Hello);
+
+	Info_AddChoice		(DIA_Lester_Hello, "Czy my siê znamy?" 					,DIA_Lester_Hello_YouKnowMe);
+	Info_AddChoice		(DIA_Lester_Hello, "Lester! Sk¹d siê tu wzi¹³eœ?"		,DIA_Lester_Hello_Lester);
+};
+FUNC VOID DIA_Lester_Hello_Lester()
+{
+	Info_ClearChoices	(DIA_Lester_Hello);
 	AI_Output	(other,self ,"DIA_Lester_Hello_Lester_15_00");	//Lester! Sk¹d siê tu wzi¹³eœ?
 	AI_Output	(self ,other,"DIA_Lester_Hello_Lester_13_01");	//To ci dopiero niez³a historia! Po upadku Bariery przez d³ugi czas b³¹ka³em siê po okolicy, nie wiedz¹c, co ze sob¹ zrobiæ.
 	AI_Output	(self ,other,"DIA_Lester_Hello_Lester_13_02");	//Przez kolejne kilka dni przedziera³em siê przez lasy, a¿ wreszcie znalaz³em tê kotlinkê.
 	AI_Output	(self ,other,"DIA_Lester_Hello_Lester_13_03");	//Diego, Milten i Gorn nadal s¹ w Górniczej Dolinie. Tak mi siê w ka¿dym razie wydaje.
-	AI_Output	(self ,other,"DIA_Lester_Hello_KnowFourFriends_13_03");	//Gdybyœ ich spotka³, daj mi znaæ.
-	Info_ClearChoices	(DIA_Lester_Hello);
 };
+FUNC VOID DIA_Lester_Hello_YouKnowMe()
+{
+	Info_ClearChoices	(DIA_Lester_Hello);
+	AI_Output	(other,self ,"DIA_Lester_Hello_YouKnowMe_15_00");	//Czy my siê znamy?
+	AI_Output	(self ,other,"DIA_Lester_Hello_YouKnowMe_13_01");	//Halo? Jest tam kto?! Nadstawia³em karku, ¿ebyœ móg³ dostaæ ten swój dziwny kamieñ.
+	AI_Output	(self ,other,"DIA_Lester_Hello_YouKnowMe_13_02");	//Jesteœ mi coœ winny. To przynajmniej móg³byœ pamiêtaæ!
+	AI_Output	(self ,other,"DIA_Lester_Hello_YouKnowMe_13_03"); 	//Pamiêtasz chyba Diego, Miltena i Gorna?
 
+	Info_AddChoice		(DIA_Lester_Hello, "Diego, Milten i KTO?" 	,DIA_Lester_Hello_WhoFourFriends);
+	Info_AddChoice		(DIA_Lester_Hello, "Jasne. Co siê z nimi dzieje?"	,DIA_Lester_Hello_KnowFourFriends);
+
+};
+FUNC VOID DIA_Lester_Hello_KnowFourFriends()
+{
+    Info_ClearChoices	(DIA_Lester_Hello);
+	AI_Output	(other,self ,"DIA_Lester_Hello_KnowFourFriends_15_00");	//Jasne. Co siê z nimi dzieje?
+	AI_Output	(self ,other,"DIA_Lester_Hello_KnowFourFriends_13_01");	//Jeœli siê nie mylê, wszyscy trzej prze¿yli upadek Bariery.
+	AI_Output	(self ,other,"DIA_Lester_Hello_KnowFourFriends_13_02");	//Nie mam pojêcia, gdzie siê teraz podziewaj¹. Pewnie s¹ nadal w Górniczej Dolinie.
+	AI_Output	(self ,other,"DIA_Lester_Hello_KnowFourFriends_13_03");	//Gdybyœ ich spotka³, daj mi znaæ.
+};
+FUNC VOID DIA_Lester_Hello_WhoFourFriends()
+{
+    Info_ClearChoices	(DIA_Lester_Hello);
+	AI_Output	(other,self ,"DIA_Lester_Hello_WhoFourFriends_15_00");	//Diego, Milten i KTO?
+	AI_Output	(self ,other,"DIA_Lester_Hello_WhoFourFriends_13_01");	//Nie mów mi, ¿e o wszystkim zapomnia³eœ?! Kamienie ogniskuj¹ce? Troll? Kopiec rudy wodnych magów? Nic?!
+	AI_Output	(other, self,"DIA_Lester_Hello_WhoFourFriends_15_02");	//Sam ju¿ nie wiem.
+	AI_Output	(self ,other,"DIA_Lester_Hello_WhoFourFriends_13_03");	//Kiedyœ sobie przypomnisz. Ja te¿ potrzebowa³em trochê czasu, ¿eby dojœæ do siebie.
+};
 // ************************************************************
 // 		  				  Was ist passiert?		//E1
 // ************************************************************
@@ -66,15 +100,15 @@ INSTANCE DIA_Lester_WhatHappened (C_INFO)
 	nr			= 1;
 	condition	= DIA_Lester_WhatHappened_Condition;
 	information	= DIA_Lester_WhatHappened_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co siê sta³o?";
 };                       
 FUNC INT DIA_Lester_WhatHappened_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Lester_Hello))
-	&& (Kapitel < 9)
+		&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_WhatHappened_Info()
@@ -98,15 +132,15 @@ INSTANCE DIA_Lester_MineColony (C_INFO)
 	nr			= 2;
 	condition	= DIA_Lester_MineColony_Condition;
 	information	= DIA_Lester_MineColony_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jak d³ugo siê tutaj ukrywasz?";
 };                       
 FUNC INT DIA_Lester_MineColony_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Lester_Hello))
-	&& (Kapitel < 9)
+		&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_MineColony_Info()
@@ -128,16 +162,16 @@ instance DIA_Lester_SEND_XARDAS		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lester_SEND_XARDAS_Condition;
 	information	 = 	DIA_Lester_SEND_XARDAS_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Musisz porozmawiaæ z Xardasem o tym cieniu...";
 };
 func int DIA_Lester_SEND_XARDAS_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Lester_WhatHappened)
 	&& Npc_KnowsInfo (other,DIA_Lester_MineColony)
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lester_SEND_XARDAS_Info ()
@@ -152,6 +186,8 @@ func void DIA_Lester_SEND_XARDAS_Info ()
 	AI_Output (self, other, "DIA_Lester_SEND_XARDAS_13_07"); //Widzê, ¿e znów coœ kombinujesz. Spotkamy siê u Xardasa.
 	
 	AI_StopProcessInfos (self);
+	
+	//wird bei LOLO zu Xardas gebeamt
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -170,10 +206,10 @@ instance DIA_Addon_Lester_STADT		(C_INFO)
 func int DIA_Addon_Lester_STADT_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Lester_Hello))
-	&& (Mil_310_schonmalreingelassen == false)
-	&& (Mil_333_schonmalreingelassen == false)
+	&& (Mil_310_schonmalreingelassen == FALSE)
+	&& (Mil_333_schonmalreingelassen == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -202,10 +238,10 @@ instance DIA_Addon_Lester_Vorschlag		(C_INFO)
 func int DIA_Addon_Lester_Vorschlag_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Lester_STADT))
-	&& (Mil_310_schonmalreingelassen == false)
-	&& (Mil_333_schonmalreingelassen == false)
+	&& (Mil_310_schonmalreingelassen == FALSE)
+	&& (Mil_333_schonmalreingelassen == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -244,7 +280,7 @@ func int DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_Condition ()
 {
 	if (MIS_Addon_Lester_PickForConstantino == LOG_SUCCESS)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -252,7 +288,7 @@ func void DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_15_00"); //Pomys³ z Constantinem by³ dobry, stra¿nicy mnie przepuœcili.
 	AI_Output	(self, other, "DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_13_01"); //No, tak jak mówi³em. S³uchanie moich rad mo¿e ci tylko wyjœæ na dobre, przyjacielu...
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 // ************************************************************
@@ -264,16 +300,16 @@ INSTANCE DIA_Lester_Perm (C_INFO)
 	nr			= 99;
 	condition	= DIA_Lester_Perm_Condition;
 	information	= DIA_Lester_Perm_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co mo¿esz mi powiedzieæ o pobliskich terenach?";
 };                       
 FUNC INT DIA_Lester_Perm_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Lester_Hello))
-	&& (Kapitel < 9)
+	&& (Kapitel < 3)
 	&& (Npc_GetDistToWP (self, "NW_XARDAS_TOWER_LESTER") <= 2000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_Perm_Info()
@@ -291,15 +327,15 @@ INSTANCE DIA_Lester_Sleep (C_INFO)
 	nr			= 99;
 	condition	= DIA_Lester_Sleep_Condition;
 	information	= DIA_Lester_Sleep_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Ci¹gle zmêczony?";
 };                       
 FUNC INT DIA_Lester_Sleep_Condition()
 {
-	if  (Kapitel < 9)
+	if  (Kapitel < 3)
 	&& (Npc_GetDistToWP (self, "NW_XARDAS_TOWER_IN1_31") <= 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_Sleep_Info()
@@ -328,14 +364,14 @@ INSTANCE DIA_Lester_KAP3_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lester_KAP3_EXIT_Condition;
 	information	= DIA_Lester_KAP3_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lester_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)	
+	if (Kapitel == 3)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_KAP3_EXIT_Info()
@@ -352,14 +388,14 @@ instance DIA_Lester_BACKINTOWN		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lester_BACKINTOWN_Condition;
 	information	 = 	DIA_Lester_BACKINTOWN_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 func int DIA_Lester_BACKINTOWN_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "LEVELCHANGE") <= 500) 
-	&& (Kapitel == 9)
+		&& (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lester_BACKINTOWN_Info ()
@@ -369,9 +405,10 @@ func void DIA_Lester_BACKINTOWN_Info ()
 	AI_Output			(self, other, "DIA_Lester_BACKINTOWN_13_02"); //Od twojej ostatniej wizyty rozpêta³o siê prawdziwe piek³o.
 	AI_Output			(self, other, "DIA_Lester_BACKINTOWN_13_03"); //Porozmawiaj z Xardasem. Czeka ju¿ na ciebie!
 	AI_Output			(self, other, "DIA_Lester_BACKINTOWN_13_04"); //Xardas kaza³ mi przekazaæ ci tê runê. Dziêki niej szybciej do niego wrócisz. Spotkamy siê na miejscu.
-
-	B_GiveInvItems 		(self, other, ItTe_Xardas, 1);
-
+	
+	CreateInvItems 		(self,ItRu_TeleportXardas,1);
+	B_GiveInvItems 		(self,other,ItRu_TeleportXardas,1);
+	
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"START");	//Joly: Lester geht wieder zurück in sein Tal!
 };
@@ -385,17 +422,17 @@ instance DIA_Lester_PERM3		(C_INFO)
 	nr		 = 	900;
 	condition	 = 	DIA_Lester_PERM3_Condition;
 	information	 = 	DIA_Lester_PERM3_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Nie wygl¹dasz najlepiej.";
 };
 
 func int DIA_Lester_PERM3_Condition ()
 {
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	&& (Lester_IsOnBoard != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -406,12 +443,12 @@ func void DIA_Lester_PERM3_Info ()
 	
 	if (hero.guild == GIL_KDF)
 	{
-		if (DIA_Lester_PERM3_OneTime == false)
+		if (DIA_Lester_PERM3_OneTime == FALSE)
 		{
 			AI_Output			(self, other, "DIA_Lester_PERM3_13_01"); //I nie najlepiej siê czujê. Jestem zupe³nie wycieñczony i ci¹gle mam ten ból g³owy.
 			AI_Output			(self, other, "DIA_Lester_PERM3_13_02"); //Za ka¿dym razem, gdy pojawi¹ siê tu te czarne kaptury, jest jeszcze gorzej!
 			
-			if (SC_KnowsMadPsi == true)
+			if (SC_KnowsMadPsi == TRUE)
 				{
 					AI_Output			(other, self, "DIA_Lester_PERM3_15_03"); //Mogê ci nawet powiedzieæ, dlaczego tak siê dzieje.
 					AI_Output			(self, other, "DIA_Lester_PERM3_13_04"); //Tak? Chyba nie chcê tego wiedzieæ...
@@ -423,8 +460,8 @@ func void DIA_Lester_PERM3_Info ()
 					AI_Output			(other, self, "DIA_Lester_PERM3_15_10"); //Dobre pytanie. Wiem tylko, ¿e trzeba za wszelk¹ cenê powstrzymaæ Poszukiwaczy, nim stan¹ siê zbyt potê¿ni.
 					AI_Output			(self, other, "DIA_Lester_PERM3_13_11"); //Nie podoba mi siê to wszystko, ale chyba masz racjê. Przepraszam... Mo¿na przez to wszystko oszaleæ.
 					B_LogEntry (TOPIC_DEMENTOREN,"Moje podejrzenia potwierdzi³y siê. Nawet Lester nie ma ¿adnych w¹tpliwoœci, ¿e Poszukiwacze i wyznawcy œni¹cego przychodz¹ ze starego obozowiska na mokrad³ach."); 
-					B_GivePlayerXP(XP_BONUS_3);
-					DIA_Lester_PERM3_OneTime = true;
+					B_GivePlayerXP (XP_Lester_KnowsMadPsi);
+					DIA_Lester_PERM3_OneTime = TRUE;
 				};
 		};
 	}
@@ -466,14 +503,14 @@ INSTANCE DIA_Lester_KAP4_EXIT(C_INFO)
 	nr		= 999;
 	condition	= DIA_Lester_KAP4_EXIT_Condition;
 	information	= DIA_Lester_KAP4_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lester_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)	
+	if (Kapitel == 4)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_KAP4_EXIT_Info()
@@ -501,14 +538,14 @@ INSTANCE DIA_Lester_KAP5_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lester_KAP5_EXIT_Condition;
 	information	= DIA_Lester_KAP5_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lester_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_KAP5_EXIT_Info()
@@ -532,9 +569,9 @@ instance DIA_Lester_XARDASWEG		(C_INFO)
 
 func int DIA_Lester_XARDASWEG_Condition ()
 {
-	if (Kapitel == 11)	
+	if (Kapitel == 5)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -566,15 +603,15 @@ instance DIA_Lester_KnowWhereEnemy		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_Lester_KnowWhereEnemy_Condition;
 	information	 = 	DIA_Lester_KnowWhereEnemy_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Dowiedzia³em siê, gdzie szukaæ naszego nieprzyjaciela.";
 };
 func int DIA_Lester_KnowWhereEnemy_Condition ()
 {	
-	if (MIS_SCKnowsWayToIrdorath == true)
-	&& (Lester_IsOnBoard == false) 
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
+	&& (Lester_IsOnBoard == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lester_KnowWhereEnemy_Info ()
@@ -607,9 +644,9 @@ FUNC VOID DIA_Lester_KnowWhereEnemy_Yes ()
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Lester_IsOnBoard	 = LOG_SUCCESS;
-	crewmember_Count += 1;
+	crewmember_Count = (Crewmember_Count +1);
 	
-	if (MIS_ReadyforChapter6 == true)
+	if (MIS_ReadyforChapter6 == TRUE)
 		{
 			Npc_ExchangeRoutine (self,"SHIP"); 
 		}
@@ -642,15 +679,15 @@ instance DIA_Lester_LeaveMyShip		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lester_LeaveMyShip_Condition;
 	information	 = 	DIA_Lester_LeaveMyShip_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Jednak zabrak³o dla ciebie miejsca na statku.";
 };
 func int DIA_Lester_LeaveMyShip_Condition ()
 {	
 	if (Lester_IsOnBOard == LOG_SUCCESS)
-	&& (MIS_ReadyforChapter6 == false)
+	&& (MIS_ReadyforChapter6 == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lester_LeaveMyShip_Info ()
@@ -660,7 +697,7 @@ func void DIA_Lester_LeaveMyShip_Info ()
 	AI_Output			(self, other, "DIA_Lester_LeaveMyShip_13_02"); //Gdybyœ mnie potrzebowa³, wiesz, gdzie mnie znaleŸæ.
 	
 	Lester_IsOnBoard	 = LOG_OBSOLETE;				//Log_Obsolete ->der Sc kann ihn wiederholen, Log_Failed ->hat die Schnauze voll, kommt nicht mehr mit! 
-	crewmember_Count -= 1;
+	crewmember_Count = (Crewmember_Count -1);
 	
 	Npc_ExchangeRoutine (self,"ShipOff"); 
 };
@@ -674,7 +711,7 @@ instance DIA_Lester_StillNeedYou		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Lester_StillNeedYou_Condition;
 	information	 = 	DIA_Lester_StillNeedYou_Info;
-	PERMANENT 	 =  true;
+	PERMANENT 	 =  TRUE;
 	description	 = 	"Przyda³aby mi siê twoja pomoc.";
 };
 func int DIA_Lester_StillNeedYou_Condition ()
@@ -683,7 +720,7 @@ func int DIA_Lester_StillNeedYou_Condition ()
 	|| (Lester_IsOnBOard == LOG_FAILED))
 	&& (crewmember_count < Max_Crew)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Lester_StillNeedYou_Info ()
@@ -697,9 +734,9 @@ func void DIA_Lester_StillNeedYou_Info ()
 		
 		self.flags 		 = NPC_FLAG_IMMORTAL;
 		Lester_IsOnBoard	 = LOG_SUCCESS;
-		crewmember_Count += 1;
+		crewmember_Count = (Crewmember_Count +1);
 	
-		if (MIS_ReadyforChapter6 == true)
+		if (MIS_ReadyforChapter6 == TRUE)
 			{
 				Npc_ExchangeRoutine (self,"SHIP"); 
 			}
@@ -735,14 +772,14 @@ INSTANCE DIA_Lester_KAP6_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Lester_KAP6_EXIT_Condition;
 	information	= DIA_Lester_KAP6_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Lester_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 12)	
+	if (Kapitel == 6)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Lester_KAP6_EXIT_Info()

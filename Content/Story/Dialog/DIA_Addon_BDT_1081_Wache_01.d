@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Wache_01_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Wache_01_EXIT_Condition;
 	information = DIA_Addon_Wache_01_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Wache_01_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Wache_01_EXIT_Info()
 {
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Wache_01_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Wache_01_Hi_Condition;
 	information = DIA_Addon_Wache_01_Hi_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "W porz¹dku?";
 };
 FUNC INT DIA_Addon_Wache_01_Hi_Condition()
 {	
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Addon_Wache_01_Hi_Info()
 {

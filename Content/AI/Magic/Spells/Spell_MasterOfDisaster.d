@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_MasterOfDisaster
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_MasterOfDisaster
+///******************************************************************************************
 
 const int SPL_Cost_MasterOfDisaster		=	60;
 const int SPL_Damage_MasterOfDisaster	=	300;
 
-//******************************************************************************************
-INSTANCE Spell_MasterOfDisaster	(C_Spell_Proto)
+///******************************************************************************************
+instance Spell_MasterOfDisaster (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_MasterOfDisaster;
@@ -15,7 +15,7 @@ INSTANCE Spell_MasterOfDisaster	(C_Spell_Proto)
 
 func int Spell_Logic_MasterOfDisaster (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MasterOfDisaster/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MasterOfDisaster/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MasterOfDisaster)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_MasterOfDisaster (var int manaInvested)
 
 func void Spell_Cast_MasterOfDisaster()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MasterOfDisaster/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MasterOfDisaster/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_MasterOfDisaster/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_MasterOfDisaster)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_MasterOfDisaster;
 	};

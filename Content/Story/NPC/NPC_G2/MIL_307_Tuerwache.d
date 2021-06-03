@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Mil_307_Tuerwache (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Miliz;
 	guild 								=	GIL_MIL;
 	id 									=	307;
 	voice 								=	6;
-	flags      							=	0;
 	npctype								=	NPCTYPE_AMBIENT;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Strong-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Mil_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Horatio, 0, ITAR_MIL_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_307;
 };
 
-FUNC VOID Rtn_Start_307()
+func void Rtn_Start_307()
 {
 	TA_Stand_Guarding		(12,00,14,00, "NW_CITY_UPTOWN_PATH_13");
 	TA_Stand_ArmsCrossed	(14,00,16,00, "NW_CITY_UPTOWN_PATH_05");

@@ -55,21 +55,21 @@ instance Give_MagicSkills (C_Item)
 instance Give_Talents (C_Item)
 {
 	Npc_SetTalentSkill (hero, NPC_TALENT_2ndH, 3);
-
+	
 	Npc_SetTalentSkill (hero, NPC_TALENT_SNEAK, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_PICKLOCK, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_ACROBATIC, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 2);
-
-	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 5);
-	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 5);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 5);
-	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 5);
-	Npc_SetTalentSkill (hero, NPC_TALENT_WRITING, 5);
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_WRITING, 3);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_LANGUAGE, 1);
-
+	
 	Wld_RemoveItem(self);
 };
 instance Give_ExpMax (C_Item)
@@ -109,7 +109,7 @@ instance Set_Diff_Impossible (C_Item)
 ///******************************************************************************************
 instance Set_fastItemTake (C_Item)
 {
-	if (fastItemTake == true)
+	if (fastItemTake)
 	{
 		fastItemTake = false;
 		Print("Szybkie podnoszenie przedmiotów wy³¹czone");
@@ -123,16 +123,14 @@ instance Set_fastItemTake (C_Item)
 };
 instance Set_movieMode (C_Item)
 {
-	if (movieMode == true)
+	if (movieMode)
 	{
 		movieMode = false;
-		FF_ApplyOnce(QS_DoFrame);
 		Print("Tryb gry w³¹czony");
 	}
 	else
 	{
 		movieMode = true;
-		FF_Remove(QS_DoFrame);
 		Print("Tryb filmowy w³¹czony");
 	};
 	Wld_RemoveItem(self);

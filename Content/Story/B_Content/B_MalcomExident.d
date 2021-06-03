@@ -3,7 +3,7 @@
 //******************************************************************************************
 func void B_MalcomExident()
 {
-	if (Malcom_Accident == false)
+	if (!Malcom_Accident)
 	{
 		if (!Npc_IsDead(Malcom))
 		{
@@ -12,7 +12,7 @@ func void B_MalcomExident()
 			Npc_ChangeAttribute	(Malcom, ATR_HITPOINTS, -Malcom.attribute[ATR_HITPOINTS_MAX]);
 			AI_Teleport (Malcom, "ADW_PIRATECAMP_SECRETCAVE_02");
 			Malcom_Accident = true;
-
+			
 			if (!Npc_IsDead(Owen))
 			{
 				B_StartOtherRoutine	(Owen, "Start");

@@ -7,14 +7,14 @@ INSTANCE DIA_Serpentes_Kap1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Serpentes_Kap1_EXIT_Condition;
 	information = DIA_Serpentes_Kap1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Serpentes_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 7)
+	if (Kapitel <= 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Serpentes_Kap1_EXIT_Info()
@@ -30,16 +30,16 @@ instance DIA_Serpentes_NOTALK		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Serpentes_NOTALK_Condition;
 	information	 = 	DIA_Serpentes_NOTALK_Info;
-	permanent	 = 	false;
-	important	 =  true;
+	permanent	 = 	FALSE;
+	important	 =  TRUE;
 };
 func int DIA_Serpentes_NOTALK_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (KNOWS_FIRE_CONTEST == false)
-	&& (other.guild == GIL_NOV)
+	&& (KNOWS_FIRE_CONTEST == FALSE)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_NOTALK_Info ()
@@ -71,17 +71,17 @@ instance DIA_Serpentes_GOAWAY		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Serpentes_GOAWAY_Condition;
 	information	 = 	DIA_Serpentes_GOAWAY_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 func int DIA_Serpentes_GOAWAY_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Serpentes_NOTALK)
 	&& Npc_IsInState (self, ZS_Talk)
 	&& !(Npc_KnowsInfo (hero,DIA_Pyrokar_FIRE))
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_GOAWAY_Info ()
@@ -98,17 +98,17 @@ instance DIA_Serpentes_YOURSTORY		(C_INFO)
 	nr			 = 	24;
 	condition	 = 	DIA_Serpentes_YOURSTORY_Condition;
 	information	 = 	DIA_Serpentes_YOURSTORY_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"S³ysza³em, ¿e przeszed³eœ Próbê Ognia?";
 };
 func int DIA_Serpentes_YOURSTORY_Condition ()
 {	
 	if Npc_KnowsInfo (hero, DIA_Ulthar_TEST)
 	&& (other.guild == GIL_NOV)
-	&& (Npc_KnowsInfo (hero, DIA_Pyrokar_MAGICAN)== false)
+	&& (Npc_KnowsInfo (hero, DIA_Pyrokar_MAGICAN)== FALSE)
 	&& (MIS_GOLEM != LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_YOURSTORY_Info ()
@@ -128,15 +128,15 @@ instance DIA_Serpentes_TEST		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Serpentes_TEST_Condition;
 	information	 = 	DIA_Serpentes_TEST_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"Mistrzu, jestem gotów poddaæ siê Próbie.";
 };
 func int DIA_Serpentes_TEST_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Pyrokar_FIRE)
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_TEST_Info ()
@@ -149,8 +149,8 @@ func void DIA_Serpentes_TEST_Info ()
 	AI_Output (self, other, "DIA_Serpentes_TEST_10_05"); //Pokonaj tego, który nie mo¿e zostaæ pokonany - zmierz siê z ¿yw¹ ska³¹, walcz z nieœmiertelnym kamieniem - i zniszcz go.
 	
 	//----- Der Magische Golem ----
-	Wld_InsertNpc 	(Golem_Magic, 			"FP_MAGICGOLEM");
-	Magic_Golem		= Hlp_GetNpc (Golem_Magic);	//Damits auch initialisiert ist!!
+	Wld_InsertNpc 	(OreGolem, 			"FP_MAGICGOLEM");
+	Magic_Golem		= Hlp_GetNpc (OreGolem);	//Damits auch initialisiert ist!!
 
 
 	MIS_GOLEM = LOG_RUNNING;
@@ -167,15 +167,15 @@ instance DIA_Serpentes_NOIDEA		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Serpentes_NOIDEA_Condition;
 	information	 = 	DIA_Serpentes_NOIDEA_Info;
-	permanent	 = 	false;
+	permanent	 = 	FALSE;
 	description	 = 	"A có¿ to za stworzenie?";
 };
 func int DIA_Serpentes_NOIDEA_Condition ()
 {	
 	if (MIS_GOLEM == LOG_RUNNING)
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_NOIDEA_Info ()
@@ -194,20 +194,20 @@ instance DIA_Serpentes_NOHELP		(C_INFO)
 	nr           =  10;
 	condition	 = 	DIA_Serpentes_NOHELP_Condition;
 	information	 = 	DIA_Serpentes_NOHELP_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 func int DIA_Serpentes_NOHELP_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Serpentes_NOIDEA)
-	&& ((Npc_IsDead (Magic_Golem)) == false)
+	&& ((Npc_IsDead (Magic_Golem)) == FALSE)
 	&& (MIS_GOLEM == LOG_RUNNING)
 	&& Npc_IsInState	(self, ZS_Talk) 
 	&& (other.guild == GIL_NOV)
-	&& ((Npc_KnowsInfo (other, DIA_Ulthar_TEST) == false)
+	&& ((Npc_KnowsInfo (other, DIA_Ulthar_TEST) == FALSE)
 	|| Npc_KnowsInfo (other,DIA_Serpentes_YOURSTORY))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_NOHELP_Info ()
@@ -224,16 +224,16 @@ instance DIA_Serpentes_SUCCESS		(C_INFO)
 	nr			 = 	3;
 	condition	 = 	DIA_Serpentes_SUCCESS_Condition;
 	information	 = 	DIA_Serpentes_SUCCESS_Info;
-	permanent	 =  false;
+	permanent	 =  FALSE;
 	description	 = 	"Uda³o mi siê pokonaæ golema.";
 };
 func int DIA_Serpentes_SUCCESS_Condition ()
 {	
-	if (Npc_IsDead (Magic_Golem))
+	if (Npc_IsDead (OreGolem))
 	&& (MIS_GOLEM == LOG_RUNNING)
-	&& (other.guild == GIL_NOV)
+	&& (hero.guild == GIL_NOV)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Serpentes_SUCCESS_Info ()
@@ -244,13 +244,13 @@ func void DIA_Serpentes_SUCCESS_Info ()
 	AI_Output (other, self, "DIA_Serpentes_SUCCESS_15_00"); //Uda³o mi siê pokonaæ golema.
 	AI_Output (self, other, "DIA_Serpentes_SUCCESS_10_01"); //Co? Naprawdê? Przecie¿ bez m³ota Innosa nie by³byœ w stanie tego dokonaæ!
 	
-	if (Npc_IsDead(garwig))
+	if (Npc_IsDead (garwig))
 	{
 		AI_Output (self, other, "DIA_Serpentes_SUCCESS_10_02"); //Zdradzi³eœ siê! To ty zamordowa³eœ Garwiga!
 		AI_Output (self, other, "DIA_Serpentes_SUCCESS_10_03"); //NIECH SPOTKA CIÊ KARA ZA ZAMORDOWANIE S£UGI INNOSA!!!
 		
 		AI_StopProcessInfos (self);
-		B_Attack (self, other, AR_HumanMurderedHuman, 0);
+		B_Attack  (self, other, AR_HumanMurderedHuman, 0);
 	}
 	else 
 	{
@@ -265,7 +265,8 @@ func void DIA_Serpentes_SUCCESS_Info ()
 	};
 	
 	MIS_GOLEM = LOG_SUCCESS;
-	B_GivePlayerXP(XP_BONUS_2);
+	B_GivePlayerXP (XP_GOLEM);
+	
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -277,16 +278,16 @@ INSTANCE DIA_Serpentes_PERM   (C_INFO)
 	nr          = 99;
 	condition   = DIA_Serpentes_PERM_Condition;
 	information = DIA_Serpentes_PERM_Info;
-	permanent   = true;
+	permanent   = TRUE;
 
 	description = "Czy chcia³byœ powiedzieæ mi coœ jeszcze?";
 };
 FUNC INT DIA_Serpentes_PERM_Condition()
 {	
-	if (Kapitel >= 9)
+	if (Kapitel >= 3)
 	|| Npc_KnowsInfo (other,DIA_Serpentes_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Serpentes_PERM_Info()
@@ -320,14 +321,14 @@ INSTANCE DIA_Serpentes_Kap2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Serpentes_Kap2_EXIT_Condition;
 	information = DIA_Serpentes_Kap2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Serpentes_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Serpentes_Kap2_EXIT_Info()
@@ -352,14 +353,14 @@ INSTANCE DIA_Serpentes_Kap3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Serpentes_Kap3_EXIT_Condition;
 	information = DIA_Serpentes_Kap3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Serpentes_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Serpentes_Kap3_EXIT_Info()
@@ -376,16 +377,16 @@ instance DIA_Serpentes_MinenAnteile		(C_INFO)
 	nr		 = 	30;
 	condition	 = 	DIA_Serpentes_MinenAnteile_Condition;
 	information	 = 	DIA_Serpentes_MinenAnteile_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Serpentes_MinenAnteile_Condition ()
 {
-	if (Pedro_Traitor == true)
+	if (Pedro_Traitor == TRUE)
 	&& ((hero.guild == GIL_KDF) || (hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
-	&& (Kapitel >= 9)
+	&& (Kapitel >= 3)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -452,50 +453,50 @@ func void DIA_Serpentes_MinenAnteile_was_ja ()
 	
 	MIS_Serpentes_MinenAnteil_KDF = LOG_RUNNING;	
 
-	 if ((Npc_IsDead(Salandril))== false)
+	 if ((Npc_IsDead(Salandril))== FALSE)
 	 {
 		 CreateInvItems (Salandril, 	ItWr_MinenAnteil_Mis, 2); 
-		 SalandrilMinenAnteil_MAINCounter += 2;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 2;
 	 };
-	 if ((Npc_IsDead(VLK_416_Matteo))== false)
+	 if ((Npc_IsDead(VLK_416_Matteo))== FALSE)
 	 {
 		 CreateInvItems (VLK_416_Matteo, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(VLK_413_Bosper))== false)
+	 if ((Npc_IsDead(VLK_413_Bosper))== FALSE)
 	 {
 		 CreateInvItems (VLK_413_Bosper, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(VLK_409_Zuris))== false)
+	 if ((Npc_IsDead(VLK_409_Zuris))== FALSE)
 	 {
 		 CreateInvItems (VLK_409_Zuris, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(BAU_911_Elena))== false)
+	 if ((Npc_IsDead(BAU_911_Elena))== FALSE)
 	 {
 		 CreateInvItems (BAU_911_Elena, 	ItWr_MinenAnteil_Mis, 2); 
-		 SalandrilMinenAnteil_MAINCounter += 2;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 2;
 	 };
-	 if ((Npc_IsDead(BAU_970_Orlan))== false)
+	 if ((Npc_IsDead(BAU_970_Orlan))== FALSE)
 	 {
 		 CreateInvItems (BAU_970_Orlan, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(VLK_407_Hakon))== false)
+	 if ((Npc_IsDead(VLK_407_Hakon))== FALSE)
 	 {
 		 CreateInvItems (VLK_407_Hakon, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(BAU_936_Rosi))== false)
+	 if ((Npc_IsDead(BAU_936_Rosi))== FALSE)
 	 {
 		 CreateInvItems (BAU_936_Rosi, 	ItWr_MinenAnteil_Mis, 1); 
-		 SalandrilMinenAnteil_MAINCounter += 1;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 1;
 	 };
-	 if ((Npc_IsDead(VLK_468_Canthar))== false)
+	 if ((Npc_IsDead(VLK_468_Canthar))== FALSE)
 	 {
 		 CreateInvItems (VLK_468_Canthar, 	ItWr_MinenAnteil_Mis, 3); 
-		 SalandrilMinenAnteil_MAINCounter += 3;
+		 SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter + 3;
 	 };
 	SalandrilVerteilteMinenAnteil =	SalandrilMinenAnteil_MAINCounter;
 
@@ -516,11 +517,12 @@ func void DIA_Serpentes_MinenAnteile_KillSLD ()
 	Info_AddChoice	(DIA_Serpentes_MinenAnteile, "¯aden problem. Zajmê siê tym.", DIA_Serpentes_MinenAnteile_was_jaSLD );
 };
 
+var int MIS_Serpentes_BringSalandril_SLD;
 func void DIA_Serpentes_MinenAnteile_was_jaSLD ()
 {
 	AI_Output			(other, self, "DIA_Serpentes_MinenAnteile_was_jaSLD_15_00"); //¯aden problem. Zajmê siê tym.
 	AI_Output			(self, other, "DIA_Serpentes_MinenAnteile_was_jaSLD_10_01"); //Doskonale. Do zobaczenia za kilka dni.
-	QuestStep_SerpentesBringSalandril = LOG_RUNNING;
+	MIS_Serpentes_BringSalandril_SLD = LOG_RUNNING;
 	Info_ClearChoices	(DIA_Serpentes_MinenAnteile);
 
 	Log_CreateTopic (TOPIC_MinenAnteile, LOG_MISSION);
@@ -537,7 +539,7 @@ instance DIA_Serpentes_MinenAnteileBringen		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Serpentes_MinenAnteileBringen_Condition;
 	information	 = 	DIA_Serpentes_MinenAnteileBringen_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description	 = 	"Co do tych fa³szywych udzia³ów w kopalni...";
 };
@@ -548,7 +550,7 @@ func int DIA_Serpentes_MinenAnteileBringen_Condition ()
 	&& (Npc_HasItems (other,ItWr_MinenAnteil_Mis))
 	&& (hero.guild == GIL_KDF) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -566,7 +568,7 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 		 if (SerpentesMinenAnteilCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Serpentes_MinenAnteileBringen_15_00"); //Odzyska³em jeden z udzia³ów w kopalni.
-				B_GivePlayerXP(XP_BONUS_1);
+				B_GivePlayerXP (XP_BringSerpentesMinenAnteil);
 				B_GiveInvItems (other, self, ItWr_MinenAnteil_Mis,1);
 				SerpentesMinenAnteilCounter = SerpentesMinenAnteilCounter + 1;
 			}
@@ -576,13 +578,13 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 	
 				B_GiveInvItems (other, self, ItWr_MinenAnteil_Mis,  SerpentesMinenAnteilCount);
 	
-				XP_BringSerpentesMinenAnteils = (SerpentesMinenAnteilCount * XP_BONUS_1);
-				SerpentesMinenAnteilCounter += SerpentesMinenAnteilCount; 
+				XP_BringSerpentesMinenAnteils = (SerpentesMinenAnteilCount * XP_BringSerpentesMinenAnteil);
+				SerpentesMinenAnteilCounter = (SerpentesMinenAnteilCounter + SerpentesMinenAnteilCount); 
 	
-				B_GivePlayerXP(XP_BringSerpentesMinenAnteils);
+				B_GivePlayerXP (XP_BringSerpentesMinenAnteils);
 			};
 
-		SalandrilMinenAnteil_MAINCounter -= SerpentesMinenAnteilCount;
+		SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter - SerpentesMinenAnteilCount;
 		
 		var string MinenAnteilText;
 		var string MinenAnteilLeft;
@@ -629,10 +631,10 @@ instance DIA_Serpentes_GOTSalandril		(C_INFO)
 
 func int DIA_Serpentes_GOTSalandril_Condition ()
 {
-	if (SC_KnowsProspektorSalandril == true)
+	if (SC_KnowsProspektorSalandril == TRUE)
 	&& (hero.guild == GIL_KDF) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -640,7 +642,7 @@ func void DIA_Serpentes_GOTSalandril_Info ()
 {
 	AI_Output			(other, self, "DIA_Serpentes_GOTSalandril_15_00"); //Wiem, kto wprowadzi³ fa³szywe udzia³y do obrotu. To Salandril, alchemik z górnego miasta.
 	AI_Output			(self, other, "DIA_Serpentes_GOTSalandril_10_01"); //PrzyprowadŸ go tutaj. Musimy z nim powa¿nie porozmawiaæ.
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -663,16 +665,16 @@ func int DIA_Serpentes_SalandrilHERE_Condition ()
 		{
 			if ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
 				{
-					return true;
+					return TRUE;
 				}
 			else if (Npc_KnowsInfo(other, DIA_Serpentes_GOTSalandril))
 			&& (hero.guild == GIL_KDF) 
 				{
-					return true;
+					return TRUE;
 				}
 			else
 				{
-					return false;
+					return FALSE;
 				};
 		};
 };
@@ -688,8 +690,8 @@ func void DIA_Serpentes_SalandrilHERE_Info ()
 		CreateInvItems (self, ItMi_Gold, 400);									
 		B_GiveInvItems (self, other, ItMi_Gold, 400);					
 	};
-	TOPIC_END_MinenAnteile = true;
-	B_GivePlayerXP(XP_BONUS_4);
+	TOPIC_END_MinenAnteile = TRUE;
+	B_GivePlayerXP 	(XP_SalandrilInKloster);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -712,12 +714,12 @@ func int DIA_Serpentes_SalandrilDEAD_Condition ()
 			(Npc_KnowsInfo(other, DIA_Serpentes_GOTSalandril))
 			||  (
 					((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
-					&& (QuestStep_SerpentesBringSalandril == LOG_RUNNING)
+					&& (MIS_Serpentes_BringSalandril_SLD == LOG_RUNNING)
 				)
 		)
 		&& (Npc_IsDead(Salandril))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -725,8 +727,8 @@ func void DIA_Serpentes_SalandrilDEAD_Info ()
 {
 	AI_Output			(other, self, "DIA_Serpentes_SalandrilDEAD_15_00"); //Salandril nie ¿yje.
 	AI_Output			(self, other, "DIA_Serpentes_SalandrilDEAD_10_01"); //Có¿, jego wystêpki zosta³y ukarane. Niech Innos zlituje siê nad dusz¹ tego nieszczêœnika.
-	TOPIC_END_MinenAnteile = true;
-	B_GivePlayerXP(XP_Ambient);
+	TOPIC_END_MinenAnteile = TRUE;
+	B_GivePlayerXP 	(XP_Ambient);
 };
 	
 //##################################################################
@@ -745,14 +747,14 @@ INSTANCE DIA_Serpentes_Kap4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Serpentes_Kap4_EXIT_Condition;
 	information = DIA_Serpentes_Kap4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Serpentes_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Serpentes_Kap4_EXIT_Info()
@@ -766,6 +768,7 @@ FUNC VOID DIA_Serpentes_Kap4_EXIT_Info()
 //##
 //##################################################################
 
+
 ///////////////////////////////////////////////////////////////////////
 //	Info Kap5 EXIT 
 ///////////////////////////////////////////////////////////////////////
@@ -775,14 +778,14 @@ INSTANCE DIA_Serpentes_Kap5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Serpentes_Kap5_EXIT_Condition;
 	information = DIA_Serpentes_Kap5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Serpentes_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Serpentes_Kap5_EXIT_Info()

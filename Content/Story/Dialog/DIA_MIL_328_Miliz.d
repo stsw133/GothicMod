@@ -7,13 +7,13 @@ INSTANCE DIA_328_Miliz_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_328_Miliz_EXIT_Condition;
 	information = DIA_328_Miliz_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_328_Miliz_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_328_Miliz_EXIT_Info()
@@ -29,12 +29,12 @@ instance DIA_328_Miliz_Hi		(C_INFO)
 	nr			 =  1;
 	condition	 = 	DIA_328_Miliz_Hi_Condition;
 	information	 = 	DIA_328_Miliz_Hi_Info;
-	permanent    =  false;
-	important 	 =  true;
+	permanent    =  FALSE;
+	important 	 =  TRUE;
 };
 func int DIA_328_Miliz_Hi_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_328_Miliz_Hi_Info ()
 {
@@ -57,14 +57,14 @@ instance DIA_328_Miliz_Kill		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_328_Miliz_Kill_Condition;
 	information	 = 	DIA_328_Miliz_Kill_Info;
-	permanent    =  true;
-	important 	 =  true;
+	permanent    =  TRUE;
+	important 	 =  TRUE;
 };
 func int DIA_328_Miliz_Kill_Condition ()
 {	
-	if (Npc_RefuseTalk(self) == false) 
+	if (Npc_RefuseTalk(self) == FALSE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_328_Miliz_Kill_Info ()

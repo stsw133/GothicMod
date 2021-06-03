@@ -7,12 +7,12 @@ INSTANCE DIA_BDT_1088_Addon_Torwache_EXIT (C_INFO)
 	nr			= 999;
 	condition	= DIA_BDT_1088_Addon_Torwache_EXIT_Condition;
 	information	= DIA_BDT_1088_Addon_Torwache_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= DIALOG_ENDE;
 };        
 FUNC INT DIA_BDT_1088_Addon_Torwache_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_BDT_1088_Addon_Torwache_EXIT_Info()
@@ -33,8 +33,8 @@ instance DIA_BDT_1088_Addon_Torwache_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_BDT_1088_Addon_Torwache_FirstWarn_Condition;
 	information	= DIA_BDT_1088_Addon_Torwache_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_BDT_1088_Addon_Torwache_FirstWarn_Condition()
@@ -42,14 +42,14 @@ func int DIA_BDT_1088_Addon_Torwache_FirstWarn_Condition()
 	if (Npc_GetDistToWP(other, BDT_1088_Checkpoint) <= 700) //NICHT von hinten!
 	{
 		Npc_SetRefuseTalk(self,5);
-		return false;
+		return FALSE;
 	};
 	
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_RefuseTalk(self) == false))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			)
+	&&  (Npc_RefuseTalk(self) 							== FALSE 		))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -64,7 +64,7 @@ func void DIA_BDT_1088_Addon_Torwache_FirstWarn_Info()
 		AI_Output (other, self,"DIA_Addon_BDT_1088_Torwache_FirstWarn_15_01"); //Przepuœæ mnie, stra¿niku.
 		AI_Output (self, other,"DIA_Addon_BDT_10018_Torwache_FirstWarn_06_02"); //W porz¹dku. Mo¿esz przejœæ.
 		
-		self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+		self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 	}
 	else if (MIS_Send_Buddler != LOG_RUNNING)
 	&& 		(MIS_Send_Buddler != LOG_SUCCESS)
@@ -89,10 +89,13 @@ func void DIA_BDT_1088_Addon_Torwache_FirstWarn_Info()
 		AI_Output (self, other,"DIA_Addon_BDT_1088_Addon_Torwache_FirstWarn_06_06"); //Hej, bez pozwolenia od Thorusa nie mogê ciê przepuœciæ.
 	};
 	
+	
 	AI_StopProcessInfos(self);
 		
 	other.aivar[AIV_LastDistToWP] 		= Npc_GetDistToWP(other,BDT_1088_Checkpoint);
 	self.aivar[AIV_Guardpassage_Status]	= GP_FirstWarnGiven;
+	
+	
 };
 
 // ************************************************************
@@ -105,17 +108,17 @@ INSTANCE DIA_BDT_1088_Addon_Torwache_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_BDT_1088_Addon_Torwache_SecondWarn_Condition;
 	information	= DIA_BDT_1088_Addon_Torwache_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_BDT_1088_Addon_Torwache_SecondWarn_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_1088_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_1088_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -139,27 +142,35 @@ INSTANCE DIA_BDT_1088_Addon_Torwache_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_BDT_1088_Addon_Torwache_Attack_Condition;
 	information	= DIA_BDT_1088_Addon_Torwache_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_BDT_1088_Addon_Torwache_Attack_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_1088_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_1088_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
 func void DIA_BDT_1088_Addon_Torwache_Attack_Info()
 {
 	other.aivar[AIV_LastDistToWP] 			= 0;
-	self.aivar[AIV_Guardpassage_Status]		= GP_NONE;						//wird auch in ZS_Attack resettet
+	self.aivar[AIV_Guardpassage_Status]	= GP_NONE;						//wird auch in ZS_Attack resettet
 	
 	AI_Output (self, other,"DIA_Addon_BDT_1088_Addon_Torwache_Attack_06_00"); //Chyba sobie ¿artujesz. No w ka¿dym razie ja jestem powa¿ny...
 	
 	AI_StopProcessInfos	(self);
 	B_Attack (self, other, AR_GuardStopsIntruder, 0); 
 };
+
+
+
+
+
+
+
+

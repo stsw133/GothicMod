@@ -7,13 +7,13 @@ INSTANCE DIA_Jack_DI_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Jack_DI_EXIT_Condition;
 	information = DIA_Jack_DI_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Jack_DI_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Jack_DI_EXIT_Info()
@@ -30,22 +30,23 @@ instance DIA_Jack_DI_GREET		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Jack_DI_GREET_Condition;
 	information	 = 	DIA_Jack_DI_GREET_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
+
 };
 
 func int DIA_Jack_DI_GREET_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
-	&& (Npc_IsDead(UndeadDragon) == false)
+	&& (Npc_IsDead(UndeadDragon) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 var int DIA_Jack_DI_GREET_OneTime;
 func void DIA_Jack_DI_GREET_Info ()
 {
-	if (ORkSturmDI == false)
+	if (ORkSturmDI == FALSE)
 	{
 		AI_Output			(self ,other, "DIA_Jack_DI_GREET_14_00"); //Mam nadziejê, ¿e wiesz, co robisz, ch³opcze.
 		AI_Output			(other ,self, "DIA_Jack_DI_GREET_15_01"); //To nie potrwa d³ugo.
@@ -54,11 +55,11 @@ func void DIA_Jack_DI_GREET_Info ()
 	}
 	else
 	{
-		if (DIA_Jack_DI_GREET_OneTime == false)
+		if (DIA_Jack_DI_GREET_OneTime == FALSE)
 		{
 			AI_Output			(other ,self, "DIA_Jack_DI_GREET_15_03"); //Co tu robisz?
-			B_GivePlayerXP(XP_Ambient);
-			DIA_Jack_DI_GREET_OneTime = true;
+			B_GivePlayerXP (XP_Ambient);
+			DIA_Jack_DI_GREET_OneTime = TRUE;
 		};
 
 		AI_Output			(self ,other, "DIA_Jack_DI_GREET_14_04"); //Jeœli znowu rozpêta siê tu takie piek³o, wyprowadzê st¹d statek. Z tob¹ czy bez ciebie! Jasne?
@@ -78,15 +79,17 @@ instance DIA_Jack_DI_UndeadDragonDead		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Jack_DI_UndeadDragonDead_Condition;
 	information	 = 	DIA_Jack_DI_UndeadDragonDead_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+	
 	description = 	"Zrobione! Wróg pokonany.";
+
 };
 
 func int DIA_Jack_DI_UndeadDragonDead_Condition ()
 {	
 	if (Npc_IsDead(UndeadDragon))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Jack_DI_UndeadDragonDead_Info ()
@@ -98,6 +101,7 @@ func void DIA_Jack_DI_UndeadDragonDead_Info ()
 	Info_ClearChoices	(DIA_Jack_DI_UndeadDragonDead);
 	Info_AddChoice	(DIA_Jack_DI_UndeadDragonDead, "Chwileczkê...", DIA_Jack_DI_UndeadDragonDead_moment );
 	Info_AddChoice	(DIA_Jack_DI_UndeadDragonDead, "Tak. Skoñczmy to wreszcie.", DIA_Jack_DI_UndeadDragonDead_over );
+	
 };
 func void DIA_Jack_DI_UndeadDragonDead_moment ()
 {
@@ -111,3 +115,7 @@ func void DIA_Jack_DI_UndeadDragonDead_over ()
 	AI_StopProcessInfos (self);
 	B_Extro_Avi ();
 };
+
+
+
+

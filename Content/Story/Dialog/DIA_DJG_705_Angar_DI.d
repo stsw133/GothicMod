@@ -8,13 +8,13 @@ INSTANCE DIA_Angar_DI_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Angar_DI_EXIT_Condition;
 	information = DIA_Angar_DI_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Angar_DI_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Angar_DI_EXIT_Info()
@@ -31,16 +31,16 @@ instance DIA_Angar_DI_HALLO		(C_INFO)
 	nr		 = 	10;
 	condition	 = 	DIA_Angar_DI_HALLO_Condition;
 	information	 = 	DIA_Angar_DI_HALLO_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description 	 =  "Jak siê masz?";
 };
 
 func int DIA_Angar_DI_HALLO_Condition ()
 {
-	if ((Npc_IsDead(UndeadDragon)) == false)
+	if ((Npc_IsDead(UndeadDragon)) == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -48,7 +48,7 @@ func void DIA_Angar_DI_HALLO_Info ()
 {
 	AI_Output			(other, self, "DIA_Angar_DI_HALLO_15_00"); //Jak siê czujesz?
 
-	if ((Npc_IsDead(UndeadDragon)) == false)
+	if ((Npc_IsDead(UndeadDragon)) == FALSE)
 	{
 		AI_Output			(self, other, "DIA_Angar_DI_HALLO_04_01"); //Odk¹d wyl¹dowaliœmy na tej wyspie, moje bóle g³owy sta³y siê nie do zniesienia.
 		AI_Output			(self, other, "DIA_Angar_DI_HALLO_04_02"); //Cholera. To siê musi wreszcie skoñczyæ.
@@ -69,16 +69,16 @@ instance DIA_Angar_DI_ORKS		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Angar_DI_ORKS_Condition;
 	information	 = 	DIA_Angar_DI_ORKS_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 
 };
 
 func int DIA_Angar_DI_ORKS_Condition ()
 {
-	if (ORkSturmDI == true) 
-	&& ((Npc_IsDead(UndeadDragon)) == false)
+	if (ORkSturmDI == TRUE) 
+	&& ((Npc_IsDead(UndeadDragon)) == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -97,7 +97,7 @@ func void DIA_Angar_DI_ORKS_follow ()
 	AI_Output			(other, self, "DIA_Angar_DI_ORKS_follow_15_00"); //Zamiast narzekaæ, móg³byœ mi pomóc.
 	AI_Output			(self, other, "DIA_Angar_DI_ORKS_follow_04_01"); //Tak zrobiê. No dalej, ruszaj przodem!
 	AI_StopProcessInfos (self); 
-	B_GivePlayerXP(XP_Ambient);
+	B_GivePlayerXP (XP_Ambient);
 	Npc_ExchangeRoutine	(self,"FollowDI");
 	Angar_DI_Party = LOG_RUNNING;
 };
@@ -118,7 +118,7 @@ instance DIA_Angar_DI_FOLLOW		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Angar_DI_FOLLOW_Condition;
 	information	 = 	DIA_Angar_DI_FOLLOW_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description  =  "Chcê, ¿ebyœ tu zosta³.";
 
@@ -128,7 +128,7 @@ func int DIA_Angar_DI_FOLLOW_Condition ()
 {
 	if (Angar_DI_Party == LOG_RUNNING) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -144,7 +144,7 @@ func void DIA_Angar_DI_FOLLOW_Info ()
 			AI_StopProcessInfos (self); 
 			Npc_ExchangeRoutine	(self,"Start");
 			Angar_DI_Party = LOG_SUCCESS; //Joly: (Schluss mit Follow)
-			B_GivePlayerXP(XP_Ambient);
+			B_GivePlayerXP (XP_Ambient);
 		}
 	else
 		{	
@@ -189,7 +189,7 @@ instance DIA_Angar_DI_FOLLOWAGAIN		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Angar_DI_FOLLOWAGAIN_Condition;
 	information	 = 	DIA_Angar_DI_FOLLOWAGAIN_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 
 	description  =  "ChodŸmy!";
 
@@ -199,7 +199,7 @@ func int DIA_Angar_DI_FOLLOWAGAIN_Condition ()
 {
 	if (Angar_DI_Party == LOG_OBSOLETE) 
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -221,19 +221,19 @@ instance DIA_Angar_DI_FOLLOWSTOP		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Angar_DI_FOLLOWSTOP_Condition;
 	information	 = 	DIA_Angar_DI_FOLLOWSTOP_Info;
-	important	 = 	true;
-	permanent	 = 	true;
+	important	 = 	TRUE;
+	permanent	 = 	TRUE;
 };
 
 func int DIA_Angar_DI_FOLLOWSTOP_Condition ()
 {
 	if (Angar_DI_Party == LOG_RUNNING) 
 	&& 	(
-		((Npc_GetDistToWP(self,"DI_DRACONIANAREA_FIREDRAGON")<3000) && (Npc_IsDead(FireDragonIsland)== false))
+		((Npc_GetDistToWP(self,"DI_DRACONIANAREA_FIREDRAGON")<3000) && (Npc_IsDead(FireDragonIsland)== FALSE))
 		|| ((Npc_GetDistToWP(self,"SKELETTE")<3000))
 		)
 			{
-					return true;
+					return TRUE;
 			};
 };
 
@@ -260,7 +260,7 @@ func int DIA_Angar_DI_UNDEADDRGDEAD_Condition ()
 {
 	if (Npc_IsDead(UndeadDragon))
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -271,7 +271,7 @@ func void DIA_Angar_DI_UNDEADDRGDEAD_Info ()
 	AI_Output			(other, self, "DIA_Angar_DI_UNDEADDRGDEAD_15_02"); //Czemu nie... Wróg zosta³ pokonany.
 	AI_Output			(self, other, "DIA_Angar_DI_UNDEADDRGDEAD_04_03"); //No to nie traæmy czasu. IdŸ do kapitana i ka¿ mu podnosiæ kotwicê.
 
-	if (SC_KnowsMadPsi == true)
+	if (SC_KnowsMadPsi == TRUE)
 	{
 		AI_Output			(other, self, "DIA_Angar_DI_UNDEADDRGDEAD_15_04"); //Mam tylko nadziejê, ¿e nie natkniemy siê ju¿ na twoich dawnych kompanów.
 		AI_Output			(self, other, "DIA_Angar_DI_UNDEADDRGDEAD_04_05"); //Wszystko jest mo¿liwe. Przeœladowcy byli niezwykle skuteczni. Ma³o brakowa³o, a ja te¿ uleg³bym ich mocy. Kto wie?
@@ -300,9 +300,9 @@ func int DIA_Angar_DI_FOUNDAMULETT_Condition ()
 {
 	if 	(Npc_HasItems (other,ItAm_Mana_Angar_MIS))
 		&& (Npc_KnowsInfo(other, DIA_Angar_WIEKOMMSTDUHIERHER))
-		&& (DJG_AngarGotAmulett == false)
+		&& (DJG_AngarGotAmulett == FALSE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
@@ -310,3 +310,4 @@ func void DIA_Angar_DI_FOUNDAMULETT_Info ()
 {
 	B_AngarsAmulettAbgeben ();
 };
+

@@ -7,7 +7,7 @@ func int B_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int attrib, v
 	
 	var int kosten; 
 	var int money;
-	kosten = B_GetLearnCostAttribute(oth,attrib) * points;
+	kosten = B_GetLearnCostAttribute(oth, attrib) * points;
 	money = 0;
 	
 	if (attrib != ATR_STRENGTH)
@@ -29,10 +29,10 @@ func int B_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int attrib, v
 	
 	oth.lp -= kosten;
 	
-	if (attrib == ATR_HITPOINTS_MAX)	{	B_RaiseAttribute (oth, attrib, points*HP_PER_LP);	}
+	if (attrib == ATR_HITPOINTS_MAX)	{	B_RaiseAttribute (oth, attrib, points * HP_PER_LP);	}
 	else								{	B_RaiseAttribute (oth, attrib, points);				};
 	
-	if (attrib == ATR_STRENGTH)				{	LearnedAttribute_STR += points;		}
+	if		(attrib == ATR_STRENGTH)		{	LearnedAttribute_STR += points;		}
 	else if (attrib == ATR_DEXTERITY)		{	LearnedAttribute_DEX += points;		}
 	else if (attrib == ATR_POWER)			{	LearnedAttribute_Power += points;	}
 	else if (attrib == ATR_MANA_MAX)		{	LearnedAttribute_Mana += points;	}

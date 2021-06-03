@@ -1,14 +1,18 @@
-//******************************************************************************************
-//	B_CloseTopics_Yoly (verschiebt Topics in den zugehörigen Log-Ordner bei FAILED oder SUCCESS)
-//******************************************************************************************
-func void B_CloseTopics_Yoly()	
-{
+// ***************************************************
+//  	B_CloseTopics_Yoly ()	(verschiebt Topics in den zugehörigen Log-Ordner bei FAILED oder SUCCESS)	
+// ***************************************************
+func void B_CloseTopics_Yoly ()	
+{	
+//ADDON
+
 	//1. Kapitel
 	B_CloseTopic	(TOPIC_Addon_PickForConstantino, 0, Mil_310_schonmalreingelassen, 3);	
 	B_CloseTopic	(TOPIC_Addon_Greg_NW, MIS_Addon_Greg_RakeCave, ENTERED_ADDONWORLD, 3);	
 	B_CloseTopic	(TOPIC_Addon_Ornament, 0, ENTERED_ADDONWORLD, 3);	
 	B_CloseTopic	(TOPIC_Addon_RingOfWater, RangerMeetingRunning, 0, 3);	
 	B_CloseTopic	(TOPIC_Addon_HolRiordian, MIS_Addon_Saturas_BringRiordian2Me, 0, 3);	
+	B_CloseTopic	(TOPIC_Addon_CavalornTheHut, 0, TOPIC_End_CavalornTheHut, 6);	
+	B_CloseTopic	(TOPIC_Addon_KillBrago, MIS_Addon_Cavalorn_KillBrago, 0, 3);	
 	B_CloseTopic	(TOPIC_Addon_Bandittrader, MIS_Vatras_FindTheBanditTrader, 0, 6);
 	B_CloseTopic	(TOPIC_Addon_MissingPeople, 0, Sklaven_Flucht, 6);
 	B_CloseTopic	(TOPIC_Addon_WhoStolePeople, MIS_Addon_Vatras_WhereAreMissingPeople, 0, 6);
@@ -18,7 +22,7 @@ func void B_CloseTopics_Yoly()
 	B_CloseTopic	(TOPIC_Addon_RangerHelpKDF, MIS_Addon_Daron_GetStatue, TOPIC_End_RangerHelpKDF, 2); 
 	B_CloseTopic	(TOPIC_Addon_RangerHelpSLD, SLD_Aufnahme, TOPIC_End_RangerHelpSLD, 2); 
 	B_CloseTopic	(TOPIC_Addon_RangerHelpMIL, MIL_Aufnahme, 0, 2); 
-//	B_CloseTopic	(TOPIC_Addon_Stoneplates, 0, PLAYER_TALENT_LANGUAGES[LANGUAGE_JARKHENDAR], 4); 
+	B_CloseTopic	(TOPIC_Addon_Stoneplates, 0, PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1], 4); 
 	B_CloseTopic	(TOPIC_Addon_FarimsFish, MIS_Addon_Farim_PaladinFisch, 0, 6); 
 	B_CloseTopic	(TOPIC_Addon_Lucia, 0, TOPIC_END_Lucia, 6); 
 	B_CloseTopic	(TOPIC_Addon_Erol, MIS_Addon_Erol_BanditStuff, 0, 4); 
@@ -43,8 +47,46 @@ func void B_CloseTopics_Yoly()
 
 	//Nach Addonworld
 	B_CloseTopic	(TOPIC_Addon_VatrasAbloesung, 0, VatrasCanLeaveTown_Kap3, 4);		
+	
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+               			
+               			
+               			
+               					
+               		
+     
+     
+     
+     
+     
+     
 
-	//Gothic 2
+
+
+
+//Gothic 2
+
 	B_CloseTopic	(TOPIC_Bronkoeingeschuechtert, MIS_Sekob_Bronko_eingeschuechtert, 0, 6);	
 	B_CloseTopic	(TOPIC_BalthasarsSchafe, MIS_Balthasar_BengarsWeide, 0, 6);	
 
@@ -56,9 +98,11 @@ func void B_CloseTopics_Yoly()
 	B_CloseTopic	(TOPIC_AkilsSLDStillthere, 0, TOPIC_END_AkilsSLDStillthere, 6);	
 	B_CloseTopic	(TOPIC_Wettsaufen, MIS_Rukhar_Wettkampf, 0, 6);	
 	B_CloseTopic	(TOPIC_GaanSchnaubi, MIS_Gaan_Snapper, 0, 6);	
+	B_CloseTopic	(TOPIC_GromAskTeacher, 0, Grom_TeachAnimalTrophy, 6);	
 	B_CloseTopic	(TOPIC_DragomirsArmbrust, MIS_DragomirsArmbrust, 0, 6);	
 	B_CloseTopic	(TOPIC_KillLighthouseBandits, MIS_Jack_KillLighthouseBandits, 0, 6);	
-	B_CloseTopic	(TOPIC_Torlof_Dmt, MIS_Torlof_Dmt, 0, 6);
+	B_CloseTopic	(TOPIC_Torlof_Dmt, MIS_Torlof_Dmt, 0, 6);	
+	B_CloseTopic	(TOPIC_HannaRetrieveLetter, MIS_HannaRetrieveLetter, 0, 6);	
 	B_CloseTopic	(Topic_MarcosJungs, MIS_Marcos_Jungs, 0, 6);	
 
 	// Kapitel 3
@@ -108,3 +152,4 @@ func void B_CloseTopics_Yoly()
 	B_CloseTopic	(TOPIC_HallenVonIrdorath, 0, UndeadDragonIsDead, 999);	
 	B_CloseTopic	(TOPIC_MyCrew, 0, UndeadDragonIsDead, 999);	
 };
+

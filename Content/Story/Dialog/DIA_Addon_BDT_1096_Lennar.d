@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Lennar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Lennar_EXIT_Condition;
 	information = DIA_Addon_Lennar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Muszê iœæ...";
 };
 FUNC INT DIA_Addon_Lennar_EXIT_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Lennar_EXIT_Info()
 {		
@@ -28,12 +28,12 @@ INSTANCE DIA_Addon_Lennar_Hi   (C_INFO)
 	nr          = 1;
 	condition   = DIA_Addon_Lennar_Hi_Condition;
 	information = DIA_Addon_Lennar_Hi_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Czo³em!";
 };
 FUNC INT DIA_Addon_Lennar_Hi_Condition()
 {	
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Lennar_Hi_Info()
 {
@@ -52,14 +52,14 @@ INSTANCE DIA_Addon_Lennar_Attentat   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Lennar_Attentat_Condition;
 	information = DIA_Addon_Lennar_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "A co do próby zabójstwa Estebana...";
 };
 FUNC INT DIA_Addon_Lennar_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{	
-		return true;
+			return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lennar_Attentat_Info()
@@ -86,14 +86,14 @@ INSTANCE DIA_Addon_Lennar_Inspektor (C_INFO)
 	nr          = 3;
 	condition   = DIA_Addon_Lennar_Inspektor_Condition;
 	information = DIA_Addon_Lennar_Inspektor_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description	= "Ale dlaczego Emilio ¿yczy³by œmierci Estebanowi?";
 };
 FUNC INT DIA_Addon_Lennar_Inspektor_Condition()
 {	
 	if (Npc_KnowsInfo(other, DIA_Addon_Lennar_Attentat))
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lennar_Inspektor_Info()
@@ -112,7 +112,7 @@ INSTANCE DIA_Addon_Lennar_Mine   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Addon_Lennar_Mine_Condition;
 	information = DIA_Addon_Lennar_Mine_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = DIALOG_ADDON_MINE_DESCRIPTION;
 };
 FUNC INT DIA_Addon_Lennar_Mine_Condition()
@@ -121,7 +121,7 @@ FUNC INT DIA_Addon_Lennar_Mine_Condition()
 	&& (Player_SentBuddler < 3)
 	&& (Npc_HasItems (other, ItmI_Addon_Stone_01) >= 1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lennar_Mine_Info()
@@ -134,8 +134,8 @@ FUNC VOID DIA_Addon_Lennar_Mine_Info()
 	
 	B_Upgrade_Hero_HackChance(10);
 	
-	Player_SentBuddler += 1;
-	B_GivePlayerXP(XP_BONUS_1);
+	Player_SentBuddler = (Player_SentBuddler +1);
+	B_GivePlayerXP (XP_Addon_MINE);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };
@@ -149,14 +149,14 @@ INSTANCE DIA_Addon_Lennar_Gold   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Addon_Lennar_Gold_Condition;
 	information = DIA_Addon_Lennar_Gold_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nauczysz mnie wydobywaæ z³oto?";
 };
 FUNC INT DIA_Addon_Lennar_Gold_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Addon_Lennar_Hi)
 	{	
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Lennar_Gold_Info()
@@ -181,15 +181,15 @@ INSTANCE DIA_Addon_Lennar_Train   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Addon_Lennar_Train_Condition;
 	information = DIA_Addon_Lennar_Train_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Naucz mnie, jak wydobywaæ z³oto! (50 sztuk z³ota)";
 };
 FUNC INT DIA_Addon_Lennar_Train_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Addon_Lennar_Gold))
-	&& (Lennar_TeachGold == false)
+	&& (Lennar_TeachGold == FALSE)
 	{	
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_Lennar_Train_Info()
@@ -203,7 +203,7 @@ FUNC VOID DIA_Addon_Lennar_Train_Info()
 		AI_Output (self, other, "DIA_Addon_Lennar_Train_01_03"); //Postêpuj zgodnie z moimi wskazówkami, a zostaniesz prawdziwym mistrzem wœród kopaczy.
 		
 		B_Upgrade_Hero_HackChance(10);
-		Lennar_TeachGold = true;
+		Lennar_TeachGold = TRUE;
 	}
 	else
 	{
@@ -219,14 +219,14 @@ INSTANCE DIA_Addon_Lennar_Hacker   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Lennar_Hacker_Condition;
 	information = DIA_Addon_Lennar_Hacker_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	Description = "Wszystko w porz¹dku?"; 
 };
 FUNC INT DIA_Addon_Lennar_Hacker_Condition()
 {	
 	if (Npc_GetDistToWP (self,"ADW_MINE_PICK_09") <= 500)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Lennar_Hacker_Info()
@@ -234,3 +234,5 @@ FUNC VOID DIA_Addon_Lennar_Hacker_Info()
 	AI_Output (other, self, "DIA_Addon_BDT_10004_Lennar_Hacker_15_00"); //Wszystko w porz¹dku?
 	AI_Output (self, other, "DIA_Addon_BDT_10004_Lennar_Hacker_01_01"); //Ca³y czas jednym rytmem – dziêki temu bêdziesz mieæ same du¿e samorodki!
 };
+
+

@@ -7,12 +7,12 @@ INSTANCE DIA_PAL_297_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_PAL_297_EXIT_Condition;
 	information = DIA_PAL_297_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_PAL_297_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_PAL_297_EXIT_Info()
 {
@@ -27,18 +27,18 @@ instance DIA_PAL_297_TRESPAS		(C_INFO)
 	nr			 = 	2;
 	condition	 = 	DIA_PAL_297_TRESPAS_Condition;
 	information	 = 	DIA_PAL_297_TRESPAS_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Co s³ychaæ?";
 };
 func int DIA_PAL_297_TRESPAS_Condition ()
 {
-		return true;
+		return TRUE;
 };
 func void DIA_PAL_297_TRESPAS_Info ()
 {
 	AI_Output (other, self, "DIA_PAL_297_TRESPAS_15_00"); //Jak leci?
 	
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
 		AI_Output (self, other, "DIA_PAL_297_TRESPAS_04_01"); //Te tereny s¹ wyj¹tkowo niebezpieczne, musisz wiêc na siebie uwa¿aæ. Nie chcielibyœmy, by coœ ci siê sta³o.
 	}
@@ -57,15 +57,16 @@ instance DIA_Addon_PAL_297_Rangerbandits		(C_INFO)
 	nr		 = 	5;
 	condition	 = 	DIA_Addon_PAL_297_Rangerbandits_Condition;
 	information	 = 	DIA_Addon_PAL_297_Rangerbandits_Info;
+
 	description	 = 	"Przechodzili têdy ostatnio bandyci?";
 };
 
 func int DIA_Addon_PAL_297_Rangerbandits_Condition ()
 {
 	if (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)	
-	{
-		return true;
-	};
+		{
+			return TRUE;
+		};
 };
 
 func void DIA_Addon_PAL_297_Rangerbandits_Info ()
@@ -74,3 +75,7 @@ func void DIA_Addon_PAL_297_Rangerbandits_Info ()
 	AI_Output	(self, other, "DIA_Addon_PAL_297_Rangerbandits_04_01"); //Nie wiem, o czym mówisz. Dopóki pilnujemy tego miejsca, nikt têdy nie przejdzie - a ju¿ na pewno nie nêdzne bandziory.
 	AI_Output	(self, other, "DIA_Addon_PAL_297_Rangerbandits_04_02"); //Spytaj tamtych farmerów - mo¿e oni coœ widzieli.
 };
+ 
+
+
+

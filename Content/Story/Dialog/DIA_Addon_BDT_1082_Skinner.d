@@ -7,12 +7,12 @@ INSTANCE DIA_Addon_Skinner_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Addon_Skinner_EXIT_Condition;
 	information = DIA_Addon_Skinner_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 FUNC INT DIA_Addon_Skinner_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 FUNC VOID DIA_Addon_Skinner_EXIT_Info()
 {
@@ -28,14 +28,14 @@ INSTANCE DIA_Addon_Skinner_Hi   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Addon_Skinner_Hi_Condition;
 	information = DIA_Addon_Skinner_Hi_Info;
-	permanent   = true;
-	important   = true;
+	permanent   = TRUE;
+	important   = TRUE;
 };
 FUNC INT DIA_Addon_Skinner_Hi_Condition()
 {	
 	if  Npc_IsInState (self, ZS_Talk)
 	{	
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Skinner_Hi_Info()
@@ -57,14 +57,14 @@ INSTANCE DIA_Addon_Skinner_Attentat   (C_INFO)
 	nr          = 9;
 	condition   = DIA_Addon_Skinner_Attentat_Condition;
 	information = DIA_Addon_Skinner_Attentat_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "A co do próby zabójstwa...";
 };
 FUNC INT DIA_Addon_Skinner_Attentat_Condition()
 {	
 	if (MIS_Judas == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Addon_Skinner_Attentat_Info()
@@ -82,7 +82,7 @@ FUNC VOID DIA_Addon_Skinner_ATTENTAT_ADDON_CONTRA()
 	AI_Output (other, self, "DIA_Addon_Skinner_ATTENTAT_ADDON_CONTRA_15_00");//Chcê siê pozbyæ Estebana.
 	AI_Output (self, other, "DIA_Addon_Skinner_ATTENTAT_ADDON_CONTRA_08_01");//Znakomicie.
 	
-	Judas_Counter += 1;
+	Judas_Counter = (Judas_Counter + 1);
 	
 	Info_ClearChoices (DIA_Addon_Skinner_Attentat);
 };
@@ -93,3 +93,8 @@ FUNC VOID DIA_Addon_Skinner_ATTENTAT_ADDON_PRO()
 	
 	Info_ClearChoices (DIA_Addon_Skinner_Attentat);
 };
+
+
+
+
+

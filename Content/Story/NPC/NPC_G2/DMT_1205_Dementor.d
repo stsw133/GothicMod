@@ -1,39 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DMT_1205_Dementor (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	NAME_Dementor;
 	guild 								=	GIL_DMT;
 	id 									=	1205;
 	voice 								=	19;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
-
-	// ------ Aivars ------
-	aivar[AIV_EnemyOverride]			=	true;
 	bodyStateInterruptableOverride		=	true;
+	
 
-	// ------ Attributes ------
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_EnemyOverride]			=	true;
+
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Master-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_MadPsi, 0, ITAR_Dementor);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1205;
 };
 
-FUNC VOID Rtn_START_1205()
+func void Rtn_START_1205()
 {
 	TA_Stand_Dementor	(06,00,07,00, "NW_BIGMILL_FARM3_03");
 	TA_Stand_Dementor	(07,00,08,00, "NW_FARM3_BIGWOOD_04");

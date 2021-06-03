@@ -7,13 +7,13 @@ INSTANCE DIA_Rangar_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Rangar_EXIT_Condition;
 	information = DIA_Rangar_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Rangar_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Rangar_EXIT_Info()
@@ -30,16 +30,16 @@ INSTANCE DIA_Rangar_Hallo   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Rangar_Hallo_Condition;
 	information = DIA_Rangar_Hallo_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Hej, co s³ychaæ?";
 };
 
 FUNC INT DIA_Rangar_Hallo_Condition()
 {
-	if ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == false)
-	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == false)
+	if ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == FALSE)
+	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == FALSE)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -59,17 +59,17 @@ INSTANCE DIA_Rangar_Ork   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Rangar_Ork_Condition;
 	information = DIA_Rangar_Ork_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Jak siê maj¹ sprawy z orkami?";
 };
 
 FUNC INT DIA_Rangar_Ork_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Rangar_Hallo)
-	&& ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == false)
-	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == false)
+	&& ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == FALSE)
+	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rangar_Ork_Info()
@@ -87,17 +87,17 @@ INSTANCE DIA_Rangar_Bier   (C_INFO)
 	nr          = 4;
 	condition   = DIA_Rangar_Bier_Condition;
 	information = DIA_Rangar_Bier_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "Mo¿e jeszcze jedno piwko?";
 };
 
 FUNC INT DIA_Rangar_Bier_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Rangar_Hallo)
-	&& ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == false)
-	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == false)
+	&& ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500) == FALSE)
+	&& ((Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_03")<500) == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Rangar_Bier_Info()
@@ -106,7 +106,7 @@ FUNC VOID DIA_Rangar_Bier_Info()
 	
 	if B_GiveInvItems (other, self, ItFo_Beer, 1)
 	{
-		if (Knows_Paladins == false)
+		if (Knows_Paladins == FALSE)
 		{
 			AI_Output (self, other, "DIA_Rangar_Bier_07_01");//Ach - nie ma nic lepszego ni¿ ch³odny porter.
 			CreateInvItems (self, ItFo_Booze,1);
@@ -120,7 +120,7 @@ FUNC VOID DIA_Rangar_Bier_Info()
 			Info_ClearChoices (DIA_Rangar_Bier);
 		}
 		else if (Knows_Paladins == 1) 
-		&& (Knows_Ork == true)
+		&& (Knows_Ork == TRUE)
 		{
 			AI_Output (self, other, "DIA_Rangar_Bier_07_06");//Nigdy nie odmawiam piwa.
 			CreateInvItems (self, ItFo_Booze,1);
@@ -140,6 +140,7 @@ FUNC VOID DIA_Rangar_Bier_Info()
 			AI_Output (self, other, "DIA_Rangar_Bier_07_12");//Nieczêsto spotyka siê kogoœ, kto stawia piwo. Jesteœ w porz¹dku.
 			Info_ClearChoices (DIA_Rangar_Bier);
 		};
+		
 	}
 	else 
 	{
@@ -166,10 +167,10 @@ var int DIA_Addon_Rangar_Erwischt_OneTime;
 func int DIA_Addon_Rangar_Erwischt_Condition ()
 {
 	if ((Npc_GetDistToWP(self,"NW_CITY_PALCAMP_15")<500))
-	&& (DIA_Addon_Rangar_Erwischt_OneTime == false)
+	&& (DIA_Addon_Rangar_Erwischt_OneTime == FALSE)
 	&& (MIS_Addon_Martin_GetRangar == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 
@@ -179,10 +180,10 @@ func void DIA_Addon_Rangar_Erwischt_Info ()
 	AI_Output	(self, other, "DIA_Addon_Rangar_Erwischt_07_01"); //Eee... Ja... Ten tego... To nie twoja sprawa! Wynocha.
 	AI_Output	(other, self, "DIA_Addon_Rangar_Erwischt_15_02"); //Martin ucieszy siê, jak mu powiem, kto grzeba³ w jego rzeczach...
 	AI_Output	(self, other, "DIA_Addon_Rangar_Erwischt_07_03"); //A rób, co chcesz. Idê tam jeszcze raz.
-	B_GivePlayerXP(XP_BONUS_3);
+	B_GivePlayerXP (XP_Addon_Martin_GotRangar);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
-	SC_GotRangar = true;
+	SC_GotRangar = TRUE;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -194,16 +195,17 @@ instance DIA_Addon_Rangar_nachhaken		(C_INFO)
 	nr		 = 	2;
 	condition	 = 	DIA_Addon_Rangar_nachhaken_Condition;
 	information	 = 	DIA_Addon_Rangar_nachhaken_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
+
 	description	 = 	"I myœlisz, ¿e tak po prostu o tym zapomnê?";
 };
 
 func int DIA_Addon_Rangar_nachhaken_Condition ()
 {
-	if (SC_GotRangar == true)
+	if (SC_GotRangar == TRUE)
 	&& (MIS_Addon_Martin_GetRangar == LOG_RUNNING)
 		{
-			return true;
+			return TRUE;
 		};
 };
 

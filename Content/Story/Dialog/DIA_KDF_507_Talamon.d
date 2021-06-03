@@ -7,15 +7,15 @@ INSTANCE DIA_Talamon_KAP1_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talamon_KAP1_EXIT_Condition;
 	information = DIA_Talamon_KAP1_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talamon_KAP1_EXIT_Condition()
 {
-	if (Kapitel == 7)
+	if (Kapitel == 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -37,17 +37,17 @@ instance DIA_KDF_507_Talamon_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_KDF_507_Talamon_FirstWarn_Condition;
 	information	= DIA_KDF_507_Talamon_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_KDF_507_Talamon_FirstWarn_Condition()
 {
-	if ((Pyrokar_LetYouPassTalamon == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true))
+	if ((Pyrokar_LetYouPassTalamon == FALSE)
+	&&	(self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -59,7 +59,7 @@ func void DIA_KDF_507_Talamon_FirstWarn_Info()
 	AI_StopProcessInfos	(self);
 
 	other.aivar[AIV_LastDistToWP] 			= Npc_GetDistToWP(other,KDF_507_Checkpoint);
-	self.aivar[AIV_Guardpassage_Status]		= GP_FirstWarnGiven;
+	self.aivar[AIV_Guardpassage_Status]	= GP_FirstWarnGiven;
 };
 
 
@@ -73,18 +73,18 @@ INSTANCE DIA_KDF_507_Talamon_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_KDF_507_Talamon_SecondWarn_Condition;
 	information	= DIA_KDF_507_Talamon_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_KDF_507_Talamon_SecondWarn_Condition()
 {
-	if ((Pyrokar_LetYouPassTalamon == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,KDF_507_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((Pyrokar_LetYouPassTalamon == FALSE)
+	&& 	(self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven						)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,KDF_507_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -93,7 +93,7 @@ func void DIA_KDF_507_Talamon_SecondWarn_Info()
 	AI_Output (self, other,"DIA_KDF_507_Talamon_SecondWarn_04_00"); //Innos ukarze ciê kl¹tw¹, jeœli nie zawrócisz!
 
 	other.aivar[AIV_LastDistToWP] 			= Npc_GetDistToWP (other,KDF_507_Checkpoint);
-	self.aivar[AIV_Guardpassage_Status]		= GP_SecondWarnGiven;	
+	self.aivar[AIV_Guardpassage_Status]	= GP_SecondWarnGiven;	
 	
 	AI_StopProcessInfos	(self);
 };
@@ -108,18 +108,18 @@ INSTANCE DIA_KDF_507_Talamon_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_KDF_507_Talamon_Attack_Condition;
 	information	= DIA_KDF_507_Talamon_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_KDF_507_Talamon_Attack_Condition()
 {
-	if ((Pyrokar_LetYouPassTalamon == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,KDF_507_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((Pyrokar_LetYouPassTalamon == FALSE)
+	&&  (self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,KDF_507_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -148,15 +148,15 @@ INSTANCE DIA_Talamon_KAP2_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talamon_KAP2_EXIT_Condition;
 	information = DIA_Talamon_KAP2_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talamon_KAP2_EXIT_Condition()
 {
-	if (Kapitel == 8)
+	if (Kapitel == 2)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -180,15 +180,15 @@ INSTANCE DIA_Talamon_KAP3_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talamon_KAP3_EXIT_Condition;
 	information = DIA_Talamon_KAP3_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talamon_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 9)
+	if (Kapitel == 3)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -212,15 +212,15 @@ INSTANCE DIA_Talamon_KAP4_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talamon_KAP4_EXIT_Condition;
 	information = DIA_Talamon_KAP4_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talamon_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 10)
+	if (Kapitel == 4)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -244,16 +244,16 @@ INSTANCE DIA_Talamon_KAP5_Stop   (C_INFO)
 	nr          = 50;
 	condition   = DIA_Talamon_KAP5_Stop_Condition;
 	information = DIA_Talamon_KAP5_Stop_Info;
-	permanent   = false;
-	important 	= true;
+	permanent   = FALSE;
+	important 	= TRUE;
 };
 
 FUNC INT DIA_Talamon_KAP5_Stop_Condition()
 {
-	if (Pyrokar_LetYouPassTalamon == true)
+	if (Pyrokar_LetYouPassTalamon == TRUE)
 	{
-		return true;
-	};
+		return TRUE;
+	};	
 };
 
 FUNC VOID DIA_Talamon_KAP5_Stop_Info()
@@ -274,15 +274,15 @@ INSTANCE DIA_Talamon_FoundSecretDoor   (C_INFO)
 	nr          = 51;
 	condition   = DIA_Talamon_FoundSecretDoor_Condition;
 	information = DIA_Talamon_FoundSecretDoor_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Znalaz³em tajemne przejœcie.";
 };
 
 FUNC INT DIA_Talamon_FoundSecretDoor_Condition()
 {
-	if (SecretLibraryIsOpen == true)
+	if (SecretLibraryIsOpen == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -308,16 +308,16 @@ INSTANCE DIA_Talamon_ScoutSecretLibrary   (C_INFO)
 	nr          = 51;
 	condition   = DIA_Talamon_ScoutSecretLibrary_Condition;
 	information = DIA_Talamon_ScoutSecretLibrary_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = "By³em w krypcie.";
 };
 
 FUNC INT DIA_Talamon_ScoutSecretLibrary_Condition()
 {
 	if (MIS_SCOUTLIBRARY == LOG_RUNNING)
-	&& (HeroWasInLibrary == true)
+	&& (HeroWasInLibrary == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -333,7 +333,7 @@ FUNC VOID DIA_Talamon_ScoutSecretLibrary_Info()
 		AI_Output (self ,other,"DIA_Talamon_ScoutSecretLibrary_04_04"); //Kiedy ju¿ zwyciê¿ymy z³o, zajmiemy siê krypt¹.
 	
 		MIS_ScoutLibrary = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_10);
+		B_GivePlayerXP (XP_ScoutSecretLibrary);
 	}
 	else
 	{
@@ -351,15 +351,15 @@ INSTANCE DIA_Talamon_KAP5_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Talamon_KAP5_EXIT_Condition;
 	information = DIA_Talamon_KAP5_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Talamon_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 11)
+	if (Kapitel == 5)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 

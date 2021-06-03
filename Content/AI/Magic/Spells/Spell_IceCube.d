@@ -1,12 +1,12 @@
-//******************************************************************************************
-//	SPL_InstantFireball
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_IceCube
+///******************************************************************************************
 
-const int	SPL_Cost_IceCube			=	40;
+const int SPL_Cost_IceCube				=	40;
 const int	SPL_Damage_IceCube			=	60;
 
-//******************************************************************************************
-INSTANCE Spell_IceCube (C_Spell_Proto)
+///******************************************************************************************
+instance Spell_IceCube (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_IceCube;
@@ -15,7 +15,7 @@ INSTANCE Spell_IceCube (C_Spell_Proto)
 
 func int Spell_Logic_IceCube (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceCube/5))
+	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceCube/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_IceCube)
 	{
 		return SPL_SENDCAST;
@@ -28,11 +28,11 @@ func int Spell_Logic_IceCube (var int manaInvested)
 
 func void Spell_Cast_IceCube()
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_IceCube/5))
+	if (Npc_GetActiveSpellIsScroll(self))
 	{
-		self.attribute[ATR_MANA] -= SPL_Cost_IceCube/5;
+		self.attribute[ATR_MANA] -= SPL_Cost_IceCube/SPL_Cost_Scroll;
 	}
-	else if (self.attribute[ATR_MANA] >= SPL_Cost_IceCube)
+	else
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_IceCube;
 	};

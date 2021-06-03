@@ -7,13 +7,13 @@ INSTANCE DIA_Engor_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Engor_EXIT_Condition;
 	information = DIA_Engor_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Engor_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Engor_EXIT_Info()
@@ -29,17 +29,18 @@ instance DIA_Engor_HALLO		(C_INFO)
 	nr		 	 = 	2;
 	condition	 = 	DIA_Engor_HALLO_Condition;
 	information	 = 	DIA_Engor_HALLO_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 func int DIA_Engor_HALLO_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_HALLO_Info ()
 {
+	
  	AI_Output (self, other, "DIA_Engor_HALLO_13_00"); //Ach, wiêc to ty jesteœ tym cz³owiekiem, który przekroczy³ prze³êcz.
 	AI_Output (other, self, "DIA_Engor_HALLO_15_01"); //Tak.
 	AI_Output (self, other, "DIA_Engor_HALLO_13_02"); //Wspaniale - jestem Engor. Zajmujê siê t¹ ekspedycj¹.
@@ -58,8 +59,8 @@ instance DIA_Engor_HANDELN		(C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Engor_HANDELN_Condition;
 	information	 = 	DIA_Engor_HANDELN_Info;
-	permanent	 = 	true;
-	trade		 = 	true;
+	permanent	 = 	TRUE;
+	trade		 = 	TRUE;
 	description	 = 	"Poka¿ mi swoje towary.";
 };
 
@@ -67,7 +68,7 @@ func int DIA_Engor_HANDELN_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Engor_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_HANDELN_Info ()
@@ -78,12 +79,12 @@ func void DIA_Engor_HANDELN_Info ()
 	//////////////////////////////////////////////////////////////////////////////////////
 	Npc_RemoveInvItems	(self, ItRw_Bolt, Npc_HasItems (self,ItRw_Bolt) );
 	var int McBolzenAmount;
-	McBolzenAmount = ((Kapitel-6) * 50);
+	McBolzenAmount = (Kapitel * 50);
 	CreateInvItems 	(self, ItRw_Bolt, McBolzenAmount );
 	
 	Npc_RemoveInvItems	(self, ItRw_Arrow, Npc_HasItems (self,ItRw_Arrow) );
 	var int McArrowAmount;
-	McArrowAmount = ((Kapitel-6) * 50);
+	McArrowAmount = (Kapitel * 50);
 	CreateInvItems 	(self, ItRw_Arrow, McArrowAmount );
 	//////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,7 +106,7 @@ func int DIA_Engor_ABOUTPARLAF_Condition ()
 {
 	if Npc_KnowsInfo (hero, DIA_Parlaf_ENGOR)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_ABOUTPARLAF_Info ()
@@ -123,7 +124,7 @@ instance DIA_Engor_Ruestung		(C_INFO)
 	nr		 	 = 	2;
 	condition	 = 	DIA_Engor_Ruestung_Condition;
 	information	 = 	DIA_Engor_Ruestung_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Masz dla mnie coœ ciekawego?";
 };
 
@@ -131,7 +132,7 @@ func int DIA_Engor_Ruestung_Condition ()
 {
 	if (other.guild == GIL_MIL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_Ruestung_Info ()
@@ -149,7 +150,7 @@ instance DIA_Engor_RSkaufen		(C_INFO)
 	nr		 	 = 	2;
 	condition	 = 	DIA_Engor_RSkaufen_Condition;
 	information	 = 	DIA_Engor_RSkaufen_Info;
-	permanent 	 =  true;
+	permanent 	 =  TRUE;
 	description	 = 	"Kup ciê¿ki pancerz stra¿y. Ochrona (broñ i strza³y) 70, 2500 sztuk z³ota."; 
 };
 //--------------------------------------
@@ -159,9 +160,9 @@ func int DIA_Engor_RSkaufen_Condition ()
 {
 	if (other.guild == GIL_MIL)
 	&& Npc_KnowsInfo (other, DIA_Engor_Ruestung)
-	&& (DIA_Engor_RSkaufen_perm == false)
+	&& (DIA_Engor_RSkaufen_perm == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_RSkaufen_Info ()
@@ -171,7 +172,7 @@ func void DIA_Engor_RSkaufen_Info ()
 		AI_Output (other, self, "DIA_Engor_RSkaufen_15_00"); //Daj mi zbrojê.
 		AI_Output (self, other, "DIA_Engor_RSkaufen_13_01"); //Proszê. Zapewnia doskona³¹ ochronê.
 		B_GiveInvItems (self,other, ITAR_MIL_M,1);
-		DIA_Engor_RSkaufen_perm = true;
+		DIA_Engor_RSkaufen_perm = TRUE;
 	}
 	else
 	{
@@ -195,7 +196,7 @@ func int DIA_Engor_HELP_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Engor_ABOUTPARLAF)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_HELP_Info ()
@@ -210,6 +211,8 @@ func void DIA_Engor_HELP_Info ()
 	Info_ClearChoices (DIA_Engor_HELP);
 	Info_AddChoice (DIA_Engor_HELP,"Nie mam na to czasu.",DIA_Engor_HELP_NO);
 	Info_AddChoice (DIA_Engor_HELP,"Nie martw siê, przyniosê ci miêso.",DIA_Engor_HELP_YES);
+	
+	
 };
 FUNC VOID DIA_Engor_HELP_NO()
 {
@@ -229,6 +232,7 @@ FUNC VOID DIA_Engor_HELP_YES()
 	B_LogEntry  (TOPIC_BringMeat,"Engor potrzebuje dwóch tuzinów kawa³ków miêsa, aby wy¿ywiæ swoich ludzi.");
 	B_LogEntry  (TOPIC_BringMeat,"Niewa¿ne, czy bêdzie to kie³basa, szynka, czy sma¿one albo surowe miêso. Chodzi tylko o to, ¿eby jego ch³opcy mogli coœ wrzuciæ na z¹b.");  
 
+	
 	MIS_Engor_BringMeat = LOG_RUNNING;  
 	AI_StopProcessInfos (self);
 };
@@ -241,7 +245,7 @@ instance DIA_Engor_BRINGMEAT		(C_INFO)
 	nr			 = 	4;
 	condition	 = 	DIA_Engor_BRINGMEAT_Condition;
 	information	 = 	DIA_Engor_BRINGMEAT_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Proszê, przynios³em ci coœ (oddaj miêso).";
 };
 
@@ -254,7 +258,7 @@ func int DIA_Engor_BRINGMEAT_Condition ()
 	|| (Npc_HasItems (hero, ItFoMutton) 	>= 1)
 	|| (Npc_HasItems (hero, ItFo_Sausage) 	>= 1))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_BRINGMEAT_Info ()
@@ -274,12 +278,12 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		{
 			B_GiveInvItems (hero, self, ItFoMuttonRaw, (Meat_Amount - Meat_Counter));
 		
-			Meat_Counter += (Meat_Amount - Meat_Counter);
+			Meat_Counter = (Meat_Counter + (Meat_Amount - Meat_Counter));
 		}
 		else if (Npc_HasItems (hero, ItFoMuttonRaw) < Meat_Amount) // muss hier stehen, wegen nächster Zeile
 		&& (Meat_Counter < Meat_Amount) 
 		{
-			Meat_Counter += (Npc_HasItems(hero,ItFoMuttonRaw));
+			Meat_Counter = Meat_Counter + (Npc_HasItems (hero,ItFoMuttonRaw));
 			
 			//B_GiveInvItems (hero, self,ItFoMuttonRaw, (Npc_HasItems (hero,ItFoMuttonRaw))); 
 		
@@ -297,12 +301,12 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		&& (Meat_Counter < Meat_Amount) 
 		{
 			B_GiveInvItems (hero, self, ItFoMutton, (Meat_Amount - Meat_Counter));
-			Meat_Counter += (Meat_Amount - Meat_Counter);
+			Meat_Counter = (Meat_Counter + (Meat_Amount - Meat_Counter));
 		}
 		else if (Npc_HasItems (hero, ItFoMutton) < Meat_Amount) 
 		&& (Meat_Counter < Meat_Amount) 
 		{
-			Meat_Counter += (Npc_HasItems(hero,ItFoMutton));
+			Meat_Counter = Meat_Counter + (Npc_HasItems (hero,ItFoMutton));
 			
 			//B_GiveInvItems (hero, self,ItFoMutton, (Npc_HasItems (hero,ItFoMutton)));
 			
@@ -320,12 +324,12 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		&& (Meat_Counter < Meat_Amount) 
 		{
 			B_GiveInvItems (hero, self, ItFo_Bacon, (Meat_Amount - Meat_Counter));
-			Meat_Counter += (Meat_Amount - Meat_Counter);
+			Meat_Counter = (Meat_Counter + (Meat_Amount - Meat_Counter));
 		}
 		else if (Npc_HasItems (hero, ItFo_Bacon) < Meat_Amount) 
 		&& (Meat_Counter < Meat_Amount) 
 		{
-			Meat_Counter += (Npc_HasItems (hero,ItFo_Bacon));
+			Meat_Counter = Meat_Counter + (Npc_HasItems (hero,ItFo_Bacon));
 			
 			//B_GiveInvItems (hero, self,ItFo_Bacon, (Npc_HasItems (hero,ItFo_Bacon)));
 			
@@ -345,12 +349,12 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		{
 			
 			B_GiveInvItems (hero, self, ItFo_Sausage, (Meat_Amount - Meat_Counter));
-			Meat_Counter += (Meat_Amount - Meat_Counter);
+			Meat_Counter = (Meat_Counter + (Meat_Amount - Meat_Counter));
 		}
 		else if (Npc_HasItems (hero, ItFo_Sausage) < Meat_Amount) 
 		&& (Meat_Counter < Meat_Amount) 
 		{
-			Meat_Counter += (Npc_HasItems (hero,ItFo_Sausage));
+			Meat_Counter = Meat_Counter + (Npc_HasItems (hero,ItFo_Sausage));
 		
 			//B_GiveInvItems (hero, self,ItFo_Sausage, (Npc_HasItems (hero,ItFo_Sausage)));
 			
@@ -382,7 +386,7 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		AI_Output (self, other, "DIA_Engor_BRINGMEAT_13_05"); //Na schön. Du hast mir geholfen, du kriegst was umsonst. Ich gebe dir eine Information. 	
 		*/
 		MIS_Engor_BringMeat = LOG_SUCCESS;
-		B_GivePlayerXP(XP_BONUS_1);
+		B_GivePlayerXP (XP_BringMeat);
 		Log_AddEntry (TOPIC_BringMeat,"Engor dosta³ miêso. Ma je rozdzieliæ pomiêdzy swoich ludzi."); 
 	};
 };
@@ -404,16 +408,17 @@ instance DIA_Engor_Business		(C_INFO)
 	nr		 	 = 	1;
 	condition	 = 	DIA_Engor_Business_Condition;
 	information	 = 	DIA_Engor_Business_Info;
-	permanent	 =	false;	
+	permanent	 =	FALSE;	
 	description	 = 	"Jak idzie interes?";
+	
 };
 
 func int DIA_Engor_Business_Condition ()
 {
-	if (Kapitel >= 10)
+	if (Kapitel >= 4)
 	&& (MIS_Engor_BringMeat == LOG_SUCCESS)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Engor_Business_Info ()
@@ -431,4 +436,60 @@ func void DIA_Engor_Business_Info ()
 		};
 
 	AI_Output (self, other, "DIA_Engor_Business_13_03"); //Co z tob¹, potrzebujesz jeszcze czegoœ?
+};
+
+
+
+
+// ************************************************************
+// 			  				PICK POCKET
+// ************************************************************
+
+INSTANCE DIA_Engor_PICKPOCKET (C_INFO)
+{
+	npc			= VLK_4108_Engor;
+	nr			= 900;
+	condition	= DIA_Engor_PICKPOCKET_Condition;
+	information	= DIA_Engor_PICKPOCKET_Info;
+	permanent	= TRUE;
+	description = "(Kradzie¿ tej mapy bêdzie ryzykowna)";
+};                       
+
+FUNC INT DIA_Engor_PICKPOCKET_Condition()
+{
+	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
+	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
+	&& (Npc_HasItems(self, ItWr_Map_Oldworld) >= 1)
+	&& (other.attribute[ATR_DEXTERITY] >= (40 - Theftdiff))
+	{
+		return TRUE;
+	};
+};
+ 
+FUNC VOID DIA_Engor_PICKPOCKET_Info()
+{	
+	Info_ClearChoices	(DIA_Engor_PICKPOCKET);
+	Info_AddChoice		(DIA_Engor_PICKPOCKET, DIALOG_BACK 		,DIA_Engor_PICKPOCKET_BACK);
+	Info_AddChoice		(DIA_Engor_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Engor_PICKPOCKET_DoIt);
+};
+
+func void DIA_Engor_PICKPOCKET_DoIt()
+{
+	if (other.attribute[ATR_DEXTERITY] >= 40)
+	{
+		B_GiveInvItems (self, other, ItWr_Map_Oldworld, 1);
+		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
+		B_GivePlayerXP (XP_Ambient);
+		Info_ClearChoices (DIA_Engor_PICKPOCKET);
+	}
+	else
+	{
+		AI_StopProcessInfos	(self);
+		B_Attack (self, other, AR_Theft, 1); //reagiert trotz IGNORE_Theft mit NEWS
+	};
+};
+	
+func void DIA_Engor_PICKPOCKET_BACK()
+{
+	Info_ClearChoices (DIA_Engor_PICKPOCKET);
 };

@@ -7,12 +7,12 @@ INSTANCE DIA_BDT_1020_Wegelagerer_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Wegelagerer_EXIT_Condition;
 	information	= DIA_Wegelagerer_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 FUNC INT DIA_Wegelagerer_EXIT_Condition()
 {
-		return true;
+		return TRUE;
 };
 FUNC VOID DIA_Wegelagerer_EXIT_Info()
 {	
@@ -30,15 +30,15 @@ instance DIA_BDT_1020_Wegelagerer_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_BDT_1020_Wegelagerer_FirstWarn_Condition;
 	information	= DIA_BDT_1020_Wegelagerer_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 func int DIA_BDT_1020_Wegelagerer_FirstWarn_Condition()
 {
-	if ((other.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true))
+	if ((other.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_BDT_1020_Wegelagerer_FirstWarn_Info()
@@ -48,7 +48,7 @@ func void DIA_BDT_1020_Wegelagerer_FirstWarn_Info()
 	AI_Output (self, other,"DIA_BDT_1020_Wegelagerer_FirstWarn_06_02"); //Jeœli nie chcesz, bym poharata³ ci buŸkê, opró¿nij kieszenie i oddaj ca³e z³oto - i streszczaj siê!
 	
 	other.aivar[AIV_LastDistToWP] 			= Npc_GetDistToWP(other,BDT_1020_Wegelagerer_Checkpoint);
-	self.aivar[AIV_Guardpassage_Status]		= GP_FirstWarnGiven;
+	self.aivar[AIV_Guardpassage_Status]	= GP_FirstWarnGiven;
 	
  	Info_ClearChoices (DIA_BDT_1020_Wegelagerer_FirstWarn);
  	Info_AddChoice (DIA_BDT_1020_Wegelagerer_FirstWarn,"Ile chcesz?",DIA_BDT_1020_Wegelagerer_FirstWarn_HowMuch);
@@ -66,7 +66,7 @@ FUNC VOID DIA_BDT_1020_Wegelagerer_AGON ()
 	AI_Output (self ,other,"DIA_BDT_1020_Wegelagerer_AGON_06_01"); //Em - ¿e co? Hmmm... Mo¿liwe.
 	AI_Output (self ,other,"DIA_BDT_1020_Wegelagerer_AGON_06_02"); //Za 20 sztuk z³ota mo¿emy porozmawiaæ!
 
-	Wegelagerer_Surprise = true;
+	Wegelagerer_Surprise = TRUE;
 
 	if (Npc_HasItems (other,ItMi_gold) >= 20)
 	{ 
@@ -122,17 +122,17 @@ FUNC VOID DIA_BDT_1020_Wegelagerer_FirstWarn_GiveMoney ()
 {
 	AI_Output (other,self ,"DIA_BDT_1020_Wegelagerer_FirstWarn_GiveMoney_15_00"); //Proszê, oto twoje pieni¹dze.
 	
-	if (Wegelagerer_Surprise == false)
+	if (Wegelagerer_Surprise == FALSE)
 	{
 		AI_Output (self,other ,"DIA_BDT_1020_Wegelagerer_FirstWarn_GiveMoney_06_01"); //20 sztuk z³ota to chyba niewygórowana cena za ¿ycie. Mo¿esz przejœæ.
 	};
-	if (Wegelagerer_Surprise == true)
+	if (Wegelagerer_Surprise == TRUE)
 	{
 		AI_Output (self,other ,"DIA_BDT_1020_Wegelagerer_FirstWarn_GiveMoney_06_02"); //Aha, ten nowicjusz przechodzi³ têdy ju¿ prawie godzinê temu.
 		AI_Output (self,other ,"DIA_BDT_1020_Wegelagerer_FirstWarn_GiveMoney_06_03"); //Wygl¹da na to, ¿e bardzo mu by³o pilno, ci¹gle ogl¹da³ siê za siebie. A teraz spadaj.
 	};
 	B_GiveInvItems (other,self ,itmi_gold,20);
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 	
 	AI_StopProcessInfos (self);
 };
@@ -194,17 +194,17 @@ INSTANCE DIA_BDT_1020_Wegelagerer_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_BDT_1020_Wegelagerer_SecondWarn_Condition;
 	information	= DIA_BDT_1020_Wegelagerer_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_BDT_1020_Wegelagerer_SecondWarn_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_1020_Wegelagerer_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_1020_Wegelagerer_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_BDT_1020_Wegelagerer_SecondWarn_Info()
@@ -220,7 +220,7 @@ func void DIA_BDT_1020_Wegelagerer_SecondWarn_Info()
 	
 	
 	other.aivar[AIV_LastDistToWP] 			= Npc_GetDistToWP (other,BDT_1020_Wegelagerer_Checkpoint);
-	self.aivar[AIV_Guardpassage_Status]		= GP_SecondWarnGiven;	
+	self.aivar[AIV_Guardpassage_Status]	= GP_SecondWarnGiven;	
 	
 };
 FUNC VOID DIA_BDT_1020_Wegelagerer_SecondWarn_GiveMoney ()
@@ -230,7 +230,7 @@ FUNC VOID DIA_BDT_1020_Wegelagerer_SecondWarn_GiveMoney ()
 	AI_Output (self ,other,"DIA_BDT_1020_Wegelagerer_SecondWarn_GiveMoney_06_01"); //No, tak mo¿emy rozmawiaæ.
 	
 	B_GiveInvItems (other,self ,itmi_gold,20);
-	self.aivar[AIV_Guardpassage_Status] = GP_PassGate;
+	self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 	AI_StopProcessInfos (self);
 };
 FUNC VOID DIA_BDT_1020_Wegelagerer_SecondWarn_NoMoney ()
@@ -252,17 +252,17 @@ INSTANCE DIA_BDT_1020_Wegelagerer_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_BDT_1020_Wegelagerer_Attack_Condition;
 	information	= DIA_BDT_1020_Wegelagerer_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_BDT_1020_Wegelagerer_Attack_Condition()
 {
-	if ((self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,BDT_1020_Wegelagerer_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,BDT_1020_Wegelagerer_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_BDT_1020_Wegelagerer_Attack_Info()

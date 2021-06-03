@@ -7,13 +7,13 @@ INSTANCE DIA_Rick_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Rick_EXIT_Condition;
 	information = DIA_Rick_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Rick_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Rick_EXIT_Info()
@@ -30,13 +30,13 @@ instance DIA_Rick_HALLO		(C_INFO)
 	nr		 	= 1;
 	condition	= DIA_Rick_HALLO_Condition;
 	information	= DIA_Rick_HALLO_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "Co s³ychaæ?";
 };
 
 func int DIA_Rick_HALLO_Condition ()
 {
-	return true;
+	return TRUE;
 };
 
 func void DIA_Rick_HALLO_Info ()

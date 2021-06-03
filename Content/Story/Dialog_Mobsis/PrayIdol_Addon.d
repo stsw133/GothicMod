@@ -1,4 +1,4 @@
-//******************************************************************************************
+///******************************************************************************************
 func void B_BlitzInArsch()
 {
 	var int BlitzInArsch_Hitpoints;
@@ -23,8 +23,9 @@ func void B_BlitzInArsch()
 	
 	hero.attribute[ATR_HITPOINTS] = BlitzInArsch_Hitpoints;
 };
-//******************************************************************************************
-FUNC VOID PrayIdol_S1()
+
+///******************************************************************************************
+func void PrayIdol_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	
@@ -37,8 +38,8 @@ FUNC VOID PrayIdol_S1()
 	};
 };
 
-//******************************************************************************************
-INSTANCE PC_PrayIdol_End (C_Info)
+///******************************************************************************************
+instance PC_PrayIdol_End (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -48,7 +49,7 @@ INSTANCE PC_PrayIdol_End (C_Info)
 	description							=	DIALOG_ENDE;
 };
 
-FUNC INT PC_PrayIdol_End_Condition()
+func int PC_PrayIdol_End_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYIDOL)
 	{
@@ -56,13 +57,13 @@ FUNC INT PC_PrayIdol_End_Condition()
 	};
 };
 
-FUNC VOID PC_PrayIdol_End_Info()
+func void PC_PrayIdol_End_Info()
 {
 	B_ENDPRODUCTIONDIALOG();
 };
 
-//******************************************************************************************
-INSTANCE PC_PrayIdol_UPGRATEBELIARSWEAPON (C_Info)
+///******************************************************************************************
+instance PC_PrayShrine_UPGRATEBELIARSWEAPON (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -72,17 +73,17 @@ INSTANCE PC_PrayIdol_UPGRATEBELIARSWEAPON (C_Info)
 	description							=	"Ulepszenie Szponu Beliara";
 };
 
-FUNC INT PC_PrayIdol_UPGRATEBELIARSWEAPON_Condition()
+func int PC_PrayIdol_UPGRATEBELIARSWEAPON_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYIDOL)
-	&& (C_ScCanUpgrateBeliarsWeapon() == true)
-	&& (C_ScHasBeliarsWeapon() == true)
+	&& (C_ScCanUpgrateBeliarsWeapon())
+	&& (C_ScHasBeliarsWeapon())
 	{
 		return true;
 	};
 };
 
-FUNC VOID PC_PrayIdol_UPGRATEBELIARSWEAPON_Info()
+func void PC_PrayIdol_UPGRATEBELIARSWEAPON_Info()
 {
 	B_ClearBeliarsWeapon();
 	B_UpgrateBeliarsWeapon();

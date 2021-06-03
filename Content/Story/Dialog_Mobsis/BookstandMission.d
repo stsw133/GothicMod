@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	Bookstand
-//******************************************************************************************
+///******************************************************************************************
+///	BookstandMission
+///******************************************************************************************
 
 var int SmithWeapon_BestSwords;
 
-//******************************************************************************************
-FUNC VOID Use_Bookstand_01_S1()
+///******************************************************************************************
+func void Use_Bookstand_01_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	
@@ -50,12 +50,12 @@ FUNC VOID Use_Bookstand_01_S1()
 	};
 };
 
-//******************************************************************************************
+///******************************************************************************************
 
 var int FinalDragonEquipment_Once;
 
-//******************************************************************************************
-FUNC VOID Use_FINALDRAGONEQUIPMENT_S1()
+///******************************************************************************************
+func void Use_FINALDRAGONEQUIPMENT_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero); 
 	
@@ -78,7 +78,7 @@ FUNC VOID Use_FINALDRAGONEQUIPMENT_S1()
 		if (hero.guild == GIL_KDF)
 		{
 			PlayerGetsAmulettOfDeath = true;
-//			PLAYER_TALENT_SPELLS[SPL_MasterOfDisaster] = true;
+			PLAYER_TALENT_RUNES[SPL_MasterOfDisaster] = true; 
 			B_LogEntry (TOPIC_TalentRunes, "Sk³adniki runy 'œwiêty pocisk': 1 porcja wody œwiêconej, nie potrzeba zwoju z zaklêciem");
 			
 					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
@@ -91,8 +91,8 @@ FUNC VOID Use_FINALDRAGONEQUIPMENT_S1()
 		else if (hero.guild == GIL_PAL)
 		{
 			PAL_KnowsAbout_FINAL_BLESSING = true;
-//			PLAYER_TALENT_SPELLS[SPL_PalTeleportSecret] = true;
-//			PrintScreen	(PRINT_LearnPalTeleportSecret, -1, -1, FONT_Screen, 2);
+			PLAYER_TALENT_RUNES[SPL_PalTeleportSecret] = true;
+			PrintScreen	(PRINT_LearnPalTeleportSecret, -1, -1, FONT_Screen, 2);
 			
 			Log_CreateTopic (TOPIC_TalentRunes, LOG_NOTE);
 			B_LogEntry (TOPIC_TalentRunes, "Tworzenie run wymaga u¿ycia odpowiednich sk³adników. Ca³y proces wymaga jeszcze odpowiedniego sto³u i pustego kamienia runicznego.");
@@ -108,9 +108,11 @@ FUNC VOID Use_FINALDRAGONEQUIPMENT_S1()
 		}
 		else
 		{
+//			PLAYER_TALENT_SMITH[WEAPON_1H_Special_04] = true;
+//			PLAYER_TALENT_SMITH[WEAPON_2H_Special_04] = true;
 			SmithWeapon_BestSwords = true;
-			
 //			PrintScreen (PRINT_LearnSmith, -1, -1, FONT_Screen, 2);
+
 //			Npc_SetTalentSkill (self, NPC_TALENT_SMITH, 1);
 			Log_CreateTopic (TOPIC_TalentSmith, LOG_NOTE);
 			B_LogEntry (TOPIC_TalentSmith, "Jeœli zechcê wykuæ jak¹œ broñ, to po pierwsze bêdzie mi potrzebny kawa³ surowej stali, który trzeba rozgrzaæ do czerwonoœci w kuŸni, a nastêpnie ukszta³towaæ na kowadle. Nadanie broni jakichœ specjalnych charakterystyk bêdzie wymaga³o u¿ycia dodatkowych sk³adników.");
@@ -129,7 +131,7 @@ FUNC VOID Use_FINALDRAGONEQUIPMENT_S1()
 					Doc_Show		(nDocID);
 		};
 		
-		if (FinalDragonEquipment_Once == false)
+		if (!FinalDragonEquipment_Once)
 		{
 			B_GivePlayerXP(XP_BONUS_10);
 			FinalDragonEquipment_Once = true;

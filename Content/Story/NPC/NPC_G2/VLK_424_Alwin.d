@@ -1,40 +1,39 @@
-//******************************************************************************************
+///******************************************************************************************
 instance Vlk_424_Alwin (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Alwin";
 	guild 								=	GIL_VLK;
 	id 									=	424;
 	voice 								=	12;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Initiate);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Vlk_Axe);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal13, 0, ITAR_Scyther);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_424;
 };
 
-FUNC VOID Rtn_Start_424()
+func void Rtn_Start_424()
 {
 	TA_Sit_Bench	(08,00,22,00, "NW_CITY_PATH_HABOUR_18");
     TA_Sleep		(22,00,08,00, "NW_CITY_HABOUR_HUT_07_BED_01");

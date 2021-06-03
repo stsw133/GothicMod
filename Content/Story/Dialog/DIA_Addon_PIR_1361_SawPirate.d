@@ -7,12 +7,12 @@ instance DIA_Addon_SawPirate_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_SawPirate_EXIT_Condition;
 	information	= DIA_Addon_SawPirate_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 func INT DIA_Addon_SawPirate_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_SawPirate_EXIT_Info()
 {	
@@ -28,12 +28,12 @@ instance DIA_Addon_SawPirate_Hello(C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_SawPirate_Hello_Condition;
 	information	= DIA_Addon_SawPirate_Hello_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Co s³ychaæ?";
 };                       
 func INT DIA_Addon_SawPirate_Hello_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_SawPirate_Hello_Info()
 {	
@@ -55,14 +55,14 @@ instance DIA_Addon_SawPirate_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_SawPirate_Anheuern_Condition;
 	information	= DIA_Addon_SawPirate_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Jesteœ jednym z ch³opaków Henry'ego?";
 };                       
 FUNC INT DIA_Addon_SawPirate_Anheuern_Condition()
 {
 	if (MIS_Henry_FreeBDTTower == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_SawPirate_Anheuern_Info()
@@ -85,23 +85,23 @@ instance DIA_Addon_SawPirate_ComeOn(C_INFO)
 	nr		 	= 12;
 	condition	= DIA_Addon_SawPirate_ComeOn_Condition;
 	information	= DIA_Addon_SawPirate_ComeOn_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "ChodŸ ze mn¹.";
 };
 func int DIA_Addon_SawPirate_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Henry_FreeBDTTower == LOG_RUNNING)
-	&& (C_TowerBanditsDead() == false)
+	&& (C_TowerBanditsDead() == FALSE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_SawPirate_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_SawPirate_ComeOn_Info ()
 {
 	AI_Output (other, self, "DIA_Addon_SawPirate_ComeOn_15_00"); //ChodŸ ze mn¹.
-	if (HammerPirate.aivar[AIV_PARTYMEMBER] == true)
+	if (HammerPirate.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
 		AI_Output (self ,other,"DIA_Addon_SawPirate_ComeOn_09_01"); //Czemu? Masz ju¿ kogoœ do pomocy...
 	}
@@ -111,20 +111,20 @@ func void DIA_Addon_SawPirate_ComeOn_Info ()
 		AI_StopProcessInfos (self);
 	}
 	else if (!Npc_IsDead(HammerPirate))
-	&& (SawPirate_ComeOn_Once == false)
+	&& (SawPirate_ComeOn_Once == FALSE)
 	{
 		AI_Output (self ,other,"DIA_Addon_SawPirate_ComeOn_09_02"); //Jakby innych nie by³o...
-		SawPirate_ComeOn_Once = true;
+		SawPirate_ComeOn_Once = TRUE;
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	}
 	else 
 	{
 		AI_Output (self ,other,"DIA_Addon_SawPirate_ComeOn_09_03"); //Dobrze, dobrze...
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -137,14 +137,14 @@ INSTANCE DIA_Addon_SawPirate_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_SawPirate_GoHome_Condition;
 	information	= DIA_Addon_SawPirate_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_SawPirate_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -153,7 +153,7 @@ FUNC VOID DIA_Addon_SawPirate_GoHome_Info()
 	AI_Output (other,self ,"DIA_Addon_SawPirate_GoHome_15_00"); //Nie potrzebujê ju¿ twojej pomocy.
 	AI_Output (self ,other,"DIA_Addon_SawPirate_GoHome_09_01"); //To wrócê do pi³owania.
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START"); 
 };
 
@@ -166,15 +166,15 @@ INSTANCE DIA_Addon_SawPirate_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_SawPirate_TooFar_Condition;
 	information	= DIA_Addon_SawPirate_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_SawPirate_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	&& (Npc_GetDistToWP (self, "ADW_PIRATECAMP_WAY_08") > 6000)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -183,7 +183,7 @@ FUNC VOID DIA_Addon_SawPirate_TooFar_Info()
 	AI_Output (self ,other,"DIA_Addon_SawPirate_TooFar_09_01"); //Oddaliliœmy siê zbytnio od obozu.
 	AI_Output (self ,other,"DIA_Addon_SawPirate_GoHome_09_02"); //Nie podoba mi siê to. Lepiej wrócê.
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START");
 	
 	AI_StopProcessInfos (self); 
@@ -200,15 +200,15 @@ INSTANCE DIA_Addon_SawPirate_Success(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_SawPirate_Success_Condition;
 	information	= DIA_Addon_SawPirate_Success_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_SawPirate_Success_Condition()
 {
-	if (C_TowerBanditsDead() == true)
-	&& (self.aivar[AIV_PARTYMEMBER] == true)
+	if (C_TowerBanditsDead() == TRUE)
+	&& (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -217,7 +217,7 @@ FUNC VOID DIA_Addon_SawPirate_Success_Info()
 	AI_Output (self ,other,"DIA_Addon_SawPirate_Success_09_01"); //Kawa³ drania z ciebie.
 	AI_Output (self ,other,"DIA_Addon_SawPirate_Success_09_02"); //Wracam do obozu. Mam nadziejê, ¿e ju¿ siê nie spotkamy!
 	
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START");
 	
 	AI_StopProcessInfos (self); 

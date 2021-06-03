@@ -282,7 +282,8 @@ instance ITKE_RUNE_MIS (ItemPR_Key)
 instance ITKE_Addon_Bloodwyn_01 (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
-	TEXT[2]			= 	"Klucz Bloodwyna";
+	description		=	"Klucz Bloodwyna";
+	TEXT[2]			= 	"Pasuje do skrzyni";
 };
 instance ITKE_Addon_Heiler (ItemPR_Key)
 {

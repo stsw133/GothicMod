@@ -16,22 +16,22 @@ INSTANCE DIA_Dragon_Undead_Exit(C_INFO)
 	nr			= 999;
 	condition	= DIA_Dragon_Undead_Exit_Condition;
 	information	= DIA_Dragon_Undead_Exit_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 
 FUNC INT DIA_Dragon_Undead_Exit_Condition()
 {
-	if (DragonTalk_Exit_Free == true)
+	if (DragonTalk_Exit_Free == TRUE)
 		{
-				return true;
+				return TRUE;
 		};
 };
 
 FUNC VOID DIA_Dragon_Undead_Exit_Info()
 {	
 	AI_StopProcessInfos	(self);
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 	self.flags =  0;
 };
 
@@ -46,14 +46,14 @@ INSTANCE DIA_Dragon_Undead_Hello(C_INFO)
 	condition	= DIA_Dragon_Undead_Hello_Condition;
 	information	= DIA_Dragon_Undead_Hello_Info;
 
-	important 	= true;
+	important 	= TRUE;
 };                       
 
 FUNC INT DIA_Dragon_Undead_Hello_Condition()
 {
 	if (Npc_HasItems (other,ItAm_InnosEye) >= 1)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -150,17 +150,15 @@ func void DIA_Dragon_Undead_Hello_attack ()
 	//ADDON
 	if (C_ScHasEquippedBeliarsWeapon())
 	|| (C_ScHasReadiedBeliarsWeapon())
-//	|| (C_ScHasBeliarsRune())
+	|| (Npc_HasItems(hero, ItRu_BeliarRage))
 	{
 		AI_Output (self, other, "DIA_Addon_UndeadDragon_Add_20_04"); //Naprawdê s¹dzisz, ¿e mo¿esz mi zaszkodziæ tym szponem?
 	};
 	//ADDON ENDE
 	AI_Output			(self, other, "DIA_Dragon_Undead_Hello_attack_20_02"); //Twoje szcz¹tki pozwol¹ mi wyzwoliæ wiatr œmierci, który wkrótce omiecie ca³y œwiat.
 		
-//	Npc_RemoveInvItems (other,ItAm_InnosEye,1);
-//	CreateInvItems 	   (other,ItMi_InnosEye_Discharged_MIS,1);	 
 	AI_StopProcessInfos	(self);
-	DragonTalk_Exit_Free  = false;
+	DragonTalk_Exit_Free  = FALSE;
 	self.flags =  0;
 };
 

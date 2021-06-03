@@ -7,15 +7,15 @@ INSTANCE DIA_Kardif_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Kardif_EXIT_Condition;
 	information = DIA_Kardif_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Kardif_EXIT_Condition()
 {
-	if (Kardif_OneQuestion == false)
+	if (Kardif_OneQuestion == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -33,14 +33,14 @@ instance DIA_Kardif_Hi		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Kardif_Hi_Condition;
 	information	 = 	DIA_Kardif_Hi_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Jak leci?";
 };
 func int DIA_Kardif_Hi_Condition ()
 {
-	if (Kardif_OneQuestion == false)	
+	if (Kardif_OneQuestion == FALSE)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Hi_Info ()
@@ -61,7 +61,7 @@ instance DIA_Kardif_Hallo		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Kardif_Hallo_Condition;
 	information	 = 	DIA_Kardif_Hallo_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Za³o¿ê siê, ¿e s³yszysz tu wiele rzeczy...";
 };
 func int DIA_Kardif_Hallo_Condition ()
@@ -69,7 +69,7 @@ func int DIA_Kardif_Hallo_Condition ()
 	if Npc_KnowsInfo (other,DIA_Kardif_Hi)
 	&& (Kardif_Deal == 0)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Hallo_Info ()
@@ -129,6 +129,7 @@ FUNC VOID DIA_Kardif_Hallo_Ablehnen()
 	
 	Info_ClearChoices (DIA_Kardif_Hallo);
 	Info_AddChoice 	  (DIA_Kardif_Hallo,"Nie lepiej by³o tak od razu?",DIA_Kardif_Hallo_Fuenf);
+
 };
 FUNC VOID DIA_Kardif_Hallo_Fuenf()
 {
@@ -153,16 +154,16 @@ instance DIA_Kardif_TRADE		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Kardif_TRADE_Condition;
 	information	 = 	DIA_Kardif_TRADE_Info;
-	permanent	 = 	true;
-	trade		 = 	true;
+	permanent	 = 	TRUE;
+	trade		 = 	TRUE;
 	description	 = 	"Daj mi coœ do picia.";
 };
 
 func int DIA_Kardif_TRADE_Condition ()
 {
-	if (Kardif_OneQuestion == false)	
+	if (Kardif_OneQuestion == FALSE)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -180,23 +181,23 @@ instance DIA_Kardif_TradeInfo		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Kardif_TradeInfo_Condition;
 	information	 = 	DIA_Kardif_TradeInfo_Info;
-	permanent	 = 	true;
+	permanent	 = 	TRUE;
 	description	 = 	"Potrzebujê informacji.";
 };
 
 func int DIA_Kardif_TradeInfo_Condition ()
 {
-	if (Kardif_OneQuestion == false)
+	if (Kardif_OneQuestion == FALSE)
 	&& (Kardif_Deal > 0)	
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_TradeInfo_Info ()
 {
 	AI_Output (other, self, "DIA_Kardif_TradeInfo_15_00"); //Potrzebujê informacji.
 
-	Kardif_OneQuestion = true;
+	Kardif_OneQuestion = TRUE;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Kardif's Infos werden verkauft! 
@@ -211,7 +212,7 @@ instance DIA_Kardif_Buerger		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Buerger_Condition;
 	information	 = 	DIA_Kardif_Buerger_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Kto zalicza siê do najbardziej wp³ywowych obywateli w mieœcie?";
 };
 //-------------------------------------------
@@ -219,10 +220,10 @@ var int DIA_Kardif_Buerger_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Buerger_Condition ()
 {	
-	if (DIA_Kardif_Buerger_permanent == false)
-	&& (Kardif_OneQuestion == true)
+	if (DIA_Kardif_Buerger_permanent == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 
 };
@@ -235,7 +236,8 @@ func void DIA_Kardif_Buerger_Info ()
 		AI_Output (self, other, "DIA_Kardif_Buerger_14_02"); //Ma du¿o pieniêdzy, które po¿ycza na procent. Zajêcie to nie zyska³o mu wielu zwolenników, ale wielu wp³ywowych obywateli zapo¿ycza siê u niego.
 		AI_Output (self, other, "DIA_Kardif_Buerger_14_03"); //Handlarze i rzemieœlnicy równie¿ maj¹ du¿e wp³ywy - uwa¿am nawet, ¿e ZBYT du¿e.
 		
-		DIA_Kardif_Buerger_permanent = true;
+		
+		DIA_Kardif_Buerger_permanent = TRUE;
 	}
 	else 
 	{
@@ -253,7 +255,7 @@ instance DIA_Kardif_Lehmar	(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Lehmar_Condition;
 	information	 = 	DIA_Kardif_Lehmar_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Kto jest winien pieni¹dze Lehmarowi?";
 };
 //-------------------------------------------
@@ -261,11 +263,11 @@ var int DIA_Kardif_Lehmar_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Lehmar_Condition ()
 {	
-	if (DIA_Kardif_Lehmar_permanent == false)
-	&& (Kardif_OneQuestion == true)
-	&& (DIA_Kardif_Buerger_permanent == true) //(Knows perm Info)
+	if (DIA_Kardif_Lehmar_permanent == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
+	&& (DIA_Kardif_Buerger_permanent == TRUE) //(Knows perm Info)
 	{
-		return true;
+		return TRUE;
 	};
 
 };
@@ -278,7 +280,7 @@ func void DIA_Kardif_Lehmar_Info ()
 		AI_Output (self, other, "DIA_Kardif_Add_14_02"); //Chocia¿ podejrzewam, ¿e nie zdo³asz tego zrobiæ w taki sposób, ¿eby niczego nie zauwa¿y³.
 		AI_Output (self, other, "DIA_Kardif_Add_14_03"); //Z tego co wiem, zawsze nosi j¹ przy sobie...
 		
-		DIA_Kardif_Lehmar_permanent = true;
+		DIA_Kardif_Lehmar_permanent = TRUE;
 	}
 	else 
 	{
@@ -297,7 +299,7 @@ instance DIA_Kardif_Arbeit		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Arbeit_Condition;
 	information	 = 	DIA_Kardif_Arbeit_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Gdzie mogê znaleŸæ pracê?";
 };
 //-------------------------------------------
@@ -305,10 +307,10 @@ var int DIA_Kardif_Arbeit_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Arbeit_Condition ()
 {	
-	if (DIA_Kardif_Arbeit_permanent == false)
-	&& (Kardif_OneQuestion == true)
+	if (DIA_Kardif_Arbeit_permanent == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 
 };
@@ -320,7 +322,7 @@ func void DIA_Kardif_Arbeit_Info ()
 		AI_Output (self, other, "DIA_Kardif_Arbeit_14_01"); //W porcie bêdzie ciê¿ko. Najlepiej, jeœli udasz siê do rzemieœlników zamieszkuj¹cych doln¹ czêœæ miasta.
 		AI_Output (self, other, "DIA_Kardif_Arbeit_14_02"); //Jeœli posiadasz w miarê przyzwoity miecz, mo¿esz spróbowaæ pojedynku z Alrikiem. Walczy za pieni¹dze. Znajdziesz go za magazynem.
 			
-	DIA_Kardif_Arbeit_permanent = true;
+	DIA_Kardif_Arbeit_permanent = TRUE;
 	}
 	else 
 	{
@@ -337,7 +339,7 @@ instance DIA_Addon_Kardif_MissingPeople		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Addon_Kardif_MissingPeople_Condition;
 	information	 = 	DIA_Addon_Kardif_MissingPeople_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Co wiesz o zaginionych mieszkañcach?";
 };
 //-------------------------------------------
@@ -345,11 +347,11 @@ var int DIA_Addon_Kardif_MissingPeople_permanent;
 //-------------------------------------------
 func int DIA_Addon_Kardif_MissingPeople_Condition ()
 {	
-	if (DIA_Addon_Kardif_MissingPeople_permanent == false)
-	&& (Kardif_OneQuestion == true)
-	&& (SC_HearedAboutMissingPeople == true)
+	if (DIA_Addon_Kardif_MissingPeople_permanent == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
+	&& (SC_HearedAboutMissingPeople == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_Kardif_MissingPeople_Info ()
@@ -368,7 +370,7 @@ func void DIA_Addon_Kardif_MissingPeople_Info ()
 		Log_SetTopicStatus(TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
 		B_LogEntry (TOPIC_Addon_WhoStolePeople,"Kardif uwa¿a, ¿e w sprawie zaginionych ludzi powinienem przepytaæ Coragona, kupca z dolnego miasta, i handlarza rybami z portu, Halvora."); 
 
-		DIA_Addon_Kardif_MissingPeople_permanent = true;
+		DIA_Addon_Kardif_MissingPeople_permanent = TRUE;
 	}
 	else 
 	{
@@ -385,7 +387,7 @@ instance DIA_Kardif_Lernen		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Lernen_Condition;
 	information	 = 	DIA_Kardif_Lernen_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Kto mo¿e mnie czegoœ tutaj nauczyæ?";
 };
 //-------------------------------------------
@@ -393,10 +395,10 @@ var int DIA_Kardif_Lernen_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Lernen_Condition ()
 {	
-	if (DIA_Kardif_Lernen_permanent == false)
-	&& (Kardif_OneQuestion == true)
+	if (DIA_Kardif_Lernen_permanent == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 
 };
@@ -416,6 +418,7 @@ func void DIA_Kardif_Lernen_Info ()
 		
 		Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 		
+		
 		B_LogEntry (Topic_CityTeacher,"Carl, kowal z dzielnicy portowej, mo¿e mi pokazaæ, jak staæ siê silniejszym.");
 		B_LogEntry (Topic_CityTeacher,"Lares mo¿e mi pomóc w zwiêkszeniu zrêcznoœci.");
 		B_LogEntry (Topic_CityTeacher,"Alrik, który krêci siê za magazynem w dzielnicy portowej, mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
@@ -424,7 +427,8 @@ func void DIA_Kardif_Lernen_Info ()
 		Log_CreateTopic (Topic_CityTrader,LOG_NOTE);
 		B_LogEntry (Topic_CityTrader,"Brahim sprzedaje mapy w dzielnicy portowej.");
 		
-	DIA_Kardif_Lernen_permanent = true;
+		
+	DIA_Kardif_Lernen_permanent = TRUE;
 	}
 	else 
 	{
@@ -440,7 +444,7 @@ instance DIA_Kardif_Diebeswerk		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Diebeswerk_Condition;
 	information	 = 	DIA_Kardif_Diebeswerk_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Czy w okolicy mo¿na znaleŸæ jakieœ 'specjalne' zlecenia...?";
 };
 //-------------------------------------------
@@ -448,12 +452,12 @@ var int DIA_Kardif_Diebeswerk_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Diebeswerk_Condition ()
 {	
-	if (DIA_Kardif_Diebeswerk_permanent == false)
-	&& (DIA_Kardif_Arbeit_permanent == true)
-	&& (Kardif_OneQuestion == true)
+	if (DIA_Kardif_Diebeswerk_permanent == FALSE)
+	&& (DIA_Kardif_Arbeit_permanent     == TRUE)
+	&& (Kardif_OneQuestion == TRUE)
 	//&& (other.guild == GIL_NONE) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Diebeswerk_Info ()
@@ -465,7 +469,8 @@ func void DIA_Kardif_Diebeswerk_Info ()
 		AI_PlayAni(self, "T_SEARCH");
 		AI_Output (self, other, "DIA_Kardif_Diebeswerk_14_02"); //...idŸ porozmawiaæ z Nagurem. Mo¿e on bêdzie w stanie ci pomóc.
 	
-		DIA_Kardif_Diebeswerk_permanent = true;
+		DIA_Kardif_Diebeswerk_permanent = TRUE;
+		
 	}
 	else 
 	{
@@ -481,7 +486,7 @@ instance DIA_Kardif_Diebeswerk2		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Diebeswerk2_Condition;
 	information	 = 	DIA_Kardif_Diebeswerk2_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Czy masz dla mnie jakieœ 'specjalne' zadanie?";
 };
 //-------------------------------------------
@@ -489,16 +494,16 @@ var int DIA_Kardif_Diebeswerk2_permanent;
 //-------------------------------------------
 func int DIA_Kardif_Diebeswerk2_Condition ()
 {	
-	if (DIA_Kardif_Diebeswerk2_permanent == false)
-	&& (DIA_Kardif_Diebeswerk_permanent == true) //andere Info
-	&& (DIA_Kardif_Arbeit_permanent     == true)
-	&& (Kardif_OneQuestion == true)
+	if (DIA_Kardif_Diebeswerk2_permanent == FALSE)
+	&& (DIA_Kardif_Diebeswerk_permanent == TRUE) //andere Info
+	&& (DIA_Kardif_Arbeit_permanent     == TRUE)
+	&& (Kardif_OneQuestion == TRUE)
 	&& (other.guild != GIL_KDF) 
 	&& (other.guild != GIL_NOV)
 	&& (other.guild != GIL_MIL)
 	&& (other.guild != GIL_PAL)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Diebeswerk2_Info ()
@@ -513,7 +518,8 @@ func void DIA_Kardif_Diebeswerk2_Info ()
 		AI_Output (self, other, "DIA_Kardif_Diebeswerk2_14_05"); //Specjalnie dla niego zamówi³ kufer u stolarza Thorbena.
 		AI_Output (self, other, "DIA_Kardif_Diebeswerk2_14_06"); //Powiadaj¹, ¿e Daron przywióz³ ze sob¹ sporo kosztownoœci. Ale tego ode mnie nie s³ysza³eœ, jasne?
 		
-		DIA_Kardif_Diebeswerk2_permanent = true;
+		DIA_Kardif_Diebeswerk2_permanent = TRUE;
+		
 	}
 	else 
 	{
@@ -529,19 +535,19 @@ instance DIA_Kardif_Zurueck		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_Zurueck_Condition;
 	information	 = 	DIA_Kardif_Zurueck_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	DIALOG_BACK;
 };
 func int DIA_Kardif_Zurueck_Condition ()
 {	
-	if (Kardif_OneQuestion == true)
+	if (Kardif_OneQuestion == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Zurueck_Info ()
 {
-	Kardif_OneQuestion = false;
+	Kardif_OneQuestion = FALSE;
 	Info_ClearChoices (DIA_Kardif_Zurueck);
 };
 ///////////////////////////////////////////////////////////////////////
@@ -553,17 +559,17 @@ instance DIA_Kardif_DOPE		(C_INFO)
 	nr			 =  5;
 	condition	 = 	DIA_Kardif_DOPE_Condition;
 	information	 = 	DIA_Kardif_DOPE_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Gdzie mogê kupiæ ziele?";
 };
 var int DIA_Kardif_DOPE_perm;
 func int DIA_Kardif_DOPE_Condition ()
 {
 	if 	(MIS_Andre_REDLIGHT == LOG_RUNNING)
-	&&  (Kardif_OneQuestion == true)
-	&&  (DIA_Kardif_DOPE_perm == false)
+	&&  (Kardif_OneQuestion == TRUE)
+	&&  (DIA_Kardif_DOPE_perm == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_DOPE_Info ()
@@ -572,7 +578,7 @@ func void DIA_Kardif_DOPE_Info ()
 	
 	AI_Output (other, self, "DIA_Kardif_DOPE_15_01"); //Gdzie mogê kupiæ ziele?
 	
-	if (Hlp_IsItem (heroArmor, ItAR_MIl_L) == true) 
+	if (Hlp_IsItem (heroArmor, ItAR_MIl_L) == TRUE) 
 	{
 		AI_Output (self, other, "DIA_Kardif_DOPE_14_00"); //Na pewno nie tutaj - nie mam nic wspólnego z tym towarem.
 	}
@@ -582,7 +588,7 @@ func void DIA_Kardif_DOPE_Info ()
 		AI_Output (other, self, "DIA_Kardif_DOPE_15_03"); //Dobrze, wiêc gdzie?
 		AI_Output (self, other, "DIA_Kardif_DOPE_14_04"); //Na twoim miejscu pogada³bym z Meldorem - on pali przez ca³y czas.
 		
-		DIA_Kardif_DOPE_perm = true;
+		DIA_Kardif_DOPE_perm = TRUE;
 	};
 	
 };
@@ -595,17 +601,17 @@ instance DIA_Kardif_Paket		(C_INFO)
 	nr			 =  3;
 	condition	 = 	DIA_Kardif_Paket_Condition;
 	information	 = 	DIA_Kardif_Paket_Info;
-	permanent	 =  true;
+	permanent	 =  TRUE;
 	description	 = 	"Co wiesz na temat paczki bagiennego ziela?";
 };
 var int DIA_Kardif_Paket_perm;
 func int DIA_Kardif_Paket_Condition ()
 {
 	if 	(MIS_ANDRE_WAREHOUSE == LOG_RUNNING)
-	&&  (Kardif_OneQuestion == true)
-	&& (DIA_Kardif_Paket_perm == false)
+	&&  (Kardif_OneQuestion == TRUE)
+	&& (DIA_Kardif_Paket_perm == FALSE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_Paket_Info ()
@@ -618,7 +624,7 @@ func void DIA_Kardif_Paket_Info ()
 		AI_Output (self, other, "DIA_Kardif_Paket_14_03"); //Dobrze, dobrze - jakiœ czas temu w mojej knajpie pojawi³ siê pewien cz³owiek. Najemnik.
 		AI_Output (self, other, "DIA_Kardif_Paket_14_04"); //Powiedzia³, ¿e sprzeda³ w porcie paczkê ziela. Kto wie, jak by³o naprawdê, facet by³ kompletnie zamroczony. To wszystko co wiem.
 		
-		DIA_Kardif_Paket_perm = true;
+		DIA_Kardif_Paket_perm = TRUE;
 		
 		B_LogEntry (TOPIC_WAREHOUSE,"Kardif rozmawia³ z jakimœ najemnikiem, który mia³ do sprzedania paczkê bagiennego ziela.");
 	}
@@ -636,16 +642,16 @@ instance DIA_Kardif_SENDATTILA		(C_INFO)
 	nr			 =  2;
 	condition	 = 	DIA_Kardif_SENDATTILA_Condition;
 	information	 = 	DIA_Kardif_SENDATTILA_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 func int DIA_Kardif_SENDATTILA_Condition ()
 {
-	if (MIS_ThiefGuild_sucked == true)
+	if (MIS_ThiefGuild_sucked == TRUE)
 	|| (Diebesgilde_Okay >= 3)
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Kardif_SENDATTILA_Info ()
@@ -674,7 +680,7 @@ instance DIA_Kardif_Kerl		(C_INFO)
 	nr 			 =  2; 
 	condition	 = 	DIA_Kardif_Kerl_Condition;
 	information	 = 	DIA_Kardif_Kerl_Info;
-	permanent    =  true;
+	permanent    =  TRUE;
 	description	 = 	"Jak wygl¹da³ ten cz³owiek?";
 };
 //----------------------------------
@@ -683,11 +689,11 @@ var int DIA_Kardif_Kerl_permanent;
 func int DIA_Kardif_Kerl_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Kardif_SENDATTILA)
-	&& (Attila.aivar[AIV_TalkedToPlayer] == false)
-	&& (Kardif_OneQuestion == true)
-	&& (DIA_Kardif_Kerl_permanent == false))
+	&& (Attila.aivar[AIV_TalkedToPlayer] == FALSE)
+	&& (Kardif_OneQuestion == TRUE)
+	&& (DIA_Kardif_Kerl_permanent == FALSE))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -702,7 +708,7 @@ func void DIA_Kardif_Kerl_Info ()
 		AI_Output (self, other, "DIA_Kardif_Kerl_14_04"); //Mia³ takie dziwne, niepokoj¹ce spojrzenie - s¹dzê jednak, ¿e powinieneœ siê z nim zobaczyæ. Z pewnoœci¹ bêdzie to interesuj¹ce spotkanie.
 		AI_Output (other, self, "DIA_Kardif_Kerl_15_05"); //Tak... Pytanie tylko, dla kogo bardziej...
 		
-		DIA_Kardif_Kerl_permanent = true;
+		DIA_Kardif_Kerl_permanent = TRUE;
 	}
 	else
 	{
@@ -718,7 +724,7 @@ instance DIA_Kardif_DEFEATEDATTILA		(C_INFO)
 	nr 			 =  2; 
 	condition	 = 	DIA_Kardif_DEFEATEDATTILA_Condition;
 	information	 = 	DIA_Kardif_DEFEATEDATTILA_Info;
-	permanent    =  false;
+	permanent    =  FALSE;
 	description	 = 	"Ten drañ próbowa³ mnie zabiæ!";
 };
 
@@ -726,7 +732,7 @@ func int DIA_Kardif_DEFEATEDATTILA_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Attila_Hallo))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -736,7 +742,7 @@ func void DIA_Kardif_DEFEATEDATTILA_Info ()
 	AI_Output (self, other, "DIA_Kardif_DEFEATEDATTILA_14_01"); //Hej, czy to moja wina? Ja tylko przekaza³em ci wiadomoœæ od niego.
 	AI_Output (self, other, "DIA_Kardif_DEFEATEDATTILA_14_02"); //Jeœli ktoœ ma coœ przeciwko tobie, to podejrzewam, ¿e mo¿e te¿ mieæ swoje powody.
 
-	B_GivePlayerXP(XP_BONUS_0);
+	B_GivePlayerXP (XP_Kardif_Blame4Attila);
 	
 	B_KillNpc	(Attila);
 	Npc_RemoveInvItem	(Attila, ItMi_OldCoin);
@@ -750,15 +756,15 @@ INSTANCE DIA_Kardif_Zeichen   (C_INFO)
 	nr          = 2;
 	condition   = DIA_Kardif_Zeichen_Condition;
 	information = DIA_Kardif_Zeichen_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "(Poka¿ z³odziejski gest)";
 };
 
 FUNC INT DIA_Kardif_Zeichen_Condition()
 {
-	if (Knows_SecretSign == true)
+	if (Knows_SecretSign == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Kardif_Zeichen_Info()
@@ -785,15 +791,15 @@ INSTANCE DIA_Kardif_Crew   (C_INFO)
 	nr          = 51;
 	condition   = DIA_Kardif_Crew_Condition;
 	information = DIA_Kardif_Crew_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Brakuje mi jeszcze paru marynarzy.";
 };
 
 FUNC INT DIA_Kardif_Crew_Condition()
 {
-	if (MIS_SCKnowsWayToIrdorath == true)
+	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 FUNC VOID DIA_Kardif_Crew_Info()
@@ -803,9 +809,9 @@ FUNC VOID DIA_Kardif_Crew_Info()
 	AI_Output (self, other, "DIA_Kardif_Crew_14_02");//Ale dobry kapitan nie powinien mieæ wielkich problemów z zebraniem za³ogi. Potrzebujemy jeszcze paru ch³opaków.
 	AI_Output (other,self , "DIA_Kardif_Crew_15_03");//Gdzie mogê znaleŸæ kapitana?
 	AI_Output (self, other, "DIA_Kardif_Crew_14_04");//Pytasz nieodpowiedni¹ osobê. Ja tylko prowadzê knajpê.
-	if (Npc_IsDead (Jack) == false)
+	if (Npc_IsDead (Jack) == FALSE)
 	{
-		if (SCGoTCaptain == false)
+		if (SCGoTCaptain == FALSE)
 		{
 			Log_CreateTopic (TOPIC_Captain, LOG_MISSION);                                                                                                                           
 			Log_SetTopicStatus(TOPIC_Captain, LOG_RUNNING);                                                                                                                         
@@ -814,3 +820,31 @@ FUNC VOID DIA_Kardif_Crew_Info()
 		AI_Output (self, other, "DIA_Kardif_Crew_14_05");//IdŸ do Starego Jacka. Krêci siê po porcie, od kiedy siêgam pamiêci¹. Nie znajdziesz nikogo lepszego.
 	};
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

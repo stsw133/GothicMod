@@ -1,38 +1,38 @@
-//******************************************************************************************
-PROTOTYPE Mst_Default_Troll (C_Npc)
+///******************************************************************************************
+prototype Mst_Default_Troll (C_Npc)
 {
-	// ------ Monster ------
+	/// ------ Monster ------
 	name								=	"Troll";
 	guild								=	GIL_TROLL;
 	aivar[AIV_MM_REAL_ID]				= 	ID_TROLL;
-	bodyStateInterruptableOverride		=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetMonsterAttributes (self, 60);
 	protection[PROT_POINT]				=	-1;
 	protection[PROT_FLY]				=	-1;
 
-	// ------ FT ------
+	/// ------ FT ------
 	damagetype 							=	DAM_FLY;
 	damage[DAM_INDEX_FLY]				/=	2;
-	
 	fight_tactic						=	FAI_TROLL;
 
-	// ------ Senses & Ranges ------
+	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
+	
+	bodyStateInterruptableOverride		=	true;
 
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_Packhunter] 			=	false;
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
-//******************************************************************************************
+///******************************************************************************************
 func void B_SetVisuals_Troll()
 {
 	Mdl_SetVisual		(self, "Troll.mds");
@@ -48,50 +48,51 @@ func void B_SetVisuals_BlackTroll()
 	Mdl_SetVisual		(self, "Troll.mds");
 	Mdl_SetVisualBody	(self, "Troll_Black_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
-//******************************************************************************************
-INSTANCE Troll (Mst_Default_Troll)
+///******************************************************************************************
+instance Troll (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 };
-INSTANCE Troll_Snow (Mst_Default_Troll)
+instance Troll_Snow (Mst_Default_Troll)
 {
 	B_SetVisuals_SnowTroll();
 };
-//******************************************************************************************
-INSTANCE Troll_Black (Mst_Default_Troll)
+instance Troll_Black (Mst_Default_Troll)
 {
 	name						=	"Czarny troll";
 	aivar[AIV_MM_REAL_ID]		= 	ID_TROLL_BLACK;
-
+	
 	B_SetMonsterAttributes (self, 80);
 	protection[PROT_POINT]				=	-1;
 	protection[PROT_FLY]				=	-1;
-
+	damage[DAM_INDEX_FLY]				/=	2;
+	
 	B_SetVisuals_BlackTroll();
 };
-//******************************************************************************************
-INSTANCE Valley_Troll (Mst_Default_Troll)
+///******************************************************************************************
+instance Valley_Troll (Mst_Default_Troll)
 {
 	aivar[AIV_MaxDistToWp]		=	2300;
 	aivar[AIV_OriginalFightTactic]	=	FAI_TROLL;
 	B_SetVisuals_Troll();
 };
-INSTANCE Maya_Troll	(Mst_Default_Troll)
+instance Maya_Troll	(Mst_Default_Troll)
 {
 	aivar[AIV_MaxDistToWp]		=	1000;
 	aivar[AIV_OriginalFightTactic]	=	FAI_TROLL;
 	B_SetVisuals_Troll();
 };
-//******************************************************************************************
-INSTANCE Troll_DI (Mst_Default_Troll)
+///******************************************************************************************
+instance Troll_DI (Mst_Default_Troll)
 {
 	name						=	"Czarny troll";
 	aivar[AIV_MM_REAL_ID]		= 	ID_TROLL_BLACK;
-
+	
 	B_SetMonsterAttributes (self, Troll_Black.level);
 	protection[PROT_POINT]				=	-1;
 	protection[PROT_FLY]				=	-1;
-
+	damage[DAM_INDEX_FLY]				/=	2;
+	
 	aivar[AIV_MaxDistToWp]		=	300;
 	aivar[AIV_OriginalFightTactic]	=	FAI_TROLL;
 	B_SetVisuals_BlackTroll();

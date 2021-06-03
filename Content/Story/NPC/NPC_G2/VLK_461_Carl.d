@@ -1,39 +1,38 @@
-//******************************************************************************************
+///******************************************************************************************
 instance VLK_461_Carl (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Carl";
 	guild 								=	GIL_VLK;
 	id 									=	461;
 	voice 								=	5;
-	flags      							=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Aivars ------
+	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 30);
 	B_SetFightSkills (self, FightTalent_Medium-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1H_Mace_L_04);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Thief", Face_Normal06, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 0);
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_461;
 };
 
-FUNC VOID Rtn_Start_461()
+func void Rtn_Start_461()
 {	
 	TA_Smalltalk		(20,00,22,00, "NW_CITY_HABOUR_POOR_AREA_PATH_06");
 	TA_Stand_Drinking	(22,00,01,00, "NW_CITY_HABOUR_POOR_AREA_PATH_06");

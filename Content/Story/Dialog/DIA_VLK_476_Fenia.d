@@ -7,13 +7,13 @@ INSTANCE DIA_Fenia_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Fenia_EXIT_Condition;
 	information = DIA_Fenia_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Fenia_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Fenia_EXIT_Info()
@@ -40,14 +40,14 @@ INSTANCE DIA_Fenia_Hallo   (C_INFO)
 	nr          = 3;
 	condition   = DIA_Fenia_Hallo_Condition;
 	information = DIA_Fenia_Hallo_Info;
-	important	 = 	true;
+	important	 = 	TRUE;
 };
 
 FUNC INT DIA_Fenia_Hallo_Condition()
 {
 	if (Npc_IsInState (self,ZS_Talk))
 		{
-			return true;
+			return TRUE;
 		};	
 };
 
@@ -74,8 +74,8 @@ instance DIA_Fenia_HANDELN		(C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Fenia_HANDELN_Condition;
 	information	 = 	DIA_Fenia_HANDELN_Info;
-	permanent	 = 	true;
-	trade		 = 	true;
+	permanent	 = 	TRUE;
+	trade		 = 	TRUE;
 	description	 = 	"Poka¿ mi swoje towary.";
 };
 
@@ -83,7 +83,7 @@ func int DIA_Fenia_HANDELN_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Fenia_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_HANDELN_Info ()
@@ -101,7 +101,7 @@ instance DIA_Fenia_Infos		(C_INFO)
 	nr			 = 	10;
 	condition	 = 	DIA_Fenia_Infos_Condition;
 	information	 = 	DIA_Fenia_Infos_Info;
-	permanent 	 =  false;
+	permanent 	 =  FALSE;
 	description	 = 	"Powiedzia³aœ, ¿e masz wszystko... Czy to dotyczy równie¿ informacji?";
 };
 
@@ -109,7 +109,7 @@ func int DIA_Fenia_Infos_Condition ()
 {	
 	if Npc_KnowsInfo (hero,DIA_Fenia_HALLO)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_Infos_Info ()
@@ -127,7 +127,7 @@ instance DIA_Fenia_MoreTraders (C_INFO)
 	nr			= 11;
 	condition	= DIA_Fenia_MoreTraders_Condition;
 	information	= DIA_Fenia_MoreTraders_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Czy tu, w porcie, s¹ jeszcze jacyœ inni handlarze?";
 };
 
@@ -135,7 +135,7 @@ func int DIA_Fenia_MoreTraders_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Fenia_Infos))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_MoreTraders_Info ()
@@ -154,7 +154,7 @@ instance DIA_Fenia_OV (C_INFO)
 	nr			= 13;
 	condition	= DIA_Fenia_OV_Condition;
 	information	= DIA_Fenia_OV_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Znasz kogoœ z górnego miasta?";
 };
 
@@ -163,7 +163,7 @@ func int DIA_Fenia_OV_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Fenia_Infos))
 	&& (other.guild == GIL_NONE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_OV_Info ()
@@ -181,7 +181,7 @@ instance DIA_Fenia_Interesting (C_INFO)
 	nr			= 14;
 	condition	= DIA_Fenia_Interesting_Condition;
 	information	= DIA_Fenia_Interesting_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Co ciekawego mo¿na znaleŸæ w okolicach portu?";
 };
 
@@ -189,7 +189,7 @@ func int DIA_Fenia_Interesting_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Fenia_Infos))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_Interesting_Info ()
@@ -210,7 +210,7 @@ instance DIA_Fenia_Aufregend (C_INFO)
 	nr			= 15;
 	condition	= DIA_Fenia_Aufregend_Condition;
 	information	= DIA_Fenia_Aufregend_Info;
-	permanent 	= false;
+	permanent 	= FALSE;
 	description	= "Czy ostatnio wydarzy³o siê tu coœ niezwyk³ego?";
 };
 
@@ -218,7 +218,7 @@ func int DIA_Fenia_Aufregend_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Fenia_Infos))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Fenia_Aufregend_Info ()
@@ -229,3 +229,9 @@ func void DIA_Fenia_Aufregend_Info ()
 	AI_Output (self, other, "DIA_Fenia_Add_17_03"); //Oczywiœcie, stra¿ przyby³a jak zwykle za póŸno.
 	AI_Output (self, other, "DIA_Fenia_Add_17_04"); //Uciek³ im bez problemu - po prostu wskoczy³ do wody i tyle go widzieli.
 };
+
+
+
+
+
+

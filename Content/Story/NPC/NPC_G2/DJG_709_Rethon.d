@@ -1,37 +1,36 @@
-//******************************************************************************************
+///******************************************************************************************
 instance DJG_709_Rethon (Npc_Default)
 {
-	// ------ General ------
+	/// ------ General ------
 	name								=	"Rethon";
 	guild 								=	GIL_DJG;
 	id 									=	709;
 	voice 								=	12;
-	flags       						=	0;
 	npctype								=	NPCTYPE_MAIN;
 
-	// ------ Attributes ------
+	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, 40);
 	B_SetFightSkills (self, FightTalent_Strong-10);
 
-	// ------ FT ------
+	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
-	// ------ Weapons ------
+	/// ------ Weapons ------
 	EquipItem (self, ItMw_1h_Sld_Sword);
 
-	// ------ Inventory ------
+	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 
-	// ------ Visuals ------
+	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_CoolPock, 0, ITAR_DJG_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 
-	// ------ Rtn ------
+	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_709;
 };
 
-FUNC VOID Rtn_Start_709()
+func void Rtn_Start_709()
 {
 	TA_Smith_Sharp		(08,00,08,30, "OC_SMITH_SHARP");
     TA_Stand_Guarding	(08,30,09,00, "OC_CENTER_04");

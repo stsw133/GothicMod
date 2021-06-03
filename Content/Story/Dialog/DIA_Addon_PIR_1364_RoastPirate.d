@@ -7,12 +7,12 @@ instance DIA_Addon_RoastPirate_EXIT(C_INFO)
 	nr			= 999;
 	condition	= DIA_Addon_RoastPirate_EXIT_Condition;
 	information	= DIA_Addon_RoastPirate_EXIT_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = DIALOG_ENDE;
 };                       
 func INT DIA_Addon_RoastPirate_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 func VOID DIA_Addon_RoastPirate_EXIT_Info()
 {	
@@ -30,17 +30,17 @@ instance DIA_Addon_RoastPirate_GimmeGrog(C_INFO)
 	nr			= 1;
 	condition	= DIA_Addon_RoastPirate_GimmeGrog_Condition;
 	information	= DIA_Addon_RoastPirate_GimmeGrog_Info;
-	permanent	= true;
-	Important 	= true;
+	permanent	= TRUE;
+	Important 	= TRUE;
 };                       
 func INT DIA_Addon_RoastPirate_GimmeGrog_Condition()
 {
-	if (Npc_IsInState (self,ZS_Talk) == true)
-	&& (Npc_WasInState (self,ZS_Roast_Scavenger) == true)
-	&& (PIR_1364_Grog == false)
+	if (Npc_IsInState (self,ZS_Talk) == TRUE)
+	&& (Npc_WasInState (self,ZS_Roast_Scavenger) == TRUE)
+	&& (PIR_1364_Grog == FALSE)
 	&& (self.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 FUNC VOID DIA_Addon_RoastPirate_GimmeGrog_Info()
@@ -55,7 +55,7 @@ FUNC VOID DIA_Addon_RoastPirate_GimmeGrog_Info()
 	Info_ClearChoices (DIA_Addon_RoastPirate_GimmeGrog);
 	Info_AddChoice (DIA_Addon_RoastPirate_GimmeGrog,"Nie, nie mam.",DIA_Addon_RoastPirate_GimmeGrog_DontHaveAny);
 
-	if (Npc_HasItems (other,ItFo_Grog) >= 1)
+	if (Npc_HasItems (other,ItFo_addon_Grog) >= 1)
 	{
 		Info_AddChoice (DIA_Addon_RoastPirate_GimmeGrog,"Masz, poci¹gnij sobie.",DIA_Addon_RoastPirate_GimmeGrog_HereIsGrog);
 	};	
@@ -71,10 +71,10 @@ FUNC VOID DIA_Addon_RoastPirate_GimmeGrog_DontHaveAny()
 FUNC VOID DIA_Addon_RoastPirate_GimmeGrog_HereIsGrog()
 {
 	AI_Output (other,self ,"DIA_Addon_PIR_6_GimmeGrog_HereIsGrog_15_00"); //Masz, poci¹gnij sobie.
-	B_GiveInvItems (other,self ,ItFo_Grog,1);
+	B_GiveInvItems (other,self ,ItFo_Addon_Grog,1);
 	AI_Output (self ,other,"DIA_Addon_PIR_6_GimmeGrog_HereIsGrog_06_01"); //Dziêki, ch³opie.
-	B_UseItem (self,ItFo_Grog);
-	PIR_1364_Grog = true;
+	B_UseItem (self,ItFo_Addon_Grog);
+	PIR_1364_Grog = TRUE;
 	Info_ClearChoices (DIA_Addon_RoastPirate_GimmeGrog);
 	B_LogEntry (TOPIC_Addon_RoastGrog,"Grog uratowa³ go chyba przed œmierci¹ z pragnienia.");
 	
@@ -97,7 +97,7 @@ instance DIA_Addon_RoastPirate_SeichtesWasser	(C_INFO)
 };
 func int DIA_Addon_RoastPirate_SeichtesWasser_Condition ()
 {
-	return true;
+	return TRUE;
 };
 func void DIA_Addon_RoastPirate_SeichtesWasser_Info ()
 {
@@ -119,17 +119,17 @@ instance DIA_Addon_RoastPirate_Francis(C_INFO)
 	nr			= 3;
 	condition	= DIA_Addon_RoastPirate_Francis_Condition;
 	information	= DIA_Addon_RoastPirate_Francis_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Co mo¿esz mi powiedzieæ o Francisie?";
 };                       
 func INT DIA_Addon_RoastPirate_Francis_Condition()
 {
-	if (Francis_ausgeschissen == false)
+	if (Francis_ausgeschissen == FALSE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Addon_Skip_GregsHut))
-		|| (Francis.aivar[AIV_TalkedToPlayer] == true)
+		|| (Francis.aivar[AIV_TalkedToPlayer] == TRUE)
 		{
-			return true;
+			return TRUE;
 		};
 	};	
 };
@@ -151,14 +151,14 @@ instance DIA_Addon_RoastPirate_PERM (C_INFO)
 	nr			= 99;
 	condition	= DIA_Addon_RoastPirate_PERM_Condition;
 	information	= DIA_Addon_RoastPirate_PERM_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "A w przeciwnym razie?";
 };                       
 func INT DIA_Addon_RoastPirate_PERM_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_RoastPirate_SeichtesWasser))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func VOID DIA_Addon_RoastPirate_PERM_Info()
@@ -168,7 +168,7 @@ func VOID DIA_Addon_RoastPirate_PERM_Info()
 	var int randy;
 	randy = Hlp_Random (3);
 	
-	if (GregIsBack == true)
+	if (GregIsBack == TRUE)
 	{
 		if (randy == 0)
 		&& (!Npc_IsDead(Francis))
@@ -218,14 +218,14 @@ INSTANCE DIA_Addon_RoastPirate_Anheuern(C_INFO)
 	nr			= 11;
 	condition	= DIA_Addon_RoastPirate_Anheuern_Condition;
 	information	= DIA_Addon_RoastPirate_Anheuern_Info;
-	permanent	= false;
+	permanent	= FALSE;
 	description = "Powinieneœ mi pomóc.";
 };                       
 FUNC INT DIA_Addon_RoastPirate_Anheuern_Condition()
 {
 	if (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 func VOID DIA_Addon_RoastPirate_Anheuern_Info()
@@ -244,22 +244,22 @@ instance DIA_Addon_RoastPirate_ComeOn(C_INFO)
 	nr		 	= 12;
 	condition	= DIA_Addon_RoastPirate_ComeOn_Condition;
 	information	= DIA_Addon_RoastPirate_ComeOn_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description	= "ChodŸ ze mn¹.";
 };
 func int DIA_Addon_RoastPirate_ComeOn_Condition ()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == false)
+	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
 	&& (MIS_Addon_Greg_ClearCanyon == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other, DIA_Addon_RoastPirate_Anheuern))
 	{
-		return true;
+		return TRUE;
 	};
 };
 func void DIA_Addon_RoastPirate_ComeOn_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_RoastPirate_ComeOn_15_00"); //ChodŸ ze mn¹.
-	if (C_GregsPiratesTooFar() == true)
+	if (C_GregsPiratesTooFar() == TRUE)
 	{
 		B_Say(self, other, "$RUNAWAY");
 		AI_StopProcessInfos (self);
@@ -270,7 +270,7 @@ func void DIA_Addon_RoastPirate_ComeOn_Info ()
 		AI_StopProcessInfos (self);
 		B_Addon_PiratesFollowAgain();
 		Npc_ExchangeRoutine	(self,"FOLLOW");
-		self.aivar[AIV_PARTYMEMBER] = true;
+		self.aivar[AIV_PARTYMEMBER] = TRUE;
 	};
 };
 
@@ -283,14 +283,14 @@ INSTANCE DIA_Addon_RoastPirate_GoHome(C_INFO)
 	nr			= 13;
 	condition	= DIA_Addon_RoastPirate_GoHome_Condition;
 	information	= DIA_Addon_RoastPirate_GoHome_Info;
-	permanent	= true;
+	permanent	= TRUE;
 	description = "Nie potrzebujê ju¿ twojej pomocy.";
 };                       
 FUNC INT DIA_Addon_RoastPirate_GoHome_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
 	{
-		return true;
+		return TRUE;
 	};	
 };
 
@@ -298,7 +298,7 @@ FUNC VOID DIA_Addon_RoastPirate_GoHome_Info()
 {	
 	AI_Output (other,self ,"DIA_Addon_RoastPirate_GoHome_15_00"); //Nie potrzebujê ju¿ twojej pomocy.
 	B_Say(self, other, "$ABS_GOOD");
-	self.aivar[AIV_PARTYMEMBER] = false;
+	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"START");
 };
 
@@ -311,15 +311,15 @@ INSTANCE DIA_Addon_RoastPirate_TooFar(C_INFO)
 	nr			= 14;
 	condition	= DIA_Addon_RoastPirate_TooFar_Condition;
 	information	= DIA_Addon_RoastPirate_TooFar_Info;
-	permanent	= true;
-	important   = true;
+	permanent	= TRUE;
+	important   = TRUE;
 };                       
 FUNC INT DIA_Addon_RoastPirate_TooFar_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == true)
-	&& (C_GregsPiratesTooFar() == true)
+	if (self.aivar[AIV_PARTYMEMBER] == TRUE)
+	&& (C_GregsPiratesTooFar() == TRUE)
 	{
-		return true;
+		return TRUE;
 	};
 };
 

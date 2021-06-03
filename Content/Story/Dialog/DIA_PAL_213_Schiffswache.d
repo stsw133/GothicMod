@@ -7,13 +7,13 @@ INSTANCE DIA_Pal_213_Schiffswache_EXIT   (C_INFO)
 	nr          = 999;
 	condition   = DIA_Pal_213_Schiffswache_EXIT_Condition;
 	information = DIA_Pal_213_Schiffswache_EXIT_Info;
-	permanent   = true;
+	permanent   = TRUE;
 	description = DIALOG_ENDE;
 };
 
 FUNC INT DIA_Pal_213_Schiffswache_EXIT_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Pal_213_Schiffswache_EXIT_Info()
@@ -36,17 +36,17 @@ instance DIA_Pal_213_Schiffswache_FirstWarn (C_INFO)
 	nr			= 1;
 	condition	= DIA_Pal_213_Schiffswache_FirstWarn_Condition;
 	information	= DIA_Pal_213_Schiffswache_FirstWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 func int DIA_Pal_213_Schiffswache_FirstWarn_Condition()
 {
-	if ((MIS_ShipIsFree == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_NONE)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true))
+	if ((MIS_ShipIsFree == FALSE) 
+	&&	(self.aivar[AIV_Guardpassage_Status]			== GP_NONE		)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE			))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -79,18 +79,18 @@ INSTANCE DIA_Pal_213_Schiffswache_SecondWarn (C_INFO)
 	nr			= 2;
 	condition	= DIA_Pal_213_Schiffswache_SecondWarn_Condition;
 	information	= DIA_Pal_213_Schiffswache_SecondWarn_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Pal_213_Schiffswache_SecondWarn_Condition()
 {
-	if ((MIS_ShipIsFree == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_FirstWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,Pal_213_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((MIS_ShipIsFree == FALSE) 
+	&&	(self.aivar[AIV_Guardpassage_Status]			== GP_FirstWarnGiven						)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,Pal_213_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	)) 
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -105,7 +105,7 @@ func void DIA_Pal_213_Schiffswache_SecondWarn_Info()
 		AI_Output (self, other,"DIA_Pal_213_Schiffswache_SecondWarn_01_01"); //Nie chcesz chyba, bym MUSIA£ zrobiæ ci krzywdê?
 	};
 	other.aivar[AIV_LastDistToWP] 			= Npc_GetDistToWP (other,Pal_213_Checkpoint);
-	self.aivar[AIV_Guardpassage_Status]		= GP_SecondWarnGiven;	
+	self.aivar[AIV_Guardpassage_Status]	= GP_SecondWarnGiven;	
 	
 	AI_StopProcessInfos	(self);
 };
@@ -120,18 +120,18 @@ INSTANCE DIA_Pal_213_Schiffswache_Attack (C_INFO)
 	nr			= 3;
 	condition	= DIA_Pal_213_Schiffswache_Attack_Condition;
 	information	= DIA_Pal_213_Schiffswache_Attack_Info;
-	permanent	= true;
-	important	= true;
+	permanent	= TRUE;
+	important	= TRUE;
 };                       
 
 FUNC INT DIA_Pal_213_Schiffswache_Attack_Condition()
 {
-	if ((MIS_ShipIsFree == false)
-	&& (self.aivar[AIV_Guardpassage_Status] == GP_SecondWarnGiven)
-	&& (Hlp_StrCmp(Npc_GetNearestWP(self),self.wp) == true)
-	&& (Npc_GetDistToWP(other,Pal_213_Checkpoint) < (other.aivar[AIV_LastDistToWP]-50)))
+	if ((MIS_ShipIsFree == FALSE) 
+	&&	(self.aivar[AIV_Guardpassage_Status]			== GP_SecondWarnGiven					)
+	&&	(Hlp_StrCmp(Npc_GetNearestWP(self),self.wp)		== TRUE									)
+	&&  (Npc_GetDistToWP(other,Pal_213_Checkpoint)		<  (other.aivar[AIV_LastDistToWP]-50)	))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -162,13 +162,13 @@ INSTANCE DIA_Pal_213_Schiffswache_GoOnBoard   (C_INFO)
 	nr          = 5;
 	condition   = DIA_Pal_213_Schiffswache_GoOnBoard_Condition;
 	information = DIA_Pal_213_Schiffswache_GoOnBoard_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Muszê dostaæ siê na statek.";
 };
 
 FUNC INT DIA_Pal_213_Schiffswache_GoOnBoard_Condition()
 {
-	return true;
+	return TRUE;
 };
 
 FUNC VOID DIA_Pal_213_Schiffswache_GoOnBoard_Info()
@@ -189,7 +189,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Œmiesz przeciwstawiaæ siê woli Maga Ognia?";
 };
 
@@ -198,7 +198,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_GoOnBoard))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -220,7 +220,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF2   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF2_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF2_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Co bêdzie, jeœli wejdê na pok³ad?";
 };
 
@@ -229,7 +229,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF2_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmKDF))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -249,7 +249,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF3   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF3_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF3_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Zaatakowa³byœ Maga Ognia?";
 };
 
@@ -258,7 +258,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF3_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmKDF2))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -280,7 +280,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF4   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF4_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF4_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "W takim razie, wchodzê.";
 };
 
@@ -289,7 +289,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF4_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmKDF3))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -309,7 +309,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF5   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF5_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF5_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Czy rozkazy Lorda Hagena obejmuj¹ tak¿e mnie?";
 };
 
@@ -318,7 +318,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF5_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmKDF4))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -340,7 +340,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmKDF6   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmKDF6_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmKDF6_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Proszê po raz ostatni: pozwól mi wejœæ na pok³ad!";
 };
 
@@ -349,7 +349,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmKDF6_Condition()
 	if (Hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmKDF5))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -358,7 +358,7 @@ FUNC VOID DIA_Pal_213_Schiffswache_IAmKDF6_Info()
 	AI_Output (other,self ,"DIA_Pal_213_Schiffswache_IAmKDF6_15_00"); //Proszê po raz ostatni: pozwól mi wejœæ na pok³ad!
 	AI_Output (self ,other,"DIA_Pal_213_Schiffswache_IAmKDF6_01_01"); //Zrozumia³em. Mo¿esz wejœæ.
 
-	MIS_ShipIsFree = true;
+	MIS_ShipIsFree = TRUE;
 	B_StartOtherRoutine	(Girion,"WaitForShip");
 };
 
@@ -372,7 +372,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmPAL   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmPAL_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmPAL_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Czy¿byœ mi nie ufa³, rycerzu?";
 };
 
@@ -381,7 +381,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmPAL_Condition()
 	if (Hero.guild == GIL_PAL)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_GoOnBoard))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -401,7 +401,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmPAL2   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmPAL2_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmPAL2_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Powinieneœ wiêc wiedzieæ, który z nas ma wy¿szy stopieñ.";
 };
 
@@ -410,7 +410,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmPAL2_Condition()
 	if (Hero.guild == GIL_PAL)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmPAL))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -430,7 +430,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmPAL3   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmPAL3_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmPAL3_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Niniejszym rozkazujê ci wpuœciæ mnie na okrêt.";
 };
 
@@ -439,7 +439,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmPAL3_Condition()
 	if (Hero.guild == GIL_PAL)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmPAL2))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -448,7 +448,7 @@ FUNC VOID DIA_Pal_213_Schiffswache_IAmPAL3_Info()
 	AI_Output (other,self ,"DIA_Pal_213_Schiffswache_IAmPAL3_15_00"); //Niniejszym rozkazujê ci wpuœciæ mnie na okrêt.
 	AI_Output (self ,other,"DIA_Pal_213_Schiffswache_IAmPAL3_01_01"); //Tak jest, mo¿esz wejœæ, Panie.
 	
-	MIS_ShipIsFree = true;
+	MIS_ShipIsFree = TRUE;
 	B_StartOtherRoutine	(Girion,"WaitForShip");
 };
 
@@ -462,7 +462,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmDJG   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmDJG_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmDJG_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Nie mo¿na by czegoœ zrobiæ w tej sprawie?";
 };
 
@@ -471,7 +471,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmDJG_Condition()
 	if (Hero.guild == GIL_DJG)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_GoOnBoard))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -491,7 +491,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmDJG2   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmDJG2_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmDJG2_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Móg³bym ci daæ trochê z³ota...";
 };
 
@@ -500,7 +500,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmDJG2_Condition()
 	if (Hero.guild == GIL_DJG)
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmDJG))
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -520,7 +520,7 @@ INSTANCE DIA_Pal_213_Schiffswache_IAmDJG3   (C_INFO)
 	nr          = 6;
 	condition   = DIA_Pal_213_Schiffswache_IAmDJG3_Condition;
 	information = DIA_Pal_213_Schiffswache_IAmDJG3_Info;
-	permanent   = false;
+	permanent   = FALSE;
 	description = "Posiadam pisemne zezwolenie.";
 };
 
@@ -530,7 +530,7 @@ FUNC INT DIA_Pal_213_Schiffswache_IAmDJG3_Condition()
 	&& (Npc_KnowsInfo (other,DIA_Pal_213_Schiffswache_IAmDJG))
 	&& (Npc_HasItems (other,ITWr_ForgedShipLetter_MIS) >=1)
 	{
-		return true;
+		return TRUE;
 	};
 };
 
@@ -544,6 +544,11 @@ FUNC VOID DIA_Pal_213_Schiffswache_IAmDJG3_Info()
 	
 	AI_Output (self ,other,"DIA_Pal_213_Schiffswache_IAmDJG3_01_02"); //W porz¹dku, mo¿esz przejœæ.
 	
-	MIS_ShipIsFree = true;
+	MIS_ShipIsFree = TRUE;
 	B_StartOtherRoutine	(Girion,"WaitForShip");
 };
+
+
+
+
+

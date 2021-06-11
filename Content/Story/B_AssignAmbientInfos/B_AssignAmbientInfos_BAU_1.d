@@ -34,7 +34,7 @@ INSTANCE DIA_BAU_1_JOIN(C_INFO)
 
 FUNC INT DIA_BAU_1_JOIN_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -117,27 +117,27 @@ FUNC VOID DIA_BAU_1_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_BAU_1_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_BAU_1_STANDARD_01_01"); //Onar wynaj¹³ najemników, którzy maj¹ odstraszaæ stra¿ników miejskich. Inaczej rozkradliby nasz dobytek do ostatniej owcy!
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_BAU_1_STANDARD_01_02"); //Niewiele siê dzieje. Wci¹¿ te same problemy. Stra¿, orkowie, polne bestie.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_BAU_1_STANDARD_01_03"); //Ostatnio dziej¹ siê tu dziwne rzeczy. Kilka nocy temu widzia³em czarn¹ postaæ. To nie by³ cz³owiek.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_BAU_1_STANDARD_01_04"); //Pojawia siê coraz wiêcej orków. Czasem tak sobie myœlê, ¿e miejsce ka¿dego zabitego zajmuj¹ dwaj nowi.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_BAU_1_STANDARD_01_05"); //Paladyni wyruszaj¹ do Górniczej Doliny. O co w tym wszystkim chodzi? Jak tak dalej pójdzie, nie bêdzie nikogo, by powstrzymaæ stra¿ miejsk¹.
 	};

@@ -207,7 +207,6 @@ FUNC INT DIA_Jergan_Claw_Condition()
 {	
 	if (Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
 	&& Npc_KnowsInfo (other, DIA_Jergan_Mine)
-	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Claws] == FALSE)
 	{	
 		return TRUE;
 	};	
@@ -216,38 +215,9 @@ FUNC VOID DIA_Jergan_Claw_Info()
 {
 	AI_Output (other, self,"DIA_Jergan_Claw_15_00");//Mo¿esz mnie tego nauczyæ?
 	AI_Output (self, other,"DIA_Jergan_Claw_13_01");//Mogê ci pokazaæ, jak zdj¹æ z tych stworów pazury, kiedy ju¿ bêd¹ martwe.
+	self.aivar[AIV_CanTeach] = true;
 };
-///////////////////////////////////////////////////////////////////////
-//	Klauen reissen lernen
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Jergan_Teach   (C_INFO)
-{
-	npc         = VLK_4110_Jergan;
-	nr          = 9;
-	condition   = DIA_Jergan_Teach_Condition;
-	information = DIA_Jergan_Teach_Info;
-	permanent   = TRUE;
-	description = "(Nauka usuwania pazurów)";
-};
-FUNC INT DIA_Jergan_Teach_Condition()
-{	
-	if (Npc_GetDistToWP (self, "OW_NEWMINE_04") < 1000)
-	&& Npc_KnowsInfo (other, DIA_Jergan_Claw)
-	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Claws] == FALSE)
-	{	
-		return TRUE;
-	};	
-};
-FUNC VOID DIA_Jergan_Teach_Info()
-{
-	AI_Output (other, self,"DIA_Jergan_Teach_15_00");//Poka¿ mi, jak usuwaæ pazury.
-	
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws))
-	{
-		AI_Output (self, other,"DIA_Jergan_Teach_13_01");//Najwa¿niejsze jest to, ¿eby usun¹æ pazur jednym szarpniêciem. Nie wolno siê wahaæ ani d³ubaæ no¿em.
-		AI_Output (self, other,"DIA_Jergan_Teach_13_02");//Tym sposobem mo¿na zdobyæ pazury nie tylko zêbaczy, ale tak¿e jaszczurek i cieniostworów.
-	};
-};
+
 ///////////////////////////////////////////////////////////////////////
 //	Diego
 ///////////////////////////////////////////////////////////////////////

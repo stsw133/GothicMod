@@ -12,7 +12,7 @@ instance DIA_Addon_Lares_Patch		(C_INFO)
 func int DIA_Addon_Lares_Patch_Condition ()
 {
 	if (Npc_HasItems  (self,ItMi_Ornament_Addon_Vatras))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	{
 		return TRUE;
 	};
@@ -35,7 +35,7 @@ INSTANCE DIA_Lares_Kap1_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -1425,7 +1425,7 @@ func int DIA_Lares_GoNow_Condition ()
 	 	&& ((LaresGuide_ZumPortal == 0)||(LaresGuide_ZumPortal == 8))
 	 	&& ((LaresGuide_ZuOnar == FALSE) || (LaresGuide_ZuOnar == LOG_SUCCESS))
 	 	&& ((LaresGuide_OrnamentForest == 0)||(LaresGuide_OrnamentForest == 3))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 			{
 				return TRUE;
 			};
@@ -2170,7 +2170,7 @@ INSTANCE DIA_Lares_Kap2_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -2200,7 +2200,7 @@ INSTANCE DIA_Lares_Kap3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -2224,7 +2224,7 @@ INSTANCE DIA_Lares_AnyNews(C_INFO)
 };                       
 FUNC INT DIA_Lares_AnyNews_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -2305,7 +2305,7 @@ INSTANCE DIA_Lares_Kap4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -2330,7 +2330,7 @@ INSTANCE DIA_Lares_Kap4_PERM(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap4_PERM_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -2362,7 +2362,7 @@ INSTANCE DIA_Lares_Kap5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lares_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

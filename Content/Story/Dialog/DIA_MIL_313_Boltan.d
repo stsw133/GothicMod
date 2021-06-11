@@ -68,7 +68,7 @@ func void DIA_Boltan_ToConvicts_Info ()
 	AI_Output (other, self, "DIA_Boltan_Add_15_01"); //Chcê zobaczyæ wiêŸniów.
 	
 	
-	if (Kapitel == 3) 
+	if (Kapitel == 9) 
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	{
 		if (other.guild == GIL_SLD)
@@ -119,7 +119,7 @@ instance DIA_Boltan_HalloBennet (C_INFO)
 
 func int DIA_Boltan_HalloBennet_Condition ()
 {
-	if (Kapitel == 3) 
+	if (Kapitel == 9) 
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	&& (other.guild == GIL_SLD)
 	{
@@ -149,7 +149,7 @@ instance DIA_Boltan_HalloCanthar (C_INFO)
 
 func int DIA_Boltan_HalloCanthar_Condition ()
 {
-	if ( (Kapitel != 3) || ( (Kapitel == 3) && ( (MIS_RescueBennet == LOG_SUCCESS) || (other.guild != GIL_SLD) ) ) )
+	if ( (Kapitel != 9) || ( (Kapitel == 9) && ( (MIS_RescueBennet == LOG_SUCCESS) || (other.guild != GIL_SLD) ) ) )
 	&& (Canthar_WiederRaus == TRUE)
 	&& (Canthar_Ausgeliefert == TRUE)
 	{

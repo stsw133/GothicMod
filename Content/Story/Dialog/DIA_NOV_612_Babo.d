@@ -12,7 +12,7 @@ INSTANCE DIA_Babo_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -261,7 +261,7 @@ INSTANCE DIA_Babo_Wurst(C_INFO)
 
 FUNC INT DIA_Babo_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -523,7 +523,7 @@ INSTANCE DIA_Babo_HowIsIt   (C_INFO)
 FUNC INT DIA_Babo_HowIsIt_Condition()
 {
 	if (hero.guild == GIL_KDF)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};	
@@ -572,7 +572,7 @@ INSTANCE DIA_Babo_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -599,7 +599,7 @@ INSTANCE DIA_Babo_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -626,7 +626,7 @@ INSTANCE DIA_Babo_Kap3_Hello   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap3_Hello_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	{
 		return TRUE;
 	};	
@@ -660,7 +660,7 @@ INSTANCE DIA_Babo_Kap3_KeepTheFaith   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap3_KeepTheFaith_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_KnowsInfo (other,DIA_Babo_Kap3_Hello))
 	&& (hero.guild == GIL_KDF)
 	{
@@ -692,7 +692,7 @@ INSTANCE DIA_Babo_Kap3_Unhappy   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap3_Unhappy_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (hero.guild != GIL_KDF)
 	&& (Npc_KnowsInfo (other,DIA_Babo_Kap3_Hello))
 	{
@@ -1053,7 +1053,7 @@ INSTANCE DIA_Babo_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -1080,7 +1080,7 @@ INSTANCE DIA_Babo_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Babo_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

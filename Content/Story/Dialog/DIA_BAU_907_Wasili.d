@@ -320,7 +320,7 @@ func void DIA_Wasili_perm_Info ()
 {
 	AI_Output (other, self, "DIA_Wasili_PERM_15_00"); //Czy ktoœ próbowa³ ju¿ coœ ukraœæ?
 
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		if (PETZCOUNTER_Farm_Theft > 0)
 		{
@@ -329,19 +329,19 @@ func void DIA_Wasili_perm_Info ()
 		AI_Output (self, other, "DIA_Wasili_PERM_01_02"); //By³o kilku! Ale wszystkich z³apa³em!
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self, other, "DIA_Wasili_PERM_01_03"); //Kilka wieczorów temu jeden z najemników zakrad³ siê do domu.
 		AI_Output (self, other, "DIA_Wasili_PERM_01_04"); //Mia³ na sobie czarn¹ szatê z kapturem, przez co nie mog³em dojrzeæ jego twarzy.
 		AI_Output (self, other, "DIA_Wasili_PERM_01_05"); //Uda³o mi siê jednak go sp³oszyæ.
 	};
 	
-	if (kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self, other, "DIA_Wasili_perm_01_06"); //Nie. Ostatnimi czasy nie.
 	};
 	
-	if (kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self, other, "DIA_Wasili_perm_01_07"); //Wydaje siê, ¿e czêœæ najemników chce siê oderwaæ od reszty.
 		AI_Output (self, other, "DIA_Wasili_perm_01_08"); //Nie zdziwi³bym siê, gdyby Lee i jego ch³opcy pewnej nocy po prostu odeszli bez s³owa.

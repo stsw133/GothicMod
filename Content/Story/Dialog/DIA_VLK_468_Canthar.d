@@ -503,7 +503,7 @@ func void DIA_Canthar_Success_Info ()
 	AI_Output (self, other, "DIA_Canthar_Success_09_00"); //Dobra robota. Sara jest tam, gdzie jej miejsce.
 	AI_Output (self, other, "DIA_Canthar_Success_09_01"); //Przej¹³em jej maj¹tek, wiêc przyjdŸ do mnie, jeœli potrzebujesz broni.
 	
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		CreateInvItems (self,ItMw_ShortSword3 , 1); 
 		CreateInvItems (self,ItMw_ShortSword4 , 1);
@@ -513,7 +513,7 @@ func void DIA_Canthar_Success_Info ()
 		CreateInvItems (self, ItMw_1h_Vlk_Sword, 1); 
 		CreateInvItems (self, ItMw_1h_Nov_Mace, 1); 
 	};
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		CreateInvItems (self,ItMw_Stabkeule , 1);
 		CreateInvItems (self,ItMw_Steinbrecher, 1); 

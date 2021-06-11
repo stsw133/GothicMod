@@ -85,7 +85,7 @@ FUNC INT DIA_Isgaroth_Wolf_Condition()
 {	
 	if (MIS_KlosterArbeit == LOG_RUNNING)
 	&& (Sergio_Sends == TRUE) 
-	&& (Kapitel == 1)
+	&& (Kapitel == 7)
 	{
 		return TRUE;	
 	};

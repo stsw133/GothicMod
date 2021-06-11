@@ -2541,7 +2541,7 @@ FUNC VOID INIT_OLDWORLD ()
 	if (MIS_ReadyForChapter4  == TRUE )	//Joly: muß hier in der INIT ganz zum schluss stehen, nachdem alle NSCs fürs Kapitel insertet wurden!!!
 	&& (B_Chapter4_OneTime == FALSE)
 	{
-		B_ChangeChapter (4, OLDWORLD_ZEN);
+		B_ChangeChapter (10, OLDWORLD_ZEN);
 		B_Chapter4_OneTime = TRUE;
 	};
 };

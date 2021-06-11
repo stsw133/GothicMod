@@ -85,7 +85,7 @@ instance DIA_Fajeth_Hallo		(C_INFO)
 func int DIA_Fajeth_Hallo_Condition ()
 {
 	if (MIS_ScoutMine == LOG_RUNNING) 
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -349,7 +349,7 @@ instance DIA_Fajeth_Perm2		(C_INFO)
 func int DIA_Fajeth_Perm2_Condition ()
 {
 	if  Npc_KnowsInfo (other,DIA_Fajeth_BELOHNUNG)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -385,7 +385,7 @@ instance DIA_Fajeth_ERZABBAU		(C_INFO)
 func int DIA_Fajeth_ERZABBAU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Fajeth_BELOHNUNG))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	{
 		return TRUE;
 	};

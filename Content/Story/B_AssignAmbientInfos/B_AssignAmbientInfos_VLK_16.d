@@ -113,7 +113,7 @@ FUNC VOID DIA_VLK_16_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_VLK_16_STANDARD_15_00"); //Co nowego?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_Addon_VLK_16_STANDARD_16_00"); //Mam nadziejê, ¿e stra¿ w koñcu dowie siê, dlaczego Khorinis ma coraz mniej mieszkañców.
 		AI_Output (self,other,"DIA_Addon_VLK_16_STANDARD_16_01"); //Wiedz¹c, ile osób ju¿ zaginê³o, cz³owiek zaczyna siê baæ o swoje ¿ycie.
@@ -126,13 +126,13 @@ FUNC VOID DIA_VLK_16_STANDARD_Info()
 		SC_HearedAboutMissingPeople = TRUE;
 	};
 	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_VLK_16_STANDARD_16_01"); //Nie s³ysza³eœ, ¿e ponoæ na obrze¿ach miasta dostrze¿ono orków? Miejmy nadziejê, ¿e paladyni sobie z nimi poradz¹.
 		AI_Output (self,other,"DIA_VLK_16_STANDARD_16_02"); //Zastanawiam siê, czy w³aœnie to jest powodem, dla którego farmerzy nie zjawiaj¹ siê na targu.
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet == LOG_SUCCESS)
 		{
@@ -145,12 +145,12 @@ FUNC VOID DIA_VLK_16_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_VLK_16_STANDARD_16_06"); //Ponoæ przestêpcy opuszczaj¹ farmê Onara. Mówi¹, ¿e boj¹ siê ludzi Lorda Hagena, i dlatego wracaj¹ do Górniczej Doliny.
 	};
 	
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		AI_Output (self,other,"DIA_VLK_16_STANDARD_16_07"); //Dosz³y mnie s³uchy, ¿e straszliwe smoki w Górniczej Dolinie zosta³y pokonane przez oddzia³y paladynów.
 	};

@@ -13,7 +13,7 @@ INSTANCE DIA_Engrom_EXIT   (C_INFO)
 
 FUNC INT DIA_Engrom_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -39,7 +39,7 @@ instance DIA_Engrom_HALLO		(C_INFO)
 
 func int DIA_Engrom_HALLO_Condition ()
 {
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 		{
 				return TRUE;
 		};
@@ -70,7 +70,7 @@ instance DIA_Engrom_WhatAboutLeaving		(C_INFO)
 func int DIA_Engrom_WhatAboutLeaving_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Engrom_HALLO))
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 		{
 				return TRUE;
 		};
@@ -106,7 +106,7 @@ instance DIA_Engrom_Jagd		(C_INFO)
 func int DIA_Engrom_Jagd_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Engrom_HALLO))
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 		{
 				return TRUE;
 		};
@@ -142,7 +142,7 @@ INSTANCE DIA_Engrom_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Engrom_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -177,7 +177,7 @@ INSTANCE DIA_Engrom_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Engrom_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -204,7 +204,7 @@ instance DIA_Engrom_B_NpcObsessedByDMT		(C_INFO)
 func int DIA_Engrom_B_NpcObsessedByDMT_Condition ()
 {
 	if (NpcObsessedByDMT_Engrom == FALSE)
-	&& (Kapitel >= 4)	
+	&& (Kapitel >= 10)	
 	 {
 				return TRUE;
 	 };
@@ -234,7 +234,7 @@ func int DIA_Engrom_BESSEN_Condition ()
 {
  	if (NpcObsessedByDMT_Engrom == TRUE)
  	&& (NpcObsessedByDMT == FALSE)
-	&& (Kapitel >= 4)	
+	&& (Kapitel >= 10)	
 	 {
 				return TRUE;
 	 };
@@ -280,7 +280,7 @@ INSTANCE DIA_Engrom_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Engrom_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -315,7 +315,7 @@ INSTANCE DIA_Engrom_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Engrom_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

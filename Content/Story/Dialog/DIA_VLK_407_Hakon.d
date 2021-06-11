@@ -479,7 +479,7 @@ INSTANCE DIA_Hakon_Kapitel2 (C_INFO)
 
 FUNC INT DIA_Hakon_Kapitel2_Condition()
 {
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	&& (Canthar_Sperre == FALSE)
 	&& (self.aivar[AIV_TalkedToPlayer] == TRUE) 
 	{

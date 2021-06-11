@@ -114,7 +114,7 @@ INSTANCE DIA_Daron_Paladine(C_INFO)
 FUNC INT DIA_Daron_Paladine_Condition()
 {	
 	if (other.guild != GIL_KDF)
-	&& (Kapitel < 2)
+	&& (Kapitel < 8)
 	{
 		return TRUE;
 	};

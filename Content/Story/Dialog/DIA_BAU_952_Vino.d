@@ -13,7 +13,7 @@ INSTANCE DIA_Vino_EXIT   (C_INFO)
 
 FUNC INT DIA_Vino_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -40,7 +40,7 @@ instance DIA_Vino_HALLO		(C_INFO)
 func int DIA_Vino_HALLO_Condition ()
 {
 	if Npc_IsInState (self, ZS_Talk)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -74,7 +74,7 @@ func int DIA_Vino_SeekWork_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Lobart_WorkNOW)
 	||  Npc_KnowsInfo (other, DIA_Lobart_KLEIDUNG))
 	&& (!Npc_IsDead (Lobart))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -137,7 +137,7 @@ func int DIA_Vino_BringWine_Condition ()
 {
 	if (MIS_Vino_Wein == LOG_RUNNING)
 	&& (Npc_HasItems (other, itfo_wine) > 0)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -215,7 +215,7 @@ instance DIA_Vino_PERM (C_INFO)
 func int DIA_Vino_PERM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Vino_HALLO))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -268,7 +268,7 @@ INSTANCE DIA_Vino_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Vino_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -294,7 +294,7 @@ instance DIA_Vino_DMTAMSTART		(C_INFO)
 
 func int DIA_Vino_DMTAMSTART_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& (hero.guild != GIL_KDF)
 	{
 		return TRUE;
@@ -338,7 +338,7 @@ instance DIA_Vino_Obesessed		(C_INFO)
 func int DIA_Vino_Obesessed_Condition ()
 {
 	if 	(NpcObsessedByDMT_Vino == FALSE)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	&& (hero.guild == GIL_KDF)
 	 {
 				return TRUE;
@@ -434,7 +434,7 @@ INSTANCE DIA_Vino_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Vino_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -501,7 +501,7 @@ instance DIA_Vino_PERM45UND6		(C_INFO)
 
 func int DIA_Vino_PERM45UND6_Condition ()
 {
-	if (Kapitel >= 4)	
+	if (Kapitel >= 10)	
 	&& (hero.guild != GIL_KDF)
 	&& (NpcObsessedByDMT_Vino == FALSE) 
 		{
@@ -553,7 +553,7 @@ INSTANCE DIA_Vino_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Vino_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -588,7 +588,7 @@ INSTANCE DIA_Vino_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Vino_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

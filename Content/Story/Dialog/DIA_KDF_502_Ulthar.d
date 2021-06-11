@@ -12,7 +12,7 @@ INSTANCE DIA_Ulthar_EXIT   (C_INFO)
 };
 FUNC INT DIA_Ulthar_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 	
 		return TRUE;
@@ -228,7 +228,7 @@ INSTANCE DIA_Ulthar_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ulthar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -252,7 +252,7 @@ instance DIA_Ulthar_PermAbKap3		(C_INFO)
 };
 func int DIA_Ulthar_PermAbKap3_Condition ()
 {	
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	|| Npc_KnowsInfo (other,DIA_Ulthar_SUCCESS)
 	{
 		return TRUE;
@@ -395,7 +395,7 @@ INSTANCE DIA_Ulthar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ulthar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -422,7 +422,7 @@ instance DIA_Ulthar_SchreineGeheiltNoPAL		(C_INFO)
 func int DIA_Ulthar_SchreineGeheiltNoPAL_Condition ()
 {
 	if ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG)|| (hero.guild == GIL_KDF))
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 		{
 				return TRUE;
 		};
@@ -458,7 +458,7 @@ INSTANCE DIA_Ulthar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ulthar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -493,7 +493,7 @@ INSTANCE DIA_Ulthar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ulthar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

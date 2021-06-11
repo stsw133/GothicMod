@@ -1,13 +1,12 @@
 ///******************************************************************************************
-///	class - Definitions
-///	Global Instances
-///	Phoenix V0.76
+///	Classes
 ///******************************************************************************************
 
 const int MAX_CHAPTER		=	5;
 const int MAX_MISSIONS		=	5;
 const int MAX_HITCHANCE		=	5;
 
+///******************************************************************************************
 class C_NPC
 {
 	var int		id;
@@ -67,6 +66,7 @@ class C_NPC
 	var int     noFocus;
 };
 
+///******************************************************************************************
 class C_Mission
 {
 	var string	name;
@@ -85,6 +85,7 @@ class C_Mission
 	var func	running;
 };
 
+///******************************************************************************************
 class C_Item
 {
 	/// Für alle Items
@@ -157,6 +158,7 @@ class C_Item
 	var int 	inv_animate;
 };
 
+///******************************************************************************************
 class C_Focus
 {
 	/// für NSCs
@@ -179,7 +181,8 @@ class C_Focus
 	var int		mob_prio;
 };
 
-class C_INFO
+///******************************************************************************************
+class C_Info
 {
 	var int		npc;
 	var int		nr;
@@ -191,7 +194,8 @@ class C_INFO
 	var int		permanent;
 };
 
-class C_ITEMREACT
+///******************************************************************************************
+class C_ItemReact
 {
 	var int		npc;
 	var int		trade_item;
@@ -202,6 +206,7 @@ class C_ITEMREACT
 	var func	reaction;
 };
 
+///******************************************************************************************
 class C_Spell
 {
 	var float	time_per_mana;
@@ -221,14 +226,7 @@ class C_Spell
 ///******************************************************************************************
 ///	Globale Klasseninstanzen
 ///******************************************************************************************
-/// Aktueller Npc und der SC
 instance self, other (C_NPC);
-
-/// Opfer bei "witness"-Aktionen
 instance victim (C_NPC);
-
-/// aktuelles Item
 instance item (C_Item);
-
-/// Und der Player immer als globale Instanz
 instance hero (C_NPC);

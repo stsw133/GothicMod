@@ -32,7 +32,7 @@ instance DIA_PAL_298_Pass		(C_INFO)
 };
 func int DIA_PAL_298_Pass_Condition ()
 {	
-	if (Kapitel == 1) 
+	if (Kapitel == 7) 
 	{	
 		return TRUE;
 	};
@@ -83,7 +83,7 @@ instance DIA_PAL_298_Perm1		(C_INFO)
 };
 func int DIA_PAL_298_Perm1_Condition ()
 {	
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& Npc_KnowsInfo (other, DIA_PAL_298_Pass)
 	{		
 		return TRUE;
@@ -108,7 +108,7 @@ instance DIA_PAL_298_Perm2		(C_INFO)
 };
 func int DIA_PAL_298_Perm2_Condition ()
 {	
-	if  (Kapitel >= 2)
+	if  (Kapitel >= 8)
 	{		
 		return TRUE;
 	};

@@ -13,7 +13,7 @@ INSTANCE DIA_Raoul_EXIT(C_INFO)
 
 FUNC INT DIA_Raoul_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -410,6 +410,7 @@ func void B_Raoul_Blame ()
 	B_LogEntry (TOPIC_KillTrollBlack,"Raoul chce, abym przyniós³ mu skórê czarnego trolla."); 
 	
 	MIS_Raoul_KillTrollBlack = LOG_RUNNING;
+	self.aivar[AIV_CanTeach] = true;
 
 	Info_ClearChoices	(DIA_Raoul_TROLL);
 };
@@ -432,42 +433,6 @@ func void DIA_Raoul_TROLL_rechnung_noProb ()
 	B_Raoul_Blame ();
 };
 	
-///////////////////////////////////////////////////////////////////////
-//	Info TrophyFur
-///////////////////////////////////////////////////////////////////////
-
-instance DIA_Raoul_TrophyFur		(C_INFO)
-{
-	npc		 = 	Sld_822_Raoul;
-	nr		 = 	3;
-	condition	 = 	DIA_Raoul_TrophyFur_Condition;
-	information	 = 	DIA_Raoul_TrophyFur_Info;
-	permanent	 = 	TRUE;
-
-	description	 = 	"Najpierw mi powiedz, jak œci¹gn¹æ skórê z czarnego trolla.";
-};
-
-func int DIA_Raoul_TrophyFur_Condition ()
-{
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)		
-	&& (MIS_Raoul_KillTrollBlack == LOG_RUNNING)
-		{
-				return TRUE;
-		};
-};
-
-func void DIA_Raoul_TrophyFur_Info ()
-{
-	AI_Output			(other, self, "DIA_Raoul_TrophyFur_15_00"); //Najpierw mi powiedz, jak œci¹gn¹æ skórê z czarnego trolla.
-
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur))
-	{
-		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_01"); //S³uchaj uwa¿nie, bo rzadko udzielam rad za darmo.
-		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_02"); //Z³ap bestiê i natnij skórê na ka¿dej z jego nóg.
-		AI_Output			(self, other, "DIA_Raoul_TrophyFur_01_03"); //Potem mocno œci¹gnij skórê przez g³owê. To chyba nie trudne.
-	};	
-};
-
 ///////////////////////////////////////////////////////////////////////
 //	Info TrollFell
 ///////////////////////////////////////////////////////////////////////
@@ -613,7 +578,7 @@ INSTANCE DIA_Raoul_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Raoul_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -647,7 +612,7 @@ INSTANCE DIA_Raoul_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Raoul_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -681,7 +646,7 @@ INSTANCE DIA_Raoul_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Raoul_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -706,7 +671,7 @@ instance DIA_Raoul_Ship		(C_INFO)
 
 func int DIA_Raoul_Ship_Condition ()
 {
-	if (Kapitel >= 5)	
+	if (Kapitel >= 11)	
 	&& (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
 		return TRUE;
@@ -752,7 +717,7 @@ INSTANCE DIA_Raoul_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Raoul_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

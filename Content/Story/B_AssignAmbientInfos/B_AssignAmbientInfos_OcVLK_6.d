@@ -62,7 +62,7 @@ INSTANCE DIA_OCVLK_6_LOCATION(C_INFO)
 
 FUNC INT DIA_OCVLK_6_LOCATION_Condition()
 {
-	if (Kapitel <= 4)
+	if (Kapitel <= 10)
 	&& (MIS_KilledDragons < 4)
 	{
 		return TRUE;
@@ -97,14 +97,14 @@ FUNC VOID DIA_OCVLK_6_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_OCVLK_6_STANDARD_15_00"); //Jak leci?
 		
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		AI_Output (self,other,"DIA_OCVLK_6_STANDARD_06_01"); //Przy³¹cz siê do armii, mówili, zasmakuj przygody, mówili. A teraz... no, sam popatrz.
 		AI_Output (self,other,"DIA_OCVLK_6_STANDARD_06_02"); //W tej chwili nawet za zbli¿enie siê do zapasów jedzenia grozi kara œmierci. Garond chyba siê obawia, ¿e ukradniemy co siê da i damy drapaka.
 		AI_Output (self,other,"DIA_OCVLK_6_STANDARD_06_03"); //Jeœli te przeklête smoki nas nie pozabijaj¹, to pewnie wszyscy zdechniemy tu z g³odu.
 	};
 	
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		if (MIS_KilledDragons < 4)
 		{
@@ -116,7 +116,7 @@ FUNC VOID DIA_OCVLK_6_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		if (MIS_OCGateOpen == FALSE)
 		{

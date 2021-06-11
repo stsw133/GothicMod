@@ -3,7 +3,6 @@
 ///******************************************************************************************
 func void B_Say_AttackEnd()
 {
-	/// ------ Enemy = Mensch oder Monster ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
 	|| (self.aivar[AIV_ATTACKREASON] == AR_MonsterMurderedHuman)
 	{
@@ -85,21 +84,18 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ Spieler hat Item geklaut ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_Theft)
 	{
 		B_Say (self, other, "$THIEFDOWN");
 		return;
 	};
 	
-	/// ------ Spieler hat an Mob mit Besitzflag rumgefummelt (kann JEDES Mob sein) ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_UseMob)
 	{
 		B_Say (self, other, "$RUMFUMMLERDOWN");
 		return;
 	};
 	
-	/// ------ Schaf wurde angegriffen oder getötet (von Mensch oder Monster) ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_SheepKiller)
 	{
 		if (other.guild < GIL_SEPERATOR_HUM)
@@ -113,7 +109,6 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ Mensch hat Mensch ermordet ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
 	{
 		if (!Npc_IsDead(other))
@@ -134,7 +129,6 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ Monster kämpft gegen Human - ich helfe Human ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterVsHuman)
 	{
 		if (self.voice == 9)
@@ -149,28 +143,24 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ GateGuards halten nicht-feindliches Monster auf ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
 	{
 		B_Say (self, other, "$STUPIDBEASTKILLED");
 		return;
 	};
 	
-	/// ------ Täter hat mich verletzt ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
 	{
 		B_Say (self, other, "$NEVERHITMEAGAIN");
 		return;
 	};
 	
-	/// ------ Täter hat trotz zweimaliger Warnung Waffe nicht weggesteckt ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon)
 	{
 		B_Say (self, other, "$YOUBETTERSHOULDHAVELISTENED");
 		return;
 	};
 	
-	/// ------ Spieler ist unbefugt in meinem Raum ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ClearRoom)
 	|| (self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToRoom)
 	{
@@ -185,21 +175,18 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ Spieler hat (verbotenen) Portalraum verlassen ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom)
 	{
 		B_Say (self, other, "$NEVERENTERROOMAGAIN");
 		return;
 	};
 	
-	/// ------ GateGuards attackieren Eindringling ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardStopsIntruder)
 	{
 		B_Say (self, other, "$KILLENEMY");
 		return;
 	};
 	
-	/// ------ Wache beendet Kampf, greift Täter an ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
 	{
 		if (other.guild != GIL_SLD) && (other.guild != GIL_DJG)
@@ -209,7 +196,6 @@ func void B_Say_AttackEnd()
 		return;
 	};
 	
-	/// ------ Wache zu Dieb gerufen ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToThief)
 	{
 		B_Say (self, other, "$RUMFUMMLERDOWN");

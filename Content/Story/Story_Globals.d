@@ -19,43 +19,6 @@ var int Diego_angekommen;
 var int Diego_IsDead;
 var int PlayerTalkedToSkipNW;
 var int PlayerTalkedToGregNW;
-//---------------------------------------------------
-// ITEMS 
-
-//----- Artefakt Set der Bauern (HP)-----------------
-var int	HP_Ring_1_Equipped;		
-var int	HP_Ring_2_Equipped;	  
-var int HP_Amulett_Equipped;     
-/*                              
-var int HP_Ring_Double_Bonus;	  
-var int HP_Artefakt_Bonus;       
-var int HP_Amulett_EinRing_Bonus;
-*/
-var int HP_Artefakt_Effekt;	  
-
-//----- Artefakt Set der Priester (Mana)-----------------
-
-var int	MA_Ring_1_Equipped;		
-var int	MA_Ring_2_Equipped;	  
-var int MA_Amulett_Equipped;     
-/*                              
-var int MA_Ring_Double_Bonus;	  
-var int MA_Artefakt_Bonus;       
-var int MA_Amulett_EinRing_Bonus;
-*/
-var int MA_Artefakt_Effekt;	  
-
-//----- Artefakt Set der Krieger (STR)-----------------
-
-var int	STR_Ring_1_Equipped;		
-var int	STR_Ring_2_Equipped;	  
-var int STR_Amulett_Equipped;     
- /*                             
-var int STR_Ring_Double_Bonus;	  
-var int STR_Artefakt_Bonus;       
-var int STR_Amulett_EinRing_Bonus;
-*/
-var int STR_Artefakt_Effekt;	  
 
 //------------Rüstungen---------
 var int LeatherArmor_Equipped;
@@ -90,9 +53,7 @@ var int Leather02_Equipped;
 
 var int Rhobar_Equipped;
 var int MC_Equipped;
-//-----------------------------------------------------
 
-var INT WISPSKILL_LEVEL;
 
 
 //---------------------------------------------------
@@ -416,7 +377,7 @@ var int MIS_Owen_FindMalcom;
 var int MIS_Henry_HolOwen;
 
 
-VAR int Bill_addon_deal;
+var int Bill_addon_deal;
 var int MIS_Addon_Morgan_SeekTraitor;
 
 var int MIS_Addon_JoinHenrysCrew;
@@ -913,7 +874,7 @@ var int 	MIS_GetMalakBack;					//Malak ist ausgebückst. SC kann ihn zu Bengar zu
 var int 	MIS_HyglasBringBook;				//Hyglas will das hero ihm ein Buch besorgt.
 var int 	MIS_HannaRetrieveLetter;			//besorge das alte Schriftstück für Hanna
 var int     MIS_HelpDiegoNW;					//Diego will seinen Schatz haben!
-VAR int		MIS_DiegoNWSendsYouToJudge;			//Diego schickt dich zum Richter
+var int		MIS_DiegoNWSendsYouToJudge;			//Diego schickt dich zum Richter
 var int		MIS_DiegosResidence;				//Diego hat ein neues Haus!
 var int		MIS_Akil_SchafDiebe;				//banditen haben Akils schafe gestohlen.
 var int 	MIS_Lee_JudgeRichter;  				//Beweise gegen Richter finden.
@@ -1081,9 +1042,9 @@ var int KnowsAboutGorn;			//Sc weiß dass Gorn im Kerker ist. (DIA_PC_Mage und DI
 var int DayContactGorn;			//Tag der Bestechung von Gerold 
 var int PriceForGorn;			//Preis für Gorn, wird auf True gesetzt, wenn der SC Gorn freikaufen will.
 var int	Gorns_Beutel;
-VAR int SLDChooseMoreMoney;		//Sld hat 1000 Gold für die MinenMission bekommen.
+var int SLDChooseMoreMoney;		//Sld hat 1000 Gold für die MinenMission bekommen.
 var int FoodForGerold;			//Die Bestechung von Gerold (DIA_PAL_261_Gerod)
-VAR int WantinDungeon;			//da man keine Permanenten Infos abfragen kann wird sie im DIA_PAL_261_Gerold abgefragt
+var int WantinDungeon;			//da man keine Permanenten Infos abfragen kann wird sie im DIA_PAL_261_Gerold abgefragt
 var int	SetGornFree; 			//Jetzt kann Gerold sir den Schlüssel für Gorn geben!
 var int GornsTreasure;			//Gorns Schatzversteck
 var int GornDJG_WhatMonsters;	//Gorn berichtet über Draconier
@@ -1200,7 +1161,6 @@ var int DiegAndGornAreOnboard;		//fürs Video Extro_AllesWirdGut!
 //	Lehrer (hier sollten alle variablen für die Freischaltung der einzelnen Lehrer stehen
 //****************************
 
-//********************************
 var int Alrik_TeachPlayer;		//1-hand Lerer in der city (bis 30)
 var int Moe_TeachPlayer; 		//Stärkelehrer im Hafen (bis 30)
 var int Bartok_TeachPlayer;     //Bogenlehrer in der Stadt (bis 30)
@@ -1218,8 +1178,6 @@ var int Jesper_TeachPlayer;		//Taschendiebstahl
 var int Ramirez_TeachPlayer;	//Schlösser öffnen
 var int Carl_TeachPlayer;		//Stärke (-30)
 var int Gaan_TeachPlayer; 		//Fell, Krallen!
-
-//********************************
 
 //-------------------
 //City - ab Kapitel 1
@@ -1257,23 +1215,6 @@ var int Thorben_TeachPicklock;		//für 200, wenn Gritta bezahlt für 100, wenn Sch
 var int Harad_TeachSmith;			//Common
 var int Constantino_TeachAlchemy; 	//Health_01, Health_02, Health 03, Perm_Health, Mana_01, Mana_02, Perm_STR
 var int Ignaz_TeachAlchemy;			//Health_01, Mana_01, Speed, Perm_DEX
-
-//Ignaz verkauft Scrolls...
-/*
- SPL_TrfSheep		
- SPL_TrfScavenger	
- SPL_TrfGiantRat	
- SPL_TrfGiantBug	
- SPL_TrfWolf		
- SPL_TrfWaran		
- SPL_TrfSnapper		
- SPL_TrfWarg		
- SPL_TrfFireWaran	
- SPL_TrfLurker		
- SPL_TrfShadowbeast	
- SPL_TrfDragonSnapper
- SPL_Charm		
-*/
 
 //----------------------
 //BigFarm - ab Kapitel 1
@@ -1321,22 +1262,6 @@ var int Bennet_TeachSmith; 			//wenn Spieler ihm Common-Waffe zeigt
 //-------------------------------
 var int Sagitta_TeachAlchemy;		//Health_01 _02 _03, Mana_01_02_03, Perm_Mana, Perm_Health
 
-//Animaltrophy
-/*
-	TROPHY_Claws			 
- 	TROPHY_Fur				
- 	TROPHY_Heart			 Golem/Dämon
- 	TROPHY_ShadowHorn 		
- 	TROPHY_FireTongue		 
- 	TROPHY_BFWing			 
- 	TROPHY_BFSting			
- 	TROPHY_Mandibles		 
- 	TROPHY_CrawlerPlate	 
- 	TROPHY_DrgSnapperHorn	 
- 	TROPHY_DragonScale		
- 	TROPHY_DragonBlood		
-*/
-
 var int Gaan_TeachAnimalTrophy;		//TROPHY_Claws, TROPHY_Fur, TROPHY_BFSting, TROPHY_BFWing, TROPHY_Teeth, TROPHY_DrgSnapperHorn
 var int Grom_TeachAnimalTrophy;  	//TROPHY_Fur, TROPHY_Teeth, TROPHY_Heart, TROPHY_Mandibles, TROPHY_ShadowHorn
 var int Grimbald_TeachAnimalTrophy; //TROPHY_BFSting, TROPHY_BFWing, TROPHY_Claws, TROPHY_Mandibles, TROPHY_CrawlerPlate
@@ -1372,10 +1297,6 @@ var int Marduk_TeachRunes;		//IceBolt1, Zap2, LightningFlash3, IceCube3, Thunder
 var int Neoras_TeachAlchemy;	//Health_01, Health_02, Mana_01 _02 _03, Perm_Mana, Perm_STR (für Magier und Paladine)
 var int Babo_TeachPlayer;		//1H + 2H - 70 für Nov/KdF
 
-// ------ Scroll-Händler -------
-
-// *** wo Runen-Scrolls kaufen ??? ***
-
 //--------------------
 //Oldcamp ab Kapitel 2
 //--------------------
@@ -1383,9 +1304,6 @@ var int	Dobar_Learnsmith;		//(Common) Schmied Burg im Minental
 var int Keroloth_TeachPlayer; 	//1-Hand Lehrer Burg im Minental (bis 60) 
 var int Udar_TeachPlayer;		//Armbrustlehrer Burg im Minental (bis 30) 
 var int Brutus_TeachSTR;		//Stärke Lehrer bis 75
-//-----------------------------
-//Oldworld Surface ab Kapitel 2
-//-----------------------------
 
 //-----------------------------
 //Oldworld Surface ab Kapitel 4
@@ -1394,7 +1312,6 @@ var int Godar_TeachPlayer;		//Zähne, BFSting, BFWing, Schleichen, - DJG - OW Anf
 var int Jan_TeachPlayer;		//Schmieden, Common, Special 1 beide, Special 2 beide. im OC
 var int Hokurn_TeachPlayer;		//Kampflehrer bis 100 - DJG - OW Anfang, später Djg-Lager
 
-//-------------  Sonstige Variablen -------------------------------------
 var int Apple_Bonus;
 var int Dunkelpilz_Bonus;
 var int Mandibles_Bonus;
@@ -1408,33 +1325,3 @@ var int GoblinBlack_Randomizer;
 var int Orc_Randomizer;
 
 var int CurrentLevel; 	//Newworld_zen, Oldworld_Zen, Dragonisland_zen -> Level in dem sich der Player befindet!
-
-//--------------------
-//DragonIsland Kapitel 6
-//--------------------
-
-	/*		
-	
-	//Kapitäne:
-	
-	Jack
-	Torlof			STR
-	Jorgen
-	
-	//Crew
-	
-	Lee				1H + 2H 
-	Girion			1H + 2H
-	Milten			Mana Runen
-	Lester			
-	Gorn			2H
-	Diego			Bow + Lockpick + Dex
-	Angar			
-	Bennet			Schmieden + STR
-	Biff
-	Wolf			Bow + Crossbow
-	Lares			Dex + 1H
-	Mario			
-	Vatras			Alchemy + Kreise
-	
-	*/	

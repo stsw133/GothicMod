@@ -117,7 +117,7 @@ FUNC VOID DIA_VLK_8_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_VLK_8_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_Addon_VLK_8_STANDARD_08_00"); //Ostatnimi czasy wszyscy s¹ bardzo nerwowi.
 		AI_Output (self,other,"DIA_Addon_VLK_8_STANDARD_08_01"); //Jakby ma³o by³o tego, ¿e przybyli tu paladyni - teraz jeszcze znikaj¹ ludzie!
@@ -131,25 +131,25 @@ FUNC VOID DIA_VLK_8_STANDARD_Info()
 		SC_HearedAboutMissingPeople = TRUE;
 	};
 	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_01"); //Wszyscy czekaj¹ na og³oszenie powodu wizyty paladynów. Domyœlam siê, ¿e s¹ tu z powodu orków. Bestie pewnie wkrótce zaatakuj¹!
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_02"); //Mo¿e i paladynów prowadzi ³aska Innosa, lecz kiedy zjawi¹ siê orkowe hordy, wszyscy bêdziemy straceni.
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_03"); //Ludzie powiadaj¹, ¿e jedynym powodem wizyty paladynów jest chêæ zabrania rudy... na potrzeby wojny na kontynencie.
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_04"); //Czy wiesz, co to oznacza? Król ma w g³êbokim powa¿aniu to, ¿e orkowie wszystkich nas pozabijaj¹.
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_05"); //Zrobiê wszystko, by byæ na tym statku, kiedy paladyni zaczn¹ podnosiæ kotwicê.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_06"); //Ponoæ orkowie lec¹ tutaj na grzbietach smoków, wielkich jak po³owa miasta. Nie mamy ¿adnych szans na obronê!
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_VLK_8_STANDARD_08_07"); //Ludzie mówi¹, ¿e smoki zosta³y pokonane. Czy to prawda?
 	};

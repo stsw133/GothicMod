@@ -13,7 +13,7 @@ INSTANCE DIA_Talbin_EXIT   (C_INFO)
 
 FUNC INT DIA_Talbin_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -40,7 +40,7 @@ instance DIA_Talbin_HALLO		(C_INFO)
 
 func int DIA_Talbin_HALLO_Condition ()
 {
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 		{
 				return TRUE;
 		};
@@ -136,7 +136,7 @@ func int DIA_Talbin_SORRYFORENGROM_Condition ()
 	if (Npc_KnowsInfo(other, DIA_Talbin_WASMACHTIHR))
 	&& ((Npc_IsDead(Engrom)) == FALSE)
 	&& (Talbin_FollowsThroughPass == 0)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	&& (Talbin_Runs == FALSE)
 		{
 				return TRUE;
@@ -202,7 +202,7 @@ func int DIA_Talbin_ENGROMANGRY_Condition ()
 			&& (Npc_KnowsInfo(other, DIA_Talbin_SORRYFORENGROM))
 			&& ((Npc_IsDead(Engrom)) == FALSE)
 			&& (Talbin_FollowsThroughPass == 0)
-			&& (Kapitel <= 3)
+			&& (Kapitel <= 9)
 			&& (Talbin_Runs == FALSE)
 		)
 		{
@@ -292,120 +292,13 @@ FUNC VOID DIA_Talbin_PayTeacher_Info()
 		AI_Output(self,other,"DIA_Talbin_PayTeacher_07_01"); //Naprawdê uda³o ci siê go zdobyæ? Od wieków nie jad³em czegoœ tak wspania³ego. Dziêkujê. Er, a co powiesz na... o tak. Jasne!
 		Talbin_TeachAnimalTrophy = TRUE;
 		DIA_Talbin_PayTeacher_noPerm = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else	//SC hat keinen Käse
 	{
 		AI_Output(other,self,"DIA_Talbin_PayTeacher_15_02"); //W tej chwili nie mam przy sobie sera.
 		AI_Output(self,other,"DIA_Talbin_PayTeacher_07_03"); //To zbyt piêkne, by mog³o byæ prawdziwe. Daj mi znaæ jak go zdobêdziesz.
 	};
-};
-
-
-///////////////////////////////////////////////////////////////////////
-//	Info TeachHunting
-///////////////////////////////////////////////////////////////////////
-instance DIA_Talbin_TEACHHUNTING		(C_INFO)
-{
-	npc		 = 	VLK_4130_Talbin;
-	nr          = 12;
-	condition	 = 	DIA_Talbin_TEACHHUNTING_Condition;
-	information	 = 	DIA_Talbin_TEACHHUNTING_Info;
-	permanent	= TRUE;
-	description	 = 	"Czego mo¿esz mnie nauczyæ?";
-};
-
-func int DIA_Talbin_TEACHHUNTING_Condition ()
-{
-	if (Talbin_TeachAnimalTrophy == TRUE)
-	&& (Talbin_FollowsThroughPass == 0)
-	&& (Talbin_Runs == FALSE)
-		{
-				return TRUE;
-		};
-};
-
-func void DIA_Talbin_TEACHHUNTING_Info ()
-{
-	AI_Output			(other, self, "DIA_Talbin_TEACHHUNTING_15_00"); //Czego mo¿esz mnie nauczyæ?
-		if 	(
-				(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Heart] == FALSE)
-			)
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_07_01"); //A co chcesz wiedzieæ?
-		
-
-			Info_AddChoice		(DIA_Talbin_TEACHHUNTING, DIALOG_BACK, DIA_Talbin_TEACHHUNTING_BACK);
-		
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Talbin_TEACHHUNTING, B_BuildLearnString ("Usuñ pazury",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Claws)),  DIA_Talbin_TEACHHUNTING_Claws);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Talbin_TEACHHUNTING, B_BuildLearnString ("Obedrzyj ze skóry",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Fur)),  DIA_Talbin_TEACHHUNTING_Fur);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Talbin_TEACHHUNTING, B_BuildLearnString ("Róg cieniostwora",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_ShadowHorn)),  DIA_Talbin_TEACHHUNTING_ShadowHorn);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Heart] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Talbin_TEACHHUNTING, B_BuildLearnString ("Usuñ serce",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Heart)),  DIA_Talbin_TEACHHUNTING_Heart);
-			};
-
-		}
-		else
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_07_02"); //Muszê ciê rozczarowaæ. Wiesz ju¿ wszystko, czego móg³bym ciê nauczyæ. Jeszcze raz, dziêki za ser!
-		};
-};
-
-func void DIA_Talbin_TEACHHUNTING_BACK()
-{
-	Info_ClearChoices	(DIA_Talbin_TEACHHUNTING);
-};
-
-// ------ Klauen hacken ------
-func void DIA_Talbin_TEACHHUNTING_Claws()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws))
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_Claws_07_00"); //Odr¹bywanie pazurów jest stosunkowo ³atwe. £apiesz pazur na wysokoœci stawu i przyciskasz mocno do ziemi.
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_Claws_07_01"); //Potem bierzesz nó¿ i ostro¿ne odcinasz pazur.
-		};
-
-		Info_ClearChoices	(DIA_Talbin_TEACHHUNTING);
-};
-
-// ------ Fell abziehen ------
-func void DIA_Talbin_TEACHHUNTING_Fur()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur))
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_Fur_07_00"); //Naj³atwiejszy sposób na oskórowanie topielca to rozci¹æ skórê wzd³u¿ brzucha...
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_Fur_07_01"); //...potem szarpn¹æ mocno za tylne ³apy, i œci¹gn¹æ skórê w jednym kawa³ku.
-		};
-	Info_ClearChoices	(DIA_Talbin_TEACHHUNTING);
-};
-
-func void DIA_Talbin_TEACHHUNTING_Shadowhorn ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_ShadowHorn))
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_ShadowHorn_07_00"); //Rogi cieniostwora s¹ bardzo twarde, tote¿ u¿ywa siê ich do robienia figurek i narzêdzi.
-		};
-	Info_ClearChoices	(DIA_Talbin_TEACHHUNTING);
-};
-func void DIA_Talbin_TEACHHUNTING_Heart ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Heart))
-		{
-			AI_Output			(self, other, "DIA_Talbin_TEACHHUNTING_Heart_07_00"); //Bardzo trudne do zdobycia s¹ serca magicznych stworzeñ. Jeœli zechcesz dostaæ jedno z nich, musisz bardzo uwa¿aæ, szczególnie w przypadku golemów.
-		};
-	Info_ClearChoices	(DIA_Talbin_TEACHHUNTING);
 };
 
 
@@ -432,7 +325,7 @@ INSTANCE DIA_Talbin_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Talbin_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -467,7 +360,7 @@ INSTANCE DIA_Talbin_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Talbin_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -493,7 +386,7 @@ instance DIA_Talbin_KAP4_WASNEUES		(C_INFO)
 
 func int DIA_Talbin_KAP4_WASNEUES_Condition ()
 {
-	if 	(Kapitel >= 4)
+	if 	(Kapitel >= 10)
 		&& (Talbin_FollowsThroughPass == 0)
 		&& (Talbin_Runs == FALSE)
 		{
@@ -523,7 +416,7 @@ instance DIA_Talbin_KAP4_WASWOLLTENDJG		(C_INFO)
 func int DIA_Talbin_KAP4_WASWOLLTENDJG_Condition ()
 {
 if 	(Npc_KnowsInfo(other, DIA_Talbin_KAP4_WASNEUES))
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	&& (Talbin_FollowsThroughPass == 0)
 	&& (Talbin_Runs == FALSE)
 	{
@@ -537,7 +430,7 @@ func void DIA_Talbin_KAP4_WASWOLLTENDJG_Info ()
 	AI_Output			(self, other, "DIA_Talbin_KAP4_WASWOLLTENDJG_07_01"); //Pytali o zapasy i sprzêt. Cz³owieku, ja sam ledwo ci¹gnê!
 	AI_Output			(self, other, "DIA_Talbin_KAP4_WASWOLLTENDJG_07_02"); //Ci¹gle gadali coœ o zabijaniu smoków. Bogowie jedni wiedz¹, sk¹d przysz³a ta banda, nie wzbudzili jednak mojego zaufania.
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		B_LogEntry (TOPIC_Dragonhunter,"Grupa ³owców smoków zatrzyma³a siê obok siedziby myœliwego Talbina."); 
 	};
@@ -561,7 +454,7 @@ instance DIA_Talbin_WOENGROM		(C_INFO)
 func int DIA_Talbin_WOENGROM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Talbin_WASMACHTIHR))
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	&& (Talbin_FollowsThroughPass == 0)
 	&& (EngromIsGone == TRUE)
 	&& (Talbin_Runs == FALSE)
@@ -603,7 +496,7 @@ func int DIA_Talbin_FOUNDENGROM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Talbin_WOENGROM))
 	&& ((NpcObsessedByDMT_Engrom == TRUE)||(Npc_HasItems (other,ItAt_TalbinsLurkerSkin)) ) 
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	&& (Talbin_FollowsThroughPass == 0)
 	&& (Talbin_Runs == FALSE)
 		{
@@ -775,7 +668,7 @@ INSTANCE DIA_Talbin_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Talbin_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -810,7 +703,7 @@ INSTANCE DIA_Talbin_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Talbin_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

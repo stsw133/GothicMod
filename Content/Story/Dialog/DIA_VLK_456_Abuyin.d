@@ -320,7 +320,7 @@ INSTANCE DIA_Abuyin_Weissagung(C_INFO)
 FUNC INT DIA_Abuyin_Weissagung_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 1)
+	&& (Kapitel == 7)
 	{	
 		return TRUE;
 	};
@@ -352,7 +352,7 @@ FUNC INT DIA_Abuyin_Zukunft_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung)
 	&& (DIA_Abuyin_Zukunft_permanent == FALSE)
-	&& (Kapitel == 1)
+	&& (Kapitel == 7)
 	{	
 		return TRUE;
 	};
@@ -458,7 +458,7 @@ INSTANCE DIA_Abuyin_Weissagung2(C_INFO)
 FUNC INT DIA_Abuyin_Weissagung2_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{	
 		return TRUE;
 	};
@@ -487,7 +487,7 @@ FUNC INT DIA_Abuyin_Zukunft2_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung2)
 	&& (DIA_Abuyin_Zukunft2_permanent == FALSE)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{	
 		return TRUE;
 	};
@@ -551,7 +551,7 @@ INSTANCE DIA_Abuyin_Weissagung3(C_INFO)
 FUNC INT DIA_Abuyin_Weissagung3_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 3)
+	&& (Kapitel == 9)
 	{	
 		return TRUE;
 	};
@@ -580,7 +580,7 @@ FUNC INT DIA_Abuyin_Zukunft3_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung3)
 	&& (DIA_Abuyin_Zukunft3_permanent == FALSE)
-	&& (Kapitel == 3)
+	&& (Kapitel == 9)
 	{	
 		return TRUE;
 	};
@@ -644,7 +644,7 @@ INSTANCE DIA_Abuyin_Weissagung4(C_INFO)
 FUNC INT DIA_Abuyin_Weissagung4_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 4)
+	&& (Kapitel == 10)
 	{	
 		return TRUE;
 	};
@@ -673,7 +673,7 @@ FUNC INT DIA_Abuyin_Zukunft4_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung4)
 	&& (DIA_Abuyin_Zukunft4_permanent == FALSE)
-	&& (Kapitel == 4)
+	&& (Kapitel == 10)
 	{	
 		return TRUE;
 	};
@@ -737,7 +737,7 @@ INSTANCE DIA_Abuyin_Weissagung5(C_INFO)
 FUNC INT DIA_Abuyin_Weissagung5_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_du)
-	&& (Kapitel == 5)
+	&& (Kapitel == 11)
 	{	
 		return TRUE;
 	};
@@ -766,7 +766,7 @@ FUNC INT DIA_Abuyin_Zukunft5_Condition()
 {	
 	if Npc_KnowsInfo (other, DIA_Abuyin_Weissagung5)
 	&& (DIA_Abuyin_Zukunft5_permanent == FALSE)
-	&& (Kapitel == 5)
+	&& (Kapitel == 11)
 	{	
 		return TRUE;
 	};

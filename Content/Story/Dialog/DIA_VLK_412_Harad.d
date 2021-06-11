@@ -430,7 +430,7 @@ func void DIA_Harad_LEHRLING_OK()
 	AI_Output (other, self, "DIA_Harad_LEHRLING_OK_15_00"); //Wchodzê w to!
 	AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_01"); //Dobrze! Nauczê ciê, jak wykuæ porz¹dny miecz.
 	
-	if (PLAYER_TALENT_SMITH[WEAPON_Common] == TRUE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) > 0)
 	{
 		AI_Output (other, self, "DIA_Harad_LEHRLING_OK_15_02"); //Ju¿ to potrafiê!
 		AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_03"); //Có¿, tym lepiej!
@@ -440,6 +440,7 @@ func void DIA_Harad_LEHRLING_OK()
 	{
 		AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_04"); //Poza tym czas, ¿ebyœ nabra³ si³. Marniejesz mi w oczach!
 	};
+	self.aivar[AIV_CanTeach] = true;
 	Player_IsApprentice = APP_Harad;
 	Npc_ExchangeRoutine (Lothar, "START");
 	
@@ -614,7 +615,7 @@ instance DIA_Harad_Waffen (C_INFO)
 };
 func int DIA_Harad_Waffen_Condition ()
 {	
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -737,126 +738,7 @@ func void DIA_Harad_SellBlades_Info ()
 		B_GiveInvItems (self, other, itmi_gold, lohn);
 	};
 };
-	
-// ************************************************************
-// 						Weapon_Common Lehrer
-// ************************************************************
-func void B_Harad_TeachSmith()
-{
-	AI_Output (self, other, "DIA_Harad_TeachCommon_12_01"); //To doœæ proste, ch³opcze. WeŸ kawa³ek surowej stali i trzymaj j¹ w ogniu, a¿ rozgrzeje siê do bia³oœci.
-	AI_Output (self, other, "DIA_Harad_TeachCommon_12_02"); //Wtedy nadaj broni kszta³t na kowadle.
-};
-// ------------------------------------------------------------
-func void B_HaradSmithChoices()
-{
-	Info_ClearChoices (DIA_Harad_TeachSmith);
-	Info_AddChoice	(DIA_Harad_TeachSmith, DIALOG_BACK, DIA_Harad_TeachSmith_BACK);
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_04] == FALSE)
-	&& (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_03] == TRUE)
-	{
-		Info_AddChoice		(DIA_Harad_TeachSmith, B_BuildLearnString(NAME_Addon_Harad_04, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Harad_04))		,DIA_Harad_TeachSmith_Harad04);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_03] == FALSE)
-	&& (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_02] == TRUE)
-	{
-		Info_AddChoice		(DIA_Harad_TeachSmith, B_BuildLearnString(NAME_Addon_Harad_03, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Harad_03))		,DIA_Harad_TeachSmith_Harad03);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_02] == FALSE)
-	&& (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_01] == TRUE)
-	{
-		Info_AddChoice		(DIA_Harad_TeachSmith, B_BuildLearnString(NAME_Addon_Harad_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Harad_02))		,DIA_Harad_TeachSmith_Harad02);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_01] == FALSE)
-	&& (PLAYER_TALENT_SMITH[WEAPON_Common] == TRUE)
-	{
-		Info_AddChoice		(DIA_Harad_TeachSmith, B_BuildLearnString(NAME_Addon_Harad_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Harad_01))		,DIA_Harad_TeachSmith_Harad01);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
-	{
-		Info_AddChoice	(DIA_Harad_TeachSmith, B_BuildLearnString("Nauka kowalstwa"	   , B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_Common))			,DIA_Harad_TeachSmith_Common);
-	};
-};
-// ------------------------------------------------------------
-instance DIA_Harad_TeachSmith (C_INFO)
-{
-	npc			 = 	VLK_412_Harad;
-	nr			 =  50;
-	condition	 = 	DIA_Harad_TeachSmith_Condition;
-	information	 = 	DIA_Harad_TeachSmith_Info;
-	permanent    =  TRUE;
-	description	 = 	"Naucz mnie, jak wykuæ porz¹dny miecz!";
-};
 
-func int DIA_Harad_TeachSmith_Condition ()
-{	
-	if (Player_IsApprentice == APP_Harad)
-	{
-		if (PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
-		|| (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_01] == FALSE)
-		|| (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_02] == FALSE)
-		|| (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_03] == FALSE)
-		|| (PLAYER_TALENT_SMITH[WEAPON_1H_Harad_04] == FALSE)
-		{
-			return TRUE;
-		};
-	};
-};
-func void DIA_Harad_TeachSmith_Info ()
-{
-	AI_Output (other, self, "DIA_Harad_TeachCommon_15_00"); //Naucz mnie, jak wykuæ porz¹dny miecz!
-	
-	B_HaradSmithChoices();
-};
-func void DIA_Harad_TeachSmith_BACK()
-{
-	Info_ClearChoices (DIA_Harad_TeachSmith);
-};
-func void DIA_Harad_TeachSmith_Common()
-{
-	if B_TeachPlayerTalentSmith (self, other, WEAPON_Common)
-	{
-		B_Harad_TeachSmith();
-		AI_Output (self, other, "DIA_Harad_TeachCommon_12_03"); //Twoje pierwsze miecze nie bêd¹ doskona³e, ale powoli wszystkiego siê nauczysz.
-	};
-	
-	B_HaradSmithChoices();
-};
-func void DIA_Harad_TeachSmith_Harad01()
-{
-	if B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Harad_01)
-	{
-		B_Harad_TeachSmith();
-	};
-	
-	B_HaradSmithChoices();
-};
-func void DIA_Harad_TeachSmith_Harad02()
-{
-	if B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Harad_02)
-	{
-		B_Harad_TeachSmith();
-	};
-	
-	B_HaradSmithChoices();
-};
-func void DIA_Harad_TeachSmith_Harad03()
-{
-	if B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Harad_03)
-	{
-		B_Harad_TeachSmith();
-	};
-	
-	B_HaradSmithChoices();
-};
-func void DIA_Harad_TeachSmith_Harad04()
-{
-	if B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Harad_04)
-	{
-		B_Harad_TeachSmith();
-	};
-	
-	B_HaradSmithChoices();
-};
 /*
 // ************************************************************
 // 							STR Lehrer bis 50
@@ -954,7 +836,7 @@ instance DIA_Harad_ImmerNoch (C_INFO)
 };
 func int DIA_Harad_ImmerNoch_Condition ()
 {	
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	{
 		return TRUE;
 	};	

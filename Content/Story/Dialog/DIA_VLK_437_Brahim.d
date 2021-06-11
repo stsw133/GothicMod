@@ -21,7 +21,7 @@ INSTANCE DIA_Brahim_EXIT   (C_INFO)
 
 FUNC INT DIA_Brahim_EXIT_Condition()
 {
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		return TRUE;
 	};	
@@ -174,7 +174,7 @@ INSTANCE DIA_Brahim_Kap3_EXIT   (C_INFO)
 
 FUNC INT DIA_Brahim_Kap3_EXIT_Condition()	//siehe auch First Exit
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& ((Npc_KnowsInfo (other,DIA_Brahim_Kap3_First_EXIT))
 	|| (Npc_HasItems (other,ItWr_ShatteredGolem_MIS) == 0))
 	{
@@ -184,7 +184,7 @@ FUNC INT DIA_Brahim_Kap3_EXIT_Condition()	//siehe auch First Exit
 
 FUNC VOID DIA_Brahim_Kap3_EXIT_Info()
 {
-	if (Kapitel <= 4)
+	if (Kapitel <= 10)
 	{
 		B_BrahimNewMaps ();
 	};
@@ -206,7 +206,7 @@ INSTANCE DIA_Brahim_Kap3_First_EXIT   (C_INFO)
 
 FUNC INT DIA_Brahim_Kap3_First_EXIT_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_HasItems (other,ItWr_ShatteredGolem_MIS) >=1)
 	{
 		return TRUE;

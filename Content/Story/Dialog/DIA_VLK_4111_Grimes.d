@@ -73,7 +73,7 @@ INSTANCE DIA_Grimes_Erz(C_INFO)
 
 FUNC INT DIA_Grimes_Erz_Condition()
 {	
-	if (Kapitel == 2) 
+	if (Kapitel == 8) 
 	&& (MIS_ScoutMine == LOG_RUNNING)
 	{
 		return TRUE;
@@ -127,7 +127,7 @@ INSTANCE DIA_Grimes_Grimes(C_INFO)
 
 FUNC INT DIA_Grimes_Grimes_Condition()
 {	
-	if (Kapitel == 2) 
+	if (Kapitel == 8) 
 	{
 		return TRUE;
 	};
@@ -155,7 +155,7 @@ INSTANCE DIA_Grimes_PERM(C_INFO)
 
 FUNC INT DIA_Grimes_PERM_Condition()
 {	
-	if (Kapitel >= 2) 
+	if (Kapitel >= 8) 
 	{
 		return TRUE;
 	};

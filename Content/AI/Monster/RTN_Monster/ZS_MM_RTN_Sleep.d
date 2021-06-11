@@ -21,7 +21,7 @@ func void ZS_MM_Rtn_Sleep()
 	
 	///FUNC
 	AI_SetWalkmode (self, NPC_WALK);
-	B_MM_DeSynchronize();
+	B_DeSynchronize();
 	
 	if (!Hlp_StrCmp(Npc_GetNearestWP(self), self.wp))
 	{

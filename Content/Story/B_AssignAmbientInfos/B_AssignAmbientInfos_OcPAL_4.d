@@ -88,12 +88,12 @@ FUNC VOID DIA_OCPAL_4_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_OCPAL_4_STANDARD_15_00"); //Jak siê maj¹ sprawy?
 		
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		AI_Output (self,other,"DIA_OCPAL_4_STANDARD_04_01"); //Jesteœmy otoczeni przez orków! Bêdziemy siê jednak broniæ do ostatniego cz³owieka! Zaœ Innos wspomo¿e nas sw¹ potêg¹ w walce ze smokami!
 	};
 	
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		if (MIS_KilledDragons < 4)
 		{
@@ -113,7 +113,7 @@ FUNC VOID DIA_OCPAL_4_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		if (MIS_OCGateOpen == FALSE)
 		{

@@ -13,7 +13,7 @@ INSTANCE DIA_Neoras_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Neoras_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -177,8 +177,11 @@ instance DIA_Neoras_TEACH		(C_INFO)
 	description	 = 	"Czy móg³bym siê u ciebie uczyæ?";
 };
 func int DIA_Neoras_TEACH_Condition ()
-{	
-	return TRUE;
+{
+	if (self.aivar[AIV_CanTeach] == false)
+	{
+		return TRUE;
+	};
 };
 func void DIA_Neoras_TEACH_Info ()
 {
@@ -188,56 +191,7 @@ func void DIA_Neoras_TEACH_Info ()
 	|| (other.guild == GIL_PAL)
 	{
 		AI_Output (self, other, "DIA_Neoras_TEACH_01_01"); //Zdradzê ci arkana sztuk alchemicznych.
-		
-		Info_ClearChoices 	(DIA_Neoras_TEACH);
-		Info_AddChoice 		(DIA_Neoras_TEACH,DIALOG_BACK,DIA_Neoras_TEACH_BACK);
-	
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
-		{
-			Info_AddChoice 		(DIA_Neoras_TEACH,B_BuildLearnString ("Esencja lecznicza", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)),DIA_Neoras_TEACH_HEALTH_01);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Ekstrakt leczniczy", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_02)), DIA_Neoras_TEACH_Health_02);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Eliksir leczniczy", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_03)), DIA_Neoras_TEACH_Health_03);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Health] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Eliksir ¿ycia", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Health)), DIA_Neoras_TEACH_Perm_Health);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Esencja many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)), DIA_Neoras_TEACH_Mana_01);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Ekstrakt many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_02)), DIA_Neoras_TEACH_Mana_02);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Eliksir many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_03)), DIA_Neoras_TEACH_Mana_03);
-		};
-		
-		if ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
-		&& ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
-		{
-			Info_AddChoice	  (DIA_Neoras_TEACH, B_BuildLearnString ("Eliksir ducha", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Mana)), DIA_Neoras_TEACH_Perm_Mana);
-		};
-		
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else if (hero.guild == GIL_NOV)
 	{
@@ -248,42 +202,6 @@ func void DIA_Neoras_TEACH_Info ()
 	{
 		AI_Output (self, other, "DIA_Neoras_TEACH_01_04"); //Swoj¹ wiedzê przekazujê jedynie cz³onkom naszego koœcio³a.
 	};
-};
-FUNC VOID DIA_Neoras_TEACH_BACK()
-{
-	Info_ClearChoices 	(DIA_Neoras_TEACH);
-};
-FUNC VOID DIA_Neoras_TEACH_HEALTH_01()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
-};
-FUNC VOID DIA_Neoras_TEACH_HEALTH_02()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_02);
-};
-FUNC VOID DIA_Neoras_TEACH_Health_03()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_03);
-};
-FUNC VOID DIA_Neoras_TEACH_Perm_Health()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Health);
-};
-FUNC VOID DIA_Neoras_TEACH_MANA_01()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
-};
-FUNC VOID DIA_Neoras_TEACH_MANA_02()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_02);
-};
-FUNC VOID DIA_Neoras_TEACH_MANA_03()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_03);
-};
-FUNC VOID DIA_Neoras_TEACH_Perm_Mana()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Mana);
 };
 
 //#####################################################################
@@ -306,7 +224,7 @@ INSTANCE DIA_Neoras_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Neoras_Kap2_EXIT_Condition()
 {
-	if Kapitel == 2
+	if Kapitel == 8
 	{
 		return TRUE;
 	};	
@@ -336,7 +254,7 @@ INSTANCE DIA_Neoras_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Neoras_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -594,7 +512,7 @@ INSTANCE DIA_Neoras_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Neoras_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -620,7 +538,7 @@ instance DIA_Neoras_DRACHENEIER		(C_INFO)
 
 func int DIA_Neoras_DRACHENEIER_Condition ()
 {
-	if 	(Kapitel >= 4)
+	if 	(Kapitel >= 10)
 	&& 	((hero.guild == GIL_MIL) || (hero.guild == GIL_PAL)	|| (hero.guild == GIL_KDF))
 	&&  (MIS_Neoras_DragonEgg == 0)
 		{
@@ -841,7 +759,7 @@ INSTANCE DIA_Neoras_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Neoras_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

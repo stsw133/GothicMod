@@ -13,7 +13,7 @@ INSTANCE DIA_Lobart_EXIT   (C_INFO)
 
 FUNC INT DIA_Lobart_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -357,7 +357,7 @@ instance DIA_Lobart_AufstandInfo (C_INFO)
 func int DIA_Lobart_AufstandInfo_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Lobart_Hallo))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -394,7 +394,7 @@ instance DIA_Lobart_OnarStory (C_INFO)
 func int DIA_Lobart_OnarStory_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Lobart_AufstandInfo))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -434,7 +434,7 @@ func int DIA_Lobart_SldInfo_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Lobart_OnarStory))
 	&& ((hero.guild != GIL_SLD) && (hero.guild != GIL_DJG))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -463,7 +463,7 @@ instance DIA_Lobart_WhichSide (C_INFO)
 func int DIA_Lobart_WhichSide_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Lobart_AufstandInfo))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -502,7 +502,7 @@ func int DIA_Lobart_WorkNOW_Condition ()
 	|| (Npc_KnowsInfo(other, DIA_Lobart_STOLENCLOTHS))
 	|| (Npc_KnowsInfo(other, DIA_Lobart_Kleidung))
 	{
-		if (Kapitel < 3)
+		if (Kapitel < 9)
 		{
 			return TRUE;
 		};
@@ -598,7 +598,7 @@ func int DIA_Lobart_RuebenRunning_Condition ()
 {
 	if (MIS_Lobart_Rueben == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItPl_Beet) >= 1)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -704,7 +704,7 @@ func int DIA_Lobart_MoreWork_Condition ()
 {
 	if ((MIS_Lobart_Rueben == LOG_RUNNING)
 	|| (MIS_Lobart_Rueben == LOG_SUCCESS))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -846,7 +846,7 @@ INSTANCE DIA_Lobart_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lobart_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -871,7 +871,7 @@ instance DIA_Lobart_DMT		(C_INFO)
 
 func int DIA_Lobart_DMT_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -1021,7 +1021,7 @@ instance DIA_Lobart_PERM		(C_INFO)
 func int DIA_Lobart_PERM_Condition ()
 {		
 	if (Npc_KnowsInfo(other, DIA_Lobart_DMT))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	&&	((Npc_IsDead(OrcWarrior_Lobart1))
 	&&	(Npc_IsDead(OrcWarrior_Lobart2))
 	&&	(Npc_IsDead(OrcWarrior_Lobart3))
@@ -1065,7 +1065,7 @@ INSTANCE DIA_Lobart_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lobart_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1096,7 +1096,7 @@ func int DIA_Lobart_ORKPROBLEM_Condition ()
 	||	(Npc_IsDead(OrcWarrior_Lobart4)	== FALSE)
 	||	(Npc_IsDead(OrcWarrior_Lobart5)	== FALSE)
 	||	(Npc_IsDead(OrcWarrior_Lobart6)	== FALSE))
-	&& 	(Kapitel >= 4)
+	&& 	(Kapitel >= 10)
 	&& 	((hero.guild == GIL_PAL) || (hero.guild == GIL_DJG))
 	&& (Npc_KnowsInfo(other, DIA_Lobart_DMT))
 		{
@@ -1138,7 +1138,7 @@ func int DIA_Lobart_ORKSWEG_Condition ()
 	&&	(Npc_IsDead(OrcWarrior_Lobart4)	== TRUE)
 	&&	(Npc_IsDead(OrcWarrior_Lobart5)	== TRUE)
 	&&	(Npc_IsDead(OrcWarrior_Lobart6)	== TRUE)
-	&& 	(Kapitel >= 4)
+	&& 	(Kapitel >= 10)
 	&& 	((hero.guild == GIL_PAL) || (hero.guild == GIL_DJG))
 		{
 				return TRUE;
@@ -1188,7 +1188,7 @@ INSTANCE DIA_Lobart_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lobart_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1223,7 +1223,7 @@ INSTANCE DIA_Lobart_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lobart_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

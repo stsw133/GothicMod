@@ -24,17 +24,13 @@ STORY\SVM.d
 
 AI\HUMAN\B_RefreshArmor.d
 AI\HUMAN\Guilds.d
-
-AI\HUMAN\B_Human\B_LookAtNpc.d
-AI\HUMAN\B_Human\B_ResetAll.d
-AI\HUMAN\B_Human\B_Say.d
-AI\HUMAN\B_Human\B_SetAttitude.d
-AI\HUMAN\B_Human\B_ValidateOther.d
-
 AI\HUMAN\C_Human\C_BodyStateContains.d
 AI\HUMAN\C_Human\C_DropUnconscious.d
 AI\HUMAN\C_Human\C_NpcIs.d
-AI\HUMAN\C_Human\C_NpcIsBotheredByPlayerRoomGuild.d
+AI\HUMAN\B_Human\B_LookAtNpc.d
+AI\HUMAN\B_Human\B_Say.d
+AI\HUMAN\B_Human\B_SetAttitude.d
+AI\HUMAN\B_Human\B_ValidateOther.d
 
 STORY\Log_Entries\Log_Constants_*.d
 STORY\Log_Entries\B_CloseTopic.d
@@ -42,11 +38,11 @@ STORY\Log_Entries\B_CloseTopics_*.d
 STORY\Log_Entries\B_Checklog.d
 STORY\XP_Constants.d
 
-MOD\MOD_AttributesCheck.d
 MOD\MOD_Bars.d
 MOD\MOD_BodyStates.d
 MOD\MOD_Difficulty.d
 MOD\MOD_Girlfriends.d
+MOD\MOD_NpcFn.d
 
 STORY\B_Story\C_NpcIsInQuarter.d
 STORY\B_Story\C_DiegoTooFar.d
@@ -82,6 +78,7 @@ STORY\B_Story\B_GetLearnCost.d
 STORY\B_Story\B_BuildLearnString.d
 STORY\B_Story\B_TeachAttributePoints.d
 STORY\B_Story\B_TeachTalents.d
+STORY\B_Story\B_WispDetector.d
 
 ITEMS\Tuning_*.d
 ITEMS\IT_*.d
@@ -101,11 +98,9 @@ STORY\B_Content\B_ScHasBeliarsWeapon.d
 STORY\B_Content\B_WeaponSpecialDamage.d
 STORY\B_Content\B_GhostSpecialDamage.d
 
-AI\MONSTER\B_Monster\B_MM_WispDetect.d
-AI\MONSTER\B_Monster\B_MM_DeSynchronize.d
-
 AI\AI_INTERN\PERCEPTION.D
 AI\AI_INTERN\Npc_Plunder_Is_Empty.d
+AI\AI_INTERN\B_DeSynchronize.d
 AI\AI_INTERN\B_RefreshAtInsert.d
 
 AI\HUMAN\C_Human\C_IsUsedMobMyPossession.d
@@ -115,16 +110,11 @@ AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
 STORY\B_Story\B_UseItem.d
 
 STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
-STORY\B_AssignAmbientInfos\B_Addon_Myxir_TeachRequest.d
-STORY\B_AssignAmbientInfos\B_Addon_Riordian_TeachWisp.d
 
 AI\HUMAN\B_Human\B_CommentFakeGuild.d
 AI\HUMAN\B_Human\B_Say_AttackEnd.d
 AI\HUMAN\B_Human\B_Say_AttackReason.d
-AI\HUMAN\B_Human\B_Say_GuildGreetings.d
-AI\HUMAN\B_Human\B_Say_Smalltalk.d
 
-AI\HUMAN\C_Human\C_NpcIsBotheredByWeapon.d
 AI\HUMAN\C_Human\C_WantToFlee.d
 AI\HUMAN\C_Human\C_WantToRansack.d
 AI\HUMAN\C_Human\C_NpcHasAttackReasonToKill.d
@@ -203,9 +193,6 @@ AI\HUMAN\TA_Human\ZS*.d
 
 STORY\Dialog_Mobsis\*.d
 
-STORY\Npc_Scripts\B_GiveNpcTalents.d
-STORY\Npc_Scripts\B_SetAttributesToChapter.d
-
 STORY\Npc_Scripts\B_SetMonsterAttributes.d
 STORY\Npc_Scripts\B_SetAttributesToLevel.d
 STORY\Npc_Scripts\B_SetNpcVisual.d
@@ -252,12 +239,6 @@ STORY\G_Functions\G_PickLock.d
 
 STORY\B_Story\B_TeachFightTalentPercent.d
 STORY\B_Story\B_TeachMagicCircle.d
-STORY\B_Story\B_TeachPlayerTalentAlchemy.d
-STORY\B_Story\B_TeachPlayerTalentForeignLanguage.d
-STORY\B_Story\B_TeachPlayerTalentWispDetector.d
-STORY\B_Story\B_TeachPlayerTalentRunes.d
-STORY\B_Story\B_TeachPlayerTalentSmith.d
-STORY\B_Story\B_TeachPlayerTalentTakeAnimalTrophy.d
 STORY\B_Story\B_TeachThiefTalent.d
 STORY\B_Story\B_InitGuildAttitudes.d
 STORY\B_Story\B_NPC_IsAliveCheck.d

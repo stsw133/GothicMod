@@ -13,7 +13,7 @@ INSTANCE DIA_Oric_EXIT   (C_INFO)
 
 FUNC INT DIA_Oric_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -101,7 +101,7 @@ INSTANCE DIA_Oric_ScoutMine   (C_INFO)
 FUNC INT DIA_Oric_ScoutMine_Condition()
 {
 	if 	(MIS_ScoutMine == LOG_RUNNING)
-	&&	(Kapitel < 3)
+	&&	(Kapitel < 9)
 	&& 	(Npc_KnowsInfo(other, DIA_Oric_HALLO))
 	&&  (Fajeth_Ore == FALSE)
 	&&  (Marcos_Ore == FALSE)
@@ -133,7 +133,7 @@ instance DIA_Oric_Perm		(C_INFO)
 func int DIA_Oric_Perm_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Oric_HALLO))
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -182,7 +182,7 @@ INSTANCE DIA_Oric_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Oric_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -217,7 +217,7 @@ INSTANCE DIA_Oric_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Oric_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -243,7 +243,7 @@ INSTANCE DIA_Oric_IAmBack   (C_INFO)
 
 FUNC INT DIA_Oric_IAmBack_Condition()
 {
-	if 	(Kapitel >= 4)
+	if 	(Kapitel >= 10)
 		&& (Npc_KnowsInfo(other, DIA_Oric_HALLO))
 		{
 				return TRUE;
@@ -283,7 +283,7 @@ INSTANCE DIA_Oric_CanHelp   (C_INFO)
 
 FUNC INT DIA_Oric_CanHelp_Condition()
 {
-	if 	(Kapitel >= 4)
+	if 	(Kapitel >= 10)
 	&&	(Npc_KnowsInfo (other,DIA_Oric_IAmBack))
 	&& 	(MIS_KillHoshPak == FALSE)
 	{
@@ -541,7 +541,7 @@ INSTANCE DIA_Oric_AnyNews   (C_INFO)
 
 FUNC INT DIA_Oric_AnyNews_Condition()
 {
-	if 	(Kapitel >= 4)
+	if 	(Kapitel >= 10)
 		&& (Npc_KnowsInfo(other, DIA_Oric_IAmBack))
 	{
 		return TRUE;
@@ -586,7 +586,7 @@ instance DIA_Oric_DragonPlettBericht		(C_INFO)
 
 func int DIA_Oric_DragonPlettBericht_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (Npc_KnowsInfo(other, DIA_Oric_IAmBack))
 	&& (MIS_AllDragonsDead == FALSE)
 	{
@@ -680,7 +680,7 @@ INSTANCE DIA_Oric_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Oric_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -714,7 +714,7 @@ INSTANCE DIA_Oric_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Oric_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

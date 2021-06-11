@@ -13,7 +13,7 @@ INSTANCE DIA_Wolf_EXIT   (C_INFO)
 
 FUNC INT DIA_Wolf_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -65,7 +65,7 @@ instance DIA_Wolf_WannaJoin		(C_INFO)
 func int DIA_Wolf_WannaJoin_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Wolf_Hallo))
-	&& (Kapitel < 2)
+	&& (Kapitel < 8)
 	{
 		return TRUE;
 	};
@@ -301,7 +301,7 @@ INSTANCE DIA_Wolf_AboutCrawler(C_INFO)
 };                       
 FUNC INT DIA_Wolf_AboutCrawler_Condition()
 {
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	&& (Wolf_ProduceCrawlerArmor == TRUE)
 	{
 		return TRUE;
@@ -318,45 +318,11 @@ FUNC VOID DIA_Wolf_AboutCrawler_Info()
 	AI_Output (self, other, "DIA_Wolf_AboutCrawler_08_06"); //Nie ma o czym mówiæ. Nie wezmê pieniêdzy od starego druha.
 	
 	MIS_Wolf_BringCrawlerPlates = LOG_RUNNING;
+	self.aivar[AIV_CanTeach] = true;
 	
 	Log_CreateTopic (TOPIC_Wolf_BringCrawlerPlates,LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Wolf_BringCrawlerPlates,LOG_RUNNING);
 	B_LogEntry (TOPIC_Wolf_BringCrawlerPlates,"Wilk mo¿e zrobiæ dla mnie zbrojê z 10 pancerzy pe³zacza.");
-};
-
-
-// ************************************************************
-// 	  				  TeachCrawlerPlates
-// ************************************************************
-
-INSTANCE DIA_Wolf_TeachCrawlerPlates(C_INFO)
-{
-	npc			= SLD_811_Wolf;
-	nr			= 2;
-	condition	= DIA_Wolf_TeachCrawlerPlates_Condition;
-	information	= DIA_Wolf_TeachCrawlerPlates_Info;
-	permanent	= TRUE;
-	description = B_BuildLearnString ("Naucz mnie zdzierania p³yt pancerza z pe³zaczy!", B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, TROPHY_CrawlerPlate));
-};                       
-FUNC INT DIA_Wolf_TeachCrawlerPlates_Condition()
-{
-	if (Npc_KnowsInfo (other, DIA_Wolf_AboutCrawler))
-	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_CrawlerPlate] == FALSE)
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Wolf_TeachCrawlerPlates_Info()
-{	
-	AI_Output (other, self, "DIA_Wolf_TeachCrawlerPlates_15_00"); //Naucz mnie zdejmowaæ pancerze z martwych pe³zaczy.
-	
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_CrawlerPlate))
-	{
-		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_01"); //To proste. Pancerze przylegaj¹ do cia³a tylko na krawêdziach. WeŸ po prostu ostry nó¿ i wytnij je wzd³u¿ brzegów.
-		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_02"); //Zapamiêta³eœ?
-		AI_Output (other, self, "DIA_Wolf_TeachCrawlerPlates_15_03"); //To nic trudnego.
-		AI_Output (self, other, "DIA_Wolf_TeachCrawlerPlates_08_04"); //W rzeczy samej.
-	};
 };
 
 // ************************************************************
@@ -474,7 +440,7 @@ INSTANCE DIA_Wolf_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Wolf_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -502,7 +468,7 @@ func int DIA_Wolf_BENGAR_Condition ()
 {
 	 if (Npc_KnowsInfo(other, DIA_Wolf_HALLO))
 	 && (MIS_BengarsHelpingSLD == LOG_RUNNING)
-	 && (Kapitel >= 3)
+	 && (Kapitel >= 9)
 	 && (Wolf_IsOnBoard	 != LOG_SUCCESS)
 	  		{
 				return TRUE;
@@ -590,7 +556,7 @@ instance DIA_Wolf_PERMKAP3		(C_INFO)
 
 func int DIA_Wolf_PERMKAP3_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_GetDistToWP(self,"FARM3")<3000) 
 	&& (MIS_BengarsHelpingSLD == LOG_SUCCESS)
 	&& (Wolf_IsOnBoard	 != LOG_SUCCESS)
@@ -642,7 +608,7 @@ INSTANCE DIA_Wolf_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Wolf_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -676,7 +642,7 @@ INSTANCE DIA_Wolf_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Wolf_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -895,7 +861,7 @@ INSTANCE DIA_Wolf_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Wolf_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

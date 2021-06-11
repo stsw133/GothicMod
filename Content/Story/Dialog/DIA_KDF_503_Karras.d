@@ -12,7 +12,7 @@ INSTANCE DIA_Karras_KAP1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP1_EXIT_Condition()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -214,108 +214,7 @@ func void DIA_Karras_JOB_Info ()
 	Log_CreateTopic (Topic_KlosterTrader,LOG_NOTE);
 	B_LogEntry (Topic_KlosterTrader,"Mistrz Karras mo¿e mnie zaopatrzyæ w magiczne zwoje. Najpierw jednak muszê zostaæ Magiem Ognia.");
 };
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Karras_TEACH		(C_INFO)
-{
-	npc			 = 	KDF_503_Karras;
-	nr 			 =  10;
-	condition	 = 	DIA_Karras_TEACH_Condition;
-	information	 = 	DIA_Karras_TEACH_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Nauczaj mnie (tworzenie run)";
-};
 
-func int DIA_Karras_TEACH_Condition ()
-{	
-	if (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Karras_TEACH_Info ()
-{
-	var int abletolearn;
-	abletolearn = 0;
-	AI_Output (other, self, "DIA_Karras_TEACH_15_00"); //Zostañ moim nauczycielem.
-	
-		Info_ClearChoices   (DIA_Karras_TEACH);
-		
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
-		&& (PLAYER_TALENT_RUNES [SPL_SummonGoblinSkeleton] == FALSE) 
-		{
-			Info_AddChoice 		(DIA_Karras_TEACH,B_BuildLearnString (NAME_SPL_SummonGoblinSkeleton, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonGoblinSkeleton)),DIA_Karras_TEACH_SUMGOBL);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-		&& (PLAYER_TALENT_RUNES [SPL_SummonWolf] == FALSE) 
-		{
-			Info_AddChoice	    (DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonWolf, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonWolf)) ,DIA_Karras_TEACHSummonWolf);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
-		&& (PLAYER_TALENT_RUNES [SPL_SummonSkeleton] == FALSE) 
-		{
-			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonSkeleton, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonSkeleton)) ,DIA_Karras_TEACH_SummonSkeleton);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4)
-		&& (PLAYER_TALENT_RUNES [SPL_SummonGolem] == FALSE) 
-		{
-			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonGolem, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonGolem)) ,DIA_Karras_TEACH_SummonGolem);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5)
-		&& (PLAYER_TALENT_RUNES [SPL_SummonDemon] == FALSE)
-		{
-			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_SummonDemon, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_SummonDemon)) ,DIA_Karras_TEACH_SummonDemon);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 6)
-		&& (PLAYER_TALENT_RUNES [SPL_ArmyOfDarkness] == FALSE)
-		{
-			Info_AddChoice	(DIA_Karras_TEACH, B_BuildLearnString (NAME_SPL_ArmyOfDarkness, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_ArmyOfDarkness)) ,DIA_Karras_TEACH_ArmyOfDarkness);
-			abletolearn = (abletolearn +1);
-		};
-		if 	(abletolearn < 1)
-		{
-			AI_Output (self, other, "DIA_Karras_TEACH_10_01"); //W tym momencie nie ma nic, czego móg³byœ siê ode mnie nauczyæ.
-		}
-		else
-		{
-			Info_AddChoice 		(DIA_Karras_TEACH,DIALOG_BACK,DIA_Karras_TEACH_BACK);
-		};
-
-};
-FUNC VOID DIA_Karras_TEACH_BACK()
-{
-	Info_ClearChoices   (DIA_Karras_TEACH);
-};
-FUNC VOID DIA_Karras_TEACH_SUMGOBL()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_SummonGoblinSkeleton);	
-};
-FUNC VOID DIA_Karras_TEACHSummonWolf()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_SummonWolf);	
-};
-FUNC VOID DIA_Karras_TEACH_SummonSkeleton()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_SummonSkeleton);	
-};
-FUNC VOID DIA_Karras_TEACH_SummonGolem()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_SummonGolem);	
-};
-FUNC VOID DIA_Karras_TEACH_SummonDemon()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_SummonDemon);	
-};
-FUNC VOID DIA_Karras_TEACH_ArmyOfDarkness()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_ArmyOfDarkness);	
-};
 ///////////////////////////////////////////////////////////////////////
 //	Info TEACH
 ///////////////////////////////////////////////////////////////////////
@@ -375,7 +274,7 @@ func void DIA_Karras_CIRCLE5_Info ()
 {
 	AI_Output (other, self, "DIA_Karras_CIRCLE5_15_00"); //Chcê zg³êbiaæ pi¹ty kr¹g magii.
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		if B_TeachMagicCircle (self,other, 5)
 		{
@@ -411,7 +310,7 @@ INSTANCE DIA_Karras_KAP2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -441,7 +340,7 @@ INSTANCE DIA_Karras_KAP3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -467,7 +366,7 @@ instance DIA_Karras_ChasePedro		(C_INFO)
 func int DIA_Karras_ChasePedro_Condition ()
 {	
 	if (Npc_IsInState (self,ZS_Talk))
-	&& (KAPITEL == 3)
+	&& (Kapitel == 9)
 	&& (MIS_NOVIZENCHASE == LOG_RUNNING)
 	{
 		return TRUE;
@@ -529,7 +428,7 @@ instance DIA_Karras_NeedInfo		(C_INFO)
 func int DIA_Karras_NeedInfo_Condition ()
 {	
 	if (Npc_KnowsInfo  (other ,DIA_Karras_ChasePedro))
-	&& (KAPITEL == 3)
+	&& (Kapitel == 9)
 	&& (hero.Guild != GIL_KDF)
 	&& (MIS_NOVIZENCHASE == LOG_RUNNING)
 	&& (Npc_IsInState (self,ZS_Talk))
@@ -564,7 +463,7 @@ instance DIA_Karras_InnosEyeRetrieved		(C_INFO)
 
 func int DIA_Karras_InnosEyeRetrieved_Condition ()
 {	
-	if	(KAPITEL == 3)
+	if	(Kapitel == 9)
 	&& 	(MIS_NOVIZENCHASE == LOG_SUCCESS)
 	{
 		return TRUE;
@@ -597,7 +496,7 @@ INSTANCE DIA_Karras_KAP3_Perm   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP3_Perm_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_KnowsInfo(other, DIA_Karras_JOB))
 		{
 			return TRUE;
@@ -922,7 +821,7 @@ INSTANCE DIA_Karras_KAP4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -953,7 +852,7 @@ INSTANCE DIA_Karras_KAP5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Karras_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

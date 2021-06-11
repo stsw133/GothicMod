@@ -12,7 +12,7 @@ func void ZS_MM_Flee()
 	
 	Npc_SendPassivePerc (self, PERC_ASSESSWARN, other, self);
 	
-	B_MM_DeSynchronize();
+	B_DeSynchronize();
 };
 
 ///******************************************************************************************

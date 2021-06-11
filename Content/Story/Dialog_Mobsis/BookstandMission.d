@@ -3,6 +3,9 @@
 ///******************************************************************************************
 
 var int SmithWeapon_BestSwords;
+var int MakeRune_FireBolt;
+var int MakeRune_MasterOfDisaster;
+var int MakeRune_SecretTeleport;
 
 ///******************************************************************************************
 func void Use_Bookstand_01_S1()
@@ -67,10 +70,9 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
 					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					
 					Doc_SetFont 	(nDocID, -1, FONT_Book);
-					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "...Mam nadziejê, ¿e Bariera ochroni rudê przed zakusami Beliara. Król w swej naiwnoœci wierzy, ¿e stworzyliœmy j¹, ¿eby nie dopuœciæ do ucieczek. Niechaj nadal tak s¹dzi, jeœli dziêki temu uda siê nam osi¹gn¹æ nasze odleglejsze cele. Mo¿emy tylko marzyæ o czasie na przygotowanie siê do nadchodz¹cej walki. To na ni¹ skierujê ca³¹ sw¹ moc, gdy tylko Bariera dooko³a Górniczej Doliny zostanie ukoñczona.");
 					Doc_PrintLines	(nDocID,  0, "");
@@ -78,7 +80,7 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 		if (hero.guild == GIL_KDF)
 		{
 			PlayerGetsAmulettOfDeath = true;
-			PLAYER_TALENT_RUNES[SPL_MasterOfDisaster] = true; 
+			MakeRune_MasterOfDisaster = true;
 			B_LogEntry (TOPIC_TalentRunes, "Sk³adniki runy 'œwiêty pocisk': 1 porcja wody œwiêconej, nie potrzeba zwoju z zaklêciem");
 			
 					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
@@ -91,9 +93,7 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 		else if (hero.guild == GIL_PAL)
 		{
 			PAL_KnowsAbout_FINAL_BLESSING = true;
-			PLAYER_TALENT_RUNES[SPL_PalTeleportSecret] = true;
-			PrintScreen	(PRINT_LearnPalTeleportSecret, -1, -1, FONT_Screen, 2);
-			
+			MakeRune_SecretTeleport = true;
 			Log_CreateTopic (TOPIC_TalentRunes, LOG_NOTE);
 			B_LogEntry (TOPIC_TalentRunes, "Tworzenie run wymaga u¿ycia odpowiednich sk³adników. Ca³y proces wymaga jeszcze odpowiedniego sto³u i pustego kamienia runicznego.");
 			B_LogEntry (TOPIC_TalentRunes, "Sk³adniki runy 'Tajny teleport': 1 porcja ³ez Innosa");
@@ -108,12 +108,7 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 		}
 		else
 		{
-//			PLAYER_TALENT_SMITH[WEAPON_1H_Special_04] = true;
-//			PLAYER_TALENT_SMITH[WEAPON_2H_Special_04] = true;
 			SmithWeapon_BestSwords = true;
-//			PrintScreen (PRINT_LearnSmith, -1, -1, FONT_Screen, 2);
-
-//			Npc_SetTalentSkill (self, NPC_TALENT_SMITH, 1);
 			Log_CreateTopic (TOPIC_TalentSmith, LOG_NOTE);
 			B_LogEntry (TOPIC_TalentSmith, "Jeœli zechcê wykuæ jak¹œ broñ, to po pierwsze bêdzie mi potrzebny kawa³ surowej stali, który trzeba rozgrzaæ do czerwonoœci w kuŸni, a nastêpnie ukszta³towaæ na kowadle. Nadanie broni jakichœ specjalnych charakterystyk bêdzie wymaga³o u¿ycia dodatkowych sk³adników.");
 			B_LogEntry (TOPIC_TalentSmith, "Dodanie na przyk³ad czterech bry³ek rudy i piêciu porcji smoczej krwi umo¿liwi mi wykucie magicznego ostrza na smoki, a");

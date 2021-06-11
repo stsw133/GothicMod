@@ -281,7 +281,7 @@ func void ZS_Attack_End()
 		};
 	};
 	
-	if (other.aivar[AIV_KilledByPlayer])
+	if (other.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
 	&& (Wld_GetGuildAttitude(self.guild, hero.guild) != ATT_HOSTILE)
 	{
 		B_SetAttitude(self, ATT_FRIENDLY);

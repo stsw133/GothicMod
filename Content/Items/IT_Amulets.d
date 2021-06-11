@@ -9,8 +9,8 @@ prototype ItemPR_Amulet (C_Item)
 	flags 					=	ITEM_AMULET;
 	material 				=	MAT_METAL;
 	
-	on_equip				=	Attributes_CHECK;
-	on_unequip				=	Attributes_CHECK;
+	on_equip				=	Npc_AttributesRefresh;
+	on_unequip				=	Npc_AttributesRefresh;
 	
 	TEXT[5]					=	NAME_Value;
 	INV_ZBIAS				=	INVCAM_ENTF_AMULETTE_STANDARD;
@@ -253,8 +253,8 @@ instance ItAm_Power_01 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Power_01;
 	on_unequip		=	UnEquip_ItAm_Power_01;
 };
-func void Equip_ItAm_Power_01()		{ self.aivar[AIV_Power] += 4; POWER_CHECK(self); };
-func void UnEquip_ItAm_Power_01()	{ self.aivar[AIV_Power] -= 4; POWER_CHECK(self); };
+func void Equip_ItAm_Power_01()		{ Npc_AddPowerPoints(self, 4); };
+func void UnEquip_ItAm_Power_01()	{ Npc_AddPowerPoints(self, -4); };
 
 instance ItAm_Power_02 (ItemPR_Amulet)
 {
@@ -264,8 +264,8 @@ instance ItAm_Power_02 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Power_02;
 	on_unequip		=	UnEquip_ItAm_Power_02;
 };
-func void Equip_ItAm_Power_02()		{ self.aivar[AIV_Power] += 8; POWER_CHECK(self); };
-func void UnEquip_ItAm_Power_02()	{ self.aivar[AIV_Power] -= 8; POWER_CHECK(self); };
+func void Equip_ItAm_Power_02()		{ Npc_AddPowerPoints(self, 8); };
+func void UnEquip_ItAm_Power_02()	{ Npc_AddPowerPoints(self, -8); };
 
 instance ItAm_Power_03 (ItemPR_Amulet)
 {
@@ -275,8 +275,8 @@ instance ItAm_Power_03 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Power_03;
 	on_unequip		=	UnEquip_ItAm_Power_03;
 };
-func void Equip_ItAm_Power_03()		{ self.aivar[AIV_Power] += 12; POWER_CHECK(self); };
-func void UnEquip_ItAm_Power_03()	{ self.aivar[AIV_Power] -= 12; POWER_CHECK(self); };
+func void Equip_ItAm_Power_03()		{ Npc_AddPowerPoints(self, 12); };
+func void UnEquip_ItAm_Power_03()	{ Npc_AddPowerPoints(self, -12); };
 
 instance ItAm_Power_04 (ItemPR_Amulet)
 {
@@ -286,8 +286,8 @@ instance ItAm_Power_04 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Power_04;
 	on_unequip		=	UnEquip_ItAm_Power_04;
 };
-func void Equip_ItAm_Power_04()		{ self.aivar[AIV_Power] += 16; POWER_CHECK(self); };
-func void UnEquip_ItAm_Power_04()	{ self.aivar[AIV_Power] -= 16; POWER_CHECK(self); };
+func void Equip_ItAm_Power_04()		{ Npc_AddPowerPoints(self, 16); };
+func void UnEquip_ItAm_Power_04()	{ Npc_AddPowerPoints(self, -16); };
 
 instance ItAm_Power_05 (ItemPR_Amulet)
 {
@@ -297,8 +297,8 @@ instance ItAm_Power_05 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Power_05;
 	on_unequip		=	UnEquip_ItAm_Power_05;
 };
-func void Equip_ItAm_Power_05()		{ self.aivar[AIV_Power] += 20; POWER_CHECK(self); };
-func void UnEquip_ItAm_Power_05()	{ self.aivar[AIV_Power] -= 20; POWER_CHECK(self); };
+func void Equip_ItAm_Power_05()		{ Npc_AddPowerPoints(self, 20); };
+func void UnEquip_ItAm_Power_05()	{ Npc_AddPowerPoints(self, -20); };
 
 ///******************************************************************************************
 func void SetItAmAttributes_Mana (var C_ITEM itm, var int kap)
@@ -402,8 +402,8 @@ instance ItAm_Energy_01 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Energy_01;
 	on_unequip		=	UnEquip_ItAm_Energy_01;
 };
-func void Equip_ItAm_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 8; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItAm_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 8; ENE_MAX_CHECK(self); }; };
+func void Equip_ItAm_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 8; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItAm_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 8; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItAm_Energy_02 (ItemPR_Amulet)
 {
@@ -413,8 +413,8 @@ instance ItAm_Energy_02 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Energy_02;
 	on_unequip		=	UnEquip_ItAm_Energy_02;
 };
-func void Equip_ItAm_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 16; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItAm_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 16; ENE_MAX_CHECK(self); }; };
+func void Equip_ItAm_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 16; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItAm_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 16; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItAm_Energy_03 (ItemPR_Amulet)
 {
@@ -424,8 +424,8 @@ instance ItAm_Energy_03 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Energy_03;
 	on_unequip		=	UnEquip_ItAm_Energy_03;
 };
-func void Equip_ItAm_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 24; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItAm_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 24; ENE_MAX_CHECK(self); }; };
+func void Equip_ItAm_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 24; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItAm_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 24; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItAm_Energy_04 (ItemPR_Amulet)
 {
@@ -435,8 +435,8 @@ instance ItAm_Energy_04 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Energy_04;
 	on_unequip		=	UnEquip_ItAm_Energy_04;
 };
-func void Equip_ItAm_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 32; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItAm_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 32; ENE_MAX_CHECK(self); }; };
+func void Equip_ItAm_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 32; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItAm_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 32; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItAm_Energy_05 (ItemPR_Amulet)
 {
@@ -446,8 +446,8 @@ instance ItAm_Energy_05 (ItemPR_Amulet)
 	on_equip		=	Equip_ItAm_Energy_05;
 	on_unequip		=	UnEquip_ItAm_Energy_05;
 };
-func void Equip_ItAm_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 40; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItAm_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 40; ENE_MAX_CHECK(self); }; };
+func void Equip_ItAm_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 40; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItAm_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 40; Npc_EnergyMaxRefresh(self); }; };
 
 ///******************************************************************************************
 func void SetItAmAttributes_TrueDamage (var C_ITEM itm, var int kap)

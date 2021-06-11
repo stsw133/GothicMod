@@ -200,7 +200,7 @@ func int DIA_Pepe_Bullco_Condition ()
 {
 	if (MIS_Pepe_KillWolves == LOG_SUCCESS)
 	&& (!Npc_IsDead(Bullco))
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -277,22 +277,22 @@ func void DIA_Pepe_PERM_Info ()
 {
 	AI_Output (other, self, "DIA_Pepe_PERM_15_00"); //Co tam u ciebie? Jak owce?
 
-	if (kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		AI_Output (self, other, "DIA_Pepe_PERM_03_01"); //Wszystko w porz¹dku i ze mn¹, i z owcami. Przynajmniej z tymi, które pozosta³y przy ¿yciu.
 	};
 	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self, other, "DIA_Pepe_PERM_03_02"); //Na razie dobrze. Ale obawiam siê, ¿e pewnego dnia wilki wróc¹ i bêdzie ich jeszcze wiêcej.
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self, other, "DIA_Pepe_PERM_03_03"); //Dosz³y mnie dziwne wieœci. Podobno jakieœ wrogo nastawione typki zajê³y farmê Sekoba. Nie ruszaj¹ siê stamt¹d na krok.
 	}
 	
-	if (kapitel >= 4)
+	if (Kapitel >= 10)
 	{
 		AI_Output (self, other, "DIA_Pepe_PERM_03_04"); //S³ysza³em, ¿e jacyœ ludzie zajêli farmê Lobarta. Mo¿e ktoœ powinien mu pomóc.
 	};

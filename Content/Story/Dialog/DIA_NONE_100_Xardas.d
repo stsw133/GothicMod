@@ -15,7 +15,7 @@ INSTANCE DIA_Xardas_FirstEXIT(C_INFO)
 FUNC INT DIA_Xardas_FirstEXIT_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Xardas_TODO))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -29,7 +29,7 @@ FUNC VOID DIA_Xardas_FirstEXIT_Info()
 	
 	AI_StopProcessInfos(self);
 	
-	B_ChangeChapter (1, NEWWORLD_ZEN);
+	B_ChangeChapter (7, NEWWORLD_ZEN);
 	
 	Npc_ExchangeRoutine (self, "START");
 };
@@ -50,7 +50,7 @@ INSTANCE DIA_Xardas_EXIT(C_INFO)
 FUNC INT DIA_Xardas_EXIT_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Xardas_FirstEXIT))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -143,7 +143,7 @@ func int DIA_Xardas_AWAY_Condition ()
 {	
 	if (!Npc_KnowsInfo (other, DIA_Xardas_TODO))
 	&& (!Npc_KnowsInfo (other, DIA_Xardas_FirstEXIT))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -173,7 +173,7 @@ instance DIA_Xardas_TODO (C_INFO) 		//E1
 
 func int DIA_Xardas_TODO_Condition ()
 {	
-	if (Kapitel < 3)	
+	if (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -357,7 +357,7 @@ instance DIA_Xardas_WEAPON (C_INFO)		//E1
 
 func int DIA_Xardas_WEAPON_Condition ()
 {	
-	if (Kapitel < 3)	
+	if (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -387,7 +387,7 @@ instance DIA_Xardas_ARTEFAKT (C_INFO)	//E2 nach TODO
 func int DIA_Xardas_ARTEFAKT_Condition ()
 {	
 	if (Npc_KnowsInfo (other,DIA_Xardas_TODO))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -416,7 +416,7 @@ instance DIA_Xardas_PALADIN	(C_INFO) //E2 nach TODO
 func int DIA_Xardas_PALADIN_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Xardas_TODO))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -446,7 +446,7 @@ func int DIA_Xardas_Khorinis_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Xardas_TODO))
 	&& (Lothar.aivar[AIV_TalkedToPlayer] == FALSE)
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -474,7 +474,7 @@ instance DIA_Xardas_WhereEx (C_INFO) //BACK AGAIN
 func int DIA_Xardas_WhereEx_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Xardas_FirstEXIT))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -504,7 +504,7 @@ func int DIA_Xardas_EQUIPMENT_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Xardas_WEAPON))
 	&& (Npc_KnowsInfo (other, DIA_Xardas_FirstEXIT))
-	&& (Kapitel < 3)	
+	&& (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -533,7 +533,7 @@ func int DIA_Xardas_ABOUTLESTER_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lester_SEND_XARDAS)
 	&& (Npc_GetDistToWP  (Lester,"NW_XARDAS_TOWER_IN1_31") <= 500)) 
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -607,7 +607,7 @@ instance DIA_Xardas_Weiter		(C_INFO)
 func int DIA_Xardas_Weiter_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Xardas_FirstEXIT))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -672,7 +672,7 @@ INSTANCE DIA_Xardas_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Xardas_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -697,7 +697,7 @@ instance DIA_Xardas_BACKFROMOW		(C_INFO)
 
 func int DIA_Xardas_BACKFROMOW_Condition ()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -728,7 +728,7 @@ instance DIA_Xardas_DMTSINDDA		(C_INFO)
 
 func int DIA_Xardas_DMTSINDDA_Condition ()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 		&& (Npc_KnowsInfo(other, DIA_Xardas_BACKFROMOW))
 	{
 		return TRUE;
@@ -807,7 +807,7 @@ instance DIA_Xardas_INNOSEYEBROKEN		(C_INFO)
 
 func int DIA_Xardas_INNOSEYEBROKEN_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& (Npc_KnowsInfo(other, DIA_Xardas_DMTSINDDA))
 		&& ((Npc_HasItems (other,ItAm_InnosEye_Broken)) || 	(MIS_SCKnowsInnosEyeIsBroken  == TRUE))	
 	{
@@ -859,7 +859,7 @@ func int DIA_Xardas_RITUALREQUEST_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_RUNNING)
 		&& (Npc_KnowsInfo(other, DIA_Xardas_INNOSEYEBROKEN))
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};	
@@ -995,7 +995,7 @@ instance DIA_Xardas_BINGESPANNT		(C_INFO)
 func int DIA_Xardas_BINGESPANNT_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_RUNNING)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		&& 	(Xardas_GoesToRitualInnosEye == TRUE)
 		{
 			return TRUE;
@@ -1025,7 +1025,7 @@ func int DIA_Xardas_PYROWILLNICHT_Condition ()
 {
 	if (Pyrokar_DeniesInnosEyeRitual == TRUE)
 		&& (Npc_KnowsInfo(other, DIA_Xardas_RITUALREQUEST))
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 				return TRUE;
 		};
@@ -1073,7 +1073,7 @@ instance DIA_Xardas_RitualInnosEyeRepairImportant		(C_INFO)
 func int DIA_Xardas_RitualInnosEyeRepairImportant_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_SUCCESS)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};	
@@ -1117,7 +1117,7 @@ instance DIA_Xardas_WASNUN		(C_INFO)
 func int DIA_Xardas_WASNUN_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_SUCCESS)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};	
@@ -1163,7 +1163,7 @@ INSTANCE DIA_Xardas_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Xardas_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1189,7 +1189,7 @@ instance DIA_Xardas_PERM4		(C_INFO)
 
 func int DIA_Xardas_PERM4_Condition ()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1227,7 +1227,7 @@ INSTANCE DIA_Xardas_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Xardas_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1259,7 +1259,7 @@ INSTANCE DIA_Xardas_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Xardas_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

@@ -13,7 +13,7 @@ INSTANCE DIA_Kati_EXIT   (C_INFO)
 
 FUNC INT DIA_Kati_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -301,7 +301,7 @@ func int DIA_Kati_PERMKAP1_Condition ()
 		&& (Npc_KnowsInfo(other, DIA_KATI_ANDEREHOEFE))
 		&& (Npc_KnowsInfo(other, DIA_KATI_HIERWEG))
 		&& (Npc_KnowsInfo(other, DIA_KATI_PASS))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		)
 			{
 					return TRUE;
@@ -338,7 +338,7 @@ INSTANCE DIA_Kati_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Kati_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -364,7 +364,7 @@ instance DIA_Kati_PERM		(C_INFO)
 
 func int DIA_Kati_PERM_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_KnowsInfo(other, DIA_Kati_HALLO))
 		{
 				return TRUE;
@@ -403,7 +403,7 @@ INSTANCE DIA_Kati_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Kati_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -437,7 +437,7 @@ INSTANCE DIA_Kati_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Kati_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -472,7 +472,7 @@ INSTANCE DIA_Kati_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Kati_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

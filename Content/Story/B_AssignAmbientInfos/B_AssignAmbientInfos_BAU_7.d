@@ -34,7 +34,7 @@ INSTANCE DIA_BAU_7_JOIN(C_INFO)
 
 FUNC INT DIA_BAU_7_JOIN_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -113,27 +113,27 @@ FUNC VOID DIA_BAU_7_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_BAU_7_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_BAU_7_STANDARD_07_01"); //Og³osiliœmy niepodleg³oœæ - nie p³acimy ju¿ podatków na rzecz miasta. Król nic nigdy dla nas nie zrobi³ - mieliœmy tego doœæ!
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_BAU_7_STANDARD_07_02"); //W tej chwili niewiele siê tu dzieje.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_BAU_7_STANDARD_07_03"); //Ostatnio ludzie zaczêli opowiadaæ coœ o smokach. A król robi wszystko, ¿eby tylko wycisn¹æ z poddanych jak najwiêcej pieniêdzy.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_BAU_7_STANDARD_07_04"); //Uwa¿aj na siebie, wzd³u¿ prze³êczy pa³êta siê wiele podejrzanych typków i dzikich bestii.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_BAU_7_STANDARD_07_05"); //Teraz, po œmierci smoków, paladyni zechcieli ³askawie opuœciæ mury miasta. Czas najwy¿szy, by na ulicach znów zapanowa³ porz¹dek.
 	};

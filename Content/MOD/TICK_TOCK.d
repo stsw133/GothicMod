@@ -92,7 +92,7 @@ func void TT_200()
 	{
 		sattribute[ATR_ENERGY] -= 4;
 	};
-	ENE_CHECK(); /// sprawdza energiê
+	Npc_EnergyRefresh(); /// sprawdza energiê
 	
 	ShowBarText();
 };

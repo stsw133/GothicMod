@@ -13,7 +13,7 @@ INSTANCE DIA_Talamon_KAP1_EXIT   (C_INFO)
 
 FUNC INT DIA_Talamon_KAP1_EXIT_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -154,7 +154,7 @@ INSTANCE DIA_Talamon_KAP2_EXIT   (C_INFO)
 
 FUNC INT DIA_Talamon_KAP2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -186,7 +186,7 @@ INSTANCE DIA_Talamon_KAP3_EXIT   (C_INFO)
 
 FUNC INT DIA_Talamon_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -218,7 +218,7 @@ INSTANCE DIA_Talamon_KAP4_EXIT   (C_INFO)
 
 FUNC INT DIA_Talamon_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -357,7 +357,7 @@ INSTANCE DIA_Talamon_KAP5_EXIT   (C_INFO)
 
 FUNC INT DIA_Talamon_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

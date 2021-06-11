@@ -38,7 +38,7 @@ INSTANCE DIA_JAN_Hello (C_INFO)
 
 FUNC INT DIA_Jan_Hello_Condition()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (Npc_IsInState (self,ZS_TALK))
 	&& (MIS_OCGateOpen == FALSE)
 	{
@@ -70,7 +70,7 @@ FUNC INT DIA_Jan_Dragons_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_JAN_Hello))
 	&& (MIS_JanBecomesSmith == FALSE)
-	&& (Kapitel == 4)
+	&& (Kapitel == 10)
 	&& (MIS_OCGateOpen == FALSE)
 	{
 		return 1;
@@ -149,7 +149,7 @@ INSTANCE DIA_JAN_Home (C_INFO)
 FUNC INT DIA_Jan_Home_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_JAN_Hello))
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	&& (MIS_OCGateOpen == FALSE)
 	{
 		return 1;
@@ -180,7 +180,7 @@ INSTANCE DIA_JAN_OldCamp (C_INFO)
 FUNC INT DIA_Jan_OldCamp_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_JAN_Hello))
-	&& (Kapitel == 4)
+	&& (Kapitel == 10)
 	&& (MIS_OCGateOpen == FALSE)
 	{
 		return 1;
@@ -308,104 +308,8 @@ FUNC VOID DIA_Jan_SellWeapons_Info()
 		};
 
 		AI_Output (self ,other,"DIA_Jan_SellWeapons_10_03"); //Ale mogê ci pokazaæ, jak samemu wykuæ broñ.
-		
 		Jan_TeachPlayer = TRUE;
-};
-
-//*******************************************
-//	Zeig mir wie man schmiedet.
-//*******************************************
-
-INSTANCE Jan_Training_Talente (C_INFO)
-{
-	npc			= DJG_714_Jan;
-	nr			= 4;
-	condition	= Jan_Training_Talente_Condition;
-	information	= Jan_Training_Talente_Info;
-	permanent	= TRUE;
-	description	= "Naucz mnie kowalstwa.";
-};                       
-
-FUNC INT Jan_Training_Talente_Condition()
-{
-	if (Jan_TeachPlayer == TRUE)
-	&& (Npc_KnowsInfo (other ,DIA_JAN_JanIsSmith))
-	&& (MIS_OCGateOpen == FALSE)
-	{
-		return 1;
-	};	
-};
- 
-FUNC VOID Jan_Training_Talente_Info()
-{		
-	AI_Output (other,self ,"DIA_Jan_TeachPlayer_15_00"); //Naucz mnie kowalstwa.
-	AI_Output (self,other ,"DIA_Jan_TeachPlayer_10_01"); //Co konkretnie planujesz zrobiæ?
-	
-	Info_ClearChoices (Jan_Training_Talente);
-	
-	Info_AddChoice		(Jan_Training_Talente, Dialog_Back,Jan_Training_Smith_Back);
-	
-	if ( PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
-	{
-		Info_AddChoice		(Jan_Training_Talente, B_BuildLearnString("Nauka kowalstwa"	   , B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_Common))			,Jan_Training_Smith_Common);
-	};
-	if ( PLAYER_TALENT_SMITH[WEAPON_Common] == TRUE)
-	{	
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_01] == FALSE)
-		&& ((hero.guild == GIL_SLD)
-		|| (hero.guild == GIL_DJG))
-		{
-			Info_AddChoice		(Jan_Training_Talente, B_BuildLearnString(NAME_ItMw_1H_Special_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_01))		,Jan_Training_Smith_1hSpecial1);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_01] == FALSE)
-		&& ((hero.guild == GIL_SLD)
-		|| (hero.guild == GIL_DJG))
-		{
-			Info_AddChoice		(Jan_Training_Talente, B_BuildLearnString(NAME_ItMw_2H_Special_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_01))		,Jan_Training_Smith_2hSpecial1);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_02] == FALSE)
-		&& ((hero.guild == GIL_SLD)
-		|| (hero.guild == GIL_DJG))
-		{
-			Info_AddChoice		(Jan_Training_Talente, B_BuildLearnString(NAME_ItMw_1H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_02))		,Jan_Training_Smith_1hSpecial2);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_02] == FALSE)
-		&& ((hero.guild == GIL_SLD)
-		|| (hero.guild == GIL_DJG))
-		{
-			Info_AddChoice		(Jan_Training_Talente, B_BuildLearnString(NAME_ItMw_2H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_02))		,Jan_Training_Smith_2hSpecial2);
-		};
-	};
-};
-
-FUNC VOID Jan_Training_Smith_Back()
-{
-	Info_ClearChoices (Jan_Training_Talente);
-};
-
-FUNC VOID Jan_Training_Smith_Common ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_Common);
-};
-
-FUNC VOID Jan_Training_Smith_1hSpecial1 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_01);	
-};
-
-FUNC VOID Jan_Training_Smith_2hSpecial1 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_01);	
-};
-
-FUNC VOID Jan_Training_Smith_1hSpecial2 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_02);
-};
-
-FUNC VOID Jan_Training_Smith_2hSpecial2 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_02);
+		self.aivar[AIV_CanTeach] = true;
 };
 
 //*******************************************
@@ -646,7 +550,7 @@ instance DIA_Jan_DragonPlettBericht		(C_INFO)
 var int DIA_Jan_DragonPlettBericht_NoPerm;
 func int DIA_Jan_DragonPlettBericht_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (Npc_KnowsInfo(other, DIA_JAN_Dragons))
 	&& (DIA_Jan_DragonPlettBericht_NoPerm == FALSE)
 	&& (MIS_OCGateOpen == FALSE)

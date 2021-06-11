@@ -12,7 +12,7 @@ INSTANCE DIA_Marduk_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -152,141 +152,6 @@ func void DIA_Marduk_Pal_Info ()
 	AI_Output (self, other, "DIA_Marduk_Pal_05_02"); //...paladyni s³awi¹ przede wszystkim wielkie czyny naszego Pana.
 	AI_Output (self, other, "DIA_Marduk_Pal_05_03"); //My reprezentujemy naukê Innosa, podczas gdy paladyni s¹ jego wojownikami, ruszaj¹cymi do bitwy z jego imieniem na ustach i zwyciê¿aj¹cymi ku jego chwale.
 };
-///////////////////////////////////////////////////////////////////////
-//	Info BEFORETEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Marduk_BEFORETEACH		(C_INFO)
-{
-	npc			 = 	KDF_505_Marduk;
-	nr			 = 	3;
-	condition	 = 	DIA_Marduk_BEFORETEACH_Condition;
-	information	 = 	DIA_Marduk_BEFORETEACH_Info;
-	permanent	 = 	FALSE;
-	description	 = 	"Czy móg³byœ mnie czegoœ nauczyæ?";
-};
-func int DIA_Marduk_BEFORETEACH_Condition ()
-{	
-	if Npc_KnowsInfo (hero,DIA_Marduk_JOB)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Marduk_BEFORETEACH_Info ()
-{
-	AI_Output (other, self, "DIA_Marduk_BEFORETEACH_15_00"); //Czy móg³byœ mnie czegoœ nauczyæ?
-	AI_Output (self, other, "DIA_Marduk_BEFORETEACH_05_01"); //Jestem ekspertem w dziedzinie magii lodu i pioruna. Mogê ciê nauczyæ, jak okie³znaæ ich moc.
-	
-	if (other.guild != GIL_KDF)
-	{
-		AI_Output (self, other, "DIA_Marduk_BEFORETEACH_05_02"); //Jednak szkolê jedynie magów.
-	};
-	
-};
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Marduk_TEACH		(C_INFO)
-{
-	npc			 = 	KDF_505_Marduk;
-	nr			 =  10;
-	condition	 = 	DIA_Marduk_TEACH_Condition;
-	information	 = 	DIA_Marduk_TEACH_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Nauczaj mnie (tworzenie run)";
-};
-func int DIA_Marduk_TEACH_Condition ()
-{	
-	if Npc_KnowsInfo (hero,DIA_Marduk_BEFORETEACH)
-	&& (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Marduk_TEACH_Info ()
-{
-		var int abletolearn;
-		
-		abletolearn = 0;
-		
-		AI_Output (other, self, "DIA_Marduk_TEACH_15_00"); //Zostañ moim nauczycielem.
-
-		Info_ClearChoices 	(DIA_Marduk_TEACH);
-		Info_AddChoice 		(DIA_Marduk_TEACH,DIALOG_BACK,DIA_Marduk_TEACH_BACK);
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
-		&& (PLAYER_TALENT_RUNES [SPL_Zap] == FALSE) 
-		{
-			Info_AddChoice 		(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_Zap, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Zap)),DIA_Marduk_TEACH_ZAP);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-		&& (PLAYER_TALENT_RUNES [SPL_Icebolt] == FALSE)
-		{
-			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_Icebolt, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Icebolt)) ,DIA_Marduk_TEACH_Icebolt);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3) 
-		&& (PLAYER_TALENT_RUNES [SPL_IceCube] == FALSE) 
-		{
-			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_IceCube, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_IceCube)) ,DIA_Marduk_TEACH_IceCube);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
-		&& (PLAYER_TALENT_RUNES [SPL_ChargeZap] == FALSE) 
-		{
-			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_ChargeZap, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_ChargeZap)) ,DIA_Marduk_TEACH_ThunderBall);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4) 
-		&& (PLAYER_TALENT_RUNES [SPL_LightningFlash] == FALSE) 
-		{
-			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_LightningFlash, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_LightningFlash)) ,DIA_Marduk_TEACH_LightningFlash);
-			abletolearn = (abletolearn +1);
-		};
-		if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5)
-		&& (PLAYER_TALENT_RUNES [SPL_IceWave] == FALSE)
-		{
-			Info_AddChoice	(DIA_Marduk_TEACH, B_BuildLearnString (NAME_SPL_IceWave, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_IceWave)) ,DIA_Marduk_TEACH_IceWave);
-			abletolearn = (abletolearn +1);
-		};
-		if (abletolearn < 1)
-		{
-			AI_Output (self, other, "DIA_Marduk_TEACH_05_01"); //Teraz nie mogê ciê uczyæ.
-			Info_ClearChoices 	(DIA_Marduk_TEACH);
-		};
-	
-};
-FUNC VOID DIA_Marduk_TEACH_BACK()
-{
-	Info_ClearChoices 	(DIA_Marduk_TEACH);
-};
-///////////////////////////////////////////////////////////////////////
-//	MAGIER ZAUBER 
-///////////////////////////////////////////////////////////////////////
-FUNC VOID DIA_Marduk_TEACH_ZAP()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Zap);	
-};
-FUNC VOID DIA_Marduk_TEACH_Icebolt()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Icebolt);	
-};
-FUNC VOID DIA_Marduk_TEACH_LightningFlash()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_LightningFlash);	
-};
-FUNC VOID DIA_Marduk_TEACH_IceCube()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_IceCube);	
-};
-FUNC VOID DIA_Marduk_TEACH_ThunderBall()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_ChargeZap);	
-};
-FUNC VOID DIA_Marduk_TEACH_IceWave()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_IceWave);	
-};
-
 
 //#####################################################################
 //##
@@ -308,7 +173,7 @@ INSTANCE DIA_Marduk_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -340,7 +205,7 @@ INSTANCE DIA_Marduk_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -364,7 +229,7 @@ INSTANCE DIA_Marduk_Kap3_Hello   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap3_Hello_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& ((hero.guild == GIL_PAL)
 	|| (hero.guild == GIL_DJG))
 	{
@@ -570,7 +435,7 @@ INSTANCE DIA_Marduk_Kap3_PERM   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap3_PERM_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -674,7 +539,7 @@ INSTANCE DIA_Marduk_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -698,8 +563,8 @@ INSTANCE DIA_Marduk_Kap4U5_PERM   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap4U5_PERM_Condition()
 {
-	if (Kapitel == 4)
-	|| (Kapitel == 5)
+	if (Kapitel == 10)
+	|| (Kapitel == 11)
 	{
 		return TRUE;
 	};	
@@ -730,7 +595,7 @@ INSTANCE DIA_Marduk_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Marduk_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

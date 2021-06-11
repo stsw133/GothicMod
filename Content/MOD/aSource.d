@@ -16,22 +16,23 @@ const int ATR_Energy_Bonus	=	2;
 const int ATR_FoodTime		=	3;
 var int sattribute[4];
 
-const int BS_fRun		=	0;
-const int BS_hArmor		=	1;
-const int BS_Poison		=	2;
+const int BS_fRun			=	0;
+const int BS_hArmor			=	1;
+const int BS_Poison			=	2;
 var int bState[3];
 
-var int dLevel;				/// difficulty level: Easy -> Medium -> Hard -> Very Hard -> Hardcore
+var int dLevel;				/// difficulty level: Easy | Medium | Hard | Very Hard | Hardcore
 var int gLevelA;			/// girlfriend love level (not sure/don't remember)
 var int talkingWithGirl;	/// also don't remember what was this for
 
-var int selectedHero;	/// hero skin (selected in New Game menu)
-var int fastItemTake;	/// fast item take (with no animation) on RMB
-var int movieMode;		/// movie mode = enabled cheat mode etc.
+var int selectedHero;		/// hero skin (select in New Game menu)
+var int fastItemTake;		/// fast item take (with no animation) on RMB
+var int movieMode;			/// movie mode = enabled cheat mode, animation shortcuts etc.
 
 ///******************************************************************************************
 ///	Colors & Time
 ///******************************************************************************************
+
 const int COL_Health			=	(255<<16) | (128<<8) | (128<<0) | (255<<24);
 const int COL_Mana				=	(128<<16) | (128<<8) | (255<<0) | (255<<24);
 const int COL_Energy			=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
@@ -84,7 +85,7 @@ func void B_ScaleTime(var int x)
 };
 
 ///******************************************************************************************
-func void B_SetGhost (var oCNpc slf, var int visibility)
+func void B_SetVisibilityPercent (var oCNpc slf, var int visibility)
 {
 	if (visibility == 100)	{	slf.bloodEnabled = true;	}
 	else					{	slf.bloodEnabled = false;	};

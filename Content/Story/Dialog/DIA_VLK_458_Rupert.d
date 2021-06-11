@@ -58,7 +58,7 @@ INSTANCE DIA_Rupert_ZuPal(C_INFO)
 };                       
 FUNC INT DIA_Rupert_ZuPal_Condition()
 {
-	if (Kapitel < 2)
+	if (Kapitel < 8)
 	{
 		return TRUE;
 	};	

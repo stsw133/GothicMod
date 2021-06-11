@@ -25,9 +25,21 @@ func void B_LookAtNpc (var C_NPC slf, var C_NPC oth)
 ///******************************************************************************************
 func void B_TurnToNpc (var C_NPC slf, var C_NPC oth)
 {
-	if (!Npc_CanSeeNpc(slf,oth))
+	if (!Npc_CanSeeNpc(slf, oth))
 	{
 		AI_PlayAni (slf, "T_QUICKTURN");
 	};
 	AI_TurnToNpc (slf, oth);
+};
+
+///******************************************************************************************
+///	B_ResetAll
+///******************************************************************************************
+func void B_ResetAll (var C_NPC slf)
+{
+	B_StopLookAt(slf);
+	if (!movieMode)
+	{
+		AI_RemoveWeapon(slf);
+	};
 };

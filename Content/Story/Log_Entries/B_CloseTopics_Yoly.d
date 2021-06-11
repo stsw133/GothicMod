@@ -22,7 +22,7 @@ func void B_CloseTopics_Yoly ()
 	B_CloseTopic	(TOPIC_Addon_RangerHelpKDF, MIS_Addon_Daron_GetStatue, TOPIC_End_RangerHelpKDF, 2); 
 	B_CloseTopic	(TOPIC_Addon_RangerHelpSLD, SLD_Aufnahme, TOPIC_End_RangerHelpSLD, 2); 
 	B_CloseTopic	(TOPIC_Addon_RangerHelpMIL, MIL_Aufnahme, 0, 2); 
-	B_CloseTopic	(TOPIC_Addon_Stoneplates, 0, PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1], 4); 
+	B_CloseTopic	(TOPIC_Addon_Stoneplates, 0, Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE), 4); 
 	B_CloseTopic	(TOPIC_Addon_FarimsFish, MIS_Addon_Farim_PaladinFisch, 0, 6); 
 	B_CloseTopic	(TOPIC_Addon_Lucia, 0, TOPIC_END_Lucia, 6); 
 	B_CloseTopic	(TOPIC_Addon_Erol, MIS_Addon_Erol_BanditStuff, 0, 4); 

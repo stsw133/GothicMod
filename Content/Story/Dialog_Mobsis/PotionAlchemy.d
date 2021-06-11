@@ -472,7 +472,10 @@ func void PC_Special_Start_Info()
 	Info_ClearChoices(PC_Special_Start);
 
 	Info_AddChoice (PC_Special_Start, DIALOG_BACK, PC_ItPo_Special_BACK);
-	Info_AddChoice (PC_Special_Start, "Trucizna (demoniczny grzyb, rdest polny, woda)", PC_ItPo_Poison);
+	if (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 2)
+	{
+		Info_AddChoice (PC_Special_Start, "Trucizna (demoniczny grzyb, rdest polny, woda)", PC_ItPo_Poison);
+	};
 	Info_AddChoice (PC_Special_Start, "Mikstura jasnoœci umys³u (cmentarny mech, rdest polny, gorza³a)", PC_ItPo_Geist);
 	Info_AddChoice (PC_Special_Start, "Mikstura energii (zêbate ziele, rdest polny, woda)", PC_ItPo_Speed);
 };

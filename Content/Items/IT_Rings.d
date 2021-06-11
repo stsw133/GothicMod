@@ -7,8 +7,8 @@ prototype ItemPR_Ring (C_Item)
 	flags 					=	ITEM_RING;
 	material 				=	MAT_METAL;
 	
-	on_equip				=	Attributes_CHECK;
-	on_unequip				=	Attributes_CHECK;
+	on_equip				=	Npc_AttributesRefresh;
+	on_unequip				=	Npc_AttributesRefresh;
 	
 	TEXT[5]					=	NAME_Value;
 	INV_ZBIAS				=	INVCAM_ENTF_RING_STANDARD;
@@ -251,8 +251,8 @@ instance ItRi_Power_01 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Power_01;
 	on_unequip		=	UnEquip_ItRi_Power_01;
 };
-func void Equip_ItRi_Power_01()		{ self.aivar[AIV_Power] += 2; POWER_CHECK(self); };
-func void UnEquip_ItRi_Power_01()	{ self.aivar[AIV_Power] -= 2; POWER_CHECK(self); };
+func void Equip_ItRi_Power_01()		{ Npc_AddPowerPoints(self, 2); };
+func void UnEquip_ItRi_Power_01()	{ Npc_AddPowerPoints(self, -2); };
 
 instance ItRi_Power_02 (ItemPR_Ring)
 {
@@ -262,8 +262,8 @@ instance ItRi_Power_02 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Power_02;
 	on_unequip		=	UnEquip_ItRi_Power_02;
 };
-func void Equip_ItRi_Power_02()		{ self.aivar[AIV_Power] += 4; POWER_CHECK(self); };
-func void UnEquip_ItRi_Power_02()	{ self.aivar[AIV_Power] -= 4; POWER_CHECK(self); };
+func void Equip_ItRi_Power_02()		{ Npc_AddPowerPoints(self, 4); };
+func void UnEquip_ItRi_Power_02()	{ Npc_AddPowerPoints(self, -4); };
 
 instance ItRi_Power_03 (ItemPR_Ring)
 {
@@ -273,8 +273,8 @@ instance ItRi_Power_03 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Power_03;
 	on_unequip		=	UnEquip_ItRi_Power_03;
 };
-func void Equip_ItRi_Power_03()		{ self.aivar[AIV_Power] += 6; POWER_CHECK(self); };
-func void UnEquip_ItRi_Power_03()	{ self.aivar[AIV_Power] -= 6; POWER_CHECK(self); };
+func void Equip_ItRi_Power_03()		{ Npc_AddPowerPoints(self, 6); };
+func void UnEquip_ItRi_Power_03()	{ Npc_AddPowerPoints(self, -6); };
 
 instance ItRi_Power_04 (ItemPR_Ring)
 {
@@ -284,8 +284,8 @@ instance ItRi_Power_04 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Power_04;
 	on_unequip		=	UnEquip_ItRi_Power_04;
 };
-func void Equip_ItRi_Power_04()		{ self.aivar[AIV_Power] += 8; POWER_CHECK(self); };
-func void UnEquip_ItRi_Power_04()	{ self.aivar[AIV_Power] -= 8; POWER_CHECK(self); };
+func void Equip_ItRi_Power_04()		{ Npc_AddPowerPoints(self, 8); };
+func void UnEquip_ItRi_Power_04()	{ Npc_AddPowerPoints(self, -8); };
 
 instance ItRi_Power_05 (ItemPR_Ring)
 {
@@ -295,8 +295,8 @@ instance ItRi_Power_05 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Power_05;
 	on_unequip		=	UnEquip_ItRi_Power_05;
 };
-func void Equip_ItRi_Power_05()		{ self.aivar[AIV_Power] += 10; POWER_CHECK(self); };
-func void UnEquip_ItRi_Power_05()	{ self.aivar[AIV_Power] -= 10; POWER_CHECK(self); };
+func void Equip_ItRi_Power_05()		{ Npc_AddPowerPoints(self, 10); };
+func void UnEquip_ItRi_Power_05()	{ Npc_AddPowerPoints(self, -10); };
 
 ///******************************************************************************************
 func void SetItRiAttributes_Mana (var C_ITEM itm, var int kap)
@@ -400,8 +400,8 @@ instance ItRi_Energy_01 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Energy_01;
 	on_unequip		=	UnEquip_ItRi_Energy_01;
 };
-func void Equip_ItRi_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 4; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 4; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 4; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_Energy_01()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 4; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_Energy_02 (ItemPR_Ring)
 {
@@ -411,8 +411,8 @@ instance ItRi_Energy_02 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Energy_02;
 	on_unequip		=	UnEquip_ItRi_Energy_02;
 };
-func void Equip_ItRi_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 8; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 8; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 8; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_Energy_02()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 8; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_Energy_03 (ItemPR_Ring)
 {
@@ -422,8 +422,8 @@ instance ItRi_Energy_03 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Energy_03;
 	on_unequip		=	UnEquip_ItRi_Energy_03;
 };
-func void Equip_ItRi_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 12; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 12; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 12; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_Energy_03()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 12; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_Energy_04 (ItemPR_Ring)
 {
@@ -433,8 +433,8 @@ instance ItRi_Energy_04 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Energy_04;
 	on_unequip		=	UnEquip_ItRi_Energy_04;
 };
-func void Equip_ItRi_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 16; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 16; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 16; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_Energy_04()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 16; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_Energy_05 (ItemPR_Ring)
 {
@@ -444,8 +444,8 @@ instance ItRi_Energy_05 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_Energy_05;
 	on_unequip		=	UnEquip_ItRi_Energy_05;
 };
-func void Equip_ItRi_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 20; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 20; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] += 20; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_Energy_05()	{ if (Npc_IsPlayer(self)) { sattribute[ATR_Energy_Bonus] -= 20; Npc_EnergyMaxRefresh(self); }; };
 
 ///******************************************************************************************
 func void SetItRiAttributes_TrueDamage (var C_ITEM itm, var int kap)
@@ -465,8 +465,8 @@ instance ItRi_TrueDamage_01 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_TrueDamage_01;
 	on_unequip		=	UnEquip_ItRi_TrueDamage_01;
 };
-func void Equip_ItRi_TrueDamage_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 4; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_TrueDamage_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 4; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_TrueDamage_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 4; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_TrueDamage_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 4; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_TrueDamage_02 (ItemPR_Ring)
 {
@@ -476,8 +476,8 @@ instance ItRi_TrueDamage_02 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_TrueDamage_02;
 	on_unequip		=	UnEquip_ItRi_TrueDamage_02;
 };
-func void Equip_ItRi_TrueDamage_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 8; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_TrueDamage_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 8; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_TrueDamage_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 8; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_TrueDamage_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 8; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_TrueDamage_03 (ItemPR_Ring)
 {
@@ -487,8 +487,8 @@ instance ItRi_TrueDamage_03 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_TrueDamage_03;
 	on_unequip		=	UnEquip_ItRi_TrueDamage_03;
 };
-func void Equip_ItRi_TrueDamage_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 12; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_TrueDamage_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 12; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_TrueDamage_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 12; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_TrueDamage_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 12; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_TrueDamage_04 (ItemPR_Ring)
 {
@@ -498,8 +498,8 @@ instance ItRi_TrueDamage_04 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_TrueDamage_04;
 	on_unequip		=	UnEquip_ItRi_TrueDamage_04;
 };
-func void Equip_ItRi_TrueDamage_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 16; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_TrueDamage_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 16; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_TrueDamage_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 16; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_TrueDamage_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 16; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_TrueDamage_05 (ItemPR_Ring)
 {
@@ -509,8 +509,8 @@ instance ItRi_TrueDamage_05 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_TrueDamage_05;
 	on_unequip		=	UnEquip_ItRi_TrueDamage_05;
 };
-func void Equip_ItRi_TrueDamage_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 20; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_TrueDamage_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 20; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_TrueDamage_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] += 20; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_TrueDamage_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_TrueDamage] -= 20; Npc_EnergyMaxRefresh(self); }; };
 
 ///******************************************************************************************
 func void SetItRiAttributes_LifeSteal (var C_ITEM itm, var int kap)
@@ -530,8 +530,8 @@ instance ItRi_LifeSteal_01 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_LifeSteal_01;
 	on_unequip		=	UnEquip_ItRi_LifeSteal_01;
 };
-func void Equip_ItRi_LifeSteal_01()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 1; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_LifeSteal_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 1; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_LifeSteal_01()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 1; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_LifeSteal_01()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 1; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_LifeSteal_02 (ItemPR_Ring)
 {
@@ -541,8 +541,8 @@ instance ItRi_LifeSteal_02 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_LifeSteal_02;
 	on_unequip		=	UnEquip_ItRi_LifeSteal_02;
 };
-func void Equip_ItRi_LifeSteal_02()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 2; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_LifeSteal_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 2; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_LifeSteal_02()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 2; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_LifeSteal_02()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 2; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_LifeSteal_03 (ItemPR_Ring)
 {
@@ -552,8 +552,8 @@ instance ItRi_LifeSteal_03 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_LifeSteal_03;
 	on_unequip		=	UnEquip_ItRi_LifeSteal_03;
 };
-func void Equip_ItRi_LifeSteal_03()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 3; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_LifeSteal_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 3; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_LifeSteal_03()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 3; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_LifeSteal_03()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 3; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_LifeSteal_04 (ItemPR_Ring)
 {
@@ -563,8 +563,8 @@ instance ItRi_LifeSteal_04 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_LifeSteal_04;
 	on_unequip		=	UnEquip_ItRi_LifeSteal_04;
 };
-func void Equip_ItRi_LifeSteal_04()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 4; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_LifeSteal_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 4; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_LifeSteal_04()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 4; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_LifeSteal_04()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 4; Npc_EnergyMaxRefresh(self); }; };
 
 instance ItRi_LifeSteal_05 (ItemPR_Ring)
 {
@@ -574,5 +574,5 @@ instance ItRi_LifeSteal_05 (ItemPR_Ring)
 	on_equip		=	Equip_ItRi_LifeSteal_05;
 	on_unequip		=	UnEquip_ItRi_LifeSteal_05;
 };
-func void Equip_ItRi_LifeSteal_05()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 5; ENE_MAX_CHECK(self); }; };
-func void UnEquip_ItRi_LifeSteal_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 5; ENE_MAX_CHECK(self); }; };
+func void Equip_ItRi_LifeSteal_05()		{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] += 5; Npc_EnergyMaxRefresh(self); }; };
+func void UnEquip_ItRi_LifeSteal_05()	{ if (Npc_IsPlayer(self)) { self.aivar[AIV_LifeSteal] -= 5; Npc_EnergyMaxRefresh(self); }; };

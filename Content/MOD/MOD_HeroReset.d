@@ -6,16 +6,16 @@ func void MOD_HeroReset (var C_NPC slf)
 	slf.guild = GIL_NONE;
 	Npc_SetTrueGuild (slf, GIL_NONE);
 	
-	slf.level								=	START_LEVEL;
+	slf.level								=	0;
 	slf.exp									=	0;
-	slf.exp_next							=	XP_PER_LEVEL;
-	slf.LP									=	DIFF_Multiplier(LP_PER_LEVEL, DECREASE);
+	slf.exp_next							=	0;
+	slf.LP									=	0;
 	
-	slf.attribute[ATR_HITPOINTS_MAX]		=	DIFF_Multiplier(50, DECREASE)*HP_PER_LP + HP_PER_LEVEL;
-	slf.attribute[ATR_MANA_MAX]				=	DIFF_Multiplier(50, DECREASE);
-	slf.attribute[ATR_STRENGTH]				=	DIFF_Multiplier(50, DECREASE);
-	slf.attribute[ATR_DEXTERITY]			=	DIFF_Multiplier(50, DECREASE);
-	slf.aivar[AIV_Power]					=	DIFF_Multiplier(50, DECREASE);
+	slf.attribute[ATR_HITPOINTS_MAX]		=	DIFF_Multiplier(10, DECREASE)*HP_PER_LP + HP_PER_LEVEL;
+	slf.attribute[ATR_MANA_MAX]				=	DIFF_Multiplier(10, DECREASE);
+	slf.attribute[ATR_STRENGTH]				=	DIFF_Multiplier(10, DECREASE);
+	slf.attribute[ATR_DEXTERITY]			=	DIFF_Multiplier(10, DECREASE);
+	Npc_SetPowerPoints(slf, DIFF_Multiplier(10, DECREASE));
 	
 	Npc_SetTalentSkill (slf, NPC_TALENT_1H,				0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_2H,				0);
@@ -32,11 +32,11 @@ func void MOD_HeroReset (var C_NPC slf)
 	Npc_SetTalentSkill (slf, NPC_TALENT_ACROBATIC,		0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_PERSUASION,		0);
 	
-	Npc_SetTalentSkill (slf, NPC_TALENT_SMITH,			0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_JEWELERY,		0);
+	Npc_SetTalentSkill (slf, NPC_TALENT_SMITH,			0);
+	Npc_SetTalentSkill (slf, NPC_TALENT_ENCHANTING,		0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_ALCHEMY,		0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_HUNTING,		0);
-	Npc_SetTalentSkill (slf, NPC_TALENT_WRITING,		0);
 	
 	Npc_SetTalentSkill (slf, NPC_TALENT_TYPEOFMAGIC,	0);
 	Npc_SetTalentSkill (slf, NPC_TALENT_GUILD,			0);
@@ -49,10 +49,9 @@ func void MOD_HeroReset (var C_NPC slf)
 	
 	slf.attribute[ATR_HITPOINTS]			=	slf.attribute[ATR_HITPOINTS_MAX];
 	slf.attribute[ATR_MANA]					=	slf.attribute[ATR_MANA_MAX];
-	ENE_MAX_CHECK(slf);
-	POWER_CHECK(slf);
+	Npc_EnergyMaxRefresh(slf);
 	
 	AI_UnequipArmor(slf);
 	
-	PrintScreen ("Postać zresetowana", -1, -1, FONT_Screen, 2);
+	//PrintScreen ("Postać zresetowana", -1, -1, FONT_Screen, 2);
 };

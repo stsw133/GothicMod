@@ -13,7 +13,7 @@ instance DIA_Akil_EXIT		(C_INFO)
 
 func int DIA_Akil_EXIT_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -343,7 +343,7 @@ instance DIA_Akil_Gegend		(C_INFO)
 func int DIA_Akil_Gegend_Condition ()
 {
 	if  Npc_KnowsInfo(other, DIA_Akil_Soeldner)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -476,7 +476,7 @@ instance DIA_Akil_Perm		(C_INFO)
 func int DIA_Akil_Perm_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Akil_Soeldner))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -486,7 +486,7 @@ func void DIA_Akil_Perm_Info ()
 {
 	AI_Output (other, self, "DIA_Akil_Perm_15_00"); //Czy coœ jeszcze siê dzia³o?
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_Akil_SchafDiebe == LOG_SUCCESS)
 		{
@@ -543,7 +543,7 @@ INSTANCE DIA_Akil_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Akil_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -568,7 +568,7 @@ instance DIA_Akil_SCHAFDIEB		(C_INFO)
 
 func int DIA_Akil_SCHAFDIEB_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -628,7 +628,7 @@ instance DIA_Akil_SCHAFDIEBEPLATT		(C_INFO)
 
 func int DIA_Akil_SCHAFDIEBEPLATT_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (MIS_Akil_SchafDiebe == LOG_RUNNING)
 	&& (Npc_IsDead(BDT_1025_Bandit_H)) 
 	&& (Npc_IsDead(BDT_1026_Bandit_H)) 
@@ -679,7 +679,7 @@ instance DIA_Akil_AkilsSchaf		(C_INFO)
 
 func int DIA_Akil_AkilsSchaf_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_GetDistToNpc(self, Follow_Sheep_AKIL) < 1000 )
 	&& (MIS_Akil_SchafDiebe != 0)
 		{
@@ -725,7 +725,7 @@ INSTANCE DIA_Akil_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Akil_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -759,7 +759,7 @@ INSTANCE DIA_Akil_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Akil_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -794,7 +794,7 @@ INSTANCE DIA_Akil_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Akil_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

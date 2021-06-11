@@ -56,16 +56,16 @@ func void B_GiveDeathInv (var C_NPC slf)
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_LURKER)			{	CreateInvItems (slf, ItAt_LurkerClaw, 1);	};
 		
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_BLOODFLY)		{	CreateInvItems (slf, ItAt_Wing		, 2);	};
-		
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_BLOODFLY)		{	CreateInvItems (slf, ItAt_Sting		, 1);	};
 		
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_GIANT_BUG)		{	CreateInvItems (slf, ItAt_BugMandibles, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLER)	{	CreateInvItems (slf, ItAt_CrawlerMandibles, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERWARRIOR)	{	CreateInvItems (slf, ItAt_CrawlerMandibles, 1);	};
+		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERQUEEN)	{	CreateInvItems (slf, ItAt_CrawlerMandibles, 1);	};
 		
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLER)	{	CreateInvItems (slf, ItAt_CrawlerPlate, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERWARRIOR)	{	CreateInvItems (slf, ItAt_CrawlerPlate, 2);	};
-		if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGON)			{	CreateInvItems (slf, ItAt_DragonScale, 12);	};
+		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERQUEEN)	{	CreateInvItems (slf, ItAt_CrawlerPlate, 2);	};
 		
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_SHADOWBEAST)	{	CreateInvItems (slf, ItAt_ShadowHorn, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGONSNAPPER)	{	CreateInvItems (slf, ItAt_DrgSnapperHorn, 2);	};
@@ -79,6 +79,8 @@ func void B_GiveDeathInv (var C_NPC slf)
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_DEMON)			{	CreateInvItems (slf, ItAt_DemonHeart, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_DEMON_LORD)		{	CreateInvItems (slf, ItAt_DemonHeart, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGON)			{	CreateInvItems (slf, ItAt_DragonHeart, 1);	};
+		
+		if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGON)			{	CreateInvItems (slf, ItAt_DragonScale, 12);	};
 	};
 	
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_GOBBO_SKELETON)		{	CreateInvItems (slf, ItAt_SkeletonBone, 1);	};

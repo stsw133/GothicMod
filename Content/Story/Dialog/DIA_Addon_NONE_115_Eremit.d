@@ -90,9 +90,9 @@ instance DIA_Addon_Eremit_Teach (C_INFO)
 };
 func int DIA_Addon_Eremit_Teach_Condition ()
 {
-	if (Npc_KnowsInfo (other, DIA_Addon_Eremit_SeekTafeln))
-	&& (Eremit_Teach_Once == FALSE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
+	if (Npc_KnowsInfo(other, DIA_Addon_Eremit_SeekTafeln))
+	&& (!Eremit_Teach_Once)
+	&& (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == false)
 	{
 		return TRUE;
 	};
@@ -108,83 +108,24 @@ func void DIA_Addon_Eremit_Teach_Info ()
 
 	Info_ClearChoices (DIA_Addon_Eremit_Teach);
 	Info_AddChoice (DIA_Addon_Eremit_Teach, DIALOG_BACK, DIA_Addon_Eremit_Teach_No);
-	
-	
-	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == false)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_1 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_1)),DIA_Addon_Eremit_Teach_Yes);
-	}	
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	{
-		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_2 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_2)),DIA_Addon_Eremit_Teach_Yes);
-	}	
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-	{
-		Info_AddChoice (DIA_Addon_Eremit_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_3 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_3)),DIA_Addon_Eremit_Teach_Yes);
+		Info_AddChoice (DIA_Addon_Eremit_Teach, B_BuildLearnString(PRINT_LearnTalent_Language , B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true)),DIA_Addon_Eremit_Teach_Yes);
 	};
 };
 
-// ---------------------------------------------------------------
-	func void B_Addon_Eremit_TeachLanguage()
-	{	
-		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_27"); //To naprawdê bardzo proste. 'G' oznacza 'O', 'T' oznacza 'H', a 'I' to 'C'.
-		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_28"); //Kiedy to opanujesz, reszta przyjdzie z ³atwoœci¹...
-		
-		/*
-		
-		if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-		{
-			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] = TRUE;
-		}
-		else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-		{
-			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] = TRUE;
-		}
-		else
-		{
-			PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] = TRUE;
-		};
-			
-		*/	
-				
-		Eremit_Teach_Once = TRUE;
-	};
-// ---------------------------------------------------------------
 func void DIA_Addon_Eremit_Teach_No()
 {
-	Info_ClearChoices (DIA_Addon_Eremit_Teach);
+	Info_ClearChoices(DIA_Addon_Eremit_Teach);
 };
 
 func void DIA_Addon_Eremit_Teach_Yes()
 {
-	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == TRUE)
+	if (B_TeachTalents(self, other, NPC_TALENT_LANGUAGE, true))
 	{
-		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_29"); //Nie s¹dzê, ¿ebym móg³ nauczyæ ciê czegoœ wiêcej...
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_27"); //To naprawdê bardzo proste. 'G' oznacza 'O', 'T' oznacza 'H', a 'I' to 'C'.
+		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_28"); //Kiedy to opanujesz, reszta przyjdzie z ³atwoœci¹...
 		Eremit_Teach_Once = TRUE;
-	}
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-	{
-		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_3))
-		{
-			B_Addon_Eremit_TeachLanguage();
-		};
-	}
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	{
-		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_2))
-		{
-			B_Addon_Eremit_TeachLanguage();
-		};
-	}
-	else //Keine Language
-	{
-		if (B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_1))
-		{
-			B_Addon_Eremit_TeachLanguage();
-		};
 	};
 };
 

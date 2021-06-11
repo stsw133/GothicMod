@@ -74,42 +74,37 @@ instance ItWr_Map_NewWorld_Dexter (C_Item)
 	INV_ZBIAS		= INVCAM_ENTF_AMULETTE_STANDARD;
 	
 };
-	var int Equip_WispDetector_OneTime;
+var int Equip_WispDetector_OneTime;
 
-	FUNC VOID Equip_WispDetector()
+func void Equip_WispDetector()
+{
+	if (!Equip_WispDetector_OneTime)
 	{
-			if (Equip_WispDetector_OneTime == FALSE)
-			{
-				PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NF] = TRUE; //das erste Talent gibt's gratis
-				WispSearching = WispSearch_NF;
-				Equip_WispDetector_OneTime = TRUE;
-			};
-			
-			var C_NPC DetWsp;
-			DetWsp = Hlp_GetNpc (Wisp_Detector);
-			AI_Teleport (DetWsp, "TOT");
-			Wld_SpawnNpcRange	(self,	Wisp_Detector,	1,	500);
- 			Wld_PlayEffect("spellFX_LIGHTSTAR_WHITE",  Wisp_Detector, Wisp_Detector, 0, 0, 0, FALSE );
-			Snd_Play ("MFX_Transform_Cast");
-			//Wld_PlayEffect("spellFX_SummonCreature_ORIGIN",  hero, hero, 0, 0, 0, FALSE );
+		WispSkills[WISPSKILL_NF];
+		WispSearching = WispSearch_NF;
+		Equip_WispDetector_OneTime = true;
 	};
-
-
-	FUNC VOID UnEquip_WispDetector()
+	
+	var C_NPC DetWsp; DetWsp = Hlp_GetNpc(Wisp_Detector);
+	AI_Teleport (DetWsp, "TOT");
+	Wld_SpawnNpcRange (self, Wisp_Detector, 1, 500);
+	Wld_PlayEffect ("spellFX_LIGHTSTAR_WHITE", Wisp_Detector, Wisp_Detector, 0, 0, 0, false);
+	Snd_Play("MFX_Transform_Cast");
+	//Wld_PlayEffect("spellFX_SummonCreature_ORIGIN",  hero, hero, 0, 0, 0, FALSE );
+};
+func void UnEquip_WispDetector()
+{
+	var C_NPC DetWsp; DetWsp = Hlp_GetNpc(Wisp_Detector);
+	
+	if (!Npc_IsDead(DetWsp))
 	{
-			
-			var C_NPC DetWsp;
-			DetWsp = Hlp_GetNpc (Wisp_Detector);
-
-			if (Npc_IsDead(DetWsp) == FALSE)
-			{
-				Snd_Play ("WSP_Dead_A1");
-			};
-
-			AI_Teleport (DetWsp, "TOT");
-			B_RemoveNpc (DetWsp);
-			AI_Teleport (DetWsp, "TOT");
+		Snd_Play ("WSP_Dead_A1");
 	};
+	
+	AI_Teleport (DetWsp, "TOT");
+	B_RemoveNpc (DetWsp);
+	AI_Teleport (DetWsp, "TOT");
+};
 
 //Alligatorfleisch
 	

@@ -35,7 +35,7 @@ INSTANCE DIA_Marcos_Hallo(C_INFO)
 
 FUNC INT DIA_Marcos_Hallo_Condition()
 {	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -78,7 +78,7 @@ INSTANCE DIA_Marcos_Hagen(C_INFO)
 
 FUNC INT DIA_Marcos_Hagen_Condition()
 {	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& (Garond.aivar [AIV_TalkedToPlayer] == FALSE) 
 	{
 		return TRUE;
@@ -108,7 +108,7 @@ INSTANCE DIA_Marcos_Garond(C_INFO)
 
 FUNC INT DIA_Marcos_Garond_Condition()
 {	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& (MIS_OLDWORLD == LOG_RUNNING)
 	{
 		return TRUE;
@@ -150,7 +150,7 @@ INSTANCE DIA_Marcos_Perm(C_INFO)
 
 FUNC INT DIA_Marcos_Perm_Condition()
 {	
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	&& (Npc_KnowsInfo (other, DIA_Marcos_Hagen)
 	|| Npc_KnowsInfo (other, DIA_Marcos_Garond))
 	{

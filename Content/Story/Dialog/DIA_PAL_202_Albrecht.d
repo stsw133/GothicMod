@@ -128,7 +128,7 @@ func int DIA_Albrecht_TEACHPalRunes_Condition ()
 func void DIA_Albrecht_TEACHPalRunes_Info ()
 {
 	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_15_00"); //Czy jestem godny otrzymania runy?
-	
+	/*
 	if (PLAYER_TALENT_RUNES [SPL_PalLight] == FALSE)
 	{
 		
@@ -151,8 +151,9 @@ func void DIA_Albrecht_TEACHPalRunes_Info ()
 		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,"Wybieram drogê leczenia.",DIA_Albrecht_TEACHPalRunes_Heal);
 		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,"Wybieram drogê walki.",DIA_Albrecht_TEACHPalRunes_Combat);
 	};	
+	*/
 };
-
+/*
 FUNC VOID DIA_Albrecht_TEACHPalRunes_BACK()
 {
 	Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
@@ -174,7 +175,7 @@ FUNC VOID DIA_Albrecht_TEACHPalRunes_Heal()
 		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Leczenie lekkich ran", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalLightHeal);
 	}
 	else if 	(PLAYER_TALENT_RUNES [SPL_PalMediumHeal] == FALSE)
-	&&	(Kapitel >= 5)
+	&&	(Kapitel >= 11)
 	{
 		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
 		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
@@ -198,7 +199,7 @@ FUNC VOID DIA_Albrecht_TEACHPalRunes_Combat()
 		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Œwiêty pocisk", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalHolyBolt);
 	}
 	else if (PLAYER_TALENT_RUNES [SPL_PalRepelEvil] == FALSE)
-	&&	(Kapitel >= 5)
+	&&	(Kapitel >= 11)
 	{
 		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
 		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
@@ -209,79 +210,7 @@ FUNC VOID DIA_Albrecht_TEACHPalRunes_Combat()
 		B_Albrecht_YouAreNotWorthy ();
 	};
 };
-
-
-FUNC INT DIA_Albrecht_TEACHPalRunes_PalLightHeal()
-{
-	if (other.lp < CostForPalSpells)
-	{
-		PrintScreen	(PRINT_NotEnoughLearnPoints, -1,-1, FONT_ScreenSmall ,2);
-		B_Say (self, other, "$NOLEARNNOPOINTS");
-		
-		return FALSE;
-	};
-	
-	PLAYER_TALENT_RUNES [SPL_PalLightHeal] = TRUE;
-	CreateInvItems (self,ItRu_PalLightHeal,1);
-	B_GiveInvItems (self,other,ItRu_PalLightHeal,1);
-	other.lp = (other.lp -CostForPalSpells);
-	Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes); 
-
-	return TRUE;
-};
-
-FUNC INT DIA_Albrecht_TEACHPalRunes_PalMediumHeal()
-{
-	if (other.lp < CostForPalSpells)
-	{
-		PrintScreen	(PRINT_NotEnoughLearnPoints, -1,-1, FONT_ScreenSmall ,2);
-		B_Say (self, other, "$NOLEARNNOPOINTS");
-		
-		return FALSE;
-	};
-	PLAYER_TALENT_RUNES [SPL_PalMediumHeal] = TRUE;
-	CreateInvItems (self,ItRu_PalMediumHeal,1);
-	B_GiveInvItems (self,other,ItRu_PalMediumHeal,1); 
-	other.lp = (other.lp -CostForPalSpells);
-	return TRUE;
-};
-
-FUNC INT DIA_Albrecht_TEACHPalRunes_PalHolyBolt()
-{
-	if (other.lp < CostForPalSpells)
-	{
-		PrintScreen	(PRINT_NotEnoughLearnPoints, -1,-1, FONT_ScreenSmall ,2);
-		B_Say (self, other, "$NOLEARNNOPOINTS");
-		
-		return FALSE;
-	};
-	
-	PLAYER_TALENT_RUNES [SPL_PalHolyBolt] = TRUE;
-	CreateInvItems (self,ItRu_PalHolyBolt,1);
-	B_GiveInvItems (self,other,ItRu_PalHolyBolt,1);  
-	other.lp = (other.lp -CostForPalSpells);
-	return TRUE;
-};
-
-FUNC INT DIA_Albrecht_TEACHPalRunes_PalRepelEvil()
-{
-	if (other.lp < CostForPalSpells)
-	{
-		PrintScreen	(PRINT_NotEnoughLearnPoints, -1,-1, FONT_ScreenSmall ,2);
-		B_Say (self, other, "$NOLEARNNOPOINTS");
-		
-		return FALSE;
-	};
-	
-	PLAYER_TALENT_RUNES [SPL_PalRepelEvil] = TRUE;
-	CreateInvItems (self,ItRu_PalRepelEvil,1);
-	B_GiveInvItems (self,other,ItRu_PalRepelEvil,1);
-	other.lp = (other.lp -CostForPalSpells);
-	return TRUE;
-};
-
-
-
+*/
 ///////////////////////////////////////////////////////////////////////
 //	Info TEACH
 ///////////////////////////////////////////////////////////////////////
@@ -308,8 +237,8 @@ func void DIA_Albrecht_Teach_Info ()
 	/*
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_Teach_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
 	*/
 	B_RaiseAttribute(other, ATR_MANA_MAX, 2);
 };
@@ -329,8 +258,8 @@ func void DIA_Albrecht_Teach_1()
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_TEACH_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
 	
 	
 };
@@ -341,8 +270,8 @@ func void DIA_Albrecht_Teach_5()
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_Teach_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
 	
 	
 };

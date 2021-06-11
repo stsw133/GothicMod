@@ -33,7 +33,7 @@ INSTANCE DIA_Garwig_Wurst(C_INFO)
 
 FUNC INT DIA_Garwig_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -173,7 +173,7 @@ INSTANCE DIA_Garwig_Auge  (C_INFO)
 FUNC INT DIA_Garwig_Auge_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Garwig_Room)
-	&& (Kapitel <= 2)
+	&& (Kapitel <= 8)
 	{
 		return TRUE;
 	};	

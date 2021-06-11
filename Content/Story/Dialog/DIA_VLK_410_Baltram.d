@@ -220,7 +220,7 @@ func void DIA_Baltram_WAREZ_Info ()
 		Baltram_TradeLOG = TRUE;
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	{
 		AI_Output (self ,other,"DIA_Baltram_WAREZ_01_01"); //Nie powinni byli do tego dopuœciæ. No i jeden z najemników zamordowa³ paladyna.

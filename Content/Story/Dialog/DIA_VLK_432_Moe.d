@@ -229,11 +229,11 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 {
 	AI_Output (other,self ,"DIA_Moe_Harbor_Rumors_15_00"); //S³ysza³eœ ostatnio jakieœ plotki?
 	
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_01"); //W tych okolicach nie lubimy, kiedy ktoœ zadaje zbyt du¿o pytañ. Szczególnie jeœli jest to ktoœ obcy.
 	}
-	else if (Kapitel == 2)
+	else if (Kapitel == 8)
 	{
 		if (hero.guild == GIL_MIL)
 		{
@@ -253,7 +253,7 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 		};
 		
 	}
-	else if (Kapitel == 3)
+	else if (Kapitel == 9)
 	{
 		if (Mis_RescueBennet == LOG_SUCCESS)
 		{
@@ -277,7 +277,7 @@ FUNC VOID DIA_Moe_Harbor_Rumors ()
 			AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_14"); //Pewnie obawiaj¹ siê tych paru mieszkaj¹cych tutaj pijaków, he, he. I dobrze.
 		};
 	}
-	else if (Kapitel == 4)
+	else if (Kapitel == 10)
 	{
 		AI_Output (self ,other,"DIA_Moe_Harbor_Rumors_01_15"); //Nic siê tu nie dzieje.
 	}

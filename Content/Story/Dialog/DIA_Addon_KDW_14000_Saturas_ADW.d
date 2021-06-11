@@ -1208,7 +1208,7 @@ func void DIA_Addon_Saturas_ADW_CIRCLE_Info ()
 	AI_Output (other, self, "DIA_Addon_Saturas_ADW_CIRCLE_15_00"); //Chcê dowiedzieæ siê wiêcej o wy¿szych krêgach magii.
 	
 	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 1)
-	&& (Kapitel >= 2)
+	&& (Kapitel >= 8)
 	{
 		if B_TeachMagicCircle (self,other, 2)
 		{
@@ -1217,7 +1217,7 @@ func void DIA_Addon_Saturas_ADW_CIRCLE_Info ()
 		};                                                                                                                     
 	}
 	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 2)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	{
 		if B_TeachMagicCircle (self,other, 3)
 		{
@@ -1235,7 +1235,7 @@ func void DIA_Addon_Saturas_ADW_CIRCLE_Info ()
 		};
 	}
 	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
-	&& (Kapitel >= 5)
+	&& (Kapitel >= 11)
 	{
 		if B_TeachMagicCircle (self,other, 5)
 		{

@@ -415,7 +415,7 @@ instance DIA_Engor_Business		(C_INFO)
 
 func int DIA_Engor_Business_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (MIS_Engor_BringMeat == LOG_SUCCESS)
 	{
 		return TRUE;
@@ -436,60 +436,4 @@ func void DIA_Engor_Business_Info ()
 		};
 
 	AI_Output (self, other, "DIA_Engor_Business_13_03"); //Co z tob¹, potrzebujesz jeszcze czegoœ?
-};
-
-
-
-
-// ************************************************************
-// 			  				PICK POCKET
-// ************************************************************
-
-INSTANCE DIA_Engor_PICKPOCKET (C_INFO)
-{
-	npc			= VLK_4108_Engor;
-	nr			= 900;
-	condition	= DIA_Engor_PICKPOCKET_Condition;
-	information	= DIA_Engor_PICKPOCKET_Info;
-	permanent	= TRUE;
-	description = "(Kradzie¿ tej mapy bêdzie ryzykowna)";
-};                       
-
-FUNC INT DIA_Engor_PICKPOCKET_Condition()
-{
-	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
-	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
-	&& (Npc_HasItems(self, ItWr_Map_Oldworld) >= 1)
-	&& (other.attribute[ATR_DEXTERITY] >= (40 - Theftdiff))
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Engor_PICKPOCKET_Info()
-{	
-	Info_ClearChoices	(DIA_Engor_PICKPOCKET);
-	Info_AddChoice		(DIA_Engor_PICKPOCKET, DIALOG_BACK 		,DIA_Engor_PICKPOCKET_BACK);
-	Info_AddChoice		(DIA_Engor_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Engor_PICKPOCKET_DoIt);
-};
-
-func void DIA_Engor_PICKPOCKET_DoIt()
-{
-	if (other.attribute[ATR_DEXTERITY] >= 40)
-	{
-		B_GiveInvItems (self, other, ItWr_Map_Oldworld, 1);
-		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
-		B_GivePlayerXP (XP_Ambient);
-		Info_ClearChoices (DIA_Engor_PICKPOCKET);
-	}
-	else
-	{
-		AI_StopProcessInfos	(self);
-		B_Attack (self, other, AR_Theft, 1); //reagiert trotz IGNORE_Theft mit NEWS
-	};
-};
-	
-func void DIA_Engor_PICKPOCKET_BACK()
-{
-	Info_ClearChoices (DIA_Engor_PICKPOCKET);
 };

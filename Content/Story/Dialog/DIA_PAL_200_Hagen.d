@@ -12,7 +12,7 @@ INSTANCE DIA_Hagen_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hagen_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -294,7 +294,7 @@ func int DIA_Lord_Hagen_Hallo_Condition ()
 {	
 	if (hero.guild != GIL_NONE)
 	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -483,7 +483,7 @@ INSTANCE DIA_Lord_Hagen_Pass (C_INFO)
 func int DIA_Lord_Hagen_Pass_Condition ()
 {	
 	if (Hagen_BringProof == TRUE)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -496,7 +496,7 @@ func void DIA_Lord_Hagen_Pass_Info ()
 		
 	AI_StopProcessInfos (self);
 	MIS_OLDWORLD = LOG_RUNNING;
-	B_ChangeChapter (2, NEWWORLD_ZEN);
+	B_ChangeChapter (8, NEWWORLD_ZEN);
 	CreateInvItems (self,ItKe_Pass_MIS,1);
 	B_GiveInvItems (self,other,ItKe_Pass_MIS,1);
 	
@@ -561,7 +561,7 @@ INSTANCE DIA_Lord_Hagen_Khorinis (C_INFO)
 func int DIA_Lord_Hagen_Khorinis_Condition ()
 {	
 	if (Npc_KnowsInfo (other, DIA_Lord_Hagen_Armee))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -885,7 +885,7 @@ INSTANCE DIA_Lord_Hagen_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -913,7 +913,7 @@ INSTANCE DIA_Lord_Hagen_KAP3U4_PERM(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_KAP3U4_PERM_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -953,7 +953,7 @@ INSTANCE DIA_Lord_Hagen_EyeBroken(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_EyeBroken_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& (MIS_ReadyForChapter4 == FALSE)
 	&& (((Npc_HasItems (other,ItAm_InnosEye_Broken)) || (MIS_SCKnowsInnosEyeIsBroken  == TRUE)	))
 	&& (MIS_Bennet_InnosEyeRepairedSetting != LOG_SUCCESS)
@@ -986,7 +986,7 @@ func int DIA_Lord_Hagen_BACKINTOWN_Condition ()
 {	
 	if (MIS_OLDWORLD == LOG_RUNNING)
 	&& (Npc_HasItems (hero, ItWr_PaladinLetter_MIS) >= 1)
-	&& (Kapitel == 3)
+	&& (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -1247,7 +1247,7 @@ INSTANCE DIA_Lord_Hagen_AugeAmStart	(C_INFO)
 
 FUNC INT DIA_Lord_Hagen_AugeAmStart_Condition ()
 {	
-	if (Kapitel <= 4)
+	if (Kapitel <= 10)
 	&& (MIS_ReadyForChapter4 == TRUE)
 	{
 		return TRUE;
@@ -1292,7 +1292,7 @@ INSTANCE DIA_Lord_Hagen_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1495,7 +1495,7 @@ INSTANCE DIA_Lord_Hagen_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1520,7 +1520,7 @@ INSTANCE DIA_Lord_Hagen_AllDragonsDead(C_INFO)
 };                       
 FUNC INT DIA_Lord_Hagen_AllDragonsDead_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};

@@ -241,7 +241,7 @@ INSTANCE DIA_Mil_305_Torwache_PassAsCitizen (C_INFO)
 FUNC INT DIA_Mil_305_Torwache_PassAsCitizen_Condition()
 {	
 	if (Mil_305_schonmalreingelassen == FALSE)
-	&& (Kapitel <= 1)
+	&& (Kapitel <= 7)
 	{
 		return TRUE;
 	};

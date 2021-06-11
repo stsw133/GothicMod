@@ -13,7 +13,7 @@ INSTANCE DIA_Salandril_EXIT   (C_INFO)
 
 FUNC INT DIA_Salandril_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -23,63 +23,7 @@ FUNC VOID DIA_Salandril_EXIT_Info()
 {
 	AI_StopProcessInfos (self);
 };
-// ************************************************************
-// 			  				PICK POCKET
-// ************************************************************
 
-INSTANCE DIA_Salandril_PICKPOCKET (C_INFO)
-{
-	npc			= VLK_422_Salandril;
-	nr			= 900;
-	condition	= DIA_Salandril_PICKPOCKET_Condition;
-	information	= DIA_Salandril_PICKPOCKET_Info;
-	permanent	= TRUE;
-	description = "(Kradzie¿ tego klucza bêdzie doœæ ³atwa)";
-};
-//----------------------------------------                       
-var int DIA_Salandril_PICKPOCKET_perm;
-//----------------------------------------
-FUNC INT DIA_Salandril_PICKPOCKET_Condition()
-{
-	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
-	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
-	&& (DIA_Salandril_PICKPOCKET_perm == FALSE)
-	&& (other.attribute[ATR_DEXTERITY] >= (30 - Theftdiff))
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Salandril_PICKPOCKET_Info()
-{	
-	Info_ClearChoices	(DIA_Salandril_PICKPOCKET);
-	Info_AddChoice		(DIA_Salandril_PICKPOCKET, DIALOG_BACK 		,DIA_Salandril_PICKPOCKET_BACK);
-	Info_AddChoice		(DIA_Salandril_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Salandril_PICKPOCKET_DoIt);
-};
-
-func void DIA_Salandril_PICKPOCKET_DoIt()
-{
-	if (other.attribute[ATR_DEXTERITY] >= 30)
-	{
-		CreateInvItems (self, ItKe_Salandril, 1);
-		B_GiveInvItems (self, other, ItKe_Salandril, 1);
-		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
-		
-		DIA_Salandril_PICKPOCKET_perm = TRUE;
-		B_GivePlayerXP (XP_Ambient);
-		Info_ClearChoices (DIA_Salandril_PICKPOCKET);
-	}
-	else
-	{
-		AI_StopProcessInfos	(self);
-		B_Attack (self, other, AR_Theft, 1); 
-	};
-};
-	
-func void DIA_Salandril_PICKPOCKET_BACK()
-{
-	Info_ClearChoices (DIA_Salandril_PICKPOCKET);
-};
 ///////////////////////////////////////////////////////////////////////
 //	Info Hallo
 ///////////////////////////////////////////////////////////////////////
@@ -201,7 +145,7 @@ INSTANCE DIA_Salandril_KAP3_EXIT(C_INFO)
                   
 FUNC INT DIA_Salandril_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -336,7 +280,7 @@ INSTANCE DIA_Salandril_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Salandril_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -370,7 +314,7 @@ INSTANCE DIA_Salandril_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Salandril_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -405,7 +349,7 @@ INSTANCE DIA_Salandril_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Salandril_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

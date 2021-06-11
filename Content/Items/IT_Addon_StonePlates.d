@@ -53,34 +53,16 @@ const string StPl_StandardText 	= "";
 // 	Skill Check
 //------------------------------------------------------------------------------------------
 
-func int C_SCHasStPlSkill ()
+func int C_SCHasStPlSkill()
 {
-			if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
-			{
-				return FALSE;
-			};
-				
-			if 		(StoneplateLevel == 1)
-			{
-				if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-					{
-						return TRUE;
-					};
-			}
-			else if (StoneplateLevel == 2)
-			{
-				if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-					{
-						return TRUE;
-					};
-			}
-			else if (StoneplateLevel == 3)
-			{
-				if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == TRUE)
-					{
-						return TRUE;
-					};
-			};
+	if (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == true)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	};
 };
 
 func void Use_StonePlate ()

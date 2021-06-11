@@ -1,9 +1,11 @@
 ///******************************************************************************************
-///	MOD_Poison
+///	MOD_BodyStates
 ///******************************************************************************************
+
+/// ------ Poison ------
 func void MOD_PoisonON()
 {
-	if (bState[BS_Poison] == false)
+	if (!bState[BS_Poison])
 	{
 		bState[BS_Poison] = true;
 		Bar_Delete(Bar_healthBar);
@@ -11,16 +13,14 @@ func void MOD_PoisonON()
 };
 func void MOD_PoisonOFF()
 {
-	if (bState[BS_Poison] == true)
+	if (bState[BS_Poison])
 	{
 		bState[BS_Poison] = false;
 		Bar_Delete(Bar_healthBar);
 	};
 };
 
-///******************************************************************************************
-///	MOD_HeavyArmor
-///******************************************************************************************
+/// ------ HeavyArmor ------
 func void Equip_HeavyArmor()
 {
 	if (Npc_IsPlayer(self))

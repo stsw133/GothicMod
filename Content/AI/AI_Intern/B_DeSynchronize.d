@@ -1,9 +1,8 @@
 ///******************************************************************************************
-///	B_MM_DeSynchronize
+///	B_DeSynchronize
 ///******************************************************************************************
-func int B_MM_DeSynchronize()
+func int B_DeSynchronize()
 {
-	var int msec;
-	msec = Hlp_Random(1000);
+	var int msec; msec = Hlp_Random(1000);
 	AI_Waitms (self, msec);
 };

@@ -1,12 +1,6 @@
 ///******************************************************************************************
 ///	B_RaiseAttribute
 ///******************************************************************************************
-func void B_RaiseRealAttributeLearnCounter (var C_NPC oth, var int attrib, var int points)
-{
-	
-};
-
-///******************************************************************************************
 func void B_RaiseAttribute (var C_NPC oth, var int attrib, var int points)
 {
 	var string concatText;
@@ -27,8 +21,7 @@ func void B_RaiseAttribute (var C_NPC oth, var int attrib, var int points)
 	
 	if (attrib == ATR_POWER)			
 	{
-		oth.aivar[AIV_Power] += points;
-		POWER_CHECK(oth);
+		Npc_AddPowerPoints(oth, points);
 		concatText = ConcatStrings(PRINT_LearnPower, IntToString(points));
 		PrintScreen	(concatText, -1, -1, FONT_SCREEN, 2);
 	};
@@ -49,5 +42,5 @@ func void B_RaiseAttribute (var C_NPC oth, var int attrib, var int points)
 		PrintScreen	(concatText, -1, -1, FONT_SCREEN, 2);
 	};
 	
-	ENE_MAX_CHECK(hero);
+	Npc_EnergyMaxRefresh(hero);
 };

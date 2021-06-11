@@ -13,7 +13,7 @@ INSTANCE DIA_Rosi_EXIT   (C_INFO)
 
 FUNC INT DIA_Rosi_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -71,7 +71,7 @@ instance DIA_Rosi_WASMACHSTDU		(C_INFO)
 func int DIA_Rosi_WASMACHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rosi_HALLO))
-	&& (Kapitel < 5)
+	&& (Kapitel < 11)
 		{
 				return TRUE;
 		};
@@ -113,7 +113,7 @@ func int DIA_Rosi_WAREZ_Condition ()
 {
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Rosi_WASMACHSTDU))
-		|| ((Kapitel >= 5)	&&	(Npc_KnowsInfo(other, DIA_Rosi_FLEEFROMSEKOB)))
+		|| ((Kapitel >= 11)	&&	(Npc_KnowsInfo(other, DIA_Rosi_FLEEFROMSEKOB)))
 		||  (Npc_IsDead(Sekob))
 		)
 		&& (MIS_bringRosiBackToSekob != LOG_SUCCESS)
@@ -295,7 +295,7 @@ instance DIA_Rosi_PERMKAP1		(C_INFO)
 func int DIA_Rosi_PERMKAP1_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rosi_WASMACHSTDU))
-	|| ((Kapitel >= 5)	&&	(Npc_KnowsInfo(other, DIA_Rosi_FLEEFROMSEKOB)))
+	|| ((Kapitel >= 11)	&&	(Npc_KnowsInfo(other, DIA_Rosi_FLEEFROMSEKOB)))
 		{
 					return TRUE;
 			};
@@ -341,7 +341,7 @@ INSTANCE DIA_Rosi_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Rosi_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -376,7 +376,7 @@ INSTANCE DIA_Rosi_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Rosi_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -410,7 +410,7 @@ INSTANCE DIA_Rosi_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Rosi_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -435,7 +435,7 @@ instance DIA_Rosi_FLEEFROMSEKOB		(C_INFO)
 
 func int DIA_Rosi_FLEEFROMSEKOB_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	&& (Rosi_FleeFromSekob_Kap5 == TRUE)
 	{
 		return TRUE;
@@ -547,7 +547,7 @@ instance DIA_Rosi_ANGEKOMMEN		(C_INFO)
 
 func int DIA_Rosi_ANGEKOMMEN_Condition ()
 {
-	if 	(Kapitel == 5)
+	if 	(Kapitel == 11)
 	&&	(MIS_bringRosiBackToSekob != LOG_SUCCESS)
 	&& (Rosi_FleeFromSekob_Kap5 == TRUE)
 	&&	(
@@ -693,7 +693,7 @@ INSTANCE DIA_Rosi_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Rosi_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

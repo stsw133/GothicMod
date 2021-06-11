@@ -48,7 +48,7 @@ FUNC INT DIA_Addon_Rhademes_First_Condition()
 };
 FUNC VOID DIA_Addon_Rhademes_First_Info()
 {
-	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == true)
 	{
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_00"); //Mój duch by³ uwiêziony przez ca³¹ wiecznoœæ.
 		AI_Output (self, other, "DIA_Addon_Rhademes_First_03_01"); //W koñcu jestem wolny. Miecz ma NOWEGO powiernika.

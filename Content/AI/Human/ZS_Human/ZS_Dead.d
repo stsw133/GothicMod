@@ -39,7 +39,7 @@ func void ZS_Dead()
 	
 	if (Npc_IsPlayer(other))
 	{
-		self.aivar[AIV_KilledByPlayer] = DBP_Killed;
+		self.aivar[AIV_DefeatedByPlayer] = DBP_Killed;
 		
 		if (C_DropUnconscious())
 		{

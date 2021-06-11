@@ -133,6 +133,7 @@ func void DIA_Grimbald_Jagd_Info ()
 	{
 		AI_Output			(self, other, "DIA_Grimbald_Jagd_07_01"); //Hmmm. Dobrze. Co prawda do tej pory nie bardzo mi pomog³eœ, ale nie zamierzam ciê od razu skreœlaæ.
 		Grimbald_TeachAnimalTrophy = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else
 	{
@@ -153,6 +154,7 @@ func void DIA_Grimbald_Jagd_ja ()
 		{
 			AI_Output			(self, other, "DIA_Grimbald_Jagd_ja_07_01"); //W porz¹dku. Powiedz mi, kiedy bêdziesz chcia³ siê czegoœ nauczyæ.
 			Grimbald_TeachAnimalTrophy = TRUE;
+			self.aivar[AIV_CanTeach] = true;
 		}
 		else
 		{
@@ -167,127 +169,6 @@ func void DIA_Grimbald_Jagd_zuviel ()
 	AI_Output			(self, other, "DIA_Grimbald_Jagd_zuviel_07_01"); //Skoro tak mówisz.
 	Info_ClearChoices	(DIA_Grimbald_Jagd);
 };
-
-
-///////////////////////////////////////////////////////////////////////
-//	Info TeachHunting
-///////////////////////////////////////////////////////////////////////
-instance DIA_Grimbald_TEACHHUNTING		(C_INFO)
-{
-	npc		     = 	BAU_982_Grimbald;
-	nr           =  12;
-	condition	 = 	DIA_Grimbald_TEACHHUNTING_Condition;
-	information	 = 	DIA_Grimbald_TEACHHUNTING_Info;
-	permanent	 =  TRUE;
-	description	 = 	"Naucz mnie, jak powinno siê polowaæ.";
-};
-
-func int DIA_Grimbald_TEACHHUNTING_Condition ()
-{
-	if (Grimbald_TeachAnimalTrophy == TRUE)
-		{
-				return TRUE;
-		};
-};
-var int DIA_Grimbald_TEACHHUNTING_OneTime;
-func void DIA_Grimbald_TEACHHUNTING_Info ()
-{
-	AI_Output			(other, self, "DIA_Grimbald_TEACHHUNTING_15_00"); //Naucz mnie, jak powinno siê polowaæ.
-	if (DIA_Grimbald_TEACHHUNTING_OneTime == FALSE)
-	{
-		B_StartOtherRoutine	(self,"JagdOver");
-		DIA_Grimbald_TEACHHUNTING_OneTime = TRUE;
-	};
-	
-	if 		(
-				(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Mandibles] == FALSE)
-				||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_CrawlerPlate] == FALSE)
-			)
-			{
-				AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_07_01"); //Czego konkretnie chcia³byœ siê dowiedzieæ?
-	
-				Info_AddChoice		(DIA_Grimbald_TEACHHUNTING, DIALOG_BACK, DIA_Grimbald_TEACHHUNTING_BACK);
-			
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Grimbald_TEACHHUNTING, B_BuildLearnString ("¯¹d³o krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFSting)),  DIA_Grimbald_TEACHHUNTING_BFSting);
-				};
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Grimbald_TEACHHUNTING, B_BuildLearnString ("Skrzyd³a krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFWing)),  DIA_Grimbald_TEACHHUNTING_BFWing	);
-				};
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Grimbald_TEACHHUNTING, B_BuildLearnString ("Usuñ pazury",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Claws)),  DIA_Grimbald_TEACHHUNTING_Claws	);
-				};
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Mandibles] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Grimbald_TEACHHUNTING, B_BuildLearnString ("Usuñ ¿uwaczkê",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Mandibles)),  DIA_Grimbald_TEACHHUNTING_Mandibles);
-				};
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_CrawlerPlate] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Grimbald_TEACHHUNTING, B_BuildLearnString ("Usuñ p³yty pancerza zêbacza",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_CrawlerPlate)),  DIA_Grimbald_TEACHHUNTING_CrawlerPlate);
-				};
-			}
-			else
-			{
-				AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_07_02"); //Wiesz ju¿ wszystko, czego móg³bym ciê nauczyæ.
-			};
-};
-
-func void DIA_Grimbald_TEACHHUNTING_BACK()
-{
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
-func void DIA_Grimbald_TEACHHUNTING_BFSting()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFSting))
-		{
-			AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_BFSting_07_00"); //Usuniêcie ¿¹d³a krwiopijcy nie powinno ci nastrêczaæ problemów. Wystarczy mocny nó¿.
-		};
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
-func void DIA_Grimbald_TEACHHUNTING_BFWing()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFWing))
-		{
-			AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_BFWing_07_00"); //Skrzyd³a krwiopijcy mo¿na urwaæ lub obci¹æ ostrym no¿em.
-		};
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
-func void DIA_Grimbald_TEACHHUNTING_Claws ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws))
-		{
-			AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_Claws_07_00"); //Istniej¹ ró¿ne sposoby usuwania pazurów. W przypadku niektórych zwierz¹t bêdziesz potrzebowaæ naprawdê du¿o si³y, kiedy indziej wystarczy jedynie ostry nó¿.
-		};
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
-func void DIA_Grimbald_TEACHHUNTING_Mandibles ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Mandibles))
-		{
-			AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_Mandibles_07_00"); //Pe³zacze i polne bestie maj¹ mocne ¿uwaczki, które mo¿na wyrwaæ z ich czaszek za pomoc¹ silnego szarpniêcia.
-		};
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
-func void DIA_Grimbald_TEACHHUNTING_CrawlerPlate ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_CrawlerPlate))
-		{
-			AI_Output			(self, other, "DIA_Grimbald_TEACHHUNTING_CrawlerPlate_07_00"); //Pancerz pe³zacza przylega œciœle do jego cia³a, jednak mo¿na go podwa¿yæ jakimœ p³askim narzêdziem.
-		};
-	Info_ClearChoices	(DIA_Grimbald_TEACHHUNTING);
-};
-
 
 ///////////////////////////////////////////////////////////////////////
 //	Info NovChase

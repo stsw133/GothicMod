@@ -13,7 +13,7 @@ INSTANCE DIA_Hilda_EXIT   (C_INFO)
 
 FUNC INT DIA_Hilda_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -40,7 +40,7 @@ instance DIA_Hilda_Hallo (C_INFO)
 func int DIA_Hilda_Hallo_Condition ()
 {
 	if (MIS_Lobart_Rueben != LOG_SUCCESS)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -76,7 +76,7 @@ instance DIA_Hilda_WasZuEssen (C_INFO)
 func int DIA_Hilda_WasZuEssen_Condition ()
 {
 	if ( (Npc_KnowsInfo (other, DIA_Hilda_Hallo)) || (MIS_Lobart_Rueben == LOG_SUCCESS) )
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -154,7 +154,7 @@ func int DIA_Hilda_BringBeet_Condition ()
 {
 	if (MIS_Lobart_RuebenToHilda == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItPl_Beet) >= 1)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -208,7 +208,7 @@ instance DIA_Hilda_Einkaufen (C_INFO)
 func int DIA_Hilda_Einkaufen_Condition ()
 {
 	if (MIS_Lobart_RuebenToHilda == LOG_SUCCESS)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -251,7 +251,7 @@ func int DIA_Hilda_PfanneGeholt_Condition ()
 {
 	if (MIS_Hilda_PfanneKaufen == LOG_RUNNING)
 	&& (Npc_HasItems(other, itmi_pan) > 0)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -287,7 +287,7 @@ func int DIA_Hilda_PfanneTooLate_Condition ()
 {
 	if (MIS_Hilda_PfanneKaufen == LOG_RUNNING)
 	&& (MIS_Hilda_PfanneKaufen_Day <= (Wld_GetDay()-1))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -360,7 +360,7 @@ func int DIA_Hilda_TruheRumgemacht_Condition ()
 	if (Mob_HasItems("CHEST_LOBART", ITAR_Bau_L) == FALSE)
 	&& (Lobart_Kleidung_Verkauft == FALSE)
 	&& (! ( Npc_KnowsInfo(other,DIA_Lobart_STOLENCLOTHS) && (Lobart_Kleidung_gestohlen == FALSE) ) )
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -399,7 +399,7 @@ INSTANCE DIA_Hilda_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hilda_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -425,7 +425,7 @@ instance DIA_Hilda_KRANK		(C_INFO)
 
 func int DIA_Hilda_KRANK_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& ((hero.guild == GIL_MIL) || (hero.guild == GIL_PAL)	||	(hero.guild == GIL_KDF))
 	&& (MIS_HealHilda != LOG_SUCCESS)
 		{
@@ -523,7 +523,7 @@ func int DIA_Hilda_DISTURB_Condition ()
 	if (MIS_HealHilda == LOG_SUCCESS)
 	||	( 
 		((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG) )
-		&& (Kapitel > 3)
+		&& (Kapitel > 9)
 		)
 			{
 					return TRUE;
@@ -567,7 +567,7 @@ INSTANCE DIA_Hilda_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hilda_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -601,7 +601,7 @@ INSTANCE DIA_Hilda_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hilda_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -636,7 +636,7 @@ INSTANCE DIA_Hilda_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hilda_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

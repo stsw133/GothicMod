@@ -37,7 +37,7 @@ instance DIA_Till_HALLO		(C_INFO)
 
 func int DIA_Till_HALLO_Condition ()
 {
-	if (Kapitel < 5)
+	if (Kapitel < 11)
 		{
 				return TRUE;
 		};
@@ -51,7 +51,7 @@ func void DIA_Till_HALLO_Info ()
 
 	Info_ClearChoices	(DIA_Till_HALLO);
 
-	if (Kapitel < 5)
+	if (Kapitel < 11)
 	{
 		Info_AddChoice	(DIA_Till_HALLO, "Nie jestem pomocnikiem.", DIA_Till_HALLO_keinervoneuch );
 	
@@ -96,7 +96,7 @@ instance DIA_Till_FELDARBEITER		(C_INFO)
 func int DIA_Till_FELDARBEITER_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Till_HALLO))
-	&& (Kapitel < 5)
+	&& (Kapitel < 11)
 		{
 				return TRUE;
 		};
@@ -128,7 +128,7 @@ func int DIA_Till_SEKOB_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Till_FELDARBEITER))
 		&&((Npc_KnowsInfo(other, DIA_Sekob_HALLO))== FALSE)
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		&& (Npc_IsDead(Sekob)== FALSE)
 		)
 			{
@@ -167,7 +167,7 @@ func int DIA_Till_WASMACHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Till_HALLO))
 	&& (hero.guild != GIL_MIL)
-	&& (Kapitel < 5)
+	&& (Kapitel < 11)
 		{
 				return TRUE;
 		};
@@ -201,7 +201,7 @@ func int DIA_Till_WARUMNICHTSLD_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Till_WASMACHSTDU))
 	&& (hero.guild != GIL_MIL)
-	&& (Kapitel < 5)
+	&& (Kapitel < 11)
 		{
 				return TRUE;
 		};
@@ -231,7 +231,7 @@ func int DIA_Till_BRONKO_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Till_FELDARBEITER))
 		&& (Npc_KnowsInfo(other, DIA_Bronko_HALLO))
-		&& (Kapitel < 5)
+		&& (Kapitel < 11)
 		)
 			{
 					return TRUE;
@@ -274,7 +274,7 @@ func int DIA_Till_BRONKOZURARBEIT_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Till_BRONKO))
 		&& (DIA_Till_BRONKOZURARBEIT_noPerm == FALSE)
-		&& (Kapitel < 5)
+		&& (Kapitel < 11)
 		)
 			{
 					return TRUE;
@@ -394,7 +394,7 @@ func int DIA_Till_BRONKOWIEDERANARBEIT_Condition ()
 	if 	(
 		(MIS_Sekob_Bronko_eingeschuechtert == LOG_SUCCESS)
 		&& (DIA_Till_BRONKOZURARBEIT_noPerm == TRUE)
-		&& (Kapitel < 5)
+		&& (Kapitel < 11)
 		)
 		{
 				return TRUE;
@@ -446,7 +446,7 @@ instance DIA_Till_PERMKAP1		(C_INFO)
 func int DIA_Till_PERMKAP1_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Till_HALLO))
-	|| (Kapitel >= 5)
+	|| (Kapitel >= 11)
 		{
 				return TRUE;
 		};
@@ -454,7 +454,7 @@ func int DIA_Till_PERMKAP1_Condition ()
 
 func void DIA_Till_PERMKAP1_Info ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 		{
 			if (MIS_bringRosiBackToSekob != LOG_SUCCESS)
 			&& (Rosi_FleeFromSekob_Kap5 == TRUE)

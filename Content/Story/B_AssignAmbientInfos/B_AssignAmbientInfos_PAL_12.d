@@ -89,7 +89,7 @@ INSTANCE DIA_PAL_12_LOCATION(C_INFO)
 
 FUNC INT DIA_PAL_12_LOCATION_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -127,7 +127,7 @@ FUNC VOID DIA_PAL_12_STANDARD_Info()
 	if (other.guild == GIL_PAL)
 	|| (other.guild == GIL_KDF)
 	{
-		if (Kapitel <= 4)
+		if (Kapitel <= 10)
 		{
 			if (MIS_OLDWORLD == LOG_SUCCESS)
 			{
@@ -139,7 +139,7 @@ FUNC VOID DIA_PAL_12_STANDARD_Info()
 			};
 		};
 
-		if (Kapitel >= 5)
+		if (Kapitel >= 11)
 		{
 			AI_Output (self, other, "DIA_PAL_12_STANDARD_12_03"); //Innosowi niech bêd¹ dziêki! Zagro¿enie ze strony smoków zosta³o za¿egnane. Teraz od rudy dziel¹ nas ju¿ tylko orkowie.
 		};

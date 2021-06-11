@@ -130,9 +130,9 @@ FUNC VOID DIA_SLD_7_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_SLD_7_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
-		if (EnterOW_Kapitel < 2)
+		if (EnterOW_Kapitel < 8)
 		{
 			if (other.guild == GIL_SLD)
 			{
@@ -157,7 +157,7 @@ FUNC VOID DIA_SLD_7_STANDARD_Info()
 		};	
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet == LOG_SUCCESS)
 		{
@@ -186,7 +186,7 @@ FUNC VOID DIA_SLD_7_STANDARD_Info()
 		};		
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		if (hero.guild == GIL_DJG)
 		{
@@ -200,7 +200,7 @@ FUNC VOID DIA_SLD_7_STANDARD_Info()
 		};
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_SLD_7_STANDARD_07_15"); //Do diab³a, d³u¿ej tego nie zniosê. Owce, pastwiska, drzewa. Drzewa, owce i pastwiska. Chcê siê st¹d w koñcu wydostaæ.
 	};

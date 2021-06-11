@@ -17,7 +17,7 @@ INSTANCE DIA_MiltenNW_EXIT(C_INFO)
 
 FUNC INT DIA_MiltenNW_EXIT_Condition()
 {
-	if (Kapitel < 3)	
+	if (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -53,7 +53,7 @@ INSTANCE DIA_MiltenNW_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -130,7 +130,7 @@ INSTANCE DIA_MiltenNW_Monastery(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_Monastery_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -157,7 +157,7 @@ INSTANCE DIA_MiltenNW_FourFriends(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_FourFriends_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -208,7 +208,7 @@ INSTANCE DIA_MiltenNW_KAP3_Entry(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP3_Entry_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	&& (hero.guild != GIL_KDF)
 	&& (MiltenNW_GivesMonasteryKey == FALSE)
 	{
@@ -290,7 +290,7 @@ INSTANCE DIA_MiltenNW_KAP3_NovizenChase(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP3_NovizenChase_Condition()
 {
-	IF 	(Kapitel == 3) 
+	IF 	(Kapitel == 9) 
 	&&	(MIS_NOVIZENCHASE == LOG_RUNNING) 
 	&& 	(MIS_SCKnowsInnosEyeIsBroken == FALSE)
 	{
@@ -322,7 +322,7 @@ INSTANCE DIA_MiltenNW_KAP3_Perm(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP3_Perm_Condition()
 {
-	IF 	(Kapitel == 3)
+	IF 	(Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -357,7 +357,7 @@ INSTANCE DIA_MiltenNW_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -382,7 +382,7 @@ INSTANCE DIA_MiltenNW_KAP4_PERM(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP4_PERM_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -435,7 +435,7 @@ INSTANCE DIA_MiltenNW_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -460,7 +460,7 @@ INSTANCE DIA_MiltenNW_AllDragonsDead(C_INFO)
 };                       
 FUNC INT DIA_MiltenNW_AllDragonsDead_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -712,130 +712,3 @@ func void DIA_MiltenNW_StillNeedYou_Info ()
 	
 		AI_StopProcessInfos (self);
 };
-
-
-/*
-// ************************************************************
-// 		Teach
-// ************************************************************
-INSTANCE DIA_MiltenNW_Teach(C_INFO)
-{
-	npc			= PC_Mage_NW;
-	nr			= 90;
-	condition	= DIA_MiltenNW_Teach_Condition;
-	information	= DIA_MiltenNW_Teach_Info;
-	permanent	= TRUE;
-	description = "Chcê siê nauczyæ nowych zaklêæ.";
-};                       
-
-FUNC INT DIA_MiltenNW_Teach_Condition()
-{	
-	if (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};
-}; 
-FUNC VOID DIA_MiltenNW_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_MiltenNW_Teach_15_00");//Chcê siê nauczyæ nowych zaklêæ.
-	
-	if  (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-	{
-		Info_ClearChoices (DIA_MiltenNW_Teach);
-		Info_AddChoice (DIA_MiltenNW_Teach,DIALOG_BACK,DIA_MiltenNW_Teach_BACK);
-		
-		if (PLAYER_TALENT_RUNES [SPL_WINDFIST] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_WINDFIST, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_WINDFIST)) ,DIA_MiltenNW_Teach_Windfist);
-		};
-		if (PLAYER_TALENT_RUNES [SPL_InstantFireball] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_InstantFireball, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_InstantFireball)) ,DIA_MiltenNW_Teach_Feuerball);
-		};
-		if (PLAYER_TALENT_RUNES [SPL_Icebolt] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenNW_Teach, B_BuildLearnString (NAME_SPL_Icebolt, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Icebolt)) ,DIA_MiltenNW_Teach_Eispfeil);
-		};
-	}
-	else
-	{
-		AI_Output (self ,other,"DIA_MiltenNW_Teach_03_01");//Nie pozna³eœ jeszcze drugiego krêgu magii! Nie mogê ciê niczego nauczyæ.
-	};
-};	
-FUNC VOID DIA_MiltenNW_Teach_BACK()
-{
-	Info_ClearChoices (DIA_MiltenNW_Teach);
-};
-FUNC VOID DIA_MiltenNW_Teach_WINDFIST()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_WINDFIST);	
-};
-FUNC VOID DIA_MiltenNW_Teach_Feuerball()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_InstantFireball);	
-};
-FUNC VOID DIA_MiltenNW_Teach_Eispfeil()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Icebolt);	
-};
-//*********************************************************************
-//	Info TEACH
-//*********************************************************************
-instance DIA_MiltenNW_Mana		(C_INFO)
-{
-	npc		  	 = 	PC_Mage_NW;
-	nr			 = 	100;
-	condition	 = 	DIA_MiltenNW_Mana_Condition;
-	information	 = 	DIA_MiltenNW_Mana_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê zwiêkszyæ moj¹ magiczn¹ moc.";
-};
-func int DIA_MiltenNW_Mana_Condition ()
-{	
-	if (other.guild == GIL_KDF)	
-	{
-		return TRUE;
-	};
-};
-func void DIA_MiltenNW_Mana_Info ()
-{
-	AI_Output (other, self, "DIA_MiltenNW_Mana_15_00"); //Chcê zwiêkszyæ moj¹ magiczn¹ moc.
-	
-	Info_ClearChoices   (DIA_MiltenNW_Mana);
-	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
-	
-};
-func void DIA_MiltenNW_Mana_BACK()
-{
-	if (other.attribute[ATR_MANA_MAX] >= T_MED)
-	{
-		AI_Output (self, other, "DIA_MiltenNW_Mana_03_00"); //Twoja magiczna moc i tak jest ogromna. Obawiam siê, ¿e nie mogê ci pomóc.
-	};
-	Info_ClearChoices (DIA_MiltenNW_Mana);
-};
-func void DIA_MiltenNW_Mana_1()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MED);
-	
-	Info_ClearChoices   (DIA_MiltenNW_Mana);
-	
-	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
-	
-	
-};
-func void DIA_MiltenNW_Mana_5()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MED);
-	
-	Info_ClearChoices   (DIA_MiltenNW_Mana);
-	
-	Info_AddChoice 		(DIA_MiltenNW_Mana, DIALOG_BACK, DIA_MiltenNW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenNW_Mana_1);
-	Info_AddChoice		(DIA_MiltenNW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenNW_Mana_5);
-	
-};
-*/

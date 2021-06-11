@@ -3,11 +3,9 @@
 ///******************************************************************************************
 func void B_Say_AttackReason()
 {
-	/// ------ wenn ich temp_hostile (= upset) bin ------
 	if (Wld_GetGuildAttitude(self.guild, other.guild) != ATT_HOSTILE)
 	&& (Npc_GetAttitude(self, other) == ATT_HOSTILE)
 	{
-		/// ------ nicht bei AR_Kill, da wird autom. auf perm hostile gesetzt ------
 		if (self.aivar[AIV_ATTACKREASON] == AR_KILL)
 		{
 			return;
@@ -17,7 +15,6 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ Enemy = Mensch oder Monster ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
 	{
 		if (self.aivar[AIV_PARTYMEMBER])
@@ -74,21 +71,18 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ Spieler hat Item geklaut ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_Theft)
 	{
 		B_Say_Overlay (self, other, "$DIRTYTHIEF");
 		return;
 	};
 	
-	/// ------ Spieler hat an Mob mit Besitzflag rumgefummelt (kann JEDES Mob sein) ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_UseMob)
 	{
 		B_Say_Overlay (self, other, "$HANDSOFF");
 		return;
 	};
 	
-	/// ------ Schaf wurde angegriffen oder getötet (von Mensch oder Monster) ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_SheepKiller)
 	{
 		if (other.guild < GIL_SEPERATOR_HUM)
@@ -102,7 +96,6 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ Mensch hat Mensch ermordet ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
 	{
 		B_Say_Overlay (self, other, "$YOUMURDERER");
@@ -110,13 +103,11 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ Monster hat Human getötet ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterMurderedHuman)
 	{
 		return;
 	};
 	
-	/// ------ Monster kämpft gegen Human - ich helfe Human ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterVsHuman)
 	{
 		B_Say_Overlay (self, other, "$DIEMONSTER");
@@ -124,18 +115,14 @@ func void B_Say_AttackReason()
 		return;
 	};
 	
-	/// ------ GateGuards halten nicht-feindliches Monster auf ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
 	{
 		B_Say_Overlay (self, other, "$DIESTUPIDBEAST");
 		return;
 	};
 	
-	/// ------ Täter hat mich verletzt ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
 	{
-		/// ------ (N)SC ist Monster ------
-		/// SC = verwandeltes Monster oder nicht-feindliches Monster
 		if (other.guild > GIL_SEPERATOR_HUM)
 		{
 			B_Say_Overlay (self, other, "$YOUASKEDFORIT");
@@ -148,41 +135,35 @@ func void B_Say_AttackReason()
 		};
 	};
 	
-	/// ------ Täter hat trotz zweimaliger Warnung Waffe nicht weggesteckt ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon)
 	{
 		B_Say_Overlay (self, other, "$YOUASKEDFORIT");
 		return;
 	};
 	
-	/// ------ Spieler ist unbefugt in meinem Raum ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_ClearRoom)
 	{
 		B_Say_Overlay (self, other, "$THENIBEATYOUOUTOFHERE");
 		return;
 	};
 	
-	/// ------ Spieler hat (verbotenen) Portalraum verlassen ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom)
 	{
 		B_Say_Overlay (self, other, "$WHATDIDYOUDOINTHERE");
 		return;
 	};
 	
-	/// ------ Wache beendet Kampf, greift Täter an ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
 	{
 		B_Say_Overlay (self, other, "$WILLYOUSTOPFIGHTING");
 		return;
 	};
 	
-	/// ------ Wache zu Dieb gerufen ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToThief)
 	{
 		return;
 	};
 	
-	/// ------ Wache zu PortalRaum gerufen ------
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToRoom)
 	{
 		return;

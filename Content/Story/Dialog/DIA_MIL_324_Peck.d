@@ -101,7 +101,7 @@ func int DIA_Peck_WEAPON_Condition ()
 {	
 	if Npc_KnowsInfo (other, DIA_Andre_FOUND_PECK)
 	&& (Npc_GetDistToWP (self, "NW_CITY_ARMORY_PECK") <= 1000)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (DIA_Peck_WEAPON_perm == FALSE)
 	{
 		return TRUE;
@@ -184,7 +184,7 @@ func void DIA_Peck_WEAPON2_Info ()
 		AI_Output (self ,other,"DIA_Peck_Add_12_06"); //Nie zapomnia³em o tym, ¿e donios³eœ na mnie Lordowi Andre.
 		B_Peck_LeckMich();
 	}
-	else if (Kapitel < 3)
+	else if (Kapitel < 9)
 	{
 		AI_Output (self ,other,"DIA_Peck_Add_12_02"); //W tej chwili nie...
 	}
@@ -229,11 +229,11 @@ func void DIA_Peck_PERM_Info ()
 	{	
 		B_Peck_LeckMich();
 	}
-	else if (Kapitel != 3)
+	else if (Kapitel != 9)
 	{
 		AI_Output			(self, other, "DIA_Peck_PERM_12_01"); //Taa, a u ciebie?
 	}
-	else if (Kapitel == 3)
+	else if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet != LOG_SUCCESS)
 		{

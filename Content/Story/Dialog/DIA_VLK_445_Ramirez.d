@@ -285,7 +285,7 @@ FUNC INT DIA_Ramirez_Sextant_Condition()
 {
 	if (Knows_SecretSign == TRUE)
 	&& (MIS_CassiaRing == LOG_SUCCESS)
-	&& (Kapitel >= 2)
+	&& (Kapitel >= 8)
 	{
 		return TRUE;
 	};

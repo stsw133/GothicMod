@@ -93,7 +93,7 @@ FUNC INT DIA_GornOW_MetMilten_Condition()
 	if (Mis_RescueGorn == LOG_SUCCESS)
 	&& (Npc_GetDistToWP	(self,"OC_MAGE_LIBRARY_IN") <=	500) 
 	&&  Npc_IsInState (self, ZS_Talk)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{	
 		return TRUE;
 	};
@@ -132,7 +132,7 @@ INSTANCE DIA_GornOW_SeeYou (C_INFO)
 FUNC INT DIA_GornOW_SeeYou_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_GornOW_MetMilten)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{	
 		return TRUE;
 	};

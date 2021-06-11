@@ -503,7 +503,6 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		B_LogEntry (TOPIC_Dragonhunter, "Die grosse Drachenjagd ist eröffnet und hat vermutlich viele Möchtegernabenteurer ins Minental gelockt. Ich kann nur hoffen, dass sie mir nicht im Wege stehen."); 
 		
 		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(10)), TEXT_Chapter_10, "chapter4.tga", "chapter_01.wav", 6000);
-		
 		EnterOW_Kapitel = 10;
 	};
 	

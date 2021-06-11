@@ -117,17 +117,17 @@ FUNC VOID DIA_VLK_6_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_VLK_6_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_VLK_6_STANDARD_06_01"); //Od kiedy upad³a Bariera, w mieœcie roi siê od bandytów. Paladyni w ogóle siê tym nie przejmuj¹. Po cholerê wiêc siedz¹ w mieœcie?
 	};
 	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_VLK_6_STANDARD_06_02"); //Ostatnio bandyci nie daj¹ siê a¿ tak bardzo we znaki. Wygl¹da na to, ¿e ktoœ w koñcu siê nimi zaj¹³.
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if MIS_RescueBennet == LOG_SUCCESS
 		{
@@ -139,12 +139,12 @@ FUNC VOID DIA_VLK_6_STANDARD_Info()
 		};
 	};
 	
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_VLK_6_STANDARD_06_05"); //Zastanawiam siê, czy w opowieœciach o smokach jest choæ trochê prawdy...
 	};
 
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_VLK_6_STANDARD_06_06"); //Powiadaj¹, ¿e Lord Hagen zbiera wojska, by wyzwoliæ Górnicz¹ Dolinê. Nareszcie coœ siê dzieje!
 	};

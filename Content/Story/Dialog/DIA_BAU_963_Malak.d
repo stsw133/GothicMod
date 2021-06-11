@@ -13,7 +13,7 @@ INSTANCE DIA_Malak_EXIT   (C_INFO)
 
 FUNC INT DIA_Malak_EXIT_Condition()
 {
-		if (Kapitel < 3)
+		if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -39,7 +39,7 @@ instance DIA_Malak_HALLO		(C_INFO)
 
 func int DIA_Malak_HALLO_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -77,7 +77,7 @@ instance DIA_Malak_WASMACHSTDU		(C_INFO)
 func int DIA_Malak_WASMACHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_HALLO))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -108,7 +108,7 @@ instance DIA_Malak_PASS		(C_INFO)
 func int DIA_Malak_PASS_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_WASMACHSTDU))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -139,7 +139,7 @@ instance DIA_Malak_WOPASS		(C_INFO)
 func int DIA_Malak_WOPASS_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_HALLO))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -170,7 +170,7 @@ instance DIA_Malak_MINENTAL		(C_INFO)
 func int DIA_Malak_MINENTAL_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_PASS))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -202,7 +202,7 @@ instance DIA_Malak_WARSTDUSCHONDA		(C_INFO)
 func int DIA_Malak_WARSTDUSCHONDA_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_PASS))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -236,7 +236,7 @@ func int DIA_Malak_PALADINE_Condition ()
 	if 	(
 		(Npc_KnowsInfo(other, DIA_Malak_WARSTDUSCHONDA))
 		&& 	(Npc_KnowsInfo(other, DIA_Malak_MINENTAL))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		)
 			{
 					return TRUE;
@@ -267,7 +267,7 @@ instance DIA_Malak_KEINEFRAUEN		(C_INFO)
 func int DIA_Malak_KEINEFRAUEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Malak_WASMACHSTDU))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -305,7 +305,7 @@ func int DIA_Malak_PERMKAP1_Condition ()
 		&& (Npc_KnowsInfo(other, DIA_Malak_WARSTDUSCHONDA))
 		&& (Npc_KnowsInfo(other, DIA_Malak_PALADINE))
 		&& (Npc_KnowsInfo(other, DIA_Malak_KEINEFRAUEN))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 		)
 			{
 					return TRUE;
@@ -343,7 +343,7 @@ INSTANCE DIA_Malak_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Malak_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -368,7 +368,7 @@ instance DIA_Malak_FLEEFROMPASS		(C_INFO)
 
 func int DIA_Malak_FLEEFROMPASS_Condition ()
 {
-	if (Kapitel >= 3)	
+	if (Kapitel >= 9)	
 	{
 		return TRUE;
 	};
@@ -410,7 +410,7 @@ func int DIA_Malak_Heilung_Condition ()
 {
  	if (NpcObsessedByDMT_Malak == TRUE) && (NpcObsessedByDMT == FALSE)
 	&& (hero.guild == GIL_KDF)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	 {
 				return TRUE;
 	 };
@@ -464,7 +464,7 @@ func int DIA_Malak_PERMCASTLE_Condition ()
 	&& (Npc_KnowsInfo(other, DIA_Malak_FLEEFROMPASS))
 	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >=3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -497,7 +497,7 @@ func int DIA_Malak_BACKTOBENGAR_Condition ()
 	&& ((Npc_IsDead(Bengar))==FALSE)
 	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -557,7 +557,7 @@ func int DIA_Malak_BACK_Condition ()
 	if (MIS_GetMalakBack == LOG_SUCCESS)
 	&& (NpcObsessedByDMT_Malak == FALSE)	
 	&& (hero.guild != GIL_KDF)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -594,7 +594,7 @@ INSTANCE DIA_Malak_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Malak_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -628,7 +628,7 @@ INSTANCE DIA_Malak_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Malak_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -663,7 +663,7 @@ INSTANCE DIA_Malak_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Malak_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

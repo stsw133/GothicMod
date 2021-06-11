@@ -274,7 +274,7 @@ func void STARTUP_DRAGONISLAND()
 	Log_SetTopicStatus(TOPIC_HallenVonIrdorath, LOG_RUNNING);
 	Log_AddEntry (TOPIC_HallenVonIrdorath, "Wir haben die Insel des Feindes erreicht. Innos weiﬂ, welche Kreaturen im Innern dieses Berges auf mich warten werden.");
 	
-	B_ChangeChapter (6, DRAGONISLAND_ZEN);
+	IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(12)), TEXT_Chapter_12, "chapter6.tga", "chapter_01.wav", 6000);
 };
 
 ///******************************************************************************************

@@ -12,7 +12,7 @@ INSTANCE DIA_Pyrokar_EXIT   (C_INFO)
 };
 FUNC INT DIA_Pyrokar_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -555,7 +555,7 @@ instance DIA_Pyrokar_Wunsch		(C_INFO)
 func int DIA_Pyrokar_Wunsch_Condition ()
 {	
 	if (other.guild == GIL_KDF)
-	&& (Kapitel < 2)
+	&& (Kapitel < 8)
 	{
 		return TRUE;
 	};
@@ -743,7 +743,7 @@ instance DIA_Pyrokar_TEACH		(C_INFO)
 func int DIA_Pyrokar_TEACH_Condition ()
 {	
 	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 5)
-	&& (Kapitel >= 5) 
+	&& (Kapitel >= 11) 
 	{
 		return TRUE;
 	};
@@ -775,79 +775,7 @@ func void DIA_Pyrokar_TEACH_Info ()
 	};
 	
 };
-///////////////////////////////////////////////////////////////////////
-//	Info SPELLS
-///////////////////////////////////////////////////////////////////////
-instance DIA_Pyrokar_SPELLS		(C_INFO)
-{
-	npc			 = 	KDF_500_Pyrokar;
-	nr			 = 	2;
-	condition	 = 	DIA_Pyrokar_SPELLS_Condition;
-	information	 = 	DIA_Pyrokar_SPELLS_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Ucz mnie (tworzenie run)";
-};
-func int DIA_Pyrokar_SPELLS_Condition ()
-{	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) >= 6)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Pyrokar_SPELLS_Info ()
-{
-	var int abletolearn;
-	abletolearn = 0;
-	AI_Output (other, self, "DIA_Pyrokar_SPELLS_15_00"); //Podziel siê ze mn¹ swoj¹ wiedz¹.
-	
-	Info_ClearChoices 	(DIA_Pyrokar_SPELLS);
-	Info_AddChoice		(DIA_Pyrokar_SPELLS, DIALOG_BACK, DIA_Pyrokar_SPELLS_BACK);
-	
-	if (PLAYER_TALENT_RUNES [SPL_Firerain] == FALSE)
-	{
-		Info_AddChoice	(DIA_Pyrokar_SPELLS, B_BuildLearnString (NAME_SPL_Firerain, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Firerain)) ,DIA_Pyrokar_SPELLS_Firerain);
-		abletolearn = (abletolearn +1);
-	};
-	if (PLAYER_TALENT_RUNES [SPL_BreathOfDeath] == FALSE)
-	{
-		Info_AddChoice	(DIA_Pyrokar_SPELLS, B_BuildLearnString (NAME_SPL_BreathOfDeath, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_BreathOfDeath)) ,DIA_Pyrokar_SPELLS_BreathOfDeath);
-		abletolearn = (abletolearn +1);
-	};
-	if (PLAYER_TALENT_RUNES [SPL_MassDeath] == FALSE)
-	{
-		Info_AddChoice	(DIA_Pyrokar_SPELLS, B_BuildLearnString (NAME_SPL_MassDeath, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_MassDeath)) ,DIA_Pyrokar_SPELLS_MassDeath);
-		abletolearn = (abletolearn +1);
-	};
-	if (PLAYER_TALENT_RUNES [SPL_Shrink] == FALSE)
-	{
-		Info_AddChoice	(DIA_Pyrokar_SPELLS, B_BuildLearnString (NAME_SPL_Shrink, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Shrink)) ,DIA_Pyrokar_SPELLS_Shrink);
-		abletolearn = (abletolearn +1);
-	};
-	if (abletolearn < 1)
-	{
-		AI_Output (self, other, "DIA_Pyrokar_SPELLS_11_01"); //Nie mogê ciê ju¿ niczego nauczyæ.
-	};
-};
-FUNC VOID DIA_Pyrokar_SPELLS_BACK()
-{
-	Info_ClearChoices 	(DIA_Pyrokar_SPELLS);
-};
-FUNC VOID DIA_Pyrokar_SPELLS_Firerain()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Firerain);	
-};
-FUNC VOID DIA_Pyrokar_SPELLS_BreathOfDeath()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_BreathOfDeath);	
-};
-FUNC VOID DIA_Pyrokar_SPELLS_MassDeath()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_MassDeath);	
-};
-FUNC VOID DIA_Pyrokar_SPELLS_Shrink()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Shrink);	
-};
+
 ///////////////////////////////////////////////////////////////////////
 //	Info Parlan
 ///////////////////////////////////////////////////////////////////////
@@ -872,8 +800,8 @@ func int DIA_Pyrokar_Parlan_Condition ()
 };
 func void DIA_Pyrokar_Parlan_Info ()
 {
-		AI_Output (other, self, "DIA_Pyrokar_Parlan_15_00"); //Przysy³a mnie Parlan. Chcia³bym zwiêkszyæ swoje magiczne zdolnoœci.
-		AI_Output (self, other, "DIA_Pyrokar_Parlan_11_01"); //Wiele siê ju¿ nauczy³eœ, a twa moc wzros³a. Od tej pory bêdziesz pobiera³ nauki bezpoœrednio u mnie.
+	AI_Output (other, self, "DIA_Pyrokar_Parlan_15_00"); //Przysy³a mnie Parlan. Chcia³bym zwiêkszyæ swoje magiczne zdolnoœci.
+	AI_Output (self, other, "DIA_Pyrokar_Parlan_11_01"); //Wiele siê ju¿ nauczy³eœ, a twa moc wzros³a. Od tej pory bêdziesz pobiera³ nauki bezpoœrednio u mnie.
 };
 /*
 //*********************************************************************
@@ -904,8 +832,8 @@ func void DIA_Pyrokar_TEACH_MANA_Info ()
 		
 		Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
 		Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
+		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
+		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
 };
 FUNC VOID DIA_Pyrokar_TEACH_MANA_BACK()
 {
@@ -922,8 +850,8 @@ FUNC VOID DIA_Pyrokar_TEACH_MANA_1()
 	
 	Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
 };
 FUNC VOID DIA_Pyrokar_TEACH_MANA_5()
 {
@@ -931,8 +859,8 @@ FUNC VOID DIA_Pyrokar_TEACH_MANA_5()
 	
 	Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
 };
 */
 ///////////////////////////////////////////////////////////////////////
@@ -949,7 +877,7 @@ instance DIA_Pyrokar_PERM		(C_INFO)
 };
 func int DIA_Pyrokar_PERM_Condition ()
 {	
-	if (Kapitel >= 2)	
+	if (Kapitel >= 8)	
 	{
 		return TRUE;
 	};
@@ -965,7 +893,7 @@ func void DIA_Pyrokar_PERM_Info ()
 				AI_Output			(other, self, "DIA_Pyrokar_PERM_15_01"); //Mo¿esz mnie pob³ogos³awiæ? Przyda³aby mi siê boska pomoc.
 			};
 		
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	&& 	(MIS_PyrokarClearDemonTower == LOG_SUCCESS)
 			{
 				AI_Output			(self, other, "DIA_Pyrokar_PERM_11_02"); //Niech twe ostatnie starcie z odwiecznym wrogiem zakoñczy siê twoim zwyciêstwem. IdŸ w ³asce Innosa, mój synu.
@@ -999,7 +927,7 @@ INSTANCE DIA_Pyrokar_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Pyrokar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -1024,7 +952,7 @@ instance DIA_Pyrokar_BACKFROMOW		(C_INFO)
 
 func int DIA_Pyrokar_BACKFROMOW_Condition ()
 {
-	if (Kapitel >= 3)	
+	if (Kapitel >= 9)	
 	{
 		return TRUE;
 	};
@@ -1079,7 +1007,7 @@ instance DIA_Pyrokar_GIVEINNOSEYE		(C_INFO)
 
 func int DIA_Pyrokar_GIVEINNOSEYE_Condition ()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 		&& (Npc_HasItems (other,ItWr_PermissionToWearInnosEye_MIS))
 	{
 		return TRUE;
@@ -1149,7 +1077,7 @@ instance DIA_Pyrokar_NOVIZENCHASE		(C_INFO)
 
 func int DIA_Pyrokar_NOVIZENCHASE_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	   && (Pedro_Traitor == TRUE)	
 		{
 				return TRUE;
@@ -1181,7 +1109,7 @@ instance DIA_Pyrokar_FOUNDINNOSEYE		(C_INFO)
 
 func int DIA_Pyrokar_FOUNDINNOSEYE_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& 	(MIS_NovizenChase == LOG_RUNNING)
 		&& ((Npc_HasItems (other,ItAm_InnosEye_Broken)) || 	(MIS_SCKnowsInnosEyeIsBroken  == TRUE))	
 		{
@@ -1268,7 +1196,7 @@ instance DIA_Pyrokar_SPOKETOVATRAS		(C_INFO)
 func int DIA_Pyrokar_SPOKETOVATRAS_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_RUNNING)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};
@@ -1309,7 +1237,7 @@ instance DIA_Pyrokar_XARDASVERTRAUEN		(C_INFO)
 func int DIA_Pyrokar_XARDASVERTRAUEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Pyrokar_SPOKETOVATRAS))
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 				return TRUE;
 		};
@@ -1346,7 +1274,7 @@ instance DIA_Pyrokar_BUCHZURUECK		(C_INFO)
 func int DIA_Pyrokar_BUCHZURUECK_Condition ()
 {
 	if (Npc_HasItems (other,ItWr_XardasBookForPyrokar_Mis))
-		 && (Kapitel == 3)
+		 && (Kapitel == 9)
 		 {
 				return TRUE;
 		 };
@@ -1393,7 +1321,7 @@ func int DIA_Pyrokar_PRERITUAL_Condition ()
 {
 		if (Pyrokar_GoesToRitualInnosEye == TRUE)
 			&& (MIS_RitualInnosEyeRepair == LOG_RUNNING)
-			&& (Kapitel == 3)
+			&& (Kapitel == 9)
 		{
 				return TRUE;
 		};
@@ -1421,7 +1349,7 @@ instance DIA_Pyrokar_AUGEGEHEILT		(C_INFO)
 func int DIA_Pyrokar_AUGEGEHEILT_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_SUCCESS)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};	
@@ -1462,32 +1390,25 @@ instance DIA_Pyrokar_KAP3_READY		(C_INFO)
 
 func int DIA_Pyrokar_KAP3_READY_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& (Npc_KnowsInfo(other, DIA_Pyrokar_AUGEGEHEILT))
 		{
 				return TRUE;
 		};
 };
 
-func void DIA_Pyrokar_KAP3_READY_Info ()
+func void DIA_Pyrokar_KAP3_READY_Info()
 {
-	AI_Output			(other, self, "DIA_Pyrokar_KAP3_READY_15_00"); //Czy jest jeszcze coœ, czym powinienem siê zaj¹æ?
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_01"); //Nie traæmy czasu na drobiazgi. Rozpraw siê raz na zawsze z tymi przeklêtymi smokami. Proszê, oto Oko.
+	AI_Output	(other, self, "DIA_Pyrokar_KAP3_READY_15_00"); //Czy jest jeszcze coœ, czym powinienem siê zaj¹æ?
+	AI_Output	(self, other, "DIA_Pyrokar_KAP3_READY_11_01"); //Nie traæmy czasu na drobiazgi. Rozpraw siê raz na zawsze z tymi przeklêtymi smokami. Proszê, oto Oko.
 	CreateInvItems (self,ItAm_InnosEye,1);
 	B_GiveInvItems (self, other, ItAm_InnosEye,1);
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_02"); //Pamiêtaj, ¿e nim zaatakujesz smoka, powinieneœ z nim porozmawiaæ.
-	//AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_03"); //Das Auge wird dir helfen, die Drachen dazu zu zwingen, mit dir zu reden.
-	//AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_04"); //Es bietet dir nicht nur Schutz gegen ihre Angriffe, es fügt ihnen auch unerträgliche Schmerzen zu, wenn du es bei dir trägst.
-	AI_Output (self ,other, "DIA_Pyrokar_Add_11_01"); //Potêga Oka zmusi smoki do rozmowy z tob¹ i nie pozwoli im sk³amaæ.
-	AI_Output (self ,other, "DIA_Pyrokar_Add_11_02"); //Tak d³ugo, jak bêdziesz je nosi³, bêdzie ciê chroni³ przed smoczymi atakami.
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_05"); //Jego moc nie jest jednak nieskoñczona i musisz je co jakiœ czas nape³niaæ magiczn¹ energi¹.
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_06"); //W tym celu po³¹cz na stole alchemicznym Oko Innosa i esencjê ze smoczego serca.
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_07"); //Dopiero wtedy mo¿esz stawiæ czo³a kolejnemu gadowi.
-	AI_Output			(other, self, "DIA_Pyrokar_KAP3_READY_15_08"); //Dziêki. Bêdê o tym pamiêta³.
-	AI_Output			(self, other, "DIA_Pyrokar_KAP3_READY_11_09"); //Masz ju¿ wszystko, czego potrzebujesz. Ruszaj w drogê. Zosta³o nam niewiele czasu!
+	AI_Output	(self, other, "DIA_Pyrokar_KAP3_READY_11_02"); //Pamiêtaj, ¿e nim zaatakujesz smoka, powinieneœ z nim porozmawiaæ.
+	AI_Output	(self ,other, "DIA_Pyrokar_Add_11_01"); //Potêga Oka zmusi smoki do rozmowy z tob¹ i nie pozwoli im sk³amaæ.
+	AI_Output	(self ,other, "DIA_Pyrokar_Add_11_02"); //Tak d³ugo, jak bêdziesz je nosi³, bêdzie ciê chroni³ przed smoczymi atakami.
+	AI_Output	(other, self, "DIA_Pyrokar_KAP3_READY_15_08"); //Dziêki. Bêdê o tym pamiêta³.
+	AI_Output	(self, other, "DIA_Pyrokar_KAP3_READY_11_09"); //Masz ju¿ wszystko, czego potrzebujesz. Ruszaj w drogê. Zosta³o nam niewiele czasu!
 
-	PLAYER_TALENT_ALCHEMY[Charge_InnosEye] 		= TRUE;	
-	PrintScreen	(PRINT_LearnAlchemyInnosEye, -1, -1, FONT_Screen, 2);
 	TOPIC_END_INNOSEYE = TRUE;
 	B_GivePlayerXP (XP_Ambient);	
 	
@@ -1495,7 +1416,7 @@ func void DIA_Pyrokar_KAP3_READY_Info ()
 	
 	Log_CreateTopic (TOPIC_DRACHENJAGD, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_DRACHENJAGD, LOG_RUNNING);
-	B_LogEntry (TOPIC_DRACHENJAGD,"Jestem gotów stawiæ czo³a smokom. Oko Innosa pozwoli mi odnieœæ zwyciêstwo. Muszê jednak pamiêtaæ, aby za³o¿yæ je przed ka¿d¹ bitw¹ z którymkolwiek ze smoków. Problem polega na tym, ¿e muszê przemówiæ do ka¿dej z tych bestii zanim je zaatakujê, a kiedy z nimi rozmawiam, Oko Innosa traci sw¹ moc. Zanim stawiê czo³a kolejnego smokowi, powinienem po³¹czyæ kamieñ z amuletu z wywarem ze smoczego serca, u¿ywaj¹c do tego celu sto³u alchemicznego i menzurki."); 
+	B_LogEntry (TOPIC_DRACHENJAGD,"Jestem gotów stawiæ czo³a smokom. Oko Innosa pozwoli mi odnieœæ zwyciêstwo. Muszê jednak pamiêtaæ, aby za³o¿yæ je przed ka¿d¹ bitw¹ z którymkolwiek ze smoków. Problem polega na tym, ¿e muszê przemówiæ do ka¿dej z tych bestii zanim je zaatakujê, a kiedy z nimi rozmawiam, Oko Innosa traci sw¹ moc."); 
 
 	MIS_ReadyforChapter4 = TRUE; //Joly: Mit dieser Varible in den Levelchange zur OW -> Kapitel 4
 	B_NPC_IsAliveCheck (NEWWORLD_ZEN);
@@ -1665,7 +1586,7 @@ instance DIA_Pyrokar_AlmanachBringen		(C_INFO)
 
 func int DIA_Pyrokar_AlmanachBringen_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_HasItems (other,ITWR_DementorObsessionBook_MIS) >= 1)
 	&& (hero.guild == GIL_KDF)
 	&& (Npc_KnowsInfo(other, DIA_Pyrokar_BUCHDERBESSENEN))
@@ -1762,7 +1683,7 @@ INSTANCE DIA_Pyrokar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Pyrokar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1795,7 +1716,7 @@ INSTANCE DIA_Pyrokar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Pyrokar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1819,7 +1740,7 @@ instance DIA_Pyrokar_DRACHENTOT		(C_INFO)
 
 func int DIA_Pyrokar_DRACHENTOT_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1849,7 +1770,7 @@ instance DIA_Pyrokar_DERMEISTER		(C_INFO)
 
 func int DIA_Pyrokar_DERMEISTER_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1879,7 +1800,7 @@ instance DIA_Pyrokar_WASISTIRDORATH		(C_INFO)
 
 func int DIA_Pyrokar_WASISTIRDORATH_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	&& (Npc_KnowsInfo(other, DIA_Pyrokar_DERMEISTER))
 		{
 				return TRUE;
@@ -1920,7 +1841,7 @@ instance DIA_Pyrokar_BUCHIRDORATH		(C_INFO)
 
 func int DIA_Pyrokar_BUCHIRDORATH_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	&& (ItWr_HallsofIrdorathIsOpen  == FALSE)
 	&& (Npc_KnowsInfo(other, DIA_Pyrokar_WASISTIRDORATH))
 	{
@@ -1959,7 +1880,7 @@ instance DIA_Pyrokar_IRDORATHBOOKOPEN		(C_INFO)
 func int DIA_Pyrokar_IRDORATHBOOKOPEN_Condition ()
 {
 	if (ItWr_HallsofIrdorathIsOpen == TRUE)
-	&& (Kapitel == 5)	
+	&& (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -2016,7 +1937,7 @@ instance DIA_Pyrokar_GEHEIMEBIBLIOTHEK		(C_INFO)
 func int DIA_Pyrokar_GEHEIMEBIBLIOTHEK_Condition ()
 {
 	if 	(ItWr_SCReadsHallsofIrdorath == TRUE)
-		&& (Kapitel == 5)	
+		&& (Kapitel == 11)	
 		&& (MIS_SCKnowsWayToIrdorath == FALSE)
 		&& (Npc_KnowsInfo(other, DIA_Pyrokar_IRDORATHBOOKOPEN))
 			{
@@ -2051,7 +1972,7 @@ instance DIA_Pyrokar_SCKNOWSWAYTOIRDORATH		(C_INFO)
 
 func int DIA_Pyrokar_SCKNOWSWAYTOIRDORATH_Condition ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 		&& (MIS_SCKnowsWayToIrdorath == TRUE)
 		&& (Npc_KnowsInfo(other, DIA_Pyrokar_IRDORATHBOOKOPEN))
 		{
@@ -2090,7 +2011,7 @@ func int DIA_Pyrokar_SCWILLJORGEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Jorgen_Home))
 		&&(Npc_KnowsInfo(other, DIA_Pyrokar_SCKNOWSWAYTOIRDORATH))
-		&& (Kapitel == 5)
+		&& (Kapitel == 11)
 		{
 				return TRUE;
 		};
@@ -2124,7 +2045,7 @@ instance DIA_Pyrokar_MACHDTFREI		(C_INFO)
 func int DIA_Pyrokar_MACHDTFREI_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Pyrokar_SCWILLJORGEN))
-		&& (Kapitel == 5)
+		&& (Kapitel == 11)
 		{
 				return TRUE;
 		};
@@ -2356,7 +2277,7 @@ INSTANCE DIA_Pyrokar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Pyrokar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

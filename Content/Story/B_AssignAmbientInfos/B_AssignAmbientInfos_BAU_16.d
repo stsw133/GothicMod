@@ -34,7 +34,7 @@ INSTANCE DIA_BAU_16_JOIN(C_INFO)
 
 FUNC INT DIA_BAU_16_JOIN_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -113,27 +113,27 @@ FUNC VOID DIA_BAU_16_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_BAU_16_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_BAU_16_STANDARD_16_01"); //Od kiedy okaza³o siê, ¿e potrafimy siê broniæ, oddzia³y z miasta przesta³y rozkradaæ nasze zbiory i inwentarz! Chyba zbytnio siê nas boj¹!
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_BAU_16_STANDARD_16_02"); //Ludzie powiadaj¹, ¿e w Górniczej Dolinie gromadzi siê armia. Ponoæ wkrótce tu nadci¹gnie.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_BAU_16_STANDARD_16_03"); //Plotka g³osi, ¿e w Górniczej Dolinie zadomowi³y siê smoki, ale jakoœ trudno mi w to uwierzyæ.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_BAU_16_STANDARD_16_04"); //Niektórzy z najemników odeszli. W³aœciwie nie wiem, czy to dobrze, czy to Ÿle.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_BAU_16_STANDARD_16_05"); //Swoj¹ drog¹ zastanawiam siê, po co w³aœciwie wysy³aj¹ tylu paladynów do Górniczej Doliny, o co w tym wszystkim chodzi?
 	};

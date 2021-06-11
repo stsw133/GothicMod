@@ -115,24 +115,24 @@ FUNC VOID DIA_VLK_17_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_VLK_17_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
-	|| (Kapitel == 2)
+	if (Kapitel == 7)
+	|| (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_VLK_17_STANDARD_17_01"); //Zastanawiam siê, po co paladyni pojawili siê w mieœcie. Niby przejêli kontrolê nad ratuszem, koszarami i portem, ale, jak dot¹d, nic nie robi¹.
 		AI_Output (self,other,"DIA_VLK_17_STANDARD_17_02"); //Gdyby przyjechali tu zaj¹æ siê orkami lub bandytami, ju¿ dawno powinni coœ z tym zrobiæ. Musi byæ inny powód...
 	};
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_VLK_17_STANDARD_17_03"); //Chyba ju¿ wiem, co sprowadzi³o tu paladynów. Chodzi o rudê. Zajêliby siê lepiej ochron¹ miasta.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_VLK_17_STANDARD_17_04"); //Mam nadziejê, ¿e w opowieœciach o smokach jest trochê prawdy. Lord Hagen bêdzie musia³ coœ zrobiæ, nie narazi nas przecie¿ na atak bestii.
 	};
 	
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		AI_Output (self,other,"DIA_VLK_17_STANDARD_17_05"); //Teraz, kiedy smoki zosta³y pokonane, paladyni nie powinni mieæ problemu ze st³umieniem pozosta³ych niepokojów.
 	};

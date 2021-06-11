@@ -15,27 +15,27 @@ const string TEXT_FONT_Inventory 	=	"Font_old_10_white.tga";
 const float VIEW_TIME_PER_CHAR		=	500;
 
 ///******************************************************************************************
-/// Scroll mana cost
+/// Scroll mana cost (divider (new!!!))
 ///******************************************************************************************
+
 const int SPL_Cost_Scroll			=	5;
 
 ///******************************************************************************************
 ///	NPC ATTRIBUTES
 ///******************************************************************************************
 
-const int ATR_HITPOINTS				=	0;	/// Lebenspunkte
-const int ATR_HITPOINTS_MAX			=	1;	/// Max. Lebenspunkte
-const int ATR_MANA					=	2;	/// Mana Mana
-const int ATR_MANA_MAX				=	3;	/// Mana Max
-const int ATR_STRENGTH				=	4;	/// Stärke
-const int ATR_DEXTERITY				=	5;	/// Geschick
-const int ATR_REGENERATEHP			=	6;	/// Regenerierung von HP alle x sekunden
-const int ATR_REGENERATEMP			=	7;	/// Regenerierung von Mana alle x sekunden
+const int ATR_HITPOINTS				=	0;
+const int ATR_HITPOINTS_MAX			=	1;
+const int ATR_MANA					=	2;
+const int ATR_MANA_MAX				=	3;
+const int ATR_STRENGTH				=	4;
+const int ATR_DEXTERITY				=	5;
+const int ATR_REGENERATEHP			=	6;
+const int ATR_REGENERATEMP			=	7;
 
 const int ATR_INDEX_MAX				=	8;
 
-/// new
-const int ATR_POWER					=	26;
+const int ATR_POWER					=	26;	///new!!!
 
 ///******************************************************************************************
 ///	NPC FLAGS
@@ -44,7 +44,7 @@ const int ATR_POWER					=	26;
 const int NPC_FLAG_FRIEND			=	1 << 0;
 const int NPC_FLAG_IMMORTAL			=	1 << 1;
 const int NPC_FLAG_GHOST			=	1 << 2;
-const int NPC_FLAG_IMPORTANT		=	1 << 3;
+const int NPC_FLAG_IMPORTANT		=	1 << 3;	///new!!!
 
 ///******************************************************************************************
 ///	FIGHT MODES
@@ -91,7 +91,7 @@ const int INV_MISC					=	8;
 const int INV_CAT_MAX				=	9;
 
 ///******************************************************************************************
-///	INVENTORY CAPACITIES	/// werden vom Programm ignoriert - INV ist unendlich groß!
+///	INVENTORY CAPACITIES
 ///******************************************************************************************
 
 const int INV_MAX_WEAPONS			=	6;
@@ -201,7 +201,7 @@ const int PROT_INDEX_MAX		=	DAM_INDEX_MAX;
 
 const int NPC_ATTACK_FINISH_DISTANCE					=	180;
 const int NPC_BURN_TICKS_PER_DAMAGE_POINT				=	1000;
-const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	50;	//50
+const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	50;
 const int DAM_CRITICAL_MULTIPLIER						=	2;
 
 const int BLOOD_SIZE_DIVISOR							=	1000;
@@ -276,21 +276,20 @@ const int NEWS_SPREAD_NPC_FRIENDLY_TOWARDS_OFFENDER		=	3;
 const int NEWS_SPREAD_NPC_SAME_GUILD_VICTIM				=	4;
 
 ///******************************************************************************************
-///	NEWS CONSTANTS
+///	NEWS CONSTANTS && INFO STATUS
 ///******************************************************************************************
 
 const int IMPORTANT								=	1;
-
-///******************************************************************************************
-///	INFO STATUS
-///******************************************************************************************
 
 const int INF_TELL								=	0;
 const int INF_UNKNOWN							=	2;
 
 ///******************************************************************************************
-///	MISSION STATUS
+///	LOG TYPES && MISSION STATUS
 ///******************************************************************************************
+
+const int LOG_MISSION							=	0;
+const int LOG_NOTE								=	1;
 
 /// ACTIVE
 const int LOG_RUNNING							=	1;
@@ -301,13 +300,6 @@ const int LOG_OBSOLETE							=	4;
 /// PASSIVE
 const int LOG_CANCELED							=	5;
 const int LOG_PROGRESS							=	6;
-
-///******************************************************************************************
-///	LOG TYPES
-///******************************************************************************************
-
-const int LOG_MISSION							=	0;
-const int LOG_NOTE								=	1;
 
 ///******************************************************************************************
 ///	ATTITUDES
@@ -339,22 +331,22 @@ const int GIL_PIR						=	13;
 const int GIL_KDW						=	14;
 const int GIL_EMPTY_D					=	15;
 
-const int GIL_HUMAN						=	1;		/// Special Guild -> To set Constants for ALL Human Guilds --> wird verwendet in Species.d
-const int GIL_PUBLIC					=	15; 	/// für öffentliche Portalräume
+const int GIL_HUMAN						=	1;
+const int GIL_PUBLIC					=	15;
 const int GIL_SEPERATOR_HUM				=	16;
 
 const int GIL_MEATBUG					=	17;
 const int GIL_SHEEP						=	18;
 const int GIL_GOBBO						=	19;
 const int GIL_GOBBO_SKELETON			=	20;
-const int GIL_SUMMONED_GOBBO_SKELETON 	=	21;
+const int GIL_SUMMONED_GOBBO_SKELETON 	=	21;	/// is obsolete now
 const int GIL_SCAVENGER					=	22;
 const int GIL_GIANT_RAT					=	23;
 const int GIL_GIANT_BUG					=	24;
 const int GIL_BLOODFLY					=	25;
 const int GIL_WARAN						=	26;
 const int GIL_WOLF						=	27;
-const int GIL_SUMMONED_WOLF				=	28;
+const int GIL_SUMMONED_WOLF				=	28;	/// is obsolete now
 const int GIL_MINECRAWLER				=	29;
 const int GIL_LURKER					=	30;
 const int GIL_SKELETON					=	31;
@@ -368,9 +360,9 @@ const int GIL_HARPY						=	38;
 const int GIL_STONEGOLEM				=	39;
 const int GIL_FIREGOLEM					=	40;
 const int GIL_ICEGOLEM					=	41;
-const int GIL_SUMMONED_GOLEM			=	42;
+const int GIL_SUMMONED_GOLEM			=	42;	/// is obsolete now
 const int GIL_DEMON						=	43;
-const int GIL_SUMMONED_DEMON			=	44;
+const int GIL_SUMMONED_DEMON			=	44;	/// is obsolete now
 const int GIL_TROLL						=	45;
 const int GIL_SWAMPSHARK				=	46;
 const int GIL_DRAGON					=	47;
@@ -379,12 +371,11 @@ const int GIL_ALLIGATOR					=	49;
 const int GIL_SWAMPGOLEM				=	50;
 const int GIL_STONEGUARDIAN				=	51;
 const int GIL_GARGOYLE					=	52;
-const int GIL_Empty_A					=	53;	///	GIL_SUMMONED
 const int GIL_SUMMONED					=	53;
-const int GIL_SUMMONEDGUARDIAN			=	54;
-const int GIL_SUMMONEDZOMBIE			=	55;
-const int GIL_EMPTY_B					=	56;	/// GIL_NEUTRAL
-const int GIL_EMPTY_C					=	57;	/// GIL_WILD
+const int GIL_SUMMONEDGUARDIAN			=	54;	/// is obsolete now
+const int GIL_SUMMONEDZOMBIE			=	55;	/// is obsolete now
+const int GIL_NEUTRAL					=	56;
+const int GIL_WILD						=	57;
 
 const int GIL_SEPERATOR_ORC				=	58;
 
@@ -392,7 +383,6 @@ const int GIL_ORC						=	59;
 const int GIL_FRIENDLY_ORC				=	60;
 const int GIL_UNDEADORC					=	61;
 const int GIL_DRACONIAN					=	62;
-
 const int GIL_EMPTY_X					=	63;
 const int GIL_EMPTY_Y					=	64;
 const int GIL_EMPTY_Z					=	65;
@@ -405,38 +395,38 @@ const int GIL_MAX						=	66;
 
 class C_GILVALUES
 {
-	var int		WATER_DEPTH_KNEE				[GIL_MAX];
-	var int		WATER_DEPTH_CHEST				[GIL_MAX];
-	var int		JUMPUP_HEIGHT					[GIL_MAX];		///	DEFAULT = 200;
-//	var int		JUMPUP_FORCE					[GIL_MAX];
-	var int		SWIM_TIME						[GIL_MAX];
-	var int		DIVE_TIME						[GIL_MAX];
-	var int		STEP_HEIGHT						[GIL_MAX];
-	var int		JUMPLOW_HEIGHT					[GIL_MAX];
-	var int		JUMPMID_HEIGHT					[GIL_MAX];
-	var int		SLIDE_ANGLE						[GIL_MAX];
-	var int		SLIDE_ANGLE2					[GIL_MAX];
-	var int		DISABLE_AUTOROLL				[GIL_MAX];		///	DEFAULT = 0				;  0 = Autoroll  enabled	/ 1 = Autoroll  disabled
-	var int		SURFACE_ALIGN					[GIL_MAX];		///	DEFAULT = 0				;  0 = Alignment disabled	/ 1 = Alignment enabled
-	var int		CLIMB_HEADING_ANGLE				[GIL_MAX];
-	var int		CLIMB_HORIZ_ANGLE				[GIL_MAX];
-	var int		CLIMB_GROUND_ANGLE				[GIL_MAX];
-	var int		FIGHT_RANGE_BASE				[GIL_MAX];
-	var int		FIGHT_RANGE_FIST				[GIL_MAX];
-	var int 	FIGHT_RANGE_G					[GIL_MAX];
-	var int		FIGHT_RANGE_1HS					[GIL_MAX];
-	var int		FIGHT_RANGE_1HA					[GIL_MAX];
-	var int		FIGHT_RANGE_2HS					[GIL_MAX];
-	var int		FIGHT_RANGE_2HA					[GIL_MAX];
-	var int		FALLDOWN_HEIGHT					[GIL_MAX];		///							Wie tief Fallen ohne Schaden ?
-	var int		FALLDOWN_DAMAGE					[GIL_MAX];		///							Schaden für jeden weiteren angefangenen Meter.
-	var int		BLOOD_DISABLED					[GIL_MAX];		///	DEFAULT = 0					;	Blut ganz ausschalten (z.B. bei Sekletten) ?
-	var int		BLOOD_MAX_DISTANCE				[GIL_MAX];		///	DEFAULT = 1000				;	Wie weit spritzt das Blut (in cm) ?
-	var int		BLOOD_AMOUNT					[GIL_MAX];		///	DEFAULT = 10				;	Wie viel Blut ?
-	var int		BLOOD_FLOW						[GIL_MAX];		///	DEFAULT = 0					;	Soll es sich langsam ausbreiten ?
-	var string  BLOOD_EMITTER					[GIL_MAX];		///	DEFAULT = "PFX_BLOOD"		;	Welcher Partikel-Emitter ?
-	var string  BLOOD_TEXTURE					[GIL_MAX];		///	DEFAULT = "ZBLOODSPLAT2.TGA";	Welche Textur ?
-	var int 	TURN_SPEED						[GIL_MAX];		///	DEFAULT = 150				;
+	var int		WATER_DEPTH_KNEE	[GIL_MAX];
+	var int		WATER_DEPTH_CHEST	[GIL_MAX];
+	var int		JUMPUP_HEIGHT		[GIL_MAX];		///	DEFAULT = 200;
+//	var int		JUMPUP_FORCE		[GIL_MAX];
+	var int		SWIM_TIME			[GIL_MAX];
+	var int		DIVE_TIME			[GIL_MAX];
+	var int		STEP_HEIGHT			[GIL_MAX];
+	var int		JUMPLOW_HEIGHT		[GIL_MAX];
+	var int		JUMPMID_HEIGHT		[GIL_MAX];
+	var int		SLIDE_ANGLE			[GIL_MAX];
+	var int		SLIDE_ANGLE2		[GIL_MAX];
+	var int		DISABLE_AUTOROLL	[GIL_MAX];		///	DEFAULT = 0;  0 = Autoroll  enabled / 1 = Autoroll disabled
+	var int		SURFACE_ALIGN		[GIL_MAX];		///	DEFAULT = 0;  0 = Alignment disabled / 1 = Alignment enabled
+	var int		CLIMB_HEADING_ANGLE	[GIL_MAX];
+	var int		CLIMB_HORIZ_ANGLE	[GIL_MAX];
+	var int		CLIMB_GROUND_ANGLE	[GIL_MAX];
+	var int		FIGHT_RANGE_BASE	[GIL_MAX];
+	var int		FIGHT_RANGE_FIST	[GIL_MAX];
+	var int 	FIGHT_RANGE_G		[GIL_MAX];
+	var int		FIGHT_RANGE_1HS		[GIL_MAX];
+	var int		FIGHT_RANGE_1HA		[GIL_MAX];
+	var int		FIGHT_RANGE_2HS		[GIL_MAX];
+	var int		FIGHT_RANGE_2HA		[GIL_MAX];
+	var int		FALLDOWN_HEIGHT		[GIL_MAX];
+	var int		FALLDOWN_DAMAGE		[GIL_MAX];
+	var int		BLOOD_DISABLED		[GIL_MAX];		///	DEFAULT = 0;
+	var int		BLOOD_MAX_DISTANCE	[GIL_MAX];		///	DEFAULT = 1000;
+	var int		BLOOD_AMOUNT		[GIL_MAX];		///	DEFAULT = 10;
+	var int		BLOOD_FLOW			[GIL_MAX];		///	DEFAULT = 0;
+	var string  BLOOD_EMITTER		[GIL_MAX];		///	DEFAULT = "PFX_BLOOD";
+	var string  BLOOD_TEXTURE		[GIL_MAX];		///	DEFAULT = "ZBLOODSPLAT2.TGA";
+	var int 	TURN_SPEED			[GIL_MAX];		///	DEFAULT = 150;
 };
 
 ///******************************************************************************************
@@ -484,13 +474,13 @@ const int SPELL_BAD			=	2;
 ///	SPELL INVEST CONSTS
 ///******************************************************************************************
 
-const int SPL_DONTINVEST 						=	0;		/// Es können keine weiteren Manapunkte investiert werden. Erst durch CTRL loslassen geht der Spell ab
-const int SPL_RECEIVEINVEST						=	1;		/// Wirkung durchgeführt, es können weitere Invest kommen, zB.bei Heal nach jedem Pöppel
-const int SPL_SENDCAST							=	2;		/// Starte den Zauber-Effekt (wie CTRL loslassen), automatischer Abbruch
-const int SPL_SENDSTOP							=	3;		/// Beende Zauber ohne Effekt
-const int SPL_NEXTLEVEL							=	4;		/// setze den Spruch auf den nächsten Level
+const int SPL_DONTINVEST 						=	0;
+const int SPL_RECEIVEINVEST						=	1;
+const int SPL_SENDCAST							=	2;
+const int SPL_SENDSTOP							=	3;
+const int SPL_NEXTLEVEL							=	4;
 const int SPL_STATUS_CANINVEST_NO_MANADEC		=	8;
-const int SPL_FORCEINVEST		 				=	1 << 16;	/// zieht auf jeden Fall einen Manapunkt ab, egal ob timePerMana abgelaufen ist, oder nicht
+const int SPL_FORCEINVEST		 				=	1 << 16;
 
 ///******************************************************************************************
 ///	SPELL TARGETS
@@ -1292,7 +1282,7 @@ const int NPC_TALENT_1H					=	1;
 const int NPC_TALENT_2H					=	2;
 const int NPC_TALENT_BOW				=	3;
 const int NPC_TALENT_CROSSBOW			=	4;
-const int NPC_TALENT_2ndH				=	10;	/// second hand -> 1 = shield, 2 = dual swords
+const int NPC_TALENT_2ndH				=	10;	///new!!!
 
 /// Magic Talents
 const int NPC_TALENT_MAGIC				=	7;
@@ -1303,141 +1293,22 @@ const int NPC_TALENT_SNEAK				=	8;
 const int NPC_TALENT_ACROBATIC			=	11;
 const int NPC_TALENT_PICKLOCK			=	5;
 const int NPC_TALENT_PICKPOCKET			=	6;
-const int NPC_TALENT_PERSUASION			=	9;
+const int NPC_TALENT_PERSUASION			=	9;	///new!!!
 
 /// Craft Talents
-const int NPC_TALENT_JEWELERY			=	12;
+const int NPC_TALENT_JEWELERY			=	12;	///new!!!
 const int NPC_TALENT_SMITH				=	13;
-const int NPC_TALENT_RUNES				=	14;
-const int NPC_TALENT_WRITING			=	14;
+const int NPC_TALENT_ENCHANTING			=	14;	///new!!!
 const int NPC_TALENT_ALCHEMY			=	15;
 const int NPC_TALENT_HUNTING			=	16;
 
 /// Info Talents
-const int NPC_TALENT_WISPDETECTOR		=	18;
-const int NPC_TALENT_CHAPTER			=	18;
-const int NPC_TALENT_TYPEOFMAGIC		=	19;
+const int NPC_TALENT_CHAPTER			=	18;	///new!!!
+const int NPC_TALENT_TYPEOFMAGIC		=	19;	///new!!!
 const int NPC_TALENT_GUILD				=	20;	/// prawdopodobnie do zmiany, ale nie wiadomo na co
-const int NPC_TALENT_DIFFICULTY			=	21;
+const int NPC_TALENT_DIFFICULTY			=	21;	///new!!!
 
 const int NPC_TALENT_MAX				=	22;
-
-
-///******************************************************************************************
-///	Runen Talente
-///******************************************************************************************
-
-var int PLAYER_TALENT_RUNES[MAX_SPELL];
-
-///******************************************************************************************
-///	Foreign Language Talente
-///******************************************************************************************
-
-const int LANGUAGE_1					=	0;
-const int LANGUAGE_2					=	1;
-const int LANGUAGE_3					=	2;
-
-const int MAX_LANGUAGE					=	3;
-
-var int PLAYER_TALENT_FOREIGNLANGUAGE[MAX_LANGUAGE];
-
-///******************************************************************************************
-///	Wisp Detector Talente
-///******************************************************************************************
-
-const int WISPSKILL_NF	 				=	0;
-const int WISPSKILL_FF	 				=	1;
-const int WISPSKILL_NONE 				=	2;
-const int WISPSKILL_RUNE 				=	3;
-const int WISPSKILL_MAGIC    			=	4;
-const int WISPSKILL_FOOD 				=	5;
-const int WISPSKILL_POTIONS   			=	6;
-
-const int MAX_WISPSKILL					=	7;
-
-var int PLAYER_TALENT_WISPDETECTOR [MAX_WISPSKILL];
-
-var int WispSearching;
-const int WispSearch_Follow 			=	1;
-const int WispSearch_ALL				=	2;
-const int WispSearch_POTIONS			=	3;
-const int WispSearch_MAGIC				=	4;
-const int WispSearch_FOOD				=	5;
-const int WispSearch_NF					=	6;
-const int WispSearch_FF					=	7;
-const int WispSearch_NONE				=	8;
-const int WispSearch_RUNE				=	9;
-
-///******************************************************************************************
-///	Alchemie Talente
-///******************************************************************************************
-
-const int POTION_Health_01	  			=	0;
-const int POTION_Health_02  			=	1;
-const int POTION_Health_03  			=	2;
-const int POTION_Mana_01  				=	3;
-const int POTION_Mana_02  				=	4;
-const int POTION_Mana_03 	 			=	5;
-const int POTION_Speed  				=	6;
-const int POTION_Perm_STR  				=	7;
-const int POTION_Perm_DEX  				=	8;
-const int POTION_Perm_Mana  			=	9;
-const int POTION_Perm_Health			=	10;
-const int POTION_MegaDrink				=	11;
-const int CHARGE_Innoseye				=	12;
-const int POTION_Mana_04				=	13;
-const int POTION_Health_04				=	14;
-
-const int MAX_POTION					=	15;
-
-var int PLAYER_TALENT_ALCHEMY[MAX_POTION];
-
-///******************************************************************************************
-///	Schmied Talente
-///******************************************************************************************
-
-const int WEAPON_Common					=	0;
-
-const int WEAPON_1H_Special_01			=	1;
-const int WEAPON_2H_Special_01			=	2;
-const int WEAPON_1H_Special_02			=	3;
-const int WEAPON_2H_Special_02			=	4;
-const int WEAPON_1H_Special_03			=	5;
-const int WEAPON_2H_Special_03			=	6;
-const int WEAPON_1H_Special_04			=	7;
-const int WEAPON_2H_Special_04			=	8;
-
-const int WEAPON_1H_Harad_01			=	9;	
-const int WEAPON_1H_Harad_02			=	10;
-const int WEAPON_1H_Harad_03			=	11;
-const int WEAPON_1H_Harad_04			=	12;
-
-const int MAX_WEAPONS 					=	13;
-
-var int PLAYER_TALENT_SMITH[MAX_WEAPONS];
-
-///******************************************************************************************
-///	Animal Trophu Talente
-///******************************************************************************************
-
-const int TROPHY_Teeth					=	0;
-const int TROPHY_Claws					=	1;
-const int TROPHY_Fur					=	2;
-const int TROPHY_Heart					=	3;
-const int TROPHY_ShadowHorn 			=	4;
-const int TROPHY_FireTongue				=	5;
-const int TROPHY_BFWing					=	6;
-const int TROPHY_BFSting				=	7;
-const int TROPHY_Mandibles				=	8;
-const int TROPHY_CrawlerPlate			=	9;
-const int TROPHY_DrgSnapperHorn			=	10;
-const int TROPHY_DragonScale			=	11;
-const int TROPHY_DragonBlood			=	12;
-const int TROPHY_ReptileSkin			=	13;
-
-const int MAX_TROPHIES					=	14;
-
-var int PLAYER_TALENT_TAKEANIMALTROPHY[MAX_TROPHIES];
 
 ///******************************************************************************************
 ///	WORLD IDs

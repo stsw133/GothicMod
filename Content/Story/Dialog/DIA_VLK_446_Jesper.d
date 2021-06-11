@@ -296,7 +296,7 @@ INSTANCE DIA_Jesper_Tuer   (C_INFO)
 FUNC INT DIA_Jesper_Tuer_Condition()
 {	
 	if (MIS_CassiaRing == LOG_SUCCESS)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	{
 		return TRUE;
 	};

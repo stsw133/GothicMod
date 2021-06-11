@@ -12,7 +12,7 @@ INSTANCE DIA_Maleth_EXIT   (C_INFO)
 };
 FUNC INT DIA_Maleth_EXIT_Condition()
 {
-	if (Kapitel	< 3)	
+	if (Kapitel < 9)	
 	{
 		return TRUE;
 	};
@@ -44,7 +44,7 @@ instance DIA_Maleth_Hallo (C_INFO)
 
 func int DIA_Maleth_Hallo_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -93,7 +93,7 @@ instance DIA_Maleth_BANDITS		(C_INFO) //E1
 
 func int DIA_Maleth_BANDITS_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& (hero.guild == GIL_NONE)
 	{
 		return TRUE;
@@ -202,7 +202,7 @@ instance DIA_Maleth_ToTheCity (C_INFO) //E1
 func int DIA_Maleth_ToTheCity_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Maleth_Hallo))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (hero.guild == GIL_NONE)
 	{
 		return TRUE;
@@ -260,7 +260,7 @@ instance DIA_Maleth_Equipment		(C_INFO)
 func int DIA_Maleth_Equipment_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Maleth_Hallo))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (hero.guild == GIL_NONE)
 	{
 		return TRUE;
@@ -335,7 +335,7 @@ INSTANCE DIA_Maleth_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Maleth_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -360,7 +360,7 @@ instance DIA_Maleth_PROBLEME		(C_INFO)
 
 func int DIA_Maleth_PROBLEME_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -525,7 +525,7 @@ instance DIA_Maleth_PERM3		(C_INFO)
 func int DIA_Maleth_PERM3_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Maleth_PROBLEME))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 			{
 					return TRUE;
 			};
@@ -561,7 +561,7 @@ INSTANCE DIA_Maleth_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Maleth_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -595,7 +595,7 @@ INSTANCE DIA_Maleth_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Maleth_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -630,7 +630,7 @@ INSTANCE DIA_Maleth_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Maleth_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

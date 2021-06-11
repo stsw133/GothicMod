@@ -226,7 +226,7 @@ instance DIA_Girion_CATCHPLAYERSTOLENSHIP		(C_INFO)
 
 func int DIA_Girion_CATCHPLAYERSTOLENSHIP_Condition ()
 {
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	&& (MIS_ShipIsFree == TRUE) 
 	&& (Npc_GetDistToWP(self,"NW_CITY_WAY_TO_SHIP_25")<1000) //Joly: ist nur hier, wenn SC die Wachen überredet hat, ihm das Schiff zu geben.
 	{

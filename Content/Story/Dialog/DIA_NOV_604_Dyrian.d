@@ -60,7 +60,7 @@ INSTANCE DIA_Dyrian_Wurst(C_INFO)
 
 FUNC INT DIA_Dyrian_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)

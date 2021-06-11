@@ -37,7 +37,7 @@ INSTANCE DIA_None_101_Mario_Job (C_INFO)
 
 FUNC INT DIA_None_101_Mario_Job_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	&& (MIS_SCKnowsWayToIrdorath == FALSE)
 	&& (Npc_KnowsInfo(other, DIA_None_101_Mario_YouNeedMe)== FALSE)
 	{
@@ -67,7 +67,7 @@ INSTANCE DIA_None_101_Mario_YouNeedMe   (C_INFO)
 
 FUNC INT DIA_None_101_Mario_YouNeedMe_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	&& (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
 		return TRUE;

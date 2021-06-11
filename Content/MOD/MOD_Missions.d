@@ -1,6 +1,7 @@
 ///******************************************************************************************
 ///	MOD_Missions
 ///******************************************************************************************
+
 const int XP_BONUS_0		=	50;
 const int XP_BONUS_1		=	100;
 const int XP_BONUS_2		=	200;
@@ -8,14 +9,15 @@ const int XP_BONUS_3		=	300;
 const int XP_BONUS_4		=	400;
 const int XP_BONUS_5		=	500;
 const int XP_BONUS_6		=	600;
+const int XP_BONUS_7		=	700;
 const int XP_BONUS_8		=	800;
+const int XP_BONUS_9		=	900;
 const int XP_BONUS_10		=	1000;
 var int XP_Ambient;
 
-const int XP_BONUS_MULTIPLIER = 1000;
 func int XP_BONUS(var int xp)
 {
-	return (xp * XP_BONUS_MULTIPLIER / 1000);
+	return (xp * 1000 / 1000);
 };
 
 ///******************************************************************************************
@@ -245,7 +247,7 @@ const string Note_Girls				=	"Notki o dziewczynach";
 ///******************************************************************************************
 ///	SetQuestStatus
 ///******************************************************************************************
-func int SetQuestStatus (var string QuestName, var int NewStatus, var int OldStatus)
+func int SetQuestStatus (var string QuestName, var int OldStatus, var int NewStatus)
 {
 	if (NewStatus == LOG_RUNNING) /// nowe zadanie
 	&& (OldStatus == 0)
@@ -255,14 +257,14 @@ func int SetQuestStatus (var string QuestName, var int NewStatus, var int OldSta
 		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestRunning,QuestName), FONT_ScreenSmall, COL_QuestRunning, TIME_Print*1000);
 		return LOG_RUNNING;
 	};
-	if (NewStatus >= LOG_PROGRESS) /// zadanie w trakcie
+	if (NewStatus == LOG_PROGRESS || NewStatus == LOG_RUNNING) /// zadanie w trakcie
 	&& (OldStatus == LOG_RUNNING)
 	{
 		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestProgress,QuestName), FONT_ScreenSmall, COL_QuestProgress, TIME_Print*1000);
 		return LOG_RUNNING;
 	};
 	if (NewStatus == LOG_SUCCESS) /// zadanie wykonane
-	&& ((OldStatus == LOG_RUNNING) || (OldStatus == 0))
+	&& (OldStatus == LOG_RUNNING || OldStatus == 0)
 	{
 		Log_SetTopicStatus (QuestName, LOG_SUCCESS);
 		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestSuccess,QuestName), FONT_ScreenSmall, COL_QuestSuccess, TIME_Print*1000);
@@ -302,6 +304,7 @@ func void SetNoteEntry (var string Topic, var int Type, var string Entry)
 		Log_CreateTopic (Topic, Type);
 	};
 	Log_AddEntry (Topic, Entry);
+	
 	Print_ExtPrcnt (-1, YPOS_LogEntry, PRINT_NewLogEntry, FONT_ScreenSmall, COL_White, TIME_Print*1000);
 	Snd_Play("LogEntry");
 };

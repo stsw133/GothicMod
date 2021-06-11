@@ -89,10 +89,8 @@ const int BeltBonus_ProtTotal	= 7;
 
 	description		=  "Skórzany pas";
 
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	TEXT[3]			=	"Ze skórzan¹ zbroj¹ + ";
 	COUNT[3]		= 	BA_Bonus01;
 	TEXT[5]			=   NAME_Value;
@@ -163,10 +161,8 @@ FUNC VOID UnEquip_ItBE_Addon_Leather_01()
 
 	description		=  "Pas najemnika";
 
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	
 	TEXT[3]			= "Ze zbroj¹ najemnika + ";
 	COUNT[3]		= BA_Bonus01;
@@ -232,10 +228,8 @@ FUNC VOID UnEquip_ItBE_Addon_SLD_01()
 
 	description		=  "Szarfa Gotowoœci";
 
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	TEXT[3]			= 	"Ze zbroj¹ nowicjusza + ";
 	COUNT[3]		= 	BA_Bonus01;	
 	
@@ -300,10 +294,8 @@ FUNC VOID UnEquip_ItBE_Addon_NOV_01()
 
 	description		=  "Pas stra¿y";
 
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	TEXT[3]			=   "Ze zbroj¹ stra¿nika + ";
 	COUNT[3]		=   BA_Bonus01;
 	
@@ -369,10 +361,8 @@ FUNC VOID UnEquip_ItBE_Addon_MIL_01()
 
 	description		=  "Szarfa Ognia";
 
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	TEXT[3]			= 	"Ze zbroj¹ maga + ";
 	COUNT[3]		= 	BA_Bonus01;
 	
@@ -439,10 +429,8 @@ FUNC VOID UnEquip_ItBE_Addon_KDF_01()
 
 	description		=  "Pas Pe³zacza";
 	
-	TEXT[1]			=	NAME_Prot_Edge;			
+	TEXT[1]			=	NAME_Prot_Physical;			
 	COUNT[1]		= 	Belt_Prot_01;
-	TEXT[2]			=	NAME_Prot_Point;		
-	COUNT[2]		= 	Belt_Prot_01;
 	TEXT[3]			= 	"Ze zbroj¹ pe³zacza + ";
 	COUNT[3]		= 	BA_Bonus01;
 	
@@ -674,7 +662,7 @@ INSTANCE  ItBe_Addon_Prot_EDGE (C_Item)  //Hakon(Kap4)/Khaled(4)
 
 	description		=  "Pas Ochrony";
 	
-	TEXT[2]			= NAME_Prot_Edge;
+	TEXT[2]			= NAME_Prot_Physical;
 	COUNT[2]		= BeltBonus_ProtEdge;
 	
 	TEXT[5]			= NAME_Value;
@@ -715,7 +703,7 @@ INSTANCE  ItBe_Addon_Prot_Point (C_Item)  //Hakon(Kap3)/Khaled(3)
 
 	description		=  "Pas Obrony";
 	
-	TEXT[2]			= NAME_Prot_Point;
+	TEXT[2]			= NAME_Prot_Physical;
 	COUNT[2]		= BeltBonus_ProtPoint;
 	
 	TEXT[5]			= NAME_Value;
@@ -832,10 +820,8 @@ INSTANCE  ItBe_Addon_Prot_EdgPoi (C_Item)  //Khaled(Kap4)/Orlan(3)	Missionbelohn
 
 	description		=  "Pas Ochrony";
 	
-	TEXT[2]			= NAME_Prot_Edge;
+	TEXT[2]			= NAME_Prot_Physical;
 	COUNT[2]		= BeltBonus_ProtEdgPoi;
-	TEXT[3] 		= NAME_Prot_Point;
-	COUNT[3]		= BeltBonus_ProtEdgPoi;
 	
 	TEXT[5]			= NAME_Value;
 	COUNT[5]		= value;
@@ -877,10 +863,8 @@ INSTANCE  ItBe_Addon_Prot_TOTAL (C_Item)  //Hakon(Kap4)
 
 	description		=  "Pas Stra¿nika";
 	
-	TEXT[1]			= NAME_Prot_Edge;
+	TEXT[1]			= NAME_Prot_Physical;
 	COUNT[1]		= BeltBonus_ProtTOTAL;
-	TEXT[2] 		= NAME_Prot_Point;
-	COUNT[2]		= BeltBonus_ProtTOTAL;
 	TEXT[3]			= NAME_Prot_Magic;
 	COUNT[3]		= BeltBonus_ProtTOTAL;
 	TEXT[4]			= NAME_Prot_Fire;

@@ -13,7 +13,7 @@ INSTANCE DIA_Bengar_EXIT   (C_INFO)
 
 FUNC INT DIA_Bengar_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -39,7 +39,7 @@ instance DIA_Bengar_HALLO		(C_INFO)
 
 func int DIA_Bengar_HALLO_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -69,7 +69,7 @@ instance DIA_Bengar_WOVONLEBTIHR		(C_INFO)
 func int DIA_Bengar_WOVONLEBTIHR_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Bengar_HALLO))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -100,7 +100,7 @@ instance DIA_Bengar_TAGELOEHNER		(C_INFO)
 func int DIA_Bengar_TAGELOEHNER_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Bengar_WOVONLEBTIHR))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -622,7 +622,7 @@ instance DIA_Bengar_PERMKAP1		(C_INFO)
 func int DIA_Bengar_PERMKAP1_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Bengar_BALTHASARDARFAUFWEIDE))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 			{
 					return TRUE;
 			};
@@ -661,7 +661,7 @@ INSTANCE DIA_Bengar_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bengar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -686,7 +686,7 @@ instance DIA_Bengar_ALLEIN		(C_INFO)
 
 func int DIA_Bengar_ALLEIN_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -828,7 +828,7 @@ instance DIA_Bengar_PERM		(C_INFO)
 func int DIA_Bengar_PERM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Bengar_ALLEIN))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -896,7 +896,7 @@ INSTANCE DIA_Bengar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bengar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -930,7 +930,7 @@ INSTANCE DIA_Bengar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bengar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -965,7 +965,7 @@ INSTANCE DIA_Bengar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bengar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

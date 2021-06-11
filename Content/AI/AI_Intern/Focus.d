@@ -29,17 +29,14 @@ instance Focus_Melee (C_Focus)
 {
 	/// NSCs
 	//npc_longrange	= 600.0;
-	
 	npc_range1		= 0.0;
 	npc_range2		= 500.0;
 	npc_azi			= 50.0;
 	npc_elevup		= 90.0;
 	npc_elevdo		= -60.0;
 	npc_prio		= 1;
-
 	/// No ITEMs
 	item_prio		= -1;
-	
 	/// MOBs
 	mob_range1		= 0.0;
 	mob_range2		= 150.0;

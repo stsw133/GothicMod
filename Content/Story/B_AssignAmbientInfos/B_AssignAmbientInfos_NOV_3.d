@@ -36,7 +36,7 @@ var int Feger2_Permanent;
 //------------------------------------
 FUNC INT DIA_NOV_3_Fegen_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_KlosterArbeit == LOG_RUNNING)
 	&& (NOV_Helfer < 4)
 	{
@@ -147,7 +147,7 @@ INSTANCE DIA_NOV_3_Wurst(C_INFO)
 
 FUNC INT DIA_NOV_3_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -269,7 +269,7 @@ FUNC VOID DIA_NOV_3_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_NOV_3_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		if (hero.guild == GIL_KDF)
 		{
@@ -283,8 +283,8 @@ FUNC VOID DIA_NOV_3_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel == 2)
-	|| (Kapitel == 3)
+	if (Kapitel == 8)
+	|| (Kapitel == 9)
 	{
 		if (Pedro_Traitor == TRUE)
 		&& (MIS_NovizenChase != LOG_SUCCESS)	//Kap 3b - SC weiss, das Pedro das Auge Innos geklaut hat
@@ -310,12 +310,12 @@ FUNC VOID DIA_NOV_3_STANDARD_Info()
 		};	
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_NOV_3_STANDARD_03_11"); //Zniszczymy smoki z pomoc¹ naszego Pana! Jedynie gniew Innosa jest w stanie przeciwstawiæ siê bestiom Beliara.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_NOV_3_STANDARD_03_12"); //Chwa³a Innosowi, ¿e nie dopuœci³ do nastêpnego konfliktu. Jedynie powrót na œcie¿kê naszego Pana da nam si³ê do przeciwstawienia siê Z³u.
 

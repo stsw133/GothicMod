@@ -13,7 +13,7 @@ INSTANCE DIA_Tandor_EXIT   (C_INFO)
 
 FUNC INT DIA_Tandor_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -116,7 +116,7 @@ func int DIA_Tandor_Equipment_Condition ()
 {
 	if  Npc_KnowsInfo (hero, DIA_Garond_Equipment)
 	&& (other.guild == GIL_MIL)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -201,7 +201,7 @@ INSTANCE DIA_Tandor_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Tandor_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -236,7 +236,7 @@ INSTANCE DIA_Tandor_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Tandor_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -261,7 +261,7 @@ instance DIA_Tandor_News		(C_INFO)
 
 func int DIA_Tandor_News_Condition ()
 {
-	if (Kapitel	== 4)
+	if (Kapitel == 10)
 	&& (Npc_KnowsInfo (hero,DIA_Tandor_Hallo))
 	{
 		return TRUE;
@@ -305,7 +305,7 @@ INSTANCE DIA_Tandor_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Tandor_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -331,7 +331,7 @@ instance DIA_Tandor_WASISTLOS		(C_INFO)
 
 func int DIA_Tandor_WASISTLOS_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 		&& (Npc_KnowsInfo (hero,DIA_Tandor_Hallo))
 	{
 		return TRUE;
@@ -377,7 +377,7 @@ INSTANCE DIA_Tandor_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Tandor_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

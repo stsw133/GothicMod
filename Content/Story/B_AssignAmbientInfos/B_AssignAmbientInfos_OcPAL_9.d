@@ -88,12 +88,12 @@ FUNC VOID DIA_OCPAL_9_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_OCPAL_4_STANDARD_15_00"); //Jak siê maj¹ sprawy?
 		
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		AI_Output (self,other,"DIA_OCPAL_4_STANDARD_09_01"); //Smoki zaatakowa³y ponownie! Jednak Innos ochroni nas w walce. Monstra Belaira zap³ac¹ za to wszystko w³asn¹ krwi¹!
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		if (MIS_KilledDragons < 4)
 		{
@@ -105,7 +105,7 @@ FUNC VOID DIA_OCPAL_9_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		if (MIS_OCGateOpen == FALSE)
 		{

@@ -96,7 +96,6 @@ instance DIA_Bennet_DI_Smith		(C_INFO)
 	nr          = 7;
 	condition	 = 	DIA_Bennet_DI_Smith_Condition;
 	information	 = 	DIA_Bennet_DI_Smith_Info;
-	permanent	 = 	TRUE;
 	description	 = 	"Nauczysz mnie swojego rzemios³a?";
 };
 
@@ -111,103 +110,11 @@ func int DIA_Bennet_DI_Smith_Condition ()
 
 func void DIA_Bennet_DI_Smith_Info ()
 {
-	AI_Output			(other, self, "DIA_Bennet_DI_Smith_15_00"); //Nauczysz mnie swojego rzemios³a?
-	AI_Output			(self, other, "DIA_Bennet_DI_Smith_06_01"); //Zale¿y, co chcesz zrobiæ.
-
-	Info_ClearChoices (DIA_Bennet_DI_Smith);
-	Info_AddChoice	    (DIA_Bennet_DI_Smith, DIALOG_BACK, DIA_Bennet_DI_Smith_BACK);
-	
-	if ( PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
-	{
-		Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString("Nauka kowalstwa"	   , B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_Common))			,DIA_Bennet_DI_Smith_Common);
-	};
-	if ( PLAYER_TALENT_SMITH[WEAPON_Common] == TRUE)
-	{
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_01] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_1H_Special_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_01))		,DIA_Bennet_DI_Smith_1hSpecial1);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_01] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_2H_Special_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_01))		,DIA_Bennet_DI_Smith_2hSpecial1);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_02] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_1H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_02))		,DIA_Bennet_DI_Smith_1hSpecial2);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_02] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_2H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_02))		,DIA_Bennet_DI_Smith_2hSpecial2);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_03] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_1H_Special_03, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_03))		,DIA_Bennet_DI_Smith_1hSpecial3);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_03] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_2H_Special_03, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_03))		,DIA_Bennet_DI_Smith_2hSpecial3);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_1H_Special_04] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_1H_Special_04, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_04))		,DIA_Bennet_DI_Smith_1hSpecial4);
-		};
-		if ( PLAYER_TALENT_SMITH[WEAPON_2H_Special_04] == FALSE)
-		{
-			Info_AddChoice		(DIA_Bennet_DI_Smith, B_BuildLearnString(NAME_ItMw_2H_Special_04, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_04))		,DIA_Bennet_DI_Smith_2hSpecial4);
-		};
-	};
+	AI_Output (other, self, "DIA_Bennet_DI_Smith_15_00"); //Nauczysz mnie swojego rzemios³a?
+	AI_Output (self, other, "DIA_Bennet_DI_Smith_06_01"); //Zale¿y, co chcesz zrobiæ.
+	self.aivar[AIV_CanTeach] = true;
 };
 
-// ------ Back ------
-func void DIA_Bennet_DI_Smith_BACK ()
-{
-	Info_ClearChoices (DIA_Bennet_DI_Smith);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_Common ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_Common);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_1hSpecial1 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_01);	
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_2hSpecial1 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_01);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_1hSpecial2 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_02);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_2hSpecial2 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_02);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_1hSpecial3 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_03);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_2hSpecial3 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_03);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_1hSpecial4 ()
-{
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_04);
-};
-
-FUNC VOID DIA_Bennet_DI_Smith_2hSpecial4 ()
-{
-	B_TeachPlayerTalentSmith(self, other, WEAPON_2H_Special_04);
-};
 /*
 //*******************************************
 //	TechPlayerSTR

@@ -19,7 +19,7 @@ instance DIA_Addon_Vatras_KillerWarning		(C_INFO)
 
 func int DIA_Addon_Vatras_KillerWarning_Condition ()
 {
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	&& (MadKillerCount >= 3)
 	&& (MadKillerCount < 7)
 	&& (VatrasPissedOffForever == FALSE)
@@ -52,7 +52,7 @@ instance DIA_Addon_Vatras_LastWarning		(C_INFO)
 
 func int DIA_Addon_Vatras_LastWarning_Condition ()
 {
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	&& (MadKillerCount >= 7)
 	&& (VatrasPissedOffForever == FALSE)
 		{
@@ -103,7 +103,7 @@ func int DIA_Addon_Vatras_PissedOff_Condition ()
 {
 	if (MadKillerCount > VatrasMadKillerCount)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Vatras_LastWarning))
-	&& (Kapitel >= 5)
+	&& (Kapitel >= 11)
 		{
 			return TRUE;
 		};
@@ -769,7 +769,7 @@ func void DIA_Addon_Vatras_NowRanger_Info ()
 	AI_Output	(other, self, "DIA_Addon_Vatras_NowRanger_15_00"); //Jestem gotów wst¹piæ w szeregi Wodnego Krêgu!
 	AI_Output	(self, other, "DIA_Addon_Vatras_NowRanger_05_01"); //Dostarczy³eœ sw¹ wiadomoœæ Lordowi Hagenowi?
 	
-	if (Kapitel >= 2) //Pass-Schlüssel von Hagen
+	if (Kapitel >= 8) //Pass-Schlüssel von Hagen
 	{
 		AI_Output	(other, self, "DIA_Addon_Vatras_NowRanger_15_02"); //Owszem.
 		if (MIS_OLDWORLD != LOG_SUCCESS)
@@ -1597,8 +1597,8 @@ func void DIA_Vatras_Teach_Info ()
 	
 	Info_ClearChoices   (DIA_Vatras_Teach);
 	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_Teach_BACK);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
 	
 };
 func void DIA_Vatras_Teach_BACK()
@@ -1616,8 +1616,8 @@ func void DIA_Vatras_Teach_1()
 	Info_ClearChoices   (DIA_Vatras_Teach);
 	
 	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_TEACH_BACK);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
 	
 	
 };
@@ -1628,8 +1628,8 @@ func void DIA_Vatras_Teach_5()
 	Info_ClearChoices   (DIA_Vatras_Teach);
 	
 	Info_AddChoice 		(DIA_Vatras_Teach, DIALOG_BACK, DIA_Vatras_Teach_BACK);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
-	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_Vatras_Teach_1);
+	Info_AddChoice		(DIA_Vatras_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Vatras_Teach_5);
 	
 	
 };
@@ -1768,7 +1768,7 @@ instance DIA_Vatras_MISSION		(C_INFO)
 func int DIA_Vatras_MISSION_Condition ()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	
 	{
 		return TRUE;
@@ -1955,7 +1955,7 @@ instance DIA_Addon_Vatras_AbloesePre		(C_INFO)
 func int DIA_Addon_Vatras_AbloesePre_Condition ()
 {
 	if ((Npc_HasItems (other,ItAm_InnosEye_Broken)) || (MIS_SCKnowsInnosEyeIsBroken  == TRUE))
-	&& (Kapitel == 3)
+	&& (Kapitel == 9)
 	&& (VatrasCanLeaveTown_Kap3 == FALSE)
 	&& (RavenIsDead == FALSE)
 		{
@@ -2030,7 +2030,7 @@ instance DIA_Vatras_INNOSEYEKAPUTT		(C_INFO)
 func int DIA_Vatras_INNOSEYEKAPUTT_Condition ()
 {
 		if 	(	(Npc_HasItems (other,ItAm_InnosEye_Broken)) || 	(MIS_SCKnowsInnosEyeIsBroken  == TRUE)	)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		&& (VatrasCanLeaveTown_Kap3 == TRUE)
 		{
 				return TRUE;
@@ -2202,7 +2202,7 @@ instance DIA_Vatras_RitualInnosEyeRepair		(C_INFO)
 func int DIA_Vatras_RitualInnosEyeRepair_Condition ()
 {
 	if (MIS_RitualInnosEyeRepair == LOG_RUNNING)
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 		{
 			return TRUE;
 		};	
@@ -2230,7 +2230,7 @@ instance DIA_Vatras_BEGINN		(C_INFO)
 
 func int DIA_Vatras_BEGINN_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& (Npc_GetDistToWP(self,		"NW_TROLLAREA_RITUAL_02")<2000) 
 		&& (Npc_GetDistToWP(Xardas,		"NW_TROLLAREA_RITUAL_02")<2000) 
 		&& (Npc_GetDistToWP(Pyrokar,	"NW_TROLLAREA_RITUAL_02")<2000) 
@@ -2299,7 +2299,7 @@ instance DIA_Vatras_AUGEGEHEILT		(C_INFO)
 
 func int DIA_Vatras_AUGEGEHEILT_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& (RitualInnosEyeRuns == LOG_RUNNING)
 		&& (Npc_RefuseTalk(self) == FALSE)
 		{
@@ -2451,7 +2451,7 @@ INSTANCE DIA_Vatras_AllDragonsDead(C_INFO)
 };                       
 FUNC INT DIA_Vatras_AllDragonsDead_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -2638,7 +2638,7 @@ instance DIA_Addon_Vatras_PISSOFFFOREVVER		(C_INFO)
 func int DIA_Addon_Vatras_PISSOFFFOREVVER_Condition ()
 {
 	if (VatrasPissedOffForever == TRUE)
-	&& (Kapitel >= 5)
+	&& (Kapitel >= 11)
 		{
 			return TRUE;
 		};

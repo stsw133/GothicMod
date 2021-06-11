@@ -117,27 +117,27 @@ FUNC VOID DIA_VLK_1_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_VLK_1_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_VLK_1_STANDARD_01_01"); //Od upadku Bariery handel z najwa¿niejszym z wieœniaków nagle siê urwa³. Kto wie, co on knuje. Coœ mi tu œmierdzi...
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_VLK_1_STANDARD_01_02"); //Onar posuwa siê za daleko. Wci¹¿ odmawia dostaw dla miasta. Jeœli stra¿ nie zareaguje odpowiednio szybko, pozostali ch³opi wkrótce te¿ zaczn¹ siê buntowaæ.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_VLK_1_STANDARD_01_03"); //Ponoæ bandyci po³¹czyli swe si³y z magami. Potê¿ni czarni magowie w czarnych szatach. Chyba nawet widzia³em jednego z nich ostatniej nocy.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_VLK_1_STANDARD_01_04"); //S³ysza³em, ¿e jeden z najemników Onara wyruszy³, aby pozabijaæ smoki. W koñcu zajêli siê czymœ po¿ytecznym.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_VLK_1_STANDARD_01_05"); //Wieœæ niesie, ¿e smoki zosta³y pokonane! Lord Hagen zbiera swe oddzia³y, by poprowadziæ je przeciw reszcie bestii, pl¹druj¹cych Górnicz¹ Dolinê.
 	};

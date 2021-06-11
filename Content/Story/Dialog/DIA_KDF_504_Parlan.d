@@ -12,7 +12,7 @@ INSTANCE DIA_Parlan_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -402,7 +402,7 @@ instance DIA_Parlan_Auge		(C_INFO)
 };
 func int DIA_Parlan_Auge_Condition ()
 {	
-	if  (Kapitel <= 2)
+	if  (Kapitel <= 8)
 	{
 		return TRUE;
 	};
@@ -430,7 +430,7 @@ instance DIA_Parlan_Amulett		(C_INFO)
 };
 func int DIA_Parlan_Amulett_Condition ()
 {	
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	&& Npc_KnowsInfo (other, DIA_Parlan_Auge)
 	{
 		return TRUE;
@@ -456,7 +456,7 @@ instance DIA_Parlan_Hagen		(C_INFO)
 };
 func int DIA_Parlan_Hagen_Condition ()
 {	
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	&& (hero.guild == GIL_NOV)
 	{
 		return TRUE;
@@ -484,7 +484,7 @@ var int DIA_Parlan_WORK_perm;
 //------------------------------------
 func int DIA_Parlan_WORK_Condition ()
 {
-	if  (Kapitel == 1)
+	if  (Kapitel == 7)
 	&&  (Npc_KnowsInfo(other,DIA_Parlan_KNOWSJUDGE) == FALSE) 
 	&&  Npc_KnowsInfo (other,DIA_Parlan_WELCOME)
 	&&  (DIA_Parlan_WORK_perm == FALSE)
@@ -826,8 +826,8 @@ func void DIA_Parlan_TEACH_MANA_Info ()
 		
 		Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
 		Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
+		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_BACK()
 {
@@ -846,8 +846,8 @@ FUNC VOID DIA_Parlan_TEACH_MANA_1()
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_5()
 {
@@ -855,8 +855,8 @@ FUNC VOID DIA_Parlan_TEACH_MANA_5()
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMANA5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
 };
 */
 ///////////////////////////////////////////////////////////////////////
@@ -944,7 +944,7 @@ func void DIA_Parlan_CIRCLE2_Info ()
 {
 	AI_Output (other, self, "DIA_Parlan_TECH_CIRCLE2_15_00"); //WprowadŸ mnie w tajniki drugiego krêgu magii.
 	
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	{
 		if B_TeachMagicCircle (self, other, 2)
 		{
@@ -983,7 +983,7 @@ func void DIA_Parlan_CIRCLE3_Info ()
 {
 	AI_Output (other, self, "DIA_Parlan_TECH_CIRCLE3_15_00"); //WprowadŸ mnie w tajniki trzeciego krêgu magii.
 	
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	{
 		if B_TeachMagicCircle (self, other, 3)
 		{
@@ -998,124 +998,6 @@ func void DIA_Parlan_CIRCLE3_Info ()
 	{
 		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE3_05_04"); //Nie nadszed³ jeszcze czas na to, byœ móg³ wkroczyæ do trzeciego krêgu.
 	};
-};		
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Parlan_TEACH		(C_INFO)
-{
-	npc			 = 	KDF_504_Parlan;
-	nr			 = 	3;
-	condition	 = 	DIA_Parlan_TEACH_Condition;
-	information	 = 	DIA_Parlan_TEACH_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Nauczaj mnie (tworzenie run)";
-};
-func int DIA_Parlan_TEACH_Condition ()
-{	
-	if (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Parlan_TEACH_Info ()
-{
-	var int abletolearn;
-	abletolearn = 0;
-	
-	AI_Output (other, self, "DIA_Parlan_TEACH_15_00"); //Naucz mnie!
-	
-	Info_ClearChoices (DIA_Parlan_TEACH);
-	Info_AddChoice (DIA_Parlan_TEACH,DIALOG_BACK,DIA_Parlan_TEACH_BACK);
-	
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
-	&& (PLAYER_TALENT_RUNES [SPL_LightHeal] == FALSE)
-	{
-		Info_AddChoice 	  (DIA_Parlan_TEACH,B_BuildLearnString (NAME_SPL_LightHeal, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_LightHeal)),DIA_Parlan_TEACH_LIGHT_HEAL);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 1)
-	&& (PLAYER_TALENT_RUNES [SPL_LIGHT] == FALSE)
-	{
-		Info_AddChoice 	  (DIA_Parlan_TEACH,B_BuildLearnString (NAME_SPL_LIGHT, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_LIGHT)),DIA_Parlan_TEACH_LIGHT);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-	&& (PLAYER_TALENT_RUNES [SPL_WINDFIST] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_WINDFIST, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_WINDFIST)) ,DIA_Parlan_TEACH_WINDFIST);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-	&& (PLAYER_TALENT_RUNES [SPL_Sleep] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_Sleep, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Sleep)) ,DIA_Parlan_TEACH_Sleep);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
-	&& (PLAYER_TALENT_RUNES [SPL_MediumHeal] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_MediumHeal, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_MediumHeal)) ,DIA_Parlan_TEACH_MediumHeal);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3)
-	&& (PLAYER_TALENT_RUNES [SPL_Fear] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_Fear, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Fear)) ,DIA_Parlan_TEACH_Fear);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4)
-	&& (PLAYER_TALENT_RUNES [SPL_DestroyUndead] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_DestroyUndead, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_DestroyUndead)) ,DIA_Parlan_TEACH_DestroyUndead);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5)
-	&& (PLAYER_TALENT_RUNES [SPL_FullHeal] == FALSE)
-	{
-		Info_AddChoice	(DIA_Parlan_TEACH, B_BuildLearnString (NAME_SPL_FullHeal, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_FullHeal)) ,DIA_Parlan_TEACH_FullHeal);
-		abletolearn = (abletolearn +1);
-	};
-	if (abletolearn < 1)
-	{
-		AI_Output (self, other, "DIA_Parlan_TEACH_05_01"); //W tej chwili nie nauczê ciê ¿adnych nowych formu³.
-	};
-};
-FUNC VOID DIA_Parlan_TEACH_BACK()
-{
-	Info_ClearChoices (DIA_Parlan_TEACH);
-};
-FUNC VOID DIA_Parlan_TEACH_LIGHT_HEAL()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_LightHeal);	
-};
-FUNC VOID DIA_Parlan_TEACH_LIGHT()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_LIGHT);	
-};
-FUNC VOID DIA_Parlan_TEACH_WINDFIST()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_WINDFIST);	
-};
-FUNC VOID DIA_Parlan_TEACH_Sleep()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Sleep);	
-};
-FUNC VOID DIA_Parlan_TEACH_MediumHeal()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_MediumHeal);	
-};
-FUNC VOID DIA_Parlan_TEACH_Fear()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Fear);	
-};
-FUNC VOID DIA_Parlan_TEACH_DestroyUndead()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_DestroyUndead);	
-};
-FUNC VOID DIA_Parlan_TEACH_FullHeal()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_FullHeal);	
 };
 
 //###########################################
@@ -1138,7 +1020,7 @@ INSTANCE DIA_Parlan_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -1173,7 +1055,7 @@ INSTANCE DIA_Parlan_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -1204,7 +1086,7 @@ INSTANCE DIA_Parlan_IAmParlan   (C_INFO)
 };
 FUNC INT DIA_Parlan_IAmParlan_Condition()
 {
-	if	( (Kapitel >= 3)  
+	if	( (Kapitel >= 9)  
 	&&	  (Npc_IsInState (self, ZS_Talk))
 	&&	 ((other.guild != GIL_NOV)
 	&& 	  (other.guild != GIL_KDF)))
@@ -1264,7 +1146,7 @@ INSTANCE DIA_Parlan_Bibliothek   (C_INFO)
 FUNC INT DIA_Parlan_Bibliothek_Condition()
 {
 	if  (other.guild != GIL_KDF)
-	&&  (Kapitel >=3)
+	&&  (Kapitel >= 9)
 	&&  (other.guild != GIL_SLD)
 	&&  (other.guild != GIL_DJG)
 	{
@@ -1330,7 +1212,7 @@ INSTANCE DIA_Parlan_Kap3U4U5_PERM   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap3U4U5_PERM_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (other.guild != GIL_KDF)
 	{
 		return TRUE;
@@ -1403,7 +1285,7 @@ INSTANCE DIA_Parlan_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -1441,7 +1323,7 @@ INSTANCE DIA_Parlan_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Parlan_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

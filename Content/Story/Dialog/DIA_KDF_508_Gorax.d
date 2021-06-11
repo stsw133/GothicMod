@@ -12,7 +12,7 @@ INSTANCE DIA_Gorax_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Gorax_Kap1_EXIT_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -448,7 +448,7 @@ INSTANCE DIA_Gorax_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Gorax_Kap2_EXIT_Condition()
 {
-	if (kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -478,7 +478,7 @@ INSTANCE DIA_Gorax_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Gorax_Kap3_EXIT_Condition()
 {
-	if (kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -564,7 +564,7 @@ INSTANCE DIA_Gorax_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Gorax_Kap4_EXIT_Condition()
 {
-	if (kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};
@@ -593,7 +593,7 @@ INSTANCE DIA_Gorax_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Gorax_Kap5_EXIT_Condition()
 {
-	if (kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};

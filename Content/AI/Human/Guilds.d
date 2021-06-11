@@ -1,9 +1,9 @@
 ///******************************************************************************************
 ///	Gildenattitüden zum Spielstart
 ///******************************************************************************************
-CONST INT TAB_ANZAHL = 16 * 16;
+const int TAB_ANZAHL = 16 * 16;
 
-CONST INT GIL_ATTITUDES[TAB_ANZAHL] =	
+const int GIL_ATTITUDES[TAB_ANZAHL] =	
 {
 ///	-->		None			Pal				Mil				Vlk							KdF				Nov 						Djg 			Sld				Bau 						Bdt		 		Strf 			Dmt 						Out 			PIR				KDW 				D		
 /* NONE*/	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* NONE*/	ATT_NEUTRAL,	ATT_NEUTRAL,	/* NONE*/	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* NONE*/	ATT_HOSTILE,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* NONE*/	ATT_FRIENDLY,	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	

@@ -14,7 +14,7 @@ INSTANCE DIA_Dar_EXIT (C_INFO)
 
 FUNC INT DIA_Dar_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -354,7 +354,7 @@ INSTANCE DIA_Dar_KAP3_EXIT(C_INFO)
                       
 FUNC INT DIA_Dar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -389,7 +389,7 @@ INSTANCE DIA_Dar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Dar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -414,7 +414,7 @@ instance DIA_Dar_ORCRING		(C_INFO)
 
 func int DIA_Dar_ORCRING_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 		{
 				return TRUE;
 		};
@@ -673,7 +673,7 @@ INSTANCE DIA_Dar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Dar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -708,7 +708,7 @@ INSTANCE DIA_Dar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Dar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

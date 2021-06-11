@@ -13,7 +13,7 @@ INSTANCE DIA_Bennet_EXIT   (C_INFO)
 
 FUNC INT DIA_Bennet_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -39,7 +39,7 @@ instance DIA_Bennet_HALLO	(C_INFO)
 
 func int DIA_Bennet_HALLO_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& (Npc_IsInState (self, ZS_Talk))
 	{
 		return TRUE;
@@ -70,7 +70,7 @@ instance DIA_Bennet_TRADE		(C_INFO)
 
 func int DIA_Bennet_TRADE_Condition ()
 {
-	if ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))		//damit Bennet dir im Knast kein Schmieden beibringt
+	if ((Kapitel != 9) || (MIS_RescueBennet == LOG_SUCCESS))		//damit Bennet dir im Knast kein Schmieden beibringt
 	{
 		return TRUE;
 	};
@@ -119,7 +119,7 @@ instance DIA_Bennet_WhichWeapons (C_INFO)
 
 func int DIA_Bennet_WhichWeapons_Condition ()
 {
-	if ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))
+	if ((Kapitel != 9) || (MIS_RescueBennet == LOG_SUCCESS))
 	&& (MIS_Bennet_BringOre == FALSE)
 	{
 		return TRUE;
@@ -214,9 +214,9 @@ instance DIA_Bennet_WannaSmith (C_INFO)
 
 func int DIA_Bennet_WannaSmith_Condition ()
 {
-	if (PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) == 0)
 	&& (Bennet_TeachCommon == FALSE)
-	&& ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))
+	&& ((Kapitel != 9) || (MIS_RescueBennet == LOG_SUCCESS))
 	{
 		return TRUE;
 	};
@@ -244,6 +244,7 @@ func void DIA_Bennet_WannaSmith_Pay()
 		Bennet_TeachCommon = TRUE;
 		Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 		B_LogEntry (Topic_SoldierTeacher,"Bennet mo¿e mnie przeszkoliæ w zakresie kowalstwa.");
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else
 	{
@@ -256,43 +257,6 @@ func void DIA_Bennet_WannaSmith_Later()
 {
 	AI_Output (other, self, "DIA_Bennet_WannaSmith_Later_15_00"); //Mo¿e póŸniej.
 	Info_ClearChoices (DIA_Bennet_WannaSmith);
-};
-
-
-// ************************************************************
-// 			  				Teach COMMON 
-// ************************************************************
-instance DIA_Bennet_TeachCOMMON (C_INFO)
-{
-	npc			= SLD_809_Bennet;
-	nr          = 6;
-	condition	= DIA_Bennet_TeachCOMMON_Condition;
-	information	= DIA_Bennet_TeachCOMMON_Info;
-	permanent	= TRUE;
-	description	= B_BuildLearnString("Nauka kowalstwa", B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_Common));
-};
-
-func int DIA_Bennet_TeachCOMMON_Condition ()
-{
-	if (PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
-	&& (Bennet_TeachCommon == TRUE)
-	&& ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))		//damit Bennet dir im Knast kein Schmieden beibringt
-	{
-		return TRUE;
-	};
-};
-
-func void DIA_Bennet_TeachCOMMON_Info ()
-{
-	AI_Output (other, self, "DIA_Bennet_TeachCOMMON_15_00"); //Naucz mnie, jak wykuæ miecz.
-	
-	if (B_TeachPlayerTalentSmith (self, other, WEAPON_Common))
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachCOMMON_06_01"); //To doœæ proste. ZnajdŸ sobie kawa³ek surowej stali i rozgrzej go w ogniu, a¿ zacznie siê ¿arzyæ.
-		AI_Output (self, other, "DIA_Bennet_TeachCOMMON_06_02"); //Potem wykuj na kowadle ostrze.
-		AI_Output (self, other, "DIA_Bennet_TeachCOMMON_06_03"); //Najwa¿niejsze, ¿ebyœ pilnowa³, czy ostrze nie wystyg³o. Masz tylko kilka minut, ¿eby zrobiæ broñ...
-		AI_Output (self, other, "DIA_Bennet_TeachCOMMON_06_04"); //Reszty dowiesz siê sam. To kwestia praktyki.
-	};
 };
 
 // ************************************************************
@@ -311,7 +275,7 @@ instance DIA_Bennet_WannaSmithORE (C_INFO)
 func int DIA_Bennet_WannaSmithORE_Condition ()
 {
 	if (Bennet_TeachSmith == FALSE)
-	&& ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))	
+	&& ((Kapitel != 9) || (MIS_RescueBennet == LOG_SUCCESS))	
 	{
 		return TRUE;
 	};
@@ -321,7 +285,7 @@ func void DIA_Bennet_WannaSmithORE_Info ()
 {
 	AI_Output (other, self, "DIA_Bennet_WannaSmithORE_15_00"); //Naucz mnie, jak wykuæ broñ z magicznej rudy!
 		
-	if (PLAYER_TALENT_SMITH[WEAPON_Common] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) == 0)
 	{
 		AI_Output (self, other, "DIA_Bennet_WannaSmithORE_06_01"); //Ale ty nawet nie znasz podstaw.
 		AI_Output (self, other, "DIA_Bennet_WannaSmithORE_06_02"); //Najpierw musisz siê nauczyæ, jak wykuæ porz¹dny miecz. Potem zobaczymy.
@@ -377,7 +341,7 @@ instance DIA_Bennet_WhereOre (C_INFO)
 func int DIA_Bennet_WhereOre_Condition ()
 {
 	if (MIS_Bennet_BringOre == LOG_RUNNING)
-	&& ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))
+	&& ((Kapitel != 9) || (MIS_RescueBennet == LOG_SUCCESS))
 	{
 		return TRUE;
 	};
@@ -425,172 +389,6 @@ func void DIA_Bennet_BringOre_Info ()
 	MIS_Bennet_BringOre = LOG_SUCCESS;
 };
 
-// ************************************************************
-// 			  				  Teach 
-// ************************************************************
-var int Bennet_Kap2Smith;
-var int Bennet_Kap3Smith;
-var int Bennet_Kap4Smith;
-var int Bennet_Kap5Smith;
-// ---------------------------------
-
-FUNC VOID B_SayBennetLATER()
-{
-	AI_Output	(self, other, "DIA_Bennet_GetInnosEye_06_04"); //Nie, jeszcze nie. Wróæ póŸniej.
-};
-instance DIA_Bennet_TeachSmith		(C_INFO)
-{
-	npc		 	= SLD_809_Bennet;
-	nr		 	= 30;
-	condition	= DIA_Bennet_TeachSmith_Condition;
-	information	= DIA_Bennet_TeachSmith_Info;
-	permanent	= TRUE;
-	description	= "Chcia³bym wiedzieæ wiêcej o wykuwaniu magicznej broni.";
-};
-
-func int DIA_Bennet_TeachSmith_Condition ()
-{
-	if (Bennet_TeachSmith == TRUE)
-	&& ((Kapitel != 3) || (MIS_RescueBennet == LOG_SUCCESS))		//damit Bennet dir im Knast kein Schmieden beibringt
-	{
-		return TRUE;
-	};
-};
-
-func void DIA_Bennet_TeachSmith_Info ()
-{
-	AI_Output (other, self, "DIA_Bennet_TeachSmith_15_00"); //Chcia³bym wiedzieæ wiêcej o wykuwaniu magicznej broni.
-	
-	if (Kapitel == 1)//HACK Mattes  
-	{
-		B_SayBennetLATER();
-	}
-	else if (Kapitel == 2)
-	&& (Bennet_Kap2Smith == FALSE)
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_01"); //Mogê ciê nauczyæ, jak wykuæ miecze z magicznego kruszcu, nawet dwurêczne.
-		Bennet_Kap2Smith = TRUE;
-	}
-	else if (Kapitel == 3)
-	&& (MIS_ReadyForChapter4 == FALSE)
-	&& (Bennet_Kap3Smith == FALSE)
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_02"); //Poprawi³em moj¹ technikê. Teraz mogê ciê nauczyæ, jak wykuæ z rudy miecze pó³torarêczne albo ciê¿kie dwurêczne.
-		Bennet_Kap3Smith = TRUE;
-	}
-	else if (MIS_ReadyForChapter4 == TRUE)
-	&& (Kapitel < 5)
-	&& (Bennet_Kap4Smith == FALSE)
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_03"); //Chyba tym razem przeszed³em samego siebie. Opracowa³em dwa bitewne ostrza. To najlepsza rzecz, jak¹ do tej pory zrobi³em.
-		Bennet_Kap4Smith = TRUE;
-	}
-	else if (Kapitel >= 5)
-	&& (Bennet_Kap5Smith == FALSE)
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_04"); //S³uchaj, chyba mam genialny pomys³. Broñ z magicznego kruszcu, pokryta smocz¹ krwi¹. I wiem dok³adnie, jak to zrobiæ!
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_05"); //Chcesz poznaæ ten sekret?
-		Bennet_Kap5Smith = TRUE;
-	}
-	else
-	{
-		AI_Output (self, other, "DIA_Bennet_TeachSmith_06_06"); //Jak¹ broñ chcia³byœ zrobiæ?
-	};
-	
-	Info_ClearChoices (DIA_Bennet_TeachSmith);
-	Info_AddChoice (DIA_Bennet_TeachSmith, DIALOG_BACK, DIA_Bennet_TeachSmith_BACK);
-	// ------ Kapitel 2 ------
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Special_01] == FALSE)
-	&& (Kapitel >= 2) 
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_1H_Special_01 , B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_01))		,DIA_Bennet_TeachSmith_1hSpecial1);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_2H_Special_01] == FALSE)
-	&& (Kapitel >= 2) 
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_2H_Special_01, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_01))		,DIA_Bennet_TeachSmith_2hSpecial1);
-	};
-	// ------ Kapitel 3 ------
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Special_02] == FALSE)
-	&& (Kapitel >= 3)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_1H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_02))		,DIA_Bennet_TeachSmith_1hSpecial2);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_2H_Special_02] == FALSE)
-	&& (Kapitel >= 3)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_2H_Special_02, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_02))		,DIA_Bennet_TeachSmith_2hSpecial2);
-	};
-	// ------ Kapitel 4 ------
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Special_03] == FALSE)
-	&& (Kapitel >= 4)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_1H_Special_03, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_03))		,DIA_Bennet_TeachSmith_1hSpecial3);
-	};
-	if (PLAYER_TALENT_SMITH[WEAPON_2H_Special_03] == FALSE)
-	&& (Kapitel >= 4)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_2H_Special_03, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_03))		,DIA_Bennet_TeachSmith_2hSpecial3);
-	};
-	// ------ Kapitel 5 ------
-	if (PLAYER_TALENT_SMITH[WEAPON_1H_Special_04] == FALSE)
-	&& (Kapitel >= 5)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_1H_Special_04, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_1H_Special_04))		,DIA_Bennet_TeachSmith_1hSpecial4);
-	};  
-	if (PLAYER_TALENT_SMITH[WEAPON_2H_Special_04] == FALSE)
-	&& (Kapitel >= 5)
-	{
-		Info_AddChoice		(DIA_Bennet_TeachSmith, B_BuildLearnString(NAME_ItMw_2H_Special_04, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, WEAPON_2H_Special_04))		,DIA_Bennet_TeachSmith_2hSpecial4);
-	};
-};
-
-FUNC VOID DIA_Bennet_TeachSmith_Back ()
-{
-	Info_ClearChoices (DIA_Bennet_TeachSmith);
-};
-func VOID DIA_Bennet_TeachSmith_1hSpecial1 ()
-{
-	
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_01);	
-};
-FUNC VOID DIA_Bennet_TeachSmith_2hSpecial1 ()
-{
-
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_01);
-};
-FUNC VOID DIA_Bennet_TeachSmith_1hSpecial2 ()
-{
-
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_02);
-};
-FUNC VOID DIA_Bennet_TeachSmith_2hSpecial2 ()
-{
-
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_02);
-};
-FUNC VOID DIA_Bennet_TeachSmith_1hSpecial3 ()
-{
-
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_03);
-};
-FUNC VOID DIA_Bennet_TeachSmith_2hSpecial3 ()
-{
-
-	B_TeachPlayerTalentSmith (self, other, WEAPON_2H_Special_03);
-};
-FUNC VOID DIA_Bennet_TeachSmith_1hSpecial4 ()
-{
-	
-	B_TeachPlayerTalentSmith (self, other, WEAPON_1H_Special_04);
-};
-FUNC VOID DIA_Bennet_TeachSmith_2hSpecial4 ()
-{
-
-	B_TeachPlayerTalentSmith(self, other, WEAPON_2H_Special_04);
-};
-
-
 //#####################################################################
 //##
 //##
@@ -614,7 +412,7 @@ INSTANCE DIA_Bennet_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bennet_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -640,7 +438,7 @@ instance DIA_Bennet_WhyPrison		(C_INFO)
 
 func int DIA_Bennet_WhyPrison_Condition ()
 {
-	IF (Kapitel == 3)
+	IF (Kapitel == 9)
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	{
 		return TRUE;
@@ -1248,8 +1046,7 @@ func void DIA_Bennet_GetInnosEye_Info ()
 	}
 	else
 	{	//Hack Mattes
-		B_SayBennetLATER();
-		//AI_Output			(self, other, "DIA_Bennet_GetInnosEye_06_04"); //Nein, noch nicht. Komm später wieder.
+		AI_Output			(self, other, "DIA_Bennet_GetInnosEye_06_04"); //Nie, jeszcze nie. Wróæ póŸniej.
 		AI_Output			(self, other, "DIA_Bennet_GetInnosEye_06_05"); //Jeœli bêdziesz mi przeszkadza³, potrwa to d³u¿ej.
 		
 		AI_StopProcessInfos (self);
@@ -1280,7 +1077,7 @@ INSTANCE DIA_Bennet_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bennet_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1306,7 +1103,7 @@ instance DIA_Bennet_DRACHENEIER		(C_INFO)
 
 func int DIA_Bennet_DRACHENEIER_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (BennetsDragonEggOffer == 0)
 	&& (Npc_HasItems (other,ItAt_DragonEgg_MIS) >= 1)
 	&& (hero.guild == GIL_DJG)
@@ -1424,7 +1221,7 @@ instance DIA_Bennet_EierBringen		(C_INFO)
 func int DIA_Bennet_EierBringen_Condition ()
 {
 	if (BennetsDragonEggOffer > 0)
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	&& (Npc_HasItems (other,ItAt_DragonEgg_MIS) >= 1)
 	&& (hero.guild == GIL_DJG)
 		{
@@ -1515,7 +1312,7 @@ INSTANCE DIA_Bennet_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Bennet_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};

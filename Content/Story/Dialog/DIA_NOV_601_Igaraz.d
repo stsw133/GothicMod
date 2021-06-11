@@ -13,7 +13,7 @@ INSTANCE DIA_Igaranz_Kap1_EXIT   (C_INFO)
 
 FUNC INT DIA_Igaraz_Kap1_EXIT_Condition ()
 {
-	if (kapitel == 1)
+	if (Kapitel == 7)
 	{
 		return TRUE;
 	};	
@@ -73,7 +73,7 @@ INSTANCE DIA_Igaraz_Wurst(C_INFO)
 
 FUNC INT DIA_Igaraz_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -426,7 +426,7 @@ INSTANCE DIA_Igaranz_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Igaraz_Kap2_EXIT_Condition()
 {
-	if (kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -456,7 +456,7 @@ INSTANCE DIA_Igaranz_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Igaraz_Kap3_EXIT_Condition()
 {
-	if (kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -649,7 +649,7 @@ INSTANCE DIA_Igaranz_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Igaraz_Kap4_EXIT_Condition()
 {
-	if (kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -679,7 +679,7 @@ INSTANCE DIA_Igaranz_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Igaraz_Kap5_EXIT_Condition()
 {
-	if (kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	
@@ -702,7 +702,7 @@ INSTANCE DIA_Igaranz_Perm   (C_INFO)
 };
 FUNC INT DIA_Igaraz_Perm_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (other.guild != GIL_KDF)
 	&& (MIS_BabosDocs != LOG_RUNNING)
 	{

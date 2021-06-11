@@ -725,93 +725,13 @@ func void DIA_Addon_AlligatorJack_CanLearn_Info ()
 		B_LogEntry		(Topic_Addon_PIR_Teacher,"Jack Aligator mo¿e pokazaæ mi, jak obdzieraæ zwierzêta ze skór i jak wyci¹gaæ ich zêby. Mo¿e te¿ nauczyæ mnie strzelania z ³uku.");
 		
 		AlligatorJack_Addon_TeachPlayer = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else
 	{
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_CanLearn_12_03"); //Najpierw musisz jednak pokazaæ, ¿e wiesz cokolwiek o polowaniu.
 		AI_Output (self ,other,"DIA_Addon_AlligatorJack_CanLearn_12_04"); //Jeœli pójdziesz ze mn¹ na polowanie, mogê ciê tego nauczyæ.
 	};
-};
-///////////////////////////////////////////////////////////////////////
-FUNC VOID B_AJ_Teach()
-{
-	Info_ClearChoices (DIA_Addon_AlligatorJack_Teach);
-		
-	Info_AddChoice (DIA_Addon_AlligatorJack_Teach,DIALOG_BACK,DIA_Addon_AlligatorJack_Teach_Back);
-	Info_AddChoice (DIA_Addon_AlligatorJack_Teach, B_BuildLearnString(PRINT_LearnBow5, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5) ,DIA_Addon_AlligatorJack_Teach_Bow_5);
-	Info_AddChoice (DIA_Addon_AlligatorJack_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	 ,DIA_Addon_AlligatorJack_Teach_Bow_1);
-	Info_AddChoice	(DIA_Addon_AlligatorJack_Teach, B_BuildLearnString ("Skórowanie zwierz¹t",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_ReptileSkin)),  DIA_Addon_AlligatorJack_Teach_FUR);
-	Info_AddChoice	(DIA_Addon_AlligatorJack_Teach, B_BuildLearnString ("Wyci¹ganie zêbów",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Teeth)),  DIA_Addon_AlligatorJack_Teach_Teeth);
-};
-///////////////////////////////////////////////////////////////////////
-//	Info Unterrichte mich!
-///////////////////////////////////////////////////////////////////////
-instance DIA_Addon_AlligatorJack_Teach		(C_INFO)
-{
-	npc			 = 	PIR_1352_Addon_AlligatorJack;
-	nr			 = 	5;
-	condition	 = 	DIA_Addon_AlligatorJack_Teach_Condition;
-	information	 = 	DIA_Addon_AlligatorJack_Teach_Info;
-	permanent 	 = 	TRUE;
-	description	 = 	"Naucz mnie.";
-};
-func int DIA_Addon_AlligatorJack_Teach_Condition ()
-{
-	if (AlligatorJack_Addon_TeachPlayer == TRUE)
-	{
-		return TRUE;
-	};	
-};
-func void DIA_Addon_AlligatorJack_Teach_Info ()
-{
-	AI_Output	(other,self ,"DIA_Addon_AlligatorJack_Teach_15_00"); //Naucz mnie.
-	AI_Output 	(self ,other,"DIA_Addon_AlligatorJack_Teach_12_01"); //Czego chcesz siê dowiedzieæ?
-		
-	B_AJ_Teach();
-
-	//Wird nicht mehr gebraucht M.F. 
-	//AI_Output 	(self ,other,"DIA_Addon_AlligatorJack_Teach_12_02"); //Ich kann dir nichts mehr beibringen.
-};
-FUNC VOID DIA_Addon_AlligatorJack_Teach_Back ()
-{
-	Info_ClearChoices	(DIA_Addon_AlligatorJack_Teach);
-};
-func void DIA_Addon_AlligatorJack_Teach_Bow_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 75);
-	B_AJ_Teach();
-};
-func void DIA_Addon_AlligatorJack_Teach_Bow_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 75);
-	B_AJ_Teach();
-};
-FUNC VOID DIA_Addon_AlligatorJack_Teach_FUR()
-{
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ReptileSkin] == FALSE)
-	{
-		if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_ReptileSkin))
-		{
-			AI_Output (self, other, "DIA_Addon_AlligatorJack_Teach_Fur_12_00"); //Zawsze rozcinaj skórê wzd³u¿ brzucha, inaczej nie bêdzie siê do niczego nadawaæ.
-		};
-	}
-	else
-	{
-		B_Say (self, other, "$NOLEARNYOUREBETTER");
-	};
-	B_AJ_Teach();
-};
-FUNC VOID DIA_Addon_AlligatorJack_Teach_Teeth()
-{
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-	{
-		 B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Teeth);
-	}
-	else
-	{
-		B_Say (self, other, "$NOLEARNYOUREBETTER");
-	};
-	B_AJ_Teach();
 };
 
 // ************************************************************

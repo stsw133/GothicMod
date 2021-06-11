@@ -208,7 +208,7 @@ func void DIA_Regis_PERM_Info ()
 	}
 	else
 	{
-		if (Kapitel != 3)
+		if (Kapitel != 9)
 		{
 			AI_Output (self, other, "DIA_Regis_PERM_13_07"); //Có¿, wszystko po staremu. Jeœli zaatakuj¹ nas orkowie, na pewno to zauwa¿ymy...
 		}

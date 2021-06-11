@@ -26,19 +26,19 @@ func void _Focusnames()
 		else if (att == ATT_HOSTILE)
 		{
 			col = RGBA (255, 32, 32, 255);
-		}/*
+		}
 		else if (o_other.aivar[AIV_Love] > 0)
 		{
 			var int colLove; colLove = o_other.aivar[AIV_Love] + (MAX_LOVE/10);
 			col = RGBA (255, 255 - (((o_other.aivar[AIV_Love]*255)/colLove)/2), 255 - (((o_other.aivar[AIV_Love]*255)/colLove)/4), 255);
-		}*/
+		}/*
 		else if (o_other.npctype == NPCTYPE_VILLAIN)
 		{
 			col = RGBA (192, 32, 96, 255);
-		}
+		}*/
 		else if (o_other.npctype == NPCTYPE_AMBIENT)
 		{
-			col = RGBA (192, 192,192, 255);
+			col = RGBA (192, 192, 192, 255);
 		}
 		else
 		{

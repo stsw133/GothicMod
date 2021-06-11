@@ -174,7 +174,7 @@ func void Use_RezeptFuerMegaTrank ()
 					
 					Doc_Show		( nDocID );
 		
-		PLAYER_TALENT_ALCHEMY[POTION_MegaDrink] = TRUE;
+		//PLAYER_TALENT_ALCHEMY[POTION_MegaDrink] = TRUE;
 };
 
 //**********************************************************************************

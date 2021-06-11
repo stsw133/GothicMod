@@ -11,7 +11,7 @@ instance DIA_Teach_JOIN (C_INFO)
 };
 func int DIA_Teach_JOIN_Condition()
 {
-	if (self.aivar[AIV_CanTeach] > false)
+	if (self.aivar[AIV_CanTeach] > false && self.aivar[AIV_CanTeach] < done)
 	{
 		return true;
 	};
@@ -113,10 +113,12 @@ func void DIA_Teach_JOIN_Info()
 	
 	/// MAGIC
 	if (Kapitel >= 7 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 0)
+	&& (other.guild == GIL_KDF)
 	{
 		if (Hlp_GetInstanceID(self) == KDF_504_Parlan)
+		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1)), DIA_Teach_JOIN_Magic);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 1)), DIA_Teach_JOIN_Magic);
 		};
 	};
 	if (Kapitel >= 8 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 1)
@@ -124,8 +126,9 @@ func void DIA_Teach_JOIN_Info()
 		if (Hlp_GetInstanceID(self) == KDF_504_Parlan)
 		|| (Hlp_GetInstanceID(self) == KDW_14000_Addon_Saturas_ADW)
 		|| (Hlp_GetInstanceID(self) == PC_Mage_OW)
+		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1)), DIA_Teach_JOIN_Magic);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 2)), DIA_Teach_JOIN_Magic);
 		};
 	};
 	if (Kapitel >= 9 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 2)
@@ -133,8 +136,9 @@ func void DIA_Teach_JOIN_Info()
 		if (Hlp_GetInstanceID(self) == KDF_504_Parlan)
 		|| (Hlp_GetInstanceID(self) == KDW_14000_Addon_Saturas_ADW)
 		|| (Hlp_GetInstanceID(self) == PC_Mage_OW)
+		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1)), DIA_Teach_JOIN_Magic);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 3)), DIA_Teach_JOIN_Magic);
 		};
 	};
 	if (Kapitel >= 10 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 3)
@@ -143,7 +147,7 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == KDW_14000_Addon_Saturas_ADW)
 		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1)), DIA_Teach_JOIN_Magic);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 4)), DIA_Teach_JOIN_Magic);
 		};
 	};
 	if (Kapitel >= 11 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 4)
@@ -151,7 +155,7 @@ func void DIA_Teach_JOIN_Info()
 		if (Hlp_GetInstanceID(self) == KDF_500_Pyrokar)
 		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1)), DIA_Teach_JOIN_Magic);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 5)), DIA_Teach_JOIN_Magic);
 		};
 	};
 	
@@ -194,41 +198,81 @@ func void DIA_Teach_JOIN_Info()
 		};
 	};
 	
-	/// CRAFT
-	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) < 3)
+	/// SMITH
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) < 2)
 	{
 		if (Hlp_GetInstanceID(self) == DJG_714_Jan)
-		|| (Hlp_GetInstanceID(self) == SLD_809_Bennet)
-		|| (Hlp_GetInstanceID(self) == SLD_809_Bennet_DI)
-		|| (Hlp_GetInstanceID(self) == VLK_412_Harad)
+		|| (Hlp_GetInstanceID(self) == SLD_809_Bennet && !Bennet_TeachSmith)
 		|| (Hlp_GetInstanceID(self) == VLK_4106_Dobar)
+		|| (Hlp_GetInstanceID(self) == VLK_412_Harad)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
+		};
+	};
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) < 3)
+	{
+		if (Hlp_GetInstanceID(self) == SLD_809_Bennet && Bennet_TeachSmith)
+		|| (Hlp_GetInstanceID(self) == SLD_809_Bennet_DI)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
+		};
+	};
+	/// ALCHEMY
+	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) < 1)
+	{
+		if (Hlp_GetInstanceID(self) == VLK_498_Ignaz)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
+		};
+	};
+	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) < 2)
+	{
+		if (Hlp_GetInstanceID(self) == VLK_417_Constantino)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
 		};
 	};
 	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) < 3)
 	{
 		if (Hlp_GetInstanceID(self) == KDW_14040_Addon_Riordian_ADW)
 		|| (Hlp_GetInstanceID(self) == BAU_980_Sagitta)
-		|| (Hlp_GetInstanceID(self) == VLK_417_Constantino)
+		|| (Hlp_GetInstanceID(self) == KDF_506_Neoras)
 		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
-		|| (Hlp_GetInstanceID(self) == VLK_498_Ignaz)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 3)
+	/// HUNTING
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 1)
 	{
 		if (Hlp_GetInstanceID(self) == BDT_1072_Addon_Logan)
-		|| (Hlp_GetInstanceID(self) == BDT_1074_Addon_Edgor)
 		|| (Hlp_GetInstanceID(self) == PIR_1352_Addon_AlligatorJack)
+		|| (Hlp_GetInstanceID(self) == SLD_822_Raoul)
+		|| (Hlp_GetInstanceID(self) == VLK_413_Bosper)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
+		};
+	};
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
+	{
+		if (Hlp_GetInstanceID(self) == BDT_1074_Addon_Edgor)
 		|| (Hlp_GetInstanceID(self) == BAU_961_Gaan)
 		|| (Hlp_GetInstanceID(self) == BAU_981_Grom)
 		|| (Hlp_GetInstanceID(self) == BAU_982_Grimbald)
+		|| (Hlp_GetInstanceID(self) == SLD_802_Buster)
+		|| (Hlp_GetInstanceID(self) == SLD_811_Wolf)
+		|| (Hlp_GetInstanceID(self) == VLK_4110_Jergan)
+		|| (Hlp_GetInstanceID(self) == VLK_4148_Gestath && !Gestath_DragonTrophy)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
+		};
+	};
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 3)
+	{
+		if (Hlp_GetInstanceID(self) == BAU_981_Grom)
 		|| (Hlp_GetInstanceID(self) == DJG_711_Godar)
-		|| (Hlp_GetInstanceID(self) == VLK_413_Bosper)
 		|| (Hlp_GetInstanceID(self) == VLK_4130_Talbin)
-		|| (Hlp_GetInstanceID(self) == VLK_4148_Gestath)
+		|| (Hlp_GetInstanceID(self) == VLK_4148_Gestath && Gestath_DragonTrophy)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
 		};
@@ -236,8 +280,16 @@ func void DIA_Teach_JOIN_Info()
 };
 
 func void DIA_Teach_JOIN2_Info()
-{	
-	AI_Output (other, self, "DIA_Addon_Henry_Teach_15_00"); ///Ucz mnie.
+{
+	var int rand; rand = Hlp_Random(2);
+	if (rand == 0)
+	{
+		AI_Output (other, self, "DIA_Addon_Henry_Teach_15_00"); //Ucz mnie.
+	}
+	else
+	{
+		AI_Output (other, self, "DIA_Addon_AlligatorJack_Teach_15_00"); //Naucz mnie.
+	};
 	DIA_Teach_JOIN_Info();
 };
 

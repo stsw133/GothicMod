@@ -7,7 +7,7 @@ func void B_GivePlayerXP (var int points)
 	{
 		hero.exp += points;
 	};
-	Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(PRINT_addExp,IntToString(points)), FONT_ScreenSmall, COL_ExpGained, TIME_Print * 1000);
+	Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(PRINT_addExp, IntToString(points)), FONT_ScreenSmall, COL_ExpGained, TIME_Print * 1000);
 
 	if (hero.exp >= hero.exp_next)
 	&& (hero.level < MAX_LEVEL)
@@ -25,7 +25,7 @@ func void B_GivePlayerXP (var int points)
 		hero.LP += DIFF_Multiplier(LP_PER_LEVEL, DECREASE);
 		hero.attribute[ATR_HITPOINTS_MAX] += HP_PER_LEVEL;
 		hero.attribute[ATR_HITPOINTS] += HP_PER_LEVEL;
-		ENE_MAX_CHECK(hero);
+		Npc_EnergyMaxRefresh(hero);
 
 		Print_ExtPrcnt (-1, YPOS_LevelUp, PRINT_LevelUp, FONT_Screen, COL_White, TIME_Print * 1000);
 		Snd_Play("LevelUp");

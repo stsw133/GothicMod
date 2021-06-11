@@ -226,7 +226,7 @@ instance DIA_Thekla_Problem		(C_INFO)
 
 func int DIA_Thekla_Problem_Condition ()
 {
-	if (kapitel <= 3)
+	if (Kapitel <= 9)
 	&& (Npc_KnowsInfo (other, DIA_Thekla_WannaJoin))
 	{
 		return TRUE;
@@ -265,7 +265,7 @@ func int DIA_Thekla_Manieren_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Thekla_Problem)) 
 	&& (Sylvio.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
 	&& (Bullco.aivar[AIV_LastFightAgainstPlayer] == FIGHT_NONE)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -298,7 +298,7 @@ func int DIA_Thekla_AfterFight_Condition ()
 	if (Sylvio.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
 	|| (Bullco.aivar[AIV_LastFightAgainstPlayer] == FIGHT_WON)
 	|| (Bullco.aivar[AIV_LastFightAgainstPlayer] == FIGHT_LOST)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -407,7 +407,7 @@ func void DIA_Thekla_PERM_Info()
 	}
 	else if (MIS_Thekla_Paket == LOG_SUCCESS)
 	{
-		if (Kapitel <= 2)
+		if (Kapitel <= 8)
 		{
 			if (Thekla_MehrEintopfKap1 == FALSE)
 			{
@@ -422,8 +422,8 @@ func void DIA_Thekla_PERM_Info()
 			};
 		};
 		
-		if (Kapitel == 3)
-		|| (Kapitel == 4)
+		if (Kapitel == 9)
+		|| (Kapitel == 10)
 		{
 			if (Thekla_MehrEintopfKap3 == FALSE)
 			&& (MIS_RescueBennet == LOG_SUCCESS)
@@ -446,7 +446,7 @@ func void DIA_Thekla_PERM_Info()
 			};
 		};
 		
-		if (Kapitel >= 5)	
+		if (Kapitel >= 11)	
 		{
 			if (Thekla_MehrEintopfKap5 == FALSE)
 			{

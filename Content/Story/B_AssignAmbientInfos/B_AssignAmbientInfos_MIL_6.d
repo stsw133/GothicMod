@@ -64,7 +64,7 @@ instance DIA_Addon_MIL_6_MissingPeople		(C_INFO)
 
 func int DIA_Addon_MIL_6_MissingPeople_Condition ()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (SC_HearedAboutMissingPeople == TRUE)
 		{
 			return TRUE;
@@ -153,30 +153,30 @@ FUNC VOID DIA_MIL_6_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_MIL_6_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_01"); //W mieœcie coraz wiêcej szumowin.
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_02"); //Wszêdzie coraz wiêcej z³odziei. Lord Andre podejrzewa nawet, ¿e ca³e to zamieszanie jest sprawk¹ gangu.
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_03"); //Niedawno przetrz¹snêliœmy dok³adnie ca³¹ dzielnicê portow¹, ale niczego nie znaleŸliœmy.
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_04"); //Wygl¹da na to, ¿e problem bandytów mamy ju¿ z g³owy. Ataki sta³y siê ostatnimi czasy rzadkoœci¹.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_05"); //Z dnia na dzieñ jest coraz gorzej, wszystko przez te szumowiny wrêcz zalewaj¹ce miasto. Ostatniej nocy œledzi³em pewnego typka w czarnych szatach, zd¹¿aj¹cego ku górnemu miastu.
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_06"); //Od pocz¹tku wyda³ mi siê podejrzany. Œledzi³em go a¿ pod dom gubernatora. Tam znikn¹³. Mówiê ci, dziwna to by³a postaæ.
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_07"); //S³ysza³em, ¿e Lord Hagen zatrudni³ najemników, by zajêli siê smokami. Mnie to odpowiada, nie chcia³bym sam zmierzyæ siê z tymi bestiami.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_MIL_6_STANDARD_06_08"); //Mówi siê, ¿e smoki zosta³y pokonane. Ponoæ Lord Hagen zbiera si³y, by ostatecznie wygnaæ je tak¿e z Górniczej Doliny.
 	};

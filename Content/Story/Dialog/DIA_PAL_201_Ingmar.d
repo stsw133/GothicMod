@@ -13,7 +13,7 @@ INSTANCE DIA_Ingmar_EXIT   (C_INFO)
 
 FUNC INT DIA_Ingmar_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -43,7 +43,7 @@ func int DIA_Ingmar_Hallo_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& (DIA_Ingmar_Hallo_permanent == FALSE)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -217,7 +217,7 @@ INSTANCE DIA_Ingmar_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ingmar_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -252,7 +252,7 @@ INSTANCE DIA_Ingmar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ingmar_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -402,7 +402,7 @@ INSTANCE DIA_Ingmar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ingmar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -437,7 +437,7 @@ INSTANCE DIA_Ingmar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Ingmar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

@@ -66,7 +66,7 @@ func void DIA_Rega_HALLO_Info ()
 	AI_Output			(other, self, "DIA_Rega_HALLO_15_06"); //Dlaczego?
 	AI_Output			(self, other, "DIA_Rega_HALLO_17_07"); //To miejsce nigdy nie by³o rajem, ale przynajmniej mieliœmy spokój, pracuj¹c dla Sekoba.
 	AI_Output			(self, other, "DIA_Rega_HALLO_17_08"); //Ostatnio sytuacja sta³a siê nie do zniesienia.
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 			AI_Output			(self, other, "DIA_Rega_HALLO_17_09"); //Wszêdzie grasuj¹ bandyci, polne bestie niszcz¹ nasze zbiory, a w³aœciciel ziemski staje siê coraz bardziej bezwzglêdny.
 		};
@@ -90,7 +90,7 @@ func int DIA_Rega_ONAR_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rega_HALLO))
 	&& ((hero.guild != GIL_SLD) && (hero.guild != GIL_DJG))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -123,7 +123,7 @@ func int DIA_Rega_SLD_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Rega_HALLO))
 	&& ((hero.guild != GIL_SLD) && (hero.guild != GIL_DJG))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 				return TRUE;
 		};

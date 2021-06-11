@@ -250,7 +250,7 @@ func void DIA_Meldor_PERM_Info ()
 {
 	AI_Output (other, self, "DIA_Meldor_PERM_15_00"); //Czy ostatnio wydarzy³o siê tu coœ niezwyk³ego?
 	
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		AI_Output (self, other, "DIA_Meldor_PERM_07_01"); //Nie tak dawno temu stra¿ miejska wywróci³a ca³¹ dzielnicê portow¹ do góry nogami.
 		AI_Output (self, other, "DIA_Meldor_PERM_07_02"); //Szukali skradzionych kosztownoœci. Ostatnio zdarzy³o siê tu sporo kradzie¿y. Szczególnie w lepszych dzielnicach.
@@ -262,11 +262,11 @@ func void DIA_Meldor_PERM_Info ()
 		AI_Output (self, other, "DIA_Meldor_PERM_07_04"); //Podobno znaleŸli w kana³ach z³odziejsk¹ kryjówkê. Wszyscy przestêpcy zostali zabici.
 		Meldor_DGNews = TRUE;
 	}
-	else if (Kapitel == 3)
+	else if (Kapitel == 9)
 	{
 		AI_Output (self, other, "DIA_Meldor_PERM_07_05"); //Podobno w Górniczej Dolinie s¹ smoki. Ciekaw jestem, kiedy nasi paladyni zostan¹ wys³ani do walki.
 	}
-	else if (Kapitel == 5)
+	else if (Kapitel == 11)
 	{
 		AI_Output (self, other, "DIA_Meldor_PERM_07_06"); //Podobno wszystkie smoki s¹ martwe.
 	}

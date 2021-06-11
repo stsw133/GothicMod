@@ -29,15 +29,13 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 		{
 			slf.attribute[ATR_STRENGTH]			=	kap * 3;
 			slf.attribute[ATR_DEXTERITY]		=	kap * 3;
-			slf.damage[DAM_INDEX_MAGIC]			=	kap * 5;
-			//slf.aivar[AIV_Power]				=	kap * 5;
+			Npc_SetPowerPoints(slf, kap * 5);
 		}
 		else
 		{
 			slf.attribute[ATR_STRENGTH]			=	kap * 5;
 			slf.attribute[ATR_DEXTERITY]		=	kap * 5;
-			slf.damage[DAM_INDEX_MAGIC]			=	0;
-			//slf.aivar[AIV_Power]				=	0;
+			Npc_SetPowerPoints(slf, 0);
 		};
 		
 		B_SetProtection (slf, kap * AR_PER_LEVEL);
@@ -51,13 +49,13 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 		{
 			slf.attribute[ATR_STRENGTH]			=	DIFF_Multiplier (kap * 3, INCREASE);
 			slf.attribute[ATR_DEXTERITY]		=	DIFF_Multiplier (kap * 3, INCREASE);
-			slf.aivar[AIV_Power]				=	DIFF_Multiplier (kap * 5, INCREASE);
+			Npc_SetPowerPoints(slf, DIFF_Multiplier(kap * 5, INCREASE));
 		}
 		else
 		{
 			slf.attribute[ATR_STRENGTH]			=	DIFF_Multiplier (kap * 5, INCREASE);
 			slf.attribute[ATR_DEXTERITY]		=	DIFF_Multiplier (kap * 5, INCREASE);
-			slf.aivar[AIV_Power]				=	0;
+			Npc_SetPowerPoints(slf, 0);
 		};
 		
 		B_SetProtection (slf, kap * AR_PER_LEVEL);
@@ -105,7 +103,6 @@ func void B_SetMonsterAttributes (var C_NPC slf, var int kap)
 	
 	slf.attribute[ATR_MANA]				=	slf.attribute[ATR_MANA_MAX];
 	slf.attribute[ATR_HITPOINTS]		=	slf.attribute[ATR_HITPOINTS_MAX];
-	//POWER_CHECK(slf);
 	
 	///#DEBUG
 	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY, dLevel);

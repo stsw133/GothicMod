@@ -384,7 +384,6 @@ FUNC INT DIA_Godar_Dragonstuff_Condition()
 {
 	if (Godar_TeachAnimalTrophy == TRUE)
 	&& ((hero.guild != GIL_MIL) && (hero.guild != GIL_PAL))
-	&& ((PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonScale] == FALSE) || (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonBlood] == FALSE))
 	&& (Godar_TeachDragonStuff == FALSE)
 	{
 		return TRUE;
@@ -411,6 +410,7 @@ func void DIA_Godar_Dragonstuff_fair ()
 		if (B_GiveInvItems (other, self, ItMi_Gold,1000))
 		{
 			Godar_TeachDragonStuff = TRUE;
+			self.aivar[AIV_CanTeach] = true;
 		}
 		else
 		{
@@ -426,137 +426,6 @@ func void DIA_Godar_Dragonstuff_nein ()
 	Info_ClearChoices	(DIA_Godar_Dragonstuff);	
 
 };
-
-//*********************************************************************
-//	Zeig mir wie man jagd.
-//*********************************************************************
-INSTANCE DIA_Godar_Teach   (C_INFO)
-{
-	npc         = DJG_711_Godar;
-	nr          = 5;
-	condition   = DIA_Godar_Teach_Condition;
-	information = DIA_Godar_Teach_Info;
-	permanent   = TRUE;
-	description	= "Poka¿ mi, jak nale¿y polowaæ.";
-};
-
-FUNC INT DIA_Godar_Teach_Condition()
-{
-	if (Godar_TeachAnimalTrophy == TRUE)
-	&& ((hero.guild != GIL_MIL) && (hero.guild != GIL_PAL))
-	{
-		return TRUE;
-	};	
-};
-
-FUNC VOID DIA_Godar_Teach_Info()
-{
-	AI_Output (other,self ,"DIA_Godar_Teach_15_00"); //Poka¿ mi, jak nale¿y polowaæ.
-	if 	(
-			(Npc_GetTalentSkill (other,NPC_TALENT_SNEAK) == FALSE) 
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonScale] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonBlood] == FALSE)
-		)
-		{
-			Info_AddChoice (DIA_Godar_Teach,Dialog_Back,DIA_Godar_Teach_Back);
-		
-			if (Npc_GetTalentSkill (other,NPC_TALENT_SNEAK) == FALSE) 
-			{
-				Info_AddChoice		(DIA_Godar_Teach, B_BuildLearnString("Skradaj siê"	, B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1))		,DIA_Godar_Teach_Thief_Sneak);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Godar_Teach, B_BuildLearnString ("Usuñ k³y",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Teeth)),  DIA_Godar_Teach_TROPHYS_Teeth);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Godar_Teach, B_BuildLearnString ("¯¹d³o krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFSting)),  DIA_Godar_Teach_TROPHYS_BFSting);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Godar_Teach, B_BuildLearnString ("Skrzyd³a krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFWing)),  DIA_Godar_Teach_TROPHYS_BFWing);
-			};
-			if (Godar_TeachDragonStuff == TRUE)
-			{
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonScale] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Godar_Teach, B_BuildLearnString ("Usuñ smocze ³uski",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_DragonScale)),  DIA_Godar_Teach_TROPHYS_DragonScale);
-				};
-				if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DragonBlood] == FALSE)
-				{ 
-					Info_AddChoice	(DIA_Godar_Teach, B_BuildLearnString ("Zbieraj smocz¹ krew",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_DragonBlood)), DIA_Godar_Teach_TROPHYS_DragonBlood);
-				};
-			};
-		}
-	else
-		{
-			B_Say (self, other, "$NOLEARNYOUREBETTER"); //Ich kann dir nichts mehr beibringen. Du bist schon zu gut...
-		};
-};
-
-FUNC VOID DIA_Godar_Teach_Back ()
-{
-	Info_ClearChoices 	(DIA_Godar_Teach);
-}; 
-
-FUNC VOID DIA_Godar_Teach_TROPHYS_Teeth ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Teeth))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_Teeth_13_00"); //Zêby naj³atwiej usun¹æ przy pomocy mocnego no¿a.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-FUNC VOID DIA_Godar_Teach_TROPHYS_BFSting ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFSting))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_BFSting_13_00"); //Jeœli naciœniesz na odpowiednie miejsce, ¿¹d³o krwiopijcy wysunie siê i bêdziesz móg³ je odci¹æ.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-FUNC VOID DIA_Godar_Teach_TROPHYS_BFWing ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFWing))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_BFWing_13_00"); //Skrzyd³a krwiopijcy s¹ bardzo delikatne, dlatego musisz uwa¿aæ przy ich usuwaniu.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-FUNC VOID DIA_Godar_Teach_Thief_Sneak()
-{
-	if (B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_Sneak_13_00"); //Podczas polowania u¿ywaj obuwia na miêkkiej podeszwie. Twarde buty robi¹ strasznie du¿o ha³asu.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-FUNC VOID DIA_Godar_Teach_TROPHYS_DragonScale ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_DragonScale))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_DragonScale_13_00"); //Bêdziesz potrzebowa³ du¿o si³y, aby wyrwaæ smocze ³uski. Zapewniam ciê jednak, ¿e da siê to zrobiæ.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-FUNC VOID DIA_Godar_Teach_TROPHYS_DragonBlood()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_DragonBlood))
-		{
-			AI_Output			(self, other, "DIA_Godar_TEACHHUNTING_DragonBlood_13_00"); //Aby utoczyæ smoczej krwi, znajdŸ ods³oniête miejsce na brzuchu i wbij tam nó¿.
-		};
-	Info_ClearChoices 	(DIA_Godar_Teach);
-};
-
-
 
 //*********************************************************************
 //	AllDragonsDead 

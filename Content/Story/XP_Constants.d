@@ -364,5 +364,3 @@ const int  	XP_SwordBlessed2			= 1000; //Letzte Schwertweihe!!
 
 const int 	XP_Mario_Ambush		        = 5000;	
 const int 	XP_Pedro_SerpentesMission   = 3000;	 //Joly: nur DJG
-
-

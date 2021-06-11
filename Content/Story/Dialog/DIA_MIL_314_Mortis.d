@@ -37,7 +37,7 @@ func int DIA_Mortis_Hallo_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& ((Npc_KnowsInfo (other, DIA_Peck_FOUND_PECK) == FALSE)
-	&& (Kapitel < 3))
+	&& (Kapitel < 9))
 	{
 		return TRUE;
 	};
@@ -64,7 +64,7 @@ func int DIA_Mortis_Waffe_Condition ()
 {	
 	if (MIS_Andre_Peck == LOG_RUNNING)
 	&& ((Npc_KnowsInfo (other, DIA_Peck_FOUND_PECK) == FALSE)
-	&& (Kapitel < 3))
+	&& (Kapitel < 9))
 	{
 		return TRUE;
 	};

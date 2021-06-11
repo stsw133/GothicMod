@@ -12,7 +12,7 @@ func int C_WantToAttackThief (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ NSC ignoriert Diebstahl ------
-	if (slf.aivar[AIV_IgnoreCrime] == IGNORE_Theft)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Theft) == IGNORE_Theft)
 	{
 		return false;
 	};

@@ -12,7 +12,7 @@ INSTANCE DIA_Lester_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lester_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -36,7 +36,7 @@ INSTANCE DIA_Lester_Hello (C_INFO)
 };                       
 FUNC INT DIA_Lester_Hello_Condition()
 {	
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -106,7 +106,7 @@ INSTANCE DIA_Lester_WhatHappened (C_INFO)
 FUNC INT DIA_Lester_WhatHappened_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Lester_Hello))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -138,7 +138,7 @@ INSTANCE DIA_Lester_MineColony (C_INFO)
 FUNC INT DIA_Lester_MineColony_Condition()
 {
 	if (Npc_KnowsInfo(other, DIA_Lester_Hello))
-		&& (Kapitel < 3)
+		&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -169,7 +169,7 @@ func int DIA_Lester_SEND_XARDAS_Condition ()
 {	
 	if Npc_KnowsInfo (other,DIA_Lester_WhatHappened)
 	&& Npc_KnowsInfo (other,DIA_Lester_MineColony)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -306,7 +306,7 @@ INSTANCE DIA_Lester_Perm (C_INFO)
 FUNC INT DIA_Lester_Perm_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_Lester_Hello))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (Npc_GetDistToWP (self, "NW_XARDAS_TOWER_LESTER") <= 2000)
 	{
 		return TRUE;
@@ -332,7 +332,7 @@ INSTANCE DIA_Lester_Sleep (C_INFO)
 };                       
 FUNC INT DIA_Lester_Sleep_Condition()
 {
-	if  (Kapitel < 3)
+	if  (Kapitel < 9)
 	&& (Npc_GetDistToWP (self, "NW_XARDAS_TOWER_IN1_31") <= 500)
 	{
 		return TRUE;
@@ -369,7 +369,7 @@ INSTANCE DIA_Lester_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lester_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -393,7 +393,7 @@ instance DIA_Lester_BACKINTOWN		(C_INFO)
 func int DIA_Lester_BACKINTOWN_Condition ()
 {	
 	if (Npc_GetDistToWP (self, "LEVELCHANGE") <= 500) 
-		&& (Kapitel == 3)
+		&& (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -429,7 +429,7 @@ instance DIA_Lester_PERM3		(C_INFO)
 
 func int DIA_Lester_PERM3_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Lester_IsOnBoard != LOG_SUCCESS)
 	{
 		return TRUE;
@@ -508,7 +508,7 @@ INSTANCE DIA_Lester_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lester_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -543,7 +543,7 @@ INSTANCE DIA_Lester_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lester_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -569,7 +569,7 @@ instance DIA_Lester_XARDASWEG		(C_INFO)
 
 func int DIA_Lester_XARDASWEG_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -777,7 +777,7 @@ INSTANCE DIA_Lester_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lester_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

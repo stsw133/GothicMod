@@ -276,7 +276,7 @@ func int DIA_Ehnim_PERMKAP1_Condition ()
 	if 	(
 		(DIA_Ehnim_STREIT5_noPerm == TRUE)
 		&& (Npc_IsInState (self,ZS_Talk))
-		&& ((Kapitel < 3) || (hero.guild == GIL_KDF))
+		&& ((Kapitel < 9) || (hero.guild == GIL_KDF))
 		)
 			{
 					return TRUE;
@@ -305,7 +305,7 @@ func int DIA_Ehnim_MoleRatFett_Condition ()
 {
 	if 	(
 		(DIA_Ehnim_STREIT5_noPerm == TRUE)
-		&& (Kapitel >= 3)
+		&& (Kapitel >= 9)
 		&& (hero.guild != GIL_KDF)
 		)
 			{

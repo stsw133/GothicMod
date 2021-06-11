@@ -13,7 +13,7 @@ func int C_WantToAttackSheepKiller (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ NSC ignoriert Sheepkiller ------
-	if (slf.aivar[AIV_IgnoreCrime] == IGNORE_Sheepkiller)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Sheepkiller) == IGNORE_Sheepkiller)
 	{
 		return false;
 	};

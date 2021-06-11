@@ -12,7 +12,7 @@ INSTANCE DIA_Hyglas_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Hyglas_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -150,7 +150,7 @@ func int DIA_Hyglas_FIREBOLT_Condition ()
 {	
 	if Npc_KnowsInfo (hero, DIA_Hyglas_CONTEST)
 	&& (MIS_RUNE == LOG_RUNNING)
-	&& (PLAYER_TALENT_RUNES [SPL_Firebolt] == FALSE)
+	&& (!MakeRune_FireBolt)
 	{
 		return TRUE;
 	};
@@ -175,25 +175,22 @@ instance DIA_Hyglas_TALENT_FIREBOLT		(C_INFO)
 };
 func int DIA_Hyglas_TALENT_FIREBOLT_Condition ()
 {	
-	if Npc_KnowsInfo (hero, DIA_Hyglas_CONTEST)
-	&& (PLAYER_TALENT_RUNES [SPL_Firebolt] == FALSE)
-	&& (Npc_HasItems (other,ItMi_RuneBlank) >= 1)
-	&& (Npc_HasItems (other,ItSc_Firebolt) >= 1)
-	&& (Npc_HasItems (other,ItMi_Sulfur) >= 1)
+	if (Npc_KnowsInfo(hero, DIA_Hyglas_CONTEST))
+	&& (!MakeRune_FireBolt)
+	&& (Npc_HasItems(other, ItMi_RuneBlank) >= 1)
+	&& (Npc_HasItems(other, ItSc_Firebolt) >= 1)
+	&& (Npc_HasItems(other, ItMi_Sulfur) >= 1)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Hyglas_TALENT_FIREBOLT_Info ()
 {
 	AI_Output (other, self, "DIA_Hyglas_TALENT_FIREBOLT_15_00"); //Naucz mnie, jak stworzyæ runê OGNISTEJ STRZA³Y.
-	
-	if (B_TeachPlayerTalentRunes (self, other, SPL_Firebolt))	
-	{
-		AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_01"); //Aby stworzyæ runê ognistej strza³y, musisz po³¹czyæ na stole runicznym siarkê z kamieniem runicznym.
-		AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_02"); //Moc zaklêcia ognistej strza³y wniknie w runê, a ty dostaniesz narzêdzie Innosa.
-		AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_03"); //Skoro ju¿ masz wszystkie materia³y, mo¿esz przyst¹piæ do tworzenia runy.
-	};
+	AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_01"); //Aby stworzyæ runê ognistej strza³y, musisz po³¹czyæ na stole runicznym siarkê z kamieniem runicznym.
+	AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_02"); //Moc zaklêcia ognistej strza³y wniknie w runê, a ty dostaniesz narzêdzie Innosa.
+	AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_03"); //Skoro ju¿ masz wszystkie materia³y, mo¿esz przyst¹piæ do tworzenia runy.
+	MakeRune_FireBolt = true;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info BLANK_RUNE
@@ -212,7 +209,7 @@ func int DIA_Hyglas_BLANK_RUNE_Condition ()
 	if Npc_KnowsInfo (hero, DIA_Hyglas_FIREBOLT)
 	&& (MIS_RUNE == LOG_RUNNING)
 	&& (npc_hasItems (other, ItMI_RuneBlank) < 1) 
-	&& (PLAYER_TALENT_RUNES [SPL_Firebolt] == FALSE)
+	&& (!MakeRune_FireBolt)
 	{
 		return TRUE;
 	};
@@ -251,100 +248,6 @@ func void DIA_Hyglas_GOTRUNE_Info ()
 	
 	B_LogEntry (TOPIC_Rune,"Stworzy³em runê Ognistej Strza³y."); 
 };
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Hyglas_TEACH		(C_INFO)
-{
-	npc			 = 	KDF_510_Hyglas;
-	nr			 = 	15;
-	condition	 = 	DIA_Hyglas_TEACH_Condition;
-	information	 = 	DIA_Hyglas_TEACH_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Naucz mnie.";
-};
-func int DIA_Hyglas_TEACH_Condition ()
-{	
-	if (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Hyglas_TEACH_Info ()
-{
-
-	var int abletolearn;
-	
-	abletolearn = 0;
-	AI_Output (other, self, "DIA_Hyglas_TEACH_15_00"); //Zostañ moim nauczycielem.
-	
-	
-	Info_ClearChoices (DIA_Hyglas_TEACH);
-	Info_AddChoice 	  (DIA_Hyglas_TEACH, DIALOG_BACK,DIA_Hyglas_TEACH_BACK);	
-	
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2) 
-	&& (PLAYER_TALENT_RUNES [SPL_InstantFireball] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Hyglas_TEACH, B_BuildLearnString (NAME_SPL_InstantFireball, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_InstantFireball)) ,DIA_Hyglas_TEACH_InstantFireball);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 3) 
-	&& (PLAYER_TALENT_RUNES [SPL_Firestorm] == FALSE)
-	{
-		Info_AddChoice	(DIA_Hyglas_TEACH, B_BuildLearnString (NAME_SPL_Firestorm, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Firestorm)) ,DIA_Hyglas_TEACH_Firestorm);
-		abletolearn = (abletolearn +1);
-	};
-	
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 4) 
-	&& (PLAYER_TALENT_RUNES [SPL_ChargeFireball] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Hyglas_TEACH, B_BuildLearnString (NAME_SPL_ChargeFireball, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_ChargeFireball)) ,DIA_Hyglas_TEACH_ChargeFireball);
-		abletolearn = (abletolearn +1);
-	};
-	
-	
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 5) 
-	&& (PLAYER_TALENT_RUNES [SPL_Pyrokinesis] == FALSE) 
-	{
-		Info_AddChoice	(DIA_Hyglas_TEACH, B_BuildLearnString (NAME_SPL_Pyrokinesis, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Pyrokinesis)) ,DIA_Hyglas_TEACH_Pyrokinesis);
-		abletolearn = (abletolearn +1);
-	};
-	if (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 6) 
-	&& (PLAYER_TALENT_RUNES [SPL_Firerain] == FALSE)
-	{
-		Info_AddChoice	(DIA_Hyglas_TEACH, B_BuildLearnString (NAME_SPL_Firerain, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Firerain)) ,DIA_Hyglas_TEACH_Firerain);
-		abletolearn = (abletolearn +1);
-	};
-	if (abletolearn < 1)
-	{
-		B_Say (self, other, "$NOLEARNOVERPERSONALMAX");
-		Info_ClearChoices (DIA_Hyglas_TEACH);
-	};
-};
-FUNC VOID DIA_Hyglas_TEACH_BACK ()
-{
-	Info_ClearChoices (DIA_Hyglas_TEACH);
-};
-FUNC VOID DIA_Hyglas_TEACH_InstantFireball()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_InstantFireball);	
-};
-FUNC VOID DIA_Hyglas_TEACH_ChargeFireball()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_ChargeFireball);	
-};
-FUNC VOID DIA_Hyglas_TEACH_Pyrokinesis()
-{	
-	B_TeachPlayerTalentRunes (self, other, SPL_Pyrokinesis);	
-};
-FUNC VOID DIA_Hyglas_TEACH_Firestorm()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Firestorm);	
-};
-FUNC VOID DIA_Hyglas_TEACH_Firerain()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Firerain);	
-};
 
 //#######################################
 //##
@@ -366,7 +269,7 @@ INSTANCE DIA_Hyglas_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Hyglas_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -396,7 +299,7 @@ INSTANCE DIA_Hyglas_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Hyglas_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -420,7 +323,7 @@ INSTANCE DIA_Hyglas_BringBook   (C_INFO)
 };
 FUNC INT DIA_Hyglas_BringBook_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (hero.guild != GIL_SLD)
 	&& (hero.guild != GIL_DJG)
 	{
@@ -544,7 +447,7 @@ INSTANCE DIA_Hyglas_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Hyglas_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -617,7 +520,7 @@ INSTANCE DIA_Hyglas_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Hyglas_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

@@ -13,7 +13,7 @@ func int C_WantToAttackMurder (var C_NPC slf, var C_NPC oth)
 	};
 	
 	/// ------ NSC ignoriert Mord ------
-	if (slf.aivar[AIV_IgnoreCrime] == IGNORE_Murder)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Murder) == IGNORE_Murder)
 	{
 		return false;
 	};

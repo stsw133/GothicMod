@@ -13,7 +13,7 @@ INSTANCE DIA_Jack_EXIT   (C_INFO)
 
 FUNC INT DIA_Jack_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -277,7 +277,7 @@ INSTANCE DIA_Jack_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jack_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -312,7 +312,7 @@ INSTANCE DIA_Jack_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jack_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -346,7 +346,7 @@ INSTANCE DIA_Jack_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jack_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -373,7 +373,7 @@ instance DIA_Jack_BEMYCAPTAIN		(C_INFO)
 
 func int DIA_Jack_BEMYCAPTAIN_Condition ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 		&& (MIS_SCKnowsWayToIrdorath == TRUE)
 		&& (MIS_Jack_KillLighthouseBandits == LOG_SUCCESS)
 		&& (MIS_Jack_NewLighthouseOfficer == 0)
@@ -621,7 +621,7 @@ INSTANCE DIA_Jack_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jack_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

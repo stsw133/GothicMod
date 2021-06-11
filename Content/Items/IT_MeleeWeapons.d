@@ -895,13 +895,11 @@ instance ItMw_Stab_Nov (ItemPR_MeleeWeapon)
 };
 func void Equip_Zauberstab()
 {
-	self.aivar[AIV_Power] += 10;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, 10);
 };
 func void UnEquip_Zauberstab()
 {
-	self.aivar[AIV_Power] -= 10;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, -10);
 };
 ///******************************************************************************************
 instance ItMw_Stab_L_01 (ItemPR_MeleeWeapon)
@@ -923,13 +921,11 @@ instance ItMw_Stab_L_01 (ItemPR_MeleeWeapon)
 };
 func void Equip_Zauberstab2()
 {
-	self.aivar[AIV_Power] += 20;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, 20);
 };
 func void UnEquip_Zauberstab2()
 {
-	self.aivar[AIV_Power] -= 20;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, -20);
 };
 ///******************************************************************************************
 instance ItMw_Stab_L_02 (ItemPR_MeleeWeapon)
@@ -964,13 +960,11 @@ instance ItMw_Stab_H_01 (ItemPR_MeleeWeapon)
 };
 func void Equip_Zauberstab4()
 {
-	self.aivar[AIV_Power] += 30;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, 30);
 };
 func void UnEquip_Zauberstab4()
 {
-	self.aivar[AIV_Power] -= 30;
-	POWER_CHECK(self);
+	Npc_AddPowerPoints(self, -30);
 };
 ///******************************************************************************************
 instance ItMw_Stab_H_02 (ItemPR_MeleeWeapon)

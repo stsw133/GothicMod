@@ -14,7 +14,7 @@ INSTANCE DIA_Udar_EXIT(C_INFO)
 
 FUNC INT DIA_Udar_EXIT_Condition()
 {
-	if (Kapitel < 4)
+	if (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -41,7 +41,7 @@ FUNC INT DIA_Udar_Hello_Condition()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{	
 		return TRUE;
 	}; 
@@ -239,7 +239,7 @@ INSTANCE DIA_Udar_Perm (C_INFO)
 };                       
 FUNC INT DIA_Udar_Perm_Condition()
 {
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -306,7 +306,7 @@ INSTANCE DIA_Udar_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Udar_KAP4_EXIT_Condition()
 {
-	if	(Kapitel == 4)	
+	if	(Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -330,7 +330,7 @@ instance DIA_Udar_Kap4WiederDa		(C_INFO)
 
 func int DIA_Udar_Kap4WiederDa_Condition ()
 {
-	if	(Kapitel >= 4)	
+	if	(Kapitel >= 10)	
 		{
 				return TRUE;
 		};
@@ -365,7 +365,7 @@ instance DIA_Udar_Sengrath		(C_INFO)
 
 func int DIA_Udar_Sengrath_Condition ()
 {
-	if	(Kapitel >= 4)	
+	if	(Kapitel >= 10)	
 		&& (Npc_KnowsInfo(other, DIA_Udar_Kap4WiederDa))
 		&& (Sengrath_Missing == TRUE)
 		{
@@ -403,7 +403,7 @@ instance DIA_Udar_SENGRATHGEFUNDEN		(C_INFO)
 
 func int DIA_Udar_SENGRATHGEFUNDEN_Condition ()
 {
-	if	(Kapitel >= 4)	
+	if	(Kapitel >= 10)	
 		&& (Npc_KnowsInfo(other, DIA_Udar_Sengrath))
 		&& (Npc_HasItems (other,ItRw_SengrathsArmbrust_MIS))
 		{
@@ -441,7 +441,7 @@ func int DIA_Udar_BADFEELING_Condition ()
 		if 	(Npc_RefuseTalk(self) == FALSE)
 			&& (Npc_IsInState (self,ZS_Talk))
 			&& (Npc_KnowsInfo(other, DIA_Udar_SENGRATHGEFUNDEN))
-			&& (Kapitel >= 4)	
+			&& (Kapitel >= 10)	
 		{
 				return TRUE;
 		};			
@@ -489,7 +489,7 @@ INSTANCE DIA_Udar_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Udar_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -524,7 +524,7 @@ INSTANCE DIA_Udar_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Udar_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

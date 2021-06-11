@@ -481,7 +481,7 @@ instance DIA_Andre_Message		(C_INFO)
 };
 func int DIA_Andre_Message_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& ((hero.guild == GIL_NONE)
 	|| (hero.guild == GIL_NOV))
 	{
@@ -550,7 +550,7 @@ instance DIA_Andre_Paladine		(C_INFO)
 func int DIA_Andre_Paladine_Condition ()
 {	
 	if (other.guild != GIL_MIL)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -577,7 +577,7 @@ instance DIA_Andre_PaladineAgain		(C_INFO)
 func int DIA_Andre_PaladineAgain_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -1256,7 +1256,7 @@ instance DIA_Andre_LORDHAGEN		(C_INFO)
 func int DIA_Andre_LORDHAGEN_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -1283,7 +1283,7 @@ instance DIA_Andre_Waffe		(C_INFO)
 func int DIA_Andre_Waffe_Condition ()
 {	
 	if (other.guild == GIL_MIL)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -1798,7 +1798,7 @@ instance DIA_Andre_BerichtDrachen		(C_INFO)
 };
 func int DIA_Andre_BerichtDrachen_Condition ()
 {	
-	if (EnterOW_Kapitel < 2)
+	if (EnterOW_Kapitel < 8)
 	&& (MIS_OLDWORLD != LOG_SUCCESS)
 	{
 		return TRUE;
@@ -1986,7 +1986,7 @@ instance DIA_Andre_BerichtDrachenTot		(C_INFO)
 };
 func int DIA_Andre_BerichtDrachenTot_Condition ()
 {	
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};
@@ -2013,7 +2013,7 @@ instance DIA_Andre_BerichtTorAuf (C_INFO)
 };
 func int DIA_Andre_BerichtTorAuf_Condition ()
 {	
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	&& (MIS_OCGateOpen == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Andre_BerichtDrachenTot))
 	{

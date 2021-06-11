@@ -536,7 +536,7 @@ FUNC VOID DIA_Rod_PERM_Info()
 {	
 	AI_Output (other, self, "DIA_Rod_PERM_15_00"); //Jak leci?
 	
-	if (Kapitel <= 2)	
+	if (Kapitel <= 8)	
 	{
 		if (other.guild == GIL_NONE)
 		{
@@ -562,7 +562,7 @@ FUNC VOID DIA_Rod_PERM_Info()
 		};
 	}
 
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	{
 		AI_Output (self, other, "DIA_Rod_PERM_06_05"); //Jeœli opowieœci o smokach s¹ prawdziwe, powinniœmy zebraæ paru ludzi i pokazaæ tym bestiom, gdzie ich miejsce!
 	};

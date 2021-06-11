@@ -1,7 +1,7 @@
 //****************************
 // 	ENTER_DI_FIRSTTIME_TRIGGER 
 //****************************
-var int EnterDI_Kapitel6;
+var int EnterDI_Kapitel12;
 
 func void ENTER_DI_FIRSTTIME_TRIGGER ()
 {
@@ -25,7 +25,7 @@ func void ENTER_DI_FIRSTTIME_TRIGGER ()
 //##
 //###############################################
 
-	if (EnterDI_Kapitel6 == FALSE)
+	if (EnterDI_Kapitel12 == FALSE)
 		{
 		
 			if (hero.guild == GIL_PAL)
@@ -151,7 +151,7 @@ func void ENTER_DI_FIRSTTIME_TRIGGER ()
 					Log_AddEntry (TOPIC_MyCrew,"Girion jest niezmiernie cierpliwy. Dobra cecha u nauczyciela pos³ugiwania siê broni¹."); 
 				};	
 	
-		IntroduceChapter (KapWechsel_6,KapWechsel_6_Text,"chapter6.tga","chapter_01.wav", 6000);
-		EnterDI_Kapitel6 = TRUE;
-		};
+		B_ChangeChapter (12, DRAGONISLAND_ZEN);
+		EnterDI_Kapitel12 = TRUE;
+	};
 };

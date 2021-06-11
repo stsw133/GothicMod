@@ -67,7 +67,7 @@ INSTANCE DIA_Agon_Wurst(C_INFO)
 
 FUNC INT DIA_Agon_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -345,7 +345,7 @@ INSTANCE DIA_Agon_StillAlive   (C_INFO)
 
 FUNC INT DIA_Agon_StillAlive_Condition()
 {
-	if ((Kapitel >= 2)
+	if ((Kapitel >= 8)
 	&& 	(hero.guild == GIL_KDF))
 	{
 		return TRUE;
@@ -377,7 +377,7 @@ INSTANCE DIA_Agon_Perm   (C_INFO)
 
 FUNC INT DIA_Agon_Perm_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (other.guild != GIL_KDF)
 	{
 		return TRUE;

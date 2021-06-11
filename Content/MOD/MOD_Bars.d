@@ -2,7 +2,7 @@
 ///	MOD_Bars
 ///******************************************************************************************
 
-/// BAR HP
+/// HP bars
 instance healthBar(GothicBar)
 {
 	x = 100; y = Print_Screen[PS_Y]-80;
@@ -16,7 +16,7 @@ instance poisonBar(GothicBar)
 	barTex = "Bar_Negative.tga";
 };
 
-/// BAR MP
+/// MP bars
 instance manaBar(GothicBar)
 {
 	x = 100; y = Print_Screen[PS_Y]-60;
@@ -24,7 +24,7 @@ instance manaBar(GothicBar)
 	barTex = "Bar_Mana.tga";
 };
 
-/// BAR ENE
+/// ENE bars
 instance energyBar(GothicBar)
 {
 	x = 100; y = Print_Screen[PS_Y]-40;
@@ -38,7 +38,7 @@ instance harmorBar(GothicBar)
 	barTex = "Bar_Negative.tga";
 };
 
-/// BAR EXP & BAR LOVE
+/// EXP & LOVE bars
 instance expBar(GothicBar)
 {
 	x = 100; y = Print_Screen[PS_Y]-20;
@@ -61,20 +61,20 @@ var int Bar_manaBar;
 var int Bar_energyBar;
 var int Bar_expBar;
 
-/// BAR HP
+/// HP bar
 func void Loop_healthBar()
 {
 	if (!Hlp_IsValidHandle(Bar_healthBar))
 	{
-		if (bState[BS_Poison] == true)	{	Bar_healthBar = Bar_Create(poisonBar);	}
-		else							{	Bar_healthBar = Bar_Create(healthBar);	};
+		if (bState[BS_Poison])	{	Bar_healthBar = Bar_Create(poisonBar);	}
+		else					{	Bar_healthBar = Bar_Create(healthBar);	};
 	};
 
 	Bar_SetMax (Bar_healthBar, hero.attribute[ATR_HITPOINTS_MAX]);
 	Bar_SetValue (Bar_healthBar, hero.attribute[ATR_HITPOINTS]);
 };
 
-/// BAR MP
+/// MP bar
 func void Loop_manaBar()
 {
 	if (!Hlp_IsValidHandle(Bar_manaBar))
@@ -86,29 +86,29 @@ func void Loop_manaBar()
 	Bar_SetValue (Bar_manaBar, hero.attribute[ATR_MANA]);
 };
 
-/// BAR ENE
+/// ENE bar
 func void Loop_energyBar()
 {
 	if (!Hlp_IsValidHandle(Bar_energyBar))
 	{
-		if (bState[BS_hArmor] == true)	{	Bar_energyBar = Bar_Create(harmorBar);	}
-		else							{	Bar_energyBar = Bar_Create(energyBar);	};
+		if (bState[BS_hArmor])	{	Bar_energyBar = Bar_Create(harmorBar);	}
+		else					{	Bar_energyBar = Bar_Create(energyBar);	};
 	};
 
 	Bar_SetMax (Bar_energyBar, sattribute[ATR_ENERGY_MAX]);
 	Bar_SetValue (Bar_energyBar, sattribute[ATR_ENERGY]);
 };
 
-/// BAR EXP & BAR LOVE
+/// EXP & LOVE bar
 func void Loop_expBar()
 {
 	if (!Hlp_IsValidHandle(Bar_expBar))
 	{
-		if (talkingWithGirl == true)	{	Bar_expBar = Bar_Create(loveBar);	}
-		else							{	Bar_expBar = Bar_Create(expBar);	};
+		if (talkingWithGirl)	{	Bar_expBar = Bar_Create(loveBar);	}
+		else					{	Bar_expBar = Bar_Create(expBar);	};
 	};
 
-	if (talkingWithGirl == true)
+	if (talkingWithGirl)
 	{
 		Bar_SetMax (Bar_expBar, MAX_LOVE);
 		Bar_SetValue (Bar_expBar, gLevelA);
@@ -132,7 +132,7 @@ var int BarTextPrint_expBar;		var string BarText_expBar;
 ///******************************************************************************************
 func void ShowBarText()
 {
-	/// BAR HP
+	/// HP bar
 	BarText_healthBar = ConcatStrings(IntToString(hero.attribute[ATR_HITPOINTS]), " / ");
 	BarText_healthBar = ConcatStrings(BarText_healthBar, IntToString(hero.attribute[ATR_HITPOINTS_MAX]));
 	if (sattribute[ATR_FoodTime] > 0)
@@ -151,7 +151,7 @@ func void ShowBarText()
 		BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Health, -1);
 	};
 	
-	/// BAR MP
+	/// MP bar
 	BarText_manaBar = ConcatStrings(IntToString(hero.attribute[ATR_MANA]), " / ");
 	BarText_manaBar = ConcatStrings(BarText_manaBar, IntToString(hero.attribute[ATR_MANA_MAX]));
 	
@@ -164,7 +164,7 @@ func void ShowBarText()
 		BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Mana, -1);
 	};
 	
-	/// BAR ENE
+	/// ENE bar
 	BarText_energyBar = ConcatStrings(IntToString(sattribute[ATR_ENERGY]), " / ");
 	BarText_energyBar = ConcatStrings(BarText_energyBar, IntToString(sattribute[ATR_ENERGY_MAX]));
 	
@@ -177,7 +177,7 @@ func void ShowBarText()
 		BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Energy, -1);
 	};
 	
-	/// BAR EXP & BAR LOVE
+	/// EXP & LOVE bar
 	if (Hlp_IsValidHandle(BarTextPrint_expBar))
 	{
 		Print_DeleteText(BarTextPrint_expBar);

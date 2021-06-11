@@ -18,15 +18,13 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 	{
 		slf.attribute[ATR_STRENGTH]			=	kap * 3;
 		slf.attribute[ATR_DEXTERITY]		=	kap * 3;
-		slf.damage[DAM_INDEX_MAGIC]			=	kap * 5;
-		//slf.aivar[AIV_Power]				=	kap * 5;
+		Npc_SetPowerPoints(slf, kap * 5);
 	}
 	else
 	{
 		slf.attribute[ATR_STRENGTH]			=	kap * 5;
 		slf.attribute[ATR_DEXTERITY]		=	kap * 5;
-		slf.damage[DAM_INDEX_MAGIC]			=	0;
-		//slf.aivar[AIV_Power]				=	0;
+		Npc_SetPowerPoints(slf, 0);
 	};
 	
 	Npc_SetTalentSkill (slf, NPC_TALENT_SNEAK, 1);
@@ -40,7 +38,7 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 		slf.attribute[ATR_MANA_MAX]			+=	MAX_LEVEL;
 		slf.attribute[ATR_STRENGTH]			+=	MAX_LEVEL;
 		slf.attribute[ATR_DEXTERITY]		+=	MAX_LEVEL;
-		slf.aivar[AIV_Power]				+=	MAX_LEVEL;
+		Npc_AddPowerPoints(slf, MAX_LEVEL);
 		
 		slf.protection[PROT_BLUNT]			+=	AR_PER_LEVEL * 50;
 		slf.protection[PROT_EDGE]			+=	AR_PER_LEVEL * 50;
@@ -51,7 +49,6 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 	
 	slf.attribute[ATR_MANA]				=	slf.attribute[ATR_MANA_MAX];
 	slf.attribute[ATR_HITPOINTS]		=	slf.attribute[ATR_HITPOINTS_MAX];
-	//POWER_CHECK(slf);
 	
 	///#DEBUG
 	Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY, dLevel);

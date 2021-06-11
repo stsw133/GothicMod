@@ -13,7 +13,7 @@ INSTANCE DIA_Brian_EXIT   (C_INFO)
 
 FUNC INT DIA_Brian_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -282,7 +282,7 @@ INSTANCE DIA_Brian_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brian_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -359,7 +359,7 @@ INSTANCE DIA_Brian_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brian_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -393,7 +393,7 @@ INSTANCE DIA_Brian_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brian_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -418,7 +418,7 @@ instance DIA_Brian_NEWLIGHTHOUSEOFFICER		(C_INFO)
 
 func int DIA_Brian_NEWLIGHTHOUSEOFFICER_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	&& (MIS_Jack_NewLighthouseOfficer == LOG_RUNNING)	
 	&& (Npc_KnowsInfo(other, DIA_Brian_NEEDWEAPONS))
 		{
@@ -459,7 +459,7 @@ func int DIA_Brian_LIGHTHOUSEFREE_Condition ()
 {
 	if (MIS_Jack_NewLighthouseOfficer == LOG_SUCCESS)
 		&&	(Npc_GetDistToWP(self,"NW_LIGHTHOUSE_IN_01")<1000)
-		&& (Kapitel == 5) 
+		&& (Kapitel == 11) 
 		{
 				return TRUE;
 		};

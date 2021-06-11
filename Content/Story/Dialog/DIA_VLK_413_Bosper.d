@@ -106,7 +106,7 @@ func void DIA_Bosper_SeekWork_Info ()
 	AI_Output (self, other, "DIA_Bosper_SeekWork_11_01"); //Hmmm - przyda³by mi siê nowy czeladnik.
 	AI_Output (self, other, "DIA_Bosper_SeekWork_11_02"); //Poprzedni zrezygnowa³ dwa dni temu.
 	AI_Output (self, other, "DIA_Bosper_SeekWork_11_03"); //A wiêc, znasz siê trochê na polowaniu?
-	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
 		AI_Output (other, self, "DIA_Bosper_SeekWork_15_04"); //Hmm... Có¿...
 		AI_Output (self, other, "DIA_Bosper_SeekWork_11_05"); //Mogê ciê nauczyæ, jak siê obdziera ze skóry zwierzêta.
@@ -447,7 +447,7 @@ func void DIA_Bosper_Job_Info ()
 {
 	AI_Output (other, self, "DIA_Bosper_Job_15_00"); //Co mam dla ciebie zrobiæ?
 
-	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
 		AI_Output (self, other, "DIA_Bosper_Job_11_01"); //Nauczê ciê, jak obdzieraæ ze skóry zwierzynê, a ty mi przyniesiesz, no powiedzmy, pó³ tuzina wilczych futer.
 		
@@ -472,9 +472,10 @@ func void DIA_Bosper_Job_Info ()
 	Log_SetTopicStatus (TOPIC_BosperWolf,LOG_RUNNING);
 	B_LogEntry (TOPIC_BosperWolf,"Mam przynieœæ Bosperowi szeœæ wilczych skór. Kiedy ju¿ wykonam zadanie, zatrudni mnie jako swojego czeladnika albo udzieli poparcia, jeœli zechcê pracowaæ u innego mistrza.");
 	
-	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
 		B_LogEntry (TOPIC_BosperWolf,"Chcia³bym, ¿eby Bosper nauczy³ mnie oprawiaæ zwierzêta.");
+		self.aivar[AIV_CanTeach] = true;
 	};
 };
 
@@ -524,42 +525,6 @@ func void DIA_Bosper_BringFur_Info ()
 		AI_Output (self, other, "DIA_Bosper_BringFur_11_06"); //Umawialiœmy siê na pó³ tuzina, ale masz jeszcze czas. Ruszaj i przynieœ mi te skóry.
 	};
 
-};
-
-// ***********************************************************
-// 							TeachFUR		 	//e4
-// ***********************************************************
-instance DIA_Bosper_TeachFUR (C_INFO)
-{
-	npc			= VLK_413_Bosper;
-	nr			= 2;
-	condition	= DIA_Bosper_TeachFUR_Condition;
-	information = DIA_Bosper_TeachFUR_Info;
-	permanent   = TRUE;
-	description = "Naucz mnie, jak obdzieraæ zwierzynê ze skóry.";
-};
-func int DIA_Bosper_TeachFUR_Condition ()
-{	
-	if (Npc_KnowsInfo(other, DIA_Bosper_Job))
-	&& (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Bosper_TeachFUR_Info ()
-{
-	AI_Output (other, self, "DIA_Bosper_TeachFUR_15_00"); //Naucz mnie, jak obdzieraæ zwierzynê ze skóry.
-
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur))
-	{
-		AI_Output (self, other, "DIA_Bosper_TeachFUR_11_01"); //Dobrze. S³uchaj. To doœæ proste.
-		AI_Output (self, other, "DIA_Bosper_TeachFUR_11_02"); //Ostrym no¿em rozcinasz brzuch zwierzêcia. Potem robisz ma³e naciêcia po wewnêtrznej stronie ³ap i œci¹gasz skórê.
-		if (MIS_Bosper_WolfFurs == LOG_RUNNING)
-		{
-			AI_Output (self, other, "DIA_Bosper_TeachFUR_11_03"); //Przynieœ mi te wilcze skóry, to zobaczymy...
-			B_LogEntry (TOPIC_BosperWolf,"Bosper nauczy³ mnie, jak obdzieraæ zwierzynê ze skóry.");
-		};
-	};
 };
 
 // **************************************************************
@@ -700,7 +665,7 @@ instance DIA_Bosper_PERM		(C_INFO)
 };
 func int DIA_Bosper_PERM_Condition ()
 {
-	if (Kapitel >= 2)
+	if (Kapitel >= 8)
 	{
 		return TRUE;
 	};

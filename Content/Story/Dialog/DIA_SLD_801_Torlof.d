@@ -14,7 +14,7 @@ INSTANCE DIA_Torlof_EXIT(C_INFO)
 
 FUNC INT DIA_Torlof_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -722,7 +722,7 @@ instance DIA_Torlof_Welcome (C_INFO)
 func int DIA_Torlof_Welcome_Condition ()
 {
 	if (other.guild == GIL_SLD)
-	&& (Kapitel <= 1)
+	&& (Kapitel <= 7)
 	{
 		return TRUE;
 	};
@@ -763,7 +763,7 @@ instance DIA_Torlof_TheOtherMission (C_INFO)
 func int DIA_Torlof_TheOtherMission_Condition ()
 {
 	if (other.guild == GIL_SLD)
-	&& (Kapitel >= 2)
+	&& (Kapitel >= 8)
 	{
 		return TRUE;
 	};
@@ -809,7 +809,7 @@ instance DIA_Torlof_Dragons (C_INFO)
 func int DIA_Torlof_Dragons_Condition ()
 {
 	if (ENTER_OLDWORLD_FIRSTTIME_TRIGGER_ONETIME == TRUE)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	&& (other.guild == GIL_SLD)
 	&& (Torlof_KnowsDragons == FALSE)
 	{
@@ -985,7 +985,7 @@ INSTANCE DIA_Torlof_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Torlof_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -1010,7 +1010,7 @@ instance DIA_Torlof_DEMENTOREN		(C_INFO)
 
 func int DIA_Torlof_DEMENTOREN_Condition ()
 {
-	if (Kapitel >= 3)	
+	if (Kapitel >= 9)	
 	{
 		return TRUE;
 	};
@@ -1093,7 +1093,7 @@ INSTANCE DIA_Torlof_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Torlof_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1118,7 +1118,7 @@ instance DIA_Torlof_WOISTSYLVIO		(C_INFO)
 
 func int DIA_Torlof_WOISTSYLVIO_Condition ()
 {
-	if ((MIS_ReadyforChapter4 == TRUE)	|| (Kapitel == 4))
+	if ((MIS_ReadyforChapter4 == TRUE)	|| (Kapitel == 10))
 	{
 		return TRUE;
 	};
@@ -1157,7 +1157,7 @@ INSTANCE DIA_Torlof_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Torlof_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1183,7 +1183,7 @@ instance DIA_Torlof_BEMYCAPTAIN		(C_INFO)
 
 func int DIA_Torlof_BEMYCAPTAIN_Condition ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 		&& (MIS_SCKnowsWayToIrdorath == TRUE)
 		{
 				return TRUE;
@@ -1439,7 +1439,7 @@ INSTANCE DIA_Torlof_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Torlof_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

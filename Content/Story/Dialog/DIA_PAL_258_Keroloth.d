@@ -14,7 +14,7 @@ INSTANCE DIA_Keroloth_EXIT(C_INFO)
 
 FUNC INT DIA_Keroloth_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -289,7 +289,7 @@ INSTANCE DIA_Keroloth_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Keroloth_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -323,7 +323,7 @@ INSTANCE DIA_Keroloth_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Keroloth_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -348,7 +348,7 @@ instance DIA_Keroloth_KAP4_HELLO		(C_INFO)
 
 func int DIA_Keroloth_KAP4_HELLO_Condition ()
 {
-	if (Kapitel >= 4)	
+	if (Kapitel >= 10)	
 		{
 				return TRUE;
 		};
@@ -618,7 +618,7 @@ instance DIA_Keroloth_KAP4_ENTSPANNDICH		(C_INFO)
 func int DIA_Keroloth_KAP4_ENTSPANNDICH_Condition ()
 {
 	if ((Npc_KnowsInfo(other, DIA_Keroloth_KAP4_GELDGEFUNDEN))
-		&& (Kapitel >= 4))
+		&& (Kapitel >= 10))
 		|| (MIS_OCGateOpen == TRUE)
 		{
 				return TRUE;
@@ -671,7 +671,7 @@ INSTANCE DIA_Keroloth_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Keroloth_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -706,7 +706,7 @@ INSTANCE DIA_Keroloth_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Keroloth_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

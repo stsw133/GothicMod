@@ -317,66 +317,7 @@ FUNC VOID DIA_Addon_Logan_Lern_Info()
 	AI_Output (other, self, "DIA_Addon_Logan_Lern_15_00");//Poka¿ mi, jak patroszyæ zwierzêta...
 	AI_Output (self, other, "DIA_Addon_Logan_Lern_10_01");//Jeœli chcesz siê czegoœ dowiedzieæ o krwiopijcach, zapytaj lepiej Edgora.
 	AI_Output (self, other, "DIA_Addon_Logan_Lern_10_02");//Je¿eli bêdziesz patroszy³ bagienne wê¿e czy jaszczurki, to mo¿e chcesz nauczyæ siê, jak je obdzieraæ ze skóry i wyrywaæ im zêby?
-};
-///////////////////////////////////////////////////////////////////////
-//	Info Allgemeine Talente
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Addon_Logan_Allg   (C_INFO)
-{
-	npc         = BDT_1072_Addon_Logan;
-	nr          = 3;
-	condition   = DIA_Addon_Logan_Allg_Condition;
-	information = DIA_Addon_Logan_Allg_Info;
-	permanent   = TRUE;
-	description = "Chcê siê nauczyæ...";
-};
-FUNC INT DIA_Addon_Logan_Allg_Condition()
-{	
-	if Npc_KnowsInfo (other,DIA_Addon_Logan_Lern)
-	&& ((PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-	|| (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-	|| (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE))
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Addon_Logan_Allg_Info()
-{
-	Info_ClearChoices (DIA_Addon_Logan_Allg);
-	Info_AddChoice (DIA_Addon_Logan_Allg,DIALOG_BACK,DIA_Addon_Logan_Allg_BACK);
-	
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-	{ 
-		Info_AddChoice	(DIA_Addon_Logan_Allg, B_BuildLearnString ("Wyrywania zêbów",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Teeth)),  DIA_Addon_Logan_Allg_Teeth);
-	};
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-	{ 
-		Info_AddChoice	(DIA_Addon_Logan_Allg, B_BuildLearnString ("Wyrywania pazurów",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Claws)),  DIA_Addon_Logan_Allg_Claws);
-	};
-	if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)
-	{ 
-		Info_AddChoice	(DIA_Addon_Logan_Allg, B_BuildLearnString ("Zdejmowania futra",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Fur)),  DIA_Addon_Logan_Allg_Fur);
-	};
-	
-};
-//------------------------------------------------------------------------------------------------
-//			Allgemeine Talente
-//------------------------------------------------------------------------------------------------
-FUNC VOID DIA_Addon_Logan_Allg_BACK()
-{
-	Info_ClearChoices (DIA_Addon_Logan_Allg);
-};
-FUNC VOID DIA_Addon_Logan_Allg_Teeth ()
-{
-	B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Teeth);
-};
-FUNC VOID DIA_Addon_Logan_Allg_Claws ()
-{
-	B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws);
-};
-FUNC VOID DIA_Addon_Logan_Allg_Fur ()
-{
-	B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur);
+	self.aivar[AIV_CanTeach] = true;
 };
 
 //----------------------------------------------------------------------
@@ -413,6 +354,3 @@ FUNC VOID DIA_Addon_Logan_Hacker_Info()
 		Logan_Lohn = TRUE;
 	};
 };
-	
-
-

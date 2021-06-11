@@ -89,11 +89,6 @@ const string	LogText_Addon_WispLearned_MAGIC   	=	"Pierœcienie i amulety";
 const string	LogText_Addon_WispLearned_FOOD 		=	"¯ywnoœæ i roœliny";
 const string	LogText_Addon_WispLearned_POTIONS 	=	"Wszelkiego rodzaju mikstury";
 
-//Language
-const string	LogText_Addon_Language_1 			=	"Nauczy³em siê jêzyka wieœniaków. To podstawowy jêzyk ludu budowniczych.";
-const string	LogText_Addon_Language_2 			=	"Nauczy³em siê jêzyka wojowników.";
-const string	LogText_Addon_Language_3 			=	"Nauczy³em siê jêzyka kap³anów.";
-
 
 
 

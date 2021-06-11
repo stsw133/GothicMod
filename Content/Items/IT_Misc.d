@@ -115,7 +115,7 @@ func void Use_Broom()
 	&& (MIS_ParlanFegen == LOG_RUNNING)
 	{
 		B_Say (self, self, "$NOSWEEPING");
-		Print(PRINT_NoSweeping);
+		Print("Posprz¹tanie wszystkich komnat zajmie ca³e wieki!");
 	};
 };
 instance ItMi_Rake (ItemPR_Misc)

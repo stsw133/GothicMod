@@ -22,7 +22,7 @@ INSTANCE DIA_Jorgen_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jorgen_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -47,7 +47,7 @@ INSTANCE DIA_Jorgen_Hallo   (C_INFO)
 
 FUNC INT DIA_Jorgen_Hallo_Condition()
 {
-	if (Kapitel == 3) 
+	if (Kapitel == 9) 
 	&& (MIS_SCKnowsInnosEyeIsBroken == FALSE)
 		{
 				return TRUE;
@@ -90,7 +90,7 @@ INSTANCE DIA_Jorgen_Novice   (C_INFO)
 FUNC INT DIA_Jorgen_Novice_Condition()
 {
 	IF (MIS_NOVIZENCHASE == LOG_RUNNING)
-	&& (Kapitel == 3) 
+	&& (Kapitel == 9) 
 	&& (MIS_SCKnowsInnosEyeIsBroken == FALSE)
 		{
 				return TRUE;
@@ -121,7 +121,7 @@ INSTANCE DIA_Jorgen_Milten   (C_INFO)
 
 FUNC INT DIA_Jorgen_Milten_Condition()
 {
-	if (Kapitel == 3) 
+	if (Kapitel == 9) 
 	&& (MIS_SCKnowsInnosEyeIsBroken == FALSE)
 	&& (MIS_OLDWORLD == LOG_SUCCESS)
 	&& (MiltenNW.aivar[AIV_TalkedToPlayer] == TRUE)
@@ -154,7 +154,7 @@ INSTANCE DIA_Jorgen_Home   (C_INFO)
 
 FUNC INT DIA_Jorgen_Home_Condition()
 {
-	if (Kapitel >= 3) 
+	if (Kapitel >= 9) 
 		{
 				return TRUE;
 		};
@@ -186,7 +186,7 @@ INSTANCE DIA_Jorgen_BeCarefull   (C_INFO)
 
 FUNC INT DIA_Jorgen_BeCarefull_Condition()
 {
-	if (Kapitel == 3) 
+	if (Kapitel == 9) 
 		&& (Npc_KnowsInfo(other, DIA_Jorgen_Home))
 		{
 				return TRUE;
@@ -223,7 +223,7 @@ INSTANCE DIA_Jorgen_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jorgen_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -248,7 +248,7 @@ instance DIA_Jorgen_NEUHIER		(C_INFO)
 
 func int DIA_Jorgen_NEUHIER_Condition ()
 {
-	if (Kapitel >= 4)	
+	if (Kapitel >= 10)	
 	{
 		return TRUE;
 	};
@@ -290,7 +290,7 @@ instance DIA_Jorgen_PERM4		(C_INFO)
 
 func int DIA_Jorgen_PERM4_Condition ()
 {
-	if (Kapitel >= 4)	
+	if (Kapitel >= 10)	
 		&&	(Npc_KnowsInfo(other, DIA_Jorgen_Home))
 		&&	(Npc_KnowsInfo(other, DIA_Jorgen_NEUHIER))
 		&& 	(JorgenIsCaptain == FALSE)
@@ -335,7 +335,7 @@ INSTANCE DIA_Jorgen_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jorgen_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -361,7 +361,7 @@ instance DIA_Jorgen_BEMYCAPTAIN		(C_INFO)
 
 func int DIA_Jorgen_BEMYCAPTAIN_Condition ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 		&& (MIS_SCKnowsWayToIrdorath == TRUE)
 		&& (MIS_PyrokarClearDemonTower != LOG_SUCCESS)
 		&& (Npc_KnowsInfo(other, DIA_Jorgen_Home))
@@ -584,7 +584,7 @@ INSTANCE DIA_Jorgen_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Jorgen_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

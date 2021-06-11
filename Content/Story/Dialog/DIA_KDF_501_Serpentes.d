@@ -12,7 +12,7 @@ INSTANCE DIA_Serpentes_Kap1_EXIT   (C_INFO)
 };
 FUNC INT DIA_Serpentes_Kap1_EXIT_Condition()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -284,7 +284,7 @@ INSTANCE DIA_Serpentes_PERM   (C_INFO)
 };
 FUNC INT DIA_Serpentes_PERM_Condition()
 {	
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	|| Npc_KnowsInfo (other,DIA_Serpentes_SUCCESS)
 	{
 		return TRUE;
@@ -326,7 +326,7 @@ INSTANCE DIA_Serpentes_Kap2_EXIT   (C_INFO)
 };
 FUNC INT DIA_Serpentes_Kap2_EXIT_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};	
@@ -358,7 +358,7 @@ INSTANCE DIA_Serpentes_Kap3_EXIT   (C_INFO)
 };
 FUNC INT DIA_Serpentes_Kap3_EXIT_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};	
@@ -384,7 +384,7 @@ func int DIA_Serpentes_MinenAnteile_Condition ()
 {
 	if (Pedro_Traitor == TRUE)
 	&& ((hero.guild == GIL_KDF) || (hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 		{
 				return TRUE;
 		};
@@ -752,7 +752,7 @@ INSTANCE DIA_Serpentes_Kap4_EXIT   (C_INFO)
 };
 FUNC INT DIA_Serpentes_Kap4_EXIT_Condition()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};	
@@ -783,7 +783,7 @@ INSTANCE DIA_Serpentes_Kap5_EXIT   (C_INFO)
 };
 FUNC INT DIA_Serpentes_Kap5_EXIT_Condition()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};	

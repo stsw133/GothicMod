@@ -15,7 +15,7 @@ func void B_AddFightSkill (var C_NPC slf, var int talent, var int percent)
 	if (talent == NPC_TALENT_1H)
 	{
 		slf.HitChance[NPC_TALENT_1H] += percent;
-
+		
 		if (slf.HitChance[NPC_TALENT_1H] >= FightTalent_Strong)
 		{
 			Npc_SetTalentSkill (slf, NPC_TALENT_1H, 2);
@@ -52,7 +52,7 @@ func void B_AddFightSkill (var C_NPC slf, var int talent, var int percent)
 	if (talent == NPC_TALENT_2H)
 	{
 		slf.HitChance[NPC_TALENT_2H] += percent;
-
+		
 		if (slf.HitChance[NPC_TALENT_2H] >= FightTalent_Strong)
 		{
 			Npc_SetTalentSkill (slf, NPC_TALENT_2H, 2);
@@ -89,7 +89,7 @@ func void B_AddFightSkill (var C_NPC slf, var int talent, var int percent)
 	if (talent == NPC_TALENT_BOW)
 	{
 		slf.HitChance[NPC_TALENT_BOW] += percent;
-
+		
 		if (slf.HitChance[NPC_TALENT_BOW] >= FightTalent_Strong)
 		{
 			Npc_SetTalentSkill (slf, NPC_TALENT_BOW, 2);
@@ -126,7 +126,7 @@ func void B_AddFightSkill (var C_NPC slf, var int talent, var int percent)
 	if (talent == NPC_TALENT_CROSSBOW)
 	{
 		slf.HitChance[NPC_TALENT_CROSSBOW] += percent;
-
+		
 		if (slf.HitChance[NPC_TALENT_CROSSBOW] >= FightTalent_Strong)
 		{
 			Npc_SetTalentSkill (slf, NPC_TALENT_CROSSBOW, 2);

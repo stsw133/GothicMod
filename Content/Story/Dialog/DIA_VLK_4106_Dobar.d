@@ -58,7 +58,7 @@ instance DIA_Dobar_Talent		(C_INFO)
 };
 func int DIA_Dobar_Talent_Condition ()
 {	
-	if (Npc_GetTalentSkill (other, NPC_TALENT_SMITH) > 0)  
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) > 0)  
 	{
 		return TRUE;
 	};
@@ -120,41 +120,11 @@ func void DIA_Dobar_beibringen_Info ()
 	AI_Output (self, other, "DIA_Dobar_beibringen_08_01"); //Tak wiêc znasz ju¿ podstawy. Mogê ci pomóc udoskonaliæ twoje umiejêtnoœci.
 	AI_Output (self, other, "DIA_Dobar_beibringen_08_02"); //Bêdziesz móg³ wtedy wyrabiaæ lepsz¹ broñ.
 	
-	Dobar_Learnsmith = TRUE;
 	Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
 	B_LogEntry		(TOPIC_Teacher_OC, "Dobar mo¿e mnie nauczyæ, jak wykuwaæ lepszy orê¿.");
+	self.aivar[AIV_CanTeach] = true;
 };
-///////////////////////////////////////////////////////////////////////
-//	Info Teach
-///////////////////////////////////////////////////////////////////////
-instance DIA_Dobar_Teach		(C_INFO)
-{
-	npc			 = 	VLK_4106_Dobar;
-	nr			 = 	3;
-	condition	 = 	DIA_Dobar_Teach_Condition;
-	information	 = 	DIA_Dobar_Teach_Info;
-	description	 = 	B_BuildLearnString ("Poka¿ mi, jak wykuæ dobry miecz!", B_GetLearnCostTalent (other, NPC_TALENT_SMITH, WEAPON_1H_Special_01));
-	permanent	 =  TRUE;
-};
-func int DIA_Dobar_Teach_Condition ()
-{	
-	if (Dobar_Learnsmith == TRUE)
-	&& (PLAYER_TALENT_SMITH[WEAPON_1H_Special_01] == FALSE)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Dobar_Teach_Info ()
-{
-	AI_Output (other, self, "DIA_Dobar_Teach_15_00"); //Poka¿ mi, jak wykuæ dobry miecz!
-	
-	if B_TeachPlayerTalentSmith	(self, hero, WEAPON_1H_Special_01) 
-	{	
-		AI_Output (self, other, "DIA_Dobar_Teach_08_01"); //Upewnij siê, ¿e stal jest równomiernie rozgrzana - pozwoli ci to uzyskaæ równe, g³adkie ostrze.
-		AI_Output (self, other, "DIA_Dobar_Teach_08_02"); //Jeœli bêdziesz o tym pamiêta³, twoje miecze stan¹ siê twardsze i ostrzejsze.
-		AI_Output (self, other, "DIA_Dobar_Teach_08_03"); //To ju¿ ca³a niezbêdna wiedza. Jeœli bêdziesz potrzebowa³ stali, porozmawiaj z Engorem.
-	};
-};
+
 ///////////////////////////////////////////////////////////////////////
 //	Info Waffe
 ///////////////////////////////////////////////////////////////////////
@@ -219,73 +189,3 @@ func void DIA_Dobar_NEWS_Info ()
 		AI_Output (self, other, "DIA_Dobar_NEWS_08_04"); //Mog³o byæ lepiej. Gdybyœ mi ci¹gle nie przerywa³, mo¿e uda³oby mi siê wreszcie coœ zrobiæ.
 	};
 };
-
-
-// ************************************************************
-// 			  				PICK POCKET
-// ************************************************************
-
-INSTANCE DIA_Dobar_PICKPOCKET (C_INFO)
-{
-	npc			= VLK_4106_Dobar;
-	nr			= 900;
-	condition	= DIA_Dobar_PICKPOCKET_Condition;
-	information	= DIA_Dobar_PICKPOCKET_Info;
-	permanent	= TRUE;
-	description = "(Kradzie¿ tej bry³ki rudy bêdzie trudna)";
-};                       
-
-FUNC INT DIA_Dobar_PICKPOCKET_Condition()
-{
-	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
-	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
-	&& (Npc_HasItems (self, ItMI_Nugget) >= 1)
-	&& (other.attribute[ATR_DEXTERITY] >= (79 - Theftdiff))
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Dobar_PICKPOCKET_Info()
-{	
-	Info_ClearChoices	(DIA_Dobar_PICKPOCKET);
-	Info_AddChoice		(DIA_Dobar_PICKPOCKET, DIALOG_BACK 		,DIA_Dobar_PICKPOCKET_BACK);
-	Info_AddChoice		(DIA_Dobar_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Dobar_PICKPOCKET_DoIt);
-};
-
-func void DIA_Dobar_PICKPOCKET_DoIt()
-{
-	if (other.attribute[ATR_DEXTERITY] >= 79)
-	{
-		B_GiveInvItems (self, other, ItMI_Nugget, 1);
-		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
-		B_GivePlayerXP (XP_Ambient);
-		Info_ClearChoices (DIA_Dobar_PICKPOCKET);
-	}
-	else
-	{
-		AI_StopProcessInfos	(self);
-		B_Attack (self, other, AR_Theft, 1); //reagiert trotz IGNORE_Theft mit NEWS
-	};
-};
-	
-func void DIA_Dobar_PICKPOCKET_BACK()
-{
-	Info_ClearChoices (DIA_Dobar_PICKPOCKET);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

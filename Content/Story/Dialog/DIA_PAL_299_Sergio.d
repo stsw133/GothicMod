@@ -65,7 +65,7 @@ func int DIA_Sergio_Isgaroth_Condition ()
 {	
 	if Npc_KnowsInfo (hero,PC_PrayShrine_Paladine)
 	&&  (Npc_GetDistToWP (self,"NW_MONASTERY_CHAPELL_02") <= 1500)
-	&& (Kapitel == 1)
+	&& (Kapitel == 7)
 	{
 		return TRUE;
 	};
@@ -346,7 +346,7 @@ instance DIA_Sergio_Perm		(C_INFO)
 };
 func int DIA_Sergio_Perm_Condition ()
 {	
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (other.guild != GIL_KDF)
 	{
 		return TRUE;

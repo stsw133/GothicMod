@@ -34,58 +34,7 @@ FUNC VOID DIA_Addon_Cavalorn_EXIT_Info()
 {
 	AI_StopProcessInfos (self);
 };
-// ************************************************************
-// 			  				PICK POCKET
-// ************************************************************
 
-INSTANCE DIA_Addon_Cavalorn_PICKPOCKET (C_INFO)
-{
-	npc			= Bau_4300_Addon_Cavalorn;
-	nr			= 900;
-	condition	= DIA_Addon_Cavalorn_PICKPOCKET_Condition;
-	information	= DIA_Addon_Cavalorn_PICKPOCKET_Info;
-	permanent	= TRUE;
-	description = "(Kradzie¿ tego ko³czanu bêdzie doœæ ³atwa)";
-};                       
-
-FUNC INT DIA_Addon_Cavalorn_PICKPOCKET_Condition()
-{
-	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
-	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
-	&& (other.attribute[ATR_DEXTERITY] >= (25 - Theftdiff))
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Addon_Cavalorn_PICKPOCKET_Info()
-{	
-	Info_ClearChoices	(DIA_Addon_Cavalorn_PICKPOCKET);
-	Info_AddChoice		(DIA_Addon_Cavalorn_PICKPOCKET, DIALOG_BACK 		,DIA_Addon_Cavalorn_PICKPOCKET_BACK);
-	Info_AddChoice		(DIA_Addon_Cavalorn_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Addon_Cavalorn_PICKPOCKET_DoIt);
-};
-
-func void DIA_Addon_Cavalorn_PICKPOCKET_DoIt()
-{
-	if (other.attribute[ATR_DEXTERITY] >= 25)
-	{
-		
-		B_GiveInvItems (self, other, ItRw_Arrow, 44);
-		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
-		B_GivePlayerXP (XP_Ambient);
-		Info_ClearChoices (DIA_Addon_Cavalorn_PICKPOCKET);
-	}
-	else
-	{
-		AI_StopProcessInfos	(self);
-		B_Attack (self, other, AR_Theft, 1); //reagiert trotz IGNORE_Theft mit NEWS
-	};
-};
-	
-func void DIA_Addon_Cavalorn_PICKPOCKET_BACK()
-{
-	Info_ClearChoices (DIA_Addon_Cavalorn_PICKPOCKET);
-};
 ///////////////////////////////////////////////////////////////////////
 //	Info MeetingIsRunning
 ///////////////////////////////////////////////////////////////////////

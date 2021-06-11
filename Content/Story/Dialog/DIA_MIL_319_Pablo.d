@@ -216,7 +216,7 @@ FUNC VOID DIA_Pablo_Perm_Info()
 {
 	AI_Output (other, self, "DIA_Pablo_Perm_15_00"); //Jak wygl¹da sytuacja?
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet != LOG_SUCCESS)
 		{
@@ -242,7 +242,7 @@ FUNC VOID DIA_Pablo_Perm_Info()
 			AI_Output (self, other, "DIA_Pablo_Perm_12_07"); //Gdyby nie uda³o ci siê odnaleŸæ prawdziwego winowajcy, orkowie mieliby znacznie u³atwion¹ sprawê.
 		};
 	}
-	else if (Kapitel == 5)
+	else if (Kapitel == 11)
 	{
 		AI_Output (self, other, "DIA_Pablo_Perm_12_08"); //Martwi mnie to, co mo¿e siê staæ, jeœli paladyni opuszcz¹ to miejsce.
 	}

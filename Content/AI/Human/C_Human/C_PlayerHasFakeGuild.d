@@ -5,12 +5,12 @@ func int C_PlayerIsFakeBandit (var C_NPC slf, var C_NPC oth)
 {
 	var C_Item itm;
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_Armor)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) == IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_FakeGuild)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) == IGNORE_FakeGuild)
 	{
 		return false;
 	};
@@ -54,12 +54,12 @@ func int C_PlayerIsFakePirate (var C_NPC slf, var C_NPC oth)
 {
 	var C_Item itm;
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_Armor)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) == IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_FakeGuild)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) == IGNORE_FakeGuild)
 	{
 		return false;
 	};
@@ -92,12 +92,12 @@ func int C_PlayerHasFakeGuild (var C_NPC slf, var C_NPC oth)
 	var C_Item itm; itm = Npc_GetEquippedArmor(oth);
 	var int NSC_CommentRangerArmor; NSC_CommentRangerArmor = true;
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_Armor)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) == IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if (slf.aivar[AIV_IgnoreDisguise] == IGNORE_FakeGuild)
+	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) == IGNORE_FakeGuild)
 	{
 		return false;
 	};

@@ -14,7 +14,7 @@ INSTANCE DIA_Sagitta_EXIT   (C_INFO)
 
 FUNC INT DIA_Sagitta_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 		{
 				return TRUE;
 		};
@@ -196,170 +196,11 @@ func void DIA_Sagitta_Sagitta_Herb_Info ()
 	AI_Output			(other, self, "DIA_Sagitta_Sagitta_Herb_15_00"); //Znalaz³em s³oneczny aloes.
 	AI_Output			(self, other, "DIA_Sagitta_Sagitta_Herb_17_01"); //Dziêkujê. Mo¿esz mnie pytaæ, o co tylko zechcesz.
 	B_GiveInvItems (other,self,ItPl_SunHerb,1);
-	Sagitta_TeachAlchemy = TRUE;	
+	self.aivar[AIV_CanTeach] = true;
 	MIS_Sagitta_Herb = LOG_SUCCESS;
 	B_GivePlayerXP (XP_Sagitta_Sonnenaloe);
 };
 
-
-///////////////////////////////////////////////////////////////////////
-//	Info Teach
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Sagitta_Teach   (C_INFO)
-{
-	npc         = BAU_980_Sagitta;
-	nr          = 2;
-	condition   = DIA_Sagitta_Teach_Condition;
-	information = DIA_Sagitta_Teach_Info;
-	permanent   = TRUE;
-	description = "Jakie mikstury mo¿esz mnie nauczyæ przyrz¹dzaæ?";
-};
-//----------------------------------------
-var int DIA_Sagitta_Teach_permanent;
-//----------------------------------------
-
-FUNC INT DIA_Sagitta_Teach_Condition()
-{	
-	if (DIA_Sagitta_Teach_permanent == FALSE)
-	&& (Sagitta_TeachAlchemy == TRUE)
-	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Sagitta_Teach_Info()
-{
-	var int talente;
-	talente = 0;
-	AI_Output (other, self,"DIA_Sagitta_Teach_15_00");//Jakie mikstury mo¿esz mnie nauczyæ przyrz¹dzaæ?
-
-	if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Health] == FALSE)
-	|| (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
-	{
-		Info_ClearChoices (DIA_Sagitta_Teach);
-		Info_AddChoice (DIA_Sagitta_Teach,DIALOG_BACK,DIA_Sagitta_Teach_BACK);
-	};
-	if (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Esencja lecznicza", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)),DIA_Sagitta_Teach_Health_01);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == TRUE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Ekstrakt leczniczy", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_02)),DIA_Sagitta_Teach_Health_02);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Esencja many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)),DIA_Sagitta_Teach_Mana_01);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == TRUE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Ekstrakt many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_02)),DIA_Sagitta_Teach_Mana_02);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == TRUE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir many", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_03)),DIA_Sagitta_Teach_Mana_03);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir ducha", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Mana)),DIA_Sagitta_Teach_Perm_Mana);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
-	{
-		Info_AddChoice (DIA_Sagitta_Teach,B_BuildLearnString ("Eliksir zrêcznoœci", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_DEX)),DIA_Sagitta_Teach_Perm_DEX);
-		talente = (talente + 1);
-	};
-
-	if (talente > 0)
-	{
-		if (Alchemy_Explain != TRUE)
-		{
-			AI_Output (self, other,"DIA_Sagitta_Teach_17_01"); //Nim nauczê ciê trudnej sztuki alchemii, powiem ci, co jest potrzebne do sporz¹dzania mikstur.
-			AI_Output (self, other,"DIA_Sagitta_Teach_17_02"); //Stó³ alchemika s³u¿y jako swego rodzaju kuchnia dla sporz¹dzania mikstur. Bêdziesz tak¿e potrzebowa³ pustego flakonu, by przechowywaæ w nim gotow¹ miksturê.
-			AI_Output (self, other,"DIA_Sagitta_Teach_17_03"); //Nastêpnie wystarczy po³¹czyæ odpowiednie sk³adniki i mikstura gotowa.
-			AI_Output (self, other,"DIA_Sagitta_Teach_17_04"); //Tej wiedzy nauczysz siê jedynie ode mnie.
-			Alchemy_Explain = TRUE;
-		}
-		else
-		{
-			AI_Output (self, other,"DIA_Sagitta_Teach_17_05"); //O której z mikstur chcesz pos³uchaæ?
-		};
-	}
-	else 
-	{
-		AI_Output (self, other,"DIA_Sagitta_Teach_17_06"); //Wiesz ju¿ wszystko, czego mog³abym ciê nauczyæ.
-		DIA_Sagitta_Teach_permanent = TRUE;
-	};
-};
-
-FUNC VOID DIA_Sagitta_Teach_BACK ()
-{
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Health_01 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-FUNC VOID DIA_Sagitta_Teach_Health_02 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_02);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Mana_01 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Mana_02 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_02);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Mana_03 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_03);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Perm_Mana ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Mana);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-
-FUNC VOID DIA_Sagitta_Teach_Perm_Dex ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_DEX);
-	Info_ClearChoices (DIA_Sagitta_Teach);
-};
-	
 ///////////////////////////////////////////////////////////////////////
 //	Info HEAL
 ///////////////////////////////////////////////////////////////////////
@@ -448,7 +289,7 @@ INSTANCE DIA_Sagitta_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sagitta_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -542,7 +383,7 @@ INSTANCE DIA_Sagitta_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sagitta_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -661,7 +502,7 @@ INSTANCE DIA_Sagitta_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sagitta_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -696,7 +537,7 @@ INSTANCE DIA_Sagitta_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sagitta_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

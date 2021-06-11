@@ -239,22 +239,22 @@ func void DIA_Elena_PERM_Info ()
 {
 	AI_Output			(other, self, "DIA_Elena_PERM_15_00"); //Czy ostatnio zdarzy³o siê coœ wa¿nego?
 
-	if (kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		AI_Output			(self, other, "DIA_Elena_PERM_16_01"); //Parê dni temu mój ojciec zadecydowa³, ¿e nie wolno nam sprzedawaæ niczego w mieœcie.
 		AI_Output			(self, other, "DIA_Elena_PERM_16_02"); //Wiêc teraz trzymam siê w pobli¿u farmy i sprzedajê swoje towary przejezdnym.
 	
 		Elena_Trade_mit_mir = TRUE;
 	}
-	else if (Kapitel == 2)
+	else if (Kapitel == 8)
 	{
 		AI_Output			(self, other, "DIA_Elena_PERM_16_03"); //Ataki stra¿y na okoliczne farmy staj¹ siê coraz czêstsze. Interwencja mojego ojca jest tylko kwesti¹ czasu.
 	}
-	else if (Kapitel == 3)
+	else if (Kapitel == 9)
 	{
 		AI_Output			(self, other, "DIA_Elena_PERM_16_04"); //Okoliczne ziemie sta³y siê bardzo niebezpieczne. Nikt nie zapuszcza siê poza w³asne tereny. Up³ynê³o ju¿ bardzo du¿o czasu, od kiedy którekolwiek z nas by³o w mieœcie.
 	}
-	else if (kapitel == 4)
+	else if (Kapitel == 10)
 	{
 		AI_Output			(self, other, "DIA_Elena_PERM_16_05"); //Najemnicy staj¹ siê coraz bardziej niespokojni. Chocia¿ wydaje mi siê, ¿e od czasu jak opuœci³ nas Sylvio wraz ze swoj¹ dru¿yn¹, i tak s¹ w znacznie lepszej kondycji psychicznej.
 	}

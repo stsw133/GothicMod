@@ -169,7 +169,7 @@ func int DIA_Addon_Gaan_AufgabeBeimRing_Condition ()
 {
 	if ((Npc_KnowsInfo (other, DIA_Addon_Gaan_Ranger))
 	|| (RangerMeetingRunning != 0))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 		{
 			return TRUE;
 		};
@@ -476,175 +476,13 @@ FUNC VOID DIA_Gaan_PayTeacher_Info()
 		AI_Output(self,other,"DIA_Gaan_PayTeacher_03_01"); //No, to mi siê podoba.
 		Gaan_TeachPlayer = TRUE;
 		DIA_Gaan_PayTeacher_noPerm = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else	
 	{
 		AI_Output(self,other,"DIA_Gaan_PayTeacher_03_02"); //PrzyjdŸ póŸniej, kiedy ju¿ bêdziesz mia³ czym zap³aciæ.
 	};
 };
-
-
-///////////////////////////////////////////////////////////////////////
-//	Info TeachHunting
-///////////////////////////////////////////////////////////////////////
-instance DIA_Gaan_TEACHHUNTING		(C_INFO)
-{
-	npc		 = 	BAU_961_Gaan;
-	nr          = 12;
-	condition	 = 	DIA_Gaan_TEACHHUNTING_Condition;
-	information	 = 	DIA_Gaan_TEACHHUNTING_Info;
-	permanent	= TRUE;
-	description	 = 	"Czego mo¿esz mnie nauczyæ?";
-};
-
-func int DIA_Gaan_TEACHHUNTING_Condition ()
-{
-	if (Gaan_TeachPlayer == TRUE)
-		{
-				return TRUE;
-		};
-};
-
-func void DIA_Gaan_TEACHHUNTING_Info ()
-{
-	AI_Output			(other, self, "DIA_Gaan_TEACHHUNTING_15_00"); //Czego mo¿esz mnie nauczyæ?
-	if 	(
-			(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-			||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-			||((PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DrgSnapperHorn] == FALSE) && (MIS_Gaan_Snapper == LOG_SUCCESS))
-		)
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_03_01"); //To zale¿y od tego, czego ty chcia³byœ siê nauczyæ.
-
-			Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-		
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Teeth] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("Usuñ k³y",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Teeth)),  DIA_Gaan_TEACHHUNTING_Teeth);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Claws] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("Usuñ pazury",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Claws)),  DIA_Gaan_TEACHHUNTING_Claws);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_Fur] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("Obedrzyj ze skóry",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_Fur)),  DIA_Gaan_TEACHHUNTING_Fur);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFSting] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("¯¹d³o krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFSting)),  DIA_Gaan_TEACHHUNTING_BFSting);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_BFWing] == FALSE)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("Skrzyd³a krwiopijcy",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_BFWing)),  DIA_Gaan_TEACHHUNTING_BFWing);
-			};
-			if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_DrgSnapperHorn] == FALSE)
-			&& (MIS_Gaan_Snapper == LOG_SUCCESS)
-			{ 
-				Info_AddChoice	(DIA_Gaan_TEACHHUNTING, B_BuildLearnString ("Róg smoczego zêbacza",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_DrgSnapperHorn)),  DIA_Gaan_TEACHHUNTING_DrgSnapperHorn);
-			};
-		}
-		else
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_03_02"); //Niestety, nie mogê ci powiedzieæ nic, czego byœ ju¿ nie wiedzia³.
-		};
-};
-
-func void DIA_Gaan_TEACHHUNTING_BACK()
-{
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-};
-
-// ------ Klauen hacken ------
-func void DIA_Gaan_TEACHHUNTING_Claws()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Claws))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Claws_03_00"); //Zwierzêta nie lubi¹ byæ pozbawiane pazurów. Musisz wykonaæ bardzo precyzyjne ciêcie.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Claws_03_01"); //Skrzy¿uj lekko rêce, a potem silnie pchnij.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Claws_03_02"); //Handlarze bardzo lubi¹, jeœli ktoœ p³aci im pazurami.
-		
-		};
-
-		Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-		Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-		
-};
-
-// ------ Fell abziehen ------
-func void DIA_Gaan_TEACHHUNTING_Teeth()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Teeth))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Teeth_03_00"); //Naj³atwiej jest pozbawiæ zwierzê zêbów. Natnij no¿em dzi¹s³o dooko³a zêba.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Teeth_03_01"); //Potem musisz ju¿ tylko uderzyæ w z¹b - i po wszystkim.
-	
-			
-		};
-
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-	Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-};
-
-// ------ Fell abziehen ------
-func void DIA_Gaan_TEACHHUNTING_Fur()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_Fur))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Fur_03_00"); //Obdzieranie ze skóry najlepiej jest zacz¹æ od wykonania g³êbokiego naciêcia dooko³a tylnych koñczyn.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_Fur_03_01"); //Jeœli zrobisz to w³aœciwie, zdarcie skóry to ju¿ drobnostka.
-		};
-
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-	Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-};
-
-// ------ Blutfliegenstachel ------
-func void DIA_Gaan_TEACHHUNTING_BFSting()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFSting))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_BFSting_03_00"); //Na tylnej stronie odw³oku tej muchy znajduje siê miêkki punkt.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_BFSting_03_01"); //Jeœli na niego naciœniesz, wysunie siê ¿¹d³o, które bêdziesz móg³ odci¹æ no¿em.
-			
-		};
-
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-	Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-};
-// ------ Blutfliegenflügel ------
-func void DIA_Gaan_TEACHHUNTING_BFWing ()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_BFWing))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_BFWing_03_00"); //Najlepszym sposobem na usuniêcie skrzyde³ krwiopijcy jest odciêcie ich ostrym no¿em tu¿ przy samym ciele.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_BFWing_03_01"); //Musisz uwa¿aæ, skrzyd³a s¹ bardzo delikatne. Jeœli naruszysz ich delikatn¹ pow³okê, stan¹ siê bezwartoœciowe.
-
-		};
-
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-	Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-};
-// ------ DrgSnapperHorn ------
-func void DIA_Gaan_TEACHHUNTING_DrgSnapperHorn()
-{
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_DrgSnapperHorn))
-		{
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_DrgSnapperHorn_03_00"); //Na przyk³adzie tego nieco przeroœniêtego zêbacza poka¿ê ci, jak usuwa siê rogi.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_DrgSnapperHorn_03_01"); //Najpierw musisz wbiæ nó¿ jak najg³êbiej w sam œrodek czo³a, a nastêpnie ostro¿nie podwa¿yæ róg.
-			AI_Output			(self, other, "DIA_Gaan_TEACHHUNTING_DrgSnapperHorn_03_02"); //Jeœli nie mo¿esz oddzieliæ go od czaszki, bêdziesz sobie musia³ pomóc drugim no¿em.
-	
-			
-			CreateInvItems (Gaans_Snapper, ItAt_DrgSnapperHorn, 1); //falls der Snapper ihm gerade vor den Füssen liegt!!
-		};
-
-	Info_ClearChoices	(DIA_Gaan_TEACHHUNTING);
-	Info_AddChoice		(DIA_Gaan_TEACHHUNTING, DIALOG_BACK, DIA_Gaan_TEACHHUNTING_BACK);
-};
-
 
 ///////////////////////////////////////////////////////////////////////
 //	Info jagd
@@ -684,7 +522,7 @@ func void DIA_Gaan_JAGD_Info ()
 			B_LogEntry (TOPIC_GaanSchnaubi,"Jakaœ dziwna bestia sprawia problemy myœliwemu Gaanowi. Dopóki potwór tu grasuje, Gaan nie bêdzie móg³ normalnie polowaæ."); 
 			MIS_Gaan_Snapper = LOG_RUNNING;
 		}
-	else if (Kapitel >= 3)
+	else if (Kapitel >= 9)
 		{
 			AI_Output			(self, other, "DIA_Gaan_JAGD_03_04"); //Jest coraz gorzej. Od tego czasu od strony prze³êczy nadci¹gnê³y ca³e tuziny tych istot.
 			AI_Output			(self, other, "DIA_Gaan_JAGD_03_05"); //Trudno coœ upolowaæ w tych warunkach.

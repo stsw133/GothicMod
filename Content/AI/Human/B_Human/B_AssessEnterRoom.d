@@ -95,7 +95,7 @@ func int B_AssessEnterRoom()
 		/// ------ Aus Bett aufstehen de-synchronisieren ------
 		if (C_BodyStateContains(self, BS_LIE))
 		{
-			B_MM_DeSynchronize();
+			B_DeSynchronize();
 		};
 		
 		if (Npc_IsInState(self, ZS_Potion_Alchemy))

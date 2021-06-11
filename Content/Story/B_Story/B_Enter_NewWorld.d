@@ -362,8 +362,7 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 		ShrineIsObsessed_NW_BIGMILL_MALAKSVERSTECK_02 	= true;
 		ShrineIsObsessed_NW_FARM3_BIGWOOD_02 			= true;
 		
-  		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(9)), TEXT_Chapter_09, "chapter3.tga", "chapter_01.wav", 6000);
-		
+		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(9)), TEXT_Chapter_09, "chapter4.tga", "chapter_01.wav", 6000);
 		EnterNW_Kapitel = 9;
 	};
 };

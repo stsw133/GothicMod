@@ -9,8 +9,8 @@ prototype ItemPR_Belt (C_Item)
 	flags 					=	ITEM_BELT;
 	material 				=	MAT_METAL;
 	
-	on_equip				=	Attributes_CHECK;
-	on_unequip				=	Attributes_CHECK;
+	on_equip				=	Npc_AttributesRefresh;
+	on_unequip				=	Npc_AttributesRefresh;
 	
 	TEXT[5]					=	NAME_Value;
 	INV_ZBIAS				=	INVCAM_ENTF_AMULETTE_STANDARD;
@@ -168,8 +168,7 @@ func void UnEquip_ItBe_Mag_01()
 {
 	if (Npc_IsPlayer(self))
 	{
-		self.aivar[AIV_Power] -= Belt_AtrPoints;
-		POWER_CHECK(self);
+		Npc_AddPowerPoints(self, -Belt_AtrPoints);
 		Belt_AtrPoints = 0;
 	};
 };
@@ -199,8 +198,7 @@ func void UnEquip_ItBe_Mag_02()
 {
 	if (Npc_IsPlayer(self))
 	{
-		self.aivar[AIV_Power] -= Belt_AtrPoints;
-		POWER_CHECK(self);
+		Npc_AddPowerPoints(self, -Belt_AtrPoints);
 		Belt_AtrPoints = 0;
 	};
 };

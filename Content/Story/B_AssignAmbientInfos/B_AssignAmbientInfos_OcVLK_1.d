@@ -35,7 +35,7 @@ INSTANCE DIA_OCVLK_1_PEOPLE(C_INFO)
 
 FUNC INT DIA_OCVLK_1_PEOPLE_Condition()
 {
-	if (Kapitel <= 4)
+	if (Kapitel <= 10)
 	&& (MIS_KilledDragons < 4)
 	{
 		return TRUE;
@@ -62,7 +62,7 @@ INSTANCE DIA_OCVLK_1_LOCATION(C_INFO)
 
 FUNC INT DIA_OCVLK_1_LOCATION_Condition()
 {
-	if (Kapitel <= 4)
+	if (Kapitel <= 10)
 	&& (MIS_KilledDragons < 4)
 	{
 		return TRUE;
@@ -95,12 +95,12 @@ FUNC VOID DIA_OCVLK_1_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_OCVLK_1_STANDARD_15_00"); //Jak siê maj¹ sprawy?
 		
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		AI_Output (self,other,"DIA_OCVLK_1_STANDARD_01_01"); //Orkowie zapêdzili nas w kozi róg! Bez posi³ków d³ugo nie wytrzymamy, wszyscy zgin¹! Zreszt¹ dziwi mnie fakt, ¿e smoki nas nie wykoñczy³y.
 	};
 	
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		if (MIS_KilledDragons < 4)
 		{
@@ -112,7 +112,7 @@ FUNC VOID DIA_OCVLK_1_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		if (MIS_OCGateOpen == FALSE)
 		{

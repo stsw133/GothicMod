@@ -13,7 +13,7 @@ INSTANCE DIA_Mika_EXIT   (C_INFO)
 
 FUNC INT DIA_Mika_EXIT_Condition()
 {
-	if Kapitel <=2
+	if Kapitel <= 8
 	{
 		return TRUE;
 	};	
@@ -403,7 +403,7 @@ INSTANCE DIA_Mika_Kap3_EXIT   (C_INFO)
 
 FUNC INT DIA_Mika_Kap3_EXIT_Condition()
 {
-	if Kapitel >= 3
+	if Kapitel >= 9
 	{
 		return TRUE;
 	};	
@@ -433,7 +433,7 @@ INSTANCE DIA_Mika_Kap3u4u5_PERM   (C_INFO)
 
 FUNC INT DIA_Mika_Kap3u4u5_PERM_Condition()
 {
-	if  (Kapitel >= 3)
+	if  (Kapitel >= 9)
 	&& 	(Npc_KnowsInfo(other, DIA_Mika_WOHIN))
 	&& 	(Npc_IsDead (Alvares))
 	&&  (Npc_IsDead (Engardo))	

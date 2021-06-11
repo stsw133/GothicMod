@@ -211,158 +211,177 @@ func void DIA_Addon_Riordian_TeachPre_Info ()
 ///////////////////////////////////////////////////////////////////////
 //	Info Teach
 ///////////////////////////////////////////////////////////////////////
-instance DIA_Addon_Riordian_Teach		(C_INFO)
+instance DIA_Addon_Riordian_Teach (C_INFO)
 {
-	npc		 = 	KDW_1404_Addon_Riordian_NW;
-	nr		 = 	90;
-	condition	 = 	DIA_Addon_Riordian_Teach_Condition;
-	information	 = 	DIA_Addon_Riordian_Teach_Info;
-	permanent	 = 	TRUE;
-
-	description	 = 	"Poka¿ mi, jak wyszkoliæ mojego ognika.";
+	npc			= 	KDW_1404_Addon_Riordian_NW;
+	nr			= 	90;
+	condition	= 	DIA_Addon_Riordian_Teach_Condition;
+	information	= 	DIA_Addon_Riordian_Teach_Info;
+	permanent	= 	true;
+	description	= 	"Poka¿ mi, jak wyszkoliæ mojego ognika.";
 };
+
 var int DIA_Addon_Riordian_Teach_NoPerm;
 
-func int DIA_Addon_Riordian_Teach_Condition ()
+func int DIA_Addon_Riordian_Teach_Condition()
 {
-	if (Riordian_Addon_TeachPlayer == TRUE)
-	&& (DIA_Addon_Riordian_Teach_NoPerm == FALSE)
-	&& (Npc_HasItems (other,ItAm_Addon_WispDetector))
-		{
-			return TRUE;
-		};
+	if (Riordian_Addon_TeachPlayer)
+	&& (!DIA_Addon_Riordian_Teach_NoPerm)
+	&& (Npc_HasItems(other, ItAm_Addon_WispDetector))
+	{
+		return true;
+	};
 };
-func void DIA_Addon_Riordian_Teach_Info ()
+func void DIA_Addon_Riordian_Teach_Info()
 {
-	B_DIA_Addon_Riordian_Teach_15_00 ();
-
-	if ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NF]	 	== FALSE)
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF]		== FALSE)
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] 	== FALSE)	
-	{                                            
-		Info_ClearChoices (DIA_Addon_Riordian_Teach);
-		Info_AddChoice (DIA_Addon_Riordian_Teach,DIALOG_BACK,DIA_Addon_Riordian_Teach_BACK);
-		B_DIA_Addon_Riordian_Teach_10_01 ();
-
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF] == FALSE)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FF, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FF)),DIA_Addon_Riordian_Teach_WISPSKILL_FF);
-		};
+	AI_Output	(other, self, "DIA_Addon_Riordian_Teach_15_00"); //Poka¿ mi, jak wyszkoliæ mojego ognika.
+	
+	if (!WispSkills[WISPSKILL_NF])
+	|| (!WispSkills[WISPSKILL_FF])
+	|| (!WispSkills[WISPSKILL_NONE])
+	|| (!WispSkills[WISPSKILL_RUNE])
+	|| (!WispSkills[WISPSKILL_MAGIC])
+	|| (!WispSkills[WISPSKILL_FOOD])
+	|| (!WispSkills[WISPSKILL_POTIONS])
+	{
+		Info_ClearChoices	(DIA_Addon_Riordian_Teach);
+		Info_AddChoice		(DIA_Addon_Riordian_Teach, DIALOG_BACK, DIA_Addon_Riordian_Teach_BACK);
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach2_10_00"); //Czego ma szukaæ twój ognik?
 		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] == FALSE)
+		if (!WispSkills[WISPSKILL_FF])
 		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_NONE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_NONE)),DIA_Addon_Riordian_Teach_WISPSKILL_NONE);
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "Broñ dystansowa i amunicja (wymagany poziom 15)", DIA_Addon_Riordian_Teach_WISPSKILL_FF);
 		};
-			
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] == FALSE)
+		if (!WispSkills[WISPSKILL_NONE])
+		{
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "Z³oto, klucze i narzêdzia (wymagany poziom 20)", DIA_Addon_Riordian_Teach_WISPSKILL_NONE);
+		};
+		if (!WispSkills[WISPSKILL_RUNE])
 		&& (WISPSKILL_LEVEL >= 2)
 		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_RUNE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_RUNE)),DIA_Addon_Riordian_Teach_WISPSKILL_RUNE);
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "Runy i zwoje (wymagany poziom 25)", DIA_Addon_Riordian_Teach_WISPSKILL_RUNE);
 		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] == FALSE)
+		if (!WispSkills[WISPSKILL_MAGIC])
 		&& (WISPSKILL_LEVEL >= 2)
 		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_MAGIC, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_MAGIC)),DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC);
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "Pierœcienie i amulety (wymagany poziom 30)", DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC);
 		};
-			
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] == FALSE)
+		if (!WispSkills[WISPSKILL_FOOD])
 		&& (WISPSKILL_LEVEL >= 3)
 		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FOOD, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FOOD)),DIA_Addon_Riordian_Teach_WISPSKILL_FOOD);
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "¯ywnoœæ i roœliny (wymagany poziom 35)", DIA_Addon_Riordian_Teach_WISPSKILL_FOOD);
 		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] == FALSE)
+		if (!WispSkills[WISPSKILL_POTIONS])
 		&& (WISPSKILL_LEVEL >= 3)
 		{
-			Info_AddChoice (DIA_Addon_Riordian_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_POTIONS, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_POTIONS)),DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS);
+			Info_AddChoice (DIA_Addon_Riordian_Teach, "Magia i mikstury (wymagany poziom 40)", DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS);
 		};
 	}
-	else 
+	else
 	{
-		B_DIA_Addon_Riordian_Teach_10_08 ();
-		DIA_Addon_Riordian_Teach_NoPerm = TRUE;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach1_10_00"); //Twój ognik bêdzie szuka³ wszystkich po¿ytecznych obiektów. Nie mogê ciê nauczyæ niczego wiêcej.
+		DIA_Addon_Riordian_Teach_NoPerm = true;
 	};
 };
-func void DIA_Addon_Riordian_Teach_WISPSKILL_X ()
+func void DIA_Addon_Riordian_Teach_WISPSKILL_X()
 {
-	B_DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00 ();
+	AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
 };
-FUNC VOID DIA_Addon_Riordian_Teach_BACK ()
+func void DIA_Addon_Riordian_Teach_BACK ()
 {
 	Info_ClearChoices (DIA_Addon_Riordian_Teach);
 };
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_FF ()
+func void DIA_Addon_Riordian_Teach_WISPSKILL_FF()
 {
-	if B_TeachPlayerTalentWispDetector  (self, other, WISPSKILL_FF)
+	if (other.level > 15)
 	{
 		if (WISPSKILL_LEVEL < 2)
 		{
 			WISPSKILL_LEVEL = 2;
 		};
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+		WispSkills[WISPSKILL_FF] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
-	
 	Info_ClearChoices (DIA_Addon_Riordian_Teach);
 };
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_NONE ()
+func void DIA_Addon_Riordian_Teach_WISPSKILL_NONE()
 {
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_NONE)
+	if (other.level > 20)
 	{
 		if (WISPSKILL_LEVEL < 2)
 		{
 			WISPSKILL_LEVEL = 2;
 		};
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+		WispSkills[WISPSKILL_NONE] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
-	
 	Info_ClearChoices (DIA_Addon_Riordian_Teach);
 };
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_RUNE ()
+func void DIA_Addon_Riordian_Teach_WISPSKILL_RUNE()
 {
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_RUNE)
+	if (other.level > 25)
 	{
 		if (WISPSKILL_LEVEL < 3)
 		{
 			WISPSKILL_LEVEL = 3;
 		};
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+		WispSkills[WISPSKILL_RUNE] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
-	
 	Info_ClearChoices (DIA_Addon_Riordian_Teach);
 };
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC ()
+func void DIA_Addon_Riordian_Teach_WISPSKILL_MAGIC()
 {
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_MAGIC)
+	if (other.level > 30)
 	{
 		if (WISPSKILL_LEVEL < 3)
 		{
 			WISPSKILL_LEVEL = 3;
 		};
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
-	};
-	
-	Info_ClearChoices (DIA_Addon_Riordian_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_FOOD ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_FOOD)
+		WispSkills[WISPSKILL_MAGIC] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
 	{
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
-	};	
-	Info_ClearChoices (DIA_Addon_Riordian_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_POTIONS)
-	{
-		DIA_Addon_Riordian_Teach_WISPSKILL_X ();
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
 	Info_ClearChoices (DIA_Addon_Riordian_Teach);
 };
-
-
+func void DIA_Addon_Riordian_Teach_WISPSKILL_FOOD()
+{
+	if (other.level > 35)
+	{
+		WispSkills[WISPSKILL_FOOD] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};
+func void DIA_Addon_Riordian_Teach_WISPSKILL_POTIONS()
+{
+	if (other.level > 40)
+	{
+		WispSkills[WISPSKILL_POTIONS] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices (DIA_Addon_Riordian_Teach);
+};

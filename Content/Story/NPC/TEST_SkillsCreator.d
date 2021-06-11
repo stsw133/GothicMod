@@ -625,9 +625,9 @@ func void DIA_SC_Misc_Start_Info()
 	Info_ClearChoices(DIA_SC_Misc_Start);
 	Info_AddChoice (DIA_SC_Misc_Start, DIALOG_BACK, DIA_SC_Misc_BACK);
 
-	if (Npc_GetTalentSkill(other, NPC_TALENT_WRITING) == 0)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) == 0)
 	{
-		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Writing, B_GetLearnCostTalent(other, NPC_TALENT_WRITING, Npc_GetTalentSkill(other, NPC_TALENT_WRITING) + 1)), SC_Training_Writing);
+		Info_AddChoice (DIA_SC_Misc_Start, B_BuildLearnString(PRINT_LearnTalent_Enchanting, B_GetLearnCostTalent(other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1)), SC_Training_Enchanting);
 	};
 	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
@@ -671,8 +671,8 @@ func void SC_Training_Hunting()
 	B_TeachTalents (self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1);
 	DIA_SC_Misc_Start_Info();
 };
-func void SC_Training_Writing()
+func void SC_Training_Enchanting()
 {
-	B_TeachTalents (self, other, NPC_TALENT_WRITING, Npc_GetTalentSkill(other, NPC_TALENT_WRITING) + 1);
+	B_TeachTalents (self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
 	DIA_SC_Misc_Start_Info();
 };

@@ -308,7 +308,7 @@ INSTANCE ItSc_Firebolt (C_Item)
 
 	description			=	NAME_SPL_Firebolt;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -341,7 +341,7 @@ INSTANCE ItSc_Icebolt (C_Item)
 
 	description			=	NAME_SPL_Icebolt;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -374,7 +374,7 @@ INSTANCE ItSc_SumGobSkel (C_Item)
 
 	description			=	NAME_SPL_SummonGoblinSkeleton;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -404,7 +404,7 @@ INSTANCE ItSc_InstantFireball (C_Item)
 
 	description			= 	NAME_SPL_InstantFireball;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;							
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -436,7 +436,7 @@ INSTANCE ItSc_Zap (C_Item)
 
 	description			=	NAME_SPL_Zap;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -469,7 +469,7 @@ INSTANCE ItSc_SumWolf (C_Item)
 
 	description			=	NAME_SPL_SummonWolf;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -499,7 +499,7 @@ INSTANCE ItSc_Windfist (C_Item)
 
 	description			=	NAME_SPL_WINDFIST;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_MinManakosten;							
 	COUNT	[1]			=	STEP_WindFist;
@@ -538,7 +538,7 @@ INSTANCE ItSc_MediumHeal (C_Item)
 
 	description			=	NAME_SPL_MediumHeal;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -571,7 +571,7 @@ INSTANCE ItSc_LightningFlash (C_Item)
 
 	description			=	NAME_SPL_LightningFlash;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -604,7 +604,7 @@ INSTANCE ItSc_ChargeFireball (C_Item)
 
 	description			= 	NAME_SPL_ChargeFireball;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_MinManakosten;							
 	COUNT	[1]			=	STEP_ChargeFireball;
@@ -643,7 +643,7 @@ INSTANCE ItSc_SumSkel (C_Item)
 
 	description			=	NAME_SPL_SummonSkeleton;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -673,7 +673,7 @@ INSTANCE ItSc_IceCube (C_Item)
 
 	description			=	NAME_SPL_IceCube;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -713,7 +713,7 @@ INSTANCE ItSc_ThunderBall (C_Item)
 
 	description			=	NAME_SPL_ChargeZap;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_MinManakosten;							
 	COUNT	[1]			=	STEP_ChargeZap;
@@ -752,7 +752,7 @@ INSTANCE ItSc_SumGol (C_Item)
 
 	description			=	NAME_SPL_SummonGolem;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -782,7 +782,7 @@ INSTANCE ItSc_HarmUndead (C_Item)
 
 	description			=	NAME_SPL_DestroyUndead;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -815,7 +815,7 @@ INSTANCE ItSc_Pyrokinesis (C_Item)
 
 	description			=	NAME_SPL_Pyrokinesis;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_MinManakosten;							
 	COUNT	[1]			=	STEP_Pyrokinesis;
@@ -854,7 +854,7 @@ INSTANCE ItSc_Firestorm (C_Item)
 
 	description			= 	NAME_SPL_Firestorm;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;							
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -887,7 +887,7 @@ INSTANCE ItSc_IceWave (C_Item)
 
 	description			=	NAME_SPL_IceWave;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -926,7 +926,7 @@ INSTANCE ItSc_SumDemon (C_Item)
 
 	description			=	NAME_SPL_SummonDemon;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -957,7 +957,7 @@ INSTANCE ItSc_FullHeal (C_Item)
 
 	description			=	NAME_SPL_FullHeal;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -990,7 +990,7 @@ INSTANCE ItSc_Firerain (C_Item)
 
 	description			=	NAME_SPL_Firerain;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1022,7 +1022,7 @@ INSTANCE ItSc_BreathOfDeath (C_Item)//Joly:Auf Dracheninsel in Truhe der Schwarz
 
 	description			=	NAME_SPL_BreathOfDeath;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1054,7 +1054,7 @@ INSTANCE ItSc_MassDeath (C_Item)
 
 	description			=	NAME_SPL_MassDeath;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1087,7 +1087,7 @@ INSTANCE ItSc_ArmyOfDarkness (C_Item)
 
 	description			=	NAME_SPL_ArmyOfDarkness;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1117,7 +1117,7 @@ INSTANCE ItSc_TrfSheep (C_Item)
 
 	description			=	NAME_SPL_TrfSheep;
 
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1147,7 +1147,7 @@ INSTANCE ItSc_TrfScavenger (C_Item)
 
 	description			=	NAME_SPL_TrfScavenger;
 
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1177,7 +1177,7 @@ INSTANCE ItSc_TrfGiantRat (C_Item)
 
 	description			=	NAME_SPL_TrfGiantRat;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1207,7 +1207,7 @@ INSTANCE ItSc_TrfGiantBug (C_Item)
 
 	description			=	NAME_SPL_TrfGiantBug;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1238,7 +1238,7 @@ INSTANCE ItSc_TrfWolf (C_Item)
 
 	description			= 	NAME_SPL_TrfWolf;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1268,7 +1268,7 @@ INSTANCE ItSc_TrfWaran (C_Item)
 
 	description			= 	NAME_SPL_TrfWaran;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1298,7 +1298,7 @@ INSTANCE ItSc_TrfSnapper (C_Item)
 
 	description			= NAME_SPL_TrfSnapper;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1328,7 +1328,7 @@ INSTANCE ItSc_TrfWarg (C_Item)
 
 	description			=	NAME_SPL_TrfWarg;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1358,7 +1358,7 @@ INSTANCE ItSc_TrfFireWaran (C_Item)
 
 	description			=  NAME_SPL_TrfFireWaran;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1388,7 +1388,7 @@ INSTANCE ItSc_TrfLurker (C_Item)
 
 	description			=	NAME_SPL_TrfLurker;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1418,7 +1418,7 @@ INSTANCE ItSc_TrfShadowbeast (C_Item)
 
 	description			=	NAME_SPL_TrfShadowbeast;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -1448,7 +1448,7 @@ INSTANCE ItSc_TrfDragonSnapper (C_Item)//Joly:Auf Dracheninsel in Truhe der Schw
 
 	description			=  NAME_SPL_TrfDragonSnapper;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;

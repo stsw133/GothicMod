@@ -153,7 +153,7 @@ instance DIA_Addon_Orlan_Greg		(C_INFO)
 func int DIA_Addon_Orlan_Greg_Condition ()
 {
 	if (SC_SawGregInTaverne == TRUE)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	&& (Npc_KnowsInfo (other, DIA_Orlan_WERBISTDU))
 		{
 			return TRUE;
@@ -805,12 +805,12 @@ func void DIA_Orlan_Perm_Info ()
 {
 	AI_Output (other, self, "DIA_Orlan_Perm_15_00"); //Jak id¹ interesy?
 	
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		AI_Output (self, other, "DIA_Orlan_Perm_05_01"); //Wiesz, bywa³o lepiej.
 		AI_Output (self, other, "DIA_Orlan_Perm_05_02"); //Ludzie niezbyt ochoczo wydaj¹ teraz pieni¹dze.
 	}
-	else if (Kapitel >= 3)
+	else if (Kapitel >= 9)
 	{
 		AI_Output (self, other, "DIA_Orlan_Perm_05_03"); //Mam nadziejê, ¿e czarni magowie wkrótce siê st¹d wynios¹, inaczej bêdê musia³ zamkn¹æ gospodê.
 		AI_Output (self, other, "DIA_Orlan_Perm_05_04"); //Ludzie boj¹ siê tu przychodziæ.

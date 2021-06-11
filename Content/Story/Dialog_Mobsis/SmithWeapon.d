@@ -66,12 +66,12 @@ func void PC_SmithWeapon_1hSwords_Info()
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 40)
 	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 2)
 	{
-		Info_AddChoice (PC_SmithWeapon_1hSwords, "El Bastardo (6 bry³ek ¿elaza)", PC_ItMw_ElBastardo);
+		Info_AddChoice (PC_SmithWeapon_1hSwords, "El Bastardo (5 bry³ek ¿elaza)", PC_ItMw_ElBastardo);
 	};
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 30)
 	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 2)
 	{
-		Info_AddChoice (PC_SmithWeapon_1hSwords, "Rubinowe Ostrze (5 bry³ki ¿elaza)", PC_ItMw_Rubinklinge);
+		Info_AddChoice (PC_SmithWeapon_1hSwords, "Rubinowe Ostrze (4 bry³ki ¿elaza)", PC_ItMw_Rubinklinge);
 	};
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 20)
 	{
@@ -179,9 +179,9 @@ func void PC_ItMw_Schwert4()
 
 func void PC_ItMw_Rubinklinge()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 5)
+	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 5);
+		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
 		CreateInvItem (hero, ItMw_Rubinklinge);
 		if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) < 50)
 		{
@@ -208,9 +208,9 @@ func void PC_ItMw_Rubinklinge()
 
 func void PC_ItMw_ElBastardo()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 6)
+	if (Npc_HasItems(hero, ItMi_IronNugget) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 6);
+		Npc_RemoveInvItems (hero, ItMi_IronNugget, 5);
 		CreateInvItem (hero, ItMw_ElBastardo);
 		if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) < 60)
 		{
@@ -272,15 +272,15 @@ func void PC_SmithWeapon_2hSwords_Info()
 	};
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 25)
 	{
-		Info_AddChoice (PC_SmithWeapon_2hSwords, "Miecz dwurêczny (5 bry³ek ¿elaza)", PC_ItMw_Zweihaender2);
+		Info_AddChoice (PC_SmithWeapon_2hSwords, "Miecz dwurêczny (6 bry³ek ¿elaza)", PC_ItMw_Zweihaender2);
 	};
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 10)
 	{
-		Info_AddChoice (PC_SmithWeapon_2hSwords, "Lekki topór bojowy (3 bry³ki ¿elaza, 2 k³y)", PC_ItMw_Streitaxt1);
+		Info_AddChoice (PC_SmithWeapon_2hSwords, "Lekki topór bojowy (4 bry³ki ¿elaza, 2 k³y)", PC_ItMw_Streitaxt1);
 	};
 	if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) >= 5)
 	{
-		Info_AddChoice (PC_SmithWeapon_2hSwords, "Lekki miecz dwurêczny (4 bry³ki ¿elaza)", PC_ItMw_Zweihaender1);
+		Info_AddChoice (PC_SmithWeapon_2hSwords, "Lekki miecz dwurêczny (5 bry³ek ¿elaza)", PC_ItMw_Zweihaender1);
 	};
 };
 
@@ -292,10 +292,10 @@ func void PC_ItMw_2H_BACK()
 
 func void PC_ItMw_Streitaxt1()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
 	&& (Npc_HasItems(hero, ItAt_Teeth) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
 		Npc_RemoveInvItems (hero, ItAt_Teeth, 2);
 		CreateInvItem (hero, ItMw_Streitaxt1);
 		if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) < 25)
@@ -323,9 +323,9 @@ func void PC_ItMw_Streitaxt1()
 
 func void PC_ItMw_Zweihaender1()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
+	if (Npc_HasItems(hero, ItMi_IronNugget) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
+		Npc_RemoveInvItems (hero, ItMi_IronNugget, 5);
 		CreateInvItem (hero, ItMw_Zweihaender1);
 		if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) < 30)
 		{
@@ -352,9 +352,9 @@ func void PC_ItMw_Zweihaender1()
 
 func void PC_ItMw_Zweihaender2()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 5)
+	if (Npc_HasItems(hero, ItMi_IronNugget) >= 6)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 5);
+		Npc_RemoveInvItems (hero, ItMi_IronNugget, 6);
 		CreateInvItem (hero, ItMw_Zweihaender2);
 		if (Npc_GetTalentValue(hero, NPC_TALENT_SMITH) < 45)
 		{

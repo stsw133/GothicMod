@@ -14,7 +14,7 @@ INSTANCE DIA_Buster_EXIT(C_INFO)
 
 FUNC INT DIA_Buster_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -602,7 +602,7 @@ INSTANCE DIA_Buster_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Buster_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -627,7 +627,7 @@ instance DIA_Buster_SHADOWBEASTS		(C_INFO)
 
 func int DIA_Buster_SHADOWBEASTS_Condition ()
 {
-	if ((Kapitel == 3) || (Kapitel == 4))
+	if ((Kapitel == 9) || (Kapitel == 10))
 	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
 		{
 				return TRUE;
@@ -712,18 +712,18 @@ instance DIA_Buster_BringTrophyShadowbeast		(C_INFO)
 func int DIA_Buster_BringTrophyShadowbeast_Condition ()
 {
 	if (MIS_Buster_KillShadowbeasts_DJG == LOG_RUNNING)
-	&& ((Npc_HasItems (other,ItAt_ShadowHorn))||(PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE))
-	&& ((hero.guild == GIL_SLD) || (hero.guild == GIL_DJG))
-		{
-				return TRUE;
-		};
+	&& (Npc_HasItems(other, ItAt_ShadowHorn) || Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
+	&& (hero.guild == GIL_SLD || hero.guild == GIL_DJG)
+	{
+		return true;
+	};
 };
 
 var int BusterTrophyShadowbeastCounter;
 
 func void DIA_Buster_BringTrophyShadowbeast_Info ()
 {
-	if ((Kapitel >= 5))
+	if ((Kapitel >= 11))
 	{
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_00"); //Mój kupiec wyjecha³ z miasta.
 		AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_15_01"); //Co to ma znaczyæ?
@@ -731,14 +731,14 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		MIS_Buster_KillShadowbeasts_DJG = LOG_SUCCESS; //Joly: Feierabend ab Kapitel 5!!!!!!!
 		B_GivePlayerXP (XP_Ambient);
 	}
-	else if (PLAYER_TALENT_TAKEANIMALTROPHY [TROPHY_ShadowHorn] == FALSE)
+	else if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
 	{
 		AI_Output			(other, self, "DIA_Buster_ANIMALTROPHYSHADOWBEAST_15_03"); //Jak wypatroszyæ cieniostwora?
 		AI_Output			(self, other, "DIA_Buster_ANIMALTROPHYSHADOWBEAST_13_04"); //Nie wiesz? Oj ch³opie, spodziewa³em siê po tobie wiêcej.
 	
 		Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
 		Info_AddChoice	(DIA_Buster_BringTrophyShadowbeast, "Jeszcze do tego wrócimy.", DIA_Buster_BringTrophyShadowbeast_back );
-		Info_AddChoice	(DIA_Buster_BringTrophyShadowbeast, B_BuildLearnString ("Bring es mir bei",B_GetLearnCostTalent (other,NPC_TALENT_HUNTING, TROPHY_ShadowHorn)),  DIA_Buster_BringTrophyShadowbeast_teach );
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else 
 	{
@@ -782,19 +782,6 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 	};
 
 };
-func void DIA_Buster_BringTrophyShadowbeast_teach ()
-{
-	AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_teach_15_00"); //Naucz mnie.
-
-	if (B_TeachPlayerTalentTakeAnimalTrophy (self, other, TROPHY_ShadowHorn))
-		{
-			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_01"); //No to s³uchaj. Zabijasz cieniostwora, a potem ³apiesz praw¹ rêk¹ za róg, najmocniej jak potrafisz.
-			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_02"); //Potem wbijasz nó¿ w jego czo³o i wycinasz bruzdê w ciele dooko³a rogu.
-			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_03"); //Potem u¿ywasz no¿a jak dŸwigni, ¿eby wyrwaæ róg z czaszki i ju¿ jest twój.
-			AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_teach_13_04"); //No, a potem musisz go przynieœæ do mnie. Nie powinieneœ mieæ z tym problemów.
-		};		
-	Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
-};
 
 func void DIA_Buster_BringTrophyShadowbeast_back ()
 {
@@ -827,7 +814,7 @@ INSTANCE DIA_Buster_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Buster_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -853,7 +840,7 @@ INSTANCE DIA_Buster_Perm4 (C_INFO)
 
 FUNC INT DIA_Buster_Perm4_Condition()
 {
-	if (Kapitel >= 4) 
+	if (Kapitel >= 10) 
 	{
 		return TRUE;
 	};
@@ -889,7 +876,7 @@ INSTANCE DIA_Buster_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Buster_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -924,7 +911,7 @@ INSTANCE DIA_Buster_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Buster_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

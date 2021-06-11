@@ -727,7 +727,7 @@ func void B_InitNpcGlobals()
 	RockDragon 		= Hlp_GetNpc (Dragon_Rock);
 	FireDragon 		= Hlp_GetNpc (Dragon_Fire);
 	IceDragon 		= Hlp_GetNpc (Dragon_Ice);
-//	GoldDragon 		= Hlp_GetNpc (Dragon_Gold);
+	GoldDragon 		= Hlp_GetNpc (Dragon_Gold);
 	FireDragonIsland= Hlp_GetNpc (Dragon_Black);
 	UndeadDragon 	= Hlp_GetNpc (Dragon_Undead);
 

@@ -57,7 +57,7 @@ func void Spell_Cast_MysGhost()
 		if (SPL_IsActive_MysGhost == 0)
 		{
 			Wld_PlayEffect ("SPELLFX_MysGhost_GLOW", self, self, 0, 0, 0, false);
-			B_SetGhost(o_hero, 75);
+			B_SetVisibilityPercent(o_hero, 75);
 		};
 		SPL_IsActive_MysGhost = SPL_Time_MysGhost;
 		SPL_AmountToHeal_MysGhost = 0;
@@ -77,7 +77,7 @@ func void Spell_Active_MysGhost()
 		if (SPL_IsActive_MysGhost == 0)
 		{
 			Wld_StopEffect("SPELLFX_MysGhost_GLOW");
-			B_SetGhost(o_hero, 0);
+			B_SetVisibilityPercent(o_hero, 0);
 			
 			self.protection[PROT_FIRE] -= SPL_AmountToProt_MysGhost;
 			SPL_AmountToProt_MysGhost = 0;

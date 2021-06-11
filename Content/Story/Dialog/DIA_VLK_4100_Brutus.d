@@ -14,7 +14,7 @@ INSTANCE DIA_Brutus_EXIT   (C_INFO)
 
 FUNC INT DIA_Brutus_EXIT_Condition()
 {	
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 			return TRUE;
 	};
@@ -92,7 +92,7 @@ instance DIA_Brutus_PRISONER		(C_INFO)
 
 func int DIA_Brutus_PRISONER_Condition ()
 {	
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
 		return TRUE;
@@ -132,7 +132,7 @@ instance DIA_Brutus_PERM		(C_INFO)
 func int DIA_Brutus_PERM_Condition ()
 {	
 	if  Npc_KnowsInfo (hero,DIA_Brutus_PRISONER) 
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
 		return TRUE;
@@ -160,7 +160,7 @@ instance DIA_Brutus_Kasse		(C_INFO)
 func int DIA_Brutus_Kasse_Condition ()
 {	
 	if  Npc_KnowsInfo (hero,DIA_Brutus_PRISONER) 
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
 		return TRUE;
@@ -199,7 +199,7 @@ instance DIA_Brutus_Den		(C_INFO)
 func int DIA_Brutus_Den_Condition ()
 {	
 	if  Npc_KnowsInfo (hero,DIA_Brutus_Kasse) 
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
 		return TRUE;
@@ -336,7 +336,7 @@ INSTANCE DIA_Brutus_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brutus_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -361,7 +361,7 @@ instance DIA_Brutus_DUSCHONWIEDER		(C_INFO)
 
 func int DIA_Brutus_DUSCHONWIEDER_Condition ()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 		&& (NpcObsessedByDMT_Brutus == FALSE)
 	{
 		return TRUE;
@@ -401,7 +401,7 @@ INSTANCE DIA_Brutus_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brutus_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -427,7 +427,7 @@ instance DIA_Brutus_WARUMNICHTARBBEIT		(C_INFO)
 
 func int DIA_Brutus_WARUMNICHTARBBEIT_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 		&& (NpcObsessedByDMT_Brutus == FALSE)
 		&& (MIS_OCGateOpen == FALSE)
 		{
@@ -470,7 +470,7 @@ func int DIA_Brutus_MEATBUGSWEG_Condition ()
 		&& (Npc_IsDead(Meatbug_Brutus2))
 		&& (Npc_IsDead(Meatbug_Brutus3))
 		&& (Npc_IsDead(Meatbug_Brutus4))
-		&& (Kapitel >= 4)
+		&& (Kapitel >= 10)
 		&& (NpcObsessedByDMT_Brutus == FALSE)
 		&& (MIS_OCGateOpen == FALSE)
 		{
@@ -526,7 +526,7 @@ func void DIA_Brutus_PERM4_Info ()
 
 	if 	(
 			(MIS_OCGateOpen == TRUE) 
-			|| ((hero.guild == GIL_KDF)&& (Kapitel >= 5))
+			|| ((hero.guild == GIL_KDF)&& (Kapitel >= 11))
 		)
 		{						
 			B_NpcObsessedByDMT (self);
@@ -622,7 +622,7 @@ INSTANCE DIA_Brutus_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Brutus_KAP5_EXIT_Condition()
 {
-	if (Kapitel >= 5)	
+	if (Kapitel >= 11)	
 	{
 		return TRUE;
 	};

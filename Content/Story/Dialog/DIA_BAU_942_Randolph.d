@@ -37,7 +37,7 @@ func int DIA_Randolph_SchwereLuft_Condition ()
 {	
 	if  !(Npc_IsDead (Alvares))
 	&&  !(Npc_IsDead (Engardo))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -71,7 +71,7 @@ func int DIA_Randolph_HALLO_Condition ()
 {	
 	if  (Npc_IsDead (Alvares))
 	&&  (Npc_IsDead (Engardo))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -115,7 +115,7 @@ func int DIA_Randolph_Baltram_Condition ()
 	&& 	Npc_IsDead (Akil)
 	&& 	Npc_IsDead (Kati)
 	&&  (Lieferung_Geholt == FALSE)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -146,7 +146,7 @@ instance DIA_Randolph_Geschichte		(C_INFO)
 func int DIA_Randolph_Geschichte_Condition ()
 {
 	if 	(Npc_KnowsInfo(other, DIA_Randolph_HALLO))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -189,7 +189,7 @@ instance DIA_Randolph_TAVERNE		(C_INFO)
 func int DIA_Randolph_TAVERNE_Condition ()
 {
 	if 	(Npc_KnowsInfo(other, DIA_Randolph_HALLO))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 			{
 					return TRUE;
 			};
@@ -218,7 +218,7 @@ instance DIA_Randolph_WASISTINTAVERNE		(C_INFO)
 func int DIA_Randolph_WASISTINTAVERNE_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Randolph_TAVERNE))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 		{
 				return TRUE;
 		};
@@ -252,7 +252,7 @@ instance DIA_Randolph_GEGENWEN		(C_INFO)
 func int DIA_Randolph_GEGENWEN_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Randolph_WASISTINTAVERNE))
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 		{
 				return TRUE;
 		};
@@ -288,7 +288,7 @@ func int DIA_Randolph_WASBRAUCHSTDU_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Randolph_GEGENWEN))
 	&& (MIS_Rukhar_Wettkampf == LOG_RUNNING)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 		{
 				return TRUE;
 		};
@@ -320,7 +320,7 @@ func int DIA_Randolph_ICHGEBEDIRGELD_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Randolph_WASBRAUCHSTDU))
 	&& (DIA_Randolph_ICHGEBEDIRGELD_noPerm == FALSE)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 			{
 					return TRUE;
 			};
@@ -372,7 +372,7 @@ instance DIA_Randolph_WETTKAMPFZUENDE		(C_INFO)
 func int DIA_Randolph_WETTKAMPFZUENDE_Condition ()
 {
 	if (MIS_Rukhar_Wettkampf == LOG_SUCCESS)
-	&& (Kapitel < 4)
+	&& (Kapitel < 10)
 		{
 				return TRUE;
 		};
@@ -422,7 +422,7 @@ instance DIA_Randolph_PERM		(C_INFO)
 
 func int DIA_Randolph_PERM_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (NpcObsessedByDMT_Randolph == FALSE)
 		{
 				return TRUE;

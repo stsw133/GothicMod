@@ -229,7 +229,7 @@ FUNC VOID DIA_Jarvis_MissionKO_Info()
 	AI_Output (self, other, "DIA_Jarvis_MissionKO_04_02"); //A jeœli do tego bêdziesz siê trzyma³ zasad pojedynku, to zaskarbisz sobie szacunek pozosta³ych.
 	
 	MIS_Jarvis_SldKO = LOG_RUNNING;
-	self.aivar[AIV_IGNORE_Murder] = TRUE;
+	self.aivar[AIV_IgnoreCrime] = self.aivar[AIV_IgnoreCrime] | IGNORE_Murder;
 	Log_CreateTopic (TOPIC_JarvisSLDKo,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_JarvisSLDKo,LOG_RUNNING);
 	B_LogEntry (TOPIC_JarvisSLDKo,"Jarvis chce przetrzepaæ skórê kilku ch³opakom Sylvia. Kiedy ta sprawa bêdzie ju¿ za³atwiona, udzieli mi swojego poparcia.");
@@ -356,22 +356,19 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 	var int victories;
 	victories = 0;
 	
-	if (Bullco.aivar[AIV_DefeatedByPlayer] == TRUE)
-	|| (Bullco.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Bullco.aivar[AIV_DefeatedByPlayer] > DBP_NONE)
 	{
 		AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_01"); //Pokona³em Bullka.
 		AI_Output (self, other, "DIA_Jarvis_HowManyLeft_04_02"); //S³ysza³em. NieŸle.
 		victories = victories + 1; 
 
 	};
-	if (Rod.aivar[AIV_DefeatedByPlayer] == TRUE)
-	|| (Rod.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Rod.aivar[AIV_DefeatedByPlayer] > DBP_NONE)
 	{
 		AI_Output (other, self, "DIA_Jarvis_HowManyLeft_15_03"); //Rod wygl¹da, jakby przytrafi³ mu siê ma³y wypadek.
 		victories = victories + 1;
 	};
-	if (Sentenza.aivar[AIV_DefeatedByPlayer] == TRUE)
-	|| (Sentenza.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Sentenza.aivar[AIV_DefeatedByPlayer] > DBP_NONE)
 	{
 		if (Npc_KnowsInfo (other, DIA_Sentenza_Hello))
 		{
@@ -385,8 +382,7 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		victories = victories + 1;
 	};
 
-	if (Fester.aivar[AIV_DefeatedByPlayer] == TRUE)
-	|| (Fester.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Fester.aivar[AIV_DefeatedByPlayer] > DBP_NONE)
 	{
 		if (MIS_Fester_KillBugs == LOG_OBSOLETE)
 		{
@@ -399,8 +395,7 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		victories = victories + 1;
 	};
 	
-	if (Raoul.aivar[AIV_DefeatedByPlayer] == TRUE)
-	|| (Raoul.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Raoul.aivar[AIV_DefeatedByPlayer] > DBP_NONE)
 	{
 		if (victories == 0)
 		{
@@ -441,7 +436,7 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		
 		MIS_Jarvis_SldKO = LOG_SUCCESS;
 		
-		self.aivar[AIV_IGNORE_Murder] = FALSE;
+		self.aivar[AIV_IgnoreCrime] -= IGNORE_Murder;
 		
 		B_GivePlayerXP ((XP_Ambient)*victories);
 		B_LogEntry (TOPIC_SLDRespekt,"Jarvis udzieli mi swojego poparcia, jeœli zechcê wst¹piæ w szeregi najemników.");
@@ -484,7 +479,7 @@ FUNC VOID DIA_Jarvis_PERM_Info()
 {	
 	AI_Output (other, self, "DIA_Jarvis_PERM_15_00"); //Jakieœ wieœci?
 	
-	if (Kapitel <= 3)
+	if (Kapitel <= 9)
 	{
 		if (Jarvis_GuildComment == FALSE)
 		{
@@ -506,7 +501,7 @@ FUNC VOID DIA_Jarvis_PERM_Info()
 		};
 	};
 	
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	{
 		if (Jarvis_SylvioComment == FALSE)
 		{

@@ -221,7 +221,7 @@ instance DIA_Garvell_MISSION		(C_INFO)
 func int DIA_Garvell_MISSION_Condition ()
 {	
 	if Npc_KnowsInfo (other, DIA_Garvell_eilig)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};

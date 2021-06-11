@@ -133,7 +133,7 @@ FUNC VOID DIA_MIL_7_STANDARD_Info()
 {	
 	AI_Output (other, self, "DIA_MIL_7_STANDARD_15_00"); //Co s³ychaæ?
 		
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		var int randy;
 		randy = Hlp_Random (2);
@@ -155,12 +155,12 @@ FUNC VOID DIA_MIL_7_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		AI_Output (self,other,"DIA_MIL_7_STANDARD_07_02"); //Czas ju¿, by paladyni zajêli siê rebeli¹ ch³opów. Kto ³amie prawo, powinien ponieœæ tego surowe konsekwencje. Szczególnie teraz, kiedy toczy siê wojna.
 	};
 
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet == LOG_SUCCESS)
 		{
@@ -172,12 +172,12 @@ FUNC VOID DIA_MIL_7_STANDARD_Info()
 		};
 	};
 
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		AI_Output (self,other,"DIA_MIL_7_STANDARD_07_05"); //Niektórzy z najemników opuœcili farmê Onara. Jak widaæ, problem rozwi¹zuje siê sam.
 	};
 	
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	{
 		AI_Output (self,other,"DIA_MIL_7_STANDARD_07_06"); //Pozbyliœmy siê smoków, ale to nie koniec. Nastêpni w kolejce s¹ orkowie. Nied³ugo wszystkim siê zajmiemy!
 	};

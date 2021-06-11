@@ -14,7 +14,7 @@ INSTANCE DIA_Hanna_EXIT(C_INFO)
 
 FUNC INT DIA_Hanna_EXIT_Condition()
 {
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		return TRUE;
 	};	
@@ -223,7 +223,7 @@ INSTANCE DIA_Hanna_Kap3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Hanna_Kap3_EXIT_Condition()
 {
-	if (Kapitel >= 3 )
+	if (Kapitel >= 9 )
 	{
 		return TRUE;
 	};	
@@ -249,7 +249,7 @@ INSTANCE DIA_Hanna_AnyNews(C_INFO)
 };                       
 FUNC INT DIA_Hanna_AnyNews_Condition()
 {
-	if (Kapitel >= 3 )
+	if (Kapitel >= 9 )
 	{
 		return TRUE;
 	};	
@@ -427,9 +427,9 @@ FUNC INT DIA_Hanna_AusKeller_Condition()
 };
 FUNC VOID DIA_Hanna_AusKeller_Info()
 {	
-	if (Cassia.aivar[AIV_KilledByPlayer] == TRUE)
-	|| (Jesper.aivar[AIV_KilledByPlayer] == TRUE)
-	|| (Ramirez.aivar[AIV_KilledByPlayer] == TRUE)
+	if (Cassia.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
+	|| (Jesper.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
+	|| (Ramirez.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
 	{
 		AI_Output (self, other, "DIA_Hanna_Add_17_27"); //Sk¹d... wracasz?
 		AI_Output (other, self, "DIA_Hanna_Add_15_28"); //Znalaz³em ciekaw¹ rzecz w twojej piwnicy...

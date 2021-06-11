@@ -184,7 +184,7 @@ FUNC VOID DIA_Bartok_WannaLearn_Info()
 {	
 	AI_Output (other ,self,"DIA_Bartok_WannaLearn_15_00"); //Mo¿esz nauczyæ mnie czegoœ o polowaniu?
 	AI_Output (self ,other,"DIA_Bartok_WannaLearn_04_01"); //Mogê ci pokazaæ, jak siê cicho skradaæ i pos³ugiwaæ siê ³ukiem.
-	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == FALSE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) == 0)
 	{
 		AI_Output (self ,other,"DIA_Bartok_WannaLearn_04_02"); //Jeœli chcesz siê nauczyæ, jak zdejmowaæ skóry ze zwierz¹t, idŸ do Bospera. To on mnie tego nauczy³.
 	};
@@ -332,7 +332,7 @@ FUNC VOID DIA_Bartok_Zusammen_Info()
 		AI_Output (self ,other,"DIA_Bartok_Zusammen_04_03"); //To znaczy, umiesz zdejmowaæ skórê ze zwierzêcia?
 	};
 	
-	if (PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] == TRUE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) >= 1)
 	{
 		if (Bartok_Later == TRUE)
 		{

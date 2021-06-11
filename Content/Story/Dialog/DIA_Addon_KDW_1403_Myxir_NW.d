@@ -120,7 +120,8 @@ instance DIA_Addon_Myxir_WillYouTeachMe		(C_INFO)
 
 func int DIA_Addon_Myxir_WillYouTeachMe_Condition ()
 {
-	if (Npc_KnowsInfo (other, DIA_Addon_Myxir_WasMachstDu))
+	if (Npc_KnowsInfo(other, DIA_Addon_Myxir_WasMachstDu))
+	&& (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == false)
 	{
 		return TRUE;
 	};
@@ -154,82 +155,36 @@ instance DIA_Addon_Myxir_Teach		(C_INFO)
 	description	 = 	"Naucz mnie tego dziwnego jêzyka.";
 };
 
-var int DIA_Addon_Myxir_Teach_NoPerm;
-
 func int DIA_Addon_Myxir_Teach_Condition ()
 {
 	if (Myxir_Addon_TeachPlayer == TRUE)
-	&& (DIA_Addon_Myxir_Teach_NoPerm == FALSE)
+	&& (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == false)
 		{
 			return TRUE;
 		};
 };
 
-func void DIA_Addon_Myxir_Teach_Info ()
+func void DIA_Addon_Myxir_Teach_Info()
 {
-	B_DIA_Addon_Myxir_TeachRequest ();
+	AI_Output (other, self, "DIA_Addon_Myxir_TeachRequest_15_00"); //Naucz mnie tego dziwnego jêzyka.
 	
-	if ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
-	|| ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
-	|| ( PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)	
-	{
-		Info_ClearChoices (DIA_Addon_Myxir_Teach);
-		Info_AddChoice (DIA_Addon_Myxir_Teach,DIALOG_BACK,DIA_Addon_Myxir_Teach_BACK);
-	};
+	Info_ClearChoices (DIA_Addon_Myxir_Teach);
+	Info_AddChoice (DIA_Addon_Myxir_Teach, DIALOG_BACK, DIA_Addon_Myxir_Teach_BACK);
+	Info_AddChoice (DIA_Addon_Myxir_Teach, B_BuildLearnString(PRINT_LearnTalent_Language, B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true)),DIA_Addon_Myxir_Teach_LANGUAGE);
+};
 
-	if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == FALSE)
-	{
-		B_DIA_Addon_Myxir_TeachL1 ();
-		Info_AddChoice (DIA_Addon_Myxir_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_1 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_1)),DIA_Addon_Myxir_Teach_LANGUAGE_1);
-	}	
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == FALSE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	{
-		B_DIA_Addon_Myxir_TeachL2 ();
-		Info_AddChoice (DIA_Addon_Myxir_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_2 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_2)),DIA_Addon_Myxir_Teach_LANGUAGE_2);
-	}	
-	else if (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == FALSE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	&& (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-	{
-		B_DIA_Addon_Myxir_TeachL3 ();
-		Info_AddChoice (DIA_Addon_Myxir_Teach,B_BuildLearnString (NAME_ADDON_LEARNLANGUAGE_3 , B_GetLearnCostTalent (other, NPC_TALENT_LANGUAGE, LANGUAGE_3)),DIA_Addon_Myxir_Teach_LANGUAGE_3);
-	}
-	else 
-	{
-		B_DIA_Addon_Myxir_TeachNoMore ();
-		DIA_Addon_Myxir_Teach_NoPerm = TRUE;
-	};
-};
-func void DIA_Addon_Myxir_Teach_LANGUAGE_X ()
-{
-	B_DIA_Addon_Myxir_Teach_LANGUAGE_X ();
-};
-FUNC VOID DIA_Addon_Myxir_Teach_BACK ()
+func void DIA_Addon_Myxir_Teach_BACK()
 {
 	Info_ClearChoices (DIA_Addon_Myxir_Teach);
 };
-FUNC VOID DIA_Addon_Myxir_Teach_LANGUAGE_1 ()
+func void DIA_Addon_Myxir_Teach_LANGUAGE()
 {
-	if B_TeachPlayerTalentForeignLanguage  (self, other, LANGUAGE_1)
+	if (B_TeachTalents(self, other, NPC_TALENT_LANGUAGE, true))
 	{
-		DIA_Addon_Myxir_Teach_LANGUAGE_X ();
-	};	
-	Info_ClearChoices (DIA_Addon_Myxir_Teach);
-};
-FUNC VOID DIA_Addon_Myxir_Teach_LANGUAGE_2 ()
-{
-	if B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_2)
-	{
-		DIA_Addon_Myxir_Teach_LANGUAGE_X ();
-	};	
-	Info_ClearChoices (DIA_Addon_Myxir_Teach);
-};
-FUNC VOID DIA_Addon_Myxir_Teach_LANGUAGE_3 ()
-{
-	if	B_TeachPlayerTalentForeignLanguage (self, other, LANGUAGE_3)
-	{
-		DIA_Addon_Myxir_Teach_LANGUAGE_X ();
+		AI_Output (self, other, "DIA_Addon_Myxir_TeachL1_12_01"); //Teksty pisane w jêzyku wieœniaków traktuj¹ zwykle o sprawach przyziemnych: pracy, mi³oœci, zaopatrzeniu czy ¿ywnoœci.
+		AI_Output (self, other, "DIA_Addon_Myxir_TeachL2_12_01"); //Teksty pisane w jêzyku wojowników dotycz¹ zwykle wojny i broni. Nauczysz siê wielu przydatnych rzeczy.
+		AI_Output (self, other, "DIA_Addon_Myxir_TeachL3_12_01"); //W jêzyku kap³anów spisane s¹ wszystkie œwiête pisma objaœniaj¹ce historiê i magiê budowniczych.
+		AI_Output (self, other, "DIA_Addon_Myxir_Teach_LANGUAGE_X_12_00"); //IdŸ i sprawdŸ swoj¹ now¹ wiedzê. Przekonasz siê, ¿e pisma budowniczych nie stanowi¹ ju¿ dla ciebie zagadki.
 	};	
 	Info_ClearChoices (DIA_Addon_Myxir_Teach);
 };

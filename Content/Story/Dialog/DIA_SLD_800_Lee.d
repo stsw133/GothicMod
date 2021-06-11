@@ -12,7 +12,7 @@ INSTANCE DIA_Lee_EXIT   (C_INFO)
 };
 FUNC INT DIA_Lee_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -74,7 +74,7 @@ FUNC INT DIA_Lee_PMSchulden_Condition()
 
 FUNC VOID DIA_Lee_PMSchulden_Info()
 {
-				if (Kapitel >= 3)
+				if (Kapitel >= 9)
 				&& (Lee_Teleport == FALSE)
 				{
 					B_Lee_Teleport();
@@ -208,7 +208,7 @@ FUNC INT DIA_Lee_PETZMASTER_Condition()
 };
 FUNC VOID DIA_Lee_PETZMASTER_Info()
 {
-				if (Kapitel >= 3)
+				if (Kapitel >= 9)
 				&& (Lee_Teleport == FALSE)
 				{
 					B_Lee_Teleport();
@@ -824,7 +824,7 @@ INSTANCE DIA_Lee_RescueGorn (C_INFO)
 FUNC INT DIA_Lee_RescueGorn_Condition()
 {
 	if (Hagen_BringProof == TRUE)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (other.guild == GIL_SLD)
 	{
 		return TRUE;
@@ -854,7 +854,7 @@ INSTANCE DIA_Lee_Success (C_INFO)
 FUNC INT DIA_Lee_Success_Condition()
 {
 	if (MIS_RescueGorn == LOG_SUCCESS)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	&& (other.guild == GIL_SLD)
 	{
 		return TRUE;
@@ -883,7 +883,7 @@ INSTANCE DIA_Lee_AboutGorn (C_INFO)
 };
 FUNC INT DIA_Lee_AboutGorn_Condition()
 {
-	if (Kapitel < 3) 
+	if (Kapitel < 9) 
 	&& (Npc_KnowsInfo (other,DIA_Lee_RescueGorn) == FALSE)
 	{
 		return TRUE;
@@ -928,7 +928,7 @@ INSTANCE DIA_Lee_WegenBullco (C_INFO)
 };
 FUNC INT DIA_Lee_WegenBullco_Condition()
 {
-	if (Kapitel < 4) 
+	if (Kapitel < 10) 
 	&& (MIS_Pepe_KillWolves == LOG_SUCCESS)
 	&& (Onar_WegenPepe == TRUE)
 	{
@@ -972,7 +972,7 @@ instance DIA_Lee_Report (C_INFO)
 FUNC INT DIA_Lee_Report_Condition()
 {
 	if (EnterOW_Kapitel >= 8)
-	&& (Kapitel <= 3)
+	&& (Kapitel <= 9)
 	{
 		return TRUE;
 	};
@@ -1013,7 +1013,7 @@ instance DIA_Lee_ArmorM (C_INFO)
 };                       
 FUNC INT DIA_Lee_ArmorM_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& (other.guild == GIL_SLD)
 	&& (Lee_Give_Sld_M == FALSE)
 	{
@@ -1105,7 +1105,7 @@ INSTANCE DIA_Lee_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lee_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -1130,7 +1130,7 @@ INSTANCE DIA_Lee_Teleport(C_INFO)
 };                       
 FUNC INT DIA_Lee_Teleport_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (Npc_IsInState (self, ZS_Talk))
 	&& (Lee_Teleport == FALSE)
 	{
@@ -1157,7 +1157,7 @@ instance DIA_Lee_ArmorH (C_INFO)
 };                       
 FUNC INT DIA_Lee_ArmorH_Condition()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& ( (other.guild == GIL_SLD) || (other.guild == GIL_DJG) )
 	{
 		return TRUE;
@@ -1229,7 +1229,7 @@ INSTANCE DIA_Lee_Richter (C_INFO)
 };                       
 FUNC INT DIA_Lee_Richter_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& ((hero.guild == GIL_SLD)	|| (hero.guild == GIL_DJG))
 	&& ((Npc_IsDead(Richter))== FALSE)
 	{
@@ -1293,7 +1293,7 @@ INSTANCE DIA_Lee_RichterBeweise (C_INFO)
 };                       
 FUNC INT DIA_Lee_RichterBeweise_Condition()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (MIS_Lee_JudgeRichter == LOG_RUNNING)
 	&& (Npc_HasItems (other,ItWr_RichterKomproBrief_MIS))
 	&& ((hero.guild == GIL_SLD)	|| (hero.guild == GIL_DJG))
@@ -1350,7 +1350,7 @@ INSTANCE DIA_Lee_TalkAboutBennet(C_INFO)
 FUNC INT DIA_Lee_TalkAboutBennet_Condition()
 {
 	if (MIS_RescueBennet == LOG_RUNNING)
-	&& (KApitel == 3)
+	&& (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -1542,7 +1542,7 @@ INSTANCE DIA_Lee_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lee_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1566,7 +1566,7 @@ instance DIA_Lee_CanTeach		(C_INFO)
 };
 func int DIA_Lee_CanTeach_Condition ()
 {	
-	if Kapitel >= 4
+	if Kapitel >= 10
 	&& Lee_TeachPlayer == FALSE
 	{
 		return TRUE;
@@ -1751,7 +1751,7 @@ INSTANCE DIA_Lee_KAP4_Perm(C_INFO)
 };                       
 FUNC INT DIA_Lee_KAP4_Perm_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -1788,7 +1788,7 @@ INSTANCE DIA_Lee_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lee_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -2130,7 +2130,7 @@ INSTANCE DIA_Lee_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Lee_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

@@ -210,7 +210,7 @@ INSTANCE DIA_MiltenOW_Gorn(C_INFO)
 FUNC INT DIA_MiltenOW_Gorn_Condition()
 {	
 	if (KnowsAboutGorn == TRUE)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -243,7 +243,7 @@ INSTANCE DIA_MiltenOW_Preis(C_INFO)
 FUNC INT DIA_MiltenOW_Preis_Condition()
 {	
 	if (MIS_RescueGorn == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -273,7 +273,7 @@ INSTANCE DIA_MiltenOW_Mehr(C_INFO)
 FUNC INT DIA_MiltenOW_Mehr_Condition()
 {	
 	if (MIS_RescueGorn == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Npc_HasItems (other, ItMi_Gold) < 1000) 
 	&& Npc_KnowsInfo (other, DIA_MiltenOW_Preis) 
 	{
@@ -341,7 +341,7 @@ FUNC INT DIA_MiltenOW_Versteck_Condition()
 	if (GornsTreasure == TRUE)
 	&& (Npc_HasItems (other, ItMi_GornsTreasure_MIS ) <= 0)
 	&& (Gorns_Beutel == FALSE)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -373,7 +373,7 @@ INSTANCE DIA_MiltenOW_Frei(C_INFO)
 FUNC INT DIA_MiltenOW_Frei_Condition()
 {	
 	if (MIS_RescueGorn == LOG_SUCCESS)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -383,7 +383,7 @@ FUNC VOID DIA_MiltenOW_Frei_Info()
 	AI_Output (other,self ,"DIA_MiltenOW_Frei_15_00");//Uwolni³em Gorna.
 	AI_Output (self ,other,"DIA_MiltenOW_Frei_03_01");//Dobra robota. Zastanówmy siê, co dalej.
 };
-/*
+
 // ************************************************************
 // 		Lehren
 // ************************************************************
@@ -400,7 +400,7 @@ INSTANCE DIA_MiltenOW_Lehren(C_INFO)
 FUNC INT DIA_MiltenOW_Lehren_Condition()
 {	
 	if (other.guild == GIL_KDF)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -448,135 +448,6 @@ FUNC VOID DIA_MiltenOW_TeachCircle2_Info()
 	};
 };
 
-
-// ************************************************************
-// 		Teach
-// ************************************************************
-INSTANCE DIA_MiltenOW_Teach(C_INFO)
-{
-	npc			= PC_Mage_OW;
-	nr			= 90;
-	condition	= DIA_MiltenOW_Teach_Condition;
-	information	= DIA_MiltenOW_Teach_Info;
-	permanent	= TRUE;
-	description = "Chcê siê nauczyæ nowych zaklêæ.";
-};                       
-
-FUNC INT DIA_MiltenOW_Teach_Condition()
-{	
-	if (other.guild == GIL_KDF)
-	&& Npc_KnowsInfo (other,DIA_MiltenOW_Lehren)
-	&& (Kapitel == 2)
-	{
-		return TRUE;
-	};
-}; 
-FUNC VOID DIA_MiltenOW_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_MiltenOW_Teach_15_00");//Chcê siê nauczyæ nowych zaklêæ.
-	
-	if  (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) >= 2)
-	{
-		Info_ClearChoices (DIA_MiltenOW_Teach);
-		Info_AddChoice (DIA_MiltenOW_Teach,DIALOG_BACK,DIA_MiltenOW_Teach_BACK);
-		
-		if (PLAYER_TALENT_RUNES [SPL_WINDFIST] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenOW_Teach, B_BuildLearnString (NAME_SPL_WINDFIST, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_WINDFIST)) ,DIA_MiltenOW_Teach_Windfist);
-		};
-		if (PLAYER_TALENT_RUNES [SPL_InstantFireball] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenOW_Teach, B_BuildLearnString (NAME_SPL_InstantFireball, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_InstantFireball)) ,DIA_MiltenOW_Teach_Feuerball);
-		};
-		if (PLAYER_TALENT_RUNES [SPL_Icebolt] == FALSE) 
-		{
-			Info_AddChoice	(DIA_MiltenOW_Teach, B_BuildLearnString (NAME_SPL_Icebolt, B_GetLearnCostTalent (other, NPC_TALENT_RUNES, SPL_Icebolt)) ,DIA_MiltenOW_Teach_Eispfeil);
-		};
-	}
-	else
-	{
-		AI_Output (self ,other,"DIA_MiltenOW_Teach_03_01");//Nie pozna³eœ jeszcze drugiego krêgu magii. Nie mogê ciê niczego nauczyæ.
-	};
-};	
-FUNC VOID DIA_MiltenOW_Teach_BACK()
-{
-	Info_ClearChoices (DIA_MiltenOW_Teach);
-};
-FUNC VOID DIA_MiltenOW_Teach_WINDFIST()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_WINDFIST);	
-};
-FUNC VOID DIA_MiltenOW_Teach_Feuerball()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_InstantFireball);	
-};
-FUNC VOID DIA_MiltenOW_Teach_Eispfeil()
-{
-	B_TeachPlayerTalentRunes (self, other, SPL_Icebolt);	
-};
-//*********************************************************************
-//	Info TEACH
-//*********************************************************************
-instance DIA_MiltenOW_Mana		(C_INFO)
-{
-	npc		  	 = 	PC_Mage_OW;
-	nr			 = 	100;
-	condition	 = 	DIA_MiltenOW_Mana_Condition;
-	information	 = 	DIA_MiltenOW_Mana_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê zwiêkszyæ moj¹ magiczn¹ moc.";
-};
-func int DIA_MiltenOW_Mana_Condition ()
-{	
-	if (other.guild == GIL_KDF)
-	&& Npc_KnowsInfo (other,DIA_MiltenOW_Lehren)
-	&& (Kapitel == 2)
-	{
-		return TRUE;
-	};
-};
-func void DIA_MiltenOW_Mana_Info ()
-{
-	AI_Output (other, self, "DIA_MiltenOW_Mana_15_00"); //Chcê zwiêkszyæ moj¹ magiczn¹ moc.
-	
-	Info_ClearChoices   (DIA_MiltenOW_Mana);
-	Info_AddChoice 		(DIA_MiltenOW_Mana, DIALOG_BACK, DIA_MiltenOW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenOW_Mana_1);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenOW_Mana_5);
-	
-};
-func void DIA_MiltenOW_Mana_BACK()
-{
-	if (other.attribute[ATR_MANA_MAX] >= T_MED)
-	{
-		AI_Output (self, other, "DIA_MiltenOW_Mana_03_00"); //Twoja magiczna moc i tak jest ogromna. Obawiam siê, ¿e nie mogê ci pomóc.
-	};
-	Info_ClearChoices (DIA_MiltenOW_Mana);
-};
-func void DIA_MiltenOW_Mana_1()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MED);
-	
-	Info_ClearChoices   (DIA_MiltenOW_Mana);
-	
-	Info_AddChoice 		(DIA_MiltenOW_Mana, DIALOG_BACK, DIA_MiltenOW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenOW_Mana_1);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenOW_Mana_5);
-	
-	
-};
-func void DIA_MiltenOW_Mana_5()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MED);
-	
-	Info_ClearChoices   (DIA_MiltenOW_Mana);
-	
-	Info_AddChoice 		(DIA_MiltenOW_Mana, DIALOG_BACK, DIA_MiltenOW_Mana_BACK);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))		,DIA_MiltenOW_Mana_1);
-	Info_AddChoice		(DIA_MiltenOW_Mana, B_BuildLearnString(PRINT_LearnMANA5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_MiltenOW_Mana_5);
-	
-};
-*/
 // ************************************************************
 // 		Perm
 // ************************************************************
@@ -591,7 +462,7 @@ INSTANCE DIA_MiltenOW_Perm(C_INFO)
 };                       
 FUNC INT DIA_MiltenOW_Perm_Condition()
 {	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& (Npc_KnowsInfo (other, DIA_MiltenOW_Frei) == FALSE)
 	{
 		return TRUE;
@@ -617,7 +488,7 @@ INSTANCE DIA_MiltenOW_Plan(C_INFO)
 };                       
 FUNC INT DIA_MiltenOW_Plan_Condition()
 {	
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& Npc_KnowsInfo (other, DIA_MiltenOW_Frei) 
 	{
 		return TRUE;

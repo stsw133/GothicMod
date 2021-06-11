@@ -265,56 +265,6 @@ func VOID DIA_Addon_Francis_Buch_Info()
 	AI_StopProcessInfos (self);
 };
 
-// ------------------------------------------------------------
-// 			  				PICK POCKET
-// ------------------------------------------------------------
-instance DIA_Francis_PICKPOCKET (C_INFO)
-{
-	npc			= PIR_1350_Addon_Francis;
-	nr			= 900;
-	condition	= DIA_Francis_PICKPOCKET_Condition;
-	information	= DIA_Francis_PICKPOCKET_Info;
-	permanent	= TRUE;
-	description = "(Es wäre einfach seinen Schlüssel zu stehlen)";
-};                       
-func INT DIA_Francis_PICKPOCKET_Condition()
-{
-	if (Npc_GetTalentSkill (other,NPC_TALENT_PICKPOCKET) == 1) 
-	&& (self.aivar[AIV_PlayerHasPickedMyPocket] == FALSE)
-	&& (Npc_HasItems (self, ITKE_Greg_ADDON_MIS) >= 1)
-	&& (other.attribute[ATR_DEXTERITY] >= (40 - Theftdiff))
-	{
-		return TRUE;
-	};
-};
-func VOID DIA_Francis_PICKPOCKET_Info()
-{	
-	Info_ClearChoices	(DIA_Francis_PICKPOCKET);
-	Info_AddChoice		(DIA_Francis_PICKPOCKET, DIALOG_BACK 		,DIA_Francis_PICKPOCKET_BACK);
-	Info_AddChoice		(DIA_Francis_PICKPOCKET, DIALOG_PICKPOCKET	,DIA_Francis_PICKPOCKET_DoIt);
-};
-func void DIA_Francis_PICKPOCKET_DoIt()
-{
-	if (other.attribute[ATR_DEXTERITY] >= 40)
-	{
-		B_GiveInvItems (self,other , ITKE_Greg_ADDON_MIS, 1);
-		self.aivar[AIV_PlayerHasPickedMyPocket] = TRUE;
-		B_GivePlayerXP (XP_Ambient);
-		Info_ClearChoices (DIA_Francis_PICKPOCKET);
-	}
-	else
-	{
-		AI_StopProcessInfos	(self);
-		B_Attack (self, other, AR_Theft, 1); //AR_Theft führt zu NEWS!
-	};
-	Info_ClearChoices (DIA_Francis_PICKPOCKET);
-};
-func void DIA_Francis_PICKPOCKET_BACK()
-{
-	Info_ClearChoices (DIA_Francis_PICKPOCKET);
-};
-
-
 // ************************************************************
 // 			  		Wenn von Greg weggeschickt 
 // ************************************************************

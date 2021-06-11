@@ -67,8 +67,8 @@ INSTANCE ITWr_Addon_Health_04		(C_Item)
 func void Use_Heilrezept_04 ()
 {
 		var int nDocID;
-		
-		if Npc_IsPlayer (self)
+		/*
+		if (Npc_IsPlayer(self))
 		{
 			if (PLAYER_TALENT_ALCHEMY[POTION_Health_03] == TRUE)
 			{
@@ -77,6 +77,7 @@ func void Use_Heilrezept_04 ()
 				B_LogEntry (TOPIC_TalentAlchemy,"Do przygotowania mikstury leczniczej potrzebne s¹ 3 esencje lecznicze oraz 1 rdest polny.");
 			};
 		};
+		*/
 		nDocID = 	Doc_Create		()			  ;							// DocManager
 					Doc_SetPages	( nDocID,  1 	);                         //wieviel Pages
 					Doc_SetPage 	( nDocID,  0, "letters.TGA"  , 0 		);
@@ -125,8 +126,8 @@ INSTANCE ITWr_Addon_Mana_04		(C_Item)
 func void Use_Manarezept_04 ()
 {
 		var int nDocID;
-		
-		if Npc_IsPlayer (self)
+		/*
+		if (Npc_IsPlayer(self))
 		{
 			if (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
 			{
@@ -135,6 +136,7 @@ func void Use_Manarezept_04 ()
 				B_LogEntry (TOPIC_TalentAlchemy,"Do przygotowania mikstury many potrzebne s¹ 3 esencje many oraz 1 rdest polny.");
 			};
 		};
+		*/
 		nDocID = 	Doc_Create		()			  ;							// DocManager
 					Doc_SetPages	( nDocID,  1 	);                         //wieviel Pages
 					Doc_SetPage 	( nDocID,  0, "letters.TGA"  , 0 		);

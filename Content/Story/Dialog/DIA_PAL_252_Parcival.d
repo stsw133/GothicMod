@@ -13,7 +13,7 @@ INSTANCE DIA_Parcival_EXIT   (C_INFO)
 
 FUNC INT DIA_Parcival_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 			return TRUE;
 	};
@@ -71,7 +71,7 @@ instance DIA_Parcival_Diego		(C_INFO)
 func int DIA_Parcival_Diego_Condition ()	
 {	
 	if (SearchForDiego == LOG_RUNNING)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -148,7 +148,7 @@ instance DIA_Parcival_DRAGONS		(C_INFO)
 func int DIA_Parcival_DRAGONS_Condition ()
 {
 	if Npc_KnowsInfo (hero,DIA_Parcival_DRAGON)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -179,7 +179,7 @@ func int DIA_Parcival_BRAVE_Condition ()
 {	
 	if Npc_IsInState (self, ZS_Talk)
 	&& Npc_KnowsInfo (hero,DIA_Parcival_DRAGONS)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	&& (Parcival_BRAVE_LaberCount <= 6)
 	{
 		return TRUE;
@@ -241,7 +241,7 @@ INSTANCE DIA_Parcival_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Parcival_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -267,7 +267,7 @@ instance DIA_Parcival_ALLESKLAR		(C_INFO)
 
 func int DIA_Parcival_ALLESKLAR_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 		&& 	(DIA_Parcival_ALLESKLAR_NervCounter < 3)
 		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 		{
@@ -323,7 +323,7 @@ INSTANCE DIA_Parcival_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Parcival_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -349,7 +349,7 @@ instance DIA_Parcival_AnyNews		(C_INFO)
 
 func int DIA_Parcival_AnyNews_Condition ()
 {	
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 		&& (Npc_KnowsInfo(other, DIA_Parcival_DRAGON))
 	{
 		return TRUE;
@@ -513,7 +513,7 @@ instance DIA_Parcival_PERMKAP4		(C_INFO)
 
 func int DIA_Parcival_PERMKAP4_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 		&& (Npc_KnowsInfo(other, DIA_Parcival_AnyNews))
 		{
 				return TRUE;
@@ -550,7 +550,7 @@ INSTANCE DIA_Parcival_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Parcival_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -617,7 +617,7 @@ INSTANCE DIA_Parcival_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Parcival_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

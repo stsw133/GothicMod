@@ -66,7 +66,7 @@ instance Give_Talents (C_Item)
 	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 3);
 	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 3);
 	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 3);
-	Npc_SetTalentSkill (hero, NPC_TALENT_WRITING, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 3);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_LANGUAGE, 1);
 	

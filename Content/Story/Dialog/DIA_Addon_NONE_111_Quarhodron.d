@@ -42,9 +42,7 @@ func int DIA_Addon_Quarhodron_Hello_Condition ()
 
 func void DIA_Addon_Quarhodron_Hello_Info ()
 {
-	IF (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_1] == TRUE)
-	|| (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_2] == TRUE)
-	|| (PLAYER_TALENT_FOREIGNLANGUAGE[LANGUAGE_3] == TRUE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == true)
 	{
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_00"); //Dlaczego zak³ócasz mój spokój, stra¿niku?
 		AI_Output	(self, other, "DIA_Addon_Quarhodron_Hello_11_01"); //Powiedz mi, z czym do mnie przychodzisz?

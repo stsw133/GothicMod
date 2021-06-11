@@ -82,9 +82,9 @@ const int AIV_VictoryXPGiven				=	15;
 /// ------ LoadGame ------
 const int AIV_LoadGame						=	16;
 
-/// ------ RESERVED ------
-const int AIV_Reserved_17					=	17;
-const int AIV_Reserved_18					=	18;
+/// ------ Teach & trade ------
+const int AIV_CanTeach						=	17;
+const int AIV_CanTrade						=	18;
 
 /// ------ Spells ------
 const int AIV_SpellLevel					=	19;
@@ -293,12 +293,8 @@ const int AIV_IgnoreDisguise				=	55;
 const int	IGNORE_Armor				= 1 << 0;
 const int	IGNORE_FakeGuild			= 1 << 1;
 
-const int AIV_IGNORE_Murder					= 54;
-const int AIV_IGNORE_Theft					= 55;
-const int AIV_IGNORE_Sheepkiller			= 56;
-
 /// ------ RESERVED ------
-const int AIV_Reserved_56					=	56;
+const int AIV_Reserved_56					=	56;	///
 
 /// ------ ToughGuy IGNORIERT Attack-Crime ------
 const int AIV_ToughGuy						=	57;
@@ -323,36 +319,15 @@ const int AIV_LastFightComment				=	64;
 /// ------ diverse ZS ------
 const int AIV_StateTime						=	65;
 
-// ------ ZS_Dead ------
-const int AIV_KilledByPlayer				= 18;
-
-const int AIV_IgnoresFakeGuild				= 67;
-
 /// ------ AIV_Dist ------
 const int AIV_Dist							=	66;
-
-const int AIV_Reserved_67					=	67;
+const int AIV_Reserved_67					=	67;	///
 
 /// ------ AIV_Story ------
 const int AIV_NoFightParker					=	68;
 const int AIV_NpcIsRanger					=	69;
 const int AIV_StoryBandit					=	70;
 const int AIV_StoryBandit_Esteban			=	71;
-
-const int AIV_IgnoresArmor					= 55;
-const int AIV_MM_ShrinkState 				= 95;
-
-// ------ ZS_Whirlwind --------
-const int AIV_WhirlwindStateTime			= 96;	//added by kairo
-
-// ------ ZS_Inflate --------
-const int AIV_InflateStateTime				= 97;	//added by kairo
-
-// ------ ZS_Swarm --------
-const int AIV_SwarmStateTime				= 98;	//added by kairo
-
-// ------ ZS_SuckEnergy	--------
-const int AIV_SuckEnergyStateTime			= 99;	//added by kairo
 
 /// ------ TA_Stand_Eating ------
 const int AIV_Food							=	72;
@@ -385,28 +360,29 @@ const int AIV_TeethTex	 					=	78;
 const int AIV_PartyMember					=	79;
 const int AIV_FollowDist					=	80;
 
+/// ------ States ------
+const int AIV_MM_ShrinkState 				=	81;
+const int AIV_WhirlwindStateTime			=	82;
+const int AIV_InflateStateTime				=	83;
+const int AIV_SwarmStateTime				=	84;
+const int AIV_SuckEnergyStateTime			=	85;
+
 /// ------ NEW ------
-const int AIV_Love							=	81; /// pomiêdzy 0 (0%) a 100.000 (100%), jeœli dziewczyna ma poni¿ej 0 to nie bêdzie z tob¹ rozmawiaæ
-const int AIV_Power 						=	82;	/// bazowy poziom mocy
-const int AIV_GuildLevel					=	83;	/// poziom zaawansowania gildii (np. 0 = stra¿nik miejski, 1 = gwardzista królewski || 0 = mag, 1 = arcymag ...)
-const int AIV_Location						=	84; /// okreœla do jakiej lokacji nale¿y postaæ
-const int AIV_ActiveRoutine					=	85; /// numer aktywnej rutyny (zmieniaj¹cej siê losowo ka¿dej pó³nocy)
+const int AIV_Love							=	86; /// pomiêdzy 0 (0%) a 100.000 (100%), jeœli dziewczyna ma poni¿ej 0 to nie bêdzie z tob¹ rozmawiaæ
+const int AIV_Reserved_87 					=	87;
+const int AIV_GuildLevel					=	88;	/// poziom zaawansowania gildii (np. 0 = stra¿nik miejski, 1 = gwardzista królewski || 0 = mag, 1 = arcymag ...)
+const int AIV_Reserved_89					=	89;
+const int AIV_Reserved_90					=	90;
 
-const int AIV_ComboHit						=	86; /// okreœla który cios z kolei odda³eœ (zeruje siê gdy nie jesteœ w walce)
-const int AIV_TrueDamage					=	87; /// okreœla ile dodatkowych nieuchronnych obra¿eñ zadaje postaæ
-const int AIV_LifeSteal						=	88; /// okreœla % i punkty leczenia podczas atakowania
-//const int AIV_Penetrated					=	89; /// okreœla ile punktów przebicia pancerza zosta³o zaaplikowanych
-//const int AIV_mPenetrated					=	90; /// okreœla ile punktów przebicia odpornoœci zosta³o zaaplikowanych
+const int AIV_ComboHit						=	91; /// okreœla który cios z kolei odda³eœ (zeruje siê gdy nie jesteœ w walce)
+const int AIV_TrueDamage					=	92; /// okreœla ile dodatkowych nieuchronnych obra¿eñ zadaje postaæ
+const int AIV_LifeSteal						=	93; /// okreœla % i punkty leczenia podczas atakowania
 
-const int AIV_CanTeach						=	91; /// okreœla czy postaæ jest w stanie uczyæ umiejêtnoœci lub atrybutów
-const int AIV_CanTrade						=	92; /// okreœla czy postaæ jest w stanie handlowaæ towarami
+/// ------ Magic stones ------
+const int AIV_TelStone						=	94; /// okreœla który kamieñ teleportacji ma za³o¿ony NPC
+const int AIV_TrfStone						=	95; /// okreœla który kamieñ transformacji ma za³o¿ony NPC
+const int AIV_SumStone						=	96; /// okreœla który kamieñ przyzwania ma za³o¿ony NPC
 
-/// ------ MagicStones ------
-const int AIV_TelStone						=	93; /// okreœla który kamieñ teleportacji ma za³o¿ony NPC
-const int AIV_TrfStone						=	94; /// okreœla który kamieñ transformacji ma za³o¿ony NPC
-const int AIV_SumStone						=	95; /// okreœla który kamieñ przyzwania ma za³o¿ony NPC
-
-const int AIV_Reserved_96					=	96;
 const int AIV_Reserved_97					=	97;
 const int AIV_Reserved_98					=	98;
 const int AIV_Reserved_99					=	99;
@@ -595,7 +571,7 @@ const int HP_PER_LEVEL		=	0;	//12
 const int LP_PER_LEVEL		=	10;
 const int GOLD_PER_LP		=	20;
 
-const int HP_PER_LP			=	4;
+const int HP_PER_LP			=	5;
 const int AR_PER_LEVEL		=	5;
 const int MR_PER_LEVEL		=	3;
 
@@ -610,7 +586,6 @@ const int NPCTYPE_BL_AMBIENT	=	5;
 const int NPCTYPE_TAL_AMBIENT	=	6;
 const int NPCTYPE_BL_MAIN		=	7;
 const int NPCTYPE_LOVE			=	8;
-const int NPCTYPE_VILLAIN		=	9;
 
 ///******************************************************************************************
 
@@ -631,10 +606,10 @@ const int MOBSI_SharpWeapon		=	11;
 const int MOBSI_UseStove		=	12;
 const int MOBSI_UsePan			=	13;
 const int MOBSI_UseCauldron		=	14;
-const int MOBSI_PrayAdanos		=	15;
-const int MOBSI_MagicStone		=	16;
-const int MOBSI_Wood			=	17;
-const int MOBSI_Tabak			=	18;
+const int MOBSI_MagicStone		=	15;
+const int MOBSI_Wood			=	16;
+const int MOBSI_Tabak			=	17;
+const int MOBSI_Paper			=	18;
 const int MOBSI_MakeAlcohol		=	19;
 
 var int PLAYER_MOBSI_PRODUCTION;
@@ -650,26 +625,12 @@ const int BodyTex_Dressed			=	10;
 
 const int BodyTex_MAX			=	16;
 
-const int BodyTex_P			= 0;	//Pale
-const int BodyTex_N			= 1;	//Normal
-const int BodyTex_L			= 2;	//Latino
-const int BodyTex_B			= 3;	//Black 	- die gleichen Kennungen haben auch die Gesichter (zum direkten Vergleich)
-const int BodyTexBabe_P		= 4;	//Pale Babe
-const int BodyTexBabe_N		= 5;	//Normal Babe	
-const int BodyTexBabe_L		= 6;	//Latino Babe 
-const int BodyTexBabe_B		= 7;	//Black Babe   //Frauen werden auch mit den "Männer"-Konstanten angegeben, dann vom Script +4 addiert, d.h. diese Konstanten werden nicht gebraucht
-
-//---------ADD ON----------------------
-const int BodyTex_T	= 10; //tätowierte psionikerhaut
-const int BodyTexBabe_F	= 11; //Fellkragen Babe 
-const int BodyTexBabe_S	= 12;//das kleine Schwarze 
-
 /// ------ Skin ------
-const int BodySkin_N				=	0;	/// Normal	/	Forest Elf	/	Red Demon		/	Gray Furry
-const int BodySkin_P				=	1;	/// Pale	/	Snow Elf	/	Gray Demon		/	White Furry
-const int BodySkin_L				=	2;	/// Latino	/	Latino Elf	/	Orange Demon	/	Brown Furry
-const int BodySkin_B				=	3;	/// Black	/	Dark Elf	/	Dark-red Demon	/	Black Furry
-const int BodySkin_A				=	4;	/// Asian 	/	Ancient Elf	/	Green Demon		/	Gold Furry	/	(non-avaible yet)
+const int BodySkin_N				=	0;	/// Normal
+const int BodySkin_P				=	1;	/// Pale
+const int BodySkin_L				=	2;	/// Latino
+const int BodySkin_B				=	3;	/// Black
+const int BodySkin_A				=	4;	/// Asian (non-avaible yet)
 
 const int BodySkin_MAX			=	5;
 
@@ -905,186 +866,3 @@ const int FaceBabe_Nurse90			=	190;	/// N - - -
 
 /// ------ FaceMAX ------
 const int FaceTex_MAX			=	200;
-
-
-// ------- Gesichter für Männer ------
-const int Face_N_Gomez 				=	0	;
-const int Face_N_Scar 				= 	1	;
-const int Face_N_Raven				= 	2	;
-const int Face_N_Bullit				= 	3	;	//zu lieb!
-const int Face_B_Thorus				= 	4	;
-const int Face_N_Corristo			= 	5	;
-const int Face_N_Milten				= 	6	;
-const int Face_N_Bloodwyn			= 	7	;	//zu lieb!
-const int Face_L_Scatty				= 	8	;
-const int Face_N_YBerion			= 	9	;
-const int Face_N_CoolPock			= 	10	;
-const int Face_B_CorAngar			= 	11	;
-const int Face_B_Saturas			= 	12	;
-const int Face_N_Xardas				= 	13	;
-const int Face_N_Lares				= 	14	;
-const int Face_L_Ratford			= 	15	;
-const int Face_N_Drax				= 	16	;	//Buster
-const int Face_B_Gorn				= 	17	;
-const int Face_N_Player				= 	18	;
-const int Face_P_Lester				= 	19	;
-const int Face_N_Lee				= 	20	;
-const int Face_N_Torlof				= 	21	;
-const int Face_N_Mud				= 	22	;
-const int Face_N_Ricelord			= 	23	;
-const int Face_N_Horatio			= 	24	;
-const int Face_N_Richter			= 	25	;
-const int Face_N_Cipher_neu			= 	26	;
-const int Face_N_Homer				= 	27	;	//Headmesh thief
-const int Face_B_Cavalorn			= 	28	;
-const int Face_L_Ian				= 	29	;
-const int Face_L_Diego				= 	30	;
-const int Face_N_MadPsi				= 	31	;
-const int Face_N_Bartholo			= 	32	;
-const int Face_N_Snaf				= 	33	;
-const int Face_N_Mordrag			= 	34	;
-const int Face_N_Lefty				= 	35	;
-const int Face_N_Wolf				= 	36	;
-const int Face_N_Fingers			= 	37	;
-const int Face_N_Whistler			= 	38	;
-const int Face_P_Gilbert			= 	39	;
-const int Face_L_Jackal				= 	40	;
-
-//Pale
-const int Face_P_ToughBald			= 	41	;
-const int Face_P_Tough_Drago		= 	42	;
-const int Face_P_Tough_Torrez		= 	43	;
-const int Face_P_Tough_Rodriguez	= 	44	;
-const int Face_P_ToughBald_Nek		= 	45	;
-const int Face_P_NormalBald 		= 	46	;
-const int Face_P_Normal01			= 	47	;
-const int Face_P_Normal02			= 	48	;
-const int Face_P_Normal_Fletcher	= 	49	;
-const int Face_P_Normal03			= 	50	;
-const int Face_P_NormalBart01		= 	51	;
-const int Face_P_NormalBart_Cronos	= 	52	;
-const int Face_P_NormalBart_Nefarius= 	53	;
-const int Face_P_NormalBart_Riordian= 	54	;
-const int Face_P_OldMan_Gravo		= 	55	;
-const int Face_P_Weak_Cutter		= 	56	;
-const int Face_P_Weak_Ulf_Wohlers	= 	57	;
-
-//Normal
-const int Face_N_Important_Arto		= 	58	;
-const int Face_N_ImportantGrey		= 	59	;
-const int Face_N_ImportantOld		= 	60	;
-const int Face_N_Tough_Lee_ähnlich	= 	61	;
-const int Face_N_Tough_Skip			= 	62	;
-const int Face_N_ToughBart01		= 	63	;
-const int Face_N_Tough_Okyl			= 	64	;
-const int Face_N_Normal01			= 	65	;
-const int Face_N_Normal_Cord		= 	66	;
-const int Face_N_Normal_Olli_Kahn	= 	67	;	
-const int Face_N_Normal02			= 	68	;
-const int Face_N_Normal_Spassvogel	= 	69	;
-const int Face_N_Normal03			= 	70	;
-const int Face_N_Normal04			= 	71	;
-const int Face_N_Normal05			= 	72	;
-const int Face_N_Normal_Stone		= 	73	;
-const int Face_N_Normal06			= 	74	;
-const int Face_N_Normal_Erpresser	= 	75	;
-const int Face_N_Normal07			= 	76	;
-const int Face_N_Normal_Blade		= 	77	;
-const int Face_N_Normal08			= 	78	;
-const int Face_N_Normal14			= 	79	;
-const int Face_N_Normal_Sly			= 	80	;
-const int Face_N_Normal16			= 	81	;
-const int Face_N_Normal17			= 	82	;
-const int Face_N_Normal18			= 	83	;
-const int Face_N_Normal19			= 	84	;
-const int Face_N_Normal20			= 	85	;
-const int Face_N_NormalBart01		= 	86	;
-const int Face_N_NormalBart02		= 	87	;
-const int Face_N_NormalBart03		= 	88	;
-const int Face_N_NormalBart04		= 	89	;
-const int Face_N_NormalBart05		= 	90	;
-const int Face_N_NormalBart06		= 	91	;
-const int Face_N_NormalBart_Senyan	= 	92	;
-const int Face_N_NormalBart08		= 	93	;
-const int Face_N_NormalBart09		= 	94	;
-const int Face_N_NormalBart10		= 	95	;
-const int Face_N_NormalBart11		= 	96	;
-const int Face_N_NormalBart12		= 	97	;
-const int Face_N_NormalBart_Dexter	= 	98	;
-const int Face_N_NormalBart_Graham	= 	99	;
-const int Face_N_NormalBart_Dusty	= 	100	;
-const int Face_N_NormalBart16		= 	101	;
-const int Face_N_NormalBart17		= 	102	;
-const int Face_N_NormalBart_Huno	= 	103	;
-const int Face_N_NormalBart_Grim	= 	104	;
-const int Face_N_NormalBart20		= 	105	;
-const int Face_N_NormalBart21		=	106	;
-const int Face_N_NormalBart22		= 	107	;
-const int Face_N_OldBald_Jeremiah	= 	108	;
-const int Face_N_Weak_Ulbert		= 	109	;
-const int Face_N_Weak_BaalNetbek	= 	110	;
-const int Face_N_Weak_Herek			= 	111	;
-const int Face_N_Weak04				= 	112	;
-const int Face_N_Weak05				= 	113	;
-const int Face_N_Weak_Orry			= 	114	;
-const int Face_N_Weak_Asghan		= 	115	;
-const int Face_N_Weak_Markus_Kark	= 	116	;
-const int Face_N_Weak_Cipher_alt	= 	117	;
-const int Face_N_NormalBart_Swiney 	= 	118	;
-const int Face_N_Weak12				= 	119	;
-
-//Latinos
-const int Face_L_ToughBald01		= 	120	;
-const int Face_L_Tough01			= 	121	;
-const int Face_L_Tough02			= 	122	;
-const int Face_L_Tough_Santino		= 	123	;
-const int Face_L_ToughBart_Quentin	=	124	;
-const int Face_L_Normal_GorNaBar	= 	125	;
-const int Face_L_NormalBart01		= 	126	;
-const int Face_L_NormalBart02		= 	127	;
-const int Face_L_NormalBart_Rufus	= 	128	;
-
-//Black
-const int Face_B_ToughBald			= 	129	;
-const int Face_B_Tough_Pacho		= 	130	;
-const int Face_B_Tough_Silas		= 	131	;
-const int Face_B_Normal01			= 	132	;
-const int Face_B_Normal_Kirgo		= 	133	;
-const int Face_B_Normal_Sharky		= 	134	;
-const int Face_B_Normal_Orik		= 	135	;
-const int Face_B_Normal_Kharim		= 	136	;
-
-// ------ Gesichter für Frauen ------
-
-const int FaceBabe_N_BlackHair		= 	137	;
-const int FaceBabe_N_Blondie		= 	138	;
-const int FaceBabe_N_BlondTattoo	= 	139	;
-const int FaceBabe_N_PinkHair		= 	140	;
-const int FaceBabe_L_Charlotte		= 	141	;
-const int FaceBabe_B_RedLocks		= 	142	;
-const int FaceBabe_N_HairAndCloth	= 	143	;
-//
-const int FaceBabe_N_WhiteCloth		= 	144	;
-const int FaceBabe_N_GreyCloth		= 	145	;
-const int FaceBabe_N_Brown			= 	146	;
-const int FaceBabe_N_VlkBlonde		= 	147	;
-const int FaceBabe_N_BauBlonde		= 	148 ;
-const int FaceBabe_N_YoungBlonde	= 	149	;
-const int FaceBabe_N_OldBlonde		= 	150 ;
-const int FaceBabe_P_MidBlonde		= 	151 ;
-const int FaceBabe_N_MidBauBlonde	= 	152 ;
-const int FaceBabe_N_OldBrown		= 	153 ;
-const int FaceBabe_N_Lilo			= 	154 ;
-const int FaceBabe_N_Hure			= 	155 ;
-const int FaceBabe_N_Anne			= 	156 ;
-const int FaceBabe_B_RedLocks2		= 	157	;
-const int FaceBabe_L_Charlotte2		= 	158 ;
-
-
-//-----------------ADD ON---------------------------------
-const int Face_N_Fortuno		= 	159;
-
-//Piraten
-const int Face_P_Greg		= 	160;
-const int Face_N_Pirat01	= 	161;
-const int Face_N_ZombieMud	= 	162;

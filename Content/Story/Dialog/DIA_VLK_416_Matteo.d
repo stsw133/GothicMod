@@ -101,7 +101,7 @@ FUNC VOID DIA_Matteo_TRADE_Info()
 {	
 	B_GiveTradeInv (self);
 	AI_Output (other,self ,"DIA_Matteo_TRADE_15_00"); //Poka¿ mi swoje towary.
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	&& (Matteo_TradeNewsPermanent == FALSE)
 	{
@@ -110,7 +110,7 @@ FUNC VOID DIA_Matteo_TRADE_Info()
 	
 		Matteo_TradeNewsPermanent = 1;
 	};
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	&& (Matteo_TradeNewsPermanent < 2)
 	{
 		AI_Output (self,other,"DIA_Matteo_TRADE_09_03"); //Wygl¹da na to, ¿e tym razem paladyni traktuj¹ to naprawdê powa¿nie. Wycofali nawet swoich stra¿ników ze statku.

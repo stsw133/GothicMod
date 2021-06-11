@@ -19,7 +19,7 @@ instance DIA_Hodges_Kap1_EXIT		(C_INFO)
 
 func int DIA_Hodges_Kap1_EXIT_Condition ()
 {
-	if (Kapitel <= 1)
+	if (Kapitel <= 7)
 	{
 		return TRUE;
 	};	
@@ -47,7 +47,7 @@ func int DIA_Hodges_HALLO_Condition ()
 {
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
-	&& ((Kapitel != 3)
+	&& ((Kapitel != 9)
 	|| (MIS_RescueBennet == LOG_SUCCESS))
 	{
 		return TRUE;
@@ -77,7 +77,7 @@ instance DIA_Hodges_TellAboutFarm	(C_INFO)
 
 func int DIA_Hodges_TellAboutFarm_Condition ()
 {
-	if ((Kapitel != 3)
+	if ((Kapitel != 9)
 	|| (MIS_RescueBennet == LOG_SUCCESS))
 	{
 		return TRUE;
@@ -120,7 +120,7 @@ func int DIA_Hodges_AboutSld_Condition ()
 {
 	if (hero.guild != GIL_SLD) 
 	&& (hero.guild != GIL_DJG)
-	&& ((Kapitel != 3)
+	&& ((Kapitel != 9)
 	|| (MIS_RescueBennet == LOG_SUCCESS))
 	{
 		return TRUE;
@@ -185,7 +185,7 @@ instance DIA_Hodges_Kap2_EXIT		(C_INFO)
 
 func int DIA_Hodges_Kap2_EXIT_Condition ()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -217,7 +217,7 @@ instance DIA_Hodges_Kap3_EXIT		(C_INFO)
 
 func int DIA_Hodges_Kap3_EXIT_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		return TRUE;
 	};
@@ -243,7 +243,7 @@ instance DIA_Hodges_DontWork		(C_INFO)
 
 func int DIA_Hodges_DontWork_Condition ()
 {
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	&& (MIS_RescueBennet != LOG_SUCCESS)
 	{
 		return TRUE;
@@ -380,7 +380,7 @@ instance DIA_Hodges_Kap4_EXIT		(C_INFO)
 
 func int DIA_Hodges_Kap4_EXIT_Condition ()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 	{
 		return TRUE;
 	};
@@ -412,7 +412,7 @@ instance DIA_Hodges_Kap5_EXIT		(C_INFO)
 
 func int DIA_Hodges_Kap5_EXIT_Condition ()
 {
-	if (Kapitel == 5)
+	if (Kapitel == 11)
 	{
 		return TRUE;
 	};

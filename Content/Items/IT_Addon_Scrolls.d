@@ -27,7 +27,7 @@ INSTANCE ItSc_Geyser (C_Item)
 
 	description			=	NAME_SPL_Geyser;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -60,7 +60,7 @@ INSTANCE ItSc_Icelance (C_Item)
 
 	description			=	NAME_SPL_Icelance;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -93,7 +93,7 @@ INSTANCE ItSc_Waterfist (C_Item)
 
 	description			=	NAME_SPL_Waterfist;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -126,7 +126,7 @@ INSTANCE ItSc_Thunderstorm (C_Item)
 
 	description			=	NAME_SPL_Thunderstorm;
 
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -159,7 +159,7 @@ INSTANCE ItSc_Whirlwind (C_Item)
 
 	description			=	NAME_SPL_Whirlwind;
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;			
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -195,7 +195,7 @@ INSTANCE ItSc_Water01 (C_Item)
 
 	description			=	"W01";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -228,7 +228,7 @@ INSTANCE ItSc_Water02 (C_Item)
 
 	description			=	"W02";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -261,7 +261,7 @@ INSTANCE ItSc_Water03 (C_Item)
 
 	description			=	"W03";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -294,7 +294,7 @@ INSTANCE ItSc_Water04 (C_Item)
 
 	description			=	"W04";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -327,7 +327,7 @@ INSTANCE ItSc_Water05 (C_Item)
 
 	description			=	"W05";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -360,7 +360,7 @@ INSTANCE ItSc_Water06 (C_Item)
 
 	description			=	"W06";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -393,7 +393,7 @@ INSTANCE ItSc_Water07 (C_Item)
 
 	description			=	"W07";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -426,7 +426,7 @@ INSTANCE ItSc_Water08 (C_Item)
 
 	description			=	"W08";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -459,7 +459,7 @@ INSTANCE ItSc_Water09 (C_Item)
 
 	description			=	"W09";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -492,7 +492,7 @@ INSTANCE ItSc_Water10 (C_Item)
 
 	description			=	"W10";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -525,7 +525,7 @@ INSTANCE ItSc_Water11 (C_Item)
 
 	description			=	"W11";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -558,7 +558,7 @@ INSTANCE ItSc_Water12 (C_Item)
 
 	description			=	"W12";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -591,7 +591,7 @@ INSTANCE ItSc_Water13 (C_Item)
 
 	description			=	"W13";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -624,7 +624,7 @@ INSTANCE ItSc_Water14 (C_Item)
 
 	description			=	"W14";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -657,7 +657,7 @@ INSTANCE ItSc_Water15 (C_Item)
 
 	description			=	"W15";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;
@@ -690,7 +690,7 @@ INSTANCE ItSc_Water16 (C_Item)
 
 	description			=	"W16";
 	
-	TEXT	[0]			=	Name_MageScroll	;
+	TEXT	[0]			=	"Zwój"	;
 	
 	TEXT	[1]			=	NAME_Mana_needed;		
 	COUNT	[1]			=	SPL_Cost_Scroll;

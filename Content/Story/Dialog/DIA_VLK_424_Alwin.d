@@ -204,11 +204,11 @@ FUNC VOID DIA_Alwin_Endlos_Info()
 		AI_Output (self ,other,"DIA_Alwin_Endlos_12_01"); //Fellan ci¹gle ha³asuje i to je doprowadza do szaleñstwa. Któregoœ dnia ca³kiem zeœwiruj¹.
 		
 	}
-	else if (Kapitel <= 2)
+	else if (Kapitel <= 8)
 	{
 		AI_Output (self ,other,"DIA_Alwin_Endlos_12_02"); //Owce jedz¹ i robi¹ siê coraz grubsze. Ca³kiem jak moja ¿ona. HA HA HA.
 	}
-	else if (Kapitel == 3)
+	else if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet != LOG_SUCCESS)
 		{
@@ -225,7 +225,7 @@ FUNC VOID DIA_Alwin_Endlos_Info()
 			AI_Output (self ,other,"DIA_Alwin_Endlos_12_10"); //Ale wszystko siê jakoœ u³o¿y³o. Lucy bêdzie zadowolona.
 		};
 	}
-	else if (Kapitel == 4)
+	else if (Kapitel == 10)
 	{
 		AI_Output (self ,other,"DIA_Alwin_Endlos_12_11"); //Po pewnym czasie obserwowanie, jak owce jedz¹, staje siê doœæ nudne.
 	}

@@ -38,7 +38,7 @@ func void DIA_PAL_297_TRESPAS_Info ()
 {
 	AI_Output (other, self, "DIA_PAL_297_TRESPAS_15_00"); //Jak leci?
 	
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	{
 		AI_Output (self, other, "DIA_PAL_297_TRESPAS_04_01"); //Te tereny s¹ wyj¹tkowo niebezpieczne, musisz wiêc na siebie uwa¿aæ. Nie chcielibyœmy, by coœ ci siê sta³o.
 	}

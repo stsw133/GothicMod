@@ -83,11 +83,8 @@ INSTANCE ITAR_Governor (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -123,11 +120,8 @@ INSTANCE ITAR_JUDGE (C_Item)
 
 	description				=	name;
 
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -163,11 +157,8 @@ INSTANCE ITAR_VLK_L (C_Item)
 
 	description				=	name;
 
-	TEXT[1]					=	NAME_Prot_Edge;		
+	TEXT[1]					=	NAME_Prot_Physical;		
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;	
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -203,11 +194,8 @@ INSTANCE ITAR_VLK_M (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -243,10 +231,8 @@ INSTANCE ITAR_VLK_H (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
 	TEXT[4]					=	NAME_Prot_Magic;		
@@ -279,11 +265,8 @@ instance ITAR_VlkBabe_L (C_Item)
 
 	description				=	name;
 
-	TEXT[1]					=	NAME_Prot_Edge;		
+	TEXT[1]					=	NAME_Prot_Physical;		
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;	
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -319,11 +302,8 @@ INSTANCE ITAR_VlkBabe_M (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -359,10 +339,8 @@ INSTANCE ITAR_VlkBabe_H (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
 	TEXT[4]					=	NAME_Prot_Magic;		
@@ -395,11 +373,8 @@ INSTANCE ITAR_BAU_L (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				=	 protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -435,11 +410,8 @@ INSTANCE ITAR_BAU_M (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -475,10 +447,8 @@ INSTANCE ITAR_BauBabe_L (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
 	TEXT[4]					=	NAME_Prot_Magic;		
@@ -511,10 +481,8 @@ INSTANCE ITAR_BauBabe_M (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
 	TEXT[4]					=	NAME_Prot_Magic;		
@@ -550,11 +518,8 @@ INSTANCE ITAR_DJG_Crawler (C_Item)
 	
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -625,11 +590,8 @@ INSTANCE ITAR_KDF_L (C_Item)
 	
 	description				=	name;
 
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -700,11 +662,8 @@ INSTANCE ITAR_KDF_H (C_Item)
 	
 	description				=	name;
 
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				=	 protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -773,11 +732,8 @@ INSTANCE ITAR_BDT_M (C_Item)
 	description				=	name;
 	
 	TEXT[0]					= 	"Kto nosi tê zbrojê, nale¿y do bandytów.";
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -814,11 +770,8 @@ INSTANCE ITAR_BDT_H (C_Item)
 	description				=	name;
 
 	TEXT[0]					= 	"Kto nosi tê zbrojê, nale¿y do bandytów.";
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -854,10 +807,8 @@ INSTANCE ITAR_XARDAS (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
 	TEXT[4]					=	NAME_Prot_Magic;		
@@ -890,11 +841,8 @@ INSTANCE ITAR_KDW_H (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];
@@ -930,11 +878,8 @@ instance ITAR_Prisoner (C_Item)
 
 	description				=	name;
 	
-	TEXT[1]					=	NAME_Prot_Edge;			
+	TEXT[1]					=	NAME_Prot_Physical;			
 	COUNT[1]				= 	protection	[PROT_EDGE];
-	
-	TEXT[2]					=	NAME_Prot_Point;		
-	COUNT[2]				= 	protection	[PROT_POINT];
 	
 	TEXT[3] 				=	NAME_Prot_Fire;			
 	COUNT[3]				= 	protection	[PROT_FIRE];

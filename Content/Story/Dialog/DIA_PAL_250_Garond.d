@@ -13,7 +13,7 @@ INSTANCE DIA_garond_EXIT(C_INFO)
 
 FUNC INT DIA_Garond_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -300,7 +300,7 @@ INSTANCE DIA_Garond_Hello (C_INFO)
 
 FUNC INT DIA_Garond_Hello_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& Npc_IsInState (self, ZS_Talk)
 	{
 		return TRUE;
@@ -343,7 +343,7 @@ FUNC INT DIA_Garond_NeedProof_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Garond_Hello))
 	&& (MIS_OLDWORLD == LOG_RUNNING)
-	&&	(Kapitel == 2)
+	&&	(Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -391,7 +391,7 @@ INSTANCE DIA_Garond_Why (C_INFO)
 FUNC INT DIA_Garond_Why_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -419,7 +419,7 @@ INSTANCE DIA_Garond_Equipment (C_INFO)
 FUNC INT DIA_Garond_Equipment_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& ((other.guild == GIL_KDF)
 	||  (other.guild == GIL_MIL))
 	{
@@ -459,7 +459,7 @@ INSTANCE DIA_Garond_zahlen (C_INFO)
 FUNC INT DIA_Garond_zahlen_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (other.guild == GIL_SLD)
 	{
 		return TRUE;
@@ -488,7 +488,7 @@ INSTANCE DIA_Garond_Wo (C_INFO)
 FUNC INT DIA_Garond_Wo_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	
 	{
 		return TRUE;
@@ -530,7 +530,7 @@ INSTANCE DIA_Garond_Fajeth (C_INFO)
 FUNC INT DIA_Garond_Fajeth_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Fajeth_Ore == TRUE)
 	{
 		return TRUE;
@@ -570,7 +570,7 @@ INSTANCE DIA_Garond_Silvestro (C_INFO)
 FUNC INT DIA_Garond_Silvestro_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Silvestro_Ore == TRUE)
 	
 	{
@@ -610,7 +610,7 @@ INSTANCE DIA_Garond_Marcos (C_INFO)
 FUNC INT DIA_Garond_Marcos_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Marcos_Ore == TRUE)
 	{
 		return TRUE;
@@ -662,7 +662,7 @@ INSTANCE DIA_Garond_Success (C_INFO)
 FUNC INT DIA_Garond_Success_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Ore_Counter >= 3)
 	{
 		return TRUE;
@@ -730,7 +730,7 @@ INSTANCE DIA_Garond_Running (C_INFO)
 FUNC INT DIA_Garond_Running_Condition()
 {
 	if (MIS_ScoutMine == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Ore_Counter < 3)
 	{
 		return TRUE;
@@ -772,7 +772,7 @@ INSTANCE DIA_Garond_Gorn (C_INFO)
 FUNC INT DIA_Garond_Gorn_Condition()
 {
 	if (Npc_KnowsInfo (other, DIA_MiltenOW_Gorn))
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Npc_KnowsInfo (other, DIA_Garond_NeedProof))
 	{
 		return TRUE;
@@ -806,7 +806,7 @@ INSTANCE DIA_Garond_Pay (C_INFO)
 FUNC INT DIA_Garond_Pay_Condition()
 {
 	if (MIS_RescueGorn == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (Garond_Kerkerauf == FALSE)
 	{
 		return TRUE;
@@ -844,7 +844,7 @@ INSTANCE DIA_Garond_Perm2 (C_INFO)
 FUNC INT DIA_Garond_Perm2_Condition()
 {
 	if Npc_KnowsInfo (other,DIA_Garond_Success)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -878,7 +878,7 @@ INSTANCE DIA_Garond_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Garond_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -903,7 +903,7 @@ instance DIA_Garond_WASGIBTSNEUES		(C_INFO)
 
 func int DIA_Garond_WASGIBTSNEUES_Condition ()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -939,7 +939,7 @@ INSTANCE DIA_Garond_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Garond_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -964,7 +964,7 @@ instance DIA_Garond_BACKINKAP4		(C_INFO)
 
 func int DIA_Garond_BACKINKAP4_Condition ()
 {
-	if (Kapitel == 4)
+	if (Kapitel == 10)
 		{
 				return TRUE;
 		};
@@ -1028,7 +1028,7 @@ instance DIA_Garond_DragonPlettBericht		(C_INFO)
 var int DIA_Garond_DragonPlettBericht_NoPerm;
 func int DIA_Garond_DragonPlettBericht_Condition ()
 {
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	&& (Npc_KnowsInfo(other, DIA_Garond_BACKINKAP4))
 	&& (DIA_Garond_DragonPlettBericht_NoPerm == FALSE)
 	{
@@ -1144,7 +1144,7 @@ func int DIA_Garond_AllDragonDead_Condition ()
 {
 	if (MIS_AllDragonsDead == TRUE)
 	&& (DIA_Garond_DragonPlettBericht_NoPerm == TRUE)	
-	&& (Kapitel >= 4)
+	&& (Kapitel >= 10)
 	{
 			return TRUE;
 	};
@@ -1178,7 +1178,7 @@ instance DIA_Garond_JanBecomeSmith		(C_INFO)
 func int DIA_Garond_JanBecomeSmith_Condition ()
 {
 	if (MIS_JanBecomesSmith == LOG_RUNNING)
-		&& (Kapitel >= 4)
+		&& (Kapitel >= 10)
 	{
 			return TRUE;
 	};
@@ -1255,7 +1255,7 @@ INSTANCE DIA_Garond_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Garond_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1281,7 +1281,7 @@ instance DIA_Garond_PERM5		(C_INFO)
 
 func int DIA_Garond_PERM5_Condition ()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -1326,7 +1326,7 @@ INSTANCE DIA_Garond_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Garond_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

@@ -185,11 +185,11 @@ func int B_TeachTalents (var C_NPC slf, var C_NPC oth, var int talent, var int l
 		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_2, -1, -1, FONT_SCREEN, 2);	}
 		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_3, -1, -1, FONT_SCREEN, 2);	};
 	}
-	else if (talent == NPC_TALENT_WRITING)
+	else if (talent == NPC_TALENT_ENCHANTING)
 	{
-		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Writing_1, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Writing_2, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Writing_3, -1, -1, FONT_SCREEN, 2);	};
+		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_1, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_2, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_3, -1, -1, FONT_SCREEN, 2);	};
 	};
 	
 	return true;

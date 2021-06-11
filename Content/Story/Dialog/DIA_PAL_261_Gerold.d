@@ -13,7 +13,7 @@ INSTANCE DIA_Gerold_EXIT(C_INFO)
 
 FUNC INT DIA_Gerold_EXIT_Condition()
 {
-	if (Kapitel < 4)
+	if (Kapitel < 10)
 	{
 		return TRUE;
 	};
@@ -37,7 +37,7 @@ INSTANCE DIA_Gerold_Hallo (C_INFO)
 };                       
 FUNC INT DIA_Gerold_Hallo_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	{
 		return TRUE;
 	};
@@ -64,7 +64,7 @@ INSTANCE DIA_Gerold_Jail (C_INFO)
 };                       
 FUNC INT DIA_Gerold_Jail_Condition()
 {
-	if (Kapitel == 2)
+	if (Kapitel == 8)
 	&& Npc_KnowsInfo (other, DIA_Gerold_Hallo)
 	&&   (Garond_Kerkerauf == FALSE)
 	{
@@ -94,7 +94,7 @@ INSTANCE DIA_Gerold_Ausnahme (C_INFO)
 FUNC INT DIA_Gerold_Ausnahme_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Gerold_Jail))
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&&   (Garond_Kerkerauf == FALSE)
 	{
 		return TRUE;
@@ -120,7 +120,7 @@ INSTANCE DIA_Gerold_Gold (C_INFO)
 FUNC INT DIA_Gerold_Gold_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Gerold_Ausnahme))
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&&   (Garond_Kerkerauf == FALSE)
 	{
 		return TRUE;
@@ -150,7 +150,7 @@ FUNC INT DIA_Gerold_Deal_Condition()
 	
 	IF 	 (MIS_RescueGorn == LOG_RUNNING)
 	&&	 (Npc_HasItems (other,ItWr_LetterForGorn_MIS) >=1)
-	&& 	 (Kapitel == 2)
+	&& 	 (Kapitel == 8)
 	&&   (Garond_Kerkerauf == FALSE)
 	{
 		return TRUE;
@@ -189,7 +189,7 @@ FUNC INT DIA_Gerold_Stuff_Condition()
 {
 	IF (Npc_HasItems (other,ItWr_LetterForGorn_MIS) >=1 )
 	&&	Npc_KnowsInfo (other,DIA_Gerold_Deal)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (DIA_Gerold_Stuff_permanent == FALSE)
 	{
 		return TRUE;
@@ -258,7 +258,7 @@ var int DIA_Gerold_Antwort_permanent;
 FUNC INT DIA_Gerold_Antwort_Condition()
 {	
 	if (DIA_Gerold_Stuff_permanent == TRUE)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (DIA_Gerold_Antwort_permanent == FALSE)
 	{
 		return TRUE;	
@@ -307,7 +307,7 @@ INSTANCE DIA_Gerold_SetGornFree (C_INFO)
 FUNC INT DIA_Gerold_SetGornFree_Condition()
 {	
 	if (Garond_Kerkerauf == TRUE)
-	&& (Kapitel == 2)	
+	&& (Kapitel == 8)	
 	{
 		return TRUE;	
 	};
@@ -336,7 +336,7 @@ INSTANCE DIA_Gerold_Perm (C_INFO)
 };                       
 FUNC INT DIA_Gerold_Perm_Condition()
 {
-	if (Kapitel < 4)
+	if (Kapitel < 10)
 	&& Npc_KnowsInfo (other,DIA_Gerold_Gold)
 	{
 		return TRUE;
@@ -371,7 +371,7 @@ INSTANCE DIA_Gerold_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Gerold_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -398,7 +398,7 @@ instance DIA_Gerold_KAP4_ALLESRUHIG		(C_INFO)
 
 func int DIA_Gerold_KAP4_ALLESRUHIG_Condition ()
 {
-	if (Kapitel >= 4)	
+	if (Kapitel >= 10)	
 	{
 		return TRUE;
 	};
@@ -466,7 +466,7 @@ instance DIA_Gerold_FOOD		(C_INFO)
 func int DIA_Gerold_FOOD_Condition ()
 {
 	if (Npc_GetDistToWP(self,"OC_MAGE_IN")<500) 
-		&& (Kapitel >= 4)
+		&& (Kapitel >= 10)
 		{
 				return TRUE;
 		};
@@ -698,7 +698,7 @@ INSTANCE DIA_Gerold_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Gerold_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -734,7 +734,7 @@ INSTANCE DIA_Gerold_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Gerold_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

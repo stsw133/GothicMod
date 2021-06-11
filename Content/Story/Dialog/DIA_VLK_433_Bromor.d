@@ -319,7 +319,7 @@ instance DIA_Bromor_Obsession		(C_INFO)
 
 func int DIA_Bromor_Obsession_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (NpcObsessedByDMT_Bromor == FALSE)
 	&& (hero.guild == GIL_KDF)
 		{

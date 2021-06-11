@@ -54,7 +54,7 @@ INSTANCE DIA_Pedro_Wurst(C_INFO)
 
 FUNC INT DIA_Pedro_Wurst_Condition()
 {
-	if (Kapitel == 1)
+	if (Kapitel == 7)
 	&& (MIS_GoraxEssen == LOG_RUNNING)
 	&& (Npc_HasItems (self, ItFo_SchafsWurst ) == 0)
 	&& (Npc_HasItems (other, ItFo_SchafsWurst ) >= 1)
@@ -192,7 +192,7 @@ func int DIA_Addon_Pedro_Statuette_Condition ()
 	if (Npc_HasItems (other,ItMi_LostInnosStatue_Daron))
 	&& (MIS_Addon_Daron_GetStatue == LOG_RUNNING)
 	&& (Npc_KnowsInfo (other,DIA_Pedro_Rules))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};

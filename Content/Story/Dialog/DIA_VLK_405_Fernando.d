@@ -115,7 +115,7 @@ FUNC INT DIA_Fernando_Minental_Condition()
 {
 	if (NpcObsessedByDMT_Fernando == FALSE)
 	&& (MIS_OLDWORLD == LOG_RUNNING)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	&& (EnterOW_Kapitel < 8)
 	&& (Fernando_HatsZugegeben == FALSE)//ADDON
 	&& (Fernando_ImKnast == FALSE) //HACK ADDON PATCH
@@ -292,7 +292,7 @@ INSTANCE DIA_Fernando_Success   (C_INFO)
 FUNC INT DIA_Fernando_Success_Condition()
 {
 	if (NpcObsessedByDMT_Fernando == FALSE)
-	&& (Kapitel >= 3)
+	&& (Kapitel >= 9)
 	&& (Npc_KnowsInfo (other, DIA_Fernando_Minental))
 	{
 		return TRUE;
@@ -351,7 +351,7 @@ instance DIA_Fernando_Obsession		(C_INFO)
 
 func int DIA_Fernando_Obsession_Condition ()
 {
-	if (Kapitel >= 3)
+	if (Kapitel >= 9)
 	&& (NpcObsessedByDMT_Fernando == FALSE)
 	&& (hero.guild == GIL_KDF)
 		{

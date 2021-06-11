@@ -169,7 +169,7 @@ FUNC VOID DIA_Gerbrandt_Perm_Info()
 {
 	AI_Output (other,self ,"DIA_Gerbrandt_Perm_15_00"); //Coœ nowego?
 	
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		if (hero.guild != GIL_KDF)
 		&& (hero.guild != GIL_PAL)
@@ -182,7 +182,7 @@ FUNC VOID DIA_Gerbrandt_Perm_Info()
 			AI_Output (self ,other,"DIA_Gerbrandt_Perm_10_03"); //Nie mogê siê skar¿yæ, Szlachetny Panie.
 		};
 	}
-	else if (Kapitel >= 3)
+	else if (Kapitel >= 9)
 	{
 		if (MIS_DiegosResidence != LOG_SUCCESS)
 		{

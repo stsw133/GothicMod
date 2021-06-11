@@ -312,18 +312,18 @@ func int DIA_Maria_PERM_Condition ()
 func void DIA_Maria_PERM_Info ()
 {
 	AI_Output (other, self, "DIA_Maria_PERM_15_00"); //Czy ostatnio zdarzy³o siê tu coœ interesuj¹cego?
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		AI_Output (self, other, "DIA_Maria_PERM_17_01"); //Przechodzi³a têdy grupa paladynów.
 		AI_Output (self, other, "DIA_Maria_PERM_17_02"); //Najpierw s¹dziliœmy, ¿e bêd¹ chcieli zaatakowaæ farmê, ale okaza³o siê, ¿e zmierzali do Górniczej Doliny.
 	}
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		AI_Output (self, other, "DIA_Maria_PERM_17_03"); //Kilka nocy temu Wasili wyp³oszy³ z³odzieja. Poza tym nie dzia³o siê tutaj nic godnego uwagi.
 	};
 	
-	if (Kapitel >= 4)
+	if (Kapitel >= 10)
 	{
 		AI_Output (self, other, "DIA_Maria_PERM_17_04"); //Odk¹d najemnicy opuœcili nasz dom, zrobi³o siê tutaj znacznie ciszej.
 	};

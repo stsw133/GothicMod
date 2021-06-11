@@ -96,7 +96,7 @@ FUNC VOID DIA_Sengrath_Perm_Info()
 	AI_Output (other ,self,"DIA_Sengrath_Perm_15_00"); //Kto mo¿e mnie czegoœ tutaj nauczyæ?
 	
 	if (other.guild == GIL_KDF)
-	&& (Kapitel == 2)
+	&& (Kapitel == 8)
 	{
 		AI_Output (self ,other,"DIA_Sengrath_Perm_03_01"); //Pogadaj z Miltenem - jest tu jedynym magiem.
 	}

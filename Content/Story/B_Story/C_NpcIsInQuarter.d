@@ -4,7 +4,7 @@
 func int C_GetDistToCenter (var C_NPC slf, var int quarter)
 {
 	var int dist;
-
+	
 	if (quarter == Q_KASERNE)
 	{
 		if (Npc_GetDistToWP(slf, "NW_CITY_HABOUR_KASERN_CENTRE_03") < Npc_GetDistToWP(slf, "NW_CITY_KASERN_ARMORY_SHARP"))
@@ -19,7 +19,7 @@ func int C_GetDistToCenter (var C_NPC slf, var int quarter)
 	else if (quarter == Q_GALGEN)
 	{
 		dist = Npc_GetDistToWP(slf, "NW_CITY_MERCHANT_PATH_33_B");
-
+		
 		if (dist > 1900)
 		{
 			dist = 100000;
@@ -28,7 +28,7 @@ func int C_GetDistToCenter (var C_NPC slf, var int quarter)
 	else if (quarter == Q_MARKT)
 	{
 		dist = Npc_GetDistToWP(slf, "NW_CITY_MERCHANT_PATH_36");
-
+		
 		if (dist > 2300)
 		{
 			dist = 100000;
@@ -60,13 +60,13 @@ func int C_GetDistToCenter (var C_NPC slf, var int quarter)
 		{
 			dist = Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_04");
 		};
-
+		
 		if (Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_16") < Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_04"))
 		&& (Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_16") < Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_18"))
 		{
 			dist = Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_16");
 		};
-
+		
 		if (Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_18") < Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_04"))
 		&& (Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_18") < Npc_GetDistToWP(slf, "NW_CITY_UPTOWN_PATH_16"))
 		{
@@ -77,7 +77,7 @@ func int C_GetDistToCenter (var C_NPC slf, var int quarter)
 	{
 		printplus("WRONG Q-PARAMETER!");
 	};	
-
+	
 	return dist;
 };
 

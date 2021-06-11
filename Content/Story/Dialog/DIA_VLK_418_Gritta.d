@@ -12,7 +12,7 @@ INSTANCE DIA_Gritta_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Gritta_EXIT_Condition()
 {
-	if (Kapitel <= 2)
+	if (Kapitel <= 8)
 	{
 		return TRUE;
 	};	
@@ -204,7 +204,7 @@ func int DIA_Gritta_PERM_Condition ()
 {	
 	if (Npc_IsInState (self, ZS_Talk))
 	&& (Npc_KnowsInfo (other, DIA_Gritta_WantsMoney))
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -255,7 +255,7 @@ INSTANCE DIA_Gritta_Kap3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Gritta_Kap3_EXIT_Condition()
 {
-	if (Kapitel >= 3 )
+	if (Kapitel >= 9 )
 	{
 		return TRUE;
 	};	
@@ -290,7 +290,7 @@ FUNC VOID DIA_Gritta_Perm3U4U5_Info()
 {	
 	AI_Output (other,self ,"DIA_Gritta_Perm3U4U5_15_00"); //Co s³ychaæ?
 	
-	if (Kapitel == 3)
+	if (Kapitel == 9)
 	{
 		if (MIS_RescueBennet != LOG_SUCCESS)
 		{
@@ -310,7 +310,7 @@ FUNC VOID DIA_Gritta_Perm3U4U5_Info()
 			AI_Output (self ,other,"DIA_Gritta_Perm3U4U5_16_05"); //Nie! Próbowaliby go uwolniæ, a wtedy na pewno dosz³oby do rozlewu krwi.
 		};	
 	}
-	else if (Kapitel == 5)	
+	else if (Kapitel == 11)	
 	{
 		AI_Output (self ,other,"DIA_Gritta_Perm3U4U5_16_06"); //Paladyni przygotowuj¹ siê chyba do opuszczenia tego miejsca.
 	}

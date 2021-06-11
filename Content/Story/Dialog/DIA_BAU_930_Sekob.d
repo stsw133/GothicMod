@@ -13,7 +13,7 @@ INSTANCE DIA_Sekob_EXIT (C_INFO)
 
 FUNC INT DIA_Sekob_EXIT_Condition()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -39,7 +39,7 @@ instance DIA_Sekob_HALLO (C_INFO)
 
 func int DIA_Sekob_HALLO_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& (self.aivar[AIV_TalkedToPlayer] == FALSE)
 	{
 		return TRUE;
@@ -68,7 +68,7 @@ instance DIA_Sekob_PermVorMis (C_INFO)
 
 func int DIA_Sekob_PermVorMis_Condition ()
 {
-	if (Kapitel < 3)
+	if (Kapitel < 9)
 	&& (MIS_Torlof_HolPachtVonSekob == FALSE)
 	{
 		return TRUE;
@@ -318,7 +318,7 @@ instance DIA_Sekob_PERMKAP1		(C_INFO)
 func int DIA_Sekob_PERMKAP1_Condition ()
 {
 	if (Sekob_Pachtbezahlt == TRUE)
-	&& (Kapitel < 3)
+	&& (Kapitel < 9)
 	{
 		return TRUE;
 	};
@@ -355,7 +355,7 @@ INSTANCE DIA_Sekob_KAP3_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sekob_KAP3_EXIT_Condition()
 {
-	if (Kapitel == 3)	
+	if (Kapitel == 9)	
 	{
 		return TRUE;
 	};
@@ -380,7 +380,7 @@ instance DIA_Sekob_DMT		(C_INFO)
 
 func int DIA_Sekob_DMT_Condition ()
 {
-	if (Kapitel >= 3)	
+	if (Kapitel >= 9)	
 	{
 		return TRUE;
 	};
@@ -429,7 +429,7 @@ instance DIA_Sekob_DMTWEG		(C_INFO)
 
 func int DIA_Sekob_DMTWEG_Condition ()
 {
-	if (Kapitel >= 3)	
+	if (Kapitel >= 9)	
 	&& (Npc_KnowsInfo(other, DIA_Sekob_DMT))
 	&& (Npc_IsDead(DMT_DementorAmbientSekob1))	
 	&& (Npc_IsDead(DMT_DementorAmbientSekob2))	
@@ -461,7 +461,7 @@ func void DIA_Sekob_DMTWEG_Info ()
 	TOPIC_END_SekobDMT = TRUE;
 	B_GivePlayerXP (XP_SekobDMTWEG);
 
-	if (Kapitel < 5)
+	if (Kapitel < 11)
 	{
 		Npc_ExchangeRoutine	(self,"Start");
 	}
@@ -499,7 +499,7 @@ instance DIA_Sekob_BELOHNUNG		(C_INFO)
 func int DIA_Sekob_BELOHNUNG_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Sekob_DMTWEG))
-	&& (Kapitel >= 3)	
+	&& (Kapitel >= 9)	
 		{
 				return TRUE;
 		};
@@ -557,7 +557,7 @@ instance DIA_Sekob_PERM		(C_INFO)
 func int DIA_Sekob_PERM_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Sekob_BELOHNUNG))
-	&& (Kapitel >= 3)	
+	&& (Kapitel >= 9)	
 	&& (NpcObsessedByDMT_Sekob == FALSE)
 		{
 				return TRUE;
@@ -567,7 +567,7 @@ func int DIA_Sekob_PERM_Condition ()
 func void DIA_Sekob_PERM_Info ()
 {
 	if (hero.guild == GIL_KDF)
-	&& (Kapitel >= 5)
+	&& (Kapitel >= 11)
 		{
 			B_NpcObsessedByDMT (self);
 		}
@@ -583,7 +583,7 @@ func void DIA_Sekob_PERM_Info ()
 			{
 				AI_Output		(self, other, "DIA_Sekob_PERM_01_02"); //Nie. Nic specjalnego.
 			}
-			else if (Kapitel >= 5)
+			else if (Kapitel >= 11)
 			&& (MIS_bringRosiBackToSekob != LOG_SUCCESS)
 			{
 				AI_Output		(self, other, "DIA_Sekob_PERM_01_03"); //Moja ¿ona zniknê³a. Na pocz¹tku nie zwróci³em na to uwagi, ale ona po prostu przepad³a.
@@ -625,7 +625,7 @@ INSTANCE DIA_Sekob_KAP4_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sekob_KAP4_EXIT_Condition()
 {
-	if (Kapitel == 4)	
+	if (Kapitel == 10)	
 	{
 		return TRUE;
 	};
@@ -658,7 +658,7 @@ INSTANCE DIA_Sekob_KAP5_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sekob_KAP5_EXIT_Condition()
 {
-	if (Kapitel == 5)	
+	if (Kapitel == 11)	
 	{
 		return TRUE;
 	};
@@ -686,7 +686,7 @@ func int DIA_Sekob_Heilung_Condition ()
 {
  	if (NpcObsessedByDMT_Sekob == TRUE) && (NpcObsessedByDMT == FALSE)
 	&& (hero.guild == GIL_KDF)
-	&& (Kapitel >= 5)
+	&& (Kapitel >= 11)
 	 {
 				return TRUE;
 	 };
@@ -731,7 +731,7 @@ instance DIA_Sekob_ROSIBACKATSEKOB		(C_INFO)
 
 func int DIA_Sekob_ROSIBACKATSEKOB_Condition ()
 {
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	&& (hero.guild != GIL_KDF)
 	&& (Npc_GetDistToWP(Rosi,"NW_FARM4_SEKOB")<3000)
 	&& (MIS_bringRosiBackToSekob == LOG_RUNNING)
@@ -814,7 +814,7 @@ INSTANCE DIA_Sekob_KAP6_EXIT(C_INFO)
 };                       
 FUNC INT DIA_Sekob_KAP6_EXIT_Condition()
 {
-	if (Kapitel == 6)	
+	if (Kapitel == 12)	
 	{
 		return TRUE;
 	};

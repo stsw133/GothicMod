@@ -159,7 +159,7 @@ instance DIA_Babera_Rosi		(C_INFO)
 func int DIA_Babera_Rosi_Condition ()
 {
 		if (MIS_bringRosiBackToSekob == LOG_RUNNING)
-		&& (Kapitel >= 5)
+		&& (Kapitel >= 11)
 		&& (RosiFoundKap5 == FALSE)
 		{
 				return TRUE;

@@ -1,11 +1,12 @@
 ///******************************************************************************************
 ///	MOD_Difficulty
 ///******************************************************************************************
+
 const int DIFF_E	=	0;	/// easy
 const int DIFF_M	=	1;	/// medium
 const int DIFF_H	=	2;	/// hard
 const int DIFF_VH	=	3;	/// very hard
-const int DIFF_I	=	4;	/// impossible / hardcore
+const int DIFF_I	=	4;	/// impossible (hardcore)
 
 const int DIFF_Percent[5] =
 {

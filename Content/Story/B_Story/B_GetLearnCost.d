@@ -79,11 +79,11 @@ func int B_GetLearnCostTalent (var C_NPC oth, var int talent, var int skill)
 		kosten = 30;
 	};
 	
-	if (talent == NPC_TALENT_SMITH)
+	if (talent == NPC_TALENT_JEWELERY)
+	|| (talent == NPC_TALENT_SMITH)
+	|| (talent == NPC_TALENT_ENCHANTING)
 	|| (talent == NPC_TALENT_ALCHEMY)
 	|| (talent == NPC_TALENT_HUNTING)
-	|| (talent == NPC_TALENT_JEWELERY)
-	|| (talent == NPC_TALENT_WRITING)
 	{
 		kosten = 20;
 	};

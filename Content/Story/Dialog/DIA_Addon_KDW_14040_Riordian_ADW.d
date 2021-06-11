@@ -408,7 +408,7 @@ func void DIA_Addon_Riordian_OrksWeg_Info ()
 	AI_Output	(other, self, "DIA_Addon_Riordian_OrksWeg_15_00"); //Die Orks werden das Interesse an dieser Region bald verlieren.
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_01"); //Wie kommst du darauf?
 
-	if (OrcShaman_Sit_CanyonLibraryKey.aivar [AIV_KilledByPlayer] == TRUE)
+	if (OrcShaman_Sit_CanyonLibraryKey.aivar[AIV_DefeatedByPlayer] == DBP_Killed)
 	{
 		AI_Output	(other, self, "DIA_Addon_Riordian_OrksWeg_15_02"); //Ich habe ihren Anführer getötet.
 	}
@@ -494,321 +494,181 @@ func void DIA_Addon_Riordian_ADW_PreTeach_Info ()
 
 	Riordian_ADW_ADDON_TeachWisp = TRUE;
 	Riordian_ADW_ADDON_TeachAlchemy = TRUE;
-	
+	self.aivar[AIV_CanTeach] = true;
 };
 
-instance DIA_Addon_Riordian_ADW_Teach		(C_INFO)
+instance DIA_Addon_Riordian_ADW_Teach (C_INFO)
 {
-	npc		 = 	KDW_14040_Addon_Riordian_ADW;
-	nr		 = 	90;
-	condition	 = 	DIA_Addon_Riordian_ADW_Teach_Condition;
-	information	 = 	DIA_Addon_Riordian_ADW_Teach_Info;
-	permanent	 = 	TRUE;
-
-	description	 = 	"Zeig mir, wie ich mein Irrlicht unterrichte.";
+	npc		 	= 	KDW_14040_Addon_Riordian_ADW;
+	nr		 	= 	90;
+	condition	= 	DIA_Addon_Riordian_ADW_Teach_Condition;
+	information	= 	DIA_Addon_Riordian_ADW_Teach_Info;
+	permanent	= 	true;
+	description	= 	"Poka¿ mi, jak wyszkoliæ mojego ognika.";
 };
+
 var int DIA_Addon_Riordian_ADW_Teach_NoPerm;
 
-func int DIA_Addon_Riordian_ADW_Teach_Condition ()
+func int DIA_Addon_Riordian_ADW_Teach_Condition()
 {
-	if (DIA_Addon_Riordian_ADW_Teach_NoPerm == FALSE)
-	&& (DIA_Addon_Riordian_Teach_NoPerm == FALSE)
-	&& (Riordian_ADW_ADDON_TeachWisp == TRUE)
-	&& (Npc_HasItems (other,ItAm_Addon_WispDetector))
-		{
-			return TRUE;
-		};
-};
-func void DIA_Addon_Riordian_ADW_Teach_Info ()
-{
-	B_DIA_Addon_Riordian_Teach_15_00 ();
-
-	if ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NF]	 	== FALSE)
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF]		== FALSE)
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] 	== FALSE)	
-	|| ( PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] 	== FALSE)	
-	{                                            
-		Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-		Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,DIALOG_BACK,DIA_Addon_Riordian_ADW_Teach_BACK);
-		B_DIA_Addon_Riordian_Teach_10_01 ();
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FF] == FALSE)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FF, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FF)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF);
-		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_NONE] == FALSE)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_NONE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_NONE)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE);
-		};	
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_RUNE] == FALSE)
-		&& (WISPSKILL_LEVEL >= 2)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_RUNE, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_RUNE)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE);
-		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_MAGIC] == FALSE)
-		&& (WISPSKILL_LEVEL >= 2)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_MAGIC, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_MAGIC)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC);
-		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_FOOD] == FALSE)
-		&& (WISPSKILL_LEVEL >= 3)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_FOOD, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_FOOD)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD);
-		};
-		
-		if (PLAYER_TALENT_WISPDETECTOR[WISPSKILL_POTIONS] == FALSE)
-		&& (WISPSKILL_LEVEL >= 3)
-		{
-			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach,B_BuildLearnString (NAME_ADDON_WISPSKILL_POTIONS, B_GetLearnCostTalent (other, NPC_TALENT_WISPDETECTOR, WISPSKILL_POTIONS)),DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS);
-		};
-	}
-	else 
+	if (!DIA_Addon_Riordian_ADW_Teach_NoPerm)
+	&& (!DIA_Addon_Riordian_Teach_NoPerm)
+	&& (Riordian_ADW_ADDON_TeachWisp)
+	&& (Npc_HasItems(other, ItAm_Addon_WispDetector))
 	{
-		B_DIA_Addon_Riordian_Teach_10_08 ();
-		DIA_Addon_Riordian_ADW_Teach_NoPerm = TRUE;
+		return true;
 	};
 };
-func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ()
+func void DIA_Addon_Riordian_ADW_Teach_Info()
 {
-	B_DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00 ();
+	AI_Output	(other, self, "DIA_Addon_Riordian_Teach_15_00"); //Poka¿ mi, jak wyszkoliæ mojego ognika.
+	
+	if (!WispSkills[WISPSKILL_NF])
+	|| (!WispSkills[WISPSKILL_FF])
+	|| (!WispSkills[WISPSKILL_NONE])
+	|| (!WispSkills[WISPSKILL_RUNE])
+	|| (!WispSkills[WISPSKILL_MAGIC])
+	|| (!WispSkills[WISPSKILL_FOOD])
+	|| (!WispSkills[WISPSKILL_POTIONS])
+	{
+		Info_ClearChoices	(DIA_Addon_Riordian_ADW_Teach);
+		Info_AddChoice		(DIA_Addon_Riordian_ADW_Teach, DIALOG_BACK, DIA_Addon_Riordian_ADW_Teach_BACK);
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach2_10_00"); //Czego ma szukaæ twój ognik?
+		
+		if (!WispSkills[WISPSKILL_FF])
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "Broñ dystansowa i amunicja (wymagany poziom 15)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF);
+		};
+		if (!WispSkills[WISPSKILL_NONE])
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "Z³oto, klucze i narzêdzia (wymagany poziom 20)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE);
+		};
+		if (!WispSkills[WISPSKILL_RUNE])
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "Runy i zwoje (wymagany poziom 25)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE);
+		};
+		if (!WispSkills[WISPSKILL_MAGIC])
+		&& (WISPSKILL_LEVEL >= 2)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "Pierœcienie i amulety (wymagany poziom 30)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC);
+		};
+		if (!WispSkills[WISPSKILL_FOOD])
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "¯ywnoœæ i roœliny (wymagany poziom 35)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD);
+		};
+		if (!WispSkills[WISPSKILL_POTIONS])
+		&& (WISPSKILL_LEVEL >= 3)
+		{
+			Info_AddChoice (DIA_Addon_Riordian_ADW_Teach, "Magia i mikstury (wymagany poziom 40)", DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS);
+		};
+	}
+	else
+	{
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach1_10_00"); //Twój ognik bêdzie szuka³ wszystkich po¿ytecznych obiektów. Nie mogê ciê nauczyæ niczego wiêcej.
+		DIA_Addon_Riordian_ADW_Teach_NoPerm = true;
+	};
 };
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_BACK ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X()
 {
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+	AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
 };
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF ()
+func void DIA_Addon_Riordian_ADW_Teach_BACK()
 {
-	if B_TeachPlayerTalentWispDetector  (self, other, WISPSKILL_FF)
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
+};
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FF()
+{
+	if (other.level > 15)
 	{
 		if (WISPSKILL_LEVEL < 2)
 		{
 			WISPSKILL_LEVEL = 2;
 		};
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
+		WispSkills[WISPSKILL_FF] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
-	
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_NONE()
 {
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_NONE)
+	if (other.level > 20)
 	{
 		if (WISPSKILL_LEVEL < 2)
 		{
 			WISPSKILL_LEVEL = 2;
 		};
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
-	};
-	
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_RUNE)
-	{
-		if (WISPSKILL_LEVEL < 3)
-		{
-			WISPSKILL_LEVEL = 3;
-		};
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
-	};
-	
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_MAGIC)
-	{
-		if (WISPSKILL_LEVEL < 3)
-		{
-			WISPSKILL_LEVEL = 3;
-		};
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
-	};
-	
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_FOOD)
-	{
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
-	};
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-};
-FUNC VOID DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS ()
-{
-	if B_TeachPlayerTalentWispDetector (self, other, WISPSKILL_POTIONS)
-	{
-		DIA_Addon_Riordian_ADW_Teach_WISPSKILL_X ();
-	};
-	Info_ClearChoices (DIA_Addon_Riordian_ADW_Teach);
-};
-
-
-///////////////////////////////////////////////////////////////////////
-//	Info TeachAlchemy
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Riordian_ADW_TeachAlchemy   (C_INFO)
-{
-	npc         = KDW_14040_Addon_Riordian_ADW;
-	nr          = 2;
-	condition   = DIA_Riordian_ADW_TeachAlchemy_Condition;
-	information = DIA_Riordian_ADW_TeachAlchemy_Info;
-	permanent   = TRUE;
-	description = "Lehre mich die Kunst des Tränkebrauens.";
-};
-//----------------------------------------
-var int DIA_Riordian_ADW_TeachAlchemy_permanent;
-//----------------------------------------
-
-FUNC INT DIA_Riordian_ADW_TeachAlchemy_Condition()
-{	
-	if (DIA_Riordian_ADW_TeachAlchemy_permanent == FALSE)
-	&& (Riordian_ADW_ADDON_TeachAlchemy == TRUE)
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Info()
-{
-	var int talente;
-	talente = 0;
-	AI_Output (other, self,"DIA_Addon_Riordian_ADW_TeachAlchemy_15_00");//Lehre mich die Kunst des Tränkebrauens.
-
-	if ( PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Health_03] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
-	|| ( PLAYER_TALENT_ALCHEMY[POTION_Perm_Health] == FALSE)
-	{
-		Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,DIALOG_BACK,DIA_Riordian_ADW_TeachAlchemy_BACK);
-	};
-	if (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == FALSE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Essenz der Heilung", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_01)),DIA_Riordian_ADW_TeachAlchemy_Health_01);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Health_02] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Health_01] == TRUE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Extrakt der Heilung", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Health_02)),DIA_Riordian_ADW_TeachAlchemy_Health_02);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == FALSE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Essenz", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_01)),DIA_Riordian_ADW_TeachAlchemy_Mana_01);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_01] == TRUE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Extrakt", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_02)),DIA_Riordian_ADW_TeachAlchemy_Mana_02);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_02] == TRUE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Mana Elixier", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Mana_03)),DIA_Riordian_ADW_TeachAlchemy_Mana_03);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_Mana] == FALSE)
-	&& (PLAYER_TALENT_ALCHEMY[POTION_Mana_03] == TRUE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Elixier des Geistes", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_Mana)),DIA_Riordian_ADW_TeachAlchemy_Perm_Mana);
-		talente = (talente + 1);
-	};
-	
-	if (PLAYER_TALENT_ALCHEMY[POTION_Perm_DEX] == FALSE)
-	{
-		Info_AddChoice (DIA_Riordian_ADW_TeachAlchemy,B_BuildLearnString ("Elixier der Geschicklichkeit", B_GetLearnCostTalent (other, NPC_TALENT_ALCHEMY, POTION_Perm_DEX)),DIA_Riordian_ADW_TeachAlchemy_Perm_DEX);
-		talente = (talente + 1);
-	};
-
-	if (talente > 0)
-	{
-		if (Alchemy_Explain != TRUE)
-		{
-			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_01"); //Magische Tränke braut man an einem Alchemietisch. Wir haben einen davon in unserer Behausung hier oben.
-			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_02"); //Dafür benötigst du eine leere Laborflasche, die nötigen Ingredienzien und das Wissen, wie man den Trank herstellt.
-			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_03"); //Von mir kannst du das Wissen darüber bekommen. Die anderen Dinge wirst du dir selbst zusammensuchen müssen.
-			Alchemy_Explain = TRUE;
-		}
-		else
-		{
-			AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_04"); //Was willst du brauen?
-		};
+		WispSkills[WISPSKILL_NONE] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
 	}
-	else 
+	else
 	{
-		AI_Output (self, other,"DIA_Addon_Riordian_ADW_TeachAlchemy_10_05"); //Ich kann dir nichts mehr zeigen, was du nicht schon kennst.
-		DIA_Riordian_ADW_TeachAlchemy_permanent = TRUE;
+		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_BACK ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_RUNE()
 {
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+	if (other.level > 25)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		WispSkills[WISPSKILL_RUNE] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Health_01 ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_MAGIC()
 {
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_01);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+	if (other.level > 30)
+	{
+		if (WISPSKILL_LEVEL < 3)
+		{
+			WISPSKILL_LEVEL = 3;
+		};
+		WispSkills[WISPSKILL_MAGIC] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Health_02 ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_FOOD()
 {
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Health_02);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+	if (other.level > 35)
+	{
+		WispSkills[WISPSKILL_FOOD] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_01 ()
+func void DIA_Addon_Riordian_ADW_Teach_WISPSKILL_POTIONS()
 {
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_01);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
+	if (other.level > 40)
+	{
+		WispSkills[WISPSKILL_POTIONS] = true;
+		AI_Output	(self, other, "DIA_Addon_Riordian_Teach_WISPSKILL_X_10_00"); //Teraz twój ognik bêdzie w stanie znaleŸæ wiêcej rzeczy, które mog¹ ci siê przydaæ.
+	}
+	else
+	{
+		B_Say (self, other, "$NOLEARNNOPOINTS");
+	};
+	Info_ClearChoices(DIA_Addon_Riordian_ADW_Teach);
 };
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_02 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_02);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
-};
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Mana_03 ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Mana_03);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
-};
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Perm_Mana ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_Mana);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
-};
-
-FUNC VOID DIA_Riordian_ADW_TeachAlchemy_Perm_Dex ()
-{
-	B_TeachPlayerTalentAlchemy (self, other, POTION_Perm_DEX);
-	Info_ClearChoices (DIA_Riordian_ADW_TeachAlchemy);
-};
-
-
-
-
-

@@ -1,12 +1,13 @@
 ///******************************************************************************************
-///	MOD_AttributesCheck
+///	MOD_NpcFn
 ///******************************************************************************************
-func void ENE_MAX_CHECK (var C_NPC slf)
+
+/// ------ Energy ------
+func void Npc_EnergyMaxRefresh (var C_NPC slf)
 {
 	sattribute[ATR_ENERGY_MAX] = 100 + slf.level + slf.attribute[ATR_STRENGTH]/10 + slf.attribute[ATR_DEXTERITY]/10 + slf.attribute[ATR_HITPOINTS_MAX]/10/HP_PER_LP + sattribute[ATR_ENERGY_BONUS];
 };
-
-func void ENE_CHECK()
+func void Npc_EnergyRefresh()
 {
 	if (sattribute[ATR_ENERGY] < 0)
 	{
@@ -18,38 +19,42 @@ func void ENE_CHECK()
 	};
 };
 
-func void POWER_CHECK (var C_NPC slf)
+/// ------ Power ------
+func void Npc_SetPowerPoints(var C_NPC slf, var int points)
 {
-	slf.damage[DAM_INDEX_MAGIC] = slf.aivar[AIV_Power];
+	slf.damage[DAM_INDEX_MAGIC] = points;
 	Npc_SetTalentValue (slf, NPC_TALENT_MAGIC, slf.damage[DAM_INDEX_MAGIC]);
+};
+func void Npc_AddPowerPoints(var C_NPC slf, var int points)
+{
+	Npc_SetPowerPoints (slf, slf.damage[DAM_INDEX_MAGIC] + points);
 };
 
 ///******************************************************************************************
-func void Attributes_CHECK()
+func void Npc_AttributesRefresh()
 {
-	if (self.attribute[ATR_MANA] > self.attribute[ATR_MANA_MAX])
-	{
-		self.attribute[ATR_MANA] = self.attribute[ATR_MANA_MAX];
-	};
 	if (self.attribute[ATR_HITPOINTS] > self.attribute[ATR_HITPOINTS_MAX])
 	{
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 	};
-	
+	if (self.attribute[ATR_MANA] > self.attribute[ATR_MANA_MAX])
+	{
+		self.attribute[ATR_MANA] = self.attribute[ATR_MANA_MAX];
+	};
 	if (Npc_IsPlayer(self))
 	{
-		ENE_MAX_CHECK(self);
+		Npc_EnergyMaxRefresh(self);
 	};
-	POWER_CHECK(self);
+	//Npc_AddPowerPoints(self, 0);
 };
 
 ///******************************************************************************************
 ///	MOD_PotionRegenerate
 ///******************************************************************************************
 
-var int hppottime;		/// czas działania eliksiru leczniczego
-var int mppottime;		/// czas działania eliksiru many
-var int enepottime;		/// czas działania eliksiru energii
+var int hppottime;		/// HP potion duration
+var int mppottime;		/// MP potion duration
+var int enepottime;		/// ENE potion duration
 
 ///******************************************************************************************
 func void PotionRG_ADD (var int attribute, var int points)

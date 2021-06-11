@@ -152,8 +152,8 @@ INSTANCE DIA_Alrik_NewFights3(C_INFO)
 
 FUNC INT DIA_Alrik_NewFights3_Condition()
 {
-	if (Kapitel >= 3)
-	&& (Kapitel <= 4)
+	if (Kapitel >= 9)
+	&& (Kapitel <= 10)
 	&& (Alrik_ArenaKampfVerloren <= 6)
 	{
 		return TRUE;
@@ -163,7 +163,7 @@ FUNC INT DIA_Alrik_NewFights3_Condition()
 FUNC VOID DIA_Alrik_NewFights3_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToChapter (self, 4);
+	B_SetAttributesToLevel (self, 40);
 	B_Alrik_Again();
 };
 
@@ -183,7 +183,7 @@ INSTANCE DIA_Alrik_NewFights5(C_INFO)
 
 FUNC INT DIA_Alrik_NewFights5_Condition()
 {
-	if (Kapitel >= 5)
+	if (Kapitel >= 11)
 	&& (Alrik_ArenaKampfVerloren <= 9)
 	{
 		return TRUE;
@@ -193,7 +193,7 @@ FUNC INT DIA_Alrik_NewFights5_Condition()
 FUNC VOID DIA_Alrik_NewFights5_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToChapter (self, 6);
+	B_SetAttributesToLevel (self, 60);
 	B_Alrik_Again();
 };
 
@@ -261,7 +261,7 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 	}
 	
 	// ----- EXIT: ÜBER DREI MAL Alrik_ArenaKampfVerloren ------
-	else if (Kapitel <= 2)
+	else if (Kapitel <= 8)
 	&& (Alrik_ArenaKampfVerloren > 3)
 	{
 		AI_Output (self, other, "DIA_Alrik_Add_09_00"); //Chyba na razie wystarczy...
@@ -269,15 +269,15 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 		B_Alrik_ComeBackLater();
 	}
 	
-	else if (Kapitel >= 3)
-	&& (Kapitel <= 4)
+	else if (Kapitel >= 9)
+	&& (Kapitel <= 10)
 	&& (Alrik_ArenaKampfVerloren > 6)
 	{
 		B_Alrik_Enough();
 		B_Alrik_ComeBackLater();
 	}
 	
-	else if (Kapitel >= 5)
+	else if (Kapitel >= 11)
 	&& (Alrik_ArenaKampfVerloren > 9)
 	{
 		B_Alrik_Enough();

@@ -80,158 +80,14 @@ FUNC VOID DIA_Keroloth_WantTeach_Info()
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_02"); //Jeœli chcesz tu przetrwaæ, to poza talentem bêdziesz potrzebowa³ dobrej broni.
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_03"); //Zapytaj rycerza Tandora. On siê tob¹ zajmie.
 		
-	Keroloth_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	Log_CreateTopic (TOPIC_Teacher_OC,LOG_NOTE);
 	B_LogEntry (TOPIC_Teacher_OC,"Keroloth udziela na zamku lekcji walki mieczem.");
 	
 	Log_CreateTopic (TOPIC_Trader_OC,LOG_NOTE);
 	B_LogEntry (TOPIC_Trader_OC,"Tandor handluje na zamku broni¹.");
 };
-//***********************************************
-//	Kampflehrer EINHAND
-//***********************************************
 
-INSTANCE DIA_Keroloth_Teacher(C_INFO)
-{
-	npc			= PAL_258_Keroloth;
-	nr			= 6;
-	condition	= DIA_Keroloth_Teacher_Condition;
-	information	= DIA_Keroloth_Teacher_Info;
-	permanent	= TRUE;
-	description = "(Nauka walki broni¹ jednorêczn¹)";
-};                       
-
-FUNC INT DIA_Keroloth_Teacher_Condition()
-{
-	if (Keroloth_TeachPlayer == TRUE)
-	&& (Keroloths_BeutelLeer == FALSE)
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Keroloth_Teacher_Info()
-{	
-	AI_Output 	(other,self ,"DIA_Keroloth_Teacher_15_00"); //Chcê siê szkoliæ!
-	
-	Info_ClearChoices 	(DIA_Keroloth_Teacher);
-	Info_AddChoice 		(DIA_Keroloth_Teacher,DIALOG_BACK,DIA_Keroloth_Teacher_Back);
-	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Keroloth_Teacher_1H_1);
-	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Keroloth_Teacher_1H_5);
-};
-
-FUNC VOID DIA_Keroloth_Teacher_Back ()
-{
-	Info_ClearChoices (DIA_Keroloth_Teacher);
-};
-
-FUNC VOID B_Keroloth_TeachNoMore1 ()
-{
-	AI_Output(self,other,"B_Keroloth_TeachNoMore1_07_00"); //Jesteœ bardzo dobry. Niczego ju¿ ciê nie mogê nauczyæ.
-};
-
-FUNC VOID B_Keroloth_TeachNoMore2 ()
-{
-	AI_Output(self,other,"B_Keroloth_TeachNoMore2_07_00"); //Teraz mo¿e ci pomóc tylko wyszkolony mistrz miecza.
-};
-
-FUNC VOID DIA_Keroloth_Teacher_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
-	
-	if (other.HitChance[NPC_TALENT_1H] >= 60)
-	{
-		B_Keroloth_TeachNoMore1	();
-		
-		if (Npc_GetTalentSkill (other, NPC_TALENT_1H) == 2)
-		{
-			B_Keroloth_TeachNoMore2	();
-		};
-	};
-	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Keroloth_Teacher_1H_1);
-};
-
-FUNC VOID DIA_Keroloth_Teacher_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
-	
-	if (other.HitChance[NPC_TALENT_1H] >= 60)
-	{
-		B_Keroloth_TeachNoMore1	();
-		
-		if (Npc_GetTalentSkill (other, NPC_TALENT_1H) == 2)
-		{
-			B_Keroloth_TeachNoMore2	();
-		};
-	};
-	Info_AddChoice		(DIA_Keroloth_Teacher, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Keroloth_Teacher_1H_5);
-};
-//**************************************
-//		Kampflehrer ZWEIHAND
-//**************************************
-INSTANCE DIA_Keroloth_Teach(C_INFO)
-{
-	npc			= PAL_258_Keroloth;
-	nr			= 100;
-	condition	= DIA_Keroloth_Teach_Condition;
-	information	= DIA_Keroloth_Teach_Info;
-	permanent	= TRUE;
-	description = "(Nauka walki broni¹ dwurêczn¹)";
-};                       
-//----------------------------------
-var int DIA_Keroloth_Teach_permanent;
-//----------------------------------
-FUNC INT DIA_Keroloth_Teach_Condition()
-{
-	if (Keroloth_TeachPlayer == TRUE)
-	&& (Keroloths_BeutelLeer == FALSE)
-	&& (DIA_Keroloth_Teach_permanent == FALSE)
-	&& (other.HitChance[NPC_TALENT_2H] < 60)
-	{
-		return TRUE;
-	};	
-};
- 
-FUNC VOID DIA_Keroloth_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Keroloth_Teach_15_00"); //Zaczynajmy.
-	
-	Info_ClearChoices 	(DIA_Keroloth_Teach);
-	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);
-
-};
-FUNC VOID DIA_Keroloth_Teach_Back ()
-{
-	if (other.HitChance[NPC_TALENT_2H] >= 60)
-	{
-		B_Keroloth_TeachNoMore1	();
-		
-		DIA_Keroloth_Teach_permanent = TRUE;
-	};
-	Info_ClearChoices (DIA_Keroloth_Teach);
-};
-
-FUNC VOID DIA_Keroloth_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 60);
-	
-	Info_ClearChoices 	(DIA_Keroloth_Teach);
-	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);	
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);	
-};
-
-FUNC VOID DIA_Keroloth_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 60);
-	
-	Info_ClearChoices 	(DIA_Keroloth_Teach);
-	Info_AddChoice 		(DIA_Keroloth_Teach,	DIALOG_BACK		,DIA_Keroloth_Teach_Back);
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Keroloth_Teach_2H_1);	
-	Info_AddChoice		(DIA_Keroloth_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Keroloth_Teach_2H_5);	
-};
 //************************************
 //	Suche andere Lehrer
 //************************************
@@ -248,7 +104,7 @@ INSTANCE DIA_Keroloth_Udar(C_INFO)
 
 FUNC INT DIA_Keroloth_Udar_Condition()
 {
-	if (Keroloth_TeachPlayer == TRUE)
+	if (self.aivar[AIV_CanTeach] == true)
 	&& (Keroloths_BeutelLeer == FALSE)
 	{
 		return TRUE;
@@ -448,7 +304,7 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_Info ()
 {
 	AI_Output			(other, self, "DIA_Keroloth_KAP4_GELDGEFUNDEN_15_00"); //Chyba znalaz³em twoj¹ sakiewkê.
 	TOPIC_END_KerolothsGeldbeutel = TRUE;
-	B_GivePlayerXP (XP_KerolothsGeldbeutel);
+	B_GivePlayerXP(400);
 	if (B_GiveInvItems (other, self, ItMi_KerolothsGeldbeutelLeer_MIS,1))
 	{
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_GELDGEFUNDEN_07_01"); //Sakiewka jest pusta. Co za œwinia to zrobi³a?

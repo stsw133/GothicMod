@@ -58,7 +58,7 @@ FUNC VOID DIA_Addon_Telbor_Hi_Info()
 			
 			if Telbor_once == FALSE
 			{
-				B_GivePlayerXP (XP_Ambient);
+				B_GivePlayerXP(100);
 				Telbor_Once = TRUE;
 			};	
 		};

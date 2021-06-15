@@ -103,7 +103,7 @@ func void B_GiveDeathInv (var C_NPC slf)
 		if (Hlp_Random(5) == 0)		{	CreateInvItems (slf, ItMi_Gold, Hlp_RandomRange(1, slf.level));	};
 	};
 	/*
-	GoblinGreen_Randomizer = Hlp_Random (100);
+	var int GoblinGreen_Randomizer; GoblinGreen_Randomizer = Hlp_Random(100);
 	
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_GOBBO)	
 	&& (GoblinGreen_Randomizer == 0) 					{	CreateInvItems (slf, ItMi_SilverRing	, 1);	}
@@ -122,7 +122,7 @@ func void B_GiveDeathInv (var C_NPC slf)
 	
 	
 	// ------ Gobbo Black Inventory ------
-	GoblinBlack_Randomizer = Hlp_Random (100);
+	var int GoblinBlack_Randomizer; GoblinBlack_Randomizer = Hlp_Random(100);
 	
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_GOBBO_BLACK)	
 	&& (GoblinBlack_Randomizer == 0) 					{	CreateInvItems (slf, ItMi_GoldRing	, 1);	}
@@ -141,7 +141,7 @@ func void B_GiveDeathInv (var C_NPC slf)
 	*/
 	
 	// ------ Orc Inventory -----
-	Orc_Randomizer	= Hlp_Random (10);
+	var int Orc_Randomizer; Orc_Randomizer = Hlp_Random(10);
 	
 	//------ Orcwarrior -----
 	

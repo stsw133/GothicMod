@@ -378,7 +378,7 @@ FUNC VOID DIA_Mil_310_Stadtwache_ZumSchmied_Info()
 	Stadtwache_333.aivar[AIV_GuardPassage_Status] = GP_PassGate; 	//Wache vom anderen Stadttor
 	Mil_310_schonmalreingelassen = TRUE;
 	B_CheckLog();
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 	
 	AI_StopProcessInfos	(self);
 };
@@ -444,7 +444,7 @@ FUNC VOID DIA_Addon_Mil_310_Stadtwache_Constantino_Info()
 			Mil_310_schonmalreingelassen = TRUE;
 			MIS_Addon_Lester_PickForConstantino = LOG_SUCCESS;
 			B_CheckLog();
-			B_GivePlayerXP (XP_Addon_PickForConstantino);
+			B_GivePlayerXP(100);
 			AI_StopProcessInfos (self);
 		}
 		else 

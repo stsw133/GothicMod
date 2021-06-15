@@ -241,7 +241,7 @@ FUNC VOID DIA_Abuyin_Mischung_Super ()
 	AI_Output (self, other,"DIA_Abuyin_Mischung_Super_13_06");//Dziêki ci, Synu Szczodroœci. ¯aden inny tytoñ nie mo¿e siê z tym równaæ. Kupiê od ciebie ka¿de Ÿdziebe³ko, jakie mi dostarczysz.
 	
 	Abuyin_Honigtabak = TRUE;
-	B_GivePlayerXP ((XP_Ambient)*2);
+	B_GivePlayerXP(100);
 	
 	Info_ClearChoices (DIA_Abuyin_Mischung);
 };	
@@ -392,7 +392,7 @@ FUNC VOID DIA_Abuyin_Zukunft_Trance()
 		Abuyin_Zukunft = 1;
 		Info_ClearChoices (DIA_Abuyin_Zukunft);
 		
-		B_GivePlayerXP ((XP_Ambient*4));
+		B_GivePlayerXP(200);
 };
 // ************************************************************
 // 		Kannst du mir noch eine Weissagung geben?
@@ -525,7 +525,7 @@ FUNC VOID DIA_Abuyin_Zukunft2_Trance()
 	Abuyin_Zukunft = 2;
 	Info_ClearChoices (DIA_Abuyin_Zukunft2);
 	
-	B_GivePlayerXP ((XP_Ambient*4));
+	B_GivePlayerXP(400);
 };
 //#####################################################################
 //##
@@ -618,7 +618,7 @@ FUNC VOID  DIA_Abuyin_Zukunft3_Trance()
 	Abuyin_Zukunft = 3;
 	Info_ClearChoices (DIA_Abuyin_Zukunft3);
 	
-	B_GivePlayerXP ((XP_Ambient*4));
+	B_GivePlayerXP(600);
 };
 //#####################################################################
 //##
@@ -711,7 +711,7 @@ FUNC VOID DIA_Abuyin_Zukunft4_Trance()
 	Abuyin_Zukunft = 4;
 	Info_ClearChoices (DIA_Abuyin_Zukunft4);
 	
-	B_GivePlayerXP ((XP_Ambient*4));
+	B_GivePlayerXP(800);
 };
 //#####################################################################
 //##
@@ -805,6 +805,5 @@ FUNC VOID DIA_Abuyin_Zukunft5_Trance ()
 	
 	Info_ClearChoices (DIA_Abuyin_Zukunft5);
 	
-	B_GivePlayerXP ((XP_Ambient*4));
+	B_GivePlayerXP(1000);
 };
-

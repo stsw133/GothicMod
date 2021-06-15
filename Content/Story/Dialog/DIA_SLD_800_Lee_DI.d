@@ -98,8 +98,7 @@ INSTANCE DIA_Lee_DI_Teach(C_INFO)
 	nr			= 10;
 	condition	= DIA_Lee_DI_Teach_Condition;
 	information	= DIA_Lee_DI_Teach_Info;
-	permanent	= TRUE;
-	
+	permanent	= FALSE;
 	description = "Szukam dobrego nauczyciela.";
 };                       
 
@@ -115,78 +114,7 @@ FUNC VOID DIA_Lee_DI_Teach_Info()
 {	
 	AI_Output (other,self ,"DIA_Lee_DI_Teach_15_00"); //Szukam dobrego nauczyciela.
 	AI_Output (self,other ,"DIA_Lee_DI_Teach_04_01"); //A czego dok³adnie chcia³byœ siê nauczyæ?
-	
-	Info_ClearChoices 	(DIA_Lee_DI_Teach);
-	Info_AddChoice 		(DIA_Lee_DI_Teach,	DIALOG_BACK		,DIA_Lee_DI_Teach_Back);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h1, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_DI_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h5, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h1, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lee_DI_Teach_1H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h5, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lee_DI_Teach_1H_5);
-};
-
-FUNC VOID DIA_Lee_DI_Teach_1H_1 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 100))
-	{
-			AI_Output (self ,other,"DIA_Lee_DI_Teach_1H_1_04_00"); //Twoja umiejêtnoœæ parowania ciosów jest jeszcze ¿a³osna, ale jakoœ sobie poradzisz.
-	};
-	Info_ClearChoices 	(DIA_Lee_DI_Teach);
-	Info_AddChoice 		(DIA_Lee_DI_Teach,	DIALOG_BACK		,DIA_Lee_DI_Teach_Back);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h1, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_DI_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h5, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h1, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lee_DI_Teach_1H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h5, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lee_DI_Teach_1H_5);
-	
-};
-
-FUNC VOID DIA_Lee_DI_Teach_1H_5 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 100))
-	{
-			AI_Output (self ,other,"DIA_Lee_DI_Teach_1H_5_04_00"); //Jesteœ za sztywny w nadgarstkach. Nie œciskaj broni tak kurczowo.
-	};
-	Info_ClearChoices 	(DIA_Lee_DI_Teach);
-	Info_AddChoice 		(DIA_Lee_DI_Teach,	DIALOG_BACK		,DIA_Lee_DI_Teach_Back);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h1, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_DI_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h5, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h1, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lee_DI_Teach_1H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h5, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lee_DI_Teach_1H_5);
-	
-};
-
-FUNC VOID DIA_Lee_DI_Teach_2H_1 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100))
-	{
-		AI_Output(self,other,"DIA_DIA_Lee_DI_Teach_2H_1_04_00"); //Pamiêtaj: si³a ciosu bierze siê z bioder, a nie z ramion.
-	};
-	Info_ClearChoices 	(DIA_Lee_DI_Teach);
-	Info_AddChoice 		(DIA_Lee_DI_Teach,	DIALOG_BACK		,DIA_Lee_DI_Teach_Back);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_DI_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lee_DI_Teach_1H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lee_DI_Teach_1H_5);
-	
-};
-
-FUNC VOID DIA_Lee_DI_Teach_2H_5 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100))
-	{
-		AI_Output(self,other,"DIA_Lee_DI_Teach_2H_5_04_00"); //Najsilniejszy cios nic nie znaczy, jeœli nie trafi w cel. U¿ywaj swojej si³y z wiêkszym wyczuciem.
-	};
-	Info_ClearChoices 	(DIA_Lee_DI_Teach);
-	Info_AddChoice 		(DIA_Lee_DI_Teach,	DIALOG_BACK		,DIA_Lee_DI_Teach_Back);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_DI_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn2h5, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lee_DI_Teach_1H_1);
-	Info_AddChoice		(DIA_Lee_DI_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lee_DI_Teach_1H_5);
-	
-};
-
-FUNC VOID DIA_Lee_DI_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Lee_DI_Teach);
+	self.aivar[AIV_CanTeach] = true;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -222,7 +150,6 @@ func void DIA_Lee_DI_UndeadDragonDead_Info ()
 		{
 			AI_Output			(self ,other, "DIA_Lee_DI_UndeadDragonDead_04_02"); //Ale zabierzesz mnie na kontynent, prawda?
 			AI_Output			(other ,self, "DIA_Lee_DI_UndeadDragonDead_15_03"); //Oczywiœcie. Khorinis jakoœ sobie poradzi bez ciebie.
-			//AI_Output			(self ,other, "DIA_Lee_DI_UndeadDragonDead_04_04"); //Dann kann ich dem König endlich meine lang ersehnte Aufwartung machen. Er ist schon zu lange vor mir davon gelaufen.
 			AI_Output (self ,other, "DIA_Lee_Add_04_26"); //A potem mogê z³o¿yæ niezapowiedzian¹ wizytê naszemu Królowi.
 			AI_Output (self ,other, "DIA_Lee_Add_04_27"); //D³ugo czeka³em na tak¹ okazjê...
 			AI_Output			(self ,other, "DIA_Lee_DI_UndeadDragonDead_04_05"); //Jak myœlisz? Cierpliwoœæ chyba zas³uguje na nagrodê.

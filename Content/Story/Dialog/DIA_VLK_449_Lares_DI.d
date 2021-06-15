@@ -67,7 +67,7 @@ INSTANCE DIA_Lares_DI_Training (C_INFO)
 	nr			= 10;
 	condition	= DIA_Lares_DI_Training_Condition;
 	information	= DIA_Lares_DI_Training_Info;
-	permanent	 = 	TRUE;
+	permanent	 = 	FALSE;
 
 	description = "Naucz mnie tego, co potrafisz.";
 };                       
@@ -83,132 +83,7 @@ FUNC VOID DIA_Lares_DI_Training_Info()
 {	
 	AI_Output (other,self ,"DIA_Lares_DI_Training_15_00"); //Naucz mnie tego, co potrafisz.
 	AI_Output (self ,other,"DIA_Lares_DI_Training_09_01"); //¯aden problem.
-	
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-
-FUNC VOID DIA_Lares_DI_Training_1H_1 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 100))
-	{
-			AI_Output (self ,other,"DIA_Lares_DI_Training_1H_1_09_00"); //Musisz lekko ugi¹æ wysuniêt¹ nogê, a drug¹ trzymaæ prosto. Dziêki temu ³atwiej zachowasz równowagê.
-	};
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5		, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-
-FUNC VOID DIA_Lares_DI_Training_1H_5 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 100))
-	{
-			AI_Output (self ,other,"DIA_Lares_DI_Training_1H_5_09_00"); //Biodra powinny byæ w ruchu. Bêdzie ci ³atwiej unikn¹æ ataku.
-	};
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-
-
-//***************************************************************************
-// DEX 1
-//***************************************************************************
-/*
-func void DIA_Lares_DI_Training_DEX_1 ()
-{
-	if (B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED))
-	{
-		AI_Output (self ,other,"DIA_Lares_DI_Training_DEX_1_09_00"); //Górna czêœæ cia³a musi poruszaæ siê w zgodzie z reszt¹.
-	};
-
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1		, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5		, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-
-//***************************************************************************
-// DEX 5
-//***************************************************************************
-
-func void DIA_Lares_DI_Training_DEX_5 ()
-{
-	if (B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED))
-	{
-		AI_Output (self ,other,"DIA_Lares_DI_Training_DEX_5_09_00"); //Ca³y czas musisz uwa¿aæ, ¿eby nie straciæ równowagi.
-	};
-
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-*/
-// ------ SNEAK ------
-func void DIA_Lares_DI_Training_SNEAK ()
-{
-	if (B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK))
-	{
-		AI_Output (self ,other,"DIA_Lares_DI_Training_SNEAK_09_00"); //Zawsze stawiaj ca³¹ stopê, kiedy siê skradasz.
-	};
-
-	Info_ClearChoices (DIA_Lares_DI_Training);
-	Info_AddChoice	  (DIA_Lares_DI_Training, DIALOG_BACK, DIA_Lares_DI_Training_BACK);
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_SNEAK) == FALSE)
-	{
-		Info_AddChoice		(DIA_Lares_DI_Training, "Nauka skradania siê"	,DIA_Lares_DI_Training_SNEAK);
-	};
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Lares_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Lares_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Lares_DI_Training_1H_1);
-	Info_AddChoice		(DIA_Lares_DI_Training, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Lares_DI_Training_1H_5);
-	
-};
-
-// ------ Back ------
-func void DIA_Lares_DI_Training_BACK ()
-{
-	Info_ClearChoices (DIA_Lares_DI_Training);
+	self.aivar[AIV_CanTeach] = true;
 };
 
 // ************************************************************

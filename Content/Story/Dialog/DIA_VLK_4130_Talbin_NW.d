@@ -74,7 +74,7 @@ func void DIA_Talbin_NW_Info ()
 
 	Npc_ExchangeRoutine	(self,"Farm"); 
 	TOPIC_END_Talbin_Runs = TRUE;
-	B_GivePlayerXP (XP_SavedTalbin);
+	B_GivePlayerXP(600);
 };
 
  

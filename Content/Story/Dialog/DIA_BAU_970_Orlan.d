@@ -210,7 +210,7 @@ func void DIA_Addon_Orlan_Ranger_Aqua()
 	};
 	AI_Output (self, other, "DIA_Addon_Orlan_Ranger_Aqua_05_03"); //Czym mogê s³u¿yæ?
 	Info_ClearChoices	(DIA_Addon_Orlan_Ranger);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 func void DIA_Addon_Orlan_Ranger_Idiot ()
 {
@@ -248,7 +248,7 @@ func void DIA_Addon_Orlan_Teleportstein_Info ()
 	AI_Output	(self, other, "DIA_Addon_Orlan_Teleportstein_05_01"); //A tobie zamieniæ z kretynem na mózgi?! Dopóki Mag Wody nie powie, ¿e to ustrojstwo jest niegroŸne, nawet siê do niego nie zbli¿ê!
 	AI_Output	(self, other, "DIA_Addon_Orlan_Teleportstein_05_02"); //Przydzielono mnie do pilnowania jednego z takich kamieni - to mi w zupe³noœci wystarczy.
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	Info_ClearChoices	(DIA_Addon_Orlan_Teleportstein);
 	Info_AddChoice	(DIA_Addon_Orlan_Teleportstein, "Mo¿na rzuciæ okiem na ten kamieñ teleportacyjny?", DIA_Addon_Orlan_Teleportstein_sehen );
 	Info_AddChoice	(DIA_Addon_Orlan_Teleportstein, "Gdzie znajdê kamieñ teleportacyjny?", DIA_Addon_Orlan_Teleportstein_wo );
@@ -327,7 +327,7 @@ func void DIA_Addon_Orlan_WhenRangerMeeting_Info ()
 	AI_Output	(self, other, "DIA_Addon_Orlan_WhenRangerMeeting_05_01"); //Zgadza siê... Powinno siê ju¿ by³o zacz¹æ.
 	AI_Output	(self, other, "DIA_Addon_Orlan_WhenRangerMeeting_05_02"); //Ciekawi mnie, co ich wstrzymuje.
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	B_Addon_Orlan_RangersReadyForcoming ();
 	self.flags = 0;
 
@@ -727,7 +727,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 					AI_Output			(self, other, "DIA_Orlan_WETTKAMPFLAEUFT_05_06"); //Mam nadziejê, ¿e to ju¿ ostatni raz. Nie chcê tu wiêcej takich podejrzanych zabaw.
 				};
 			
-			B_GivePlayerXP (XP_Rukhar_WettkampfVorbei);	
+			B_GivePlayerXP(50);	
 
 			AI_StopProcessInfos (self);
 		
@@ -747,7 +747,7 @@ func void DIA_Orlan_WETTKAMPFLAEUFT_Info ()
 				};		
 			
 			MIS_Rukhar_Wettkampf = LOG_SUCCESS;
-			B_GivePlayerXP (XP_Ambient);
+			B_GivePlayerXP(50);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -844,5 +844,5 @@ FUNC VOID DIA_Orlan_Minenanteil_Info()
 {	
 	AI_Output (other, self, "DIA_Orlan_Minenanteil_15_00"); //Sprzedajesz udzia³y w kopalni?
 	AI_Output (self, other, "DIA_Orlan_Minenanteil_05_01"); //Jasne. U mnie dostaniesz wszystko, czego dusza zapragnie.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };	

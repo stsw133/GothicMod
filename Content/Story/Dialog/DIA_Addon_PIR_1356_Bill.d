@@ -282,7 +282,7 @@ FUNC VOID DIA_Addon_Bill_KilledEsteban_Info()
 	
 	B_LogEntry	(TOPIC_Addon_KillJuan,"Juan zosta³ za³atwiony, co ucieszy³o Billa.");
 	MIS_Addon_Bill_SearchAngusMurder = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_Bill_KillAngusMurder);
+	B_GivePlayerXP(200);
 	
 };
 
@@ -351,51 +351,5 @@ func void DIA_Addon_Bill_TeachPlayer_Info ()
 	AI_Output	(self, other, "DIA_Addon_Bill_TeachPlayer_03_01"); //Mogê ci pokazaæ, jak opró¿niaæ ludziom kieszenie tak, aby tego nie zauwa¿yli.
 	AI_Output	(self, other, "DIA_Addon_Bill_TeachPlayer_03_02"); //Ale musisz byæ co najmniej œrednio zrêczny, bo inaczej nie ma sensu zaczynaæ nauki.
 
-	Bill_Addon_TeachPickPocket = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 };
-
-// ------------------------------------------------------------
-// 						Teach Pickpocket
-// ------------------------------------------------------------
-instance DIA_Addon_Bill_LearnTalent		(C_INFO)
-{
-	npc		 	= PIR_1356_Addon_Bill;
-	nr		 	= 23;
-	condition	= DIA_Addon_Bill_LearnTalent_Condition;
-	information	= DIA_Addon_Bill_LearnTalent_Info;
-	permanent 	= TRUE;
-	description	= "Poka¿ mi, jak okradaæ innych. (10 PN)";
-};
-func int DIA_Addon_Bill_LearnTalent_Condition ()
-{
-	if (Bill_Addon_TeachPickPocket == TRUE)
-	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKPOCKET) == FALSE)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Addon_Bill_LearnTalent_Info ()
-{
-	AI_Output (other, self, "DIA_Addon_Bill_LearnTalent_15_00"); //Poka¿ mi, jak okradaæ innych.
-	
-	if (other.attribute[ATR_DEXTERITY] >= 40) //braucht man für Francis
-	{
-		if (B_TeachThiefTalent (self, other, NPC_TALENT_PICKPOCKET))
-		{
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_01"); //Jeœli chcesz kogoœ okraœæ, musisz sprawiæ, by poczu³ siê bezpiecznie.
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_02"); //Zawsze wci¹gam ofiarê w pogawêdkê. Dzia³a bez pud³a.
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_03"); //Kiedy zabierasz siê za kradzie¿, upewnij siê, ¿e ofiara niczego nie zauwa¿y³a.
-
-			AI_Output (other, self, "DIA_Addon_Bill_LearnTalent_15_05"); //Coœ jeszcze?
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_06"); //Tak. Potrenuj trochê zrêcznoœæ, jako ¿e zrêczniejszemu z³odziejowi ³atwiej spostrzec dobr¹ okazjê.
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_07"); //I ³atwiej unikn¹æ z³apania na gor¹cym uczynku.
-			AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_08"); //Przynajmniej w teorii.
-		};
-	}
-	else 
-	{
-		AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_09"); //Zapomnij o tym. Jesteœ zbyt niezdarny!
-		AI_Output (self ,other ,"DIA_Addon_Bill_LearnTalent_03_10"); //Potrenuj zrêcznoœæ albo znajdŸ sobie lepszego nauczyciela.
-	};
-};
-

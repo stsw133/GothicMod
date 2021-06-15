@@ -99,7 +99,7 @@ FUNC VOID DIA_Angar_NW_KnowWhereEnemy_Yes ()
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Angar_IsOnBoard	 = LOG_SUCCESS;
 	crewmember_Count = (Crewmember_Count +1);
-	B_GivePlayerXP (XP_Crewmember_Success);
+	B_GivePlayerXP(500);
 
 	
 	if (MIS_ReadyforChapter6 == TRUE)

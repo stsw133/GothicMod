@@ -128,7 +128,7 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 		
 		if (!FinalDragonEquipment_Once)
 		{
-			B_GivePlayerXP(XP_BONUS_10);
+			B_GivePlayerXP(1000);
 			FinalDragonEquipment_Once = true;
 		};
 	};

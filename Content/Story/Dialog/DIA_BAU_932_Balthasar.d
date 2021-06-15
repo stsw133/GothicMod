@@ -120,7 +120,7 @@ func void DIA_Addon_Balthasar_Rangerbandits_Info ()
 		AI_Output	(self, other, "DIA_Addon_Balthasar_Rangerbandits_05_03"); //Wydawa³o mi siê, ¿e prowadzili ze sob¹ dziewczynê, ale nie dam za to g³owy.
 		AI_Output	(self, other, "DIA_Addon_Balthasar_Rangerbandits_05_04"); //Mam nadziejê, ¿e jej nie skrzywdzili.
 	};
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	AI_Output	(self, other, "DIA_Addon_Balthasar_Rangerbandits_05_05"); //Cieszê siê, ¿e ominêli nasz¹ farmê.
 };
 
@@ -275,7 +275,7 @@ func void DIA_Balthasar_BENGARUEBERREDET_Info ()
 
 	Npc_ExchangeRoutine	(self,"BengarsWeide"); 	
 
-	B_GivePlayerXP (XP_Balthasar_BengarsWeide);
+	B_GivePlayerXP(100);
 
 	//Joly: "NW_BIGMILL_FARM3_BALTHASAR"
 	

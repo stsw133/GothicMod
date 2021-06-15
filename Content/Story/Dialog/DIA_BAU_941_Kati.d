@@ -96,7 +96,7 @@ func void DIA_Kati_HALLO_Info ()
 		Npc_ExchangeRoutine	(self,"Start");
 		B_StartOtherRoutine	(Randolph,"Start");
 
-		B_GivePlayerXP (XP_Akil_Tot);	
+		B_GivePlayerXP(50);	
 	}
 	else
 	{

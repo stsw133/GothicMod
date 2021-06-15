@@ -294,7 +294,7 @@ FUNC VOID DIA_Addon_Greg_AboutCanyon_RazorsDead()
 	
 	MIS_Addon_Greg_ClearCanyon = LOG_SUCCESS;
 	B_Addon_PiratesGoHome();
-	B_GivePlayerXP (XP_ADDON_CLEARCANYON);
+	B_GivePlayerXP(250);
 	Info_ClearChoices (DIA_Addon_Greg_AboutCanyon);
 };
 
@@ -458,7 +458,7 @@ func void DIA_Addon_Greg_Sauber2_Info ()
 	B_LogEntry	(TOPIC_Addon_MorganBeach,"Powiedzia³em Gregowi, ¿e oczyœci³em pó³nocn¹ pla¿ê.");
 	
 	MIS_Addon_MorganLurker = LOG_SUCCESS;	
-	B_GivePlayerXP (XP_Addon_Morgan_LurkerPlatt);	
+	B_GivePlayerXP(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -493,7 +493,7 @@ func void DIA_Addon_Greg_BanditPlatt2_Info ()
 	B_LogEntry (TOPIC_Addon_BanditsTower,"Bandyci w wie¿y nie ¿yj¹. Greg jest bardzo zadowolony.");
 	
 	MIS_Henry_FreeBDTTower = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_Henry_FreeBDTTower);	
+	B_GivePlayerXP(200);
 };
 
 
@@ -531,7 +531,7 @@ FUNC VOID DIA_Addon_Greg_BanditGoldmine_Info()
 	B_LogEntry (TOPIC_Addon_ScoutBandits,"Poinformowa³em Grega o kopalni z³ota.");	
 	
 	MIS_Greg_ScoutBandits = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Greg_ScoutBandits);
+	B_GivePlayerXP(200);
 };
 
 
@@ -691,8 +691,5 @@ func void DIA_Addon_Greg_RavenDead_Info ()
 	CreateInvItems (self, ItMi_Gold, 500);									
 	B_GiveInvItems (self, other, ItMi_Gold, 500);		
 	AI_Output	(self, other, "DIA_Addon_Greg_RavenDead_01_03"); //Masz charakter. Podobasz mi siê.
-	B_GivePlayerXP (XP_ADDON_GregRavenLohn);
+	B_GivePlayerXP(1000);
 };
-
-
-

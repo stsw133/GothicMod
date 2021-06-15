@@ -199,7 +199,7 @@ var int DIA_Vatras_DI_PEDROTOT_VatrasSucked;
 func void DIA_Vatras_DI_PEDROTOT_Info ()
 {
 	AI_Output			(other, self, "DIA_Vatras_DI_PEDROTOT_15_00"); //Znalaz³em tego zdrajcê, Pedra.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 	
 	if (MIS_Gorax_KillPedro == LOG_SUCCESS)
 	&& (Npc_IsDead(Pedro_DI)) 
@@ -322,7 +322,7 @@ func void DIA_Vatras_DI_DementorObsessionBook_Info ()
 		AI_Output			(self, other, "DIA_Vatras_DI_DementorObsessionBook_05_02"); //Znalaz³eœ ich wiêcej? Przynieœ mi wszystkie, które zdo³asz znaleŸæ!
 	};
 	B_GiveInvItems (other, self, ITWR_DementorObsessionBook_MIS,1);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 };
 	
 ///////////////////////////////////////////////////////////////////////

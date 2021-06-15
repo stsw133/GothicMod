@@ -340,7 +340,7 @@ FUNC VOID DIA_Addon_Emilio_Mine_Info()
 	
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP (XP_Addon_MINE);
+	B_GivePlayerXP(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 	

@@ -194,7 +194,7 @@ func void DIA_Addon_Cavalorn_Beutel_Info ()
 	};
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_Beutel_08_07"); //Masz j¹ ze sob¹? Dam ci za ni¹ 100 sztuk z³ota.
 	TOPIC_End_CavalornTheHut = TRUE;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	Info_ClearChoices	(DIA_Addon_Cavalorn_Beutel);
 
 	if (Npc_HasItems (other,ItSe_CavalornsBeutel))
@@ -282,7 +282,7 @@ func void DIA_Addon_Cavalorn_ErzGeben_Info ()
 		};
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_ErzGeben_08_02"); //Prawdziwy z ciebie przyjaciel. Dziêkujê.
 	MIS_Addon_Cavalorn_TheHut = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_CavalornsBeutel);
+	B_GivePlayerXP(500);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -559,7 +559,7 @@ func void B_Addon_Cavalorn_VatrasBrief ()
 	};
 
 	Npc_ExchangeRoutine	(self,"Start");
-	B_GivePlayerXP (XP_Addon_Cavalorn_KillBrago);
+	B_GivePlayerXP(100);
 	
 	Log_CreateTopic (TOPIC_Addon_KDW, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_KDW, LOG_RUNNING);
@@ -775,7 +775,7 @@ func void DIA_Addon_Cavalorn_BroughtLetter_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Cavalorn_BroughtLetter_15_00"); //Da³em Vatrasowi twój list.
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_BroughtLetter_08_01"); //Nie oczekiwa³em od ciebie niczego innego. Dziêkujê.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 
 
@@ -922,7 +922,7 @@ func void DIA_Addon_Cavalorn_GotOrnaFromHagen_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Cavalorn_GotOrnaFromHagen_15_00"); //Dosta³em brakuj¹cy ornament od Lorda Hagena.
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_GotOrnaFromHagen_08_01"); //Widzisz? Wiedzia³em, ¿e mieli go paladyni.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	MIS_Addon_Cavalorn_GetOrnamentFromPAL = LOG_SUCCESS;
 };
 
@@ -954,125 +954,7 @@ func void DIA_Addon_Cavalorn_WannaLearn_Info ()
 	AI_Output (self, other, "DIA_Addon_Cavalorn_WannaLearn_08_01"); //Pewnie. Przecie¿ wiesz. Oj, ch³opie, nieŸle ciê przegonili.
 	AI_Output (self, other, "DIA_Addon_Cavalorn_WannaLearn_08_02"); //Niczego nie pamiêtasz, prawda?
 	
-	Cavalorn_Addon_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	Log_CreateTopic (Topic_OutTeacher,LOG_NOTE);
 	B_LogEntry (Topic_OutTeacher, LogText_Addon_Cavalorn_Teach);
 };
-
-// ************************************************************
-// 			  				TEACH
-// ************************************************************
-var int Addon_Cavalorn_Merke_Bow;
-var int Addon_Cavalorn_Merke_1h;
-// ------------------------------------------------------
-
-instance DIA_Addon_Cavalorn_TEACH (C_INFO)
-{
-	npc		 	= BAU_4300_Addon_Cavalorn;
-	nr		 	= 8;
-	condition	= DIA_Addon_Cavalorn_TEACH_Condition;
-	information	= DIA_Addon_Cavalorn_TEACH_Info;
-	permanent 	= TRUE;
-	description	= "Chcê siê czegoœ od ciebie nauczyæ.";
-};
-
-func int DIA_Addon_Cavalorn_TEACH_Condition ()
-{
-	if (Cavalorn_Addon_TeachPlayer == TRUE)
-	{
-		return TRUE;
-	};
-};
-
-func VOID DIA_Addon_Cavalorn_TEACH_Choices ()
-{
-	Info_ClearChoices (DIA_Addon_Cavalorn_Teach);
-	Info_AddChoice (DIA_Addon_Cavalorn_Teach, DIALOG_BACK, DIA_Addon_Cavalorn_Teach_Back);
-
-	if (Npc_GetTalentSkill (other,NPC_TALENT_SNEAK) == FALSE) 
-			{
-				Info_AddChoice		(DIA_Addon_Cavalorn_Teach, B_BuildLearnString("Skradanie siê"	, B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1))		,DIA_Addon_Cavalorn_Teach_Sneak);
-			};
-
-	Info_AddChoice (DIA_Addon_Cavalorn_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	 ,DIA_Addon_Cavalorn_Teach_Bow_1);
-	Info_AddChoice (DIA_Addon_Cavalorn_Teach, B_BuildLearnString(PRINT_LearnBow5, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5) ,DIA_Addon_Cavalorn_Teach_Bow_5);
-	Info_AddChoice (DIA_Addon_Cavalorn_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))	 ,DIA_Addon_Cavalorn_Teach_1H_1);
-	Info_AddChoice (DIA_Addon_Cavalorn_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)	 ,DIA_Addon_Cavalorn_Teach_1H_5);
-	
-};
-func void DIA_Addon_Cavalorn_TEACH_Info ()
-{
-	AI_Output (other, self, "DIA_Addon_Cavalorn_TEACH_15_00"); //Chcê siê czegoœ od ciebie nauczyæ.
-	AI_Output (self, other, "DIA_Addon_Cavalorn_TEACH_08_01"); //Pewnie. Co chcesz wiedzieæ?
-	
-	Addon_Cavalorn_Merke_Bow = other.HitChance[NPC_TALENT_BOW];
-	Addon_Cavalorn_Merke_1h =  other.HitChance[NPC_TALENT_1H];
-	
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_Sneak ()
-{
-	if (B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK))
-		{
-			AI_Output			(self, other, "DIA_Addon_Cavalorn_Teach_Sneak_08_00"); //Na miêkkich podeszwach mamy wiêksze szanse podkraœæ siê niezauwa¿enie do przeciwnika.
-		};
-
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_BOW_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 90);
-	
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_BOW_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 90);
-	
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 30);
-	
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 30);
-
-	DIA_Addon_Cavalorn_TEACH_Choices ();
-};
-
-FUNC VOID DIA_Addon_Cavalorn_Teach_Back ()
-{
-	if (Addon_Cavalorn_Merke_Bow < other.HitChance[NPC_TALENT_BOW])
-	|| (Addon_Cavalorn_Merke_1h  < other.HitChance[NPC_TALENT_1H])
-	{
-		AI_Output (self ,other,"DIA_Addon_Cavalorn_Teach_BACK_08_00"); //Od razu lepiej. Wiele zapomnia³eœ, ale doprowadzimy ciê do formy.
-	};
-
-	Info_ClearChoices (DIA_Addon_Cavalorn_Teach);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

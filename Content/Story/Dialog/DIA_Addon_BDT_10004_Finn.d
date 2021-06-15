@@ -180,7 +180,7 @@ FUNC VOID DIA_Addon_Finn_Mine_Info()
 	Knows_Truemmerschlag = TRUE;
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP (XP_Addon_MINE);
+	B_GivePlayerXP(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };
@@ -277,8 +277,8 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 		if (Finn_Gratulation == FALSE)
 		{
 			AI_Output (self, other, "DIA_Addon_Finn_ein_07_10");//Teraz jesteœ tak dobry, jak ja. Gratulujê, partnerze!
-			B_GivePlayerXP (XP_Ambient*2);
-			Snd_Play ("LevelUP");
+			B_GivePlayerXP(200);
+			Snd_Play("LevelUP");
 			Finn_Gratulation = TRUE;
 		};
 	};
@@ -286,7 +286,7 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 	
 	var string ConcatText;
 	
-	ConcatText = ConcatStrings ("Kopanie z³ota: ", IntToString (Hero_HackChance));
+	ConcatText = ConcatStrings ("Kopanie z³ota: ", IntToString(Hero_HackChance));
 	ConcatText = ConcatStrings (ConcatText, " Prozent");
 	PrintScreen (concatText, -1, -1, FONT_ScreenSmall,2);
 };

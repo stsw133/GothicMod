@@ -346,7 +346,7 @@ func int DIA_Jora_BringGold_Condition ()
 		return TRUE;
 	};
 };
-func void DIA_Jora_BringGold_Info ()
+func void DIA_Jora_BringGold_Info()
 {
 	AI_Output (other, self, "DIA_Jora_BringGold_15_00"); //Oto 50 sztuk z³ota, które ci ukrad³.
 	
@@ -355,7 +355,7 @@ func void DIA_Jora_BringGold_Info ()
 		AI_Output (self, other,"DIA_Jora_BringGold_08_01"); //Chwa³a niech bêdzie Innosowi! W mieœcie wci¹¿ panuje sprawiedliwoœæ.
 	
 		Jora_Gold = LOG_SUCCESS;
-		B_GivePlayerXP(XP_Jora_Gold);
+		B_GivePlayerXP(100);
 	}
 	else
 	{

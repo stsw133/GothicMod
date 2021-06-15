@@ -463,7 +463,7 @@ FUNC INT DIA_Cassia_BevorLernen_Condition()
 {	
 	if (Join_Thiefs == TRUE)
 	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
-	&& ((Cassia_TeachPickpocket == FALSE)
+	&& ((self.aivar[AIV_CanTeach] == false)
 	|| (Cassia_TeachDEX == FALSE))
 	{
 		return TRUE;
@@ -476,7 +476,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Info()
 	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Cassia_BevorLernen_16_01");//Pewnie, nie ma problemu. Daj mi tylko znaæ, jak bêdziesz gotów.
-		Cassia_TeachPickpocket = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		Cassia_TeachDEX = TRUE;
 	}
 	else
@@ -486,12 +486,12 @@ FUNC VOID DIA_Cassia_BevorLernen_Info()
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 		Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Mo¿e póŸniej... (POWRÓT)",DIA_Cassia_BevorLernen_Spaeter);
 		
-		if (Cassia_TeachPickpocket == FALSE)
+		if (self.aivar[AIV_CanTeach] == false)
 		{
 			Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Chcê poznaæ zasady kradzie¿y kieszonkowej (zap³aæ 100 sztuk z³ota).",DIA_Cassia_BevorLernen_Pickpocket);
 		};
 		
-		if (Cassia_TeachDEX == FALSE)
+		if (!Cassia_TeachDEX)
 		{
 			Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Chcê siê staæ zrêczniejszy (zap³aæ 100 sztuk z³ota).",DIA_Cassia_BevorLernen_DEX);
 		};
@@ -506,7 +506,8 @@ FUNC VOID DIA_Cassia_BevorLernen_DEX()
 	if B_GiveInvItems (other, self, ItMi_Gold, 100)
 	{
 		AI_Output (other, self, "DIA_Cassia_BevorLernen_DEX_15_00");//Chcê byæ zrêczniejszy. Tu masz z³oto.
-		AI_Output (self, other, "DIA_Cassia_BevorLernen_DEX_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
+		//AI_Output (self, other, "DIA_Cassia_BevorLernen_DEX_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
+		B_RaiseAttribute(other, ATR_DEXTERITY, 2);
 		Cassia_TeachDEX = TRUE;
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 	}
@@ -522,7 +523,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Pickpocket()
 	{
 		AI_Output (other, self, "DIA_Cassia_BevorLernen_Pickpocket_15_00");//Chcê siê nauczyæ kradzie¿y kieszonkowej. Oto z³oto.
 		AI_Output (self, other, "DIA_Cassia_BevorLernen_Pickpocket_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
-		Cassia_TeachPickpocket = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 	}
 	else 
@@ -531,99 +532,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Pickpocket()
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 	};	
 };
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Cassia_TEACH		(C_INFO)
-{
-	npc		  	 = 	VLK_447_Cassia;
-	nr			 = 	12;
-	condition	 = 	DIA_Cassia_TEACH_Condition;
-	information	 = 	DIA_Cassia_TEACH_Info;
-	permanent	 = 	FALSE;	//TRUE
-	description	 = 	"Chcê byæ zrêczniejszy.";
-};
-func int DIA_Cassia_TEACH_Condition ()
-{	
-	if (Cassia_TeachDEX == TRUE) 
-	{
-		return TRUE;
-	};
-};
-func void DIA_Cassia_TEACH_Info ()
-{
-	AI_Output (other, self, "DIA_Cassia_TEACH_15_00"); //Chcê byæ zrêczniejszy.
-	/*
-	Info_ClearChoices   (DIA_Cassia_TEACH);
-	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
-	*/
-	B_RaiseAttribute(other, ATR_DEXTERITY, 2);
-};
-/*
-func void DIA_Cassia_TEACH_BACK()
-{
-	Info_ClearChoices (DIA_Cassia_TEACH);
-};
-func void DIA_Cassia_TEACH_1()
-{
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
-	
-	Info_ClearChoices   (DIA_Cassia_TEACH);
-	
-	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
-	
-	
-};
-func void DIA_Cassia_TEACH_5()
-{
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
-	
-	Info_ClearChoices   (DIA_Cassia_TEACH);
-	
-	Info_AddChoice 		(DIA_Cassia_TEACH, DIALOG_BACK, DIA_Cassia_TEACH_BACK);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX1	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)),DIA_Cassia_TEACH_1);
-	Info_AddChoice		(DIA_Cassia_TEACH, B_BuildLearnString(PRINT_LearnDEX5	, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_Cassia_TEACH_5);
-	
-	
-};
-*/
-//////////////////////////////////////////////////////////////////////
-//	Info Teach
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Cassia_Pickpocket   (C_INFO)
-{
-	npc         = VLK_447_Cassia;
-	nr          = 10;
-	condition   = DIA_Cassia_Pickpocket_Condition;
-	information = DIA_Cassia_Pickpocket_Info;
-	permanent   = TRUE;
-	description = "Poka¿ mi, jak okradaæ innych (10 punktów nauki).";
-};
 
-FUNC INT DIA_Cassia_Pickpocket_Condition()
-{	
-	if (Cassia_TeachPickpocket == TRUE)
-	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKPOCKET) == FALSE)
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Cassia_Pickpocket_Info()
-{
-	AI_Output (other, self, "DIA_Cassia_Pickpocket_15_00");//Poka¿ mi, jak opró¿niæ czyjeœ kieszenie.
-	
-	if B_TeachThiefTalent (self, other, NPC_TALENT_PICKPOCKET)
-	{
-		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_01");//Wenn du jemandem die Taschen ausleeren willst, lenke ihn ab. Quatsch ihn einfach an, sprich mit ihm.
-		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_02");//Beim Gespräch guckst du dir ihn an. Achte auf ausgebeulte Taschen, Schmuck oder Lederschnüre am Hals. Und achte vor allem darauf, wie aufmerksam der Kerl ist.
-		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_03");//Einen betrunkenen Tagelöhner auszurauben, ist was anderes, als einen wachsamen Händler, klar?
-		AI_Output (self, other, "DIA_Cassia_Pickpocket_16_04");//Wenn du dich natürlich ungeschickt anstellst, kriegt er's mit. Also immer ruhig bleiben.
-	};
-};
 //////////////////////////////////////////////////////////////////////
 //	Info Aufnahme
 ///////////////////////////////////////////////////////////////////////
@@ -659,7 +568,7 @@ FUNC VOID DIA_Cassia_Aufnahme_Info()
 	AI_Output  (self, other, "DIA_Cassia_Aufnahme_16_04");//W³aœnie tak. Kiedy bêdziesz z kimœ rozmawiaæ i zrobisz ten znak, jasne bêdzie, ¿e jesteœ jednym z nas.
 		
 	MIS_CassiaRing = LOG_SUCCESS;
-	B_GivePlayerXP (XP_CassiaRing);
+	B_GivePlayerXP(100);
 	Knows_SecretSign = TRUE;
 	Log_CreateTopic (Topic_Diebesgilde, LOG_NOTE);
 	B_LogEntry (Topic_Diebesgilde,"Zosta³em przyjêty do gildii z³odziei."); 
@@ -776,7 +685,7 @@ FUNC VOID DIA_Cassia_abgeben_Info()
 		    
 		
 		MIS_CassiaKelche = LOG_SUCCESS;
-		B_GivePlayerXP (XP_CassiaBlutkelche);
+		B_GivePlayerXP(300);
 	}
 	else 
 	{

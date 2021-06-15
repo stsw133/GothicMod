@@ -69,8 +69,7 @@ INSTANCE DIA_Gorn_DI_Teach(C_INFO)
 	nr			= 10;
 	condition	= DIA_Gorn_DI_Teach_Condition;
 	information	= DIA_Gorn_DI_Teach_Info;
-	permanent	= TRUE;
-	
+	permanent	= FALSE;
 	description = "Chcê trochê potrenowaæ.";
 };                       
 
@@ -86,40 +85,7 @@ FUNC VOID DIA_Gorn_DI_Teach_Info()
 {	
 	AI_Output (other, self , 	"DIA_Gorn_DI_Teach_15_00"); //Chcê trochê potrenowaæ.
 	AI_Output (self, other, 	"DIA_Gorn_DI_Teach_12_01"); //Fakt. Przyda ci siê.
-	
-	Info_ClearChoices 	(DIA_Gorn_DI_Teach);
-	Info_AddChoice 		(DIA_Gorn_DI_Teach,	DIALOG_BACK		,DIA_Gorn_DI_Teach_Back);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Gorn_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Gorn_DI_Teach_2H_1);
-};
-
-FUNC VOID DIA_Gorn_DI_Teach_2H_1 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100))
-	{
-		AI_Output(self,other,"DIA_Gorn_DI_Teach_2H_1_12_00"); //W Kolonii by³eœ w du¿o lepszej formie.
-	};
-	Info_ClearChoices 	(DIA_Gorn_DI_Teach);
-	Info_AddChoice 		(DIA_Gorn_DI_Teach,	DIALOG_BACK		,DIA_Gorn_DI_Teach_Back);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Gorn_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Gorn_DI_Teach_2H_1);
-};
-
-FUNC VOID DIA_Gorn_DI_Teach_2H_5 ()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100))
-	{
-		AI_Output(self,other,"DIA_Gorn_DI_Teach_2H_5_12_00"); //Spróbuj trzymaæ orê¿ trochê wy¿ej. Tak¹ gard¹ nie sparujesz nawet laski niewidomego.
-	};
-	Info_ClearChoices 	(DIA_Gorn_DI_Teach);
-	Info_AddChoice 		(DIA_Gorn_DI_Teach,	DIALOG_BACK		,DIA_Gorn_DI_Teach_Back);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Gorn_DI_Teach_2H_5);
-	Info_AddChoice		(DIA_Gorn_DI_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Gorn_DI_Teach_2H_1);
-};
-
-FUNC VOID DIA_Gorn_DI_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Gorn_DI_Teach);
+	self.aivar[AIV_CanTeach] = true;
 };
 
 ///////////////////////////////////////////////////////////////////////

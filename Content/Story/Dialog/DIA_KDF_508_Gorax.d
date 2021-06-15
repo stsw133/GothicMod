@@ -130,7 +130,7 @@ func void DIA_Addon_Gorax_DaronsStatue_Info ()
 		
 		AI_Output	(self, other, "DIA_Addon_Gorax_DaronsStatue_14_03"); //Mo¿esz liczyæ na m¹ wdziêcznoœæ, m³odzieñcze.
 		MIS_Addon_Daron_GetStatue = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Addon_ReturnedLostInnosStatue_Daron);
+		B_GivePlayerXP(300);
 		DIA_Gorax_GOLD_perm = TRUE; //WICHTIG
 	}
 	else
@@ -228,7 +228,7 @@ func void DIA_Gorax_Wurst_Info ()
 		AI_Output (self, other, "DIA_Gorax_Wurst_14_01"); //Doskonale siê spisa³eœ. WeŸ te zwoje leczenia - i wracaj do pracy.
 		
 		MIS_GoraxEssen = LOG_SUCCESS; 
-		B_GivePlayerXP (XP_GoraxEssen);
+		B_GivePlayerXP(200);
 		B_GiveInvItems (self, other, ItSc_LightHeal,2);
 	}
 	else 
@@ -339,7 +339,7 @@ FUNC VOID DIA_Gorax_Orlan_240 ()
 	{
 		AI_Output (self, other, "DIA_Gorax_Orlan_240_14_01"); //Doskonale. Przyjmij ten zwój leczenia jako swoj¹ zap³atê. A teraz idŸ, znajdŸ sobie jakieœ zajêcie.
 		MIS_GoraxWein = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Goraxwein);			
+		B_GivePlayerXP(150);			
 	}
 	else
 	{
@@ -529,7 +529,7 @@ func void DIA_Gorax_KILLPEDRO_nein ()
 	AI_StopProcessInfos (self);
 };
 
-func void DIA_Gorax_KILLPEDRO_ja ()
+func void DIA_Gorax_KILLPEDRO_ja()
 {
 	AI_Output			(other, self, "DIA_Gorax_KILLPEDRO_ja_15_00"); //Powiedz mi, co to za zadanie.
 	AI_Output			(self, other, "DIA_Gorax_KILLPEDRO_ja_14_01"); //Dobrze. Tylko s³uchaj uwa¿nie, bo drugi raz tego nie powtórzê.
@@ -539,7 +539,7 @@ func void DIA_Gorax_KILLPEDRO_ja ()
 
  	B_LogEntry (TOPIC_TraitorPedro, "Gorax przekaza³ mi, ¿e Serpentes chce, abym zabi³ zdrajcê Pedra, jeœli gdzieœ go spotkam.");
 	
-	B_GivePlayerXP (XP_Gorax_KILLPEDRO_GotMission);
+	B_GivePlayerXP(600);
 	MIS_Gorax_KillPedro = LOG_RUNNING;
 	AI_StopProcessInfos (self);
 };

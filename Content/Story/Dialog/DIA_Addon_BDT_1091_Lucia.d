@@ -106,7 +106,7 @@ FUNC VOID DIA_Addon_Lucia_Khorinis_Info()
 		AI_Output (other,self , "DIA_Addon_Lucia_Khorinis_15_04"); //Dlaczego?
 		AI_Output (self, other, "DIA_Addon_Lucia_Khorinis_16_05"); //Bo to tchórz. Gdy bandyci mnie porwali, nic nie zrobi³.
 		TOPIC_END_Lucia = TRUE;
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(100);
 	};
 	TOPIC_END_Lucia = TRUE;
 };

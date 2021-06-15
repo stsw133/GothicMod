@@ -230,7 +230,7 @@ func void DIA_Coragon_BringSilber_Info ()
 	};
 	
 	AI_Output (self ,other,"DIA_ADDON_NEW_Coragon_Add_09_13"); //Niemo¿liwe!
-	B_GivePlayerXP (XP_CoragonsSilber);
+	B_GivePlayerXP(150);
 	B_Coragon_Bier();
 	
 	MIS_Coragon_Silber = LOG_SUCCESS;
@@ -289,7 +289,7 @@ func void DIA_Coragon_GiveBook_Info ()
 	AI_Output (other, self,"DIA_Coragon_Add_15_18"); //Oto twoja ksiêga.
 	B_GiveInvItems (other, self, ItWr_Schuldenbuch, 1);
 	AI_Output (self ,other,"DIA_ADDON_NEW_Coragon_Add_09_19"); //Dziêki! Ratujesz mi ¿ycie - Lehmar bywa niebezpieczny, gdy w grê wchodz¹ jego pieni¹dze.
-	B_GivePlayerXP (XP_Schuldenbuch);
+	B_GivePlayerXP(200);
 	B_Coragon_Bier();
 };
 

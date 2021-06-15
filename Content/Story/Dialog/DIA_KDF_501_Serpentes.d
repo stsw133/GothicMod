@@ -265,7 +265,7 @@ func void DIA_Serpentes_SUCCESS_Info ()
 	};
 	
 	MIS_GOLEM = LOG_SUCCESS;
-	B_GivePlayerXP (XP_GOLEM);
+	B_GivePlayerXP(200);
 	
 };
 
@@ -568,7 +568,7 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 		 if (SerpentesMinenAnteilCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Serpentes_MinenAnteileBringen_15_00"); //Odzyska³em jeden z udzia³ów w kopalni.
-				B_GivePlayerXP (XP_BringSerpentesMinenAnteil);
+				B_GivePlayerXP(75);
 				B_GiveInvItems (other, self, ItWr_MinenAnteil_Mis,1);
 				SerpentesMinenAnteilCounter = SerpentesMinenAnteilCounter + 1;
 			}
@@ -578,7 +578,7 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 	
 				B_GiveInvItems (other, self, ItWr_MinenAnteil_Mis,  SerpentesMinenAnteilCount);
 	
-				XP_BringSerpentesMinenAnteils = (SerpentesMinenAnteilCount * XP_BringSerpentesMinenAnteil);
+				XP_BringSerpentesMinenAnteils = (SerpentesMinenAnteilCount * 75);
 				SerpentesMinenAnteilCounter = (SerpentesMinenAnteilCounter + SerpentesMinenAnteilCount); 
 	
 				B_GivePlayerXP (XP_BringSerpentesMinenAnteils);
@@ -642,7 +642,7 @@ func void DIA_Serpentes_GOTSalandril_Info ()
 {
 	AI_Output			(other, self, "DIA_Serpentes_GOTSalandril_15_00"); //Wiem, kto wprowadzi³ fa³szywe udzia³y do obrotu. To Salandril, alchemik z górnego miasta.
 	AI_Output			(self, other, "DIA_Serpentes_GOTSalandril_10_01"); //PrzyprowadŸ go tutaj. Musimy z nim powa¿nie porozmawiaæ.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -691,7 +691,7 @@ func void DIA_Serpentes_SalandrilHERE_Info ()
 		B_GiveInvItems (self, other, ItMi_Gold, 400);					
 	};
 	TOPIC_END_MinenAnteile = TRUE;
-	B_GivePlayerXP 	(XP_SalandrilInKloster);
+	B_GivePlayerXP(400);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -728,7 +728,7 @@ func void DIA_Serpentes_SalandrilDEAD_Info ()
 	AI_Output			(other, self, "DIA_Serpentes_SalandrilDEAD_15_00"); //Salandril nie ¿yje.
 	AI_Output			(self, other, "DIA_Serpentes_SalandrilDEAD_10_01"); //Có¿, jego wystêpki zosta³y ukarane. Niech Innos zlituje siê nad dusz¹ tego nieszczêœnika.
 	TOPIC_END_MinenAnteile = TRUE;
-	B_GivePlayerXP 	(XP_Ambient);
+	B_GivePlayerXP(150);
 };
 	
 //##################################################################

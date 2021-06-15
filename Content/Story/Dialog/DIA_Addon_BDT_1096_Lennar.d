@@ -135,7 +135,7 @@ FUNC VOID DIA_Addon_Lennar_Mine_Info()
 	B_Upgrade_Hero_HackChance(10);
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP (XP_Addon_MINE);
+	B_GivePlayerXP(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };

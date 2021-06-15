@@ -519,7 +519,7 @@ INSTANCE DIA_Buster_Teach (C_INFO)
 	nr			= 8;
 	condition	= DIA_Buster_Teach_Condition;
 	information	= DIA_Buster_Teach_Info;
-	permanent	= TRUE;
+	permanent	= FALSE;
 	description = "Mo¿esz mnie nauczyæ lepiej walczyæ?";
 };                       
 
@@ -548,35 +548,7 @@ FUNC VOID DIA_Buster_Teach_Info()
 		B_LogEntry (Topic_SoldierTeacher,"Buster mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 		BusterLOG = TRUE;
 	};
-	Info_ClearChoices 	(DIA_Buster_Teach);
-	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
-};
-
-FUNC VOID DIA_Buster_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Buster_Teach);
-};
-
-FUNC VOID DIA_Buster_Teach_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
-	
-	Info_ClearChoices 	(DIA_Buster_Teach);
-	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
-};
-
-FUNC VOID DIA_Buster_Teach_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
-	
-	Info_ClearChoices 	(DIA_Buster_Teach);
-	Info_AddChoice 		(DIA_Buster_Teach,DIALOG_BACK,DIA_Buster_Teach_Back);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Buster_Teach_1H_1);
-	Info_AddChoice		(DIA_Buster_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Buster_Teach_1H_5);
+	self.aivar[AIV_CanTeach] = true;
 };
 
 //#####################################################################
@@ -729,7 +701,7 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_15_01"); //Co to ma znaczyæ?
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_02"); //Nie ¿yje. Mo¿esz zatrzymaæ rogi. Nie wiem, co z nimi teraz zrobiæ.
 		MIS_Buster_KillShadowbeasts_DJG = LOG_SUCCESS; //Joly: Feierabend ab Kapitel 5!!!!!!!
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(250);
 	}
 	else if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
 	{

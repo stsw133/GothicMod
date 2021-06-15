@@ -263,7 +263,7 @@ func void DIA_Jorgen_NEUHIER_Info ()
 	if (Npc_KnowsInfo(other, DIA_Jorgen_Milten))
 	{
 		AI_Output			(self, other, "DIA_Jorgen_NEUHIER_07_02"); //Ale dziêki za pomoc. Milten rzeczywiœcie znalaz³ tu dla mnie miejsce.
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(200);
 	};
 
 	if (hero.guild != GIL_KDF)
@@ -463,7 +463,7 @@ func void DIA_Jorgen_BEMYCAPTAIN3_Info ()
 	JorgenIsCaptain = TRUE;
 	Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 	
-	B_GivePlayerXP (XP_Captain_Success);
+	B_GivePlayerXP(2000);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -540,22 +540,22 @@ func void DIA_Jorgen_PERM5_NOTCAPTAIN_Info ()
 
 	if 	(Npc_GetDistToWP(self,"NW_BIGFARM_KITCHEN_OUT_06")<1000)  
 	{
-	AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_01"); //NieŸle. Da siê tu wytrzymaæ.
-	AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_02"); //Dalej przydzielaj¹ mi jakieœ g³upie zadania, jak pilnowanie owiec, ale w porównaniu z klasztorem to prawdziwy raj!
+		AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_01"); //NieŸle. Da siê tu wytrzymaæ.
+		AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_02"); //Dalej przydzielaj¹ mi jakieœ g³upie zadania, jak pilnowanie owiec, ale w porównaniu z klasztorem to prawdziwy raj!
 
-		if (DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven == FALSE)
-		{
-		B_GivePlayerXP (XP_Ambient);
-		DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven = TRUE;
-		};
-	AI_StopProcessInfos (self);
+			if (DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven == FALSE)
+			{
+			B_GivePlayerXP(250);
+			DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven = TRUE;
+			};
+		AI_StopProcessInfos (self);
 	}
 	else
 	{
-	AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_03"); //Muszê sobie poszukaæ jakiegoœ innego miejsca. Ciekawe, dok¹d zanios¹ mnie wiatry tym razem?
+		AI_Output			(self, other, "DIA_Jorgen_PERM5_NOTCAPTAIN_07_03"); //Muszê sobie poszukaæ jakiegoœ innego miejsca. Ciekawe, dok¹d zanios¹ mnie wiatry tym razem?
 
-	AI_StopProcessInfos (self);
-	Npc_ExchangeRoutine	(self,"RausAusKloster");
+		AI_StopProcessInfos (self);
+		Npc_ExchangeRoutine	(self,"RausAusKloster");
 	};
 };
 

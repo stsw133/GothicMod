@@ -234,7 +234,7 @@ func void DIA_Addon_Myxir_TalkedToGhost_Info ()
 	AI_Output	(self, other, "DIA_Addon_Myxir_TalkedToGhost_12_03"); //Kto wie, co mogliby osi¹gn¹æ, gdyby wci¹¿ istnieli...
 	MIS_ADDON_Myxir_GeistBeschwoeren = LOG_SUCCESS;
 	
-	B_GivePlayerXP (XP_Addon_Myxir_GeistBeschwoeren);
+	B_GivePlayerXP(400);
 	
 	if (Saturas_KnowsHow2GetInTempel == FALSE)
 	&&	(Ghost_SCKnowsHow2GetInAdanosTempel == TRUE)

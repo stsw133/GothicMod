@@ -543,7 +543,7 @@ func void DIA_Addon_Lord_Hagen_Ornament_Info ()
 	CreateInvItems (self, ItMi_Ornament_Addon, 1);									
 	B_GiveInvItems (self, other, ItMi_Ornament_Addon, 1);	
 	Lord_Hagen_GotOrnament = TRUE;
-	B_GivePlayerXP (XP_Ambient);	
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -641,8 +641,8 @@ func int DIA_Hagen_CanTeach_Condition ()
 {	
 	if (LordHagen_Teach2H == FALSE)
 	&& (other.guild == GIL_PAL)
-	//&& (other.aivar[REAL_TALENT_2H] >= 90)
-	//&& (other.aivar[REAL_TALENT_2H] < 100)
+	&& (other.hitchance[NPC_TALENT_2H] >= FightTalent_Strong)
+	&& (other.hitchance[NPC_TALENT_2H] < FightTalent_Master)
 	{
 		return TRUE;
 	};
@@ -652,74 +652,10 @@ func void DIA_Hagen_CanTeach_Info ()
 	AI_Output (other, self, "DIA_Hagen_CanTeach_15_00"); //Szukam jakiegoœ mistrza miecza.
 	AI_Output (self, other, "DIA_Hagen_CanTeach_04_01"); //No to go znalaz³eœ.
 	
-	LordHagen_Teach2H = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	B_LogEntry (TOPIC_CityTeacher,"Lord Hagen mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
 };
-//**************************************
-//			Ich will trainieren
-//**************************************
-INSTANCE DIA_Hagen_Teach(C_INFO)
-{
-	npc			= PAL_200_Hagen;
-	nr			= 100;
-	condition	= DIA_Hagen_Teach_Condition;
-	information	= DIA_Hagen_Teach_Info;
-	permanent	= TRUE;
-	description = "Zacznijmy (trening walki broniami dwurêcznymi).";
-};                       
-//----------------------------------
-var int DIA_Hagen_Teach_permanent;
-//----------------------------------
-FUNC INT DIA_Hagen_Teach_Condition()
-{
-	if (LordHagen_Teach2H == TRUE)
-	&& (DIA_Hagen_Teach_permanent == FALSE)
-	{
-		return TRUE;
-	};	
-};
- 
-FUNC VOID DIA_Hagen_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Hagen_Teach_15_00"); //Zaczynajmy.
-	
-	Info_ClearChoices 	(DIA_Hagen_Teach);
-	Info_AddChoice 		(DIA_Hagen_Teach,	DIALOG_BACK		,DIA_Hagen_Teach_Back);
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Hagen_Teach_2H_1);
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Hagen_Teach_2H_5);
 
-};
-FUNC VOID DIA_Hagen_Teach_Back ()
-{
-	if (other.HitChance[NPC_TALENT_2H] >= 100)
-	{
-		AI_Output (self,other,"DIA_Hagen_Teach_04_00"); //Jesteœ teraz prawdziwym mistrzem miecza. Wiêcej nie mogê ciê nauczyæ.
-		AI_Output (self,other,"DIA_Hagen_Teach_04_01"); //Niech m¹droœæ mistrza miecza zawsze kieruje twoimi czynami.
-		DIA_Hagen_Teach_permanent = TRUE;
-	};
-	Info_ClearChoices (DIA_Hagen_Teach);
-};
-
-FUNC VOID DIA_Hagen_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100);
-	
-	Info_ClearChoices 	(DIA_Hagen_Teach);
-	Info_AddChoice 		(DIA_Hagen_Teach,	DIALOG_BACK		,DIA_Hagen_Teach_Back);
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)) ,DIA_Hagen_Teach_2H_1);	
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)) ,DIA_Hagen_Teach_2H_5);	
-};
-
-FUNC VOID DIA_Hagen_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100);
-	
-	Info_ClearChoices 	(DIA_Hagen_Teach);
-	Info_AddChoice 		(DIA_Hagen_Teach,	DIALOG_BACK		,DIA_Hagen_Teach_Back);
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Hagen_Teach_2H_1);	
-	Info_AddChoice		(DIA_Hagen_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Hagen_Teach_2H_5);	
-	
-};
 //##############################################################
 //###
 //###	RitterAufnahme
@@ -1219,7 +1155,7 @@ FUNC VOID DIA_Lord_Hagen_Cornelius_Info ()
 	
 	MIS_RescueBennet = LOG_SUCCESS;
 	
-	B_GivePlayerXP (XP_RescueBennet);
+	B_GivePlayerXP(750);
 	
 	if (hero.guild == GIL_MIL)
 	{
@@ -1373,7 +1309,7 @@ func void DIA_Lord_Hagen_ANTIPALADINE_Info ()
 			
 
 			Hagen_SawOrcRing = TRUE;
-			B_GivePlayerXP (XP_PAL_OrcRing);
+			B_GivePlayerXP(250);
 		}
 		else
 		{
@@ -1431,7 +1367,7 @@ func void DIA_Lord_Hagen_RINGEBRINGEN_Info ()
 	if (Ringcount == 1)
 		{
 			AI_Output		(other, self, "DIA_Lord_Hagen_RINGEBRINGEN_15_02"); //Mam dla ciebie jeszcze jeden pierœcieñ.
-			B_GivePlayerXP (XP_PAL_OrcRing);
+			B_GivePlayerXP(250);
 			B_GiveInvItems (other, self, ItRi_OrcEliteRing,1);
 			OrkRingCounter = OrkRingCounter + 1;
 		}
@@ -1441,7 +1377,7 @@ func void DIA_Lord_Hagen_RINGEBRINGEN_Info ()
 
 			B_GiveInvItems (other, self, ItRi_OrcEliteRing,  Ringcount);
 
-			XP_PAL_OrcRings = (Ringcount * XP_PAL_OrcRing);
+			XP_PAL_OrcRings = (Ringcount * 250);
 			OrkRingCounter = (OrkRingCounter + Ringcount); 
 
 			B_GivePlayerXP (XP_PAL_OrcRings);

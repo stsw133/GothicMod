@@ -363,7 +363,7 @@ func void DIA_Addon_Lares_RingBack_Info ()
 			AI_Output	(other, self, "DIA_Addon_Lares_RingBack_15_02"); //Jasne.
 			AI_Output	(self, other, "DIA_Addon_Lares_RingBack_09_03"); //Mam nadziejê, ¿e siê przyda³. Cieszê siê, ¿e jesteœ ju¿ jednym z nas.
 			Lares_GotRingBack = TRUE;
-			B_GivePlayerXP (XP_Ambient);
+			B_GivePlayerXP(100);
 		}
 		else
 		{
@@ -405,7 +405,7 @@ func void DIA_Addon_Lares_RingBack2_Info ()
 	AI_Output	(other, self, "DIA_Addon_Lares_RingBack2_15_00"); //Oto twój pierœcieñ.
 	B_GiveInvItems (other, self, ItRi_Ranger_Lares_Addon,1);
 	AI_Output	(self, other, "DIA_Addon_Lares_RingBack2_09_01"); //Ach... Dobrze. Ju¿ s¹dzi³em, ¿e go zgubi³eœ.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	Lares_GotRingBack = TRUE;
 };
 
@@ -474,7 +474,7 @@ func void DIA_Addon_Lares_GetRangerArmor_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_08"); //Jeszcze jakieœ pytania?
 	
 	MIS_Addon_Lares_ComeToRangerMeeting = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	
 	Info_ClearChoices	(DIA_Addon_Lares_GetRangerArmor);
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, "Muszê siê zmywaæ.", DIA_Addon_Lares_GetRangerArmor_end );
@@ -831,7 +831,7 @@ func void DIA_Addon_Lares_PeopleMissing_SAVED ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lares_PeopleMissing_SAVED_15_00"); //Uda³o mi siê ocaliæ czêœæ z zaginionych.
 	AI_Output	(self, other, "DIA_Addon_Lares_PeopleMissing_SAVED_09_01"); //Wiedzia³em, ¿e ci siê uda. Wreszcie mogê zaj¹æ siê swoimi sprawami...
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	Lares_PeopleMissing_PERM = TRUE;
 	Lares_CanBringScToPlaces = TRUE;
 	Info_ClearChoices (DIA_Addon_Lares_PeopleMissing);

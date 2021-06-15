@@ -241,7 +241,7 @@ func void DIA_Addon_Pedro_Statuette_Abgeben_Info ()
 	AI_Output (other, self, "DIA_Addon_Pedro_Statuette_Abgeben_15_00"); //Mogê chocia¿ zostawiæ tutaj ten pos¹¿ek?
 	AI_Output (self, other, "DIA_Addon_Pedro_Statuette_Abgeben_09_01"); //Oczywiœcie, natychmiast siê nim zajmê. Dziêkujê ci za bezinteresowne poœwiêcenie.
 	MIS_Addon_Daron_GetStatue = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_ReportLostInnosStatue2Daron);
+	B_GivePlayerXP(100);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Regeln
@@ -359,7 +359,7 @@ FUNC VOID DIA_Pedro_AUFNAHME_YES()
 	
 	DIA_Pedro_AUFNAHME_NOPERM = TRUE;
 	NOV_Aufnahme = TRUE;
-	B_GivePlayerXP (XP_AufnahmeNovize);
+	B_GivePlayerXP(250);
 	
 	//ADDON>
  	if (Npc_KnowsInfo (other, DIA_Addon_Pedro_Statuette))

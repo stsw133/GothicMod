@@ -140,7 +140,7 @@ func void DIA_Addon_Hakon_MissingPeople_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_Joe, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Joe,"Hakon, kupiec z Khorinis, twierdzi, ¿e cz³owiek o imieniu Joe znikn¹³ bez œladu. Podobno Joe wiedzia³, jak dostaæ siê do wie¿ miejskich, w których przechowywana jest broñ stra¿y."); 
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 // ********************************************************
@@ -430,8 +430,7 @@ func void DIA_Hakon_Success_Info ()
 		B_GiveInvItems (self, other, ItMi_Gold,100);
 	};
 	MIS_HakonBandits = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Hakon_Bandits); 
-	
+	B_GivePlayerXP(100);
 };
 
 // ************************************************************
@@ -460,7 +459,7 @@ FUNC VOID DIA_Hakon_Minenanteil_Info()
 {	
 	AI_Output (other, self, "DIA_Hakon_Minenanteil_15_00"); //Sprzedajesz udzia³y w kopalni? Sk¹d je wzi¹³eœ?
 	AI_Output (self, other, "DIA_Hakon_Minenanteil_12_01"); //Przykro mi, nie mogê ci powiedzieæ. Mog³oby siê to dla mnie Ÿle skoñczyæ.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };	
 
 // ************************************************************

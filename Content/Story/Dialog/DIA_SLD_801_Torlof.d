@@ -650,7 +650,7 @@ func void DIA_Torlof_SekobSuccess_Info ()
 		};
 
 		MIS_Torlof_HolPachtVonSekob = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Torlof_SekobsKohlebekommen);				
+		B_GivePlayerXP(100);				
 		B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
 		Torlof_ProbeBestanden = TRUE;
 	}
@@ -700,7 +700,7 @@ func void DIA_Torlof_BengarSuccess_Info ()
 	};
 	
 	MIS_Torlof_BengarMilizKlatschen = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Bengar_MILIZKLATSCHEN);
+	B_GivePlayerXP(100);
 	B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
 	Torlof_ProbeBestanden = TRUE;
 };
@@ -1056,14 +1056,14 @@ func int DIA_Torlof_DmtSuccess_Condition ()
 	};
 };
 
-func void DIA_Torlof_DmtSuccess_Info ()
+func void DIA_Torlof_DmtSuccess_Info()
 {
 	AI_Output (other, self, "DIA_Torlof_DmtSuccess_15_00"); //Nie musisz siê ju¿ obawiaæ tych zakapturzonych postaci z gór.
 	AI_Output (self, other, "DIA_Torlof_DmtSuccess_01_01"); //Za³atwi³eœ ich? Gratulujê.
 	AI_Output (self, other, "DIA_Torlof_DmtSuccess_01_02"); //Coœ mi siê w nich nie podoba³o. Za³o¿ê siê, ¿e mielibyœmy przez nich niez³e k³opoty.
 	
 	MIS_Torlof_Dmt = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Torlof_DMT);
+	B_GivePlayerXP(300);
 };
 
 
@@ -1233,8 +1233,7 @@ func void DIA_Torlof_BEMYCAPTAIN2_Info ()
  	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_01"); //Za³oga zamku ponios³a ciê¿kie straty.
 	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_02"); //Paladyni z miasta powinni wkrótce wyruszyæ do Doliny, by wyci¹gn¹æ swoich towarzyszy z oblê¿onego zamku.
 	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN2_01_03"); //To œwietna wiadomoœæ. Teraz nic mnie ju¿ nie powstrzyma przed wyrwaniem siê z tego przeklêtego miejsca.
-	B_GivePlayerXP (XP_Ambient);
-	
+	B_GivePlayerXP(250);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info BeMyCaptain3
@@ -1335,7 +1334,7 @@ func void DIA_Torlof_BEMYCAPTAIN4_Info ()
 		self.flags = NPC_FLAG_IMMORTAL;
 		Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 		
-		B_GivePlayerXP (XP_Captain_Success);              
+		B_GivePlayerXP(2000);
 
 };
 

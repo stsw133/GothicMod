@@ -264,7 +264,7 @@ func void DIA_Sylvio_ICEGOLEMSKILLED_Info ()
 	AI_StopProcessInfos	(self);
 
 	MIS_DJG_Sylvio_KillIceGolem = LOG_SUCCESS;
-	B_GivePlayerXP (XP_SylvioDJGIceGolemDead);
+	B_GivePlayerXP(600);
 	Npc_ExchangeRoutine	(self,		"IceWait1");
 	B_StartotherRoutine (DJG_Bullco,"IceWait1");	
 };
@@ -433,7 +433,7 @@ func void DIA_SylvioDJG_WHATNEXT_Info ()
 	AI_Output	(self, other, "DIA_SylvioDJG_WHATNEXT_09_03"); //Twoja rola w tym przedstawieniu w³aœnie dobieg³a koñca!
 
 	TOPIC_END_SylvioKillIceGolem = TRUE;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(200);
 	Info_ClearChoices	(DIA_SylvioDJG_WHATNEXT);
 	Info_AddChoice	(DIA_SylvioDJG_WHATNEXT, DIALOG_ENDE, DIA_SylvioDJG_WHATNEXT_ATTACK );
 };

@@ -28,7 +28,7 @@ FUNC VOID B_DaronSegen ()
 	else if (Daron_Spende < 500)
 	&&		(Bonus_2 == FALSE)
 	{
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(50);
 		Bonus_2 = TRUE;
 	}
 	else if (Daron_Spende >= 750) 	
@@ -223,7 +223,7 @@ FUNC VOID DIA_Daron_Spenden_Info()
 		
 		AI_Output (self, other,"DIA_Daron_Spenden_10_08");//B³ogos³awiê ciê w imieniu Innosa. Albowiem on jest œwiat³em i sprawiedliwoœci¹.
 		Daron_Segen = TRUE;
-		B_GivePlayerXP (XP_InnosSegen);
+		B_GivePlayerXP(50);
 		
 		if (MIS_Thorben_GetBlessings == LOG_RUNNING)
 		{
@@ -498,7 +498,7 @@ func void DIA_Addon_Daron_ReturnedStatue_Info ()
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);
 	TOPIC_End_RangerHelpKDF = TRUE;		
-	B_GivePlayerXP (XP_Addon_ReportLostInnosStatue2Daron);
+	B_GivePlayerXP(100);
 };
 
 // ************************************************************

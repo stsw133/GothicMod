@@ -420,7 +420,7 @@ FUNC VOID DIA_Hyglas_HaveBook_Info()
 	B_GiveInvItems (other,self,ItWr_Astronomy_Mis,1);
 	
 	Mis_HyglasBringBook = LOG_SUCCESS;
-	B_GivePlayerXP (XP_HyglasBringBook);
+	B_GivePlayerXP(300);
 	
 	
 	AI_Output (self ,other,"DIA_Hyglas_HaveBook_14_03"); //Mo¿esz odejœæ. A ja zajmê siê badaniami.

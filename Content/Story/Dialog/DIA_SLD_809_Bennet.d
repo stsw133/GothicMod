@@ -1042,7 +1042,7 @@ func void DIA_Bennet_GetInnosEye_Info ()
 		
 		MIS_Bennet_InnosEyeRepairedSetting   = LOG_SUCCESS;
 		
-		B_GivePlayerXP (XP_InnosEyeIsRepaired);
+		B_GivePlayerXP(750);
 	}
 	else
 	{	//Hack Mattes
@@ -1147,7 +1147,7 @@ func void DIA_Bennet_DRACHENEIER_Info ()
 	IF (DRACHENEIER_angebotenXP_OneTime == FALSE)
 	{
 	B_LogEntry (TOPIC_DRACHENEIER,"Bennet hojnie mi zap³aci za wszystkie smocze jaja, które zdo³am znaleŸæ."); 
-	B_GivePlayerXP (XP_DJG_BringDragonEgg);
+	B_GivePlayerXP(350);
 	DRACHENEIER_angebotenXP_OneTime = TRUE;
 	};
 };
@@ -1247,7 +1247,7 @@ func void DIA_Bennet_EierBringen_Info ()
 	if (DragonEggCount == 1)
 		{
 			AI_Output		(other, self, "DIA_Bennet_EierBringen_15_02"); //Proszê, mam kolejne.
-			B_GivePlayerXP (XP_DJG_BringDragonEgg);
+			B_GivePlayerXP(350);
 			Npc_RemoveInvItems	(other,	ItAt_DragonEgg_MIS,	1);
 			AI_PrintScreen (PRINT_ItemGegeben, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);	// "1 Gegenstand gegeben"	
 			DragonEggCounter = DragonEggCounter + 1;
@@ -1260,7 +1260,7 @@ func void DIA_Bennet_EierBringen_Info ()
 			concatText = ConcatStrings(IntToString(DragonEggCount), PRINT_ItemsGegeben);		// "x Gegenstände gegeben"
 			AI_PrintScreen (concatText, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
 
-			XP_DJG_BringDragonEggs = (DragonEggCount * XP_DJG_BringDragonEgg);
+			XP_DJG_BringDragonEggs = (DragonEggCount * 350);
 			DragonEggCounter = (DragonEggCounter + DragonEggCount); 
 
 			B_GivePlayerXP (XP_DJG_BringDragonEggs);
@@ -1371,7 +1371,7 @@ FUNC VOID DIA_Bennet_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Bennet_KnowWhereEnemy_Yes_15_00"); //A wiêc bêdziesz moim kowalem. Zobaczymy siê w porcie.
 	AI_Output (self ,other,"DIA_Bennet_KnowWhereEnemy_Yes_06_01"); //W porz¹dku. Do zobaczenia.
 	
-	B_GivePlayerXP (XP_Crewmember_Success); 
+	B_GivePlayerXP(500); 
 	
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;

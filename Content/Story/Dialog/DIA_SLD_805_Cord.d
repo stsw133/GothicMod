@@ -164,7 +164,7 @@ FUNC VOID DIA_Cord_WannaJoin_Info()
 		AI_Output (self ,other, "DIA_Cord_WannaJoin_14_10"); //No có¿, przynajmniej nie jesteœ zupe³nie zielony. Dobrze, przyjmujê ciê.
 		AI_Output (self ,other, "DIA_Cord_WannaJoin_14_11"); //Mogê ciê nauczyæ, czego tylko zapragniesz.
 		Cord_Approved = TRUE;
-		B_GivePlayerXP (XP_Cord_Approved);
+		B_GivePlayerXP(100);
 		B_LogEntry (TOPIC_SLDRespekt,"G³os Corda znajduje siê w sakwie.");
 		Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 		B_LogEntry (Topic_SoldierTeacher,"Cord mo¿e mnie szkoliæ w zakresie walki orê¿em jedno- i dwurêcznym.");
@@ -536,7 +536,7 @@ func void DIA_Addon_Cord_TalkedToDexter_Info ()
 
 	MIS_Addon_Cord_Look4Patrick = LOG_SUCCESS;
 	TOPIC_End_RangerHelpSLD = TRUE;
-	B_GivePlayerXP (XP_Addon_Cord_Look4Patrick);
+	B_GivePlayerXP(300);
 
 	AI_Output	(other, self, "DIA_Addon_Cord_TalkedToDexter_15_09"); //Co wiêc z prób¹ Torlofa?
 	AI_Output	(self, other, "DIA_Addon_Cord_TalkedToDexter_14_10"); //Wróæ do niego - próba zakoñczona pomyœlnie. Mówi³em, ¿e siê tym zajmê...
@@ -586,7 +586,7 @@ FUNC VOID DIA_Cord_ReturnPatrick_Info()
 	AI_Output (self ,other, "DIA_Addon_Cord_ReturnPatrick_14_07"); //Powiem ci tylko, ¿e niez³y z ciebie numer.
 	AI_Output (self ,other, "DIA_Addon_Cord_ReturnPatrick_14_09"); //Uwa¿aj na siebie!
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	AI_StopProcessInfos (self);
 };
 // ************************************************************
@@ -671,7 +671,10 @@ INSTANCE DIA_Cord_Teach(C_INFO)
 
 FUNC INT DIA_Cord_Teach_Condition()
 {
-	return TRUE;
+	if (self.aivar[AIV_CanTeach] == false)
+	{
+		return TRUE;
+	};
 };
 
 FUNC VOID B_Cord_Zeitverschwendung ()
@@ -682,6 +685,7 @@ FUNC VOID B_Cord_Zeitverschwendung ()
 FUNC VOID DIA_Cord_Teach_Info()
 {	
 	AI_Output (other,self, "DIA_Cord_Teach_15_00"); //Naucz mnie walczyæ!
+	
 	if (Cord_Approved == TRUE)
 	|| (hero.guild == GIL_SLD)
 	|| (hero.guild == GIL_DJG)
@@ -690,8 +694,6 @@ FUNC VOID DIA_Cord_Teach_Info()
 		if ((Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)&&(Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0))
 		|| (Cord_RangerHelp_Fight == TRUE)//ADDON
 		{
-		
-		
 			AI_Output (self ,other,"DIA_Cord_Teach_14_01"); //Mogê ciê nauczyæ walki ka¿d¹ broni¹. Od czego zaczniemy?
 			Cord_Approved = TRUE;
 		}
@@ -715,120 +717,11 @@ FUNC VOID DIA_Cord_Teach_Info()
 		
 		if (Cord_Approved == TRUE)
 		{
-			Info_ClearChoices (DIA_Cord_Teach);
-			Info_AddChoice (DIA_Cord_Teach, DIALOG_BACK, DIA_Cord_Teach_Back);
-		
-			if (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0)
-			|| (Cord_RangerHelp_Fight == TRUE)//ADDON
-			{
-				Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Cord_Teach_2H_1);
-				Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Cord_Teach_2H_5);
-			};
-		
-			if (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)
-			|| (Cord_RangerHelp_Fight == TRUE)//ADDON
-			{
-				Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h1, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))  , DIA_Cord_Teach_1H_1);
-				Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h5 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)), DIA_Cord_Teach_1H_5);
-			};
-		
-			Cord_Merke_1h = other.HitChance[NPC_TALENT_1H];
-			Cord_Merke_2h = other.HitChance[NPC_TALENT_2H];
+			self.aivar[AIV_CanTeach] = true;
 		};	
 	}
 	else 
 	{
 		AI_Output (self ,other,"DIA_Cord_Teach_14_06"); //Trenujê tylko najemników albo bardziej doœwiadczonych wojowników!
-	};
-};
-
-FUNC VOID DIA_Cord_Teach_Back ()
-{
-	if (Cord_Merke_1h < other.HitChance[NPC_TALENT_1H])
-	|| (Cord_Merke_2h < other.HitChance[NPC_TALENT_2H])
-	{
-		AI_Output (self ,other,"DIA_Cord_Teach_BACK_14_00"); //Ju¿ jesteœ lepszy - tak trzymaæ!
-	};
-	
-	Info_ClearChoices (DIA_Cord_Teach);
-};
-
-FUNC VOID DIA_Cord_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 90);
-	
-	Info_ClearChoices (DIA_Cord_Teach);
-	Info_AddChoice (DIA_Cord_Teach, DIALOG_BACK, DIA_Cord_Teach_Back);
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Cord_Teach_2H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Cord_Teach_2H_5);
-	};
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h1 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))  , DIA_Cord_Teach_1H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h5 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)), DIA_Cord_Teach_1H_5);
-	};
-};
-
-FUNC VOID DIA_Cord_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 90);
-	
-	Info_ClearChoices (DIA_Cord_Teach);
-	Info_AddChoice (DIA_Cord_Teach, DIALOG_BACK, DIA_Cord_Teach_Back);
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h1, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Cord_Teach_2H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Cord_Teach_2H_5);
-	};
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h1 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))  , DIA_Cord_Teach_1H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h5 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)), DIA_Cord_Teach_1H_5);
-	};
-};
-
-FUNC VOID DIA_Cord_Teach_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 90);
-	
-	Info_ClearChoices (DIA_Cord_Teach);
-	Info_AddChoice (DIA_Cord_Teach, DIALOG_BACK, DIA_Cord_Teach_Back);
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Cord_Teach_2H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Cord_Teach_2H_5);
-	};
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h1 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))  , DIA_Cord_Teach_1H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h5 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)), DIA_Cord_Teach_1H_5);
-	};
-};
-
-FUNC VOID DIA_Cord_Teach_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 90);
-	
-	Info_ClearChoices (DIA_Cord_Teach);
-	Info_AddChoice (DIA_Cord_Teach, DIALOG_BACK, DIA_Cord_Teach_Back);
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h1, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Cord_Teach_2H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Cord_Teach_2H_5);
-	};
-	
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0)
-	{
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h1 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))  , DIA_Cord_Teach_1H_1);
-		Info_AddChoice (DIA_Cord_Teach, B_BuildLearnString(PRINT_Learn1h5 , B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)), DIA_Cord_Teach_1H_5);
 	};
 };

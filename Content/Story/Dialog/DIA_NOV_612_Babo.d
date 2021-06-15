@@ -117,135 +117,14 @@ FUNC VOID DIA_Babo_Sergio_Info()
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_01"); //Dziêkujê! To dla mnie zaszczyt!
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_02"); //Jeœli chcesz, wyjaœniê ci te¿ tajniki walki.
 	
-	Babo_TeachPlayer = TRUE;	
+	self.aivar[AIV_CanTeach] = true;
 	Babo_Training = TRUE;
-	B_GivePlayerXP ((XP_Ambient)*2);
+	B_GivePlayerXP(100);
 	
 	Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
 	B_LogEntry (Topic_KlosterTeacher,"Babo mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
 };
-//***************************************************************************************
-//			Ich will trainieren
-//***************************************************************************************
-INSTANCE DIA_Babo_Teach(C_INFO)
-{
-	npc			= NOV_612_Babo;
-	nr			= 100;
-	condition	= DIA_Babo_Teach_Condition;
-	information	= DIA_Babo_Teach_Info;
-	permanent	= TRUE;
-	description = "Jestem gotów do treningu.";
-};                       
-//----------------------------------
-var int DIA_Babo_Teach_permanent;
-var int Babo_Labercount;
-//----------------------------------
-FUNC INT DIA_Babo_Teach_Condition()
-{
-	if ((Babo_TeachPlayer == TRUE)
-	&& (DIA_Babo_Teach_permanent == FALSE))
-	|| (other.guild == GIL_KDF)
-	{
-		return TRUE;
-	};	
-};
- 
-// -------------------------------
-var int  babo_merk2h;
-// -------------------------------
-FUNC VOID DIA_Babo_Teach_Info()
-{	
-	babo_merk2h = other.HitChance [NPC_TALENT_2H]; 
-	
-	AI_Output (other,self ,"DIA_Babo_Teach_15_00"); //Jestem gotów do treningu.
-	
-	Info_ClearChoices 	(DIA_Babo_Teach);
-	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);
 
-};
-FUNC VOID DIA_Babo_Teach_Back ()
-{
-	if (other.HitChance[NPC_TALENT_2H] >= 75)
-	{
-		AI_Output (self,other,"DIA_DIA_Babo_Teach_Back_03_00"); //Przekaza³em ci ju¿ ca³¹ swoj¹ wiedzê o walce orê¿em oburêcznym.
-		
-		DIA_Babo_Teach_permanent = TRUE;
-	};
-	Info_ClearChoices (DIA_Babo_Teach);
-};
-
-FUNC VOID DIA_Babo_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 75);
-	
-	if (other.HitChance [NPC_TALENT_2H]  >  babo_merk2h)
-	{
-		if (Babo_Labercount == 0)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_00"); //Walcz za Innosa. Innos jest naszym ¿yciem, a wiara - najpotê¿niejszym orê¿em.
-		};
-		if (Babo_Labercount == 1)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_01"); //S³uga Innosa nigdy nie prowokuje swojego przeciwnika - zawsze dzia³a z zaskoczenia!
-		};
-		if (Babo_Labercount == 2)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_02"); //Wszêdzie, gdzie siê udasz, miej ze sob¹ swój kostur.
-		};
-		if (Babo_Labercount == 3)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_03_03"); //S³uga Innosa zawsze jest gotów do walki. Jeœli nie posiadasz mocy magicznej, twoj¹ podstawow¹ broni¹ jest kostur.
-		};
-		
-		Babo_Labercount = Babo_Labercount +1;
-		if (Babo_Labercount >= 3)
-		{
-			Babo_Labercount = 0;	
-		};
-	};
-	Info_ClearChoices 	(DIA_Babo_Teach);
-	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);	
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);	
-};
-
-FUNC VOID DIA_Babo_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 75);
-	
-	if (other.HitChance [NPC_TALENT_2H]  >  babo_merk2h)
-	{
-		if (Babo_Labercount == 0)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_00"); //Broni¹ s³ugi Innosa jest nie tylko jego kostur, lecz równie¿ waleczne serce.
-		};
-		if (Babo_Labercount == 1)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_01"); //Musisz wiedzieæ, kiedy mo¿esz siê wycofaæ.
-		};
-		if (Babo_Labercount == 2)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_02"); //Pamiêtaj, dobra walka to taka, w której to ty kontrolujesz swojego przeciwnika, nie daj¹c mu najmniejszej szansy na przejêcie kontroli nad tob¹.
-		};
-		if (Babo_Labercount == 3)
-		{
-			AI_Output (self,other,"DIA_DIA_Babo_Teach_2H_5_03_03"); //Przegrywasz tylko wtedy, gdy siê poddasz.
-		};
-		
-		Babo_Labercount = Babo_Labercount +1;
-		if (Babo_Labercount >= 3)
-		{
-			Babo_Labercount = 0;	
-		};
-	};
-	
-	Info_ClearChoices 	(DIA_Babo_Teach);
-	Info_AddChoice 		(DIA_Babo_Teach,	DIALOG_BACK		,DIA_Babo_Teach_Back);
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Babo_Teach_2H_1);	
-	Info_AddChoice		(DIA_Babo_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Babo_Teach_2H_5);	
-};
 // *************************************************************************
 // 							Wurst verteilen
 // *************************************************************************
@@ -460,7 +339,7 @@ FUNC VOID DIA_Babo_Windfaust_Info()
 		
 		NOV_Helfer = (NOV_Helfer +1);
 		DIA_Babo_Windfaust_permanent = TRUE; 
-		B_GivePlayerXP (XP_Feger);
+		B_GivePlayerXP(50);
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine (self,"FEGEN");
 		
@@ -542,7 +421,7 @@ FUNC VOID DIA_Babo_HowIsIt_Info()
 		
 		if (Babo_XPgiven == FALSE)
 		{
-			B_GivePlayerXP (XP_Ambient);
+			B_GivePlayerXP(50);
 			Babo_XPgiven = TRUE;
 		};
 	}
@@ -674,7 +553,7 @@ FUNC VOID DIA_Babo_Kap3_KeepTheFaith_Info()
 	AI_Output (other,self ,"DIA_Babo_Kap3_KeepTheFaith_15_02"); //Ka¿dy z nas wystawiany jest na ciê¿kie próby.
 	AI_Output (self ,other,"DIA_Babo_Kap3_KeepTheFaith_03_03"); //Tak, Panie. Bêdê o tym pamiêta³. Dziêkujê ci.
 	
-	B_GivePlayerXP (XP_Ambient); 
+	B_GivePlayerXP(150);
 };
 
 //*********************************************
@@ -879,7 +758,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_KeepThem()
 		AI_Output (other,self ,"DIA_Babo_Kap3_HaveYourDocs_KeepThem_JustJoke_15_04"); //W porz¹dku. Mi³ej zabawy z tymi DOKUMENTAMI.
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP (XP_BabosDocs);
+		B_GivePlayerXP(300);
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -960,7 +839,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_IWantMore()
 		B_GiveInvItems (self ,other,ItMi_Gold,121);
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP (XP_BabosDocs); 
+		B_GivePlayerXP(300); 
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -990,7 +869,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_HereTheyAre()
 	B_GiveInvItems (self,other,ItSc_MediumHeal,1);
 	
 	MIS_BabosDocs = LOG_SUCCESS;
-	B_GivePlayerXP (XP_BabosDocs);
+	B_GivePlayerXP(300);
 	
 	Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 };

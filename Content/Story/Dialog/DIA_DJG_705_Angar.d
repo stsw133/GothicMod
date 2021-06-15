@@ -69,7 +69,7 @@ func void B_SCTellsAngarAboutMadPsi2 ()
 	{
 		AI_Output			(other, self, "DIA_Angar_B_SCTellsAngarAboutMadPsi2_15_00"); //Przeszli na stronê nieprzyjaciela, staj¹c siê bezdusznymi narzêdziami z³a.
 		AI_Output			(self, other, "DIA_Angar_B_SCTellsAngarAboutMadPsi2_04_01"); //Bogowie! Dlaczego by³em taki zaœlepiony?! To siê ju¿ nigdy nie powtórzy. Przysiêgam!
-		B_GivePlayerXP (XP_Angar_KnowsMadPsi);
+		B_GivePlayerXP(300);
 		Angar_KnowsMadPsi = TRUE;
 	};
 };
@@ -240,7 +240,7 @@ func void B_AngarsAmulettAbgeben()
 	B_GiveInvItems (other, self, ItAm_Mana_Angar_MIS,1);
 	
 	DJG_AngarGotAmulett = TRUE;
-	B_GivePlayerXP (XP_AngarDJGUndeadMage); 
+	B_GivePlayerXP(750); 
 };
 
 func void DIA_Angar_FOUNDAMULETT_Info ()
@@ -612,7 +612,7 @@ func void DIA_Angar_WHYAREYOUHERE_Info ()
 	AI_Output			(self, other, "DIA_Angar_WHYAREYOUHERE_04_02"); //Odczekam trochê i spróbujê znowu. Zobaczymy siê po drugiej stronie!
 
 	B_LogEntry (TOPIC_Dragonhunter,"Znowu spotka³em Angara. Utkn¹³ w Górniczej Dolinie na dobre.");
-	B_GivePlayerXP (XP_AngarDJGAgain); 
+	B_GivePlayerXP(350); 
 	AI_StopProcessInfos (self);
 };
 

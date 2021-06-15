@@ -141,7 +141,7 @@ FUNC VOID DIA_Gaertner_Krautabak_Info()
 	AI_PlayAni (self, "T_HEASHOOT_2_STAND");
 	AI_Output (self ,other,"DIA_Gaertner_Krautabak_09_03"); //Mocny towar. Chyba ju¿ mi wystarczy.
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 //*************************************************************
 //		Sign

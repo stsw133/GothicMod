@@ -133,5 +133,5 @@ FUNC VOID DIA_Grom_PayTeacher_Info()
 	AI_Output(other,self,"DIA_Grom_PayTeacher_15_00"); //Oto jedzenie.
 	AI_Output(self,other,"DIA_Grom_PayTeacher_08_01"); //Doskonale. Co teraz?
 	self.aivar[AIV_CanTeach] = true;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };

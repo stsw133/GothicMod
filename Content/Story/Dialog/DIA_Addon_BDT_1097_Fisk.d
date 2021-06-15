@@ -222,7 +222,7 @@ FUNC VOID DIA_Addon_Fisk_GivePaket_Info()
 	B_GiveInvItems (other, self, ItMi_LennarPaket, 1);
 	
 	MIS_Lennar_Lockpick = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_LennarPaket);
+	B_GivePlayerXP(200);
 	
 	AI_Output (self, other, "DIA_Addon_Fisk_GivePaket_12_01"); //Naprawdê? A co z Juanem?
 	
@@ -291,7 +291,7 @@ FUNC VOID DIA_Addon_Fisk_GivePicks_Info()
 		B_Addon_Fisk_Belohnung();
 		
 		MIS_Lennar_Lockpick = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Addon_LennarPaket);
+		B_GivePlayerXP(200);
 	}
 	else
 	{
@@ -466,6 +466,5 @@ FUNC VOID DIA_Addon_Fisk_Sieg_Info()
 	
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self, "START");
-	B_GivePlayerXP (XP_Ambient); 
+	B_GivePlayerXP(100);
 };
-

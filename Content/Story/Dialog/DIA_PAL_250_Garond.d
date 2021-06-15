@@ -546,7 +546,7 @@ FUNC VOID DIA_Garond_Fajeth_Info()
  	AI_Output (self ,other,"DIA_Garond_Fajeth_10_05"); //Co? Mam wys³aæ kolejnych ludzi na pewn¹ œmieræ? Nie ma mowy!
  	
  	Ore_Counter = (Ore_Counter +1);
- 	B_GivePlayerXP (XP_Fajeth_Ore);
+ 	B_GivePlayerXP(300);
  	
  	if (Ore_Counter >= 3)
 	{
@@ -587,11 +587,11 @@ FUNC VOID DIA_Garond_Silvestro_Info()
 	AI_Output (self ,other,"DIA_Garond_Silvestro_10_05"); //Do diaska... To byli dobrzy ludzie. Niech Innos ulituje siê nad ich duszami.
 	
 	Ore_Counter = (Ore_Counter +1);
-	B_GivePlayerXP (XP_Silvestro_Ore);
+	B_GivePlayerXP(300);
 	
 	if (Ore_Counter >= 3)
 	{
-		B_Garond_OreCounter3 ();
+		B_Garond_OreCounter3();
 	};
 };
 // ************************************************************
@@ -638,11 +638,11 @@ FUNC VOID DIA_Garond_Marcos_Info()
 	Ore_Counter = (Ore_Counter +1);
 	MIS_Marcos_Jungs = LOG_SUCCESS;
 
-	B_GivePlayerXP (XP_Marcos_Ore);
+	B_GivePlayerXP(300);
 	
 	if (Ore_Counter >= 3)
 	{
-		B_Garond_OreCounter3 ();
+		B_Garond_OreCounter3();
 	};
 };		
 // ************************************************************
@@ -682,7 +682,7 @@ FUNC VOID DIA_Garond_Success_Info()
 	B_LogEntry (TOPIC_MISOLDWORLD,"Kapitan Garond wrêczy³ mi list. Muszê zanieœæ go Lordowi Hagenowi - mam nadziejê, ¿e taki dowód mu wystarczy.");
 	
 	MIS_ScoutMine = LOG_SUCCESS;
-	B_GivePlayerXP (XP_ScoutMine);
+	B_GivePlayerXP(500);
 	MIS_ReadyForChapter3  = TRUE; 	//Joly: Bei Levelchange ab hier in die Newworld  -> Kapitel 3!!!!!!
 	B_NPC_IsAliveCheck (OldWorld_Zen);
 };
@@ -1092,7 +1092,7 @@ func void DIA_Garond_DragonPlettBericht_Info ()
 		AI_Output (self, other, "DIA_Garond_DragonPlettBericht_10_06"); //To dobra wiadomoœæ. Masz tu trochê pieniêdzy na lepszy ekwipunek.
 		
 		DrachenGeld = (CurrentDragonCount * Garond_KilledDragonGeld);
-		XP_LocalGarond =  (CurrentDragonCount * XP_Garond_KilledDragon);
+		XP_LocalGarond = (CurrentDragonCount * 500);
 
 		B_GivePlayerXP (XP_LocalGarond);
 
@@ -1228,7 +1228,7 @@ FUNC VOID DIA_Garond_JanBecomeSmith_Yes()
 	
 	Info_ClearChoices 	(DIA_Garond_JanBecomeSmith);
 	MIS_JanBecomesSmith = LOG_SUCCESS; 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(200);
 };
 
 

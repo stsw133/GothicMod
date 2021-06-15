@@ -88,7 +88,7 @@ func void ZS_Dead()
 		{
 			AI_Teleport (Bloodwyn, "ADW_MINE_TO_MC_03");
 			B_StartOtherRoutine (Bloodwyn, "MINE");
-			B_GivePlayerXP(XP_BONUS_5);
+			B_GivePlayerXP(500);
 			Bloodwyn_Spawn = true;
 		}
 		else

@@ -7,11 +7,11 @@ var string PRINT_LearnFight_1H;
 var string PRINT_LearnFight_2H;
 var string PRINT_LearnFight_Bow;
 var string PRINT_LearnFight_Crossbow;
+var string PRINT_LearnTalent_Jewelery;
 var string PRINT_LearnTalent_Smith;
+var string PRINT_LearnTalent_Enchanting;
 var string PRINT_LearnTalent_Alchemy;
 var string PRINT_LearnTalent_Hunting;
-var string PRINT_LearnTalent_Jewelery;
-var string PRINT_LearnTalent_Enchanting;
 
 ///******************************************************************************************
 func void MOD_PrintLearn()
@@ -42,9 +42,17 @@ func void MOD_PrintLearn()
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_CROSSBOW) < 70)	{	PRINT_LearnFight_Crossbow = PRINT_LearnFight_Crossbow_3;	}
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_CROSSBOW) < 90)	{	PRINT_LearnFight_Crossbow = PRINT_LearnFight_Crossbow_4;	};
 	
+	if		(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 0)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_1;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 1)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_2;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 2)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_3;	};
+	
 	if		(Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) == 0)		{	PRINT_LearnTalent_Smith = PRINT_LearnTalent_Smith_1;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) == 1)		{	PRINT_LearnTalent_Smith = PRINT_LearnTalent_Smith_2;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) == 2)		{	PRINT_LearnTalent_Smith = PRINT_LearnTalent_Smith_3;	};
+	
+	if		(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 0)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_1;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 1)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_2;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 2)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_3;	};
 	
 	if		(Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) == 0)		{	PRINT_LearnTalent_Alchemy = PRINT_LearnTalent_Alchemy_1;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) == 1)		{	PRINT_LearnTalent_Alchemy = PRINT_LearnTalent_Alchemy_2;	}
@@ -53,14 +61,6 @@ func void MOD_PrintLearn()
 	if		(Npc_GetTalentSkill(hero, NPC_TALENT_HUNTING) == 0)		{	PRINT_LearnTalent_Hunting = PRINT_LearnTalent_Hunting_1;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_HUNTING) == 1)		{	PRINT_LearnTalent_Hunting = PRINT_LearnTalent_Hunting_2;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_HUNTING) == 2)		{	PRINT_LearnTalent_Hunting = PRINT_LearnTalent_Hunting_3;	};
-	
-	if		(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 0)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_1;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 1)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_2;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 2)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_3;	};
-	
-	if		(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 0)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_1;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 1)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_2;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_ENCHANTING) == 2)	{	PRINT_LearnTalent_Enchanting = PRINT_LearnTalent_Enchanting_3;	};
 };
 
 ///******************************************************************************************
@@ -68,15 +68,14 @@ func void MOD_PrintLearn()
 ///******************************************************************************************
 func string B_BuildLearnString (var string text, var int kosten)
 {
+	var int money; money = kosten * DIFF_Multiplier(GOLD_PER_LP, INCREASE);
+	
 	var string concatText;
-	var int money;
-	money = kosten * DIFF_Multiplier(GOLD_PER_LP, INCREASE);
-
 	concatText = ConcatStrings(text, PRINT_Kosten);
 	concatText = ConcatStrings(concatText, IntToString(kosten));
 	concatText = ConcatStrings(concatText, PRINT_LP);
 	concatText = ConcatStrings(concatText, IntToString(money));
 	concatText = ConcatStrings(concatText, PRINT_MONEY);
-
+	
 	return concatText;
 };

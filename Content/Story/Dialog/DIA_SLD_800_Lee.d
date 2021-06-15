@@ -661,7 +661,7 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 			KDF_Aufnahme = LOG_OBSOLETE;
 			SLD_Aufnahme = LOG_SUCCESS;
 			MIL_Aufnahme = LOG_OBSOLETE;
-			B_GivePlayerXP (XP_BecomeMercenary);
+			B_GivePlayerXP(400);
 			
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_15"); //Cieszê siê, ¿e jesteœ z nami.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_16"); //Mam ju¿ dla ciebie pierwsze zadanie.
@@ -866,7 +866,7 @@ FUNC VOID DIA_Lee_Success_Info()
 	AI_Output (self, other, "DIA_Lee_Success_04_01"); //Tak, ju¿ mi mówi³eœ. Dobra robota.
 	AI_Output (self, other, "DIA_Lee_Success_04_02"); //Ten facet jest wiêcej wart, ni¿ Sylvio i jego ch³opcy razem wziêci.
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	
 };
 // ************************************************************
@@ -1319,7 +1319,7 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 			CreateInvItems (self, ItMi_Gold, 500);									
 			B_GiveInvItems (self, other, ItMi_Gold, 500);		
 			MIS_Lee_JudgeRichter = LOG_SUCCESS;
-			B_GivePlayerXP (XP_JudgeRichter);			
+			B_GivePlayerXP(300);			
 			AI_Output (self ,other,"DIA_Lee_RichterBeweise_04_08"); //Tylko nikomu ani s³owa, jasne?
 		}
 	else
@@ -1330,7 +1330,7 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 			CreateInvItems (self, ItMi_Gold, 50);									
 			B_GiveInvItems (self, other, ItMi_Gold, 50);		
 			MIS_Lee_JudgeRichter = LOG_FAILED;
-			B_GivePlayerXP (XP_Ambient);			
+			B_GivePlayerXP(150);
 		};
 };
 
@@ -1477,7 +1477,7 @@ FUNC VOID DIA_Lee_AnyNews_Info()
 
 		if (DIA_Lee_AnyNews_OneTime == FALSE)
 		{
-			B_GivePlayerXP (XP_AMBIENT);
+			B_GivePlayerXP(150);
 			DIA_Lee_AnyNews_OneTime = TRUE;
 		};
 	}
@@ -1566,8 +1566,8 @@ instance DIA_Lee_CanTeach		(C_INFO)
 };
 func int DIA_Lee_CanTeach_Condition ()
 {	
-	if Kapitel >= 10
-	&& Lee_TeachPlayer == FALSE
+	if (Kapitel >= 10)
+	&& (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};
@@ -1575,10 +1575,9 @@ func int DIA_Lee_CanTeach_Condition ()
 func void DIA_Lee_CanTeach_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_CanTeach_15_00"); //Czy mo¿esz mnie wyszkoliæ?
-	
 	AI_Output			(self, other, "DIA_Lee_CanTeach_04_01"); //Mogê ci pokazaæ, jak pos³ugiwaæ siê dwurêcznym.
 	
-	if (other.HitChance[NPC_TALENT_2H] < 75)
+	if (other.HitChance[NPC_TALENT_2H] < FightTalent_Strong)
 	{
 		AI_Output			(self, other, "DIA_Lee_CanTeach_04_02"); //Ale nie mam czasu, ¿eby wbijaæ ci do g³owy podstawy.
 		AI_Output			(self, other, "DIA_Lee_CanTeach_04_03"); //Poducz siê trochê u kogoœ innego. Jak bêdziesz gotowy, poka¿ê ci parê ciekawych sztuczek.
@@ -1586,10 +1585,9 @@ func void DIA_Lee_CanTeach_Info ()
 	else
 	{
 		AI_Output			(self, other, "DIA_Lee_CanTeach_04_04"); //S³ysza³em, ¿e jesteœ ca³kiem niez³y, ale mogê ci pokazaæ parê nowych sztuczek.
-		if (other.guild == GIL_SLD)
-		|| (other.guild == GIL_DJG)
+		if (other.guild == GIL_SLD || other.guild == GIL_DJG)
 		{
-			Lee_TeachPlayer = TRUE;
+			self.aivar[AIV_CanTeach] = true;
 			Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 			B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
 		}
@@ -1624,80 +1622,12 @@ FUNC VOID DIA_Lee_CanTeach_Yes ()
 	AI_Output (self ,other,"DIA_Lee_CanTeach_Yes_04_01"); //Œwietnie. Nie po¿a³ujesz tego.
 	
 	B_GiveInvItems (other,self,ItMi_Gold,1000);
-	Lee_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	Info_ClearChoices (DIA_Lee_CanTeach);
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
 };
  
-//**************************************
-//			Ich will trainieren
-//**************************************
-INSTANCE DIA_Lee_Teach(C_INFO)
-{
-	npc			= SLD_800_Lee;
-	nr			= 10;
-	condition	= DIA_Lee_Teach_Condition;
-	information	= DIA_Lee_Teach_Info;
-	permanent	= TRUE;
-	description = "Dobra. Bierzmy siê do nauki.";
-};                       
-
-FUNC INT DIA_Lee_Teach_Condition()
-{
-	IF (Lee_Teachplayer == TRUE)
-	{
-		return TRUE;
-	};	
-};
- 
-FUNC VOID DIA_Lee_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Lee_Teach_15_00"); //Dobra. Bierzmy siê do nauki.
-	
-	Info_ClearChoices 	(DIA_Lee_Teach);
-	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
-
-};
-
-FUNC VOID DIA_Lee_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Lee_Teach);
-};
-
-
-FUNC VOID DIA_Lee_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100);
-	
-	if (other.HitChance[NPC_TALENT_2H] >= 100)
-	{
-		AI_Output(self,other,"DIA_DIA_Lee_Teach_2H_1_04_00"); //Teraz jesteœ prawdziwym mistrzem walki dwurêcznym orê¿em.
-		AI_Output(self,other,"DIA_DIA_Lee_Teach_2H_1_04_01"); //Nie potrzebujesz ju¿ nauczyciela.
-	};
-	Info_ClearChoices 	(DIA_Lee_Teach);
-	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
-};
-
-FUNC VOID DIA_Lee_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100);
-	
-	if (other.HitChance[NPC_TALENT_2H] >= 100)
-	{
-		AI_Output(self,other,"DIA_Lee_Teach_2H_5_04_00"); //Teraz jesteœ prawdziwym mistrzem walki dwurêcznym orê¿em.
-		AI_Output(self,other,"DIA_Lee_Teach_2H_5_04_01"); //Nie potrzebujesz ju¿ nauczyciela.
-	};
-	Info_ClearChoices 	(DIA_Lee_Teach);
-	Info_AddChoice 		(DIA_Lee_Teach,	DIALOG_BACK		,DIA_Lee_Teach_Back);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Lee_Teach_2H_1);
-	Info_AddChoice		(DIA_Lee_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Lee_Teach_2H_5);
-};
-
 ///////////////////////////////////////////////////////////////////////
 //	Info Drachenei
 ///////////////////////////////////////////////////////////////////////
@@ -1723,7 +1653,7 @@ func int DIA_Lee_DRACHENEI_Condition ()
 func void DIA_Lee_DRACHENEI_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_DRACHENEI_15_00"); //Jaszczuroludzie roznosz¹ smocze jaja po ca³ym kraju.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 	AI_Output			(self, other, "DIA_Lee_DRACHENEI_04_01"); //Mo¿na siê by³o tego spodziewaæ. Najwy¿szy czas, ¿ebyœmy siê st¹d wynieœli.
 	
 	if (hero.guild == GIL_DJG)
@@ -1905,7 +1835,7 @@ func void DIA_Lee_GotRichtersPermissionForShip_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_GotRichtersPermissionForShip_15_00"); //Sztuczka z pisemnym upowa¿nieniem zadzia³a³a! Statek nale¿y teraz do mnie. Pan sêdzia by³ bardzo... pomocny.
 	AI_Output			(self, other, "DIA_Lee_GotRichtersPermissionForShip_04_01"); //A nie mówi³em? Wiedzia³em, ¿e ten sukinsyn jeszcze siê do czegoœ przyda.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1994,7 +1924,7 @@ FUNC VOID DIA_Lee_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Lee_KnowWhereEnemy_Yes_15_02"); //Tak, podnosimy ¿agle. Jeœli chcesz siê ze mn¹ zabraæ, przyjdŸ na przystañ. Spotkamy siê na statku.
 	AI_Output (self ,other,"DIA_Lee_KnowWhereEnemy_Yes_04_03"); //D³ugo czeka³em na tê chwilê. Mo¿esz na mnie liczyæ.
 	
-	B_GivePlayerXP (XP_Crewmember_Success);                                                                    
+	B_GivePlayerXP(500);                                                                    
 	                                                                                                           
 	
 	Lee_IsOnBoard	 = LOG_SUCCESS;

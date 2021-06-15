@@ -164,72 +164,8 @@ FUNC VOID DIA_Niclas_CanTeachMe_Info()
 	AI_Output (other,self ,"DIA_Niclas_CanTeachMe_15_00"); //Mo¿e móg³byœ mnie czegoœ nauczyæ.
 	AI_Output (self ,other,"DIA_Niclas_CanTeachMe_03_01"); //W³aœciwie, czemu nie. Mogê ci pokazaæ, jak siê pos³ugiwaæ ³ukiem.
 	
+	self.aivar[AIV_CanTeach] = true;
+	
 	Log_CreateTopic	(TOPIC_Teacher, LOG_NOTE);
 	B_LogEntry		(TOPIC_Teacher, "Niclas mo¿e mi pokazaæ, jak skuteczniej pos³ugiwaæ siê ³ukiem.");
 };
-		
-// ***********************************************************
-// 			Zeig mir den Umgang mit dem Bogen.
-// ***********************************************************
-INSTANCE DIA_Niclas_Teach   (C_INFO)
-{
-	npc         = BAU_984_Niclas;
-	nr          = 2;
-	condition   = DIA_Niclas_Teach_Condition;
-	information = DIA_Niclas_Teach_Info;
-	permanent   = TRUE;
-	description = "Poka¿ mi proszê, jak siê pos³ugiwaæ ³ukiem.";
-};
-FUNC INT DIA_Niclas_Teach_Condition()
-{
-	if (Npc_KnowsInfo (other,DIA_Niclas_CanTeachMe))
-	{
-		return TRUE;
-	};	
-};
-FUNC VOID DIA_Niclas_Teach_Info()
-{
-	AI_Output (other,self ,"DIA_Niclas_Teach_15_00"); //Poka¿ mi proszê, jak siê pos³ugiwaæ ³ukiem.
-	
-	if (other.HitChance[NPC_TALENT_BOW] >= 60)
-	{
-		AI_Output(self,other,"DIA_Niclas_Teach_03_01"); //Nauczy³em ciê ju¿ wszystkiego, co sam umia³em. Musisz sobie poszukaæ innego nauczyciela.
-	}
-	else
-	{
-		Info_ClearChoices (DIA_Niclas_Teach);
-		Info_AddChoice		(DIA_Niclas_Teach,DIALOG_BACK,DIA_Niclas_Teach_Back);
-		Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow1, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Niclas_Teach_BOW_1);
-		Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow5, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5),DIA_Niclas_Teach_BOW_5);
-	};
-};			
-	
-FUNC VOID DIA_Niclas_Teach_Back()
-{
-	if (other.HitChance[NPC_TALENT_BOW] >= 60)
-	{
-		AI_Output(self,other,"DIA_Niclas_Teach_03_00"); //Niczego wiêcej nie mogê ciê ju¿ nauczyæ.
-	};
-	
-	Info_ClearChoices (DIA_Niclas_Teach);
-};
-
-FUNC VOID DIA_Niclas_Teach_BOW_1()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 60);
-	
-	Info_ClearChoices (DIA_Niclas_Teach);
-	Info_AddChoice		(DIA_Niclas_Teach,DIALOG_BACK,DIA_Niclas_Teach_Back);
-	Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow1, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Niclas_Teach_BOW_1);
-	Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow5, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5),DIA_Niclas_Teach_BOW_5);
-};
-
-FUNC VOID DIA_Niclas_Teach_BOW_5()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 60);
-	
-	Info_ClearChoices (DIA_Niclas_Teach);
-	Info_AddChoice		(DIA_Niclas_Teach,DIALOG_BACK,DIA_Niclas_Teach_Back);
-	Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow1, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)),DIA_Niclas_Teach_BOW_1);
-	Info_AddChoice		(DIA_Niclas_Teach, B_BuildLearnString(PRINT_LearnBow5, 	B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1)*5),DIA_Niclas_Teach_BOW_5);
-};	

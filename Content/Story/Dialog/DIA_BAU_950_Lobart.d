@@ -626,8 +626,8 @@ func void DIA_Lobart_RuebenRunning_Info ()
 		};
 		
 		MIS_Lobart_Rueben = LOG_SUCCESS;
-		B_GivePlayerXP (XP_LobartHolRueben);
-		 
+		B_GivePlayerXP(50);
+		
 	//	Log_SetTopicStatus(TOPIC_BauerLobart, LOG_SUCCESS); ALT
 	//	Log_AddEntry (TOPIC_BauerLobart,"Ich habe Lobart seine Rüben gebracht, er hat mich dafür entlohnt."); 
 		
@@ -1000,7 +1000,7 @@ func void DIA_Lobart_VINOTOT_Info ()
 	};
 	
 	AI_Output			(self, other, "DIA_Lobart_VINOTOT_05_03"); //Na Innosa. Mam nadziejê, ¿e ten koszmar wkrótce siê skoñczy.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };
 
 
@@ -1159,7 +1159,7 @@ func void DIA_Lobart_ORKSWEG_Info ()
 	B_StartOtherRoutine	(LobartsBauer2,"Start");
 	
 	TOPIC_END_LobartsOrKProblem = TRUE;
-	B_GivePlayerXP (XP_KilledLobartOrks);
+	B_GivePlayerXP(600);
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);					
 };

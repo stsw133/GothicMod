@@ -169,7 +169,7 @@ func void DIA_Addon_Farim_MartinHelps_Info ()
 	B_GiveInvItems (self, other, ItMi_Aquamarine, 1);		
 	
 	MIS_Addon_Farim_PaladinFisch = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_Farim_PaladinFisch);
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////

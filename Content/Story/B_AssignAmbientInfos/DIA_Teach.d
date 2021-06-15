@@ -24,57 +24,59 @@ func void DIA_Teach_JOIN_Info()
 	
 	MOD_PrintLearn();
 	
-	/// FIGHT
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) < 1)
+	/// 1H
+	if (Npc_GetTalentValue(other, NPC_TALENT_1H) < FightTalent_Initiate)
 	{
 		if (Hlp_GetInstanceID(self) == SLD_802_Buster)
 		|| (Hlp_GetInstanceID(self) == VLK_438_Alrik)
 		|| (Hlp_GetInstanceID(self) == BAU_4300_Addon_Cavalorn)
-		|| ((Hlp_GetInstanceID(self) == Mil_312_Wulfgar) && (other.guild != GIL_SLD) && (other.guild != GIL_DJG))
+		|| (Hlp_GetInstanceID(self) == PAL_258_Keroloth && !Keroloths_BeutelLeer)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_1h, B_GetLearnCostTalent(other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1)), DIA_Teach_JOIN_1h);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_1H) < 2)
+	if (Npc_GetTalentValue(other, NPC_TALENT_1H) < FightTalent_Master)
 	{
-		if (Hlp_GetInstanceID(self) == DJG_712_Hokurn)
+		if (Hlp_GetInstanceID(self) == DJG_712_Hokurn && HokurnLastDrink >= Wld_GetDay())
 		|| (Hlp_GetInstanceID(self) == PAL_207_Girion_DI)
 		|| (Hlp_GetInstanceID(self) == PAL_216_Cedric)
 		|| (Hlp_GetInstanceID(self) == SLD_800_Lee_DI)
-		|| (Hlp_GetInstanceID(self) == SLD_805_Cord)
+		|| (Hlp_GetInstanceID(self) == SLD_805_Cord && (Npc_GetTalentSkill(other, NPC_TALENT_1H) > 0 || Cord_RangerHelp_Fight))
 		|| (Hlp_GetInstanceID(self) == VLK_449_Lares_DI)
-		|| (Hlp_GetInstanceID(self) == PAL_258_Keroloth)
 		|| (Hlp_GetInstanceID(self) == PIR_1353_Addon_Morgan)
+		|| (Hlp_GetInstanceID(self) == Mil_312_Wulfgar && (other.guild != GIL_SLD && other.guild != GIL_DJG))
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_1h, B_GetLearnCostTalent(other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1)), DIA_Teach_JOIN_1h);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) < 1)
+	/// 2H
+	if (Npc_GetTalentValue(other, NPC_TALENT_2H) < FightTalent_Initiate)
 	{
 		if (Hlp_GetInstanceID(self) == NOV_612_Babo)
-		|| (Hlp_GetInstanceID(self) == PAL_258_Keroloth)
+		|| (Hlp_GetInstanceID(self) == PAL_258_Keroloth && !Keroloths_BeutelLeer)
 		|| (Hlp_GetInstanceID(self) == Sld_804_Rod)
-		|| ((Hlp_GetInstanceID(self) == Mil_312_Wulfgar) && (other.guild != GIL_SLD) && (other.guild != GIL_DJG))
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_2h, B_GetLearnCostTalent(other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1)), DIA_Teach_JOIN_2h);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_2H) < 2)
+	if (Npc_GetTalentValue(other, NPC_TALENT_2H) < FightTalent_Master)
 	{
-		if (Hlp_GetInstanceID(self) == DJG_712_Hokurn)
+		if (Hlp_GetInstanceID(self) == DJG_712_Hokurn && HokurnLastDrink >= Wld_GetDay())
 		|| (Hlp_GetInstanceID(self) == PAL_200_Hagen)
 		|| (Hlp_GetInstanceID(self) == PAL_207_Girion)
 		|| (Hlp_GetInstanceID(self) == PAL_207_Girion_DI)
 		|| (Hlp_GetInstanceID(self) == PC_Fighter_DI)
 		|| (Hlp_GetInstanceID(self) == SLD_800_Lee)
 		|| (Hlp_GetInstanceID(self) == SLD_800_Lee_DI)
-		|| (Hlp_GetInstanceID(self) == SLD_805_Cord)
+		|| (Hlp_GetInstanceID(self) == SLD_805_Cord && (Npc_GetTalentSkill(other, NPC_TALENT_2H) > 0 || Cord_RangerHelp_Fight))
 		|| (Hlp_GetInstanceID(self) == PIR_1354_Addon_Henry)
+		|| (Hlp_GetInstanceID(self) == Mil_312_Wulfgar && (other.guild != GIL_SLD && other.guild != GIL_DJG))
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_2h, B_GetLearnCostTalent(other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1)), DIA_Teach_JOIN_2h);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_BOW) < 1)
+	/// BOW
+	if (Npc_GetTalentValue(other, NPC_TALENT_BOW) < FightTalent_Initiate)
 	{
 		if (Hlp_GetInstanceID(self) == VLK_440_Bartok)
 		|| (Hlp_GetInstanceID(self) == BAU_984_Niclas)
@@ -82,29 +84,31 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_Bow, B_GetLearnCostTalent(other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1)), DIA_Teach_JOIN_Bow);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_BOW) < 2)
+	if (Npc_GetTalentValue(other, NPC_TALENT_BOW) < FightTalent_Master)
 	{
 		if (Hlp_GetInstanceID(self) == BAU_4300_Addon_Cavalorn)
 		|| (Hlp_GetInstanceID(self) == SLD_811_Wolf)
 		|| (Hlp_GetInstanceID(self) == SLD_811_Wolf_DI)
 		|| (Hlp_GetInstanceID(self) == PIR_1352_Addon_AlligatorJack)
+		|| (Hlp_GetInstanceID(self) == PC_Thief_DI)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_Bow, B_GetLearnCostTalent(other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1)), DIA_Teach_JOIN_Bow);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) < 1)
+	/// CROSSBOW
+	if (Npc_GetTalentValue(other, NPC_TALENT_CROSSBOW) < FightTalent_Initiate)
 	{
-		if (Hlp_GetInstanceID(self) == BAU_983_Dragomir)
+		if (Hlp_GetInstanceID(self) == Mil_317_Ruga)
 		|| (Hlp_GetInstanceID(self) == PAL_268_Udar)
-		|| (Hlp_GetInstanceID(self) == PIR_1354_Addon_Henry)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_Crossbow, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1)), DIA_Teach_JOIN_Crossbow);
 		};
 	};
-	if (Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) < 2)
+	if (Npc_GetTalentValue(other, NPC_TALENT_CROSSBOW) < FightTalent_Master)
 	{
-		if (Hlp_GetInstanceID(self) == Mil_317_Ruga)
+		if (Hlp_GetInstanceID(self) == BAU_983_Dragomir)
 		|| (Hlp_GetInstanceID(self) == PAL_207_Girion_DI)
+		|| (Hlp_GetInstanceID(self) == PIR_1354_Addon_Henry)
 		|| (Hlp_GetInstanceID(self) == SLD_811_Wolf_DI)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnFight_Crossbow, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1)), DIA_Teach_JOIN_Crossbow);
@@ -133,9 +137,8 @@ func void DIA_Teach_JOIN_Info()
 	};
 	if (Kapitel >= 9 && Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) == 2)
 	{
-		if (Hlp_GetInstanceID(self) == KDF_504_Parlan)
+		if (Hlp_GetInstanceID(self) == KDF_503_Karras)
 		|| (Hlp_GetInstanceID(self) == KDW_14000_Addon_Saturas_ADW)
-		|| (Hlp_GetInstanceID(self) == PC_Mage_OW)
 		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnMagic, B_GetLearnCostTalent(other, NPC_TALENT_MAGIC, 3)), DIA_Teach_JOIN_Magic);
@@ -159,8 +162,8 @@ func void DIA_Teach_JOIN_Info()
 		};
 	};
 	
-	/// THIEF
-	if (Npc_GetTalentSkill(other,NPC_TALENT_SNEAK) == 0)
+	/// SNEAK
+	if (Npc_GetTalentSkill(other, NPC_TALENT_SNEAK) == 0)
 	{
 		if (Hlp_GetInstanceID(self) == BAU_4300_Addon_Cavalorn)
 		|| (Hlp_GetInstanceID(self) == DJG_711_Godar)
@@ -171,6 +174,7 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Sneak, B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1)), DIA_Teach_JOIN_Sneak);
 		};
 	};
+	/// ACROBATIC
 	if (Npc_GetTalentSkill(other, NPC_TALENT_ACROBATIC) == 0)
 	{
 		if (Hlp_GetInstanceID(self) == BDT_1091_Addon_Lucia)
@@ -178,6 +182,7 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Acrobatic, B_GetLearnCostTalent(other, NPC_TALENT_ACROBATIC, 1)), DIA_Teach_JOIN_Acrobatic);
 		};
 	};
+	/// PICKLOCK
 	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) == 0)
 	{
 		if (Hlp_GetInstanceID(self) == PC_Thief_DI)
@@ -189,6 +194,7 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Picklock, B_GetLearnCostTalent(other, NPC_TALENT_PICKLOCK, 1)), DIA_Teach_JOIN_Picklock);
 		};
 	};
+	/// PICKPOCKET
 	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKPOCKET) == 0)
 	{
 		if (Hlp_GetInstanceID(self) == VLK_447_Cassia)
@@ -281,19 +287,24 @@ func void DIA_Teach_JOIN_Info()
 
 func void DIA_Teach_JOIN2_Info()
 {
-	var int rand; rand = Hlp_Random(2);
+	var int rand; rand = Hlp_Random(3);
 	if (rand == 0)
 	{
 		AI_Output (other, self, "DIA_Addon_Henry_Teach_15_00"); //Ucz mnie.
 	}
-	else
+	else if (rand == 1)
 	{
 		AI_Output (other, self, "DIA_Addon_AlligatorJack_Teach_15_00"); //Naucz mnie.
+	}
+	else
+	{
+		AI_Output (other, self, "DIA_Udar_Teach_15_00"); //Chcę się od ciebie uczyć.
 	};
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
+/*
 func void DIA_Teach_JOIN_STR_1()
 {
 	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1);
@@ -325,7 +336,7 @@ func void DIA_Teach_JOIN_DEX_10()
 	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 10);
 	DIA_Teach_JOIN_Info();
 };
-
+*/
 ///******************************************************************************************
 func void DIA_Teach_JOIN_1h()
 {
@@ -357,56 +368,54 @@ func void DIA_Teach_JOIN_Magic()
 ///******************************************************************************************
 func void DIA_Teach_JOIN_Sneak()
 {
-	B_TeachTalents (self, other, NPC_TALENT_SNEAK, 1);
-	DIA_Teach_JOIN_Info();
-};
-func void DIA_Teach_JOIN_Picklock()
-{
-	B_TeachTalents (self, other, NPC_TALENT_PICKLOCK, 1);
-	DIA_Teach_JOIN_Info();
-};
-func void DIA_Teach_JOIN_Pickpocket()
-{
-	B_TeachTalents (self, other, NPC_TALENT_PICKPOCKET, 1);
+	B_TeachTalents (self, other, NPC_TALENT_SNEAK, Npc_GetTalentSkill(other, NPC_TALENT_SNEAK) + 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Acrobatic()
 {
-	B_TeachTalents (self, other, NPC_TALENT_ACROBATIC, 1);
+	B_TeachTalents (self, other, NPC_TALENT_ACROBATIC, Npc_GetTalentSkill(other, NPC_TALENT_ACROBATIC) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Picklock()
+{
+	B_TeachTalents (self, other, NPC_TALENT_PICKLOCK, Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Pickpocket()
+{
+	B_TeachTalents (self, other, NPC_TALENT_PICKPOCKET, Npc_GetTalentSkill(other, NPC_TALENT_PICKPOCKET) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Persuasion()
+{
+	B_TeachTalents (self, other, NPC_TALENT_PERSUASION, Npc_GetTalentSkill(other, NPC_TALENT_PERSUASION) + 1);
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
-func void DIA_Teach_JOIN_Smith()
-{
-	if (B_TeachTalents(self, other, NPC_TALENT_SMITH, 1))
-	{
-		self.aivar[AIV_CanTeach] = DONE;
-	};
-	DIA_Teach_JOIN_Info();
-};
 func void DIA_Teach_JOIN_Jewelery()
 {
-	if (B_TeachTalents(self, other, NPC_TALENT_JEWELERY, 1))
-	{
-		self.aivar[AIV_CanTeach] = DONE;
-	};
+	B_TeachTalents(self, other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Smith()
+{
+	B_TeachTalents(self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Enchanting()
+{
+	B_TeachTalents(self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Alchemy()
 {
-	if (B_TeachTalents(self, other, NPC_TALENT_ALCHEMY, 1))
-	{
-		self.aivar[AIV_CanTeach] = DONE;
-	};
+	B_TeachTalents(self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Hunting()
 {
-	if (B_TeachTalents(self, other, NPC_TALENT_HUNTING, 1))
-	{
-		self.aivar[AIV_CanTeach] = DONE;
-	};
+	B_TeachTalents(self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1);
 	DIA_Teach_JOIN_Info();
 };
 

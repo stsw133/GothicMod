@@ -176,15 +176,15 @@ func int DIA_Gritta_WINE_Condition ()
 		return TRUE;
 	};
 };
-func void DIA_Gritta_WINE_Info ()
+func void DIA_Gritta_WINE_Info()
 {
 	AI_Output (self, other, "DIA_Gritta_WINE_16_00"); //To by³o bardzo szlachetne, ¿e zgodzi³eœ siê za mnie zap³aciæ. Chcia³abym okazaæ ci moj¹ wdziêcznoœæ.
 	AI_Output (self, other, "DIA_Gritta_WINE_16_01"); //Oto butelka wina, któr¹ mój m¹¿, niechaj Innos przyjmie do siebie jego duszê, przywióz³ z po³udniowych wysp.
 	AI_Output (self, other, "DIA_Gritta_WINE_16_02"); //Opowiem o tym, co dla mnie zrobi³eœ, wszystkim moim znajomym. Jest jeszcze na tym œwiecie ktoœ, kto wie co to honor, i kto...
 	AI_Output (other, self, "DIA_Gritta_WINE_15_03"); //Tak, oczywiœcie, to drobiazg.
 
-	B_GivePlayerXP 		(XP_PayForGritta);
-	B_GiveInvItems 		(self, other, ItFo_SouthWine, 1);
+	B_GivePlayerXP(50);
+	B_GiveInvItems (self, other, ItFo_SouthWine, 1);
 	
 	AI_StopProcessInfos (self); 
 };
@@ -339,7 +339,7 @@ FUNC VOID DIA_Gritta_Perm3U4U5_TurnsGood ()
 	
 	if (GrittaXP_Once == FALSE)
 	{
-		B_GivePlayerXP (XP_AMBIENT);
+		B_GivePlayerXP(150);
 		GrittaXP_Once = TRUE;
 	};	
 };

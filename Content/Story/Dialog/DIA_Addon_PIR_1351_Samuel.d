@@ -163,24 +163,24 @@ func VOID DIA_Addon_Samuel_Recipe_Back()
 {
 	Info_ClearChoices (DIA_Addon_Samuel_Recipe);
 };
-func VOID DIA_Addon_Samuel_Recipe_LousHammer ()
+func VOID DIA_Addon_Samuel_Recipe_LousHammer()
 {
 	AI_Output (other,self ,"DIA_Addon_Samuel_Recipe_LousHammer_15_00"); //Od Snafa.
 	B_GiveInvItems (other, self, ITWr_Addon_Lou_Rezept, 1);
 	B_UseFakeScroll();
 	AI_Output (self ,other,"DIA_Addon_Samuel_Recipe_LousHammer_14_04"); //Ju¿ siê bojê... ale muszê j¹ wypróbowaæ.
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	Samuel_Knows_LousHammer = TRUE;
 };
-func VOID DIA_Addon_Samuel_Recipe_LousDoubleHammer ()
+func VOID DIA_Addon_Samuel_Recipe_LousDoubleHammer()
 {
 	AI_Output (other,self ,"DIA_Addon_Samuel_Recipe_LousDoubleHammer_15_00"); //To mo¿e byæ coœ naprawdê morderczego. Lepiej uwa¿aj.
 	B_GiveInvItems (other, self, ITWr_Addon_Lou_Rezept2, 1);
 	B_UseFakeScroll();
 	AI_Output (self ,other,"DIA_Addon_Samuel_Recipe_LousDoubleHammer_14_04"); //Nie strasz mnie. No có¿, raz siê ¿yje...
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	Samuel_Knows_SchlafHammer = TRUE;
 };
 

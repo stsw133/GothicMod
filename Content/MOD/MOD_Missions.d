@@ -2,25 +2,6 @@
 ///	MOD_Missions
 ///******************************************************************************************
 
-const int XP_BONUS_0		=	50;
-const int XP_BONUS_1		=	100;
-const int XP_BONUS_2		=	200;
-const int XP_BONUS_3		=	300;
-const int XP_BONUS_4		=	400;
-const int XP_BONUS_5		=	500;
-const int XP_BONUS_6		=	600;
-const int XP_BONUS_7		=	700;
-const int XP_BONUS_8		=	800;
-const int XP_BONUS_9		=	900;
-const int XP_BONUS_10		=	1000;
-var int XP_Ambient;
-
-func int XP_BONUS(var int xp)
-{
-	return (xp * 1000 / 1000);
-};
-
-///******************************************************************************************
 var int QuestStep_AkilNeedHelp;				const string Quest_AkilNeedHelp				=	"Farmer w potrzebie";
 var int QuestStep_AkilPeople;				const string Quest_AkilPeople				=	"Tanok i Telbor";
 var int QuestStep_AkilSheeps;				const string Quest_AkilSheeps				=	"Z³odzieje owiec";
@@ -297,7 +278,7 @@ func int SetQuestStatus (var string QuestName, var int OldStatus, var int NewSta
 ///******************************************************************************************
 ///	SetNoteEntry
 ///******************************************************************************************
-func void SetNoteEntry (var string Topic, var int Type, var string Entry)
+func void SetNoteEntry (var int Type, var string Topic, var string Entry)
 {
 	if (Type == LOG_NOTE)
 	{
@@ -306,5 +287,5 @@ func void SetNoteEntry (var string Topic, var int Type, var string Entry)
 	Log_AddEntry (Topic, Entry);
 	
 	Print_ExtPrcnt (-1, YPOS_LogEntry, PRINT_NewLogEntry, FONT_ScreenSmall, COL_White, TIME_Print*1000);
-	Snd_Play("LogEntry");
+	//Snd_Play("LogEntry");
 };

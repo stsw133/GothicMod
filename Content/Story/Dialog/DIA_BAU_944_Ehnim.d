@@ -235,7 +235,7 @@ func void DIA_Ehnim_STREIT5_Info ()
 
 
 };
-func void DIA_Ehnim_STREIT5_Attack ()
+func void DIA_Ehnim_STREIT5_Attack()
 {
 	AI_Output			(other, self, "DIA_Ehnim_STREIT5_Attack_15_00"); //Czemu sam mu tego nie powiesz?
 	AI_Output			(self, other, "DIA_Ehnim_STREIT5_Attack_12_01"); //Zrobiê to.
@@ -246,8 +246,7 @@ func void DIA_Ehnim_STREIT5_Attack ()
 	other.aivar[AIV_INVINCIBLE] = FALSE;
 	B_Attack (self, Egill, AR_NONE, 0);
 	
-	B_GivePlayerXP (XP_EgillEhnimStreit);
-	
+	B_GivePlayerXP(50);
 };
 
 func void DIA_Ehnim_STREIT5_gehen ()

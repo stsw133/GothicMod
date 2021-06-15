@@ -203,7 +203,7 @@ func void DIA_Garvell_ReturnMonty_Info ()
 	AI_Output (other, self, "DIA_Addon_Garvell_ReturnMonty_15_00"); //Co s³ychaæ?
 	AI_Output (self, other, "DIA_Addon_Garvell_ReturnMonty_04_01"); //Monty wróci³! Przegl¹da w³aœnie plany.
 	AI_Output (self, other, "DIA_Addon_Garvell_ReturnMonty_04_02"); //Mo¿e jednak uda siê skonstruowaæ ten statek...
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info MISSION
@@ -250,7 +250,7 @@ FUNC VOID B_GarvellSuccess()
 {
 	AI_Output (self, other, "DIA_Garvell_Success_04_00"); //Dziêkujê za informacje. Wygl¹da na to, ¿e mamy ca³¹ masê czasu na ukoñczenie naszego statku.
 	MIS_Garvell_Infos = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Orks
@@ -280,7 +280,7 @@ func void DIA_Garvell_Orks_Info ()
 	AI_Output (other, self, "DIA_Garvell_Orks_15_03"); //Paladyni strzeg¹ prze³êczy.
 
 	Tell_Garvell = (Tell_Garvell +1);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	
 	if (Tell_Garvell >= 3)
 	{
@@ -319,7 +319,7 @@ func void DIA_Garvell_Paladine_Info ()
 	AI_Output (other, self, "DIA_Garvell_Paladine_15_03"); //Kiedy tylko j¹ zdobêd¹, powróc¹ na kontynent.
 
 	Tell_Garvell = (Tell_Garvell +1);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	
 	if (Tell_Garvell >= 3)
 	{
@@ -358,7 +358,7 @@ func void DIA_Garvell_City_Info ()
 	
 
 	Tell_Garvell = (Tell_Garvell +1);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	
 	if (Tell_Garvell >= 3)
 	{

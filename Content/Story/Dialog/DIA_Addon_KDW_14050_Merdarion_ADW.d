@@ -172,7 +172,7 @@ func void DIA_Addon_Merdarion_FirstFocus_Info ()
 	Merdarion_GotFocusCount = 1;
 	AI_Output	(self, other, "DIA_Addon_Merdarion_FirstFocus_06_06"); //Postaraj siê uaktywniæ je wszystkie.
 	AI_Output	(other, self, "DIA_Addon_Merdarion_FirstFocus_15_07"); //Zobaczê, co da siê zrobiæ.
-	B_GivePlayerXP (XP_Addon_ActivatedTeleportStone);
+	B_GivePlayerXP(500);
 	B_LogEntry (TOPIC_Addon_TeleportsADW,"Merdarion da³ mi kolejny kamieñ ogniskuj¹cy. Jeœli uruchomiê kamieñ teleportacyjny, dostanê nastêpny kamieñ ogniskuj¹cy. Dziêki temu uruchomiê wszystkie kamienie teleportacyjne."); 
 };
 
@@ -230,7 +230,7 @@ func void DIA_Addon_Merdarion_ActivateTeleports_Info ()
 	};
 	
 	AI_Output	(self, other, "DIA_Addon_Merdarion_ActivateTeleports_06_10"); //Masz tu trochê z³otych monet.
-	B_GivePlayerXP (XP_Addon_ActivatedTeleportStone);
+	B_GivePlayerXP(500);
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);		
 	Merdarion_GotFocusCount = (Merdarion_GotFocusCount + 1);

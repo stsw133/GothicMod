@@ -158,9 +158,7 @@ func void DIA_Vino_BringWine_Info ()
 	};
 	
 	MIS_Vino_Wein = LOG_SUCCESS;
-	B_GivePlayerXP(XP_VinoWein);
-	
-	
+	B_GivePlayerXP(50);
 };
 
 
@@ -309,9 +307,9 @@ func void DIA_Vino_DMTAMSTART_Info ()
 	&& (DIA_Vino_DMTAMSTART_OneTime == FALSE)
 	&& (hero.guild != GIL_MIL)
 	{
-		AI_Output			(self, other, "DIA_Vino_DMTAMSTART_05_01"); //Ogólnie do dupy. Stra¿ znalaz³a moj¹ ukryt¹ gorzelniê.
-		AI_Output			(self, other, "DIA_Vino_DMTAMSTART_05_02"); //Mam nadziejê, ¿e nie zorientuj¹ siê, kto jest jej w³aœcicielem.
-		B_GivePlayerXP (XP_AmbientKap3);
+		AI_Output (self, other, "DIA_Vino_DMTAMSTART_05_01"); //Ogólnie do dupy. Stra¿ znalaz³a moj¹ ukryt¹ gorzelniê.
+		AI_Output (self, other, "DIA_Vino_DMTAMSTART_05_02"); //Mam nadziejê, ¿e nie zorientuj¹ siê, kto jest jej w³aœcicielem.
+		B_GivePlayerXP(150);
 		DIA_Vino_DMTAMSTART_OneTime = TRUE;
 	}
 	else
@@ -404,7 +402,7 @@ func void DIA_Vino_Heilung_Info ()
 		
 		B_LogEntry (TOPIC_DEMENTOREN,"Vino jest opêtany. Wys³a³em go do klasztoru, aby tam poprosi³ o uzdrowienie. Mam nadziejê, ¿e wszystko bêdzie dobrze."); 
 	
-		B_GivePlayerXP (XP_VinoFreeFromDMT);
+		B_GivePlayerXP(400);
 		DIA_Vino_Heilung_oneTime = TRUE;
 	};
 };
@@ -479,9 +477,9 @@ func void DIA_Vino_PERM4OBSESSED_Info ()
 
 	if (DIA_Vino_PERM4OBSESSED_XP_oneTime == FALSE)
 	{
-	AI_Output			(self, other, "DIA_Vino_PERM4OBSESSED_05_02"); //Muszê przyznaæ, ¿e to najlepsze wino, jakie pi³em.
-	B_GivePlayerXP (XP_Ambient);
-	DIA_Vino_PERM4OBSESSED_XP_oneTime = TRUE; 
+		AI_Output			(self, other, "DIA_Vino_PERM4OBSESSED_05_02"); //Muszê przyznaæ, ¿e to najlepsze wino, jakie pi³em.
+		B_GivePlayerXP(200);
+		DIA_Vino_PERM4OBSESSED_XP_oneTime = TRUE; 
 	};
 };
 

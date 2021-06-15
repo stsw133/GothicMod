@@ -149,7 +149,7 @@ func void DIA_Milten_DI_Rat_ja ()
 {
 	AI_Output			(other, self, "DIA_Milten_DI_Rat_ja_15_00"); //Oczywiœcie, ¿e tak!
 	AI_Output			(self, other, "DIA_Milten_DI_Rat_ja_03_01"); //Wybacz, g³upie pytanie. Robiê siê trochê nerwowy.
- 	B_GivePlayerXP (XP_Ambient);
+ 	B_GivePlayerXP(300);
  	Info_ClearChoices	(DIA_Milten_DI_Rat);
 
 };
@@ -180,7 +180,7 @@ func void DIA_Milten_DI_PEDROTOT_Info ()
 	AI_Output			(other, self, "DIA_Milten_DI_PEDROTOT_15_00"); //Spotka³em Pedra.
 	AI_Output			(self, other, "DIA_Milten_DI_PEDROTOT_03_01"); //Co?! Gdzie?! Tu, na wyspie? Niech go szlag. Ten cz³owiek jest niesamowity.
 	AI_Output			(self, other, "DIA_Milten_DI_PEDROTOT_03_02"); //Nie przypuszcza³em, ¿e taka z niego twarda sztuka.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 
 	if (Npc_IsDead(Pedro_DI))
 	{
@@ -219,7 +219,7 @@ func void DIA_Milten_DI_DementorObsessionBook_Info ()
 	AI_Output			(other, self, "DIA_Milten_DI_DementorObsessionBook_15_00"); //Co mo¿esz mi powiedzieæ na temat tego almanachu opêtanych?
 	AI_Output			(self, other, "DIA_Milten_DI_DementorObsessionBook_03_01"); //W takich sprawach ekspertem jest Pyrokar.
 	AI_Output			(self, other, "DIA_Milten_DI_DementorObsessionBook_03_02"); //Przykro mi, ale zbyt ma³o wiem na ten temat.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -248,7 +248,7 @@ func void DIA_Milten_DI_DragonEgg_Info ()
 	AI_Output			(other, self, "DIA_Milten_DI_DragonEgg_15_00"); //Co mo¿esz mi powiedzieæ o smoczych jajach?
 	AI_Output			(self, other, "DIA_Milten_DI_DragonEgg_03_01"); //Niewiele. S³ysza³em, ¿e pewnemu alchemikowi uda³o siê pozyskaæ z nich potê¿n¹ miksturê.
 	AI_Output			(self, other, "DIA_Milten_DI_DragonEgg_03_02"); //Ale nie znam szczegó³ów ani - tym bardziej - receptury.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 };
 
 //*************************************************************

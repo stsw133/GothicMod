@@ -7,12 +7,12 @@ var int LearnedAttribute_DEX;
 var int LearnedAttribute_Power;
 var int LearnedAttribute_Mana;
 var int LearnedAttribute_HP;
+var int LearnedCraftTalent;
 
 ///******************************************************************************************
 func int B_GetLearnCostAttribute (var C_NPC oth, var int atr)
 {
-	var int kosten;
-	kosten = 0;
+	var int kosten; kosten = 0;
 	
 	if (atr == ATR_STRENGTH)
 	{
@@ -61,8 +61,7 @@ func int B_GetLearnCostAttribute (var C_NPC oth, var int atr)
 ///******************************************************************************************
 func int B_GetLearnCostTalent (var C_NPC oth, var int talent, var int skill)
 {
-	var int kosten;
-	kosten = 0;
+	var int kosten; kosten = 0;
 	
 	if		(talent == NPC_TALENT_1H)			{	kosten = 20 * (skill + 1) - (SelfFightTeach_Level[NPC_TALENT_1H] * (skill + 1));			}
 	else if	(talent == NPC_TALENT_2H)			{	kosten = 20 * (skill + 1) - (SelfFightTeach_Level[NPC_TALENT_2H] * (skill + 1));			}
@@ -85,7 +84,14 @@ func int B_GetLearnCostTalent (var C_NPC oth, var int talent, var int skill)
 	|| (talent == NPC_TALENT_ALCHEMY)
 	|| (talent == NPC_TALENT_HUNTING)
 	{
-		kosten = 20;
+		if (talent == LearnedCraftTalent)
+		{
+			kosten = 10;
+		}
+		else
+		{
+			kosten = 20;
+		};
 	};
 	
 	if (talent == NPC_TALENT_SNEAK)
@@ -98,7 +104,18 @@ func int B_GetLearnCostTalent (var C_NPC oth, var int talent, var int skill)
 	|| (talent == NPC_TALENT_PICKPOCKET)
 	|| (talent == NPC_TALENT_PERSUASION)
 	{
-		kosten = 20;
+		if (Npc_GetTalentSkill(oth, NPC_TALENT_PICKLOCK) + Npc_GetTalentSkill(oth, NPC_TALENT_PICKPOCKET) + Npc_GetTalentSkill(oth, NPC_TALENT_PERSUASION) == 0)
+		{
+			kosten = 10;
+		}
+		else if (Npc_GetTalentSkill(oth, NPC_TALENT_PICKLOCK) + Npc_GetTalentSkill(oth, NPC_TALENT_PICKPOCKET) + Npc_GetTalentSkill(oth, NPC_TALENT_PERSUASION) == 1)
+		{
+			kosten = 20;
+		}
+		else
+		{
+			kosten = 30;
+		};
 	};
 	
 	if (talent == NPC_TALENT_LANGUAGE)

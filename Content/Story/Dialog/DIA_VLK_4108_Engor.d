@@ -386,7 +386,7 @@ func void DIA_Engor_BRINGMEAT_Info ()
 		AI_Output (self, other, "DIA_Engor_BRINGMEAT_13_05"); //Na schön. Du hast mir geholfen, du kriegst was umsonst. Ich gebe dir eine Information. 	
 		*/
 		MIS_Engor_BringMeat = LOG_SUCCESS;
-		B_GivePlayerXP (XP_BringMeat);
+		B_GivePlayerXP(150);
 		Log_AddEntry (TOPIC_BringMeat,"Engor dosta³ miêso. Ma je rozdzieliæ pomiêdzy swoich ludzi."); 
 	};
 };

@@ -203,7 +203,7 @@ FUNC VOID DIA_Ignaz_Danach_Info()
 	Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 	B_LogEntry (Topic_CityTeacher,"Ignaz mo¿e mi pokazaæ receptury na ró¿ne mikstury. Mieszka w dzielnicy portowej.");
 	MIS_Ignaz_Charm = LOG_SUCCESS;
-	B_GivePlayerXP (XP_MIS_Ignaz_Charm);
+	B_GivePlayerXP(100);
 	
 	CreateInvItems (self,ITSC_Charm, 3);
 };

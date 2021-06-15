@@ -220,7 +220,7 @@ FUNC VOID DIA_Opolos_rezept_Info()
 		Opolos_TeachSTR = TRUE;
 		
 		Opolos_Rezept = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(50);
 		
 		Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
 		B_LogEntry (Topic_KlosterTeacher,"Opolos mo¿e mi pokazaæ, jak staæ siê silniejszym.");
@@ -446,7 +446,7 @@ FUNC VOID DIA_Opolos_HelloAgain_Info()
 	AI_Output (self ,other,"DIA_Opolos_HelloAgain_12_00"); //Witam. Dziêkujê za pomoc. Postaram siê skorzystaæ z szansy, jak¹ otrzyma³em, i nauczyæ siê jak najwiêcej.
 	AI_Output (self ,other,"DIA_Opolos_HelloAgain_12_01"); //Nie masz pewnie czasu, ¿eby rozmawiaæ ze zwyk³ym nowicjuszem, Mistrzu.
 	
-	B_GivePlayerXP (XP_Ambient); 
+	B_GivePlayerXP(50);
 	AI_StopProcessInfos (self);
 };
 
@@ -595,7 +595,7 @@ FUNC VOID DIA_Opolos_Kap3_PERM_DRAGONS()
 	
 	if (Opolos_Dragons == FALSE)
 	{
-		B_GivePlayerXP (XP_AMBIENT);
+		B_GivePlayerXP(150);
 		Opolos_Dragons = TRUE;
 	};	
 };
@@ -612,7 +612,7 @@ FUNC VOID DIA_Opolos_Kap3_PERM_DMT()
 	
 	if (Opolos_DMT == FALSE)
 	{
-		B_GivePlayerXP (XP_AMBIENT);
+		B_GivePlayerXP(150);
 		Opolos_DMT = TRUE;
 	};	
 };
@@ -628,7 +628,7 @@ FUNC VOID DIA_Opolos_Kap3_PERM_PEDRO()
 	
 	if (Opolos_Pedro == FALSE)
 	{
-		B_GivePlayerXP (XP_AMBIENT);
+		B_GivePlayerXP(150);
 		Opolos_Pedro = TRUE;
 	};
 };

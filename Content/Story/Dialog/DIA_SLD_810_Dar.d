@@ -326,7 +326,7 @@ FUNC VOID DIA_Dar_Pilztabak_Info()
 	AI_Output (self, other, "DIA_Dar_Pilztabak_03_08"); //Na œwiêtego Rhobara!
 	AI_PlayAni (self, "T_HEASHOOT_2_STAND");
 	AI_Output (self, other, "DIA_Dar_Pilztabak_03_09"); //Ten towar jest za mocny! Lepiej go nawet nie próbuj!
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 
 
@@ -535,7 +535,7 @@ func void DIA_Dar_FIGHTAGAINSTPALOVER_Info ()
 {
 	AI_Output			(self, other, "DIA_Dar_FIGHTAGAINSTPALOVER_03_00"); //No có¿, chyba nie zyskam uznania Lee, ponownie wdaj¹c siê z tob¹ w walkê.
 	AI_Output			(self, other, "DIA_Dar_FIGHTAGAINSTPALOVER_03_01"); //Nie potrzebujê wrogów. Wiêc mo¿e po prostu zapomnijmy o tych bzdurach, co ty na to?
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 	AI_StopProcessInfos (self);
 };
 
@@ -611,7 +611,7 @@ func void DIA_Dar_BRINGORCELITERING_geld_ok ()
 
 	CreateInvItems 		(self, ItMi_Gold, 1200);									
 	B_GiveInvItems 		(self, other, ItMi_Gold, 1200);					
-	B_GivePlayerXP 		(XP_Dar_BringOrcEliteRing);
+	B_GivePlayerXP 		(600);
 
 	Info_ClearChoices	(DIA_Dar_BRINGORCELITERING);
 };
@@ -642,7 +642,7 @@ func void DIA_Dar_BRINGORCELITERING_was_am ()
 	B_GiveInvItems 		(other, self, ItRi_OrcEliteRing, 1);					
 	CreateInvItems 		(self, ItAm_Dex_01, 1);									
 	B_GiveInvItems 		(self, other, ItAm_Dex_01, 1);					
-	B_GivePlayerXP 		(XP_Dar_BringOrcEliteRing);
+	B_GivePlayerXP 		(600);
 
 	AI_Output			(self, other, "DIA_Dar_BRINGORCELITERING_was_am_03_02"); //Interesy z tob¹ to sama przyjemnoœæ.
 	Info_ClearChoices	(DIA_Dar_BRINGORCELITERING);

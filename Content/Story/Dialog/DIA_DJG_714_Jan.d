@@ -425,7 +425,7 @@ FUNC VOID DIA_Jan_Dragonscales_Info()
 			
 			if (DIA_JAN_Dragonscales_OneTime == FALSE)//Joly:zur sicherheit
 			{
-				B_GivePlayerXP (XP_Addon_JanSellsArmor);
+				B_GivePlayerXP(600);
 				DIA_JAN_Dragonscales_OneTime = TRUE;
 			};
 			
@@ -649,7 +649,7 @@ func void DIA_Jan_DragonBlood_1 ()
 	DragonBloodCount = 1;
 
 	B_GiveInvItems (other, self, ItAt_DragonBlood,  DragonBloodCount);
-	XP_DJG_BringDragonBloods = (DragonBloodCount * XP_AmbientKap4);
+	XP_DJG_BringDragonBloods = (DragonBloodCount * 200);
 	B_GivePlayerXP (XP_DJG_BringDragonBloods);
 	DragonBloodGeld	= (DragonBloodCount * ItAt_DragonBlood.value);	//Joly:ganzer Wert ohne Handelsmultiplier
 	CreateInvItems (self, ItMi_Gold, DragonBloodGeld); 
@@ -680,7 +680,7 @@ func void DIA_Jan_DragonBlood_all ()
 	DragonBloodCount = Npc_HasItems(other, ItAt_DragonBlood);
 
 	B_GiveInvItems (other, self, ItAt_DragonBlood,  DragonBloodCount);
-	XP_DJG_BringDragonBloods = (DragonBloodCount * XP_AmbientKap4);
+	XP_DJG_BringDragonBloods = (DragonBloodCount * 200);
 	B_GivePlayerXP (XP_DJG_BringDragonBloods);
 	DragonBloodGeld	= (DragonBloodCount * ItAt_DragonBlood.value); //Joly:ganzer Wert ohne Handelsmultiplier
 	CreateInvItems (self, ItMi_Gold, DragonBloodGeld); 

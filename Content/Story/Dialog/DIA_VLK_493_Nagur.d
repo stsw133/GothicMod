@@ -290,7 +290,7 @@ FUNC VOID DIA_Nagur_Deal_Info()
 		B_GiveInvItems (self,other,ItMi_Gold,Nagur_Deal);
 		MIS_Nagur_Bote = LOG_SUCCESS;
 		MIS_Baltram_ScoutAkil = LOG_FAILED;
-		B_GivePlayerXP (XP_Nagur_Bote);
+		B_GivePlayerXP(100);
 		DIA_Nagur_Deal_permanent = TRUE;
 		Diebesgilde_Okay = (Diebesgilde_Okay + 1);
 		AI_StopProcessInfos (self);

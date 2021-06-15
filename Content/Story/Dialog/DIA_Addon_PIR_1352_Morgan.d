@@ -159,7 +159,7 @@ func VOID DIA_Addon_Morgan_Meat_Info()
 	B_LogEntry (TOPIC_Addon_BringMeat,"Odda³em miêso Morganowi.");
 	
 	MIS_AlligatorJack_BringMeat = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_ALLIGatORJACK_BringMeat);
+	B_GivePlayerXP(200);
 };
 
 // ************************************************************
@@ -308,7 +308,7 @@ func void DIA_Addon_Morgan_LurkerPlatt_Info ()
 		
 		MIS_Addon_MorganLurker = LOG_SUCCESS;
 				
-		B_GivePlayerXP (XP_Addon_Morgan_LurkerPlatt);
+		B_GivePlayerXP(300);
 	}
 	else
 	{
@@ -435,7 +435,7 @@ func void DIA_Addon_Morgan_FOUNDTHEM_GiveRing()
 	AI_Output (self, other,"DIA_Addon_Morgan_FOUNDTHEM_GiveRing_07_02"); //WeŸ tê kamienn¹ tabliczkê. Mo¿e wygl¹da niepozornie, ale Garett da ci za ni¹ niez³¹ sumkê.
 	
 	MIS_Addon_Morgan_SeekTraitor = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_MorgansRing);
+	B_GivePlayerXP(200);
 	Info_ClearChoices (DIA_Addon_Morgan_FOUNDTHEM);
 	
 	//PATCH M.F.
@@ -512,103 +512,5 @@ FUNC VOID DIA_Addon_Morgan_TRAIN_Info()
 	Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 	B_LogEntry (Topic_Addon_PIR_Teacher,Log_Text_Addon_MorganTeach);
 	
-	Morgan_Addon_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 };
-
-// ------------------------------------------------------------
-// 		  		Unterrichte mich!
-// ------------------------------------------------------------
-var int Morgan_merke1h;
-var int Morgan_Labercount;
-// ------------------------------------------------------------
-instance DIA_Addon_Morgan_Teach(C_INFO)
-{
-	npc			= PIR_1353_Addon_Morgan;
-	nr			= 99;
-	condition	= DIA_Addon_Morgan_Teach_Condition;
-	information	= DIA_Addon_Morgan_Teach_Info;
-	permanent	= TRUE;
-	description	= "Naucz mnie tego!";
-};                       
-FUNC INT DIA_Addon_Morgan_Teach_Condition()
-{
-	if (Morgan_Addon_TeachPlayer == TRUE)
-	{
-		return TRUE;
-	};	
-};
-func VOID DIA_Addon_Morgan_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Addon_Morgan_Teach_15_00"); //Naucz mnie tego!
-	
-	Morgan_merke1h = other.HitChance[NPC_TALENT_1H];  
-	
-	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
-	Info_AddChoice 		(DIA_Addon_Morgan_Teach, DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
-};
-func VOID DIA_Addon_Morgan_Teach_Back()
-{
-	if (other.HitChance[NPC_TALENT_1H] > Morgan_Merke1h)
-	{
-		if (Morgan_Labercount == 0)
-		{
-			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_00"); //Pamiêtaj o jednym. Ca³a ta gadka o honorze to jeden wielki stek bzdur. Albo ty jego, albo on ciebie. To wszystko.
-			Morgan_Labercount = 1;	
-		}
-		else if (Morgan_Labercount == 1)
-		{
-			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_01"); //Musisz nauczyæ siê zadawaæ mocniejsze ciosy.
-			Morgan_Labercount = 2;	
-		}
-		else if (Morgan_Labercount == 2)
-		{
-			AI_Output (self,other,"DIA_Addon_Morgan_CommentFightSkill_07_02"); //Ha ha ha! Przynajmniej umiesz ju¿ prawid³owo trzymaæ broñ.
-			Morgan_Labercount = 0;	
-		};
-	}
-	else if (other.HitChance[NPC_TALENT_1H] >= 75)
-	{
-		AI_Output (self ,other,"DIA_Addon_Morgan_Teach_Back_07_00"); //Jeœli chcesz nauczyæ siê czegoœ wiêcej, musisz znaleŸæ innego nauczyciela.
-	};
-	Info_ClearChoices (DIA_Addon_Morgan_Teach);
-};
-func VOID DIA_Addon_Morgan_Teach_1H_1()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 75);
-			
-	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
-	Info_AddChoice 		(DIA_Addon_Morgan_Teach,	DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
-};
-
-FUNC VOID DIA_Addon_Morgan_Teach_1H_5()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 75);
-
-	Info_ClearChoices 	(DIA_Addon_Morgan_Teach);
-	Info_AddChoice 		(DIA_Addon_Morgan_Teach,	DIALOG_BACK		,DIA_Addon_Morgan_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Addon_Morgan_Teach_1H_1);
-	Info_AddChoice		(DIA_Addon_Morgan_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)*5)			,DIA_Addon_Morgan_Teach_1H_5);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

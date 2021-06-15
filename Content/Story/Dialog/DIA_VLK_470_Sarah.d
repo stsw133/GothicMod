@@ -221,7 +221,7 @@ func void DIA_Sarah_Success_Info ()
 	AI_Output (self, other, "DIA_Sarah_Success_16_01"); //W ten sposób sprowadzi³eœ na siebie gniew potê¿nego cz³owieka. Znam tego drania od dawna, zawsze chcia³ zaj¹æ moje miejsce.
 	AI_Output (self, other, "DIA_Sarah_Success_16_02"); //Przyjmij tê broñ jako wyraz mojej wdziêcznoœci.
 	
-	B_GivePlayerXP (XP_CantharImKnast);
+	B_GivePlayerXP(200);
 	B_GiveInvItems (self, other, ItMw_Piratensaebel,1);
 	
 };

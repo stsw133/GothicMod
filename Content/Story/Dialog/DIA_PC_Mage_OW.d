@@ -439,13 +439,7 @@ FUNC VOID DIA_MiltenOW_TeachCircle2_Info()
 	AI_Output (other, self, "DIA_Milten_Add_15_00"); //WprowadŸ mnie do drugiego krêgu magii!
 	AI_Output (self, other, "DIA_Milten_Add_03_01"); //W zasadzie powinien siê tym zaj¹æ któryœ z nauczycieli naszego zakonu...
 	AI_Output (self, other, "DIA_Milten_Add_03_02"); //...ale w tej sytuacji mo¿emy chyba zrobiæ wyj¹tek.
-	
-	if (B_TeachMagicCircle (self, other, 2))
-	{
-		AI_Output (self, other, "DIA_Milten_Add_03_03"); //Nie wiem, czy pamiêtam oficjaln¹ formu³kê...
-		AI_Output (self, other, "DIA_Milten_Add_03_04"); //Oto wkraczasz w drugi kr¹g magii... Eee... Magia wska¿e ci drogê, ale to twoje czyny ciê ni¹ poprowadz¹... Czy coœ w tym stylu...
-		AI_Output (self, other, "DIA_Milten_Add_03_05"); //Chyba wiesz, o co mi chodzi...
-	};
+	self.aivar[AIV_CanTeach] = true;
 };
 
 // ************************************************************

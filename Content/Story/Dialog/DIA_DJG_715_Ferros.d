@@ -278,7 +278,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Silverblade_Yes ()
 
 	Info_ClearChoices (DIA_DJG_715_Ferros_FerrosAnySword);
 	MIS_FerrosSword = LOG_SUCCESS;
-	B_GivePlayerXP (XP_FerrosSword);
+	B_GivePlayerXP(400);
 };
 
 FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Silverblade_No ()
@@ -296,7 +296,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Oreblade_Yes ()
 
 	Info_ClearChoices (DIA_DJG_715_Ferros_FerrosAnySword);
 	MIS_FerrosSword = LOG_SUCCESS;
-	B_GivePlayerXP (XP_FerrosSword);
+	B_GivePlayerXP(400);
 };
 
 FUNC VOID DIA_DJG_715_Ferros_FerrosAnySword_Oreblade_No ()
@@ -334,7 +334,7 @@ FUNC VOID DIA_DJG_715_Ferros_FerrosHisSword_Info()
 	B_GiveInvItems (other,self,ItMw_1h_FerrosSword_Mis,1);
 	B_Ferros_FerrosAnySword_Yes2 ();
 	MIS_FerrosSword = LOG_SUCCESS;	
-	B_GivePlayerXP (XP_FerrosSword);
+	B_GivePlayerXP(400);
 };
 
 //*******************************************

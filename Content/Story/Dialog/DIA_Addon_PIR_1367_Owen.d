@@ -267,5 +267,5 @@ func void DIA_Addon_Owen_MalcomDead_Info ()
 	B_LogEntry	(TOPIC_Addon_MalcomsStunt,"Powiedzia³em Owenowi, ¿e Malcolm nie ¿yje. Nie przej¹³ siê tym za bardzo.");
 	
 	MIS_Owen_FindMalcom = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_Owen_MalcomDead);
+	B_GivePlayerXP(300);
 };

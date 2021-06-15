@@ -246,7 +246,7 @@ func void DIA_Brutus_Gold_Info ()
 		Brutus_TeachSTR = TRUE;
 		Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
 		B_LogEntry		(TOPIC_Teacher_OC, "Brutus mo¿e mi pokazaæ, jak staæ siê silniejszym.");
-		B_GivePlayerXP  (XP_Ambient);
+		B_GivePlayerXP(100);
 	}
 	else 
 	{
@@ -478,7 +478,7 @@ func int DIA_Brutus_MEATBUGSWEG_Condition ()
 		};
 };
 
-func void DIA_Brutus_MEATBUGSWEG_Info ()
+func void DIA_Brutus_MEATBUGSWEG_Info()
 {
 	AI_Output			(other, self, "DIA_Brutus_MEATBUGSWEG_15_00"); //Chrz¹szczy ju¿ nie ma. Mo¿esz wróciæ do polerowania swoich imade³, czy co tam robi³eœ.
 	AI_Output			(self, other, "DIA_Brutus_MEATBUGSWEG_06_01"); //Jesteœ pewien, ¿e nie prze¿y³ ¿aden z tych potworów?
@@ -488,7 +488,7 @@ func void DIA_Brutus_MEATBUGSWEG_Info ()
 
 	TOPIC_END_BrutusMeatbugs = TRUE;
 	
-	B_GivePlayerXP (XP_BrutusMeatbugs);
+	B_GivePlayerXP(350);
 	B_NpcClearObsessionByDMT (self);
 
 	CreateInvItems (self, ItMi_Gold, 150);									

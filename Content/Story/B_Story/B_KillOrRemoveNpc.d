@@ -3,9 +3,8 @@
 ///******************************************************************************************
 func void B_KillNpc (var int npcInstance)
 {
-	var C_NPC npc;	
-	npc = Hlp_GetNpc(npcInstance);
-
+	var C_NPC npc; npc = Hlp_GetNpc(npcInstance);
+	
 	if (Hlp_IsValidNpc(npc))
 	&& (!Npc_IsDead(npc))
 	{
@@ -20,9 +19,8 @@ func void B_KillNpc (var int npcInstance)
 ///******************************************************************************************
 func void B_RemoveNpc (var int npcInstance)
 {
-	var C_NPC npc;	
-	npc = Hlp_GetNpc(npcInstance);
-
+	var C_NPC npc; npc = Hlp_GetNpc(npcInstance);
+	
 	if (Hlp_IsValidNpc(npc))
 	&& (!Npc_IsDead(npc))
 	{

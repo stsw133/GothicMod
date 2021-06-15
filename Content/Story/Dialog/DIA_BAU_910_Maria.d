@@ -178,7 +178,7 @@ func void DIA_Maria_BringPlate_Info ()
 	AI_Output (self, other, "DIA_Maria_BringPlate_17_01"); //Tak! To on! Stokrotne dziêki!
 	
 	MIS_Maria_BringPlate = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Maria_Teller);
+	B_GivePlayerXP(200);
 };
 
 

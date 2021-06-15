@@ -227,7 +227,7 @@ func void UseBloodMIS()
 		Knows_Bloodfly = true;
 		Log_CreateTopic (Topic_Bonus, LOG_NOTE);
 		B_LogEntry (Topic_Bonus, "Teraz wiem, jak uzyskaæ substancjê lecznicz¹ z ¿¹de³ krwiopijców.");
-		B_GivePlayerXP(XP_BONUS_1);
+		B_GivePlayerXP(100);
 	};
 };
 ///******************************************************************************************
@@ -1007,7 +1007,7 @@ func void Use_HallsofIrdorath()
 		CreateInvItem (self, ItWr_UseLampIdiot_Mis);
 		
 		Print("W ok³adce tej ksiêgi schowano klucz!");
-		B_GivePlayerXP(XP_BONUS_10);
+		B_GivePlayerXP(1000);
 		ItWr_HallsofIrdorathIsOpen = true;
 		
 		B_LogEntry (TOPIC_BuchHallenVonIrdorath, "Uda³o mi siê otworzyæ ksiêgê Xardasa. Znalaz³em w niej tajemnicz¹ wiadomoœæ i dziwny klucz. Kto wie, co jeszcze kryje siê w klasztornych podziemiach."); 
@@ -1200,7 +1200,7 @@ func void Use_Seamap_Irdorath()
 		Log_CreateTopic (TOPIC_SHIP, LOG_MISSION);
 	    Log_SetTopicStatus (TOPIC_SHIP, LOG_RUNNING);
 	    B_LogEntry (TOPIC_SHIP, "Wygl¹da na to, ¿e muszê siê dostaæ na wyspê nieprzyjaciela. Bêdê potrzebowa³ statku, za³ogi i kapitana.");
-		B_GivePlayerXP(XP_BONUS_10*2);
+		B_GivePlayerXP(2000);
 	};
 	
 	MIS_SCKnowsWayToIrdorath = true;

@@ -388,7 +388,7 @@ func void DIA_Malak_FLEEFROMPASS_Info ()
 	AI_Output			(self, other, "DIA_Malak_FLEEFROMPASS_08_02"); //Nawet sobie nie wyobra¿asz, jakie paskudztwa wy³oni³y siê stamt¹d w ci¹gu kilku ostatnich dni.
 	AI_Output			(other, self, "DIA_Malak_FLEEFROMPASS_15_03"); //Chyba jednak mogê to sobie wyobraziæ.
 	B_LogEntry (TOPIC_BengarALLEIN,"Malak schroni³ siê na po³udniu, poniewa¿ obawia siê stworzeñ przybywaj¹cych na pastwiska od strony prze³êczy."); 
-	B_GivePlayerXP (XP_FoundMalakFLEEFROMPASS);
+	B_GivePlayerXP(400);
 	};
 };
 
@@ -526,7 +526,7 @@ func void DIA_Malak_BACKTOBENGAR_los ()
 	AI_Output			(other, self, "DIA_Malak_BACKTOBENGAR_los_15_00"); //Prawda.
 	AI_Output			(self, other, "DIA_Malak_BACKTOBENGAR_los_08_01"); //Dobrze. A zatem wrócê na farmê. Mam nadziejê, ¿e ten twój najemnik zna siê na rzeczy.
 	MIS_GetMalakBack = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Malak_BACKTOBENGAR);
+	B_GivePlayerXP(300);
 	B_NpcClearObsessionByDMT (self);
 	Npc_ExchangeRoutine	 (self,"Start");
 	B_StartOtherRoutine   (BAU_962_Bauer,"Start"); 

@@ -58,7 +58,7 @@ instance DIA_Girion_CanTeach		(C_INFO)
 };
 func int DIA_Girion_CanTeach_Condition ()
 {	
-	if (Girion_Teach2H == FALSE)
+	if (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};
@@ -72,7 +72,7 @@ func void DIA_Girion_CanTeach_Info ()
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_01"); //Wybieraj¹c najszlachetniejsz¹ ze wszystkich sztuk walk, post¹pi³eœ jak prawdziwy wojownik Innosa.
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_02"); //Udzielê ci kilku wskazówek. Daj mi znaæ, kiedy bêdziesz gotów do treningu.
 		
-		Girion_Teach2H = TRUE;	
+		self.aivar[AIV_CanTeach] = true;	
 		B_LogEntry (TOPIC_CityTeacher,"Paladyn Girion mo¿e mnie nauczyæ, jak walczyæ orê¿em dwurêcznym.");
 	}
 	else
@@ -80,128 +80,6 @@ func void DIA_Girion_CanTeach_Info ()
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_03"); //Jeœli chcesz siê uczyæ, musisz znaleŸæ sobie mentora poza naszym zakonem.
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_04"); //Jestem wojownikiem, nie nauczycielem.
 	};
-};
-//**************************************
-//			Ich will trainieren
-//**************************************
-INSTANCE DIA_Girion_Teach(C_INFO)
-{
-	npc			= PAL_207_Girion;
-	nr			= 100;
-	condition	= DIA_Girion_Teach_Condition;
-	information	= DIA_Girion_Teach_Info;
-	permanent	= TRUE;
-	description = "Jestem gotów do treningu.";
-};                       
-//----------------------------------
-var int DIA_Girion_Teach_permanent;
-//----------------------------------
-FUNC INT DIA_Girion_Teach_Condition()
-{
-	if (Girion_Teach2H == TRUE)
-	&& (DIA_Girion_Teach_permanent == FALSE)
-	{
-		return TRUE;
-	};	
-};
-// -------------------------------
-var int  girion_merk2h;
-// ------------------------------- 
-FUNC VOID DIA_Girion_Teach_Info()
-{	
-	girion_merk2h = other.HitChance[NPC_TALENT_2H];  
-	
-	AI_Output (other,self ,"DIA_Girion_Teach_15_00"); //Jestem gotów do treningu.
-	
-	Info_ClearChoices 	(DIA_Girion_Teach);
-	Info_AddChoice 		(DIA_Girion_Teach,	DIALOG_BACK		,DIA_Girion_Teach_Back);
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Girion_Teach_2H_1);
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Girion_Teach_2H_5);
-
-};
-FUNC VOID DIA_Girion_Teach_Back ()
-{
-	if (other.HitChance[NPC_TALENT_2H] >= 90)
-	{
-		AI_Output (self,other,"DIA_DIA_Girion_Teach_08_00"); //Oczywiœcie, to jeszcze nie koniec twojej edukacji, ale ja nie potrafiê ciê nauczyæ niczego wiêcej.
-		AI_Output (self,other,"DIA_DIA_Girion_Teach_08_01"); //Jeœli chcesz dalej æwiczyæ walkê wrêcz, powinieneœ poszukaæ prawdziwego mistrza miecza.
-		AI_Output (other,self,"DIA_DIA_Girion_Teach_15_02"); //Gdzie mogê znaleŸæ kogoœ takiego?
-		AI_Output (self,other,"DIA_DIA_Girion_Teach_08_03"); //Lord Hagen jest mistrzem miecza. Z pewnoœci¹ udzieli ci lekcji.
-		
-		DIA_Girion_Teach_permanent = TRUE;
-	};
-	Info_ClearChoices (DIA_Girion_Teach);
-};
-
-FUNC VOID DIA_Girion_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 90);
-	
-	if (other.HitChance[NPC_TALENT_2H] > girion_merk2h)
-	{
-		if (Girion_Labercount == 0)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_1_08_00"); //Zawsze walcz honorowo. Walka to nasze ¿ycie - a czym jest ¿ycie bez honoru?
-		};
-		if (Girion_Labercount == 1)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_1_08_01"); //W walce b¹dŸ szybki i ostro¿ny. Zaskakuj swoich przeciwników.
-		};
-		if (Girion_Labercount == 2)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_1_08_02"); //Nigdy nie rozpoczynaj walki bez odpowiedniego przygotowania. Ka¿dy pojedynek mo¿e byæ twoim ostatnim.
-		};
-		if (Girion_Labercount == 3)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_1_08_03"); //Paladyn jest zawsze gotów do walki. Jednak nigdy nie wdaje siê w pojedynki, w których nie ma ¿adnych szans na zwyciêstwo.
-		};
-		
-		Girion_Labercount = Girion_Labercount +1;
-		if (Girion_Labercount >= 3)
-		{
-			Girion_Labercount = 0;	
-		};
-	};
-	Info_ClearChoices 	(DIA_Girion_Teach);
-	Info_AddChoice 		(DIA_Girion_Teach,	DIALOG_BACK		,DIA_Girion_Teach_Back);
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Girion_Teach_2H_1);	
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Girion_Teach_2H_5);	
-};
-
-FUNC VOID DIA_Girion_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 90);
-	
-	if (other.HitChance[NPC_TALENT_2H] > girion_merk2h)
-	{
-		if (Girion_Labercount == 0)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_5_08_00"); //Broni¹ paladyna jest nie tylko jego miecz, ale równie¿ sprawny umys³.
-		};
-		if (Girion_Labercount == 1)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_5_08_01"); //Musisz wiedzieæ, kiedy mo¿esz siê wycofaæ.
-		};
-		if (Girion_Labercount == 2)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_5_08_02"); //Pamiêtaj, dobra walka to taka, w której to ty kontrolujesz swojego przeciwnika, nie daj¹c mu najmniejszej szansy na przejêcie kontroli nad tob¹.
-		};
-		if (Girion_Labercount == 3)
-		{
-			AI_Output (self,other,"DIA_DIA_Girion_Teach_2H_5_08_03"); //Przegrywasz tylko wtedy, gdy siê poddasz.
-		};
-		
-		Girion_Labercount = Girion_Labercount +1;
-		if (Girion_Labercount >= 3)
-		{
-			Girion_Labercount = 0;	
-		};
-	};
-	
-	Info_ClearChoices 	(DIA_Girion_Teach);
-	Info_AddChoice 		(DIA_Girion_Teach,	DIALOG_BACK		,DIA_Girion_Teach_Back);
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Girion_Teach_2H_1);	
-	Info_AddChoice		(DIA_Girion_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Girion_Teach_2H_5);	
 };
 
 //#####################################################################

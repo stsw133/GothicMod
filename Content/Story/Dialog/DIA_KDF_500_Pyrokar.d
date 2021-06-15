@@ -373,7 +373,7 @@ func void DIA_Pyrokar_SUCCESS_Info ()
 	AI_Output (self, other, "DIA_Pyrokar_SUCCESS_11_05"); //Có¿, og³aszamy zatem, ¿e przeszed³eœ test. Runiczny kamieñ mo¿esz zachowaæ dla siebie.
 	 
 	MIS_SCHNITZELJAGD = LOG_SUCCESS;
-	B_GivePlayerXP (XP_SCHNITZELJAGD);
+	B_GivePlayerXP(200);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info PERM wenn Prüfung erfolgreich und die anderen noch nicht. 
@@ -494,7 +494,7 @@ func void DIA_Pyrokar_OATH_Info ()
 	KDF_Aufnahme = LOG_SUCCESS;
 	SLD_Aufnahme = LOG_OBSOLETE;
 	MIL_Aufnahme = LOG_OBSOLETE;
-	B_GivePlayerXP (XP_BecomeMage);
+	B_GivePlayerXP(400);
 	
 	
 	AI_Output (self, other, "DIA_Pyrokar_OATH_11_08"); //Teraz, jako cz³onek naszej organizacji, mo¿esz porozmawiaæ z Lordem Hagenem, dowódc¹ paladynów.
@@ -615,7 +615,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Dyrian ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Dyrian_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Dyrian_11_02"); //Nowicjusz zostanie w klasztorze. Mo¿e obj¹æ posadê ogrodnika, która siê w³aœnie zwolni³a.
 	
-	B_GivePlayerXP (XP_HelpDyrian);
+	B_GivePlayerXP(100);
 	
 	B_StartOtherRoutine (Dyrian,"FAVOUR");
 	
@@ -640,7 +640,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Babo ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Babo_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Babo_11_02"); //Od dziœ odpowiedzialnoœæ za nasze ogrody przejmie nowicjusz Babo.
 	
-	B_GivePlayerXP (XP_HelpBabo);
+	B_GivePlayerXP(100);
 	
 	B_StartOtherRoutine (Babo,"FAVOUR");
 	B_StartOtherRoutine (Dyrian,"NOFAVOUR");
@@ -667,7 +667,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Opolos ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Opolos_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Opolos_11_02"); //Od dziœ nowicjusz Opolos mo¿e bez przeszkód studiowaæ pisma Innosa.
 	
-	B_GivePlayerXP (XP_HelpOpolos);
+	B_GivePlayerXP(100);
 	
 	B_StartOtherRoutine (Opolos,"FAVOUR");
 	B_StartOtherRoutine(Dyrian,"NOFAVOUR");
@@ -742,8 +742,9 @@ instance DIA_Pyrokar_TEACH		(C_INFO)
 };
 func int DIA_Pyrokar_TEACH_Condition ()
 {	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 5)
+	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
 	&& (Kapitel >= 11) 
+	&& (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};
@@ -754,20 +755,19 @@ func void DIA_Pyrokar_TEACH_Info ()
 	
 	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	{
-		if B_TeachMagicCircle (self,other, 6)  
-		{
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_01"); //Du¿o czasu minê³o, odk¹d zawar³eœ zwi¹zek ze Œwiêtym P³omieniem. Wiele siê od tamtej pory wydarzy³o.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_02"); //Jesteœ Wybrañcem Innosa. By wype³niæ czekaj¹ce ciê zadanie, bêdziesz potrzebowa³ ca³ej swojej si³y.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_03"); //Udzielê ci teraz b³ogos³awieñstwa. Niniejszym wkraczasz w szósty kr¹g magii. Obyœ zawsze niós³ œwiatu œwiat³o i rozprasza³ mrok.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_04"); //Jeœli chcesz, mogê ciê teraz nauczyæ formu³ ostatniego krêgu.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_05"); //Ach, jeszcze coœ. Na pocz¹tku ciê nie pozna³em...
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_06"); //...ale to ja wrêczy³em ci list, nim wrzucono ciê za Barierê.
-			AI_Output (other, self, "DIA_Pyrokar_TEACH_15_07"); //Tak, oszczêdzi³eœ mi wtedy nadêtej przemowy sêdziego.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_08"); //A teraz jesteœ Wybrañcem Innosa.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_09"); //Przyjmij moje b³ogos³awieñstwo, Wybrañcze.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_10"); //Innosie, odwieczny Panie œwiat³a i ognia, pob³ogos³aw tego cz³owieka, swego umi³owanego s³ugê.
-			AI_Output (self, other, "DIA_Pyrokar_TEACH_11_11"); //Dodaj mu odwagi, si³y i m¹droœci, by móg³ pewnie pod¹¿aæ œcie¿k¹, któr¹ dla niego wybra³eœ.
-		};
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_01"); //Du¿o czasu minê³o, odk¹d zawar³eœ zwi¹zek ze Œwiêtym P³omieniem. Wiele siê od tamtej pory wydarzy³o.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_02"); //Jesteœ Wybrañcem Innosa. By wype³niæ czekaj¹ce ciê zadanie, bêdziesz potrzebowa³ ca³ej swojej si³y.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_03"); //Udzielê ci teraz b³ogos³awieñstwa. Niniejszym wkraczasz w szósty kr¹g magii. Obyœ zawsze niós³ œwiatu œwiat³o i rozprasza³ mrok.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_04"); //Jeœli chcesz, mogê ciê teraz nauczyæ formu³ ostatniego krêgu.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_05"); //Ach, jeszcze coœ. Na pocz¹tku ciê nie pozna³em...
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_06"); //...ale to ja wrêczy³em ci list, nim wrzucono ciê za Barierê.
+		AI_Output (other, self, "DIA_Pyrokar_TEACH_15_07"); //Tak, oszczêdzi³eœ mi wtedy nadêtej przemowy sêdziego.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_08"); //A teraz jesteœ Wybrañcem Innosa.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_09"); //Przyjmij moje b³ogos³awieñstwo, Wybrañcze.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_10"); //Innosie, odwieczny Panie œwiat³a i ognia, pob³ogos³aw tego cz³owieka, swego umi³owanego s³ugê.
+		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_11"); //Dodaj mu odwagi, si³y i m¹droœci, by móg³ pewnie pod¹¿aæ œcie¿k¹, któr¹ dla niego wybra³eœ.
+		
+		self.aivar[AIV_CanTeach] = true;
 	}
 	else
 	{
@@ -803,66 +803,7 @@ func void DIA_Pyrokar_Parlan_Info ()
 	AI_Output (other, self, "DIA_Pyrokar_Parlan_15_00"); //Przysy³a mnie Parlan. Chcia³bym zwiêkszyæ swoje magiczne zdolnoœci.
 	AI_Output (self, other, "DIA_Pyrokar_Parlan_11_01"); //Wiele siê ju¿ nauczy³eœ, a twa moc wzros³a. Od tej pory bêdziesz pobiera³ nauki bezpoœrednio u mnie.
 };
-/*
-//*********************************************************************
-//	Info TEACH MANA
-//*********************************************************************
-instance DIA_Pyrokar_TEACH_MANA		(C_INFO)
-{
-	npc			 = 	KDF_500_Pyrokar;
-	nr 			 =  99;
-	condition	 = 	DIA_Pyrokar_TEACH_MANA_Condition;
-	information	 = 	DIA_Pyrokar_TEACH_MANA_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê zwiêkszyæ moj¹ magiczn¹ moc.";
-};
-func int DIA_Pyrokar_TEACH_MANA_Condition ()
-{	
-	if (hero.guild == GIL_KDF
-	|| hero.guild == GIL_NOV 
-	|| hero.guild == GIL_PAL)
-	&& Npc_KnowsInfo (hero,DIA_Pyrokar_Parlan)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Pyrokar_TEACH_MANA_Info ()
-{
-		AI_Output (other, self, "DIA_Pyrokar_TEACH_MANA_15_00"); //Chcê zwiêkszyæ moj¹ magiczn¹ moc.
-		
-		Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
-		Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-		Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
-};
-FUNC VOID DIA_Pyrokar_TEACH_MANA_BACK()
-{
-	if (other.attribute[ATR_MANA_MAX] >= 250)  
-	{
-		AI_Output (self, other, "DIA_Pyrokar_TEACH_MANA_11_00"); //Czujê, ¿e potêga magii wype³nia ju¿ ka¿dy centymetr twojego cia³a. Nawet ja nie jestem w stanie dalej podnieœæ twoich umiejêtnoœci.
-	};
-	
-	Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
-};
-FUNC VOID DIA_Pyrokar_TEACH_MANA_1()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MEGA);
-	
-	Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
-	Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
-};
-FUNC VOID DIA_Pyrokar_TEACH_MANA_5()
-{
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MEGA);
-	
-	Info_ClearChoices   (DIA_Pyrokar_TEACH_MANA);	
-	Info_AddChoice 		(DIA_Pyrokar_TEACH_MANA,DIALOG_BACK,DIA_Pyrokar_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Pyrokar_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Pyrokar_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Pyrokar_TEACH_MANA_5);
-};
-*/
+
 ///////////////////////////////////////////////////////////////////////
 //	Info PERM
 ///////////////////////////////////////////////////////////////////////
@@ -1128,7 +1069,7 @@ func void DIA_Pyrokar_FOUNDINNOSEYE_Info ()
 
 	MIS_SCKnowsInnosEyeIsBroken  = TRUE;
 	MIS_NovizenChase = LOG_SUCCESS;	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	
 	Info_ClearChoices	(DIA_Pyrokar_FOUNDINNOSEYE);
 	Info_AddChoice		(DIA_Pyrokar_FOUNDINNOSEYE, "Co mo¿emy teraz zrobiæ?", DIA_Pyrokar_FOUNDINNOSEYE_was );
@@ -1215,9 +1156,7 @@ func void DIA_Pyrokar_SPOKETOVATRAS_Info ()
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_08"); //Sk¹d mam wiedzieæ, ¿e Xardas nie stoi po stronie nieprzyjaciela?
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_09"); //Nie zaufam temu nekromancie, niezale¿nie od tego, jak bardzo jest nam potrzebny.
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_10"); //Przykro mi, ale w tej sytuacji nie mogê pomóc Vatrasowi.
-	B_GivePlayerXP (XP_Ambient);
-
-
+	B_GivePlayerXP(150);
 };
 
 
@@ -1410,7 +1349,7 @@ func void DIA_Pyrokar_KAP3_READY_Info()
 	AI_Output	(self, other, "DIA_Pyrokar_KAP3_READY_11_09"); //Masz ju¿ wszystko, czego potrzebujesz. Ruszaj w drogê. Zosta³o nam niewiele czasu!
 
 	TOPIC_END_INNOSEYE = TRUE;
-	B_GivePlayerXP (XP_Ambient);	
+	B_GivePlayerXP(150);
 	
 	CreateInvItems   (Gorax, ItMi_RuneBlank, 1);
 	
@@ -1453,7 +1392,7 @@ func void DIA_Pyrokar_BUCHDERBESSENEN_Info ()
 	AI_Output			(other, self, "DIA_Pyrokar_BUCHDERBESSENEN_15_02"); //Nie jestem pewien. Mia³em nadziejê, ¿e ty mi to powiesz.
 	B_GiveInvItems 		(other, self, ITWR_DementorObsessionBook_MIS,1);
 	AI_Output			(self, other, "DIA_Pyrokar_BUCHDERBESSENEN_11_03"); //To rzeczywiœcie niepokoj¹ca ksiêga. M¹drze zrobi³eœ, przynosz¹c j¹ do mnie.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 	
 	if (hero.guild == GIL_KDF)
 	{
@@ -1616,7 +1555,7 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 	if (AlmanachCount == 1)
 		{
 			AI_Output		(other, self, "DIA_Pyrokar_AlmanachBringen_15_02"); //Znalaz³em kolejny almanach.
-			B_GivePlayerXP (XP_KDF_BringAlmanach);
+			B_GivePlayerXP(450);
 			B_GiveInvItems (other, self, ITWR_DementorObsessionBook_MIS,1);
 			AlmanachCounter = AlmanachCounter + 1;
 		}
@@ -1626,7 +1565,7 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 
 			B_GiveInvItems (other, self, ITWR_DementorObsessionBook_MIS,  AlmanachCount);
 
-			XP_KDF_BringAlmanachs = (AlmanachCount * XP_KDF_BringAlmanach);
+			XP_KDF_BringAlmanachs = (AlmanachCount * 450);
 			AlmanachCounter = (AlmanachCounter + AlmanachCount); 
 
 			B_GivePlayerXP (XP_KDF_BringAlmanachs);
@@ -1905,7 +1844,7 @@ func void DIA_Pyrokar_IRDORATHBOOKOPEN_glueck ()
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_glueck_11_03"); //...daje mi du¿o do myœlenia.
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_glueck_11_04"); //W ka¿dym razie, jako ¿e to ty otworzy³eœ ksiêgê, pozwolê ci j¹ st¹d zabraæ. Przynajmniej dopóki ca³a ta sprawa nie znajdzie rozwi¹zania.
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 	Info_ClearChoices	(DIA_Pyrokar_IRDORATHBOOKOPEN);
 
 };
@@ -1916,7 +1855,7 @@ func void DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas ()
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas_11_01"); //Ach, wiêc to tak! Bardzo ciekawe. Mam tylko nadziejê, ¿e wp³yw Xardasa na ciebie nie oka¿e siê zgubny w skutkach!
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas_11_02"); //Ostrzegam ciê! Nie daj siê z³apaæ na sztuczki tego starego diab³a. Kiedyœ mo¿esz tego po¿a³owaæ.
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 	Info_ClearChoices	(DIA_Pyrokar_IRDORATHBOOKOPEN);
 
 };
@@ -2101,7 +2040,7 @@ func void DIA_Pyrokar_DTCLEARED_Info ()
 	AI_Output			(self, other, "DIA_Pyrokar_DTCLEARED_11_02"); //Jeœli nadal zale¿y ci na pomocy Jorgena, mo¿esz go ze sob¹ zabraæ.
 	AI_Output			(self, other, "DIA_Pyrokar_DTCLEARED_11_03"); //Niech Innos ma ciê w swojej opiece.
 	MIS_PyrokarClearDemonTower = LOG_SUCCESS;
-	B_GivePlayerXP (XP_PyrokarClearDemonTower);
+	B_GivePlayerXP(1000);
 };
 
 ///////////////////////////////////////////////////////////////////////

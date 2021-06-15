@@ -268,7 +268,7 @@ func void DIA_Cipher_Joints_Success()
 		};
 		MIS_Cipher_BringWeed = LOG_SUCCESS;
 		B_LogEntry (TOPIC_SLDRespekt,"Cipher poprze mnie, jeœli zechcê siê przy³¹czyæ do najemników.");
-		B_GivePlayerXP (XP_CipherWeed);
+		B_GivePlayerXP(100);
 		
 	}
 	else
@@ -389,7 +389,7 @@ FUNC VOID DIA_Cipher_DarLOST_Info()
 	AI_Output (other, self, "DIA_Cipher_DarLOST_15_02"); //Chyba nie dla NIEGO...
 	AI_Output (self, other, "DIA_Cipher_DarLOST_07_03"); //Ten ma³y ¿ebrak nie ma po co przeszukiwaæ mojej skrzyni!
 	
-	B_GivePlayerXP ((XP_Ambient)*2);
+	B_GivePlayerXP(100);
 };
 
 // ************************************************************
@@ -426,12 +426,12 @@ FUNC VOID DIA_Cipher_KrautPaket_Info()
 	AI_Output (self, other, "DIA_Cipher_KrautPaket_07_04"); //Masz, weŸ to jako nagrodê. Dobrej zabawy!
 	B_GiveInvItems (self, other, itmi_gold, 200);
 	B_GiveInvItems (self, other, itmi_joint, 10);
-	B_GivePlayerXP (XP_Cipher_KrautPaket);
+	B_GivePlayerXP(200);
 	
 	AI_Output (self, other, "DIA_Cipher_KrautPaket_07_05"); //Najpierw pozwól, ¿e sobie skrêcê...
 	CreateInvItems (self, itmi_joint, 40);
 	Npc_RemoveInvItems (self, ItMi_HerbPaket, 1);
 	
 	MIS_Cipher_Paket = LOG_SUCCESS;
-	B_GivePlayerXP (XP_CipherPaket);
+	B_GivePlayerXP(300);
 };

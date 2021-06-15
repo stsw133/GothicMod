@@ -285,7 +285,7 @@ func void DIA_Mika_HILFE_Akil ()
 
 	AI_StopProcessInfos (self);
 	self.aivar[AIV_PARTYMEMBER] = TRUE;
-	B_GivePlayerXP (Xp_Ambient);
+	B_GivePlayerXP(50);
 	B_LogEntry (TOPIC_AkilsSLDStillthere,"Mika chce mi pomóc w rozwi¹zaniu problemu Akila z najemnikami."); 
 
 	Npc_ExchangeRoutine	(self,"Akil"); 
@@ -379,7 +379,7 @@ func void DIA_Mika_WIEDERNACHHAUSE_Info ()
 	AI_StopProcessInfos (self);		
 	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self,"Start"); 
-	B_GivePlayerXP (Xp_Ambient);
+	B_GivePlayerXP(50);
 };
 
 //############################################

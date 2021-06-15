@@ -219,7 +219,7 @@ func void DIA_Jack_BANDITENWEG_Info ()
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Lighthouse");
 	MIS_Jack_KillLighthouseBandits = LOG_SUCCESS;
-	B_GivePlayerXP (XP_KillLighthouseBandits);
+	B_GivePlayerXP(400);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -463,7 +463,7 @@ func void DIA_Jack_BEMYCAPTAIN2_Info ()
 	{
 			AI_Output			(other, self, "DIA_Jack_BEMYCAPTAIN2_15_02"); //Od dziœ o twoj¹ latarniê bêdzie siê troszczy³ Brian.
 			AI_Output			(self, other, "DIA_Jack_BEMYCAPTAIN2_14_03"); //Mia³em nadziejê, ¿e to powiesz.
-			B_GivePlayerXP (XP_Jack_NewLighthouseOfficer);
+			B_GivePlayerXP(1000);
  
 		
 			if (SCGotCaptain == FALSE)
@@ -516,7 +516,7 @@ func void DIA_Jack_BEMYCAPTAIN3_Info ()
 	self.flags = NPC_FLAG_IMMORTAL;
 	Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 	
-	B_GivePlayerXP (XP_Captain_Success);        
+	B_GivePlayerXP(2000);
 };
 
 ///////////////////////////////////////////////////////////////////////

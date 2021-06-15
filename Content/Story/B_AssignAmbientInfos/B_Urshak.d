@@ -49,7 +49,7 @@ func void DIA_Urshak_HALLO_Info ()
 	AI_Output			(self, other, "DIA_Urshak_HALLO_18_01"); //Stój! Ciebie znaæ! Ty przyjaciel-cz³owiek, z ³agodny g³os.
 	AI_Output			(self, other, "DIA_Urshak_HALLO_18_02"); //Przyjaciel co zabiæ demon KRUSHAK!
 	
-	B_GivePlayerXP (XP_UrshakFound);
+	B_GivePlayerXP(500);
 	
 	Log_CreateTopic (TOPIC_Urshak, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Urshak, LOG_RUNNING);
@@ -336,7 +336,7 @@ func void DIA_Urshak_HOSHPAKRACHE_Info ()
 	AI_StopProcessInfos (self);
 	URSHAK_SUCKED = TRUE;
 	B_LogEntry (TOPIC_Urshak,"Rada orkowych szamanów ponownie przyjê³a w swe szeregi Ur-Shaka. Walczy on teraz po stronie wroga... Nie wiem, jak zareaguje na mój widok. Nie powinienem mu chyba wchodziæ w drogê, dopóki nie rozstrzygnê moich spraw z orkami - do tego czasu powinien siê ju¿ uspokoiæ."); 
-	B_GivePlayerXP (XP_UrshakBecomesShaman);
+	B_GivePlayerXP(750);
 };
 
 

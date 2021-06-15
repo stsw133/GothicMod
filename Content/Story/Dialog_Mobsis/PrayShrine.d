@@ -153,7 +153,7 @@ func void PC_PrayShrine_HEALSHRINE_Info()
 		B_Say (self, self, "$HEALLASTSHRINE");
 		MIS_Ulthar_HeileSchreine_PAL = LOG_SUCCESS;
 	};
-	B_GivePlayerXP(XP_BONUS_1);
+	B_GivePlayerXP(100);
 	B_ENDPRODUCTIONDIALOG();
 }; 
 
@@ -249,7 +249,7 @@ func void PC_PrayShrine_BlessSword_Info()
 				CreateInvItem (hero, ItMw_2H_Blessed_02);
 				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
 				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(XP_BONUS_4);
+				B_GivePlayerXP(400);
 			}
 			else
 			{
@@ -257,7 +257,7 @@ func void PC_PrayShrine_BlessSword_Info()
 				CreateInvItem (hero, ItMw_1H_Blessed_02);
 				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
 				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(XP_BONUS_4);
+				B_GivePlayerXP(400);
 			};
 		}
 		else
@@ -310,7 +310,7 @@ func void PC_PrayShrine_BlessSword_FINAL_Info()
 				CreateInvItem (hero, ItMw_2H_Blessed_03);
 				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
 				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(XP_BONUS_10);
+				B_GivePlayerXP(1000);
 			}
 			else
 			{
@@ -318,7 +318,7 @@ func void PC_PrayShrine_BlessSword_FINAL_Info()
 				CreateInvItem (hero, ItMw_1H_Blessed_03);
 				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
 				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(XP_BONUS_10);
+				B_GivePlayerXP(1000);
 			};
 		}
 		else

@@ -233,7 +233,7 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 			if (StoneplatesCount == 1)
 				{
 					AI_Output		(other, self, "DIA_Addon_Erol_Stoneplates_15_01"); //Znalaz³em jedn¹ z nich...
-					B_GivePlayerXP (XP_Addon_BringStoneplate);
+					B_GivePlayerXP(50);
 					B_GiveInvItems (other, self, ItWr_StonePlateCommon_Addon, 1);
 				
 					StoneplatesCounter = StoneplatesCounter + 1;
@@ -246,13 +246,13 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 					if ((StoneplatesCount + StoneplatesCounter) >= 3)
 					{
 						B_GiveInvItems (other, self, ItWr_StonePlateCommon_Addon, 3 - StoneplatesCounter);
-						XP_Addon_BringStoneplates = ((3 - StoneplatesCounter) * XP_Addon_BringStoneplate);
+						XP_Addon_BringStoneplates = ((3 - StoneplatesCounter) * 50);
 						StoneplatesCounter = 3;
 					}
 					else
 					{
 						B_GiveInvItems (other, self, ItWr_StonePlateCommon_Addon, StoneplatesCount);
-						XP_Addon_BringStoneplates = (StoneplatesCount * XP_Addon_BringStoneplate);
+						XP_Addon_BringStoneplates = (StoneplatesCount * 50);
 						StoneplatesCounter = (StoneplatesCounter + StoneplatesCount); 
 					};
 					B_GivePlayerXP (XP_Addon_BringStoneplates);
@@ -438,7 +438,7 @@ func void DIA_Addon_Erol_SLD_Info ()
 	AI_Output	(other, self, "DIA_Addon_Erol_SLD_15_02"); //Nie masz ¿adnych k³opotów z najemnikami?
 	AI_Output	(self, other, "DIA_Addon_Erol_SLD_10_03"); //Nie czepiaj¹ siê mnie, a ja nie mieszam siê do ich spraw.
 	AI_Output	(self, other, "DIA_Addon_Erol_SLD_10_04"); //S¹ dobrymi klientami i za niewielk¹ op³at¹ pilnuj¹ mojej chaty, gdy mnie tu nie ma.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	if (Erol_IsAtHome == FALSE)
 	{
 		Npc_ExchangeRoutine	(self,"HOME");

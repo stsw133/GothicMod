@@ -242,6 +242,5 @@ func VOID DIA_Addon_Bones_GiveArmor_Info()
 	
 	B_LogEntry (TOPIC_Addon_BDTRuestung,"Rozkaz Grega potrafi czyniæ cuda. Mam zbrojê bandytów!"); 
 	
-	B_GivePlayerXP (XP_Bones_GetBDTArmor);
+	B_GivePlayerXP(200);
 };
-

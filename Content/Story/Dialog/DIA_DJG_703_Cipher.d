@@ -310,14 +310,14 @@ func int DIA_CipherDJG_SWAMPDRAGONDEAD_Condition ()
 	};
 };
 
-func void DIA_CipherDJG_SWAMPDRAGONDEAD_Info ()
+func void DIA_CipherDJG_SWAMPDRAGONDEAD_Info()
 {
 	AI_Output			(self, other, "DIA_CipherDJG_SWAMPDRAGONDEAD_07_00"); //Cholera, nie ¿yje?
 	AI_Output			(other, self, "DIA_CipherDJG_SWAMPDRAGONDEAD_15_01"); //Uspokój siê. To ju¿ koniec!
 	AI_Output			(self, other, "DIA_CipherDJG_SWAMPDRAGONDEAD_07_02"); //O rany, ale w dechê koleœ!
 	
 	AI_StopProcessInfos	(self);
-	B_GivePlayerXP (XP_CipherDJGDeadDragon);
+	B_GivePlayerXP(600);
 
 	DJG_SwampParty = FALSE;
 	DJG_SwampParty_GoGoGo = FALSE;

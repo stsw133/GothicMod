@@ -4,11 +4,8 @@
 func int B_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int attrib, var int points)
 {
 	var string concatText;
-	
-	var int kosten; 
-	var int money;
-	kosten = B_GetLearnCostAttribute(oth, attrib) * points;
-	money = 0;
+	var int kosten; kosten = B_GetLearnCostAttribute(oth, attrib) * points;
+	var int money; money = 0;
 	
 	if (attrib != ATR_STRENGTH)
 	&& (attrib != ATR_DEXTERITY)

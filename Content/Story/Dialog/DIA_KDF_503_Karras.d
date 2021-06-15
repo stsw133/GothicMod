@@ -153,7 +153,7 @@ func void DIA_Karras_Success_Info ()
 	AI_Output (self, other, "DIA_Karras_Success_10_03"); //Aha, przyjmij ten zwój w nagrodê za dobrze wykonane zadanie.
 	
 	MIS_KarrasVergessen = LOG_SUCCESS;
-	B_GivePlayerXP (XP_KarrasCharm);
+	B_GivePlayerXP(200);
 	B_GiveInvItems (other, self, ItSc_Charm,3);
 	B_GiveInvItems (self, other, ItSc_SumWolf,1);
 };
@@ -207,6 +207,8 @@ func void DIA_Karras_JOB_Info ()
 	AI_Output (self, other, "DIA_Karras_JOB_10_04"); //Zwykle nazywa siê to przyzywaniem, choæ ta nazwa nie opisuje w zadowalaj¹cym stopniu sztuki wzywania pomocnika.
 	AI_Output (self, other, "DIA_Karras_JOB_10_05"); //Co wiêcej, jestem w posiadaniu pewnych interesuj¹cych zwojów magicznych, których nie ma Gorax.
 	
+	self.aivar[AIV_CanTeach] = true;
+	
 	if (other.guild == GIL_NOV)
 	{
 		AI_Output (self, other, "DIA_Karras_JOB_10_06"); //Ale udostêpniam je tylko cz³onkom Zakonu.
@@ -215,81 +217,6 @@ func void DIA_Karras_JOB_Info ()
 	B_LogEntry (Topic_KlosterTrader,"Mistrz Karras mo¿e mnie zaopatrzyæ w magiczne zwoje. Najpierw jednak muszê zostaæ Magiem Ognia.");
 };
 
-///////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Karras_CIRCLE4		(C_INFO)
-{
-	npc			 = 	KDF_503_Karras;
-	nr			 = 	3;
-	condition	 = 	DIA_Karras_CIRCLE4_Condition;
-	information	 = 	DIA_Karras_CIRCLE4_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê zg³êbiaæ czwarty kr¹g magii.";
-};
-func int DIA_Karras_CIRCLE4_Condition ()
-{	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 3)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Karras_CIRCLE4_Info ()
-{
-	AI_Output (other, self, "DIA_Karras_CIRCLE4_15_00"); //Chcê zg³êbiaæ czwarty kr¹g magii.
-	
-	if (MIS_ReadyforChapter4 == TRUE)
-	{
-		if B_TeachMagicCircle (self,other, 4)
-		{
-			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_01"); //Dobrze. Wszystkie znaki siê wype³ni³y. Wkrocz zatem do czwartego krêgu, aby przepe³ni³a ciê moc nowej magii.
-			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_02"); //Przeby³eœ dalek¹ drogê, a Innos nadal bêdzie rozœwietla³ przed tob¹ ciemnoœci.
-		};
-	}
-	else
-	{
-			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_03"); //Bowiem to jeszcze nie koniec.
-	};
-};
-/////////////////////////////////////////////////////////////////////////
-//	Info TEACH
-///////////////////////////////////////////////////////////////////////
-instance DIA_Karras_CIRCLE5		(C_INFO)
-{
-	npc			 = 	KDF_503_Karras;
-	nr			 = 	3;
-	condition	 = 	DIA_Karras_CIRCLE5_Condition;
-	information	 = 	DIA_Karras_CIRCLE5_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê zg³êbiaæ pi¹ty kr¹g magii.";
-};
-func int DIA_Karras_CIRCLE5_Condition ()
-{	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Karras_CIRCLE5_Info ()
-{
-	AI_Output (other, self, "DIA_Karras_CIRCLE5_15_00"); //Chcê zg³êbiaæ pi¹ty kr¹g magii.
-	
-	if (Kapitel >= 11)
-	{
-		if B_TeachMagicCircle (self,other, 5)
-		{
-			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_01"); //Wkrocz zatem do pi¹tego krêgu. Poznasz magiê potê¿niejsz¹ ni¿ wszystko, czego do tej pory doœwiadczy³eœ.
-			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_02"); //U¿ywaj tej mocy w rozwa¿ny sposób, Bracie - albowiem mrok wci¹¿ jeszcze posiada ogromn¹ moc, tak samo jak twoi wrogowie.
-			AI_Output (self, other, "DIA_Karras_CIRCLE5_10_03"); //Nie mogê ci towarzyszyæ w twojej podró¿y do szóstego, najwy¿szego krêgu magii. Kiedy nadejdzie w³aœciwy czas, wprowadzi ciê do niego sam Pyrokar.
-			
-			B_LogEntry (Topic_KlosterTeacher,"Mistrz Pyrokar wprowadzi mnie w szósty Kr¹g Magii.");
-		};
-	}
-	else
-	{
-			AI_Output (self, other, "DIA_Karras_CIRCLE4_10_04"); //Czas jeszcze nie nadszed³.
-	};
-};
 //#####################################################################
 //##
 //##		Kapitel 2
@@ -479,7 +406,7 @@ func void DIA_Karras_InnosEyeRetrieved_Info ()
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_04"); //Nie drwij ze mnie. Sytuacja jest powa¿na, bardzo powa¿na, i nie bardzo wiemy, komu mo¿emy zaufaæ.
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_05"); //Skoro wrogowi uda³o siê zwieœæ Pedra na drogê wystêpku, nale¿y siê spodziewaæ, ¿e inni równie¿ mu ulegn¹.
 
-	B_GivePlayerXP (XP_AMBIENT);
+	B_GivePlayerXP(150);
 };
 	
 ///////////////////////////////////////////////////////////////////////
@@ -615,7 +542,7 @@ FUNC VOID DIA_Karras_HaveBook_Info()
 	MIS_KarrasResearchDMT = LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras u¿yje w swoich dalszych badaniach Almanachu Opêtanych. Mam do niego wróciæ póŸniej."); 
 	KarrasGotResearchDMTBook_Day = Wld_GetDay(); 
-	B_GivePlayerXP (XP_KarrasResearchDMT);
+	B_GivePlayerXP(500);
 };
 
 //********************************************************************
@@ -666,7 +593,7 @@ FUNC VOID DIA_Karras_ResearchDMTEnd_Info()
 
 		SC_KnowsMadPsi = TRUE;
 		B_LogEntry (TOPIC_DEMENTOREN,"Badania Karrasa zosta³y uwieñczone sukcesem. Miêdzy Bractwem œni¹cego a Poszukiwaczami istnieje jakieœ powi¹zanie."); 
-		B_GivePlayerXP (XP_SC_KnowsMadPsi);
+		B_GivePlayerXP(300);
 	}
 	else
 	{
@@ -751,7 +678,7 @@ FUNC VOID DIA_Karras_KarrasBlessedStone_Info()
 	KarrasMakesBlessedStone_Day = Wld_GetDay(); 
 	MIS_Karras_FindBlessedStone	= LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przed mentalnymi atakami Poszukiwaczy. To powinno mi trochê u³atwiæ ¿ycie."); 
-	B_GivePlayerXP (XP_Karras_FoundBlessedStone);
+	B_GivePlayerXP(500);
 	AI_StopProcessInfos (self);
 };
 
@@ -793,7 +720,7 @@ FUNC VOID DIA_Karras_ItAm_Prot_BlackEye_Mis_Info()
 		AI_Output (other,self ,"DIA_Karras_ItAm_Prot_BlackEye_Mis_15_03"); //Dziêkujê.
 		B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przez mrocznym spojrzeniem Poszukiwaczy."); 
 		DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm = TRUE;
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(150);
 	}
 	else
 	{

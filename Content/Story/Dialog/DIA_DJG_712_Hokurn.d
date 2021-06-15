@@ -254,7 +254,7 @@ FUNC VOID DIA_Hokurn_Learn_OK ()
 {
 	AI_Output (other,self ,"DIA_Hokurn_Learn_OK_15_00"); //W porz¹dku. Oto pieni¹dze.
 	B_GiveInvItems (other,self,ItMi_Gold,300);
-	Hokurn_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	Info_ClearChoices (DIA_Hokurn_Learn);
 };
 
@@ -275,7 +275,7 @@ FUNC INT DIA_Hokurn_PayTeacher_Condition()
 {
 	if	(Npc_KnowsInfo (other,DIA_Hokurn_Learn))
 	&&	(Npc_HasItems (other,ItMi_Gold) >= 300)
-	&& 	(HoKurn_TeachPlayer == FALSE)
+	&& 	(self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};	
@@ -287,7 +287,7 @@ FUNC VOID DIA_Hokurn_PayTeacher_Info()
 	AI_Output (self ,other,"DIA_Hokurn_PayTeacher_01_01"); //Nie po¿a³ujesz tego!
 
 	B_GiveInvItems (other,self,ItMi_Gold,300);
-	Hokurn_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 };
 
 //*********************************************************************
@@ -305,10 +305,10 @@ INSTANCE DIA_Hokurn_DrinkAndLearn   (C_INFO)
 
 FUNC INT DIA_Hokurn_DrinkAndLearn_Condition()
 {
-	if	(HokurnGetsDrink == TRUE)
-	&&(	(Npc_HasItems (other,ItFo_Booze) >= 1)
-	||	(Npc_HasItems (other,ItFo_Wine) >= 1)
-	||	(Npc_HasItems (other,ItFo_Beer) >= 1))
+	if	(HokurnGetsDrink)
+	&&(	(Npc_HasItems(other,ItFo_Booze) >= 1)
+	||	(Npc_HasItems(other,ItFo_Wine) >= 1)
+	||	(Npc_HasItems(other,ItFo_Beer) >= 1))
 	{
 		return TRUE;
 	};	
@@ -334,7 +334,7 @@ FUNC VOID DIA_Hokurn_DrinkAndLearn_Info()
 		B_UseItem (self,ItFo_Beer);
 	};
 	
-	HokurnLastDrink = Wld_GetDay ();
+	HokurnLastDrink = Wld_GetDay();
 	
 	AI_Output (self ,other,"DIA_Hokurn_DrinkAndLearn_01_01"); //Czujê siê znacznie lepiej. Teraz mogê przenosiæ góry!
 
@@ -356,7 +356,8 @@ INSTANCE DIA_Hokurn_Teach(C_INFO)
 
 FUNC INT DIA_Hokurn_Teach_Condition()
 {
-	IF (Hokurn_Teachplayer == TRUE)
+	if (self.aivar[AIV_CanTeach] == true)
+	&& (HokurnLastDrink < Wld_GetDay())
 	{
 		return TRUE;
 	};	
@@ -365,82 +366,7 @@ FUNC INT DIA_Hokurn_Teach_Condition()
 FUNC VOID DIA_Hokurn_Teach_Info()
 {	
 	AI_Output (other,self ,"DIA_Hokurn_Teach_15_00"); //Zacznijmy od nauki.
-	
-	if (HokurnLastDrink < Wld_GetDay ())
-	{
-		AI_Output (self ,other,"DIA_Hokurn_Teach_01_01"); //Najpierw przynieœ mi coœ do picia!
-	}
-	else
-	{	 
-		if (hero.guild == GIL_PAL)
-		{
-			AI_Output (self ,other,"DIA_Hokurn_Teach_01_02"); //Wtedy przekonamy siê, co mo¿emy wycisn¹æ z tych spróchnia³ych paladyñskich koœci.
-		}
-		else if (hero.guild == GIL_KDF)
-		{
-			AI_Output (self ,other,"DIA_Hokurn_Teach_01_03"); //No widzisz. Nawet magicy u¿ywaj¹ broni do walki wrêcz.
-		};
-
-		Info_ClearChoices 	(DIA_Hokurn_Teach);
-		Info_AddChoice 		(DIA_Hokurn_Teach,	DIALOG_BACK		,DIA_Hokurn_Teach_Back);
-		Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Hokurn_Teach_2H_1);
-		Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Hokurn_Teach_2H_5);
-		Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Hokurn_Teach_1H_1);
-		Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Hokurn_Teach_1H_5);
-	};
-};
-
-FUNC VOID DIA_Hokurn_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Hokurn_Teach);
-};
-FUNC VOID B_Hokurn_TeachedEnough ()
-{
-	AI_Output(self,other,"B_Hokurn_TeachedEnough_01_00"); //Nie potrzebujesz ju¿ nauczyciela w tej dyscyplinie.
-};
-
-FUNC VOID DIA_Hokurn_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 100);
-	
-	if (other.HitChance[NPC_TALENT_2H] >= 100)
-	{
-		B_Hokurn_TeachedEnough ();
-	};
-	Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Hokurn_Teach_2H_1);	
-};
-
-FUNC VOID DIA_Hokurn_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 100);
-	
-	if (other.HitChance[NPC_TALENT_2H] >= 100)
-	{
-		B_Hokurn_TeachedEnough ();
-	};
-	Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn2h5, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))	,DIA_Hokurn_Teach_2H_5);	
-};
-
-FUNC VOID DIA_Hokurn_Teach_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 100);
-	
-	if (other.HitChance[NPC_TALENT_1H] >= 100)
-	{
-		B_Hokurn_TeachedEnough ();
-	};
-	Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Hokurn_Teach_1H_1);	
-};
-
-FUNC VOID DIA_Hokurn_Teach_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 100);
-	
-	if (other.HitChance[NPC_TALENT_1H] >= 100)
-	{
-		B_Hokurn_TeachedEnough ();
-	};
-	Info_AddChoice		(DIA_Hokurn_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5)) ,DIA_Hokurn_Teach_1H_5);	
+	AI_Output (self ,other,"DIA_Hokurn_Teach_01_01"); //Najpierw przynieœ mi coœ do picia!
 };
 
 //*********************************************************************

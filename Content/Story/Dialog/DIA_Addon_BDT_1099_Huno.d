@@ -438,7 +438,7 @@ FUNC VOID DIA_Addon_Huno_Paket_Info()
 	
 	B_LogEntry (Topic_Addon_Esteban, "Huno powiedzia³ mi, ¿ebym zamieni³ s³ówko ze Snafem.");
 	MIS_Huno_Stahl = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_HunoStahl);
+	B_GivePlayerXP(200);
 };
 //----------------------------------------------------------------------
 //	Info Trade

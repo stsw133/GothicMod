@@ -484,7 +484,7 @@ func void DIA_Gerold_MoreFood ()
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine	(self,"Start");
 		MIS_GeroldGiveFood = LOG_SUCCESS;
-		B_GivePlayerXP (XP_GeroldGiveFood);	
+		B_GivePlayerXP(350);	
 		CreateInvItems 		(self, ItMi_Gold, 450);									
 		B_GiveInvItems 		(self, other, ItMi_Gold, 450);					
 	}
@@ -548,7 +548,7 @@ func void DIA_Gerold_FOOD_nichts ()
 	B_Attack (self, other, AR_NONE, 1);
 	Npc_ExchangeRoutine	(self,"Start"); 
 	MIS_GeroldGiveFood = LOG_FAILED;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 
@@ -573,7 +573,7 @@ func void DIA_Gerold_FOOD_kaese_nichtmehr ()
 			Teiler = 2;
 		};
 	
-	XP_GeroldGiveFoodLow = (XP_GeroldGiveFood/Teiler);
+	XP_GeroldGiveFoodLow = (350/Teiler);
 	
 	Npc_ExchangeRoutine	(self,"Start");
 	MIS_GeroldGiveFood = LOG_OBSOLETE;

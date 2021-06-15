@@ -11,21 +11,21 @@ func void _Focusnames()
 		o_other = MEM_PtrToInst(o_hero.focus_vob);
 		var int att; att = Npc_GetPermAttitude(hero, o_other);
 		
-		if (o_other.aivar[AIV_PARTYMEMBER] == true)
+		if (o_other.aivar[AIV_PARTYMEMBER])
 		{
-			col = RGBA (32, 32, 255, 255);
+			col = RGBA (64, 64, 255, 255);
 		}
 		else if (att == ATT_FRIENDLY)
 		{
-			col = RGBA (32, 255, 32, 255);
+			col = RGBA (64, 255, 64, 255);
 		}
 		else if (att == ATT_ANGRY)
 		{
-			col = RGBA (255, 192, 32, 255);
+			col = RGBA (255, 192, 64, 255);
 		}
 		else if (att == ATT_HOSTILE)
 		{
-			col = RGBA (255, 32, 32, 255);
+			col = RGBA (255, 64, 64, 255);
 		}
 		else if (o_other.aivar[AIV_Love] > 0)
 		{
@@ -34,11 +34,11 @@ func void _Focusnames()
 		}/*
 		else if (o_other.npctype == NPCTYPE_VILLAIN)
 		{
-			col = RGBA (192, 32, 96, 255);
+			col = RGBA (192, 64, 128, 255);
 		}*/
 		else if (o_other.npctype == NPCTYPE_AMBIENT)
 		{
-			col = RGBA (192, 192, 192, 255);
+			col = RGBA (128, 128, 128, 255);
 		}
 		else
 		{

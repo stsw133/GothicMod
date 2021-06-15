@@ -149,7 +149,7 @@ func void DIA_Addon_Gaan_Ranger_Info ()
 	AI_Output	(self, other, "DIA_Addon_Gaan_Ranger_03_01"); //Nosisz nasz pierœcieñ z akwamarynem.
 	AI_Output	(other, self, "DIA_Addon_Gaan_Ranger_15_02"); //Nale¿ysz do Wodnego Krêgu?
 	AI_Output	(self, other, "DIA_Addon_Gaan_Ranger_03_03"); //Oczywiœcie. Dobrze widzieæ wœród nas now¹ twarz.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -407,7 +407,7 @@ func void DIA_Gaan_MONSTERTOT_Info ()
 		};
 	
 	MIS_Gaan_Snapper = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Gaan_WaldSnapper);
+	B_GivePlayerXP(100);
 	AI_StopProcessInfos (self);
 };
 

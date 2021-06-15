@@ -459,7 +459,7 @@ func void DIA_Sekob_DMTWEG_Info ()
 			AI_Output			(self, other, "DIA_Sekob_DMTWEG_01_03"); //Dziêkujê ci Panie Magu. Gdyby nie potê¿ni kap³ani, bylibyœmy zgubieni.
 		};
 	TOPIC_END_SekobDMT = TRUE;
-	B_GivePlayerXP (XP_SekobDMTWEG);
+	B_GivePlayerXP(400);
 
 	if (Kapitel < 11)
 	{
@@ -747,7 +747,7 @@ func void DIA_Sekob_ROSIBACKATSEKOB_Info ()
 	MIS_bringRosiBackToSekob = LOG_SUCCESS;
 	CreateInvItems (self, ItMi_Gold, 650);									
 	B_GiveInvItems (self, other, ItMi_Gold, 650);					
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 	B_NpcClearObsessionByDMT (self);
 	B_StartOtherRoutine	(Rosi,"Start");
 	B_StartOtherRoutine	(Till,"Start");
@@ -784,7 +784,7 @@ func void DIA_Sekob_ROSINEVERBACK_Info ()
 	AI_Output			(self, other, "DIA_Sekob_ROSINEVERBACK_01_03"); //Po¿a³ujesz tego, ty œwinio!
 	B_NpcClearObsessionByDMT (self);
 	B_Attack (self, other, AR_NONE, 1);
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(250);
 	MIS_bringRosiBackToSekob = LOG_FAILED;
 
 };

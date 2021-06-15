@@ -308,7 +308,7 @@ func void DIA_Rukhar_ICHSEHEDICH_Info ()
 			AI_Output			(self, other, "DIA_Rukhar_ICHSEHEDICH_12_01"); //W porz¹dku. IdŸ po Randolpha, i niech ci to nie zajmie ca³ego dnia, s³yszysz?
 			DIA_Rukhar_ICHSEHEDICH_noPerm = TRUE;
 			MIS_Rukhar_Wettkampf = LOG_RUNNING; 
-			B_GivePlayerXP (XP_Ambient);
+			B_GivePlayerXP(50);
 		}
 	else
 		{
@@ -379,14 +379,14 @@ func int DIA_Rukhar_HAENSELN_Condition ()
 
 var int DIA_Rukhar_HAENSELN_nureimalgeld;
 
-func void DIA_Rukhar_HAENSELN_Info ()
+func void DIA_Rukhar_HAENSELN_Info()
 {
 	AI_Output			(other, self, "DIA_Rukhar_HAENSELN_15_00"); //Chyba przeliczy³eœ siê nieco z si³ami.
 
 	if	(DIA_Rukhar_HAENSELN_nureimalgeld == FALSE)
 		{
 			AI_Output			(self, other, "DIA_Rukhar_HAENSELN_12_01"); //Bierz swoje pieni¹dze i ani s³owa wiêcej.
-			B_GivePlayerXP (XP_Rukhar_Lost);
+			B_GivePlayerXP(50);
 
 			IntToFloat (Rukhar_Gewinn);
 					

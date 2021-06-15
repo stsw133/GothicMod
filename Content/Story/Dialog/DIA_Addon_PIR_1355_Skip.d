@@ -81,7 +81,7 @@ func void DIA_Addon_SkipADW_BaltramPaket_Info ()
 	B_GiveInvItems (other, self, ItMi_SkipPaket,1);
 	AI_Output	(self, other, "DIA_Addon_SkipADW_BaltramPaket_08_02"); //Oto dwie butelki rumu. Niestety, trzeci¹ opró¿ni³em, czekaj¹c tu na niego.
 	B_GiveInvItems (self, other, ItFo_Addon_Rum, 2);		
-	B_GivePlayerXP (XP_Addon_Skip_BaltramPaket);
+	B_GivePlayerXP(100);
 	B_LogEntry (TOPIC_Addon_BaltramSkipTrade,LogText_Addon_SkipsRumToBaltram); 
 	Skip_Rum4Baltram = TRUE;
 };
@@ -137,7 +137,7 @@ func void DIA_Addon_Skip_ADW_GregGetroffen_Info ()
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_02"); //Powinien ju¿ dawno wróciæ z naszym statkiem.
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_03"); //Najlepiej bêdzie, jeœli wrócê do Khorinis i poczekam tam na niego...
 	AI_Output (self, other, "DIA_Addon_Skip_ADW_GregGetroffen_08_04"); //Ale nie dzisiaj. Dopiero co wróci³em.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 // ************************************************************
@@ -515,8 +515,8 @@ func void DIA_Addon_Skip_Grog_geben ()
 	B_LogEntry	(TOPIC_Addon_SkipsGrog,"Skip odzyska³ swoje 20 butelek grogu i jest zadowolony.");
 	
 	MIS_ADDON_SkipsGrog = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_SkipsGrog);
-
+	B_GivePlayerXP(200);
+	
 	AI_Output			(self, other, "DIA_Addon_Skip_Grog_geben_08_01"); //Niech mnie kule bij¹! Tak za darmo?
 	AI_Output			(other, self, "DIA_Addon_Skip_Grog_geben_15_02"); //No có¿...
 	AI_Output			(self, other, "DIA_Addon_Skip_Grog_geben_08_03"); //Dobrze, zap³acê ci.

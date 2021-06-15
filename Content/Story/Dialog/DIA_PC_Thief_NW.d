@@ -348,7 +348,7 @@ FUNC VOID DIA_DiegoNW_HaveYourGold_Info()
 		
 		MIS_HelpDiegoNW = LOG_SUCCESS;
 		MIS_DiegosResidence = LOG_RUNNING;
-		B_GivePlayerXP (XP_HelpDiegoNW);
+		B_GivePlayerXP(600);
 
 		Log_CreateTopic (TOPIC_DiegosResidence,LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_DiegosResidence,LOG_RUNNING);
@@ -393,7 +393,7 @@ FUNC VOID DIA_DiegoNW_DeliveredLetter_Info()
 	AI_Output (self ,other,"DIA_DiegoNW_DeliveredLetter_11_03"); //No, ja myœlê.
 	AI_Output (self ,other,"DIA_DiegoNW_DeliveredLetter_11_04"); //Obawiam siê, ¿e najpierw muszê poœwiêciæ trochê czasu na urz¹dzenie mojego nowego domu. Jeœli dobrze pamiêtam, Gerbrandt ma fatalny gust.
 	  
-	B_GivePlayerXP (XP_DiegoHasANewHome);
+	B_GivePlayerXP(300);
 
 	Wld_AssignRoomToGuild ("reich01",		GIL_PUBLIC);
 
@@ -629,7 +629,7 @@ FUNC VOID DIA_DiegoNW_KnowWhereEnemy_Yes ()
 	crewmember_Count = (Crewmember_Count +1);
 	
 	
-	B_GivePlayerXP (XP_Crewmember_Success); 
+	B_GivePlayerXP(500); 
 	
 	if (Hlp_StrCmp(Npc_GetNearestWP(self), "NW_CITY_UPTOWN_PATH_23" )== 1)
     {

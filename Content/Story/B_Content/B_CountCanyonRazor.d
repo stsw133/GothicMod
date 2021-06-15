@@ -1,4 +1,6 @@
 ///******************************************************************************************
+///	B_CountCanyonRazor
+///******************************************************************************************
 func int C_AllCanyonRazorDead()
 {
 	if (GregIsBack)
@@ -24,18 +26,18 @@ func int C_AllCanyonRazorDead()
 ///******************************************************************************************
 func int C_IAmCanyonRazor (var C_NPC slf)
 {
-	var C_NPC RAZ01;	RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
-	var C_NPC RAZ02;	RAZ02 = Hlp_GetNpc(CANYONRAZOR02);
-	var C_NPC RAZ03;	RAZ03 = Hlp_GetNpc(CANYONRAZOR03);
-	var C_NPC RAZ04;	RAZ04 = Hlp_GetNpc(CANYONRAZOR04);
-	var C_NPC RAZ05;	RAZ05 = Hlp_GetNpc(CANYONRAZOR05);
-	var C_NPC RAZ06;	RAZ06 = Hlp_GetNpc(CANYONRAZOR06);
-	var C_NPC RAZ07;	RAZ07 = Hlp_GetNpc(CANYONRAZOR07);
-	var C_NPC RAZ08;	RAZ08 = Hlp_GetNpc(CANYONRAZOR08);
-	var C_NPC RAZ09;	RAZ09 = Hlp_GetNpc(CANYONRAZOR09);
-	var C_NPC RAZ10;	RAZ10 = Hlp_GetNpc(CANYONRAZOR10);
-
-	if ((Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ01))
+	var C_NPC RAZ01; RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
+	var C_NPC RAZ02; RAZ02 = Hlp_GetNpc(CANYONRAZOR02);
+	var C_NPC RAZ03; RAZ03 = Hlp_GetNpc(CANYONRAZOR03);
+	var C_NPC RAZ04; RAZ04 = Hlp_GetNpc(CANYONRAZOR04);
+	var C_NPC RAZ05; RAZ05 = Hlp_GetNpc(CANYONRAZOR05);
+	var C_NPC RAZ06; RAZ06 = Hlp_GetNpc(CANYONRAZOR06);
+	var C_NPC RAZ07; RAZ07 = Hlp_GetNpc(CANYONRAZOR07);
+	var C_NPC RAZ08; RAZ08 = Hlp_GetNpc(CANYONRAZOR08);
+	var C_NPC RAZ09; RAZ09 = Hlp_GetNpc(CANYONRAZOR09);
+	var C_NPC RAZ10; RAZ10 = Hlp_GetNpc(CANYONRAZOR10);
+	
+	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ01))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ02))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ03))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ04))
@@ -44,7 +46,7 @@ func int C_IAmCanyonRazor (var C_NPC slf)
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ07))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ08))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ09))
-	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ10)))
+	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ10))
 	{
 		return true;
 	}
@@ -57,11 +59,7 @@ func int C_IAmCanyonRazor (var C_NPC slf)
 ///******************************************************************************************
 func void B_CountCanyonRazor()
 {
-	var string CanyonRazorLeft;
-	var string CanyonRazorText;
-	
-	CanyonRazorLeft = IntToString(10 - CanyonRazorBodyCount);
-	CanyonRazorText = ConcatStrings(CanyonRazorLeft, PRINT_Addon_CanyonRazorsLeft);
-	
+	var string CanyonRazorLeft; CanyonRazorLeft = IntToString(10 - CanyonRazorBodyCount);
+	var string CanyonRazorText; CanyonRazorText = ConcatStrings(CanyonRazorLeft, PRINT_Addon_CanyonRazorsLeft);
 	AI_PrintScreen (CanyonRazorText, -1, YPOS_GOLDGIVEN, FONT_ScreenSmall, 2);
 };

@@ -197,7 +197,7 @@ func void DIA_Grimbald_NovChase_Info ()
 	AI_Output			(other, self, "DIA_Grimbald_NovChase_15_00"); //Czy nie przechodzi³ têdy jakiœ nowicjusz?
 	AI_Output			(self, other, "DIA_Grimbald_NovChase_07_01"); //Przesz³o têdy dzisiaj wielu dziwnych ludzi, w³¹czaj¹c tych dwóch ¿artownisiów przy kamiennym ³uku.
 	AI_Output			(self, other, "DIA_Grimbald_NovChase_07_02"); //Faktycznie, by³ z nimi pewien nowicjusz z Klasztoru Magów Ognia.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -224,5 +224,5 @@ func int DIA_Grimbald_Trolltot_Condition ()
 func void DIA_Grimbald_Trolltot_Info ()
 {
 	AI_Output			(self, other, "DIA_Grimbald_Trolltot_07_00"); //Czarny troll nie ¿yje. Dobra robota. Nigdy nie s¹dzi³em, ¿e zabicie tych bestii jest w ogóle mo¿liwe.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };

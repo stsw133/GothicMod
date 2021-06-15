@@ -554,7 +554,7 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 	
 			B_GiveInvItems (other, self, ItWr_Vatras2Saturas_FindRaven,(Npc_HasItems (other,ItWr_Vatras2Saturas_FindRaven)));
 		
-			B_UseFakeScroll ();
+			B_UseFakeScroll();
 			/*if (Vatras2Saturas_FindRaven_Open == TRUE)
 			{
 				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_04"); //Hmm. I oczywiœcie nie mog³eœ siê powstrzymaæ przed jej otwarciem, prawda?
@@ -564,7 +564,7 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 			else
 			{*/
 				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_07"); //Bardzo interesuj¹ce.
-				B_GivePlayerXP (XP_Ambient);
+				B_GivePlayerXP(100);
 			//};		
 			
 			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_08"); //WeŸ ten pierœcieñ. Spotkamy siê przy portalu. Bêdê tam na ciebie czekaæ.

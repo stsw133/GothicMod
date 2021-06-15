@@ -297,7 +297,7 @@ func int DIA_GornDJG_BISHIERHIN_Condition ()
 		};
 };
 
-func void DIA_GornDJG_BISHIERHIN_Info ()
+func void DIA_GornDJG_BISHIERHIN_Info()
 {
 	AI_Output			(self, other, "DIA_GornDJG_BISHIERHIN_12_00"); //Ha! £atwizna! Có¿, przyjacielu, reszt¹ musisz zaj¹æ siê sam. Spuœæ im ciêgi! Ja wrócê na swój posterunek i bêdê dalej obserwowa³ orków.
 	AI_Output			(other, self, "DIA_GornDJG_BISHIERHIN_15_01"); //Nie ma sprawy! Do zobaczenia!
@@ -305,7 +305,7 @@ func void DIA_GornDJG_BISHIERHIN_Info ()
 
 	B_LogEntry (TOPIC_Dragonhunter,"Gorn powróci³ na swój posterunek. Zamierza nadal obserwowaæ poczynania orków."); 
 
-	B_GivePlayerXP (XP_GornDJGPlateauClear);
+	B_GivePlayerXP(600);
  	
  	AI_StopProcessInfos (self);
 	
@@ -347,5 +347,5 @@ func void DIA_GornDJG_DRAGONDEAD_Info ()
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_05"); //Zostanê tu jeszcze trochê, a potem wrócê do Lee. Mo¿e spotkamy siê u niego!
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_06"); //Mam ju¿ doœæ tej okolicy. Najwy¿sza pora zwijaæ manatki.
 	AI_Output			(other, self, "DIA_GornDJG_DRAGONDEAD_15_07"); //Na razie!
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(200);
 };

@@ -54,7 +54,7 @@ func void DIA_Addon_Myxir_CITY_HelloCITY_Info ()
 		AI_Output	(self, other, "DIA_Addon_Myxir_CITY_HelloCITY_12_05"); //Jestem pewien, ¿e sobie poradzisz, Stra¿niku.
 		AI_Output	(other, self, "DIA_Addon_Myxir_CITY_HelloCITY_15_06"); //Zobaczymy.
 		DIA_Addon_Myxir_CITY_HelloCITY_OneTime = TRUE;
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(150);
 	};	
 };
 ///////////////////////////////////////////////////////////////////////

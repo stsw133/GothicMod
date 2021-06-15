@@ -133,7 +133,7 @@ FUNC VOID DIA_Addon_Tom_Dead_Info()
 	AI_Output (other,self,"DIA_Addon_Tom_Dead_15_03"); //Powiedzmy, ¿e ktoœ, kogo znasz...
 	AI_Output (self,other,"DIA_Addon_Tom_Dead_11_04"); //Dziêkujê, ¿e tu przyszed³eœ. Teraz mogê wróciæ do obozu...
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"LAGER");
 };

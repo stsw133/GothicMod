@@ -287,7 +287,7 @@ func void DIA_Bosper_LEHRLING_OK()
 	Bosper_Lehrling_Day = Wld_GetDay();
 	Wld_AssignRoomToGuild ("gritta", GIL_NONE);	// = Bospers Ladem
 	MIS_Apprentice = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Lehrling);
+	B_GivePlayerXP(300);
 	B_LogEntry (Topic_Bonus,"Bosper przyj¹³ mnie na swojego czeladnika. Droga do górnego miasta stoi przede mn¹ otworem.");
 	
 	Info_ClearChoices (DIA_Bosper_LEHRLING);
@@ -408,7 +408,7 @@ func void DIA_Bosper_ZUSTIMMUNG_Info ()
 		};
 		if Bosper_Zustimmung_Once == FALSE
 		{
-			B_GivePlayerXP (XP_Zustimmung);
+			B_GivePlayerXP(100);
 			Bosper_Zustimmung_Once = TRUE;
 		};	
 		B_LogEntry (Topic_Lehrling,"Jeœli zechcê zostaæ czeladnikiem, Bosper udzieli mi swojego poparcia.");
@@ -643,7 +643,7 @@ func void DIA_Bosper_BogenSuccess_Info ()
 	AI_Output (self, other, "DIA_Bosper_BogenSuccess_11_05"); //Hmmm. Tak czy inaczej, dziêkujê. Jestem twoim d³u¿nikiem.
 	 
 	MIS_Bosper_Bogen = LOG_SUCCESS;
-	B_GivePlayerXP(XP_Bosper_Bogen);
+	B_GivePlayerXP(150);
 	Npc_RemoveInvItems (self, ItRw_Bow_L_03_MIS,1); 
 	
 };
@@ -931,5 +931,5 @@ FUNC VOID DIA_Bosper_Minenanteil_Info()
 {	
 	AI_Output (other, self, "DIA_Bosper_Minenanteil_15_00"); //Widzê, ¿e masz na sprzeda¿ udzia³y w kopalni.
 	AI_Output (self, other, "DIA_Bosper_Minenanteil_11_01"); //Eee... Ja nic o tym nie wiem. Mo¿esz je zatrzymaæ, jeœli chcesz.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };	

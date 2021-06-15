@@ -60,7 +60,7 @@ func void DIA_Schwarzmagier_HELLO_schlaefer ()
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_schlaefer_09_02"); //Mój Mistrz ukaza³ mi jedyny sposób postêpowania z wami, niewiernymi.
 
 	TOPIC_END_DEMENTOREN = TRUE;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 };
 
 func void DIA_Schwarzmagier_HELLO_dmt ()

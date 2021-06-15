@@ -159,7 +159,7 @@ FUNC VOID DIA_Ramirez_Bezahlen_Info()
 		
 	AI_Output (other, self, "DIA_Ramirez_Bezahlen_15_00");//Mo¿esz mnie czegoœ nauczyæ?
 	
-	if (Npc_GetTalentSkill  (other, NPC_TALENT_PICKLOCK) == TRUE)
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) == TRUE)
 	{ 
 		AI_Output (self, other, "DIA_Ramirez_Bezahlen_14_01");//Nie mogê nauczyæ ciê nic wiêcej. Przekaza³em ci ca³¹ moj¹ wiedzê na temat otwierania zamków.
 		if (other.attribute[ATR_DEXTERITY] < T_MAX)
@@ -191,7 +191,7 @@ FUNC VOID DIA_Ramirez_Bezahlen_Okay()
 	{
 		AI_Output (other, self, "DIA_Ramirez_Bezahlen_Okay_15_01");//...Oto twoje z³oto.
 		AI_Output (self, other, "DIA_Ramirez_Bezahlen_Okay_14_02");//Œwietnie. S³u¿ê pomoc¹.
-		Ramirez_TeachPlayer = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		DIA_Ramirez_Bezahlen_permanent = TRUE;
 		Info_ClearChoices (DIA_Ramirez_Bezahlen);
 	}
@@ -202,45 +202,7 @@ FUNC VOID DIA_Ramirez_Bezahlen_Okay()
 	};
 
 };
-//////////////////////////////////////////////////////////////////////
-//	Info Teach
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Ramirez_Teach   (C_INFO)
-{
-	npc         = VLK_445_Ramirez;
-	nr          = 99;
-	condition   = DIA_Ramirez_Teach_Condition;
-	information = DIA_Ramirez_Teach_Info;
-	permanent   = TRUE;
-	description = "Naucz mnie otwieraæ zamki!";
-};
 
-FUNC INT DIA_Ramirez_Teach_Condition()
-{	
-	if (Ramirez_TeachPlayer == TRUE)
-	&& (Npc_GetTalentSkill  (other, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Ramirez_Teach_Info()
-{
-	AI_Output (other,self, "DIA_Ramirez_Teach_15_00");//Naucz mnie otwieraæ zamki!
-	
-	if (Ramirez_Zweimal == FALSE)
-	{
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_06");//Umiejêtnoœæ otwierania zamków to niemal sztuka.
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_01");//Potrzeba do tego wiele uczucia i intuicji. No, i kilka dobrych wytrychów.
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_02");//Niektóre skrzynie s¹ jednak zabezpieczone zamkami, daj¹cymi siê otworzyæ tylko przez u¿ycie odpowiedniego klucza.
-		Ramirez_Zweimal = TRUE;
-	}
-	if B_TeachThiefTalent (self, other, NPC_TALENT_PICKLOCK)
-	{
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_03");//Tak wiêc, klêcz¹c przy zamku, nale¿y ³agodnie obróciæ wytrych, w lewo i w prawo.
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_04");//Jeœli obrócisz go zbyt szybko lub zbyt mocno - z³amie siê.
-		AI_Output (self, other, "DIA_Ramirez_Teach_14_05");//Jednak z czasem nabierzesz wprawy w pos³ugiwaniu siê tym narzêdziem.
-	};
-};
 ///////////////////////////////////////////////////////////////////////
 //	Info oberes Viertel
 ///////////////////////////////////////////////////////////////////////
@@ -334,7 +296,5 @@ FUNC VOID DIA_Ramirez_Success_Info()
 	B_GiveInvItems (self, other, Itmi_Gold,Value_Sextant/2);
 	Ramirez_Sextant = TRUE;
 	MIS_RamirezSextant = LOG_SUCCESS;
-	B_GivePlayerXP (XP_RamirezSextant);
+	B_GivePlayerXP(200);
 };
-
-

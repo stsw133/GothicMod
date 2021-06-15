@@ -423,7 +423,7 @@ func void DIA_Till_BRONKOWIEDERANARBEIT_Info ()
 			Till_HatSeinGeldBehalten = TRUE;
 		};
 
-	B_GivePlayerXP (XP_BronkoGehtAnDieArbeit);
+	B_GivePlayerXP(50);
 
 	AI_StopProcessInfos (self);
 };

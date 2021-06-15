@@ -402,7 +402,7 @@ FUNC VOID DIA_Hanna_ThisLetter_Info()
 	B_GiveInvItems (self,other,ItMi_Gold,Hanna_PriceForLetter);
 	
 	MIS_HannaRetrieveLetter = LOG_SUCCESS;
-	B_GivePlayerXP (XP_HannaRetrieveLetter);
+	B_GivePlayerXP(300);
 };
 
 // ************************************************************
@@ -505,7 +505,7 @@ FUNC VOID DIA_Hanna_GiveSchuldenbuch_Info()
 	AI_Output (self, other, "DIA_Hanna_Add_17_46"); //Dziêkujê.
 	AI_Output (self, other, "DIA_Hanna_Add_17_47"); //Przyjmij to w nagrodê.
 	B_GiveInvItems (self, other, ItSe_HannasBeutel, 1);
-	B_GivePlayerXP (XP_Schuldenbuch);
+	B_GivePlayerXP(200);
 	AI_Output (other, self, "DIA_Hanna_Add_15_49"); //Co to jest?
 	AI_Output (self, other, "DIA_Hanna_Add_17_48"); //To klucz do bram bogactwa.
 };

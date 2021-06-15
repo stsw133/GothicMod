@@ -51,6 +51,7 @@ FUNC VOID DIA_PC_Thief_DI_Hallo_Info()
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_04"); //Nic dziwnego, skoro mieli tutaj taki posterunek.
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_05"); //Po drodze do wnêtrza wyspy natkniesz siê pewnie na parê pu³apek.
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_06"); //Gdybyœ nie móg³ sobie poradziæ, wróæ tutaj do mnie. Mo¿e bêdê móg³ ci pomóc.
+	self.aivar[AIV_CanTeach] = true;
 };
 
 // ************************************************************
@@ -111,7 +112,7 @@ FUNC VOID DIA_PC_Thief_DI_RAT_Info()
 		 && (DIA_PC_Thief_DI_RAT_OneTime2 == FALSE)
 			{
 				AI_Output (self ,other,"DIA_PC_Thief_DI_RAT_11_09"); //I jeszcze coœ! Wola³bym, ¿ebyœ nie œci¹ga³ do statku wszystkich w³ócz¹cych siê po okolicy bestii. Mam nadziejê, ¿e nie przyjdzie nam tu odpieraæ kolejnego ataku orków.
-				B_GivePlayerXP (XP_Ambient);
+				B_GivePlayerXP(300);
 				DIA_PC_Thief_DI_RAT_OneTime2 = TRUE;
 			};	
 	};
@@ -163,180 +164,6 @@ func void DIA_Diego_DI_TRADE_Info ()
 	AI_Output			(self, other, "DIA_Diego_DI_TRADE_11_01"); //Chyba bêdê móg³ ci pomóc.
 };
 
-
-// ************************************************************
-// 	  	  Training
-// ************************************************************
-
-INSTANCE DIA_PC_Thief_DI_Training_Talente (C_INFO)
-{
-	npc			= PC_Thief_DI;
-	nr			= 10;
-	condition	= DIA_PC_Thief_DI_Training_Talente_Condition;
-	information	= DIA_PC_Thief_DI_Training_Talente_Info;
-	permanent	 = 	TRUE;
-
-	description = "Naucz mnie czegoœ.";
-};                       
-FUNC INT DIA_PC_Thief_DI_Training_Talente_Condition()
-{
-	if (Npc_IsDead(UndeadDragon) == FALSE)
-	&& (Npc_KnowsInfo(other, DIA_PC_Thief_DI_Hallo))
-	{
-		return TRUE;
-	};
-};
-
-FUNC VOID DIA_PC_Thief_DI_Training_Talente_Info()
-{	
-	AI_Output (other,self ,"DIA_PC_Thief_DI_Training_15_00"); //Naucz mnie czegoœ.
-	AI_Output (self ,other,"DIA_PC_Thief_DI_Training_11_01"); //A czego potrzebujesz?
-	
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-		Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-/*
-//***************************************************************************
-// DEX 1
-//***************************************************************************
-
-func void DIA_PC_Thief_DI_Training_DEX_1 ()
-{
-	if (B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX))
-	{
-		AI_Output (self ,other,"DIA_PC_Thief_DI_Training_DEX_1_11_00"); //Twoje ¿ycie bêdzie prostsze, jeœli postarasz siê trzymaæ z dala od linii ognia.
-	};
-
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-
-//***************************************************************************
-// DEX 5
-//***************************************************************************
-
-func void DIA_PC_Thief_DI_Training_DEX_5 ()
-{
-	if (B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX))
-	{
-		AI_Output (self ,other,"DIA_PC_Thief_DI_Training_DEX_5_11_00"); //Staraj siê zawsze poruszaæ z koci¹ zwinnoœci¹. Reszta przyjdzie sama.
-	};
-
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-*/
-//***************************************************************************
-// BOGEN
-//***************************************************************************
-// ------ 1% Waffentalent ------
-func void DIA_PC_Thief_DI_Training_Combat_BOW_1()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 100))
-	{
-		AI_Output (self ,other,"DIA_PC_Thief_DI_Training_Combat_BOW_1_11_00"); //Trenuj przy ka¿dej nadarzaj¹cej siê okazji, nie tylko podczas walki.
-	};
-
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-
-// ------ 5% Waffentalent ------
-func void DIA_PC_Thief_DI_Training_Combat_BOW_5()
-{
-	if (B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 100))
-	{
-		AI_Output (self ,other,"DIA_PC_Thief_DI_Training_Combat_BOW_5_11_00"); //Podczas celowania koniecznie uspokój swój oddech.
-	};
-
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-	
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-
-// ------ PICKLOCK ------
-func void DIA_PC_Thief_DI_Training_Talente_PICKLOCK ()
-{
-	if (B_TeachThiefTalent (self, other, NPC_TALENT_PICKLOCK))
-	{
-		AI_Output (self ,other,"DIA_PC_Thief_DI_Training_PICKLOCK_11_00"); //Najwy¿szy czas. Dziwiê siê, ¿e nie nauczy³eœ siê tego wczeœniej.
-	};
-
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-	Info_AddChoice	  (DIA_PC_Thief_DI_Training_Talente, DIALOG_BACK, DIA_PC_Thief_DI_Training_Talente_BACK);
-
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_PICKLOCK) == FALSE)
-	{
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, "Otwieranie zamków"	,DIA_PC_Thief_DI_Training_Talente_PICKLOCK);
-	};
-
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX1			, B_GetLearnCostAttribute(other, ATR_DEXTERITY))			,DIA_PC_Thief_DI_Training_DEX_1);
-//	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnDEX5			, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_PC_Thief_DI_Training_DEX_5);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow1	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))				,DIA_PC_Thief_DI_Training_Combat_BOW_1);
-	Info_AddChoice		(DIA_PC_Thief_DI_Training_Talente, B_BuildLearnString(PRINT_LearnBow5	, 			B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5))			,DIA_PC_Thief_DI_Training_Combat_BOW_5);
-	
-};
-
-// ------ Back ------
-func void DIA_PC_Thief_DI_Training_Talente_BACK ()
-{
-	Info_ClearChoices (DIA_PC_Thief_DI_Training_Talente);
-};
-
 // ************************************************************
 // 	  	  UndeadDragonDead
 // ************************************************************
@@ -379,14 +206,15 @@ FUNC VOID DIA_PC_Thief_DI_UndeadDragonDead_Info()
 	{
 		AI_Output (other,self ,"DIA_PC_Thief_DI_UndeadDragonDead_15_06"); //Co zamierzasz robiæ dalej?
 		AI_Output (self ,other,"DIA_PC_Thief_DI_UndeadDragonDead_11_07"); //Dobre pytanie. Na pocz¹tek chyba wrócê do Khorinis.
-		//AI_Output (self ,other,"DIA_PC_Thief_DI_UndeadDragonDead_11_08"); //Wäre doch gelacht, wenn ich aus dem Dreckloch nicht wieder eine gescheite Stadt ohne Korruption machen kann.
+		
 		if (Diebesgilde_Verraten == TRUE)
 		|| (MIS_Andre_GuildOfThieves == LOG_SUCCESS)
 		{
 			AI_Output (self ,other,"DIA_DiegoDI_Add_11_00"); //Nie ma tam ju¿ gildii z³odziei, a to otwiera pewne ciekawe mo¿liwoœci.
 		};
-		//AI_Output (self ,other,"DIA_DiegoDI_Add_11_01"); //Für Bromors Haus kann ich bestimmt noch was rausschlagen - vorausgesetzt ich finde einen Käufer...
+		
 		AI_Output (self ,other,"DIA_PC_Thief_DI_UndeadDragonDead_11_09"); //Hmmm... A mo¿e po prostu przejmê interes Bromora? W tym fachu zawsze s¹ jakieœ pieni¹dze. Uczciwe pieni¹dze.
+		
 		DIA_PC_Thief_DI_UndeadDragonDead_OneTime = TRUE;
 	};
 

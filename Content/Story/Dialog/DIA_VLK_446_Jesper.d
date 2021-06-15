@@ -119,7 +119,7 @@ INSTANCE DIA_Jesper_Bezahlen   (C_INFO)
 FUNC INT DIA_Jesper_Bezahlen_Condition()
 {	
 	if (Join_Thiefs == TRUE)
-	&& (Jesper_TeachSneak == FALSE)
+	&& (self.aivar[AIV_CanTeach] == false)
 	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
 	&& (Npc_GetTalentSkill (other, NPC_TALENT_SNEAK) == FALSE) 
 	{
@@ -133,7 +133,7 @@ FUNC VOID DIA_Jesper_Bezahlen_Info()
 	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Jesper_Bezahlen_09_01");//Pewnie, poka¿ê ci, jak siê skradaæ - za darmo.
-		Jesper_TeachSneak = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		Info_ClearChoices (DIA_Jesper_Bezahlen);
 	}
 	else
@@ -158,7 +158,7 @@ FUNC VOID DIA_Jesper_Bezahlen_Okay()
 	{
 		AI_Output (other, self, "DIA_Jesper_Bezahlen_Okay_15_01");//Oto z³oto.
 		AI_Output (self, other, "DIA_Jesper_Bezahlen_Okay_09_02");//Daj mi znaæ, jak bêdziesz gotowy.
-		Jesper_TeachSneak = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		Info_ClearChoices (DIA_Jesper_Bezahlen);
 	}
 	else 
@@ -167,41 +167,7 @@ FUNC VOID DIA_Jesper_Bezahlen_Okay()
 		Info_ClearChoices (DIA_Jesper_Bezahlen);
 	};
 };
-//////////////////////////////////////////////////////////////////////
-//	Info Schleichen 
-///////////////////////////////////////////////////////////////////////
-INSTANCE DIA_Jesper_Schleichen   (C_INFO)
-{
-	npc         = VLK_446_Jesper;
-	nr          = 10;
-	condition   = DIA_Jesper_Schleichen_Condition;
-	information = DIA_Jesper_Schleichen_Info;
-	permanent   = TRUE;
-	description = "Naucz mnie zasad skradania i ukrywania siê.";
-};
-//--------------------------------------
-var int DIA_Jesper_Schleichen_permanent;
-//-------------------------------------- 
-FUNC INT DIA_Jesper_Schleichen_Condition()
-{	
-	if (Jesper_TeachSneak == TRUE) 
-	&& (DIA_Jesper_Schleichen_permanent == FALSE)
-	{
-		return TRUE;
-	};
-};
-FUNC VOID DIA_Jesper_Schleichen_Info()
-{
-	AI_Output (other, self, "DIA_Jesper_Schleichen_15_00");//Naucz mnie zasad skradania i ukrywania siê.
-	
-	if B_TeachThiefTalent (self, other, NPC_TALENT_SNEAK)
-	{
-		AI_Output (self, other, "DIA_Jesper_Schleichen_09_01");//Umiejêtnoœæ skradania siê jest niezwykle wa¿na dla ka¿dego z³odzieja. Przede wszystkim do poruszania siê po cudzych domach.
-		AI_Output (self, other, "DIA_Jesper_Schleichen_09_02");//Nie tup tak. Wiêkszoœæ ludzi ma bardzo czujny sen.
-		AI_Output (self, other, "DIA_Jesper_Schleichen_09_03");//Jeœli bêdziesz siê skrada³, nikt ciê nie us³yszy - wtedy bêdziesz móg³ pracowaæ bez przeszkód.
-		DIA_Jesper_Schleichen_permanent = TRUE;
-	};
-};
+
 //////////////////////////////////////////////////////////////////////
 //	Info Freunde getötet
 ///////////////////////////////////////////////////////////////////////
@@ -341,7 +307,7 @@ FUNC VOID DIA_Jesper_Truhe_Info()
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_01");//Niemo¿liwe! Wygl¹da na to, ¿e mamy nowego mistrza otwierania zamków.
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_02");//Gratulacje!
 	
-	B_GivePlayerXP (XP_JesperTruhe);
+	B_GivePlayerXP(150);
 };  
 
 

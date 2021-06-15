@@ -470,7 +470,7 @@ func void DIA_Raoul_TROLLFELL_Info ()
 	Info_AddChoice	(DIA_Raoul_TROLLFELL, "Zrobione.", DIA_Raoul_TROLLFELL_ja );
 
 	MIS_Raoul_KillTrollBlack = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Raoul_KillTrollBlack);
+	B_GivePlayerXP(500);
 };
 
 func void DIA_Raoul_TROLLFELL_ja ()

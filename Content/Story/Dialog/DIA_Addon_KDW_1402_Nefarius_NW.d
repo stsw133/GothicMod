@@ -228,7 +228,7 @@ func void DIA_Addon_Nefarius_MissingOrnaments_Info ()
 			if (MissingOrnamentsCount == 1)
 				{
 					AI_Output		(other, self, "DIA_Addon_Nefarius_MissingOrnaments_15_02"); //Proszê. Znalaz³em kolejny.
-					B_GivePlayerXP (XP_Addon_BringMissingOrnament);
+					B_GivePlayerXP(200);
 					Npc_RemoveInvItems	(other,	ItMi_Ornament_Addon,	1);
 					AI_PrintScreen (PRINT_ItemGegeben, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);	// "1 Gegenstand gegeben"	
 					MissingOrnamentsCounter = MissingOrnamentsCounter + 1;
@@ -241,7 +241,7 @@ func void DIA_Addon_Nefarius_MissingOrnaments_Info ()
 					concatText = ConcatStrings(IntToString(MissingOrnamentsCount), PRINT_ItemsGegeben);		// "x Gegenstände gegeben"
 					AI_PrintScreen (concatText, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
 		
-					XP_Addon_BringMissingOrnaments = (MissingOrnamentsCount * XP_Addon_BringMissingOrnament);
+					XP_Addon_BringMissingOrnaments = (MissingOrnamentsCount * 200);
 					MissingOrnamentsCounter = (MissingOrnamentsCounter + MissingOrnamentsCount); 
 		
 					B_GivePlayerXP (XP_Addon_BringMissingOrnaments);

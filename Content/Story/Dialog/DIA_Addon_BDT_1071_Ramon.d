@@ -72,7 +72,7 @@ func void DIA_Addon_Ramon_FirstWarn_Info()
 		
 		self.aivar[AIV_GuardPassage_Status] = GP_PassGate;
 		Player_HasTalkedToBanditCamp = TRUE;
-		B_GivePlayerXP (XP_Addon_Hinein);
+		B_GivePlayerXP(500);
 		AI_StopProcessInfos(self);
 		
 		

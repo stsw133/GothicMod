@@ -590,7 +590,7 @@ FUNC VOID DIA_Alrik_HaveSword_Info()
 		AI_Output (self ,other,"DIA_Alrik_HaveSword_09_01"); //Ach! To znacznie lepsze, ni¿ wymachiwanie starym kijem!
 		
 		MIS_Alrik_Sword = LOG_SUCCESS;
-		B_GivePlayerXP (XP_AlriksSword);
+		B_GivePlayerXP(100);
 	}
 	else
 	{	
@@ -659,7 +659,7 @@ FUNC INT DIA_Alrik_Ausbilden_Condition()
 {
 	if ((Npc_KnowsInfo(other, DIA_Alrik_DuWohnst))
 	|| (hero.guild != GIL_NONE))
-	&& (Alrik_Teach1H == FALSE)
+	&& (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};
@@ -687,98 +687,8 @@ FUNC VOID DIA_Alrik_Ausbilden_Info()
 		};
 		
 		
-		Alrik_Teach1H = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 		B_LogEntry (Topic_CityTeacher,"Alrik, który krêci siê za magazynem w dzielnicy portowej, mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 	};
 };
-
-//**************************************
-//			Ich will trainieren
-//**************************************
-
-// -------------------------------------
-	var int Alrik_Merke_1h;
-// -------------------------------------
-
-instance DIA_Alrik_Teach(C_INFO)
-{
-	npc			= VLK_438_Alrik;
-	nr			= 1;
-	condition	= DIA_Alrik_Teach_Condition;
-	information	= DIA_Alrik_Teach_Info;
-	permanent	= TRUE;
-	description = "Wyszkol mnie we w³adaniu mieczem!";
-};                       
-
-FUNC INT DIA_Alrik_Teach_Condition()
-{
-	if (Alrik_Teach1H == TRUE)
-	{
-		return TRUE;
-	};	
-};
- 
-FUNC VOID DIA_Alrik_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Alrik_Teach_15_00"); //Wyszkol mnie we w³adaniu mieczem!
-	
-	Alrik_Merke_1h =  other.HitChance[NPC_TALENT_1H];
-	
-	Info_ClearChoices 	(DIA_Alrik_Teach);
-	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
-};
-
-FUNC VOID DIA_Alrik_Teach_Back ()
-{
-	if (other.HitChance[NPC_TALENT_1H] >= (60-30))
-	{
-		AI_Output (self ,other,"DIA_Alrik_Teach_Back_09_00"); //Ju¿ nie jesteœ pocz¹tkuj¹cy!
-	}
-	else if (other.HitChance[NPC_TALENT_1H] > Alrik_Merke_1h)
-	{
-		AI_Output (self ,other,"DIA_Alrik_Teach_Back_09_01"); //Jesteœ ju¿ lepszy. Nied³ugo staniesz siê prawdziwym wojownikiem!
-	};
-	
-	Info_ClearChoices (DIA_Alrik_Teach);
-};
-
-FUNC VOID DIA_Alrik_Teach_1H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 60);
-	
-	Info_ClearChoices 	(DIA_Alrik_Teach);
-	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
-};
-
-FUNC VOID DIA_Alrik_Teach_1H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 60);
-
-	Info_ClearChoices 	(DIA_Alrik_Teach);
-	Info_AddChoice 		(DIA_Alrik_Teach, DIALOG_BACK,	DIA_Alrik_Teach_Back);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Alrik_Teach_1H_1);
-	Info_AddChoice		(DIA_Alrik_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Alrik_Teach_1H_5);
-};
-
-
-
-		
-
-
-
-
-
-
-		
-
-
-
-
-
-
-

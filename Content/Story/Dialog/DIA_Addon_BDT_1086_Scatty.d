@@ -201,7 +201,7 @@ FUNC VOID DIA_Addon_Scatty_Bier_Info()
 	};
 	AI_Output (self, other, "DIA_Addon_Scatty_Bier_01_01");//Och, ale dobre. Dziêki, jesteœ moim bohaterem.
 	
-	B_GivePlayerXP (XP_Ambient* 5);
+	B_GivePlayerXP(500);
 };
 
 //---------------------------------------------------------------------

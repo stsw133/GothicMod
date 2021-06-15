@@ -176,7 +176,7 @@ func void DIA_Pepe_KilledWolves_Info ()
 		AI_Output (self, other, "DIA_Pepe_KilledWolves_03_03"); //To wszystko wina tego przeklêtego Bullka!
 
 		MIS_Pepe_KillWolves = LOG_SUCCESS;
-		B_GivePlayerXP (XP_PepeWolves);
+		B_GivePlayerXP(250);
 	}
 	else
 	{
@@ -249,7 +249,7 @@ func void DIA_Pepe_BullcoDefeated_Info ()
 	AI_Output (self, other, "DIA_Pepe_BullcoDefeated_03_01"); //Ta œwinia zas³u¿y³a sobie na to.
 
 	MIS_Pepe_KickBullco = LOG_SUCCESS;
-	B_GivePlayerXP (XP_KickBullco);
+	B_GivePlayerXP(100);
 };
 
 // ************************************************************

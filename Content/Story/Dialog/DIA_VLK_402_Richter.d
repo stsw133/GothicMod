@@ -212,9 +212,9 @@ FUNC VOID DIA_Richter_KillMorgahard_Info()
 	Wld_InsertNpc	(BDT_1034_Fluechtling,"REICH"); 
 	Wld_InsertNpc	(BDT_1035_Fluechtling,"REICH"); 
 
-	B_InitNpcGlobals ();
+	B_InitNpcGlobals();
 
-	B_GivePlayerXP (XP_BringHolyHammer);
+	B_GivePlayerXP(300);
 	MIS_Richter_BringHolyHammer = LOG_SUCCESS;
 	B_LogEntry (TOPIC_RichterLakai,"Niektórzy wiêŸniowie zdo³ali uciec sêdziemu. Najprawdopodobniej ukrywaj¹ siê gdzieœ w górach, w okolicy nowej wie¿y Xardasa. Mam zabiæ ich przywódcê, Morgaharda."); 
 	MIS_Richter_KillMorgahard = LOG_RUNNING;
@@ -250,7 +250,7 @@ FUNC VOID DIA_Richter_KilledMorgahard_Info()
 	AI_Output (self ,other,"DIA_Richter_KilledMorgahard_10_01"); //Dobry z ciebie ch³opak. Oto twoja nagroda.
 	CreateInvItems (self, ItMi_Gold, 400);									
 	B_GiveInvItems (self, other, ItMi_Gold, 400);					
-	B_GivePlayerXP (XP_KillMorgahard);
+	B_GivePlayerXP(300);
 	B_LogEntry (TOPIC_RichterLakai,"Sêdziego najwyraŸniej ucieszy³a wiadomoœæ o œmierci Morgaharda. To dobrze, ale muszê pamiêtaæ o zadaniu, które powierzy³ mi Lee."); 
 	MIS_Richter_KillMorgahard = LOG_SUCCESS;
 };
@@ -321,7 +321,7 @@ FUNC VOID DIA_Richter_PermissionForShip_Info ()
 	B_GiveInvItems (self,other,ItWr_ForgedShipLetter_Mis,1);
 	B_LogEntry (TOPIC_Ship,"Dziêki sfa³szowanemu dokumentowi dostanie siê na statek nie powinno stanowiæ problemu. Ciekawe, co na to Lee."); 
 	MIS_RichtersPermissionForShip = LOG_SUCCESS;
-	B_GivePlayerXP (XP_RichtersPermissionForShip);
+	B_GivePlayerXP(1500);
 };
 
 // ************************************************************

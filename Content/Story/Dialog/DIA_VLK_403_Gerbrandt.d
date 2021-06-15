@@ -249,7 +249,7 @@ FUNC VOID DIA_Gerbrandt_GreetingsFromDiego_Info()
 	
 	MIS_DiegosResidence = LOG_SUCCESS;
 	
-	B_GivePlayerXP (XP_DiegosResidence);
+	B_GivePlayerXP(400);
 	
 	DIEGO_COMING = TRUE;
 };

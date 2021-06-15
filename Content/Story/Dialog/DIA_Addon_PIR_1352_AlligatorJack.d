@@ -608,7 +608,7 @@ func void DIA_Addon_AlligatorJack_HuntEnd_Info ()
 	
 	B_GiveInvItems (self ,other,ItFoMuttonRaw,10);
 	MIS_KrokoJagd = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_KrokoJagd);
+	B_GivePlayerXP(200);
 };
 
 

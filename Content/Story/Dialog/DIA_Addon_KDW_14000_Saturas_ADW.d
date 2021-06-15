@@ -248,7 +248,7 @@ func void DIA_Addon_Saturas_LanceLeiche_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_LanceLeiche_14_02"); //Uwa¿aj na siebie, synu. Nie chcê op³akiwaæ kolejnej straty.
 	
 	TOPIC_End_Lance = TRUE;
-	B_GivePlayerXP (XP_Addon_LanceLeiche);
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -278,7 +278,7 @@ func void DIA_Addon_Saturas_LanceRing_Info ()
 	AI_Output	(other, self, "DIA_Addon_Saturas_LanceRing_15_00"); //Mam akwamarynowy pierœcieñ Lance'a.
 	AI_Output	(self, other, "DIA_Addon_Saturas_LanceRing_14_01"); //Najlepiej oddaj mi go, zanim wpadnie w niepowo³ane rêce.
 	B_GiveInvItems (other, self, ItRi_Ranger_Lance, 1);		
-	B_GivePlayerXP (XP_BONUS_2);
+	B_GivePlayerXP(200);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Tokens
@@ -400,7 +400,7 @@ func void DIA_Addon_Saturas_Tokens_Info ()
 			{
 			};
 	
-			XP_BroughtTokens = (XP_Addon_ForOneToken * BroughtToken);
+			XP_BroughtTokens = (400 * BroughtToken);
 	
 			B_GivePlayerXP (XP_BroughtTokens);
 			Saturas_BroughtTokenAmount = (Saturas_BroughtTokenAmount + BroughtToken);
@@ -563,7 +563,7 @@ func void DIA_Addon_Saturas_Flut_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_Flut_14_04"); //Bagno na wschodzie jest pozosta³oœci¹ po tych wydarzeniach.
 
 	TOPIC_END_Flut = TRUE;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -687,9 +687,8 @@ func void DIA_Addon_Saturas_RavenInfos_Info ()
 
 	if (RavenNeuigkeit != 0)
 	{
-		var int XP_RavenNeuigkeit;
-		XP_RavenNeuigkeit = (RavenNeuigkeit * XP_Ambient);
-		B_GivePlayerXP (XP_RavenNeuigkeit);
+		var int XP_RavenNeuigkeit; XP_RavenNeuigkeit = (RavenNeuigkeit * 100);
+		B_GivePlayerXP(XP_RavenNeuigkeit);
 	}
 	else
 	{
@@ -954,7 +953,7 @@ func void DIA_Addon_Saturas_RavensDead_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_VatrasAbloesung, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_VatrasAbloesung,"Myxir uda³ siê do miasta portowego, aby pomóc Vatrasowi."); 
 
-	B_GivePlayerXP (XP_Addon_Saturas_RavensDead);
+	B_GivePlayerXP(1000);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -982,7 +981,7 @@ func void DIA_Addon_Saturas_FreedMissingPeople_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Saturas_FreedMissingPeople_15_00"); //Uwolni³em wiêŸniów.
 	AI_Output	(self, other, "DIA_Addon_Saturas_FreedMissingPeople_14_01"); //Bardzo dobrze. Oby szczêœliwie dotarli do swej ojczyzny.
-	B_GivePlayerXP (XP_Addon_Saturas_FreedMissingPeople);
+	B_GivePlayerXP(500);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1136,7 +1135,7 @@ func void DIA_Addon_Saturas_BeliarWeapGeben_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_BeliarWeapGeben_14_02"); //Nie wyrz¹dzi ju¿ nikomu krzywdy, gdy zatopiê j¹ w morskich odmêtach.
 	AI_Output	(self, other, "DIA_Addon_Saturas_BeliarWeapGeben_14_03"); //Na jej stra¿y staæ bêdzie m¹droœæ Adanosa.
 	TOPIC_END_Klaue = TRUE;
-	B_GivePlayerXP (XP_Addon_BeliarsWeaponAbgegeben);
+	B_GivePlayerXP(2000);
 	Saturas_KlaueInsMeer = TRUE;
 };
 
@@ -1174,101 +1173,8 @@ func void DIA_Addon_Saturas_ADW_PreTeachCircle_Info ()
 		AI_Output	(self, other, "DIA_Addon_Saturas_ADW_PreTeachCircle_14_04"); //Jeœli odniosê wra¿enie, ¿e wykorzystasz sw¹ wiedzê, aby czyniæ z³o, nie bêdziesz móg³ wiêcej na mnie liczyæ.
 		AI_Output	(self, other, "DIA_Addon_Saturas_ADW_PreTeachCircle_14_05"); //Lepiej mnie nie rozczaruj.
 	};
-	Saturas_Addon_TeachCircle = TRUE;
-
+	self.aivar[AIV_CanTeach] = true;
+	
 	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
 	B_LogEntry (TOPIC_Addon_KDWTeacher, LogText_Addon_SaturasTeach); 
 };
-
-///////////////////////////////////////////////////////////////////////
-//	Info TEACHCIRCLE
-///////////////////////////////////////////////////////////////////////
-instance DIA_Addon_Saturas_ADW_CIRCLE		(C_INFO)
-{
-	npc			 = 	KDW_14000_Addon_Saturas_ADW;
-	nr			 = 	99;
-	condition	 = 	DIA_Addon_Saturas_ADW_CIRCLE_Condition;
-	information	 = 	DIA_Addon_Saturas_ADW_CIRCLE_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"Chcê dowiedzieæ siê wiêcej o wy¿szych krêgach magii.";
-};
-var int DIA_Addon_Saturas_ADW_CIRCLE_NoPerm;
-func int DIA_Addon_Saturas_ADW_CIRCLE_Condition ()
-{	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) >= 1)
-	&& (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) < 6)
-	&& (Saturas_Addon_TeachCircle == TRUE)
-	&& (DIA_Addon_Saturas_ADW_CIRCLE_NoPerm == FALSE)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Addon_Saturas_ADW_CIRCLE_Info ()
-{
-	AI_Output (other, self, "DIA_Addon_Saturas_ADW_CIRCLE_15_00"); //Chcê dowiedzieæ siê wiêcej o wy¿szych krêgach magii.
-	
-	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 1)
-	&& (Kapitel >= 8)
-	{
-		if B_TeachMagicCircle (self,other, 2)
-		{
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_01"); //Tak, jesteœ gotów na dalsz¹ naukê.
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_02"); //Wst¹p do drugiego krêgu magii. Niech Adanos obdarzy ciê m¹droœci¹, byœ roztropnie u¿ywa³ swych nowych mocy.
-		};                                                                                                                     
-	}
-	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 2)
-	&& (Kapitel >= 9)
-	{
-		if B_TeachMagicCircle (self,other, 3)
-		{
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_03"); //Tak, nasta³ ku temu czas. Wst¹p do trzeciego krêgu magii.
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_04"); //Twoja wiedza pozwoli ci rzucaæ nowe, potê¿ne zaklêcia. U¿ywaj ich roztropnie.
-		};                                                             
-	}
-	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 3)
-	&& (MIS_ReadyforChapter4 == TRUE)
-	{
-		if B_TeachMagicCircle (self,other, 4)
-		{
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_05"); //Nadszed³ ju¿ czas. Jesteœ gotów wst¹piæ do czwartego krêgu magii.
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_06"); //Twoje s³owa i gesty maj¹ teraz wielk¹ moc. Zawsze rozs¹dnie i uwa¿nie dobieraj nowe zaklêcia.
-		};
-	}
-	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
-	&& (Kapitel >= 11)
-	{
-		if B_TeachMagicCircle (self,other, 5)
-		{
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_07"); //Masz przywilej wst¹pienia do pi¹tego krêgu magii.
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_08"); //Zaklêcia, których siê teraz nauczysz, maj¹ niszczycielsk¹ si³ê.
-			AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_09"); //B¹dŸ œwiadom swej wielkiej mocy i nie popadaj w samouwielbienie.
-		};
-	}
-	else if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 5)
-	{
-		AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_10"); //To zadanie nie nale¿y ju¿ do mnie.
-		AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_11"); //Aby poznaæ szósty i ostatni kr¹g zaklêæ, musisz odwiedziæ klasztor, Magu Ognia.
-		DIA_Addon_Saturas_ADW_CIRCLE_NoPerm = TRUE;
-	}
-	else
-	{
-		AI_Output (self, other, "DIA_Addon_Saturas_ADW_CIRCLE_14_12"); //Jest zbyt wczeœnie. Wróæ póŸniej.
-	};
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

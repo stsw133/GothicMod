@@ -369,7 +369,7 @@ func void DIA_Addon_Riordian_FoundHouse_Info ()
 	if (RiordianHouseNeuigkeit > 0)
 	{
 		var int RiordianHouseXPs;
-		RiordianHouseXPs = (XP_Addon_Riordian_FoundHouse * RiordianHouseNeuigkeit);
+		RiordianHouseXPs = (100 * RiordianHouseNeuigkeit);
 		B_GivePlayerXP (RiordianHouseXPs);
 		
 		RiordianHousesFoundCount = (RiordianHousesFoundCount + RiordianHouseNeuigkeit);
@@ -421,7 +421,7 @@ func void DIA_Addon_Riordian_OrksWeg_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_05"); //Störungen dieser Art können wir jetzt nun wirklich nicht gebrauchen.
 	
 	TOPIC_END_CanyonOrcs = TRUE;
-	B_GivePlayerXP (XP_Addon_Riordian_OrksWeg);
+	B_GivePlayerXP(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -454,7 +454,7 @@ func void DIA_Addon_Riordian_FoundAllHouses_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_03"); //Sehr gut. Dann hat sich meine Arbeit ja DOCH gelohnt.
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_04"); //Ich danke dir.
 	MIS_Riordian_HousesOfRulers = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Addon_FoundAllHouses);
+	B_GivePlayerXP(300);
 };
 
 ///////////////////////////////////////////////////////////////////////

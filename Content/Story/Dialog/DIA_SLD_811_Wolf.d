@@ -141,76 +141,9 @@ func void DIA_Wolf_WannaLearn_Info ()
 	AI_Output (other, self, "DIA_Wolf_WannaLearn_15_00"); //Mo¿esz mnie czegoœ nauczyæ?
 	AI_Output (self, other, "DIA_Wolf_WannaLearn_08_01"); //Jeœli chcesz, mogê ci pokazaæ, jak sprawniej pos³ugiwaæ siê ³ukiem. I tak nie mam teraz nic lepszego do roboty.
 	
-	Wolf_TeachBow = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Wilk mo¿e mnie nauczyæ, jak pos³ugiwaæ siê ³ukiem.");
-};
-
-// ************************************************************
-// 			  				TEACH
-// ************************************************************
-var int Wolf_Merke_Bow;
-// ------------------------------------------------------
-
-instance DIA_Wolf_TEACH (C_INFO)
-{
-	npc		 	= SLD_811_Wolf;
-	nr		 	= 8;
-	condition	= DIA_Wolf_TEACH_Condition;
-	information	= DIA_Wolf_TEACH_Info;
-	permanent 	= TRUE;
-	description	= "Chcê siê nauczyæ czegoœ o ³ucznictwie.";
-};
-
-func int DIA_Wolf_TEACH_Condition ()
-{
-	if (Wolf_TeachBow == TRUE)
-	{
-		return TRUE;
-	};
-};
-
-func void DIA_Wolf_TEACH_Info ()
-{
-	AI_Output (other, self, "DIA_Wolf_TEACH_15_00"); //Chcê siê nauczyæ czegoœ o ³ucznictwie.
-	AI_Output (self, other, "DIA_Wolf_TEACH_08_01"); //Czego mogê ciê nauczyæ?
-	
-	Wolf_Merke_Bow = other.HitChance[NPC_TALENT_BOW];
-	
-	Info_ClearChoices (DIA_Wolf_Teach);
-	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1, B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_Bow_1);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_Bow_5);
-};
-
-FUNC VOID DIA_Wolf_Teach_Back ()
-{
-	if (Wolf_Merke_Bow < other.HitChance[NPC_TALENT_BOW])
-	{
-		AI_Output (self ,other,"DIA_Wolf_Teach_BACK_08_00"); //No i proszê. Od razu poprawi³a siê twoja celnoœæ.
-	};
-	
-	Info_ClearChoices (DIA_Wolf_Teach);
-};
-
-FUNC VOID DIA_Wolf_Teach_BOW_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 1, 90);
-	
-	Info_ClearChoices (DIA_Wolf_Teach);
-	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_Bow_1);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_Bow_5);
-};
-
-FUNC VOID DIA_Wolf_Teach_BOW_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_BOW, 5, 90);
-	
-	Info_ClearChoices (DIA_Wolf_Teach);
-	Info_AddChoice (DIA_Wolf_Teach, DIALOG_BACK, DIA_Wolf_Teach_Back);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow1 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1))	,DIA_Wolf_Teach_BOW_1);
-	Info_AddChoice (DIA_Wolf_Teach, B_BuildLearnString(PRINT_LearnBow5 , B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5)),DIA_Wolf_Teach_BOW_5);
 };
 
 // ************************************************************
@@ -519,7 +452,7 @@ func void DIA_Wolf_BENGAR_geld ()
 		
 	
 		MIS_BengarsHelpingSLD = LOG_SUCCESS;
-		B_GivePlayerXP (XP_BengarsHelpingSLD);
+		B_GivePlayerXP(300);
 		AI_StopProcessInfos (self);
 		AI_UseMob			(self,"BENCH",-1);
 		Npc_ExchangeRoutine	(self,"BengarsFarm");
@@ -746,7 +679,7 @@ FUNC VOID DIA_Wolf_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Wolf_KnowWhereEnemy_Yes_15_01"); //ZejdŸ na przystañ. Wkrótce odp³ywamy.
 	AI_Output (self ,other,"DIA_Wolf_KnowWhereEnemy_Yes_08_02"); //Ju¿ idê.
 	
-	B_GivePlayerXP (XP_Crewmember_Success);                                                              
+	B_GivePlayerXP(500);                                                              
 	                                                                                                     
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;

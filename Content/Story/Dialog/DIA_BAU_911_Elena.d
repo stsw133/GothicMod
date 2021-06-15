@@ -299,5 +299,5 @@ func void DIA_Elena_MINENANTEIL_Info ()
 {
 	AI_Output			(other, self, "DIA_Elena_MINENANTEIL_15_00"); //Sprzedajesz udzia³y w kopalni?
 	AI_Output			(self, other, "DIA_Elena_MINENANTEIL_16_01"); //No i co z tego? Sama zap³aci³am za nie maj¹tek.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };

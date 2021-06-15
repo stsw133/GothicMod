@@ -230,7 +230,7 @@ func void DIA_Fajeth_Leader_Info ()
 	
 	Fajeth.flags = 0;
 	MIS_Fajeth_Kill_Snapper = LOG_SUCCESS;
-	B_GivePlayerXP (XP_FajethKillSnapper);
+	B_GivePlayerXP(200);
 		
 		
 };
@@ -268,7 +268,7 @@ func void DIA_Fajeth_SNAPPER_KILLED_Info ()
 	};					
 	Fajeth.flags = 0;
 	MIS_Fajeth_Kill_Snapper = LOG_SUCCESS;
-	B_GivePlayerXP (XP_FajethKillSnapper);
+	B_GivePlayerXP(200);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Running

@@ -198,7 +198,7 @@ func void DIA_Sagitta_Sagitta_Herb_Info ()
 	B_GiveInvItems (other,self,ItPl_SunHerb,1);
 	self.aivar[AIV_CanTeach] = true;
 	MIS_Sagitta_Herb = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Sagitta_Sonnenaloe);
+	B_GivePlayerXP(200);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -355,7 +355,7 @@ func void DIA_Sagitta_Thekla_Info ()
 	AI_Output			(other, self, "DIA_Sagitta_Thekla_15_00"); //Thekla przysy³a mnie po odbiór przesy³ki.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_01"); //Ach, tak. W³aœciwie spodziewa³am siê jej ju¿ kilka dni temu.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_02"); //Oto paczka, dbaj o ni¹!
-	B_GivePlayerXP (XP_AmbientKap3);								
+	B_GivePlayerXP(150);
 	B_GiveInvItems (self, other, ItMi_TheklasPaket, 1);					
 };
 

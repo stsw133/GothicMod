@@ -73,7 +73,7 @@ instance DIA_Rod_WannaLearn (C_INFO)
 
 FUNC INT DIA_Rod_WannaLearn_Condition()
 {
-	if (Rod_Teach2H == FALSE)
+	if (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};
@@ -95,7 +95,7 @@ FUNC VOID DIA_Rod_WannaLearn_Info()
 		}
 		else
 		{
-			Rod_Teach2H = TRUE;
+			self.aivar[AIV_CanTeach] = true;
 		};
 	}
 	else
@@ -104,72 +104,6 @@ FUNC VOID DIA_Rod_WannaLearn_Info()
 		AI_Output (self, other, "DIA_Rod_WannaLearn_06_05"); //Skocz ch³opcze lepiej na pastwisko i pobaw siê w ciuciubabkê z owieczkami!
 		Rod_SchwachGesagt = TRUE;
 	};
-};
-
-// ******************************************************
-//							Teach
-// ******************************************************
-var int Rod_Merke_2h;
-// ------------------------------------------------------
-
-INSTANCE DIA_Rod_Teach(C_INFO)
-{
-	npc			= SLD_804_Rod;
-	nr			= 3;
-	condition	= DIA_Rod_Teach_Condition;
-	information	= DIA_Rod_Teach_Info;
-	permanent	= TRUE;
-	description = "Chcê poprawiæ swoje umiejêtnoœci w walce broni¹ dwurêczn¹!";
-};                       
-
-FUNC INT DIA_Rod_Teach_Condition()
-{
-	if (Rod_Teach2H == TRUE)
-	{
-		return TRUE;
-	};
-};
- 
-FUNC VOID DIA_Rod_Teach_Info()
-{	
-	AI_Output (other,self, "DIA_Rod_Teach_15_00"); //Chcê poprawiæ swoje umiejêtnoœci w walce broni¹ dwurêczn¹!
-
-	Rod_Merke_2h = other.HitChance[NPC_TALENT_2H];
-	
-	Info_ClearChoices (DIA_Rod_Teach);
-	Info_AddChoice (DIA_Rod_Teach, DIALOG_BACK, DIA_Rod_Teach_Back);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Rod_Teach_2H_1);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Rod_Teach_2H_5);
-};
-
-FUNC VOID DIA_Rod_Teach_Back ()
-{
-	if (Rod_Merke_2h < other.HitChance[NPC_TALENT_2H])
-	{
-		AI_Output (self ,other,"DIA_Rod_Teach_BACK_06_00"); //Ju¿ ca³kiem nieŸle sobie radzisz.
-	};
-	
-	Info_ClearChoices (DIA_Rod_Teach);
-};
-
-FUNC VOID DIA_Rod_Teach_2H_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 90);
-	
-	Info_ClearChoices (DIA_Rod_Teach);
-	Info_AddChoice (DIA_Rod_Teach, DIALOG_BACK, DIA_Rod_Teach_Back);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Rod_Teach_2H_1);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Rod_Teach_2H_5);
-};
-
-FUNC VOID DIA_Rod_Teach_2H_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 90);
-	
-	Info_ClearChoices (DIA_Rod_Teach);
-	Info_AddChoice (DIA_Rod_Teach, DIALOG_BACK, DIA_Rod_Teach_Back);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h1 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))	,DIA_Rod_Teach_2H_1);
-	Info_AddChoice (DIA_Rod_Teach, B_BuildLearnString(PRINT_Learn2h5 , B_GetLearnCostTalent(other, NPC_TALENT_2H, 5)),DIA_Rod_Teach_2H_5);
 };
 
 // ************************************************************
@@ -415,7 +349,7 @@ func void DIA_Rod_Wette_Yes()
 			AI_Output (self, other, "DIA_Rod_Wette_Yes_06_07");//Wygl¹da na to, ¿e w³aœnie straci³em 30 sztuk z³ota. Oto pieni¹dze.
 			B_GiveInvItems (self, other, itmi_gold, 60);
 			Rod_WetteGewonnen = TRUE;
-			B_GivePlayerXP (XP_Rod); 
+			B_GivePlayerXP(100); 
 		}
 		else
 		{
@@ -505,7 +439,7 @@ FUNC VOID DIA_Rod_GiveItBack_Info()
 	
 	if (Rod_SchwertXPGiven == FALSE)
 	{
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(50);
 		Rod_SchwertXPGiven = TRUE;
 	};
 };

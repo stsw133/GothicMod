@@ -146,10 +146,10 @@ func void DIA_Addon_Bengar_MissingPeople_Info ()
 	Log_CreateTopic (TOPIC_Addon_MissingPeople, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_MissingPeople, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_MissingPeople,"Zagin¹³ robotnik farmera Bengara, Pardos."); 
-
+	
 	MIS_Bengar_BringMissPeopleBack = LOG_RUNNING;
-	B_GivePlayerXP (XP_Ambient);
-
+	B_GivePlayerXP(100);
+	
 	Info_ClearChoices	(DIA_Addon_Bengar_MissingPeople);
 	Info_AddChoice	(DIA_Addon_Bengar_MissingPeople, DIALOG_BACK, DIA_Addon_Bengar_MissingPeople_back );
 	Info_AddChoice	(DIA_Addon_Bengar_MissingPeople, "Masz jakieœ sugestie?", DIA_Addon_Bengar_MissingPeople_Hint );
@@ -224,7 +224,7 @@ func void DIA_Addon_Bengar_ReturnPardos_Info ()
 	AI_Output	(self, other, "DIA_Addon_Bengar_ReturnPardos_10_03"); //Czekaj, chcia³bym ci siê jakoœ odwdziêczyæ, ale nie mam jak...
 	AI_Output	(other, self, "DIA_Addon_Bengar_ReturnPardos_15_04"); //Nie ma sprawy.
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };	
 
 ///////////////////////////////////////////////////////////////////////
@@ -256,7 +256,7 @@ func void DIA_Addon_Bengar_FernandosWeapons_Info ()
 	AI_Output	(other, self, "DIA_Addon_Bengar_FernandosWeapons_15_02"); //Nie chodzi o to. Pytam, czy nie mieli ze sob¹ naprawdê sporego jej zapasu. Du¿ego transportu.
 	AI_Output	(self, other, "DIA_Addon_Bengar_FernandosWeapons_10_03"); //Faktycznie, teraz sobie przypominam. Mieli ze sob¹ naprawdê sporo orê¿a.
 	AI_Output	(self, other, "DIA_Addon_Bengar_FernandosWeapons_10_04"); //Czêœæ w beczkach, czêœæ w workach, a czêœæ na wozie.
-	 B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -522,11 +522,11 @@ func void DIA_Bengar_MILIZWEG_Info ()
 		if (Rumbold_Bezahlt == TRUE)
 		{		
 			AI_Output (self, other, "DIA_Bengar_MILIZWEG_10_04"); //Chcia³eœ nawet za mnie zap³aciæ. To bardzo mi³e z twojej strony.
-			B_GivePlayerXP (XP_Bengar_MILIZKLATSCHEN + 50);
+			B_GivePlayerXP(150);
 		}
 		else
 		{
-			B_GivePlayerXP (XP_Bengar_MILIZKLATSCHEN);
+			B_GivePlayerXP(100);
 		};
 		
 		Bengar_MilSuccess = TRUE;
@@ -564,7 +564,7 @@ func void DIA_Bengar_BALTHASAR_Info ()
 	AI_Output			(self, other, "DIA_Bengar_BALTHASAR_10_01"); //Ach, o to chodzi. Powiedzia³em mu, ¿e Sekob powinien mi p³aciæ, jeœli chce korzystaæ z moich pastwisk.
 	AI_Output			(self, other, "DIA_Bengar_BALTHASAR_10_02"); //Mówi¹c prawdê, to tylko dokuczanie. Po prostu nie cierpiê Balthasara.
 	B_LogEntry (TOPIC_BalthasarsSchafe,"Jeœli mam przekonaæ Bengara, aby wpuœci³ Balthasara z powrotem na swoje pastwiska, bêdê musia³ wyœwiadczyæ mu przys³ugê. Na pewno wkrótce nadarzy siê ku temu jakaœ okazja."); 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -599,9 +599,9 @@ func void DIA_Bengar_BALTHASARDARFAUFWEIDE_Info ()
 	AI_Output			(other, self, "DIA_Bengar_BALTHASARDARFAUFWEIDE_15_02"); //Bo ja tak powiedzia³em.
 	AI_Output			(self, other, "DIA_Bengar_BALTHASARDARFAUFWEIDE_10_03"); //Hmmm. W porz¹dku, jak sobie ¿yczysz.
 	AI_Output			(self, other, "DIA_Bengar_BALTHASARDARFAUFWEIDE_10_04"); //Niech wyprowadza swoje zwierzêta gdzieœ za pola uprawne.
-
+	
 	MIS_Balthasar_BengarsWeide = LOG_SUCCESS;
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 
 
@@ -776,8 +776,7 @@ func void DIA_Bengar_SLDDA_Info ()
 	AI_Output			(self, other, "DIA_Bengar_SLDDA_10_02"); //Proszê, weŸ to. S¹dzê, ¿e ci siê przyda.
 	CreateInvItems (self, ItMi_Gold, 400);									
 	B_GiveInvItems (self, other, ItMi_Gold, 400);
-	B_GivePlayerXP (XP_BengarsHelpingSLDArrived);
-					
+	B_GivePlayerXP(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -808,7 +807,7 @@ func void DIA_Bengar_MALAKWIEDERDA_Info ()
 {
 	AI_Output			(other, self, "DIA_Bengar_MALAKWIEDERDA_15_00"); //Malak wróci³.
 	AI_Output			(self, other, "DIA_Bengar_MALAKWIEDERDA_10_01"); //Najwy¿sza pora. Myœla³em, ¿e ju¿ nigdy go nie zobaczê.
-	B_GivePlayerXP (XP_GetMalakBack);
+	B_GivePlayerXP(200);
 };
 
 ///////////////////////////////////////////////////////////////////////

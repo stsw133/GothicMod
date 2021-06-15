@@ -187,15 +187,15 @@ func int DIA_Bennet_DI_DragonEgg_Condition ()
 		};
 };
 
-func void DIA_Bennet_DI_DragonEgg_Info ()
+func void DIA_Bennet_DI_DragonEgg_Info()
 {
 	AI_Output			(other, self, "DIA_Bennet_DI_DragonEgg_15_00"); //Mam smocze jajo.
 	AI_Output			(self, other, "DIA_Bennet_DI_DragonEgg_06_01"); //No i co?
 	AI_Output			(other, self, "DIA_Bennet_DI_DragonEgg_15_02"); //Nooo... Myœla³em...
 	AI_Output			(self, other, "DIA_Bennet_DI_DragonEgg_06_03"); //Wiem, co sobie myœla³eœ. Zapomnij o tym i zatrzymaj je. Nie chcê go.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(300);
 };
-	
+
 ///////////////////////////////////////////////////////////////////////
 //	Info UndeadDragonDead
 ///////////////////////////////////////////////////////////////////////

@@ -36,8 +36,7 @@ func void B_GetWispDetectedItem()
 		return;
 	};
 	
-	var int randy;
-	randy = Hlp_Random(100);
+	var int randy; randy = Hlp_Random(100);
 	
 	AI_GotoItem (self, item);
 	

@@ -299,7 +299,7 @@ FUNC VOID DIA_Dyrian_HelloAgain_Info()
 	AI_Output (self ,other,"DIA_Dyrian_HelloAgain_13_01"); //Och - wybacz, Mistrzu - nie chcia³em siê narzucaæ.
 	AI_Output (self ,other,"DIA_Dyrian_HelloAgain_13_02"); //Dziêkujê z ca³ego serca za umo¿liwienie mi pozostania w klasztorze. Od dziœ moje ¿ycie siê zmieni...
 	
-	B_GivePlayerXP (XP_Ambient); 	
+	B_GivePlayerXP(50);
 	AI_StopProcessInfos (self); 
 };
 

@@ -18,7 +18,7 @@ func void B_AssignDementorTalk_Ritual ()
 		MIS_SCKnowsInnosEyeIsBroken  = TRUE;
 		B_LogEntry (TOPIC_INNOSEYE, "Te wredne draby zaczynaj¹ mnie denerwowaæ. Zniszczyli Oko Innosa. Nie mam zielonego pojêcia, jak je naprawiæ.");
  		B_LogEntry (TOPIC_TraitorPedro, "Znalaz³em Oko Innosa, ale nie natkn¹³em siê jak do tej pory na ¿aden œlad Pedra. Ci czarni magowie najwyraŸniej siê z nim jakoœ porozumieli.");
-		B_GivePlayerXP (XP_Bonus_5);
+		B_GivePlayerXP(500);
 	}
 	else
 	{

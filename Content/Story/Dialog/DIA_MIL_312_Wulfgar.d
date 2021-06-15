@@ -143,8 +143,8 @@ func void DIA_Wulfgar_CanYouTrain_Info ()
 {
 	AI_Output (other, self, "DIA_Wulfgar_CanYouTrain_15_00"); //Czy mo¿esz mnie trenowaæ w walce mieczem?
 	AI_Output (self, other, "DIA_Wulfgar_CanYouTrain_04_01"); //Lord Andre nakaza³, byœmy trenowali wszystkich, którzy s³u¿¹ sprawie miasta.
-	if (other.guild == GIL_SLD)
-	|| (other.guild == GIL_DJG)
+	
+	if (other.guild == GIL_SLD) || (other.guild == GIL_DJG)
 	{
 		AI_Output (self, other, "DIA_Wulfgar_CanYouTrain_04_02"); //Jest jednak pewien wyj¹tek - najemnicy. Wynocha.
 	}
@@ -156,7 +156,7 @@ func void DIA_Wulfgar_CanYouTrain_Info ()
 		AI_Output (self, other, "DIA_Wulfgar_CanYouTrain_04_06"); //W porz¹dku, zaczniemy, kiedy bêdziesz chcia³.
 		Log_CreateTopic (Topic_CityTeacher, LOG_NOTE);
 		B_LogEntry (Topic_CityTeacher, "Wulfgar, stra¿nik miejski, mo¿e mnie nauczyæ walki orê¿em jedno- i dwurêcznym.");
-		Wulfgar_Teach1H = TRUE;	
+		self.aivar[AIV_CanTeach] = true;
 	};
 };
 
@@ -175,7 +175,7 @@ instance DIA_Wulfgar_Advantage		(C_INFO)
 
 func int DIA_Wulfgar_Advantage_Condition ()
 {
-	if (Wulfgar_Teach1H == TRUE)
+	if (self.aivar[AIV_CanTeach] == true)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -204,7 +204,7 @@ instance DIA_Wulfgar_HowToBegin	(C_INFO)
 
 func int DIA_Wulfgar_HowToBegin_Condition ()
 {
-	if (Wulfgar_Teach1H == TRUE)
+	if (self.aivar[AIV_CanTeach] == true)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -231,14 +231,14 @@ INSTANCE DIA_Wulfgar_Teach(C_INFO)
 	nr			= 7;
 	condition	= DIA_Wulfgar_Teach_Condition;
 	information	= DIA_Wulfgar_Teach_Info;
-	permanent	= TRUE;
+	permanent	= FALSE;
 	description = "Zacznijmy trening.";
 };                       
 
 FUNC INT DIA_Wulfgar_Teach_Condition()
 {
-	if (Wulfgar_Teach1H == TRUE)
-	|| (other.guild == GIL_MIL)
+	if (self.aivar[AIV_CanTeach] == true)
+	&& (other.guild == GIL_SLD || other.guild == GIL_DJG)
 	{
 		return TRUE;
 	};	
@@ -247,81 +247,7 @@ FUNC INT DIA_Wulfgar_Teach_Condition()
 FUNC VOID DIA_Wulfgar_Teach_Info()
 {	
 	AI_Output (other,self ,"DIA_Wulfgar_Teach_15_00"); //Zacznijmy trening.
-	
-	if (other.guild == GIL_SLD)
-	|| (other.guild == GIL_DJG)
-	{
-		AI_Output (self, other, "DIA_Wulfgar_Add_04_00"); //Nie trenujê najemników!
-	}
-	else
-	{
-		if (other.guild == GIL_KDF)
-		{
-			AI_Output (self, other, "DIA_Wulfgar_Add_04_01"); //Oczywiœcie, wielebny.
-		};
-		
-		Info_ClearChoices 	(DIA_Wulfgar_Teach);
-		Info_AddChoice 		(DIA_Wulfgar_Teach,	DIALOG_BACK		,DIA_Wulfgar_Teach_Back);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Wulfgar_Teach_2H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))		,DIA_Wulfgar_Teach_2H_5);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Wulfgar_Teach_1H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Wulfgar_Teach_1H_5);
-	};
-};
-
-FUNC VOID DIA_Wulfgar_Teach_Back ()
-{
-	Info_ClearChoices (DIA_Wulfgar_Teach);
-};
-
-FUNC VOID DIA_Wulfgar_Teach_1H_1 ()
-{
-	if B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 1, 75)
-	{
-		Info_ClearChoices 	(DIA_Wulfgar_Teach);
-		Info_AddChoice 		(DIA_Wulfgar_Teach,	DIALOG_BACK		,DIA_Wulfgar_Teach_Back);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Wulfgar_Teach_2H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))		,DIA_Wulfgar_Teach_2H_5);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Wulfgar_Teach_1H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Wulfgar_Teach_1H_5);
-	};
-};
-FUNC VOID DIA_Wulfgar_Teach_1H_5 ()
-{
-	if B_TeachFightTalentPercent (self, other, NPC_TALENT_1H, 5, 75)
-	{
-		Info_ClearChoices 	(DIA_Wulfgar_Teach);
-		Info_AddChoice 		(DIA_Wulfgar_Teach,	DIALOG_BACK		,DIA_Wulfgar_Teach_Back);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Wulfgar_Teach_2H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Wulfgar_Teach_2H_5);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Wulfgar_Teach_1H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Wulfgar_Teach_1H_5);
-	};	
-};
-
-FUNC VOID DIA_Wulfgar_Teach_2H_1 ()
-{
-	if B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 75)
-	{
-		Info_ClearChoices 	(DIA_Wulfgar_Teach);
-		Info_AddChoice 		(DIA_Wulfgar_Teach,	DIALOG_BACK		,DIA_Wulfgar_Teach_Back);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Wulfgar_Teach_2H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Wulfgar_Teach_2H_5);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Wulfgar_Teach_1H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Wulfgar_Teach_1H_5);
-	};
-};
-FUNC VOID DIA_Wulfgar_Teach_2H_5 ()
-{
-	if B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 75)
-	{
-		Info_ClearChoices 	(DIA_Wulfgar_Teach);
-		Info_AddChoice 		(DIA_Wulfgar_Teach,	DIALOG_BACK		,DIA_Wulfgar_Teach_Back);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h1	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))			,DIA_Wulfgar_Teach_2H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn2h5	, B_GetLearnCostTalent(other, NPC_TALENT_2H, 5))			,DIA_Wulfgar_Teach_2H_5);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h1	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 1))			,DIA_Wulfgar_Teach_1H_1);
-		Info_AddChoice		(DIA_Wulfgar_Teach, B_BuildLearnString(PRINT_Learn1h5	, B_GetLearnCostTalent(other, NPC_TALENT_1H, 5))			,DIA_Wulfgar_Teach_1H_5);
-	};	
+	AI_Output (self, other, "DIA_Wulfgar_Add_04_00"); //Nie trenujê najemników!
 };
 
 // ************************************************************
@@ -368,7 +294,7 @@ instance DIA_Wulfgar_Bonus		(C_INFO)
 	important	 = 	TRUE;
 };
 
-func int DIA_Wulfgar_Bonus_Condition ()
+func int DIA_Wulfgar_Bonus_Condition()
 {
 	if Npc_IsInState (self, ZS_Talk)
 	&& (Wld_IsTime (05,02,06,54))

@@ -72,7 +72,7 @@ FUNC VOID DIA_GornOW_Hello_Info()
 	Npc_ExchangeRoutine	(self,"FREE"); 
 	B_StartOtherRoutine (Milten,"GORNFREE");
 	MIS_RescueGorn = LOG_SUCCESS;
-	B_GivePlayerXP (XP_RescueGorn);
+	B_GivePlayerXP(500);
 };
 
 // ************************************************************

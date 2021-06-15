@@ -36,7 +36,6 @@ STORY\Log_Entries\Log_Constants_*.d
 STORY\Log_Entries\B_CloseTopic.d
 STORY\Log_Entries\B_CloseTopics_*.d
 STORY\Log_Entries\B_Checklog.d
-STORY\XP_Constants.d
 
 MOD\MOD_Bars.d
 MOD\MOD_BodyStates.d
@@ -53,12 +52,9 @@ MOD\MOD_HeroReset.d
 MOD\MOD_Missions.d
 MOD\MOD_SelfFightTeach.d
 
-STORY\Npc_Scripts\B_NpcFunctions.d
-
 STORY\B_Story\B_RaiseAttribute.d
 STORY\B_Story\B_LogEntry.d
 STORY\B_Story\B_GetDayPlus.d
-STORY\B_Story\B_BlessAttribute.d
 STORY\B_Story\B_StartOtherRoutine.d
 STORY\B_Story\B_KillOrRemoveNpc.d
 STORY\B_Story\B_PlayerMap.d
@@ -193,7 +189,6 @@ AI\HUMAN\TA_Human\ZS*.d
 
 STORY\Dialog_Mobsis\*.d
 
-STORY\Npc_Scripts\B_SetMonsterAttributes.d
 STORY\Npc_Scripts\B_SetAttributesToLevel.d
 STORY\Npc_Scripts\B_SetNpcVisual.d
 STORY\Npc_Scripts\Npc_Default.d
@@ -237,9 +232,6 @@ STORY\G_Functions\G_CanNotUse.d
 STORY\G_Functions\G_CanSteal.d
 STORY\G_Functions\G_PickLock.d
 
-STORY\B_Story\B_TeachFightTalentPercent.d
-STORY\B_Story\B_TeachMagicCircle.d
-STORY\B_Story\B_TeachThiefTalent.d
 STORY\B_Story\B_InitGuildAttitudes.d
 STORY\B_Story\B_NPC_IsAliveCheck.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk_Main.d

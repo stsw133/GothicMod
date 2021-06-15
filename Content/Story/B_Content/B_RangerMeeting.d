@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	B_RangerMeeting
-//******************************************************************************************
+///******************************************************************************************
+///	B_RangerMeeting
+///******************************************************************************************
 func void B_MakeRangerReadyForMeeting (VAR C_NPC Ranger)	
 {				
 	//CreateInvItems (Ranger, ITAR_WaterRanger, 1);
@@ -8,14 +8,16 @@ func void B_MakeRangerReadyForMeeting (VAR C_NPC Ranger)
 	//AI_EquipArmor (Ranger, ITAR_WaterRanger);
 	Ranger.npctype = NPCTYPE_FRIEND;
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_MakeRangerReadyToLeaveMeeting (VAR C_NPC Ranger)
 {
 	//AI_UnequipArmor(Ranger);
 	//Npc_RemoveInvItems (Ranger, ITAR_WaterRanger, Npc_HasItems(Ranger, ITAR_WaterRanger));
 	//AI_EquipBestArmor(Ranger);
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_MakeRangerReadyForMeetingALL()
 {
 	B_MakeRangerReadyForMeeting(Martin);
@@ -25,7 +27,8 @@ func void B_MakeRangerReadyForMeetingALL()
 	B_MakeRangerReadyForMeeting(Orlan);
 	B_MakeRangerReadyForMeeting(Cavalorn);
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_MakeRangerReadyToLeaveMeetingALL()
 {
 	B_MakeRangerReadyToLeaveMeeting(Martin);
@@ -35,7 +38,8 @@ func void B_MakeRangerReadyToLeaveMeetingALL()
 	B_MakeRangerReadyToLeaveMeeting(Orlan);
 	B_MakeRangerReadyToLeaveMeeting(Cavalorn);
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_Addon_Orlan_RangersReadyForComing()
 {
 	if (MIS_Addon_Cavalorn_GetOrnamentFromPAL != 0)
@@ -47,7 +51,8 @@ func void B_Addon_Orlan_RangersReadyForComing()
 	B_StartOtherRoutine (Cord, "PreRangerMeeting");
 	B_StartOtherRoutine (Gaan, "PreRangerMeeting");
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_Addon_Orlan_ComingRanger()
 {
 	if (MIS_Addon_Cavalorn_GetOrnamentFromPAL != 0)
@@ -62,7 +67,8 @@ func void B_Addon_Orlan_ComingRanger()
 	
 	RangerMeetingRunning = LOG_RUNNING;
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_RangerMeetingParking()
 {
 	if (MIS_Addon_Cavalorn_GetOrnamentFromPAL != 0)
@@ -94,7 +100,8 @@ func void B_RangerMeetingParking()
 		B_StartOtherRoutine (Martin, "Parking");
 	};
 };
-//******************************************************************************************
+
+///******************************************************************************************
 func void B_SchlussMitRangerMeeting()
 {
 	if (MIS_Addon_Cavalorn_GetOrnamentFromPAL != 0)
@@ -115,10 +122,14 @@ func void B_SchlussMitRangerMeeting()
 	};
 
 	if (MIS_Addon_Martin_GetRangar == 0)
-	{	B_StartOtherRoutine (Martin, "PreStart");	}
+	{
+		B_StartOtherRoutine (Martin, "PreStart");
+	}
 	else
-	{	B_StartOtherRoutine (Martin, "Start");	};
+	{
+		B_StartOtherRoutine (Martin, "Start");
+	};
 
-	B_StartOtherRoutine	(Orlan,"Start");
+	B_StartOtherRoutine	(Orlan, "Start");
 	Lares_HaltsMaul = LOG_OBSOLETE;
 };

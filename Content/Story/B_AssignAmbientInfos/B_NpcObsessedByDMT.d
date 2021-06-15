@@ -159,7 +159,7 @@ func void B_NpcObsessedByDMT (VAR C_NPC medium)
 				};
 			};
 			
-			B_GivePlayerXP (XP_BONUS_4);
+			B_GivePlayerXP(400);
 		}
 	else
 		{

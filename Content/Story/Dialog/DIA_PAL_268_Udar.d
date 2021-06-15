@@ -98,8 +98,8 @@ INSTANCE DIA_Udar_TeachMe (C_INFO)
 
 FUNC INT DIA_Udar_TeachMe_Condition()
 {
-	IF ((Npc_KnowsInfo (other,DIA_Udar_YouAreBest))
-	&& (Udar_TeachPlayer != TRUE))
+	IF (Npc_KnowsInfo(other,DIA_Udar_YouAreBest))
+	&& (self.aivar[AIV_CanTeach] == false)
 	{
 		return 1;
 	};
@@ -140,90 +140,10 @@ FUNC VOID DIA_Udar_ImGood_Info()
 	AI_Output	(self ,other,"DIA_Udar_ImGood_09_01");	//Masz racjê!
 	AI_Output	(self ,other,"DIA_Udar_ImGood_09_02");	//No có¿, skoro chcesz siê uczyæ, to ci pomogê.
 	
-	Udar_TeachPlayer = TRUE;
+	self.aivar[AIV_CanTeach] = true;
 	B_LogEntry		(TOPIC_Teacher_OC, "Udar mo¿e mnie nauczyæ, jak pos³ugiwaæ siê kusz¹."); 
 };
 
-//***********************************
-//	Bring mir was bei
-//***********************************
-
-INSTANCE DIA_Udar_Teach (C_INFO)
-{
-	npc			= PAL_268_Udar;
-	nr			= 3;
-	condition	= DIA_Udar_Teach_Condition;
-	information	= DIA_Udar_Teach_Info;
-	permanent	= TRUE;
-	Description = "Chcê siê od ciebie uczyæ.";
-};                       
-
-FUNC INT DIA_Udar_Teach_Condition()
-{
-	IF (Udar_TeachPlayer== TRUE)
-	{
-		return 1;
-	};
-};
- 
-FUNC VOID DIA_Udar_Teach_Info()
-{	
-	AI_Output	(other,self ,"DIA_Udar_Teach_15_00");	//Chcê siê od ciebie uczyæ.
-	AI_Output	(self ,other,"DIA_Udar_Teach_09_01");   //Dobra, strzelaj.
-	
-	Info_ClearChoices (DIA_Udar_Teach);
-	
-	Info_AddChoice		(DIA_Udar_Teach,DIALOG_BACK,DIA_Udar_Teach_Back);
-	Info_AddChoice		(DIA_Udar_Teach, B_BuildLearnString(PRINT_LearnCrossBow1, 			B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))			,DIA_Udar_Teach_CROSSBOW_1);
-	Info_AddChoice		(DIA_Udar_Teach, B_BuildLearnString(PRINT_LearnCrossBow5, 			B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))			,DIA_Udar_Teach_CROSSBOW_5);
-};
-
-FUNC VOID DIA_Udar_Teach_BACK()
-{
-	Info_ClearChoices (DIA_Udar_Teach);
-};
-
-FUNC VOID B_Udar_TeachNoMore1 ()
-{
-	AI_Output(self,other,"B_Udar_TeachNoMore1_09_00"); //Znasz ju¿ podstawy. Nie mamy czasu na wiêcej.
-};
-
-FUNC VOID B_Udar_TeachNoMore2 ()
-{
-	AI_Output(self,other,"B_Udar_TeachNoMore2_09_00"); //Aby sprawniej w³adaæ broni¹, musisz znaleŸæ odpowiedniego nauczyciela.
-};
-
-FUNC VOID DIA_Udar_Teach_Crossbow_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 1, 60);
-	
-	if (other.HitChance[NPC_TALENT_CROSSBOW] >= 60)
-	{
-		B_Udar_TeachNoMore1 ();
-		
-		if (Npc_GetTalentSkill (other, NPC_TALENT_CROSSBOW) == 1)
-		{
-			B_Udar_TeachNoMore2 ();
-		};
-	};
-	Info_AddChoice		(DIA_Udar_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))			,DIA_Udar_Teach_Crossbow_1);
-};
-
-FUNC VOID DIA_Udar_Teach_Crossbow_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 5, 60);
-	
-	if (other.HitChance[NPC_TALENT_CROSSBOW] >= 60)
-	{
-		B_Udar_TeachNoMore1 ();
-	
-		if (Npc_GetTalentSkill (other, NPC_TALENT_CROSSBOW) == 1)
-		{
-			B_Udar_TeachNoMore2 ();
-		};
-	};
-	Info_AddChoice		(DIA_Udar_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))			,DIA_Udar_Teach_Crossbow_5);
-};
 //***********************************
 //	Perm
 //***********************************
@@ -278,9 +198,8 @@ FUNC VOID DIA_Udar_Ring_Info()
 	
 	B_GiveInvItems (other,self,ItRi_Tengron,1);
 	TengronRing = TRUE;
-	B_GivePlayerXP (XP_TengronRing);
+	B_GivePlayerXP(150);
 };
-
 
 //#####################################################################
 //##
@@ -420,7 +339,7 @@ func void DIA_Udar_SENGRATHGEFUNDEN_Info ()
 	AI_Output			(self, other, "DIA_Udar_SENGRATHGEFUNDEN_09_04"); //Przeklêty g³upiec. Wiedzia³em, ¿e tak bêdzie. Wszyscy zginiemy.
 
 	TOPIC_END_Sengrath_Missing = TRUE;
-	B_GivePlayerXP (XP_SengrathFound);
+	B_GivePlayerXP(600);
 };
 
 ///////////////////////////////////////////////////////////////////////

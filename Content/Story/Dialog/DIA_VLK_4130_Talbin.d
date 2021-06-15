@@ -538,7 +538,7 @@ func void DIA_Talbin_FOUNDENGROM_Info ()
 	Log_SetTopicStatus(TOPIC_Talbin_Runs, LOG_RUNNING);
 	B_LogEntry (TOPIC_Talbin_Runs,"Talbin, myœliwy z Górniczej Doliny, pobieg³ w stronê prze³êczy, jakby œciga³y go ca³e chmary krwiopijców. S¹dzê, ¿e skieruje siê do Khorinis."); 
 
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(200);
 	Npc_ExchangeRoutine	(self,"FleePass");
 	Wld_InsertNpc	(Snapper, "START");
 	Talbin_Runs = TRUE;

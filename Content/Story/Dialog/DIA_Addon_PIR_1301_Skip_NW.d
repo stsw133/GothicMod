@@ -187,7 +187,7 @@ func void DIA_Addon_Skip_BaltramPaket_Info ()
 	AI_Output	(self, other, "DIA_Addon_Skip_BaltramPaket_08_05"); //Daj mu dwie butelki. Powinno wystarczyæ.
 	CreateInvItems (self, ItFo_Addon_Rum, 2);									
 	B_GiveInvItems (self, other, ItFo_Addon_Rum, 2);		
-	B_GivePlayerXP (XP_Addon_Skip_BaltramPaket);
+	B_GivePlayerXP(100);
 
 	B_LogEntry (TOPIC_Addon_BaltramSkipTrade,LogText_Addon_SkipsRumToBaltram); 
 	Skip_Rum4Baltram = TRUE;
@@ -265,7 +265,7 @@ func void DIA_Addon_Skip_SCSawGreg_Info ()
 	AI_Output	(self, other, "DIA_Addon_Skip_SCSawGreg_08_03"); //Niemo¿liwe. Nie znam ¿adnych szczurów l¹dowych.
 	AI_Output	(other, self, "DIA_Addon_Skip_SCSawGreg_15_04"); //Ale...
 	AI_Output	(self, other, "DIA_Addon_Skip_SCSawGreg_08_05"); //Daj mi spokój. Nie obchodzi mnie to.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(50);
 };
 
 ///////////////////////////////////////////////////////////////////////

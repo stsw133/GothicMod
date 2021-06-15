@@ -80,7 +80,7 @@ func void DIA_Oric_Bruder_Info ()
 	AI_Output (self, other, "DIA_Oric_Bruder_11_05"); //Ta wiadomoœæ przeszy³a me serce jak strza³a. Jedynie w modlitwie odnajdê si³ê.
 	OricBruder = TRUE;
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 };
 
 	
@@ -519,7 +519,7 @@ FUNC VOID DIA_Oric_HoshDead_Info()
 	AI_Output (self ,other,"DIA_Oric_HoshDead_11_02"); //Mam nadziejê, ¿e to wydarzenie pozwoli nam nadrobiæ straty ostatniego tygodnia.
 	
 	MIS_KillHoshPak = LOG_SUCCESS;
-	B_GivePlayerXP (XP_KillHosh_Pak);
+	B_GivePlayerXP(600);
 };
 
 

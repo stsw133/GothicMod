@@ -627,7 +627,7 @@ func VOID DIA_Addon_Henry_Turmbanditen_WhatFor_Info()
 		
 		B_LogEntry (TOPIC_Addon_BanditsTower,"Bandyci w wie¿y nie ¿yj?");
 		
-		B_GivePlayerXP (XP_Addon_Henry_FreeBDTTower);
+		B_GivePlayerXP(200);
 	}
 	else if (MIS_Henry_FreeBDTTower == LOG_RUNNING)
 	{
@@ -860,7 +860,7 @@ func void DIA_Addon_Henry_Owen2_Info ()
 		
 		MIS_Henry_HolOwen = LOG_SUCCESS;
 		
-		B_GivePlayerXP (XP_Addon_Owen_ComesToHenry);
+		B_GivePlayerXP(300);
 	}
 	else
 	{
@@ -924,7 +924,7 @@ INSTANCE DIA_Addon_Henry_WhatTeach(C_INFO)
 FUNC INT DIA_Addon_Henry_WhatTeach_Condition()
 {
 	if (Knows_HenrysEntertrupp == TRUE)
-	&& (Henry_Addon_TeachPlayer == FALSE)
+	&& (self.aivar[AIV_CanTeach] == false)
 	{
 		return TRUE;
 	};	
@@ -942,128 +942,12 @@ FUNC VOID DIA_Addon_Henry_WhatTeach_Info()
 	else
 	{
 		AI_Output (self ,other,"DIA_Addon_Henry_WhatTeach_Add_04_03"); //Pewnie, czemu nie?
-		Henry_Addon_TeachPlayer = TRUE;
+		self.aivar[AIV_CanTeach] = true;
 		
 		Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 		B_LogEntry (Topic_Addon_PIR_Teacher,Log_Text_Addon_HenryTeach);
 	};
 };
-
-// ------------------------------------------------------------
-// 		  					Teach 2h
-// ------------------------------------------------------------
-var int Henry_merke2h;
-var int Henry_Labercount;
-// ------------------------------------------------------------
-func VOID B_Henry_CommentFightSkill ()
-{
-	if (Henry_Labercount == 0)
-	{
-		AI_Output (self,other,"DIA_Addon_Henry_CommentFightSkill_04_01"); //Szybko si?uczysz, zupe³nie jak prawdziwy pirat.
-		Henry_Labercount = 1;
-	}
-	else if (Henry_Labercount == 1)
-	{
-		AI_Output (self,other,"DIA_Addon_Henry_CommentFightSkill_04_02"); //Jeœli tak dalej pójdzie, to sam bêdziesz si?rwa?do aborda¿y.
-		Henry_Labercount = 2;
-	}
-	else if (Henry_Labercount == 2)
-	{
-		AI_Output (self,other,"DIA_Addon_Henry_CommentFightSkill_04_03"); //Pamiêtaj, ¿e najd³u¿ej ¿yj?ci, którzy opanowali sztuk?parowania.
-		Henry_Labercount = 0;
-	};
-};
-// ------------------------------------------------------------
-instance DIA_Addon_Henry_Teach(C_INFO)
-{
-	npc			= PIR_1354_Addon_Henry;
-	nr			= 6;
-	condition	= DIA_Addon_Henry_Teach_Condition;
-	information	= DIA_Addon_Henry_Teach_Info;
-	permanent	= TRUE;
-	description	= "Ucz mnie.";
-};                       
-FUNC INT DIA_Addon_Henry_Teach_Condition()
-{
-	if (Henry_Addon_TeachPlayer == TRUE)
-	{
-		return TRUE;
-	};	
-};
-func VOID DIA_Addon_Henry_Teach_Info()
-{	
-	AI_Output (other,self ,"DIA_Addon_Henry_Teach_15_00"); //Ucz mnie.
-					
-	Henry_merke2h = other.HitChance[NPC_TALENT_2H];  
-	
-	Info_ClearChoices 	(DIA_Addon_Henry_Teach);
-	Info_AddChoice 		(DIA_Addon_Henry_Teach,	DIALOG_BACK		,DIA_Addon_Henry_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h1		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Addon_Henry_Teach_2H_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h5		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)*5)		,DIA_Addon_Henry_Teach_2H_5);	
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))	,DIA_Addon_Henry_Teach_CB_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))	,DIA_Addon_Henry_Teach_CB_5);
-};
-FUNC VOID DIA_Addon_Henry_Teach_Back()
-{
-	if (other.HitChance[NPC_TALENT_2H] > Henry_Merke2h)
-	{
-		B_Henry_CommentFightSkill ();
-	}
-	else if  (other.HitChance[NPC_TALENT_2H] >= 90)
-	{
-		AI_Output (self ,other,"DIA_Addon_Henry_Teach_Back_04_00"); //Masz przed sob?du¿o nauki.
-	};
-	Info_ClearChoices (DIA_Addon_henry_Teach);
-};
-
-func void DIA_Addon_Henry_Teach_CB_1 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 1, 75);
-	
-	Info_ClearChoices 	(DIA_Addon_Henry_Teach);
-	Info_AddChoice 		(DIA_Addon_Henry_Teach,	DIALOG_BACK		,DIA_Addon_Henry_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h1		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Addon_Henry_Teach_2H_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h5		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)*5)		,DIA_Addon_Henry_Teach_2H_5);	
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))	,DIA_Addon_Henry_Teach_CB_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))	,DIA_Addon_Henry_Teach_CB_5);
-};
-
-func void DIA_Addon_Henry_Teach_CB_5 ()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_CROSSBOW, 5, 75);
-	
-	Info_ClearChoices 	(DIA_Addon_Henry_Teach);
-	Info_AddChoice 		(DIA_Addon_Henry_Teach,	DIALOG_BACK		,DIA_Addon_Henry_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h1		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Addon_Henry_Teach_2H_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h5		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)*5)		,DIA_Addon_Henry_Teach_2H_5);	
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))	,DIA_Addon_Henry_Teach_CB_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))	,DIA_Addon_Henry_Teach_CB_5);
-};
-
-func VOID DIA_Addon_Henry_Teach_2H_1()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 1, 90);
-
-	Info_ClearChoices 	(DIA_Addon_Henry_Teach);
-	Info_AddChoice 		(DIA_Addon_Henry_Teach,	DIALOG_BACK		,DIA_Addon_Henry_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h1		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Addon_Henry_Teach_2H_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h5		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)*5)		,DIA_Addon_Henry_Teach_2H_5);	
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))	,DIA_Addon_Henry_Teach_CB_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))	,DIA_Addon_Henry_Teach_CB_5);
-};
-FUNC VOID DIA_Addon_Henry_Teach_2H_5()
-{
-	B_TeachFightTalentPercent (self, other, NPC_TALENT_2H, 5, 90);
-		
-	Info_ClearChoices 	(DIA_Addon_Henry_Teach);
-	Info_AddChoice 		(DIA_Addon_Henry_Teach,	DIALOG_BACK		,DIA_Addon_Henry_Teach_Back);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h1		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1))		,DIA_Addon_Henry_Teach_2H_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_Learn2h5		, B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)*5)		,DIA_Addon_Henry_Teach_2H_5);	
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow1	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1))	,DIA_Addon_Henry_Teach_CB_1);
-	Info_AddChoice		(DIA_Addon_Henry_Teach, B_BuildLearnString(PRINT_LearnCrossBow5	, B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5))	,DIA_Addon_Henry_Teach_CB_5);
-};
-
-
 
 // ************************************************************
 // 		  						Greg
@@ -1127,10 +1011,3 @@ func VOID DIA_Addon_Henry_YourOwnTrupp_Info()
 	AI_Output (self ,other,"DIA_Addon_Henry_Add_04_05"); //Ch³opakom przyda si?troch?pracy!
 	AI_StopProcessInfos (self);
 };
-
-
-
-/*
-AI_Output (other,self ,"DIA_Addon_Henry_HenrysCrew_15_00"); //Wer gehört zu deinem Trupp?
-AI_Output (other,self ,"DIA_Addon_Henry_Morgan_15_00"); //Wo finde ich Morgan?
-*/

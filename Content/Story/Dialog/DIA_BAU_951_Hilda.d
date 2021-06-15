@@ -173,7 +173,7 @@ func void DIA_Hilda_BringBeet_Info ()
 		AI_Output (self, other, "DIA_Hilda_BringBeet_17_03"); //Chyba zatrzyma³ siê gdzieœ po drodze do miasta. ZnajdŸ go i zapytaj, czy nie ma dla mnie jakiejœ porz¹dnej patelni.
 				
 		MIS_Lobart_RuebenToHilda = LOG_SUCCESS;
-		B_GivePlayerXP (XP_Ambient);//damit der Logeintrag verschwindet
+		B_GivePlayerXP(50);
 	}
 	else
 	{
@@ -264,9 +264,7 @@ func void DIA_Hilda_PfanneGeholt_Info ()
 	AI_Output (self, other, "DIA_Hilda_PfanneGeholt_17_01"); //Dobrze. Wypróbujmy j¹...
 	
 	MIS_Hilda_PfanneKaufen = LOG_SUCCESS;
-	B_GivePlayerXP (XP_HildaHolPfanne);
-	
-	
+	B_GivePlayerXP(50);
 };
 
 
@@ -313,8 +311,7 @@ func void DIA_Hilda_PfanneTooLate_Info ()
 		AI_Output (self, other, "DIA_Hilda_PfanneTooLate_17_03"); //Daj j¹ tutaj wreszcie. Coœ niebywa³ego!
 	
 		MIS_Hilda_PfanneKaufen = LOG_SUCCESS;
-		B_GivePlayerXP (XP_HildaHolPfanne/2);
-		
+		B_GivePlayerXP(25);
 		
 		AI_StopProcessInfos(self);
 	}
@@ -500,7 +497,7 @@ func void DIA_Hilda_HEILUNGBRINGEN_Info ()
 	CreateInvItems 		(self, ItMi_Gold, 50);									
 	B_GiveInvItems 		(self, other, ItMi_Gold, 50);	
 	MIS_HealHilda = LOG_SUCCESS;
-	B_GivePlayerXP (XP_HealHilda);
+	B_GivePlayerXP(300);
 	AI_StopProcessInfos (self);
 };
 

@@ -10,6 +10,6 @@ func void EVT_VINOSKELLEREI_FUNC_S1()
 	if (!FoundVinosKellerei)
 	{
 		FoundVinosKellerei = true;
-		B_GivePlayerXP(XP_BONUS_4);
+		B_GivePlayerXP(400);
 	};
 };

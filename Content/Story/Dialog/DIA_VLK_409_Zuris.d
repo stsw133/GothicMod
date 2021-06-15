@@ -294,15 +294,5 @@ FUNC VOID DIA_Zuris_Minenanteil_Info()
 	AI_Output (other, self, "DIA_Zuris_Minenanteil_15_00"); //To ty sprzedajesz udzia³y w kopalni?
 	AI_Output (self, other, "DIA_Zuris_Minenanteil_14_01"); //Tak, choæ sam nie wiem dlaczego. Ostatni raz da³em siê wpl¹taæ w interes tak w¹tpliwej natury.
 	
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(150);
 };	
-
-
-
-
-
-
-
-
-
-

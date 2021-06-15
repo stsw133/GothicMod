@@ -50,7 +50,7 @@ func int B_TeachTalents (var C_NPC slf, var C_NPC oth, var int talent, var int l
 	else if (talent == NPC_TALENT_ACROBATIC)
 	&& (oth.attribute[ATR_DEXTERITY] < 200)
 	{
-		PrintScreen (ConcatStrings(IntToString(150 - oth.attribute[ATR_DEXTERITY]), PRINT_DEXTERITY_MISSING), -1, -1, FONT_ScreenSmall, 2);
+		PrintScreen (ConcatStrings(IntToString(200 - oth.attribute[ATR_DEXTERITY]), PRINT_DEXTERITY_MISSING), -1, -1, FONT_ScreenSmall, 2);
 		return false;
 	};
 	
@@ -161,11 +161,23 @@ func int B_TeachTalents (var C_NPC slf, var C_NPC oth, var int talent, var int l
 		PrintScreen (PRINT_LearnTalent_Persuasion, -1, -1, FONT_Screen, 2);
 	}
 	/// CRAFT
+	else if (talent == NPC_TALENT_JEWELERY)
+	{
+		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_1, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_2, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_3, -1, -1, FONT_SCREEN, 2);	};
+	}
 	else if (talent == NPC_TALENT_SMITH)
 	{
 		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Smith_1, -1, -1, FONT_SCREEN, 2);	}
 		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Smith_2, -1, -1, FONT_SCREEN, 2);	}
 		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Smith_3, -1, -1, FONT_SCREEN, 2);	};
+	}
+	else if (talent == NPC_TALENT_ENCHANTING)
+	{
+		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_1, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_2, -1, -1, FONT_SCREEN, 2);	}
+		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_3, -1, -1, FONT_SCREEN, 2);	};
 	}
 	else if (talent == NPC_TALENT_ALCHEMY)
 	{
@@ -178,18 +190,6 @@ func int B_TeachTalents (var C_NPC slf, var C_NPC oth, var int talent, var int l
 		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Hunting_1, -1, -1, FONT_SCREEN, 2);	}
 		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Hunting_2, -1, -1, FONT_SCREEN, 2);	}
 		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Hunting_3, -1, -1, FONT_SCREEN, 2);	};
-	}
-	else if (talent == NPC_TALENT_JEWELERY)
-	{
-		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_1, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_2, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Jewelery_3, -1, -1, FONT_SCREEN, 2);	};
-	}
-	else if (talent == NPC_TALENT_ENCHANTING)
-	{
-		if		(level == 1)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_1, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 2)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_2, -1, -1, FONT_SCREEN, 2);	}
-		else if	(level == 3)	{	PrintScreen	(PRINT_LearnTalent_Enchanting_3, -1, -1, FONT_SCREEN, 2);	};
 	};
 	
 	return true;

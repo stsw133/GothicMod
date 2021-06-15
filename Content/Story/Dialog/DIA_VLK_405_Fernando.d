@@ -182,7 +182,7 @@ func void DIA_Addon_Fernando_BanditTrader_Info ()
 
 	B_LogEntry (TOPIC_Addon_BanditTrader,"Fernando, zamorski kupiec, przyzna³, ¿e dostarcza³ broñ bandytom."); 
 
-	B_GivePlayerXP (XP_Addon_Fernando_HatsZugegeben);
+	B_GivePlayerXP(100);
 	Fernando_HatsZugegeben = TRUE;
 
 	if	((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
@@ -257,7 +257,7 @@ func void DIA_Addon_Fernando_BanditTrader_preis ()
 func void DIA_Addon_Fernando_BanditTrader_ja ()
 { 
 	AI_Output			(other, self, "DIA_Addon_Fernando_BanditTrader_ja_15_00"); //Dobra, umowa stoi.
-	B_GivePlayerXP (XP_Ambient);
+	B_GivePlayerXP(100);
 	Npc_RemoveInvItems	(hero ,ItMw_Addon_BanditTrader, Npc_HasItems (other,ItMw_Addon_BanditTrader));
 	Npc_RemoveInvItem	(hero ,ItRi_Addon_BanditTrader);
 	Npc_RemoveInvItem	(hero ,ItWr_Addon_BanditTrader);
@@ -305,7 +305,7 @@ FUNC VOID DIA_Fernando_Success_Info()
 	if (Fernando_ImKnast == FALSE)
 	{
 		Fernando_Erz = TRUE;
-		B_GivePlayerXP (XP_Ambient);
+		B_GivePlayerXP(150);
 		
 		AI_Output (self ,other,"DIA_Fernando_Success_14_01"); //I co? Jak wygl¹da sytuacja?
 		AI_Output (other ,self,"DIA_Fernando_Success_15_02"); //Z³o¿a siê wyczerpa³y, nie warto prowadziæ prac dla kilku skrzyñ rudy.

@@ -283,7 +283,7 @@ FUNC VOID DIA_Addon_Garett_GiveKompass_Info()
 	
 	B_LogEntry (TOPIC_Addon_Kompass,"Garret by³ bardzo zadowolony, gdy odda³em mu kompas.");
 	MIS_Addon_Garett_BringKompass = LOG_SUCCESS;
-	B_GivePlayerXP (XP_ADDON_Garett_Bring_Kompass);
+	B_GivePlayerXP(300);
 };
 
 // ************************************************************

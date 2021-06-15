@@ -724,7 +724,7 @@ func void DIA_Parlan_Fegen_Info ()
 		AI_Output (self, other, "DIA_Parlan_Fegen_05_01"); //Widzê, ¿e uda³o ci siê znaleŸæ czterech pomocników. Myœlê, ¿e teraz mog¹ wróciæ do swych obowi¹zków.
 		AI_Output (self, other, "DIA_Parlan_Fegen_05_02"); //Dobra robota, nowicjuszu. Wype³ni³eœ powierzone ci przeze mnie zadanie.
 		MIS_ParlanFegen = LOG_SUCCESS; 
-		B_GivePlayerXP (XP_ParlanFegen);
+		B_GivePlayerXP(100);
 		DIA_Parlan_Fegen_permanent = TRUE;
 		
 		B_StartOtherRoutine (Feger1,"START");
@@ -884,120 +884,9 @@ func void DIA_Parlan_MAGE_Info ()
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_00"); //Z³o¿y³eœ przysiêgê, Bracie. Witaj w naszych szeregach.
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_01"); //O krêgach magii opowiem ci, kiedy zdobêdziesz wiêksze doœwiadczenie.
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_02"); //WeŸ ten kamieñ runiczny, to znak twojej mocy.
+	self.aivar[AIV_CanTeach] = true;
 	
 	B_GiveInvItems (self, other, Itmi_RunebLank,1);
-};
-///////////////////////////////////////////////////////////////////////
-//	Info TECH_CIRCLE_01
-///////////////////////////////////////////////////////////////////////
-instance DIA_Parlan_CIRCLE1		(C_INFO)
-{
-	npc			 = 	KDF_504_Parlan;
-	nr			 = 	99;
-	condition	 = 	DIA_Parlan_CIRCLE1_Condition;
-	information	 = 	DIA_Parlan_CIRCLE1_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"WprowadŸ mnie proszê do pierwszego krêgu magii.";
-};
-func int DIA_Parlan_CIRCLE1_Condition ()
-{	
-	if  Npc_KnowsInfo (hero,DIA_Parlan_MAGE)
-	&& (other.guild == GIL_KDF)
-	&& (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) == 0)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Parlan_CIRCLE1_Info ()
-{
-	AI_Output (other, self, "DIA_Parlan_TECH_CIRCLE1_15_00"); //WprowadŸ mnie proszê do pierwszego krêgu magii.
-	
-	if B_TeachMagicCircle (self, other, 1)
-	{
-		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE1_05_01"); //Magia pierwszego krêgu pozwala na u¿ywanie stworzonych przez siebie run.
-		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE1_05_02"); //Mo¿esz nauczyæ siê magicznych formu³ i samemu tworzyæ runy.
-		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE1_05_03"); //Ka¿dy z nas specjalizuje siê w jakimœ rodzaju magii. Zastanów siê wiêc dok³adnie, który z nich wybierzesz dla siebie.
-	};
-};	
-///////////////////////////////////////////////////////////////////////
-//	Info TECH_CIRCLE_02
-///////////////////////////////////////////////////////////////////////
-instance DIA_Parlan_CIRCLE2		(C_INFO)
-{
-	npc			 = 	KDF_504_Parlan;
-	nr			 = 	99;
-	condition	 = 	DIA_Parlan_CIRCLE2_Condition;
-	information	 = 	DIA_Parlan_CIRCLE2_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"WprowadŸ mnie w tajniki drugiego krêgu magii.";
-};
-func int DIA_Parlan_CIRCLE2_Condition ()
-{	
-	if  Npc_KnowsInfo (hero,DIA_Parlan_MAGE)
-	&& (other.guild == GIL_KDF)
-	&& (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) == 1)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Parlan_CIRCLE2_Info ()
-{
-	AI_Output (other, self, "DIA_Parlan_TECH_CIRCLE2_15_00"); //WprowadŸ mnie w tajniki drugiego krêgu magii.
-	
-	if (Kapitel >= 8)
-	{
-		if B_TeachMagicCircle (self, other, 2)
-		{
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE2_05_01"); //Poznasz teraz drugi kr¹g i nauczysz siê pos³ugiwaæ jeszcze potê¿niejsz¹ magi¹.
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE2_05_02"); //Pamiêtaj jednak o spoczywaj¹cej na tobie odpowiedzialnoœci. Nie wobec mnie czy Pyrokara - wobec samego Innosa.
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE2_05_03"); //To on wskazuje kierunek, jednak twoje czyny kszta³tuj¹ œcie¿kê, po której st¹pasz.
-		};
-	}
-	else
-	{
-		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE2_05_04"); //Nie nadszed³ jeszcze czas.
-	};
-};	
-///////////////////////////////////////////////////////////////////////
-//	Info TECH_CIRCLE_03
-///////////////////////////////////////////////////////////////////////
-instance DIA_Parlan_CIRCLE3		(C_INFO)
-{
-	npc			 = 	KDF_504_Parlan;
-	nr			 = 	99;
-	condition	 = 	DIA_Parlan_CIRCLE3_Condition;
-	information	 = 	DIA_Parlan_CIRCLE3_Info;
-	permanent	 = 	TRUE;
-	description	 = 	"WprowadŸ mnie w tajniki trzeciego krêgu magii.";
-};
-func int DIA_Parlan_CIRCLE3_Condition ()
-{	
-	if  Npc_KnowsInfo (hero,DIA_Parlan_MAGE)
-	&& (other.guild == GIL_KDF)
-	&& (Npc_GetTalentSkill (other, NPC_TALENT_MAGIC) == 2)
-	{
-		return TRUE;
-	};
-};
-func void DIA_Parlan_CIRCLE3_Info ()
-{
-	AI_Output (other, self, "DIA_Parlan_TECH_CIRCLE3_15_00"); //WprowadŸ mnie w tajniki trzeciego krêgu magii.
-	
-	if (Kapitel >= 9)
-	{
-		if B_TeachMagicCircle (self, other, 3)
-		{
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE3_05_01"); //Tak, najwy¿szy czas, byœ pozna³ trzeci kr¹g magii. Czekaj¹ na ciebie nowe zaklêcia.
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE3_05_02"); //Bêdziesz ich potrzebowa³. Z³o nie œpi, a jedynie potêga Innosa mo¿e je pokonaæ.
-			AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE3_05_03"); //Przekaza³em ci ju¿ wiedzê z zakresu wszystkich krêgów, jakie znam. Jeœli pragniesz poznaæ magiê wy¿szych Krêgów, porozmawiaj z Karasem.
-			
-			B_LogEntry (Topic_KlosterTeacher,"Brat Parlan zapozna³ mnie z pierwszymi trzema krêgami. Dalsze postêpy mogê poczyniæ dziêki Bratu Karrasowi.");
-		};
-	}
-	else
-	{
-		AI_Output (self, other, "DIA_Parlan_TECH_CIRCLE3_05_04"); //Nie nadszed³ jeszcze czas na to, byœ móg³ wkroczyæ do trzeciego krêgu.
-	};
 };
 
 //###########################################

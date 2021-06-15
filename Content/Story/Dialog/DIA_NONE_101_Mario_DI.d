@@ -82,7 +82,7 @@ FUNC VOID DIA_NONE_101_MARIO_DI_ambush_Info()
 	
 	Info_ClearChoices	(DIA_NONE_101_MARIO_DI_ambush);
 	Info_AddChoice	(DIA_NONE_101_MARIO_DI_ambush, DIALOG_ENDE, DIA_NONE_101_MARIO_DI_ambush_ambush );
-	B_GivePlayerXP (XP_Mario_Ambush);
+	B_GivePlayerXP(5000);
 	MIS_Mario_Ambush = LOG_SUCCESS;
 };
 

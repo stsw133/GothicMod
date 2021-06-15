@@ -1154,7 +1154,6 @@ var int Angar_DI_Party;				//Angar followt dem SC
 var int SC_InnosEyeVergessen_DI;    //Spieler hat das Ding nicht zur DI mitgenommen!
 var int SCFoundPedro;
 var int UndeadDragonIsDead;			//UndeadDragon ist tot
-var int DiegAndGornAreOnboard;		//fürs Video Extro_AllesWirdGut!
 
 
 //****************************
@@ -1320,8 +1319,5 @@ var int Bloodfly_Bonus;
 var int Player_KnowsDunkelpilzBonus;
 var int Skelett_Spawn;
 var int TruheSfx;
-var int GoblinGreen_Randomizer;
-var int GoblinBlack_Randomizer;
-var int Orc_Randomizer;
 
 var int CurrentLevel; 	//Newworld_zen, Oldworld_Zen, Dragonisland_zen -> Level in dem sich der Player befindet!

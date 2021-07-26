@@ -562,6 +562,14 @@ instance ITAR_Mag_B (ItemPR_Armor)
 	SetItArAttributes (self, 130,115,115,   0);	/// 49 level
 	description		=	"Szata mrocznego maga";
 };
+instance ITAR_Mag_D (ItemPR_Armor)
+{
+	name 			=	"Szata maga";
+	visual 			=	"ItAr_Kdw_H.3ds";
+	visual_change 	=	"Armor_Mag_D.asc";
+	SetItArAttributes (self, 130,115,115,   0);	/// 49 level
+	description		=	"Szata druida";
+};
 ///******************************************************************************************
 ///	TPL & PAL armors
 ///******************************************************************************************
@@ -672,53 +680,53 @@ instance ITAR_PAL_O (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	ASA & DEM armors
+///	AKO & PRI armors
 ///******************************************************************************************
-instance ITAR_ASA_L (ItemPR_Armor)
+instance ITAR_AKO_L (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_ASA_L.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Ako_L.asc";
 	SetItArAttributes (self, 35,10,10,   0);	/// 9 level
 	description		=	"Lekki pancerz zabójcy";
 };
-instance ITAR_ASA_M (ItemPR_Armor)
+instance ITAR_AKO_M (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_ASA_H.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Ako_M.asc";
 	SetItArAttributes (self, 55,20,20,   0);	/// 15 level
 	description		=	"Ciê¿ki pancerz zabójcy";
 };
-instance ITAR_ASA_H (ItemPR_Armor)
+instance ITAR_AKO_H (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_ASA_H.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Ako_M.asc";
 	SetItArAttributes (self, 75,30,30,   0);	/// 21 level
 	description		=	"Ciê¿ki pancerz zabójcy";
 };
-instance ITAR_DEM_L (ItemPR_Armor)
+instance ITAR_PRI_L (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_DEM_L.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Pri_L.asc";
 	SetItArAttributes (self, 115,75,75,   0);	/// 38 level
 	description		=	"Lekki pancerz dem. zabójcy";
 };
-instance ITAR_DEM_M (ItemPR_Armor)
+instance ITAR_PRI_M (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_DEM_M.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Pri_M.asc";
 	SetItArAttributes (self, 140,95,95,   0);	/// 47 level
 	description		=	"Œredni pancerz dem. zabójcy";
 };
-instance ITAR_DEM_H (ItemPR_Armor)
+instance ITAR_PRI_H (ItemPR_Armor)
 {
 	name 			=	"Pancerz zabójcy";
-	visual 			=	"ITAR_PIR_M_ADDON.3ds";
-	visual_change 	=	"Armor_DEM_H.asc";
+	visual 			=	"ITAR_AKO_L.3ds";
+	visual_change 	=	"Armor_Pri_M.asc";
 	SetItArAttributes (self, 165,115,115,   0);	/// 56 level
 	description		=	"Ciê¿ki pancerz dem. zabójcy";
 };
@@ -735,12 +743,19 @@ instance ITAR_Prisoner (ItemPR_Armor)
 ///******************************************************************************************
 ///	Ranger armors
 ///******************************************************************************************
+instance ITAR_Ranger (ItemPR_Armor)
+{
+	name 			=	"Zbroja Krêgu";
+	visual 			=	"ItAr_Ranger_ADDON.3ds";
+	visual_change 	=	"Armor_Ranger.asc";
+	SetItArAttributes (self, 50,10,10,   0);	/// 12 level
+};
 instance ITAR_WaterRanger (ItemPR_Armor)
 {
 	name 			=	"Zbroja Wodnego Krêgu";
 	visual 			=	"ItAr_Ranger_ADDON.3ds";
 	visual_change 	=	"Armor_Ranger.asc";
-	SetItArAttributes (self, 50,10,10,   0);	/// 12 level
+	SetItArAttributes (self, 50,10,10,   1);	/// 12 level
 };
 ///******************************************************************************************
 ///	Pirat armors
@@ -877,7 +892,7 @@ instance ITAR_Jarkhendar (ItemPR_Armor)
 	name 			=	"Zbroja Jarkhendaru";
 	visual 			=	"ItAr_Pal_H3.3ds";
 	visual_change 	=	"Armor_Jarkhendar.asc";
-	SetItArAttributes (self, 175,125,125,   0);	/// 60 level
+	SetItArAttributes (self, 175,125,125,   1);	/// 60 level
 	description		=	"Zbroja Jarkhendaru";
 	
 	material 		=	MAT_METAL;

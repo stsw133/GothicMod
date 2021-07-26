@@ -10,7 +10,7 @@ var int LearnedAttribute_HP;
 var int LearnedCraftTalent;
 
 ///******************************************************************************************
-func int B_GetLearnCostAttribute (var C_NPC oth, var int atr)
+func int B_GetLearnCostAttribute (var C_Npc oth, var int atr)
 {
 	var int kosten; kosten = 0;
 	
@@ -59,7 +59,7 @@ func int B_GetLearnCostAttribute (var C_NPC oth, var int atr)
 };
 
 ///******************************************************************************************
-func int B_GetLearnCostTalent (var C_NPC oth, var int talent, var int skill)
+func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 {
 	var int kosten; kosten = 0;
 	

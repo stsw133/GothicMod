@@ -24,7 +24,7 @@ func int C_AllCanyonRazorDead()
 };
 
 ///******************************************************************************************
-func int C_IAmCanyonRazor (var C_NPC slf)
+func int C_IAmCanyonRazor (var C_Npc slf)
 {
 	var C_NPC RAZ01; RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
 	var C_NPC RAZ02; RAZ02 = Hlp_GetNpc(CANYONRAZOR02);

@@ -30,23 +30,23 @@ instance ItMi_Gold (ItemPR_Coin)
 };
 instance ItMi_FortuneCoin (ItemPR_Coin)
 {
-	value 			=	3;
+	value 			=	2;
 	visual 			=	"ItMi_Coin_01.3DS";
 	description		= 	"Moneta fortuny";
 	COUNT[5]		= 	value;
 };
 instance ItMi_AncientCoin (ItemPR_Coin)
 {
-	value 			=	3;
+	value 			=	0;
 	visual 			=	"ItMi_Coin_02.3DS";
 	description		= 	"Moneta staro¿ytnych";
 	COUNT[5]		= 	value;
 };
 instance ItMi_OrcCoin (ItemPR_Coin)
 {
-	value 			=	3;
+	value 			=	0;
 	visual 			=	"ItMi_Coin_03.3DS";
-	description		= 	"Moneta orków";
+	description		= 	"Z³oto orków";
 	COUNT[5]		= 	value;
 };
 ///******************************************************************************************
@@ -616,6 +616,7 @@ prototype ItemPR_Nugget (C_Item)
 	flags					=	ITEM_MULTI;
 	material 				=	MAT_STONE;
 	TEXT[5]					= 	NAME_Value;
+	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
 };
 ///******************************************************************************************
 instance ItMi_IronNugget (ItemPR_Nugget)
@@ -656,17 +657,6 @@ instance ItMi_RedNugget (ItemPR_Nugget)
 	description		= 	"Czerwona magiczna ruda";
 	COUNT[5]		=	value;
 };
-instance ItMi_Zeitspalt_Addon (ItemPR_Nugget)
-{
-	name 			=	"Magiczna bry³ka";
-	value 			=	100;
-	visual 			=	"ItMi_Zeitspalt_Addon.3DS";
-	effect			=	"SPELLFX_FIRESWORDBLACK";
-	
-	description		= 	"Czarna magiczna ruda";
-	COUNT[5]		=	value;
-	INV_ZBIAS		=	INVCAM_ENTF_MISC_STANDARD;
-};
 ///******************************************************************************************
 instance ItMi_Coal (ItemPR_Nugget)
 {
@@ -681,7 +671,7 @@ instance ItMi_Coal (ItemPR_Nugget)
 instance ItMi_Quartz (ItemPR_Nugget)
 {
 	name 			=	"Kwarcyt";
-	value 			=	20;
+	value 			=	15;
 	visual 			=	"ItMi_Quartz.3ds";
 	
 	description		= 	name;
@@ -721,7 +711,7 @@ instance ItMi_Ink (ItemPR_Nugget)
 instance ItMi_Pitch (ItemPR_Nugget)
 {
 	name 			=	"Smo³a";
-	value 			=	10;
+	value 			=	15;
 	visual 			=	"ItMi_Pitch.3DS";
 	material 		=	MAT_GLAS;
 	
@@ -732,7 +722,7 @@ instance ItMi_Quicksilver (ItemPR_Nugget)
 {
 	name 			=	"Rtêæ";
 	value 			=	30;
-	visual 			=	"ItMi_PQuicksilver.3DS";
+	visual 			=	"ItMi_Quicksilver.3DS";
 	material 		=	MAT_GLAS;
 	
 	description		= 	name;
@@ -761,6 +751,9 @@ instance ItMi_DarkPearl (ItemPR_Nugget)
 	COUNT[5]		= 	value;
 	INV_ZBIAS		=	INVCAM_ENTF_MISC_STANDARD;
 };
+///******************************************************************************************
+var int Shell_Opener;
+
 instance ItMi_Shell (ItemPR_Misc)
 {
 	name 			=	"Muszla";
@@ -776,9 +769,6 @@ instance ItMi_Shell (ItemPR_Misc)
 	COUNT[5]		=	value;
 	INV_ZBIAS		=	INVCAM_ENTF_MISC2_STANDARD;
 };
-
-var int Shell_Opener;
-
 func void Use_Shell()
 {
 	Shell_Opener += 1;
@@ -844,7 +834,7 @@ instance ItMi_InnosStatue (ItemPR_Misc)
 	material 		=	MAT_METAL;
 	
 	scemeName		=	"FASTUSE";
-	on_state[0]		=	MOBSI_iMonologue_S1;
+	on_state[0]		=	MOBSI_LearnAttributes_S1;
 	
 	description		= 	name;
 	COUNT[5]		= 	value;
@@ -860,6 +850,7 @@ instance ItKe_LockPick (ItemPR_Misc)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+/*
 instance ItMi_MagicStone (ItemPR_Misc)
 {
 	name 			=	"Kamieñ zaklinania";
@@ -874,6 +865,7 @@ instance ItMi_MagicStone (ItemPR_Misc)
 	description		= 	name;
 	COUNT[5]		= 	value;
 };
+*/
 instance ItMi_Scroll (ItemPR_Misc)
 {
 	name 			=	"Pergamin";

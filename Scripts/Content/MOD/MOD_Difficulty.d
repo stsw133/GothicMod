@@ -18,11 +18,13 @@ const int DIFF_Percent[5] =
 };
 
 var int var_DIFF_Percent;
-
 func int DIFF_Multiplier (var int points, var int type)
 {
-	if (type == DECREASE)	{	return points - ((points * var_DIFF_Percent) / 100);	}
-	else					{	return points + ((points * var_DIFF_Percent) / 100);	};
+	var int difference; difference = ((points * var_DIFF_Percent) / 100);
+	
+	if		(type == DECREASE)	{	return points - difference;	}
+	else if (type == INCREASE)	{	return points + difference;	}
+	else						{	return points;				};
 };
 
 ///******************************************************************************************
@@ -30,7 +32,7 @@ func void DIFF_Select (var int diff)
 {
 	dLevel = diff;
 	Npc_SetTalentSkill (hero, NPC_TALENT_DIFFICULTY, dLevel);
-
+	
 	if		(dLevel == DIFF_E)		{	var_DIFF_Percent = DIFF_Percent[DIFF_E];	}
 	else if	(dLevel == DIFF_H)		{	var_DIFF_Percent = DIFF_Percent[DIFF_H];	}
 	else if	(dLevel == DIFF_VH)		{	var_DIFF_Percent = DIFF_Percent[DIFF_VH];	}

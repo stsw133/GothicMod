@@ -252,7 +252,7 @@ func int DIA_Salandril_Verschwinde_Condition ()
 
 func void DIA_Salandril_Verschwinde_Info ()
 {
-	B_Verschwinde_Stimme13 ();
+	AI_Output (self,other,"DIA_BDT_13_STANDARD_13_01"); //Wynocha!
 	AI_StopProcessInfos (self);
 };
 

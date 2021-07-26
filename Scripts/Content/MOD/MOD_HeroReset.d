@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	MOD_HeroReset
 ///******************************************************************************************
-func void MOD_HeroReset (var C_NPC slf)
+func void MOD_HeroReset (var C_Npc slf)
 {
 	/// ------ EXP ------
 	slf.guild = GIL_NONE;
@@ -21,7 +21,7 @@ func void MOD_HeroReset (var C_NPC slf)
 	slf.attribute[ATR_DEXTERITY]			=	DIFF_Multiplier(10, DECREASE);
 	Npc_SetPowerPoints (slf, DIFF_Multiplier(10, DECREASE));
 	slf.aivar[AIV_Energy_MAX]				=	100;
-	slf.aivar[AIV_Energy]					=	slf.aivar[AIV_Energy_MAX];
+	slf.aivar[AIV_Energy]					=	0;
 	
 	/// ------ Fight ------
 	slf.hitchance[NPC_TALENT_1H]			=	FightTalent_Weak;

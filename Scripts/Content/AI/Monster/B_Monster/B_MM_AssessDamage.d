@@ -14,19 +14,7 @@ func void B_MM_AssessDamage()
 		{
 			SPECIALWEAPONDAMAGE_CHECK();
 		};
-		SelfFightTeach_CHECK (other, other.weapon-2);
-	};
-	
-	/// ------ POISON ------
-	if (Npc_IsPlayer(self))
-	&& ((other.aivar[AIV_MM_REAL_ID] == ID_BITER)
-	|| (other.aivar[AIV_MM_REAL_ID] == ID_BLOODFLY)
-	|| (other.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLER)
-	|| (other.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERWARRIOR)
-	|| (other.aivar[AIV_MM_REAL_ID] == ID_SWAMPDRONE)
-	|| (other.aivar[AIV_MM_REAL_ID] == ID_SWAMPSHARK))
-	{
-		MOD_PoisonON();
+		SelfFightTeach_ADD (other, other.weapon-2);
 	};
 	
 	if (Npc_HasItems(other, Holy_Hammer_MIS) > 0)

@@ -153,14 +153,14 @@ instance ITAR_SLG_L (ItemPR_Armor)
 	name 			=	"Szata Guru";
 	visual 			=	"ITAR_KDW_L_ADDON.3ds";
 	visual_change 	=	"Armor_SLG_L.asc";
-	SetItArAttributes (self, 40,20,20,   0);	/// 12 level
+	SetItArAttributes (self, 50,25,25,   0);	/// 15 level
 };
 instance ITAR_SLG_H (ItemPR_Armor)
 {
 	name 			=	"Zdobiona szata Guru";
 	visual 			=	"ITAR_KDW_L_ADDON.3ds";
 	visual_change 	=	"Armor_SLG_H.asc";
-	SetItArAttributes (self, 60,30,30,   0);	/// 18 level
+	SetItArAttributes (self, 70,35,35,   0);	/// 21 level
 };
 ///******************************************************************************************
 instance ITAR_ORE_M (ItemPR_Armor)

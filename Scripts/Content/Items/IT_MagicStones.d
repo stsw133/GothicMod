@@ -1,3 +1,4 @@
+/*
 ///******************************************************************************************
 prototype ItemPR_Teleport (C_Item)
 {
@@ -369,3 +370,4 @@ func void Use_ItMi_TimeDust()
 		Wld_PlayEffect ("SLOW_TIME", self, self, 0, 0, 0, false);
 	};
 };
+*/

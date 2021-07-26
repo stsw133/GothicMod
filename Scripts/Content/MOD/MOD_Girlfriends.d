@@ -9,7 +9,7 @@ const int gf_name0				=	0;
 var int girlfriend[1];
 
 ///******************************************************************************************
-func void MOD_StopTalkingWithGirl (var C_NPC slf)
+func void MOD_StopTalkingWithGirl (var C_Npc slf)
 {
 	talkingWithGirl = false;
 	Bar_Delete(Bar_expBar);
@@ -19,7 +19,7 @@ func void MOD_StopTalkingWithGirl (var C_NPC slf)
 ///******************************************************************************************
 ///	B_GivePlayerLove
 ///******************************************************************************************
-func void B_GivePlayerLove (var C_NPC slf, var int points)
+func void B_GivePlayerLove (var C_Npc slf, var int points)
 {
 	slf.aivar[AIV_Love] += points;
 	

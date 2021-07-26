@@ -1,16 +1,14 @@
 ///******************************************************************************************
 ///	Ambient - NEWS
 ///******************************************************************************************
-instance DIA_Ambient_NEWS (C_INFO)
+instance DIA_Ambient_NEWS (C_Info)
 {
-	//npc		= alle;	//wird in ZS_Talk zugeordnet
-	nr			= 1;
-	condition	= DIA_Ambient_NEWS_Condition;
-	information	= DIA_Ambient_NEWS_Info;
-	permanent	= true;
-	important 	= true;
+	nr									=	1;
+	condition							=	DIA_Ambient_NEWS_Condition;
+	information							=	DIA_Ambient_NEWS_Info;
+	permanent							=	true;
+	important							=	true;
 };
-
 func int DIA_Ambient_NEWS_Condition()
 {
 	if (Npc_IsInState(self, ZS_Talk))
@@ -19,29 +17,16 @@ func int DIA_Ambient_NEWS_Condition()
 		return true;
 	};
 };
-
 func void DIA_Ambient_NEWS_Info()
 {
 	/// ------ CRIME ------
-	if (B_GetPlayerCrime(self) == CRIME_SHEEPKILLER)
-	{
-		B_Say (self, other, "$SHEEPKILLER_CRIME");
-	};
-	
-	if (B_GetPlayerCrime(self) == CRIME_ATTACK)
-	{
-		B_Say (self, other, "$ATTACK_CRIME");
-	};
-	
-	if (B_GetPlayerCrime(self) == CRIME_THEFT)
-	{
-		B_Say (self, other, "$THEFT_CRIME");
-	};
+	if		(B_GetPlayerCrime(self) == CRIME_SHEEPKILLER)	{	B_Say (self, other, "$SHEEPKILLER_CRIME");	}
+	else if (B_GetPlayerCrime(self) == CRIME_ATTACK)		{	B_Say (self, other, "$ATTACK_CRIME");		}
+	else if (B_GetPlayerCrime(self) == CRIME_THEFT)			{	B_Say (self, other, "$THEFT_CRIME");		};
 	
 	/// ------ CITY ------
 	if (C_NpcBelongsToCity(self))
 	{
-		/// ------ Player-Gilde und Petzmaster ------
 		if (other.guild == GIL_PAL)
 		&& (Hagen_Schulden <= 0)
 		{
@@ -79,12 +64,11 @@ func void DIA_Ambient_NEWS_Info()
 		B_Say (self, other, "$OC_CRIME");
 	};
 	
-	/// ------ Dialog beenden ------	
 	AI_StopProcessInfos(self);
 };
 
 ///******************************************************************************************
-func void B_AssignAmbientNEWS (var C_NPC slf)
+func void B_AssignAmbientNEWS (var C_Npc slf)
 {
 	DIA_AMBIENT_NEWS.npc = Hlp_GetInstanceID(slf);
 };

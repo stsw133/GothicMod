@@ -27,7 +27,7 @@ instance PAL_297_Ritter (Npc_Default)
 
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-	CreateInvItem (self, ItTe_PassNW);
+	CreateInvItem (self, ItRu_TeleportPassNW);
 
 	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Fighter", Face_Normal20, 0, ITAR_PAL_L);

@@ -16,7 +16,7 @@ func void Npc_AttributesRefresh()
 };
 
 /// ------ Energy ------
-func void Npc_EnergyRefresh(var C_NPC slf)
+func void Npc_EnergyRefresh(var C_Npc slf)
 {
 	if (slf.aivar[AIV_Energy] < 0)
 	{
@@ -29,30 +29,33 @@ func void Npc_EnergyRefresh(var C_NPC slf)
 };
 
 /// ------ LifeSteal ------
-func int Npc_GetLifeStealPoints(var C_NPC slf)
+func int Npc_GetLifeStealPoints(var C_Npc slf)
 {
 	return Npc_GetTalentValue (slf, NPC_TALENT_2ndH);
 };
-func void Npc_SetLifeStealPoints(var C_NPC slf, var int points)
+func void Npc_SetLifeStealPoints(var C_Npc slf, var int points)
 {
 	Npc_SetTalentValue (slf, NPC_TALENT_2ndH, points);
 };
-func void Npc_AddLifeStealPoints(var C_NPC slf, var int points)
+func void Npc_AddLifeStealPoints(var C_Npc slf, var int points)
 {
 	Npc_SetLifeStealPoints (slf, Npc_GetLifeStealPoints(slf) + points);
 };
 
 /// ------ Power ------
-func int Npc_GetPowerPoints(var C_NPC slf)
+func int Npc_GetPowerPoints(var C_Npc slf)
 {
 	return Npc_GetTalentValue (slf, NPC_TALENT_MAGIC);
 };
-func void Npc_SetPowerPoints(var C_NPC slf, var int points)
+func void Npc_SetPowerPoints(var C_Npc slf, var int points)
 {
 	slf.damage[DAM_INDEX_MAGIC] = points;
-	Npc_SetTalentValue (slf, NPC_TALENT_MAGIC, points);
+	if (Npc_IsPlayer(slf))	/// bufix (without it going into another location throws stack overflow error)
+	{
+		Npc_SetTalentValue (slf, NPC_TALENT_MAGIC, points);
+	};
 };
-func void Npc_AddPowerPoints(var C_NPC slf, var int points)
+func void Npc_AddPowerPoints(var C_Npc slf, var int points)
 {
 	Npc_SetPowerPoints (slf, Npc_GetPowerPoints(slf) + points);
 };

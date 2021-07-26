@@ -162,7 +162,7 @@ FUNC VOID DIA_Ramirez_Bezahlen_Info()
 	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) == TRUE)
 	{ 
 		AI_Output (self, other, "DIA_Ramirez_Bezahlen_14_01");//Nie mogê nauczyæ ciê nic wiêcej. Przekaza³em ci ca³¹ moj¹ wiedzê na temat otwierania zamków.
-		if (other.attribute[ATR_DEXTERITY] < T_MAX)
+		if (other.attribute[ATR_DEXTERITY] < 200)
 		{
 			AI_Output (self, other, "DIA_Ramirez_Add_14_00"); //Teraz musisz ju¿ tylko poprawiæ swoj¹ zrêcznoœæ.
 		};

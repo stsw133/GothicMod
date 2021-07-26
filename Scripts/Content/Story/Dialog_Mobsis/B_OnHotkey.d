@@ -122,7 +122,7 @@ func int B_GetAnyPlayerMap()
 ///******************************************************************************************
 func int PLAYER_HOTKEY_SCREEN_MAP()
 {
-	var int OldInstance; OldInstance = B_GetPlayerMap();
+	var int OldInstance; OldInstance = PlayerMapInstance;
 	
 	if ((OldInstance > 0) && (Npc_HasItems(hero, OldInstance) < 1))
 	{

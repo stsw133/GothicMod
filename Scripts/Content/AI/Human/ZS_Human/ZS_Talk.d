@@ -65,17 +65,7 @@ func void ZS_Talk()
 		|| (self.npctype == NPCTYPE_TAL_AMBIENT)
 		{
 			B_AssignAmbientInfos(self);
-			/*
-			if (C_NpcBelongsToCity(self))
-			{
-				B_AssignCityGuide(self);
-			};
-			*/
 		};
-		
-		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
-		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
-		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
 		
 		if (self.aivar[AIV_PARTYMEMBER])
 		&& (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(Biff))
@@ -92,10 +82,15 @@ func void ZS_Talk()
 		{
 			B_AssignToughGuyNEWS(self);
 		};
+		
 		if (C_NpcHasAmbientNews(self))
 		{
 			B_AssignAmbientNEWS(self);
 		};
+		
+		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
+		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
+		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
 	};
 	
 	if (self.guild == GIL_DRAGON)

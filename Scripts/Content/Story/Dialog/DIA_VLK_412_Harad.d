@@ -436,7 +436,7 @@ func void DIA_Harad_LEHRLING_OK()
 		AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_03"); //Có¿, tym lepiej!
 	};
 	
-	if (other.attribute[ATR_STRENGTH] < (T_MED-30))
+	if (other.attribute[ATR_STRENGTH] < 60)
 	{
 		AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_04"); //Poza tym czas, ¿ebyœ nabra³ si³. Marniejesz mi w oczach!
 	};

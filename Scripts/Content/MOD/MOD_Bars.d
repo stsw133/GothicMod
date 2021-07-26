@@ -23,6 +23,12 @@ instance manaBar(GothicBar)
     backTex = "Bar_Back.tga";
 	barTex = "Bar_Mana.tga";
 };
+instance obsessionBar(GothicBar)
+{
+	x = 100; y = Print_Screen[PS_Y]-60;
+    backTex = "Bar_Back.tga";
+	barTex = "Bar_Negative.tga";
+};
 
 /// ENE bars
 instance energyBar(GothicBar)
@@ -66,10 +72,10 @@ func void Loop_healthBar()
 {
 	if (!Hlp_IsValidHandle(Bar_healthBar))
 	{
-		if (bState[BS_Poison])	{	Bar_healthBar = Bar_Create(poisonBar);	}
-		else					{	Bar_healthBar = Bar_Create(healthBar);	};
+		if (bState[BS_Poison])		{	Bar_healthBar = Bar_Create(poisonBar);	}
+		else						{	Bar_healthBar = Bar_Create(healthBar);	};
 	};
-
+	
 	Bar_SetMax (Bar_healthBar, hero.attribute[ATR_HITPOINTS_MAX]);
 	Bar_SetValue (Bar_healthBar, hero.attribute[ATR_HITPOINTS]);
 };
@@ -79,9 +85,10 @@ func void Loop_manaBar()
 {
 	if (!Hlp_IsValidHandle(Bar_manaBar))
 	{
-		Bar_manaBar = Bar_Create(manaBar);
+		if (bState[BS_Obsession])	{	Bar_manaBar = Bar_Create(obsessionBar);	}
+		else						{	Bar_manaBar = Bar_Create(manaBar);		};
 	};
-
+	
 	Bar_SetMax (Bar_manaBar, hero.attribute[ATR_MANA_MAX]);
 	Bar_SetValue (Bar_manaBar, hero.attribute[ATR_MANA]);
 };
@@ -91,10 +98,10 @@ func void Loop_energyBar()
 {
 	if (!Hlp_IsValidHandle(Bar_energyBar))
 	{
-		if (bState[BS_hArmor])	{	Bar_energyBar = Bar_Create(harmorBar);	}
-		else					{	Bar_energyBar = Bar_Create(energyBar);	};
+		if (bState[BS_hArmor])		{	Bar_energyBar = Bar_Create(harmorBar);	}
+		else						{	Bar_energyBar = Bar_Create(energyBar);	};
 	};
-
+	
 	Bar_SetMax (Bar_energyBar, hero.aivar[AIV_Energy_MAX]);
 	Bar_SetValue (Bar_energyBar, hero.aivar[AIV_Energy]);
 };
@@ -104,10 +111,10 @@ func void Loop_expBar()
 {
 	if (!Hlp_IsValidHandle(Bar_expBar))
 	{
-		if (talkingWithGirl)	{	Bar_expBar = Bar_Create(loveBar);	}
-		else					{	Bar_expBar = Bar_Create(expBar);	};
+		if (talkingWithGirl)		{	Bar_expBar = Bar_Create(loveBar);		}
+		else						{	Bar_expBar = Bar_Create(expBar);		};
 	};
-
+	
 	if (talkingWithGirl)
 	{
 		Bar_SetMax (Bar_expBar, MAX_LOVE);
@@ -183,7 +190,7 @@ func void ShowBarText()
 		Print_DeleteText(BarTextPrint_expBar);
 	};
 	
-	if (talkingWithGirl == true)
+	if (talkingWithGirl)
 	{
 		BarText_expBar = ConcatStrings(IntToString(gLevelA*100/MAX_LOVE), "%");
 		
@@ -195,7 +202,7 @@ func void ShowBarText()
 	else
 	{
 		if (hero.level < MAX_LEVEL)	{	BarText_expBar = ConcatStrings(IntToString(hero.exp_next-hero.exp), " do nast.");	}
-		else						{	BarText_expBar = "max. poziom";	};
+		else						{	BarText_expBar = "max. poziom";														};
 		
 		if (!Hlp_IsValidHandle(BarTextPrint_expBar))
 		{

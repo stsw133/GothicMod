@@ -51,15 +51,17 @@ func void B_AssessTalk()
 				return;
 			};
 		};
-	};
-	
-	/// Ambient NPC smalltalk
-	if (self.npctype == NPCTYPE_AMBIENT)
-	|| (self.npctype == NPCTYPE_OCAMBIENT)
-	|| (self.npctype == NPCTYPE_BL_AMBIENT)
-	{
-		B_ExecAmbientInfos();
-		return;
+		
+		/// Ambient NPC does not want to talk
+		if (self.npctype == NPCTYPE_AMBIENT)
+		|| (self.npctype == NPCTYPE_OCAMBIENT)
+		|| (self.npctype == NPCTYPE_BL_AMBIENT)
+		//if (!Npc_CheckInfo(self, 1))
+		//&& (!Npc_CheckInfo(self, 0))
+		{
+			B_ExecAmbientInfos();
+			return;
+		};
 	};
 	
 	if (!self.aivar[AIV_NpcStartedTalk])

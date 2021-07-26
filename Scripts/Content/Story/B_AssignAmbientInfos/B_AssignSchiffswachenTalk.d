@@ -1,9 +1,9 @@
 ///******************************************************************************************
 ///	B_AssignSchiffswachenTalk
 ///******************************************************************************************
-func void B_AssignSchiffswachenGuard (var C_NPC Schiffswache)
+func void B_AssignSchiffswachenGuard (var C_Npc Schiffswache)
 {
-	if (MIS_ShipIsFree) || (MIS_SCVisitShip == LOG_RUNNING)
+	if (MIS_ShipIsFree || MIS_SCVisitShip == LOG_RUNNING)
 	{
 		if (Schiffswache.voice == 4)
 		{
@@ -50,7 +50,7 @@ func void B_AssignSchiffswachenGuard (var C_NPC Schiffswache)
 };
 
 ///******************************************************************************************
-func void B_AssignSchiffswachenInfos (var C_NPC Schiffswache)
+func void B_AssignSchiffswachenInfos (var C_Npc Schiffswache)
 {
 	if (Mis_OCGateOpen)
 	{
@@ -86,13 +86,13 @@ func void B_AssignSchiffswachenInfos (var C_NPC Schiffswache)
 };
 
 ///******************************************************************************************
-func void B_AssignSchiffswachenTalk (var C_NPC Schiffswache)
+func void B_AssignSchiffswachenTalk (var C_Npc Schiffswache)
 {
 	if (Kapitel >= 11)	{	B_AssignSchiffswachenInfos(Schiffswache);	}
 	else 				{	B_AssignSchiffswachenGuard(Schiffswache);	};
 };
 
-func int B_AssignSchiffswachenInfoConditions (var C_NPC Schiffswache)
+func int B_AssignSchiffswachenInfoConditions (var C_Npc Schiffswache)
 {
 	if (Kapitel < 11)
 	&& (!Npc_RefuseTalk(self))
@@ -104,4 +104,329 @@ func int B_AssignSchiffswachenInfoConditions (var C_NPC Schiffswache)
 	{
 		return true;
 	};
+};
+
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_220_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_220_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_220_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_220_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_220_Schiffswache (C_Info)
+{
+	npc									= 	PAL_220_Schiffswache;
+	nr									= 	1;
+	condition							= 	DIA_PAL_220_Schiffswache_Condition;
+	information							= 	DIA_PAL_220_Schiffswache_Info;
+	important							=	true;
+	permanent							= 	true;
+};
+func int DIA_PAL_220_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_220_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_221_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_221_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_221_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_221_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_221_Schiffswache (C_Info)
+{
+	npc									= 	PAL_221_Schiffswache;
+	nr									= 	1;
+	condition							= 	DIA_PAL_221_Schiffswache_Condition;
+	information							= 	DIA_PAL_221_Schiffswache_Info;
+	important							=	true;
+	permanent							= 	true;
+};
+func int DIA_PAL_221_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_221_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_222_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_222_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_222_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_222_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_222_Schiffswache (C_Info)
+{
+	npc									= 	PAL_222_Schiffswache;
+	nr									= 	1;
+	condition							= 	DIA_PAL_222_Schiffswache_Condition;
+	information							= 	DIA_PAL_222_Schiffswache_Info;
+	important							=	true;
+	permanent							= 	true;
+};
+func int DIA_PAL_222_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_222_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_223_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_223_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_223_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_223_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_223_Schiffswache (C_Info)
+{
+	npc									=	PAL_223_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_223_Schiffswache_Condition;
+	information							=	DIA_PAL_223_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_223_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_223_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_224_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_224_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_224_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_224_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_224_Schiffswache (C_Info)
+{
+	npc									=	PAL_224_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_224_Schiffswache_Condition;
+	information							=	DIA_PAL_224_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_224_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_224_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_225_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_225_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_225_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_225_Schiffswache_EXIT_Info()
+{
+	AI_StopProcessInfos(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_225_Schiffswache (C_Info)
+{
+	npc									=	PAL_225_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_225_Schiffswache_Condition;
+	information							=	DIA_PAL_225_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_225_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_225_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_226_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_226_Schiffswache;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	DIA_PAL_226_Schiffswache_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void DIA_PAL_226_Schiffswache_EXIT_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_226_Schiffswache (C_Info)
+{
+	npc									=	PAL_226_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_226_Schiffswache_Condition;
+	information							=	DIA_PAL_226_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_226_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_226_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_227_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_227_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_227_Schiffswache_Condition;
+	information							=	DIA_PAL_227_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func void DIA_PAL_227_Schiffswache_EXIT_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_227_Schiffswache (C_Info)
+{
+	npc									=	PAL_227_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_227_Schiffswache_Condition;
+	information							=	DIA_PAL_227_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_227_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_227_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	EXIT
+///******************************************************************************************
+instance DIA_PAL_228_Schiffswache_EXIT (C_Info)
+{
+	npc									=	PAL_228_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_228_Schiffswache_Condition;
+	information							=	DIA_PAL_228_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func void DIA_PAL_228_Schiffswache_EXIT_Info()
+{
+	B_AssignSchiffswachenTalk(self);
+};
+///******************************************************************************************
+///	Schiffswache
+///******************************************************************************************
+instance DIA_PAL_228_Schiffswache (C_Info)
+{
+	npc									=	PAL_228_Schiffswache;
+	nr									=	1;
+	condition							=	DIA_PAL_228_Schiffswache_Condition;
+	information							=	DIA_PAL_228_Schiffswache_Info;
+	important							=	true;
+	permanent							=	true;
+};
+func int DIA_PAL_228_Schiffswache_Condition()
+{
+	B_AssignSchiffswachenInfoConditions(self);
+};
+func void DIA_PAL_228_Schiffswache_Info()
+{
+	B_AssignSchiffswachenTalk(self);
 };

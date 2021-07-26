@@ -7,6 +7,6 @@ func int B_GetDayPlus()
 	{
 		return (Wld_GetDay() + 1);
 	};
-
+	
 	return Wld_GetDay();
 };

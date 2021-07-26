@@ -22,27 +22,31 @@ func void TT_1000_RGHP()
 	/// gdy postaæ jest zatruta
 	if (bState[BS_Poison])
 	{
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -1);	/// -1 hp co sekundê
-	}
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -2);	/// -2 hp co sekundê
+	};
 	/// gdy postaæ coœ jad³a
-	else if (foodTime > 0)
+	if (foodTime > 0)
 	{
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1+DoubledFoodRegen);	/// +1 hp co sekundê
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);	/// +1 hp co sekundê
 		foodTime -= 1;
 	};
 };
 func void TT_1000_RGMP()
 {
-	Npc_ChangeAttribute (hero, ATR_MANA, Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC));	/// +1 many za ka¿dy kr¹g magii (max. 5) co sekundê
+	/// gdy postaæ nie jest pod wp³ywem kl¹twy poszukiwaczy
+	if (!bState[BS_Obsession])
+	{
+		Npc_ChangeAttribute (hero, ATR_MANA, Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC));	/// +1 many za ka¿dy kr¹g magii (max. 6) co sekundê
+	};
 };
 func void TT_200_RGEN()
 {
-	/// gdy postaæ biegnie bez sprintu
+	/// gdy postaæ biegnie bez sprintu...
 	if (C_BodyStateContains(hero, BS_RUN))
 	{
 		hero.aivar[AIV_Energy] += hero.aivar[AIV_Energy_MAX] / 100;	/// +1% energii co 0.2 sekundy
 	}
-	/// gdy postaæ nie biegnie
+	/// ...lub gdy postaæ nie biegnie (i nie skacze) w ogóle
 	else if (!C_BodyStateContains(hero, BS_JUMP))
 	{
 		hero.aivar[AIV_Energy] += hero.aivar[AIV_Energy_MAX] / 50;	/// +2% energii co 0.2 sekundy
@@ -72,6 +76,7 @@ func void TT_1000()
 		Spell_Active_GeoSkin();
 		
 		/// magiczny py³ do zaklêcia spowolnienia czasu
+		/*
 		TimeDust_WAIT += 1;
 		if (TimeDust_WAIT == 600)	/// co 10 minut
 		{
@@ -82,6 +87,7 @@ func void TT_1000()
 			};
 			TimeDust_WP = Npc_GetNearestWP(hero);
 		};
+		*/
 	};
 };
 ///******************************************************************************************
@@ -108,7 +114,7 @@ func void TT_200()
 		/// regeneracja i zu¿ycie energii
 		if (bState[BS_fRun])
 		{
-			hero.aivar[AIV_Energy] -= (4-Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN)*2);
+			hero.aivar[AIV_Energy] -= (4 + bState[BS_hArmor]*2 - Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN)*2);
 		}
 		else
 		{
@@ -132,26 +138,56 @@ func void TT_5()
 	/// ------ Klawisz sprintu ------
 	if (MEM_KeyState(keySprint1) == KEY_HOLD || MEM_KeyState(keySprint2) == KEY_HOLD)
 	&& (C_BodyStateContains(hero, BS_RUN))
-	&& ((hero.aivar[AIV_Energy] > 0 && !bState[BS_hArmor]) || movieMode)
+	&& (hero.aivar[AIV_Energy] > 0 || movieMode)
 	{
 		if (!bState[BS_fRun])
 		{
-			bState[BS_fRun] = true;
 			Mdl_ApplyOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
+			bState[BS_fRun] = true;
 		};
 	}
 	else if (bState[BS_fRun])
 	{
-		bState[BS_fRun] = false;
 		Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
+		bState[BS_fRun] = false;
 	};
 	
-	/// ------ Na podstawie trybu gry ------
-	if (!movieMode)
+	/// ------ Klawisz szybkiego obrotu ------
+	if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
 	{
-		/// ------ Klawisz kradzie¿y ------
-		if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
-		&& (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))
+		AI_PlayAni (hero, "T_QUICKTURN");
+	};
+	
+	/// ------ Tryb filmowy ------
+	if (movieMode)
+	{
+		B_ScaleTime(75 + scaleTime);
+		
+		/// ------ Klawisze do skrótów animacji etc. ------
+		if		(MEM_KeyState(keyShortcuts1) == KEY_HOLD)	{	MovieMode_SetFaceAni();			}	/// animacje twarzy
+		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MovieMode_DialogGesture();		}	/// dialogi
+		else if (MEM_KeyState(keyInteract1) == KEY_HOLD)	{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
+		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
+		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// kierunek rêki
+		else if (MemoKey1 != -1)								{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
+	};
+	
+	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------
+	if (MEM_KeyState(KEY_F1) == KEY_PRESSED)
+	{
+		if (MEM_Game.game_drawall)	{	MEM_Game.game_drawall = false;	}
+		else						{	MEM_Game.game_drawall = true;	};
+	};
+	if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
+	{
+		AI_Wait (hero, 0.1);
+	};
+	
+	/// ------ PPM ------
+	if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
+	{
+		/// kradzie¿ kieszonkowa
+		if (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))
 		{
 			o_other = MEM_PtrToInst(o_hero.focus_vob);
 			
@@ -167,67 +203,26 @@ func void TT_5()
 				Print(o_string);
 			};*/
 		};
-		
-		/// ------ Klawisz modlitwy (uczenia siê atrybutów) ------
-		if (MEM_KeyState(keyInteract1) == KEY_PRESSED || MEM_KeyState(keyInteract2) == KEY_PRESSED)
+		/// szybkie podnoszenie przedmiotów
+		if (noAnimTake && !C_BodyStateContains(hero, BS_INVENTORY) && !C_BodyStateContains(hero, BS_TAKEITEM))
 		{
-			MOBSI_iMonologue_S1();
-		};
-		
-		/// ------ Klawisz szybkiego obrotu ------
-		if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
-		{
-			AI_PlayAni (hero, "T_QUICKTURN");
-		};
-	}
-	else
-	{
-		/// ------ Klawisze do skrótów animacji etc. ------
-		if		(MEM_KeyState(keyShortcuts1) == KEY_HOLD)				{	MovieMode_SetFaceAni();			}	/// animacje twarzy
-		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)						{	MovieMode_DialogGesture();		}	/// dialogi
-		else if (MEM_KeyState(keyInteract1) == KEY_HOLD)				{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
-		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)					{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
-		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)					{	MovieMode_SetArmDirection();	}	/// kierunek rêki
-		else if (MemoKey1 != -1)										{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
-	};
-	
-	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------
-	if (MEM_KeyState(KEY_F1) == KEY_PRESSED)
-	{
-		if (MEM_Game.game_drawall)	{	MEM_Game.game_drawall = false;	}
-		else						{	MEM_Game.game_drawall = true;	};
-	};
-	
-	if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
-	{
-		AI_Wait (hero, 0.1);
-	};
-	
-	///------ Szybkie podnoszenie przedmiotów PPM ------
-	if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
-	&& (noAnimTake && !C_BodyStateContains(hero, BS_INVENTORY) && !C_BodyStateContains(hero, BS_TAKEITEM))
-	{
-		o_item = MEM_PtrToInst(o_hero.focus_vob);
-		
-		if (Hlp_IsValidItem(o_item))
-		&& (o_item.flags != ITEM_NFOCUS)
-		{
-			if (Npc_GetDistToItem(hero, o_item) < (NPC_ATTACK_FINISH_DISTANCE * 2))
+			o_item = MEM_PtrToInst(o_hero.focus_vob);
+			
+			if (Hlp_IsValidItem(o_item))
+			&& (o_item.flags != ITEM_NFOCUS)
 			{
-				o_item.flags = ITEM_NFOCUS;
-				Wld_RemoveItem(o_item);
-				CreateInvItems (hero, Hlp_GetInstanceID(o_item), o_item.amount);
-				ITEMS_CHECK(o_item);
-			}
-			else
-			{
-				Print("Przedmiot jest za daleko!");
+				if (Npc_GetDistToItem(hero, o_item) < (NPC_ATTACK_FINISH_DISTANCE * 2))
+				{
+					o_item.flags = ITEM_NFOCUS;
+					Wld_RemoveItem(o_item);
+					CreateInvItems (hero, Hlp_GetInstanceID(o_item), o_item.amount);
+					ITEMS_CHECK(o_item);
+				}
+				else
+				{
+					Print("Przedmiot jest za daleko!");
+				};
 			};
 		};
-	};
-	
-	if (movieMode)
-	{
-		B_ScaleTime(75 + scaleTime);
 	};
 };

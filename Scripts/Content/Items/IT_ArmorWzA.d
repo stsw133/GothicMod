@@ -89,7 +89,7 @@ instance ITAR_ACRONA_MAGE (ItemPR_Armor)
 	name 			=	"Akroñska szata arcymaga";
 	visual 			=	"ItAr_KdF_H.3ds";
 	visual_change 	=	"Armor_Acrona_Mage.asc";
-	SetItArAttributes (self, 110,95,95,   0);	/// 41 level
+	SetItArAttributes (self, 130,115,115,   0);	/// 49 level
 };
 ///******************************************************************************************
 ///	Baron armors
@@ -330,7 +330,7 @@ instance ITAR_NA_SuperHero (ItemPR_Armor)
 	name 			=	"Zbroja Supermana";
 	visual 			=	"ItAr_PAL_H3.3ds";
 	visual_change 	=	"Armor_Hero.asc";
-	SetItArAttributes (self, 160,110,110,   0);	/// 54 level
+	SetItArAttributes (self, 165,110,110,   0);	/// 55 level
 	
 	material 		=	MAT_METAL;
 	on_equip		=	Equip_HeavyArmor;
@@ -341,7 +341,7 @@ instance ITAR_NA_IronHero (ItemPR_Armor)
 	name 			=	"Zbroja Ironmana";
 	visual 			=	"ItAr_PAL_H3.3ds";
 	visual_change 	=	"Armor_Hero.asc";
-	SetItArAttributes (self, 160,110,110,   1);	/// 54 level
+	SetItArAttributes (self, 165,110,110,   1);	/// 55 level
 	
 	material 		=	MAT_METAL;
 	on_equip		=	Equip_HeavyArmor;

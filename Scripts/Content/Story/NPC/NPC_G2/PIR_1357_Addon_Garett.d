@@ -19,7 +19,7 @@ instance PIR_1357_Addon_Garett (Npc_Default)
 	EquipItem (self, ItMw_Piratensaebel);
 
 	/// ------ Inventory ------
-	CreateInvItem (self, ItBe_Asa_01);
+	CreateInvItem (self, ItBe_Ako_01);
 
 	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Normal32, 0, ITAR_PIR_L);

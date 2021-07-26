@@ -29,14 +29,22 @@ instance PC_Wood_End (C_Info)
 	description							=	DIALOG_END;
 };
 ///******************************************************************************************
-instance PC_Wood_Arrows (C_INFO)
+instance PC_Wood_Arrows (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
-	condition							=	PC_Wood_Condition;
+	condition							=	PC_Wood_Arrows_Condition;
 	information							=	PC_Wood_Arrows_Info;
 	permanent							=	true;
 	description							=	"Zrób 50 strza³ (drewno, 10 zêbów)";
+};
+func int PC_Wood_Arrows_Condition()
+{
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_WOOD)
+	&& (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) >= 1)
+	{
+		return true;
+	};
 };
 func void PC_Wood_Arrows_Info()
 {
@@ -56,11 +64,11 @@ func void PC_Wood_Arrows_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Wood_FireArrows (C_INFO)
+instance PC_Wood_FireArrows (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
-	condition							=	PC_Wood_Condition;
+	condition							=	PC_Wood_Arrows_Condition;
 	information							=	PC_Wood_FireArrows_Info;
 	permanent							=	true;
 	description							=	"Zrób 50 ognistych strza³ (drewno, 10 zêbów, smo³a)";
@@ -85,11 +93,11 @@ func void PC_Wood_FireArrows_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Wood_PoisonedArrows (C_INFO)
+instance PC_Wood_PoisonedArrows (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
-	condition							=	PC_Wood_Condition;
+	condition							=	PC_Wood_Arrows_Condition;
 	information							=	PC_Wood_PoisonedArrows_Info;
 	permanent							=	true;
 	description							=	"Zrób 50 zatrutych strza³ (drewno, 10 zêbów, trucizna)";
@@ -114,10 +122,43 @@ func void PC_Wood_PoisonedArrows_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Wood_Torch (C_INFO)
+instance PC_Wood_Scroll (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	4;
+	condition							=	PC_Wood_Scroll_Condition;
+	information							=	PC_Wood_Scroll_Info;
+	permanent							=	true;
+	description							=	"Zrób 20 pergaminów (drewno)";
+};
+func int PC_Wood_Scroll_Condition()
+{
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_WOOD)
+	&& (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) >= 1)
+	{
+		return true;
+	};
+};
+func void PC_Wood_Scroll_Info()
+{
+	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Wood);
+		
+		CreateInvItems (hero, ItMi_Scroll, 20);
+		Print("Zrobiono 20 pergaminów.");
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		B_ENDPRODUCTIONDIALOG();
+	};
+};
+///******************************************************************************************
+instance PC_Wood_Torch (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	5;
 	condition							=	PC_Wood_Condition;
 	information							=	PC_Wood_Torch_Info;
 	permanent							=	true;
@@ -133,31 +174,6 @@ func void PC_Wood_Torch_Info()
 		
 		CreateInvItems (hero, ItLsTorch, 1);
 		Print("Zrobiono 5 pochodni.");
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		B_ENDPRODUCTIONDIALOG();
-	};
-};
-///******************************************************************************************
-instance PC_Wood_Scroll (C_INFO)
-{
-	npc									=	PC_Hero;
-	nr									=	5;
-	condition							=	PC_Wood_Condition;
-	information							=	PC_Wood_Scroll_Info;
-	permanent							=	true;
-	description							=	"Zrób 20 pergaminów (drewno)";
-};
-func void PC_Wood_Scroll_Info()
-{
-	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItMi_Wood);
-		
-		CreateInvItems (hero, ItMi_Scroll, 20);
-		Print("Zrobiono 20 pergaminów.");
 	}
 	else
 	{

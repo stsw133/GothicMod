@@ -15,15 +15,17 @@ var int foodTime;
 const int BS_fRun			=	0;
 const int BS_hArmor			=	1;
 const int BS_Poison			=	2;
-var int bState[3];
+const int BS_Obsession		=	3;
+var int bState[4];
 
 var int dLevel;				/// difficulty level: Easy | Medium | Hard | Very Hard | Hardcore
 var int gLevelA;			/// girlfriend love level (not sure/don't remember)
 var int talkingWithGirl;	/// also don't remember what was this for
 
 var int selectedHero;		/// hero skin (select in New Game menu)
-var int noAnimTake;		/// fast item take (with no animation) on RMB
+var int noAnimTake;			/// fast item take (with no animation) on RMB
 var int movieMode;			/// movie mode = enabled cheat mode, animation shortcuts etc.
+var int scaleTime;
 
 ///******************************************************************************************
 ///	Colors & Time
@@ -42,7 +44,6 @@ const int COL_ItemTaken			=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_ExpGained			=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_LoveGained		=	(255<<16) | (192<<8) | (224<<0) | (255<<24);
 const int COL_ProgressGained	=	(192<<16) | (224<<8) | (255<<0) | (255<<24);
-const int COL_Spells			=	(192<<16) | (192<<8) | (255<<0) | (255<<24);
 
 const int COL_QuestRunning		=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_QuestProgress		=	(128<<16) | (192<<8) | (255<<0) | (255<<24);
@@ -64,14 +65,11 @@ func int atrue()
 {
 	return true;
 };
-
 func int Hlp_RandomRange (var int start, var int end)
 {
 	return (start + Hlp_Random(end - start + 1));
 };
-
 ///******************************************************************************************
-var int scaleTime;
 func void B_ScaleTime(var int x)
 {
    var int world_timer; world_timer = MEM_Timer.frameTimeFloat;
@@ -79,7 +77,6 @@ func void B_ScaleTime(var int x)
    world_timer = mulf(world_timer, subf(acceleration, mkf(1)));
    MEM_WorldTimer.worldTime = addf(MEM_WorldTimer.worldTime, world_timer);
 };
-
 ///******************************************************************************************
 func void B_SetVisibilityPercent (var oCNpc slf, var int visibility)
 {

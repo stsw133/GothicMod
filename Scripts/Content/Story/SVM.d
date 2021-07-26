@@ -305,6 +305,11 @@ class C_SVM
 	var string ADDON_ANCIENTGHOST_NOTNEAR;
 	
 	var string ADDON_GOLD_DESCRIPTION;
+	
+	/// NEW:
+	/// ------ PartyMember ------
+	var string ComeWithMe;					//Chodü ze mnπ!
+	var string WaitHere;					//Zaczekaj tutaj!
 };
 
 ///******************************************************************************************
@@ -3257,6 +3262,11 @@ instance SVM_15 (C_SVM)
 	
 	ADDON_THISLITTLEBASTARD		=   "SVM_15_Addon_ThisLittleBastard"	;//Ach, ksiÍga rozrachunkowa Francisa. Wyglπda na to, øe ten cz≥owiek napycha sobie z≥otem kieszenie.
 	ADDON_OPENADANOSTEMPLE		=   "SVM_15_Addon_OPENADANOSTEMPLE"		;//JHERHEDRA AKHANTAR!
+	
+	/// NEW:
+	/// ------ PartyMember ------
+	ComeWithMe					=	"DIA_Liesel_KommMit_15_00";			//Chodü ze mnπ!
+	WaitHere					=	"DIA_Liesel_WarteHier_15_00";		//Zaczekaj tutaj!
 };
 
 ///******************************************************************************************

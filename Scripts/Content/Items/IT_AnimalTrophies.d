@@ -64,7 +64,6 @@ instance ItAt_KeilerFur (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
-///******************************************************************************************
 instance ItAt_WargFur (ItemPR_AnimalTrophy)
 {
 	name 			=	"Skóra warga";
@@ -92,7 +91,6 @@ instance ItAt_ShadowFur (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
-///******************************************************************************************
 instance ItAt_TrollFur (ItemPR_AnimalTrophy)
 {
 	name 			=	"Skóra trolla";
@@ -131,7 +129,7 @@ instance ItAt_SharkSkin (ItemPR_AnimalTrophy)
 	COUNT[5]		=	value;
 };
 ///******************************************************************************************
-/// Claws & Teeth & Wings & Stings & Tongues
+/// Claws
 ///******************************************************************************************
 instance ItAt_Claw (ItemPR_AnimalTrophy)
 {
@@ -151,6 +149,8 @@ instance ItAt_LurkerClaw (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+///******************************************************************************************
+///	Teeth
 ///******************************************************************************************
 instance ItAt_Teeth (ItemPR_AnimalTrophy)
 {
@@ -182,6 +182,8 @@ instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
 	INV_ZBIAS		=	INVCAM_ENTF_RING_STANDARD;
 };
 ///******************************************************************************************
+///	Wings
+///******************************************************************************************
 instance ItAt_Wing (ItemPR_AnimalTrophy)
 {
 	name 			=	"Skrzyd³a";
@@ -192,6 +194,8 @@ instance ItAt_Wing (ItemPR_AnimalTrophy)
 	COUNT[5]		=	value;
 };
 ///******************************************************************************************
+///	Stings
+///******************************************************************************************
 instance ItAt_Sting (ItemPR_AnimalTrophy)
 {
 	name 			=	"¯¹d³o";
@@ -201,6 +205,8 @@ instance ItAt_Sting (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+///******************************************************************************************
+///	Tongues
 ///******************************************************************************************
 instance ItAt_WaranFireTongue (ItemPR_AnimalTrophy)
 {
@@ -233,7 +239,7 @@ instance ItAt_CrawlerMandibles (ItemPR_AnimalTrophy)
 	COUNT[5]		=	value;
 };
 ///******************************************************************************************
-///	Scales
+///	Plates
 ///******************************************************************************************
 instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 {
@@ -244,6 +250,9 @@ instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+///******************************************************************************************
+///	Scales
+///******************************************************************************************
 instance ItAt_DragonScale (ItemPR_AnimalTrophy)
 {
 	name 			=	"Smocze ³uski";
@@ -320,7 +329,7 @@ instance ItAt_UndeadDragonSoulStone (ItemPR_AnimalTrophy)
 	INV_ZBIAS		=	INVCAM_ENTF_MISC_STANDARD;
 };
 ///******************************************************************************************
-///	Blood & Bones
+///	Blood
 ///******************************************************************************************
 instance ItAt_Blood (ItemPR_AnimalTrophy)
 {
@@ -340,6 +349,9 @@ instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 	description		= 	name;
 	COUNT[5]		=	value;
 };
+///******************************************************************************************
+///	Bones
+///******************************************************************************************
 instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 {
 	name 			=	"Koœæ";
@@ -361,17 +373,8 @@ instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 	COUNT[5]		=	value;
 };
 ///******************************************************************************************
-///	Feather & Eggs
+///	Eggs
 ///******************************************************************************************
-instance ItAt_Feather (ItemPR_AnimalTrophy)
-{
-	name 			=	"Pióro";
-	value 			=	2;
-	visual 			=	"ItAt_Feather.3DS";
-	
-	description		= 	name;
-	COUNT[5]		= 	value;
-};
 instance ItAt_CrawlerEgg (ItemPR_AnimalTrophy)
 {	
 	name 			=	"Jajo pe³zacza";
@@ -389,4 +392,16 @@ instance ItAt_DragonEgg_MIS	(ItemPR_AnimalTrophy)
 	
 	description		= 	name;
 	COUNT[5]		=	value;
+};
+///******************************************************************************************
+///	Feather
+///******************************************************************************************
+instance ItAt_Feather (ItemPR_AnimalTrophy)
+{
+	name 			=	"Pióro";
+	value 			=	2;
+	visual 			=	"ItAt_Feather.3DS";
+	
+	description		= 	name;
+	COUNT[5]		= 	value;
 };

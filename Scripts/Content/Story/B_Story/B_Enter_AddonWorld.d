@@ -172,11 +172,11 @@ func void B_ENTER_ADDONWORLD_Kapitel_10()
 		Wld_InsertNpc (DragonSnapper, "ADW_VALLEY_PATH_047_D");
 		Wld_InsertNpc (DragonSnapper, "ADW_VALLEY_PATH_047_D");
 		
-		Wld_InsertNpc (Scavenger_Demon, "ADW_VALLEY_PATH_047_G");
-		Wld_InsertNpc (Scavenger_Demon, "ADW_VALLEY_PATH_047_G");
-		Wld_InsertNpc (Scavenger_Demon, "ADW_VALLEY_PATH_038_E");
-		Wld_InsertNpc (Scavenger_Demon, "ADW_VALLEY_PATH_038_E");
-		Wld_InsertNpc (Scavenger_Demon, "ADW_VALLEY_PATH_038_J");
+		Wld_InsertNpc (Scavenger_Alpha, "ADW_VALLEY_PATH_047_G");
+		Wld_InsertNpc (Scavenger_Alpha, "ADW_VALLEY_PATH_047_G");
+		Wld_InsertNpc (Scavenger_Alpha, "ADW_VALLEY_PATH_038_E");
+		Wld_InsertNpc (Scavenger_Alpha, "ADW_VALLEY_PATH_038_E");
+		Wld_InsertNpc (Scavenger_Alpha, "ADW_VALLEY_PATH_038_J");
 		
 		Wld_InsertNpc (Skeleton_Mage, "ADW_VALLEY_PATH_131");
 		Wld_InsertNpc (Skeleton_Mage, "ADW_VALLEY_PATH_132_A");

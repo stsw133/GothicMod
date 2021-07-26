@@ -29,7 +29,7 @@ instance PC_Tabak_End (C_Info)
 	description							=	DIALOG_END;
 };
 ///******************************************************************************************
-instance PC_Tabak_Apple (C_INFO)
+instance PC_Tabak_Apple (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -56,7 +56,7 @@ func void PC_Tabak_Apple_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Pear (C_INFO)
+instance PC_Tabak_Pear (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -83,7 +83,7 @@ func void PC_Tabak_Pear_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Coconut (C_INFO)
+instance PC_Tabak_Coconut (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
@@ -110,7 +110,7 @@ func void PC_Tabak_Coconut_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Mushroom01 (C_INFO)
+instance PC_Tabak_Mushroom01 (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
@@ -137,7 +137,7 @@ func void PC_Tabak_Mushroom01_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Mushroom02 (C_INFO)
+instance PC_Tabak_Mushroom02 (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
@@ -164,7 +164,7 @@ func void PC_Tabak_Mushroom02_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Honey (C_INFO)
+instance PC_Tabak_Honey (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	4;
@@ -191,7 +191,7 @@ func void PC_Tabak_Honey_Info()
 	};
 };
 ///******************************************************************************************
-instance PC_Tabak_Chocolate (C_INFO)
+instance PC_Tabak_Chocolate (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	5;

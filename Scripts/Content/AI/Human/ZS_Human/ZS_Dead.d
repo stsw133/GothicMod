@@ -22,13 +22,10 @@ func void ZS_Dead()
 	
 	if (self.aivar[AIV_MM_REAL_ID] == ID_SWAMPDRONE)
 	{
-		if (Npc_GetDistToNpc(self, other) < 300)
+		if (Npc_GetDistToNpc(self, hero) < 300)
 		{
-			other.attribute[ATR_HITPOINTS] -= other.attribute[ATR_HITPOINTS]/5;
-			if (Npc_IsPlayer(other))
-			{
-				MOD_PoisonON();
-			};
+			hero.attribute[ATR_HITPOINTS] -= hero.attribute[ATR_HITPOINTS_MAX]/5;
+			MOD_PoisonON(hero);
 		};
 	};
 	

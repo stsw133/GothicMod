@@ -589,7 +589,7 @@ func void Func_All_Items_Artifacts (var C_NPC slf)
 	CreateInvItem (slf, ItBe_Djg_05);
 	CreateInvItem (slf, ItBe_Mag_05);
 	CreateInvItem (slf, ItBe_Pal_05);
-	CreateInvItem (slf, ItBe_Asa_05);
+	CreateInvItem (slf, ItBe_Ako_05);
 	CreateInvItem (slf, ItBe_Hp_05);
 	CreateInvItem (slf, ItBe_Mana_05);
 	CreateInvItem (slf, ItBe_Str_05);
@@ -754,6 +754,7 @@ func void Func_All_Items_AnimalTrophy (var C_NPC slf)
 	CreateInvItems (slf, ItAt_CrawlerMandibles, 10);
 	
 	CreateInvItems (slf, ItAt_CrawlerPlate, 10);
+	
 	CreateInvItems (slf, ItAt_DragonScale, 10);
 	
 	CreateInvItems (slf, ItAt_ShadowHorn, 10);
@@ -766,12 +767,14 @@ func void Func_All_Items_AnimalTrophy (var C_NPC slf)
 	
 	CreateInvItems (slf, ItAt_Blood, 10);
 	CreateInvItems (slf, ItAt_DragonBlood, 10);
+	
 	CreateInvItems (slf, ItAt_SkeletonBone, 10);
 	CreateInvItems (slf, ItAt_SkeletonSkull, 10);
 	
-	CreateInvItems (slf, ItAt_Feather, 10);
 	CreateInvItems (slf, ItAt_CrawlerEgg, 10);
 	CreateInvItems (slf, ItAt_DragonEgg_MIS, 10);
+	
+	CreateInvItems (slf, ItAt_Feather, 10);
 };
 ///******************************************************************************************
 func void Func_All_Items_Written (var C_NPC slf)
@@ -805,14 +808,9 @@ func void Func_All_Items_Written (var C_NPC slf)
 	/// Kamienne tablice
 	CreateInvItem (slf, ItWr_StonePlate_HP);
 	CreateInvItem (slf, ItWr_StonePlate_Mana);
-	CreateInvItem (slf, ItWr_StonePlate_Energy);
 	CreateInvItem (slf, ItWr_StonePlate_STR);
 	CreateInvItem (slf, ItWr_StonePlate_DEX);
 	CreateInvItem (slf, ItWr_StonePlate_Power);
-	CreateInvItem (slf, ItWr_StonePlate_1h);
-	CreateInvItem (slf, ItWr_StonePlate_2h);
-	CreateInvItem (slf, ItWr_StonePlate_Bow);
-	CreateInvItem (slf, ItWr_StonePlate_CBow);
 	
 	/// Przepisy
 	
@@ -888,9 +886,8 @@ func void Func_All_Items_Misc (var C_NPC slf)
 	
 	CreateInvItems (slf, ItMi_IronNugget, 10);
 	CreateInvItems (slf, ItMi_GoldNugget_Addon, 10);
-	CreateInvItem (slf, ItMi_Nugget);
-	CreateInvItem (slf, ItMi_RedNugget);
-	CreateInvItem (slf, ItMi_Zeitspalt_Addon);
+	CreateInvItems (slf, ItMi_Nugget, 10);
+	CreateInvItems (slf, ItMi_RedNugget, 10);
 	
 	CreateInvItems (slf, ItMi_Ink, 10);
 	CreateInvItems (slf, ItMi_Pitch, 10);
@@ -900,16 +897,14 @@ func void Func_All_Items_Misc (var C_NPC slf)
 	CreateInvItems (slf, ItMi_Sulfur, 10);
 	CreateInvItems (slf, ItMi_RockCrystal, 10);
 	
-	CreateInvItem (slf, ItMi_WhitePearl);
-	CreateInvItem (slf, ItMi_DarkPearl);
-	CreateInvItems (slf, ItMi_Shell, 10);
+	CreateInvItems (slf, ItMi_WhitePearl, 10);
+	CreateInvItems (slf, ItMi_DarkPearl, 10);
 	
 	CreateInvItems (slf, ItMi_EmptyBottle, 10);
 	CreateInvItems (slf, ItMi_Flask, 10);
 	CreateInvItems (slf, ItMi_HolyWater, 10);
 	CreateInvItems (slf, ItMi_InnosStatue, 10);
 	CreateInvItems (slf, ItKe_Lockpick, 10);
-	CreateInvItems (slf, ItMi_MagicStone, 10);
 	CreateInvItems (slf, ItMi_Scroll, 10);
 	CreateInvItems (slf, ItMi_RuneBlank, 10);
 	CreateInvItems (slf, ItMi_Wood, 10);

@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_CaptainConditions
 ///******************************************************************************************
-func int B_CaptainConditions (var C_NPC Captain)
+func int B_CaptainConditions (var C_Npc Captain)
 {
  	if (Kapitel == 11)
  	&& (SCGotCaptain)

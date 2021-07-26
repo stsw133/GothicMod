@@ -15,11 +15,11 @@ func int C_ScHasBeliarsWeapon()
 ///******************************************************************************************
 ///	C_IsItemBeliarsWeapon
 ///******************************************************************************************
-func int C_IsItemBeliarsWeapon(var C_ITEM Weap)
+func int C_IsItemBeliarsWeapon(var C_Item Weap)
 {
-	if (Hlp_IsItem(Weap,ItMw_BeliarWeapon_Raven) == true)
-	|| (Hlp_IsItem(Weap,ItMw_BeliarWeapon) == true)
-	|| (Hlp_IsItem(Weap,ItRu_BeliarRage) == true)
+	if (Hlp_IsItem(Weap,ItMw_BeliarWeapon_Raven))
+	|| (Hlp_IsItem(Weap,ItMw_BeliarWeapon))
+	|| (Hlp_IsItem(Weap,ItRu_BeliarRage))
 	{
 		return true;
 	};
@@ -31,9 +31,7 @@ func int C_IsItemBeliarsWeapon(var C_ITEM Weap)
 ///******************************************************************************************
 func int C_ScHasReadiedBeliarsWeapon()
 {
-	var C_ITEM ReadyWeap;
-	ReadyWeap = Npc_GetReadiedWeapon(hero);
-	
+	var C_ITEM ReadyWeap; ReadyWeap = Npc_GetReadiedWeapon(hero);
 	if (C_IsItemBeliarsWeapon(ReadyWeap))
 	{
 		return true;
@@ -46,9 +44,7 @@ func int C_ScHasReadiedBeliarsWeapon()
 ///******************************************************************************************
 func int C_ScHasEquippedBeliarsWeapon()
 {
-	var C_ITEM EquipWeap;
-	EquipWeap = Npc_GetEquippedMeleeWeapon(hero);
-	
+	var C_ITEM EquipWeap; EquipWeap = Npc_GetEquippedMeleeWeapon(hero);
 	if (C_IsItemBeliarsWeapon(EquipWeap))
 	{
 		return true;
@@ -85,7 +81,7 @@ func void B_UpgradeBeliarsWeapon()
 	var int BeliarsTribute;
 	var string concatText;
 	
-	BeliarsTribute = (hero.level - BeliarWeapon_LastUpgradeLvl)*HP_PER_LP;
+	BeliarsTribute = (hero.level - BeliarWeapon_LastUpgradeLvl) * HP_PER_LP;
 	hero.attribute[ATR_HITPOINTS_MAX] -= BeliarsTribute;
 	
 	if (BeliarsTribute > 0)
@@ -94,23 +90,13 @@ func void B_UpgradeBeliarsWeapon()
 		PrintScreen	(concatText, -1, -1, FONT_Screen, 4);
 	};
 	
-	BeliarDamageChance = (hero.level/2);
+	BeliarDamageChance = (hero.level / 2);
 	BeliarWeapon_LastUpgradeLvl = hero.level;
 	
-	if (hero.guild == GIL_KDF)
-	{
-		CreateInvItem (hero, ItRu_BeliarRage);
-		
-		Wld_PlayEffect ("spellFX_BeliarsWeapon_Upgrate", self, self, 0, 0, 0, false);
-		Snd_Play("CS_Prayer_WaveOfInsanity");
-		BeliarsWeaponUpgrated = true;
-	}
-	else
-	{
-		CreateInvItem (hero, ItMw_BeliarWeapon);
-		
-		Wld_PlayEffect ("spellFX_BeliarsWeapon_Upgrate", self, self, 0, 0, 0, false);
-		Snd_Play("CS_Prayer_WaveOfInsanity");
-		BeliarsWeaponUpgrated = true;
-	};
+	if (hero.guild == GIL_KDF)	{	CreateInvItem (hero, ItRu_BeliarRage);		}
+	else						{	CreateInvItem (hero, ItMw_BeliarWeapon);	};
+	
+	Wld_PlayEffect ("spellFX_BeliarsWeapon_Upgrate", self, self, 0, 0, 0, false);
+	Snd_Play("CS_Prayer_WaveOfInsanity");
+	BeliarsWeaponUpgrated = true;
 };

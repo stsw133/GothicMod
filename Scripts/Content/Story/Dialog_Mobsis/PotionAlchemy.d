@@ -352,31 +352,31 @@ func void PC_PotionAlchemy_Perm_Start_Info()
 	Info_AddChoice (PC_PotionAlchemy_Perm_Start, DIALOG_BACK, PC_ItPo_Perm_BACK);
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_MegaDrink])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Special_Start, "Mikstura ze smoczych jaj (10 smoczych jaj, czarna per³a, siarka, rtêæ)", PC_ItPo_MegaDrink);
+		Info_AddChoice (PC_PotionAlchemy_Special_Start, "Mikstura ze smoczych jaj (10 smoczych jaj, czarna per³a, siarka, woda)", PC_ItPo_MegaDrink);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_Fire])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir odpornoœci na ogieñ (s³oneczny aloes, szczaw królewski, rtêæ)", PC_ItPo_Perm_Power);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir odpornoœci na ogieñ (s³oneczny aloes, szczaw królewski, woda)", PC_ItPo_Perm_Power);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_Power])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir mocy (wampirza ró¿a, szczaw królewski, rtêæ)", PC_ItPo_Perm_Power);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir mocy (wampirza ró¿a, szczaw królewski, woda)", PC_ItPo_Perm_Power);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_DEX])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir zrêcznoœci (goblinia jagoda, szczaw królewski, rtêæ)", PC_ItPo_Perm_DEX);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir zrêcznoœci (goblinia jagoda, szczaw królewski, woda)", PC_ItPo_Perm_DEX);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_STR])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir si³y (smoczy korzeñ, szczaw królewski, rtêæ)", PC_ItPo_Perm_STR);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir si³y (smoczy korzeñ, szczaw królewski, woda)", PC_ItPo_Perm_STR);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_Mana])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir ducha (wilcza miêta, szczaw królewski, rtêæ)", PC_ItPo_Perm_Mana);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir ducha (wilcza miêta, szczaw królewski, woda)", PC_ItPo_Perm_Mana);
 	};
 	if (PLAYER_TALENT_SMITH[ALCHEMY_Perm_Health])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, szczaw królewski, rtêæ)", PC_ItPo_Perm_Health);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, szczaw królewski, woda)", PC_ItPo_Perm_Health);
 	};
 };
 ///******************************************************************************************
@@ -386,11 +386,11 @@ func void PC_ItPo_Perm_BACK()
 };
 func void PC_ItPo_Perm_Health()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
 		
@@ -406,11 +406,11 @@ func void PC_ItPo_Perm_Health()
 };
 func void PC_ItPo_Perm_Mana()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
 		
@@ -426,11 +426,11 @@ func void PC_ItPo_Perm_Mana()
 };
 func void PC_ItPo_Perm_STR()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Strength_Herb_01) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Strength_Herb_01);
 		
@@ -446,11 +446,11 @@ func void PC_ItPo_Perm_STR()
 };
 func void PC_ItPo_Perm_DEX()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Dex_Herb_01) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Dex_Herb_01);
 		
@@ -466,11 +466,11 @@ func void PC_ItPo_Perm_DEX()
 };
 func void PC_ItPo_Perm_Power()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Power_Herb_01) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
@@ -486,11 +486,11 @@ func void PC_ItPo_Perm_Power()
 };
 func void PC_ItPo_Perm_Fire()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_SunHerb) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_SunHerb);
 		
@@ -506,12 +506,12 @@ func void PC_ItPo_Perm_Fire()
 };
 func void PC_ItPo_MegaDrink()
 {
-	if (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItAt_DragonEgg_MIS) >= 10)
 	&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
 	&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItMi_Quicksilver);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItems (hero, ItAt_DragonEgg_MIS, 10);
 		Npc_RemoveInvItem (hero, ItMi_DarkPearl);
 		Npc_RemoveInvItem (hero, ItMi_Sulfur);
@@ -539,7 +539,7 @@ instance PC_PotionAlchemy_Transform_Start (C_Info)
 func int PC_PotionAlchemy_Transform_Start_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_POTIONALCHEMY)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 3)
+	&& (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 2)
 	{
 		return true;
 	};
@@ -586,7 +586,7 @@ func void PC_PotionAlchemy_Special_Start_Info()
 	Info_AddChoice (PC_PotionAlchemy_Special_Start, DIALOG_BACK, PC_ItPo_Special_BACK);
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Speed])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Special_Start, "Uleczenie z opêtania (zêbate ziele, cmentarny mech, woda)", PC_ItPo_HealObsession);
+		Info_AddChoice (PC_PotionAlchemy_Special_Start, "Uleczenie z opêtania (serafis, cmentarny mech, woda œwiêcona)", PC_ItPo_HealObsession);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Speed])
 	{
@@ -668,13 +668,13 @@ func void PC_ItPo_Poison()
 };
 func void PC_ItPo_HealObsession()
 {
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
 	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Speed_Herb_01) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Blueplant) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItFo_Water);	CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);	CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Speed_Herb_01);
+		Npc_RemoveInvItem (hero, ItPl_Blueplant);
 		
 		CreateInvItem (hero, ItPo_HealObsession);
 		Print(PRINT_AlchemySuccess);

@@ -6,10 +6,10 @@ var int MIS_KilledDragons;
 var int MIS_AllDragonsDead;
 
 ///******************************************************************************************
-func int B_DragonKillCounter (var C_NPC current_dragon)
+func int B_DragonKillCounter (var C_Npc current_dragon)
 {
 	var C_NPC Ravn; Ravn = Hlp_GetNpc(BDT_1090_Addon_Raven);
-	if ((Hlp_GetInstanceID(current_dragon)) == (Hlp_GetInstanceID(Ravn)))
+	if (Hlp_GetInstanceID(current_dragon) == Hlp_GetInstanceID(Ravn))
 	{
 		if (!RavenIsDead)
 		{
@@ -24,32 +24,34 @@ func int B_DragonKillCounter (var C_NPC current_dragon)
 		MIS_KilledDragons += 1;
 		if (!Npc_IsDead(SwampDragon))
 		{
-			B_SetMonsterAttributes (SwampDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (SwampDragon, 90 + (MIS_KilledDragons * 5));
 		};
 		if (!Npc_IsDead(RockDragon))
 		{
-			B_SetMonsterAttributes (RockDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (RockDragon, 90 + (MIS_KilledDragons * 5));
 		};
 		if (!Npc_IsDead(FireDragon))
 		{
-			B_SetMonsterAttributes (FireDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (FireDragon, 90 + (MIS_KilledDragons * 5));
 		};
 		if (!Npc_IsDead(IceDragon))
 		{
-			B_SetMonsterAttributes (IceDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (IceDragon, 90 + (MIS_KilledDragons * 5));
 		};
 		if (!Npc_IsDead(GoldDragon))
 		{
-			B_SetMonsterAttributes (GoldDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (GoldDragon, 90 + (MIS_KilledDragons * 5));
 		};
+		/*
 		if (!Npc_IsDead(FireDragonIsland))
 		{
-			B_SetMonsterAttributes (FireDragonIsland, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (FireDragonIsland, 90 + (MIS_KilledDragons * 5));
 		};
 		if (!Npc_IsDead(UndeadDragon))
 		{
-			B_SetMonsterAttributes (UndeadDragon, 70 + (MIS_KilledDragons * 5));
+			B_SetAttributesToLevel (UndeadDragon, 90 + (MIS_KilledDragons * 5));
 		};
+		*/
 	};
 	
 	if (!MIS_AllDragonsDead)

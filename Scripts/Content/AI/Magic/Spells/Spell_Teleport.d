@@ -36,7 +36,7 @@ func int Spell_Logic_Teleport (var int manaInvested)
 {
 	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Teleport/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Teleport))
-	&& (self.aivar[AIV_TelStone] > 0)
+	//&& (self.aivar[AIV_TelStone] > 0)
 	{
 		return SPL_SENDCAST;
 	}
@@ -48,6 +48,7 @@ func int Spell_Logic_Teleport (var int manaInvested)
 
 func void Spell_Cast_Teleport()
 {
+/*
 	if (self.aivar[AIV_TelStone] == ItTe_MonasteryUnderground)
 	{
 		if (B_PrintTeleportTooFarAway(NEWWORLD_ZEN, "NW_PAL_SECRETCHAMBER"))
@@ -103,7 +104,7 @@ func void Spell_Cast_Teleport()
 		if (B_PrintTeleportTooFarAway(CurrentLevel, "XXX"))
 		{ return; };
 	};
-	
+*/
 	
 	
 	if (Npc_GetActiveSpellIsScroll(self))

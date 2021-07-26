@@ -1,38 +1,29 @@
-// ************************************************************
-// 			  			Komm mit
-// ************************************************************
-INSTANCE DIA_AkilsSchaf_KommMit (C_INFO)
+///******************************************************************************************
+///	KommMit
+///******************************************************************************************
+instance DIA_AkilsSchaf_KommMit (C_Info)
 {
-	npc			= Follow_Sheep_AKIL;
-	nr			= 1;
-	condition	= DIA_AkilsSchaf_KommMit_Condition;
-	information	= DIA_AkilsSchaf_KommMit_Info;
-
-	description = "Chodü ze mnπ."; 
-};                       
-FUNC INT DIA_AkilsSchaf_KommMit_Condition()
+	npc									=	Follow_Sheep_AKIL;
+	nr									=	1;
+	condition							=	DIA_AkilsSchaf_KommMit_Condition;
+	information							=	DIA_AkilsSchaf_KommMit_Info;
+	description							=	"Chodü ze mnπ."; 
+};
+func int DIA_AkilsSchaf_KommMit_Condition()
 {
-	if (self.aivar[AIV_PARTYMEMBER] == FALSE)
+	if (!self.aivar[AIV_PartyMember])
 	{
-		return TRUE;
+		return true;
 	};
 };
- 
-FUNC VOID DIA_AkilsSchaf_KommMit_Info()
-{	
-	B_KommMit();
-	AI_Output (self, other, "DIA_Liesel_15_00");	//Meeee!
+func void DIA_AkilsSchaf_KommMit_Info()
+{
+	B_Say (other, self, "$ComeWithMe");
+	AI_Output (self, other, "DIA_Liesel_15_00"); //Meeee!
 	
-	self.aivar[AIV_PARTYMEMBER] = TRUE;
+	if (!Npc_IsDead(BDT_1025_Bandit_H))	{	BDT_1025_Bandit_H.aivar[AIV_EnemyOverride] = false;	};
+	if (!Npc_IsDead(BDT_1026_Bandit_H))	{	BDT_1026_Bandit_H.aivar[AIV_EnemyOverride] = false;	};
 	
-	if (Npc_IsDead(BDT_1025_Bandit_H) == FALSE)
-	{
-		BDT_1025_Bandit_H.aivar[AIV_EnemyOverride] = FALSE;  
-	};
-	if (Npc_IsDead(BDT_1026_Bandit_H) == FALSE)
-	{
-		BDT_1026_Bandit_H.aivar[AIV_EnemyOverride] = FALSE;  
-	};
-
-	AI_StopProcessInfos	(self);
+	self.aivar[AIV_PartyMember] = true;
+	AI_StopProcessInfos(self);
 };

@@ -148,32 +148,34 @@ const int	ID_HARE						= 11;
 const int	ID_SPINT					= 12;
 //const int	ID_DEER						= 13;
 //const int	ID_DUCK						= 14;
-const int	ID_RAT						= 15;
-const int	ID_SPIDER					= 16;
+//const int	ID_RAT						= 15;
+//const int	ID_SPIDER					= 16;
 const int	ID_MEATBUG					= 17;
 const int	ID_INKBUG					= 18;
 
 const int	ID_GIANT_RAT				= 21;
 const int	ID_MOLERAT					= 22;
-const int 	ID_SWAMPRAT					= 22;
+//const int	ID_BEAR						= 23;
 
 const int	ID_WOLF						= 31;
-const int 	ID_ICEWOLF					= 31;
 const int	ID_JACKAL					= 32;
-const int	ID_KEILER					= 33;
+const int 	ID_ICEWOLF					= 33;
 const int	ID_WARG						= 34;
 const int	ID_TIGER					= 35;
-const int 	ID_BLOODHOUND				= 35;
-//const int	ID_BEAR						= 36;
+const int 	ID_BLOODHOUND				= 36;
+const int	ID_KEILER					= 37;
 
 const int	ID_GOBBO					= 41;
-const int 	ID_GOBBO_BLACK				= 41;
-const int	ID_GOBBO_BANDIT				= 42;
-const int	ID_GOBBO_WARRIOR			= 43;
+const int 	ID_GOBBO_YELLOW				= 42;
+const int 	ID_GOBBO_BLACK				= 43;
+const int	ID_GOBBO_BANDIT				= 44;
+const int	ID_GOBBO_WARRIOR			= 45;
+const int	ID_GOBBO_SHAMAN				= 46;
+const int 	ID_GOBBO_SKELETON			= 47;
 
 const int	ID_SCAVENGER				= 51;
-const int 	ID_SCAVENGER_DEMON			= 51;
-const int	ID_BITER					= 52;
+const int 	ID_SCAVENGER_DEMON			= 52;
+const int	ID_BITER					= 53;
 
 const int 	ID_GIANT_SPIDER				= 61;
 const int	ID_GIANT_BUG				= 62;
@@ -185,29 +187,34 @@ const int	ID_BLATTCRAWLER				= 66;
 const int 	ID_BLOODFLY					= 71;
 const int 	ID_DRAGONFLY				= 72;
 const int 	ID_SWAMPDRONE				= 73;
+const int 	ID_WISP						= 74;
 
 const int	ID_WARAN					= 81;
-const int	ID_FIREWARAN				= 81;
-const int	ID_LURKER					= 82;
-const int 	ID_SWAMPSHARK				= 83;
-const int 	ID_ALLIGATOR				= 84;
+const int	ID_FIREWARAN				= 82;
+const int	ID_LURKER					= 83;
+const int 	ID_SWAMPSHARK				= 84;
+const int 	ID_ALLIGATOR				= 85;
 
 const int 	ID_SNAPPER					= 91;
 const int   ID_RAZOR					= 92;
 const int 	ID_DRAGONSNAPPER			= 93;
-const int 	ID_ANCIENTSNAPPER			= 94;
+const int 	ID_MONSTERSNAPPER			= 94;
 
 const int 	ID_SKELETON					= 101;
-const int 	ID_GOBBO_SKELETON			= 101;
-const int 	ID_SKELETON_MAGE			= 102;
-const int 	ID_SKELETON_LORD			= 103;
-const int	ID_ZOMBIE					= 104;
-const int	ID_MUMMY					= 105;
+const int 	ID_SKELETON_WARRIOR			= 102;
+const int 	ID_SKELETON_MAGE			= 103;
+const int	ID_SKELETON_DARK			= 104;
+const int 	ID_SKELETON_LORD			= 105;
+const int	ID_ZOMBIE					= 106;
+const int	ID_MUMMY					= 107;
 
 const int 	ID_SHADOWBEAST				= 111;
 const int 	ID_SHADOWBEAST_SKELETON		= 112;
+const int 	ID_SHADOWBEAST_DEMON		= 113;
 
 const int 	ID_HARPY					= 121;
+const int 	ID_VAMPHARPY				= 122;
+const int 	ID_DRAGONHARPY				= 123;
 
 const int 	ID_STONEGUARDIAN			= 131;
 const int 	ID_GARGOYLE					= 132;
@@ -217,17 +224,22 @@ const int	ID_TREANT					= 135;
 
 const int 	ID_TROLL					= 141;
 const int 	ID_TROLL_BLACK				= 142;
+const int 	ID_TROLL_DEMON				= 143;
+const int 	ID_GORILLA					= 144;
 
 const int 	ID_DEMON					= 151;
-const int 	ID_DEMON_LORD				= 151;
-const int	ID_DEMONICON				= 152;
+const int 	ID_DEMON_LORD				= 152;
+const int	ID_DEMONICON				= 153;
 
-const int 	ID_ORCWARRIOR				= 161;
-const int 	ID_ORCSHAMAN				= 162;
-const int 	ID_ORCELITE					= 163;
-const int 	ID_ORCCOMMANDER				= 164;
-const int 	ID_UNDEADORCWARRIOR			= 165;
-const int 	ID_DRACONIAN				= 166;
+const int 	ID_ORC						= 161;
+const int 	ID_ORCSOLDIER				= 162;
+const int 	ID_ORCWARRIOR				= 163;
+const int 	ID_ORCSHAMAN				= 164;
+const int 	ID_ORCELITE					= 165;
+const int 	ID_ORCCOMMANDER				= 166;
+const int 	ID_UNDEADORCWARRIOR			= 167;
+const int 	ID_DRACONIAN				= 168;
+const int 	ID_OGRE						= 169;
 
 const int 	ID_DRAGON					= 171;
 const int 	ID_DRAGON_UNDEAD			= 172;
@@ -236,14 +248,7 @@ const int	ID_SLEEPER					= 173;
 const int	ID_SHADOW					= 181;
 const int	ID_CHAOS					= 182;
 const int	ID_MOROK					= 183;
-const int	ID_SUMMONED					= 183;
-const int 	ID_SUMMONED_GOBBO_SKELETON 	= 183;
-const int 	ID_SUMMONED_WOLF			= 183;
-const int 	ID_SUMMONED_SKELETON		= 183;
-const int 	ID_SUMMONED_GOLEM			= 183;
-const int 	ID_SUMMONED_DEMON			= 183;
-const int	ID_SummonedGuardian			= 183;
-const int	ID_SummonedZombie			= 183;
+const int	ID_SUMMONED					= 184;
 
 const int AIV_MM_LastBody					=	44;
 
@@ -378,11 +383,9 @@ const int AIV_Richness	 					=	89;	/// okreœla wartoœæ w z³ocie ekwipunku NPC'a
 const int AIV_Reserved_90					=	90;
 const int AIV_Reserved_91					=	91;
 const int AIV_Reserved_92					=	92;
-
-const int AIV_TelStone						=	93; /// okreœla który kamieñ teleportacji ma za³o¿ony NPC
-const int AIV_TrfStone						=	94; /// okreœla który kamieñ transformacji ma za³o¿ony NPC
-const int AIV_SumStone						=	95; /// okreœla który kamieñ przyzwania ma za³o¿ony NPC
-
+const int AIV_Reserved_93					=	93;
+const int AIV_Reserved_94					=	94;
+const int AIV_Reserved_95					=	95;
 const int AIV_Reserved_96					=	96;
 const int AIV_Reserved_97					=	97;
 const int AIV_Reserved_98					=	98;
@@ -501,7 +504,7 @@ const int NPC_TIME_FOLLOW			=	10;
 ///	Mindestschaden
 ///******************************************************************************************
 
-const int NPC_MINIMAL_DAMAGE		=	5;
+const int NPC_MINIMAL_DAMAGE		=	4;	//5
 const int NPC_MINIMAL_PERCENT		=	20;	//10
 
 ///******************************************************************************************
@@ -553,13 +556,12 @@ const int default			=	0;
 
 const int false				=	0;
 const int true				=	1;
-const int DONE				=	2;
+
+const int decrease			=	0;
+const int increase			=	1;
 
 const int LOOP_CONTINUE 	=	0;
 const int LOOP_END			=	1;
-
-const int DECREASE			=	0;
-const int INCREASE			=	1;
 
 ///******************************************************************************************
 
@@ -599,7 +601,7 @@ const int MOBSI_PrayShrine		=	5;
 const int MOBSI_GoldHacken		=	6;
 const int MOBSI_PrayIdol		=	7;
 
-const int MOBSI_iMonologue		=	8;
+const int MOBSI_LearnAttributes	=	8;
 
 const int MOBSI_OreHacken		=	9;
 const int MOBSI_MakeWood		=	10;

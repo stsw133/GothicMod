@@ -8,25 +8,25 @@ instance HC (Npc_Default)
 	voice								=	15;
 	flags								=	0;
 	npctype								=	NPCTYPE_MAIN;
-
+	
 	/// ------ Aivars ------
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_ToughGuyNewsOverride]		=	true;
 	aivar[AIV_FollowDist]				=	300;
-
+	
 	/// ------ Attributes ------
 	B_SetAttributesToLevel (self, MAX_LEVEL);
 	B_SetFightSkills (self, FightTalent_Weak);
-
+	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
-
+	
 	/// ------ Visuals ------
 	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);
-
+	
 	/// ------ Rtn ------
 	daily_routine						=	Rtn_Start_50;
 };
@@ -103,7 +103,7 @@ func void Change_HC_Visual()
 	{
 		self.aivar[AIV_BodyTex] = BodyTex_MAX-1;
 	};
-
+	
 	if (self.aivar[AIV_SkinTex] < 0)
 	{
 		self.aivar[AIV_SkinTex] = 0;
@@ -112,7 +112,7 @@ func void Change_HC_Visual()
 	{
 		self.aivar[AIV_SkinTex] = BodySkin_MAX-1;
 	};
-
+	
 	if (self.aivar[AIV_FaceTex] < 0)
 	{
 		self.aivar[AIV_FaceTex] = 0;
@@ -121,31 +121,31 @@ func void Change_HC_Visual()
 	{
 		self.aivar[AIV_FaceTex] = FaceTex_MAX-1;
 	};
-
+	
 	/// gender and races differencies
 	self.aivar[AIV_TeethTex] = self.aivar[AIV_Gender]*Teeth_Pretty;
 	if (self.aivar[AIV_Race] == RACE_Zombie)
 	{
 		self.aivar[AIV_TeethTex] = Teeth_Bad;
 	};
-
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
+	
+	var oCNpc npc; npc = Hlp_GetNpc(self);
 	B_UpdateNpcVisual(self);
 	
-	PrintScreen	("Rasa:", -1, 10, "FONT_OLD_10_WHITE.TGA", 2);
-	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 12, "FONT_OLD_10_WHITE.TGA", 2);
+	PrintScreen	("Rasa:", -1, 10, "FONT_OLD_10_WHITE.TGA", 4);
+	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 12, "FONT_OLD_10_WHITE.TGA", 4);
 	
-	PrintScreen	("Twarz:", -1, 16, "FONT_OLD_10_WHITE.TGA", 2);
-	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 18, "FONT_OLD_10_WHITE.TGA", 2);
+	PrintScreen	("Twarz:", -1, 16, "FONT_OLD_10_WHITE.TGA", 4);
+	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 18, "FONT_OLD_10_WHITE.TGA", 4);
 	
-	PrintScreen	("G³owa:", -1, 22, "FONT_OLD_10_WHITE.TGA", 2);
-	PrintScreen	(npc.name_3, -1, 24, "FONT_OLD_10_WHITE.TGA", 2);
+	PrintScreen	("G³owa:", -1, 22, "FONT_OLD_10_WHITE.TGA", 4);
+	PrintScreen	(npc.name_4, -1, 24, "FONT_OLD_10_WHITE.TGA", 4);
 	
-	PrintScreen	("Cia³o:", -1, 28, "FONT_OLD_10_WHITE.TGA", 2);
-	PrintScreen	(IntToString(self.aivar[AIV_BodyTex]), -1, 30, "FONT_OLD_10_WHITE.TGA", 2);
+	PrintScreen	("Cia³o:", -1, 28, "FONT_OLD_10_WHITE.TGA", 4);
+	PrintScreen	(IntToString(self.aivar[AIV_BodyTex]), -1, 30, "FONT_OLD_10_WHITE.TGA", 4);
 	
-	PrintScreen	("Skóra:", -1, 34, "FONT_OLD_10_WHITE.TGA", 2);
-	PrintScreen	(IntToString(self.aivar[AIV_SkinTex]), -1, 36, "FONT_OLD_10_WHITE.TGA", 2);
+	PrintScreen	("Skóra:", -1, 34, "FONT_OLD_10_WHITE.TGA", 4);
+	PrintScreen	(IntToString(self.aivar[AIV_SkinTex]), -1, 36, "FONT_OLD_10_WHITE.TGA", 4);
 };
 ///******************************************************************************************
 instance DIA_HC_EXIT (C_INFO)
@@ -176,7 +176,7 @@ instance DIA_HC_Race (C_INFO)
 func void DIA_HC_Race_Info()
 {
 	Info_ClearChoices(DIA_HC_Race);
-
+	
 	Info_AddChoice (DIA_HC_Race, DIALOG_BACK, DIA_HC_Race_BACK);
 	Info_AddChoice (DIA_HC_Race, "Bestia", DIA_HC_Race_Beast);
 	Info_AddChoice (DIA_HC_Race, "Zombie", DIA_HC_Race_Zombie);
@@ -271,7 +271,7 @@ instance DIA_HC_Face (C_INFO)
 func void DIA_HC_Face_Info()
 {
 	Info_ClearChoices(DIA_HC_Face);
-
+	
 	Info_AddChoice (DIA_HC_Face, DIALOG_BACK, DIA_HC_Face_BACK);
 	Info_AddChoice (DIA_HC_Face, "Domyœlna twarz", DIA_HC_ResetFace);
 	Info_AddChoice (DIA_HC_Face, "Poprzednie 50 twarzy", DIA_HC_PreviousFace50);
@@ -382,172 +382,220 @@ func void DIA_HC_Choose_HeadMesh_Info()
 ///******************************************************************************************
 func void DIA_HC_Choose_HeadMesh_W_1()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_2()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe1";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe1";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_3()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe2";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe2";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_4()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe3";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe3";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_5()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe4";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe4";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_6()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe5";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe5";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_7()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe6";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe6";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_8()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe7";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe7";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_9()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Babe8";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Babe8";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_W_10()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_BabeHair";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_BabeHair";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 ///******************************************************************************************
 func void DIA_HC_Choose_HeadMesh_M_1()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Bald";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Bald";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_2()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_FatBald";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_FatBald";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_3()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Fighter";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Fighter";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_4()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Pony";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Pony";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_5()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Thief";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Thief";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_6()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Psionic";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Psionic";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_7()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Beard";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Beard";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_8()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Flail";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Flail";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_9()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Flex";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Flex";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_10()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Lutter";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Lutter";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_11()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Pfeiffer";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Pfeiffer";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_12()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Pymonte";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Pymonte";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_13()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Thomas";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Thomas";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_M_14()
 {
-//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
-	var oCNpc npc;	npc = Hlp_GetNpc(self);
-	npc.name_3 = "Hum_Head_Unicorn";
+	var oCNpc npc; npc = Hlp_GetNpc(self);
+	npc.name_4 = "Hum_Head_Unicorn";
 	Change_HC_Visual();
+	
+//	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+	DIA_HC_Choose_HeadMesh_Info();
 };
 func void DIA_HC_Choose_HeadMesh_Back()
 {
@@ -568,7 +616,7 @@ instance DIA_HC_Body (C_INFO)
 func void DIA_HC_Body_Info()
 {
 	Info_ClearChoices(DIA_HC_Body);
-
+	
 	Info_AddChoice (DIA_HC_Body, DIALOG_BACK, DIA_HC_Body_BACK);
 	Info_AddChoice (DIA_HC_Body, "Domyœlna tekstura cia³a", DIA_HC_DefaultBody);
 	Info_AddChoice (DIA_HC_Body, "Poprzednie 5 tekstur cia³a", DIA_HC_PreviousBody5);
@@ -626,7 +674,7 @@ instance DIA_HC_Skin (C_INFO)
 func void DIA_HC_Skin_Info()
 {
 	Info_ClearChoices(DIA_HC_Skin);
-
+	
 	Info_AddChoice (DIA_HC_Skin, DIALOG_BACK, DIA_HC_Skin_BACK);
 	Info_AddChoice (DIA_HC_Skin, "Domyœlna tekstura skóry", DIA_HC_DefaultSkin);
 	Info_AddChoice (DIA_HC_Skin, "Poprzednia tekstura skóry", DIA_HC_PreviousSkin);

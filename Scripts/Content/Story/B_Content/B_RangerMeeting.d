@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_RangerMeeting
 ///******************************************************************************************
-func void B_MakeRangerReadyForMeeting (VAR C_NPC Ranger)	
+func void B_MakeRangerReadyForMeeting (var C_Npc Ranger)	
 {				
 	//CreateInvItems (Ranger, ITAR_WaterRanger, 1);
 	//AI_UnequipArmor(Ranger);
@@ -10,7 +10,7 @@ func void B_MakeRangerReadyForMeeting (VAR C_NPC Ranger)
 };
 
 ///******************************************************************************************
-func void B_MakeRangerReadyToLeaveMeeting (VAR C_NPC Ranger)
+func void B_MakeRangerReadyToLeaveMeeting (var C_Npc Ranger)
 {
 	//AI_UnequipArmor(Ranger);
 	//Npc_RemoveInvItems (Ranger, ITAR_WaterRanger, Npc_HasItems(Ranger, ITAR_WaterRanger));
@@ -73,7 +73,7 @@ func void B_RangerMeetingParking()
 {
 	if (MIS_Addon_Cavalorn_GetOrnamentFromPAL != 0)
 	{
-		B_StartOtherRoutine (Cavalorn, "Stadt");	
+		B_StartOtherRoutine (Cavalorn, "Stadt");
 	};
 	
 	B_StartOtherRoutine (Orlan, "START");
@@ -111,7 +111,7 @@ func void B_SchlussMitRangerMeeting()
 	
 	B_StartOtherRoutine	(Lares, "Start");
 	B_StartOtherRoutine	(Cord, "Start");
-
+	
 	if (!Gaan.aivar[AIV_TalkedToPlayer])
 	{
 		B_StartOtherRoutine (Gaan, "PreStart");
@@ -120,7 +120,7 @@ func void B_SchlussMitRangerMeeting()
 	{
 		B_StartOtherRoutine (Gaan, "Start");
 	};
-
+	
 	if (MIS_Addon_Martin_GetRangar == 0)
 	{
 		B_StartOtherRoutine (Martin, "PreStart");
@@ -129,7 +129,7 @@ func void B_SchlussMitRangerMeeting()
 	{
 		B_StartOtherRoutine (Martin, "Start");
 	};
-
+	
 	B_StartOtherRoutine	(Orlan, "Start");
 	Lares_HaltsMaul = LOG_OBSOLETE;
 };

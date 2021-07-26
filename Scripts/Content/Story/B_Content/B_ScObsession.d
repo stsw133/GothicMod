@@ -6,7 +6,7 @@ var int SC_IsObsessed;
 var int SC_ObsessionCounter;
 
 ///******************************************************************************************
-func void B_ClearSCObsession (var C_NPC heiler)
+func void B_ClearSCObsession (var C_Npc heiler)
 {
 	if (Hlp_GetInstanceID(heiler) != Hlp_GetInstanceID(hero))
 	{
@@ -19,7 +19,7 @@ func void B_ClearSCObsession (var C_NPC heiler)
 };
 
 ///******************************************************************************************
-func void B_SCIsObsessed (var C_NPC dementor)
+func void B_SCIsObsessed (var C_Npc dementor)
 {
 	if (Hlp_GetInstanceID(dementor) != Hlp_GetInstanceID(hero))
 	{

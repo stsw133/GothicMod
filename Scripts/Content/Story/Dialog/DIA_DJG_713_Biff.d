@@ -1,7 +1,4 @@
-func void B_KommMit ()
-{
-	AI_Output (other, self,"DIA_AkilsSchaf_KommMit_15_00");	//ChodŸmy!
-};
+
 func void B_BIFF_VERARSCHEN ()
 {
 	AI_Output			(self, other, "DIA_Biff_ARBEITEN_lebenlassen_07_01"); //Nie potrzebujê ciê, ¿ebyœ robi³ ze mnie g³upca.
@@ -475,7 +472,7 @@ func int DIA_Biff_Stay_AwayFromOC_Condition ()
 
 func void DIA_Biff_Stay_AwayFromOC_Info ()
 {
-	B_KommMit ();
+	AI_Output (other, self,"DIA_AkilsSchaf_KommMit_15_00");	//ChodŸmy!
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Follow");
 	DJG_Biff_Stay = FALSE;

@@ -11,7 +11,7 @@ instance DIA_Teach_JOIN (C_INFO)
 };
 func int DIA_Teach_JOIN_Condition()
 {
-	if (self.aivar[AIV_CanTeach] > false && self.aivar[AIV_CanTeach] < done)
+	if (self.aivar[AIV_CanTeach] > 0)
 	{
 		return true;
 	};

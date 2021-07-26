@@ -34,7 +34,7 @@ func void PC_SmithWeapon_End_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_1hSwords (C_INFO)
+instance PC_SmithWeapon_1hSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
@@ -163,7 +163,7 @@ func void PC_ItMw_ElBastardo()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_2hSwords (C_INFO)
+instance PC_SmithWeapon_2hSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
@@ -234,7 +234,7 @@ func void PC_ItMw_Avalon()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_1hMagicSwords (C_INFO)
+instance PC_SmithWeapon_1hMagicSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
@@ -375,7 +375,7 @@ func void PC_ItMw_1H_Special_05()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_2hMagicSwords (C_INFO)
+instance PC_SmithWeapon_2hMagicSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	4;
@@ -516,7 +516,7 @@ func void PC_ItMw_2H_Special_05()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_1hFireSwords (C_INFO)
+instance PC_SmithWeapon_1hFireSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	5;
@@ -528,7 +528,7 @@ instance PC_SmithWeapon_1hFireSwords (C_INFO)
 func int PC_SmithWeapon_1hFireSwords_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SMITHWEAPON)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 3)
+	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 2)
 	{
 		return true;
 	};
@@ -657,7 +657,7 @@ func void PC_ItMw_1H_Ignite_05()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-instance PC_SmithWeapon_2hFireSwords (C_INFO)
+instance PC_SmithWeapon_2hFireSwords (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	6;
@@ -669,7 +669,7 @@ instance PC_SmithWeapon_2hFireSwords (C_INFO)
 func int PC_SmithWeapon_2hFireSwords_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SMITHWEAPON)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 3)
+	&& (Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) >= 2)
 	{
 		return true;
 	};

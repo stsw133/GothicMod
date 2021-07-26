@@ -18,7 +18,8 @@ func void ZS_MM_Attack()
 	
 	B_ValidateOther();
 	
-	if (self.guild == GIL_SHEEP)
+	if (self.guild == GIL_SHEEP || self.guild == GIL_LIVESTOCK)
+	|| (self.guild == GIL_WILD)
 	{
 		Npc_ClearAIQueue 	(self);
 		B_ClearPerceptions 	(self);

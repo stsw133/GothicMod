@@ -1,13 +1,13 @@
 ///******************************************************************************************
 ///	B_CaptainCallsAllOnBoard
 ///******************************************************************************************
-func void B_CaptainCallsAllOnBoard (var C_NPC Captain)
+func void B_CaptainCallsAllOnBoard (var C_Npc Captain)
 {
 	B_GiveInvItems (hero, Captain, ItWr_Seamap_Irdorath, 1);
 	CreateInvItems (Captain, ItKe_Ship_Levelchange_MIS, 1);
 	B_GiveInvItems (Captain, other, ItKe_Ship_Levelchange_MIS, 1);
 	B_StartOtherRoutine	(Captain, "AllOnBoard");
-
+	
  	if (Lee_IsOnBoard		== LOG_SUCCESS)	{	B_StartOtherRoutine (Lee,				"Ship");	};
 	if (MiltenNW_IsOnBoard	== LOG_SUCCESS)	{	B_StartOtherRoutine (MiltenNW,			"Ship");	};
 	if (Lester_IsOnBoard	== LOG_SUCCESS)	{	B_StartOtherRoutine (Lester,			"Ship");	};
@@ -21,6 +21,6 @@ func void B_CaptainCallsAllOnBoard (var C_NPC Captain)
 	if (Vatras_IsOnBoard 	== LOG_SUCCESS)	{	B_StartOtherRoutine (Vatras,			"Ship");	};
 	if (Angar_IsOnBoard 	== LOG_SUCCESS)	{	B_StartOtherRoutine (Angar_NW,			"Ship");	};
 	if (Girion_IsOnBoard 	== LOG_SUCCESS)	{	B_StartOtherRoutine (Girion,			"Ship");	};
-
+	
  	MIS_ReadyforChapter6 = true;
 };

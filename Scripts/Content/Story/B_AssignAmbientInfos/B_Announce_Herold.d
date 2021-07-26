@@ -3,16 +3,15 @@
 ///******************************************************************************************
 func void B_Announce_Herold()
 {
-	var int randy;
 	if (C_BodystateContains(self, BS_SIT))
 	{
 		AI_StandUp	(self);
 		B_TurnToNpc	(self, hero);
 	};
 	
-	/// ------ NSC steckt ggf. Waffe weg ------
-	AI_RemoveWeapon(self);
+	var int rand; rand = Hlp_Random(5);
 	
+	AI_RemoveWeapon		(self);
 	CreateInvItem		(self, Fakescroll);
 	AI_UseItemToState	(self, Fakescroll, 1);
 	
@@ -20,23 +19,22 @@ func void B_Announce_Herold()
 	
 	if (Kapitel <= 8)
 	{
-		randy = Hlp_Random(5);
-		if (randy == 0)
+		if (rand == 0)
 		{
 			AI_Output (self, self, "DIA_Herold_Announce_04_01"); //W zwi¹zku z zaistnia³¹ sytuacj¹, dla w³asnego bezpieczeñstwa obywatele powinni unikaæ lasów i bezdro¿y dooko³a miasta.
 			AI_Output (self, self, "DIA_Herold_Announce_04_02"); //Co wiêcej, zabrania siê wszelkich kontaktów ze zbuntowanymi wieœniakami.
 		}
-		else if (randy == 1)
+		else if (rand == 1)
 		{
 			AI_Output (self, self, "DIA_Herold_Announce_04_03"); //Od chwili obecnej, Lord Andre przejmuje wy³¹czne dowództwo nad nasz¹ stra¿¹.
 			AI_Output (self, self, "DIA_Herold_Announce_04_04"); //Wszyscy mieszkañcy, którzy posiadaj¹ jakiekolwiek przeszkolenie w zakresie walki, niech wstêpuj¹ w szeregi stra¿y.
 		}
-		else if (randy == 2)
+		else if (rand == 2)
 		{
 			AI_Output (self, self, "DIA_Herold_Announce_04_05"); //Wszelkie œrodki bezpieczeñstwa dotycz¹ce górnego miasta zostan¹ jeszcze bardziej zaostrzone.
 			AI_Output (self, self, "DIA_Herold_Announce_04_06"); //Stra¿nicy, strzeg¹cy bram, nie bêd¹ przepuszczaæ nikogo, kto nie posiada zezwolenia na wejœcie do miasta.
 		}
-		else if (randy == 3)
+		else if (rand == 3)
 		{
 			AI_Output (self, self, "DIA_Herold_Announce_04_07"); //We wszystkich miastach i regionach królestwa zostaje wprowadzony stan wojenny.
 			AI_Output (self, self, "DIA_Herold_Announce_04_08"); //Sêdziowie cywilni zostaj¹ pozbawieni swych praw, a ich obowi¹zki przejmuj¹ królewscy paladyni.
@@ -69,8 +67,7 @@ func void B_Announce_Herold()
 	}
 	else
 	{
-		randy = Hlp_Random(2);
-		if (randy == 0)
+		if (rand < 3)
 		{
 			AI_Output (self, self, "DIA_Herold_Announce_04_19"); //Smoki nêkaj¹ce krainê zosta³y zg³adzone przez dzielne wojsko pod wodz¹ Lorda Hagena.
 			AI_Output (self, self, "DIA_Herold_Announce_04_20"); //Wkrótce Król Rhobar uwolni naród od plagi orków, a w królestwie znów zapanuje dobrobyt.
@@ -81,5 +78,6 @@ func void B_Announce_Herold()
 			AI_Output (self, self, "DIA_Herold_Announce_04_22"); //Lord Hagen oznajmi³, ¿e osobiœcie uda siê do Górniczej Doliny, aby kontrolowaæ za³adunek magicznej rudy na swój statek.
 		};
 	};
+	
 	AI_UseItemToState (self, Fakescroll, -1);
 };

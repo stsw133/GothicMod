@@ -32,6 +32,7 @@ func int CheckItBeArmor_Roy (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 func void UnEquip_ItBe_Roy()
@@ -212,6 +213,7 @@ func int CheckItBeArmor_Djg (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 func void UnEquip_ItBe_Djg()
@@ -390,6 +392,7 @@ func int CheckItBeArmor_Mag (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 func void UnEquip_ItBe_Mag()
@@ -565,6 +568,7 @@ func int CheckItBeArmor_Pal(var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 func void UnEquip_ItBe_Pal()
@@ -732,21 +736,22 @@ func void Equip_ItBe_Pal_05()
 	};
 };
 ///******************************************************************************************
-func int CheckItBeArmor_Asa(var C_NPC slf)
+func int CheckItBeArmor_Ako(var C_NPC slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
-	if (Hlp_IsItem(itm, ITAR_DEM_H))
-	|| (Hlp_IsItem(itm, ITAR_DEM_M))
-	|| (Hlp_IsItem(itm, ITAR_DEM_L))
-	|| (Hlp_IsItem(itm, ITAR_ASA_H))
-	|| (Hlp_IsItem(itm, ITAR_ASA_M))
-	|| (Hlp_IsItem(itm, ITAR_ASA_L))
+	if (Hlp_IsItem(itm, ITAR_PRI_H))
+	|| (Hlp_IsItem(itm, ITAR_PRI_M))
+	|| (Hlp_IsItem(itm, ITAR_PRI_L))
+	|| (Hlp_IsItem(itm, ITAR_AKO_H))
+	|| (Hlp_IsItem(itm, ITAR_AKO_M))
+	|| (Hlp_IsItem(itm, ITAR_AKO_L))
 	{
 		return true;
 	};
+	
 	return false;
 };
-func void UnEquip_ItBe_Asa()
+func void UnEquip_ItBe_Ako()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -755,13 +760,13 @@ func void UnEquip_ItBe_Asa()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Asa_01 (ItemPR_Belt)
+instance ItBe_Ako_01 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_06.3ds";
 	
 	value			=	300;
-	on_equip		=	Equip_ItBe_Asa_01;
-	on_unequip		=	UnEquip_ItBe_Asa;
+	on_equip		=	Equip_ItBe_Ako_01;
+	on_unequip		=	UnEquip_ItBe_Ako;
 	
 	description		=	"Pas asasyna I";
 	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 2% nauczonej";
@@ -769,11 +774,11 @@ instance ItBe_Asa_01 (ItemPR_Belt)
 	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Asa_01()
+func void Equip_ItBe_Ako_01()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (CheckItBeArmor_Asa(self))
+		if (CheckItBeArmor_Ako(self))
 		{
 			Belt_AtrPoints = LearnedAttribute_DEX * 3 / 100;
 			B_RaiseAttribute (self, ATR_DEXTERITY, Belt_AtrPoints);
@@ -786,13 +791,13 @@ func void Equip_ItBe_Asa_01()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Asa_02 (ItemPR_Belt)
+instance ItBe_Ako_02 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_06.3ds";
 	
 	value			=	600;
-	on_equip		=	Equip_ItBe_Asa_02;
-	on_unequip		=	UnEquip_ItBe_Asa;
+	on_equip		=	Equip_ItBe_Ako_02;
+	on_unequip		=	UnEquip_ItBe_Ako;
 	
 	description		=	"Pas asasyna II";
 	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 4% nauczonej";
@@ -800,11 +805,11 @@ instance ItBe_Asa_02 (ItemPR_Belt)
 	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Asa_02()
+func void Equip_ItBe_Ako_02()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (CheckItBeArmor_Asa(self))
+		if (CheckItBeArmor_Ako(self))
 		{
 			Belt_AtrPoints = LearnedAttribute_DEX * 6 / 100;
 			B_RaiseAttribute (self, ATR_DEXTERITY, Belt_AtrPoints);
@@ -817,13 +822,13 @@ func void Equip_ItBe_Asa_02()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Asa_03 (ItemPR_Belt)
+instance ItBe_Ako_03 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_06.3ds";
 	
 	value			=	900;
-	on_equip		=	Equip_ItBe_Asa_03;
-	on_unequip		=	UnEquip_ItBe_Asa;
+	on_equip		=	Equip_ItBe_Ako_03;
+	on_unequip		=	UnEquip_ItBe_Ako;
 	
 	description		=	"Pas asasyna III";
 	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 6% nauczonej";
@@ -831,11 +836,11 @@ instance ItBe_Asa_03 (ItemPR_Belt)
 	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Asa_03()
+func void Equip_ItBe_Ako_03()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (CheckItBeArmor_Asa(self))
+		if (CheckItBeArmor_Ako(self))
 		{
 			Belt_AtrPoints = LearnedAttribute_DEX * 9 / 100;
 			B_RaiseAttribute (self, ATR_DEXTERITY, Belt_AtrPoints);
@@ -848,13 +853,13 @@ func void Equip_ItBe_Asa_03()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Asa_04 (ItemPR_Belt)
+instance ItBe_Ako_04 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_06.3ds";
 	
 	value			=	1200;
-	on_equip		=	Equip_ItBe_Asa_04;
-	on_unequip		=	UnEquip_ItBe_Asa;
+	on_equip		=	Equip_ItBe_Ako_04;
+	on_unequip		=	UnEquip_ItBe_Ako;
 	
 	description		=	"Pas asasyna IV";
 	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 8% nauczonej";
@@ -862,11 +867,11 @@ instance ItBe_Asa_04 (ItemPR_Belt)
 	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Asa_04()
+func void Equip_ItBe_Ako_04()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (CheckItBeArmor_Asa(self))
+		if (CheckItBeArmor_Ako(self))
 		{
 			Belt_AtrPoints = LearnedAttribute_DEX * 12 / 100;
 			B_RaiseAttribute (self, ATR_DEXTERITY, Belt_AtrPoints);
@@ -879,13 +884,13 @@ func void Equip_ItBe_Asa_04()
 	};
 };
 ///******************************************************************************************
-instance ItBe_Asa_05 (ItemPR_Belt)
+instance ItBe_Ako_05 (ItemPR_Belt)
 {
 	visual 			=	"ItMi_Belt_06.3ds";
 	
 	value			=	1500;
-	on_equip		=	Equip_ItBe_Asa_05;
-	on_unequip		=	UnEquip_ItBe_Asa;
+	on_equip		=	Equip_ItBe_Ako_05;
+	on_unequip		=	UnEquip_ItBe_Ako;
 	
 	description		=	"Pas asasyna V";
 	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 10% nauczonej";
@@ -893,11 +898,11 @@ instance ItBe_Asa_05 (ItemPR_Belt)
 	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
 	COUNT[5]		=	value;
 };
-func void Equip_ItBe_Asa_05()
+func void Equip_ItBe_Ako_05()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (CheckItBeArmor_Asa(self))
+		if (CheckItBeArmor_Ako(self))
 		{
 			Belt_AtrPoints = LearnedAttribute_DEX * 15 / 100;
 			B_RaiseAttribute (self, ATR_DEXTERITY, Belt_AtrPoints);

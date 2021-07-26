@@ -27,7 +27,7 @@ func void B_AssessMurder()
 		return;
 	};
 	
-	if (victim.guild == GIL_SHEEP)
+	if (victim.guild == GIL_SHEEP || victim.guild == GIL_LIVESTOCK)
 	&& (!victim.aivar[AIV_ToughGuy])
 	{
 		if (C_WantToAttackSheepKiller(self, other))

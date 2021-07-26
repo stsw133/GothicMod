@@ -15,12 +15,6 @@ const string TEXT_FONT_Inventory 	=	"Font_old_10_white.tga";
 const float VIEW_TIME_PER_CHAR		=	500;
 
 ///******************************************************************************************
-/// Scroll mana cost (divider (new!!!))
-///******************************************************************************************
-
-const int SPL_Cost_Scroll			=	5;
-
-///******************************************************************************************
 ///	NPC ATTRIBUTES
 ///******************************************************************************************
 
@@ -354,11 +348,13 @@ const int GIL_MINECRAWLER				=	29;
 const int GIL_LURKER					=	30;
 const int GIL_SKELETON					=	31;
 const int GIL_SUMMONED_SKELETON			=	32;	/// is obsolete now (moved to GIL_SUMMONED)
+const int GIL_SKELETON_MONSTER			=	32;	///new!!!
 const int GIL_SKELETON_MAGE				=	33;
 const int GIL_ZOMBIE					=	34;
 const int GIL_SNAPPER					=	35;
 const int GIL_SHADOWBEAST				=	36;
 const int GIL_SHADOWBEAST_SKELETON		=	37;	/// is obsolete now (moved to GIL_SKELETON)
+const int GIL_TIGER						=	37;	///new!!!
 const int GIL_HARPY						=	38;
 const int GIL_GOLEM						=	39;	///new!!!
 const int GIL_STONEGOLEM				=	39;	/// is obsolete now (moved to GIL_GOLEM)
@@ -480,6 +476,8 @@ const int SPELL_BAD			=	2;
 ///******************************************************************************************
 ///	SPELL INVEST CONSTS
 ///******************************************************************************************
+
+const int SPL_Cost_Scroll	=	5;
 
 const int SPL_DONTINVEST 						=	0;
 const int SPL_RECEIVEINVEST						=	1;

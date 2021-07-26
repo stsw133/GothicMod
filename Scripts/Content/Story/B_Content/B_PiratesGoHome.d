@@ -57,7 +57,6 @@ func void B_Addon_PiratesFollowAgain()
 		return;
 	};
 	
-	///FUNC
 	if (Npc_GetDistToNpc(hero, Skip) <= 2000)
 	&& (!Npc_IsDead(Skip))
 	&& (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(Skip))
@@ -116,16 +115,16 @@ func void B_Addon_PiratesFollowAgain()
 ///******************************************************************************************
 func int C_TowerBanditsDead()
 {
-	var C_NPC TowerBandit1; Towerbandit1 = Hlp_GetNpc(BDT_10100_Addon_Towerbandit);
-	var C_NPC TowerBandit2; Towerbandit2 = Hlp_GetNpc(BDT_10101_Addon_Towerbandit);
-	var C_NPC TowerBandit3; Towerbandit3 = Hlp_GetNpc(BDT_10102_Addon_Towerbandit);
+	var C_Npc TowerBandit1; Towerbandit1 = Hlp_GetNpc(BDT_10100_Addon_Towerbandit);
+	var C_Npc TowerBandit2; Towerbandit2 = Hlp_GetNpc(BDT_10101_Addon_Towerbandit);
+	var C_Npc TowerBandit3; Towerbandit3 = Hlp_GetNpc(BDT_10102_Addon_Towerbandit);
 	
 	if (Npc_IsDead(TowerBandit1))
 	&& (Npc_IsDead(TowerBandit2))
 	&& (Npc_IsDead(TowerBandit3))
 	{
-		return true;
 		TowerBanditsDead = true;
+		return true;
 	}
 	else
 	{

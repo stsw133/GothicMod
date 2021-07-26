@@ -618,16 +618,16 @@ const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 	"s³aby|œredni|silny",												/// NPC_TALENT_CROSSBOW		= 4;
 	"-|uczony",															/// NPC_TALENT_PICKLOCK		= 5;
 	"-|uczony",															/// NPC_TALENT_PICKPOCKET	= 6;
-	"-|1|2|3|4|5",														/// NPC_TALENT_MAGIC		= 7;
+	"-|1|2|3|4|5|6",													/// NPC_TALENT_MAGIC		= 7;
 	"-|uczony",															/// NPC_TALENT_SNEAK		= 8;
 	"-|uczony",															/// NPC_TALENT_PERSUASION	= 9;
 	"-|tarcza|miecz|dowolna",											/// NPC_TALENT_2ndH			= 10;
 	"-|uczony",															/// NPC_TALENT_ACROBATIC	= 11;
-	"0|1|2|3",															/// NPC_TALENT_JEWELERY		= 12;
-	"0|1|2|3",															/// NPC_TALENT_SMITH		= 13;
-	"0|1|2|3",															/// NPC_TALENT_ENCHANTING	= 14;
-	"0|1|2|3",															/// NPC_TALENT_ALCHEMY		= 15;
-	"0|1|2|3",															/// NPC_TALENT_HUNTING		= 16;
+	"0|1|2",															/// NPC_TALENT_JEWELERY		= 12;
+	"0|1|2",															/// NPC_TALENT_SMITH		= 13;
+	"0|1|2",															/// NPC_TALENT_ENCHANTING	= 14;
+	"0|1|2",															/// NPC_TALENT_ALCHEMY		= 15;
+	"0|1|2",															/// NPC_TALENT_HUNTING		= 16;
 	"-|uczony",															/// NPC_TALENT_LANGUAGE		= 17;
 	"-|uczony",															/// NPC_TALENT_LONGRUN		= 18;
 	"0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",							/// NPC_TALENT_CHAPTER		= 19;
@@ -696,7 +696,6 @@ const string DIALOG_BACK					=	"WRÓÆ";
 const string DIALOG_END						=	"KONIEC";
 
 const string DIALOG_PERSUASION				=	"(Perswazja)";
-const string DIALOG_PICKPOCKET				=	"(Kradzie¿ kiesz.)";
 const string DIALOG_TEACH					=	"(Nauka)";
 const string DIALOG_TRADE					=	"(Handel)";
 
@@ -804,11 +803,12 @@ const string PRINT_LearnCircleGEO			=	"Wybrana dziedzina: geomancja";
 const string PRINT_LearnCircleELE			=	"Wybrana dziedzina: elementaryzm";
 const string PRINT_LearnCirclePYR			=	"Wybrana dziedzina: pyromancja";
 const string PRINT_LearnCircleNEC			=	"Wybrana dziedzina: nekromancja";
-const string PRINT_LearnMagic_1				=	"Magia: kr¹g 1/5";
-const string PRINT_LearnMagic_2				=	"Magia: kr¹g 2/5";
-const string PRINT_LearnMagic_3				=	"Magia: kr¹g 3/5";
-const string PRINT_LearnMagic_4				=	"Magia: kr¹g 4/5";
-const string PRINT_LearnMagic_5				=	"Magia: kr¹g 5/5";
+const string PRINT_LearnMagic_1				=	"Magia: kr¹g 1/6";
+const string PRINT_LearnMagic_2				=	"Magia: kr¹g 2/6";
+const string PRINT_LearnMagic_3				=	"Magia: kr¹g 3/6";
+const string PRINT_LearnMagic_4				=	"Magia: kr¹g 4/6";
+const string PRINT_LearnMagic_5				=	"Magia: kr¹g 5/6";
+const string PRINT_LearnMagic_6				=	"Magia: kr¹g 6/6";
 const string PRINT_LearnTalent_Language		=	"Jêzyk staro¿ytnych: poziom 1/1";
 
 const string PRINT_LearnFight_1H_1			=	"Broñ jednorêczna: poziom 1/4";
@@ -831,28 +831,23 @@ const string PRINT_LearnFight_2ndH_1		=	"Tarcze: poziom 1/1";
 const string PRINT_LearnFight_2ndH_2		=	"Dwa miecze: poziom 1/1";
 
 const string PRINT_LearnTalent_Sneak		=	"Skradanie siê: poziom 1/1";
-const string PRINT_LearnTalent_Acrobatic	=	"Akrobatyka: poziom 1/1";
 const string PRINT_LearnTalent_LongRun		=	"D³ugi bieg: poziom 1/1";
+const string PRINT_LearnTalent_Acrobatic	=	"Akrobatyka: poziom 1/1";
 
 const string PRINT_LearnTalent_Picklock		=	"W³amywanie siê: poziom 1/1";
 const string PRINT_LearnTalent_Pickpocket	=	"Kradzie¿ kiesz.: poziom 1/1";
 const string PRINT_LearnTalent_Persuasion	=	"Perswazja: poziom 1/1";
 
-const string PRINT_LearnTalent_Smith_1		=	"Kowalstwo: poziom 1/3";
-const string PRINT_LearnTalent_Smith_2		=	"Kowalstwo: poziom 2/3";
-const string PRINT_LearnTalent_Smith_3		=	"Kowalstwo: poziom 3/3";
-const string PRINT_LearnTalent_Alchemy_1	=	"Alchemia: poziom 1/3";
-const string PRINT_LearnTalent_Alchemy_2	=	"Alchemia: poziom 2/3";
-const string PRINT_LearnTalent_Alchemy_3	=	"Alchemia: poziom 3/3";
-const string PRINT_LearnTalent_Hunting_1	=	"Myœlistwo: poziom 1/3";
-const string PRINT_LearnTalent_Hunting_2	=	"Myœlistwo: poziom 2/3";
-const string PRINT_LearnTalent_Hunting_3	=	"Myœlistwo: poziom 3/3";
-const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/3";
-const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/3";
-const string PRINT_LearnTalent_Jewelery_3	=	"Jubilerstwo: poziom 3/3";
-const string PRINT_LearnTalent_Enchanting_1	=	"Zaklinanie: poziom 1/3";
-const string PRINT_LearnTalent_Enchanting_2	=	"Zaklinanie: poziom 2/3";
-const string PRINT_LearnTalent_Enchanting_3	=	"Zaklinanie: poziom 3/3";
+const string PRINT_LearnTalent_Smith_1		=	"Kowalstwo: poziom 1/2";
+const string PRINT_LearnTalent_Smith_2		=	"Kowalstwo: poziom 2/2";
+const string PRINT_LearnTalent_Alchemy_1	=	"Alchemia: poziom 1/2";
+const string PRINT_LearnTalent_Alchemy_2	=	"Alchemia: poziom 2/2";
+const string PRINT_LearnTalent_Hunting_1	=	"Myœlistwo: poziom 1/2";
+const string PRINT_LearnTalent_Hunting_2	=	"Myœlistwo: poziom 2/2";
+const string PRINT_LearnTalent_Enchanting_1	=	"Zaklinanie: poziom 1/2";
+const string PRINT_LearnTalent_Enchanting_2	=	"Zaklinanie: poziom 2/2";
+const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/2";
+const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/2";
 const string PRINT_LearnTalent_MainCraft	=	"(g³ówne) ";
 
 const string PRINT_LearnSTR1				=	"Si³a + 1";
@@ -884,7 +879,7 @@ const string PRINT_Addon_gegeben			=	" - oddano";
 const string PRINT_GoldGegeben				=	" szt. z³ota - oddano";
 const string PRINT_ItemGegeben				=	" przedmiot - oddano";
 const string PRINT_ItemsGegeben				=	" przedm. - oddano";
-	
+
 const string PRINT_Addon_erhalten			=	" - otrzymano";
 const string PRINT_GoldErhalten				=	" szt. z³ota - otrzymano";
 const string PRINT_ItemErhalten				=	" przedmiot - otrzymano";

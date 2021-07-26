@@ -33,7 +33,7 @@ func void SetItMwAttributes (var C_ITEM itm, var int type, var int str, var int 
 	itm.value			=	((dmg*10 + (dmg*6/5-str-dex)*5 + itm.change_value[2]*50) * (1000+rng)/1000) * valueConverter/100;
 	if (dmgType == DAM_EDGE|DAM_FIRE)
 	{
-		itm.value += 200;
+		itm.value += 400;
 	};
 	
 	itm.damageTotal		= 	dmg;
@@ -307,25 +307,25 @@ instance ItMw_1H_Goblin_01 (ItemPR_MeleeWeapon)
 {
 	name 			=	"Krush Lagush";
 	visual 			=	"ItMw_1h_Oberschenkelknochen.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 10,2, 10,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 10,2, 10,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_02 (ItemPR_MeleeWeapon)
 {
 	name 			=	"Krush Parush";
 	visual 			=	"ItMw_1h_Oberschenkelknochen_Nagel.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 15,3, 15,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 15,3, 15,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_03 (ItemPR_MeleeWeapon)
 {
 	name 			=	"Krush Morush";
 	visual 			=	"ItMw_1h_Oberschenkelknochen_Nagel_Ring.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 20,4, 20,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_04 (ItemPR_MeleeWeapon)
 {
 	name 			=	"Krush Dopadush";
 	visual 			=	"ItMw_1h_Oberschenkelknochen_schaedelbandage.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 25,5, 25,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 25,5, 25,DAM_BLUNT, 90, 1);
 };
 instance ItMw_2H_Draconian (ItemPR_MeleeWeapon)
 {
@@ -668,7 +668,7 @@ instance ItMw_1h_Ignite_01 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_1h_Ignite_01.3DS";
 	change_atr[2]	=	9;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_SWD, 40,8, 50,DAM_EDGE|DAM_FIRE, 90, 100);
+	SetItMwAttributes (self, ITEM_SWD, 40,8, 40,DAM_EDGE|DAM_FIRE, 90, 100);
 	TEXT[4]			=	NAME_Bonus_1H;
 	COUNT[4]		=	change_value[2];
 };
@@ -678,7 +678,7 @@ instance ItMw_2h_Ignite_01 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_2h_Ignite_01.3DS";
 	change_atr[2]	=	10;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_2HD_SWD, 60,12, 70,DAM_EDGE|DAM_FIRE, 100, 100);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 60,12, 60,DAM_EDGE|DAM_FIRE, 100, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };
@@ -784,7 +784,7 @@ instance ItMw_1h_Ignite_02 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_1h_Ignite_02.3DS";
 	change_atr[2]	=	9;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_SWD, 80,16, 90,DAM_EDGE|DAM_FIRE, 90, 100);
+	SetItMwAttributes (self, ITEM_SWD, 80,16, 80,DAM_EDGE|DAM_FIRE, 90, 100);
 	TEXT[4]			=	NAME_Bonus_1H;
 	COUNT[4]		=	change_value[2];
 };
@@ -794,7 +794,7 @@ instance ItMw_2h_Ignite_02 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_2h_Ignite_02.3DS";
 	change_atr[2]	=	10;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_2HD_SWD, 100,20, 110,DAM_EDGE|DAM_FIRE, 110, 100);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 100,20, 100,DAM_EDGE|DAM_FIRE, 110, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };
@@ -904,7 +904,7 @@ instance ItMw_1h_Ignite_03 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_1h_Ignite_03.3DS";
 	change_atr[2]	=	9;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_SWD, 120,24, 130,DAM_EDGE|DAM_FIRE, 100, 100);
+	SetItMwAttributes (self, ITEM_SWD, 120,24, 120,DAM_EDGE|DAM_FIRE, 100, 100);
 	TEXT[4]			=	NAME_Bonus_1H;
 	COUNT[4]		=	change_value[2];
 };
@@ -914,7 +914,7 @@ instance ItMw_2h_Ignite_03 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_2h_Ignite_03.3DS";
 	change_atr[2]	=	10;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_2HD_SWD, 140,28, 150,DAM_EDGE|DAM_FIRE, 130, 100);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 140,28, 140,DAM_EDGE|DAM_FIRE, 130, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };
@@ -962,7 +962,7 @@ instance ItMw_1h_Ignite_04 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_1h_Ignite_04.3DS";
 	change_atr[2]	=	9;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_SWD, 160,32, 170,DAM_EDGE|DAM_FIRE, 120, 100);
+	SetItMwAttributes (self, ITEM_SWD, 160,32, 160,DAM_EDGE|DAM_FIRE, 120, 100);
 	TEXT[4]			=	NAME_Bonus_1H;
 	COUNT[4]		=	change_value[2];
 };
@@ -972,7 +972,7 @@ instance ItMw_2h_Ignite_04 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_2h_Ignite_04.3DS";
 	change_atr[2]	=	10;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_2HD_SWD, 180,36, 190,DAM_EDGE|DAM_FIRE, 140, 100);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 180,36, 180,DAM_EDGE|DAM_FIRE, 140, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };
@@ -1005,7 +1005,7 @@ instance ItMw_1h_Ignite_05 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_1h_Ignite_05.3ds";
 	change_atr[2]	=	9;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_SWD|ITEM_MISSION, 160,32, 180,DAM_EDGE|DAM_FIRE, 120, 100);
+	SetItMwAttributes (self, ITEM_SWD|ITEM_MISSION, 160,32, 170,DAM_EDGE|DAM_FIRE, 120, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };
@@ -1015,7 +1015,7 @@ instance ItMw_2h_Ignite_05 (ItemPR_MeleeWeapon)
 	visual 			=	"ItMw_2h_Ignite_05.3ds";
 	change_atr[2]	=	10;
 	change_value[2]	=	2;
-	SetItMwAttributes (self, ITEM_2HD_SWD|ITEM_MISSION, 180,36, 200,DAM_EDGE|DAM_FIRE, 140, 100);
+	SetItMwAttributes (self, ITEM_2HD_SWD|ITEM_MISSION, 180,36, 190,DAM_EDGE|DAM_FIRE, 140, 100);
 	TEXT[4]			=	NAME_Bonus_2H;
 	COUNT[4]		=	change_value[2];
 };

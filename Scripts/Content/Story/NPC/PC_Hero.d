@@ -13,8 +13,10 @@ instance PC_Hero (Npc_Default)
 	
 	/// ------ Visuals ------
 	B_SetHeroVisual (self, selectedHero);
+	/*
 	if (!MovieMode)
 	{
 		Mdl_ApplyOverlayMds (self, "Humans_Player.mds");
 	};
+	*/
 };

@@ -22,7 +22,7 @@ func void B_AssessDamage()
 		{
 			SPECIALWEAPONDAMAGE_CHECK();
 		};
-		SelfFightTeach_CHECK (other, other.weapon-2);
+		SelfFightTeach_ADD (other, other.weapon-2);
 	};
 	
 	/// AIVARS

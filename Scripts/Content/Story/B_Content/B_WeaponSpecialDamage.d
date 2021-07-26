@@ -6,7 +6,7 @@ var int RavenBlitz;
 var int SPL_IsActive_PalBless;
 
 ///******************************************************************************************
-func void B_WeaponSpecialDamage (var C_NPC oth, var C_NPC slf)
+func void B_WeaponSpecialDamage (var C_Npc oth, var C_Npc slf)
 {
 	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(Raven))
 	{
@@ -21,7 +21,6 @@ func void B_WeaponSpecialDamage (var C_NPC oth, var C_NPC slf)
 		else if (RavenBlitz >= 3) 
 		{
 			var int RavenRandy; RavenRandy = Hlp_Random(100);
-			
 			if (RavenRandy <= 50)
 			{
 				RavenBlitz = 0;
@@ -34,8 +33,7 @@ func void B_WeaponSpecialDamage (var C_NPC oth, var C_NPC slf)
 	}
 	else if (Hlp_GetInstanceID(oth) == Hlp_GetInstanceID(hero))
 	{
-		var int DamageRandy;
-		DamageRandy = Hlp_Random(100);
+		var int DamageRandy; DamageRandy = Hlp_Random(100);
 		
 		/// BeliarWeapon
 		if (C_ScHasReadiedBeliarsWeapon())

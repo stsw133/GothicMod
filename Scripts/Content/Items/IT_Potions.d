@@ -31,12 +31,12 @@ func void Use_ItPo_Health_01()
 	if (Npc_IsPlayer(self))
 	{
 		PotionRG_ADD (ATR_HITPOINTS, 3);
-		MOD_PoisonOFF();
 	}
 	else
 	{
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]*3)/10);
 	};
+	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_02 (ItemPR_Potion)
@@ -57,12 +57,12 @@ func void Use_ItPo_Health_02()
 	if (Npc_IsPlayer(self))
 	{
 		PotionRG_ADD (ATR_HITPOINTS, 6);
-		MOD_PoisonOFF();
 	}
 	else
 	{
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]*6)/10);
 	};
+	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_03 (ItemPR_Potion)
@@ -83,12 +83,12 @@ func void Use_ItPo_Health_03()
 	if (Npc_IsPlayer(self))
 	{
 		PotionRG_ADD (ATR_HITPOINTS, 9);
-		MOD_PoisonOFF();
 	}
 	else
 	{
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]*9)/10);
 	};
+	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_Addon_04 (ItemPR_Potion)
@@ -109,12 +109,12 @@ func void Use_ItPo_Health_04()
 	if (Npc_IsPlayer(self))
 	{
 		PotionRG_ADD (ATR_HITPOINTS, 12);
-		MOD_PoisonOFF();
 	}
 	else
 	{
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]*12)/10);
 	};
+	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 ///	Mana

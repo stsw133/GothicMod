@@ -268,17 +268,17 @@ FUNC VOID DIA_Addon_Garett_GiveKompass_Info()
 	AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_01"); //Ha, to rzeczywiœcie on! Nie spodziewa³em siê, ¿e ujrzê go ponownie.
 	AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_02"); //Wielkie dziêki!
 	
-	if (Npc_HasItems (self, ItBe_Power_01) > 0)
+	if (Npc_HasItems (self, ItBe_Ako_01) > 0)
 	{ 
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_03"); //Tym razem Greg ju¿ go nie dostanie.
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_04"); //WeŸ w nagrodê ten pas. Jest sporo wart.
-		B_GiveInvItems (self, other, ItBe_Power_01, 1);
+		B_GiveInvItems (self, other, ItBe_Ako_01, 1);
 	}
 	else if (self.aivar[AIV_DefeatedByPlayer] == FALSE)
 	{
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_05"); //Pamiêtasz ten pas, który ode mnie kupi³eœ?
 		AI_Output (self,other,"DIA_Addon_Garett_GiveKompass_09_06"); //Zap³aci³eœ za niego sporo, choæ, zwa¿ywszy na jego wartoœæ, na pewno nie przep³aci³eœ. Proszê, weŸ swoje pieni¹dze z powrotem i potraktuj go jako prezent.
-		B_GiveInvItems (self, other, itmi_gold, ItBe_Power_01.value);
+		B_GiveInvItems (self, other, itmi_gold, ItBe_Ako_01.value);
 	};
 	
 	B_LogEntry (TOPIC_Addon_Kompass,"Garret by³ bardzo zadowolony, gdy odda³em mu kompas.");

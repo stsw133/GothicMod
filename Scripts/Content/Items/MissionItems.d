@@ -123,6 +123,18 @@ instance ItMi_HerbPaket (ItemPR_Mission)
 	visual 			=	"ItMi_Packet.3ds";
 	description		=	name;
 };
+instance ItMi_IdolOgront_01 (ItemPR_Mission)
+{
+	name 			=	"Pos¹¿ek orków";
+	visual 			=	"ITMI_STUFF_IDOL_OGRONT_01.3ds";
+	description		=	name;
+};
+instance ItMi_IdolOgront_02 (ItemPR_Mission)
+{
+	name 			=	"Pos¹¿ek orków";
+	visual 			=	"ITMI_STUFF_IDOL_OGRONT_02.3ds";
+	description		=	name;
+};
 instance ItMi_KarrasBlessedStone_Mis (ItemPR_Mission)
 {
 	name 			=	"Kamieñ z poœwiêconej ziemi";

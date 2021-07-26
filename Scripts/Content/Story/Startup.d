@@ -23,8 +23,8 @@ func void INIT_GLOBAL()
 	//MemoKey2 = -1;
 	keySprint1 = MEM_GetKey("keySprint");
 	keySprint2 = MEM_GetSecondaryKey("keySprint");
-	keyNoanimtake1 = MEM_GetKey("keyNoAnimTake");
-	keyNoanimtake2 = MEM_GetSecondaryKey("keyNoAnimTake");
+	keyNoAnimTake1 = MEM_GetKey("keyNoAnimTake");
+	keyNoAnimTake2 = MEM_GetSecondaryKey("keyNoAnimTake");
 	keyInteract1 = MEM_GetKey("keyInteract");
 	keyInteract2 = MEM_GetSecondaryKey("keyInteract");
 	keyShortcuts1 = MEM_GetKey("keyShortcuts");
@@ -362,7 +362,7 @@ func void STARTUP_ADDON_PART_CANYON_01 ()
 	Wld_InsertNpc 	(Minecrawler, 	"ADW_CANYON_MINE1_10");
 	Wld_InsertNpc 	(Minecrawler, 	"ADW_CANYON_MINE1_05");
 
-	Wld_InsertItem  (ItMi_Zeitspalt_Addon,"FP_ITEM_CANYON_UNIQUE");  
+	Wld_InsertItem  (ItPl_GraveMoss,"FP_ITEM_CANYON_UNIQUE");  
 	
 };
 func void INIT_SUB_ADDON_PART_CANYON_01 ()
@@ -1057,15 +1057,15 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	Wld_InsertNpc (Skeleton_Warrior,"ADW_VALLEY_PATH_020_CAVE_05");
 	
 	// ------Scavenger ------
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
 
 	// ------ Molerat ------
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_027");
@@ -1099,7 +1099,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	// ------ Bloodfly ------
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_102_A");
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_102_A");
-	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_116_A");
+	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_116_A");
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_043");
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_043");
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_053");
@@ -1125,7 +1125,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	
 	Wld_InsertNpc (Stoneguardian_NailedValleyShowcase_01,"ADW_VALLEY_SHOWCASE1_02");
 	Wld_InsertNpc (Stoneguardian_NailedValleyShowcase_02,"ADW_VALLEY_SHOWCASE1_03");
-	Wld_InsertItem (ItMi_Zeitspalt_Addon,"FP_ITEM_VALLEY_02");
+	Wld_InsertItem (ItPl_GraveMoss,"FP_ITEM_VALLEY_02");
 	
 	//Qurahodrons Grab
 	Wld_InsertItem (ItRi_STR_02,"FP_ITEM_VALLEY_12");
@@ -1424,7 +1424,7 @@ func void STARTUP_DEMONTOWER ()
 
 	Wld_InsertNpc				(Demon,"DT_E2_06");
 
-	Wld_InsertItem	(ItMi_Zeitspalt_Addon,"FP_ITEM_XARDASALTERTURM_01");
+	Wld_InsertItem	(ItPl_GraveMoss,"FP_ITEM_XARDASALTERTURM_01");
 	Wld_InsertNpc				(Skeleton_Warrior,"DT_E3_07");
 	Wld_InsertNpc				(Skeleton_Warrior,"DT_E3_04");
 
@@ -2461,7 +2461,7 @@ func void STARTUP_SURFACE ()
 	
 	Wld_InsertNpc	(Draconian,	"CASTLE_28");
 	
-	Wld_InsertItem	(ItMi_Zeitspalt_Addon,"OW_ITEM_FIREHORT_01");
+	Wld_InsertItem	(ItPl_GraveMoss,"OW_ITEM_FIREHORT_01");
 
 	
 		//-------Beim FireDragon--------//
@@ -3176,7 +3176,7 @@ func void INIT_NewWorld_Part_Farm_01()
 // ------ Xardas -------
 func void STARTUP_NewWorld_Part_Xardas_01()
 {
-	Wld_InsertItem (ItBe_Str_01, "FP_SPAWN_X_GUERTEL");
+	Wld_InsertItem (ItMi_InnosStatue, "FP_SPAWN_X_GUERTEL");
 
 	////////////////////////////////////////////////////////////////////////////
 	//----------------------- Spielstart Gothic2------------------------------//
@@ -3610,7 +3610,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc 	(Crypt_Skeleton_Room_02, "EVT_CRYPT_ROOM_02_SPAWNMAIN");
 	Wld_InsertNpc 	(Crypt_Skeleton_Room_03, "EVT_CRYPT_ROOM_03_SPAWNMAIN");
 	
- 	Wld_InsertItem 	(ItMi_Zeitspalt_Addon, "EVT_CRYPT_ROOM_01_SPAWN_03");
+ 	Wld_InsertItem 	(ItPl_GraveMoss, "EVT_CRYPT_ROOM_01_SPAWN_03");
  	Wld_InsertRandomStoneplate ("EVT_CRYPT_ROOM_FINAL_SPAWN_01");
  	Wld_InsertRandomStoneplate ("EVT_CRYPT_ROOM_02_SPAWN_05");
 	
@@ -4419,7 +4419,7 @@ FUNC VOID STARTUP_NewWorld_Part_Forest_01 ()
     //Stoneplates
     Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ITEM_FOREST_STPLATE_01");
     Wld_InsertRandomStoneplate ("FP_ITEM_FOREST_STPLATE_02");
-    Wld_InsertItem 	(ItMi_Zeitspalt_Addon, "FP_ITEM_FOREST_STPLATE_04");
+    Wld_InsertItem 	(ItPl_GraveMoss, "FP_ITEM_FOREST_STPLATE_04");
     Wld_InsertRandomStoneplate ("FP_ITEM_FOREST_STPLATE_06");
 };
 

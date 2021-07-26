@@ -2,16 +2,6 @@
 // Globalvariablen für Story
 // *************************
 
-// ------ Teacher MAX Werte ------
-const int T_MEGA = 300; //Pyrokar MANA
-const int T_MAX = 200;
-const int T_HIGH = 120;
-const int T_MED = 90;
-const int T_LOW = 60;
-
-//**************
-//	ADDON
-//**************
 var int Saturas_KlaueInsMeer;
 var int Saturas_AboutWilliam;
 var int MIS_Eremit_Klamotten;
@@ -19,42 +9,6 @@ var int Diego_angekommen;
 var int Diego_IsDead;
 var int PlayerTalkedToSkipNW;
 var int PlayerTalkedToGregNW;
-
-//------------Rüstungen---------
-var int LeatherArmor_Equipped;
-var int	SLDArmor_Equipped;
-var int NOVArmor_Equipped;
-var int KDFArmor_Equipped;
-var int	MILArmor_Equipped;
-var int MCArmor_Equipped;
-//----------Guertel-----------
-/*+ Specials (Diebesgürtel --> DEX zusammen mit?)
-	Minecrawler Gürtel Protection Bonus?
-	Gürtel der täglichen Erfahrung  XP Ambient *2
-	Gürtel des tiere ausnehmens (alle AT TALENTS)
-	Gürtel der Heilung (1. Rezept heiltrank oder alle ...)
-*/
-var int KDF01_Equipped;
-var int KDF02_Equipped;
-var int KDF03_Equipped;
-
-var int MIL01_Equipped;
-var int MIL02_Equipped;
-var int MIL03_Equipped;
-
-var int NOV01_Equipped;
-
-var int SLD01_Equipped;
-var int SLD02_Equipped;
-var int SLD03_Equipped;
-
-var int Leather01_Equipped;
-var int Leather02_Equipped;
-
-var int Rhobar_Equipped;
-var int MC_Equipped;
-
-
 
 //---------------------------------------------------
 var int MIS_Addon_Cavalorn_TheHut;					//SC soll nach Cavalorns Hütte sehen.

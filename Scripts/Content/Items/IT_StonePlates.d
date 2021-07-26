@@ -79,6 +79,7 @@ func void Use_ItWr_StonePlate_Mana()
 		CreateInvItem (self, ItWr_StonePlate_Mana);
 	};
 };
+/*
 ///******************************************************************************************
 instance ItWr_StonePlate_Energy (ItemPR_StonePlate)
 {
@@ -100,6 +101,7 @@ func void Use_ItWr_StonePlate_Energy()
 		CreateInvItem (self, ItWr_StonePlate_Energy);
 	};
 };
+*/
 ///******************************************************************************************
 instance ItWr_StonePlate_STR (ItemPR_StonePlate)
 {
@@ -164,6 +166,7 @@ func void Use_ItWr_StonePlate_Power()
 		CreateInvItem (self, ItWr_StonePlate_Power);
 	};
 };
+/*
 ///******************************************************************************************
 instance ItWr_StonePlate_1h (ItemPR_StonePlate)
 {
@@ -248,36 +251,31 @@ func void Use_ItWr_StonePlate_CBow()
 		CreateInvItem (self, ItWr_StonePlate_CBow);
 	};
 };
+*/
 ///******************************************************************************************
 func void Wld_InsertRandomStoneplate (var string spawnPoint)
 {
-	var int rand; rand = Hlp_Random(6);
+	var int rand; rand = Hlp_Random(5);
 	
 	if		(rand == 0)	{	Wld_InsertItem (ItWr_StonePlate_HP, spawnPoint);	}
 	else if (rand == 1)	{	Wld_InsertItem (ItWr_StonePlate_Mana, spawnPoint);	}
-	else if (rand == 2)	{	Wld_InsertItem (ItWr_StonePlate_Energy, spawnPoint);}
-	else if (rand == 3)	{	Wld_InsertItem (ItWr_StonePlate_STR, spawnPoint);	}
-	else if (rand == 4)	{	Wld_InsertItem (ItWr_StonePlate_DEX, spawnPoint);	}
-//	else if (rand == 5)	{	Wld_InsertItem (ItWr_StonePlate_Power, spawnPoint);	}
-//	else if (rand == 6)	{	Wld_InsertItem (ItWr_StonePlate_1h, spawnPoint);	}
-//	else if (rand == 7)	{	Wld_InsertItem (ItWr_StonePlate_2h, spawnPoint);	}
-//	else if (rand == 8)	{	Wld_InsertItem (ItWr_StonePlate_Bow, spawnPoint);	}
-//	else				{	Wld_InsertItem (ItWr_StonePlate_CBow, spawnPoint);	};
-	else				{	Wld_InsertItem (ItWr_StonePlate_Power, spawnPoint);	};
+	else if (rand == 2)	{	Wld_InsertItem (ItWr_StonePlate_STR, spawnPoint);	}
+	else if (rand == 3)	{	Wld_InsertItem (ItWr_StonePlate_DEX, spawnPoint);	}
+	else if (rand == 4)	{	Wld_InsertItem (ItWr_StonePlate_Power, spawnPoint);	};
 };
 ///******************************************************************************************
 func int C_ScHasMagicStonePlate()
 {
 	if (Npc_HasItems(hero, ItWr_StonePlate_HP))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_Mana))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_Energy))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_Energy))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_STR))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_DEX))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_Power))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_1h))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_2h))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_Bow))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_CBow))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_1h))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_2h))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_Bow))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_CBow))
 	{
 		return true;
 	};

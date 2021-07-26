@@ -61,7 +61,7 @@ instance ItRe_SMITH_1H_Common (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_1H_Common;
 	
 	description		=	"Przepis na miecz";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza.";
+	TEXT[1]			=	"z 2 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -85,7 +85,7 @@ instance ItRe_SMITH_Schwert1 (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_Schwert1;
 	
 	description		=	"Przepis na dobry miecz";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza.";
+	TEXT[1]			=	"z 3 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -108,8 +108,8 @@ instance ItRe_SMITH_Schwert4 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_Schwert4;
 	
-	description		=	"Przepis na dobry d≈Çugi miecz";
-	TEXT[1]			=	"z 4 bry≈Çek ≈ºelaza.";
+	description		=	"Przepis na dobry d≥ugi miecz";
+	TEXT[1]			=	"z 4 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -133,7 +133,7 @@ instance ItRe_SMITH_Rubinklinge (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_Rubinklinge;
 	
 	description		=	"Przepis na Rubinowe Ostrze";
-	TEXT[1]			=	"z 4 bry≈Çek ≈ºelaza.";
+	TEXT[1]			=	"z 4 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -157,7 +157,7 @@ instance ItRe_SMITH_ElBastardo (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_ElBastardo;
 	
 	description		=	"Przepis na El Bastardo";
-	TEXT[1]			=	"z 5 bry≈Çek ≈ºelaza.";
+	TEXT[1]			=	"z 5 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -180,9 +180,9 @@ instance ItRe_SMITH_Streitaxt1 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_Streitaxt1;
 	
-	description		=	"Przepis na lekki top√≥r bojowy";
-	TEXT[1]			=	"z 4 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 2 k≈Ç√≥w.";
+	description		=	"Przepis na lekki topÛr bojowy";
+	TEXT[1]			=	"z 4 bry≥ek øelaza";
+	TEXT[2]			=	"i 2 k≥Ûw.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -206,7 +206,7 @@ instance ItRe_SMITH_Avalon (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_Avalon;
 	
 	description		=	"Przepis na Avalon";
-	TEXT[1]			=	"z 6 bry≈Çek ≈ºelaza.";
+	TEXT[1]			=	"z 6 bry≥ek øelaza.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -229,9 +229,9 @@ instance ItRe_SMITH_1H_Special_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Special_01;
 	
-	description		=	"Przepis na d≈Çugi miecz magiczny";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 2 bry≈Çek niebieskiej rudy.";
+	description		=	"Przepis na d≥ugi miecz magiczny";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 2 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -254,9 +254,9 @@ instance ItRe_SMITH_2H_Special_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Special_01;
 	
-	description		=	"Przepis na magiczny miecz dwurƒôczny";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 2 bry≈Çek niebieskiej rudy.";
+	description		=	"Przepis na magiczny miecz dwurÍczny";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 2 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -279,9 +279,9 @@ instance ItRe_SMITH_1H_Special_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Special_02;
 	
-	description		=	"Przepis na magiczny miecz p√≥≈Çtorarƒôczny";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 3 bry≈Çek niebieskiej rudy.";
+	description		=	"Przepis na magiczny miecz pÛ≥torarÍczny";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 3 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -304,9 +304,9 @@ instance ItRe_SMITH_2H_Special_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Special_02;
 	
-	description		=	"Przepis na ciƒô≈ºki magiczny miecz dwurƒôczny";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 3 bry≈Çek niebieskiej rudy.";
+	description		=	"Przepis na ciÍøki magiczny miecz dwurÍczny";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 3 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -330,8 +330,8 @@ instance ItRe_SMITH_1H_Special_03 (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_1H_Special_03;
 	
 	description		=	"Przepis na magiczne ostrze bojowe";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 4 bry≈Çek niebieskiej rudy.";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 4 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -354,9 +354,9 @@ instance ItRe_SMITH_2H_Special_03 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Special_03;
 	
-	description		=	"Przepis na ciƒô≈ºkie magiczne ostrze bojowe";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 4 bry≈Çek niebieskiej rudy.";
+	description		=	"Przepis na ciÍøkie magiczne ostrze bojowe";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 4 bry≥ek niebieskiej rudy.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -380,8 +380,8 @@ instance ItRe_SMITH_1H_Special_04 (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_SMITH_1H_Special_04;
 	
 	description		=	"Przepis na magiczne ostrze na smoki";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 5 bry≈Çek niebieskiej rudy";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 5 bry≥ek niebieskiej rudy";
 	TEXT[3]			=	"i 8 fiolek smoczej krwi.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
@@ -405,9 +405,9 @@ instance ItRe_SMITH_2H_Special_04 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Special_04;
 	
-	description		=	"Przepis na du≈ºe magiczne ostrze na smoki";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 5 bry≈Çek niebieskiej rudy";
+	description		=	"Przepis na duøe magiczne ostrze na smoki";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 5 bry≥ek niebieskiej rudy";
 	TEXT[3]			=	"i 8 fiolek smoczej krwi.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
@@ -431,15 +431,15 @@ instance ItRe_SMITH_1H_Ignite_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Ignite_01;
 	
-	description		=	"Przepis na d≈Çugi miecz podpalajƒÖcy";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 2 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na d≥ugi miecz podpalajπcy";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 2 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_1H_Ignite_01()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -456,15 +456,15 @@ instance ItRe_SMITH_2H_Ignite_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Ignite_01;
 	
-	description		=	"Przepis na podpalajƒÖcy miecz dwurƒôczny";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 2 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na podpalajπcy miecz dwurÍczny";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 2 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_2H_Ignite_01()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -481,15 +481,15 @@ instance ItRe_SMITH_1H_Ignite_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Ignite_02;
 	
-	description		=	"Przepis na podpalajƒÖcy miecz p√≥≈Çtorarƒôczny";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 3 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na podpalajπcy miecz pÛ≥torarÍczny";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 3 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_1H_Ignite_02()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -506,15 +506,15 @@ instance ItRe_SMITH_2H_Ignite_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Ignite_02;
 	
-	description		=	"Przepis na ciƒô≈ºki podpalajƒÖcy miecz dwurƒôczny";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 3 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na ciÍøki podpalajπcy miecz dwurÍczny";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 3 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_2H_Ignite_02()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -531,15 +531,15 @@ instance ItRe_SMITH_1H_Ignite_03 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Ignite_03;
 	
-	description		=	"Przepis na podpalajƒÖce ostrze bojowe";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 4 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na podpalajπce ostrze bojowe";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 4 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_1H_Ignite_03()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -556,15 +556,15 @@ instance ItRe_SMITH_2H_Ignite_03 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Ignite_03;
 	
-	description		=	"Przepis na ciƒô≈ºkie podpalajƒÖce ostrze bojowe";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 4 bry≈Çek czerwonej rudy.";
-	COUNT[4]		=	3;
+	description		=	"Przepis na ciÍøkie podpalajπce ostrze bojowe";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 4 bry≥ek czerwonej rudy.";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_2H_Ignite_03()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -581,16 +581,16 @@ instance ItRe_SMITH_1H_Ignite_04 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_1H_Ignite_04;
 	
-	description		=	"Przepis na podpalajƒÖce smocze ostrze";
-	TEXT[1]			=	"z 2 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 5 bry≈Çek czerwonej rudy";
+	description		=	"Przepis na podpalajπce smocze ostrze";
+	TEXT[1]			=	"z 2 bry≥ek øelaza";
+	TEXT[2]			=	"i 5 bry≥ek czerwonej rudy";
 	TEXT[3]			=	"i 8 fiolek smoczej krwi.";
-	COUNT[4]		=	3;
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_1H_Ignite_04()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -607,16 +607,16 @@ instance ItRe_SMITH_2H_Ignite_04 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_SMITH_2H_Ignite_04;
 	
-	description		=	"Przepis na du≈ºe podpalajajƒÖce smocze ostrze";
-	TEXT[1]			=	"z 3 bry≈Çek ≈ºelaza";
-	TEXT[2]			=	"i 5 bry≈Çek czerwonej rudy";
+	description		=	"Przepis na duøe podpalajajπce smocze ostrze";
+	TEXT[1]			=	"z 3 bry≥ek øelaza";
+	TEXT[2]			=	"i 5 bry≥ek czerwonej rudy";
 	TEXT[3]			=	"i 8 fiolek smoczej krwi.";
-	COUNT[4]		=	3;
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_SMITH_2H_Ignite_04()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_SMITH) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -673,8 +673,8 @@ instance ItRe_ALCHEMY_Health_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Health_01;
 	
-	description		=	"Przepis na s≈ÇabƒÖ miksturƒô leczniczƒÖ";
-	TEXT[1]			=	"z 2 ro≈õlin leczniczych";
+	description		=	"Przepis na s≥abπ miksturÍ leczniczπ";
+	TEXT[1]			=	"z 2 roúlin leczniczych";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -698,8 +698,8 @@ instance ItRe_ALCHEMY_Health_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Health_02;
 	
-	description		=	"Przepis na ≈õredniƒÖ miksturƒô leczniczƒÖ";
-	TEXT[1]			=	"z 2 zi√≥≈Ç leczniczych";
+	description		=	"Przepis na úredniπ miksturÍ leczniczπ";
+	TEXT[1]			=	"z 2 ziÛ≥ leczniczych";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -723,7 +723,7 @@ instance ItRe_ALCHEMY_Health_03 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Health_03;
 	
-	description		=	"Przepis na silnƒÖ miksturƒô leczniczƒÖ";
+	description		=	"Przepis na silnπ miksturÍ leczniczπ";
 	TEXT[1]			=	"z 2 korzeni leczniczych";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
@@ -748,8 +748,8 @@ instance ItRe_ALCHEMY_Health_04 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Health_04;
 	
-	description		=	"Przepis na potƒô≈ºnƒÖ miksturƒô leczniczƒÖ";
-	TEXT[1]			=	"z 3 s≈Çabych mikstur leczniczych";
+	description		=	"Przepis na potÍønπ miksturÍ leczniczπ";
+	TEXT[1]			=	"z 3 s≥abych mikstur leczniczych";
 	TEXT[2]			=	"i rdestu polnego.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -773,8 +773,8 @@ instance ItRe_ALCHEMY_Health_05 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Health_05;
 	
-	description		=	"Przepis na s≈ÇabƒÖ miksturƒô leczniczƒÖ";
-	TEXT[1]			=	"z 4 serafis√≥w";
+	description		=	"Przepis na s≥abπ miksturÍ leczniczπ";
+	TEXT[1]			=	"z 4 serafisÛw";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -798,7 +798,7 @@ instance ItRe_ALCHEMY_Mana_01 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_01;
 	
-	description		=	"Przepis na s≈ÇabƒÖ miksturƒô many";
+	description		=	"Przepis na s≥abπ miksturÍ many";
 	TEXT[1]			=	"z 2 ognistych pokrzyw";
 	TEXT[2]			=	"i rdestu polnego i wina.";
 	COUNT[4]		=	1;
@@ -823,8 +823,8 @@ instance ItRe_ALCHEMY_Mana_02 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_02;
 	
-	description		=	"Przepis na ≈õredniƒÖ miksturƒô many";
-	TEXT[1]			=	"z 2 ognistych zi√≥≈Ç";
+	description		=	"Przepis na úredniπ miksturÍ many";
+	TEXT[1]			=	"z 2 ognistych ziÛ≥";
 	TEXT[2]			=	"i rdestu polnego i wina.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -848,7 +848,7 @@ instance ItRe_ALCHEMY_Mana_03 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_03;
 	
-	description		=	"Przepis na silnƒÖ miksturƒô many";
+	description		=	"Przepis na silnπ miksturÍ many";
 	TEXT[1]			=	"z 2 ognistych korzeni";
 	TEXT[2]			=	"i rdestu polnego i wina.";
 	COUNT[4]		=	1;
@@ -873,8 +873,8 @@ instance ItRe_ALCHEMY_Mana_04 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_04;
 	
-	description		=	"Przepis na potƒô≈ºnƒÖ miksturƒô many";
-	TEXT[1]			=	"z 3 s≈Çabych mikstur many";
+	description		=	"Przepis na potÍønπ miksturÍ many";
+	TEXT[1]			=	"z 3 s≥abych mikstur many";
 	TEXT[2]			=	"i rdestu polnego.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -898,8 +898,8 @@ instance ItRe_ALCHEMY_Mana_05 (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_05;
 	
-	description		=	"Przepis na s≈ÇabƒÖ miksturƒô many";
-	TEXT[1]			=	"z 4 serafis√≥w";
+	description		=	"Przepis na s≥abπ miksturÍ many";
+	TEXT[1]			=	"z 4 serafisÛw";
 	TEXT[2]			=	"i rdestu polnego i wina.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -923,9 +923,9 @@ instance ItRe_ALCHEMY_Perm_Health (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_Health;
 	
-	description		=	"Przepis na eliksir ≈ºywotno≈õci";
+	description		=	"Przepis na eliksir øywotnoúci";
 	TEXT[1]			=	"z krwawego rumianku";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -949,8 +949,8 @@ instance ItRe_ALCHEMY_Perm_Mana (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_Mana;
 	
 	description		=	"Przepis na eliksir ducha";
-	TEXT[1]			=	"z wilczej miƒôty";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	TEXT[1]			=	"z wilczej miÍty";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -973,9 +973,9 @@ instance ItRe_ALCHEMY_Perm_STR (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_STR;
 	
-	description		=	"Przepis na eliksir si≈Çy";
+	description		=	"Przepis na eliksir si≥y";
 	TEXT[1]			=	"ze smoczego korzenia";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -998,9 +998,9 @@ instance ItRe_ALCHEMY_Perm_DEX (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_DEX;
 	
-	description		=	"Przepis na eliksir zrƒôczno≈õci";
-	TEXT[1]			=	"z goblinich jag√≥d";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	description		=	"Przepis na eliksir zrÍcznoúci";
+	TEXT[1]			=	"z goblinich jagÛd";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1024,8 +1024,8 @@ instance ItRe_ALCHEMY_Perm_Power (ItemPR_Recipe)
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_Power;
 	
 	description		=	"Przepis na eliksir mocy";
-	TEXT[1]			=	"z wampirzej r√≥≈ºy";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	TEXT[1]			=	"z wampirzej rÛøy";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1048,9 +1048,9 @@ instance ItRe_ALCHEMY_Perm_Fire (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Perm_Fire;
 	
-	description		=	"Przepis na eliksir odporno≈õci na ogie≈Ñ";
-	TEXT[1]			=	"ze s≈Çonecznego aloesu";
-	TEXT[2]			=	"i szczawiu kr√≥lewskiego i rtƒôci.";
+	description		=	"Przepis na eliksir odpornoúci na ogieÒ";
+	TEXT[1]			=	"ze s≥onecznego aloesu";
+	TEXT[2]			=	"i szczawiu krÛlewskiego i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1073,8 +1073,8 @@ instance ItRe_ALCHEMY_Speed (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Speed;
 	
-	description		=	"Przepis na miksturƒô energii";
-	TEXT[1]			=	"z 2 zƒôbatych zi√≥≈Ç";
+	description		=	"Przepis na miksturÍ energii";
+	TEXT[1]			=	"z 2 zÍbatych ziÛ≥";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -1098,9 +1098,9 @@ instance ItRe_ALCHEMY_Geist (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Geist;
 	
-	description		=	"Przepis na miksturƒô jasno≈õci umys≈Çu";
+	description		=	"Przepis na miksturÍ jasnoúci umys≥u";
 	TEXT[1]			=	"z bagiennego ziela";
-	TEXT[2]			=	"i cmentarnego mchu i gorza≈Çy.";
+	TEXT[2]			=	"i cmentarnego mchu i gorza≥y.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -1123,8 +1123,8 @@ instance ItRe_ALCHEMY_Poison (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_Poison;
 	
-	description		=	"Przepis na truciznƒô";
-	TEXT[1]			=	"z trujƒÖcego grzyba";
+	description		=	"Przepis na truciznÍ";
+	TEXT[1]			=	"z trujπcego grzyba";
 	TEXT[2]			=	"i rdestu polnego i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -1148,8 +1148,8 @@ instance ItRe_ALCHEMY_HealObsession (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_ALCHEMY_HealObsession;
 	
-	description		=	"Przepis na leczenie z opƒôtania";
-	TEXT[1]			=	"z zƒôbatego ziela";
+	description		=	"Przepis na leczenie z opÍtania";
+	TEXT[1]			=	"z zÍbatego ziela";
 	TEXT[2]			=	"i cmentarnego mchu i wody.";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
@@ -1175,8 +1175,8 @@ instance ItRe_ALCHEMY_MegaDrink (ItemPR_Recipe)
 	
 	description		=	"Przepis na Embarla Firgasto";
 	TEXT[1]			=	"z 10 smoczych jaj";
-	TEXT[2]			=	"i czarnej per≈Çy";
-	TEXT[3]			=	"i siarki i rtƒôci.";
+	TEXT[2]			=	"i czarnej per≥y";
+	TEXT[3]			=	"i siarki i rtÍci.";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1191,14 +1191,14 @@ func void Use_Recipe_ALCHEMY_MegaDrink()
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_SetFont 	(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_PrintLines	(nDocID,  0, "Zdo≈Ça≈Çem wskrzesiƒá pradawnƒÖ sztukƒô, bojƒô siƒô jednak, ≈ºe nie spodoba siƒô to Feodaronowi.");
-				Doc_PrintLines	(nDocID,  0, "Muszƒô zmieszaƒá ca≈Çe jego potomstwo i stworzyƒá z niego miksturƒô w moim laboratorium. Gdyby jeszcze tylko nie siedzia≈Ç bez przerwy na tych jajach... Nadal jednak czujƒô wobec niego szacunek.");
+				Doc_PrintLines	(nDocID,  0, "Zdo≥a≥em wskrzesiÊ pradawnπ sztukÍ, bojÍ siÍ jednak, øe nie spodoba siÍ to Feodaronowi.");
+				Doc_PrintLines	(nDocID,  0, "MuszÍ zmieszaÊ ca≥e jego potomstwo i stworzyÊ z niego miksturÍ w moim laboratorium. Gdyby jeszcze tylko nie siedzia≥ bez przerwy na tych jajach... Nadal jednak czujÍ wobec niego szacunek.");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Embarla Firgasto:");
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_PrintLines	(nDocID,  0, "10 smoczych jaj, jedna starta na proszek czarna per≈Ça i szczypta siarki.");
-				Doc_PrintLines	(nDocID,  0, "Miksturƒô nale≈ºy doprowadziƒá do wrzenia i mieszaƒá bez przerwy podczas destylacji.");
-				Doc_PrintLines	(nDocID,  0, "Substancji ko≈Ñcowej nale≈ºy u≈ºywaƒá z umiarem, gdy≈º wywo≈Çuje silne efekty uboczne i mo≈ºe rozchwiaƒá ca≈Çy system kontroli nad magiƒÖ.");
+				Doc_PrintLines	(nDocID,  0, "10 smoczych jaj, jedna starta na proszek czarna per≥a i szczypta siarki.");
+				Doc_PrintLines	(nDocID,  0, "MiksturÍ naleøy doprowadziÊ do wrzenia i mieszaÊ bez przerwy podczas destylacji.");
+				Doc_PrintLines	(nDocID,  0, "Substancji koÒcowej naleøy uøywaÊ z umiarem, gdyø wywo≥uje silne efekty uboczne i moøe rozchwiaÊ ca≥y system kontroli nad magiπ.");
 				Doc_Show		(nDocID);
 	
 	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
@@ -1241,7 +1241,7 @@ instance ItRe_HUNTING_Furs (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Furs;
 	
-	description		=	"Instrukta≈º sk√≥rowania zwierzat";
+	description		=	"Instruktaø skÛrowania zwierzat";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -1264,13 +1264,13 @@ instance ItRe_HUNTING_Skins (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Skins;
 	
-	description		=	"Instrukta≈º sk√≥rowania gad√≥w";
-	COUNT[4]		=	2;
+	description		=	"Instruktaø skÛrowania gadÛw";
+	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_HUNTING_Skins()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 2)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 1)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1287,7 +1287,7 @@ instance ItRe_HUNTING_Teeth (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Teeth;
 	
-	description		=	"Instrukta≈º usuwania zƒôb√≥w";
+	description		=	"Instruktaø usuwania zÍbÛw";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -1310,13 +1310,13 @@ instance ItRe_HUNTING_Claws (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Claws;
 	
-	description		=	"Instrukta≈º usuwania pazur√≥w";
-	COUNT[4]		=	1;
+	description		=	"Instruktaø usuwania pazurÛw";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_HUNTING_Claws()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 1)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1333,13 +1333,13 @@ instance ItRe_HUNTING_Wings (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Wings;
 	
-	description		=	"Instrukta≈º usuwania skrzyde≈Ç";
-	COUNT[4]		=	1;
+	description		=	"Instruktaø usuwania skrzyde≥";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_HUNTING_Wings()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 1)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1356,7 +1356,7 @@ instance ItRe_HUNTING_Stings (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Stings;
 	
-	description		=	"Instrukta≈º usuwania ≈ºƒÖde≈Ç";
+	description		=	"Instruktaø usuwania øπde≥";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1379,7 +1379,7 @@ instance ItRe_HUNTING_Mandibles (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Mandibles;
 	
-	description		=	"Instrukta≈º usuwania ≈ºuwaczek";
+	description		=	"Instruktaø usuwania øuwaczek";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1402,7 +1402,7 @@ instance ItRe_HUNTING_Horns (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Horns;
 	
-	description		=	"Instrukta≈º usuwania rog√≥w";
+	description		=	"Instruktaø usuwania rogÛw";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1425,7 +1425,7 @@ instance ItRe_HUNTING_Tongues (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Tongues;
 	
-	description		=	"Instrukta≈º usuwania jƒôzyk√≥w";
+	description		=	"Instruktaø usuwania jÍzykÛw";
 	COUNT[4]		=	3;
 	COUNT[5]		=	value;
 };
@@ -1448,7 +1448,7 @@ instance ItRe_HUNTING_Plates (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Plates;
 	
-	description		=	"Instrukta≈º usuwania p≈Çytek pancerzy";
+	description		=	"Instruktaø usuwania p≥ytek pancerzy";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1471,7 +1471,7 @@ instance ItRe_HUNTING_Scales (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Scales;
 	
-	description		=	"Instrukta≈º usuwania ≈Çusek";
+	description		=	"Instruktaø usuwania ≥usek";
 	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
@@ -1494,13 +1494,13 @@ instance ItRe_HUNTING_Hearts (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Hearts;
 	
-	description		=	"Instrukta≈º usuwania serc";
-	COUNT[4]		=	3;
+	description		=	"Instruktaø usuwania serc";
+	COUNT[4]		=	2;
 	COUNT[5]		=	value;
 };
 func void Use_Recipe_HUNTING_Hearts()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1517,7 +1517,7 @@ instance ItRe_HUNTING_Blood (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Blood;
 	
-	description		=	"Instrukta≈º upuszczania krwi";
+	description		=	"Instruktaø upuszczania krwi";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };
@@ -1540,7 +1540,7 @@ instance ItRe_HUNTING_Bones (ItemPR_Recipe)
 	visual 			=	"ItWr_Scroll_01.3DS";
 	on_state[0]		=	Use_Recipe_HUNTING_Bones;
 	
-	description		=	"Instrukta≈º selekcjonowania ko≈õci";
+	description		=	"Instruktaø selekcjonowania koúci";
 	COUNT[4]		=	1;
 	COUNT[5]		=	value;
 };

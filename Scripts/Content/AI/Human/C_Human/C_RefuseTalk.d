@@ -12,11 +12,9 @@ func int C_RefuseTalk (var C_NPC slf, var C_NPC oth)
 	
 	if (!slf.aivar[AIV_TalkedToPlayer])
 	&& (Npc_GetDistToWP(slf, slf.wp) > 500)
+	&& (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(Lothar))
 	{
-		if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(Lothar))
-		{
-			return true;
-		};
+		return true;
 	};
 	
 	if (C_PlayerHasFakeGuild(slf, oth))

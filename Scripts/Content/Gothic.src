@@ -100,7 +100,6 @@ AI\HUMAN\C_Human\C_IsMyPossession.d
 AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
 STORY\B_Story\B_UseItem.d
 
-STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
 AI\HUMAN\B_Human\B_CommentFakeGuild.d
 AI\HUMAN\B_Human\B_Say_AttackEnd.d
 AI\HUMAN\B_Human\B_Say_AttackReason.d
@@ -160,7 +159,6 @@ STORY\B_AssignAmbientInfos\B_Preach_Vatras.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos_*.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientNEWS.d
 STORY\B_AssignAmbientInfos\B_AssignToughGuyNEWS.d
-STORY\B_AssignAmbientInfos\B_AssignCityGuide.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos.d
 
 AI\MAGIC\B_AssessMagic.d
@@ -188,14 +186,18 @@ STORY\Npc_Scripts\Npc_Default.d
 STORY\NPC\*.d
 STORY\NPC\NPC_G2\*.d
 STORY\NPC\NPC_WzA\*.d
-STORY\NPC\Monster\MST_*.d
-STORY\NPC\Monster\Demon\MST_*.d
-STORY\NPC\Monster\Golem\MST_*.d
-STORY\NPC\Monster\Neutral\MST_*.d
-STORY\NPC\Monster\Orc\MST_*.d
-STORY\NPC\Monster\Undead\MST_*.d
-
-MOD\MOD_iMonologue.d
+STORY\NPC\Monsters\MST_*.d
+STORY\NPC\Monsters\Demons\MST_*.d
+STORY\NPC\Monsters\Furbeasts\MST_*.d
+STORY\NPC\Monsters\Golems\MST_*.d
+STORY\NPC\Monsters\Humanoids\MST_*.d
+STORY\NPC\Monsters\Insects\MST_*.d
+STORY\NPC\Monsters\Livestock\MST_*.d
+STORY\NPC\Monsters\Orcs\MST_*.d
+STORY\NPC\Monsters\Reptiles\MST_*.d
+STORY\NPC\Monsters\Scavengers\MST_*.d
+STORY\NPC\Monsters\Undeads\MST_*.d
+STORY\NPC\Monsters\Wild\MST_*.d
 
 STORY\B_GiveTradeInv\B_ClearRuneInv.d
 STORY\B_GiveTradeInv\B_GiveTradeInv_*.d
@@ -226,12 +228,11 @@ STORY\G_Functions\G_PickLock.d
 
 STORY\B_Story\B_InitGuildAttitudes.d
 STORY\B_Story\B_NPC_IsAliveCheck.d
-STORY\B_AssignAmbientInfos\B_AssignDragonTalk_Main.d
-STORY\B_AssignAmbientInfos\B_AssignDragonTalk_*.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk.d
-STORY\B_AssignAmbientInfos\B_AssignDementorTalk_*.d
+STORY\B_AssignAmbientInfos\B_AssignDementorTalk.d
 STORY\B_AssignAmbientInfos\B_AssignORC_AntiPaladinTalk.d
 STORY\B_AssignAmbientInfos\B_NpcObsessedByDMT.d
+STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
 STORY\B_Story\B_GregIsBack.d
 
 STORY\B_Story\B_ENTER_ADDONWORLD.d

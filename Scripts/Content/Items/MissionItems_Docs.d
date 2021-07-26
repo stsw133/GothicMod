@@ -2197,7 +2197,6 @@ func void Use_StonePlateCommon()
 	else
 	{
 		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlateCommon_Addon);
 	};
 };
 ///******************************************************************************************

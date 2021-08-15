@@ -33,7 +33,7 @@ func void B_SetVisuals_Skeleton_Lord()
 	Mdl_ApplyOverlayMds (self, "humans_2hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_CBowT2.mds");
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Ske_Head", default, default, ITAR_SKELETON);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Ske_Head", default, default, ITAR_SKELETON);
 };
 ///******************************************************************************************
 instance Skeleton_Lord (Mst_Skeleton_Lord)

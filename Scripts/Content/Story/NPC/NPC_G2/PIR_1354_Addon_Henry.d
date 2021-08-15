@@ -22,7 +22,7 @@ instance PIR_1354_Addon_Henry (Npc_Default)
 	EquipItem (self, ItMw_Krummschwert);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_PIR_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

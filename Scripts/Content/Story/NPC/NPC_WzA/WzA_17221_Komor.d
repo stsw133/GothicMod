@@ -30,7 +30,7 @@ instance WzA_17221_Komor (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_FatBald", Face_Bronek, Teeth_Gold, ITAR_VLK_H_06);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Bronek, Teeth_Gold, ITAR_VLK_H_06);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds"); 	
 	Mdl_SetModelFatness	(self, 1);
 	

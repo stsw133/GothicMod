@@ -19,7 +19,7 @@ instance VLK_457_Brian (Npc_Default)
 	EquipItem (self, ItMw_1h_VLK_Axe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Fighter", Face_Normal04, 0, ITAR_SMITH);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Fighter", Face_Normal04, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 0.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

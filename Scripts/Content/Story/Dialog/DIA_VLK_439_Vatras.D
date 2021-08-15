@@ -1191,7 +1191,6 @@ func void DIA_Addon_Vatras_WISP_Info ()
 
 	Info_ClearChoices (DIA_Addon_Vatras_WISP);
 	Info_AddChoice (DIA_Addon_Vatras_WISP, "Dziêkujê! Bêdê o tym pamiêtaæ.", DIA_Addon_Vatras_WISP_Thanks);
-	Info_AddChoice (DIA_Addon_Vatras_WISP, "To wszystko, co ten ognik umie?", DIA_Addon_Vatras_WISP_MoreWISP);
 	Info_AddChoice (DIA_Addon_Vatras_WISP, "W tym amulecie jest ognik?", DIA_Addon_Vatras_WISP_Amulett);
 	SC_GotWisp = TRUE;	
 };
@@ -1199,18 +1198,6 @@ func void DIA_Addon_Vatras_WISP_Thanks()
 {
 	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_Thanks_15_00"); //Dziêkujê! Bêdê o tym pamiêtaæ.
 	Info_ClearChoices (DIA_Addon_Vatras_WISP);
-};
-func void DIA_Addon_Vatras_WISP_MoreWISP()
-{
-	AI_Output (other, self, "DIA_Addon_Vatras_Waffen_MoreWISP_15_00"); //To wszystko, co ten ognik umie?
-	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_01"); //Poza wykrywaniem uzbrojenia? Tylko jeœli go nauczysz.
-	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_02"); //O ile mi wiadomo, to Riordan potrafi uczyæ te stworki nowych sztuczek. Przebywa teraz z Saturasem.
-	AI_Output (self, other, "DIA_Addon_Vatras_Waffen_MoreWISP_05_03"); //Mo¿e on ci wiêcej o nim opowie.
-
-	if (MIS_Vatras_FindTheBanditTrader == LOG_RUNNING)
-	{
-		B_LogEntry (TOPIC_Addon_BanditTrader,"Ogniki potrafi¹ znajdowaæ nie tylko broñ bia³¹. Mag Wody, Riordian, mo¿e nauczyæ moje ogniki szukania innych przedmiotów."); 
-	};
 };
 func void DIA_Addon_Vatras_WISP_Amulett()
 {
@@ -1309,7 +1296,7 @@ func void DIA_Addon_Vatras_SellStonplate_Info ()
 	else if (anzahl >= 5)
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_SellStonplate_05_04"); //Przyjmij w nagrodê te kilka zwojów...
-		B_GiveInvItems (self, other, ItSc_InstantFireball, anzahl);
+		B_GiveInvItems (self, other, ItSc_PyrFireball, anzahl);
 	}
 	else // 1-4 Plates --> 2-5 Tränke
 	{

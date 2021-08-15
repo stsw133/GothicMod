@@ -20,7 +20,7 @@ func void B_GiveTradeInv_Addon_Cronos_NW (var C_NPC slf)
 		CreateInvItems   (slf, ItSc_Firebolt, 5);
 		CreateInvItems   (slf, ItSc_Zap, 5);
 		CreateInvItems   (slf, ItSc_LightHeal, 5);
-		CreateInvItems   (slf, ItSc_SumGobSkel, 2);
+		//CreateInvItems   (slf, ItSc_SumGobSkel, 2);
 		CreateInvItems   (slf, ItSc_Icelance, 5);
 		CreateInvItems   (slf, ItSc_Whirlwind, 1);
 		

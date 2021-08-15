@@ -23,7 +23,7 @@ instance BAU_982_Grimbald (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Psionic", Face_Normal04, 0, ITAR_LEATHER_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Psionic", Face_Normal04, 0, ITAR_LEATHER_L);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

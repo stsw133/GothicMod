@@ -30,6 +30,7 @@ func void Use_ItWr_StonePlate()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute(self, 0, 2);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -51,6 +52,7 @@ func void Use_ItWr_StonePlate_HP()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -72,6 +74,7 @@ func void Use_ItWr_StonePlate_Mana()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_MANA_MAX, 2);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -117,6 +120,7 @@ func void Use_ItWr_StonePlate_STR()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_STRENGTH, 2);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -138,6 +142,7 @@ func void Use_ItWr_StonePlate_DEX()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_DEXTERITY, 2);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -159,6 +164,7 @@ func void Use_ItWr_StonePlate_Power()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_POWER, 2);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -181,6 +187,7 @@ func void Use_ItWr_StonePlate_1h()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_AddFightSkill (self, NPC_TALENT_1H, 1);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -202,6 +209,7 @@ func void Use_ItWr_StonePlate_2h()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_AddFightSkill (self, NPC_TALENT_2H, 1);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -223,6 +231,7 @@ func void Use_ItWr_StonePlate_Bow()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_AddFightSkill (self, NPC_TALENT_BOW, 1);
+		B_GivePlayerXP(100);
 	}
 	else
 	{
@@ -244,6 +253,7 @@ func void Use_ItWr_StonePlate_CBow()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_AddFightSkill (self, NPC_TALENT_CROSSBOW, 1);
+		B_GivePlayerXP(100);
 	}
 	else
 	{

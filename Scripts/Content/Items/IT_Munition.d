@@ -76,44 +76,44 @@ func void SetItRwAttributes_HAmmo (var C_ITEM itm)
 ///******************************************************************************************
 instance ItRw_Arrow (ItemPR_Arrow)
 {
-	value 			=	4;
-	visual 			=	"ItRw_Arrow.3ds";
-	on_state[0]		=	Use_ItRw_Arrow;
+	value 					=	4;
+	visual 					=	"ItRw_Arrow.3ds";
+	on_state[0]				=	Use_ItRw_Arrow;
 	
-	description		=	name;
-	COUNT[5]		=	value;
+	description				=	name;
+	COUNT[5]				=	value;
 	SetItRwAttributes_Arrow(self);
 };
 instance ItRw_sArrow (ItemPR_Arrow)
 {
-	value 			=	6;
-	visual 			=	"ItRw_Arrow.3ds";
-	on_state[0]		=	Use_ItRw_sArrow;
+	value 					=	4;
+	visual 					=	"ItRw_Arrow.3ds";
+	on_state[0]				=	Use_ItRw_sArrow;
 	
-	description		=	"Ostra strza³a";
-	TEXT[1]			=	NAME_Damage;
-	COUNT[1]		=	20;
-	COUNT[5]		=	value;
+	description				=	"Ostra strza³a";
+	TEXT[1]					=	NAME_Damage;
+	COUNT[1]				=	20;
+	COUNT[5]				=	value;
 	SetItRwAttributes_Arrow(self);
 };
 instance ItRw_fArrow (ItemPR_Arrow)
 {
-	value 			=	6;
-	visual 			=	"ItRw_Arrow.3ds";
-	on_state[0]		=	Use_ItRw_fArrow;
+	value 					=	6;
+	visual 					=	"ItRw_Arrow.3ds";
+	on_state[0]				=	Use_ItRw_fArrow;
 	
-	description		=	"Ognista strza³a";
-	COUNT[5]		=	value;
+	description				=	"Ognista strza³a";
+	COUNT[5]				=	value;
 	SetItRwAttributes_Arrow(self);
 };
 instance ItRw_pArrow (ItemPR_Arrow)
 {
-	value 			=	6;
-	visual 			=	"ItRw_Arrow.3ds";
-	on_state[0]		=	Use_ItRw_pArrow;
+	value 					=	6;
+	visual 					=	"ItRw_Arrow.3ds";
+	on_state[0]				=	Use_ItRw_pArrow;
 	
-	description		=	"Zatruta strza³a";
-	COUNT[5]		=	value;
+	description				=	"Zatruta strza³a";
+	COUNT[5]				=	value;
 	SetItRwAttributes_Arrow(self);
 };
 ///******************************************************************************************
@@ -160,10 +160,9 @@ func void ARROW_CHECK()
 		CreateInvItems (self, ItRw_pArrow, Arrows);
 	};
 	
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-	
 	if (Npc_IsEquippedItem_Bow(self))
 	{
+		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_bow;
 	};
 };
@@ -209,24 +208,24 @@ func void Use_ItRw_pArrow()
 ///******************************************************************************************
 instance ItRw_Bolt (ItemPR_Bolt)
 {
-	value 			=	4;
-	visual 			=	"ItRw_Bolt.3ds";
-	on_state[0]		=	Use_ItRw_Bolt;
+	value 					=	4;
+	visual 					=	"ItRw_Bolt.3ds";
+	on_state[0]				=	Use_ItRw_Bolt;
 	
-	description		=	name;
-	COUNT[5]		=	value;
+	description				=	name;
+	COUNT[5]				=	value;
 	SetItRwAttributes_Bolt(self);
 };
 instance ItRw_sBolt (ItemPR_Bolt)
 {
-	value 			=	6;
-	visual 			=	"ItRw_Bolt.3ds";
-	on_state[0]		=	Use_ItRw_sBolt;
+	value 					=	4;
+	visual 					=	"ItRw_Bolt.3ds";
+	on_state[0]				=	Use_ItRw_sBolt;
 	
-	description		=	"Ostry be³t";
-	TEXT[1]			=	NAME_Damage;
-	COUNT[1]		=	20;
-	COUNT[5]		=	value;
+	description				=	"Ostry be³t";
+	TEXT[1]					=	NAME_Damage;
+	COUNT[1]				=	20;
+	COUNT[5]				=	value;
 	SetItRwAttributes_Bolt(self);
 };
 ///******************************************************************************************
@@ -259,10 +258,9 @@ func void BOLT_CHECK()
 		CreateInvItems (self, ItRw_sBolt, Bolts);
 	};
 	
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-	
 	if (Npc_IsEquippedItem_Crossbow(self))
 	{
+		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_cbow;
 	};
 };
@@ -290,12 +288,12 @@ func void Use_ItRw_sBolt()
 ///******************************************************************************************
 instance ItRw_Ammo (ItemPR_Ammo)
 {
-	value 			=	5;
-	visual 			=	"ItRw_Ammo.3ds";
-	on_state[0]		=	Use_ItRw_Ammo;
+	value 					=	5;
+	visual 					=	"ItRw_Ammo.3ds";
+	on_state[0]				=	Use_ItRw_Ammo;
 	
-	description		=	name;
-	COUNT[5]		=	value;
+	description				=	name;
+	COUNT[5]				=	value;
 	SetItRwAttributes_Ammo(self);
 };
 ///******************************************************************************************
@@ -321,10 +319,9 @@ func void AMMO_CHECK()
 		CreateInvItems (self, ItRw_Ammo, Ammo);
 	};
 	
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-	
 	if (Npc_IsEquippedItem_Gun(self))
 	{
+		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_gun;
 	};
 };
@@ -343,21 +340,21 @@ func void Use_ItRw_Ammo()
 ///******************************************************************************************
 instance ItRw_HAmmo (ItemPR_HAmmo)
 {
-	value 			=	50;
-	visual 			=	"W_HAmmo.3ds";
-	on_state[0]		=	Use_ItRw_HAmmo;
+	value 					=	50;
+	visual 					=	"W_HAmmo.3ds";
+	on_state[0]				=	Use_ItRw_HAmmo;
 	
-	description		=	"Ciê¿ki pocisk";
+	description				=	"Ciê¿ki pocisk";
 	SetItRwAttributes_HAmmo(self);
 };
 instance ItRw_BAmmo (ItemPR_HAmmo)
 {
-	value 			=	100;
-	visual 			=	"W_HAmmo1.3ds";
-	on_state[0]		=	Use_ItRw_BAmmo;
-	effect			=	"SPELLFX_BIOAMMO";
+	value 					=	100;
+	visual 					=	"W_HAmmo1.3ds";
+	on_state[0]				=	Use_ItRw_BAmmo;
+	effect					=	"SPELLFX_BIOAMMO";
 	
-	description		=	"Bio-pocisk";
+	description				=	"Bio-pocisk";
 	SetItRwAttributes_HAmmo(self);
 };
 ///******************************************************************************************
@@ -390,10 +387,9 @@ func void HEAVYAMMO_CHECK()
 		CreateInvItems (self, ItRw_BAmmo, HAmmo);
 	};
 	
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-	
 	if (Npc_IsEquippedItem_HeavyGun(self))
 	{
+		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_hgun;
 	};
 };
@@ -421,44 +417,44 @@ func void Use_ItRw_BAmmo()
 ///******************************************************************************************
 instance ItSe_AmmoBox (C_Item)
 {
-	name 			=	"Pude³ko z nabojami";
-	mainflag 		=	ITEM_KAT_MUN;
-	flags 			=	ITEM_MULTI;
+	name 					=	"Pude³ko z nabojami";
+	mainflag 				=	ITEM_KAT_MUN;
+	flags 					=	ITEM_MULTI;
 	
-	value 			=	100;
+	value 					=	100;
 	
-	visual 			=	"W_AmmoBox1.3ds";
-	material 		=	MAT_METAL;
-	scemename		=	"MAPSEALED";
-	on_state[0]		=	Use_AmmoBox;
+	visual 					=	"W_AmmoBox1.3ds";
+	material 				=	MAT_METAL;
+	scemename				=	"MAPSEALED";
+	on_state[0]				=	Use_AmmoBox;
 	
-	description		= 	name;
-	TEXT[2]			= 	"W œrodku znajduj¹ siê 24 naboje.";
-	TEXT[5]			= 	NAME_Value;
-	COUNT[5]		=	value;
+	description				= 	name;
+	TEXT[2]					= 	"W œrodku znajduj¹ siê 24 naboje.";
+	TEXT[5]					= 	NAME_Value;
+	COUNT[5]				=	value;
 };
 func void Use_AmmoBox()
 {
 	B_PlayerFindItem (ItRw_Ammo, 24);
 };
-
+///******************************************************************************************
 instance ItSe_HAmmoBox (C_Item)
 {
-	name 			=	"Pud³o z amunicj¹";
-	mainflag 		=	ITEM_KAT_MUN;
-	flags 			=	ITEM_MULTI;
+	name 					=	"Pud³o z amunicj¹";
+	mainflag 				=	ITEM_KAT_MUN;
+	flags 					=	ITEM_MULTI;
 	
-	value 			=	250;
+	value 					=	250;
 	
-	visual 			=	"W_AmmoBox3.3ds";
-	material 		=	MAT_METAL;
-	scemename		=	"MAPSEALED";
-	on_state[0]		=	Use_HAmmoBox;
+	visual 					=	"W_AmmoBox3.3ds";
+	material 				=	MAT_METAL;
+	scemename				=	"MAPSEALED";
+	on_state[0]				=	Use_HAmmoBox;
 	
-	description		= 	"Pud³o z ciê¿k¹ amunicj¹";
-	TEXT[2]			= 	"W œrodku znajduje siê 6 pocisków.";
-	TEXT[5]			= 	NAME_Value;
-	COUNT[5]		=	value;
+	description				= 	"Pud³o z ciê¿k¹ amunicj¹";
+	TEXT[2]					= 	"W œrodku znajduje siê 6 pocisków.";
+	TEXT[5]					= 	NAME_Value;
+	COUNT[5]				=	value;
 };
 func void Use_HAmmoBox()
 {

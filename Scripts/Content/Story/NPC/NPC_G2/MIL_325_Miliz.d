@@ -25,7 +25,7 @@ instance Mil_325_Miliz (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_FatBald", Face_Normal02, 0, ITAR_MIL_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_Normal02, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

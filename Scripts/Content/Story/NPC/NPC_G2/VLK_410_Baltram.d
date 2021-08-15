@@ -22,7 +22,7 @@ instance VLK_410_Baltram (Npc_Default)
 	EquipItem (self, ItMw_ShortSword2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal58, 0, ITAR_VLK_L_13);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal58, 0, ITAR_VLK_L_13);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

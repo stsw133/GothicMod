@@ -406,8 +406,8 @@ func void DIA_Lester_BACKINTOWN_Info ()
 	AI_Output			(self, other, "DIA_Lester_BACKINTOWN_13_03"); //Porozmawiaj z Xardasem. Czeka ju¿ na ciebie!
 	AI_Output			(self, other, "DIA_Lester_BACKINTOWN_13_04"); //Xardas kaza³ mi przekazaæ ci tê runê. Dziêki niej szybciej do niego wrócisz. Spotkamy siê na miejscu.
 	
-	CreateInvItems 		(self,ItRu_TeleportXardas,1);
-	B_GiveInvItems 		(self,other,ItRu_TeleportXardas,1);
+	CreateInvItems 		(self,ItTe_Xardas,1);
+	B_GiveInvItems 		(self,other,ItTe_Xardas,1);
 	
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"START");	//Joly: Lester geht wieder zurück in sein Tal!

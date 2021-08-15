@@ -19,7 +19,7 @@ instance PIR_1353_Addon_Morgan (Npc_Default)
 	EquipItem (self, ItMw_Doppelaxt);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_FatBald", Face_Normal03, 0, ITAR_PIR_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal03, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

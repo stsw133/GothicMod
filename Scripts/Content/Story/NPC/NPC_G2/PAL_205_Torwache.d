@@ -23,7 +23,7 @@ instance Pal_205_Torwache (Npc_Default)
 	EquipItem (self, ItMw_1H_Pal_Sword);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal55, 0, ITAR_PAL_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal55, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

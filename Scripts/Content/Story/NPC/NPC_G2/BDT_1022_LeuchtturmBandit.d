@@ -23,7 +23,7 @@ instance BDT_1022_LeuchtturmBandit (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Normal31, 0, ITAR_BANDIT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Normal31, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

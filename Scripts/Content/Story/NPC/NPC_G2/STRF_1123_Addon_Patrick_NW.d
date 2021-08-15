@@ -25,7 +25,7 @@ instance STRF_1123_Addon_Patrick_NW (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Bald", Face_Normal07, 0, ITAR_SLD_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal07, 0, ITAR_SLD_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

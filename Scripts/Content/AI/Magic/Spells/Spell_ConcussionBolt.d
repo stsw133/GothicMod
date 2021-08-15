@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 const int SPL_Cost_ConcussionBolt		=	40;
-const int SPL_Damage_ConcussionBolt		=	200;
+const int SPL_Damage_ConcussionBolt		=	120;	//200
 
 ///******************************************************************************************
 INSTANCE Spell_ConcussionBolt (C_Spell_Proto)
@@ -19,11 +19,8 @@ func int Spell_Logic_ConcussionBolt (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_ConcussionBolt)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_ConcussionBolt()

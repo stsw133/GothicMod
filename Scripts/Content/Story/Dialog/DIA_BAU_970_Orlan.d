@@ -100,7 +100,7 @@ FUNC VOID DIA_Orlan_Wein_Okay()
 	
 	CreateInvItems  (hero,ITSC_Light,2);
 	CreateInvItems  (hero,ItSc_LightHeal,1);
-	CreateInvItems  (hero,ItSc_SumGobSkel,1);
+	//CreateInvItems  (hero,ItSc_SumGobSkel,1);
 	
 	Info_ClearChoices (DIA_Orlan_Wein);
 };

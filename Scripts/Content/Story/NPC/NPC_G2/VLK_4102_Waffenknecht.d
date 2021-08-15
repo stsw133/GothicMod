@@ -22,7 +22,7 @@ instance VLK_4102_Waffenknecht (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal11, 0, ITAR_MIL_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal11, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

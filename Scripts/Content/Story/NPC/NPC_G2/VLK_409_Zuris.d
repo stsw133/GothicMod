@@ -19,7 +19,7 @@ instance VLK_409_Zuris (Npc_Default)
 	EquipItem (self, ItMw_1H_VLK_DAGGER);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Normal01, 0, ITAR_VLK_L_08);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Normal01, 0, ITAR_VLK_L_08);
 	Mdl_SetModelFatness	(self, 0.9);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

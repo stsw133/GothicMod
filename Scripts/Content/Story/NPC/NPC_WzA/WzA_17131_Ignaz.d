@@ -31,7 +31,7 @@ instance WzA_17131_Ignaz (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Psionic", Face_Corristo, Teeth_Normal, ITAR_Alchemist);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Corristo, Teeth_Normal, ITAR_Alchemist);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

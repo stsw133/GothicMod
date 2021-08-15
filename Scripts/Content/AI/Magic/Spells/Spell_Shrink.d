@@ -4,9 +4,6 @@
 
 const int SPL_Cost_Shrink				=	300;
 
-var int SPL_Disallow_Shrink;
-var int SPL_State_Shrink;
-
 ///******************************************************************************************
 instance Spell_Shrink (C_Spell_Proto)
 {
@@ -21,12 +18,16 @@ func int Spell_Logic_Shrink	(var int manaInvested)
 	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Shrink/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Shrink)
 	{
-		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
+		if (!C_NpcIsUndead(other) && other.guild > GIL_SEPERATOR_HUM)
+		{
+			return SPL_SENDCAST;
+		}
+		else
+		{
+			Print("Użycie dozwolone niedozwolone na ludziach i nieumarłych!");
+		};
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_Shrink()
@@ -41,14 +42,8 @@ func void Spell_Cast_Shrink()
 	};
 	
 	if (other.flags != NPC_FLAG_IMMORTAL)
-	&& (!C_NpcIsUndead(other))
-	&& (other.guild > GIL_SEPERATOR_HUM)
-	//&& (SPL_State_Shrink == 0)
-	//&& (other.attribute[ATR_STRENGTH] > other.attribute[ATR_DEXTERITY] / 5)	///temp
-	//&& (!SPL_Disallow_Shrink)	///temp
-	&& (other.aivar[AIV_MM_ShrinkState] == 0)
+	&& (other.aivar[AIV_MM_ShrinkState] < 14)
 	{
-		//SPL_Disallow_Shrink = true;
 		Npc_ClearAIQueue	(other);
 		B_ClearPerceptions	(other);
 		AI_StartState		(other, ZS_MagicShrink, 0, "");

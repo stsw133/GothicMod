@@ -19,7 +19,7 @@ instance VLK_420_Coragon (Npc_Default)
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal19, 0, ITAR_BARKEEPER);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal19, 0, ITAR_BARKEEPER);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

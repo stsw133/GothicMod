@@ -14,20 +14,17 @@ instance Spell_MassDeath (C_Spell_Proto)
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
 };
 
-func int Spell_Logic_Massdeath (var int manaInvested)
+func int Spell_Logic_MassDeath (var int manaInvested)
 {
 	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MassDeath/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MassDeath)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
-func void Spell_Cast_Massdeath()
+func void Spell_Cast_MassDeath()
 {
 	if (Npc_GetActiveSpellIsScroll(self))
 	{

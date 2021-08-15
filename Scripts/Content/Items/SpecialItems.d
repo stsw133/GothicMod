@@ -3,18 +3,18 @@
 ///******************************************************************************************
 instance Fakescroll (C_Item)
 {
-	name 			=	"Kawa³ek papieru";
-	mainflag 		=	ITEM_KAT_DOCS;
-	flags 			=	ITEM_MULTI;
+	name 					=	"Kawa³ek papieru";
+	mainflag 				=	ITEM_KAT_DOCS;
+	flags 					=	ITEM_MULTI;
 
-	hp 				=	5;
-	hp_max 			=	5;
-	weight 			=	1;
+	hp 						=	5;
+	hp_max 					=	5;
+	weight 					=	1;
 
-	visual 			=	"Fakescroll.3ds";
-	scemeName		=	"MAPSEALED";
+	visual 					=	"Fakescroll.3ds";
+	scemeName				=	"MAPSEALED";
 
-	description		= 	name;
+	description				= 	name;
 };
 ///******************************************************************************************
 prototype ItemPR_Instrument (C_Item)
@@ -28,153 +28,153 @@ prototype ItemPR_Instrument (C_Item)
 ///******************************************************************************************
 instance ItMi_IECello (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_Cello.3ds";
-	scemeName		=	"CELLO";
-	description		= 	"Wiolonczela";
+	visual 					=	"Itmi_IE_Cello.3ds";
+	scemeName				=	"CELLO";
+	description				= 	"Wiolonczela";
 };
 instance ItMi_IECelloBow (ItemPR_Instrument)
 {
-	name 			=	"Smyczek wiolonczeli";
-	visual 			=	"Itmi_IE_CelloBow.3ds";
-	description		= 	name;
+	name 					=	"Smyczek wiolonczeli";
+	visual 					=	"Itmi_IE_CelloBow.3ds";
+	description				= 	name;
 };
 instance ItMi_IEDrum (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_Drum.3ds";
-	scemeName		=	"PAUKE";
-	description		= 	"Bêben";
+	visual 					=	"Itmi_IE_Drum.3ds";
+	scemeName				=	"PAUKE";
+	description				= 	"Bêben";
 };
 instance ItMi_IEDrumScheit (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_Drumscheit.3ds";
-	scemeName		=	"DRUMSCHEIT";
-	description		= 	"Tr¹ba";
+	visual 					=	"Itmi_IE_Drumscheit.3ds";
+	scemeName				=	"DRUMSCHEIT";
+	description				= 	"Tr¹ba";
 };
 instance ItMi_IEDrumStick (ItemPR_Instrument)
 {
-	name 			=	"Pa³eczka";
-	visual 			=	"Itmi_IE_DrumStick.3ds";
-	description		= 	name;
+	name 					=	"Pa³eczka";
+	visual 					=	"Itmi_IE_DrumStick.3ds";
+	description				= 	name;
 };
 instance ItMi_IEDudelBlau (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_DudelBlau.3ds";
-	scemeName		=	"DUDEL";
-	description		= 	"Niebieskie dudy";
+	visual 					=	"Itmi_IE_DudelBlau.3ds";
+	scemeName				=	"DUDEL";
+	description				= 	"Niebieskie dudy";
 };
 instance ItMi_IEDudelGelb (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_DudelGelb.3ds";
-	scemeName		=	"DUDEL";
-	description		= 	"¯ó³te dudy";
+	visual 					=	"Itmi_IE_DudelGelb.3ds";
+	scemeName				=	"DUDEL";
+	description				= 	"¯ó³te dudy";
 };
 instance ItMi_IEHarfe (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_Harfe.3ds";
-	scemeName		=	"HARFE";
-	description		= 	"Harfa";
+	visual 					=	"Itmi_IE_Harfe.3ds";
+	scemeName				=	"HARFE";
+	description				= 	"Harfa";
 };
 instance ItMi_IELaute (ItemPR_Instrument)
 {
-	visual 			=	"Itmi_IE_Laute.3ds";
-	scemeName		=	"IELAUTE";
-	description		= 	"Lutnia";
+	visual 					=	"Itmi_IE_Laute.3ds";
+	scemeName				=	"IELAUTE";
+	description				= 	"Lutnia";
 };
 instance ItLsTorchFirespit (ItemPR_Instrument)
 {
-	visual 			=	"ITLSTORCHBURNING.ZEN";
-	scemeName		=	"FIRESPIT";
+	visual 					=	"ITLSTORCHBURNING.ZEN";
+	scemeName				=	"FIRESPIT";
 };
 ///******************************************************************************************
 /// WzA items
 ///******************************************************************************************
 instance ItMi_NA_Shit (C_Item)
 {
-	name			= 	"Gówno";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Gówno";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_Shit.3ds";
-	material 		=	MAT_LEATHER;
+	visual 					=	"ItMi_NA_Shit.3ds";
+	material 				=	MAT_LEATHER;
 
-	description		= 	name;
+	description				= 	name;
 };
 instance ItMi_NA_Gramophone (C_Item)
 {
-	name			= 	"Gramofon";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Gramofon";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_Gramophone.3ds";
-	material 		=	MAT_WOOD;
+	visual 					=	"ItMi_NA_Gramophone.3ds";
+	material 				=	MAT_WOOD;
 
-	description		= 	name;
+	description				= 	name;
 };
 instance ItMi_NA_Phone (C_Item)
 {
-	name			= 	"Komórka";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Komórka";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_Phone.3ds";
-	material 		=	MAT_METAL;
+	visual 					=	"ItMi_NA_Phone.3ds";
+	material 				=	MAT_METAL;
 
-	description		= 	name;
+	description				= 	name;
 };
 instance ItMi_NA_Telephone (C_Item)
 {
-	name			= 	"Telefon";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Telefon";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_Telephone.3ds";
-	material 		=	MAT_METAL;
+	visual 					=	"ItMi_NA_Telephone.3ds";
+	material 				=	MAT_METAL;
 
-	description		= 	name;
+	description				= 	name;
 };
 instance ItMi_NA_TV (C_Item)
 {
-	name			= 	"Telewizor";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Telewizor";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_TV.3ds";
-	material 		=	MAT_METAL;
+	visual 					=	"ItMi_NA_TV.3ds";
+	material 				=	MAT_METAL;
 
-	description		= 	name;
+	description				= 	name;
 };
 instance ItMi_NA_Vodka (C_Item)
 {
-	name			= 	"Wódka";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MULTI;
+	name					= 	"Wódka";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 
-	visual 			=	"ItMi_NA_Vodka.3ds";
-	material 		=	MAT_GLAS;
+	visual 					=	"ItMi_NA_Vodka.3ds";
+	material 				=	MAT_GLAS;
 
-	description		= 	name;
+	description				= 	name;
 };
 ///******************************************************************************************
 instance ItMe_iPenta_blue (C_Item)
 {
-	name 			=	"Kr¹g magiczny";
-	mainflag 		=	ITEM_KAT_NONE;
-	flags 			=	ITEM_MISSION;
+	name 					=	"Kr¹g magiczny";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags 					=	ITEM_MISSION;
 
-	visual 			=	"ITME_IPENTA.3DS";
-	effect			=	"spellfx_ipenta_blue";
+	visual 					=	"ITME_IPENTA.3DS";
+	effect					=	"spellfx_ipenta_blue";
 
-	description		= 	name;
+	description				= 	name;
 };
 ///******************************************************************************************
 instance GreenScreen (C_Item)
 {
-	name			=	"GreenScreen";
-	mainflag		=	ITEM_KAT_NONE;
-	flags			=	ITEM_MISSION;
+	name					=	"GreenScreen";
+	mainflag				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MISSION;
 
-	visual			=	"GreenScreen.3DS";
-	material		=	MAT_STONE;
+	visual					=	"GreenScreen.3DS";
+	material				=	MAT_STONE;
 
-	description		=	name;
+	description				=	name;
 };

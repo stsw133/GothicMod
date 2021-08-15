@@ -46,97 +46,97 @@ func void UnEquip_Bow_CHECK()
 ///******************************************************************************************
 func void SetItRwAttributes_Bow (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*50;
-	itm.damageTotal		=	kap*5;
-	itm.cond_value[1]  	= 	kap*5;
-	itm.cond_value[2]  	= 	kap*1;
+	itm.value				=	kap*50;
+	itm.damageTotal			=	kap*5;
+	itm.cond_value[1]  		= 	kap*5;
+	itm.cond_value[2]  		= 	kap*1;
 	
-	itm.COUNT[1]		=	itm.damageTotal;
-	itm.COUNT[2]		=	itm.cond_value[1];
-	itm.COUNT[3]		=	itm.cond_value[2];
-	itm.COUNT[5]		=	itm.value;
+	itm.COUNT[1]			=	itm.damageTotal;
+	itm.COUNT[2]			=	itm.cond_value[1];
+	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
 instance ItRw_Bow_L_01 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_L_01.mms";
-	description		=	"Krótki ³uk";
+	visual 					=	"ItRw_Bow_L_01.mms";
+	description				=	"Krótki ³uk";
 	SetItRwAttributes_Bow (self, 3);
 };
 instance ItRw_Bow_L_02 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_L_02.mms";
-	description		=	"£uk wierzbowy";
+	visual 					=	"ItRw_Bow_L_02.mms";
+	description				=	"£uk wierzbowy";
 	SetItRwAttributes_Bow (self, 5);
 };
 instance ItRw_Sld_Bow (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Sld_Bow.mms";
-	description		=	name;
+	visual 					=	"ItRw_Sld_Bow.mms";
+	description				=	name;
 	SetItRwAttributes_Bow (self, 6);
-	value			/=	10;
-	COUNT[5]		=	value;
+	value					/=	10;
+	COUNT[5]				=	value;
 };
 instance ItRw_Bow_L_03 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_L_03.mms";
-	description		=	"£uk myœliwski";
+	visual 					=	"ItRw_Bow_L_03.mms";
+	description				=	"£uk myœliwski";
 	SetItRwAttributes_Bow (self, 8);
 };
 instance ItRw_Bow_L_04 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_L_04.mms";
-	description		=	"£uk z wi¹zu";
+	visual 					=	"ItRw_Bow_L_04.mms";
+	description				=	"£uk z wi¹zu";
 	SetItRwAttributes_Bow (self, 10);
 };
 ///******************************************************************************************
 instance ItRw_Bow_M_01 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_M_01.mms";
-	description		=	"£uk kompozytowy";
+	visual 					=	"ItRw_Bow_M_01.mms";
+	description				=	"£uk kompozytowy";
 	SetItRwAttributes_Bow (self, 13);
 };
 instance ItRw_Bow_M_02 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_M_02.mms";
-	description		=	"£uk jesionowy";
+	visual 					=	"ItRw_Bow_M_02.mms";
+	description				=	"£uk jesionowy";
 	SetItRwAttributes_Bow (self, 15);
 };
 instance ItRw_Bow_M_03 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_M_03.mms";
-	description		=	"D³ugi ³uk";
+	visual 					=	"ItRw_Bow_M_03.mms";
+	description				=	"D³ugi ³uk";
 	SetItRwAttributes_Bow (self, 18);
 };
 instance ItRw_Bow_M_04 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_M_04.mms";
-	description		=	"£uk bukowy";
+	visual 					=	"ItRw_Bow_M_04.mms";
+	description				=	"£uk bukowy";
 	SetItRwAttributes_Bow (self, 20);
 };
 ///******************************************************************************************
 instance ItRw_Bow_H_01 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_H_01.mms";
-	description		=	"Koœciany ³uk";
+	visual 					=	"ItRw_Bow_H_01.mms";
+	description				=	"Koœciany ³uk";
 	SetItRwAttributes_Bow (self, 23);
 };
 instance ItRw_Bow_H_02 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_H_02.mms";
-	description		=	"£uk dêbowy";
+	visual 					=	"ItRw_Bow_H_02.mms";
+	description				=	"£uk dêbowy";
 	SetItRwAttributes_Bow (self, 25);
 };
 instance ItRw_Bow_H_03 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_H_03.mms";
-	description		=	"£uk wojenny";
+	visual 					=	"ItRw_Bow_H_03.mms";
+	description				=	"£uk wojenny";
 	SetItRwAttributes_Bow (self, 28);
 };
 instance ItRw_Bow_H_04 (ItemPR_Bow)
 {
-	visual 			=	"ItRw_Bow_H_04.mms";
-	description		=	"Smoczy ³uk";
+	visual 					=	"ItRw_Bow_H_04.mms";
+	description				=	"Smoczy ³uk";
 	SetItRwAttributes_Bow (self, 30);
 };
 ///******************************************************************************************
@@ -187,61 +187,61 @@ func void UnEquip_Crossbow_CHECK()
 ///******************************************************************************************
 func void SetItRwAttributes_Crossbow (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*100;
-	itm.damageTotal		=	kap*6;
-	itm.cond_value[1]  	= 	kap*5;
-	itm.cond_value[2]  	= 	kap*2;
+	itm.value				=	kap*100;
+	itm.damageTotal			=	kap*6;
+	itm.cond_value[1]  		= 	kap*5;
+	itm.cond_value[2]  		= 	kap*2;
 	
-	itm.COUNT[1]		=	itm.damageTotal;
-	itm.COUNT[2]		=	itm.cond_value[1];
-	itm.COUNT[3]		=	itm.cond_value[2];
-	itm.COUNT[5]		=	itm.value;
+	itm.COUNT[1]			=	itm.damageTotal;
+	itm.COUNT[2]			=	itm.cond_value[1];
+	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
 instance ItRw_Crossbow_L_01 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_L_01.mms";
-	description		=	"Kusza myœliwska";
+	visual 					=	"ItRw_Crossbow_L_01.mms";
+	description				=	"Kusza myœliwska";
 	SetItRwAttributes_Crossbow (self, 5);
 };
 instance ItRw_Mil_Crossbow (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Mil_Crossbow.mms";
-	description		=	name;
+	visual 					=	"ItRw_Mil_Crossbow.mms";
+	description				=	name;
 	SetItRwAttributes_Crossbow (self, 6);
-	value			/=	10;
-	itm.COUNT[5]	=	value;
+	value					/=	10;
+	itm.COUNT[5]			=	value;
 };
 instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_L_02.mms";
-	description		=	"Ma³a kusza";
+	visual 					=	"ItRw_Crossbow_L_02.mms";
+	description				=	"Ma³a kusza";
 	SetItRwAttributes_Crossbow (self, 10);
 };
 ///******************************************************************************************
 instance ItRw_Crossbow_M_01 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_M_01.mms";
-	description		=	"Wiêksza kusza";
+	visual 					=	"ItRw_Crossbow_M_01.mms";
+	description				=	"Wiêksza kusza";
 	SetItRwAttributes_Crossbow (self, 15);
 };
 instance ItRw_Crossbow_M_02 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_M_02.mms";
-	description		=	"Kusza bojowa";
+	visual 					=	"ItRw_Crossbow_M_02.mms";
+	description				=	"Kusza bojowa";
 	SetItRwAttributes_Crossbow (self, 20);
 };
 ///******************************************************************************************
 instance ItRw_Crossbow_H_01 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_H_01.mms";
-	description		=	"Ciê¿ka kusza";
+	visual 					=	"ItRw_Crossbow_H_01.mms";
+	description				=	"Ciê¿ka kusza";
 	SetItRwAttributes_Crossbow (self, 25);
 };
 instance ItRw_Crossbow_H_02 (ItemPR_Crossbow)
 {
-	visual 			=	"ItRw_Crossbow_H_02.mms";
-	description		=	"Kusza ³owcy smoków";
+	visual 					=	"ItRw_Crossbow_H_02.mms";
+	description				=	"Kusza ³owcy smoków";
 	SetItRwAttributes_Crossbow (self, 30);
 };
 ///******************************************************************************************
@@ -290,79 +290,79 @@ func void UnEquip_Gun_CHECK()
 ///******************************************************************************************
 func void SetItRwAttributes_Gun (var C_ITEM itm, var int kap, var int fast)
 {
-	itm.value			=	kap*500;
-	if (fast)			{	itm.damageTotal = kap*30; itm.TEXT[4] = NAME_FastGun;	}
-	else				{	itm.damageTotal = kap*50;								};
-	itm.cond_value[1]  	= 	kap*20;
-	itm.cond_value[2]  	= 	kap*10;
+	itm.value				=	kap*500;
+	if (fast)				{	itm.damageTotal = kap*30; itm.TEXT[4] = NAME_FastGun;	}
+	else					{	itm.damageTotal = kap*50;								};
+	itm.cond_value[1]  		= 	kap*20;
+	itm.cond_value[2]  		= 	kap*10;
 	
-	itm.COUNT[1]		=	itm.damageTotal;
-	itm.COUNT[2]		=	itm.cond_value[1];
-	itm.COUNT[3]		=	itm.cond_value[2];
-	itm.COUNT[5]		=	itm.value;
+	itm.COUNT[1]			=	itm.damageTotal;
+	itm.COUNT[2]			=	itm.cond_value[1];
+	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
 instance ItRw_Gun1 (ItemPR_Gun)
 {
-	name 			=	"Karabin M16";
-	visual 			=	"W_RIFLE1.3DS";
-	description		=	"Stary amerykañski karabin";
+	name 					=	"Karabin M16";
+	visual 					=	"W_RIFLE1.3DS";
+	description				=	"Stary amerykañski karabin";
 	SetItRwAttributes_Gun (self, 4, true);
 };
 instance ItRw_Gun2 (ItemPR_Gun)
 {
-	name 			=	"Strzelba";
-	visual 			=	"W_RIFLE.3DS";
-	description		=	"Stara strzelba";
+	name 					=	"Strzelba";
+	visual 					=	"W_RIFLE.3DS";
+	description				=	"Stara strzelba";
 	SetItRwAttributes_Gun (self, 5, false);
 };
 instance ItRw_Gun3 (ItemPR_Gun)
 {
-	name 			=	"MP40";
-	visual 			=	"W_RIFLE3.3DS";
-	description		=	"MP40 - niemiecka broñ";
+	name 					=	"MP40";
+	visual 					=	"W_RIFLE3.3DS";
+	description				=	"MP40 - niemiecka broñ";
 	SetItRwAttributes_Gun (self, 5, true);
 };
 instance ItRw_Gun4 (ItemPR_Gun)
 {
-	name 			=	"Karabin M65";
-	visual 			=	"W_RIFLE2.3DS";
-	description		=	name;
+	name 					=	"Karabin M65";
+	visual 					=	"W_RIFLE2.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 6, true);
 };
 instance ItRw_Gun5 (ItemPR_Gun)
 {
-	name 			=	"AK 47";
-	visual 			=	"W_RIFLE5.3DS";
-	description		=	name;
+	name 					=	"AK 47";
+	visual 					=	"W_RIFLE5.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 7, true);
 };
 instance ItRw_Gun6 (ItemPR_Gun)
 {
-	name 			=	"Karabin szturmowy MSG90";
-	visual 			=	"W_RIFLE4.3DS";
-	description		=	name;
+	name 					=	"Karabin szturmowy MSG90";
+	visual 					=	"W_RIFLE4.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 8, false);
 };
 instance ItRw_Gun7 (ItemPR_Gun)
 {
-	name 			=	"AK 47";
-	visual 			=	"W_RIFLE6.3DS";
-	description		=	name;
+	name 					=	"AK 47";
+	visual 					=	"W_RIFLE6.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 8, true);
 };
 instance ItRw_Gun8 (ItemPR_Gun)
 {
-	name 			=	"M16";
-	visual 			=	"W_RIFLE7.3DS";
-	description		=	name;
+	name 					=	"M16";
+	visual 					=	"W_RIFLE7.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 9, true);
 };
 instance ItRw_Gun9 (ItemPR_Gun)
 {
-	name 			=	"Dzia³ko obrotowe";
-	visual 			=	"W_RIFLE8.3DS";
-	description		=	name;
+	name 					=	"Dzia³ko obrotowe";
+	visual 					=	"W_RIFLE8.3DS";
+	description				=	name;
 	SetItRwAttributes_Gun (self, 10, true);
 };
 ///******************************************************************************************
@@ -411,42 +411,42 @@ func void UnEquip_HeavyGun_CHECK()
 ///******************************************************************************************
 func void SetItRwAttributes_HeavyGun (var C_ITEM itm, var int kap)
 {
-	itm.value			=	kap*2000;
-	itm.damageTotal		=	kap*200;
-	itm.cond_value[1]  	= 	kap*100;
-	itm.cond_value[2]  	= 	kap*20;
+	itm.value				=	kap*2000;
+	itm.damageTotal			=	kap*200;
+	itm.cond_value[1]  		= 	kap*100;
+	itm.cond_value[2]  		= 	kap*20;
 	
-	itm.COUNT[1]		=	itm.damageTotal;
-	itm.COUNT[2]		=	itm.cond_value[1];
-	itm.COUNT[3]		=	itm.cond_value[2];
-	itm.COUNT[5]		=	itm.value;
+	itm.COUNT[1]			=	itm.damageTotal;
+	itm.COUNT[2]			=	itm.cond_value[1];
+	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
 instance ItRw_HGun1 (ItemPR_HeavyGun)
 {
-	name 			=	"Wyrzutnia rakiet";
-	visual 			=	"W_HGUN.3DS";
-	description		=	name;
+	name 					=	"Wyrzutnia rakiet";
+	visual 					=	"W_HGUN.3DS";
+	description				=	name;
 	SetItRwAttributes_HeavyGun (self, 2);
 };
 instance ItRw_HGun2 (ItemPR_HeavyGun)
 {
-	name 			=	"Wyrzutnia rakiet";
-	visual 			=	"W_HGUN1.3DS";
-	description		=	name;
+	name 					=	"Wyrzutnia rakiet";
+	visual 					=	"W_HGUN1.3DS";
+	description				=	name;
 	SetItRwAttributes_HeavyGun (self, 3);
 };
 instance ItRw_HGun3 (ItemPR_HeavyGun)
 {
-	name 			=	"Wyrzutnia rakiet";
-	visual 			=	"W_HGUN2.3DS";
-	description		=	name;
+	name 					=	"Wyrzutnia rakiet";
+	visual 					=	"W_HGUN2.3DS";
+	description				=	name;
 	SetItRwAttributes_HeavyGun (self, 4);
 };
 instance ItRw_HGun4 (ItemPR_HeavyGun)
 {
-	name 			=	"Wyrzutnia rakiet";
-	visual 			=	"W_HGUN3.3DS";
-	description		=	name;
+	name 					=	"Wyrzutnia rakiet";
+	visual 					=	"W_HGUN3.3DS";
+	description				=	name;
 	SetItRwAttributes_HeavyGun (self, 5);
 };

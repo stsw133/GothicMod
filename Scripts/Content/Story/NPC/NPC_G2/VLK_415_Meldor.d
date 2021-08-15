@@ -25,7 +25,7 @@ instance VLK_415_Meldor (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_FatBald", Face_Normal05, 0, ITAR_Vlk_L_00);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal05, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 0.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

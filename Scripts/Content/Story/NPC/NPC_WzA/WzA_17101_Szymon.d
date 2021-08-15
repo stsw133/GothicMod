@@ -30,7 +30,7 @@ instance WzA_17101_Szymon (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Normal11, Teeth_Normal, ITAR_SLD_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal11, Teeth_Normal, ITAR_SLD_M);
 //	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

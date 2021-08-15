@@ -23,7 +23,7 @@ instance BDT_10014_Addon_Thorus (Npc_Default)
 	CreateInvItem (self, ITKE_Addon_Thorus);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Fighter", Face_Thorus, 0, ITAR_RVN_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Fighter", Face_Thorus, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

@@ -30,7 +30,7 @@ instance WzA_17050_Isaj (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Tattoo81, Teeth_Bad, ITAR_SLN_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Tattoo07, Teeth_Bad, ITAR_SLN_L);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

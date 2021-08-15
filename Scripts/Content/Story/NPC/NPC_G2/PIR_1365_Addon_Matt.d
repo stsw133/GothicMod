@@ -22,7 +22,7 @@ instance PIR_1365_Addon_Matt (Npc_Default)
 	EquipItem (self, ItMw_Addon_PIR2hAxe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal21, 0, ITAR_PIR_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal21, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

@@ -38,7 +38,7 @@ func void INIT_GLOBAL()
 	FF_ApplyOnce(Loop_expBar);
 	
 	FF_ApplyOnceExt (TT_1000, 1000, -1);
-	FF_ApplyOnceExt (TT_200, 200, -1);
+	FF_ApplyOnceExt (TT_500, 500, -1);
 	FF_ApplyOnceExt (TT_5, 5, -1);
 	
 	if		(dLevel == DIFF_E)	{	TRADE_VALUE_MULTIPLIER = 0.18;	}
@@ -501,7 +501,7 @@ FUNC VOID STARTUP_ADDON_PART_BANDITSCAMP_01()
 	
 	Wld_InsertItem (ItRi_MANA_02,"FP_ITEM_BANDITSCAMP_03"); //TOLLES ITEM !!!
 	
-	Wld_InsertItem (ItSc_IceCube,"FP_ITEM_BANDITSCAMP_04"); 
+	Wld_InsertItem (ItSc_EleFreeze,"FP_ITEM_BANDITSCAMP_04"); 
 	Wld_InsertItem (ItPl_Speed_Herb_01,"FP_ITEM_BANDITSCAMP_05"); 
 	Wld_InsertItem (ItPo_Health_03,"FP_ITEM_BANDITSCAMP_06"); 
 	Wld_InsertItem (ItPo_Mana_03,"FP_ITEM_BANDITSCAMP_07"); 
@@ -2756,7 +2756,7 @@ func void STARTUP_NewWorld_Part_City_01()
 	
 	//Items, die auf dem Schiff zu finden sind!
 		
-	Wld_InsertItem			(ItMi_Moleratlubric_MIS,"FP_ITEM_SHIP_07");	//zur Sicherheit für Vinos Brennerei!
+	Wld_InsertItem			(ItAt_MoleratLubric,"FP_ITEM_SHIP_07");	//zur Sicherheit für Vinos Brennerei!
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_01"); 
 	Wld_InsertItem			(ItRi_LifeSteal_02,"FP_ITEM_SHIP_02");
 	Wld_InsertItem			(ItPo_Mana_03,"FP_ITEM_SHIP_03");
@@ -2768,7 +2768,8 @@ func void STARTUP_NewWorld_Part_City_01()
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_10");
 	Wld_InsertItem			(ItSe_GoldPocket50,"FP_ITEM_SHIP_11");
 	Wld_InsertItem			(ItSc_Zap,"FP_ITEM_SHIP_12");
-	Wld_InsertItem			(ItSc_SumWolf,"FP_ITEM_SHIP_12");
+	//Wld_InsertItem			(ItSc_SumWolf,"FP_ITEM_SHIP_12");
+	Wld_InsertItem			(ItSc_NightToDay,"FP_ITEM_SHIP_12");
 	Wld_InsertItem			(ItSc_Sleep,"FP_ITEM_SHIP_12");
 	Wld_InsertItem			(ItMi_nugget,"FP_ITEM_SHIP_13");
 	Wld_InsertItem			(ItPo_Mana_02,"FP_ITEM_SHIP_14");

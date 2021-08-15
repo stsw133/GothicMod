@@ -102,11 +102,11 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	{
 		//if (talent == LearnedCraftTalent)
 		//{
-		//	kosten = 10;
+		//	kosten = 15;
 		//}
 		//else
 		//{
-			kosten = 20;	/// kosten=10 is in DIA_TEACH
+			kosten = 25;	/// kosten=15 is in DIA_TEACH
 		//};
 	};
 	
@@ -137,7 +137,7 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	
 	if (talent == NPC_TALENT_LANGUAGE)
 	{
-		kosten = 20;
+		kosten = 15;
 	};
 	
 	return kosten;

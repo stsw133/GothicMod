@@ -32,7 +32,7 @@ instance WzA_17191_Losowiec (Npc_Default)
 	/// ------ Visuals ------
 	aivar[AIV_FaceTex] = Hlp_RandomRange(100,111);
 	
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Babe6", self.aivar[AIV_FaceTex], Teeth_Pretty, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe6", self.aivar[AIV_FaceTex], Teeth_Pretty, -1);
 	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Rtn ------

@@ -30,7 +30,7 @@ instance WzA_17100_Szczepan (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_B, "Hum_Head_Bald", Face_Normal00, Teeth_Gold, ITAR_SLD_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal00, Teeth_Gold, ITAR_SLD_H);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 1);
 	

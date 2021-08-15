@@ -23,7 +23,7 @@ instance VLK_405_Fernando (Npc_Default)
 	CreateInvItem (self, ItSe_GoldPocket100);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Corristo, 0, ITAR_VLK_H_11);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Corristo, 0, ITAR_VLK_H_11);
 	Mdl_SetModelFatness	(self, 3);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

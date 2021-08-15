@@ -30,7 +30,7 @@ instance WzA_17152_MaceWindu (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_B, "Hum_Head_Bald", Face_MaceWindu, Teeth_Normal, ITAR_SW_Jedi_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_MaceWindu, Teeth_Normal, ITAR_SW_Jedi_L);
 	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Rtn ------

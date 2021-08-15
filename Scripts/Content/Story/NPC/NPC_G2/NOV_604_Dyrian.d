@@ -23,7 +23,7 @@ instance NOV_604_Dyrian (Npc_Default)
 	CreateInvItem (self, ItSc_Sleep);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Thief", Face_Normal02, 0, ITAR_Nov_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_Normal02, 0, ITAR_Nov_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

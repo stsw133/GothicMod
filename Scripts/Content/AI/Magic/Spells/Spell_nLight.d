@@ -2,7 +2,7 @@
 ///	SPL_nLight
 ///******************************************************************************************
 
-const int SPL_Cost_nLight				=	5;
+const int SPL_Cost_nLight				=	10;
 const int SPL_Time_nLight				=	300;
 
 ///******************************************************************************************
@@ -23,11 +23,8 @@ func int Spell_Logic_nLight (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_nLight)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_nLight()

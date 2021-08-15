@@ -29,12 +29,33 @@ func void B_SetFightSkills (var C_NPC slf, var int percent)
 ///******************************************************************************************
 func void B_SetMonsterProtection (var C_NPC slf, var int kap)
 {
-	slf.protection[PROT_BLUNT]	=	kap * AR_PER_LEVEL;
-	slf.protection[PROT_EDGE]	=	kap * AR_PER_LEVEL;
-	slf.protection[PROT_POINT]	=	kap * AR_PER_LEVEL;
-	slf.protection[PROT_FIRE]	=	kap * MR_PER_LEVEL;
-	slf.protection[PROT_FLY]	=	kap * MR_PER_LEVEL;
-	slf.protection[PROT_MAGIC]	=	kap * MR_PER_LEVEL;
+	if (slf.level > 100)
+	{
+		slf.protection[PROT_BLUNT]	=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+		slf.protection[PROT_EDGE]	=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+		slf.protection[PROT_POINT]	=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+		slf.protection[PROT_FIRE]	=	50 * MR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+		slf.protection[PROT_FLY]	=	50 * MR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+		slf.protection[PROT_MAGIC]	=	50 * MR_PER_LEVEL + 50 * (AR_PER_LEVEL/2) + kap;
+	}
+	else if (slf.level > 50)
+	{
+		slf.protection[PROT_BLUNT]	=	50 * AR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+		slf.protection[PROT_EDGE]	=	50 * AR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+		slf.protection[PROT_POINT]	=	50 * AR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+		slf.protection[PROT_FIRE]	=	50 * MR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+		slf.protection[PROT_FLY]	=	50 * MR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+		slf.protection[PROT_MAGIC]	=	50 * MR_PER_LEVEL + kap * (AR_PER_LEVEL/2);
+	}
+	else
+	{
+		slf.protection[PROT_BLUNT]	=	kap * AR_PER_LEVEL;
+		slf.protection[PROT_EDGE]	=	kap * AR_PER_LEVEL;
+		slf.protection[PROT_POINT]	=	kap * AR_PER_LEVEL;
+		slf.protection[PROT_FIRE]	=	kap * MR_PER_LEVEL;
+		slf.protection[PROT_FLY]	=	kap * MR_PER_LEVEL;
+		slf.protection[PROT_MAGIC]	=	kap * MR_PER_LEVEL;
+	};
 	
 	/// hard monsters have more point prot but less blunt/edge prot
 	if (slf.guild == GIL_GOBBO_SKELETON)
@@ -84,15 +105,21 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 		
 		if (slf.aivar[AIV_MagicUser] > 0)
 		{
-			slf.attribute[ATR_STRENGTH]			=	kap * 4;
-			slf.attribute[ATR_DEXTERITY]		=	kap * 4;
-			Npc_SetPowerPoints(slf, kap * 4);
+			slf.attribute[ATR_STRENGTH]			=	kap * 3;
+			slf.attribute[ATR_DEXTERITY]		=	kap * 3;
+			Npc_SetPowerPoints(slf, kap * 3);
 		}
 		else
 		{
-			slf.attribute[ATR_STRENGTH]			=	kap * 5;
-			slf.attribute[ATR_DEXTERITY]		=	kap * 5;
+			slf.attribute[ATR_STRENGTH]			=	kap * 4;
+			slf.attribute[ATR_DEXTERITY]		=	kap * 4;
 			Npc_SetPowerPoints(slf, 0);
+		};
+		
+		if (slf.guild < GIL_SEPERATOR_HUM)
+		{
+			slf.attribute[ATR_STRENGTH] += kap;
+			slf.attribute[ATR_DEXTERITY] += kap;
 		};
 	};
 	

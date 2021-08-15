@@ -833,9 +833,11 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_IWantMore()
 		AI_Output (other,self ,"DIA_Babo_Kap3_HaveYourDocs_IWantMore_ThatsEnough_15_00"); //Zgoda.
 		AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_IWantMore_ThatsEnough_03_01"); //Tu masz pieni¹dze i zwój z czarem.
 		
-		CreateInvItems (self ,ItSc_MediumHeal,1);
+		//CreateInvItems (self ,ItSc_MediumHeal,1);
+		CreateInvItems (self ,ItSc_NightToDay,1);
 		CreateInvItems (self ,ItMi_Gold,121);
-		B_GiveInvItems (self,other,ItSc_MediumHeal,1);
+		//B_GiveInvItems (self,other,ItSc_MediumHeal,1);
+		B_GiveInvItems (self,other,ItSc_NightToDay,1);
 		B_GiveInvItems (self ,other,ItMi_Gold,121);
 		
 		MIS_BabosDocs = LOG_SUCCESS;
@@ -865,8 +867,10 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_HereTheyAre()
 	AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_HereTheyAre_03_04"); //Nie, pod warunkiem, ¿e dostanê je z powrotem.
 	AI_Output (self ,other,"DIA_Babo_Kap3_HaveYourDocs_HereTheyAre_03_05"); //Mam nadziejê, ¿e teraz bêdê móg³ odpocz¹æ w spokoju.
 	
-	CreateInvItems (self ,ItSc_MediumHeal,1);
-	B_GiveInvItems (self,other,ItSc_MediumHeal,1);
+	//CreateInvItems (self ,ItSc_MediumHeal,1);
+	CreateInvItems (self ,ItSc_NightToDay,1);
+	//B_GiveInvItems (self,other,ItSc_MediumHeal,1);
+	B_GiveInvItems (self,other,ItSc_NightToDay,1);
 	
 	MIS_BabosDocs = LOG_SUCCESS;
 	B_GivePlayerXP(300);

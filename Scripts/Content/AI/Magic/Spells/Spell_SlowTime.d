@@ -5,7 +5,7 @@
 const int SPL_Cost_SlowTime				=	300;
 const int SPL_Time_SlowTime				=	15;
 
-var int SPL_Enabled_SlowTime;
+var int SPL_IsEnabled_SlowTime;
 
 ///******************************************************************************************
 instance Spell_SlowTime (C_Spell_Proto)
@@ -21,11 +21,8 @@ func int Spell_Logic_SlowTime (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_SlowTime)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_SlowTime()

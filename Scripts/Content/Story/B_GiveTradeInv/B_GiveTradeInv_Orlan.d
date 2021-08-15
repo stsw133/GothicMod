@@ -50,7 +50,7 @@ func void B_GiveTradeInv_Orlan (var C_NPC slf)
 	&& (Orlan_ItemsGiven_Chapter < 3)
 	{
 		CreateInvItems (slf, ItMi_Gold, 100);
-		CreateInvItems (slf, ItRu_TeleportTaverne, 1);
+		CreateInvItems (slf, ItTe_Taverne, 1);
 		CreateInvItems (slf, ItRw_Arrow, 120);
 		CreateInvItems (slf, ItRw_Bolt, 115);
 		CreateInvItems (slf, ItBe_Power_01, 1);

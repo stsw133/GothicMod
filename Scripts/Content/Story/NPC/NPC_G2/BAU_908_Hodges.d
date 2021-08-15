@@ -28,7 +28,7 @@ instance BAU_908_Hodges (Npc_Default)
 	CreateInvItem (self, ItMw_Schwert);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, Teeth_Normal, ITAR_Bau_00);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, Teeth_Normal, ITAR_Bau_00);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

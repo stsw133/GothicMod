@@ -22,7 +22,7 @@ instance VLK_469_Halvor (Npc_Default)
 	EquipItem (self, ItMw_1H_Mace_L_03);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal38, 0, ITAR_Vlk_L_09);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal38, 0, ITAR_Vlk_L_09);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

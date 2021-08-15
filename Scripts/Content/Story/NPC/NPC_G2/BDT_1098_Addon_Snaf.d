@@ -23,7 +23,7 @@ instance BDT_1098_Addon_Snaf (Npc_Default)
 	CreateInvItem (self, ItFo_Addon_Hooch);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Fighter", Face_Snaf, 0, ITAR_BARKEEPER);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Snaf, 0, ITAR_BARKEEPER);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

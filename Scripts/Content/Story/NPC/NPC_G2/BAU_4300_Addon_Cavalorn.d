@@ -24,7 +24,7 @@ instance Bau_4300_Addon_Cavalorn (Npc_Default)
 	CreateInvItem (self, ITAR_Leather_L);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Psionic", Face_Cavalorn, 0, ITAR_WaterRanger);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Psionic", Face_Cavalorn, 0, ITAR_WaterRanger);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

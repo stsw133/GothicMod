@@ -23,7 +23,7 @@ instance NOV_601_Igaraz (Npc_Default)
 	CreateInvItem (self, ItKe_IgarazChest_mis);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Normal16, 0, ITAR_Nov_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Normal16, 0, ITAR_Nov_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

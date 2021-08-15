@@ -26,7 +26,7 @@ instance PAL_217_Marcos (Npc_Default)
 	CreateInvItems (self, ItPo_Health_03, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal03, 0, ITAR_PAL_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", Face_Normal03, 0, ITAR_PAL_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

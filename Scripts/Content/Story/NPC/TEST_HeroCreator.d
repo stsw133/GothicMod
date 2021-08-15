@@ -24,7 +24,7 @@ instance HC (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Rtn ------

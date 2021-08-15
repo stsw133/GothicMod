@@ -24,7 +24,7 @@ instance NONE_ADDON_111_Quarhodron (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Corristo, 0, ITAR_JARKHENDAR);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Corristo, 0, ITAR_JARKHENDAR);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

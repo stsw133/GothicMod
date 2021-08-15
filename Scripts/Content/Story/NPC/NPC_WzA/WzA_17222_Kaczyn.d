@@ -30,7 +30,7 @@ instance WzA_17222_Kaczyn (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_P, "Hum_Head_FatBald", Face_Kaczyn, Teeth_Gold, ITAR_VLK_L_04);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Kaczyn, Teeth_Gold, ITAR_VLK_L_04);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 	Mdl_SetModelFatness	(self, 1);
 	

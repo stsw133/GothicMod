@@ -19,12 +19,12 @@ func void B_GiveTradeInv_Sengrath (var C_NPC slf)
 		CreateInvItems (slf, ITPo_Mana_02, 5);
 		
 		CreateInvItems (slf, ITSc_Zap, 3);
-		CreateInvItems (slf, ITSc_SumWolf, 1);
-		CreateInvItems (slf, ITSc_Sleep, 2);
-		CreateInvItems (slf, ITSc_IceCube, 2);
-		CreateInvItems (slf, ITSc_Windfist, 3);
-		CreateInvItems (slf, ITSc_MediumHeal, 5);
-		CreateInvItems (slf, ITSc_LightningFlash, 2);
+		//CreateInvItems (slf, ITSc_SumWolf, 1);
+		CreateInvItems (slf, ItSc_Sleep, 2);
+		CreateInvItems (slf, ItSc_EleFreeze, 2);
+		CreateInvItems (slf, ItSc_WindFist, 3);
+		//CreateInvItems (slf, ItSc_MediumHeal, 5);
+		CreateInvItems (slf, ItSc_LightningFlash, 2);
 		
 		CreateInvItems (slf,ItRi_ProtFire_02, 1);
 		CreateInvItems (slf,ItBe_Str_01, 1);

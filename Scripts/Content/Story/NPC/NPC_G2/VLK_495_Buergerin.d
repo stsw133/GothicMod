@@ -20,7 +20,7 @@ instance VLK_495_Buergerin (Npc_Default)
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant70, Teeth_Pretty, ITAR_WD_L_03);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant, Teeth_Pretty, ITAR_WD_L_03);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
 	/// ------ Rtn ------

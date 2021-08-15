@@ -22,7 +22,7 @@ instance None_101_Mario (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_FatBald", Face_Normal04, 0, ITAR_MIL_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_Normal04, 0, ITAR_MIL_H);
 	Mdl_SetModelFatness	(self, 1.2);
 	Mdl_ApplyOverlayMds	(self, "Humans_MILITIA.mds");
 

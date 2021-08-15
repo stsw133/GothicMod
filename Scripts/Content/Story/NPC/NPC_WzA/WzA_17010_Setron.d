@@ -33,7 +33,7 @@ instance WzA_17010_Setron (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Skull, Teeth_Normal, /*ITAR_iCHAOS_BLUE*/ ITAR_CHAOS_DARK);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Skull, Teeth_Normal, /*ITAR_iCHAOS_BLUE*/ ITAR_CHAOS_DARK);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

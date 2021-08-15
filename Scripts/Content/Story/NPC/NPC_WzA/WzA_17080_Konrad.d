@@ -31,7 +31,7 @@ instance WzA_17080_Konrad (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Normal63, Teeth_Normal, ITAR_ACRONA_KING);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal63, Teeth_Normal, ITAR_ACRONA_KING);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 0.5);
 	

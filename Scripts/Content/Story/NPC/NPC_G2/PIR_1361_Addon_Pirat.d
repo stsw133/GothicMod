@@ -19,7 +19,7 @@ instance PIR_1361_Addon_PIRAT (Npc_Default)
 	EquipItem (self, ItMw_Addon_PIR2hAxe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Normal05, 0, ITAR_PIR_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal05, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

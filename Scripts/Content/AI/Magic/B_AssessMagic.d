@@ -3,7 +3,6 @@
 ///******************************************************************************************
 func void B_AssessMagic()
 {
-	/// ------ Bei ALLEN Spells. Damit andere NSCs den Angriff wahrnehmen können ------
 	if (Npc_GetLastHitSpellCat(self) == SPELL_BAD)
 	{
 		Npc_SendPassivePerc	(self, PERC_ASSESSFIGHTSOUND, self, other);
@@ -17,7 +16,9 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_Whirlwind, 0, "");
 		return;
 	};
-	/// ---- SuckEnergy ----
+	/// ------ SuckEnergy ------
+	/*
+	if (Npc_GetLastHitSpellID(self) == SPL_SuckEnergy)
 	if (Npc_GetLastHitSpellID(self) == SPL_SuckEnergy)
 	{
 		Npc_ClearAIQueue	(self);
@@ -25,7 +26,9 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_SuckEnergy, 0, "");
 		return;
 	};
-	/// ---- GreenTentacle ----
+	*/
+	/// ------ GreenTentacle ------
+	/*
 	if (Npc_GetLastHitSpellID(self) == SPL_Greententacle)	
 	{
 		Npc_ClearAIQueue	(self);
@@ -33,7 +36,9 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_Greententacle, 0, "");
 		return;
 	};
-	/// ---- Swarm ----
+	*/
+	/// ------ Swarm ------
+	/*
 	if (Npc_GetLastHitSpellID(self) == SPL_Swarm)
 	{
 		Npc_ClearAIQueue	(self);
@@ -41,7 +46,9 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_Swarm, 0, "");
 		return;
 	};
+	*/
 	/// ------ IceCube, IceWave ------
+	/*
 	if (Npc_GetLastHitSpellID(self) == SPL_IceCube)
 	|| (Npc_GetLastHitSpellID(self) == SPL_IceWave)
 	{
@@ -50,6 +57,7 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_MagicFreeze, 0, "");
 		return;
 	};
+	*/
 	/// ------ ChargeZap ------
 	if (Npc_GetLastHitSpellID(self) == SPL_ChargeZap)
 	{
@@ -63,7 +71,7 @@ func void B_AssessMagic()
 	{
 		Npc_ClearAIQueue	(self);
 		B_ClearPerceptions	(self);
-		Npc_SetTarget		(self,	other);
+		Npc_SetTarget		(self, other);
 		
 		if (self.guild < GIL_SEPERATOR_HUM)
 		&& (self.guild != GIL_KDF)
@@ -84,7 +92,8 @@ func void B_AssessMagic()
 			return;
 		};
 	};
-	/// Firespells senden ein ASSESSMAGIC bei Kollision
+	/// ------ FireRain ------
+	/*
 	if (Npc_GetLastHitSpellID(self) == SPL_Firerain)		
 	{	
 		Npc_ClearAIQueue	(self);
@@ -92,7 +101,6 @@ func void B_AssessMagic()
 		AI_StartState		(self, ZS_MagicBurnShort, 0, "");
 		return;
 	};
+	*/
 };
-
-///******************************************************************************************
 const func PLAYER_PERC_ASSESSMAGIC = B_AssessMagic; 	

@@ -27,7 +27,7 @@ instance BAU_935_Bronko (Npc_Default)
 	CreateInvItems (self, ItMi_Gold, 35);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Bald", Face_Normal04, 0, ITAR_Bau_01);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal04, 0, ITAR_Bau_01);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

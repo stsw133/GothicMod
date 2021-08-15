@@ -31,7 +31,7 @@ instance WzA_17090_Garond (Npc_Default)
 	CreateInvItem (self, ItHe_PAL_H);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_FatBald", Face_Raven, Teeth_Normal, ITAR_PAL_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Raven, Teeth_Normal, ITAR_PAL_H);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 	Mdl_SetModelFatness	(self, 1);
 	

@@ -10,6 +10,9 @@ var int o_int;
 
 ///******************************************************************************************
 
+var int hpRegenPower;
+var int hpRegenPoints;
+var int mpRegenPoints;
 var int foodTime;
 
 const int BS_fRun			=	0;

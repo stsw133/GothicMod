@@ -60,7 +60,7 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 		{
 			if		(Npc_HasItems(oth, ItWr_CorneliusTagebuch_MIS) >= 1)	{	B_GiveInvItems (oth, slf, ItWr_CorneliusTagebuch_MIS, 1);	}
 			else if (Npc_HasItems(oth, ItWr_Schuldenbuch) >= 1)				{	B_GiveInvItems (oth, slf, ItWr_Schuldenbuch, 1);			};
-			Print("Otrzymano ksiÄ…Å¼kÄ™");
+			Print("Otrzymano ksi¹¿kê");
 			
 			if (!oth.aivar[AIV_PlayerHasPickedMyPocket])
 			{
@@ -97,7 +97,7 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 		//B_Say (oth, slf, "$DIRTYTHIEF");
 		//B_Attack (oth, slf, AR_Theft, 1);
 		o_string = ConcatStrings ("Potrzeba ", IntToString(MOD_Pickpocket_DexToSteal(o_other)));
-		o_string = ConcatStrings (o_string, " pkt. zrÄ™cznoÅ›ci by dokonaÄ‡ udanej kradzieÅ¼y.");
+		o_string = ConcatStrings (o_string, " pkt. zrêcznoœci by dokonaæ udanej kradzie¿y.");
 		Print(o_string);
 	};
 };

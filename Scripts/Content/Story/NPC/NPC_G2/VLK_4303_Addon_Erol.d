@@ -20,7 +20,7 @@ instance VLK_4303_Addon_Erol (Npc_Default)
 	CreateInvItems (self, ItPo_Health_01, 3);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Corristo, 0, ITAR_VLK_L_12);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Corristo, 0, ITAR_VLK_L_12);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

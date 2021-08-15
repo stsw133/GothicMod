@@ -30,7 +30,7 @@ instance WzA_17093_Grzechu (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_P, "Hum_Head_Bald", /*Face_Normal17*/ Face_Normal07, Teeth_Normal, ITAR_PAL_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", /*Face_Normal17*/ Face_Normal07, Teeth_Normal, ITAR_PAL_H);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 1.5);
 	

@@ -1,3 +1,4 @@
+/*
 ///******************************************************************************************
 ///	B_StopSuckEnergy
 ///******************************************************************************************
@@ -40,8 +41,6 @@ func int ZS_SuckEnergy()
 	Npc_ClearAIQueue(self);
 	AI_StandUp		(self);
 	
-	//Wld_PlayEffect ("spellFX_SuckEnergy_SlowTime", self, self, 0, 0, 0, false);
-	
 	self.aivar[AIV_SuckEnergyStateTime] = 1;
 	
 	Temp_SuckEnergy_DistToPlayer = Npc_GetDistToPlayer(self);
@@ -72,7 +71,7 @@ func int ZS_SuckEnergy_Loop()
 		
 		if (self.attribute[ATR_HITPOINTS] > SPL_Damage_SuckEnergy)
 		{
-			B_MagicHurtNpc (other,	self, SPL_Damage_SuckEnergy);
+			B_MagicHurtNpc (other, self, SPL_Damage_SuckEnergy);
 			Npc_ChangeAttribute	(other, ATR_HITPOINTS, SPL_Damage_SuckEnergy);
 		}
 		else
@@ -87,3 +86,4 @@ func int ZS_SuckEnergy_Loop()
 func void ZS_SuckEnergy_End()
 {
 };
+*/

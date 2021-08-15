@@ -28,19 +28,19 @@ instance Give_Gold (C_Item)
 ///******************************************************************************************
 instance Give_AttributePoints (C_Item)
 {
-	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 100*HP_PER_LP);
-	B_RaiseAttribute (self, ATR_MANA_MAX, 100);
-	B_RaiseAttribute (self, ATR_STRENGTH, 100);
-	B_RaiseAttribute (self, ATR_DEXTERITY, 100);
-	B_RaiseAttribute (self, ATR_POWER, 100);
+	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 50*HP_PER_LP);
+	B_RaiseAttribute (self, ATR_MANA_MAX, 50);
+	B_RaiseAttribute (self, ATR_STRENGTH, 50);
+	B_RaiseAttribute (self, ATR_DEXTERITY, 50);
+	B_RaiseAttribute (self, ATR_POWER, 50);
 	Wld_RemoveItem(self);
 };
 instance Give_FightSkills (C_Item)
 {
-	B_AddFightSkill (hero, NPC_TALENT_1H, 40);
-	B_AddFightSkill (hero, NPC_TALENT_2H, 40);
-	B_AddFightSkill (hero, NPC_TALENT_BOW, 40);
-	B_AddFightSkill (hero, NPC_TALENT_CROSSBOW, 40);
+	B_AddFightSkill (hero, NPC_TALENT_1H, 20);
+	B_AddFightSkill (hero, NPC_TALENT_2H, 20);
+	B_AddFightSkill (hero, NPC_TALENT_BOW, 20);
+	B_AddFightSkill (hero, NPC_TALENT_CROSSBOW, 20);
 	Wld_RemoveItem(self);
 };
 instance Give_MagicSkills (C_Item)
@@ -60,11 +60,11 @@ instance Give_Talents (C_Item)
 	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 2);
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 3);
-	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 3);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 3);
-	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 3);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 2);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_LANGUAGE, 1);
 	
@@ -134,12 +134,12 @@ instance Set_movieMode (C_Item)
 	Wld_RemoveItem(self);
 };
 ///******************************************************************************************
-instance Set_Time_0 (C_Item)
+instance Set_Time0 (C_Item)
 {
 	scaleTime = 0;
 	Wld_RemoveItem(self);
 };
-instance Set_Time_1000 (C_Item)
+instance Set_Time1000 (C_Item)
 {
 	scaleTime = 1000;
 	Wld_RemoveItem(self);

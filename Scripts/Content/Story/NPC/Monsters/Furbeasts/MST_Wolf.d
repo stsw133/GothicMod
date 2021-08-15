@@ -74,13 +74,13 @@ instance Wolf_Skeleton (Mst_Default_Wolf)
 {
 	name								=	"Wilk-szkielet";
 	guild								=	GIL_SKELETON_MONSTER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SHADOWBEAST_SKELETON;
+	aivar[AIV_MM_REAL_ID]				= 	ID_WOLF_SKELETON;
 	
 	B_SetAttributesToLevel (self, 15);
 	B_SetVisuals_Wolf_Skeleton();
 };
 ///******************************************************************************************
-instance Summoned_Wolf (Mst_Default_Wolf)
+instance Summoned_Wolf_Skeleton (Mst_Default_Wolf)
 {
 	name								=	"Przyzwany wilk-szkielet";
 	guild								=	GIL_SUMMONED;

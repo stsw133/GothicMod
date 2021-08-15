@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 /// ------ Poison ------
-func void MOD_PoisonON(var C_Npc slf)
+func void MOD_PoisonON (var C_Npc slf)
 {
 	if (Npc_IsPlayer(slf))
 	&& (!bState[BS_Poison])
@@ -12,7 +12,7 @@ func void MOD_PoisonON(var C_Npc slf)
 		Bar_Delete(Bar_healthBar);
 	};
 };
-func void MOD_PoisonOFF(var C_Npc slf)
+func void MOD_PoisonOFF (var C_Npc slf)
 {
 	if (Npc_IsPlayer(slf))
 	&& (bState[BS_Poison])
@@ -23,18 +23,18 @@ func void MOD_PoisonOFF(var C_Npc slf)
 };
 
 /// ------ Obsession ------
-func void MOD_ObsessionON()
+func void MOD_ObsessionON (var C_Npc slf)
 {
-	if (Npc_IsPlayer(self))
+	if (Npc_IsPlayer(slf))
 	&& (!bState[BS_Obsession])
 	{
 		bState[BS_Obsession] = true;
 		Bar_Delete(Bar_manaBar);
 	};
 };
-func void MOD_ObsessionOFF()
+func void MOD_ObsessionOFF (var C_Npc slf)
 {
-	if (Npc_IsPlayer(self))
+	if (Npc_IsPlayer(slf))
 	&& (bState[BS_Obsession])
 	{
 		bState[BS_Obsession] = false;

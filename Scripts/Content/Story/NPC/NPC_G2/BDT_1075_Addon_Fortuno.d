@@ -28,7 +28,7 @@ instance BDT_1075_Addon_Fortuno (Npc_Default)
 	CreateInvItems (self, ItPl_Mushroom_01, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Tattoo81, 0, ITAR_SLN_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Tattoo07, 0, ITAR_SLN_H);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

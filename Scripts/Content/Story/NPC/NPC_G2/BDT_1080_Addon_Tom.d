@@ -22,7 +22,7 @@ instance BDT_1080_Addon_Tom (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal14, 0, ITAR_BANDIT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", Face_Normal14, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

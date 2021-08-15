@@ -19,7 +19,7 @@ instance VLK_437_Brahim (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_CoolPock, 0, ITAR_Vlk_L_10);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_CoolPock, 0, ITAR_Vlk_L_10);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

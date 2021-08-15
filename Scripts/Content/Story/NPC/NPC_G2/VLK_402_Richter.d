@@ -20,7 +20,7 @@ instance VLK_402_Richter (Npc_Default)
 	CreateInvItem (self, ItKe_Richter);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Richter, 0, ITAR_VLK_H_05);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Richter, 0, ITAR_VLK_H_05);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

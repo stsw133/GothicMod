@@ -25,7 +25,7 @@ instance BDT_10401_Addon_DeadBandit (Npc_Default)
 	CreateInvItems (self, ItPo_Mana_01, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal10, 0, ITAR_RVN_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", Face_Normal10, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

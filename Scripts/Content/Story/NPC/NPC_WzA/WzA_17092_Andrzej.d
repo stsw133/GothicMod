@@ -30,7 +30,7 @@ instance WzA_17092_Andrzej (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Fighter", Face_Normal66, Teeth_Normal, ITAR_PAL_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal66, Teeth_Normal, ITAR_PAL_L);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 0.5);
 	

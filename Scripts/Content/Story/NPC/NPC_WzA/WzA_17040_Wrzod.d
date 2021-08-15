@@ -30,7 +30,7 @@ instance WzA_17040_Wrzod (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Pony", Face_Mud, Teeth_Bad, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Mud, Teeth_Bad, -1);
 //	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

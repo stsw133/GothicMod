@@ -28,25 +28,25 @@ prototype MST_Default_StoneGuardian (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Stoneguardian()
+func void B_SetVisuals_StoneGuardian()
 {
 	Mdl_SetVisual		(self, "StoneGuardian.mds");
 	Mdl_SetVisualBody	(self, "StG_Body", 0, DEFAULT, "", DEFAULT, DEFAULT, -1);
 };
 ///******************************************************************************************
-instance Stoneguardian (MST_Default_StoneGuardian)
+instance StoneGuardian (MST_Default_StoneGuardian)
 {
-	B_SetVisuals_Stoneguardian();
+	B_SetVisuals_StoneGuardian();
 };
 ///******************************************************************************************
-instance Summoned_Guardian (MST_Default_StoneGuardian)
+instance Summoned_StoneGuardian (MST_Default_StoneGuardian)
 {
-	name						=	"Przywo³any kamienny stra¿nik";
-	guild						=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]		=	ID_SUMMONED;
+	name								=	"Przywo³any kamienny stra¿nik";
+	guild								=	GIL_SUMMONED;
+	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
 	B_SetAttributesToLevel (self, 20);
-	B_SetVisuals_Stoneguardian();
+	B_SetVisuals_StoneGuardian();
 };
 ///******************************************************************************************
 ///	QuestMonsters

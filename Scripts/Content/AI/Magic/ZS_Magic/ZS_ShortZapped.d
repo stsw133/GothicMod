@@ -7,7 +7,6 @@ const int SPL_TIME_SHORTZAPPED = 2;
 ///******************************************************************************************
 func void B_StopShortZapped()
 {
- 	//Npc_PercDisable	(self, PERC_ASSESSSTOPMAGIC); // *** was soll das??? ***
  	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_AssessMagic);
 	Npc_ClearAIQueue(self);
 	AI_StandUp		(self);
@@ -20,6 +19,7 @@ func void B_StopShortZapped()
 	{
 		Npc_SetTempAttitude (self, ATT_HOSTILE);
 	};
+	
 	AI_ContinueRoutine(self);
 };		
 

@@ -19,11 +19,8 @@ func int Spell_Logic_GeoStone (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoStone)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_GeoStone()

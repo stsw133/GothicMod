@@ -23,7 +23,7 @@ instance VLK_471_Edda (Npc_Default)
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Babe", FaceBabe_Chani, Teeth_Pretty, ITAR_WD_M_05);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_B, "Hum_Head_Babe", FaceBabe_Edda, Teeth_Pretty, ITAR_WD_M_05);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

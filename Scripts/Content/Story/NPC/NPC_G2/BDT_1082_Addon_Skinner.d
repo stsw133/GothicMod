@@ -26,7 +26,7 @@ instance BDT_1082_Addon_Skinner (Npc_Default)
 	CreateInvItem (self, ITKE_ADDON_SKINNER);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

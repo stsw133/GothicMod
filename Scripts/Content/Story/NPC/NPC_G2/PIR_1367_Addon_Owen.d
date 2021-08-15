@@ -19,7 +19,7 @@ instance PIR_1367_Addon_Owen (Npc_Default)
 	EquipItem (self, ItMw_Addon_PIR1hAxe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal23, 0, ITAR_PIR_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal23, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1.1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

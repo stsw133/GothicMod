@@ -30,7 +30,7 @@ instance WzA_17151_Dooku (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Dooku, Teeth_Normal, ITAR_SW_Sith);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Dooku, Teeth_Normal, ITAR_SW_Sith);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 	Mdl_SetModelFatness (self, 0);
 	

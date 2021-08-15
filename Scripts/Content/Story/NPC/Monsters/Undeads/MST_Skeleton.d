@@ -68,6 +68,18 @@ instance Summoned_Skeleton (Mst_Default_Skeleton)
 	guild								=	GIL_SUMMONED;
 	aivar[AIV_MM_REAL_ID]				= 	ID_SUMMONED;
 	
+	B_SetAttributesToLevel (self, 20);
+	fight_tactic						=	FAI_HUMAN_NORMAL;
+	
+	B_SetVisuals_Skeleton();
+	EquipItem (self, ItMw_1h_MISC_Sword);
+};
+instance Summoned_Skeleton_Warrior (Mst_Default_Skeleton)
+{
+	name								=	"Przyzwany szkielet-wojownik";
+	guild								=	GIL_SUMMONED;
+	aivar[AIV_MM_REAL_ID]				= 	ID_SUMMONED;
+	
 	B_SetAttributesToLevel (self, 30);
 	B_SetVisuals_Skeleton_Warrior();
 	EquipItem (self, ItMw_2H_Sword_M_01);

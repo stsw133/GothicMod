@@ -30,7 +30,7 @@ instance WzA_17223_Paliglup (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_FatBald", Face_Dolan, Teeth_Normal, ITAR_VLK_L_03);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Dolan, Teeth_Normal, ITAR_VLK_L_03);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 0.5);
 	

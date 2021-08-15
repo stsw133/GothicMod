@@ -22,7 +22,7 @@ instance PIR_1370_Addon_Angus (Npc_Default)
 	CreateInvItem (self, ItRi_Addon_MorgansRing_Mission);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal48, 0, ITAR_PIR_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal48, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1.3);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

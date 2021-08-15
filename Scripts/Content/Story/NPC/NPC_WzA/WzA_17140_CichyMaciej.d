@@ -30,7 +30,7 @@ instance WzA_17140_CichyMaciej (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_FatBald", Face_CichyMaciej, Teeth_Normal, ITAR_VLK_L_11);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_CichyMaciej, Teeth_Normal, ITAR_VLK_L_11);
 	Mdl_SetModelFatness	(self, 1.5);
 	
 	/// ------ Rtn ------

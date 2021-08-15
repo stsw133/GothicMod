@@ -9,9 +9,9 @@ func void B_GiveTradeInv_Addon_Martin (var C_NPC slf)
 	&& (Martin_ItemsGiven_Chapter < 1)
 	{
 		CreateInvItems (slf, ItSc_PalHolyBolt,  2);
-		CreateInvItems (slf, ItSc_PalMediumHeal, 1);
-		CreateInvItems (slf, ItSc_PalLight, 10);
-		CreateInvItems (slf, ItMi_Moleratlubric_MIS, 1);
+		CreateInvItems (slf, ItSc_PalHeal, 1);
+		CreateInvItems (slf, ItSc_PalBless, 10);
+		CreateInvItems (slf, ItAt_MoleratLubric, 1);
 		
 		CreateInvItems (slf, ItMw_ShortSword1, 3);
 		CreateInvItems (slf, ItMw_Schwert2, 2);
@@ -30,10 +30,9 @@ func void B_GiveTradeInv_Addon_Martin (var C_NPC slf)
 	if (Kapitel >= 8)
 	&& (Martin_ItemsGiven_Chapter < 2)
 	{
-		CreateInvItems (slf, ItSc_PalHolyBolt, 2);
-		CreateInvItems (slf, ItSc_PalMediumHeal, 1);
-		CreateInvItems (slf, ItSc_PalRepelEvil, 1);
-		CreateInvItems (slf, ItSc_PalFullHeal, 1);
+		CreateInvItems (slf, ItSc_PalHolyBolt, 3);
+		CreateInvItems (slf, ItSc_PalHeal, 1);
+		CreateInvItems (slf, ItSc_PalJustice, 1);
 		
 		Martin_ItemsGiven_Chapter = 2;
 	};
@@ -41,10 +40,9 @@ func void B_GiveTradeInv_Addon_Martin (var C_NPC slf)
 	if (Kapitel >= 9)
 	&& (Martin_ItemsGiven_Chapter < 3)
 	{
-		CreateInvItems (slf, ItSc_PalHolyBolt, 2);
-		CreateInvItems (slf, ItSc_PalMediumHeal, 1);
-		CreateInvItems (slf, ItSc_PalRepelEvil, 1);
-		CreateInvItems (slf, ItSc_PalFullHeal, 2);
+		CreateInvItems (slf, ItSc_PalHolyBolt, 3);
+		CreateInvItems (slf, ItSc_PalHeal, 1);
+		CreateInvItems (slf, ItSc_PalJustice, 2);
 		
 		Martin_ItemsGiven_Chapter = 3;
 	};
@@ -52,12 +50,11 @@ func void B_GiveTradeInv_Addon_Martin (var C_NPC slf)
 	if (Kapitel >= 10)
 	&& (Martin_ItemsGiven_Chapter < 4)
 	{
-		CreateInvItems (slf, ItSc_PalHolyBolt, 2);
-		CreateInvItems (slf, ItSc_PalMediumHeal, 1);
+		CreateInvItems (slf, ItSc_PalHolyBolt, 4);
+		CreateInvItems (slf, ItSc_PalHeal, 1);
 		CreateInvItems (slf, ItMi_Nugget, 1);
 		CreateInvItems (slf, ItSc_PalDestroyEvil, 1);
-		CreateInvItems (slf, ItSc_PalRepelEvil, 2);
-		CreateInvItems (slf, ItSc_PalFullHeal, 3);
+		CreateInvItems (slf, ItSc_PalJustice, 3);
 		
 		Martin_ItemsGiven_Chapter = 4;
 	};
@@ -65,11 +62,10 @@ func void B_GiveTradeInv_Addon_Martin (var C_NPC slf)
 	if (Kapitel >= 11)
 	&& (Martin_ItemsGiven_Chapter < 5)
 	{
-		CreateInvItems (slf, ItSc_PalHolyBolt, 2);
-		CreateInvItems (slf, ItSc_PalMediumHeal, 1);
+		CreateInvItems (slf, ItSc_PalHolyBolt, 5);
+		CreateInvItems (slf, ItSc_PalHeal, 1);
 		CreateInvItems (slf, ItSc_PalDestroyEvil, 2);
-		CreateInvItems (slf, ItSc_PalRepelEvil, 3);
-		CreateInvItems (slf, ItSc_PalFullHeal, 2);
+		CreateInvItems (slf, ItSc_PalJustice, 2);
 		
 		Martin_ItemsGiven_Chapter = 5;
 	};

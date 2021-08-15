@@ -31,7 +31,7 @@ instance WzA_17061_Maly (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_L, "Hum_Head_FatBald", Face_Normal05, Teeth_Worse, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal05, Teeth_Worse, -1);
 //	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_SetModelScale	(self, 0.8, 0.8, 0.8);

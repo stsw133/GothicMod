@@ -26,7 +26,7 @@ instance PIR_1355_Addon_Skip (Npc_Default)
 	CreateInvItems (self, itpo_Health_03, 2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Skip, 0, ITAR_PIR_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Skip, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

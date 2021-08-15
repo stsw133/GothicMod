@@ -16,7 +16,7 @@ instance VLK_4151_Leiche (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal37, 0, ITAR_MIL_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal37, 0, ITAR_MIL_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

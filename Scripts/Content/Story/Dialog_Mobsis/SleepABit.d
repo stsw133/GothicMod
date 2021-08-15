@@ -75,54 +75,67 @@ func void PC_NoSleep_Info()
 	PLAYER_MOBSI_PRODUCTION = MOBSI_NONE;
 };
 ///******************************************************************************************
-instance PC_SleepTime_Morning (C_INFO)
+instance PC_SleepTime_8 (C_INFO)
 {
 	npc									=	PC_Hero;
 	condition							=	PC_NoSleep_Condition;
-	information							=	PC_SleepTime_Morning_Info;
+	information							=	PC_SleepTime_8_Info;
 	permanent							=	true;
-	description							=	"Odpoczywaj do rana";
+	description							=	"Odpoczywaj do rana (godzina 8)";
 };
-func void PC_SleepTime_Morning_Info()
+func void PC_SleepTime_8_Info()
 {
 	PC_Sleep(8);
 };
 ///******************************************************************************************
-instance PC_SleepTime_Noon (C_INFO)
+instance PC_SleepTime_12 (C_INFO)
 {
 	npc									=	PC_Hero;
 	condition							=	PC_NoSleep_Condition;
-	information							=	PC_SleepTime_Noon_Info;
+	information							=	PC_SleepTime_12_Info;
 	permanent							=	true;
-	description							=	"Odpoczywaj do po³udnia";
+	description							=	"Odpoczywaj do po³udnia (godzina 12)";
 };
-func void PC_SleepTime_Noon_Info()
+func void PC_SleepTime_12_Info()
 {
 	PC_Sleep(12);
 };
 ///******************************************************************************************
-instance PC_SleepTime_Evening (C_INFO)
+instance PC_SleepTime_16 (C_INFO)
 {
 	npc									=	PC_Hero;
 	condition							=	PC_NoSleep_Condition;
-	information							=	PC_SleepTime_Evening_Info;
+	information							=	PC_SleepTime_16_Info;
 	permanent							=	true;
-	description							=	"Odpoczywaj do nastêpnego wieczora";
+	description							=	"Odpoczywaj do popo³udnia (godzina 16)";
 };
-func void PC_SleepTime_Evening_Info()
+func void PC_SleepTime_16_Info()
+{
+	PC_Sleep(16);
+};
+///******************************************************************************************
+instance PC_SleepTime_20 (C_INFO)
+{
+	npc									=	PC_Hero;
+	condition							=	PC_NoSleep_Condition;
+	information							=	PC_SleepTime_20_Info;
+	permanent							=	true;
+	description							=	"Odpoczywaj do wieczora (godzina 20)";
+};
+func void PC_SleepTime_20_Info()
 {
 	PC_Sleep(20);
 };
 ///******************************************************************************************
-instance PC_SleepTime_Midnight (C_INFO)
+instance PC_SleepTime_0 (C_INFO)
 {
 	npc									=	PC_Hero;
 	condition							=	PC_NoSleep_Condition;
-	information							=	PC_SleepTime_Midnight_Info;
+	information							=	PC_SleepTime_0_Info;
 	permanent							=	true;
-	description							=	"Odpoczywaj do pó³nocy";
+	description							=	"Odpoczywaj do pó³nocy (godzina 0)";
 };
-func void PC_SleepTime_Midnight_Info()
+func void PC_SleepTime_0_Info()
 {
 	PC_Sleep(0);
 };

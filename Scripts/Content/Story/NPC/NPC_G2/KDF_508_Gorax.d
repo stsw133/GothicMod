@@ -19,7 +19,7 @@ instance KDF_508_Gorax (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal50, 0, ITAR_Mag_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal50, 0, ITAR_Mag_M);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

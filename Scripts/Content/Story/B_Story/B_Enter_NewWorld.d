@@ -352,7 +352,7 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 		};
 		
  		CreateInvItems (Lester, ItMw_1h_Bau_Axe, 1);
- 		CreateInvItems (Ehnim, ItMi_Moleratlubric_MIS, 1);
+ 		CreateInvItems (Ehnim, ItAt_MoleratLubric, 1);
 		
  		ShrineIsObsessed_NW_TROLLAREA_PATH_37 			= true;
 		ShrineIsObsessed_NW_FARM1_CONNECT_XARDAS 		= true;

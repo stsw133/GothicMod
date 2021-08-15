@@ -30,7 +30,7 @@ instance WzA_17030_Gomez (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Gomez, Teeth_Gold, ITAR_EBR_G);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Gomez, Teeth_Gold, ITAR_EBR_G);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

@@ -30,7 +30,7 @@ instance WzA_17130_Kazimierz (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Psionic", Face_Normal50, Teeth_Normal, ITAR_VLK_L_01);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Normal50, Teeth_Normal, ITAR_VLK_L_01);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_SetModelScale	(self, 0.95, 0.95, 0.95);

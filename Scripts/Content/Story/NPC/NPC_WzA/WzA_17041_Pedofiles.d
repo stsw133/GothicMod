@@ -31,7 +31,7 @@ instance WzA_17041_Pedofiles (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Mud, Teeth_Worse, ITAR_aCHAOS_PINK);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Mud, Teeth_Worse, ITAR_aCHAOS_PINK);
 //	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

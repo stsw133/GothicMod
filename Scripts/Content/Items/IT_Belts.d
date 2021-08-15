@@ -47,17 +47,17 @@ func void UnEquip_ItBe_Roy()
 ///******************************************************************************************
 instance ItBe_Roy_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Roy_01;
-	on_unequip		=	UnEquip_ItBe_Roy;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Roy_01;
+	on_unequip				=	UnEquip_ItBe_Roy;
 	
-	description		=	"Pas gwardzisty I";
-	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 2% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 3% z pancerzem";
-	TEXT[3]			=	"stra¿y miejskiej lub gwardii królewskiej).";
-	COUNT[5]		=	value;
+	description				=	"Pas gwardzisty I";
+	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 2% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
+	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Roy_01()
 {
@@ -78,17 +78,17 @@ func void Equip_ItBe_Roy_01()
 ///******************************************************************************************
 instance ItBe_Roy_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Roy_02;
-	on_unequip		=	UnEquip_ItBe_Roy;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Roy_02;
+	on_unequip				=	UnEquip_ItBe_Roy;
 	
-	description		=	"Pas gwardzisty II";
-	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 4% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 6% z pancerzem";
-	TEXT[3]			=	"stra¿y miejskiej lub gwardii królewskiej).";
-	COUNT[5]		=	value;
+	description				=	"Pas gwardzisty II";
+	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 4% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
+	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Roy_02()
 {
@@ -109,17 +109,17 @@ func void Equip_ItBe_Roy_02()
 ///******************************************************************************************
 instance ItBe_Roy_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Roy_03;
-	on_unequip		=	UnEquip_ItBe_Roy;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Roy_03;
+	on_unequip				=	UnEquip_ItBe_Roy;
 	
-	description		=	"Pas gwardzisty III";
-	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 6% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 9% z pancerzem";
-	TEXT[3]			=	"stra¿y miejskiej lub gwardii królewskiej).";
-	COUNT[5]		=	value;
+	description				=	"Pas gwardzisty III";
+	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 6% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
+	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Roy_03()
 {
@@ -140,17 +140,17 @@ func void Equip_ItBe_Roy_03()
 ///******************************************************************************************
 instance ItBe_Roy_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Roy_04;
-	on_unequip		=	UnEquip_ItBe_Roy;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Roy_04;
+	on_unequip				=	UnEquip_ItBe_Roy;
 	
-	description		=	"Pas gwardzisty IV";
-	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 8% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 12% z pancerzem";
-	TEXT[3]			=	"stra¿y miejskiej lub gwardii królewskiej).";
-	COUNT[5]		=	value;
+	description				=	"Pas gwardzisty IV";
+	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 8% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
+	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Roy_04()
 {
@@ -171,17 +171,17 @@ func void Equip_ItBe_Roy_04()
 ///******************************************************************************************
 instance ItBe_Roy_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Roy_05;
-	on_unequip		=	UnEquip_ItBe_Roy;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Roy_05;
+	on_unequip				=	UnEquip_ItBe_Roy;
 	
-	description		=	"Pas gwardzisty V";
-	TEXT[1]			=	"Zwiêksza max. punkty ¿ycia o 10% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 15% z pancerzem";
-	TEXT[3]			=	"stra¿y miejskiej lub gwardii królewskiej).";
-	COUNT[5]		=	value;
+	description				=	"Pas gwardzisty V";
+	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 10% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
+	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Roy_05()
 {
@@ -227,17 +227,17 @@ func void UnEquip_ItBe_Djg()
 ///******************************************************************************************
 instance ItBe_Djg_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Djg_01;
-	on_unequip		=	UnEquip_ItBe_Djg;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Djg_01;
+	on_unequip				=	UnEquip_ItBe_Djg;
 	
-	description		=	"Pas ³owcy smoków I";
-	TEXT[1]			=	"Zwiêksza si³ê o 2% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 3% z pancerzem";
-	TEXT[3]			=	"najemnika lub ³owcy smoków).";
-	COUNT[5]		=	value;
+	description				=	"Pas ³owcy smoków I";
+	TEXT[1]					=	"Zwiêksza si³ê o 2% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
+	TEXT[3]					=	"najemnika lub ³owcy smoków).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Djg_01()
 {
@@ -258,17 +258,17 @@ func void Equip_ItBe_Djg_01()
 ///******************************************************************************************
 instance ItBe_Djg_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Djg_02;
-	on_unequip		=	UnEquip_ItBe_Djg;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Djg_02;
+	on_unequip				=	UnEquip_ItBe_Djg;
 	
-	description		=	"Pas ³owcy smoków II";
-	TEXT[1]			=	"Zwiêksza si³ê o 4% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 6% z pancerzem";
-	TEXT[3]			=	"najemnika lub ³owcy smoków).";
-	COUNT[5]		=	value;
+	description				=	"Pas ³owcy smoków II";
+	TEXT[1]					=	"Zwiêksza si³ê o 4% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
+	TEXT[3]					=	"najemnika lub ³owcy smoków).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Djg_02()
 {
@@ -289,17 +289,17 @@ func void Equip_ItBe_Djg_02()
 ///******************************************************************************************
 instance ItBe_Djg_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Djg_03;
-	on_unequip		=	UnEquip_ItBe_Djg;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Djg_03;
+	on_unequip				=	UnEquip_ItBe_Djg;
 	
-	description		=	"Pas ³owcy smoków III";
-	TEXT[1]			=	"Zwiêksza si³ê o 6% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 9% z pancerzem";
-	TEXT[3]			=	"najemnika lub ³owcy smoków).";
-	COUNT[5]		=	value;
+	description				=	"Pas ³owcy smoków III";
+	TEXT[1]					=	"Zwiêksza si³ê o 6% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
+	TEXT[3]					=	"najemnika lub ³owcy smoków).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Djg_03()
 {
@@ -320,17 +320,17 @@ func void Equip_ItBe_Djg_03()
 ///******************************************************************************************
 instance ItBe_Djg_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Djg_04;
-	on_unequip		=	UnEquip_ItBe_Djg;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Djg_04;
+	on_unequip				=	UnEquip_ItBe_Djg;
 	
-	description		=	"Pas ³owcy smoków IV";
-	TEXT[1]			=	"Zwiêksza si³ê o 8% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 12% z pancerzem";
-	TEXT[3]			=	"najemnika lub ³owcy smoków).";
-	COUNT[5]		=	value;
+	description				=	"Pas ³owcy smoków IV";
+	TEXT[1]					=	"Zwiêksza si³ê o 8% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
+	TEXT[3]					=	"najemnika lub ³owcy smoków).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Djg_04()
 {
@@ -351,17 +351,17 @@ func void Equip_ItBe_Djg_04()
 ///******************************************************************************************
 instance ItBe_Djg_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Djg_05;
-	on_unequip		=	UnEquip_ItBe_Djg;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Djg_05;
+	on_unequip				=	UnEquip_ItBe_Djg;
 	
-	description		=	"Pas ³owcy smoków V";
-	TEXT[1]			=	"Zwiêksza si³ê o 10% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 15% z pancerzem";
-	TEXT[3]			=	"najemnika lub ³owcy smoków).";
-	COUNT[5]		=	value;
+	description				=	"Pas ³owcy smoków V";
+	TEXT[1]					=	"Zwiêksza si³ê o 10% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
+	TEXT[3]					=	"najemnika lub ³owcy smoków).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Djg_05()
 {
@@ -406,17 +406,17 @@ func void UnEquip_ItBe_Mag()
 ///******************************************************************************************
 instance ItBe_Mag_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Mag_01;
-	on_unequip		=	UnEquip_ItBe_Mag;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Mag_01;
+	on_unequip				=	UnEquip_ItBe_Mag;
 	
-	description		=	"Szarfa maga I";
-	TEXT[1]			=	"Zwiêksza moc o 2% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 3% z szat¹";
-	TEXT[3]			=	"maga lub arcymaga).";
-	COUNT[5]		=	value;
+	description				=	"Szarfa maga I";
+	TEXT[1]					=	"Zwiêksza moc o 2% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 3% z szat¹";
+	TEXT[3]					=	"maga lub arcymaga).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mag_01()
 {
@@ -437,17 +437,17 @@ func void Equip_ItBe_Mag_01()
 ///******************************************************************************************
 instance ItBe_Mag_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Mag_02;
-	on_unequip		=	UnEquip_ItBe_Mag;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Mag_02;
+	on_unequip				=	UnEquip_ItBe_Mag;
 	
-	description		=	"Szarfa maga II";
-	TEXT[1]			=	"Zwiêksza moc o 4% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 6% z szat¹";
-	TEXT[3]			=	"maga lub arcymaga).";
-	COUNT[5]		=	value;
+	description				=	"Szarfa maga II";
+	TEXT[1]					=	"Zwiêksza moc o 4% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 6% z szat¹";
+	TEXT[3]					=	"maga lub arcymaga).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mag_02()
 {
@@ -468,17 +468,17 @@ func void Equip_ItBe_Mag_02()
 ///******************************************************************************************
 instance ItBe_Mag_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Mag_03;
-	on_unequip		=	UnEquip_ItBe_Mag;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Mag_03;
+	on_unequip				=	UnEquip_ItBe_Mag;
 	
-	description		=	"Szarfa maga III";
-	TEXT[1]			=	"Zwiêksza moc o 6% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 9% z szat¹";
-	TEXT[3]			=	"maga lub arcymaga).";
-	COUNT[5]		=	value;
+	description				=	"Szarfa maga III";
+	TEXT[1]					=	"Zwiêksza moc o 6% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 9% z szat¹";
+	TEXT[3]					=	"maga lub arcymaga).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mag_03()
 {
@@ -499,17 +499,17 @@ func void Equip_ItBe_Mag_03()
 ///******************************************************************************************
 instance ItBe_Mag_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Mag_04;
-	on_unequip		=	UnEquip_ItBe_Mag;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Mag_04;
+	on_unequip				=	UnEquip_ItBe_Mag;
 	
-	description		=	"Szarfa maga IV";
-	TEXT[1]			=	"Zwiêksza moc o 8% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 12% z szat¹";
-	TEXT[3]			=	"maga lub arcymaga).";
-	COUNT[5]		=	value;
+	description				=	"Szarfa maga IV";
+	TEXT[1]					=	"Zwiêksza moc o 8% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 12% z szat¹";
+	TEXT[3]					=	"maga lub arcymaga).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mag_04()
 {
@@ -530,17 +530,17 @@ func void Equip_ItBe_Mag_04()
 ///******************************************************************************************
 instance ItBe_Mag_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Mag_05;
-	on_unequip		=	UnEquip_ItBe_Mag;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Mag_05;
+	on_unequip				=	UnEquip_ItBe_Mag;
 	
-	description		=	"Szarfa maga V";
-	TEXT[1]			=	"Zwiêksza moc o 10% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 15% z szat¹";
-	TEXT[3]			=	"maga lub arcymaga).";
-	COUNT[5]		=	value;
+	description				=	"Szarfa maga V";
+	TEXT[1]					=	"Zwiêksza moc o 10% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 15% z szat¹";
+	TEXT[3]					=	"maga lub arcymaga).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mag_05()
 {
@@ -583,17 +583,17 @@ func void UnEquip_ItBe_Pal()
 ///******************************************************************************************
 instance ItBe_Pal_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Pal_01;
-	on_unequip		=	UnEquip_ItBe_Pal;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Pal_01;
+	on_unequip				=	UnEquip_ItBe_Pal;
 	
-	description		=	"Pas paladyna I";
-	TEXT[1]			=	"Zwiêksza max. punkty many o 2% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 3% z pancerzem";
-	TEXT[3]			=	"stra¿y œwi¹tynnej lub paladyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas paladyna I";
+	TEXT[1]					=	"Zwiêksza max. punkty many o 2% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
+	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Pal_01()
 {
@@ -614,17 +614,17 @@ func void Equip_ItBe_Pal_01()
 ///******************************************************************************************
 instance ItBe_Pal_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Pal_02;
-	on_unequip		=	UnEquip_ItBe_Pal;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Pal_02;
+	on_unequip				=	UnEquip_ItBe_Pal;
 	
-	description		=	"Pas paladyna II";
-	TEXT[1]			=	"Zwiêksza max. punkty many o 4% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 6% z pancerzem";
-	TEXT[3]			=	"stra¿y œwi¹tynnej lub paladyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas paladyna II";
+	TEXT[1]					=	"Zwiêksza max. punkty many o 4% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
+	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Pal_02()
 {
@@ -645,17 +645,17 @@ func void Equip_ItBe_Pal_02()
 ///******************************************************************************************
 instance ItBe_Pal_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Pal_03;
-	on_unequip		=	UnEquip_ItBe_Pal;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Pal_03;
+	on_unequip				=	UnEquip_ItBe_Pal;
 	
-	description		=	"Pas paladyna III";
-	TEXT[1]			=	"Zwiêksza max. punkty many o 6% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 9% z pancerzem";
-	TEXT[3]			=	"stra¿y œwi¹tynnej lub paladyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas paladyna III";
+	TEXT[1]					=	"Zwiêksza max. punkty many o 6% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
+	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Pal_03()
 {
@@ -676,17 +676,17 @@ func void Equip_ItBe_Pal_03()
 ///******************************************************************************************
 instance ItBe_Pal_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Pal_04;
-	on_unequip		=	UnEquip_ItBe_Pal;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Pal_04;
+	on_unequip				=	UnEquip_ItBe_Pal;
 	
-	description		=	"Pas paladyna IV";
-	TEXT[1]			=	"Zwiêksza max. punkty many o 8% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 12% z pancerzem";
-	TEXT[3]			=	"stra¿y œwi¹tynnej lub paladyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas paladyna IV";
+	TEXT[1]					=	"Zwiêksza max. punkty many o 8% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
+	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Pal_04()
 {
@@ -707,17 +707,17 @@ func void Equip_ItBe_Pal_04()
 ///******************************************************************************************
 instance ItBe_Pal_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Pal_05;
-	on_unequip		=	UnEquip_ItBe_Pal;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Pal_05;
+	on_unequip				=	UnEquip_ItBe_Pal;
 	
-	description		=	"Pas paladyna V";
-	TEXT[1]			=	"Zwiêksza max. punkty many o 10% nauczonych";
-	TEXT[2]			=	"(zwiêkszone do 15% z pancerzem";
-	TEXT[3]			=	"stra¿y œwi¹tynnej lub paladyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas paladyna V";
+	TEXT[1]					=	"Zwiêksza max. punkty many o 10% nauczonych";
+	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
+	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Pal_05()
 {
@@ -762,17 +762,17 @@ func void UnEquip_ItBe_Ako()
 ///******************************************************************************************
 instance ItBe_Ako_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Ako_01;
-	on_unequip		=	UnEquip_ItBe_Ako;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Ako_01;
+	on_unequip				=	UnEquip_ItBe_Ako;
 	
-	description		=	"Pas asasyna I";
-	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 2% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 3% z pancerzem";
-	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas asasyna I";
+	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 2% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
+	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Ako_01()
 {
@@ -793,17 +793,17 @@ func void Equip_ItBe_Ako_01()
 ///******************************************************************************************
 instance ItBe_Ako_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Ako_02;
-	on_unequip		=	UnEquip_ItBe_Ako;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Ako_02;
+	on_unequip				=	UnEquip_ItBe_Ako;
 	
-	description		=	"Pas asasyna II";
-	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 4% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 6% z pancerzem";
-	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas asasyna II";
+	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 4% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
+	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Ako_02()
 {
@@ -824,17 +824,17 @@ func void Equip_ItBe_Ako_02()
 ///******************************************************************************************
 instance ItBe_Ako_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Ako_03;
-	on_unequip		=	UnEquip_ItBe_Ako;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Ako_03;
+	on_unequip				=	UnEquip_ItBe_Ako;
 	
-	description		=	"Pas asasyna III";
-	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 6% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 9% z pancerzem";
-	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas asasyna III";
+	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 6% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
+	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Ako_03()
 {
@@ -855,17 +855,17 @@ func void Equip_ItBe_Ako_03()
 ///******************************************************************************************
 instance ItBe_Ako_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Ako_04;
-	on_unequip		=	UnEquip_ItBe_Ako;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Ako_04;
+	on_unequip				=	UnEquip_ItBe_Ako;
 	
-	description		=	"Pas asasyna IV";
-	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 8% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 12% z pancerzem";
-	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas asasyna IV";
+	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 8% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
+	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Ako_04()
 {
@@ -886,17 +886,17 @@ func void Equip_ItBe_Ako_04()
 ///******************************************************************************************
 instance ItBe_Ako_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Ako_05;
-	on_unequip		=	UnEquip_ItBe_Ako;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Ako_05;
+	on_unequip				=	UnEquip_ItBe_Ako;
 	
-	description		=	"Pas asasyna V";
-	TEXT[1]			=	"Zwiêksza zrêcznoœæ o 10% nauczonej";
-	TEXT[2]			=	"(zwiêkszone do 15% z pancerzem";
-	TEXT[3]			=	"asasyna lub elitarnego asasyna).";
-	COUNT[5]		=	value;
+	description				=	"Pas asasyna V";
+	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 10% nauczonej";
+	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
+	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Ako_05()
 {
@@ -1102,16 +1102,16 @@ func void UnEquip_ItBe_Hp()
 ///******************************************************************************************
 instance ItBe_Hp_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Hp_01;
-	on_unequip		=	UnEquip_ItBe_Hp;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Hp_01;
+	on_unequip				=	UnEquip_ItBe_Hp;
 	
-	description		=	"Pas ¿ycia I";
-	TEXT[1]			=	"Konwertuje 4% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty ¿ycia";
-	COUNT[5]		=	value;
+	description				=	"Pas ¿ycia I";
+	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Hp_01()
 {
@@ -1147,16 +1147,16 @@ func void Equip_ItBe_Hp_01()
 ///******************************************************************************************
 instance ItBe_Hp_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Hp_02;
-	on_unequip		=	UnEquip_ItBe_Hp;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Hp_02;
+	on_unequip				=	UnEquip_ItBe_Hp;
 	
-	description		=	"Pas ¿ycia II";
-	TEXT[1]			=	"Konwertuje 8% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty ¿ycia";
-	COUNT[5]		=	value;
+	description				=	"Pas ¿ycia II";
+	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Hp_02()
 {
@@ -1192,16 +1192,16 @@ func void Equip_ItBe_Hp_02()
 ///******************************************************************************************
 instance ItBe_Hp_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Hp_03;
-	on_unequip		=	UnEquip_ItBe_Hp;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Hp_03;
+	on_unequip				=	UnEquip_ItBe_Hp;
 	
-	description		=	"Pas ¿ycia III";
-	TEXT[1]			=	"Konwertuje 12% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty ¿ycia";
-	COUNT[5]		=	value;
+	description				=	"Pas ¿ycia III";
+	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Hp_03()
 {
@@ -1237,16 +1237,16 @@ func void Equip_ItBe_Hp_03()
 ///******************************************************************************************
 instance ItBe_Hp_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Hp_04;
-	on_unequip		=	UnEquip_ItBe_Hp;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Hp_04;
+	on_unequip				=	UnEquip_ItBe_Hp;
 	
-	description		=	"Pas ¿ycia IV";
-	TEXT[1]			=	"Konwertuje 16% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty ¿ycia";
-	COUNT[5]		=	value;
+	description				=	"Pas ¿ycia IV";
+	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Hp_04()
 {
@@ -1282,16 +1282,16 @@ func void Equip_ItBe_Hp_04()
 ///******************************************************************************************
 instance ItBe_Hp_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_03.3ds";
+	visual 					=	"ItMi_Belt_03.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Hp_05;
-	on_unequip		=	UnEquip_ItBe_Hp;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Hp_05;
+	on_unequip				=	UnEquip_ItBe_Hp;
 	
-	description		=	"Pas ¿ycia V";
-	TEXT[1]			=	"Konwertuje 20% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty ¿ycia";
-	COUNT[5]		=	value;
+	description				=	"Pas ¿ycia V";
+	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Hp_05()
 {
@@ -1355,16 +1355,16 @@ func void UnEquip_ItBe_Mana()
 ///******************************************************************************************
 instance ItBe_Mana_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Mana_01;
-	on_unequip		=	UnEquip_ItBe_Mana;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Mana_01;
+	on_unequip				=	UnEquip_ItBe_Mana;
 	
-	description		=	"Pas many I";
-	TEXT[1]			=	"Konwertuje 4% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty many";
-	COUNT[5]		=	value;
+	description				=	"Pas many I";
+	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty many";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mana_01()
 {
@@ -1400,16 +1400,16 @@ func void Equip_ItBe_Mana_01()
 ///******************************************************************************************
 instance ItBe_Mana_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Mana_02;
-	on_unequip		=	UnEquip_ItBe_Mana;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Mana_02;
+	on_unequip				=	UnEquip_ItBe_Mana;
 	
-	description		=	"Pas many II";
-	TEXT[1]			=	"Konwertuje 8% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty many";
-	COUNT[5]		=	value;
+	description				=	"Pas many II";
+	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty many";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mana_02()
 {
@@ -1445,16 +1445,16 @@ func void Equip_ItBe_Mana_02()
 ///******************************************************************************************
 instance ItBe_Mana_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Mana_03;
-	on_unequip		=	UnEquip_ItBe_Mana;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Mana_03;
+	on_unequip				=	UnEquip_ItBe_Mana;
 	
-	description		=	"Pas many III";
-	TEXT[1]			=	"Konwertuje 12% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty many";
-	COUNT[5]		=	value;
+	description				=	"Pas many III";
+	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty many";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mana_03()
 {
@@ -1490,16 +1490,16 @@ func void Equip_ItBe_Mana_03()
 ///******************************************************************************************
 instance ItBe_Mana_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Mana_04;
-	on_unequip		=	UnEquip_ItBe_Mana;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Mana_04;
+	on_unequip				=	UnEquip_ItBe_Mana;
 	
-	description		=	"Pas many IV";
-	TEXT[1]			=	"Konwertuje 16% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty many";
-	COUNT[5]		=	value;
+	description				=	"Pas many IV";
+	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty many";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mana_04()
 {
@@ -1535,16 +1535,16 @@ func void Equip_ItBe_Mana_04()
 ///******************************************************************************************
 instance ItBe_Mana_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_07.3ds";
+	visual 					=	"ItMi_Belt_07.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Mana_05;
-	on_unequip		=	UnEquip_ItBe_Mana;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Mana_05;
+	on_unequip				=	UnEquip_ItBe_Mana;
 	
-	description		=	"Pas many V";
-	TEXT[1]			=	"Konwertuje 20% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w max. punkty many";
-	COUNT[5]		=	value;
+	description				=	"Pas many V";
+	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w max. punkty many";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Mana_05()
 {
@@ -1609,16 +1609,16 @@ func void UnEquip_ItBe_Str()
 ///******************************************************************************************
 instance ItBe_Str_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Str_01;
-	on_unequip		=	UnEquip_ItBe_Str;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Str_01;
+	on_unequip				=	UnEquip_ItBe_Str;
 	
-	description		=	"Pas si³y I";
-	TEXT[1]			=	"Konwertuje 4% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w si³ê";
-	COUNT[5]		=	value;
+	description				=	"Pas si³y I";
+	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w si³ê";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Str_01()
 {
@@ -1655,16 +1655,16 @@ func void Equip_ItBe_Str_01()
 ///******************************************************************************************
 instance ItBe_Str_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Str_02;
-	on_unequip		=	UnEquip_ItBe_Str;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Str_02;
+	on_unequip				=	UnEquip_ItBe_Str;
 	
-	description		=	"Pas si³y II";
-	TEXT[1]			=	"Konwertuje 8% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w si³ê";
-	COUNT[5]		=	value;
+	description				=	"Pas si³y II";
+	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w si³ê";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Str_02()
 {
@@ -1701,16 +1701,16 @@ func void Equip_ItBe_Str_02()
 ///******************************************************************************************
 instance ItBe_Str_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Str_03;
-	on_unequip		=	UnEquip_ItBe_Str;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Str_03;
+	on_unequip				=	UnEquip_ItBe_Str;
 	
-	description		=	"Pas si³y III";
-	TEXT[1]			=	"Konwertuje 12% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w si³ê";
-	COUNT[5]		=	value;
+	description				=	"Pas si³y III";
+	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w si³ê";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Str_03()
 {
@@ -1747,16 +1747,16 @@ func void Equip_ItBe_Str_03()
 ///******************************************************************************************
 instance ItBe_Str_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Str_04;
-	on_unequip		=	UnEquip_ItBe_Str;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Str_04;
+	on_unequip				=	UnEquip_ItBe_Str;
 	
-	description		=	"Pas si³y IV";
-	TEXT[1]			=	"Konwertuje 16% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w si³ê";
-	COUNT[5]		=	value;
+	description				=	"Pas si³y IV";
+	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w si³ê";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Str_04()
 {
@@ -1793,16 +1793,16 @@ func void Equip_ItBe_Str_04()
 ///******************************************************************************************
 instance ItBe_Str_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_05.3ds";
+	visual 					=	"ItMi_Belt_05.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Str_05;
-	on_unequip		=	UnEquip_ItBe_Str;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Str_05;
+	on_unequip				=	UnEquip_ItBe_Str;
 	
-	description		=	"Pas si³y V";
-	TEXT[1]			=	"Konwertuje 20% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w si³ê";
-	COUNT[5]		=	value;
+	description				=	"Pas si³y V";
+	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w si³ê";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Str_05()
 {
@@ -1868,16 +1868,16 @@ func void UnEquip_ItBe_Dex()
 ///******************************************************************************************
 instance ItBe_Dex_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Dex_01;
-	on_unequip		=	UnEquip_ItBe_Dex;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Dex_01;
+	on_unequip				=	UnEquip_ItBe_Dex;
 	
-	description		=	"Pas zrêcznoœci I";
-	TEXT[1]			=	"Konwertuje 4% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w zrêcznoœæ";
-	COUNT[5]		=	value;
+	description				=	"Pas zrêcznoœci I";
+	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w zrêcznoœæ";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Dex_01()
 {
@@ -1914,16 +1914,16 @@ func void Equip_ItBe_Dex_01()
 ///******************************************************************************************
 instance ItBe_Dex_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Dex_02;
-	on_unequip		=	UnEquip_ItBe_Dex;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Dex_02;
+	on_unequip				=	UnEquip_ItBe_Dex;
 	
-	description		=	"Pas zrêcznoœci II";
-	TEXT[1]			=	"Konwertuje 8% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w zrêcznoœæ";
-	COUNT[5]		=	value;
+	description				=	"Pas zrêcznoœci II";
+	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w zrêcznoœæ";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Dex_02()
 {
@@ -1960,16 +1960,16 @@ func void Equip_ItBe_Dex_02()
 ///******************************************************************************************
 instance ItBe_Dex_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Dex_03;
-	on_unequip		=	UnEquip_ItBe_Dex;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Dex_03;
+	on_unequip				=	UnEquip_ItBe_Dex;
 	
-	description		=	"Pas zrêcznoœci III";
-	TEXT[1]			=	"Konwertuje 12% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w zrêcznoœæ";
-	COUNT[5]		=	value;
+	description				=	"Pas zrêcznoœci III";
+	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w zrêcznoœæ";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Dex_03()
 {
@@ -2006,16 +2006,16 @@ func void Equip_ItBe_Dex_03()
 ///******************************************************************************************
 instance ItBe_Dex_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Dex_04;
-	on_unequip		=	UnEquip_ItBe_Dex;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Dex_04;
+	on_unequip				=	UnEquip_ItBe_Dex;
 	
-	description		=	"Pas zrêcznoœci IV";
-	TEXT[1]			=	"Konwertuje 16% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w zrêcznoœæ";
-	COUNT[5]		=	value;
+	description				=	"Pas zrêcznoœci IV";
+	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w zrêcznoœæ";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Dex_04()
 {
@@ -2052,16 +2052,16 @@ func void Equip_ItBe_Dex_04()
 ///******************************************************************************************
 instance ItBe_Dex_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_06.3ds";
+	visual 					=	"ItMi_Belt_06.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Dex_05;
-	on_unequip		=	UnEquip_ItBe_Dex;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Dex_05;
+	on_unequip				=	UnEquip_ItBe_Dex;
 	
-	description		=	"Pas zrêcznoœci V";
-	TEXT[1]			=	"Konwertuje 20% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w zrêcznoœæ";
-	COUNT[5]		=	value;
+	description				=	"Pas zrêcznoœci V";
+	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w zrêcznoœæ";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Dex_05()
 {
@@ -2127,16 +2127,16 @@ func void UnEquip_ItBe_Power()
 ///******************************************************************************************
 instance ItBe_Power_01 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	300;
-	on_equip		=	Equip_ItBe_Power_01;
-	on_unequip		=	UnEquip_ItBe_Power;
+	value					=	300;
+	on_equip				=	Equip_ItBe_Power_01;
+	on_unequip				=	UnEquip_ItBe_Power;
 	
-	description		=	"Pas mocy I";
-	TEXT[1]			=	"Konwertuje 4% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w moc";
-	COUNT[5]		=	value;
+	description				=	"Pas mocy I";
+	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w moc";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Power_01()
 {
@@ -2173,16 +2173,16 @@ func void Equip_ItBe_Power_01()
 ///******************************************************************************************
 instance ItBe_Power_02 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	600;
-	on_equip		=	Equip_ItBe_Power_02;
-	on_unequip		=	UnEquip_ItBe_Power;
+	value					=	600;
+	on_equip				=	Equip_ItBe_Power_02;
+	on_unequip				=	UnEquip_ItBe_Power;
 	
-	description		=	"Pas mocy II";
-	TEXT[1]			=	"Konwertuje 8% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w moc";
-	COUNT[5]		=	value;
+	description				=	"Pas mocy II";
+	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w moc";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Power_02()
 {
@@ -2219,16 +2219,16 @@ func void Equip_ItBe_Power_02()
 ///******************************************************************************************
 instance ItBe_Power_03 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	900;
-	on_equip		=	Equip_ItBe_Power_03;
-	on_unequip		=	UnEquip_ItBe_Power;
+	value					=	900;
+	on_equip				=	Equip_ItBe_Power_03;
+	on_unequip				=	UnEquip_ItBe_Power;
 	
-	description		=	"Pas mocy III";
-	TEXT[1]			=	"Konwertuje 12% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w moc";
-	COUNT[5]		=	value;
+	description				=	"Pas mocy III";
+	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w moc";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Power_03()
 {
@@ -2265,16 +2265,16 @@ func void Equip_ItBe_Power_03()
 ///******************************************************************************************
 instance ItBe_Power_04 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	1200;
-	on_equip		=	Equip_ItBe_Power_04;
-	on_unequip		=	UnEquip_ItBe_Power;
+	value					=	1200;
+	on_equip				=	Equip_ItBe_Power_04;
+	on_unequip				=	UnEquip_ItBe_Power;
 	
-	description		=	"Pas mocy IV";
-	TEXT[1]			=	"Konwertuje 16% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w moc";
-	COUNT[5]		=	value;
+	description				=	"Pas mocy IV";
+	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w moc";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Power_04()
 {
@@ -2311,16 +2311,16 @@ func void Equip_ItBe_Power_04()
 ///******************************************************************************************
 instance ItBe_Power_05 (ItemPR_Belt)
 {
-	visual 			=	"ItMi_Belt_02.3ds";
+	visual 					=	"ItMi_Belt_02.3ds";
 	
-	value			=	1500;
-	on_equip		=	Equip_ItBe_Power_05;
-	on_unequip		=	UnEquip_ItBe_Power;
+	value					=	1500;
+	on_equip				=	Equip_ItBe_Power_05;
+	on_unequip				=	UnEquip_ItBe_Power;
 	
-	description		=	"Pas mocy V";
-	TEXT[1]			=	"Konwertuje 20% drugiego najliczebniejszego";
-	TEXT[2]			=	"atrybutu w moc";
-	COUNT[5]		=	value;
+	description				=	"Pas mocy V";
+	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
+	TEXT[2]					=	"atrybutu w moc";
+	COUNT[5]				=	value;
 };
 func void Equip_ItBe_Power_05()
 {

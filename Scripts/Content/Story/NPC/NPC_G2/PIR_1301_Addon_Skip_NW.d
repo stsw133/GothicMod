@@ -20,7 +20,7 @@ instance PIR_1301_Addon_Skip_NW (Npc_Default)
 	EquipItem (self, ItRw_sld_bow);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Skip, 0, ITAR_PIR_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Skip, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

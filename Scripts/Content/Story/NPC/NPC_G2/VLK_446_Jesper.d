@@ -27,7 +27,7 @@ instance VLK_446_Jesper (Npc_Default)
 	CreateInvItem (self, ItKe_Fingers);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Normal18, 0, ITAR_Vlk_L_03);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal18, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

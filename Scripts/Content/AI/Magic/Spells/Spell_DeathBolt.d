@@ -1,11 +1,11 @@
-//******************************************************************************************
-//	SPL_DeathBolt
-//******************************************************************************************
+///******************************************************************************************
+///	SPL_DeathBolt
+///******************************************************************************************
 
-const int SPL_Cost_DeathBolt			=	40;
-const int SPL_Damage_DeathBolt			=	200;
+const int SPL_Cost_DeathBolt			=	60;
+const int SPL_Damage_DeathBolt			=	180;
 
-//******************************************************************************************
+///******************************************************************************************
 instance Spell_DeathBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
@@ -19,11 +19,8 @@ func int Spell_Logic_DeathBolt (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_DeathBolt)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_DeathBolt()

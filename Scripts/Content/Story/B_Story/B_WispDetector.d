@@ -2,17 +2,6 @@
 ///	B_WispDetector
 ///******************************************************************************************
 
-var int WispSkill_Level;
-
-const int WispSkill_NF	 		=	0;
-const int WispSkill_FF	 		=	1;
-const int WispSkill_NONE 		=	2;
-const int WispSkill_RUNE 		=	3;
-const int WispSkill_MAGIC    	=	4;
-const int WispSkill_FOOD 		=	5;
-const int WispSkill_POTIONS   	=	6;
-var int WispSkills[7];
-
 var int WispSearching;
 const int WispSearch_Follow 	=	1;
 const int WispSearch_ALL		=	2;
@@ -54,38 +43,31 @@ func int B_WispDetectedItem()
 	{
 		var int WispSearchFlags; WispSearchFlags = 0;
 		
-		if (WispSkills[WISPSKILL_NF])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_NF)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_NF)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_NF;
 		};
-		if (WispSkills[WISPSKILL_FF])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_FF)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_FF)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_FF | ITEM_KAT_MUN;
 		};
-		if (WispSkills[WISPSKILL_NONE])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_NONE)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_NONE)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_NONE | ITEM_KAT_KEYS | ITEM_KAT_LIGHT | ITEM_KAT_ARMOR;
 		};
-		if (WispSkills[WISPSKILL_RUNE])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_RUNE)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_RUNE)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_RUNE | ITEM_KAT_DOCS;
 		};
-		if (WispSkills[WISPSKILL_MAGIC])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_MAGIC)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_MAGIC)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_MAGIC;
 		};
-		if (WispSkills[WISPSKILL_FOOD])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_FOOD)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_FOOD)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_FOOD;
 		};
-		if (WispSkills[WISPSKILL_POTIONS])
-		&& (WispSearching == WispSearch_ALL || WispSearching == WispSearch_POTIONS)
+		if (WispSearching == WispSearch_ALL || WispSearching == WispSearch_POTIONS)
 		{
 			WispSearchFlags = WispSearchFlags | ITEM_KAT_POTIONS;
 		};
@@ -178,35 +160,14 @@ func void DIA_Addon_WispDetector_DetectItems_Info()
 	
 	Info_ClearChoices	(DIA_Addon_WispDetector_DetectItems);
 	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Chodź za mną!", DIA_Addon_WispDetector_DetectItems_Follow);
-	if (WispSkills[WISPSKILL_RUNE])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję run i zwojów magicznych.", DIA_Addon_WispDetector_DetectItems_RUNE);
-	};
-	if (WispSkills[WISPSKILL_NONE])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję złota, kluczy i narzędzi.", DIA_Addon_WispDetector_DetectItems_NONE);
-	};
-	if (WispSkills[WISPSKILL_FF])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję broni strzeleckiej i amunicji.", DIA_Addon_WispDetector_DetectItems_FF);
-	};
-	if (WispSkills[WISPSKILL_NF])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję broni do walki wręcz.", DIA_Addon_WispDetector_DetectItems_NF);
-	};
-	if (WispSkills[WISPSKILL_FOOD])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję żywności i ziół.", DIA_Addon_WispDetector_DetectItems_FOOD);
-	};
-	if (WispSkills[WISPSKILL_MAGIC])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję pierścieni i amuletów.", DIA_Addon_WispDetector_DetectItems_MAGIC);
-	};
-	if (WispSkills[WISPSKILL_POTIONS])
-	{
-		Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Potrzebuję magicznych mikstur.", DIA_Addon_WispDetector_DetectItems_POTIONS);
-	};
-	Info_AddChoice	(DIA_Addon_WispDetector_DetectItems, "Poszukaj wszystkiego, co znajdziesz.", DIA_Addon_WispDetector_DetectItems_ALL);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję run i zwojów magicznych.", DIA_Addon_WispDetector_DetectItems_RUNE);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję złota, kluczy i narzędzi.", DIA_Addon_WispDetector_DetectItems_NONE);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję broni strzeleckiej i amunicji.", DIA_Addon_WispDetector_DetectItems_FF);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję broni do walki wręcz.", DIA_Addon_WispDetector_DetectItems_NF);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję żywności i ziół.", DIA_Addon_WispDetector_DetectItems_FOOD);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję pierścieni i amuletów.", DIA_Addon_WispDetector_DetectItems_MAGIC);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję magicznych mikstur.", DIA_Addon_WispDetector_DetectItems_POTIONS);
+	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Poszukaj wszystkiego, co znajdziesz.", DIA_Addon_WispDetector_DetectItems_ALL);
 };
 
 func void DIA_Addon_WispDetector_DetectItems_Follow()

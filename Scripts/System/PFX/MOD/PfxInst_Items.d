@@ -1,7 +1,7 @@
-//******************************************************************************************
-//	Particle Effects
-//******************************************************************************************
-INSTANCE PFX_CRYSTALGLOW (C_PARTICLEFX)
+///******************************************************************************************
+///	Particle Effects
+///******************************************************************************************
+instance PFX_CRYSTALGLOW (C_ParticleFx)
 {
 	ppsvalue			= 100;
 	ppsscalekeys_s		= "1";
@@ -34,7 +34,7 @@ INSTANCE PFX_CRYSTALGLOW (C_PARTICLEFX)
 	useemittersfor		= 0;
 };
 //******************************************************************************************
-INSTANCE SOULDUST (C_PARTICLEFX)
+instance SOULDUST (C_ParticleFx)
 {
 	ppsvalue			= 100.000000000;
 	ppsscalekeys_s		= "1.0";
@@ -69,7 +69,7 @@ INSTANCE SOULDUST (C_PARTICLEFX)
 	visalphastart		= 255.000000000;
 };
 
-INSTANCE CHAOSDUST (C_PARTICLEFX)
+instance CHAOSDUST (C_ParticleFx)
 {
 	ppsvalue			= 100.000000000;
 	ppsscalekeys_s		= "1.0";
@@ -104,7 +104,7 @@ INSTANCE CHAOSDUST (C_PARTICLEFX)
 	visalphastart		= 255.000000000;
 };
 
-INSTANCE TIMEDUST (C_PARTICLEFX)
+instance TIMEDUST (C_ParticleFx)
 {
 	ppsvalue			= 100.000000000;
 	ppsscalekeys_s		= "1.0";
@@ -140,7 +140,7 @@ INSTANCE TIMEDUST (C_PARTICLEFX)
 };
 
 //******************************************************************************************
-INSTANCE SMELL_MODEL_KAIRO (C_PARTICLEFX)
+instance SMELL_MODEL_KAIRO (C_ParticleFx)
 {
     ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -176,7 +176,7 @@ INSTANCE SMELL_MODEL_KAIRO (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE MAGICENERGY_MODEL_KAIRO (C_PARTICLEFX)
+instance MAGICENERGY_MODEL_KAIRO (C_ParticleFx)
 {
     ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -212,7 +212,7 @@ INSTANCE MAGICENERGY_MODEL_KAIRO (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE WHITE_MODEL_KAIRO (C_PARTICLEFX)
+instance WHITE_MODEL_KAIRO (C_ParticleFx)
 {
     ppsvalue = 180;
     ppsscalekeys_s = "1";
@@ -245,7 +245,7 @@ INSTANCE WHITE_MODEL_KAIRO (C_PARTICLEFX)
 };
 
 //******************************************************************************************
-INSTANCE URIZIEL_ENERGY (C_PARTICLEFX)
+instance URIZIEL_ENERGY (C_ParticleFx)
 {
 	ppsvalue		= 100;
 	ppsscalekeys_s		= "1.0";
@@ -280,7 +280,7 @@ INSTANCE URIZIEL_ENERGY (C_PARTICLEFX)
 };
 
 //******************************************************************************************
-INSTANCE PFX_ACHAOS_BLUE (C_PARTICLEFX)
+instance PFX_ACHAOS_BLUE (C_ParticleFx)
 {
 	ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -316,7 +316,7 @@ INSTANCE PFX_ACHAOS_BLUE (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE PFX_ACHAOS_RED (C_PARTICLEFX)
+instance PFX_ACHAOS_RED (C_ParticleFx)
 {
 	ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -352,7 +352,7 @@ INSTANCE PFX_ACHAOS_RED (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE PFX_ACHAOS_GREEN (C_PARTICLEFX)
+instance PFX_ACHAOS_GREEN (C_ParticleFx)
 {
 	ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -388,7 +388,7 @@ INSTANCE PFX_ACHAOS_GREEN (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE PFX_ACHAOS_YELLOW (C_PARTICLEFX)
+instance PFX_ACHAOS_YELLOW (C_ParticleFx)
 {
 	ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -424,7 +424,7 @@ INSTANCE PFX_ACHAOS_YELLOW (C_PARTICLEFX)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-INSTANCE PFX_ACHAOS_PINK (C_PARTICLEFX)
+instance PFX_ACHAOS_PINK (C_ParticleFx)
 {
 	ppsvalue = 125;
     ppsscalekeys_s = "1";
@@ -461,7 +461,7 @@ INSTANCE PFX_ACHAOS_PINK (C_PARTICLEFX)
 };
 
 //******************************************************************************************
-INSTANCE PFX_IPENTA_BLUE (ITEM_GLIMMER_PROTO)
+instance PFX_IPENTA_BLUE (ITEM_GLIMMER_PROTO)
 {
 	ppsvalue			= 2500;
 	visname_s			= "vfx_magic_bigglow_white.TGA";
@@ -471,7 +471,7 @@ INSTANCE PFX_IPENTA_BLUE (ITEM_GLIMMER_PROTO)
 };
 
 //******************************************************************************************
-INSTANCE WHITEEYES_LEFT (C_PARTICLEFX)
+instance WHITEEYES_LEFT (C_ParticleFx)
 {
     ppsvalue = 150;
     ppsscalekeys_s = "1 1 1";
@@ -506,7 +506,7 @@ INSTANCE WHITEEYES_LEFT (C_PARTICLEFX)
     useemittersfor = 1;
 };
 
-INSTANCE WHITEEYES_RIGHT (C_PARTICLEFX)
+instance WHITEEYES_RIGHT (C_ParticleFx)
 {
     ppsvalue = 150;
     ppsscalekeys_s = "1 1 1";

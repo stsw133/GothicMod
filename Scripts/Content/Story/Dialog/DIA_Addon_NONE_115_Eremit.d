@@ -121,7 +121,7 @@ func void DIA_Addon_Eremit_Teach_No()
 
 func void DIA_Addon_Eremit_Teach_Yes()
 {
-	if (B_TeachTalents(self, other, NPC_TALENT_LANGUAGE, true))
+	if (B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, true))
 	{
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_27"); //To naprawdê bardzo proste. 'G' oznacza 'O', 'T' oznacza 'H', a 'I' to 'C'.
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_28"); //Kiedy to opanujesz, reszta przyjdzie z ³atwoœci¹...

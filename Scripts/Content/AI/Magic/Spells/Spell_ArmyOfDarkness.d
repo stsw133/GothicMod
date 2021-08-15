@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	SPL_cSpells
+///	SPL_ArmyOfDarkness
 ///******************************************************************************************
 
 const int SPL_Cost_ArmyOfDarkness		=	150;
@@ -17,11 +17,8 @@ func int Spell_Logic_ArmyOfDarkness (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_ArmyOfDarkness)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_ArmyOfDarkness(var int spellLevel)
@@ -37,7 +34,14 @@ func void Spell_Cast_ArmyOfDarkness(var int spellLevel)
 	
 	if (Npc_IsPlayer(self))
 	{
-	    Wld_SpawnNpcRange (self, Summoned_Skeleton, 6, 800);
+		if (Npc_GetTalentSkill(self, NPC_TALENT_TYPEOFMAGIC) == MAGIC_GEO)
+		{
+			Wld_SpawnNpcRange (self, Summoned_StoneGuardian, 6, 800);
+		}
+		else
+		{
+			Wld_SpawnNpcRange (self, Summoned_Skeleton, 6, 800);
+		};
 	}
 	else
 	{

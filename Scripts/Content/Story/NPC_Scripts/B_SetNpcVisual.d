@@ -82,7 +82,7 @@ func void B_SetHeroVisual (var C_NPC slf, var int selHero)
 	selectedHero = selHero;
 	
 	if (selHero < 5)	{	B_SetNpcVisual (slf, RACE_Human, MALE, BodyTex_Player, selectedHero, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);	}
-	else				{	B_SetNpcVisual (slf, RACE_Human, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_MaxKayne, Teeth_Normal, -1);	};
+	else				{	B_SetNpcVisual (slf, RACE_Human, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_MikeKayne, Teeth_Normal, -1);	};
 	
 	Mdl_SetModelFatness	(slf, 0);
 };

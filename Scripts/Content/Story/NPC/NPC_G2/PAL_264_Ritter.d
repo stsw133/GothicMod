@@ -27,7 +27,7 @@ instance PAL_264_Ritter (Npc_Default)
 	CreateInvItem (self, ItKe_OC_Store);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Bald", Face_Ratford, 0, ITAR_PAL_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Ratford, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

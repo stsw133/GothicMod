@@ -6,16 +6,6 @@ func int B_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int attrib, v
 	var string concatText;
 	var int kosten; kosten = B_GetLearnCostAttribute(oth, attrib) * points;
 	
-	if (attrib != ATR_STRENGTH)
-	&& (attrib != ATR_DEXTERITY)
-	&& (attrib != ATR_POWER)
-	&& (attrib != ATR_MANA_MAX)
-	&& (attrib != ATR_HITPOINTS_MAX)
-	{
-		Print ("*** B³¹d: Z³y parametr ***");
-		return false;
-	};
-	
 	if (oth.lp < kosten)
 	{
 		PrintScreen	(PRINT_NotEnoughLP, -1, -1, FONT_Screen, 2);

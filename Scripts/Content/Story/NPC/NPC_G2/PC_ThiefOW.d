@@ -28,7 +28,7 @@ instance PC_ThiefOW (Npc_Default)
 	CreateInvItems (self, itpo_health_03, 10);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Thief", Face_Diego, 0, ITAR_STT_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Diego, 0, ITAR_STT_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

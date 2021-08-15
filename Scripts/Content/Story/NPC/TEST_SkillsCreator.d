@@ -266,22 +266,22 @@ func void DIA_SC_Fight_BACK()
 };
 func void SC_Training_Combat_1h()
 {
-	B_TeachTalents (self, other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_1H, Npc_GetTalentSkill(other, NPC_TALENT_1H) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_2h()
 {
-	B_TeachTalents (self, other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_2H, Npc_GetTalentSkill(other, NPC_TALENT_2H) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_Bow()
 {
-	B_TeachTalents (self, other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_BOW, Npc_GetTalentSkill(other, NPC_TALENT_BOW) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 func void SC_Training_Combat_Crossbow()
 {
-	B_TeachTalents (self, other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_CROSSBOW, Npc_GetTalentSkill(other, NPC_TALENT_CROSSBOW) + 1);
 	DIA_SC_Fight_Start_Info();
 };
 
@@ -328,27 +328,27 @@ func void DIA_SC_Thief_BACK()
 };
 func void SC_Training_Thief_Sneak()
 {
-	B_TeachTalents (self, other, NPC_TALENT_SNEAK, 1);
+	B_TeachTalent (self, other, NPC_TALENT_SNEAK, 1);
 	DIA_SC_Thief_Start_Info();
 };
 func void SC_Training_Thief_Picklock()
 {
-	B_TeachTalents (self, other, NPC_TALENT_PICKLOCK, 1);
+	B_TeachTalent (self, other, NPC_TALENT_PICKLOCK, 1);
 	DIA_SC_Thief_Start_Info();
 };
 func void SC_Training_Thief_Pickpocket()
 {
-	B_TeachTalents (self, other, NPC_TALENT_PICKPOCKET, 1);
+	B_TeachTalent (self, other, NPC_TALENT_PICKPOCKET, 1);
 	DIA_SC_Thief_Start_Info();
 };
 func void SC_Training_Thief_Acrobatic()
 {
-	B_TeachTalents (self, other, NPC_TALENT_ACROBATIC, 1);
+	B_TeachTalent (self, other, NPC_TALENT_ACROBATIC, 1);
 	DIA_SC_Thief_Start_Info();
 };
 func void SC_Training_Thief_Persuasion()
 {
-	B_TeachTalents (self, other, NPC_TALENT_PERSUASION, 1);
+	B_TeachTalent (self, other, NPC_TALENT_PERSUASION, 1);
 	DIA_SC_Thief_Start_Info();
 };
 
@@ -653,26 +653,26 @@ func void DIA_SC_Misc_BACK()
 };
 func void SC_Training_Smith()
 {
-	B_TeachTalents (self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Jewelery()
 {
-	B_TeachTalents (self, other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_JEWELERY, Npc_GetTalentSkill(other, NPC_TALENT_JEWELERY) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Alchemy()
 {
-	B_TeachTalents (self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Hunting()
 {
-	B_TeachTalents (self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1);
 	DIA_SC_Misc_Start_Info();
 };
 func void SC_Training_Enchanting()
 {
-	B_TeachTalents (self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
 	DIA_SC_Misc_Start_Info();
 };

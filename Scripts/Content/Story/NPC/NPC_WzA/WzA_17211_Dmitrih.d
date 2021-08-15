@@ -31,7 +31,7 @@ instance WzA_17211_Dmitrih (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_L, "Hum_Head_Thief", Face_Normal09, Teeth_Normal, ITAR_NA_SAT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal09, Teeth_Normal, ITAR_NA_SAT);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 1.5);
 	

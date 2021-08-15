@@ -24,7 +24,7 @@ instance NONE_100_Xardas (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Psionic", Face_Xardas, 0, ITAR_Mag_B);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Xardas, 0, ITAR_Mag_B);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

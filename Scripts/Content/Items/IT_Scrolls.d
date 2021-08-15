@@ -1,7 +1,7 @@
 ///******************************************************************************************
 prototype ItemPR_Scroll (C_Item)
 {
-	name 					=	"Zwój";
+	name 					=	"Zw�j";
 	mainflag 				=	ITEM_KAT_RUNE;
 	flags 					=	ITEM_MULTI;
 
@@ -12,1398 +12,898 @@ prototype ItemPR_Scroll (C_Item)
 	TEXT[5]					=	NAME_Value;
 };
 ///*******************************************************************************************
+///	standard spells
+///*******************************************************************************************
 instance ItSc_Light (ItemPR_Scroll)
 {
-	value 			=	10;
+	value 					=	20;
 	
-	visual			=	"ItSc_Light.3DS";
-//	spell			= 	SPL_nLight;
-//	cond_value[2]  	=	SPL_Cost_nLight/5;
+	visual					=	"ItSc_Light.3DS";
+	spell					= 	SPL_nLight;
+	cond_value[2]  			=	SPL_Cost_nLight/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Light;
-	COUNT[1]		=	cond_value[2];
-	TEXT[2]			=	NAME_Duration;
-//	COUNT[2]		=	SPL_Time_nLight;
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_Light;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_nLight;
+	COUNT[5]				=	value;
 };
 instance ItSc_LightHeal (ItemPR_Scroll)
 {
-	value 			=	100;
+	value 					=	100;
 	
-	visual			=	"ItSc_MediumHeal.3DS";
-//	spell			= 	SPL_nHeal;
-//	cond_value[2]  	=	SPL_Cost_nHeal/5;
+	visual					=	"ItSc_MediumHeal.3DS";
+	spell					= 	SPL_nHeal;
+	cond_value[2]  			=	SPL_Cost_nHeal/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Heal;
-//	COUNT[1]		=	cond_value[2];
-	TEXT[2]			= 	NAME_Percent_HP;
-//	COUNT[2]		=	SPL_Heal_nHeal;
-	TEXT[3]			=	NAME_Duration;
-//	COUNT[3]		=	SPL_Heal_nHeal/10;
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_Heal;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					= 	NAME_Bonus_HP;
+	COUNT[2]				=	SPL_Heal_nHeal;
+	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-instance ItSc_Telekinesis (ItemPR_Scroll)
+///	PAL spells
+///*******************************************************************************************
+instance ItSc_PalBless (ItemPR_Scroll)
 {
-	value 			=	50;
+	value 					=	50;
 	
-	visual			=	"ItSc_Water15.3DS";
-//	spell			= 	SPL_Telekinesis;
-//	cond_value[2]  	=	SPL_Cost_Telekinesis/SPL_Cost_Scroll;
+	visual					=	"ItSc_PalLight.3DS";
+	spell					=	SPL_PalBless;
+	cond_value[2]  			=	SPL_Cost_PalBless/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Telekinesis;
-	COUNT[1]		=	cond_value[2];
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_PalBless;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	"Dodatkowe obra�enia r�wne 10% max. many.";
+	TEXT[3]					=	"U�yj ponownie by wy��czy�.";
+	COUNT[5]				=	value;
 };
+instance ItSc_PalHeal (ItemPR_Scroll)
+{
+	value 					=	100;
+	
+	visual					=	"ItSc_PalMediumHeal.3DS";
+	spell					=	SPL_PalHeal;
+	cond_value[2]  			=	SPL_Cost_PalHeal/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalHeal;
+	TEXT[1]					=	NAME_MaxManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					= 	NAME_Bonus_HP;
+	COUNT[2]				=	SPL_Heal_PalHeal;
+	COUNT[5]				=	value;
+};
+instance ItSc_PalHolyBolt (ItemPR_Scroll)
+{
+	value 					=	100;
+	
+	visual					=	"ItSc_PalHolyBolt.3DS";
+	spell					=	SPL_PalHolyBolt;
+	cond_value[2]  			=	SPL_Cost_PalHolyBolt/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalHolyBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_PalHolyBolt;
+	COUNT[5]				=	value;
+};
+instance ItSc_PalJustice (ItemPR_Scroll)
+{
+	value					=	250;
+	
+	visual					=	"ItSc_PalFullHeal.3DS";
+	spell					=	SPL_PalJustice;
+	cond_value[2]  			=	SPL_Cost_PalJustice/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalJustice;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItSc_PalDestroyEvil (ItemPR_Scroll)
+{
+	value					=	250;
+	
+	visual					=	"ItSc_PalDestroyEvil.3DS";
+	spell					=	SPL_PalDestroyEvil;
+	cond_value[2]			=	SPL_Cost_PalDestroyEvil/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalDestroyEvil;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_PalDestroyEvil;
+	COUNT[5]				=	value;
+};
+///*******************************************************************************************
+///	common spells
+///*******************************************************************************************
 instance ItSc_SlowTime (ItemPR_Scroll)
 {
-	value 			=	300;
+	value 					=	300;
 	
-	visual			=	"ItSc_Shrink.3DS";
-//	spell			= 	SPL_SlowTime;
-//	cond_value[2]  	=	SPL_Cost_SlowTime/SPL_Cost_Scroll;
+	visual					=	"ItSc_Shrink.3DS";
+	spell					= 	SPL_SlowTime;
+	cond_value[2]  			=	SPL_Cost_SlowTime/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_SlowTime;
-	COUNT[1]		=	cond_value[2];
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_SlowTime;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-instance ItSc_Sleep (ItemPR_Scroll)
+instance ItSc_NightToDay (ItemPR_Scroll)
 {
-	value 			=	100;
+	value 					=	150;
 	
-	visual			=	"ItSc_Sleep.3DS";
-	spell			= 	SPL_Sleep;
-	cond_value[2]  	=	SPL_Cost_Sleep/SPL_Cost_Scroll;
+	visual					=	"ItSc_Light.3DS";
+	spell					= 	SPL_NightToDay;
+	cond_value[2]  			=	SPL_Cost_NightToDay/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Sleep;
-	COUNT[1]		=	cond_value[2];
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Sleep;
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_NightToDay;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-instance ItSc_Fear (ItemPR_Scroll)
+instance ItSc_Telekinesis (ItemPR_Scroll)
 {
-	value 			=	100;
+	value 					=	20;
 	
-	visual			=	"ItSc_Fear.3DS";
-	spell			= 	SPL_Fear;
-	cond_value[2]  	=	SPL_Cost_Fear/SPL_Cost_Scroll;
+	visual					=	"ItSc_LightHeal.3DS";
+	spell					= 	SPL_Telekinesis;
+	cond_value[2]  			=	SPL_Cost_Telekinesis/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Fear;
-	COUNT[1]		=	cond_value[2];
-	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	SPL_Time_Fear;
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_Telekinesis;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-instance ItSc_Shrink (ItemPR_Scroll)
+///*******************************************************************************************
+instance ItSc_FireBolt (ItemPR_Scroll)
 {
-	value 			=	300;
+	value 					=	30;
 	
-	visual			=	"ItSc_Shrink.3DS";
-	spell			= 	SPL_Shrink;
-	cond_value[2]  	=	SPL_Cost_Shrink/SPL_Cost_Scroll;
+	visual					=	"ItSc_FireBolt.3DS";
+	spell					= 	SPL_FireBolt;
+	cond_value[2]  			= 	SPL_Cost_FireBolt/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Shrink;
-	COUNT[1]		=	cond_value[2];
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_FireBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_FireBolt;
+	COUNT[5]				=	value;
+};
+instance ItSc_IceBolt (ItemPR_Scroll)
+{
+	value 					=	30;
+	
+	visual					=	"ItSc_IceBolt.3DS";
+	spell					= 	SPL_IceBolt;
+	cond_value[2]  			= 	SPL_Cost_IceBolt/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_IceBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_IceBolt;
+	COUNT[5]				=	value;
+};
+instance ItSc_Zap (ItemPR_Scroll)
+{
+	value 					=	30;
+	
+	visual					=	"ItSc_Zap.3DS";
+	spell					= 	SPL_Zap;
+	cond_value[2]  			= 	SPL_Cost_Zap/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_Zap;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Zap;
+	COUNT[5]				=	value;
 };
 instance ItSc_Charm (ItemPR_Scroll)
 {
-	value 			=	100;
+	value 					=	100;
 	
-	visual			=	"ItSc_Sleep.3DS";
-	spell			= 	SPL_Charm;
-	cond_value[2]  	=	SPL_Cost_Charm/SPL_Cost_Scroll;
+	visual					=	"ItSc_Sleep.3DS";
+	spell					= 	SPL_Charm;
+	cond_value[2]  			=	SPL_Cost_Charm/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_Charm;
-	COUNT[1]		=	cond_value[2];
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_Charm;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-instance ItSc_DestroyUndead (ItemPR_Scroll)
+instance ItSc_WindFist (ItemPR_Scroll)
 {
-	value 			=	200;
+	value 					=	100;
 	
-	visual			=	"ItSc_HarmUndead.3DS";
-	spell			= 	SPL_PalDestroyEvil;
-	cond_value[2]  	=	SPL_Cost_PalDestroyEvil/SPL_Cost_Scroll;
+	visual					=	"ItSc_WindFist.3DS";
+	spell					= 	SPL_WindFist;
+	cond_value[2]  			= 	SPL_STEP_WindFist/SPL_Cost_Scroll;
 	
-	description		=	NAME_SPL_PalDestroyEvil;
-	COUNT[1]		=	cond_value[2];
-	TEXT[2]			=	NAME_Dam_Magic;
-	COUNT[2]		=	SPL_Damage_PalDestroyEvil;
-	COUNT[5]		=	value;
+	description				=	NAME_SPL_WindFist;
+	TEXT[1]					=	NAME_MinManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_MaxManakosten;
+	COUNT[2]				=	SPL_Cost_WindFist;
+	TEXT[3]					=	NAME_MinDamage;
+	COUNT[3]				=	SPL_Damage_WindFist;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_WindFist*4;
+	COUNT[5]				=	value;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Paladin Scrolls
-const 	string Name_PaladinScroll		=	"Czar Paladyna"; 	
-const	int	Value_Sc_PalLight			=	50;
-const	int	Value_Sc_PalLightHeal		=	100;
-const	int	Value_Sc_PalHolyBolt		=	200;
-const	int	Value_Sc_PalMediumHeal		=	400;
-const	int	Value_Sc_PalRepelEvil		=	600;
-const	int	Value_Sc_PalFullHeal		=	800;
-const	int	Value_Sc_PalDestroyEvil		=	1000;
-
-// Magier Scrolls	
-const int 	Value_Sc_Firebolt			=	25;
-const int 	Value_Sc_Icebolt			=	25;	
-const int 	Value_Sc_SumGobSkel			=  	75;
-const int 	Value_Sc_InstantFireball	=	50;
-	
-const int 	Value_Sc_Zap				=	60;
-const int 	Value_Sc_SumWolf			=	75;
-const int 	Value_Sc_Windfist			=	60;
-const int 	Value_Sc_MediumHeal			=	60;
-const int 	Value_Sc_LightningFlash		=	125;
-const int 	Value_Sc_ChargeFireball		=	60;
-const int 	Value_Sc_SumSkel			=	75;
-const int 	Value_Sc_IceCube			=	100;
-
-const int 	Value_Sc_ThunderBall		=	75;
-const int 	Value_Sc_SumGol				=	150;
-const int 	Value_Sc_HarmUndead			=	75;
-const int 	Value_Sc_Pyrokinesis		=	150;
-
-const int 	Value_Sc_Firestorm			=	100;
-const int 	Value_Sc_IceWave			=	200;
-const int 	Value_Sc_SumDemon			=	200;
-const int 	Value_Sc_FullHeal			=	200;
-
-const int 	Value_Sc_Firerain			=	250;
-const int 	Value_Sc_BreathOfDeath		=	250;
-const int 	Value_Sc_MassDeath			=	250;
-const int 	Value_Sc_ArmyOfDarkness		=	250;
-
-const int Value_Sc_Water = 1;
-
-const int Value_Sc_IceLance = 100;
-const int Value_Sc_Whirlwind = 200;
-const int Value_Sc_Geyser = 100;
-const int Value_Sc_Thunderstorm = 200;
-const int Value_Sc_Waterfist = 100;
-
-/*******************************************************************************************/
-// 			Paladin Scrolls 
-/*******************************************************************************************/
-INSTANCE ItSc_PalLight (C_Item)
+instance ItSc_Sleep (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalLight;
-
-	visual				=	"ItSc_PalLight.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalLight;
-	cond_atr[2]   			= 	ATR_MANA_MAX;
-	cond_value[2]  			= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalLight;
+	value 					=	100;
 	
-	TEXT	[0]			=	Name_PaladinScroll	;
+	visual					=	"ItSc_Sleep.3DS";
+	spell					= 	SPL_Sleep;
+	cond_value[2]  			=	SPL_Cost_Sleep/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Duration;		
-	COUNT	[2]			=	SPL_Duration_PalLIGHT;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Sleep;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Sleep;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalLightHeal (C_Item)
+instance ItSc_MassSleep (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalLightHeal;
-
-	visual				=	"ItSc_PalLightHeal.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalLightHeal;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalLightHeal;
+	value 					=	250;
 	
-	TEXT	[0]			=	Name_PaladinScroll	;
+	visual					=	"ItSc_Sleep.3DS";
+	spell					= 	SPL_Sleep;
+	cond_value[2]  			=	SPL_Cost_MassSleep/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_HealingPerCast;		
-	COUNT	[2]			=	SPL_Heal_PalLightHeal;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MassSleep;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Sleep;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalHolyBolt (C_Item)
+instance ItSc_LightningFlash (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalHolyBolt;
-
-	visual				=	"ItSc_PalHolyBolt.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalHolyBolt;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-
-	description			=	NAME_SPL_PalHolyBolt;
+	value 					=	200;
 	
-	TEXT	[0]			=	Name_PaladinScroll	;
+	visual					=	"ItSc_LightningFlash.3DS";
+	spell					= 	SPL_LightningFlash;
+	cond_value[2]  			= 	SPL_Cost_LightningFlash/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;			
-	COUNT	[2]			=	SPL_Damage_PalHolyBolt;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_LightningFlash;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_LightningFlash;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalMediumHeal (C_Item)
+///*******************************************************************************************
+instance ItSc_ChargeFireball (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalMediumHeal;
-
-	visual				=	"ItSc_PalMediumHeal.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalMediumHeal;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalMediumHeal;
+	value 					=	200;
 	
-	TEXT	[0]			=	Name_PaladinScroll	;
+	visual					=	"ItSc_ChargeFireball.3DS";
+	spell					= 	SPL_ChargeFireball;
+	cond_value[2]  			= 	SPL_STEP_ChargeFireball/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_HealingPerCast;		
-	COUNT	[2]			=	SPL_Heal_PalMediumHeal;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_ChargeFireball;
+	TEXT[1]					=	NAME_MinManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_MaxManakosten;
+	COUNT[2]				=	SPL_Cost_ChargeFireball;
+	TEXT[3]					=	NAME_MinDamage;
+	COUNT[3]				=	SPL_Damage_ChargeFireball;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_ChargeFireball*4;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalRepelEvil (C_Item)
+instance ItSc_Whirlwind (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalRepelEvil;
-
-	visual				=	"ItSc_PalRepelEvil.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalRepelEvil;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalRepelEvil;
-	TEXT	[0]			=	Name_PaladinScroll	;
+	value 					=	100;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
+	visual					=	"ItSc_Water02.3DS";
+	spell					= 	SPL_Whirlwind;
+	cond_value[2]  			= 	SPL_Cost_Whirlwind/SPL_Cost_Scroll;
 	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_Damage_PalRepelEvil;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Whirlwind;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_TIME_WHIRLWIND;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalFullHeal (C_Item)
+instance ItSc_Fear (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalFullHeal;
-
-	visual				=	"ItSc_PalFullHeal.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalFullHeal;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalFullHeal;		
-	TEXT	[0]			=	Name_PaladinScroll	;
+	value 					=	100;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
+	visual					=	"ItSc_Fear.3DS";
+	spell					= 	SPL_Fear;
+	cond_value[2]  			= 	SPL_Cost_Fear/SPL_Cost_Scroll;
 	
-	TEXT	[2]			=	NAME_HealingPerCast;		
-	COUNT	[2]			=	SPL_Heal_PalFullHeal;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Fear;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Fear * 60;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_PalDestroyEvil (C_Item)
+instance ItSc_MassFear (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_PalDestroyEvil;
-
-	visual				=	"ItSc_PalDestroyEvil.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PalDestroyEvil;
-	cond_atr[2]   			=	ATR_MANA_MAX;
-	cond_value[2]  			=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_PalDestroyEvil;
-	TEXT	[0]			=	Name_PaladinScroll	;
+	value 					=	250;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
+	visual					=	"ItSc_Fear.3DS";
+	spell					= 	SPL_MassFear;
+	cond_value[2]  			= 	SPL_Cost_MassFear/SPL_Cost_Scroll;
 	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_Damage_PalDestroyEvil;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MassFear;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Fear * 60;
+	COUNT[5]				=	value;
 };
-
-/*******************************************************************************************/
-// 			Magier Scrolls 
-/*******************************************************************************************/
-INSTANCE ItSc_Firebolt (C_Item)
+instance ItSc_ChargeZap (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Firebolt;
-
-	visual				=	"ItSc_Firebolt.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_FIREBOLT;
-	cond_atr[2]   			= 	ATR_MANA_MAX;
-	cond_value[2]  			= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Firebolt;
+	value 					=	150;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Thunderball.3DS";
+	spell					= 	SPL_ChargeZap;
+	cond_value[2]  			= 	SPL_STEP_ChargeZap/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;			
-	COUNT	[2]			=	SPL_DAMAGE_FIREBOLT;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_ChargeZap;
+	TEXT[1]					=	NAME_MinManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_MaxManakosten;
+	COUNT[2]				=	SPL_Cost_ChargeZap;
+	TEXT[3]					=	NAME_MinDamage;
+	COUNT[3]				=	SPL_Damage_ChargeZap;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_ChargeZap*4;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Icebolt (C_Item)
+instance ItSc_EarthQuake (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Icebolt;
-
-	visual				=	"ItSc_Icebolt.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Icebolt;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_BLUE";
-
-	description			=	NAME_SPL_Icebolt;
+	value 					=	200;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_BreathOfDeath.3DS";
+	spell					= 	SPL_EarthQuake;
+	cond_value[2]  			= 	SPL_Cost_EarthQuake/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_DAMAGE_Icebolt;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_EarthQuake;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_EarthQuake;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_SumGobSkel (C_Item)
+instance ItSc_Geyser (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_SumGobSkel;
-
-	visual				=	"ItSc_SumGobSkel.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_SummonGoblinSkeleton;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_SummonGoblinSkeleton;
+	value 					=	150;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Water01.3DS";
+	spell					= 	SPL_Geyser;
+	cond_value[2]  			= 	SPL_Cost_Geyser/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Geyser;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Geyser;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_InstantFireball (C_Item)
+instance ItSc_WaterFist (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_InstantFireball;
-
-	visual				=	"ItSc_InstantFireball.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_InstantFireball;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_YELLOW";
-
-	description			= 	NAME_SPL_InstantFireball;
+	value 					=	200;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Water03.3DS";
+	spell					= 	SPL_WaterFist;
+	cond_value[2]  			= 	SPL_Cost_WaterFist/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;							
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;	
-	COUNT	[2]			=	SPL_DAMAGE_InstantFireball;
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_WaterFist;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_WaterFist;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Zap (C_Item)
+instance ItSc_IceLance (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Zap;
-
-	visual				=	"ItSc_Zap.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Zap;
+	value 					=	100;
 	
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Zap;
+	visual					=	"ItSc_Water04.3DS";
+	spell					= 	SPL_IceLance;
+	cond_value[2]  			= 	SPL_Cost_IceLance/SPL_Cost_Scroll;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;			
-	COUNT	[2]			=	SPL_DAMAGE_ZAP;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_IceLance;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_IceLance;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_SumWolf (C_Item)
+instance ItSc_IceWave (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_SumWolf;
-
-	visual				=	"ItSc_SumWolf.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_SummonWolf;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_SummonWolf;
+	value 					=	250;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_IceWave.3DS";
+	spell					= 	SPL_IceWave;
+	cond_value[2]  			= 	SPL_Cost_IceWave/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_IceWave;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Damage;
+	COUNT[2]				=	60;
+	TEXT[3]					=	NAME_Duration;
+	COUNT[3]				=	SPL_TIME_FREEZE;
+	TEXT[4]					=	NAME_DamagePerSec;
+	COUNT[4]				=	SPL_FREEZE_DAMAGE;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Windfist (C_Item)
+///*******************************************************************************************
+instance ItSc_Inflate (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Windfist;
-
-	visual				=	"ItSc_Windfist.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_WINDFIST;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	STEP_WINDFIST;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_WINDFIST;
+	value 					=	150;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Water01.3DS";
+	spell					= 	SPL_Inflate;
+	cond_value[2]  			= 	SPL_Cost_Inflate/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_MinManakosten;							
-	COUNT	[1]			=	STEP_WindFist;
-	
-	TEXT	[2]			=	NAME_MaxManakosten;							
-	COUNT	[2]			=	SPL_COST_WINDFIST;
-	
-	TEXT	[3]			=	NAME_MinDamage;
-	count 	[3]			=   SPL_Damage_Windfist;
-	
-	TEXT	[4]			=	NAME_MaxDamage;
-	COUNT	[4]			=	(SPL_Damage_Windfist*4);
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Inflate;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_MediumHeal (C_Item)
+instance ItSc_Rage (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_MediumHeal;
-
-	visual				=	"ItSc_MediumHeal.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_MediumHeal;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_MediumHeal;
+	value 					=	200;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Fear.3DS";
+	spell					= 	SPL_Rage;
+	cond_value[2]  			= 	SPL_Cost_Rage/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_HealingPerCast;		
-	COUNT	[2]			=	SPL_Heal_MediumHeal;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Rage;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_LightningFlash (C_Item)
+instance ItSc_MassRage (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_LightningFlash;
-
-	visual				=	"ItSc_LightningFlash.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_LightningFlash;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_LightningFlash;
+	value 					=	300;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Fear.3DS";
+	spell					= 	SPL_MassRage;
+	cond_value[2]  			= 	SPL_Cost_MassRage/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;			
-	COUNT	[2]			=	SPL_Damage_LightningFlash;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MassRage;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_ChargeFireball (C_Item)
+instance ItSc_BreathOfDeath (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_ChargeFireball;
-
-	visual				=	"ItSc_ChargeFireball.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_ChargeFireball;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	STEP_CHARGEFIREBALL;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_YELLOW";
-
-	description			= 	NAME_SPL_ChargeFireball;
+	value 					=	300;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_BreathOfDeath.3DS";
+	spell					= 	SPL_BreathOfDeath;
+	cond_value[2]  			= 	SPL_Cost_BreathOfDeath/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_MinManakosten;							
-	COUNT	[1]			=	STEP_ChargeFireball;
-	
-	TEXT	[2]			=	NAME_MaxManakosten;							
-	COUNT	[2]			=	SPL_COST_ChargeFireball;
-	
-	TEXT	[3]			=	NAME_MinDamage;
-	count 	[3]			=   SPL_Damage_ChargeFireball;
-	
-	TEXT	[4]			=	NAME_MaxDamage;
-	COUNT	[4]			=	(SPL_Damage_ChargeFireball*4);
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_BreathOfDeath;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_BreathOfDeath;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_SumSkel (C_Item)
+instance ItSc_MassDeath (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_SumSkel;
-
-	visual				=	"ItSc_SumSkel.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_SUMMONSKELETON;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_SummonSkeleton;
+	value 					=	300;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_MassDeath.3DS";
+	spell					= 	SPL_MassDeath;
+	cond_value[2]  			= 	SPL_Cost_MassDeath/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MassDeath;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_MassDeath;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_IceCube (C_Item)
+instance ItSc_ArmyOfDarkness (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_IceCube;
-
-	visual				=	"ItSc_IceCube.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_ICECUBE;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_BLUE";
-
-	description			=	NAME_SPL_IceCube;
+	value 					=	300;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_ArmyOfDarkness.3DS";
+	spell					= 	SPL_ArmyOfDarkness;
+	cond_value[2]			=	SPL_Cost_ArmyOfDarkness/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;				
-	COUNT	[2]			=	60;
-	
-	TEXT	[3]			=	NAME_Duration;				
-	COUNT	[3]			=	SPL_TIME_FREEZE;
-	
-	TEXT	[4]			=	NAME_DamagePerSec;				
-	COUNT	[4]			=	SPL_FREEZE_DAMAGE;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_ArmyOfDarkness;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_ThunderBall (C_Item)
+instance ItSc_Shrink (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_ThunderBall;
-
-	visual				=	"ItSc_ThunderBall.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_ChargeZap;
+	value 					=	300;
 	
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	STEP_CHARGEZAP;
+	visual					=	"ItSc_Shrink.3DS";
+	spell					= 	SPL_Shrink;
+	cond_value[2]			=	SPL_Cost_Shrink/SPL_Cost_Scroll;
 	
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_ChargeZap;
-	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_MinManakosten;							
-	COUNT	[1]			=	STEP_ChargeZap;
-	
-	TEXT	[2]			=	NAME_MaxManakosten;							
-	COUNT	[2]			=	SPL_COST_ChargeZap;
-	
-	TEXT	[3]			=	NAME_MinDamage;
-	count 	[3]			=   SPL_Damage_ChargeZap;
-	
-	TEXT	[4]			=	NAME_MaxDamage;
-	COUNT	[4]			=	(SPL_Damage_ChargeZap*4);
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_Shrink;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_SumGol (C_Item)
+///*******************************************************************************************
+instance ItSc_PoisonBolt (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_SC_SumGol;
-
-	visual				=	"ItSc_SumGol.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_SUMMONGOLEM;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_SummonGolem;
+	value 					=	30;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_FireBolt.3DS";
+	spell					= 	SPL_PoisonBolt;
+	cond_value[2]  			= 	SPL_Cost_PoisonBolt/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_PoisonBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_PoisonBolt;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_HarmUndead (C_Item)
+instance ItSc_SkullBolt (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_HarmUndead;
-
-	visual				=	"ItSc_HarmUndead.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_DESTROYUNDEAD;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_DestroyUndead;
+	value 					=	40;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_Zap.3DS";
+	spell					= 	SPL_SkullBolt;
+	cond_value[2]  			= 	SPL_Cost_SkullBolt/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_DAMAGE_DESTROYUNDEAD;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_SkullBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_SkullBolt;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Pyrokinesis (C_Item)
+instance ItSc_BloodFireball (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Pyrokinesis;
-
-	visual				=	"ItSc_Pyrokinesis.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_PYROKINESIS;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	STEP_Pyrokinesis;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_YELLOW";
-
-	description			=	NAME_SPL_Pyrokinesis;
+	value 					=	50;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_InstantFireball.3DS";
+	spell					= 	SPL_BloodFireball;
+	cond_value[2]  			= 	SPL_Cost_BloodFireball/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_MinManakosten;							
-	COUNT	[1]			=	STEP_Pyrokinesis;
-	
-	TEXT	[2]			=	NAME_MaxManakosten;							
-	COUNT	[2]			=	SPL_Cost_Pyrokinesis;
-	
-	TEXT	[3]			=	NAME_MinDamage;
-	count 	[3]			=   SPL_Damage_Pyrokinesis;
-	
-	TEXT	[4]			=	NAME_MaxDamage;
-	COUNT	[4]			=	(SPL_Damage_Pyrokinesis*4);
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_BloodFireball;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_BloodFireball;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Firestorm (C_Item)
+instance ItSc_DragonBall (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Firestorm;
-
-	visual				=	"ItSc_Firestorm.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_FIRESTORM;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_YELLOW";
-
-	description			= 	NAME_SPL_Firestorm;
+	value 					=	200;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_InstantFireball.3DS";
+	spell					= 	SPL_DragonBall;
+	cond_value[2]  			= 	SPL_Cost_DragonBall/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;							
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;	
-	COUNT	[2]			=	SPL_Damage_FireStorm;
-	
-	TEXT	[5]			=	NAME_Value;									
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_DragonBall;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_DragonBall;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_IceWave (C_Item)
+instance ItSc_BlackDragonBall (ItemPR_Scroll)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_SC_IceWave;
-
-	visual				=	"ItSc_IceWave.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_ICEWAVE;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_BLUE";
-
-	description			=	NAME_SPL_IceWave;
+	value 					=	250;
 	
-	TEXT	[0]			=	"Zwój"	;
+	visual					=	"ItSc_InstantFireball.3DS";
+	spell					= 	SPL_BlackDragonBall;
+	cond_value[2]  			= 	SPL_Cost_BlackDragonBall/SPL_Cost_Scroll;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;				
-	COUNT	[2]			=	60;
-	
-	TEXT	[3]			=	NAME_Duration;				
-	COUNT	[3]			=	SPL_TIME_FREEZE;
-	
-	TEXT	[4]			=	NAME_DamagePerSec;				
-	COUNT	[4]			=	SPL_FREEZE_DAMAGE;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_BlackDragonBall;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_BlackDragonBall;
+	COUNT[5]				=	value;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_SumDemon (C_Item)
+///*******************************************************************************************
+///	MYS & GEO & ELE & PYR & NEC spells
+///*******************************************************************************************
+instance ItSc_MysBolt (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_SumDemon;
-
-	visual				=	"ItSc_SumDemon.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_SUMMONDEMON;
-	cond_atr[2]   			=	ATR_MANA_MAX;
-	cond_value[2]  			=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_SummonDemon;
+	visual 					=	"ItSc_FireBolt.3ds";
+	spell					= 	SPL_MysBolt;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysBolt;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysBolt;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_MysBolt;
+	TEXT[3]					=	NAME_Bonus_HP;
+//	COUNT[3]				=	SPL_Heal_MysBolt;
 };
-/*******************************************************************************************/
-
-INSTANCE ItSc_FullHeal (C_Item)
+instance ItSc_MysProtection (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_FullHeal;
-
-	visual				=	"ItSc_FullHeal.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_FullHeal;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_FullHeal;
+	visual 					=	"ItSc_MediumHeal.3ds";
+	spell					= 	SPL_MysProtection;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_HealingPerCast;		
-	COUNT	[2]			=	SPL_Heal_FullHeal;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysProtection;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysProtection;
+	TEXT[2]					=	NAME_Duration;
+//	COUNT[2]				=	SPL_Time_MysProtection;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Firerain (C_Item)
+instance ItSc_MysRoot (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Firerain;
-
-	visual				=	"ItSc_Firerain.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_FIRERAIN;
-	cond_atr[2]   			= 	ATR_MANA_MAX;
-	cond_value[2]  			= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_YELLOW";
-
-	description			=	NAME_SPL_Firerain;
+	visual 					=	"ItSc_IceCube.3ds";
+	spell					= 	SPL_MysRoot;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Fire;				
-	COUNT	[2]			=	SPL_DAMAGE_FIRERAIN;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysRoot;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysRoot;
+	TEXT[2]					=	NAME_Duration;
+//	COUNT[2]				=	SPL_Time_MysRoot;
+	TEXT[3]					=	NAME_DamagePerSec;
+//	COUNT[3]				=	SPL_Damage_MysRoot;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_BreathOfDeath (C_Item)//Joly:Auf Dracheninsel in Truhe der Schwarzmagiernovizen
+instance ItSc_MysTame (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_BreathofDeath;
-
-	visual				=	"ItSc_BreathOfDeath.3ds";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_BREATHOFDEATH;
+	visual 					=	"ItSc_Sleep.3ds";
+	spell					= 	SPL_MysTame;
 	
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_RED";
-
-	description			=	NAME_SPL_BreathOfDeath;
-	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_DAMAGE_BREATHOFDEATH;
-
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysTame;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysTame;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_MassDeath (C_Item)
+instance ItSc_MysAura (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Massdeath;
-
-	visual				=	"ItSc_MassDeath.3ds";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_MASSDEATH;
+	visual 					=	"ItSc_Sleep.3ds";
+	spell					= 	SPL_MysAura;
 	
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_RED";
-
-	description			=	NAME_SPL_MassDeath;
-	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Dam_Magic;				
-	COUNT	[2]			=	SPL_DAMAGE_MASSDEATH;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysAura;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysAura;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_ArmyOfDarkness (C_Item)
+instance ItSc_MysEchoes (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_ArmyofDarkness;
-
-	visual				=	"ItSc_ArmyOfDarkness.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_ARMYOFDARKNESS;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER_RED";
-
-	description			=	NAME_SPL_ArmyOfDarkness;
+	visual 					=	"ItSc_IceWave.3ds";
+	spell					= 	SPL_MysEchoes;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_MysEchoes;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_MysEchoes;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_MysEchoes;
 };
-/*******************************************************************************************/
-INSTANCE ItSc_Geyser (C_Item)
+///*******************************************************************************************
+instance ItSc_GeoStone (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Geyser;
-
-	visual				=	"ItSc_Water01.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Geyser;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Geyser;
+	visual 					=	"ItSc_FireBolt.3ds";
+	spell					= 	SPL_GeoStone;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;			
-	COUNT	[2]			=	SPL_DAMAGE_Geyser;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_GeoStone;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoStone;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_GeoStone;
 };
-
-INSTANCE ItSc_Icelance (C_Item)
+instance ItSc_GeoProtection (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Icelance;
-
-	visual				=	"ItSc_Water04.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Icelance;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Icelance;
+	visual 					=	"ItSc_MediumHeal.3ds";
+	spell					= 	SPL_GeoProtection;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;			
-	COUNT	[2]			=	SPL_DAMAGE_Icelance;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_GeoProtection;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoProtection;
+	TEXT[2]					=	NAME_ManaPerSec;
+//	COUNT[2]				=	SPL_Time_GeoProtection;
+	TEXT[3]					=	NAME_Prot_Physical;
+//	COUNT[3]				=	SPL_Prot_GeoProtection;
 };
-
-INSTANCE ItSc_Waterfist (C_Item)
+instance ItSc_GeoElevate (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Waterfist;
-
-	visual				=	"ItSc_Water03.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Waterfist;
-	cond_atr[2]   		= 	ATR_MANA_MAX;
-	cond_value[2]  		= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Waterfist;
+	visual 					=	"ItSc_IceCube.3ds";
+	spell					= 	SPL_GeoElevate;
 	
-	TEXT	[0]			=	"Zwój"	;
-	
-	TEXT	[1]			=	NAME_Mana_needed;		
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;			
-	COUNT	[2]			=	SPL_DAMAGE_Waterfist;
-	
-	TEXT	[5]			=	NAME_Value;				
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_GeoElevate;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoElevate;
+	TEXT[2]					=	NAME_Duration;
+//	COUNT[2]				=	SPL_Time_GeoElevate;
 };
-
-INSTANCE ItSc_Thunderstorm (C_Item)
+instance ItSc_GeoGolem (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Thunderstorm;
-
-	visual				=	"ItSc_Water05.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Thunderstorm;
-	cond_atr[2]   			= 	ATR_MANA_MAX;
-	cond_value[2]  			= 	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Thunderstorm;
-
-	TEXT	[0]			=	"Zwój"	;
+	visual 					=	"ItSc_SumGol.3ds";
+	spell					= 	SPL_GeoGolem;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Damage;				
-	COUNT	[2]			=	SPL_DAMAGE_Thunderstorm;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_GeoGolem;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoGolem;
 };
-
-INSTANCE ItSc_Whirlwind (C_Item)
+instance ItSc_GeoExplosion (ItemPR_Spell)
 {
-	name 				=	"Zwój";
-
-	mainflag 			=	ITEM_KAT_RUNE;
-	flags 				=	ITEM_MULTI;
-
-	value 				=	Value_Sc_Whirlwind;
-
-	visual				=	"ItSc_Water02.3DS";
-	material			=	MAT_LEATHER;
-
-	spell				= 	SPL_Whirlwind;
-	cond_atr[2]   		=	ATR_MANA_MAX;
-	cond_value[2]  		=	SPL_Cost_Scroll;
-
-	wear				= 	WEAR_EFFECT;
-	effect				=	"SPELLFX_WEAKGLIMMER";
-
-	description			=	NAME_SPL_Whirlwind;
+	visual 					=	"ItSc_IceWave.3ds";
+	spell					= 	SPL_GeoExplosion;
 	
-	TEXT	[0]			=	"Zwój"	;
+	description				=	NAME_SPL_GeoExplosion;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoExplosion;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_GeoExplosion;
+};
+instance ItSc_GeoWall (ItemPR_Spell)
+{
+	visual 					=	"ItSc_IceWave.3ds";
+	spell					= 	SPL_GeoWall;
 	
-	TEXT	[1]			=	NAME_Mana_needed;			
-	COUNT	[1]			=	SPL_Cost_Scroll;
-	
-	TEXT	[2]			=	NAME_Duration;				
-	COUNT	[2]			=	SPL_TIME_WHIRLWIND;
-	
-	TEXT	[5]			=	NAME_Value;					
-	COUNT	[5]			=	value;
+	description				=	NAME_SPL_GeoWall;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_GeoWall;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_GeoWall;
+};
+///*******************************************************************************************
+instance ItSc_EleLightning (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Water04.3ds";
+	spell					= 	SPL_EleLightning;
+
+	description				=	NAME_SPL_EleLightning;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_EleLightning;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_EleLightning;
+};
+instance ItSc_EleProtection (ItemPR_Spell)
+{
+	visual 					=	"ItSc_MediumHeal.3ds";
+	spell					= 	SPL_EleProtection;
+
+	description				=	NAME_SPL_EleProtection;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_EleProtection;
+};
+instance ItSc_EleFreeze (ItemPR_Spell)
+{
+	visual 					=	"ItSc_IceCube.3ds";
+	spell					= 	SPL_EleFreeze;
+
+	description				=	NAME_SPL_EleFreeze;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_EleFreeze;
+};
+instance ItSc_EleHurricane (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Thunderball.3ds";
+	spell					= 	SPL_EleHurricane;
+
+	description				=	NAME_SPL_EleHurricane;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_EleHurricane;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_EleHurricane;
+};
+instance ItSc_EleKinesis (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Water01.3ds";
+	spell					= 	SPL_EleKinesis;
+
+	description				=	NAME_SPL_EleKinesis;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_EleKinesis;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_EleKinesis;
+};
+instance ItSc_EleThunderstorm (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Water01.3ds";
+	spell					= 	SPL_EleThunderstorm;
+
+	description				=	NAME_SPL_EleThunderstorm;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_EleThunderstorm;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_EleThunderstorm;
+};
+///*******************************************************************************************
+instance ItSc_PyrFireball (ItemPR_Spell)
+{
+	visual 					=	"ItSc_InstantFireball.3ds";
+	spell					= 	SPL_PyrFireball;
+
+	description				=	NAME_SPL_PyrFireball;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_PyrFireball;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_PyrFireball;
+};
+instance ItSc_PyrProtection (ItemPR_Spell)
+{
+	visual 					=	"ItSc_MediumHeal.3ds";
+	spell					= 	SPL_PyrProtection;
+
+	description				=	NAME_SPL_PyrProtection;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_PyrProtection;
+};
+instance ItSc_PyrFirestorm (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Firestorm.3ds";
+	spell					= 	SPL_PyrFirestorm;
+
+	description				=	NAME_SPL_PyrFirestorm;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_PyrFirestorm;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_PyrFirestorm;
+};
+instance ItSc_PyrKinesis (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Pyrokinesis.3ds";
+	spell					= 	SPL_PyrKinesis;
+
+	description				=	NAME_SPL_PyrKinesis;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_PyrKinesis;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_PyrKinesis;
+};
+instance ItSc_PyrExplosion (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Firestorm.3ds";
+	spell					= 	SPL_PyrExplosion;
+
+	description				=	NAME_SPL_PyrExplosion;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_PyrExplosion;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_PyrExplosion;
+};
+instance ItSc_PyrFirerain (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Firerain.3ds";
+	spell					= 	SPL_PyrFirerain;
+
+	description				=	NAME_SPL_PyrFirerain;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_PyrFirerain;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_PyrFirerain;
+};
+///*******************************************************************************************
+instance ItSc_NecLifesteal (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Beliar04.3ds";
+	spell					= 	SPL_NecLifesteal;
+
+	description				=	NAME_SPL_NecLifesteal;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_Cost_NecLifesteal;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_NecLifesteal;
+};
+instance ItSc_NecProtection (ItemPR_Spell)
+{
+	visual 					=	"ItSc_MediumHeal.3ds";
+	spell					= 	SPL_NecProtection;
+
+	description				=	NAME_SPL_NecProtection;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_NecProtection;
+};
+instance ItSc_NecSkeleton (ItemPR_Spell)
+{
+	visual 					=	"ItSc_SumSkel.3ds";
+	spell					= 	SPL_NecSkeleton;
+
+	description				=	NAME_SPL_NecSkeleton;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_NecSkeleton;
+};
+instance ItSc_NecSwarm (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Beliar02.3ds";
+	spell					= 	SPL_NecSwarm;
+
+	description				=	NAME_SPL_NecSwarm;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_NecSwarm;
+};
+instance ItSc_NecDemon (ItemPR_Spell)
+{
+	visual 					=	"ItSc_SumDemon.3ds";
+	spell					= 	SPL_NecDemon;
+
+	description				=	NAME_SPL_NecDemon;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_NecDemon;
+};
+instance ItSc_NecDeath (ItemPR_Spell)
+{
+	visual 					=	"ItSc_Beliar02.3ds";
+	spell					= 	SPL_NecDeath;
+
+	description				=	NAME_SPL_NecDeath;
+	TEXT[1]					=	NAME_Manakosten;
+//	COUNT[1]				=	SPL_COST_NecDeath;
+	TEXT[2]					=	NAME_Dam_Magic;
+//	COUNT[2]				=	SPL_Damage_NecDeath;
 };

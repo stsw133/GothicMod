@@ -22,7 +22,7 @@ instance VLK_4302_Addon_Elvrich (Npc_Default)
 	EquipItem (self, ItMw_1h_VLK_Axe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_B, "Hum_Head_Pony", Face_Normal03, 0, ITAR_BAU_00);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Pony", Face_Normal03, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

@@ -191,6 +191,7 @@ func void DIA_Hyglas_TALENT_FIREBOLT_Info ()
 	AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_02"); //Moc zaklêcia ognistej strza³y wniknie w runê, a ty dostaniesz narzêdzie Innosa.
 	AI_Output (self, other, "DIA_Hyglas_TALENT_FIREBOLT_14_03"); //Skoro ju¿ masz wszystkie materia³y, mo¿esz przyst¹piæ do tworzenia runy.
 	MakeRune_FireBolt = true;
+	PLAYER_TALENT_ENCHANTING[SPL_FireBolt] = true;
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info BLANK_RUNE

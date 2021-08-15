@@ -93,26 +93,26 @@ func void Use_ItPo_Health_03()
 ///******************************************************************************************
 instance ItPo_Health_Addon_04 (ItemPR_Potion)
 {
-	value 			=	120;
-	visual 			=	"ItPo_Health_03.3ds";
+	value 			=	300;
+	visual 			=	"ItPo_Health_04.3ds";
 	on_state[0]		=	Use_ItPo_Health_04;
 	
 	description		= 	"Potê¿na mikstura lecznicza";
 	TEXT[1]			= 	NAME_Percent_HP;
-	COUNT[1]		=	120;
+	COUNT[1]		=	300;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	12;
+	COUNT[2]		=	30;
 	COUNT[5]		= 	value;
 };
 func void Use_ItPo_Health_04()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_HITPOINTS, 12);
+		PotionRG_ADD (ATR_HITPOINTS, 30);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]*12)/10);
+		Npc_ChangeAttribute (self, ATR_HITPOINTS, self.attribute[ATR_HITPOINTS_MAX]*3);
 	};
 	MOD_PoisonOFF(self);
 };
@@ -196,26 +196,26 @@ func void Use_ItPo_Mana_03()
 ///******************************************************************************************
 instance ItPo_Mana_Addon_04 (ItemPR_Potion)
 {
-	value 			=	120;
-	visual 			=	"ItPo_Mana_03.3ds";
+	value 			=	300;
+	visual 			=	"ItPo_Mana_04.3ds";
 	on_state[0]		=	Use_ItPo_Mana_04;
 	
 	description		= 	"Potê¿na mikstura many";
 	TEXT[1]			= 	NAME_Percent_Mana;
-	COUNT[1]		=	120;
+	COUNT[1]		=	300;
 	TEXT[2]			=	NAME_Duration;
-	COUNT[2]		=	12;
+	COUNT[2]		=	30;
 	COUNT[5]		= 	value;
 };
 func void Use_ItPo_Mana_04()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_MANA, 12);
+		PotionRG_ADD (ATR_MANA, 30);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_MANA, (self.attribute[ATR_MANA_MAX]*12)/10);
+		Npc_ChangeAttribute (self, ATR_MANA, self.attribute[ATR_MANA_MAX]*3);
 	};
 };
 ///******************************************************************************************
@@ -319,8 +319,6 @@ func void Use_ItPo_Perm_Fire()
 ///******************************************************************************************
 ///	Transform
 ///******************************************************************************************
-var int TrfMonster;
-
 instance ItSc_TrfDragonSnapper (ItemPR_Potion)
 {
 	value 			=	300;
@@ -333,10 +331,10 @@ instance ItSc_TrfDragonSnapper (ItemPR_Potion)
 };
 func void Use_ItPo_TrfDragonSnapper()
 {
-	TrfMonster = ID_DRAGONSNAPPER;
+	TrfStoneID = ID_DRAGONSNAPPER;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfFireWaran (ItemPR_Potion)
 {
 	value 			=	250;
@@ -349,10 +347,10 @@ instance ItSc_TrfFireWaran (ItemPR_Potion)
 };
 func void Use_ItPo_TrfFireWaran()
 {
-	TrfMonster = ID_FIREWARAN;
+	TrfStoneID = ID_FIREWARAN;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfGiantBug (ItemPR_Potion)
 {
 	value 			=	150;
@@ -365,10 +363,10 @@ instance ItSc_TrfGiantBug (ItemPR_Potion)
 };
 func void Use_ItPo_TrfGiantBug()
 {
-	TrfMonster = ID_GIANT_BUG;
+	TrfStoneID = ID_GIANT_BUG;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfGiantRat (ItemPR_Potion)
 {
 	value 			=	150;
@@ -381,10 +379,10 @@ instance ItSc_TrfGiantRat (ItemPR_Potion)
 };
 func void Use_ItPo_TrfGiantRat()
 {
-	TrfMonster = ID_GIANT_RAT;
+	TrfStoneID = ID_GIANT_RAT;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfLurker (ItemPR_Potion)
 {
 	value 			=	200;
@@ -397,10 +395,10 @@ instance ItSc_TrfLurker (ItemPR_Potion)
 };
 func void Use_ItPo_TrfLurker()
 {
-	TrfMonster = ID_LURKER;
+	TrfStoneID = ID_LURKER;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfScavenger (ItemPR_Potion)
 {
 	value 			=	150;
@@ -413,10 +411,10 @@ instance ItSc_TrfScavenger (ItemPR_Potion)
 };
 func void Use_ItPo_TrfScavenger()
 {
-	TrfMonster = ID_SCAVENGER;
+	TrfStoneID = ID_SCAVENGER;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfShadowbeast (ItemPR_Potion)
 {
 	value 			=	300;
@@ -429,10 +427,10 @@ instance ItSc_TrfShadowbeast (ItemPR_Potion)
 };
 func void Use_ItPo_TrfShadowbeast()
 {
-	TrfMonster = ID_SHADOWBEAST;
+	TrfStoneID = ID_SHADOWBEAST;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfSheep (ItemPR_Potion)
 {
 	value 			=	100;
@@ -445,10 +443,10 @@ instance ItSc_TrfSheep (ItemPR_Potion)
 };
 func void Use_ItPo_TrfSheep()
 {
-	TrfMonster = ID_SHEEP;
+	TrfStoneID = ID_SHEEP;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfSnapper (ItemPR_Potion)
 {
 	value 			=	200;
@@ -461,10 +459,10 @@ instance ItSc_TrfSnapper (ItemPR_Potion)
 };
 func void Use_ItPo_TrfSnapper()
 {
-	TrfMonster = ID_SNAPPER;
+	TrfStoneID = ID_SNAPPER;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfWaran (ItemPR_Potion)
 {
 	value 			=	200;
@@ -477,10 +475,10 @@ instance ItSc_TrfWaran (ItemPR_Potion)
 };
 func void Use_ItPo_TrfWaran()
 {
-	TrfMonster = ID_WARAN;
+	TrfStoneID = ID_WARAN;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfWarg (ItemPR_Potion)
 {
 	value 			=	200;
@@ -493,10 +491,10 @@ instance ItSc_TrfWarg (ItemPR_Potion)
 };
 func void Use_ItPo_TrfWarg()
 {
-	TrfMonster = ID_WARG;
+	TrfStoneID = ID_WARG;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
-
+///******************************************************************************************
 instance ItSc_TrfWolf (ItemPR_Potion)
 {
 	value 			=	150;
@@ -509,7 +507,7 @@ instance ItSc_TrfWolf (ItemPR_Potion)
 };
 func void Use_ItPo_TrfWolf()
 {
-	TrfMonster = ID_WOLF;
+	TrfStoneID = ID_WOLF;
 	AI_ReadySpell (self, SPL_Transform, 0);
 };
 ///******************************************************************************************
@@ -606,12 +604,12 @@ instance ItPo_DragonEggDrink (ItemPR_Potion)
 };
 func void Use_ItPo_DragonEggDrink()
 {
-	if (self.attribute[ATR_REGENERATEHP] == 0)
+	if (Npc_IsPlayer(self))
 	{
-		self.attribute[ATR_REGENERATEHP] = 3;
+		hpRegenPower += 1;
+		Snd_Play("DEM_Warn");
+		Neoras_SCUsedDragonEggDrink = true;
 	};
-	Snd_Play("DEM_Warn");
-	Neoras_SCUsedDragonEggDrink = true;
 };
 ///******************************************************************************************
 instance ItPo_MegaDrink (ItemPR_Potion)
@@ -629,8 +627,11 @@ instance ItPo_MegaDrink (ItemPR_Potion)
 };
 func void Use_ItPo_MegaDrink()
 {
-	self.attribute[ATR_REGENERATEHP] = 1;
-	Snd_Play("DEM_Warn");
+	if (Npc_IsPlayer(self))
+	{
+		hpRegenPower += 5;
+		Snd_Play("DEM_Warn");
+	};
 };
 ///******************************************************************************************
 instance ItPo_InnosTears (ItemPR_Potion)

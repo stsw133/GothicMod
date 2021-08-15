@@ -2,9 +2,8 @@
 ///	SPL_MysBolt
 ///******************************************************************************************
 
-const int SPL_Cost_MysBolt				=	20;
+const int SPL_Cost_MysBolt				=	15;
 const int SPL_Damage_MysBolt			=	90;
-const int SPL_Heal_MysBolt				=	30;
 /*
 const int SPL_TimingCast_MysBolt		=	2000;
 const int SPL_Timing_MysBolt			=	800;
@@ -15,10 +14,8 @@ var int SPL_Combo_MysBolt;
 instance Spell_MysBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	spelltype 							=	SPELL_NEUTRAL;
 	damage_per_level					=	SPL_Damage_MysBolt;
 	damageType							=	DAM_MAGIC;
-//	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };
 /*
 func void FF_MysBolt()
@@ -58,11 +55,8 @@ func int Spell_Logic_MysBolt (var int manaInvested)
         };
 		*/
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_MysBolt()

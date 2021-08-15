@@ -5,7 +5,7 @@ func int C_ScHasBeliarsWeapon()
 {
 	if (Npc_HasItems(hero, ItMw_BeliarWeapon_Raven))
 	|| (Npc_HasItems(hero, ItMw_BeliarWeapon))
-	|| (Npc_HasItems(hero, ItRu_BeliarRage))
+	|| (Npc_HasItems(hero, ItRu_EnergyBall))
 	{
 		return true;
 	};
@@ -19,7 +19,7 @@ func int C_IsItemBeliarsWeapon(var C_Item Weap)
 {
 	if (Hlp_IsItem(Weap,ItMw_BeliarWeapon_Raven))
 	|| (Hlp_IsItem(Weap,ItMw_BeliarWeapon))
-	|| (Hlp_IsItem(Weap,ItRu_BeliarRage))
+	|| (Hlp_IsItem(Weap,ItRu_EnergyBall))
 	{
 		return true;
 	};
@@ -59,7 +59,7 @@ func void B_ClearBeliarsWeapon()
 {
 	Npc_RemoveInvItems (hero, ItMw_BeliarWeapon_Raven, Npc_HasItems(hero, ItMw_BeliarWeapon_Raven));
 	Npc_RemoveInvItems (hero, ItMw_BeliarWeapon, Npc_HasItems(hero, ItMw_BeliarWeapon));
-	Npc_RemoveInvItems (hero, ItRu_BeliarRage, Npc_HasItems(hero, ItRu_BeliarRage));
+	Npc_RemoveInvItems (hero, ItRu_EnergyBall, Npc_HasItems(hero, ItRu_EnergyBall));
 };
 
 ///******************************************************************************************
@@ -93,7 +93,7 @@ func void B_UpgradeBeliarsWeapon()
 	BeliarDamageChance = (hero.level / 2);
 	BeliarWeapon_LastUpgradeLvl = hero.level;
 	
-	if (hero.guild == GIL_KDF)	{	CreateInvItem (hero, ItRu_BeliarRage);		}
+	if (hero.guild == GIL_KDF)	{	CreateInvItem (hero, ItRu_EnergyBall);		}
 	else						{	CreateInvItem (hero, ItMw_BeliarWeapon);	};
 	
 	Wld_PlayEffect ("spellFX_BeliarsWeapon_Upgrate", self, self, 0, 0, 0, false);

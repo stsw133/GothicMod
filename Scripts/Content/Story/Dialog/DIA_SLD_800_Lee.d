@@ -35,7 +35,7 @@ func void B_Lee_Teleport()
 	AI_Output (self ,other, "DIA_Lee_Add_04_05"); //Aaa... Dobrze, ¿e jesteœ.
 	AI_Output (other, self, "DIA_Lee_Add_15_06"); //Co siê sta³o?
 	AI_Output (self ,other, "DIA_Lee_Add_04_07"); //Zobacz, co znalaz³em w starej kaplicy.
-	B_GiveInvItems (self, other, ItRu_TeleportFarm, 1);
+	B_GiveInvItems (self, other, ItTe_BigFarm, 1);
 	AI_Output (self ,other, "DIA_Lee_Add_04_08"); //To magiczna runa. Jeœli siê nie mylê, przeniesie ciê z powrotem na tê farmê.
 	AI_Output (self ,other, "DIA_Lee_Add_04_09"); //Pomyœla³em, ¿e mo¿e ci siê przydaæ.
 	

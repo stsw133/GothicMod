@@ -26,7 +26,7 @@ instance BDT_1085_Addon_Bloodwyn (Npc_Default)
 	CreateInvItem (self, ItMi_Addon_Bloodwyn_Kopf);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Bloodwyn, 0, ITAR_RVN_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Bloodwyn, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

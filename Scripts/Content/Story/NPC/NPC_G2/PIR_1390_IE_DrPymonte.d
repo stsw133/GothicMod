@@ -19,7 +19,7 @@ instance PIR_1390_IE_DrPymonte (Npc_Default)
 	CreateInvItem (self, ItMi_IEHarfe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pymonte", Face_Pymonte, 0, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pymonte", Face_Pymonte, 0, -1);
 
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1390;

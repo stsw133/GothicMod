@@ -28,7 +28,7 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Kid, Teeth_Normal, ITAR_VLK_L_00);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Kid, Teeth_Normal, ITAR_VLK_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_SetModelScale	(self, 0.75, 0.75, 0.75);
 	

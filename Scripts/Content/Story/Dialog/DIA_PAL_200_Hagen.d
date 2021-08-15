@@ -943,7 +943,7 @@ func void DIA_Lord_Hagen_BACKINTOWN_Info ()
 	
 	AI_Output (self ,other, "DIA_Lord_Hagen_Add_04_00"); //Jeszcze jedno, zanim pójdziesz.
 	AI_Output (self ,other, "DIA_Lord_Hagen_Add_04_01"); //WeŸ tê runê jako wyraz mojej wdziêcznoœci. W chwilach potrzeby przeniesie ciê ona bezpiecznie do miasta.
-	B_GiveInvItems (self, other, ItRu_TeleportSeaport, 1);
+	B_GiveInvItems (self, other, ItTe_Khorinis, 1);
 	
 	
 	CreateInvItems 		(self, ItWr_PermissionToWearInnosEye_MIS, 1);	

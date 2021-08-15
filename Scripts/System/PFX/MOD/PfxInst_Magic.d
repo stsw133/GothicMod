@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	Particle Effects - Magic
 ///******************************************************************************************
-INSTANCE MFX_nLight_INIT (C_PARTICLEFX)
+instance MFX_nLight_INIT (C_ParticleFx)
 {
     ppsvalue = 30;
     ppsscalekeys_s = "1";
@@ -38,7 +38,7 @@ INSTANCE MFX_nLight_INIT (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_nLight_ORIGIN (C_PARTICLEFX)
+instance MFX_nLight_ORIGIN (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1";
@@ -76,7 +76,7 @@ INSTANCE MFX_nLight_ORIGIN (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_nHeal_INIT (C_PARTICLEFX)
+instance MFX_nHeal_INIT (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsislooping = true;
@@ -103,7 +103,7 @@ INSTANCE MFX_nHeal_INIT (C_PARTICLEFX)
     visalphastart = 140;
 };
 
-INSTANCE MFX_nHeal_CAST (C_PARTICLEFX)
+instance MFX_nHeal_CAST (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1";
@@ -137,7 +137,7 @@ INSTANCE MFX_nHeal_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_nHeal_HEAVENLIGHT (C_PARTICLEFX)
+instance MFX_nHeal_HEAVENLIGHT (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "1 1 1";
@@ -176,7 +176,7 @@ INSTANCE MFX_nHeal_HEAVENLIGHT (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_PALBLESS (ITEM_GLIMMER_PROTO)
+instance MFX_PALBLESS (ITEM_GLIMMER_PROTO)
 {
 	ppsvalue			=	500;
 	visname_s			=	"vfx_magic_bigglow_white.TGA";
@@ -186,84 +186,7 @@ INSTANCE MFX_PALBLESS (ITEM_GLIMMER_PROTO)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_Summon_INIT (C_PARTICLEFX)
-{
-    ppsvalue = 100;
-    ppsscalekeys_s = "1";
-    ppsislooping = true;
-    ppsissmooth = true;
-    ppsfps = 1;
-    shptype_s = "SPHERE";
-    shpfor_s = "object";
-    shpoffsetvec_s = "0 0 0";
-    shpdistribtype_s = "RAND";
-    shpisvolume = true;
-    shpdim_s = "20";
-    shpscalekeys_s = "1";
-    shpscaleislooping = true;
-    shpscaleissmooth = true;
-    shpscalefps = 2;
-    dirmode_s = "RAND";
-    dirfor_s = "object";
-    dirmodetargetfor_s = "OBJECT";
-    dirmodetargetpos_s = "0 0 0";
-    dirangleheadvar = 180;
-    dirangleelevvar = 180;
-    velavg = 9.99999975e-006;
-    lsppartavg = 800;
-    flygravity_s = "0 0 0";
-    visname_s = "DECAL_TRANSFORM.TGA";
-    visorientation_s = "VELO";
-    vistexisquadpoly = true;
-    vistexanifps = 18;
-    vistexaniislooping = true;
-    vistexcolorstart_s = "200 100 100";
-    vistexcolorend_s = "100 0 255";
-    vissizestart_s = "10 10";
-    vissizeendscale = 4;
-    visalphafunc_s = "ADD";
-    visalphastart = 255;
-    useemittersfor = true;
-};
-
-INSTANCE MFX_Summon_ORIGIN (C_PARTICLEFX)
-{
-    ppsvalue = 500;
-    ppsscalekeys_s = "1";
-    ppsfps = 2;
-    shptype_s = "CIRCLE";
-    shpfor_s = "object";
-    shpoffsetvec_s = "0 0 0";
-    shpdistribtype_s = "RAND";
-    shpisvolume = true;
-    shpdim_s = "300";
-    shpscalekeys_s = "1";
-    shpscaleislooping = true;
-    shpscaleissmooth = true;
-    shpscalefps = 5;
-    dirmode_s = "RAND";
-    dirfor_s = "object";
-    dirmodetargetfor_s = "OBJECT";
-    dirmodetargetpos_s = "0 0 0";
-    dirangleheadvar = 180;
-    dirangleelevvar = 180;
-    velavg = 9.99999975e-006;
-    lsppartavg = 500;
-    flygravity_s = "0 0 0";
-    visname_s = "DECAL_TRANSFORM.TGA";
-    visorientation_s = "VELO";
-    vistexanifps = 18;
-    vistexaniislooping = true;
-    vistexcolorstart_s = "200 100 100";
-    vistexcolorend_s = "100 0 255";
-    vissizestart_s = "2 2";
-    vissizeendscale = 100;
-    visalphafunc_s = "ADD";
-    visalphastart = 255;
-};
-
-///******************************************************************************************
-INSTANCE MFX_SlowTime_INIT (C_PARTICLEFX)
+instance MFX_SlowTime_INIT (C_ParticleFx)
 {
     ppsvalue = 150;
     ppsscalekeys_s = "1";
@@ -302,7 +225,7 @@ INSTANCE MFX_SlowTime_INIT (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_SlowTime_ORIGIN (C_PARTICLEFX)
+instance MFX_SlowTime_ORIGIN (C_ParticleFx)
 {
     ppsvalue = 300;
     ppsscalekeys_s = "";
@@ -341,7 +264,162 @@ INSTANCE MFX_SlowTime_ORIGIN (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_DOMINATION_INIT (C_PARTICLEFX)
+instance MFX_NightToDay_INIT (C_ParticleFx)
+{
+    ppsvalue = 150;
+    ppsscalekeys_s = "1";
+    ppsislooping = true;
+    ppsissmooth = true;
+    ppsfps = 10;
+    shptype_s = "SPHERE";
+    shpfor_s = "object";
+    shpoffsetvec_s = "0 0 0";
+    shpdistribtype_s = "RAND";
+    shpdim_s = "15";
+    shpscalekeys_s = "1";
+    shpscaleislooping = true;
+    shpscaleissmooth = true;
+    shpscalefps = 2;
+    dirmode_s = "RAND";
+    dirfor_s = "object";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    dirangleheadvar = 180;
+    dirangleelevvar = 180;
+    velavg = 0.0001;
+    lsppartavg = 200;
+    flygravity_s = "0 0 0";
+    flycolldet_b = 0;
+    visname_s = "DECAL_TRANSFORM.TGA";
+    visorientation_s = "VELO";
+    vistexisquadpoly = true;
+    vistexanifps = 18;
+    vistexaniislooping = true;
+    vistexcolorstart_s = "255 255 255";
+    vistexcolorend_s = "255 255 255";
+    vissizestart_s = "3 3";
+    vissizeendscale = 10;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+};
+
+instance MFX_NightToDay_ORIGIN (C_ParticleFx)
+{
+    ppsvalue = 300;
+    ppsscalekeys_s = "";
+    ppsfps = 10;
+    shptype_s = "POINT";
+    shpfor_s = "object";
+    shpoffsetvec_s = "0 0 0";
+    shpdistribtype_s = "RAND";
+    shpdim_s = "15";
+    shpscalekeys_s = "1";
+    shpscaleislooping = true;
+    shpscaleissmooth = true;
+    shpscalefps = 2;
+    dirmode_s = "RAND";
+    dirfor_s = "object";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    dirangleheadvar = 180;
+    dirangleelevvar = 180;
+    velavg = 0.1;
+    lsppartavg = 2000;
+    flygravity_s = "0 0 0";
+    flycolldet_b = 0;
+    visname_s = "DECAL_TRANSFORM.TGA";
+    visorientation_s = "NONE";
+    vistexisquadpoly = true;
+    vistexanifps = 18;
+    vistexaniislooping = true;
+    vistexcolorstart_s = "255 255 255";
+    vistexcolorend_s = "255 255 255";
+    vissizestart_s = "3 3";
+    vissizeendscale = 0.01;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+    visalphaend = 255;
+};
+
+///******************************************************************************************
+instance MFX_Summon_INIT (C_ParticleFx)
+{
+    ppsvalue = 100;
+    ppsscalekeys_s = "1";
+    ppsislooping = true;
+    ppsissmooth = true;
+    ppsfps = 1;
+    shptype_s = "SPHERE";
+    shpfor_s = "object";
+    shpoffsetvec_s = "0 0 0";
+    shpdistribtype_s = "RAND";
+    shpisvolume = true;
+    shpdim_s = "20";
+    shpscalekeys_s = "1";
+    shpscaleislooping = true;
+    shpscaleissmooth = true;
+    shpscalefps = 2;
+    dirmode_s = "RAND";
+    dirfor_s = "object";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    dirangleheadvar = 180;
+    dirangleelevvar = 180;
+    velavg = 9.99999975e-006;
+    lsppartavg = 800;
+    flygravity_s = "0 0 0";
+    visname_s = "DECAL_EARTHQUAKE.TGA";
+    visorientation_s = "VELO";
+    vistexisquadpoly = true;
+    vistexanifps = 18;
+    vistexaniislooping = true;
+    vistexcolorstart_s = "200 150 150";
+    vistexcolorend_s = "200 100 255";
+    vissizestart_s = "10 10";
+    vissizeendscale = 4;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+    useemittersfor = true;
+};
+
+instance MFX_Summon_ORIGIN (C_ParticleFx)
+{
+    ppsvalue = 500;
+    ppsscalekeys_s = "1";
+    ppsfps = 2;
+    shptype_s = "CIRCLE";
+    shpfor_s = "object";
+    shpoffsetvec_s = "0 0 0";
+    shpdistribtype_s = "RAND";
+    shpisvolume = true;
+    shpdim_s = "300";
+    shpscalekeys_s = "1";
+    shpscaleislooping = true;
+    shpscaleissmooth = true;
+    shpscalefps = 5;
+    dirmode_s = "RAND";
+    dirfor_s = "object";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    dirangleheadvar = 180;
+    dirangleelevvar = 180;
+    velavg = 9.99999975e-006;
+    lsppartavg = 500;
+    flygravity_s = "0 0 0";
+    visname_s = "DECAL_EARTHQUAKE.TGA";
+    visorientation_s = "VELO";
+    vistexanifps = 18;
+    vistexaniislooping = true;
+    vistexcolorstart_s = "200 150 150";
+    vistexcolorend_s = "200 100 255";
+    vissizestart_s = "2 2";
+    vissizeendscale = 100;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+};
+
+///******************************************************************************************
+instance MFX_DOMINATION_INIT (C_ParticleFx)
 {
     ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -381,7 +459,7 @@ INSTANCE MFX_DOMINATION_INIT (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_DOMINATION_ORIGIN (C_PARTICLEFX)
+instance MFX_DOMINATION_ORIGIN (C_ParticleFx)
 {
     ppsvalue = 400;
     ppsscalekeys_s = "";
@@ -419,7 +497,7 @@ INSTANCE MFX_DOMINATION_ORIGIN (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_DOMINATION_TARGET (C_PARTICLEFX)
+instance MFX_DOMINATION_TARGET (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsscalekeys_s = "1 1 1 1 1 1 1 0.7 0.4";
@@ -458,7 +536,7 @@ INSTANCE MFX_DOMINATION_TARGET (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_MysBolt_INIT (C_PARTICLEFX)
+instance MFX_MysBolt_INIT (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsscalekeys_s = "1";
@@ -499,7 +577,7 @@ INSTANCE MFX_MysBolt_INIT (C_PARTICLEFX)
     visalphastart = 180;
 };
 
-INSTANCE MFX_MysBolt_CAST (C_PARTICLEFX)
+instance MFX_MysBolt_CAST (C_ParticleFx)
 {
 	ppsvalue = 50;
     ppsscalekeys_s = "5";
@@ -541,7 +619,7 @@ INSTANCE MFX_MysBolt_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_MysBolt_COLLIDE (C_PARTICLEFX)
+instance MFX_MysBolt_COLLIDE (C_ParticleFx)
 {
     ppsvalue = 100;
     ppsscalekeys_s = "1";
@@ -580,7 +658,7 @@ INSTANCE MFX_MysBolt_COLLIDE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_MysGhost_INIT (C_PARTICLEFX)
+instance MFX_MysGhost_INIT (C_ParticleFx)
 {
 	ppsvalue = 60;
 	ppsscalekeys_s = "1";
@@ -616,7 +694,7 @@ INSTANCE MFX_MysGhost_INIT (C_PARTICLEFX)
 	visalphastart = 255;
 };
 
-INSTANCE MFX_MysGhost_COLLIDE (C_PARTICLEFX)
+instance MFX_MysGhost_COLLIDE (C_ParticleFx)
 {
 	ppsvalue = 200;
 	ppsscalekeys_s = "1";
@@ -654,7 +732,7 @@ INSTANCE MFX_MysGhost_COLLIDE (C_PARTICLEFX)
 	visalphastart = 255;
 };
 
-INSTANCE MFX_MysGhost_GLOW (ITEM_GLIMMER_PROTO)
+instance MFX_MysGhost_GLOW (ITEM_GLIMMER_PROTO)
 {
 	ppsvalue			= 250;
 	ppsscalekeys_s		= "1.0";
@@ -690,7 +768,7 @@ INSTANCE MFX_MysGhost_GLOW (ITEM_GLIMMER_PROTO)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_MysRoot_INIT (C_PARTICLEFX)
+instance MFX_MysRoot_INIT (C_ParticleFx)
 {
     ppsvalue = 15;
     ppsscalekeys_s = "1";
@@ -731,7 +809,7 @@ INSTANCE MFX_MysRoot_INIT (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_MysRoot_CAST (C_PARTICLEFX)
+instance MFX_MysRoot_CAST (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "1";
@@ -770,7 +848,7 @@ INSTANCE MFX_MysRoot_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_MysRoot_SPREAD (C_PARTICLEFX)
+instance MFX_MysRoot_SPREAD (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1";
@@ -806,7 +884,7 @@ INSTANCE MFX_MysRoot_SPREAD (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_MysRoot_TARGET (C_PARTICLEFX)
+instance MFX_MysRoot_TARGET (C_ParticleFx)
 {
 	ppsvalue = 40;
 	ppsscalekeys_s = "1";
@@ -847,7 +925,7 @@ INSTANCE MFX_MysRoot_TARGET (C_PARTICLEFX)
 	visalphaend = 255;
 };
 
-INSTANCE MFX_MysRoot_TARGETEND (C_PARTICLEFX)
+instance MFX_MysRoot_TARGETEND (C_ParticleFx)
 {
 	ppsvalue = 400;
 	ppsscalekeys_s = "1";
@@ -892,7 +970,7 @@ INSTANCE MFX_MysRoot_TARGETEND (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_MysDomination_INIT (C_PARTICLEFX)
+instance MFX_MysDomination_INIT (C_ParticleFx)
 {
 	ppsvalue = 600;
 	ppsscalekeys_s = "1";
@@ -932,7 +1010,7 @@ INSTANCE MFX_MysDomination_INIT (C_PARTICLEFX)
 	visalphaend = 255;
 };
 
-INSTANCE MFX_MysDomination_CAST (C_PARTICLEFX)
+instance MFX_MysDomination_CAST (C_ParticleFx)
 {
     ppsvalue = 60;
     ppsscalekeys_s = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40";
@@ -969,7 +1047,7 @@ INSTANCE MFX_MysDomination_CAST (C_PARTICLEFX)
     trltexture_s = "LIGHTNING_BIG_A0.TGA";
 };
 
-INSTANCE MFX_MysDomination_COLLIDE (C_PARTICLEFX)
+instance MFX_MysDomination_COLLIDE (C_ParticleFx)
 {
     ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -1014,7 +1092,7 @@ INSTANCE MFX_MysDomination_COLLIDE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_MysEchoes_INIT (C_PARTICLEFX)
+instance MFX_MysEchoes_INIT (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsscalekeys_s = "1";
@@ -1052,7 +1130,7 @@ INSTANCE MFX_MysEchoes_INIT (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_MysEchoes_LEFTHAND (C_PARTICLEFX)
+instance MFX_MysEchoes_LEFTHAND (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1";
@@ -1089,7 +1167,7 @@ INSTANCE MFX_MysEchoes_LEFTHAND (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_MysEchoes_RIGHTHAND (C_PARTICLEFX)
+instance MFX_MysEchoes_RIGHTHAND (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1";
@@ -1126,7 +1204,7 @@ INSTANCE MFX_MysEchoes_RIGHTHAND (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_MysEchoes_INIT_GLOW (C_PARTICLEFX)
+instance MFX_MysEchoes_INIT_GLOW (C_ParticleFx)
 {
     ppsvalue = 100;
     ppsscalekeys_s = "1";
@@ -1167,7 +1245,7 @@ INSTANCE MFX_MysEchoes_INIT_GLOW (C_PARTICLEFX)
     trlwidth = 1;
 };
 
-INSTANCE MFX_MysEchoes_EXPLOSION (C_PARTICLEFX)
+instance MFX_MysEchoes_EXPLOSION (C_ParticleFx)
 {
     ppsvalue = 1000;
     ppsscalekeys_s = "1";
@@ -1204,7 +1282,7 @@ INSTANCE MFX_MysEchoes_EXPLOSION (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_MysEchoes_CAST (C_PARTICLEFX)
+instance MFX_MysEchoes_CAST (C_ParticleFx)
 {
     ppsvalue = 60;
     ppsscalekeys_s = "1 1 2 2 2 3 3 4 4 5";
@@ -1242,7 +1320,7 @@ INSTANCE MFX_MysEchoes_CAST (C_PARTICLEFX)
     trltexture_s = "LIGHTNING_BIG_A0.TGA";
 };
 
-INSTANCE MFX_MysEchoes_TARGET (C_PARTICLEFX)
+instance MFX_MysEchoes_TARGET (C_ParticleFx)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "3 3 3 2 2 1 1";
@@ -1282,7 +1360,7 @@ INSTANCE MFX_MysEchoes_TARGET (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_GeoStone_INIT (C_PARTICLEFX)
+instance MFX_GeoStone_INIT (C_ParticleFx)
 {
 	ppsvalue = 20;
 	ppsscalekeys_s = "1";
@@ -1315,7 +1393,7 @@ INSTANCE MFX_GeoStone_INIT (C_PARTICLEFX)
 	visalphaend = 255;
 };
 
-INSTANCE MFX_GeoStone_CAST (C_PARTICLEFX)
+instance MFX_GeoStone_CAST (C_ParticleFx)
 {
 	ppsvalue = 200;
 	ppsscalekeys_s = "1";
@@ -1347,7 +1425,7 @@ INSTANCE MFX_GeoStone_CAST (C_PARTICLEFX)
 	visalphastart = 150;
 };
 
-INSTANCE MFX_GeoStone_COLLIDE (C_PARTICLEFX)
+instance MFX_GeoStone_COLLIDE (C_ParticleFx)
 {
 	ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -1386,7 +1464,7 @@ INSTANCE MFX_GeoStone_COLLIDE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_GeoSkin_INIT (C_PARTICLEFX)
+instance MFX_GeoSkin_INIT (C_ParticleFx)
 {
 	ppsvalue = 60;
 	ppsscalekeys_s = "1";
@@ -1422,7 +1500,7 @@ INSTANCE MFX_GeoSkin_INIT (C_PARTICLEFX)
 	visalphastart = 255;
 };
 
-INSTANCE MFX_GeoSkin_COLLIDE (C_PARTICLEFX)
+instance MFX_GeoSkin_COLLIDE (C_ParticleFx)
 {
 	ppsvalue = 200;
 	ppsscalekeys_s = "1";
@@ -1461,7 +1539,7 @@ INSTANCE MFX_GeoSkin_COLLIDE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_GeoElevate_INIT (C_PARTICLEFX)
+instance MFX_GeoElevate_INIT (C_ParticleFx)
 {
 	ppsvalue = 10;
 	ppsscalekeys_s = "1";
@@ -1489,7 +1567,7 @@ INSTANCE MFX_GeoElevate_INIT (C_PARTICLEFX)
 	visalphastart = 255;
 };
 
-INSTANCE MFX_GeoElevate_INVEST (C_PARTICLEFX)
+instance MFX_GeoElevate_INVEST (C_ParticleFx)
 {
 	ppsvalue = 500;
 	ppsscalekeys_s = "1";
@@ -1518,7 +1596,7 @@ INSTANCE MFX_GeoElevate_INVEST (C_PARTICLEFX)
 	visalphastart = 255;
 };
 
-INSTANCE MFX_GeoElevate_CAST (C_PARTICLEFX)
+instance MFX_GeoElevate_CAST (C_ParticleFx)
 {
 	ppsvalue = 1000;
 	ppsscalekeys_s = "1";
@@ -1548,7 +1626,7 @@ INSTANCE MFX_GeoElevate_CAST (C_PARTICLEFX)
 
 /// ELEVATOR EFFEKTE ///
 
-INSTANCE ELEVATOR_DUST (C_PARTICLEFX)
+instance ELEVATOR_DUST (C_ParticleFx)
 {
 	ppsvalue = 75;
 	ppsscalekeys_s = "1";
@@ -1579,7 +1657,7 @@ INSTANCE ELEVATOR_DUST (C_PARTICLEFX)
 	m_bIsAmbientPFX = true;
 };
 
-INSTANCE ELEVATOR_STONES (C_PARTICLEFX)
+instance ELEVATOR_STONES (C_ParticleFx)
 {
 	ppsvalue = 200;
 	ppsscalekeys_s = "1";
@@ -1612,7 +1690,7 @@ INSTANCE ELEVATOR_STONES (C_PARTICLEFX)
 	m_bIsAmbientPFX = true;
 };
 
-INSTANCE ELEVATOR_STONESFALL (C_PARTICLEFX)
+instance ELEVATOR_STONESFALL (C_ParticleFx)
 {
 	ppsvalue = 400;
 	ppsscalekeys_s = "1";
@@ -1641,7 +1719,7 @@ INSTANCE ELEVATOR_STONESFALL (C_PARTICLEFX)
 	m_bIsAmbientPFX = true;
 };
 
-INSTANCE ELEVATOR_DUST_FALLING (C_PARTICLEFX)
+instance ELEVATOR_DUST_FALLING (C_ParticleFx)
 {
 	ppsvalue = 75;
 	ppsscalekeys_s = "1";
@@ -1673,7 +1751,7 @@ INSTANCE ELEVATOR_DUST_FALLING (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_GeoGolem_INIT (C_PARTICLEFX)
+instance MFX_GeoGolem_INIT (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "1";
@@ -1706,7 +1784,7 @@ INSTANCE MFX_GeoGolem_INIT (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_GeoGolem_CAST (C_PARTICLEFX)
+instance MFX_GeoGolem_CAST (C_ParticleFx)
 {
 	ppsvalue = 50;
     ppsscalekeys_s = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40";
@@ -1737,7 +1815,7 @@ INSTANCE MFX_GeoGolem_CAST (C_PARTICLEFX)
 
 ///******************************************************************************************
 /*
-INSTANCE MFX_GeoQuake_INIT (C_PARTICLEFX)
+instance MFX_GeoQuake_INIT (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "1";
@@ -1770,7 +1848,7 @@ INSTANCE MFX_GeoQuake_INIT (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_GeoQuake_CAST (C_PARTICLEFX)
+instance MFX_GeoQuake_CAST (C_ParticleFx)
 {
     ppsvalue = 50;
     ppsscalekeys_s = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40";
@@ -1800,7 +1878,7 @@ INSTANCE MFX_GeoQuake_CAST (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_SkeletonSpell_INIT (C_PARTICLEFX)
+instance MFX_SkeletonSpell_INIT (C_ParticleFx)
 {
     ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -1844,7 +1922,7 @@ INSTANCE MFX_SkeletonSpell_INIT (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_SkeletonSpell_CAST (C_PARTICLEFX)
+instance MFX_SkeletonSpell_CAST (C_ParticleFx)
 {
     ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -1877,7 +1955,7 @@ INSTANCE MFX_SkeletonSpell_CAST (C_PARTICLEFX)
     visalphaend = 255;
 };
 
-INSTANCE MFX_SkeletonSpell_COLLIDE (C_PARTICLEFX)
+instance MFX_SkeletonSpell_COLLIDE (C_ParticleFx)
 {
     ppsvalue = 200;
     ppsscalekeys_s = "1";
@@ -1915,7 +1993,7 @@ INSTANCE MFX_SkeletonSpell_COLLIDE (C_PARTICLEFX)
     visalphastart = 255;
 };
 */
-INSTANCE MFX_GeoQuake_INIT (C_PARTICLEFX)
+instance MFX_GeoQuake_INIT (C_ParticleFx)
 {
 	ppsvalue = 30;
 	ppsscalekeys_s = "1 10 1";
@@ -1947,7 +2025,7 @@ INSTANCE MFX_GeoQuake_INIT (C_PARTICLEFX)
 	trlwidth = 1;
 };
 
-INSTANCE MFX_GeoQuake_BUILDUP (C_PARTICLEFX)
+instance MFX_GeoQuake_BUILDUP (C_ParticleFx)
 {
 	ppsvalue = 50;
 	ppsscalekeys_s = "10 10 10 10";
@@ -1983,7 +2061,7 @@ INSTANCE MFX_GeoQuake_BUILDUP (C_PARTICLEFX)
 	trlwidth = 2;
 };
 
-INSTANCE MFX_GeoQuake_CAST (C_PARTICLEFX)
+instance MFX_GeoQuake_CAST (C_ParticleFx)
 {
 	ppsvalue = 100;
 	ppsscalekeys_s = "1 2 3 4 1";
@@ -2015,7 +2093,7 @@ INSTANCE MFX_GeoQuake_CAST (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_OrcSpell_INIT (C_PARTICLEFX)
+instance MFX_OrcSpell_INIT (C_ParticleFx)
 {
     ppsvalue = 60;
     ppsscalekeys_s = "1";
@@ -2056,7 +2134,7 @@ INSTANCE MFX_OrcSpell_INIT (C_PARTICLEFX)
     visalphastart = 180;
 };
 
-INSTANCE MFX_OrcSpell_CAST (C_PARTICLEFX)
+instance MFX_OrcSpell_CAST (C_ParticleFx)
 {
     ppsvalue = 30;
     ppsscalekeys_s = "5";
@@ -2098,7 +2176,7 @@ INSTANCE MFX_OrcSpell_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_OrcSpell_COLLIDE (C_PARTICLEFX)
+instance MFX_OrcSpell_COLLIDE (C_ParticleFx)
 {
     ppsvalue = 30;
     ppsfps = 10;
@@ -2137,7 +2215,7 @@ INSTANCE MFX_OrcSpell_COLLIDE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_DementorSpell_INIT (C_PARTICLEFX)
+instance MFX_DementorSpell_INIT (C_ParticleFx)
 {
     ppsvalue = 80;
     ppsscalekeys_s = "1";
@@ -2173,7 +2251,7 @@ INSTANCE MFX_DementorSpell_INIT (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_DementorSpell_CAST (C_PARTICLEFX)
+instance MFX_DementorSpell_CAST (C_ParticleFx)
 {
 	ppsvalue = 400;
     ppsscalekeys_s = "5";
@@ -2213,7 +2291,7 @@ INSTANCE MFX_DementorSpell_CAST (C_PARTICLEFX)
     visalphastart = 180;
 };
 
-INSTANCE MFX_DementorSpell_COLLIDE1 (C_PARTICLEFX)
+instance MFX_DementorSpell_COLLIDE1 (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsfps = 10;
@@ -2251,7 +2329,7 @@ INSTANCE MFX_DementorSpell_COLLIDE1 (C_PARTICLEFX)
     visalphastart = 130;
 };
 
-INSTANCE MFX_DementorSpell_COLLIDE_WALLGLOW (C_PARTICLEFX)
+instance MFX_DementorSpell_COLLIDE_WALLGLOW (C_ParticleFx)
 {
     ppsvalue = 3;
     ppsscalekeys_s = "5 5 4 4 3 3 2 2 1 1";
@@ -2288,7 +2366,7 @@ INSTANCE MFX_DementorSpell_COLLIDE_WALLGLOW (C_PARTICLEFX)
     visalphafunc_s = "ADD";
 };
 
-INSTANCE MFX_DementorSpell_FIRECLOUD (C_PARTICLEFX)
+instance MFX_DementorSpell_FIRECLOUD (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "5";
@@ -2330,7 +2408,7 @@ INSTANCE MFX_DementorSpell_FIRECLOUD (C_PARTICLEFX)
     //useemittersfor = true;
 };
 
-INSTANCE MFX_DementorSpell_PFXTRAIL (C_PARTICLEFX)
+instance MFX_DementorSpell_PFXTRAIL (C_ParticleFx)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "5";
@@ -2369,7 +2447,7 @@ INSTANCE MFX_DementorSpell_PFXTRAIL (C_PARTICLEFX)
     //trltexture_s = "FIRETRAIL_WHITE.TGA";
 };
 
-INSTANCE MFX_DementorSpell_HUMANBURN (C_PARTICLEFX)
+instance MFX_DementorSpell_HUMANBURN (C_ParticleFx)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
@@ -2406,7 +2484,7 @@ INSTANCE MFX_DementorSpell_HUMANBURN (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_DemasterSpell_INIT (C_PARTICLEFX)
+instance MFX_DemasterSpell_INIT (C_ParticleFx)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "1";
@@ -2447,7 +2525,7 @@ INSTANCE MFX_DemasterSpell_INIT (C_PARTICLEFX)
     useemittersfor = true;
 };
 
-INSTANCE MFX_DemasterSpell_CAST (C_PARTICLEFX)
+instance MFX_DemasterSpell_CAST (C_ParticleFx)
 {
     ppsvalue = 100;
     ppsscalekeys_s = "1";
@@ -2487,7 +2565,7 @@ INSTANCE MFX_DemasterSpell_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_DemasterSpell_TARGET (C_PARTICLEFX)
+instance MFX_DemasterSpell_TARGET (C_ParticleFx)
 {
     ppsvalue = 6;
     ppsscalekeys_s = "10 9 8 7 6 5 4 3 2 1";

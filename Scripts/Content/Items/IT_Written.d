@@ -155,7 +155,7 @@ var int Bonus_ItWr_Book_Golem;
 ///******************************************************************************************
 instance ItWr_Book_Fight1H (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_04.3ds";
 	on_state[0]		=	Use_Book_Fight1H;
 	
@@ -192,7 +192,7 @@ func void Use_Book_Fight1H()
 ///******************************************************************************************
 instance ItWr_Book_Fight2H (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_03.3ds";
 	on_state[0]		=	Use_Book_Fight2H;
 	
@@ -231,7 +231,7 @@ func void Use_Book_Fight2H()
 ///******************************************************************************************
 instance ItWr_Book_StarPower (ItemPR_Book) 
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_StarPower;
 	
@@ -268,7 +268,7 @@ func void Use_Book_StarPower()
 ///******************************************************************************************
 instance ItWr_Book_GodsGift (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_01.3ds";
 	on_state[0]		=	Use_Book_GodsGift;
 	
@@ -310,7 +310,7 @@ func void Use_Book_GodsGift()
 ///******************************************************************************************
 instance ItWr_Book_SecretsOfMagic (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_SecretsOfMagic;
 	
@@ -352,7 +352,7 @@ func void Use_Book_SecretsOfMagic()
 ///******************************************************************************************
 instance ItWr_Book_PowerfulArt (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_03.3ds";
 	on_state[0]		=	Use_Book_PowerfulArt;
 	
@@ -394,7 +394,7 @@ func void Use_Book_PowerfulArt()
 ///******************************************************************************************
 instance ItWr_Book_Elementare (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_04.3ds";
 	on_state[0]		=	Use_Book_Elementare;
 	
@@ -438,7 +438,7 @@ func void Use_Book_Elementare()
 ///******************************************************************************************
 instance ItWr_Book_RealPower (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_05.3ds";
 	on_state[0]		=	Use_Book_RealPower;
 	
@@ -482,7 +482,7 @@ func void Use_Book_RealPower()
 ///******************************************************************************************
 instance ItWr_Book_MagicOre (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_MagicOre;
 	
@@ -517,7 +517,7 @@ func void Use_Book_MagicOre()
 ///******************************************************************************************
 instance ItWr_Book_Varant1 (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_04.3ds";
 	on_state[0]		=	Use_Book_Varant1;
 	
@@ -553,7 +553,7 @@ func void Use_Book_Varant1()
 ///******************************************************************************************
 instance ItWr_Book_Varant2 (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_05.3ds";
 	on_state[0]		=	Use_Book_Varant2;
 	
@@ -587,7 +587,7 @@ func void Use_Book_Varant2()
 ///******************************************************************************************
 instance ItWr_Book_MyrthanianPoetry (ItemPR_Book)
 {
-	value			=	100;
+	value			=	200;
 	visual 			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_MyrthanianPoetry;
 	
@@ -640,7 +640,7 @@ func void Use_Book_MyrthanianPoetry()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom1 (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_01.3ds";
 	on_state[0]		=	Use_Book_GodsWisdom1;
 	
@@ -678,7 +678,7 @@ func void Use_Book_GodsWisdom1()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom2 (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_GodsWisdom2;
 	
@@ -712,7 +712,7 @@ func void Use_Book_GodsWisdom2()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom3 (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_03.3ds";
 	on_state[0]		=	Use_Book_GodsWisdom3;
 	
@@ -746,7 +746,7 @@ func void Use_Book_GodsWisdom3()
 ///******************************************************************************************
 instance ItWr_Book_Hunting (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual			=	"ItWr_Book_02_02.3ds";
 	on_state[0]		=	Use_Book_Hunting;
 	
@@ -779,7 +779,7 @@ func void Use_Book_Hunting()
 ///******************************************************************************************
 instance ItWr_Book_Fight (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_03.3ds";
 	on_state[0]		=	Use_Book_Fight;
 	
@@ -822,7 +822,7 @@ func void Use_Book_Fight()
 ///******************************************************************************************
 instance ItWr_Book_Astronomy (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_05.3ds";
 	on_state[0]		=	Use_Book_Astronomy;
 	
@@ -859,7 +859,7 @@ func void Use_Book_Astronomy()
 ///******************************************************************************************
 instance ItWr_Book_Focus (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_05.3ds";
 	on_state[0]		=	Use_Book_Focus;
 	
@@ -900,7 +900,7 @@ func void Use_Book_Focus()
 ///******************************************************************************************
 instance ItWr_Book_Golem (ItemPR_Book)
 {
-	value 			=	100;
+	value 			=	200;
 	visual 			=	"ItWr_Book_02_05.3ds";
 	on_state[0]		=	Use_Book_Golem;
 	

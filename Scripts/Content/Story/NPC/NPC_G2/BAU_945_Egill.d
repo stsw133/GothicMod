@@ -23,7 +23,7 @@ instance BAU_945_Egill (Npc_Default)
 	CreateInvItem (self, ItPo_Health_02);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Pony", Face_Normal09, 0, ITAR_Bau_01);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Pony", Face_Normal09, 0, ITAR_Bau_01);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

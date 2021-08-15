@@ -31,7 +31,7 @@ instance WzA_17215_Damazij (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Normal68, Teeth_Gold, ITAR_NA_SAT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal68, Teeth_Gold, ITAR_NA_SAT);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

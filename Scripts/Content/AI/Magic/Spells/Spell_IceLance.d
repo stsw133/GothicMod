@@ -6,10 +6,10 @@ const int SPL_Cost_IceLance				=	20;
 const int SPL_Damage_IceLance			=	100;
 
 ///******************************************************************************************
-instance Spell_Icelance (C_Spell_Proto)
+instance Spell_IceLance (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_Icelance;
+	damage_per_level					=	SPL_Damage_IceLance;
 	damageType							=	DAM_MAGIC;
 };
 
@@ -19,11 +19,8 @@ func int Spell_Logic_IceLance (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_IceLance)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_IceLance()

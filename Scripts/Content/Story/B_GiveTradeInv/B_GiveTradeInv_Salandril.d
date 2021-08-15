@@ -15,8 +15,8 @@ func void B_GiveTradeInv_Salandril (var C_NPC slf)
 		CreateInvItems (slf, ItPo_Health_03, 2);
 		CreateInvItems (slf, ItPl_Speed_Herb_01, 2);
 		
-		CreateInvItems (slf, ItSc_FireRain, 1);
-		CreateInvItems (slf, ItSc_ThunderStorm, 1);
+		CreateInvItems (slf, ItSc_PyrFirerain, 1);
+		CreateInvItems (slf, ItSc_EleThunderstorm, 1);
 		
 		CreateInvItems (slf,ItAm_ProtFire_01, 1);
 		

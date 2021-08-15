@@ -2,7 +2,7 @@
 ///	SPL_Zap
 ///******************************************************************************************
 
-const int SPL_Cost_Zap					=	15;
+const int SPL_Cost_Zap					=	10;	//15
 const int SPL_Damage_Zap				=	30;
 
 ///******************************************************************************************
@@ -19,11 +19,8 @@ func int Spell_Logic_Zap (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Zap)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_Zap (var int spellLevel)

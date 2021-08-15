@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	Chaos Mages Spells
 ///******************************************************************************************
-INSTANCE MFX_cB_Fireball_INIT (C_PARTICLEFX)
+instance MFX_cB_Fireball_INIT (C_PARTICLEFX)
 {
     ppsvalue = 80.000000000;
     ppsscalekeys_s = "1";
@@ -37,7 +37,7 @@ INSTANCE MFX_cB_Fireball_INIT (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-PROTOTYPE MFX_cB_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
+prototype MFX_cB_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
 {
     ppsvalue = 40.000000000;
     ppsfps = 10.000000000;
@@ -75,7 +75,7 @@ PROTOTYPE MFX_cB_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-INSTANCE MFX_cB_Fireball_COLLIDE1 (MFX_cB_Fireball_COLLIDE_PROTO)
+instance MFX_cB_Fireball_COLLIDE1 (MFX_cB_Fireball_COLLIDE_PROTO)
 {
     ppsvalue = 10.000000000;
     lsppartavg = 1400.000000000;
@@ -83,7 +83,7 @@ INSTANCE MFX_cB_Fireball_COLLIDE1 (MFX_cB_Fireball_COLLIDE_PROTO)
     visalphastart = 130.000000000;
 };
 
-INSTANCE MFX_cB_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
+instance MFX_cB_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "5 5 4 4 3 3 2 2 1 1";
@@ -120,7 +120,7 @@ INSTANCE MFX_cB_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
     visalphafunc_s = "ADD";
 };
 
-INSTANCE MFX_cB_Fireball_CAST (C_PARTICLEFX)
+instance MFX_cB_Fireball_CAST (C_PARTICLEFX)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "5";
@@ -158,7 +158,7 @@ INSTANCE MFX_cB_Fireball_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cB_Fireball_PFXTRAIL (C_PARTICLEFX)
+instance MFX_cB_Fireball_PFXTRAIL (C_PARTICLEFX)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "5";
@@ -196,7 +196,7 @@ INSTANCE MFX_cB_Fireball_PFXTRAIL (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cB_Fireball_HUMANBURN (C_PARTICLEFX)
+instance MFX_cB_Fireball_HUMANBURN (C_PARTICLEFX)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
@@ -232,7 +232,7 @@ INSTANCE MFX_cB_Fireball_HUMANBURN (C_PARTICLEFX)
     visalphaend = 100;
 };
 
-INSTANCE MFX_cB_Fireball_HUMANSMOKE (C_PARTICLEFX)
+instance MFX_cB_Fireball_HUMANSMOKE (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "1 2 3 4 3 2 2 2 2 1 1 1 1 1 1";
@@ -270,7 +270,7 @@ INSTANCE MFX_cB_Fireball_HUMANSMOKE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_cR_Fireball_INIT (C_PARTICLEFX)
+instance MFX_cR_Fireball_INIT (C_PARTICLEFX)
 {
     ppsvalue = 80.000000000;
     ppsscalekeys_s = "1";
@@ -306,7 +306,7 @@ INSTANCE MFX_cR_Fireball_INIT (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-PROTOTYPE MFX_cR_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
+prototype MFX_cR_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
 {
     ppsvalue = 40.000000000;
     ppsfps = 10.000000000;
@@ -344,7 +344,7 @@ PROTOTYPE MFX_cR_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-INSTANCE MFX_cR_Fireball_COLLIDE1 (MFX_cR_Fireball_COLLIDE_PROTO)
+instance MFX_cR_Fireball_COLLIDE1 (MFX_cR_Fireball_COLLIDE_PROTO)
 {
     ppsvalue = 10.000000000;
     lsppartavg = 1400.000000000;
@@ -352,7 +352,7 @@ INSTANCE MFX_cR_Fireball_COLLIDE1 (MFX_cR_Fireball_COLLIDE_PROTO)
     visalphastart = 130.000000000;
 };
 
-INSTANCE MFX_cR_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
+instance MFX_cR_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "5 5 4 4 3 3 2 2 1 1";
@@ -389,7 +389,7 @@ INSTANCE MFX_cR_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
     visalphafunc_s = "ADD";
 };
 
-INSTANCE MFX_cR_Fireball_CAST (C_PARTICLEFX)
+instance MFX_cR_Fireball_CAST (C_PARTICLEFX)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "5";
@@ -427,7 +427,7 @@ INSTANCE MFX_cR_Fireball_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cR_Fireball_PFXTRAIL (C_PARTICLEFX)
+instance MFX_cR_Fireball_PFXTRAIL (C_PARTICLEFX)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "5";
@@ -465,7 +465,7 @@ INSTANCE MFX_cR_Fireball_PFXTRAIL (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cR_Fireball_HUMANBURN (C_PARTICLEFX)
+instance MFX_cR_Fireball_HUMANBURN (C_PARTICLEFX)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
@@ -501,7 +501,7 @@ INSTANCE MFX_cR_Fireball_HUMANBURN (C_PARTICLEFX)
     visalphaend = 100;
 };
 
-INSTANCE MFX_cR_Fireball_HUMANSMOKE (C_PARTICLEFX)
+instance MFX_cR_Fireball_HUMANSMOKE (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "1 2 3 4 3 2 2 2 2 1 1 1 1 1 1";
@@ -539,7 +539,7 @@ INSTANCE MFX_cR_Fireball_HUMANSMOKE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_cG_Fireball_INIT (C_PARTICLEFX)
+instance MFX_cG_Fireball_INIT (C_PARTICLEFX)
 {
     ppsvalue = 80.000000000;
     ppsscalekeys_s = "1";
@@ -575,7 +575,7 @@ INSTANCE MFX_cG_Fireball_INIT (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-PROTOTYPE MFX_cG_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
+prototype MFX_cG_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
 {
     ppsvalue = 40.000000000;
     ppsfps = 10.000000000;
@@ -613,7 +613,7 @@ PROTOTYPE MFX_cG_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-INSTANCE MFX_cG_Fireball_COLLIDE1 (MFX_cG_Fireball_COLLIDE_PROTO)
+instance MFX_cG_Fireball_COLLIDE1 (MFX_cG_Fireball_COLLIDE_PROTO)
 {
     ppsvalue = 10.000000000;
     lsppartavg = 1400.000000000;
@@ -621,7 +621,7 @@ INSTANCE MFX_cG_Fireball_COLLIDE1 (MFX_cG_Fireball_COLLIDE_PROTO)
     visalphastart = 130.000000000;
 };
 
-INSTANCE MFX_cG_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
+instance MFX_cG_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "5 5 4 4 3 3 2 2 1 1";
@@ -658,7 +658,7 @@ INSTANCE MFX_cG_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
     visalphafunc_s = "ADD";
 };
 
-INSTANCE MFX_cG_Fireball_CAST (C_PARTICLEFX)
+instance MFX_cG_Fireball_CAST (C_PARTICLEFX)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "5";
@@ -696,7 +696,7 @@ INSTANCE MFX_cG_Fireball_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cG_Fireball_PFXTRAIL (C_PARTICLEFX)
+instance MFX_cG_Fireball_PFXTRAIL (C_PARTICLEFX)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "5";
@@ -734,7 +734,7 @@ INSTANCE MFX_cG_Fireball_PFXTRAIL (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cG_Fireball_HUMANBURN (C_PARTICLEFX)
+instance MFX_cG_Fireball_HUMANBURN (C_PARTICLEFX)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
@@ -770,7 +770,7 @@ INSTANCE MFX_cG_Fireball_HUMANBURN (C_PARTICLEFX)
     visalphaend = 100;
 };
 
-INSTANCE MFX_cG_Fireball_HUMANSMOKE (C_PARTICLEFX)
+instance MFX_cG_Fireball_HUMANSMOKE (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "1 2 3 4 3 2 2 2 2 1 1 1 1 1 1";
@@ -808,7 +808,7 @@ INSTANCE MFX_cG_Fireball_HUMANSMOKE (C_PARTICLEFX)
 };
 
 ///******************************************************************************************
-INSTANCE MFX_cY_Fireball_INIT (C_PARTICLEFX)
+instance MFX_cY_Fireball_INIT (C_PARTICLEFX)
 {
     ppsvalue = 80.000000000;
     ppsscalekeys_s = "1";
@@ -844,7 +844,7 @@ INSTANCE MFX_cY_Fireball_INIT (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-PROTOTYPE MFX_cY_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
+prototype MFX_cY_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
 {
     ppsvalue = 40.000000000;
     ppsfps = 10.000000000;
@@ -882,7 +882,7 @@ PROTOTYPE MFX_cY_Fireball_COLLIDE_PROTO (C_PARTICLEFX)
     visalphastart = 255.000000000;
 };
 
-INSTANCE MFX_cY_Fireball_COLLIDE1 (MFX_cY_Fireball_COLLIDE_PROTO)
+instance MFX_cY_Fireball_COLLIDE1 (MFX_cY_Fireball_COLLIDE_PROTO)
 {
     ppsvalue = 10.000000000;
     lsppartavg = 1400.000000000;
@@ -890,7 +890,7 @@ INSTANCE MFX_cY_Fireball_COLLIDE1 (MFX_cY_Fireball_COLLIDE_PROTO)
     visalphastart = 130.000000000;
 };
 
-INSTANCE MFX_cY_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
+instance MFX_cY_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "5 5 4 4 3 3 2 2 1 1";
@@ -927,7 +927,7 @@ INSTANCE MFX_cY_Fireball_COLLIDE_WALLGLOW (C_PARTICLEFX)
     visalphafunc_s = "ADD";
 };
 
-INSTANCE MFX_cY_Fireball_CAST (C_PARTICLEFX)
+instance MFX_cY_Fireball_CAST (C_PARTICLEFX)
 {
     ppsvalue = 20;
     ppsscalekeys_s = "5";
@@ -965,7 +965,7 @@ INSTANCE MFX_cY_Fireball_CAST (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cY_Fireball_PFXTRAIL (C_PARTICLEFX)
+instance MFX_cY_Fireball_PFXTRAIL (C_PARTICLEFX)
 {
     ppsvalue = 5;
     ppsscalekeys_s = "5";
@@ -1003,7 +1003,7 @@ INSTANCE MFX_cY_Fireball_PFXTRAIL (C_PARTICLEFX)
     visalphastart = 255;
 };
 
-INSTANCE MFX_cY_Fireball_HUMANBURN (C_PARTICLEFX)
+instance MFX_cY_Fireball_HUMANBURN (C_PARTICLEFX)
 {
     ppsvalue = 10;
     ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
@@ -1039,7 +1039,7 @@ INSTANCE MFX_cY_Fireball_HUMANBURN (C_PARTICLEFX)
     visalphaend = 100;
 };
 
-INSTANCE MFX_cY_Fireball_HUMANSMOKE (C_PARTICLEFX)
+instance MFX_cY_Fireball_HUMANSMOKE (C_PARTICLEFX)
 {
     ppsvalue = 3.000000000;
     ppsscalekeys_s = "1 2 3 4 3 2 2 2 2 1 1 1 1 1 1";

@@ -381,9 +381,9 @@ func void DIA_Ehnim_MoleRatFett_was_Fett_habenwill_ja ()
 		{
 			AI_Output			(self, other, "DIA_Ehnim_MoleRatFett_was_Fett_habenwill_ja_12_01"); //Proszê.
 			
-			if (Npc_HasItems (self,ItMi_Moleratlubric_MIS))
+			if (Npc_HasItems (self,ItAt_MoleratLubric))
 			{
-				B_GiveInvItems (self, other, ItMi_Moleratlubric_MIS, 1);
+				B_GiveInvItems (self, other, ItAt_MoleratLubric, 1);
 				
 				if (Npc_IsDead(Vino) == FALSE)
 					{

@@ -31,7 +31,7 @@ instance WzA_17070_Padaka (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_L, "Hum_Head_Bald", Face_Ratford, Teeth_Normal, ITAR_NA_JaJ);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Ratford, Teeth_Normal, ITAR_NA_JaJ);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

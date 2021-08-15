@@ -21,14 +21,14 @@ func void B_GiveTradeInv_Engor (var C_NPC slf)
 		CreateInvItems (slf, ItRi_ProtTotal_01, 1);
 		CreateInvItems (slf, ItAm_ProtFire_01, 1);
 		
-		CreateInvItems (slf, ItSc_Firebolt, 3);
-		CreateInvItems (slf, ItSc_Icebolt, 3);
-		CreateInvItems (slf, ItSc_MediumHeal, 2);
-		CreateInvItems (slf, ItSc_Firestorm, 3);
+		CreateInvItems (slf, ItSc_FireBolt, 3);
+		CreateInvItems (slf, ItSc_IceBolt, 3);
+		//CreateInvItems (slf, ItSc_MediumHeal, 2);
+		CreateInvItems (slf, ItSc_PyrFirestorm, 3);
 		CreateInvItems (slf, ItSc_LightningFlash, 1);
-		CreateInvItems (slf, ItSc_SumGol, 2);
-		CreateInvItems (slf, ItSc_Pyrokinesis, 1);
-		CreateInvItems (slf, ItSc_SumDemon, 1);
+		CreateInvItems (slf, ItSc_GeoGolem, 2);
+		CreateInvItems (slf, ItSc_PyrKinesis, 1);
+		CreateInvItems (slf, ItSc_NecDemon, 1);
 		
 		CreateInvItems (slf, ItRw_Crossbow_L_01, 1);
 		CreateInvItems (slf, ItRw_Crossbow_L_02, 1);

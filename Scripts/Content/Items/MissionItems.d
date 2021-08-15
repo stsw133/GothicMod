@@ -165,12 +165,6 @@ instance ItMi_MariasGoldPlate (ItemPR_Mission)
 	visual 			=	"ItMi_GoldPlate.3DS";
 	description		=	name;
 };
-instance ItMi_MoleratLubric_MIS (ItemPR_Mission)
-{
-	name 			=	"£ój kretoszczura";
-	visual 			=	"ItMi_MoleratLubric.3ds";
-	description		=	name;
-};
 instance ItMi_OldCoin (ItemPR_Mission)
 {
 	name 			=	"Stara moneta";

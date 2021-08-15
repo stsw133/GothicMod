@@ -19,7 +19,7 @@ instance PIR_1394_IE_YellowPfeiffer (Npc_Default)
 	CreateInvItem (self, ItMi_IEDudelGelb);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pfeiffer", Face_Pfeiffer, 0, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pfeiffer", Face_Pfeiffer, 0, -1);
 
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1394;

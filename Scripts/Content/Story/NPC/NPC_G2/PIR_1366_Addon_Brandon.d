@@ -25,7 +25,7 @@ instance PIR_1366_Addon_Brandon (Npc_Default)
 	CreateInvItem (self, itpo_Health_03);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Pony", Face_Normal06, 0, ITAR_PIR_M);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal06, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1.1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

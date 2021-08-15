@@ -29,20 +29,20 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItMi_RuneBlank, 2);
 		
 		CreateInvItems   (slf, ItSc_Light, 5);
-		CreateInvItems   (slf, ItSc_Firebolt, 5);
+		CreateInvItems   (slf, ItSc_FireBolt, 5);
 		CreateInvItems   (slf, ItSc_Zap, 5);
 		CreateInvItems   (slf, ItSc_LightHeal, 5);
-		CreateInvItems   (slf, ItSc_SumGobSkel, 2);
-		CreateInvItems   (slf, ItSc_Icelance, 5);
+		//CreateInvItems   (slf, ItSc_SumGobSkel, 2);
+		CreateInvItems   (slf, ItSc_IceLance, 5);
 		
 		CreateInvItems   (slf, ItSc_Whirlwind, 1);
-		CreateInvItems   (slf, ItSc_Icebolt, 3);
-		CreateInvItems   (slf, ItSc_InstantFireball, 3);
+		CreateInvItems   (slf, ItSc_IceBolt, 3);
+		CreateInvItems   (slf, ItSc_PyrFireball, 3);
 		CreateInvItems   (slf, ItSc_Whirlwind, 2);
 		CreateInvItems   (slf, ItSc_Geyser, 2);
-		CreateInvItems   (slf, ItSc_Thunderstorm, 2);
-		CreateInvItems   (slf, ItSc_WATERFIST, 1);
-		CreateInvItems   (slf, ItSc_SumWolf, 2);
+		CreateInvItems   (slf, ItSc_EleThunderstorm, 2);
+		CreateInvItems   (slf, ItSc_WaterFist, 1);
+		//CreateInvItems   (slf, ItSc_SumWolf, 2);
 		
 		Cronos_ADW_ItemsGiven_Chapter = 2;
 	};
@@ -66,21 +66,21 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Health_Addon_04, 2);
 		CreateInvItems   (slf, ItPo_Mana_Addon_04, 5);
 		
-		CreateInvItems   (slf, ItSc_MediumHeal,	5);
-		CreateInvItems   (slf, ItSc_Firestorm, 4);
-		CreateInvItems   (slf, ItSc_Thunderball, 2);
-		CreateInvItems   (slf, ItSc_SumSkel, 3);
+		//CreateInvItems   (slf, ItSc_MediumHeal,	5);
+		CreateInvItems   (slf, ItSc_PyrFirestorm, 4);
+		CreateInvItems   (slf, ItSc_ChargeZap, 2);
+		CreateInvItems   (slf, ItSc_NecSkeleton, 3);
 		CreateInvItems   (slf, ItSc_Fear, 2);
-		CreateInvItems   (slf, ItSc_IceCube, 3);
+		CreateInvItems   (slf, ItSc_EleFreeze, 3);
 		CreateInvItems	 (slf, ItMi_Flask, 10);
 		
-		CreateInvItems   (slf, ItSc_Icelance, 2);
+		CreateInvItems   (slf, ItSc_IceLance, 2);
 		CreateInvItems   (slf, ItSc_Whirlwind, 2);
 		
 		CreateInvItems   (slf, ItSc_Geyser, 2);
-		CreateInvItems   (slf, ItSc_Thunderstorm, 2);
+		CreateInvItems   (slf, ItSc_EleThunderstorm, 2);
 		
-		CreateInvItems   (slf, ItSc_WATERFIST, 1);
+		CreateInvItems   (slf, ItSc_WaterFist, 1);
 		
 		CreateInvItems   (slf, ItMi_RuneBlank, 2);
 		
@@ -112,20 +112,20 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_02, 30);
 		
 		CreateInvItems   (slf, ItSc_LightningFlash, 3);
-		CreateInvItems   (slf, ItSc_SumGol, 3);
-		CreateInvItems   (slf, ItSc_HarmUndead, 2);
+		CreateInvItems   (slf, ItSc_GeoGolem, 3);
+		//CreateInvItems   (slf, ItSc_HarmUndead, 2);
 		CreateInvItems   (slf, ItSc_ChargeFireball, 3);
 		
 		CreateInvItems   (slf, ItSc_TrfSnapper, 1);
 		CreateInvItems   (slf, ItSc_TrfWarg, 1);
 		
-		CreateInvItems   (slf, ItSc_Icelance, 3);
+		CreateInvItems   (slf, ItSc_IceLance, 3);
 		CreateInvItems   (slf, ItSc_Whirlwind, 3);
 		
 		CreateInvItems   (slf, ItSc_Geyser, 3);
-		CreateInvItems   (slf, ItSc_Thunderstorm, 3);
+		CreateInvItems   (slf, ItSc_EleThunderstorm, 3);
 		
-		CreateInvItems   (slf, ItSc_WATERFIST, 2);
+		CreateInvItems   (slf, ItSc_WaterFist, 2);
 		
 		Cronos_ADW_ItemsGiven_Chapter = 4;
 	};
@@ -147,18 +147,18 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_01, 50);
 		CreateInvItems   (slf, ItPo_Mana_02, 40);
 		
-		CreateInvItems   (slf, ItSc_Pyrokinesis, 5);
+		CreateInvItems   (slf, ItSc_PyrKinesis, 5);
 		CreateInvItems   (slf, ItSc_IceWave, 4);
-		CreateInvItems   (slf, ItSc_SumDemon, 2);
-		CreateInvItems   (slf, ItSc_FullHeal, 3);
+		CreateInvItems   (slf, ItSc_NecDemon, 2);
+		//CreateInvItems   (slf, ItSc_FullHeal, 3);
 		
-		CreateInvItems   (slf, ItSc_Icelance, 3);
+		CreateInvItems   (slf, ItSc_IceLance, 3);
 		CreateInvItems   (slf, ItSc_Whirlwind, 3);
 		
 		CreateInvItems   (slf, ItSc_Geyser, 3);
-		CreateInvItems   (slf, ItSc_Thunderstorm, 3);
+		CreateInvItems   (slf, ItSc_EleThunderstorm, 3);
 		
-		CreateInvItems   (slf, ItSc_WATERFIST, 3);
+		CreateInvItems   (slf, ItSc_WaterFist, 3);
 		
 		CreateInvItems   (slf, ItMi_RuneBlank, 1);
 		

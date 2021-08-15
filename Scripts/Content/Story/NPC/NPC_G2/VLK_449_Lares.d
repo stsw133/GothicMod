@@ -31,7 +31,7 @@ instance VLK_449_Lares (Npc_Default)
 	CreateInvItems (self, ItPo_Health_02, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Lares, 0, ITAR_Vlk_L_03);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Lares, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

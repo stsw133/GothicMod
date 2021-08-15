@@ -109,108 +109,111 @@ func void DIA_Albrecht_CanTeach_Info ()
 ///////////////////////////////////////////////////////////////////////
 //	Info TEACHPalRunes
 ///////////////////////////////////////////////////////////////////////
-instance DIA_Albrecht_TEACHPalRunes		(C_INFO)
+
+var int HasSpellPalBless;
+var int HasSpellPalHeal;
+var int HasSpellPalHolyBolt;
+var int HasSpellPalJustice;
+var int HasSpellPalDestroyEvil;
+
+instance DIA_Albrecht_TEACHPalRunes (C_INFO)
 {
 	npc		  	 = 	PAL_202_Albrecht;
 	nr			 = 	100;
 	condition	 = 	DIA_Albrecht_TEACHPalRunes_Condition;
 	information	 = 	DIA_Albrecht_TEACHPalRunes_Info;
-	permanent	 = 	TRUE;
+	permanent	 = 	true;
 	description	 = 	"Czy jestem godny otrzymania runy?";
 };
-func int DIA_Albrecht_TEACHPalRunes_Condition ()
+func int DIA_Albrecht_TEACHPalRunes_Condition()
 {	
-	if (Albrecht_TeachMANA == TRUE)
+	if (Albrecht_TeachMANA)
 	{
-		return TRUE;
+		return true;
 	};
 };
-func void DIA_Albrecht_TEACHPalRunes_Info ()
+func void DIA_Albrecht_TEACHPalRunes_Info()
 {
 	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_15_00"); //Czy jestem godny otrzymania runy?
-	/*
-	if (PLAYER_TALENT_RUNES [SPL_PalLight] == FALSE)
+	
+	if (!HasSpellPalBless)
 	{
+		AI_Output (self, other, "DIA_Albrecht_TEACHPalRunes_03_01"); //Jako symbol twej rangi naznaczê ciê Run¹ Œwiat³a. To symbol prawdy i sprawiedliwoœci.
+		AI_Output (self, other, "DIA_Albrecht_TEACHPalRunes_03_02"); //Rozœwietla drogê wszystkim tym, którzy krocz¹ œcie¿k¹ Innosa.
+		AI_Output (self, other, "DIA_Albrecht_TEACHPalRunes_03_03"); //Musisz zas³u¿yæ na pozosta³e runy. Wróæ do mnie, kiedy uznasz, ¿e jesteœ ich godny.
 		
-		AI_Output (self,other, "DIA_Albrecht_TEACHPalRunes_03_01"); //Jako symbol twej rangi naznaczê ciê Run¹ Œwiat³a. To symbol prawdy i sprawiedliwoœci.
-		AI_Output (self,other, "DIA_Albrecht_TEACHPalRunes_03_02"); //Rozœwietla drogê wszystkim tym, którzy krocz¹ œcie¿k¹ Innosa.
-		AI_Output (self,other, "DIA_Albrecht_TEACHPalRunes_03_03"); //Musisz zas³u¿yæ na pozosta³e runy. Wróæ do mnie, kiedy uznasz, ¿e jesteœ ich godny.
-	
-		PLAYER_TALENT_RUNES [SPL_PalLight] = TRUE;
-	
-		CreateInvItems (self,ItRu_PalLight,1);
-		B_GiveInvItems (self,other,ItRu_PalLight,1);
+		CreateInvItems (self, ItRu_PalBless, 1);
+		B_GiveInvItems (self, other, ItRu_PalBless, 1);
+		HasSpellPalBless = true;
 	}
 	else
 	{
-		AI_Output (self,other, "DIA_Albrecht_TEACHPalRunes_03_04"); //Jak¹ drogê wybra³eœ?
-		AI_Output (self,other, "DIA_Albrecht_TEACHPalRunes_03_05"); //Drogê uzdrawiania czy drogê walki?
+		AI_Output (self, other, "DIA_Albrecht_TEACHPalRunes_03_04"); //Jak¹ drogê wybra³eœ?
+		AI_Output (self, other, "DIA_Albrecht_TEACHPalRunes_03_05"); //Drogê uzdrawiania czy drogê walki?
 		
-		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,"Wybieram drogê leczenia.",DIA_Albrecht_TEACHPalRunes_Heal);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,"Wybieram drogê walki.",DIA_Albrecht_TEACHPalRunes_Combat);
+		Info_ClearChoices	(DIA_Albrecht_TEACHPalRunes);
+		Info_AddChoice		(DIA_Albrecht_TEACHPalRunes, DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
+		Info_AddChoice		(DIA_Albrecht_TEACHPalRunes, "Wybieram drogê leczenia.", DIA_Albrecht_TEACHPalRunes_Heal);
+		Info_AddChoice		(DIA_Albrecht_TEACHPalRunes, "Wybieram drogê walki.", DIA_Albrecht_TEACHPalRunes_Combat);
 	};	
-	*/
 };
-/*
-FUNC VOID DIA_Albrecht_TEACHPalRunes_BACK()
+
+func void DIA_Albrecht_TEACHPalRunes_BACK()
 {
 	Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
 };
 
-FUNC VOID B_Albrecht_YouAreNotWorthy ()
+func void B_Albrecht_YouAreNotWorthy()
 {
-	AI_Output (self ,other,"B_Albrecht_YouAreNotWorthy_03_00"); //Nie jesteœ jeszcze godzien, by otrzymaæ kolejny czar z tej œcie¿ki.
+	AI_Output (self, other, "B_Albrecht_YouAreNotWorthy_03_00"); //Nie jesteœ jeszcze godzien, by otrzymaæ kolejny czar z tej œcie¿ki.
 };
 
-FUNC VOID DIA_Albrecht_TEACHPalRunes_Heal()
+func void DIA_Albrecht_TEACHPalRunes_Heal()
 {
-	AI_Output (other,self ,"DIA_Albrecht_TEACHPalRunes_Heal_15_00"); //Wybieram drogê leczenia.
-	if  (PLAYER_TALENT_RUNES [SPL_PalLightHeal] == FALSE)
-	&&	(MIS_ReadyforChapter4 == TRUE)
+	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_Heal_15_00"); //Wybieram drogê leczenia.
+	if (!HasSpellPalHeal && !HasSpellPalHolyBolt)
+	&& (MIS_ReadyforChapter4)
 	{
-		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
-		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Leczenie lekkich ran", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalLightHeal);
+		CreateInvItems (self, ItRu_PalHeal, 1);
+		B_GiveInvItems (self, other, ItRu_PalHeal, 1);
+		HasSpellPalHeal = true;
 	}
-	else if 	(PLAYER_TALENT_RUNES [SPL_PalMediumHeal] == FALSE)
-	&&	(Kapitel >= 11)
+	else if (!HasSpellPalJustice && !HasSpellPalDestroyEvil)
+	&& (Kapitel >= 11)
 	{
-		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
-		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Leczenie œrednich ran", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalMediumHeal);
+		CreateInvItems (self, ItRu_PalJustice, 1);
+		B_GiveInvItems (self, other, ItRu_PalJustice, 1);
+		HasSpellPalJustice = true;
 	}
 	else
 	{
-		B_Albrecht_YouAreNotWorthy ();
+		B_Albrecht_YouAreNotWorthy();
 	};
 };
 
-FUNC VOID DIA_Albrecht_TEACHPalRunes_Combat()
+func void DIA_Albrecht_TEACHPalRunes_Combat()
 {
-	AI_Output (other,self ,"DIA_Albrecht_TEACHPalRunes_Combat_15_00"); //Wybieram drogê walki.
+	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_Combat_15_00"); //Wybieram drogê walki.
 	
-	if	(PLAYER_TALENT_RUNES [SPL_PalHolyBolt] == FALSE)
-	&&	(MIS_ReadyforChapter4 == TRUE)
+	if (!HasSpellPalHolyBolt && !HasSpellPalHeal)
+	&& (MIS_ReadyforChapter4)
 	{
-		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
-		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Œwiêty pocisk", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalHolyBolt);
+		CreateInvItems (self, ItRu_PalHolyBolt, 1);
+		B_GiveInvItems (self, other, ItRu_PalHolyBolt, 1);
+		HasSpellPalHolyBolt = true;
 	}
-	else if (PLAYER_TALENT_RUNES [SPL_PalRepelEvil] == FALSE)
-	&&	(Kapitel >= 11)
+	else if (!HasSpellPalDestroyEvil && !HasSpellPalJustice)
+	&& (Kapitel >= 11)
 	{
-		Info_ClearChoices   (DIA_Albrecht_TEACHPalRunes);
-		Info_AddChoice (DIA_Albrecht_TEACHPalRunes,DIALOG_BACK,DIA_Albrecht_TEACHPalRunes_BACK);
-		Info_AddChoice	(DIA_Albrecht_TEACHPalRunes, B_BuildLearnString ("Wypêdzenie z³a", CostForPalSpells) ,DIA_Albrecht_TEACHPalRunes_PalRepelEvil);
+		CreateInvItems (self, ItRu_PalDestroyEvil, 1);
+		B_GiveInvItems (self, other, ItRu_PalDestroyEvil, 1);
+		HasSpellPalDestroyEvil = true;
 	}
 	else
 	{
-		B_Albrecht_YouAreNotWorthy ();
+		B_Albrecht_YouAreNotWorthy();
 	};
 };
-*/
 ///////////////////////////////////////////////////////////////////////
 //	Info TEACH
 ///////////////////////////////////////////////////////////////////////

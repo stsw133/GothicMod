@@ -1,6 +1,6 @@
 ///******************************************************************************************
 /// 	Particle-Effects 
-///	Instance-Definitions, Engine Presets 
+///	instance-Definitions, Engine Presets 
 ///	Author: Dieter Hildebrandt
 ///******************************************************************************************
 
@@ -8,7 +8,7 @@ const int false = 0;
 const int true = 1;
 
 ///******************************************************************************************
-INSTANCE ZBLOOD1 (C_PARTICLEFX)
+instance ZBLOOD1 (C_ParticleFx)
 {
      ppsvalue = 64.;
      ppscreateem_s = "ZBLOOD1_SPLAT";
@@ -30,7 +30,7 @@ INSTANCE ZBLOOD1 (C_PARTICLEFX)
      visalphastart = 255.;
 };
 
-INSTANCE ZMODELLANDDUST (C_PARTICLEFX)
+instance ZMODELLANDDUST (C_ParticleFx)
 {
      ppsvalue = 8.;
      shptype_s = "BOX";
@@ -52,7 +52,7 @@ INSTANCE ZMODELLANDDUST (C_PARTICLEFX)
      visalphastart = 80.;
 };
 
-INSTANCE ZSKYNIGHT1 (C_PARTICLEFX)
+instance ZSKYNIGHT1 (C_ParticleFx)
 {
      ppsvalue = 1.;
      shpdim_s = "800";
@@ -70,7 +70,7 @@ INSTANCE ZSKYNIGHT1 (C_PARTICLEFX)
      visalphastart = 255.;
 };
 
-INSTANCE ZUNDERWATER (C_PARTICLEFX)
+instance ZUNDERWATER (C_ParticleFx)
 {
      ppsvalue = 500.000000000;
      shptype_s = "BOX";
@@ -89,7 +89,7 @@ INSTANCE ZUNDERWATER (C_PARTICLEFX)
      visalphaend = 255.000000000;
 };
 
-INSTANCE ZWATERRING (C_PARTICLEFX)
+instance ZWATERRING (C_ParticleFx)
 {
       ppsvalue = 1.000000000;
       ppsislooping = 0;
@@ -110,7 +110,7 @@ INSTANCE ZWATERRING (C_PARTICLEFX)
       visalphastart = 80.000000000;
 };
 
-INSTANCE PFX_WATERSPLASH (C_PARTICLEFX)
+instance PFX_WATERSPLASH (C_ParticleFx)
 {
      ppsvalue = 35.000000000;
      ppsscalekeys_s = "1";

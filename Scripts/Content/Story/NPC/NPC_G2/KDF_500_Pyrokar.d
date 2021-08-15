@@ -20,7 +20,7 @@ instance KDF_500_Pyrokar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal02, 0, ITAR_Mag_A);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal02, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

@@ -31,7 +31,7 @@ instance BDT_1090_Addon_Raven (Npc_Default)
 	CreateInvItem (self, ItMi_Addon_Stone_05);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Raven, 0, ITAR_RVN_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Raven, 0, ITAR_RVN_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

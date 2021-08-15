@@ -23,7 +23,7 @@ instance VLK_433_Bromor (Npc_Default)
 	CreateInvItem (self, ItKE_Bromor);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Fingers, 0, ITAR_Vlk_L_14);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Fingers, 0, ITAR_Vlk_L_14);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

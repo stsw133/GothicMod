@@ -19,26 +19,26 @@ func void B_GiveTradeInv_Zuris (var C_NPC slf)
 		
 		CreateInvItems (slf, ItSc_Light, 6);
 		CreateInvItems (slf, ItSc_Sleep, 1);
-		CreateInvItems (slf, ItSc_Firebolt, 20);
-		CreateInvItems (slf, ItSc_Icebolt, 8);
-		CreateInvItems (slf, ItSc_InstantFireball, 10);
+		CreateInvItems (slf, ItSc_FireBolt, 20);
+		CreateInvItems (slf, ItSc_IceBolt, 8);
+		CreateInvItems (slf, ItSc_PyrFireball, 10);
 		CreateInvItems (slf, ItSc_LightningFlash, 5);
-		CreateInvItems (slf, ItSc_HarmUndead, 3);
-		CreateInvItems (slf, ItSc_Firestorm, 3);
+		//CreateInvItems (slf, ItSc_HarmUndead, 3);
+		CreateInvItems (slf, ItSc_PyrFirestorm, 3);
 		CreateInvItems (slf, ItSc_IceWave, 1);
 		CreateInvItems (slf, ItSc_Zap, 5);
-		CreateInvItems (slf, ItSc_IceCube, 3);
-		CreateInvItems (slf, ItSc_Windfist, 3);
+		CreateInvItems (slf, ItSc_EleFreeze, 3);
+		CreateInvItems (slf, ItSc_WindFist, 3);
 		CreateInvItems (slf, ItSc_IceWave, 1);
-		CreateInvItems (slf, ItSc_Firerain, 1);
+		CreateInvItems (slf, ItSc_PyrFirerain, 1);
 		CreateInvItems (slf, ItSc_Shrink, 1);
-		CreateInvItems (slf, ItSc_ThunderStorm, 1);
+		CreateInvItems (slf, ItSc_EleThunderstorm, 1);
 		
-		CreateInvItems (slf, ItSc_SumGobSkel, 1);
-		CreateInvItems (slf, ItSc_SumSkel, 1);
-		CreateInvItems (slf, ItSc_SumWolf, 1);
-		CreateInvItems (slf, ItSc_SumGol, 1);
-		CreateInvItems (slf, ItSc_SumDemon, 1);
+		//CreateInvItems (slf, ItSc_SumGobSkel, 1);
+		CreateInvItems (slf, ItSc_NecSkeleton, 1);
+		//CreateInvItems (slf, ItSc_SumWolf, 1);
+		CreateInvItems (slf, ItSc_GeoGolem, 1);
+		CreateInvItems (slf, ItSc_NecDemon, 1);
 		
 		CreateInvItems (slf, ItBe_Mana_01, 1);
 		CreateInvItems (slf, ItAm_Power_01, 1);

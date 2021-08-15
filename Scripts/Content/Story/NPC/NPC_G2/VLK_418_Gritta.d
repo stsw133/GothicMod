@@ -19,7 +19,7 @@ instance VLK_418_Gritta (Npc_Default)
 	CreateInvItems (self, ItMi_Gold, 100);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal05, Teeth_Pretty, ITAR_WD_H_01);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal05, Teeth_Pretty, ITAR_WD_H_01);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

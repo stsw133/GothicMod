@@ -883,7 +883,7 @@ func void DIA_Dragon_Undead_Hello_attack()
 	
 	if (C_ScHasEquippedBeliarsWeapon())
 	|| (C_ScHasReadiedBeliarsWeapon())
-	|| (Npc_HasItems(hero, ItRu_BeliarRage))
+	|| (Npc_HasItems(hero, ItRu_EnergyBall))
 	{
 		AI_Output (self, other, "DIA_Addon_UndeadDragon_Add_20_04"); //Naprawdę sądzisz, że możesz mi zaszkodzić tym szponem?
 	};

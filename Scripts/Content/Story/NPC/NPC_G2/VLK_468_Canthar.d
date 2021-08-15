@@ -27,7 +27,7 @@ instance VLK_468_Canthar (Npc_Default)
 	CreateInvItems (self, ItMi_Gold, 50);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Bald", Face_Normal56, 0, ITAR_Vlk_L_13);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal56, 0, ITAR_Vlk_L_13);
 	Mdl_SetModelFatness	(self, 1.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

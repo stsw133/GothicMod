@@ -30,7 +30,7 @@ instance WzA_17220_Tux (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Bald", Face_Dolan, Teeth_Normal, ITAR_VLK_L_05);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Dolan, Teeth_Normal, ITAR_VLK_L_05);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

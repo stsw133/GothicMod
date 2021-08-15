@@ -23,6 +23,12 @@ func void TT_1000_RGHP()
 	if (bState[BS_Poison])
 	{
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -2);	/// -2 hp co sekundê
+	}
+	else if (hpRegenPower > 0)
+	{
+		hpRegenPoints += hpRegenPower;
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpRegenPoints/5);
+		hpRegenPoints -= hpRegenPoints/5*5;
 	};
 	/// gdy postaæ coœ jad³a
 	if (foodTime > 0)
@@ -36,20 +42,22 @@ func void TT_1000_RGMP()
 	/// gdy postaæ nie jest pod wp³ywem kl¹twy poszukiwaczy
 	if (!bState[BS_Obsession])
 	{
-		Npc_ChangeAttribute (hero, ATR_MANA, Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC));	/// +1 many za ka¿dy kr¹g magii (max. 6) co sekundê
+		mpRegenPoints += Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC);
+		Npc_ChangeAttribute (hero, ATR_MANA, mpRegenPoints/2);	/// +0.5 many za ka¿dy kr¹g magii (max. 3) co sekundê
+		mpRegenPoints -= mpRegenPoints/2*2;
 	};
 };
-func void TT_200_RGEN()
+func void TT_500_RGEN()
 {
 	/// gdy postaæ biegnie bez sprintu...
 	if (C_BodyStateContains(hero, BS_RUN))
 	{
-		hero.aivar[AIV_Energy] += hero.aivar[AIV_Energy_MAX] / 100;	/// +1% energii co 0.2 sekundy
+		hero.aivar[AIV_Energy] += 2;	/// +2 energii co 0.5 sekundy
 	}
 	/// ...lub gdy postaæ nie biegnie (i nie skacze) w ogóle
 	else if (!C_BodyStateContains(hero, BS_JUMP))
 	{
-		hero.aivar[AIV_Energy] += hero.aivar[AIV_Energy_MAX] / 50;	/// +2% energii co 0.2 sekundy
+		hero.aivar[AIV_Energy] += 5;	/// +5 energii co 0.5 sekundy
 	};
 };
 ///******************************************************************************************
@@ -72,28 +80,29 @@ func void TT_1000()
 		Potions_Process();
 		
 		/// efekty zaklêæ
-		Spell_Active_MysGhost();
-		Spell_Active_GeoSkin();
+		Spell_Active_MysProtection();
+		Spell_Active_GeoProtection();
+		Spell_Active_EleProtection();
+		Spell_Active_PyrProtection();
+		Spell_Active_NecProtection();
 		
 		/// magiczny py³ do zaklêcia spowolnienia czasu
-		/*
 		TimeDust_WAIT += 1;
-		if (TimeDust_WAIT == 600)	/// co 10 minut
+		if (TimeDust_WAIT == 1800)	/// co 30 minut
 		{
 			TimeDust_WAIT = 0;
-			if (SPL_Enabled_SlowTime)
+			if (SPL_IsEnabled_SlowTime)
 			{
 				Wld_InsertItem (ItMi_TimeDust, TimeDust_WP);
 			};
 			TimeDust_WP = Npc_GetNearestWP(hero);
 		};
-		*/
 	};
 };
 ///******************************************************************************************
-///	Wywo³ywane co 200 milisekund
+///	Wywo³ywane co 500 milisekund
 ///******************************************************************************************
-func void TT_200()
+func void TT_500()
 {
 	if (MEM_Game.pause_screen)
 	{
@@ -114,11 +123,11 @@ func void TT_200()
 		/// regeneracja i zu¿ycie energii
 		if (bState[BS_fRun])
 		{
-			hero.aivar[AIV_Energy] -= (4 + bState[BS_hArmor]*2 - Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN)*2);
+			hero.aivar[AIV_Energy] -= (5 + bState[BS_hArmor]*5 - (Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN)*3));
 		}
 		else
 		{
-			TT_200_RGEN();
+			TT_500_RGEN();
 		};
 		Npc_EnergyRefresh(hero);
 	};
@@ -155,7 +164,7 @@ func void TT_5()
 	/// ------ Klawisz szybkiego obrotu ------
 	if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
 	{
-		AI_PlayAni (hero, "T_QUICKTURN");
+		//AI_PlayAni (hero, "T_QUICKTURN");
 	};
 	
 	/// ------ Tryb filmowy ------
@@ -186,8 +195,16 @@ func void TT_5()
 	/// ------ PPM ------
 	if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
 	{
+		/// pokonanie przeciwnika
+		if (Npc_IsInFightMode(hero, FMODE_MELEE)) //Npc_HasReadiedMeleeWeapon(hero)
+		{
+			o_item = Npc_GetReadiedWeapon(hero);
+			o_other = MEM_PtrToInst(o_hero.focus_vob);
+			
+			MOD_Assassination (hero, o_other, o_item);
+		}
 		/// kradzie¿ kieszonkowa
-		if (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))
+		else if (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))
 		{
 			o_other = MEM_PtrToInst(o_hero.focus_vob);
 			
@@ -195,28 +212,19 @@ func void TT_5()
 			&& (Npc_GetDistToNpc(hero, o_other) < NPC_ATTACK_FINISH_DISTANCE)
 			{
 				MOD_Pickpocket (hero, o_other);
-			};/*
-			else
-			{
-				o_string = ConcatStrings ("Potrzeba ", IntToString(MOD_Pickpocket_DexToSteal(o_other)));
-				o_string = ConcatStrings (o_string, " pkt. zrêcznoœci by dokonaæ udanej kradzie¿y.");
-				Print(o_string);
-			};*/
+			};
 		};
+		
 		/// szybkie podnoszenie przedmiotów
 		if (noAnimTake && !C_BodyStateContains(hero, BS_INVENTORY) && !C_BodyStateContains(hero, BS_TAKEITEM))
 		{
 			o_item = MEM_PtrToInst(o_hero.focus_vob);
 			
 			if (Hlp_IsValidItem(o_item))
-			&& (o_item.flags != ITEM_NFOCUS)
 			{
 				if (Npc_GetDistToItem(hero, o_item) < (NPC_ATTACK_FINISH_DISTANCE * 2))
 				{
-					o_item.flags = ITEM_NFOCUS;
-					Wld_RemoveItem(o_item);
-					CreateInvItems (hero, Hlp_GetInstanceID(o_item), o_item.amount);
-					ITEMS_CHECK(o_item);
+					MOD_MoveItemIntoInventory (hero, o_item);
 				}
 				else
 				{

@@ -21,7 +21,7 @@ instance VLK_4304_Addon_William (Npc_Default)
 	CreateInvItems (self, ItKe_Lockpick, 2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Thief", Face_Homer, 0, ITAR_BAU_00);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Homer, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 0.9);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

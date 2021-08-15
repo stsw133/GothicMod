@@ -7,8 +7,6 @@ const int SPL_ZAPPED_DAMAGE_PER_SEC = 2;
 ///******************************************************************************************
 func void B_StopZapped()
 {
- 	//Npc_PercDisable	(self, PERC_ASSESSSTOPMAGIC); // *** was soll das??? ***
- 	
 	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_AssessMagic);
 	Npc_ClearAIQueue(self);
 	AI_StandUp		(self);

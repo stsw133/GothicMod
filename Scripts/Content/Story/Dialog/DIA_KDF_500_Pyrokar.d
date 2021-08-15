@@ -927,7 +927,7 @@ func void DIA_Pyrokar_BACKFROMOW_Info ()
 	};
 
 	AI_Output (self ,other, "DIA_Pyrokar_Add_11_00"); //WeŸ to. Gdybyœ potrzebowa³ pomocy, ta runa przeniesie ciê prosto do klasztoru.
-	B_GiveInvItems (self, other, itru_teleportmonastery, 1);
+	B_GiveInvItems (self, other, ItTe_Monastery, 1);
 	
 	AI_Output			(self, other, "DIA_Pyrokar_BACKFROMOW_11_10"); //Pamiêtaj: od twojej silnej woli zale¿¹ teraz losy nas wszystkich.
 

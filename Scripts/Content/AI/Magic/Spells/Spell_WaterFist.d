@@ -19,11 +19,8 @@ func int Spell_Logic_WaterFist (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_WaterFist()

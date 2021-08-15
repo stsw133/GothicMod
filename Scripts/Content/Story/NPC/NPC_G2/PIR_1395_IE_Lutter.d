@@ -20,7 +20,7 @@ instance PIR_1395_IE_Lutter (Npc_Default)
 	//CreateInvItem (self, ItMiCellobow);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_Lutter", Face_Lutter, 0, -1);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Lutter", Face_Lutter, 0, -1);
 
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1395;

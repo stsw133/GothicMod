@@ -26,7 +26,7 @@ instance NONE_ADDON_112_Rhademes (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Ske_Head", 0, 0, ITAR_JARKHENDAR);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Ske_Head", 0, 0, ITAR_JARKHENDAR);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

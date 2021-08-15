@@ -23,7 +23,7 @@ instance BDT_1086_Addon_Scatty (Npc_Default)
 	CreateInvItems (self, ItPo_Health_01, 2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_FatBald", Face_Scatty, 0, ITAR_RVN_L);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Scatty, 0, ITAR_RVN_L);
 	Mdl_SetModelFatness	(self, 1.6);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

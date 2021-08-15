@@ -19,7 +19,7 @@ instance VLK_407_Hakon (Npc_Default)
 	EquipItem (self, ItMw_ShortSword2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal47, 0, ITAR_VLK_L_14);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal47, 0, ITAR_VLK_L_14);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

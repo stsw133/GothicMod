@@ -31,7 +31,7 @@ instance WzA_17095_Hagen (Npc_Default)
 	CreateInvItem (self, ItHe_PAL_H);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Normal, BodySkin_N, "Hum_Head_Fighter", Face_Normal06, Teeth_Normal, ITAR_PAL_H);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal06, Teeth_Normal, ITAR_PAL_H);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 1.5);
 	

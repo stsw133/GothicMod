@@ -2,7 +2,7 @@
 ///	SPL_Rage
 ///******************************************************************************************
 
-const int SPL_Cost_Rage					=	45;
+const int SPL_Cost_Rage					=	100;
 
 ///******************************************************************************************
 instance Spell_Rage (C_Spell_Proto)
@@ -17,14 +17,17 @@ func int Spell_Logic_Rage (var int manaInvested)
 	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Rage/SPL_Cost_Scroll))
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Rage)
 	{
-		//AI_PlayAni (other, "T_PSI_VICTIM");
-		
-		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
+		if (other.level+10 - self.level - Npc_GetPowerPoints(self)/50 <= 0)
+		|| (!Npc_IsPlayer(self))
+		{
+			return SPL_SENDCAST;
+		}
+		else
+		{
+			Print(ConcatStrings(IntToString(other.level+10 - self.level - Npc_GetPowerPoints(self)/50), " poziomów za mało aby odnieść skutek!"));
+		};
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_Rage()
@@ -38,9 +41,15 @@ func void Spell_Cast_Rage()
 		self.attribute[ATR_MANA] -= SPL_Cost_Rage;
 	};
 	
-	Npc_ClearAIQueue	(other);
-    B_ClearPerceptions	(other);
-    AI_StartState		(other, ZS_MagicRage, 0, "");
+	//AI_PlayAni (other, "T_PSI_VICTIM");
+	
+	if (!C_BodyStateContains(other, BS_SWIM) && !C_BodyStateContains(other, BS_DIVE))
+	&& (!C_NpcIsDown(other) && Npc_GetDistToNpc(self, other) <= 1000)
+	{
+		Npc_ClearAIQueue	(other);
+		B_ClearPerceptions	(other);
+		AI_StartState		(other, ZS_MagicRage, 0, "");
+	};
 	
 	self.aivar[AIV_SelectSpell] += 1;
 };
@@ -49,7 +58,7 @@ func void Spell_Cast_Rage()
 ///	SPL_MassRage
 ///******************************************************************************************
 
-const int SPL_Cost_MassRage				=	180;
+const int SPL_Cost_MassRage				=	300;
 
 ///******************************************************************************************
 instance Spell_MassRage (C_Spell_Proto)
@@ -65,11 +74,8 @@ func int Spell_Logic_MassRage (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MassRage)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_MassRage()
@@ -83,7 +89,10 @@ func void Spell_Cast_MassRage()
 		self.attribute[ATR_MANA] -= SPL_Cost_MassRage;
 	};
 	
-	if (other.guild != GIL_DRAGON)
+	//AI_PlayAni (other, "T_PSI_VICTIM");
+	
+	if (!C_BodyStateContains(other, BS_SWIM) && !C_BodyStateContains(other, BS_DIVE))
+	&& (!C_NpcIsDown(other) && Npc_GetDistToNpc(self, other) <= 1000)
 	{
 		AI_SetNpcsToState (self, ZS_MagicRage, 1000);
 	};

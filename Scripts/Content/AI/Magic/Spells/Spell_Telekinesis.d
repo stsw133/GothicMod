@@ -23,11 +23,8 @@ func int Spell_Logic_Telekinesis (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Telekinesis)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_Telekinesis()
@@ -41,20 +38,14 @@ func void Spell_Cast_Telekinesis()
 		self.attribute[ATR_MANA] -= SPL_Cost_Telekinesis;
 	};
 	
-	self.aivar[AIV_SelectSpell] += 1;
-	
-	
-	
 	o_item = MEM_PtrToInst(o_hero.focus_vob);
 	
 	if (Hlp_IsValidItem(o_item))
-	&& (o_item.flags != ITEM_NFOCUS)
 	{
 		Snd_Play("MFX_Telekinesis_StartInvest");
 		Wld_PlayEffect ("spellFX_telekinesis_KEY_CAST", o_item, o_item, 0, 0, 0, false);
-		o_item.flags = ITEM_NFOCUS;
-		Wld_RemoveItem(o_item);
-		CreateInvItems (self, Hlp_GetInstanceID(o_item), o_item.amount);
-		ITEMS_CHECK(o_item);
+		MOD_MoveItemIntoInventory (self, o_item);
 	};
+	
+	self.aivar[AIV_SelectSpell] += 1;
 };

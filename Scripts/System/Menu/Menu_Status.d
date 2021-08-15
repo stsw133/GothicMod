@@ -22,11 +22,11 @@ instance MENU_STATUS(C_MENU_DEF)
 	items[18] = "MENU_ITEM_ATTRIBUTE_4";
 	items[19] = "MENU_ITEM_ATTRIBUTE_POWER_TITLE";
 	items[20] = "MENU_ITEM_TALENT_7";
-	items[21] = "MENU_ITEM_ATTRIBUTE_LIFESTEAL_TITLE";
-	items[22] = "MENU_ITEM_TALENT_10";
-	items[23] = "MENU_ITEM_ARMOR_HEADING";
-	items[24] = "MENU_ITEM_ARMOR_1_TITLE";
-	items[25] = "MENU_ITEM_ARMOR_1";
+	items[21] = "MENU_ITEM_ARMOR_HEADING";
+	items[22] = "MENU_ITEM_ARMOR_1_TITLE";
+	items[23] = "MENU_ITEM_ARMOR_1";
+	items[24] = "MENU_ITEM_ARMOR_2_TITLE";
+	items[25] = "MENU_ITEM_ARMOR_2";
 	items[26] = "MENU_ITEM_ARMOR_3_TITLE";
 	items[27] = "MENU_ITEM_ARMOR_3";
 	items[28] = "MENU_ITEM_ARMOR_4_TITLE";
@@ -97,8 +97,8 @@ const int STAT_PLYHEAD_Y = 600;
 const int STAT_PLY_Y = 1050;
 const int STAT_ATRHEAD_Y = 3650;
 const int STAT_ATR_Y = 4100;
-const int STAT_ARMHEAD_Y = 6200;
-const int STAT_ARM_Y = 6650;
+const int STAT_ARMHEAD_Y = 5900;
+const int STAT_ARM_Y = 6350;
 const int STAT_TALHEAD_Y = 600;
 const int STAT_TAL_Y = 1050;
 const int STAT_DY = 300;
@@ -312,7 +312,7 @@ instance MENU_ITEM_ATTRIBUTE_POWER_TITLE(C_MENU_ITEM_DEF)	/// power
 {
 	posx = STAT_A_X1;
 	posy = STAT_ATR_Y + (STAT_DY * 4);
-	text[0] = "Moc:";
+	text[0] = "Dod. moc:";
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
@@ -320,22 +320,6 @@ instance MENU_ITEM_TALENT_7(C_MENU_ITEM_DEF)
 {
 	posx = STAT_A_X2;
 	posy = STAT_ATR_Y + (STAT_DY * 4);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_ATTRIBUTE_LIFESTEAL_TITLE(C_MENU_ITEM_DEF)	/// life steal
-{
-	posx = STAT_A_X1;
-	posy = STAT_ATR_Y + (STAT_DY * 5);
-	text[0] = "Kradz. ¿ycia:";
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-instance MENU_ITEM_TALENT_10(C_MENU_ITEM_DEF)
-{
-	posx = STAT_A_X2;
-	posy = STAT_ATR_Y + (STAT_DY * 5);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
@@ -352,11 +336,11 @@ instance MENU_ITEM_ARMOR_HEADING(C_MENU_ITEM_DEF)
 	flags = (flags & ~IT_SELECTABLE) | IT_TXT_CENTER;
 };
 
-instance MENU_ITEM_ARMOR_1_TITLE(C_MENU_ITEM_DEF)	/// physical
+instance MENU_ITEM_ARMOR_1_TITLE(C_MENU_ITEM_DEF)	/// edge
 {
 	posx = STAT_A_X1;
 	posy = STAT_ARM_Y + (STAT_DY * 0);
-	text[0] = "Broñ i pociski:";
+	text[0] = "Broñ:";
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
@@ -368,15 +352,15 @@ instance MENU_ITEM_ARMOR_1(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_ARMOR_3_TITLE(C_MENU_ITEM_DEF)	/// fire
+instance MENU_ITEM_ARMOR_2_TITLE(C_MENU_ITEM_DEF)	/// point
 {
 	posx = STAT_A_X1;
 	posy = STAT_ARM_Y + (STAT_DY * 1);
-	text[0] = "Smoczy ogieñ:";
+	text[0] = "Pociski:";
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_ARMOR_3(C_MENU_ITEM_DEF)
+instance MENU_ITEM_ARMOR_2(C_MENU_ITEM_DEF)
 {
 	posx = STAT_A_X3;
 	posy = STAT_ARM_Y + (STAT_DY * 1);
@@ -384,10 +368,26 @@ instance MENU_ITEM_ARMOR_3(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_ARMOR_4_TITLE(C_MENU_ITEM_DEF)	/// magic
+instance MENU_ITEM_ARMOR_3_TITLE(C_MENU_ITEM_DEF)	/// fire
 {
 	posx = STAT_A_X1;
 	posy = STAT_ARM_Y + (STAT_DY * 2);
+	text[0] = "Smoczy ogieñ:";
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_ARMOR_3(C_MENU_ITEM_DEF)
+{
+	posx = STAT_A_X3;
+	posy = STAT_ARM_Y + (STAT_DY * 2);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENU_ITEM_ARMOR_4_TITLE(C_MENU_ITEM_DEF)	/// magic
+{
+	posx = STAT_A_X1;
+	posy = STAT_ARM_Y + (STAT_DY * 3);
 	text[0] = "Magia:";
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
@@ -395,7 +395,7 @@ instance MENU_ITEM_ARMOR_4_TITLE(C_MENU_ITEM_DEF)	/// magic
 instance MENU_ITEM_ARMOR_4(C_MENU_ITEM_DEF)
 {
 	posx = STAT_A_X3;
-	posy = STAT_ARM_Y + (STAT_DY * 2);
+	posy = STAT_ARM_Y + (STAT_DY * 3);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };

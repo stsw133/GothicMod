@@ -71,7 +71,7 @@ STORY\B_Content\B_PlayerFindItem.d
 STORY\B_Story\B_GetLearnCost.d
 STORY\B_Story\B_BuildLearnString.d
 STORY\B_Story\B_TeachAttributePoints.d
-STORY\B_Story\B_TeachTalents.d
+STORY\B_Story\B_TeachTalent.d
 STORY\B_Story\B_WispDetector.d
 
 ITEMS\IT_*.d
@@ -80,7 +80,6 @@ ITEMS\SpecialItems.d
 ITEMS\GiveAll.d
 
 MOD\MOD_Defeated.d
-MOD\MOD_ItemsCheck.d
 MOD\MOD_Masteries.d
 MOD\MOD_QuickSlot.d
 
@@ -152,6 +151,8 @@ AI\HUMAN\B_Human\B_MoveMob.d
 AI\HUMAN\B_Human\B_RemoveWeapon.d
 
 STORY\B_Story\B_GiveInvItems.d
+MOD\MOD_Assassination.d
+MOD\MOD_ItemFn.d
 MOD\MOD_Pickpocket.d
 
 STORY\B_AssignAmbientInfos\B_Announce_Herold.d
@@ -190,7 +191,6 @@ STORY\NPC\Monsters\MST_*.d
 STORY\NPC\Monsters\Demons\MST_*.d
 STORY\NPC\Monsters\Furbeasts\MST_*.d
 STORY\NPC\Monsters\Golems\MST_*.d
-STORY\NPC\Monsters\Humanoids\MST_*.d
 STORY\NPC\Monsters\Insects\MST_*.d
 STORY\NPC\Monsters\Livestock\MST_*.d
 STORY\NPC\Monsters\Orcs\MST_*.d
@@ -233,7 +233,7 @@ STORY\B_AssignAmbientInfos\B_AssignDementorTalk.d
 STORY\B_AssignAmbientInfos\B_AssignORC_AntiPaladinTalk.d
 STORY\B_AssignAmbientInfos\B_NpcObsessedByDMT.d
 STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
-STORY\B_Story\B_GregIsBack.d
+STORY\B_Content\B_GregIsBack.d
 
 STORY\B_Story\B_ENTER_ADDONWORLD.d
 STORY\B_Story\B_ENTER_OLDWORLD.d
@@ -258,7 +258,6 @@ AI\MONSTER\Rtn_Monster\ZS_MM_Rtn_*.d
 AI\MONSTER\Rtn_Monster\ZS_MM_AllScheduler.d
 AI\MONSTER\ZS_Monster\ZS_MM_*.d
 
-STORY\B_Story\B_MAGECAVETRIGGER.d
 STORY\Events\*.d
 STORY\B_Story\B_ENTER_DRAGONISLAND.d
 

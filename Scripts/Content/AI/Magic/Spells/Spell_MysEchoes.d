@@ -2,9 +2,8 @@
 ///	SPL_MysEchoes
 ///******************************************************************************************
 
-const int SPL_Cost_MysEchoes			=	100;
-const int SPL_Damage_MysEchoes			=	75;
-const int SPL_Heal_MysEchoes			=	15;
+const int SPL_Cost_MysEchoes			=	120;
+const int SPL_Damage_MysEchoes			=	200;
 
 ///******************************************************************************************
 instance Spell_MysEchoes (C_Spell_Proto)
@@ -21,11 +20,8 @@ func int Spell_Logic_MysEchoes (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysEchoes)
 	{
 		return SPL_SENDCAST;
-	}
-	else
-	{
-		return SPL_SENDSTOP;
 	};
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_MysEchoes()

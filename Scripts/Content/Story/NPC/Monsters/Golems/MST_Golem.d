@@ -126,7 +126,7 @@ instance Summoned_Golem (Mst_Default_Golem)
 {
 	name								=	"Przyzwany golem";
 	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				=	ID_STONEGUARDIAN;
+	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
 	B_SetAttributesToLevel (self, 40);
 	B_SetVisuals_Golem();

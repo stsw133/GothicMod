@@ -21,7 +21,7 @@ instance VLK_401_Cornelius (Npc_Default)
 	CreateInvItem (self, ItWr_CorneliusTagebuch_Mis);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_P, "Hum_Head_Bald", Face_Normal16, 0, ITAR_VLK_H_04);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", Face_Normal16, 0, ITAR_VLK_H_04);
 	Mdl_SetModelFatness	(self, 0.9);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

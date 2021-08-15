@@ -25,7 +25,7 @@ instance BDT_10017_Addon_Juan (Npc_Default)
 	CreateInvItems (self, ItFo_Addon_Grog, 20);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_L, "Hum_Head_Thief", Face_Normal06, 0, ITAR_BANDIT);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal06, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

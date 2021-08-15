@@ -20,11 +20,8 @@ func int Spell_Logic_Quake (var int manaInvested)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Quake)
 	{
         return SPL_SENDCAST;
-    }
-	else
-	{
-        return SPL_SENDSTOP;
     };
+	return SPL_SENDSTOP;
 };
 
 func void Spell_Cast_Quake()

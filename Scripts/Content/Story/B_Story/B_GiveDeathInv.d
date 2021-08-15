@@ -89,7 +89,6 @@ func void B_GiveDeathInv (var C_NPC slf)
 	};
 	if (PLAYER_TALENT_HUNTING[HUNTING_Plates])
 	{
-		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLER)		{	CreateInvItems (slf, ItAt_CrawlerPlate	, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERWARRIOR)	{	CreateInvItems (slf, ItAt_CrawlerPlate	, 2);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERQUEEN)	{	CreateInvItems (slf, ItAt_CrawlerPlate	, 2);	};
 	};
@@ -119,9 +118,9 @@ func void B_GiveDeathInv (var C_NPC slf)
 	
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_MEATBUG)				{	CreateInvItems (slf, ItFo_MeatbugFlesh	, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_INKBUG)					{	CreateInvItems (slf, ItMi_Ink			, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARPY)					{	CreateInvItems (slf, ItAt_Feather		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_VAMPHARPY)				{	CreateInvItems (slf, ItAt_Feather		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGONHARPY)			{	CreateInvItems (slf, ItAt_Feather		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARPY)					{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_VAMPHARPY)				{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGONHARPY)			{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_MUMMY)					{	CreateInvItems (slf, ItMi_Ruby			, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItMi_Wood			, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItPl_Mushroom_03	, 1);	};

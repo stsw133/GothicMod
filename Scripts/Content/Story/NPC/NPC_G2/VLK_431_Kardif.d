@@ -22,7 +22,7 @@ instance VLK_431_Kardif (Npc_Default)
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_NORMAL, BodySkin_N, "Hum_Head_FatBald", Face_Normal31, 0, ITAR_Barkeeper);
+	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal31, 0, ITAR_Barkeeper);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

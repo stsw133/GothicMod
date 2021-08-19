@@ -10,7 +10,7 @@ const int DIFF_I	=	4;	/// impossible (hardcore)
 
 const int DIFF_Percent[5] =
 {
-	-20,	/// DIFF_E
+	-20,		/// DIFF_E
 	0,		/// DIFF_M
 	20,		/// DIFF_H
 	40,		/// DIFF_VH

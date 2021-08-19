@@ -354,8 +354,8 @@ instance Reset_Hero (C_Item)
 };
 instance Reset_Inventory (C_Item)
 {
-	Npc_ClearInventory(hero);
 	B_ClearRuneInv(hero);
+	Npc_ClearInventory(hero);
 	Wld_RemoveItem(self);
 };
 ///******************************************************************************************

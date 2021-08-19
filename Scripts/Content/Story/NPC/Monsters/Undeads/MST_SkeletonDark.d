@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Skeleton_Dark (C_Npc)
+prototype Mst_Default_SkeletonDark (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Mroczny szkielet";
@@ -7,9 +7,18 @@ prototype Mst_Default_Skeleton_Dark (C_Npc)
 	aivar[AIV_MM_REAL_ID]				= 	ID_SKELETON_DARK;
 	
 	/// ------ Attributes & FT ------
-//	damagetype 							=	DAM_BLUNT;
+	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_HUMAN_STRONG;
+	
 	B_SetAttributesToLevel (self, 35);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -25,7 +34,7 @@ prototype Mst_Default_Skeleton_Dark (C_Npc)
 	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
 };
 ///******************************************************************************************
-func void B_SetVisuals_Skeleton_Dark()
+func void B_SetVisuals_SkeletonDark()
 {
 	Mdl_SetVisual		(self, "HumanS.mds");
 	Mdl_ApplyOverlayMds (self, "humans_1hST1.mds");
@@ -37,9 +46,9 @@ func void B_SetVisuals_Skeleton_Dark()
 	Mdl_SetModelScale	(self, 1.15, 1.25, 1.15);
 };
 ///******************************************************************************************
-instance Skeleton_Dark (Mst_Default_Skeleton)
+instance Skeleton_Dark (Mst_Default_SkeletonDark)
 {
 	aivar[AIV_BodyTex] = Hlp_Random(2);
-	B_SetVisuals_Skeleton_Dark();
+	B_SetVisuals_SkeletonDark();
 	EquipItem (self, ItMw_2H_OldScythe);
 };

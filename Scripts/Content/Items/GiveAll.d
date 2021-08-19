@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	GiveAll
 ///******************************************************************************************
-func void Func_All_Items_MeleeWeapons (var C_NPC slf)
+func void Func_All_Items_MeleeWeapons (var C_Npc slf)
 {
 	/// Bronie do walki wrêcz
 	CreateInvItem (slf, ItMw_1h_Bau_Mace);
@@ -207,7 +207,7 @@ func void Func_All_Items_MeleeWeapons (var C_NPC slf)
 	CreateInvItem (slf, ItMw_LightSaber);
 };
 ///******************************************************************************************
-func void Func_All_Items_RangedWeapons (var C_NPC slf)
+func void Func_All_Items_RangedWeapons (var C_Npc slf)
 {
 	/// Bronie do walki na dystans
 	CreateInvItem (slf, ItRw_Bow_L_01);
@@ -264,7 +264,7 @@ func void Func_All_Items_RangedWeapons (var C_NPC slf)
 	CreateInvItem (slf, ItSe_HAmmoBox);
 };
 ///******************************************************************************************
-func void Func_All_Items_Armor (var C_NPC slf)
+func void Func_All_Items_Armor (var C_Npc slf)
 {
 	/// Kobiece pancerze
 	CreateInvItem (slf, ITAR_WD_L_00); CreateInvItem (slf, ITAR_WD_M_00); CreateInvItem (slf, ITAR_WD_H_00);
@@ -428,7 +428,7 @@ func void Func_All_Items_Armor (var C_NPC slf)
 	CreateInvItem (slf, ITAR_SW_Vader);
 };
 ///******************************************************************************************
-func void Func_All_Items_Helms (var C_NPC slf)
+func void Func_All_Items_Helms (var C_Npc slf)
 {
 	/// He³my
 	CreateInvItem (slf, ItHe_Leather);
@@ -493,7 +493,7 @@ func void Func_All_Items_Helms (var C_NPC slf)
 	CreateInvItem (slf, ItHa_LongPony_22);	CreateInvItem (slf, ItHa_LongPony_23);
 };
 ///******************************************************************************************
-func void Func_All_Items_Spells (var C_NPC slf)
+func void Func_All_Items_Spells (var C_Npc slf)
 {
 	/// Zaklêcia
 	CreateInvItem (slf, ItRu_Light);
@@ -542,7 +542,7 @@ func void Func_All_Items_Spells (var C_NPC slf)
 	CreateInvItem (slf, ItRu_Summon);
 	
 	CreateInvItem (slf, ItRu_MasterOfDisaster);
-	CreateInvItem (slf, ItRu_EnergyBall);
+	CreateInvItem (slf, ItRu_BeliarRage);
 	
 	CreateInvItem (slf, ItRu_ConcussionBolt);
 	CreateInvItem (slf, ItRu_DeathBolt);
@@ -590,7 +590,7 @@ func void Func_All_Items_Spells (var C_NPC slf)
 	CreateInvItem (slf, ItRu_NecDeath);
 };
 ///******************************************************************************************
-func void Func_All_Items_Artifacts (var C_NPC slf)
+func void Func_All_Items_Artifacts (var C_Npc slf)
 {
 	/// Amulety
 	CreateInvItem (slf, ItAm_ProtPhysical_05);
@@ -629,7 +629,7 @@ func void Func_All_Items_Artifacts (var C_NPC slf)
 	CreateInvItem (slf, ItBe_Power_05);
 };
 ///******************************************************************************************
-func void Func_All_Items_Food (var C_NPC slf)
+func void Func_All_Items_Food (var C_Npc slf)
 {
 	/// Jedzenie
 	CreateInvItems (slf, ItFo_Apple, 10);
@@ -682,7 +682,7 @@ func void Func_All_Items_Food (var C_NPC slf)
 	CreateInvItem (slf, ItFo_Addon_SchnellerHering);
 };
 ///******************************************************************************************
-func void Func_All_Items_Potions (var C_NPC slf)
+func void Func_All_Items_Potions (var C_Npc slf)
 {
 	/// Mikstury
 	CreateInvItems (slf, ItPo_Health_01, 10);
@@ -722,7 +722,7 @@ func void Func_All_Items_Potions (var C_NPC slf)
 	CreateInvItem (slf, ItPo_MegaDrink);
 };
 ///******************************************************************************************
-func void Func_All_Items_Plants (var C_NPC slf)
+func void Func_All_Items_Plants (var C_Npc slf)
 {
 	/// Zio³a
 	CreateInvItems (slf, ItPl_Health_Herb_01, 10);
@@ -753,7 +753,7 @@ func void Func_All_Items_Plants (var C_NPC slf)
 	CreateInvItems (slf, ItPl_Blueplant, 10);
 };
 ///******************************************************************************************
-func void Func_All_Items_AnimalTrophy (var C_NPC slf)
+func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 {
 	/// Trofea zwierzêce
 	CreateInvItems (slf, ItAt_HareFur, 10);
@@ -803,7 +803,7 @@ func void Func_All_Items_AnimalTrophy (var C_NPC slf)
 	CreateInvItems (slf, ItAt_UndeadDragonSoulStone, 10);
 	
 	CreateInvItems (slf, ItAt_DragonBlood, 10);
-	CreateInvItems (slf, ItMi_MoleratLubric, 10);
+	CreateInvItems (slf, ItAt_MoleratLubric, 10);
 	
 	CreateInvItems (slf, ItAt_SkeletonBone, 10);
 	CreateInvItems (slf, ItAt_SkeletonSkull, 10);
@@ -812,7 +812,7 @@ func void Func_All_Items_AnimalTrophy (var C_NPC slf)
 	CreateInvItems (slf, ItAt_DragonEgg_MIS, 10);
 };
 ///******************************************************************************************
-func void Func_All_Items_Written (var C_NPC slf)
+func void Func_All_Items_Written (var C_Npc slf)
 {
 	/// Mapy
 	CreateInvItem (slf, ItWr_Map_NewWorld);
@@ -851,7 +851,7 @@ func void Func_All_Items_Written (var C_NPC slf)
 	
 };
 ///******************************************************************************************
-func void Func_All_Items_Misc (var C_NPC slf)
+func void Func_All_Items_Misc (var C_Npc slf)
 {
 	/// Pozosta³e przedmioty
 	CreateInvItems (slf, ItMi_Gold, 1000);
@@ -952,7 +952,7 @@ func void Func_All_Items_Misc (var C_NPC slf)
 	CreateInvItems (slf, ItMi_Wood, 10);
 };
 ///******************************************************************************************
-func void Func_All_Items_Meshes (var C_NPC slf)
+func void Func_All_Items_Meshes (var C_Npc slf)
 {
 	/// Obiekty
 	CreateInvItem (slf, ItMe_Crystal_01);

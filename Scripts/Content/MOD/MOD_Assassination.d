@@ -52,7 +52,7 @@ func void MOD_Assassination (var C_Npc slf, var C_Npc oth, var oCItem weapon)
 		}
 		else
 		{
-			Print(ConcatStrings(IntToString(oth.level*2-slf.level), " poziomÃ³w za maÅ‚o by dokonaÄ‡ morderstwa!"));
+			Print(ConcatStrings(IntToString(oth.level*2-slf.level), " poziomów za ma³o by dokonaæ morderstwa!"));
 		};
 	};
 };

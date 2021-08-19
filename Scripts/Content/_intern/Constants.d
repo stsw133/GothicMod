@@ -151,45 +151,45 @@ const int ITEM_ACTIVE		= 1 << 30;	/// INTERNAL!
 ///	DAMAGE TYPES v2.0 (INDEX)
 ///******************************************************************************************
 
-const int DAM_INVALID			=	0;
-const int DAM_BARRIER			=	1;
-const int DAM_BLUNT				=	DAM_BARRIER	<< 1;
-const int DAM_EDGE				=	DAM_BLUNT	<< 1;
-const int DAM_FIRE				=	DAM_EDGE	<< 1;
-const int DAM_FLY				=	DAM_FIRE	<< 1;
-const int DAM_MAGIC				=	DAM_FLY		<< 1;
-const int DAM_POINT				=	DAM_MAGIC	<< 1;
-const int DAM_FALL				=	DAM_POINT	<< 1;
+const int DAM_INVALID				=	0;
+const int DAM_BARRIER				=	1;
+const int DAM_BLUNT					=	DAM_BARRIER	<< 1;
+const int DAM_EDGE					=	DAM_BLUNT	<< 1;
+const int DAM_FIRE					=	DAM_EDGE	<< 1;
+const int DAM_FLY					=	DAM_FIRE	<< 1;
+const int DAM_MAGIC					=	DAM_FLY		<< 1;
+const int DAM_POINT					=	DAM_MAGIC	<< 1;
+const int DAM_FALL					=	DAM_POINT	<< 1;
 
 ///******************************************************************************************
 ///	DAMAGE TYPES v2.0
 ///******************************************************************************************
 
-const int DAM_INDEX_BARRIER		=	0;
-const int DAM_INDEX_BLUNT		=	DAM_INDEX_BARRIER	+ 1;
-const int DAM_INDEX_EDGE		=	DAM_INDEX_BLUNT		+ 1;
-const int DAM_INDEX_FIRE		=	DAM_INDEX_EDGE		+ 1;
-const int DAM_INDEX_FLY			=	DAM_INDEX_FIRE		+ 1;
-const int DAM_INDEX_MAGIC		=	DAM_INDEX_FLY		+ 1;
-const int DAM_INDEX_POINT		=	DAM_INDEX_MAGIC		+ 1;
-const int DAM_INDEX_FALL		=	DAM_INDEX_POINT		+ 1;
+const int DAM_INDEX_BARRIER			=	0;
+const int DAM_INDEX_BLUNT			=	DAM_INDEX_BARRIER	+ 1;
+const int DAM_INDEX_EDGE			=	DAM_INDEX_BLUNT		+ 1;
+const int DAM_INDEX_FIRE			=	DAM_INDEX_EDGE		+ 1;
+const int DAM_INDEX_FLY				=	DAM_INDEX_FIRE		+ 1;
+const int DAM_INDEX_MAGIC			=	DAM_INDEX_FLY		+ 1;
+const int DAM_INDEX_POINT			=	DAM_INDEX_MAGIC		+ 1;
+const int DAM_INDEX_FALL			=	DAM_INDEX_POINT		+ 1;
 
-const int DAM_INDEX_MAX			=	DAM_INDEX_FALL		+ 1;
+const int DAM_INDEX_MAX				=	DAM_INDEX_FALL		+ 1;
 
 ///******************************************************************************************
 ///	PROTECTION TYPES v2.0
 ///******************************************************************************************
 
-const int PROT_BARRIER			=	DAM_INDEX_BARRIER;
-const int PROT_BLUNT			=	DAM_INDEX_BLUNT;
-const int PROT_EDGE				=	DAM_INDEX_EDGE;
-const int PROT_FIRE				=	DAM_INDEX_FIRE;
-const int PROT_FLY				=	DAM_INDEX_FLY;
-const int PROT_MAGIC			=	DAM_INDEX_MAGIC;
-const int PROT_POINT			=	DAM_INDEX_POINT;
-const int PROT_FALL				=	DAM_INDEX_FALL;
+const int PROT_BARRIER				=	DAM_INDEX_BARRIER;
+const int PROT_BLUNT				=	DAM_INDEX_BLUNT;
+const int PROT_EDGE					=	DAM_INDEX_EDGE;
+const int PROT_FIRE					=	DAM_INDEX_FIRE;
+const int PROT_FLY					=	DAM_INDEX_FLY;
+const int PROT_MAGIC				=	DAM_INDEX_MAGIC;
+const int PROT_POINT				=	DAM_INDEX_POINT;
+const int PROT_FALL					=	DAM_INDEX_FALL;
 
-const int PROT_INDEX_MAX		=	DAM_INDEX_MAX;
+const int PROT_INDEX_MAX			=	DAM_INDEX_MAX;
 
 ///******************************************************************************************
 ///	OTHER DAMAGE CONSTANTS
@@ -469,15 +469,15 @@ const string TRADE_CURRENCY_INSTANCE			=	"ITMI_GOLD";
 ///	SPELL CATEGORIES
 ///******************************************************************************************
 
-const int SPELL_GOOD		=	0;
-const int SPELL_NEUTRAL		=	1;
-const int SPELL_BAD			=	2;
+const int SPELL_GOOD				=	0;
+const int SPELL_NEUTRAL				=	1;
+const int SPELL_BAD					=	2;
 
 ///******************************************************************************************
 ///	SPELL INVEST CONSTS
 ///******************************************************************************************
 
-const int SPL_Cost_Scroll	=	5;
+const int SPL_Cost_Scroll			=	5;
 
 const int SPL_DONTINVEST 						=	0;
 const int SPL_RECEIVEINVEST						=	1;
@@ -603,7 +603,7 @@ const int SPL_NecDeath				=	67;	///changed!!!
 
 /// special spells
 const int SPL_MasterOfDisaster		=	68;
-const int SPL_EnergyBall			=	69;
+const int SPL_BeliarRage			=	69;
 
 /// npc spells
 const int SPL_ConcussionBolt		=	70;
@@ -705,7 +705,7 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	
 	"Sleep",  				// 40	SPL_Inflate
 	"Rage",  				// 41	SPL_Rage
-	"MassRage",  			// 42	SPL_MassRage
+	"Rage",  				// 42	SPL_MassRage
 	"BreathOfDeath",  		// 43	SPL_BreathOfDeath
 	"MassDeath",  			// 44	SPL_MassDeath
 	"ArmyOfDarkness", 		// 45	SPL_ArmyOfDarkness
@@ -742,7 +742,7 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	
 	/// special spells
 	"MasterOfDisaster",		// 68	SPL_MasterOfDisaster
-	"EnergyBall",			// 69	SPL_EnergyBall
+	"EnergyBall",			// 69	SPL_BeliarRage
 	
 	/// npc spells
     "ConcussionBolt",		// 70	SPL_ConcussionBolt
@@ -750,11 +750,11 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	
 	/// common spells
 	"PoisonBolt",			// 72	SPL_PoisonBolt
-	"SkeletonBolt",			// 73	SPL_SkullBolt
-	"GolemStone",			// 74	SPL_Reserved_74
+	"SkullBolt",			// 73	SPL_SkullBolt
+	"Light",				// 74	SPL_Reserved_74
 	"DementorBall",			// 75	SPL_BloodFireball
-	"DementorZap",			// 76	SPL_Reserved_76
-	"DementorRoot",			// 77	SPL_Reserved_77
+	"Light",				// 76	SPL_Reserved_76
+	"Light",				// 77	SPL_Reserved_77
 	"DragonBall",			// 78	SPL_DragonBall
 	"BlackDragonBall",		// 79	SPL_BlackDragonBall
 	
@@ -881,7 +881,7 @@ const string spellFxAniLetters[MAX_SPELL] =
 	
 	/// special spells
  	"FIB",					// 68	SPL_MasterOfDisaster
-	"WND",					// 69	SPL_EnergyBall
+	"WND",					// 69	SPL_BeliarRage
 
 	/// npc spells
 	"FBT",  				// 70	SPL_ConcussionBolt
@@ -982,6 +982,6 @@ const int INVCAM_ENTF_MISC2_STANDARD 	=	250;
 const int INVCAM_ENTF_MISC3_STANDARD 	=	500;
 const int INVCAM_ENTF_MISC4_STANDARD 	=	650;
 const int INVCAM_ENTF_MISC5_STANDARD 	=	850;
-const int INVCAM_X_RING_STANDARD 		=	 25;
-const int INVCAM_Z_RING_STANDARD 		=	 45;
+const int INVCAM_X_RING_STANDARD 		=	25;
+const int INVCAM_Z_RING_STANDARD 		=	45;
 const int INVCAM_X_STONEPLATE_STANDARD 	=	-90;

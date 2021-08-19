@@ -6,18 +6,27 @@ prototype Mst_Default_OrcShaman (C_Npc)
 	voice								=	18;
 	guild								=	GIL_ORC;
 	aivar[AIV_MM_REAL_ID]				= 	ID_ORCSHAMAN;
-//	aivar[AIV_Race]						= 	RACE_Orc;
 	aivar[AIV_FaceTex]					=	Hlp_RandomRange(50,58);
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 	
 	/// ------ Attributes & FT ------
-//	damagetype 							=	DAM_BLUNT;
+	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ORC;
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Medium);
 	
-	/// ------ Inventory ------
-	B_CreateAmbientInv(self);
+	B_SetAttributesToLevel (self, 40);
+	
+	hitchance[NPC_TALENT_1H]			=	level;
+	hitchance[NPC_TALENT_2H]			=	level;
+	hitchance[NPC_TALENT_BOW]			=	level;
+	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE;
@@ -50,7 +59,22 @@ instance OrcShaman_Sit (Mst_Default_OrcShaman)
 instance OrcShaman_Hosh_Pak (Mst_Default_OrcShaman)
 {
 	name								=	"Hosh-Pak";
+	
 	B_SetAttributesToLevel (self, 50);
+	
+	hitchance[NPC_TALENT_1H]			=	level;
+	hitchance[NPC_TALENT_2H]			=	level;
+	hitchance[NPC_TALENT_BOW]			=	level;
+	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_OrcShaman();
 	EquipItem (self, ItMw_2H_OrcStaff_01);
 };

@@ -1,20 +1,19 @@
 ///******************************************************************************************
 ///	B_UseItem
 ///******************************************************************************************
-func void B_UseItem (var C_NPC slf, var int itmInstance)
+func void B_UseItem (var C_Npc slf, var int itmInstance)
 {
 	if (C_BodyStateContains(slf, BS_SIT))
 	{
 		return;
 	};
 	
-	var C_NPC target; target = Npc_GetLookAtTarget(slf);
-	
+	var C_Npc target; target = Npc_GetLookAtTarget(slf);
 	if (Hlp_IsValidNpc(target))
 	{
-		B_StopLookAt(slf);
-		AI_UseItem (slf, itmInstance);
-		B_LookAtNpc (slf, target);
+		B_StopLookAt	(slf);
+		AI_UseItem		(slf, itmInstance);
+		B_LookAtNpc		(slf, target);
 	}
 	else
 	{
@@ -30,10 +29,10 @@ func void B_UseFakeScroll()
 		B_TurnToNpc	(self, hero);
 	};
 	
-	AI_RemoveWeapon(self);
-	CreateInvItem (self, Fakescroll);
+	AI_RemoveWeapon	(self);
+	CreateInvItem	(self, Fakescroll);
 	
-	var C_NPC target; target = Npc_GetLookAtTarget(self);
+	var C_Npc target; target = Npc_GetLookAtTarget(self);
 	if (Hlp_IsValidNpc(target))
 	{
 		B_StopLookAt		(self);

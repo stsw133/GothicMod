@@ -9,10 +9,16 @@ prototype Mst_Default_Swampdrone (C_Npc)
 	/// ------ Attributes ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						= 	FAI_BLOODFLY;
+	
 	B_SetAttributesToLevel (self, 9);
 	
 	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL / 3;
 	protection[PROT_POINT]				=	0;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

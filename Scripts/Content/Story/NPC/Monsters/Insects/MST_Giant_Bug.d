@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Giant_Bug (C_Npc)
+prototype Mst_Default_GiantBug (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Polna bestia";
@@ -9,7 +9,16 @@ prototype Mst_Default_Giant_Bug (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_GIANT_BUG;
+	
 	B_SetAttributesToLevel (self, 8);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -26,53 +35,53 @@ prototype Mst_Default_Giant_Bug (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Giant_Bug()
+func void B_SetVisuals_GiantBug()
 {
 	Mdl_SetVisual		(self, "Giant_Bug.mds");
 	Mdl_SetVisualBody	(self, "Giant_Bug_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Giant_Bug (Mst_Default_Giant_Bug)
+instance Giant_Bug (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
 ///******************************************************************************************
 ///	QuestMonsters
 ///******************************************************************************************
-instance Giant_Bug_VinoRitual1 (Mst_Default_Giant_Bug)
+instance Giant_Bug_VinoRitual1 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Giant_Bug_VinoRitual2 (Mst_Default_Giant_Bug)
+instance Giant_Bug_VinoRitual2 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
 ///******************************************************************************************
-instance Lobarts_Giant_Bug1 (Mst_Default_Giant_Bug)	
+instance Lobarts_Giant_Bug1 (Mst_Default_GiantBug)	
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug2 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug2 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug3 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug3 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug4 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug4 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug5 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug5 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug6 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug6 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };
-instance Lobarts_Giant_Bug7 (Mst_Default_Giant_Bug)
+instance Lobarts_Giant_Bug7 (Mst_Default_GiantBug)
 {
-	B_SetVisuals_Giant_Bug();
+	B_SetVisuals_GiantBug();
 };

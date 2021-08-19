@@ -58,5 +58,5 @@ func void MOD_HeroReset (var C_Npc slf)
 	
 	AI_UnequipArmor(slf);
 	
-	//PrintScreen ("PostaÄ‡ zresetowana", -1, -1, FONT_Screen, 2);
+	//PrintScreen ("Postaæ zresetowana", -1, -1, FONT_Screen, 2);
 };

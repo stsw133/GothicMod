@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Shadowbeast_Skeleton (C_Npc)
+prototype Mst_Default_ShadowbeastSkeleton (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Szkielet-cieniostwór";
@@ -9,7 +9,16 @@ prototype Mst_Default_Shadowbeast_Skeleton (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SHADOWBEAST;
+	
 	B_SetAttributesToLevel (self, 40);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -26,13 +35,13 @@ prototype Mst_Default_Shadowbeast_Skeleton (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Shadowbeast_Skeleton()
+func void B_SetVisuals_ShadowbeastSkeleton()
 {
 	Mdl_SetVisual		(self, "Shadow.mds");
 	Mdl_SetVisualBody	(self, "Shadowbeast_Skeleton_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Shadowbeast_Skeleton (Mst_Default_Shadowbeast_Skeleton)
+instance Shadowbeast_Skeleton (Mst_Default_ShadowbeastSkeleton)
 {
-	B_SetVisuals_Shadowbeast_Skeleton();
+	B_SetVisuals_ShadowbeastSkeleton();
 };

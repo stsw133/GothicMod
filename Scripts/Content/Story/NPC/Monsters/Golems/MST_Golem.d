@@ -9,7 +9,16 @@ prototype Mst_Default_Golem (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
+	
 	B_SetAttributesToLevel (self, 40);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -104,7 +113,17 @@ instance OreGolem (Mst_Default_Golem)
 instance CrystalGolem (Mst_Default_Golem)
 {
 	effect = "SPELLFX_CRYSTALGLOW";
+	
 	B_SetAttributesToLevel (self, 30);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_CrystalGolem();
 };
 instance SteelGolem (Mst_Default_Golem)
@@ -128,7 +147,7 @@ instance Summoned_Golem (Mst_Default_Golem)
 	guild								=	GIL_SUMMONED;
 	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
-	B_SetAttributesToLevel (self, 40);
+	B_SetAttributesToLevel (self, level);
 	B_SetVisuals_Golem();
 };
 ///******************************************************************************************
@@ -192,7 +211,17 @@ instance Shattered_Golem (Mst_Default_Golem)
 instance Golem_Magic (Mst_Default_Golem)
 {
 	name								=	"Magiczny golem";
+	
 	B_SetAttributesToLevel (self, 30);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL / 3;
+	
 	B_SetVisuals_Golem();
 	Mdl_SetModelScale (self, 0.9, 0.9, 0.9);
 };

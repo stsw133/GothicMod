@@ -182,17 +182,17 @@ instance ItMw_1h_Vlk_Mace (ItemPR_MeleeWeapon)
 	visual 					=	"Itmw_008_1h_pole_01.3ds";
 	SetItMwAttributes (self, ITEM_AXE, 8,2, 8,DAM_BLUNT, 70, 5);
 };
+instance ItMw_1h_Vlk_Dagger (ItemPR_MeleeWeapon)
+{
+	name 					=	"Sztylet";
+	visual 					=	"Itmw_005_1h_dagger_01.3DS";
+	SetItMwAttributes (self, ITEM_SWD, 4,10, 15,DAM_EDGE, 50, 5);
+};
 instance ItMw_1h_Vlk_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Topór";
 	visual 					=	"Itmw_010_1h_vlk_hatchet_01.3DS";
 	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_EDGE, 50, 5);
-};
-instance ItMw_1h_Vlk_Dagger (ItemPR_MeleeWeapon)
-{
-	name 					=	"Sztylet";
-	visual 					=	"Itmw_005_1h_dagger_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 4,10, 20,DAM_EDGE, 50, 5);
 };
 instance ItMw_1h_Vlk_Sword (ItemPR_MeleeWeapon)
 {
@@ -301,32 +301,39 @@ instance ItMw_Addon_Nomad (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_SWD, 60,12, 60,DAM_EDGE, 75, 5);
 };
 ///******************************************************************************************
-///	Orc weapons
+///	Goblin weapons
 ///******************************************************************************************
 instance ItMw_1H_Goblin_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Lagush";
+	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen.3DS";
 	SetItMwAttributes (self, ITEM_AXE, 10,2, 10,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Parush";
+	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_Nagel.3DS";
 	SetItMwAttributes (self, ITEM_AXE, 15,3, 15,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_03 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Morush";
+	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_Nagel_Ring.3DS";
 	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_BLUNT, 90, 1);
 };
 instance ItMw_1H_Goblin_04 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Dopadush";
+	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_schaedelbandage.3DS";
 	SetItMwAttributes (self, ITEM_AXE, 25,5, 25,DAM_BLUNT, 90, 1);
 };
+///******************************************************************************************
+///	Orc weapons
+///******************************************************************************************
 instance ItMw_2H_Draconian (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Drak";
@@ -416,7 +423,6 @@ instance ItMw_ShortSword1 (ItemPR_MeleeWeapon)
 instance ItMw_ShortSword2 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krótki miecz stra¿y";
-	damagetype 				=	DAM_EDGE;
 	visual 					=	"ItMw_012_1h_Sword_short_02.3DS";
 	SetItMwAttributes (self, ITEM_SWD, 14,2, 24,DAM_EDGE, 50, 100);
 };

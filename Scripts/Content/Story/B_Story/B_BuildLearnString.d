@@ -16,13 +16,6 @@ var string PRINT_LearnTalent_Hunting;
 ///******************************************************************************************
 func void MOD_PrintLearn()
 {
-	if		(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 0)		{	PRINT_LearnMagic = PRINT_LearnMagic_1;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 1)		{	PRINT_LearnMagic = PRINT_LearnMagic_2;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 2)		{	PRINT_LearnMagic = PRINT_LearnMagic_3;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 3)		{	PRINT_LearnMagic = PRINT_LearnMagic_4;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 4)		{	PRINT_LearnMagic = PRINT_LearnMagic_5;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 5)		{	PRINT_LearnMagic = PRINT_LearnMagic_6;	};
-	
 	if		(Npc_GetTalentValue(hero, NPC_TALENT_1H) < 30)			{	PRINT_LearnFight_1H = PRINT_LearnFight_1H_1;	}
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_1H) < 50)			{	PRINT_LearnFight_1H = PRINT_LearnFight_1H_2;	}
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_1H) < 70)			{	PRINT_LearnFight_1H = PRINT_LearnFight_1H_3;	}
@@ -42,6 +35,13 @@ func void MOD_PrintLearn()
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_CROSSBOW) < 50)	{	PRINT_LearnFight_Crossbow = PRINT_LearnFight_Crossbow_2;	}
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_CROSSBOW) < 70)	{	PRINT_LearnFight_Crossbow = PRINT_LearnFight_Crossbow_3;	}
 	else if	(Npc_GetTalentValue(hero, NPC_TALENT_CROSSBOW) < 90)	{	PRINT_LearnFight_Crossbow = PRINT_LearnFight_Crossbow_4;	};
+	
+	if		(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 0)		{	PRINT_LearnMagic = PRINT_LearnMagic_1;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 1)		{	PRINT_LearnMagic = PRINT_LearnMagic_2;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 2)		{	PRINT_LearnMagic = PRINT_LearnMagic_3;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 3)		{	PRINT_LearnMagic = PRINT_LearnMagic_4;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 4)		{	PRINT_LearnMagic = PRINT_LearnMagic_5;	}
+	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 5)		{	PRINT_LearnMagic = PRINT_LearnMagic_6;	};
 	
 	if		(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 0)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_1;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 1)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_2;	};

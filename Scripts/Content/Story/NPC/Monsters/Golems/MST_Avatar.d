@@ -10,7 +10,16 @@ prototype Mst_Default_Avatar (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
+	
 	B_SetAttributesToLevel (self, 50);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

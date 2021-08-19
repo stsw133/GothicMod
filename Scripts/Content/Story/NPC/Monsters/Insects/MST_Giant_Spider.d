@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Giant_Spider (C_Npc)			
+prototype Mst_Default_GiantSpider (C_Npc)			
 {
 	/// ------ Monster ------
 	name								=	"Olbrzymi paj¹k";
@@ -9,7 +9,16 @@ prototype Mst_Default_Giant_Spider (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						= 	FAI_MINECRAWLER;
+	
 	B_SetAttributesToLevel (self, 4);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -26,13 +35,13 @@ prototype Mst_Default_Giant_Spider (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Giant_Spider()
+func void B_SetVisuals_GiantSpider()
 {
 	Mdl_SetVisual		(self, "Spdr.mds");
 	Mdl_SetVisualBody	(self, "Spdr_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Giant_Spider (Mst_Default_Giant_Spider)
+instance Giant_Spider (Mst_Default_GiantSpider)
 {
-	B_SetVisuals_Giant_Spider();
+	B_SetVisuals_GiantSpider();
 };

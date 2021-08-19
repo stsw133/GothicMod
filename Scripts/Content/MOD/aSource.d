@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 var oCNpc o_hero; //o_hero = Hlp_GetNpc(hero);
-var c_npc o_other; //o_other = MEM_PtrToInst(o_hero.focus_vob);
+var C_Npc o_other; //o_other = MEM_PtrToInst(o_hero.focus_vob);
 var oCItem o_item; //o_item = MEM_PtrToInst(o_hero.focus_vob);
 var string o_string;
 var int o_int;
@@ -12,14 +12,19 @@ var int o_int;
 
 var int hpRegenPower;
 var int hpRegenPoints;
+var int mpRegenPower;
 var int mpRegenPoints;
+
 var int foodTime;
+var int digestionTime;
+var int drunkTime;
 
 const int BS_fRun			=	0;
 const int BS_hArmor			=	1;
 const int BS_Poison			=	2;
 const int BS_Obsession		=	3;
-var int bState[4];
+const int BS_Drunk			=	4;
+var int bState[5];
 
 var int dLevel;				/// difficulty level: Easy | Medium | Hard | Very Hard | Hardcore
 var int gLevelA;			/// girlfriend love level (not sure/don't remember)

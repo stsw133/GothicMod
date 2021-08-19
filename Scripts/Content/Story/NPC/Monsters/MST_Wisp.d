@@ -4,10 +4,12 @@ prototype Mst_Default_Wisp (C_Npc)
 	/// ------ Monster ------
 	name								=	"Ognik";
 	guild								=	GIL_BLOODFLY;
+	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_MAGIC;
 	fight_tactic						=	FAI_BLOODFLY;
+	
 	B_SetAttributesToLevel (self, 5);
 	
 	/// ------ Protection ------
@@ -15,7 +17,7 @@ prototype Mst_Default_Wisp (C_Npc)
 	protection[PROT_EDGE]				=	-1;
 	protection[PROT_POINT]				=	-1;
 	protection[PROT_FIRE]				=	0;
-	protection[PROT_FLY]				=	-1;
+	protection[PROT_FLY]				=	0;
 	protection[PROT_MAGIC]				=	0;
 	
 	/// ------ Senses & Ranges ------

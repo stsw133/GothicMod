@@ -9,11 +9,20 @@ prototype Mst_Default_Gorilla (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_TROLL;
-	B_SetAttributesToLevel (self, 14);
+	
+	B_SetAttributesToLevel (self, 15);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
-	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX * 2/ 3;
+	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;

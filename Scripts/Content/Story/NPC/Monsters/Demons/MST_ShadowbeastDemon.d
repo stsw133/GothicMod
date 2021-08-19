@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_ShadowBeast_Demon (C_Npc)
+prototype Mst_Default_ShadowbeastDemon (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Ognisty demon";
@@ -10,10 +10,16 @@ prototype Mst_Default_ShadowBeast_Demon (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_SHADOWBEAST;
+	
 	B_SetAttributesToLevel (self, 50);
 	
 	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
 	protection[PROT_FIRE]				=	-1;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -33,21 +39,21 @@ prototype Mst_Default_ShadowBeast_Demon (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_ShadowBeast_Demon()
+func void B_SetVisuals_ShadowbeastDemon()
 {
 	Mdl_SetVisual		(self, "FireShadow.mds");
 	Mdl_SetVisualBody	(self, "Shadowbeast_Skeleton_Body", 1, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance ShadowBeast_Fire (Mst_Default_ShadowBeast_Demon)
+instance Shadowbeast_Fire (Mst_Default_ShadowbeastDemon)
 {
-	B_SetVisuals_ShadowBeast_Demon();
+	B_SetVisuals_ShadowbeastDemon();
 };
 ///******************************************************************************************
-instance ShadowBeast_Fire_CanyonLib (Mst_Default_ShadowBeast_Demon)
+instance Shadowbeast_Fire_CanyonLib (Mst_Default_ShadowbeastDemon)
 {
 	aivar[AIV_EnemyOverride]			=	true;
 	aivar[AIV_MaxDistToWp]				=	900;
 	aivar[AIV_OriginalFightTactic]		=	FAI_SHADOWBEAST;
-	B_SetVisuals_ShadowBeast_Demon();
+	B_SetVisuals_ShadowbeastDemon();
 };

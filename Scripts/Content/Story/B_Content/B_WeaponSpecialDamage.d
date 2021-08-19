@@ -56,9 +56,9 @@ func void B_WeaponSpecialDamage (var C_Npc oth, var C_Npc slf)
 		/// when SPL_PalBless is active
 		if (SPL_IsActive_PalBless)
 		{
-			if (oth.attribute[ATR_MANA] >= 2)
+			if (oth.attribute[ATR_MANA] >= SPL_Cost_PalBless)
 			{
-				Npc_ChangeAttribute (oth, ATR_MANA, -2);	/// -2 many na atak
+				Npc_ChangeAttribute (oth, ATR_MANA, -SPL_Cost_PalBless);	/// -2 many na atak
 				Wld_PlayEffect ("spellFX_PALHOLYBOLT_COLLIDE", slf, slf, 0, 0, 0, false);
 				B_MagicHurtNpc (oth, slf, oth.attribute[ATR_MANA_MAX] / 10);	/// 10% max. many
 			}

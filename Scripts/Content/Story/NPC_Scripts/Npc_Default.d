@@ -3,9 +3,6 @@
 ///******************************************************************************************
 prototype Npc_Default (C_NPC)
 {
-	/// ------ EXP ------
-	Npc_SetTalentSkill (self, NPC_TALENT_DIFFICULTY, dLevel);
-	
 	/// ------ Attributes ------
 	/// in B_SetAttributesToLevel.d
 /*
@@ -28,4 +25,6 @@ prototype Npc_Default (C_NPC)
 	aivar[AIV_MM_FollowTime]			=	NPC_TIME_FOLLOW;
 	
 //	bodyStateInterruptableOverride		=	false;
+	
+	Npc_SetTalentSkill (self, NPC_TALENT_DIFFICULTY, dLevel);
 };

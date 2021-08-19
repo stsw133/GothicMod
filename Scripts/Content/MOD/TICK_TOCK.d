@@ -27,14 +27,27 @@ func void TT_1000_RGHP()
 	else if (hpRegenPower > 0)
 	{
 		hpRegenPoints += hpRegenPower;
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpRegenPoints/5);
-		hpRegenPoints -= hpRegenPoints/5*5;
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpRegenPoints/10);
+		hpRegenPoints -= hpRegenPoints/10*10;
 	};
 	/// gdy postaæ coœ jad³a
 	if (foodTime > 0)
 	{
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);	/// +1 hp co sekundê
-		foodTime -= 1;
+		if (digestionTime > 0 && foodTime >= 3)
+		{
+			Npc_ChangeAttribute (hero, ATR_HITPOINTS, 3);	/// +3 hp co sekundê
+			foodTime -= 3;
+		}
+		else
+		{
+			Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);	/// +1 hp co sekundê
+			foodTime -= 1;
+		};
+	};
+	/// gdy postaæ coœ pi³a
+	if (drunkTime > 0)
+	{
+		drunkTime -= 1;
 	};
 };
 func void TT_1000_RGMP()
@@ -42,17 +55,17 @@ func void TT_1000_RGMP()
 	/// gdy postaæ nie jest pod wp³ywem kl¹twy poszukiwaczy
 	if (!bState[BS_Obsession])
 	{
-		mpRegenPoints += Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC);
-		Npc_ChangeAttribute (hero, ATR_MANA, mpRegenPoints/2);	/// +0.5 many za ka¿dy kr¹g magii (max. 3) co sekundê
-		mpRegenPoints -= mpRegenPoints/2*2;
+		mpRegenPoints += Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) * 5 + mpRegenPower;	/// +0.5 many za ka¿dy kr¹g magii (max. 3) co sekundê
+		Npc_ChangeAttribute (hero, ATR_MANA, mpRegenPoints/10);
+		mpRegenPoints -= mpRegenPoints/10*10;
 	};
 };
 func void TT_500_RGEN()
 {
-	/// gdy postaæ biegnie bez sprintu...
+	/// gdy postaæ biegnie (bez sprintu)...
 	if (C_BodyStateContains(hero, BS_RUN))
 	{
-		hero.aivar[AIV_Energy] += 2;	/// +2 energii co 0.5 sekundy
+		hero.aivar[AIV_Energy] += 1;	/// +1 energii co 0.5 sekundy
 	}
 	/// ...lub gdy postaæ nie biegnie (i nie skacze) w ogóle
 	else if (!C_BodyStateContains(hero, BS_JUMP))
@@ -116,6 +129,7 @@ func void TT_500()
 		if (Hering_Time == 0)
 		{
 			hero.aivar[AIV_Energy] = 0;
+			Npc_AddDrunkTime (hero, 125);
 		};
 	}
 	else
@@ -123,7 +137,7 @@ func void TT_500()
 		/// regeneracja i zu¿ycie energii
 		if (bState[BS_fRun])
 		{
-			hero.aivar[AIV_Energy] -= (5 + bState[BS_hArmor]*5 - (Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN)*3));
+			hero.aivar[AIV_Energy] -= ((5 + bState[BS_hArmor]*5) / (Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN) + 1));
 		}
 		else
 		{
@@ -146,7 +160,7 @@ func void TT_5()
 	
 	/// ------ Klawisz sprintu ------
 	if (MEM_KeyState(keySprint1) == KEY_HOLD || MEM_KeyState(keySprint2) == KEY_HOLD)
-	&& (C_BodyStateContains(hero, BS_RUN))
+	&& (C_BodyStateContains(hero, BS_RUN) && drunkTime < 50)
 	&& (hero.aivar[AIV_Energy] > 0 || movieMode)
 	{
 		if (!bState[BS_fRun])
@@ -161,7 +175,7 @@ func void TT_5()
 		bState[BS_fRun] = false;
 	};
 	
-	/// ------ Klawisz szybkiego obrotu ------
+	/// ------ Klawisz skrótów ------
 	if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
 	{
 		//AI_PlayAni (hero, "T_QUICKTURN");
@@ -178,7 +192,7 @@ func void TT_5()
 		else if (MEM_KeyState(keyInteract1) == KEY_HOLD)	{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
 		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
 		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// kierunek rêki
-		else if (MemoKey1 != -1)								{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
+		else if (MemoKey1 != -1)							{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
 	};
 	
 	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------

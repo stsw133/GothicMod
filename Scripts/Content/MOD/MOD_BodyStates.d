@@ -2,6 +2,26 @@
 ///	MOD_BodyStates
 ///******************************************************************************************
 
+/// ------ HeavyArmor ------
+func void Equip_HeavyArmor()
+{
+	if (Npc_IsPlayer(self))
+	&& (!bState[BS_hArmor])
+	{
+		bState[BS_hArmor] = true;
+		Bar_Delete(Bar_energyBar);
+	};
+};
+func void UnEquip_HeavyArmor()
+{
+	if (Npc_IsPlayer(self))
+	&& (bState[BS_hArmor])
+	{
+		bState[BS_hArmor] = false;
+		Bar_Delete(Bar_energyBar);
+	};
+};
+
 /// ------ Poison ------
 func void MOD_PoisonON (var C_Npc slf)
 {
@@ -39,25 +59,5 @@ func void MOD_ObsessionOFF (var C_Npc slf)
 	{
 		bState[BS_Obsession] = false;
 		Bar_Delete(Bar_manaBar);
-	};
-};
-
-/// ------ HeavyArmor ------
-func void Equip_HeavyArmor()
-{
-	if (Npc_IsPlayer(self))
-	&& (!bState[BS_hArmor])
-	{
-		bState[BS_hArmor] = true;
-		Bar_Delete(Bar_energyBar);
-	};
-};
-func void UnEquip_HeavyArmor()
-{
-	if (Npc_IsPlayer(self))
-	&& (bState[BS_hArmor])
-	{
-		bState[BS_hArmor] = false;
-		Bar_Delete(Bar_energyBar);
 	};
 };

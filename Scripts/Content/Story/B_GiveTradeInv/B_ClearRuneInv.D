@@ -1,7 +1,9 @@
 ///******************************************************************************************
-func void B_ClearRuneInv (var C_NPC slf) 
+///	B_ClearRuneInv
+///******************************************************************************************
+func void B_ClearRuneInv (var C_Npc slf) 
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	
 	if (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(her))
 	{

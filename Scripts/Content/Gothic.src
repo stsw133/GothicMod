@@ -190,6 +190,7 @@ STORY\NPC\NPC_WzA\*.d
 STORY\NPC\Monsters\MST_*.d
 STORY\NPC\Monsters\Demons\MST_*.d
 STORY\NPC\Monsters\Furbeasts\MST_*.d
+STORY\NPC\Monsters\Goblins\MST_*.d
 STORY\NPC\Monsters\Golems\MST_*.d
 STORY\NPC\Monsters\Insects\MST_*.d
 STORY\NPC\Monsters\Livestock\MST_*.d

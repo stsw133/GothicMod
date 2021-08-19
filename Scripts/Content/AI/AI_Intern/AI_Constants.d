@@ -251,6 +251,8 @@ const int	ID_CHAOS					= 182;
 const int	ID_MOROK					= 183;
 const int	ID_SUMMONED					= 184;
 
+const int	ID_MM_MAX					= 185;
+
 const int AIV_MM_LastBody					=	44;
 
 /// ------ ArenaFight ------

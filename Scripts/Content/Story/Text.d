@@ -308,7 +308,7 @@ const string TXT_SPELLS[MAX_SPELL] =
 	
 	/// special spells
   	"Œwiêta strza³a",			// 68	SPL_MasterOfDisaster
-  	"Gniew Beliara",			// 69	SPL_EnergyBall
+  	"Gniew Beliara",			// 69	SPL_BeliarRage
 	
   	/// npc spells
  	"Pocisk nieprzytomnoœci",	// 70	SPL_ConcussionBolt
@@ -362,23 +362,6 @@ const string NAME_SPL_SlowTime				=	"Spowolnienie czasu";
 const string NAME_SPL_NightToDay			=	"Noc w dzieñ";
 const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
 
-/// MYS spells
-const string NAME_SPL_MysBolt				=	"Mistyczny pocisk";
-const string NAME_SPL_MysProtection			=	"Duch";
-const string NAME_SPL_MysRoot				=	"Korzeñ";
-const string NAME_SPL_MysTame				=	"Oswojenie";
-const string NAME_SPL_MysAura				=	"Aura lecznicza";
-const string NAME_SPL_MysEchoes				=	"Runiczne echa";
-
-/// GEO spells
-const string NAME_SPL_GeoStone				=	"G³az";
-const string NAME_SPL_GeoProtection			=	"Kamienna skóra";
-const string NAME_SPL_GeoElevate			=	"Piedesta³";
-const string NAME_SPL_GeoGolem				=	"Tworzenie golema";
-const string NAME_SPL_GeoExplosion			=	"Eksplozja";
-const string NAME_SPL_GeoWall				=	"Œciana";
-
-/// common spells
 const string NAME_SPL_FireBolt				=	"Ognista strza³a";
 const string NAME_SPL_IceBolt				=	"Lodowa strza³a";
 const string NAME_SPL_Zap					=	"Ma³a b³yskawica";
@@ -412,6 +395,34 @@ const string NAME_SPL_Teleport				=	"Teleportacja";
 const string NAME_SPL_Transform				=	"Przemiana";
 const string NAME_SPL_Summon				=	"Przyzwanie";
 
+const string NAME_SPL_MasterOfDisaster		=	"Œwiêty pocisk";
+const string NAME_SPL_BeliarRage			=	"Gniew Beliara";
+
+/// npc spells
+const string NAME_SPL_ConcussionBolt		=	"Pocisk nieprzytomnoœci";
+const string NAME_SPL_DeathBolt				=	"Pocisk œmierci";
+const string NAME_SPL_PoisonBolt			=	"Zatruta strza³a";
+const string NAME_SPL_SkullBolt				=	"Krzyk umar³ych";
+const string NAME_SPL_BloodFireball			=	"Krwawa kula ognia";
+const string NAME_SPL_DragonBall			=	"Smocza kula";
+const string NAME_SPL_BlackDragonBall		=	"Czarna smocza kula";
+
+/// MYS spells
+const string NAME_SPL_MysBolt				=	"Mistyczny pocisk";
+const string NAME_SPL_MysProtection			=	"Duch";
+const string NAME_SPL_MysRoot				=	"Korzeñ";
+const string NAME_SPL_MysTame				=	"Oswojenie";
+const string NAME_SPL_MysAura				=	"Aura lecznicza";
+const string NAME_SPL_MysEchoes				=	"Runiczne echa";
+
+/// GEO spells
+const string NAME_SPL_GeoStone				=	"G³az";
+const string NAME_SPL_GeoProtection			=	"Kamienna skóra";
+const string NAME_SPL_GeoElevate			=	"Piedesta³";
+const string NAME_SPL_GeoGolem				=	"Tworzenie golema";
+const string NAME_SPL_GeoExplosion			=	"Eksplozja";
+const string NAME_SPL_GeoWall				=	"Œciana";
+
 /// ELE spells
 const string NAME_SPL_EleLightning			=	"B³yskawica";
 const string NAME_SPL_EleProtection			=	"Powietrzna tarcza";
@@ -435,19 +446,6 @@ const string NAME_SPL_NecSkeleton			=	"Przyzwanie szkieletu";
 const string NAME_SPL_NecSwarm				=	"Rój insektów";
 const string NAME_SPL_NecDemon				=	"Przyzwanie demona";
 const string NAME_SPL_NecDeath				=	"Œmieræ";
-
-/// special spells
-const string NAME_SPL_MasterOfDisaster		=	"Œwiêty pocisk";
-const string NAME_SPL_EnergyBall			=	"Gniew Beliara";
-
-/// npc spells
-const string NAME_SPL_ConcussionBolt		=	"Pocisk nieprzytomnoœci";
-const string NAME_SPL_DeathBolt				=	"Pocisk œmierci";
-const string NAME_SPL_PoisonBolt			=	"Zatruta strza³a";
-const string NAME_SPL_SkullBolt				=	"Krzyk umar³ych";
-const string NAME_SPL_BloodFireball			=	"Krwawa kula ognia";
-const string NAME_SPL_DragonBall			=	"Smocza kula";
-const string NAME_SPL_BlackDragonBall		=	"Czarna smocza kula";
 
 /// ...
 const string NAME_SPL_cB_Fireball			=	"Zaklêcie Setrona";
@@ -588,7 +586,7 @@ const string PRINT_Trade_Not_Enough_Gold	=	"Brakuje ci z³ota na zakup tego przed
 
 const string NAME_OneHanded					=	"Broñ jednorêczna";
 const string NAME_TwoHanded					=	"Broñ dwurêczna";
-const string NAME_SecHanded					=	"Broñ dodatkowa";
+const string NAME_SecHanded					=	"Broñ pomocnicza";
 const string NAME_FastGun					=	"Broñ szybkostrzelna";
 
 /// ------ item conditions ------
@@ -714,38 +712,33 @@ const string PRINT_LearnTalent_Picklock		=	"W³amywanie siê: poziom 1/1";
 const string PRINT_LearnTalent_Pickpocket	=	"Kradzie¿ kiesz.: poziom 1/1";
 const string PRINT_LearnTalent_Persuasion	=	"Perswazja: poziom 1/1";
 
+const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/2";
+const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/2";
 const string PRINT_LearnTalent_Smith_1		=	"Kowalstwo: poziom 1/2";
 const string PRINT_LearnTalent_Smith_2		=	"Kowalstwo: poziom 2/2";
+const string PRINT_LearnTalent_Enchanting_1	=	"Zaklinanie: poziom 1/2";
+const string PRINT_LearnTalent_Enchanting_2	=	"Zaklinanie: poziom 2/2";
 const string PRINT_LearnTalent_Alchemy_1	=	"Alchemia: poziom 1/2";
 const string PRINT_LearnTalent_Alchemy_2	=	"Alchemia: poziom 2/2";
 const string PRINT_LearnTalent_Hunting_1	=	"Myœlistwo: poziom 1/2";
 const string PRINT_LearnTalent_Hunting_2	=	"Myœlistwo: poziom 2/2";
-const string PRINT_LearnTalent_Enchanting_1	=	"Zaklinanie: poziom 1/2";
-const string PRINT_LearnTalent_Enchanting_2	=	"Zaklinanie: poziom 2/2";
-const string PRINT_LearnTalent_Jewelery_1	=	"Jubilerstwo: poziom 1/2";
-const string PRINT_LearnTalent_Jewelery_2	=	"Jubilerstwo: poziom 2/2";
 const string PRINT_LearnTalent_MainCraft	=	"(g³ówne) ";
 
 const string PRINT_LearnSTR1				=	"Si³a + 1";
 const string PRINT_LearnSTR5				=	"Si³a + 5";
 const string PRINT_LearnSTR10				=	"Si³a + 10";
-const string PRINT_LearnSTR20				=	"Si³a + 20";
 const string PRINT_LearnDEX1				=	"Zrêcznoœæ + 1";
 const string PRINT_LearnDEX5				=	"Zrêcznoœæ + 5";
 const string PRINT_LearnDEX10				=	"Zrêcznoœæ + 10";
-const string PRINT_LearnDEX20				=	"Zrêcznoœæ + 20";
 const string PRINT_LearnPower1				=	"Moc + 1";
 const string PRINT_LearnPower5				=	"Moc + 5";
 const string PRINT_LearnPower10				=	"Moc + 10";
-const string PRINT_LearnPower20				=	"Moc + 20";
 const string PRINT_LearnMP1					=	"Mana + 1";
 const string PRINT_LearnMP5					=	"Mana + 5";
 const string PRINT_LearnMP10				=	"Mana + 10";
-const string PRINT_LearnMP20				=	"Mana + 20";
-const string PRINT_LearnHP1					=	"Punkty ¿ycia + 4";
-const string PRINT_LearnHP5					=	"Punkty ¿ycia + 20";
-const string PRINT_LearnHP10				=	"Punkty ¿ycia + 40";
-const string PRINT_LearnHP20				=	"Punkty ¿ycia + 80";
+const string PRINT_LearnHP1					=	"Punkty ¿ycia + 5";
+const string PRINT_LearnHP5					=	"Punkty ¿ycia + 25";
+const string PRINT_LearnHP10				=	"Punkty ¿ycia + 50";
 
 ///******************************************************************************************
 ///	B_GiveInvItems
@@ -776,9 +769,6 @@ const string PRINT_MagicStoneSuccess		=	"Zaczarowano druidzki kamieñ!";
 
 const string PRINT_ProdItemsMissing			=	"Za ma³o sk³adników!";
 const string PRINT_NoInnosTears				=	"Brakuje ci '£ez Innosa'.";
-
-const string PRINT_Addon_GuildNeeded		=	"Nie nale¿ysz do ¿adnej gildii.";
-const string PRINT_Addon_GuildNeeded_NOV	=	"Nie jesteœ jeszcze magiem.";
 
 ///******************************************************************************************
 ///	B_RefuseAction

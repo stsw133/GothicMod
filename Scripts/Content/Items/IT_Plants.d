@@ -17,7 +17,7 @@ instance ItPl_GraveMoss (ItemPR_Plant)
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
-	TEXT[2]					=	"os³abiaj¹cy moc mikstury.";
+	TEXT[2]					=	"mikstur o dzia³aniu negatywnym.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Temp_Herb (ItemPR_Plant)
@@ -28,7 +28,7 @@ instance ItPl_Temp_Herb (ItemPR_Plant)
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
-	TEXT[2]					=	"wzmacniaj¹cy moc mikstury.";
+	TEXT[2]					=	"mikstur o dzia³aniu czasowym.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Perm_Herb (ItemPR_Plant)
@@ -39,7 +39,7 @@ instance ItPl_Perm_Herb (ItemPR_Plant)
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
-	TEXT[2]					=	"utrwalaj¹cy efekt mikstury.";
+	TEXT[2]					=	"mikstur o dzia³aniu trwa³ym.";
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
@@ -174,7 +174,7 @@ instance ItPl_Health_Herb_04 (ItemPR_Plant)
 {
 	name 					=	"Krwawy rumianek";
 	value 					=	120;
-	visual 					=	"ItPl_Strength_Herb_01.3DS";
+	visual 					=	"ItPl_Health_Herb_07.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -185,7 +185,7 @@ instance ItPl_Mana_Herb_04 (ItemPR_Plant)
 {
 	name 					=	"Wilcza miêta";
 	value 					=	120;
-	visual 					=	"ItPl_Strength_Herb_01.3DS";
+	visual 					=	"ItPl_Mana_Herb_07.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -284,6 +284,7 @@ instance ItPl_Cactus (ItemPR_Plant)
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
 	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do warzenia tequili.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Forestberry (ItemPR_Plant)
@@ -296,6 +297,7 @@ instance ItPl_Forestberry (ItemPR_Plant)
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
 	
 	description				=	name;
+	TEXT[1]					=	"U¿ywana do warzenia wina.";
 	COUNT[5]				=	value;
 };
 instance ItPl_Planeberry (ItemPR_Plant)
@@ -308,6 +310,7 @@ instance ItPl_Planeberry (ItemPR_Plant)
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
 	
 	description				=	name;
+	TEXT[1]					=	"U¿ywana do warzenia ginu.";
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************

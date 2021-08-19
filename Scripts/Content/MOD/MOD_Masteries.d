@@ -2,33 +2,33 @@
 ///	MOD_Masteries
 ///******************************************************************************************
 /*
-var int masType;		/// okreÅ›la typ specjalizacji bojowej gÅ‚Ã³wnego bohatera
+var int masType;		/// okreœla typ specjalizacji bojowej g³ównego bohatera
 var int masFight;		/// czas trwania walki, liczone od uderzenia w przeciwnika
 
 const int masType_FGT	=	1;	/// wojownik
-								/// zwiÄ™kszajÄ…ce siÄ™ w czasie nieuchronne obraÅ¼enia
+								/// zwiêkszaj¹ce siê w czasie nieuchronne obra¿enia
 const int masType_RNG	=	2;	/// strzelec
-								/// dodatkowe obraÅ¼enia zaleÅ¼ne od odlegÅ‚oÅ›ci od przeciwnika
-const int masType_ASA	=	3;	/// zabÃ³jca
-								/// przeciwnik ginie gdy jest poniÅ¼ej pewnego poziomu zdrowia
+								/// dodatkowe obra¿enia zale¿ne od odleg³oœci od przeciwnika
+const int masType_ASA	=	3;	/// zabójca
+								/// przeciwnik ginie gdy jest poni¿ej pewnego poziomu zdrowia
 const int masType_BER	=	4;	/// berserker
 								/// co trzeci atak przywraca zdrowie
 const int masType_CON	=	5;	/// kontroler
-								/// zadanie obraÅ¼eÅ„ przyzywa insekty w pobliÅ¼u wroga
+								/// zadanie obra¿eñ przyzywa insekty w pobli¿u wroga
 const int masType_ENC	=	6;	/// zaklinacz
-								/// mikstury trwajÄ… dÅ‚uÅ¼ej a pancerze dajÄ… lepszÄ… ochronÄ™
+								/// mikstury trwaj¹ d³u¿ej a pancerze daj¹ lepsz¹ ochronê
 const int masType_ILU	=	7;	/// iluzjonista
-								/// zaatakowanie wroga tworzy jego duchowÄ… kopiÄ™ atakujÄ…cÄ… go
+								/// zaatakowanie wroga tworzy jego duchow¹ kopiê atakuj¹c¹ go
 const int masType_DST	=	8;	/// destruktor
-								/// dodatkowe obraÅ¼enia zaleÅ¼ne od brakujÄ…cego zdrowia przeciwnika
+								/// dodatkowe obra¿enia zale¿ne od brakuj¹cego zdrowia przeciwnika
 const int masType_JUG	=	9;	/// moloch
-								/// dodatkowe obraÅ¼enia zaleÅ¼ne od dodatkowego maksymalnego zdrowia
+								/// dodatkowe obra¿enia zale¿ne od dodatkowego maksymalnego zdrowia
 const int masType_COL	=	10;	/// kolos
 								/// zyskujesz dodatkowe zdrowie co poziom
 const int masType_TRP	=	11;	/// szturmowiec
-								/// regeneracja brakujÄ…cego zdrowia w trakcie walki
-const int masType_GRD	=	12;	/// straÅ¼nik
-								/// sojusznicy otrzymujÄ… zdrowie na bazie zdrowia gracza podczas atakÃ³w
+								/// regeneracja brakuj¹cego zdrowia w trakcie walki
+const int masType_GRD	=	12;	/// stra¿nik
+								/// sojusznicy otrzymuj¹ zdrowie na bazie zdrowia gracza podczas ataków
 
 ///******************************************************************************************
 func void MASTERYDAMAGE_CHECK()

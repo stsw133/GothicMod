@@ -10,6 +10,16 @@ prototype Mst_Default_Swampshark (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SWAMPSHARK;
 	
+	B_SetAttributesToLevel (self, 30);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
@@ -38,13 +48,11 @@ func void B_SetVisuals_Desertshark()
 ///******************************************************************************************
 instance Swampshark (Mst_Default_Swampshark)
 {
-	B_SetAttributesToLevel (self, 30);
 	B_SetVisuals_Swampshark();
 };
 instance Desertshark (Mst_Default_Swampshark)
 {
 	name								=	"W¹¿ piaskowy";
-	B_SetAttributesToLevel (self, 30);
 	B_SetVisuals_Desertshark();
 };
 ///******************************************************************************************
@@ -53,21 +61,47 @@ instance Desertshark (Mst_Default_Swampshark)
 instance MIS_Addon_Swampshark_01 (Mst_Default_Swampshark)
 {
 	B_SetAttributesToLevel (self, 25);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_Swampshark();
 };
 instance MIS_Addon_Swampshark_02 (Mst_Default_Swampshark)
 {
 	B_SetAttributesToLevel (self, 25);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_Swampshark();
 };
 instance MIS_Addon_Swampshark_03 (Mst_Default_Swampshark)
 {
 	B_SetAttributesToLevel (self, 25);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_Swampshark();
 };
 instance MIS_Addon_Swampshark_Lou (Mst_Default_Swampshark)
 {
-	B_SetAttributesToLevel (self, 30);
 	B_SetVisuals_Swampshark();
 	CreateInvItem (self, ITKE_Addon_Tavern_01);
 };

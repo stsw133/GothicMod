@@ -707,20 +707,20 @@ instance ItRu_MasterOfDisaster (ItemPR_Spell)
 	COUNT[2]				=	SPL_Damage_MasterOfDisaster;
 	COUNT[5]				=	value;
 };
-instance ItRu_EnergyBall (ItemPR_Spell)
+instance ItRu_BeliarRage (ItemPR_Spell)
 {
 	value 					=	200;
 	
 	visual 					=	"ItRu_Beliar02.3ds";
-//	spell					= 	SPL_EnergyBall;
+	spell					= 	SPL_BeliarRage;
 	mag_circle 				=	1;
-	cond_value[2]  			=	SPL_Cost_EnergyBall;
+	cond_value[2]  			=	SPL_Cost_BeliarRage;
 	
-	description				=	NAME_SPL_EnergyBall;
+	description				=	NAME_SPL_BeliarRage;
 	COUNT[0]				=	mag_circle;
-	COUNT[1]				=	SPL_Cost_EnergyBall+(BeliarWeapon_LastUpgradeLvl*1);
+	COUNT[1]				=	SPL_Cost_BeliarRage+(BeliarWeapon_LastUpgradeLvl*1);
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_EnergyBall+(BeliarWeapon_LastUpgradeLvl*5);
+	COUNT[2]				=	SPL_Damage_BeliarRage+(BeliarWeapon_LastUpgradeLvl*5);
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************

@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_TeachTalent
 ///******************************************************************************************
-func int B_TeachTalent (var C_NPC slf, var C_NPC oth, var int talent, var int level)
+func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int level)
 {
 	var int kosten;
 	

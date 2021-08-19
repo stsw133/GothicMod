@@ -999,7 +999,7 @@ instance DIA_Addon_Saturas_BeliarsWeapon		(C_INFO)
 
 func int DIA_Addon_Saturas_BeliarsWeapon_Condition ()
 {
-	if (C_ScHasBeliarsWeapon ())
+	if (C_ScHasBeliarsWeapon())
 	&& (RavenIsDead == TRUE)
 		{
 			return TRUE;
@@ -1118,7 +1118,7 @@ instance DIA_Addon_Saturas_BeliarWeapGeben		(C_INFO)
 
 func int DIA_Addon_Saturas_BeliarWeapGeben_Condition ()
 {
-	if (C_ScHasBeliarsWeapon ())
+	if (C_ScHasBeliarsWeapon())
 	&& (RavenIsDead == TRUE)
 	&& (Npc_KnowsInfo (other, DIA_Addon_Saturas_BeliarsWeapon))
 		{

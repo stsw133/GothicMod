@@ -26,7 +26,7 @@ func void _Focusnames()
 		
 		if		((o_item.flags & ITEM_MISSION) == ITEM_MISSION)				{	col = RGBA (128, 192, 255, 255);	}
 		else if (o_item.mainflag == ITEM_KAT_MAGIC)							{	col = RGBA (128, 128, 255, 255);	}
-		else if (o_item.mainflag == ITEM_KAT_RUNE)							{	col = RGBA (192, 128, 255, 255);	}
+		else if (o_item.mainflag == ITEM_KAT_RUNE)							{	col = RGBA (128, 128, 255, 255);	}
 		else if (o_item.mainflag == ITEM_KAT_NONE && o_item.value >= 100)	{	col = RGBA (255, 224, 128, 255);	};
 	};
 	

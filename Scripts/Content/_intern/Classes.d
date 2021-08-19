@@ -7,7 +7,7 @@ const int MAX_MISSIONS		=	5;
 const int MAX_HITCHANCE		=	5;
 
 ///******************************************************************************************
-class C_NPC
+class C_Npc
 {
 	var int		id;
 	var string	name[5];
@@ -98,7 +98,7 @@ class C_Item
 	
 	/// Für Waffen
 	var int		damageType;
-	VAR	INT		damageTotal;
+	var int		damageTotal;
 	var int		damage[DAM_INDEX_MAX];
 	
 	/// Für Rüstungen
@@ -226,7 +226,7 @@ class C_Spell
 ///******************************************************************************************
 ///	Globale Klasseninstanzen
 ///******************************************************************************************
-instance self, other (C_NPC);
-instance victim (C_NPC);
+instance self, other (C_Npc);
+instance victim (C_Npc);
 instance item (C_Item);
-instance hero (C_NPC);
+instance hero (C_Npc);

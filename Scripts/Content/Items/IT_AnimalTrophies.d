@@ -46,20 +46,20 @@ instance ItAt_JackalFur (ItemPR_AnimalTrophy)
 	description				= 	name;
 	COUNT[5]				=	value;
 };
-instance ItAt_WolfFur (ItemPR_AnimalTrophy)
-{
-	name 					=	"Skóra wilka";
-	value 					=	10;
-	visual 					=	"ItAt_WolfFur.3DS";
-	
-	description				= 	name;
-	COUNT[5]				=	value;
-};
 instance ItAt_KeilerFur (ItemPR_AnimalTrophy)
 {
 	name 					=	"Skóra dzika";
 	value 					=	10;
 	visual 					=	"ItAt_KeilerFur.3DS";
+	
+	description				= 	name;
+	COUNT[5]				=	value;
+};
+instance ItAt_WolfFur (ItemPR_AnimalTrophy)
+{
+	name 					=	"Skóra wilka";
+	value 					=	10;
+	visual 					=	"ItAt_WolfFur.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;
@@ -346,6 +346,187 @@ instance ItAt_UndeadDragonSoulStone (ItemPR_AnimalTrophy)
 };
 ///******************************************************************************************
 ///	Blood & Lubric
+///******************************************************************************************
+instance ItAt_AlligatorBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew aligatora";
+};
+instance ItAt_BiterBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew k¹sacza";
+};
+instance ItAt_BloodflyBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew krwiopijcy";
+};
+instance ItAt_BloodhoundBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew krwawego ogara";
+};
+instance ItAt_DemonBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew demona";
+};
+instance ItAt_DrgSnapperBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew smoczego zêbacza";
+};
+instance ItAt_FireWaranBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew ognistego jaszczura";
+};
+instance ItAt_GiantBugBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew polnej bestii";
+};
+instance ItAt_GiantRatBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew olbrzymiego szczura";
+};
+instance ItAt_GiantSpiderBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew olbrzymiego paj¹ka";
+};
+instance ItAt_GoatBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew kozy";
+};
+instance ItAt_GoblinBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew goblina";
+};
+instance ItAt_GorillaBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew goryla";
+};
+instance ItAt_HareBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew zaj¹ca";
+};
+instance ItAt_HarpyBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew harpii";
+};
+instance ItAt_KeilerBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew dzika";
+};
+instance ItAt_LurkerBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew topielca";
+};
+instance ItAt_MinecrawlerBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew pe³zacza";
+};
+instance ItAt_MoleratBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew kretoszczura";
+};
+instance ItAt_ScavengerBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew œcierwojada";
+};
+instance ItAt_ShadowbeastBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew cieniostwora";
+};
+instance ItAt_SheepBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew owcy";
+};
+instance ItAt_SnapperBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew zêbacza";
+};
+instance ItAt_SpintBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew spinta";
+};
+instance ItAt_SwampsharkBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew b³otnego wê¿a";
+};
+instance ItAt_TigerBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew tygrysa";
+};
+instance ItAt_TrollBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew trolla";
+};
+instance ItAt_WaranBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew jaszczura";
+};
+instance ItAt_WargBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew warga";
+};
+instance ItAt_WolfBlood (ItemPR_AnimalTrophy)
+{
+	name 					=	"Krew";
+	visual 					=	"ItAt_DragonBlood.3DS";
+	description				= 	"Krew wilka";
+};
 ///******************************************************************************************
 instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 {

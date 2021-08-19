@@ -9,7 +9,16 @@ prototype Mst_Default_Warg (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
+	
 	B_SetAttributesToLevel (self, 18);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

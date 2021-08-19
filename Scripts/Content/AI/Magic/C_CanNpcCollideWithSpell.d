@@ -350,8 +350,8 @@ func int C_CanNpcCollideWithSpell (var int spellType)
 		};
 		return COLL_DONOTHING;
 	};
-	/// ------ EnergyBall ------
-	if (spellType == SPL_EnergyBall)
+	/// ------ BeliarRage ------
+	if (spellType == SPL_BeliarRage)
 	{
 		if (C_NpcIsDown(self))
 		|| (C_BodyStateContains(self, BS_SWIM))

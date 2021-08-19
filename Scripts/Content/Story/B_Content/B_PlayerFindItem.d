@@ -8,9 +8,7 @@ func void B_PlayerFindItem (var int itm, var int amount)
 		CreateInvItems (self, itm, amount);
 		
 		var string concatText;
-		var string itemname;
-		
-		itemname = item.name;
+		var string itemname; itemname = item.name;
 		
 		if (itm == ItMi_Gold)
 		{

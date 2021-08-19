@@ -26,16 +26,16 @@ func int C_AllCanyonRazorDead()
 ///******************************************************************************************
 func int C_IAmCanyonRazor (var C_Npc slf)
 {
-	var C_NPC RAZ01; RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
-	var C_NPC RAZ02; RAZ02 = Hlp_GetNpc(CANYONRAZOR02);
-	var C_NPC RAZ03; RAZ03 = Hlp_GetNpc(CANYONRAZOR03);
-	var C_NPC RAZ04; RAZ04 = Hlp_GetNpc(CANYONRAZOR04);
-	var C_NPC RAZ05; RAZ05 = Hlp_GetNpc(CANYONRAZOR05);
-	var C_NPC RAZ06; RAZ06 = Hlp_GetNpc(CANYONRAZOR06);
-	var C_NPC RAZ07; RAZ07 = Hlp_GetNpc(CANYONRAZOR07);
-	var C_NPC RAZ08; RAZ08 = Hlp_GetNpc(CANYONRAZOR08);
-	var C_NPC RAZ09; RAZ09 = Hlp_GetNpc(CANYONRAZOR09);
-	var C_NPC RAZ10; RAZ10 = Hlp_GetNpc(CANYONRAZOR10);
+	var C_Npc RAZ01; RAZ01 = Hlp_GetNpc(CANYONRAZOR01); 
+	var C_Npc RAZ02; RAZ02 = Hlp_GetNpc(CANYONRAZOR02);
+	var C_Npc RAZ03; RAZ03 = Hlp_GetNpc(CANYONRAZOR03);
+	var C_Npc RAZ04; RAZ04 = Hlp_GetNpc(CANYONRAZOR04);
+	var C_Npc RAZ05; RAZ05 = Hlp_GetNpc(CANYONRAZOR05);
+	var C_Npc RAZ06; RAZ06 = Hlp_GetNpc(CANYONRAZOR06);
+	var C_Npc RAZ07; RAZ07 = Hlp_GetNpc(CANYONRAZOR07);
+	var C_Npc RAZ08; RAZ08 = Hlp_GetNpc(CANYONRAZOR08);
+	var C_Npc RAZ09; RAZ09 = Hlp_GetNpc(CANYONRAZOR09);
+	var C_Npc RAZ10; RAZ10 = Hlp_GetNpc(CANYONRAZOR10);
 	
 	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ01))
 	|| (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(RAZ02))

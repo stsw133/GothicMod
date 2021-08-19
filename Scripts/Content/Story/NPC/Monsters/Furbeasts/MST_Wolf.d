@@ -10,6 +10,16 @@ prototype Mst_Default_Wolf (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
 	
+	B_SetAttributesToLevel (self, 6);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
@@ -30,64 +40,16 @@ func void B_SetVisuals_Wolf()
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Wol_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
-func void B_SetVisuals_Jackal()
-{
-	Mdl_SetVisual		(self, "Wolf.mds");
-	Mdl_SetVisualBody	(self, "Jackal_Body", 0, default, "", default, default, -1);
-};
 func void B_SetVisuals_BlackWolf()
 {
 	Mdl_SetVisual		(self, "Wolf.mds");
-	Mdl_SetVisualBody	(self, "Wol_Body", 5, default, "", default, default, -1);
-};
-func void B_SetVisuals_IceWolf()
-{
-	Mdl_SetVisual		(self, "Wolf.mds");
-	Mdl_SetVisualBody	(self, "SnoWol_Body", 0, default, "", default, default, -1);
-};
-func void B_SetVisuals_Wolf_Skeleton()
-{
-	Mdl_SetVisual		(self, "Wolf.mds");
-	Mdl_SetVisualBody	(self, "Wol_Skeleton_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Wol_Black_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Wolf (Mst_Default_Wolf)
 {
-	B_SetAttributesToLevel (self, 6);
 	aivar[AIV_BodyTex] = Hlp_Random(4);
 	B_SetVisuals_Wolf();
-};
-instance Jackal (Mst_Default_Wolf)
-{
-	name								=	"Szakal";
-	B_SetAttributesToLevel (self, 6);
-	B_SetVisuals_Jackal();
-};
-instance IceWolf (Mst_Default_Wolf)
-{
-	name								=	"Lodowy wilk";
-	aivar[AIV_MM_REAL_ID]				=	ID_ICEWOLF;
-	B_SetAttributesToLevel (self, 12);
-	B_SetVisuals_IceWolf();
-};
-instance Wolf_Skeleton (Mst_Default_Wolf)
-{
-	name								=	"Wilk-szkielet";
-	guild								=	GIL_SKELETON_MONSTER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_WOLF_SKELETON;
-	
-	B_SetAttributesToLevel (self, 15);
-	B_SetVisuals_Wolf_Skeleton();
-};
-///******************************************************************************************
-instance Summoned_Wolf_Skeleton (Mst_Default_Wolf)
-{
-	name								=	"Przyzwany wilk-szkielet";
-	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SUMMONED;
-	
-	B_SetAttributesToLevel (self, 15);
-	B_SetVisuals_Wolf_Skeleton();
 };
 ///******************************************************************************************
 ///	QuestMonsters
@@ -95,27 +57,33 @@ instance Summoned_Wolf_Skeleton (Mst_Default_Wolf)
 instance BlackWolf (Mst_Default_Wolf)
 {
 	name								=	"Czarny wilk";
+	
 	B_SetAttributesToLevel (self, 9);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	B_SetVisuals_BlackWolf();
 };
 ///******************************************************************************************
 instance PEPES_YWolf1 (Mst_Default_Wolf)
 {
-	B_SetAttributesToLevel (self, 5);
 	B_SetVisuals_Wolf();
 };
 instance PEPES_YWolf2 (Mst_Default_Wolf)
 {
-	B_SetAttributesToLevel (self, 5);
 	B_SetVisuals_Wolf();
 };
 instance PEPES_YWolf3 (Mst_Default_Wolf)
 {
-	B_SetAttributesToLevel (self, 5);
 	B_SetVisuals_Wolf();
 };
 instance PEPES_YWolf4 (Mst_Default_Wolf)
 {
-	B_SetAttributesToLevel (self, 5);
 	B_SetVisuals_Wolf();
 };

@@ -6,17 +6,26 @@ prototype Mst_Default_OrcWarrior (C_Npc)
 	voice								=	18;
 	guild								=	GIL_ORC;
 	aivar[AIV_MM_REAL_ID]				= 	ID_ORCWARRIOR;
-//	aivar[AIV_Race]						= 	RACE_Orc;
 	aivar[AIV_FaceTex]					=	Hlp_Random(12);
 	
 	/// ------ Attributes & FT ------
-//	damagetype 							=	DAM_BLUNT;
+	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ORC;
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
 	
-	/// ------ Inventory ------
-	B_CreateAmbientInv(self);
+	B_SetAttributesToLevel (self, 30);
+	
+	hitchance[NPC_TALENT_1H]			=	level;
+	hitchance[NPC_TALENT_2H]			=	level;
+	hitchance[NPC_TALENT_BOW]			=	level;
+	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE;
@@ -28,25 +37,10 @@ prototype Mst_Default_OrcWarrior (C_Npc)
 //	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 };
 ///******************************************************************************************
-func void B_SetVisuals_OrcSoldier()
-{
-	Mdl_SetVisual		(self, "Orc.mds");
-	Mdl_SetVisualBody	(self, "Orc_Soldier_Body", 0, default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
-};
 func void B_SetVisuals_OrcWarrior()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "Orc_Warrior_Body", 0, default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
-};
-func void B_SetVisuals_OrcGuardian()
-{
-	Mdl_SetVisual		(self, "Orc.mds");
-	Mdl_SetVisualBody	(self, "Orc_Guardian_Body", 0, default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
-};
-func void B_SetVisuals_OrcTempler()
-{
-	Mdl_SetVisual		(self, "Orc.mds");
-	Mdl_SetVisualBody	(self, "Orc_Templer_Body", 0, default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
 };
 ///******************************************************************************************
 instance OrcWarrior_Rest (Mst_Default_OrcWarrior)
@@ -73,44 +67,8 @@ instance OrcWarrior_Sit (Mst_Default_OrcWarrior)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_OrcSitStart] 			=	OnlyRoutine;
 };
-instance OrcWarrior_Guardian (Mst_Default_OrcWarrior)
-{
-	name								=	"Ork-stra¿nik";
-	
-	B_SetVisuals_OrcGuardian();
-	EquipItem (self, ItMw_2H_OrcSword_01);
-	
-	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_OrcSitStart] 			=	OnlyRoutine;
-};
-instance OrcWarrior_Templer (Mst_Default_OrcWarrior)
-{
-	name								=	"Ork œwi¹tynny";
-	
-	B_SetAttributesToLevel (self, 35);
-	
-	aivar[AIV_FaceTex] = Hlp_RandomRange(50,58);
-	B_SetVisuals_OrcTempler();
-	EquipItem (self, ItMw_2H_OrcSword_02);
-	
-	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
-};
 ///******************************************************************************************
 ///	QuestMonsters
-///******************************************************************************************
-instance OrcWarrior_Harad (Mst_Default_OrcWarrior)
-{
-	name								=	"Ork-zwiadowca";
-	
-	B_SetAttributesToLevel (self, 20);
-	
-	B_SetVisuals_OrcSoldier();
-	EquipItem (self, ItMw_2H_OrcAxe_01);
-	
-	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
-};
 ///******************************************************************************************
 instance OrcShaman_Sit_CanyonLibraryKey (Mst_Default_OrcWarrior)
 {

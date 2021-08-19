@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_SetFightSkills
 ///******************************************************************************************
-func void B_SetFightSkills (var C_NPC slf, var int percent)
+func void B_SetFightSkills (var C_Npc slf, var int percent)
 {
 	if (slf.aivar[AIV_Race] == RACE_HUMAN)
 	{
@@ -23,11 +23,11 @@ func void B_SetFightSkills (var C_NPC slf, var int percent)
 		slf.hitchance[NPC_TALENT_CROSSBOW]	=	percent;
 	};
 };
-
+/*
 ///******************************************************************************************
 ///	B_SetMonsterProtection
 ///******************************************************************************************
-func void B_SetMonsterProtection (var C_NPC slf, var int kap)
+func void B_SetMonsterProtection (var C_Npc slf, var int kap)
 {
 	if (slf.level > 100)
 	{
@@ -82,11 +82,11 @@ func void B_SetMonsterProtection (var C_NPC slf, var int kap)
 		slf.protection[PROT_POINT] += AR_PER_LEVEL * 10;
 	};
 };
-
+*/
 ///******************************************************************************************
 ///	B_SetAttributesToLevel
 ///******************************************************************************************
-func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
+func void B_SetAttributesToLevel (var C_Npc slf, var int kap)
 {
 	slf.level							=	kap;
 	slf.exp_next 						=	kap * XP_PER_LEVEL;
@@ -98,40 +98,28 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 		slf.attribute[ATR_MANA_MAX]			=	1;
 		slf.attribute[ATR_HITPOINTS_MAX]	=	NPC_MINIMAL_DAMAGE * 2;
 	}
-	else
+	else if (slf.aivar[AIV_MagicUser] > 0)
 	{
-		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 20;
+		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 10;
 		slf.attribute[ATR_MANA_MAX]			=	kap * 5;
 		
-		if (slf.aivar[AIV_MagicUser] > 0)
-		{
-			slf.attribute[ATR_STRENGTH]			=	kap * 3;
-			slf.attribute[ATR_DEXTERITY]		=	kap * 3;
-			Npc_SetPowerPoints(slf, kap * 3);
-		}
-		else
-		{
-			slf.attribute[ATR_STRENGTH]			=	kap * 4;
-			slf.attribute[ATR_DEXTERITY]		=	kap * 4;
-			Npc_SetPowerPoints(slf, 0);
-		};
-		
-		if (slf.guild < GIL_SEPERATOR_HUM)
-		{
-			slf.attribute[ATR_STRENGTH] += kap;
-			slf.attribute[ATR_DEXTERITY] += kap;
-		};
-	};
-	
-	/// protection
-	if (slf.guild > GIL_SEPERATOR_HUM)
+		slf.attribute[ATR_STRENGTH]			=	kap * 3;
+		slf.attribute[ATR_DEXTERITY]		=	kap * 3;
+		slf.damage[DAM_INDEX_MAGIC]			=	kap * 3;
+	}
+	else
 	{
-		B_SetMonsterProtection (slf, kap);
+		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 10;
+		slf.attribute[ATR_MANA_MAX]			=	kap * 5;
+		
+		slf.attribute[ATR_STRENGTH]			=	kap * 5;
+		slf.attribute[ATR_DEXTERITY]		=	kap * 5;
+		slf.damage[DAM_INDEX_MAGIC]			=	0;
 	};
 	
 	/// talents
 	Npc_SetTalentSkill (slf, NPC_TALENT_SNEAK, 1);
-	Npc_SetTalentSkill (slf, NPC_TALENT_TYPEOFMAGIC, slf.aivar[AIV_MagicUser]);
+	//Npc_SetTalentSkill (slf, NPC_TALENT_TYPEOFMAGIC, slf.aivar[AIV_MagicUser]);
 	Npc_SetTalentSkill (slf, NPC_TALENT_MAGIC, 6);
 	
 	/// partymember if summoned
@@ -139,7 +127,7 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 	{
 		B_SetAttitude (slf, ATT_FRIENDLY);
 		slf.aivar[AIV_PartyMember] = true;
-		slf.aivar[AIV_SummonTime] = -1;
+		slf.aivar[AIV_SummonTime] = 60;
 		slf.start_aistate = ZS_MM_Rtn_Summoned;
 	};
 	
@@ -156,11 +144,11 @@ func void B_SetAttributesToLevel (var C_NPC slf, var int kap)
 	/// less strength when damagetype in (DAM_FIRE, DAM_FLY, DAM_MAGIC)
 	if (slf.damagetype == DAM_FIRE || slf.damagetype == DAM_MAGIC)
 	{
-		slf.attribute[ATR_STRENGTH] = slf.attribute[ATR_STRENGTH] * 3 / 4;
+		slf.attribute[ATR_STRENGTH] = slf.attribute[ATR_STRENGTH] * 7 / 10;
 	}
 	else if (slf.damagetype == DAM_FLY)
 	{
-		slf.attribute[ATR_STRENGTH] /= 2;
+		slf.attribute[ATR_STRENGTH] = slf.attribute[ATR_STRENGTH] * 4 / 10;
 	};
 	
 	/// important characters

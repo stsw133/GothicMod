@@ -55,7 +55,7 @@ func int Spell_ProcessMana (var int manaInvested)
 	if (activeSpell == SPL_Summon				)	{	return	Spell_Logic_Summon				(manaInvested);	};
 	
 	if (activeSpell == SPL_MasterOfDisaster		)	{	return	Spell_Logic_MasterOfDisaster	(manaInvested);	};
-	if (activeSpell == SPL_EnergyBall			)	{	return	Spell_Logic_EnergyBall			(manaInvested);	};
+	if (activeSpell == SPL_BeliarRage			)	{	return	Spell_Logic_BeliarRage			(manaInvested);	};
 	
 	/// npc spells
 	if (activeSpell == SPL_ConcussionBolt		)	{	return	Spell_Logic_ConcussionBolt		(manaInvested);	};

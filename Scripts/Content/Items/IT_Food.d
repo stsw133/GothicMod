@@ -1,4 +1,62 @@
 ///******************************************************************************************
+///	IT_Food
+///******************************************************************************************
+
+/// ------ FoodTime ------
+func void Npc_AddFoodTime (var C_Npc slf, var int points)
+{
+	if (Npc_IsPlayer(slf))
+	{
+		foodTime += points;
+		
+		if (foodTime > 300)
+		{
+			MOD_PoisonON(slf);
+			foodTime = 300;
+			
+			Npc_ClearAIQueue 	(slf);
+			//B_ClearPerceptions	(slf);
+			AI_StartState 		(slf, ZS_Unconscious, false, "");
+		}
+		else if (foodTime > 150)
+		{
+			foodTime -= points/2;
+		};
+	}
+	else
+	{
+		Npc_ChangeAttribute (slf, ATR_HITPOINTS, points);
+	};
+};
+
+/// ------ DrunkTime ------
+func void Npc_AddDrunkTime (var C_Npc slf, var int points)
+{
+	if (Npc_IsPlayer(slf))
+	{
+		drunkTime += points;
+		
+		if (drunkTime > 300)
+		{
+			MOD_PoisonON(slf);
+			drunkTime = 300;
+			
+			Npc_ClearAIQueue 	(slf);
+			//B_ClearPerceptions	(slf);
+			AI_StartState 		(slf, ZS_Unconscious, false, "");
+		}
+		else if (drunkTime >= 100)
+		{
+			Mdl_ApplyOverlayMDSTimed (self, "HUMANS_DRUNKEN.MDS", drunkTime * 1000);
+		};
+	}
+	else if (points >= 100)
+	{
+		Mdl_ApplyOverlayMDSTimed (self, "HUMANS_DRUNKEN.MDS", points * 1000);
+	};
+};
+
+///******************************************************************************************
 prototype ItemPR_Food (C_Item)
 {
 	mainflag 				=	ITEM_KAT_FOOD;
@@ -107,6 +165,41 @@ instance ItFo_Sugar (ItemPR_iFood)
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
+///	Snacks
+///******************************************************************************************
+prototype ItemPR_SnackFood (C_Item)
+{
+	mainflag 				=	ITEM_KAT_FOOD;
+	flags 					=	ITEM_MULTI;
+	material 				=	MAT_LEATHER;
+	
+	value 					=	2;
+	on_state[0]				=	Use_ItFo_Snack;
+	scemeName				=	"FOOD";
+	
+	TEXT[1]					= 	NAME_HealTime;
+	COUNT[1]				=	5;
+	TEXT[5]					=	NAME_Value;
+	COUNT[5]				= 	value;
+};
+func void Use_ItFo_Snack()
+{
+	Npc_AddFoodTime (self, 5);
+};
+///******************************************************************************************
+instance ItFo_BakedPotato (ItemPR_SnackFood)
+{
+	name 					=	"Pieczony ziemniak";
+	visual 					=	"ItFo_BakedPotato.3DS";
+	description				=	name;
+};
+instance ItFo_MeatbugFlesh (ItemPR_SnackFood)
+{
+	name 					=	"Miêso chrz¹szcza";
+	visual 					=	"ITAT_MEATBUGFLESH.3DS";
+	description				=	name;
+};
+///******************************************************************************************
 ///	Fruits & vegetables
 ///******************************************************************************************
 prototype ItemPR_LightFood (C_Item)
@@ -126,14 +219,7 @@ prototype ItemPR_LightFood (C_Item)
 };
 func void Use_ItFo_Fruit()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 10;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 10);
-	};
+	Npc_AddFoodTime (self, 10);
 };
 ///******************************************************************************************
 instance ItFo_Apple (ItemPR_LightFood)
@@ -167,12 +253,6 @@ instance ItFo_Rice (ItemPR_LightFood)
 	visual 					=	"ItFo_Rice.3ds";
 	description				=	name;
 };
-instance ItFo_MeatbugFlesh (ItemPR_LightFood)
-{
-	name 					=	"Miêso chrz¹szcza";
-	visual 					=	"ITAT_MEATBUGFLESH.3DS";
-	description				=	name;
-};
 ///******************************************************************************************
 ///	Standard food
 ///******************************************************************************************
@@ -193,14 +273,7 @@ prototype ItemPR_StandardFood (C_Item)
 };
 func void Use_ItFo_Normal()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 30;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 30);
-	};
+	Npc_AddFoodTime (self, 30);
 };
 ///******************************************************************************************
 instance ItFo_Bread (ItemPR_StandardFood)
@@ -247,14 +320,7 @@ prototype ItemPR_MeatFood (C_Item)
 };
 func void Use_ItFo_Meat()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 50;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 50);
-	};
+	Npc_AddFoodTime (self, 50);
 };
 ///******************************************************************************************
 instance ItFoMutton (ItemPR_MeatFood)
@@ -297,14 +363,7 @@ prototype ItemPR_SweetFood (C_Item)
 };
 func void Use_ItFo_Sweet()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 8;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 8);
-	};
+	Npc_AddFoodTime (self, 8);
 	Npc_ChangeAttribute	(self, ATR_MANA, 4);
 };
 ///******************************************************************************************
@@ -353,14 +412,7 @@ prototype ItemPR_StewFood (C_Item)
 };
 func void Use_ItFo_Stew()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 50;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 50);
-	};
+	Npc_AddFoodTime (self, 50);
 };
 ///******************************************************************************************
 instance ItFo_Stew (ItemPR_StewFood)
@@ -415,14 +467,7 @@ prototype ItemPR_SoupFood (C_Item)
 };
 func void Use_ItFo_Soup()
 {
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 30;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 30);
-	};
+	Npc_AddFoodTime (self, 30);
 };
 ///******************************************************************************************
 instance ItFo_FishSoup (ItemPR_SoupFood)
@@ -485,14 +530,7 @@ instance ItFo_Milk (ItemPR_Food)
 func void Use_ItFo_Milk()
 {
 	self.aivar[AIV_Energy] += 90;
-	if (Npc_IsPlayer(self))
-	{
-		foodTime += 3;
-	}
-	else
-	{
-		Npc_ChangeAttribute	(self, ATR_HITPOINTS, 3);
-	};
+	Npc_AddFoodTime (self, 3);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 ///******************************************************************************************
@@ -519,6 +557,7 @@ func void Use_ItFo_Beer()
 {
 	self.aivar[AIV_Energy] += 60;
 	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_AddDrunkTime (self, 15);
 };
 ///******************************************************************************************
 instance ItFo_Beer (ItemPR_BeerFood)
@@ -563,6 +602,7 @@ func void Use_ItFo_Alcohol()
 {
 	self.aivar[AIV_Energy] += 50;
 	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	Npc_AddDrunkTime (self, 30);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 ///******************************************************************************************
@@ -570,6 +610,12 @@ instance ItFo_Booze (ItemPR_AlcoholFood)
 {
 	name 					=	"Gorza³a";
 	visual 					=	"ItFo_Booze.3DS";
+	description				=	name;
+};
+instance ItFo_Tequila (ItemPR_AlcoholFood)
+{
+	name 					=	"Tequila";
+	visual 					=	"ItFo_Tequila.3DS";
 	description				=	name;
 };
 instance ItFo_Wine (ItemPR_AlcoholFood)
@@ -614,6 +660,7 @@ func void Use_ItFo_Addon_Grog()
 {
 	self.aivar[AIV_Energy] += 20;
 	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_AddDrunkTime (self, 25);
 };
 instance ItFo_Addon_Hooch (ItemPR_Food)
 {
@@ -635,6 +682,7 @@ func void Use_ItFo_Addon_Hooch()
 {
 	self.aivar[AIV_Energy] += 20;
 	Npc_ChangeAttribute (self, ATR_MANA, 6);
+	Npc_AddDrunkTime (self, 50);
 };
 instance ItFo_Addon_Rum (ItemPR_Food)
 {
@@ -656,6 +704,7 @@ func void Use_ItFo_Addon_Rum()
 {
 	self.aivar[AIV_Energy] += 20;
 	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	Npc_AddDrunkTime (self, 75);
 };
 ///******************************************************************************************
 var int Hammer_Bonus;
@@ -682,6 +731,7 @@ func void Use_ItFo_Addon_LousHammer()
 		B_GivePlayerXP(400-Hammer_Bonus);
 		Hammer_Bonus = 400;
 	};
+	Npc_AddDrunkTime (self, 100);
 };
 instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 {
@@ -694,14 +744,14 @@ instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 	
 	description 			=	name;
 	TEXT[1]					= 	NAME_Duration;
-	COUNT[1]				=	10;
+	COUNT[1]				=	15;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_SchnellerHering()
 {
 	if (Npc_IsPlayer(self))
 	{
-		Hering_Time = 50;
+		Hering_Time = 30;
 	};
 };
 instance ItFo_Addon_SchlafHammer (ItemPR_Food)
@@ -725,4 +775,5 @@ func void Use_ItFo_Addon_SchlafHammer()
 		B_GivePlayerXP(600-Hammer_Bonus);
 		Hammer_Bonus = 600;
 	};
+	Npc_AddDrunkTime (self, 150);
 };

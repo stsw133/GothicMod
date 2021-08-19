@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_GiveInvItems
 ///******************************************************************************************
-func int B_GiveInvItems (var C_NPC giver, var C_NPC taker, var int itemInstance, var int amount)
+func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance, var int amount)
 {
 	if (Npc_IsPlayer(giver))
 	&& (amount > Npc_HasItems(giver, itemInstance))

@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_GivePlayerLove
 ///******************************************************************************************
-func void B_GivePlayerLove (var C_NPC slf, var int points)
+func void B_GivePlayerLove (var C_Npc slf, var int points)
 {
 	if (talkingWithGirl)
 	{

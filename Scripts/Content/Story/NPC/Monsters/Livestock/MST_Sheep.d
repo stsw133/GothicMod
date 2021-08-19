@@ -8,6 +8,7 @@ prototype Mst_Default_Sheep (C_Npc)
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
+	
 	B_SetAttributesToLevel (self, 0);
 	
 	/// ------ Senses & Ranges ------

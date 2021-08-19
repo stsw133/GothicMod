@@ -542,7 +542,7 @@ func void QS_PrintAmount(var int slot)
 	if (QS.category == QS_Category_Item 
 	|| QS.category == QS_Category_Potion
 	|| QS.category == QS_Category_Torch
-	|| Hlp_StrCmp(it.name, "ZwÃ³j"))
+	|| Hlp_StrCmp(it.name, "Zwój"))
 	{
 		var int a; a = Npc_HasItems(hero, QS.itemID);
 		if (Hlp_IsValidHandle(QS_Background))

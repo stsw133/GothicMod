@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Giant_Rat (C_Npc)			
+prototype Mst_Default_GiantRat (C_Npc)			
 {
 	/// ------ Monster ------
 	name								=	"Olbrzymi szczur";
@@ -25,27 +25,27 @@ prototype Mst_Default_Giant_Rat (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Giant_Rat()
+func void B_SetVisuals_GiantRat()
 {
 	Mdl_SetVisual		(self, "Giant_Rat.mds");
 	Mdl_SetVisualBody	(self, "Giant_Rat_Body", 0, default, "", default, default, -1);
 };
-func void B_SetVisuals_Giant_DesertRat()
+func void B_SetVisuals_GiantDesertRat()
 {
 	Mdl_SetVisual		(self, "Giant_Rat.mds");
 	Mdl_SetVisualBody	(self, "Giant_DesertRat_Body", 0, default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.15, 1.15, 1);
 };
 ///******************************************************************************************
-instance Giant_Rat (Mst_Default_Giant_Rat)
+instance Giant_Rat (Mst_Default_GiantRat)
 {
 	B_SetAttributesToLevel (self, 2);
-	B_SetVisuals_Giant_Rat();
+	B_SetVisuals_GiantRat();
 };
-instance Giant_DesertRat (Mst_Default_Giant_Rat)
+instance Giant_DesertRat (Mst_Default_GiantRat)
 {
 	name						=	"Pustynny szczur";
 //	aivar[AIV_MM_FollowInWater]	=	true;
 	B_SetAttributesToLevel (self, 4);
-	B_SetVisuals_Giant_DesertRat();
+	B_SetVisuals_GiantDesertRat();
 };

@@ -49,13 +49,13 @@ func int ZS_MM_Rtn_Summoned_Loop()
 				AI_TurnToNpc (self, hero);
 			};
 			
-			if (self.aivar[AIV_SummonTime] >= 0 && self.aivar[AIV_SummonTime] < MONSTER_SUMMON_TIME)
+			if (self.aivar[AIV_SummonTime] >= 0)
 			{
-				self.aivar[AIV_SummonTime] += Npc_GetStateTime(self);
+				self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
 			};
-			if (self.aivar[AIV_SummonTime] >= MONSTER_SUMMON_TIME)
+			if (self.aivar[AIV_SummonTime] == 0)
 			{
-				 Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
+				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
 			};
 			
 			Npc_SetStateTime (self, 0);

@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	B_SetNpcVisual
 ///******************************************************************************************
-func void B_SetNpcVisual (var C_NPC slf, var int race, var int gender, var int bodyTex, var int skinTex, var string headMesh, var int faceTex, var int teethTex, var int armorInstance)
+func void B_SetNpcVisual (var C_Npc slf, var int race, var int gender, var int bodyTex, var int skinTex, var string headMesh, var int faceTex, var int teethTex, var int armorInstance)
 {
 	var oCNpc npc; npc = Hlp_GetNpc(slf);
 	
@@ -71,13 +71,13 @@ func void B_SetNpcVisual (var C_NPC slf, var int race, var int gender, var int b
 	}*/;
 };
 ///******************************************************************************************
-func void B_UpdateNpcVisual (var C_NPC slf)
+func void B_UpdateNpcVisual (var C_Npc slf)
 {
 	var oCNpc npc; npc = Hlp_GetNpc(slf);
 	B_SetNpcVisual (slf, slf.aivar[AIV_Race], slf.aivar[AIV_Gender], slf.aivar[AIV_BodyTex], slf.aivar[AIV_SkinTex], npc.name_4, slf.aivar[AIV_FaceTex], slf.aivar[AIV_TeethTex], -1);
 };
 ///******************************************************************************************
-func void B_SetHeroVisual (var C_NPC slf, var int selHero)
+func void B_SetHeroVisual (var C_Npc slf, var int selHero)
 {
 	selectedHero = selHero;
 	

@@ -10,6 +10,16 @@ prototype Mst_Default_Demon (C_Npc)
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_DEMON;
 	
+	B_SetAttributesToLevel (self, 50);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL * 10 * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
@@ -30,30 +40,10 @@ func void B_SetVisuals_Demon()
 	Mdl_SetVisual		(self, "Demon.mds");
 	Mdl_SetVisualBody	(self, "Dem_Body", 0, default, "", default, default, -1);
 };
-func void B_SetVisuals_DemonLord()
-{
-	Mdl_SetVisual		(self, "Demon.mds");
-	Mdl_SetVisualBody	(self, "Dem2_Body", 0, default, "", default, default, -1);
-};
-func void B_SetVisuals_YDemon()
-{
-	Mdl_SetVisual		(self, "Demon.mds");
-	Mdl_SetVisualBody	(self, "Dem_Body", 0, default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
-};
 ///******************************************************************************************
 instance Demon (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 55);
 	B_SetVisuals_Demon();
-};
-instance DemonLord (Mst_Default_Demon)
-{
-	name								=	"Lord demonów";
-	aivar[AIV_MM_REAL_ID]				=	ID_DEMON_LORD;
-	
-	B_SetAttributesToLevel (self, 60);
-	B_SetVisuals_DemonLord();
 };
 ///******************************************************************************************
 instance Summoned_Demon (Mst_Default_Demon)
@@ -62,42 +52,29 @@ instance Summoned_Demon (Mst_Default_Demon)
 	guild								=	GIL_SUMMONED;
 	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
-	B_SetAttributesToLevel (self, 55);
+	B_SetAttributesToLevel (self, level);
 	B_SetVisuals_Demon();
 };
 ///******************************************************************************************
 ///	QuestMonsters
 ///******************************************************************************************
-instance Xardas_DT_DemonLord (Mst_Default_Demon)
-{
-	name								=	"Lord demonów";
-	aivar[AIV_MM_REAL_ID]				=	ID_DEMON_LORD;
-	
-	B_SetAttributesToLevel (self, 60);
-	B_SetVisuals_DemonLord();
-};
 instance Xardas_DT_Demon1 (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 50);
-	B_SetVisuals_YDemon();
+	B_SetVisuals_Demon();
 };
 instance Xardas_DT_Demon2 (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 50);
-	B_SetVisuals_YDemon();
+	B_SetVisuals_Demon();
 };
 instance Xardas_DT_Demon3 (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 50);
-	B_SetVisuals_YDemon();
+	B_SetVisuals_Demon();
 };
 instance Xardas_DT_Demon4 (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 50);
-	B_SetVisuals_YDemon();
+	B_SetVisuals_Demon();
 };
 instance Xardas_DT_Demon5 (Mst_Default_Demon)
 {
-	B_SetAttributesToLevel (self, 50);
-	B_SetVisuals_YDemon();
+	B_SetVisuals_Demon();
 };

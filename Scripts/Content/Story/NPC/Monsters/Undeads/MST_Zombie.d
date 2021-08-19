@@ -9,7 +9,16 @@ prototype Mst_Default_Zombie (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ZOMBIE;
+	
 	B_SetAttributesToLevel (self, 20);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -58,8 +67,8 @@ instance Summoned_Zombie (Mst_Default_Zombie)
 	guild								=	GIL_SUMMONED;
 	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
-	B_SetAttributesToLevel (self, 30);
-	B_SetVisuals_MayaZombie();
+	B_SetAttributesToLevel (self, level);
+	B_SetVisuals_Zombie();
 };
 ///******************************************************************************************
 ///	QuestMonsters
@@ -67,8 +76,6 @@ instance Summoned_Zombie (Mst_Default_Zombie)
 instance Zombie_RavenGuard (Mst_Default_Zombie)
 {
 	name 								=	"S³uga Kruka";
-	
-	B_SetAttributesToLevel (self, 20);
 	
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	Mdl_SetVisual		(self, "Zombie.mds");
@@ -82,6 +89,14 @@ instance Zombie_Bloodwyn (Mst_Default_Zombie)
 	name								=	"O¿ywiony Bloodwyn";
 	
 	B_SetAttributesToLevel (self, 30);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	Mdl_SetVisual		(self, "Zombie.mds");
 	Mdl_SetVisualBody	(self, "Zom_Body", 0, default, "Zom_Head", 0, default, ITAR_RVN_M);

@@ -11,7 +11,16 @@ prototype Mst_Default_Dragon (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_DRAGON;
+	
 	B_SetAttributesToLevel (self, 90);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
+	protection[PROT_EDGE]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
+	protection[PROT_POINT]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
+	protection[PROT_FIRE]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
+	protection[PROT_FLY]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
+	protection[PROT_MAGIC]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

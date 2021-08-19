@@ -25,12 +25,10 @@ func void B_GetWispDetectedItem()
 		return;
 	};
 	
-	var int randy; randy = Hlp_Random(100);
-	
 	AI_GotoItem (self, item);
 	
 	if (Npc_GetDistToItem(self, item) < 1000)
-	&& (randy <= 1)
+	&& (Hlp_Random(100) <= 1)
 	{
 		Wld_PlayEffect ("spellFX_ItemAusbuddeln", item, item, 0, 0, 0, false);
 	};
@@ -138,7 +136,7 @@ instance DIA_Addon_WispDetector_EXIT (C_INFO)
 };
 func void DIA_Addon_WispDetector_EXIT_Info()
 {
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 };
 
@@ -156,7 +154,7 @@ instance DIA_Addon_WispDetector_DetectItems (C_INFO)
 };
 func void DIA_Addon_WispDetector_DetectItems_Info()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_15_00"); //Poszukaj czegoś!
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_15_00"); //Poszukaj czegoś!
 	
 	Info_ClearChoices	(DIA_Addon_WispDetector_DetectItems);
 	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Chodź za mną!", DIA_Addon_WispDetector_DetectItems_Follow);
@@ -172,72 +170,72 @@ func void DIA_Addon_WispDetector_DetectItems_Info()
 
 func void DIA_Addon_WispDetector_DetectItems_Follow()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_Follow;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_ALL()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_ALL_15_00"); //Poszukaj wszystkiego, co znajdziesz.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_ALL_15_00"); //Poszukaj wszystkiego, co znajdziesz.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_ALL;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_POTIONS()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_POTIONS_15_00"); //Potrzebuję magicznych mikstur.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_POTIONS_15_00"); //Potrzebuję magicznych mikstur.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_POTIONS;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_MAGIC()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_MAGIC_15_00"); //Potrzebuję pierścieni i amuletów.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_MAGIC_15_00"); //Potrzebuję pierścieni i amuletów.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_MAGIC;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_FOOD()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_FOOD_15_00"); //Potrzebuję żywności i ziół.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_FOOD_15_00"); //Potrzebuję żywności i ziół.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_FOOD;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_NF()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_NF_15_00"); //Potrzebuję broni do walki wręcz.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_NF_15_00"); //Potrzebuję broni do walki wręcz.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_NF;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_FF()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_FF_15_00"); //Potrzebuję broni strzeleckiej i amunicji.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_FF_15_00"); //Potrzebuję broni strzeleckiej i amunicji.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_FF;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_NONE()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_NONE_15_00"); //Potrzebuję złota, kluczy i innych przedmiotów.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_NONE_15_00"); //Potrzebuję złota, kluczy i innych przedmiotów.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_NONE;
 };
 
 func void DIA_Addon_WispDetector_DetectItems_RUNE()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_DetectItems_RUNE_15_00"); //Potrzebuję run i zwojów magicznych.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_RUNE_15_00"); //Potrzebuję run i zwojów magicznych.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_RUNE;
 };
@@ -256,8 +254,8 @@ instance DIA_Addon_WispDetector_Follow (C_INFO)
 };
 func void DIA_Addon_WispDetector_Follow_Info()
 {
-	AI_Output	(other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
-	AI_Output	(self, other, "DIA_Wisp_15_00"); //(bzzz)
+	AI_Output (other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
+	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_Follow;
 };

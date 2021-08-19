@@ -8,7 +8,7 @@ var int MIS_AllDragonsDead;
 ///******************************************************************************************
 func int B_DragonKillCounter (var C_Npc current_dragon)
 {
-	var C_NPC Ravn; Ravn = Hlp_GetNpc(BDT_1090_Addon_Raven);
+	var C_Npc Ravn; Ravn = Hlp_GetNpc(BDT_1090_Addon_Raven);
 	if (Hlp_GetInstanceID(current_dragon) == Hlp_GetInstanceID(Ravn))
 	{
 		if (!RavenIsDead)

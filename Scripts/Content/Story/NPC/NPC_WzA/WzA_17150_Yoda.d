@@ -22,7 +22,7 @@ instance WzA_17150_Yoda (Npc_Default)
 	B_SetFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
-	fight_tactic						=	FAI_GOBBO;
+	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
 //	Npc_SetToFightMode (self, ItMw_LightSaber);

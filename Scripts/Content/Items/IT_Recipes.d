@@ -630,19 +630,19 @@ func void Use_Recipe_SMITH_2H_Ignite_04()
 ///	Enchanting
 ///******************************************************************************************
 
-const int ENCHANTING_ProtPhysical	=	MAX_SPELL + 1;
-const int ENCHANTING_ProtMagic		=	MAX_SPELL + 2;
-const int ENCHANTING_ProtFire		=	MAX_SPELL + 3;
-const int ENCHANTING_ProtTotal		=	MAX_SPELL + 4;
-const int ENCHANTING_Hp				=	MAX_SPELL + 5;
-const int ENCHANTING_Mana			=	MAX_SPELL + 6;
-const int ENCHANTING_Energy			=	MAX_SPELL + 7;
-const int ENCHANTING_Str			=	MAX_SPELL + 8;
-const int ENCHANTING_Dex			=	MAX_SPELL + 9;
-const int ENCHANTING_Power			=	MAX_SPELL + 10;
-const int ENCHANTING_LifeSteal		=	MAX_SPELL + 11;
+const int ENCHANTING_ProtPhysical	=	MAX_SPELL + 0;
+const int ENCHANTING_ProtMagic		=	MAX_SPELL + 1;
+const int ENCHANTING_ProtFire		=	MAX_SPELL + 2;
+const int ENCHANTING_ProtTotal		=	MAX_SPELL + 3;
+const int ENCHANTING_Hp				=	MAX_SPELL + 4;
+const int ENCHANTING_Mana			=	MAX_SPELL + 5;
+const int ENCHANTING_Energy			=	MAX_SPELL + 6;
+const int ENCHANTING_Str			=	MAX_SPELL + 7;
+const int ENCHANTING_Dex			=	MAX_SPELL + 8;
+const int ENCHANTING_Power			=	MAX_SPELL + 9;
+const int ENCHANTING_LifeSteal		=	MAX_SPELL + 10;
 
-const int MAX_ENCHANTING			=	MAX_SPELL + 12;
+const int MAX_ENCHANTING			=	MAX_SPELL + 11;
 
 var int PLAYER_TALENT_ENCHANTING[MAX_ENCHANTING];
 
@@ -1490,33 +1490,42 @@ func void Use_Recipe_ENCHANTING_BlackDragonBall()
 ///	Alchemy
 ///******************************************************************************************
 
-const int ALCHEMY_MegaDrink			=	0;
+const int ALCHEMY_MegaDrink			=	ID_MM_MAX + 0;
 
-const int ALCHEMY_Health_01	  		=	1;
-const int ALCHEMY_Health_02  		=	2;
-const int ALCHEMY_Health_03  		=	3;
-const int ALCHEMY_Health_04  		=	4;
-const int ALCHEMY_Health_05  		=	5;
+const int ALCHEMY_Health_01	  		=	ID_MM_MAX + 1;
+const int ALCHEMY_Health_02  		=	ID_MM_MAX + 2;
+const int ALCHEMY_Health_03  		=	ID_MM_MAX + 3;
+const int ALCHEMY_Health_04  		=	ID_MM_MAX + 4;
+const int ALCHEMY_Health_05  		=	ID_MM_MAX + 5;
 
-const int ALCHEMY_Mana_01  			=	6;
-const int ALCHEMY_Mana_02  			=	7;
-const int ALCHEMY_Mana_03 	 		=	8;
-const int ALCHEMY_Mana_04 	 		=	9;
-const int ALCHEMY_Mana_05 	 		=	10;
+const int ALCHEMY_Mana_01  			=	ID_MM_MAX + 6;
+const int ALCHEMY_Mana_02  			=	ID_MM_MAX + 7;
+const int ALCHEMY_Mana_03 	 		=	ID_MM_MAX + 8;
+const int ALCHEMY_Mana_04 	 		=	ID_MM_MAX + 9;
+const int ALCHEMY_Mana_05 	 		=	ID_MM_MAX + 10;
 
-const int ALCHEMY_Perm_Health		=	11;
-const int ALCHEMY_Perm_Mana  		=	12;
-const int ALCHEMY_Perm_STR  		=	13;
-const int ALCHEMY_Perm_DEX  		=	14;
-const int ALCHEMY_Perm_Power  		=	15;
-const int ALCHEMY_Perm_Fire	 		=	16;
+const int ALCHEMY_Temp_Health		=	ID_MM_MAX + 11;
+const int ALCHEMY_Temp_Mana  		=	ID_MM_MAX + 12;
+const int ALCHEMY_Temp_STR  		=	ID_MM_MAX + 13;
+const int ALCHEMY_Temp_DEX  		=	ID_MM_MAX + 14;
+const int ALCHEMY_Temp_Power  		=	ID_MM_MAX + 15;
+const int ALCHEMY_Temp_Fire	 		=	ID_MM_MAX + 16;
 
-const int ALCHEMY_Speed  			=	17;
-const int ALCHEMY_Geist  			=	18;
-const int ALCHEMY_Poison 			=	19;
-const int ALCHEMY_HealObsession		=	20;
+const int ALCHEMY_Perm_Health		=	ID_MM_MAX + 17;
+const int ALCHEMY_Perm_Mana  		=	ID_MM_MAX + 18;
+const int ALCHEMY_Perm_STR  		=	ID_MM_MAX + 19;
+const int ALCHEMY_Perm_DEX  		=	ID_MM_MAX + 20;
+const int ALCHEMY_Perm_Power  		=	ID_MM_MAX + 21;
+const int ALCHEMY_Perm_Fire	 		=	ID_MM_MAX + 22;
 
-const int MAX_ALCHEMY				=	21;
+const int ALCHEMY_Digestion			=	ID_MM_MAX + 23;
+const int ALCHEMY_NightVision		=	ID_MM_MAX + 24;
+const int ALCHEMY_Speed				=	ID_MM_MAX + 25;
+const int ALCHEMY_Geist				=	ID_MM_MAX + 26;
+const int ALCHEMY_Poison			=	ID_MM_MAX + 27;
+const int ALCHEMY_HealObsession		=	ID_MM_MAX + 28;
+
+const int MAX_ALCHEMY				=	ID_MM_MAX + 29;
 
 var int PLAYER_TALENT_ALCHEMY[MAX_ALCHEMY];
 
@@ -1529,7 +1538,7 @@ instance ItRe_ALCHEMY_Health_01 (ItemPR_Recipe)
 	
 	description				=	"Przepis na s³ab¹ miksturê lecznicz¹";
 	TEXT[1]					=	"z 2 roœlin leczniczych";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1554,7 +1563,7 @@ instance ItRe_ALCHEMY_Health_02 (ItemPR_Recipe)
 	
 	description				=	"Przepis na œredni¹ miksturê lecznicz¹";
 	TEXT[1]					=	"z 2 zió³ leczniczych";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1579,7 +1588,7 @@ instance ItRe_ALCHEMY_Health_03 (ItemPR_Recipe)
 	
 	description				=	"Przepis na siln¹ miksturê lecznicz¹";
 	TEXT[1]					=	"z 2 korzeni leczniczych";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1603,14 +1612,14 @@ instance ItRe_ALCHEMY_Health_04 (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Health_04;
 	
 	description				=	"Przepis na potê¿n¹ miksturê lecznicz¹";
-	TEXT[1]					=	"z 3 s³abych mikstur leczniczych";
+	TEXT[1]					=	"z silnej mikstury leczniczej";
 	TEXT[2]					=	"i rdestu polnego.";
-	COUNT[4]				=	1;
+	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
 func void Use_Recipe_ALCHEMY_Health_04()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1628,8 +1637,8 @@ instance ItRe_ALCHEMY_Health_05 (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Health_05;
 	
 	description				=	"Przepis na s³ab¹ miksturê lecznicz¹";
-	TEXT[1]					=	"z 4 serafisów";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[1]					=	"z 5 serafisów";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1654,7 +1663,7 @@ instance ItRe_ALCHEMY_Mana_01 (ItemPR_Recipe)
 	
 	description				=	"Przepis na s³ab¹ miksturê many";
 	TEXT[1]					=	"z 2 ognistych pokrzyw";
-	TEXT[2]					=	"i rdestu polnego i wina.";
+	TEXT[2]					=	"i wina.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1679,7 +1688,7 @@ instance ItRe_ALCHEMY_Mana_02 (ItemPR_Recipe)
 	
 	description				=	"Przepis na œredni¹ miksturê many";
 	TEXT[1]					=	"z 2 ognistych zió³";
-	TEXT[2]					=	"i rdestu polnego i wina.";
+	TEXT[2]					=	"i wina.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1704,7 +1713,7 @@ instance ItRe_ALCHEMY_Mana_03 (ItemPR_Recipe)
 	
 	description				=	"Przepis na siln¹ miksturê many";
 	TEXT[1]					=	"z 2 ognistych korzeni";
-	TEXT[2]					=	"i rdestu polnego i wina.";
+	TEXT[2]					=	"i wina.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1728,14 +1737,14 @@ instance ItRe_ALCHEMY_Mana_04 (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Mana_04;
 	
 	description				=	"Przepis na potê¿n¹ miksturê many";
-	TEXT[1]					=	"z 3 s³abych mikstur many";
+	TEXT[1]					=	"z silnej mikstury many";
 	TEXT[2]					=	"i rdestu polnego.";
-	COUNT[4]				=	1;
+	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
 func void Use_Recipe_ALCHEMY_Mana_04()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
@@ -1753,8 +1762,8 @@ instance ItRe_ALCHEMY_Mana_05 (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Mana_05;
 	
 	description				=	"Przepis na s³ab¹ miksturê many";
-	TEXT[1]					=	"z 4 serafisów";
-	TEXT[2]					=	"i rdestu polnego i wina.";
+	TEXT[1]					=	"z 5 serafisów";
+	TEXT[2]					=	"i i wina.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1771,15 +1780,165 @@ func void Use_Recipe_ALCHEMY_Mana_05()
 	};
 };
 ///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_Health (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_Health;
+	
+	description				=	"Przepis na czasowy eliksir ¿ywotnoœci";
+	TEXT[1]					=	"z krwawego rumianku";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_Health()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Health])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Health] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_Mana (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_Mana;
+	
+	description				=	"Przepis na czasowy eliksir ducha";
+	TEXT[1]					=	"z wilczej miêty";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_Mana()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Mana])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Mana] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_STR (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_STR;
+	
+	description				=	"Przepis na czasowy eliksir si³y";
+	TEXT[1]					=	"ze smoczego korzenia";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_STR()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_STR])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_STR] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_DEX (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_DEX;
+	
+	description				=	"Przepis na czasowy eliksir zrêcznoœci";
+	TEXT[1]					=	"z goblinich jagód";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_DEX()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_DEX])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_DEX] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_Power (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_Power;
+	
+	description				=	"Przepis na czasowy eliksir mocy";
+	TEXT[1]					=	"z wampirzej ró¿y";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_Power()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Power])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Power] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Temp_Fire (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_Fire;
+	
+	description				=	"Przepis na czasowy eliksir odpornoœci na ogieñ";
+	TEXT[1]					=	"ze s³onecznego aloesu";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Temp_Fire()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Fire])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Fire] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_Health (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_Health;
 	
-	description				=	"Przepis na eliksir ¿ywotnoœci";
+	description				=	"Przepis na trwa³y eliksir ¿ywotnoœci";
 	TEXT[1]					=	"z krwawego rumianku";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1798,13 +1957,13 @@ func void Use_Recipe_ALCHEMY_Perm_Health()
 ///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_Mana (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_Mana;
 	
-	description				=	"Przepis na eliksir ducha";
+	description				=	"Przepis na trwa³y eliksir ducha";
 	TEXT[1]					=	"z wilczej miêty";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1823,13 +1982,13 @@ func void Use_Recipe_ALCHEMY_Perm_Mana()
 ///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_STR (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_STR;
 	
-	description				=	"Przepis na eliksir si³y";
+	description				=	"Przepis na trwa³y eliksir si³y";
 	TEXT[1]					=	"ze smoczego korzenia";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1848,13 +2007,13 @@ func void Use_Recipe_ALCHEMY_Perm_STR()
 ///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_DEX (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_DEX;
 	
-	description				=	"Przepis na eliksir zrêcznoœci";
+	description				=	"Przepis na trwa³y eliksir zrêcznoœci";
 	TEXT[1]					=	"z goblinich jagód";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1873,13 +2032,13 @@ func void Use_Recipe_ALCHEMY_Perm_DEX()
 ///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_Power (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_Power;
 	
-	description				=	"Przepis na eliksir mocy";
+	description				=	"Przepis na trwa³y eliksir mocy";
 	TEXT[1]					=	"z wampirzej ró¿y";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1898,13 +2057,13 @@ func void Use_Recipe_ALCHEMY_Perm_Power()
 ///******************************************************************************************
 instance ItRe_ALCHEMY_Perm_Fire (ItemPR_Recipe)
 {
-	value 					=	500;
+	value 					=	600;
 	visual 					=	"ItWr_Scroll_01.3DS";
 	on_state[0]				=	Use_Recipe_ALCHEMY_Perm_Fire;
 	
-	description				=	"Przepis na eliksir odpornoœci na ogieñ";
+	description				=	"Przepis na trwa³y eliksir odpornoœci na ogieñ";
 	TEXT[1]					=	"ze s³onecznego aloesu";
-	TEXT[2]					=	"i szczawiu królewskiego i rtêci.";
+	TEXT[2]					=	"i szczawiu królewskiego i wody.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
@@ -1921,6 +2080,56 @@ func void Use_Recipe_ALCHEMY_Perm_Fire()
 	};
 };
 ///******************************************************************************************
+instance ItRe_ALCHEMY_Digestion (ItemPR_Recipe)
+{
+	value 					=	50;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Digestion;
+	
+	description				=	"Przepis na miksturê trawienia";
+	TEXT[1]					=	"z roœliny leczniczej";
+	TEXT[2]					=	"i serafisu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Digestion()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Digestion])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Digestion] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_NightVision (ItemPR_Recipe)
+{
+	value 					=	50;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_NightVision;
+	
+	description				=	"Przepis na miksturê widzenia w ciemnoœci";
+	TEXT[1]					=	"z roœliny many";
+	TEXT[2]					=	"i serafisu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_NightVision()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_NightVision])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_NightVision] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
 instance ItRe_ALCHEMY_Speed (ItemPR_Recipe)
 {
 	value 					=	100;
@@ -1929,7 +2138,7 @@ instance ItRe_ALCHEMY_Speed (ItemPR_Recipe)
 	
 	description				=	"Przepis na miksturê energii";
 	TEXT[1]					=	"z 2 zêbatych zió³";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1953,8 +2162,8 @@ instance ItRe_ALCHEMY_Geist (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Geist;
 	
 	description				=	"Przepis na miksturê jasnoœci umys³u";
-	TEXT[1]					=	"z bagiennego ziela";
-	TEXT[2]					=	"i cmentarnego mchu i gorza³y.";
+	TEXT[1]					=	"z 2 bagiennych zió³";
+	TEXT[2]					=	"i gorza³y.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -1978,8 +2187,8 @@ instance ItRe_ALCHEMY_Poison (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_Poison;
 	
 	description				=	"Przepis na truciznê";
-	TEXT[1]					=	"z truj¹cego grzyba";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	TEXT[1]					=	"z 4 truj¹cych grzybów";
+	TEXT[2]					=	"i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -2003,8 +2212,8 @@ instance ItRe_ALCHEMY_HealObsession (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_ALCHEMY_HealObsession;
 	
 	description				=	"Przepis na leczenie z opêtania";
-	TEXT[1]					=	"z zêbatego ziela";
-	TEXT[2]					=	"i cmentarnego mchu i wody.";
+	TEXT[1]					=	"z roœliny leczniczej";
+	TEXT[2]					=	"i roœliny many i wody œwiêconej.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
@@ -2280,12 +2489,12 @@ instance ItRe_HUNTING_Tongues (ItemPR_Recipe)
 	on_state[0]				=	Use_Recipe_HUNTING_Tongues;
 	
 	description				=	"Instrukta¿ usuwania jêzyków";
-	COUNT[4]				=	3;
+	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
 func void Use_Recipe_HUNTING_Tongues()
 {
-	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 3)
+	if (Npc_GetTalentSkill(self, NPC_TALENT_HUNTING) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_Skeleton_Mage(C_Npc)			
+prototype Mst_Default_SkeletonMage (C_Npc)			
 {
 	/// ------ Monster ------
 	name								=	"Szkielet-mag";
@@ -8,9 +8,18 @@ prototype Mst_Default_Skeleton_Mage(C_Npc)
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 	
 	/// ------ Attributes & FT ------
-//	damagetype 							=	DAM_BLUNT;
+	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_HUMAN_STRONG;
+	
 	B_SetAttributesToLevel (self, 30);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -26,28 +35,28 @@ prototype Mst_Default_Skeleton_Mage(C_Npc)
 	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
 };
 ///******************************************************************************************
-func void B_SetVisuals_Skeleton_Mage()
+func void B_SetVisuals_SkeletonMage()
 {
 	Mdl_SetVisual		(self, "HumanS.mds");
 	Mdl_ApplyOverlayMds (self, "humans_skeleton_fly.mds");
 	Mdl_SetVisualBody	(self, "Ske_Fly_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Skeleton_Mage (Mst_Default_Skeleton_Mage)
+instance Skeleton_Mage (Mst_Default_SkeletonMage)
 {
-	B_SetVisuals_Skeleton_Mage();
+	B_SetVisuals_SkeletonMage();
 };
 ///******************************************************************************************
 ///	QuestMonsters
 ///******************************************************************************************
-instance Skeleton_Mage_Angar (Mst_Default_Skeleton_Mage)
+instance Skeleton_Mage_Angar (Mst_Default_SkeletonMage)
 {
- 	B_SetVisuals_Skeleton_Mage();
+ 	B_SetVisuals_SkeletonMage();
 	CreateInvItem (self, ItAm_Mana_Angar_MIS);
 	CreateInvItem (self, ItPo_Perm_Mana);
 };
 ///******************************************************************************************
-instance SecretLibrarySkeleton (Mst_Default_Skeleton_Mage)
+instance SecretLibrarySkeleton (Mst_Default_SkeletonMage)
 {
-	B_SetVisuals_Skeleton_Mage();
+	B_SetVisuals_SkeletonMage();
 };

@@ -430,11 +430,11 @@ func void DIA_Lord_Hagen_Proof_Info ()
 	{
 		if (hero.guild == GIL_NOV)
 		{
-			PrintScreen	(PRINT_Addon_GuildNeeded_NOV, -1,-1, FONT_Screen ,2);
+			PrintScreen	("Nie jesteœ jeszcze magiem.", -1,-1, FONT_Screen ,2);
 		}
 		else 
 		{	
-			PrintScreen	(PRINT_Addon_GuildNeeded, -1,-1, FONT_Screen ,2);
+			PrintScreen	("Nie nale¿ysz do ¿adnej gildii.", -1,-1, FONT_Screen ,2);
 		};	
 		B_Say (self, other, "$NOLEARNNOPOINTS");
 	};	

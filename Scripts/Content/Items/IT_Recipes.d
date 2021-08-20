@@ -1509,23 +1509,28 @@ const int ALCHEMY_Temp_Mana  		=	ID_MM_MAX + 12;
 const int ALCHEMY_Temp_STR  		=	ID_MM_MAX + 13;
 const int ALCHEMY_Temp_DEX  		=	ID_MM_MAX + 14;
 const int ALCHEMY_Temp_Power  		=	ID_MM_MAX + 15;
-const int ALCHEMY_Temp_Fire	 		=	ID_MM_MAX + 16;
 
-const int ALCHEMY_Perm_Health		=	ID_MM_MAX + 17;
-const int ALCHEMY_Perm_Mana  		=	ID_MM_MAX + 18;
-const int ALCHEMY_Perm_STR  		=	ID_MM_MAX + 19;
-const int ALCHEMY_Perm_DEX  		=	ID_MM_MAX + 20;
-const int ALCHEMY_Perm_Power  		=	ID_MM_MAX + 21;
-const int ALCHEMY_Perm_Fire	 		=	ID_MM_MAX + 22;
+const int ALCHEMY_Weak_Health		=	ID_MM_MAX + 16;
+const int ALCHEMY_Weak_Mana  		=	ID_MM_MAX + 17;
+const int ALCHEMY_Weak_STR  		=	ID_MM_MAX + 18;
+const int ALCHEMY_Weak_DEX  		=	ID_MM_MAX + 19;
+const int ALCHEMY_Weak_Power  		=	ID_MM_MAX + 20;
 
-const int ALCHEMY_Digestion			=	ID_MM_MAX + 23;
-const int ALCHEMY_NightVision		=	ID_MM_MAX + 24;
-const int ALCHEMY_Speed				=	ID_MM_MAX + 25;
-const int ALCHEMY_Geist				=	ID_MM_MAX + 26;
-const int ALCHEMY_Poison			=	ID_MM_MAX + 27;
-const int ALCHEMY_HealObsession		=	ID_MM_MAX + 28;
+const int ALCHEMY_Perm_Health		=	ID_MM_MAX + 21;
+const int ALCHEMY_Perm_Mana  		=	ID_MM_MAX + 22;
+const int ALCHEMY_Perm_STR  		=	ID_MM_MAX + 23;
+const int ALCHEMY_Perm_DEX  		=	ID_MM_MAX + 24;
+const int ALCHEMY_Perm_Power  		=	ID_MM_MAX + 25;
+const int ALCHEMY_Perm_Fire	 		=	ID_MM_MAX + 26;
 
-const int MAX_ALCHEMY				=	ID_MM_MAX + 29;
+const int ALCHEMY_Digestion			=	ID_MM_MAX + 27;
+const int ALCHEMY_NightVision		=	ID_MM_MAX + 28;
+const int ALCHEMY_Speed				=	ID_MM_MAX + 29;
+const int ALCHEMY_Geist				=	ID_MM_MAX + 30;
+const int ALCHEMY_Poison			=	ID_MM_MAX + 31;
+const int ALCHEMY_HealObsession		=	ID_MM_MAX + 32;
+
+const int MAX_ALCHEMY				=	ID_MM_MAX + 33;
 
 var int PLAYER_TALENT_ALCHEMY[MAX_ALCHEMY];
 
@@ -1905,27 +1910,127 @@ func void Use_Recipe_ALCHEMY_Temp_Power()
 	};
 };
 ///******************************************************************************************
-instance ItRe_ALCHEMY_Temp_Fire (ItemPR_Recipe)
+instance ItRe_ALCHEMY_Weak_Health (ItemPR_Recipe)
 {
 	value 					=	300;
 	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ALCHEMY_Temp_Fire;
+	on_state[0]				=	Use_Recipe_ALCHEMY_Weak_Health;
 	
-	description				=	"Przepis na czasowy eliksir odpornoœci na ogieñ";
-	TEXT[1]					=	"ze s³onecznego aloesu";
-	TEXT[2]					=	"i rdestu polnego i wody.";
+	description				=	"Przepis na negatywny eliksir ¿ywotnoœci";
+	TEXT[1]					=	"z krwawego rumianku";
+	TEXT[2]					=	"i cmentarnego mchu i wody.";
 	COUNT[4]				=	1;
 	COUNT[5]				=	value;
 };
-func void Use_Recipe_ALCHEMY_Temp_Fire()
+func void Use_Recipe_ALCHEMY_Weak_Health()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
-	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Fire])
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Health])
 	{
-		PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Fire] = true;
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Health] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Weak_Mana (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Weak_Mana;
+	
+	description				=	"Przepis na negatywny eliksir ducha";
+	TEXT[1]					=	"z wilczej miêty";
+	TEXT[2]					=	"i cmentarnego mchu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Weak_Mana()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Mana])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Mana] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Weak_STR (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Weak_STR;
+	
+	description				=	"Przepis na negatywny eliksir si³y";
+	TEXT[1]					=	"ze smoczego korzenia";
+	TEXT[2]					=	"i cmentarnego mchu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Weak_STR()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_STR])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_STR] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Weak_DEX (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Weak_DEX;
+	
+	description				=	"Przepis na negatywny eliksir zrêcznoœci";
+	TEXT[1]					=	"z goblinich jagód";
+	TEXT[2]					=	"i cmentarnego mchu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Weak_DEX()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_DEX])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_DEX] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_Weak_Power (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_Weak_Power;
+	
+	description				=	"Przepis na negatywny eliksir mocy";
+	TEXT[1]					=	"z wampirzej ró¿y";
+	TEXT[2]					=	"i cmentarnego mchu i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_Weak_Power()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Power])
+	{
+		PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Power] = true;
 		B_Say (self, self, "$VERSTEHE");
 	};
 };
@@ -2076,6 +2181,756 @@ func void Use_Recipe_ALCHEMY_Perm_Fire()
 	else if (!PLAYER_TALENT_ALCHEMY[ALCHEMY_Perm_Fire])
 	{
 		PLAYER_TALENT_ALCHEMY[ALCHEMY_Perm_Fire] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfAlligator (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfAlligator;
+	
+	description				=	"Przepis na przemianê w aligatora";
+	TEXT[1]					=	"z 10 fiolek krwi aligatora";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfAlligator()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_ALLIGATOR])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_ALLIGATOR] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfBiter (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfBiter;
+	
+	description				=	"Przepis na przemianê w k¹sacza";
+	TEXT[1]					=	"z 10 fiolek krwi k¹sacza";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfBiter()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_BITER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_BITER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfBloodfly (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfBloodfly;
+	
+	description				=	"Przepis na przemianê w krwiopijcê";
+	TEXT[1]					=	"z 10 fiolek krwi krwiopijcy";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfBloodfly()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_BLOODFLY])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_BLOODFLY] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfBloodhound (ItemPR_Recipe)
+{
+	value 					=	250;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfBloodhound;
+	
+	description				=	"Przepis na przemianê w krwawego ogara";
+	TEXT[1]					=	"z 10 fiolek krwi krwawego ogara";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfBloodhound()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_BLOODHOUND])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_BLOODHOUND] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfDemon (ItemPR_Recipe)
+{
+	value 					=	350;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfDemon;
+	
+	description				=	"Przepis na przemianê w demona";
+	TEXT[1]					=	"z 10 fiolek krwi demona";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfDemon()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_DEMON])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_DEMON] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfDrgSnapper (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfDrgSnapper;
+	
+	description				=	"Przepis na przemianê w smoczego zêbacza";
+	TEXT[1]					=	"z 10 fiolek krwi smoczego zêbacza";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfDrgSnapper()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_DRAGONSNAPPER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_DRAGONSNAPPER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfFireWaran (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfFireWaran;
+	
+	description				=	"Przepis na przemianê w ognistego jaszczura";
+	TEXT[1]					=	"z 10 fiolek krwi ognistego jaszczura";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfFireWaran()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_FIREWARAN])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_FIREWARAN] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGiantBug (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGiantBug;
+	
+	description				=	"Przepis na przemianê w poln¹ bestiê";
+	TEXT[1]					=	"z 10 fiolek krwi polnej bestii";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGiantBug()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GIANT_BUG])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GIANT_BUG] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGiantRat (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGiantRat;
+	
+	description				=	"Przepis na przemianê w olbrzymiego szczura";
+	TEXT[1]					=	"z 10 fiolek krwi olbrzymiego szczura";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGiantRat()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GIANT_RAT])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GIANT_RAT] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGiantSpider (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGiantSpider;
+	
+	description				=	"Przepis na przemianê w olbrzymiego paj¹ka";
+	TEXT[1]					=	"z 10 fiolek krwi olbrzymiego paj¹ka";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGiantSpider()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GIANT_SPIDER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GIANT_SPIDER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGoat (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGoat;
+	
+	description				=	"Przepis na przemianê w kozê";
+	TEXT[1]					=	"z 10 fiolek krwi kozy";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGoat()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GOAT])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GOAT] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGoblin (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGoblin;
+	
+	description				=	"Przepis na przemianê w goblina";
+	TEXT[1]					=	"z 10 fiolek krwi goblina";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGoblin()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GOBBO])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GOBBO] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfGorilla (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfGorilla;
+	
+	description				=	"Przepis na przemianê w goryla";
+	TEXT[1]					=	"z 10 fiolek krwi goryla";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfGorilla()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_GORILLA])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_GORILLA] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfHare (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfHare;
+	
+	description				=	"Przepis na przemianê w zaj¹ca";
+	TEXT[1]					=	"z 10 fiolek krwi zaj¹ca";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfHare()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_HARE])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_HARE] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfHarpy (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfHarpy;
+	
+	description				=	"Przepis na przemianê w harpiê";
+	TEXT[1]					=	"z 10 fiolek krwi karpii";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfHarpy()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_HARPY])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_HARPY] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfKeiler (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfKeiler;
+	
+	description				=	"Przepis na przemianê w dzika";
+	TEXT[1]					=	"z 10 fiolek krwi dzika";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfKeiler()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_KEILER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_KEILER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfLurker (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfLurker;
+	
+	description				=	"Przepis na przemianê w topielca";
+	TEXT[1]					=	"z 10 fiolek krwi topielca";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfLurker()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_LURKER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_LURKER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfMinecrawler (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfMinecrawler;
+	
+	description				=	"Przepis na przemianê w pe³zacza";
+	TEXT[1]					=	"z 10 fiolek krwi pe³zacza";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfMinecrawler()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_MINECRAWLER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_MINECRAWLER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfMolerat (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfMolerat;
+	
+	description				=	"Przepis na przemianê w kretoszczura";
+	TEXT[1]					=	"z 10 fiolek krwi kretoszczura";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfMolerat()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_MOLERAT])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_MOLERAT] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfScavenger (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfScavenger;
+	
+	description				=	"Przepis na przemianê w œcierwojada";
+	TEXT[1]					=	"z 10 fiolek krwi œcierwojada";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfScavenger()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SCAVENGER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SCAVENGER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfShadowbeast (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfShadowbeast;
+	
+	description				=	"Przepis na przemianê w cieniostwora";
+	TEXT[1]					=	"z 10 fiolek krwi cieniostwora";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfShadowbeast()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SHADOWBEAST])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SHADOWBEAST] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfSheep (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfSheep;
+	
+	description				=	"Przepis na przemianê w owcê";
+	TEXT[1]					=	"z 10 fiolek krwi owcy";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfSheep()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SHEEP])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SHEEP] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfSnapper (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfSnapper;
+	
+	description				=	"Przepis na przemianê w zêbacza";
+	TEXT[1]					=	"z 10 fiolek krwi zêbacza";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfSnapper()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SNAPPER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SNAPPER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfSpint (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfSpint;
+	
+	description				=	"Przepis na przemianê w spinta";
+	TEXT[1]					=	"z 10 fiolek krwi spinta";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfSpint()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SPINT])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SPINT] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfSwampshark (ItemPR_Recipe)
+{
+	value 					=	250;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfSwampshark;
+	
+	description				=	"Przepis na przemianê w b³otnego wê¿¹";
+	TEXT[1]					=	"z 10 fiolek krwi b³otnego wê¿a";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfSwampshark()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_SWAMPSHARK])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_SWAMPSHARK] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfTiger (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfTiger;
+	
+	description				=	"Przepis na przemianê w tygrysa";
+	TEXT[1]					=	"z 10 fiolek krwi tygrysa";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfTiger()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_TIGER])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_TIGER] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfTroll (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfTroll;
+	
+	description				=	"Przepis na przemianê w trolla";
+	TEXT[1]					=	"z 10 fiolek krwi trolla";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfTroll()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_TROLL])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_TROLL] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfWaran (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfWaran;
+	
+	description				=	"Przepis na przemianê w jaszczura";
+	TEXT[1]					=	"z 10 fiolek krwi jaszczura";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfWaran()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_WARAN])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_WARAN] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfWarg (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfWarg;
+	
+	description				=	"Przepis na przemianê w warga";
+	TEXT[1]					=	"z 10 fiolek krwi warga";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfWarg()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_WARG])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_WARG] = true;
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ALCHEMY_TrfWolf (ItemPR_Recipe)
+{
+	value 					=	150;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ALCHEMY_TrfWolf;
+	
+	description				=	"Przepis na przemianê w wilka";
+	TEXT[1]					=	"z 10 fiolek krwi wilka";
+	TEXT[2]					=	"i rdestu polnego i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ALCHEMY_TrfWolf()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ALCHEMY) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ALCHEMY[ID_WOLF])
+	{
+		PLAYER_TALENT_ALCHEMY[ID_WOLF] = true;
 		B_Say (self, self, "$VERSTEHE");
 	};
 };

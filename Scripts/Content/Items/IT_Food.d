@@ -726,8 +726,6 @@ func void Use_ItFo_Addon_LousHammer()
 {
 	if (Npc_IsPlayer(self) && Hammer_Bonus < 400)
 	{
-		//B_RaiseAttribute (self, 0, 2-Hammer_Bonus);
-		//Hammer_Bonus = 2;
 		B_GivePlayerXP(400-Hammer_Bonus);
 		Hammer_Bonus = 400;
 	};
@@ -770,8 +768,6 @@ func void Use_ItFo_Addon_SchlafHammer()
 {
 	if (Npc_IsPlayer(self) && Hammer_Bonus < 600)
 	{
-		//B_RaiseAttribute (self, 0, 3-Hammer_Bonus);
-		//Hammer_Bonus = 3;
 		B_GivePlayerXP(600-Hammer_Bonus);
 		Hammer_Bonus = 600;
 	};

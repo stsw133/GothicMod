@@ -584,8 +584,8 @@ const string PRINT_Trade_Not_Enough_Gold	=	"Brakuje ci z³ota na zakup tego przed
 ///	TEXT FOR ITEMS
 ///******************************************************************************************
 
-const string NAME_OneHanded					=	"Broñ jednorêczna";
-const string NAME_TwoHanded					=	"Broñ dwurêczna";
+const string NAME_OneHanded					=	"Broñ jednorêczna, zasiêg:";
+const string NAME_TwoHanded					=	"Broñ dwurêczna, zasiêg:";
 const string NAME_SecHanded					=	"Broñ pomocnicza";
 const string NAME_FastGun					=	"Broñ szybkostrzelna";
 

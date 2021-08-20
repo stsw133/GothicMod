@@ -221,6 +221,8 @@ func void Use_ItPo_Mana_04()
 ///******************************************************************************************
 ///	Temp
 ///******************************************************************************************
+var int tempHealthPotionTime;
+
 instance ItPo_Temp_Health (ItemPR_Potion)
 {
 	value 					=	300;
@@ -236,9 +238,15 @@ instance ItPo_Temp_Health (ItemPR_Potion)
 };
 func void Use_ItPo_Temp_Health()
 {
-	//B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 3*HP_PER_LP);
+	if (tempHealthPotionTime == 0)
+	{
+		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 10*HP_PER_LP);
+	};
+	tempHealthPotionTime = 300;
 };
 ///******************************************************************************************
+var int tempManaPotionTime;
+
 instance ItPo_Temp_Mana (ItemPR_Potion)
 {
 	value 					=	300;
@@ -254,9 +262,15 @@ instance ItPo_Temp_Mana (ItemPR_Potion)
 };
 func void Use_ItPo_Temp_Mana()
 {
-	//B_RaiseAttribute (self, ATR_MANA_MAX, 3);
+	if (tempManaPotionTime == 0)
+	{
+		B_RaiseAttribute (self, ATR_MANA_MAX, 10);
+	};
+	tempManaPotionTime = 300;
 };
 ///******************************************************************************************
+var int tempStrPotionTime;
+
 instance ItPo_Temp_STR (ItemPR_Potion)
 {
 	value 					=	300;
@@ -272,9 +286,15 @@ instance ItPo_Temp_STR (ItemPR_Potion)
 };
 func void Use_ItPo_Temp_STR()
 {
-	//B_RaiseAttribute (self, ATR_STRENGTH, 3);
+	if (tempStrPotionTime == 0)
+	{
+		B_RaiseAttribute (self, ATR_STRENGTH, 10);
+	};
+	tempStrPotionTime = 300;
 };
 ///******************************************************************************************
+var int tempDexPotionTime;
+
 instance ItPo_Temp_DEX (ItemPR_Potion)
 {
 	value 					=	300;
@@ -290,9 +310,15 @@ instance ItPo_Temp_DEX (ItemPR_Potion)
 };
 func void Use_ItPo_Temp_DEX()
 {
-	//B_RaiseAttribute (self, ATR_DEXTERITY, 3);
+	if (tempDexPotionTime == 0)
+	{
+		B_RaiseAttribute (self, ATR_DEXTERITY, 10);
+	};
+	tempDexPotionTime = 300;
 };
 ///******************************************************************************************
+var int tempPowerPotionTime;
+
 instance ItPo_Temp_Power (ItemPR_Potion)
 {
 	value 					=	300;
@@ -308,25 +334,83 @@ instance ItPo_Temp_Power (ItemPR_Potion)
 };
 func void Use_ItPo_Temp_Power()
 {
-	//B_RaiseAttribute (self, ATR_POWER, 3);
+	if (tempPowerPotionTime == 0)
+	{
+		B_RaiseAttribute (self, ATR_POWER, 10);
+	};
+	tempPowerPotionTime = 300;
 };
 ///******************************************************************************************
-instance ItPo_Temp_Fire (ItemPR_Potion)
+///	Weak
+///******************************************************************************************
+instance ItPo_Weak_Health (ItemPR_Potion)
 {
 	value 					=	300;
-	visual 					=	"ItPo_Perm_Fire.3ds";
-	on_state[0]				=	Use_ItPo_Temp_Fire;
+	visual 					=	"ItPo_Perm_Health.3ds";
 	
-	description				= 	"Czasowy eliksir odpornoœci na ogieñ";
-	TEXT[1]					=	NAME_Prot_Fire;
-	COUNT[1]				= 	10;
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	300;
+	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_POISONWEAPON_S1;
+	
+	description				= 	"Negatywny eliksir ¿ywotnoœci";
+	TEXT[1]					= 	NAME_Bonus_HpMax;
+	COUNT[1]				= 	10*HP_PER_LP;
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_Temp_Fire()
+///******************************************************************************************
+instance ItPo_Perm_Mana (ItemPR_Potion)
 {
-	//self.protection[PROT_FIRE] += 2;
+	value 					=	300;
+	visual 					=	"ItPo_Perm_Mana.3ds";
+	
+	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_POISONWEAPON_S1;
+	
+	description				= 	"Negatywny eliksir ducha";
+	TEXT[1]					= 	NAME_Bonus_ManaMax;
+	COUNT[1]				= 	10;
+	COUNT[5]				= 	value;
+};
+///******************************************************************************************
+instance ItPo_Perm_STR (ItemPR_Potion)
+{
+	value 					=	300;
+	visual 					=	"ItPo_Perm_STR.3ds";
+	
+	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_POISONWEAPON_S1;
+	
+	description				= 	"Negatywny eliksir si³y";
+	TEXT[1]					= 	NAME_Bonus_Str;
+	COUNT[1]				= 	10;
+	COUNT[5]				= 	value;
+};
+///******************************************************************************************
+instance ItPo_Perm_DEX (ItemPR_Potion)
+{
+	value 					=	300;
+	visual 					=	"ItPo_Perm_DEX.3ds";
+	
+	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_POISONWEAPON_S1;
+	
+	description				= 	"Negatywny eliksir zrêcznoœci";
+	TEXT[1]					= 	NAME_Bonus_Dex;
+	COUNT[1]				= 	10;
+	COUNT[5]				= 	value;
+};
+///******************************************************************************************
+instance ItPo_Perm_Power (ItemPR_Potion)
+{
+	value 					=	300;
+	visual 					=	"ItPo_Perm_Power.3ds";
+	
+	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_POISONWEAPON_S1;
+	
+	description				= 	"Negatywny eliksir mocy";
+	TEXT[1]					= 	NAME_Bonus_Power;
+	COUNT[1]				= 	10;
+	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
 ///	Perm
@@ -992,7 +1076,8 @@ instance ItPo_Poison (ItemPR_Potion)
 {
 	value 					=	60;
 	visual 					=	"ItPo_Poison.3ds";
-//	scemeName				=	"FASTUSE";
+	
+	scemeName				=	"FASTUSE";
 //	on_state[0]				=	MOBSI_POISONWEAPON_S1;
 	
 	description				= 	"Trucizna";

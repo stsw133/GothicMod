@@ -38,13 +38,13 @@ func void UnEquip_Bow_CHECK()
 	{
 		muntype_bow = 0;
 		ARROW_CHECK();
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = ITRW_ARROW;
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
 ///******************************************************************************************
-func void SetItRwAttributes_Bow (var C_ITEM itm, var int kap)
+func void SetItRwAttributes_Bow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*50;
 	itm.damageTotal			=	kap*5;
@@ -74,7 +74,7 @@ instance ItRw_Sld_Bow (ItemPR_Bow)
 	visual 					=	"ItRw_Sld_Bow.mms";
 	description				=	name;
 	SetItRwAttributes_Bow (self, 6);
-	value					/=	10;
+	value					/=	20;
 	COUNT[5]				=	value;
 };
 instance ItRw_Bow_L_03 (ItemPR_Bow)
@@ -179,13 +179,13 @@ func void UnEquip_Crossbow_CHECK()
 	{
 		muntype_cbow = 0;
 		BOLT_CHECK();
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = ITRW_BOLT;
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
 ///******************************************************************************************
-func void SetItRwAttributes_Crossbow (var C_ITEM itm, var int kap)
+func void SetItRwAttributes_Crossbow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*100;
 	itm.damageTotal			=	kap*6;
@@ -209,7 +209,7 @@ instance ItRw_Mil_Crossbow (ItemPR_Crossbow)
 	visual 					=	"ItRw_Mil_Crossbow.mms";
 	description				=	name;
 	SetItRwAttributes_Crossbow (self, 6);
-	value					/=	10;
+	value					/=	20;
 	itm.COUNT[5]			=	value;
 };
 instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)
@@ -282,13 +282,13 @@ func void UnEquip_Gun_CHECK()
 	{
 		muntype_gun = 0;
 		AMMO_CHECK();
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = ITRW_AMMO;
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
 ///******************************************************************************************
-func void SetItRwAttributes_Gun (var C_ITEM itm, var int kap, var int fast)
+func void SetItRwAttributes_Gun (var C_Item itm, var int kap, var int fast)
 {
 	itm.value				=	kap*500;
 	if (fast)				{	itm.damageTotal = kap*30; itm.TEXT[4] = NAME_FastGun;	}
@@ -403,13 +403,13 @@ func void UnEquip_HeavyGun_CHECK()
 	{
 		muntype_hgun = 0;
 		HEAVYAMMO_CHECK();
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = ITRW_HAMMO;
 		self.damage[DAM_INDEX_POINT] = 0;
 	};
 };
 ///******************************************************************************************
-func void SetItRwAttributes_HeavyGun (var C_ITEM itm, var int kap)
+func void SetItRwAttributes_HeavyGun (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*2000;
 	itm.damageTotal			=	kap*200;

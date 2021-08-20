@@ -340,29 +340,25 @@ func void PC_PotionAlchemy_Temp_Start_Info()
 	Info_ClearChoices	(PC_PotionAlchemy_Temp_Start);
 	Info_AddChoice		(PC_PotionAlchemy_Temp_Start, DIALOG_BACK, PC_ItPo_Temp_BACK);
 	
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Fire])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir odpornoœci na ogieñ (s³oneczny aloes, szczaw królewski, woda)", PC_ItPo_Temp_Power);
-	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Power])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir mocy (wampirza ró¿a, szczaw królewski, woda)", PC_ItPo_Temp_Power);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir mocy (wampirza ró¿a, rdest polny, woda)", PC_ItPo_Temp_Power);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_DEX])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir zrêcznoœci (goblinia jagoda, szczaw królewski, woda)", PC_ItPo_Temp_DEX);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir zrêcznoœci (goblinia jagoda, rdest polny, woda)", PC_ItPo_Temp_DEX);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_STR])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir si³y (smoczy korzeñ, szczaw królewski, woda)", PC_ItPo_Temp_STR);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir si³y (smoczy korzeñ, rdest polny, woda)", PC_ItPo_Temp_STR);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Mana])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ducha (wilcza miêta, szczaw królewski, woda)", PC_ItPo_Temp_Mana);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ducha (wilcza miêta, rdest polny, woda)", PC_ItPo_Temp_Mana);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Health])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, szczaw królewski, woda)", PC_ItPo_Temp_Health);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, rdest polny, woda)", PC_ItPo_Temp_Health);
 	};
 };
 ///******************************************************************************************
@@ -470,17 +466,148 @@ func void PC_ItPo_Temp_Power()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Temp_Fire()
+///******************************************************************************************
+///	Weak
+///******************************************************************************************
+instance PC_PotionAlchemy_Weak_Start (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	4;
+	condition							=	PC_PotionAlchemy_Weak_Start_Condition;
+	information							=	PC_PotionAlchemy_Weak_Start_Info;
+	permanent							=	true;
+	description							=	"Przygotuj mikstury os³abiaj¹ce atrybuty";
+};
+func int PC_PotionAlchemy_Weak_Start_Condition()
+{
+	if (PLAYER_MOBSI_PRODUCTION	== MOBSI_POTIONALCHEMY)
+	&& (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 1)
+	{
+		return true;
+	};
+};
+func void PC_PotionAlchemy_Weak_Start_Info()
+{
+	Info_ClearChoices	(PC_PotionAlchemy_Weak_Start);
+	Info_AddChoice		(PC_PotionAlchemy_Weak_Start, DIALOG_BACK, PC_ItPo_Weak_BACK);
+	
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Power])
+	{
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir mocy (wampirza ró¿a, cmentarny mech, woda)", PC_ItPo_Weak_Power);
+	};
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_DEX])
+	{
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir zrêcznoœci (goblinia jagoda, cmentarny mech, woda)", PC_ItPo_Weak_DEX);
+	};
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_STR])
+	{
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir si³y (smoczy korzeñ, cmentarny mech, woda)", PC_ItPo_Weak_STR);
+	};
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Mana])
+	{
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir ducha (wilcza miêta, cmentarny mech, woda)", PC_ItPo_Weak_Mana);
+	};
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Health])
+	{
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, cmentarny mech, woda)", PC_ItPo_Weak_Health);
+	};
+};
+///******************************************************************************************
+func void PC_ItPo_Weak_BACK()
+{
+	Info_ClearChoices(PC_PotionAlchemy_Weak_Start);
+};
+func void PC_ItPo_Weak_Health()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_SunHerb) >= 1)
+	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
-		Npc_RemoveInvItem (hero, ItPl_SunHerb);
+		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
 		
-		CreateInvItem (hero, ItPo_Temp_Fire);
+		CreateInvItem (hero, ItPo_Weak_Health);
+		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+func void PC_ItPo_Weak_Mana()
+{
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
+		
+		CreateInvItem (hero, ItPo_Weak_Mana);
+		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+func void PC_ItPo_Weak_STR()
+{
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Strength_Herb_01) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Strength_Herb_01);
+		
+		CreateInvItem (hero, ItPo_Weak_STR);
+		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+func void PC_ItPo_Weak_DEX()
+{
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Dex_Herb_01) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Dex_Herb_01);
+		
+		CreateInvItem (hero, ItPo_Weak_DEX);
+		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+func void PC_ItPo_Weak_Power()
+{
+	if (Npc_HasItems(hero, ItFo_Water) >= 1)
+	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Power_Herb_01) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
+		
+		CreateInvItem (hero, ItPo_Weak_Power);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -496,7 +623,7 @@ func void PC_ItPo_Temp_Fire()
 instance PC_PotionAlchemy_Perm_Start (C_Info)
 {
 	npc									=	PC_Hero;
-	nr									=	4;
+	nr									=	5;
 	condition							=	PC_PotionAlchemy_Perm_Start_Condition;
 	information							=	PC_PotionAlchemy_Perm_Start_Info;
 	permanent							=	true;
@@ -695,7 +822,7 @@ func void PC_ItPo_MegaDrink()
 instance PC_PotionAlchemy_Transform_Start (C_Info)
 {
 	npc									=	PC_Hero;
-	nr									=	5;
+	nr									=	6;
 	condition							=	PC_PotionAlchemy_Transform_Start_Condition;
 	information							=	PC_PotionAlchemy_Transform_Start_Info;
 	permanent							=	true;
@@ -716,123 +843,123 @@ func void PC_PotionAlchemy_Transform_Start_Info()
 	
 	if (PLAYER_TALENT_ALCHEMY[ID_ALLIGATOR])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w aligatora (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfAlligator);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w aligatora (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfAlligator);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_BITER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w k¹sacza (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfBiter);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w k¹sacza (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfBiter);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_BLOODFLY])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwiopijcê (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfBloodfly);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwiopijcê (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfBloodfly);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_BLOODHOUND])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwawego ogara (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfBloodhound);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwawego ogara (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfBloodhound);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_DEMON])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w demona (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfDemon);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w demona (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfDemon);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_DRAGONSNAPPER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w smoczego zêbacza (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfDrgSnapper);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w smoczego zêbacza (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfDrgSnapper);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_FIREWARAN])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w ognistego jaszczura (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfFireWaran);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w ognistego jaszczura (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfFireWaran);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GIANT_BUG])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w poln¹ bestiê (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGiantBug);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w poln¹ bestiê (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGiantBug);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GIANT_RAT])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w olbrzymiego szczura (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGiantRat);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w olbrzymiego szczura (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGiantRat);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GIANT_SPIDER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w olbrzymiego paj¹ka (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGiantSpider);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w olbrzymiego paj¹ka (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGiantSpider);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GOAT])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w kozê (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGoat);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w kozê (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGoat);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GOBBO])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w goblina (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGoblin);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w goblina (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGoblin);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_GORILLA])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w goryla (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfGorilla);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w goryla (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfGorilla);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_HARE])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w zaj¹ca (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfHare);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w zaj¹ca (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfHare);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_HARPY])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w harpiê (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfHarpy);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w harpiê (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfHarpy);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_KEILER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w dzika (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfKeiler);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w dzika (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfKeiler);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_LURKER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w topielca (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfLurker);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w topielca (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfLurker);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_MINECRAWLER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w pe³zacza (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfMinecrawler);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w pe³zacza (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfMinecrawler);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_MOLERAT])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w kretoszczura (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfMolerat);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w kretoszczura (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfMolerat);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SCAVENGER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w œcierwojada (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfScavenger);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w œcierwojada (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfScavenger);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SHADOWBEAST])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w cieniostwora (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfShadowbeast);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w cieniostwora (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfShadowbeast);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SHEEP])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w owcê (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfSheep);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w owcê (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfSheep);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SNAPPER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w zêbacza (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfSnapper);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w zêbacza (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfSnapper);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SPINT])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w spinta (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfSpint);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w spinta (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfSpint);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_SWAMPSHARK])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w b³otnego wê¿a (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfSwampshark);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w b³otnego wê¿a (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfSwampshark);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_TIGER])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w tygrysa (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfTiger);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w tygrysa (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfTiger);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_TROLL])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w trolla (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfTroll);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w trolla (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfTroll);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_WARAN])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w jaszczura (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfWaran);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w jaszczura (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfWaran);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_WARG])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w warga (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfWarg);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w warga (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfWarg);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ID_WOLF])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w wilka (10 fiolek krwii, rdest polny, woda)", PC_ItPo_TrfWolf);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w wilka (10 fiolek krwi, rdest polny, woda)", PC_ItPo_TrfWolf);
 	};
 };
 ///******************************************************************************************
@@ -1444,7 +1571,7 @@ func void PC_ItPo_TrfWolf()
 instance PC_PotionAlchemy_Special_Start (C_Info)
 {
 	npc									=	PC_Hero;
-	nr									=	6;
+	nr									=	7;
 	condition							=	PC_PotionAlchemy_Special_Start_Condition;
 	information							=	PC_PotionAlchemy_Special_Start_Info;
 	permanent							=	true;
@@ -1611,7 +1738,7 @@ func void PC_ItPo_HealObsession()
 instance PC_PotionAlchemy_Alcohol_Start (C_Info)
 {
 	npc									=	PC_Hero;
-	nr									=	6;
+	nr									=	8;
 	condition							=	PC_PotionAlchemy_Alcohol_Start_Condition;
 	information							=	PC_PotionAlchemy_Alcohol_Start_Info;
 	permanent							=	true;

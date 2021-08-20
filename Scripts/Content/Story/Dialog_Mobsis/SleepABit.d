@@ -1,6 +1,22 @@
 ///******************************************************************************************
 ///	PC_Sleep
 ///******************************************************************************************
+func void SLEEPABIT_S1()
+{
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	{
+		self.aivar[AIV_INVINCIBLE] = true;
+		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
+		Ai_ProcessInfos(her);
+		
+		if (SC_IsObsessed)
+		{
+			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
+		};
+	};
+};
+///******************************************************************************************
 func void PC_Sleep (var int t)
 {
 	AI_StopProcessInfos(self);
@@ -29,26 +45,11 @@ func void PC_Sleep (var int t)
 		PrintScreen	(PRINT_SleepOver, -1, -1, FONT_Screen, 2);
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+		hero.aivar[AIV_Energy] = hero.aivar{AIV_Energy_MAX];
 	};
 	
 	PrintGlobals(PD_ITEM_MOBSI);
 	Npc_SendPassivePerc (hero, PERC_ASSESSENTERROOM, null, hero);
-};
-///******************************************************************************************
-func void SLEEPABIT_S1()
-{
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
-	{
-		self.aivar[AIV_INVINCIBLE] = true;
-		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
-		Ai_ProcessInfos(her);
-		
-		if (SC_IsObsessed)
-		{
-			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
-		};
-	};
 };
 ///******************************************************************************************
 instance PC_NoSleep (c_Info)

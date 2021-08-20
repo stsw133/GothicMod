@@ -26,12 +26,12 @@ func void UnEquip_2H_2_AxeWeapon()
 	Mdl_RemoveOverlayMDS (self, "HUMANS_2HST3.MDS");
 };
 ///******************************************************************************************
-func void SetItMwAttributes (var C_ITEM itm, var int type, var int str, var int dex, var int dmg, var int dmgType, var int rng, var int valueConverter)
+func void SetItMwAttributes (var C_ITEM itm, var int type, var int str, var int dex, var int dmg, var int dmgType, var int rng, var int valuePercent)
 {
 	itm.flags				=	type;
 	
-	itm.value				=	((dmg*10 + (dmg*6/5-str-dex)*5 + itm.change_value[2]*50) * (1000+rng)/1000) * valueConverter/100;
-	if (dmgType == DAM_EDGE|DAM_FIRE)
+	itm.value				=	((dmg*10 + (dmg*3/2-str-dex)*5 + itm.change_value[2]*50) * (1000+rng)/1000) * valuePercent/100;
+	if ((dmgType & DAM_FIRE) == DAM_FIRE)
 	{
 		itm.value += 400;
 	};
@@ -47,6 +47,7 @@ func void SetItMwAttributes (var C_ITEM itm, var int type, var int str, var int 
 	itm.COUNT[1]			=	itm.damageTotal;
 	itm.COUNT[2]			=	itm.cond_value[1];
 	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[4]			=	itm.range;
 	itm.COUNT[5]			=	itm.value;
 	
 	if		(type == ITEM_SWD && type == ITEM_AXE)			{	itm.TEXT[4] = NAME_OneHanded;	}
@@ -68,49 +69,49 @@ instance ItMw_1h_Bau_Mace (ItemPR_MeleeWeapon)
 	name 					=	"Laga";
 	material				=	MAT_WOOD;
 	visual 					=	"ItMw_010_1h_Club_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 5,1, 5,DAM_BLUNT, 70, 0);
+	SetItMwAttributes (self, ITEM_AXE, 5,1, 1,DAM_BLUNT, 70, 0);
 };
 instance ItMw_1h_Misc_Sword (ItemPR_MeleeWeapon) 
 {
 	name 					=	"Zardzewia³y krótki miecz";
 	visual 					=	"ItMw_020_1h_sword_old_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 30,6, 30,DAM_EDGE, 70, 0);
+	SetItMwAttributes (self, ITEM_SWD, 30,6, 6,DAM_EDGE, 70, 0);
 };
 instance ItMW_Addon_Hacker_1h_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Stara maczeta";
 	visual 					=	"ItMw_1H_Machete_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 35,7, 35,DAM_EDGE, 70, 0);
+	SetItMwAttributes (self, ITEM_SWD, 35,7, 7,DAM_EDGE, 70, 0);
 };
 instance ItMw_1h_Misc_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Zardzewia³y topór";
 	visual 					=	"ItMw_025_2h_Misc_Axe_old_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 40,8, 40,DAM_EDGE, 80, 0);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 40,8, 8,DAM_EDGE, 80, 0);
 };
 instance ItMw_2H_OldScythe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Zardzewia³a kosa";
 	visual 					=	"ITROX_2H_SCYTHE_OLD.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 45,9, 45,DAM_EDGE, 130, 0);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 45,9, 9,DAM_EDGE, 130, 0);
 };
 instance ItMw_2H_Sword_M_01 (ItemPR_MeleeWeapon) 
 {
 	name 					=	"Zardzewia³y miecz dwurêczny";
 	visual 					=	"ItMw_025_2h_Sword_old_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 50,10, 50,DAM_EDGE, 100, 0);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 50,10, 10,DAM_EDGE, 100, 0);
 };
 instance ItMW_Addon_Hacker_2h_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Wielka, stara maczeta";
 	visual 					=	"ItMw_2H_Machete_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 55,11, 55,DAM_EDGE, 95, 0);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 55,11, 11,DAM_EDGE, 95, 0);
 };
 instance ItMw_1h_SleeperSword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Ostrze Œni¹cego";
 	visual 					=	"ItMw_1h_SleeperSchwert.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 60,12, 60,DAM_EDGE, 80, 0);
+	SetItMwAttributes (self, ITEM_SWD, 60,12, 12,DAM_EDGE, 80, 0);
 };
 ///******************************************************************************************
 ///	NPC's weapons
@@ -120,59 +121,59 @@ instance ItMw_1H_Mace_L_01 (ItemPR_MeleeWeapon)
 	name 					=	"Pogrzebacz";
 	material				=	MAT_WOOD;
 	visual 					=	"Itmw_005_1h_poker_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 5,1, 5,DAM_EDGE, 50, 5);
+	SetItMwAttributes (self, ITEM_AXE, 5,1, 2,DAM_EDGE, 50, 10);
 };
 instance ItMw_1H_Mace_L_03 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Pa³ka";
 	material				=	MAT_WOOD;
 	visual 					=	"ItMw_008_1h_mace_light_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 10,2, 10,DAM_BLUNT, 70, 5);
+	SetItMwAttributes (self, ITEM_AXE, 10,2, 4,DAM_BLUNT, 70, 10);
 };
 instance ItMw_Nagelknueppel (ItemPR_MeleeWeapon)
 {
 	name 					=	"Maczuga z kolcami";
 	material				=	MAT_WOOD;
 	visual 					=	"ItMw_012_1h_Nailmace_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 15,3, 15,DAM_BLUNT, 60, 5);
+	SetItMwAttributes (self, ITEM_AXE, 15,3, 6,DAM_BLUNT, 60, 10);
 };
 instance ItMw_Sense (ItemPR_MeleeWeapon)
 {
 	name 					=	"Ma³a kosa";
 	visual 					=	"ItMw_012_1h_Nailmace_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 15,3, 15,DAM_EDGE, 60, 5);
+	SetItMwAttributes (self, ITEM_SWD, 15,3, 6,DAM_EDGE, 60, 10);
 };
 instance ItMw_1H_Mace_L_04 (ItemPR_MeleeWeapon)
 {
 	name 					=	"M³ot kowalski";
 	visual 					=	"ItMw_010_1h_sledgehammer_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_BLUNT, 30, 5);
+	SetItMwAttributes (self, ITEM_AXE, 20,4, 8,DAM_BLUNT, 30, 10);
 };
 /// ------ MIL ------
 instance ItMw_1h_Mil_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kiepski szeroki miecz";
 	visual 					=	"Itmw_025_1h_Mil_Sword_broad_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 40,8, 40,DAM_EDGE, 90, 5);
+	SetItMwAttributes (self, ITEM_SWD, 40,8, 16,DAM_EDGE, 90, 10);
 };
 instance ItMw_1h_NordmarSword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz nordmarczyka";
 	visual 					=	"ItMw_1h_NordmarSchwert.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 70,14, 70,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_SWD, 70,14, 28,DAM_EDGE, 70, 10);
 };
 /// ------ PAL ------
 instance ItMw_1h_Pal_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz paladyna";
 	visual 					=	"ItMw_030_1h_PAL_Sword_02.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 70,14, 70,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_SWD, 70,14, 28,DAM_EDGE, 70, 10);
 };
 instance ItMw_2h_Pal_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz dwurêczny paladyna";
 	visual 					=	"ItMw_040_2h_PAL_Sword_03.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 90,18, 90,DAM_EDGE, 110, 5);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 90,18, 36,DAM_EDGE, 110, 10);
 };
 /// ------ VLK ------
 instance ItMw_1h_Vlk_Mace (ItemPR_MeleeWeapon)
@@ -180,25 +181,25 @@ instance ItMw_1h_Vlk_Mace (ItemPR_MeleeWeapon)
 	name 					=	"Laska";
 	material				=	MAT_WOOD;
 	visual 					=	"Itmw_008_1h_pole_01.3ds";
-	SetItMwAttributes (self, ITEM_AXE, 8,2, 8,DAM_BLUNT, 70, 5);
+	SetItMwAttributes (self, ITEM_AXE, 8,2, 3,DAM_BLUNT, 70, 10);
 };
 instance ItMw_1h_Vlk_Dagger (ItemPR_MeleeWeapon)
 {
 	name 					=	"Sztylet";
 	visual 					=	"Itmw_005_1h_dagger_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 4,10, 15,DAM_EDGE, 50, 5);
+	SetItMwAttributes (self, ITEM_SWD, 4,10, 5,DAM_EDGE, 50, 10);
 };
 instance ItMw_1h_Vlk_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Topór";
 	visual 					=	"Itmw_010_1h_vlk_hatchet_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_EDGE, 50, 5);
+	SetItMwAttributes (self, ITEM_AXE, 20,4, 8,DAM_EDGE, 50, 10);
 };
 instance ItMw_1h_Vlk_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz";
 	visual 					=	"ItMw_018_1h_SwordCane_01.3ds";
-	SetItMwAttributes (self, ITEM_SWD, 8,20, 30,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_SWD, 8,20, 10,DAM_EDGE, 70, 10);
 };
 /// ------ NOV ------
 instance ItMw_1h_Nov_Mace (ItemPR_MeleeWeapon)
@@ -206,59 +207,59 @@ instance ItMw_1h_Nov_Mace (ItemPR_MeleeWeapon)
 	name 					=	"Pika bojowa";
 	material				=	MAT_WOOD;
 	visual 					=	"ItMw_020_2h_Nov_Staff_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 30,6, 30,DAM_BLUNT, 130, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 30,6, 12,DAM_BLUNT, 130, 10);
 };
 instance ItMw_RangerStaff_Addon (ItemPR_MeleeWeapon)
 {
 	name 					=	"Pika bojowa Wodnego Krêgu";
 	material				=	MAT_WOOD;
 	visual 					=	"ItMw_020_2h_Nov_Staff_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 30,6, 35,DAM_BLUNT, 130, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 30,6, 15,DAM_BLUNT, 130, 10);
 };
 /// ------ SLD ------
 instance ItMw_1h_Sld_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kiepski tasak";
 	visual 					=	"ItMw_025_1h_sld_axe_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 40,8, 40,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_AXE, 40,8, 16,DAM_EDGE, 70, 10);
 };
 instance ItMw_1h_Sld_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kiepski miecz";
 	visual 					=	"ItMw_025_1h_sld_sword_01.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 40,8, 40,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_SWD, 40,8, 16,DAM_EDGE, 70, 10);
 };
 instance ItMw_2h_Sld_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kiepski topór bojowy";
 	visual 					=	"ItMw_035_2h_sld_axe_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 60,12, 60,DAM_EDGE, 80, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 60,12, 24,DAM_EDGE, 80, 10);
 };
 instance ItMw_2h_Sld_Sword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kiepski miecz dwurêczny";
 	visual 					=	"ItMw_035_2h_sld_sword_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 60,12, 60,DAM_EDGE, 130, 5);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 60,12, 24,DAM_EDGE, 130, 10);
 };
 /// ------ BAU ------
 instance ItMw_1h_Bau_Axe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Sierp";
 	visual 					=	"Itmw_007_1h_sickle_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 5,1, 5,DAM_EDGE, 50, 5);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 5,1, 2,DAM_EDGE, 50, 10);
 };
 instance ItMw_2H_Scythe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kosa";
 	visual 					=	"ITROX_2H_SCYTHE.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 60,12, 60,DAM_EDGE, 130, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 60,12, 24,DAM_EDGE, 130, 10);
 };
 /// ------ BDT ------
 instance ItMw_Addon_BanditTrader (ItemPR_MeleeWeapon)
 {
 	name 					=	"Pa³asz bandytów";
 	visual 					=	"ItMw_1h_BanditWeapon.3ds";
-	SetItMwAttributes (self, ITEM_SWD, 35,7, 35,DAM_EDGE, 90, 5);
+	SetItMwAttributes (self, ITEM_SWD, 35,7, 14,DAM_EDGE, 90, 10);
 	TEXT[0]					= 	"Na g³owicy wyciêto literê 'F'";
 };
 /// ------ STRF ------
@@ -266,39 +267,39 @@ instance ItMw_2H_Axe_L_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Kilof";
 	visual 					=	"ItMw_020_2h_Pickaxe_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE|ITEM_NSPLIT, 30,6, 30,DAM_EDGE, 60, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE|ITEM_NSPLIT, 30,6, 12,DAM_EDGE, 60, 10);
 };
 /// ------ PIR ------
 instance ItMw_Addon_PIR1hAxe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Topór pok³adowy";
 	visual 					=	"ItMw_030_1h_axe_01.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 50,10, 50,DAM_EDGE, 60, 5);
+	SetItMwAttributes (self, ITEM_AXE, 50,10, 20,DAM_EDGE, 60, 10);
 };
 instance ItMw_Addon_PIR1hSword (ItemPR_MeleeWeapon)
 {	
 	name 					=	"Kordelas";
 	visual 					=	"ItMw_030_1h_sword_03.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 50,10, 50,DAM_EDGE, 70, 5);
+	SetItMwAttributes (self, ITEM_SWD, 50,10, 20,DAM_EDGE, 70, 10);
 };
 instance ItMw_Addon_PIR2hAxe (ItemPR_MeleeWeapon)
 {
 	name 					=	"Mia¿d¿ydeska";
 	visual 					=	"ItMw_070_2h_axe_heavy_03.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 70,14, 70,DAM_EDGE, 80, 5);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 70,14, 28,DAM_EDGE, 80, 10);
 };
 instance ItMw_Addon_PIR2hSword (ItemPR_MeleeWeapon)
 {	
 	name 					=	"Miecz pok³adowy";
 	visual 					=	"ItMw_070_2h_sword_09.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 70,14, 70,DAM_EDGE, 120, 5);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 70,14, 28,DAM_EDGE, 120, 10);
 };
 /// ------ others ------
 instance ItMw_Addon_Nomad (ItemPR_MeleeWeapon)
 {	
 	name 					=	"Szabla koczownika";
 	visual 					=	"ItMw_NomadSabre.3DS";
-	SetItMwAttributes (self, ITEM_SWD, 60,12, 60,DAM_EDGE, 75, 5);
+	SetItMwAttributes (self, ITEM_SWD, 60,12, 24,DAM_EDGE, 75, 10);
 };
 ///******************************************************************************************
 ///	Goblin weapons
@@ -308,28 +309,28 @@ instance ItMw_1H_Goblin_01 (ItemPR_MeleeWeapon)
 	name 					=	"Krush Lagush";
 	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 10,2, 10,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 10,2, 4,DAM_BLUNT, 90, 5);
 };
 instance ItMw_1H_Goblin_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Parush";
 	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_Nagel.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 15,3, 15,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 15,3, 6,DAM_BLUNT, 90, 5);
 };
 instance ItMw_1H_Goblin_03 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Morush";
 	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_Nagel_Ring.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 20,4, 20,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 20,4, 8,DAM_BLUNT, 90, 5);
 };
 instance ItMw_1H_Goblin_04 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Dopadush";
 	material 				=	MAT_WOOD;
 	visual 					=	"ItMw_1h_Oberschenkelknochen_schaedelbandage.3DS";
-	SetItMwAttributes (self, ITEM_AXE, 25,5, 25,DAM_BLUNT, 90, 1);
+	SetItMwAttributes (self, ITEM_AXE, 25,5, 10,DAM_BLUNT, 90, 5);
 };
 ///******************************************************************************************
 ///	Orc weapons
@@ -338,72 +339,72 @@ instance ItMw_2H_Draconian (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Drak";
 	visual 					=	"ItMw_2H_Draconian.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 105,21, 70,DAM_EDGE, 100, 1);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 105,21, 42,DAM_EDGE, 100, 5);
 };
 /// ------ Axe ------
 instance ItMw_2H_OrcAxe_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Pach";
 	visual 					=	"ItMw_2H_OrcAxe_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 75,15, 50,DAM_EDGE, 100, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 75,15, 30,DAM_EDGE, 100, 5);
 };
 instance ItMw_2H_OrcAxe_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush UrRok";
 	visual 					=	"ItMw_2H_OrcAxe_02.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 90,18, 60,DAM_EDGE, 110, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 90,18, 36,DAM_EDGE, 110, 5);
 };
 instance ItMw_2H_OrcAxe_03 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Agash";
 	visual 					=	"ItMw_2H_OrcAxe_03.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 105,21, 70,DAM_EDGE, 110, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 105,21, 42,DAM_EDGE, 110, 5);
 };
 instance ItMw_2H_OrcAxe_04 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush BrokDar";
 	visual 					=	"ItMw_2H_OrcAxe_04.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 135,27, 90,DAM_EDGE, 130, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 135,27, 54,DAM_EDGE, 130, 5);
 };
 /// ------ Mace ------
 instance ItMw_2H_OrcMace_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Karrok";
 	visual 					=	"ItMw_2H_OrcMace_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 90,18, 60,DAM_BLUNT, 110, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 90,18, 36,DAM_BLUNT, 110, 5);
 };
 instance ItMw_2H_OrcMace_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush EdRosh";
 	visual 					=	"ItMw_2H_OrcMace_02.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 120,24, 80,DAM_BLUNT, 120, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 120,24, 48,DAM_BLUNT, 120, 5);
 };
 /// ------ Staff ------
 instance ItMw_2H_OrcStaff_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Nabush";
 	visual 					=	"ItMw_2H_OrcStaff_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_AXE, 75,15, 50,DAM_BLUNT, 100, 1);
+	SetItMwAttributes (self, ITEM_2HD_AXE, 75,15, 30,DAM_BLUNT, 100, 5);
 };
 /// ------ Sword ------
 instance ItMw_2H_OrcSword_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Varrok";
 	visual 					=	"ItMw_2H_OrcSword_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 120,24, 80,DAM_EDGE, 100, 1);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 120,24, 48,DAM_EDGE, 100, 5);
 };
 instance ItMw_2H_OrcSword_02 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Tarrok";
 	visual 					=	"ItMw_2H_OrcSword_02.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 135,27, 90,DAM_EDGE, 100, 1);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 135,27, 54,DAM_EDGE, 100, 5);
 };
 /// ------ Elite ------
 instance ItMw_2H_OrcElite_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush BrokRosh";
 	visual 					=	"ItMw_2H_OrcElite_01.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 150,30, 100,DAM_EDGE, 140, 1);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 150,30, 60,DAM_EDGE, 140, 5);
 };
 ///******************************************************************************************
 /// Chapter 1 - trader
@@ -1540,7 +1541,7 @@ instance ItMw_LightSaber (ItemPR_MeleeWeapon)
 	name 					=	"Miecz œwietlny";
 	material 				=	MAT_GLAS;
 	visual 					=	"itmw_lightsaber_notactive.3ds";
-	SetItMwAttributes (self, ITEM_SWD, 0,0, 0,DAM_POINT, 0, 150);
+	SetItMwAttributes (self, ITEM_SWD, 0,0, 0,DAM_INVALID, 0, 150);
 	COUNT[1]				=	250;
 };
 instance ItMw_LightSaber_Blue (ItemPR_MeleeWeapon)
@@ -1548,19 +1549,19 @@ instance ItMw_LightSaber_Blue (ItemPR_MeleeWeapon)
 	name 					=	"Miecz œwietlny";
 	material 				=	MAT_GLAS;
 	visual					=	"itmw_lightsaber_blue.3ds";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_POINT, 120, 150);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_INVALID, 120, 150);
 };
 instance ItMw_LightSaber_Green (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz œwietlny";
 	material 				=	MAT_GLAS;
 	visual					=	"itmw_lightsaber_green.3ds";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_POINT, 120, 150);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_INVALID, 120, 150);
 };
 instance ItMw_LightSaber_Red (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz œwietlny";
 	material 				=	MAT_GLAS;
 	visual					=	"itmw_lightsaber_red.3ds";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_POINT, 120, 150);
+	SetItMwAttributes (self, ITEM_2HD_SWD, 75,75, 250,DAM_INVALID, 120, 150);
 };

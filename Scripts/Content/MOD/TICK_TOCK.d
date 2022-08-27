@@ -62,6 +62,7 @@ func void TT_1000_RGMP()
 };
 func void TT_500_RGEN()
 {
+/*
 	/// gdy postaæ biegnie (bez sprintu)...
 	if (C_BodyStateContains(hero, BS_RUN))
 	{
@@ -69,6 +70,11 @@ func void TT_500_RGEN()
 	}
 	/// ...lub gdy postaæ nie biegnie (i nie skacze) w ogóle
 	else if (!C_BodyStateContains(hero, BS_JUMP))
+	{
+		hero.aivar[AIV_Energy] += 5;	/// +5 energii co 0.5 sekundy
+	};
+*/
+	if (!C_BodyStateContains(hero, BS_RUN) && !C_BodyStateContains(hero, BS_JUMP))
 	{
 		hero.aivar[AIV_Energy] += 5;	/// +5 energii co 0.5 sekundy
 	};
@@ -83,7 +89,7 @@ func void TT_1000()
 		return;
 	};
 	
-	if (hero.attribute[ATR_HITPOINTS] > 0)
+	if (!Npc_IsDead(hero))
 	{
 		/// regeneracja
 		TT_1000_RGHP();
@@ -104,7 +110,7 @@ func void TT_1000()
 		if (TimeDust_WAIT == 1800)	/// co 30 minut
 		{
 			TimeDust_WAIT = 0;
-			if (SPL_IsEnabled_SlowTime)
+			if (enableTimeDust)
 			{
 				Wld_InsertItem (ItMi_TimeDust, TimeDust_WP);
 			};
@@ -122,28 +128,37 @@ func void TT_500()
 		return;
 	};
 	
-	/// dzia³anie Szybkiego Œledzia
-	if (Hering_Time > 0)
+	if (!Npc_IsDead(hero))
 	{
-		Hering_Time -= 1;
-		if (Hering_Time == 0)
+		/// dzia³anie Szybkiego Œledzia
+		if (SchnellerHeringTime > 0)
 		{
-			hero.aivar[AIV_Energy] = 0;
-			Npc_AddDrunkTime (hero, 125);
-		};
-	}
-	else
-	{
-		/// regeneracja i zu¿ycie energii
-		if (bState[BS_fRun])
-		{
-			hero.aivar[AIV_Energy] -= ((5 + bState[BS_hArmor]*5) / (Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN) + 1));
+			SchnellerHeringTime -= 1;
+			if (SchnellerHeringTime == 0)
+			{
+				End_ItFo_Addon_SchnellerHering();
+			};
 		}
 		else
 		{
-			TT_500_RGEN();
+			/// regeneracja i zu¿ycie energii
+			if (bState[BS_fRun] && C_BodyStateContains(hero, BS_RUN))
+			{
+				if (Npc_GetTalentSkill(hero, NPC_TALENT_LONGRUN) > 0)
+				{
+					hero.aivar[AIV_Energy] -= 4;
+				}
+				else
+				{
+					hero.aivar[AIV_Energy] -= 10;
+				};
+			}
+			else
+			{
+				TT_500_RGEN();
+			};
+			Npc_EnergyRefresh(hero);
 		};
-		Npc_EnergyRefresh(hero);
 	};
 	
 	ShowBarText();
@@ -153,26 +168,39 @@ func void TT_500()
 ///******************************************************************************************
 func void TT_5()
 {
-	if (MEM_Game.pause_screen)
+	if (MEM_Game.pause_screen || Npc_IsDead(hero))
 	{
 		return;
 	};
 	
 	/// ------ Klawisz sprintu ------
 	if (MEM_KeyState(keySprint1) == KEY_HOLD || MEM_KeyState(keySprint2) == KEY_HOLD)
-	&& (C_BodyStateContains(hero, BS_RUN) && drunkTime < 50)
-	&& (hero.aivar[AIV_Energy] > 0 || movieMode)
+	&& (hero.aivar[AIV_Energy] > 0 && !bState[BS_hArmor] && drunkTime < 50)
 	{
-		if (!bState[BS_fRun])
+		if (bState[BS_fRun] == 0)
 		{
-			Mdl_ApplyOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
-			bState[BS_fRun] = true;
+			bState[BS_fRun] = 1;
+		};
+		if (bState[BS_fRun] == 1)
+		{
+			if (!C_BodyStateContains(hero, BS_FALL) && !C_BodyStateContains(hero, BS_JUMP))
+			{
+				bState[BS_fRun] = 2;
+				Mdl_ApplyOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
+			};
 		};
 	}
-	else if (bState[BS_fRun])
+	else
 	{
-		Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
-		bState[BS_fRun] = false;
+		if (bState[BS_fRun] == 2)
+		{
+			bState[BS_fRun] = 3;
+		};
+		if (bState[BS_fRun] == 3)
+		{
+			bState[BS_fRun] = 0;
+			Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
+		};
 	};
 	
 	/// ------ Klawisz skrótów ------
@@ -192,7 +220,7 @@ func void TT_5()
 		else if (MEM_KeyState(keyInteract1) == KEY_HOLD)	{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
 		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
 		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// kierunek rêki
-		else if (MemoKey1 != -1)							{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
+		else if (MemoKey1 != -1)								{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
 	};
 	
 	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------
@@ -215,7 +243,7 @@ func void TT_5()
 			o_item = Npc_GetReadiedWeapon(hero);
 			o_other = MEM_PtrToInst(o_hero.focus_vob);
 			
-			MOD_Assassination (hero, o_other, o_item);
+			//MOD_Assassination (hero, o_other, o_item);
 		}
 		/// kradzie¿ kieszonkowa
 		else if (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))

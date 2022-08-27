@@ -254,7 +254,7 @@ instance DIA_Addon_WispDetector_Follow (C_INFO)
 };
 func void DIA_Addon_WispDetector_Follow_Info()
 {
-	AI_Output (other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
+	AI_Output (other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Chodź za mną!
 	AI_Output (self, other, "DIA_Wisp_15_00"); //(bzzz)
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_Follow;

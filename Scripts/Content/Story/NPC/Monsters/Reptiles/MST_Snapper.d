@@ -13,12 +13,12 @@ prototype Mst_Default_Snapper (C_Npc)
 	B_SetAttributesToLevel (self, 12);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,13 +38,21 @@ prototype Mst_Default_Snapper (C_Npc)
 func void B_SetVisuals_Snapper()
 {
 	Mdl_SetVisual		(self, "Snapper.mds");
-	Mdl_SetVisualBody	(self, "Sna_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Sna_Body", 0, default, "", default, default, -1);
+};
+func void B_SetVisuals_DesertSnapper()
+{
+	Mdl_SetVisual		(self, "Snapper.mds");
+	Mdl_SetVisualBody	(self, "Sna_Body", 1, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Snapper (Mst_Default_Snapper)
 {
-	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Snapper();
+};
+instance DesertSnapper (Mst_Default_Snapper)
+{
+	B_SetVisuals_DesertSnapper();
 };
 ///******************************************************************************************
 ///	QuestMonsters
@@ -88,12 +96,12 @@ instance NewMine_LeadSnapper (Mst_Default_Snapper)
 	B_SetAttributesToLevel (self, 15);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_Snapper();
 	CreateInvItem (self, ItAt_ClawLeader);

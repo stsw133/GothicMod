@@ -268,9 +268,9 @@ instance SPELLFX_IPENTA_BLUE_KEY_CAST (C_PARTICLEFXEMITKEY)
 };
 
 ///******************************************************************************************
-instance SPELLFX_WHITEEYES (CFX_BASE_PROTO)
+instance SPELLFX_NIGHTVISION (CFX_BASE_PROTO)
 {
-	visname_s				=	"WHITEEYES_LEFT";
+	visname_s				=	"PFX_NIGHTVISION_LEFT";
 	visalpha				=	1;
 	visalphablendfunc_s		=	"ADD";
 	emtrjmode_s				=	"FIXED";
@@ -280,22 +280,22 @@ instance SPELLFX_WHITEEYES (CFX_BASE_PROTO)
 	emtrjloopmode_s			=	"NONE";
 	emtrjeasefunc_s			=	"LINEAR";
 	emtrjdynupdatedelay		=	2000000;
-	emfxlifespan			=	-1;
+	emfxlifespan			=	600;
 	emselfrotvel_s			=	"0 0 0";
 	secsperdamage			=	-1;
 	emAdjustShpToOrigin		=	1;
-	emFXCreate_S			=	"SPELLFX_WHITEEYES_RIGHT";
+	emFXCreate_S			=	"SPELLFX_NIGHTVISION_RIGHT";
 	emFXCreatedOwnTrj		=	1;
 	lightPresetname   		=	"JUSTWHITE";
 };
-instance SPELLFX_WHITEEYES_KEY_CAST (C_PARTICLEFXEMITKEY)
+instance SPELLFX_NIGHTVISION_KEY_CAST (C_PARTICLEFXEMITKEY)
 {
-	lightrange				=	250;
+	lightrange				=	750;
 };
 
-instance SPELLFX_WHITEEYES_RIGHT (CFX_BASE_PROTO)
+instance SPELLFX_NIGHTVISION_RIGHT (CFX_BASE_PROTO)
 {
-	visname_s				=	"WHITEEYES_RIGHT";
+	visname_s				=	"PFX_NIGHTVISION_RIGHT";
 	visalpha				=	1;
 	visalphablendfunc_s		=	"ADD";
 	emtrjmode_s				=	"FIXED";
@@ -305,14 +305,14 @@ instance SPELLFX_WHITEEYES_RIGHT (CFX_BASE_PROTO)
 	emtrjloopmode_s			=	"NONE";
 	emtrjeasefunc_s			=	"LINEAR";
 	emtrjdynupdatedelay		=	2000000;
-	emfxlifespan			=	-1;
+	emfxlifespan			=	600;
 	emselfrotvel_s			=	"0 0 0";
 	secsperdamage			=	-1;
 	emAdjustShpToOrigin		=	1;
 	emFXCreatedOwnTrj		=	1;
 	lightPresetname   		=	"JUSTWHITE";
 };
-instance SPELLFX_WHITEEYES_RIGHT_KEY_CAST (C_PARTICLEFXEMITKEY)
+instance SPELLFX_NIGHTVISION_RIGHT_KEY_CAST (C_PARTICLEFXEMITKEY)
 {
-	lightrange				=	250;
+	lightrange				=	750;
 };

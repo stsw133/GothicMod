@@ -26,7 +26,7 @@ instance WzA_17011_Azazel (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	CreateInvItem (self, ItRu_cR_Fireball);
+	CreateInvItem (self, ItRu_RedFireball);
 	CreateInvItem (self, ITAR_aCHAOS_RED);
 	
 	/// ------ Inventory ------

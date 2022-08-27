@@ -1,7 +1,7 @@
 ///******************************************************************************************
 ///	C_GetDistToCenter
 ///******************************************************************************************
-func int C_GetDistToCenter (var C_NPC slf, var int quarter)
+func int C_GetDistToCenter (var C_Npc slf, var int quarter)
 {
 	var int dist;
 	

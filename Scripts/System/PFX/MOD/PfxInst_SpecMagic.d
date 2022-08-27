@@ -1075,3 +1075,74 @@ instance MFX_cY_Fireball_HUMANSMOKE (C_PARTICLEFX)
     visalphafunc_s = "BLEND";
     visalphastart = 150.000000000;
 };
+
+///******************************************************************************************
+instance PFX_SETRONEYES_LEFT (C_ParticleFx)
+{
+    ppsvalue = 150;
+    ppsscalekeys_s = "1 1 1";
+    ppsislooping = 1;
+    ppsissmooth = 1;
+    ppsfps = 1;
+    shptype_s = "POINT";
+    shpfor_s = "OBJECT";
+    shpoffsetvec_s = "14 4 18";
+    shpdistribtype_s = "UNIFORM";
+    shpisvolume = 1;
+    shpdim_s = "4";
+    shpscalekeys_s = "1";
+    shpscaleissmooth = 1;
+    dirmode_s = "RAND";
+    dirfor_s = "WORLD";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    velavg = 9.99999975e-005;
+    lsppartavg = 300;
+    lsppartvar = 100;
+    flygravity_s = "0 0 0";
+    visname_s = "ZFLARE1.TGA";
+    visorientation_s = "VELO";
+    vistexisquadpoly = 1;
+    vistexcolorstart_s = "200 200 200";
+    vistexcolorend_s = "200 200 200";
+    vissizestart_s = "1 1";
+    vissizeendscale = 5;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+    useemittersfor = 1;
+};
+
+instance PFX_SETRONEYES_RIGHT (C_ParticleFx)
+{
+    ppsvalue = 150;
+    ppsscalekeys_s = "1 1 1";
+    ppsislooping = 1;
+    ppsissmooth = 1;
+    ppsfps = 1;
+    shptype_s = "POINT";
+    shpfor_s = "OBJECT";
+    shpoffsetvec_s = "14 -4 18";
+    shpdistribtype_s = "UNIFORM";
+    shpisvolume = 1;
+    shpdim_s = "4";
+    shpscalekeys_s = "1";
+    shpscaleissmooth = 1;
+    dirmode_s = "RAND";
+    dirfor_s = "WORLD";
+    dirmodetargetfor_s = "OBJECT";
+    dirmodetargetpos_s = "0 0 0";
+    velavg = 9.99999975e-005;
+    lsppartavg = 300;
+    lsppartvar = 100;
+    flygravity_s = "0 0 0";
+    visname_s = "ZFLARE1.TGA";
+    visorientation_s = "VELO";
+    vistexisquadpoly = 1;
+    vistexcolorstart_s = "200 200 200";
+    vistexcolorend_s = "200 200 200";
+    vissizestart_s = "1 1";
+    vissizeendscale = 5;
+    visalphafunc_s = "ADD";
+    visalphastart = 255;
+    useemittersfor = 1;
+};

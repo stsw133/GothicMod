@@ -8,7 +8,7 @@ instance spellFX_nLight (CFx_Base_Proto)
 	emtrjmode_s 			=	"FIXED";
 	emTrjOriginNode 		=	"ZS_RIGHTHAND";
 	emFXCreate_S 			=	"spellFX_nLight_ACTIVE";
-	emFXCreatedOwnTrj 		=	1;
+	emFXCreatedOwnTrj 		=	true;
 	lightPresetname 		=	"JUSTWHITE";
 };
 instance spellFX_nLight_KEY_OPEN (C_ParticleFXEmitKey)
@@ -21,7 +21,7 @@ instance spellFX_nLight_KEY_INIT (C_ParticleFXEmitKey)
 };
 instance spellFX_nLight_KEY_CAST (C_ParticleFXEmitKey)
 {
-	pfx_ppsIsLoopingChg		=	1;
+	pfx_ppsIsLoopingChg		=	true;
 	lightRange 				=	100;
 };
 
@@ -52,7 +52,7 @@ instance spellFX_nLight_ACTIVE_KEY_CAST (C_ParticleFXEmitKey)
 	visName_S				=	"MFX_nLight_ORIGIN";
 	lightRange				=	1000;
 	sfxid					=	"MFX_Light_CAST";
-	sfxisambient			=	1;
+	sfxisambient			=	true;
 	emtrjeasevel 			=	1400;
 };
 
@@ -65,7 +65,7 @@ instance spellFX_nHeal (CFx_Base_Proto)
 };
 instance spellFX_nHeal_KEY_CAST (C_ParticleFXEmitKey)
 {
-	pfx_ppsisloopingChg		=	1;
+	pfx_ppsisloopingChg		=	true;
 	emCreateFXID			=	"spellFX_nHeal_ORIGIN";
 };
 
@@ -73,7 +73,7 @@ instance spellFX_nHeal_START (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_nHeal_Start";
 	sfxID			  		=	"MFX_Heal_CAST";
-	sfxisambient			=	1;
+	sfxisambient			=	true;
 	emtrjmode_s 			=	"FIXED";
 	emTrjOriginNode 		=	"BIP01 R FOOT";
 };
@@ -239,34 +239,34 @@ instance spellFX_SlowTime_MOTION (CFx_Base_Proto)
 {
 	// userstring 0: world  time scaler
 	// userstring 1: player time scaler
-
- 	visName_S      			=	"time.slw";
- 	userString[0]     		=	"0.5";
- 	userString[1]     		=	"1.0";
- 	emFxCreate_s			=	"spellFX_SlowTime_MotionFX";
-	emFXLifeSpan    		=	15;
+	
+	visName_S      			=	"time.slw";
+	userString[0]     		=	"0.5";
+	userString[1]     		=	"1.0";
+	emFxCreate_s			=	"spellFX_SlowTime_MotionFX";
+	emFXLifeSpan    		=	10;
 	emFXTriggerDelay		=	0;
 };
 
 instance spellFX_SlowTime_MotionFX (CFx_Base_Proto)
 {
- 	// userstring 0: screenblend loop duration
- 	// userstring 1: screenblend color
- 	// userstring 2: screenblend in/out duration
- 	// userstring 3: screenblend texture
- 	// userstring 4: tex ani fps
-
- 	visName_S      			=	"screenblend.scx";
+	// userstring 0: screenblend loop duration
+	// userstring 1: screenblend color
+	// userstring 2: screenblend in/out duration
+	// userstring 3: screenblend texture
+	// userstring 4: tex ani fps
+	
+	visName_S      			=	"screenblend.scx";
 	//emfxcreate_s			=	"FOV_MORPH1";
- 	userString[0]     		=	"100000000000";
- 	userString[1]     		=	"0 255 0 100";
- 	userString[2]     		=	"0.5";
- 	userString[3]     		=	"ScreenFX_White_a0";
- 	userString[4]     		=	"8";
-	emFXLifeSpan    		=	15;
- 	visAlphaBlendFunc_S		=	"BLEND";
- 	sfxid      				=	"MFX_Control_Invest";
-	sfxisambient     		=	1;
+	userString[0]     		=	"100000000000";
+	userString[1]     		=	"0 255 0 100";
+	userString[2]     		=	"0.5";
+	userString[3]     		=	"ScreenFX_White_a0";
+	userString[4]     		=	"8";
+	emFXLifeSpan    		=	10;
+	visAlphaBlendFunc_S		=	"BLEND";
+	sfxid      				=	"MFX_Control_Invest";
+	sfxisambient     		=	true;
 };
 
 ///******************************************************************************************
@@ -302,7 +302,7 @@ instance spellFX_NightToDay_ORIGIN (CFx_Base_Proto)
 };
 
 ///******************************************************************************************
-instance spellFX_telekinesis (CFx_Base_Proto)
+instance spellFX_Telekinesis (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_Telekinesis_INIT";
 	emtrjmode_s 			=	"TARGET";
@@ -318,24 +318,24 @@ instance spellFX_telekinesis (CFx_Base_Proto)
 	emTrjTargetRange		=	0;
 	emTrjTargetElev 		=	0;
 };
-instance spellFX_telekinesis_KEY_INIT (C_ParticleFXEmitKey)
+instance spellFX_Telekinesis_KEY_INIT (C_ParticleFXEmitKey)
 {
 	visname_s				=	"MFX_Telekinesis_INIT";
 	emtrjeasevel	  		=	0.01;
 };
-instance spellFX_telekinesis_KEY_INVEST_1 (C_ParticleFXEmitKey)
+instance spellFX_Telekinesis_KEY_INVEST_1 (C_ParticleFXEmitKey)
 {
 	visname_s				=	"MFX_Telekinesis_TARGET";
 	emtrjeasevel	  		=	2000;
 	sfxid					=	"MFX_TELEKINESIS_STARTINVEST";
-	sfxisambient			=	1;
+	sfxisambient			=	true;
 };
-instance spellFX_telekinesis_KEY_CAST (C_ParticleFXEmitKey)
+instance spellFX_Telekinesis_KEY_CAST (C_ParticleFXEmitKey)
 {
 	visname_s				=	"MFX_Telekinesis_TargetEnd";
 };
 
-instance spellFX_telekinesis_Origin (CFx_Base_Proto)
+instance spellFX_Telekinesis_Origin (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_Telekinesis_BRIDGE";
 	emtrjmode_s 			=	"TARGET LINE";
@@ -350,6 +350,54 @@ instance spellFX_Telekinesis_ITEM (CFx_Base_Proto)
 	visname_S 				=	"MFX_TELEKINESIS_TARGETEND";
 	emtrjmode_s 			=	"FIXED";
 	emTrjOriginNode 		=	"BIP01";
+};
+
+///******************************************************************************************
+instance spellFX_SkullBolt (CFx_Base_Proto)
+{
+	visname_S 				=	"MFX_SkullBolt_INIT";
+	emtrjmode_s 			=	"FIXED";
+	emTrjOriginNode 		=	"ZS_RIGHTHAND";
+	emtrjloopmode_s 		=	"NONE";
+	emtrjeasefunc_s 		=	"LINEAR";
+	emActionCollStat_S		=	"COLLIDE CREATE";
+	emActionCollDyn_S		=	"COLLIDE CREATEONCE";
+	emFXCollStat_S	   		=	"spellFX_SkullBolt_COLLIDEFX";
+	emFXCollDyn_S	   		=	"spellFX_SkullBolt_COLLIDEFX";
+	emTrjTargetRange	 	=	20;
+	emTrjTargetElev 		=	0;
+	emFXCreatedOwnTrj		=	false;
+	lightPresetname   		=	"REDAMBIENCE";
+};
+instance spellFX_SkullBolt_KEY_OPEN	(C_ParticleFXEmitKey)
+{
+	lightrange				=	100;
+};
+instance spellFX_SkullBolt_KEY_INIT (C_ParticleFXEmitKey)
+{
+	lightrange 				=	100;
+};
+instance spellFX_SkullBolt_KEY_CAST (C_ParticleFXEmitKey)
+{
+	visname_S 				=	"MFX_SkullBolt_CAST";
+	emtrjmode_s 			=	"TARGET";
+	emtrjeasevel 			=	1400;
+	lightrange 				=	100;
+	emCheckCollision 		=	true;
+	sfxid					=	"MFX_Skull_Fly";
+};
+instance spellFX_SkullBolt_KEY_COLLIDE (C_ParticleFXEmitKey)
+{
+	visname_S 				=	"";
+	emtrjeasevel 			=	0.000001;
+};
+
+instance spellFX_SkullBolt_COLLIDEFX (CFx_Base_Proto)
+{
+	visname_S 				=	"MFX_SkullBolt_Collide";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	sfxid					=	"MFX_Skull_Collide";
 };
 
 ///******************************************************************************************
@@ -389,44 +437,6 @@ instance spellFX_Summon_ORIGIN (CFx_Base_Proto)
 	sfxid					=	"MFX_Transform_Cast";
 	sfxisambient			=	1;
 //	emFXCreate_S 			=	"FX_EarthQuake";
-};
-
-///******************************************************************************************
-instance spellFX_MassSleep (CFx_Base_Proto)
-{
-	visname_S 				=	"MFX_SLEEP_INIT";
-	emtrjoriginnode 		=	"ZS_RIGHTHAND";
-	emtrjmode_s 			=	"fixed";
-	emtrjloopmode_s 		=	"NONE";
-	emtrjeasefunc_s 		=	"LINEAR";
-	emtrjdynupdatedelay 	=	0;
-};
-instance spellFX_MassSleep_KEY_INIT (C_ParticleFXEmitKey)
-{
-	visname_S				=	"MFX_SLEEP_INIT";
-};
-instance spellFX_MassSleep_KEY_CAST (C_ParticleFXEmitKey)
-{
-	visname_S 				=	"MFX_SLEEP_ORIGIN";
-	emtrjeasevel 			=	1400;
-	sfxid					=	"MFX_Sleep_Cast";
-};
-
-instance spellFX_MassSleep_ORIGIN (CFx_Base_Proto)
-{
-	visname_S 				=	"MFX_SLEEP_ORIGIN";
-	emtrjmode_s 			=	"FIXED";
-	emtrjoriginnode 		=	"ZS_RIGHTHAND";
-	emtrjdynupdatedelay 	=	0;
-};
-
-instance spellFX_MassSleep_TARGET (CFx_Base_Proto)
-{
-	lightPresetname 		=	"AURA";
-	visname_S 				=	"MFX_SLEEP_TARGET";
-	emtrjmode_s 			=	"FIXED";
-	emtrjoriginnode 		=	"BIP01";
-	emtrjdynupdatedelay 	=	0;
 };
 
 ///******************************************************************************************
@@ -1325,54 +1335,6 @@ instance spellFX_GeoQuake_Rumble (CFx_Base_Proto)
     userString[1]           = "1";
     userString[2]           = "7 7 7";
     emFXCreatedOwnTrj       = 1;
-};
-
-///******************************************************************************************
-instance spellFX_SkeletonSpell (CFx_Base_Proto)
-{
-	visname_S 				=	"MFX_SkeletonSpell_INIT";
-	emtrjmode_s 			=	"FIXED";
-	emTrjOriginNode 		=	"ZS_RIGHTHAND";
-	emtrjloopmode_s 		=	"NONE";
-	emtrjeasefunc_s 		=	"LINEAR";
-	emActionCollStat_S		=	"COLLIDE CREATE";
-	emActionCollDyn_S		=	"COLLIDE CREATEONCE";
-	emFXCollStat_S	   		=	"spellFX_SkeletonSpell_COLLIDEFX";
-	emFXCollDyn_S	   		=	"spellFX_SkeletonSpell_COLLIDEFX";
-	emTrjTargetRange	 	=	20;
-	emTrjTargetElev 		=	0;
-	emFXCreatedOwnTrj		=	0;
-	lightPresetname   		=	"REDAMBIENCE";
-};
-instance spellFX_SkeletonSpell_KEY_OPEN	(C_ParticleFXEmitKey)
-{
-	lightrange				=	100;
-};
-instance spellFX_SkeletonSpell_KEY_INIT (C_ParticleFXEmitKey)
-{
-	lightrange 				=	100;
-};
-instance spellFX_SkeletonSpell_KEY_CAST (C_ParticleFXEmitKey)
-{
-	visname_S 				=	"MFX_SkeletonSpell_CAST";
-	emtrjmode_s 			=	"TARGET";
-	emtrjeasevel 			=	1400;
-	lightrange 				=	100;
-	emCheckCollision 		=	1;
-	sfxid					=	"MFX_Skull_Fly";
-};
-instance spellFX_SkeletonSpell_KEY_COLLIDE (C_ParticleFXEmitKey)
-{
-	visname_S 				=	"";
-	emtrjeasevel 			=	0.000001;
-};
-
-instance spellFX_SkeletonSpell_COLLIDEFX (CFx_Base_Proto)
-{
-	visname_S 				=	"MFX_SkeletonSpell_Collide";
-	visAlpha				=	1;
-	emtrjmode_s 			=	"FOLLOW TARGET";
-	sfxid					=	"MFX_Skull_Collide";
 };
 
 ///******************************************************************************************

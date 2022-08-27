@@ -1,64 +1,69 @@
-// SFX.D
-// Soundsystem related preferences & Class-Definitions
+///******************************************************************************************
+/// SFX.D
+/// Soundsystem related preferences & Class-Definitions
 
-CONST STRING PROV_DOLBY_SURR	= "Dolby Surround";
-CONST STRING PROV_A3D		= "Aureal A3D Interactive(TM)";
-CONST STRING PROV_D3D_HW	= "DirectSound3D Hardware Support";
-CONST STRING PROV_D3D_SW	= "DirectSound3D Software Emulation";
-CONST STRING PROV_D3D_EAX	= "DirectSound3D with Creative Labs EAX(TM)";
-CONST STRING PROV_D3D7_FULL_HRTF= "DirectSound3D 7+ Software - Full HRTF";
-CONST STRING PROV_D3D7_LIGHT_HRTF="DirectSound3D 7+ Software - Light HRTF";
-CONST STRING PROV_D3D7_PAN	= "DirectSound3D 7+ Software - Pan and Volume";
-CONST STRING PROV_EAX		= "Creative Labs EAX (TM)";
-CONST STRING PROV_EAX2		= "Creative Labs EAX 2 (TM)";
-CONST STRING PROV_MILES_2D	= "Miles Fast 2D Positional Audio";
-CONST STRING PROV_RSX		= "RAD Game Tools RSX 3D Audio";
+const int false		=	0;
+const int true		=	1;
 
+///******************************************************************************************
 
+const string	PROV_DOLBY_SURR			=	"Dolby Surround";
+const string	PROV_A3D				=	"Aureal A3D Interactive(TM)";
+const string	PROV_D3D_HW				=	"DirectSound3D Hardware Support";
+const string	PROV_D3D_SW				=	"DirectSound3D Software Emulation";
+const string	PROV_D3D_EAX			=	"DirectSound3D with Creative Labs EAX(TM)";
+const string	PROV_D3D7_FULL_HRTF		=	"DirectSound3D 7+ Software - Full HRTF";
+const string	PROV_D3D7_LIGHT_HRTF	=	"DirectSound3D 7+ Software - Light HRTF";
+const string	PROV_D3D7_PAN			=	"DirectSound3D 7+ Software - Pan and Volume";
+const string	PROV_EAX				=	"Creative Labs EAX (TM)";
+const string	PROV_EAX2				=	"Creative Labs EAX 2 (TM)";
+const string	PROV_MILES_2D			=	"Miles Fast 2D Positional Audio";
+const string	PROV_RSX				=	"RAD Game Tools RSX 3D Audio";
 
-CLASS C_SNDSYS_CFG
+///******************************************************************************************
+class C_SNDSYS_CFG
 {
-	VAR FLOAT	volume;
-	VAR INT		bitResolution;
-	VAR INT		sampleRate;
-	VAR INT		useStereo;
-	VAR INT		numSFXChannels;
-	VAR STRING  	used3DProviderName;
+	var float	volume;
+	var int		bitResolution;
+	var int		sampleRate;
+	var int		useStereo;
+	var int		numSFXChannels;
+	var string	used3DProviderName;
 };
 
-// Base Class
-CLASS C_SFX
+/// Base Class
+class C_SFX
 {
-    VAR STRING      file;				// sfx filename
-    VAR INT         pitchOff;			// pitchoffset in semitones
-    VAR INT         pitchVar;			// semitone-variance
-    VAR INT         vol;				// 0..1
-    VAR INT         loop;				// 0/1
-    VAR INT	    loopStartOffset;
-    VAR INT	    loopEndOffset;
-    VAR FLOAT       reverbLevel;		// 0..1
-    VAR STRING	    pfxName;
+	var string	file;				/// sfx filename
+	var int		pitchOff;			/// pitchoffset in semitones
+	var int		pitchVar;			/// semitone-variance
+	var int		vol;				/// 0..1
+	var int		loop;				/// 0/1
+	var int		loopStartOffset;
+	var int		loopEndOffset;
+	var float	reverbLevel;		/// 0..1
+	var string	pfxName;
 };
 
-// SFX Prototype with default parameters
-PROTOTYPE C_SFX_DEF(C_SFX)
+/// SFX Prototype with default parameters
+prototype C_SFX_DEF (C_SFX)
 {
-    	file                    = "";
-    	pitchOff                = 0;
-    	pitchVar                = 0;
-    	vol                     = 127;   // 0..127
- 	loop                    = 0;	 // 0=off; 1=on
-	loopStartOffset		= 0;
-	loopEndOffset		= -1;
-	reverbLevel		= 1;
+	file				=	"";
+	pitchOff			=	0;
+	pitchVar			=	0;
+	vol					=	127;	/// 0..127
+	loop				=	false;	/// 0=off; 1=on
+	loopStartOffset		=	0;
+	loopEndOffset		=	-1;
+	reverbLevel			=	1;
 };
 
-INSTANCE sndSysConfig(C_SNDSYS_CFG)
+instance sndSysConfig (C_SNDSYS_CFG)
 {
-	volume 			= 1;   		// 0..1
-	bitResolution		= 16;		// 8 / 16
-	sampleRate		= 22100;	// 11050 - 44100 prefered
-	useStereo		= 1;		// 1 / 0			// Must be enabled for various 3d provider!!
-	numSFXChannels		= 16;		// 1 - 32
-	used3DProviderName  	= PROV_MILES_2D;
+	volume				=	1;		/// 0..1
+	bitResolution		=	16;		/// 8 / 16
+	sampleRate			=	22100;	/// 11050 - 44100 prefered
+	useStereo			=	true;	/// 1 / 0			/// Must be enabled for various 3d provider!!
+	numSFXChannels		=	16;		/// 1 - 32
+	used3DProviderName	=	PROV_MILES_2D;
 };

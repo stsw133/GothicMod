@@ -3,18 +3,19 @@
 ///******************************************************************************************
 func void B_MakeRangerReadyForMeeting (var C_Npc Ranger)	
 {				
-	CreateInvItems (Ranger, ITAR_WaterRanger, 1);
-	AI_UnequipArmor(Ranger);
-	AI_EquipArmor (Ranger, ITAR_WaterRanger);
+	CreateInvItems	(Ranger, ITAR_WaterRanger, 1);
+	AI_UnequipArmor	(Ranger);
+	AI_EquipArmor	(Ranger, ITAR_WaterRanger);
+	
 	Ranger.npctype = NPCTYPE_FRIEND;
 };
 
 ///******************************************************************************************
 func void B_MakeRangerReadyToLeaveMeeting (var C_Npc Ranger)
 {
-	AI_UnequipArmor(Ranger);
-	Npc_RemoveInvItems (Ranger, ITAR_WaterRanger, Npc_HasItems(Ranger, ITAR_WaterRanger));
-	AI_EquipBestArmor(Ranger);
+	AI_UnequipArmor		(Ranger);
+	Npc_RemoveInvItems	(Ranger, ITAR_WaterRanger, Npc_HasItems(Ranger, ITAR_WaterRanger));
+	AI_EquipBestArmor	(Ranger);
 };
 
 ///******************************************************************************************

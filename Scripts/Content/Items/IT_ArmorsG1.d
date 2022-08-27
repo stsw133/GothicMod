@@ -6,73 +6,75 @@ prototype ItemPR_Armor (C_Item)
 	material				=	MAT_LEATHER;
 	
 	TEXT[1]					=	NAME_Prot_Physical;
-	TEXT[3]					=	NAME_Prot_Magic;
-	TEXT[2]					=	NAME_Prot_Fire;
+	TEXT[2]					=	NAME_Prot_Magic;
+	TEXT[3]					=	NAME_Prot_Fire;
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
-func void SetItArAttributes (var C_ITEM itm, var int ar, var int fr, var int mr, var int skin)
+func void SetItArAttributes (var C_Item itm, var int sr, var int pr, var int fr, var int mr, var int skin)
 {
-	itm.value 					=	(ar*2+fr+mr) * 5;
+	itm.value 					=	(sr+pr+fr+mr) * 5;
 	
-	itm.protection[PROT_EDGE]	=	ar;
-	itm.protection[PROT_BLUNT]	= 	ar;
-	itm.protection[PROT_POINT]	= 	ar;
+	itm.protection[PROT_EDGE]	=	sr;
+	itm.protection[PROT_BLUNT]	= 	sr;
+	itm.protection[PROT_POINT]	= 	pr;
 	itm.protection[PROT_FIRE] 	= 	fr;
 	itm.protection[PROT_MAGIC]	= 	mr;
 	
 	itm.description				=	itm.name;
-	itm.COUNT[1]				= 	itm.protection[PROT_EDGE];
-	itm.COUNT[2]				= 	itm.protection[PROT_MAGIC];
-	itm.COUNT[3]				=	itm.protection[PROT_FIRE];
+	itm.COUNT[1]				= 	sr;
+	itm.COUNT[2]				= 	mr;
+	itm.COUNT[3]				=	fr;
 	itm.COUNT[5]				=	itm.value;
 	
 	itm.visual_skin 			=	skin;
 };
 ///******************************************************************************************
-///	G1 Armors
+///	OldCamp armors
 ///******************************************************************************************
 instance ITAR_STT_L (ItemPR_Armor)
 {
 	name 			=	"Strój cienia";
 	visual 			=	"ItAr_Diego.3ds";
 	visual_change 	=	"Armor_STT_L.asc";
-	SetItArAttributes (self, 20,0,0,   0);	/// 4 level
+	SetItArAttributes (self, 20,20,0,0,   0);	/// 4 level
 };
 instance ITAR_STT_H (ItemPR_Armor)
 {
 	name 			=	"Zbroja cienia";
 	visual 			=	"ItAr_Diego.3ds";
 	visual_change 	=	"Armor_STT_H.asc";
-	SetItArAttributes (self, 30,0,0,   0);	/// 6 level
+	SetItArAttributes (self, 30,30,0,0,   0);	/// 6 level
 };
+///******************************************************************************************
 instance ITAR_GRD_L (ItemPR_Armor)
 {
 	name 			=	"Lekka zbroja stra¿nika";
 	visual 			=	"ItAr_MIL_L.3ds";
 	visual_change 	=	"Armor_Grd_L.asc";
-	SetItArAttributes (self, 50,10,10,   0);	/// 12 level
+	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 };
 instance ITAR_GRD_M (ItemPR_Armor)
 {
 	name 			=	"Œrednia zbroja stra¿nika";
 	visual 			=	"ItAr_MIL_M.3ds";
 	visual_change 	=	"Armor_Grd_I.asc";
-	SetItArAttributes (self, 70,20,20,   0);	/// 18 level
+	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 };
 instance ITAR_GRD_H (ItemPR_Armor)
 {
 	name 			=	"Ciê¿ka zbroja stra¿nika";
 	visual 			=	"ItAr_MIL_M.3ds";
 	visual_change 	=	"Armor_Grd_H.asc";
-	SetItArAttributes (self, 90,30,30,   0);	/// 24 level
+	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 };
+///******************************************************************************************
 instance ITAR_EBR_M (ItemPR_Armor)
 {
 	name 			=	"Pancerz magnata";
 	visual 			=	"ITAR_CHAOS_ADDON.3ds";
 	visual_change 	=	"Armor_EBR.asc";
-	SetItArAttributes (self, 120,80,80,   0);	/// 40 level
+	SetItArAttributes (self, 130,130,65,65,   0);	/// 39 level
 	
 	material 		=	MAT_METAL;
 	on_equip		=	Equip_HeavyArmor;
@@ -83,92 +85,98 @@ instance ITAR_EBR_G (ItemPR_Armor)
 	name 			=	"Pancerz Gomeza";
 	visual 			=	"ITAR_CHAOS_ADDON.3ds";
 	visual_change 	=	"Armor_EBR.asc";
-	SetItArAttributes (self, 135,90,90,   1);	/// 45 level
+	SetItArAttributes (self, 150,150,75,75,   1);	/// 45 level
 	
 	material 		=	MAT_METAL;
 	on_equip		=	Equip_HeavyArmor;
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
+///	NewCamp armors
+///******************************************************************************************
 instance ITAR_ORG_L (ItemPR_Armor)
 {
 	name 			=	"Lekki pancerz szkodnika";
 	visual 			=	"ItAr_BDT_M.3ds";
 	visual_change 	=	"Armor_ORG_L.asc";
-	SetItArAttributes (self, 20,0,0,   0);	/// 4 level
+	SetItArAttributes (self, 20,20,0,0,   0);	/// 4 level
 };
 instance ITAR_ORG_H (ItemPR_Armor)
 {
 	name 			=	"Ciê¿ki pancerz szkodnika";
 	visual 			=	"ItAr_BDT_H.3ds";
 	visual_change 	=	"Armor_ORG_M.asc";
-	SetItArAttributes (self, 30,0,0,   0);	/// 6 level
+	SetItArAttributes (self, 30,30,0,0,   0);	/// 6 level
 };
-/// sld armors in IT_ArmorG2 file
+/// sld armors in IT_ArmorsG2 file
+///******************************************************************************************
+///	PsiCamp armors
 ///******************************************************************************************
 instance ITAR_SLN_L (ItemPR_Armor)
 {
 	name 			=	"Przepaska nowicjusza";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLN_L.asc";
-	SetItArAttributes (self, 5,0,0,   0);	/// 1 level
+	SetItArAttributes (self, 4,4,0,0,   0);	/// 1 level
 };
 instance ITAR_SLN_M (ItemPR_Armor)
 {
 	name 			=	"Lekka zbroja nowicjusza";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLN_M.asc";
-	SetItArAttributes (self, 20,0,0,   0);	/// 4 level
+	SetItArAttributes (self, 15,15,0,10,   0);	/// 4 level
 };
 instance ITAR_SLN_H (ItemPR_Armor)
 {
 	name 			=	"Zbroja nowicjusza";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLN_H.asc";
-	SetItArAttributes (self, 25,0,10,   0);	/// 6 level
+	SetItArAttributes (self, 25,25,0,10,   0);	/// 6 level
 };
 instance ITAR_SLT_L (ItemPR_Armor)
 {
 	name 			=	"Lekka zbroja œwi¹tynna";
 	visual 			=	"ItAr_CorAngar.3ds";
 	visual_change 	=	"Armor_SLT_L.asc";
-	SetItArAttributes (self, 50,10,10,   0);	/// 12 level
+	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 };
 instance ITAR_SLT_M (ItemPR_Armor)
 {
 	name 			=	"Œrednia zbroja œwi¹tynna";
 	visual 			=	"ItAr_CorAngar.3ds";
 	visual_change 	=	"Armor_SLT_M.asc";
-	SetItArAttributes (self, 70,20,20,   0);	/// 18 level
+	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 };
 instance ITAR_SLT_H (ItemPR_Armor)
 {
 	name 			=	"Ciê¿ka zbroja œwi¹tynna";
 	visual 			=	"ItAr_CorAngar.3ds";
 	visual_change 	=	"Armor_SLT_H.asc";
-	SetItArAttributes (self, 90,30,30,   0);	/// 24 level
+	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 };
 instance ITAR_SLG_L (ItemPR_Armor)
 {
 	name 			=	"Szata Guru";
 	visual 			=	"ITAR_KDW_L_ADDON.3ds";
 	visual_change 	=	"Armor_SLG_L.asc";
-	SetItArAttributes (self, 50,25,25,   0);	/// 15 level
+	SetItArAttributes (self, 50,50,25,25,   0);	/// 15 level
 };
 instance ITAR_SLG_H (ItemPR_Armor)
 {
 	name 			=	"Zdobiona szata Guru";
 	visual 			=	"ITAR_KDW_L_ADDON.3ds";
 	visual_change 	=	"Armor_SLG_H.asc";
-	SetItArAttributes (self, 70,35,35,   0);	/// 21 level
+	SetItArAttributes (self, 70,70,35,35,   0);	/// 21 level
 };
+///******************************************************************************************
+///	Best armors
 ///******************************************************************************************
 instance ITAR_ORE_M (ItemPR_Armor)
 {
 	name 			=	"Magiczna zbroja";
 	visual 			=	"ItAr_Chaos_Addon.3ds";
 	visual_change 	=	"Armor_ORE.asc";
-	SetItArAttributes (self, 150,100,100,   0);	/// 50 level
+	SetItArAttributes (self, 165,165,105,105,   0);	/// 54 level
 	description 	=	"Staro¿ytna zbroja magiczna";
 	
 	material 		=	MAT_METAL;
@@ -180,7 +188,7 @@ instance ITAR_ORE_H (ItemPR_Armor)
 	name 			=	"Magiczna zbroja";
 	visual 			=	"ItAr_Chaos_Addon.3ds";
 	visual_change 	=	"Armor_ORE.asc";
-	SetItArAttributes (self, 180,120,120,   1);	/// 60 level
+	SetItArAttributes (self, 180,180,120,120,   1);	/// 60 level
 	description 	=	"Wzmocniona zbroja magiczna";
 	
 	material 		=	MAT_METAL;

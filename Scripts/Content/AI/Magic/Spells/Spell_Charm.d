@@ -3,6 +3,8 @@
 ///******************************************************************************************
 
 const int SPL_Cost_Charm				=	50;
+const int SPL_MinLvl_Charm				=	30;
+const int SPL_Scaling_Charm				=	30;
 
 ///******************************************************************************************
 instance Spell_Charm (C_Spell_Proto)
@@ -14,11 +16,20 @@ instance Spell_Charm (C_Spell_Proto)
 
 func int Spell_Logic_Charm (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Charm/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Charm/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Charm)
 	{
-		return SPL_SENDCAST;
+		if ((other.level - SPL_MinLvl_Charm - self.attribute[ATR_POWER]*SPL_Scaling_Charm/100) <= 0)
+		|| (!Npc_IsPlayer(self))
+		{
+			return SPL_SENDCAST;
+		}
+		else
+		{
+			Print(ConcatStrings(IntToString(other.level - SPL_MinLvl_Charm - self.attribute[ATR_POWER]*SPL_Scaling_Charm/100), "% dod. mocy za mało aby odnieść skutek!"));
+		};
 	};
+	
 	return SPL_SENDSTOP;
 };
 
@@ -33,8 +44,7 @@ func void Spell_Cast_Charm()
 		self.attribute[ATR_MANA] -= SPL_Cost_Charm;
 	};
 	
-	if (other.aivar[AIV_NpcSawPlayerCommit] != CRIME_NONE)
-	&& (MIS_Ignaz_Charm == LOG_RUNNING)
+	if (MIS_Ignaz_Charm == LOG_RUNNING && other.aivar[AIV_NpcSawPlayerCommit] != CRIME_NONE)
 	{
 		Charm_Test = true;
 	};

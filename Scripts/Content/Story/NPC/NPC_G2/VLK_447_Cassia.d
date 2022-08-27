@@ -28,7 +28,7 @@ instance VLK_447_Cassia (Npc_Default)
 	CreateInvItem (self, ItKe_ThiefTreasure);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe", FaceBabe_Velaya, Teeth_Pretty, ITAR_WD_M_02);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe", FaceBabe_Velaya, Teeth_Pretty, ITAR_Babe_VLK_M_02);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 

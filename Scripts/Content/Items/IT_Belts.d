@@ -10,6 +10,12 @@ prototype ItemPR_Belt (C_Item)
 	on_equip				=	Npc_AttributesRefresh;
 	on_unequip				=	Npc_AttributesRefresh;
 	
+	wear					= 	WEAR_EFFECT;
+	effect					=	"SPELLFX_ITEMGLIMMER";
+	
+	cond_atr[2]   			=	COND_LEVEL;
+	
+	TEXT[0] 				=	NAME_Lev_needed;
 	TEXT[5]					=	NAME_Value;
 	INV_ZBIAS				=	INVCAM_ENTF_AMULETTE_STANDARD;
 	inv_rotx				=	INVCAM_ENTF_MISC2_STANDARD;
@@ -19,7 +25,7 @@ prototype ItemPR_Belt (C_Item)
 var int Belt_AtrPoints;
 
 ///******************************************************************************************
-func int CheckItBeArmor_Roy (var C_NPC slf)
+func int CheckItBeArmor_Roy (var C_Npc slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
 	if (Hlp_IsItem(itm, ITAR_ROY_H))
@@ -53,7 +59,10 @@ instance ItBe_Roy_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Roy_01;
 	on_unequip				=	UnEquip_ItBe_Roy;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas gwardzisty I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 2% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
 	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
@@ -84,7 +93,10 @@ instance ItBe_Roy_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Roy_02;
 	on_unequip				=	UnEquip_ItBe_Roy;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas gwardzisty II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 4% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
 	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
@@ -115,7 +127,10 @@ instance ItBe_Roy_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Roy_03;
 	on_unequip				=	UnEquip_ItBe_Roy;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas gwardzisty III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 6% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
 	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
@@ -146,7 +161,10 @@ instance ItBe_Roy_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Roy_04;
 	on_unequip				=	UnEquip_ItBe_Roy;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas gwardzisty IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 8% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
 	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
@@ -177,7 +195,10 @@ instance ItBe_Roy_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Roy_05;
 	on_unequip				=	UnEquip_ItBe_Roy;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas gwardzisty V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty ¿ycia o 10% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
 	TEXT[3]					=	"stra¿y miejskiej lub gwardii królewskiej).";
@@ -200,7 +221,7 @@ func void Equip_ItBe_Roy_05()
 	};
 };
 ///******************************************************************************************
-func int CheckItBeArmor_Djg (var C_NPC slf)
+func int CheckItBeArmor_Djg (var C_Npc slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
 	if (Hlp_IsItem(itm, ITAR_DJG_H))
@@ -233,7 +254,10 @@ instance ItBe_Djg_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Djg_01;
 	on_unequip				=	UnEquip_ItBe_Djg;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas ³owcy smoków I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza si³ê o 2% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
 	TEXT[3]					=	"najemnika lub ³owcy smoków).";
@@ -264,7 +288,10 @@ instance ItBe_Djg_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Djg_02;
 	on_unequip				=	UnEquip_ItBe_Djg;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas ³owcy smoków II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza si³ê o 4% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
 	TEXT[3]					=	"najemnika lub ³owcy smoków).";
@@ -295,7 +322,10 @@ instance ItBe_Djg_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Djg_03;
 	on_unequip				=	UnEquip_ItBe_Djg;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas ³owcy smoków III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza si³ê o 6% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
 	TEXT[3]					=	"najemnika lub ³owcy smoków).";
@@ -326,7 +356,10 @@ instance ItBe_Djg_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Djg_04;
 	on_unequip				=	UnEquip_ItBe_Djg;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas ³owcy smoków IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza si³ê o 8% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
 	TEXT[3]					=	"najemnika lub ³owcy smoków).";
@@ -357,7 +390,10 @@ instance ItBe_Djg_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Djg_05;
 	on_unequip				=	UnEquip_ItBe_Djg;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas ³owcy smoków V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza si³ê o 10% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
 	TEXT[3]					=	"najemnika lub ³owcy smoków).";
@@ -380,7 +416,7 @@ func void Equip_ItBe_Djg_05()
 	};
 };
 ///******************************************************************************************
-func int CheckItBeArmor_Mag (var C_NPC slf)
+func int CheckItBeArmor_Mag (var C_Npc slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
 	if (Hlp_IsItem(itm, ITAR_AMG_H))
@@ -412,7 +448,10 @@ instance ItBe_Mag_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mag_01;
 	on_unequip				=	UnEquip_ItBe_Mag;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Szarfa maga I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza moc o 2% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 3% z szat¹";
 	TEXT[3]					=	"maga lub arcymaga).";
@@ -443,7 +482,10 @@ instance ItBe_Mag_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mag_02;
 	on_unequip				=	UnEquip_ItBe_Mag;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Szarfa maga II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza moc o 4% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 6% z szat¹";
 	TEXT[3]					=	"maga lub arcymaga).";
@@ -474,7 +516,10 @@ instance ItBe_Mag_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mag_03;
 	on_unequip				=	UnEquip_ItBe_Mag;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Szarfa maga III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza moc o 6% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 9% z szat¹";
 	TEXT[3]					=	"maga lub arcymaga).";
@@ -505,7 +550,10 @@ instance ItBe_Mag_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mag_04;
 	on_unequip				=	UnEquip_ItBe_Mag;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Szarfa maga IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza moc o 8% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 12% z szat¹";
 	TEXT[3]					=	"maga lub arcymaga).";
@@ -536,7 +584,10 @@ instance ItBe_Mag_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mag_05;
 	on_unequip				=	UnEquip_ItBe_Mag;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Szarfa maga V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza moc o 10% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 15% z szat¹";
 	TEXT[3]					=	"maga lub arcymaga).";
@@ -559,7 +610,7 @@ func void Equip_ItBe_Mag_05()
 	};
 };
 ///******************************************************************************************
-func int CheckItBeArmor_Pal(var C_NPC slf)
+func int CheckItBeArmor_Pal(var C_Npc slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
 	if (Hlp_IsItem(itm, ITAR_PAL_H))
@@ -589,7 +640,10 @@ instance ItBe_Pal_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Pal_01;
 	on_unequip				=	UnEquip_ItBe_Pal;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas paladyna I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty many o 2% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
 	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
@@ -620,7 +674,10 @@ instance ItBe_Pal_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Pal_02;
 	on_unequip				=	UnEquip_ItBe_Pal;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas paladyna II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty many o 4% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
 	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
@@ -651,7 +708,10 @@ instance ItBe_Pal_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Pal_03;
 	on_unequip				=	UnEquip_ItBe_Pal;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas paladyna III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty many o 6% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
 	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
@@ -682,7 +742,10 @@ instance ItBe_Pal_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Pal_04;
 	on_unequip				=	UnEquip_ItBe_Pal;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas paladyna IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty many o 8% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
 	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
@@ -713,7 +776,10 @@ instance ItBe_Pal_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Pal_05;
 	on_unequip				=	UnEquip_ItBe_Pal;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas paladyna V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza max. punkty many o 10% nauczonych";
 	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
 	TEXT[3]					=	"stra¿y œwi¹tynnej lub paladyna).";
@@ -736,7 +802,7 @@ func void Equip_ItBe_Pal_05()
 	};
 };
 ///******************************************************************************************
-func int CheckItBeArmor_Ako(var C_NPC slf)
+func int CheckItBeArmor_Ako(var C_Npc slf)
 {
 	var C_Item itm; itm = Npc_GetEquippedArmor(self);
 	if (Hlp_IsItem(itm, ITAR_PRI_H))
@@ -768,7 +834,10 @@ instance ItBe_Ako_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Ako_01;
 	on_unequip				=	UnEquip_ItBe_Ako;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas asasyna I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 2% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 3% z pancerzem";
 	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
@@ -799,7 +868,10 @@ instance ItBe_Ako_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Ako_02;
 	on_unequip				=	UnEquip_ItBe_Ako;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas asasyna II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 4% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 6% z pancerzem";
 	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
@@ -830,7 +902,10 @@ instance ItBe_Ako_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Ako_03;
 	on_unequip				=	UnEquip_ItBe_Ako;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas asasyna III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 6% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 9% z pancerzem";
 	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
@@ -861,7 +936,10 @@ instance ItBe_Ako_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Ako_04;
 	on_unequip				=	UnEquip_ItBe_Ako;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas asasyna IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 8% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 12% z pancerzem";
 	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
@@ -892,7 +970,10 @@ instance ItBe_Ako_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Ako_05;
 	on_unequip				=	UnEquip_ItBe_Ako;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas asasyna V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Zwiêksza zrêcznoœæ o 10% nauczonej";
 	TEXT[2]					=	"(zwiêkszone do 15% z pancerzem";
 	TEXT[3]					=	"asasyna lub elitarnego asasyna).";
@@ -917,34 +998,34 @@ func void Equip_ItBe_Ako_05()
 ///******************************************************************************************
 var int Belt_AtrType;
 
-func int GetSecondBestAttribute(var C_NPC slf)
+func int GetSecondBestAttribute(var C_Npc slf)
 {
 	if (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_MANA_MAX])
 	&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_STRENGTH])
 	&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_DEXTERITY])
-	&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.damage[DAM_INDEX_MAGIC])
+	&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_POWER])
 	{
 		if (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_STRENGTH])
 		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_MANA_MAX] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_MANA_MAX;
 		}
 		else if (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_MANA_MAX])
 		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_STRENGTH] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_STRENGTH;
 		}
 		else if (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_MANA_MAX])
 		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_STRENGTH])
-		&& (slf.attribute[ATR_DEXTERITY] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_DEXTERITY;
 		}
-		else if (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_MANA_MAX])
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_STRENGTH])
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_DEXTERITY])
+		else if (slf.attribute[ATR_POWER] >= slf.attribute[ATR_MANA_MAX])
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_STRENGTH])
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_DEXTERITY])
 		{
 			Belt_AtrType = ATR_POWER;
 		};
@@ -952,29 +1033,29 @@ func int GetSecondBestAttribute(var C_NPC slf)
 	else if (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 	&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_STRENGTH])
 	&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_DEXTERITY])
-	&& (slf.attribute[ATR_MANA_MAX] >= slf.damage[DAM_INDEX_MAGIC])
+	&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_POWER])
 	{
 		if (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_STRENGTH])
 		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_HITPOINTS_MAX;
 		}
 		else if (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_STRENGTH] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_STRENGTH;
 		}
 		else if (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_STRENGTH])
-		&& (slf.attribute[ATR_DEXTERITY] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_DEXTERITY;
 		}
-		else if (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_STRENGTH])
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_DEXTERITY])
+		else if (slf.attribute[ATR_POWER] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_STRENGTH])
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_DEXTERITY])
 		{
 			Belt_AtrType = ATR_POWER;
 		};
@@ -982,29 +1063,29 @@ func int GetSecondBestAttribute(var C_NPC slf)
 	else if (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 	&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_MANA_MAX])
 	&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_DEXTERITY])
-	&& (slf.attribute[ATR_STRENGTH] >= slf.damage[DAM_INDEX_MAGIC])
+	&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_POWER])
 	{
 		if (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_MANA_MAX])
 		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_HITPOINTS_MAX;
 		}
 		else if (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_DEXTERITY])
-		&& (slf.attribute[ATR_MANA_MAX] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_MANA_MAX;
 		}
 		else if (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_MANA_MAX])
-		&& (slf.attribute[ATR_DEXTERITY] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_DEXTERITY;
 		}
-		else if (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_MANA_MAX])
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_DEXTERITY])
+		else if (slf.attribute[ATR_POWER] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_MANA_MAX])
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_DEXTERITY])
 		{
 			Belt_AtrType = ATR_POWER;
 		};
@@ -1012,37 +1093,37 @@ func int GetSecondBestAttribute(var C_NPC slf)
 	else if (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 	&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_MANA_MAX])
 	&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_STRENGTH])
-	&& (slf.attribute[ATR_DEXTERITY] >= slf.damage[DAM_INDEX_MAGIC])
+	&& (slf.attribute[ATR_DEXTERITY] >= slf.attribute[ATR_POWER])
 	{
 		if (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_MANA_MAX])
 		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_STRENGTH])
-		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_HITPOINTS_MAX;
 		}
 		else if (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_STRENGTH])
-		&& (slf.attribute[ATR_MANA_MAX] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_MANA_MAX] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_MANA_MAX;
 		}
 		else if (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
 		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_MANA_MAX])
-		&& (slf.attribute[ATR_STRENGTH] >= slf.damage[DAM_INDEX_MAGIC])
+		&& (slf.attribute[ATR_STRENGTH] >= slf.attribute[ATR_POWER])
 		{
 			Belt_AtrType = ATR_STRENGTH;
 		}
-		else if (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_MANA_MAX])
-		&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_STRENGTH])
+		else if (slf.attribute[ATR_POWER] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_MANA_MAX])
+		&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_STRENGTH])
 		{
 			Belt_AtrType = ATR_POWER;
 		};
 	}
-	else if (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
-	&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_MANA_MAX])
-	&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_STRENGTH])
-	&& (slf.damage[DAM_INDEX_MAGIC] >= slf.attribute[ATR_DEXTERITY])
+	else if (slf.attribute[ATR_POWER] >= slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP)
+	&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_MANA_MAX])
+	&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_STRENGTH])
+	&& (slf.attribute[ATR_POWER] >= slf.attribute[ATR_DEXTERITY])
 	{
 		if (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_MANA_MAX])
 		&& (slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP >= slf.attribute[ATR_STRENGTH])
@@ -1108,7 +1189,10 @@ instance ItBe_Hp_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Hp_01;
 	on_unequip				=	UnEquip_ItBe_Hp;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas ¿ycia I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
 	COUNT[5]				=	value;
@@ -1137,7 +1221,7 @@ func void Equip_ItBe_Hp_01()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 4 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 4 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1153,7 +1237,10 @@ instance ItBe_Hp_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Hp_02;
 	on_unequip				=	UnEquip_ItBe_Hp;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas ¿ycia II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
 	COUNT[5]				=	value;
@@ -1182,7 +1269,7 @@ func void Equip_ItBe_Hp_02()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 8 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 8 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1198,7 +1285,10 @@ instance ItBe_Hp_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Hp_03;
 	on_unequip				=	UnEquip_ItBe_Hp;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas ¿ycia III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
 	COUNT[5]				=	value;
@@ -1227,7 +1317,7 @@ func void Equip_ItBe_Hp_03()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 12 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 12 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1243,7 +1333,10 @@ instance ItBe_Hp_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Hp_04;
 	on_unequip				=	UnEquip_ItBe_Hp;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas ¿ycia IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
 	COUNT[5]				=	value;
@@ -1272,7 +1365,7 @@ func void Equip_ItBe_Hp_04()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 16 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 16 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1288,7 +1381,10 @@ instance ItBe_Hp_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Hp_05;
 	on_unequip				=	UnEquip_ItBe_Hp;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas ¿ycia V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty ¿ycia";
 	COUNT[5]				=	value;
@@ -1316,7 +1412,7 @@ func void Equip_ItBe_Hp_05()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 20 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 20 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1361,7 +1457,10 @@ instance ItBe_Mana_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mana_01;
 	on_unequip				=	UnEquip_ItBe_Mana;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas many I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty many";
 	COUNT[5]				=	value;
@@ -1390,7 +1489,7 @@ func void Equip_ItBe_Mana_01()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 4 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 4 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1406,7 +1505,10 @@ instance ItBe_Mana_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mana_02;
 	on_unequip				=	UnEquip_ItBe_Mana;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas many II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty many";
 	COUNT[5]				=	value;
@@ -1435,7 +1537,7 @@ func void Equip_ItBe_Mana_02()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 8 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 8 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1451,7 +1553,10 @@ instance ItBe_Mana_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mana_03;
 	on_unequip				=	UnEquip_ItBe_Mana;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas many III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty many";
 	COUNT[5]				=	value;
@@ -1480,7 +1585,7 @@ func void Equip_ItBe_Mana_03()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 12 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 12 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1496,7 +1601,10 @@ instance ItBe_Mana_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mana_04;
 	on_unequip				=	UnEquip_ItBe_Mana;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas many IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty many";
 	COUNT[5]				=	value;
@@ -1525,7 +1633,7 @@ func void Equip_ItBe_Mana_04()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 16 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 16 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1541,7 +1649,10 @@ instance ItBe_Mana_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Mana_05;
 	on_unequip				=	UnEquip_ItBe_Mana;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas many V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w max. punkty many";
 	COUNT[5]				=	value;
@@ -1570,7 +1681,7 @@ func void Equip_ItBe_Mana_05()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 20 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 20 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1615,7 +1726,10 @@ instance ItBe_Str_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Str_01;
 	on_unequip				=	UnEquip_ItBe_Str;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas si³y I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w si³ê";
 	COUNT[5]				=	value;
@@ -1645,7 +1759,7 @@ func void Equip_ItBe_Str_01()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 4 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 4 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1661,7 +1775,10 @@ instance ItBe_Str_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Str_02;
 	on_unequip				=	UnEquip_ItBe_Str;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas si³y II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w si³ê";
 	COUNT[5]				=	value;
@@ -1691,7 +1808,7 @@ func void Equip_ItBe_Str_02()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 8 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 8 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1707,7 +1824,10 @@ instance ItBe_Str_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Str_03;
 	on_unequip				=	UnEquip_ItBe_Str;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas si³y III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w si³ê";
 	COUNT[5]				=	value;
@@ -1737,7 +1857,7 @@ func void Equip_ItBe_Str_03()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 12 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 12 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1753,7 +1873,10 @@ instance ItBe_Str_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Str_04;
 	on_unequip				=	UnEquip_ItBe_Str;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas si³y IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w si³ê";
 	COUNT[5]				=	value;
@@ -1783,7 +1906,7 @@ func void Equip_ItBe_Str_04()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 16 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 16 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1799,7 +1922,10 @@ instance ItBe_Str_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Str_05;
 	on_unequip				=	UnEquip_ItBe_Str;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas si³y V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w si³ê";
 	COUNT[5]				=	value;
@@ -1829,7 +1955,7 @@ func void Equip_ItBe_Str_05()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 20 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 20 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1874,7 +2000,10 @@ instance ItBe_Dex_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Dex_01;
 	on_unequip				=	UnEquip_ItBe_Dex;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas zrêcznoœci I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w zrêcznoœæ";
 	COUNT[5]				=	value;
@@ -1904,7 +2033,7 @@ func void Equip_ItBe_Dex_01()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 4 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 4 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1920,7 +2049,10 @@ instance ItBe_Dex_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Dex_02;
 	on_unequip				=	UnEquip_ItBe_Dex;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas zrêcznoœci II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w zrêcznoœæ";
 	COUNT[5]				=	value;
@@ -1950,7 +2082,7 @@ func void Equip_ItBe_Dex_02()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 8 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 8 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -1966,7 +2098,10 @@ instance ItBe_Dex_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Dex_03;
 	on_unequip				=	UnEquip_ItBe_Dex;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas zrêcznoœci III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w zrêcznoœæ";
 	COUNT[5]				=	value;
@@ -1996,7 +2131,7 @@ func void Equip_ItBe_Dex_03()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 12 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 12 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -2012,7 +2147,10 @@ instance ItBe_Dex_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Dex_04;
 	on_unequip				=	UnEquip_ItBe_Dex;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas zrêcznoœci IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w zrêcznoœæ";
 	COUNT[5]				=	value;
@@ -2042,7 +2180,7 @@ func void Equip_ItBe_Dex_04()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 16 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 16 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -2058,7 +2196,10 @@ instance ItBe_Dex_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Dex_05;
 	on_unequip				=	UnEquip_ItBe_Dex;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas zrêcznoœci V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w zrêcznoœæ";
 	COUNT[5]				=	value;
@@ -2088,7 +2229,7 @@ func void Equip_ItBe_Dex_05()
 		}
 		else if (Belt_AtrType == ATR_POWER)
 		{
-			Belt_AtrPoints = self.damage[DAM_INDEX_MAGIC] * 20 / 100;
+			Belt_AtrPoints = self.attribute[ATR_POWER] * 20 / 100;
 			Npc_AddPowerPoints (self, -Belt_AtrPoints);
 		};
 		
@@ -2133,7 +2274,10 @@ instance ItBe_Power_01 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Power_01;
 	on_unequip				=	UnEquip_ItBe_Power;
 	
+	cond_value[2]			=	15;
+	
 	description				=	"Pas mocy I";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 4% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w moc";
 	COUNT[5]				=	value;
@@ -2179,7 +2323,10 @@ instance ItBe_Power_02 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Power_02;
 	on_unequip				=	UnEquip_ItBe_Power;
 	
+	cond_value[2]			=	35;
+	
 	description				=	"Pas mocy II";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 8% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w moc";
 	COUNT[5]				=	value;
@@ -2225,7 +2372,10 @@ instance ItBe_Power_03 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Power_03;
 	on_unequip				=	UnEquip_ItBe_Power;
 	
+	cond_value[2]			=	55;
+	
 	description				=	"Pas mocy III";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 12% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w moc";
 	COUNT[5]				=	value;
@@ -2271,7 +2421,10 @@ instance ItBe_Power_04 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Power_04;
 	on_unequip				=	UnEquip_ItBe_Power;
 	
+	cond_value[2]			=	75;
+	
 	description				=	"Pas mocy IV";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 16% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w moc";
 	COUNT[5]				=	value;
@@ -2317,7 +2470,10 @@ instance ItBe_Power_05 (ItemPR_Belt)
 	on_equip				=	Equip_ItBe_Power_05;
 	on_unequip				=	UnEquip_ItBe_Power;
 	
+	cond_value[2]			=	95;
+	
 	description				=	"Pas mocy V";
+	COUNT[0]				=	cond_value[2];
 	TEXT[1]					=	"Konwertuje 20% drugiego najliczebniejszego";
 	TEXT[2]					=	"atrybutu w moc";
 	COUNT[5]				=	value;

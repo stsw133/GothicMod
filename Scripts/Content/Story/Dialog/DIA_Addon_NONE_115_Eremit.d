@@ -219,15 +219,15 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj strój mieszczanina III", DIA_Addon_Eremit_Klamotten_VLK_H);
 	};
-	if (Npc_HasItems (other, ITAR_WD_M_00) > 0)
+	if (Npc_HasItems (other, ITAR_Babe_VLK_M_00) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki I", DIA_Addon_Eremit_Klamotten_VlkBabe_L);
 	};
-	if (Npc_HasItems (other, ITAR_WD_M_01) > 0)
+	if (Npc_HasItems (other, ITAR_Babe_VLK_M_01) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki II", DIA_Addon_Eremit_Klamotten_VlkBabe_M);
 	};
-	if (Npc_HasItems (other, ITAR_WD_M_02) > 0)
+	if (Npc_HasItems (other, ITAR_Babe_VLK_M_02) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj sukniê mieszczanki III", DIA_Addon_Eremit_Klamotten_VlkBabe_H);
 	};
@@ -261,11 +261,11 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni strój farmera", DIA_Addon_Eremit_Klamotten_BAU_M);
 	};
-	if (Npc_HasItems (other, ITAR_WD_M_03) > 0)
+	if (Npc_HasItems (other, ITAR_Babe_BAU_00) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekk¹ sukniê farmerki", DIA_Addon_Eremit_Klamotten_BauBabe_L);
 	};
-	if (Npc_HasItems (other, ITAR_WD_M_04) > 0)
+	if (Npc_HasItems (other, ITAR_Babe_BAU_01) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni¹ sukniê farmerki", DIA_Addon_Eremit_Klamotten_BauBabe_M);
 	};
@@ -456,17 +456,17 @@ func void DIA_Addon_Eremit_Klamotten_VLK_H()
 };
 func void DIA_Addon_Eremit_Klamotten_VlkBabe_L()
 {
-	B_GiveInvItems (other, self, ITAR_WD_M_00, 1);
+	B_GiveInvItems (other, self, ITAR_Babe_VLK_M_00, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_VlkBabe_M()
 {
-	B_GiveInvItems (other, self, ITAR_WD_M_01, 1);
+	B_GiveInvItems (other, self, ITAR_Babe_VLK_M_01, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_VlkBabe_H()
 {
-	B_GiveInvItems (other, self, ITAR_WD_M_02, 1);
+	B_GiveInvItems (other, self, ITAR_Babe_VLK_M_02, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_MIL_L()
@@ -506,12 +506,12 @@ func void DIA_Addon_Eremit_Klamotten_BAU_M()
 };
 func void DIA_Addon_Eremit_Klamotten_BauBabe_L()
 {
-	B_GiveInvItems (other, self, ITAR_WD_M_03, 1);
+	B_GiveInvItems (other, self, ITAR_Babe_BAU_00, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_BauBabe_M()
 {
-	B_GiveInvItems (other, self, ITAR_WD_M_04, 1);
+	B_GiveInvItems (other, self, ITAR_Babe_BAU_01, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_SLD_L()

@@ -15,12 +15,12 @@ prototype Mst_Default_Dragon (C_Npc)
 	B_SetAttributesToLevel (self, 90);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
-	protection[PROT_EDGE]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
-	protection[PROT_POINT]				=	50 * AR_PER_LEVEL + 50 * (AR_PER_LEVEL/2);
-	protection[PROT_FIRE]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
-	protection[PROT_FLY]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
-	protection[PROT_MAGIC]				=	50 * MR_PER_LEVEL + 50 * (MR_PER_LEVEL/2);
+	protection[PROT_BLUNT]				=	90*AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	90*AR_PER_LEVEL;
+	protection[PROT_POINT]				=	90*AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	90*MR_PER_LEVEL;
+	protection[PROT_FLY]				=	90*MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	90*MR_PER_LEVEL;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -118,6 +118,6 @@ instance Dragon_Undead (Mst_Default_Dragon)
 	aivar[AIV_MM_REAL_ID]		=	ID_DRAGON_UNDEAD;
 	effect						=	"spellfx_undead_dragon";
 	
-	B_SetAttributesToLevel (self, 150);
+	B_SetAttributesToLevel (self, 130);
 	B_SetVisuals_UndeadDragon();
 };

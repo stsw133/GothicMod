@@ -13,12 +13,12 @@ prototype Mst_Default_GoblinBandit (C_Npc)
 	B_SetAttributesToLevel (self, 8);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -37,12 +37,13 @@ prototype Mst_Default_GoblinBandit (C_Npc)
 func void B_SetVisuals_GoblinBandit()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gob_Bandit_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Gob_Bandit_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
 ///******************************************************************************************
 instance Gobbo_Bandit (Mst_Default_GoblinBandit)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_GoblinBandit();
 	EquipItem (self, ItMw_1h_Goblin_03);
 };

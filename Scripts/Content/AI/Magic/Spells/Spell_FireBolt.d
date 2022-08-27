@@ -3,23 +3,25 @@
 ///******************************************************************************************
 
 const int SPL_Cost_FireBolt				=	5;
-const int SPL_Damage_FireBolt			=	25;
+const int SPL_Damage_FireBolt			=	5;	//25
+const int SPL_Scaling_FireBolt			=	100;
 
 ///******************************************************************************************
 instance Spell_FireBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_FireBolt;
+//	damage_per_level					=	SPL_Damage_FireBolt;
 	damageType							=	DAM_MAGIC;
 };
 
 func int Spell_Logic_FireBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

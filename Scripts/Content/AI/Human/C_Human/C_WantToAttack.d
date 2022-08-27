@@ -11,7 +11,7 @@ func int C_WantToAttackSheepKiller (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Sheepkiller) == IGNORE_Sheepkiller)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Sheepkiller) > 0)
 	{
 		return false;
 	};
@@ -53,7 +53,7 @@ func int C_WantToAttackMurder (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Murder) == IGNORE_Murder)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Murder) > 0)
 	{
 		return false;
 	};
@@ -88,7 +88,7 @@ func int C_WantToAttackThief (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Theft) == IGNORE_Theft)
+	if ((slf.aivar[AIV_IgnoreCrime] & IGNORE_Theft) > 0)
 	{
 		return false;
 	};

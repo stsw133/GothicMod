@@ -7,7 +7,6 @@ var string PRINT_LearnFight_2H;
 var string PRINT_LearnFight_Bow;
 var string PRINT_LearnFight_Crossbow;
 var string PRINT_LearnMagic;
-var string PRINT_LearnTalent_Jewelery;
 var string PRINT_LearnTalent_Smith;
 var string PRINT_LearnTalent_Enchanting;
 var string PRINT_LearnTalent_Alchemy;
@@ -42,9 +41,6 @@ func void MOD_PrintLearn()
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 3)		{	PRINT_LearnMagic = PRINT_LearnMagic_4;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 4)		{	PRINT_LearnMagic = PRINT_LearnMagic_5;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC) == 5)		{	PRINT_LearnMagic = PRINT_LearnMagic_6;	};
-	
-	if		(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 0)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_1;	}
-	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_JEWELERY) == 1)	{	PRINT_LearnTalent_Jewelery = PRINT_LearnTalent_Jewelery_2;	};
 	
 	if		(Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) == 0)		{	PRINT_LearnTalent_Smith = PRINT_LearnTalent_Smith_1;	}
 	else if	(Npc_GetTalentSkill(hero, NPC_TALENT_SMITH) == 1)		{	PRINT_LearnTalent_Smith = PRINT_LearnTalent_Smith_2;	};

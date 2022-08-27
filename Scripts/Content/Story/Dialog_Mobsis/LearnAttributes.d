@@ -3,14 +3,26 @@
 ///******************************************************************************************
 func void MOBSI_LearnAttributes_S1()
 {
-	if (C_BodyStateContains(hero, BS_STAND))
-	{
+	//if (C_BodyStateContains(hero, BS_STAND) || C_BodyStateContains(hero, BS_ITEMINTERACT))
+	//{
 		hero.aivar[AIV_INVINCIBLE] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_LearnAttributes;
 		AI_ProcessInfos(hero);
 		
 		AI_PlayAni (hero, "T_INNOS_STAND_2_S0");
 		AI_PlayAni (hero, "T_INNOS_S0_2_S1");
+	//};
+};
+func void MOBSI_LearnAttributes_Effect()
+{
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayIdol)
+	{
+		Wld_PlayEffect ("spellFX_BELIARSRAGE", hero, hero, 0, 0, 0, false);
+	}
+	else
+	{
+		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
+		Snd_Play("MFX_Heal_Cast");
 	};
 };
 ///******************************************************************************************
@@ -149,8 +161,7 @@ func void PC_LearnAttributes_TEACH_STR_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 1))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_STR_Info();
 };
@@ -158,8 +169,7 @@ func void PC_LearnAttributes_TEACH_STR_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 5))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_STR_Info();
 };
@@ -167,8 +177,7 @@ func void PC_LearnAttributes_TEACH_STR_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 10))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_STR_Info();
 };
@@ -181,8 +190,7 @@ func void PC_LearnAttributes_TEACH_DEX_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 1))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
@@ -190,8 +198,7 @@ func void PC_LearnAttributes_TEACH_DEX_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 5))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
@@ -199,8 +206,7 @@ func void PC_LearnAttributes_TEACH_DEX_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 10))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
@@ -213,8 +219,7 @@ func void PC_LearnAttributes_TEACH_Power_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 1))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_Power_Info();
 };
@@ -222,8 +227,7 @@ func void PC_LearnAttributes_TEACH_Power_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 5))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_Power_Info();
 };
@@ -231,8 +235,7 @@ func void PC_LearnAttributes_TEACH_Power_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 10))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_Power_Info();
 };
@@ -245,8 +248,7 @@ func void PC_LearnAttributes_TEACH_MP_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 1))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_MP_Info();
 };
@@ -254,8 +256,7 @@ func void PC_LearnAttributes_TEACH_MP_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 5))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_MP_Info();
 };
@@ -263,8 +264,7 @@ func void PC_LearnAttributes_TEACH_MP_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 10))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_MP_Info();
 };
@@ -277,8 +277,7 @@ func void PC_LearnAttributes_TEACH_HP_1()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 1))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_HP_Info();
 };
@@ -286,8 +285,7 @@ func void PC_LearnAttributes_TEACH_HP_5()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 5))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_HP_Info();
 };
@@ -295,8 +293,7 @@ func void PC_LearnAttributes_TEACH_HP_10()
 {
 	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 10))
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		MOBSI_LearnAttributes_Effect();
 	};
 	PC_LearnAttributes_TEACH_HP_Info();
 };

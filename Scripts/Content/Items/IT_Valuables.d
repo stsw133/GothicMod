@@ -1,11 +1,4 @@
 ///******************************************************************************************
-prototype ItemPR_Misc (C_Item)
-{
-	mainflag 				=	ITEM_KAT_NONE;
-	flags					=	ITEM_MULTI;
-	TEXT[5]					= 	NAME_Value;
-};
-///******************************************************************************************
 ///	Coins
 ///******************************************************************************************
 prototype ItemPR_Coin (C_Item)
@@ -210,7 +203,7 @@ instance ItMi_Chest (ItemPR_Misc)
 {
 	name 					=	"Skrzynka";
 	value 					=	30;
-	visual 					=	"CHESTSMALL_OCCHESTSMALLLOCKED.3DS";
+	visual 					=	"CHESTSMALL_OCCHESTSMALLLOCKED.mds";
 	material 				=	MAT_WOOD;
 	
 	description				= 	name;

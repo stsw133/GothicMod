@@ -190,11 +190,11 @@ instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
 	INV_ZBIAS				=	INVCAM_ENTF_RING_STANDARD;
 };
 ///******************************************************************************************
-///	Wings & Feather
+///	Wings & Feathers
 ///******************************************************************************************
 instance ItAt_Wing (ItemPR_AnimalTrophy)
 {
-	name 					=	"Skrzyd³a";
+	name 					=	"Skrzyd³o";
 	value 					=	5;
 	visual 					=	"ItAt_Wing.3DS";
 	
@@ -202,11 +202,11 @@ instance ItAt_Wing (ItemPR_AnimalTrophy)
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
-instance ItAt_HarpyFeather (ItemPR_AnimalTrophy)
+instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 {
 	name 					=	"Pióra harpii";
 	value 					=	15;
-	visual 					=	"ItAt_HarpyFeather.3DS";
+	visual 					=	"ItAt_HarpyFeathers.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;
@@ -295,7 +295,7 @@ instance ItAt_ShadowHorn (ItemPR_AnimalTrophy)
 instance ItAt_DrgSnapperHorn (ItemPR_AnimalTrophy)
 {
 	name 					=	"Róg smoczego zêbacza";
-	value 					=	200;
+	value 					=	100;
 	visual 					=	"ItAt_DrgSnapperHorn.3DS";
 	material 				=	MAT_STONE;
 	
@@ -328,7 +328,7 @@ instance ItAt_DragonHeart (ItemPR_AnimalTrophy)
 {
 	name 					=	"Serce smoka";
 	value 					=	400;
-	visual 					=	"ItAt_FiredragonHeart.3DS";
+	visual 					=	"ItAt_FireDragonHeart.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;

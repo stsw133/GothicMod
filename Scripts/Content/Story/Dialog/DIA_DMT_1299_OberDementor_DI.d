@@ -74,11 +74,15 @@ func void DIA_Schwarzmagier_HELLO_dmt ()
 
 func void DIA_Schwarzmagier_HELLO_meister ()
 {
-	Wld_PlayEffect("DEMENTOR_FX",  hero, hero, 0, 0, 0, FALSE );
-	Wld_PlayEffect("spellFX_INCOVATION_RED",  self, self, 0, 0, 0, FALSE );
-	Wld_PlayEffect("FX_EarthQuake",  self, self, 0, 0, 0, FALSE );
-	Wld_PlayEffect("SFX_Circle",  self, self, 0, 0, 0, FALSE );
-	AI_PlayAni (self,"T_PRACTICEMAGIC5");	
+	Wld_PlayEffect	("DEMENTOR_FX",  hero, hero, 0, 0, 0, FALSE );
+	Wld_PlayEffect	("spellFX_INCOVATION_RED",  self, self, 0, 0, 0, FALSE );
+	Wld_PlayEffect	("FX_EarthQuake",  self, self, 0, 0, 0, FALSE );
+	Wld_PlayEffect	("SFX_Circle",  self, self, 0, 0, 0, FALSE );
+	AI_PlayAni		(self,"T_PRACTICEMAGIC5");
+	
+	SC_ObsessionCounter = 100;
+	B_SCIsObsessed(hero);
+	
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_00"); //Doœæ tych bredni! Teraz nadejdzie twój koniec.
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_01"); //Twoje oczy zakryje ciemnoœæ, a twa dusza zniknie w zaœwiatach.
 
@@ -94,9 +98,6 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 			{
 				hero.attribute[ATR_HITPOINTS] = ((hero.attribute[ATR_HITPOINTS])/2);
 			};
-		
-		SC_ObsessionCounter = 100;
-		B_SCIsObsessed (hero);
 	};
 
 	Info_ClearChoices	(DIA_Schwarzmagier_HELLO);

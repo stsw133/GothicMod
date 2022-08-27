@@ -33,7 +33,7 @@ func void B_NpcClearObsessionByDMT (var C_Npc medium)
 		B_Attack (medium, other, AR_NONE, 1);
 		
 		Wld_StopEffect	("DEMENTOR_FX");
-		Snd_Play		("MFX_FEAR_CAST" );
+		Snd_Play		("MFX_FEAR_CAST");
 		B_SCIsObsessed	(medium);
 		
 		if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Malak))

@@ -76,7 +76,7 @@ func void SetItRwAttributes_HAmmo (var C_ITEM itm)
 ///******************************************************************************************
 instance ItRw_Arrow (ItemPR_Arrow)
 {
-	value 					=	4;
+	value 					=	2;
 	visual 					=	"ItRw_Arrow.3ds";
 	on_state[0]				=	Use_ItRw_Arrow;
 	
@@ -86,7 +86,7 @@ instance ItRw_Arrow (ItemPR_Arrow)
 };
 instance ItRw_sArrow (ItemPR_Arrow)
 {
-	value 					=	4;
+	value 					=	3;
 	visual 					=	"ItRw_Arrow.3ds";
 	on_state[0]				=	Use_ItRw_sArrow;
 	
@@ -98,9 +98,10 @@ instance ItRw_sArrow (ItemPR_Arrow)
 };
 instance ItRw_fArrow (ItemPR_Arrow)
 {
-	value 					=	6;
+	value 					=	4;
 	visual 					=	"ItRw_Arrow.3ds";
 	on_state[0]				=	Use_ItRw_fArrow;
+	effect					=	"spellfx_firesword";
 	
 	description				=	"Ognista strza³a";
 	COUNT[5]				=	value;
@@ -108,7 +109,7 @@ instance ItRw_fArrow (ItemPR_Arrow)
 };
 instance ItRw_pArrow (ItemPR_Arrow)
 {
-	value 					=	6;
+	value 					=	4;
 	visual 					=	"ItRw_Arrow.3ds";
 	on_state[0]				=	Use_ItRw_pArrow;
 	
@@ -208,7 +209,7 @@ func void Use_ItRw_pArrow()
 ///******************************************************************************************
 instance ItRw_Bolt (ItemPR_Bolt)
 {
-	value 					=	4;
+	value 					=	2;
 	visual 					=	"ItRw_Bolt.3ds";
 	on_state[0]				=	Use_ItRw_Bolt;
 	
@@ -218,7 +219,7 @@ instance ItRw_Bolt (ItemPR_Bolt)
 };
 instance ItRw_sBolt (ItemPR_Bolt)
 {
-	value 					=	4;
+	value 					=	2;
 	visual 					=	"ItRw_Bolt.3ds";
 	on_state[0]				=	Use_ItRw_sBolt;
 	
@@ -349,7 +350,7 @@ instance ItRw_HAmmo (ItemPR_HAmmo)
 };
 instance ItRw_BAmmo (ItemPR_HAmmo)
 {
-	value 					=	100;
+	value 					=	50;
 	visual 					=	"W_HAmmo1.3ds";
 	on_state[0]				=	Use_ItRw_BAmmo;
 	effect					=	"SPELLFX_BIOAMMO";

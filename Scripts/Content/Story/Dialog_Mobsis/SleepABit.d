@@ -45,7 +45,7 @@ func void PC_Sleep (var int t)
 		PrintScreen	(PRINT_SleepOver, -1, -1, FONT_Screen, 2);
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-		hero.aivar[AIV_Energy] = hero.aivar{AIV_Energy_MAX];
+		hero.aivar[AIV_Energy] = hero.aivar[AIV_Energy_MAX];
 	};
 	
 	PrintGlobals(PD_ITEM_MOBSI);

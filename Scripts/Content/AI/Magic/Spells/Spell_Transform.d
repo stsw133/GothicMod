@@ -50,8 +50,31 @@ func int Spell_Logic_Transform (var int manaInvested)
 		else										{	Npc_SetActiveSpellInfo(self, Meatbug);			};
 		TrfStoneID = 0;
 		
+		if (hpMaxPotionTime > 0)
+		{
+			hpMaxPotionTime = 1;
+		};
+		if (mpMaxPotionTime > 0)
+		{
+			mpMaxPotionTime = 1;
+		};
+		if (strPotionTime > 0)
+		{
+			strPotionTime = 1;
+		};
+		if (dexPotionTime > 0)
+		{
+			dexPotionTime = 1;
+		};
+		if (powerPotionTime > 0)
+		{
+			powerPotionTime = 1;
+		};
+		Potions_Process();
+		
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

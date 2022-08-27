@@ -2,6 +2,27 @@
 ///	IT_Food
 ///******************************************************************************************
 
+var int foodCounter;
+
+/// ------ FoodCounter ------
+func void Npc_AddFoodCounter()
+{
+	if (Npc_IsPlayer(self))
+	{
+		foodCounter += 1;
+		
+		if (foodCounter >= 50)
+		{
+			foodCounter = 0;
+			B_RaiseAttribute (self, ATR_HITPOINTS_MAX, HP_PER_LP/2);
+		}
+		else
+		{
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(50 - foodCounter), " pozosta³o do otrzymania bonusowych pkt. ¿ycia!"), FONT_ScreenSmall, COL_White, TIME_Print);
+		};
+	};
+};
+
 /// ------ FoodTime ------
 func void Npc_AddFoodTime (var C_Npc slf, var int points)
 {
@@ -15,7 +36,7 @@ func void Npc_AddFoodTime (var C_Npc slf, var int points)
 			foodTime = 300;
 			
 			Npc_ClearAIQueue 	(slf);
-			//B_ClearPerceptions	(slf);
+			B_ClearPerceptions	(slf);
 			AI_StartState 		(slf, ZS_Unconscious, false, "");
 		}
 		else if (foodTime > 150)
@@ -42,7 +63,7 @@ func void Npc_AddDrunkTime (var C_Npc slf, var int points)
 			drunkTime = 300;
 			
 			Npc_ClearAIQueue 	(slf);
-			//B_ClearPerceptions	(slf);
+			B_ClearPerceptions	(slf);
 			AI_StartState 		(slf, ZS_Unconscious, false, "");
 		}
 		else if (drunkTime >= 100)
@@ -110,15 +131,6 @@ instance ItFoMuttonRaw (ItemPR_iFood)
 	description				=	name;
 	COUNT[5]				= 	value;
 };
-instance ItFo_Onion (ItemPR_iFood)
-{
-	name 					=	"Cebula";
-	visual 					=	"ItFo_Onion.3DS";
-	value 					=	2;
-	
-	description				=	name;
-	COUNT[5]				=	value;
-};
 instance ItFo_Addon_Pfeffer_01 (ItemPR_iFood)
 {
 	name 					=	"Torebka przypraw";
@@ -150,19 +162,31 @@ instance ItFo_RottenMeat (ItemPR_iFood)
 {
 	name 					=	"Zgni³e miêso";
 	visual 					=	"ItFo_RottenMeat.3DS";
-	value 					=	10;
+	value 					=	2;
 	
 	description				=	name;
 	COUNT[5]				= 	value;
 };
-instance ItFo_Sugar (ItemPR_iFood)
+///******************************************************************************************
+///	Sugar
+///******************************************************************************************
+instance ItFo_Sugar (ItemPR_Food)
 {
 	name 					=	"Cukier";
-	visual 					=	"ItFo_Sugar.3ds";
 	value 					=	2;
+	visual 					=	"ItFo_Sugar.3ds";
+	material 				=	MAT_CLAY;
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Sugar;
 	
 	description				=	name;
+	TEXT[1]					= 	NAME_Bonus_Mana;
+	COUNT[1]				=	1;
 	COUNT[5]				=	value;
+};
+func void Use_ItFo_Sugar()
+{
+	Npc_ChangeAttribute (self, ATR_MANA, 1);
 };
 ///******************************************************************************************
 ///	Snacks
@@ -177,14 +201,16 @@ prototype ItemPR_SnackFood (C_Item)
 	on_state[0]				=	Use_ItFo_Snack;
 	scemeName				=	"FOOD";
 	
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	5;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	4;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	1;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Snack()
 {
-	Npc_AddFoodTime (self, 5);
+	Npc_AddFoodTime (self, 4+self.attribute[ATR_HITPOINTS_MAX]*1/100);
 };
 ///******************************************************************************************
 instance ItFo_BakedPotato (ItemPR_SnackFood)
@@ -212,14 +238,17 @@ prototype ItemPR_LightFood (C_Item)
 	on_state[0]				=	Use_ItFo_Fruit;
 	scemeName				=	"FOOD";
 	
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	10;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	8;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	2;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Fruit()
 {
-	Npc_AddFoodTime (self, 10);
+	Npc_AddFoodTime (self, 8+self.attribute[ATR_HITPOINTS_MAX]*2/100);
+	Npc_AddFoodCounter();
 };
 ///******************************************************************************************
 instance ItFo_Apple (ItemPR_LightFood)
@@ -238,6 +267,12 @@ instance ItFo_Carrot (ItemPR_LightFood)
 {
 	name 					=	"Marchew";
 	visual 					=	"ItFo_Carrot.3DS";
+	description				=	name;
+};
+instance ItFo_Onion (ItemPR_LightFood)
+{
+	name 					=	"Cebula";
+	visual 					=	"ItFo_Onion.3DS";
 	description				=	name;
 };
 instance ItFo_Pear (ItemPR_LightFood)
@@ -263,17 +298,20 @@ prototype ItemPR_StandardFood (C_Item)
 	material 				=	MAT_LEATHER;
 	
 	value 					=	12;
-	on_state[0]				=	Use_ItFo_Normal;
+	on_state[0]				=	Use_ItFo_Standard;
 	scemeName				=	"FOODHUGE";
 	
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	30;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	24;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	6;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
-func void Use_ItFo_Normal()
+func void Use_ItFo_Standard()
 {
-	Npc_AddFoodTime (self, 30);
+	Npc_AddFoodTime (self, 24+self.attribute[ATR_HITPOINTS_MAX]*6/100);
+	Npc_AddFoodCounter();
 };
 ///******************************************************************************************
 instance ItFo_Bread (ItemPR_StandardFood)
@@ -313,14 +351,17 @@ prototype ItemPR_MeatFood (C_Item)
 	on_state[0]				=	Use_ItFo_Meat;
 	scemeName				=	"MEAT";
 	
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	50;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	40;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	10;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Meat()
 {
-	Npc_AddFoodTime (self, 50);
+	Npc_AddFoodTime (self, 40+self.attribute[ATR_HITPOINTS_MAX]*10/100);
+	Npc_AddFoodCounter();
 };
 ///******************************************************************************************
 instance ItFoMutton (ItemPR_MeatFood)
@@ -354,17 +395,17 @@ prototype ItemPR_SweetFood (C_Item)
 	on_state[0]				=	Use_ItFo_Sweet;
 	scemeName				=	"FOODHUGE";
 	
-	TEXT[1]					= 	NAME_HealTime;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
 	COUNT[1]				=	8;
 	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	4;
+	COUNT[2]				= 	8;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Sweet()
 {
 	Npc_AddFoodTime (self, 8);
-	Npc_ChangeAttribute	(self, ATR_MANA, 4);
+	Npc_ChangeAttribute	(self, ATR_MANA, 8);
 };
 ///******************************************************************************************
 instance ItFo_Honey (ItemPR_SweetFood)
@@ -405,14 +446,17 @@ prototype ItemPR_StewFood (C_Item)
 	scemeName				=	"RICE";
 	
 	description				=	name;
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	50;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	30;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	15;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Stew()
 {
-	Npc_AddFoodTime (self, 50);
+	Npc_AddFoodTime (self, 30+self.attribute[ATR_HITPOINTS_MAX]*15/100);
+	Npc_AddFoodCounter();
 };
 ///******************************************************************************************
 instance ItFo_Stew (ItemPR_StewFood)
@@ -460,14 +504,17 @@ prototype ItemPR_SoupFood (C_Item)
 	on_state[0]				=	Use_ItFo_Soup;
 	scemeName				=	"RICE";
 	
-	TEXT[1]					= 	NAME_HealTime;
-	COUNT[1]				=	30;
+	TEXT[1]					= 	NAME_Bonus_HealTime;
+	COUNT[1]				=	18;
+	TEXT[2]					= 	NAME_Percent_HealTime;
+	COUNT[2]				=	9;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Soup()
 {
-	Npc_AddFoodTime (self, 30);
+	Npc_AddFoodTime (self, 18+self.attribute[ATR_HITPOINTS_MAX]*9/100);
+	Npc_AddFoodCounter();
 };
 ///******************************************************************************************
 instance ItFo_FishSoup (ItemPR_SoupFood)
@@ -502,12 +549,12 @@ instance ItFo_Water (ItemPR_Food)
 	
 	description				=	name;
 	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	100;
+	COUNT[1]				=	150;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Water()
 {
-	self.aivar[AIV_Energy] += 100;
+	self.aivar[AIV_Energy] += 150;
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 ///******************************************************************************************
@@ -523,7 +570,7 @@ instance ItFo_Milk (ItemPR_Food)
 	description				=	name;
 	TEXT[1]					= 	NAME_Bonus_Energy;
 	COUNT[1]				=	90;
-	TEXT[2]					= 	NAME_HealTime;
+	TEXT[2]					= 	NAME_Bonus_HealTime;
 	COUNT[2]				=	3;
 	COUNT[5]				=	value;
 };
@@ -549,14 +596,14 @@ prototype ItemPR_BeerFood (C_Item)
 	TEXT[1]					= 	NAME_Bonus_Energy;
 	COUNT[1]				=	60;
 	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	2;
+	COUNT[2]				= 	3;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Beer()
 {
 	self.aivar[AIV_Energy] += 60;
-	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_ChangeAttribute (self, ATR_MANA, 3);
 	Npc_AddDrunkTime (self, 15);
 };
 ///******************************************************************************************
@@ -592,16 +639,16 @@ prototype ItemPR_AlcoholFood (C_Item)
 	scemeName				=	"POTION";
 	
 	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	50;
+	COUNT[1]				=	30;
 	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	5;
+	COUNT[2]				= 	6;
 	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Alcohol()
 {
-	self.aivar[AIV_Energy] += 50;
-	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	self.aivar[AIV_Energy] += 30;
+	Npc_ChangeAttribute (self, ATR_MANA, 6);
 	Npc_AddDrunkTime (self, 30);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
@@ -650,18 +697,20 @@ instance ItFo_Addon_Grog (ItemPR_Food)
 	on_state[0]				=	Use_ItFo_Addon_Grog;
 	
 	description 			=	name;
-	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	20;
-	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	2;
+	TEXT[1]					= 	NAME_Bonus_Mana;
+	COUNT[1]				= 	5;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_Grog()
 {
-	self.aivar[AIV_Energy] += 20;
-	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	if (Npc_IsPlayer(self))
+	{
+		B_GivePlayerXP(10);
+	};
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
 	Npc_AddDrunkTime (self, 25);
 };
+///******************************************************************************************
 instance ItFo_Addon_Hooch (ItemPR_Food)
 {
 	name					=	"Bimber";
@@ -672,18 +721,20 @@ instance ItFo_Addon_Hooch (ItemPR_Food)
 	on_state[0]				=	Use_ItFo_Addon_Hooch;
 	
 	description 			=	name;
-	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	20;
-	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	6;
+	TEXT[1]					= 	NAME_Bonus_Mana;
+	COUNT[1]				= 	10;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_Hooch()
 {
-	self.aivar[AIV_Energy] += 20;
-	Npc_ChangeAttribute (self, ATR_MANA, 6);
+	if (Npc_IsPlayer(self))
+	{
+		B_GivePlayerXP(20);
+	};
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
 	Npc_AddDrunkTime (self, 50);
 };
+///******************************************************************************************
 instance ItFo_Addon_Rum (ItemPR_Food)
 {
 	name					=	"Rum";
@@ -694,22 +745,20 @@ instance ItFo_Addon_Rum (ItemPR_Food)
 	on_state[0]				=	Use_ItFo_Addon_Rum;
 	
 	description 			=	name;
-	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	20;
-	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	10;
+	TEXT[1]					= 	NAME_Bonus_Mana;
+	COUNT[1]				= 	15;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_Rum()
 {
-	self.aivar[AIV_Energy] += 20;
-	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	if (Npc_IsPlayer(self))
+	{
+		B_GivePlayerXP(30);
+	};
+	Npc_ChangeAttribute (self, ATR_MANA, 15);
 	Npc_AddDrunkTime (self, 75);
 };
 ///******************************************************************************************
-var int Hammer_Bonus;
-var int Hering_Time;
-
 instance ItFo_Addon_LousHammer (ItemPR_Food)
 {
 	name					=	"M³ot Lou";
@@ -720,17 +769,23 @@ instance ItFo_Addon_LousHammer (ItemPR_Food)
 	on_state[0]				=	Use_ItFo_Addon_LousHammer;
 	
 	description 			=	name;
+	TEXT[1]					= 	NAME_Bonus_EneMax;
+	COUNT[1]				= 	4;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_LousHammer()
 {
-	if (Npc_IsPlayer(self) && Hammer_Bonus < 400)
+	if (Npc_IsPlayer(self))
 	{
-		B_GivePlayerXP(400-Hammer_Bonus);
-		Hammer_Bonus = 400;
+		B_GivePlayerXP(40);
 	};
+	B_RaiseAttribute (self, ATR_ENERGY_MAX, 4);
 	Npc_AddDrunkTime (self, 100);
+	self.aivar[AIV_Energy] = 0;
 };
+///******************************************************************************************
+var int SchnellerHeringTime;
+
 instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 {
 	name					=	"Szybki ŒledŸ";
@@ -742,16 +797,24 @@ instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 	
 	description 			=	name;
 	TEXT[1]					= 	NAME_Duration;
-	COUNT[1]				=	15;
+	COUNT[1]				=	20;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_SchnellerHering()
 {
 	if (Npc_IsPlayer(self))
 	{
-		Hering_Time = 30;
+		B_GivePlayerXP(50);
+		SchnellerHeringTime = 20 * 2;
 	};
+	//self.aivar[AIV_Energy] = 0;
 };
+func void End_ItFo_Addon_SchnellerHering()
+{
+	Npc_AddDrunkTime (hero, 125);
+	hero.aivar[AIV_Energy] = 0;
+};
+///******************************************************************************************
 instance ItFo_Addon_SchlafHammer (ItemPR_Food)
 {
 	name					=	"Podwójny M³ot";
@@ -762,14 +825,17 @@ instance ItFo_Addon_SchlafHammer (ItemPR_Food)
 	on_state[0]				=	Use_ItFo_Addon_SchlafHammer;
 	
 	description 			=	name;
+	TEXT[1]					= 	NAME_Bonus_EneMax;
+	COUNT[1]				= 	6;
 	COUNT[5]				= 	value;
 };
 func void Use_ItFo_Addon_SchlafHammer()
 {
-	if (Npc_IsPlayer(self) && Hammer_Bonus < 600)
+	if (Npc_IsPlayer(self))
 	{
-		B_GivePlayerXP(600-Hammer_Bonus);
-		Hammer_Bonus = 600;
+		B_GivePlayerXP(60);
 	};
+	B_RaiseAttribute (self, ATR_ENERGY_MAX, 6);
 	Npc_AddDrunkTime (self, 150);
+	self.aivar[AIV_Energy] = 0;
 };

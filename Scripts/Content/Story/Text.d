@@ -129,8 +129,6 @@ const string MOBNAME_ADDON_STONEBOOK			=	"Pulpit";
 const string MOBNAME_ADDON_ORNAMENT				=	"Okr¹g³y mechanizm";
 const string MOBNAME_ADDON_ORNAMENTSWITCH		=	"Przycisk";
 const string MOBNAME_ADDON_WACKELBAUM			=	"Kamienne drzewo";
-const string NAME_ADDON_TengronsRing			=	"Pierœcieñ Tengrona";
-const string NAME_ADDON_CASSIASBELOHNUNGSRING	=	"Pierœcieñ ¯ywotnoœci";
 
 const string MOBNAME_ADDON_TELEPORT_01			=	"Do portalu w œwi¹tyni";
 const string MOBNAME_ADDON_TELEPORT_02			=	"Do obozu bandytów";
@@ -159,7 +157,7 @@ const string TXT_GUILDS[GIL_MAX] =
 	"Pirat",
 	"Mag Wody",
 	"D",
-	"", /// 16 - Gil_Seperator_Hum
+	"", /// 16 - GIL_SEPERATOR_HUM
 	"Chrz¹szcz",
 	"Owca",
 	"Goblin",
@@ -252,26 +250,26 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"Ognista strza³a",			// 22	SPL_FireBolt
 	"Lodowa strza³a",			// 23	SPL_IceBolt
 	"Ma³a b³yskawica",			// 24	SPL_Zap
-	"Amnezja",					// 25	SPL_Charm
+	"Krzyk umar³ych",			// 25	SPL_SkullBolt
 	"Piêœæ wichru",				// 26	SPL_WindFist
 	"Uœpienie",					// 27	SPL_Sleep
-	"Grupowe uœpienie",			// 28	SPL_MassSleep
+	"Amnezja",					// 28	SPL_Charm
 	"B³yskawica",				// 29	SPL_LightningFlash
 	
 	"Du¿a kula ognia",			// 30	SPL_ChargeFireball
 	"Wir",						// 31	SPL_Whirlwind
 	"Strach",					// 32	SPL_Fear
-	"Grupowy strach",			// 33	SPL_MassFear
+	"Œlepa furia",				// 33	SPL_Rage
 	"Piorun kulisty",			// 34	SPL_ChargeZap
-	"Trzêsienie ziemi",			// 35	SPL_EarthQuake
-	"Gejzer",					// 36	SPL_Geyser
-	"Wodna piêœæ",				// 37	SPL_WaterFist
+	"Gejzer",					// 35	SPL_Geyser
+	"Wodna piêœæ",				// 36	SPL_WaterFist
+	"Du¿a burza ognista",		// 37	SPL_Pyrokinesis
 	"Lodowa lanca",				// 38	SPL_IceLance
 	"Lodowa fala",				// 39	SPL_IceWave
 	
 	"Spuchniêcie",				// 40	SPL_Inflate
-	"Œlepa furia",				// 41	SPL_Rage
-	"Grupowy sza³",				// 42	SPL_MassRage
+	"Smocza kula",				// 41	SPL_DragonBall
+	"Czarna smocza kula",		// 42	SPL_BlackDragonBall
 	"Tchnienie œmierci",		// 43	SPL_BreathOfDeath
 	"Fala œmierci",				// 44	SPL_MassDeath
 	"Armia ciemnoœci",			// 45	SPL_ArmyOfDarkness
@@ -313,21 +311,22 @@ const string TXT_SPELLS[MAX_SPELL] =
   	/// npc spells
  	"Pocisk nieprzytomnoœci",	// 70	SPL_ConcussionBolt
 	"Pocisk œmierci",			// 71	SPL_DeathBolt
-	"Truj¹cy pocisk",			// 72	SPL_PoisonBolt
-	"Krzyk umar³ych",			// 73	SPL_SkullBolt
-	"G³az",						// 74	SPL_Reserved_74
-	"Krwawa kula ognia",		// 75	SPL_BloodFireball
-	"Krwawy piorun",			// 76	SPL_Reserved_76
-	"Krwawe ciernie",			// 77	SPL_Reserved_77
-	"Smocza kula",				// 78	SPL_DragonBall
-	"Czarna smocza kula",		// 79	SPL_BlackDragonBall
+	"Zaklêcie Setrona",			// 72	SPL_BlueFireball
+	"Zaklêcie Azazela",			// 73	SPL_RedFireball
+	"Zaklêcie Methiona",		// 74	SPL_GreenFireball
+	"Zaklêcie Yataru",			// 75	SPL_YellowFireball
 	
 	/// ...
-	"Zaklêcia Setrona",			// 80	SPL_cB_Fireball
-	"Zaklêcie Azerotha",		// 81	SPL_cR_Fireball
-	"Zaklêcie Methiona",		// 82	SPL_cG_Fireball
-	"Zaklêcie Yataru",			// 83	SPL_cY_Fireball
-	"Kulka mi³oœci",			// 84	SPL_cP_Fireball
+	"TXT_SPL_RESERVED_76",		// 76	SPL_Reserved_76
+	"TXT_SPL_RESERVED_77",		// 77	SPL_Reserved_77
+	"TXT_SPL_RESERVED_78",		// 78	SPL_Reserved_78
+	"TXT_SPL_RESERVED_79",		// 79	SPL_Reserved_79
+	
+	"TXT_SPL_RESERVED_80",		// 80	SPL_Reserved_80
+	"TXT_SPL_RESERVED_81",		// 81	SPL_Reserved_81
+	"TXT_SPL_RESERVED_82",		// 82	SPL_Reserved_82
+	"TXT_SPL_RESERVED_83",		// 83	SPL_Reserved_83
+	"TXT_SPL_RESERVED_84",		// 84	SPL_Reserved_84
 	"TXT_SPL_RESERVED_85",		// 85	SPL_Reserved_85
 	"TXT_SPL_RESERVED_86",		// 86	SPL_Reserved_86
 	"TXT_SPL_RESERVED_87",		// 87	SPL_Reserved_87
@@ -346,18 +345,10 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"TXT_SPL_RESERVED_99"		// 99	SPL_Reserved_99
 };
 
-/// standard spells
+/// common spells
 const string NAME_SPL_Light					=	"Œwiat³o";
 const string NAME_SPL_Heal					=	"Uleczenie";
 
-/// PAL spells
-const string NAME_SPL_PalBless				=	"B³ogos³awieñstwo";
-const string NAME_SPL_PalHeal				=	"Uleczenie";
-const string NAME_SPL_PalHolyBolt			=	"Œwiêta strza³a";
-const string NAME_SPL_PalJustice			=	"Szale sprawiedliwoœci";
-const string NAME_SPL_PalDestroyEvil		=	"Zniszczenie nieumar³ych";
-
-/// common spells
 const string NAME_SPL_SlowTime				=	"Spowolnienie czasu";
 const string NAME_SPL_NightToDay			=	"Noc w dzieñ";
 const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
@@ -365,26 +356,26 @@ const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
 const string NAME_SPL_FireBolt				=	"Ognista strza³a";
 const string NAME_SPL_IceBolt				=	"Lodowa strza³a";
 const string NAME_SPL_Zap					=	"Ma³a b³yskawica";
-const string NAME_SPL_Charm					=	"Amnezja";
+const string NAME_SPL_SkullBolt				=	"Krzyk umar³ych";
 const string NAME_SPL_WindFist				=	"Piêœæ wichru";
 const string NAME_SPL_Sleep					=	"Uœpienie";
-const string NAME_SPL_MassSleep				=	"Grupowe uœpienie";
+const string NAME_SPL_Charm					=	"Amnezja";
 const string NAME_SPL_LightningFlash		=	"B³yskawica";
 
 const string NAME_SPL_ChargeFireball		=	"Du¿a kula ognia";
 const string NAME_SPL_Whirlwind				=	"Wir";
 const string NAME_SPL_Fear					=	"Strach";
-const string NAME_SPL_MassFear				=	"Grupowy strach";
+const string NAME_SPL_Rage					=	"Œlepa furia";
 const string NAME_SPL_ChargeZap				=	"Piorun kulisty";
-const string NAME_SPL_Earthquake			=	"Trzêsienie ziemi";
 const string NAME_SPL_Geyser				=	"Gejzer";
 const string NAME_SPL_WaterFist				=	"Wodna piêœæ";
+const string NAME_SPL_Pyrokinesis			=	"Du¿a burza ognista";
 const string NAME_SPL_IceLance				=	"Lodowa lanca";
 const string NAME_SPL_IceWave				=	"Lodowa fala";
 
 const string NAME_SPL_Inflate				=	"Spuchniêcie";
-const string NAME_SPL_Rage					=	"Œlepa furia";
-const string NAME_SPL_MassRage				=	"Grupowy sza³";
+const string NAME_SPL_DragonBall			=	"Smocza kula";
+const string NAME_SPL_BlackDragonBall		=	"Czarna smocza kula";
 const string NAME_SPL_BreathOfDeath			=	"Tchnienie œmierci";
 const string NAME_SPL_MassDeath				=	"Fala œmierci";
 const string NAME_SPL_ArmyOfDarkness		=	"Armia ciemnoœci";
@@ -401,11 +392,10 @@ const string NAME_SPL_BeliarRage			=	"Gniew Beliara";
 /// npc spells
 const string NAME_SPL_ConcussionBolt		=	"Pocisk nieprzytomnoœci";
 const string NAME_SPL_DeathBolt				=	"Pocisk œmierci";
-const string NAME_SPL_PoisonBolt			=	"Zatruta strza³a";
-const string NAME_SPL_SkullBolt				=	"Krzyk umar³ych";
-const string NAME_SPL_BloodFireball			=	"Krwawa kula ognia";
-const string NAME_SPL_DragonBall			=	"Smocza kula";
-const string NAME_SPL_BlackDragonBall		=	"Czarna smocza kula";
+const string NAME_SPL_BlueFireball			=	"Zaklêcie Setrona";
+const string NAME_SPL_RedFireball			=	"Zaklêcie Azazela";
+const string NAME_SPL_GreenFireball			=	"Zaklêcie Methiona";
+const string NAME_SPL_YellowFireball		=	"Zaklêcie Yataru";
 
 /// MYS spells
 const string NAME_SPL_MysBolt				=	"Mistyczny pocisk";
@@ -447,12 +437,12 @@ const string NAME_SPL_NecSwarm				=	"Rój insektów";
 const string NAME_SPL_NecDemon				=	"Przyzwanie demona";
 const string NAME_SPL_NecDeath				=	"Œmieræ";
 
-/// ...
-const string NAME_SPL_cB_Fireball			=	"Zaklêcie Setrona";
-const string NAME_SPL_cR_Fireball			=	"Zaklêcie Azazela";
-const string NAME_SPL_cG_Fireball			=	"Zaklêcie Methiona";
-const string NAME_SPL_cY_Fireball			=	"Zaklêcie Yataru";
-const string NAME_SPL_cP_Fireball			=	"Kulka mi³oœci";
+/// PAL spells
+const string NAME_SPL_PalBless				=	"B³ogos³awieñstwo";
+const string NAME_SPL_PalHeal				=	"Uleczenie";
+const string NAME_SPL_PalHolyBolt			=	"Œwiêta strza³a";
+const string NAME_SPL_PalJustice			=	"Szale sprawiedliwoœci";
+const string NAME_SPL_PalDestroyEvil		=	"Zniszczenie nieumar³ych";
 
 ///******************************************************************************************
 ///	TALENTS NAMES
@@ -468,18 +458,18 @@ const string TXT_TALENTS[NPC_TALENT_MAX] =
 	"Kradzie¿ kiesz.:",			/// NPC_TALENT_PICKPOCKET		= 6;
 	"Kr¹g magii:",				/// NPC_TALENT_MAGIC			= 7;
 	"Skradanie siê:",			/// NPC_TALENT_SNEAK			= 8;
-	"Perswazja:",				/// NPC_TALENT_PERSUASION		= 9;
+	"D³ugi bieg:",				/// NPC_TALENT_LONGRUN			= 9;
 	"Druga broñ:",				/// NPC_TALENT_2ndH				= 10;
 	"Akrobatyka:",				/// NPC_TALENT_ACROBATIC		= 11;
-	"Jubilerstwo:",				/// NPC_TALENT_JEWELERY			= 12;
+	"Perswazja:",				/// NPC_TALENT_PERSUASION		= 12;
 	"Kowalstwo:",				/// NPC_TALENT_SMITH			= 13;
 	"Zaklinanie:",				/// NPC_TALENT_ENCHANTING		= 14;
 	"Alchemia:",				/// NPC_TALENT_ALCHEMY			= 15;
 	"Myœliwstwo:",				/// NPC_TALENT_HUNTING			= 16;
 	"Staro¿. jêzyk:",			/// NPC_TALENT_LANGUAGE			= 17;
-	"D³ugi bieg:",				/// NPC_TALENT_LONGRUN			= 18;
-	"Rozdzia³:",				/// NPC_TALENT_CHAPTER			= 19;
-	"Typ magii:",				/// NPC_TALENT_TYPEOFMAGIC		= 20;
+	"Typ magii:",				/// NPC_TALENT_TYPEOFMAGIC		= 18;
+	"Dod. talenty:",			/// NPC_TALENT_ADDITIONAL		= 19;
+	"Rozdzia³:",				/// NPC_TALENT_CHAPTER			= 20;
 	"Poz. trudn.:"				/// NPC_TALENT_DIFFICULTY		= 21;
 };
 
@@ -494,19 +484,19 @@ const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 	"-|uczony",															/// NPC_TALENT_PICKPOCKET	= 6;
 	"-|1|2|3|4|5|6",													/// NPC_TALENT_MAGIC		= 7;
 	"-|uczony",															/// NPC_TALENT_SNEAK		= 8;
-	"-|uczony",															/// NPC_TALENT_PERSUASION	= 9;
+	"-|uczony",															/// NPC_TALENT_LONGRUN		= 9;
 	"-|tarcza|miecz|dowolna",											/// NPC_TALENT_2ndH			= 10;
 	"-|uczony",															/// NPC_TALENT_ACROBATIC	= 11;
-	"0|1|2",															/// NPC_TALENT_JEWELERY		= 12;
-	"0|1|2",															/// NPC_TALENT_SMITH		= 13;
-	"0|1|2",															/// NPC_TALENT_ENCHANTING	= 14;
-	"0|1|2",															/// NPC_TALENT_ALCHEMY		= 15;
-	"0|1|2",															/// NPC_TALENT_HUNTING		= 16;
+	"-|uczony",															/// NPC_TALENT_PERSUASION	= 12;
+	"-|amator|pro",														/// NPC_TALENT_SMITH		= 13;
+	"-|amator|pro",														/// NPC_TALENT_ENCHANTING	= 14;
+	"-|amator|pro",														/// NPC_TALENT_ALCHEMY		= 15;
+	"-|amator|pro",														/// NPC_TALENT_HUNTING		= 16;
 	"-|uczony",															/// NPC_TALENT_LANGUAGE		= 17;
-	"-|uczony",															/// NPC_TALENT_LONGRUN		= 18;
-	"0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",							/// NPC_TALENT_CHAPTER		= 19;
-	"-|mistycyzm|geomancja|elementaryzm|pyromancja|nekromancja|inny",	/// NPC_TALENT_TYPEOFMAGIC	= 20;
-	"³atwy|œredni|trudny|b. trudny|niemo¿liwy"							/// NPC_TALENT_DIFFICULTY	= 21;
+	"-|mistycyzm|geomancja|elementaryzm|pyromancja|nekromancja|-",		/// NPC_TALENT_TYPEOFMAGIC	= 18;
+	"0|1|2|3|4|5|6|7|8|9|10|10+",										/// NPC_TALENT_ADDITIONAL	= 19;
+	"0|1|2|3|4|5|6|7|8|9|10|11|12",										/// NPC_TALENT_CHAPTER		= 20;
+	"³atwy|œredni|trudny"												/// NPC_TALENT_DIFFICULTY	= 21;
 };
 
 ///******************************************************************************************
@@ -584,11 +574,6 @@ const string PRINT_Trade_Not_Enough_Gold	=	"Brakuje ci z³ota na zakup tego przed
 ///	TEXT FOR ITEMS
 ///******************************************************************************************
 
-const string NAME_OneHanded					=	"Broñ jednorêczna, zasiêg:";
-const string NAME_TwoHanded					=	"Broñ dwurêczna, zasiêg:";
-const string NAME_SecHanded					=	"Broñ pomocnicza";
-const string NAME_FastGun					=	"Broñ szybkostrzelna";
-
 /// ------ item conditions ------
 const string NAME_Value						=	"Wartoœæ: ";
 
@@ -617,6 +602,8 @@ const string NAME_MinDamage					=	"Min. obra¿enia: ";
 const string NAME_MaxDamage					=	"Max. obra¿enia: ";
 const string NAME_DamagePerSec				=	"Obra¿enia/sek.: ";
 const string NAME_HealingPerCast			=	"Uleczenie: ";
+const string NAME_LevelPerCast				=	"Max. poziom celu: ";
+const string NAME_ScalingPerPower			=	"Skalowanie na 100% dod. mocy: ";
 
 /// ------ item protections ------
 const string NAME_Prot_Physical				=	"Odpornoœæ fizyczna: ";
@@ -627,10 +614,11 @@ const string NAME_Prot_Fire					=	"Odpornoœæ na ogieñ: ";
 const string NAME_Bonus_HP					=	"Premia punktów ¿ycia: ";
 const string NAME_Bonus_Mana				=	"Premia many: ";
 const string NAME_Bonus_Energy				=	"Premia energii: ";
+const string NAME_Bonus_HealTime			=	"Premia czasu regen. ¿ycia: ";
 const string NAME_Percent_HP				=	"Premia % punktów ¿ycia: ";
 const string NAME_Percent_Mana				=	"Premia % many: ";
 const string NAME_Percent_Energy			=	"Premia % energii: ";
-const string NAME_HealTime					=	"Premia do czasu regen. ¿ycia: ";
+const string NAME_Percent_HealTime			=	"Premia % czasu regen. ¿ycia: ";
 
 const string NAME_Bonus_Lp					=	"Premia do punktów nauki: ";
 const string NAME_Bonus_HpMax				=	"Premia do max. punktów ¿ycia: ";
@@ -642,10 +630,16 @@ const string NAME_Bonus_Power				=	"Premia do mocy: ";
 const string NAME_Bonus_RgHp				=	"Premia do regen. ¿ycia: ";
 const string NAME_Bonus_LifeSteal			=	"Premia do kradzie¿y ¿ycia: ";
 
-const string NAME_Bonus_1H					=	"Premia do broni jednorêcznej: ";
-const string NAME_Bonus_2H					=	"Premia do broni dwurêcznej: ";
-const string NAME_Bonus_Bow					=	"Premia do ³uków: ";
-const string NAME_Bonus_CBow				=	"Premia do kusz: ";
+/// ------ weapon type ------
+const string NAME_OneHanded					=	"Broñ jednorêczna, zasiêg:";
+const string NAME_TwoHanded					=	"Broñ dwurêczna, zasiêg:";
+const string NAME_SecHanded					=	"Broñ pomocnicza";
+const string NAME_FastGun					=	"Broñ szybkostrzelna";
+
+const string NAME_Bonus_1H					=	"Broñ jednorêczna z bonusem 2%, zasiêg: ";
+const string NAME_Bonus_2H					=	"Broñ dwurêczna z bonusem 2%, zasiêg: ";
+const string NAME_Bonus_Bow					=	"£uk z bonusem 2%";
+const string NAME_Bonus_CBow				=	"Kusza z bonusem 2%";
 
 ///******************************************************************************************
 ///	TEXT FOR LEARNING
@@ -736,9 +730,9 @@ const string PRINT_LearnPower10				=	"Moc + 10";
 const string PRINT_LearnMP1					=	"Mana + 1";
 const string PRINT_LearnMP5					=	"Mana + 5";
 const string PRINT_LearnMP10				=	"Mana + 10";
-const string PRINT_LearnHP1					=	"Punkty ¿ycia + 5";
-const string PRINT_LearnHP5					=	"Punkty ¿ycia + 25";
-const string PRINT_LearnHP10				=	"Punkty ¿ycia + 50";
+const string PRINT_LearnHP1					=	"Punkty ¿ycia + 4";
+const string PRINT_LearnHP5					=	"Punkty ¿ycia + 20";
+const string PRINT_LearnHP10				=	"Punkty ¿ycia + 40";
 
 ///******************************************************************************************
 ///	B_GiveInvItems

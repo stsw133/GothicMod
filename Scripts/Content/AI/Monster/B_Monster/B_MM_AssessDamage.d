@@ -17,11 +17,17 @@ func void B_MM_AssessDamage()
 		SelfFightTeach_ADD (other, other.weapon-2);
 	};
 	
+	if (Npc_IsPlayer(other) || Npc_IsPlayer(self))
+	{
+		foodTime /= 2;
+	};
+	
+	/// ...
 	if (Npc_HasItems(other, Holy_Hammer_MIS) > 0)
 	{
-		var C_NPC MagGol; MagGol = Hlp_GetNpc(OreGolem);
+		var C_Npc MagGol; MagGol = Hlp_GetNpc(OreGolem);
 		Npc_GetInvItem(other, Holy_Hammer_MIS);
-		var C_ITEM OthWeap; OthWeap = Npc_GetReadiedWeapon(other);
+		var C_Item OthWeap; OthWeap = Npc_GetReadiedWeapon(other);
 		
 		if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(MagGol))
 		&& (Hlp_GetInstanceID(OthWeap) == Hlp_GetInstanceID(item))

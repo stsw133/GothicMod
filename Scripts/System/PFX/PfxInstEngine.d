@@ -3,11 +3,6 @@
 ///	instance-Definitions, Engine Presets 
 ///	Author: Dieter Hildebrandt
 ///******************************************************************************************
-
-const int false = 0;
-const int true = 1;
-
-///******************************************************************************************
 instance ZBLOOD1 (C_ParticleFx)
 {
      ppsvalue = 64.;

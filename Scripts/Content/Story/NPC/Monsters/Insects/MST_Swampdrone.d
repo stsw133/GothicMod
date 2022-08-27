@@ -13,12 +13,12 @@ prototype Mst_Default_Swampdrone (C_Npc)
 	B_SetAttributesToLevel (self, 9);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL / 3;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 6;
 	protection[PROT_POINT]				=	0;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

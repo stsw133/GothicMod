@@ -7,6 +7,29 @@ prototype ItemPR_Helm (C_Item)
 	material				=	MAT_METAL;
 };
 ///******************************************************************************************
+///	Citizen accessories
+///******************************************************************************************
+instance ItHe_Cap (ItemPR_Helm)
+{
+	visual 			=	"ItHe_Cap.3DS";
+	material 		=	MAT_LEATHER;
+	description 	=	"Czapka";
+};
+instance ItHe_Hat (ItemPR_Helm)
+{
+	visual			=	"ItHe_Hat.3ds";
+	material		=	MAT_LEATHER;
+	description		=	"Kapelusz";
+};
+instance ItHe_Spectacles (ItemPR_Helm)
+{
+	visual 			=	"ItHe_Spectacles.3DS";
+	material 		=	MAT_GLAS;
+	description 	=	"Okulary";
+};
+///******************************************************************************************
+///	Leather helms
+///******************************************************************************************
 instance ItHe_Leather (ItemPR_Helm)
 {
 	visual			=	"ItHe_Leather.3ds";
@@ -14,42 +37,52 @@ instance ItHe_Leather (ItemPR_Helm)
 	description		=	"Skórzany he³m";
 };
 ///******************************************************************************************
-instance ItHe_Fighter (ItemPR_Helm)
+///	Standard helms
+///******************************************************************************************
+instance ItHe_Bascinet (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm1.3ds";
+	visual			=	"ItHe_Bascinet.3ds";
 	description		=	name;
 };
-instance ItHe_South (ItemPR_Helm)
+instance ItHe_FlatTopped (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm2.3ds";
+	visual			=	"ItHe_FlatTopped.3ds";
 	description		=	name;
 };
-instance ItHe_Knight (ItemPR_Helm)
+instance ItHe_Footman (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm3.3ds";
+	visual			=	"ItHe_Footman.3ds";
 	description		=	name;
 };
-instance ItHe_North (ItemPR_Helm)
+instance ItHe_Great (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm4.3ds";
+	visual			=	"ItHe_Great.3ds";
 	description		=	name;
 };
-instance ItHe_Guardian (ItemPR_Helm)
+instance ItHe_Nordic (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm5.3ds";
+	visual			=	"ItHe_Nordic.3ds";
 	description		=	name;
 };
-instance ItHe_Soldier (ItemPR_Helm)
+instance ItHe_Spiked (ItemPR_Helm)
 {
-	visual			=	"ItHe_Helm6.3ds";
+	visual			=	"ItHe_Spiked.3ds";
 	description		=	name;
 };
+instance ItHe_WingedGreat (ItemPR_Helm)
+{
+	visual			=	"ItHe_WingedGreat.3ds";
+	description		=	name;
+};
+///******************************************************************************************
+///	TPL & PAL helms
 ///******************************************************************************************
 instance ItHe_PAL_H (ItemPR_Helm)
 {
 	visual			=	"ItHe_Pal_00.3ds";
 	description		=	"He³m paladyna";
 };
+///******************************************************************************************
 instance ItHe_PAL_D (ItemPR_Helm)
 {
 	visual			=	"ItHe_Pal_01.3ds";
@@ -71,41 +104,43 @@ instance ItHe_PAL_O (ItemPR_Helm)
 	description		=	"He³m najemnika orków";
 };
 ///******************************************************************************************
-instance ItHe_Slave (ItemPR_Helm)
-{
-	visual			=	"ItHe_Slave.3ds";
-	description		=	"Kajdany";
-};
-instance ItHe_Spectacles (ItemPR_Helm)
-{
-	visual 			=	"ItHe_Spectacles.3DS";
-	material 		=	MAT_GLAS;
-	description 	=	"Okulary";
-};
-///******************************************************************************************
-instance ItHe_Sleeper (ItemPR_Helm)
-{
-	visual			= 	"ItHe_Sleeper.3ds";
-	description		=	"He³m Œni¹cego";
-};
 instance ItHe_Innos (ItemPR_Helm)
 {
 	visual			=	"ItHe_Innos.3ds";
 	description		=	"He³m Innosa";
 };
 ///******************************************************************************************
-instance ItHe_Hat (ItemPR_Helm)
+///	SLD & DJG helms
+///******************************************************************************************
+instance ItHe_DJG_M (ItemPR_Helm)
 {
-	visual			=	"ItHe_Hat.3ds";
-	material		=	MAT_LEATHER;
-	description		=	"Kapelusz";
+	visual			=	"ItHe_DJG_M.3ds";
+	description		=	"He³m ³owcy smoków";
 };
-instance ItHe_Cap (ItemPR_Helm)
+instance ItHe_DJG_H (ItemPR_Helm)
 {
-	visual 			=	"ItHe_Cap.3DS";
-	material 		=	MAT_LEATHER;
-	description 	=	"Czapka";
+	visual			=	"ItHe_DJG_H.3ds";
+	description		=	"He³m ³owcy smoków";
 };
+///******************************************************************************************
+///	Prisoner shackles
+///******************************************************************************************
+instance ItHe_Slave (ItemPR_Helm)
+{
+	visual			=	"ItHe_Slave.3ds";
+	description		=	"Kajdany";
+};
+///******************************************************************************************
+///	Dementor helms
+///******************************************************************************************
+instance ItHe_Sleeper (ItemPR_Helm)
+{
+	visual			= 	"ItHe_Sleeper.3ds";
+	description		=	"He³m Œni¹cego";
+};
+///******************************************************************************************
+///	Special helms
+///******************************************************************************************
 instance ItHe_ChristmasCap (ItemPR_Helm)
 {
 	visual 			=	"ItHe_ChristmasCap.3DS";

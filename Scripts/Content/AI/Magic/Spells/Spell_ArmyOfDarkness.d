@@ -13,11 +13,12 @@ instance Spell_ArmyOfDarkness (C_Spell_Proto)
 
 func int Spell_Logic_ArmyOfDarkness (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_ArmyOfDarkness/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_ArmyOfDarkness/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_ArmyOfDarkness)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

@@ -17,4 +17,10 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth)
 		B_GivePlayerXP(oth.level * XP_PER_VICTORY);
 		oth.aivar[AIV_VictoryXPGiven] = true;
 	};
+	/*
+	if ((oth.flags & NPC_FLAG_IMPORTANT) > 0 && oth.attribute[ATR_HITPOINTS] < 1)
+	{
+		oth.attribute[ATR_HITPOINTS] = 1;
+	};
+	*/
 };

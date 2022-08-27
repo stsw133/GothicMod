@@ -241,7 +241,7 @@ func int Print_Ext(var int x, var int y, var string text, var string font, var i
     if(!color) { color = 1; };
 
     txt.timed = (time != -1);
-    if (time != -1) { txt.timer = mkf(time); };
+    if (time != -1) { txt.timer = mkf(time * 1000); };
 
     txt.font = Print_GetFontPtr(font);
     txt.color = color;

@@ -30,7 +30,7 @@ instance WzA_17181_Angela (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+0, BodySkin_P, "Hum_Head_Babe4", FaceBabe_Angela, Teeth_Pretty, ITAR_WD_M_07);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+0, BodySkin_P, "Hum_Head_Babe4", FaceBabe_Angela, Teeth_Pretty, ITAR_Babe_VLK_M_05);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

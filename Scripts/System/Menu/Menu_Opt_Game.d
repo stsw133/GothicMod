@@ -17,7 +17,8 @@ instance MENU_OPT_GAME(C_MENU_DEF)
 	items[12] = "MENUITEM_MSENSITIVITY_SLIDER";
 	items[13] = "MENUITEM_GAME_OLDCONTROLS";
 	items[14] = "MENUITEM_GAME_OLDCONTROLS_CHOICE";
-	items[15] = "MENUITEM_GAME_BACK";
+	items[15] = "MENUITEM_NEXTMENU";
+	items[16] = "MENUITEM_GAME_BACK";
 	flags = flags | MENU_SHOW_INFO;
 };
 
@@ -237,6 +238,20 @@ instance MENUITEM_GAME_OLDCONTROLS_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
+instance MENUITEM_NEXTMENU(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Wiêcej ustawieñ...";
+	text[1] = "Konfiguracja dalszych ustawieñ";
+	posx = 3000;
+	posy = 6160;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	onselaction_s[0] = "MENU_OPT_GAME_EXTOPTIONS";
+	onselaction[0] = SEL_ACTION_STARTMENU;
+	flags = flags | IT_TXT_CENTER;
+};
+
 instance MENUITEM_GAME_BACK(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -249,3 +264,44 @@ instance MENUITEM_GAME_BACK(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
+//******************************************************************************************
+//	ExtOptions
+//******************************************************************************************
+instance MENU_OPT_GAME_EXTOPTIONS(C_MENU_DEF)
+{
+	backpic = MENU_BACK_PIC;
+	items[0] = "MENUITEM_GAME_HEADLINE";
+	items[1] = "MENUITEM_GAME_NOANIMTAKE";
+	items[2] = "MENUITEM_GAME_NOANIMTAKE_CHOICE";
+	items[3] = "MENUITEM_GAME_BACK";
+	flags = flags | MENU_SHOW_INFO;
+};
+
+instance MENUITEM_GAME_NOANIMTAKE(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Podnoszenie bez anim.";
+	text[1] = "W³¹czenie/wy³¹czenie podnoszenia przedmiotów bez animacji";
+	posx = 500;
+	posy = MENU_START_Y + (MENU_SOUND_DY * 0);
+	dimx = 5100;
+	dimy = 750;
+	onselaction[0] = SEL_ACTION_UNDEF;
+	flags = flags | IT_EFFECTS_NEXT;
+};
+
+instance MENUITEM_GAME_NOANIMTAKE_CHOICE(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_CHOICE_BACK_PIC;
+	type = MENU_ITEM_CHOICEBOX;
+	text[0] = "Nie|Tak";
+	fontname = MENU_FONT_SMALL;
+	posx = 5692;
+	posy = MENU_START_Y + (MENU_SOUND_DY * 0) + MENU_CHOICE_YPLUS;
+	dimx = MENU_SLIDER_DX;
+	dimy = MENU_CHOICE_DY;
+	onchgsetoption = "noAnimTake";
+	onchgsetoptionsection = "MOD";
+	flags = flags & ~IT_SELECTABLE;
+	flags = flags | IT_TXT_CENTER;
+};

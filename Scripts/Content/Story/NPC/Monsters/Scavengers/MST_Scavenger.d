@@ -13,12 +13,12 @@ prototype Mst_Default_Scavenger (C_Npc)
 	B_SetAttributesToLevel (self, 5);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -44,10 +44,17 @@ func void B_SetVisuals_Scavenger()
 	Mdl_SetVisualBody	(self, "Sca_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1, 0.9, 1);
 };
-func void B_SetVisuals_AlphaScavenger()
+func void B_SetVisuals_DesertScavenger()
 {
 	Mdl_SetVisual		(self, "Scavenger.mds");
-	Mdl_SetVisualBody	(self, "Sca_Alpha_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Sca_Desert_Body", 0, default, "", default, default, -1);
+	Mdl_SetModelScale	(self, 1, 0.9, 1);
+};
+func void B_SetVisuals_SnowScavenger()
+{
+	Mdl_SetVisual		(self, "Scavenger.mds");
+	Mdl_SetVisualBody	(self, "Sca_Snow_Body", 0, default, "", default, default, -1);
+	Mdl_SetModelScale	(self, 1, 0.9, 1);
 };
 func void B_SetVisuals_DemonScavenger()
 {
@@ -61,11 +68,13 @@ instance Scavenger (Mst_Default_Scavenger)
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Scavenger();
 };
-instance Scavenger_Alpha (Mst_Default_Scavenger)
+instance DesertScavenger (Mst_Default_Scavenger)
 {
-	name						=	"Preriowy œcierwojad";
-	B_SetAttributesToLevel (self, 9);
-	B_SetVisuals_AlphaScavenger();
+	B_SetVisuals_DesertScavenger();
+};
+instance SnowScavenger (Mst_Default_Scavenger)
+{
+	B_SetVisuals_SnowScavenger();
 };
 instance Scavenger_Demon (Mst_Default_Scavenger)
 {

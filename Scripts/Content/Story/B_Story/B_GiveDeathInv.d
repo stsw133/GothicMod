@@ -8,6 +8,31 @@ func void B_GiveDeathInv (var C_NPC slf)
 		return;
 	};
 	
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_MEATBUG)				{	CreateInvItems (slf, ItFo_MeatbugFlesh	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SHEEP)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_GOAT)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARE)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SPINT)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SCAVENGER)				{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_KEILER)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_JACKAL)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_WOLF)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_ICEWOLF)				{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_WARG)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_TIGER)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SHADOWBEAST)			{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_ZOMBIE)					{	CreateInvItems (slf, ItFo_RottenMeat	, 1);	};
+	
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_INKBUG)					{	CreateInvItems (slf, ItMi_Ink			, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARPY)					{	CreateInvItems (slf, ItAt_HarpyFeathers	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_VAMPHARPY)				{	CreateInvItems (slf, ItAt_HarpyFeathers	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGONHARPY)			{	CreateInvItems (slf, ItAt_HarpyFeathers	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_STONEGUARDIAN)			{	CreateInvItems (slf, ItMi_Stone			, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_MUMMY)					{	CreateInvItems (slf, ItMi_Ruby			, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItMi_Wood			, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItPl_Mushroom_03	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERQUEEN)		{	CreateInvItems (slf, ItAt_CrawlerEgg	, 1);	};
+	
 	/// ------ Furs ------
 	if (PLAYER_TALENT_HUNTING[HUNTING_Furs])
 	{
@@ -15,7 +40,7 @@ func void B_GiveDeathInv (var C_NPC slf)
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_GOAT)					{	CreateInvItems (slf, ItAt_GoatFur		, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_HARE)					{	CreateInvItems (slf, ItAt_HareFur		, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_JACKAL)					{	CreateInvItems (slf, ItAt_JackalFur		, 1);	};
-		if (slf.aivar[AIV_MM_REAL_ID] == ID_Keiler)					{	CreateInvItems (slf, ItAt_KeilerFur		, 1);	};
+		if (slf.aivar[AIV_MM_REAL_ID] == ID_KEILER)					{	CreateInvItems (slf, ItAt_KeilerFur		, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_WOLF)					{	CreateInvItems (slf, ItAt_WolfFur		, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_ICEWOLF)				{	CreateInvItems (slf, ItAt_IceWolfFur	, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_WARG)					{	CreateInvItems (slf, ItAt_WargFur		, 1);	};
@@ -164,16 +189,6 @@ func void B_GiveDeathInv (var C_NPC slf)
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_SHADOWBEAST_SKELETON)	{	CreateInvItems (slf, ItAt_SkeletonBone	, 1);	};
 		if (slf.aivar[AIV_MM_REAL_ID] == ID_SKELETON)				{	CreateInvItems (slf, ItAt_SkeletonSkull	, 1);	};
 	};
-	
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_MEATBUG)				{	CreateInvItems (slf, ItFo_MeatbugFlesh	, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_INKBUG)					{	CreateInvItems (slf, ItMi_Ink			, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARPY)					{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_VAMPHARPY)				{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_DRAGONHARPY)			{	CreateInvItems (slf, ItAt_HarpyFeather	, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_MUMMY)					{	CreateInvItems (slf, ItMi_Ruby			, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItMi_Wood			, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_TREANT)					{	CreateInvItems (slf, ItPl_Mushroom_03	, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_MINECRAWLERQUEEN)		{	CreateInvItems (slf, ItAt_CrawlerEgg	, 1);	};
 	
 	/// ------ Goblin ------
 	if (slf.guild == GIL_GOBBO)

@@ -48,10 +48,10 @@ func int B_GetLearnCostAttribute (var C_Npc oth, var int atr)
 	}
 	else if (atr == ATR_HITPOINTS_MAX)
 	{
-		if		(LearnedAttribute_HP >= 400)		{	kosten = 5;	}
-		else if	(LearnedAttribute_HP >= 300)		{	kosten = 4;	}
-		else if	(LearnedAttribute_HP >= 200)		{	kosten = 3;	}
-		else if	(LearnedAttribute_HP >= 100)		{	kosten = 2;	}
+		if		(LearnedAttribute_HP >= 400)	{	kosten = 5;	}
+		else if	(LearnedAttribute_HP >= 300)	{	kosten = 4;	}
+		else if	(LearnedAttribute_HP >= 200)	{	kosten = 3;	}
+		else if	(LearnedAttribute_HP >= 100)	{	kosten = 2;	}
 		else									{	kosten = 1;	};
 	};
 	
@@ -68,34 +68,34 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		var int skill_1h; skill_1h = 1; //(oth.hitchance[NPC_TALENT_1H]-10)/20;
 		kosten = 20 * (skill_1h + 1) - SelfFightTeach_Level[NPC_TALENT_1H] * (skill_1h + 1);
 	}
-	else if	(talent == NPC_TALENT_2H)
+	else if (talent == NPC_TALENT_2H)
 	{
 		var int skill_2h; skill_2h = 1; //(oth.hitchance[NPC_TALENT_2H]-10)/20;
 		kosten = 20 * (skill_2h + 1) - SelfFightTeach_Level[NPC_TALENT_2H] * (skill_2h + 1);
 	}
-	else if	(talent == NPC_TALENT_BOW)
+	else if (talent == NPC_TALENT_BOW)
 	{
 		var int skill_bow; skill_bow = 1; //(oth.hitchance[NPC_TALENT_BOW]-10)/20;
 		kosten = 20 * (skill_bow + 1) - SelfFightTeach_Level[NPC_TALENT_BOW] * (skill_bow + 1);
 	}
-	else if	(talent == NPC_TALENT_CROSSBOW)
+	else if (talent == NPC_TALENT_CROSSBOW)
 	{
 		var int skill_cbow; skill_cbow = 1; //(oth.hitchance[NPC_TALENT_CROSSBOW]-10)/20;
 		kosten = 20 * (skill_cbow + 1) - SelfFightTeach_Level[NPC_TALENT_CROSSBOW] * (skill_cbow + 1);
-	};
-	
-	if (talent == NPC_TALENT_2ndH)
+	}
+	else if (talent == NPC_TALENT_2ndH)
 	{
 		kosten = 20;
-	};
-	
-	if (talent == NPC_TALENT_MAGIC)
+	}
+	else if (talent == NPC_TALENT_MAGIC)
 	{
-		kosten = 30;
-	};
-	
-	if (talent == NPC_TALENT_JEWELERY)
-	|| (talent == NPC_TALENT_SMITH)
+		kosten = 25;
+	}
+	else if (talent == NPC_TALENT_LANGUAGE)
+	{
+		kosten = 15;
+	}
+	else if (talent == NPC_TALENT_SMITH)
 	|| (talent == NPC_TALENT_ENCHANTING)
 	|| (talent == NPC_TALENT_ALCHEMY)
 	|| (talent == NPC_TALENT_HUNTING)
@@ -106,18 +106,16 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		//}
 		//else
 		//{
-			kosten = 25;	/// kosten=15 is in DIA_TEACH
+			kosten = 30;	/// kosten=15 is in DIA_TEACH
 		//};
-	};
-	
-	if (talent == NPC_TALENT_SNEAK)
+	}
+	else if (talent == NPC_TALENT_SNEAK)
 	|| (talent == NPC_TALENT_ACROBATIC)
 	|| (talent == NPC_TALENT_LONGRUN)
 	{
 		kosten = 5;
-	};
-	
-	if (talent == NPC_TALENT_PICKLOCK)
+	}
+	else if (talent == NPC_TALENT_PICKLOCK)
 	|| (talent == NPC_TALENT_PICKPOCKET)
 	|| (talent == NPC_TALENT_PERSUASION)
 	{
@@ -133,11 +131,6 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		{
 			kosten = 30;
 		};
-	};
-	
-	if (talent == NPC_TALENT_LANGUAGE)
-	{
-		kosten = 15;
 	};
 	
 	return kosten;

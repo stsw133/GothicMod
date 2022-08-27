@@ -31,7 +31,7 @@ func void B_SCIsObsessed (var C_Npc dementor)
 	{
 		if (SC_ObsessionCounter >= 2)
 		{
-			MOD_ObsessionON(dementor);
+			MOD_ObsessionON(hero);
 			SC_IsObsessed = true;
 			PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		};

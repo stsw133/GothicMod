@@ -2,9 +2,7 @@
 ///	SPL_NightToDay
 ///******************************************************************************************
 
-const int SPL_Cost_NightToDay			=	100;
-
-var int SPL_IsEnabled_NightToDay;
+const int SPL_Cost_NightToDay			=	50;
 
 ///******************************************************************************************
 instance Spell_NightToDay (C_Spell_Proto)
@@ -16,7 +14,7 @@ instance Spell_NightToDay (C_Spell_Proto)
 
 func int Spell_Logic_NightToDay (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_NightToDay/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_NightToDay/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_NightToDay)
 	{
 		if (Wld_IsTime(20,00, 08,00))
@@ -25,9 +23,10 @@ func int Spell_Logic_NightToDay (var int manaInvested)
 		}
 		else
 		{
-			Print("UÅ¼ycie dozwolone w godzinach od 20:00 do 8:00");
+			Print("U¿ycie dozwolone w godzinach od 20:00 do 8:00");
 		};
 	};
+	
 	return SPL_SENDSTOP;
 };
 

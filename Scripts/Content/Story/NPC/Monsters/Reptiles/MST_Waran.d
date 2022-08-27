@@ -13,12 +13,12 @@ prototype Mst_Default_Waran (C_Npc)
 	B_SetAttributesToLevel (self, 12);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,13 +38,30 @@ prototype Mst_Default_Waran (C_Npc)
 func void B_SetVisuals_Waran()
 {
 	Mdl_SetVisual		(self, "Waran.mds");
-	Mdl_SetVisualBody	(self, "War_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "War_Body", 0, default, "", default, default, -1);
+};
+func void B_SetVisuals_DesertWaran()
+{
+	Mdl_SetVisual		(self, "Waran.mds");
+	Mdl_SetVisualBody	(self, "War_Body", 1, default, "", default, default, -1);
+};
+func void B_SetVisuals_MountainWaran()
+{
+	Mdl_SetVisual		(self, "Waran.mds");
+	Mdl_SetVisualBody	(self, "War_Body", 2, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Waran (Mst_Default_Waran)
 {
-	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Waran();
+};
+instance DesertWaran (Mst_Default_Waran)
+{
+	B_SetVisuals_DesertWaran();
+};
+instance MountainWaran (Mst_Default_Waran)
+{
+	B_SetVisuals_MountainWaran();
 };
 ///******************************************************************************************
 ///	QuestMonsters

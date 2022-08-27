@@ -47,12 +47,12 @@ instance Molerat (Mst_Default_Molerat)
 	B_SetAttributesToLevel (self, 3);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	B_SetVisuals_Molerat();
 };
@@ -63,12 +63,12 @@ instance Sandrat (Mst_Default_Molerat)
 	B_SetAttributesToLevel (self, 3);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	B_SetVisuals_Sandrat();
 };
@@ -79,12 +79,12 @@ instance Swamprat (Mst_Default_Molerat)
 	B_SetAttributesToLevel (self, 6);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
 	
 	B_SetVisuals_Swamprat();
 };

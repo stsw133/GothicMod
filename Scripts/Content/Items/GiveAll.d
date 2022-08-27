@@ -161,8 +161,8 @@ func void Func_All_Items_MeleeWeapons (var C_Npc slf)
 	CreateInvItem (slf, ItMw_1H_Blessed_03);
 	CreateInvItem (slf, ItMw_2H_Blessed_03);
 	
-	CreateInvItem (slf, ItMw_1H_Blessed_04);
-	CreateInvItem (slf, ItMw_2H_Blessed_04);
+	CreateInvItem (slf, ItMw_1H_Innos);
+	CreateInvItem (slf, ItMw_2H_Innos);
 	
 	CreateInvItem (slf, ItMw_Assassin_01);
 	CreateInvItem (slf, ItMw_Assassin_02);
@@ -266,25 +266,6 @@ func void Func_All_Items_RangedWeapons (var C_Npc slf)
 ///******************************************************************************************
 func void Func_All_Items_Armor (var C_Npc slf)
 {
-	/// Kobiece pancerze
-	CreateInvItem (slf, ITAR_WD_L_00); CreateInvItem (slf, ITAR_WD_M_00); CreateInvItem (slf, ITAR_WD_H_00);
-	CreateInvItem (slf, ITAR_WD_L_01); CreateInvItem (slf, ITAR_WD_M_01); CreateInvItem (slf, ITAR_WD_H_01);
-	CreateInvItem (slf, ITAR_WD_L_02); CreateInvItem (slf, ITAR_WD_M_02); CreateInvItem (slf, ITAR_WD_H_02);
-	CreateInvItem (slf, ITAR_WD_L_03); CreateInvItem (slf, ITAR_WD_M_03); CreateInvItem (slf, ITAR_WD_H_03);
-	CreateInvItem (slf, ITAR_WD_L_04); CreateInvItem (slf, ITAR_WD_M_04); CreateInvItem (slf, ITAR_WD_H_04);
-	CreateInvItem (slf, ITAR_WD_L_05); CreateInvItem (slf, ITAR_WD_M_05); CreateInvItem (slf, ITAR_WD_H_05);
-	CreateInvItem (slf, ITAR_WD_L_06); CreateInvItem (slf, ITAR_WD_M_06); CreateInvItem (slf, ITAR_WD_H_06);
-	CreateInvItem (slf, ITAR_WD_L_07); CreateInvItem (slf, ITAR_WD_M_07); CreateInvItem (slf, ITAR_WD_H_07);
-	CreateInvItem (slf, ITAR_WD_L_08); CreateInvItem (slf, ITAR_WD_M_08); CreateInvItem (slf, ITAR_WD_H_08);
-	CreateInvItem (slf, ITAR_WD_L_09); CreateInvItem (slf, ITAR_WD_M_09); CreateInvItem (slf, ITAR_WD_H_09);
-	CreateInvItem (slf, ITAR_WD_L_10); CreateInvItem (slf, ITAR_WD_M_10); CreateInvItem (slf, ITAR_WD_H_10);
-	CreateInvItem (slf, ITAR_WD_L_11); CreateInvItem (slf, ITAR_WD_M_11); CreateInvItem (slf, ITAR_WD_H_11);
-	CreateInvItem (slf, ITAR_WD_L_12); CreateInvItem (slf, ITAR_WD_M_12); CreateInvItem (slf, ITAR_WD_H_12);
-	
-	CreateInvItem (slf, ITAR_Babe_Nurse);
-	CreateInvItem (slf, ITAR_Babe_Leather);
-	CreateInvItem (slf, ITAR_Babe_Mage);
-	
 	/// Pancerze
 	CreateInvItem (slf, ITAR_BAU_00);
 	CreateInvItem (slf, ITAR_BAU_01);
@@ -426,18 +407,40 @@ func void Func_All_Items_Armor (var C_Npc slf)
 	CreateInvItem (slf, ITAR_SW_Jedi_H);
 	CreateInvItem (slf, ITAR_SW_Sith);
 	CreateInvItem (slf, ITAR_SW_Vader);
+	
+	/// Kobiece stroje
+	CreateInvItem (slf, ITAR_Babe_BAU_00);
+	CreateInvItem (slf, ITAR_Babe_BAU_01);
+	CreateInvItem (slf, ITAR_Babe_BAU_02);
+	CreateInvItem (slf, ITAR_Babe_BAU_03);
+	CreateInvItem (slf, ITAR_Babe_BAU_04);
+	CreateInvItem (slf, ITAR_Babe_BAU_05);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_00); CreateInvItem (slf, ITAR_Babe_VLK_M_00); CreateInvItem (slf, ITAR_Babe_VLK_H_00);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_01); CreateInvItem (slf, ITAR_Babe_VLK_M_01); CreateInvItem (slf, ITAR_Babe_VLK_H_01);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_02); CreateInvItem (slf, ITAR_Babe_VLK_M_02); CreateInvItem (slf, ITAR_Babe_VLK_H_02);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_03); CreateInvItem (slf, ITAR_Babe_VLK_M_03); CreateInvItem (slf, ITAR_Babe_VLK_H_03);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_04); CreateInvItem (slf, ITAR_Babe_VLK_M_04); CreateInvItem (slf, ITAR_Babe_VLK_H_04);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_05); CreateInvItem (slf, ITAR_Babe_VLK_M_05); CreateInvItem (slf, ITAR_Babe_VLK_H_05);
+	CreateInvItem (slf, ITAR_Babe_VLK_L_06); CreateInvItem (slf, ITAR_Babe_VLK_M_06); CreateInvItem (slf, ITAR_Babe_VLK_H_06);
+	
+	CreateInvItem (slf, ITAR_Babe_Nurse);
+	CreateInvItem (slf, ITAR_Babe_Leather);
+	CreateInvItem (slf, ITAR_Babe_Mage);
 };
 ///******************************************************************************************
 func void Func_All_Items_Helms (var C_Npc slf)
 {
 	/// He³my
 	CreateInvItem (slf, ItHe_Leather);
-	CreateInvItem (slf, ItHe_Fighter);
-	CreateInvItem (slf, ItHe_South);
-	CreateInvItem (slf, ItHe_Knight);
-	CreateInvItem (slf, ItHe_North);
-	CreateInvItem (slf, ItHe_Guardian);
-	CreateInvItem (slf, ItHe_Soldier);
+	
+	CreateInvItem (slf, ItHe_Bascinet);
+	CreateInvItem (slf, ItHe_FlatTopped);
+	CreateInvItem (slf, ItHe_Footman);
+	CreateInvItem (slf, ItHe_Great);
+	CreateInvItem (slf, ItHe_Nordic);
+	CreateInvItem (slf, ItHe_Spiked);
+	CreateInvItem (slf, ItHe_WingedGreat);
+	
 	CreateInvItem (slf, ItHe_PAL_H);
 	CreateInvItem (slf, ItHe_PAL_D);
 	CreateInvItem (slf, ItHe_Slave);
@@ -449,48 +452,14 @@ func void Func_All_Items_Helms (var C_Npc slf)
 	CreateInvItem (slf, ItHe_ChristmasCap);
 	
 	/// W³osy
-	CreateInvItem (slf, ItHa_Geralt);	CreateInvItem (slf, ItHa_Rhobar);
-	CreateInvItem (slf, ItHa_Male_00);
+	CreateInvItem (slf, ItHa_Curly_Blonde);
+	CreateInvItem (slf, ItHa_Geralt);
+	CreateInvItem (slf, ItHa_Harad);
 	CreateInvItem (slf, ItHa_Mohawk);
-	
-	CreateInvItem (slf, ItHa_Short_00);	CreateInvItem (slf, ItHa_Short_01);
-	CreateInvItem (slf, ItHa_Short_02);	CreateInvItem (slf, ItHa_Short_03);
-	CreateInvItem (slf, ItHa_Short_04);	CreateInvItem (slf, ItHa_Short_05);
-	CreateInvItem (slf, ItHa_Short_06);	CreateInvItem (slf, ItHa_Short_07);
-	CreateInvItem (slf, ItHa_Short_08);	CreateInvItem (slf, ItHa_Short_09);
-	CreateInvItem (slf, ItHa_Short_10);	CreateInvItem (slf, ItHa_Short_11);
-	CreateInvItem (slf, ItHa_Short_12);	CreateInvItem (slf, ItHa_Short_13);
-	CreateInvItem (slf, ItHa_Short_14);	CreateInvItem (slf, ItHa_Short_15);
-	CreateInvItem (slf, ItHa_Short_16);	CreateInvItem (slf, ItHa_Short_17);
-	CreateInvItem (slf, ItHa_Short_18);	CreateInvItem (slf, ItHa_Short_19);
-	CreateInvItem (slf, ItHa_Short_20);	CreateInvItem (slf, ItHa_Short_21);
-	CreateInvItem (slf, ItHa_Short_22);	CreateInvItem (slf, ItHa_Short_23);
-	
-	CreateInvItem (slf, ItHa_LongCurly_00);	CreateInvItem (slf, ItHa_LongCurly_01);
-	CreateInvItem (slf, ItHa_LongCurly_02);	CreateInvItem (slf, ItHa_LongCurly_03);
-	CreateInvItem (slf, ItHa_LongCurly_04);	CreateInvItem (slf, ItHa_LongCurly_05);
-	CreateInvItem (slf, ItHa_LongCurly_06);	CreateInvItem (slf, ItHa_LongCurly_07);
-	CreateInvItem (slf, ItHa_LongCurly_08);	CreateInvItem (slf, ItHa_LongCurly_09);
-	CreateInvItem (slf, ItHa_LongCurly_10);	CreateInvItem (slf, ItHa_LongCurly_11);
-	CreateInvItem (slf, ItHa_LongCurly_12);	CreateInvItem (slf, ItHa_LongCurly_13);
-	CreateInvItem (slf, ItHa_LongCurly_14);	CreateInvItem (slf, ItHa_LongCurly_15);
-	CreateInvItem (slf, ItHa_LongCurly_16);	CreateInvItem (slf, ItHa_LongCurly_17);
-	CreateInvItem (slf, ItHa_LongCurly_18);	CreateInvItem (slf, ItHa_LongCurly_19);
-	CreateInvItem (slf, ItHa_LongCurly_20);	CreateInvItem (slf, ItHa_LongCurly_21);
-	CreateInvItem (slf, ItHa_LongCurly_22);	CreateInvItem (slf, ItHa_LongCurly_23);
-	
-	CreateInvItem (slf, ItHa_LongPony_00);	CreateInvItem (slf, ItHa_LongPony_01);
-	CreateInvItem (slf, ItHa_LongPony_02);	CreateInvItem (slf, ItHa_LongPony_03);
-	CreateInvItem (slf, ItHa_LongPony_04);	CreateInvItem (slf, ItHa_LongPony_05);
-	CreateInvItem (slf, ItHa_LongPony_06);	CreateInvItem (slf, ItHa_LongPony_07);
-	CreateInvItem (slf, ItHa_LongPony_08);	CreateInvItem (slf, ItHa_LongPony_09);
-	CreateInvItem (slf, ItHa_LongPony_10);	CreateInvItem (slf, ItHa_LongPony_11);
-	CreateInvItem (slf, ItHa_LongPony_12);	CreateInvItem (slf, ItHa_LongPony_13);
-	CreateInvItem (slf, ItHa_LongPony_14);	CreateInvItem (slf, ItHa_LongPony_15);
-	CreateInvItem (slf, ItHa_LongPony_16);	CreateInvItem (slf, ItHa_LongPony_17);
-	CreateInvItem (slf, ItHa_LongPony_18);	CreateInvItem (slf, ItHa_LongPony_19);
-	CreateInvItem (slf, ItHa_LongPony_20);	CreateInvItem (slf, ItHa_LongPony_21);
-	CreateInvItem (slf, ItHa_LongPony_22);	CreateInvItem (slf, ItHa_LongPony_23);
+	CreateInvItem (slf, ItHa_Noctis_Blonde);
+	CreateInvItem (slf, ItHa_Rhobar);
+	CreateInvItem (slf, ItHa_Sonja_Black);
+	CreateInvItem (slf, ItHa_Sonja_Brown);
 };
 ///******************************************************************************************
 func void Func_All_Items_Spells (var C_Npc slf)
@@ -499,12 +468,6 @@ func void Func_All_Items_Spells (var C_Npc slf)
 	CreateInvItem (slf, ItRu_Light);
 	CreateInvItem (slf, ItRu_Heal);
 	
-	CreateInvItem (slf, ItRu_PalBless);
-	CreateInvItem (slf, ItRu_PalHeal);
-	CreateInvItem (slf, ItRu_PalHolyBolt);
-	CreateInvItem (slf, ItRu_PalJustice);
-	CreateInvItem (slf, ItRu_PalDestroyEvil);
-	
 	CreateInvItem (slf, ItRu_SlowTime);
 	CreateInvItem (slf, ItRu_NightToDay);
 	CreateInvItem (slf, ItRu_Telekinesis);
@@ -512,26 +475,26 @@ func void Func_All_Items_Spells (var C_Npc slf)
 	CreateInvItem (slf, ItRu_FireBolt);
 	CreateInvItem (slf, ItRu_IceBolt);
 	CreateInvItem (slf, ItRu_Zap);
-	CreateInvItem (slf, ItRu_Charm);
+	CreateInvItem (slf, ItRu_SkullBolt);
 	CreateInvItem (slf, ItRu_WindFist);
 	CreateInvItem (slf, ItRu_Sleep);
-	CreateInvItem (slf, ItRu_MassSleep);
+	CreateInvItem (slf, ItRu_Charm);
 	CreateInvItem (slf, ItRu_LightningFlash);
 	
 	CreateInvItem (slf, ItRu_ChargeFireball);
 	CreateInvItem (slf, ItRu_Whirlwind);
 	CreateInvItem (slf, ItRu_Fear);
-	CreateInvItem (slf, ItRu_MassFear);
+	CreateInvItem (slf, ItRu_Rage);
 	CreateInvItem (slf, ItRu_ChargeZap);
-	CreateInvItem (slf, ItRu_EarthQuake);
 	CreateInvItem (slf, ItRu_Geyser);
 	CreateInvItem (slf, ItRu_WaterFist);
+	CreateInvItem (slf, ItRu_Pyrokinesis);
 	CreateInvItem (slf, ItRu_IceLance);
 	CreateInvItem (slf, ItRu_IceWave);
 	
 	CreateInvItem (slf, ItRu_Inflate);
-	CreateInvItem (slf, ItRu_Rage);
-	CreateInvItem (slf, ItRu_MassRage);
+	CreateInvItem (slf, ItRu_DragonBall);
+	CreateInvItem (slf, ItRu_BlackDragonBall);
 	CreateInvItem (slf, ItRu_BreathOfDeath);
 	CreateInvItem (slf, ItRu_MassDeath);
 	CreateInvItem (slf, ItRu_ArmyOfDarkness);
@@ -546,12 +509,10 @@ func void Func_All_Items_Spells (var C_Npc slf)
 	
 	CreateInvItem (slf, ItRu_ConcussionBolt);
 	CreateInvItem (slf, ItRu_DeathBolt);
-	
-	CreateInvItem (slf, ItRu_PoisonBolt);
-	CreateInvItem (slf, ItRu_SkullBolt);
-	CreateInvItem (slf, ItRu_BloodFireball);
-	CreateInvItem (slf, ItRu_DragonBall);
-	CreateInvItem (slf, ItRu_BlackDragonBall);
+	CreateInvItem (slf, ItRu_BlueFireball);
+	CreateInvItem (slf, ItRu_RedFireball);
+	CreateInvItem (slf, ItRu_GreenFireball);
+	CreateInvItem (slf, ItRu_YellowFireball);
 	
 	/// MYS & GEO & ELE & PYR & NEC
 	CreateInvItem (slf, ItRu_MysBolt);
@@ -588,6 +549,13 @@ func void Func_All_Items_Spells (var C_Npc slf)
 	CreateInvItem (slf, ItRu_NecSwarm);
 	CreateInvItem (slf, ItRu_NecDemon);
 	CreateInvItem (slf, ItRu_NecDeath);
+	
+	/// PAL
+	CreateInvItem (slf, ItRu_PalBless);
+	CreateInvItem (slf, ItRu_PalHeal);
+	CreateInvItem (slf, ItRu_PalHolyBolt);
+	CreateInvItem (slf, ItRu_PalJustice);
+	CreateInvItem (slf, ItRu_PalDestroyEvil);
 };
 ///******************************************************************************************
 func void Func_All_Items_Artifacts (var C_Npc slf)
@@ -632,10 +600,25 @@ func void Func_All_Items_Artifacts (var C_Npc slf)
 func void Func_All_Items_Food (var C_Npc slf)
 {
 	/// Jedzenie
+	CreateInvItems (slf, ItFo_Coconut, 10);
+	CreateInvItems (slf, ItFo_Egg, 10);
+	CreateInvItems (slf, ItFo_Fish, 10);
+	CreateInvItems (slf, ItFoMuttonRaw, 10);
+	CreateInvItems (slf, ItFo_Onion, 10);
+	CreateInvItems (slf, ItFo_Addon_Pfeffer_01, 10);
+	CreateInvItems (slf, ItFo_PineApple, 10);
+	CreateInvItems (slf, ItFo_Potato, 10);
+	CreateInvItems (slf, ItFo_RottenMeat, 10);
+	CreateInvItems (slf, ItFo_Sugar, 10);
+	
+	CreateInvItems (slf, ItFo_BakedPotato, 10);
+	CreateInvItems (slf, ItFo_MeatbugFlesh, 10);
+	
 	CreateInvItems (slf, ItFo_Apple, 10);
 	CreateInvItems (slf, ItFo_Banana, 10);
 	CreateInvItems (slf, ItFo_Carrot, 10);
 	CreateInvItems (slf, ItFo_Pear, 10);
+	CreateInvItems (slf, ItFo_Rice, 10);
 	
 	CreateInvItems (slf, ItFo_Bread, 10);
 	CreateInvItems (slf, ItFo_Cheese, 10);
@@ -652,26 +635,16 @@ func void Func_All_Items_Food (var C_Npc slf)
 	CreateInvItems (slf, ItFo_Cake, 10);
 	
 	CreateInvItems (slf, ItFo_Stew, 10);
+	
 	CreateInvItems (slf, ItFo_FishSoup, 10);
 	CreateInvItems (slf, ItFo_MushroomSoup, 10);
 	CreateInvItems (slf, ItFo_RiceSoup, 10);
-	
-	CreateInvItems (slf, ItFo_Coconut, 10);
-	CreateInvItems (slf, ItFo_Egg, 10);
-	CreateInvItems (slf, ItFo_Fish, 10);
-	CreateInvItems (slf, ItFoMuttonRaw, 10);
-	CreateInvItems (slf, ItFo_Onion, 10);
-	CreateInvItems (slf, ItFo_Addon_Pfeffer_01, 10);
-	CreateInvItems (slf, ItFo_PineApple, 10);
-	CreateInvItems (slf, ItFo_Potato, 10);
-	CreateInvItems (slf, ItFo_Rice, 10);
-	CreateInvItems (slf, ItFo_RottenMeat, 10);
-	CreateInvItems (slf, ItFo_Sugar, 10);
 	
 	CreateInvItems (slf, ItFo_Water, 10);
 	CreateInvItems (slf, ItFo_Milk, 10);
 	CreateInvItems (slf, ItFo_Beer, 10);
 	CreateInvItems (slf, ItFo_Booze, 10);
+	CreateInvItems (slf, ItFo_Tequila, 10);
 	CreateInvItems (slf, ItFo_Wine, 10);
 	
 	CreateInvItem (slf, ItFo_Addon_Grog);
@@ -761,9 +734,9 @@ func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 	CreateInvItems (slf, ItAt_GoatFur, 10);
 	
 	CreateInvItems (slf, ItAt_JackalFur, 10);
+	CreateInvItems (slf, ItAt_KeilerFur, 10);
 	CreateInvItems (slf, ItAt_WolfFur, 10);
 	CreateInvItems (slf, ItAt_IceWolfFur, 10);
-	CreateInvItems (slf, ItAt_KeilerFur, 10);
 	CreateInvItems (slf, ItAt_WargFur, 10);
 	CreateInvItems (slf, ItAt_TigerFur, 10);
 	CreateInvItems (slf, ItAt_ShadowFur, 10);
@@ -781,7 +754,7 @@ func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 	CreateInvItems (slf, ItAt_TrollTooth, 10);
 	
 	CreateInvItems (slf, ItAt_Wing, 10);
-	CreateInvItems (slf, ItAt_HarpyFeather, 10);
+	CreateInvItems (slf, ItAt_HarpyFeathers, 10);
 	
 	CreateInvItems (slf, ItAt_Sting, 10);
 	
@@ -925,14 +898,14 @@ func void Func_All_Items_Misc (var C_Npc slf)
 	CreateInvItems (slf, ItMi_Nugget, 10);
 	CreateInvItems (slf, ItMi_RedNugget, 10);
 	
+	CreateInvItems (slf, ItMi_Stone, 10);
 	CreateInvItems (slf, ItMi_Coal, 10);
-	CreateInvItems (slf, ItMi_Basalt, 10);
 	CreateInvItems (slf, ItMi_Quartz, 10);
 	CreateInvItems (slf, ItMi_Sulfur, 10);
 	CreateInvItems (slf, ItMi_RockCrystal, 10);
 	CreateInvItems (slf, ItMi_FireCrystal, 10);
+	CreateInvItems (slf, ItMi_Saltpeter, 10);
 	
-	CreateInvItems (slf, ItMi_Blood, 10);
 	CreateInvItems (slf, ItMi_HolyWater, 10);
 	CreateInvItems (slf, ItMi_Pitch, 10);
 	CreateInvItems (slf, ItMi_Resin, 10);

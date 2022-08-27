@@ -7,6 +7,7 @@ func void STARTUP_GLOBAL()
 	
 	MEM_InitAll();
 	LeGo_Init(LeGo_All);
+	ConsoleCommands();
 	
 	selectedHero = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHero"));
 	DIFF_Select(STR_ToInt(MEM_GetGothOpt("MOD", "difficulty")));
@@ -43,8 +44,6 @@ func void INIT_GLOBAL()
 	
 	if		(dLevel == DIFF_E)	{	TRADE_VALUE_MULTIPLIER = 0.18;	}
 	else if (dLevel == DIFF_H)	{	TRADE_VALUE_MULTIPLIER = 0.12;	}
-	else if (dLevel == DIFF_VH)	{	TRADE_VALUE_MULTIPLIER = 0.09;	}
-	else if (dLevel == DIFF_I)	{	TRADE_VALUE_MULTIPLIER = 0.06;	}
 	else /* DIFF_M */			{	TRADE_VALUE_MULTIPLIER = 0.15;	};
 	
 	B_SetHeroVisual (hero, selectedHero);
@@ -1057,15 +1056,15 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	Wld_InsertNpc (Skeleton_Warrior,"ADW_VALLEY_PATH_020_CAVE_05");
 	
 	// ------Scavenger ------
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_032_G");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_121_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_032_G");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_121_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_120_A");
 
 	// ------ Molerat ------
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_027");
@@ -1099,7 +1098,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	// ------ Bloodfly ------
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_102_A");
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_102_A");
-	Wld_InsertNpc (Scavenger_Alpha,"ADW_VALLEY_PATH_116_A");
+	Wld_InsertNpc (Scavenger_Demon,"ADW_VALLEY_PATH_116_A");
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_043");
 	Wld_InsertNpc (Swamprat,"ADW_VALLEY_PATH_043");
 	Wld_InsertNpc (Blattcrawler,"ADW_VALLEY_PATH_053");

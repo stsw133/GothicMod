@@ -2,7 +2,7 @@
 ///	MOD_ItemFn
 ///******************************************************************************************
 
-var C_ITEM TakenItem;
+var C_Item TakenItem;
 var int TakenItem_Var;
 var string TakenItem_Text;
 var int TakenItem_Pos;
@@ -29,12 +29,12 @@ func void ITEMS_CHECK (var oCItem item)
 	{
 		QuestStep_CavalornHut = SetQuestStatus (Quest_CavalornHut, QuestStep_CavalornHut, LOG_PROGRESS);
 		ITEMS_TEXT_CHECK (TakenItem.description, Npc_HasItems(hero,Hlp_GetInstanceID(TakenItem)), 1);
-		Print_Ext (-1, YPOS_ItemTaken, TakenItem_Text, FONT_ScreenSmall, COL_ItemTaken, TIME_Print*1000);
-//		Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken-(TakenItem_Pos*20), TakenItem_Text, FONT_ScreenSmall, COL_ItemTaken, TIME_Print*1000);
+		Print_Ext (-1, YPOS_ItemTaken, TakenItem_Text, FONT_ScreenSmall, COL_ItemTaken, TIME_Print);
+//		Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken-(TakenItem_Pos*20), TakenItem_Text, FONT_ScreenSmall, COL_ItemTaken, TIME_Print);
 	}
 	else
 	{*/
-		//Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken-(TakenItem_Pos*20), ConcatStrings(TakenItem.description,PRINT_Addon_erhalten), FONT_ScreenSmall, COL_ItemTaken, TIME_Print*500);
+		//Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken-(TakenItem_Pos*20), ConcatStrings(TakenItem.description,PRINT_Addon_erhalten), FONT_ScreenSmall, COL_ItemTaken, TIME_Print/2);
 //	};
 /*
 	TakenItem_Var = false;

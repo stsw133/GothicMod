@@ -26,7 +26,7 @@ instance WzA_17013_Yataru (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	CreateInvItem (self, ItRu_cY_Fireball);
+	CreateInvItem (self, ItRu_YellowFireball);
 	CreateInvItem (self, ITAR_aCHAOS_YELLOW);
 	
 	/// ------ Inventory ------

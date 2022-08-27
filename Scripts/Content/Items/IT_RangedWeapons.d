@@ -74,7 +74,7 @@ instance ItRw_Sld_Bow (ItemPR_Bow)
 	visual 					=	"ItRw_Sld_Bow.mms";
 	description				=	name;
 	SetItRwAttributes_Bow (self, 6);
-	value					/=	20;
+	value					/=	10;
 	COUNT[5]				=	value;
 };
 instance ItRw_Bow_L_03 (ItemPR_Bow)
@@ -209,7 +209,7 @@ instance ItRw_Mil_Crossbow (ItemPR_Crossbow)
 	visual 					=	"ItRw_Mil_Crossbow.mms";
 	description				=	name;
 	SetItRwAttributes_Crossbow (self, 6);
-	value					/=	20;
+	value					/=	10;
 	itm.COUNT[5]			=	value;
 };
 instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)
@@ -411,10 +411,10 @@ func void UnEquip_HeavyGun_CHECK()
 ///******************************************************************************************
 func void SetItRwAttributes_HeavyGun (var C_Item itm, var int kap)
 {
-	itm.value				=	kap*2000;
-	itm.damageTotal			=	kap*200;
-	itm.cond_value[1]  		= 	kap*100;
-	itm.cond_value[2]  		= 	kap*20;
+	itm.value				=	kap*1000;
+	itm.damageTotal			=	kap*75;
+	itm.cond_value[1]  		= 	kap*30;
+	itm.cond_value[2]  		= 	kap*10;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
 	itm.COUNT[2]			=	itm.cond_value[1];
@@ -427,26 +427,26 @@ instance ItRw_HGun1 (ItemPR_HeavyGun)
 	name 					=	"Wyrzutnia rakiet";
 	visual 					=	"W_HGUN.3DS";
 	description				=	name;
-	SetItRwAttributes_HeavyGun (self, 2);
+	SetItRwAttributes_HeavyGun (self, 7);
 };
 instance ItRw_HGun2 (ItemPR_HeavyGun)
 {
 	name 					=	"Wyrzutnia rakiet";
 	visual 					=	"W_HGUN1.3DS";
 	description				=	name;
-	SetItRwAttributes_HeavyGun (self, 3);
+	SetItRwAttributes_HeavyGun (self, 8);
 };
 instance ItRw_HGun3 (ItemPR_HeavyGun)
 {
 	name 					=	"Wyrzutnia rakiet";
 	visual 					=	"W_HGUN2.3DS";
 	description				=	name;
-	SetItRwAttributes_HeavyGun (self, 4);
+	SetItRwAttributes_HeavyGun (self, 9);
 };
 instance ItRw_HGun4 (ItemPR_HeavyGun)
 {
 	name 					=	"Wyrzutnia rakiet";
 	visual 					=	"W_HGUN3.3DS";
 	description				=	name;
-	SetItRwAttributes_HeavyGun (self, 5);
+	SetItRwAttributes_HeavyGun (self, 10);
 };

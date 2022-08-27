@@ -1257,7 +1257,6 @@ var int Hokurn_TeachPlayer;		//Kampflehrer bis 100 - DJG - OW Anfang, später Djg
 var int Apple_Bonus;
 var int Dunkelpilz_Bonus;
 var int Mandibles_Bonus;
-var int Knows_Bloodfly;
 var int Bloodfly_Bonus;
 var int Player_KnowsDunkelpilzBonus;
 var int Skelett_Spawn;

@@ -19,11 +19,12 @@ instance Spell_nLight (C_Spell_Proto)
 
 func int Spell_Logic_nLight (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_nLight/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_nLight/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_nLight)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

@@ -34,13 +34,13 @@ func void B_SetVisuals_VampHarpy()
 {
 	Mdl_SetVisual		(self, "Harpie.mds");
 	Mdl_SetVisualBody	(self, "Har_Vamp_Body", 0, default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
+	Mdl_SetModelScale	(self, 1.05, 1.1, 1.05);
 };
 func void B_SetVisuals_DragonHarpy()
 {
 	Mdl_SetVisual		(self, "Harpie.mds");
 	Mdl_SetVisualBody	(self, "Har_Dragon_Body", 0, default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 1.2, 1.2, 1.2);
+	Mdl_SetModelScale	(self, 1.2, 1.15, 1.2);
 };
 ///******************************************************************************************
 instance Harpie (Mst_Default_Harpy)
@@ -48,12 +48,12 @@ instance Harpie (Mst_Default_Harpy)
 	B_SetAttributesToLevel (self, 15);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_Harpy();
 };
@@ -62,12 +62,12 @@ instance VampHarpie (Mst_Default_Harpy)
 	B_SetAttributesToLevel (self, 20);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_VampHarpy();
 };
@@ -76,12 +76,12 @@ instance DragonHarpie (Mst_Default_Harpy)
 	B_SetAttributesToLevel (self, 25);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_DragonHarpy();
 };

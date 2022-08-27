@@ -1,7 +1,10 @@
 ///******************************************************************************************
 ///	TestFunctions
 ///******************************************************************************************
-instance Give_All (C_Item)
+
+/// give items
+///******************************************************************************************
+func string Give_All (var string parameter)
 {
 	Func_All_Items_MeleeWeapons(hero);
 	Func_All_Items_RangedWeapons(hero);
@@ -16,39 +19,56 @@ instance Give_All (C_Item)
 	Func_All_Items_Written(hero);
 	Func_All_Items_Misc(hero);
 	Func_All_Items_Meshes(hero);
-	PrintScreen ("Otrzymano wszystkie przedmioty", -1, -1, FONT_Screen, 2);
-	Wld_RemoveItem(self);
+	
+	return "Otrzymano wszystkie przedmioty";
 };
-instance Give_Gold (C_Item)
+
+func string Give_Gold (var string parameter)
 {
-	CreateInvItems (hero, ItMi_Gold, 1000);
-	PrintScreen ("Otrzymano 1000 sztuk z³ota", -1, -1, FONT_Screen, 2);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	CreateInvItems (hero, ItMi_Gold, paramInt);
+	
+	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " sztuk z³ota");
 };
+
+/// give abilities
 ///******************************************************************************************
-instance Give_AttributePoints (C_Item)
+func string Give_Attributes (var string parameter)
 {
-	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 50*HP_PER_LP);
-	B_RaiseAttribute (self, ATR_MANA_MAX, 50);
-	B_RaiseAttribute (self, ATR_STRENGTH, 50);
-	B_RaiseAttribute (self, ATR_DEXTERITY, 50);
-	B_RaiseAttribute (self, ATR_POWER, 50);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	B_RaiseAttribute (hero, ATR_HITPOINTS_MAX, paramInt*HP_PER_LP);
+	B_RaiseAttribute (hero, ATR_MANA_MAX, paramInt);
+	B_RaiseAttribute (hero, ATR_STRENGTH, paramInt);
+	B_RaiseAttribute (hero, ATR_DEXTERITY, paramInt);
+	B_RaiseAttribute (hero, ATR_POWER, paramInt);
+	
+	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " punktów podstawowych atrybutów");
 };
-instance Give_FightSkills (C_Item)
+
+func string Give_FightSkills (var string parameter)
 {
-	B_AddFightSkill (hero, NPC_TALENT_1H, 20);
-	B_AddFightSkill (hero, NPC_TALENT_2H, 20);
-	B_AddFightSkill (hero, NPC_TALENT_BOW, 20);
-	B_AddFightSkill (hero, NPC_TALENT_CROSSBOW, 20);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	B_AddFightSkill (hero, NPC_TALENT_1H, paramInt);
+	B_AddFightSkill (hero, NPC_TALENT_2H, paramInt);
+	B_AddFightSkill (hero, NPC_TALENT_BOW, paramInt);
+	B_AddFightSkill (hero, NPC_TALENT_CROSSBOW, paramInt);
+	
+	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), "% talentu do ka¿dej broni");
 };
-instance Give_MagicSkills (C_Item)
+
+func string Give_MagicSkills (var string parameter)
 {
-	Npc_SetTalentSkill (hero, NPC_TALENT_MAGIC, Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC)+1);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_MAGIC, paramInt);
+	
+	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " kr¹g magii");
 };
-instance Give_Talents (C_Item)
+
+func string Give_Talents (var string parameter)
 {
 	Npc_SetTalentSkill (hero, NPC_TALENT_2ndH, 3);
 	
@@ -61,305 +81,130 @@ instance Give_Talents (C_Item)
 	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 2);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 2);
-	Npc_SetTalentSkill (hero, NPC_TALENT_JEWELERY, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 2);
 	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 2);
 	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 2);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 2);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_LANGUAGE, 1);
 	
-	Wld_RemoveItem(self);
+	return "Otrzymano wszystkie talenty";
 };
-instance Give_ExpMax (C_Item)
+
+func string Give_Exp (var string parameter)
 {
-	hero.level = MAX_LEVEL-1;
-	hero.exp = 0;
-	hero.exp_next = 1;
-	B_GivePlayerXP(hero.exp_next);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	B_GivePlayerXP(paramInt);
+	
+	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " punktów doœwiadczenia");
 };
+
+/// set diff level & movie mode
 ///******************************************************************************************
-instance Set_Diff_Easy (C_Item)
+func string Set_Diff (var string parameter)
 {
-	DIFF_Select(DIFF_E);
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	DIFF_Select(paramInt);
+	
+	if		(dLevel == DIFF_E)	{	return "Ustawiono ³atwy poziom trudnoœci";	}
+	else if (dLevel == DIFF_H)	{	return "Ustawiono trudny poziom trudnoœci";	}
+	else						{	return "Ustawiono œredni poziom trudnoœci";	};
 };
-instance Set_Diff_Medium (C_Item)
-{
-	DIFF_Select(DIFF_M);
-	Wld_RemoveItem(self);
-};
-instance Set_Diff_Hard (C_Item)
-{
-	DIFF_Select(DIFF_H);
-	Wld_RemoveItem(self);
-};
-instance Set_Diff_VeryHard (C_Item)
-{
-	DIFF_Select(DIFF_VH);
-	Wld_RemoveItem(self);
-};
-instance Set_Diff_Impossible (C_Item)
-{
-	DIFF_Select(DIFF_I);
-	Wld_RemoveItem(self);
-};
-///******************************************************************************************
-instance Set_noAnimTake (C_Item)
-{
-	if (noAnimTake)
-	{
-		noAnimTake = false;
-		Print("Szybkie podnoszenie przedmiotów wy³¹czone");
-	}
-	else
-	{
-		noAnimTake = true;
-		Print("Szybkie podnoszenie przedmiotów w³¹czone");
-	};
-	Wld_RemoveItem(self);
-};
-instance Set_movieMode (C_Item)
+
+func string Set_GameMode (var string parameter)
 {
 	if (movieMode)
 	{
 		movieMode = false;
-		Print("Tryb gry w³¹czony");
+		return "Tryb gry zosta³ w³¹czony";
 	}
 	else
 	{
 		movieMode = true;
-		Print("Tryb filmowy w³¹czony");
+		return "Tryb filmowy zosta³ w³¹czony";
 	};
-	Wld_RemoveItem(self);
 };
+
+/// set time scaling
 ///******************************************************************************************
-instance Set_Time0 (C_Item)
+func string Set_ScaleTime (var string parameter)
 {
-	scaleTime = 0;
-	Wld_RemoveItem(self);
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	scaleTime = paramInt;
+	
+	return ConcatStrings("Ustawiono skalowanie czasu na ", IntToString(paramInt));
 };
-instance Set_Time1000 (C_Item)
-{
-	scaleTime = 1000;
-	Wld_RemoveItem(self);
-};
+
+/// update hero visual
 ///******************************************************************************************
-instance Update_Visual (C_Item)
+func string Update_Visual (var string parameter)
 {
 	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
+	
+	return "Odœwie¿ono wygl¹d";
 };
+
+func string Set_Visual_Hero (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	B_SetHeroVisual (hero, paramInt);
+	
+	return ConcatStrings("Ustawiono skórkê na ", IntToString(paramInt));
+};
+
+func string Set_Visual_BodyTex (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	hero.aivar[AIV_BodyTex] = paramInt;
+	B_UpdateNpcVisual(hero);
+	
+	return ConcatStrings("Ustawiono teksturê cia³a na ", IntToString(paramInt));
+};
+
+func string Set_Visual_SkinTex (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	hero.aivar[AIV_SkinTex] = paramInt;
+	B_UpdateNpcVisual(hero);
+	
+	return ConcatStrings("Ustawiono teksturê skóry na ", IntToString(paramInt));
+};
+
+func string Set_Visual_TeethTex (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	hero.aivar[AIV_TeethTex] = paramInt;
+	B_UpdateNpcVisual(hero);
+	
+	return ConcatStrings("Ustawiono teksturê zêbów na ", IntToString(paramInt));
+};
+
+/// reset abilities & inventory
 ///******************************************************************************************
-instance Set_Hero_00 (C_Item)
-{
-	B_SetHeroVisual (hero, 0);
-	Wld_RemoveItem(self);
-};
-instance Set_Hero_01 (C_Item)
-{
-	B_SetHeroVisual (hero, 1);
-	Wld_RemoveItem(self);
-};
-instance Set_Hero_02 (C_Item)
-{
-	B_SetHeroVisual (hero, 2);
-	Wld_RemoveItem(self);
-};
-instance Set_Hero_03 (C_Item)
-{
-	B_SetHeroVisual (hero, 3);
-	Wld_RemoveItem(self);
-};
-instance Set_Hero_04 (C_Item)
-{
-	B_SetHeroVisual (hero, 4);
-	Wld_RemoveItem(self);
-};
-instance Set_Hero_05 (C_Item)
-{
-	B_SetHeroVisual (hero, 5);
-	Wld_RemoveItem(self);
-};
-///******************************************************************************************
-instance Set_BodyTex_00 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 0;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_01 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 1;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_02 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 2;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_03 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 3;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_04 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 4;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_05 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 5;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_06 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 6;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_07 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 7;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_08 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 8;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_09 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 9;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_10 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 10;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_11 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 11;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_12 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 12;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_13 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 13;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_14 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 14;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_BodyTex_15 (C_Item)
-{
-	hero.aivar[AIV_BodyTex] = 15;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-///******************************************************************************************
-instance Set_SkinTex_00 (C_Item)
-{
-	hero.aivar[AIV_SkinTex] = 0;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_SkinTex_01 (C_Item)
-{
-	hero.aivar[AIV_SkinTex] = 1;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_SkinTex_02 (C_Item)
-{
-	hero.aivar[AIV_SkinTex] = 2;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_SkinTex_03 (C_Item)
-{
-	hero.aivar[AIV_SkinTex] = 3;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_SkinTex_04 (C_Item)
-{
-	hero.aivar[AIV_SkinTex] = 4;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-///******************************************************************************************
-instance Set_TeethTex_00 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 0;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_TeethTex_01 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 1;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_TeethTex_02 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 2;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_TeethTex_03 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 3;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_TeethTex_04 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 4;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-instance Set_TeethTex_05 (C_Item)
-{
-	hero.aivar[AIV_TeethTex] = 5;
-	B_UpdateNpcVisual(hero);
-	Wld_RemoveItem(self);
-};
-///******************************************************************************************
-instance Reset_Hero (C_Item)
+func string Reset_Hero (var string parameter)
 {
 	MOD_HeroReset(hero);
-	Wld_RemoveItem(self);
+	
+	return "Zresetowano umiejêtnoœci";
 };
-instance Reset_Inventory (C_Item)
+
+func string Reset_Inventory (var string parameter)
 {
 	B_ClearRuneInv(hero);
 	Npc_ClearInventory(hero);
-	Wld_RemoveItem(self);
+	
+	return "Zresetowano ekwipunek";
 };
+
+/// reset animations
 ///******************************************************************************************
-instance Reset_OverlayMDS (C_Item)
+func string Reset_OverlayMDS (var string parameter)
 {
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_PLAYER.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
@@ -377,9 +222,10 @@ instance Reset_OverlayMDS (C_Item)
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_WOUNDZ.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKEN.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKENEXT.MDS");
-	Wld_RemoveItem(self);
+	
+	return "Zresetowano animacje poruszania siê";
 };
-instance Reset_FightOverlayMDS (C_Item)
+func string Reset_FightOverlayMDS (var string parameter)
 {
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_1HST1.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_1HST2.MDS");
@@ -392,37 +238,90 @@ instance Reset_FightOverlayMDS (C_Item)
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_CBOWT1.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_CBOWT2.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_CBOWT1_FASTER.MDS");
-	Wld_RemoveItem(self);
+	
+	return "Zresetowano animacje walki";
 };
+
+/// events
 ///******************************************************************************************
-instance Event_KillMe (C_Item)
+func string Action_KillMe (var string parameter)
 {
 	hero.attribute[ATR_HITPOINTS] = 0;
-	Wld_RemoveItem(self);
+	
+	return "Pope³ni³eœ samobójstwo";
 };
-instance Event_TeleportAway (C_Item)
+
+func string Action_TeleportAway (var string parameter)
 {
 	Npc_ClearAIQueue(o_other);
 	AI_Teleport(o_other, "TOT");
-	Wld_RemoveItem(self);
+	
+	return ConcatStrings(ConcatStrings("Wys³a³eœ ", o_other.name), " w zaœwiaty");
 };
-instance Event_MassFear (C_Item)
+
+func string Action_Mass_Fear (var string parameter)
 {
-	Wld_RemoveItem(self);
+	AI_SetNpcsToState (self, ZS_MagicFlee, 1000);
+	
+	return "Jesteœ obiektem strachu ca³ej okolicy";
 };
-instance Event_MassWeapon_Draw (C_Item)
+
+func string Action_Mass_DrawWeapon (var string parameter)
 {
-	Wld_RemoveItem(self);
+	return "(jeszcze niezaimplementowane) Wszyscy w okolicy wyci¹gnêli broñ";
 };
-instance Event_MassWeapon_Undraw (C_Item)
+
+func string Action_Mass_UndrawWeapon (var string parameter)
 {
-	Wld_RemoveItem(self);
+	return "(jeszcze niezaimplementowane) Wszyscy w okolicy schowali broñ";
 };
-instance Event_MassLookAtMe (C_Item)
+
+func string Action_Mass_LookAtMe (var string parameter)
 {
-	Wld_RemoveItem(self);
+	return "(jeszcze niezaimplementowane) Patrzcie na mnie wszyscy";
 };
-instance Event_MassTurnToMe (C_Item)
+
+func string Action_Mass_TurnToMe (var string parameter)
 {
-	Wld_RemoveItem(self);
+	return "(jeszcze niezaimplementowane) Podziwiajcie mnie wszyscy";
+};
+
+///******************************************************************************************
+///	ConsoleCommands
+///******************************************************************************************
+func void ConsoleCommands()
+{
+	CC_Register(Give_All, "Give All", "");
+	CC_Register(Give_Gold, "Give Gold", "");
+	
+	CC_Register(Give_Attributes, "Give Attributes", "");
+	CC_Register(Give_FightSkills, "Give FightSkills", "");
+	CC_Register(Give_MagicSkills, "Give MagicSkills", "");
+	CC_Register(Give_Talents, "Give Talents", "");
+	CC_Register(Give_Exp, "Give Exp", "");
+	
+	CC_Register(Set_Diff, "Set Diff", "");
+	CC_Register(Set_GameMode, "Set GameMode", "");
+	
+	CC_Register(Set_ScaleTime, "Set ScaleTime", "");
+	
+	CC_Register(Update_Visual, "Update Visual", "");
+	CC_Register(Set_Visual_Hero, "Set Visual Hero", "");
+	CC_Register(Set_Visual_BodyTex, "Set Visual BodyTex", "");
+	CC_Register(Set_Visual_SkinTex, "Set Visual SkinTex", "");
+	CC_Register(Set_Visual_TeethTex, "Set Visual TeethTex", "");
+	
+	CC_Register(Reset_Hero, "Reset Hero", "");
+	CC_Register(Reset_Inventory, "Reset Inventory", "");
+	
+	CC_Register(Reset_OverlayMDS, "Reset OverlayMDS", "");
+	CC_Register(Reset_FightOverlayMDS, "Reset FightOverlayMDS", "");
+	
+	CC_Register(Action_KillMe, "Action KillMe", "");
+	CC_Register(Action_TeleportAway, "Action TeleportAway", "");
+	CC_Register(Action_Mass_Fear, "Action Mass Fear", "");
+	CC_Register(Action_Mass_DrawWeapon, "Action Mass DrawWeapon", "");
+	CC_Register(Action_Mass_UndrawWeapon, "Action Mass UndrawWeapon", "");
+	CC_Register(Action_Mass_LookAtMe, "Action Mass LookAtMe", "");
+	CC_Register(Action_Mass_TurnToMe, "Action Mass TurnToMe", "");
 };

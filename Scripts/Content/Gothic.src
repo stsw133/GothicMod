@@ -46,7 +46,7 @@ MOD\MOD_Girlfriends.d
 STORY\B_Story\C_NpcIsInQuarter.d
 STORY\B_Story\C_DiegoTooFar.d
 STORY\B_Story\B_AddFightSkill.d
-STORY\B_Story\B_GivePlayerExp.d
+STORY\B_Story\B_GivePlayerXP.d
 
 MOD\MOD_HeroReset.d
 MOD\MOD_Missions.d
@@ -59,7 +59,7 @@ STORY\B_Story\B_StartOtherRoutine.d
 STORY\B_Story\B_KillOrRemoveNpc.d
 
 STORY\B_Content\B_RangerMeeting.d
-STORY\B_Content\B_SCObsession.d
+STORY\B_Content\B_ScObsession.d
 STORY\B_Content\B_Extro_Avi.d
 STORY\B_Content\B_Greg_ComesToDexter.d
 STORY\B_Content\B_Upgrade_Hero_HackChance.d
@@ -73,6 +73,11 @@ STORY\B_Story\B_BuildLearnString.d
 STORY\B_Story\B_TeachAttributePoints.d
 STORY\B_Story\B_TeachTalent.d
 STORY\B_Story\B_WispDetector.d
+
+AI\AI_INTERN\PERCEPTION.D
+AI\AI_INTERN\Npc_Plunder_Is_Empty.d
+AI\AI_INTERN\B_DeSynchronize.d
+AI\AI_INTERN\B_RefreshAtInsert.d
 
 ITEMS\IT_*.d
 ITEMS\MissionItems*.d
@@ -89,11 +94,6 @@ STORY\B_Content\B_ScUsesRake.d
 STORY\B_Content\B_BeliarWeapon.d
 STORY\B_Content\B_WeaponSpecialDamage.d
 STORY\B_Content\B_GhostSpecialDamage.d
-
-AI\AI_INTERN\PERCEPTION.D
-AI\AI_INTERN\Npc_Plunder_Is_Empty.d
-AI\AI_INTERN\B_DeSynchronize.d
-AI\AI_INTERN\B_RefreshAtInsert.d
 
 AI\HUMAN\C_Human\C_IsMyPossession.d
 AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
@@ -264,7 +264,6 @@ STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
 MOD\MOD_MovieMode.d
 MOD\TICK_TOCK.d
+TestFunctions.d
 
 STORY\Startup.d
-
-TestFunctions.d

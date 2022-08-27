@@ -84,7 +84,7 @@ func void Perception_Set_Minimal()
 ///******************************************************************************************
 ///	B_ClearPerceptions
 ///******************************************************************************************
-func void B_ClearPerceptions (var C_NPC slf)
+func void B_ClearPerceptions (var C_Npc slf)
 {
 	Npc_PercDisable  	(slf, 	PERC_ASSESSPLAYER		);
 	Npc_PercDisable  	(slf, 	PERC_ASSESSENEMY		);

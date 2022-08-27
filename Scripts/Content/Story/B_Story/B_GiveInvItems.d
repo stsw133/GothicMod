@@ -24,7 +24,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 		if (itemInstance == ItMi_Gold)
 		{
 			concatText = ConcatStrings(IntToString(amount), PRINT_GoldGegeben);
-			Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_GoldGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print * 1000);
+			Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_GoldGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print);
 			//AI_PrintScreen (concatText, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
 		}
 		else
@@ -32,7 +32,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 		    if (amount == 1)
 		    {
 			    concatText = ConcatStrings (itemname, PRINT_Addon_gegeben);
-				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print * 1000);
+				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print);
 			    //AI_PrintScreen (concatText, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
 			}
 			else
@@ -41,7 +41,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 				concatText = ConcatStrings(concatText, " (");
 			    concatText = ConcatStrings(concatText, itemname);
 			    concatText = ConcatStrings(concatText, ")");
-				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print * 1000);
+				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemGiven, concatText, FONT_ScreenSmall, COL_ItemGiven, TIME_Print);
 				//AI_PrintScreen (concatText, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
 			};
 		};
@@ -51,7 +51,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 		if (itemInstance == ItMi_Gold)
 		{
 			concatText = ConcatStrings(IntToString(amount), PRINT_GoldErhalten);
-			Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_GoldTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print * 1000);
+			Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_GoldTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print);
 			//AI_PrintScreen (concatText, -1, YPOS_GoldTaken, FONT_ScreenSmall, 2);
 		}
 		else
@@ -59,7 +59,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 		    if (amount == 1)
 		    {
 				concatText = ConcatStrings (itemname,PRINT_Addon_erhalten);
-				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print * 1000);
+				Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print);
 				//AI_PrintScreen (concatText, -1, YPOS_ItemTaken, FONT_ScreenSmall, 2);
 			}
 			else
@@ -68,7 +68,7 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 			    concatText = ConcatStrings(concatText, " (");
 			    concatText = ConcatStrings(concatText, itemname); 
 			    concatText = ConcatStrings(concatText, ")");
-			    Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print * 1000);
+			    Print_ExtPxl (20, Print_Screen[PS_Y]-YPosPxl_ItemTaken, concatText, FONT_ScreenSmall, COL_ItemTaken, TIME_Print);
 			    //AI_PrintScreen (concatText, -1, YPOS_ItemTaken, FONT_ScreenSmall, 2);
 			};
 		};

@@ -26,7 +26,7 @@ instance WzA_17012_Methion (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	CreateInvItem (self, ItRu_cG_Fireball);
+	CreateInvItem (self, ItRu_GreenFireball);
 	CreateInvItem (self, ITAR_aCHAOS_GREEN);
 	
 	/// ------ Inventory ------

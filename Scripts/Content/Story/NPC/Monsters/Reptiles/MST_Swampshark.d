@@ -13,12 +13,12 @@ prototype Mst_Default_Swampshark (C_Npc)
 	B_SetAttributesToLevel (self, 30);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -63,12 +63,12 @@ instance MIS_Addon_Swampshark_01 (Mst_Default_Swampshark)
 	B_SetAttributesToLevel (self, 25);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_Swampshark();
 };
@@ -77,12 +77,12 @@ instance MIS_Addon_Swampshark_02 (Mst_Default_Swampshark)
 	B_SetAttributesToLevel (self, 25);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_Swampshark();
 };
@@ -91,12 +91,12 @@ instance MIS_Addon_Swampshark_03 (Mst_Default_Swampshark)
 	B_SetAttributesToLevel (self, 25);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_Swampshark();
 };

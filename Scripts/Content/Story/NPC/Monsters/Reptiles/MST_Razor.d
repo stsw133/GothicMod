@@ -13,12 +13,12 @@ prototype Mst_Default_Razor (C_Npc)
 	B_SetAttributesToLevel (self, 18);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,7 +38,7 @@ prototype Mst_Default_Razor (C_Npc)
 func void B_SetVisuals_Razor()
 {
 	Mdl_SetVisual		(self, "Razor.mds");
-	Mdl_SetVisualBody	(self, "Sna_Body", 2, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Raz_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Razor (Mst_Default_Razor)

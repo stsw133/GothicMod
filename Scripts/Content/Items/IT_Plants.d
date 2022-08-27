@@ -24,7 +24,7 @@ instance ItPl_Temp_Herb (ItemPR_Plant)
 {
 	name 					=	"Rdest polny";
 	value 					=	60;
-	visual 					=	"ItPl_LupinHerb.3ds";
+	visual 					=	"ItPl_TempHerb.3ds";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
@@ -35,7 +35,7 @@ instance ItPl_Perm_Herb (ItemPR_Plant)
 {
 	name 					=	"Szczaw królewski";
 	value 					=	300;
-	visual 					=	"ItPl_KingHerb.3ds";
+	visual 					=	"ItPl_PermHerb.3ds";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
@@ -49,7 +49,7 @@ instance ItPl_Health_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Roœlina lecznicza";
 	value 					=	10;
-	visual 					=	"ItPl_Health_Herb_04.3DS";
+	visual 					=	"ItPl_HealthHerb_01.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywana do tworzenia";
@@ -60,7 +60,7 @@ instance ItPl_Health_Herb_02 (ItemPR_Plant)
 {
 	name 					=	"Ziele lecznicze";
 	value 					=	20;
-	visual 					=	"ItPl_Health_Herb_05.3DS";
+	visual 					=	"ItPl_HealthHerb_02.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
@@ -71,7 +71,7 @@ instance ItPl_Health_Herb_03 (ItemPR_Plant)
 {
 	name 					=	"Korzeñ leczniczy";
 	value 					=	30;
-	visual 					=	"ItPl_Health_Herb_06.3DS";
+	visual 					=	"ItPl_HealthHerb_03.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -85,7 +85,7 @@ instance ItPl_Mana_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Roœlina many";
 	value 					=	10;
-	visual 					=	"ItPl_Mana_Herb_04.3DS";
+	visual 					=	"ItPl_ManaHerb_01.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywana do tworzenia";
@@ -96,7 +96,7 @@ instance ItPl_Mana_Herb_02 (ItemPR_Plant)
 {
 	name 					=	"Ziele many";
 	value 					=	20;
-	visual 					=	"ItPl_Mana_Herb_05.3ds";
+	visual 					=	"ItPl_ManaHerb_02.3ds";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
@@ -107,7 +107,7 @@ instance ItPl_Mana_Herb_03 (ItemPR_Plant)
 {
 	name 					=	"Korzeñ many";
 	value 					=	30;
-	visual 					=	"ItPl_Mana_Herb_06.3ds";
+	visual 					=	"ItPl_ManaHerb_03.3ds";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -121,7 +121,7 @@ instance ItPl_Speed_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Zêbate ziele";
 	value 					=	20;
-	visual 					=	"ItPl_Speed_Herb_01.3DS";
+	visual 					=	"ItPl_SpeedHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
@@ -145,7 +145,7 @@ instance ItPl_SwampHerb (ItemPR_Plant)
 {
 	name 					=	"Bagienne ziele";
 	value 					=	20;
-	visual 					=	"ItPl_SwampHerb.3ds";
+	visual 					=	"ItPl_SwampHerb_01.3ds";
 	
 	scemeName				=	"MAPSEALED";
 	on_state[0]				=	Use_ItPl_SwampHerb;
@@ -168,13 +168,28 @@ func void Use_ItPl_SwampHerb()
 	};
 };
 ///******************************************************************************************
+instance ItPl_DesertHerb (ItemPR_Plant)
+{
+	name 					=	"Pustynne ziele";
+	value 					=	20;
+	visual 					=	"ItPl_SwampHerb_02.3ds";
+	
+	scemeName				=	"MAPSEALED";
+	on_state[0]				=	Use_ItPl_SwampHerb;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywane do tworzenia";
+	TEXT[2]					=	"mikstur zmiany percepcji.";
+	COUNT[5]				= 	value;
+};
+///******************************************************************************************
 ///	Perm
 ///******************************************************************************************
 instance ItPl_Health_Herb_04 (ItemPR_Plant)
 {
-	name 					=	"Krwawy rumianek";
+	name 					=	"Krwawa miêta";
 	value 					=	120;
-	visual 					=	"ItPl_Health_Herb_07.3DS";
+	visual 					=	"ItPl_HealthHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -183,9 +198,9 @@ instance ItPl_Health_Herb_04 (ItemPR_Plant)
 };
 instance ItPl_Mana_Herb_04 (ItemPR_Plant)
 {
-	name 					=	"Wilcza miêta";
+	name 					=	"Wilczy rumianek";
 	value 					=	120;
-	visual 					=	"ItPl_Mana_Herb_07.3DS";
+	visual 					=	"ItPl_ManaHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -196,7 +211,7 @@ instance ItPl_Strength_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Smoczy korzeñ";
 	value 					=	120;
-	visual 					=	"ItPl_Strength_Herb_01.3DS";
+	visual 					=	"ItPl_StrengthHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany do tworzenia";
@@ -205,9 +220,9 @@ instance ItPl_Strength_Herb_01 (ItemPR_Plant)
 };
 instance ItPl_Dex_Herb_01 (ItemPR_Plant)
 {
-	name 					=	"Goblinie jagody";
+	name 					=	"Goblinia ró¿a";
 	value 					=	120;
-	visual 					=	"ItPl_Dex_Herb_01.3DS";
+	visual 					=	"ItPl_DexterityHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
@@ -216,9 +231,9 @@ instance ItPl_Dex_Herb_01 (ItemPR_Plant)
 };
 instance ItPl_Power_Herb_01 (ItemPR_Plant)
 {
-	name 					=	"Wampirza ró¿a";
+	name 					=	"Harpia winoroœl";
 	value 					=	120;
-	visual 					=	"ItPl_Dex_Herb_01.3DS";
+	visual 					=	"ItPl_PowerHerb.3DS";
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
@@ -249,13 +264,29 @@ instance ItPl_Mushroom_01 (ItemPR_Plant)
 };
 instance ItPl_Mushroom_02 (ItemPR_Plant)
 {
-	name 					=	"Piekielnik";
-	value 					=	10;
-	visual					=	"ItPl_Mushroom_cave_small.3DS";
+	name 					=	"Mu³owy grzyb";
+	value 					=	20;
+	visual					=	"ItPl_Mushroom_02.3DS";
 	description				=	name;
 	COUNT[5]				=	value;
 };
 instance ItPl_Mushroom_03 (ItemPR_Plant)
+{
+	name 					=	"Piekielnik";
+	value 					=	10;
+	visual 					=	"ItPl_Mushroom_cave_small.3DS";
+	description				=	name;
+	COUNT[5]				= 	value;
+};
+instance ItPl_Mushroom_04 (ItemPR_Plant)
+{
+	name 					=	"Piekielnik";
+	value 					=	20;
+	visual 					=	"ItPl_Mushroom_cave_big.3DS";
+	description				=	name;
+	COUNT[5]				= 	value;
+};
+instance ItPl_Mushroom_05 (ItemPR_Plant)
 {
 	name 					=	"Truj¹cy grzyb";
 	value 					=	10;
@@ -263,11 +294,27 @@ instance ItPl_Mushroom_03 (ItemPR_Plant)
 	description				=	name;
 	COUNT[5]				= 	value;
 };
-instance ItPl_Mushroom_04 (ItemPR_Plant)
+instance ItPl_Mushroom_06 (ItemPR_Plant)
+{
+	name 					=	"Truj¹cy grzyb";
+	value 					=	20;
+	visual					=	"ItPl_Mushroom_venom_big.3DS";
+	description				=	name;
+	COUNT[5]				=	value;
+};
+instance ItPl_Mushroom_07 (ItemPR_Plant)
 {
 	name 					=	"Ksiê¿ycowa rosa";
 	value 					=	10;
 	visual 					=	"ItPl_Mushroom_magic_small.3DS";
+	description				=	name;
+	COUNT[5]				= 	value;
+};
+instance ItPl_Mushroom_08 (ItemPR_Plant)
+{
+	name 					=	"Ksiê¿ycowa rosa";
+	value 					=	20;
+	visual 					=	"ItPl_Mushroom_magic_big.3DS";
 	description				=	name;
 	COUNT[5]				= 	value;
 };
@@ -291,7 +338,7 @@ instance ItPl_Forestberry (ItemPR_Plant)
 {
 	name 					=	"Dzika jagoda";
 	value 					=	4;
-	visual 					=	"ItPl_Forestberry.3DS";
+	visual 					=	"ITPL_ForestBerry.3DS";
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
@@ -304,7 +351,7 @@ instance ItPl_Planeberry (ItemPR_Plant)
 {
 	name 					=	"Alkojagoda";
 	value 					=	4;
-	visual 					=	"ItPl_Planeberry.3DS";
+	visual 					=	"ITPL_PlaneBerry.3DS";
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;

@@ -33,7 +33,7 @@ instance PFX_CRYSTALGLOW (C_ParticleFx)
 	visalphastart		= 255;
 	useemittersfor		= 0;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance SOULDUST (C_ParticleFx)
 {
 	ppsvalue			= 100.000000000;
@@ -139,7 +139,7 @@ instance TIMEDUST (C_ParticleFx)
 	visalphastart		= 255.000000000;
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance SMELL_MODEL_KAIRO (C_ParticleFx)
 {
     ppsvalue = 15;
@@ -244,7 +244,7 @@ instance WHITE_MODEL_KAIRO (C_ParticleFx)
     visalphastart = 255;
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance URIZIEL_ENERGY (C_ParticleFx)
 {
 	ppsvalue		= 100;
@@ -279,7 +279,7 @@ instance URIZIEL_ENERGY (C_ParticleFx)
 	useemittersfor		= 0;
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance PFX_ACHAOS_BLUE (C_ParticleFx)
 {
 	ppsvalue = 15;
@@ -460,7 +460,7 @@ instance PFX_ACHAOS_PINK (C_ParticleFx)
     flockmode = "ARMOR_XARDAS.ASC";
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance PFX_IPENTA_BLUE (ITEM_GLIMMER_PROTO)
 {
 	ppsvalue			= 2500;
@@ -470,8 +470,8 @@ instance PFX_IPENTA_BLUE (ITEM_GLIMMER_PROTO)
 	vissizeendscale		= 5; 
 };
 
-//******************************************************************************************
-instance WHITEEYES_LEFT (C_ParticleFx)
+///******************************************************************************************
+instance PFX_NIGHTVISION_LEFT (C_ParticleFx)
 {
     ppsvalue = 150;
     ppsscalekeys_s = "1 1 1";
@@ -480,7 +480,7 @@ instance WHITEEYES_LEFT (C_ParticleFx)
     ppsfps = 1;
     shptype_s = "POINT";
     shpfor_s = "OBJECT";
-    shpoffsetvec_s = "14 4 18";
+    shpoffsetvec_s = "10 4 10";
     shpdistribtype_s = "UNIFORM";
     shpisvolume = 1;
     shpdim_s = "4";
@@ -506,7 +506,7 @@ instance WHITEEYES_LEFT (C_ParticleFx)
     useemittersfor = 1;
 };
 
-instance WHITEEYES_RIGHT (C_ParticleFx)
+instance PFX_NIGHTVISION_RIGHT (C_ParticleFx)
 {
     ppsvalue = 150;
     ppsscalekeys_s = "1 1 1";
@@ -515,7 +515,7 @@ instance WHITEEYES_RIGHT (C_ParticleFx)
     ppsfps = 1;
     shptype_s = "POINT";
     shpfor_s = "OBJECT";
-    shpoffsetvec_s = "14 -4 18";
+    shpoffsetvec_s = "10 -4 10";
     shpdistribtype_s = "UNIFORM";
     shpisvolume = 1;
     shpdim_s = "4";

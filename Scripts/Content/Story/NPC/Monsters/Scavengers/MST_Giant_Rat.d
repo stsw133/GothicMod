@@ -40,12 +40,30 @@ func void B_SetVisuals_GiantDesertRat()
 instance Giant_Rat (Mst_Default_GiantRat)
 {
 	B_SetAttributesToLevel (self, 2);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	
 	B_SetVisuals_GiantRat();
 };
 instance Giant_DesertRat (Mst_Default_GiantRat)
 {
 	name						=	"Pustynny szczur";
-//	aivar[AIV_MM_FollowInWater]	=	true;
+	
 	B_SetAttributesToLevel (self, 4);
+	
+	/// ------ Protection ------
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	
 	B_SetVisuals_GiantDesertRat();
 };

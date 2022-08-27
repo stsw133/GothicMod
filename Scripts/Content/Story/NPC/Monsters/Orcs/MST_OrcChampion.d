@@ -14,18 +14,18 @@ prototype Mst_Default_OrcChampion (C_Npc)
 	
 	B_SetAttributesToLevel (self, 50);
 	
-	hitchance[NPC_TALENT_1H]			=	level;
-	hitchance[NPC_TALENT_2H]			=	level;
-	hitchance[NPC_TALENT_BOW]			=	level;
-	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	hitchance[NPC_TALENT_1H]			=	100;
+	hitchance[NPC_TALENT_2H]			=	100;
+	hitchance[NPC_TALENT_BOW]			=	100;
+	hitchance[NPC_TALENT_CROSSBOW]		=	100;
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE;
@@ -58,18 +58,18 @@ instance OrkElite_AntiPaladinOrkOberst (Mst_Default_OrcChampion)
 	
 	B_SetAttributesToLevel (self, 55);
 	
-	hitchance[NPC_TALENT_1H]			=	level;
-	hitchance[NPC_TALENT_2H]			=	level;
-	hitchance[NPC_TALENT_BOW]			=	level;
-	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	hitchance[NPC_TALENT_1H]			=	100;
+	hitchance[NPC_TALENT_2H]			=	100;
+	hitchance[NPC_TALENT_BOW]			=	100;
+	hitchance[NPC_TALENT_CROSSBOW]		=	100;
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_OrcChampion();
 	EquipItem (self, ItMw_2H_OrcElite_01);
@@ -129,18 +129,18 @@ instance OrkElite_AntiPaladinOrkOberst_DI (Mst_Default_OrcChampion)
 	
 	B_SetAttributesToLevel (self, 60);
 	
-	hitchance[NPC_TALENT_1H]			=	level;
-	hitchance[NPC_TALENT_2H]			=	level;
-	hitchance[NPC_TALENT_BOW]			=	level;
-	hitchance[NPC_TALENT_CROSSBOW]		=	level;
+	hitchance[NPC_TALENT_1H]			=	100;
+	hitchance[NPC_TALENT_2H]			=	100;
+	hitchance[NPC_TALENT_BOW]			=	100;
+	hitchance[NPC_TALENT_CROSSBOW]		=	100;
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_OrcChampion();
 	EquipItem (self, ItMw_2H_OrcElite_01);

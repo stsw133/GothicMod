@@ -95,26 +95,27 @@ func void B_SetAttributesToLevel (var C_Npc slf, var int kap)
 	{
 		slf.attribute[ATR_STRENGTH]			=	1;
 		slf.attribute[ATR_DEXTERITY]		=	1;
+		slf.attribute[ATR_POWER]			=	1;
 		slf.attribute[ATR_MANA_MAX]			=	1;
 		slf.attribute[ATR_HITPOINTS_MAX]	=	NPC_MINIMAL_DAMAGE * 2;
 	}
-	else if (slf.aivar[AIV_MagicUser] > 0)
-	{
-		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 10;
-		slf.attribute[ATR_MANA_MAX]			=	kap * 5;
-		
-		slf.attribute[ATR_STRENGTH]			=	kap * 3;
-		slf.attribute[ATR_DEXTERITY]		=	kap * 3;
-		slf.damage[DAM_INDEX_MAGIC]			=	kap * 3;
-	}
 	else
 	{
-		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 10;
+		slf.attribute[ATR_HITPOINTS_MAX]	=	kap * 5*HP_PER_LP;
 		slf.attribute[ATR_MANA_MAX]			=	kap * 5;
 		
 		slf.attribute[ATR_STRENGTH]			=	kap * 5;
 		slf.attribute[ATR_DEXTERITY]		=	kap * 5;
-		slf.damage[DAM_INDEX_MAGIC]			=	0;
+		slf.attribute[ATR_POWER]			=	kap * 5;
+	};
+	
+	if (slf.guild <= GIL_SEPERATOR_HUM)
+	{
+		slf.attribute[ATR_HITPOINTS_MAX]	+=	20*HP_PER_LP - kap*HP_PER_LP;
+		slf.attribute[ATR_MANA_MAX]			+=	20 - kap;
+		
+		slf.attribute[ATR_STRENGTH]			+=	20 - kap;
+		slf.attribute[ATR_DEXTERITY]		+=	20 - kap;
 	};
 	
 	/// talents
@@ -154,7 +155,7 @@ func void B_SetAttributesToLevel (var C_Npc slf, var int kap)
 	/// important characters
 	if (slf.flags == NPC_FLAG_IMPORTANT)
 	{
-		slf.attribute[ATR_HITPOINTS_MAX]	+=	MAX_LEVEL * 10;
+		slf.attribute[ATR_HITPOINTS_MAX]	+=	HP_PER_LP * 50;
 		slf.protection[PROT_BLUNT]			+=	AR_PER_LEVEL * 50;
 		slf.protection[PROT_EDGE]			+=	AR_PER_LEVEL * 50;
 		slf.protection[PROT_POINT]			+=	AR_PER_LEVEL * 50;

@@ -1,6 +1,6 @@
-//******************************************************************************************
-//	NewGame
-//******************************************************************************************
+///******************************************************************************************
+///	NewGame
+///******************************************************************************************
 instance MENU_NEWGAME(C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
@@ -22,6 +22,7 @@ instance MENU_NEWGAME(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
+///******************************************************************************************
 instance MENUITEM_NEWGAME_HEADING(C_MENU_ITEM_DEF)
 {
 	text[0] = "NOWA GRA";
@@ -33,7 +34,7 @@ instance MENUITEM_NEWGAME_HEADING(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-//******************************************************************************************
+///******************************************************************************************
 instance MENUITEM_NEWGAME_HERO(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -61,7 +62,7 @@ instance MENUITEM_NEWGAME_HERO_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance MENUITEM_NEWGAME_DIFF(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -78,7 +79,7 @@ instance MENUITEM_NEWGAME_DIFF_CHOICE(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
-	text[0] = "£atwy|Œredni|Trudny|B. Trudny|Niemo¿liwy";
+	text[0] = "£atwy|Œredni|Trudny";
 	fontname = MENU_FONT_SMALL;
 	posx = 5492;
 	posy = MENU_START_Y + (MENU_DY * 1) + MENU_CHOICE_YPLUS;
@@ -89,7 +90,7 @@ instance MENUITEM_NEWGAME_DIFF_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance MENUITEM_NEWGAME_MOVIEMODE(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -117,8 +118,8 @@ instance MENUITEM_NEWGAME_MOVIEMODE_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-//******************************************************************************************
 /*
+///******************************************************************************************
 instance MENUITEM_NEWGAME_DIFF2(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -146,7 +147,7 @@ instance MENUITEM_NEWGAME_DIFF2_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-//******************************************************************************************
+///******************************************************************************************
 instance MENUITEM_NEWGAME_sth(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
@@ -175,7 +176,7 @@ instance MENUITEM_NEWGAME_sth_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
 */
-//******************************************************************************************
+///******************************************************************************************
 instance MENUITEM_NEWGAME_ACCEPT(C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;

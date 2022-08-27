@@ -13,12 +13,12 @@ prototype Mst_Default_Troll (C_Npc)
 	B_SetAttributesToLevel (self, 60);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
 	protection[PROT_POINT]				=	-1;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
 	protection[PROT_FLY]				=	-1;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -42,6 +42,11 @@ func void B_SetVisuals_Troll()
 	Mdl_SetVisual		(self, "Troll.mds");
 	Mdl_SetVisualBody	(self, "Tro_Body", 0, default, "", default, default, -1);
 };
+func void B_SetVisuals_DesertTroll()
+{
+	Mdl_SetVisual		(self, "Troll.mds");
+	Mdl_SetVisualBody	(self, "Tro_Desert_Body", 0, default, "", default, default, -1);
+};
 func void B_SetVisuals_SnowTroll()
 {
 	Mdl_SetVisual		(self, "Troll.mds");
@@ -51,6 +56,10 @@ func void B_SetVisuals_SnowTroll()
 instance Troll (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
+};
+instance Troll_Desert (Mst_Default_Troll)
+{
+	B_SetVisuals_DesertTroll();
 };
 instance Troll_Snow (Mst_Default_Troll)
 {

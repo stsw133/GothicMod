@@ -18,9 +18,10 @@ func int DIA_AmbientDementor_Condition()
 };
 func void DIA_AmbientDementor_Info()
 {
-	Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
-	Wld_PlayEffect ("spellFX_Fear", self, self, 0, 0, 0, false);
-	AI_PlayAni (self, "T_PRACTICEMAGIC5");
+	Wld_PlayEffect	("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
+	Wld_PlayEffect	("spellFX_Fear", self, self, 0, 0, 0, false);
+	AI_PlayAni		(self, "T_PRACTICEMAGIC5");
+	B_SCIsObsessed	(self);
 	
 	var int randy; randy = Hlp_Random(4);
 	
@@ -98,7 +99,6 @@ func void DIA_AmbientDementor_Info()
 	};
 	
 	AI_StopProcessInfos	(self);
-	B_SCIsObsessed		(self);
 	Npc_SetRefuseTalk	(self, 5);
 	
 	Wld_StopEffect	("DEMENTOR_FX");

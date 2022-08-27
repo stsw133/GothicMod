@@ -11,7 +11,7 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int le
 	else if	(talent == NPC_TALENT_CROSSBOW)	{	kosten = B_GetLearnCostTalent(oth, talent, level) - (SelfFightTeach_Level[NPC_TALENT_CROSSBOW] * 2);	}
 	else									{	kosten = B_GetLearnCostTalent(oth, talent, level);														};
 	
-	//var int money; money = kosten * DIFF_Multiplier(GOLD_PER_LP, INCREASE);
+	//var int money; money = kosten * GOLD_PER_LP;
 	
 	if (oth.lp < kosten)
 	{
@@ -159,10 +159,6 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int le
 		PrintScreen (PRINT_LearnTalent_Persuasion, -1, -1, FONT_Screen, 2);
 	}
 	/// CRAFT
-	else if (talent == NPC_TALENT_JEWELERY)
-	{
-		PrintScreen	(PRINT_LearnTalent_Jewelery, -1, -1, FONT_SCREEN, 2);
-	}
 	else if (talent == NPC_TALENT_SMITH)
 	{
 		PrintScreen	(PRINT_LearnTalent_Smith, -1, -1, FONT_SCREEN, 2);
@@ -180,10 +176,6 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int le
 		PrintScreen	(PRINT_LearnTalent_Hunting, -1, -1, FONT_SCREEN, 2);
 	}
 	/// MAIN CRAFT
-	else if (talent == 100 + NPC_TALENT_JEWELERY)
-	{
-		PrintScreen	(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Jewelery), -1, -1, FONT_SCREEN, 2);
-	}
 	else if (talent == 100 + NPC_TALENT_SMITH)
 	{
 		PrintScreen	(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Smith), -1, -1, FONT_SCREEN, 2);

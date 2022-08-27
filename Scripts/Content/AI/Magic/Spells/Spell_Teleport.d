@@ -38,6 +38,7 @@ func int Spell_Logic_Teleport (var int manaInvested)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

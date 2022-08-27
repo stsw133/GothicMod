@@ -26,7 +26,7 @@ instance WzA_17010_Setron (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	CreateInvItem (self, ItRu_cB_Fireball);
+	CreateInvItem (self, ItRu_BlueFireball);
 	CreateInvItem (self, ITAR_aCHAOS_BLUE);
 	
 	/// ------ Inventory ------

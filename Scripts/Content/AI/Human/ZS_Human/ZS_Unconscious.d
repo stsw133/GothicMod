@@ -22,7 +22,7 @@ func void ZS_Unconscious()
 	
 	B_StopLookAt		(self);
 	AI_StopPointAt		(self);
-	AI_UnequipWeapons	(self);	///new!!!
+	AI_UnequipWeapons	(self);	/// new!!!
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	&& (Npc_IsPlayer(other))

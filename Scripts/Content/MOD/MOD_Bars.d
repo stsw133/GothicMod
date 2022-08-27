@@ -155,7 +155,14 @@ func void ShowBarText()
 	};
 	if (!Hlp_IsValidHandle(BarTextPrint_healthBar))
 	{
-		BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Health, -1);
+		if ((bState[BS_Poison]))
+		{
+			BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Negative, -1);
+		}
+		else
+		{
+			BarTextPrint_healthBar = Print_ExtPxl (200, Print_Screen[PS_Y]-90, BarText_healthBar, FONT_ScreenSmall, COL_Health, -1);
+		};
 	};
 	
 	/// MP bar
@@ -168,7 +175,14 @@ func void ShowBarText()
 	};
 	if (!Hlp_IsValidHandle(BarTextPrint_manaBar))
 	{
-		BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Mana, -1);
+	if ((bState[BS_Obsession]))
+		{
+			BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Negative, -1);
+		}
+		else
+		{
+			BarTextPrint_manaBar = Print_ExtPxl (200, Print_Screen[PS_Y]-70, BarText_manaBar, FONT_ScreenSmall, COL_Mana, -1);
+		};
 	};
 	
 	/// ENE bar
@@ -181,7 +195,14 @@ func void ShowBarText()
 	};
 	if (!Hlp_IsValidHandle(BarTextPrint_energyBar))
 	{
-		BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Energy, -1);
+		if ((bState[BS_hArmor]))
+		{
+			BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Negative, -1);
+		}
+		else
+		{
+			BarTextPrint_energyBar = Print_ExtPxl (200, Print_Screen[PS_Y]-50, BarText_energyBar, FONT_ScreenSmall, COL_Energy, -1);
+		};
 	};
 	
 	/// EXP & LOVE bar
@@ -189,7 +210,7 @@ func void ShowBarText()
 	{
 		Print_DeleteText(BarTextPrint_expBar);
 	};
-	
+	/*
 	if (talkingWithGirl)
 	{
 		BarText_expBar = ConcatStrings(IntToString(gLevelA*100/MAX_LOVE), "%");
@@ -200,7 +221,7 @@ func void ShowBarText()
 		};
 	}
 	else
-	{
+	{*/
 		if (hero.level < MAX_LEVEL)	{	BarText_expBar = ConcatStrings(IntToString(hero.exp_next-hero.exp), " do nast.");	}
 		else						{	BarText_expBar = "max. poziom";														};
 		
@@ -208,5 +229,5 @@ func void ShowBarText()
 		{
 			BarTextPrint_expBar = Print_ExtPxl (200, Print_Screen[PS_Y]-30, BarText_expBar, FONT_ScreenSmall, COL_Exp, -1);
 		};
-	};
+	//};
 };

@@ -13,12 +13,12 @@ prototype Mst_Default_TrollBlack (C_Npc)
 	B_SetAttributesToLevel (self, 70);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
 	protection[PROT_POINT]				=	-1;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
 	protection[PROT_FLY]				=	-1;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -40,7 +40,7 @@ prototype Mst_Default_TrollBlack (C_Npc)
 func void B_SetVisuals_BlackTroll()
 {
 	Mdl_SetVisual		(self, "Troll.mds");
-	Mdl_SetVisualBody	(self, "Troll_Black_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Tro_Black_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Troll_Black (Mst_Default_TrollBlack)

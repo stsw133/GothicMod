@@ -13,12 +13,12 @@ prototype Mst_Default_Zombie (C_Npc)
 	B_SetAttributesToLevel (self, 20);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -40,24 +40,26 @@ prototype Mst_Default_Zombie (C_Npc)
 func void B_SetVisuals_Zombie()
 {
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody	(self, "Zom_Body", self.aivar[AIV_BodyTex], default, "Zom_Head", self.aivar[AIV_BodyTex], default, -1);
+	Mdl_SetVisualBody	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, -1);
 };
 func void B_SetVisuals_MayaZombie()
 {
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody	(self, "Zom_Body", self.aivar[AIV_BodyTex], default, "Zom_Head", self.aivar[AIV_BodyTex], default, ITAR_SKELETON);
+	Mdl_SetVisualBody	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_SKELETON);
 };
 ///******************************************************************************************
 instance Zombie (Mst_Default_Zombie)
 {
-	aivar[AIV_BodyTex] = Hlp_Random(4);
+	aivar[AIV_SkinTex] = Hlp_Random(2);
+	aivar[AIV_FaceTex] = Hlp_Random(2);
 	B_SetVisuals_Zombie();
 };
 instance MayaZombie (Mst_Default_Zombie)
 {
 //	start_aistate						=	ZS_Pal_ZOMBIE;
 //	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
-	aivar[AIV_BodyTex] = Hlp_Random(2);
+	aivar[AIV_SkinTex] = Hlp_Random(2);
+	aivar[AIV_FaceTex] = Hlp_Random(2);
 	B_SetVisuals_MayaZombie();
 };
 ///******************************************************************************************
@@ -77,9 +79,10 @@ instance Zombie_RavenGuard (Mst_Default_Zombie)
 {
 	name 								=	"S³uga Kruka";
 	
-	aivar[AIV_BodyTex] = Hlp_Random(2);
+	aivar[AIV_SkinTex] = Hlp_Random(2);
+	aivar[AIV_FaceTex] = Hlp_Random(2);
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody 	(self, "Zom_Body", self.aivar[AIV_BodyTex], default, "Zom_Head", self.aivar[AIV_BodyTex], default, ITAR_RVN_M);
+	Mdl_SetVisualBody 	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_RVN_M);
 	
 	Npc_SetToFightMode (self, ItMw_1h_Mil_Sword);
 	damagetype 							=	DAM_EDGE;
@@ -91,12 +94,12 @@ instance Zombie_Bloodwyn (Mst_Default_Zombie)
 	B_SetAttributesToLevel (self, 30);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	Mdl_SetVisual		(self, "Zombie.mds");
 	Mdl_SetVisualBody	(self, "Zom_Body", 0, default, "Zom_Head", 0, default, ITAR_RVN_M);

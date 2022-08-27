@@ -14,15 +14,17 @@ var int hpRegenPower;
 var int hpRegenPoints;
 var int mpRegenPower;
 var int mpRegenPoints;
+var int poisonResistance;
+var int enableTimeDust;
 
 var int foodTime;
 var int digestionTime;
 var int drunkTime;
 
 const int BS_fRun			=	0;
-const int BS_hArmor			=	1;
-const int BS_Poison			=	2;
-const int BS_Obsession		=	3;
+const int BS_Poison			=	1;
+const int BS_Obsession		=	2;
+const int BS_hArmor			=	3;
 const int BS_Drunk			=	4;
 var int bState[5];
 
@@ -44,14 +46,13 @@ const int COL_Mana				=	(128<<16) | (128<<8) | (255<<0) | (255<<24);
 const int COL_Energy			=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_Exp				=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_Love				=	(255<<16) | (192<<8) | (224<<0) | (255<<24);
-const int COL_Progress			=	(255<<16) | (255<<8) | (255<<0) | (255<<24);
+const int COL_Negative			=	(192<<16) | (192<<8) | (192<<0) | (255<<24);
 
 const int COL_ItemGiven			=	(255<<16) | (128<<8) | (128<<0) | (255<<24);
 const int COL_ItemTaken			=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
 
 const int COL_ExpGained			=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_LoveGained		=	(255<<16) | (192<<8) | (224<<0) | (255<<24);
-const int COL_ProgressGained	=	(192<<16) | (224<<8) | (255<<0) | (255<<24);
 
 const int COL_QuestRunning		=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
 const int COL_QuestProgress		=	(128<<16) | (192<<8) | (255<<0) | (255<<24);

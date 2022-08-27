@@ -2,24 +2,26 @@
 ///	SPL_DeathBolt
 ///******************************************************************************************
 
-const int SPL_Cost_DeathBolt			=	60;
-const int SPL_Damage_DeathBolt			=	180;
+const int SPL_Cost_DeathBolt			=	50;
+const int SPL_Damage_DeathBolt			=	50;
+const int SPL_Scaling_DeathBolt			=	250;
 
 ///******************************************************************************************
 instance Spell_DeathBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_DeathBolt;
+//	damage_per_level					=	SPL_Damage_DeathBolt;
 	damageType							=	DAM_MAGIC;
 };
 
 func int Spell_Logic_DeathBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_DeathBolt/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_DeathBolt/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_DeathBolt)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

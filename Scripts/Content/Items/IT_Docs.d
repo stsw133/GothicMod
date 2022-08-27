@@ -30,12 +30,12 @@ prototype ItemPR_Map (C_Item)
 ///******************************************************************************************
 instance ItWr_Map_NewWorld (ItemPR_Map)
 {
-	value 			=	100;
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld;
+	value 					=	100;
+	visual 					=	"ItWr_Map_01.3DS";
+	on_state[0]				=	Use_Map_NewWorld;
 	
-	description		=	"Mapa terenów Khorinis";
-	COUNT[5]		=	value;
+	description				=	"Mapa terenów Khorinis";
+	COUNT[5]				=	value;
 };
 func void Use_Map_NewWorld()
 {
@@ -52,12 +52,12 @@ func void Use_Map_NewWorld()
 ///******************************************************************************************
 instance ItWr_Map_NewWorld_City (ItemPR_Map)
 {
-	value 			=	50;
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_City;
+	value 					=	50;
+	visual 					=	"ItWr_Map_01.3DS";
+	on_state[0]				=	Use_Map_NewWorld_City;
 	
-	description		=	"Mapa miasta Khorinis";
-	COUNT[5]		=	value;
+	description				=	"Mapa miasta Khorinis";
+	COUNT[5]				=	value;
 };
 func void Use_Map_NewWorld_City()
 {
@@ -74,12 +74,12 @@ func void Use_Map_NewWorld_City()
 ///******************************************************************************************
 instance ItWr_Map_OldWorld (ItemPR_Map)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_OldWorld;
+	value 					=	200;
+	visual 					=	"ItWr_Map_01.3DS";
+	on_state[0]				=	Use_Map_OldWorld;
 	
-	description		=	"Mapa Górniczej Doliny";
-	COUNT[5]		=	value;
+	description				=	"Mapa Górniczej Doliny";
+	COUNT[5]				=	value;
 };
 func void Use_Map_OldWorld()
 {
@@ -96,12 +96,12 @@ func void Use_Map_OldWorld()
 ///******************************************************************************************
 instance ItWr_Map_AddonWorld (ItemPR_Map)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_AddonWorld;
+	value 					=	200;
+	visual 					=	"ItWr_Map_01.3DS";
+	on_state[0]				=	Use_Map_AddonWorld;
 	
-	description		=	"Zapomniana dolina budowniczych";
-	COUNT[5]		=	value;
+	description				=	"Zapomniana dolina budowniczych";
+	COUNT[5]				=	value;
 };
 func void Use_Map_AddonWorld()
 {
@@ -155,12 +155,12 @@ var int Bonus_ItWr_Book_Golem;
 ///******************************************************************************************
 instance ItWr_Book_Fight1H (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_04.3ds";
-	on_state[0]		=	Use_Book_Fight1H;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_04.3ds";
+	on_state[0]				=	Use_Book_Fight1H;
 	
-	description		=	"Kunszt obronny po³udniowców";
-	COUNT[5]		=	value;
+	description				=	"Kunszt obronny po³udniowców";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Fight1H()
 {
@@ -192,12 +192,12 @@ func void Use_Book_Fight1H()
 ///******************************************************************************************
 instance ItWr_Book_Fight2H (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_03.3ds";
-	on_state[0]		=	Use_Book_Fight2H;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_03.3ds";
+	on_state[0]				=	Use_Book_Fight2H;
 	
-	description		=	"Bloki dwurêczne";
-	COUNT[5]		=	value;
+	description				=	"Bloki dwurêczne";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Fight2H()
 {
@@ -231,12 +231,12 @@ func void Use_Book_Fight2H()
 ///******************************************************************************************
 instance ItWr_Book_StarPower (ItemPR_Book) 
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_StarPower;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_StarPower;
 	
-	description		=	"Boska moc gwiazd";
-	COUNT[5]		= 	value;
+	description				=	"Boska moc gwiazd";
+	COUNT[5]				= 	value;
 };
 func void Use_Book_StarPower()
 {
@@ -268,12 +268,12 @@ func void Use_Book_StarPower()
 ///******************************************************************************************
 instance ItWr_Book_GodsGift (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_01.3ds";
-	on_state[0]		=	Use_Book_GodsGift;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_01.3ds";
+	on_state[0]				=	Use_Book_GodsGift;
 	
-	description		=	"Dar od bogów";
-	COUNT[5]		=	value;
+	description				=	"Dar od bogów";
+	COUNT[5]				=	value;
 };
 func void Use_Book_GodsGift()
 {
@@ -310,12 +310,12 @@ func void Use_Book_GodsGift()
 ///******************************************************************************************
 instance ItWr_Book_SecretsOfMagic (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_SecretsOfMagic;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_SecretsOfMagic;
 	
-	description		=	"Tajniki magii";
-	COUNT[5]		=	value;
+	description				=	"Tajniki magii";
+	COUNT[5]				=	value;
 };
 func void Use_Book_SecretsOfMagic()
 {
@@ -352,12 +352,12 @@ func void Use_Book_SecretsOfMagic()
 ///******************************************************************************************
 instance ItWr_Book_PowerfulArt (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_03.3ds";
-	on_state[0]		=	Use_Book_PowerfulArt;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_03.3ds";
+	on_state[0]				=	Use_Book_PowerfulArt;
 	
-	description		=	"Wszechpotê¿na sztuka";
-	COUNT[5]		=	value;
+	description				=	"Wszechpotê¿na sztuka";
+	COUNT[5]				=	value;
 };
 func void Use_Book_PowerfulArt()
 {
@@ -394,12 +394,12 @@ func void Use_Book_PowerfulArt()
 ///******************************************************************************************
 instance ItWr_Book_Elementare (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_04.3ds";
-	on_state[0]		=	Use_Book_Elementare;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_04.3ds";
+	on_state[0]				=	Use_Book_Elementare;
 	
-	description		=	"Arcanum ¿ywio³ów";
-	COUNT[5]		=	value;
+	description				=	"Arcanum ¿ywio³ów";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Elementare()
 {
@@ -438,12 +438,12 @@ func void Use_Book_Elementare()
 ///******************************************************************************************
 instance ItWr_Book_RealPower (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_Book_RealPower;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_05.3ds";
+	on_state[0]				=	Use_Book_RealPower;
 	
-	description		=	"Prawdziwa moc";
-	COUNT[5]		=	value;
+	description				=	"Prawdziwa moc";
+	COUNT[5]				=	value;
 };
 func void Use_Book_RealPower()
 {
@@ -482,12 +482,12 @@ func void Use_Book_RealPower()
 ///******************************************************************************************
 instance ItWr_Book_MagicOre (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_MagicOre;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_MagicOre;
 	
-	description		=	"Magiczna ruda";
-	COUNT[5]		=	value;
+	description				=	"Magiczna ruda";
+	COUNT[5]				=	value;
 };
 func void Use_Book_MagicOre()
 {
@@ -517,13 +517,13 @@ func void Use_Book_MagicOre()
 ///******************************************************************************************
 instance ItWr_Book_Varant1 (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_04.3ds";
-	on_state[0]		=	Use_Book_Varant1;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_04.3ds";
+	on_state[0]				=	Use_Book_Varant1;
 	
-	description		=	"Bitwa o Varrant";
-	TEXT[0]			=	"Tom 1";
-	COUNT[5]		=	value;
+	description				=	"Bitwa o Varrant";
+	TEXT[0]					=	"Tom 1";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Varant1()
 {
@@ -553,13 +553,13 @@ func void Use_Book_Varant1()
 ///******************************************************************************************
 instance ItWr_Book_Varant2 (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_Book_Varant2;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_05.3ds";
+	on_state[0]				=	Use_Book_Varant2;
 	
-	description		=	"Bitwa o Varrant";
-	TEXT[0]			=	"Tom 2";
-	COUNT[5]		=	value;
+	description				=	"Bitwa o Varrant";
+	TEXT[0]					=	"Tom 2";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Varant2()
 {
@@ -587,12 +587,12 @@ func void Use_Book_Varant2()
 ///******************************************************************************************
 instance ItWr_Book_MyrthanianPoetry (ItemPR_Book)
 {
-	value			=	200;
-	visual 			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_MyrthanianPoetry;
+	value					=	200;
+	visual 					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_MyrthanianPoetry;
 	
-	description		=	"Poezja myrtañska";
-	COUNT[5]		=	value;
+	description				=	"Poezja myrtañska";
+	COUNT[5]				=	value;
 };
 func void Use_Book_MyrthanianPoetry()
 {
@@ -640,13 +640,13 @@ func void Use_Book_MyrthanianPoetry()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom1 (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_01.3ds";
-	on_state[0]		=	Use_Book_GodsWisdom1;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_01.3ds";
+	on_state[0]				=	Use_Book_GodsWisdom1;
 	
-	description		=	"M¹droœæ bogów";
-	TEXT[0]			=	"Tom 1";
-	COUNT[5]		=	value;
+	description				=	"M¹droœæ bogów";
+	TEXT[0]					=	"Tom 1";
+	COUNT[5]				=	value;
 };
 func void Use_Book_GodsWisdom1()
 {
@@ -678,13 +678,13 @@ func void Use_Book_GodsWisdom1()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom2 (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_GodsWisdom2;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_GodsWisdom2;
 	
-	description		=	"M¹droœæ bogów";
-	TEXT[0]			=	"Tom 2";
-	COUNT[5]		=	value;
+	description				=	"M¹droœæ bogów";
+	TEXT[0]					=	"Tom 2";
+	COUNT[5]				=	value;
 };
 func void Use_Book_GodsWisdom2()
 {
@@ -712,13 +712,13 @@ func void Use_Book_GodsWisdom2()
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom3 (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_03.3ds";
-	on_state[0]		=	Use_Book_GodsWisdom3;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_03.3ds";
+	on_state[0]				=	Use_Book_GodsWisdom3;
 	
-	description		=	"M¹droœæ bogów";
-	TEXT[0]			=	"Tom 3";
-	COUNT[5]		=	value;
+	description				=	"M¹droœæ bogów";
+	TEXT[0]					=	"Tom 3";
+	COUNT[5]				=	value;
 };
 func void Use_Book_GodsWisdom3()
 {
@@ -746,12 +746,12 @@ func void Use_Book_GodsWisdom3()
 ///******************************************************************************************
 instance ItWr_Book_Hunting (ItemPR_Book)
 {
-	value 			=	200;
-	visual			=	"ItWr_Book_02_02.3ds";
-	on_state[0]		=	Use_Book_Hunting;
+	value 					=	200;
+	visual					=	"ItWr_Book_02_02.3ds";
+	on_state[0]				=	Use_Book_Hunting;
 	
-	description		=	"£owy i zwierzyna";
-	COUNT[5]		=	value;
+	description				=	"£owy i zwierzyna";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Hunting()
 {
@@ -779,12 +779,12 @@ func void Use_Book_Hunting()
 ///******************************************************************************************
 instance ItWr_Book_Fight (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_03.3ds";
-	on_state[0]		=	Use_Book_Fight;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_03.3ds";
+	on_state[0]				=	Use_Book_Fight;
 	
-	description		=	"Sztuka walki";
-	COUNT[5]		=	value;
+	description				=	"Sztuka walki";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Fight()
 {
@@ -822,12 +822,12 @@ func void Use_Book_Fight()
 ///******************************************************************************************
 instance ItWr_Book_Astronomy (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_Book_Astronomy;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_05.3ds";
+	on_state[0]				=	Use_Book_Astronomy;
 	
-	description		=	"Astronomia";
-	COUNT[5]		=	value;
+	description				=	"Astronomia";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Astronomy()
 {
@@ -859,12 +859,12 @@ func void Use_Book_Astronomy()
 ///******************************************************************************************
 instance ItWr_Book_Focus (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_Book_Focus;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_05.3ds";
+	on_state[0]				=	Use_Book_Focus;
 	
-	description		=	"Kamienie ogniskuj¹ce";
-	COUNT[5]		=	value;
+	description				=	"Kamienie ogniskuj¹ce";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Focus()
 {
@@ -900,12 +900,12 @@ func void Use_Book_Focus()
 ///******************************************************************************************
 instance ItWr_Book_Golem (ItemPR_Book)
 {
-	value 			=	200;
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_Book_Golem;
+	value 					=	200;
+	visual 					=	"ItWr_Book_02_05.3ds";
+	on_state[0]				=	Use_Book_Golem;
 	
-	description		=	"Arcanum Golum";
-	COUNT[5]		=	value;
+	description				=	"Arcanum Golum";
+	COUNT[5]				=	value;
 };
 func void Use_Book_Golem()
 {

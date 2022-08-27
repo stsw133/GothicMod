@@ -13,12 +13,12 @@ prototype Mst_Default_MinecrawlerWarrior (C_Npc)
 	B_SetAttributesToLevel (self, 20);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,11 +38,19 @@ prototype Mst_Default_MinecrawlerWarrior (C_Npc)
 func void B_SetVisuals_MinecrawlerWarrior()
 {
 	Mdl_SetVisual		(self, "Crawler.mds");
-	Mdl_SetVisualBody	(self, "Cr2_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Cr2_Body", 0, default, "", default, default, -1);
+};
+func void B_SetVisuals_DesertcrawlerWarrior()
+{
+	Mdl_SetVisual		(self, "Crawler.mds");
+	Mdl_SetVisualBody	(self, "Cr2_Body", 1, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance MinecrawlerWarrior (Mst_Default_MinecrawlerWarrior)
 {
-	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_MinecrawlerWarrior();
+};
+instance DesertcrawlerWarrior (Mst_Default_MinecrawlerWarrior)
+{
+	B_SetVisuals_DesertcrawlerWarrior();
 };

@@ -4,7 +4,9 @@
 
 const int SPL_Cost_Inflate				=	90;
 const int SPL_Damage_Inflate			=	5;
-const int SPL_Time_Inflate				=	19;
+const int SPL_MinLvl_Inflate			=	5;
+const int SPL_Scaling_Inflate			=	20;
+const int SPL_Time_Inflate				=	20;
 
 ///******************************************************************************************
 instance Spell_Inflate (C_Spell_Proto)
@@ -17,19 +19,20 @@ instance Spell_Inflate (C_Spell_Proto)
 
 func int Spell_Logic_Inflate (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_Inflate/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Inflate/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Inflate)
 	{
-		if (other.level+10 - self.level - Npc_GetPowerPoints(self)/50 <= 0)
+		if ((other.level - SPL_MinLvl_Inflate - (self.attribute[ATR_POWER] * SPL_Scaling_Inflate / 100) * 100 / SPL_Scaling_Inflate) <= 0)
 		|| (!Npc_IsPlayer(self))
 		{
 			return SPL_SENDCAST;
 		}
 		else
 		{
-			Print(ConcatStrings(IntToString(other.level+10 - self.level - Npc_GetPowerPoints(self)/50), " poziomów za mało aby odnieść skutek!"));
+			Print(ConcatStrings(IntToString((other.level - SPL_MinLvl_Inflate - (self.attribute[ATR_POWER] * SPL_Scaling_Inflate / 100) * 100 / SPL_Scaling_Inflate)), "% dod. mocy za mało aby odnieść skutek!"));
 		};
 	};
+	
 	return SPL_SENDSTOP;
 };
 

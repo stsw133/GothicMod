@@ -6,14 +6,14 @@ instance Fakescroll (C_Item)
 	name 					=	"Kawa³ek papieru";
 	mainflag 				=	ITEM_KAT_DOCS;
 	flags 					=	ITEM_MULTI;
-
+	
 	hp 						=	5;
 	hp_max 					=	5;
 	weight 					=	1;
-
+	
 	visual 					=	"Fakescroll.3ds";
 	scemeName				=	"MAPSEALED";
-
+	
 	description				= 	name;
 };
 ///******************************************************************************************
@@ -93,10 +93,10 @@ instance ItMi_NA_Shit (C_Item)
 	name					= 	"Gówno";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_Shit.3ds";
 	material 				=	MAT_LEATHER;
-
+	
 	description				= 	name;
 };
 instance ItMi_NA_Gramophone (C_Item)
@@ -104,10 +104,10 @@ instance ItMi_NA_Gramophone (C_Item)
 	name					= 	"Gramofon";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_Gramophone.3ds";
 	material 				=	MAT_WOOD;
-
+	
 	description				= 	name;
 };
 instance ItMi_NA_Phone (C_Item)
@@ -115,10 +115,10 @@ instance ItMi_NA_Phone (C_Item)
 	name					= 	"Komórka";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_Phone.3ds";
 	material 				=	MAT_METAL;
-
+	
 	description				= 	name;
 };
 instance ItMi_NA_Telephone (C_Item)
@@ -126,10 +126,10 @@ instance ItMi_NA_Telephone (C_Item)
 	name					= 	"Telefon";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_Telephone.3ds";
 	material 				=	MAT_METAL;
-
+	
 	description				= 	name;
 };
 instance ItMi_NA_TV (C_Item)
@@ -137,10 +137,10 @@ instance ItMi_NA_TV (C_Item)
 	name					= 	"Telewizor";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_TV.3ds";
 	material 				=	MAT_METAL;
-
+	
 	description				= 	name;
 };
 instance ItMi_NA_Vodka (C_Item)
@@ -148,10 +148,10 @@ instance ItMi_NA_Vodka (C_Item)
 	name					= 	"Wódka";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-
+	
 	visual 					=	"ItMi_NA_Vodka.3ds";
 	material 				=	MAT_GLAS;
-
+	
 	description				= 	name;
 };
 ///******************************************************************************************
@@ -160,10 +160,10 @@ instance ItMe_iPenta_blue (C_Item)
 	name 					=	"Kr¹g magiczny";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MISSION;
-
+	
 	visual 					=	"ITME_IPENTA.3DS";
 	effect					=	"spellfx_ipenta_blue";
-
+	
 	description				= 	name;
 };
 ///******************************************************************************************
@@ -172,9 +172,9 @@ instance GreenScreen (C_Item)
 	name					=	"GreenScreen";
 	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MISSION;
-
+	
 	visual					=	"GreenScreen.3DS";
 	material				=	MAT_STONE;
-
+	
 	description				=	name;
 };

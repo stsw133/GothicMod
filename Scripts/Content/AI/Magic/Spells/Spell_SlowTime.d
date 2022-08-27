@@ -2,10 +2,8 @@
 ///	SPL_SlowTime
 ///******************************************************************************************
 
-const int SPL_Cost_SlowTime				=	300;
-const int SPL_Time_SlowTime				=	15;
-
-var int SPL_IsEnabled_SlowTime;
+const int SPL_Cost_SlowTime				=	200;
+const int SPL_Time_SlowTime				=	10;
 
 ///******************************************************************************************
 instance Spell_SlowTime (C_Spell_Proto)
@@ -17,11 +15,12 @@ instance Spell_SlowTime (C_Spell_Proto)
 
 func int Spell_Logic_SlowTime (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_SlowTime/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_SlowTime/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_SlowTime)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

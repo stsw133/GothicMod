@@ -3,8 +3,8 @@
 ///******************************************************************************************
 func void B_AssessDamage()
 {
-	var C_NPC Quarho; Quarho = Hlp_GetNpc(NONE_ADDON_111_Quarhodron);
-	var C_NPC Rhadem; Rhadem = Hlp_GetNpc(NONE_ADDON_112_Rhademes);
+	var C_Npc Quarho; Quarho = Hlp_GetNpc(NONE_ADDON_111_Quarhodron);
+	var C_Npc Rhadem; Rhadem = Hlp_GetNpc(NONE_ADDON_112_Rhademes);
 	
 	if ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Quarho)))
 	|| ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Rhadem)))
@@ -25,7 +25,12 @@ func void B_AssessDamage()
 		SelfFightTeach_ADD (other, other.weapon-2);
 	};
 	
-	/// AIVARS
+	if (Npc_IsPlayer(other) || Npc_IsPlayer(self))
+	{
+		foodTime /= 2;
+	};
+	
+	/// ...
 	if (self.aivar[AIV_ArenaFight] == AF_AFTER)
 	{
 		self.aivar[AIV_ArenaFight] = AF_AFTER_PLUS_DAMAGE;
@@ -33,7 +38,7 @@ func void B_AssessDamage()
 	
 	if (self.aivar[AIV_EnemyOverride])
 	{
-		var C_NPC RAV; RAV = Hlp_GetNpc(BDT_1090_Addon_Raven);
+		var C_Npc RAV; RAV = Hlp_GetNpc(BDT_1090_Addon_Raven);
 		if (Hlp_GetInstanceID(self) == (Hlp_GetInstanceID(RAV)))
 		{
 			self.aivar[AIV_EnemyOverride] = false;

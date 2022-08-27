@@ -13,12 +13,12 @@ prototype Mst_Default_Golem (C_Npc)
 	B_SetAttributesToLevel (self, 40);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -117,12 +117,12 @@ instance CrystalGolem (Mst_Default_Golem)
 	B_SetAttributesToLevel (self, 30);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	B_SetVisuals_CrystalGolem();
 };
@@ -215,12 +215,12 @@ instance Golem_Magic (Mst_Default_Golem)
 	B_SetAttributesToLevel (self, 30);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL - 10 * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL + 10 * AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL / 3;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 5;
 	
 	B_SetVisuals_Golem();
 	Mdl_SetModelScale (self, 0.9, 0.9, 0.9);

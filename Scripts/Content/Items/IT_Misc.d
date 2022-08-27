@@ -35,6 +35,7 @@ instance ItMi_IronBar (ItemPR_Nugget)
 	description				= 	name;
 	COUNT[5]				= 	value;
 };
+///******************************************************************************************
 instance ItMi_SilverNugget (ItemPR_Nugget)
 {
 	name 					=	"Bry³ka srebra";
@@ -53,6 +54,7 @@ instance ItMi_GoldNugget_Addon (ItemPR_Nugget)
 	description				= 	name;
 	COUNT[5]				=	value;
 };
+///******************************************************************************************
 instance ItMi_Nugget (ItemPR_Nugget)
 {
 	name 					=	"Magiczna bry³ka";
@@ -84,16 +86,6 @@ instance ItMi_Coal (ItemPR_Nugget)
 	COUNT[5]				= 	value;
 	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
 };
-instance ItMi_Basalt (ItemPR_Nugget)
-{
-	name 					=	"Bazalt";
-	value 					=	10;
-	visual 					=	"ItMi_Basalt.3ds";
-	
-	description				= 	name;
-	COUNT[5]				= 	value;
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
-};
 instance ItMi_Quartz (ItemPR_Nugget)
 {
 	name 					=	"Kwarcyt";
@@ -104,6 +96,25 @@ instance ItMi_Quartz (ItemPR_Nugget)
 	COUNT[5]				= 	value;
 	INV_ZBIAS				=	INVCAM_ENTF_RING_STANDARD;
 };
+instance ItMi_Stone (ItemPR_Nugget)
+{
+	name 					=	"Kamieñ";
+	value 					=	2;
+	visual 					=	"ItMi_Stone.3ds";
+	
+	description				= 	name;
+	COUNT[5]				= 	value;
+	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
+};
+instance ItMi_Saltpeter (ItemPR_Nugget)
+{
+	name 					=	"Saletra";
+	value 					=	60;
+	visual 					=	"ItFo_Sugar.3DS";
+	
+	description				= 	name;
+	COUNT[5]				= 	value;
+};
 instance ItMi_Sulfur (ItemPR_Nugget)
 {
 	name 					=	"Siarka";
@@ -113,6 +124,9 @@ instance ItMi_Sulfur (ItemPR_Nugget)
 	description				= 	name;
 	COUNT[5]				= 	value;
 };
+///******************************************************************************************
+///	Crystals
+///******************************************************************************************
 instance ItMi_RockCrystal (ItemPR_Nugget)
 {
 	name 					=	"Kryszta³";
@@ -128,28 +142,9 @@ instance ItMi_FireCrystal (ItemPR_Nugget)
 	name 					=	"Kryszta³";
 	value 					=	50;
 	visual 					=	"ItMi_FireCrystal.3ds";
-	effect					=	"SPELLFX_CRYSTALGLOW";
+	effect					=	"SPELLFX_FIRESWORD";
 	
 	description				= 	"Ognisty kryszta³";
-	COUNT[5]				= 	value;
-};
-instance ItMi_BlackCrystal (ItemPR_Nugget)
-{
-	name 					=	"Kryszta³";
-	value 					=	50;
-	visual 					=	"ItMi_BlackCrystal.3ds";
-	effect					=	"SPELLFX_CRYSTALGLOW";
-	
-	description				= 	"Czarny kryszta³";
-	COUNT[5]				= 	value;
-};
-instance ItMi_Saltpeter (ItemPR_Nugget)
-{
-	name 					=	"Saletra";
-	value 					=	60;
-	visual 					=	"ItMi_Saltpeter.3DS";
-	
-	description				= 	name;
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
@@ -195,15 +190,15 @@ instance ItMi_Shell (ItemPR_Misc)
 func void Use_Shell()
 {
 	Shell_Opener += 1;
-	if (Shell_Opener % 6 == 0 && Shell_Opener % 25 != 0)
-	{
-		B_PlayerFindItem (ItMi_WhitePearl, 1);
-	}
-	else if (Shell_Opener % 25 == 0)
+	if (Shell_Opener % 25 == 0)
 	{
 		B_PlayerFindItem (ItMi_DarkPearl,1);
 	}
-	else 
+	else if (Shell_Opener % 6 == 0)
+	{
+		B_PlayerFindItem (ItMi_WhitePearl, 1);
+	}
+	else
 	{
 		//B_Say_Overlay (self, self, "$NOTHINGTOGET02");
 		AI_PrintScreen (PRINT_NOTHINGTOGET02, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);
@@ -212,16 +207,6 @@ func void Use_Shell()
 ///******************************************************************************************
 ///	Alchemy
 ///******************************************************************************************
-instance ItMi_Blood (ItemPR_Misc)
-{
-	name 					=	"Krew";
-	value 					=	15;
-	visual 					=	"ItAt_DragonBlood.3DS";
-	material 				=	MAT_GLAS;
-	
-	description				= 	name;
-	COUNT[5]				=	value;
-};
 instance ItMi_HolyWater (ItemPR_Misc)
 {
 	name 					=	"Woda œwiêcona";
@@ -285,10 +270,20 @@ instance ItMi_Joint (ItemPR_Joint)
 	on_state[0]				= 	Use_ItMi_Joint;
 	
 	description				= 	"Skrêt bagiennego ziela";
-	TEXT[1]					= 	"Podwaja poziom obecnej many.";
+	TEXT[1]					= 	"Przyznaje manê w wysokoœci";
+	TEXT[2]					= 	"50% obecnej many kosztem";
+	TEXT[3]					= 	"5 punktów ¿ycia.";
 	COUNT[5]				= 	value;
 };
-func void Use_ItMi_Joint() { Npc_ChangeAttribute (self, ATR_MANA, self.attribute[ATR_MANA]/2); };
+func void Use_ItMi_Joint()
+{
+	if (Npc_IsPlayer(self))
+	{
+		B_GivePlayerXP(5);
+	};
+	Npc_ChangeAttribute (self, ATR_MANA, self.attribute[ATR_MANA] / 2);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -5);
+};
 
 instance ItMi_SleJoint (ItemPR_Joint)
 {
@@ -296,10 +291,20 @@ instance ItMi_SleJoint (ItemPR_Joint)
 	on_state[0]				= 	Use_ItMi_SleJoint;
 	
 	description				= 	"Skrêt 'Zielonego Nowicjusza'";
-	TEXT[1]					= 	"Uzupe³nia ca³¹ manê.";
+	TEXT[1]					= 	"Przyznaje manê w wysokoœci";
+	TEXT[2]					= 	"200% obecnej many kosztem";
+	TEXT[3]					= 	"20 punktów ¿ycia.";
 	COUNT[5]				= 	value;
 };
-func void Use_ItMi_SleJoint() { Npc_ChangeAttribute (self, ATR_MANA, self.attribute[ATR_MANA_MAX]); };
+func void Use_ItMi_SleJoint()
+{
+	if (Npc_IsPlayer(self))
+	{
+		B_GivePlayerXP(20);
+	};
+	Npc_ChangeAttribute (self, ATR_MANA, self.attribute[ATR_MANA] * 2);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -20);
+};
 
 ///******************************************************************************************
 ///	Swordraw & Swordblade

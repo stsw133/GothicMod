@@ -506,7 +506,7 @@ func void Use_Joint_Rezept_01()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "(...) Te ³odygi mo¿na ca³kiem nieŸle zwijaæ, ale nie ma porównania z tym, co mieliœmy w obozie na bagnie.");
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_PrintLines	(nDocID,  0, "Jeœli wezmê wyci¹g z dwóch ³odyg bagiennego ziela i zmieszam go z polnym rdestem, mo¿na to bêdzie porównaæ do zielonego nowicjusza.");
+				Doc_PrintLines	(nDocID,  0, "Jeœli wezmê wyci¹g z bagiennego ziela i zmieszam go z polnym rdestem, mo¿na to bêdzie porównaæ do zielonego nowicjusza.");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Zielony nowicjusz ³agodzi wszystkie bóle i oczyszcza umys³.");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -643,8 +643,8 @@ func void Use_LouRezept2()
 				Doc_SetFont 	(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "Podwójny M³ot Lou");
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_PrintLines	(nDocID,  0, "WeŸ stary, dobry M³ot Lou i przedestyluj go jeszcze raz.");
-				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLines	(nDocID,  0, "WeŸ stary, dobry M³ot Lou i przedestyluj go jeszcze raz");
+				Doc_PrintLine	(nDocID,  0, "z u¿yciem dodatkowej butelki rumu.");
 				Doc_PrintLines	(nDocID,  0, "Ten wywar mo¿e przyrz¹dziæ jedynie ktoœ doœwiadczony w destylacji.");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Profan mo¿e od tego nie tylko oœlepn¹æ, ale te¿ ca³kiem wyzion¹æ ducha.");
@@ -1075,6 +1075,8 @@ func void Use_BanditLetter()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
+var int Knows_Bloodfly;
+
 instance ItWr_Bloody_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Notatka";
@@ -1166,7 +1168,7 @@ instance ItWr_CorneliusTagebuch_Mis (ItemPR_MissionDoc)
 func void Use_CorneliusTagebuch()
 {
 	Cornelius_IsLiar = true;
-	B_LogEntry (TOPIC_RESCUEBENNET, "Dziennik jest dowodem którego potrzebujê, aby uniewinniæ Benneta.");	
+	B_LogEntry (TOPIC_RESCUEBENNET, "Dziennik jest dowodem którego potrzebujê, aby uniewinniæ Benneta.");
 	
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2370,8 +2372,8 @@ func void Use_XardasSeamapBook_Mis()
 					Doc_SetFont 	(nDocID,  1, FONT_Book);
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLines	(nDocID,  1, "...Upad³y paladyn nie reaguje na ¿adne bodŸce. Jego zbrojê i inne przedmioty schowa³em w tylnej komorze. Drzwi mo¿na otworzyæ tylko od wewn¹trz, wiêc stworzy³em na tê okazjê specjaln¹ runê teleportacji. Instrukcje s¹ w almanachu, by móg³ je znaleŸæ Wybraniec...");
-				};
-				if (hero.guild == GIL_KDF)
+				}
+				else if (hero.guild == GIL_KDF)
 				{
 					Doc_PrintLines	(nDocID,  0, "...Znaki s¹ jasne! Gdy przybêdzie Wybrany, przyda siê mu ka¿da pomoc. Beliar i tak jest ju¿ zbyt silny. Zgromadzi³em tu na wszelki wypadek kilka przydatnych artefaktów. Podejrzewam, ¿e Wybraniec bêdzie jednym z nas,");
 					
@@ -2381,8 +2383,8 @@ func void Use_XardasSeamapBook_Mis()
 					Doc_PrintLines	(nDocID,  1, "dlatego spisa³em dla niego instrukcje w almanachu.");
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLines	(nDocID,  1, "...Nie mam ju¿ z³udzeñ. Jesteœmy bezbronni wobec wyroków losu. Gdy Beliar odpowiednio uroœnie w si³ê, spróbuje przej¹æ w³adzê nad ca³ym œwiatem. Muszê znaleŸæ Wybrañca!");
-				};
-				if (hero.guild == GIL_DJG)
+				}
+				else if (hero.guild == GIL_DJG)
 				{
 					Doc_PrintLines	(nDocID,  0, "...Wybuchnie wojna, która zadecyduje o losach œwiata. Chyba jestem jedynym, który potrafi odczytaæ znaki. Pozostali po prostu je ignoruj¹. Wybraniec nadejdzie, a jego przyjœcie bêdzie oznaczaæ pocz¹tek wojny. Odwieczna rywalizacja mo¿e zostaæ rozstrzygniêta.");
 					

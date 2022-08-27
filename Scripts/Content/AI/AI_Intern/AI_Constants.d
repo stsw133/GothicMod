@@ -57,7 +57,7 @@ const int	AR_KILL						= 19;
 const int AIV_Ransacked						=	10;
 
 /// ------ GuardPassage ------
-const int AIV_GuardPassage_Status			=	11;	///changed!!!
+const int AIV_GuardPassage_Status			=	11;	/// changed!!!
 const int	GP_NONE						= 0;
 const int	GP_FirstWarnGiven			= 1;
 const int	GP_SecondWarnGiven			= 2;
@@ -72,7 +72,7 @@ const int	NotInPos					= 1;
 const int	NotInPos_Walk				= 2;
 
 /// ------ Defeated or Killed by Player ------
-const int AIV_DefeatedByPlayer				=	14;	///changed!!!
+const int AIV_DefeatedByPlayer				=	14;	/// changed!!!
 const int	DBP_NONE					= 0;
 const int	DBP_Defeated				= 1;
 const int	DBP_Killed					= 2;
@@ -83,8 +83,8 @@ const int AIV_VictoryXPGiven				=	15;
 const int AIV_LoadGame						=	16;
 
 /// ------ Teach & trade ------
-const int AIV_CanTeach						=	17;	///new!!!
-const int AIV_CanTrade						=	18;	///new!!!
+const int AIV_CanTeach						=	17;	/// new!!!
+const int AIV_CanTrade						=	18;	/// new!!!
 
 /// ------ Spells ------
 const int AIV_SpellLevel					=	19;
@@ -276,7 +276,7 @@ const int AIV_ChapterInv					=	49;
 const int AIV_DeathInvGiven					=	50;
 
 /// ------ MagicUser ------
-const int AIV_MagicUser						=	51;	///changed!!!
+const int AIV_MagicUser						=	51;	/// changed!!!
 const int	MAGIC_NEVER					= 0;
 const int	MAGIC_MYS					= 1;
 const int	MAGIC_GEO					= 2;
@@ -289,16 +289,16 @@ const int	MAGIC_OTHER					= 6;
 const int AIV_DropDeadAndKill				=	52;
 
 /// ------ In-Fight ------
-const int AIV_ComboHit						=	53;	///new!!!
+const int AIV_ComboHit						=	53;	/// new!!!
 
 /// ------ Ignoring ------
-const int AIV_IgnoreCrime					=	54;	///changed!!!
+const int AIV_IgnoreCrime					=	54;	/// changed!!!
 const int	IGNORE_Murder				= 1 << 0;
 const int	IGNORE_Theft				= 1 << 1;
 const int	IGNORE_Sheepkiller			= 1 << 2;
 const int	IGNORE_Fear					= 1 << 3;
 
-const int AIV_IgnoreDisguise				=	55;	///changed!!!
+const int AIV_IgnoreDisguise				=	55;	/// changed!!!
 const int	IGNORE_Armor				= 1 << 0;
 const int	IGNORE_FakeGuild			= 1 << 1;
 
@@ -326,11 +326,11 @@ const int AIV_FightDistCancel				=	63;
 const int AIV_LastFightComment				=	64;
 
 /// ------ Energy ------
-const int AIV_Energy						=	65;	///new!!!
-const int AIV_Energy_MAX					=	66;	///new!!!
+const int AIV_Energy						=	65;	/// new!!!
+const int AIV_Energy_MAX					=	66;	/// new!!!
 
 /// ------ Guild ------
-const int AIV_GuildLevel					=	67;	///new!!!
+const int AIV_GuildLevel					=	67;	/// new!!!
 
 /// ------ Story ------
 const int AIV_NoFightParker					=	68;
@@ -346,7 +346,7 @@ const int	FOOD_Bacon					= 2;
 const int	FOOD_Bread					= 3;
 
 /// ------ Visual ------
-const int AIV_Race	 						=	73;	///new!!!
+const int AIV_Race	 						=	73;	/// new!!!
 const int	RACE_Human					= 0;
 const int	RACE_Elf					= 1;	/// non-avaible yet
 const int	RACE_Dwarf					= 2;	/// non-avaible yet
@@ -460,7 +460,7 @@ const int PERC_DIST_MONSTER_ACTIVE_MAX		=	1500;
 const int PERC_DIST_ORC_ACTIVE_MAX			=	2500;
 const int PERC_DIST_DRAGON_ACTIVE_MAX		=	3500;
 
-const int FIGHT_DIST_MONSTER_ATTACKRANGE	=	700;	
+const int FIGHT_DIST_MONSTER_ATTACKRANGE	=	700;
 const int FIGHT_DIST_MONSTER_FLEE			=	300;
 const int FIGHT_DIST_DRAGON_MAGIC			=	700;
 
@@ -486,7 +486,7 @@ const int FIGHT_DIST_RANGED_INNER		=	900;
 const int FIGHT_DIST_RANGED_OUTER		=	1000;
 const int FIGHT_DIST_CANCEL				=	3500;
 
-const int WATCHFIGHT_DIST_MIN			=	400;	//300
+const int WATCHFIGHT_DIST_MIN			=	400;
 const int WATCHFIGHT_DIST_MAX			=	2000;
 
 const int ZivilAnquatschDist 			=	400;
@@ -567,18 +567,17 @@ const int LOOP_END				=	1;
 
 ///******************************************************************************************
 
-const int START_LEVEL			=	1;
 const int MAX_LEVEL				=	100;
 const int XP_PER_LEVEL			=	500;
 const int XP_PER_VICTORY		=	10;
 
-const int HP_PER_LEVEL			=	0;	//12
+const int HP_PER_LEVEL			=	0;
 const int LP_PER_LEVEL			=	10;
 const int GOLD_PER_LP			=	20;
 
-const int HP_PER_LP				=	5;
-const int AR_PER_LEVEL			=	5;
-const int MR_PER_LEVEL			=	3;
+const int HP_PER_LP				=	4;
+const int AR_PER_LEVEL			=	4;
+const int MR_PER_LEVEL			=	4;
 
 ///******************************************************************************************
 
@@ -800,7 +799,6 @@ const int Face_Normal67				=	167;		/// N - - -
 const int Face_Normal68				=	168;		/// N - - -
 const int Face_Normal69				=	169;		/// N - - -
 const int Face_Normal70				=	170;		/// N - - -
-
 const int Face_Normal71				=	171;		/// N - - -
 const int Face_Normal72				=	172;		/// N - - -
 const int Face_Normal73				=	173;		/// N - - -
@@ -883,7 +881,7 @@ const int FaceBaby_Granny			=	56;		/// - P - -
 
 /// ------ Babe Normal Faces 100-199 ------
 const int FaceBabe_Normal00			= 	100;		/// N P L B
-const int FaceBabe_Normal01			= 	101;		/// N - L -
+const int FaceBabe_Normal01			= 	101;		/// N - - -
 const int FaceBabe_Normal02			= 	102;		/// N - - -
 const int FaceBabe_Normal03			= 	103;		/// N - - -
 const int FaceBabe_Normal04			= 	104;		/// N - - -
@@ -894,6 +892,7 @@ const int FaceBabe_Normal08			= 	108;		/// N - - -
 const int FaceBabe_Normal09			= 	109;		/// N - - -
 const int FaceBabe_Normal10			= 	110;		/// N - - -
 const int FaceBabe_Normal11			= 	111;		/// N - - -
+const int FaceBabe_Normal12			= 	112;		/// N - - -
 
 /// ------ FaceMAX ------
 const int FaceTex_MAX			=	225;

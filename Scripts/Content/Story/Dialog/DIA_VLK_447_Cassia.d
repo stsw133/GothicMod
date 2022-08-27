@@ -722,7 +722,7 @@ FUNC VOID DIA_Cassia_Belohnung_Info()
 	
 	Info_AddChoice (DIA_Cassia_Belohnung,"400 sztuk z³ota.",DIA_Cassia_Belohnung_Gold);
 	Info_AddChoice (DIA_Cassia_Belohnung,"4 eliksiry lecznicze",DIA_Cassia_Belohnung_Trank);
-	Info_AddChoice (DIA_Cassia_Belohnung, NAME_ADDON_CASSIASBELOHNUNGSRING ,DIA_Cassia_Belohnung_Ring);
+	Info_AddChoice (DIA_Cassia_Belohnung, "Pierœcieñ ¯ywotnoœci" ,DIA_Cassia_Belohnung_Ring);
 	
 };
 FUNC VOID DIA_Cassia_Belohnung_Gold()

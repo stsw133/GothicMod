@@ -23,7 +23,7 @@ instance VLK_479_Lucy (Npc_Default)
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe1", FaceBabe_Normal11, Teeth_Pretty, ITAR_WD_L_03);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe1", FaceBabe_Normal11, Teeth_Pretty, ITAR_Babe_BAU_00);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
 	/// ------ Rtn ------

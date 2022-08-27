@@ -29,9 +29,9 @@ const int ATR_REGENERATEMP			=	7;
 
 const int ATR_INDEX_MAX				=	8;
 
-const int ATR_ENERGY_MAX			=	9;	///new!!!
-const int ATR_LIFESTEAL				=	10;	///new!!!
-const int ATR_POWER					=	26;	///new!!!
+const int ATR_POWER					=	7;	/// new!!!
+const int ATR_ENERGY_MAX			=	8;	/// new!!!
+const int ATR_LIFESTEAL				=	9;	/// new!!!
 
 ///******************************************************************************************
 ///	NPC FLAGS
@@ -40,7 +40,7 @@ const int ATR_POWER					=	26;	///new!!!
 const int NPC_FLAG_FRIEND			=	1 << 0;
 const int NPC_FLAG_IMMORTAL			=	1 << 1;
 const int NPC_FLAG_GHOST			=	1 << 2;
-const int NPC_FLAG_IMPORTANT		=	1 << 3;	///new!!!
+const int NPC_FLAG_IMPORTANT		=	1 << 3;	/// new!!!
 
 ///******************************************************************************************
 ///	FIGHT MODES
@@ -110,42 +110,42 @@ const int ITM_TEXT_MAX				=	6;
 ///******************************************************************************************
 
 /// categories (mainflag)
-const int ITEM_KAT_NONE		= 1 <<  0;
-const int ITEM_KAT_NF		= 1 <<  1;
-const int ITEM_KAT_FF		= 1 <<  2;
-const int ITEM_KAT_MUN		= 1 <<  3;	/// MULTI
-const int ITEM_KAT_ARMOR	= 1 <<  4;
-const int ITEM_KAT_FOOD		= 1 <<  5;	/// MULTI
-const int ITEM_KAT_DOCS		= 1 <<  6;
-const int ITEM_KAT_POTIONS	= 1 <<  7;
-const int ITEM_KAT_LIGHT	= 1 <<  8;
-const int ITEM_KAT_RUNE		= 1 <<  9;
-const int ITEM_KAT_MAGIC	= 1 << 31;
-const int ITEM_KAT_KEYS		= ITEM_KAT_NONE;
+const int ITEM_KAT_NONE			= 1 <<  0;
+const int ITEM_KAT_NF			= 1 <<  1;
+const int ITEM_KAT_FF			= 1 <<  2;
+const int ITEM_KAT_MUN			= 1 <<  3;	/// MULTI
+const int ITEM_KAT_ARMOR		= 1 <<  4;
+const int ITEM_KAT_FOOD			= 1 <<  5;	/// MULTI
+const int ITEM_KAT_DOCS			= 1 <<  6;
+const int ITEM_KAT_POTIONS		= 1 <<  7;
+const int ITEM_KAT_LIGHT		= 1 <<  8;
+const int ITEM_KAT_RUNE			= 1 <<  9;
+const int ITEM_KAT_MAGIC		= 1 << 31;
+const int ITEM_KAT_KEYS			= ITEM_KAT_NONE;
 /// weapon type (flags)
-const int ITEM_DAG			= 1 << 13;	/// OBSOLETE!
-const int ITEM_SWD			= 1 << 14;
-const int ITEM_AXE			= 1 << 15;
-const int ITEM_2HD_SWD		= 1 << 16;
-const int ITEM_2HD_AXE		= 1 << 17;
-const int ITEM_SHIELD		= 1 << 18;	/// OBSOLETE!
-const int ITEM_BOW			= 1 << 19;
-const int ITEM_CROSSBOW		= 1 << 20;
+const int ITEM_DAG				= 1 << 13;	/// OBSOLETE!
+const int ITEM_SWD				= 1 << 14;
+const int ITEM_AXE				= 1 << 15;
+const int ITEM_2HD_SWD			= 1 << 16;
+const int ITEM_2HD_AXE			= 1 << 17;
+const int ITEM_SHIELD			= 1 << 18;	/// OBSOLETE!
+const int ITEM_BOW				= 1 << 19;
+const int ITEM_CROSSBOW			= 1 << 20;
 /// magic type (flags)
-const int ITEM_RING			= 1 << 11;
-const int ITEM_AMULET		= 1 << 22;
-const int ITEM_BELT			= 1 << 24;
+const int ITEM_RING				= 1 << 11;
+const int ITEM_AMULET			= 1 << 22;
+const int ITEM_BELT				= 1 << 24;
 /// attributes (flags)
-const int ITEM_DROPPED 		= 1 << 10;	/// INTERNAL!
-const int ITEM_MISSION 		= 1 << 12;
-const int ITEM_MULTI		= 1 << 21;
-const int ITEM_NFOCUS		= 1 << 23;	/// INTERNAL!
-const int ITEM_CREATEAMMO	= 1 << 25;
-const int ITEM_NSPLIT		= 1 << 26;
-const int ITEM_DRINK		= 1 << 27;	/// OBSOLETE!
-const int ITEM_TORCH		= 1 << 28;
-const int ITEM_THROW		= 1 << 29;	/// OBSOLETE!
-const int ITEM_ACTIVE		= 1 << 30;	/// INTERNAL!
+const int ITEM_DROPPED 			= 1 << 10;	/// INTERNAL!
+const int ITEM_MISSION 			= 1 << 12;
+const int ITEM_MULTI			= 1 << 21;
+const int ITEM_NFOCUS			= 1 << 23;	/// INTERNAL!
+const int ITEM_CREATEAMMO		= 1 << 25;
+const int ITEM_NSPLIT			= 1 << 26;
+const int ITEM_DRINK			= 1 << 27;	/// OBSOLETE!
+const int ITEM_TORCH			= 1 << 28;
+const int ITEM_THROW			= 1 << 29;	/// OBSOLETE!
+const int ITEM_ACTIVE			= 1 << 30;	/// INTERNAL!
 
 ///******************************************************************************************
 ///	DAMAGE TYPES v2.0 (INDEX)
@@ -197,17 +197,17 @@ const int PROT_INDEX_MAX			=	DAM_INDEX_MAX;
 
 const int NPC_ATTACK_FINISH_DISTANCE					=	180;
 const int NPC_BURN_TICKS_PER_DAMAGE_POINT				=	1000;
-const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	50;
+const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	20;
 const int DAM_CRITICAL_MULTIPLIER						=	2;
 
 const int BLOOD_SIZE_DIVISOR							=	1000;
 const int BLOOD_DAMAGE_MAX								=	200;
 
-const int DAMAGE_FLY_CM_MAX								=	2000;
-const int DAMAGE_FLY_CM_MIN	                            =	300;
+const int DAMAGE_FLY_CM_MAX								=	2250;
+const int DAMAGE_FLY_CM_MIN	                            =	250;
 const int DAMAGE_FLY_CM_PER_POINT						=	5;
 
-const int NPC_DAM_DIVE_TIME								=	100;
+const int NPC_DAM_DIVE_TIME								=	20;
 
 const int IMMUNE										=	-1;
 
@@ -217,9 +217,9 @@ const float NPC_COLLISION_CORRECTION_SCALER				=	0.75;
 ///	SENSES
 ///******************************************************************************************
 
-const int SENSE_SEE										=	1 << 0;
-const int SENSE_HEAR									=	1 << 1;
-const int SENSE_SMELL									=	1 << 2;
+const int SENSE_SEE					=	1 << 0;
+const int SENSE_HEAR				=	1 << 1;
+const int SENSE_SMELL				=	1 << 2;
 
 ///******************************************************************************************
 ///	PERCEPTIONS	
@@ -275,36 +275,36 @@ const int NEWS_SPREAD_NPC_SAME_GUILD_VICTIM				=	4;
 ///	NEWS CONSTANTS && INFO STATUS
 ///******************************************************************************************
 
-const int IMPORTANT								=	1;
+const int IMPORTANT					=	1;
 
-const int INF_TELL								=	0;
-const int INF_UNKNOWN							=	2;
+const int INF_TELL					=	0;
+const int INF_UNKNOWN				=	2;
 
 ///******************************************************************************************
 ///	LOG TYPES && MISSION STATUS
 ///******************************************************************************************
 
-const int LOG_MISSION							=	0;
-const int LOG_NOTE								=	1;
+const int LOG_MISSION				=	0;
+const int LOG_NOTE					=	1;
 
 /// ACTIVE
-const int LOG_RUNNING							=	1;
-const int LOG_SUCCESS							=	2;
-const int LOG_FAILED							=	3;
-const int LOG_OBSOLETE							=	4;
+const int LOG_RUNNING				=	1;
+const int LOG_SUCCESS				=	2;
+const int LOG_FAILED				=	3;
+const int LOG_OBSOLETE				=	4;
 
 /// PASSIVE
-const int LOG_CANCELED							=	5;
-const int LOG_PROGRESS							=	6;
+const int LOG_CANCELED				=	5;
+const int LOG_PROGRESS				=	6;
 
 ///******************************************************************************************
 ///	ATTITUDES
 ///******************************************************************************************
 
-const int ATT_HOSTILE							=	0;
-const int ATT_ANGRY								=	1;
-const int ATT_NEUTRAL							=	2;
-const int ATT_FRIENDLY							=	3;
+const int ATT_HOSTILE				=	0;
+const int ATT_ANGRY					=	1;
+const int ATT_NEUTRAL				=	2;
+const int ATT_FRIENDLY				=	3;
 
 ///******************************************************************************************
 ///	GUILDS
@@ -316,14 +316,14 @@ const int GIL_MIL						=	2;	/// GIL_GRD
 const int GIL_VLK						=	3;
 const int GIL_KDF						=	4;	/// GIL_MAG
 const int GIL_NOV						=	5;
-const int GIL_DJG						=	6;	/// GIL_DRH
-const int GIL_SLD						=	7;	/// GIL_ASA
+const int GIL_DJG						=	6;
+const int GIL_SLD						=	7;	/// for orc sld
 const int GIL_BAU						=	8;
-const int GIL_BDT						=	9;
+const int GIL_BDT						=	9;	/// bandits + pirates
 const int GIL_STRF						=	10;
 const int GIL_DMT						=	11;
 const int GIL_OUT						=	12;
-const int GIL_PIR						=	13;
+const int GIL_PIR						=	13;	/// GIL_ASA
 const int GIL_KDW						=	14;
 const int GIL_EMPTY_D					=	15;
 
@@ -348,17 +348,17 @@ const int GIL_MINECRAWLER				=	29;
 const int GIL_LURKER					=	30;
 const int GIL_SKELETON					=	31;
 const int GIL_SUMMONED_SKELETON			=	32;	/// is obsolete now (moved to GIL_SUMMONED)
-const int GIL_SKELETON_MONSTER			=	32;	///new!!!
+const int GIL_SKELETON_MONSTER			=	32;	/// new!!!
 const int GIL_SKELETON_MAGE				=	33;
 const int GIL_ZOMBIE					=	34;
 const int GIL_SNAPPER					=	35;
 const int GIL_SHADOWBEAST				=	36;
 const int GIL_SHADOWBEAST_SKELETON		=	37;	/// is obsolete now (moved to GIL_SKELETON)
-const int GIL_TIGER						=	37;	///new!!!
+const int GIL_TIGER						=	37;	/// new!!!
 const int GIL_HARPY						=	38;
-const int GIL_GOLEM						=	39;	///new!!!
+const int GIL_GOLEM						=	39;	/// new!!!
 const int GIL_STONEGOLEM				=	39;	/// is obsolete now (moved to GIL_GOLEM)
-const int GIL_TREANT					=	40;	///new!!!
+const int GIL_TREANT					=	40;	/// new!!!
 const int GIL_FIREGOLEM					=	40;	/// is obsolete now (moved to GIL_GOLEM)
 const int GIL_ICEGOLEM					=	41;	/// is obsolete now (moved to GIL_GOLEM)
 const int GIL_SUMMONED_GOLEM			=	42;	/// is obsolete now (moved to GIL_SUMMONED)
@@ -372,13 +372,13 @@ const int GIL_ALLIGATOR					=	49;
 const int GIL_SWAMPGOLEM				=	50;	/// is obsolete now (moved to GIL_GOLEM)
 const int GIL_STONEGUARDIAN				=	51;
 const int GIL_GARGOYLE					=	52;
-const int GIL_OGRE						=	53;	///new!!!
+const int GIL_OGRE						=	53;	/// new!!!
 const int GIL_SUMMONEDGUARDIAN			=	54;	/// is obsolete now (moved to GIL_SUMMONED)
-const int GIL_LIVESTOCK					=	54;	///new!!!
+const int GIL_LIVESTOCK					=	54;	/// new!!!
 const int GIL_SUMMONEDZOMBIE			=	55;	/// is obsolete now (moved to GIL_SUMMONED)
-const int GIL_NEUTRAL					=	55;	///new!!!
-const int GIL_WILD						=	56;	///new!!!
-const int GIL_SUMMONED					=	57;	///new!!!
+const int GIL_NEUTRAL					=	55;	/// new!!!
+const int GIL_WILD						=	56;	/// new!!!
+const int GIL_SUMMONED					=	57;	/// new!!!
 
 const int GIL_SEPERATOR_ORC				=	58;
 
@@ -436,24 +436,24 @@ class C_GILVALUES
 ///	SOUND TYPES
 ///******************************************************************************************
 
-const int NPC_SOUND_DROPTAKE					=	1;
-const int NPC_SOUND_SPEAK						=	3;
-const int NPC_SOUND_STEPS						=	4;
-const int NPC_SOUND_THROWCOLL					=	5;
-const int NPC_SOUND_DRAWWEAPON					=	6;
-const int NPC_SOUND_SCREAM						=	7;
-const int NPC_SOUND_FIGHT						=	8;
+const int NPC_SOUND_DROPTAKE		=	1;
+const int NPC_SOUND_SPEAK			=	3;
+const int NPC_SOUND_STEPS			=	4;
+const int NPC_SOUND_THROWCOLL		=	5;
+const int NPC_SOUND_DRAWWEAPON		=	6;
+const int NPC_SOUND_SCREAM			=	7;
+const int NPC_SOUND_FIGHT			=	8;
 
 ///******************************************************************************************
 ///	MATERIAL TYPES
 ///******************************************************************************************
 
-const int MAT_WOOD								=	0;
-const int MAT_STONE								=	1;
-const int MAT_METAL								=	2;
-const int MAT_LEATHER							=	3;
-const int MAT_CLAY								=	4;
-const int MAT_GLAS								=	5;
+const int MAT_WOOD					=	0;
+const int MAT_STONE					=	1;
+const int MAT_METAL					=	2;
+const int MAT_LEATHER				=	3;
+const int MAT_CLAY					=	4;
+const int MAT_GLAS					=	5;
 
 ///******************************************************************************************
 ///	OTHER CONSTANTS
@@ -511,26 +511,26 @@ const int TARGET_TYPE_UNDEAD		=	32;
 ///	SPELLS
 ///******************************************************************************************
 
-/// standard spells
-const int SPL_nLight				=	0;	///changed!!!
-const int SPL_nHeal					=	1;	///changed!!!
+/// common spells
+const int SPL_nLight				=	0;	/// changed!!!
+const int SPL_nHeal					=	1;	/// changed!!!
 
 /// PAL spells
 const int SPL_PalBless				=	2;	///new!!!
 const int SPL_PalHeal				=	3;	///changed!!!
-const int SPL_PalHolyBolt			=	4;
+const int SPL_PalHolyBolt			=	4;	///changed!!!
 const int SPL_PalJustice			=	5;	///new!!!
 const int SPL_PalDestroyEvil		=	6;	///changed!!!
 
 /// common spells
-const int SPL_SlowTime				=	7;	///new!!!
-const int SPL_NightToDay			=	8;	///new!!!
-const int SPL_Telekinesis			=	9;	///new!!!
+const int SPL_SlowTime				=	7;	/// new!!!
+const int SPL_NightToDay			=	8;	/// new!!!
+const int SPL_Telekinesis			=	9;	/// new!!!
 
 /// MYS spells
 const int SPL_MysBolt				=	10;	///new!!!
 const int SPL_MysProtection			=	11;	///new!!!
-const int SPL_MysRoot				=	12;
+const int SPL_MysRoot				=	12;	///new!!!
 const int SPL_MysTame				=	13;	///new!!!
 const int SPL_MysAura				=	14;	///new!!!
 const int SPL_MysEchoes 			=	15;	///new!!!
@@ -539,7 +539,7 @@ const int SPL_MysEchoes 			=	15;	///new!!!
 const int SPL_GeoStone				=	16;	///new!!!
 const int SPL_GeoProtection			=	17;	///new!!!
 const int SPL_GeoElevate 			=	18;	///new!!!
-const int SPL_GeoGolem				=	19;
+const int SPL_GeoGolem				=	19;	///new!!!
 const int SPL_GeoExplosion			=	20;	///new!!!
 const int SPL_GeoWall				=	21;	///new!!!
 
@@ -547,59 +547,59 @@ const int SPL_GeoWall				=	21;	///new!!!
 const int SPL_FireBolt				=	22;
 const int SPL_IceBolt				=	23;
 const int SPL_Zap					=	24;
-const int SPL_Charm					=	25;
+const int SPL_SkullBolt				=	25;	/// new!!!
 const int SPL_WindFist				=	26;
 const int SPL_Sleep					=	27;
-const int SPL_MassSleep				=	28;	///new!!!
+const int SPL_Charm					=	28;
 const int SPL_LightningFlash		=	29;
 
 const int SPL_ChargeFireball		=	30;
 const int SPL_Whirlwind				=	31;
-const int SPL_Fear					=	32;	///changed!!!
-const int SPL_MassFear				=	33;	///new!!!
+const int SPL_Fear					=	32;	/// changed!!!
+const int SPL_Rage					=	33;	/// new!!!
 const int SPL_ChargeZap				=	34;
-const int SPL_EarthQuake			=	35;	///new!!!
-const int SPL_Geyser				=	36;
-const int SPL_WaterFist				=	37;
+const int SPL_Geyser				=	35;
+const int SPL_WaterFist				=	36;
+const int SPL_Pyrokinesis			=	37;
 const int SPL_IceLance				=	38;
 const int SPL_IceWave				=	39;
 
 const int SPL_Inflate				=	40;
-const int SPL_Rage					=	41;	///new!!!
-const int SPL_MassRage				=	42;	///new!!!
+const int SPL_DragonBall			=	41;	/// new!!!
+const int SPL_BlackDragonBall		=	42;	/// new!!!
 const int SPL_BreathOfDeath			=	43;
 const int SPL_MassDeath				=	44;
 const int SPL_ArmyOfDarkness		=	45;
-const int SPL_Shrink				=	46;	///changed!!!
+const int SPL_Shrink				=	46;
 
 /// special spells
-const int SPL_Teleport				=	47;	///changed!!!
-const int SPL_Transform				=	48;	///changed!!!
-const int SPL_Summon				=	49;	///changed!!!
+const int SPL_Teleport				=	47;	/// changed!!!
+const int SPL_Transform				=	48;	/// changed!!!
+const int SPL_Summon				=	49;	/// changed!!!
 
 /// ELE spells
 const int SPL_EleLightning			=	50;	///new!!!
 const int SPL_EleProtection			=	51;	///new!!!
-const int SPL_EleFreeze				=	52;
+const int SPL_EleFreeze				=	52;	///new!!!
 const int SPL_EleHurricane 			=	53;	///new!!!
 const int SPL_EleKinesis			=	54;	///new!!!
-const int SPL_EleThunderstorm		=	55;
+const int SPL_EleThunderstorm		=	55;	///new!!!
 
 /// PYR spells
-const int SPL_PyrFireball			=	56;
+const int SPL_PyrFireball			=	56;	///new!!!
 const int SPL_PyrProtection			=	57;	///new!!!
-const int SPL_PyrFirestorm			=	58;
+const int SPL_PyrFirestorm			=	58;	///new!!!
 const int SPL_PyrKinesis			=	59;	///new!!!
 const int SPL_PyrExplosion			=	60;	///new!!!
-const int SPL_PyrFirerain			=	61;
+const int SPL_PyrFirerain			=	61;	///new!!!
 
 /// NEC spells
-const int SPL_NecLifesteal			=	62;
+const int SPL_NecLifesteal			=	62;	///new!!!
 const int SPL_NecProtection			=	63;	///new!!!
-const int SPL_NecSkeleton			=	64;
-const int SPL_NecSwarm			    =	65;
-const int SPL_NecDemon	    	    =	66;
-const int SPL_NecDeath				=	67;	///changed!!!
+const int SPL_NecSkeleton			=	64;	///new!!!
+const int SPL_NecSwarm			    =	65;	///new!!!
+const int SPL_NecDemon	    	    =	66;	///new!!!
+const int SPL_NecDeath				=	67;	///new!!!
 
 /// special spells
 const int SPL_MasterOfDisaster		=	68;
@@ -608,23 +608,22 @@ const int SPL_BeliarRage			=	69;
 /// npc spells
 const int SPL_ConcussionBolt		=	70;
 const int SPL_DeathBolt				=	71;
-
-/// common spells
-const int SPL_PoisonBolt			=	72;
-const int SPL_SkullBolt				=	73;
-const int SPL_Reserved_74			=	74;
-const int SPL_BloodFireball			=	75;
-const int SPL_Reserved_76			=	76;
-const int SPL_Reserved_77			=	77;
-const int SPL_DragonBall			=	78;
-const int SPL_BlackDragonBall		=	79;
+const int SPL_BlueFireball			=	72;	/// new!!!
+const int SPL_RedFireball			=	73;	/// new!!!
+const int SPL_GreenFireball			=	74;	/// new!!!
+const int SPL_YellowFireball		=	75;	/// new!!!
 
 /// ...
-const int SPL_cB_Fireball			=	80;
-const int SPL_cR_Fireball			=	81;
-const int SPL_cG_Fireball			=	82;
-const int SPL_cY_Fireball			=	83;
-const int SPL_cP_Fireball			=	84;
+const int SPL_Reserved_76			=	76;
+const int SPL_Reserved_77			=	77;
+const int SPL_Reserved_78			=	78;
+const int SPL_Reserved_79			=	79;
+
+const int SPL_Reserved_80			=	80;
+const int SPL_Reserved_81			=	81;
+const int SPL_Reserved_82			=	82;
+const int SPL_Reserved_83			=	83;
+const int SPL_Reserved_84			=	84;
 const int SPL_Reserved_85			=	85;
 const int SPL_Reserved_86			=	86;
 const int SPL_Reserved_87			=	87;
@@ -686,26 +685,26 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	"FireBolt",				// 22	SPL_FireBolt
 	"IceBolt",  			// 23	SPL_IceBolt
 	"Zap",					// 24	SPL_Zap
-	"Charm",  				// 25	SPL_Charm
+	"SkullBolt",  			// 25	SPL_SkullBolt
 	"WindFist",  			// 26	SPL_WindFist
 	"Sleep",  				// 27	SPL_Sleep
-	"Sleep",  				// 28	SPL_MassSleep
+	"Charm",  				// 28	SPL_Charm
 	"LightningFlash",		// 29	SPL_LightningFlash
 	
 	"ChargeFireball",  		// 30	SPL_ChargeFireball
 	"Whirlwind",  			// 31	SPL_Whirlwind
 	"Fear",  				// 32	SPL_Fear
-	"Fear",  				// 33	SPL_MassFear
+	"Rage",  				// 33	SPL_Rage
 	"ChargeZap",  			// 34	SPL_ChargeZap
-	"EarthQuake",  			// 53	SPL_EarthQuake
-	"Geyser",  				// 36	SPL_Geyser
-	"WaterFist",  			// 37	SPL_WaterFist
+	"Geyser",  				// 35	SPL_Geyser
+	"WaterFist",  			// 36	SPL_WaterFist
+	"Pyrokinesis",  		// 37	SPL_Pyrokinesis
 	"IceLance", 			// 38	SPL_IceLance
 	"IceWave",  			// 39	SPL_IceWave
 	
 	"Sleep",  				// 40	SPL_Inflate
-	"Rage",  				// 41	SPL_Rage
-	"Rage",  				// 42	SPL_MassRage
+	"DragonBall",  			// 41	SPL_DragonBall
+	"BlackDragonBall",  	// 42	SPL_BlackDragonBall
 	"BreathOfDeath",  		// 43	SPL_BreathOfDeath
 	"MassDeath",  			// 44	SPL_MassDeath
 	"ArmyOfDarkness", 		// 45	SPL_ArmyOfDarkness
@@ -747,23 +746,22 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	/// npc spells
     "ConcussionBolt",		// 70	SPL_ConcussionBolt
 	"DeathBolt",			// 71	SPL_DeathBolt
-	
-	/// common spells
-	"PoisonBolt",			// 72	SPL_PoisonBolt
-	"SkullBolt",			// 73	SPL_SkullBolt
-	"Light",				// 74	SPL_Reserved_74
-	"DementorBall",			// 75	SPL_BloodFireball
-	"Light",				// 76	SPL_Reserved_76
-	"Light",				// 77	SPL_Reserved_77
-	"DragonBall",			// 78	SPL_DragonBall
-	"BlackDragonBall",		// 79	SPL_BlackDragonBall
+	"BlueFireball",			// 72	SPL_BlueFireball
+	"RedFireball",			// 73	SPL_RedFireball
+	"GreenFireball",		// 74	SPL_GreenFireball
+	"YellowFireball",		// 75	SPL_YellowFireball
 	
 	/// ...
-	"cB_Fireball",			// 80	SPL_cB_Fireball
-	"cR_Fireball",			// 81	SPL_cR_Fireball
-	"cG_Fireball",			// 82	SPL_cG_Fireball
-	"cY_Fireball",			// 83	SPL_cY_Fireball
-	"cP_Fireball",			// 84	SPL_cP_Fireball
+	"Light",				// 76	SPL_Reserved_76
+	"Light",				// 77	SPL_Reserved_77
+	"Light",				// 78	SPL_Reserved_78
+	"Light",				// 79	SPL_Reserved_79
+	
+	"Light",				// 80	SPL_Reserved_80
+	"Light",				// 81	SPL_Reserved_81
+	"Light",				// 82	SPL_Reserved_82
+	"Light",				// 83	SPL_Reserved_83
+	"Light",				// 84	SPL_Reserved_84
 	"Light",				// 85	SPL_Reserved_85
 	"Light",				// 86	SPL_Reserved_86
 	"Light",				// 87	SPL_Reserved_87
@@ -818,33 +816,33 @@ const string spellFxAniLetters[MAX_SPELL] =
 	"FEA",  				// 17	SPL_GeoProtection
 	"SUM",					// 18	SPL_GeoElevate
 	"FOT",					// 19	SPL_GeoGolem
-	"EXP",					// 20	SPL_GeoExplosion
+	"FOT",					// 20	SPL_GeoExplosion
 	"SUM",  				// 21	SPL_GeoWall
 	
 	/// common spells
 	"FBT",  				// 22	SPL_FireBolt
 	"FBT",  				// 23	SPL_IceBolt
 	"FBT",					// 24	SPL_Zap
-	"SLE",  				// 25	SPL_Charm
+	"FBT",  				// 25	SPL_SkullBolt
 	"WND",  				// 26	SPL_WindFist
 	"SLE",  				// 27	SPL_Sleep
-	"FEA",  				// 28	SPL_MassSleep
+	"SLE",  				// 28	SPL_Charm
 	"WND",  				// 29	SPL_LightningFlash
 	
 	"FIB",  				// 30	SPL_ChargeFireball
 	"WHI",  				// 31	SPL_Whirlwind
 	"SLE",  				// 32	SPL_Fear
-	"FEA",  				// 33	SPL_MassFear
+	"SLE",  				// 33	SPL_Rage
 	"FIB",  				// 34	SPL_ChargeZap
-	"FOT",  				// 35	SPL_EarthQuake
-	"WND",  				// 36	SPL_Geyser
-	"WND",  				// 37	SPL_WaterFist
+	"WND",  				// 35	SPL_Geyser
+	"WND",  				// 36	SPL_WaterFist
+	"FIB",  				// 37	SPL_Pyrokinesis
 	"FBT",  				// 38	SPL_IceLance
 	"FEA",  				// 39	SPL_IceWave
 	
 	"SLE",  				// 40	SPL_Inflate
-	"SLE",  				// 41	SPL_Rage
-	"FEA",  				// 42	SPL_MassRage
+	"FBT",  				// 41	SPL_DragonBall
+	"FBT",  				// 42	SPL_BlackDragonBall
 	"FIB",  				// 43	SPL_BreathOfDeath
 	"MSD",  				// 44	SPL_MassDeath
 	"SUM",  				// 45	SPL_ArmyOfDarkness
@@ -886,23 +884,22 @@ const string spellFxAniLetters[MAX_SPELL] =
 	/// npc spells
 	"FBT",  				// 70	SPL_ConcussionBolt
 	"FBT",  				// 71	SPL_DeathBolt
-	
-	/// common spells
-	"FBT",  				// 72	SPL_PoisonBolt
-	"FBT",  				// 73	SPL_SkullBolt
-	"FBT",  				// 74	SPL_Reserved_74
-	"FBT",  				// 75	SPL_BloodFireball
-	"FIB",  				// 76	SPL_Reserved_76
-	"FRZ",					// 77	SPL_Reserved_77
-	"FBT",					// 78	SPL_DragonBall
-	"FBT",					// 79	SPL_BlackDragonBall
+	"FBT",  				// 72	SPL_BlueFireball
+	"FBT",  				// 73	SPL_RedFireball
+	"FBT",  				// 74	SPL_GreenFireball
+	"FBT",  				// 75	SPL_YellowFireball
 	
 	/// ...
-	"FBT",  				// 80	SPL_cB_Fireball
-	"FBT",  				// 81	SPL_cR_Fireball
-	"FBT",  				// 82	SPL_cG_Fireball
-	"FBT",  				// 83	SPL_cY_Fireball
-	"FBT",  				// 84	SPL_cP_Fireball
+	"XXX",  				// 76	SPL_Reserved_76
+	"XXX",					// 77	SPL_Reserved_77
+	"XXX",					// 78	SPL_Reserved_78
+	"XXX",					// 79	SPL_Reserved_79
+	
+	"XXX",  				// 80	SPL_Reserved_80
+	"XXX",  				// 81	SPL_Reserved_81
+	"XXX",  				// 82	SPL_Reserved_82
+	"XXX",  				// 83	SPL_Reserved_83
+	"XXX",  				// 84	SPL_Reserved_84
 	"XXX",  				// 85	SPL_Reserved_85
 	"XXX",  				// 86	SPL_Reserved_86
 	"XXX",					// 87	SPL_Reserved_87
@@ -932,33 +929,33 @@ const int NPC_TALENT_1H					=	1;
 const int NPC_TALENT_2H					=	2;
 const int NPC_TALENT_BOW				=	3;
 const int NPC_TALENT_CROSSBOW			=	4;
-const int NPC_TALENT_2ndH				=	10;	///new!!!
+const int NPC_TALENT_2ndH				=	10;	/// new!!!
 
 /// Magic Talents
 const int NPC_TALENT_MAGIC				=	7;
-const int NPC_TALENT_LANGUAGE			=	17;
+const int NPC_TALENT_LANGUAGE			=	17;	/// changed name
 
 /// Movement Talents
 const int NPC_TALENT_SNEAK				=	8;
+const int NPC_TALENT_LONGRUN			=	9;	/// new!!!
 const int NPC_TALENT_ACROBATIC			=	11;
-const int NPC_TALENT_LONGRUN			=	18;	///new!!!
 
 /// Thief Talents
 const int NPC_TALENT_PICKLOCK			=	5;
-const int NPC_TALENT_PICKPOCKET			=	6;
-const int NPC_TALENT_PERSUASION			=	9;	///new!!!
+const int NPC_TALENT_PICKPOCKET			=	6;	/// changed!!!
+const int NPC_TALENT_PERSUASION			=	12;	/// new!!!
 
 /// Craft Talents
-const int NPC_TALENT_JEWELERY			=	12;	///new!!!
 const int NPC_TALENT_SMITH				=	13;
-const int NPC_TALENT_ENCHANTING			=	14;	///new!!!
+const int NPC_TALENT_ENCHANTING			=	14;	/// new!!!
 const int NPC_TALENT_ALCHEMY			=	15;
-const int NPC_TALENT_HUNTING			=	16;	///new!!!
+const int NPC_TALENT_HUNTING			=	16;	/// changed name
 
 /// Info Talents
-const int NPC_TALENT_CHAPTER			=	19;	///new!!!
-const int NPC_TALENT_TYPEOFMAGIC		=	20;	///new!!!
-const int NPC_TALENT_DIFFICULTY			=	21;	///new!!!
+const int NPC_TALENT_TYPEOFMAGIC		=	18;	/// new!!!
+const int NPC_TALENT_ADDITIONAL			=	19;	/// new!!!
+const int NPC_TALENT_CHAPTER			=	20;	/// new!!!
+const int NPC_TALENT_DIFFICULTY			=	21;	/// new!!!
 
 const int NPC_TALENT_MAX				=	22;
 

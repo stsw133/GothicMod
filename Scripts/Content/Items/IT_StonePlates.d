@@ -19,11 +19,11 @@ prototype ItemPR_StonePlate (C_Item)
 ///******************************************************************************************
 instance ItWr_StonePlate (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_01.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate;
+	visual					=	"ItMi_StonePlate_PowerUp_01.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate;
 	
-	TEXT[1]			= 	NAME_Bonus_Lp;
-	COUNT[1]		= 	2;
+	TEXT[1]					= 	NAME_Bonus_Lp;
+	COUNT[1]				= 	2;
 };
 func void Use_ItWr_StonePlate()
 {
@@ -41,11 +41,11 @@ func void Use_ItWr_StonePlate()
 ///******************************************************************************************
 instance ItWr_StonePlate_HP (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_05.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_HP;
+	visual					=	"ItMi_StonePlate_PowerUp_05.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_HP;
 	
-	TEXT[1]			= 	NAME_Bonus_HpMax;
-	COUNT[1]		= 	2*HP_PER_LP;
+	TEXT[1]					= 	NAME_Bonus_HpMax;
+	COUNT[1]				= 	2*HP_PER_LP;
 };
 func void Use_ItWr_StonePlate_HP()
 {
@@ -63,11 +63,11 @@ func void Use_ItWr_StonePlate_HP()
 ///******************************************************************************************
 instance ItWr_StonePlate_Mana (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_04.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_Mana;
+	visual					=	"ItMi_StonePlate_PowerUp_04.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_Mana;
 	
-	TEXT[1]			= 	NAME_Bonus_ManaMax;
-	COUNT[1]		= 	2;
+	TEXT[1]					= 	NAME_Bonus_ManaMax;
+	COUNT[1]				= 	2;
 };
 func void Use_ItWr_StonePlate_Mana()
 {
@@ -86,11 +86,11 @@ func void Use_ItWr_StonePlate_Mana()
 ///******************************************************************************************
 instance ItWr_StonePlate_Energy (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_05.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_Energy;
+	visual					=	"ItMi_StonePlate_PowerUp_05.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_Energy;
 	
-	TEXT[1]			= 	NAME_Bonus_EneMax;
-	COUNT[1]		= 	5;
+	TEXT[1]					= 	NAME_Bonus_EneMax;
+	COUNT[1]				= 	5;
 };
 func void Use_ItWr_StonePlate_Energy()
 {
@@ -108,11 +108,11 @@ func void Use_ItWr_StonePlate_Energy()
 ///******************************************************************************************
 instance ItWr_StonePlate_STR (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_01.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_STR;
+	visual					=	"ItMi_StonePlate_PowerUp_01.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_STR;
 	
-	TEXT[1]			= 	NAME_Bonus_STR;
-	COUNT[1]		= 	2;
+	TEXT[1]					= 	NAME_Bonus_STR;
+	COUNT[1]				= 	2;
 	
 };
 func void Use_ItWr_StonePlate_STR()
@@ -131,11 +131,11 @@ func void Use_ItWr_StonePlate_STR()
 ///******************************************************************************************
 instance ItWr_StonePlate_DEX (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_02.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_DEX;
+	visual					=	"ItMi_StonePlate_PowerUp_02.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_DEX;
 	
-	TEXT[1]			= 	NAME_Bonus_DEX;
-	COUNT[1]		= 	2;
+	TEXT[1]					= 	NAME_Bonus_DEX;
+	COUNT[1]				= 	2;
 };
 func void Use_ItWr_StonePlate_DEX()
 {
@@ -153,11 +153,11 @@ func void Use_ItWr_StonePlate_DEX()
 ///******************************************************************************************
 instance ItWr_StonePlate_Power (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_03.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_Power;
+	visual					=	"ItMi_StonePlate_PowerUp_03.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_Power;
 	
-	TEXT[1]			= 	NAME_Bonus_Power;
-	COUNT[1]		= 	2;
+	TEXT[1]					= 	NAME_Bonus_Power;
+	COUNT[1]				= 	2;
 };
 func void Use_ItWr_StonePlate_Power()
 {
@@ -176,11 +176,11 @@ func void Use_ItWr_StonePlate_Power()
 ///******************************************************************************************
 instance ItWr_StonePlate_1h (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_01.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_1h;
+	visual					=	"ItMi_StonePlate_PowerUp_01.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_1h;
 	
-	TEXT[1]			= 	NAME_Bonus_1H;
-	COUNT[1]		= 	1;
+	TEXT[1]					= 	NAME_Bonus_1H;
+	COUNT[1]				= 	1;
 };
 func void Use_ItWr_StonePlate_1h()
 {
@@ -198,11 +198,11 @@ func void Use_ItWr_StonePlate_1h()
 ///******************************************************************************************
 instance ItWr_StonePlate_2h (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_02.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_2h;
+	visual					=	"ItMi_StonePlate_PowerUp_02.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_2h;
 	
-	TEXT[1]			= 	NAME_Bonus_2H;
-	COUNT[1]		= 	1;
+	TEXT[1]					= 	NAME_Bonus_2H;
+	COUNT[1]				= 	1;
 };
 func void Use_ItWr_StonePlate_2h()
 {
@@ -220,11 +220,11 @@ func void Use_ItWr_StonePlate_2h()
 ///******************************************************************************************
 instance ItWr_StonePlate_Bow (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_03.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_Bow;
+	visual					=	"ItMi_StonePlate_PowerUp_03.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_Bow;
 	
-	TEXT[1]			= 	NAME_Bonus_Bow;
-	COUNT[1]		= 	1;
+	TEXT[1]					= 	NAME_Bonus_Bow;
+	COUNT[1]				= 	1;
 };
 func void Use_ItWr_StonePlate_Bow()
 {
@@ -242,11 +242,11 @@ func void Use_ItWr_StonePlate_Bow()
 ///******************************************************************************************
 instance ItWr_StonePlate_CBow (ItemPR_StonePlate)
 {
-	visual			=	"ItMi_StonePlate_PowerUp_04.3DS";
-	on_state[0]		=	Use_ItWr_StonePlate_CBow;
+	visual					=	"ItMi_StonePlate_PowerUp_04.3DS";
+	on_state[0]				=	Use_ItWr_StonePlate_CBow;
 	
-	TEXT[1]			= 	NAME_Bonus_CBow;
-	COUNT[1]		= 	1;
+	TEXT[1]					= 	NAME_Bonus_CBow;
+	COUNT[1]				= 	1;
 };
 func void Use_ItWr_StonePlate_CBow()
 {

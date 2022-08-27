@@ -30,7 +30,7 @@ instance WzA_17182_Sasha (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+0, BodySkin_N, "Hum_Head_Babe4", FaceBabe_Sasha, Teeth_Pretty, ITAR_WD_M_06);
+	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+0, BodySkin_N, "Hum_Head_Babe4", FaceBabe_Sasha, Teeth_Pretty, ITAR_Babe_VLK_M_04);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

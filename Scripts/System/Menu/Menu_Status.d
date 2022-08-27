@@ -62,22 +62,26 @@ instance MENU_STATUS(C_MENU_DEF)
 	items[58] = "MENU_ITEM_TALENT_12_SKILL";
 	items[59] = "MENU_ITEM_TALENT_13_TITLE";
 	items[60] = "MENU_ITEM_TALENT_13_SKILL";
-	items[61] = "MENU_ITEM_TALENT_14_TITLE";
-	items[62] = "MENU_ITEM_TALENT_14_SKILL";
-	items[63] = "MENU_ITEM_TALENT_15_TITLE";
-	items[64] = "MENU_ITEM_TALENT_15_SKILL";
-	items[65] = "MENU_ITEM_TALENT_16_TITLE";
-	items[66] = "MENU_ITEM_TALENT_16_SKILL";
-	items[67] = "MENU_ITEM_TALENT_17_TITLE";
-	items[68] = "MENU_ITEM_TALENT_17_SKILL";
-	items[69] = "MENU_ITEM_TALENT_18_TITLE";
-	items[70] = "MENU_ITEM_TALENT_18_SKILL";
-	items[71] = "MENU_ITEM_TALENT_19_TITLE";
-	items[72] = "MENU_ITEM_TALENT_19_SKILL";
-	items[73] = "MENU_ITEM_TALENT_20_TITLE";
-	items[74] = "MENU_ITEM_TALENT_20_SKILL";
-	items[75] = "MENU_ITEM_TALENT_21_TITLE";
-	items[76] = "MENU_ITEM_TALENT_21_SKILL";
+	items[61] = "MENU_ITEM_TALENT_13";
+	items[62] = "MENU_ITEM_TALENT_14_TITLE";
+	items[63] = "MENU_ITEM_TALENT_14_SKILL";
+	items[64] = "MENU_ITEM_TALENT_14";
+	items[65] = "MENU_ITEM_TALENT_15_TITLE";
+	items[66] = "MENU_ITEM_TALENT_15_SKILL";
+	items[67] = "MENU_ITEM_TALENT_15";
+	items[68] = "MENU_ITEM_TALENT_16_TITLE";
+	items[69] = "MENU_ITEM_TALENT_16_SKILL";
+	items[70] = "MENU_ITEM_TALENT_16";
+	items[71] = "MENU_ITEM_TALENT_17_TITLE";
+	items[72] = "MENU_ITEM_TALENT_17_SKILL";
+	items[73] = "MENU_ITEM_TALENT_18_TITLE";
+	items[74] = "MENU_ITEM_TALENT_18_SKILL";
+	items[75] = "MENU_ITEM_TALENT_19_TITLE";
+	items[76] = "MENU_ITEM_TALENT_19_SKILL";
+	items[77] = "MENU_ITEM_TALENT_20_TITLE";
+	items[78] = "MENU_ITEM_TALENT_20_SKILL";
+	items[79] = "MENU_ITEM_TALENT_21_TITLE";
+	items[80] = "MENU_ITEM_TALENT_21_SKILL";
 	
 	dimx = 8192;
 	dimy = 8192;
@@ -130,14 +134,14 @@ instance MENU_ITEM_TALENT_21_SKILL(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_19_TITLE(C_MENU_ITEM_DEF)	/// chapter
+instance MENU_ITEM_TALENT_20_TITLE(C_MENU_ITEM_DEF)	/// chapter
 {
 	posx = STAT_A_X1;
 	posy = STAT_PLY_Y + (STAT_DY * 1);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_19_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_20_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_A_X2;
 	posy = STAT_PLY_Y + (STAT_DY * 1);
@@ -499,7 +503,6 @@ instance MENU_ITEM_TALENT_4(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
 instance MENU_ITEM_TALENT_10_TITLE(C_MENU_ITEM_DEF)	/// shield or dual swords
 {
 	posx = STAT_B_X1;
@@ -515,21 +518,20 @@ instance MENU_ITEM_TALENT_10_SKILL(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_TALENT_20_TITLE(C_MENU_ITEM_DEF)	/// magictype
+instance MENU_ITEM_TALENT_18_TITLE(C_MENU_ITEM_DEF)	/// magictype
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (5 * STAT_DY + 1 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_20_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_18_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (5 * STAT_DY + 1 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
 instance MENU_ITEM_TALENT_7_TITLE(C_MENU_ITEM_DEF)	/// magic circle
 {
 	posx = STAT_B_X1;
@@ -544,7 +546,6 @@ instance MENU_ITEM_TALENT_7_SKILL(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
 instance MENU_ITEM_TALENT_17_TITLE(C_MENU_ITEM_DEF)	/// language
 {
 	posx = STAT_B_X1;
@@ -574,30 +575,28 @@ instance MENU_ITEM_TALENT_8_SKILL(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
-instance MENU_ITEM_TALENT_11_TITLE(C_MENU_ITEM_DEF)	/// acrobatic
+instance MENU_ITEM_TALENT_9_TITLE(C_MENU_ITEM_DEF)	/// longrun
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (9 * STAT_DY + 2 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_11_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_9_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (9 * STAT_DY + 2 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
-instance MENU_ITEM_TALENT_18_TITLE(C_MENU_ITEM_DEF)	/// longrun
+instance MENU_ITEM_TALENT_11_TITLE(C_MENU_ITEM_DEF)	/// acrobatic
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (10 * STAT_DY + 2 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_18_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_11_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (10 * STAT_DY + 2 * STAT_DSY);
@@ -619,7 +618,6 @@ instance MENU_ITEM_TALENT_5_SKILL(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
 instance MENU_ITEM_TALENT_6_TITLE(C_MENU_ITEM_DEF)	/// pickpocket
 {
 	posx = STAT_B_X1;
@@ -634,33 +632,17 @@ instance MENU_ITEM_TALENT_6_SKILL(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
-instance MENU_ITEM_TALENT_9_TITLE(C_MENU_ITEM_DEF)	/// persuasion
+instance MENU_ITEM_TALENT_12_TITLE(C_MENU_ITEM_DEF)	/// persuasion
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (13 * STAT_DY + 3 * STAT_DSY);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-instance MENU_ITEM_TALENT_9_SKILL(C_MENU_ITEM_DEF)
-{
-	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (13 * STAT_DY + 3 * STAT_DSY);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_TALENT_12_TITLE(C_MENU_ITEM_DEF)	/// jewelery
-{
-	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (14 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_12_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (14 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (13 * STAT_DY + 3 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
@@ -668,56 +650,95 @@ instance MENU_ITEM_TALENT_12_SKILL(C_MENU_ITEM_DEF)
 instance MENU_ITEM_TALENT_13_TITLE(C_MENU_ITEM_DEF)	/// smith
 {
 	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (14 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_13_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (14 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
+instance MENU_ITEM_TALENT_13(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X3;
+	posy = STAT_TAL_Y + (14 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
 instance MENU_ITEM_TALENT_14_TITLE(C_MENU_ITEM_DEF)	/// enchanting
 {
 	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_14_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
+instance MENU_ITEM_TALENT_14(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X3;
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
 instance MENU_ITEM_TALENT_15_TITLE(C_MENU_ITEM_DEF)	/// alchemy
 {
 	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_15_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_15(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X3;
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_16_TITLE(C_MENU_ITEM_DEF)	/// hunting
+{
+	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-
-instance MENU_ITEM_TALENT_16_TITLE(C_MENU_ITEM_DEF)	/// hunting
+instance MENU_ITEM_TALENT_16_SKILL(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X2;
+	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_16(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X3;
+	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_19_TITLE(C_MENU_ITEM_DEF)	/// additional
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (18 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_16_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_19_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (18 * STAT_DY + 4 * STAT_DSY);

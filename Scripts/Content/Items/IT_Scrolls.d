@@ -12,11 +12,11 @@ prototype ItemPR_Scroll (C_Item)
 	TEXT[5]					=	NAME_Value;
 };
 ///*******************************************************************************************
-///	standard spells
+///	common spells
 ///*******************************************************************************************
 instance ItSc_Light (ItemPR_Scroll)
 {
-	value 					=	20;
+	value 					=	30;
 	
 	visual					=	"ItSc_Light.3DS";
 	spell					= 	SPL_nLight;
@@ -34,88 +34,16 @@ instance ItSc_LightHeal (ItemPR_Scroll)
 	
 	visual					=	"ItSc_MediumHeal.3DS";
 	spell					= 	SPL_nHeal;
-	cond_value[2]  			=	SPL_Cost_nHeal/SPL_Cost_Scroll;
+	cond_value[2]  			=	1;
 	
 	description				=	NAME_SPL_Heal;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_Bonus_HP;
+	COUNT[1]				=	SPL_Cost_nHeal/SPL_Cost_Scroll;
+	TEXT[2]					= 	NAME_HealingPerCast;
 	COUNT[2]				=	SPL_Heal_nHeal;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_nHeal;
 	COUNT[5]				=	value;
 };
-///*******************************************************************************************
-///	PAL spells
-///*******************************************************************************************
-instance ItSc_PalBless (ItemPR_Scroll)
-{
-	value 					=	50;
-	
-	visual					=	"ItSc_PalLight.3DS";
-	spell					=	SPL_PalBless;
-	cond_value[2]  			=	SPL_Cost_PalBless/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PalBless;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	"Dodatkowe obra¿enia równe 10% max. many.";
-	TEXT[3]					=	"U¿yj ponownie by wy³¹czyæ.";
-	COUNT[5]				=	value;
-};
-instance ItSc_PalHeal (ItemPR_Scroll)
-{
-	value 					=	100;
-	
-	visual					=	"ItSc_PalMediumHeal.3DS";
-	spell					=	SPL_PalHeal;
-	cond_value[2]  			=	SPL_Cost_PalHeal/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PalHeal;
-	TEXT[1]					=	NAME_MaxManakosten;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_Bonus_HP;
-	COUNT[2]				=	SPL_Heal_PalHeal;
-	COUNT[5]				=	value;
-};
-instance ItSc_PalHolyBolt (ItemPR_Scroll)
-{
-	value 					=	100;
-	
-	visual					=	"ItSc_PalHolyBolt.3DS";
-	spell					=	SPL_PalHolyBolt;
-	cond_value[2]  			=	SPL_Cost_PalHolyBolt/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PalHolyBolt;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_PalHolyBolt;
-	COUNT[5]				=	value;
-};
-instance ItSc_PalJustice (ItemPR_Scroll)
-{
-	value					=	250;
-	
-	visual					=	"ItSc_PalFullHeal.3DS";
-	spell					=	SPL_PalJustice;
-	cond_value[2]  			=	SPL_Cost_PalJustice/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PalJustice;
-	COUNT[1]				=	cond_value[2];
-	COUNT[5]				=	value;
-};
-instance ItSc_PalDestroyEvil (ItemPR_Scroll)
-{
-	value					=	250;
-	
-	visual					=	"ItSc_PalDestroyEvil.3DS";
-	spell					=	SPL_PalDestroyEvil;
-	cond_value[2]			=	SPL_Cost_PalDestroyEvil/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PalDestroyEvil;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_PalDestroyEvil;
-	COUNT[5]				=	value;
-};
-///*******************************************************************************************
-///	common spells
 ///*******************************************************************************************
 instance ItSc_SlowTime (ItemPR_Scroll)
 {
@@ -143,7 +71,7 @@ instance ItSc_NightToDay (ItemPR_Scroll)
 };
 instance ItSc_Telekinesis (ItemPR_Scroll)
 {
-	value 					=	20;
+	value 					=	30;
 	
 	visual					=	"ItSc_LightHeal.3DS";
 	spell					= 	SPL_Telekinesis;
@@ -166,6 +94,8 @@ instance ItSc_FireBolt (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_FireBolt;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_FireBolt;
 	COUNT[5]				=	value;
 };
 instance ItSc_IceBolt (ItemPR_Scroll)
@@ -180,6 +110,8 @@ instance ItSc_IceBolt (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_IceBolt;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_IceBolt;
 	COUNT[5]				=	value;
 };
 instance ItSc_Zap (ItemPR_Scroll)
@@ -194,18 +126,24 @@ instance ItSc_Zap (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_Zap;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Zap;
 	COUNT[5]				=	value;
 };
-instance ItSc_Charm (ItemPR_Scroll)
+instance ItSc_SkullBolt (ItemPR_Scroll)
 {
-	value 					=	100;
+	value 					=	40;
 	
-	visual					=	"ItSc_Sleep.3DS";
-	spell					= 	SPL_Charm;
-	cond_value[2]  			=	SPL_Cost_Charm/SPL_Cost_Scroll;
+	visual					=	"ItSc_Zap.3DS";
+	spell					= 	SPL_SkullBolt;
+	cond_value[2]  			= 	SPL_Cost_SkullBolt/SPL_Cost_Scroll;
 	
-	description				=	NAME_SPL_Charm;
+	description				=	NAME_SPL_SkullBolt;
 	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_SkullBolt;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_SkullBolt;
 	COUNT[5]				=	value;
 };
 instance ItSc_WindFist (ItemPR_Scroll)
@@ -214,13 +152,13 @@ instance ItSc_WindFist (ItemPR_Scroll)
 	
 	visual					=	"ItSc_WindFist.3DS";
 	spell					= 	SPL_WindFist;
-	cond_value[2]  			= 	SPL_STEP_WindFist/SPL_Cost_Scroll;
+	cond_value[2]  			= 	SPL_Cost_WindFist/SPL_Cost_Scroll;
 	
 	description				=	NAME_SPL_WindFist;
 	TEXT[1]					=	NAME_MinManakosten;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_MaxManakosten;
-	COUNT[2]				=	SPL_Cost_WindFist;
+	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_WindFist;
 	TEXT[4]					=	NAME_MaxDamage;
@@ -237,22 +175,28 @@ instance ItSc_Sleep (ItemPR_Scroll)
 	
 	description				=	NAME_SPL_Sleep;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_Sleep;
+	TEXT[2]					=	NAME_LevelPerCast;
+	COUNT[2]				=	SPL_MinLvl_Sleep;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Sleep;
+	TEXT[4]					=	NAME_Duration;
+	COUNT[4]				=	SPL_Time_Sleep;
 	COUNT[5]				=	value;
 };
-instance ItSc_MassSleep (ItemPR_Scroll)
+instance ItSc_Charm (ItemPR_Scroll)
 {
-	value 					=	250;
+	value 					=	150;
 	
 	visual					=	"ItSc_Sleep.3DS";
-	spell					= 	SPL_Sleep;
-	cond_value[2]  			=	SPL_Cost_MassSleep/SPL_Cost_Scroll;
+	spell					= 	SPL_Charm;
+	cond_value[2]  			=	SPL_Cost_Charm/SPL_Cost_Scroll;
 	
-	description				=	NAME_SPL_MassSleep;
+	description				=	NAME_SPL_Charm;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_Sleep;
+	TEXT[2]					=	NAME_LevelPerCast;
+	COUNT[2]				=	SPL_MinLvl_Charm;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Charm;
 	COUNT[5]				=	value;
 };
 instance ItSc_LightningFlash (ItemPR_Scroll)
@@ -267,6 +211,8 @@ instance ItSc_LightningFlash (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_LightningFlash;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_LightningFlash;
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
@@ -276,17 +222,17 @@ instance ItSc_ChargeFireball (ItemPR_Scroll)
 	
 	visual					=	"ItSc_ChargeFireball.3DS";
 	spell					= 	SPL_ChargeFireball;
-	cond_value[2]  			= 	SPL_STEP_ChargeFireball/SPL_Cost_Scroll;
+	cond_value[2]  			= 	SPL_Cost_ChargeFireball/SPL_Cost_Scroll;
 	
 	description				=	NAME_SPL_ChargeFireball;
 	TEXT[1]					=	NAME_MinManakosten;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_MaxManakosten;
-	COUNT[2]				=	SPL_Cost_ChargeFireball;
+	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
-	COUNT[3]				=	SPL_Damage_ChargeFireball;
-	TEXT[4]					=	NAME_MaxDamage;
-	COUNT[4]				=	SPL_Damage_ChargeFireball*4;
+	COUNT[3]				=	SPL_Cost_ChargeFireball;
+	TEXT[4]					=	NAME_ScalingPerPower;
+	COUNT[4]				=	SPL_Scaling_ChargeFireball;
 	COUNT[5]				=	value;
 };
 instance ItSc_Whirlwind (ItemPR_Scroll)
@@ -313,22 +259,28 @@ instance ItSc_Fear (ItemPR_Scroll)
 	
 	description				=	NAME_SPL_Fear;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_Fear * 60;
+	TEXT[2]					=	NAME_LevelPerCast;
+	COUNT[2]				=	SPL_MinLvl_Fear;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Fear;
+	TEXT[4]					=	NAME_Duration;
+	COUNT[4]				=	SPL_Time_Fear;
 	COUNT[5]				=	value;
 };
-instance ItSc_MassFear (ItemPR_Scroll)
+instance ItSc_Rage (ItemPR_Scroll)
 {
-	value 					=	250;
+	value 					=	200;
 	
 	visual					=	"ItSc_Fear.3DS";
-	spell					= 	SPL_MassFear;
-	cond_value[2]  			= 	SPL_Cost_MassFear/SPL_Cost_Scroll;
+	spell					= 	SPL_Rage;
+	cond_value[2]  			= 	SPL_Cost_Rage/SPL_Cost_Scroll;
 	
-	description				=	NAME_SPL_MassFear;
+	description				=	NAME_SPL_Rage;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_Fear * 60;
+	TEXT[2]					=	NAME_LevelPerCast;
+	COUNT[2]				=	SPL_MinLvl_Rage;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Rage;
 	COUNT[5]				=	value;
 };
 instance ItSc_ChargeZap (ItemPR_Scroll)
@@ -337,31 +289,17 @@ instance ItSc_ChargeZap (ItemPR_Scroll)
 	
 	visual					=	"ItSc_Thunderball.3DS";
 	spell					= 	SPL_ChargeZap;
-	cond_value[2]  			= 	SPL_STEP_ChargeZap/SPL_Cost_Scroll;
+	cond_value[2]  			= 	SPL_Cost_ChargeZap/SPL_Cost_Scroll;
 	
 	description				=	NAME_SPL_ChargeZap;
 	TEXT[1]					=	NAME_MinManakosten;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_MaxManakosten;
-	COUNT[2]				=	SPL_Cost_ChargeZap;
+	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_ChargeZap;
-	TEXT[4]					=	NAME_MaxDamage;
-	COUNT[4]				=	SPL_Damage_ChargeZap*4;
-	COUNT[5]				=	value;
-};
-instance ItSc_EarthQuake (ItemPR_Scroll)
-{
-	value 					=	200;
-	
-	visual					=	"ItSc_BreathOfDeath.3DS";
-	spell					= 	SPL_EarthQuake;
-	cond_value[2]  			= 	SPL_Cost_EarthQuake/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_EarthQuake;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_EarthQuake;
+	TEXT[4]					=	NAME_ScalingPerPower;
+	COUNT[4]				=	SPL_Scaling_ChargeZap;
 	COUNT[5]				=	value;
 };
 instance ItSc_Geyser (ItemPR_Scroll)
@@ -392,6 +330,25 @@ instance ItSc_WaterFist (ItemPR_Scroll)
 	COUNT[2]				=	SPL_Damage_WaterFist;
 	COUNT[5]				=	value;
 };
+instance ItSc_Pyrokinesis (ItemPR_Scroll)
+{
+	value 					=	250;
+	
+	visual					=	"ItSc_Pyrokinesis.3DS";
+	spell					= 	SPL_Pyrokinesis;
+	cond_value[2]  			= 	SPL_Cost_Pyrokinesis/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_Pyrokinesis;
+	TEXT[1]					=	NAME_MinManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_MaxManakosten;
+	COUNT[2]				=	SPL_Cost_Pyrokinesis/SPL_Cost_Scroll;
+	TEXT[3]					=	NAME_MinDamage;
+	COUNT[3]				=	SPL_Damage_Pyrokinesis;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_Pyrokinesis*4;
+	COUNT[5]				=	value;
+};
 instance ItSc_IceLance (ItemPR_Scroll)
 {
 	value 					=	100;
@@ -404,6 +361,8 @@ instance ItSc_IceLance (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_IceLance;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_IceLance;
 	COUNT[5]				=	value;
 };
 instance ItSc_IceWave (ItemPR_Scroll)
@@ -437,28 +396,36 @@ instance ItSc_Inflate (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	COUNT[5]				=	value;
 };
-instance ItSc_Rage (ItemPR_Scroll)
+instance ItSc_DragonBall (ItemPR_Scroll)
 {
 	value 					=	200;
 	
-	visual					=	"ItSc_Fear.3DS";
-	spell					= 	SPL_Rage;
-	cond_value[2]  			= 	SPL_Cost_Rage/SPL_Cost_Scroll;
+	visual					=	"ItSc_InstantFireball.3DS";
+	spell					= 	SPL_DragonBall;
+	cond_value[2]  			= 	SPL_Cost_DragonBall/SPL_Cost_Scroll;
 	
-	description				=	NAME_SPL_Rage;
+	description				=	NAME_SPL_DragonBall;
 	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_DragonBall;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_DragonBall;
 	COUNT[5]				=	value;
 };
-instance ItSc_MassRage (ItemPR_Scroll)
+instance ItSc_BlackDragonBall (ItemPR_Scroll)
 {
-	value 					=	300;
+	value 					=	250;
 	
-	visual					=	"ItSc_Fear.3DS";
-	spell					= 	SPL_MassRage;
-	cond_value[2]  			= 	SPL_Cost_MassRage/SPL_Cost_Scroll;
+	visual					=	"ItSc_InstantFireball.3DS";
+	spell					= 	SPL_BlackDragonBall;
+	cond_value[2]  			= 	SPL_Cost_BlackDragonBall/SPL_Cost_Scroll;
 	
-	description				=	NAME_SPL_MassRage;
+	description				=	NAME_SPL_BlackDragonBall;
 	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_BlackDragonBall;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_BlackDragonBall;
 	COUNT[5]				=	value;
 };
 instance ItSc_BreathOfDeath (ItemPR_Scroll)
@@ -473,6 +440,8 @@ instance ItSc_BreathOfDeath (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_BreathOfDeath;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_BreathOfDeath;
 	COUNT[5]				=	value;
 };
 instance ItSc_MassDeath (ItemPR_Scroll)
@@ -487,6 +456,8 @@ instance ItSc_MassDeath (ItemPR_Scroll)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_MassDeath;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_MassDeath;
 	COUNT[5]				=	value;
 };
 instance ItSc_ArmyOfDarkness (ItemPR_Scroll)
@@ -511,77 +482,10 @@ instance ItSc_Shrink (ItemPR_Scroll)
 	
 	description				=	NAME_SPL_Shrink;
 	COUNT[1]				=	cond_value[2];
-	COUNT[5]				=	value;
-};
-///*******************************************************************************************
-instance ItSc_PoisonBolt (ItemPR_Scroll)
-{
-	value 					=	30;
-	
-	visual					=	"ItSc_FireBolt.3DS";
-	spell					= 	SPL_PoisonBolt;
-	cond_value[2]  			= 	SPL_Cost_PoisonBolt/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_PoisonBolt;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_PoisonBolt;
-	COUNT[5]				=	value;
-};
-instance ItSc_SkullBolt (ItemPR_Scroll)
-{
-	value 					=	40;
-	
-	visual					=	"ItSc_Zap.3DS";
-	spell					= 	SPL_SkullBolt;
-	cond_value[2]  			= 	SPL_Cost_SkullBolt/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_SkullBolt;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_SkullBolt;
-	COUNT[5]				=	value;
-};
-instance ItSc_BloodFireball (ItemPR_Scroll)
-{
-	value 					=	50;
-	
-	visual					=	"ItSc_InstantFireball.3DS";
-	spell					= 	SPL_BloodFireball;
-	cond_value[2]  			= 	SPL_Cost_BloodFireball/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_BloodFireball;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_BloodFireball;
-	COUNT[5]				=	value;
-};
-instance ItSc_DragonBall (ItemPR_Scroll)
-{
-	value 					=	200;
-	
-	visual					=	"ItSc_InstantFireball.3DS";
-	spell					= 	SPL_DragonBall;
-	cond_value[2]  			= 	SPL_Cost_DragonBall/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_DragonBall;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_DragonBall;
-	COUNT[5]				=	value;
-};
-instance ItSc_BlackDragonBall (ItemPR_Scroll)
-{
-	value 					=	250;
-	
-	visual					=	"ItSc_InstantFireball.3DS";
-	spell					= 	SPL_BlackDragonBall;
-	cond_value[2]  			= 	SPL_Cost_BlackDragonBall/SPL_Cost_Scroll;
-	
-	description				=	NAME_SPL_BlackDragonBall;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_BlackDragonBall;
+	TEXT[2]					=	NAME_LevelPerCast;
+	COUNT[2]				=	SPL_MinLvl_Shrink;
+	TEXT[3]					= 	NAME_ScalingPerPower;
+	COUNT[3]				=	SPL_Scaling_Shrink;
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
@@ -906,4 +810,76 @@ instance ItSc_NecDeath (ItemPR_Spell)
 //	COUNT[1]				=	SPL_COST_NecDeath;
 	TEXT[2]					=	NAME_Dam_Magic;
 //	COUNT[2]				=	SPL_Damage_NecDeath;
+};
+///*******************************************************************************************
+///	PAL spells
+///*******************************************************************************************
+instance ItSc_PalBless (ItemPR_Scroll)
+{
+	value 					=	30;
+	
+	visual					=	"ItSc_PalLight.3DS";
+	spell					=	SPL_PalBless;
+	cond_value[2]  			=	SPL_Cost_PalBless/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalBless;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	"Dodatkowe obra¿enia równe 10% max. many.";
+	TEXT[3]					=	"U¿yj ponownie by wy³¹czyæ.";
+	COUNT[5]				=	value;
+};
+instance ItSc_PalHeal (ItemPR_Scroll)
+{
+	value 					=	175;
+	
+	visual					=	"ItSc_PalMediumHeal.3DS";
+	spell					=	SPL_PalHeal;
+	cond_value[2]  			=	SPL_Cost_PalHeal/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalHeal;
+	TEXT[1]					=	NAME_MaxManakosten;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					= 	NAME_Bonus_HP;
+	COUNT[2]				=	SPL_Heal_PalHeal;
+	COUNT[5]				=	value;
+};
+instance ItSc_PalHolyBolt (ItemPR_Scroll)
+{
+	value 					=	175;
+	
+	visual					=	"ItSc_PalHolyBolt.3DS";
+	spell					=	SPL_PalHolyBolt;
+	cond_value[2]  			=	SPL_Cost_PalHolyBolt/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalHolyBolt;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_PalHolyBolt;
+	COUNT[5]				=	value;
+};
+instance ItSc_PalJustice (ItemPR_Scroll)
+{
+	value					=	175;
+	
+	visual					=	"ItSc_PalFullHeal.3DS";
+	spell					=	SPL_PalJustice;
+	cond_value[2]  			=	SPL_Cost_PalJustice/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalJustice;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItSc_PalDestroyEvil (ItemPR_Scroll)
+{
+	value					=	175;
+	
+	visual					=	"ItSc_PalDestroyEvil.3DS";
+	spell					=	SPL_PalDestroyEvil;
+	cond_value[2]			=	SPL_Cost_PalDestroyEvil/SPL_Cost_Scroll;
+	
+	description				=	NAME_SPL_PalDestroyEvil;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_PalDestroyEvil;
+	COUNT[5]				=	value;
 };

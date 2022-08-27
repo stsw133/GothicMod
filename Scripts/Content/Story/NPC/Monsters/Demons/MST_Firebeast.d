@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_ShadowbeastDemon (C_Npc)
+prototype Mst_Default_Firebeast (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Ognisty demon";
@@ -14,12 +14,12 @@ prototype Mst_Default_ShadowbeastDemon (C_Npc)
 	B_SetAttributesToLevel (self, 50);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level * AR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
 	protection[PROT_FIRE]				=	-1;
-	protection[PROT_FLY]				=	level * MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -39,21 +39,21 @@ prototype Mst_Default_ShadowbeastDemon (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_ShadowbeastDemon()
+func void B_SetVisuals_Firebeast()
 {
 	Mdl_SetVisual		(self, "FireShadow.mds");
 	Mdl_SetVisualBody	(self, "Shadowbeast_Skeleton_Body", 1, default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Shadowbeast_Fire (Mst_Default_ShadowbeastDemon)
+instance Shadowbeast_Fire (Mst_Default_Firebeast)
 {
-	B_SetVisuals_ShadowbeastDemon();
+	B_SetVisuals_Firebeast();
 };
 ///******************************************************************************************
-instance Shadowbeast_Fire_CanyonLib (Mst_Default_ShadowbeastDemon)
+instance Shadowbeast_Fire_CanyonLib (Mst_Default_Firebeast)
 {
 	aivar[AIV_EnemyOverride]			=	true;
 	aivar[AIV_MaxDistToWp]				=	900;
 	aivar[AIV_OriginalFightTactic]		=	FAI_SHADOWBEAST;
-	B_SetVisuals_ShadowbeastDemon();
+	B_SetVisuals_Firebeast();
 };

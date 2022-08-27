@@ -13,12 +13,12 @@ prototype Mst_Default_TrollDemon (C_Npc)
 	B_SetAttributesToLevel (self, 80);
 	
 	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level * AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level * AR_PER_LEVEL;
+	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
+	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
 	protection[PROT_POINT]				=	-1;
-	protection[PROT_FIRE]				=	level * MR_PER_LEVEL + 10 * MR_PER_LEVEL;
+	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20 + 5*MR_PER_LEVEL;
 	protection[PROT_FLY]				=	-1;
-	protection[PROT_MAGIC]				=	level * MR_PER_LEVEL;
+	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

@@ -39,7 +39,7 @@ func void B_RaiseAttribute (var C_Npc oth, var int attrib, var int points)
 	}
 	else if (attrib == ATR_LIFESTEAL)
 	{
-		Npc_AddPowerPoints(oth, points);
+		Npc_AddLifeStealPoints(oth, points);
 		concatText = ConcatStrings(PRINT_LearnLS, IntToString(points));
 	}
 	else if (attrib == ATR_POWER)

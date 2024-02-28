@@ -13,8 +13,8 @@ instance PIR_1320_Addon_Greg (Npc_Default)
 	self.aivar[AIV_ToughGuy]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Master-10);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Master-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -26,7 +26,7 @@ instance PIR_1320_Addon_Greg (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Greg, 0, ITAR_PIR_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Greg, 0, ITAR_PIR_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

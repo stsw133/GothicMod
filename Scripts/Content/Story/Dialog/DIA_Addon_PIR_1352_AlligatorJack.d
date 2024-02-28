@@ -608,7 +608,7 @@ func void DIA_Addon_AlligatorJack_HuntEnd_Info ()
 	
 	B_GiveInvItems (self ,other,ItFoMuttonRaw,10);
 	MIS_KrokoJagd = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 
 
@@ -725,7 +725,7 @@ func void DIA_Addon_AlligatorJack_CanLearn_Info ()
 		B_LogEntry		(Topic_Addon_PIR_Teacher,"Jack Aligator mo¿e pokazaæ mi, jak obdzieraæ zwierzêta ze skór i jak wyci¹gaæ ich zêby. Mo¿e te¿ nauczyæ mnie strzelania z ³uku.");
 		
 		AlligatorJack_Addon_TeachPlayer = TRUE;
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{

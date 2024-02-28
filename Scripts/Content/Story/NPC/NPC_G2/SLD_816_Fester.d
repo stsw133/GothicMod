@@ -9,8 +9,8 @@ instance SLD_816_Fester (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 	B_AddFightSkill (self, NPC_TALENT_BOW, 40);
 
 	/// ------ FT ------
@@ -25,7 +25,7 @@ instance SLD_816_Fester (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal32, 0, ITAR_SLD_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal32, 0, ITAR_SLD_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

@@ -260,7 +260,7 @@ func void DIA_Bilgot_BEIBRUECKEANGEKOMMEN_Info ()
 	AI_StopProcessInfos (self);	
 	TschuessBilgot = TRUE;
 	MIS_RescueBilgot = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	
 	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Npc_ExchangeRoutine	(self, "FLEEOUTOFOW");
@@ -324,5 +324,5 @@ func void DIA_Bilgot_Olav_Info ()
 	AI_Output (other, self, "DIA_Bilgot_Olav_15_02"); //Nie ¿yje. Wilki go zjad³y.
 	AI_Output (self, other, "DIA_Bilgot_Olav_05_03"); //O, cholera. Mam nadziejê, ¿e chocia¿ ja zdo³am siê st¹d wyrwaæ.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };

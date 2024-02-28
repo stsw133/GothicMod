@@ -282,7 +282,7 @@ FUNC VOID DIA_Addon_Bill_KilledEsteban_Info()
 	
 	B_LogEntry	(TOPIC_Addon_KillJuan,"Juan zosta³ za³atwiony, co ucieszy³o Billa.");
 	MIS_Addon_Bill_SearchAngusMurder = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 };
 
@@ -351,5 +351,5 @@ func void DIA_Addon_Bill_TeachPlayer_Info ()
 	AI_Output	(self, other, "DIA_Addon_Bill_TeachPlayer_03_01"); //Mogê ci pokazaæ, jak opró¿niaæ ludziom kieszenie tak, aby tego nie zauwa¿yli.
 	AI_Output	(self, other, "DIA_Addon_Bill_TeachPlayer_03_02"); //Ale musisz byæ co najmniej œrednio zrêczny, bo inaczej nie ma sensu zaczynaæ nauki.
 
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };

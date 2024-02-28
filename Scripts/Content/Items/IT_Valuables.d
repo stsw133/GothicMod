@@ -23,7 +23,7 @@ instance ItMi_Gold (ItemPR_Coin)
 };
 instance ItMi_FortuneCoin (ItemPR_Coin)
 {
-	value 					=	2;
+	value 					=	0;
 	visual 					=	"ItMi_Coin_01.3DS";
 	description				= 	"Moneta fortuny";
 	COUNT[5]				= 	value;
@@ -199,16 +199,6 @@ instance ItMi_GoldRing (ItemPR_GoldMisc)
 ///******************************************************************************************
 ///	Chests
 ///******************************************************************************************
-instance ItMi_Chest (ItemPR_Misc)
-{
-	name 					=	"Skrzynka";
-	value 					=	30;
-	visual 					=	"CHESTSMALL_OCCHESTSMALLLOCKED.mds";
-	material 				=	MAT_WOOD;
-	
-	description				= 	name;
-	COUNT[5]				= 	value;
-};
 instance ItMi_GoldChest (ItemPR_Misc)
 {
 	name 					=	"Z³ota skrzyneczka";
@@ -305,16 +295,16 @@ instance ItSe_GoldFisch (ItemPR_SecretFish)
 };
 func void Use_GoldFisch() { B_PlayerFindItem (ItMi_Gold, 50); };
 
-instance ItSe_RingFisch (ItemPR_SecretFish)
-{
-	on_state[0]				=   Use_RingFisch;
-	description				= 	"Ma³a ryba";
-};
-func void Use_RingFisch() { B_PlayerFindItem (ItRi_ProtFire_01, 1); };
-
 instance ItSe_LockpickFisch (ItemPR_SecretFish)
 {
 	on_state[0]				=   Use_LockpickFisch;
 	description				= 	"Lekka ryba";
 };
 func void Use_LockpickFisch() { B_PlayerFindItem (ItKe_Lockpick, 3); };
+
+instance ItSe_RingFisch (ItemPR_SecretFish)
+{
+	on_state[0]				=   Use_RingFisch;
+	description				= 	"Ma³a ryba";
+};
+func void Use_RingFisch() { B_PlayerFindItem (ItRi_DR_01, 1); };

@@ -139,7 +139,7 @@ FUNC VOID DIA_Addon_Pardos_trank_01()
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
 	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(100); 
+	B_GivePlayerExp(100); 
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_02()
@@ -152,7 +152,7 @@ FUNC VOID DIA_Addon_Pardos_trank_02()
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
 	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_03()
@@ -165,7 +165,7 @@ FUNC VOID DIA_Addon_Pardos_trank_03()
 	Info_ClearChoices (DIA_Addon_Pardos_trank);
 	Pardos_Geheilt = TRUE;
 	B_SayPardosThanks();
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 //---------------------------------------------------------------------
 FUNC VOID DIA_Addon_Pardos_trank_Soup()
@@ -177,7 +177,7 @@ FUNC VOID DIA_Addon_Pardos_trank_Soup()
 		B_UseItem 	(self,ItFo_Addon_Meatsoup);
 	};	
 	AI_Output (self, other, "DIA_Addon_Pardos_trank_03_01");//Dziêkujê. Powinienem szybko odzyskaæ si³y.
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 };
 //---------------------------------------------------------------------
 //	Info perm

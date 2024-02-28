@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessPlayer
+/// B_AssessPlayer
 ///******************************************************************************************
 func void B_AssessPlayer()
 {
@@ -7,6 +7,7 @@ func void B_AssessPlayer()
 	{
 		return;
 	};
+	
 	if (C_NpcIsDown(other))
 	{
 		return;
@@ -85,6 +86,7 @@ func void B_AssessPlayer()
 		Player_GetOutOfMyBedComment = false;
 	};
 	
+	/// FUNC
 	B_AssignDementorTalk(self);
 	
 	if (Npc_GetDistToNpc(self, other) <= PERC_DIST_DIALOG)

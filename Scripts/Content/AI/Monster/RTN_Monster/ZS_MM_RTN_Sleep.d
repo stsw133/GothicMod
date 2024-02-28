@@ -8,7 +8,7 @@ func void B_MM_AssessQuietSound_Sleep()
 };
 
 ///******************************************************************************************
-///	ZS_MM_Rtn_Sleep
+/// ZS_MM_Rtn_Sleep
 ///******************************************************************************************
 func void ZS_MM_Rtn_Sleep()
 {
@@ -32,19 +32,20 @@ func void ZS_MM_Rtn_Sleep()
 		AI_GotoFP (self, "FP_ROAM");
 	};
 	
-	AI_PlayAni		(self, "T_PERCEPTION");
-	AI_PlayAniBS	(self, "T_STAND_2_SLEEP", BS_LIE);
+	AI_PlayAni (self, "T_PERCEPTION");
+	AI_PlayAniBS (self, "T_STAND_2_SLEEP", BS_LIE);
 };
 
 ///******************************************************************************************
 func int ZS_MM_Rtn_Sleep_loop()
 {
-	if (!Wld_IsTime(self.aivar[AIV_MM_SleepStart],00,self.aivar[AIV_MM_SleepEnd],00))
+	if (!Wld_IsTime(self.aivar[AIV_MM_SleepStart], 00, self.aivar[AIV_MM_SleepEnd], 00))
 	&& (self.aivar[AIV_MM_SleepStart] != OnlyRoutine)
 	{
 		AI_StartState (self, ZS_MM_AllScheduler, true, "");
 		return LOOP_END;
 	};
+	
 	return LOOP_CONTINUE;
 };
 

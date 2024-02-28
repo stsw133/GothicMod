@@ -23,7 +23,7 @@ func void B_GiveTradeInv_Addon_Erol (var C_NPC slf)
 		CreateInvItems (slf, ItMw_Zweihaender1, 1);
 		
 		CreateInvItems (slf, ItRi_ProtPhysical_01, 1);
-		CreateInvItems (slf, ItAm_Str_01, 1);
+		CreateInvItems (slf, ItAm_Pirate_01, 1);
 		
 		Erol_ItemsGiven_Chapter = 1;
 	};

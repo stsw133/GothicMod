@@ -410,7 +410,7 @@ func void DIA_Godar_Dragonstuff_fair ()
 		if (B_GiveInvItems (other, self, ItMi_Gold,1000))
 		{
 			Godar_TeachDragonStuff = TRUE;
-			self.aivar[AIV_CanTeach] = true;
+			self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		}
 		else
 		{

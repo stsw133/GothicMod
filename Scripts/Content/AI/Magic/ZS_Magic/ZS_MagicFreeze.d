@@ -61,14 +61,14 @@ func int ZS_MagicFreeze_Loop()
 		
 		if (self.attribute[ATR_HITPOINTS] > (self.attribute[ATR_HITPOINTS] - SPL_FREEZE_DAMAGE))
 		{
-			if (self.guild == GIL_FIREGOLEM)
+			if (self.aivar[AIV_MM_REAL_ID] == ID_FIREGOLEM)
 			|| (self.aivar[AIV_MM_REAL_ID] == ID_FIREWARAN)
 			{
 				B_MagicHurtNpc (other, self, SPL_FREEZE_DAMAGE*2);
 				return LOOP_CONTINUE;
 			};
 			
-			if (self.guild == GIL_ICEGOLEM)
+			if (self.aivar[AIV_MM_REAL_ID] == ID_ICEGOLEM)
 			{
 				B_MagicHurtNpc (other, self, SPL_FREEZE_DAMAGE/2);
 				return LOOP_CONTINUE;

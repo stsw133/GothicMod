@@ -12,11 +12,11 @@ instance PC_Mage_DI (Npc_Default)
 	aivar[AIV_MagicUser]				=	MAGIC_PYR;
 	aivar[AIV_PARTYMEMBER]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -25,7 +25,7 @@ instance PC_Mage_DI (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Milten, 0, ITAR_Mag_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Milten, 0, ITAR_Mag_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

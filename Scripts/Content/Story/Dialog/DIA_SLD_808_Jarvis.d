@@ -438,7 +438,7 @@ FUNC VOID DIA_Jarvis_HowManyLeft_Info()
 		
 		self.aivar[AIV_IgnoreCrime] -= IGNORE_Murder;
 		
-		B_GivePlayerXP (50*victories);
+		B_GivePlayerExp (50*victories);
 		B_LogEntry (TOPIC_SLDRespekt,"Jarvis udzieli mi swojego poparcia, jeœli zechcê wst¹piæ w szeregi najemników.");
 	};
 };

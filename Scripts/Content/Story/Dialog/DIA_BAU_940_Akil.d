@@ -160,14 +160,14 @@ func void DIA_Akil_NachKampf_Info ()
 	};
 	
 	TOPIC_END_AkilsSLDStillthere = TRUE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 FUNC VOID DIA_Akil_NachKampf_Ehre()
 {
 	AI_Output (other, self, "DIA_Akil_NachKampf_Ehre_15_00"); //Nic. Pod warunkiem, ¿e wszystko jest w porz¹dku.
 	AI_Output (self, other, "DIA_Akil_NachKampf_Ehre_13_01"); //Jesteœ wyj¹tkowym cz³owiekiem. Niech ciê Innos ma w swej opiece.
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	Info_ClearChoices (DIA_Akil_NachKampf);
 };
 FUNC VOID DIA_Akil_NachKampf_Gold()
@@ -176,7 +176,7 @@ FUNC VOID DIA_Akil_NachKampf_Gold()
 	AI_Output (self, other, "DIA_Akil_NachKampf_Gold_13_01"); //Obawiam siê, ¿e ciê rozczarujê - jesteœmy biedakami. Wystarcza nam na proste ¿ycie.
 	AI_Output (self, other, "DIA_Akil_NachKampf_Gold_13_02"); //Mogê ci tylko zaproponowaæ posi³ek. IdŸ do Kati, ona siê tob¹ zajmie.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices (DIA_Akil_NachKampf);
 	Kati_Mahlzeit = TRUE;
 };
@@ -244,7 +244,7 @@ func void DIA_Addon_Akil_MissingPeople_Info ()
 	AI_Output	(self, other, "DIA_Addon_Akil_MissingPeople_13_03"); //Wiem, ¿e nie opuœciliby farmy bez s³owa. W koñcu nie trzyma³em ich tu si³¹.
 	AI_Output	(self, other, "DIA_Addon_Akil_MissingPeople_13_04"); //Po prostu zniknêli i, co gorsza, nikt nie potrafi powiedzieæ, co siê z nimi sta³o.
 	AI_Output	(self, other, "DIA_Addon_Akil_MissingPeople_13_05"); //Jeœli ich spotkasz, dasz mi znaæ, dobra?
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 
 	Log_CreateTopic (TOPIC_Addon_MissingPeople, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_MissingPeople, LOG_RUNNING);
@@ -291,7 +291,7 @@ func void DIA_Addon_Akil_ReturnPeople_Info ()
 	AI_Output	(self, other, "DIA_Addon_Akil_ReturnPeople_13_03"); //Proszê, weŸ to z³oto. Zas³u¿y³eœ na nie.
 	B_GiveInvItems (self, other, itmi_Gold, 100);
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	MIS_Akil_BringMissPeopleBack = LOG_SUCCESS;
 };
 ///////////////////////////////////////////////////////////////////////
@@ -661,7 +661,7 @@ func void DIA_Akil_SCHAFDIEBEPLATT_Info ()
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);					
 	MIS_Akil_SchafDiebe	= LOG_SUCCESS;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -699,7 +699,7 @@ func void DIA_Akil_AkilsSchaf_Info ()
 	Follow_Sheep_AKIL.wp = "NW_FARM2_OUT_02";
 	Follow_Sheep_AKIL.start_aistate = ZS_MM_AllScheduler; 
 	
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 //#####################################################################
 //##

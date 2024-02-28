@@ -141,7 +141,7 @@ func void DIA_Wolf_WannaLearn_Info ()
 	AI_Output (other, self, "DIA_Wolf_WannaLearn_15_00"); //Mo¿esz mnie czegoœ nauczyæ?
 	AI_Output (self, other, "DIA_Wolf_WannaLearn_08_01"); //Jeœli chcesz, mogê ci pokazaæ, jak sprawniej pos³ugiwaæ siê ³ukiem. I tak nie mam teraz nic lepszego do roboty.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Wilk mo¿e mnie nauczyæ, jak pos³ugiwaæ siê ³ukiem.");
 };
@@ -251,7 +251,7 @@ FUNC VOID DIA_Wolf_AboutCrawler_Info()
 	AI_Output (self, other, "DIA_Wolf_AboutCrawler_08_06"); //Nie ma o czym mówiæ. Nie wezmê pieniêdzy od starego druha.
 	
 	MIS_Wolf_BringCrawlerPlates = LOG_RUNNING;
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	Log_CreateTopic (TOPIC_Wolf_BringCrawlerPlates,LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Wolf_BringCrawlerPlates,LOG_RUNNING);
@@ -452,7 +452,7 @@ func void DIA_Wolf_BENGAR_geld ()
 		
 	
 		MIS_BengarsHelpingSLD = LOG_SUCCESS;
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 		AI_StopProcessInfos (self);
 		AI_UseMob			(self,"BENCH",-1);
 		Npc_ExchangeRoutine	(self,"BengarsFarm");
@@ -679,7 +679,7 @@ FUNC VOID DIA_Wolf_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Wolf_KnowWhereEnemy_Yes_15_01"); //ZejdŸ na przystañ. Wkrótce odp³ywamy.
 	AI_Output (self ,other,"DIA_Wolf_KnowWhereEnemy_Yes_08_02"); //Ju¿ idê.
 	
-	B_GivePlayerXP(500);                                                              
+	B_GivePlayerExp(500);                                                              
 	                                                                                                     
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;

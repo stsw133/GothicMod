@@ -9,8 +9,8 @@ instance BDT_1070_Addon_Paul (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium-5);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium-5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;	
@@ -23,7 +23,7 @@ instance BDT_1070_Addon_Paul (Npc_Default)
 	CreateInvItem (self,ItMi_Nugget);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Drax, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Drax, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

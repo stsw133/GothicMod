@@ -18,7 +18,7 @@ FUNC INT DIA_Gestath_EXIT_Condition()
 
 FUNC VOID DIA_Gestath_EXIT_Info()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	if (Hlp_IsItem (heroArmor, ITAR_Crawler) == TRUE)
 	{
@@ -50,7 +50,7 @@ func void DIA_Gestath_HALLO_Info ()
 	AI_Output			(other, self, "DIA_Gestath_HALLO_15_00"); //Jak leci?
 	AI_Output			(self, other, "DIA_Gestath_HALLO_09_01"); //Przyjœcie tutaj jest prawdziwym aktem odwagi. Pewnie siê zgubi³eœ, co?
 	Gestath_TeachAnimalTrophy = TRUE;
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Info_ClearChoices	(DIA_Gestath_HALLO);
 	Info_AddChoice	(DIA_Gestath_HALLO, "Jest tu coœ wartego zobaczenia?", DIA_Gestath_HALLO_waszusehen );
 	Info_AddChoice	(DIA_Gestath_HALLO, "Co tutaj robisz?", DIA_Gestath_HALLO_was );

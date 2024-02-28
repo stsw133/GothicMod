@@ -12,8 +12,8 @@ instance BDT_1015_Bandit_L (Npc_Default)
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 5);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -26,7 +26,7 @@ instance BDT_1015_Bandit_L (Npc_Default)
 	CreateInvItem (self, ItWr_BanditLetter_MIS);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal03, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal03, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

@@ -259,7 +259,7 @@ FUNC VOID DIA_Addon_Thorus_Sent_Info()
 	AI_Output (self, other, "DIA_Addon_BDT_10014_Thorus_Sent_12_01");//W porz¹dku. Jeœli o mnie chodzi, mo¿esz wejœæ.
 
 	MIS_Send_Buddler = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 //----------------------------------------------------------------------
 //	Info Armor

@@ -578,7 +578,7 @@ FUNC VOID DIA_MiltenNW_KnowWhereEnemy_Yes ()
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	MiltenNW_IsOnBoard	 = LOG_SUCCESS;
 	
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	
 	crewmember_Count = (Crewmember_Count +1);
 	

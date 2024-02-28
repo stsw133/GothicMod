@@ -5,6 +5,10 @@ prototype ItemPR_Mission (C_Item)
 	flags 					=	ITEM_MULTI|ITEM_MISSION;
 };
 ///******************************************************************************************
+
+var int	Gorns_Beutel;
+
+///******************************************************************************************
 instance ItAm_InnosEye_Broken (ItemPR_Mission)
 {
 	name 			=	"Oko Innosa";
@@ -164,6 +168,8 @@ instance ItMi_MariasGoldPlate (ItemPR_Mission)
 	name 			=	"Z³oty talerz Marii";
 	visual 			=	"ItMi_GoldPlate.3DS";
 	description		=	name;
+	TEXT[2]			=	"Ozdobiono go stylizowanymi";
+	TEXT[3]			=	"imionami Onara i Marii.";
 };
 instance ItMi_OldCoin (ItemPR_Mission)
 {
@@ -288,6 +294,8 @@ instance ItRi_OrcEliteRing (ItemPR_Mission)
 	name 			=	"Pierœcieñ orkowych przywódców";
 	visual 			=	"ItRi_Str_02.3ds";
 	description		=	name;
+	TEXT[0]			=	"Pierœcieñ jest szorstki i";
+	TEXT[1]			=	"dziwnie zimny w dotyku.";
 };
 instance ItRi_Prot_Point_01_MIS (ItemPR_Mission)
 {
@@ -510,7 +518,7 @@ instance ItSe_Golemchest_Mis (ItemPR_Mission)
 };
 func void Use_GolemChest()
 {
-	B_PlayerFindItem (ItRi_ProtTotal_02, 1);
+	B_PlayerFindItem (ItRi_AD_01, 1);
 	B_PlayerFindItem (ItMi_Gold, 50);
 	Snd_Play("Geldbeutel");
 };

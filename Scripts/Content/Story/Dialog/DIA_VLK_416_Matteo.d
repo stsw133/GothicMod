@@ -469,7 +469,7 @@ FUNC VOID DIA_Matteo_GoldRunning_Info()
 		};
 		
 		MIS_Matteo_Gold = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	}
 	else
 	{
@@ -510,7 +510,7 @@ FUNC VOID DIA_Matteo_Zustimmung_Info()
 		AI_Output (self, other, "DIA_Matteo_Zustimmung_09_01"); //Nie martw siê. Dotrzymam umowy.
 		AI_Output (self, other, "DIA_Matteo_Zustimmung_09_02"); //Inni mistrzowie us³ysz¹ o tobie same dobre rzeczy.
 		
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		B_LogEntry (Topic_Lehrling,"Jeœli zechcê zostaæ czeladnikiem, Matteo udzieli mi swojego poparcia.");
 		DIA_Matteo_Zustimmung_perm = TRUE;
 	}
@@ -699,5 +699,5 @@ FUNC VOID DIA_Matteo_Minenanteil_Info()
 {	
 	AI_Output (other, self, "DIA_Matteo_Minenanteil_15_00"); //Wœród rzeczy na sprzeda¿ zauwa¿y³em udzia³y w kopalni.
 	AI_Output (self, other, "DIA_Matteo_Minenanteil_09_01"); //Udzia³y w kopalni? Eeee. Sk¹d siê wziê³y? Nie mam pojêcia, sk¹d je mam. Naprawdê, Panie.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };

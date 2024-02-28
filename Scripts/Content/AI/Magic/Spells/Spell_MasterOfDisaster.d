@@ -10,7 +10,7 @@ const int SPL_Scaling_MasterOfDisaster	=	300;
 instance Spell_MasterOfDisaster (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_MasterOfDisaster;
+	damage_per_level					=	SPL_Damage_MasterOfDisaster;
 	damageType							=	DAM_MAGIC;
 };
 

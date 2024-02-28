@@ -159,7 +159,7 @@ FUNC VOID DIA_Addon_Garaz_Blood_Info()
 	AI_Output (self, other, "DIA_Addon_Garaz_Blood_08_00");//Da³eœ temu bydlakowi nauczkê. Dobra robota.
 	AI_Output (self, other, "DIA_Addon_Garaz_Blood_08_01");//W takim razie rozejrzê siê po okolicy.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	AI_StopProcessInfos  (self);
 	Npc_ExchangeRoutine (self,"GOLD");
 	B_StartOtherRoutine (Thorus, "TALK");

@@ -10,7 +10,7 @@ const int SPL_Scaling_DeathBolt			=	250;
 instance Spell_DeathBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_DeathBolt;
+	damage_per_level					=	SPL_Damage_DeathBolt;
 	damageType							=	DAM_MAGIC;
 };
 

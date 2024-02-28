@@ -10,15 +10,8 @@ prototype Mst_Default_Golem (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
 	
-	B_SetAttributesToLevel (self, 40);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -45,6 +38,16 @@ func void B_SetVisuals_AncientGolem()
 	Mdl_SetVisual		(self, "Golem.mds");
 	Mdl_SetVisualBody	(self, "Gol_Ancient_Body", 0, default, "", default, default, -1);
 };
+func void B_SetVisuals_CrystalGolem()
+{
+	Mdl_SetVisual		(self, "Golem.mds");
+	Mdl_SetVisualBody	(self, "Gol_Crystal_Body", 0, default, "", default, default, -1);
+};
+func void B_SetVisuals_DarkmudGolem()
+{
+	Mdl_SetVisual		(self, "SwampGolem.mds");
+	Mdl_SetVisualBody	(self, "Gol_Darkmud_Body", 0, default, "", default, default, -1);
+};
 func void B_SetVisuals_DesertGolem()
 {
 	Mdl_SetVisual		(self, "Golem.mds");
@@ -65,11 +68,6 @@ func void B_SetVisuals_OreGolem()
 	Mdl_SetVisual		(self, "Golem.mds");
 	Mdl_SetVisualBody	(self, "Gol_Ore_Body", 0, default, "", default, default, -1);
 };
-func void B_SetVisuals_CrystalGolem()
-{
-	Mdl_SetVisual		(self, "Golem.mds");
-	Mdl_SetVisualBody	(self, "Gol_Crystal_Body", 0, default, "", default, default, -1);
-};
 func void B_SetVisuals_SteelGolem()
 {
 	Mdl_SetVisual		(self, "Golem.mds");
@@ -80,11 +78,6 @@ func void B_SetVisuals_SwampGolem()
 	Mdl_SetVisual		(self, "SwampGolem.mds");
 	Mdl_SetVisualBody	(self, "Gol_Swamp_Body", 0, default, "", default, default, -1);
 };
-func void B_SetVisuals_DarkmudGolem()
-{
-	Mdl_SetVisual		(self, "SwampGolem.mds");
-	Mdl_SetVisualBody	(self, "Gol_Darkmud_Body", 0, default, "", default, default, -1);
-};
 ///******************************************************************************************
 instance Golem (Mst_Default_Golem)
 {
@@ -93,6 +86,19 @@ instance Golem (Mst_Default_Golem)
 instance AncientGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_AncientGolem();
+};
+instance CrystalGolem (Mst_Default_Golem)
+{
+	effect = "SPELLFX_CRYSTALGLOW";
+	
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetMonsterProtection (self, level);
+	
+	B_SetVisuals_CrystalGolem();
+};
+instance DarkmudGolem (Mst_Default_Golem)
+{
+	B_SetVisuals_DarkmudGolem();
 };
 instance DesertGolem (Mst_Default_Golem)
 {
@@ -108,23 +114,10 @@ instance IceGolem (Mst_Default_Golem)
 };
 instance OreGolem (Mst_Default_Golem)
 {
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetMonsterProtection (self, level);
+	
 	B_SetVisuals_OreGolem();
-};
-instance CrystalGolem (Mst_Default_Golem)
-{
-	effect = "SPELLFX_CRYSTALGLOW";
-	
-	B_SetAttributesToLevel (self, 30);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
-	
-	B_SetVisuals_CrystalGolem();
 };
 instance SteelGolem (Mst_Default_Golem)
 {
@@ -133,22 +126,6 @@ instance SteelGolem (Mst_Default_Golem)
 instance SwampGolem (Mst_Default_Golem)
 {
 	B_SetVisuals_SwampGolem();
-};
-instance DarkmudGolem (Mst_Default_Golem)
-{
-	B_SetVisuals_DarkmudGolem();
-};
-///******************************************************************************************
-/// Summoned_Golem
-///******************************************************************************************
-instance Summoned_Golem (Mst_Default_Golem)
-{
-	name								=	"Przyzwany golem";
-	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
-	
-	B_SetAttributesToLevel (self, level);
-	B_SetVisuals_Golem();
 };
 ///******************************************************************************************
 /// Shattered_Golem
@@ -212,15 +189,8 @@ instance Golem_Magic (Mst_Default_Golem)
 {
 	name								=	"Magiczny golem";
 	
-	B_SetAttributesToLevel (self, 30);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 5;
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	B_SetVisuals_Golem();
 	Mdl_SetModelScale (self, 0.9, 0.9, 0.9);

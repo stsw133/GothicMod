@@ -168,7 +168,7 @@ FUNC VOID DIA_Alwin_FellanSuccess_Info()
 		B_GiveInvItems (self, other, ItMi_Gold, 30);
 		
 		MIS_AttackFellan = LOG_SUCCESS;
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 	}
 	else 
 	{

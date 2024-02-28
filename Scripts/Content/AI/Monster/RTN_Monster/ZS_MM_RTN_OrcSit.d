@@ -1,11 +1,11 @@
 ///******************************************************************************************
-///	ZS_MM_Rtn_OrcSit
+/// ZS_MM_Rtn_OrcSit
 ///******************************************************************************************
 func void ZS_MM_Rtn_OrcSit() 
 {
 	Perception_Set_Monster_Rtn();
 	
-	AI_SetWalkmode 	(self, NPC_WALK);
+	AI_SetWalkmode (self, NPC_WALK);
 	B_DeSynchronize();
 	
 	if (!Hlp_StrCmp(Npc_GetNearestWP(self), self.wp))
@@ -19,7 +19,7 @@ func void ZS_MM_Rtn_OrcSit()
 ///******************************************************************************************
 func int ZS_MM_Rtn_OrcSit_loop()
 {
-	if (!Wld_IsTime(self.aivar[AIV_MM_OrcSitStart],00,self.aivar[AIV_MM_OrcSitEnd],00))
+	if (!Wld_IsTime(self.aivar[AIV_MM_OrcSitStart], 00, self.aivar[AIV_MM_OrcSitEnd], 00))
 	&& (self.aivar[AIV_MM_OrcSitStart] != OnlyRoutine)
 	{
 		AI_StartState (self, ZS_MM_AllScheduler, true, "");

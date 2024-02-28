@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Gildenattitüden zum Spielstart
+/// Gildenattitüden zum Spielstart
 ///******************************************************************************************
 const int TAB_ANZAHL = 16 * 16;
 
@@ -28,22 +28,3 @@ const int GIL_ATTITUDES[TAB_ANZAHL] =
 /* KDW  */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_FRIENDLY,	/* KDW   */	ATT_NEUTRAL,	ATT_NEUTRAL,	/* KDW   */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_FRIENDLY,	/* KDW   */	ATT_HOSTILE,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* KDW   */	ATT_FRIENDLY,	ATT_NEUTRAL,	ATT_FRIENDLY,	ATT_NEUTRAL,	
 /* D   */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* D   */	ATT_NEUTRAL,	ATT_NEUTRAL,	/* D   */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* D   */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	/* D   */	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL,	ATT_NEUTRAL	
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

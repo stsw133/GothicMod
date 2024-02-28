@@ -127,7 +127,7 @@ FUNC VOID DIA_Isgaroth_tot_Info()
 	AI_Output (self ,other,"DIA_Isgaroth_tot_01_01"); //Dobra robota, nowicjuszu. Jesteœ dzielnym cz³owiekiem. A teraz wracaj do klasztoru, do swoich obowi¹zków.
 	
 	MIS_IsgarothWolf = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	AI_StopProcessInfos (self);
 	
 };
@@ -267,7 +267,7 @@ FUNC VOID DIA_Isgaroth_Vatras_Info()
 	CreateInvItems (self, ItPo_Health_02,2);
 	B_GiveInvItems (self,other,ItPo_Health_02,2);
 	
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 		
 	Vatras_Return = TRUE;
 };

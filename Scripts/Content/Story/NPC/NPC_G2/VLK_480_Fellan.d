@@ -10,11 +10,11 @@ instance VLK_480_Fellan (Npc_Default)
 
 	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 5);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -26,7 +26,7 @@ instance VLK_480_Fellan (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal26, 0, ITAR_Vlk_L_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal26, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

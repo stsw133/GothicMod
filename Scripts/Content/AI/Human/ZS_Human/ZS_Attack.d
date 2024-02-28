@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_Attack
+/// ZS_Attack
 ///******************************************************************************************
 func void B_AssessSurprise()
 {
@@ -26,7 +26,7 @@ func void ZS_Attack()
 		return;
 	};
 	
-	///FUNC
+	/// FUNC
 	if (!self.aivar[AIV_LOADGAME])
 	{
 		B_Say_AttackReason();
@@ -159,6 +159,7 @@ func int ZS_Attack_Loop()
 		B_CallGuards();
 		self.aivar[AIV_TAPOSITION] = 1;
 	};
+	
 	if (Npc_GetStateTime(self) > 8)
 	&& (self.aivar[AIV_TAPOSITION] == 1)
 	{
@@ -166,8 +167,8 @@ func int ZS_Attack_Loop()
 		self.aivar[AIV_TAPOSITION] = 2;
 	};
 	
-	B_CreateAmmo(self);
-	B_SelectWeapon (self, other);
+	B_CreateAmmo	(self);
+	B_SelectWeapon	(self, other);
 	
 	if (Hlp_IsValidNpc(other))
 	&& (!C_NpcIsDown(other))
@@ -207,7 +208,7 @@ func int ZS_Attack_Loop()
 		&& (Npc_GetDistToNpc(self, other) < PERC_DIST_INTERMEDIAT || Npc_IsPlayer(other))
 		&& (Npc_GetHeightToNpc(self, other) < PERC_DIST_HEIGHT)
 		&& (!other.aivar[AIV_INVINCIBLE])
-		&& (!(C_PlayerIsFakeBandit(self, other) && (self.guild == GIL_BDT)))
+		&& (!(C_PlayerIsFakeBandit(self, other) && self.guild == GIL_BDT))
 		{
 			if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_HOSTILE)
 			{
@@ -244,11 +245,13 @@ func int ZS_Attack_Loop()
 ///******************************************************************************************
 func void ZS_Attack_End()
 {
+	/// MOD
 	if (!self.aivar[AIV_PartyMember])
 	{
-		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];	///new!!!
+		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 	};
 	
+	/// ...
 	other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
 	
 	if (self.aivar[AIV_PursuitEnd])

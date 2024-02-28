@@ -9,8 +9,8 @@ instance BAU_952_Vino (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -22,7 +22,7 @@ instance BAU_952_Vino (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fatbald", Face_Normal53, 0, ITAR_Bau_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fatbald", Face_Normal53, 0, ITAR_Bau_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

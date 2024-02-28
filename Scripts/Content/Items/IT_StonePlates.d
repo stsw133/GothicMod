@@ -17,6 +17,7 @@ prototype ItemPR_StonePlate (C_Item)
 ///******************************************************************************************
 ///	Stoneplates
 ///******************************************************************************************
+/*
 instance ItWr_StonePlate (ItemPR_StonePlate)
 {
 	visual					=	"ItMi_StonePlate_PowerUp_01.3DS";
@@ -24,13 +25,15 @@ instance ItWr_StonePlate (ItemPR_StonePlate)
 	
 	TEXT[1]					= 	NAME_Bonus_Lp;
 	COUNT[1]				= 	2;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
 func void Use_ItWr_StonePlate()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute(self, 0, 2);
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
@@ -38,6 +41,7 @@ func void Use_ItWr_StonePlate()
 		CreateInvItem (self, ItWr_StonePlate);
 	};
 };
+*/
 ///******************************************************************************************
 instance ItWr_StonePlate_HP (ItemPR_StonePlate)
 {
@@ -46,13 +50,15 @@ instance ItWr_StonePlate_HP (ItemPR_StonePlate)
 	
 	TEXT[1]					= 	NAME_Bonus_HpMax;
 	COUNT[1]				= 	2*HP_PER_LP;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
 func void Use_ItWr_StonePlate_HP()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
@@ -61,47 +67,52 @@ func void Use_ItWr_StonePlate_HP()
 	};
 };
 ///******************************************************************************************
-instance ItWr_StonePlate_Mana (ItemPR_StonePlate)
+instance ItWr_StonePlate_MP (ItemPR_StonePlate)
 {
 	visual					=	"ItMi_StonePlate_PowerUp_04.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_Mana;
+	on_state[0]				=	Use_ItWr_StonePlate_MP;
 	
-	TEXT[1]					= 	NAME_Bonus_ManaMax;
-	COUNT[1]				= 	2;
+	TEXT[1]					= 	NAME_Bonus_MpMax;
+	COUNT[1]				= 	2*MP_PER_LP;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
-func void Use_ItWr_StonePlate_Mana()
+func void Use_ItWr_StonePlate_MP()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
-		B_RaiseAttribute (self, ATR_MANA_MAX, 2);
-		B_GivePlayerXP(100);
+		B_RaiseAttribute (self, ATR_MANA_MAX, 2*MP_PER_LP);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
 		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_Mana);
+		CreateInvItem (self, ItWr_StonePlate_MP);
 	};
 };
-/*
 ///******************************************************************************************
-instance ItWr_StonePlate_Energy (ItemPR_StonePlate)
+/*
+instance ItWr_StonePlate_Stamina (ItemPR_StonePlate)
 {
 	visual					=	"ItMi_StonePlate_PowerUp_05.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_Energy;
+	on_state[0]				=	Use_ItWr_StonePlate_Stamina;
 	
-	TEXT[1]					= 	NAME_Bonus_EneMax;
-	COUNT[1]				= 	5;
+	TEXT[1]					= 	NAME_Bonus_SpMax;
+	COUNT[1]				= 	2*SP_PER_LP;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
-func void Use_ItWr_StonePlate_Energy()
+func void Use_ItWr_StonePlate_Stamina()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
-		self.aivar[AIV_Energy_MAX] += 5;
+		self.aivar[AIV_Stamina_MAX] += 2*SP_PER_LP;
+		B_GivePlayerExp(200);
 	}
 	else
 	{
 		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_Energy);
+		CreateInvItem (self, ItWr_StonePlate_Stamina);
 	};
 };
 */
@@ -113,6 +124,8 @@ instance ItWr_StonePlate_STR (ItemPR_StonePlate)
 	
 	TEXT[1]					= 	NAME_Bonus_STR;
 	COUNT[1]				= 	2;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 	
 };
 func void Use_ItWr_StonePlate_STR()
@@ -120,7 +133,7 @@ func void Use_ItWr_StonePlate_STR()
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_STRENGTH, 2);
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
@@ -136,13 +149,15 @@ instance ItWr_StonePlate_DEX (ItemPR_StonePlate)
 	
 	TEXT[1]					= 	NAME_Bonus_DEX;
 	COUNT[1]				= 	2;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
 func void Use_ItWr_StonePlate_DEX()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_DEXTERITY, 2);
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
@@ -151,141 +166,50 @@ func void Use_ItWr_StonePlate_DEX()
 	};
 };
 ///******************************************************************************************
-instance ItWr_StonePlate_Power (ItemPR_StonePlate)
+instance ItWr_StonePlate_POW (ItemPR_StonePlate)
 {
 	visual					=	"ItMi_StonePlate_PowerUp_03.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_Power;
+	on_state[0]				=	Use_ItWr_StonePlate_POW;
 	
-	TEXT[1]					= 	NAME_Bonus_Power;
+	TEXT[1]					= 	NAME_Bonus_Pow;
 	COUNT[1]				= 	2;
+	TEXT[2]					=	NAME_Bonus_Exp;
+	COUNT[2]				=	200;
 };
-func void Use_ItWr_StonePlate_Power()
+func void Use_ItWr_StonePlate_POW()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		B_RaiseAttribute (self, ATR_POWER, 2);
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
 		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_Power);
+		CreateInvItem (self, ItWr_StonePlate_POW);
 	};
 };
-/*
-///******************************************************************************************
-instance ItWr_StonePlate_1h (ItemPR_StonePlate)
-{
-	visual					=	"ItMi_StonePlate_PowerUp_01.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_1h;
-	
-	TEXT[1]					= 	NAME_Bonus_1H;
-	COUNT[1]				= 	1;
-};
-func void Use_ItWr_StonePlate_1h()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
-	{
-		B_AddFightSkill (self, NPC_TALENT_1H, 1);
-		B_GivePlayerXP(100);
-	}
-	else
-	{
-		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_1h);
-	};
-};
-///******************************************************************************************
-instance ItWr_StonePlate_2h (ItemPR_StonePlate)
-{
-	visual					=	"ItMi_StonePlate_PowerUp_02.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_2h;
-	
-	TEXT[1]					= 	NAME_Bonus_2H;
-	COUNT[1]				= 	1;
-};
-func void Use_ItWr_StonePlate_2h()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
-	{
-		B_AddFightSkill (self, NPC_TALENT_2H, 1);
-		B_GivePlayerXP(100);
-	}
-	else
-	{
-		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_2h);
-	};
-};
-///******************************************************************************************
-instance ItWr_StonePlate_Bow (ItemPR_StonePlate)
-{
-	visual					=	"ItMi_StonePlate_PowerUp_03.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_Bow;
-	
-	TEXT[1]					= 	NAME_Bonus_Bow;
-	COUNT[1]				= 	1;
-};
-func void Use_ItWr_StonePlate_Bow()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
-	{
-		B_AddFightSkill (self, NPC_TALENT_BOW, 1);
-		B_GivePlayerXP(100);
-	}
-	else
-	{
-		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_Bow);
-	};
-};
-///******************************************************************************************
-instance ItWr_StonePlate_CBow (ItemPR_StonePlate)
-{
-	visual					=	"ItMi_StonePlate_PowerUp_04.3DS";
-	on_state[0]				=	Use_ItWr_StonePlate_CBow;
-	
-	TEXT[1]					= 	NAME_Bonus_CBow;
-	COUNT[1]				= 	1;
-};
-func void Use_ItWr_StonePlate_CBow()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
-	{
-		B_AddFightSkill (self, NPC_TALENT_CROSSBOW, 1);
-		B_GivePlayerXP(100);
-	}
-	else
-	{
-		B_Say (self, self, "$CANTREADTHIS");
-		CreateInvItem (self, ItWr_StonePlate_CBow);
-	};
-};
-*/
+
 ///******************************************************************************************
 func void Wld_InsertRandomStoneplate (var string spawnPoint)
 {
 	var int rand; rand = Hlp_Random(5);
 	
 	if		(rand == 0)	{	Wld_InsertItem (ItWr_StonePlate_HP, spawnPoint);	}
-	else if (rand == 1)	{	Wld_InsertItem (ItWr_StonePlate_Mana, spawnPoint);	}
+	else if (rand == 1)	{	Wld_InsertItem (ItWr_StonePlate_MP, spawnPoint);	}
 	else if (rand == 2)	{	Wld_InsertItem (ItWr_StonePlate_STR, spawnPoint);	}
 	else if (rand == 3)	{	Wld_InsertItem (ItWr_StonePlate_DEX, spawnPoint);	}
-	else if (rand == 4)	{	Wld_InsertItem (ItWr_StonePlate_Power, spawnPoint);	};
+	else if (rand == 4)	{	Wld_InsertItem (ItWr_StonePlate_POW, spawnPoint);	};
 };
 ///******************************************************************************************
 func int C_ScHasMagicStonePlate()
 {
 	if (Npc_HasItems(hero, ItWr_StonePlate_HP))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_Mana))
-//	|| (Npc_HasItems(hero, ItWr_StonePlate_Energy))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_MP))
+//	|| (Npc_HasItems(hero, ItWr_StonePlate_Stamina))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_STR))
 	|| (Npc_HasItems(hero, ItWr_StonePlate_DEX))
-	|| (Npc_HasItems(hero, ItWr_StonePlate_Power))
-//	|| (Npc_HasItems(hero, ItWr_StonePlate_1h))
-//	|| (Npc_HasItems(hero, ItWr_StonePlate_2h))
-//	|| (Npc_HasItems(hero, ItWr_StonePlate_Bow))
-//	|| (Npc_HasItems(hero, ItWr_StonePlate_CBow))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_POW))
 	{
 		return true;
 	};

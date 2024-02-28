@@ -9,8 +9,8 @@ instance DJG_740_ToterDrachenjaeger (Npc_Default)
 	npctype								=	NPCTYPE_AMBIENT;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Strong-5);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -23,7 +23,7 @@ instance DJG_740_ToterDrachenjaeger (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal28, 0, ITAR_DJG_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal28, 0, ITAR_DJG_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

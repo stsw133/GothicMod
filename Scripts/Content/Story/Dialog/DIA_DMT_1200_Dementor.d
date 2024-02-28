@@ -51,7 +51,7 @@ func void DIA_BridgeDementor_Info ()
 	Wld_PlayEffect	("DEMENTOR_FX",  hero, hero, 0, 0, 0, FALSE );
 	Wld_PlayEffect	("spellFX_Fear",  self, self, 0, 0, 0, FALSE );
 	AI_PlayAni		(self,"T_PRACTICEMAGIC5");	
-	B_SCIsObsessed	(self);
+	B_SetScObsessed	(self);
 	
 	AI_Output			(self ,other, "DIA_BridgeDementor_19_00"); //Wiedzieliœmy, ¿e przybêdziesz!
 	AI_Output			(self ,other, "DIA_BridgeDementor_19_01"); //Wkrótce mój Mistrz zatryumfuje, a ca³y œwiat padnie przed nim na kolana!

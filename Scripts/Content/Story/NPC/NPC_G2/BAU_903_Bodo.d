@@ -9,8 +9,8 @@ instance BAU_903_Bodo (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate-10);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -22,7 +22,7 @@ instance BAU_903_Bodo (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal23, Teeth_Normal, ITAR_Bau_01);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal23, Teeth_Normal, ITAR_Bau_01);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

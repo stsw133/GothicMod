@@ -2,15 +2,15 @@
 ///	SPL_IceWave
 ///******************************************************************************************
 
-const int SPL_Cost_IceWave				=	120;
-const int SPL_Damage_IceWave			=	60;
-const int SPL_Scaling_IceWave			=	200;
+const int SPL_Cost_IceWave				=	125;	//120
+const int SPL_Damage_IceWave			=	75;		//60
+const int SPL_Scaling_IceWave			=	180;
 
 ///******************************************************************************************
 instance Spell_IceWave (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_IceWave;
+	damage_per_level					=	SPL_Damage_IceWave;
 	damageType							=	DAM_MAGIC;
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
 };

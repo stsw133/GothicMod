@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_MemorizePlayerCrime
+/// B_MemorizePlayerCrime
 ///******************************************************************************************
-func void B_MemorizePlayerCrime (var C_NPC slf, var C_NPC taeter, var int crime)
+func void B_MemorizePlayerCrime (var C_Npc slf, var C_Npc taeter, var int crime)
 {
 	if (!Npc_IsPlayer(taeter))
 	{
@@ -20,8 +20,8 @@ func void B_MemorizePlayerCrime (var C_NPC slf, var C_NPC taeter, var int crime)
 	
 	if (crime >= B_GetPlayerCrime(slf))
 	{
-		slf.aivar[AIV_NpcSawPlayerCommit] = crime;
-		slf.aivar[AIV_NpcSawPlayerCommitDay] = Wld_GetDay();
-		slf.aivar[AIV_CrimeAbsolutionLevel] = B_GetCurrentAbsolutionLevel(slf);
+		slf.aivar[AIV_NpcSawPlayerCommit]		=	crime;
+		slf.aivar[AIV_NpcSawPlayerCommitDay]	=	Wld_GetDay();
+		slf.aivar[AIV_CrimeAbsolutionLevel]		=	B_GetCurrentAbsolutionLevel(slf);
 	};
 };

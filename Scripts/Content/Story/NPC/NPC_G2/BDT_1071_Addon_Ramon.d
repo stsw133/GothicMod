@@ -9,12 +9,11 @@ instance BDT_1071_Addon_Ramon (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_NewsOverride]				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient | NEWS_ToughGuy;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Medium+5);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Medium+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -26,7 +25,7 @@ instance BDT_1071_Addon_Ramon (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal00, 0, ITAR_RVN_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal00, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 0.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

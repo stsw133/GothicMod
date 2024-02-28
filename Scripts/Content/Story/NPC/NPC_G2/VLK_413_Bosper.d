@@ -9,8 +9,8 @@ instance VLK_413_Bosper (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate+5);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -20,7 +20,7 @@ instance VLK_413_Bosper (Npc_Default)
 	EquipItem (self, ItRw_SLD_Bow);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal03, 0, ITAR_Hunter);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal03, 0, ITAR_Hunter);
 	Mdl_SetModelFatness	(self, 0.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

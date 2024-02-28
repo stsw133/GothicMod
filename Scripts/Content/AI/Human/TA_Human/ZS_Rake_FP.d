@@ -1,60 +1,62 @@
-func void ZS_Rake_FP ()
-{	
+///******************************************************************************************
+/// ZS_Rake_FP
+///******************************************************************************************
+func void ZS_Rake_FP()
+{
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	AI_SetWalkmode 	(self,NPC_WALK);
-		
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self, self.wp) > TA_DIST_SELFWP_MAX)
     {
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
-
-	if (Npc_HasItems (self,ItMi_Rake) == 0)
+	
+	if (Npc_HasItems(self,ItMi_Rake) == 0)
 	{
-		CreateInvItem (self,ItMi_Rake);
-	};	
+		CreateInvItem (self, ItMi_Rake);
+	};
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
 };
-	
-func int ZS_Rake_FP_Loop ()
+
+func int ZS_Rake_FP_Loop()
 {
-	if (Npc_IsOnFP (self, "PICK"))
-	{	
-		AI_AlignToFP (self);
+	if (Npc_IsOnFP(self, "PICK"))
+	{
+		AI_AlignToFP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
   			self.aivar[AIV_TAPOSITION] = NOTINPOS;
   		};
-	}	
-	else if (Wld_IsFPAvailable(self,"PICK"))
+	}
+	else if (Wld_IsFPAvailable(self, "PICK"))
 	{
-		AI_GotoFP 		(self, "PICK");
-		AI_StandUp 		(self);
-		AI_AlignToFP 	(self);
+		AI_GotoFP		(self, "PICK");
+		AI_StandUp		(self);
+		AI_AlignToFP	(self);
+		
 		self.aivar[AIV_TAPOSITION] = NOTINPOS_WALK;
 	}
 	else
 	{
-		AI_AlignToWP (self);
+		AI_AlignToWP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
   			self.aivar[AIV_TAPOSITION] = NOTINPOS;
-  		}; 
+  		};
 	};
 	
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
 	{
-		AI_UseItemToState 	(self,ItMi_Rake,1);	
+		AI_UseItemToState (self, ItMi_Rake, 1);
 		self.aivar[AIV_TAPOSITION] = ISINPOS;
-	};	
+	};
 	
 	return LOOP_CONTINUE;
-
 };
 
-func void ZS_Rake_FP_End ()
+func void ZS_Rake_FP_End()
 {
 	AI_UseItemToState (self, ItMi_Rake, -1);
 };

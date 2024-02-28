@@ -4,7 +4,7 @@
 func void B_ClearDeadTrader (var C_Npc slf)
 {
 	Npc_ClearInventory(slf);
-	if (!slf.aivar[AIV_VictoryXPGiven])
+	if (!slf.aivar[AIV_VictoryExpGiven])
 	{
 		B_CreateAmbientInv(slf);
 	};

@@ -13,14 +13,14 @@ instance STRF_1142_Addon_Sklave (Npc_Default)
 	aivar[AIV_NoFightParker]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Dressed+0, BodySkin_N, "Hum_Head_Bald", Face_Normal50, 0, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+0, BodySkin_N, "Hum_Head_Bald", Face_Normal50, 0, -1);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

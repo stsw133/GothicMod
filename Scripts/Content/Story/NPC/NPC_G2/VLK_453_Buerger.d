@@ -12,8 +12,8 @@ instance VLK_453_Buerger (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -25,7 +25,7 @@ instance VLK_453_Buerger (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal49, 0, ITAR_Bau_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal49, 0, ITAR_Bau_00);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

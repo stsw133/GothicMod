@@ -90,7 +90,7 @@ FUNC VOID DIA_Sergio_Isgaroth_XP()
 {
 	AI_Output (other, self, "DIA_Sergio_Isgaroth_XP_15_00"); //Podziel siê ze mn¹ swoim doœwiadczeniem i wiedz¹ na temat walki.
 	AI_Output (self, other, "DIA_Sergio_Isgaroth_XP_04_01"); //Kiedy walczysz, zawsze pamiêtaj, by chroniæ siê przed atakiem z ty³u.
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices (DIA_Sergio_Isgaroth);
 };
 

@@ -42,7 +42,7 @@ FUNC VOID DIA_Addon_PIR_Tom_Hi_Info()
 	AI_Output (self, other, "DIA_Addon_PIR_Tom_Hi_11_02");//Aber ... Moment mal - du bist gar kein Bandit? Ich dachte ...
 	AI_Output (other, self, "DIA_Addon_PIR_Tom_Hi_15_03");//(zwinkert) Pssst ... bleib ruhig. Alles ist gut.
 	
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	AI_StopProcessInfos (self);
 };
 */

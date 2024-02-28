@@ -14,8 +14,8 @@ instance DMT_1200_Dementor (Npc_Default)
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Master-10);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Master-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -24,7 +24,7 @@ instance DMT_1200_Dementor (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_MadPsi, 0, ITAR_Dementor);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_MadPsi, 0, ITAR_Dementor);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

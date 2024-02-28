@@ -1,13 +1,11 @@
 ///******************************************************************************************
-///	ZS_MM_Rtn_Follow_Sheep
+/// ZS_MM_Rtn_Follow_Sheep
 ///******************************************************************************************
 func void ZS_MM_Rtn_Follow_Sheep()
 {
-	Npc_SetPercTime	(self,	1);
-	
+	Npc_SetPercTime (self, 1);
 	Npc_PercEnable (self, PERC_ASSESSPLAYER, B_MM_AssessPlayer);
 	Npc_PercEnable (self, PERC_ASSESSTALK, B_AssessTalk);
-	
 	Npc_PercEnable (self, PERC_ASSESSMAGIC, B_AssessMagic);
 };
 
@@ -33,9 +31,10 @@ func int ZS_MM_Rtn_Follow_Sheep_Loop()
 	else
 	{
 		var int randomMove; randomMove = Hlp_Random(3);
-		if (randomMove == 0)	{	AI_PlayAni(self, "R_ROAM1");	};
-		if (randomMove == 1)	{	AI_PlayAni(self, "R_ROAM2");	};
-		if (randomMove == 2)	{	AI_PlayAni(self, "R_ROAM3");	};
+		
+		if (randomMove == 0)	{	AI_PlayAni (self, "R_ROAM1");	};
+		if (randomMove == 1)	{	AI_PlayAni (self, "R_ROAM2");	};
+		if (randomMove == 2)	{	AI_PlayAni (self, "R_ROAM3");	};
 	};
 	
 	return LOOP_CONTINUE;
@@ -52,7 +51,6 @@ func void ZS_MM_Rtn_Follow_Sheep_End()
 func void ZS_MM_Rtn_Follow_Sheep_Balthasar()
 {
 	Npc_SetPercTime (self, 1);
-	
 	Npc_PercEnable (self, PERC_ASSESSPLAYER, B_MM_AssessPlayer);
 };
 
@@ -72,7 +70,7 @@ func int ZS_MM_Rtn_Follow_Sheep_Balthasar_Loop()
 		else
 		{
 			AI_TurnToNpc (self, Balthasar);
-			self.WP = Npc_GetNearestWP(self);
+			self.wp = Npc_GetNearestWP(self);
 		};
 	}
 	else

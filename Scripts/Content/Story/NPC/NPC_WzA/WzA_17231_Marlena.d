@@ -14,11 +14,11 @@ instance WzA_17231_Marlena (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attribute ------
-	B_SetAttributesToLevel (self, 35);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 35);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -30,7 +30,7 @@ instance WzA_17231_Marlena (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+2, BodySkin_N, "Hum_Head_Babe5", FaceBabe_Normal01, Teeth_Pretty, ITAR_BABE_NURSE);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Nude+2, BodySkin_N, "Hum_Head_Babe5", FaceBabe_Normal01, Teeth_Pretty, ITAR_BABE_NURSE);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

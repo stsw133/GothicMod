@@ -214,7 +214,7 @@ func int DIA_Addon_Erol_Stoneplates_Condition ()
 };
 
 var int StoneplatesCounter;
-const int Addon_ErolsStoneplatesOffer = (ItWr_StonePlate.value + 5); //Joly:Kohle für eine StonePlateCommon
+const int Addon_ErolsStoneplatesOffer = (ItWr_StonePlate_HP.value + 5); //Joly:Kohle für eine StonePlateCommon
 
 func void DIA_Addon_Erol_Stoneplates_Info ()
 {
@@ -233,7 +233,7 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 			if (StoneplatesCount == 1)
 				{
 					AI_Output		(other, self, "DIA_Addon_Erol_Stoneplates_15_01"); //Znalaz³em jedn¹ z nich...
-					B_GivePlayerXP(50);
+					B_GivePlayerExp(50);
 					B_GiveInvItems (other, self, ItWr_StonePlateCommon_Addon, 1);
 				
 					StoneplatesCounter = StoneplatesCounter + 1;
@@ -255,7 +255,7 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 						XP_Addon_BringStoneplates = (StoneplatesCount * 50);
 						StoneplatesCounter = (StoneplatesCounter + StoneplatesCount); 
 					};
-					B_GivePlayerXP (XP_Addon_BringStoneplates);
+					B_GivePlayerExp (XP_Addon_BringStoneplates);
 				};
 				
 				
@@ -438,7 +438,7 @@ func void DIA_Addon_Erol_SLD_Info ()
 	AI_Output	(other, self, "DIA_Addon_Erol_SLD_15_02"); //Nie masz ¿adnych k³opotów z najemnikami?
 	AI_Output	(self, other, "DIA_Addon_Erol_SLD_10_03"); //Nie czepiaj¹ siê mnie, a ja nie mieszam siê do ich spraw.
 	AI_Output	(self, other, "DIA_Addon_Erol_SLD_10_04"); //S¹ dobrymi klientami i za niewielk¹ op³at¹ pilnuj¹ mojej chaty, gdy mnie tu nie ma.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	if (Erol_IsAtHome == FALSE)
 	{
 		Npc_ExchangeRoutine	(self,"HOME");

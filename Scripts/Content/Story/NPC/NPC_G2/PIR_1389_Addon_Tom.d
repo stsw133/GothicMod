@@ -9,8 +9,8 @@ instance PIR_1389_Addon_Tom (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -22,7 +22,7 @@ instance PIR_1389_Addon_Tom (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal26, 0, ITAR_PIR_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal26, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

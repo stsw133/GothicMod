@@ -9,8 +9,8 @@ instance VLK_440_Bartok (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -25,7 +25,7 @@ instance VLK_440_Bartok (Npc_Default)
 	CreateInvItems (self, ItPo_Health_03, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal00, 0, ITAR_Vlk_L_03);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal00, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

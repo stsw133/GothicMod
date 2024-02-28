@@ -97,7 +97,7 @@ func void DIA_Angar_DI_ORKS_follow ()
 	AI_Output			(other, self, "DIA_Angar_DI_ORKS_follow_15_00"); //Zamiast narzekaæ, móg³byœ mi pomóc.
 	AI_Output			(self, other, "DIA_Angar_DI_ORKS_follow_04_01"); //Tak zrobiê. No dalej, ruszaj przodem!
 	AI_StopProcessInfos (self); 
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	Npc_ExchangeRoutine	(self,"FollowDI");
 	Angar_DI_Party = LOG_RUNNING;
 };
@@ -144,7 +144,7 @@ func void DIA_Angar_DI_FOLLOW_Info ()
 			AI_StopProcessInfos (self); 
 			Npc_ExchangeRoutine	(self,"Start");
 			Angar_DI_Party = LOG_SUCCESS; //Joly: (Schluss mit Follow)
-			B_GivePlayerXP(300);
+			B_GivePlayerExp(300);
 		}
 	else
 		{	

@@ -2,11 +2,11 @@
 ///	SPL_Inflate
 ///******************************************************************************************
 
-const int SPL_Cost_Inflate				=	90;
-const int SPL_Damage_Inflate			=	5;
-const int SPL_MinLvl_Inflate			=	5;
+const int SPL_Cost_Inflate				=	100;	//10
+const int SPL_Damage_Inflate			=	0;		//5
+const int SPL_MinLvl_Inflate			=	20;
 const int SPL_Scaling_Inflate			=	20;
-const int SPL_Time_Inflate				=	20;
+const int SPL_Time_Inflate				=	20;		//19
 
 ///******************************************************************************************
 instance Spell_Inflate (C_Spell_Proto)
@@ -22,14 +22,14 @@ func int Spell_Logic_Inflate (var int manaInvested)
 	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Inflate/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Inflate)
 	{
-		if ((other.level - SPL_MinLvl_Inflate - (self.attribute[ATR_POWER] * SPL_Scaling_Inflate / 100) * 100 / SPL_Scaling_Inflate) <= 0)
+		if ((other.level - SPL_MinLvl_Inflate - self.attribute[ATR_POWER]*SPL_Scaling_Inflate/100) <= 0)
 		|| (!Npc_IsPlayer(self))
 		{
 			return SPL_SENDCAST;
 		}
 		else
 		{
-			Print(ConcatStrings(IntToString((other.level - SPL_MinLvl_Inflate - (self.attribute[ATR_POWER] * SPL_Scaling_Inflate / 100) * 100 / SPL_Scaling_Inflate)), "% dod. mocy za maÅ‚o aby odnieÅ›Ä‡ skutek!"));
+			Print(ConcatStrings(IntToString(other.level - SPL_MinLvl_Inflate - self.attribute[ATR_POWER]*SPL_Scaling_Inflate/100), "% dod. mocy za ma³o aby odnieœæ skutek!"));
 		};
 	};
 	

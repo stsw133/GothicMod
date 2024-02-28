@@ -95,7 +95,7 @@ func void DIA_Pedro_DI_YOU_Serpentes()
 	AI_Output			(other, self, "DIA_Pedro_DI_YOU_Serpentes_15_00"); //Serpentes kaza³ mi ciê zabiæ, a ja zwykle wype³niam polecenia.
 	AI_Output			(self, other, "DIA_Pedro_DI_YOU_Serpentes_09_01"); //Nie, b³agam! Nie mo¿esz tego zrobiæ! Mogê ci siê jeszcze przydaæ!
 
-	B_GivePlayerXP(3000);
+	B_GivePlayerExp(3000);
 	MIS_Gorax_KillPedro = LOG_SUCCESS;	//Joly: bei erfolgreicher Mission in folgenden Dialogen muss heißen; if ((Npc_IsDead(PedroDI)) && (MIS_Gorax_KillPedro == LOG_SUCCESS))
 
 };
@@ -244,7 +244,7 @@ func void DIA_Pedro_DI_PERM_Info ()
 			AI_Output			(other, self, "DIA_Pedro_DI_PERM_15_01"); //Mo¿e ci przynieœæ poduszkê, co?
 			AI_Output			(self, other, "DIA_Pedro_DI_PERM_09_02"); //Nie drwij ze mnie. Bêdê tu sobie siedzia³ cichutko jak myszka.
 			AI_Output			(other, self, "DIA_Pedro_DI_PERM_15_03"); //Mmmh.
-			B_GivePlayerXP(300);
+			B_GivePlayerExp(300);
 			PedroDI_Flee = LOG_SUCCESS;
 		}
 		else if (Npc_IsDead(Dragon_Undead))

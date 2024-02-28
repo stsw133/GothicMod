@@ -661,7 +661,7 @@ FUNC VOID DIA_Lee_JoinNOW_Info()
 			KDF_Aufnahme = LOG_OBSOLETE;
 			SLD_Aufnahme = LOG_SUCCESS;
 			MIL_Aufnahme = LOG_OBSOLETE;
-			B_GivePlayerXP(400);
+			B_GivePlayerExp(400);
 			
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_15"); //Cieszê siê, ¿e jesteœ z nami.
 			AI_Output (self, other, "DIA_Lee_JoinNOW_04_16"); //Mam ju¿ dla ciebie pierwsze zadanie.
@@ -866,7 +866,7 @@ FUNC VOID DIA_Lee_Success_Info()
 	AI_Output (self, other, "DIA_Lee_Success_04_01"); //Tak, ju¿ mi mówi³eœ. Dobra robota.
 	AI_Output (self, other, "DIA_Lee_Success_04_02"); //Ten facet jest wiêcej wart, ni¿ Sylvio i jego ch³opcy razem wziêci.
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 };
 // ************************************************************
@@ -1319,7 +1319,7 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 			CreateInvItems (self, ItMi_Gold, 500);									
 			B_GiveInvItems (self, other, ItMi_Gold, 500);		
 			MIS_Lee_JudgeRichter = LOG_SUCCESS;
-			B_GivePlayerXP(300);			
+			B_GivePlayerExp(300);			
 			AI_Output (self ,other,"DIA_Lee_RichterBeweise_04_08"); //Tylko nikomu ani s³owa, jasne?
 		}
 	else
@@ -1330,7 +1330,7 @@ FUNC VOID DIA_Lee_RichterBeweise_Info()
 			CreateInvItems (self, ItMi_Gold, 50);									
 			B_GiveInvItems (self, other, ItMi_Gold, 50);		
 			MIS_Lee_JudgeRichter = LOG_FAILED;
-			B_GivePlayerXP(150);
+			B_GivePlayerExp(150);
 		};
 };
 
@@ -1477,7 +1477,7 @@ FUNC VOID DIA_Lee_AnyNews_Info()
 
 		if (DIA_Lee_AnyNews_OneTime == FALSE)
 		{
-			B_GivePlayerXP(150);
+			B_GivePlayerExp(150);
 			DIA_Lee_AnyNews_OneTime = TRUE;
 		};
 	}
@@ -1567,9 +1567,9 @@ instance DIA_Lee_CanTeach		(C_INFO)
 func int DIA_Lee_CanTeach_Condition ()
 {	
 	if (Kapitel >= 10)
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Lee_CanTeach_Info ()
@@ -1587,7 +1587,7 @@ func void DIA_Lee_CanTeach_Info ()
 		AI_Output			(self, other, "DIA_Lee_CanTeach_04_04"); //S³ysza³em, ¿e jesteœ ca³kiem niez³y, ale mogê ci pokazaæ parê nowych sztuczek.
 		if (other.guild == GIL_SLD || other.guild == GIL_DJG)
 		{
-			self.aivar[AIV_CanTeach] = true;
+			self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 			Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 			B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
 		}
@@ -1622,7 +1622,7 @@ FUNC VOID DIA_Lee_CanTeach_Yes ()
 	AI_Output (self ,other,"DIA_Lee_CanTeach_Yes_04_01"); //Œwietnie. Nie po¿a³ujesz tego.
 	
 	B_GiveInvItems (other,self,ItMi_Gold,1000);
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Info_ClearChoices (DIA_Lee_CanTeach);
 	Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 	B_LogEntry (Topic_SoldierTeacher,"Lee nauczy mnie walki orê¿em dwurêcznym.");
@@ -1653,7 +1653,7 @@ func int DIA_Lee_DRACHENEI_Condition ()
 func void DIA_Lee_DRACHENEI_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_DRACHENEI_15_00"); //Jaszczuroludzie roznosz¹ smocze jaja po ca³ym kraju.
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 	AI_Output			(self, other, "DIA_Lee_DRACHENEI_04_01"); //Mo¿na siê by³o tego spodziewaæ. Najwy¿szy czas, ¿ebyœmy siê st¹d wynieœli.
 	
 	if (hero.guild == GIL_DJG)
@@ -1835,7 +1835,7 @@ func void DIA_Lee_GotRichtersPermissionForShip_Info ()
 {
 	AI_Output			(other, self, "DIA_Lee_GotRichtersPermissionForShip_15_00"); //Sztuczka z pisemnym upowa¿nieniem zadzia³a³a! Statek nale¿y teraz do mnie. Pan sêdzia by³ bardzo... pomocny.
 	AI_Output			(self, other, "DIA_Lee_GotRichtersPermissionForShip_04_01"); //A nie mówi³em? Wiedzia³em, ¿e ten sukinsyn jeszcze siê do czegoœ przyda.
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1924,7 +1924,7 @@ FUNC VOID DIA_Lee_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Lee_KnowWhereEnemy_Yes_15_02"); //Tak, podnosimy ¿agle. Jeœli chcesz siê ze mn¹ zabraæ, przyjdŸ na przystañ. Spotkamy siê na statku.
 	AI_Output (self ,other,"DIA_Lee_KnowWhereEnemy_Yes_04_03"); //D³ugo czeka³em na tê chwilê. Mo¿esz na mnie liczyæ.
 	
-	B_GivePlayerXP(500);                                                                    
+	B_GivePlayerExp(500);                                                                    
 	                                                                                                           
 	
 	Lee_IsOnBoard	 = LOG_SUCCESS;

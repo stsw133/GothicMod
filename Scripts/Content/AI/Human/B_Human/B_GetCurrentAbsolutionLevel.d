@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_GetCurrentAbsolutionLevel
+/// B_GetCurrentAbsolutionLevel
 ///******************************************************************************************
-func int B_GetCurrentAbsolutionLevel (var C_NPC slf)
+func int B_GetCurrentAbsolutionLevel (var C_Npc slf)
 {
 	/// ------ OldCamp ------
 	if (C_NpcBelongsToOldCamp(slf))

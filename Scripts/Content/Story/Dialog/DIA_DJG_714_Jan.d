@@ -309,7 +309,7 @@ FUNC VOID DIA_Jan_SellWeapons_Info()
 
 		AI_Output (self ,other,"DIA_Jan_SellWeapons_10_03"); //Ale mogê ci pokazaæ, jak samemu wykuæ broñ.
 		Jan_TeachPlayer = TRUE;
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 //*******************************************
@@ -425,7 +425,7 @@ FUNC VOID DIA_Jan_Dragonscales_Info()
 			
 			if (DIA_JAN_Dragonscales_OneTime == FALSE)//Joly:zur sicherheit
 			{
-				B_GivePlayerXP(600);
+				B_GivePlayerExp(600);
 				DIA_JAN_Dragonscales_OneTime = TRUE;
 			};
 			
@@ -650,7 +650,7 @@ func void DIA_Jan_DragonBlood_1 ()
 
 	B_GiveInvItems (other, self, ItAt_DragonBlood,  DragonBloodCount);
 	XP_DJG_BringDragonBloods = (DragonBloodCount * 200);
-	B_GivePlayerXP (XP_DJG_BringDragonBloods);
+	B_GivePlayerExp (XP_DJG_BringDragonBloods);
 	DragonBloodGeld	= (DragonBloodCount * ItAt_DragonBlood.value);	//Joly:ganzer Wert ohne Handelsmultiplier
 	CreateInvItems (self, ItMi_Gold, DragonBloodGeld); 
 	B_GiveInvItems (self, other, ItMi_Gold, DragonBloodGeld);
@@ -681,7 +681,7 @@ func void DIA_Jan_DragonBlood_all ()
 
 	B_GiveInvItems (other, self, ItAt_DragonBlood,  DragonBloodCount);
 	XP_DJG_BringDragonBloods = (DragonBloodCount * 200);
-	B_GivePlayerXP (XP_DJG_BringDragonBloods);
+	B_GivePlayerExp (XP_DJG_BringDragonBloods);
 	DragonBloodGeld	= (DragonBloodCount * ItAt_DragonBlood.value); //Joly:ganzer Wert ohne Handelsmultiplier
 	CreateInvItems (self, ItMi_Gold, DragonBloodGeld); 
 	B_GiveInvItems (self, other, ItMi_Gold, DragonBloodGeld);

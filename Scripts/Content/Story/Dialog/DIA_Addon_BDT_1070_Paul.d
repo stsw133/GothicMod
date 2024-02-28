@@ -243,7 +243,7 @@ FUNC VOID DIA_Addon_Paul_Mine_Info()
 	B_GiveInvItems (self, other, ItMi_Nugget,2);
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };

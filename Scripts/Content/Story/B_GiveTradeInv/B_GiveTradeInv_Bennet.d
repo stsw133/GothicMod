@@ -13,7 +13,7 @@ func void B_GiveTradeInv_Bennet (var C_NPC slf)
 		
 		CreateInvItems (slf, ItMw_1H_Mace_L_04, 2);
 		
-		CreateInvItems (slf, ItBE_DJG_01, 1);
+		CreateInvItems (slf, ItBe_DJG_01, 1);
 		
 		Bennet_ItemsGiven_Chapter = 1;
 	};
@@ -35,7 +35,7 @@ func void B_GiveTradeInv_Bennet (var C_NPC slf)
 		
 		CreateInvItems (slf, ItMi_Nugget, 1);
 		
-		CreateInvItems (slf, ItBE_Ako_01, 1);
+		CreateInvItems (slf, ItBE_ASA_01, 1);
 		
 		Bennet_ItemsGiven_Chapter = 3;
 	};

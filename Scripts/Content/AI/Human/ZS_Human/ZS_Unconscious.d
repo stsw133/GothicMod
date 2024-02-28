@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_Unconscious
+/// ZS_Unconscious
 ///******************************************************************************************
 func void ZS_Unconscious()
 {
@@ -19,24 +19,16 @@ func void ZS_Unconscious()
 	
 	Npc_SetRefuseTalk	(self, 0);
 	Npc_SetTempAttitude	(self, Npc_GetPermAttitude(self, hero));
-	
 	B_StopLookAt		(self);
 	AI_StopPointAt		(self);
-	AI_UnequipWeapons	(self);	/// new!!!
+	AI_UnequipWeapons	(self);
+	
+	MOD_Defeated (other, self, DBP_Defeated);
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	&& (Npc_IsPlayer(other))
 	{
-		self.aivar[AIV_DefeatedByPlayer] = DBP_Defeated;
 		self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_LOST;
-		
-		if (self.aivar[AIV_LastPlayerAR] == AR_NONE)
-		&& (!self.aivar[AIV_DuelLost])
-		&& (self.guild == GIL_SLD)
-		{
-			Sld_Duelle_gewonnen += 1;
-			self.aivar[AIV_DuelLost] = true;
-		};
 		
 		if (self.aivar[AIV_ArenaFight] == AF_RUNNING)
 		{
@@ -54,18 +46,9 @@ func void ZS_Unconscious()
 		};
 	};
 	
+	/// MOD (to check if it is even neeeded)
 	B_GiveTradeInv(self);
 	B_ClearRuneInv(self);
-	
-	MOD_Defeated (other, self);
-	
-	//AI_UnequipWeapons (self);
-	
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Dar))
-	&& (Hlp_GetInstanceID(other) == Hlp_GetInstanceID(Cipher))
-	{
-		Dar_LostAgainstCipher = true;
-	};
 };
 
 ///******************************************************************************************
@@ -92,6 +75,7 @@ func void ZS_Unconscious_End()
 	{
 		return;
 	};
+	
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Raven))
 	{
 		self.aivar[AIV_MagicUser] = MAGIC_OTHER;
@@ -119,16 +103,11 @@ func void ZS_Unconscious_End()
 	
 	Npc_PerceiveAll(self);
 	
-	if (Wld_DetectItem(self, ITEM_KAT_NF))
-	|| (Wld_DetectItem(self, ITEM_KAT_FF))
+	if (Wld_DetectItem(self, ITEM_KAT_NF) || Wld_DetectItem(self, ITEM_KAT_FF))
+	&& (Hlp_IsValidItem(item))
+	&& (Npc_GetDistToItem(self, item) <= 500)
 	{
-		if (Hlp_IsValidItem(item))
-		{
-			if (Npc_GetDistToItem(self, item) <= 500)
-			{
-				AI_TakeItem (self, item);
-			};
-		};
+		AI_TakeItem (self, item);
 	};
 	
 	AI_EquipBestMeleeWeapon(self);

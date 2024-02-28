@@ -99,9 +99,9 @@ INSTANCE DIA_Udar_TeachMe (C_INFO)
 FUNC INT DIA_Udar_TeachMe_Condition()
 {
 	IF (Npc_KnowsInfo(other,DIA_Udar_YouAreBest))
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return 1;
+		return true;
 	};
 };
  
@@ -140,7 +140,7 @@ FUNC VOID DIA_Udar_ImGood_Info()
 	AI_Output	(self ,other,"DIA_Udar_ImGood_09_01");	//Masz racjê!
 	AI_Output	(self ,other,"DIA_Udar_ImGood_09_02");	//No có¿, skoro chcesz siê uczyæ, to ci pomogê.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	B_LogEntry		(TOPIC_Teacher_OC, "Udar mo¿e mnie nauczyæ, jak pos³ugiwaæ siê kusz¹."); 
 };
 
@@ -198,7 +198,7 @@ FUNC VOID DIA_Udar_Ring_Info()
 	
 	B_GiveInvItems (other,self,ItRi_Tengron,1);
 	TengronRing = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 //#####################################################################
@@ -340,7 +340,7 @@ func void DIA_Udar_SENGRATHGEFUNDEN_Info ()
 	AI_Output			(self, other, "DIA_Udar_SENGRATHGEFUNDEN_09_04"); //Przeklêty g³upiec. Wiedzia³em, ¿e tak bêdzie. Wszyscy zginiemy.
 
 	TOPIC_END_Sengrath_Missing = TRUE;
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
 };
 
 ///////////////////////////////////////////////////////////////////////

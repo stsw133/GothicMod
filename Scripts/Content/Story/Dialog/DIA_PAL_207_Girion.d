@@ -58,9 +58,9 @@ instance DIA_Girion_CanTeach		(C_INFO)
 };
 func int DIA_Girion_CanTeach_Condition ()
 {	
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Girion_CanTeach_Info ()
@@ -72,7 +72,7 @@ func void DIA_Girion_CanTeach_Info ()
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_01"); //Wybieraj¹c najszlachetniejsz¹ ze wszystkich sztuk walk, post¹pi³eœ jak prawdziwy wojownik Innosa.
 		AI_Output (self, other, "DIA_Girion_CanTeach_08_02"); //Udzielê ci kilku wskazówek. Daj mi znaæ, kiedy bêdziesz gotów do treningu.
 		
-		self.aivar[AIV_CanTeach] = true;	
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;	
 		B_LogEntry (TOPIC_CityTeacher,"Paladyn Girion mo¿e mnie nauczyæ, jak walczyæ orê¿em dwurêcznym.");
 	}
 	else

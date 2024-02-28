@@ -46,7 +46,7 @@ func void Use_BookstandALCHEMY1_S1()
 		/*
 		if (!Alchemy_1_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Alchemy_1_permanent = true;
 		};
 		*/
@@ -99,7 +99,7 @@ func void Use_BookstandALCHEMY2_S1()
 		/*
 		if (!Alchemy_2_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Alchemy_2_permanent = true;
 		};
 		*/
@@ -151,7 +151,7 @@ func void Use_BookstandALCHEMY3_S1()
 		/*
 		if (!Alchemy_3_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Alchemy_3_permanent = true;
 		};
 		*/
@@ -200,7 +200,7 @@ func void Use_BookstandAnimals1_S1()
 		/*
 		if (!Animals_1_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Animals_1_permanent = true;
 		};
 		*/
@@ -247,7 +247,7 @@ func void Use_BookstandAnimals2_S1()
 		/*
 		if (!Animals_2_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Animals_2_permanent = true;
 		};
 		*/
@@ -293,7 +293,7 @@ func void Use_BookstandAnimals3_S1()
 		/*
 		if (!Animals_3_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			Animals_3_permanent = true;
 		};
 		*/
@@ -339,7 +339,7 @@ func void Use_BookstandHistory1_S1()
 		/*
 		if (!History_1_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			History_1_permanent = true;
 		};
 		*/
@@ -380,7 +380,7 @@ func void Use_BookstandHistory2_S1()
 		/*
 		if (!History_2_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			History_2_permanent = true;
 		};
 		*/
@@ -425,7 +425,7 @@ func void Use_BookstandHistory3_S1()
 		/*
 		if (!History_2_permanent)
 		{
-			B_GivePlayerXP(25);
+			B_GivePlayerExp(25);
 			History_2_permanent = true;
 		};
 		*/
@@ -1251,7 +1251,7 @@ func void Use_BookstandMaya()
 		
 		if (!SC_Knows_WeaponInAdanosTempel)
 		{
-			B_GivePlayerXP(100);
+			B_GivePlayerExp(100);
 			SC_Knows_WeaponInAdanosTempel = true;
 		};
 	}
@@ -1363,7 +1363,7 @@ func void Use_BookstandMayaHierchary_01_S1()
 	if (!BookstandMayaHierchary_1_permanent)
 	&& (C_CanReadBookStand())
 	{
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		BookstandMayaHierchary_1_permanent = true;
 	};
 };
@@ -1376,7 +1376,7 @@ func void Use_BookstandMayaHierchary_02_S1()
 	if (!BookstandMayaHierchary_2_permanent)
 	&& (C_CanReadBookStand())
 	{
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		BookstandMayaHierchary_2_permanent = true;
 	};
 };
@@ -1389,7 +1389,7 @@ func void Use_BookstandMayaHierchary_03_S1()
 	if (!BookstandMayaHierchary_3_permanent)
 	&& (C_CanReadBookStand())
 	{
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		BookstandMayaHierchary_3_permanent = true;
 	};
 };
@@ -1402,7 +1402,7 @@ func void Use_BookstandMayaHierchary_04_S1()
 	if (!BookstandMayaHierchary_4_permanent)
 	&& (C_CanReadBookStand())
 	{
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		BookstandMayaHierchary_4_permanent = true;
 	};
 };
@@ -1415,7 +1415,7 @@ func void Use_BookstandMayaHierchary_05_S1()
 	if (!BookstandMayaHierchary_5_permanent)
 	&& (C_CanReadBookStand())
 	{
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		BookstandMayaHierchary_5_permanent = true;
 	};
 };

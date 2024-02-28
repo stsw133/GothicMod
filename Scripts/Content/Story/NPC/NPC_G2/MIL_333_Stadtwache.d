@@ -9,11 +9,11 @@ instance Mil_333_Stadtwache (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_NewsOverride] 			=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -25,7 +25,7 @@ instance Mil_333_Stadtwache (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal09, 0, ITAR_MIL_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal09, 0, ITAR_MIL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

@@ -48,7 +48,7 @@ func void DIA_Attila_Hallo_Info ()
 	Info_AddChoice		(DIA_Attila_Hallo,"Czego ode mnie chcesz?",DIA_Attila_Hallo_Was);
 	Info_AddChoice		(DIA_Attila_Hallo,"Kim jesteœ?",DIA_Attila_Hallo_Wer);
 	
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 FUNC VOID DIA_Attila_Hallo_Wer()
 {
@@ -183,7 +183,7 @@ func int DIA_Attila_Willkommen_Condition ()
 func void DIA_Attila_Willkommen_Info ()
 {
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_00"); //Ach - nareszcie. Czeka³em na ciebie, nieznajomy.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	AI_Output (other, self, "DIA_Attila_Willkommen_15_01"); //Kim jesteœ? I czego ode mnie chcesz?
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_02"); //To nieistotne. Wa¿ne jest to, co zrobi³eœ. Pozosta³eœ lojalny - nawet jeœli nie zdawa³eœ sobie z tego sprawy.
 	AI_Output (self, other, "DIA_Attila_Willkommen_09_03"); //Pewni dobroczyñcy zwrócili uwagê na twoj¹ lojalnoœæ. I zaoferowali ci szansê. Wiêc lepiej j¹ wykorzystaj.

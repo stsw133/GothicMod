@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_WantToEat
+/// C_WantToEat
 ///******************************************************************************************
-func int C_WantToEat (var C_NPC slf, var C_NPC oth)
+func int C_WantToEat (var C_Npc slf, var C_Npc oth)
 {
 	if (slf.aivar[AIV_PARTYMEMBER])
 	{
@@ -23,7 +23,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 		|| (oth.guild == GIL_MOLERAT)
 //		|| (oth.guild == GIL_SCAVENGER)
 		|| (oth.guild == GIL_SHADOWBEAST)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 		|| (oth.guild == GIL_SNAPPER)
 		|| (oth.guild == GIL_SUMMONED_WOLF)
 		|| (oth.guild == GIL_WARAN)
@@ -39,7 +39,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 		|| (oth.guild > GIL_SEPERATOR_ORC)
 		|| (oth.guild == GIL_BLOODFLY)
 		|| (oth.guild == GIL_GIANT_BUG)
-//		|| (oth.guild == GIL_GIANT_RAT)
+		|| (oth.guild == GIL_GIANT_RAT)
 		|| (oth.guild == GIL_GOBBO)
 		|| (oth.guild == GIL_HARPY)
 		|| (oth.guild == GIL_LURKER)
@@ -48,7 +48,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 		|| (oth.guild == GIL_MOLERAT)
 		|| (oth.guild == GIL_SCAVENGER)
 		|| (oth.guild == GIL_SHADOWBEAST)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 		|| (oth.guild == GIL_SNAPPER)
 		|| (oth.guild == GIL_SUMMONED_WOLF)
 		|| (oth.guild == GIL_WARAN)
@@ -85,7 +85,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 //		|| (oth.guild > GIL_SEPERATOR_ORC)
 		|| (oth.guild == GIL_GIANT_RAT)
 		|| (oth.guild == GIL_MOLERAT)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 		{
 			return true;
 		};
@@ -95,7 +95,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 	{
 		if (oth.guild == GIL_GIANT_RAT)
 		|| (oth.guild == GIL_MOLERAT)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 		{
 			return true;
 		};
@@ -144,7 +144,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 		|| (oth.guild == GIL_MOLERAT)
 		|| (oth.guild == GIL_SCAVENGER)
 		|| (oth.guild == GIL_SHADOWBEAST)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 //		|| (oth.guild == GIL_SNAPPER)
 		|| (oth.guild == GIL_SUMMONED_WOLF)
 		|| (oth.guild == GIL_WARAN)
@@ -165,7 +165,7 @@ func int C_WantToEat (var C_NPC slf, var C_NPC oth)
 		|| (oth.guild == GIL_MOLERAT)
 		|| (oth.guild == GIL_SCAVENGER)
 //		|| (oth.guild == GIL_SHADOWBEAST)
-		|| (oth.guild == GIL_SHEEP || oth.guild == GIL_LIVESTOCK)
+		|| (oth.guild == GIL_LIVESTOCK)
 		|| (oth.guild == GIL_SNAPPER)
 		|| (oth.guild == GIL_SUMMONED_WOLF)
 		|| (oth.guild == GIL_WARAN)

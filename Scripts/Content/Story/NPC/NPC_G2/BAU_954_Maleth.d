@@ -9,8 +9,8 @@ instance BAU_954_Maleth (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate-5);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate-5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -22,7 +22,7 @@ instance BAU_954_Maleth (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal40, 0, ITAR_Bau_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal40, 0, ITAR_Bau_00);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

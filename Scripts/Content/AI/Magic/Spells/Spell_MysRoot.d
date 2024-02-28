@@ -2,7 +2,7 @@
 ///	SPL_MysRoot
 ///******************************************************************************************
 
-const int SPL_Cost_MysRoot				=	60;
+const int SPL_Cost_MysRoot				=	75;
 const int SPL_Time_MysRoot				=	10;
 const int SPL_Damage_MysRoot			=	10;
 
@@ -16,11 +16,12 @@ instance Spell_MysRoot (C_Spell_Proto)
 
 func int Spell_Logic_MysRoot (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_MysRoot/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysRoot)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

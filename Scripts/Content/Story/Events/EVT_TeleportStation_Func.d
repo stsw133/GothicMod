@@ -63,7 +63,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 		&& (SCUsed_AllNWTeleporststones == FALSE)
 		{
 			SCUsed_AllNWTeleporststones = TRUE;
-			B_GivePlayerXP(200);
+			B_GivePlayerExp(200);
 		};
 	}
 	else if (CurrentLevel == ADDONWORLD_ZEN)
@@ -77,7 +77,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 				Log_CreateTopic (TOPIC_Addon_TeleportsADW, LOG_MISSION);
 				Log_SetTopicStatus(TOPIC_Addon_TeleportsADW, LOG_RUNNING);
 				B_LogEntry (TOPIC_Addon_TeleportsADW,"Uaktywni³em kamieñ teleportacyjny w pobli¿u portalu, który ³¹czy siê z Khorinis."); 
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			};	
 
 			SCUsed_ADW_TELEPORTSTATION_PORTALTEMPEL = TRUE;
@@ -91,7 +91,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 				Log_CreateTopic (TOPIC_Addon_TeleportsADW, LOG_MISSION);
 				Log_SetTopicStatus(TOPIC_Addon_TeleportsADW, LOG_RUNNING);
 				B_LogEntry (TOPIC_Addon_TeleportsADW,"Uda³o mi siê uaktywniæ kamieñ teleportacyjny na górnym poziomie obozu bandytów."); 
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			};	
 	
 			SCUsed_ADW_TELEPORTSTATION_ADANOSTEMPEL = TRUE;
@@ -105,7 +105,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 				Log_CreateTopic (TOPIC_Addon_TeleportsADW, LOG_MISSION);
 				Log_SetTopicStatus(TOPIC_Addon_TeleportsADW, LOG_RUNNING);
 				B_LogEntry (TOPIC_Addon_TeleportsADW,"Uaktywni³em kamieñ teleportacyjny na bagnie, tu¿ na po³udnie od obozu bandytów."); 
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			};	
 	
 			SCUsed_ADW_TELEPORTSTATION_SOUTHEAST = TRUE;
@@ -119,7 +119,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 				Log_CreateTopic (TOPIC_Addon_TeleportsADW, LOG_MISSION);
 				Log_SetTopicStatus(TOPIC_Addon_TeleportsADW, LOG_RUNNING);
 				B_LogEntry (TOPIC_Addon_TeleportsADW,"Znalaz³em kamieñ teleportacyjny na po³udniowym zachodzie."); 
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			};	
 	
 			SCUsed_ADW_TELEPORTSTATION_SOUTHWEST = TRUE;
@@ -133,7 +133,7 @@ func void EVT_TELEPORTSTATION_FUNC ()
 				Log_CreateTopic (TOPIC_Addon_TeleportsADW, LOG_MISSION);
 				Log_SetTopicStatus(TOPIC_Addon_TeleportsADW, LOG_RUNNING);
 				B_LogEntry (TOPIC_Addon_TeleportsADW,"Wewn¹trz jaskini w tym kanionie znajduje siê kamieñ teleportacyjny. Uaktywni³em go."); 
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			};	
 
 			if (MIS_KrokoJagd == LOG_SUCCESS)
@@ -172,7 +172,7 @@ func void ADW_PORTALTEMPEL_FOCUS_FUNC ()//Joly: kommt, wenn ein Focusstein in ei
 {	
 	Npc_RemoveInvItems	(hero ,ItMi_Focus, 1);
 	TriggeredTeleporterADW = (TriggeredTeleporterADW + 1);
-	Snd_Play ("MFX_TELEKINESIS_STARTINVEST");
+	Snd_Play ("MFX_Telekinesis_STARTINVEST");
 	
 	if (TriggeredTeleporterADW >= 5)
 	{

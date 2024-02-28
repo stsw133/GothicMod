@@ -119,11 +119,11 @@ INSTANCE DIA_Jesper_Bezahlen   (C_INFO)
 FUNC INT DIA_Jesper_Bezahlen_Condition()
 {	
 	if (Join_Thiefs == TRUE)
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
 	&& (Npc_GetTalentSkill (other, NPC_TALENT_SNEAK) == FALSE) 
 	{
-		return TRUE;
+		return true;
 	};
 };
 FUNC VOID DIA_Jesper_Bezahlen_Info()
@@ -133,7 +133,7 @@ FUNC VOID DIA_Jesper_Bezahlen_Info()
 	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Jesper_Bezahlen_09_01");//Pewnie, poka¿ê ci, jak siê skradaæ - za darmo.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		Info_ClearChoices (DIA_Jesper_Bezahlen);
 	}
 	else
@@ -158,7 +158,7 @@ FUNC VOID DIA_Jesper_Bezahlen_Okay()
 	{
 		AI_Output (other, self, "DIA_Jesper_Bezahlen_Okay_15_01");//Oto z³oto.
 		AI_Output (self, other, "DIA_Jesper_Bezahlen_Okay_09_02");//Daj mi znaæ, jak bêdziesz gotowy.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		Info_ClearChoices (DIA_Jesper_Bezahlen);
 	}
 	else 
@@ -295,7 +295,7 @@ FUNC INT DIA_Jesper_Truhe_Condition()
 	if (Mob_HasItems ("MOB_FINGERS", Itmi_Gold) < 300)
 	|| (Mob_HasItems ("MOB_FINGERS", Itmi_Silvercup) < 5)
 	|| (Mob_HasItems ("MOB_FINGERS", Itmi_Goldcup) < 1)
-	|| (Mob_HasItems ("MOB_FINGERS", ItAM_Str_01) < 1)
+	|| (Mob_HasItems ("MOB_FINGERS", ItAM_Pirate_01) < 1)
 	|| (Mob_HasItems ("MOB_FINGERS", ItPO_perm_Dex) < 1)
 	{
 		return TRUE;
@@ -307,7 +307,7 @@ FUNC VOID DIA_Jesper_Truhe_Info()
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_01");//Niemo¿liwe! Wygl¹da na to, ¿e mamy nowego mistrza otwierania zamków.
 	AI_Output (self, other, "DIA_Jesper_Truhe_09_02");//Gratulacje!
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };  
 
 

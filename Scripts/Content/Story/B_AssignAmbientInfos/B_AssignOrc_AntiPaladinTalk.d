@@ -12,7 +12,7 @@ func void B_AssignORC_AntiPaladinTalk (var C_Npc Antipaladin)
 		AI_Output (self ,other, "DIA_ORC_AntiPaladin_18_01"); //KHROKGNAR! Pan mówiæ, ¿e ty tera paladyn! Pan mieæ racjê. Pan mieæ zawsze racjê.
 		AI_Output (self ,other, "DIA_ORC_AntiPaladin_18_02"); //My orki dowódce teraz same zabiæ wielki paladyn.
 		AI_Output (self ,other, "DIA_ORC_AntiPaladin_18_03"); //My zgnieœæ Hagen i jego ludzie. Nawet ty nic nie pomóc.
-		B_GivePlayerXP(250);
+		B_GivePlayerExp(250);
 	}
 	else if (AntiPaladinTalkcount == 1)
 	{

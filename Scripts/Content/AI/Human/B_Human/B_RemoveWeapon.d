@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_RemoveWeapon
+/// B_RemoveWeapon
 ///******************************************************************************************
-func void B_RemoveWeapon (var C_NPC slf)
+func void B_RemoveWeapon (var C_Npc slf)
 {
 	AI_RemoveWeapon(slf);
 };

@@ -12,11 +12,11 @@ instance VLK_449_Lares (Npc_Default)
 	/// ------ AI vars ------
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_NpcIsRanger]				=	true;
+	aivar[AIV_Story]					=	STORY_IsRanger;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Initiate+5);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -31,7 +31,7 @@ instance VLK_449_Lares (Npc_Default)
 	CreateInvItems (self, ItPo_Health_02, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Lares, 0, ITAR_Vlk_L_03);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Lares, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

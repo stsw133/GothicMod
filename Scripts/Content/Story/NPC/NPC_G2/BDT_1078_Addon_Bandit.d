@@ -9,8 +9,8 @@ instance BDT_1078_Addon_Bandit (Npc_Default)
 	npctype								=	NPCTYPE_TAL_AMBIENT;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -23,7 +23,7 @@ instance BDT_1078_Addon_Bandit (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Richter, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Richter, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, -0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

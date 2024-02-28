@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_WantToAttackSheepKiller
+/// C_WantToAttackSheepKiller
 ///******************************************************************************************
-func int C_WantToAttackSheepKiller (var C_NPC slf, var C_NPC oth)
+func int C_WantToAttackSheepKiller (var C_Npc slf, var C_Npc oth)
 {
 	if (slf.guild == GIL_DMT)
 	|| (slf.guild == GIL_STRF)
@@ -16,7 +16,7 @@ func int C_WantToAttackSheepKiller (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if (Npc_IsPlayer(oth) && (slf.npctype == NPCTYPE_FRIEND))
+	if (Npc_IsPlayer(oth) && slf.npctype == NPCTYPE_FRIEND)
 	{
 		return false;
 	};
@@ -41,9 +41,9 @@ func int C_WantToAttackSheepKiller (var C_NPC slf, var C_NPC oth)
 };
 
 ///******************************************************************************************
-///	C_WantToAttackMurder
+/// C_WantToAttackMurder
 ///******************************************************************************************
-func int C_WantToAttackMurder (var C_NPC slf, var C_NPC oth)
+func int C_WantToAttackMurder (var C_Npc slf, var C_Npc oth)
 {
 	if (slf.guild == GIL_DMT)
 	|| (slf.guild == GIL_STRF)
@@ -58,7 +58,7 @@ func int C_WantToAttackMurder (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if (Npc_IsPlayer(oth) && (slf.npctype == NPCTYPE_FRIEND))
+	if (Npc_IsPlayer(oth) && slf.npctype == NPCTYPE_FRIEND)
 	{
 		return false;
 	};
@@ -77,9 +77,9 @@ func int C_WantToAttackMurder (var C_NPC slf, var C_NPC oth)
 };
 
 ///******************************************************************************************
-///	C_WantToAttackThief
+/// C_WantToAttackThief
 ///******************************************************************************************
-func int C_WantToAttackThief (var C_NPC slf, var C_NPC oth)
+func int C_WantToAttackThief (var C_Npc slf, var C_Npc oth)
 {
 	if (slf.guild == GIL_DMT)
 	|| (slf.guild == GIL_STRF)
@@ -98,7 +98,7 @@ func int C_WantToAttackThief (var C_NPC slf, var C_NPC oth)
 		return false;
 	};
 	
-	if (Npc_IsPlayer(oth) && (slf.npctype == NPCTYPE_FRIEND))
+	if (Npc_IsPlayer(oth) && slf.npctype == NPCTYPE_FRIEND)
 	{
 		return false;
 	};
@@ -112,9 +112,9 @@ func int C_WantToAttackThief (var C_NPC slf, var C_NPC oth)
 };
 
 ///******************************************************************************************
-///	C_WantToAttackRoomIntruder
+/// C_WantToAttackRoomIntruder
 ///******************************************************************************************
-func int C_WantToAttackRoomIntruder (var C_NPC slf)
+func int C_WantToAttackRoomIntruder (var C_Npc slf)
 {
 	if (self.guild == GIL_MIL)
 	|| (self.guild == GIL_PAL)

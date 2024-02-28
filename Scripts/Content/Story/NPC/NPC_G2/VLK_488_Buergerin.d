@@ -12,8 +12,8 @@ instance VLK_488_Buergerin (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -23,7 +23,7 @@ instance VLK_488_Buergerin (Npc_Default)
 	EquipItem (self, ItMw_1h_Vlk_Dagger);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant, Teeth_Pretty, ITAR_Babe_BAU_00);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_Servant, Teeth_Pretty, ITAR_Babe_BAU_00);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 
 	/// ------ Rtn ------

@@ -12,8 +12,8 @@ instance VLK_4110_Jergan (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Strong+5);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Strong+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -25,7 +25,7 @@ instance VLK_4110_Jergan (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Whistler, 0, ITAR_LEATHER_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Whistler, 0, ITAR_LEATHER_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

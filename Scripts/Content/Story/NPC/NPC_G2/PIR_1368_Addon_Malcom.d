@@ -9,8 +9,8 @@ instance PIR_1368_Addon_Malcom (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -20,7 +20,7 @@ instance PIR_1368_Addon_Malcom (Npc_Default)
 	CreateInvItem (self, ItWr_StonePlate_HP);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal22, 0, ITAR_PIR_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal22, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1.1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

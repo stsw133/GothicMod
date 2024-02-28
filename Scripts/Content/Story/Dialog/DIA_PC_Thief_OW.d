@@ -679,7 +679,7 @@ FUNC INT DIA_Addon_ThiefOW_Angekommen_Condition()
 func VOID DIA_Addon_ThiefOW_Angekommen_Info()
 {	
 	AI_Output (self, other, "DIA_Addon_Diego_Angekommen_11_01"); //Jesteœmy na miejscu.
-	B_GivePlayerXP (500);
+	B_GivePlayerExp (500);
 	B_Diego_WirSindDa();
 };
 
@@ -709,7 +709,7 @@ func VOID DIA_Addon_ThiefOW_Nostalgie_Info()
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_03"); //To by³o tak dawno...
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_04"); //Hmm... By³o jeszcze coœ wyj¹tkowego w tej okolicy, tylko nie pamiêtam dok³adnie co.
 	AI_Output (self, other, "DIA_Addon_Diego_Nostalgie_11_05"); //Skoro tak twierdzisz...
-	B_GivePlayerXP (500);
+	B_GivePlayerExp (500);
 	hero.exp = hero.exp + 500;
 	PrintScreen (ConcatStrings("Premia za nostalgiê:", IntToString(500)), -1, 60, FONT_Screen, 2);
 	

@@ -10,11 +10,11 @@ instance Pal_205_Torwache (Npc_Default)
 
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
-	aivar[AIV_NewsOverride]				=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Strong+5);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Strong+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -23,7 +23,7 @@ instance Pal_205_Torwache (Npc_Default)
 	EquipItem (self, ItMw_1H_Pal_Sword);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal55, 0, ITAR_PAL_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal55, 0, ITAR_PAL_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

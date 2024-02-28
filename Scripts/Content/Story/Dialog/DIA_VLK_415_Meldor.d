@@ -211,7 +211,7 @@ func int DIA_Meldor_Smoke_Condition ()
 };
 func void DIA_Meldor_Smoke_Info ()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	AI_Output (other, self, "DIA_Meldor_Smoke_15_00"); //Wiesz mo¿e, gdzie mogê kupiæ trochê ziela?
 	

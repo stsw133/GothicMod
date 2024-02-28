@@ -3,8 +3,8 @@
 ///******************************************************************************************
 
 const int SPL_Cost_Shrink				=	150;	//300
-const int SPL_MinLvl_Shrink				=	30;
-const int SPL_Scaling_Shrink			=	30;
+const int SPL_MinLvl_Shrink				=	20;
+const int SPL_Scaling_Shrink			=	20;
 
 ///******************************************************************************************
 instance Spell_Shrink (C_Spell_Proto)
@@ -20,7 +20,7 @@ func int Spell_Logic_Shrink	(var int manaInvested)
 	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Shrink/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_Shrink)
 	{
-		if (other.aivar[AIV_MM_ShrinkState] > 0)
+		if (other.aivar[AIV_ShrinkState] > 0)
 		{
 			Print("U¿ycie niedozwolone wielokrotnie na tym samym celu!");
 		}
@@ -54,7 +54,7 @@ func void Spell_Cast_Shrink()
 	};
 	
 	if (other.flags != NPC_FLAG_IMMORTAL)
-	&& (other.aivar[AIV_MM_ShrinkState] < 14)
+	&& (other.aivar[AIV_ShrinkState] < 14)
 	{
 		Npc_ClearAIQueue	(other);
 		B_ClearPerceptions	(other);

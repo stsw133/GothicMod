@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessTheft
+/// B_AssessTheft
 ///******************************************************************************************
 func void B_AssessTheft()
 {
@@ -7,20 +7,24 @@ func void B_AssessTheft()
 	{
 		return;
 	};
+	
 	if (Wld_GetPlayerPortalGuild() >= GIL_NONE)
 	&& (Npc_GetHeightToNpc(self, other) > PERC_DIST_INDOOR_HEIGHT)
 	{
 		return;
 	};
+	
 	if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_FRIENDLY)
-	&& (!Hlp_IsValidItem(item)) || (!Npc_OwnedByNpc(item, self))
+	&& (!(Hlp_IsValidItem(item) && Npc_OwnedByNpc(item, self)))
 	{
 		return;
 	};
+	
 	if (!C_IsTakenItemMyPossession(self, other, item))
 	{
 		return;
 	};
+	
 	if (!Npc_CanSeeNpc(self, other))
 	{
 		if (Npc_IsInPlayersRoom(self))
@@ -43,6 +47,7 @@ func void B_AssessTheft()
 		return;
 	};
 	
+	/// FUNC
 	B_Attack (self, other, AR_Theft, 0);
 	return;
 };

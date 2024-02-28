@@ -12,8 +12,8 @@ instance VLK_461_Carl (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium-10);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -25,7 +25,7 @@ instance VLK_461_Carl (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal06, 0, ITAR_SMITH);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal06, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 0);
 
 	/// ------ Rtn ------

@@ -9,8 +9,8 @@ instance BDT_1091_Addon_Lucia (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Initiate-5);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate-5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;	
@@ -22,7 +22,7 @@ instance BDT_1091_Addon_Lucia (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Dressed+1, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal01, Teeth_Pretty, -1);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Dressed+1, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal01, Teeth_Pretty, -1);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 

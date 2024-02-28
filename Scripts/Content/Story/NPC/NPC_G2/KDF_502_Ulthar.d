@@ -11,12 +11,12 @@ instance KDF_502_Ulthar (Npc_Default)
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	MAGIC_PYR;
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -25,7 +25,7 @@ instance KDF_502_Ulthar (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_Mag_A);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_Mag_A);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

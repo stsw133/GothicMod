@@ -14,11 +14,11 @@ instance WzA_17093_Grzechu (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 70);
-	B_SetFightSkills (self, FightTalent_Strong);
+	NpcFn_SetAttributesToLevel (self, 70);
+	NpcFn_SetFightSkills (self, FightTalent_Strong);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -30,7 +30,7 @@ instance WzA_17093_Grzechu (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", /*Face_Normal17*/ Face_Normal07, Teeth_Normal, ITAR_PAL_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Bald", /*Face_Normal17*/ Face_Normal07, Teeth_Normal, ITAR_PAL_H);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	Mdl_SetModelFatness	(self, 1.5);
 	

@@ -244,7 +244,7 @@ func void DIA_Bennet_WannaSmith_Pay()
 		Bennet_TeachCommon = TRUE;
 		Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 		B_LogEntry (Topic_SoldierTeacher,"Bennet mo¿e mnie przeszkoliæ w zakresie kowalstwa.");
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{
@@ -687,8 +687,8 @@ func void DIA_Bennet_Present_Info ()
 		AI_Output	(other,self ,"DIA_Bennet_Present_15_14"); //I co?
 		AI_Output 	(self ,other,"DIA_Bennet_Present_06_15"); //Proszê, weŸ ten amulet. S¹dzê, ¿e tobie bardziej siê on przyda.
 	
-		CreateInvItems (self,ItAm_Hp_01,1); 
-		B_GiveInvItems (self,other,ItAm_Hp_01,1);
+		CreateInvItems (self,ItAm_Druid_01,1); 
+		B_GiveInvItems (self,other,ItAm_Druid_01,1);
 	};
 };
 
@@ -1042,7 +1042,7 @@ func void DIA_Bennet_GetInnosEye_Info ()
 		
 		MIS_Bennet_InnosEyeRepairedSetting   = LOG_SUCCESS;
 		
-		B_GivePlayerXP(750);
+		B_GivePlayerExp(750);
 	}
 	else
 	{	//Hack Mattes
@@ -1147,7 +1147,7 @@ func void DIA_Bennet_DRACHENEIER_Info ()
 	IF (DRACHENEIER_angebotenXP_OneTime == FALSE)
 	{
 	B_LogEntry (TOPIC_DRACHENEIER,"Bennet hojnie mi zap³aci za wszystkie smocze jaja, które zdo³am znaleŸæ."); 
-	B_GivePlayerXP(350);
+	B_GivePlayerExp(350);
 	DRACHENEIER_angebotenXP_OneTime = TRUE;
 	};
 };
@@ -1247,7 +1247,7 @@ func void DIA_Bennet_EierBringen_Info ()
 	if (DragonEggCount == 1)
 		{
 			AI_Output		(other, self, "DIA_Bennet_EierBringen_15_02"); //Proszê, mam kolejne.
-			B_GivePlayerXP(350);
+			B_GivePlayerExp(350);
 			Npc_RemoveInvItems	(other,	ItAt_DragonEgg_MIS,	1);
 			AI_PrintScreen (PRINT_ItemGegeben, -1, YPOS_ItemGiven, FONT_ScreenSmall, 2);	// "1 Gegenstand gegeben"	
 			DragonEggCounter = DragonEggCounter + 1;
@@ -1263,7 +1263,7 @@ func void DIA_Bennet_EierBringen_Info ()
 			XP_DJG_BringDragonEggs = (DragonEggCount * 350);
 			DragonEggCounter = (DragonEggCounter + DragonEggCount); 
 
-			B_GivePlayerXP (XP_DJG_BringDragonEggs);
+			B_GivePlayerExp (XP_DJG_BringDragonEggs);
 		};
 
 	if (DragonEggCounter <= 7)
@@ -1371,7 +1371,7 @@ FUNC VOID DIA_Bennet_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Bennet_KnowWhereEnemy_Yes_15_00"); //A wiêc bêdziesz moim kowalem. Zobaczymy siê w porcie.
 	AI_Output (self ,other,"DIA_Bennet_KnowWhereEnemy_Yes_06_01"); //W porz¹dku. Do zobaczenia.
 	
-	B_GivePlayerXP(500); 
+	B_GivePlayerExp(500); 
 	
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;

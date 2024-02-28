@@ -16,11 +16,11 @@ instance WzA_17010_Setron (Npc_Default)
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 100);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 100);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -33,7 +33,7 @@ instance WzA_17010_Setron (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Skull, Teeth_Normal, /*ITAR_iCHAOS_BLUE*/ ITAR_CHAOS_DARK);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Skull, Teeth_Normal, ITAR_iCHAOS_BLUE);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

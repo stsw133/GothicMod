@@ -10,7 +10,7 @@ const int SPL_Scaling_DragonBall		=	275;
 instance Spell_DragonBall (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_DragonBall; 
+	damage_per_level					=	SPL_Damage_DragonBall; 
 	damageType							=	DAM_MAGIC;
 };
 
@@ -51,7 +51,7 @@ const int SPL_Scaling_BlackDragonBall	=	325;
 instance Spell_BlackDragonBall (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_BlackDragonBall; 
+	damage_per_level					=	SPL_Damage_BlackDragonBall; 
 	damageType							=	DAM_MAGIC;
 };
 

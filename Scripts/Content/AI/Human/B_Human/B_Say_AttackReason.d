@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_Say_AttackReason
+/// B_Say_AttackReason
 ///******************************************************************************************
 func void B_Say_AttackReason()
 {
@@ -48,7 +48,7 @@ func void B_Say_AttackReason()
 			if (self.voice == 9)
 			{
 				var int random; random = Hlp_Random(3);
-				if (random < 1)
+				if (random == 0)
 				{
 					B_Say_Overlay (self, other, "$DIEMONSTER");	
 				}

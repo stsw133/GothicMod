@@ -918,7 +918,7 @@ func void DIA_Andre_Auslieferung_Rengaru()
 	
 	Rengaru_Ausgeliefert = TRUE;
 	MIS_ThiefGuild_sucked = TRUE; 
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 	
 	B_StartOtherRoutine (Rengaru,"PRISON");	
@@ -938,7 +938,7 @@ func void DIA_Andre_Auslieferung_Halvor()
 	B_StartOtherRoutine (Halvor,"PRISON");
 	MIS_ThiefGuild_sucked = TRUE;
 	Halvor_Ausgeliefert = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
 
@@ -955,7 +955,7 @@ func void DIA_Andre_Auslieferung_Nagur()
 	B_StartOtherRoutine (Nagur,"PRISON");
 	MIS_ThiefGuild_sucked = TRUE; 
 	Nagur_Ausgeliefert = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
 
@@ -977,7 +977,7 @@ func void DIA_Andre_Auslieferung_Canthar()
 	B_CheckLog ();
 	
 	Canthar_Ausgeliefert = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
@@ -1002,7 +1002,7 @@ func void DIA_Andre_Auslieferung_Sarah()
 	Sarah_Ausgeliefert = TRUE;
 	
 	MIS_Canthars_KomproBrief  = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Info_ClearChoices (DIA_Andre_Auslieferung);
 };
@@ -1101,7 +1101,7 @@ func void DIA_Andre_DGRunning_Success()
 	AI_Output (self, other, "DIA_Andre_DGRunning_Success_08_01"); //Wyœwiadczy³eœ temu miastu wielk¹ przys³ugê.
 	DG_gefunden = TRUE;
 	MIS_Andre_GuildOfThieves = LOG_SUCCESS;
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	
 	if (MIS_CassiaKelche == LOG_RUNNING)
 	{
@@ -1227,7 +1227,7 @@ func void DIA_Andre_JOIN_Yes()
 	SLD_Aufnahme = LOG_OBSOLETE;
 	KDF_Aufnahme = LOG_OBSOLETE;
 	MIL_Aufnahme = LOG_SUCCESS;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 	
 	Info_ClearChoices (DIA_Andre_JOIN);
 };
@@ -1343,7 +1343,7 @@ FUNC VOID DIA_Andre_FOUND_PECK_SOMEWHERE()
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_SOMEWHERE_08_01"); //W porz¹dku, wiêc idŸ do niego i weŸ broñ.
 	
 	MIS_Andre_Peck = LOG_OBSOLETE;// wird hier benutzt, um Unterscheidung bei Waffenausgabe zu haben, aber Mission ist trotzdem geschafft! M.F.
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	Info_ClearChoices 	(DIA_Andre_FOUND_PECK);
 };
 FUNC VOID DIA_Andre_FOUND_PECK_REDLIGHT()
@@ -1352,7 +1352,7 @@ FUNC VOID DIA_Andre_FOUND_PECK_REDLIGHT()
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_REDLIGHT_08_01"); //Proszê... A wiêc krêci siê ko³o dziewczynek, zamiast pe³niæ s³u¿bê.
 	AI_Output (self, other, "DIA_Andre_FOUND_PECK_REDLIGHT_08_02"); //Wydaje mi siê, ¿e muszê z nim zamieniæ s³ówko.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	MIS_Andre_Peck = LOG_SUCCESS;
 	Info_ClearChoices 	(DIA_Andre_FOUND_PECK);
 };
@@ -1464,7 +1464,7 @@ FUNC VOID DIA_Andre_FOUND_STUFF_Ja()
 	
 	MIS_ANDRE_WAREHOUSE = LOG_SUCCESS;
 	MIS_Cipher_Paket = LOG_FAILED;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices 	(DIA_Andre_FOUND_STUFF);
 	
 };
@@ -1475,7 +1475,7 @@ FUNC VOID DIA_Andre_FOUND_STUFF_Becken()
 	B_AndreSold ();
 	
 	MIS_ANDRE_WAREHOUSE = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices 	(DIA_Andre_FOUND_STUFF);
 };	
 	
@@ -1576,7 +1576,7 @@ func void DIA_Andre_REDLIGHT_SUCCESS_Info ()
 		
 		B_StartOtherRoutine (Borka, "PRISON");
 		MIS_Andre_REDLIGHT = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		B_AndreSold ();
 	}
 	else 
@@ -1659,7 +1659,7 @@ func void DIA_Andre_LOBART_SUCCESS_Info ()
 {
 	AI_Output (other, self, "DIA_Andre_LOBART_SUCCESS_15_00"); //Pomog³em Lobartowi.
 	AI_Output (self, other, "DIA_Andre_LOBART_SUCCESS_08_01"); //Doskonale. Skoro Lobart jest zadowolony, to bêdzie nadal sprzedawa³ swoje rzepy w mieœcie.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	B_AndreSold ();
 };
 
@@ -1766,7 +1766,7 @@ func void DIA_Addon_Andre_ReturnedMissingPeople_Info ()
 	AI_Output (self, other, "DIA_Addon_Andre_ReturnedMissingPeople_08_08"); //To wspania³e osi¹gniêcie.
 
 	MIS_Addon_Andre_MissingPeople = LOG_SUCCESS;
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
 };
 
 

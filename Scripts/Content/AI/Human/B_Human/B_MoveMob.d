@@ -1,9 +1,10 @@
 ///******************************************************************************************
-///	B_MoveMob
+/// B_MoveMob
 ///******************************************************************************************
 func void B_MoveMob()
 {
 	var string door; door = Npc_GetDetectedMob(self);
+	
 	if (Hlp_StrCmp(door, "DOOR"))
 	{
 		if (Wld_GetMobState(self, door) == 0)

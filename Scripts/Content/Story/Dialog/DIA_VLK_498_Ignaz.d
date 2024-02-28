@@ -199,11 +199,11 @@ FUNC VOID DIA_Ignaz_Danach_Info()
 	AI_Output (self, other, "DIA_Ignaz_Danach_14_04");//Teraz mogê ciê nauczyæ paru rzeczy o sztuce alchemii.
 	AI_Output (self, other, "DIA_Ignaz_Danach_14_05");//Mogê ci równie¿ daæ kilka przydatnych przedmiotów, jeœli chcesz.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 	B_LogEntry (Topic_CityTeacher,"Ignaz mo¿e mi pokazaæ receptury na ró¿ne mikstury. Mieszka w dzielnicy portowej.");
 	MIS_Ignaz_Charm = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	CreateInvItems (self,ITSC_Charm, 3);
 };

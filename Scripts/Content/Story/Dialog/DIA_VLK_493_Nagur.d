@@ -62,7 +62,7 @@ FUNC VOID DIA_Nagur_Hallo_Info()
 	
 	func void B_Nagur_Abfertigen()
 	{
-		var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+		var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 		if (Hlp_IsItem (heroArmor, ItAr_MIL_L) == FALSE)
 		&& (Hlp_IsItem (heroArmor, ItAr_MIL_M) == FALSE)
 		&& (Hlp_IsItem (heroArmor, ItAr_PAL_M) == FALSE)
@@ -290,7 +290,7 @@ FUNC VOID DIA_Nagur_Deal_Info()
 		B_GiveInvItems (self,other,ItMi_Gold,Nagur_Deal);
 		MIS_Nagur_Bote = LOG_SUCCESS;
 		MIS_Baltram_ScoutAkil = LOG_FAILED;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		DIA_Nagur_Deal_permanent = TRUE;
 		Diebesgilde_Okay = (Diebesgilde_Okay + 1);
 		AI_StopProcessInfos (self);

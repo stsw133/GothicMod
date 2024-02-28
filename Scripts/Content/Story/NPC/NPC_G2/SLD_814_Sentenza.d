@@ -12,8 +12,8 @@ instance SLD_814_Sentenza (Npc_Default)
 	aivar[AIV_MM_FollowTime]			=	60;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -25,7 +25,7 @@ instance SLD_814_Sentenza (Npc_Default)
 	CreateInvItem (self, ItFo_Apple);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_SLD_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_SLD_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

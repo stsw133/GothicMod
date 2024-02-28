@@ -13,8 +13,8 @@ instance Pal_203_Lothar (Npc_Default)
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Master-10);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Master-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -26,7 +26,7 @@ instance Pal_203_Lothar (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Psionic", Face_Normal12, 0, ITAR_PAL_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Psionic", Face_Normal12, 0, ITAR_PAL_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

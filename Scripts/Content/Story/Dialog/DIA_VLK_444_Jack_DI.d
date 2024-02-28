@@ -58,7 +58,7 @@ func void DIA_Jack_DI_GREET_Info ()
 		if (DIA_Jack_DI_GREET_OneTime == FALSE)
 		{
 			AI_Output			(other ,self, "DIA_Jack_DI_GREET_15_03"); //Co tu robisz?
-			B_GivePlayerXP(300);
+			B_GivePlayerExp(300);
 			DIA_Jack_DI_GREET_OneTime = TRUE;
 		};
 

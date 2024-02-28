@@ -650,7 +650,7 @@ func void DIA_Torlof_SekobSuccess_Info ()
 		};
 
 		MIS_Torlof_HolPachtVonSekob = LOG_SUCCESS;
-		B_GivePlayerXP(100);				
+		B_GivePlayerExp(100);				
 		B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
 		Torlof_ProbeBestanden = TRUE;
 	}
@@ -700,7 +700,7 @@ func void DIA_Torlof_BengarSuccess_Info ()
 	};
 	
 	MIS_Torlof_BengarMilizKlatschen = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	B_LogEntry (TOPIC_BecomeSLD,"Wykona³em zadanie, które otrzyma³em od Torlofa."); 
 	Torlof_ProbeBestanden = TRUE;
 };
@@ -1063,7 +1063,7 @@ func void DIA_Torlof_DmtSuccess_Info()
 	AI_Output (self, other, "DIA_Torlof_DmtSuccess_01_02"); //Coœ mi siê w nich nie podoba³o. Za³o¿ê siê, ¿e mielibyœmy przez nich niez³e k³opoty.
 	
 	MIS_Torlof_Dmt = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 
@@ -1233,7 +1233,7 @@ func void DIA_Torlof_BEMYCAPTAIN2_Info ()
  	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_01"); //Za³oga zamku ponios³a ciê¿kie straty.
 	AI_Output			(other, self, "DIA_Torlof_BEMYCAPTAIN2_15_02"); //Paladyni z miasta powinni wkrótce wyruszyæ do Doliny, by wyci¹gn¹æ swoich towarzyszy z oblê¿onego zamku.
 	AI_Output			(self, other, "DIA_Torlof_BEMYCAPTAIN2_01_03"); //To œwietna wiadomoœæ. Teraz nic mnie ju¿ nie powstrzyma przed wyrwaniem siê z tego przeklêtego miejsca.
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info BeMyCaptain3
@@ -1334,7 +1334,7 @@ func void DIA_Torlof_BEMYCAPTAIN4_Info ()
 		self.flags = NPC_FLAG_IMMORTAL;
 		Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 		
-		B_GivePlayerXP(2000);
+		B_GivePlayerExp(2000);
 
 };
 

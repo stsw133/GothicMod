@@ -293,7 +293,7 @@ FUNC VOID DIA_None_101_Mario_NeedGoodMen_Info()
 	AI_Output (other,self ,"DIA_None_101_Mario_NeedGoodMen_15_00"); //Przyda³byœ mi siê.
 	AI_Output (self ,other,"DIA_None_101_Mario_NeedGoodMen_07_01"); //Œwietnie, do zobaczenia na statku.
 	
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	
 	Mario_IsOnBoard	 = LOG_SUCCESS;
 	crewmember_Count = (Crewmember_Count +1);

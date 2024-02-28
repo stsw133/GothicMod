@@ -15,11 +15,12 @@ instance Spell_PalBless (C_Spell_Proto)
 
 func int Spell_Logic_PalBless (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_PalBless/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_PalBless/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_PalBless)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

@@ -141,7 +141,7 @@ func void DIA_Addon_Constantino_LestersKraeuter_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Constantino_LestersKraeuter_15_00"); //Zechcesz mo¿e nabyæ nieco zió³?
 	AI_Output	(self, other, "DIA_Addon_Constantino_LestersKraeuter_10_01"); //Jeœli masz jakieœ na sprzeda¿...
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -368,7 +368,7 @@ func void DIA_Constantino_HerbsRunning_Success()
 	
 	
 	MIS_Constantino_BringHerbs = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 	Log_CreateTopic(TOPIC_Lehrling,LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_Lehrling,LOG_RUNNING);
@@ -548,7 +548,7 @@ func void DIA_Constantino_LEHRLING_Yes()
 	Wld_AssignRoomToGuild ("alchemist",	GIL_NONE);
 	
 	MIS_Apprentice = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	B_LogEntry (Topic_Bonus,"Constantino przyj¹³ mnie na czeladnika. Droga do górnego miasta stoi przede mn¹ otworem.");
 
 	Info_ClearChoices (DIA_Constantino_LEHRLING);
@@ -865,7 +865,7 @@ FUNC VOID DIA_Constantino_NewRecipes_Info()
 	AI_Output (self, other,"DIA_Constantino_NewRecipes_10_03"); //I wci¹¿ jeszcze ¿yjesz... nie najgorsze kwalifikacje.
 	AI_Output (self, other,"DIA_Constantino_NewRecipes_10_04"); //Myœlê, ¿e mogê ci podaæ kilka formu³. Oczywiœcie zale¿y, co chcesz wiedzieæ.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Log_CreateTopic (TOPIC_CityTeacher,LOG_NOTE);
 	B_LogEntry (TOPIC_CityTeacher,"Constantino mo¿e mi udzieliæ szkolenia w zakresie alchemii.");
 };

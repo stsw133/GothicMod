@@ -70,7 +70,7 @@ FUNC VOID DIA_Dexter_Hallo_Info()
 		
 		
 		MIS_Steckbriefe = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	};
 	AI_Output (other, self, "DIA_Addon_Dexter_Hallo_15_05");//Czego ode mnie chcesz?
 	AI_Output (self, other, "DIA_Addon_Dexter_Hallo_09_06");//Ja? Nic. Ale mój szef strasznie chcia³by ciê za³atwiæ.
@@ -137,7 +137,7 @@ func void DIA_Addon_Dexter_Patrick_Info()
 	B_LogEntry (TOPIC_Addon_MissingPeople,"Dexter twierdzi, ¿e nie zna najemnika o imieniu Patrick."); 
 
 	Dexter_KnowsPatrick = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Greg
@@ -166,7 +166,7 @@ func void DIA_Addon_Dexter_Greg_Info ()
 	AI_Output	(other, self, "DIA_Addon_Dexter_Greg_15_00"); //Jest taki goœæ z zas³oniêtym okiem. Szuka ciebie!
 	AI_Output	(self, other, "DIA_Addon_Dexter_Greg_09_01"); //Wszyscy mnie ostatnio szukaj¹... Mam siê tym przejmowaæ?
 	AI_Output	(self, other, "DIA_Addon_Dexter_Greg_09_02"); //Jak czegoœ ode mnie chce, to niech tu przyjdzie.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info missingPeople
@@ -338,7 +338,7 @@ func void DIA_Dexter_Kill_ENDE ()
 {
 	AI_StopProcessInfos (self);
 	B_Attack (self, other, AR_SuddenEnemyInferno, 1);
-	var C_ITEM itm;
+	var C_Item itm;
 	itm = Npc_GetEquippedArmor(Greg_NW);
 
 	if (Hlp_IsItem(itm, ITAR_PIR_H) == FALSE)

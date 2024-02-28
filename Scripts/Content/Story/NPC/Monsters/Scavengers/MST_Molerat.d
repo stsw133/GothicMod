@@ -44,47 +44,23 @@ instance Molerat (Mst_Default_Molerat)
 {
 	name								=	"Kretoszczur";
 	
-	B_SetAttributesToLevel (self, 3);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
+	NpcFn_SetAttributesToLevel (self, 3);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_Molerat();
 };
 instance Sandrat (Mst_Default_Molerat)
 {
 	name								=	"Piaskoszczur";
 	
-	B_SetAttributesToLevel (self, 3);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
+	NpcFn_SetAttributesToLevel (self, 3);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_Sandrat();
 };
 instance Swamprat (Mst_Default_Molerat)
 {
 	name								=	"Bagnoszczur";
 	
-	B_SetAttributesToLevel (self, 6);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
+	NpcFn_SetAttributesToLevel (self, 6);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_Swamprat();
 };

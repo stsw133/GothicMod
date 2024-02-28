@@ -18,20 +18,20 @@ instance ItAt_HareFur (ItemPR_AnimalTrophy)
 	description				= 	name;
 	COUNT[5]				=	value;
 };
-instance ItAt_SheepFur (ItemPR_AnimalTrophy)
+instance ItAt_GoatFur (ItemPR_AnimalTrophy)
 {
-	name 					=	"Owcza skóra";
-	value 					=	10;
-	visual 					=	"ItAt_SheepFur.3DS";
+	name 					=	"Kozia skóra";
+	value 					=	5;
+	visual 					=	"ItAt_GoatFur.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;
 };
-instance ItAt_GoatFur (ItemPR_AnimalTrophy)
+instance ItAt_SheepFur (ItemPR_AnimalTrophy)
 {
-	name 					=	"Kozia skóra";
-	value 					=	10;
-	visual 					=	"ItAt_GoatFur.3DS";
+	name 					=	"Owcza skóra";
+	value 					=	5;
+	visual 					=	"ItAt_SheepFur.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;
@@ -67,7 +67,7 @@ instance ItAt_WolfFur (ItemPR_AnimalTrophy)
 instance ItAt_IceWolfFur (ItemPR_AnimalTrophy)
 {
 	name 					=	"Skóra lodowego wilka";
-	value 					=	30;
+	value 					=	20;
 	visual 					=	"ItAt_IceWolfFur.3DS";
 	
 	description				= 	name;
@@ -76,7 +76,7 @@ instance ItAt_IceWolfFur (ItemPR_AnimalTrophy)
 instance ItAt_WargFur (ItemPR_AnimalTrophy)
 {
 	name 					=	"Skóra warga";
-	value 					=	50;
+	value 					=	30;
 	visual 					=	"ItAt_WargFur.3DS";
 	
 	description				= 	name;
@@ -122,7 +122,7 @@ instance ItAt_TrollBlackFur (ItemPR_AnimalTrophy)
 instance ItAt_LurkerSkin (ItemPR_AnimalTrophy)
 {
 	name 					=	"Skóra topielca";
-	value 					=	20;
+	value 					=	15;
 	visual 					=	"ItAt_LurkerSkin.3DS";
 	
 	description				= 	"Skóra topielca";
@@ -131,7 +131,7 @@ instance ItAt_LurkerSkin (ItemPR_AnimalTrophy)
 instance ItAt_SharkSkin (ItemPR_AnimalTrophy)
 {
 	name 					=	"Skóra b³otnego wê¿a";
-	value 					=	80;
+	value 					=	150;
 	visual 					=	"ItAt_SharkSkin.3DS";
 	
 	description				= 	name;
@@ -152,7 +152,7 @@ instance ItAt_Claw (ItemPR_AnimalTrophy)
 instance ItAt_LurkerClaw (ItemPR_AnimalTrophy)
 {
 	name 					=	"Szpony topielca";
-	value 					=	30;
+	value 					=	15;
 	visual 					=	"ItAt_LurkerClaw.3DS";
 	
 	description				= 	name;
@@ -262,7 +262,7 @@ instance ItAt_CrawlerMandibles (ItemPR_AnimalTrophy)
 instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 {
 	name 					=	"P³yta pancerza pe³zacza";
-	value 					=	20;
+	value 					=	40;
 	visual 					=	"ItAt_CrawlerPlate.3DS";
 	
 	description				= 	name;
@@ -272,7 +272,7 @@ instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 instance ItAt_DragonScale (ItemPR_AnimalTrophy)
 {
 	name 					=	"Smocze ³uski";
-	value 					=	100;
+	value 					=	200;
 	visual 					=	"ItAt_DragonScale.3DS";
 	material 				=	MAT_STONE;
 	
@@ -531,7 +531,7 @@ instance ItAt_WolfBlood (ItemPR_AnimalTrophy)
 instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 {
 	name 					=	"Smocza krew";
-	value 					=	50;
+	value 					=	100;
 	visual 					=	"ItAt_DragonBlood.3DS";
 	
 	description				= 	name;
@@ -541,7 +541,7 @@ instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
 {
 	name 					=	"£ój kretoszczura";
-	value 					=	15;
+	value 					=	5;
 	visual 					=	"ItMi_MoleratLubric.3DS";
 	
 	description				= 	name;
@@ -563,7 +563,7 @@ instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 {
 	name 					=	"Czaszka";
-	value 					=	15;
+	value 					=	10;
 	visual 					=	"DT_SKELETON_V01_HEAD.3ds";
 	material 				=	MAT_STONE;
 	
@@ -576,7 +576,7 @@ instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 instance ItAt_CrawlerEgg (ItemPR_AnimalTrophy)
 {	
 	name 					=	"Jajo pe³zacza";
-	value 					=	40;
+	value 					=	100;
 	visual 					=	"ItAt_CrawlerEgg.3ds";
 	
 	description				= 	name;

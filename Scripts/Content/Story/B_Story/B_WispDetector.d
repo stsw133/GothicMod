@@ -20,6 +20,7 @@ func void B_GetWispDetectedItem()
 	{
 		return;
 	};
+	
 	if (Npc_GetHeightToItem(self, item) > 500)
 	{
 		return;
@@ -71,12 +72,10 @@ func int B_WispDetectedItem()
 		};
 		
 		if (WispSearchFlags != 0)
+		&& (Wld_DetectItem(self, WispSearchFlags))
 		{
-			if (Wld_DetectItem(self, WispSearchFlags))
-			{
-				// Print(item.name);
-				B_GetWispDetectedItem();
-			};
+			// Print(item.name);
+			B_GetWispDetectedItem();
 		};
 		
 		return WispSearchFlags;
@@ -92,7 +91,7 @@ func int B_MM_WispDetect()
 	{
 		Npc_PerceiveAll(self);
 		
-		if (Wld_DetectNpc(self, Wisp_Detector, NOFUNC, -1))
+		if (Wld_DetectNpc(self, Wisp_Detector, nofunc, -1))
 		{
 			B_RemoveNpc(self);
 		};

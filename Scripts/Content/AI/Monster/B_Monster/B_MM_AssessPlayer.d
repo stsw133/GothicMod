@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_MM_AssessPlayer
+/// B_MM_AssessPlayer
 ///******************************************************************************************
 func void B_MM_AssessPlayer()
 {
@@ -7,6 +7,7 @@ func void B_MM_AssessPlayer()
 	{
 		return;
 	};
+	
 	if (C_NpcIsDown(other))
 	{
 		return;

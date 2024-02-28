@@ -112,7 +112,7 @@ FUNC VOID DIA_Addon_Patrick_ready_Info()
 	AI_Output (other, self, "DIA_Addon_Patrick_ready_15_05");//Spokojnie, po co ta ceremonia...
 	
 	Sklaven_Flucht = TRUE; 
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	
 	AI_StopProcessInfos (self);
 	

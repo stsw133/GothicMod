@@ -114,7 +114,7 @@ FUNC VOID DIA_Lee_DI_Teach_Info()
 {	
 	AI_Output (other,self ,"DIA_Lee_DI_Teach_15_00"); //Szukam dobrego nauczyciela.
 	AI_Output (self,other ,"DIA_Lee_DI_Teach_04_01"); //A czego dok³adnie chcia³byœ siê nauczyæ?
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////

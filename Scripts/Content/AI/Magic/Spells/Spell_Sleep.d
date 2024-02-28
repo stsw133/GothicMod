@@ -2,7 +2,7 @@
 ///	SPL_Sleep
 ///******************************************************************************************
 
-const int SPL_Cost_Sleep				=	40;	//30
+const int SPL_Cost_Sleep				=	50;	//30
 const int SPL_MinLvl_Sleep				=	20;
 const int SPL_Scaling_Sleep				=	20;
 
@@ -11,7 +11,7 @@ instance Spell_Sleep (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype 							=	SPELL_NEUTRAL;
-	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;//_FALLBACK_NONE;
+	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };
 
 func int Spell_Logic_Sleep (var int manaInvested)

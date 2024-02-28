@@ -8,7 +8,7 @@ func void B_RefreshAtInsert()
 		return;
 	};
 	
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero); 
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero); 
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	&& (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(her))

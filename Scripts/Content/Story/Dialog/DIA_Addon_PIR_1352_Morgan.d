@@ -159,7 +159,7 @@ func VOID DIA_Addon_Morgan_Meat_Info()
 	B_LogEntry (TOPIC_Addon_BringMeat,"Odda³em miêso Morganowi.");
 	
 	MIS_AlligatorJack_BringMeat = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 
 // ************************************************************
@@ -308,7 +308,7 @@ func void DIA_Addon_Morgan_LurkerPlatt_Info ()
 		
 		MIS_Addon_MorganLurker = LOG_SUCCESS;
 				
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 	}
 	else
 	{
@@ -435,7 +435,7 @@ func void DIA_Addon_Morgan_FOUNDTHEM_GiveRing()
 	AI_Output (self, other,"DIA_Addon_Morgan_FOUNDTHEM_GiveRing_07_02"); //WeŸ tê kamienn¹ tabliczkê. Mo¿e wygl¹da niepozornie, ale Garett da ci za ni¹ niez³¹ sumkê.
 	
 	MIS_Addon_Morgan_SeekTraitor = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices (DIA_Addon_Morgan_FOUNDTHEM);
 	
 	//PATCH M.F.
@@ -512,5 +512,5 @@ FUNC VOID DIA_Addon_Morgan_TRAIN_Info()
 	Log_CreateTopic (Topic_Addon_PIR_Teacher,LOG_NOTE);
 	B_LogEntry (Topic_Addon_PIR_Teacher,Log_Text_Addon_MorganTeach);
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };

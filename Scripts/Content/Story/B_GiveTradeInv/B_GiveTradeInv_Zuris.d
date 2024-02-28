@@ -24,7 +24,7 @@ func void B_GiveTradeInv_Zuris (var C_NPC slf)
 		CreateInvItems (slf, ItSc_PyrFireball, 10);
 		CreateInvItems (slf, ItSc_LightningFlash, 5);
 		//CreateInvItems (slf, ItSc_HarmUndead, 3);
-		CreateInvItems (slf, ItSc_PyrFirestorm, 3);
+		CreateInvItems (slf, ItSc_PyrBurning, 3);
 		CreateInvItems (slf, ItSc_IceWave, 1);
 		CreateInvItems (slf, ItSc_Zap, 5);
 		CreateInvItems (slf, ItSc_EleFreeze, 3);
@@ -35,13 +35,13 @@ func void B_GiveTradeInv_Zuris (var C_NPC slf)
 		CreateInvItems (slf, ItSc_EleThunderstorm, 1);
 		
 		//CreateInvItems (slf, ItSc_SumGobSkel, 1);
-		CreateInvItems (slf, ItSc_NecSkeleton, 1);
+		CreateInvItems (slf, ItSc_NecCurse, 1);
 		//CreateInvItems (slf, ItSc_SumWolf, 1);
 		CreateInvItems (slf, ItSc_GeoGolem, 1);
 		CreateInvItems (slf, ItSc_NecDemon, 1);
 		
-		CreateInvItems (slf, ItBe_Mana_01, 1);
-		CreateInvItems (slf, ItAm_Power_01, 1);
+		CreateInvItems (slf, ItBe_MP_01, 1);
+		CreateInvItems (slf, ItAm_Assassin_01, 1);
 		
 		Zuris_ItemsGiven_Chapter = 1;
 	};

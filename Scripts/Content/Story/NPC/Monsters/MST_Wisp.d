@@ -10,7 +10,7 @@ prototype Mst_Default_Wisp (C_Npc)
 	damagetype 							=	DAM_MAGIC;
 	fight_tactic						=	FAI_BLOODFLY;
 	
-	B_SetAttributesToLevel (self, 5);
+	NpcFn_SetAttributesToLevel (self, 5);
 	
 	/// ------ Protection ------
 	protection[PROT_BLUNT]				=	-1;
@@ -19,6 +19,7 @@ prototype Mst_Default_Wisp (C_Npc)
 	protection[PROT_FIRE]				=	0;
 	protection[PROT_FLY]				=	0;
 	protection[PROT_MAGIC]				=	0;
+	protection[PROT_BARRIER]			=	0;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

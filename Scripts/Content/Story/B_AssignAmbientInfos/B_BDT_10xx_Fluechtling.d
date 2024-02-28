@@ -44,7 +44,7 @@ func int DIA_BDT_1031_Fluechtling_Tip1_Condition()
 func void DIA_BDT_1031_Fluechtling_Tip1_Info()
 {
 	AI_Output (self, other, "DIA_BDT_1031_Fluechtling_Tip1_07_00"); //Trzymaj siê ode mnie z daleka, chyba ¿e chcesz wyl¹dowaæ w wiêzieniu.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	if (!SCFoundMorgahard)
 	{
@@ -186,7 +186,7 @@ func int DIA_BDT_1033_Fluechtling_Tip2_Condition()
 func void DIA_BDT_1033_Fluechtling_Tip2_Info()
 {
 	AI_Output (self, other, "DIA_BDT_1033_Fluechtling_Tip2_07_00"); //Czego ode mnie chcesz?
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	if (!SCFoundMorgahard)
 	{

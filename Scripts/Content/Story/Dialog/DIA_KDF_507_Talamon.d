@@ -333,7 +333,7 @@ FUNC VOID DIA_Talamon_ScoutSecretLibrary_Info()
 		AI_Output (self ,other,"DIA_Talamon_ScoutSecretLibrary_04_04"); //Kiedy ju¿ zwyciê¿ymy z³o, zajmiemy siê krypt¹.
 	
 		MIS_ScoutLibrary = LOG_SUCCESS;
-		B_GivePlayerXP(1000);
+		B_GivePlayerExp(1000);
 	}
 	else
 	{

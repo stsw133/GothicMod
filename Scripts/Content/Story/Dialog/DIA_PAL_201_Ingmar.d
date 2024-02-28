@@ -372,7 +372,7 @@ func void DIA_Ingmar_HAUPTQUARTIER_Info ()
 	AI_Output (self, other, "DIA_Ingmar_HAUPTQUARTIER_06_02"); //Muszê przyznaæ, ¿e nieŸle siê spisa³eœ. Gdybyœmy mieli wiêcej rycerzy takich jak ty, nadchodz¹ca bitwa by³aby dla nas bu³k¹ z mas³em.
 	AI_Output (self, other, "DIA_Ingmar_HAUPTQUARTIER_06_03"); //Proszê, weŸ to z³oto i kup sobie za nie trochê ekwipunku.
 
-	B_GivePlayerXP(1000);
+	B_GivePlayerExp(1000);
 	CreateInvItems (self, ItMi_Gold, 300);									
 	B_GiveInvItems (self, other, ItMi_Gold, 300);					
 	MIS_KillOrkOberst = LOG_SUCCESS;

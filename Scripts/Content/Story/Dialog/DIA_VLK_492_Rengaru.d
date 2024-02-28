@@ -99,7 +99,7 @@ func int DIA_Rengaru_GOTYOU_Condition ()
 
 func void DIA_Rengaru_GOTYOU_Info ()
 {
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	
 	AI_Output (other, self, "DIA_Rengaru_GOTYOU_15_00"); //Mam ciê!
 	AI_Output (self, other, "DIA_Rengaru_GOTYOU_07_01"); //Czego ode mnie chcesz?

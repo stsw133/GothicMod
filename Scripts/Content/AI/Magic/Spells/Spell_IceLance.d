@@ -2,15 +2,15 @@
 ///	SPL_IceLance
 ///******************************************************************************************
 
-const int SPL_Cost_IceLance				=	15;	//20
-const int SPL_Damage_IceLance			=	15;	//100
-const int SPL_Scaling_IceLance			=	150;
+const int SPL_Cost_IceLance				=	30;	//20
+const int SPL_Damage_IceLance			=	30;	//100
+const int SPL_Scaling_IceLance			=	110;
 
 ///******************************************************************************************
 instance Spell_IceLance (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_IceLance;
+	damage_per_level					=	SPL_Damage_IceLance;
 	damageType							=	DAM_MAGIC;
 };
 

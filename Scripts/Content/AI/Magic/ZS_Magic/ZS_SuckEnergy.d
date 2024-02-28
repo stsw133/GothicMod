@@ -1,4 +1,3 @@
-/*
 ///******************************************************************************************
 ///	B_StopSuckEnergy
 ///******************************************************************************************
@@ -41,7 +40,7 @@ func int ZS_SuckEnergy()
 	Npc_ClearAIQueue(self);
 	AI_StandUp		(self);
 	
-	self.aivar[AIV_SuckEnergyStateTime] = 1;
+	self.aivar[AIV_StateTime] = 1;
 	
 	Temp_SuckEnergy_DistToPlayer = Npc_GetDistToPlayer(self);
 };
@@ -55,7 +54,7 @@ func int ZS_SuckEnergy_Loop()
 		return LOOP_END;
 	};
 	
-	if (Npc_GetStateTime(self) != self.aivar[AIV_SuckEnergyStateTime])
+	if (Npc_GetStateTime(self) != self.aivar[AIV_StateTime])
 	{
 		if (Npc_GetStateTime(self) == 0)  
 		{
@@ -67,7 +66,7 @@ func int ZS_SuckEnergy_Loop()
 			Wld_PlayEffect ("spellFX_SuckEnergy_BloodFly", self, hero, 0, 0, 0, false);
 		};
 		
-		self.aivar[AIV_SuckEnergyStateTime] = Npc_GetStateTime(self);
+		self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 		
 		if (self.attribute[ATR_HITPOINTS] > SPL_Damage_SuckEnergy)
 		{
@@ -86,4 +85,3 @@ func int ZS_SuckEnergy_Loop()
 func void ZS_SuckEnergy_End()
 {
 };
-*/

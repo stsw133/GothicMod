@@ -13,8 +13,8 @@ instance VLK_446_Jesper (Npc_Default)
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium-10);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -27,7 +27,7 @@ instance VLK_446_Jesper (Npc_Default)
 	CreateInvItem (self, ItKe_Fingers);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal18, 0, ITAR_Vlk_L_03);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_Normal18, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

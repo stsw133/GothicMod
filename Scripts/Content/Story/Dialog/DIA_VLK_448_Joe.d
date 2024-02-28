@@ -42,7 +42,7 @@ FUNC VOID DIA_Joe_Hallo_Info()
 {
 	AI_Output (self, other,"DIA_Joe_Hallo_10_00");//Hej, dziêki, cz³owieku! Naprawdê wielkie dziêki. Ju¿ myœla³em, ¿e nigdy siê st¹d nie wydostanê...
 	TOPIC_END_Joe = TRUE;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 	
 	AI_Output (other, self,"DIA_Joe_Hallo_15_01");//Co ty TUTAJ robisz?
 	AI_Output (self, other,"DIA_Joe_Hallo_10_02");//Da³em siê zamkn¹æ. Drzwi by³y otwarte i chcia³em siê jedynie trochê rozejrzeæ, ale kiedy tylko wszed³em do œrodka, pojawi³a siê stra¿ i zamknê³a te cholerne drzwi.

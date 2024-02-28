@@ -15,11 +15,16 @@ instance WzA_17200_Raam (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
+	
+	/// ------ Visuals ------
+	NpcFn_SetVisual		(self, ORCMALE, 0, default, "Orc_Head_Warrior", 11, default, ITAR_Orc_King);
+	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
+//	Mdl_SetModelFatness	(self, 0.5);
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 90);
-	B_SetFightSkills (self, FightTalent_Master);
+	NpcFn_SetAttributesToLevel (self, 90);
+	NpcFn_SetFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;
@@ -29,11 +34,6 @@ instance WzA_17200_Raam (Npc_Default)
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-	
-	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_ORC, MALE, 0, default, "Orc_Head_Warrior", 11, default, ITAR_Orc_King);
-	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
-//	Mdl_SetModelFatness	(self, 0.5);
 	
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_50;

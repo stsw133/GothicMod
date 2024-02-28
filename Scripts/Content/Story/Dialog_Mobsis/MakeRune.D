@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void MAKERUNE_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
@@ -14,7 +14,7 @@ func void MAKERUNE_S1()
 };
 func void MOBSI_MAKESCROLL_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
@@ -89,11 +89,11 @@ func void PC_MakeRune_Neutral_Info()
 	Info_ClearChoices	(PC_MakeRune_Neutral);
 	Info_AddChoice		(PC_MakeRune_Neutral, DIALOG_BACK, PC_MakeRune_Neutral_BACK);
 	
-	if (PLAYER_TALENT_ENCHANTING[SPL_nLight])
+	if (PLAYER_TALENT_ENCHANTING[SPL_Light])
 	{
 		Info_AddChoice (PC_MakeRune_Neutral, ConcatStrings(NAME_SPL_Light, " (z³ota moneta)"), PC_ItRu_Light_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_nHeal])
+	if (PLAYER_TALENT_ENCHANTING[SPL_Heal])
 	{
 		Info_AddChoice (PC_MakeRune_Neutral, ConcatStrings(NAME_SPL_Heal, " (ziele lecznicze)"), PC_ItRu_Heal_Info);
 	};
@@ -135,73 +135,76 @@ func void PC_MakeRune_Neutral_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_Neutral);
 };
+/// SPL_Light
 func void PC_ItRu_Light_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_Light) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_Gold) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Gold) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Gold);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Light);
 			CreateInvItem (hero, ItRu_Light);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_Light);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Light, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Heal
 func void PC_ItRu_Heal_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_LightHeal) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItPl_Health_Herb_02) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItPl_Health_Herb_02) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItPl_Health_Herb_02);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_LightHeal);
 			CreateInvItem (hero, ItRu_Heal);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_LightHeal);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_LightHeal, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_SlowTime
 func void PC_ItRu_SlowTime_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_SlowTime) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_Emerald) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Emerald) >= 1)
 	&& (Npc_HasItems(hero, ItMi_TimeDust) >= 10)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Emerald);
@@ -209,32 +212,32 @@ func void PC_ItRu_SlowTime_Info()
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_SlowTime);
 			CreateInvItem (hero, ItRu_SlowTime);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_SlowTime);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_SlowTime, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_NightToDay
 func void PC_ItRu_NightToDay_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_NightToDay) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItAt_SheepFur) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SheepFur) >= 1)
 	&& (Npc_HasItems(hero, ItMi_TimeDust) >= 5)
 	{
 		Npc_RemoveInvItem (hero, ItAt_SheepFur);
@@ -242,259 +245,212 @@ func void PC_ItRu_NightToDay_Info()
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NightToDay);
 			CreateInvItem (hero, ItRu_NightToDay);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_NightToDay);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NightToDay, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Telekinesis
 func void PC_ItRu_Telekinesis_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_Telekinesis) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_FortuneCoin) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_FortuneCoin) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_FortuneCoin);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Telekinesis);
 			CreateInvItem (hero, ItRu_Telekinesis);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_Telekinesis);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Telekinesis, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Sleep
 func void PC_ItRu_Sleep_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Sleep) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItPl_Swampherb);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Sleep);
-			Npc_RemoveInvItem (hero, ItPl_Swampherb);
-			
 			CreateInvItem (hero, ItRu_Sleep);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Sleep, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItPl_Swampherb);
-			
-			CreateInvItem (hero, ItSc_Sleep);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Charm
 func void PC_ItRu_Charm_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Charm) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
-		&& (Npc_HasItems(hero, ItAt_BugMandibles) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
+	&& (Npc_HasItems(hero, ItAt_BugMandibles) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItPl_Swampherb);
+		Npc_RemoveInvItem (hero, ItAt_BugMandibles);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Charm);
-			Npc_RemoveInvItem (hero, ItPl_Swampherb);
-			Npc_RemoveInvItem (hero, ItAt_BugMandibles);
-			
 			CreateInvItem (hero, ItRu_Charm);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Charm, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Swampherb) >= 1)
-		&& (Npc_HasItems(hero, ItAt_BugMandibles) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItPl_Swampherb);
-			Npc_RemoveInvItem (hero, ItAt_BugMandibles);
-			
-			CreateInvItem (hero, ItSc_Charm);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Fear
 func void PC_ItRu_Fear_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Fear) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Wing) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_Wing) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_Wing);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Fear);
-			Npc_RemoveInvItem (hero, ItAt_Wing);
-			
 			CreateInvItem (hero, ItRu_Fear);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Fear, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Wing) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_Wing);
-			
-			CreateInvItem (hero, ItSc_Fear);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Rage
 func void PC_ItRu_Rage_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Rage) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DemonBlood) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_DemonBlood) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_DemonBlood);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Rage);
-			Npc_RemoveInvItem (hero, ItAt_DemonBlood);
-			
 			CreateInvItem (hero, ItRu_Rage);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Rage, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DemonBlood) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_DemonBlood);
-			
-			CreateInvItem (hero, ItSc_Rage);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Shrink
 func void PC_ItRu_Shrink_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Shrink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TrollTooth) >= 1)
-		&& (Npc_HasItems(hero, ItAt_CrawlerEgg) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_TrollTooth) >= 1)
+	&& (Npc_HasItems(hero, ItAt_CrawlerEgg) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_TrollTooth);
+		Npc_RemoveInvItem (hero, ItAt_CrawlerEgg);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Shrink);
-			Npc_RemoveInvItem (hero, ItAt_TrollTooth);
-			Npc_RemoveInvItem (hero, ItAt_CrawlerEgg);
-			
 			CreateInvItem (hero, ItRu_Shrink);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Shrink, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TrollTooth) >= 1)
-		&& (Npc_HasItems(hero, ItAt_CrawlerEgg) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_TrollTooth);
-			Npc_RemoveInvItem (hero, ItAt_CrawlerEgg);
-			
-			CreateInvItem (hero, ItSc_Shrink);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -592,767 +548,625 @@ func void PC_MakeRune_Battle_Info()
 	{
 		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_MassDeath, " (krew demona, czarna per³a)"), PC_ItRu_MassDeath_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness])
-	{
-		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_ArmyOfDarkness, " (koœæ szkieletu, czarna per³a)"), PC_ItRu_ArmyOfDarkness_Info);
-	};
+	//if (PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness])
+	//{
+	//	Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_ArmyOfDarkness, " (koœæ szkieletu, czarna per³a)"), PC_ItRu_ArmyOfDarkness_Info);
+	//};
 };
 ///******************************************************************************************
 func void PC_MakeRune_Battle_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_Battle);
 };
+/// SPL_FireBolt
 func void PC_ItRu_FireBolt_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_FireBolt) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Sulfur);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_FireBolt);
 			CreateInvItem (hero, ItRu_FireBolt);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_FireBolt);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_FireBolt, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_IceBolt
 func void PC_ItRu_IceBolt_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_IceBolt) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_IceBolt);
 			CreateInvItem (hero, ItRu_IceBolt);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_IceBolt);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_IceBolt, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Zap
 func void PC_ItRu_Zap_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_Zap) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_SilverNugget);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Zap);
 			CreateInvItem (hero, ItRu_Zap);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_Zap);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Zap, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_SkullBolt
 func void PC_ItRu_SkullBolt_Info()
 {
-	if ((PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE && Npc_HasItems(hero, ItSc_Zap) >= 1)
-	 || (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scroll) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1))
-	&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Zap);
 			CreateInvItem (hero, ItRu_SkullBolt);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);	Npc_RemoveInvItem (hero, ItMi_Ink);
-			CreateInvItem (hero, ItSc_Zap);
-			Print(PRINT_ScrollSuccess);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Zap, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-		{	CreateInvItem (hero, ItMi_RuneBlank);	};
-		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
 		Print(PRINT_ProdItemsMissing);
 	};
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_WindFist
 func void PC_ItRu_WindFist_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_WindFist) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Coal) >= 1)
+	&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Coal);
+		Npc_RemoveInvItem (hero, ItAt_Claw);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_WindFist);
-			Npc_RemoveInvItem (hero, ItMi_Coal);
-			Npc_RemoveInvItem (hero, ItAt_Claw);
-			
 			CreateInvItem (hero, ItRu_WindFist);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_WindFist, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Coal);
-			Npc_RemoveInvItem (hero, ItAt_Claw);
-			
-			CreateInvItem (hero, ItSc_WindFist);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_LightningFlash
 func void PC_ItRu_LightningFlash_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_LightningFlash) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
-		&& (Npc_HasItems(hero, ItAt_LurkerClaw) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
+	&& (Npc_HasItems(hero, ItAt_LurkerClaw) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_SilverNugget);
+		Npc_RemoveInvItem (hero, ItAt_LurkerClaw);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_LightningFlash);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			Npc_RemoveInvItem (hero, ItAt_LurkerClaw);
-			
 			CreateInvItem (hero, ItRu_LightningFlash);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_LightningFlash, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
-		&& (Npc_HasItems(hero, ItAt_LurkerClaw) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			Npc_RemoveInvItem (hero, ItAt_LurkerClaw);
-			
-			CreateInvItem (hero, ItSc_LightningFlash);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_ChargeFireball
 func void PC_ItRu_ChargeFireball_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_ChargeFireball) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Firecrystal);
+		Npc_RemoveInvItem (hero, ItMi_Pitch);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_ChargeFireball);
-			Npc_RemoveInvItem (hero, ItMi_Firecrystal);
-			Npc_RemoveInvItem (hero, ItMi_Pitch);
-			
 			CreateInvItem (hero, ItRu_ChargeFireball);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_ChargeFireball, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Firecrystal);
-			Npc_RemoveInvItem (hero, ItMi_Pitch);
-			
-			CreateInvItem (hero, ItSc_ChargeFireball);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Whirlwind
 func void PC_ItRu_Whirlwind_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Whirlwind) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Wing) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_Wing) >= 1)
+	&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_Wing);
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Whirlwind);
-			Npc_RemoveInvItem (hero, ItAt_Wing);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
 			CreateInvItem (hero, ItRu_Whirlwind);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Whirlwind, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Wing) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_Wing);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
-			CreateInvItem (hero, ItSc_Whirlwind);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_ChargeZap
 func void PC_ItRu_ChargeZap_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_ChargeZap) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
+	&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_SilverNugget);
+		Npc_RemoveInvItem (hero, ItAt_Claw);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_ChargeZap);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			Npc_RemoveInvItem (hero, ItAt_Claw);
-			
 			CreateInvItem (hero, ItRu_ChargeZap);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_ChargeZap, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Claw) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			Npc_RemoveInvItem (hero, ItAt_Claw);
-			
-			CreateInvItem (hero, ItSc_ChargeZap);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Geyser
 func void PC_ItRu_Geyser_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Geyser) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Aquamarine);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Geyser);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			
 			CreateInvItem (hero, ItRu_Geyser);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Geyser, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			
-			CreateInvItem (hero, ItSc_Geyser);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_WaterFist
 func void PC_ItRu_WaterFist_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_WaterFist) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
+	&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Aquamarine);
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_WaterFist);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
 			CreateInvItem (hero, ItRu_WaterFist);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_WaterFist, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
-			CreateInvItem (hero, ItSc_WaterFist);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_IceLance
 func void PC_ItRu_IceLance_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_IceLance) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_WhitePearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_IceLance);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
 			CreateInvItem (hero, ItRu_IceLance);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_IceLance, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
-			CreateInvItem (hero, ItSc_IceLance);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_IceWave
 func void PC_ItRu_IceWave_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_IceWave) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_WhitePearl);
+		Npc_RemoveInvItem (hero, ItMi_Aquamarine);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_IceWave);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			
 			CreateInvItem (hero, ItRu_IceWave);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_IceWave, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Aquamarine) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			Npc_RemoveInvItem (hero, ItMi_Aquamarine);
-			
-			CreateInvItem (hero, ItSc_IceWave);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_Inflate
 func void PC_ItRu_Inflate_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_Inflate) >= 1)
-		&& (Npc_HasItems(hero, ItAt_MoleratLubric) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_MoleratLubric) >= 1)
+	&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_MoleratLubric);
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_Inflate);
-			Npc_RemoveInvItem (hero, ItAt_MoleratLubric);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
 			CreateInvItem (hero, ItRu_Inflate);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_Inflate, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_MoleratLubric) >= 1)
-		&& (Npc_HasItems(hero, ItFo_Water) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_MoleratLubric);
-			Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-			
-			CreateInvItem (hero, ItSc_Inflate);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_DragonBall
 func void PC_ItRu_DragonBall_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_DragonBall) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DragonHeart) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_DragonHeart) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_DragonHeart);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_DragonBall);
-			Npc_RemoveInvItem (hero, ItAt_DragonHeart);
-			
 			CreateInvItem (hero, ItRu_DragonBall);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_DragonBall, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DragonHeart) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_DragonHeart);
-			
-			CreateInvItem (hero, ItSc_DragonBall);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_BlackDragonBall
 func void PC_ItRu_BlackDragonBall_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_BlackDragonBall) >= 1)
-		&& (Npc_HasItems(hero, ItAt_UndeadDragonSoulStone) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_UndeadDragonSoulStone) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_UndeadDragonSoulStone);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_BlackDragonBall);
-			Npc_RemoveInvItem (hero, ItAt_UndeadDragonSoulStone);
-			
 			CreateInvItem (hero, ItRu_BlackDragonBall);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_BlackDragonBall, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_UndeadDragonSoulStone) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_UndeadDragonSoulStone);
-			
-			CreateInvItem (hero, ItSc_BlackDragonBall);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_BreathOfDeath
 func void PC_ItRu_BreathOfDeath_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_BreathOfDeath) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Coal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Coal);
+		Npc_RemoveInvItem (hero, ItMi_DarkPearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_BreathOfDeath);
-			Npc_RemoveInvItem (hero, ItMi_Coal);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
 			CreateInvItem (hero, ItRu_BreathOfDeath);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_BreathOfDeath, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Coal);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
-			CreateInvItem (hero, ItSc_BreathOfDeath);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_MassDeath
 func void PC_ItRu_MassDeath_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_MassDeath) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
+	&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
+		Npc_RemoveInvItem (hero, ItMi_DarkPearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_MassDeath);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
 			CreateInvItem (hero, ItRu_MassDeath);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MassDeath, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
-			CreateInvItem (hero, ItSc_MassDeath);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_ArmyOfDarkness
 func void PC_ItRu_ArmyOfDarkness_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_ArmyOfDarkness) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
+	&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
+		Npc_RemoveInvItem (hero, ItMi_DarkPearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_ArmyOfDarkness);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
 			CreateInvItem (hero, ItRu_ArmyOfDarkness);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_ArmyOfDarkness, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonBone);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
-			CreateInvItem (hero, ItSc_ArmyOfDarkness);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -1436,7 +1250,7 @@ instance PC_MakeRune_MYS (C_Info)
 func int PC_MakeRune_MYS_Condition()
 {	
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE || PLAYER_MOBSI_PRODUCTION == MOBSI_MAKESCROLL)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_TYPEOFMAGIC) == MAGIC_MYS)
+	&& (hero.aivar[AIV_MagicUser] == MAGIC_MYS)
 	{
 		return true;
 	};
@@ -1446,13 +1260,13 @@ func void PC_MakeRune_MYS_Info()
 	Info_ClearChoices	(PC_MakeRune_MYS);
 	Info_AddChoice		(PC_MakeRune_MYS, DIALOG_BACK, PC_MakeRune_MYS_BACK);
 	
-	if (PLAYER_TALENT_ENCHANTING[SPL_MysBolt])
+	if (PLAYER_TALENT_ENCHANTING[SPL_MysBall])
 	{
-		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysBolt, " (¿ywica, serafis)"), PC_ItRu_MysBolt_Info);
+		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysBall, " (¿ywica)"), PC_ItRu_MysBall_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_MysProtection])
+	if (PLAYER_TALENT_ENCHANTING[SPL_MysAura])
 	{
-		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysProtection, " (¿ywica, rtêæ)"), PC_ItRu_MysProtection_Info);
+		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysAura, " (¿ywica, rtêæ)"), PC_ItRu_MysAura_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_MysRoot])
 	{
@@ -1462,13 +1276,13 @@ func void PC_MakeRune_MYS_Info()
 	{
 		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysTame, " (¿ywica, skóra tygrysa)"), PC_ItRu_MysTame_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_MysAura])
+	if (PLAYER_TALENT_ENCHANTING[SPL_MysEcho])
 	{
-		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysAura, " (¿ywica, szmaragd)"), PC_ItRu_MysAura_Info);
+		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysEcho, " (¿ywica, szmaragd)"), PC_ItRu_MysEcho_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_MysEchoes])
+	if (PLAYER_TALENT_ENCHANTING[SPL_MysSlow])
 	{
-		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysEchoes, " (¿ywica, diament)"), PC_ItRu_MysEchoes_Info);
+		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysSlow, " (¿ywica, diament)"), PC_ItRu_MysSlow_Info);
 	};
 };
 ///******************************************************************************************
@@ -1476,262 +1290,200 @@ func void PC_MakeRune_MYS_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_MYS);
 };
-func void PC_ItRu_MysBolt_Info()
+/// SPL_MysBall
+func void PC_ItRu_MysBall_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_MysBolt) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Blueplant) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_MysBolt);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItPl_Blueplant);
-			
-			CreateInvItem (hero, ItRu_MysBolt);
+			CreateInvItem (hero, ItRu_MysBall);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysBall, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Blueplant) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItPl_Blueplant);
-			
-			CreateInvItem (hero, ItSc_MysBolt);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_MysProtection_Info()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-	{
-		if (Npc_HasItems(hero, ItSc_MysProtection) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItSc_MysProtection);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItRu_MysProtection);
-			Print(PRINT_RuneSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
-		};
-	}
-	else
-	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItSc_MysProtection);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItRu_MysRoot_Info()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-	{
-		if (Npc_HasItems(hero, ItSc_MysRoot) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItSc_MysRoot);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
-			
-			CreateInvItem (hero, ItRu_MysRoot);
-			Print(PRINT_RuneSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
-		};
-	}
-	else
-	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
-			
-			CreateInvItem (hero, ItSc_MysRoot);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItRu_MysTame_Info()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
-	{
-		if (Npc_HasItems(hero, ItSc_MysTame) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TigerFur) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItSc_MysTame);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItAt_TigerFur);
-			
-			CreateInvItem (hero, ItRu_MysTame);
-			Print(PRINT_RuneSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
-		};
-	}
-	else
-	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TigerFur) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItAt_TigerFur);
-			
-			CreateInvItem (hero, ItSc_MysTame);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
+/// SPL_MysAura
 func void PC_ItRu_MysAura_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_MysAura) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Emerald) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_MysAura);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Emerald);
-			
 			CreateInvItem (hero, ItRu_MysAura);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysAura, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Emerald) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Emerald);
-			
-			CreateInvItem (hero, ItSc_MysAura);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_MysEchoes_Info()
+/// SPL_MysRoot
+func void PC_ItRu_MysRoot_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_MysEchoes) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_MysEchoes);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Diamond);
-			
-			CreateInvItem (hero, ItRu_MysEchoes);
+			CreateInvItem (hero, ItRu_MysRoot);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysRoot, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Resin) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
+	};
+	
+	B_ENDPRODUCTIONDIALOG();
+};
+/// SPL_MysTame
+func void PC_ItRu_MysTame_Info()
+{
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	&& (Npc_HasItems(hero, ItAt_TigerFur) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		Npc_RemoveInvItem (hero, ItAt_TigerFur);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Resin);
-			Npc_RemoveInvItem (hero, ItMi_Diamond);
-			
-			CreateInvItem (hero, ItSc_MysEchoes);
-			Print(PRINT_ScrollSuccess);
+			CreateInvItem (hero, ItRu_MysTame);
+			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysTame, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
+	}
+	else
+	{
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
+	B_ENDPRODUCTIONDIALOG();
+};
+/// SPL_MysEcho
+func void PC_ItRu_MysEcho_Info()
+{
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Emerald) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		Npc_RemoveInvItem (hero, ItMi_Emerald);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+		{
+			CreateInvItem (hero, ItRu_MysEcho);
+			Print(PRINT_RuneSuccess);
+		}
+		else
+		{
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysEcho, 4);
+			Print(PRINT_ScrollsSuccess);
+		};
+	}
+	else
+	{
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
+	};
+	
+	B_ENDPRODUCTIONDIALOG();
+};
+/// SPL_MysSlow
+func void PC_ItRu_MysSlow_Info()
+{
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
+	{
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Resin) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Resin);
+		Npc_RemoveInvItem (hero, ItMi_Diamond);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+		{
+			CreateInvItem (hero, ItRu_MysSlow);
+			Print(PRINT_RuneSuccess);
+		}
+		else
+		{
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_MysSlow, 4);
+			Print(PRINT_ScrollsSuccess);
+		};
+	}
+	else
+	{
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
+	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -1748,7 +1500,7 @@ instance PC_MakeRune_GEO (C_Info)
 func int PC_MakeRune_GEO_Condition()
 {	
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE || PLAYER_MOBSI_PRODUCTION == MOBSI_MAKESCROLL)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_TYPEOFMAGIC) == MAGIC_GEO)
+	&& (hero.aivar[AIV_MagicUser] == MAGIC_GEO)
 	{
 		return true;
 	};
@@ -1760,11 +1512,11 @@ func void PC_MakeRune_GEO_Info()
 	
 	if (PLAYER_TALENT_ENCHANTING[SPL_GeoStone])
 	{
-		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoStone, " (kwarc, 5 kamieni)"), PC_ItRu_GeoStone_Info);
+		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoStone, " (kwarc)"), PC_ItRu_GeoStone_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_GeoProtection])
+	if (PLAYER_TALENT_ENCHANTING[SPL_GeoAura])
 	{
-		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoProtection, " (kwarc, rtêæ)"), PC_ItRu_GeoProtection_Info);
+		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoAura, " (kwarc, rtêæ)"), PC_ItRu_GeoAura_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_GeoElevate])
 	{
@@ -1774,13 +1526,13 @@ func void PC_MakeRune_GEO_Info()
 	{
 		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoGolem, " (kwarc, serce golema)"), PC_ItRu_GeoGolem_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_GeoExplosion])
+	if (PLAYER_TALENT_ENCHANTING[SPL_GeoQuake])
 	{
-		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoExplosion, " (kwarc, 5 kawa³ków saletry)"), PC_ItRu_GeoExplosion_Info);
+		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoQuake, " (kwarc, 5 kawa³ków saletry)"), PC_ItRu_GeoQuake_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_GeoWall])
+	if (PLAYER_TALENT_ENCHANTING[SPL_GeoCollapse])
 	{
-		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoWall, " (kwarc, skóra trolla)"), PC_ItRu_GeoWall_Info);
+		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoCollapse, " (kwarc, skóra trolla)"), PC_ItRu_GeoCollapse_Info);
 	};
 };
 ///******************************************************************************************
@@ -1788,262 +1540,200 @@ func void PC_MakeRune_GEO_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_GEO);
 };
+/// SPL_GeoStone
 func void PC_ItRu_GeoStone_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoStone) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Stone) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoStone);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_Stone);
-			
 			CreateInvItem (hero, ItRu_GeoStone);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoStone, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Stone) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_Stone);
-			
-			CreateInvItem (hero, ItSc_GeoStone);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_GeoProtection_Info()
+/// SPL_GeoAura
+func void PC_ItRu_GeoAura_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoProtection) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoProtection);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItRu_GeoProtection);
+			CreateInvItem (hero, ItRu_GeoAura);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoAura, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItSc_GeoProtection);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_GeoElevate
 func void PC_ItRu_GeoElevate_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoElevate) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_IronBar) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	&& (Npc_HasItems(hero, ItMi_IronBar) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		Npc_RemoveInvItem (hero, ItMi_IronBar);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoElevate);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_IronBar);
-			
 			CreateInvItem (hero, ItRu_GeoElevate);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoElevate, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_IronBar) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItMi_IronBar);
-			
-			CreateInvItem (hero, ItSc_GeoElevate);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_GeoGolem
 func void PC_ItRu_GeoGolem_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoGolem) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItAt_GolemHeart) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	&& (Npc_HasItems(hero, ItAt_GolemHeart) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		Npc_RemoveInvItem (hero, ItAt_GolemHeart);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoGolem);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItAt_GolemHeart);
-			
 			CreateInvItem (hero, ItRu_GeoGolem);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoGolem, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItAt_GolemHeart) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItAt_GolemHeart);
-			
-			CreateInvItem (hero, ItSc_GeoGolem);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_GeoExplosion_Info()
+/// SPL_GeoQuake
+func void PC_ItRu_GeoQuake_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoExplosion) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoExplosion);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
-			
-			CreateInvItem (hero, ItRu_GeoExplosion);
+			CreateInvItem (hero, ItRu_GeoQuake);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoQuake, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
-			
-			CreateInvItem (hero, ItSc_GeoExplosion);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_GeoWall_Info()
+/// SPL_GeoCollapse
+func void PC_ItRu_GeoCollapse_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_GeoWall) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TrollFur) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Quartz) >= 1)
+	&& (Npc_HasItems(hero, ItAt_TrollFur) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Quartz);
+		Npc_RemoveInvItem (hero, ItAt_TrollFur);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_GeoWall);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItAt_TrollFur);
-			
-			CreateInvItem (hero, ItRu_GeoWall);
+			CreateInvItem (hero, ItRu_GeoCollapse);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_GeoCollapse, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quartz) >= 1)
-		&& (Npc_HasItems(hero, ItAt_TrollFur) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Quartz);
-			Npc_RemoveInvItem (hero, ItAt_TrollFur);
-			
-			CreateInvItem (hero, ItSc_GeoWall);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -2060,7 +1750,7 @@ instance PC_MakeRune_ELE (C_Info)
 func int PC_MakeRune_ELE_Condition()
 {	
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE || PLAYER_MOBSI_PRODUCTION == MOBSI_MAKESCROLL)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_TYPEOFMAGIC) == MAGIC_ELE)
+	&& (hero.aivar[AIV_MagicUser] == MAGIC_ELE)
 	{
 		return true;
 	};
@@ -2070,13 +1760,13 @@ func void PC_MakeRune_ELE_Info()
 	Info_ClearChoices	(PC_MakeRune_ELE);
 	Info_AddChoice		(PC_MakeRune_ELE, DIALOG_BACK, PC_MakeRune_ELE_BACK);
 	
-	if (PLAYER_TALENT_ENCHANTING[SPL_EleLightning])
+	if (PLAYER_TALENT_ENCHANTING[SPL_EleLance])
 	{
-		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleLightning, " (kryszta³, bry³ka srebra)"), PC_ItRu_EleLightning_Info);
+		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleLance, " (kryszta³)"), PC_ItRu_EleLance_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_EleProtection])
+	if (PLAYER_TALENT_ENCHANTING[SPL_EleAura])
 	{
-		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleProtection, " (kryszta³, rtêæ)"), PC_ItRu_EleProtection_Info);
+		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleAura, " (kryszta³, rtêæ)"), PC_ItRu_EleAura_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_EleFreeze])
 	{
@@ -2086,9 +1776,9 @@ func void PC_MakeRune_ELE_Info()
 	{
 		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleHurricane, " (kryszta³, 10 kawa³ków wêgla)"), PC_ItRu_EleHurricane_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_EleKinesis])
+	if (PLAYER_TALENT_ENCHANTING[SPL_EleLightning])
 	{
-		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleKinesis, " (kryszta³, róg smoczego zêbacza)"), PC_ItRu_EleKinesis_Info);
+		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleLightning, " (kryszta³, róg smoczego zêbacza)"), PC_ItRu_EleLightning_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_EleThunderstorm])
 	{
@@ -2100,262 +1790,200 @@ func void PC_MakeRune_ELE_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_ELE);
 };
-func void PC_ItRu_EleLightning_Info()
+/// SPL_EleLance
+func void PC_ItRu_EleLance_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleLightning) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleLightning);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			
-			CreateInvItem (hero, ItRu_EleLightning);
+			CreateInvItem (hero, ItRu_EleLance);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleLance, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_SilverNugget) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_SilverNugget);
-			
-			CreateInvItem (hero, ItSc_EleLightning);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_EleProtection_Info()
+/// SPL_EleAura
+func void PC_ItRu_EleAura_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleProtection) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleProtection);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItRu_EleProtection);
+			CreateInvItem (hero, ItRu_EleAura);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleAura, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItSc_EleProtection);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_EleFreeze
 func void PC_ItRu_EleFreeze_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleFreeze) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		Npc_RemoveInvItem (hero, ItMi_WhitePearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleFreeze);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
 			CreateInvItem (hero, ItRu_EleFreeze);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleFreeze, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
-			CreateInvItem (hero, ItSc_EleFreeze);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_EleHurricane
 func void PC_ItRu_EleHurricane_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleHurricane) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 10)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Coal) >= 10)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		Npc_RemoveInvItems (hero, ItMi_Coal, 10);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleHurricane);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItems (hero, ItMi_Coal, 10);
-			
 			CreateInvItem (hero, ItRu_EleHurricane);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleHurricane, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Coal) >= 10)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItems (hero, ItMi_Coal, 10);
-			
-			CreateInvItem (hero, ItSc_EleHurricane);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_EleKinesis_Info()
+/// SPL_EleLightning
+func void PC_ItRu_EleLightning_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleKinesis) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DrgSnapperHorn) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	&& (Npc_HasItems(hero, ItAt_DrgSnapperHorn) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		Npc_RemoveInvItem (hero, ItAt_DrgSnapperHorn);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleKinesis);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItAt_DrgSnapperHorn);
-			
-			CreateInvItem (hero, ItRu_EleKinesis);
+			CreateInvItem (hero, ItRu_EleLightning);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleLightning, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DrgSnapperHorn) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItem (hero, ItAt_DrgSnapperHorn);
-			
-			CreateInvItem (hero, ItSc_EleKinesis);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_EleThunderstorm
 func void PC_ItRu_EleThunderstorm_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_EleThunderstorm) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Nugget) >= 5)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Nugget) >= 5)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
+		Npc_RemoveInvItems (hero, ItMi_Nugget, 5);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_EleThunderstorm);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItems (hero, ItMi_Nugget, 5);
-			
 			CreateInvItem (hero, ItRu_EleThunderstorm);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_EleThunderstorm, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Rockcrystal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Nugget) >= 5)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Rockcrystal);
-			Npc_RemoveInvItems (hero, ItMi_Nugget, 5);
-			
-			CreateInvItem (hero, ItSc_EleThunderstorm);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -2372,7 +2000,7 @@ instance PC_MakeRune_PYR (C_Info)
 func int PC_MakeRune_PYR_Condition()
 {	
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE || PLAYER_MOBSI_PRODUCTION == MOBSI_MAKESCROLL)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_TYPEOFMAGIC) == MAGIC_PYR)
+	&& (hero.aivar[AIV_MagicUser] == MAGIC_PYR)
 	{
 		return true;
 	};
@@ -2384,19 +2012,19 @@ func void PC_MakeRune_PYR_Info()
 	
 	if (PLAYER_TALENT_ENCHANTING[SPL_PyrFireball])
 	{
-		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFireball, " (siarka, smo³a)"), PC_ItRu_PyrFireball_Info);
+		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFireball, " (siarka)"), PC_ItRu_PyrFireball_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_PyrProtection])
+	if (PLAYER_TALENT_ENCHANTING[SPL_PyrAura])
 	{
-		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrProtection, " (siarka, rtêæ)"), PC_ItRu_PyrProtection_Info);
+		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrAura, " (siarka, rtêæ)"), PC_ItRu_PyrAura_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_PyrFirestorm])
+	if (PLAYER_TALENT_ENCHANTING[SPL_PyrBurning])
 	{
-		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFirestorm, " (siarka, ognisty kryszta³)"), PC_ItRu_PyrFirestorm_Info);
+		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrBurning, " (siarka, ognisty kryszta³)"), PC_ItRu_PyrBurning_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_PyrKinesis])
+	if (PLAYER_TALENT_ENCHANTING[SPL_PyrFirebomb])
 	{
-		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrKinesis, " (siarka, jêzyk ognistego jaszczura)"), PC_ItRu_PyrKinesis_Info);
+		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFirebomb, " (siarka, jêzyk ognistego jaszczura)"), PC_ItRu_PyrFirebomb_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_PyrExplosion])
 	{
@@ -2412,262 +2040,200 @@ func void PC_MakeRune_PYR_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_PYR);
 };
+/// SPL_PyrFireball
 func void PC_ItRu_PyrFireball_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrFireball) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrFireball);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Pitch);
-			
 			CreateInvItem (hero, ItRu_PyrFireball);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrFireball, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Pitch) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Pitch);
-			
-			CreateInvItem (hero, ItSc_PyrFireball);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_PyrProtection_Info()
+/// SPL_PyrAura
+func void PC_ItRu_PyrAura_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrProtection) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrProtection);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItRu_PyrProtection);
+			CreateInvItem (hero, ItRu_PyrAura);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrAura, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItSc_PyrProtection);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_PyrFirestorm_Info()
+/// SPL_PyrBurning
+func void PC_ItRu_PyrBurning_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrFirestorm) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItem (hero, ItMi_Firecrystal);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrFirestorm);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Firecrystal);
-			
-			CreateInvItem (hero, ItRu_PyrFirestorm);
+			CreateInvItem (hero, ItRu_PyrBurning);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrBurning, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Firecrystal) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItMi_Firecrystal);
-			
-			CreateInvItem (hero, ItSc_PyrFirestorm);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_PyrKinesis_Info()
+/// SPL_PyrFirebomb
+func void PC_ItRu_PyrFirebomb_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrKinesis) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItAt_WaranFireTongue) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItAt_WaranFireTongue) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItem (hero, ItAt_WaranFireTongue);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrKinesis);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItAt_WaranFireTongue);
-			
-			CreateInvItem (hero, ItRu_PyrKinesis);
+			CreateInvItem (hero, ItRu_PyrFirebomb);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrFirebomb, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItAt_WaranFireTongue) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItem (hero, ItAt_WaranFireTongue);
-			
-			CreateInvItem (hero, ItSc_PyrKinesis);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_PyrExplosion
 func void PC_ItRu_PyrExplosion_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrExplosion) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrExplosion);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
-			
 			CreateInvItem (hero, ItRu_PyrExplosion);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrExplosion, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Saltpeter) >= 5)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItems (hero, ItMi_Saltpeter, 5);
-			
-			CreateInvItem (hero, ItSc_PyrExplosion);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_PyrFirerain
 func void PC_ItRu_PyrFirerain_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PyrFirerain) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_RedNugget) >= 5)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 5)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItems (hero, ItMi_RedNugget, 5);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PyrFirerain);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItems (hero, ItMi_RedNugget, 5);
-			
 			CreateInvItem (hero, ItRu_PyrFirerain);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PyrFirerain, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-		&& (Npc_HasItems(hero, ItMi_RedNugget) >= 5)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_Sulfur);
-			Npc_RemoveInvItems (hero, ItMi_RedNugget, 5);
-			
-			CreateInvItem (hero, ItSc_PyrFirerain);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -2684,7 +2250,7 @@ instance PC_MakeRune_NEC (C_Info)
 func int PC_MakeRune_NEC_Condition()
 {	
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE || PLAYER_MOBSI_PRODUCTION == MOBSI_MAKESCROLL)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_TYPEOFMAGIC) == MAGIC_NEC)
+	&& (hero.aivar[AIV_MagicUser] == MAGIC_NEC)
 	{
 		return true;
 	};
@@ -2696,19 +2262,19 @@ func void PC_MakeRune_NEC_Info()
 	
 	if (PLAYER_TALENT_ENCHANTING[SPL_NecLifesteal])
 	{
-		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecLifesteal, " (czaszka, ¿¹d³o)"), PC_ItRu_NecLifesteal_Info);
+		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecLifesteal, " (czaszka)"), PC_ItRu_NecLifesteal_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_NecProtection])
+	if (PLAYER_TALENT_ENCHANTING[SPL_NecAura])
 	{
-		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecProtection, " (czaszka, rtêæ)"), PC_ItRu_NecProtection_Info);
+		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecAura, " (czaszka, rtêæ)"), PC_ItRu_NecAura_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_NecSkeleton])
+	if (PLAYER_TALENT_ENCHANTING[SPL_NecCurse])
 	{
-		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecSkeleton, " (czaszka, 10 koœci szkieletu)"), PC_ItRu_NecSkeleton_Info);
+		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecCurse, " (czaszka, 10 koœci szkieletu)"), PC_ItRu_NecCurse_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_NecSwarm])
+	if (PLAYER_TALENT_ENCHANTING[SPL_NecPlague])
 	{
-		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecSwarm, " (czaszka, 10 sztuk zgni³ego miêsa)"), PC_ItRu_NecSwarm_Info);
+		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecPlague, " (czaszka, 10 sztuk zgni³ego miêsa)"), PC_ItRu_NecPlague_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_NecDemon])
 	{
@@ -2724,262 +2290,200 @@ func void PC_MakeRune_NEC_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_NEC);
 };
+/// SPL_NecLifesteal
 func void PC_ItRu_NecLifesteal_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecLifesteal) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Sting) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecLifesteal);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItAt_Sting);
-			
 			CreateInvItem (hero, ItRu_NecLifesteal);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecLifesteal, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_Sting) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItAt_Sting);
-			
-			CreateInvItem (hero, ItSc_NecLifesteal);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_NecProtection_Info()
+/// SPL_NecAura
+func void PC_ItRu_NecAura_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecProtection) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecProtection);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItRu_NecProtection);
+			CreateInvItem (hero, ItRu_NecAura);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecAura, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItMi_Quicksilver);
-			
-			CreateInvItem (hero, ItSc_NecProtection);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_NecSkeleton_Info()
+/// SPL_NecCurse
+func void PC_ItRu_NecCurse_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecSkeleton) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 10)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 10)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		Npc_RemoveInvItems (hero, ItAt_SkeletonBone, 10);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecSkeleton);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItems (hero, ItAt_SkeletonBone, 10);
-			
-			CreateInvItem (hero, ItRu_NecSkeleton);
+			CreateInvItem (hero, ItRu_NecCurse);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecCurse, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonBone) >= 10)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItems (hero, ItAt_SkeletonBone, 10);
-			
-			CreateInvItem (hero, ItSc_NecSkeleton);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_NecSwarm_Info()
+/// SPL_NecPlague
+func void PC_ItRu_NecPlague_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecSwarm) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItFo_RottenMeat) >= 10)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	&& (Npc_HasItems(hero, ItFo_RottenMeat) >= 10)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		Npc_RemoveInvItems (hero, ItFo_RottenMeat, 10);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecSwarm);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItems (hero, ItFo_RottenMeat, 10);
-			
-			CreateInvItem (hero, ItRu_NecSwarm);
+			CreateInvItem (hero, ItRu_NecPlague);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecPlague, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItFo_RottenMeat) >= 10)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItems (hero, ItFo_RottenMeat, 10);
-			
-			CreateInvItem (hero, ItSc_NecSwarm);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_NecDemon
 func void PC_ItRu_NecDemon_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecDemon) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DemonHeart) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	&& (Npc_HasItems(hero, ItAt_DemonHeart) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		Npc_RemoveInvItem (hero, ItAt_DemonHeart);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecDemon);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItAt_DemonHeart);
-			
 			CreateInvItem (hero, ItRu_NecDemon);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecDemon, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItAt_DemonHeart) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItAt_DemonHeart);
-			
-			CreateInvItem (hero, ItSc_NecDemon);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_NecDeath
 func void PC_ItRu_NecDeath_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_NecDeath) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
+	&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
+		Npc_RemoveInvItem (hero, ItMi_DarkPearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_NecDeath);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
 			CreateInvItem (hero, ItRu_NecDeath);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_NecDeath, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItAt_SkeletonSkull) >= 1)
-		&& (Npc_HasItems(hero, ItMi_DarkPearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItAt_SkeletonSkull);
-			Npc_RemoveInvItem (hero, ItMi_DarkPearl);
-			
-			CreateInvItem (hero, ItSc_NecDeath);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
@@ -3010,9 +2514,9 @@ func void PC_MakeRune_PAL_Info()
 	{
 		Info_AddChoice (PC_MakeRune_PAL, ConcatStrings(NAME_SPL_PalBless, " (woda œwiêcona)"), PC_ItRu_PalBless_Info);
 	};
-	if (PLAYER_TALENT_ENCHANTING[SPL_PalHeal])
+	if (PLAYER_TALENT_ENCHANTING[SPL_PalFaith])
 	{
-		Info_AddChoice (PC_MakeRune_PAL, ConcatStrings(NAME_SPL_PalHeal, " (woda œwiêcona, ziele lecznicze)"), PC_ItRu_PalHeal_Info);
+		Info_AddChoice (PC_MakeRune_PAL, ConcatStrings(NAME_SPL_PalFaith, " (woda œwiêcona, roœlina lecznicza)"), PC_ItRu_PalFaith_Info);
 	};
 	if (PLAYER_TALENT_ENCHANTING[SPL_PalHolyBolt])
 	{
@@ -3032,214 +2536,166 @@ func void PC_MakeRune_PAL_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_PAL);
 };
+/// SPL_PalBless
 func void PC_ItRu_PalBless_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PalBless) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PalBless);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			
 			CreateInvItem (hero, ItRu_PalBless);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PalBless, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			
-			CreateInvItem (hero, ItSc_PalBless);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItRu_PalHeal_Info()
+/// SPL_PalFaith
+func void PC_ItRu_PalFaith_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PalHeal) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Health_Herb_02) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Health_Herb_01) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);
+		Npc_RemoveInvItem (hero, ItPl_Health_Herb_01);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PalHeal);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItPl_Health_Herb_02);
-			
-			CreateInvItem (hero, ItRu_PalHeal);
+			CreateInvItem (hero, ItRu_PalFaith);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PalFaith, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Health_Herb_02) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItPl_Health_Herb_02);
-			
-			CreateInvItem (hero, ItSc_PalHeal);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_PalHolyBolt
 func void PC_ItRu_PalHolyBolt_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PalHolyBolt) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+	&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);
+		Npc_RemoveInvItem (hero, ItMi_WhitePearl);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PalHolyBolt);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
 			CreateInvItem (hero, ItRu_PalHolyBolt);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PalHolyBolt, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItMi_WhitePearl) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItMi_WhitePearl);
-			
-			CreateInvItem (hero, ItSc_PalHolyBolt);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_PalJustice
 func void PC_ItRu_PalJustice_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PalJustice) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);
+		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PalJustice);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-			
 			CreateInvItem (hero, ItRu_PalJustice);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PalJustice, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-			
-			CreateInvItem (hero, ItSc_PalJustice);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };
+/// SPL_PalDestroyEvil
 func void PC_ItRu_PalDestroyEvil_Info()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
+	if (PLAYER_MOBSI_PRODUCTION != MOBSI_MAKERUNE && Npc_HasItems(hero, ItMi_Scrolls) >= 1 && Npc_HasItems(hero, ItMi_Ink) >= 1)
 	{
-		if (Npc_HasItems(hero, ItSc_PalDestroyEvil) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
+		Print(PRINT_ProdItemsMissing);
+	}
+	else if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_HolyWater);
+		Npc_RemoveInvItem (hero, ItMi_Diamond);
+		
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
-			Npc_RemoveInvItem (hero, ItSc_PalDestroyEvil);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItMi_Diamond);
-			
 			CreateInvItem (hero, ItRu_PalDestroyEvil);
 			Print(PRINT_RuneSuccess);
 		}
 		else
 		{
-			Print(PRINT_ProdItemsMissing);
-			CreateInvItem (hero, ItMi_RuneBlank);
+			Npc_RemoveInvItem (hero, ItMi_Scrolls); Npc_RemoveInvItem (hero, ItMi_Ink);
+			CreateInvItems (hero, ItSc_PalDestroyEvil, 4);
+			Print(PRINT_ScrollsSuccess);
 		};
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItMi_Scroll) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Ink) >= 1)
-		&& (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
-		&& (Npc_HasItems(hero, ItMi_Diamond) >= 1)
-		{
-			Npc_RemoveInvItem (hero, ItMi_Scroll);
-			Npc_RemoveInvItem (hero, ItMi_Ink);
-			Npc_RemoveInvItem (hero, ItMi_HolyWater);
-			Npc_RemoveInvItem (hero, ItMi_Diamond);
-			
-			CreateInvItem (hero, ItSc_PalDestroyEvil);
-			Print(PRINT_ScrollSuccess);
-		}
-		else
-		{
-			Print(PRINT_ProdItemsMissing);
-		};
+		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE) { CreateInvItem (hero, ItMi_RuneBlank); };
+		Print(PRINT_ProdItemsMissing);
 	};
+	
 	B_ENDPRODUCTIONDIALOG();
 };

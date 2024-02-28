@@ -543,7 +543,7 @@ func void DIA_Addon_Lord_Hagen_Ornament_Info ()
 	CreateInvItems (self, ItMi_Ornament_Addon, 1);									
 	B_GiveInvItems (self, other, ItMi_Ornament_Addon, 1);	
 	Lord_Hagen_GotOrnament = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -652,7 +652,7 @@ func void DIA_Hagen_CanTeach_Info ()
 	AI_Output (other, self, "DIA_Hagen_CanTeach_15_00"); //Szukam jakiegoœ mistrza miecza.
 	AI_Output (self, other, "DIA_Hagen_CanTeach_04_01"); //No to go znalaz³eœ.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	B_LogEntry (TOPIC_CityTeacher,"Lord Hagen mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
 };
 
@@ -1155,7 +1155,7 @@ FUNC VOID DIA_Lord_Hagen_Cornelius_Info ()
 	
 	MIS_RescueBennet = LOG_SUCCESS;
 	
-	B_GivePlayerXP(750);
+	B_GivePlayerExp(750);
 	
 	if (hero.guild == GIL_MIL)
 	{
@@ -1309,7 +1309,7 @@ func void DIA_Lord_Hagen_ANTIPALADINE_Info ()
 			
 
 			Hagen_SawOrcRing = TRUE;
-			B_GivePlayerXP(250);
+			B_GivePlayerExp(250);
 		}
 		else
 		{
@@ -1367,7 +1367,7 @@ func void DIA_Lord_Hagen_RINGEBRINGEN_Info ()
 	if (Ringcount == 1)
 		{
 			AI_Output		(other, self, "DIA_Lord_Hagen_RINGEBRINGEN_15_02"); //Mam dla ciebie jeszcze jeden pierœcieñ.
-			B_GivePlayerXP(250);
+			B_GivePlayerExp(250);
 			B_GiveInvItems (other, self, ItRi_OrcEliteRing,1);
 			OrkRingCounter = OrkRingCounter + 1;
 		}
@@ -1380,7 +1380,7 @@ func void DIA_Lord_Hagen_RINGEBRINGEN_Info ()
 			XP_PAL_OrcRings = (Ringcount * 250);
 			OrkRingCounter = (OrkRingCounter + Ringcount); 
 
-			B_GivePlayerXP (XP_PAL_OrcRings);
+			B_GivePlayerExp (XP_PAL_OrcRings);
 		};
 
 	AI_Output			(self, other, "DIA_Lord_Hagen_RINGEBRINGEN_04_04"); //Dobra robota! Tak trzymaæ.

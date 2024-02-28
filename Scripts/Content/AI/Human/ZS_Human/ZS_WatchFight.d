@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_WatchFight
+/// ZS_WatchFight
 ///******************************************************************************************
 func void B_CheerFight()
 {
@@ -7,6 +7,7 @@ func void B_CheerFight()
 	{
 		return;
 	};
+	
 	if (other.guild > GIL_SEPERATOR_HUM || victim.guild > GIL_SEPERATOR_HUM)
 	{
 		return;
@@ -142,6 +143,7 @@ func int ZS_WatchFight_Loop()
 		};
 	};
 	
+	/// FUNC
 	if (C_NpcIsToughGuy(self))
 	{
 		//AI_PlayAni (self, "T_STAND_2_WATCHFIGHT");

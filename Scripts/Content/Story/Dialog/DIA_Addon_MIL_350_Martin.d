@@ -187,7 +187,7 @@ func void DIA_Addon_Martin_Farim_Info ()
 	B_LogEntry (TOPIC_Addon_FarimsFish,	"T¹ spraw¹ zajmie siê kwatermistrz Martin."); 
 
 	Martin_KnowsFarim = TRUE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -504,7 +504,7 @@ func void DIA_Addon_Martin_Fernando_Info ()
 			MIs_Martin_FindTheBanditTrader = LOG_SUCCESS;
 			B_LogEntry (TOPIC_Addon_BanditTrader,"Martin przypilnuje, by Fernando zap³aci³ za swoje grzechy. Muszê powiedzieæ o tym Vatrasowi."); 
 
-			B_GivePlayerXP(200);
+			B_GivePlayerExp(200);
 		}
 		else
 		{
@@ -621,7 +621,7 @@ func void DIA_Addon_Martin_GotRangar_Info ()
 	AI_Output	(self, other, "DIA_Addon_Martin_GotRangar_07_07"); //Daj mi znaæ, jeœli mogê ci w czymœ pomóc.
 
 	MIS_Addon_Martin_GetRangar = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////

@@ -9,11 +9,11 @@ instance BDT_1082_Addon_Skinner (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_StoryBandit]				=	true;
+	aivar[AIV_Story]					=	STORY_Bandit;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -26,7 +26,7 @@ instance BDT_1082_Addon_Skinner (Npc_Default)
 	CreateInvItem (self, ITKE_ADDON_SKINNER);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

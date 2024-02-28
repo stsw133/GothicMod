@@ -473,7 +473,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "FP_ROAM_OW_ROCK_DRACONIAN_07");
-		Wld_InsertItem (ItSc_PyrFirestorm, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
+		Wld_InsertItem (ItSc_PyrBurning, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
 		
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_04");
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_02");

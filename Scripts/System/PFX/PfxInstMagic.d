@@ -7823,7 +7823,7 @@ instance MFX_STORMFIST_CAST (C_ParticleFx)
 };
 
 //******************************************************************************************
-instance MFX_TELEKINESIS_INIT (C_ParticleFx)
+instance MFX_Telekinesis_INIT (C_ParticleFx)
 {
     ppsvalue = 600.000000000;
     ppsscalekeys_s = "1";
@@ -7863,7 +7863,7 @@ instance MFX_TELEKINESIS_INIT (C_ParticleFx)
     visalphaend = 255.000000000;
 };
 
-instance MFX_TELEKINESIS_BRIDGE (C_ParticleFx)
+instance MFX_Telekinesis_BRIDGE (C_ParticleFx)
 {
     ppsvalue = 250.000000000;
     ppsscalekeys_s = "1 2 3 2";
@@ -7903,7 +7903,7 @@ instance MFX_TELEKINESIS_BRIDGE (C_ParticleFx)
     trltexture_s = "WHITECLOUD.TGA";
 };
 
-instance MFX_TELEKINESIS_TARGET (C_ParticleFx)
+instance MFX_Telekinesis_TARGET (C_ParticleFx)
 {
     ppsvalue = 1500.000000000;
     ppsislooping = 1;
@@ -7931,7 +7931,7 @@ instance MFX_TELEKINESIS_TARGET (C_ParticleFx)
     visalphaend = 255.000000000;
 };
 
-instance MFX_TELEKINESIS_TARGETEND (C_ParticleFx)
+instance MFX_Telekinesis_TARGETEND (C_ParticleFx)
 {
     ppsvalue = 1500.000000000;
     ppsscalekeys_s = "1";

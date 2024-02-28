@@ -1,5 +1,6 @@
 ///******************************************************************************************
 
+var int PrayDay;
 var int ShrineIsObsessed;
 var int SHRINEHEALING;
 var int SHRINESHEALED;
@@ -81,6 +82,8 @@ func void C_IsShrineObsessed (var C_NPC slf)
 	};
 };
 ///******************************************************************************************
+/// PrayShrine: end
+///******************************************************************************************
 func int PC_PrayShrine_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
@@ -102,6 +105,8 @@ func void PC_PrayShrine_End_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
+/// PrayShrine: heal shrine
+///******************************************************************************************
 instance PC_PrayShrine_HEALSHRINE (C_Info)
 {
 	npc									=	PC_Hero;
@@ -111,6 +116,7 @@ instance PC_PrayShrine_HEALSHRINE (C_Info)
 	permanent							=	true;
 	description							=	"Oczyœæ œwi¹tyniê";
 };
+
 func int PC_PrayShrine_HEALSHRINE_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
@@ -121,6 +127,7 @@ func int PC_PrayShrine_HEALSHRINE_Condition()
 		return true;
 	};
 };
+
 func void PC_PrayShrine_HEALSHRINE_Info()
 {
 	Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
@@ -146,7 +153,7 @@ func void PC_PrayShrine_HEALSHRINE_Info()
 		B_Say (self, self, "$HEALLASTSHRINE");
 		MIS_Ulthar_HeileSchreine_PAL = LOG_SUCCESS;
 	};
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	B_ENDPRODUCTIONDIALOG();
 }; 
 ///******************************************************************************************
@@ -168,6 +175,8 @@ func void PrayShrine_S1()
 	};
 };
 ///******************************************************************************************
+/// PrayShrine: paladine
+///******************************************************************************************
 instance PC_PrayShrine_Paladine (C_Info)
 {
 	npc									=	PC_Hero;
@@ -177,6 +186,7 @@ instance PC_PrayShrine_Paladine (C_Info)
 	permanent							=	false;
 	description							=	"Zmów modlitwê za paladynów";
 };
+
 func int PC_PrayShrine_Paladine_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
@@ -186,6 +196,7 @@ func int PC_PrayShrine_Paladine_Condition()
 		return true;
 	};
 };
+
 func void PC_PrayShrine_Paladine_Info()
 {
 	PrintScreen ("...Innosie, przyjmij do siebie swoje s³ugi...", -1, 33, FONT_ScreenSmall, 3);
@@ -193,6 +204,8 @@ func void PC_PrayShrine_Paladine_Info()
 	PrintScreen ("...by w imiê twe dzielne walczyæ mog³y... ", -1, 39, FONT_ScreenSmall, 5);
 	PrintScreen ("...a¿ po zwyciêstwo lub œmieræ, którekolwiek ci milsze bêdzie.", -1, 42, FONT_ScreenSmall, 6);
 };
+///******************************************************************************************
+/// PrayShrine: bless sword
 ///******************************************************************************************
 instance PC_PrayShrine_BlessSword (C_Info)
 {
@@ -203,6 +216,7 @@ instance PC_PrayShrine_BlessSword (C_Info)
 	permanent							=	true;
 	description							=	"Konsekracja miecza (5000 szt. z³ota)";
 };
+
 func int PC_PrayShrine_BlessSword_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
@@ -213,46 +227,46 @@ func int PC_PrayShrine_BlessSword_Condition()
 		return true;
 	};
 };
+
 func void PC_PrayShrine_BlessSword_Info()
 {
 	if (ShrineIsObsessed)
 	{
-		SC_IsObsessed = true;
+		bsObsession += 1;
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		Snd_Play("DEM_Die");
 	}
-	else
+	else if (Npc_HasItems(hero, ItMi_Gold) >= 5000)
 	{
-		if (Npc_HasItems(hero, ItMi_Gold) >= 5000)
+		Npc_RemoveInvItems (hero, ItMi_Gold, 5000);
+		
+		var string concatDonation; concatDonation = ConcatStrings (IntToString(5000), PRINT_GoldGegeben);
+		AI_PrintScreen (concatDonation, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
+		
+		if (Npc_HasItems(hero, ItMw_2H_Blessed_01) >= 1)
 		{
-			Npc_RemoveInvItems (hero, ItMi_Gold, 5000);
-			
-			var string concatDonation; concatDonation = ConcatStrings (IntToString(5000), PRINT_GoldGegeben);
-			AI_PrintScreen (concatDonation, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
-			
-			if (Npc_HasItems(hero, ItMw_2H_Blessed_01) >= 1)
-			{
-				Npc_RemoveInvItem (hero, ItMw_2H_Blessed_01);
-				CreateInvItem (hero, ItMw_2H_Blessed_02);
-				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
-				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(400);
-			}
-			else
-			{
-				Npc_RemoveInvItem (hero, ItMw_1H_Blessed_01);
-				CreateInvItem (hero, ItMw_1H_Blessed_02);
-				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
-				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(400);
-			};
+			Npc_RemoveInvItem (hero, ItMw_2H_Blessed_01);
+			CreateInvItem (hero, ItMw_2H_Blessed_02);
+			Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
+			Snd_Play("MFX_Heal_Cast");
+			B_GivePlayerExp(400);
 		}
 		else
 		{
-			AI_PrintScreen (PRINT_NotEnoughGold, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
-		};	
+			Npc_RemoveInvItem (hero, ItMw_1H_Blessed_01);
+			CreateInvItem (hero, ItMw_1H_Blessed_02);
+			Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
+			Snd_Play("MFX_Heal_Cast");
+			B_GivePlayerExp(400);
+		};
+	}
+	else
+	{
+		AI_PrintScreen (PRINT_NotEnoughGold, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
 	};
 }; 
+///******************************************************************************************
+/// PrayShrine: bless sword final
 ///******************************************************************************************
 instance PC_PrayShrine_BlessSword_Final (C_Info)
 {
@@ -263,6 +277,7 @@ instance PC_PrayShrine_BlessSword_Final (C_Info)
 	permanent							=	true;
 	description							=	"Konsekracja miecza (³zy Innosa)";
 };
+
 func int PC_PrayShrine_BlessSword_Final_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
@@ -274,40 +289,139 @@ func int PC_PrayShrine_BlessSword_Final_Condition()
 		return true;
 	};
 };
+
 func void PC_PrayShrine_BlessSword_FINAL_Info()
 {
 	if (ShrineIsObsessed)
 	{
-		SC_IsObsessed = true;
+		bsObsession += 1;
+		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
+		Snd_Play("DEM_Die");
+	}
+	else if (Npc_HasItems(hero, ItPo_InnosTears) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItPo_InnosTears);
+		
+		if (Npc_HasItems(hero, ItMw_2H_Blessed_02) >= 1)
+		{
+			Npc_RemoveInvItem (hero, ItMw_2H_Blessed_02);
+			CreateInvItem (hero, ItMw_2H_Blessed_03);
+			Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
+			Snd_Play("MFX_Heal_Cast");
+			B_GivePlayerExp(1000);
+		}
+		else
+		{
+			Npc_RemoveInvItem (hero, ItMw_1H_Blessed_02);
+			CreateInvItem (hero, ItMw_1H_Blessed_03);
+			Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
+			Snd_Play("MFX_Heal_Cast");
+			B_GivePlayerExp(1000);
+		};
+	}
+	else
+	{
+		AI_PrintScreen (PRINT_NoInnosTears, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
+	};
+}; 
+///******************************************************************************************
+/// PrayShrine: pray
+///******************************************************************************************
+instance PC_PrayShrine_Pray (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	5;
+	condition							=	PC_PrayShrine_Condition;
+	information							=	PC_PrayShrine_Pray_Info;
+	permanent							=	true;
+	description							=	"Módl siê";
+};
+
+func void PC_PrayShrine_Pray_Info()
+{
+	if (ShrineIsObsessed)
+	{
+		bsObsession += 1;
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		Snd_Play("DEM_Die");
 	}
 	else
 	{
-		if (Npc_HasItems(hero, ItPo_InnosTears) >= 1)
+		Info_ClearChoices	(PC_PrayShrine_Pray);
+		Info_AddChoice		(PC_PrayShrine_Pray, Dialog_Back, PC_PrayShrine_Pray_Back);
+		
+		if (PrayDay != Wld_GetDay())
 		{
-			Npc_RemoveInvItem (hero, ItPo_InnosTears);
-			
-			if (Npc_HasItems(hero, ItMw_2H_Blessed_02) >= 1)
-			{
-				Npc_RemoveInvItem (hero, ItMw_2H_Blessed_02);
-				CreateInvItem (hero, ItMw_2H_Blessed_03);
-				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
-				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(1000);
-			}
-			else
-			{
-				Npc_RemoveInvItem (hero, ItMw_1H_Blessed_02);
-				CreateInvItem (hero, ItMw_1H_Blessed_03);
-				Wld_PlayEffect ("spellFX_PalHeal_ORIGIN", hero, hero, 0, 0, 0, false);
-				Snd_Play("MFX_Heal_Cast");
-				B_GivePlayerXP(1000);
-			};
+			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ.", PC_PrayShrine_Pray_NoPay);
 		}
 		else
 		{
-			AI_PrintScreen (PRINT_NoInnosTears, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
+			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê znów dzisiaj pomodliæ.", PC_PrayShrine_Pray_NoPay);
+		};
+		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 10)
+		{
+			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 10 sztuk z³ota.", PC_PrayShrine_Pray_SmallPay);
+		};
+		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 100)
+		{
+			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 100 sztuk z³ota.", PC_PrayShrine_Pray_MediumPay);
+		};
+		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 1000)
+		{
+			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 1000 sztuk z³ota.", PC_PrayShrine_Pray_BigPay);
 		};
 	};
 }; 
+
+///******************************************************************************************
+func void PC_PrayShrine_Pray_Back()
+{
+	Info_ClearChoices(PC_PrayShrine_Pray);
+};
+
+const string Print_ThankfulInnos = "Innos dziêkuje ci za modlitwê.";
+
+func void PC_PrayShrine_Pray_NoPay()
+{
+	PrayDay = Wld_GetDay();
+	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
+	
+	Info_ClearChoices(PC_PrayShrine_Pray);
+};
+
+func void PC_PrayShrine_Pray_SmallPay()
+{
+	Npc_RemoveInvItems (hero, ItMi_Gold, 10);
+	B_GivePlayerExp(10);
+	
+	PrayDay = Wld_GetDay();
+	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
+	
+	Info_ClearChoices(PC_PrayShrine_Pray);
+};
+
+func void PC_PrayShrine_Pray_MediumPay()
+{
+	Npc_RemoveInvItems (hero, ItMi_Gold, 100);
+	B_GivePlayerExp(100);
+	
+	PrayDay = Wld_GetDay();
+	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
+	
+	Info_ClearChoices(PC_PrayShrine_Pray);
+};
+
+func void PC_PrayShrine_Pray_BigPay()
+{
+	Npc_RemoveInvItems (hero, ItMi_Gold, 1000);
+	B_GivePlayerExp(1000);
+	
+	PrayDay = Wld_GetDay();
+	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
+	
+	Info_ClearChoices(PC_PrayShrine_Pray);
+};

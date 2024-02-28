@@ -12,8 +12,8 @@ instance KDF_509_Isgaroth (Npc_Default)
 	aivar[AIV_MagicUser]				=	MAGIC_PYR;
 
 	/// ------ Attribute ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Master);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Master);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -22,7 +22,7 @@ instance KDF_509_Isgaroth (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal06, 0, ITAR_Mag_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal06, 0, ITAR_Mag_M);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

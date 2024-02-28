@@ -178,7 +178,7 @@ FUNC VOID DIA_Marcos_Perm_Info()
 		
 		if (Marcos_einmalig == FALSE)
 		{
-			B_GivePlayerXP(150);
+			B_GivePlayerExp(150);
 			Marcos_einmalig = TRUE;
 		};
 	}

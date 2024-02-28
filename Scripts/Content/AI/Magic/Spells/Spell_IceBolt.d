@@ -4,13 +4,13 @@
 
 const int SPL_Cost_IceBolt				=	5;	//10
 const int SPL_Damage_IceBolt			=	5;	//50
-const int SPL_Scaling_IceBolt			=	100;
+const int SPL_Scaling_IceBolt			=	90;
 
 ///******************************************************************************************
 instance Spell_IceBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_IceBolt;
+	damage_per_level					=	SPL_Damage_IceBolt;
 	damageType							=	DAM_MAGIC;
 };
 

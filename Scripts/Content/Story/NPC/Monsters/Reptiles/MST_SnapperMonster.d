@@ -10,15 +10,8 @@ prototype Mst_Default_SnapperMonster (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SNAPPER;
 	
-	B_SetAttributesToLevel (self, 50);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,11 +31,12 @@ prototype Mst_Default_SnapperMonster (C_Npc)
 func void B_SetVisuals_MonsterSnapper()
 {
 	Mdl_SetVisual		(self, "DragonSnapper.mds");
-	Mdl_SetVisualBody	(self, "Sna_Monster_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Sna_Monster_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 2, 2, 2);
 };
 ///******************************************************************************************
 instance MonsterSnapper (Mst_Default_SnapperMonster)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_MonsterSnapper();
 };

@@ -55,7 +55,7 @@ FUNC VOID DIA_Lester_DI_Hello_Info()
 		AI_Output	(self ,other,"DIA_Lester_DI_Hello_13_01");	//Mario wymkn¹³ siê ze statku podczas ataku orków. Mia³em na niego oko mimo ca³ego tego zamieszania.
 		AI_Output	(self ,other,"DIA_Lester_DI_Hello_13_02");	//Przemaszerowa³ sobie przez liniê orków i nikt go nie zatrzymywa³.
 		AI_Output	(self ,other,"DIA_Lester_DI_Hello_13_03");	//Od samego pocz¹tku coœ mi siê w nim nie podoba³o. To szpieg!
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 		DIA_Lester_DI_SCGotWarning1 = TRUE;
 	}
 	else if (Npc_IsDead(Mario_DI) == FALSE)
@@ -98,7 +98,7 @@ FUNC VOID DIA_Lester_DI_MarioArsch_Info()
 	AI_Output	(other ,self,"DIA_Lester_DI_MarioArsch_15_00");	//Mia³eœ racjê. Mario nas zdradzi³!
 	AI_Output	(self ,other,"DIA_Lester_DI_MarioArsch_13_01");	//A widzisz? Mo¿e i nie jestem zbyt bystry, ale co do tego nie mia³em ¿adnych w¹tpliwoœci.
 	AI_Output	(self ,other,"DIA_Lester_DI_MarioArsch_13_02");	//Na przysz³oœæ staraj siê lepiej dobieraæ towarzyszy podró¿y.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 // ************************************************************

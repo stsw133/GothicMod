@@ -216,7 +216,7 @@ FUNC VOID DIA_Thorben_ZUSTIMMUNG_Info()
 			AI_Output (self, other,"DIA_Thorben_ZUSTIMMUNG_06_05"); //Wiêc otrzymasz tak¿e moje b³ogos³awieñstwo. Niezale¿nie od wybranej œcie¿ki b¹dŸ dumny z dobrze wykonywanej pracy, ch³opcze!
 			
 			MIS_Thorben_GetBlessings = LOG_SUCCESS;
-			B_GivePlayerXP(100);
+			B_GivePlayerExp(100);
 			
 			Log_CreateTopic (TOPIC_Lehrling,LOG_MISSION);
 			Log_SetTopicStatus (TOPIC_Lehrling,LOG_RUNNING);
@@ -290,7 +290,7 @@ FUNC VOID DIA_Thorben_Schuldenbuch_Info()
 	B_GiveInvItems (other, self, ItWr_Schuldenbuch, 1);
 	AI_Output (other, self,"DIA_Thorben_Schuldenbuch_15_04"); //A co dostanê w zamian?
 	AI_Output (self, other,"DIA_Thorben_Schuldenbuch_06_05"); //Nie mam ¿adnych pieniêdzy i nie mogê ofiarowaæ ci nic wiêcej ni¿ moj¹ najszczersz¹ wdziêcznoœæ.
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 
 // ************************************************************
@@ -308,10 +308,10 @@ INSTANCE DIA_Thorben_PleaseTeach(C_INFO)
 FUNC INT DIA_Thorben_PleaseTeach_Condition()
 {	
 	if (Npc_KnowsInfo (other, DIA_Thorben_Locksmith))
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	&& (Npc_GetTalentSkill (other, NPC_TALENT_PICKLOCK) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 FUNC VOID DIA_Thorben_PleaseTeach_Info()
@@ -322,7 +322,7 @@ FUNC VOID DIA_Thorben_PleaseTeach_Info()
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_01"); //Gdyby nie ty, do koñca ¿ycia sp³aca³bym Lehmara.
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_06_02"); //Nauczê ciê tego, co chcesz wiedzieæ.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else if (Thorben_GotGold == TRUE) //100 Gold bekommen
 	{
@@ -361,7 +361,7 @@ func void DIA_Thorben_PleaseTeach_Pay200()
 	if (B_GiveInvItems (other, self, ItMi_Gold, 200))
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay200_06_01"); //Te pieni¹dze naprawdê mi pomog¹. Mo¿emy zacz¹æ, gdy tylko bêdziesz gotów.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{
@@ -378,7 +378,7 @@ func void DIA_Thorben_PleaseTeach_Pay100()
 	if (B_GiveInvItems (other, self, ItMi_Gold, 100))
 	{
 		AI_Output (self, other,"DIA_Thorben_PleaseTeach_Pay100_06_01"); //W takim wypadku mo¿emy zacz¹æ, kiedy tylko bêdziesz gotów.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{

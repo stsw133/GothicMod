@@ -2,9 +2,9 @@
 ///	SPL_Charm
 ///******************************************************************************************
 
-const int SPL_Cost_Charm				=	50;
-const int SPL_MinLvl_Charm				=	30;
-const int SPL_Scaling_Charm				=	30;
+const int SPL_Cost_Charm				=	75;	//50
+const int SPL_MinLvl_Charm				=	20;
+const int SPL_Scaling_Charm				=	20;
 
 ///******************************************************************************************
 instance Spell_Charm (C_Spell_Proto)
@@ -26,7 +26,7 @@ func int Spell_Logic_Charm (var int manaInvested)
 		}
 		else
 		{
-			Print(ConcatStrings(IntToString(other.level - SPL_MinLvl_Charm - self.attribute[ATR_POWER]*SPL_Scaling_Charm/100), "% dod. mocy za maÅ‚o aby odnieÅ›Ä‡ skutek!"));
+			Print(ConcatStrings(IntToString(other.level - SPL_MinLvl_Charm - self.attribute[ATR_POWER]*SPL_Scaling_Charm/100), "% dod. mocy za ma³o aby odnieœæ skutek!"));
 		};
 	};
 	

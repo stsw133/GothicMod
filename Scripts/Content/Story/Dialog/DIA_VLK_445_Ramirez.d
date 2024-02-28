@@ -191,7 +191,7 @@ FUNC VOID DIA_Ramirez_Bezahlen_Okay()
 	{
 		AI_Output (other, self, "DIA_Ramirez_Bezahlen_Okay_15_01");//...Oto twoje z³oto.
 		AI_Output (self, other, "DIA_Ramirez_Bezahlen_Okay_14_02");//Œwietnie. S³u¿ê pomoc¹.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		DIA_Ramirez_Bezahlen_permanent = TRUE;
 		Info_ClearChoices (DIA_Ramirez_Bezahlen);
 	}
@@ -296,5 +296,5 @@ FUNC VOID DIA_Ramirez_Success_Info()
 	B_GiveInvItems (self, other, Itmi_Gold,ItMi_Sextant.value/2);
 	Ramirez_Sextant = TRUE;
 	MIS_RamirezSextant = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };

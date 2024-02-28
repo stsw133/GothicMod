@@ -1,26 +1,23 @@
-// ***********************
-// NSC benutzt Buchständer
-// ***********************
-
-FUNC VOID ZS_Read_Bookstand ()
+///******************************************************************************************
+/// ZS_Read_Bookstand
+///******************************************************************************************
+func void ZS_Read_Bookstand()
 {
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
-
-	AI_SetWalkmode 	(self, NPC_WALK);		
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	if (Hlp_StrCmp (Npc_GetNearestWP(self), self.wp) == false)
+	if (!Hlp_StrCmp(Npc_GetNearestWP(self), self.wp))
     {
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
 };
 
-FUNC int ZS_Read_Bookstand_Loop ()
+func int ZS_Read_Bookstand_Loop()
 {
-	// ------ Lesen ------
 	if (!C_BodyStateContains(self, BS_MOBINTERACT_INTERRUPT))
-	&& (Wld_IsMobAvailable(self,"BOOK"))
+	&& (Wld_IsMobAvailable(self, "BOOK"))
 	{
 		AI_UseMob (self, "BOOK", 1);
 	};
@@ -28,13 +25,7 @@ FUNC int ZS_Read_Bookstand_Loop ()
 	return LOOP_CONTINUE;
 };
 
-FUNC VOID ZS_Read_Bookstand_End ()
+func void ZS_Read_Bookstand_End()
 {
 	AI_UseMob (self, "BOOK", -1);
 };
-
-
-
-
-
-

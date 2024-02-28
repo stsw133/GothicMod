@@ -117,7 +117,7 @@ func void DIA_Biff_DI_ORKS_Info ()
 	AI_Output			(self, other, "DIA_Biff_DI_ORKS_07_00"); //Te parszywe bestie!
 	AI_Output			(other, self, "DIA_Biff_DI_ORKS_15_01"); //Do diab³a, co tu robisz? Mia³eœ pilnowaæ statku.
 	AI_Output			(self, other, "DIA_Biff_DI_ORKS_07_02"); //Nie utonie przez te parê chwil, stary.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
 };

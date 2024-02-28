@@ -10,17 +10,15 @@ instance VLK_438_Alrik (Npc_Default)
 
 	/// ------ AI vars ------
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
-
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_MM_FollowTime]			=	1000;
 	aivar[AIV_FightDistCancel]			=	600;
-
 	aivar[AIV_MaxDistToWp]				=	300;
 	aivar[AIV_OriginalFightTactic]		=	FAI_HUMAN_NORMAL;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Initiate-10);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -29,7 +27,7 @@ instance VLK_438_Alrik (Npc_Default)
 	EquipItem(self, ItMw_1h_Bau_Mace);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Bloodwyn, 0, ITAR_Vlk_L_03);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Bloodwyn, 0, ITAR_Vlk_L_03);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

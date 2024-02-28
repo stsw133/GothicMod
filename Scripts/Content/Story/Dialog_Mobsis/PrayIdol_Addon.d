@@ -26,7 +26,7 @@ func void B_BlitzInArsch()
 ///******************************************************************************************
 func void PrayIdol_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{	
 		Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
@@ -35,6 +35,8 @@ func void PrayIdol_S1()
 		Ai_ProcessInfos(her);
 	};
 };
+///******************************************************************************************
+/// PrayIdol: end
 ///******************************************************************************************
 func int PC_PrayIdol_Condition()
 {
@@ -56,6 +58,8 @@ func void PC_PrayIdol_End_Info()
 {
 	B_ENDPRODUCTIONDIALOG();
 };
+///******************************************************************************************
+/// PrayIdol: upgrafe beliar's weapon
 ///******************************************************************************************
 instance PC_PrayIdol_UPGRADEBELIARSWEAPON (C_Info)
 {

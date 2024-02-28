@@ -3,7 +3,7 @@ prototype Mst_Default_Avatar (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Awatar";
-	guild								=	GIL_FIREGOLEM;
+	guild								=	GIL_GOLEM;
 	aivar[AIV_MM_REAL_ID]				=	ID_AVATAR;
 	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
 	
@@ -11,15 +11,8 @@ prototype Mst_Default_Avatar (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
 	
-	B_SetAttributesToLevel (self, 50);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -94,6 +87,9 @@ instance IceAvatar (Mst_Default_Avatar)
 };
 instance OreAvatar (Mst_Default_Avatar)
 {
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetMonsterProtection (self, level);
+	
 	B_SetVisuals_OreAvatar();
 };
 instance SteelAvatar (Mst_Default_Avatar)

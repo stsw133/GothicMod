@@ -13,8 +13,8 @@ instance PC_ThiefOW (Npc_Default)
 	aivar[AIV_FollowDist]				=	300;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Master-10);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Master-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -28,7 +28,7 @@ instance PC_ThiefOW (Npc_Default)
 	CreateInvItems (self, itpo_health_03, 10);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Diego, 0, ITAR_STT_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Diego, 0, ITAR_STT_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

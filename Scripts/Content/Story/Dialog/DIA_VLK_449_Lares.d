@@ -101,7 +101,7 @@ func void DIA_Lares_HALLO_Info ()
 	{
 		AI_Output (self, other, "DIA_Lares_HALLO_09_01"); //PRZYP£YN¥£EŒ tu?
 		AI_Output (self, other, "DIA_Lares_HALLO_09_02"); //To niez³y sposób na ominiêcie stra¿ników przy bramie.
-		B_GivePlayerXP (500); //wer's schafft...	
+		B_GivePlayerExp (500); //wer's schafft...	
 	};
 			
 	Info_ClearChoices 	(DIA_Lares_HALLO);
@@ -363,7 +363,7 @@ func void DIA_Addon_Lares_RingBack_Info ()
 			AI_Output	(other, self, "DIA_Addon_Lares_RingBack_15_02"); //Jasne.
 			AI_Output	(self, other, "DIA_Addon_Lares_RingBack_09_03"); //Mam nadziejê, ¿e siê przyda³. Cieszê siê, ¿e jesteœ ju¿ jednym z nas.
 			Lares_GotRingBack = TRUE;
-			B_GivePlayerXP(100);
+			B_GivePlayerExp(100);
 		}
 		else
 		{
@@ -405,7 +405,7 @@ func void DIA_Addon_Lares_RingBack2_Info ()
 	AI_Output	(other, self, "DIA_Addon_Lares_RingBack2_15_00"); //Oto twój pierœcieñ.
 	B_GiveInvItems (other, self, ItRi_Ranger_Lares_Addon,1);
 	AI_Output	(self, other, "DIA_Addon_Lares_RingBack2_09_01"); //Ach... Dobrze. Ju¿ s¹dzi³em, ¿e go zgubi³eœ.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Lares_GotRingBack = TRUE;
 };
 
@@ -466,15 +466,15 @@ func void DIA_Addon_Lares_GetRangerArmor_Info ()
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_02"); //Rzecz jasna to nie wszyscy cz³onkowie Wodnego Krêgu, wiêc miej siê na bacznoœci.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_03"); //Bez wzglêdu na to, czy odniesiesz sukces, czy coœ zawalisz, i tak siê o tym dowiemy.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_04"); //Niniejszym wrêczam ci pancerz gildii.
-	CreateInvItem	(hero, ITAR_WaterRanger);
-	AI_EquipArmor	(hero, ITAR_WaterRanger);	
+	CreateInvItem	(hero, ITAR_Ranger_L);
+	AI_EquipArmor	(hero, ITAR_Ranger_L);	
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_05"); //Noœ go z dum¹, ale nie daj siê przy³apaæ w nim w mieœcie lub innych miejscach publicznych.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_06"); //Pamiêtaj, ¿e nie chcemy siê ujawniaæ. Nikt niepowo³any nie mo¿e siê dowiedzieæ, kto nale¿y do Wodnego Krêgu.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_07"); //Nikt nie mówi o Wodnym Krêgu - to pierwsza i najwa¿niejsza zasada. Nie ³am jej.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_09_08"); //Jeszcze jakieœ pytania?
 	
 	MIS_Addon_Lares_ComeToRangerMeeting = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Info_ClearChoices	(DIA_Addon_Lares_GetRangerArmor);
 	Info_AddChoice	(DIA_Addon_Lares_GetRangerArmor, "Muszê siê zmywaæ.", DIA_Addon_Lares_GetRangerArmor_end );
@@ -831,7 +831,7 @@ func void DIA_Addon_Lares_PeopleMissing_SAVED ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lares_PeopleMissing_SAVED_15_00"); //Uda³o mi siê ocaliæ czêœæ z zaginionych.
 	AI_Output	(self, other, "DIA_Addon_Lares_PeopleMissing_SAVED_09_01"); //Wiedzia³em, ¿e ci siê uda. Wreszcie mogê zaj¹æ siê swoimi sprawami...
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	Lares_PeopleMissing_PERM = TRUE;
 	Lares_CanBringScToPlaces = TRUE;
 	Info_ClearChoices (DIA_Addon_Lares_PeopleMissing);

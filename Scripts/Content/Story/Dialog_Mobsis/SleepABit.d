@@ -10,7 +10,7 @@ func void SLEEPABIT_S1()
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
 		Ai_ProcessInfos(her);
 		
-		if (SC_IsObsessed)
+		if (bsObsession > 0)
 		{
 			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
 		};
@@ -36,16 +36,19 @@ func void PC_Sleep (var int t)
 	
 	Wld_StopEffect("DEMENTOR_FX");
 	
-	if (SC_IsObsessed)
+	if (bsObsession > 0)
 	{
  		PrintScreen	(PRINT_SleepOverObsessed, -1, -1, FONT_Screen, 2);
 	}
 	else
 	{
 		PrintScreen	(PRINT_SleepOver, -1, -1, FONT_Screen, 2);
-		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
-		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-		hero.aivar[AIV_Energy] = hero.aivar[AIV_Energy_MAX];
+		
+		if (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX]/2)
+		{
+			hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX]/2;
+		};
+		hero.aivar[AIV_Stamina] = hero.aivar[AIV_Stamina_MAX];
 	};
 	
 	PrintGlobals(PD_ITEM_MOBSI);

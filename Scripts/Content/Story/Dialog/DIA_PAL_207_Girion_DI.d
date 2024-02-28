@@ -85,7 +85,7 @@ FUNC VOID DIA_Girion_DI_Teach_Info()
 {	
 	AI_Output (other,self 	,"DIA_Girion_DI_Teach_15_00"); //Jeœli mnie wytrenujesz, bêdziemy mogli szybciej opuœciæ to miejsce.
 	AI_Output (self ,other 	,"DIA_Girion_DI_Teach_08_01"); //Wygl¹da na to, ¿e nie mam innego wyboru.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ func void DIA_Girion_DI_OrcEliteRing_geben ()
 	AI_Output			(self, other, "DIA_Girion_DI_OrcEliteRing_geben_08_01"); //Dziêkujê. I tak nie mam co z nim zrobiæ.
 	Info_ClearChoices	(DIA_Girion_DI_OrcEliteRing);
 	B_GiveInvItems (other, self, ItRi_OrcEliteRing,1);
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 func void DIA_Girion_DI_OrcEliteRing_behalten ()

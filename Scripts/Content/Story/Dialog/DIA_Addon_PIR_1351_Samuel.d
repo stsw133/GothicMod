@@ -170,7 +170,7 @@ func VOID DIA_Addon_Samuel_Recipe_LousHammer()
 	B_UseFakeScroll();
 	AI_Output (self ,other,"DIA_Addon_Samuel_Recipe_LousHammer_14_04"); //Ju¿ siê bojê... ale muszê j¹ wypróbowaæ.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Samuel_Knows_LousHammer = TRUE;
 };
 func VOID DIA_Addon_Samuel_Recipe_LousDoubleHammer()
@@ -180,7 +180,7 @@ func VOID DIA_Addon_Samuel_Recipe_LousDoubleHammer()
 	B_UseFakeScroll();
 	AI_Output (self ,other,"DIA_Addon_Samuel_Recipe_LousDoubleHammer_14_04"); //Nie strasz mnie. No có¿, raz siê ¿yje...
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	Samuel_Knows_SchlafHammer = TRUE;
 };
 

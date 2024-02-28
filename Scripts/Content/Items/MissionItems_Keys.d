@@ -8,46 +8,46 @@ prototype ItemPR_Key (C_Item)
 	description				= 	name;
 };
 ///******************************************************************************************
-instance ITKE_Addon_Bloodwyn_01 (ItemPR_Key)
+instance ItKe_Addon_Bloodwyn_01 (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		=	"Klucz Bloodwyna";
 	TEXT[2]			= 	"Pasuje do skrzyni";
 };
-instance ITKE_ADDON_BUDDLER_01 (ItemPR_Key)
+instance ItKe_ADDON_BUDDLER_01 (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz do skrzyni";
 	TEXT[2]			=	"w obozie bandytów.";
 };
-instance ITKE_Addon_Esteban_01 (ItemPR_Key)
+instance ItKe_Addon_Esteban_01 (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz Estebana";
 	TEXT[2]			=	"Pasuje do skrzyni";
 	TEXT[3]			=   "w jego kryjówce.";
 };
-instance ITKE_Addon_Heiler (ItemPR_Key)
+instance ItKe_Addon_Heiler (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		=	"Klucz kamiennego stra¿nika";
 	TEXT[2]			=	"Pasuje do skrzyni";
 	TEXT[3]			=   "w dziwnym budynku na bagnie";
 };
-instance ITKE_ADDON_SKINNER (ItemPR_Key)
+instance ItKe_ADDON_SKINNER (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz do skrzyni";
 	TEXT[2]			=	"Klucz Skinnera";
 };
-instance ITKE_Addon_Tavern_01 (ItemPR_Key)
+instance ItKe_Addon_Tavern_01 (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz Lou";
 	TEXT[2]			=	"Otwiera gospodê";
 	TEXT[3]			=   "w obozie bandytów.";
 };
-instance ITKE_Addon_Thorus (ItemPR_Key)
+instance ItKe_Addon_Thorus (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz Thorusa";
@@ -71,7 +71,7 @@ instance ItKe_Buerger (ItemPR_Key)
 	description		=	"Klucz do kufra";
 	TEXT[2]			=	"Le¿a³ na parapecie.";
 };
-instance ITKE_CANYONLIBRARY_HIERARCHY_BOOKS_ADDON (ItemPR_Key)
+instance ItKe_CANYONLIBRARY_HIERARCHY_BOOKS_ADDON (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Zabrany szamanowi w obozie orków,";
@@ -122,13 +122,13 @@ instance ItKe_Dexter (ItemPR_Key)
 	visual 			=	"ItKe_Key_03.3ds";
 	TEXT[2]			=	"Klucz do skrzyni Dextera.";
 };
-instance ITKE_ErzBaronFlur (ItemPR_Key)
+instance ItKe_ErzBaronFlur (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz do pierwszych drzwi";
 	TEXT[2]			= 	"Wyryto na nim imiê Gomez.";
 };
-instance ITKE_ErzBaronRaum (ItemPR_Key)
+instance ItKe_ErzBaronRaum (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	description		= 	"Klucz do drugich drzwi";
@@ -168,7 +168,7 @@ instance ItKe_Fingers (ItemPR_Key)
 	TEXT[2]			=	"Zardzewia³y klucz do drzwi";
 	TEXT[3]			=   "z kana³ów.";
 };
-instance ITKE_Greg_ADDON_MIS (ItemPR_Key)
+instance ItKe_Greg_ADDON_MIS (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Klucz do chaty";
@@ -190,7 +190,7 @@ instance ItKe_Innos_MIS (ItemPR_Key)
 	TEXT[2]			=	"Klucz do portalu klasztoru";
 	TEXT[3]			=   "Innosa.";
 };
-instance ItKe_KDFPlayer (ItemPR_Key)
+instance ItKe_KdfPlayer (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	TEXT[2]			=	"Klucz do komnaty w klasztorze.";
@@ -227,7 +227,7 @@ instance ItKe_MonastarySecretLibrary_Mis (ItemPR_Key)
 	visual 			=	"ItKe_Key_02.3ds";
 	TEXT[2]			= 	"Z ksiêgi 'Dwór Irdorath'";
 };
-instance ITKE_OC_MAINGATE_MIS (ItemPR_Key)
+instance ItKe_OC_MAINGATE_MIS (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Klucz do wie¿y stra¿nika g³ównej bramy";
@@ -242,13 +242,13 @@ instance ItKe_OrkKnastDI_MIS (ItemPR_Key)
 	visual 			=	"ItKe_Key_01.3ds";
 	description		=	"Klucz orka-pu³kownika";
 };
-instance ITKE_ORLAN_HOTELZIMMER (ItemPR_Key)
+instance ItKe_ORLAN_HOTELZIMMER (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Do pokoju gospody";
 	TEXT[3]			=	"'Pod Martw¹ Harpi¹'.";
 };
-instance ITKE_ORLAN_TELEPORTSTATION (ItemPR_Key)
+instance ItKe_ORLAN_TELEPORTSTATION (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_02.3ds";
 	description		= 	"Klucz Orlana";
@@ -267,7 +267,7 @@ instance ItKe_Pass_MIS (ItemPR_Key)
 	visual 			=	"ItKe_Key_02.3ds";
 	TEXT[2]			= 	"Otwiera bramê na prze³êczy.";
 };
-instance ITKE_PORTALTEMPELWALKTHROUGH_ADDON (ItemPR_Key)
+instance ItKe_PORTALTEMPELWALKTHROUGH_ADDON (ItemPR_Key)
 {
 	name 			=	"Zardzewia³y klucz";
 	visual 			=	"ItKe_Key_01.3ds";
@@ -284,7 +284,7 @@ instance ItKe_Richter (ItemPR_Key)
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Klucz do kufra sêdziego.";
 };
-instance ITKE_RUNE_MIS (ItemPR_Key)
+instance ItKe_RUNE_MIS (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_01.3ds";
 	description		=	"Klucz do kufra";
@@ -296,7 +296,7 @@ instance ItKe_Salandril (ItemPR_Key)
 	visual 			=	"ItKe_Key_01.3ds";
 	TEXT[2]			=	"Klucz do kufra Salandrila.";
 };
-instance ITKE_SHIP_LEVELCHANGE_MIS (ItemPR_Key)
+instance ItKe_SHIP_LEVELCHANGE_MIS (ItemPR_Key)
 {
 	visual 			=	"ItKe_Key_03.3ds";
 	TEXT[2]			=	"Klucz do kajuty kapitañskiej";

@@ -9,8 +9,8 @@ instance BDT_10024_Addon_Garaz (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -22,7 +22,7 @@ instance BDT_10024_Addon_Garaz (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal23, 0, ITAR_RVN_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal23, 0, ITAR_RVN_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

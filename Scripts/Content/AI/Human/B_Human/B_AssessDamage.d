@@ -1,33 +1,24 @@
 ///******************************************************************************************
-///	B_AssessDamage
+/// B_AssessDamage
 ///******************************************************************************************
 func void B_AssessDamage()
 {
 	var C_Npc Quarho; Quarho = Hlp_GetNpc(NONE_ADDON_111_Quarhodron);
 	var C_Npc Rhadem; Rhadem = Hlp_GetNpc(NONE_ADDON_112_Rhademes);
 	
-	if ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Quarho)))
-	|| ((Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Rhadem)))
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Quarho))
+	|| (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Rhadem))
 	{
 		B_GhostSpecialDamage (other, self);
 		return;
 	};
+//	B_BeliarsWeaponSpecialDamage (other, self);
 	
-	B_WeaponSpecialDamage (other, self);
-	
-	/// MASTERIES & SPECIAL WEAPONS & SELF FIGHT TEACH
-	if (Npc_IsPlayer(other))
+	/// MOD: FinishPercent
+	if (Npc_IsPlayer(other) && mFinishPercent > 0 && (self.attribute[ATR_HITPOINTS]*100/self.attribute[ATR_HITPOINTS_MAX]) <= mFinishPercent)
 	{
-		if (!C_BodyStateContains(self, BS_PARADE))
-		{
-			SPECIALWEAPONDAMAGE_CHECK();
-		};
-		SelfFightTeach_ADD (other, other.weapon-2);
-	};
-	
-	if (Npc_IsPlayer(other) || Npc_IsPlayer(self))
-	{
-		foodTime /= 2;
+		B_MagicHurtNpc (other, self, self.attribute[ATR_HITPOINTS]);
+		Wld_PlayEffect ("VOB_BURN_CHILD1", self, self, 0, 0, 0, false);
 	};
 	
 	/// ...
@@ -52,12 +43,14 @@ func void B_AssessDamage()
 		{
 			return;
 		};
+		
 		if (Npc_IsPlayer(other))
 		&& (self.aivar[AIV_PARTYMEMBER])
 		{
 			return;
 		};
 		
+		/// FUNC
 		if (Hlp_GetInstanceID(other) != self.aivar[AIV_LASTTARGET])
 		{
 			if (self.aivar[AIV_HitByOtherNpc] == Hlp_GetInstanceID(other))
@@ -94,7 +87,6 @@ func void B_AssessDamage()
 		{
 			if (!Npc_IsInState(self, ZS_ReactToDamage))
 			{
-				/// FUNC
 				Npc_ClearAIQueue	(self);
 				B_ClearPerceptions	(self);
 				AI_StartState		(self, ZS_ReactToDamage, false, "");
@@ -103,6 +95,7 @@ func void B_AssessDamage()
 		};
 	};	
 	
+	/// FUNC
 	B_Attack (self, other, AR_ReactToDamage, 0);
 	return;
 };

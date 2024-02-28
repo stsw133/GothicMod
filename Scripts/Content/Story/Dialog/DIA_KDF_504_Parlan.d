@@ -724,7 +724,7 @@ func void DIA_Parlan_Fegen_Info ()
 		AI_Output (self, other, "DIA_Parlan_Fegen_05_01"); //Widzê, ¿e uda³o ci siê znaleŸæ czterech pomocników. Myœlê, ¿e teraz mog¹ wróciæ do swych obowi¹zków.
 		AI_Output (self, other, "DIA_Parlan_Fegen_05_02"); //Dobra robota, nowicjuszu. Wype³ni³eœ powierzone ci przeze mnie zadanie.
 		MIS_ParlanFegen = LOG_SUCCESS; 
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		DIA_Parlan_Fegen_permanent = TRUE;
 		
 		B_StartOtherRoutine (Feger1,"START");
@@ -884,7 +884,7 @@ func void DIA_Parlan_MAGE_Info ()
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_00"); //Z³o¿y³eœ przysiêgê, Bracie. Witaj w naszych szeregach.
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_01"); //O krêgach magii opowiem ci, kiedy zdobêdziesz wiêksze doœwiadczenie.
 	AI_Output (self, other, "DIA_Parlan_MAGE_05_02"); //WeŸ ten kamieñ runiczny, to znak twojej mocy.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	B_GiveInvItems (self, other, Itmi_RunebLank,1);
 };

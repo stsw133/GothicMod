@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessEnterRoom
+/// B_AssessEnterRoom
 ///******************************************************************************************
 func int B_AssessEnterRoom()
 {
@@ -17,47 +17,57 @@ func int B_AssessEnterRoom()
 	{
 		return false;
 	};
+	
 	if (!Npc_IsInPlayersRoom(self))
 	&& (Npc_GetPortalGuild(self) >= GIL_NONE)
 	{
 		return false;
 	};
+	
 	if (Npc_IsInState(self, ZS_Attack))
 	{
 		return false;
 	};
+	
 	if (C_NpcIsGateGuard(self))
 	{
 		return false;
 	};
+	
 	if (!Npc_IsPlayer(other))
 	{
 		return false;
 	};
+	
 	if (self.npctype == NPCTYPE_FRIEND)
 	{
 		return false;
 	};
+	
 	if (Npc_GetAttitude(self, other) == ATT_FRIENDLY)
 	{
 		return false;
 	};
+	
 	if (C_BodyStateContains(other, BS_SNEAK) || C_BodyStateContains(other, BS_STAND))
 	&& (!Npc_CanSeeNpc(self, other))
 	&& (!Npc_IsInState(self, ZS_ObservePlayer))
 	{
 		return false;
 	};
+	
 	if (self.guild == GIL_NONE)
 	{
 		return false;
 	};
+	
 	if (!Npc_IsInPlayersRoom(self))
 	&& (Npc_IsInState(self, ZS_Sleep))
 	{
 		return false;
 	};
 	
+	/// FUNC 
 	if (portalguild == GIL_PUBLIC)
 	&& (Npc_IsInPlayersRoom(self))
 	{
@@ -86,16 +96,9 @@ func int B_AssessEnterRoom()
 		|| (Npc_IsInState(self, ZS_Stand_Guarding))
 		|| (Npc_IsInState(self, ZS_Stand_WP))
 		{
-			Npc_ClearAIQueue(self);
-			B_ClearPerceptions(self);
-			if (C_BodyStateContains(self, BS_SIT))
-			{
-				AI_StartState (self, ZS_ObservePlayer, false, "");
-			}
-			else
-			{
-				AI_StartState (self, ZS_ObservePlayer, true, "");
-			};
+			Npc_ClearAIQueue	(self);
+			B_ClearPerceptions	(self);
+			AI_StartState		(self, ZS_ObservePlayer, !C_BodyStateContains(self, BS_SIT), "");
 			return true;
 		}
 		else
@@ -106,7 +109,6 @@ func int B_AssessEnterRoom()
 	
 	if (C_NpcIsBotheredByPlayerRoomGuild(self))
 	{
-		/// FUNC
 		Npc_ClearAIQueue	(self);	
 		B_ClearPerceptions	(self);
 		AI_StartState		(self, ZS_ClearRoom, true, "");
@@ -125,6 +127,7 @@ func void B_AssessPortalCollision()
 	{
 		return;
 	};
+	
 	if (!Npc_CanSeeNpc(self, other))
 	&& (C_BodyStateContains(other, BS_SNEAK) || C_BodyStateContains(other, BS_STAND))
 	{
@@ -143,10 +146,11 @@ func void B_AssessPortalCollision()
 	|| (Wld_GetGuildAttitude(self.guild, formerportalguild) == ATT_FRIENDLY)
 	{
 		if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_FRIENDLY)
-		|| (Npc_IsPlayer(other) && (self.npctype == NPCTYPE_FRIEND))
+		|| (Npc_IsPlayer(other) && self.npctype == NPCTYPE_FRIEND)
 		{
 			return;
 		};
+		
 		if (self.guild == GIL_NONE)
 		{
 			return;
@@ -162,7 +166,6 @@ func void B_AssessPortalCollision()
 		{
 			self.aivar[AIV_SeenLeftRoom] = true;
 			
-			/// FUNC
 			Npc_ClearAIQueue	(self);	
 			B_ClearPerceptions	(self);
 			AI_StartState		(self, ZS_ObservePlayer, 0, "");

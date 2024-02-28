@@ -7,7 +7,7 @@ prototype ItemPR_Helm (C_Item)
 	material				=	MAT_METAL;
 };
 ///******************************************************************************************
-///	Citizen accessories
+///	Citizen helms: VLK
 ///******************************************************************************************
 instance ItHe_Cap (ItemPR_Helm)
 {
@@ -54,11 +54,6 @@ instance ItHe_Footman (ItemPR_Helm)
 	visual			=	"ItHe_Footman.3ds";
 	description		=	name;
 };
-instance ItHe_Great (ItemPR_Helm)
-{
-	visual			=	"ItHe_Great.3ds";
-	description		=	name;
-};
 instance ItHe_Nordic (ItemPR_Helm)
 {
 	visual			=	"ItHe_Nordic.3ds";
@@ -75,42 +70,7 @@ instance ItHe_WingedGreat (ItemPR_Helm)
 	description		=	name;
 };
 ///******************************************************************************************
-///	TPL & PAL helms
-///******************************************************************************************
-instance ItHe_PAL_H (ItemPR_Helm)
-{
-	visual			=	"ItHe_Pal_00.3ds";
-	description		=	"He³m paladyna";
-};
-///******************************************************************************************
-instance ItHe_PAL_D (ItemPR_Helm)
-{
-	visual			=	"ItHe_Pal_01.3ds";
-	description		=	"He³m mrocznego paladyna";
-};
-instance ItHe_PAL_T (ItemPR_Helm)
-{
-	visual			=	"ItHe_Pal_02.3ds";
-	description		=	"He³m stra¿nika czasu";
-};
-instance ItHe_PAL_U (ItemPR_Helm)
-{
-	visual			=	"ItHe_Pal_04.3ds";
-	description		=	"He³m rycerzy podziemia";
-};
-instance ItHe_PAL_O (ItemPR_Helm)
-{
-	visual			=	"ItHe_Pal_06.3ds";
-	description		=	"He³m najemnika orków";
-};
-///******************************************************************************************
-instance ItHe_Innos (ItemPR_Helm)
-{
-	visual			=	"ItHe_Innos.3ds";
-	description		=	"He³m Innosa";
-};
-///******************************************************************************************
-///	SLD & DJG helms
+/// Dragon hunter helms: SLD & DJG
 ///******************************************************************************************
 instance ItHe_DJG_M (ItemPR_Helm)
 {
@@ -123,7 +83,49 @@ instance ItHe_DJG_H (ItemPR_Helm)
 	description		=	"He³m ³owcy smoków";
 };
 ///******************************************************************************************
-///	Prisoner shackles
+/// Orc mercenary helms
+///******************************************************************************************
+instance ItHe_ORW_H (ItemPR_Helm)
+{
+	visual			=	"ItHe_ORW_H.3ds";
+	description		=	"He³m wojownika orków";
+};
+///******************************************************************************************
+/// Paladin helms: PAL
+///******************************************************************************************
+instance ItHe_PAL_H (ItemPR_Helm)
+{
+	visual			=	"ItHe_Pal_H.3ds";
+	description		=	"He³m paladyna";
+};
+instance ItHe_PAL_D (ItemPR_Helm)
+{
+	visual			=	"ItHe_Pal_D.3ds";
+	description		=	"He³m mrocznego paladyna";
+};
+instance ItHe_PAL_T (ItemPR_Helm)
+{
+	visual			=	"ItHe_Pal_T.3ds";
+	description		=	"He³m stra¿nika czasu";
+};
+instance ItHe_PAL_U (ItemPR_Helm)
+{
+	visual			=	"ItHe_Pal_U.3ds";
+	description		=	"He³m rycerzy podziemia";
+};
+instance ItHe_SteamKnight (ItemPR_Helm)
+{
+	visual			=	"ItHe_SteamKnight.3ds";
+	description		=	"He³m parowy";
+};
+///******************************************************************************************
+instance ItHe_Innos (ItemPR_Helm)
+{
+	visual			=	"ItHe_Innos.3ds";
+	description		=	"He³m Innosa";
+};
+///******************************************************************************************
+/// Prisoner helms: STRF
 ///******************************************************************************************
 instance ItHe_Slave (ItemPR_Helm)
 {
@@ -131,7 +133,7 @@ instance ItHe_Slave (ItemPR_Helm)
 	description		=	"Kajdany";
 };
 ///******************************************************************************************
-///	Dementor helms
+///	Dementor helms: DMT
 ///******************************************************************************************
 instance ItHe_Sleeper (ItemPR_Helm)
 {

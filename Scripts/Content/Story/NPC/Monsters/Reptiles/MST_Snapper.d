@@ -10,15 +10,8 @@ prototype Mst_Default_Snapper (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SNAPPER;
 	
-	B_SetAttributesToLevel (self, 12);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 12);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -93,17 +86,12 @@ instance NewMine_LeadSnapper (Mst_Default_Snapper)
 {
 	name								=	"Przywódca stada";
 	
-	B_SetAttributesToLevel (self, 15);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 15);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	B_SetVisuals_Snapper();
+	Mdl_SetModelScale (self, 1.1, 1.1, 1.1);
+	
 	CreateInvItem (self, ItAt_ClawLeader);
 };
 ///******************************************************************************************

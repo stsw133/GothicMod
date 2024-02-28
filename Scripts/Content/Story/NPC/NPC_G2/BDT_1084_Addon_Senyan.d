@@ -9,12 +9,12 @@ instance BDT_1084_Addon_Senyan (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_NewsOverride]				=	true;
-	aivar[AIV_StoryBandit]				=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
+	aivar[AIV_Story]					=	STORY_Bandit;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -26,7 +26,7 @@ instance BDT_1084_Addon_Senyan (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Normal01, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

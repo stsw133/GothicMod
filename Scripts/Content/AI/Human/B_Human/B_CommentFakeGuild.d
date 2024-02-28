@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_CommentFakeGuild
+/// B_CommentFakeGuild
 ///******************************************************************************************
 func void ZS_CommentFakeGuild()
 {
@@ -23,8 +23,6 @@ func void ZS_CommentFakeGuild()
 	
 	if (Npc_HasEquippedArmor(other))
 	{
-		//var C_Item itm; itm = Npc_GetEquippedArmor(other);
-		
 		if (self.guild == GIL_MIL || self.guild == GIL_PAL)
 		{
 			B_Say (self, other, "$ADDON_WRONGARMOR_MIL");

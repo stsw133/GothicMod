@@ -13,13 +13,17 @@ func void STARTUP_GLOBAL()
 	DIFF_Select(STR_ToInt(MEM_GetGothOpt("MOD", "difficulty")));
 	movieMode = STR_ToInt(MEM_GetGothOpt("MOD", "movieMode"));
 	
-	//QS_Init();
+	if (!movieMode)
+	{
+		QuickSlot_Init();
+	};
 };
 
 func void INIT_GLOBAL()
 {
 	Game_InitGerman();
 	
+	/// MOD: shortcuts
 	//MemoKey1 = -1;
 	//MemoKey2 = -1;
 	keySprint1 = MEM_GetKey("keySprint");
@@ -33,20 +37,22 @@ func void INIT_GLOBAL()
 	
 	noAnimTake = STR_ToInt(MEM_GetGothOpt("MOD", "noAnimTake"));
 	
+	/// MOD: frame functions
+	FF_ApplyOnce(MOD_Damage);
+	
 	FF_ApplyOnce(Loop_healthBar);
 	FF_ApplyOnce(Loop_manaBar);
-	FF_ApplyOnce(Loop_energyBar);
+	FF_ApplyOnce(Loop_auraBar);
+	FF_ApplyOnce(Loop_staminaBar);
 	FF_ApplyOnce(Loop_expBar);
 	
+	FF_ApplyOnceExt (TT_5000, 5000, -1);
 	FF_ApplyOnceExt (TT_1000, 1000, -1);
-	FF_ApplyOnceExt (TT_500, 500, -1);
+	FF_ApplyOnceExt (TT_200, 200, -1);
 	FF_ApplyOnceExt (TT_5, 5, -1);
 	
-	if		(dLevel == DIFF_E)	{	TRADE_VALUE_MULTIPLIER = 0.18;	}
-	else if (dLevel == DIFF_H)	{	TRADE_VALUE_MULTIPLIER = 0.12;	}
-	else /* DIFF_M */			{	TRADE_VALUE_MULTIPLIER = 0.15;	};
-	
-	B_SetHeroVisual (hero, selectedHero);
+	/// MOD: hero visual
+	NpcFn_SetHeroVisual (hero, selectedHero);
 	
 	if (movieMode)
 	{
@@ -335,10 +341,10 @@ func void STARTUP_ADDON_PART_CANYON_01 ()
 	Wld_InsertNpc 	(Blattcrawler, 			"ADW_CANYON_PATH_TO_BANDITS_09");
 
 	//Höhle 
-	Wld_InsertItem (ItRi_Hp_02,"FP_ITEM_CANYON_02"); 
+	Wld_InsertItem (ItRi_Hp_01,"FP_ITEM_CANYON_02"); 
 	
 	//hintere Mine
-	Wld_InsertItem (ItRi_MANA_02,"FP_ITEM_CANYON_09");
+	Wld_InsertItem (ItRi_MP_01,"FP_ITEM_CANYON_09");
 	
 	//----------------------Library----------------------------
 	Wld_InsertNpc 	(Shadowbeast_Fire_CanyonLib, 	"ADW_CANYON_LIBRARY_04");
@@ -446,7 +452,7 @@ func void STARTUP_ADDON_PART_ENTRANCE_01 ()
 	Wld_InsertItem (ItWr_StonePlateCommon_Addon,"FP_ITEM_ADWPORTAL_01");
 	Wld_InsertRandomStoneplate ("FP_ITEM_ADWPORTAL_02");
 	
-	Wld_InsertItem (ItRi_Hp_02,"FP_ITEM_ENTRANCE_09"); 
+	Wld_InsertItem (ItRi_Hp_01,"FP_ITEM_ENTRANCE_09"); 
 	
 };
 
@@ -485,7 +491,7 @@ FUNC VOID STARTUP_ADDON_PART_BANDITSCAMP_01()
 	
 	Wld_InsertItem (ItPo_Mana_02,"FP_ITEM_BL_TRYSTAN");
 	
-	Wld_InsertItem (ItAm_Hp_02,"FP_ITEM_MINE_01");//BALKEN VERSTECK
+	Wld_InsertItem (ItAm_Druid_01,"FP_ITEM_MINE_01");//BALKEN VERSTECK
 	
 	Wld_InsertItem (ITKE_ADDON_BUDDLER_01,"FP_ITEM_BL_CHEST");
 	Wld_InsertItem (ITWr_Addon_Hinweis_02,"FP_ITEM_BL_SNAF");
@@ -498,7 +504,7 @@ FUNC VOID STARTUP_ADDON_PART_BANDITSCAMP_01()
 	Wld_InsertItem (ItPl_Temp_Herb,"FP_ITEM_BANDITSCAMP_01"); 
 	Wld_InsertItem (ItPo_Mana_03,"FP_ITEM_BANDITSCAMP_02"); 
 	
-	Wld_InsertItem (ItRi_MANA_02,"FP_ITEM_BANDITSCAMP_03"); //TOLLES ITEM !!!
+	Wld_InsertItem (ItRi_MP_01,"FP_ITEM_BANDITSCAMP_03"); //TOLLES ITEM !!!
 	
 	Wld_InsertItem (ItSc_EleFreeze,"FP_ITEM_BANDITSCAMP_04"); 
 	Wld_InsertItem (ItPl_Speed_Herb_01,"FP_ITEM_BANDITSCAMP_05"); 
@@ -950,7 +956,7 @@ FUNC VOID STARTUP_ADDON_PART_PIRATESCAMP_01 ()
 	Wld_InsertItem (ItMi_Shell,"FP_ITEMSPAWN_SHALLOWWATER_30");	
 	
 	
-	Wld_InsertItem (ItAm_Str_02,"FP_ITEMSPAWN_LONEBEACH_02");	//-->Feuerwaranstrand in der Höhle
+	Wld_InsertItem (ItAm_Pirate_01,"FP_ITEMSPAWN_LONEBEACH_02");	//-->Feuerwaranstrand in der Höhle
 /*
 
 	//-------- Sonstige Item FP ------------
@@ -1127,7 +1133,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	Wld_InsertItem (ItPl_GraveMoss,"FP_ITEM_VALLEY_02");
 	
 	//Qurahodrons Grab
-	Wld_InsertItem (ItRi_STR_02,"FP_ITEM_VALLEY_12");
+	Wld_InsertItem (ItRi_STR_01,"FP_ITEM_VALLEY_12");
 };
 
 FUNC VOID INIT_SUB_ADDON_PART_VALLEY_01 ()
@@ -2757,7 +2763,7 @@ func void STARTUP_NewWorld_Part_City_01()
 		
 	Wld_InsertItem			(ItAt_MoleratLubric,"FP_ITEM_SHIP_07");	//zur Sicherheit für Vinos Brennerei!
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_01"); 
-	Wld_InsertItem			(ItRi_LifeSteal_02,"FP_ITEM_SHIP_02");
+	Wld_InsertItem			(ItRi_LS_01,"FP_ITEM_SHIP_02");
 	Wld_InsertItem			(ItPo_Mana_03,"FP_ITEM_SHIP_03");
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_04");
 	Wld_InsertItem			(ItPo_Speed,"FP_ITEM_SHIP_05");

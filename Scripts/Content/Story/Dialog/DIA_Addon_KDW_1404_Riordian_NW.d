@@ -135,7 +135,7 @@ func void DIA_Addon_Riordian_SaturasWantYou_Info ()
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Saturas");
 	MIS_Addon_Saturas_BringRiordian2Me = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////

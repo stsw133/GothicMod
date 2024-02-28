@@ -254,7 +254,7 @@ FUNC VOID DIA_Hokurn_Learn_OK ()
 {
 	AI_Output (other,self ,"DIA_Hokurn_Learn_OK_15_00"); //W porz¹dku. Oto pieni¹dze.
 	B_GiveInvItems (other,self,ItMi_Gold,300);
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Info_ClearChoices (DIA_Hokurn_Learn);
 };
 
@@ -275,9 +275,9 @@ FUNC INT DIA_Hokurn_PayTeacher_Condition()
 {
 	if	(Npc_KnowsInfo (other,DIA_Hokurn_Learn))
 	&&	(Npc_HasItems (other,ItMi_Gold) >= 300)
-	&& 	(self.aivar[AIV_CanTeach] == false)
+	&& 	((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};	
 };
 
@@ -287,7 +287,7 @@ FUNC VOID DIA_Hokurn_PayTeacher_Info()
 	AI_Output (self ,other,"DIA_Hokurn_PayTeacher_01_01"); //Nie po¿a³ujesz tego!
 
 	B_GiveInvItems (other,self,ItMi_Gold,300);
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 //*********************************************************************
@@ -356,7 +356,7 @@ INSTANCE DIA_Hokurn_Teach(C_INFO)
 
 FUNC INT DIA_Hokurn_Teach_Condition()
 {
-	if (self.aivar[AIV_CanTeach] == true)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	&& (HokurnLastDrink < Wld_GetDay())
 	{
 		return TRUE;

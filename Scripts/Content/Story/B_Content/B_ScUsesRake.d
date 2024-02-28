@@ -12,7 +12,7 @@ func void RakeTreasureSuccess (var C_Item itm)
 {
 	Wld_PlayEffect ("spellFX_ItemAusbuddeln", itm, itm, 0, 0, 0, false);
 	B_Say_Overlay (self, self, "$FOUNDTREASURE");
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 ///******************************************************************************************
@@ -32,7 +32,7 @@ func void B_SCGetTreasure_S1()
 			RAKEPLACE[Greg_FirstSecret] = true;
 			RakeTreasureSuccess(ItSe_GoldPocket25);
 			
-			var C_ITEM GregsArmor; GregsArmor = Npc_GetEquippedArmor(Greg_NW);
+			var C_Item GregsArmor; GregsArmor = Npc_GetEquippedArmor(Greg_NW);
 			if (!Hlp_IsItem(GregsArmor, ITAR_PIR_H))
 			{
 				AI_EquipArmor (Greg_NW, ITAR_PIR_H);
@@ -58,9 +58,9 @@ func void B_SCGetTreasure_S1()
 		}
 		else if (Npc_GetDistToWP(hero, "NW_BIGMILL_FARM3_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[5])
 		{
-			Wld_InsertItem (ItAm_LifeSteal_01, "NW_BIGMILL_FARM3_01");
+			Wld_InsertItem (ItAm_Barbarian_01, "NW_BIGMILL_FARM3_01");
 			RAKEPLACE[5] = true;
-			RakeTreasureSuccess(ItAm_LifeSteal_01);
+			RakeTreasureSuccess(ItAm_Barbarian_01);
 		}
 		/// ADDONWORLD_ZEN
 		else if (Npc_GetDistToWP(hero, "ADW_ENTRANCE_RAKEPLACE_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[12])
@@ -128,8 +128,8 @@ func void B_SCGetTreasure_S1()
 			Wld_InsertItem (ItMi_HoneyTabak, "ADW_BANDITSCAMP_RAKEPLACE_01");
 			RAKEPLACE[20] = true;
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_BANDITSCAMP_RAKEPLACE_01");
-			Wld_InsertItem (ItAm_Mana_02, "ADW_BANDITSCAMP_RAKEPLACE_01");
-			RakeTreasureSuccess(ItAm_Mana_02);
+			Wld_InsertItem (ItAm_Paladin_01, "ADW_BANDITSCAMP_RAKEPLACE_01");
+			RakeTreasureSuccess(ItAm_Paladin_01);
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_BANDITSCAMP_RAKEPLACE_02") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[21])
 		{

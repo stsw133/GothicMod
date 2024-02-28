@@ -47,11 +47,11 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 			else if (Npc_HasItems(oth, ItKe_Valentino) >= 1)				{	B_GiveInvItems (oth, slf, ItKe_Valentino, 1);				}
 			else if (Npc_HasItems(oth, ItKe_Salandril) >= 1)				{	B_GiveInvItems (oth, slf, ItKe_Salandril, 1);				}
 			else if (Npc_HasItems(oth, ItKe_Bromor) >= 1)					{	B_GiveInvItems (oth, slf, ItKe_Bromor, 1);					};
-			Print("Otrzymano klucz");
+			//Print("Otrzymano klucz");
 			
 			if (!oth.aivar[AIV_PlayerHasPickedMyPocket])
 			{
-				B_GivePlayerXP(oth.level);
+				B_GivePlayerExp(oth.level);
 			};
 			oth.aivar[AIV_PlayerHasPickedMyPocket] += 1;
 		}
@@ -60,11 +60,11 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 		{
 			if		(Npc_HasItems(oth, ItWr_CorneliusTagebuch_MIS) >= 1)	{	B_GiveInvItems (oth, slf, ItWr_CorneliusTagebuch_MIS, 1);	}
 			else if (Npc_HasItems(oth, ItWr_Schuldenbuch) >= 1)				{	B_GiveInvItems (oth, slf, ItWr_Schuldenbuch, 1);			};
-			Print("Otrzymano ksi¹¿kê");
+			//Print("Otrzymano ksi¹¿kê");
 			
 			if (!oth.aivar[AIV_PlayerHasPickedMyPocket])
 			{
-				B_GivePlayerXP(oth.level);
+				B_GivePlayerExp(oth.level);
 			};
 			oth.aivar[AIV_PlayerHasPickedMyPocket] += 1;
 		}
@@ -77,13 +77,13 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 			};
 			B_GiveInvItems (oth, slf, ItMi_Gold, GoldToSteal);
 			
-			var string GoldStolen; GoldStolen = ConcatStrings(IntToString(GoldToSteal), PRINT_GoldErhalten);
-			Print(GoldStolen);
+			//var string GoldStolen; GoldStolen = ConcatStrings(IntToString(GoldToSteal), PRINT_GoldErhalten);
+			//Print(GoldStolen);
 			Snd_Play("Geldbeutel");
 			
 			if (!oth.aivar[AIV_PlayerHasPickedMyPocket])
 			{
-				B_GivePlayerXP(oth.level);
+				B_GivePlayerExp(oth.level);
 			};
 			oth.aivar[AIV_PlayerHasPickedMyPocket] += 1;
 		}
@@ -96,8 +96,9 @@ func void MOD_Pickpocket (var C_Npc slf, var C_Npc oth)
 	{
 		//B_Say (oth, slf, "$DIRTYTHIEF");
 		//B_Attack (oth, slf, AR_Theft, 1);
-		o_string = ConcatStrings ("Potrzeba ", IntToString(MOD_Pickpocket_DexToSteal(o_other)));
-		o_string = ConcatStrings (o_string, " pkt. zrêcznoœci by dokonaæ udanej kradzie¿y.");
-		Print(o_string);
+		var string concatText;
+		concatText = ConcatStrings ("Potrzeba ", IntToString(MOD_Pickpocket_DexToSteal(o_other)));
+		concatText = ConcatStrings (concatText, " pkt. zrêcznoœci by dokonaæ udanej kradzie¿y.");
+		Print(concatText);
 	};
 };

@@ -84,7 +84,7 @@ func int C_GetDistToCenter (var C_Npc slf, var int quarter)
 ///******************************************************************************************
 ///	C_IsQuarterNearest
 ///******************************************************************************************
-func int C_IsQuarterNearest (var C_NPC slf, var int quart)
+func int C_IsQuarterNearest (var C_Npc slf, var int quart)
 {
 	var int quartDist; quartDist = C_GetDistToCenter(slf, quart);
 	if (quartDist <= C_GetDistToCenter(slf, Q_KASERNE))
@@ -106,7 +106,7 @@ func int C_IsQuarterNearest (var C_NPC slf, var int quart)
 ///******************************************************************************************
 ///	C_NpcIsInQuarter
 ///******************************************************************************************
-func int C_NpcIsInQuarter (var C_NPC slf)
+func int C_NpcIsInQuarter (var C_Npc slf)
 {
 	if (C_IsQuarterNearest(slf, Q_KASERNE))		{	return Q_KASERNE;		};
 	if (C_IsQuarterNearest(slf, Q_GALGEN))		{	return Q_GALGEN;		};

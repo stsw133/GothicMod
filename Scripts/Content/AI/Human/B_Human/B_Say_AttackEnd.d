@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_Say_AttackEnd
+/// B_Say_AttackEnd
 ///******************************************************************************************
 func void B_Say_AttackEnd()
 {
@@ -28,8 +28,7 @@ func void B_Say_AttackEnd()
 		{
 			if (self.aivar[AIV_PARTYMEMBER])
 			{
-				var int rnd; rnd = Hlp_Random(100);
-				if (rnd > 15)
+				if (Hlp_Random(100) > 15)
 				&& (other.guild != GIL_DRAGON)
 				{
 					return;
@@ -131,8 +130,7 @@ func void B_Say_AttackEnd()
 	
 	if (self.aivar[AIV_ATTACKREASON] == AR_MonsterVsHuman)
 	{
-		if (self.voice == 9)
-		|| (self.voice == 12)
+		if (self.voice == 9 || self.voice == 12)
 		{
 			B_Say (self, other, "$ADDON_MONSTERKILLED");
 		}
@@ -189,7 +187,7 @@ func void B_Say_AttackEnd()
 	
 	if (self.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
 	{
-		if (other.guild != GIL_SLD) && (other.guild != GIL_DJG)
+		if (other.guild != GIL_SLD && other.guild != GIL_DJG)
 		{
 			B_Say (self, other, "$THEREISNOFIGHTINGHERE");
 		};

@@ -51,7 +51,7 @@ func void DIA_Lobart_STOLENCLOTHS_Info ()
 {
 	// ------ SC hat Rüstung an ------
 	
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	if (Hlp_IsItem (heroArmor, ItAr_BAU_00) == TRUE)
 	{
@@ -624,7 +624,7 @@ func void DIA_Lobart_RuebenRunning_Info ()
 		};
 		
 		MIS_Lobart_Rueben = LOG_SUCCESS;
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 		
 	//	Log_SetTopicStatus(TOPIC_BauerLobart, LOG_SUCCESS); ALT
 	//	Log_AddEntry (TOPIC_BauerLobart,"Ich habe Lobart seine Rüben gebracht, er hat mich dafür entlohnt."); 
@@ -998,7 +998,7 @@ func void DIA_Lobart_VINOTOT_Info ()
 	};
 	
 	AI_Output			(self, other, "DIA_Lobart_VINOTOT_05_03"); //Na Innosa. Mam nadziejê, ¿e ten koszmar wkrótce siê skoñczy.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 
@@ -1157,7 +1157,7 @@ func void DIA_Lobart_ORKSWEG_Info ()
 	B_StartOtherRoutine	(LobartsBauer2,"Start");
 	
 	TOPIC_END_LobartsOrKProblem = TRUE;
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);					
 };

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_Talk
+/// ZS_Talk
 ///******************************************************************************************
 
 var int zsTalkBugfix;
@@ -20,7 +20,7 @@ func void ZS_Talk()
 	{
 		if (C_BodyStateContains(self, BS_SIT))
 		{
-			var C_NPC target; target = Npc_GetLookAtTarget(self);
+			var C_Npc target; target = Npc_GetLookAtTarget(self);
 			if (!Hlp_IsValidNpc(target))
 			{
 				AI_LookAtNpc (self, other);
@@ -30,6 +30,7 @@ func void ZS_Talk()
 		{
 			B_LookAtNpc (self, other);
 		};
+		
 		AI_RemoveWeapon(self);
 	};
 	
@@ -65,6 +66,14 @@ func void ZS_Talk()
 		|| (self.npctype == NPCTYPE_TAL_AMBIENT)
 		{
 			B_AssignAmbientInfos(self);
+			
+			/// MOD: disabled
+			/*
+			if (C_NpcBelongsToCity(self))
+			{
+				B_AssignCityGuide(self);
+			};
+			*/
 		};
 		
 		if (self.aivar[AIV_PARTYMEMBER])
@@ -77,20 +86,27 @@ func void ZS_Talk()
 			B_Addon_GivePotion(self);
 		};
 		
+		/// assign NEWS
 		if (C_NpcIsToughGuy(self))
-		&& (!self.aivar[AIV_ToughGuyNewsOverride])
+		&& ((self.aivar[AIV_NewsOverride] & NEWS_ToughGuy) == 0)
 		{
 			B_AssignToughGuyNEWS(self);
 		};
 		
-		if (C_NpcHasAmbientNews(self))
+		if (B_GetPlayerCrime(self) != CRIME_NONE)
+		&& ((self.aivar[AIV_NewsOverride] & NEWS_Ambient) == 0)
 		{
 			B_AssignAmbientNEWS(self);
 		};
 		
-		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
-		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
-		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);	///new!!!
+		/// MOD: assign special dialogs
+		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);
+		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);
+		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);
+		
+		/// MOD: change sell value percent
+		if (Npc_GetTalentSkill(hero, NPC_TALENT_PERSUASION))	{	B_SetSellingValuePercent(20);	}
+		else													{	B_SetSellingValuePercent(10);	};
 	};
 	
 	if (self.guild == GIL_DRAGON)
@@ -103,7 +119,7 @@ func void ZS_Talk()
 };
 
 ///******************************************************************************************
-func INT ZS_Talk_Loop()
+func int ZS_Talk_Loop()
 {
    	if (InfoManager_HasFinished())
    	&& (zsTalkBugfix)

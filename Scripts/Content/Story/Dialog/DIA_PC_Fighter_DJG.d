@@ -305,7 +305,7 @@ func void DIA_GornDJG_BISHIERHIN_Info()
 
 	B_LogEntry (TOPIC_Dragonhunter,"Gorn powróci³ na swój posterunek. Zamierza nadal obserwowaæ poczynania orków."); 
 
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
  	
  	AI_StopProcessInfos (self);
 	
@@ -347,5 +347,5 @@ func void DIA_GornDJG_DRAGONDEAD_Info ()
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_05"); //Zostanê tu jeszcze trochê, a potem wrócê do Lee. Mo¿e spotkamy siê u niego!
 	AI_Output			(self, other, "DIA_GornDJG_DRAGONDEAD_12_06"); //Mam ju¿ doœæ tej okolicy. Najwy¿sza pora zwijaæ manatki.
 	AI_Output			(other, self, "DIA_GornDJG_DRAGONDEAD_15_07"); //Na razie!
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };

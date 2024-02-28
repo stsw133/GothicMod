@@ -9,11 +9,11 @@ instance Bau_4300_Addon_Cavalorn (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 
 	/// ------ AI vars ------
-	aivar[AIV_NPCIsRanger]				=	true;
+	aivar[AIV_Story]					=	STORY_IsRanger;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -24,7 +24,7 @@ instance Bau_4300_Addon_Cavalorn (Npc_Default)
 	CreateInvItem (self, ITAR_Leather_L);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Psionic", Face_Cavalorn, 0, ITAR_WaterRanger);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Psionic", Face_Cavalorn, 0, ITAR_Ranger_L);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

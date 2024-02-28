@@ -9,8 +9,8 @@ instance PIR_1367_Addon_Owen (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -19,7 +19,7 @@ instance PIR_1367_Addon_Owen (Npc_Default)
 	EquipItem (self, ItMw_Addon_PIR1hAxe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal23, 0, ITAR_PIR_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal23, 0, ITAR_PIR_L);
 	Mdl_SetModelFatness	(self, 1.1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

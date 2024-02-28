@@ -65,23 +65,22 @@ instance MENU_STATUS(C_MENU_DEF)
 	items[61] = "MENU_ITEM_TALENT_13";
 	items[62] = "MENU_ITEM_TALENT_14_TITLE";
 	items[63] = "MENU_ITEM_TALENT_14_SKILL";
-	items[64] = "MENU_ITEM_TALENT_14";
-	items[65] = "MENU_ITEM_TALENT_15_TITLE";
-	items[66] = "MENU_ITEM_TALENT_15_SKILL";
-	items[67] = "MENU_ITEM_TALENT_15";
-	items[68] = "MENU_ITEM_TALENT_16_TITLE";
-	items[69] = "MENU_ITEM_TALENT_16_SKILL";
-	items[70] = "MENU_ITEM_TALENT_16";
-	items[71] = "MENU_ITEM_TALENT_17_TITLE";
-	items[72] = "MENU_ITEM_TALENT_17_SKILL";
-	items[73] = "MENU_ITEM_TALENT_18_TITLE";
-	items[74] = "MENU_ITEM_TALENT_18_SKILL";
-	items[75] = "MENU_ITEM_TALENT_19_TITLE";
-	items[76] = "MENU_ITEM_TALENT_19_SKILL";
-	items[77] = "MENU_ITEM_TALENT_20_TITLE";
-	items[78] = "MENU_ITEM_TALENT_20_SKILL";
-	items[79] = "MENU_ITEM_TALENT_21_TITLE";
-	items[80] = "MENU_ITEM_TALENT_21_SKILL";
+	items[64] = "MENU_ITEM_TALENT_15_TITLE";
+	items[65] = "MENU_ITEM_TALENT_15_SKILL";
+	items[66] = "MENU_ITEM_TALENT_15";
+	items[67] = "MENU_ITEM_TALENT_16_TITLE";
+	items[68] = "MENU_ITEM_TALENT_16_SKILL";
+	items[69] = "MENU_ITEM_TALENT_16";
+	items[70] = "MENU_ITEM_TALENT_17_TITLE";
+	items[71] = "MENU_ITEM_TALENT_17_SKILL";
+	items[72] = "MENU_ITEM_TALENT_18_TITLE";
+	items[73] = "MENU_ITEM_TALENT_18_SKILL";
+	items[74] = "MENU_ITEM_TALENT_19_TITLE";
+	items[75] = "MENU_ITEM_TALENT_19_SKILL";
+	items[76] = "MENU_ITEM_TALENT_20_TITLE";
+	items[77] = "MENU_ITEM_TALENT_20_SKILL";
+	items[78] = "MENU_ITEM_TALENT_21_TITLE";
+	items[79] = "MENU_ITEM_TALENT_21_SKILL";
 	
 	dimx = 8192;
 	dimy = 8192;
@@ -91,7 +90,7 @@ instance MENU_STATUS(C_MENU_DEF)
 
 const int STAT_A_X1 = 500;
 const int STAT_A_X2 = 2300;
-const int STAT_A_X3 = 3200;
+const int STAT_A_X3 = 2950;
 const int STAT_A_X4 = 3400;
 const int STAT_B_X1 = 3800;
 const int STAT_B_X2 = 6000;
@@ -316,7 +315,7 @@ instance MENU_ITEM_ATTRIBUTE_POWER_TITLE(C_MENU_ITEM_DEF)	/// power
 {
 	posx = STAT_A_X1;
 	posy = STAT_ATR_Y + (STAT_DY * 4);
-	text[0] = "Dod. moc:";
+	text[0] = "Moc zaklêæ:";
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
@@ -518,28 +517,28 @@ instance MENU_ITEM_TALENT_10_SKILL(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_TALENT_18_TITLE(C_MENU_ITEM_DEF)	/// magictype
+instance MENU_ITEM_TALENT_7_TITLE(C_MENU_ITEM_DEF)	/// magic circle
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (5 * STAT_DY + 1 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_18_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_7_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (5 * STAT_DY + 1 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_7_TITLE(C_MENU_ITEM_DEF)	/// magic circle
+instance MENU_ITEM_TALENT_14_TITLE(C_MENU_ITEM_DEF)	/// enchanting
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (6 * STAT_DY + 1 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_7_SKILL(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TALENT_14_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
 	posy = STAT_TAL_Y + (6 * STAT_DY + 1 * STAT_DSY);
@@ -668,70 +667,63 @@ instance MENU_ITEM_TALENT_13(C_MENU_ITEM_DEF)
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_14_TITLE(C_MENU_ITEM_DEF)	/// enchanting
-{
-	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-instance MENU_ITEM_TALENT_14_SKILL(C_MENU_ITEM_DEF)
-{
-	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
-instance MENU_ITEM_TALENT_14(C_MENU_ITEM_DEF)
-{
-	posx = STAT_B_X3;
-	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
-	fontname = STAT_FONT_DEFAULT;
-	flags = flags & ~IT_SELECTABLE;
-};
 instance MENU_ITEM_TALENT_15_TITLE(C_MENU_ITEM_DEF)	/// alchemy
 {
 	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_15_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_15(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X3;
-	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (15 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_16_TITLE(C_MENU_ITEM_DEF)	/// hunting
 {
 	posx = STAT_B_X1;
-	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_16_SKILL(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X2;
-	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
 instance MENU_ITEM_TALENT_16(C_MENU_ITEM_DEF)
 {
 	posx = STAT_B_X3;
+	posy = STAT_TAL_Y + (16 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_18_TITLE(C_MENU_ITEM_DEF)	/// cooking
+{
+	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
 	fontname = STAT_FONT_DEFAULT;
 	flags = flags & ~IT_SELECTABLE;
 };
-instance MENU_ITEM_TALENT_19_TITLE(C_MENU_ITEM_DEF)	/// additional
+instance MENU_ITEM_TALENT_18_SKILL(C_MENU_ITEM_DEF)
+{
+	posx = STAT_B_X2;
+	posy = STAT_TAL_Y + (17 * STAT_DY + 4 * STAT_DSY);
+	fontname = STAT_FONT_DEFAULT;
+	flags = flags & ~IT_SELECTABLE;
+};
+instance MENU_ITEM_TALENT_19_TITLE(C_MENU_ITEM_DEF)	/// prot poison
 {
 	posx = STAT_B_X1;
 	posy = STAT_TAL_Y + (18 * STAT_DY + 4 * STAT_DSY);

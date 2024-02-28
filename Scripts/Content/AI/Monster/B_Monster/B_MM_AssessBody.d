@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_MM_AssessBody
+/// B_MM_AssessBody
 ///******************************************************************************************
 func void B_MM_AssessBody()
 {
@@ -7,22 +7,26 @@ func void B_MM_AssessBody()
 	{
 		return;
 	};
+	
 	if (Npc_GetHeightToNpc(self, other) > PERC_DIST_HEIGHT)
 	{
 		return;
 	};
+	
 	if (self.aivar[AIV_MM_PRIORITY] == PRIO_ATTACK)
 	{
 		return;
 	};
+	
 	if (!C_WantToEat(self, other))
 	{
 		return;
 	};
+	
 	if (Npc_IsInState(self, ZS_MM_Attack))
 	{
-		var C_NPC stoerenfried; stoerenfried = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
-		if (Npc_GetDistToNpc(stoerenfried, other) <= FIGHT_DIST_MONSTER_ATTACKRANGE)
+		var C_Npc target; target = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
+		if (Npc_GetDistToNpc(target, other) <= FIGHT_DIST_MONSTER_ATTACKRANGE)
 		{
 			return;
 		};

@@ -751,7 +751,7 @@ func void DIA_Biff_DRACHENTOT_Info ()
 	AI_Output			(self, other, "DIA_Biff_DRACHENTOT_07_02"); //Jesteœ pewien, ¿e to by³ ostatni?
 	AI_Output			(other, self, "DIA_Biff_DRACHENTOT_15_03"); //Tak s¹dzê.
 	AI_Output			(self, other, "DIA_Biff_DRACHENTOT_07_04"); //Szkoda. Dopiero siê rozgrza³em.
-	B_GivePlayerXP(1000);
+	B_GivePlayerExp(1000);
 };
 
 //#####################################################################
@@ -815,7 +815,7 @@ FUNC VOID DIA_Biff_KnowWhereEnemy_Yes ()
     Log_SetTopicStatus(TOPIC_Crew, LOG_RUNNING); 	                                                                                  	                       
     B_LogEntry (TOPIC_Crew,"Biff, zachêcony perspektyw¹ bogactwa, postanowi³ udaæ siê ze mn¹. Mogê na niego liczyæ, dopóki staæ mnie na jego us³ugi."); 
     
-    B_GivePlayerXP(500);   
+    B_GivePlayerExp(500);   
 
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Biff_IsOnBoard	 = LOG_SUCCESS;

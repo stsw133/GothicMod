@@ -1,20 +1,20 @@
 ///******************************************************************************************
-///	B_Say
+/// B_Say
 ///******************************************************************************************
-func void B_Say (var C_NPC slf, var C_Npc oth, var string text)
+func void B_Say (var C_Npc slf, var C_Npc oth, var string text)
 {
 	AI_OutputSVM (slf, oth, text);
 };
 
-func void B_Say_Overlay (var C_NPC slf, var C_Npc oth, var string text)
+func void B_Say_Overlay (var C_Npc slf, var C_Npc oth, var string text)
 {
 	AI_OutputSVM_Overlay (slf, oth, text);
 };
 
 ///******************************************************************************************
-///	B_Say_Gold
+/// B_Say_Gold
 ///******************************************************************************************
-func void B_Say_Gold (var C_NPC slf, var C_NPC oth, var int goldAmount)
+func void B_Say_Gold (var C_Npc slf, var C_Npc oth, var int goldAmount)
 {
 	if (goldAmount == 1000)	{	B_Say (slf, oth, "$GOLD_1000");	};
 	if (goldAmount == 950)	{	B_Say (slf, oth, "$GOLD_950");	};
@@ -47,17 +47,16 @@ func void B_Say_Gold (var C_NPC slf, var C_NPC oth, var int goldAmount)
 };
 
 ///******************************************************************************************
-///	B_Say_FleeReason
+/// B_Say_FleeReason
 ///******************************************************************************************
 func void B_Say_FleeReason()
 {
 };
 
-
 ///******************************************************************************************
-///	B_Say_GuildGreetings
+/// B_Say_GuildGreetings
 ///******************************************************************************************
-func void B_Say_GuildGreetings (var C_NPC slf, var C_NPC oth)
+func void B_Say_GuildGreetings (var C_Npc slf, var C_Npc oth)
 {
 	if (slf.guild == GIL_MIL)
 	&& (oth.guild == GIL_MIL || oth.guild == GIL_PAL)
@@ -102,12 +101,13 @@ func void B_Say_GuildGreetings (var C_NPC slf, var C_NPC oth)
 };
 
 ///******************************************************************************************
-///	B_Say_Smalltalk
+/// B_Say_Smalltalk
 ///******************************************************************************************
 func void B_Say_Smalltalk()
 {
     var int random;	random = Hlp_Random(120);
-	var int Choice; Choice = Hlp_Random(2);
+	var int choice; choice = Hlp_Random(2);
+	var int guild; guild = Npc_GetTrueGuild(self);
 	
 	if		(random < 5)	{	B_Say (self, self, "$SMALLTALK01");	}
 	else if (random < 10)	{	B_Say (self, self, "$SMALLTALK02");	}
@@ -132,32 +132,15 @@ func void B_Say_Smalltalk()
 	else if (random < 105)	{	B_Say (self, self, "$SMALLTALK21");	}
 	else if (random < 110)
 	{
-		if (Npc_GetTrueGuild(self) == GIL_NOV)
-		|| (Npc_GetTrueGuild(self) == GIL_PAL)
-		|| (Npc_GetTrueGuild(self) == GIL_KDF)
+		if (guild == GIL_NOV || guild == GIL_PAL || guild == GIL_KDF)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK28");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK22");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK28");	}
+			else				{	B_Say (self, self, "$SMALLTALK22");	};
 		}
-		else if (Npc_GetTrueGuild(self) == GIL_BDT)
-		|| 		(Npc_GetTrueGuild(self) == GIL_SLD)
-		|| 		(Npc_GetTrueGuild(self) == GIL_DJG)
-		|| 		(Npc_GetTrueGuild(self) == GIL_PIR)
+		else if	(guild == GIL_BDT || guild == GIL_SLD || guild == GIL_DJG || guild == GIL_PIR)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK25");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK22");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK25");	}
+			else				{	B_Say (self, self, "$SMALLTALK22");	};
 		}
 		else
 		{
@@ -166,32 +149,15 @@ func void B_Say_Smalltalk()
 	}
 	else if (random < 115)
 	{
-		if (Npc_GetTrueGuild(self) == GIL_NOV)
-		|| (Npc_GetTrueGuild(self) == GIL_PAL)
-		|| (Npc_GetTrueGuild(self) == GIL_KDF)
+		if (guild == GIL_NOV || guild == GIL_PAL || guild == GIL_KDF)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK29");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK23");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK29");	}
+			else				{	B_Say (self, self, "$SMALLTALK23");	};
 		}
-		else if (Npc_GetTrueGuild(self) == GIL_BDT)
-		|| 		(Npc_GetTrueGuild(self) == GIL_SLD)
-		|| 		(Npc_GetTrueGuild(self) == GIL_DJG)
-		|| 		(Npc_GetTrueGuild(self) == GIL_PIR)
+		else if (guild == GIL_BDT || guild == GIL_SLD || guild == GIL_DJG || guild == GIL_PIR)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK26");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK23");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK26");	}
+			else				{	B_Say (self, self, "$SMALLTALK23");	};
 		}
 		else
 		{
@@ -200,32 +166,15 @@ func void B_Say_Smalltalk()
 	}
 	else if (random <= 120)
 	{
-		if (Npc_GetTrueGuild (self) == GIL_NOV)
-		|| (Npc_GetTrueGuild (self) == GIL_PAL)
-		|| (Npc_GetTrueGuild (self) == GIL_KDF)
+		if (guild == GIL_NOV || guild == GIL_PAL || guild == GIL_KDF)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK30");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK24");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK30");	}
+			else				{	B_Say (self, self, "$SMALLTALK24");	};
 		}
-		else if (Npc_GetTrueGuild(self) == GIL_BDT)
-		|| 		(Npc_GetTrueGuild(self) == GIL_SLD)
-		|| 		(Npc_GetTrueGuild(self) == GIL_DJG)
-		|| 		(Npc_GetTrueGuild(self) == GIL_PIR)
+		else if (guild == GIL_BDT || guild == GIL_SLD || guild == GIL_DJG || guild == GIL_PIR)
 		{
-			if (Choice == 0)
-			{
-				B_Say (self, self, "$SMALLTALK27");
-			}
-			else
-			{
-				B_Say (self, self, "$SMALLTALK24");
-			};
+			if (choice == 0)	{	B_Say (self, self, "$SMALLTALK27");	}
+			else				{	B_Say (self, self, "$SMALLTALK24");	};
 		}
 		else
 		{

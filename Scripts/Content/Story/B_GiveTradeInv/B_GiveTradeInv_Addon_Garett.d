@@ -26,8 +26,8 @@ func void B_GiveTradeInv_Addon_Garett (var C_NPC slf)
 		CreateInvItems (slf, ItRw_Crossbow_M_01, 1);
 		CreateInvItems (slf, ItRw_Crossbow_H_01, 1);
 		
-		CreateInvItems (slf, ItAm_ProtFire_01, 1);
-		CreateInvItems (slf, ItRi_ProtMagic_02, 1);
+		CreateInvItems (slf, ItAm_Barbarian_01, 1);
+		CreateInvItems (slf, ItRi_ProtMagical_01, 1);
 		
 		Garett_ItemsGiven_Chapter = 1;
 	};

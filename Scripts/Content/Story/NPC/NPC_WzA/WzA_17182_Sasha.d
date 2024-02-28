@@ -14,11 +14,11 @@ instance WzA_17182_Sasha (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -30,7 +30,7 @@ instance WzA_17182_Sasha (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Nude+0, BodySkin_N, "Hum_Head_Babe4", FaceBabe_Sasha, Teeth_Pretty, ITAR_Babe_VLK_M_04);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Nude+0, BodySkin_N, "Hum_Head_Babe4", FaceBabe_Sasha, Teeth_Pretty, ITAR_Babe_VLK_M_04);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

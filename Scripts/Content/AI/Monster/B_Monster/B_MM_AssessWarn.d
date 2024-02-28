@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_MM_AssessWarn
+/// B_MM_AssessWarn
 ///******************************************************************************************
 func void B_MM_AssessWarn()
 {
@@ -9,6 +9,7 @@ func void B_MM_AssessWarn()
 		{
 			return;
 		};
+		
 		if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_FRIENDLY)
 		{
 			Npc_ClearAIQueue	(self);
@@ -16,12 +17,15 @@ func void B_MM_AssessWarn()
 			B_ClearPerceptions	(self);
 			AI_StartState		(self, ZS_MM_Attack, false, "");
 		};
+		
 		return;
 	};
+	
 	if (other.guild < GIL_SEPERATOR_HUM)
 	{
 		return;
 	};
+	
 	if (Npc_GetHeightToNpc(self, other) > PERC_DIST_HEIGHT)
 	{
 		return;
@@ -40,6 +44,7 @@ func void B_MM_AssessWarn()
 		{
 			other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
 		};
+		
 		return;
 	};
 	

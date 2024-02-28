@@ -323,7 +323,7 @@ func int DIA_Nadja_BUYHERB_Condition ()
 };
 func void DIA_Nadja_BUYHERB_Info ()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	AI_Output (other, self, "DIA_Nadja_BUYHERB_15_00"); //Nie wiesz, gdzie móg³bym kupiæ trochê ziela?
 	
@@ -370,7 +370,7 @@ func int DIA_Nadja_WANT_HERB_Condition ()
 };
 func void DIA_Nadja_WANT_HERB_Info ()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	AI_Output (other, self, "DIA_Nadja_WANT_HERB_15_00"); //Teraz mów, gdzie mogê zdobyæ ziele.
 	
 	if (Hlp_IsItem (heroArmor, ItAR_MIl_L) == TRUE) 

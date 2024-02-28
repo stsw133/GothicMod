@@ -252,6 +252,6 @@ func void DIA_Bullco_PepesSchafe_Info ()
 	AI_Output (self, other, "DIA_Bullco_PepesSchafe_06_10"); //Ty wstrêtna kreaturo...
 	
 	Bullco_scharf = FALSE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	AI_StopProcessInfos (self);
 };

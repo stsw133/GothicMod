@@ -111,7 +111,7 @@ func void DIA_Albrecht_CanTeach_Info ()
 ///////////////////////////////////////////////////////////////////////
 
 var int HasSpellPalBless;
-var int HasSpellPalHeal;
+var int HasSpellPalFaith;
 var int HasSpellPalHolyBolt;
 var int HasSpellPalJustice;
 var int HasSpellPalDestroyEvil;
@@ -171,12 +171,12 @@ func void B_Albrecht_YouAreNotWorthy()
 func void DIA_Albrecht_TEACHPalRunes_Heal()
 {
 	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_Heal_15_00"); //Wybieram drogê leczenia.
-	if (!HasSpellPalHeal && !HasSpellPalHolyBolt)
+	if (!HasSpellPalFaith && !HasSpellPalHolyBolt)
 	&& (MIS_ReadyforChapter4)
 	{
-		CreateInvItems (self, ItRu_PalHeal, 1);
-		B_GiveInvItems (self, other, ItRu_PalHeal, 1);
-		HasSpellPalHeal = true;
+		CreateInvItems (self, ItRu_PalFaith, 1);
+		B_GiveInvItems (self, other, ItRu_PalFaith, 1);
+		HasSpellPalFaith = true;
 	}
 	else if (!HasSpellPalJustice && !HasSpellPalDestroyEvil)
 	&& (Kapitel >= 11)
@@ -195,7 +195,7 @@ func void DIA_Albrecht_TEACHPalRunes_Combat()
 {
 	AI_Output (other, self, "DIA_Albrecht_TEACHPalRunes_Combat_15_00"); //Wybieram drogê walki.
 	
-	if (!HasSpellPalHolyBolt && !HasSpellPalHeal)
+	if (!HasSpellPalHolyBolt && !HasSpellPalFaith)
 	&& (MIS_ReadyforChapter4)
 	{
 		CreateInvItems (self, ItRu_PalHolyBolt, 1);

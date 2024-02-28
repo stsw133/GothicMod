@@ -1,14 +1,15 @@
 ///******************************************************************************************
-///	B_SelectWeapon
+/// B_SelectWeapon
 ///******************************************************************************************
-func void B_SelectWeapon (var C_NPC slf, var C_NPC oth)
+func void B_SelectWeapon (var C_Npc slf, var C_Npc oth)
 {
-	if (C_BodyStateContains(slf, BS_FALL))
+	if (C_BodyStateContains(slf, BS_DIVE))
+	|| (C_BodyStateContains(slf, BS_FALL))
 	|| (C_BodyStateContains(slf, BS_SWIM))
-	|| (C_BodyStateContains(slf, BS_DIVE))
 	{
 		return;
 	};
+	
 	if (B_SelectSpell(slf, oth))
 	{
 		return;

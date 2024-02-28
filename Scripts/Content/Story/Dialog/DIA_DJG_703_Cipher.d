@@ -317,7 +317,7 @@ func void DIA_CipherDJG_SWAMPDRAGONDEAD_Info()
 	AI_Output			(self, other, "DIA_CipherDJG_SWAMPDRAGONDEAD_07_02"); //O rany, ale w dechê koleœ!
 	
 	AI_StopProcessInfos	(self);
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
 
 	DJG_SwampParty = FALSE;
 	DJG_SwampParty_GoGoGo = FALSE;

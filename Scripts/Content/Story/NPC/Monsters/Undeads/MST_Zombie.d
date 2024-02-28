@@ -10,15 +10,8 @@ prototype Mst_Default_Zombie (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ZOMBIE;
 	
-	B_SetAttributesToLevel (self, 20);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -29,7 +22,7 @@ prototype Mst_Default_Zombie (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_Packhunter] 			=	true;
-//	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
@@ -63,16 +56,6 @@ instance MayaZombie (Mst_Default_Zombie)
 	B_SetVisuals_MayaZombie();
 };
 ///******************************************************************************************
-instance Summoned_Zombie (Mst_Default_Zombie)
-{
-	name								=	"Przywo³any zombie";
-	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
-	
-	B_SetAttributesToLevel (self, level);
-	B_SetVisuals_Zombie();
-};
-///******************************************************************************************
 ///	QuestMonsters
 ///******************************************************************************************
 instance Zombie_RavenGuard (Mst_Default_Zombie)
@@ -91,15 +74,8 @@ instance Zombie_Bloodwyn (Mst_Default_Zombie)
 {
 	name								=	"O¿ywiony Bloodwyn";
 	
-	B_SetAttributesToLevel (self, 30);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	Mdl_SetVisual		(self, "Zombie.mds");
 	Mdl_SetVisualBody	(self, "Zom_Body", 0, default, "Zom_Head", 0, default, ITAR_RVN_M);

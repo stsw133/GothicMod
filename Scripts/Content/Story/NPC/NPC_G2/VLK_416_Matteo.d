@@ -9,8 +9,8 @@ instance VLK_416_Matteo (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate+5);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -19,7 +19,7 @@ instance VLK_416_Matteo (Npc_Default)
 	EquipItem (self, ItMw_1H_VLK_Sword);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Gomez, 0, ITAR_VLK_L_07);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Gomez, 0, ITAR_VLK_L_07);
 	Mdl_SetModelFatness	(self, 1.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

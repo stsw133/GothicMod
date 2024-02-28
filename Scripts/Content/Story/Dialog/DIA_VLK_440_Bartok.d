@@ -189,7 +189,7 @@ FUNC VOID DIA_Bartok_WannaLearn_Info()
 		AI_Output (self ,other,"DIA_Bartok_WannaLearn_04_02"); //Jeœli chcesz siê nauczyæ, jak zdejmowaæ skóry ze zwierz¹t, idŸ do Bospera. To on mnie tego nauczy³.
 	};
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	Log_CreateTopic (Topic_CityTeacher, LOG_NOTE);
 	B_LogEntry (Topic_CityTeacher, "Bartok mo¿e mnie nauczyæ strzelania z ³uku oraz skradania siê.");

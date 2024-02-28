@@ -276,8 +276,8 @@ func void DIA_Pyrokar_TEST_Info ()
 	B_StartOtherRoutine (Igaraz,"CONTEST");
 	AI_Teleport (Igaraz,"NW_TAVERNE_BIGFARM_05");	
 	CreateInvItems (Igaraz, ItKe_MagicChest,1);
-	Igaraz.aivar [AIV_DropDeadAndKill] = TRUE;
-	Igaraz.aivar [AIV_NewsOverride] = TRUE;
+	Igaraz.aivar[AIV_DropDeadAndKill] = TRUE;
+	Igaraz.aivar[AIV_NewsOverride] = Igaraz.aivar[AIV_NewsOverride] | NEWS_ToughGuy;
 	
 	//---------Smalltalk Partner herbeirufen 
 	B_StartOtherRoutine (NOV607,"EXCHANGE");
@@ -286,14 +286,14 @@ func void DIA_Pyrokar_TEST_Info ()
 	B_StartOtherRoutine (Agon,"GOLEMDEAD");
 	AI_Teleport (Agon,"NW_MAGECAVE_RUNE");
 	CreateInvItems (Agon, ItKe_MagicChest,1);		
-	Agon.aivar [AIV_DropDeadAndKill] = TRUE;
-	Agon.aivar [AIV_NewsOverride] = TRUE;
+	Agon.aivar[AIV_DropDeadAndKill] = TRUE;
+	Agon.aivar[AIV_NewsOverride] = Agon.aivar[AIV_NewsOverride] | NEWS_ToughGuy;
 	//------------Ulf klar machen-------------------
 	B_StartOtherRoutine (Ulf,"SUCHE");
 	AI_Teleport (Ulf,"NW_TROLLAREA_PATH_42");	
 	CreateInvItems (Ulf, ItKe_MagicChest,1);	
-	Ulf.aivar [AIV_DropDeadAndKill] = TRUE;
-	Ulf.aivar [AIV_NewsOverride] = TRUE;
+	Ulf.aivar[AIV_DropDeadAndKill] = TRUE;
+	Ulf.aivar[AIV_NewsOverride] = Ulf.aivar[AIV_NewsOverride] | NEWS_ToughGuy;
 	//-------------------------------
 	MIS_SCHNITZELJAGD = LOG_RUNNING;
 	AI_StopProcessInfos (self);
@@ -373,7 +373,7 @@ func void DIA_Pyrokar_SUCCESS_Info ()
 	AI_Output (self, other, "DIA_Pyrokar_SUCCESS_11_05"); //Có¿, og³aszamy zatem, ¿e przeszed³eœ test. Runiczny kamieñ mo¿esz zachowaæ dla siebie.
 	 
 	MIS_SCHNITZELJAGD = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info PERM wenn Prüfung erfolgreich und die anderen noch nicht. 
@@ -494,7 +494,7 @@ func void DIA_Pyrokar_OATH_Info ()
 	KDF_Aufnahme = LOG_SUCCESS;
 	SLD_Aufnahme = LOG_OBSOLETE;
 	MIL_Aufnahme = LOG_OBSOLETE;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 	
 	
 	AI_Output (self, other, "DIA_Pyrokar_OATH_11_08"); //Teraz, jako cz³onek naszej organizacji, mo¿esz porozmawiaæ z Lordem Hagenem, dowódc¹ paladynów.
@@ -615,7 +615,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Dyrian ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Dyrian_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Dyrian_11_02"); //Nowicjusz zostanie w klasztorze. Mo¿e obj¹æ posadê ogrodnika, która siê w³aœnie zwolni³a.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	B_StartOtherRoutine (Dyrian,"FAVOUR");
 	
@@ -640,7 +640,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Babo ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Babo_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Babo_11_02"); //Od dziœ odpowiedzialnoœæ za nasze ogrody przejmie nowicjusz Babo.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	B_StartOtherRoutine (Babo,"FAVOUR");
 	B_StartOtherRoutine (Dyrian,"NOFAVOUR");
@@ -667,7 +667,7 @@ FUNC VOID DIA_Pyrokar_Wunsch_Opolos ()
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Opolos_11_01"); //Niech tak siê stanie.
 	AI_Output (self ,other,"DIA_Pyrokar_Wunsch_Opolos_11_02"); //Od dziœ nowicjusz Opolos mo¿e bez przeszkód studiowaæ pisma Innosa.
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	B_StartOtherRoutine (Opolos,"FAVOUR");
 	B_StartOtherRoutine(Dyrian,"NOFAVOUR");
@@ -744,9 +744,9 @@ func int DIA_Pyrokar_TEACH_Condition ()
 {	
 	if (Npc_GetTalentSkill (hero, NPC_TALENT_MAGIC) == 4)
 	&& (Kapitel >= 11) 
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Pyrokar_TEACH_Info ()
@@ -767,7 +767,7 @@ func void DIA_Pyrokar_TEACH_Info ()
 		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_10"); //Innosie, odwieczny Panie œwiat³a i ognia, pob³ogos³aw tego cz³owieka, swego umi³owanego s³ugê.
 		AI_Output (self, other, "DIA_Pyrokar_TEACH_11_11"); //Dodaj mu odwagi, si³y i m¹droœci, by móg³ pewnie pod¹¿aæ œcie¿k¹, któr¹ dla niego wybra³eœ.
 		
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{
@@ -1069,7 +1069,7 @@ func void DIA_Pyrokar_FOUNDINNOSEYE_Info ()
 
 	MIS_SCKnowsInnosEyeIsBroken  = TRUE;
 	MIS_NovizenChase = LOG_SUCCESS;	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	Info_ClearChoices	(DIA_Pyrokar_FOUNDINNOSEYE);
 	Info_AddChoice		(DIA_Pyrokar_FOUNDINNOSEYE, "Co mo¿emy teraz zrobiæ?", DIA_Pyrokar_FOUNDINNOSEYE_was );
@@ -1156,7 +1156,7 @@ func void DIA_Pyrokar_SPOKETOVATRAS_Info ()
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_08"); //Sk¹d mam wiedzieæ, ¿e Xardas nie stoi po stronie nieprzyjaciela?
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_09"); //Nie zaufam temu nekromancie, niezale¿nie od tego, jak bardzo jest nam potrzebny.
 	AI_Output			(self, other, "DIA_Pyrokar_SPOKETOVATRAS_11_10"); //Przykro mi, ale w tej sytuacji nie mogê pomóc Vatrasowi.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 
@@ -1349,7 +1349,7 @@ func void DIA_Pyrokar_KAP3_READY_Info()
 	AI_Output	(self, other, "DIA_Pyrokar_KAP3_READY_11_09"); //Masz ju¿ wszystko, czego potrzebujesz. Ruszaj w drogê. Zosta³o nam niewiele czasu!
 
 	TOPIC_END_INNOSEYE = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	CreateInvItems   (Gorax, ItMi_RuneBlank, 1);
 	
@@ -1392,7 +1392,7 @@ func void DIA_Pyrokar_BUCHDERBESSENEN_Info ()
 	AI_Output			(other, self, "DIA_Pyrokar_BUCHDERBESSENEN_15_02"); //Nie jestem pewien. Mia³em nadziejê, ¿e ty mi to powiesz.
 	B_GiveInvItems 		(other, self, ITWR_DementorObsessionBook_MIS,1);
 	AI_Output			(self, other, "DIA_Pyrokar_BUCHDERBESSENEN_11_03"); //To rzeczywiœcie niepokoj¹ca ksiêga. M¹drze zrobi³eœ, przynosz¹c j¹ do mnie.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	if (hero.guild == GIL_KDF)
 	{
@@ -1445,7 +1445,7 @@ instance DIA_Pyrokar_SCOBSESSED		(C_INFO)
 
 func int DIA_Pyrokar_SCOBSESSED_Condition ()
 {
-	if (SC_IsObsessed == TRUE)
+	if (bsObsession > 0)
 		{
 				return TRUE;
 		};
@@ -1555,7 +1555,7 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 	if (AlmanachCount == 1)
 		{
 			AI_Output		(other, self, "DIA_Pyrokar_AlmanachBringen_15_02"); //Znalaz³em kolejny almanach.
-			B_GivePlayerXP(450);
+			B_GivePlayerExp(450);
 			B_GiveInvItems (other, self, ITWR_DementorObsessionBook_MIS,1);
 			AlmanachCounter = AlmanachCounter + 1;
 		}
@@ -1568,7 +1568,7 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 			XP_KDF_BringAlmanachs = (AlmanachCount * 450);
 			AlmanachCounter = (AlmanachCounter + AlmanachCount); 
 
-			B_GivePlayerXP (XP_KDF_BringAlmanachs);
+			B_GivePlayerExp (XP_KDF_BringAlmanachs);
 		};
 
 	if (AlmanachCounter <= 5)
@@ -1844,7 +1844,7 @@ func void DIA_Pyrokar_IRDORATHBOOKOPEN_glueck ()
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_glueck_11_03"); //...daje mi du¿o do myœlenia.
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_glueck_11_04"); //W ka¿dym razie, jako ¿e to ty otworzy³eœ ksiêgê, pozwolê ci j¹ st¹d zabraæ. Przynajmniej dopóki ca³a ta sprawa nie znajdzie rozwi¹zania.
 
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 	Info_ClearChoices	(DIA_Pyrokar_IRDORATHBOOKOPEN);
 
 };
@@ -1855,7 +1855,7 @@ func void DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas ()
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas_11_01"); //Ach, wiêc to tak! Bardzo ciekawe. Mam tylko nadziejê, ¿e wp³yw Xardasa na ciebie nie oka¿e siê zgubny w skutkach!
 	AI_Output			(self, other, "DIA_Pyrokar_IRDORATHBOOKOPEN_Xardas_11_02"); //Ostrzegam ciê! Nie daj siê z³apaæ na sztuczki tego starego diab³a. Kiedyœ mo¿esz tego po¿a³owaæ.
 
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 	Info_ClearChoices	(DIA_Pyrokar_IRDORATHBOOKOPEN);
 
 };
@@ -2040,7 +2040,7 @@ func void DIA_Pyrokar_DTCLEARED_Info ()
 	AI_Output			(self, other, "DIA_Pyrokar_DTCLEARED_11_02"); //Jeœli nadal zale¿y ci na pomocy Jorgena, mo¿esz go ze sob¹ zabraæ.
 	AI_Output			(self, other, "DIA_Pyrokar_DTCLEARED_11_03"); //Niech Innos ma ciê w swojej opiece.
 	MIS_PyrokarClearDemonTower = LOG_SUCCESS;
-	B_GivePlayerXP(1000);
+	B_GivePlayerExp(1000);
 };
 
 ///////////////////////////////////////////////////////////////////////

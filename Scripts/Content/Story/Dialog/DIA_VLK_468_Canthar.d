@@ -473,7 +473,7 @@ func void DIA_Canthar_SARAHERLEDIGT_Info ()
 			AI_Output (self, other, "DIA_Canthar_SARAHERLEDIGT_09_05"); //Naprawdê? Wspaniale. Zatem wykona³eœ ju¿ pó³ naszej umowy.
 			
 			MIS_Canthars_KomproBrief = LOG_SUCCESS;
-			B_GivePlayerXP(50);
+			B_GivePlayerExp(50);
 			Npc_ExchangeRoutine	(self,"MARKTSTAND"); 
 	};
 	AI_StopProcessInfos (self);
@@ -528,7 +528,7 @@ func void DIA_Canthar_Success_Info ()
 				
 		B_GiveInvItems (self, other, ItMW_Schiffsaxt,1);
 	};
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 //---------------------------------------------------------------------
@@ -699,5 +699,5 @@ func void DIA_Canthar_MinenAnteil_Info ()
 {
 	AI_Output (other, self, "DIA_Canthar_Minenanteil_15_00"); //Sprzedajesz nielegalne udzia³y w kopalni!
 	AI_Output (self, other, "DIA_Canthar_Minenanteil_09_01"); //Tak, i co? Co z tego! Jeœli ja tego nie zrobiê, zajmie siê tym ktoœ inny.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };

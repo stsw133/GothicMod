@@ -1,71 +1,53 @@
-// ******************
-// Tanzen auf WP
-// ******************
-
+///******************************************************************************************
+/// ZS_Dance
+///******************************************************************************************
 func void ZS_Dance()
 {
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
-	  
-	AI_SetWalkmode		(self,	NPC_WALK);	
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self,self.wp) > TA_DIST_SELFWP_MAX)
 	{
-		AI_GotoWP		(self, self.wp);
-		AI_AlignToWP	(self);
+		AI_GotoWP (self, self.wp);
+		AI_AlignToWP(self);
 	};
 };
 
 func int ZS_Dance_Loop()
 {
 	var int danceStyle;
-	danceStyle = Hlp_Random(9);
-
-	if ( danceStyle == 0 )
+	
+	if (self.aivar[AIV_Gender] == ORCMALE)
 	{
-		AI_PlayAni(self, "T_DANCE_01");
-	};
-	if ( danceStyle == 1 )
+		danceStyle = Hlp_Random(2);
+		
+		if		(danceStyle == 0)	{	AI_PlayAni (self, "T_DANCE_RANDOM_1");	}
+		else if	(danceStyle == 1)	{	AI_PlayAni (self, "T_DANCE_RANDOM_2");	};
+	}
+	else
 	{
-		AI_PlayAni(self, "T_DANCE_02");
-	};
-	if ( danceStyle == 2 )
-	{
-		AI_PlayAni(self, "T_DANCE_03");
-	};
-	if ( danceStyle == 3 )
-	{
-		AI_PlayAni(self, "T_DANCE_04");
-	};
-	if ( danceStyle == 4 )
-	{
-		AI_PlayAni(self, "T_DANCE_05");
-	};
-	if ( danceStyle == 5 )
-	{
-		AI_PlayAni(self, "T_DANCE_06");
-	};
-	if ( danceStyle == 6 )
-	{
-		AI_PlayAni(self, "T_DANCE_07");
-	};
-	if ( danceStyle == 7 )
-	{
-		AI_PlayAni(self, "T_DANCE_08");
-	};
-	if ( danceStyle == 8 )
-	{
-		AI_PlayAni(self, "T_DANCE_09");
+		danceStyle = Hlp_Random(9);
+		
+		if		(danceStyle == 0)	{	AI_PlayAni (self, "T_DANCE_01");	}
+		else if	(danceStyle == 1)	{	AI_PlayAni (self, "T_DANCE_02");	}
+		else if	(danceStyle == 2)	{	AI_PlayAni (self, "T_DANCE_03");	}
+		else if	(danceStyle == 3)	{	AI_PlayAni (self, "T_DANCE_04");	}
+		else if	(danceStyle == 4)	{	AI_PlayAni (self, "T_DANCE_05");	}
+		else if	(danceStyle == 5)	{	AI_PlayAni (self, "T_DANCE_06");	}
+		else if	(danceStyle == 6)	{	AI_PlayAni (self, "T_DANCE_07");	}
+		else if	(danceStyle == 7)	{	AI_PlayAni (self, "T_DANCE_08");	}
+		else if	(danceStyle == 8)	{	AI_PlayAni (self, "T_DANCE_09");	};
 	};
 	
-	AI_GotoWP		(self, self.wp);
-	AI_AlignToWP    (self);
+	AI_GotoWP (self, self.wp);
+	AI_AlignToWP(self);
 	
 	return LOOP_CONTINUE;
 };
 
 func void ZS_Dance_End()
 {
-	AI_StandUp (self);
+	AI_StandUp(self);
 };

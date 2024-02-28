@@ -248,7 +248,7 @@ func void DIA_Addon_Saturas_LanceLeiche_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_LanceLeiche_14_02"); //Uwa¿aj na siebie, synu. Nie chcê op³akiwaæ kolejnej straty.
 	
 	TOPIC_End_Lance = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -278,7 +278,7 @@ func void DIA_Addon_Saturas_LanceRing_Info ()
 	AI_Output	(other, self, "DIA_Addon_Saturas_LanceRing_15_00"); //Mam akwamarynowy pierœcieñ Lance'a.
 	AI_Output	(self, other, "DIA_Addon_Saturas_LanceRing_14_01"); //Najlepiej oddaj mi go, zanim wpadnie w niepowo³ane rêce.
 	B_GiveInvItems (other, self, ItRi_Ranger_Lance, 1);		
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info Tokens
@@ -402,7 +402,7 @@ func void DIA_Addon_Saturas_Tokens_Info ()
 	
 			XP_BroughtTokens = (400 * BroughtToken);
 	
-			B_GivePlayerXP (XP_BroughtTokens);
+			B_GivePlayerExp (XP_BroughtTokens);
 			Saturas_BroughtTokenAmount = (Saturas_BroughtTokenAmount + BroughtToken);
 
 		if (Saturas_BroughtTokenAmount < 5)
@@ -563,7 +563,7 @@ func void DIA_Addon_Saturas_Flut_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_Flut_14_04"); //Bagno na wschodzie jest pozosta³oœci¹ po tych wydarzeniach.
 
 	TOPIC_END_Flut = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -688,7 +688,7 @@ func void DIA_Addon_Saturas_RavenInfos_Info ()
 	if (RavenNeuigkeit != 0)
 	{
 		var int XP_RavenNeuigkeit; XP_RavenNeuigkeit = (RavenNeuigkeit * 100);
-		B_GivePlayerXP(XP_RavenNeuigkeit);
+		B_GivePlayerExp(XP_RavenNeuigkeit);
 	}
 	else
 	{
@@ -953,7 +953,7 @@ func void DIA_Addon_Saturas_RavensDead_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_VatrasAbloesung, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_VatrasAbloesung,"Myxir uda³ siê do miasta portowego, aby pomóc Vatrasowi."); 
 
-	B_GivePlayerXP(1000);
+	B_GivePlayerExp(1000);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -981,7 +981,7 @@ func void DIA_Addon_Saturas_FreedMissingPeople_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Saturas_FreedMissingPeople_15_00"); //Uwolni³em wiêŸniów.
 	AI_Output	(self, other, "DIA_Addon_Saturas_FreedMissingPeople_14_01"); //Bardzo dobrze. Oby szczêœliwie dotarli do swej ojczyzny.
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1135,7 +1135,7 @@ func void DIA_Addon_Saturas_BeliarWeapGeben_Info ()
 	AI_Output	(self, other, "DIA_Addon_Saturas_BeliarWeapGeben_14_02"); //Nie wyrz¹dzi ju¿ nikomu krzywdy, gdy zatopiê j¹ w morskich odmêtach.
 	AI_Output	(self, other, "DIA_Addon_Saturas_BeliarWeapGeben_14_03"); //Na jej stra¿y staæ bêdzie m¹droœæ Adanosa.
 	TOPIC_END_Klaue = TRUE;
-	B_GivePlayerXP(2000);
+	B_GivePlayerExp(2000);
 	Saturas_KlaueInsMeer = TRUE;
 };
 
@@ -1173,7 +1173,7 @@ func void DIA_Addon_Saturas_ADW_PreTeachCircle_Info ()
 		AI_Output	(self, other, "DIA_Addon_Saturas_ADW_PreTeachCircle_14_04"); //Jeœli odniosê wra¿enie, ¿e wykorzystasz sw¹ wiedzê, aby czyniæ z³o, nie bêdziesz móg³ wiêcej na mnie liczyæ.
 		AI_Output	(self, other, "DIA_Addon_Saturas_ADW_PreTeachCircle_14_05"); //Lepiej mnie nie rozczaruj.
 	};
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	Log_CreateTopic	(TOPIC_Addon_KDWTeacher, LOG_NOTE);
 	B_LogEntry (TOPIC_Addon_KDWTeacher, LogText_Addon_SaturasTeach); 

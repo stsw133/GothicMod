@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	ZS_MM_Rtn_EatGround
+/// ZS_MM_Rtn_EatGround
 ///******************************************************************************************
-func void ZS_MM_Rtn_EatGround()  
+func void ZS_MM_Rtn_EatGround()
 {
 	Perception_Set_Monster_Rtn();
 	
@@ -27,12 +27,13 @@ func void ZS_MM_Rtn_EatGround()
 ///******************************************************************************************
 func int ZS_MM_Rtn_EatGround_Loop()
 {
-	if (!Wld_IsTime(self.aivar[AIV_MM_EatGroundStart],00,self.aivar[AIV_MM_EatGroundEnd],00))
+	if (!Wld_IsTime(self.aivar[AIV_MM_EatGroundStart], 00, self.aivar[AIV_MM_EatGroundEnd], 00))
 	&& (self.aivar[AIV_MM_EatGroundStart] != OnlyRoutine)
 	{
 		AI_StartState (self, ZS_MM_AllScheduler, true, "");
 		return LOOP_END;
 	};
+	
 	return LOOP_CONTINUE;
 };
 

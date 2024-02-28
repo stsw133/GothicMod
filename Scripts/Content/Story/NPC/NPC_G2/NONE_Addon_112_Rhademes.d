@@ -13,20 +13,20 @@ instance NONE_ADDON_112_Rhademes (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_NoFightParker] 			=	true;
 
 //	protection[PROT_POINT]				=	99999999;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Master-10);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Master-10);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Ske_Head", 0, 0, ITAR_JARKHENDAR);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Ske_Head", 0, 0, ITAR_JARKHENDAR);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

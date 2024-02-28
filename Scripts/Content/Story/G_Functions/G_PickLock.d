@@ -8,12 +8,12 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		if (bBrokenOpen)
 		{
 			Snd_Play3D (self, "PICKLOCK_UNLOCK");
-			Print(PRINT_PICKLOCK_UNLOCK);
+			Print("Zamek otwarty.");
 		}
 		else
 		{
 			Snd_Play3D (self, "PICKLOCK_SUCCESS");
-			Print(PRINT_PICKLOCK_SUCCESS);
+			Print("Brzmi nieźle.");
 		};
 	}
 	else
@@ -21,7 +21,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		if (bBrokenOpen)
 		{
 			Snd_Play3D (self, "PICKLOCK_BROKEN");
-			Print(PRINT_PICKLOCK_BROKEN);
+			Print("Wytrych się złamał.");
 			
 			if (Hlp_Random(4) == 0)
 			{
@@ -31,7 +31,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		else
 		{
 			Snd_Play3D (self, "PICKLOCK_FAILURE");
-			Print(PRINT_PICKLOCK_FAILURE);
+			Print("Cholera... Spróbuj ponownie.");
 		};
 	};
 };

@@ -10,15 +10,8 @@ prototype Mst_Default_GoblinSkeleton (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
-	B_SetAttributesToLevel (self, 10);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -27,7 +20,7 @@ prototype Mst_Default_GoblinSkeleton (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_LONG;
 	aivar[AIV_MM_Packhunter] 			=	true;
-//	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
@@ -42,18 +35,6 @@ func void B_SetVisuals_GoblinSkeleton()
 ///******************************************************************************************
 instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
 {
-	B_SetVisuals_GoblinSkeleton();
-	EquipItem (self, ItMw_1h_Goblin_04);
-};
-///******************************************************************************************
-instance Summoned_Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
-{
-	name								=	"Przyzwany szkielet-goblin";
-	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
-	
-	B_SetAttributesToLevel (self, level);
-	
 	B_SetVisuals_GoblinSkeleton();
 	EquipItem (self, ItMw_1h_MISC_Sword);
 };

@@ -10,13 +10,13 @@ var int SelfFightTeach_Level[5];
 ///******************************************************************************************
 func void SelfFightTeach_ADD (var C_Npc slf, var int talent)
 {
-//	if (Npc_GetTalentValue(slf, talent) < 90)
-//	{
+	if (Npc_GetTalentValue(slf, talent) < 100)
+	{
 		if		(talent == NPC_TALENT_1H)		&& (SelfFightTeach_Level[NPC_TALENT_1H] < 10)		{	SelfFightTeach_Progress[NPC_TALENT_1H] += 1;		}
 		else if	(talent == NPC_TALENT_2H)		&& (SelfFightTeach_Level[NPC_TALENT_2H] < 10)		{	SelfFightTeach_Progress[NPC_TALENT_2H] += 1;		}
 		else if	(talent == NPC_TALENT_BOW)		&& (SelfFightTeach_Level[NPC_TALENT_BOW] < 10)		{	SelfFightTeach_Progress[NPC_TALENT_BOW] += 1;		}
 		else if	(talent == NPC_TALENT_CROSSBOW)	&& (SelfFightTeach_Level[NPC_TALENT_CROSSBOW] < 10)	{	SelfFightTeach_Progress[NPC_TALENT_CROSSBOW] += 1;	};
-//	};
+	};
 	
 	if (SelfFightTeach_Progress[NPC_TALENT_1H] >= SelfFightTeach_Diff)
 	{

@@ -9,8 +9,8 @@ instance BDT_1086_Addon_Scatty (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Strong+5);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Strong+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -23,7 +23,7 @@ instance BDT_1086_Addon_Scatty (Npc_Default)
 	CreateInvItems (self, ItPo_Health_01, 2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Scatty, 0, ITAR_RVN_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Scatty, 0, ITAR_RVN_L);
 	Mdl_SetModelFatness	(self, 1.6);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

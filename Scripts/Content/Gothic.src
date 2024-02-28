@@ -13,21 +13,37 @@ LeGo\Header_G2.src
 AI\AI_INTERN\BodyStates.d
 AI\AI_INTERN\Focus.d
 AI\AI_INTERN\Npc_SetToMad.d
-AI\AI_INTERN\Species.d
 AI\AI_INTERN\PrintDebug.d
 AI\AI_INTERN\PrintPlus.d
+AI\AI_INTERN\Species.d
 
 STORY\Text.d
-STORY\Story_Globals.d
-STORY\NPC_Globals.d
+STORY\StoryGlobals.d
+STORY\NpcGlobals.d
 STORY\SVM.d
+
+MOD\MOD_BodyStates.d
+MOD\MOD_Bars.d
+MOD\MOD_Broadcast.d
+MOD\MOD_Checks.d
+MOD\MOD_Difficulty.d
+MOD\MOD_HeroReset.d
 
 AI\HUMAN\B_RefreshArmor.d
 AI\HUMAN\Guilds.d
+
 AI\HUMAN\C_Human\C_BodyStateContains.d
 AI\HUMAN\C_Human\C_DropUnconscious.d
 AI\HUMAN\C_Human\C_NpcIs.d
-AI\HUMAN\B_Human\B_LookAtNpc.d
+AI\HUMAN\C_Human\C_IsMyPossession.d
+AI\HUMAN\C_Human\C_NpcBelongsTo.d
+AI\HUMAN\C_Human\C_NpcHasAttackReasonToKill.d
+AI\HUMAN\C_Human\C_NpcRansacksAlways.d
+AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
+AI\HUMAN\C_Human\C_RefuseTalk.d
+AI\HUMAN\C_Human\C_WantTo.d
+
+AI\HUMAN\B_Human\B_Look.d
 AI\HUMAN\B_Human\B_Say.d
 AI\HUMAN\B_Human\B_SetAttitude.d
 AI\HUMAN\B_Human\B_ValidateOther.d
@@ -37,19 +53,14 @@ STORY\Log_Entries\B_CloseTopic.d
 STORY\Log_Entries\B_CloseTopics_*.d
 STORY\Log_Entries\B_Checklog.d
 
-MOD\MOD_NpcFn.d
-MOD\MOD_Bars.d
-MOD\MOD_BodyStates.d
-MOD\MOD_Difficulty.d
-MOD\MOD_Girlfriends.d
-
 STORY\B_Story\C_NpcIsInQuarter.d
 STORY\B_Story\C_DiegoTooFar.d
 STORY\B_Story\B_AddFightSkill.d
-STORY\B_Story\B_GivePlayerXP.d
+STORY\B_Story\B_GivePlayerExp.d
 
-MOD\MOD_HeroReset.d
+MOD\MOD_Girlfriends.d
 MOD\MOD_Missions.d
+MOD\MOD_PotionEffects.d
 MOD\MOD_SelfFightTeach.d
 
 STORY\B_Story\B_RaiseAttribute.d
@@ -86,30 +97,15 @@ ITEMS\GiveAll.d
 
 MOD\MOD_Defeated.d
 MOD\MOD_Masteries.d
-MOD\MOD_QuickSlot.d
-
-AI\MAGIC\B_MagicHurtNpc.d
+MOD\Quickslot\Quickslot.src
 
 STORY\B_Content\B_ScUsesRake.d
-STORY\B_Content\B_BeliarWeapon.d
-STORY\B_Content\B_WeaponSpecialDamage.d
-STORY\B_Content\B_GhostSpecialDamage.d
 
-AI\HUMAN\C_Human\C_IsMyPossession.d
-AI\HUMAN\C_Human\C_PlayerHasFakeGuild.d
 STORY\B_Story\B_UseItem.d
 
 AI\HUMAN\B_Human\B_CommentFakeGuild.d
 AI\HUMAN\B_Human\B_Say_AttackEnd.d
 AI\HUMAN\B_Human\B_Say_AttackReason.d
-
-AI\HUMAN\C_Human\C_WantToFlee.d
-AI\HUMAN\C_Human\C_WantToRansack.d
-AI\HUMAN\C_Human\C_NpcHasAttackReasonToKill.d
-AI\HUMAN\C_Human\C_NpcBelongsTo.d
-AI\HUMAN\C_Human\C_NpcRansacksAlways.d
-AI\HUMAN\C_Human\C_RefuseTalk.d
-
 AI\HUMAN\B_Human\B_GetTotalPetzCounter.d
 AI\HUMAN\B_Human\B_GetCurrentAbsolutionLevel.d
 AI\HUMAN\B_Human\B_GetGreatestPetzCrime.d
@@ -121,13 +117,20 @@ AI\HUMAN\B_Human\B_Attack.d
 AI\HUMAN\B_Human\B_CallGuards.d
 AI\HUMAN\B_Human\B_CreateAmmo.d
 
-AI\HUMAN\C_Human\C_NpcHasAmbientNews.d
 AI\HUMAN\C_Human\C_WantToAttack.d
-AI\HUMAN\C_Human\C_WantToReactToSneaker.d
 
+AI\MAGIC\B_MagicFn.d
 AI\MAGIC\B_ReadySpell.d
 AI\MAGIC\B_SelectSpell.d
 AI\MAGIC\C_Spell_Proto.d
+
+STORY\B_Content\B_BeliarWeapon.d
+STORY\B_Content\B_WeaponSpecialDamage.d
+STORY\B_Content\B_GhostSpecialDamage.d
+
+STORY\B_AssignAmbientInfos\B_AssignDementorTalk.d
+STORY\B_AssignAmbientInfos\B_AssignSchiffswachenTalk.d
+STORY\B_AssignAmbientInfos\B_ExecAmbientInfos.d
 
 AI\HUMAN\B_Human\B_FinishingMove.d
 AI\HUMAN\B_Human\B_SelectWeapon.d
@@ -138,19 +141,18 @@ AI\HUMAN\B_Human\B_AssessEnterRoom.d
 AI\HUMAN\B_Human\B_AssessFightSound.d
 AI\HUMAN\B_Human\B_AssessMurder.d
 AI\HUMAN\B_Human\B_AssessQuietSound.d
-STORY\B_AssignAmbientInfos\B_ExecAmbientInfos.d
 AI\HUMAN\B_Human\B_AssessTalk.d
 AI\HUMAN\B_Human\B_AssessTheft.d
 AI\HUMAN\B_Human\B_AssessThreat.d
 AI\HUMAN\B_Human\B_AssessUseMob.d
 AI\HUMAN\B_Human\B_AssessWarn.d
-STORY\B_AssignAmbientInfos\B_AssignDementorTalk.d
-STORY\B_AssignAmbientInfos\B_AssignSchiffswachenTalk.d
 AI\HUMAN\B_Human\B_AssessPlayer.d
 AI\HUMAN\B_Human\B_MoveMob.d
 AI\HUMAN\B_Human\B_RemoveWeapon.d
 
 STORY\B_Story\B_GiveInvItems.d
+STORY\NpcFn\*.d
+
 MOD\MOD_Assassination.d
 MOD\MOD_ItemFn.d
 MOD\MOD_Pickpocket.d
@@ -180,20 +182,16 @@ AI\HUMAN\TA_Human\ZS*.d
 
 STORY\Dialog_Mobsis\*.d
 
-STORY\Npc_Scripts\B_SetAttributesToLevel.d
-STORY\Npc_Scripts\B_SetNpcVisual.d
-STORY\Npc_Scripts\Npc_Default.d
-
 STORY\NPC\*.d
 STORY\NPC\NPC_G2\*.d
 STORY\NPC\NPC_WzA\*.d
 STORY\NPC\Monsters\MST_*.d
 STORY\NPC\Monsters\Demons\MST_*.d
+STORY\NPC\Monsters\Farm\MST_*.d
 STORY\NPC\Monsters\Furbeasts\MST_*.d
 STORY\NPC\Monsters\Goblins\MST_*.d
 STORY\NPC\Monsters\Golems\MST_*.d
 STORY\NPC\Monsters\Insects\MST_*.d
-STORY\NPC\Monsters\Livestock\MST_*.d
 STORY\NPC\Monsters\Orcs\MST_*.d
 STORY\NPC\Monsters\Reptiles\MST_*.d
 STORY\NPC\Monsters\Scavengers\MST_*.d
@@ -262,6 +260,7 @@ AI\MONSTER\ZS_Monster\ZS_MM_*.d
 STORY\Events\*.d
 STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
+MOD\MOD_Damage.d
 MOD\MOD_MovieMode.d
 MOD\TICK_TOCK.d
 TestFunctions.d

@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_IsUsedMobMyPossession
+/// C_IsUsedMobMyPossession
 ///******************************************************************************************
-func int C_IsUsedMobMyPossession (var C_NPC slf, var C_NPC oth)
+func int C_IsUsedMobMyPossession (var C_Npc slf, var C_Npc oth)
 {
 	if (Npc_IsDetectedMobOwnedByNpc(other, self)) 
 	{
@@ -17,11 +17,10 @@ func int C_IsUsedMobMyPossession (var C_NPC slf, var C_NPC oth)
 	return false;
 };
 
-
 ///******************************************************************************************
-///	C_IsTakenItemMyPossession
+/// C_IsTakenItemMyPossession
 ///******************************************************************************************
-func int C_IsTakenItemMyPossession (var C_NPC slf, var C_NPC oth, var C_ITEM itm)
+func int C_IsTakenItemMyPossession (var C_Npc slf, var C_Npc oth, var C_Item itm)
 {
 	var int portalguild; portalguild = Wld_GetPlayerPortalGuild();
 	
@@ -31,7 +30,6 @@ func int C_IsTakenItemMyPossession (var C_NPC slf, var C_NPC oth, var C_ITEM itm
 		{
 			Hammer_Taken = true;
 		};
-		
 		return true;
 	};
 	

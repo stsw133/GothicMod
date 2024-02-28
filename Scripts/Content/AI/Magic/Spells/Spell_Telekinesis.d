@@ -44,7 +44,7 @@ func void Spell_Cast_Telekinesis()
 	if (Hlp_IsValidItem(o_item))
 	{
 		Snd_Play("MFX_Telekinesis_StartInvest");
-		Wld_PlayEffect ("spellFX_telekinesis_KEY_CAST", o_item, o_item, 0, 0, 0, false);
+		Wld_PlayEffect ("spellFX_Telekinesis_KEY_CAST", o_item, o_item, 0, 0, 0, false);
 		MOD_MoveItemIntoInventory (self, o_item);
 	};
 	

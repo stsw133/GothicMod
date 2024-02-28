@@ -105,7 +105,7 @@ FUNC VOID DIA_Addon_Fortuno_Hi_GREEN()
 	Info_ClearChoices (DIA_Addon_Fortuno_Hi);
 	Fortuno_Geheilt_01 = TRUE;
 	
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 	
 	B_LogEntry (Topic_Addon_Fortuno,"Zielony nowicjusz przywróci³ zmys³y Fortuna.");
 };
@@ -254,7 +254,7 @@ FUNC VOID DIA_Addon_Fortuno_Trade_all()
 	
 	B_GiveInvItems (self, other, ItMi_Gold, amount * ITPL_Swampherb.value);
 	
-	B_GivePlayerXP (amount * 10);
+	B_GivePlayerExp (amount * 10);
 	B_Fortuno_InfoManager();
 };
 FUNC VOID DIA_Addon_Fortuno_Trade_1()
@@ -266,7 +266,7 @@ FUNC VOID DIA_Addon_Fortuno_Trade_1()
 	
 	B_GiveInvItems (self, other, ItMi_Gold, ITPL_Swampherb.value);
 	
-	B_GivePlayerXP (10);
+	B_GivePlayerExp (10);
 	B_Fortuno_InfoManager();
 };
 
@@ -300,7 +300,7 @@ FUNC VOID DIA_Addon_Fortuno_Trank_Info()
 	{
 		AI_UseItem (self, ItPo_Geist);
 	};
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 };
 ///////////////////////////////////////////////////////////////////////
 //	Info No more Secrets
@@ -347,7 +347,7 @@ FUNC VOID DIA_Addon_Fortuno_more_Info()
 	Log_AddEntry (TOPIC_Addon_RavenKDW,"Kruk s¹dzi, ¿e w realizacji jego planu pomog¹ jakieœ kamienne tablice."); 
 	
 	Npc_ExchangeRoutine (self, "START");
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 };
 //---------------------------------------------------------------------
 //	Info Attentat

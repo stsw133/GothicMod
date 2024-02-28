@@ -10,12 +10,12 @@ instance VLK_468_Canthar (Npc_Default)
 
 	/// ------ AI vars ------
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -27,7 +27,7 @@ instance VLK_468_Canthar (Npc_Default)
 	CreateInvItems (self, ItMi_Gold, 50);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal56, 0, ITAR_Vlk_L_13);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal56, 0, ITAR_Vlk_L_13);
 	Mdl_SetModelFatness	(self, 1.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

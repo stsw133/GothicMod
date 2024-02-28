@@ -80,7 +80,7 @@ FUNC VOID DIA_Addon_RoastPirate_GimmeGrog_HereIsGrog()
 	
 	Npc_ExchangeRoutine (self, "START");
 	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 // ************************************************************

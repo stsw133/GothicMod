@@ -85,7 +85,7 @@ FUNC VOID DIA_Gorn_DI_Teach_Info()
 {	
 	AI_Output (other, self , 	"DIA_Gorn_DI_Teach_15_00"); //Chcê trochê potrenowaæ.
 	AI_Output (self, other, 	"DIA_Gorn_DI_Teach_12_01"); //Fakt. Przyda ci siê.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@ func void EVT_MONASTERY_SECRETLIBRARY_S1()
 {
 	if (!SecretLibraryIsOpen)
 	{
-		B_GivePlayerXP(1000);
+		B_GivePlayerExp(1000);
 		SecretLibraryIsOpen = true;
 		
 		Wld_InsertNpc (Skeleton_Warrior, "FP_ROAM_NW_KDF_LIBRARY_01");

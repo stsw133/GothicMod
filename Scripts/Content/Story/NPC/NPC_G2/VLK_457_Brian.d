@@ -9,8 +9,8 @@ instance VLK_457_Brian (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -19,7 +19,7 @@ instance VLK_457_Brian (Npc_Default)
 	EquipItem (self, ItMw_1h_VLK_Axe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Fighter", Face_Normal04, 0, ITAR_SMITH);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Fighter", Face_Normal04, 0, ITAR_SMITH);
 	Mdl_SetModelFatness	(self, 0.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

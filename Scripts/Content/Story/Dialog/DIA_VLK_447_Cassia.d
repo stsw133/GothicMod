@@ -463,10 +463,10 @@ FUNC INT DIA_Cassia_BevorLernen_Condition()
 {	
 	if (Join_Thiefs == TRUE)
 	&& (Npc_KnowsInfo (other,DIA_Cassia_Lernen))
-	&& ((self.aivar[AIV_CanTeach] == false)
+	&& (((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	|| (Cassia_TeachDEX == FALSE))
 	{
-		return TRUE;
+		return true;
 	};
 };
 FUNC VOID DIA_Cassia_BevorLernen_Info()
@@ -476,7 +476,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Info()
 	if (MIS_ThiefGuild_sucked == FALSE)
 	{
 		AI_Output (self, other, "DIA_Cassia_BevorLernen_16_01");//Pewnie, nie ma problemu. Daj mi tylko znaæ, jak bêdziesz gotów.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		Cassia_TeachDEX = TRUE;
 	}
 	else
@@ -486,7 +486,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Info()
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 		Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Mo¿e póŸniej... (POWRÓT)",DIA_Cassia_BevorLernen_Spaeter);
 		
-		if (self.aivar[AIV_CanTeach] == false)
+		if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 		{
 			Info_AddChoice 	  (DIA_Cassia_BevorLernen,"Chcê poznaæ zasady kradzie¿y kieszonkowej (zap³aæ 100 sztuk z³ota).",DIA_Cassia_BevorLernen_Pickpocket);
 		};
@@ -523,7 +523,7 @@ FUNC VOID DIA_Cassia_BevorLernen_Pickpocket()
 	{
 		AI_Output (other, self, "DIA_Cassia_BevorLernen_Pickpocket_15_00");//Chcê siê nauczyæ kradzie¿y kieszonkowej. Oto z³oto.
 		AI_Output (self, other, "DIA_Cassia_BevorLernen_Pickpocket_16_01");//Mo¿emy zacz¹æ, jak tylko bêdziesz gotowy.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		Info_ClearChoices (DIA_Cassia_BevorLernen);
 	}
 	else 
@@ -568,7 +568,7 @@ FUNC VOID DIA_Cassia_Aufnahme_Info()
 	AI_Output  (self, other, "DIA_Cassia_Aufnahme_16_04");//W³aœnie tak. Kiedy bêdziesz z kimœ rozmawiaæ i zrobisz ten znak, jasne bêdzie, ¿e jesteœ jednym z nas.
 		
 	MIS_CassiaRing = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Knows_SecretSign = TRUE;
 	Log_CreateTopic (Topic_Diebesgilde, LOG_NOTE);
 	B_LogEntry (Topic_Diebesgilde,"Zosta³em przyjêty do gildii z³odziei."); 
@@ -685,7 +685,7 @@ FUNC VOID DIA_Cassia_abgeben_Info()
 		    
 		
 		MIS_CassiaKelche = LOG_SUCCESS;
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 	}
 	else 
 	{

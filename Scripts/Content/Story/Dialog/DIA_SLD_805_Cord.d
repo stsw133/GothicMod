@@ -164,7 +164,7 @@ FUNC VOID DIA_Cord_WannaJoin_Info()
 		AI_Output (self ,other, "DIA_Cord_WannaJoin_14_10"); //No có¿, przynajmniej nie jesteœ zupe³nie zielony. Dobrze, przyjmujê ciê.
 		AI_Output (self ,other, "DIA_Cord_WannaJoin_14_11"); //Mogê ciê nauczyæ, czego tylko zapragniesz.
 		Cord_Approved = TRUE;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		B_LogEntry (TOPIC_SLDRespekt,"G³os Corda znajduje siê w sakwie.");
 		Log_CreateTopic (Topic_SoldierTeacher,LOG_NOTE);
 		B_LogEntry (Topic_SoldierTeacher,"Cord mo¿e mnie szkoliæ w zakresie walki orê¿em jedno- i dwurêcznym.");
@@ -536,7 +536,7 @@ func void DIA_Addon_Cord_TalkedToDexter_Info ()
 
 	MIS_Addon_Cord_Look4Patrick = LOG_SUCCESS;
 	TOPIC_End_RangerHelpSLD = TRUE;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 
 	AI_Output	(other, self, "DIA_Addon_Cord_TalkedToDexter_15_09"); //Co wiêc z prób¹ Torlofa?
 	AI_Output	(self, other, "DIA_Addon_Cord_TalkedToDexter_14_10"); //Wróæ do niego - próba zakoñczona pomyœlnie. Mówi³em, ¿e siê tym zajmê...
@@ -586,7 +586,7 @@ FUNC VOID DIA_Cord_ReturnPatrick_Info()
 	AI_Output (self ,other, "DIA_Addon_Cord_ReturnPatrick_14_07"); //Powiem ci tylko, ¿e niez³y z ciebie numer.
 	AI_Output (self ,other, "DIA_Addon_Cord_ReturnPatrick_14_09"); //Uwa¿aj na siebie!
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	AI_StopProcessInfos (self);
 };
 // ************************************************************
@@ -671,9 +671,9 @@ INSTANCE DIA_Cord_Teach(C_INFO)
 
 FUNC INT DIA_Cord_Teach_Condition()
 {
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 
@@ -717,7 +717,7 @@ FUNC VOID DIA_Cord_Teach_Info()
 		
 		if (Cord_Approved == TRUE)
 		{
-			self.aivar[AIV_CanTeach] = true;
+			self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		};	
 	}
 	else 

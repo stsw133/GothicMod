@@ -66,7 +66,7 @@ func void B_GiveTradeInv_Khaled (var C_NPC slf)
 		CreateInvItems (slf, ItRw_Arrow, 80);
 		CreateInvItems (slf, ItRw_Bolt, 60);
 		CreateInvItems (slf, ItBe_Hp_01, 1);
-		CreateInvItems (slf, ItBe_Power_01, 1);
+		CreateInvItems (slf, ItBe_POW_01, 1);
 		
 		CreateInvItems (slf, ItMi_Nugget, 2);
 		

@@ -11,7 +11,7 @@ instance DIA_Teach_JOIN (C_INFO)
 };
 func int DIA_Teach_JOIN_Condition()
 {
-	if (self.aivar[AIV_CanTeach] > 0)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	{
 		return true;
 	};
@@ -183,6 +183,15 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Sneak, B_GetLearnCostTalent(other, NPC_TALENT_SNEAK, 1)), DIA_Teach_JOIN_Sneak);
 		};
 	};
+	/// PRORUN
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PRORUN) == 0)
+	{
+		if (Hlp_GetInstanceID(self) == BAU_4300_Addon_Cavalorn)
+		|| (Hlp_GetInstanceID(self) == VLK_440_Bartok)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_ProRun, B_GetLearnCostTalent(other, NPC_TALENT_PRORUN, 1)), DIA_Teach_JOIN_ProRun);
+		};
+	};
 	/// ACROBATIC
 	if (Npc_GetTalentSkill(other, NPC_TALENT_ACROBATIC) == 0)
 	{
@@ -191,7 +200,6 @@ func void DIA_Teach_JOIN_Info()
 			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Acrobatic, B_GetLearnCostTalent(other, NPC_TALENT_ACROBATIC, 1)), DIA_Teach_JOIN_Acrobatic);
 		};
 	};
-	/// LONGRUN
 	/// PICKLOCK
 	if (Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK) == 0)
 	{
@@ -214,6 +222,16 @@ func void DIA_Teach_JOIN_Info()
 		};
 	};
 	/// PERSUASION
+	if (Npc_GetTalentSkill(other, NPC_TALENT_PERSUASION) == 0)
+	{
+		if (Hlp_GetInstanceID(self) == PC_Thief_DI)
+		|| (Hlp_GetInstanceID(self) == PC_Thief_NW)
+		|| (Hlp_GetInstanceID(self) == PC_ThiefOW)
+		|| (Hlp_GetInstanceID(self) == VLK_447_Cassia)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Persuasion, B_GetLearnCostTalent(other, NPC_TALENT_PERSUASION, 1)), DIA_Teach_JOIN_Persuasion);
+		};
+	};
 	
 	/// SMITH
 	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) < 1)
@@ -223,14 +241,7 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == VLK_4106_Dobar)
 		|| (Hlp_GetInstanceID(self) == VLK_412_Harad)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_SMITH)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_SMITH)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Smith), B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1) / 2), DIA_Teach_JOIN_mSmith);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
 		};
 	};
 	if (Npc_GetTalentSkill(other, NPC_TALENT_SMITH) < 2)
@@ -238,31 +249,16 @@ func void DIA_Teach_JOIN_Info()
 		if (Hlp_GetInstanceID(self) == SLD_809_Bennet && Bennet_TeachSmith)
 		|| (Hlp_GetInstanceID(self) == SLD_809_Bennet_DI)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_SMITH)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_SMITH)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Smith), B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1) / 2), DIA_Teach_JOIN_mSmith);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Smith, B_GetLearnCostTalent(other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1)), DIA_Teach_JOIN_Smith);
 		};
 	};
-	/// ENCHANTING
 	/// ALCHEMY
 	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) < 1)
 	{
 		if (Hlp_GetInstanceID(self) == VLK_498_Ignaz)
 		|| (Hlp_GetInstanceID(self) == VLK_417_Constantino)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_ALCHEMY)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_ALCHEMY)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Alchemy), B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1) / 2), DIA_Teach_JOIN_mAlchemy);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
 		};
 	};
 	if (Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) < 2)
@@ -272,14 +268,7 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == KDF_506_Neoras)
 		|| (Hlp_GetInstanceID(self) == VLK_439_Vatras_DI)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_ALCHEMY)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_ALCHEMY)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Alchemy), B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1) / 2), DIA_Teach_JOIN_mAlchemy);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Alchemy, B_GetLearnCostTalent(other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1)), DIA_Teach_JOIN_Alchemy);
 		};
 	};
 	/// HUNTING
@@ -291,14 +280,7 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == VLK_413_Bosper)
 		|| (Hlp_GetInstanceID(self) == VLK_4130_Talbin)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_HUNTING)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_HUNTING)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Hunting), B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1) / 2), DIA_Teach_JOIN_mHunting);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
 		};
 	};
 	if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
@@ -313,14 +295,7 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == VLK_4110_Jergan)
 		|| (Hlp_GetInstanceID(self) == VLK_4148_Gestath)
 		{
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent != NPC_TALENT_HUNTING)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
-			};
-			if (LearnedCraftTalent == 0 || LearnedCraftTalent == NPC_TALENT_HUNTING)
-			{
-				Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnTalent_MainCraft, PRINT_LearnTalent_Hunting), B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1) / 2), DIA_Teach_JOIN_mHunting);
-			};
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(PRINT_LearnTalent_Hunting, B_GetLearnCostTalent(other, NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1)), DIA_Teach_JOIN_Hunting);
 		};
 	};
 };
@@ -328,6 +303,7 @@ func void DIA_Teach_JOIN_Info()
 func void DIA_Teach_JOIN2_Info()
 {
 	var int rand; rand = Hlp_Random(3);
+	
 	if (rand == 0)
 	{
 		AI_Output (other, self, "DIA_Addon_Henry_Teach_15_00"); //Ucz mnie.
@@ -340,6 +316,7 @@ func void DIA_Teach_JOIN2_Info()
 	{
 		AI_Output (other, self, "DIA_Udar_Teach_15_00"); //Chcę się od ciebie uczyć.
 	};
+	
 	DIA_Teach_JOIN_Info();
 };
 
@@ -405,6 +382,16 @@ func void DIA_Teach_JOIN_Magic()
 	B_TeachTalent (self, other, NPC_TALENT_MAGIC, Npc_GetTalentSkill(other, NPC_TALENT_MAGIC) + 1);
 	DIA_Teach_JOIN_Info();
 };
+func void DIA_Teach_JOIN_Enchanting()
+{
+	B_TeachTalent(self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
+	DIA_Teach_JOIN_Info();
+};
+func void DIA_Teach_JOIN_Language()
+{
+	B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) + 1);
+	DIA_Teach_JOIN_Info();
+};
 
 ///******************************************************************************************
 func void DIA_Teach_JOIN_Sneak()
@@ -412,9 +399,9 @@ func void DIA_Teach_JOIN_Sneak()
 	B_TeachTalent (self, other, NPC_TALENT_SNEAK, Npc_GetTalentSkill(other, NPC_TALENT_SNEAK) + 1);
 	DIA_Teach_JOIN_Info();
 };
-func void DIA_Teach_JOIN_LongRun()
+func void DIA_Teach_JOIN_Prorun()
 {
-	B_TeachTalent (self, other, NPC_TALENT_LONGRUN, Npc_GetTalentSkill(other, NPC_TALENT_LONGRUN) + 1);
+	B_TeachTalent (self, other, NPC_TALENT_PRORUN, Npc_GetTalentSkill(other, NPC_TALENT_PRORUN) + 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Acrobatic()
@@ -445,11 +432,6 @@ func void DIA_Teach_JOIN_Smith()
 	B_TeachTalent(self, other, NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1);
 	DIA_Teach_JOIN_Info();
 };
-func void DIA_Teach_JOIN_Enchanting()
-{
-	B_TeachTalent(self, other, NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1);
-	DIA_Teach_JOIN_Info();
-};
 func void DIA_Teach_JOIN_Alchemy()
 {
 	B_TeachTalent(self, other, NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1);
@@ -462,36 +444,14 @@ func void DIA_Teach_JOIN_Hunting()
 };
 
 ///******************************************************************************************
-func void DIA_Teach_JOIN_mSmith()
+func void DIA_Teach_JOIN_Cooking()
 {
-	if (B_TeachTalent(self, other, 100 + NPC_TALENT_SMITH, Npc_GetTalentSkill(other, NPC_TALENT_SMITH) + 1))
-	{
-		LearnedCraftTalent = NPC_TALENT_SMITH;
-	};
+	B_TeachTalent(self, other, NPC_TALENT_COOKING, Npc_GetTalentSkill(other, NPC_TALENT_COOKING) + 1);
 	DIA_Teach_JOIN_Info();
 };
-func void DIA_Teach_JOIN_mEnchanting()
+func void DIA_Teach_JOIN_ProtPoison()
 {
-	if (B_TeachTalent(self, other, 100 + NPC_TALENT_ENCHANTING, Npc_GetTalentSkill(other, NPC_TALENT_ENCHANTING) + 1))
-	{
-		LearnedCraftTalent = NPC_TALENT_ENCHANTING;
-	};
-	DIA_Teach_JOIN_Info();
-};
-func void DIA_Teach_JOIN_mAlchemy()
-{
-	if (B_TeachTalent(self, other, 100 + NPC_TALENT_ALCHEMY, Npc_GetTalentSkill(other, NPC_TALENT_ALCHEMY) + 1))
-	{
-		LearnedCraftTalent = NPC_TALENT_ALCHEMY;
-	};
-	DIA_Teach_JOIN_Info();
-};
-func void DIA_Teach_JOIN_mHunting()
-{
-	if (B_TeachTalent(self, other, 100 + NPC_TALENT_HUNTING, Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) + 1))
-	{
-		LearnedCraftTalent = NPC_TALENT_HUNTING;
-	};
+	B_TeachTalent(self, other, NPC_TALENT_PROTPOISON, Npc_GetTalentSkill(other, NPC_TALENT_PROTPOISON) + 1);
 	DIA_Teach_JOIN_Info();
 };
 

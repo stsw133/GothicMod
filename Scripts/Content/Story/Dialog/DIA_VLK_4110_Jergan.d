@@ -215,7 +215,7 @@ FUNC VOID DIA_Jergan_Claw_Info()
 {
 	AI_Output (other, self,"DIA_Jergan_Claw_15_00");//Mo¿esz mnie tego nauczyæ?
 	AI_Output (self, other,"DIA_Jergan_Claw_13_01");//Mogê ci pokazaæ, jak zdj¹æ z tych stworów pazury, kiedy ju¿ bêd¹ martwe.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////

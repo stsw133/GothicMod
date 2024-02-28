@@ -5,7 +5,7 @@ func void B_SummonedAssessTalk()
 };
 
 ///******************************************************************************************
-///	ZS_MM_Rtn_Sleep
+/// ZS_MM_Rtn_Sleep
 ///******************************************************************************************
 func void ZS_MM_Rtn_Summoned()
 {
@@ -49,6 +49,7 @@ func int ZS_MM_Rtn_Summoned_Loop()
 				AI_TurnToNpc (self, hero);
 			};
 			
+			/// changed!!!
 			if (self.aivar[AIV_SummonTime] >= 0)
 			{
 				self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);

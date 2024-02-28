@@ -318,7 +318,7 @@ func int DIA_Addon_Merdarion_TeleportsteinSuccess_Condition ()
 
 func void DIA_Addon_Merdarion_TeleportsteinSuccess_Info ()
 {
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	AI_Output	(other, self, "DIA_Addon_Merdarion_TeleportsteinSuccess_15_00"); //Wygl¹da na to, ¿e kamienie teleportacyjne dzia³aj¹ naprawdê dobrze.
 	AI_Output	(self, other, "DIA_Addon_Merdarion_TeleportsteinSuccess_06_01"); //Naprawdê to zrobi³eœ? U¿y³eœ jednego z nich?
 	AI_Output	(other, self, "DIA_Addon_Merdarion_TeleportsteinSuccess_15_02"); //Tak. Wychodzi na to, ¿e wci¹¿ dzia³aj¹.

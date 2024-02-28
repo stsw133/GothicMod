@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_ReactToWeapon
+/// ZS_ReactToWeapon
 ///******************************************************************************************
 func void ZS_ReactToWeapon()
 {
@@ -33,6 +33,7 @@ func void ZS_ReactToWeapon()
 		{
 			B_Say (self, other, "$WEAPONDOWN");
 		};
+		
 		Player_DrawWeaponComment = true;
 	};
 	
@@ -82,6 +83,7 @@ func int ZS_ReactToWeapon_Loop()
 		{
 			B_Say (self, other, "$ISAIDWEAPONDOWN");
 		};
+		
 		self.aivar[AIV_TAPOSITION] = true;
 	};
 	

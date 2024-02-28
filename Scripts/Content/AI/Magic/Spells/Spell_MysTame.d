@@ -2,7 +2,7 @@
 ///	SPL_MysTame
 ///******************************************************************************************
 
-const int SPL_Cost_MysTame				=	80;
+const int SPL_Cost_MysTame				=	125;
 
 ///******************************************************************************************
 instance Spell_MysTame (C_Spell_Proto)
@@ -16,8 +16,8 @@ instance Spell_MysTame (C_Spell_Proto)
 
 func int Spell_Logic_MysTame (var int manaInvested)
 {
-	if ((Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_MysTame/SPL_Cost_Scroll))
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysTame))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_MysTame/SPL_Cost_Scroll)
+	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysTame)
 	{
 		if (other.level+10 - self.level - self.attribute[ATR_POWER]/50 <= 0)
 		|| (!Npc_IsPlayer(self))
@@ -29,6 +29,7 @@ func int Spell_Logic_MysTame (var int manaInvested)
 			Print(ConcatStrings(IntToString(other.level+10 - self.level - self.attribute[ATR_POWER]/50), " poziomów za mało aby odnieść skutek!"));
 		};
 	};
+	
 	return SPL_SENDSTOP;
 };
 

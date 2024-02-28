@@ -1,47 +1,47 @@
-// **********************************
-// NSC benutzt Item Joint an Stand-FP
-// **********************************
-
+///******************************************************************************************
+/// ZS_Smoke_Joint
+///******************************************************************************************
 func void ZS_Smoke_Joint()
 {
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	AI_SetWalkmode 	(self,NPC_WALK);
-	
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self,self.wp) > TA_DIST_SELFWP_MAX)
 	{
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
 	
-	if (Npc_HasItems (self,ItMi_Joint) == 0)
+	if (Npc_HasItems(self, ItMi_Joint) == 0)
 	{
-		CreateInvItem (self,ItMi_Joint);				
+		CreateInvItem (self, ItMi_Joint);
 	};
+	
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
 };
 
 func int ZS_Smoke_Joint_loop()
 {
-	if (Npc_IsOnFP (self,"STAND"))
+	if (Npc_IsOnFP(self, "STAND"))
 	{
-		Ai_AlignToFP (self);
+		AI_AlignToFP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
-  			self.aivar[AIV_TAPOSITION] = NOTINPOS;
+			self.aivar[AIV_TAPOSITION] = NOTINPOS;
   		};
-	}	
-	else if (Wld_IsFPAvailable(self,"STAND"))
+	}
+	else if (Wld_IsFPAvailable(self, "STAND"))
 	{
-		AI_GotoFP 		(self, "STAND");
-		AI_StandUp 		(self);
-		AI_AlignToFP 	(self);
+		AI_GotoFP		(self, "STAND");
+		AI_StandUp		(self);
+		AI_AlignToFP	(self);
+		
 		self.aivar[AIV_TAPOSITION] = NOTINPOS_WALK;
 	}
 	else
 	{
-		AI_AlignToWP (self);
+		AI_AlignToWP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
   			self.aivar[AIV_TAPOSITION] = NOTINPOS;
@@ -50,18 +50,14 @@ func int ZS_Smoke_Joint_loop()
 	
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
 	{
-		AI_UseItemToState 	(self,ItMi_JOINT,0);
+		AI_UseItemToState (self, ItMi_JOINT, 0);
 		self.aivar[AIV_TAPOSITION] = ISINPOS;
-	};			
-
-//*********************************************************
-//	Hier: RandomAnis
-//********************************************************
-
-	if ((Npc_GetStateTime(self) > 5)
-	&& (self.aivar[AIV_TAPOSITION] == ISINPOS))
+	};
+	
+	if (Npc_GetStateTime(self) > 5)
+	&& (self.aivar[AIV_TAPOSITION] == ISINPOS)
 	{
-		AI_PlayAniBS (self,"T_JOINT_RANDOM_1",BS_ITEMINTERACT);
+		AI_PlayAniBS (self, "T_JOINT_RANDOM_1", BS_ITEMINTERACT);
 		Npc_SetStateTime (self, 0);
 	};
 	
@@ -72,19 +68,3 @@ func void ZS_Smoke_Joint_end()
 {
 	AI_UseItemToState (self, ItMi_Joint, -1);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	

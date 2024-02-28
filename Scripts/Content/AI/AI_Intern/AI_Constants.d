@@ -1,123 +1,143 @@
 ///******************************************************************************************
-///	Aivars
+///	Constants
 ///******************************************************************************************
 
+const int default		=	0;
+
+const int false			=	0;
+const int true			=	1;
+
+const int decrease		=	0;
+const int increase		=	1;
+
+///******************************************************************************************
+///	AIV
+///******************************************************************************************
+
+/// ------ Fight ------
 const int AIV_LastFightAgainstPlayer		=	0;
-const int	FIGHT_NONE					= 0;
-const int	FIGHT_Lost					= 1;
-const int	FIGHT_Won					= 2;
-const int	FIGHT_Cancel				= 3;
+	const int FIGHT_NONE				= 0;
+	const int FIGHT_Lost				= 1;
+	const int FIGHT_Won					= 2;
+	const int FIGHT_Cancel				= 3;
 
 /// ------ Crimes ------
 const int AIV_NpcSawPlayerCommit			=	1;
-const int	CRIME_NONE					= 0;
-const int	CRIME_SheepKiller			= 1;
-const int	CRIME_Attack				= 2;
-const int	CRIME_Theft					= 3;
-const int	CRIME_Murder				= 4;
-
+	const int CRIME_NONE				= 0;
+	const int CRIME_SheepKiller			= 1;
+	const int CRIME_Attack				= 2;
+	const int CRIME_Theft				= 3;
+	const int CRIME_Murder				= 4;
 const int AIV_NpcSawPlayerCommitDay			=	2;
 
 /// ------ Talk ------
 const int AIV_NpcStartedTalk				=	3;
-const int AIV_TalkedToPlayer				=	4;
-const int AIV_Invincible					=	5;
+const int AIV_Invincible					=	4;
+const int AIV_TalkedToPlayer				=	5;
 
 /// ------ Pickpocket ------
 const int AIV_PlayerHasPickedMyPocket		=	6;
 
-/// ------ ZS_Attack ------
+/// ------ Attack ------
 const int AIV_LastTarget					=	7;
 const int AIV_PursuitEnd					=	8;
 
-/// ------ B_SayAttackReason ------
+/// ------ Say attack reason ------
 const int AIV_AttackReason					=	9;
-const int	AR_NONE						= 0;
-const int	AR_LeftPortalRoom			= 1;
-const int	AR_ClearRoom				= 2;
-const int	AR_GuardCalledToRoom		= 3;
-const int	AR_MonsterVsHuman			= 4;
-const int	AR_MonsterMurderedHuman 	= 5;
-const int	AR_SheepKiller				= 6;
-const int	AR_Theft					= 7;
-const int	AR_UseMob					= 8;
-const int	AR_GuardCalledToThief 		= 9;
-const int	AR_ReactToWeapon			= 10;
-const int	AR_ReactToDamage			= 11;
-const int	AR_GuardStopsFight			= 12;
-const int	AR_GuardCalledToKill		= 13;
-const int	AR_GuildEnemy				= 14;
-const int	AR_HumanMurderedHuman		= 15;
-const int	AR_MonsterCloseToGate 		= 16;
-const int	AR_GuardStopsIntruder		= 17;
-const int	AR_SuddenEnemyInferno		= 18;
-const int	AR_KILL						= 19;
+	const int AR_NONE					= 0;
+	const int AR_LeftPortalRoom			= 1;
+	const int AR_ClearRoom				= 2;
+	const int AR_GuardCalledToRoom		= 3;
+	const int AR_MonsterVsHuman			= 4;
+	const int AR_MonsterMurderedHuman 	= 5;
+	const int AR_SheepKiller			= 6;
+	const int AR_Theft					= 7;
+	const int AR_UseMob					= 8;
+	const int AR_GuardCalledToThief 	= 9;
+	const int AR_ReactToWeapon			= 10;
+	const int AR_ReactToDamage			= 11;
+	const int AR_GuardStopsFight		= 12;
+	const int AR_GuardCalledToKill		= 13;
+	const int AR_GuildEnemy				= 14;
+	const int AR_HumanMurderedHuman		= 15;
+	const int AR_MonsterCloseToGate 	= 16;
+	const int AR_GuardStopsIntruder		= 17;
+	const int AR_SuddenEnemyInferno		= 18;
+	const int AR_KILL					= 19;
+const int AIV_LastPlayerAR					=	10;
 
-/// ------ RansackBody ------
-const int AIV_Ransacked						=	10;
+/// ------ Ransack body ------
+const int AIV_Ransacked						=	11;
 
-/// ------ GuardPassage ------
-const int AIV_GuardPassage_Status			=	11;	/// changed!!!
-const int	GP_NONE						= 0;
-const int	GP_FirstWarnGiven			= 1;
-const int	GP_SecondWarnGiven			= 2;
-const int	GP_PassGate					= 3;
-
-const int AIV_LastDistToWP					=	12;
+/// ------ Guard passage ------
+const int AIV_GuardPassage_Status			=	12;	/// changed!!!
+	const int GP_NONE					= 0;
+	const int GP_FirstWarnGiven			= 1;
+	const int GP_SecondWarnGiven		= 2;
+	const int GP_PassGate				= 3;
+const int AIV_LastDistToWP					=	13;
 
 /// ------  TA position ------
-const int AIV_TaPosition					=	13;
-const int	IsInPos						= 0;
-const int	NotInPos					= 1;
-const int	NotInPos_Walk				= 2;
+const int AIV_TaPosition					=	14;
+	const int IsInPos					= 0;
+	const int NotInPos					= 1;
+	const int NotInPos_Walk				= 2;
 
-/// ------ Defeated or Killed by Player ------
-const int AIV_DefeatedByPlayer				=	14;	/// changed!!!
-const int	DBP_NONE					= 0;
-const int	DBP_Defeated				= 1;
-const int	DBP_Killed					= 2;
+/// ------ Defeated by player ------
+const int AIV_DefeatedByPlayer				=	15;	/// changed!!!
+	const int DBP_NONE					= 0;
+	const int DBP_Defeated				= 1;
+	const int DBP_Killed				= 2;
+const int AIV_VictoryExpGiven				=	16;
 
-const int AIV_VictoryXPGiven				=	15;
+/// ------ Can offer ------
+const int AIV_CanOffer						=	17;	/// new!!!
+	const int OFFER_Teaching			= 1 << 0;
+	const int OFFER_Trading				= 1 << 1;
 
-/// ------ LoadGame ------
-const int AIV_LoadGame						=	16;
-
-/// ------ Teach & trade ------
-const int AIV_CanTeach						=	17;	/// new!!!
-const int AIV_CanTrade						=	18;	/// new!!!
+/// ------ Stand eating ------
+const int AIV_Food							=	18;
+	const int FOOD_Apple				= 0;
+	const int FOOD_Cheese				= 1;
+	const int FOOD_Bacon				= 2;
+	const int FOOD_Bread				= 3;
 
 /// ------ Spells ------
 const int AIV_SpellLevel					=	19;
 const int AIV_SelectSpell					=	20;
 
-/// ------ ZS_ObservePlayer ------
+/// ------ Observe player ------
 const int AIV_SeenLeftRoom					=	21;
+	var int Player_SneakerComment;
+	var int Player_LeftRoomComment;
+	var int Player_DrawWeaponComment;
+	var int Player_GetOutOfMyBedComment;
 
-var int Player_SneakerComment;
-var int Player_LeftRoomComment;
-var int Player_DrawWeaponComment;
-var int Player_GetOutOfMyBedComment;
-
-/// ------ ZS_Attack ------
+/// ------ Attack ------
 const int AIV_HitByOtherNpc					=	22;
 const int AIV_WaitBeforeAttack				=	23;
 const int AIV_LastAbsolutionLevel			=	24;
 
-/// ------ ToughGuyNewsOverride ------
-const int AIV_ToughGuyNewsOverride			=	25;
+/// ------ Load game ------
+const int AIV_LoadGame						=	25;
 
-/// ------ Monster Aivars ------
+/// ------ Monster AIV: threaten ------
 const int AIV_MM_ThreatenBeforeAttack		=	26;
+
+/// ------ Monster AIV: follow ------
 const int AIV_MM_FollowTime 				=	27;
-const int	FOLLOWTIME_SHORT			= 5;
-const int	FOLLOWTIME_MEDIUM			= 10;
-const int	FOLLOWTIME_LONG				= 20;
+	const int FOLLOWTIME_SHORT			= 5;
+	const int FOLLOWTIME_MEDIUM			= 10;
+	const int FOLLOWTIME_LONG			= 20;
 
 const int AIV_MM_FollowInWater 				=	28;
-const int AIV_MM_Priority 					=	29;
-const int	PRIO_EAT 					= 0;
-const int	PRIO_ATTACK 				= 1;
 
+/// ------ Monster AIV: priority ------
+const int AIV_MM_Priority 					=	29;
+	const int PRIO_EAT 					= 0;
+	const int PRIO_ATTACK 				= 1;
+
+/// ------ Monster AIV: routine ------
 const int AIV_MM_SleepStart 				=	30;
 const int AIV_MM_SleepEnd 					=	31;
 const int AIV_MM_RestStart 					=	32;
@@ -130,162 +150,213 @@ const int AIV_MM_WuselStart 				=	38;
 const int AIV_MM_WuselEnd 					=	39;
 const int AIV_MM_OrcSitStart				=	40;
 const int AIV_MM_OrcSitEnd					=	41;
-const int	OnlyRoutine 				= -1;
+	const int OnlyRoutine 				= -1;
 
+/// ------ Monster AIV: packhunter ------
 const int AIV_MM_Packhunter					=	42;
 
+/// ------ Monster ID / Sub-guild ------
 const int AIV_MM_Real_ID					=	43;
-const int	ID_SHEEP					= 1;
-const int	ID_GOAT						= 2;
-//const int	ID_CHICKEN					= 3;
-//const int	ID_RABBIT					= 4;
-//const int	ID_PIG						= 5;
-//const int	ID_COW						= 6;
-//const int	ID_HORSE					= 7;
-const int	ID_DOG						= 8;
+const int AIV_SubGuild						=	43;
 
-const int	ID_HARE						= 11;
-const int	ID_SPINT					= 12;
-//const int	ID_DEER						= 13;
-//const int	ID_DUCK						= 14;
-//const int	ID_RAT						= 15;
-//const int	ID_SPIDER					= 16;
-const int	ID_MEATBUG					= 17;
-const int	ID_INKBUG					= 18;
+	/// PAL
+	const int ID_PAL					= 100*GIL_PAL + 0;
+	const int ID_TPL					= 100*GIL_PAL + 1;
+	/// MIL
+	const int ID_GRD					= 100*GIL_MIL + 0;
+	const int ID_MIL					= 100*GIL_MIL + 1;
+	/// VLK
+	const int ID_VLK					= 100*GIL_VLK + 0;
+	/// KDF
+	const int ID_AMG					= 100*GIL_KDF + 0;
+	const int ID_MAG					= 100*GIL_KDF + 1;
+	/// NOV
+	const int ID_NOV					= 100*GIL_NOV + 0;
+	/// DJG
+	const int ID_DJG					= 100*GIL_DJG + 0;
+	const int ID_SLD					= 100*GIL_DJG + 1;
+	/// SLD
+	const int ID_PRI					= 100*GIL_SLD + 0;
+	const int ID_ASA					= 100*GIL_SLD + 1;
+	/// BAU
+	const int ID_BAU					= 100*GIL_BAU + 0;
+	/// BDT
+	const int ID_BDT					= 100*GIL_BDT + 0;
+	/// STRF
+	const int ID_STRF					= 100*GIL_STRF + 0;
+	/// DMT
+	const int ID_DMT					= 100*GIL_DMT + 0;
+	/// OUT
+	const int ID_OUT					= 100*GIL_OUT + 0;
+	/// PIR
+	const int ID_PIR					= 100*GIL_PIR + 0;
+	/// KDW
+	const int ID_KDW					= 100*GIL_KDW + 0;
+	/// MEATBUG
+	const int ID_MEATBUG				= 100*GIL_MEATBUG + 0;
+	const int ID_INKBUG					= 100*GIL_MEATBUG + 1;
+	/// LIVESTOCK
+	const int ID_SHEEP					= 100*GIL_LIVESTOCK + 0;
+	const int ID_GOAT					= 100*GIL_LIVESTOCK + 1;
+	const int ID_DOG					= 100*GIL_LIVESTOCK + 2;
+	/// GOBLIN
+	const int ID_GOBBO					= 100*GIL_GOBBO + 0;
+	const int ID_GOBBO_YELLOW			= 100*GIL_GOBBO + 1;
+	const int ID_GOBBO_BLACK			= 100*GIL_GOBBO + 2;
+	const int ID_GOBBO_BANDIT			= 100*GIL_GOBBO + 3;
+	const int ID_GOBBO_WARRIOR			= 100*GIL_GOBBO + 4;
+	const int ID_GOBBO_SHAMAN			= 100*GIL_GOBBO + 5;
+	/// GOBLIN-SKELETON
+	const int ID_GOBBO_SKELETON			= 100*GIL_GOBBO_SKELETON + 0;
+	/// SCAVENGER
+	const int ID_SPINT					= 100*GIL_SCAVENGER + 0;
+	const int ID_SCAVENGER				= 100*GIL_SCAVENGER + 1;
+	const int ID_SCAVENGER_DEMON		= 100*GIL_SCAVENGER + 2;
+	const int ID_BITER					= 100*GIL_SCAVENGER + 3;
+	/// GIANT RAT
+	const int ID_GIANT_RAT				= 100*GIL_GIANT_RAT + 0;
+	/// GIANT BUG
+	const int ID_GIANT_BUG				= 100*GIL_GIANT_BUG + 0;
+	/// BLOODFLY
+	const int ID_BLOODFLY				= 100*GIL_BLOODFLY + 0;
+	const int ID_DRAGONFLY				= 100*GIL_BLOODFLY + 1;
+	const int ID_SWAMPDRONE				= 100*GIL_BLOODFLY + 2;
+	const int ID_WISP					= 100*GIL_BLOODFLY + 3;
+	/// WARAN
+	const int ID_WARAN					= 100*GIL_WARAN + 0;
+	const int ID_FIREWARAN				= 100*GIL_WARAN + 1;
+	/// WOLF
+	const int ID_WOLF					= 100*GIL_WOLF + 0;
+	const int ID_WOLF_SKELETON			= 100*GIL_WOLF + 1;
+	const int ID_ICEWOLF				= 100*GIL_WOLF + 2;
+	const int ID_WARG					= 100*GIL_WOLF + 3;
+	const int ID_KEILER					= 100*GIL_WOLF + 4;
+	const int ID_JACKAL					= 100*GIL_WOLF + 5;
+	/// MINECRAWLER
+	const int ID_GIANT_SPIDER			= 100*GIL_MINECRAWLER + 0;
+	const int ID_MINECRAWLER			= 100*GIL_MINECRAWLER + 1;
+	const int ID_MINECRAWLERWARRIOR		= 100*GIL_MINECRAWLER + 2;
+	const int ID_MINECRAWLERQUEEN		= 100*GIL_MINECRAWLER + 3;
+	const int ID_BLATTCRAWLER			= 100*GIL_MINECRAWLER + 4;
+	/// LURKER
+	const int ID_LURKER					= 100*GIL_LURKER + 0;
+	/// SKELETON
+	const int ID_SKELETON				= 100*GIL_SKELETON + 0;
+	const int ID_SKELETON_WARRIOR		= 100*GIL_SKELETON + 1;
+	const int ID_SKELETON_DARK			= 100*GIL_SKELETON + 2;
+	const int ID_SKELETON_LORD			= 100*GIL_SKELETON + 3;
+	/// SKELETON-MAGE
+	const int ID_SKELETON_MAGE			= 100*GIL_SKELETON_MAGE + 0;
+	/// ZOMBIE
+	const int ID_ZOMBIE					= 100*GIL_ZOMBIE + 0;
+	const int ID_MUMMY					= 100*GIL_ZOMBIE + 1;
+	/// SNAPPER
+	const int ID_SNAPPER				= 100*GIL_SNAPPER + 0;
+	const int ID_RAZOR					= 100*GIL_SNAPPER + 1;
+	const int ID_DRAGONSNAPPER			= 100*GIL_SNAPPER + 2;
+	const int ID_MONSTERSNAPPER			= 100*GIL_SNAPPER + 3;
+	/// SHADOWBEAST
+	const int ID_SHADOWBEAST			= 100*GIL_SHADOWBEAST + 0;
+	const int ID_BLOODHOUND				= 100*GIL_SHADOWBEAST + 1;
+	/// SHADOWBEAST-SKELETON
+	const int ID_SHADOWBEAST_SKELETON	= 100*GIL_SHADOWBEAST_SKELETON + 0;
+	const int ID_SHADOWBEAST_DEMON		= 100*GIL_SHADOWBEAST_SKELETON + 1;
+	/// HARPY
+	const int ID_HARPY					= 100*GIL_HARPY + 0;
+	const int ID_VAMPHARPY				= 100*GIL_HARPY + 1;
+	const int ID_DRAGONHARPY			= 100*GIL_HARPY + 2;
+	/// GOLEM
+	const int ID_GOLEM					= 100*GIL_GOLEM + 0;
+	const int ID_FIREGOLEM				= 100*GIL_GOLEM + 1;
+	const int ID_ICEGOLEM				= 100*GIL_GOLEM + 2;
+	const int ID_AVATAR					= 100*GIL_GOLEM + 3;
+	/// TREANT
+	const int ID_TREANT					= 100*GIL_TREANT + 0;
+	/// TIGER
+	const int ID_TIGER					= 100*GIL_TIGER + 0;
+	/// DEMON
+	const int ID_DEMON					= 100*GIL_DEMON + 0;
+	const int ID_DEMON_LORD				= 100*GIL_DEMON + 1;
+	const int ID_DEMONICON				= 100*GIL_DEMON + 2;
+	/// TROLL
+	const int ID_TROLL					= 100*GIL_TROLL + 0;
+	const int ID_TROLL_BLACK			= 100*GIL_TROLL + 1;
+	const int ID_TROLL_DEMON			= 100*GIL_TROLL + 2;
+	const int ID_GORILLA				= 100*GIL_TROLL + 3;
+	/// SWAMPSHARK
+	const int ID_SWAMPSHARK				= 100*GIL_SWAMPSHARK + 0;
+	/// DRAGON
+	const int ID_DRAGON					= 100*GIL_DRAGON + 0;
+	const int ID_DRAGON_SWAMP			= 100*GIL_DRAGON + 1;
+	const int ID_DRAGON_ROCK			= 100*GIL_DRAGON + 2;
+	const int ID_DRAGON_FIRE			= 100*GIL_DRAGON + 3;
+	const int ID_DRAGON_ICE				= 100*GIL_DRAGON + 4;
+	const int ID_DRAGON_GOLD			= 100*GIL_DRAGON + 5;
+	const int ID_DRAGON_BLACK			= 100*GIL_DRAGON + 6;
+	const int ID_DRAGON_UNDEAD			= 100*GIL_DRAGON + 7;
+	const int ID_SLEEPER				= 100*GIL_DRAGON + 8;
+	/// MOLERAT
+	const int ID_MOLERAT				= 100*GIL_MOLERAT + 0;
+	/// ALLIGATOR
+	const int ID_ALLIGATOR				= 100*GIL_ALLIGATOR + 0;
+	/// SWAMPGOLEM
+	const int ID_SWAMPGOLEM				= 100*GIL_SWAMPGOLEM + 0;
+	/// STONEGUARDIAN
+	const int ID_STONEGUARDIAN			= 100*GIL_STONEGUARDIAN + 0;
+	/// GARGOYLE
+	const int ID_GARGOYLE				= 100*GIL_GARGOYLE + 0;
+	/// OGRE
+	const int ID_OGRE					= 100*GIL_OGRE + 0;
+	/// WILD
+	const int ID_HARE					= 100*GIL_WILD + 0;
+	/// SUMMONED
+	const int ID_SUMMONED				= 100*GIL_SUMMONED + 0;
+	const int ID_SUMMONED_EVIL			= 100*GIL_SUMMONED + 1;
+	const int ID_SUMMONED_UNDEAD		= 100*GIL_SUMMONED + 2;
+	/// ORC
+	const int ID_ORC					= 100*GIL_ORC + 0;
+	const int ID_ORCSOLDIER				= 100*GIL_ORC + 1;
+	const int ID_ORCWARRIOR				= 100*GIL_ORC + 2;
+	const int ID_ORCSHAMAN				= 100*GIL_ORC + 3;
+	const int ID_ORCELITE				= 100*GIL_ORC + 4;
+	const int ID_ORCCOMMANDER			= 100*GIL_ORC + 5;
+	/// UNDEAD-ORC
+	const int ID_UNDEADORCWARRIOR		= 100*GIL_UNDEADORC + 0;
+	/// DRACONIAN
+	const int ID_DRACONIAN				= 100*GIL_DRACONIAN + 0;
 
-const int	ID_GIANT_RAT				= 21;
-const int	ID_MOLERAT					= 22;
-//const int	ID_BEAR						= 23;
-
-const int	ID_WOLF						= 31;
-const int	ID_WOLF_SKELETON			= 32;
-const int	ID_JACKAL					= 33;
-const int 	ID_ICEWOLF					= 34;
-const int	ID_WARG						= 35;
-const int	ID_TIGER					= 36;
-const int 	ID_BLOODHOUND				= 37;
-const int	ID_KEILER					= 38;
-
-const int	ID_GOBBO					= 41;
-const int 	ID_GOBBO_YELLOW				= 42;
-const int 	ID_GOBBO_BLACK				= 43;
-const int	ID_GOBBO_BANDIT				= 44;
-const int	ID_GOBBO_WARRIOR			= 45;
-const int	ID_GOBBO_SHAMAN				= 46;
-const int 	ID_GOBBO_SKELETON			= 47;
-
-const int	ID_SCAVENGER				= 51;
-const int 	ID_SCAVENGER_DEMON			= 52;
-const int	ID_BITER					= 53;
-
-const int 	ID_GIANT_SPIDER				= 61;
-const int	ID_GIANT_BUG				= 62;
-const int 	ID_MINECRAWLER				= 63;
-const int 	ID_MINECRAWLERWARRIOR		= 64;
-const int	ID_MINECRAWLERQUEEN			= 65;
-const int	ID_BLATTCRAWLER				= 66;
-
-const int 	ID_BLOODFLY					= 71;
-const int 	ID_DRAGONFLY				= 72;
-const int 	ID_SWAMPDRONE				= 73;
-const int 	ID_WISP						= 74;
-
-const int	ID_WARAN					= 81;
-const int	ID_FIREWARAN				= 82;
-const int	ID_LURKER					= 83;
-const int 	ID_SWAMPSHARK				= 84;
-const int 	ID_ALLIGATOR				= 85;
-
-const int 	ID_SNAPPER					= 91;
-const int   ID_RAZOR					= 92;
-const int 	ID_DRAGONSNAPPER			= 93;
-const int 	ID_MONSTERSNAPPER			= 94;
-
-const int 	ID_SKELETON					= 101;
-const int 	ID_SKELETON_WARRIOR			= 102;
-const int 	ID_SKELETON_MAGE			= 103;
-const int	ID_SKELETON_DARK			= 104;
-const int 	ID_SKELETON_LORD			= 105;
-const int	ID_ZOMBIE					= 106;
-const int	ID_MUMMY					= 107;
-
-const int 	ID_SHADOWBEAST				= 111;
-const int 	ID_SHADOWBEAST_SKELETON		= 112;
-const int 	ID_SHADOWBEAST_DEMON		= 113;
-
-const int 	ID_HARPY					= 121;
-const int 	ID_VAMPHARPY				= 122;
-const int 	ID_DRAGONHARPY				= 123;
-
-const int 	ID_STONEGUARDIAN			= 131;
-const int 	ID_GARGOYLE					= 132;
-const int 	ID_GOLEM					= 133;
-const int 	ID_AVATAR					= 134;
-const int	ID_TREANT					= 135;
-
-const int 	ID_TROLL					= 141;
-const int 	ID_TROLL_BLACK				= 142;
-const int 	ID_TROLL_DEMON				= 143;
-const int 	ID_GORILLA					= 144;
-
-const int 	ID_DEMON					= 151;
-const int 	ID_DEMON_LORD				= 152;
-const int	ID_DEMONICON				= 153;
-
-const int 	ID_ORC						= 161;
-const int 	ID_ORCSOLDIER				= 162;
-const int 	ID_ORCWARRIOR				= 163;
-const int 	ID_ORCSHAMAN				= 164;
-const int 	ID_ORCELITE					= 165;
-const int 	ID_ORCCOMMANDER				= 166;
-const int 	ID_UNDEADORCWARRIOR			= 167;
-const int 	ID_DRACONIAN				= 168;
-const int 	ID_OGRE						= 169;
-
-const int 	ID_DRAGON					= 171;
-const int 	ID_DRAGON_UNDEAD			= 172;
-const int	ID_SLEEPER					= 173;
-
-const int	ID_SHADOW					= 181;
-const int	ID_CHAOS					= 182;
-const int	ID_MOROK					= 183;
-const int	ID_SUMMONED					= 184;
-
-const int	ID_MM_MAX					= 185;
-
+/// ------ Monster AIV: last body ------
 const int AIV_MM_LastBody					=	44;
 
-/// ------ ArenaFight ------
+/// ------ Arena fight ------
 const int AIV_ArenaFight					=	45;
-const int	AF_NONE						= 0;
-const int	AF_Running					= 1;
-const int	AF_After					= 2;
-const int	AF_After_Plus_Damage		= 3;
+	const int AF_NONE					= 0;
+	const int AF_Running				= 1;
+	const int AF_After					= 2;
+	const int AF_After_Plus_Damage		= 3;
 
-/// ------ zusätzlich zur CRIME merken ------
+/// ------ Crime absolution level ------
 const int AIV_CrimeAbsolutionLevel			=	46;
 
-/// ------ ZS_Attack ------
-const int AIV_LastPlayerAR					=	47;
-
-/// ------ ZS_Unconscious ------
-const int AIV_DuelLost						=	48;
+/// ------ ????? ------
+const int AIV_Reserved_47					=	47;
+const int AIV_Reserved_48					=	48;
 
 /// ------ Inventory ------
 const int AIV_ChapterInv					=	49;
 const int AIV_DeathInvGiven					=	50;
 
-/// ------ MagicUser ------
+/// ------ Magic user ------
 const int AIV_MagicUser						=	51;	/// changed!!!
-const int	MAGIC_NEVER					= 0;
-const int	MAGIC_MYS					= 1;
-const int	MAGIC_GEO					= 2;
-const int	MAGIC_ELE					= 3;
-const int	MAGIC_PYR					= 4;
-const int	MAGIC_NEC					= 5;
-const int	MAGIC_OTHER					= 6;
+	const int MAGIC_NEVER				= 0;
+	const int MAGIC_MYS					= 1;
+	const int MAGIC_GEO					= 2;
+	const int MAGIC_ELE					= 3;
+	const int MAGIC_PYR					= 4;
+	const int MAGIC_NEC					= 5;
+	const int MAGIC_OTHER				= 6;
 
-/// ------ C_DropUnconscious ------
+/// ------ Drop unconscious ------
 const int AIV_DropDeadAndKill				=	52;
 
 /// ------ In-Fight ------
@@ -293,73 +364,65 @@ const int AIV_ComboHit						=	53;	/// new!!!
 
 /// ------ Ignoring ------
 const int AIV_IgnoreCrime					=	54;	/// changed!!!
-const int	IGNORE_Murder				= 1 << 0;
-const int	IGNORE_Theft				= 1 << 1;
-const int	IGNORE_Sheepkiller			= 1 << 2;
-const int	IGNORE_Fear					= 1 << 3;
+	const int IGNORE_Murder				= 1 << 0;
+	const int IGNORE_Theft				= 1 << 1;
+	const int IGNORE_Sheepkiller		= 1 << 2;
+	const int IGNORE_Fear				= 1 << 3;
 
 const int AIV_IgnoreDisguise				=	55;	/// changed!!!
-const int	IGNORE_Armor				= 1 << 0;
-const int	IGNORE_FakeGuild			= 1 << 1;
+	const int IGNORE_Armor				= 1 << 0;
+	const int IGNORE_FakeGuild			= 1 << 1;
 
 /// ------ Dist ------
 const int AIV_Dist							=	56;
 
-/// ------ Ignore Attack-Crime ------
+/// ------ Ignore attack crime ------
 const int AIV_ToughGuy						=	57;
 
-/// ------ News Override ------
-const int AIV_NewsOverride					=	58;
+/// ------ News override ------
+const int AIV_NewsOverride					=	58;	/// changed!!!
+	const int NEWS_Ambient				= 1 << 0;
+	const int NEWS_ToughGuy				= 1 << 1;
 
-/// ------ ZS_MM_Attack ------
+/// ------ Monster attack ------
 const int AIV_MaxDistToWp					=	59;
 const int AIV_OriginalFightTactic			=	60;
 
-/// ------ B_AssessEnemy ------
+/// ------ Assess enemy ------
 const int AIV_EnemyOverride					=	61;
 
-/// ------ für beschworene Monster ------
+/// ------ Summon time ------
 const int AIV_SummonTime					=	62;
 
-/// ------ ZS_Attack ------
+/// ------ Attack ------
 const int AIV_FightDistCancel				=	63;
 const int AIV_LastFightComment				=	64;
 
-/// ------ Energy ------
-const int AIV_Energy						=	65;	/// new!!!
-const int AIV_Energy_MAX					=	66;	/// new!!!
+/// ------ Special attributes ------
+const int AIV_LifeSteal						=	65;	/// new!!!
+const int AIV_DmgReflection					=	66;	/// new!!!
+const int AIV_AreaDmg						=	67; /// new!!!
+const int AIV_Reserved_68					=	68;
 
-/// ------ Guild ------
-const int AIV_GuildLevel					=	67;	/// new!!!
+/// ------ Love! ------
+const int AIV_Love							=	69; /// new (OBSOLETE) between 0 (0%) and 100'000 (100%), if girl have under 0 then she will not want to talk to you
+
+/// ------ Stamina ------
+const int AIV_Stamina						=	70;	/// new!!!
+const int AIV_Stamina_MAX					=	71;	/// new!!!
 
 /// ------ Story ------
-const int AIV_NoFightParker					=	68;
-const int AIV_NpcIsRanger					=	69;
-const int AIV_StoryBandit					=	70;
-const int AIV_StoryBandit_Esteban			=	71;
-
-/// ------ TA_Stand_Eating ------
-const int AIV_Food							=	72;
-const int	FOOD_Apple					= 0;
-const int	FOOD_Cheese					= 1;
-const int	FOOD_Bacon					= 2;
-const int	FOOD_Bread					= 3;
+const int AIV_NoFightParker					=	72;
+const int AIV_Story							=	73;	/// changed!!!
+	const int STORY_IsRanger			= 1 << 0;
+	const int STORY_Bandit				= 1 << 1;
+	const int STORY_Esteban				= 1 << 2;
 
 /// ------ Visual ------
-const int AIV_Race	 						=	73;	/// new!!!
-const int	RACE_Human					= 0;
-const int	RACE_Elf					= 1;	/// non-avaible yet
-const int	RACE_Dwarf					= 2;	/// non-avaible yet
-const int	RACE_Orc					= 3;	/// female non-avaible yet or never
-const int	RACE_Draconian				= 4;	/// female non-avaible yet or never
-const int	RACE_Demon					= 5;	/// non-avaible yet
-const int	RACE_Zombie					= 6;	/// non-avaible yet
-const int	RACE_Beast					= 7;	/// non-avaible yet
-
 const int AIV_Gender						=	74;
-const int	MALE						= 0;
-const int	FEMALE						= 1;
-
+	const int MALE						= 0;
+	const int FEMALE					= 1;
+	const int ORCMALE					= 2;
 const int AIV_BodyTex	 					=	75;
 const int AIV_SkinTex	 					=	76;
 const int AIV_FaceTex	 					=	77;
@@ -369,19 +432,18 @@ const int AIV_TeethTex	 					=	78;
 const int AIV_PartyMember					=	79;
 const int AIV_FollowDist					=	80;
 
-/// ------ States ------
+/// ------ Magic states ------
 const int AIV_StateTime						=	81;
-const int AIV_MM_ShrinkState 				=	82;
+const int AIV_ShrinkState 					=	82;
 const int AIV_FreezeStateTime				=	83;
 const int AIV_InflateStateTime				=	84;
 const int AIV_SwarmStateTime				=	85;
 const int AIV_SuckEnergyStateTime			=	86;
 const int AIV_WhirlwindStateTime			=	87;
+const int AIV_DebuffID						=	88;
+const int AIV_BuffID		 				=	89;
 
-/// ------ NEW ------
-const int AIV_Love							=	88; /// pomiêdzy 0 (0%) a 100.000 (100%), jeœli dziewczyna ma poni¿ej 0 to nie bêdzie z tob¹ rozmawiaæ
-const int AIV_Richness	 					=	89;	/// okreœla wartoœæ w z³ocie ekwipunku NPC'a
-
+/// ...
 const int AIV_Reserved_90					=	90;
 const int AIV_Reserved_91					=	91;
 const int AIV_Reserved_92					=	92;
@@ -428,7 +490,7 @@ var int PETZCOUNTER_BL_Theft;
 var int PETZCOUNTER_BL_Attack;
 
 ///******************************************************************************************
-///	Location Konstanten
+///	Locations
 ///******************************************************************************************
 
 const int LOC_NONE				=	0;
@@ -440,7 +502,7 @@ const int LOC_BL				=	5;
 const int LOC_ALL				=	6;
 
 ///******************************************************************************************
-///	Stadtviertel Konstanten
+///	Districts
 ///******************************************************************************************
 
 const int Q_KASERNE 			=	1;
@@ -486,7 +548,7 @@ const int FIGHT_DIST_RANGED_INNER		=	900;
 const int FIGHT_DIST_RANGED_OUTER		=	1000;
 const int FIGHT_DIST_CANCEL				=	3500;
 
-const int WATCHFIGHT_DIST_MIN			=	400;
+const int WATCHFIGHT_DIST_MIN			=	400;	//300
 const int WATCHFIGHT_DIST_MAX			=	2000;
 
 const int ZivilAnquatschDist 			=	400;
@@ -554,30 +616,26 @@ const int FAI_Stoneguardian				=	46;
 ///	Constants
 ///******************************************************************************************
 
-const int default				=	0;
-
-const int false					=	0;
-const int true					=	1;
-
-const int decrease				=	0;
-const int increase				=	1;
-
-const int LOOP_CONTINUE 		=	0;
-const int LOOP_END				=	1;
+const int LOOP_CONTINUE 			=	0;
+const int LOOP_END					=	1;
 
 ///******************************************************************************************
 
-const int MAX_LEVEL				=	100;
-const int XP_PER_LEVEL			=	500;
-const int XP_PER_VICTORY		=	10;
+const int MAX_LEVEL					=	100;
+const int XP_PER_LEVEL				=	500;
+const int XP_PER_VICTORY			=	10;
 
-const int HP_PER_LEVEL			=	0;
-const int LP_PER_LEVEL			=	10;
-const int GOLD_PER_LP			=	20;
+const int HP_PER_LEVEL				=	0;	//12
+const int LP_PER_LEVEL				=	10;
+const int GOLD_PER_LP				=	20;
 
-const int HP_PER_LP				=	4;
-const int AR_PER_LEVEL			=	4;
-const int MR_PER_LEVEL			=	4;
+const int HP_PER_LP					=	4;
+const int MP_PER_LP					=	2;
+const int SP_PER_LP					=	5;
+
+/// for NPC
+const int AR_PER_LEVEL				=	5;
+const int MR_PER_LEVEL				=	5;
 
 ///******************************************************************************************
 

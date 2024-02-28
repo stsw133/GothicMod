@@ -352,7 +352,7 @@ func void DIA_Thekla_SagittaPaket_Info ()
 	AI_Output (other, self, "DIA_Thekla_SagittaPaket_15_00"); //Mam tu przesy³kê od Sagitty.
 	AI_Output (self, other, "DIA_Thekla_SagittaPaket_17_01"); //Wielkie dziêki. Jednak na coœ siê przyda³eœ.
 	MIS_Thekla_Paket = LOG_SUCCESS;
-	B_GivePlayerXP(300);		
+	B_GivePlayerExp(300);		
 };
 
 // ************************************************************

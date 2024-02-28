@@ -21,7 +21,7 @@ func void DIA_AmbientDementor_Info()
 	Wld_PlayEffect	("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
 	Wld_PlayEffect	("spellFX_Fear", self, self, 0, 0, 0, false);
 	AI_PlayAni		(self, "T_PRACTICEMAGIC5");
-	B_SCIsObsessed	(self);
+	B_SetScObsessed	(self);
 	
 	var int randy; randy = Hlp_Random(4);
 	
@@ -148,7 +148,7 @@ func void B_AssignDementorTalk_Ritual()
 		MIS_SCKnowsInnosEyeIsBroken = true;
 		B_LogEntry (TOPIC_INNOSEYE, "Te wredne draby zaczynaj¹ mnie denerwowaæ. Zniszczyli Oko Innosa. Nie mam zielonego pojêcia, jak je naprawiæ.");
  		B_LogEntry (TOPIC_TraitorPedro, "Znalaz³em Oko Innosa, ale nie natkn¹³em siê jak do tej pory na ¿aden œlad Pedra. Ci czarni magowie najwyraŸniej siê z nim jakoœ porozumieli.");
-		B_GivePlayerXP(500);
+		B_GivePlayerExp(500);
 	}
 	else
 	{
@@ -176,7 +176,7 @@ func void B_AssignDementorTalk_Ritual()
 func void B_AssignDementorTalk_Ritual_Exit()
 {
 	Wld_StopEffect		("DEMENTOR_FX");
-	B_SCIsObsessed		(self);
+	B_SetScObsessed		(self);
 	AI_StopProcessInfos	(self);
 	
 	self.aivar[AIV_EnemyOverride] = false;

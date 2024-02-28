@@ -103,7 +103,7 @@ instance DIA_Vatras_DI_OBSESSION		(C_INFO)
 
 func int DIA_Vatras_DI_OBSESSION_Condition ()
 {
-	if (SC_IsObsessed == TRUE)
+	if (bsObsession > 0)
 	&&  (Npc_IsDead(UndeadDragon) == FALSE)
 		{
 				return TRUE;
@@ -156,7 +156,7 @@ instance DIA_Vatras_DI_RAT		(C_INFO)
 func int DIA_Vatras_DI_RAT_Condition ()
 {	
 	if (Npc_IsDead(UndeadDragon) == FALSE)
-	&& (SC_IsObsessed == FALSE)
+	&& (bsObsession == 0)
 		{
 				return TRUE;
 		};
@@ -199,7 +199,7 @@ var int DIA_Vatras_DI_PEDROTOT_VatrasSucked;
 func void DIA_Vatras_DI_PEDROTOT_Info ()
 {
 	AI_Output			(other, self, "DIA_Vatras_DI_PEDROTOT_15_00"); //Znalaz³em tego zdrajcê, Pedra.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	
 	if (MIS_Gorax_KillPedro == LOG_SUCCESS)
 	&& (Npc_IsDead(Pedro_DI)) 
@@ -282,7 +282,7 @@ FUNC VOID DIA_Vatras_DI_Talente_Info ()
 {	
 	AI_Output			(other, self, "DIA_Vatras_DI_Talente_15_00"); //Naucz mnie tego, co potrafisz.
 	AI_Output			(self, other, "DIA_Vatras_DI_Talente_05_01"); //Zrobiê, co w mojej mocy.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -322,7 +322,7 @@ func void DIA_Vatras_DI_DementorObsessionBook_Info ()
 		AI_Output			(self, other, "DIA_Vatras_DI_DementorObsessionBook_05_02"); //Znalaz³eœ ich wiêcej? Przynieœ mi wszystkie, które zdo³asz znaleŸæ!
 	};
 	B_GiveInvItems (other, self, ITWR_DementorObsessionBook_MIS,1);
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 	
 ///////////////////////////////////////////////////////////////////////

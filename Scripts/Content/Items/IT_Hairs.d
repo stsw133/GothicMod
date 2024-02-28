@@ -7,10 +7,8 @@ prototype ItemPR_Hair (C_Item)
 	description 			=	name;
 };
 ///******************************************************************************************
-instance ItHa_Curly_Blonde (ItemPR_Hair)
-{
-	visual 					=	"ItHa_Curly_Blonde.3DS";
-};
+/// Male
+///******************************************************************************************
 instance ItHa_Geralt (ItemPR_Hair)
 {
 	visual 					=	"ItHa_Geralt.3DS";
@@ -23,13 +21,20 @@ instance ItHa_Mohawk (ItemPR_Hair)
 {
 	visual 					=	"ItHa_Mohawk.3DS";
 };
-instance ItHa_Noctis_Blonde (ItemPR_Hair)
-{
-	visual 					=	"ItHa_Noctis_Blonde.3DS";
-};
 instance ItHa_Rhobar (ItemPR_Hair)
 {
 	visual 					=	"ItHa_Rhobar.3DS";
+};
+///******************************************************************************************
+/// Female
+///******************************************************************************************
+instance ItHa_Curly_Blonde (ItemPR_Hair)
+{
+	visual 					=	"ItHa_Curly_Blonde.3DS";
+};
+instance ItHa_Noctis_Blonde (ItemPR_Hair)
+{
+	visual 					=	"ItHa_Noctis_Blonde.3DS";
 };
 instance ItHa_Sonja_Black (ItemPR_Hair)
 {

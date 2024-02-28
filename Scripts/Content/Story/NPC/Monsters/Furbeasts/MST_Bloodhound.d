@@ -1,6 +1,7 @@
 ///******************************************************************************************
 prototype Mst_Default_Bloodhound (C_Npc)
 {
+	/// ------ Monster ------
 	name								=	"Krwawy ogar";
 	guild								=	GIL_SHADOWBEAST;
 	aivar[AIV_MM_REAL_ID]				=	ID_Bloodhound;
@@ -9,19 +10,12 @@ prototype Mst_Default_Bloodhound (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_SHADOWBEAST;
 	
-	B_SetAttributesToLevel (self, 25);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 25);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
-	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
-	senses_range						=	3000;
+	senses								=	SENSE_HEAR | SENSE_SMELL;
+	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX*2;
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;

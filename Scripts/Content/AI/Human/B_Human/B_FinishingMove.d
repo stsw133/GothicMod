@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_FinishingMove
+/// B_FinishingMove
 ///******************************************************************************************
-func void B_FinishingMove (var C_NPC slf, var C_Npc oth)
+func void B_FinishingMove (var C_Npc slf, var C_Npc oth)
 {
 	if (!Npc_IsInFightMode(slf, FMODE_MELEE))
 	{

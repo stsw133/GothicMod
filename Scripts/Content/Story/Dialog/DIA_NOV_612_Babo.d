@@ -117,9 +117,9 @@ FUNC VOID DIA_Babo_Sergio_Info()
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_01"); //Dziêkujê! To dla mnie zaszczyt!
 	AI_Output (self ,other,"DIA_Babo_Sergio_03_02"); //Jeœli chcesz, wyjaœniê ci te¿ tajniki walki.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Babo_Training = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Log_CreateTopic (Topic_KlosterTeacher,LOG_NOTE);
 	B_LogEntry (Topic_KlosterTeacher,"Babo mo¿e mnie nauczyæ walki orê¿em dwurêcznym.");
@@ -339,7 +339,7 @@ FUNC VOID DIA_Babo_Windfaust_Info()
 		
 		NOV_Helfer = (NOV_Helfer +1);
 		DIA_Babo_Windfaust_permanent = TRUE; 
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 		AI_StopProcessInfos (self);
 		Npc_ExchangeRoutine (self,"FEGEN");
 		
@@ -421,7 +421,7 @@ FUNC VOID DIA_Babo_HowIsIt_Info()
 		
 		if (Babo_XPgiven == FALSE)
 		{
-			B_GivePlayerXP(50);
+			B_GivePlayerExp(50);
 			Babo_XPgiven = TRUE;
 		};
 	}
@@ -553,7 +553,7 @@ FUNC VOID DIA_Babo_Kap3_KeepTheFaith_Info()
 	AI_Output (other,self ,"DIA_Babo_Kap3_KeepTheFaith_15_02"); //Ka¿dy z nas wystawiany jest na ciê¿kie próby.
 	AI_Output (self ,other,"DIA_Babo_Kap3_KeepTheFaith_03_03"); //Tak, Panie. Bêdê o tym pamiêta³. Dziêkujê ci.
 	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 //*********************************************
@@ -758,7 +758,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_KeepThem()
 		AI_Output (other,self ,"DIA_Babo_Kap3_HaveYourDocs_KeepThem_JustJoke_15_04"); //W porz¹dku. Mi³ej zabawy z tymi DOKUMENTAMI.
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -841,7 +841,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_IWantMore()
 		B_GiveInvItems (self ,other,ItMi_Gold,121);
 		
 		MIS_BabosDocs = LOG_SUCCESS;
-		B_GivePlayerXP(300); 
+		B_GivePlayerExp(300); 
 		
 		Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 	};
@@ -873,7 +873,7 @@ FUNC VOID DIA_Babo_Kap3_HaveYourDocs_HereTheyAre()
 	B_GiveInvItems (self,other,ItSc_NightToDay,1);
 	
 	MIS_BabosDocs = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	
 	Info_ClearChoices (DIA_Babo_Kap3_HaveYourDocs);
 };

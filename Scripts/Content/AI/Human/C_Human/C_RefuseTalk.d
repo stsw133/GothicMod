@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_RefuseTalk
+/// C_RefuseTalk
 ///******************************************************************************************
-func int C_RefuseTalk (var C_NPC slf, var C_NPC oth)
+func int C_RefuseTalk (var C_Npc slf, var C_Npc oth)
 {
 	if (Npc_RefuseTalk(slf))
 	&& (C_NpcIsGateGuard(slf))

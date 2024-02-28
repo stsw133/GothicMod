@@ -548,7 +548,7 @@ FUNC VOID DIA_Buster_Teach_Info()
 		B_LogEntry (Topic_SoldierTeacher,"Buster mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 		BusterLOG = TRUE;
 	};
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 //#####################################################################
@@ -701,7 +701,7 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		AI_Output			(other, self, "DIA_Buster_BringTrophyShadowbeast_15_01"); //Co to ma znaczyæ?
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_02"); //Nie ¿yje. Mo¿esz zatrzymaæ rogi. Nie wiem, co z nimi teraz zrobiæ.
 		MIS_Buster_KillShadowbeasts_DJG = LOG_SUCCESS; //Joly: Feierabend ab Kapitel 5!!!!!!!
-		B_GivePlayerXP(250);
+		B_GivePlayerExp(250);
 	}
 	else if (Npc_GetTalentSkill(other, NPC_TALENT_HUNTING) < 2)
 	{
@@ -710,7 +710,7 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 	
 		Info_ClearChoices	(DIA_Buster_BringTrophyShadowbeast);
 		Info_AddChoice	(DIA_Buster_BringTrophyShadowbeast, "Jeszcze do tego wrócimy.", DIA_Buster_BringTrophyShadowbeast_back );
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else 
 	{
@@ -728,7 +728,7 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 		if (BusterTrophyShadowbeastCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Buster_BringTrophyShadowbeast_15_05"); //Mam dla ciebie róg cieniostwora.
-				B_GivePlayerXP (XP_BringBusterTrophyShadowbeast);
+				B_GivePlayerExp (XP_BringBusterTrophyShadowbeast);
 				B_GiveInvItems (other, self, ItAt_ShadowHorn,1);
 				BusterTrophyShadowbeastCounter = BusterTrophyShadowbeastCounter + 1;
 			}
@@ -741,7 +741,7 @@ func void DIA_Buster_BringTrophyShadowbeast_Info ()
 				XP_BringBusterTrophyShadowbeasts = (BusterTrophyShadowbeastCount * XP_BringBusterTrophyShadowbeast);
 				BusterTrophyShadowbeastCounter = (BusterTrophyShadowbeastCounter + BusterTrophyShadowbeastCount); 
 	
-				B_GivePlayerXP (XP_BringBusterTrophyShadowbeasts);
+				B_GivePlayerExp (XP_BringBusterTrophyShadowbeasts);
 			};
 	
 		AI_Output			(self, other, "DIA_Buster_BringTrophyShadowbeast_13_07"); //Œwietnie. Daj je tutaj. I przynieœ wiêcej. Kto wie, jak d³ugo jeszcze ten kupiec bêdzie chcia³ te rzeczy.

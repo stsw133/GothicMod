@@ -10,15 +10,8 @@ prototype Mst_Default_Jackal (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
 	
-	B_SetAttributesToLevel (self, 6);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -39,6 +32,7 @@ func void B_SetVisuals_Jackal()
 {
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Jackal_Body", 0, default, "", default, default, -1);
+	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
 ///******************************************************************************************
 instance Jackal (Mst_Default_Jackal)

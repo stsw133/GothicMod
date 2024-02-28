@@ -9,8 +9,8 @@ instance PIR_1395_IE_Lutter (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 5);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -20,7 +20,7 @@ instance PIR_1395_IE_Lutter (Npc_Default)
 	//CreateInvItem (self, ItMiCellobow);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Lutter", Face_Lutter, 0, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Lutter", Face_Lutter, 0, -1);
 
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_1395;

@@ -383,7 +383,7 @@ func void DIA_1013_BANDIT_FromMaleth_Info ()
 	};
 	
 	Bdt_1013_Away = TRUE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	
 	Npc_ExchangeRoutine	(self,"AWAY");
 	
@@ -418,7 +418,7 @@ func void DIA_1013_BANDIT_FromCavalorn_Info ()
 	AI_Output (self, other, "DIA_ADDON_1013_BANDIT_FromCavalorn_01_03"); //Cholera! Muszê siê st¹d wynieœæ.
 
 	Bdt_1013_Away = TRUE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	
 	Npc_ExchangeRoutine	(self,"AWAY2");
 	

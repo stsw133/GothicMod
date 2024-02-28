@@ -449,7 +449,7 @@ func void DIA_Rosi_FLEEFROMSEKOB_Info ()
 	AI_Output			(self, other, "DIA_Rosi_FLEEFROMSEKOB_17_02"); //Krzycza³ i krzycza³, w koñcu w ogóle nie da³o siê z nim rozmawiaæ.
 	AI_Output			(self, other, "DIA_Rosi_FLEEFROMSEKOB_17_03"); //Muszê siê st¹d wynosiæ, ale nie wiem, dok¹d iœæ.
 	AI_Output			(self, other, "DIA_Rosi_FLEEFROMSEKOB_17_04"); //Mo¿e zechcia³byœ mi pomóc?
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 	RosiFoundKap5 = TRUE;
 };
 
@@ -577,11 +577,11 @@ func void DIA_Rosi_ANGEKOMMEN_Info ()
 
 		if (Npc_IsDead(Till))
 		{
-			B_GivePlayerXP(750);
+			B_GivePlayerExp(750);
 		}
 		else
 		{
-			B_GivePlayerXP(1000);
+			B_GivePlayerExp(1000);
 		};
 
 		AI_StopProcessInfos (self);
@@ -633,7 +633,7 @@ func void DIA_Rosi_TRAIT_Info ()
 	self.aivar[AIV_PARTYMEMBER] = FALSE;
 	Till.aivar[AIV_PARTYMEMBER] = FALSE;
 	MIS_RosisFlucht = LOG_FAILED;
-	B_GivePlayerXP(250);
+	B_GivePlayerExp(250);
 };
 
 
@@ -664,7 +664,7 @@ func void DIA_Rosi_MinenAnteil_Info ()
 {
 	AI_Output (other, self, "DIA_Rosi_Minenanteil_15_00"); //Sprzedajesz nielegalne udzia³y w kopalni, nie wstyd ci?
 	AI_Output (self, other, "DIA_Rosi_Minenanteil_17_01"); //Nie. Ja te¿ muszê z czegoœ ¿yæ. Nie ja, zreszt¹, wprowadzi³am je do obiegu.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 //#####################################################################

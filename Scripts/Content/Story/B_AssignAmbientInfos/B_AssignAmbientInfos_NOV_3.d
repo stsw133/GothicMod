@@ -59,7 +59,7 @@ func void DIA_NOV_3_Fegen_Info()
 			AI_Output (self, other, "DIA_NOV_3_Fegen_03_04"); //A wiêc i ja do was do³¹czê.
 			NOV_Helfer += 1;
 			Feger1_Permanent = true;
-			B_GivePlayerXP(50);
+			B_GivePlayerExp(50);
 			
 			AI_StopProcessInfos (self);
 			Npc_ExchangeRoutine (self, "FEGEN");
@@ -113,7 +113,7 @@ func void DIA_NOV_3_Fegen_Ja()
 	
 	B_GiveInvItems (other, self, ItMi_Gold, 50);
 	NOV_Helfer += 1;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	Feger2_Permanent = true;
 	
 	Info_ClearChoices	(DIA_NOV_3_Fegen);

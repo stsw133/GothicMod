@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_MM_AssessOthersDamage
+/// B_MM_AssessOthersDamage
 ///******************************************************************************************
 func void B_MM_AssessOthersDamage()
 {
@@ -8,6 +8,7 @@ func void B_MM_AssessOthersDamage()
 	{
 		return;
 	};
+	
 	if (!Npc_CanSeeNpcFreeLOS(self, victim))
 	{
 		return;
@@ -23,6 +24,7 @@ func void B_MM_AssessOthersDamage()
 			AI_StartState		(self, ZS_MM_Attack, false, "");
 			return;
 		};
+		
 		if (Npc_IsPlayer(other))
 		&& (!Npc_IsDead(victim))
 		{
@@ -33,6 +35,7 @@ func void B_MM_AssessOthersDamage()
 			return;
 		};
 	};
+	
 	if (self.guild == GIL_WOLF)
 	{
 		if (victim.guild == GIL_WOLF)

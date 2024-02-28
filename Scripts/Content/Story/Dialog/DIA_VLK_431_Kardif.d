@@ -574,7 +574,7 @@ func int DIA_Kardif_DOPE_Condition ()
 };
 func void DIA_Kardif_DOPE_Info ()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	AI_Output (other, self, "DIA_Kardif_DOPE_15_01"); //Gdzie mogê kupiæ ziele?
 	
@@ -742,7 +742,7 @@ func void DIA_Kardif_DEFEATEDATTILA_Info ()
 	AI_Output (self, other, "DIA_Kardif_DEFEATEDATTILA_14_01"); //Hej, czy to moja wina? Ja tylko przekaza³em ci wiadomoœæ od niego.
 	AI_Output (self, other, "DIA_Kardif_DEFEATEDATTILA_14_02"); //Jeœli ktoœ ma coœ przeciwko tobie, to podejrzewam, ¿e mo¿e te¿ mieæ swoje powody.
 
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	
 	B_KillNpc	(Attila);
 	Npc_RemoveInvItem	(Attila, ItMi_OldCoin);

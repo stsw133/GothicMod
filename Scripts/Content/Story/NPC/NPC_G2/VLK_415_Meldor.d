@@ -12,8 +12,8 @@ instance VLK_415_Meldor (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate+5);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -25,7 +25,7 @@ instance VLK_415_Meldor (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal05, 0, ITAR_Vlk_L_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_Normal05, 0, ITAR_Vlk_L_00);
 	Mdl_SetModelFatness	(self, 0.8);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

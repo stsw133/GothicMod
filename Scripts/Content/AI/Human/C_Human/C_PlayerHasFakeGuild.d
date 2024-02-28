@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_PlayerIsFakeBandit
+/// C_PlayerIsFakeBandit
 ///******************************************************************************************
-func int C_PlayerIsFakeBandit (var C_NPC slf, var C_NPC oth)
+func int C_PlayerIsFakeBandit (var C_Npc slf, var C_Npc oth)
 {
 	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
 	{
@@ -38,17 +38,15 @@ func int C_PlayerIsFakeBandit (var C_NPC slf, var C_NPC oth)
 	&& (Player_HasTalkedToBanditCamp)
 	{
 		return true;
-	}
-	else
-	{
-		return false;
 	};
+	
+	return false;
 };
 
 ///******************************************************************************************
-///	C_PlayerIsFakePirate
+/// C_PlayerIsFakePirate
 ///******************************************************************************************
-func int C_PlayerIsFakePirate (var C_NPC slf, var C_NPC oth)
+func int C_PlayerIsFakePirate (var C_Npc slf, var C_Npc oth)
 {
 	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
 	{
@@ -73,17 +71,103 @@ func int C_PlayerIsFakePirate (var C_NPC slf, var C_NPC oth)
 		{
 			return false;
 		};
-	}
-	else
-	{
-		return false;
 	};
+	
+	return false;
 };
 
 ///******************************************************************************************
-///	C_PlayerHasFakeGuild
+/// C_PlayerWearsArmor
 ///******************************************************************************************
-func int C_PlayerHasFakeGuild (var C_NPC slf, var C_NPC oth)
+func int C_PlayerWearsGuildArmor (var C_Npc slf, var int guild)
+{
+	var C_Item itm; itm = Npc_GetEquippedArmor(slf);
+	
+	/*
+	if (guild == GIL_NONE)
+	&& (Hlp_IsItem(itm, ITAR_VLK_L_00)
+	 || Hlp_IsItem(itm, ITAR_VLK_L_01)
+	 || Hlp_IsItem(itm, ITAR_VLK_L_02)
+	 || Hlp_IsItem(itm, ITAR_BAU_00)
+	 || Hlp_IsItem(itm, ITAR_BAU_01)
+	 || Hlp_IsItem(itm, ITAR_Leather_L))
+	{
+		return true;
+	}
+	*/
+	
+	if (guild == GIL_MIL)
+	&& (Hlp_IsItem(itm, ITAR_ROY_H)
+	 || Hlp_IsItem(itm, ITAR_ROY_M)
+	 || Hlp_IsItem(itm, ITAR_ROY_L)
+	 || Hlp_IsItem(itm, ITAR_MIL_H)
+	 || Hlp_IsItem(itm, ITAR_MIL_M)
+	 || Hlp_IsItem(itm, ITAR_MIL_L)
+	 || Hlp_IsItem(itm, ITAR_MIL_N))
+	{
+		return true;
+	};
+	
+	if (guild == GIL_DJG || guild == GIL_SLD)
+	&& (Hlp_IsItem(itm, ITAR_DJG_H)
+	 || Hlp_IsItem(itm, ITAR_DJG_M)
+	 || Hlp_IsItem(itm, ITAR_DJG_L)
+	 || Hlp_IsItem(itm, ITAR_SLD_H)
+	 || Hlp_IsItem(itm, ITAR_SLD_M)
+	 || Hlp_IsItem(itm, ITAR_SLD_L)
+	 || Hlp_IsItem(itm, ITAR_SLD_N))
+	{
+		return true;
+	};
+	
+	if (guild == GIL_KDF)
+	&& (Hlp_IsItem(itm, ITAR_AMG_H)
+	 || Hlp_IsItem(itm, ITAR_AMG_M)
+	 || Hlp_IsItem(itm, ITAR_AMG_L)
+	 || Hlp_IsItem(itm, ITAR_MAG_H)
+	 || Hlp_IsItem(itm, ITAR_MAG_M)
+	 || Hlp_IsItem(itm, ITAR_MAG_L))
+	{
+		return true;
+	};
+	
+	if (guild == GIL_NOV)
+	&& (Hlp_IsItem(itm, ITAR_NOV_L)
+	 || Hlp_IsItem(itm, ITAR_NOV_H))
+	{
+		return true;
+	};
+	/*
+	if (guild == GIL_SLD)
+	&& (Hlp_IsItem(itm, ITAR_PRI_H)
+	 || Hlp_IsItem(itm, ITAR_PRI_M)
+	 || Hlp_IsItem(itm, ITAR_PRI_L)
+	 || Hlp_IsItem(itm, ITAR_AKO_H)
+	 || Hlp_IsItem(itm, ITAR_AKO_M)
+	 || Hlp_IsItem(itm, ITAR_AKO_L))
+	{
+		return true;
+	};
+	*/
+	if (guild == GIL_OUT)
+	&& (Hlp_IsItem(itm, ITAR_Leather_L)
+	 || Hlp_IsItem(itm, ITAR_Leather_T)
+	 || Hlp_IsItem(itm, ITAR_Leather_S)
+	 || Hlp_IsItem(itm, ITAR_Leather_H)
+	 || Hlp_IsItem(itm, ITAR_Leather_B)
+	 || Hlp_IsItem(itm, ITAR_Crawler)
+	 || Hlp_IsItem(itm, ITAR_DragonSnapper))
+	{
+		return true;
+	};
+	
+	return false;
+};
+
+///******************************************************************************************
+/// C_PlayerHasFakeGuild
+///******************************************************************************************
+func int C_PlayerHasFakeGuild (var C_Npc slf, var C_Npc oth)
 {
 	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
 	{
@@ -120,7 +204,7 @@ func int C_PlayerHasFakeGuild (var C_NPC slf, var C_NPC oth)
 	else if (slf.guild == oth.guild)
 	{
 		var C_Item itm; itm = Npc_GetEquippedArmor(oth);
-		if (Hlp_IsItem(itm, ItAr_WaterRanger))
+		if (Hlp_IsItem(itm, ItAr_Ranger_L) || Hlp_IsItem(itm, ItAr_Ranger_H))
 		{
 			var int NSC_CommentRangerArmor; NSC_CommentRangerArmor = true;
 			if (NSC_CommentRangerArmor)
@@ -132,93 +216,14 @@ func int C_PlayerHasFakeGuild (var C_NPC slf, var C_NPC oth)
 				return false;
 			};
 		};
-		/*
-		if (oth.guild == GIL_NONE)
-		&& ((Hlp_IsItem(itm, ITAR_VLK_L_00))
-		|| (Hlp_IsItem(itm, ITAR_VLK_L_01))
-		|| (Hlp_IsItem(itm, ITAR_VLK_L_02))
-		|| (Hlp_IsItem(itm, ITAR_BAU_00))
-		|| (Hlp_IsItem(itm, ITAR_BAU_01))
-		|| (Hlp_IsItem(itm, ITAR_Leather_L)))
+		
+		if (C_PlayerWearsGuildArmor(oth, oth.guild))
 		{
 			return false;
-		}
-		else*/ if (oth.guild == GIL_MIL)
-		&& ((Hlp_IsItem(itm, ITAR_MIL_N))
-		|| (Hlp_IsItem(itm, ITAR_MIL_L))
-		|| (Hlp_IsItem(itm, ITAR_MIL_M))
-		|| (Hlp_IsItem(itm, ITAR_MIL_H))
-		|| (Hlp_IsItem(itm, ITAR_ROY_L))
-		|| (Hlp_IsItem(itm, ITAR_ROY_M))
-		|| (Hlp_IsItem(itm, ITAR_ROY_H)))
-		{
-			return false;
-		}
-		else if (oth.guild == GIL_PAL)
-		&& ((Hlp_IsItem(itm, ITAR_PAL_L))
-		|| (Hlp_IsItem(itm, ITAR_PAL_M))
-		|| (Hlp_IsItem(itm, ITAR_PAL_H))
-		|| (Hlp_IsItem(itm, ITAR_PAL_D)))
-		{
-			return false;
-		}
-		else if (oth.guild == GIL_SLD)
-		&& ((Hlp_IsItem(itm, ITAR_SLD_N))
-		|| (Hlp_IsItem(itm, ITAR_SLD_L))
-		|| (Hlp_IsItem(itm, ITAR_SLD_M))
-		|| (Hlp_IsItem(itm, ITAR_SLD_H))
-		|| (Hlp_IsItem(itm, ITAR_DJG_L))
-		|| (Hlp_IsItem(itm, ITAR_DJG_M))
-		|| (Hlp_IsItem(itm, ITAR_DJG_H)))
-		{
-			return false;
-		}/*
-		else if (oth.guild == GIL_DJG)
-		&& ((Hlp_IsItem(itm, ITAR_ASA_L))
-		|| (Hlp_IsItem(itm, ITAR_ASA_M))
-		|| (Hlp_IsItem(itm, ITAR_ASA_H))
-		|| (Hlp_IsItem(itm, ITAR_DEM_L))
-		|| (Hlp_IsItem(itm, ITAR_DEM_M))
-		|| (Hlp_IsItem(itm, ITAR_DEM_H)))
-		{
-			return false;
-		}*/
-		else if (oth.guild == GIL_DJG)
-		&& ((Hlp_IsItem(itm, ITAR_SLD_L))
-		|| (Hlp_IsItem(itm, ITAR_SLD_M))
-		|| (Hlp_IsItem(itm, ITAR_SLD_H))
-		|| (Hlp_IsItem(itm, ITAR_DJG_L))
-		|| (Hlp_IsItem(itm, ITAR_DJG_M))
-		|| (Hlp_IsItem(itm, ITAR_DJG_H))
-		|| (Hlp_IsItem(itm, ITAR_Crawler)))
-		{
-			return false;
-		}
-		else if (oth.guild == GIL_NOV)
-		&& ((Hlp_IsItem(itm, ITAR_Nov_L))
-		|| (Hlp_IsItem(itm, ITAR_Nov_H)))
-		{
-			return false;
-		}
-		else if (oth.guild == GIL_KDF)
-		&& ((Hlp_IsItem(itm, ITAR_Mag_L))
-		|| (Hlp_IsItem(itm, ITAR_Mag_M))
-		|| (Hlp_IsItem(itm, ITAR_Mag_H))
-		|| (Hlp_IsItem(itm, ITAR_Amg_L))
-		|| (Hlp_IsItem(itm, ITAR_Amg_M))
-		|| (Hlp_IsItem(itm, ITAR_Amg_H))
-		|| (Hlp_IsItem(itm, ITAR_Mag_A))
-		|| (Hlp_IsItem(itm, ITAR_Mag_B)))
-		{
-			return false;
-		}
-		else
-		{
-			return true;
 		};
-	}
-	else
-	{
-		return false;
+		
+		return true;
 	};
+	
+	return false;
 };

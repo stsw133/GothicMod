@@ -12,15 +12,10 @@ prototype Mst_Default_Dragon (C_Npc)
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_DRAGON;
 	
-	B_SetAttributesToLevel (self, 90);
+	NpcFn_SetAttributesToLevel (self, 80);
+	NpcFn_SetMonsterProtection (self, level);
 	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	90*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	90*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	90*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	90*MR_PER_LEVEL;
-	protection[PROT_FLY]				=	90*MR_PER_LEVEL;
-	protection[PROT_MAGIC]				=	90*MR_PER_LEVEL;
+	level *= 5;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -42,6 +37,11 @@ prototype Mst_Default_Dragon (C_Npc)
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
+func void B_SetVisuals_Dragon()
+{
+	Mdl_SetVisual		(self, "Dragon.mds");
+	Mdl_SetVisualBody	(self, "Dragon_Body", 0, default, "", default, default, -1);
+};
 func void B_SetVisuals_SwampDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
@@ -78,6 +78,11 @@ func void B_SetVisuals_UndeadDragon()
 	Mdl_SetVisualBody	(self, "Dragon_Undead_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
+instance Dragon (Mst_Default_Dragon)
+{
+	name						=	"Smok";
+	B_SetVisuals_Dragon();
+};
 instance Dragon_Swamp (Mst_Default_Dragon)
 {
 	name						=	"Bagienny smok";
@@ -109,8 +114,10 @@ instance Dragon_Black (Mst_Default_Dragon)
 	name						=	"Czarny smok";
 	aivar[AIV_MaxDistToWp]		=	0;
 	
-	B_SetAttributesToLevel (self, 120);
+	NpcFn_SetAttributesToLevel (self, 90);
 	B_SetVisuals_BlackDragon();
+	
+	level *= 5;
 };
 instance Dragon_Undead (Mst_Default_Dragon)
 {
@@ -118,6 +125,8 @@ instance Dragon_Undead (Mst_Default_Dragon)
 	aivar[AIV_MM_REAL_ID]		=	ID_DRAGON_UNDEAD;
 	effect						=	"spellfx_undead_dragon";
 	
-	B_SetAttributesToLevel (self, 130);
+	NpcFn_SetAttributesToLevel (self, 100);
 	B_SetVisuals_UndeadDragon();
+	
+	level *= 5;
 };

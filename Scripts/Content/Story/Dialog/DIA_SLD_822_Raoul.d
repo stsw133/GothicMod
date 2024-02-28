@@ -410,7 +410,7 @@ func void B_Raoul_Blame ()
 	B_LogEntry (TOPIC_KillTrollBlack,"Raoul chce, abym przyniós³ mu skórê czarnego trolla."); 
 	
 	MIS_Raoul_KillTrollBlack = LOG_RUNNING;
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 
 	Info_ClearChoices	(DIA_Raoul_TROLL);
 };
@@ -470,7 +470,7 @@ func void DIA_Raoul_TROLLFELL_Info ()
 	Info_AddChoice	(DIA_Raoul_TROLLFELL, "Zrobione.", DIA_Raoul_TROLLFELL_ja );
 
 	MIS_Raoul_KillTrollBlack = LOG_SUCCESS;
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 
 func void DIA_Raoul_TROLLFELL_ja ()

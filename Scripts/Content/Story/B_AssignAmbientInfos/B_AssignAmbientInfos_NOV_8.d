@@ -50,7 +50,7 @@ func void DIA_NOV_8_Fegen_Info()
 			
 			NOV_Helfer += 1;
 			Feger3_Permanent = true;
-			B_GivePlayerXP(50);
+			B_GivePlayerExp(50);
 			
 			AI_StopProcessInfos (self);
 			Npc_ExchangeRoutine (self, "FEGEN");

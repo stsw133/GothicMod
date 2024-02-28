@@ -13,18 +13,18 @@ instance HC (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_FollowDist]				=	300;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, MAX_LEVEL);
-	B_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, MAX_LEVEL);
+	NpcFn_SetFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Rtn ------
@@ -124,16 +124,16 @@ func void Change_HC_Visual()
 	
 	/// gender and races differencies
 	self.aivar[AIV_TeethTex] = self.aivar[AIV_Gender]*Teeth_Pretty;
-	if (self.aivar[AIV_Race] == RACE_Zombie)
-	{
-		self.aivar[AIV_TeethTex] = Teeth_Bad;
-	};
+	//if (self.aivar[AIV_Race] == RACE_Zombie)
+	//{
+	//	self.aivar[AIV_TeethTex] = Teeth_Bad;
+	//};
 	
 	var oCNpc npc; npc = Hlp_GetNpc(self);
-	B_UpdateNpcVisual(self);
+	NpcFn_UpdateVisual(self);
 	
-	PrintScreen	("Rasa:", -1, 10, "FONT_OLD_10_WHITE.TGA", 4);
-	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 12, "FONT_OLD_10_WHITE.TGA", 4);
+	//PrintScreen	("Rasa:", -1, 10, "FONT_OLD_10_WHITE.TGA", 4);
+	//PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 12, "FONT_OLD_10_WHITE.TGA", 4);
 	
 	PrintScreen	("Twarz:", -1, 16, "FONT_OLD_10_WHITE.TGA", 4);
 	PrintScreen	(IntToString(self.aivar[AIV_FaceTex]), -1, 18, "FONT_OLD_10_WHITE.TGA", 4);
@@ -164,6 +164,7 @@ func void DIA_HC_EXIT_Info()
 ///******************************************************************************************
 ///	RACE
 ///******************************************************************************************
+/*
 instance DIA_HC_Race (C_INFO)
 {
 	npc									=	HC;
@@ -231,7 +232,7 @@ func void DIA_HC_Race_Beast()
 {
 	self.aivar[AIV_Race] = RACE_Beast;
 	Change_HC_Visual();
-};
+};*/
 ///******************************************************************************************
 ///	GENDER
 ///******************************************************************************************

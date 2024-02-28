@@ -2,15 +2,15 @@
 ///	SPL_MassDeath
 ///******************************************************************************************
 
-const int SPL_Cost_MassDeath			=	150;
+const int SPL_Cost_MassDeath			=	150;	//150
 const int SPL_Damage_MassDeath			=	150;	//500
-const int SPL_Scaling_MassDeath			=	400;
+const int SPL_Scaling_MassDeath			=	200;
 
 ///******************************************************************************************
 instance Spell_MassDeath (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_MassDeath;
+	damage_per_level					=	SPL_Damage_MassDeath;
 	damageType							=	DAM_MAGIC;
 	targetCollectAlgo					=	TARGET_COLLECT_NONE;
 };

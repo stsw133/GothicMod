@@ -98,7 +98,7 @@ func void DIA_Marduk_Gebetet_Info ()
 	AI_Output (self, other, "DIA_Marduk_Gebetet_05_01"); //To bardzo dobrze. A teraz wracaj do swoich zajêæ.
 	
 	MIS_MardukBeten = LOG_SUCCESS;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	B_StartOtherRoutine (Sergio,"START");
 };
 ///////////////////////////////////////////////////////////////////////

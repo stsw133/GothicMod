@@ -130,7 +130,7 @@ func int DIA_Borka_BUYHERB_Condition ()
 };
 func void DIA_Borka_BUYHERB_Info ()
 {
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	AI_Output (other, self, "DIA_Borka_BUYHERB_15_00"); //S³ysza³em, ¿e sprzedajesz ziele.
 	
@@ -187,7 +187,7 @@ instance DIA_Borka_SECOND_CHANCE		(C_INFO)
 };
 func int DIA_Borka_SECOND_CHANCE_Condition ()
 {	
-	var C_ITEM heroArmor; heroArmor = Npc_GetEquippedArmor(other);
+	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
 	if 	(Borka_Deal == TRUE)
 	&&  (Npc_HasItems (other, ItmI_Gold) >= 50)

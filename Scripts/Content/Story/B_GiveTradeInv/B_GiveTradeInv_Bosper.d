@@ -18,7 +18,7 @@ func void B_GiveTradeInv_Bosper (var C_NPC slf)
 		CreateInvItems (slf, ItRw_Bow_L_04, 1);
 		
 		CreateInvItems (slf, ItBE_Dex_01, 1);
-		CreateInvItems (slf, ItRi_Dex_02, 1);
+		CreateInvItems (slf, ItRi_Dex_01, 1);
 		
 		Bosper_ItemsGiven_Chapter = 1;
 	};

@@ -57,7 +57,7 @@ func void DIA_Morgahard_HALLO_Info ()
 	Info_AddChoice	(DIA_Morgahard_HALLO, "Sêdzia kaza³ mi was zabiæ.", DIA_Morgahard_HALLO_tot );
 	B_LogEntry (TOPIC_RichterLakai,"Znalaz³em Morgaharda, przywódcê zbiegów."); 
 	SCFoundMorgahard = TRUE;
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 func void DIA_Morgahard_HALLO_tot ()
 {

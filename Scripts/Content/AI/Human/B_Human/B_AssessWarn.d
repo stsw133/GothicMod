@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessWarn
+/// B_AssessWarn
 ///******************************************************************************************
 func void B_AssessWarn()
 {
@@ -7,15 +7,18 @@ func void B_AssessWarn()
 	{
 		return;
 	};
+	
 	if (Npc_IsInState(self, ZS_ReactToWeapon))
 	|| (Npc_IsInState(self, ZS_ObservePlayer))
 	{
 		return;
 	};
+	
 	if (other.guild > GIL_SEPERATOR_HUM)
 	{
 		return;
 	};
+	
 	if (C_NpcIsGateGuard(self))
 	{
 		return;

@@ -9,8 +9,8 @@ instance STRF_1156_Leiche (Npc_Default)
 	npctype								=	NPCTYPE_OCMAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 2);
-	B_SetFightSkills (self, FightTalent_Weak+5);
+	NpcFn_SetAttributesToLevel (self, 2);
+	NpcFn_SetFightSkills (self, FightTalent_Weak+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -19,7 +19,7 @@ instance STRF_1156_Leiche (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Dressed+1, BodySkin_L, "Hum_Head_Bald", Face_Normal02, 0, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+1, BodySkin_L, "Hum_Head_Bald", Face_Normal02, 0, -1);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

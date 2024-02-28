@@ -164,7 +164,7 @@ FUNC VOID DIA_Dragomir_Armbrust_Info()
 	CreateInvItems (self, ItMi_Gold, 150);									
 	B_GiveInvItems (self, other, ItMi_Gold, 150);					
 	MIS_DragomirsArmbrust = LOG_SUCCESS;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 // ***********************************************************
@@ -187,9 +187,9 @@ INSTANCE DIA_Dragomir_Learn   (C_INFO)
 FUNC INT DIA_Dragomir_Learn_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Dragomir_Dangerous))
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{ 
-		return TRUE;
+		return true;
 	};		
 };
 FUNC VOID DIA_Dragomir_Learn_Info()
@@ -227,6 +227,6 @@ FUNC VOID DIA_Dragomir_Learn_Here()
 	B_GiveInvItems (other,self,ItMi_Gold,Dragomir_TeachingCost);
 	AI_Output (self ,other,"DIA_Dragomir_Learn_Here_12_01"); //Dobrze, jeœli o mnie chodzi, mo¿emy zaczynaæ natychmiast.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Info_ClearChoices (DIA_Dragomir_Learn);
 };

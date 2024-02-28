@@ -112,7 +112,7 @@ func void DIA_Bennet_DI_Smith_Info ()
 {
 	AI_Output (other, self, "DIA_Bennet_DI_Smith_15_00"); //Nauczysz mnie swojego rzemios³a?
 	AI_Output (self, other, "DIA_Bennet_DI_Smith_06_01"); //Zale¿y, co chcesz zrobiæ.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 /*
@@ -193,7 +193,7 @@ func void DIA_Bennet_DI_DragonEgg_Info()
 	AI_Output			(self, other, "DIA_Bennet_DI_DragonEgg_06_01"); //No i co?
 	AI_Output			(other, self, "DIA_Bennet_DI_DragonEgg_15_02"); //Nooo... Myœla³em...
 	AI_Output			(self, other, "DIA_Bennet_DI_DragonEgg_06_03"); //Wiem, co sobie myœla³eœ. Zapomnij o tym i zatrzymaj je. Nie chcê go.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 ///////////////////////////////////////////////////////////////////////

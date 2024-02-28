@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_MM_Rtn_Wusel
+/// ZS_MM_Rtn_Wusel
 ///******************************************************************************************
 func void ZS_MM_Rtn_Wusel()
 {
@@ -17,7 +17,7 @@ func void ZS_MM_Rtn_Wusel()
 ///******************************************************************************************
 func int ZS_MM_Rtn_Wusel_loop()
 {
-	if (!Wld_IsTime(self.aivar[AIV_MM_WuselStart],00,self.aivar[AIV_MM_WuselEnd],00))
+	if (!Wld_IsTime(self.aivar[AIV_MM_WuselStart], 00, self.aivar[AIV_MM_WuselEnd], 00))
 	&& (self.aivar[AIV_MM_WuselStart] != OnlyRoutine)
 	{
 		AI_StartState (self, ZS_MM_AllScheduler, true, "");

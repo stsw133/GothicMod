@@ -1,10 +1,11 @@
 ///******************************************************************************************
-///	ZS_ObservePlayer
+/// ZS_ObservePlayer
 ///******************************************************************************************
 func void ZS_ObservePlayer()
 {
 	Perception_Set_Normal();
 	
+	/// FUNC
 	if (!C_BodystateContains(self, BS_SIT))
 	{
 		AI_StandUp 	(self);
@@ -13,7 +14,7 @@ func void ZS_ObservePlayer()
 	}
 	else
 	{
-		B_LookAtNpc	(self, other);
+		B_LookAtNpc (self, other);
 	};
 	
 	if (Npc_WasInState(self, ZS_Sleep))
@@ -32,7 +33,7 @@ func void ZS_ObservePlayer()
 		};
 	};
 	
-	self.aivar[AIV_StateTime] = (Hlp_Random(2) + 1);
+	self.aivar[AIV_StateTime] = Hlp_RandomRange(1, 2);
 };
 
 ///******************************************************************************************
@@ -47,7 +48,7 @@ func int ZS_ObservePlayer_Loop()
 		B_Say 			(self, other, "$WHATSTHISSUPPOSEDTOBE");
 		AI_StopPointAt	(self);
 		
-		Npc_SendPassivePerc	(self, PERC_ASSESSWARN, self, other);
+		Npc_SendPassivePerc (self, PERC_ASSESSWARN, self, other);
 	};
 	
 	if (Npc_GetStateTime(self) > self.aivar[AIV_StateTime])
@@ -57,7 +58,7 @@ func int ZS_ObservePlayer_Loop()
 			B_TurnToNpc (self, other);
 		};
 		
-		self.aivar[AIV_StateTime] = (Hlp_Random(2) + 1);
+		self.aivar[AIV_StateTime] = Hlp_RandomRange(1, 2);
 		Npc_SetStateTime (self, 0);
 	};
 	

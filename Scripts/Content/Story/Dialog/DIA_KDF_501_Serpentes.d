@@ -265,7 +265,7 @@ func void DIA_Serpentes_SUCCESS_Info ()
 	};
 	
 	MIS_GOLEM = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 };
 
@@ -568,7 +568,7 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 		 if (SerpentesMinenAnteilCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Serpentes_MinenAnteileBringen_15_00"); //Odzyska³em jeden z udzia³ów w kopalni.
-				B_GivePlayerXP(75);
+				B_GivePlayerExp(75);
 				B_GiveInvItems (other, self, ItWr_MinenAnteil_Mis,1);
 				SerpentesMinenAnteilCounter = SerpentesMinenAnteilCounter + 1;
 			}
@@ -581,7 +581,7 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 				XP_BringSerpentesMinenAnteils = (SerpentesMinenAnteilCount * 75);
 				SerpentesMinenAnteilCounter = (SerpentesMinenAnteilCounter + SerpentesMinenAnteilCount); 
 	
-				B_GivePlayerXP (XP_BringSerpentesMinenAnteils);
+				B_GivePlayerExp (XP_BringSerpentesMinenAnteils);
 			};
 
 		SalandrilMinenAnteil_MAINCounter = SalandrilMinenAnteil_MAINCounter - SerpentesMinenAnteilCount;
@@ -602,8 +602,8 @@ func void DIA_Serpentes_MinenAnteileBringen_Info ()
 			AI_Output		(other, self, "DIA_Serpentes_MinenAnteileBringen_15_04"); //Myœlê, ¿e to ju¿ wszystkie.
 			AI_Output		(self, other, "DIA_Serpentes_MinenAnteileBringen_10_05"); //Doskonale, zas³u¿y³eœ na nagrodê.
 			AI_Output		(self, other, "DIA_Serpentes_MinenAnteileBringen_10_06"); //WeŸ ten ochronny amulet. Na pewno przyda ci siê w twoich dalszych wyprawach.
-			CreateInvItems (self, ItAm_ProtMagic_01, 1); 
-			B_GiveInvItems (self, other, ItAm_ProtMagic_01, 1);
+			CreateInvItems (self, ItAm_Mage_01, 1); 
+			B_GiveInvItems (self, other, ItAm_Mage_01, 1);
 		}
 		else	//Joly: zur Sicherheit!
 		{
@@ -642,7 +642,7 @@ func void DIA_Serpentes_GOTSalandril_Info ()
 {
 	AI_Output			(other, self, "DIA_Serpentes_GOTSalandril_15_00"); //Wiem, kto wprowadzi³ fa³szywe udzia³y do obrotu. To Salandril, alchemik z górnego miasta.
 	AI_Output			(self, other, "DIA_Serpentes_GOTSalandril_10_01"); //PrzyprowadŸ go tutaj. Musimy z nim powa¿nie porozmawiaæ.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -691,7 +691,7 @@ func void DIA_Serpentes_SalandrilHERE_Info ()
 		B_GiveInvItems (self, other, ItMi_Gold, 400);					
 	};
 	TOPIC_END_MinenAnteile = TRUE;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -728,7 +728,7 @@ func void DIA_Serpentes_SalandrilDEAD_Info ()
 	AI_Output			(other, self, "DIA_Serpentes_SalandrilDEAD_15_00"); //Salandril nie ¿yje.
 	AI_Output			(self, other, "DIA_Serpentes_SalandrilDEAD_10_01"); //Có¿, jego wystêpki zosta³y ukarane. Niech Innos zlituje siê nad dusz¹ tego nieszczêœnika.
 	TOPIC_END_MinenAnteile = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 	
 //##################################################################

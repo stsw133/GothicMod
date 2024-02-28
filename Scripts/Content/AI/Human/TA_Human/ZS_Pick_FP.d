@@ -1,54 +1,53 @@
-// **************************************
-// NSC pflückt etwas vom Boden an Pick-FP
-// **************************************
-
-func void ZS_Pick_FP ()
-{	
+///******************************************************************************************
+/// ZS_Pick_FP
+///******************************************************************************************
+func void ZS_Pick_FP()
+{
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	AI_SetWalkmode 	(self,NPC_WALK);
-		
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self, self.wp) > TA_DIST_SELFWP_MAX)
     {
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
 };
 
-func int ZS_Pick_FP_Loop ()
+func int ZS_Pick_FP_Loop()
 {
-	if ((Npc_GetStateTime(self) >= 7)
-	&& (Hlp_Random (2)))  
+	if (Npc_GetStateTime(self) >= 7)
+	&& (Hlp_Random(2))
 	{
-		if ((Npc_IsOnFP(self,"PICK")) 
-		&& (Wld_IsFPAvailable (self, "PICK")))  //FP gefunden!
+		if (Npc_IsOnFP(self, "PICK"))
+		&& (Wld_IsFPAvailable(self, "PICK"))
 		{
-			AI_GotoNextFP (self, "PICK");
-			AI_PlayAni		(self, "T_PLUNDER");
-			Npc_SetStateTime (self,0);
-			
+			AI_GotoNextFP		(self, "PICK");
+			AI_PlayAni			(self, "T_PLUNDER");
+			Npc_SetStateTime	(self, 0);
 		}
-		else if (Npc_IsOnFP(self,"PICK"))
+		else if (Npc_IsOnFP(self, "PICK"))
 		{
-			AI_PlayAni		(self, "T_PLUNDER");
-			Npc_SetStateTime (self,0);
+			AI_PlayAni			(self, "T_PLUNDER");
+			Npc_SetStateTime	(self, 0);
 		};
-		AI_SetWalkmode (self,NPC_WALK);		
+		
+		AI_SetWalkmode (self, NPC_WALK);
 	}
 	else if (Npc_GetStateTime(self) >= 7)
 	{
-		if (Npc_IsOnFP (self, "PICK"))
-		{		
-			AI_PlayAni		(self, "T_PLUNDER");	
+		if (Npc_IsOnFP(self, "PICK"))
+		{
+			AI_PlayAni (self, "T_PLUNDER");
 		};
-		AI_SetWalkmode (self,NPC_WALK);		
+		
+		AI_SetWalkmode (self, NPC_WALK);
 	};
 	
-	if ((!Npc_IsOnFP(self,"PICK")) 
-	&& (Wld_IsFPAvailable (self, "PICK")))  //FP gefunden!
+	if (!Npc_IsOnFP(self, "PICK"))
+	&& (Wld_IsFPAvailable(self, "PICK"))
 	{
-		AI_GotoFP 		(self, "PICK");
+		AI_GotoFP (self, "PICK");
 	};
 	
 	return LOOP_CONTINUE;
@@ -56,7 +55,4 @@ func int ZS_Pick_FP_Loop ()
 
 func void ZS_Pick_FP_End()
 {
-	
 };
-
-			

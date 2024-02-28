@@ -12,8 +12,8 @@ instance PIR_1352_Addon_AlligatorJack (Npc_Default)
 	aivar[AIV_FollowDist]				=	800;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Master);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Master);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -25,7 +25,7 @@ instance PIR_1352_Addon_AlligatorJack (Npc_Default)
 	CreateInvItems (self, itpo_Health_02, 4);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_CorAngar, 0, ITAR_PIR_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_CorAngar, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

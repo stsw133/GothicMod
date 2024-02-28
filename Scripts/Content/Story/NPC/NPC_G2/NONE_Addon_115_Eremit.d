@@ -12,8 +12,8 @@ instance NONE_ADDON_115_Eremit (Npc_Default)
 	aivar[AIV_ToughGuy] 				=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -22,7 +22,7 @@ instance NONE_ADDON_115_Eremit (Npc_Default)
 	EquipItem (self, ItMw_1h_Bau_Mace);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Nude+3, BodySkin_N, "Hum_Head_Psionic", Face_Normal52, 0, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Nude+3, BodySkin_N, "Hum_Head_Psionic", Face_Normal52, 0, -1);
 	Mdl_SetModelFatness	(self, 1);
 
 	/// ------ Rtn ------

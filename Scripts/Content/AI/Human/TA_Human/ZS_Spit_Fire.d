@@ -1,46 +1,41 @@
-
-
-
-// ****************
-// NSC spuckt Feuer
-// ****************
-
-func void ZS_Spit_Fire ()
+///******************************************************************************************
+/// ZS_Spit_Fire
+///******************************************************************************************
+func void ZS_Spit_Fire()
 {
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	AI_SetWalkmode 	(self,NPC_WALK);
-	
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self,self.wp) > TA_DIST_SELFWP_MAX)
 	{
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
 	
-	if (Npc_HasItems (self,ItLsTorchFirespit) == 0)
+	if (Npc_HasItems(self, ItLsTorchFirespit) == 0)
 	{
-		CreateInvItem (self,ItLsTorchFirespit);
+		CreateInvItem (self, ItLsTorchFirespit);
 	};
 };
 
 func int ZS_Spit_Fire_loop()
 {
-if (Wld_IsFPAvailable(self,"STAND"))
-	{																	
+	if (Wld_IsFPAvailable(self, "STAND"))
+	{
 		AI_GotoFP (self, "STAND");
-		AI_ALignToFP (self);
+		AI_ALignToFP(self);
 	}
 	else
 	{
-		AI_AlignToWP (self);	
+		AI_AlignToWP(self);
 	};
 	
 	if (Npc_GetStateTime(self) > 10)
 	{
-		AI_UseItemToState (self, ItLsTorchFirespit,	5);
-  		AI_UseItemToState (self, ItLsTorchFirespit,	0);
-		Npc_SetStateTime  (self, 0);
+		AI_UseItemToState	(self, ItLsTorchFirespit, 5);
+  		AI_UseItemToState	(self, ItLsTorchFirespit, 0);
+		Npc_SetStateTime	(self, 0);
 	};
 	
 	return LOOP_CONTINUE;
@@ -50,6 +45,3 @@ func void ZS_Spit_Fire_end()
 {
 	AI_UseItemToState (self, ItLsTorchFirespit, -1);
 };
-
-
-

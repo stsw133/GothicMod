@@ -34,28 +34,31 @@ instance Spell_Teleport (C_Spell_Proto)
 
 func int Spell_Logic_Teleport (var int manaInvested)
 {
-	if (TelStoneID > 0)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return SPL_SENDCAST;
 };
 
 func void Spell_Cast_Teleport()
 {
-	if		(TelStoneID == ID_BigFarm)				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "BIGFARM"))					{ return; };	}
-	else if	(TelStoneID == ID_Castle)				{	if (!B_TryToTeleport(OLDWORLD_ZEN, "OC_MAGE_CENTER"))			{ return; };	}
-	else if	(TelStoneID == ID_DemonTower)			{	if (!B_TryToTeleport(OLDWORLD_ZEN, "DT_E3_03"))					{ return; };	}
-	else if	(TelStoneID == ID_Khorinis)				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "HAFEN"))					{ return; };	}
-	else if	(TelStoneID == ID_Monastery)			{	if (!B_TryToTeleport(NEWWORLD_ZEN, "KLOSTER"))					{ return; };	}
-	else if	(TelStoneID == ID_MonasteryUnderground)	{	if (!B_TryToTeleport(NEWWORLD_ZEN, "NW_PAL_SECRETCHAMBER"))		{ return; };	}
-	else if	(TelStoneID == ID_PassNW)				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "LEVELCHANGE"))				{ return; };	}
-	else if	(TelStoneID == ID_PassOW)				{	if (!B_TryToTeleport(OLDWORLD_ZEN, "SPAWN_MOLERAT02_SPAWN01"))	{ return; };	}
-	else if	(TelStoneID == ID_Taverne)				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "NW_TAVERNE_04"))			{ return; };	}
-	else if	(TelStoneID == ID_Xardas)				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "XARDAS"))					{ return; };	}
-	else											{	if (!B_TryToTeleport(CurrentLevel, "XXX"))						{ return; };	};
-	TelStoneID = 0;
+	var oCNpc o_self; o_self = Hlp_GetNpc(self);
+	var int magBook; magBook = o_self.mag_Book;
+	
+	if (magBook > 0)
+	{
+		var int itHlp; itHlp = QS_GetSpellItem(magBook);
+		var C_Item it; it = MEM_PtrToInst(itHlp);
+		
+		if		(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_BigFarm))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "BIGFARM"))					{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Castle))				{	if (!B_TryToTeleport(OLDWORLD_ZEN, "OC_MAGE_CENTER"))			{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_DemonTower))			{	if (!B_TryToTeleport(OLDWORLD_ZEN, "DT_E3_03"))					{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Khorinis))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "HAFEN"))					{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Monastery))			{	if (!B_TryToTeleport(NEWWORLD_ZEN, "KLOSTER"))					{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_MonasteryUnderground))	{	if (!B_TryToTeleport(NEWWORLD_ZEN, "NW_PAL_SECRETCHAMBER"))		{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_PassNW))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "LEVELCHANGE"))				{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_PassOW))				{	if (!B_TryToTeleport(OLDWORLD_ZEN, "SPAWN_MOLERAT02_SPAWN01"))	{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Taverne))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "NW_TAVERNE_04"))			{ return; };	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Xardas))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "XARDAS"))					{ return; };	}
+		else																			{	if (!B_TryToTeleport(CurrentLevel, "XXX"))						{ return; };	};
+	};
 	
 	self.aivar[AIV_SelectSpell] += 1;
 };

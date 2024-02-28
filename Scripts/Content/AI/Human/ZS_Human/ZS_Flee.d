@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_Flee
+/// ZS_Flee
 ///******************************************************************************************
 func void ZS_Flee()
 {
@@ -13,10 +13,9 @@ func void ZS_Flee()
 		B_Say_Overlay (self, other, "$RUNAWAY");
 	};
 	
-	AI_RemoveWeapon(self);
-	
-	AI_SetWalkmode (self, NPC_RUN);
-	Mdl_ApplyOverlayMds (self, "HUMANS_FLEE.MDS");
+	AI_RemoveWeapon		(self);
+	AI_SetWalkmode		(self, NPC_RUN);
+	Mdl_ApplyOverlayMds	(self, "HUMANS_FLEE.MDS");
 };
 
 ///******************************************************************************************
@@ -38,9 +37,8 @@ func int ZS_Flee_Loop()
 ///******************************************************************************************
 func void ZS_Flee_End()
 {
-	Mdl_RemoveOverlayMDS (self, "HUMANS_FLEE.MDS");
-	
-	AI_StandUp(self);
-	AI_StartState (self, ZS_HealSelf, true, "");
+	Mdl_RemoveOverlayMDS	(self, "HUMANS_FLEE.MDS");
+	AI_StandUp				(self);
+	AI_StartState			(self, ZS_HealSelf, true, "");
 	return;
 };

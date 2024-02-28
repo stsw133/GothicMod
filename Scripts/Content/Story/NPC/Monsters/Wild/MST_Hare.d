@@ -9,7 +9,7 @@ prototype Mst_Default_Hare (C_Npc)
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	
-	B_SetAttributesToLevel (self, 0);
+	NpcFn_SetAttributesToLevel (self, 1);
 	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

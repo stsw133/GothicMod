@@ -2,8 +2,8 @@
 ///	SPL_EleHurricane
 ///******************************************************************************************
 
-const int SPL_Cost_EleHurricane			=	80;
-const int SPL_Damage_EleHurricane		=	50;
+const int SPL_Cost_EleHurricane			=	125;
+const int SPL_Damage_EleHurricane		=	125;
 
 ///******************************************************************************************
 instance Spell_EleHurricane (C_Spell_Proto)
@@ -18,11 +18,12 @@ instance Spell_EleHurricane (C_Spell_Proto)
 
 func int Spell_Logic_EleHurricane (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_EleHurricane/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_EleHurricane/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_EleHurricane)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

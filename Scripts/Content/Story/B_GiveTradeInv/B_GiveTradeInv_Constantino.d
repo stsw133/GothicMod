@@ -56,7 +56,7 @@ func void B_GiveTradeInv_Constantino (var C_NPC slf)
 		CreateInvItems (slf, ItMi_Quartz, 2);
 		CreateInvItems (slf, ItAt_ShadowHorn, 1);
 		CreateInvItems (slf, ItAt_SkeletonBone, 1);
-		CreateInvItems (slf, ItBe_Mana_01, 1);
+		CreateInvItems (slf, ItBe_MP_01, 1);
 		
 		Constantino_ItemsGiven_Chapter = 3;
 	};

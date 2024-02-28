@@ -153,7 +153,7 @@ func void DIA_Karras_Success_Info ()
 	AI_Output (self, other, "DIA_Karras_Success_10_03"); //Aha, przyjmij ten zwój w nagrodê za dobrze wykonane zadanie.
 	
 	MIS_KarrasVergessen = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	B_GiveInvItems (other, self, ItSc_Charm,3);
 	//B_GiveInvItems (self, other, ItSc_SumWolf,1);
 	B_GiveInvItems (self, other, ItSc_NightToDay,1);
@@ -208,7 +208,7 @@ func void DIA_Karras_JOB_Info ()
 	AI_Output (self, other, "DIA_Karras_JOB_10_04"); //Zwykle nazywa siê to przyzywaniem, choæ ta nazwa nie opisuje w zadowalaj¹cym stopniu sztuki wzywania pomocnika.
 	AI_Output (self, other, "DIA_Karras_JOB_10_05"); //Co wiêcej, jestem w posiadaniu pewnych interesuj¹cych zwojów magicznych, których nie ma Gorax.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	if (other.guild == GIL_NOV)
 	{
@@ -407,7 +407,7 @@ func void DIA_Karras_InnosEyeRetrieved_Info ()
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_04"); //Nie drwij ze mnie. Sytuacja jest powa¿na, bardzo powa¿na, i nie bardzo wiemy, komu mo¿emy zaufaæ.
 	AI_Output (self ,other,"DIA_Karras_InnosEyeRetrieved_10_05"); //Skoro wrogowi uda³o siê zwieœæ Pedra na drogê wystêpku, nale¿y siê spodziewaæ, ¿e inni równie¿ mu ulegn¹.
 
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 	
 ///////////////////////////////////////////////////////////////////////
@@ -543,7 +543,7 @@ FUNC VOID DIA_Karras_HaveBook_Info()
 	MIS_KarrasResearchDMT = LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras u¿yje w swoich dalszych badaniach Almanachu Opêtanych. Mam do niego wróciæ póŸniej."); 
 	KarrasGotResearchDMTBook_Day = Wld_GetDay(); 
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 
 //********************************************************************
@@ -594,7 +594,7 @@ FUNC VOID DIA_Karras_ResearchDMTEnd_Info()
 
 		SC_KnowsMadPsi = TRUE;
 		B_LogEntry (TOPIC_DEMENTOREN,"Badania Karrasa zosta³y uwieñczone sukcesem. Miêdzy Bractwem œni¹cego a Poszukiwaczami istnieje jakieœ powi¹zanie."); 
-		B_GivePlayerXP(300);
+		B_GivePlayerExp(300);
 	}
 	else
 	{
@@ -679,7 +679,7 @@ FUNC VOID DIA_Karras_KarrasBlessedStone_Info()
 	KarrasMakesBlessedStone_Day = Wld_GetDay(); 
 	MIS_Karras_FindBlessedStone	= LOG_SUCCESS;
 	B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przed mentalnymi atakami Poszukiwaczy. To powinno mi trochê u³atwiæ ¿ycie."); 
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	AI_StopProcessInfos (self);
 };
 
@@ -721,7 +721,7 @@ FUNC VOID DIA_Karras_ItAm_Prot_BlackEye_Mis_Info()
 		AI_Output (other,self ,"DIA_Karras_ItAm_Prot_BlackEye_Mis_15_03"); //Dziêkujê.
 		B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przez mrocznym spojrzeniem Poszukiwaczy."); 
 		DIA_Karras_ItAm_Prot_BlackEye_Mis_NoPerm = TRUE;
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 	}
 	else
 	{

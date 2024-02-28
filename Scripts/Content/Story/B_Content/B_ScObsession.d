@@ -1,26 +1,23 @@
 ///******************************************************************************************
-///	B_SCObsession
+///	B_ScObsession
 ///******************************************************************************************
 
-var int SC_IsObsessed;
-var int SC_ObsessionCounter;
+const string PRINT_ScIsObsessed						=	"Czujesz, ¿e coœ ciê ciœnie i dusi!";
 
 ///******************************************************************************************
-func void B_ClearSCObsession (var C_Npc heiler)
+func void B_ClearScObsession (var C_Npc heiler)
 {
 	if (Hlp_GetInstanceID(heiler) != Hlp_GetInstanceID(hero))
 	{
 		AI_StopProcessInfos(heiler);
 	};
 	
-	MOD_ObsessionOFF(heiler);
-	SC_IsObsessed = false;
-	SC_ObsessionCounter = 0;
-	PrintScreen	(PRINT_ClearSCObsession, -1, -1, FONT_Screen, 3);
+	MOD_ObsessionOFF();
+	PrintScreen	("Czujesz ulgê.", -1, -1, FONT_Screen, 3);
 };
 
 ///******************************************************************************************
-func void B_SCIsObsessed (var C_Npc dementor)
+func void B_SetScObsessed (var C_Npc dementor)
 {
 	if (Hlp_GetInstanceID(dementor) != Hlp_GetInstanceID(hero))
 	{
@@ -29,12 +26,7 @@ func void B_SCIsObsessed (var C_Npc dementor)
 	
 	if (!Npc_HasItems(hero, ItAm_ProtDementor))
 	{
-		if (SC_ObsessionCounter >= 2)
-		{
-			MOD_ObsessionON(hero);
-			SC_IsObsessed = true;
-			PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
-		};
-		SC_ObsessionCounter += 1;
+		MOD_ObsessionON();
+		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 	};
 };

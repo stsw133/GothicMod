@@ -141,7 +141,7 @@ FUNC VOID DIA_Addon_Snaf_Booze_Info()
 	Snaf_Tip_Kosten = 0;
 	B_GiveInvItems (self, other, ItFo_Addon_FireStew,1);
 	MIS_SnafHammer = LOG_SUCCESS;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 //---------------------------------------------------------------------
@@ -305,7 +305,7 @@ FUNC VOID DIA_Addon_Snaf_HOCH_Info()
 	AI_Teleport (Fisk,"BL_INN_UP_06");
 	B_StartotherRoutine (Fisk,"MEETING");
 
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 
 //---------------------------------------------------------------------

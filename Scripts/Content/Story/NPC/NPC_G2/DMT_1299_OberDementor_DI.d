@@ -15,8 +15,8 @@ instance DMT_1299_OberDementor_DI (Npc_Default)
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Master);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Master);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -27,7 +27,7 @@ instance DMT_1299_OberDementor_DI (Npc_Default)
 	CreateInvItem (self, ItKe_ChestMasterDementor_MIS);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", /*Face_MadPsi*/ Face_Skull, 0, ITAR_Demaster);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", /*Face_MadPsi*/ Face_Skull, 0, ITAR_Demaster);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

@@ -17,6 +17,14 @@ prototype ItemPR_Recipe (C_Item)
 ///	Smith
 ///******************************************************************************************
 
+/// HARDENING = 10 LN
+/// SHARPENING = 5 LN
+/// MINING = 5 LN
+/// JEWELERY = 10 LN
+/// ARTEFACT_UPGRADING = 10 LN
+/// SMITH = 10 LN
+/// SMITH_ORE = 10 LN
+
 const int SMITH_Hardening			=	0;
 const int SMITH_Sharpening			=	1;
 const int SMITH_Jewelery			=	2;
@@ -753,27 +761,7 @@ func void Use_Recipe_SMITH_2H_Ignite_04()
 		B_Say (self, self, "$VERSTEHE");
 	};
 };
-///******************************************************************************************
-///	Enchanting
-///******************************************************************************************
-
-const int ENCHANTING_ProtPhysical	=	SPL_NecDeath + 1;
-const int ENCHANTING_ProtMagic		=	SPL_NecDeath + 2;
-const int ENCHANTING_ProtFire		=	SPL_NecDeath + 3;
-const int ENCHANTING_ProtTotal		=	SPL_NecDeath + 4;
-const int ENCHANTING_Hp				=	SPL_NecDeath + 5;
-const int ENCHANTING_Mana			=	SPL_NecDeath + 6;
-const int ENCHANTING_Energy			=	SPL_NecDeath + 7;
-const int ENCHANTING_Str			=	SPL_NecDeath + 8;
-const int ENCHANTING_Dex			=	SPL_NecDeath + 9;
-const int ENCHANTING_Power			=	SPL_NecDeath + 10;
-const int ENCHANTING_LifeSteal		=	SPL_NecDeath + 11;
-
-const int MAX_ENCHANTING			=	SPL_NecDeath + 12;
-
-var int PLAYER_TALENT_ENCHANTING[MAX_ENCHANTING];
-var int COUNTER_ENCHANTING;
-
+/*
 ///******************************************************************************************
 instance ItRe_ENCHANTING_ProtPhysical (ItemPR_Recipe)
 {
@@ -931,26 +919,26 @@ func void Use_Recipe_ENCHANTING_Mana()
 	};
 };
 ///******************************************************************************************
-instance ItRe_ENCHANTING_Energy (ItemPR_Recipe)
+instance ItRe_ENCHANTING_Stamina (ItemPR_Recipe)
 {
 	value 					=	300;
 	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Energy;
+	on_state[0]				=	Use_Recipe_ENCHANTING_Stamina;
 	
 	description				=	"Instrukta¿ talizmanów energii";
 	TEXT[1]					=	"z magicznej rudy.";
 	COUNT[4]				=	2;
 	COUNT[5]				=	value;
 };
-func void Use_Recipe_ENCHANTING_Energy()
+func void Use_Recipe_ENCHANTING_Stamina()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
 	{
 		B_Say (self, self, "$CANTUNDERSTANDTHIS");
 	}
-	else if (!PLAYER_TALENT_ENCHANTING[ENCHANTING_Energy])
+	else if (!PLAYER_TALENT_ENCHANTING[ENCHANTING_Stamina])
 	{
-		PLAYER_TALENT_ENCHANTING[ENCHANTING_Energy] = true;
+		PLAYER_TALENT_ENCHANTING[ENCHANTING_Stamina] = true;
 		COUNTER_ENCHANTING += 1;
 		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
 		B_Say (self, self, "$VERSTEHE");
@@ -1060,793 +1048,26 @@ func void Use_Recipe_ENCHANTING_LifeSteal()
 		B_Say (self, self, "$VERSTEHE");
 	};
 };
-///******************************************************************************************
-instance ItRe_ENCHANTING_Light (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Light;
-	
-	description				=	"Przepis na 'Œwiat³o'";
-	TEXT[1]					=	"ze z³otej monety.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Light()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_nLight])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_nLight] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Heal (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Heal;
-	
-	description				=	"Przepis na 'Uleczenie'";
-	TEXT[1]					=	"z zio³a leczniczego.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Heal()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_nHeal])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_nHeal] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_SlowTime (ItemPR_Recipe)
-{
-	value 					=	600;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_SlowTime;
-	
-	description				=	"Przepis na 'Spowolnienie czasu'";
-	TEXT[1]					=	"ze szmaragdu i 10 cz¹steczek czasu.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_SlowTime()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_SlowTime])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_SlowTime] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-		
-		enableTimeDust = true;
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_NightToDay (ItemPR_Recipe)
-{
-	value 					=	300;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_NightToDay;
-	
-	description				=	"Przepis na 'Noc w dzieñ'";
-	TEXT[1]					=	"z owczej skóry i 5 cz¹steczek czasu.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_NightToDay()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_NightToDay])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_NightToDay] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-		
-		enableTimeDust = true;
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Telekinesis (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Telekinesis;
-	
-	description				=	"Przepis na 'Telekineza'";
-	TEXT[1]					=	"z monety fortuny.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Telekinesis()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Telekinesis])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Telekinesis] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_FireBolt (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_FireBolt;
-	
-	description				=	"Przepis na 'Ognisty pocisk'";
-	TEXT[1]					=	"z siarki.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_FireBolt()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_FireBolt])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_FireBolt] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_IceBolt (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_IceBolt;
-	
-	description				=	"Przepis na 'Lodowy pocisk'";
-	TEXT[1]					=	"z kryszta³u.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_IceBolt()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceBolt])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_IceBolt] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Zap (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Zap;
-	
-	description				=	"Przepis na 'Ma³a b³yskawica'";
-	TEXT[1]					=	"z bry³ki srebra.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Zap()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Zap])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Zap] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_SkullBolt (ItemPR_Recipe)
-{
-	value 					=	100;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_SkullBolt;
-	
-	description				=	"Przepis na 'Krzyk umar³ych'";
-	TEXT[1]					=	"z czaszki.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_SkullBolt()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_SkullBolt])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_SkullBolt] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_WindFist (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_WindFist;
-	
-	description				=	"Przepis na 'Piêœæ wichru'";
-	TEXT[1]					=	"z wêgla i pazurów.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_WindFist()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_WindFist])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_WindFist] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Sleep (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Sleep;
-	
-	description				=	"Przepis na 'Uœpienie'";
-	TEXT[1]					=	"z bagiennego ziela.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Sleep()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Sleep])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Sleep] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Charm (ItemPR_Recipe)
-{
-	value 					=	300;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Charm;
-	
-	description				=	"Przepis na 'Amnezja'";
-	TEXT[1]					=	"z bagiennego ziela i ¿uwaczek polnej bestii.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Charm()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Charm])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Charm] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_LightningFlash (ItemPR_Recipe)
-{
-	value 					=	400;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_LightningFlash;
-	
-	description				=	"Przepis na 'B³yskawica'";
-	TEXT[1]					=	"z bry³ki ¿elaza i szponów topielca.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_LightningFlash()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_LightningFlash])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_LightningFlash] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_ChargeFireball (ItemPR_Recipe)
-{
-	value 					=	400;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_ChargeFireball;
-	
-	description				=	"Przepis na 'Du¿a kula ognia'";
-	TEXT[1]					=	"z ognistego kryszta³u i smo³y.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_ChargeFireball()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_ChargeFireball])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_ChargeFireball] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Whirlwind (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Whirlwind;
-	
-	description				=	"Przepis na 'Wir'";
-	TEXT[1]					=	"ze skrzyde³ i wody.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Whirlwind()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Whirlwind])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Whirlwind] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Fear (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Fear;
-	
-	description				=	"Przepis na 'Strach'";
-	TEXT[1]					=	"ze skrzyde³.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Fear()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Fear])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Fear] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Rage (ItemPR_Recipe)
-{
-	value 					=	400;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Rage;
-	
-	description				=	"Przepis na 'Œlep¹ furiê'";
-	TEXT[1]					=	"z krwi demona.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Rage()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Rage])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Rage] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_ChargeZap (ItemPR_Recipe)
-{
-	value 					=	300;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_ChargeZap;
-	
-	description				=	"Przepis na 'Piorun kulisty'";
-	TEXT[1]					=	"z bry³ki ¿elaza i pazurów.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_ChargeZap()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_ChargeZap])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_ChargeZap] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Geyser (ItemPR_Recipe)
-{
-	value 					=	300;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Geyser;
-	
-	description				=	"Przepis na 'Gejzer'";
-	TEXT[1]					=	"z akwamarynu.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Geyser()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Geyser])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Geyser] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_WaterFist (ItemPR_Recipe)
-{
-	value 					=	400;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_WaterFist;
-	
-	description				=	"Przepis na 'Wodna piêœæ'";
-	TEXT[1]					=	"z akwamarynu i wody.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_WaterFist()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_WaterFist])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_WaterFist] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Pyrokinesis (ItemPR_Recipe)
-{
-	value 					=	500;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Pyrokinesis;
-	
-	description				=	"Przepis na 'Du¿a burza ognista'";
-	TEXT[1]					=	"z ognistego kryszta³u i saletry.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Pyrokinesis()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Pyrokinesis])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Pyrokinesis] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_IceLance (ItemPR_Recipe)
-{
-	value 					=	200;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_IceLance;
-	
-	description				=	"Przepis na 'Lodowa lanca'";
-	TEXT[1]					=	"z bia³ej per³y.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_IceLance()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceLance])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_IceLance] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_IceWave (ItemPR_Recipe)
-{
-	value 					=	500;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_IceWave;
-	
-	description				=	"Przepis na 'Lodowa fala'";
-	TEXT[1]					=	"z bia³ej per³y i akwamarynu.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_IceWave()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceWave])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_IceWave] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Inflate (ItemPR_Recipe)
-{
-	value 					=	300;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Inflate;
-	
-	description				=	"Przepis na 'Spuchniêcie'";
-	TEXT[1]					=	"z wody i ³oju kretoszczura.";
-	COUNT[4]				=	1;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Inflate()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Inflate])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Inflate] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_DragonBall (ItemPR_Recipe)
-{
-	value 					=	400;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_DragonBall;
-	
-	description				=	"Przepis na 'Smocz¹ kulê'";
-	TEXT[1]					=	"z serca smoka.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_DragonBall()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_DragonBall])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_DragonBall] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_BlackDragonBall (ItemPR_Recipe)
-{
-	value 					=	500;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_BlackDragonBall;
-	
-	description				=	"Przepis na 'Czarn¹ smocz¹ kulê'";
-	TEXT[1]					=	"z kamienia duszy smoka-o¿ywieñca.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_BlackDragonBall()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_BlackDragonBall])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_BlackDragonBall] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_BreathOfDeath (ItemPR_Recipe)
-{
-	value 					=	600;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_BreathOfDeath;
-	
-	description				=	"Przepis na 'Tchnienie œmierci'";
-	TEXT[1]					=	"z wêgla i czarnej per³y.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_BreathOfDeath()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_BreathOfDeath])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_BreathOfDeath] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_MassDeath (ItemPR_Recipe)
-{
-	value 					=	600;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_MassDeath;
-	
-	description				=	"Przepis na 'Fala œmierci'";
-	TEXT[1]					=	"z krwi demona i czarnej per³y.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_MassDeath()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_MassDeath])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_MassDeath] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_ArmyOfDarkness (ItemPR_Recipe)
-{
-	value 					=	600;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_ArmyOfDarkness;
-	
-	description				=	"Przepis na 'Armia ciemnoœci'";
-	TEXT[1]					=	"z koœci szkieletu i czarnej per³y.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_ArmyOfDarkness()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
-///******************************************************************************************
-instance ItRe_ENCHANTING_Shrink (ItemPR_Recipe)
-{
-	value 					=	600;
-	visual 					=	"ItWr_Scroll_01.3DS";
-	on_state[0]				=	Use_Recipe_ENCHANTING_Shrink;
-	
-	description				=	"Przepis na 'Zmniejszenie potwora'";
-	TEXT[1]					=	"z k³a trolla i jaja pe³zacza.";
-	COUNT[4]				=	2;
-	COUNT[5]				=	value;
-};
-func void Use_Recipe_ENCHANTING_Shrink()
-{
-	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
-	{
-		B_Say (self, self, "$CANTUNDERSTANDTHIS");
-	}
-	else if (!PLAYER_TALENT_ENCHANTING[SPL_Shrink])
-	{
-		PLAYER_TALENT_ENCHANTING[SPL_Shrink] = true;
-		COUNTER_ENCHANTING += 1;
-		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_ENCHANTING);
-		B_Say (self, self, "$VERSTEHE");
-	};
-};
+*/
 ///******************************************************************************************
 ///	Alchemy
 ///******************************************************************************************
+
+/// HP = 3 LN
+/// MP = 3 LN
+/// SP = 3 LN
+/// TEMP = 3 LN
+/// WEAK = 3 LN
+/// PERM = 10 LN
+/// TRANSFORM = 5 LN
+/// BODY (DIGESTION, ANTIDRUNK) = 3 LN
+/// MIND (GEIST, OBSESSION) = 3 LN
+/// LIGHT (VISION, INVISIBILITY) = 3 LN
+/// POISON (POISON, ANTIPOISON) = 3 LN
+/// DMG ONE TIME BARRIER (PHYSICAL, MAGICAL) = 3 LN
+/// COOKING (?) = 5 LN
+/// ??? = 5 LN
+/// ??? = 5 LN
 
 const int ALCHEMY_MegaDrink			=	0;
 
@@ -2866,6 +2087,23 @@ func void Use_Recipe_ALCHEMY_MegaDrink()
 ///	Hunting
 ///******************************************************************************************
 
+/// ARROWS = 5 LN
+/// ARMORS = 5 LN
+/// FURS = 5 LN
+/// SKINS = 5 LN
+/// TEETH = 5 LN
+/// CLAWS = 5 LN
+/// WINGS = 3 LN
+/// STINGS = 3 LN
+/// MANDIBLES = 3 LN
+/// HORNS = 3 LN
+/// TONGUES = 3 LN
+/// PLATES = 3 LN
+/// SCALES = 3 LN
+/// HEARTS = 3 LN
+/// BLOOD = 3 LN
+/// BONES = 3 LN
+
 const int HUNTING_ArrowMaking		=	0;
 
 const int HUNTING_Furs				=	1;
@@ -3260,6 +2498,797 @@ func void Use_Recipe_HUNTING_Bones()
 		PLAYER_TALENT_HUNTING[HUNTING_Bones] = true;
 		COUNTER_HUNTING += 1;
 		Npc_SetTalentValue (self, NPC_TALENT_HUNTING, COUNTER_HUNTING * 100 / MAX_HUNTING);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+///	Enchanting
+///******************************************************************************************
+
+var int PLAYER_TALENT_ENCHANTING[MAX_SPELL];
+var int COUNTER_ENCHANTING;
+
+///******************************************************************************************
+instance ItRe_ENCHANTING_Light (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Light;
+	
+	description				=	"Przepis na 'Œwiat³o'";
+	TEXT[1]					=	"ze z³otej monety.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Light()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Light])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Light] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Heal (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Heal;
+	
+	description				=	"Przepis na 'Uleczenie'";
+	TEXT[1]					=	"z zio³a leczniczego.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Heal()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Heal])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Heal] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_SlowTime (ItemPR_Recipe)
+{
+	value 					=	600;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_SlowTime;
+	
+	description				=	"Przepis na 'Spowolnienie czasu'";
+	TEXT[1]					=	"ze szmaragdu i 10 cz¹steczek czasu.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_SlowTime()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_SlowTime])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_SlowTime] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+		
+		enableTimeDust = true;
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_NightToDay (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_NightToDay;
+	
+	description				=	"Przepis na 'Noc w dzieñ'";
+	TEXT[1]					=	"z owczej skóry i 5 cz¹steczek czasu.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_NightToDay()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_NightToDay])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_NightToDay] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+		
+		enableTimeDust = true;
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Telekinesis (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Telekinesis;
+	
+	description				=	"Przepis na 'Telekineza'";
+	TEXT[1]					=	"z monety fortuny.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Telekinesis()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Telekinesis])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Telekinesis] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_FireBolt (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_FireBolt;
+	
+	description				=	"Przepis na 'Ognisty pocisk'";
+	TEXT[1]					=	"z siarki.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_FireBolt()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_FireBolt])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_FireBolt] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_IceBolt (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_IceBolt;
+	
+	description				=	"Przepis na 'Lodowy pocisk'";
+	TEXT[1]					=	"z kryszta³u.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_IceBolt()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceBolt])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_IceBolt] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Zap (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Zap;
+	
+	description				=	"Przepis na 'Ma³a b³yskawica'";
+	TEXT[1]					=	"z bry³ki srebra.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Zap()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Zap])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Zap] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_SkullBolt (ItemPR_Recipe)
+{
+	value 					=	100;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_SkullBolt;
+	
+	description				=	"Przepis na 'Krzyk umar³ych'";
+	TEXT[1]					=	"z czaszki.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_SkullBolt()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_SkullBolt])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_SkullBolt] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_WindFist (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_WindFist;
+	
+	description				=	"Przepis na 'Piêœæ wichru'";
+	TEXT[1]					=	"z wêgla i pazurów.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_WindFist()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_WindFist])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_WindFist] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Sleep (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Sleep;
+	
+	description				=	"Przepis na 'Uœpienie'";
+	TEXT[1]					=	"z bagiennego ziela.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Sleep()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Sleep])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Sleep] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Charm (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Charm;
+	
+	description				=	"Przepis na 'Amnezja'";
+	TEXT[1]					=	"z bagiennego ziela i ¿uwaczek polnej bestii.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Charm()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Charm])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Charm] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_LightningFlash (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_LightningFlash;
+	
+	description				=	"Przepis na 'B³yskawica'";
+	TEXT[1]					=	"z bry³ki ¿elaza i szponów topielca.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_LightningFlash()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_LightningFlash])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_LightningFlash] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_ChargeFireball (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_ChargeFireball;
+	
+	description				=	"Przepis na 'Du¿a kula ognia'";
+	TEXT[1]					=	"z ognistego kryszta³u i smo³y.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_ChargeFireball()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_ChargeFireball])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_ChargeFireball] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Whirlwind (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Whirlwind;
+	
+	description				=	"Przepis na 'Wir'";
+	TEXT[1]					=	"ze skrzyde³ i wody.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Whirlwind()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Whirlwind])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Whirlwind] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Fear (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Fear;
+	
+	description				=	"Przepis na 'Strach'";
+	TEXT[1]					=	"ze skrzyde³.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Fear()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Fear])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Fear] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Rage (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Rage;
+	
+	description				=	"Przepis na 'Œlep¹ furiê'";
+	TEXT[1]					=	"z krwi demona.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Rage()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Rage])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Rage] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_ChargeZap (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_ChargeZap;
+	
+	description				=	"Przepis na 'Piorun kulisty'";
+	TEXT[1]					=	"z bry³ki ¿elaza i pazurów.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_ChargeZap()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_ChargeZap])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_ChargeZap] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Geyser (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Geyser;
+	
+	description				=	"Przepis na 'Gejzer'";
+	TEXT[1]					=	"z akwamarynu.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Geyser()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Geyser])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Geyser] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_WaterFist (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_WaterFist;
+	
+	description				=	"Przepis na 'Wodna piêœæ'";
+	TEXT[1]					=	"z akwamarynu i wody.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_WaterFist()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_WaterFist])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_WaterFist] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Pyrokinesis (ItemPR_Recipe)
+{
+	value 					=	500;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Pyrokinesis;
+	
+	description				=	"Przepis na 'Du¿a burza ognista'";
+	TEXT[1]					=	"z ognistego kryszta³u i saletry.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Pyrokinesis()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Pyrokinesis])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Pyrokinesis] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_IceLance (ItemPR_Recipe)
+{
+	value 					=	200;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_IceLance;
+	
+	description				=	"Przepis na 'Lodowa lanca'";
+	TEXT[1]					=	"z bia³ej per³y.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_IceLance()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceLance])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_IceLance] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_IceWave (ItemPR_Recipe)
+{
+	value 					=	500;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_IceWave;
+	
+	description				=	"Przepis na 'Lodowa fala'";
+	TEXT[1]					=	"z bia³ej per³y i akwamarynu.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_IceWave()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_IceWave])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_IceWave] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Inflate (ItemPR_Recipe)
+{
+	value 					=	300;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Inflate;
+	
+	description				=	"Przepis na 'Spuchniêcie'";
+	TEXT[1]					=	"z wody i ³oju kretoszczura.";
+	COUNT[4]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Inflate()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 1)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Inflate])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Inflate] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_DragonBall (ItemPR_Recipe)
+{
+	value 					=	400;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_DragonBall;
+	
+	description				=	"Przepis na 'Smocz¹ kulê'";
+	TEXT[1]					=	"z serca smoka.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_DragonBall()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_DragonBall])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_DragonBall] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_BlackDragonBall (ItemPR_Recipe)
+{
+	value 					=	500;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_BlackDragonBall;
+	
+	description				=	"Przepis na 'Czarn¹ smocz¹ kulê'";
+	TEXT[1]					=	"z kamienia duszy smoka-o¿ywieñca.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_BlackDragonBall()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_BlackDragonBall])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_BlackDragonBall] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_BreathOfDeath (ItemPR_Recipe)
+{
+	value 					=	600;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_BreathOfDeath;
+	
+	description				=	"Przepis na 'Tchnienie œmierci'";
+	TEXT[1]					=	"z wêgla i czarnej per³y.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_BreathOfDeath()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_BreathOfDeath])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_BreathOfDeath] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+instance ItRe_ENCHANTING_MassDeath (ItemPR_Recipe)
+{
+	value 					=	600;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_MassDeath;
+	
+	description				=	"Przepis na 'Fala œmierci'";
+	TEXT[1]					=	"z krwi demona i czarnej per³y.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_MassDeath()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_MassDeath])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_MassDeath] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+		B_Say (self, self, "$VERSTEHE");
+	};
+};
+///******************************************************************************************
+//instance ItRe_ENCHANTING_ArmyOfDarkness (ItemPR_Recipe)
+//{
+//	value 					=	600;
+//	visual 					=	"ItWr_Scroll_01.3DS";
+//	on_state[0]				=	Use_Recipe_ENCHANTING_ArmyOfDarkness;
+//	
+//	description				=	"Przepis na 'Armia ciemnoœci'";
+//	TEXT[1]					=	"z koœci szkieletu i czarnej per³y.";
+//	COUNT[4]				=	2;
+//	COUNT[5]				=	value;
+//};
+//func void Use_Recipe_ENCHANTING_ArmyOfDarkness()
+//{
+//	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+//	{
+//		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+//	}
+//	else if (!PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness])
+//	{
+//		PLAYER_TALENT_ENCHANTING[SPL_ArmyOfDarkness] = true;
+//		COUNTER_ENCHANTING += 1;
+//		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
+//		B_Say (self, self, "$VERSTEHE");
+//	};
+//};
+///******************************************************************************************
+instance ItRe_ENCHANTING_Shrink (ItemPR_Recipe)
+{
+	value 					=	600;
+	visual 					=	"ItWr_Scroll_01.3DS";
+	on_state[0]				=	Use_Recipe_ENCHANTING_Shrink;
+	
+	description				=	"Przepis na 'Zmniejszenie potwora'";
+	TEXT[1]					=	"z k³a trolla i jaja pe³zacza.";
+	COUNT[4]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_Recipe_ENCHANTING_Shrink()
+{
+	if (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING) < 2)
+	{
+		B_Say (self, self, "$CANTUNDERSTANDTHIS");
+	}
+	else if (!PLAYER_TALENT_ENCHANTING[SPL_Shrink])
+	{
+		PLAYER_TALENT_ENCHANTING[SPL_Shrink] = true;
+		COUNTER_ENCHANTING += 1;
+		Npc_SetTalentValue (self, NPC_TALENT_ENCHANTING, COUNTER_ENCHANTING * 100 / MAX_SPELL);
 		B_Say (self, self, "$VERSTEHE");
 	};
 };

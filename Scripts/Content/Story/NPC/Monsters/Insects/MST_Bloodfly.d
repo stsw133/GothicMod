@@ -10,15 +10,8 @@ prototype Mst_Default_Bloodfly (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_BLOODFLY;
 	
-	B_SetAttributesToLevel (self, 5);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 5;
-	protection[PROT_POINT]				=	0;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

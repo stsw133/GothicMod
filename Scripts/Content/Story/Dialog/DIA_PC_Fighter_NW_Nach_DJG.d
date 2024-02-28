@@ -101,7 +101,7 @@ FUNC VOID DIA_GornNW_nach_DJG_KnowWhereEnemy_Yes ()
 	AI_Output (self ,other,"DIA_GornNW_nach_DJG_KnowWhereEnemy_Yes_12_01"); //Masz statek? Ho, ho! Jedno ci powiem - z tob¹ nie mo¿na siê nudziæ!
 	
 	
-	B_GivePlayerXP(500); 
+	B_GivePlayerExp(500); 
 	self.flags 		 = NPC_FLAG_IMMORTAL;
 	Gorn_IsOnBoard	 = LOG_SUCCESS;
 	crewmember_Count = (Crewmember_Count +1);

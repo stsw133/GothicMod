@@ -73,9 +73,9 @@ instance DIA_Rod_WannaLearn (C_INFO)
 
 FUNC INT DIA_Rod_WannaLearn_Condition()
 {
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
  
@@ -95,7 +95,7 @@ FUNC VOID DIA_Rod_WannaLearn_Info()
 		}
 		else
 		{
-			self.aivar[AIV_CanTeach] = true;
+			self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		};
 	}
 	else
@@ -349,7 +349,7 @@ func void DIA_Rod_Wette_Yes()
 			AI_Output (self, other, "DIA_Rod_Wette_Yes_06_07");//Wygl¹da na to, ¿e w³aœnie straci³em 30 sztuk z³ota. Oto pieni¹dze.
 			B_GiveInvItems (self, other, itmi_gold, 60);
 			Rod_WetteGewonnen = TRUE;
-			B_GivePlayerXP(100); 
+			B_GivePlayerExp(100); 
 		}
 		else
 		{
@@ -439,7 +439,7 @@ FUNC VOID DIA_Rod_GiveItBack_Info()
 	
 	if (Rod_SchwertXPGiven == FALSE)
 	{
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 		Rod_SchwertXPGiven = TRUE;
 	};
 };

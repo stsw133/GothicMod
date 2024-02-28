@@ -9,8 +9,8 @@ instance PIR_1362_Addon_Bones (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 40);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -19,7 +19,7 @@ instance PIR_1362_Addon_Bones (Npc_Default)
 	EquipItem (self, ItMw_Addon_PIR2hAxe);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal37, 0, ITAR_PIR_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal37, 0, ITAR_PIR_M);
 	Mdl_SetModelFatness	(self, 1.3);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

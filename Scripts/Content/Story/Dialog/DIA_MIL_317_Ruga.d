@@ -64,9 +64,9 @@ instance DIA_Ruga_Train		(C_INFO)
 
 func int DIA_Ruga_Train_Condition ()
 {
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Ruga_Train_Info ()
@@ -81,7 +81,7 @@ func void DIA_Ruga_Train_Info ()
 		AI_Output (self, other, "DIA_Ruga_Train_11_02"); //Zawsze pamiêtaj, zwi¹zek miêdzy zrêcznoœci¹ a walk¹ na dystans jest równie wielki jak zwi¹zek kuszy i be³tu...
 		AI_Output (other, self, "DIA_Ruga_Train_15_03"); //...Jedno nie istnieje bez drugiego, rozumiem.
 	
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else if ((hero.guild == GIL_SLD)
 	|| 		 (hero.guild == GIL_DJG))

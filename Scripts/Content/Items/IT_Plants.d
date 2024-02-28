@@ -17,7 +17,7 @@ instance ItPl_GraveMoss (ItemPR_Plant)
 	
 	description				=	name;
 	TEXT[1]					=	"U¿ywany jako sk³adnik";
-	TEXT[2]					=	"mikstur o dzia³aniu negatywnym.";
+	TEXT[2]					=	"mikstur o dzia³aniu neguj¹cym.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Temp_Herb (ItemPR_Plant)
@@ -48,7 +48,7 @@ instance ItPl_Perm_Herb (ItemPR_Plant)
 instance ItPl_Health_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Roœlina lecznicza";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_HealthHerb_01.3DS";
 	
 	description				=	name;
@@ -59,7 +59,7 @@ instance ItPl_Health_Herb_01 (ItemPR_Plant)
 instance ItPl_Health_Herb_02 (ItemPR_Plant)
 {
 	name 					=	"Ziele lecznicze";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_HealthHerb_02.3DS";
 	
 	description				=	name;
@@ -70,7 +70,7 @@ instance ItPl_Health_Herb_02 (ItemPR_Plant)
 instance ItPl_Health_Herb_03 (ItemPR_Plant)
 {
 	name 					=	"Korzeñ leczniczy";
-	value 					=	30;
+	value 					=	15;
 	visual 					=	"ItPl_HealthHerb_03.3DS";
 	
 	description				=	name;
@@ -84,7 +84,7 @@ instance ItPl_Health_Herb_03 (ItemPR_Plant)
 instance ItPl_Mana_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Roœlina many";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_ManaHerb_01.3DS";
 	
 	description				=	name;
@@ -95,7 +95,7 @@ instance ItPl_Mana_Herb_01 (ItemPR_Plant)
 instance ItPl_Mana_Herb_02 (ItemPR_Plant)
 {
 	name 					=	"Ziele many";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_ManaHerb_02.3ds";
 	
 	description				=	name;
@@ -106,7 +106,7 @@ instance ItPl_Mana_Herb_02 (ItemPR_Plant)
 instance ItPl_Mana_Herb_03 (ItemPR_Plant)
 {
 	name 					=	"Korzeñ many";
-	value 					=	30;
+	value 					=	15;
 	visual 					=	"ItPl_ManaHerb_03.3ds";
 	
 	description				=	name;
@@ -120,7 +120,7 @@ instance ItPl_Mana_Herb_03 (ItemPR_Plant)
 instance ItPl_Speed_Herb_01 (ItemPR_Plant)
 {
 	name 					=	"Zêbate ziele";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_SpeedHerb.3DS";
 	
 	description				=	name;
@@ -133,7 +133,7 @@ var int Green_Extrem;
 
 func void MOBSI_JOINT()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
 		self.aivar[AIV_INVINCIBLE] = true;
@@ -144,7 +144,7 @@ func void MOBSI_JOINT()
 instance ItPl_SwampHerb (ItemPR_Plant)
 {
 	name 					=	"Bagienne ziele";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_SwampHerb_01.3ds";
 	
 	scemeName				=	"MAPSEALED";
@@ -153,6 +153,7 @@ instance ItPl_SwampHerb (ItemPR_Plant)
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
 	TEXT[2]					=	"mikstur zmiany percepcji.";
+	TEXT[3]					=	"Lub u¿yj by zwin¹æ skrêta.";
 	COUNT[5]				= 	value;
 };
 func void Use_ItPl_SwampHerb()
@@ -171,7 +172,7 @@ func void Use_ItPl_SwampHerb()
 instance ItPl_DesertHerb (ItemPR_Plant)
 {
 	name 					=	"Pustynne ziele";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_SwampHerb_02.3ds";
 	
 	scemeName				=	"MAPSEALED";
@@ -180,6 +181,7 @@ instance ItPl_DesertHerb (ItemPR_Plant)
 	description				=	name;
 	TEXT[1]					=	"U¿ywane do tworzenia";
 	TEXT[2]					=	"mikstur zmiany percepcji.";
+	TEXT[3]					=	"Lub u¿yj by zwin¹æ skrêta.";
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
@@ -192,7 +194,7 @@ instance ItPl_Health_Herb_04 (ItemPR_Plant)
 	visual 					=	"ItPl_HealthHerb.3DS";
 	
 	description				=	name;
-	TEXT[1]					=	"U¿ywany do tworzenia";
+	TEXT[1]					=	"U¿ywana do tworzenia";
 	TEXT[2]					=	"mikstur ¿ywotnoœci.";
 	COUNT[5]				= 	value;
 };
@@ -225,7 +227,7 @@ instance ItPl_Dex_Herb_01 (ItemPR_Plant)
 	visual 					=	"ItPl_DexterityHerb.3DS";
 	
 	description				=	name;
-	TEXT[1]					=	"U¿ywane do tworzenia";
+	TEXT[1]					=	"U¿ywana do tworzenia";
 	TEXT[2]					=	"mikstur zrêcznoœci.";
 	COUNT[5]				= 	value;
 };
@@ -236,10 +238,11 @@ instance ItPl_Power_Herb_01 (ItemPR_Plant)
 	visual 					=	"ItPl_PowerHerb.3DS";
 	
 	description				=	name;
-	TEXT[1]					=	"U¿ywane do tworzenia";
+	TEXT[1]					=	"U¿ywana do tworzenia";
 	TEXT[2]					=	"mikstur mocy.";
 	COUNT[5]				= 	value;
 };
+///******************************************************************************************
 instance ItPl_SunHerb (ItemPR_Plant)
 {
 	name 					=	"S³oneczny aloes";
@@ -257,65 +260,92 @@ instance ItPl_SunHerb (ItemPR_Plant)
 instance ItPl_Mushroom_01 (ItemPR_Plant)
 {
 	name 					=	"Mu³owy grzyb";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_Mushroom_01.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do przygotowania";
+	TEXT[2]					=	"posi³ków o ³agodnym smaku.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Mushroom_02 (ItemPR_Plant)
 {
 	name 					=	"Mu³owy grzyb";
-	value 					=	20;
+	value 					=	10;
 	visual					=	"ItPl_Mushroom_02.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do przygotowania";
+	TEXT[2]					=	"posi³ków o ³agodnym smaku.";
 	COUNT[5]				=	value;
 };
+///******************************************************************************************
 instance ItPl_Mushroom_03 (ItemPR_Plant)
 {
 	name 					=	"Piekielnik";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_Mushroom_cave_small.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do przygotowania";
+	TEXT[2]					=	"posi³ków o ostrym smaku.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Mushroom_04 (ItemPR_Plant)
 {
 	name 					=	"Piekielnik";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_Mushroom_cave_big.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do przygotowania";
+	TEXT[2]					=	"posi³ków o ostrym smaku.";
 	COUNT[5]				= 	value;
 };
+///******************************************************************************************
 instance ItPl_Mushroom_05 (ItemPR_Plant)
 {
 	name 					=	"Truj¹cy grzyb";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_Mushroom_venom_small.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do tworzenia";
+	TEXT[2]					=	"trucizn lub odtrutek.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Mushroom_06 (ItemPR_Plant)
 {
 	name 					=	"Truj¹cy grzyb";
-	value 					=	20;
+	value 					=	10;
 	visual					=	"ItPl_Mushroom_venom_big.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do tworzenia";
+	TEXT[2]					=	"trucizn lub odtrutek.";
 	COUNT[5]				=	value;
 };
+///******************************************************************************************
 instance ItPl_Mushroom_07 (ItemPR_Plant)
 {
 	name 					=	"Ksiê¿ycowa rosa";
-	value 					=	10;
+	value 					=	5;
 	visual 					=	"ItPl_Mushroom_magic_small.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywana do tworzenia";
+	TEXT[2]					=	"mikstur o magicznych efektach.";
 	COUNT[5]				= 	value;
 };
 instance ItPl_Mushroom_08 (ItemPR_Plant)
 {
 	name 					=	"Ksiê¿ycowa rosa";
-	value 					=	20;
+	value 					=	10;
 	visual 					=	"ItPl_Mushroom_magic_big.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywana do tworzenia";
+	TEXT[2]					=	"mikstur o magicznych efektach.";
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
@@ -338,7 +368,7 @@ instance ItPl_Forestberry (ItemPR_Plant)
 {
 	name 					=	"Dzika jagoda";
 	value 					=	4;
-	visual 					=	"ITPL_ForestBerry.3DS";
+	visual 					=	"ItPL_ForestBerry.3DS";
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
@@ -351,13 +381,13 @@ instance ItPl_Planeberry (ItemPR_Plant)
 {
 	name 					=	"Alkojagoda";
 	value 					=	4;
-	visual 					=	"ITPL_PlaneBerry.3DS";
+	visual 					=	"ItPL_PlaneBerry.3DS";
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_MAKEALCOHOL_S1;
 	
 	description				=	name;
-	TEXT[1]					=	"U¿ywana do warzenia ginu.";
+	TEXT[1]					=	"U¿ywana do warzenia gorza³y.";
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
@@ -366,7 +396,10 @@ instance ItPl_Blueplant (ItemPR_Plant)
 	name 					=	"Serafis";
 	value 					=	5;
 	visual 					=	"ItPl_Blueplant.3DS";
+	
 	description				=	name;
+	TEXT[1]					=	"U¿ywany do tworzenia";
+	TEXT[2]					=	"mikstur ¿ycia i many.";
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************

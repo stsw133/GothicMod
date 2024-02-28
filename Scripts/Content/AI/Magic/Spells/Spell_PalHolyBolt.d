@@ -2,8 +2,9 @@
 ///	SPL_PalHolyBolt
 ///******************************************************************************************
 
-const int SPL_Cost_PalHolyBolt			=	20;	//10
-const int SPL_Damage_PalHolyBolt		=	200;	//100
+const int SPL_Cost_PalHolyBolt			=	20;		//10
+const int SPL_Damage_PalHolyBolt		=	100;	//100
+const int SPL_Scaling_PalHolyBolt		=	50;
 
 ///******************************************************************************************
 instance Spell_PalHolyBolt (C_Spell_Proto)
@@ -16,11 +17,12 @@ instance Spell_PalHolyBolt (C_Spell_Proto)
 
 func int Spell_Logic_PalHolyBolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_PalHolyBolt/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_PalHolyBolt/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_PalHolyBolt)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 

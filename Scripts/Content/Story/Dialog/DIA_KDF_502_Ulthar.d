@@ -202,7 +202,7 @@ func void DIA_Ulthar_SUCCESS_Info ()
 	};
 	
 	MIS_RUNE = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 };
 //#####################################################################
@@ -364,9 +364,9 @@ func void DIA_Ulthar_SchreineGeheilt_Info ()
 	AI_Output			(other, self, "DIA_Ulthar_SchreineGeheilt_15_00"); //Uda³o mi siê oczyœciæ wszystkie kapliczki.
 	AI_Output			(self, other, "DIA_Ulthar_SchreineGeheilt_05_01"); //Œwietna robota. Jestem z ciebie dumny, moje dziecko. Niech Innos ciê b³ogos³awi.
 	AI_Output			(self, other, "DIA_Ulthar_SchreineGeheilt_05_02"); //W podziêce weŸ ten amulet si³y. Jestem pewien, ¿e oka¿e siê pomocny w walce z wrogiem.
-	CreateInvItems (self, ItAm_Energy_01, 1);									
-	B_GiveInvItems (self, other, ItAm_Energy_01, 1);
-	B_GivePlayerXP(500);
+	CreateInvItems (self, ItAm_Conjurer_01, 1);									
+	B_GiveInvItems (self, other, ItAm_Conjurer_01, 1);
+	B_GivePlayerExp(500);
 	AI_StopProcessInfos (self);
 };
 

@@ -10,15 +10,8 @@ prototype Mst_Default_Wolf (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
 	
-	B_SetAttributesToLevel (self, 6);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	NpcFn_SetAttributesToLevel (self, 6);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -58,16 +51,8 @@ instance BlackWolf (Mst_Default_Wolf)
 {
 	name								=	"Czarny wilk";
 	
-	B_SetAttributesToLevel (self, 9);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
+	NpcFn_SetAttributesToLevel (self, 9);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_BlackWolf();
 };
 ///******************************************************************************************

@@ -59,9 +59,9 @@ instance DIA_Cedric_CanTeach		(C_INFO)
 };
 func int DIA_Cedric_CanTeach_Condition ()
 {	
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Cedric_CanTeach_Info ()
@@ -71,7 +71,7 @@ func void DIA_Cedric_CanTeach_Info ()
 	if (other.guild == GIL_PAL)
 	{
 		AI_Output (self, other, "DIA_Cedric_CanTeach_12_01"); //Mogê ciê nauczyæ walki broniami jednorêcznymi.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		B_LogEntry (TOPIC_CityTeacher,"Paladyn Cedrik mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 	}
 	else

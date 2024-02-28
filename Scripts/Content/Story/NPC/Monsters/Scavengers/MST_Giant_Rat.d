@@ -10,6 +10,9 @@ prototype Mst_Default_GiantRat (C_Npc)
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						= 	FAI_GIANT_RAT;
 	
+	NpcFn_SetAttributesToLevel (self, 2);
+	NpcFn_SetMonsterProtection (self, level);
+	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
@@ -39,31 +42,13 @@ func void B_SetVisuals_GiantDesertRat()
 ///******************************************************************************************
 instance Giant_Rat (Mst_Default_GiantRat)
 {
-	B_SetAttributesToLevel (self, 2);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
 	B_SetVisuals_GiantRat();
 };
 instance Giant_DesertRat (Mst_Default_GiantRat)
 {
 	name						=	"Pustynny szczur";
 	
-	B_SetAttributesToLevel (self, 4);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
-	
+	NpcFn_SetAttributesToLevel (self, 4);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_GiantDesertRat();
 };

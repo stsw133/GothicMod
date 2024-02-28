@@ -176,7 +176,7 @@ func void DIA_Addon_Bromor_LuciaGold_einfachgeben ()
 	AI_Output			(self, other, "DIA_Addon_Bromor_LuciaGold_einfachgeben_07_01"); //Dziêki - robisz dobr¹ rzecz. Chcesz czegoœ jeszcze?
 	MIS_Bromor_LuciaStoleGold = LOG_SUCCESS;
 	Bromor_Hausverbot = FALSE;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices	(DIA_Addon_Bromor_LuciaGold);
 };
 var int DIA_Addon_Bromor_LuciaGold_lucia_OneTime;
@@ -223,7 +223,7 @@ func void DIA_Addon_Bromor_LuciaGold_geben ()
 	Bromor_Pay = 1; 
 	MIS_Bromor_LuciaStoleGold = LOG_SUCCESS;
 	Bromor_Hausverbot = FALSE;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices	(DIA_Addon_Bromor_LuciaGold);
 };
 

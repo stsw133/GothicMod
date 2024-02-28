@@ -96,7 +96,7 @@ func void DIA_Kati_HALLO_Info ()
 		Npc_ExchangeRoutine	(self,"Start");
 		B_StartOtherRoutine	(Randolph,"Start");
 
-		B_GivePlayerXP(50);	
+		B_GivePlayerExp(50);	
 	}
 	else
 	{

@@ -2,7 +2,7 @@
 prototype Mst_Default_Firebeast (C_Npc)
 {
 	/// ------ Monster ------
-	name								=	"Ognisty demon";
+	name								=	"Ognista bestia";
 	guild								=	GIL_SHADOWBEAST_SKELETON;
 	aivar[AIV_MM_REAL_ID]				= 	ID_SHADOWBEAST_DEMON;
 	effect								=	"SPELLFX_FIRESWORD_HIT";
@@ -11,15 +11,10 @@ prototype Mst_Default_Firebeast (C_Npc)
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_SHADOWBEAST;
 	
-	B_SetAttributesToLevel (self, 50);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetMonsterProtection (self, level);
 	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
 	protection[PROT_FIRE]				=	-1;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

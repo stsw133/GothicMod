@@ -35,17 +35,17 @@ func void MovieMode_SetFaceAni()
 		
 		if		(MemoKey1 == 1 && MemoKey2 == 1)										{	Mdl_StartFaceAni (hero, "S_NEUTRAL", 1, -1);			}
 		else if (MemoKey1 == 2 && MemoKey2 == 2)										{	Mdl_StartFaceAni (hero, "S_EYESCLOSED", 1, -1);		}
-		else if (MemoKey1 == 2 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 2)		{	Mdl_StartFaceAni (hero, "S_EYESCLOSED", 0.4, -1);	}
+		else if (MemoKey1 == 2 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 2)	{	Mdl_StartFaceAni (hero, "S_EYESCLOSED", 0.4, -1);	}
 		else if (MemoKey1 == 3 && MemoKey2 == 3)										{	Mdl_StartFaceAni (hero, "T_HURT", 1, -1);			}
-		else if (MemoKey1 == 3 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 3)		{	Mdl_StartFaceAni (hero, "T_HURT", 0.5, -1);			}
+		else if (MemoKey1 == 3 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 3)	{	Mdl_StartFaceAni (hero, "T_HURT", 0.5, -1);			}
 		else if (MemoKey1 == 4 && MemoKey2 == 4)										{	Mdl_StartFaceAni (hero, "S_ANGRY", 1, -1);			}
-		else if (MemoKey1 == 4 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 4)		{	Mdl_StartFaceAni (hero, "S_ANGRY", 0.6, -1);			}
-		else if (MemoKey1 == 4 && MemoKey2 == 6) || (MemoKey1 == 6 && MemoKey2 == 4)		{	Mdl_StartFaceAni (hero, "S_HOSTILE", 1, -1);			}
-		else if (MemoKey1 == 4 && MemoKey2 == 5) || (MemoKey1 == 5 && MemoKey2 == 4)		{	Mdl_StartFaceAni (hero, "S_HOSTILE", 0.5, -1);		}
+		else if (MemoKey1 == 4 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_ANGRY", 0.6, -1);			}
+		else if (MemoKey1 == 4 && MemoKey2 == 6) || (MemoKey1 == 6 && MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_HOSTILE", 1, -1);			}
+		else if (MemoKey1 == 4 && MemoKey2 == 5) || (MemoKey1 == 5 && MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_HOSTILE", 0.5, -1);		}
 		else if (MemoKey1 == 5 && MemoKey2 == 5)										{	Mdl_StartFaceAni (hero, "S_FRIGHTENED", 1, -1);		}
-		else if (MemoKey1 == 5 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 5)		{	Mdl_StartFaceAni (hero, "S_FRIGHTENED", 0.5, -1);	}
+		else if (MemoKey1 == 5 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 5)	{	Mdl_StartFaceAni (hero, "S_FRIGHTENED", 0.5, -1);	}
 		else if (MemoKey1 == 6 && MemoKey2 == 6) 										{	Mdl_StartFaceAni (hero, "S_FRIENDLY", 1, -1);		}
-		else if (MemoKey1 == 6 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 6)		{	Mdl_StartFaceAni (hero, "S_FRIENDLY", 0.4, -1);		};
+		else if (MemoKey1 == 6 && MemoKey2 == 1) || (MemoKey1 == 1 && MemoKey2 == 6)	{	Mdl_StartFaceAni (hero, "S_FRIENDLY", 0.4, -1);		};
 		
 		MemoKey1 = -1;
 		MemoKey2 = -1;
@@ -107,14 +107,14 @@ func void MovieMode_ExecSubScript()
 		shlp = ConcatStrings("NumDel ", shlp);
 		Print(shlp);
 		
-		o_hero = Hlp_GetNpc(hero);
-		o_other = MEM_PtrToInst(o_hero.focus_vob);
+		//o_hero = Hlp_GetNpc(hero);
+		//o_other = MEM_PtrToInst(o_hero.focus_vob);
 		
 		if		(MemoKey1 == 1)		{	B_LookAtNpc(o_other, hero);								}
 		else if (MemoKey1 == 2)		{	B_StopLookAt(o_other);									}
 		else if (MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other, "VISEME", 1, -1);				}
-		else if (MemoKey1 == 4)		{	AI_DrawWeapon(o_other);									}
-		else if (MemoKey1 == 5)		{	AI_RemoveWeapon(o_other);								}
+		else if (MemoKey1 == 4)		{	B_TurnToNpc (o_other, hero);							}
+		else if (MemoKey1 == 5)		{	AI_TurnAway (o_other, hero);							}
 		else if (MemoKey1 == 6)		{	B_Say_Overlay (o_other, o_other, "$Aargh_1");			};
 		
 		MemoKey1 = -1;

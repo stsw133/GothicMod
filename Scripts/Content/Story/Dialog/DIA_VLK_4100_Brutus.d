@@ -246,7 +246,7 @@ func void DIA_Brutus_Gold_Info ()
 		Brutus_TeachSTR = TRUE;
 		Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
 		B_LogEntry		(TOPIC_Teacher_OC, "Brutus mo¿e mi pokazaæ, jak staæ siê silniejszym.");
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	}
 	else 
 	{
@@ -488,7 +488,7 @@ func void DIA_Brutus_MEATBUGSWEG_Info()
 
 	TOPIC_END_BrutusMeatbugs = TRUE;
 	
-	B_GivePlayerXP(350);
+	B_GivePlayerExp(350);
 	B_NpcClearObsessionByDMT (self);
 
 	CreateInvItems (self, ItMi_Gold, 150);									

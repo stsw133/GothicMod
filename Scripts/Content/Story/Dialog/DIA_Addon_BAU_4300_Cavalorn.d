@@ -194,7 +194,7 @@ func void DIA_Addon_Cavalorn_Beutel_Info ()
 	};
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_Beutel_08_07"); //Masz j¹ ze sob¹? Dam ci za ni¹ 100 sztuk z³ota.
 	TOPIC_End_CavalornTheHut = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Info_ClearChoices	(DIA_Addon_Cavalorn_Beutel);
 
 	if (Npc_HasItems (other,ItSe_CavalornsBeutel))
@@ -282,7 +282,7 @@ func void DIA_Addon_Cavalorn_ErzGeben_Info ()
 		};
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_ErzGeben_08_02"); //Prawdziwy z ciebie przyjaciel. Dziêkujê.
 	MIS_Addon_Cavalorn_TheHut = LOG_SUCCESS;
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -559,7 +559,7 @@ func void B_Addon_Cavalorn_VatrasBrief ()
 	};
 
 	Npc_ExchangeRoutine	(self,"Start");
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Log_CreateTopic (TOPIC_Addon_KDW, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_KDW, LOG_RUNNING);
@@ -775,7 +775,7 @@ func void DIA_Addon_Cavalorn_BroughtLetter_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Cavalorn_BroughtLetter_15_00"); //Da³em Vatrasowi twój list.
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_BroughtLetter_08_01"); //Nie oczekiwa³em od ciebie niczego innego. Dziêkujê.
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 
@@ -879,7 +879,7 @@ func void DIA_Addon_Cavalorn_Triggered_OBack ()
 {
 	AI_UnequipArmor	(self);
 	CreateInvItems (self, ITAR_BAU_00, 1);	
-	Npc_RemoveInvItems	(self, ITAR_WaterRanger,	Npc_HasItems (self, ITAR_WaterRanger ) );
+	Npc_RemoveInvItems	(self, ITAR_Ranger_L, Npc_HasItems (self, ITAR_Ranger_L));
 	AI_EquipBestArmor (self); 
 	AI_Output			(other, self, "DIA_Addon_Cavalorn_Triggered_OBack_15_00"); //W takim razie pójdê do nich i odzyskam ornament.
 	AI_Output			(self, other, "DIA_Addon_Cavalorn_Triggered_OBack_08_01"); //Dobrze.
@@ -890,7 +890,7 @@ func void DIA_Addon_Cavalorn_Triggered_Pal ()
 {
 	AI_UnequipArmor	(self);
 	CreateInvItems (self, ITAR_BAU_00, 1);	
-	Npc_RemoveInvItems	(self, ITAR_WaterRanger,	Npc_HasItems (self, ITAR_WaterRanger ) );
+	Npc_RemoveInvItems	(self, ITAR_Ranger_L, Npc_HasItems (self, ITAR_Ranger_L));
 	AI_EquipBestArmor (self); 
 	AI_Output			(other, self, "DIA_Addon_Cavalorn_Triggered_Pal_15_00"); //Jeden z nas musi pójœæ do górnego miasta.
 	AI_Output			(self, other, "DIA_Addon_Cavalorn_Triggered_Pal_08_01"); //Nie mam na to czasu. Ty musisz to zrobiæ.
@@ -922,7 +922,7 @@ func void DIA_Addon_Cavalorn_GotOrnaFromHagen_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Cavalorn_GotOrnaFromHagen_15_00"); //Dosta³em brakuj¹cy ornament od Lorda Hagena.
 	AI_Output	(self, other, "DIA_Addon_Cavalorn_GotOrnaFromHagen_08_01"); //Widzisz? Wiedzia³em, ¿e mieli go paladyni.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	MIS_Addon_Cavalorn_GetOrnamentFromPAL = LOG_SUCCESS;
 };
 
@@ -954,7 +954,7 @@ func void DIA_Addon_Cavalorn_WannaLearn_Info ()
 	AI_Output (self, other, "DIA_Addon_Cavalorn_WannaLearn_08_01"); //Pewnie. Przecie¿ wiesz. Oj, ch³opie, nieŸle ciê przegonili.
 	AI_Output (self, other, "DIA_Addon_Cavalorn_WannaLearn_08_02"); //Niczego nie pamiêtasz, prawda?
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Log_CreateTopic (Topic_OutTeacher,LOG_NOTE);
 	B_LogEntry (Topic_OutTeacher, LogText_Addon_Cavalorn_Teach);
 };

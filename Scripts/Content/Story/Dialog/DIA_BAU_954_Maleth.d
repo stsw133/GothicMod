@@ -140,7 +140,7 @@ func void DIA_Maleth_BanditsDEAD_Info ()
 	B_GiveInvItems (self, other, ItFo_Wine, 3);
 	
 	MIS_Maleth_Bandits = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	AI_Output (self, other, "DIA_Maleth_BanditsDEAD_08_04"); //Opowiem o tym pozosta³ym!
 };
 
@@ -479,7 +479,7 @@ func void DIA_Maleth_GEHSTOCK_Info ()
 	AI_Output			(self, other, "DIA_Maleth_GEHSTOCK_08_05"); //Dobrze. Co powiesz na to? Wczoraj widzia³em tutaj kilku bandytów, uciekaj¹cych ze skradzionym z³otem.
 	AI_Output			(self, other, "DIA_Maleth_GEHSTOCK_08_06"); //Jeœli powiem ci, gdzie ukryli swój ³up, czy dostanê z powrotem swoj¹ laskê?
 	TOPIC_END_MalethsGehstock = TRUE;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 
 	Info_ClearChoices	(DIA_Maleth_GEHSTOCK);
 	Info_AddChoice	(DIA_Maleth_GEHSTOCK, "Przykro mi, nie interesuje mnie to. Chcê twojego z³ota.", DIA_Maleth_GEHSTOCK_gold );

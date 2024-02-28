@@ -355,7 +355,7 @@ func void DIA_Jora_BringGold_Info()
 		AI_Output (self, other,"DIA_Jora_BringGold_08_01"); //Chwa³a niech bêdzie Innosowi! W mieœcie wci¹¿ panuje sprawiedliwoœæ.
 	
 		Jora_Gold = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	}
 	else
 	{

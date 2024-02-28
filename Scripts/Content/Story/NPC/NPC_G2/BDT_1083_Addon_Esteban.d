@@ -9,13 +9,12 @@ instance BDT_1083_Addon_Esteban (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_StoryBandit_Esteban]		=	true;
-	aivar[AIV_StoryBandit]				=	true;
-	aivar[AIV_NewsOverride]				=	true;
+	aivar[AIV_Story]					=	STORY_Bandit | STORY_Esteban;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -28,7 +27,7 @@ instance BDT_1083_Addon_Esteban (Npc_Default)
 	CreateInvItems (self, ITMI_Addon_Stone_01, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal04, 0, ITAR_BANDIT);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Thief", Face_Normal04, 0, ITAR_BANDIT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 

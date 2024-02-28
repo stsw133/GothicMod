@@ -9,6 +9,13 @@ func void B_ClearRuneInv (var C_Npc slf)
 	{
 		Npc_RemoveInvItems	(slf, ItRu_Light 			, Npc_HasItems (slf, ItRu_Light));
 		Npc_RemoveInvItems	(slf, ItRu_Heal 			, Npc_HasItems (slf, ItRu_Heal));
+		
+		Npc_RemoveInvItems	(slf, ItRu_PalBless		 	, Npc_HasItems (slf, ItRu_PalBless));
+		Npc_RemoveInvItems	(slf, ItRu_PalFaith			, Npc_HasItems (slf, ItRu_PalFaith));
+		Npc_RemoveInvItems	(slf, ItRu_PalHolyBolt 		, Npc_HasItems (slf, ItRu_PalHolyBolt));
+		Npc_RemoveInvItems	(slf, ItRu_PalJustice 		, Npc_HasItems (slf, ItRu_PalJustice));
+		Npc_RemoveInvItems	(slf, ItRu_PalDestroyEvil 	, Npc_HasItems (slf, ItRu_PalDestroyEvil));
+		
 		Npc_RemoveInvItems	(slf, ItRu_SlowTime		 	, Npc_HasItems (slf, ItRu_SlowTime));
 		Npc_RemoveInvItems	(slf, ItRu_NightToDay	 	, Npc_HasItems (slf, ItRu_NightToDay));
 		Npc_RemoveInvItems	(slf, ItRu_Telekinesis	 	, Npc_HasItems (slf, ItRu_Telekinesis));
@@ -41,9 +48,9 @@ func void B_ClearRuneInv (var C_Npc slf)
 		Npc_RemoveInvItems	(slf, ItRu_ArmyOfDarkness 	, Npc_HasItems (slf, ItRu_ArmyOfDarkness));
 		Npc_RemoveInvItems	(slf, ItRu_Shrink 			, Npc_HasItems (slf, ItRu_Shrink));
 		
-		Npc_RemoveInvItems	(slf, ItRu_Teleport 		, Npc_HasItems (slf, ItRu_Teleport));
-		Npc_RemoveInvItems	(slf, ItRu_Transform 		, Npc_HasItems (slf, ItRu_Transform));
-		Npc_RemoveInvItems	(slf, ItRu_Summon	 		, Npc_HasItems (slf, ItRu_Summon));
+		//Npc_RemoveInvItems	(slf, ItRu_Teleport 		, Npc_HasItems (slf, ItRu_Teleport));
+		//Npc_RemoveInvItems	(slf, ItRu_Transform 		, Npc_HasItems (slf, ItRu_Transform));
+		//Npc_RemoveInvItems	(slf, ItRu_Summon	 		, Npc_HasItems (slf, ItRu_Summon));
 		
 		Npc_RemoveInvItems	(slf, ItRu_ConcussionBolt	, Npc_HasItems (slf, ItRu_ConcussionBolt));
 		Npc_RemoveInvItems	(slf, ItRu_DeathBolt		, Npc_HasItems (slf, ItRu_DeathBolt));
@@ -52,46 +59,40 @@ func void B_ClearRuneInv (var C_Npc slf)
 		Npc_RemoveInvItems	(slf, ItRu_GreenFireball	, Npc_HasItems (slf, ItRu_GreenFireball));
 		Npc_RemoveInvItems	(slf, ItRu_YellowFireball	, Npc_HasItems (slf, ItRu_YellowFireball));
 		
-		Npc_RemoveInvItems	(slf, ItRu_MysBolt			, Npc_HasItems (slf, ItRu_MysBolt));
-		Npc_RemoveInvItems	(slf, ItRu_MysProtection	, Npc_HasItems (slf, ItRu_MysProtection));
+		Npc_RemoveInvItems	(slf, ItRu_MysBall			, Npc_HasItems (slf, ItRu_MysBall));
+		Npc_RemoveInvItems	(slf, ItRu_MysAura			, Npc_HasItems (slf, ItRu_MysAura));
 		Npc_RemoveInvItems	(slf, ItRu_MysRoot			, Npc_HasItems (slf, ItRu_MysRoot));
 		Npc_RemoveInvItems	(slf, ItRu_MysTame			, Npc_HasItems (slf, ItRu_MysTame));
-		Npc_RemoveInvItems	(slf, ItRu_MysAura			, Npc_HasItems (slf, ItRu_MysAura));
-		Npc_RemoveInvItems	(slf, ItRu_MysEchoes		, Npc_HasItems (slf, ItRu_MysEchoes));
+		Npc_RemoveInvItems	(slf, ItRu_MysEcho			, Npc_HasItems (slf, ItRu_MysEcho));
+		Npc_RemoveInvItems	(slf, ItRu_MysSlow			, Npc_HasItems (slf, ItRu_MysSlow));
 		
 		Npc_RemoveInvItems	(slf, ItRu_GeoStone			, Npc_HasItems (slf, ItRu_GeoStone));
-		Npc_RemoveInvItems	(slf, ItRu_GeoProtection	, Npc_HasItems (slf, ItRu_GeoProtection));
+		Npc_RemoveInvItems	(slf, ItRu_GeoAura			, Npc_HasItems (slf, ItRu_GeoAura));
 		Npc_RemoveInvItems	(slf, ItRu_GeoElevate		, Npc_HasItems (slf, ItRu_GeoElevate));
 		Npc_RemoveInvItems	(slf, ItRu_GeoGolem			, Npc_HasItems (slf, ItRu_GeoGolem));
-		Npc_RemoveInvItems	(slf, ItRu_GeoExplosion		, Npc_HasItems (slf, ItRu_GeoExplosion));
-		Npc_RemoveInvItems	(slf, ItRu_GeoWall			, Npc_HasItems (slf, ItRu_GeoWall));
+		Npc_RemoveInvItems	(slf, ItRu_GeoQuake			, Npc_HasItems (slf, ItRu_GeoQuake));
+		Npc_RemoveInvItems	(slf, ItRu_GeoCollapse			, Npc_HasItems (slf, ItRu_GeoCollapse));
 		
-		Npc_RemoveInvItems	(slf, ItRu_EleLightning		, Npc_HasItems (slf, ItRu_EleLightning));
-		Npc_RemoveInvItems	(slf, ItRu_EleProtection	, Npc_HasItems (slf, ItRu_EleProtection));
+		Npc_RemoveInvItems	(slf, ItRu_EleLance			, Npc_HasItems (slf, ItRu_EleLance));
+		Npc_RemoveInvItems	(slf, ItRu_EleAura			, Npc_HasItems (slf, ItRu_EleAura));
 		Npc_RemoveInvItems	(slf, ItRu_EleFreeze		, Npc_HasItems (slf, ItRu_EleFreeze));
 		Npc_RemoveInvItems	(slf, ItRu_EleHurricane		, Npc_HasItems (slf, ItRu_EleHurricane));
-		Npc_RemoveInvItems	(slf, ItRu_EleKinesis		, Npc_HasItems (slf, ItRu_EleKinesis));
+		Npc_RemoveInvItems	(slf, ItRu_EleLightning		, Npc_HasItems (slf, ItRu_EleLightning));
 		Npc_RemoveInvItems	(slf, ItRu_EleThunderstorm	, Npc_HasItems (slf, ItRu_EleThunderstorm));
 		
 		Npc_RemoveInvItems	(slf, ItRu_PyrFireball		, Npc_HasItems (slf, ItRu_PyrFireball));
-		Npc_RemoveInvItems	(slf, ItRu_PyrProtection	, Npc_HasItems (slf, ItRu_PyrProtection));
-		Npc_RemoveInvItems	(slf, ItRu_PyrFirestorm		, Npc_HasItems (slf, ItRu_PyrFirestorm));
-		Npc_RemoveInvItems	(slf, ItRu_PyrKinesis		, Npc_HasItems (slf, ItRu_PyrKinesis));
+		Npc_RemoveInvItems	(slf, ItRu_PyrAura			, Npc_HasItems (slf, ItRu_PyrAura));
+		Npc_RemoveInvItems	(slf, ItRu_PyrBurning		, Npc_HasItems (slf, ItRu_PyrBurning));
+		Npc_RemoveInvItems	(slf, ItRu_PyrFirebomb		, Npc_HasItems (slf, ItRu_PyrFirebomb));
 		Npc_RemoveInvItems	(slf, ItRu_PyrExplosion		, Npc_HasItems (slf, ItRu_PyrExplosion));
 		Npc_RemoveInvItems	(slf, ItRu_PyrFirerain		, Npc_HasItems (slf, ItRu_PyrFirerain));
 		
 		Npc_RemoveInvItems	(slf, ItRu_NecLifesteal		, Npc_HasItems (slf, ItRu_NecLifesteal));
-		Npc_RemoveInvItems	(slf, ItRu_NecProtection	, Npc_HasItems (slf, ItRu_NecProtection));
-		Npc_RemoveInvItems	(slf, ItRu_NecSkeleton		, Npc_HasItems (slf, ItRu_NecSkeleton));
-		Npc_RemoveInvItems	(slf, ItRu_NecSwarm			, Npc_HasItems (slf, ItRu_NecSwarm));
+		Npc_RemoveInvItems	(slf, ItRu_NecAura			, Npc_HasItems (slf, ItRu_NecAura));
+		Npc_RemoveInvItems	(slf, ItRu_NecCurse			, Npc_HasItems (slf, ItRu_NecCurse));
+		Npc_RemoveInvItems	(slf, ItRu_NecPlague		, Npc_HasItems (slf, ItRu_NecPlague));
 		Npc_RemoveInvItems	(slf, ItRu_NecDemon			, Npc_HasItems (slf, ItRu_NecDemon));
 		Npc_RemoveInvItems	(slf, ItRu_NecDeath			, Npc_HasItems (slf, ItRu_NecDeath));
-		
-		Npc_RemoveInvItems	(slf, ItRu_PalBless		 	, Npc_HasItems (slf, ItRu_PalBless));
-		Npc_RemoveInvItems	(slf, ItRu_PalHeal 			, Npc_HasItems (slf, ItRu_PalHeal));
-		Npc_RemoveInvItems	(slf, ItRu_PalHolyBolt 		, Npc_HasItems (slf, ItRu_PalHolyBolt));
-		Npc_RemoveInvItems	(slf, ItRu_PalJustice 		, Npc_HasItems (slf, ItRu_PalJustice));
-		Npc_RemoveInvItems	(slf, ItRu_PalDestroyEvil 	, Npc_HasItems (slf, ItRu_PalDestroyEvil));
 		
 		Npc_RemoveInvItems	(slf, Fakescroll			, Npc_HasItems (slf, Fakescroll));
 	};

@@ -13,7 +13,7 @@ func void B_GiveTradeInv_Addon_Lucia (var C_NPC slf)
 		CreateInvItems (slf, ItFo_Addon_Grog, 10);
 		CreateInvItems (slf, ItMi_Flask, 20);
 		
-		CreateInvItems (slf, ItRi_Dex_02, 1);
+		CreateInvItems (slf, ItRi_Dex_01, 1);
 		
 		Lucia_ItemsGiven_Chapter = 1;
 	};

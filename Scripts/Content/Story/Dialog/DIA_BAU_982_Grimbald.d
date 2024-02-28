@@ -133,7 +133,7 @@ func void DIA_Grimbald_Jagd_Info ()
 	{
 		AI_Output			(self, other, "DIA_Grimbald_Jagd_07_01"); //Hmmm. Dobrze. Co prawda do tej pory nie bardzo mi pomog³eœ, ale nie zamierzam ciê od razu skreœlaæ.
 		Grimbald_TeachAnimalTrophy = TRUE;
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else
 	{
@@ -154,7 +154,7 @@ func void DIA_Grimbald_Jagd_ja ()
 		{
 			AI_Output			(self, other, "DIA_Grimbald_Jagd_ja_07_01"); //W porz¹dku. Powiedz mi, kiedy bêdziesz chcia³ siê czegoœ nauczyæ.
 			Grimbald_TeachAnimalTrophy = TRUE;
-			self.aivar[AIV_CanTeach] = true;
+			self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		}
 		else
 		{
@@ -197,7 +197,7 @@ func void DIA_Grimbald_NovChase_Info ()
 	AI_Output			(other, self, "DIA_Grimbald_NovChase_15_00"); //Czy nie przechodzi³ têdy jakiœ nowicjusz?
 	AI_Output			(self, other, "DIA_Grimbald_NovChase_07_01"); //Przesz³o têdy dzisiaj wielu dziwnych ludzi, w³¹czaj¹c tych dwóch ¿artownisiów przy kamiennym ³uku.
 	AI_Output			(self, other, "DIA_Grimbald_NovChase_07_02"); //Faktycznie, by³ z nimi pewien nowicjusz z Klasztoru Magów Ognia.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -224,5 +224,5 @@ func int DIA_Grimbald_Trolltot_Condition ()
 func void DIA_Grimbald_Trolltot_Info ()
 {
 	AI_Output			(self, other, "DIA_Grimbald_Trolltot_07_00"); //Czarny troll nie ¿yje. Dobra robota. Nigdy nie s¹dzi³em, ¿e zabicie tych bestii jest w ogóle mo¿liwe.
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };

@@ -9,12 +9,12 @@ instance BDT_1075_Addon_Fortuno (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_NewsOverride]				=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
 	aivar[AIV_NoFightParker]			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Strong+5);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Strong+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -28,7 +28,7 @@ instance BDT_1075_Addon_Fortuno (Npc_Default)
 	CreateInvItems (self, ItPl_Mushroom_01, 5);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Tattoo07, 0, ITAR_SLN_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Tattoo07, 0, ITAR_SLN_H);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

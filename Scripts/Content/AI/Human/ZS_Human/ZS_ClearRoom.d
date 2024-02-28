@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_ClearRoom
+/// ZS_ClearRoom
 ///******************************************************************************************
 func void B_ClearRoomTalk()
 {
@@ -20,9 +20,9 @@ func int B_ExitIfRoomLeft()
 	if (!C_NpcIsBotheredByPlayerRoomGuild(self))
 	|| (portalguild == GIL_PUBLIC)
 	{
-		Npc_ClearAIQueue(self);
-		AI_StandUp(self);
-		B_StopLookAt(self);
+		Npc_ClearAIQueue	(self);
+		AI_StandUp			(self);
+		B_StopLookAt		(self);
 		
 		if (C_WantToAttackRoomIntruder(self))
 		{
@@ -74,12 +74,9 @@ func int ZS_ClearRoom_Loop()
 			B_SelectWeapon (self, other);
 			B_Say (self, other, "$GETOUTOFHERE");
 		}
-		else
+		else if (Npc_GetAttitude(other, self) != ATT_FRIENDLY)
 		{
-			if (Npc_GetAttitude(other, self) != ATT_FRIENDLY)
-			{
-				B_Say (self, other, "$WHYAREYOUINHERE");
-			};
+			B_Say (self, other, "$WHYAREYOUINHERE");
 		};
 		
 		Npc_SetStateTime (self, 0);
@@ -100,22 +97,19 @@ func int ZS_ClearRoom_Loop()
 			return LOOP_END;
 		};
 	}
-	else
+	else if (Npc_GetStateTime(self) >= 2)
 	{
-		if (Npc_GetStateTime(self) >= 2)
+		if (!Npc_CanSeeNpcFreeLOS(self, other))
 		{
-			if (!Npc_CanSeeNpcFreeLOS(self, other))
-			{
-				AI_GotoWP (self, Npc_GetNearestWP(other));
-				B_TurnToNpc (self, other);
-			}
-			else if (!Npc_CanSeeNpc(self, other))
-			{
-				B_TurnToNpc (self, other);
-			};
-			
-			Npc_SetStateTime (self, 0);
+			AI_GotoWP (self, Npc_GetNearestWP(other));
+			B_TurnToNpc (self, other);
+		}
+		else if (!Npc_CanSeeNpc(self, other))
+		{
+			B_TurnToNpc (self, other);
 		};
+		
+		Npc_SetStateTime (self, 0);
 	};
 	
 	return LOOP_CONTINUE;

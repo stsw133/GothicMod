@@ -59,5 +59,5 @@ func void TA_RangerMeeting		(var int start_h, var int start_m, var int stop_h, v
 func void TA_Ghost				(var int start_h, var int start_m, var int stop_h, var int stop_m, var string waypoint)	{	TA_Min	(self, start_h, start_m, stop_h, stop_m, ZS_Ghost,					waypoint);};
 func void TA_GhostWusel			(var int start_h, var int start_m, var int stop_h, var int stop_m, var string waypoint)	{	TA_Min	(self, start_h, start_m, stop_h, stop_m, ZS_GhostWusel,				waypoint);};
 
+/// new!!!
 func void TA_Claphands			(var int start_h, var int start_m, var int stop_h, var int stop_m, var string waypoint)	{	TA_Min	(self, start_h, start_m, stop_h, stop_m, ZS_Claphands,				waypoint);};
-func void TA_OrcDance			(var int start_h, var int start_m, var int stop_h, var int stop_m, var string waypoint)	{	TA_Min	(self, start_h, start_m, stop_h, stop_m, ZS_OrcDance,				waypoint);};

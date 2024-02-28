@@ -26,7 +26,7 @@ func void B_GiveTradeInv_Jora (var C_NPC slf)
 		CreateInvItems (slf,ItRw_Bow_M_04, 1);
 		CreateInvItems (slf,ItRw_Crossbow_L_02, 1);
 		
-		CreateInvItems (slf,ItAm_LifeSteal_01, 1);
+		CreateInvItems (slf,ItAm_Barbarian_01, 1);
 		
 		Jora_ItemsGiven_Chapter = 1;
 	};

@@ -9,8 +9,8 @@ instance VLK_4304_Addon_William (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 20);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -21,7 +21,7 @@ instance VLK_4304_Addon_William (Npc_Default)
 	CreateInvItems (self, ItKe_Lockpick, 2);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Homer, 0, ITAR_BAU_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_Homer, 0, ITAR_BAU_00);
 	Mdl_SetModelFatness	(self, 0.9);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 

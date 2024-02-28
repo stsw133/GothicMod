@@ -370,7 +370,7 @@ func void DIA_Addon_Riordian_FoundHouse_Info ()
 	{
 		var int RiordianHouseXPs;
 		RiordianHouseXPs = (100 * RiordianHouseNeuigkeit);
-		B_GivePlayerXP (RiordianHouseXPs);
+		B_GivePlayerExp (RiordianHouseXPs);
 		
 		RiordianHousesFoundCount = (RiordianHousesFoundCount + RiordianHouseNeuigkeit);
 	}
@@ -421,7 +421,7 @@ func void DIA_Addon_Riordian_OrksWeg_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_OrksWeg_10_05"); //Störungen dieser Art können wir jetzt nun wirklich nicht gebrauchen.
 	
 	TOPIC_END_CanyonOrcs = TRUE;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -454,7 +454,7 @@ func void DIA_Addon_Riordian_FoundAllHouses_Info ()
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_03"); //Sehr gut. Dann hat sich meine Arbeit ja DOCH gelohnt.
 	AI_Output	(self, other, "DIA_Addon_Riordian_FoundAllHouses_10_04"); //Ich danke dir.
 	MIS_Riordian_HousesOfRulers = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -483,5 +483,5 @@ func void DIA_Addon_Riordian_ADW_PreTeach_Info ()
 	B_LogEntry	(TOPIC_Addon_KDWTeacher, LogText_Addon_RiordianTeachAlchemy);
 
 	Riordian_ADW_ADDON_TeachAlchemy = TRUE;
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };

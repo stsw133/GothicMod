@@ -5,30 +5,18 @@
 var int masType;		/// okreœla typ specjalizacji bojowej g³ównego bohatera
 var int masFight;		/// czas trwania walki, liczone od uderzenia w przeciwnika
 
-const int masType_FGT	=	1;	/// wojownik
-								/// zwiêkszaj¹ce siê w czasie nieuchronne obra¿enia
-const int masType_RNG	=	2;	/// strzelec
-								/// dodatkowe obra¿enia zale¿ne od odleg³oœci od przeciwnika
-const int masType_ASA	=	3;	/// zabójca
-								/// przeciwnik ginie gdy jest poni¿ej pewnego poziomu zdrowia
-const int masType_BER	=	4;	/// berserker
-								/// co trzeci atak przywraca zdrowie
-const int masType_CON	=	5;	/// kontroler
-								/// zadanie obra¿eñ przyzywa insekty w pobli¿u wroga
-const int masType_ENC	=	6;	/// zaklinacz
-								/// mikstury trwaj¹ d³u¿ej a pancerze daj¹ lepsz¹ ochronê
-const int masType_ILU	=	7;	/// iluzjonista
-								/// zaatakowanie wroga tworzy jego duchow¹ kopiê atakuj¹c¹ go
-const int masType_DST	=	8;	/// destruktor
-								/// dodatkowe obra¿enia zale¿ne od brakuj¹cego zdrowia przeciwnika
-const int masType_JUG	=	9;	/// moloch
-								/// dodatkowe obra¿enia zale¿ne od dodatkowego maksymalnego zdrowia
-const int masType_COL	=	10;	/// kolos
-								/// zyskujesz dodatkowe zdrowie co poziom
-const int masType_TRP	=	11;	/// szturmowiec
-								/// regeneracja brakuj¹cego zdrowia w trakcie walki
-const int masType_GRD	=	12;	/// stra¿nik
-								/// sojusznicy otrzymuj¹ zdrowie na bazie zdrowia gracza podczas ataków
+const int masType_FGT	=	1;	/// wojownik - zwiêkszaj¹ce siê w czasie nieuchronne obra¿enia
+const int masType_RNG	=	2;	/// strzelec - dodatkowe obra¿enia zale¿ne od odleg³oœci od przeciwnika
+const int masType_ASA	=	3;	/// zabójca - przeciwnik ginie gdy jest poni¿ej pewnego poziomu zdrowia
+const int masType_BER	=	4;	/// berserker - co trzeci atak przywraca zdrowie
+const int masType_CON	=	5;	/// kontroler - zadanie obra¿eñ przyzywa insekty w pobli¿u wroga
+const int masType_ENC	=	6;	/// zaklinacz - mikstury trwaj¹ d³u¿ej a pancerze daj¹ lepsz¹ ochronê
+const int masType_ILU	=	7;	/// iluzjonista - zaatakowanie wroga tworzy jego duchow¹ kopiê atakuj¹c¹ go
+const int masType_DST	=	8;	/// destruktor - dodatkowe obra¿enia zale¿ne od brakuj¹cego zdrowia przeciwnika
+const int masType_JUG	=	9;	/// moloch - dodatkowe obra¿enia zale¿ne od dodatkowego maksymalnego zdrowia
+const int masType_COL	=	10;	/// kolos - zyskujesz dodatkowe zdrowie co poziom
+const int masType_TRP	=	11;	/// szturmowiec - regeneracja brakuj¹cego zdrowia w trakcie walki
+const int masType_GRD	=	12;	/// stra¿nik - sojusznicy otrzymuj¹ zdrowie na bazie zdrowia gracza podczas ataków
 
 ///******************************************************************************************
 func void MASTERYDAMAGE_CHECK()
@@ -85,8 +73,8 @@ func void MASTERYDAMAGE_CHECK()
 
 	if (Npc_GetTalentSkill(hero,NPC_TALENT_MAINMASTERY) == masType_ENC)
 	{
-		Print(IntToString((hero.aivar[AIV_Energy_MAX]-hero.aivar[AIV_Energy])/5));
-		hero.aivar[AIV_Energy] += (hero.aivar[AIV_Energy_MAX]-hero.aivar[AIV_Energy])/5;	//20% lost ENE
+		Print(IntToString((hero.aivar[AIV_Stamina_MAX]-hero.aivar[AIV_Stamina])/5));
+		hero.aivar[AIV_Stamina] += (hero.aivar[AIV_Stamina_MAX]-hero.aivar[AIV_Stamina])/5;	//20% lost ENE
 	};
 
 	if (Npc_GetTalentSkill(hero,NPC_TALENT_MAINMASTERY) == masType_ILU)
@@ -168,7 +156,7 @@ func void MASTERYALLIES_CHECK()
 		Npc_ChangeAttribute (other, ATR_HITPOINTS, hero.attribute[ATR_HITPOINTS_MAX]/100);	//max. 1%
 	};
 };
-*/
+
 ///******************************************************************************************
 func void SPECIALWEAPONDAMAGE_CHECK()
 {
@@ -208,3 +196,4 @@ func void SPECIALWEAPONDAMAGE_CHECK()
 		};
 	};
 };
+*/

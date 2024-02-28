@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessThreat
+/// B_AssessThreat
 ///******************************************************************************************
 func void B_AssessThreat()
 {
@@ -7,10 +7,12 @@ func void B_AssessThreat()
 	{
 		return;
 	};
+	
 	if (!Npc_CanSeeNpc(self, other))
 	{
 		return;
 	};
+	
 	if (!C_NpcIsBotheredByWeapon(self, other))
 	{
 		return;

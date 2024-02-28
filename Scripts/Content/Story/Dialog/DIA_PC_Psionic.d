@@ -288,7 +288,7 @@ func void DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_15_00"); //Pomys³ z Constantinem by³ dobry, stra¿nicy mnie przepuœcili.
 	AI_Output	(self, other, "DIA_Addon_Lester_PASSAGEPLANTSSUCCESS_13_01"); //No, tak jak mówi³em. S³uchanie moich rad mo¿e ci tylko wyjœæ na dobre, przyjacielu...
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 // ************************************************************
@@ -460,7 +460,7 @@ func void DIA_Lester_PERM3_Info ()
 					AI_Output			(other, self, "DIA_Lester_PERM3_15_10"); //Dobre pytanie. Wiem tylko, ¿e trzeba za wszelk¹ cenê powstrzymaæ Poszukiwaczy, nim stan¹ siê zbyt potê¿ni.
 					AI_Output			(self, other, "DIA_Lester_PERM3_13_11"); //Nie podoba mi siê to wszystko, ale chyba masz racjê. Przepraszam... Mo¿na przez to wszystko oszaleæ.
 					B_LogEntry (TOPIC_DEMENTOREN,"Moje podejrzenia potwierdzi³y siê. Nawet Lester nie ma ¿adnych w¹tpliwoœci, ¿e Poszukiwacze i wyznawcy œni¹cego przychodz¹ ze starego obozowiska na mokrad³ach."); 
-					B_GivePlayerXP(300);
+					B_GivePlayerExp(300);
 					DIA_Lester_PERM3_OneTime = TRUE;
 				};
 		};

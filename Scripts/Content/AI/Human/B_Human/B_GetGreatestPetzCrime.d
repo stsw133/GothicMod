@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_GetPetzCrime
+/// B_GetPetzCrime
 ///******************************************************************************************
-func int B_GetGreatestPetzCrime (var C_NPC slf)
+func int B_GetGreatestPetzCrime (var C_Npc slf)
 {
 	/// ------ OldCamp ------
 	if (C_NpcBelongsToOldCamp(slf))

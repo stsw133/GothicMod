@@ -67,9 +67,9 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_Addon_04, 5);
 		
 		//CreateInvItems   (slf, ItSc_MediumHeal,	5);
-		CreateInvItems   (slf, ItSc_PyrFirestorm, 4);
+		CreateInvItems   (slf, ItSc_PyrBurning, 4);
 		CreateInvItems   (slf, ItSc_ChargeZap, 2);
-		CreateInvItems   (slf, ItSc_NecSkeleton, 3);
+		CreateInvItems   (slf, ItSc_NecCurse, 3);
 		CreateInvItems   (slf, ItSc_Fear, 2);
 		CreateInvItems   (slf, ItSc_EleFreeze, 3);
 		CreateInvItems	 (slf, ItMi_Flask, 10);
@@ -147,7 +147,7 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_01, 50);
 		CreateInvItems   (slf, ItPo_Mana_02, 40);
 		
-		CreateInvItems   (slf, ItSc_PyrKinesis, 5);
+		CreateInvItems   (slf, ItSc_PyrFirebomb, 5);
 		CreateInvItems   (slf, ItSc_IceWave, 4);
 		CreateInvItems   (slf, ItSc_NecDemon, 2);
 		//CreateInvItems   (slf, ItSc_FullHeal, 3);

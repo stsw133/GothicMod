@@ -9,12 +9,11 @@ instance BDT_1081_Addon_Wache_01 (Npc_Default)
 	npctype								=	NPCTYPE_BL_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_StoryBandit_Esteban]		=	true;
-	aivar[AIV_StoryBandit]				=	true;
+	aivar[AIV_Story]					=	STORY_Bandit | STORY_Esteban;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 30);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 30);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;
@@ -27,7 +26,7 @@ instance BDT_1081_Addon_Wache_01 (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal21, 0, ITAR_RVN_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_Normal21, 0, ITAR_RVN_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 

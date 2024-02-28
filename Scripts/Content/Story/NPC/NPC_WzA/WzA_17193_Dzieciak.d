@@ -15,11 +15,11 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, MAX_LEVEL);
-	B_SetFightSkills (self, 100);
+	NpcFn_SetAttributesToLevel (self, MAX_LEVEL);
+	NpcFn_SetFightSkills (self, 100);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -28,7 +28,7 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Kid, Teeth_Normal, ITAR_VLK_L_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Kid, Teeth_Normal, ITAR_VLK_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_SetModelScale	(self, 0.75, 0.75, 0.75);
 	

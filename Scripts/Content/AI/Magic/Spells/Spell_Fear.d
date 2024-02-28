@@ -2,7 +2,7 @@
 ///	SPL_Fear
 ///******************************************************************************************
 
-const int SPL_Cost_Fear					=	40;	//50
+const int SPL_Cost_Fear					=	75;	//50
 const int SPL_MinLvl_Fear				=	20;
 const int SPL_Scaling_Fear				=	20;
 
@@ -11,7 +11,7 @@ instance Spell_Fear (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype 							=	SPELL_BAD;
-	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;//_FALLBACK_NONE;
+	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };
 
 func int Spell_Logic_Fear (var int manaInvested)

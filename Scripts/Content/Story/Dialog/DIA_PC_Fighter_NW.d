@@ -44,7 +44,7 @@ FUNC VOID DIA_GornNW_Hallo_Info()
 	{
 		AI_Output (self ,other,"DIA_GornNW_Add_12_01"); //Uratowa³eœ mój ty³ek, kolego.
 		AI_Output (self ,other,"DIA_GornNW_Add_12_02"); //Nigdy ci tego nie zapomnê.
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 	}
 	else
 	{

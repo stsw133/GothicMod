@@ -11,223 +11,227 @@ prototype ItemPR_Potion (C_Item)
 	TEXT[5]					= 	NAME_Value;
 };
 ///******************************************************************************************
+prototype ItemPR_PotionTrf (C_Item)
+{
+	name 					=	"Mikstura";
+	mainflag 				=	ITEM_KAT_RUNE;
+	flags 					=	ITEM_MULTI;
+	
+	value 					=	100;
+	spell					=	SPL_Transform;
+	visual 					=	"ITPO_TRANSFORM.3ds";
+	material 				=	MAT_GLAS;
+	
+	description				=	"Mikstura przemiany";
+	TEXT[5]					= 	NAME_Value;
+	INV_ROTZ				=	INVCAM_Z_RING_STANDARD;
+};
+///******************************************************************************************
 ///	Health
 ///******************************************************************************************
 instance ItPo_Health_01 (ItemPR_Potion)
 {
-	value 					=	50;
+	value 					=	25;
 	visual 					=	"ItPo_Health_01.3ds";
 	on_state[0]				=	Use_ItPo_Health_01;
 	
 	description				= 	"S³aba mikstura lecznicza";
 	TEXT[1]					= 	NAME_Bonus_HP;
-	COUNT[1]				=	90;
-	TEXT[2]					= 	NAME_Percent_HP;
-	COUNT[2]				=	45;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	2*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	2;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Health_01()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_HITPOINTS, 3, 15, 30);
+		PotionRG_ADD (ATR_HITPOINTS, 2, 2*60, 0);
+		MOD_SetPoison(0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]-self.attribute[ATR_HITPOINTS])*9/20+90);
+		Npc_ChangeAttribute (self, ATR_HITPOINTS, 200);
 	};
-	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_02 (ItemPR_Potion)
 {
-	value 					=	100;
+	value 					=	50;
 	visual 					=	"ItPo_Health_02.3ds";
 	on_state[0]				=	Use_ItPo_Health_02;
 	
-	description				= 	"Mikstura lecznicza";
+	description				= 	"Œrednia mikstura lecznicza";
 	TEXT[1]					= 	NAME_Bonus_HP;
-	COUNT[1]				=	120;
-	TEXT[2]					= 	NAME_Percent_HP;
-	COUNT[2]				=	60;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	3*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	3;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Health_02()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_HITPOINTS, 4, 20, 30);
+		PotionRG_ADD (ATR_HITPOINTS, 3, 3*60, 0);
+		MOD_SetPoison(0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]-self.attribute[ATR_HITPOINTS])*12/20+120);
+		Npc_ChangeAttribute (self, ATR_HITPOINTS, 400);
 	};
-	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_03 (ItemPR_Potion)
 {
-	value 					=	150;
+	value 					=	75;
 	visual 					=	"ItPo_Health_03.3ds";
 	on_state[0]				=	Use_ItPo_Health_03;
 	
 	description				= 	"Silna mikstura lecznicza";
 	TEXT[1]					= 	NAME_Bonus_HP;
-	COUNT[1]				=	150;
-	TEXT[2]					= 	NAME_Percent_HP;
-	COUNT[2]				=	75;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	4*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	4;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Health_03()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_HITPOINTS, 5, 25, 30);
+		PotionRG_ADD (ATR_HITPOINTS, 4, 4*60, 0);
+		MOD_SetPoison(0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_HITPOINTS, (self.attribute[ATR_HITPOINTS_MAX]-self.attribute[ATR_HITPOINTS])*15/20+150);
+		Npc_ChangeAttribute (self, ATR_HITPOINTS, 600);
 	};
-	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 instance ItPo_Health_Addon_04 (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	150;
 	visual 					=	"ItPo_Health_04.3ds";
 	on_state[0]				=	Use_ItPo_Health_04;
 	
 	description				= 	"Potê¿na mikstura lecznicza";
 	TEXT[1]					= 	NAME_Bonus_HP;
-	COUNT[1]				=	240;
+	COUNT[1]				=	5*60;
 	TEXT[2]					= 	NAME_Percent_HP;
-	COUNT[2]				=	120;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[2]				=	20;
+	TEXT[3]					=	NAME_EffectPerSec;
+	COUNT[3]				=	5;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Health_04()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_HITPOINTS, 8, 40, 30);
+		PotionRG_ADD (ATR_HITPOINTS, 5, 5*60, 20);
+		MOD_SetPoison(0);
 	}
 	else
 	{
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, self.attribute[ATR_HITPOINTS_MAX]);
 	};
-	MOD_PoisonOFF(self);
 };
 ///******************************************************************************************
 ///	Mana
 ///******************************************************************************************
 instance ItPo_Mana_01 (ItemPR_Potion)
 {
-	value 					=	50;
+	value 					=	25;
 	visual 					=	"ItPo_Mana_01.3ds";
 	on_state[0]				=	Use_ItPo_Mana_01;
 	
 	description				= 	"S³aba mikstura many";
 	TEXT[1]					= 	NAME_Bonus_Mana;
-	COUNT[1]				=	90;
-	TEXT[2]					= 	NAME_Percent_Mana;
-	COUNT[2]				=	45;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	2*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	2;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Mana_01()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_MANA, 3, 15, 30);
+		PotionRG_ADD (ATR_MANA, 2, 2*60, 0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_MANA, (self.attribute[ATR_MANA_MAX]-self.attribute[ATR_MANA])*9/20+90);
+		Npc_ChangeAttribute (self, ATR_MANA, 200);
 	};
 };
 ///******************************************************************************************
 instance ItPo_Mana_02 (ItemPR_Potion)
 {
-	value 					=	100;
+	value 					=	50;
 	visual 					=	"ItPo_Mana_02.3ds";
 	on_state[0]				=	Use_ItPo_Mana_02;
 	
-	description				= 	"Mikstura many";
+	description				= 	"Œrednia mikstura many";
 	TEXT[1]					= 	NAME_Bonus_Mana;
-	COUNT[1]				=	120;
-	TEXT[2]					= 	NAME_Percent_Mana;
-	COUNT[2]				=	60;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	3*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	3;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Mana_02()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_MANA, 4, 20, 30);
+		PotionRG_ADD (ATR_MANA, 3, 3*60, 0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_MANA, (self.attribute[ATR_MANA_MAX]-self.attribute[ATR_MANA])*12/20+120);
+		Npc_ChangeAttribute (self, ATR_MANA, 400);
 	};
 };
 ///******************************************************************************************
 instance ItPo_Mana_03 (ItemPR_Potion)
 {
-	value 					=	150;
+	value 					=	75;
 	visual 					=	"ItPo_Mana_03.3ds";
 	on_state[0]				=	Use_ItPo_Mana_03;
 	
 	description				= 	"Silna mikstura many";
 	TEXT[1]					= 	NAME_Bonus_Mana;
-	COUNT[1]				=	150;
-	TEXT[2]					= 	NAME_Percent_Mana;
-	COUNT[2]				=	75;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[1]				=	4*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	4;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Mana_03()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_MANA, 5, 25, 30);
+		PotionRG_ADD (ATR_MANA, 4, 4*60, 0);
 	}
 	else
 	{
-		Npc_ChangeAttribute (self, ATR_MANA, (self.attribute[ATR_MANA_MAX]-self.attribute[ATR_MANA])*15/20+150);
+		Npc_ChangeAttribute (self, ATR_MANA, 600);
 	};
 };
 ///******************************************************************************************
 instance ItPo_Mana_Addon_04 (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	150;
 	visual 					=	"ItPo_Mana_04.3ds";
 	on_state[0]				=	Use_ItPo_Mana_04;
 	
 	description				= 	"Potê¿na mikstura many";
 	TEXT[1]					= 	NAME_Bonus_Mana;
-	COUNT[1]				=	240;
+	COUNT[1]				=	5*60;
 	TEXT[2]					= 	NAME_Percent_Mana;
-	COUNT[2]				=	120;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
+	COUNT[2]				=	20;
+	TEXT[3]					=	NAME_EffectPerSec;
+	COUNT[3]				=	5;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Mana_04()
 {
 	if (Npc_IsPlayer(self))
 	{
-		PotionRG_ADD (ATR_MANA, 8, 40, 30);
+		PotionRG_ADD (ATR_MANA, 5, 5*60, 20);
 	}
 	else
 	{
@@ -235,17 +239,60 @@ func void Use_ItPo_Mana_04()
 	};
 };
 ///******************************************************************************************
+///	Stamina & Running
+///******************************************************************************************
+instance ItPo_Speed (ItemPR_Potion)
+{
+	value 					=	50;
+	visual 					=	"ItPo_Speed.3ds";
+	on_state[0]				=	Use_ItPo_Speed;
+	
+	description				= 	"Mikstura energii";
+	TEXT[1]					= 	NAME_Bonus_Stamina;
+	COUNT[1]				=	6*60;
+	TEXT[2]					=	NAME_EffectPerSec;
+	COUNT[2]				=	6;
+	COUNT[5]				= 	value;
+};
+func void Use_ItPo_Speed()
+{
+	if (Npc_IsPlayer(self))
+	{
+		PotionRG_ADD (AIV_Stamina_MAX, 6, 6*60, 0);
+	}
+	else
+	{
+		Mdl_ApplyOverlayMDSTimed (self, "HUMANS_FASTRUN.MDS", 60 * 1000);
+	};
+};
+///******************************************************************************************
+instance ItPo_Lightness (ItemPR_Potion)
+{
+	value 					=	200;
+	visual 					=	"ItPo_Speed.3ds";
+	on_state[0]				=	Use_ItPo_Lightness;
+	
+	description				= 	"Mikstura lekkoœci";
+	TEXT[1]					= 	NAME_Duration;
+	COUNT[1]				=	120;
+	COUNT[5]				= 	value;
+};
+func void Use_ItPo_Lightness()
+{
+	Mdl_ApplyOverlayMDSTimed (self, "HUMANS_SPRINT.MDS", 120 * 1000);
+};
+///******************************************************************************************
 ///	Temp
 ///******************************************************************************************
 instance ItPo_Temp_Health (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_Health.3ds";
 	on_state[0]				=	Use_ItPo_Temp_Health;
 	
 	description				= 	"Czasowy eliksir ¿ywotnoœci";
 	TEXT[1]					= 	NAME_Bonus_HpMax;
-	COUNT[1]				= 	10*HP_PER_LP;
+	COUNT[1]				= 	20*HP_PER_LP;
 	TEXT[2]					=	NAME_Duration;
 	COUNT[2]				=	300;
 	COUNT[5]				= 	value;
@@ -256,7 +303,7 @@ func void Use_ItPo_Temp_Health()
 	{
 		if (hpMaxPotionTime == 0)
 		{
-			B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 10*HP_PER_LP);
+			B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 20*HP_PER_LP);
 		};
 		hpMaxPotionTime = 300;
 	};
@@ -264,13 +311,13 @@ func void Use_ItPo_Temp_Health()
 ///******************************************************************************************
 instance ItPo_Temp_Mana (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_Mana.3ds";
 	on_state[0]				=	Use_ItPo_Temp_Mana;
 	
 	description				= 	"Czasowy eliksir ducha";
-	TEXT[1]					= 	NAME_Bonus_ManaMax;
-	COUNT[1]				= 	10;
+	TEXT[1]					= 	NAME_Bonus_MpMax;
+	COUNT[1]				= 	20*MP_PER_LP;
 	TEXT[2]					=	NAME_Duration;
 	COUNT[2]				=	300;
 	COUNT[5]				= 	value;
@@ -281,7 +328,7 @@ func void Use_ItPo_Temp_Mana()
 	{
 		if (mpMaxPotionTime == 0)
 		{
-			B_RaiseAttribute (self, ATR_MANA_MAX, 10);
+			B_RaiseAttribute (self, ATR_MANA_MAX, 20*MP_PER_LP);
 		};
 		mpMaxPotionTime = 300;
 	};
@@ -289,13 +336,13 @@ func void Use_ItPo_Temp_Mana()
 ///******************************************************************************************
 instance ItPo_Temp_STR (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_STR.3ds";
 	on_state[0]				=	Use_ItPo_Temp_STR;
 	
 	description				= 	"Czasowy eliksir si³y";
 	TEXT[1]					= 	NAME_Bonus_Str;
-	COUNT[1]				= 	10;
+	COUNT[1]				= 	20;
 	TEXT[2]					=	NAME_Duration;
 	COUNT[2]				=	300;
 	COUNT[5]				= 	value;
@@ -306,7 +353,7 @@ func void Use_ItPo_Temp_STR()
 	{
 		if (strPotionTime == 0)
 		{
-			B_RaiseAttribute (self, ATR_STRENGTH, 10);
+			B_RaiseAttribute (self, ATR_STRENGTH, 20);
 		};
 		strPotionTime = 300;
 	};
@@ -314,13 +361,13 @@ func void Use_ItPo_Temp_STR()
 ///******************************************************************************************
 instance ItPo_Temp_DEX (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_DEX.3ds";
 	on_state[0]				=	Use_ItPo_Temp_DEX;
 	
 	description				= 	"Czasowy eliksir zrêcznoœci";
 	TEXT[1]					= 	NAME_Bonus_Dex;
-	COUNT[1]				= 	10;
+	COUNT[1]				= 	20;
 	TEXT[2]					=	NAME_Duration;
 	COUNT[2]				=	300;
 	COUNT[5]				= 	value;
@@ -331,34 +378,34 @@ func void Use_ItPo_Temp_DEX()
 	{
 		if (dexPotionTime == 0)
 		{
-			B_RaiseAttribute (self, ATR_DEXTERITY, 10);
+			B_RaiseAttribute (self, ATR_DEXTERITY, 20);
 		};
 		dexPotionTime = 300;
 	};
 };
 ///******************************************************************************************
-instance ItPo_Temp_Power (ItemPR_Potion)
+instance ItPo_Temp_POW (ItemPR_Potion)
 {
-	value 					=	300;
-	visual 					=	"ItPo_Perm_Power.3ds";
-	on_state[0]				=	Use_ItPo_Temp_Power;
+	value 					=	200;
+	visual 					=	"ItPo_Perm_POW.3ds";
+	on_state[0]				=	Use_ItPo_Temp_POW;
 	
 	description				= 	"Czasowy eliksir mocy";
-	TEXT[1]					= 	NAME_Bonus_Power;
-	COUNT[1]				= 	10;
+	TEXT[1]					= 	NAME_Bonus_Pow;
+	COUNT[1]				= 	20;
 	TEXT[2]					=	NAME_Duration;
 	COUNT[2]				=	300;
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_Temp_Power()
+func void Use_ItPo_Temp_POW()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (powerPotionTime == 0)
+		if (powPotionTime == 0)
 		{
-			B_RaiseAttribute (self, ATR_POWER, 10);
+			B_RaiseAttribute (self, ATR_POWER, 20);
 		};
-		powerPotionTime = 300;
+		powPotionTime = 300;
 	};
 };
 ///******************************************************************************************
@@ -366,61 +413,67 @@ func void Use_ItPo_Temp_Power()
 ///******************************************************************************************
 instance ItPo_Weak_Health (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_Health.3ds";
 	on_state[0]				=	Use_ItPo_Weak_Health;
 	
 	description				= 	"Negatywny eliksir ¿ywotnoœci";
-	TEXT[1]					= 	"Wymienia 40 max. punktów ¿ycia na";
-	TEXT[2]					= 	"10 punktów nauki jeœli posiadasz";
-	TEXT[3]					= 	"ponad 200 max. punktów ¿ycia.";
+	TEXT[1]					= 	"Wymienia max. punktów ¿ycia:";
+	COUNT[1]				= 	10*HP_PER_LP;
+	TEXT[2]					= 	"na punkty nauki jeœli posiadasz";
+	TEXT[3]					= 	"max. punktów ¿ycia ponad:";
+	COUNT[3]				=	10*HP_PER_LP;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Weak_Health()
 {
-	if (self.attribute[ATR_HITPOINTS_MAX] > 200)
+	if (self.attribute[ATR_HITPOINTS_MAX] > 10*HP_PER_LP)
 	{
-		Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -40);
+		Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -10*HP_PER_LP);
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
 ///******************************************************************************************
 instance ItPo_Weak_Mana (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_Mana.3ds";
 	on_state[0]				=	Use_ItPo_Weak_Mana;
 	
 	description				= 	"Negatywny eliksir ducha";
-	TEXT[1]					= 	"Wymienia 10 max. punktów many na";
-	TEXT[2]					= 	"10 punktów nauki jeœli posiadasz";
-	TEXT[3]					= 	"ponad 50 max. punktów many.";
+	TEXT[1]					= 	"Wymienia max. punktów many:";
+	COUNT[1]				= 	10*MP_PER_LP;
+	TEXT[2]					= 	"na punkty nauki jeœli posiadasz";
+	TEXT[3]					= 	"max. punktów many ponad:";
+	COUNT[3]				=	10*MP_PER_LP;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Weak_Mana()
 {
-	if (self.attribute[ATR_MANA_MAX] > 50)
+	if (self.attribute[ATR_MANA_MAX] > 10*MP_PER_LP)
 	{
-		Npc_ChangeAttribute(self, ATR_MANA_MAX, -10);
+		Npc_ChangeAttribute(self, ATR_MANA_MAX, -10*MP_PER_LP);
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
 ///******************************************************************************************
 instance ItPo_Weak_STR (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_STR.3ds";
 	on_state[0]				=	Use_ItPo_Weak_STR;
 	
 	description				= 	"Negatywny eliksir si³y";
-	TEXT[1]					= 	"Wymienia 10 punktów si³y na";
-	TEXT[2]					= 	"10 punktów nauki jeœli posiadasz";
-	TEXT[3]					= 	"ponad 50 punktów si³y.";
+	TEXT[1]					= 	"Wymienia punktów si³y:";
+	COUNT[1]				= 	10;
+	TEXT[2]					= 	"na punkty nauki jeœli posiadasz";
+	TEXT[3]					= 	"punktów si³y ponad:";
+	COUNT[3]				=	10;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Weak_STR()
 {
-	if (self.attribute[ATR_STRENGTH] > 50)
+	if (self.attribute[ATR_STRENGTH] > 10)
 	{
 		Npc_ChangeAttribute(self, ATR_STRENGTH, -10);
 		B_RaiseAttribute (self, 0, 10);
@@ -429,40 +482,44 @@ func void Use_ItPo_Weak_STR()
 ///******************************************************************************************
 instance ItPo_Weak_DEX (ItemPR_Potion)
 {
-	value 					=	300;
+	value 					=	200;
 	visual 					=	"ItPo_Perm_DEX.3ds";
 	on_state[0]				=	Use_ItPo_Weak_DEX;
 	
 	description				= 	"Negatywny eliksir zrêcznoœci";
-	TEXT[1]					= 	"Wymienia 10 punktów zrêcznoœci na";
-	TEXT[2]					= 	"10 punktów nauki jeœli posiadasz";
-	TEXT[3]					= 	"ponad 50 punktów zrêcznoœci.";
+	TEXT[1]					= 	"Wymienia punktów zrêcznoœci:";
+	COUNT[1]				= 	10;
+	TEXT[2]					= 	"na punkty nauki jeœli posiadasz";
+	TEXT[3]					= 	"punktów zrêcznoœci ponad:";
+	COUNT[3]				=	10;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Weak_DEX()
 {
-	if (self.attribute[ATR_DEXTERITY] > 50)
+	if (self.attribute[ATR_DEXTERITY] > 10)
 	{
 		Npc_ChangeAttribute(self, ATR_DEXTERITY, -10);
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
 ///******************************************************************************************
-instance ItPo_Weak_Power (ItemPR_Potion)
+instance ItPo_Weak_POW (ItemPR_Potion)
 {
-	value 					=	300;
-	visual 					=	"ItPo_Perm_Power.3ds";
-	on_state[0]				=	Use_ItPo_Weak_Power;
+	value 					=	200;
+	visual 					=	"ItPo_Perm_POW.3ds";
+	on_state[0]				=	Use_ItPo_Weak_POW;
 	
 	description				= 	"Negatywny eliksir mocy";
-	TEXT[1]					= 	"Wymienia 10 punktów mocy na";
-	TEXT[2]					= 	"10 punktów nauki jeœli posiadasz";
-	TEXT[3]					= 	"ponad 50 punktów mocy.";
+	TEXT[1]					= 	"Wymienia punktów mocy:";
+	COUNT[1]				= 	10;
+	TEXT[2]					= 	"na punkty nauki jeœli posiadasz";
+	TEXT[3]					= 	"punktów mocy ponad:";
+	COUNT[3]				=	10;
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_Weak_Power()
+func void Use_ItPo_Weak_POW()
 {
-	if (self.attribute[ATR_POWER] > 50)
+	if (self.attribute[ATR_POWER] > 10)
 	{
 		Npc_AddPowerPoints(self, -10);
 		B_RaiseAttribute (self, 0, 10);
@@ -473,87 +530,87 @@ func void Use_ItPo_Weak_Power()
 ///******************************************************************************************
 instance ItPo_Perm_Health (ItemPR_Potion)
 {
-	value 					=	600;
+	value 					=	500;
 	visual 					=	"ItPo_Perm_Health.3ds";
 	on_state[0]				=	Use_ItPo_Perm_Health;
 	
 	description				= 	"Trwa³y eliksir ¿ywotnoœci";
 	TEXT[1]					= 	NAME_Bonus_HpMax;
-	COUNT[1]				= 	3*HP_PER_LP;
+	COUNT[1]				= 	2*HP_PER_LP;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Perm_Health()
 {
-	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 3*HP_PER_LP);
+	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
 };
 ///******************************************************************************************
 instance ItPo_Perm_Mana (ItemPR_Potion)
 {
-	value 					=	600;
+	value 					=	500;
 	visual 					=	"ItPo_Perm_Mana.3ds";
 	on_state[0]				=	Use_ItPo_Perm_Mana;
 	
 	description				= 	"Trwa³y eliksir ducha";
-	TEXT[1]					= 	NAME_Bonus_ManaMax;
-	COUNT[1]				= 	3;
+	TEXT[1]					= 	NAME_Bonus_MpMax;
+	COUNT[1]				= 	2;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Perm_Mana()
 {
-	B_RaiseAttribute (self, ATR_MANA_MAX, 3);
+	B_RaiseAttribute (self, ATR_MANA_MAX, 2*MP_PER_LP);
 };
 ///******************************************************************************************
 instance ItPo_Perm_STR (ItemPR_Potion)
 {
-	value 					=	600;
+	value 					=	500;
 	visual 					=	"ItPo_Perm_STR.3ds";
 	on_state[0]				=	Use_ItPo_Perm_STR;
 	
 	description				= 	"Trwa³y eliksir si³y";
 	TEXT[1]					= 	NAME_Bonus_Str;
-	COUNT[1]				= 	3;
+	COUNT[1]				= 	2;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Perm_STR()
 {
-	B_RaiseAttribute (self, ATR_STRENGTH, 3);
+	B_RaiseAttribute (self, ATR_STRENGTH, 2);
 };
 ///******************************************************************************************
 instance ItPo_Perm_DEX (ItemPR_Potion)
 {
-	value 					=	600;
+	value 					=	500;
 	visual 					=	"ItPo_Perm_DEX.3ds";
 	on_state[0]				=	Use_ItPo_Perm_DEX;
 	
 	description				= 	"Trwa³y eliksir zrêcznoœci";
 	TEXT[1]					= 	NAME_Bonus_Dex;
-	COUNT[1]				= 	3;
+	COUNT[1]				= 	2;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Perm_DEX()
 {
-	B_RaiseAttribute (self, ATR_DEXTERITY, 3);
+	B_RaiseAttribute (self, ATR_DEXTERITY, 2);
 };
 ///******************************************************************************************
-instance ItPo_Perm_Power (ItemPR_Potion)
+instance ItPo_Perm_POW (ItemPR_Potion)
 {
-	value 					=	600;
-	visual 					=	"ItPo_Perm_Power.3ds";
-	on_state[0]				=	Use_ItPo_Perm_Power;
+	value 					=	500;
+	visual 					=	"ItPo_Perm_POW.3ds";
+	on_state[0]				=	Use_ItPo_Perm_POW;
 	
 	description				= 	"Trwa³y eliksir mocy";
-	TEXT[1]					= 	NAME_Bonus_Power;
-	COUNT[1]				= 	3;
+	TEXT[1]					= 	NAME_Bonus_Pow;
+	COUNT[1]				= 	2;
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_Perm_Power()
+func void Use_ItPo_Perm_POW()
 {
-	B_RaiseAttribute (self, ATR_POWER, 3);
+	B_RaiseAttribute (self, ATR_POWER, 2);
 };
 ///******************************************************************************************
 instance ItPo_Perm_Fire (ItemPR_Potion)
 {
-	value 					=	600;
+	value 					=	500;
 	visual 					=	"ItPo_Perm_Fire.3ds";
 	on_state[0]				=	Use_ItPo_Perm_Fire;
 	
@@ -569,484 +626,185 @@ func void Use_ItPo_Perm_Fire()
 ///******************************************************************************************
 ///	Transform
 ///******************************************************************************************
-instance ItSc_TrfAlligator (ItemPR_Potion)
+instance ItSc_TrfAlligator (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfAlligator;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W aligatora";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfAlligator()
-{
-	TrfStoneID = ID_ALLIGATOR;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfBiter (ItemPR_Potion)
+instance ItSc_TrfBiter (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfBiter;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W k¹sacza";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfBiter()
-{
-	TrfStoneID = ID_BITER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfBloodfly (ItemPR_Potion)
+instance ItSc_TrfBloodfly (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfBloodfly;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W krwiopijcê";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfBloodfly()
-{
-	TrfStoneID = ID_BLOODFLY;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfBloodhound (ItemPR_Potion)
+instance ItSc_TrfBloodhound (ItemPR_PotionTrf)
 {
 	value 					=	250;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfBloodhound;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W krwawego ogara";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfBloodhound()
-{
-	TrfStoneID = ID_BLOODHOUND;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfDemon (ItemPR_Potion)
+instance ItSc_TrfDemon (ItemPR_PotionTrf)
 {
 	value 					=	350;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfDemon;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W demona";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfDemon()
-{
-	TrfStoneID = ID_DEMON;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfDragonSnapper (ItemPR_Potion)
+instance ItSc_TrfDragonSnapper (ItemPR_PotionTrf)
 {
 	value 					=	300;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfDragonSnapper;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W smoczego zêbacza";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfDragonSnapper()
-{
-	TrfStoneID = ID_DRAGONSNAPPER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfFireWaran (ItemPR_Potion)
+instance ItSc_TrfFireWaran (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfFireWaran;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W ognistego jaszczura";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfFireWaran()
-{
-	TrfStoneID = ID_FIREWARAN;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGiantBug (ItemPR_Potion)
+instance ItSc_TrfGiantBug (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGiantBug;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W poln¹ bestiê";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGiantBug()
-{
-	TrfStoneID = ID_GIANT_BUG;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGiantRat (ItemPR_Potion)
+instance ItSc_TrfGiantRat (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGiantRat;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W olbrzymiego szczura";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGiantRat()
-{
-	TrfStoneID = ID_GIANT_RAT;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGiantSpider (ItemPR_Potion)
+instance ItSc_TrfGiantSpider (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGiantSpider;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W olbrzymiego paj¹ka";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGiantSpider()
-{
-	TrfStoneID = ID_GIANT_SPIDER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGoat (ItemPR_Potion)
+instance ItSc_TrfGoat (ItemPR_PotionTrf)
 {
 	value 					=	100;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGoat;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W kozê";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGoat()
-{
-	TrfStoneID = ID_GOAT;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGoblin (ItemPR_Potion)
+instance ItSc_TrfGoblin (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGoblin;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W goblina";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGoblin()
-{
-	TrfStoneID = ID_GOBBO;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfGorilla (ItemPR_Potion)
+instance ItSc_TrfGorilla (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfGorilla;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W goryla";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfGorilla()
-{
-	TrfStoneID = ID_GORILLA;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfHare (ItemPR_Potion)
+instance ItSc_TrfHare (ItemPR_PotionTrf)
 {
 	value 					=	100;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfHare;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W zaj¹ca";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfHare()
-{
-	TrfStoneID = ID_HARE;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfHarpy (ItemPR_Potion)
+instance ItSc_TrfHarpy (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfHarpy;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W harpiê";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfHarpy()
-{
-	TrfStoneID = ID_HARPY;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfKeiler (ItemPR_Potion)
+instance ItSc_TrfKeiler (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfKeiler;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W dzika";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfKeiler()
-{
-	TrfStoneID = ID_KEILER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfLurker (ItemPR_Potion)
+instance ItSc_TrfLurker (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfLurker;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W topielca";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfLurker()
-{
-	TrfStoneID = ID_LURKER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfMinecrawler (ItemPR_Potion)
+instance ItSc_TrfMinecrawler (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfMinecrawler;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W pe³zacza";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfMinecrawler()
-{
-	TrfStoneID = ID_MINECRAWLER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfMolerat (ItemPR_Potion)
+instance ItSc_TrfMolerat (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfMolerat;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W kretoszczura";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfMolerat()
-{
-	TrfStoneID = ID_MOLERAT;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfScavenger (ItemPR_Potion)
+instance ItSc_TrfScavenger (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfScavenger;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W œcierwojada";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfScavenger()
-{
-	TrfStoneID = ID_SCAVENGER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfShadowbeast (ItemPR_Potion)
+instance ItSc_TrfShadowbeast (ItemPR_PotionTrf)
 {
 	value 					=	300;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfShadowbeast;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W cieniostwora";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfShadowbeast()
-{
-	TrfStoneID = ID_SHADOWBEAST;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfSheep (ItemPR_Potion)
+instance ItSc_TrfSheep (ItemPR_PotionTrf)
 {
 	value 					=	100;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfSheep;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W owcê";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfSheep()
-{
-	TrfStoneID = ID_SHEEP;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfSnapper (ItemPR_Potion)
+instance ItSc_TrfSnapper (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfSnapper;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W zêbacza";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfSnapper()
-{
-	TrfStoneID = ID_SNAPPER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfSpint (ItemPR_Potion)
+instance ItSc_TrfSpint (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfSpint;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W spinta";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfSpint()
-{
-	TrfStoneID = ID_SPINT;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfSwampshark (ItemPR_Potion)
+instance ItSc_TrfSwampshark (ItemPR_PotionTrf)
 {
 	value 					=	250;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfSwampshark;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W b³otnego wê¿¹";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfSwampshark()
-{
-	TrfStoneID = ID_SWAMPSHARK;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfTiger (ItemPR_Potion)
+instance ItSc_TrfTiger (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfTiger;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W tygrysa";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfTiger()
-{
-	TrfStoneID = ID_TIGER;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfTroll (ItemPR_Potion)
+instance ItSc_TrfTroll (ItemPR_PotionTrf)
 {
 	value 					=	400;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfTroll;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W trolla";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfTroll()
-{
-	TrfStoneID = ID_TROLL;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfWaran (ItemPR_Potion)
+instance ItSc_TrfWaran (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfWaran;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W jaszczura";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfWaran()
-{
-	TrfStoneID = ID_WARAN;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfWarg (ItemPR_Potion)
+instance ItSc_TrfWarg (ItemPR_PotionTrf)
 {
 	value 					=	200;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfWarg;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W warga";
 	COUNT[5]				= 	value;
 };
-func void Use_ItPo_TrfWarg()
-{
-	TrfStoneID = ID_WARG;
-	AI_ReadySpell (self, SPL_Transform, 0);
-};
-///******************************************************************************************
-instance ItSc_TrfWolf (ItemPR_Potion)
+instance ItSc_TrfWolf (ItemPR_PotionTrf)
 {
 	value 					=	150;
-	visual 					=	"ITPO_TRANSFORM.3ds";
-	on_state[0]				=	Use_ItPo_TrfWolf;
-	
-	description				= 	"Mikstura przemiany";
 	TEXT[1]					=	"W wilka";
 	COUNT[5]				= 	value;
-};
-func void Use_ItPo_TrfWolf()
-{
-	TrfStoneID = ID_WOLF;
-	AI_ReadySpell (self, SPL_Transform, 0);
 };
 ///******************************************************************************************
 ///	Other
@@ -1058,15 +816,23 @@ instance ItPo_Digestion (ItemPR_Potion)
 	on_state[0]				=	Use_ItPo_Digestion;
 	
 	description				= 	"Mikstura trawienia";
-	TEXT[1]					=	NAME_Duration;
-	COUNT[1]				=	300;
+	TEXT[1]					=	"¯ywnoœæ daje 2x wiêcej nasycenia";
+	TEXT[2]					=	"a efekt regeneracji ¿ycia";
+	TEXT[3]					=	"jest natychmiastowy.";
+	TEXT[4]					=	NAME_Duration;
+	COUNT[4]				=	600;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Digestion()
 {
 	if (Npc_IsPlayer(self))
 	{
-		digestionTime = 300;
+		digestionTime = 600;
+		if (foodTime > 0)
+		{
+			Npc_ChangeAttribute (self, ATR_HITPOINTS, foodTime*2);
+			foodTime = 0;
+		};
 	};
 };
 ///******************************************************************************************
@@ -1077,6 +843,10 @@ instance ItPo_Geist (ItemPR_Potion)
 	on_state[0]				=	Use_ItPo_Geist;
 	
 	description				= 	"Mikstura jasnoœci umys³u";
+	TEXT[1]					=	"Czas wydaje siê dwukrotnie";
+	TEXT[2]					=	"spowolniony podczas dzia³ania.";
+	TEXT[4]					=	NAME_Duration;
+	COUNT[4]				=	30;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Geist()
@@ -1098,14 +868,14 @@ instance ItPo_HealObsession (ItemPR_Potion)
 };
 func void Use_HealObsession()
 {
-	B_ClearSCObsession(self);
+	B_ClearScObsession(self);
 	Wld_PlayEffect ("spellFX_LIGHTSTAR_VIOLET", self, self, 0, 0, 0, false);
-	Snd_Play ("SFX_HealObsession");
+	Snd_Play("SFX_HealObsession");
 };
 ///******************************************************************************************
 instance ItPo_NightVision (ItemPR_Potion)
 {
-	value 					=	50;
+	value 					=	100;
 	visual 					=	"ItPo_Geist.3ds";
 	on_state[0]				=	Use_ItPo_NightVision;
 	
@@ -1133,33 +903,6 @@ instance ItPo_Poison (ItemPR_Potion)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-instance ItPo_Speed (ItemPR_Potion)
-{
-	value 					=	100;
-	visual 					=	"ItPo_Speed.3ds";
-	on_state[0]				=	Use_ItPo_Speed;
-	
-	description				= 	"Mikstura energii";
-	TEXT[1]					= 	NAME_Bonus_Energy;
-	COUNT[1]				=	300;
-	TEXT[2]					= 	NAME_Percent_Energy;
-	COUNT[2]				=	150;
-	TEXT[3]					=	NAME_Duration;
-	COUNT[3]				=	30;
-	COUNT[5]				= 	value;
-};
-func void Use_ItPo_Speed()
-{
-	if (Npc_IsPlayer(self))
-	{
-		PotionRG_ADD (ATR_ENERGY_MAX, 10, 50, 30);
-	}
-	else
-	{
-		Mdl_ApplyOverlayMDSTimed (self, "HUMANS_FASTRUN.MDS", 30 * 1000);
-	};
-};
-///******************************************************************************************
 ///	Special potions
 ///******************************************************************************************
 instance ItPo_AntiPoison (ItemPR_Potion)
@@ -1175,11 +918,11 @@ func void Use_ItPo_AntiPoison()
 {
 	if (Npc_IsPlayer(self))
 	{
-		poisonResistance = true;
+		MOD_SetPoison(-1);
 	};
 };
 ///******************************************************************************************
-var int Neoras_SCUsedDragonEggDrink;
+var int Neoras_ScUsedDragonEggDrink;
 
 instance ItPo_DragonEggDrink (ItemPR_Potion)
 {
@@ -1198,12 +941,10 @@ func void Use_ItPo_DragonEggDrink()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (hpRegenPower < 10)
-		{
-			hpRegenPower += 1;
-		};
 		Snd_Play("DEM_Warn");
-		Neoras_SCUsedDragonEggDrink = true;
+		Npc_ChangeAttribute (self, ATR_HITPOINTS_MAX, -10);
+		hpRegenPower += 5;
+		Neoras_ScUsedDragonEggDrink = true;
 	};
 };
 ///******************************************************************************************
@@ -1224,17 +965,15 @@ func void Use_ItPo_MegaDrink()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (hpRegenPower < 10)
-		{
-			hpRegenPower = 10;
-		};
+		Wld_PlayEffect ("spellFX_LIGHTSTAR_RED", self, self, 0, 0, 0, false);
 		Snd_Play("DEM_Warn");
+		hpRegenPower += 10;
 	};
 };
 ///******************************************************************************************
 instance ItPo_InnosTears (ItemPR_Potion)
 {
-	value 					=	50;
+//	value 					=	50;
 	visual 					=	"ItPo_Innos.3ds";
 	on_state[0]				=	Use_ItPo_InnosTears;
 	
@@ -1251,11 +990,7 @@ func void Use_ItPo_InnosTears()
 	{
  		Wld_PlayEffect ("spellFX_LIGHTSTAR_BLUE", self, self, 0, 0, 0, false);
 		Snd_Play ("SFX_HealObsession");
-		B_RaiseAttribute (self, ATR_MANA_MAX, 10);
-		
-		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];		 
-		self.attribute[ATR_MANA] = self.attribute[ATR_MANA_MAX];
-		PrintScreen (PRINT_FullyHealed, -1, 55, FONT_Screen, 2);
+		mpRegenPower += 5;
 	}
 	else
 	{

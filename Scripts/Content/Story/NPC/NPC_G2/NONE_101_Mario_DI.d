@@ -11,12 +11,12 @@ instance None_101_Mario_DI (Npc_Default)
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser] 				=	MAGIC_NEVER;
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_EnemyOverride] 			=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 60);
-	B_SetFightSkills (self, FightTalent_Master+5);
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetFightSkills (self, FightTalent_Master+5);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;
@@ -29,7 +29,7 @@ instance None_101_Mario_DI (Npc_Default)
 	CreateInvItem (self, ITWR_DementorObsessionBook_MIS);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_Normal04, 0, ITAR_MIL_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_FatBald", Face_Normal04, 0, ITAR_MIL_H);
 	Mdl_SetModelFatness	(self, 1.2);
 	Mdl_ApplyOverlayMds	(self, "Humans_MILITIA.mds");
 

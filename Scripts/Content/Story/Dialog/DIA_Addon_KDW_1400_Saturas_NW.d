@@ -481,10 +481,10 @@ func void DIA_Addon_Saturas_ScRanger_Info ()
 		
 	if 	(
 		((SCIsWearingRangerRing == TRUE) && (RangerRingIsLaresRing == FALSE))	//-> Der SC IST Ranger! SC trägt eigenen (nicht Lares') Ring
-		|| (Hlp_IsItem(itm, ITAR_WaterRanger) == TRUE)							//-> Der SC IST Ranger! Nur als Ranger hat er diese Rüstung bekommen.
+		|| (Hlp_IsItem(itm, ITAR_Ranger_L) || Hlp_IsItem(itm, ITAR_Ranger_H))							//-> Der SC IST Ranger! Nur als Ranger hat er diese Rüstung bekommen.
 		)
 		{
-			if (Hlp_IsItem(itm, ITAR_WaterRanger) == TRUE)
+			if (Hlp_IsItem(itm, ITAR_Ranger_L) || Hlp_IsItem(itm, ITAR_Ranger_H))
 			{
 				AI_Output	(self, other, "DIA_Addon_Saturas_ScRanger_14_01"); //Widzê, ¿e nosisz zbrojê naszego bractwa.
 			}
@@ -564,7 +564,7 @@ func void DIA_Addon_Saturas_OpenPortal_Info ()
 			else
 			{*/
 				AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_07"); //Bardzo interesuj¹ce.
-				B_GivePlayerXP(100);
+				B_GivePlayerExp(100);
 			//};		
 			
 			AI_Output	(self, other, "DIA_Addon_Saturas_OpenPortal_14_08"); //WeŸ ten pierœcieñ. Spotkamy siê przy portalu. Bêdê tam na ciebie czekaæ.

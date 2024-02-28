@@ -22,7 +22,7 @@ func void B_GiveTradeInv_Isgaroth (var C_NPC slf)
 		CreateInvItems   (slf, ItSc_LightHeal, 5);
 		//CreateInvItems   (slf, ItSc_SumGobSkel, 2);
 		
-		CreateInvItems   (slf, ItRi_Energy_01, 1);
+		CreateInvItems   (slf, ItRi_SP_01, 1);
 		
 		Isgaroth_ItemsGiven_Chapter = 1;
 	};
@@ -65,8 +65,8 @@ func void B_GiveTradeInv_Isgaroth (var C_NPC slf)
 		
 		//CreateInvItems   (slf, ItSc_MediumHeal,	5);
 		
-		CreateInvItems   (slf, ItSc_PyrFirestorm, 5);
-		CreateInvItems   (slf, ItSc_NecSkeleton, 3);
+		CreateInvItems   (slf, ItSc_PyrBurning, 5);
+		CreateInvItems   (slf, ItSc_NecCurse, 3);
 		CreateInvItems   (slf, ItSc_Fear, 2);
 		CreateInvItems   (slf, ItSc_EleFreeze, 3);
 		CreateInvItems   (slf, ItSc_ChargeZap, 5);
@@ -102,7 +102,7 @@ func void B_GiveTradeInv_Isgaroth (var C_NPC slf)
 		CreateInvItems   (slf, ItSc_LightningFlash, 4);
 		CreateInvItems   (slf, ItSc_ChargeFireball, 2);
 		
-		CreateInvItems   (slf, ItAm_Mana_01, 1);
+		CreateInvItems   (slf, ItAm_Paladin_01, 1);
 		
 		Isgaroth_ItemsGiven_Chapter = 4;
 	};
@@ -128,7 +128,7 @@ func void B_GiveTradeInv_Isgaroth (var C_NPC slf)
 		CreateInvItems   (slf, ItSc_IceWave, 4);
 		CreateInvItems   (slf, ItSc_NecDemon, 2);
 		//CreateInvItems   (slf, ItSc_FullHeal, 3);
-		CreateInvItems   (slf, ItSc_PyrKinesis, 3);
+		CreateInvItems   (slf, ItSc_PyrFirebomb, 3);
 		
 		CreateInvItems   (slf, ItSc_TrfLurker, 1);
 		CreateInvItems   (slf, ItSc_TrfDragonSnapper, 1);

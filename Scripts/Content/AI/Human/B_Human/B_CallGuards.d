@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_CallGuards
+/// B_CallGuards
 ///******************************************************************************************
-func int C_WantToCallGuards (var C_NPC slf)
+func int C_WantToCallGuards (var C_Npc slf)
 {
 	if (!self.aivar[AIV_PARTYMEMBER])
 	{

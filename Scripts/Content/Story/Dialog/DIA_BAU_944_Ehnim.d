@@ -246,7 +246,7 @@ func void DIA_Ehnim_STREIT5_Attack()
 	other.aivar[AIV_INVINCIBLE] = FALSE;
 	B_Attack (self, Egill, AR_NONE, 0);
 	
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 func void DIA_Ehnim_STREIT5_gehen ()

@@ -180,7 +180,7 @@ FUNC VOID DIA_Addon_Finn_Mine_Info()
 	Knows_Truemmerschlag = TRUE;
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };
@@ -277,7 +277,7 @@ FUNC VOID DIA_Addon_Finn_ein_Info()
 		if (Finn_Gratulation == FALSE)
 		{
 			AI_Output (self, other, "DIA_Addon_Finn_ein_07_10");//Teraz jesteœ tak dobry, jak ja. Gratulujê, partnerze!
-			B_GivePlayerXP(200);
+			B_GivePlayerExp(200);
 			Snd_Play("LevelUP");
 			Finn_Gratulation = TRUE;
 		};

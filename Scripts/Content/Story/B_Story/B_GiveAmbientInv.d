@@ -45,7 +45,7 @@ func void B_CreateAmbientInv (var C_Npc slf)
 		{
 			if		(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItKe_Lockpick);			}
 			else if (Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_GoldNugget_Addon);	}
-			else if (Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Chest);			};
+			else if (Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItSe_GoldPocket25);		};
 		}
 		else if (slf.guild == GIL_PIR)
 		{

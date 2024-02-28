@@ -13,10 +13,10 @@ instance WzA_17071_Snikers (C_Npc)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
+	NpcFn_SetAttributesToLevel (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_WOLF;

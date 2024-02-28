@@ -3,22 +3,16 @@ prototype Mst_Default_Spint (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Spint";
-	guild								=	GIL_NEUTRAL;
+//	guild								=	GIL_NEUTRAL;
+	guild								=	GIL_MEATBUG;
 	aivar[AIV_MM_REAL_ID]				= 	ID_SPINT;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_SCAVENGER;
 	
-	B_SetAttributesToLevel (self, 2);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL / 2;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL / 2;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL / 2;
+	NpcFn_SetAttributesToLevel (self, 2);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

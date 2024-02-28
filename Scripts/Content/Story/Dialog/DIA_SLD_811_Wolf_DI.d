@@ -59,7 +59,7 @@ func void DIA_Wolf_DI_HALLO_Info ()
 			if (DIA_Wolf_DI_HALLO_OneTime == FALSE)
 				{
 					AI_Output			(self, other, "DIA_Wolf_DI_HALLO_08_04"); //KuŸnia nie jest w najlepszym stanie, ale zrobiê co w mojej mocy.
-					B_GivePlayerXP(300);
+					B_GivePlayerExp(300);
 					DIA_Wolf_DI_HALLO_OneTime = TRUE;
 					AI_StopProcessInfos (self);
 					Npc_ExchangeRoutine	(self,"SmithDI");
@@ -97,8 +97,7 @@ FUNC VOID DIA_Wolf_DI_Training_Info()
 {	
 	AI_Output (other,self ,"DIA_Wolf_DI_Training_15_00"); //Naucz mnie czegoœ o walce na dystans.
 	AI_Output (self ,other,"DIA_Wolf_DI_Training_08_01"); //A czego konkretnie?
-	self.aivar[AIV_CanTeach] = true;
-	
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////

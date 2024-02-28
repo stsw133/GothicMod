@@ -3,6 +3,7 @@
 ///******************************************************************************************
 
 const int SPL_Cost_Summon				=	0;	//50
+var C_Npc NPC_Summoned;
 
 ///******************************************************************************************
 instance Spell_Summon (C_Spell_Proto)
@@ -14,25 +15,30 @@ instance Spell_Summon (C_Spell_Proto)
 
 func int Spell_Logic_Summon (var int manaInvested)
 {
-	if (SumStoneID > 0)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return SPL_SENDCAST;
 };
 
 func void Spell_Cast_Summon()
 {
-	if		(SumStoneID == ID_DEMON)			{	Wld_SpawnNpcRange(self, Summoned_Demon, 1, 500);			}
-	else if	(SumStoneID == ID_GOBBO_SKELETON)	{	Wld_SpawnNpcRange(self, Summoned_Gobbo_Skeleton, 1, 500);	}
-	else if	(SumStoneID == ID_GOLEM)			{	Wld_SpawnNpcRange(self, Summoned_Golem, 1, 500);			}
-	else if (SumStoneID == ID_SKELETON)			{	Wld_SpawnNpcRange(self, Summoned_Skeleton, 1, 500);			}
-	else if (SumStoneID == ID_STONEGUARDIAN)	{	Wld_SpawnNpcRange(self, Summoned_StoneGuardian, 1, 500);	}
-	else if (SumStoneID == ID_WOLF_SKELETON)	{	Wld_SpawnNpcRange(self, Summoned_Wolf_Skeleton, 1, 500);	}
-	else if (SumStoneID == ID_ZOMBIE)			{	Wld_SpawnNpcRange(self, Summoned_Zombie, 1, 500);			}
-	else										{	Wld_SpawnNpcRange(self, Meatbug, 1, 500);					};
-	SumStoneID = 0;
+	var oCNpc o_self; o_self = Hlp_GetNpc(self);
+	var int magBook; magBook = o_self.mag_Book;
+	
+	if (magBook > 0)
+	{
+		var int itHlp; itHlp = QS_GetSpellItem(magBook);
+		var C_Item it; it = MEM_PtrToInst(itHlp);
+		
+		if		(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Demon))			{	Wld_SpawnNpcRange(self, Demon, 1, 500);				NPC_Summoned = Hlp_GetNpc(Demon);			}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Gobbo_Skeleton))	{	Wld_SpawnNpcRange(self, Gobbo_Skeleton, 1, 500);	NPC_Summoned = Hlp_GetNpc(Gobbo_Skeleton);	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Golem))			{	Wld_SpawnNpcRange(self, Golem, 1, 500);				NPC_Summoned = Hlp_GetNpc(Golem);			}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Skeleton))			{	Wld_SpawnNpcRange(self, Skeleton, 1, 500);			NPC_Summoned = Hlp_GetNpc(Skeleton);		}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_StoneGuardian))	{	Wld_SpawnNpcRange(self, StoneGuardian, 1, 500);		NPC_Summoned = Hlp_GetNpc(StoneGuardian);	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Wolf_Skeleton))	{	Wld_SpawnNpcRange(self, Wolf_Skeleton, 1, 500);		NPC_Summoned = Hlp_GetNpc(Wolf_Skeleton);	}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Zombie))			{	Wld_SpawnNpcRange(self, Zombie, 1, 500);			NPC_Summoned = Hlp_GetNpc(Zombie);			}
+		else																		{	Wld_SpawnNpcRange(self, Meatbug, 1, 500);			NPC_Summoned = Hlp_GetNpc(Meatbug);			};
+		
+		NpcFn_SetMonsterAsSummoned(NPC_Summoned);
+	};
 	
 	self.aivar[AIV_SelectSpell] += 1;
 };

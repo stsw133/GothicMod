@@ -14,11 +14,17 @@ instance WzA_17192_Losowiec (Npc_Default)
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
+	
+	/// ------ Visuals ------
+	aivar[AIV_FaceTex] = Hlp_RandomRange(1,5);
+	
+	NpcFn_SetVisual		(self, ORCMALE, BodyTex_Default, BodySkin_N, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], Teeth_Normal, -1);
+	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;
@@ -28,12 +34,6 @@ instance WzA_17192_Losowiec (Npc_Default)
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-	
-	/// ------ Visuals ------
-	aivar[AIV_FaceTex] = Hlp_RandomRange(1,1);
-	
-	B_SetNpcVisual		(self, RACE_ORC, MALE, BodyTex_Default, BodySkin_N, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], Teeth_Normal, -1);
-	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_Start_50;

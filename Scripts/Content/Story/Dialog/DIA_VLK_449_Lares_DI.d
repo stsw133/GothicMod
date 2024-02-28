@@ -83,7 +83,7 @@ FUNC VOID DIA_Lares_DI_Training_Info()
 {	
 	AI_Output (other,self ,"DIA_Lares_DI_Training_15_00"); //Naucz mnie tego, co potrafisz.
 	AI_Output (self ,other,"DIA_Lares_DI_Training_09_01"); //¯aden problem.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 // ************************************************************

@@ -12,7 +12,7 @@ func void B_GiveTradeInv_Karras (var C_NPC slf)
 		
 		//CreateInvItems   (slf, ItSc_SumGobSkel, 1);
 		
-		CreateInvItems   (slf, ItRi_ProtTotal_01, 1);
+		CreateInvItems   (slf, ItRi_AD_01, 1);
 		
 		Karras_ItemsGiven_Chapter = 1;
 	};
@@ -51,7 +51,7 @@ func void B_GiveTradeInv_Karras (var C_NPC slf)
 		
 		//CreateInvItems   (slf, ItSc_SumGobSkel, 1);
 		//CreateInvItems   (slf, ItSc_SumWolf, 1);
-		CreateInvItems   (slf, ItSc_NecSkeleton, 1);
+		CreateInvItems   (slf, ItSc_NecCurse, 1);
 		
 		Karras_ItemsGiven_Chapter = 3;
 	};
@@ -74,7 +74,7 @@ func void B_GiveTradeInv_Karras (var C_NPC slf)
 		
 		//CreateInvItems   (slf, ItSc_SumGobSkel, 1);
 		//CreateInvItems   (slf, ItSc_SumWolf, 1);
-		CreateInvItems   (slf, ItSc_NecSkeleton, 1);
+		CreateInvItems   (slf, ItSc_NecCurse, 1);
 		CreateInvItems   (slf, ItSc_GeoGolem, 1);
 		
 		Karras_ItemsGiven_Chapter = 4;
@@ -101,7 +101,7 @@ func void B_GiveTradeInv_Karras (var C_NPC slf)
 		
 		//CreateInvItems   (slf, ItSc_SumGobSkel, 1);
 		//CreateInvItems   (slf, ItSc_SumWolf, 1);
-		CreateInvItems   (slf, ItSc_NecSkeleton, 1);
+		CreateInvItems   (slf, ItSc_NecCurse, 1);
 		CreateInvItems   (slf, ItSc_GeoGolem, 1);
 		CreateInvItems   (slf, ItSc_NecDemon, 1);
 		CreateInvItems   (slf, ItSc_ArmyOfDarkness, 1);

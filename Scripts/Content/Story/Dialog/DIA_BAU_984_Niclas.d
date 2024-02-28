@@ -164,7 +164,7 @@ FUNC VOID DIA_Niclas_CanTeachMe_Info()
 	AI_Output (other,self ,"DIA_Niclas_CanTeachMe_15_00"); //Mo¿e móg³byœ mnie czegoœ nauczyæ.
 	AI_Output (self ,other,"DIA_Niclas_CanTeachMe_03_01"); //W³aœciwie, czemu nie. Mogê ci pokazaæ, jak siê pos³ugiwaæ ³ukiem.
 	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	Log_CreateTopic	(TOPIC_Teacher, LOG_NOTE);
 	B_LogEntry		(TOPIC_Teacher, "Niclas mo¿e mi pokazaæ, jak skuteczniej pos³ugiwaæ siê ³ukiem.");

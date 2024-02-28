@@ -28,7 +28,7 @@ func void B_StopMagicBurnShort()
 func void B_RestartBurnShort()
 {
 	if (Npc_GetLastHitSpellID(self) == SPL_ChargeFireball)
-	|| (Npc_GetLastHitSpellID(self) == SPL_PyrFirestorm)
+	|| (Npc_GetLastHitSpellID(self) == SPL_PyrBurning)
 	{
 		Npc_SetStateTime (self, 0);
 		return;

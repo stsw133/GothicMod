@@ -12,15 +12,14 @@ prototype ItemPR_Bow (C_Item)
 	damagetype				=	DAM_POINT;
 	munition				=	ITRW_ARROW;
 	
-	cond_atr[1]   			= 	ATR_DEXTERITY;
-	cond_atr[2]   			= 	ATR_STRENGTH;
+	cond_atr[0]   			= 	ATR_DEXTERITY;
+	cond_atr[1]   			= 	ATR_STRENGTH;
 	
 	on_equip				=	Equip_Bow_CHECK;
 	on_unequip				=	UnEquip_Bow_CHECK;
 	
-	TEXT[1]					=	NAME_Damage;
+	TEXT[1]					=	NAME_Dam_Point;
 	TEXT[2] 				=	NAME_Dex_needed;
-	TEXT[3] 				=	NAME_Str_needed;
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
@@ -47,13 +46,12 @@ func void UnEquip_Bow_CHECK()
 func void SetItRwAttributes_Bow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*50;
-	itm.damageTotal			=	kap*5;
-	itm.cond_value[1]  		= 	kap*5;
-	itm.cond_value[2]  		= 	kap*1;
+	itm.damageTotal			=	kap*3;
+	itm.cond_value[0]  		= 	kap*5;
+	itm.cond_value[1]  		= 	kap*1;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[1];
-	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[2]			=	itm.cond_value[0];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
@@ -74,6 +72,7 @@ instance ItRw_Sld_Bow (ItemPR_Bow)
 	visual 					=	"ItRw_Sld_Bow.mms";
 	description				=	name;
 	SetItRwAttributes_Bow (self, 6);
+	
 	value					/=	10;
 	COUNT[5]				=	value;
 };
@@ -153,15 +152,14 @@ prototype ItemPR_Crossbow (C_Item)
 	damagetype				=	DAM_POINT;
 	munition				=	ITRW_BOLT;
 	
-	cond_atr[1]   			= 	ATR_STRENGTH;
-	cond_atr[2]   			= 	ATR_DEXTERITY;
+	cond_atr[0]   			= 	ATR_STRENGTH;
+	cond_atr[1]   			= 	ATR_DEXTERITY;
 	
 	on_equip				=	Equip_Crossbow_CHECK;
 	on_unequip				=	UnEquip_Crossbow_CHECK;
 	
-	TEXT[1]					=	NAME_Damage;
+	TEXT[1]					=	NAME_Dam_Point;
 	TEXT[2] 				=	NAME_Str_needed;
-	TEXT[3] 				=	NAME_Dex_needed;
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
@@ -188,13 +186,12 @@ func void UnEquip_Crossbow_CHECK()
 func void SetItRwAttributes_Crossbow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*100;
-	itm.damageTotal			=	kap*6;
-	itm.cond_value[1]  		= 	kap*5;
-	itm.cond_value[2]  		= 	kap*2;
+	itm.damageTotal			=	kap*4;
+	itm.cond_value[0]  		= 	kap*5;
+	itm.cond_value[1]  		= 	kap*2;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[1];
-	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[2]			=	itm.cond_value[0];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
@@ -256,15 +253,14 @@ prototype ItemPR_Gun (C_Item)
 	damagetype				=	DAM_POINT;
 	munition				=	ITRW_AMMO;
 	
-	cond_atr[1]   			= 	ATR_DEXTERITY;
-	cond_atr[2]   			= 	ATR_STRENGTH;
+	cond_atr[0]   			= 	ATR_DEXTERITY;
+	cond_atr[1]   			= 	ATR_STRENGTH;
 	
 	on_equip				=	Equip_Gun_CHECK;
 	on_unequip				=	UnEquip_Gun_CHECK;
 	
-	TEXT[1]					=	NAME_Damage;
+	TEXT[1]					=	NAME_Dam_Point;
 	TEXT[2] 				=	NAME_Dex_needed;
-	TEXT[3] 				=	NAME_Str_needed;
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
@@ -291,14 +287,13 @@ func void UnEquip_Gun_CHECK()
 func void SetItRwAttributes_Gun (var C_Item itm, var int kap, var int fast)
 {
 	itm.value				=	kap*500;
-	if (fast)				{	itm.damageTotal = kap*30; itm.TEXT[4] = NAME_FastGun;	}
-	else					{	itm.damageTotal = kap*50;								};
-	itm.cond_value[1]  		= 	kap*20;
-	itm.cond_value[2]  		= 	kap*10;
+	if (fast)				{	itm.damageTotal = kap*15; itm.TEXT[4] = NAME_FastGun;	}
+	else					{	itm.damageTotal = kap*30;								};
+	itm.cond_value[0]  		= 	kap*10;
+	itm.cond_value[1]  		= 	kap*10;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[1];
-	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[2]			=	itm.cond_value[0];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
@@ -377,15 +372,14 @@ prototype ItemPR_HeavyGun (C_Item)
 	damagetype				=	DAM_POINT;
 	munition				=	ITRW_HAMMO;
 	
-	cond_atr[1]   			= 	ATR_STRENGTH;
-	cond_atr[2]   			= 	ATR_DEXTERITY;
+	cond_atr[0]   			= 	ATR_STRENGTH;
+	cond_atr[1]   			= 	ATR_DEXTERITY;
 	
 	on_equip				=	Equip_HeavyGun_CHECK;
 	on_unequip				=	UnEquip_HeavyGun_CHECK;
 	
-	TEXT[1]					=	NAME_Damage;
+	TEXT[1]					=	NAME_Dam_Point;
 	TEXT[2] 				=	NAME_Str_needed;
-	TEXT[3] 				=	NAME_Dex_needed;
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
@@ -412,13 +406,12 @@ func void UnEquip_HeavyGun_CHECK()
 func void SetItRwAttributes_HeavyGun (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*1000;
-	itm.damageTotal			=	kap*75;
-	itm.cond_value[1]  		= 	kap*30;
-	itm.cond_value[2]  		= 	kap*10;
+	itm.damageTotal			=	kap*50;
+	itm.cond_value[0]  		= 	kap*20;
+	itm.cond_value[1]  		= 	kap*10;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[1];
-	itm.COUNT[3]			=	itm.cond_value[2];
+	itm.COUNT[2]			=	itm.cond_value[0];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************

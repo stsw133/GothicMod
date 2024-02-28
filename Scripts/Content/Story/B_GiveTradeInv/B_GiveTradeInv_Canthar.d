@@ -21,7 +21,7 @@ func void B_GiveTradeInv_Canthar (var C_NPC slf)
 		CreateInvItems (slf, ItMw_Piratensaebel, 1);
 		CreateInvItems (slf, ItMw_Schwert2, 2);
 		
-		CreateInvItems (slf, ItAm_ProtMagic_01, 1);
+		CreateInvItems (slf, ItAm_Mage_01, 1);
 		
 		Canthar_ItemsGiven_Chapter = 1;
 	};

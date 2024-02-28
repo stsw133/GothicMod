@@ -10,15 +10,8 @@ prototype Mst_Default_DemonLord (C_Npc)
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_DEMON;
 	
-	B_SetAttributesToLevel (self, 60);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20 + 10*MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -50,9 +43,5 @@ instance DemonLord (Mst_Default_DemonLord)
 ///******************************************************************************************
 instance Xardas_DT_DemonLord (Mst_Default_DemonLord)
 {
-	name								=	"Lord demonów";
-	aivar[AIV_MM_REAL_ID]				=	ID_DEMON_LORD;
-	
-	B_SetAttributesToLevel (self, 60);
 	B_SetVisuals_DemonLord();
 };

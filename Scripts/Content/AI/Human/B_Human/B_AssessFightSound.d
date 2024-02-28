@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessFightSound
+/// B_AssessFightSound
 ///******************************************************************************************
 func void B_AssessFightSound()
 {
@@ -7,6 +7,7 @@ func void B_AssessFightSound()
 	{
 		return;
 	};
+	
 	if (Npc_GetDistToNpc(self, victim) > PERC_DIST_INTERMEDIAT)
 	&& (Npc_GetDistToNpc(self, other) > PERC_DIST_INTERMEDIAT)
 	{
@@ -20,34 +21,39 @@ func void B_AssessFightSound()
 			return;
 		};
 	};
+	
 	if (!self.aivar[AIV_MM_FollowInWater])
-	&& ((C_BodyStateContains(other, BS_SWIM)) || (C_BodyStateContains(other, BS_DIVE))
-	|| (C_BodyStateContains(victim, BS_SWIM)) || (C_BodyStateContains(victim, BS_DIVE)))
+	&& (C_BodyStateContains(other, BS_SWIM) || C_BodyStateContains(other, BS_DIVE)
+	 || C_BodyStateContains(victim, BS_SWIM) || C_BodyStateContains(victim, BS_DIVE))
 	{
 		return;
 	};
+	
 	if (other.fight_tactic == FAI_NAILED)
 	|| (victim.fight_tactic == FAI_NAILED)
 	{
 		return;
 	};
+	
 	if (Npc_GetHeightToNpc(self, other) > PERC_DIST_HEIGHT)
 	&& (Npc_GetHeightToNpc(self, victim) > PERC_DIST_HEIGHT)
 	{
 		return;
 	};
+	
 	if (Npc_GetHeightToNpc(self, other) > 500)
 	&& (Npc_GetDistToWP(self, "NW_MONASTERY_PLACE_04") <= 3000)
 	{
 		return;
 	};
+	
 	if (Hlp_GetInstanceID(victim) == Hlp_GetInstanceID(self))
 	|| (Hlp_GetInstanceID(other) == Hlp_GetInstanceID(self))
 	{
 		return;
 	};
 	
-	if (victim.guild == GIL_SHEEP || victim.guild == GIL_LIVESTOCK)
+	if (victim.guild == GIL_LIVESTOCK)
 	&& (!victim.aivar[AIV_ToughGuy])
 	{
 		if (C_WantToAttackSheepKiller(self, other))
@@ -55,13 +61,10 @@ func void B_AssessFightSound()
 			B_Attack (self, other, AR_SheepKiller, 0);
 			return;
 		}
-		else
+		else if (C_NpcIsGateGuard(self))
 		{
-			if (C_NpcIsGateGuard(self))
-			{
-				B_MemorizePlayerCrime (self, other, CRIME_SHEEPKILLER);
-				return;
-			};
+			B_MemorizePlayerCrime (self, other, CRIME_SHEEPKILLER);
+			return;
 		};
 		return;
 	};
@@ -70,6 +73,7 @@ func void B_AssessFightSound()
 	{
 		return;
 	};
+	
 	if (other.guild > GIL_SEPERATOR_HUM)
 	&& (victim.guild > GIL_SEPERATOR_HUM)
 	{
@@ -115,40 +119,38 @@ func void B_AssessFightSound()
 	/// ---------------------------
 	if (C_PlayerIsFakeBandit(self,other) || C_PlayerIsFakeBandit(self, victim))
 	&& (other.guild == GIL_BDT || victim.guild == GIL_BDT)
+	&& (self.guild == GIL_BDT)
 	{
-		if (self.guild == GIL_BDT)
+		if ((self.aivar[AIV_Story] & STORY_Esteban) > 0)
+		&& ((other.aivar[AIV_Story] & STORY_Esteban) > 0)
 		{
-			if (self.aivar[AIV_STORYBANDIT_ESTEBAN])
-			&& (other.aivar[AIV_STORYBANDIT_ESTEBAN])
-			{
-				B_Attack (self, victim, AR_NONE, 0);
-				return;
-			};
-			
-			if (self.aivar[AIV_STORYBANDIT_ESTEBAN])
-			&& (victim.aivar[AIV_STORYBANDIT_ESTEBAN])
-			{
-				B_Attack (self, other, AR_NONE, 0);
-				return;
-			};
-			
-			if (other.aivar[AIV_ATTACKREASON] == AR_NONE)
-			&& (victim.aivar[AIV_ATTACKREASON] == AR_NONE)
-			{
-				Npc_ClearAIQueue	(self);
-				B_ClearPerceptions	(self);
-				AI_StartState 		(self, ZS_WatchFight, 0, "");
-				return;
-			};
-			
-			if (other.aivar[AIV_StoryBandit])
-			|| (victim.aivar[AIV_StoryBandit])
-			{
-				Npc_ClearAIQueue	(self);
-				B_ClearPerceptions	(self);
-				AI_StartState 		(self, ZS_WatchFight, 0, "");
-				return;
-			};
+			B_Attack (self, victim, AR_NONE, 0);
+			return;
+		};
+		
+		if ((self.aivar[AIV_Story] & STORY_Esteban) > 0)
+		&& ((victim.aivar[AIV_Story] & STORY_Esteban) > 0)
+		{
+			B_Attack (self, other, AR_NONE, 0);
+			return;
+		};
+		
+		if (other.aivar[AIV_ATTACKREASON] == AR_NONE)
+		&& (victim.aivar[AIV_ATTACKREASON] == AR_NONE)
+		{
+			Npc_ClearAIQueue	(self);
+			B_ClearPerceptions	(self);
+			AI_StartState 		(self, ZS_WatchFight, 0, "");
+			return;
+		};
+		
+		if ((other.aivar[AIV_Story] & STORY_Bandit) > 0)
+		|| ((victim.aivar[AIV_Story] & STORY_Bandit) > 0)
+		{
+			Npc_ClearAIQueue	(self);
+			B_ClearPerceptions	(self);
+			AI_StartState 		(self, ZS_WatchFight, 0, "");
+			return;
 		};
 	};
 	
@@ -156,10 +158,10 @@ func void B_AssessFightSound()
 	/// ------ Wachen kommen zum Töten (helfen other) ------------------
 	/// ----------------------------------------------------------------
 	if ((other.aivar[AIV_ATTACKREASON] == AR_GuardStopsIntruder)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_GuardCalledToKill))
+	 || (other.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
+	 || (other.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
+	 || (other.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
+	 || (other.aivar[AIV_ATTACKREASON] == AR_GuardCalledToKill))
 	&& (Npc_GetAttitude(self, other) == ATT_FRIENDLY)
 	{
 		B_Attack (self, victim, AR_GuardCalledToKill, 0);
@@ -167,10 +169,10 @@ func void B_AssessFightSound()
 	};
 	
 	if ((victim.aivar[AIV_ATTACKREASON] == AR_GuardStopsIntruder)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_GuardCalledToKill))
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_MonsterCloseToGate)
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman)
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_GuardCalledToKill))
 	&& (Npc_GetAttitude(self, victim) == ATT_FRIENDLY)
 	{
 		B_Attack (self, other, AR_GuardCalledToKill, 0);
@@ -181,8 +183,8 @@ func void B_AssessFightSound()
 	/// ------ Wachen kommen zum Streit schlichten (helfen other) ------
 	/// ----------------------------------------------------------------
 	if ((other.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon))
+	 || (other.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
+	 || (other.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon))
 	&& (Npc_GetAttitude(self, other) == ATT_FRIENDLY)
 	{
 		if (other.guild == GIL_SLD || other.guild == GIL_DJG || other.guild == GIL_NONE)
@@ -190,7 +192,7 @@ func void B_AssessFightSound()
 		{
 			
 		}
-		else if (!Npc_IsPlayer(other)) && (!Npc_IsPlayer(victim))
+		else if (!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
 		{
 			
 		}
@@ -202,8 +204,8 @@ func void B_AssessFightSound()
 	};
 	
 	if ((victim.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon))
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_ReactToDamage)
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon))
 	&& (Npc_GetAttitude(self, victim) == ATT_FRIENDLY)
 	{
 		if (other.guild == GIL_SLD || other.guild == GIL_DJG || other.guild == GIL_NONE)
@@ -211,7 +213,7 @@ func void B_AssessFightSound()
 		{
 			
 		}
-		else if (!Npc_IsPlayer(other)) && (!Npc_IsPlayer(victim))
+		else if (!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
 		{
 			
 		}
@@ -265,8 +267,8 @@ func void B_AssessFightSound()
 	/// ------ Wachen kommen, um Dieb zu bestrafen (helfen other) ------
 	/// ----------------------------------------------------------------
 	if ((other.aivar[AIV_ATTACKREASON] == AR_UseMob)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_Theft)
-	|| (other.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom))
+	 || (other.aivar[AIV_ATTACKREASON] == AR_Theft)
+	 || (other.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom))
 	&& (Npc_GetAttitude(self, other) == ATT_FRIENDLY)
 	{
 		if (C_WantToAttackThief(self, victim))
@@ -277,8 +279,8 @@ func void B_AssessFightSound()
 	};
 	
 	if ((victim.aivar[AIV_ATTACKREASON] == AR_UseMob)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_Theft)
-	|| (victim.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom))
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_Theft)
+	 || (victim.aivar[AIV_ATTACKREASON] == AR_LeftPortalRoom))
 	&& (Npc_GetAttitude(self, victim) == ATT_FRIENDLY)
 	{
 		if (C_WantToAttackThief(self, other))
@@ -310,12 +312,14 @@ func void B_AssessFightSound()
 	{
 		return;
 	};
+	
 	if ((Npc_GetAttitude(self, other) == ATT_HOSTILE)
-	|| (Npc_GetAttitude(self, victim) == ATT_HOSTILE))
+	 || (Npc_GetAttitude(self, victim) == ATT_HOSTILE))
 	&& (self.guild != GIL_BDT)
 	{
 		return;
 	};
+	
 	if (!Npc_CanSeeNpcFreeLOS(self, victim))
 	{
 		return;

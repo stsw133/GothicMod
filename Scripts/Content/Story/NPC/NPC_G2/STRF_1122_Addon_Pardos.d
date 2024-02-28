@@ -12,11 +12,11 @@ instance STRF_1122_Addon_Pardos (Npc_Default)
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor;
 	aivar[AIV_NoFightParker]			=	true;
 	aivar[AIV_ToughGuy] 				=	true;
-	aivar[AIV_ToughGuyNewsOverride]		=	true;
+	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 12);
-	B_SetFightSkills (self, FightTalent_Strong-10);
+	NpcFn_SetAttributesToLevel (self, 12);
+	NpcFn_SetFightSkills (self, FightTalent_Strong-10);
 	slf.attribute[ATR_HITPOINTS]		/=	2;
 
 	/// ------ FT ------
@@ -29,7 +29,7 @@ instance STRF_1122_Addon_Pardos (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, MALE, BodyTex_Dressed+1, BodySkin_N, "Hum_Head_Bald", Face_Normal57, 0, -1);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+1, BodySkin_N, "Hum_Head_Bald", Face_Normal57, 0, -1);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 

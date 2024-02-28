@@ -18,7 +18,7 @@ func void B_GiveTradeInv_Salandril (var C_NPC slf)
 		CreateInvItems (slf, ItSc_PyrFirerain, 1);
 		CreateInvItems (slf, ItSc_EleThunderstorm, 1);
 		
-		CreateInvItems (slf,ItAm_ProtFire_01, 1);
+		CreateInvItems (slf,ItAm_Barbarian_01, 1);
 		
 		Salandril_ItemsGiven_Chapter = 1;
 	};

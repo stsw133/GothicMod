@@ -119,7 +119,7 @@ FUNC VOID DIA_Neoras_Rezept_Info()
 		AI_Output (self ,other,"DIA_Neoras_Rezept_01_03"); //Przyjmij, proszê, tê miksturê w dowód mojej wdziêcznoœci.
 		
 		MIS_NeorasRezept = LOG_SUCCESS;
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 		B_GiveInvItems (self, other, ItPo_Mana_02,1);
 	}
 	else
@@ -156,7 +156,7 @@ FUNC VOID DIA_Neoras_Flieder_Info()
 		AI_Output (self ,other,"DIA_Neoras_Flieder_01_01"); //Doskonale, przydadz¹ mi siê w badaniach. W zamian weŸ ten zwój 'Piêœæ wichru', na pewno oka¿e siê pomocny.
 		
 		MIS_NeorasPflanzen = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 		B_GiveInvItems (self, other, ItSc_Windfist,1);
 	}
 	else
@@ -178,9 +178,9 @@ instance DIA_Neoras_TEACH		(C_INFO)
 };
 func int DIA_Neoras_TEACH_Condition ()
 {
-	if (self.aivar[AIV_CanTeach] == false)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
 func void DIA_Neoras_TEACH_Info ()
@@ -191,7 +191,7 @@ func void DIA_Neoras_TEACH_Info ()
 	|| (other.guild == GIL_PAL)
 	{
 		AI_Output (self, other, "DIA_Neoras_TEACH_01_01"); //Zdradzê ci arkana sztuk alchemicznych.
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else if (hero.guild == GIL_NOV)
 	{
@@ -577,7 +577,7 @@ func void DIA_Neoras_FOUNDDRAGONEGG_Info ()
 	AI_Output			(self, other, "DIA_Neoras_FOUNDDRAGONEGG_01_04"); //Jak uwa¿asz. Co za nie chcesz?
 	
 	MIS_Neoras_DragonEgg = LOG_SUCCESS;
-	B_GivePlayerXP(600);
+	B_GivePlayerExp(600);
 
 	Info_ClearChoices	(DIA_Neoras_FOUNDDRAGONEGG);
 	Info_AddChoice	(DIA_Neoras_FOUNDDRAGONEGG, "Zaskocz mnie.", DIA_Neoras_FOUNDDRAGONEGG_irgendwas );
@@ -614,8 +614,8 @@ func void DIA_Neoras_FOUNDDRAGONEGG_irgendwas ()
 	AI_Output			(self, other, "DIA_Neoras_FOUNDDRAGONEGG_irgendwas_01_01"); //Mmh. Gut. Dann nimm diesen magischen Ring. Er wird dir sicherlich helfen, deine Feinde zu bezwingen.
 	AI_Output			(self, other, "DIA_Neoras_FOUNDDRAGONEGG_irgendwas_01_02"); //Bêdzie ciê chroni³ przed atakami magicznych istot.
 
-	CreateInvItems 		(self, ItRi_ProtMagic_02, 1);									
-	B_GiveInvItems 		(self, other, ItRi_ProtMagic_02, 1);
+	CreateInvItems 		(self, ItRi_ProtMagical_01, 1);									
+	B_GiveInvItems 		(self, other, ItRi_ProtMagical_01, 1);
 						
 	Info_ClearChoices	(DIA_Neoras_FOUNDDRAGONEGG);
 };

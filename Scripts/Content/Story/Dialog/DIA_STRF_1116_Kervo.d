@@ -165,7 +165,7 @@ func void DIA_Kervo_LurkerPlatt_Info ()
 			B_GiveInvItems (self, other, ItMi_Nugget, 1);					
 		};	
 	};
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	MIS_Kervo_KillLurker = LOG_SUCCESS;
 };
 

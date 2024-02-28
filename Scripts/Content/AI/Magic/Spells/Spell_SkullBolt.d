@@ -2,15 +2,15 @@
 ///	SPL_SkullBolt
 ///******************************************************************************************
 
-const int SPL_Cost_SkullBolt			=	10;
-const int SPL_Damage_SkullBolt			=	10;
-const int SPL_Scaling_SkullBolt			=	125;
+const int SPL_Cost_SkullBolt			=	5;
+const int SPL_Damage_SkullBolt			=	5;
+const int SPL_Scaling_SkullBolt			=	90;
 
 ///******************************************************************************************
 instance Spell_SkullBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_SkullBolt;
+	damage_per_level					=	SPL_Damage_SkullBolt;
 	damageType							=	DAM_MAGIC;
 };
 

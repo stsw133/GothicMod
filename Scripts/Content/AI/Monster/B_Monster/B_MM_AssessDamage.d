@@ -1,32 +1,25 @@
 ///******************************************************************************************
-///	B_MM_AssessDamage
+/// B_MM_AssessDamage
 ///******************************************************************************************
 func void B_MM_AssessDamage()
 {
 	self.aivar[AIV_MM_PRIORITY] = PRIO_ATTACK;
 	
-	B_WeaponSpecialDamage (other, self);
+//	B_BeliarsWeaponSpecialDamage (other, self);
 	
-	/// MASTERIES & SPECIAL WEAPONS & SELF FIGHT TEACH
-	if (Npc_IsPlayer(other))
+	/// MOD: FinishPercent
+	if (Npc_IsPlayer(other) && mFinishPercent > 0 && (self.attribute[ATR_HITPOINTS]*100/self.attribute[ATR_HITPOINTS_MAX]) <= mFinishPercent)
 	{
-		if (!C_BodyStateContains(self, BS_PARADE))
-		{
-			SPECIALWEAPONDAMAGE_CHECK();
-		};
-		SelfFightTeach_ADD (other, other.weapon-2);
-	};
-	
-	if (Npc_IsPlayer(other) || Npc_IsPlayer(self))
-	{
-		foodTime /= 2;
+		B_MagicHurtNpc (other, self, self.attribute[ATR_HITPOINTS]);
+		Wld_PlayEffect ("VOB_BURN_CHILD1", self, self, 0, 0, 0, false);
 	};
 	
 	/// ...
 	if (Npc_HasItems(other, Holy_Hammer_MIS) > 0)
 	{
-		var C_Npc MagGol; MagGol = Hlp_GetNpc(OreGolem);
 		Npc_GetInvItem(other, Holy_Hammer_MIS);
+		
+		var C_Npc MagGol; MagGol = Hlp_GetNpc(OreGolem);
 		var C_Item OthWeap; OthWeap = Npc_GetReadiedWeapon(other);
 		
 		if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(MagGol))
@@ -59,6 +52,7 @@ func void B_MM_AssessDamage()
 		{
 			return;
 		};
+		
 		if (self.aivar[AIV_MM_REAL_ID] == ID_SKELETON)
 		&& (other.aivar[AIV_MM_REAL_ID] == ID_SKELETON_MAGE)
 		{

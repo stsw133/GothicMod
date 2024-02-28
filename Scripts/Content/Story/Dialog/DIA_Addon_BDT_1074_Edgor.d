@@ -197,7 +197,7 @@ FUNC VOID DIA_Addon_Edgor_Teach_Info()
 	
 	Log_CreateTopic (Topic_Addon_BDT_Teacher,LOG_NOTE);
 	B_LogEntry 	(Topic_Addon_BDT_Teacher,"Edgor wie du¿o na temat krwiopijców i ich oporz¹dzania.");	
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 FUNC VOID B_Edgor_NotEnoughGold()
 {

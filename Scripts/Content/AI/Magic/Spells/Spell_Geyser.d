@@ -2,16 +2,16 @@
 ///	SPL_Geyser
 ///******************************************************************************************
 
-const int SPL_Cost_Geyser				=	75;
+const int SPL_Cost_Geyser				=	75;	//75
 const int SPL_Damage_Geyser				=	75;	//150
-const int SPL_Scaling_Geyser			=	275;
+const int SPL_Scaling_Geyser			=	140 * 4/10;
 
 ///******************************************************************************************
 instance Spell_Geyser (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_Geyser;
-	damageType							=	DAM_MAGIC;
+	damage_per_level					=	SPL_Damage_Geyser;
+	damageType							=	DAM_BARRIER;
 };
 
 func int Spell_Logic_Geyser (var int manaInvested)

@@ -226,16 +226,6 @@ instance ItMe_Boat_03 (ItemPR_Mesh)
 	COUNT[0]				=	Hlp_GetInstanceID(self);
 };
 ///******************************************************************************************
-instance ItMe_Treasure (ItemPR_Mesh)
-{
-	name 					=	"ItMe_Treasure";
-	visual 					=	"TREASURE.3DS";
-	material 				=	MAT_STONE;
-
-	description				= 	name;
-	TEXT[2]					=	visual;
-	COUNT[0]				=	Hlp_GetInstanceID(self);
-};
 instance ItMe_GoldHeap (ItemPR_Mesh)
 {
 	name 					=	"ItMe_GoldHeap";
@@ -250,6 +240,16 @@ instance ItMe_OreHeap (ItemPR_Mesh)
 {
 	name 					=	"ItMe_OreHeap";
 	visual 					=	"OM_OREHEAP_SMALL_01.3DS";
+	material 				=	MAT_STONE;
+
+	description				= 	name;
+	TEXT[2]					=	visual;
+	COUNT[0]				=	Hlp_GetInstanceID(self);
+};
+instance ItMe_Treasure (ItemPR_Mesh)
+{
+	name 					=	"ItMe_Treasure";
+	visual 					=	"TREASURE2.3DS";
 	material 				=	MAT_STONE;
 
 	description				= 	name;

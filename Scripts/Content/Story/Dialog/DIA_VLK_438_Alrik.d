@@ -163,7 +163,7 @@ FUNC INT DIA_Alrik_NewFights3_Condition()
 FUNC VOID DIA_Alrik_NewFights3_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToLevel (self, 40);
+	NpcFn_SetAttributesToLevel (self, 40);
 	B_Alrik_Again();
 };
 
@@ -193,7 +193,7 @@ FUNC INT DIA_Alrik_NewFights5_Condition()
 FUNC VOID DIA_Alrik_NewFights5_Info()
 {
 	B_AddFightSkill (self, NPC_TALENT_1H, 20);
-	B_SetAttributesToLevel (self, 60);
+	NpcFn_SetAttributesToLevel (self, 60);
 	B_Alrik_Again();
 };
 
@@ -590,7 +590,7 @@ FUNC VOID DIA_Alrik_HaveSword_Info()
 		AI_Output (self ,other,"DIA_Alrik_HaveSword_09_01"); //Ach! To znacznie lepsze, ni¿ wymachiwanie starym kijem!
 		
 		MIS_Alrik_Sword = LOG_SUCCESS;
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	}
 	else
 	{	
@@ -659,9 +659,9 @@ FUNC INT DIA_Alrik_Ausbilden_Condition()
 {
 	if ((Npc_KnowsInfo(other, DIA_Alrik_DuWohnst))
 	|| (hero.guild != GIL_NONE))
-	&& (self.aivar[AIV_CanTeach] == false)
+	&& ((self.aivar[AIV_CanOffer] & OFFER_Teaching) == 0)
 	{
-		return TRUE;
+		return true;
 	};
 };
  
@@ -687,7 +687,7 @@ FUNC VOID DIA_Alrik_Ausbilden_Info()
 		};
 		
 		
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 		Log_CreateTopic (Topic_CityTeacher,LOG_NOTE);
 		B_LogEntry (Topic_CityTeacher,"Alrik, który krêci siê za magazynem w dzielnicy portowej, mo¿e mnie nauczyæ walki orê¿em jednorêcznym.");
 	};

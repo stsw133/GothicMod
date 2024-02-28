@@ -57,7 +57,7 @@ FUNC VOID DIA_Addon_Logan_Mine_Info()
 	
 	
 	Player_SentBuddler = (Player_SentBuddler +1);
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine (self,"MINE");
 };
@@ -317,7 +317,7 @@ FUNC VOID DIA_Addon_Logan_Lern_Info()
 	AI_Output (other, self, "DIA_Addon_Logan_Lern_15_00");//Poka¿ mi, jak patroszyæ zwierzêta...
 	AI_Output (self, other, "DIA_Addon_Logan_Lern_10_01");//Jeœli chcesz siê czegoœ dowiedzieæ o krwiopijcach, zapytaj lepiej Edgora.
 	AI_Output (self, other, "DIA_Addon_Logan_Lern_10_02");//Je¿eli bêdziesz patroszy³ bagienne wê¿e czy jaszczurki, to mo¿e chcesz nauczyæ siê, jak je obdzieraæ ze skóry i wyrywaæ im zêby?
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 //----------------------------------------------------------------------

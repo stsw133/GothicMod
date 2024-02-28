@@ -12,20 +12,9 @@ prototype Mst_Default_OrcChampion (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ORC;
 	
-	B_SetAttributesToLevel (self, 50);
-	
-	hitchance[NPC_TALENT_1H]			=	100;
-	hitchance[NPC_TALENT_2H]			=	100;
-	hitchance[NPC_TALENT_BOW]			=	100;
-	hitchance[NPC_TALENT_CROSSBOW]		=	100;
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, 100);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE;
@@ -34,7 +23,7 @@ prototype Mst_Default_OrcChampion (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_Packhunter] 			=	true;
-//	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 };
 ///******************************************************************************************
 func void B_SetVisuals_OrcChampion()
@@ -56,21 +45,8 @@ instance OrkElite_AntiPaladinOrkOberst (Mst_Default_OrcChampion)
 {
 	name								=	"Ork-pu³kownik";
 	
-	B_SetAttributesToLevel (self, 55);
-	
-	hitchance[NPC_TALENT_1H]			=	100;
-	hitchance[NPC_TALENT_2H]			=	100;
-	hitchance[NPC_TALENT_BOW]			=	100;
-	hitchance[NPC_TALENT_CROSSBOW]		=	100;
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
-	
+	NpcFn_SetAttributesToLevel (self, 55);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_OrcChampion();
 	EquipItem (self, ItMw_2H_OrcElite_01);
 	CreateInvItem (self, ItRi_OrcEliteRing);
@@ -127,21 +103,8 @@ instance OrkElite_AntiPaladinOrkOberst_DI (Mst_Default_OrcChampion)
 	name								=	"Ork-pu³kownik";
 	aivar[AIV_EnemyOverride]			=	true;
 	
-	B_SetAttributesToLevel (self, 60);
-	
-	hitchance[NPC_TALENT_1H]			=	100;
-	hitchance[NPC_TALENT_2H]			=	100;
-	hitchance[NPC_TALENT_BOW]			=	100;
-	hitchance[NPC_TALENT_CROSSBOW]		=	100;
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
-	
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_OrcChampion();
 	EquipItem (self, ItMw_2H_OrcElite_01);
 	CreateInvItem (self, ItKe_OrkKnastDI_MIS);

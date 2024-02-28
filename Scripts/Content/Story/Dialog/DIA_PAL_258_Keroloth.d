@@ -80,7 +80,7 @@ FUNC VOID DIA_Keroloth_WantTeach_Info()
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_02"); //Jeœli chcesz tu przetrwaæ, to poza talentem bêdziesz potrzebowa³ dobrej broni.
 	AI_Output 	(self ,other,"DIA_Keroloth_WantTeach_07_03"); //Zapytaj rycerza Tandora. On siê tob¹ zajmie.
 		
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Log_CreateTopic (TOPIC_Teacher_OC,LOG_NOTE);
 	B_LogEntry (TOPIC_Teacher_OC,"Keroloth udziela na zamku lekcji walki mieczem.");
 	
@@ -104,7 +104,7 @@ INSTANCE DIA_Keroloth_Udar(C_INFO)
 
 FUNC INT DIA_Keroloth_Udar_Condition()
 {
-	if (self.aivar[AIV_CanTeach] == true)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	&& (Keroloths_BeutelLeer == FALSE)
 	{
 		return TRUE;
@@ -304,7 +304,7 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_Info ()
 {
 	AI_Output			(other, self, "DIA_Keroloth_KAP4_GELDGEFUNDEN_15_00"); //Chyba znalaz³em twoj¹ sakiewkê.
 	TOPIC_END_KerolothsGeldbeutel = TRUE;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 	if (B_GiveInvItems (other, self, ItMi_KerolothsGeldbeutelLeer_MIS,1))
 	{
 		AI_Output			(self, other, "DIA_Keroloth_KAP4_GELDGEFUNDEN_07_01"); //Sakiewka jest pusta. Co za œwinia to zrobi³a?

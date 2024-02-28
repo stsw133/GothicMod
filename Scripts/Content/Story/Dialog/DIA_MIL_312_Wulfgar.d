@@ -156,7 +156,7 @@ func void DIA_Wulfgar_CanYouTrain_Info ()
 		AI_Output (self, other, "DIA_Wulfgar_CanYouTrain_04_06"); //W porz¹dku, zaczniemy, kiedy bêdziesz chcia³.
 		Log_CreateTopic (Topic_CityTeacher, LOG_NOTE);
 		B_LogEntry (Topic_CityTeacher, "Wulfgar, stra¿nik miejski, mo¿e mnie nauczyæ walki orê¿em jedno- i dwurêcznym.");
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	};
 };
 
@@ -175,7 +175,7 @@ instance DIA_Wulfgar_Advantage		(C_INFO)
 
 func int DIA_Wulfgar_Advantage_Condition ()
 {
-	if (self.aivar[AIV_CanTeach] == true)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -204,7 +204,7 @@ instance DIA_Wulfgar_HowToBegin	(C_INFO)
 
 func int DIA_Wulfgar_HowToBegin_Condition ()
 {
-	if (self.aivar[AIV_CanTeach] == true)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -237,7 +237,7 @@ INSTANCE DIA_Wulfgar_Teach(C_INFO)
 
 FUNC INT DIA_Wulfgar_Teach_Condition()
 {
-	if (self.aivar[AIV_CanTeach] == true)
+	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
 	&& (other.guild == GIL_SLD || other.guild == GIL_DJG)
 	{
 		return TRUE;
@@ -307,5 +307,5 @@ func void DIA_Wulfgar_Bonus_Info ()
 	AI_Output (self, other, "DIA_Wulfgar_Bonus_04_00"); //Tak wczeœnie na nogach. Z regu³y o tej porze nikt mnie nie odwiedza. No, ale skoro ju¿ tu jesteœ, to mo¿e warto ciê czegoœ nauczyæ.
 	AI_Output (self, other, "DIA_Wulfgar_Bonus_04_01"); //S³uchaj wiêc uwa¿nie. Mo¿esz wyprowadziæ swych przeciwników w pole, unikaj¹c ich ciosów i atakuj¹c w odpowiednim momencie.
 	AI_Output (self, other, "DIA_Wulfgar_Bonus_04_02"); //Pamiêtaj o tym podczas kolejnej walki.
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };

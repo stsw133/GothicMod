@@ -166,6 +166,6 @@ FUNC VOID DIA_Larius_Richterueberfall_Info()
 			AI_Output (self ,other,"DIA_Larius_Richterueberfall_01_03"); //Nawet jeœli jesteœ szanowanym magiem...
 		};
 	AI_Output (self ,other,"DIA_Larius_Richterueberfall_01_04"); //Moje s³owo wci¹¿ coœ znaczy w tym mieœcie. Ostrzegam ciê, nie zamierzam s³uchaæ, jak bezczelnie szkalujesz dobre imiê sêdziego!
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	AI_StopProcessInfos (self);
 };

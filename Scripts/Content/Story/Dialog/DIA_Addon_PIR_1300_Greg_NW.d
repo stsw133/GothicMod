@@ -210,7 +210,7 @@ func void DIA_Addon_Greg_NW_Stadtwachen_klamotten ()
 	
 	CreateInvItems (self, ItMi_Gold, 50);									
 	B_GiveInvItems (self, other, ItMi_Gold, 50);	
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_15_04"); //Co? Nêdzne 50 z³otych monet? Chyba ¿artujesz.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_05"); //Z³oto to nie wszystko, przyjacielu. Niech ci to na razie wystarczy.
@@ -693,7 +693,7 @@ func void DIA_Addon_Greg_NW_RakeCavePlundered_gold ()
 			AI_StopProcessInfos (self);
 			GregLocation = Greg_Bigcross;
 			Npc_ExchangeRoutine	(self,"Bigcross");
-			B_GivePlayerXP(100);
+			B_GivePlayerExp(100);
 		}
 	else
 		{
@@ -963,7 +963,7 @@ func void DIA_Addon_Greg_NW_DexterFound_wo ()
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_DexterFound_wo_01_06"); //Muszê teraz jedynie zajrzeæ do wszystkich nor i dziur na tym terenie.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_DexterFound_wo_01_07"); //Znajdê tê œwiniê. Nie potrzebujê ju¿ twojej pomocy.
 	Info_ClearChoices	(DIA_Addon_Greg_NW_DexterFound);
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 func void DIA_Addon_Greg_NW_DexterFound_together()
@@ -1067,7 +1067,7 @@ func void DIA_Addon_Greg_NW_CaughtDexter2_Info()
 	AI_Output	(other, self, "DIA_Addon_Greg_NW_CaughtDexter2_15_01"); //Wygl¹da na to, ¿e nie ¿yje.
 	AI_Output	(self, other, "DIA_Addon_Greg_NW_CaughtDexter2_01_02"); //Najwy¿szy czas. SprawdŸ, co mia³ przy sobie.
 	Npc_ExchangeRoutine	(self,"DexterHouseWalk");
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1168,7 +1168,7 @@ func void DIA_Addon_Greg_NW_WasWillstDu_Skip ()
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_WasWillstDu_Skip_01_01"); //Co za idiota. Czeka³em tam przez 3 dni. Dlaczego pojawi³ siê dopiero teraz?
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_WasWillstDu_Skip_01_02"); //Jak tylko wróc¹ mi si³y, spotka go nauczka.
 	SC_KnowsConnectionSkipGreg = TRUE;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -1210,7 +1210,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_Info ()
 	if ((Npc_HasItems (other,ItSe_GoldPocket100)) || (Npc_HasItems (other,itmi_gold)>= 100))
 	&& (Npc_HasItems (other,ItMi_GoldCup))
 	&& (Npc_HasItems (other,ItMi_SilverChalice))
-	&& (Npc_HasItems (other,ItAm_LifeSteal_01))
+	&& (Npc_HasItems (other,ItAm_Barbarian_01))
 		{
 			Info_AddChoice	(DIA_Addon_Greg_NW_FoundTreasure, "Oto twoje rzeczy.", DIA_Addon_Greg_NW_FoundTreasure_ja );
 		};
@@ -1236,7 +1236,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_ja ()
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_04"); //Srebrna misa.
 	};
-	if (B_GiveInvItems (other, self, ItAm_LifeSteal_01,1))
+	if (B_GiveInvItems (other, self, ItAm_Barbarian_01,1))
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_05"); //Amulet.
 	};
@@ -1248,7 +1248,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_ja ()
 	Info_ClearChoices	(DIA_Addon_Greg_NW_FoundTreasure);	
 		
 	MIS_Addon_Greg_RakeCave = LOG_SUCCESS;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 func void DIA_Addon_Greg_NW_FoundTreasure_not ()

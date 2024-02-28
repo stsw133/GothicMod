@@ -34,7 +34,7 @@ func void B_GiveTradeInv_Gorax (var C_NPC slf)
 		CreateInvItems 	 (slf, ItMw_Stab_L_01, 1);
 		CreateInvItems 	 (slf, ItMw_Stab_H_01, 1);
 		
-		CreateInvItems 	 (slf, ItRi_Mana_01, 1);
+		CreateInvItems 	 (slf, ItRi_MP_01, 1);
 		
 		Gorax_ItemsGiven_Chapter = 1;
 	};
@@ -59,7 +59,7 @@ func void B_GiveTradeInv_Gorax (var C_NPC slf)
 		CreateInvItems   (slf, ItSc_WindFist, 4);
 		CreateInvItems   (slf, ItSc_Sleep, 2);
 		
-		CreateInvItems   (slf, ItAm_ProtPhysical_01, 1);
+		CreateInvItems   (slf, ItAm_Warrior_01, 1);
 		
 		CreateInvItems   (slf, ItMi_RuneBlank, 2);
 		
@@ -88,9 +88,9 @@ func void B_GiveTradeInv_Gorax (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_01, 30);
 		
 		//CreateInvItems   (slf, ItSc_MediumHeal,	5);
-		CreateInvItems   (slf, ItSc_PyrFirestorm, 4);
+		CreateInvItems   (slf, ItSc_PyrBurning, 4);
 		CreateInvItems   (slf, ItSc_ChargeZap, 2);
-		CreateInvItems   (slf, ItSc_NecSkeleton,3);
+		CreateInvItems   (slf, ItSc_NecCurse,3);
 		CreateInvItems   (slf, ItSc_Fear, 2);
 		CreateInvItems   (slf, ItSc_EleFreeze, 3);
 		
@@ -106,7 +106,7 @@ func void B_GiveTradeInv_Gorax (var C_NPC slf)
 			CreateInvItems   (slf, ItWr_Map_Shrine_MIS, 1);
 		};
 		
-		CreateInvItems (slf,ItBe_Mana_01, 1);
+		CreateInvItems (slf,ItBe_MP_01, 1);
 		
 		Gorax_ItemsGiven_Chapter = 3;
 	};
@@ -159,7 +159,7 @@ func void B_GiveTradeInv_Gorax (var C_NPC slf)
 		CreateInvItems   (slf, ItPo_Mana_01, 50);
 		CreateInvItems   (slf, ItPo_Mana_02, 40);
 		
-		CreateInvItems   (slf, ItSc_PyrKinesis, 5);
+		CreateInvItems   (slf, ItSc_PyrFirebomb, 5);
 		CreateInvItems   (slf, ItSc_IceWave, 4);
 		CreateInvItems   (slf, ItSc_NecDemon, 2);
 		//CreateInvItems   (slf, ItSc_FullHeal, 3);

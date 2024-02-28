@@ -292,7 +292,7 @@ FUNC VOID DIA_Talbin_PayTeacher_Info()
 		AI_Output(self,other,"DIA_Talbin_PayTeacher_07_01"); //Naprawdê uda³o ci siê go zdobyæ? Od wieków nie jad³em czegoœ tak wspania³ego. Dziêkujê. Er, a co powiesz na... o tak. Jasne!
 		Talbin_TeachAnimalTrophy = TRUE;
 		DIA_Talbin_PayTeacher_noPerm = TRUE;
-		self.aivar[AIV_CanTeach] = true;
+		self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	}
 	else	//SC hat keinen Käse
 	{
@@ -538,7 +538,7 @@ func void DIA_Talbin_FOUNDENGROM_Info ()
 	Log_SetTopicStatus(TOPIC_Talbin_Runs, LOG_RUNNING);
 	B_LogEntry (TOPIC_Talbin_Runs,"Talbin, myœliwy z Górniczej Doliny, pobieg³ w stronê prze³êczy, jakby œciga³y go ca³e chmary krwiopijców. S¹dzê, ¿e skieruje siê do Khorinis."); 
 
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Npc_ExchangeRoutine	(self,"FleePass");
 	Wld_InsertNpc	(Snapper, "START");
 	Talbin_Runs = TRUE;

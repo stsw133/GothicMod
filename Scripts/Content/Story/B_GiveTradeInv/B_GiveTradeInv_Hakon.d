@@ -19,9 +19,9 @@ func void B_GiveTradeInv_Hakon (var C_NPC slf)
 		CreateInvItems (slf, ItMiSwordraw, 5);
 		CreateInvItems (slf, ItMw_Schlachtaxt, 1);
 		
-		CreateInvItems (slf, ItBE_Hp_01, 1);
-		CreateInvItems (slf, ItBE_Roy_01, 1);
-		CreateInvItems (slf, ItAm_ProtPhysical_01, 1);
+		CreateInvItems (slf, ItBe_HP_01, 1);
+		CreateInvItems (slf, ItBe_ROY_01, 1);
+		CreateInvItems (slf, ItAm_Warrior_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 1;
 	};
@@ -45,7 +45,7 @@ func void B_GiveTradeInv_Hakon (var C_NPC slf)
 		
 		CreateInvItems (slf, ItMi_Gold, 100);
 		CreateInvItems (slf, ItMiSwordraw, 5);
-		CreateInvItems (slf, ItBe_Hp_01, 1);
+		CreateInvItems (slf, ItBe_HP_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 3;
 	};
@@ -55,8 +55,8 @@ func void B_GiveTradeInv_Hakon (var C_NPC slf)
 	{
 		CreateInvItems (slf, ItMi_Gold, 150);
 		CreateInvItems (slf, ItMiSwordraw, 5);
-		CreateInvItems (slf, ItBe_Hp_01, 1);
-		CreateInvItems (slf, ItBe_Power_01, 1);
+		CreateInvItems (slf, ItBe_HP_01, 1);
+		CreateInvItems (slf, ItBe_POW_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 4;
 	};

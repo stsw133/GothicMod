@@ -51,7 +51,7 @@ FUNC VOID DIA_PC_Thief_DI_Hallo_Info()
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_04"); //Nic dziwnego, skoro mieli tutaj taki posterunek.
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_05"); //Po drodze do wnêtrza wyspy natkniesz siê pewnie na parê pu³apek.
 	AI_Output (self ,other,"DIA_PC_Thief_DI_Hallo_11_06"); //Gdybyœ nie móg³ sobie poradziæ, wróæ tutaj do mnie. Mo¿e bêdê móg³ ci pomóc.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 // ************************************************************
@@ -112,7 +112,7 @@ FUNC VOID DIA_PC_Thief_DI_RAT_Info()
 		 && (DIA_PC_Thief_DI_RAT_OneTime2 == FALSE)
 			{
 				AI_Output (self ,other,"DIA_PC_Thief_DI_RAT_11_09"); //I jeszcze coœ! Wola³bym, ¿ebyœ nie œci¹ga³ do statku wszystkich w³ócz¹cych siê po okolicy bestii. Mam nadziejê, ¿e nie przyjdzie nam tu odpieraæ kolejnego ataku orków.
-				B_GivePlayerXP(300);
+				B_GivePlayerExp(300);
 				DIA_PC_Thief_DI_RAT_OneTime2 = TRUE;
 			};	
 	};

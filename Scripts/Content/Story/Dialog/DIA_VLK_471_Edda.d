@@ -172,5 +172,5 @@ FUNC VOID DIA_Edda_Statue_Info()
 	AI_Output (other ,self,"DIA_Edda_Statue_15_02"); //Drobiazg.
 	
 	B_GiveInvItems (other, self,ItMI_InnosStatue, 1); 
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };				 

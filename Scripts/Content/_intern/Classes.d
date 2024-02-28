@@ -1,10 +1,11 @@
 ///******************************************************************************************
 ///	Classes
 ///******************************************************************************************
+/// WARNING: do not change order of fields in engine classes - it will cause game to crash instantly!
 
-const int MAX_CHAPTER		=	5;
-const int MAX_MISSIONS		=	5;
-const int MAX_HITCHANCE		=	5;
+const int MAX_CHAPTER					=	5;
+const int MAX_MISSIONS					=	5;
+const int MAX_HITCHANCE					=	5;
 
 ///******************************************************************************************
 class C_Npc
@@ -16,6 +17,7 @@ class C_Npc
 	var int		npcType;
 	var int		flags;
 	
+	/// ATTRIBUTES
 	var int		attribute[ATR_INDEX_MAX];
 	var int		hitChance[MAX_HITCHANCE];
 	var int		protection[PROT_INDEX_MAX];
@@ -23,47 +25,40 @@ class C_Npc
 	var int		damagetype;
 	var int		guild, level;
 	
+	/// FIGHT
 	var func	mission[MAX_MISSIONS];
 	var int		fight_tactic;
 	var int		weapon;
 	
+	/// VOICE
 	var int		voice;
 	var int		voicePitch;
 	var int		bodymass;
 	
+	/// ROUTINE
 	var func	daily_routine;
 	var func	start_aistate;
 	
-	///**********************
-	/// Spawn
-	///**********************
+	/// SPAWN
 	var string	spawnPoint;
 	var int		spawnDelay;
 	
-	///**********************
 	/// SENSES
-	///**********************
 	var int		senses;
 	var int		senses_range;
 	
-	///**********************
-	/// Feel free to use
-	///**********************
-	/// FIXME: TODO: bei goldmaster auf das benötigte minimum reduzieren
+	/// AI
 	var int		aivar[100];
 	var string	wp;
 	
-	///**********************
-	/// Experience dependant
-	///**********************
+	/// EXP
 	var int		exp;
 	var int		exp_next;
 	var int		lp;
 	
-	/// If this is set to true, the Npc can't be interrupted in any action (e.g. BS_FLAG_INTERRUPTABLE for anis is being ignored)
-	var int		bodyStateInterruptableOverride;
-	/// if "noFocus" is set to true, the focus name and health bar will not be drawn of this nsc (hi, stefan!)
-	var int     noFocus;
+	/// ...
+	var int		bodyStateInterruptableOverride;	/// if this is set to true, the NPC can't be interrupted in any action (e.g. BS_FLAG_INTERRUPTABLE for anis is being ignored)
+	var int     noFocus;						/// if "noFocus" is set to true, the focus name and health bar will not be drawn of this nsc (hi, stefan!)
 };
 
 ///******************************************************************************************
@@ -88,7 +83,6 @@ class C_Mission
 ///******************************************************************************************
 class C_Item
 {
-	/// Für alle Items
 	var int		id;
 	var string  name, nameID;
 	var int		hp, hp_max;
@@ -96,61 +90,60 @@ class C_Item
 	var int     mainflag, flags;
 	var int		weight, value;
 	
-	/// Für Waffen
+	/// WEAPON
 	var int		damageType;
 	var int		damageTotal;
 	var int		damage[DAM_INDEX_MAX];
 	
-	/// Für Rüstungen
+	/// ARMOR
 	var int		wear;
 	var int		protection[PROT_INDEX_MAX];
 	
-	/// Für Nahrung
+	/// FOOD
 	var int		nutrition;
 	
-	/// Benötigte Attribute zum Benutzen des Items
+	/// CONDITIONS
 	var int		cond_atr[3];
 	var int		cond_value[3];
 	
-	/// Attribute, die bei anlegen des Items verändert werden
+	/// ATTRIBUTES
 	var int		change_atr[3];
 	var int		change_value[3];
 	
-	/// Parserfunktionen
+	/// PARSER FUNCTIONS
 	var func	magic;
 	var func	on_equip;
 	var func	on_unequip;
 	var func	on_state[4];
 	
-	/// Besitzer
+	/// OWNER
 	var func	owner;
 	var int		ownerGuild;
 	var int		disguiseGuild;
 	
-	/// Die 3DS-Datei
+	/// VISUAL
 	var string	visual;
-	
-	/// Veränderung des NSC-Meshes beim Anlegen dieses Gegenstandes
 	var string  visual_change;
 	var string  effect;
-	
 	var int		visual_skin;
 	
+	/// USAGE
 	var string 	scemeName;
 	var int		material;
 	// var string	pfx;
 	var int		munition;
 	
+	/// MAGIC
 	var int 	spell;
 	var int		range;
-	
 	var int		mag_circle;
 	
+	/// DESCRIPTIONS
 	var string	description;
 	var string	text[ITM_TEXT_MAX];
 	var int		count[ITM_TEXT_MAX];
 	
-	/// inventory darstellungs geschichten, wird nur benutzt, falls von 0 abweichend
+	/// INVENTORY
 	var int	    inv_zbias;
 	var	int		inv_rotx;
 	var int 	inv_roty;
@@ -161,20 +154,20 @@ class C_Item
 ///******************************************************************************************
 class C_Focus
 {
-	/// für NSCs
+	/// NPCs
 	var float	npc_longrange;
 	var float	npc_range1, npc_range2;
 	var float	npc_azi;
 	var float	npc_elevdo, npc_elevup;
 	var int		npc_prio;
 	
-	/// für ITEMs
+	/// items
 	var float	item_range1, item_range2;
 	var float	item_azi;
 	var float	item_elevdo, item_elevup;
 	var int		item_prio;
 	
-	/// für MOBs
+	/// MOBs
 	var float	mob_range1, mob_range2;
 	var float	mob_azi;
 	var float	mob_elevdo, mob_elevup;

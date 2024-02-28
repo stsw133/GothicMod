@@ -51,22 +51,22 @@ prototype ItemPR_HAmmo (C_Item)
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
-func void SetItRwAttributes_Arrow (var C_ITEM itm)
+func void SetItRwAttributes_Arrow (var C_Item itm)
 {
 	if (Hlp_GetinstanceID(itm) != muntype_bow)	{	itm.flags = ITEM_MULTI;				}
 	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 };
-func void SetItRwAttributes_Bolt (var C_ITEM itm)
+func void SetItRwAttributes_Bolt (var C_Item itm)
 {
 	if (Hlp_GetinstanceID(itm) != muntype_cbow)	{	itm.flags = ITEM_MULTI;				}
 	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 };
-func void SetItRwAttributes_Ammo (var C_ITEM itm)
+func void SetItRwAttributes_Ammo (var C_Item itm)
 {
 	if (Hlp_GetinstanceID(itm) != muntype_gun)	{	itm.flags = ITEM_MULTI;				}
 	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
 };
-func void SetItRwAttributes_HAmmo (var C_ITEM itm)
+func void SetItRwAttributes_HAmmo (var C_Item itm)
 {
 	if (Hlp_GetinstanceID(itm) != muntype_hgun)	{	itm.flags = ITEM_MULTI;				}
 	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
@@ -91,7 +91,7 @@ instance ItRw_sArrow (ItemPR_Arrow)
 	on_state[0]				=	Use_ItRw_sArrow;
 	
 	description				=	"Ostra strza³a";
-	TEXT[1]					=	NAME_Damage;
+	TEXT[1]					=	NAME_Dam_Point;
 	COUNT[1]				=	20;
 	COUNT[5]				=	value;
 	SetItRwAttributes_Arrow(self);
@@ -118,9 +118,9 @@ instance ItRw_pArrow (ItemPR_Arrow)
 	SetItRwAttributes_Arrow(self);
 };
 ///******************************************************************************************
-func int Npc_IsEquippedItem_Bow (var C_NPC slf)
+func int Npc_IsEquippedItem_Bow (var C_Npc slf)
 {
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
+	var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
 	
 	if (itm.munition == ItRw_Arrow)
 	|| (itm.munition == ItRw_sArrow)
@@ -129,6 +129,7 @@ func int Npc_IsEquippedItem_Bow (var C_NPC slf)
 	{
 		return true;
 	};
+	
 	return false;
 };
 ///******************************************************************************************
@@ -163,7 +164,7 @@ func void ARROW_CHECK()
 	
 	if (Npc_IsEquippedItem_Bow(self))
 	{
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_bow;
 	};
 };
@@ -219,7 +220,7 @@ instance ItRw_Bolt (ItemPR_Bolt)
 };
 instance ItRw_sBolt (ItemPR_Bolt)
 {
-	value 					=	2;
+	value 					=	3;
 	visual 					=	"ItRw_Bolt.3ds";
 	on_state[0]				=	Use_ItRw_sBolt;
 	
@@ -230,15 +231,16 @@ instance ItRw_sBolt (ItemPR_Bolt)
 	SetItRwAttributes_Bolt(self);
 };
 ///******************************************************************************************
-func int Npc_IsEquippedItem_Crossbow (var C_NPC slf)
+func int Npc_IsEquippedItem_Crossbow (var C_Npc slf)
 {
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
+	var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
 	
 	if (itm.munition == ItRw_Bolt)
 	|| (itm.munition == ItRw_sBolt)
 	{
 		return true;
 	};
+	
 	return false;
 };
 ///******************************************************************************************
@@ -261,7 +263,7 @@ func void BOLT_CHECK()
 	
 	if (Npc_IsEquippedItem_Crossbow(self))
 	{
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_cbow;
 	};
 };
@@ -298,14 +300,15 @@ instance ItRw_Ammo (ItemPR_Ammo)
 	SetItRwAttributes_Ammo(self);
 };
 ///******************************************************************************************
-func int Npc_IsEquippedItem_Gun (var C_NPC slf)
+func int Npc_IsEquippedItem_Gun (var C_Npc slf)
 {
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
+	var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
 	
 	if (itm.munition == ItRw_Ammo)
 	{
 		return true;
 	};
+	
 	return false;
 };
 ///******************************************************************************************
@@ -322,7 +325,7 @@ func void AMMO_CHECK()
 	
 	if (Npc_IsEquippedItem_Gun(self))
 	{
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_gun;
 	};
 };
@@ -359,15 +362,16 @@ instance ItRw_BAmmo (ItemPR_HAmmo)
 	SetItRwAttributes_HAmmo(self);
 };
 ///******************************************************************************************
-func int Npc_IsEquippedItem_HeavyGun (var C_NPC slf)
+func int Npc_IsEquippedItem_HeavyGun (var C_Npc slf)
 {
-	var c_item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
+	var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(slf);
 	
 	if (itm.munition == ItRw_HAmmo)
 	|| (itm.munition == ItRw_BAmmo)
 	{
 		return true;
 	};
+	
 	return false;
 };
 ///******************************************************************************************
@@ -390,7 +394,7 @@ func void HEAVYAMMO_CHECK()
 	
 	if (Npc_IsEquippedItem_HeavyGun(self))
 	{
-		var c_item itm;	itm = Npc_GetEquippedRangedWeapon(self);
+		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
 		itm.munition = muntype_hgun;
 	};
 };

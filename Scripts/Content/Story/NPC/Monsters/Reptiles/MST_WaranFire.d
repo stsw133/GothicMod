@@ -10,15 +10,8 @@ prototype Mst_Default_WaranFire (C_Npc)
 	damagetype 							=	DAM_FIRE;
 	fight_tactic						=	FAI_WARAN;
 	
-	B_SetAttributesToLevel (self, 20);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20 + 10*MR_PER_LEVEL;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -38,8 +31,8 @@ prototype Mst_Default_WaranFire (C_Npc)
 func void B_SetVisuals_FireWaran()
 {
 	Mdl_SetVisual		(self, "Waran.mds");
-	Mdl_ApplyOverlayMds	(self, "Firewaran.mds");
 	Mdl_SetVisualBody	(self, "War_Fire_Body", 0, default, "", default, default, -1);
+	Mdl_ApplyOverlayMds	(self, "Firewaran.mds");
 };
 ///******************************************************************************************
 instance FireWaran (Mst_Default_WaranFire)

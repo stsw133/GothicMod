@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_AssessTalk
+/// B_AssessTalk
 ///******************************************************************************************
 func void B_AssessTalk()
 {
@@ -8,6 +8,7 @@ func void B_AssessTalk()
 	{
 		return;
 	};
+	
 	if (self.guild > GIL_SEPERATOR_HUM)
 	&& (!Npc_CheckInfo(self, 1))
 	&& (!Npc_CheckInfo(self, 0))
@@ -40,7 +41,6 @@ func void B_AssessTalk()
 		{
 			if (C_PlayerHasFakeGuild(self, other))
 			{
-				/// FUNC
 				Npc_ClearAIQueue(self);
 				AI_StartState (self, ZS_CommentFakeGuild, true, "");
 				return;
@@ -52,18 +52,17 @@ func void B_AssessTalk()
 			};
 		};
 		
-		/// Ambient NPC does not want to talk
+		/// MOD: ambient NPC does not want to talk
 		if (self.npctype == NPCTYPE_AMBIENT)
 		|| (self.npctype == NPCTYPE_OCAMBIENT)
 		|| (self.npctype == NPCTYPE_BL_AMBIENT)
-		//if (!Npc_CheckInfo(self, 1))
-		//&& (!Npc_CheckInfo(self, 0))
 		{
 			B_ExecAmbientInfos();
 			return;
 		};
 	};
 	
+	/// FUNC
 	if (!self.aivar[AIV_NpcStartedTalk])
 	{
 		if (C_BodyStateContains(self, BS_WALK) || C_BodyStateContains(self, BS_RUN))
@@ -96,7 +95,6 @@ func void B_AssessTalk()
 		
 		if (Npc_CanSeeNpc(self, other))
 		{
-			/// FUNC
 			AI_StartState (self, ZS_Talk, false, "");
 		}	
 		else
@@ -105,10 +103,9 @@ func void B_AssessTalk()
 			{
 				AI_StandUp(self);
 			};
-			
-			/// FUNC
 			AI_StartState (self, ZS_Talk, true, "");
 		};
+		
 		return;
 	}
 	else
@@ -124,7 +121,6 @@ func void B_AssessTalk()
 			AI_StandUp(other);
 		};
 		
-		/// FUNC
 		AI_StartState (self, ZS_Talk, false, "");
 		return;
 	};

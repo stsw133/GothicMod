@@ -2,15 +2,15 @@
 ///	SPL_WaterFist
 ///******************************************************************************************
 
-const int SPL_Cost_WaterFist			=	25;
-const int SPL_Damage_WaterFist			=	25;	//125
-const int SPL_Scaling_WaterFist			=	225;
+const int SPL_Cost_WaterFist			=	80;	//25
+const int SPL_Damage_WaterFist			=	80;	//125
+const int SPL_Scaling_WaterFist			=	150;
 
 ///******************************************************************************************
 instance Spell_WaterFist (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_WaterFist;
+	damage_per_level					=	SPL_Damage_WaterFist;
 	damageType							=	DAM_MAGIC;
 };
 

@@ -12,8 +12,8 @@ instance VLK_435_Nadja (Npc_Default)
 	aivar[AIV_ToughGuy]					=	true;
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 10);
-	B_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_SetAttributesToLevel (self, 10);
+	NpcFn_SetFightSkills (self, FightTalent_Initiate);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
@@ -22,7 +22,7 @@ instance VLK_435_Nadja (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_HUMAN, FEMALE, BodyTex_Dressed+2, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal10, Teeth_Pretty, -1);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Dressed+2, BodySkin_N, "Hum_Head_Babe8", FaceBabe_Normal10, Teeth_Pretty, -1);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 

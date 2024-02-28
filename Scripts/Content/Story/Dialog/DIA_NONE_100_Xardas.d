@@ -222,7 +222,7 @@ func void DIA_Addon_Xardas_StonePlate_Info ()
 	AI_Output	(self, other, "DIA_Addon_Xardas_StonePlate_14_04"); //Nie uda³o mi siê do koñca rozszyfrowaæ wyrytych na niej znaków, ale wydaj¹ siê one przekazywaæ historiê prastarej kultury.
 	AI_Output	(self, other, "DIA_Addon_Xardas_StonePlate_14_05"); //WeŸ j¹, jeœli chcesz, do niczego mi siê nie przyda.
 
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 
@@ -326,7 +326,7 @@ func void DIA_Addon_Xardas_AddonSuccess_Info ()
 		AI_Output (self, other, "DIA_Addon_Xardas_AddonSuccess_14_08"); //To bardzo ciekawe...
 		AI_Output (self, other, "DIA_Addon_Xardas_AddonSuccess_14_09"); //Ta broñ mo¿e siê nam bardzo przydaæ, jest jednak równie¿ niezwykle niebezpieczna.
 		AI_Output (self, other, "DIA_Addon_Xardas_AddonSuccess_14_10"); //Zachowaj ostro¿noœæ i pod ¿adnym pozorem jej nie zgub!
-		B_GivePlayerXP(500);
+		B_GivePlayerExp(500);
 	}
 	else
 	{
@@ -549,8 +549,8 @@ func void DIA_Xardas_ABOUTLESTER_Info ()
 	AI_Output (self, other, "DIA_Xardas_ABOUTLESTER_14_06"); //Jeœli ci ludzie rzeczywiœcie istniej¹, bêd¹ dla nas powa¿nym zagro¿eniem.
 	AI_Output (self, other, "DIA_Xardas_ABOUTLESTER_14_07"); //Niepokoi mnie to. Proszê, weŸ mój pierœcieñ. Bêdzie ciê chroni³ przed magi¹.
 	
-	B_GiveInvItems (self, other, ItRi_ProtMagic_01,1);
-	B_GivePlayerXP(100);
+	B_GiveInvItems (self, other, ItRi_ProtMagical_01,1);
+	B_GivePlayerExp(100);
 
 };
 
@@ -710,7 +710,7 @@ func void DIA_Xardas_BACKFROMOW_Info ()
 	AI_Output			(other, self, "DIA_Xardas_BACKFROMOW_15_02"); //Mia³eœ racjê. W dolinie stacjonuje potê¿na armia nieprzyjaciela.
 	AI_Output			(other, self, "DIA_Xardas_BACKFROMOW_15_03"); //Orkowie oblegaj¹ zamek, a smoki pustosz¹ okoliczne tereny.
 	AI_Output			(other, self, "DIA_Xardas_BACKFROMOW_15_04"); //Jeœli siê nie mylê, wkrótce ca³a armia ruszy na Khorinis.
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -779,7 +779,7 @@ func void DIA_Xardas_DMTSINDDA_Beweis ()
 	AI_Output			(self, other, "DIA_Xardas_DMTSINDDA_Beweis_14_03"); //To powinno wystarczyæ, by przekonaæ Hagena. Dobra robota.
 	
 	Info_AddChoice	(DIA_Xardas_DMTSINDDA, "Co mam teraz robiæ?", DIA_Xardas_DMTSINDDA_DMT_WhatToDo );
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 func void DIA_Xardas_DMTSINDDA_DMT_WhatToDo ()
@@ -823,7 +823,7 @@ func void DIA_Xardas_INNOSEYEBROKEN_Info ()
 	AI_Output			(self, other, "DIA_Xardas_INNOSEYEBROKEN_14_03"); //To by³a nasza jedyna szansa na pokonanie tych smoków! Wszystko stracone.
 
 	MIS_SCKnowsInnosEyeIsBroken  = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	
 	Info_ClearChoices	(DIA_Xardas_INNOSEYEBROKEN);
 	Info_AddChoice	(DIA_Xardas_INNOSEYEBROKEN, "Co teraz?", DIA_Xardas_INNOSEYEBROKEN_wasnun );
@@ -880,7 +880,7 @@ func void DIA_Xardas_RITUALREQUEST_Info ()
 		AI_Output			(self, other, "DIA_Xardas_RITUALREQUEST_14_05"); //Bezzw³ocznie. Ty musisz jeszcze wype³niæ swoje zadania. Potem znów siê spotkamy.
 		AI_StopProcessInfos (self);
 		B_LogEntry (TOPIC_INNOSEYE, "Xardas zgodzi³ siê przyjœæ do S³onecznego Krêgu na rytua³.");
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 		Npc_ExchangeRoutine	(self,"RitualInnosEyeRepair");
 		Xardas_GoesToRitualInnosEye = TRUE; 
 	}
@@ -888,7 +888,7 @@ func void DIA_Xardas_RITUALREQUEST_Info ()
 	{
 		AI_Output			(self, other, "DIA_Xardas_RITUALREQUEST_14_06"); //Pomogê przy odprawianiu rytua³u, dopiero gdy bêdê mia³ pewnoœæ, ¿e jesteœ gotów stawiæ czo³a smokom.
 	};	
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 
 };
 
@@ -973,7 +973,7 @@ func void DIA_Xardas_BEREIT_Info ()
 	AI_Output			(self, other, "DIA_Xardas_BEREIT_14_01"); //Zatem nie ma czasu do stracenia. Natychmiast wyruszam w drogê do S³onecznego Krêgu. Wype³nij swoje zadania. Spotkamy siê na miejscu.
 	AI_StopProcessInfos (self);
 	B_LogEntry (TOPIC_INNOSEYE, "Xardas zgodzi³ siê przyjœæ do S³onecznego Krêgu na rytua³.");
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	Npc_ExchangeRoutine	(self,"RitualInnosEyeRepair"); 
 	Xardas_GoesToRitualInnosEye = TRUE; 
 };

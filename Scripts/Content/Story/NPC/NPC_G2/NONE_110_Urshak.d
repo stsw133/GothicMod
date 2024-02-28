@@ -4,21 +4,20 @@ instance NONE_110_Urshak (NPC_Default)
 	/// ------ General ------
 	name								=	"Ur-Shak";
 	guild 								=	GIL_FRIENDLY_ORC;
-	aivar[AIV_Race]						= 	RACE_Orc;
 	id 									=	110;
 	voice 								=	18;
 	npctype								=	NPCTYPE_MAIN;
+	
+	/// ------ Visuals ------
+	NpcFn_SetVisual		(self, ORCMALE, 0, DEFAULT, "Orc_Head_Shaman", 52, DEFAULT, ITAR_Orc_Shaman);
+	Mdl_SetModelFatness	(self, 0);
 
 	/// ------ Attributes ------
-	B_SetAttributesToLevel (self, 50);
-	B_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetFightSkills (self, FightTalent_Medium);
 
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;
-
-	/// ------ Visuals ------
-	B_SetNpcVisual		(self, RACE_ORC, MALE, 0, DEFAULT, "Orc_Head_Shaman", 52, DEFAULT, ITAR_Orc_Shaman);
-	Mdl_SetModelFatness	(self, 0);
 
 	/// ------ Rtn ------
 	daily_routine 						=	Rtn_PreStart_110;

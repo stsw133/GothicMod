@@ -211,7 +211,7 @@ func void DIA_Parcival_BRAVE_Info ()
 	else 
 	{
 		AI_Output			(self, other, "DIA_Parcival_BRAVE_13_03"); //Hej, nie masz nic lepszego do roboty, ni¿ zawracanie mi g³owy? Wynoœ siê!
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	};
 	
 	Parcival_BRAVE_LaberCount = Parcival_BRAVE_LaberCount + 1;

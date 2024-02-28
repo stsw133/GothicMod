@@ -10,15 +10,8 @@ prototype MST_Default_StoneGuardian (C_Npc)
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_STONEGUARDIAN;
 	
-	B_SetAttributesToLevel (self, 20);
-	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20 - 10*AR_PER_LEVEL;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_POINT]				=	level*AR_PER_LEVEL - 20 + 10*AR_PER_LEVEL;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	NpcFn_SetAttributesToLevel (self, 20);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -45,16 +38,6 @@ func void B_SetVisuals_StoneGuardian()
 ///******************************************************************************************
 instance StoneGuardian (MST_Default_StoneGuardian)
 {
-	B_SetVisuals_StoneGuardian();
-};
-///******************************************************************************************
-instance Summoned_StoneGuardian (MST_Default_StoneGuardian)
-{
-	name								=	"Przywo³any kamienny stra¿nik";
-	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
-	
-	B_SetAttributesToLevel (self, level);
 	B_SetVisuals_StoneGuardian();
 };
 ///******************************************************************************************

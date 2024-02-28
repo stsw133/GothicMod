@@ -14,11 +14,12 @@ instance Spell_PalJustice (C_Spell_Proto)
 
 func int Spell_Logic_PalJustice (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_PalJustice/SPL_Cost_Scroll))
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_PalJustice/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_PalJustice)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
 };
 
@@ -32,8 +33,6 @@ func void Spell_Cast_PalJustice()
 	{
 		self.attribute[ATR_MANA] -= SPL_Cost_PalJustice;
 	};
-	
-	
 	
 	self.aivar[AIV_SelectSpell] += 1;
 };

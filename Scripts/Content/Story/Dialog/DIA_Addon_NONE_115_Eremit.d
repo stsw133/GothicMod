@@ -183,9 +183,13 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	//{
 	//	Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿ki pancerz Kruka", DIA_Addon_Eremit_Klamotten_Raven);
 	//};
-	if (Npc_HasItems (other, ITAR_WaterRanger) > 0)
+	if (Npc_HasItems (other, ITAR_Ranger_H) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê Wodnego Krêgu", DIA_Addon_Eremit_Klamotten_Ranger);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj zbrojê Wodnego Krêgu", DIA_Addon_Eremit_Klamotten_Ranger_H);
+	};
+	if (Npc_HasItems (other, ITAR_Ranger_L) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj pancerz Wodnego Krêgu", DIA_Addon_Eremit_Klamotten_Ranger_L);
 	};
 	if (Npc_HasItems (other, ITAR_Mag_A) > 0)
 	{
@@ -341,7 +345,7 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿k¹ zbrojê stra¿nika œwi¹tynnego", DIA_Addon_Eremit_Klamotten_CorAngar);
 	};
-	if (Npc_HasItems (other, ITAR_Prisoner) > 0)
+	if (Npc_HasItems (other, ITAR_Prisoner_H) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj spodnie kopacza", DIA_Addon_Eremit_Klamotten_Prisoner);
 	};
@@ -363,7 +367,7 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 		B_GiveInvItems (self, other, ItWr_StonePlateCommon_Addon, 1);
 		
 		MIS_Eremit_Klamotten = LOG_SUCCESS;
-		B_GivePlayerXP(200);
+		B_GivePlayerExp(200);
 		
 		Info_ClearChoices (DIA_Addon_Eremit_Klamotten);
 	};
@@ -409,9 +413,14 @@ func void DIA_Addon_Eremit_Klamotten_Raven()
 	B_GiveInvItems (other, self, ITAR_RVN_H, 1);
 	B_Eremit_Tatsache();
 };
-func void DIA_Addon_Eremit_Klamotten_Ranger()
+func void DIA_Addon_Eremit_Klamotten_Ranger_L()
 {
-	B_GiveInvItems (other, self, ITAR_WaterRanger, 1);
+	B_GiveInvItems (other, self, ITAR_Ranger_L, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Ranger_H()
+{
+	B_GiveInvItems (other, self, ITAR_Ranger_H, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_KDW_H()
@@ -601,7 +610,7 @@ func void DIA_Addon_Eremit_Klamotten_CorAngar()
 };
 func void DIA_Addon_Eremit_Klamotten_Prisoner()
 {
-	B_GiveInvItems (other, self, ITAR_Prisoner, 1);
+	B_GiveInvItems (other, self, ITAR_Prisoner_H, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_Dementor()

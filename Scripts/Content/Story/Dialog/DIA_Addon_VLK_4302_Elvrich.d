@@ -303,7 +303,7 @@ func void DIA_Addon_Elvrich_FernandosWaffen_Info ()
 	AI_Output	(other, self, "DIA_Addon_Elvrich_FernandosWaffen_15_00"); //Czy bandyci, którzy was porwali, mieli przy sobie wiêkszy ³adunek broni?
 	AI_Output	(self, other, "DIA_Addon_Elvrich_FernandosWaffen_04_01"); //O tak! Mieli jej tyle, ¿e ledwie byli w stanie wszystko udŸwign¹æ.
 	AI_Output	(self, other, "DIA_Addon_Elvrich_FernandosWaffen_04_02"); //Uciekli w kierunku farmy Sekoba, zabieraj¹c ca³y orê¿.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Log_CreateTopic (TOPIC_Addon_BanditTrader, LOG_MISSION);
 	Log_SetTopicStatus(TOPIC_Addon_BanditTrader, LOG_RUNNING);
@@ -345,7 +345,7 @@ func void DIA_Addon_Elvrich_LuciaLetter_Info ()
 	Log_SetTopicStatus(TOPIC_Addon_Lucia, LOG_RUNNING);
 	B_LogEntry (TOPIC_Addon_Lucia,"Elvrich nie chce uwierzyæ, ¿e Lucia posz³a z bandytami z w³asnej woli. Nadal liczy na powrót ukochanej, mimo ¿e dosta³ od niej jednoznaczny po¿egnalny list."); 
 
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	MIS_LuciasLetter = LOG_SUCCESS;
 };
 

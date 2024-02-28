@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_Attack
+/// B_Attack
 ///******************************************************************************************
-func void B_Attack (var C_NPC slf, var C_NPC oth, var int attack_reason, var int wait)
+func void B_Attack (var C_Npc slf, var C_Npc oth, var int attack_reason, var int wait)
 {
 	slf.aivar[AIV_WaitBeforeAttack] = wait;
 	
@@ -49,7 +49,7 @@ func void B_Attack (var C_NPC slf, var C_NPC oth, var int attack_reason, var int
 	|| (slf.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon)
 	{
 		if (!C_NpcIsToughGuy(slf))
-		&& (!(Npc_IsPlayer(oth) && (slf.npctype == NPCTYPE_FRIEND)))
+		&& (!(Npc_IsPlayer(oth) && slf.npctype == NPCTYPE_FRIEND))
 		{
 			B_MemorizePlayerCrime (slf, oth, CRIME_ATTACK);
 		};
@@ -71,6 +71,7 @@ func void B_Attack (var C_NPC slf, var C_NPC oth, var int attack_reason, var int
 		return;
 	};
 	
+	/// FUNC
 	if (slf.aivar[AIV_ATTACKREASON] == AR_KILL)
 	{
 		B_SetAttitude (slf, ATT_HOSTILE);
@@ -87,18 +88,9 @@ func void B_Attack (var C_NPC slf, var C_NPC oth, var int attack_reason, var int
 		Npc_ClearAIQueue(slf);
 	};
 	
-	/// FUNC
 	B_ClearPerceptions(slf);
 	Npc_SetTarget (slf, oth);
-	
-	if (C_BodyStateContains(slf, BS_LIE))
-	{
-		AI_StartState (slf, ZS_Attack, true, "");
-	}
-	else
-	{
-		AI_StartState (slf, ZS_Attack, false, "");
-	};
+	AI_StartState (slf, ZS_Attack, C_BodyStateContains(slf, BS_LIE), "");
 	
 	return;
 };

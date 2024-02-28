@@ -2,15 +2,15 @@
 ///	SPL_Zap
 ///******************************************************************************************
 
-const int SPL_Cost_Zap					=	10;	//15
-const int SPL_Damage_Zap				=	10;	//30
-const int SPL_Scaling_Zap				=	100;
+const int SPL_Cost_Zap					=	15;	//15
+const int SPL_Damage_Zap				=	15;	//30
+const int SPL_Scaling_Zap				=	90;
 
 ///******************************************************************************************
 instance Spell_Zap (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_Zap;
+	damage_per_level					=	SPL_Damage_Zap;
 	damageType							=	DAM_MAGIC;
 };
 

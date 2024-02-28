@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_MM_ThreatenEnemy
+/// ZS_MM_ThreatenEnemy
 ///******************************************************************************************
 func void ZS_MM_ThreatenEnemy()
 {
@@ -26,22 +26,25 @@ func int ZS_MM_ThreatenEnemy_loop()
 	
 	if (Npc_GetDistToNpc(self, other) <= FIGHT_DIST_MONSTER_ATTACKRANGE)
 	{
-		Npc_ClearAIQueue(self);
-		Npc_SetTarget	(self, other);
-		AI_StartState	(self, ZS_MM_Attack, false, "");
+		Npc_ClearAIQueue	(self);
+		Npc_SetTarget		(self, other);
+		AI_StartState		(self, ZS_MM_Attack, false, "");
+		
 		return LOOP_END;
 	};
 	
 	if (Npc_GetStateTime(self) >= MONSTER_THREATEN_TIME)
 	{
-		Npc_ClearAIQueue(self);
-		Npc_SetTarget	(self, other);
-		AI_StartState	(self, ZS_MM_Attack, false, "");
+		Npc_ClearAIQueue	(self);
+		Npc_SetTarget		(self, other);
+		AI_StartState		(self, ZS_MM_Attack, false, "");
+		
 		return LOOP_END;
 	};
 	
 	AI_TurnToNpc	(self, other);
 	AI_PlayAni		(self, "T_WARN");
+	
 	return LOOP_CONTINUE;
 };	
 

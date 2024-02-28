@@ -336,7 +336,7 @@ func void DIA_Randolph_ICHGEBEDIRGELD_Info ()
 			AI_Output			(self, other, "DIA_Randolph_ICHGEBEDIRGELD_06_02"); //Jeœli wygram, dorzucê nawet coœ ekstra.
 		
 			B_LogEntry (TOPIC_Wettsaufen,"Powinienem wybraæ siê na zawody w piciu piwa."); 
-			B_GivePlayerXP(50);
+			B_GivePlayerExp(50);
 		
 			DIA_Randolph_ICHGEBEDIRGELD_noPerm = TRUE;
 			
@@ -555,6 +555,6 @@ func void DIA_Randolph_SAGITTAHEAL_Info ()
 		};
 	
 	MIS_HealRandolph = LOG_SUCCESS;
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 	B_NpcClearObsessionByDMT (self);
 };

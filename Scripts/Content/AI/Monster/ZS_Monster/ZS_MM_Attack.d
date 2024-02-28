@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_MM_Attack
+/// ZS_MM_Attack
 ///******************************************************************************************
 func void B_MM_AssessSurprise()
 {
@@ -18,8 +18,8 @@ func void ZS_MM_Attack()
 	
 	B_ValidateOther();
 	
-	if (self.guild == GIL_SHEEP || (self.guild == GIL_LIVESTOCK && self.level == 0))
-	|| (self.guild == GIL_WILD && self.level == 0)
+	if (self.guild == GIL_LIVESTOCK && self.level <= 1)
+	|| (self.guild == GIL_WILD && self.level <= 1)
 	{
 		Npc_ClearAIQueue 	(self);
 		B_ClearPerceptions 	(self);
@@ -47,6 +47,7 @@ func int ZS_MM_Attack_Loop()
 	Npc_GetTarget(self);
 	
 	if (self.guild == GIL_DRAGON)
+	|| (self.aivar[AIV_MM_Real_ID] == ID_AVATAR) /// new!!!
 	{
 		self.aivar[AIV_TAPOSITION] += 1;
 		if (self.attribute[ATR_HITPOINTS] < self.attribute[ATR_HITPOINTS_MAX])
@@ -66,16 +67,19 @@ func int ZS_MM_Attack_Loop()
 	if (CurrentLevel == OLDWORLD_ZEN)
 	&& (Npc_GetDistToWP(self, "OC_RAMP_07") <= 500)
 	{
-		Npc_ClearAIQueue(self);
-		AI_StandUp		(self);
-		AI_PlayAni		(self, "T_WARN");
+		Npc_ClearAIQueue	(self);
+		AI_StandUp			(self);
+		AI_PlayAni			(self, "T_WARN");
+		
 		self.aivar[AIV_PursuitEnd] = true;
 		return LOOP_END;
 	};
+	
 	if (Npc_GetDistToNpc(self, other) > FIGHT_DIST_CANCEL)
 	{
 		Npc_ClearAIQueue(self);
-		AI_StandUp		(self);
+		AI_StandUp(self);
+		
 		self.aivar[AIV_PursuitEnd] = true;
 		return LOOP_END;
 	};
@@ -84,7 +88,7 @@ func int ZS_MM_Attack_Loop()
 	&& (!self.aivar[AIV_PursuitEnd])
 	{
 		Npc_ClearAIQueue(self);
-		AI_StandUp		(self);
+		AI_StandUp(self);
 		
 		self.aivar[AIV_PursuitEnd] = true;
 		self.aivar[AIV_Dist] = Npc_GetDistToNpc(self, other);
@@ -116,6 +120,7 @@ func int ZS_MM_Attack_Loop()
 				self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 			};
 		};
+		
 		return LOOP_CONTINUE;
 	};
 	
@@ -123,7 +128,8 @@ func int ZS_MM_Attack_Loop()
 	&& (!self.aivar[AIV_MM_FollowInWater])
 	{
 		Npc_ClearAIQueue(self);
-		AI_StandUp		(self);
+		AI_StandUp(self);
+		
 		return LOOP_END;
 	};
 	
@@ -141,6 +147,7 @@ func int ZS_MM_Attack_Loop()
 			self.aivar[AIV_SummonTime] += 1;
 			self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 		};
+		
 		if (self.aivar[AIV_SummonTime] >= MONSTER_SUMMON_TIME)
 		{
 			Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
@@ -198,12 +205,13 @@ func int ZS_MM_Attack_Loop()
 		&& (C_WantToEat(self, other))
 		{
 			Npc_ClearAIQueue(self);
-			AI_StandUp		(self);
+			AI_StandUp(self);
+			
 			return LOOP_END;
 		};
 		
-		Npc_PerceiveAll		(self);
-		Npc_GetNextTarget	(self);
+		Npc_PerceiveAll(self);
+		Npc_GetNextTarget(self);
 		
 		if (Hlp_IsValidNpc(other))
 		&& (!C_NpcIsDown(other))
@@ -216,7 +224,8 @@ func int ZS_MM_Attack_Loop()
 		else
 		{
 			Npc_ClearAIQueue(self);
-			AI_StandUp		(self);
+			AI_StandUp(self);
+			
 			return LOOP_END;
 		};
 	};
@@ -225,11 +234,13 @@ func int ZS_MM_Attack_Loop()
 ///******************************************************************************************
 func void ZS_MM_Attack_End()
 {
+	/// MOD
 	if (!self.aivar[AIV_PartyMember])
 	{
-		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];	///new!!!
+		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 	};
 	
+	/// ...
 	other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
 	
 	if (C_NpcIsMonsterMage(self))
@@ -244,7 +255,8 @@ func void ZS_MM_Attack_End()
 	&& (C_WantToEat(self, other))
 	{
 		Npc_ClearAIQueue(self);
-		AI_StartState 	(self, ZS_MM_EatBody, false, "");
+		AI_StartState (self, ZS_MM_EatBody, false, "");
+		
 		return;
 	};
 };

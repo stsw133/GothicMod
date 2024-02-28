@@ -10,15 +10,10 @@ prototype Mst_Default_TrollBlack (C_Npc)
 	damagetype 							=	DAM_FLY;
 	fight_tactic						=	FAI_TROLL;
 	
-	B_SetAttributesToLevel (self, 70);
+	NpcFn_SetAttributesToLevel (self, 70);
+	NpcFn_SetMonsterProtection (self, level);
 	
-	/// ------ Protection ------
-	protection[PROT_BLUNT]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_EDGE]				=	level*AR_PER_LEVEL - 20;
-	protection[PROT_POINT]				=	-1;
-	protection[PROT_FIRE]				=	level*MR_PER_LEVEL - 20;
-	protection[PROT_FLY]				=	-1;
-	protection[PROT_MAGIC]				=	level*MR_PER_LEVEL - 20;
+	aivar[AIV_AreaDmg]					=	100;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;

@@ -10,7 +10,7 @@ const int SPL_Scaling_ConcussionBolt	=	200;
 instance Spell_ConcussionBolt (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_ConcussionBolt;
+	damage_per_level					=	SPL_Damage_ConcussionBolt;
 	damageType							=	DAM_MAGIC;
 };
 

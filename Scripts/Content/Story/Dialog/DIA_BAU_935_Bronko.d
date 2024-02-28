@@ -217,7 +217,7 @@ func void DIA_Bronko_KEINBAUER_SLD ()
 	DIA_Bronko_KEINBAUER_noPerm = TRUE;
 	Npc_ExchangeRoutine	(self,"Start"); 
 	MIS_Sekob_Bronko_eingeschuechtert = LOG_SUCCESS;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 ///////////////////////////////////////////////////////////////////////

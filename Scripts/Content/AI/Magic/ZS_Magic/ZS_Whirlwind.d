@@ -40,7 +40,7 @@ func int ZS_Whirlwind()
 		AI_PlayAniBS (self, "T_STAND_2_WHIRLWIND_VICTIM", BS_UNCONSCIOUS);
 	};
 	
-	self.aivar[AIV_WhirlwindStateTime] = 0;
+	self.aivar[AIV_StateTime] = 0;
 };
 
 func int ZS_Whirlwind_Loop()
@@ -51,9 +51,9 @@ func int ZS_Whirlwind_Loop()
 		return LOOP_END;
 	};
 	
-	if (Npc_GetStateTime(self) != self.aivar[AIV_WhirlwindStateTime])
+	if (Npc_GetStateTime(self) != self.aivar[AIV_StateTime])
 	{
-		self.aivar[AIV_WhirlwindStateTime] = Npc_GetStateTime(self);
+		self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
 		
 		if (self.attribute[ATR_HITPOINTS] > SPL_Damage_Whirlwind)
 		{

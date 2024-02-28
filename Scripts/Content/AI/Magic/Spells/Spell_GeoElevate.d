@@ -2,10 +2,11 @@
 ///	SPL_GeoElevate
 ///******************************************************************************************
 
-const int SPL_Cost_GeoElevate			=	60;
+const int SPL_Cost_GeoElevate			=	75;
+const int SPL_Time_GeoElevate			=	60;
 
 const int SPL_STEP_GeoElevate			=	0;
-const int SPL_STEPCOST_GeoElevate		=	0;
+const int SPL_STEPCOST_GeoElevate		=	15;
 
 ///******************************************************************************************
 
@@ -40,7 +41,7 @@ const int Elevate_Dist_max					=	1144700928;          // 747cm
 ///******************************************************************************************
 instance Spell_GeoElevate (C_Spell_Proto)
 {
-	time_per_mana						=	0;
+	time_per_mana						=	60;
 	damage_per_level					=	0;
 	spelltype							=	SPELL_NEUTRAL;
 	targetCollectAlgo					=	TARGET_COLLECT_CASTER;
@@ -59,7 +60,7 @@ func int Spell_GeoElevate_CreateMover(var C_Npc slf)
     CALL__thiscall(vobPtr, zCVob__zCVob);
     var zCVob vob; vob = _^(vobPtr);
 	
-    var String mvrName; var String cldName;
+    var string mvrName; var string cldName;
     mvrName = ConcatStrings(SPL_GeoElevate_MoverPrefix, IntToString(slf.id));
     cldName = ConcatStrings(SPL_GeoElevate_ChildPrefix, IntToString(slf.id));
     mvr._zCObject_objectName = mvrName; vob._zCObject_objectName = cldName;
@@ -109,14 +110,14 @@ func int Spell_GeoElevate_CreateMover(var C_Npc slf)
 
 func int Spell_GeoElevate_GetChild(var C_Npc slf)
 {
-    var String cldName;
+    var string cldName;
     cldName = ConcatStrings(SPL_GeoElevate_ChildPrefix, IntToString(slf.id));
     return MEM_SearchVobByName(cldName);
 };
 
 func int Spell_GeoElevate_GetMover(var C_Npc slf)
 {
-    var String mvrName; var int mvrPtr;
+    var string mvrName; var int mvrPtr;
     mvrName = ConcatStrings(SPL_GeoElevate_MoverPrefix, IntToString(slf.id));
     mvrPtr = MEM_SearchVobByName(mvrName);
     if (!mvrPtr)
@@ -284,13 +285,28 @@ func int Spell_GeoElevate_Init(var C_Npc slf)
 	
     if (SPL_GeoElevate_State == Elevate_Open)
 	{
+		/*
         if (slf.attribute[ATR_MANA] < SPL_Cost_GeoElevate)
 		{
             return SPL_DONTINVEST;
         };
+		*/
+		if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] < SPL_Cost_GeoElevate/SPL_Cost_Scroll)
+		|| (!Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] < SPL_Cost_GeoElevate)
+		{
+			return SPL_DONTINVEST;
+		};
 		
         fstKF.pos[1] = subf(secKF.pos[1], Elevate_Dist_max);
-        slf.attribute[ATR_MANA] -= SPL_Cost_GeoElevate;
+        //slf.attribute[ATR_MANA] -= SPL_Cost_GeoElevate;
+		if (Npc_GetActiveSpellIsScroll(self))
+		{
+			self.attribute[ATR_MANA] -= SPL_Cost_GeoElevate/SPL_Cost_Scroll;
+		}
+		else
+		{
+			self.attribute[ATR_MANA] -= SPL_Cost_GeoElevate;
+		};
         mover.bitfield = mover.bitfield & ~ zCMover_bitfield_autoLinkEnabled;
         mover.moverBehavior = MB_2STATE_TOGGLE;
         MEM_TriggerVob(_@(mover));
@@ -349,12 +365,15 @@ func int Spell_GeoElevate_Init(var C_Npc slf)
 ///******************************************************************************************
 func int Spell_Logic_GeoElevate(var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate/SPL_Cost_Scroll))
+	/*
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate/SPL_Cost_Scroll)
 	|| (self.attribute[ATR_MANA] >= SPL_Cost_GeoElevate)
 	{
 		return SPL_SENDCAST;
 	};
+	
 	return SPL_SENDSTOP;
+	*/
 	
     if (self.attribute[ATR_MANA] < SPL_STEPCOST_GeoElevate)
 	{

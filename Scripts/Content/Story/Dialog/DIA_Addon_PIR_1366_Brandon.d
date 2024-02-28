@@ -209,7 +209,7 @@ func void DIA_Addon_Brandon_SchnellerHering_Info()
 	B_LogEntry (TOPIC_Addon_BrandonBooze,"Da³em Brandonowi te paskudne pomyje. Teraz jest zadowolony i bêdzie mnie uczy³.");
 	
 	MIS_Brandon_BringHering = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 

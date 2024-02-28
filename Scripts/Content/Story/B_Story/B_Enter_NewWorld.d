@@ -113,15 +113,15 @@ func void B_ENTER_NEWWORLD_Kapitel_8()
 		
 		if (hero.guild == GIL_MIL || hero.guild == GIL_PAL)
 		{
-			Wld_InsertItem (ItAm_Dex_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Rogue_01, "FP_ROAM_XARDAS_SECRET_26");
 		}
 		else if (hero.guild == GIL_SLD || hero.guild == GIL_DJG)
 		{
-			Wld_InsertItem (ItAm_Hp_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Druid_01, "FP_ROAM_XARDAS_SECRET_26");
 		}
 		else
 		{
-			Wld_InsertItem (ItAm_Power_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Assassin_01, "FP_ROAM_XARDAS_SECRET_26");
 		};
 		
 		if (hero.guild == GIL_KDF)

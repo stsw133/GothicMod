@@ -342,7 +342,7 @@ func void PC_PotionAlchemy_Temp_Start_Info()
 	
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Power])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir mocy (wampirza ró¿a, rdest polny, woda)", PC_ItPo_Temp_Power);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir mocy (wampirza ró¿a, rdest polny, woda)", PC_ItPo_Temp_POW);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_DEX])
 	{
@@ -446,7 +446,7 @@ func void PC_ItPo_Temp_DEX()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Temp_Power()
+func void PC_ItPo_Temp_POW()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -456,7 +456,7 @@ func void PC_ItPo_Temp_Power()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Temp_Power);
+		CreateInvItem (hero, ItPo_Temp_POW);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -493,7 +493,7 @@ func void PC_PotionAlchemy_Weak_Start_Info()
 	
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Power])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir mocy (wampirza ró¿a, cmentarny mech, woda)", PC_ItPo_Weak_Power);
+		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir mocy (wampirza ró¿a, cmentarny mech, woda)", PC_ItPo_Weak_POW);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_DEX])
 	{
@@ -597,7 +597,7 @@ func void PC_ItPo_Weak_DEX()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Weak_Power()
+func void PC_ItPo_Weak_POW()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
@@ -607,7 +607,7 @@ func void PC_ItPo_Weak_Power()
 		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Weak_Power);
+		CreateInvItem (hero, ItPo_Weak_POW);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -656,7 +656,7 @@ func void PC_PotionAlchemy_Perm_Start_Info()
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Perm_Power])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir mocy (wampirza ró¿a, szczaw królewski, woda)", PC_ItPo_Perm_Power);
+		Info_AddChoice (PC_PotionAlchemy_Perm_Start, "Eliksir mocy (wampirza ró¿a, szczaw królewski, woda)", PC_ItPo_Perm_POW);
 	};
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Perm_DEX])
 	{
@@ -760,7 +760,7 @@ func void PC_ItPo_Perm_DEX()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Perm_Power()
+func void PC_ItPo_Perm_POW()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
@@ -770,7 +770,7 @@ func void PC_ItPo_Perm_Power()
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Perm_Power);
+		CreateInvItem (hero, ItPo_Perm_POW);
 		Print(PRINT_AlchemySuccess);
 	}
 	else

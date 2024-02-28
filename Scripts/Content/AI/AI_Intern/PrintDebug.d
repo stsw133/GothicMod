@@ -38,10 +38,10 @@ func void PrintDebugS (var string txt)
 ///******************************************************************************************
 func void PrintDebugNpc (var int type, var string text)
 {
-	var string pipe;
 	var int instance_id; instance_id = self.id;
 	var string inst_id; inst_id	= IntToString(instance_id);
 	
+	var string pipe;
 	pipe = ConcatStrings("### ", self.name);
 	pipe = ConcatStrings(pipe, "(");
 	pipe = ConcatStrings(pipe, inst_id);

@@ -5,6 +5,23 @@ prototype ItemPR_MissionDoc (C_Item)
 	flags 					=	ITEM_MULTI|ITEM_MISSION;
 };
 ///******************************************************************************************
+
+var int BabosDocsOpen;
+var int BanditTrader_Lieferung_Gelesen;
+var int Cornelius_IsLiar;
+var int ItWr_HallsofIrdorathIsOpen;
+var int ItWr_MinenAnteil_Mis_OneTime;
+var int ItWr_SCReadsHallsofIrdorath;
+var int Knows_Bloodfly;
+var int Knows_Halvor;
+var int MIS_Xardas_SCCanOpenIrdorathBook;
+var int SC_KnowsProspektorSalandril;
+var int SCKnowsRichterKomproBrief;
+var int Use_ItWr_Addon_BanditTrader_OneTime;
+var int Use_Map_NewWorld_Orcelite_MIS_OneTime;
+var int Use_RavensKidnapperMission_Addon_OneTime;
+
+///******************************************************************************************
 ///	Maps
 ///******************************************************************************************
 instance ItWR_Addon_TreasureMap (ItemPR_MissionDoc)
@@ -136,8 +153,6 @@ func void Use_Map_OldWorld_Oremines()
 				Doc_Show			(Document);
 };
 ///******************************************************************************************
-var int Use_Map_NewWorld_Orcelite_MIS_OneTime;
-
 instance ItWr_Map_Orcelite_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
@@ -244,7 +259,7 @@ func void Use_Seamap_Irdorath()
 		Log_CreateTopic (TOPIC_SHIP, LOG_MISSION);
 	    Log_SetTopicStatus (TOPIC_SHIP, LOG_RUNNING);
 	    B_LogEntry (TOPIC_SHIP, "Wygl¹da na to, ¿e muszê siê dostaæ na wyspê nieprzyjaciela. Bêdê potrzebowa³ statku, za³ogi i kapitana.");
-		B_GivePlayerXP(2000);
+		B_GivePlayerExp(2000);
 	};
 	
 	MIS_SCKnowsWayToIrdorath = true;
@@ -320,9 +335,6 @@ instance ItWr_Vatras_KDFEmpfehlung_Addon (ItemPR_Mission)
 	TEXT[4]			= 	"bez zap³aty.";
 };
 ///******************************************************************************************
-var int Use_ItWr_Addon_BanditTrader_OneTime;
-var int BanditTrader_Lieferung_Gelesen;
-
 instance ItWr_Addon_BanditTrader (ItemPR_MissionDoc)
 {
 	name 			=	"Dostawa";
@@ -1013,8 +1025,6 @@ func void Use_BabosPinUp()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int BabosDocsOpen;
-
 instance ItWr_BabosDocs_MIS	(ItemPR_MissionDoc)
 {
 	name 			=	"Zwitek papierów";
@@ -1075,8 +1085,6 @@ func void Use_BanditLetter()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int Knows_Bloodfly;
-
 instance ItWr_Bloody_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Notatka";
@@ -1111,7 +1119,7 @@ func void Use_BloodMIS()
 		Knows_Bloodfly = true;
 		Log_CreateTopic (Topic_Bonus, LOG_NOTE);
 		B_LogEntry (Topic_Bonus, "Teraz wiem, jak uzyskaæ substancjê lecznicz¹ z ¿¹de³ krwiopijców.");
-		B_GivePlayerXP(100);
+		B_GivePlayerExp(100);
 	};
 };
 ///******************************************************************************************
@@ -1153,8 +1161,6 @@ func void Use_Canthars_KomproBrief()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int Cornelius_IsLiar;
-
 instance ItWr_CorneliusTagebuch_Mis (ItemPR_MissionDoc) 
 {
 	name 			=	"Dziennik";
@@ -1204,8 +1210,8 @@ func void Use_DementorObsessionBook()
 {
 	Wld_PlayEffect ("spellFX_Fear", hero, hero, 0, 0, 0, false);
 	Snd_Play("MFX_FEAR_CAST");
-	SC_ObsessionCounter = 100;
-	B_SCIsObsessed(hero);
+	bsObsession = true;
+	B_SetScObsessed(hero);
 	
 	if (hero.guild == GIL_KDF)
 	{
@@ -1367,8 +1373,7 @@ func void Use_GilbertLetter()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int ItWr_HallsofIrdorathIsOpen;
-var int MIS_Xardas_SCCanOpenIrdorathBook;
+const string PRINT_IrdorathBookDoesntOpen			=	"Nie mo¿na otworzyæ ok³adki tej ksiêgi.";
 
 instance ItWr_HallsofIrdorath_Mis (ItemPR_MissionDoc) 
 {	
@@ -1392,7 +1397,7 @@ func void Use_HallsofIrdorath()
 		CreateInvItem (self, ItWr_UseLampIdiot_Mis);
 		
 		Print("W ok³adce tej ksiêgi schowano klucz!");
-		B_GivePlayerXP(1000);
+		B_GivePlayerExp(1000);
 		ItWr_HallsofIrdorathIsOpen = true;
 		
 		B_LogEntry (TOPIC_BuchHallenVonIrdorath, "Uda³o mi siê otworzyæ ksiêgê Xardasa. Znalaz³em w niej tajemnicz¹ wiadomoœæ i dziwny klucz. Kto wie, co jeszcze kryje siê w klasztornych podziemiach."); 
@@ -1407,8 +1412,6 @@ func void Use_HallsofIrdorath()
 	};
 };
 ///******************************************************************************************
-var int ItWr_SCReadsHallsofIrdorath;
-
 instance ItWr_HallsofIrdorath_Open_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Dwór Irdorath";
@@ -1465,7 +1468,7 @@ instance ItWr_HalvorMessage	(ItemPR_MissionDoc)
 	TEXT[2]			=   "W rybie by³a schowana ta notatka.";
 };
 func void Use_HalvorMessage()
-{   
+{
 	Knows_Halvor = true;
 	
 	var int nDocID;
@@ -1488,15 +1491,15 @@ func void Use_HalvorMessage()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-instance ItWr_KDWLetter (ItemPR_MissionDoc)
+instance ItWr_KdwLetter (ItemPR_MissionDoc)
 {
 	name 			=	"Wiadomoœæ";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_KDWLetter;
+	on_state[0]		=   Use_KdwLetter;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_KDWLetter()
+func void Use_KdwLetter()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1724,9 +1727,6 @@ func void Use_Manowar()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int ItWr_MinenAnteil_Mis_OneTime;
-var int SC_KnowsProspektorSalandril;
-
 instance ItWr_MinenAnteil_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Udzia³ w kopalni rudy Khorinis";
@@ -1943,8 +1943,6 @@ func void Use_PyrokarsObsessionList()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int Use_RavensKidnapperMission_Addon_OneTime;
-
 instance ItWr_RavensKidnapperMission_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"Rozkazy";
@@ -1989,8 +1987,6 @@ func void Use_RavensKidnapperMission_Addon()
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************
-var int SCKnowsRichterKomproBrief;
-
 instance ItWr_RichterKomproBrief_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Zlecenie sêdziego";

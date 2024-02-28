@@ -166,7 +166,7 @@ FUNC VOID DIA_Lutero_Kralle_Info()
 {	
 	AI_Output (other ,self,"DIA_Lutero_Kralle_15_00"); //Mam tu dla ciebie pazury bardzo niezwyk³ego zêbacza.
 	Lutero_Krallen = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	AI_Output (self ,other,"DIA_Lutero_Kralle_13_01"); //Moi klienci siê uciesz¹.
 	B_GiveInvItems (other, self, ItAt_ClawLeader,1);
 	
@@ -180,7 +180,7 @@ FUNC VOID DIA_Lutero_Kralle_Info()
 	else
 	{
 		AI_Output (self ,other,"DIA_Lutero_Hello_13_05"); //Oto pierœcieñ, który ci obieca³em.
-		B_GiveInvItems (self, other, ItRi_ProtTotal_01,1);
+		B_GiveInvItems (self, other, ItRi_DR_01,1);
 	};
 };
 //************************************************************

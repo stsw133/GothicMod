@@ -179,7 +179,7 @@ FUNC VOID DIA_Addon_Franco_HaiSuccess_Info()
 		AI_Output (other,self,"DIA_Addon_Franco_HaiSuccess_15_01");//...ale on tego nie prze¿y³.
 	};
 	AI_Output (self,other,"DIA_Addon_Franco_HaiSuccess_08_02");//Dobra, walczy³eœ z wê¿ami - mo¿esz siê przydaæ - przynajmniej bardziej ni¿ wiêkszoœæ tutejszych ch³opaków.
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 	B_LogEntry (Topic_Addon_Franco,"Pomog³em Loganowi, ale to nie wystarczy³o, aby Franko wpuœci³ mnie do obozu.");
 };
@@ -332,7 +332,7 @@ FUNC VOID DIA_Addon_Franco_tafel_Info()
 	
 	AI_Output (self,other,"DIA_Addon_Franco_tafel_08_01");//Dobrze, znakomicie. Kruk bêdzie z ciebie zadowolony.
 	MIS_HlpEdgor = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	
 	B_LogEntry (Topic_Addon_Franco,"Przynios³em Frankowi kamienn¹ tablicê, której szuka³.");
 };

@@ -117,7 +117,7 @@ func void DIA_Addon_Baltram_LaresAbloese_Info ()
 	AI_Output	(other, self, "DIA_Addon_Baltram_LaresAbloese_15_04"); //To wiedz, ¿e Laresowi marzy siê zmiana pracy i odwo³anie z placówki w porcie.
 	AI_Output	(self, other, "DIA_Addon_Baltram_LaresAbloese_01_05"); //Zobaczê, czy uda mi siê znaleŸæ kogoœ, kto zechcia³by go zast¹piæ.
 	AI_Output	(other, self, "DIA_Addon_Baltram_LaresAbloese_15_06"); //Rozumiem.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 
 	B_LogEntry (TOPIC_Addon_BringRangerToLares,"Baltram, kupiec z targowiska, zajmie siê zorganizowaniem zastêpcy dla Laresa. Mo¿e Lares NARESZCIE opuœci port."); 
 
@@ -367,7 +367,7 @@ func void DIA_Addon_Baltram_SkipsRum_Info ()
 	B_GiveInvItems (self, other, ItMi_Gold, 10);		
 
 	TOPIC_END_BaltramSkipTrade = TRUE;
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -426,7 +426,7 @@ func void DIA_Baltram_Lieferung_Info ()
 	
 	MIS_Baltram_ScoutAkil = LOG_SUCCESS;
 	MIS_Nagur_Bote = LOG_FAILED;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Npc_RemoveInvItems (self, ItMi_BaltramPaket,1);
 	
@@ -527,7 +527,7 @@ func void DIA_Baltram_HaveYourWarez_Info ()
 		
 		MIS_BaltramTrade = LOG_SUCCESS;
 	
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 		
 		AI_Output (self, other, "DIA_Baltram_HaveYourWarez_01_05"); //No, teraz mo¿emy przejœæ do interesów.
 	};	

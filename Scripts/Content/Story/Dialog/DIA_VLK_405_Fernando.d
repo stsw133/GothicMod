@@ -182,7 +182,7 @@ func void DIA_Addon_Fernando_BanditTrader_Info ()
 
 	B_LogEntry (TOPIC_Addon_BanditTrader,"Fernando, zamorski kupiec, przyzna³, ¿e dostarcza³ broñ bandytom."); 
 
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Fernando_HatsZugegeben = TRUE;
 
 	if	((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
@@ -257,7 +257,7 @@ func void DIA_Addon_Fernando_BanditTrader_preis ()
 func void DIA_Addon_Fernando_BanditTrader_ja ()
 { 
 	AI_Output			(other, self, "DIA_Addon_Fernando_BanditTrader_ja_15_00"); //Dobra, umowa stoi.
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Npc_RemoveInvItems	(hero ,ItMw_Addon_BanditTrader, Npc_HasItems (other,ItMw_Addon_BanditTrader));
 	Npc_RemoveInvItem	(hero ,ItRi_Addon_BanditTrader);
 	Npc_RemoveInvItem	(hero ,ItWr_Addon_BanditTrader);
@@ -267,8 +267,8 @@ func void DIA_Addon_Fernando_BanditTrader_ja ()
 	CreateInvItems (self, ItMi_Gold, 200);									
 	B_GiveInvItems (self, other, ItMi_Gold, 200);		
 	AI_Output			(self, other, "DIA_Addon_Fernando_BanditTrader_ja_14_02"); //Jeszcze pierœcieñ i jesteœmy kwita.
-	CreateInvItems (self, ItRi_LifeSteal_01, 1);									
-	B_GiveInvItems (self, other, ItRi_LifeSteal_01, 1);		
+	CreateInvItems (self, ItRi_LS_01, 1);									
+	B_GiveInvItems (self, other, ItRi_LS_01, 1);		
 	Info_ClearChoices	(DIA_Addon_Fernando_BanditTrader);
 };
 func void DIA_Addon_Fernando_BanditTrader_nein ()
@@ -305,7 +305,7 @@ FUNC VOID DIA_Fernando_Success_Info()
 	if (Fernando_ImKnast == FALSE)
 	{
 		Fernando_Erz = TRUE;
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 		
 		AI_Output (self ,other,"DIA_Fernando_Success_14_01"); //I co? Jak wygl¹da sytuacja?
 		AI_Output (other ,self,"DIA_Fernando_Success_15_02"); //Z³o¿a siê wyczerpa³y, nie warto prowadziæ prac dla kilku skrzyñ rudy.
@@ -324,7 +324,7 @@ FUNC VOID DIA_Fernando_Success_Info()
 			else
 			{
 				AI_Output (self ,other,"DIA_Fernando_Minental_14_07"); //Proszê, weŸ ten pierœcieñ.
-				B_GiveInvItems (self,other, ItRi_Hp_02,1);
+				B_GiveInvItems (self,other, ItRi_Hp_01,1);
 			};
 		};
 	}

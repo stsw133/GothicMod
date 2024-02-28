@@ -2,15 +2,15 @@
 ///	SPL_LightningFlash
 ///******************************************************************************************
 
-const int SPL_Cost_LightningFlash		=	30;
-const int SPL_Damage_LightningFlash		=	30;	//150
-const int SPL_Scaling_LightningFlash	=	250;
+const int SPL_Cost_LightningFlash		=	80;	//30
+const int SPL_Damage_LightningFlash		=	80;	//150
+const int SPL_Scaling_LightningFlash	=	150;
 
 ///******************************************************************************************
 instance Spell_LightningFlash (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_LightningFlash;
+	damage_per_level					=	SPL_Damage_LightningFlash;
 	damageType							=	DAM_MAGIC;
 };
 

@@ -1,13 +1,13 @@
 ///******************************************************************************************
-///	ZS_RansackBody
+/// ZS_RansackBody
 ///******************************************************************************************
 func void ZS_RansackBody()
 {
 	Perception_Set_Normal();
 	
 	/// FUNC
-	AI_StandUp	(self);
-	AI_GotoNpc	(self, other);
+	AI_StandUp (self);
+	AI_GotoNpc (self, other);
 };
 
 ///******************************************************************************************
@@ -19,8 +19,8 @@ func int ZS_RansackBody_Loop()
 ///******************************************************************************************
 func void ZS_RansackBody_End()
 {
-	B_TurnToNpc (self, other);
-	AI_PlayAni (self, "T_PLUNDER");
+	B_TurnToNpc	(self, other);
+	AI_PlayAni	(self, "T_PLUNDER");
 	
 	if (Npc_HasItems(other, Holy_Hammer_MIS) > 0)
 	&& (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Garwig))

@@ -122,7 +122,7 @@ func void DIA_Dobar_beibringen_Info ()
 	
 	Log_CreateTopic	(TOPIC_Teacher_OC, LOG_NOTE);
 	B_LogEntry		(TOPIC_Teacher_OC, "Dobar mo¿e mnie nauczyæ, jak wykuwaæ lepszy orê¿.");
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 ///////////////////////////////////////////////////////////////////////

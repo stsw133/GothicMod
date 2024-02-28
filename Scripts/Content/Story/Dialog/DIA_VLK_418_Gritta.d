@@ -183,7 +183,7 @@ func void DIA_Gritta_WINE_Info()
 	AI_Output (self, other, "DIA_Gritta_WINE_16_02"); //Opowiem o tym, co dla mnie zrobi³eœ, wszystkim moim znajomym. Jest jeszcze na tym œwiecie ktoœ, kto wie co to honor, i kto...
 	AI_Output (other, self, "DIA_Gritta_WINE_15_03"); //Tak, oczywiœcie, to drobiazg.
 
-	B_GivePlayerXP(50);
+	B_GivePlayerExp(50);
 	B_GiveInvItems (self, other, ItFo_SouthWine, 1);
 	
 	AI_StopProcessInfos (self); 
@@ -339,7 +339,7 @@ FUNC VOID DIA_Gritta_Perm3U4U5_TurnsGood ()
 	
 	if (GrittaXP_Once == FALSE)
 	{
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 		GrittaXP_Once = TRUE;
 	};	
 };

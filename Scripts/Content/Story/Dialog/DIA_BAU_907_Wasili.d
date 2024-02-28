@@ -166,7 +166,7 @@ func void DIA_Wasili_FirstOldCoin_Info ()
 
 	IF (FirstOldCoin_angebotenXP_OneTime == FALSE)
 	{
-		B_GivePlayerXP(10);
+		B_GivePlayerExp(10);
 		FirstOldCoin_angebotenXP_OneTime = TRUE;
 	};
 };
@@ -270,7 +270,7 @@ func void DIA_Wasili_BringOldCoin_Info ()
 		if (OldCoinCount == 1)
 			{
 				AI_Output		(other, self, "DIA_Wasili_BringOldCoin_15_02"); //Jedn¹.
-				B_GivePlayerXP(10);
+				B_GivePlayerExp(10);
 				B_GiveInvItems (other, self, ItMi_OldCoin,1);
 				OldCoinCounter = OldCoinCounter + 1;
 			}
@@ -283,7 +283,7 @@ func void DIA_Wasili_BringOldCoin_Info ()
 				XP_BringOldCoins = (OldCoinCount * 10);
 				OldCoinCounter = (OldCoinCounter + OldCoinCount); 
 	
-				B_GivePlayerXP (XP_BringOldCoins);
+				B_GivePlayerExp (XP_BringOldCoins);
 			};
 
 	AI_Output			(self, other, "DIA_Wasili_BringOldCoin_01_04"); //Dziêki. Oto twoje pieni¹dze. Przynieœ mi wszystkie, które znajdziesz.

@@ -230,12 +230,12 @@ func void DIA_Addon_Vatras_Cavalorn_Info ()
 	
 	if (SaturasFirstMessageOpened == FALSE)
 	{
-		B_GivePlayerXP(200);
+		B_GivePlayerExp(200);
 		B_GiveInvItems (other, self, ItWr_SaturasFirstMessage_Addon_Sealed,1);
 	}
 	else
 	{
-		B_GivePlayerXP(50);
+		B_GivePlayerExp(50);
 		B_GiveInvItems (other, self, ItWr_SaturasFirstMessage_Addon,1);
 		AI_Output	(self, other, "DIA_Addon_Vatras_Cavalorn_05_02"); //Owszem. Tylko... By³ otwarty. Mam nadziejê, ¿e nie przeczyta³ go nikt niepowo³any.
 	};
@@ -270,7 +270,7 @@ func void DIA_Addon_Vatras_Cavalorn_Cavalorn()
 	AI_Output (other, self, "DIA_Addon_Vatras_Cavalorn_Cavalorn_15_02"); //Poleci³ mi przekazaæ, ¿e nie zd¹¿y³ na czas i ¿e zmierza na miejsce spotkania - gdziekolwiek by to nie by³o.
 	AI_Output (self, other, "DIA_Addon_Vatras_Cavalorn_Cavalorn_05_03"); //Widzê, ¿e zas³u¿y³eœ sobie na jego zaufanie... Ja równie¿ bêdê ci chyba musia³ zaufaæ.
 	
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	Info_ClearChoices	(DIA_Addon_Vatras_Cavalorn);
 };
 
@@ -802,7 +802,7 @@ func void DIA_Addon_Vatras_NowRanger_Info ()
 		SC_IsRanger = TRUE;
 		Lares_CanBringScToPlaces = TRUE;
 		MIS_Addon_Lares_ComeToRangerMeeting = LOG_RUNNING;
-		B_GivePlayerXP(400);
+		B_GivePlayerExp(400);
 	}
 	else
 	{
@@ -853,7 +853,7 @@ func void DIA_Addon_Vatras_CloseMeeting_Info ()
 
 	RangerMeetingRunning = LOG_SUCCESS; //Joly:Muss hier stehen!Sonst Chaos mit Rangern! -> Meeting
 	B_SchlussMitRangerMeeting ();
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 };
 
 
@@ -1003,7 +1003,7 @@ func void DIA_Addon_Vatras_MissingPeople_Report()
 		AI_Output	(self, other, "DIA_Addon_Vatras_MissingPeople_Report_05_12"); //Chyba jesteœ na dobrym tropie - oby tak dalej.
 		var int XP_Vatras_MissingPeopleReports;
 		XP_Vatras_MissingPeopleReports = (50 * Vatras_MissingPeopleReports );
-		B_GivePlayerXP (XP_Vatras_MissingPeopleReports);
+		B_GivePlayerExp (XP_Vatras_MissingPeopleReports);
 	}
 	else
 	{
@@ -1025,7 +1025,7 @@ func void DIA_Addon_Vatras_MissingPeople_Success()
 	};
 	AI_Output	(self, other, "DIA_Addon_Vatras_MissingPeople_Success_05_06"); //Dobra robota - a ju¿ zaczyna³em siê baæ, ¿e nigdy nie zdo³amy odkryæ prawdy.
 	MIS_Addon_Vatras_WhereAreMissingPeople = LOG_SUCCESS;
-	B_GivePlayerXP(400);
+	B_GivePlayerExp(400);
 };
 // ------------------------------------------------------------
 // Gefangene befreit
@@ -1061,7 +1061,7 @@ func void DIA_Addon_Vatras_Free_Info ()
 	
 	// ***Mike** Auskommentiert, weil FALSCHE funktion - bitte Rücksprache, bevor du's wieder änderst
 	//var string concatText;
-	//concatText = ConcatStrings (NAME_Bonus_ManaMax,IntToString (4));
+	//concatText = ConcatStrings (NAME_Bonus_MpMax, IntToString(4));
 	//PrintScreen (concatText, -1,-1,FONT_ScreenSmall,2); 
 };
 
@@ -1134,7 +1134,7 @@ func void DIA_Addon_Vatras_Waffen_Success ()
 		AI_Output (self, other, "DIA_Addon_Vatras_Waffen_Success_05_07"); //Oby Adanos oœwietli³ œcie¿kê, po której kroczysz.
 		
 		MIS_Vatras_FindTheBanditTrader = LOG_SUCCESS;
-		B_GivePlayerXP(200);
+		B_GivePlayerExp(200);
 	}
 	else
 	{
@@ -1304,7 +1304,7 @@ func void DIA_Addon_Vatras_SellStonplate_Info ()
 		B_GiveInvItems (self, other, ItPo_Health_03, anzahl+1);
 	};
 	
-	B_GivePlayerXP (30 * anzahl);
+	B_GivePlayerExp (30 * anzahl);
 };
 
 // *********************************************************
@@ -1421,7 +1421,7 @@ func void DIA_Vatras_INFLUENCE_Info ()
 	AI_Output (other, self, "DIA_Vatras_INFLUENCE_15_02"); //Chcê zostaæ czeladnikiem u jednego z mistrzów w dolnej czêœci miasta.
 	AI_Output (self, other, "DIA_Vatras_INFLUENCE_REPEAT_05_11"); //IdŸ wiêc z b³ogos³awieñstwem Adanosa, mój synu!
 	Snd_Play ("LevelUp");
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	Vatras_Segen = TRUE;
 	B_LogEntry (TOPIC_Thorben,"Vatras, Mag Wody, udzieli³ mi b³ogos³awieñstwa.");
 };
@@ -1851,7 +1851,7 @@ func void DIA_Vatras_MESSAGE_SUCCESS_Info ()
 	AI_Output (self, other, "DIA_Vatras_Add_05_14"); //Przyjmij wiêc moje podziêkowanie. Mo¿esz teraz wybraæ swoj¹ nagrodê.
 	
 	MIS_Vatras_Message = LOG_SUCCESS;
-	B_GivePlayerXP(100);
+	B_GivePlayerExp(100);
 	
 	Info_ClearChoices (DIA_Vatras_MESSAGE_SUCCESS);
 	Info_AddChoice 	  (DIA_Vatras_MESSAGE_SUCCESS,"1 szczaw królewski",DIA_Vatras_MESSAGE_SUCCESS_Plant);
@@ -1998,7 +1998,7 @@ func void DIA_Addon_Vatras_AddonSolved_Info ()
 		AI_Output	(self, other, "DIA_Addon_Vatras_AddonSolved_05_05"); //O ile dobrze pamiêtam, wi¹za³ siê on z Okiem Innosa?
 	};
 	VatrasCanLeaveTown_Kap3 = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -2036,7 +2036,7 @@ func void DIA_Vatras_INNOSEYEKAPUTT_Info ()
 	};
 
 	MIS_SCKnowsInnosEyeIsBroken  = TRUE;
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 
 	AI_Output			(other, self, "DIA_Vatras_INNOSEYEKAPUTT_15_02"); //Oko Innosa zosta³o uszkodzone.
 	AI_Output			(self, other, "DIA_Vatras_INNOSEYEKAPUTT_05_03"); //Wiem. Donieœli mi o tym napotkani nowicjusze.
@@ -2231,7 +2231,7 @@ func int DIA_Vatras_BEGINN_Condition ()
 func void DIA_Vatras_BEGINN_Info ()
 {
 	AI_Output			(other, self, "DIA_Vatras_BEGINN_15_00"); //Zrobi³em wszystko, o co prosi³eœ. Oto naprawione Oko.
-	B_GivePlayerXP(500);
+	B_GivePlayerExp(500);
 
 	B_GiveInvItems 		(other, self, ItAm_InnosEye_Broken, 1);
 	Npc_RemoveInvItem 	(self, ItAm_InnosEye_Broken);
@@ -2245,7 +2245,7 @@ func void DIA_Vatras_BEGINN_Info ()
 	{
 		AI_Output			(other, self, "DIA_Vatras_BEGINN_15_04"); //Tak. Oto one.
 		AI_Output			(self, other, "DIA_Vatras_BEGINN_05_05"); //Znakomicie.
-		B_GivePlayerXP(150);
+		B_GivePlayerExp(150);
 	}
 	else
 	{
@@ -2401,7 +2401,7 @@ instance DIA_Vatras_OBSESSION		(C_INFO)
 
 func int DIA_Vatras_OBSESSION_Condition ()
 {
-	if (SC_IsObsessed == TRUE)
+	if (bsObsession > 0)
 		{
 				return TRUE;
 		};
@@ -2500,7 +2500,7 @@ FUNC VOID DIA_Vatras_KnowWhereEnemy_Yes ()
 	AI_Output (other,self ,"DIA_Vatras_KnowWhereEnemy_Yes_15_00"); //Jestem zaszczycony twoj¹ propozycj¹. Spotkamy siê na przystani.
 	AI_Output (self ,other,"DIA_Vatras_KnowWhereEnemy_Yes_05_01"); //Spiesz siê. Nieprzyjaciel nie zasypia gruszek w popiele.
 	
-	B_GivePlayerXP(500);                                                                    
+	B_GivePlayerExp(500);                                                                    
 	                                                                                                           
 	
 	self.flags 		 = NPC_FLAG_IMMORTAL;

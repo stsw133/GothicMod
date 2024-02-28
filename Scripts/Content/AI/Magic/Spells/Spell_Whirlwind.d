@@ -2,16 +2,16 @@
 ///	SPL_Whirlwind
 ///******************************************************************************************
 
-const int SPL_Cost_Whirlwind			=	30;
-const int SPL_Damage_Whirlwind			=	0;
+const int SPL_Cost_Whirlwind			=	30;	//30
+const int SPL_Damage_Whirlwind			=	0;	//0
 const int SPL_Scaling_Whirlwind			=	0;
-const int SPL_Time_Whirlwind			=	10;
+const int SPL_Time_Whirlwind			=	10;	//10
 
 ///******************************************************************************************
 instance Spell_Whirlwind (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level					=	SPL_Damage_Whirlwind;
+	damage_per_level					=	SPL_Damage_Whirlwind;
 	damageType							=	DAM_MAGIC;
 	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };

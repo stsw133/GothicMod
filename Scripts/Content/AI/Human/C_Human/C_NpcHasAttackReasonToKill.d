@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	C_NpcHasAttackReasonToKill
+/// C_NpcHasAttackReasonToKill
 ///******************************************************************************************
-func int C_NpcHasAttackReasonToKill (var C_NPC slf)
+func int C_NpcHasAttackReasonToKill (var C_Npc slf)
 {
 	if (slf.aivar[AIV_ATTACKREASON] == AR_KILL)
 	|| (slf.aivar[AIV_ATTACKREASON] == AR_GuildEnemy)

@@ -263,7 +263,7 @@ func void DIA_Jorgen_NEUHIER_Info ()
 	if (Npc_KnowsInfo(other, DIA_Jorgen_Milten))
 	{
 		AI_Output			(self, other, "DIA_Jorgen_NEUHIER_07_02"); //Ale dziêki za pomoc. Milten rzeczywiœcie znalaz³ tu dla mnie miejsce.
-		B_GivePlayerXP(200);
+		B_GivePlayerExp(200);
 	};
 
 	if (hero.guild != GIL_KDF)
@@ -463,7 +463,7 @@ func void DIA_Jorgen_BEMYCAPTAIN3_Info ()
 	JorgenIsCaptain = TRUE;
 	Npc_ExchangeRoutine	(self,"WaitForShipCaptain");
 	
-	B_GivePlayerXP(2000);
+	B_GivePlayerExp(2000);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -545,7 +545,7 @@ func void DIA_Jorgen_PERM5_NOTCAPTAIN_Info ()
 
 			if (DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven == FALSE)
 			{
-			B_GivePlayerXP(250);
+			B_GivePlayerExp(250);
 			DIA_Jorgen_PERM5_NOTCAPTAIN_XPGiven = TRUE;
 			};
 		AI_StopProcessInfos (self);

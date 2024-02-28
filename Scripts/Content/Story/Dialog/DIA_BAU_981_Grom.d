@@ -132,6 +132,6 @@ FUNC VOID DIA_Grom_PayTeacher_Info()
 	B_GiveInvItems (other, self, Itfo_Bacon, 1);
 	AI_Output(other,self,"DIA_Grom_PayTeacher_15_00"); //Oto jedzenie.
 	AI_Output(self,other,"DIA_Grom_PayTeacher_08_01"); //Doskonale. Co teraz?
-	self.aivar[AIV_CanTeach] = true;
-	B_GivePlayerXP(50);
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
+	B_GivePlayerExp(50);
 };

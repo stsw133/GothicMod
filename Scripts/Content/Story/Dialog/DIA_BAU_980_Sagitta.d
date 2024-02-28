@@ -195,10 +195,11 @@ func void DIA_Sagitta_Sagitta_Herb_Info ()
 {
 	AI_Output			(other, self, "DIA_Sagitta_Sagitta_Herb_15_00"); //Znalaz³em s³oneczny aloes.
 	AI_Output			(self, other, "DIA_Sagitta_Sagitta_Herb_17_01"); //Dziêkujê. Mo¿esz mnie pytaæ, o co tylko zechcesz.
-	B_GiveInvItems (other,self,ItPl_SunHerb,1);
-	self.aivar[AIV_CanTeach] = true;
+	B_GiveInvItems		(other, self, ItPl_SunHerb, 1);
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
+	
 	MIS_Sagitta_Herb = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -314,7 +315,7 @@ instance DIA_Sagitta_OBSESSION		(C_INFO)
 
 func int DIA_Sagitta_OBSESSION_Condition ()
 {
-	if (SC_IsObsessed == TRUE)
+	if (bsObsession > 0)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
 				return TRUE;
@@ -355,7 +356,7 @@ func void DIA_Sagitta_Thekla_Info ()
 	AI_Output			(other, self, "DIA_Sagitta_Thekla_15_00"); //Thekla przysy³a mnie po odbiór przesy³ki.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_01"); //Ach, tak. W³aœciwie spodziewa³am siê jej ju¿ kilka dni temu.
 	AI_Output			(self, other, "DIA_Sagitta_Thekla_17_02"); //Oto paczka, dbaj o ni¹!
-	B_GivePlayerXP(150);
+	B_GivePlayerExp(150);
 	B_GiveInvItems (self, other, ItMi_TheklasPaket, 1);					
 };
 

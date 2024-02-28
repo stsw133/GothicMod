@@ -256,7 +256,7 @@ func void DIA_Harad_OrcSuccess_Info ()
 	};
 	
 	MIS_Harad_Orc = LOG_SUCCESS;
-	B_GivePlayerXP(200);
+	B_GivePlayerExp(200);
 	B_LogEntry (Topic_Lehrling,"Harad przyjmie mnie na swojego czeladnika, jeœli zdobêdê poparcie pozosta³ych mistrzów.");
 };
 
@@ -440,7 +440,7 @@ func void DIA_Harad_LEHRLING_OK()
 	{
 		AI_Output (self, other, "DIA_Harad_LEHRLING_OK_12_04"); //Poza tym czas, ¿ebyœ nabra³ si³. Marniejesz mi w oczach!
 	};
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	Player_IsApprentice = APP_Harad;
 	Npc_ExchangeRoutine (Lothar, "START");
 	
@@ -453,7 +453,7 @@ func void DIA_Harad_LEHRLING_OK()
 	B_LogEntry (Topic_Bonus,"Harad dobrze mi zap³aci za wykut¹ przeze mnie broñ.");
 	
 	Log_CreateTopic (Topic_CityTeacher, LOG_NOTE);
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	B_LogEntry (Topic_CityTeacher, "Harad mo¿e mnie nauczyæ rzemios³a kowalskiego. Mo¿e równie¿ zwiêkszyæ moj¹ si³ê.");
 	Info_ClearChoices (DIA_Harad_LEHRLING);
 };
@@ -510,7 +510,7 @@ func void DIA_Harad_Zustimmung_Info ()
 		
 		if (DIA_Harad_Zustimmung_Permanent == FALSE)
 		{
-			B_GivePlayerXP(100);
+			B_GivePlayerExp(100);
 			DIA_Harad_Zustimmung_Permanent = TRUE;
 		};
 		B_LogEntry (Topic_Lehrling,"Jeœli zechcê zostaæ czeladnikiem, Harad udzieli mi swojego poparcia.");
@@ -681,7 +681,7 @@ func void DIA_Harad_SellBlades_Info ()
 {
 	AI_Output (other, self, "DIA_Harad_SellBlades_15_00"); //Chcê sprzedaæ broñ, któr¹ wyku³em.
 	
-	var C_ITEM equipWeap; equipWeap = Npc_GetEquippedMeleeWeapon(other);
+	var C_Item equipWeap; equipWeap = Npc_GetEquippedMeleeWeapon(other);
 	
 	var int anzahl_common; anzahl_common = Npc_HasItems (other, ItMw_1H_Common_01);
 	if (Hlp_IsItem(equipWeap, ItMw_1H_Common_01) == TRUE) { anzahl_common = anzahl_common - 1; };

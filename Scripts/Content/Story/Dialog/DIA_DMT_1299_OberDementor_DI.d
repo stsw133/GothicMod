@@ -60,7 +60,7 @@ func void DIA_Schwarzmagier_HELLO_schlaefer ()
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_schlaefer_09_02"); //Mój Mistrz ukaza³ mi jedyny sposób postêpowania z wami, niewiernymi.
 
 	TOPIC_END_DEMENTOREN = TRUE;
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 };
 
 func void DIA_Schwarzmagier_HELLO_dmt ()
@@ -80,8 +80,8 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 	Wld_PlayEffect	("SFX_Circle",  self, self, 0, 0, 0, FALSE );
 	AI_PlayAni		(self,"T_PRACTICEMAGIC5");
 	
-	SC_ObsessionCounter = 100;
-	B_SCIsObsessed(hero);
+	bsObsession += 100;
+	B_SetScObsessed(hero);
 	
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_00"); //Doœæ tych bredni! Teraz nadejdzie twój koniec.
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_01"); //Twoje oczy zakryje ciemnoœæ, a twa dusza zniknie w zaœwiatach.
@@ -96,7 +96,7 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 		
 		if (hero.attribute[ATR_HITPOINTS] > 50)
 			{
-				hero.attribute[ATR_HITPOINTS] = ((hero.attribute[ATR_HITPOINTS])/2);
+				hero.attribute[ATR_HITPOINTS] /= 2;
 			};
 	};
 

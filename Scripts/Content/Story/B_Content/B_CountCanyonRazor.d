@@ -60,6 +60,6 @@ func int C_IAmCanyonRazor (var C_Npc slf)
 func void B_CountCanyonRazor()
 {
 	var string CanyonRazorLeft; CanyonRazorLeft = IntToString(10 - CanyonRazorBodyCount);
-	var string CanyonRazorText; CanyonRazorText = ConcatStrings(CanyonRazorLeft, PRINT_Addon_CanyonRazorsLeft);
+	var string CanyonRazorText; CanyonRazorText = ConcatStrings(CanyonRazorLeft, " - pozostałe brzytwiaki");
 	AI_PrintScreen (CanyonRazorText, -1, YPOS_GOLDGIVEN, FONT_ScreenSmall, 2);
 };

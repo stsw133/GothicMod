@@ -1,43 +1,46 @@
-func void ZS_Stand_Sweeping ()
-{	
+///******************************************************************************************
+/// ZS_Stand_Sweeping
+///******************************************************************************************
+func void ZS_Stand_Sweeping()
+{
 	Perception_Set_Normal();
 	
-	B_ResetAll (self);
+	B_ResetAll		(self);
+	AI_SetWalkmode	(self, NPC_WALK);
 	
-	AI_SetWalkmode 	(self,NPC_WALK);
-		
-	if (Npc_GetDistToWP (self,self.wp) > TA_DIST_SELFWP_MAX) 
+	if (Npc_GetDistToWP(self, self.wp) > TA_DIST_SELFWP_MAX)
     {
-		AI_GotoWP	(self, self.wp);
+		AI_GotoWP (self, self.wp);
 	};
-
-	if (Npc_HasItems (self,ItMi_Broom) == 0)
+	
+	if (Npc_HasItems(self, ItMi_Broom) == 0)
 	{
-		CreateInvItem (self,ItMi_Broom);
-	};	
+		CreateInvItem (self, ItMi_Broom);
+	};
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
 };
-	
-func int ZS_Stand_Sweeping_Loop ()
+
+func int ZS_Stand_Sweeping_Loop()
 {
-	if (Npc_IsOnFP (self, "SWEEP"))
-	{	
-		AI_AlignToFP (self);
+	if (Npc_IsOnFP(self, "SWEEP"))
+	{
+		AI_AlignToFP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
   			self.aivar[AIV_TAPOSITION] = NOTINPOS;
-  		};	
-	}	
-	else if (Wld_IsFPAvailable(self,"SWEEP"))
+  		};
+	}
+	else if (Wld_IsFPAvailable(self, "SWEEP"))
 	{
-		AI_GotoFP 		(self, "SWEEP");
-		AI_StandUp 		(self);
-		AI_AlignToFP 	(self);
+		AI_GotoFP		(self, "SWEEP");
+		AI_StandUp		(self);
+		AI_AlignToFP	(self);
+		
 		self.aivar[AIV_TAPOSITION] = NOTINPOS_WALK;
 	}
 	else
 	{
-		AI_AlignToWP (self);
+		AI_AlignToWP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
   		{
   			self.aivar[AIV_TAPOSITION] = NOTINPOS;
@@ -46,15 +49,14 @@ func int ZS_Stand_Sweeping_Loop ()
 	
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
 	{
-		AI_UseItemToState 	(self,ItMi_Broom,1);
+		AI_UseItemToState (self, ItMi_Broom, 1);
 		self.aivar[AIV_TAPOSITION] = ISINPOS;
 	};
-
-
+	
 	return LOOP_CONTINUE;
 };
 
-func void ZS_Stand_Sweeping_End ()
+func void ZS_Stand_Sweeping_End()
 {
 	AI_UseItemToState (self, ItMi_Broom, -1);
 };

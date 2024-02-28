@@ -2,7 +2,7 @@
 ///	SPL_Rage
 ///******************************************************************************************
 
-const int SPL_Cost_Rage					=	80;
+const int SPL_Cost_Rage					=	100;
 const int SPL_MinLvl_Rage				=	20;
 const int SPL_Scaling_Rage				=	20;
 
@@ -11,7 +11,7 @@ instance Spell_Rage (C_Spell_Proto)
 {
 	time_per_mana						=	0;
 	spelltype 							=	SPELL_BAD;
-	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;//_FALLBACK_NONE;
+	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };
 
 func int Spell_Logic_Rage (var int manaInvested)

@@ -180,7 +180,7 @@ func void DIA_Addon_Rangar_Erwischt_Info ()
 	AI_Output	(self, other, "DIA_Addon_Rangar_Erwischt_07_01"); //Eee... Ja... Ten tego... To nie twoja sprawa! Wynocha.
 	AI_Output	(other, self, "DIA_Addon_Rangar_Erwischt_15_02"); //Martin ucieszy siê, jak mu powiem, kto grzeba³ w jego rzeczach...
 	AI_Output	(self, other, "DIA_Addon_Rangar_Erwischt_07_03"); //A rób, co chcesz. Idê tam jeszcze raz.
-	B_GivePlayerXP(300);
+	B_GivePlayerExp(300);
 	AI_StopProcessInfos (self);
 	Npc_ExchangeRoutine	(self,"Start");
 	SC_GotRangar = TRUE;

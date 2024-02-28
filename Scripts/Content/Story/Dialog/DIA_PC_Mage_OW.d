@@ -439,7 +439,7 @@ FUNC VOID DIA_MiltenOW_TeachCircle2_Info()
 	AI_Output (other, self, "DIA_Milten_Add_15_00"); //WprowadŸ mnie do drugiego krêgu magii!
 	AI_Output (self, other, "DIA_Milten_Add_03_01"); //W zasadzie powinien siê tym zaj¹æ któryœ z nauczycieli naszego zakonu...
 	AI_Output (self, other, "DIA_Milten_Add_03_02"); //...ale w tej sytuacji mo¿emy chyba zrobiæ wyj¹tek.
-	self.aivar[AIV_CanTeach] = true;
+	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 };
 
 // ************************************************************

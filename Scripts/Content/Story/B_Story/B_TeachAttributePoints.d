@@ -15,13 +15,14 @@ func int B_TeachAttributePoints (var C_Npc slf, var C_Npc oth, var int attrib, v
 	oth.lp -= kosten;
 	
 	if		(attrib == ATR_HITPOINTS_MAX)	{	B_RaiseAttribute (oth, attrib, points*HP_PER_LP);	}
+	else if	(attrib == ATR_MANA_MAX)		{	B_RaiseAttribute (oth, attrib, points*MP_PER_LP);	}
 	else									{	B_RaiseAttribute (oth, attrib, points);				};
 	
-	if		(attrib == ATR_STRENGTH)		{	LearnedAttribute_STR += points;		}
-	else if (attrib == ATR_DEXTERITY)		{	LearnedAttribute_DEX += points;		}
-	else if (attrib == ATR_POWER)			{	LearnedAttribute_Power += points;	}
-	else if (attrib == ATR_MANA_MAX)		{	LearnedAttribute_Mana += points;	}
-	else if (attrib == ATR_HITPOINTS_MAX)	{	LearnedAttribute_HP += points;		};
+	if		(attrib == ATR_STRENGTH)		{	LearnedAttribute_STR += points;	}
+	else if (attrib == ATR_DEXTERITY)		{	LearnedAttribute_DEX += points;	}
+	else if (attrib == ATR_POWER)			{	LearnedAttribute_POW += points;	}
+	else if (attrib == ATR_MANA_MAX)		{	LearnedAttribute_MP += points;	}
+	else if (attrib == ATR_HITPOINTS_MAX)	{	LearnedAttribute_HP += points;	};
 	
 	return true;
 };

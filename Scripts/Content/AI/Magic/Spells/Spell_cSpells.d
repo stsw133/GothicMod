@@ -10,7 +10,7 @@ const int SPL_Scaling_cSpells			=	175;
 instance Spell_BlueFireball (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level 					=	SPL_Damage_cSpells;
+	damage_per_level 					=	SPL_Damage_cSpells;
 	damageType							=	DAM_MAGIC;
 };
 
@@ -43,7 +43,7 @@ func void Spell_Cast_BlueFireball()
 instance Spell_RedFireball (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level 					=	SPL_Damage_cSpells;
+	damage_per_level 					=	SPL_Damage_cSpells;
 	damageType							=	DAM_MAGIC;
 };
 
@@ -76,7 +76,7 @@ func void Spell_Cast_RedFireball()
 instance Spell_GreenFireball (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level 					=	SPL_Damage_cSpells;
+	damage_per_level 					=	SPL_Damage_cSpells;
 	damageType							=	DAM_MAGIC;
 };
 
@@ -109,7 +109,7 @@ func void Spell_Cast_GreenFireball()
 instance Spell_YellowFireball (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-//	damage_per_level 					=	SPL_Damage_cSpells;
+	damage_per_level 					=	SPL_Damage_cSpells;
 	damageType							=	DAM_MAGIC;
 };
 

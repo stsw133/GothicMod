@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	ZS_HealSelf
+/// ZS_HealSelf
 ///******************************************************************************************
 func void ZS_HealSelf()
 {
@@ -16,7 +16,12 @@ func int ZS_HealSelf_Loop()
 	};
 	
 	/// FUNC
-	if (Npc_HasItems(self, ItPo_Health_03) > 0)
+	if (Npc_HasItems(self, ItPo_Health_Addon_04) > 0)
+	{
+		AI_UseItem (self, ItPo_Health_Addon_04);
+		return LOOP_CONTINUE;
+	}
+	else if (Npc_HasItems(self, ItPo_Health_03) > 0)
 	{
 		AI_UseItem (self, ItPo_Health_03);
 		return LOOP_CONTINUE;

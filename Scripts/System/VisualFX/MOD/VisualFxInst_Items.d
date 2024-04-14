@@ -26,14 +26,135 @@ instance SPELLFX_CRYSTALGLOW_KEY_CAST (C_PARTICLEFXEMITKEY)
 instance SPELLFX_SOULDUST (CFX_BASE_PROTO)
 {
 	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 FIRE";
 	visAlpha				=	1;
 	emtrjmode_s				=	"FIXED";
 	lightPresetname			=	"JUSTWHITE";
 	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD1";
+	emFXCreatedOwnTrj 		=	true;
 };
 instance SPELLFX_SOULDUST_KEY_CAST (C_PARTICLEFXEMITKEY)
 {
 	lightrange				=	0.001;
+};
+instance spellFX_SOULDUST_CHILD1 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 R UPPERARM";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD2";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD2 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 L UPPERARM";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD3";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD3 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 L HAND";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD4";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD4 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 R HAND";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD5";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD5 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 L FOOT";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD6";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD6 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 R FOOT";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD7";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD7 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 L THIGH";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD8";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD8 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 R THIGH";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD9";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD9 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 L CALF";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD10";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD10 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 R CALF";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD11";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD11 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01 Spine2";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emAdjustShpToOrigin		=	true;
+	emfxcreate_s			=	"spellFX_SOULDUST_CHILD12";
+	emFXCreatedOwnTrj 		=	true;
+};
+instance spellFX_SOULDUST_CHILD12 (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_SOULDUST";
+	emTrjOriginNode 		=	"BIP01";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	emFXCreatedOwnTrj 		=	true;
 };
 
 instance SPELLFX_CHAOSDUST (CFX_BASE_PROTO)
@@ -142,7 +263,7 @@ instance SPELLFX_FIREARMOR_ENERGY (CFX_BASE_PROTO)
 ///******************************************************************************************
 /// Potion particles
 ///******************************************************************************************
-instance SPELLFX_NIGHTVISION (CFX_BASE_PROTO)
+instance SPELLFX_NIGHTVISION (CFx_Base_Proto)
 {
 	visname_s				=	"PFX_NIGHTVISION_LEFT";
 	visalpha				=	1;
@@ -167,7 +288,7 @@ instance SPELLFX_NIGHTVISION_KEY_CAST (C_PARTICLEFXEMITKEY)
 	lightrange				=	750;
 };
 
-instance SPELLFX_NIGHTVISION_RIGHT (CFX_BASE_PROTO)
+instance SPELLFX_NIGHTVISION_RIGHT (CFx_Base_Proto)
 {
 	visname_s				=	"PFX_NIGHTVISION_RIGHT";
 	visalpha				=	1;
@@ -202,6 +323,87 @@ instance spellFX_DragonSkillGold (CFx_Base_Proto)
 	emTrjOriginNode 		=	"Bip01 Spine2";
 	emTrjTargetNode 		=	"ZS_RIGHTHAND";
 	emtrjdynupdatedelay		=	0.01;
+};
+
+///******************************************************************************************
+/// Learning particles
+///******************************************************************************************
+instance spellFX_LearnHP (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNHP";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnHP_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
+};
+
+instance spellFX_LearnMP (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNMP";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnMP_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
+};
+
+instance spellFX_LearnSP (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNSP";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnSP_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
+};
+
+instance spellFX_LearnSTR (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNSTR";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnSTR_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
+};
+
+instance spellFX_LearnDEX (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNDEX";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnDEX_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
+};
+
+instance spellFX_LearnPOW (CFx_Base_Proto)
+{
+	visname_S 				=	"PFX_LEARNPOW";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FOLLOW TARGET";
+	lightPresetname			=	"JUSTWHITE";
+	sfxid					=	"MFX_Icelance_Collide";
+};
+instance spellFX_LearnPOW_KEY_CAST (C_PARTICLEFXEMITKEY)
+{
+	lightrange				=	100;
 };
 
 ///******************************************************************************************

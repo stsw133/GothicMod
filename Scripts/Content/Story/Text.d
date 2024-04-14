@@ -199,7 +199,7 @@ const string TXT_GUILDS[GIL_MAX] =
 	"Prz. zombie",
 	"Dzikie zwierzê",
 	"Przyzwaniec",
-	"", /// 58 - Gil_Seperator_Orc
+	"", /// 58 - GIL_SEPERATOR_ORC
 	"Ork",
 	"Ork",
 	"Ork-o¿ywieniec",
@@ -217,116 +217,111 @@ const string TXT_SPELLS[MAX_SPELL] =
 	/// basic spells
 	"Œwiat³o",					// 0	SPL_Light
 	"Uleczenie",				// 1	SPL_Heal
+	"Teleport przedmiotu",		// 2	SPL_Telekinesis
 	
 	/// PAL spells
-	"B³ogos³awieñstwo",			// 2	SPL_PalBless
-	"Wiara",					// 3	SPL_PalFaith
-	"Œwiêta strza³a",			// 4	SPL_PalHolyBolt
-	"Chwa³a",					// 5	SPL_PalGlory
-	"Wygnanie z³a",				// 6	SPL_PalRepelEvil
-  	"Sprawiedliwoœæ",			// 7	SPL_PalJustice
-  	"Zniszczenie z³a",			// 8	SPL_PalDestroyEvil
-  	"TXT_SPL_RESERVED_9",		// 9	SPL_Reserved_9
-	
-  	/// npc spells
- 	"Pocisk nieprzytomnoœci",	// 10	SPL_ConcussionBolt
-	"Pocisk œmierci",			// 11	SPL_DeathBolt
-	"Smocza kula",				// 12	SPL_DragonBall
-	"Czarna smocza kula",		// 13	SPL_BlackDragonBall
-	"Niebieska kula",			// 14	SPL_BlueFireball
-	"Czerwona kula",			// 15	SPL_RedFireball
-	"Zielona kula",				// 16	SPL_GreenFireball
-	"¯ó³ta kula",				// 17	SPL_YellowFireball
+	"B³ogos³awieñstwo",			// 3	SPL_PalBless
+	"Wiara",					// 4	SPL_PalFaith
+	"Œwiêta strza³a",			// 5	SPL_PalHolyBolt
+	"Chwa³a",					// 6	SPL_PalGlory
+	"Wygnanie z³a",				// 7	SPL_PalRepelEvil
+  	"Sprawiedliwoœæ",			// 8	SPL_PalJustice
+  	"Zniszczenie z³a",			// 9	SPL_PalDestroyEvil
 	
 	/// common spells
+ 	"Wskrzeszenie",				// 10	SPL_Resurrection
+	"Sza³",						// 11	SPL_Rage
+	"Uwodzenie",				// 12	SPL_Seduction
+	"TXT_SPL_RESERVED_13",		// 13	SPL_Reserved_13
+	"TXT_SPL_RESERVED_14",		// 14	SPL_Reserved_14
+	"TXT_SPL_RESERVED_15",		// 15	SPL_Reserved_15
+	"TXT_SPL_RESERVED_16",		// 16	SPL_Reserved_16
+	"TXT_SPL_RESERVED_17",		// 17	SPL_Reserved_17
 	"Noc w dzieñ",				// 18	SPL_NightToDay
 	"Ognista strza³a",			// 19	SPL_FireBolt
 	
 	"Lodowa strza³a",			// 20	SPL_IceBolt
-	"Lodowa lanca",				// 21	SPL_IceLance
+	"Ukrycie",					// 21	SPL_Stealth
 	"Szept umar³ych",			// 22	SPL_SkullBolt
 	"Kula ognia",				// 23	SPL_InstantFireball
 	"Ma³a b³yskawica",			// 24	SPL_Zap
-	"Wir",						// 25	SPL_Whirlwind
+	"Kula szlamu",				// 25	SPL_Slimeball
 	"Piêœæ wichru",				// 26	SPL_WindFist
 	"Uœpienie",					// 27	SPL_Sleep
 	"Amnezja",					// 28	SPL_Charm
 	"B³yskawica",				// 29	SPL_LightningFlash
 	
 	"Du¿a kula ognia",			// 30	SPL_ChargeFireball
-	"Œlepa furia",				// 31	SPL_Whirlwind
+	"Kl¹twa",					// 31	SPL_Curse
 	"Strach",					// 32	SPL_Fear
 	"Bry³a lodu",				// 33	SPL_IceCube
 	"Piorun kulisty",			// 34	SPL_ChargeZap
-	"Gejzer",					// 35	SPL_Geyser
+	"Tworzenie golema",			// 35	SPL_SummonGolem
 	"Zniszczenie nieumar³ych",	// 36	SPL_DestroyUndead
 	"Du¿a burza ognista",		// 37	SPL_Pyrokinesis
 	"Ma³a burza ognista",		// 38	SPL_Firestorm
 	"Lodowa fala",				// 39	SPL_IceWave
 	
-	"Wodna piêœæ",				// 40	SPL_WaterFist
-	"Burza gradowa",			// 41	SPL_Thunderstorm
+	"Przyzwanie demona",		// 40	SPL_SummonDemon
+	"Eksplozja",				// 41	SPL_Explosion
 	"Deszcz ognia",				// 42	SPL_Firerain
 	"Tchnienie œmierci",		// 43	SPL_BreathOfDeath
 	"Fala œmierci",				// 44	SPL_MassDeath
-	"Spowolnienie czasu",		// 45	SPL_SlowTime
+	"Armia ciemnoœci",			// 45	SPL_ArmyOfDarkness
 	"Zmniejszenie potwora",		// 46	SPL_Shrink
-	"Teleport przedmiotu",		// 47	SPL_Telekinesis
-	"Spuchniêcie",				// 48	SPL_Inflate
-	"Duch",						// 49	SPL_Ghost
+	"Oswojenie",				// 47	SPL_Tame
+	"Runiczne echa",			// 48	SPL_RunicEchoes
+	"Spowolnienie czasu",		// 49	SPL_SlowTime
 	
-	"Korzeñ",					// 50	SPL_GreenTentacle
-	"Kradzie¿ energii",			// 51	SPL_SuckEnergy
-	"Kula energii",				// 52	SPL_EnergyBall
-	"Rój owadów",				// 53	SPL_Swarm
-	"Krzyk umar³ych",			// 54	SPL_Skull
+	"Aura lecznicza",			// 51	SPL_HealingAura
+	"Kamienna skóra",			// 51	SPL_StoneSkin
+	"Tarcza powietrza",			// 52	SPL_AirShield
+	"Tarcza ognia",				// 53	SPL_FireShield
+	"Mroczna bariera",			// 54	SPL_DarkBarrier
+	
+	/// player spells
+	"Gniew Beliara",			// 55	SPL_BeliarRage
+	"Œwiêty pocisk",			// 56	SPL_MasterOfDisaster
 	
 	/// special spells
-	"Œwiêty pocisk",			// 55	SPL_MasterOfDisaster
-	"Gniew Beliara",			// 56	SPL_BeliarRage
 	"Teleportacja",				// 57	SPL_Teleport
 	"Transformacja",			// 58	SPL_Transform
 	"Przyzwanie",				// 59	SPL_Summon
 	
-	/// MYS spells
-	"Mistyczna kula",			// 60	SPL_MysBall
-	"Aura lecznicza",			// 61	SPL_MysAura
-	"Korzeñ",					// 62	SPL_MysRoot
-	"Oswojenie",				// 63	SPL_MysTame
-	"Runiczne echo",			// 64	SPL_MysEcho
-	"Spowolnienie czasu",		// 65	SPL_MysSlow
+	/// npc spells
+	"Pocisk nieprzytomnoœci",	// 60	SPL_ConcussionSpell
+	"Pocisk œmierci",			// 61	SPL_DeathSpell
+	"Smocza kula",				// 62	SPL_Dragonball
+	"Czarna smocza kula",		// 63	SPL_BlackDragonball
+	"Niebieski ogieñ",			// 64	SPL_BlueFireball
+	"Czerwony ogieñ",			// 65	SPL_RedFireball
+	"TXT_SPL_RESERVED_66",		// 66	SPL_Reserved_66
+	"TXT_SPL_RESERVED_67",		// 67	SPL_Reserved_67
+	"TXT_SPL_RESERVED_68",		// 68	SPL_Reserved_68
+	"TXT_SPL_RESERVED_69",		// 69	SPL_Reserved_69
 	
-	/// GEO spells
-	"G³az",						// 66	SPL_GeoStone
-	"Kamienna skóra",			// 67	SPL_GeoAura
-	"Piedesta³",				// 68	SPL_GeoElevate
-	"Tworzenie golema",			// 69	SPL_GeoGolem
-	"Trzêsienie ziemi",			// 70	SPL_GeoQuake
-	"Zapaœæ",					// 71	SPL_GeoCollapse
+	/// common spells
+	"Burza gradowa",			// 70	SPL_Thunderstorm
+	"Wir",						// 71	SPL_Whirlwind
+	"Wodna piêœæ",				// 72	SPL_WaterFist
+	"Lodowa lanca",				// 73	SPL_IceLance
+	"Spuchniêcie",				// 74	SPL_Inflate
+	"Gejzer",					// 75	SPL_Geyser
+	"Pyrokineza",				// 76	SPL_Fireburning
+	"£añcuch b³yskawic",		// 77	SPL_ChainLightning
+	"Huragan",					// 78	SPL_Hurricane
+	"Oœlepienie",				// 79	SPL_LightFlash
 	
-	/// ELE spells
-	"Lodowa lanca",				// 72	SPL_EleLance
-	"Aura powietrza",			// 73	SPL_EleAura
-	"Zamro¿enie",				// 74	SPL_EleFreeze
-	"Huragan",					// 75	SPL_EleHurricane
-	"£añcuch b³yskawic",		// 76	SPL_EleLightning
-	"Burza gradowa",			// 77	SPL_EleThunderstorm
-	
-	/// PYR spells
-	"Kula ognia",				// 78	SPL_PyrFireball
-	"Aura ognia",				// 79	SPL_PyrAura
-	"Pyrokineza",				// 80	SPL_PyrBurning
-	"Bomba",					// 81	SPL_PyrFirebomb
-	"Eksplozja",				// 82	SPL_PyrExplosion
-	"Deszcz ognia",				// 83	SPL_PyrFirerain
-	
-	/// NEC spells
-	"Kradzie¿ ¿ycia",			// 84	SPL_NecLifesteal
-	"Mroczna bariera",			// 85	SPL_NecAura
-	"Kl¹twa",					// 86	SPL_NecCurse
-	"Plaga",					// 87	SPL_NecPlague
-	"Przyzwanie demona",		// 88	SPL_NecDemon
-	"Tchnienie œmierci",		// 89	SPL_NecDeath
+	"Plaga",					// 80	SPL_Plague
+	"Rój owadów",				// 81	SPL_Swarm
+	"Korzeñ",					// 82	SPL_GreenTentacle
+	"Trzêsienie ziemi",			// 83	SPL_Earthquake
+	"G³az",						// 84	SPL_Rock
+	"Kula energii",				// 85	SPL_Mysticball
+	"Kradzie¿ ¿ycia",			// 86	SPL_SuckEnergy
+	"Krzyk umar³ych",			// 87	SPL_Skull
+	"Piedesta³",				// 88	SPL_Elevate
+	"Zmia¿d¿enie",				// 89	SPL_Crush
 	
 	/// ...
 	"TXT_SPL_RESERVED_90",		// 90	SPL_Reserved_90
@@ -344,6 +339,7 @@ const string TXT_SPELLS[MAX_SPELL] =
 /// basic spells
 const string NAME_SPL_Light					=	"Œwiat³o";
 const string NAME_SPL_Heal					=	"Uleczenie";
+const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
 
 /// PAL spells
 const string NAME_SPL_PalBless				=	"B³ogos³awieñstwo";
@@ -354,110 +350,91 @@ const string NAME_SPL_PalRepelEvil			=	"Wygnanie z³a";
 const string NAME_SPL_PalJustice			=	"Sprawiedliwoœæ";
 const string NAME_SPL_PalDestroyEvil		=	"Zniszczenie z³a";
 
-/// npc spells
-const string NAME_SPL_ConcussionBolt		=	"Pocisk nieprzytomnoœci";
-const string NAME_SPL_DeathBolt				=	"Pocisk œmierci";
-const string NAME_SPL_DragonBall			=	"Smocza kula";
-const string NAME_SPL_BlackDragonBall		=	"Czarna smocza kula";
-const string NAME_SPL_BlueFireball			=	"Zaklêcie Setrona";
-const string NAME_SPL_RedFireball			=	"Zaklêcie Azerotha";
-const string NAME_SPL_GreenFireball			=	"Zaklêcie Methiona";
-const string NAME_SPL_YellowFireball		=	"Zaklêcie Yataru";
-
 /// common spells
+const string NAME_SPL_Resurrection			=	"Wskrzeszenie";
+const string NAME_SPL_Rage					=	"Sza³";
+const string NAME_SPL_Seduction				=	"Uwodzenie";
 const string NAME_SPL_NightToDay			=	"Noc w dzieñ";
 const string NAME_SPL_FireBolt				=	"Ognista strza³a";
 
 const string NAME_SPL_IceBolt				=	"Lodowa strza³a";
-const string NAME_SPL_IceLance				=	"Lodowa lanca";
+const string NAME_SPL_Stealth				=	"Ukrycie";
 const string NAME_SPL_SkullBolt				=	"Szept umar³ych";
 const string NAME_SPL_InstantFireball		=	"Kula ognia";
 const string NAME_SPL_Zap					=	"Ma³a b³yskawica";
-const string NAME_SPL_Whirlwind				=	"Wir";
+const string NAME_SPL_SlimeBall				=	"Kula szlamu";
 const string NAME_SPL_WindFist				=	"Piêœæ wichru";
 const string NAME_SPL_Sleep					=	"Uœpienie";
 const string NAME_SPL_Charm					=	"Amnezja";
 const string NAME_SPL_LightningFlash		=	"B³yskawica";
 
 const string NAME_SPL_ChargeFireball		=	"Du¿a kula ognia";
-const string NAME_SPL_Rage					=	"Œlepa furia";
+const string NAME_SPL_Curse					=	"Kl¹twa";
 const string NAME_SPL_Fear					=	"Strach";
 const string NAME_SPL_IceCube				=	"Bry³a lodu";
 const string NAME_SPL_ChargeZap				=	"Piorun kulisty";
-const string NAME_SPL_Geyser				=	"Gejzer";
+const string NAME_SPL_SummonGolem			=	"Tworzenie golema";
 const string NAME_SPL_DestroyUndead			=	"Zniszczenie nieumar³ych";
 const string NAME_SPL_Pyrokinesis			=	"Du¿a burza ognista";
 const string NAME_SPL_Firestorm				=	"Ma³a burza ognista";
 const string NAME_SPL_IceWave				=	"Lodowa fala";
 
-const string NAME_SPL_WaterFist				=	"Wodna piêœæ";
-const string NAME_SPL_Thunderstorm			=	"Burza gradowa";
+const string NAME_SPL_SummonDemon			=	"Przyzwanie demona";
+const string NAME_SPL_Explosion				=	"Eksplozja";
 const string NAME_SPL_Firerain				=	"Deszcz ognia";
 const string NAME_SPL_BreathOfDeath			=	"Tchnienie œmierci";
 const string NAME_SPL_MassDeath				=	"Fala œmierci";
-const string NAME_SPL_SlowTime				=	"Spowolnienie czasu";
+const string NAME_SPL_ArmyOfDarkness		=	"Armia ciemnoœci";
 const string NAME_SPL_Shrink				=	"Zmniejszenie potwora";
-const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
-const string NAME_SPL_Inflate				=	"Spuchniêcie";
+const string NAME_SPL_Tame					=	"Oswojenie";
+const string NAME_SPL_RunicEchoes			=	"Runiczne echa";
+const string NAME_SPL_SlowTime				=	"Spowolnienie czasu";
 
-const string NAME_SPL_GreenTentacle			=	"Korzeñ";
-const string NAME_SPL_SuckEnergy			=	"Kradzie¿ energii";
-const string NAME_SPL_Energyball			=	"Gniew Beliara";
-const string NAME_SPL_Swarm					=	"Rój owadów";
-const string NAME_SPL_Skull					=	"Krzyk umar³ych";
+const string NAME_SPL_HealingAura			=	"Aura lecznicza";
+const string NAME_SPL_StoneSkin				=	"Kamienna skóra";
+const string NAME_SPL_AirShield				=	"Tarcza powietrza";
+const string NAME_SPL_FireShield			=	"Tarcza ognia";
+const string NAME_SPL_DarkBarrier			=	"Mroczna bariera";
+
+/// player spells
+const string NAME_SPL_BeliarRage			=	"Gniew Beliara";
+const string NAME_SPL_MasterOfDisaster		=	"Œwiêty pocisk";
 
 /// special spells
-const string NAME_SPL_MasterOfDisaster		=	"Œwiêty pocisk";
-const string NAME_SPL_BeliarRage			=	"Gniew Beliara";
-
 const string NAME_SPL_Teleport				=	"Teleportacja";
 const string NAME_SPL_Transform				=	"Przemiana";
 const string NAME_SPL_Summon				=	"Przyzwanie";
 
-/// MYS spells
-const string NAME_SPL_MysBolt				=	"Mistyczny pocisk";
-const string NAME_SPL_MysBall				=	"Mistyczna kula";
-const string NAME_SPL_MysAura				=	"Aura lecznicza";
-const string NAME_SPL_MysRoot				=	"Korzeñ";
-const string NAME_SPL_MysTame				=	"Oswojenie";
-const string NAME_SPL_MysEcho				=	"Runiczne echo";
-const string NAME_SPL_MysSlow				=	"Spowolnienie czasu";
+/// npc spells
+const string NAME_SPL_ConcussionSpell		=	"Pocisk nieprzytomnoœci";
+const string NAME_SPL_DeathSpell			=	"Pocisk œmierci";
+const string NAME_SPL_Dragonball			=	"Smocza kula";
+const string NAME_SPL_BlackDragonball		=	"Czarna smocza kula";
+const string NAME_SPL_BlueFireball			=	"Niebieski ogieñ";
+const string NAME_SPL_RedFireball			=	"Czerwony ogieñ";
 
-/// GEO spells
-const string NAME_SPL_GeoBolt				=	"Kamienny pocisk";
-const string NAME_SPL_GeoStone				=	"G³az";
-const string NAME_SPL_GeoAura				=	"Kamienna skóra";
-const string NAME_SPL_GeoElevate			=	"Piedesta³";
-const string NAME_SPL_GeoGolem				=	"Tworzenie golema";
-const string NAME_SPL_GeoQuake				=	"Trzêsienie ziemi";
-const string NAME_SPL_GeoCollapse				=	"Zapaœæ";
+/// common spells
+const string NAME_SPL_Thunderstorm			=	"Burza gradowa";
+const string NAME_SPL_Whirlwind				=	"Wir";
+const string NAME_SPL_WaterFist				=	"Wodna piêœæ";
+const string NAME_SPL_IceLance				=	"Lodowa lanca";
+const string NAME_SPL_Inflate				=	"Spuchniêcie";
+const string NAME_SPL_Geyser				=	"Gejzer";
+const string NAME_SPL_Fireburning			=	"Pyrokineza";
+const string NAME_SPL_ChainLightning		=	"£añcuch b³yskawic";
+const string NAME_SPL_Hurricane				=	"Huragan";
+const string NAME_SPL_LightFlash			=	"Oœlepienie";
 
-/// ELE spells
-const string NAME_SPL_EleBolt				=	"Lodowy pocisk";
-const string NAME_SPL_EleLance				=	"Lodowa lanca";
-const string NAME_SPL_EleAura				=	"Aura powietrza";
-const string NAME_SPL_EleFreeze				=	"Zamro¿enie";
-const string NAME_SPL_EleHurricane			=	"Huragan";
-const string NAME_SPL_EleLightning			=	"£añcuch b³yskawic";
-const string NAME_SPL_EleThunderstorm		=	"Burza gradowa";
-
-/// PYR spells
-const string NAME_SPL_PyrBolt				=	"Ognisty pocisk";
-const string NAME_SPL_PyrFireball			=	"Kula ognia";
-const string NAME_SPL_PyrAura				=	"Aura ognia";
-const string NAME_SPL_PyrBurning			=	"Pyrokineza";
-const string NAME_SPL_PyrFirebomb			=	"Bomba";
-const string NAME_SPL_PyrExplosion			=	"Eksplozja";
-const string NAME_SPL_PyrFirerain			=	"Deszcz ognia";
-
-/// NEC spells
-const string NAME_SPL_NecBolt				=	"Szept umar³ych";
-const string NAME_SPL_NecLifesteal			=	"Kradzie¿ ¿ycia";
-const string NAME_SPL_NecAura				=	"Mroczna bariera";
-const string NAME_SPL_NecCurse				=	"Kl¹twa";
-const string NAME_SPL_NecPlague				=	"Plaga";
-const string NAME_SPL_NecDemon				=	"Przyzwanie demona";
-const string NAME_SPL_NecDeath				=	"Tchnienie œmierci";
+const string NAME_SPL_Plague				=	"Plaga";
+const string NAME_SPL_Swarm					=	"Rój owadów";
+const string NAME_SPL_GreenTentacle			=	"Korzeñ";
+const string NAME_SPL_Earthquake			=	"Trzêsienie ziemi";
+const string NAME_SPL_Rock					=	"G³az";
+const string NAME_SPL_Mysticball			=	"Kula energii";
+const string NAME_SPL_SuckEnergy			=	"Kradzie¿ energii";
+const string NAME_SPL_Skull					=	"Krzyk umar³ych";
+const string NAME_SPL_Elevate				=	"Piedesta³";
+const string NAME_SPL_Crush					=	"Zmia¿d¿enie";
 
 ///******************************************************************************************
 ///	TALENTS NAMES
@@ -621,6 +598,9 @@ const string NAME_EffectPerSec				=	"Efekt/sek.: ";
 const string NAME_HealingPerCast			=	"Uleczenie: ";
 const string NAME_LevelPerCast				=	"Max. poziom celu: ";
 const string NAME_ScalingPerPower			=	"Skalowanie na 100% dod. mocy: ";
+
+const string NAME_DamageTrue				=	"Nieuchronne: ";
+const string NAME_DamageShielded			=	"Absorbowano: ";
 
 /// ------ protections ------
 const string NAME_Prot_Physical				=	"Odpornoœæ fizyczna: ";
@@ -890,22 +870,3 @@ const string STR_INFO_TRADE_EXIT			=	"Wróæ";
 
 const string MENU_TEXT_NEEDS_APPLY			=	"Wciœnij klawisz [Enter], aby w³¹czyæ!";
 const string MENU_TEXT_NEEDS_RESTART		=	"Niektóre ustawienia zostan¹ wprowadzone dopiero po ponownym uruchomieniu gry.";
-
-///******************************************************************************************
-///	CHAPTER NAMES
-///******************************************************************************************
-
-const string TEXT_Chapter					=	"Rozdzia³ ";
-
-const string TEXT_Chapter_01				=	"Witamy w Kolonii!";
-const string TEXT_Chapter_02				=	"Gniazdo pe³zaczy";
-const string TEXT_Chapter_03				=	"Staro¿ytna magia";
-const string TEXT_Chapter_04				=	"Xardas";
-const string TEXT_Chapter_05				=	"Stra¿nicy portalu";
-const string TEXT_Chapter_06				=	"Le¿e Œni¹cego";
-const string TEXT_Chapter_07				=	"Zagro¿enie";
-const string TEXT_Chapter_08				=	"Powrót do Kolonii";
-const string TEXT_Chapter_09				=	"Oko Innosa";
-const string TEXT_Chapter_10				=	"Polowanie na smoki";
-const string TEXT_Chapter_11				=	"Rozstanie";
-const string TEXT_Chapter_12				=	"Dwór Irdorath";

@@ -1,12 +1,11 @@
 ///******************************************************************************************
-func void B_GiveTradeInv_Milten_DI (var C_NPC slf)
+func void B_GiveTradeInv_Milten_DI (var C_Npc slf)
 {
 	CreateInvItems (slf, ItMi_Gold, 380);
 	
-	CreateInvItems (slf, ItPl_SwampHerb, 13);
-	
-	CreateInvItems (slf, ItPl_Temp_Herb, 9);
 	CreateInvItems (slf, ItPl_Perm_Herb, 1);
+	CreateInvItems (slf, ItPl_SwampHerb, 13);
+	CreateInvItems (slf, ItPl_Temp_Herb, 9);
 	
 	CreateInvItems (slf, ItMi_Aquamarine, 3);
 	CreateInvItems (slf, ItMi_Rockcrystal, 3);
@@ -17,7 +16,6 @@ func void B_GiveTradeInv_Milten_DI (var C_NPC slf)
 	CreateInvItems (slf, ItPl_Mana_Herb_01, 13);
 	CreateInvItems (slf, ItPl_Mana_Herb_02, 8);
 	CreateInvItems (slf, ItPl_Mana_Herb_03, 2);
-	
 	CreateInvItems (slf, ItPl_Strength_Herb_01, 1);
 	
 	CreateInvItems (slf, ItPo_Health_02, 25);

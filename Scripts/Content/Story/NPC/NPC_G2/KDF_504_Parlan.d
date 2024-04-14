@@ -10,7 +10,7 @@ instance KDF_504_Parlan (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;

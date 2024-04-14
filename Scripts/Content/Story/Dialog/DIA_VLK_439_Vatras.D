@@ -1296,7 +1296,7 @@ func void DIA_Addon_Vatras_SellStonplate_Info ()
 	else if (anzahl >= 5)
 	{
 		AI_Output (self, other, "DIA_Addon_Vatras_SellStonplate_05_04"); //Przyjmij w nagrodê te kilka zwojów...
-		B_GiveInvItems (self, other, ItSc_PyrFireball, anzahl);
+		B_GiveInvItems (self, other, ItSc_InstantFireball, anzahl);
 	}
 	else // 1-4 Plates --> 2-5 Tränke
 	{

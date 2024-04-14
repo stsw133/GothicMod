@@ -17,7 +17,7 @@ prototype ItemPR_Amulet (C_Item)
 	INV_ZBIAS				=	INVCAM_ENTF_AMULETTE_STANDARD;
 };
 ///******************************************************************************************
-///	Warrior
+/// Warrior
 ///******************************************************************************************
 func void SetItAmAttributes_Warrior (var C_Item itm, var int kap)
 {
@@ -51,9 +51,8 @@ instance ItAm_Warrior_03 (ItemPR_Amulet)
 	description				=	"Ulepsz. amulet wojownika";
 	SetItAmAttributes_Warrior (self, 10);
 };
-
 ///******************************************************************************************
-///	Hunter
+/// Hunter
 ///******************************************************************************************
 func void SetItAmAttributes_Hunter (var C_Item itm, var int kap)
 {
@@ -87,65 +86,190 @@ instance ItAm_Hunter_03 (ItemPR_Amulet)
 	description				=	"Ulepsz. amulet ³owcy";
 	SetItAmAttributes_Hunter (self, 10);
 };
-
 ///******************************************************************************************
-///	Barbarian
+/// Guardian
 ///******************************************************************************************
-func void SetItAmAttributes_Barbarian (var C_Item itm, var int kap)
+func void SetItAmAttributes_Guardian (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*200;
 	itm.visual 				=	"ItAm_Prot_Fire_01.3ds";
 	
-	itm.change_atr[0]		=	ATR_STRENGTH;
-	itm.change_value[0]		=	kap;
+	itm.change_atr[0]		=	ATR_HITPOINTS_MAX;
+	itm.change_value[0]		=	kap*HP_PER_LP;
+	itm.protection[PROT_EDGE]		=	kap;
+	itm.protection[PROT_BLUNT]		=	kap;
+	itm.protection[PROT_POINT]		=	kap;
 	
-	itm.TEXT[1]				=	NAME_Bonus_STR;
+	itm.TEXT[1]				=	NAME_Bonus_HpMax;
 	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[2]				=	NAME_Bonus_SpMax;
-	itm.COUNT[2]			=	kap*SP_PER_LP;
+	itm.TEXT[2]				=	NAME_Prot_Physical;
+	itm.COUNT[2]			=	itm.protection[PROT_EDGE];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
-instance ItAm_Barbarian_01 (ItemPR_Amulet)
+instance ItAm_Guardian_01 (ItemPR_Amulet)
 {
-	description				=	"Amulet barbarzyñcy";
-	SetItAmAttributes_Barbarian (self, 3);
-	
-	on_equip				=	Equip_ItAm_Barbarian_01;
-	on_unequip				=	UnEquip_ItAm_Barbarian_01;
+	description				=	"Amulet stra¿nika";
+	SetItAmAttributes_Guardian (self, 3);
 };
-func void Equip_ItAm_Barbarian_01()		{ self.aivar[AIV_Stamina_MAX] += 3*SP_PER_LP; };
-func void UnEquip_ItAm_Barbarian_01()	{ self.aivar[AIV_Stamina_MAX] -= 3*SP_PER_LP; };
-
-instance ItAm_Barbarian_02 (ItemPR_Amulet)
+instance ItAm_Guardian_02 (ItemPR_Amulet)
 {
-	description				=	"Amulet barbarzyñcy";
-	SetItAmAttributes_Barbarian (self, 5);
-	
-	on_equip				=	Equip_ItAm_Barbarian_02;
-	on_unequip				=	UnEquip_ItAm_Barbarian_02;
+	description				=	"Amulet stra¿nika";
+	SetItAmAttributes_Guardian (self, 5);
 };
-func void Equip_ItAm_Barbarian_02()		{ self.aivar[AIV_Stamina_MAX] += 5*SP_PER_LP; };
-func void UnEquip_ItAm_Barbarian_02()	{ self.aivar[AIV_Stamina_MAX] -= 5*SP_PER_LP; };
-
-instance ItAm_Barbarian_03 (ItemPR_Amulet)
+instance ItAm_Guardian_03 (ItemPR_Amulet)
 {
-	description				=	"Ulepsz. amulet barbarzyñcy";
-	SetItAmAttributes_Barbarian (self, 10);
-	
-	on_equip				=	Equip_ItAm_Barbarian_03;
-	on_unequip				=	UnEquip_ItAm_Barbarian_03;
+	description				=	"Ulepsz. amulet stra¿nika";
+	SetItAmAttributes_Guardian (self, 10);
 };
-func void Equip_ItAm_Barbarian_03()		{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
-func void UnEquip_ItAm_Barbarian_03()	{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
-
 ///******************************************************************************************
-///	Mage
+/// Warden
+///******************************************************************************************
+func void SetItAmAttributes_Warden (var C_Item itm, var int kap)
+{
+	itm.value				=	kap*200;
+	itm.visual 				=	"ItAm_Prot_Mage_01.3ds";
+	
+	itm.change_atr[0]		=	ATR_HITPOINTS_MAX;
+	itm.change_value[0]		=	kap*HP_PER_LP;
+	itm.protection[PROT_FIRE]		=	kap;
+	itm.protection[PROT_MAGIC]		=	kap;
+	itm.protection[PROT_BARRIER]	=	kap;
+	
+	itm.TEXT[1]				=	NAME_Bonus_HpMax;
+	itm.COUNT[1]			=	itm.change_value[0];
+	itm.TEXT[2]				=	NAME_Prot_Magical;
+	itm.COUNT[2]			=	itm.protection[PROT_MAGIC];
+	itm.COUNT[5]			=	itm.value;
+};
+///******************************************************************************************
+instance ItAm_Warden_01 (ItemPR_Amulet)
+{
+	description				=	"Amulet nadzorcy";
+	SetItAmAttributes_Warden (self, 3);
+};
+instance ItAm_Warden_02 (ItemPR_Amulet)
+{
+	description				=	"Amulet nadzorcy";
+	SetItAmAttributes_Warden (self, 5);
+};
+instance ItAm_Warden_03 (ItemPR_Amulet)
+{
+	description				=	"Ulepsz. amulet nadzorcy";
+	SetItAmAttributes_Warden (self, 10);
+};
+///******************************************************************************************
+/// Monk
+///******************************************************************************************
+func void SetItAmAttributes_Monk (var C_Item itm, var int kap)
+{
+	itm.value				=	kap*200;
+	itm.visual 				=	"ItAm_Prot_Total_01.3ds";
+	
+	itm.change_atr[0]		=	ATR_MANA_MAX;
+	itm.change_value[0]		=	kap*MP_PER_LP;
+	itm.change_atr[1]		=	ATR_DEXTERITY;
+	itm.change_value[1]		=	kap;
+	
+	itm.TEXT[1]				=	NAME_Bonus_MpMax;
+	itm.COUNT[1]			=	itm.change_value[0];
+	itm.TEXT[2]				=	NAME_Bonus_DEX;
+	itm.COUNT[2]			=	itm.change_value[1];
+	itm.COUNT[5]			=	itm.value;
+};
+///******************************************************************************************
+instance ItAm_Monk_01 (ItemPR_Amulet)
+{
+	description				=	"Amulet mnicha";
+	SetItAmAttributes_Monk (self, 3);
+};
+instance ItAm_Monk_02 (ItemPR_Amulet)
+{
+	description				=	"Amulet mnicha";
+	SetItAmAttributes_Monk (self, 5);
+};
+instance ItAm_Monk_03 (ItemPR_Amulet)
+{
+	description				=	"Ulepsz. amulet mnicha";
+	SetItAmAttributes_Monk (self, 10);
+};
+///******************************************************************************************
+/// Druid
+///******************************************************************************************
+func void SetItAmAttributes_Druid (var C_Item itm, var int kap)
+{
+	itm.value				=	kap*200;
+	itm.visual				=	"ItAm_Hp_01.3ds";
+	
+	itm.change_atr[0]		=	ATR_HITPOINTS_MAX;
+	itm.change_value[0]		=	kap*HP_PER_LP;
+	itm.change_atr[1]		=	ATR_MANA_MAX;
+	itm.change_value[1]		=	kap*MP_PER_LP;
+	
+	itm.TEXT[1]				=	NAME_Bonus_HpMax;
+	itm.COUNT[1]			=	itm.change_value[0];
+	itm.TEXT[2]				=	NAME_Bonus_MpMax;
+	itm.COUNT[2]			=	itm.change_value[1];
+	itm.COUNT[5]			=	itm.value;
+};
+///******************************************************************************************
+instance ItAm_Druid_01 (ItemPR_Amulet)
+{
+	description				=	"Amulet druida";
+	SetItAmAttributes_Druid (self, 3);
+};
+instance ItAm_Druid_02 (ItemPR_Amulet)
+{
+	description				=	"Amulet druida";
+	SetItAmAttributes_Druid (self, 5);
+};
+instance ItAm_Druid_03 (ItemPR_Amulet)
+{
+	description				=	"Ulepsz. amulet druida";
+	SetItAmAttributes_Druid (self, 10);
+};
+///******************************************************************************************
+/// Paladin
+///******************************************************************************************
+func void SetItAmAttributes_Paladin (var C_Item itm, var int kap)
+{
+	itm.value				=	kap*200;
+	itm.visual 				=	"ItAm_Mana_01.3ds";
+	
+	itm.change_atr[0]		=	ATR_MANA_MAX;
+	itm.change_value[0]		=	kap*MP_PER_LP;
+	itm.change_atr[1]		=	ATR_STRENGTH;
+	itm.change_value[1]		=	kap;
+	
+	itm.TEXT[1]				=	NAME_Bonus_MpMax;
+	itm.COUNT[1]			=	itm.change_value[0];
+	itm.TEXT[2]				=	NAME_Bonus_STR;
+	itm.COUNT[2]			=	itm.change_value[1];
+	itm.COUNT[5]			=	itm.value;
+};
+///******************************************************************************************
+instance ItAm_Paladin_01 (ItemPR_Amulet)
+{
+	description				=	"Amulet paladyna";
+	SetItAmAttributes_Paladin (self, 3);
+};
+instance ItAm_Paladin_02 (ItemPR_Amulet)
+{
+	description				=	"Amulet paladyna";
+	SetItAmAttributes_Paladin (self, 5);
+};
+instance ItAm_Paladin_03 (ItemPR_Amulet)
+{
+	description				=	"Ulepsz. amulet paladyna";
+	SetItAmAttributes_Paladin (self, 10);
+};
+///******************************************************************************************
+/// Mage
 ///******************************************************************************************
 func void SetItAmAttributes_Mage (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*200;
-	itm.visual 				=	"ItAm_Prot_Mage_01.3ds";
+	itm.visual 				=	"ItAm_Hp_Mana_01.3ds";
 	
 	itm.change_atr[0]		=	ATR_MANA_MAX;
 	itm.change_value[0]		=	kap*MP_PER_LP;
@@ -191,205 +315,60 @@ func void Equip_ItAm_Mage_03()		{ Npc_AddPowerPoints(self, 10); };
 func void UnEquip_ItAm_Mage_03()	{ Npc_AddPowerPoints(self, -10); };
 
 ///******************************************************************************************
-///	Guardian
+/// Barbarian
 ///******************************************************************************************
-func void SetItAmAttributes_Guardian (var C_Item itm, var int kap)
-{
-	itm.value				=	kap*200;
-	itm.visual 				=	"ItAm_Prot_Total_01.3ds";
-	
-	itm.change_atr[0]		=	ATR_HITPOINTS_MAX;
-	itm.change_value[0]		=	kap*HP_PER_LP;
-	itm.protection[PROT_EDGE]		=	kap;
-	itm.protection[PROT_BLUNT]		=	kap;
-	itm.protection[PROT_POINT]		=	kap;
-	
-	itm.TEXT[1]				=	NAME_Bonus_HpMax;
-	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[2]				=	NAME_Prot_Physical;
-	itm.COUNT[2]			=	itm.protection[PROT_EDGE];
-	itm.COUNT[5]			=	itm.value;
-};
-///******************************************************************************************
-instance ItAm_Guardian_01 (ItemPR_Amulet)
-{
-	description				=	"Amulet stra¿nika";
-	SetItAmAttributes_Guardian (self, 3);
-};
-instance ItAm_Guardian_02 (ItemPR_Amulet)
-{
-	description				=	"Amulet stra¿nika";
-	SetItAmAttributes_Guardian (self, 5);
-};
-instance ItAm_Guardian_03 (ItemPR_Amulet)
-{
-	description				=	"Ulepsz. amulet stra¿nika";
-	SetItAmAttributes_Guardian (self, 10);
-};
-
-///******************************************************************************************
-///	Druid
-///******************************************************************************************
-func void SetItAmAttributes_Druid (var C_Item itm, var int kap)
-{
-	itm.value				=	kap*200;
-	itm.visual				=	"ItAm_Hp_01.3ds";
-	
-	itm.change_atr[0]		=	ATR_HITPOINTS_MAX;
-	itm.change_value[0]		=	kap*HP_PER_LP;
-	itm.change_atr[1]		=	ATR_MANA_MAX;
-	itm.change_value[1]		=	kap*MP_PER_LP;
-	
-	itm.TEXT[1]				=	NAME_Bonus_HpMax;
-	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[2]				=	NAME_Bonus_MpMax;
-	itm.COUNT[2]			=	itm.change_value[1];
-	itm.COUNT[5]			=	itm.value;
-};
-///******************************************************************************************
-instance ItAm_Druid_01 (ItemPR_Amulet)
-{
-	description				=	"Amulet druida";
-	SetItAmAttributes_Druid (self, 3);
-};
-instance ItAm_Druid_02 (ItemPR_Amulet)
-{
-	description				=	"Amulet druida";
-	SetItAmAttributes_Druid (self, 5);
-};
-instance ItAm_Druid_03 (ItemPR_Amulet)
-{
-	description				=	"Ulepsz. amulet druida";
-	SetItAmAttributes_Druid (self, 10);
-};
-
-///******************************************************************************************
-///	Paladin
-///******************************************************************************************
-func void SetItAmAttributes_Paladin (var C_Item itm, var int kap)
-{
-	itm.value				=	kap*200;
-	itm.visual 				=	"ItAm_Mana_01.3ds";
-	
-	itm.change_atr[0]		=	ATR_MANA_MAX;
-	itm.change_value[0]		=	kap*MP_PER_LP;
-	itm.change_atr[1]		=	ATR_STRENGTH;
-	itm.change_value[1]		=	kap;
-	
-	itm.TEXT[1]				=	NAME_Bonus_MpMax;
-	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[2]				=	NAME_Bonus_STR;
-	itm.COUNT[2]			=	itm.change_value[1];
-	itm.COUNT[5]			=	itm.value;
-};
-///******************************************************************************************
-instance ItAm_Paladin_01 (ItemPR_Amulet)
-{
-	description				=	"Amulet paladyna";
-	SetItAmAttributes_Paladin (self, 3);
-};
-instance ItAm_Paladin_02 (ItemPR_Amulet)
-{
-	description				=	"Amulet paladyna";
-	SetItAmAttributes_Paladin (self, 5);
-};
-instance ItAm_Paladin_03 (ItemPR_Amulet)
-{
-	description				=	"Ulepsz. amulet paladyna";
-	SetItAmAttributes_Paladin (self, 10);
-};
-
-///******************************************************************************************
-///	Conjurer
-///******************************************************************************************
-func void SetItAmAttributes_Conjurer (var C_Item itm, var int kap)
-{
-	itm.value				=	kap*200;
-	itm.visual 				=	"ItAm_Hp_Mana_01.3ds";
-	
-	itm.change_atr[0]		=	ATR_MANA_MAX;
-	itm.change_value[0]		=	kap*MP_PER_LP;
-	itm.protection[PROT_FIRE]		=	kap;
-	itm.protection[PROT_MAGIC]		=	kap;
-	itm.protection[PROT_BARRIER]	=	kap;
-	
-	itm.TEXT[1]				=	NAME_Bonus_MpMax;
-	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[2]				=	NAME_Prot_Magical;
-	itm.COUNT[2]			=	itm.protection[PROT_MAGIC];
-	itm.COUNT[5]			=	itm.value;
-};
-///******************************************************************************************
-instance ItAm_Conjurer_01 (ItemPR_Amulet)
-{
-	description				=	"Amulet zaklinacza";
-	SetItAmAttributes_Conjurer (self, 3);
-};
-instance ItAm_Conjurer_02 (ItemPR_Amulet)
-{
-	description				=	"Amulet zaklinacza";
-	SetItAmAttributes_Conjurer (self, 5);
-};
-instance ItAm_Conjurer_03 (ItemPR_Amulet)
-{
-	description				=	"Ulepsz. amulet zaklinacza";
-	SetItAmAttributes_Conjurer (self, 10);
-};
-///******************************************************************************************
-///	Pirate
-///******************************************************************************************
-func void SetItAmAttributes_Pirate (var C_Item itm, var int kap)
+func void SetItAmAttributes_Barbarian (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*200;
 	itm.visual 				=	"ItAm_Strg_01.3ds";
 	
-	itm.change_atr[0]		=	ATR_DEXTERITY;
+	itm.change_atr[0]		=	ATR_STRENGTH;
 	itm.change_value[0]		=	kap;
 	
-	itm.TEXT[1]				=	NAME_Bonus_DEX;
+	itm.TEXT[1]				=	NAME_Bonus_STR;
 	itm.COUNT[1]			=	itm.change_value[0];
-	itm.TEXT[1]				=	NAME_Bonus_POW;
-	itm.COUNT[1]			=	kap;
+	itm.TEXT[2]				=	NAME_Bonus_SpMax;
+	itm.COUNT[2]			=	kap*SP_PER_LP;
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
-instance ItAm_Pirate_01 (ItemPR_Amulet)
+instance ItAm_Barbarian_01 (ItemPR_Amulet)
 {
-	description				=	"Amulet pirata";
-	SetItAmAttributes_Pirate (self, 3);
+	description				=	"Amulet barbarzyñcy";
+	SetItAmAttributes_Barbarian (self, 3);
 	
-	on_equip				=	Equip_ItAm_Pirate_01;
-	on_unequip				=	UnEquip_ItAm_Pirate_01;
+	on_equip				=	Equip_ItAm_Barbarian_01;
+	on_unequip				=	UnEquip_ItAm_Barbarian_01;
 };
-func void Equip_ItAm_Pirate_01()	{ Npc_AddPowerPoints(self, 3); };
-func void UnEquip_ItAm_Pirate_01()	{ Npc_AddPowerPoints(self, -3); };
+func void Equip_ItAm_Barbarian_01()		{ self.aivar[AIV_Stamina_MAX] += 3*SP_PER_LP; };
+func void UnEquip_ItAm_Barbarian_01()	{ self.aivar[AIV_Stamina_MAX] -= 3*SP_PER_LP; };
 
-instance ItAm_Pirate_02 (ItemPR_Amulet)
+instance ItAm_Barbarian_02 (ItemPR_Amulet)
 {
-	description				=	"Amulet pirata";
-	SetItAmAttributes_Pirate (self, 5);
+	description				=	"Amulet barbarzyñcy";
+	SetItAmAttributes_Barbarian (self, 5);
 	
-	on_equip				=	Equip_ItAm_Pirate_02;
-	on_unequip				=	UnEquip_ItAm_Pirate_02;
+	on_equip				=	Equip_ItAm_Barbarian_02;
+	on_unequip				=	UnEquip_ItAm_Barbarian_02;
 };
-func void Equip_ItAm_Pirate_02()	{ Npc_AddPowerPoints(self, 5); };
-func void UnEquip_ItAm_Pirate_02()	{ Npc_AddPowerPoints(self, -5); };
+func void Equip_ItAm_Barbarian_02()		{ self.aivar[AIV_Stamina_MAX] += 5*SP_PER_LP; };
+func void UnEquip_ItAm_Barbarian_02()	{ self.aivar[AIV_Stamina_MAX] -= 5*SP_PER_LP; };
 
-instance ItAm_Pirate_03 (ItemPR_Amulet)
+instance ItAm_Barbarian_03 (ItemPR_Amulet)
 {
-	description				=	"Ulepsz. amulet pirata";
-	SetItAmAttributes_Pirate (self, 10);
+	description				=	"Ulepsz. amulet barbarzyñcy";
+	SetItAmAttributes_Barbarian (self, 10);
 	
-	on_equip				=	Equip_ItAm_Pirate_03;
-	on_unequip				=	UnEquip_ItAm_Pirate_03;
+	on_equip				=	Equip_ItAm_Barbarian_03;
+	on_unequip				=	UnEquip_ItAm_Barbarian_03;
 };
-func void Equip_ItAm_Pirate_03()	{ Npc_AddPowerPoints(self, 10); };
-func void UnEquip_ItAm_Pirate_03()	{ Npc_AddPowerPoints(self, -10); };
+func void Equip_ItAm_Barbarian_03()		{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
+func void UnEquip_ItAm_Barbarian_03()	{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
 
 ///******************************************************************************************
-///	Rogue
+/// Bandit
 ///******************************************************************************************
-func void SetItAmAttributes_Rogue (var C_Item itm, var int kap)
+func void SetItAmAttributes_Bandit (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*200;
 	itm.visual 				=	"ItAm_Dex_01.3ds";
@@ -404,41 +383,41 @@ func void SetItAmAttributes_Rogue (var C_Item itm, var int kap)
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
-instance ItAm_Rogue_01 (ItemPR_Amulet)
+instance ItAm_Bandit_01 (ItemPR_Amulet)
 {
-	description				=	"Amulet ³otra";
-	SetItAmAttributes_Rogue (self, 3);
+	description				=	"Amulet bandyty";
+	SetItAmAttributes_Bandit (self, 3);
 	
-	on_equip				=	Equip_ItAm_Rogue_01;
-	on_unequip				=	UnEquip_ItAm_Rogue_01;
+	on_equip				=	Equip_ItAm_Bandit_01;
+	on_unequip				=	UnEquip_ItAm_Bandit_01;
 };
-func void Equip_ItAm_Rogue_01()			{ self.aivar[AIV_Stamina_MAX] += 3*SP_PER_LP; };
-func void UnEquip_ItAm_Rogue_01()		{ self.aivar[AIV_Stamina_MAX] -= 3*SP_PER_LP; };
+func void Equip_ItAm_Bandit_01()		{ self.aivar[AIV_Stamina_MAX] += 3*SP_PER_LP; };
+func void UnEquip_ItAm_Bandit_01()		{ self.aivar[AIV_Stamina_MAX] -= 3*SP_PER_LP; };
 
-instance ItAm_Rogue_02 (ItemPR_Amulet)
+instance ItAm_Bandit_02 (ItemPR_Amulet)
 {
-	description				=	"Amulet ³otra";
-	SetItAmAttributes_Rogue (self, 5);
+	description				=	"Amulet bandyty";
+	SetItAmAttributes_Bandit (self, 5);
 	
-	on_equip				=	Equip_ItAm_Rogue_02;
-	on_unequip				=	UnEquip_ItAm_Rogue_02;
+	on_equip				=	Equip_ItAm_Bandit_02;
+	on_unequip				=	UnEquip_ItAm_Bandit_02;
 };
-func void Equip_ItAm_Rogue_02()			{ self.aivar[AIV_Stamina_MAX] += 5*SP_PER_LP; };
-func void UnEquip_ItAm_Rogue_02()		{ self.aivar[AIV_Stamina_MAX] -= 5*SP_PER_LP; };
+func void Equip_ItAm_Bandit_02()		{ self.aivar[AIV_Stamina_MAX] += 5*SP_PER_LP; };
+func void UnEquip_ItAm_Bandit_02()		{ self.aivar[AIV_Stamina_MAX] -= 5*SP_PER_LP; };
 
-instance ItAm_Rogue_03 (ItemPR_Amulet)
+instance ItAm_Bandit_03 (ItemPR_Amulet)
 {
-	description				=	"Ulepsz. amulet ³otra";
-	SetItAmAttributes_Rogue (self, 10);
+	description				=	"Ulepsz. amulet bandyty";
+	SetItAmAttributes_Bandit (self, 10);
 	
-	on_equip				=	Equip_ItAm_Rogue_03;
-	on_unequip				=	UnEquip_ItAm_Rogue_03;
+	on_equip				=	Equip_ItAm_Bandit_03;
+	on_unequip				=	UnEquip_ItAm_Bandit_03;
 };
-func void Equip_ItAm_Rogue_03()			{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
-func void UnEquip_ItAm_Rogue_03()		{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
+func void Equip_ItAm_Bandit_03()		{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
+func void UnEquip_ItAm_Bandit_03()		{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
 
 ///******************************************************************************************
-///	Assassin
+/// Assassin
 ///******************************************************************************************
 func void SetItAmAttributes_Assassin (var C_Item itm, var int kap)
 {
@@ -472,9 +451,8 @@ instance ItAm_Assassin_03 (ItemPR_Amulet)
 	description				=	"Ulepsz. amulet zabójcy";
 	SetItAmAttributes_Assassin (self, 10);
 };
-
 ///******************************************************************************************
-///	Special amulets
+/// Special
 ///******************************************************************************************
 var int Equip_WispDetector_OneTime;
 
@@ -558,7 +536,7 @@ instance ItAm_InnosEye (ItemPR_Amulet)
 	on_equip				=	Equip_InnosEye;
 	
 	description				=	name;
-	TEXT[0]					=	"Pulsuje energi?";
+	TEXT[0]					=	"Pulsuje energi¹";
 	INV_ZBIAS				=	INVCAM_ENTF_AMULETTE_STANDARD;
 };
 func void Equip_InnosEye()

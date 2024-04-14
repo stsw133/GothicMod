@@ -1,48 +1,25 @@
 ///******************************************************************************************
-///	SPL_Sleep
+/// SPL_Sleep
 ///******************************************************************************************
 
-const int SPL_Cost_Sleep				=	50;	//30
-const int SPL_MinLvl_Sleep				=	20;
-const int SPL_Scaling_Sleep				=	20;
+const int SPL_Cost_Sleep				=	50;
 
 ///******************************************************************************************
 instance Spell_Sleep (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	spelltype 							=	SPELL_NEUTRAL;
 	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
+	targetCollectRange					=	1000;
 };
 
 func int Spell_Logic_Sleep (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Sleep/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_Sleep)
-	{
-		if ((other.level - SPL_MinLvl_Sleep - self.attribute[ATR_POWER]*SPL_Scaling_Sleep/100) <= 0)
-		|| (!Npc_IsPlayer(self))
-		{
-			return SPL_SENDCAST;
-		}
-		else
-		{
-			Print(ConcatStrings(IntToString(other.level - SPL_MinLvl_Sleep - self.attribute[ATR_POWER]*SPL_Scaling_Sleep/100), "% dod. mocy za ma³o aby odnieœæ skutek!"));
-		};
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, 3, SPL_Cost_Sleep, manaInvested);
 };
 
 func void Spell_Cast_Sleep()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Sleep/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Sleep;
-	};
+	B_SpellCast (self, 3, SPL_Cost_Sleep);
 	
 	if (!C_BodyStateContains(other, BS_SWIM) && !C_BodyStateContains(other, BS_DIVE))
 	&& (!C_NpcIsDown(other) && Npc_GetDistToNpc(self, other) <= 1000)
@@ -54,6 +31,4 @@ func void Spell_Cast_Sleep()
 		
 //		AI_SetNpcsToState (self, ZS_MagicSleep, 1000);
 	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
 };

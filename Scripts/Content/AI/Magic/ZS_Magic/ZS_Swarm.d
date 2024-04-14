@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_StopSwarm
+/// B_StopSwarm
 ///******************************************************************************************
 func void B_RestartSwarm()
 {
@@ -26,7 +26,7 @@ func void B_StopSwarm()
 };
 
 ///******************************************************************************************
-///	ZS_Swarm
+/// ZS_Swarm
 ///******************************************************************************************
 func int ZS_Swarm()
 {
@@ -40,7 +40,7 @@ func int ZS_Swarm()
 		AI_PlayAniBS (self, "T_STAND_2_SWARM_VICTIM", BS_UNCONSCIOUS);
 	};
 	
-	self.aivar[AIV_SwarmStateTime] = 0;
+	self.aivar[AIV_MagicStateTime] = 0;
 };
 
 func int ZS_Swarm_Loop()
@@ -51,26 +51,14 @@ func int ZS_Swarm_Loop()
 		return LOOP_END;
 	};
 	
-	if (Npc_GetStateTime(self) != self.aivar[AIV_SwarmStateTime])
+	if (Npc_GetStateTime(self) != self.aivar[AIV_MagicStateTime])
 	{
-		if (Npc_GetStateTime(self) == 2)
-		{
-			B_Say (self, other, "$RunAway");
-		}
-		else if (Npc_GetStateTime(self) == 6)
-		{
-			B_Say (self, other, "$Aargh_2");
-		}
-		else if (Npc_GetStateTime(self) == 7)
-		{
-			B_Say (self, other, "$Aargh_3");
-		}
-		else if (Npc_GetStateTime(self) == 8)
-		{
-			B_Say (self, other, "$Aargh_1");
-		};
+		if		(Npc_GetStateTime(self) == 2)	{	B_Say (self, other, "$RunAway");	}
+		else if	(Npc_GetStateTime(self) == 6)	{	B_Say (self, other, "$Aargh_2");	}
+		else if	(Npc_GetStateTime(self) == 7)	{	B_Say (self, other, "$Aargh_3");	}
+		else if	(Npc_GetStateTime(self) == 8)	{	B_Say (self, other, "$Aargh_1");	};
 		
-		self.aivar[AIV_SwarmStateTime] = Npc_GetStateTime(self);
+		self.aivar[AIV_MagicStateTime] = Npc_GetStateTime(self);
 		
 		if (self.attribute[ATR_HITPOINTS] > SPL_Damage_Swarm)
 		{

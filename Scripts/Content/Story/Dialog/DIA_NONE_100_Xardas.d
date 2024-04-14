@@ -31,6 +31,8 @@ FUNC VOID DIA_Xardas_FirstEXIT_Info()
 	
 	B_ChangeChapter (7, NEWWORLD_ZEN);
 	
+	B_GivePlayerExp(0);
+	
 	Npc_ExchangeRoutine (self, "START");
 };
 

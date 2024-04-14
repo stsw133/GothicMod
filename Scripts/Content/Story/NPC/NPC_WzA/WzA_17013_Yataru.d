@@ -14,7 +14,7 @@ instance WzA_17013_Yataru (Npc_Default)
 	aivar[AIV_FollowDist]				=	300;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
@@ -26,7 +26,7 @@ instance WzA_17013_Yataru (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	CreateInvItem (self, ItRu_YellowFireball);
+	//CreateInvItem (self, ItRu_YellowFireball);
 	CreateInvItem (self, ITAR_aCHAOS_YELLOW);
 	
 	/// ------ Inventory ------

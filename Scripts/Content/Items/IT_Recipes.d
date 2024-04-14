@@ -1,6 +1,4 @@
 ///******************************************************************************************
-///	Recipes
-///******************************************************************************************
 prototype ItemPR_Recipe (C_Item)
 {
 	name 					=	"Przepis";
@@ -14,54 +12,51 @@ prototype ItemPR_Recipe (C_Item)
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
-///	Smith
+/// Smith
 ///******************************************************************************************
 
-/// HARDENING = 10 LN
-/// SHARPENING = 5 LN
-/// MINING = 5 LN
-/// JEWELERY = 10 LN
-/// ARTEFACT_UPGRADING = 10 LN
-/// SMITH = 10 LN
-/// SMITH_ORE = 10 LN
+const int SMITH_ArtifactUpgrading	=	0;	/// 5 LN
+const int SMITH_Hardening			=	1;	/// 5 LN
+const int SMITH_Jewelery			=	2;	/// 5 LN
+const int SMITH_Mining				=	3;	/// 5 LN
+const int SMITH_Sharpening			=	4;	/// 5 LN
+const int SMITH_Smelting			=	5;	/// 5 LN
+const int SMITH_SmithIron			=	6;	/// 10 LN
+const int SMITH_SmithMagicOre		=	7;	/// 10 LN
 
-const int SMITH_Hardening			=	0;
-const int SMITH_Sharpening			=	1;
-const int SMITH_Jewelery			=	2;
+const int SMITH_1H_Common			=	10;
 
-const int SMITH_1H_Common			=	3;
+const int SMITH_1H_Special_01		=	11;
+const int SMITH_2H_Special_01		=	12;
+const int SMITH_1H_Special_02		=	13;
+const int SMITH_2H_Special_02		=	14;
+const int SMITH_1H_Special_03		=	15;
+const int SMITH_2H_Special_03		=	16;
+const int SMITH_1H_Special_04		=	17;
+const int SMITH_2H_Special_04		=	18;
+const int SMITH_1H_Special_05		=	19;
+const int SMITH_2H_Special_05		=	20;
 
-const int SMITH_1H_Special_01		=	4;
-const int SMITH_2H_Special_01		=	5;
-const int SMITH_1H_Special_02		=	6;
-const int SMITH_2H_Special_02		=	7;
-const int SMITH_1H_Special_03		=	8;
-const int SMITH_2H_Special_03		=	9;
-const int SMITH_1H_Special_04		=	10;
-const int SMITH_2H_Special_04		=	11;
-const int SMITH_1H_Special_05		=	12;
-const int SMITH_2H_Special_05		=	13;
+const int SMITH_1H_Ignite_01		=	21;
+const int SMITH_2H_Ignite_01		=	22;
+const int SMITH_1H_Ignite_02		=	23;
+const int SMITH_2H_Ignite_02		=	24;
+const int SMITH_1H_Ignite_03		=	25;
+const int SMITH_2H_Ignite_03		=	26;
+const int SMITH_1H_Ignite_04		=	27;
+const int SMITH_2H_Ignite_04		=	28;
+const int SMITH_1H_Ignite_05		=	29;
+const int SMITH_2H_Ignite_05		=	30;
 
-const int SMITH_1H_Ignite_01		=	14;
-const int SMITH_2H_Ignite_01		=	15;
-const int SMITH_1H_Ignite_02		=	16;
-const int SMITH_2H_Ignite_02		=	17;
-const int SMITH_1H_Ignite_03		=	18;
-const int SMITH_2H_Ignite_03		=	19;
-const int SMITH_1H_Ignite_04		=	20;
-const int SMITH_2H_Ignite_04		=	21;
-const int SMITH_1H_Ignite_05		=	22;
-const int SMITH_2H_Ignite_05		=	23;
+const int SMITH_Schwert1			=	31;
+const int SMITH_Schwert4			=	32;
+const int SMITH_Rubinklinge			=	33;
+const int SMITH_ElBastardo			=	34;
 
-const int SMITH_Schwert1			=	24;
-const int SMITH_Schwert4			=	25;
-const int SMITH_Rubinklinge			=	26;
-const int SMITH_ElBastardo			=	27;
+const int SMITH_Streitaxt1			=	35;
+const int SMITH_Avalon				=	36;
 
-const int SMITH_Streitaxt1			=	28;
-const int SMITH_Avalon				=	29;
-
-const int MAX_SMITH 				=	30;
+const int MAX_SMITH 				=	37;
 
 var int PLAYER_TALENT_SMITH[MAX_SMITH];
 var int COUNTER_SMITH;
@@ -763,6 +758,8 @@ func void Use_Recipe_SMITH_2H_Ignite_04()
 };
 /*
 ///******************************************************************************************
+/// Enchanting
+///******************************************************************************************
 instance ItRe_ENCHANTING_ProtPhysical (ItemPR_Recipe)
 {
 	value 					=	200;
@@ -1050,70 +1047,64 @@ func void Use_Recipe_ENCHANTING_LifeSteal()
 };
 */
 ///******************************************************************************************
-///	Alchemy
+/// Alchemy
 ///******************************************************************************************
 
-/// HP = 3 LN
-/// MP = 3 LN
-/// SP = 3 LN
-/// TEMP = 3 LN
-/// WEAK = 3 LN
-/// PERM = 10 LN
-/// TRANSFORM = 5 LN
-/// BODY (DIGESTION, ANTIDRUNK) = 3 LN
-/// MIND (GEIST, OBSESSION) = 3 LN
-/// LIGHT (VISION, INVISIBILITY) = 3 LN
-/// POISON (POISON, ANTIPOISON) = 3 LN
-/// DMG ONE TIME BARRIER (PHYSICAL, MAGICAL) = 3 LN
-/// COOKING (?) = 5 LN
-/// ??? = 5 LN
-/// ??? = 5 LN
+const int ALCHEMY_EatPlants			=	0;	/// 5 LN
+const int ALCHEMY_PotionsHP			=	1;	/// 3 LN
+const int ALCHEMY_PotionsMP			=	2;	/// 3 LN
+const int ALCHEMY_PotionsSP			=	3;	/// 3 LN
+const int ALCHEMY_Temporary			=	4;	/// 3 LN
+const int ALCHEMY_Weaken			=	5;	/// 3 LN
+const int ALCHEMY_Transform			=	6;	/// 5 LN
+const int ALCHEMY_Permanent			=	7;	/// 10 LN
+const int ALCHEMY_Poisons			=	8;	/// 5 LN
+const int ALCHEMY_Special			=	9;	/// 10 LN
 
-const int ALCHEMY_MegaDrink			=	0;
+const int ALCHEMY_MegaDrink			=	10;
 
-const int ALCHEMY_Health_01	  		=	1;
-const int ALCHEMY_Health_02  		=	2;
-const int ALCHEMY_Health_03  		=	3;
-const int ALCHEMY_Health_04  		=	4;
-const int ALCHEMY_Health_05  		=	5;
+const int ALCHEMY_Health_01	  		=	11;
+const int ALCHEMY_Health_02  		=	12;
+const int ALCHEMY_Health_03  		=	13;
+const int ALCHEMY_Health_04  		=	14;
+const int ALCHEMY_Health_05  		=	15;
 
-const int ALCHEMY_Mana_01  			=	6;
-const int ALCHEMY_Mana_02  			=	7;
-const int ALCHEMY_Mana_03 	 		=	8;
-const int ALCHEMY_Mana_04 	 		=	9;
-const int ALCHEMY_Mana_05 	 		=	10;
+const int ALCHEMY_Mana_01  			=	16;
+const int ALCHEMY_Mana_02  			=	17;
+const int ALCHEMY_Mana_03 	 		=	18;
+const int ALCHEMY_Mana_04 	 		=	19;
+const int ALCHEMY_Mana_05 	 		=	20;
 
-const int ALCHEMY_Temp_Health		=	11;
-const int ALCHEMY_Temp_Mana  		=	12;
-const int ALCHEMY_Temp_STR  		=	13;
-const int ALCHEMY_Temp_DEX  		=	14;
-const int ALCHEMY_Temp_Power  		=	15;
+const int ALCHEMY_Temp_Health		=	21;
+const int ALCHEMY_Temp_Mana  		=	22;
+const int ALCHEMY_Temp_STR  		=	23;
+const int ALCHEMY_Temp_DEX  		=	24;
+const int ALCHEMY_Temp_Power  		=	25;
 
-const int ALCHEMY_Weak_Health		=	16;
-const int ALCHEMY_Weak_Mana  		=	17;
-const int ALCHEMY_Weak_STR  		=	18;
-const int ALCHEMY_Weak_DEX  		=	19;
-const int ALCHEMY_Weak_Power  		=	20;
+const int ALCHEMY_Weak_Health		=	26;
+const int ALCHEMY_Weak_Mana  		=	27;
+const int ALCHEMY_Weak_STR  		=	28;
+const int ALCHEMY_Weak_DEX  		=	29;
+const int ALCHEMY_Weak_Power  		=	30;
 
-const int ALCHEMY_Perm_Health		=	21;
-const int ALCHEMY_Perm_Mana  		=	22;
-const int ALCHEMY_Perm_STR  		=	23;
-const int ALCHEMY_Perm_DEX  		=	24;
-const int ALCHEMY_Perm_Power  		=	25;
-const int ALCHEMY_Perm_Fire	 		=	26;
+const int ALCHEMY_Perm_Health		=	31;
+const int ALCHEMY_Perm_Mana  		=	32;
+const int ALCHEMY_Perm_STR  		=	33;
+const int ALCHEMY_Perm_DEX  		=	34;
+const int ALCHEMY_Perm_Power  		=	35;
+const int ALCHEMY_Perm_Fire	 		=	36;
 
-const int ALCHEMY_Transform			=	27;
+const int ALCHEMY_Speed				=	37;
+const int ALCHEMY_Lightness			=	38;
 
-const int ALCHEMY_Digestion			=	28;
-const int ALCHEMY_NightVision		=	29;
-const int ALCHEMY_Geist				=	30;
-const int ALCHEMY_HealObsession		=	31;
-const int ALCHEMY_Poison			=	32;
-const int ALCHEMY_Speed				=	33;
+const int ALCHEMY_Digestion			=	39;
+const int ALCHEMY_NightVision		=	40;
+const int ALCHEMY_Geist				=	41;
+const int ALCHEMY_HealObsession		=	42;
+const int ALCHEMY_Poison			=	43;
+const int ALCHEMY_AntiPoison		=	44;
 
-const int ALCHEMY_AntiPoison		=	34;
-
-const int MAX_ALCHEMY				=	35;
+const int MAX_ALCHEMY				=	45;
 
 var int PLAYER_TALENT_ALCHEMY[MAX_ALCHEMY];
 var int COUNTER_ALCHEMY;
@@ -2084,44 +2075,28 @@ func void Use_Recipe_ALCHEMY_MegaDrink()
 	};
 };
 ///******************************************************************************************
-///	Hunting
+/// Hunting
 ///******************************************************************************************
 
-/// ARROWS = 5 LN
-/// ARMORS = 5 LN
-/// FURS = 5 LN
-/// SKINS = 5 LN
-/// TEETH = 5 LN
-/// CLAWS = 5 LN
-/// WINGS = 3 LN
-/// STINGS = 3 LN
-/// MANDIBLES = 3 LN
-/// HORNS = 3 LN
-/// TONGUES = 3 LN
-/// PLATES = 3 LN
-/// SCALES = 3 LN
-/// HEARTS = 3 LN
-/// BLOOD = 3 LN
-/// BONES = 3 LN
+const int HUNTING_ArrowMaking		=	0;	/// 5 LN
+const int HUNTING_ArmorMaking		=	1;	/// 5 LN
+const int HUNTING_Cooking			=	2;	/// 5 LN
+const int HUNTING_Blood				=	3;	/// 3 LN
+const int HUNTING_Bones				=	4;	/// 2 LN
+const int HUNTING_Claws				=	5;	/// 3 LN
+const int HUNTING_Furs				=	6;	/// 5 LN
+const int HUNTING_Hearts			=	7;	/// 3 LN
+const int HUNTING_Horns 			=	8;	/// 2 LN
+const int HUNTING_Mandibles			=	9;	/// 2 LN
+const int HUNTING_Plates			=	10;	/// 2 LN
+const int HUNTING_Scales			=	11;	/// 2 LN
+const int HUNTING_Skins				=	12;	/// 2 LN
+const int HUNTING_Stings			=	13;	/// 2 LN
+const int HUNTING_Teeth				=	14;	/// 3 LN
+const int HUNTING_Tongues			=	15;	/// 2 LN
+const int HUNTING_Wings				=	16;	/// 2 LN
 
-const int HUNTING_ArrowMaking		=	0;
-
-const int HUNTING_Furs				=	1;
-const int HUNTING_Skins				=	2;
-const int HUNTING_Teeth				=	3;
-const int HUNTING_Claws				=	4;
-const int HUNTING_Wings				=	5;
-const int HUNTING_Stings			=	6;
-const int HUNTING_Mandibles			=	7;
-const int HUNTING_Horns 			=	8;
-const int HUNTING_Tongues			=	9;
-const int HUNTING_Plates			=	10;
-const int HUNTING_Scales			=	11;
-const int HUNTING_Hearts			=	12;
-const int HUNTING_Blood				=	13;
-const int HUNTING_Bones				=	14;
-
-const int MAX_HUNTING				=	15;
+const int MAX_HUNTING				=	17;
 
 var int PLAYER_TALENT_HUNTING[MAX_HUNTING];
 var int COUNTER_HUNTING;
@@ -2502,7 +2477,7 @@ func void Use_Recipe_HUNTING_Bones()
 	};
 };
 ///******************************************************************************************
-///	Enchanting
+/// Enchanting
 ///******************************************************************************************
 
 var int PLAYER_TALENT_ENCHANTING[MAX_SPELL];

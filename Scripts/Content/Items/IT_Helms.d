@@ -7,7 +7,7 @@ prototype ItemPR_Helm (C_Item)
 	material				=	MAT_METAL;
 };
 ///******************************************************************************************
-///	Citizen helms: VLK
+/// Citizen helms: VLK
 ///******************************************************************************************
 instance ItHe_Cap (ItemPR_Helm)
 {
@@ -28,7 +28,7 @@ instance ItHe_Spectacles (ItemPR_Helm)
 	description 	=	"Okulary";
 };
 ///******************************************************************************************
-///	Leather helms
+/// Leather helms
 ///******************************************************************************************
 instance ItHe_Leather (ItemPR_Helm)
 {
@@ -37,7 +37,7 @@ instance ItHe_Leather (ItemPR_Helm)
 	description		=	"Skórzany he³m";
 };
 ///******************************************************************************************
-///	Standard helms
+/// Standard helms
 ///******************************************************************************************
 instance ItHe_Bascinet (ItemPR_Helm)
 {
@@ -68,6 +68,19 @@ instance ItHe_WingedGreat (ItemPR_Helm)
 {
 	visual			=	"ItHe_WingedGreat.3ds";
 	description		=	name;
+};
+///******************************************************************************************
+/// Guard helms: MIL & ROY
+///******************************************************************************************
+instance ItHe_ROY_M (ItemPR_Helm)
+{
+	visual			=	"ItHe_ROY_M.3ds";
+	description		=	"He³m gwardii królewskiej";
+};
+instance ItHe_ROY_H (ItemPR_Helm)
+{
+	visual			=	"ItHe_ROY_H.3ds";
+	description		=	"He³m gwardii królewskiej";
 };
 ///******************************************************************************************
 /// Dragon hunter helms: SLD & DJG
@@ -113,17 +126,6 @@ instance ItHe_PAL_U (ItemPR_Helm)
 	visual			=	"ItHe_Pal_U.3ds";
 	description		=	"He³m rycerzy podziemia";
 };
-instance ItHe_SteamKnight (ItemPR_Helm)
-{
-	visual			=	"ItHe_SteamKnight.3ds";
-	description		=	"He³m parowy";
-};
-///******************************************************************************************
-instance ItHe_Innos (ItemPR_Helm)
-{
-	visual			=	"ItHe_Innos.3ds";
-	description		=	"He³m Innosa";
-};
 ///******************************************************************************************
 /// Prisoner helms: STRF
 ///******************************************************************************************
@@ -133,7 +135,7 @@ instance ItHe_Slave (ItemPR_Helm)
 	description		=	"Kajdany";
 };
 ///******************************************************************************************
-///	Dementor helms: DMT
+/// Dementor helms: DMT
 ///******************************************************************************************
 instance ItHe_Sleeper (ItemPR_Helm)
 {
@@ -141,7 +143,20 @@ instance ItHe_Sleeper (ItemPR_Helm)
 	description		=	"He³m Œni¹cego";
 };
 ///******************************************************************************************
-///	Special helms
+/// Special helms
+///******************************************************************************************
+instance ItHe_Innos (ItemPR_Helm)
+{
+	visual			=	"ItHe_Innos.3ds";
+	description		=	"He³m Innosa";
+};
+instance ItHe_SteamKnight (ItemPR_Helm)
+{
+	visual			=	"ItHe_SteamKnight.3ds";
+	description		=	"He³m parowy";
+};
+///******************************************************************************************
+/// WzA helms
 ///******************************************************************************************
 instance ItHe_ChristmasCap (ItemPR_Helm)
 {
@@ -149,7 +164,6 @@ instance ItHe_ChristmasCap (ItemPR_Helm)
 	material 		=	MAT_LEATHER;
 	description 	=	"Œwi¹teczna czapka";
 };
-///******************************************************************************************
 instance ItHe_OrcHead (ItemPR_Helm)
 {
 	visual 			=	"Orc_Head_Warrior.mms";

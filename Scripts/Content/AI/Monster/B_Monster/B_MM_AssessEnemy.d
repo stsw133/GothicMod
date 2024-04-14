@@ -40,7 +40,7 @@ func void B_MM_AssessEnemy()
 		return;
 	};
 	
-	if (other.aivar[AIV_INVINCIBLE])
+	if (other.aivar[AIV_Invisible])
 	{
 		return;
 	};

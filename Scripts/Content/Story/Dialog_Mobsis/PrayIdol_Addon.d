@@ -30,7 +30,7 @@ func void PrayIdol_S1()
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{	
 		Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_PRAYIDOL;
 		Ai_ProcessInfos(her);
 	};

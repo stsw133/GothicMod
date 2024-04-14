@@ -48,7 +48,7 @@ instance Skeleton_Lord (Mst_SkeletonLord)
 ///******************************************************************************************
 instance Crypt_Skeleton_Lord (Mst_SkeletonLord)
 {
-	name								=	"Nieumar≈Çy dow√≥dca, Inubis";
+	name								=	"Nieumar≥y dowÛdca, Inubis";
 	
 	NpcFn_SetAttributesToLevel (self, 50);
 	NpcFn_SetMonsterProtection (self, level);
@@ -60,7 +60,7 @@ instance Crypt_Skeleton_Lord (Mst_SkeletonLord)
 ///******************************************************************************************
 instance Skeleton_Lord_Archol (Mst_SkeletonLord)
 {
-	name								=	"Nieumar≈Çy dow√≥dca, Archol";
+	name								=	"Nieumar≥y dowÛdca, Archol";
 	
 	NpcFn_SetAttributesToLevel (self, 60);
 	NpcFn_SetMonsterProtection (self, level);

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Bows
+/// Bows
 ///******************************************************************************************
 prototype ItemPR_Bow (C_Item)
 {
@@ -46,7 +46,7 @@ func void UnEquip_Bow_CHECK()
 func void SetItRwAttributes_Bow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*50;
-	itm.damageTotal			=	kap*3;
+	itm.damageTotal			=	kap*5;
 	itm.cond_value[0]  		= 	kap*5;
 	itm.cond_value[1]  		= 	kap*1;
 	
@@ -87,6 +87,15 @@ instance ItRw_Bow_L_04 (ItemPR_Bow)
 	visual 					=	"ItRw_Bow_L_04.mms";
 	description				=	"£uk z wi¹zu";
 	SetItRwAttributes_Bow (self, 10);
+};
+instance ItRw_Ske_Bow (ItemPR_Bow)
+{
+	visual 					=	"ItRw_Sld_Bow.mms";
+	description				=	name;
+	SetItRwAttributes_Bow (self, 12);
+	
+	value					/=	100;
+	COUNT[5]				=	value;
 };
 ///******************************************************************************************
 instance ItRw_Bow_M_01 (ItemPR_Bow)
@@ -139,7 +148,7 @@ instance ItRw_Bow_H_04 (ItemPR_Bow)
 	SetItRwAttributes_Bow (self, 30);
 };
 ///******************************************************************************************
-///	Crossbows
+/// Crossbows
 ///******************************************************************************************
 prototype ItemPR_Crossbow (C_Item)
 {
@@ -186,12 +195,12 @@ func void UnEquip_Crossbow_CHECK()
 func void SetItRwAttributes_Crossbow (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*100;
-	itm.damageTotal			=	kap*4;
-	itm.cond_value[0]  		= 	kap*5;
-	itm.cond_value[1]  		= 	kap*2;
+	itm.damageTotal			=	kap*6;
+	itm.cond_value[0]  		= 	kap*2;
+	itm.cond_value[1]  		= 	kap*5;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[0];
+	itm.COUNT[2]			=	itm.cond_value[1];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************
@@ -214,6 +223,13 @@ instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)
 	visual 					=	"ItRw_Crossbow_L_02.mms";
 	description				=	"Ma³a kusza";
 	SetItRwAttributes_Crossbow (self, 10);
+};
+instance ItRw_Orc_Crossbow (ItemPR_Crossbow)
+{
+	visual 					=	"ItRw_Crossbow_H_01.mms";
+	description				=	name;
+	value					/=	100;
+	SetItRwAttributes_Crossbow (self, 12);
 };
 ///******************************************************************************************
 instance ItRw_Crossbow_M_01 (ItemPR_Crossbow)
@@ -242,7 +258,7 @@ instance ItRw_Crossbow_H_02 (ItemPR_Crossbow)
 	SetItRwAttributes_Crossbow (self, 30);
 };
 ///******************************************************************************************
-///	Guns
+/// Guns
 ///******************************************************************************************
 prototype ItemPR_Gun (C_Item)
 {
@@ -290,7 +306,7 @@ func void SetItRwAttributes_Gun (var C_Item itm, var int kap, var int fast)
 	if (fast)				{	itm.damageTotal = kap*15; itm.TEXT[4] = NAME_FastGun;	}
 	else					{	itm.damageTotal = kap*30;								};
 	itm.cond_value[0]  		= 	kap*10;
-	itm.cond_value[1]  		= 	kap*10;
+	itm.cond_value[1]  		= 	kap*2;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
 	itm.COUNT[2]			=	itm.cond_value[0];
@@ -361,7 +377,7 @@ instance ItRw_Gun9 (ItemPR_Gun)
 	SetItRwAttributes_Gun (self, 10, true);
 };
 ///******************************************************************************************
-///	Heavy Guns
+/// Heavy guns
 ///******************************************************************************************
 prototype ItemPR_HeavyGun (C_Item)
 {
@@ -407,11 +423,11 @@ func void SetItRwAttributes_HeavyGun (var C_Item itm, var int kap)
 {
 	itm.value				=	kap*1000;
 	itm.damageTotal			=	kap*50;
-	itm.cond_value[0]  		= 	kap*20;
-	itm.cond_value[1]  		= 	kap*10;
+	itm.cond_value[0]  		= 	kap*10;
+	itm.cond_value[1]  		= 	kap*20;
 	
 	itm.COUNT[1]			=	itm.damageTotal;
-	itm.COUNT[2]			=	itm.cond_value[0];
+	itm.COUNT[2]			=	itm.cond_value[1];
 	itm.COUNT[5]			=	itm.value;
 };
 ///******************************************************************************************

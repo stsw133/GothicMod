@@ -9,7 +9,7 @@ prototype Default_AmbientDementor (C_NPC)
 	bodyStateInterruptableOverride		=	true;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_MM_FollowTime]			=	NPC_TIME_FOLLOW;
 	aivar[AIV_FightDistCancel]			=	FIGHT_DIST_CANCEL;
 

@@ -12,7 +12,7 @@ var int girlfriend[1];
 func void MOD_StopTalkingWithGirl (var C_Npc slf)
 {
 	talkingWithGirl = false;
-	Bar_Delete(Bar_expBar);
+	Bar_Delete(Bar_xpBar);
 	AI_StopProcessInfos(slf);
 };
 

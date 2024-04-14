@@ -1,40 +1,23 @@
 ///******************************************************************************************
-///	SPL_IceLance
+/// SPL_IceLance
 ///******************************************************************************************
 
-const int SPL_Cost_IceLance				=	30;	//20
-const int SPL_Damage_IceLance			=	30;	//100
-const int SPL_Scaling_IceLance			=	110;
+const int SPL_Cost_IceLance				=	25;
+const int SPL_Damage_IceLance			=	100;
 
 ///******************************************************************************************
 instance Spell_IceLance (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_IceLance;
 	damageType							=	DAM_MAGIC;
 };
 
 func int Spell_Logic_IceLance (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_IceLance/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_IceLance)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_IceLance, manaInvested);
 };
 
 func void Spell_Cast_IceLance()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_IceLance/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_IceLance;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_IceLance);
 };

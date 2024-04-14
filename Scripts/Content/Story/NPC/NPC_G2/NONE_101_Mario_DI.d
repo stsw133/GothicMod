@@ -9,7 +9,7 @@ instance None_101_Mario_DI (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser] 				=	MAGIC_NEVER;
+	aivar[AIV_MagicUser] 				=	false;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_EnemyOverride] 			=	true;

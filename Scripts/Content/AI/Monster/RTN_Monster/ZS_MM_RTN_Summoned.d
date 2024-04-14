@@ -50,15 +50,34 @@ func int ZS_MM_Rtn_Summoned_Loop()
 			};
 			
 			/// changed!!!
-			if (self.aivar[AIV_SummonTime] >= 0)
+			if (self.aivar[AIV_SummonTime] > 0)
 			{
 				self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
-			};
-			if (self.aivar[AIV_SummonTime] == 0)
-			{
-				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
+				
+				if (self.level == 0)
+				{
+					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
+					if (self.aivar[AIV_SummonTime] == 0)
+					{
+						Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
+					};
+				};
 			};
 			
+			if (self.level == 0)
+			{
+				if (self.aivar[AIV_SummonTime] > 0)
+				{
+					self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
+					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
+				};
+				if (self.aivar[AIV_SummonTime] == 0)
+				{
+					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
+				};
+			};
+			
+			/// ...
 			Npc_SetStateTime (self, 0);
 		};
 	};

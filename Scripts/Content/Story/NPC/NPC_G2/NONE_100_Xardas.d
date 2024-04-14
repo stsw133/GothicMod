@@ -10,7 +10,7 @@ instance NONE_100_Xardas (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_NEC;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy] 				=	true;

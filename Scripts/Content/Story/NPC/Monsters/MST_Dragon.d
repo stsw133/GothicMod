@@ -6,7 +6,9 @@ prototype Mst_Default_Dragon (C_Npc)
 	guild								=	GIL_DRAGON;
 	aivar[AIV_MM_REAL_ID]				=	ID_DRAGON;
 	npctype								=	NPCTYPE_MAIN;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_FIRE;

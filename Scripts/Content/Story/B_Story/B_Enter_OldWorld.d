@@ -473,7 +473,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "FP_ROAM_OW_ROCK_DRACONIAN_07");
-		Wld_InsertItem (ItSc_PyrBurning, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
+		Wld_InsertItem (ItSc_Fireburning, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
 		
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_04");
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_02");
@@ -502,7 +502,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		Log_SetTopicStatus (TOPIC_Dragonhunter, LOG_RUNNING);
 		B_LogEntry (TOPIC_Dragonhunter, "Die grosse Drachenjagd ist eröffnet und hat vermutlich viele Möchtegernabenteurer ins Minental gelockt. Ich kann nur hoffen, dass sie mir nicht im Wege stehen."); 
 		
-		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(10)), TEXT_Chapter_10, "chapter4.tga", "chapter_01.wav", 6000);
+		//B_ChangeChapter (10, OLDWORLD_ZEN);
 		EnterOW_Kapitel = 10;
 	};
 	

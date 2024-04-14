@@ -10,7 +10,7 @@ instance PC_Mage_NW (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
@@ -23,7 +23,7 @@ instance PC_Mage_NW (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Milten, 0, ITAR_Mag_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Milten, 0, ITAR_Mag_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

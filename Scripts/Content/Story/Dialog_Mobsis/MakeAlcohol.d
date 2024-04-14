@@ -1,14 +1,14 @@
 ///******************************************************************************************
-///	MOBSI_MAKEALCOHOL
+/// MOBSI_MAKEALCOHOL
 ///******************************************************************************************
 func void MOBSI_MAKEALCOHOL_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKEALCOHOL;
-		Ai_ProcessInfos(her);
+		AI_ProcessInfos(her);
 	};
 };
 ///******************************************************************************************

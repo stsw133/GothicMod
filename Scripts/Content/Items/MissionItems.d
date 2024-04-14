@@ -9,6 +9,8 @@ prototype ItemPR_Mission (C_Item)
 var int	Gorns_Beutel;
 
 ///******************************************************************************************
+/// Artifacts
+///******************************************************************************************
 instance ItAm_InnosEye_Broken (ItemPR_Mission)
 {
 	name 			=	"Oko Innosa";
@@ -26,6 +28,100 @@ instance ItAm_Mana_Angar_MIS (ItemPR_Mission)
 	description		=	name;
 };
 ///******************************************************************************************
+instance ItRi_Addon_BanditTrader (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ gildii";
+	visual 			=	"ItRi_Prot_Point_02.3ds";
+	description		= 	"RzeŸbiony pierœcieñ";
+	TEXT[2]			= 	"zamorskiej gildii Araxos";
+};
+instance ItRi_Addon_MorgansRing_Mission (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ Morgana";
+	visual 			=	"ItRi_Prot_Total_02.3DS";
+	description		=	name;
+};
+instance ItRi_OrcEliteRing (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ orkowych przywódców";
+	visual 			=	"ItRi_Str_02.3ds";
+	description		=	name;
+	TEXT[0]			=	"Pierœcieñ jest szorstki i";
+	TEXT[1]			=	"dziwnie zimny w dotyku.";
+};
+instance ItRi_Prot_Point_01_MIS (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ Constantina";
+	visual 			=	"ItRi_Prot_Point_01.3ds";
+	description		=	name;
+};
+prototype Rangerring_prototype (C_Item)
+{
+	name 			=	"Pierœcieñ z akwamarynem";
+	mainflag 		=	ITEM_KAT_MAGIC;
+	flags 			=	ITEM_RING|ITEM_MISSION;
+	
+	visual 			=	"ItRi_Hp_Mana_01.3ds"; 
+	material 		=	MAT_METAL;
+	on_equip		=	Equip_ItRi_Ranger;
+	on_unequip		=	UnEquip_ItRi_Ranger;
+	
+	description		=	"Symbol przynale¿noœci do Wodnego Krêgu";
+	INV_ZBIAS		=	INVCAM_ENTF_RING_STANDARD;
+	INV_ROTZ		=	INVCAM_Z_RING_STANDARD;
+	INV_ROTX		=	INVCAM_X_RING_STANDARD;
+};
+func void Equip_ItRi_Ranger()
+{
+	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
+	{
+		if (!ENTERED_ADDONWORLD)
+		&& (!Npc_HasItems(hero, ItRi_Ranger_Addon))
+		{
+			RangerRingIsLaresRing = true;
+		};
+		SCIsWearingRangerRing = true;
+		Print("Nosisz teraz charakterystyczny znak Wodnego Krêgu.");
+	};
+};
+func void UnEquip_ItRi_Ranger()
+{
+	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
+	{
+		if (!SC_IsRanger)
+		{
+			SCIsWearingRangerRing = false;
+		};
+		RangerRingIsLaresRing = false;
+	};
+};
+instance ItRi_Ranger_Lares_Addon (Rangerring_prototype)
+{
+	TEXT[1] = "Ten pierœcieñ nale¿y do Laresa.";
+};
+instance ItRi_Ranger_Addon (Rangerring_prototype)
+{
+	TEXT[1] = "To mój pierœcieñ.";
+};
+instance ItRi_Ranger_Lance (Rangerring_prototype)
+{
+	TEXT[1] = "Ten pierœcieñ nale¿a³ do Lance'a.";
+};
+instance ItRi_Tengron (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ Tengrona";
+	visual 			=	"ItRi_Hp_01.3ds";
+	description		=	name;
+};
+instance ItRi_ValentinosRing (ItemPR_Mission)
+{
+	name 			=	"Pierœcieñ Valentina";
+	visual 			=	"ItRi_Prot_Edge_01.3ds";
+	description		=	name;
+};
+///******************************************************************************************
+/// Animal trophies
+///******************************************************************************************
 instance ItAt_ClawLeader (ItemPR_Mission)
 {
 	name 			=	"Pazury przywódcy zêbaczy";
@@ -40,12 +136,16 @@ instance ItAt_TalbinsLurkerSkin (ItemPR_Mission)
 	TEXT[0]			= 	"Na wewnêtrznej stronie wygarbowano imiê 'Talbin'.";
 };
 ///******************************************************************************************
+/// Food
+///******************************************************************************************
 instance ItFo_Schafswurst (ItemPR_Mission)
 {
 	name 			=	"Barania kie³basa";
 	visual 			=	"ItFo_Sausage.3DS";
 	description		=	name;
 };
+///******************************************************************************************
+/// Misc
 ///******************************************************************************************
 prototype EffectItemprototype_Addon (C_Item)
 {
@@ -247,21 +347,7 @@ instance ItMi_WeaponBag (ItemPR_Mission)
 	description		= 	name;
 };
 ///******************************************************************************************
-instance ItMw_MalethsGehstock_MIS (ItemPR_Mission)
-{
-	name 			=	"Laska Maletha";
-	visual 			=	"Itmw_008_1h_pole_01.3ds";
-	description		=	name;
-};
-instance ItMw_UluMulu (ItemPR_Mission)
-{
-	name 			=	"Ulu-Mulu";
-	visual 			=	"ItMi_Amulet_Ulumulu_02.3ds";
-	description		=	name;
-	TEXT[1]			=	"Ulu-Mulu œwiadczy o wielkiej sile i odwadze";
-	TEXT[2]			=	"posiadacza. Wojownik, który nosi ten amulet";
-	TEXT[3]			=	"nie musi siê obawiaæ ataku ze strony orków!";
-};
+/// Potions
 ///******************************************************************************************
 instance ItPo_HealHilda_MIS (ItemPR_Mission)
 {
@@ -276,96 +362,22 @@ instance ItPo_HealRandolph_MIS (ItemPR_Mission)
 	description		= 	"Leczenie z na³ogu";
 };
 ///******************************************************************************************
-instance ItRi_Addon_BanditTrader (ItemPR_Mission)
+/// Weapons
+///******************************************************************************************
+instance ItMw_MalethsGehstock_MIS (ItemPR_Mission)
 {
-	name 			=	"Pierœcieñ gildii";
-	visual 			=	"ItRi_Prot_Point_02.3ds";
-	description		= 	"RzeŸbiony pierœcieñ";
-	TEXT[2]			= 	"zamorskiej gildii Araxos";
-};
-instance ItRi_Addon_MorgansRing_Mission (ItemPR_Mission)
-{
-	name 			=	"Pierœcieñ Morgana";
-	visual 			=	"ItRi_Prot_Total_02.3DS";
+	name 			=	"Laska Maletha";
+	visual 			=	"Itmw_008_1h_pole_01.3ds";
 	description		=	name;
 };
-instance ItRi_OrcEliteRing (ItemPR_Mission)
+instance ItMw_UluMulu (ItemPR_Mission)
 {
-	name 			=	"Pierœcieñ orkowych przywódców";
-	visual 			=	"ItRi_Str_02.3ds";
+	name 			=	"Ulu-Mulu";
+	visual 			=	"ItMi_Amulet_Ulumulu_02.3ds";
 	description		=	name;
-	TEXT[0]			=	"Pierœcieñ jest szorstki i";
-	TEXT[1]			=	"dziwnie zimny w dotyku.";
-};
-instance ItRi_Prot_Point_01_MIS (ItemPR_Mission)
-{
-	name 			=	"Pierœcieñ Constantina";
-	visual 			=	"ItRi_Prot_Point_01.3ds";
-	description		=	name;
-};
-prototype Rangerring_prototype (C_Item)
-{
-	name 			=	"Pierœcieñ z akwamarynem";
-	mainflag 		=	ITEM_KAT_MAGIC;
-	flags 			=	ITEM_RING|ITEM_MISSION;
-	
-	visual 			=	"ItRi_Hp_Mana_01.3ds"; 
-	material 		=	MAT_METAL;
-	on_equip		=	Equip_ItRi_Ranger;
-	on_unequip		=	UnEquip_ItRi_Ranger;
-	
-	description		=	"Symbol przynale¿noœci do Wodnego Krêgu";
-	INV_ZBIAS		=	INVCAM_ENTF_RING_STANDARD;
-	INV_ROTZ		=	INVCAM_Z_RING_STANDARD;
-	INV_ROTX		=	INVCAM_X_RING_STANDARD;
-};
-func void Equip_ItRi_Ranger()
-{
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
-	{
-		if (!ENTERED_ADDONWORLD)
-		&& (!Npc_HasItems(hero, ItRi_Ranger_Addon))
-		{
-			RangerRingIsLaresRing = true;
-		};
-		SCIsWearingRangerRing = true;
-		Print("Nosisz teraz charakterystyczny znak Wodnego Krêgu.");
-	};
-};
-func void UnEquip_ItRi_Ranger()
-{
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(hero))
-	{
-		if (!SC_IsRanger)
-		{
-			SCIsWearingRangerRing = false;
-		};
-		RangerRingIsLaresRing = false;
-	};
-};
-instance ItRi_Ranger_Lares_Addon (Rangerring_prototype)
-{
-	TEXT[1] = "Ten pierœcieñ nale¿y do Laresa.";
-};
-instance ItRi_Ranger_Addon (Rangerring_prototype)
-{
-	TEXT[1] = "To mój pierœcieñ.";
-};
-instance ItRi_Ranger_Lance (Rangerring_prototype)
-{
-	TEXT[1] = "Ten pierœcieñ nale¿a³ do Lance'a.";
-};
-instance ItRi_Tengron (ItemPR_Mission)
-{
-	name 			=	"Pierœcieñ Tengrona";
-	visual 			=	"ItRi_Hp_01.3ds";
-	description		=	name;
-};
-instance ItRi_ValentinosRing (ItemPR_Mission)
-{
-	name 			=	"Pierœcieñ Valentina";
-	visual 			=	"ItRi_Prot_Edge_01.3ds";
-	description		=	name;
+	TEXT[1]			=	"Ulu-Mulu œwiadczy o wielkiej sile i odwadze";
+	TEXT[2]			=	"posiadacza. Wojownik, który nosi ten amulet";
+	TEXT[3]			=	"nie musi siê obawiaæ ataku ze strony orków!";
 };
 ///******************************************************************************************
 instance ItRw_Bow_L_03_MIS (ItemPR_Mission)
@@ -386,6 +398,8 @@ instance ItRw_SengrathsArmbrust_MIS (ItemPR_Mission)
 	visual 			=	"ItRw_Mil_Crossbow.mms";
 	description		=	name;
 };
+///******************************************************************************************
+/// Containers
 ///******************************************************************************************
 instance ItFo_HalvorFish_MIS (ItemPR_Mission)
 {	

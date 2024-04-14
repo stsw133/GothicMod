@@ -368,7 +368,7 @@ func void DIA_Keroloth_KAP4_GELDGEFUNDEN_DJG ()
 		};
 
 	AI_StopProcessInfos	(self);
-	other.aivar[AIV_INVINCIBLE] = FALSE;
+	other.aivar[AIV_Invisible] = false;
 
 	if (Npc_IsDead(Ferros) == FALSE)
 		&& ((Npc_GetDistToNpc(self, Ferros)) <= 2000)

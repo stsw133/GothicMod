@@ -1,97 +1,79 @@
 ///******************************************************************************************
-///	SPL_FireBolt
+/// SPL_Firebolt
 ///******************************************************************************************
 
-const int SPL_Cost_FireBolt				=	5;	//5
-const int SPL_Damage_FireBolt			=	5;	//25
-const int SPL_Scaling_FireBolt			=	90;
+const int SPL_Cost_Firebolt				=	10;
+const int SPL_Damage_Firebolt			=	50;
 
 ///******************************************************************************************
-instance Spell_FireBolt (C_Spell_Proto)
+instance Spell_Firebolt (C_Spell_Proto)
 {
-	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_FireBolt;
+	damage_per_level					=	SPL_Damage_Firebolt;
 	damageType							=	DAM_MAGIC;
 };
 
-func int Spell_Logic_FireBolt (var int manaInvested)
+func int Spell_Logic_Firebolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_FireBolt/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_FireBolt)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_Firebolt, manaInvested);
 };
 
-func void Spell_Cast_FireBolt()
+func void Spell_Cast_Firebolt()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_FireBolt/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_FireBolt;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_Firebolt);
 };
 /*
 ///******************************************************************************************
-///	SPL_MysBolt
+///	SPL_Firebolt
 ///******************************************************************************************
 
-const int SPL_Cost_MysBolt				=	25;
-const int SPL_Damage_MysBolt			=	25;
+const int SPL_Cost_Firebolt				=	10;
+const int SPL_Damage_Firebolt			=	50;
 
-const int SPL_TimingCast_MysBolt		=	2000;
-const int SPL_Timing_MysBolt			=	800;
+const int SPL_TimingCast_Firebolt		=	2000;
+const int SPL_Timing_Firebolt			=	800;
 
-var int SPL_Combo_MysBolt;
+var int SPL_Combo_Firebolt;
 
 ///******************************************************************************************
-instance Spell_MysBolt (C_Spell_Proto)
+instance Spell_Firebolt (C_Spell_Proto)
 {
-	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_MysBolt;
+	damage_per_level					=	SPL_Damage_Firebolt;
 	damageType							=	DAM_MAGIC;
 };
 
-func void FF_MysBolt()
+func void FF_Firebolt()
 {
-	spellFxAniLetters[SPL_MysBolt] = "RPF";
-	SPL_Combo_MysBolt = 0;
+	spellFxAniLetters[SPL_Firebolt] = "RPF";
+	SPL_Combo_Firebolt = 0;
 };
 
-func int Spell_Logic_MysBolt (var int manaInvested)
+func int Spell_Logic_Firebolt (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_MysBolt/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_MysBolt)
+	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Firebolt/SPL_Cost_Scroll)
+	|| (self.attribute[ATR_MANA] >= SPL_Cost_Firebolt)
 	{
-		if (FF_Active(FF_MysBolt))
+		if (FF_Active(FF_Firebolt))
 		{
-            FF_Remove(FF_MysBolt);
+            FF_Remove(FF_Firebolt);
         };
 		
-		if (SPL_Combo_MysBolt == 0)
+		if (SPL_Combo_Firebolt == 0)
 		{
-            spellFxAniLetters[SPL_MysBolt] = "RP2";
-            SPL_Combo_MysBolt = 1;
-            FF_ApplyExt(FF_MysBolt, SPL_TimingCast_MysBolt, 1);
+            spellFxAniLetters[SPL_Firebolt] = "RP2";
+            SPL_Combo_Firebolt = 1;
+            FF_ApplyExt(FF_Firebolt, SPL_TimingCast_Firebolt, 1);
         }
-		else if (SPL_Combo_MysBolt == 1)
+		else if (SPL_Combo_Firebolt == 1)
 		{
-            spellFxAniLetters[SPL_MysBolt] = "RP3";
-            SPL_Combo_MysBolt = 2;
-            FF_ApplyExt(FF_MysBolt, SPL_Timing_MysBolt, 1);
+            spellFxAniLetters[SPL_Firebolt] = "RP3";
+            SPL_Combo_Firebolt = 2;
+            FF_ApplyExt(FF_Firebolt, SPL_Timing_Firebolt, 1);
         }
 		else
 		{
-            spellFxAniLetters[SPL_MysBolt] = "RP2";
-            SPL_Combo_MysBolt = 1;
-            FF_ApplyExt(FF_MysBolt, SPL_Timing_MysBolt, 1);
+            spellFxAniLetters[SPL_Firebolt] = "RP2";
+            SPL_Combo_Firebolt = 1;
+            FF_ApplyExt(FF_Firebolt, SPL_Timing_Firebolt, 1);
         };
 		
 		return SPL_SENDCAST;
@@ -100,17 +82,8 @@ func int Spell_Logic_MysBolt (var int manaInvested)
 	return SPL_SENDSTOP;
 };
 
-func void Spell_Cast_MysBolt()
+func void Spell_Cast_Firebolt()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysBolt/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_MysBolt;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_Firebolt);
 };
 */

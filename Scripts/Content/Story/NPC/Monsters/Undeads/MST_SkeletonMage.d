@@ -5,7 +5,9 @@ prototype Mst_Default_SkeletonMage (C_Npc)
 	name								=	"Szkielet-mag";
 	guild								=	GIL_SKELETON;
 	aivar[AIV_MM_REAL_ID]				= 	ID_SKELETON_MAGE;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;

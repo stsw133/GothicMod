@@ -3,8 +3,8 @@
 ///******************************************************************************************
 prototype C_Spell_Proto (C_Spell)
 {
-	time_per_mana					=	500;
-	damage_per_level				=	0; //1
+	time_per_mana					=	0;
+	damage_per_level				=	0;
 	damageType						=	DAM_MAGIC;
 	spellType						=	SPELL_BAD;
 	canTurnDuringInvest				=	true;

@@ -134,26 +134,32 @@ func int ZS_MM_Attack_Loop()
 	};
 	
 	/// FUNC
-	if (self.aivar[AIV_WaitBeforeAttack] == 1)
+	if (self.aivar[AIV_WaitBeforeAttack] >= 1)
 	{
 		AI_Wait (self, 0.8);
 		self.aivar[AIV_WaitBeforeAttack] = 0;
 	};
 	
-	if (self.level == 0)
+	/// changed!!!
+	if (self.aivar[AIV_SummonTime] > 0)
 	{
 		if (Npc_GetStateTime(self) > self.aivar[AIV_StateTime])
 		{
-			self.aivar[AIV_SummonTime] += 1;
+			self.aivar[AIV_SummonTime] -= 1;
 			self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
+			if (self.level == 0)
+			{
+				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
+			};
 		};
 		
-		if (self.aivar[AIV_SummonTime] >= MONSTER_SUMMON_TIME)
+		if (self.aivar[AIV_SummonTime] == 0 && self.level == 0)
 		{
-			Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
+			Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
 		};
 	};
 	
+	/// ...
 	if (!C_BodyStateContains(other, BS_RUN) && !C_BodyStateContains(other, BS_JUMP))
 	&& (Npc_GetStateTime(self) > 0)
 	{
@@ -174,7 +180,7 @@ func int ZS_MM_Attack_Loop()
 		};
 	};
 	
-	if (C_NpcIsMonsterMage(self))
+	if (self.guild > GIL_SEPERATOR_HUM && self.aivar[AIV_MagicUser])
 	|| (self.guild == GIL_SKELETON)
 	|| (self.guild == GIL_SUMMONED_SKELETON)
 	|| (self.guild > GIL_SEPERATOR_ORC)
@@ -187,7 +193,7 @@ func int ZS_MM_Attack_Loop()
 	if (Hlp_IsValidNpc(other))
 	&& (!C_NpcIsDown(other))
 	{
-		if (!other.aivar[AIV_INVINCIBLE])
+		if (!other.aivar[AIV_Invisible])
 		{
 			AI_Attack(self);
 		}
@@ -216,7 +222,7 @@ func int ZS_MM_Attack_Loop()
 		if (Hlp_IsValidNpc(other))
 		&& (!C_NpcIsDown(other))
 		&& (Npc_GetDistToNpc(self, other) < PERC_DIST_INTERMEDIAT || Npc_IsPlayer(other))
-		&& (!other.aivar[AIV_INVINCIBLE])
+		&& (!other.aivar[AIV_Invisible])
 		{
 			self.aivar[AIV_LASTTARGET] = Hlp_GetInstanceID(other);
 			return LOOP_CONTINUE;
@@ -243,7 +249,7 @@ func void ZS_MM_Attack_End()
 	/// ...
 	other = Hlp_GetNpc(self.aivar[AIV_LASTTARGET]);
 	
-	if (C_NpcIsMonsterMage(self))
+	if (self.guild > GIL_SEPERATOR_HUM && self.aivar[AIV_MagicUser])
 	|| (self.guild == GIL_SKELETON)
 	|| (self.guild == GIL_SUMMONED_SKELETON)
 	|| (self.guild > GIL_SEPERATOR_ORC)

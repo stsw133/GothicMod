@@ -10,7 +10,7 @@ instance KDF_507_Talamon (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
@@ -23,7 +23,7 @@ instance KDF_507_Talamon (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Saturas, 0, ITAR_Mag_A);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_Saturas, 0, ITAR_Amg_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

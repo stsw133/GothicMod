@@ -7,7 +7,9 @@ prototype Mst_Default_OrcShaman (C_Npc)
 	guild								=	GIL_ORC;
 	aivar[AIV_MM_REAL_ID]				= 	ID_ORCSHAMAN;
 	aivar[AIV_FaceTex]					=	Hlp_RandomRange(50,58);
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;

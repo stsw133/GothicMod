@@ -1,9 +1,12 @@
 ///******************************************************************************************
-///	B_MagicFn
+/// B_MagicFn: damage
 ///******************************************************************************************
-func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int damage)
+func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int dmg)
 {
-	Npc_ChangeAttribute (oth, ATR_HITPOINTS, -damage);
+	if (dmg > 0)
+	{
+		Npc_ChangeAttribute (oth, ATR_HITPOINTS, -dmg);
+	};
 	
 	if (Npc_IsDead(oth))
 	{
@@ -16,15 +19,25 @@ func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int damage)
 		//B_GiveDeathInv(oth);
 		//B_ClearRuneInv(oth);
 		
-		B_DeletePetzCrime(oth);
-		oth.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
-		oth.aivar[AIV_TAPOSITION] = false;
+		//B_DeletePetzCrime(oth);
+		//oth.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
+		//oth.aivar[AIV_TAPOSITION] = false;
+	};
+	
+	/// display text
+	if (dmg > 0)
+	{
+		if		(Npc_IsPlayer(oth))		{ PrintS_Ext (ConcatStrings(NAME_DamageTrue, IntToString(dmg)), COL_DamageTrueTaken); }
+		else if	(Npc_IsPlayer(slf))		{ PrintS_Ext (ConcatStrings(NAME_DamageTrue, IntToString(dmg)), COL_DamageTrueGiven); };
 	};
 };
+
 ///******************************************************************************************
+
 var int B_MagicHurtNpcArea_Damage;
 var C_Npc B_MagicHurtNpcArea_Victim;
 
+///******************************************************************************************
 func void B_MagicHurtNpcArea(var C_Npc oth, var C_Npc slf)
 {
 	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(B_MagicHurtNpcArea_Victim))
@@ -38,92 +51,142 @@ func void B_MagicHurtNpcArea(var C_Npc oth, var C_Npc slf)
 		B_MagicHurtNpc (slf, oth, B_MagicHurtNpcArea_Damage);
 	};
 };
+
 ///******************************************************************************************
-func int B_GetMagicDamage (var C_Npc slf, var int damage, var int scaling)
+///	B_MagicFn: spell logic & cast
+///******************************************************************************************
+
+const int SPL_Cost_Scroll			=	5;
+const int SPL_Percent_Scroll		=	40;
+
+///******************************************************************************************
+func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaInvested)
 {
-	/// calculate damage
-	if (slf.aivar[AIV_SpellLevel] > 0)
+	/// DEFAULT TYPE
+	if (type == default)
 	{
-		damage += scaling * slf.aivar[AIV_SpellLevel] * slf.attribute[ATR_POWER] / 100;
+		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+		|| (slf.attribute[ATR_MANA] >= cost)
+		{
+			return SPL_SENDCAST;
+		};
+		
+		return SPL_SENDSTOP;
+	};
+	/// INVEST TYPE
+	if (type == 1)
+	{
+		if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] < cost*SPL_Percent_Scroll/100)
+		|| (self.attribute[ATR_MANA] < cost)
+		{
+			return SPL_DONTINVEST;
+		};
+		
+		var int newSpellLevel; newSpellLevel = 0;
+		
+		if ((Npc_GetActiveSpellIsScroll(self) && manaInvested <= cost*1*SPL_Percent_Scroll/100) || (manaInvested <= cost*1))
+		{
+			self.aivar[AIV_SpellLevel] = 1;
+			return SPL_STATUS_CANINVEST_NO_MANADEC;
+		}
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*1*SPL_Percent_Scroll/100) || (manaInvested > cost*1))
+		&& (self.aivar[AIV_SpellLevel] <= 1)
+		{
+			newSpellLevel = 2;
+		}
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*2*SPL_Percent_Scroll/100) || (manaInvested > cost*2))
+		&& (self.aivar[AIV_SpellLevel] <= 2)
+		{
+			newSpellLevel = 3;
+		}
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*3*SPL_Percent_Scroll/100) || (manaInvested > cost*3))
+		&& (self.aivar[AIV_SpellLevel] <= 3)
+		{
+			newSpellLevel = 4;
+		}
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*3*SPL_Percent_Scroll/100) || (manaInvested > cost*3))
+		&& (self.aivar[AIV_SpellLevel] == 4)
+		{
+			return SPL_DONTINVEST;
+		};
+		
+		if (newSpellLevel > 1)
+		{
+			if (Npc_GetActiveSpellIsScroll(self))
+			{
+				self.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
+			}
+			else
+			{
+				self.attribute[ATR_MANA] -= cost;
+			};
+			
+			self.aivar[AIV_SpellLevel] = newSpellLevel;
+			return SPL_NEXTLEVEL;
+		};
+		
+		return SPL_STATUS_CANINVEST_NO_MANADEC;
+	};
+	/// INFINITE INVEST TYPE
+	if (type == 2)
+	{
+		if (Npc_IsDead(other) || Npc_IsInState(other, ZS_Unconscious))
+		{
+			return SPL_SENDSTOP;
+		};
+		
+		if (manaInvested == 0)
+		{
+			if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+			{
+				slf.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
+			}
+			else if (slf.attribute[ATR_MANA] >= cost)
+			{
+				slf.attribute[ATR_MANA] -= cost;
+			}
+			else
+			{
+				return SPL_SENDSTOP;
+			};
+		};
+		
+		return SPL_NEXTLEVEL;
+	};
+	/// MIN LEVEL
+	if (type == 3)
+	{
+		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+		|| (slf.attribute[ATR_MANA] >= cost)
+		{
+			if ((other.level*5 - 50 - slf.attribute[ATR_POWER]) <= 0)
+			|| (!Npc_IsPlayer(slf))
+			{
+				return SPL_SENDCAST;
+			}
+			else
+			{
+				Print(ConcatStrings(IntToString(other.level*5 - 50 - slf.attribute[ATR_POWER]), " mocy zaklêæ za ma³o aby odnieœæ skutek!"));
+			};
+		};
+		
+		return SPL_SENDSTOP;
+	};
+	
+	return SPL_SENDSTOP;
+};
+
+///******************************************************************************************
+func void B_SpellCast (var C_Npc slf, var int type, var int cost)
+{
+	if (Npc_GetActiveSpellIsScroll(slf))
+	{
+		slf.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
 	}
 	else
 	{
-		damage += scaling * slf.attribute[ATR_POWER] / 100;
+		slf.attribute[ATR_MANA] -= cost;
 	};
 	
-	return damage;
-};
-///******************************************************************************************
-func void B_SetMagicAura (var int type, var int points, var int time)
-{
-	/// disabling active aura
-	if (mAuraTime > 0 || time == 0)
-	{
-		if (mAuraType == MAGIC_MYS)
-		{
-			Wld_StopEffect("SPELLFX_MYSAURA_GLOW");
-		}
-		else if (mAuraType == MAGIC_GEO)
-		{
-			Wld_StopEffect("SPELLFX_GEOAURA_GLOW");
-			hero.protection[PROT_BLUNT] -= mAuraPoints;
-			hero.protection[PROT_EDGE] -= mAuraPoints;
-			hero.protection[PROT_POINT] -= mAuraPoints;
-		}
-		else if (mAuraType == MAGIC_ELE)
-		{
-			Wld_StopEffect("SPELLFX_ELEAURA_GLOW");
-			hero.protection[PROT_POINT] -= mAuraPoints;
-			hero.protection[PROT_FALL] -= mAuraPoints;
-		}
-		else if (mAuraType == MAGIC_PYR)
-		{
-			Wld_StopEffect("SPELLFX_PYRAURA_GLOW");
-			hero.protection[PROT_FIRE] -= mAuraPoints;
-		}
-		else if (mAuraType == MAGIC_NEC)
-		{
-			Wld_StopEffect("SPELLFX_NECAURA_GLOW");
-			hero.protection[PROT_MAGIC] -= mAuraPoints;
-			hero.protection[PROT_BARRIER] -= mAuraPoints;
-		};
-	};
-	
-	/// assigning values
-	mAuraType = type;
-	mAuraPoints = points;
-	mAuraTime = time;
-	
-	/// starting new aura
-	if (time > 0)
-	{
-		if (type == MAGIC_MYS)
-		{
-			Wld_PlayEffect ("SPELLFX_MysEcho_GLOW", hero, hero, 0, 0, 0, false);
-		}
-		else if (type == MAGIC_GEO)
-		{
-			Wld_PlayEffect ("SPELLFX_GeoAura_GLOW", hero, hero, 0, 0, 0, false);
-			hero.protection[PROT_BLUNT] += points;
-			hero.protection[PROT_EDGE] += points;
-			hero.protection[PROT_POINT] += points;
-		}
-		else if (type == MAGIC_ELE)
-		{
-			Wld_PlayEffect ("SPELLFX_EleAura_GLOW", hero, hero, 0, 0, 0, false);
-			hero.protection[PROT_POINT] += points;
-			hero.protection[PROT_FALL] += points;
-		}
-		else if (type == MAGIC_PYR)
-		{
-			Wld_PlayEffect ("SPELLFX_PyrAura_GLOW", hero, hero, 0, 0, 0, false);
-			hero.protection[PROT_FIRE] += points;
-		}
-		else if (type == MAGIC_NEC)
-		{
-			Wld_PlayEffect ("SPELLFX_NecAura_GLOW", hero, hero, 0, 0, 0, false);
-			hero.protection[PROT_BARRIER] += points;
-			hero.protection[PROT_MAGIC] += points;
-		};
-	};
+	slf.aivar[AIV_SelectSpell] += 1;
 };

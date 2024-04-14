@@ -36,7 +36,8 @@ func void NpcFn_SetHeroVisual (var C_Npc slf, var int selHero)
 {
 	selectedHero = selHero;
 	
-	if		(selHero == 0)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 0, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
+	if		(selHero < 0)	{	Mdl_SetVisualBody (slf,	"Hum_Body_Invisible", default, default, "", default, default, -1);						}
+	else if	(selHero == 0)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 0, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
 	else if	(selHero == 1)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 1, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
 	else if	(selHero == 2)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 2, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
 	else if	(selHero == 3)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 3, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);					}

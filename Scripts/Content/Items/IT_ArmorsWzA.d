@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Farmer armors
+/// Farmer armors
 ///******************************************************************************************
 instance ITAR_ACRONA_BAU_00 (ItemPR_Armor)
 {
@@ -23,7 +23,7 @@ instance ITAR_ACRONA_WORKER (ItemPR_Armor)
 	SetItArAttributes (self, 5,5,0,0,   2);	/// 1 level
 };
 ///******************************************************************************************
-///	Pirate armors
+/// Pirate armors
 ///******************************************************************************************
 instance ITAR_ACRONA_PIR_L (ItemPR_Armor)
 {
@@ -47,7 +47,7 @@ instance ITAR_ACRONA_PIR_H (ItemPR_Armor)
 	SetItArAttributes (self, 60,60,15,15,   0);	/// 15 level
 };
 ///******************************************************************************************
-///	Soldier armors
+/// Soldier armors
 ///******************************************************************************************
 instance ITAR_ACRONA_SOLDIER_M (ItemPR_Armor)
 {
@@ -75,7 +75,7 @@ instance ITAR_ACRONA_KNIGHT (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Templer armors
+/// Templer armors
 ///******************************************************************************************
 instance ITAR_ACRONA_TEMPLER_M (ItemPR_Armor)
 {
@@ -99,7 +99,7 @@ instance ITAR_ACRONA_MAGE (ItemPR_Armor)
 	SetItArAttributes (self, 135,135,105,105,   0);	/// 48 level
 };
 ///******************************************************************************************
-///	Baron armors
+/// Baron armors
 ///******************************************************************************************
 instance ITAR_ACRONA_EBR_M (ItemPR_Armor)
 {
@@ -154,7 +154,7 @@ instance ITAR_ACRONA_KING (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	NewAge armors
+/// NewAge armors
 ///******************************************************************************************
 instance ITAR_NA_JaJ (ItemPR_Armor)
 {
@@ -185,7 +185,7 @@ instance ITAR_NA_SaT (ItemPR_Armor)
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 };
 ///******************************************************************************************
-///	Hero armors
+/// Hero armors
 ///******************************************************************************************
 instance ITAR_NA_SuperHero (ItemPR_Armor)
 {
@@ -210,7 +210,7 @@ instance ITAR_NA_IronHero (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	StarWars armors
+/// StarWars armors
 ///******************************************************************************************
 instance ITAR_SW_Jedi_L (ItemPR_Armor)
 {
@@ -255,7 +255,7 @@ instance ITAR_SW_Vader (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Chaos armors
+/// Chaos armors
 ///******************************************************************************************
 instance ITAR_iChaos_Blue (ItemPR_Armor)
 {
@@ -367,7 +367,7 @@ instance ITAR_aChaos_Pink (ItemPR_Armor)
 	SetItArAttributes (self, 150,150,150,150,   6);	/// 60 level
 };
 ///******************************************************************************************
-///	Polish armors
+/// Polish armors
 ///******************************************************************************************
 instance ITAR_Polish (ItemPR_Armor)
 {
@@ -381,7 +381,7 @@ instance ITAR_Polish (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Red bandit armors
+/// Red bandit armors
 ///******************************************************************************************
 instance ITAR_ORG_Red_P (ItemPR_Armor)
 {
@@ -412,7 +412,7 @@ instance ITAR_ORG_Red_H (ItemPR_Armor)
 	SetItArAttributes (self, 50,50,10,10,   1);	/// 12 level
 };
 ///******************************************************************************************
-///	Orc armors
+/// Orc armors
 ///******************************************************************************************
 instance ITAR_Orc_Soldier (ItemPR_Armor)
 {

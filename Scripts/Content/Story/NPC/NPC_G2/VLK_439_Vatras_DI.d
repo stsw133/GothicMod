@@ -9,7 +9,7 @@ instance VLK_439_Vatras_DI (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 	aivar[AIV_PartyMember]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;

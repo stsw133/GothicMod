@@ -1,50 +1,25 @@
 ///******************************************************************************************
-///	SPL_Rage
+/// SPL_Rage
 ///******************************************************************************************
 
-const int SPL_Cost_Rage					=	100;
-const int SPL_MinLvl_Rage				=	20;
-const int SPL_Scaling_Rage				=	20;
+const int SPL_Cost_Rage					=	200;
 
 ///******************************************************************************************
 instance Spell_Rage (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	spelltype 							=	SPELL_BAD;
 	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
+	targetCollectRange					=	1000;
 };
 
 func int Spell_Logic_Rage (var int manaInvested)
-{	
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Rage/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_Rage)
-	{
-		if ((other.level - SPL_MinLvl_Sleep - (self.attribute[ATR_POWER] * SPL_Scaling_Sleep / 100) * 100 / SPL_Scaling_Sleep) <= 0)
-		|| (!Npc_IsPlayer(self))
-		{
-			return SPL_SENDCAST;
-		}
-		else
-		{
-			Print(ConcatStrings(IntToString((other.level - SPL_MinLvl_Sleep - (self.attribute[ATR_POWER] * SPL_Scaling_Sleep / 100) * 100 / SPL_Scaling_Sleep)), "% dod. mocy za ma³o aby odnieœæ skutek!"));
-		};
-	};
-	
-	return SPL_SENDSTOP;
+{
+	return B_SpellLogic (self, 3, SPL_Cost_Rage, manaInvested);
 };
 
 func void Spell_Cast_Rage()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Rage/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Rage;
-	};
-	
-	//AI_PlayAni (other, "T_PSI_VICTIM");
+	B_SpellCast (self, 3, SPL_Cost_Rage);
 	
 	if (!C_BodyStateContains(other, BS_SWIM) && !C_BodyStateContains(other, BS_DIVE))
 	&& (!C_NpcIsDown(other) && Npc_GetDistToNpc(self, other) <= 1000)
@@ -55,6 +30,4 @@ func void Spell_Cast_Rage()
 		
 //		AI_SetNpcsToState (self, ZS_MagicRage, 1000);
 	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
 };

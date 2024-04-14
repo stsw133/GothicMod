@@ -78,7 +78,7 @@ func void ZS_Unconscious_End()
 	
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Raven))
 	{
-		self.aivar[AIV_MagicUser] = MAGIC_OTHER;
+		self.aivar[AIV_MagicUser] = true;
 		B_Attack (self, hero, AR_GuildEnemy, 0);
 		return;
 	};

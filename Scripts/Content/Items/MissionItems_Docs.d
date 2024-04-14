@@ -22,7 +22,7 @@ var int Use_Map_NewWorld_Orcelite_MIS_OneTime;
 var int Use_RavensKidnapperMission_Addon_OneTime;
 
 ///******************************************************************************************
-///	Maps
+/// Maps
 ///******************************************************************************************
 instance ItWR_Addon_TreasureMap (ItemPR_MissionDoc)
 {
@@ -266,7 +266,7 @@ func void Use_Seamap_Irdorath()
 };
 
 ///******************************************************************************************
-///	Documents
+/// Documents
 ///******************************************************************************************
 instance ItWr_ForgedShipLetter_MIS (ItemPR_Mission)
 {
@@ -2359,38 +2359,38 @@ func void Use_XardasSeamapBook_Mis()
 				Doc_PrintLines	(nDocID,  0, "...Jestem pewien, ¿e ta budowla to Dwór Irdorath. Znajduje siê on na niewielkiej wyspie, ca³kiem blisko przystani w Khorinis. Nie ma w¹tpliwoœci, ¿e Beliara interesuje ruda z kopalñ...");
 				Doc_PrintLines	(nDocID,  0, "");
 				
-				if (hero.guild == GIL_PAL)
-				{
-					Doc_PrintLines	(nDocID,  0, "...Im s¹ potê¿niejsi, tym bardziej przydatni bêd¹ dla niego jako o¿ywieñczy s³udzy. Pokonanie tych upad³ych paladynów to nie³atwe zadanie. Jeden z nich wpad³ w moje rêce. Mam tylko nadziejê, ¿e pozostali nie dowiedz¹ siê o nim...");
-					
-					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-					Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-					Doc_SetFont 	(nDocID,  1, FONT_Book);
-					Doc_PrintLine	(nDocID,  1, "");
-					Doc_PrintLines	(nDocID,  1, "...Upad³y paladyn nie reaguje na ¿adne bodŸce. Jego zbrojê i inne przedmioty schowa³em w tylnej komorze. Drzwi mo¿na otworzyæ tylko od wewn¹trz, wiêc stworzy³em na tê okazjê specjaln¹ runê teleportacji. Instrukcje s¹ w almanachu, by móg³ je znaleŸæ Wybraniec...");
-				}
-				else if (hero.guild == GIL_KDF)
-				{
-					Doc_PrintLines	(nDocID,  0, "...Znaki s¹ jasne! Gdy przybêdzie Wybrany, przyda siê mu ka¿da pomoc. Beliar i tak jest ju¿ zbyt silny. Zgromadzi³em tu na wszelki wypadek kilka przydatnych artefaktów. Podejrzewam, ¿e Wybraniec bêdzie jednym z nas,");
-					
-					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-					Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-					Doc_SetFont 	(nDocID,  1, FONT_Book);
-					Doc_PrintLines	(nDocID,  1, "dlatego spisa³em dla niego instrukcje w almanachu.");
-					Doc_PrintLine	(nDocID,  1, "");
-					Doc_PrintLines	(nDocID,  1, "...Nie mam ju¿ z³udzeñ. Jesteœmy bezbronni wobec wyroków losu. Gdy Beliar odpowiednio uroœnie w si³ê, spróbuje przej¹æ w³adzê nad ca³ym œwiatem. Muszê znaleŸæ Wybrañca!");
-				}
-				else if (hero.guild == GIL_DJG)
-				{
-					Doc_PrintLines	(nDocID,  0, "...Wybuchnie wojna, która zadecyduje o losach œwiata. Chyba jestem jedynym, który potrafi odczytaæ znaki. Pozostali po prostu je ignoruj¹. Wybraniec nadejdzie, a jego przyjœcie bêdzie oznaczaæ pocz¹tek wojny. Odwieczna rywalizacja mo¿e zostaæ rozstrzygniêta.");
-					
-					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-					Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-					Doc_SetFont 	(nDocID,  1, FONT_Book);
-					Doc_PrintLines	(nDocID,  1, "Nie bêdê sta³ bezczynnie, pozwalaj¹c innym decydowaæ o losach œwiata.");
-					Doc_PrintLine	(nDocID,  1, "");
-					Doc_PrintLines	(nDocID,  1, "...Ze staro¿ytnych pism dowiedzia³em siê, jak stworzyæ legendarn¹ broñ pradawnych Smoczych Mistrzów. Nie wiem jednak, gdzie szukaæ potrzebnych sk³adników. Na wszelki wypadek zapisa³em wszystko w almanachu. Kto wie, mo¿e przyjdzie nam walczyæ tak¿e ze smokami.");
-				};
+			if (hero.guild == GIL_PAL)
+			{
+				Doc_PrintLines	(nDocID,  0, "...Im s¹ potê¿niejsi, tym bardziej przydatni bêd¹ dla niego jako o¿ywieñczy s³udzy. Pokonanie tych upad³ych paladynów to nie³atwe zadanie. Jeden z nich wpad³ w moje rêce. Mam tylko nadziejê, ¿e pozostali nie dowiedz¹ siê o nim...");
+				
+				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
+				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLines	(nDocID,  1, "...Upad³y paladyn nie reaguje na ¿adne bodŸce. Jego zbrojê i inne przedmioty schowa³em w tylnej komorze. Drzwi mo¿na otworzyæ tylko od wewn¹trz, wiêc stworzy³em na tê okazjê specjaln¹ runê teleportacji. Instrukcje s¹ w almanachu, by móg³ je znaleŸæ Wybraniec...");
+			}
+			else if (hero.guild == GIL_KDF)
+			{
+				Doc_PrintLines	(nDocID,  0, "...Znaki s¹ jasne! Gdy przybêdzie Wybrany, przyda siê mu ka¿da pomoc. Beliar i tak jest ju¿ zbyt silny. Zgromadzi³em tu na wszelki wypadek kilka przydatnych artefaktów. Podejrzewam, ¿e Wybraniec bêdzie jednym z nas,");
+				
+				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
+				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_PrintLines	(nDocID,  1, "dlatego spisa³em dla niego instrukcje w almanachu.");
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLines	(nDocID,  1, "...Nie mam ju¿ z³udzeñ. Jesteœmy bezbronni wobec wyroków losu. Gdy Beliar odpowiednio uroœnie w si³ê, spróbuje przej¹æ w³adzê nad ca³ym œwiatem. Muszê znaleŸæ Wybrañca!");
+			}
+			else if (hero.guild == GIL_DJG)
+			{
+				Doc_PrintLines	(nDocID,  0, "...Wybuchnie wojna, która zadecyduje o losach œwiata. Chyba jestem jedynym, który potrafi odczytaæ znaki. Pozostali po prostu je ignoruj¹. Wybraniec nadejdzie, a jego przyjœcie bêdzie oznaczaæ pocz¹tek wojny. Odwieczna rywalizacja mo¿e zostaæ rozstrzygniêta.");
+				
+				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
+				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_PrintLines	(nDocID,  1, "Nie bêdê sta³ bezczynnie, pozwalaj¹c innym decydowaæ o losach œwiata.");
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLines	(nDocID,  1, "...Ze staro¿ytnych pism dowiedzia³em siê, jak stworzyæ legendarn¹ broñ pradawnych Smoczych Mistrzów. Nie wiem jednak, gdzie szukaæ potrzebnych sk³adników. Na wszelki wypadek zapisa³em wszystko w almanachu. Kto wie, mo¿e przyjdzie nam walczyæ tak¿e ze smokami.");
+			};
 				Doc_Show		(nDocID);
 };
 ///******************************************************************************************

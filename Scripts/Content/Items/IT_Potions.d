@@ -10,7 +10,6 @@ prototype ItemPR_Potion (C_Item)
 	
 	TEXT[5]					= 	NAME_Value;
 };
-///******************************************************************************************
 prototype ItemPR_PotionTrf (C_Item)
 {
 	name 					=	"Mikstura";
@@ -27,7 +26,7 @@ prototype ItemPR_PotionTrf (C_Item)
 	INV_ROTZ				=	INVCAM_Z_RING_STANDARD;
 };
 ///******************************************************************************************
-///	Health
+/// Health
 ///******************************************************************************************
 instance ItPo_Health_01 (ItemPR_Potion)
 {
@@ -54,7 +53,7 @@ func void Use_ItPo_Health_01()
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, 200);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Health_02 (ItemPR_Potion)
 {
 	value 					=	50;
@@ -80,7 +79,7 @@ func void Use_ItPo_Health_02()
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, 400);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Health_03 (ItemPR_Potion)
 {
 	value 					=	75;
@@ -106,7 +105,7 @@ func void Use_ItPo_Health_03()
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, 600);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Health_Addon_04 (ItemPR_Potion)
 {
 	value 					=	150;
@@ -135,7 +134,7 @@ func void Use_ItPo_Health_04()
 	};
 };
 ///******************************************************************************************
-///	Mana
+/// Mana
 ///******************************************************************************************
 instance ItPo_Mana_01 (ItemPR_Potion)
 {
@@ -161,7 +160,7 @@ func void Use_ItPo_Mana_01()
 		Npc_ChangeAttribute (self, ATR_MANA, 200);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Mana_02 (ItemPR_Potion)
 {
 	value 					=	50;
@@ -186,7 +185,7 @@ func void Use_ItPo_Mana_02()
 		Npc_ChangeAttribute (self, ATR_MANA, 400);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Mana_03 (ItemPR_Potion)
 {
 	value 					=	75;
@@ -211,7 +210,7 @@ func void Use_ItPo_Mana_03()
 		Npc_ChangeAttribute (self, ATR_MANA, 600);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Mana_Addon_04 (ItemPR_Potion)
 {
 	value 					=	150;
@@ -239,7 +238,7 @@ func void Use_ItPo_Mana_04()
 	};
 };
 ///******************************************************************************************
-///	Stamina & Running
+/// Stamina
 ///******************************************************************************************
 instance ItPo_Speed (ItemPR_Potion)
 {
@@ -265,7 +264,7 @@ func void Use_ItPo_Speed()
 		Mdl_ApplyOverlayMDSTimed (self, "HUMANS_FASTRUN.MDS", 60 * 1000);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Lightness (ItemPR_Potion)
 {
 	value 					=	200;
@@ -282,7 +281,7 @@ func void Use_ItPo_Lightness()
 	Mdl_ApplyOverlayMDSTimed (self, "HUMANS_SPRINT.MDS", 120 * 1000);
 };
 ///******************************************************************************************
-///	Temp
+/// Temp
 ///******************************************************************************************
 instance ItPo_Temp_Health (ItemPR_Potion)
 {
@@ -308,7 +307,7 @@ func void Use_ItPo_Temp_Health()
 		hpMaxPotionTime = 300;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Temp_Mana (ItemPR_Potion)
 {
 	value 					=	200;
@@ -333,7 +332,7 @@ func void Use_ItPo_Temp_Mana()
 		mpMaxPotionTime = 300;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Temp_STR (ItemPR_Potion)
 {
 	value 					=	200;
@@ -358,7 +357,7 @@ func void Use_ItPo_Temp_STR()
 		strPotionTime = 300;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Temp_DEX (ItemPR_Potion)
 {
 	value 					=	200;
@@ -383,7 +382,7 @@ func void Use_ItPo_Temp_DEX()
 		dexPotionTime = 300;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Temp_POW (ItemPR_Potion)
 {
 	value 					=	200;
@@ -409,7 +408,7 @@ func void Use_ItPo_Temp_POW()
 	};
 };
 ///******************************************************************************************
-///	Weak
+/// Weak
 ///******************************************************************************************
 instance ItPo_Weak_Health (ItemPR_Potion)
 {
@@ -433,7 +432,7 @@ func void Use_ItPo_Weak_Health()
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Weak_Mana (ItemPR_Potion)
 {
 	value 					=	200;
@@ -456,7 +455,7 @@ func void Use_ItPo_Weak_Mana()
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Weak_STR (ItemPR_Potion)
 {
 	value 					=	200;
@@ -479,7 +478,7 @@ func void Use_ItPo_Weak_STR()
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Weak_DEX (ItemPR_Potion)
 {
 	value 					=	200;
@@ -502,7 +501,7 @@ func void Use_ItPo_Weak_DEX()
 		B_RaiseAttribute (self, 0, 10);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Weak_POW (ItemPR_Potion)
 {
 	value 					=	200;
@@ -526,7 +525,7 @@ func void Use_ItPo_Weak_POW()
 	};
 };
 ///******************************************************************************************
-///	Perm
+/// Perm
 ///******************************************************************************************
 instance ItPo_Perm_Health (ItemPR_Potion)
 {
@@ -543,7 +542,7 @@ func void Use_ItPo_Perm_Health()
 {
 	B_RaiseAttribute (self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
 };
-///******************************************************************************************
+
 instance ItPo_Perm_Mana (ItemPR_Potion)
 {
 	value 					=	500;
@@ -552,14 +551,14 @@ instance ItPo_Perm_Mana (ItemPR_Potion)
 	
 	description				= 	"Trwa³y eliksir ducha";
 	TEXT[1]					= 	NAME_Bonus_MpMax;
-	COUNT[1]				= 	2;
+	COUNT[1]				= 	2*MP_PER_LP;
 	COUNT[5]				= 	value;
 };
 func void Use_ItPo_Perm_Mana()
 {
 	B_RaiseAttribute (self, ATR_MANA_MAX, 2*MP_PER_LP);
 };
-///******************************************************************************************
+
 instance ItPo_Perm_STR (ItemPR_Potion)
 {
 	value 					=	500;
@@ -575,7 +574,7 @@ func void Use_ItPo_Perm_STR()
 {
 	B_RaiseAttribute (self, ATR_STRENGTH, 2);
 };
-///******************************************************************************************
+
 instance ItPo_Perm_DEX (ItemPR_Potion)
 {
 	value 					=	500;
@@ -591,7 +590,7 @@ func void Use_ItPo_Perm_DEX()
 {
 	B_RaiseAttribute (self, ATR_DEXTERITY, 2);
 };
-///******************************************************************************************
+
 instance ItPo_Perm_POW (ItemPR_Potion)
 {
 	value 					=	500;
@@ -607,7 +606,7 @@ func void Use_ItPo_Perm_POW()
 {
 	B_RaiseAttribute (self, ATR_POWER, 2);
 };
-///******************************************************************************************
+
 instance ItPo_Perm_Fire (ItemPR_Potion)
 {
 	value 					=	500;
@@ -624,7 +623,7 @@ func void Use_ItPo_Perm_Fire()
 	self.protection[PROT_FIRE] += 2;
 };
 ///******************************************************************************************
-///	Transform
+/// Transform
 ///******************************************************************************************
 instance ItSc_TrfAlligator (ItemPR_PotionTrf)
 {
@@ -807,7 +806,7 @@ instance ItSc_TrfWolf (ItemPR_PotionTrf)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Other
+/// Other
 ///******************************************************************************************
 instance ItPo_Digestion (ItemPR_Potion)
 {
@@ -835,7 +834,7 @@ func void Use_ItPo_Digestion()
 		};
 	};
 };
-///******************************************************************************************
+
 instance ItPo_Geist (ItemPR_Potion)
 {
 	value 					=	100;
@@ -856,7 +855,7 @@ func void Use_ItPo_Geist()
 		Wld_PlayEffect ("SLOW_TIME", self, self, 0, 0, 0, false);
 	};
 };
-///******************************************************************************************
+
 instance ItPo_HealObsession (ItemPR_Potion)
 {
 	value 					=	100;
@@ -872,7 +871,7 @@ func void Use_HealObsession()
 	Wld_PlayEffect ("spellFX_LIGHTSTAR_VIOLET", self, self, 0, 0, 0, false);
 	Snd_Play("SFX_HealObsession");
 };
-///******************************************************************************************
+
 instance ItPo_NightVision (ItemPR_Potion)
 {
 	value 					=	100;
@@ -888,7 +887,7 @@ func void Use_ItPo_NightVision()
 {
 	Wld_PlayEffect ("SPELLFX_NIGHTVISION", self, self, 0, 0, 0, false);
 };
-///******************************************************************************************
+
 instance ItPo_Poison (ItemPR_Potion)
 {
 	value 					=	100;
@@ -903,7 +902,7 @@ instance ItPo_Poison (ItemPR_Potion)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Special potions
+/// Special
 ///******************************************************************************************
 instance ItPo_AntiPoison (ItemPR_Potion)
 {
@@ -921,8 +920,6 @@ func void Use_ItPo_AntiPoison()
 		MOD_SetPoison(-1);
 	};
 };
-///******************************************************************************************
-var int Neoras_ScUsedDragonEggDrink;
 
 instance ItPo_DragonEggDrink (ItemPR_Potion)
 {
@@ -937,6 +934,7 @@ instance ItPo_DragonEggDrink (ItemPR_Potion)
 	TEXT[3]					= 	"Skutki nieznane.";
 	COUNT[5]				= 	value;
 };
+var int Neoras_ScUsedDragonEggDrink;
 func void Use_ItPo_DragonEggDrink()
 {
 	if (Npc_IsPlayer(self))
@@ -947,7 +945,7 @@ func void Use_ItPo_DragonEggDrink()
 		Neoras_ScUsedDragonEggDrink = true;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_MegaDrink (ItemPR_Potion)
 {
 	value 					=	1500;
@@ -970,7 +968,7 @@ func void Use_ItPo_MegaDrink()
 		hpRegenPower += 10;
 	};
 };
-///******************************************************************************************
+
 instance ItPo_InnosTears (ItemPR_Potion)
 {
 //	value 					=	50;

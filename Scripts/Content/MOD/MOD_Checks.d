@@ -25,6 +25,21 @@ func void Npc_AddPowerPoints (var C_Npc slf, var int points)
 	};
 };
 
+/// ------ Shield ------
+func void Npc_SetShieldPoints (var C_Npc slf, var int type, var int points)
+{
+	if (Npc_IsPlayer(slf))
+	{
+		if (points > slf.attribute[ATR_HITPOINTS_MAX])
+		{
+			points = slf.attribute[ATR_HITPOINTS_MAX];
+		};
+		
+		if		(type == 0 && (points == 0 || points > mShieldPhPoints))	{ mShieldPhPoints = points; }
+		else if (type == 1 && (points == 0 || points > mShieldMgPoints))	{ mShieldMgPoints = points; };
+	};
+};
+
 /// ------ Stamina ------
 func void Npc_StaminaRefresh (var C_Npc slf)
 {

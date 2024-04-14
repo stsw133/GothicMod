@@ -9,7 +9,7 @@ instance Pal_211_Torwache (Npc_Default)
 	npctype								=	NPCTYPE_AMBIENT;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);

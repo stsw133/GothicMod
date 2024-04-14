@@ -356,7 +356,7 @@ FUNC VOID DIA_Cipher_DarDieb_Info()
 	AI_Output (self, other, "DIA_Cipher_DarDieb_07_07"); //SKASUJÊ GNOJKA!
 	
 	AI_StopProcessInfos(self);
-	other.aivar[AIV_INVINCIBLE] = FALSE;
+	other.aivar[AIV_Invisible] = false;
 	B_Attack (self, Dar, AR_NONE, 0);
 };
 

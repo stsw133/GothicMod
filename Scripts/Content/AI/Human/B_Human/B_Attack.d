@@ -13,8 +13,8 @@ func void B_Attack (var C_Npc slf, var C_Npc oth, var int attack_reason, var int
 	
 	if (Npc_IsInState(slf, ZS_Talk))
 	{
-		slf.aivar[AIV_INVINCIBLE] = false;
-		oth.aivar[AIV_INVINCIBLE] = false;
+		slf.aivar[AIV_Invisible] = false;
+		oth.aivar[AIV_Invisible] = false;
 	};
 	
 	if (Npc_IsInState(slf, ZS_Attack))

@@ -96,8 +96,8 @@ instance FA_MY_FK_FOCUS_MAG_8 (C_FightAI)
 	move[1] = MOVE_WAIT_EXT;
 	move[2] = MOVE_WAIT_EXT;
 	move[3] = MOVE_WAIT_EXT;
-	move[4] = MOVE_WAIT_EXT;
-	move[5] = MOVE_WAIT_EXT;
+//	move[4] = MOVE_WAIT_EXT;
+//	move[5] = MOVE_WAIT_EXT;
 };
 instance FA_MY_FK_NOFOCUS_MAG_8 (C_FightAI)
 {

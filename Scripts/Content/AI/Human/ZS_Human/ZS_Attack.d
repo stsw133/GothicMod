@@ -66,6 +66,7 @@ func int ZS_Attack_Loop()
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
+		
 		self.aivar[AIV_PursuitEnd] = true;
 		return LOOP_END;
 	};
@@ -75,6 +76,7 @@ func int ZS_Attack_Loop()
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
+		
 		self.aivar[AIV_PursuitEnd] = true;
 		self.aivar[AIV_Dist] = Npc_GetDistToNpc(self, other);
 		self.aivar[AIV_StateTime] = Npc_GetStateTime(self);
@@ -124,6 +126,7 @@ func int ZS_Attack_Loop()
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
+		
 		self.aivar[AIV_PursuitEnd] = true;
 		return LOOP_END;
 	};
@@ -173,7 +176,7 @@ func int ZS_Attack_Loop()
 	if (Hlp_IsValidNpc(other))
 	&& (!C_NpcIsDown(other))
 	{
-		if (!other.aivar[AIV_INVINCIBLE])
+		if (!other.aivar[AIV_Invisible])
 		{
 			AI_Attack(self);
 		}
@@ -183,7 +186,6 @@ func int ZS_Attack_Loop()
 		};
 		
 		self.aivar[AIV_LASTTARGET] = Hlp_GetInstanceID(other);
-		
 		return LOOP_CONTINUE;
 	}
 	else
@@ -207,7 +209,7 @@ func int ZS_Attack_Loop()
 		&& (!C_NpcIsDown(other))
 		&& (Npc_GetDistToNpc(self, other) < PERC_DIST_INTERMEDIAT || Npc_IsPlayer(other))
 		&& (Npc_GetHeightToNpc(self, other) < PERC_DIST_HEIGHT)
-		&& (!other.aivar[AIV_INVINCIBLE])
+		&& (!other.aivar[AIV_Invisible])
 		&& (!(C_PlayerIsFakeBandit(self, other) && self.guild == GIL_BDT))
 		{
 			if (Wld_GetGuildAttitude(self.guild, other.guild) == ATT_HOSTILE)

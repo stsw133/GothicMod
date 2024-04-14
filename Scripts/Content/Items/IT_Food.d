@@ -1,7 +1,8 @@
 ///******************************************************************************************
-///	IT_Food
+/// IT_Food
 ///******************************************************************************************
 
+var int foodBonusCounter;
 var int foodCounter;
 var int SchnellerHeringTime;
 
@@ -11,14 +12,15 @@ func void Npc_AddFoodCounter()
 	if (Npc_IsPlayer(self))
 	{
 		foodCounter += 1;
-		if (foodCounter >= 20)
+		if (foodCounter >= (20 + foodBonusCounter))
 		{
+			foodBonusCounter += 1;
 			foodCounter = 0;
 			B_RaiseAttribute (self, ATR_HITPOINTS_MAX, HP_PER_LP/2);
 		}
 		else
 		{
-			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(20 - foodCounter), " pozosta³o do otrzymania bonusowych pkt. ¿ycia!"), FONT_ScreenSmall, COL_White, TIME_Print);
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(20 + foodBonusCounter - foodCounter), " pozosta³o do otrzymania bonusowych pkt. ¿ycia!"), FONT_ScreenSmall, COL_White, TIME_Print);
 		};
 	};
 };
@@ -94,7 +96,7 @@ prototype ItemPR_iFood (C_Item)
 	TEXT[5]					=	NAME_Value;
 };
 ///******************************************************************************************
-///	Inedible food
+/// Inedible food
 ///******************************************************************************************
 instance ItFo_Coconut (ItemPR_iFood)
 {
@@ -169,7 +171,7 @@ instance ItFo_RottenMeat (ItemPR_iFood)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Sugar
+/// Sugar
 ///******************************************************************************************
 instance ItFo_Sugar (ItemPR_Food)
 {
@@ -190,7 +192,7 @@ func void Use_ItFo_Sugar()
 	Npc_ChangeAttribute (self, ATR_MANA, 1);
 };
 ///******************************************************************************************
-///	Fruits & vegetables
+/// Fruits & vegetables
 ///******************************************************************************************
 prototype ItemPR_LightFood (C_Item)
 {
@@ -268,7 +270,7 @@ instance ItFo_Rice (ItemPR_LightFood)
 	description				=	name;
 };
 ///******************************************************************************************
-///	Standard food
+/// Standard food
 ///******************************************************************************************
 prototype ItemPR_StandardFood (C_Item)
 {
@@ -318,7 +320,7 @@ instance ItFo_FriedFish (ItemPR_StandardFood)
 	description				=	name;
 };
 ///******************************************************************************************
-///	Meat
+/// Meat
 ///******************************************************************************************
 prototype ItemPR_MeatFood (C_Item)
 {
@@ -362,7 +364,7 @@ instance ItFo_Sausage (ItemPR_MeatFood)
 	description				=	name;
 };
 ///******************************************************************************************
-///	Sweets
+/// Sweets
 ///******************************************************************************************
 prototype ItemPR_SweetFood (C_Item)
 {
@@ -414,7 +416,7 @@ instance ItFo_Cake (ItemPR_SweetFood)
 	description				=	name;
 };
 ///******************************************************************************************
-///	Stews
+/// Stews
 ///******************************************************************************************
 prototype ItemPR_StewFood (C_Item)
 {
@@ -473,7 +475,7 @@ func void Use_XPStew()
 	B_GivePlayerExp(200);
 };
 ///******************************************************************************************
-///	Soups
+/// Soups
 ///******************************************************************************************
 prototype ItemPR_SoupFood (C_Item)
 {
@@ -517,7 +519,7 @@ instance ItFo_RiceSoup (ItemPR_SoupFood)
 	description				=	name;
 };
 ///******************************************************************************************
-///	Water & milk
+/// Water & milk
 ///******************************************************************************************
 instance ItFo_Water (ItemPR_Food)
 {
@@ -562,7 +564,7 @@ func void Use_ItFo_Milk()
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 ///******************************************************************************************
-///	Beer
+/// Beer
 ///******************************************************************************************
 prototype ItemPR_BeerFood (C_Item)
 {
@@ -609,7 +611,7 @@ func void Use_ItFo_CoragonsBeer()
 	B_GivePlayerExp(200);
 };
 ///******************************************************************************************
-///	Booze & Tequila & Wine
+/// Booze & Tequila & Wine
 ///******************************************************************************************
 prototype ItemPR_BoozeFood (C_Item)
 {
@@ -666,7 +668,7 @@ func void Use_ItFo_SouthWine()
 	B_GivePlayerExp(200);
 };
 ///******************************************************************************************
-///	Grog & Hooch & Rum & ...
+/// Heavy alcohol
 ///******************************************************************************************
 prototype ItemPR_GrogFood (C_Item)
 {

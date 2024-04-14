@@ -12,7 +12,7 @@ const int true		=	1;
 ///******************************************************************************************
 class C_ParticleFX
 {
-	/// 1) Emitter: zeitliches  Austoss-Verhalten, particles-per-second
+	/// 1. particles-per-second
 	var float	ppsValue;
 	var string	ppsScaleKeys_S;
 	var int		ppsIsLooping;
@@ -21,9 +21,9 @@ class C_ParticleFX
 	var string	ppsCreateEm_S;
 	var float	ppsCreateEmDelay;
 	
-	/// 2) Emitter: raeumliches Austoss-Verhalten
+	/// 2. spatial emission behavior
 	var string	shpType_S;			/// "point, line, box, circle, sphere, mesh"
-	var string	shpFOR_S;			/// "object,world"
+	var string	shpFOR_S;			/// "object, world"
 	var string	shpOffsetVec_S;
 	var string	shpDistribType_S;	/// "RAND, UNIFORM, WALK"
 	var float	shpDistribWalkSpeed;
@@ -36,7 +36,7 @@ class C_ParticleFX
 	var int		shpScaleIsSmooth;
 	var float	shpScaleFPS;
 	
-	/// 3) Partikel: Start Richtung/Speed:
+	/// 3. start direction and speed
 	var string	dirMode_S;			/// "DIR, TARGET, MESH_POLY"
 	var string	dirFOR_S;			/// "OBJECT, WORLD"
 	var string	dirModeTargetFOR_S;
@@ -48,35 +48,32 @@ class C_ParticleFX
 	var float	velAvg;
 	var float	velVar;
 	
-	/// 4) Partikel: Lebensdauer
+	/// 4. lifespan
 	var float	lspPartAvg;
 	var float	lspPartVar;
 	
-	/// 5) Partikel: Flugverhalten (gravity, nicht-linear?, mesh-selfRot?,..)
-	/// grav: a) nur Y, b) XYZ, c) auf Ziel zu steuern
-	// var string	flyMode_S;	/// "LINEAR, LIN_SINUS,.."
-	/// flyMeshSelfRotSpeedMin, flyMeshSelfRotSpeedMax
+	/// 5. flight behavior (gravity, non-linear, mesh-self)
 	var string	flyGravity_S;
 	var int		flyCollDet_B;
 	
-	/// 6) Partikel: Visualisierung
+	/// 6. visual
 	var string	visName_S;			/// "NAME_V0_A0.TGA/.3DS" (Variation, Animation)
 	var string	visOrientation_S;	/// "NONE, VELO"
 	var int		visTexIsQuadPoly;	/// 0=triMesh, 1=quadMesh
 	var float	visTexAniFPS;
 	var int		visTexAniIsLooping;	/// 0=oneShot, 1=looping
-	/// color (nur Tex, lifeSpan-Sync)
+	/// color
 	var string	visTexColorStart_S;
 	var string	visTexColorEnd_S;
-	/// size-ani (nur Tex, lifeSpan-Sync)
+	/// size-ani
 	var string	visSizeStart_S;
 	var float	visSizeEndScale;
-	/// alpha (lifeSpan-Sync)
+	/// alpha
 	var string	visAlphaFunc_S;
 	var float	visAlphaStart;
 	var float	visAlphaEnd;
 	
-	/// 7) misc effects
+	/// 7. misc effects
 	
 	/// trail
 	var float	trlFadeSpeed;
@@ -101,6 +98,6 @@ class C_ParticleFX
 	/// optional you can set a valid timeperiod in which this pfx should be rendered (e.g. "8 22": should be rendererd from 8 to 22 o clock")
 	var string	timeStartEnd_S;
 	
-	/// with the next setting you can define weather this pfx is an ambient pfx, thus can be disabled in the gothic.ini with the value [ENGINE]/noAmbientPFX
+	/// with the next setting you can define whether this pfx is an ambient pfx, thus can be disabled in the gothic.ini with the value [ENGINE]/noAmbientPFX
 	var int		m_bIsAmbientPFX;
 };

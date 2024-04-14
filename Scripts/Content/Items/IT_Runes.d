@@ -38,59 +38,70 @@ instance ItRu_Heal (ItemPR_Spell)
 	visual					=	"ItRu_MediumHeal.3DS";
 	spell					= 	SPL_Heal;
 	mag_circle				=	2;
-	cond_value[2]  			=	1;
+	cond_value[2]  			=	SPL_Cost_Heal;
 	
 	description				=	NAME_SPL_Heal;
 	COUNT[0]				=	mag_circle;
-	TEXT[1]					=	NAME_MaxManakosten;
-	COUNT[1]				=	SPL_Cost_Heal;
+	COUNT[1]				=	cond_value[2];
 	TEXT[2]					= 	NAME_HealingPerCast;
 	COUNT[2]				=	SPL_Heal_Heal;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Heal;
+	COUNT[5]				=	value;
+};
+instance ItRu_Telekinesis (ItemPR_Spell)
+{
+	value 					=	120;
+	
+	visual					=	"ItRu_LightHeal.3ds";
+	spell					= 	SPL_Telekinesis;
+	mag_circle				=	1;
+	cond_value[2]  			=	SPL_Cost_Telekinesis;
+	
+	description				=	NAME_SPL_Telekinesis;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-///	PAL spells
+/// PAL spells
 ///*******************************************************************************************
 instance ItRu_PalBless (ItemPR_Spell)
 {
-	value 					=	220;
+	value 					=	300;
 	
 	visual					=	"ItRu_PalLight.3DS";
 	spell					= 	SPL_PalBless;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalBless;
 	
 	description				=	NAME_SPL_PalBless;
 	COUNT[0]				=	mag_circle;
 	TEXT[1]					=	NAME_MinManakosten;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	"Dodatkowe obra¿enia równe 10% max. many.";
+	TEXT[2]					=	"Dodatkowe obra¿enia równe 5% max. many.";
 	TEXT[3]					=	"U¿yj ponownie by wy³¹czyæ.";
 	COUNT[5]				=	value;
 };
 instance ItRu_PalFaith (ItemPR_Spell)
 {
-	value 					=	440;
+	value 					=	500;
 	
 	visual					=	"ItRu_PalLightHeal.3DS";
 	spell					= 	SPL_PalFaith;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalFaith;
 	
 	description				=	NAME_SPL_PalFaith;
 	COUNT[0]				=	mag_circle;
-	TEXT[1]					=	NAME_MaxManakosten;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_Bonus_HP;
-	COUNT[2]				=	SPL_Heal_PalFaith;
 	COUNT[5]				=	value;
 };
 instance ItRu_PalHolyBolt (ItemPR_Spell)
 {
-	value 					=	440;
+	value 					=	500;
 	
 	visual					=	"ItRu_PalHolyBolt.3DS";
 	spell					= 	SPL_PalHolyBolt;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalHolyBolt;
 	
 	description				=	NAME_SPL_PalHolyBolt;
@@ -102,26 +113,25 @@ instance ItRu_PalHolyBolt (ItemPR_Spell)
 };
 instance ItRu_PalGlory (ItemPR_Spell)
 {
-	value 					=	660;
+	value 					=	700;
 	
 	visual					=	"ItRu_PalMediumHeal.3DS";
 	spell					= 	SPL_PalGlory;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalGlory;
 	
 	description				=	NAME_SPL_PalGlory;
 	COUNT[0]				=	mag_circle;
-	TEXT[1]					=	NAME_MaxManakosten;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_Bonus_HP;
-	COUNT[2]				=	SPL_Heal_PalGlory;
 	COUNT[5]				=	value;
 };
 instance ItRu_PalRepelEvil (ItemPR_Spell)
 {
-	value 					=	660;
+	value 					=	700;
 	
 	visual					=	"ItRu_PalRepelEvil.3DS";
 	spell					= 	SPL_PalRepelEvil;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalRepelEvil;
 	
 	description				=	NAME_SPL_PalRepelEvil;
@@ -129,14 +139,17 @@ instance ItRu_PalRepelEvil (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_PalRepelEvil;
+	TEXT[3]					=	"W po³owie skuteczne gdy wróg posiada";
+	TEXT[4]					=	"max. ¿ycia wiêcej ni¿ obra¿enia runy.";
 	COUNT[5]				=	value;
 };
 instance ItRu_PalJustice (ItemPR_Spell)
 {
-	value 					=	880;
+	value 					=	900;
 	
 	visual					=	"ItRu_PalFullHeal.3DS";
 	spell					= 	SPL_PalJustice;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalJustice;
 	
 	description				=	NAME_SPL_PalJustice;
@@ -146,10 +159,11 @@ instance ItRu_PalJustice (ItemPR_Spell)
 };
 instance ItRu_PalDestroyEvil (ItemPR_Spell)
 {
-	value 					=	880;
+	value 					=	900;
 	
 	visual					=	"ItRu_PalDestroyEvil.3DS";
 	spell					= 	SPL_PalDestroyEvil;
+	mag_circle				=	0;
 	cond_value[2]  			=	SPL_Cost_PalDestroyEvil;
 	
 	description				=	NAME_SPL_PalDestroyEvil;
@@ -157,11 +171,55 @@ instance ItRu_PalDestroyEvil (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_PalDestroyEvil;
+	TEXT[3]					=	"Nieskuteczne gdy wróg posiada";
+	TEXT[4]					=	"max. ¿ycia wiêcej ni¿ obra¿enia runy.";
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-///	Common spells
+/// Common spells
 ///*******************************************************************************************
+instance ItRu_Resurrection (ItemPR_Spell)
+{
+	value 					=	400;
+	
+	visual 					=	"ItRu_MasterOfDesaster.3ds";
+	spell					= 	SPL_Resurrection;
+	mag_circle 				=	2;
+	cond_value[2]  			=	SPL_Cost_Resurrection;
+	
+	description				=	NAME_SPL_Resurrection;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_Rage (ItemPR_Spell)
+{
+	value 					=	1000;
+	
+	visual 					=	"ItRu_Fear.3ds";
+	spell					= 	SPL_Rage;
+	mag_circle 				=	5;
+	cond_value[2]  			=	SPL_Cost_Rage;
+	
+	description				=	NAME_SPL_Rage;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_Seduction (ItemPR_Spell)
+{
+	value 					=	600;
+	
+	visual 					=	"ItRu_Sleep.3ds";
+	spell					= 	SPL_Seduction;
+	mag_circle 				=	3;
+	cond_value[2]  			=	SPL_Cost_Seduction;
+	
+	description				=	NAME_SPL_Seduction;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
 instance ItRu_NightToDay (ItemPR_Spell)
 {
 	value 					=	300;
@@ -190,8 +248,6 @@ instance ItRu_FireBolt (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_FireBolt;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_FireBolt;
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
@@ -209,26 +265,20 @@ instance ItRu_IceBolt (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_IceBolt;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_IceBolt;
 	COUNT[5]				=	value;
 };
-instance ItRu_IceLance (ItemPR_Spell)
+instance ItRu_Stealth (ItemPR_Spell)
 {
-	value 					=	300;
+	value 					=	800;
 	
-	visual					=	"ItRu_Water04.3DS";
-	spell					=	SPL_IceLance;
-	mag_circle				=	2;
-	cond_value[2]  			=	SPL_Cost_IceLance;
+	visual					=	"ItRu_FullHeal.3DS";
+	spell					=	SPL_Stealth;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_Stealth;
 	
-	description				=	NAME_SPL_IceLance;
+	description				=	NAME_SPL_Stealth;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_IceLance;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_IceLance;
 	COUNT[5]				=	value;
 };
 instance ItRu_SkullBolt (ItemPR_Spell)
@@ -245,17 +295,15 @@ instance ItRu_SkullBolt (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_SkullBolt;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_SkullBolt;
 	COUNT[5]				=	value;
 };
 instance ItRu_InstantFireball (ItemPR_Spell)
 {
-	value 					=	300;
+	value 					=	200;
 	
 	visual 					=	"ItRu_InstantFireball.3ds";
 	spell					= 	SPL_InstantFireball;
-	mag_circle 				=	2;
+	mag_circle 				=	1;
 	cond_value[2]  			=	SPL_Cost_InstantFireball;
 	
 	description				=	NAME_SPL_InstantFireball;
@@ -263,8 +311,6 @@ instance ItRu_InstantFireball (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_InstantFireball;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_InstantFireball;
 	COUNT[5]				=	value;
 };
 instance ItRu_Zap (ItemPR_Spell)
@@ -281,24 +327,22 @@ instance ItRu_Zap (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_Zap;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Zap;
 	COUNT[5]				=	value;
 };
-instance ItRu_Whirlwind (ItemPR_Spell)
+instance ItRu_Slimeball (ItemPR_Spell)
 {
-	value 					=	300;
+	value 					=	200;
 	
-	visual					=	"ItRu_Water02.3DS";
-	spell					= 	SPL_Whirlwind;
-	mag_circle				=	2;
-	cond_value[2]  			=	SPL_Cost_Whirlwind;
+	visual 					=	"ItRu_InstantFireball.3ds";
+	spell					= 	SPL_Slimeball;
+	mag_circle 				=	1;
+	cond_value[2]  			=	SPL_Cost_Slimeball;
 	
-	description				=	NAME_SPL_Whirlwind;
+	description				=	NAME_SPL_Slimeball;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_Whirlwind;
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Slimeball;
 	COUNT[5]				=	value;
 };
 instance ItRu_WindFist (ItemPR_Spell)
@@ -318,8 +362,8 @@ instance ItRu_WindFist (ItemPR_Spell)
 	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_WindFist;
-	TEXT[4]					= 	NAME_ScalingPerPower;
-	COUNT[4]				=	SPL_Scaling_WindFist;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_WindFist*4;
 	COUNT[5]				=	value;
 };
 instance ItRu_Sleep (ItemPR_Spell)
@@ -334,12 +378,8 @@ instance ItRu_Sleep (ItemPR_Spell)
 	description				=	NAME_SPL_Sleep;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_LevelPerCast;
-	COUNT[2]				=	SPL_MinLvl_Sleep;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Sleep;
-	TEXT[4]					=	NAME_Duration;
-	COUNT[4]				=	SPL_Time_Sleep;
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Sleep;
 	COUNT[5]				=	value;
 };
 instance ItRu_Charm (ItemPR_Spell)
@@ -354,10 +394,6 @@ instance ItRu_Charm (ItemPR_Spell)
 	description				=	NAME_SPL_Charm;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_LevelPerCast;
-	COUNT[2]				=	SPL_MinLvl_Charm;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Charm;
 	COUNT[5]				=	value;
 };
 instance ItRu_LightningFlash (ItemPR_Spell)
@@ -374,8 +410,6 @@ instance ItRu_LightningFlash (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_LightningFlash;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_LightningFlash;
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
@@ -396,26 +430,22 @@ instance ItRu_ChargeFireball (ItemPR_Spell)
 	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_ChargeFireball;
-	TEXT[4]					=	NAME_ScalingPerPower;
-	COUNT[4]				=	SPL_Scaling_ChargeFireball;
+	TEXT[4]					=	NAME_MaxDamage;
+	COUNT[4]				=	SPL_Damage_ChargeFireball*4;
 	COUNT[5]				=	value;
 };
-instance ItRu_Rage (ItemPR_Spell)
+instance ItRu_Curse (ItemPR_Spell)
 {
-	value 					=	800;
+	value 					=	600;
 	
-	visual 					=	"ItRu_Fear.3ds";
-	spell					= 	SPL_Rage;
-	mag_circle 				=	4;
-	cond_value[2]  			=	SPL_Cost_Rage;
+	visual					=	"ItRu_SumSkel.3DS";
+	spell					= 	SPL_Curse;
+	mag_circle				= 	3;
+	cond_value[2]  			=	SPL_Cost_Curse;
 	
-	description				=	NAME_SPL_Rage;
+	description				=	NAME_SPL_Curse;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_LevelPerCast;
-	COUNT[2]				=	SPL_MinLvl_Rage;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Rage;
 	COUNT[5]				=	value;
 };
 instance ItRu_Fear (ItemPR_Spell)
@@ -430,12 +460,8 @@ instance ItRu_Fear (ItemPR_Spell)
 	description				=	NAME_SPL_Fear;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_LevelPerCast;
-	COUNT[2]				=	SPL_MinLvl_Fear;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Fear;
-	TEXT[4]					=	NAME_Duration;
-	COUNT[4]				=	SPL_Time_Fear * 60;
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Fear * 60;
 	COUNT[5]				=	value;
 };
 instance ItRu_IceCube (ItemPR_Spell)
@@ -475,26 +501,22 @@ instance ItRu_ChargeZap (ItemPR_Spell)
 	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_ChargeZap;
-	TEXT[4]					=	NAME_ScalingPerPower;
-	COUNT[4]				=	SPL_Scaling_ChargeZap;
+	TEXT[3]					=	NAME_MaxDamage;
+	COUNT[3]				=	SPL_Damage_ChargeZap*4;
 	COUNT[5]				=	value;
 };
-instance ItRu_Geyser (ItemPR_Spell)
+instance ItRu_SummonGolem (ItemPR_Spell)
 {
-	value 					=	600;
+	value 					=	800;
 	
-	visual					=	"ItRu_Water01.3DS";
-	spell					=	SPL_Geyser;
-	mag_circle				=	3;
-	cond_value[2]  			=	SPL_Cost_Geyser;
+	visual					=	"ItRu_SumGol.3DS";
+	spell					= 	SPL_SummonGolem;
+	mag_circle				= 	4;
+	cond_value[2]  			=	SPL_Cost_SummonGolem;
 	
-	description				=	NAME_SPL_Geyser;
+	description				=	NAME_SPL_SummonGolem;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_Geyser;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Geyser;
 	COUNT[5]				=	value;
 };
 instance ItRu_DestroyUndead (ItemPR_Spell)
@@ -511,8 +533,6 @@ instance ItRu_DestroyUndead (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_DestroyUndead;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_DestroyUndead;
 	COUNT[5]				=	value;
 };
 instance ItRu_Pyrokinesis (ItemPR_Spell)
@@ -529,7 +549,7 @@ instance ItRu_Pyrokinesis (ItemPR_Spell)
 	TEXT[1]					=	NAME_MinManakosten;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_MaxManakosten;
-	COUNT[2]				=	SPL_Cost_Pyrokinesis;
+	COUNT[2]				=	cond_value[2]*4;
 	TEXT[3]					=	NAME_MinDamage;
 	COUNT[3]				=	SPL_Damage_Pyrokinesis;
 	TEXT[4]					=	NAME_MaxDamage;
@@ -550,8 +570,6 @@ instance ItRu_Firestorm (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_Firestorm;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Firestorm;
 	COUNT[5]				=	value;
 };
 instance ItRu_IceWave (ItemPR_Spell)
@@ -567,7 +585,7 @@ instance ItRu_IceWave (ItemPR_Spell)
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Damage;
-	COUNT[2]				=	SPL_Scaling_IceWave;
+//	COUNT[2]				=	SPL_Scaling_IceWave;
 	TEXT[3]					=	NAME_Duration;
 	COUNT[3]				=	SPL_TIME_FREEZE;
 	TEXT[4]					=	NAME_DamagePerSec;
@@ -575,40 +593,34 @@ instance ItRu_IceWave (ItemPR_Spell)
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-instance ItRu_WaterFist (ItemPR_Spell)
+instance ItRu_SummonDemon (ItemPR_Spell)
 {
-	value 					=	800;
+	value 					=	1000;
 	
-	visual					=	"ItRu_Water03.3DS";
-	spell					=	SPL_WaterFist;
-	mag_circle				=	4;
-	cond_value[2]  			=	SPL_Cost_WaterFist;
+	visual					=	"ItRu_SumDemon.3DS";
+	spell					= 	SPL_SummonDemon;
+	mag_circle				= 	5;
+	cond_value[2]  			=	SPL_Cost_SummonDemon;
 	
-	description				=	NAME_SPL_WaterFist;
+	description				=	NAME_SPL_SummonDemon;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_WaterFist;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_WaterFist;
 	COUNT[5]				=	value;
 };
-instance ItRu_Thunderstorm (ItemPR_Spell)
+instance ItRu_Explosion (ItemPR_Spell)
 {
-	value 					=	600;
+	value 					=	1000;
 	
-	visual					=	"ItRu_Water01.3DS";
-	spell					=	SPL_Thunderstorm;
-	mag_circle				=	3;
-	cond_value[2]  			=	SPL_Cost_Thunderstorm;
+	visual					=	"ItRu_Pyrokinesis.3DS";
+	spell					=	SPL_Explosion;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_Explosion;
 	
-	description				=	NAME_SPL_Thunderstorm;
+	description				=	NAME_SPL_Explosion;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_Thunderstorm;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Thunderstorm;
+	COUNT[2]				=	SPL_Damage_Explosion;
 	COUNT[5]				=	value;
 };
 instance ItRu_Firerain (ItemPR_Spell)
@@ -625,8 +637,6 @@ instance ItRu_Firerain (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_Firerain;
-	TEXT[3]					=	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Firerain;
 	COUNT[5]				=	value;
 };
 instance ItRu_BreathOfDeath (ItemPR_Spell)
@@ -643,8 +653,6 @@ instance ItRu_BreathOfDeath (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_BreathOfDeath;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_BreathOfDeath;
 	COUNT[5]				=	value;
 };
 instance ItRu_MassDeath (ItemPR_Spell)
@@ -661,8 +669,64 @@ instance ItRu_MassDeath (ItemPR_Spell)
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
 	COUNT[2]				=	SPL_Damage_MassDeath;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_MassDeath;
+	COUNT[5]				=	value;
+};
+instance ItRu_ArmyOfDarkness (ItemPR_Spell)
+{
+	value 					=	1200;
+	
+	visual					=	"ItRu_ArmyOfDarkness.3DS";
+	spell					=	SPL_ArmyOfDarkness;
+	mag_circle				=	6;
+	cond_value[2]  			=	SPL_Cost_ArmyOfDarkness;
+	
+	description				=	NAME_SPL_ArmyOfDarkness;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_Shrink (ItemPR_Spell)
+{
+	value 					=	1200;
+	
+	visual					=	"ItRu_Shrink.3ds";
+	spell					= 	SPL_Shrink;
+	mag_circle 				=	6;
+	cond_value[2]  			=	SPL_Cost_Shrink;
+	
+	description				=	NAME_SPL_Shrink;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_Tame (ItemPR_Spell)
+{
+	value 					=	800;
+	
+	visual					=	"ItRu_SumWolf.3ds";
+	spell					= 	SPL_Tame;
+	mag_circle 				=	4;
+	cond_value[2]  			=	SPL_Cost_Tame;
+	
+	description				=	NAME_SPL_Tame;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_RunicEchoes (ItemPR_Spell)
+{
+	value 					=	1000;
+	
+	visual					=	"ItRu_MassDeath.3DS";
+	spell					=	SPL_RunicEchoes;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_RunicEchoes;
+	
+	description				=	NAME_SPL_RunicEchoes;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_RunicEchoes;
 	COUNT[5]				=	value;
 };
 instance ItRu_SlowTime (ItemPR_Spell)
@@ -681,145 +745,114 @@ instance ItRu_SlowTime (ItemPR_Spell)
 	COUNT[2]				=	SPL_Time_SlowTime;
 	COUNT[5]				=	value;
 };
-instance ItRu_Shrink (ItemPR_Spell)
+///*******************************************************************************************
+instance ItRu_HealingAura (ItemPR_Spell)
 {
-	value 					=	1200;
+	value 					=	400;
 	
-	visual					=	"ItRu_Shrink.3ds";
-	spell					= 	SPL_Shrink;
-	mag_circle 				=	6;
-	cond_value[2]  			=	SPL_Cost_Shrink;
+	visual					=	"ItRu_MediumHeal.3DS";
+	spell					=	SPL_HealingAura;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Aura;
 	
-	description				=	NAME_SPL_Shrink;
-	COUNT[0]				=	mag_circle;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_LevelPerCast;
-	COUNT[2]				=	SPL_MinLvl_Shrink;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_Shrink;
-	COUNT[5]				=	value;
-};
-instance ItRu_Telekinesis (ItemPR_Spell)
-{
-	value 					=	120;
-	
-	visual					=	"ItRu_LightHeal.3ds";
-	spell					= 	SPL_Telekinesis;
-	mag_circle				=	1;
-	cond_value[2]  			=	SPL_Cost_Telekinesis;
-	
-	description				=	NAME_SPL_Telekinesis;
+	description				=	NAME_SPL_HealingAura;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	COUNT[5]				=	value;
 };
-instance ItRu_Inflate (ItemPR_Spell)
+instance ItRu_StoneSkin (ItemPR_Spell)
 {
-	value 					=	600;
+	value 					=	400;
 	
-	visual					=	"ItRu_Water01.3ds";
-	spell					= 	SPL_Inflate;
-	mag_circle 				=	3;
-	cond_value[2]  			=	SPL_Cost_Inflate;
+	visual					=	"ItRu_MediumHeal.3DS";
+	spell					=	SPL_StoneSkin;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Aura;
 	
-	description				=	NAME_SPL_Inflate;
+	description				=	NAME_SPL_StoneSkin;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_AirShield (ItemPR_Spell)
+{
+	value 					=	400;
+	
+	visual					=	"ItRu_MediumHeal.3DS";
+	spell					=	SPL_AirShield;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Aura;
+	
+	description				=	NAME_SPL_AirShield;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_FireShield (ItemPR_Spell)
+{
+	value 					=	400;
+	
+	visual					=	"ItRu_MediumHeal.3DS";
+	spell					=	SPL_FireShield;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Aura;
+	
+	description				=	NAME_SPL_FireShield;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	COUNT[5]				=	value;
+};
+instance ItRu_DarkBarrier (ItemPR_Spell)
+{
+	value 					=	400;
+	
+	visual					=	"ItRu_MediumHeal.3DS";
+	spell					=	SPL_DarkBarrier;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Aura;
+	
+	description				=	NAME_SPL_DarkBarrier;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-instance ItRu_ArmyOfDarkness (ItemPR_Spell)
-{
-	value 					=	1200;
-	
-	visual					=	"ItRu_ArmyOfDarkness.3ds";
-	spell					= 	SPL_Summon;
-	mag_circle 				=	6;
-	cond_value[2]  			=	SPL_Cost_Summon;
-	
-	description				=	NAME_SPL_Summon;
-	COUNT[0]				=	mag_circle;
-	COUNT[1]				=	cond_value[2];
-	COUNT[5]				=	value;
-};
+/// Player spells
 ///*******************************************************************************************
-///	npc spells
-///*******************************************************************************************
-instance ItRu_ConcussionBolt (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_ConcussionBolt;
-	description				=	NAME_SPL_ConcussionBolt;
-};
-instance ItRu_DeathBolt (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_DeathBolt;
-	description				=	NAME_SPL_DeathBolt;
-};
-instance ItRu_DragonBall (ItemPR_Spell)
-{
-	value 					=	800;
-	
-	visual 					=	"ItRu_InstantFireball.3ds";
-	spell					= 	SPL_DragonBall;
-	mag_circle 				=	4;
-	cond_value[2]  			=	SPL_Cost_DragonBall;
-	
-	description				=	NAME_SPL_DragonBall;
-	COUNT[0]				=	mag_circle;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_DragonBall;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_DragonBall;
-	COUNT[5]				=	value;
-};
-instance ItRu_BlackDragonBall (ItemPR_Spell)
+instance ItRu_MasterOfDisaster (ItemPR_Spell)
 {
 	value 					=	1000;
 	
-	visual 					=	"ItRu_InstantFireball.3ds";
-	spell					= 	SPL_BlackDragonBall;
+	visual 					=	"ItRu_MasterOfDesaster.3ds";
+	spell					= 	SPL_MasterOfDisaster;
 	mag_circle 				=	5;
-	cond_value[2]  			=	SPL_Cost_BlackDragonBall;
+	cond_value[2]  			=	SPL_Cost_MasterOfDisaster;
 	
-	description				=	NAME_SPL_BlackDragonBall;
+	description				=	NAME_SPL_MasterOfDisaster;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_BlackDragonBall;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_BlackDragonBall;
+	COUNT[2]				=	SPL_Damage_MasterOfDisaster;
+	COUNT[5]				=	value;
+};
+instance ItRu_BeliarRage (ItemPR_Spell)
+{
+	value 					=	200;
+	
+	visual 					=	"ItRu_Beliar04.3ds";
+	spell					= 	SPL_BeliarRage;
+	mag_circle 				=	1;
+	cond_value[2]  			=	SPL_Cost_BeliarRage;
+	
+	description				=	NAME_SPL_BeliarRage;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	SPL_Cost_BeliarRage;
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_BeliarRage+(BeliarWeapon_LastUpgradeLvl*2);
 	COUNT[5]				=	value;
 };
 ///*******************************************************************************************
-instance ItRu_BlueFireball (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_BlueFireball;
-	description				=	NAME_SPL_BlueFireball;
-};
-instance ItRu_RedFireball (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_RedFireball;
-	description				=	NAME_SPL_RedFireball;
-};
-instance ItRu_GreenFireball (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_GreenFireball;
-	description				=	NAME_SPL_GreenFireball;
-};
-instance ItRu_YellowFireball (ItemPR_Spell)
-{
-	visual 					=	"ItRu_PalRepelEvil.3ds";
-	spell					= 	SPL_YellowFireball;
-	description				=	NAME_SPL_YellowFireball;
-};
-///*******************************************************************************************
-///	special spells
+/// Special spells
 ///*******************************************************************************************
 /*
 instance ItRu_Teleport (ItemPR_Spell)
@@ -842,477 +875,364 @@ instance ItRu_Summon (ItemPR_Spell)
 };
 */
 ///*******************************************************************************************
-instance ItRu_MasterOfDisaster (ItemPR_Spell)
+/// NPC spells
+///*******************************************************************************************
+instance ItRu_ConcussionSpell (ItemPR_Spell)
+{
+	visual 					=	"ItRu_PalHolyBolt.3ds";
+	spell					= 	SPL_ConcussionSpell;
+	description				=	NAME_SPL_ConcussionSpell;
+};
+instance ItRu_DeathSpell (ItemPR_Spell)
+{
+	visual 					=	"ItRu_PalHolyBolt.3ds";
+	spell					= 	SPL_DeathSpell;
+	description				=	NAME_SPL_DeathSpell;
+};
+instance ItRu_DragonBall (ItemPR_Spell)
+{
+	visual 					=	"ItRu_InstantFireball.3ds";
+	spell					= 	SPL_DragonBall;
+	description				=	NAME_SPL_DragonBall;
+};
+instance ItRu_BlackDragonBall (ItemPR_Spell)
+{
+	visual 					=	"ItRu_InstantFireball.3ds";
+	spell					= 	SPL_BlackDragonBall;
+	description				=	NAME_SPL_BlackDragonBall;
+};
+instance ItRu_BlueFireball (ItemPR_Spell)
+{
+	visual 					=	"ItRu_InstantFireball.3ds";
+	spell					= 	SPL_BlueFireball;
+	description				=	NAME_SPL_BlueFireball;
+};
+instance ItRu_RedFireball (ItemPR_Spell)
+{
+	visual 					=	"ItRu_InstantFireball.3ds";
+	spell					= 	SPL_RedFireball;
+	description				=	NAME_SPL_RedFireball;
+};
+///*******************************************************************************************
+/// Common spells
+///*******************************************************************************************
+instance ItRu_Thunderstorm (ItemPR_Spell)
 {
 	value 					=	1000;
 	
-	visual 					=	"ItRu_MasterOfDesaster.3ds";
-	spell					= 	SPL_MasterOfDisaster;
-	mag_circle 				=	5;
-	cond_value[2]  			=	SPL_Cost_MasterOfDisaster;
+	visual					=	"ItRu_Water05.3DS";
+	spell					=	SPL_Thunderstorm;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_Thunderstorm;
 	
-	description				=	NAME_SPL_MasterOfDisaster;
+	description				=	NAME_SPL_Thunderstorm;
 	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_MasterOfDisaster;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_MasterOfDisaster;
+	COUNT[2]				=	SPL_Damage_Thunderstorm;
 	COUNT[5]				=	value;
 };
-instance ItRu_BeliarRage (ItemPR_Spell)
-{
-	value 					=	200;
-	
-	visual 					=	"ItRu_Beliar02.3ds";
-	spell					= 	SPL_BeliarRage;
-	mag_circle 				=	1;
-	cond_value[2]  			=	SPL_Cost_BeliarRage;
-	
-	description				=	NAME_SPL_BeliarRage;
-	COUNT[0]				=	mag_circle;
-	COUNT[1]				=	SPL_Cost_BeliarRage+(BeliarWeapon_LastUpgradeLvl*1);
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_BeliarRage+(BeliarWeapon_LastUpgradeLvl*2);
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_BeliarRage;
-	COUNT[5]				=	value;
-};
-///*******************************************************************************************
-///	MYS & GEO & ELE & PYR & NEC spells
-///*******************************************************************************************
-instance ItRu_MysBolt (ItemPR_Spell)
-{
-	value 					=	80;
-	
-	visual 					=	"ItRu_FireBolt.3ds";
-//	spell					= 	SPL_MysBolt;
-	mag_circle 				=	0;
-//	cond_value[2]  			=	SPL_Cost_MysBolt;
-	
-	description				=	NAME_SPL_MysBolt;
-//	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	cond_value[2];
-//	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_MysBolt;
-//	TEXT[3]					= 	NAME_ScalingPerPower;
-//	COUNT[3]				=	SPL_Scaling_MysBolt;
-	COUNT[5]				=	value;
-};
-instance ItRu_MysBall (ItemPR_Spell)
-{
-	value 					=	200;
-	
-	visual 					=	"ItRu_InstantFireball.3ds";
-	spell					= 	SPL_MysBall;
-	mag_circle 				=	1;
-	cond_value[2]  			=	SPL_Cost_MysBall;
-	
-	description				=	NAME_SPL_MysBall;
-	TEXT[1]					=	NAME_Manakosten;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_MysBall;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_MysBall;
-	TEXT[4]					=	"% skumulowanych obra¿eñ w pobli¿u:";
-	COUNT[4]				=	SPL_Percent_MysBall;
-	COUNT[5]				=	value;
-};
-instance ItRu_MysAura (ItemPR_Spell)
-{
-	visual 					=	"ItRu_MediumHeal.3ds";
-	spell					= 	SPL_MysAura;
-	
-	description				=	NAME_SPL_MysAura;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_MysAura;
-	TEXT[2]					=	NAME_Duration;
-//	COUNT[2]				=	SPL_Time_MysAura;
-};
-instance ItRu_MysRoot (ItemPR_Spell)
-{
-	visual 					=	"ItRu_IceCube.3ds";
-	spell					= 	SPL_MysRoot;
-	
-	description				=	NAME_SPL_MysRoot;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_MysRoot;
-	TEXT[2]					=	NAME_Duration;
-//	COUNT[2]				=	SPL_Time_MysRoot;
-	TEXT[3]					=	NAME_DamagePerSec;
-//	COUNT[3]				=	SPL_Damage_MysRoot;
-};
-instance ItRu_MysTame (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Sleep.3ds";
-	spell					= 	SPL_MysTame;
-	
-	description				=	NAME_SPL_MysTame;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_MysTame;
-};
-instance ItRu_MysEcho (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Sleep.3ds";
-	spell					= 	SPL_MysEcho;
-	
-	description				=	NAME_SPL_MysEcho;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_MysEcho;
-};
-instance ItRu_MysSlow (ItemPR_Spell)
-{
-	visual 					=	"ItRu_IceWave.3ds";
-	spell					= 	SPL_MysSlow;
-	
-	description				=	NAME_SPL_MysSlow;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_MysSlow;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_MysSlow;
-};
-///*******************************************************************************************
-instance ItRu_GeoStone (ItemPR_Spell)
-{
-	value 					=	200;
-	
-	visual					=	"ItRu_FireBolt.3DS";
-	spell					= 	SPL_GeoStone;
-	mag_circle				= 	1;
-	cond_value[2]  			=	SPL_Cost_GeoStone;
-	
-	description				=	NAME_SPL_GeoStone;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_GeoStone;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_GeoStone;
-	TEXT[4]					=	"Zadaje obra¿enia przyleg³ym celom";
-	COUNT[5]				=	value;
-};
-instance ItRu_GeoAura (ItemPR_Spell)
+instance ItRu_Whirlwind (ItemPR_Spell)
 {
 	value 					=	400;
 	
-	visual 					=	"ItRu_MediumHeal.3ds";
-	spell					= 	SPL_GeoAura;
-	mag_circle				= 	2;
-	cond_value[2]  			=	SPL_Cost_GeoAura;
+	visual					=	"ItRu_Water02.3DS";
+	spell					= 	SPL_Whirlwind;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_Whirlwind;
 	
-	description				=	NAME_SPL_GeoAura;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	"Ochrona przed broni¹ i pociskami:";
-	COUNT[2]				=	SPL_Prot_GeoAura;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_GeoAura;
-	TEXT[4]					=	NAME_Duration;
-	COUNT[4]				=	SPL_Time_GeoAura;
-	COUNT[5]				=	value;
-};
-instance ItRu_GeoElevate (ItemPR_Spell)
-{
-	value 					=	600;
-	
-	visual 					=	"ItRu_IceCube.3ds";
-	spell					= 	SPL_GeoElevate;
-	mag_circle				= 	3;
-	cond_value[2]  			=	SPL_Cost_GeoElevate;
-	
-	description				=	NAME_SPL_GeoElevate;
+	description				=	NAME_SPL_Whirlwind;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Duration;
-	COUNT[2]				=	SPL_Time_GeoElevate;
+	COUNT[2]				=	SPL_Time_Whirlwind;
 	COUNT[5]				=	value;
 };
-instance ItRu_GeoGolem (ItemPR_Spell)
+instance ItRu_WaterFist (ItemPR_Spell)
 {
 	value 					=	800;
 	
-	visual 					=	"ItRu_SumGol.3ds";
-	spell					= 	SPL_GeoGolem;
-	mag_circle				= 	4;
-	cond_value[2]  			=	SPL_Cost_GeoGolem;
+	visual					=	"ItRu_Water03.3DS";
+	spell					=	SPL_WaterFist;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_WaterFist;
 	
-	description				=	NAME_SPL_GeoGolem;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_ScalingPerPower;
-	TEXT[3]					= 	NAME_Bonus_HpMax;
-	COUNT[3]				= 	SPL_BonusHP_GeoGolem;
-	TEXT[4]					= 	NAME_Bonus_Str;
-	COUNT[4]				= 	SPL_BonusHP_GeoGolem;
-	COUNT[5]				=	value;
-};
-instance ItRu_GeoQuake (ItemPR_Spell)
-{
-	value 					=	1000;
-	
-	visual 					=	"ItRu_IceWave.3ds";
-	spell					= 	SPL_GeoQuake;
-	mag_circle				= 	5;
-	cond_value[2]  			=	SPL_Cost_GeoQuake;
-	
-	description				=	NAME_SPL_GeoQuake;
+	description				=	NAME_SPL_WaterFist;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_GeoQuake;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_GeoQuake;
+	COUNT[2]				=	SPL_Damage_WaterFist;
 	COUNT[5]				=	value;
 };
-instance ItRu_GeoCollapse (ItemPR_Spell)
-{
-	value 					=	1200;
-	
-	visual 					=	"ItRu_FireRain.3ds";
-	spell					= 	SPL_GeoCollapse;
-	mag_circle				= 	6;
-	cond_value[2]  			=	SPL_Cost_GeoCollapse;
-	
-	description				=	NAME_SPL_GeoCollapse;
-	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_GeoCollapse;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_GeoCollapse;
-	COUNT[5]				=	value;
-};
-///*******************************************************************************************
-instance ItRu_EleLance (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Water04.3ds";
-	spell					= 	SPL_EleLance;
-
-	description				=	NAME_SPL_EleLance;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_EleLance;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_EleLance;
-};
-instance ItRu_EleAura (ItemPR_Spell)
-{
-	visual 					=	"ItRu_MediumHeal.3ds";
-	spell					= 	SPL_EleAura;
-
-	description				=	NAME_SPL_EleAura;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_EleAura;
-};
-instance ItRu_EleFreeze (ItemPR_Spell)
-{
-	visual 					=	"ItRu_IceCube.3ds";
-	spell					= 	SPL_EleFreeze;
-
-	description				=	NAME_SPL_EleFreeze;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_EleFreeze;
-};
-instance ItRu_EleHurricane (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Thunderball.3ds";
-	spell					= 	SPL_EleHurricane;
-
-	description				=	NAME_SPL_EleHurricane;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_EleHurricane;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_EleHurricane;
-};
-instance ItRu_EleLightning (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Water01.3ds";
-	spell					= 	SPL_EleLightning;
-
-	description				=	NAME_SPL_EleLightning;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_EleLightning;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_EleLightning;
-};
-instance ItRu_EleThunderstorm (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Water01.3ds";
-	spell					= 	SPL_EleThunderstorm;
-
-	description				=	NAME_SPL_EleThunderstorm;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_EleThunderstorm;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_EleThunderstorm;
-};
-///*******************************************************************************************
-instance ItRu_PyrFireball (ItemPR_Spell)
-{
-	visual 					=	"ItRu_InstantFireball.3ds";
-	spell					= 	SPL_PyrFireball;
-
-	description				=	NAME_SPL_PyrFireball;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_Cost_PyrFireball;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_PyrFireball;
-};
-instance ItRu_PyrAura (ItemPR_Spell)
-{
-	visual 					=	"ItRu_MediumHeal.3ds";
-	spell					= 	SPL_PyrAura;
-
-	description				=	NAME_SPL_PyrAura;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_PyrAura;
-};
-instance ItRu_PyrBurning (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Firestorm.3ds";
-	spell					= 	SPL_PyrBurning;
-
-	description				=	NAME_SPL_PyrBurning;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_PyrBurning;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_PyrBurning;
-};
-instance ItRu_PyrFirebomb (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Pyrokinesis.3ds";
-	spell					= 	SPL_PyrFirebomb;
-
-	description				=	NAME_SPL_PyrFirebomb;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_PyrFirebomb;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_PyrFirebomb;
-};
-instance ItRu_PyrExplosion (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Firestorm.3ds";
-	spell					= 	SPL_PyrExplosion;
-
-	description				=	NAME_SPL_PyrExplosion;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_PyrExplosion;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_PyrExplosion;
-};
-instance ItRu_PyrFirerain (ItemPR_Spell)
-{
-	visual 					=	"ItRu_Firerain.3ds";
-	spell					= 	SPL_PyrFirerain;
-
-	description				=	NAME_SPL_PyrFirerain;
-	TEXT[1]					=	NAME_Manakosten;
-//	COUNT[1]				=	SPL_COST_PyrFirerain;
-	TEXT[2]					=	NAME_Dam_Magic;
-//	COUNT[2]				=	SPL_Damage_PyrFirerain;
-};
-///*******************************************************************************************
-instance ItRu_NecLifesteal (ItemPR_Spell)
+instance ItRu_IceLance (ItemPR_Spell)
 {
 	value 					=	200;
 	
-	visual					=	"ItRu_Beliar04.3DS";
-	spell					= 	SPL_NecLifesteal;
-	mag_circle				= 	1;
-	cond_value[2]  			=	SPL_Cost_NecLifesteal;
+	visual					=	"ItRu_Water04.3DS";
+	spell					=	SPL_IceLance;
+	mag_circle				=	1;
+	cond_value[2]  			=	SPL_Cost_IceLance;
 	
-	description				=	NAME_SPL_NecLifesteal;
+	description				=	NAME_SPL_IceLance;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_NecLifesteal;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_NecLifesteal;
-	TEXT[4]					=	"Z obliczonej wartoœci leczy o procent:";
-	COUNT[4]				=	SPL_Heal_NecLifesteal;
+	COUNT[2]				=	SPL_Damage_IceLance;
 	COUNT[5]				=	value;
 };
-instance ItRu_NecAura (ItemPR_Spell)
+instance ItRu_Inflate (ItemPR_Spell)
 {
-	value 					=	400;
+	value 					=	800;
 	
-	visual 					=	"ItRu_MediumHeal.3ds";
-	spell					= 	SPL_NecAura;
-	mag_circle				= 	2;
-	cond_value[2]  			=	SPL_Cost_NecAura;
+	visual					=	"ItRu_Water01.3ds";
+	spell					= 	SPL_Inflate;
+	mag_circle 				=	4;
+	cond_value[2]  			=	SPL_Cost_Inflate;
 	
-	description				=	NAME_SPL_NecAura;
+	description				=	NAME_SPL_Inflate;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					=	"Ochrona przed magi¹ i barier¹:";
-	COUNT[2]				=	SPL_Prot_NecAura;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_NecAura;
-	TEXT[4]					=	NAME_Duration;
-	COUNT[4]				=	SPL_Time_NecAura;
 	COUNT[5]				=	value;
 };
-instance ItRu_NecCurse (ItemPR_Spell)
+instance ItRu_Geyser (ItemPR_Spell)
 {
 	value 					=	600;
 	
-	visual 					=	"ItRu_SumSkel.3ds";
-	spell					= 	SPL_NecCurse;
-	mag_circle				= 	3;
-	cond_value[2]  			=	SPL_Cost_NecCurse;
+	visual					=	"ItRu_Water01.3DS";
+	spell					=	SPL_Geyser;
+	mag_circle				=	3;
+	cond_value[2]  			=	SPL_Cost_Geyser;
 	
-	description				=	NAME_SPL_NecCurse;
+	description				=	NAME_SPL_Geyser;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	//TEXT[2]					=	NAME_Duration;
-	//COUNT[2]				=	SPL_Time_NecCurse;
-	TEXT[2]					=	"Zabicie celu z na³o¿on¹ kl¹tw¹";
-	TEXT[3]					=	"przyzywa szkielet, max:";
-	COUNT[3]				=	SPL_Max_NecCurse;
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Geyser;
 	COUNT[5]				=	value;
 };
-instance ItRu_NecPlague (ItemPR_Spell)
+instance ItRu_Fireburning (ItemPR_Spell)
+{
+	value 					=	600;
+	
+	visual					=	"ItRu_Firestorm.3DS";
+	spell					=	SPL_Fireburning;
+	mag_circle				=	3;
+	cond_value[2]  			=	SPL_Cost_Fireburning;
+	
+	description				=	NAME_SPL_Fireburning;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Fireburning;
+	COUNT[5]				=	value;
+};
+instance ItRu_ChainLightning (ItemPR_Spell)
+{
+	value 					=	800;
+	
+	visual					=	"ItRu_Thunderball.3DS";
+	spell					=	SPL_ChainLightning;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_ChainLightning;
+	
+	description				=	NAME_SPL_ChainLightning;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_ChainLightning;
+	COUNT[5]				=	value;
+};
+instance ItRu_Hurricane (ItemPR_Spell)
+{
+	value 					=	800;
+	
+	visual					=	"ItRu_WindFist.3DS";
+	spell					=	SPL_Hurricane;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_Hurricane;
+	
+	description				=	NAME_SPL_Hurricane;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Hurricane;
+	COUNT[5]				=	value;
+};
+instance ItRu_LightFlash (ItemPR_Spell)
+{
+	value 					=	1000;
+	
+	visual					=	"ItRu_Light.3DS";
+	spell					=	SPL_LightFlash;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_LightFlash;
+	
+	description				=	NAME_SPL_LightFlash;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_LightFlash;
+	COUNT[5]				=	value;
+};
+///*******************************************************************************************
+instance ItRu_Plague (ItemPR_Spell)
 {
 	value 					=	800;
 	
 	visual					=	"ItRu_Beliar02.3DS";
-	spell					= 	SPL_NecPlague;
-	mag_circle				= 	4;
-	cond_value[2]  			=	SPL_Cost_NecPlague;
+	spell					=	SPL_Plague;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_Plague;
 	
-	description				=	NAME_SPL_NecPlague;
+	description				=	NAME_SPL_Plague;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_NecPlague;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_NecPlague;
+	COUNT[2]				=	SPL_Damage_Plague;
 	COUNT[5]				=	value;
 };
-instance ItRu_NecDemon (ItemPR_Spell)
+instance ItRu_Swarm (ItemPR_Spell)
+{
+	value 					=	800;
+	
+	visual					=	"ItRu_Beliar02.3DS";
+	spell					=	SPL_Swarm;
+	mag_circle				=	4;
+	cond_value[2]  			=	SPL_Cost_Swarm;
+	
+	description				=	NAME_SPL_Swarm;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Swarm;
+	COUNT[5]				=	value;
+};
+instance ItRu_Greententacle (ItemPR_Spell)
+{
+	value 					=	600;
+	
+	visual					=	"ItRu_Beliar03.3DS";
+	spell					=	SPL_Greententacle;
+	mag_circle				=	3;
+	cond_value[2]  			=	SPL_Cost_Greententacle;
+	
+	description				=	NAME_SPL_Greententacle;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Greententacle;
+	TEXT[3]					=	NAME_Dam_Magic;
+	COUNT[3]				=	SPL_Damage_Greententacle;
+	COUNT[5]				=	value;
+};
+instance ItRu_Earthquake (ItemPR_Spell)
 {
 	value 					=	1000;
 	
-	visual 					=	"ItRu_SumDemon.3ds";
-	spell					= 	SPL_NecDemon;
-	mag_circle				= 	5;
-	cond_value[2]  			=	SPL_Cost_NecDemon;
+	visual					=	"ItRu_IceWave.3DS";
+	spell					=	SPL_Earthquake;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_Earthquake;
 	
-	description				=	NAME_SPL_NecDemon;
+	description				=	NAME_SPL_Earthquake;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
-	TEXT[2]					= 	NAME_ScalingPerPower;
-	TEXT[3]					= 	NAME_Bonus_HpMax;
-	COUNT[3]				= 	SPL_BonusHP_NecDemon;
-	TEXT[4]					= 	NAME_Bonus_Str;
-	COUNT[4]				= 	SPL_BonusHP_NecDemon;
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Earthquake;
 	COUNT[5]				=	value;
 };
-instance ItRu_NecDeath (ItemPR_Spell)
+instance ItRu_Rock (ItemPR_Spell)
+{
+	value 					=	200;
+	
+	visual					=	"ItRu_Water04.3DS";
+	spell					=	SPL_Rock;
+	mag_circle				=	1;
+	cond_value[2]  			=	SPL_Cost_Rock;
+	
+	description				=	NAME_SPL_Rock;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Rock;
+	COUNT[5]				=	value;
+};
+instance ItRu_Mysticball (ItemPR_Spell)
+{
+	value 					=	200;
+	
+	visual					=	"ItRu_Beliar04.3DS";
+	spell					=	SPL_Mysticball;
+	mag_circle				=	1;
+	cond_value[2]  			=	SPL_Cost_Mysticball;
+	
+	description				=	NAME_SPL_Mysticball;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Mysticball;
+	COUNT[5]				=	value;
+};
+instance ItRu_SuckEnergy (ItemPR_Spell)
+{
+	value 					=	400;
+	
+	visual					=	"ItRu_Beliar01.3DS";
+	spell					=	SPL_SuckEnergy;
+	mag_circle				=	2;
+	cond_value[2]  			=	SPL_Cost_SuckEnergy;
+	
+	description				=	NAME_SPL_SuckEnergy;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_SuckEnergy;
+	COUNT[5]				=	value;
+};
+instance ItRu_Skull (ItemPR_Spell)
+{
+	value 					=	1000;
+	
+	visual					=	"ItRu_Beliar05.3DS";
+	spell					=	SPL_Skull;
+	mag_circle				=	5;
+	cond_value[2]  			=	SPL_Cost_Skull;
+	
+	description				=	NAME_SPL_Skull;
+	COUNT[0]				=	mag_circle;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Dam_Magic;
+	COUNT[2]				=	SPL_Damage_Skull;
+	COUNT[5]				=	value;
+};
+instance ItRu_Elevate (ItemPR_Spell)
+{
+	value 					=	600;
+	
+	visual 					=	"ItRu_IceCube.3ds";
+	spell					= 	SPL_Elevate;
+	mag_circle				= 	3;
+	cond_value[2]  			=	SPL_Cost_Elevate;
+	
+	description				=	NAME_SPL_Elevate;
+	COUNT[1]				=	cond_value[2];
+	TEXT[2]					=	NAME_Duration;
+	COUNT[2]				=	SPL_Time_Elevate;
+	COUNT[5]				=	value;
+};
+instance ItRu_Crush (ItemPR_Spell)
 {
 	value 					=	1200;
 	
-	visual					=	"ItRu_BreathOfDeath.3DS";
-	spell					= 	SPL_NecDeath;
-	mag_circle				= 	6;
-	cond_value[2]  			=	SPL_Cost_NecDeath;
+	visual					=	"ItRu_Beliar05.3DS";
+	spell					=	SPL_Crush;
+	mag_circle				=	6;
+	cond_value[2]  			=	SPL_Cost_Crush;
 	
-	description				=	NAME_SPL_NecDeath;
+	description				=	NAME_SPL_Crush;
+	COUNT[0]				=	mag_circle;
 	COUNT[1]				=	cond_value[2];
 	TEXT[2]					=	NAME_Dam_Magic;
-	COUNT[2]				=	SPL_Damage_NecDeath;
-	TEXT[3]					= 	NAME_ScalingPerPower;
-	COUNT[3]				=	SPL_Scaling_NecDeath;
-	TEXT[4]					= 	"Obra¿enia brakuj¹cego zdrowia (procent):";
-	COUNT[4]				=	SPL_Percent_NecDeath;
+	COUNT[2]				=	SPL_Damage_Crush;
 	COUNT[5]				=	value;
 };

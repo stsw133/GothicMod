@@ -1,8 +1,8 @@
 ///******************************************************************************************
-///	SPL_Teleport
+/// SPL_Teleport
 ///******************************************************************************************
 
-const int SPL_Cost_Teleport				=	0;	//10
+const int SPL_Cost_Teleport				=	0;
 
 ///******************************************************************************************
 func int B_TryToTeleport (var int Level, var string TelWP)
@@ -23,10 +23,9 @@ func int B_TryToTeleport (var int Level, var string TelWP)
 ///******************************************************************************************
 instance Spell_Teleport (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	spelltype							=	SPELL_NEUTRAL;
-	targetCollectAlgo					=	TARGET_COLLECT_CASTER;
 	canTurnDuringInvest					=	false;
+	targetCollectAlgo					=	TARGET_COLLECT_CASTER;
 	targetCollectRange					=	0;
 	targetCollectAzi					=	0;
 	targetCollectElev					=	0;
@@ -39,6 +38,8 @@ func int Spell_Logic_Teleport (var int manaInvested)
 
 func void Spell_Cast_Teleport()
 {
+	B_SpellCast (self, default, SPL_Cost_Teleport);
+	
 	var oCNpc o_self; o_self = Hlp_GetNpc(self);
 	var int magBook; magBook = o_self.mag_Book;
 	
@@ -59,6 +60,4 @@ func void Spell_Cast_Teleport()
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTe_Xardas))				{	if (!B_TryToTeleport(NEWWORLD_ZEN, "XARDAS"))					{ return; };	}
 		else																			{	if (!B_TryToTeleport(CurrentLevel, "XXX"))						{ return; };	};
 	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
 };

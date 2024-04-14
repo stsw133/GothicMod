@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	SpecialItems
+/// SpecialItems
 ///******************************************************************************************
 instance Fakescroll (C_Item)
 {
@@ -88,17 +88,6 @@ instance ItLsTorchFirespit (ItemPR_Instrument)
 ///******************************************************************************************
 /// WzA items
 ///******************************************************************************************
-instance ItMi_NA_Shit (C_Item)
-{
-	name					= 	"Gówno";
-	mainflag 				=	ITEM_KAT_NONE;
-	flags					=	ITEM_MULTI;
-	
-	visual 					=	"ItMi_NA_Shit.3ds";
-	material 				=	MAT_LEATHER;
-	
-	description				= 	name;
-};
 instance ItMi_NA_Gramophone (C_Item)
 {
 	name					= 	"Gramofon";
@@ -118,6 +107,17 @@ instance ItMi_NA_Phone (C_Item)
 	
 	visual 					=	"ItMi_NA_Phone.3ds";
 	material 				=	MAT_METAL;
+	
+	description				= 	name;
+};
+instance ItMi_NA_Shit (C_Item)
+{
+	name					= 	"Gówno";
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
+	
+	visual 					=	"ItMi_NA_Shit.3ds";
+	material 				=	MAT_LEATHER;
 	
 	description				= 	name;
 };

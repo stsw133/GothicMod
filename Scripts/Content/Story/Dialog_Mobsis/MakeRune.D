@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	MOBSI_MAKERUNE / MOBSI_MAKESCROLL
+/// MOBSI_MAKERUNE / MOBSI_MAKESCROLL
 ///******************************************************************************************
 func void MAKERUNE_S1()
 {
@@ -7,7 +7,7 @@ func void MAKERUNE_S1()
 	
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKERUNE;
 		Ai_ProcessInfos(her);
 	};
@@ -18,7 +18,7 @@ func void MOBSI_MAKESCROLL_S1()
 	
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKESCROLL;
 		Ai_ProcessInfos(her);
 	};
@@ -67,7 +67,7 @@ func void PC_MakeScroll_End_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************\
-///	neutral
+/// neutral
 ///******************************************************************************************
 instance PC_MakeRune_Neutral (C_Info)
 {
@@ -454,7 +454,7 @@ func void PC_ItRu_Shrink_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	battle
+/// battle
 ///******************************************************************************************
 instance PC_MakeRune_Battle (C_Info)
 {
@@ -532,6 +532,7 @@ func void PC_MakeRune_Battle_Info()
 	{
 		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_Inflate, " (woda, ³ój kretoszczura)"), PC_ItRu_Inflate_Info);
 	};
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_DragonBall])
 	{
 		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_DragonBall, " (serce smoka)"), PC_ItRu_DragonBall_Info);
@@ -540,6 +541,7 @@ func void PC_MakeRune_Battle_Info()
 	{
 		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_BlackDragonBall, " (kamieñ duszy smoka-o¿ywieñca)"), PC_ItRu_BlackDragonBall_Info);
 	};
+	*/
 	if (PLAYER_TALENT_ENCHANTING[SPL_BreathOfDeath])
 	{
 		Info_AddChoice (PC_MakeRune_Battle, ConcatStrings(NAME_SPL_BreathOfDeath, " (wêgiel, czarna per³a)"), PC_ItRu_BreathOfDeath_Info);
@@ -1008,6 +1010,7 @@ func void PC_ItRu_Inflate_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/*
 /// SPL_DragonBall
 func void PC_ItRu_DragonBall_Info()
 {
@@ -1070,6 +1073,7 @@ func void PC_ItRu_BlackDragonBall_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 /// SPL_BreathOfDeath
 func void PC_ItRu_BreathOfDeath_Info()
 {
@@ -1136,6 +1140,7 @@ func void PC_ItRu_MassDeath_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+/*
 /// SPL_ArmyOfDarkness
 func void PC_ItRu_ArmyOfDarkness_Info()
 {
@@ -1169,8 +1174,9 @@ func void PC_ItRu_ArmyOfDarkness_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	special
+/// special
 ///******************************************************************************************
 instance PC_MakeRune_Special (C_Info)
 {
@@ -1237,7 +1243,7 @@ func void PC_SPL_PalTeleportSecret_Create()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	MYS
+/// MYS
 ///******************************************************************************************
 instance PC_MakeRune_MYS (C_Info)
 {
@@ -1259,7 +1265,7 @@ func void PC_MakeRune_MYS_Info()
 {
 	Info_ClearChoices	(PC_MakeRune_MYS);
 	Info_AddChoice		(PC_MakeRune_MYS, DIALOG_BACK, PC_MakeRune_MYS_BACK);
-	
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_MysBall])
 	{
 		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysBall, " (¿ywica)"), PC_ItRu_MysBall_Info);
@@ -1284,12 +1290,14 @@ func void PC_MakeRune_MYS_Info()
 	{
 		Info_AddChoice (PC_MakeRune_MYS, ConcatStrings(NAME_SPL_MysSlow, " (¿ywica, diament)"), PC_ItRu_MysSlow_Info);
 	};
+	*/
 };
 ///******************************************************************************************
 func void PC_MakeRune_MYS_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_MYS);
 };
+/*
 /// SPL_MysBall
 func void PC_ItRu_MysBall_Info()
 {
@@ -1486,8 +1494,9 @@ func void PC_ItRu_MysSlow_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	GEO
+/// GEO
 ///******************************************************************************************
 instance PC_MakeRune_GEO (C_Info)
 {
@@ -1509,7 +1518,7 @@ func void PC_MakeRune_GEO_Info()
 {
 	Info_ClearChoices	(PC_MakeRune_GEO);
 	Info_AddChoice		(PC_MakeRune_GEO, DIALOG_BACK, PC_MakeRune_GEO_BACK);
-	
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_GeoStone])
 	{
 		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoStone, " (kwarc)"), PC_ItRu_GeoStone_Info);
@@ -1534,12 +1543,14 @@ func void PC_MakeRune_GEO_Info()
 	{
 		Info_AddChoice (PC_MakeRune_GEO, ConcatStrings(NAME_SPL_GeoCollapse, " (kwarc, skóra trolla)"), PC_ItRu_GeoCollapse_Info);
 	};
+	*/
 };
 ///******************************************************************************************
 func void PC_MakeRune_GEO_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_GEO);
 };
+/*
 /// SPL_GeoStone
 func void PC_ItRu_GeoStone_Info()
 {
@@ -1736,8 +1747,9 @@ func void PC_ItRu_GeoCollapse_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	ELE
+/// ELE
 ///******************************************************************************************
 instance PC_MakeRune_ELE (C_Info)
 {
@@ -1759,7 +1771,7 @@ func void PC_MakeRune_ELE_Info()
 {
 	Info_ClearChoices	(PC_MakeRune_ELE);
 	Info_AddChoice		(PC_MakeRune_ELE, DIALOG_BACK, PC_MakeRune_ELE_BACK);
-	
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_EleLance])
 	{
 		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleLance, " (kryszta³)"), PC_ItRu_EleLance_Info);
@@ -1784,12 +1796,14 @@ func void PC_MakeRune_ELE_Info()
 	{
 		Info_AddChoice (PC_MakeRune_ELE, ConcatStrings(NAME_SPL_EleThunderstorm, " (kryszta³, 5 bry³ek niebieskiej rudy)"), PC_ItRu_EleThunderstorm_Info);
 	};
+	*/
 };
 ///******************************************************************************************
 func void PC_MakeRune_ELE_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_ELE);
 };
+/*
 /// SPL_EleLance
 func void PC_ItRu_EleLance_Info()
 {
@@ -1986,8 +2000,9 @@ func void PC_ItRu_EleThunderstorm_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	PYR
+/// PYR
 ///******************************************************************************************
 instance PC_MakeRune_PYR (C_Info)
 {
@@ -2009,7 +2024,7 @@ func void PC_MakeRune_PYR_Info()
 {
 	Info_ClearChoices	(PC_MakeRune_PYR);
 	Info_AddChoice		(PC_MakeRune_PYR, DIALOG_BACK, PC_MakeRune_PYR_BACK);
-	
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_PyrFireball])
 	{
 		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFireball, " (siarka)"), PC_ItRu_PyrFireball_Info);
@@ -2034,12 +2049,14 @@ func void PC_MakeRune_PYR_Info()
 	{
 		Info_AddChoice (PC_MakeRune_PYR, ConcatStrings(NAME_SPL_PyrFirerain, " (siarka, 5 bry³ek czerwonej rudy)"), PC_ItRu_PyrFirerain_Info);
 	};
+	*/
 };
 ///******************************************************************************************
 func void PC_MakeRune_PYR_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_PYR);
 };
+/*
 /// SPL_PyrFireball
 func void PC_ItRu_PyrFireball_Info()
 {
@@ -2236,8 +2253,9 @@ func void PC_ItRu_PyrFirerain_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	NEC
+/// NEC
 ///******************************************************************************************
 instance PC_MakeRune_NEC (C_Info)
 {
@@ -2259,7 +2277,7 @@ func void PC_MakeRune_NEC_Info()
 {
 	Info_ClearChoices	(PC_MakeRune_NEC);
 	Info_AddChoice		(PC_MakeRune_NEC, DIALOG_BACK, PC_MakeRune_NEC_BACK);
-	
+	/*
 	if (PLAYER_TALENT_ENCHANTING[SPL_NecLifesteal])
 	{
 		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecLifesteal, " (czaszka)"), PC_ItRu_NecLifesteal_Info);
@@ -2284,12 +2302,14 @@ func void PC_MakeRune_NEC_Info()
 	{
 		Info_AddChoice (PC_MakeRune_NEC, ConcatStrings(NAME_SPL_NecDeath, " (czaszka, czarna per³a)"), PC_ItRu_NecDeath_Info);
 	};
+	*/
 };
 ///******************************************************************************************
 func void PC_MakeRune_NEC_BACK()
 {
 	Info_ClearChoices(PC_MakeRune_NEC);
 };
+/*
 /// SPL_NecLifesteal
 func void PC_ItRu_NecLifesteal_Info()
 {
@@ -2486,8 +2506,9 @@ func void PC_ItRu_NecDeath_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+*/
 ///******************************************************************************************
-///	PAL
+/// PAL
 ///******************************************************************************************
 instance PC_MakeRune_PAL (C_Info)
 {

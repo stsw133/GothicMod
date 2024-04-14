@@ -8,12 +8,14 @@ prototype ItemPR_MeleeWeapon (C_Item)
 	TEXT[5]					= 	NAME_Value;
 };
 ///******************************************************************************************
+
 func void Equip_2H_2_StaffWeapon()		{ if (Npc_GetTalentSkill(self, NPC_TALENT_2H) >= 2) { Mdl_ApplyOverlayMDS (self, "HUMANS_2HST3.MDS"); }; };
 func void UnEquip_2H_2_StaffWeapon()	{ Mdl_RemoveOverlayMDS (self, "HUMANS_2HST3.MDS"); };
 
 var int usingForgedWeapon;
 func void Equip_ForgedWeapon()		{ usingForgedWeapon = true; };
 func void UnEquip_ForgedWeapon()	{ usingForgedWeapon = false; };
+
 ///******************************************************************************************
 func void SetItMwAttributes (var C_Item itm, var int type, var int dmg, var int dmgType, var int cond, var int condAtr, var int rng, var int valuePercent)
 {
@@ -74,7 +76,7 @@ func void SetItMwAttributes (var C_Item itm, var int type, var int dmg, var int 
 	*/
 };
 ///******************************************************************************************
-///	Junk
+/// Junk
 ///******************************************************************************************
 instance ItMw_1h_Bau_Mace (ItemPR_MeleeWeapon)
 {
@@ -120,7 +122,7 @@ instance ItMw_2H_OldScythe (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_2HD_AXE, 12,DAM_EDGE, 60,ATR_STRENGTH, 130, 1);
 };
 ///******************************************************************************************
-///	NPC's weapons
+/// NPC's weapons
 ///******************************************************************************************
 instance ItMw_1H_Mace_L_01 (ItemPR_MeleeWeapon)
 {
@@ -294,7 +296,7 @@ instance ItMw_Addon_PIR2hSword (ItemPR_MeleeWeapon)
 	visual 					=	"ItMw_070_2h_sword_09.3DS";
 	SetItMwAttributes (self, ITEM_2HD_SWD, 35,DAM_EDGE, 70,ATR_STRENGTH, 120, 10);
 };
-/// ------ others ------
+/// ------ other ------
 instance ItMw_1h_NordmarSword (ItemPR_MeleeWeapon)
 {
 	name 					=	"Miecz nordmarczyka";
@@ -308,7 +310,7 @@ instance ItMw_Addon_Nomad (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_SWD, 30,DAM_EDGE, 60,ATR_STRENGTH, 75, 10);
 };
 ///******************************************************************************************
-///	Goblin weapons
+/// Goblin weapons
 ///******************************************************************************************
 instance ItMw_1H_Goblin_01 (ItemPR_MeleeWeapon)
 {
@@ -339,7 +341,7 @@ instance ItMw_1H_Goblin_04 (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_AXE, 5,DAM_BLUNT, 25,ATR_STRENGTH, 90, 1);
 };
 ///******************************************************************************************
-///	Orc weapons
+/// Orc weapons
 ///******************************************************************************************
 instance ItMw_2H_Draconian (ItemPR_MeleeWeapon)
 {
@@ -511,7 +513,7 @@ instance ItMw_Schiffsaxt (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_AXE, 60,DAM_EDGE, 60,ATR_STRENGTH, 70, 100);
 };
 ///******************************************************************************************
-///	Chapter 1 - made by player
+/// Chapter 1 - made by player
 ///******************************************************************************************
 instance ItMw_1H_Common_01 (ItemPR_MeleeWeapon)
 {
@@ -628,7 +630,7 @@ instance ItMw_Bartaxt (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_AXE, 90,DAM_EDGE, 90,ATR_STRENGTH, 70, 100);
 };
 ///******************************************************************************************
-///	Chapter 2 - made by player
+/// Chapter 2 - made by player
 ///******************************************************************************************
 instance ItMw_Schwert4 (ItemPR_MeleeWeapon)
 {
@@ -676,7 +678,7 @@ instance ItMw_2h_Ignite_01 (ItemPR_MeleeWeapon)
 	TEXT[4]					=	NAME_Bonus_2H;
 };
 ///******************************************************************************************
-///	Chapter 3 - trader
+/// Chapter 3 - trader
 ///******************************************************************************************
 instance ItMw_Morgenstern (ItemPR_MeleeWeapon)
 {
@@ -764,7 +766,7 @@ instance ItMw_Meisterdegen (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_SWD, 120,DAM_EDGE, 90,ATR_DEXTERITY, 100, 100);
 };
 ///******************************************************************************************
-///	Chapter 3 - made by player
+/// Chapter 3 - made by player
 ///******************************************************************************************
 instance ItMw_Rubinklinge (ItemPR_MeleeWeapon) 
 {
@@ -821,7 +823,7 @@ instance ItMw_2h_Ignite_02 (ItemPR_MeleeWeapon)
 	TEXT[4]					=	NAME_Bonus_2H;
 };
 ///******************************************************************************************
-///	Chapter 4 - trader
+/// Chapter 4 - trader
 ///******************************************************************************************
 instance ItMw_Folteraxt (ItemPR_MeleeWeapon)
 {
@@ -860,7 +862,7 @@ instance ItMw_Krummschwert (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_2HD_SWD, 150,DAM_EDGE, 150,ATR_STRENGTH, 120, 100);
 };
 ///******************************************************************************************
-///	Chapter 4 - made by player
+/// Chapter 4 - made by player
 ///******************************************************************************************
 instance ItMw_Avalon (ItemPR_MeleeWeapon) 
 {
@@ -908,7 +910,7 @@ instance ItMw_2h_Ignite_03 (ItemPR_MeleeWeapon)
 	TEXT[4]					=	NAME_Bonus_2H;
 };
 ///******************************************************************************************
-///	Chapter 5 - trader
+/// Chapter 5 - trader
 ///******************************************************************************************
 instance ItMw_Sturmbringer (ItemPR_MeleeWeapon)
 {
@@ -929,7 +931,7 @@ instance ItMw_Berserkeraxt (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_2HD_AXE, 180,DAM_EDGE, 170,ATR_STRENGTH, 90, 100);
 };
 ///******************************************************************************************
-///	Chapter 5 - made by player
+/// Chapter 5 - made by player
 ///******************************************************************************************
 instance ItMw_1h_Special_04 (ItemPR_MeleeWeapon)
 {
@@ -968,7 +970,7 @@ instance ItMw_2h_Ignite_04 (ItemPR_MeleeWeapon)
 	TEXT[4]					=	NAME_Bonus_2H;
 };
 ///******************************************************************************************
-///	Other weapons
+/// Other weapons
 ///******************************************************************************************
 instance ItMw_1h_Keule (ItemPR_MeleeWeapon)
 {
@@ -991,7 +993,7 @@ instance ItMw_Addon_Betty (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_SWD, 130,DAM_EDGE, 115,ATR_DEXTERITY, 100, 50);
 };
 ///******************************************************************************************
-///	Dragon hunter weapons
+/// Dragon hunter weapons
 ///******************************************************************************************
 instance ItMw_1h_Special_05 (ItemPR_MeleeWeapon)
 {
@@ -1030,7 +1032,7 @@ instance ItMw_2h_Ignite_05 (ItemPR_MeleeWeapon)
 	TEXT[4]					=	NAME_Bonus_2H;
 };
 ///******************************************************************************************
-///	Mage weapons
+/// Mage weapons
 ///******************************************************************************************
 instance ItMw_Stab_L_01 (ItemPR_MeleeWeapon)
 {
@@ -1088,7 +1090,7 @@ instance ItMw_Stab_H_02 (ItemPR_MeleeWeapon)
 	COUNT[0]				=	mag_circle;
 };
 ///******************************************************************************************
-///	Paladin weapons
+/// Paladin weapons
 ///******************************************************************************************
 instance ItMw_1H_Blessed_01 (ItemPR_MeleeWeapon)
 {
@@ -1140,7 +1142,7 @@ instance ItMw_2H_Innos (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_2HD_SWD|ITEM_MISSION, 180,DAM_EDGE|DAM_MAGIC, 120,ATR_MANA_MAX, 140, 100);
 };
 ///******************************************************************************************
-///	Assassin weapons
+/// Assassin weapons
 ///******************************************************************************************
 instance ItMw_Assassin_01 (ItemPR_MeleeWeapon)
 {
@@ -1173,7 +1175,7 @@ instance ItMw_Assassin_05 (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_2HD_SWD, 150,DAM_EDGE, 90,ATR_DEXTERITY, 125, 100);
 };
 ///******************************************************************************************
-///	Beliar weapon
+/// Beliar weapon
 ///******************************************************************************************
 func void SetBeliarWeaponAttributes (var C_Item itm, var int kap)
 {
@@ -1220,7 +1222,7 @@ instance ItMw_BeliarWeapon (C_Item)
 	SetBeliarWeaponAttributes (self, BeliarWeapon_LastUpgradeLvl);
 };
 ///******************************************************************************************
-///	Mission weapons
+/// Mission weapons
 ///******************************************************************************************
 instance ItMw_AlriksSword_Mis (ItemPR_MeleeWeapon)
 {
@@ -1260,7 +1262,7 @@ instance ItMw_BeliarWeapon_Raven (ItemPR_MeleeWeapon)
 	TEXT[5]					=	"";
 };
 ///******************************************************************************************
-///	Iron weapons
+/// Iron weapons
 ///******************************************************************************************
 instance ItMw_Iron_Axe (ItemPR_MeleeWeapon)
 {
@@ -1335,7 +1337,7 @@ instance ItMw_Iron_WarHammer (ItemPR_MeleeWeapon)
 	SetItMwAttributes (self, ITEM_AXE, 0,DAM_BLUNT, 0,ATR_STRENGTH, 50, 10);
 };
 ///******************************************************************************************
-///	Steel weapons
+/// Steel weapons
 ///******************************************************************************************
 instance ItMw_Steel_Axe (ItemPR_MeleeWeapon)
 {

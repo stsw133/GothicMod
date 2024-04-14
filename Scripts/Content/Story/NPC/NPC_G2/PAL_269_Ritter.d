@@ -9,7 +9,7 @@ instance PAL_269_Ritter (Npc_Default)
 	npctype								=	NPCTYPE_OCMAIN;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);

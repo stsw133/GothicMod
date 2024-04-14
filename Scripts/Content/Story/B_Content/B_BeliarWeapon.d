@@ -9,6 +9,7 @@ func int C_ScHasBeliarsWeapon()
 	{
 		return true;
 	};
+	
 	return false;
 };	
 
@@ -23,6 +24,7 @@ func int C_IsItemBeliarsWeapon(var C_Item Weap)
 	{
 		return true;
 	};
+	
 	return false;
 };	
 
@@ -36,6 +38,7 @@ func int C_ScHasReadiedBeliarsWeapon()
 	{
 		return true;
 	};
+	
 	return false;
 };
 
@@ -49,6 +52,7 @@ func int C_ScHasEquippedBeliarsWeapon()
 	{
 		return true;
 	};
+	
 	return false;
 };
 
@@ -71,6 +75,8 @@ func int C_ScCanUpgradeBeliarsWeapon()
 	{
 		return true;
 	};
+	
+	return false;
 };
 
 ///******************************************************************************************
@@ -78,7 +84,7 @@ func int C_ScCanUpgradeBeliarsWeapon()
 ///******************************************************************************************
 func void B_UpgradeBeliarsWeapon()
 {
-	var int BeliarsTribute; BeliarsTribute = (hero.level - BeliarWeapon_LastUpgradeLvl) * HP_PER_LP;
+	var int BeliarsTribute; BeliarsTribute = (hero.level - BeliarWeapon_LastUpgradeLvl) * HP_PER_LP/2;
 	hero.attribute[ATR_HITPOINTS_MAX] -= BeliarsTribute;
 	
 	if (BeliarsTribute > 0)

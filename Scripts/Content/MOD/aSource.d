@@ -8,6 +8,7 @@ var oCItem o_item; //o_item = MEM_PtrToInst(o_hero.focus_vob);
 
 ///******************************************************************************************
 
+var int seed;				/// world seed for random elements
 var int dLevel;				/// difficulty level: Easy | Medium | Hard | VeryHard
 var int gLevelA;			/// girlfriend love level (not sure/don't remember for what purpose it exists)
 var int talkingWithGirl;	/// also don't remember what was this for
@@ -25,8 +26,10 @@ var int spRegenPower, spRegenPoints;
 var int foodTime, drinkTime, alcoholTime;
 var int digestionTime;
 
-var int mShieldPoints, mFinishPercent;
+var int mShieldPhPoints, mShieldMgPoints, mFinishPercent;
 var int mAuraType, mAuraPoints, mAuraTime;
+var int mAuraPalType, mAuraPalPoints, mAuraPalTime;
+var int mSlowPoints, mSlowTime;
 
 var int enableTimeDust;
 
@@ -34,28 +37,31 @@ var int enableTimeDust;
 ///	Colors (RGBA) & Time (seconds)
 ///******************************************************************************************
 
-const int COL_Health			=	(255<<16) | (128<<8) | (128<<0) | (255<<24);
-const int COL_Mana				=	(128<<16) | (128<<8) | (255<<0) | (255<<24);
-const int COL_Stamina			=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
-const int COL_Exp				=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
-const int COL_Love				=	(255<<16) | (192<<8) | (224<<0) | (255<<24);
-const int COL_Negative			=	(192<<16) | (192<<8) | (192<<0) | (255<<24);
+const int COL_Health			=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
+const int COL_Mana				=	(127<<16) | (127<<8) | (255<<0) | (255<<24);
+const int COL_Stamina			=	(255<<16) | (255<<8) | (127<<0) | (255<<24);
+const int COL_Exp				=	(127<<16) | (255<<8) | (127<<0) | (255<<24);
+const int COL_Love				=	(255<<16) | (191<<8) | (223<<0) | (255<<24);
+const int COL_Negative			=	(191<<16) | (191<<8) | (191<<0) | (255<<24);
 
-const int COL_DamageGiven		=	( 64<<16) | (160<<8) | (255<<0) | (255<<24);
-const int COL_DamageTaken		=	(255<<16) | ( 64<<8) | ( 64<<0) | (255<<24);
+const int COL_DamageGiven		=	( 63<<16) | (159<<8) | (255<<0) | (255<<24);
+const int COL_DamageTaken		=	(255<<16) | ( 63<<8) | ( 63<<0) | (255<<24);
+const int COL_DamageTrueGiven	=	(127<<16) | (203<<8) | (255<<0) | (255<<24);
+const int COL_DamageTrueTaken	=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
+const int COL_DamageShielded	=	(183<<16) | (223<<8) | (203<<0) | (255<<24);
 
-const int COL_ItemGiven			=	(255<<16) | (128<<8) | (128<<0) | (255<<24);
-const int COL_ItemTaken			=	(255<<16) | (224<<8) | (128<<0) | (255<<24);
+const int COL_ItemGiven			=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
+const int COL_ItemTaken			=	(255<<16) | (223<<8) | (127<<0) | (255<<24);
 
-const int COL_ExpGained			=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
-const int COL_LoveGained		=	(255<<16) | (192<<8) | (224<<0) | (255<<24);
+const int COL_ExpGained			=	(127<<16) | (255<<8) | (127<<0) | (255<<24);
+const int COL_LoveGained		=	(255<<16) | (191<<8) | (223<<0) | (255<<24);
 
-const int COL_QuestRunning		=	(255<<16) | (255<<8) | (128<<0) | (255<<24);
-const int COL_QuestProgress		=	(128<<16) | (192<<8) | (255<<0) | (255<<24);
-const int COL_QuestSuccess		=	(128<<16) | (255<<8) | (128<<0) | (255<<24);
-const int COL_QuestFailed		=	(255<<16) | (128<<8) | (128<<0) | (255<<24);
-const int COL_QuestCanceled		=	(255<<16) | (192<<8) | (128<<0) | (255<<24);
-const int COL_QuestObsolete		=	(128<<16) | (128<<8) | (128<<0) | (255<<24);
+const int COL_QuestRunning		=	(255<<16) | (255<<8) | (127<<0) | (255<<24);
+const int COL_QuestProgress		=	(127<<16) | (191<<8) | (255<<0) | (255<<24);
+const int COL_QuestSuccess		=	(127<<16) | (255<<8) | (127<<0) | (255<<24);
+const int COL_QuestFailed		=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
+const int COL_QuestCanceled		=	(255<<16) | (191<<8) | (127<<0) | (255<<24);
+const int COL_QuestObsolete		=	(127<<16) | (127<<8) | (127<<0) | (255<<24);
 
 const int TIME_ShortPrint		=	2;
 const int TIME_Print			=	4;
@@ -85,14 +91,16 @@ func void B_ScaleTime(var int x)
 };
 
 /// ------ Visibility ------
-func void B_SetVisibilityPercent (var oCNpc slf, var int visibility)
+func void B_SetNpcVisibilityPercent (var C_Npc slf, var int visibility)
 {
-	if (visibility == 100)	{	slf.bloodEnabled = true;	}
-	else					{	slf.bloodEnabled = false;	};
+	var oCNpc Npc; Npc = Hlp_GetNpc(slf);
 	
-	slf._zCVob_bitfield[0] = slf._zCVob_bitfield[0] | zCVob_bitfield0_visualAlphaEnabled;
-	slf._zCVob_visualAlpha = divf(mkf(visibility), mkf(100));
-	slf._zCVob_bitfield[0] = slf._zCVob_bitfield[0] & ~zCVob_bitfield0_castDynShadow;
+	if (visibility == 100)	{	Npc.bloodEnabled = true;	}
+	else					{	Npc.bloodEnabled = false;	};
+	
+	Npc._zCVob_bitfield[0] = Npc._zCVob_bitfield[0] | zCVob_bitfield0_visualAlphaEnabled;
+	Npc._zCVob_visualAlpha = divf(mkf(visibility), mkf(100));
+	Npc._zCVob_bitfield[0] = Npc._zCVob_bitfield[0] & ~zCVob_bitfield0_castDynShadow;
 };
 
 /// ------ Trading ------
@@ -154,10 +162,16 @@ func void Set_AniFPS(var C_Npc slf, var string aniName, var int fps)
 	MEM_WriteInt(ptr+176, mkf(fps));
 };
 
-func void NPC_SetTimeScale (var C_Npc slf, var int percent)
+/// ------ Movement speed ------
+func void NPC_SetTimeScale (var C_Npc slf, var int permille)
 {
+	if (Npc_IsPlayer(slf) && mSlowTime > 0)
+	{
+		permille *= 2;
+	};
+	
 	var int ptr; ptr = oCNPC_GetModel(slf);
 	
-	var int f; f = divf(mkf(percent), mkf(100));
+	var int f; f = divf(mkf(permille), mkf(1000));
 	MEM_WriteInt(ptr+508, f);
 };

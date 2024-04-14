@@ -1,12 +1,12 @@
 ///******************************************************************************************
-///	MOBSI_SMITHWEAPON
+/// MOBSI_SHARPWEAPON
 ///******************************************************************************************
-func void SharpWeapon_S1()
+func void MOBSI_SHARPWEAPON_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SharpWeapon;
 		Ai_ProcessInfos(her);
 	};

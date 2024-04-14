@@ -22,12 +22,14 @@ STORY\StoryGlobals.d
 STORY\NpcGlobals.d
 STORY\SVM.d
 
+STORY\NpcFn\NpcFn_SetVisual.d
 MOD\MOD_BodyStates.d
 MOD\MOD_Bars.d
 MOD\MOD_Broadcast.d
 MOD\MOD_Checks.d
 MOD\MOD_Difficulty.d
 MOD\MOD_HeroReset.d
+MOD\MOD_Loading.d
 
 AI\HUMAN\B_RefreshArmor.d
 AI\HUMAN\Guilds.d
@@ -166,9 +168,9 @@ STORY\B_AssignAmbientInfos\B_AssignAmbientInfos.d
 
 AI\MAGIC\B_AssessMagic.d
 AI\MAGIC\C_CanNpcCollideWithSpell.d
-AI\MAGIC\Spells\Spell_*.d
+AI\MAGIC\Spells\*.d
 AI\MAGIC\Spell_ProcessMana.d
-AI\MAGIC\ZS_Magic\ZS_*.d
+AI\MAGIC\ZS_Magic\*.d
 
 STORY\B_Story\B_GiveAmbientInv.d
 STORY\B_Story\B_GiveDeathInv.d
@@ -261,6 +263,7 @@ STORY\Events\*.d
 STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
 MOD\MOD_Damage.d
+MOD\MOD_Mobs.d
 MOD\MOD_MovieMode.d
 MOD\TICK_TOCK.d
 TestFunctions.d

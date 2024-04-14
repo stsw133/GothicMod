@@ -1,39 +1,24 @@
 ///******************************************************************************************
-///	SPL_Swarm
+/// SPL_Swarm
 ///******************************************************************************************
 
-const int SPL_Cost_Swarm				=	200;	//20
-const int SPL_Damage_Swarm				=	200;	//80
-const int SPL_Time_Swarm				=	5;		//6
+const int SPL_Cost_Swarm				=	125;
+const int SPL_Damage_Swarm				=	125;
+const int SPL_Time_Swarm				=	5;
 
 ///******************************************************************************************
 instance Spell_Swarm (C_Spell_Proto)
 {
-	time_per_mana						=	0;
+	damageType							=	DAM_MAGIC;
 	targetCollectAlgo					=	TARGET_COLLECT_FOCUS;
 };
 
 func int Spell_Logic_Swarm (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_Swarm/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_Swarm)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_Swarm, manaInvested);
 };
 
 func void Spell_Cast_Swarm()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Swarm/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_Swarm;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_Swarm);
 };

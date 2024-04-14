@@ -12,7 +12,36 @@ func void B_SelectWeapon (var C_Npc slf, var C_Npc oth)
 	
 	if (B_SelectSpell(slf, oth))
 	{
+		/// MOD (bugfix)
+		if (slf.guild > GIL_SEPERATOR_HUM && !Npc_IsInFightMode(slf, FMODE_MAGIC))
+		{
+			if (!Npc_IsInFightMode(slf, FMODE_NONE) && !Npc_IsInFightMode(slf, FMODE_FIST))
+			{
+				if (C_BodyStateContains(slf, BS_RUN))
+				{
+					Npc_ClearAIQueue	(slf);
+					B_ClearPerceptions	(slf);
+				};
+				AI_RemoveWeapon(slf);
+			}
+			else
+			{
+				slf.weapon = 0;
+			};
+		};
+		/// ...
 		return;
+	}
+	else
+	{
+		/// MOD (bugfix)
+		if (slf.guild > GIL_SEPERATOR_HUM && Npc_IsInFightMode(slf, FMODE_MAGIC))
+		{
+			Npc_ClearAIQueue	(slf);
+			B_ClearPerceptions	(slf);
+			
+			Npc_SetToFightMode(slf, FMODE_NONE);
+		};
 	};
 	
 	if (Npc_IsInFightMode(slf, FMODE_MAGIC))	

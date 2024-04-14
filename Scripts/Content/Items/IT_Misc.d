@@ -6,7 +6,7 @@ prototype ItemPR_Misc (C_Item)
 	TEXT[5]					= 	NAME_Value;
 };
 ///******************************************************************************************
-///	Nuggets & Resources
+/// Nuggets
 ///******************************************************************************************
 prototype ItemPR_Nugget (C_Item)
 {
@@ -88,6 +88,8 @@ instance ItMi_RedNugget (ItemPR_Nugget)
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
+/// Resources
+///******************************************************************************************
 instance ItMi_Stone (ItemPR_Nugget)
 {
 	name 					=	"Kamieñ";
@@ -145,7 +147,7 @@ instance ItMi_Saltpeter (ItemPR_Nugget)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Crystals
+/// Crystals
 ///******************************************************************************************
 instance ItMi_RockCrystal (ItemPR_Nugget)
 {
@@ -172,7 +174,7 @@ instance ItMi_FireCrystal (ItemPR_Nugget)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Pearls
+/// Pearls
 ///******************************************************************************************
 instance ItMi_WhitePearl (ItemPR_Nugget)
 {
@@ -235,7 +237,7 @@ func void Use_Shell()
 	};
 };
 ///******************************************************************************************
-///	Alchemy
+/// Alchemy
 ///******************************************************************************************
 instance ItMi_HolyWater (ItemPR_Misc)
 {
@@ -286,7 +288,47 @@ instance ItMi_Quicksilver (ItemPR_Misc)
 	COUNT[5]				= 	value;
 };
 ///******************************************************************************************
-///	Joint
+/// Smith
+///******************************************************************************************
+prototype ItemPR_Swordraw (C_Item)
+{
+	mainflag 				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
+	material 				=	MAT_METAL;
+	value 					=	10;
+	
+	TEXT[1]					= 	"Baza do tworzenia";
+	TEXT[2]					= 	"broni do walki wrêcz.";
+	TEXT[5]					= 	NAME_Value;
+	COUNT[5]				= 	value;
+};
+///******************************************************************************************
+instance ItMiSwordraw (ItemPR_Swordraw)
+{
+	name 					=	"Surowa stal";
+	visual 					=	"ItMiSwordraw.3DS";
+	description				= 	name;
+};
+instance ItMiSwordrawhot (ItemPR_Swordraw)
+{
+	name 					=	"Gor¹ca stal";
+	visual 					=	"ItMiSwordrawhot.3DS";
+	description				= 	name;
+};
+instance ItMiSwordbladehot (ItemPR_Swordraw)
+{
+	name 					=	"Gor¹ce ostrze";
+	visual 					=	"ItMiSwordbladehot.3DS";
+	description				= 	name;
+};
+instance ItMiSwordblade	(ItemPR_Swordraw)
+{
+	name 					=	"Ostrze";
+	visual 					=	"ItMiSwordblade.3DS";
+	description				= 	name;
+};
+///******************************************************************************************
+/// Joints
 ///******************************************************************************************
 prototype ItemPR_Joint (C_Item)
 {
@@ -350,47 +392,7 @@ func void Use_ItMi_SleJoint()
 	Npc_ChangeAttribute (self, ATR_HITPOINTS, -20);
 };
 ///******************************************************************************************
-///	Swordraw & Swordblade
-///******************************************************************************************
-prototype ItemPR_Swordraw (C_Item)
-{
-	mainflag 				=	ITEM_KAT_NONE;
-	flags					=	ITEM_MULTI;
-	material 				=	MAT_METAL;
-	value 					=	10;
-	
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					= 	"broni do walki wrêcz.";
-	TEXT[5]					= 	NAME_Value;
-	COUNT[5]				= 	value;
-};
-///******************************************************************************************
-instance ItMiSwordraw (ItemPR_Swordraw)
-{
-	name 					=	"Surowa stal";
-	visual 					=	"ItMiSwordraw.3DS";
-	description				= 	name;
-};
-instance ItMiSwordrawhot (ItemPR_Swordraw)
-{
-	name 					=	"Gor¹ca stal";
-	visual 					=	"ItMiSwordrawhot.3DS";
-	description				= 	name;
-};
-instance ItMiSwordbladehot (ItemPR_Swordraw)
-{
-	name 					=	"Gor¹ce ostrze";
-	visual 					=	"ItMiSwordbladehot.3DS";
-	description				= 	name;
-};
-instance ItMiSwordblade	(ItemPR_Swordraw)
-{
-	name 					=	"Ostrze";
-	visual 					=	"ItMiSwordblade.3DS";
-	description				= 	name;
-};
-///******************************************************************************************
-///	Tabak
+/// Tabak
 ///******************************************************************************************
 prototype ItemPR_Tabak (C_Item)
 {
@@ -411,7 +413,7 @@ instance ItMi_Tabak (ItemPR_Tabak)
 	value 					=	10;
 	
 	scemeName				=	"FASTUSE";
-	on_state[0]				=	MOBSI_TABAK_S1;
+	on_state[0]				=	MOBSI_MakeTabak_S1;
 	
 	description				=	name;
 	TEXT[1]					= 	"Baza do tworzenia";
@@ -443,7 +445,7 @@ instance ItMi_SwampTabak (ItemPR_Tabak)
 	description = "Tytoñ zio³owy";
 };
 ///******************************************************************************************
-///	Torches
+/// Torches
 ///******************************************************************************************
 prototype ItemPR_Torch (C_Item)
 {
@@ -472,7 +474,7 @@ instance ItLsTorchburned (ItemPR_Torch)
 	visual = "ItLs_TorchBurned_01.3ds";
 };
 ///******************************************************************************************
-///	Mobsis
+/// Production
 ///******************************************************************************************
 instance ItMi_EmptyBottle (ItemPR_Misc)
 {
@@ -518,7 +520,7 @@ instance ItMi_InkPen (ItemPR_Misc)
 	material 				=	MAT_LEATHER;
 	
 	scemeName				=	"FASTUSE";
-	on_state[0]				=	MOBSI_MAKESCROLL_S1;
+	on_state[0]				=	MOBSI_MakeScroll_S1;
 	
 	description				= 	name;
 	TEXT[1]					= 	"U¿ywane do tworzenia";
@@ -561,7 +563,7 @@ instance ItMi_MagicStone (ItemPR_Misc)
 	material 				=	MAT_STONE;
 	
 //	scemeName				=	"FASTUSE";
-//	on_state[0]				=	MOBSI_MAGICSTONE_S1;
+//	on_state[0]				=	MOBSI_MagicStone_S1;
 	
 	description				= 	name;
 	COUNT[5]				= 	value;
@@ -599,7 +601,7 @@ instance ItMi_Wood (ItemPR_Misc)
 	material				=	MAT_WOOD;
 	
 	scemeName				=	"FASTUSE";
-	on_state[0]				=	MOBSI_WOOD_S1;
+	on_state[0]				=	MOBSI_UseWood_S1;
 	
 	description				= 	name;
 	TEXT[1]					= 	"U¿ywane do tworzenia";
@@ -607,7 +609,7 @@ instance ItMi_Wood (ItemPR_Misc)
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
-///	Tools
+/// Tools
 ///******************************************************************************************
 instance ItMi_Alarmhorn (ItemPR_Misc)
 {
@@ -632,9 +634,10 @@ func void Use_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
 	
 	if ((oth.senses & SENSE_HEAR) > 0 && Npc_GetDistToNpc(slf, oth) < oth.senses_range*5)
 	{
-		AI_Wait (oth, 1);
-		B_ResetAll(oth);
-		AI_StandUp(oth);
+		AI_Wait		(oth, 2);
+		B_ResetAll	(oth);
+		AI_StandUp	(oth);
+		
 		if (oth.guild > GIL_SEPERATOR_ORC)
 		{
 			AI_SetWalkmode (oth, NPC_RUN);

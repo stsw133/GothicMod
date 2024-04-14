@@ -10,7 +10,7 @@ instance KDF_500_Pyrokar (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
@@ -20,7 +20,7 @@ instance KDF_500_Pyrokar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal02, 0, ITAR_Mag_A);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal02, 0, ITAR_Amg_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

@@ -3,7 +3,7 @@
 //******************************************************************************************
 
 //instance 		GAMESTART					(C_SFX_DEF)		{file="gamestart.wav";							vol=127;						};
-instance 		GAMESTART					(C_SFX_DEF)		{file="nosound.wav";							vol=127;						};
+instance 		GAMESTART					(C_SFX_DEF)		{file="nosound.wav";							vol=0;							};
 instance 		NEWGAME						(C_SFX_DEF)		{file="nosound.wav";							vol=0;							};
 instance 		OCEAN_WARN					(C_SFX_DEF)		{file="ocean_warn.wav";							vol=127;						};
 instance 		OPEN_PORTAL					(C_SFX_DEF)		{file="openportal.wav";							vol=127;						};
@@ -172,7 +172,7 @@ instance Piss_End     			    	(C_SFX_DEF) {file= "piss_end.wav";			vol = 10;			}
 				instance MFX_Fireball_Invest4	        (C_SFX_DEF) {file= "MFX_Fireball_Invest4.wav";		vol = 120;			};      
 				
 				instance MFX_BlueFireball_Cast			(C_SFX_DEF) {file= "MFX_BlueFireball_Cast.wav";		vol = 80;			};
-                                                                                                                                    
+				
 /* Firestorm*/	instance MFX_Firestorm_Invest	        (C_SFX_DEF) {file= "MFX_Pyrokinesis_Target.wav";	vol = 60;	loop=1;	};  
 				instance MFX_Firestorm_Cast		        (C_SFX_DEF) {file= "MFX_Firestorm_Cast.wav";		vol = 127;			};      
 				instance MFX_Firestorm_Collide	        (C_SFX_DEF) {file= "MFX_Firestorm_Collide.wav";		vol = 127;			}; 

@@ -142,7 +142,7 @@ func void MOD_Broadcast (var C_Npc caster, var func _)
     var MEMINT_HelperClass symb;
     var int reactionFuncID;
     reactionFuncID = MEM_ReadInt(MEM_ReadIntArray(contentSymbolTableAddress, symb - 1) + zCParSymbol_content_offset);
-    _BC_Broadcast(caster, reactionFuncID, 0, 0, 0);
+    _BC_Broadcast(caster, reactionFuncID, false, false, false);
 };
 
 func void MOD_BroadcastEx (var C_Npc caster, var func _, var int includeCaster, var int includeDead, var int forAll)

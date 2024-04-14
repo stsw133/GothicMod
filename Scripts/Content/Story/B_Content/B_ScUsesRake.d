@@ -117,7 +117,7 @@ func void B_SCGetTreasure_S1()
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_VALLEY_RAKEPLACE_03") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[19])
 		{
-			Wld_InsertItem (ItSc_PyrFirerain, "ADW_VALLEY_RAKEPLACE_03");
+			Wld_InsertItem (ItSc_Firerain, "ADW_VALLEY_RAKEPLACE_03");
 			RAKEPLACE[19] = true;
 			Wld_InsertItem (ItSe_GoldPocket50, "ADW_VALLEY_RAKEPLACE_03");
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_VALLEY_RAKEPLACE_03");

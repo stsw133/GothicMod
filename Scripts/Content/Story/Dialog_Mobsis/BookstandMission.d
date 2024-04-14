@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	BookstandMission
+/// BookstandMission
 ///******************************************************************************************
 
 var int MakeRune_FireBolt;
@@ -9,8 +9,7 @@ var int MakeRune_SecretTeleport;
 ///******************************************************************************************
 func void Use_Bookstand_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		if (hero.guild == GIL_NOV)
@@ -59,7 +58,7 @@ var int FinalDragonEquipment_Once;
 ///******************************************************************************************
 func void Use_FINALDRAGONEQUIPMENT_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero); 
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero); 
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;

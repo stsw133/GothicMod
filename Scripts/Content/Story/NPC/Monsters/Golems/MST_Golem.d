@@ -6,6 +6,9 @@ prototype Mst_Default_Golem (C_Npc)
 	guild								=	GIL_GOLEM;
 	aivar[AIV_MM_REAL_ID]				=	ID_GOLEM;
 	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
+	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
@@ -20,7 +23,7 @@ prototype Mst_Default_Golem (C_Npc)
 	aivar[AIV_MM_FollowInWater] 		=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_Packhunter] 			=	false;
-	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
@@ -106,10 +109,12 @@ instance DesertGolem (Mst_Default_Golem)
 };
 instance FireGolem (Mst_Default_Golem)
 {
+	aivar[AIV_MM_REAL_ID]				=	ID_FIREGOLEM;
 	B_SetVisuals_FireGolem();
 };
 instance IceGolem (Mst_Default_Golem)
 {
+	aivar[AIV_MM_REAL_ID]				=	ID_ICEGOLEM;
 	B_SetVisuals_IceGolem();
 };
 instance OreGolem (Mst_Default_Golem)
@@ -125,6 +130,7 @@ instance SteelGolem (Mst_Default_Golem)
 };
 instance SwampGolem (Mst_Default_Golem)
 {
+	aivar[AIV_MM_REAL_ID]				=	ID_SWAMPGOLEM;
 	B_SetVisuals_SwampGolem();
 };
 ///******************************************************************************************

@@ -5,7 +5,9 @@ prototype Mst_Default_GoblinShaman (C_Npc)
 	name								=	"Goblin-szaman";
 	guild								=	GIL_GOBBO;
 	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_SHAMAN;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;

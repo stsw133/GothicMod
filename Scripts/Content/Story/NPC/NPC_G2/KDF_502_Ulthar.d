@@ -9,7 +9,7 @@ instance KDF_502_Ulthar (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_ToughGuy] 				=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
@@ -25,7 +25,7 @@ instance KDF_502_Ulthar (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_Mag_A);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_Normal06, 0, ITAR_Amg_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

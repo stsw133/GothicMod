@@ -11,7 +11,7 @@ instance DMT_1205_Dementor (Npc_Default)
 	
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------

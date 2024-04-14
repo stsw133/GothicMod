@@ -9,7 +9,7 @@ instance KDF_509_Isgaroth (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attribute ------
 	NpcFn_SetAttributesToLevel (self, 60);

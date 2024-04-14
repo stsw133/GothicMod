@@ -9,7 +9,7 @@ instance KDF_501_Serpentes (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller;
@@ -25,7 +25,7 @@ instance KDF_501_Serpentes (Npc_Default)
 	B_CreateAmbientInv(self);
 
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Normal01, 0, ITAR_Mag_A);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_Normal01, 0, ITAR_Amg_M);
 	Mdl_SetModelFatness	(self, -2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
 

@@ -10,7 +10,7 @@ instance KDW_14000_Addon_Saturas_ADW (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_ELE;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
 
 	/// ------ Attributes ------

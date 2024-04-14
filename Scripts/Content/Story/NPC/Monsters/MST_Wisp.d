@@ -4,7 +4,9 @@ prototype Mst_Default_Wisp (C_Npc)
 	/// ------ Monster ------
 	name								=	"Ognik";
 	guild								=	GIL_BLOODFLY;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_MAGIC;

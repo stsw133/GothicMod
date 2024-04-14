@@ -243,7 +243,7 @@ func void DIA_Ehnim_STREIT5_Attack()
 	AI_StopProcessInfos (self);
 
 	DIA_Ehnim_STREIT5_noPerm = TRUE;
-	other.aivar[AIV_INVINCIBLE] = FALSE;
+	other.aivar[AIV_Invisible] = false;
 	B_Attack (self, Egill, AR_NONE, 0);
 	
 	B_GivePlayerExp(50);
@@ -399,7 +399,7 @@ func void DIA_Ehnim_MoleRatFett_was_Fett_habenwill_ja ()
 					{
 						AI_Output			(self, other, "DIA_Ehnim_MoleRatFett_was_Fett_habenwill_ja_12_04"); //Pewnikiem to sprawka mojego brata. Prawdziwy z niego drañ.
 						AI_StopProcessInfos (self);
-						other.aivar[AIV_INVINCIBLE] = FALSE;
+						other.aivar[AIV_Invisible] = false;
 						B_Attack (self, Egill, AR_NONE, 0);
 					};
 			};

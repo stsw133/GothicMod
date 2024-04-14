@@ -7,14 +7,14 @@ var int zsTalkBugfix;
 ///******************************************************************************************
 func void ZS_Talk()
 {
-	if (other.aivar[AIV_INVINCIBLE])
+	if (other.aivar[AIV_Invisible])
 	{
 		return;
 	};
 	
 	/// FUNC
-	self.aivar[AIV_INVINCIBLE] = true;
-	other.aivar[AIV_INVINCIBLE] = true;
+	self.aivar[AIV_Invisible] = true;
+	other.aivar[AIV_Invisible] = true;
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	{
@@ -124,8 +124,8 @@ func int ZS_Talk_Loop()
    	if (InfoManager_HasFinished())
    	&& (zsTalkBugfix)
    	{
-		self.aivar[AIV_INVINCIBLE] = false;
-		other.aivar[AIV_INVINCIBLE] = false;
+		self.aivar[AIV_Invisible] = false;
+		other.aivar[AIV_Invisible] = false;
 		self.aivar[AIV_NpcStartedTalk] = false;
 		self.aivar[AIV_TalkedToPlayer] = true;
 		
@@ -143,6 +143,12 @@ func int ZS_Talk_Loop()
   	}
   	else
    	{
+		if (MEM_InformationMan.IsWaitingForOpen && MEM_InformationMan.IsWaitingForEnd)
+		{
+			MEM_InformationMan.IsDone = true;
+			AI_ProcessInfos(self);
+		};
+		
    		zsTalkBugfix = true;
    		return LOOP_CONTINUE;
    	};

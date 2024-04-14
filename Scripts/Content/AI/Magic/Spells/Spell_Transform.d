@@ -1,16 +1,18 @@
 ///******************************************************************************************
-///	SPL_Transform
+/// SPL_Transform
 ///******************************************************************************************
 
-const int SPL_Cost_Transform			=	0;	//50
+const int SPL_Cost_Transform			=	0;
 
 ///******************************************************************************************
 instance Spell_Transform (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	spelltype 							=	SPELL_NEUTRAL;
-	targetCollectAlgo					=	TARGET_COLLECT_NONE;
 	canTurnDuringInvest					=	false;
+	targetCollectAlgo					=	TARGET_COLLECT_NONE;
+	targetCollectRange					=	0;
+	targetCollectAzi					=	0;
+	targetCollectElev					=	0;
 };
 
 func int Spell_Logic_Transform (var int manaInvested)
@@ -82,5 +84,5 @@ func int Spell_Logic_Transform (var int manaInvested)
 
 func void Spell_Cast_Transform()
 {
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_Transform);
 };

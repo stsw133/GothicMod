@@ -3,12 +3,12 @@
 ///******************************************************************************************
 
 const int BeliarWeaponSpecialDamage = 100;
-
 var int RavenBlitz;
+
 var int SPL_IsActive_PalBless;
 
 ///******************************************************************************************
-func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth)
+func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 {
 	/// hero
 	if (Npc_IsPlayer(slf))
@@ -18,7 +18,7 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth)
 		
 		/// BeliarWeapon
 		if (C_ScHasReadiedBeliarsWeapon())
-		&& (Hlp_Random(100) <= BeliarDamageChance)
+		&& (Hlp_Random(100) < BeliarDamageChance)
 		{
 			if (oth.aivar[AIV_MM_REAL_ID] == ID_DRAGON_UNDEAD)
 			{
@@ -58,7 +58,7 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth)
 		{
 			if (slf.attribute[ATR_MANA] >= SPL_Cost_PalBless)
 			{
-				Npc_ChangeAttribute (slf, ATR_MANA, -SPL_Cost_PalBless);	/// -5 many na atak
+				Npc_ChangeAttribute (slf, ATR_MANA, -SPL_Cost_PalBless);
 				Wld_PlayEffect ("spellFX_PALHOLYBOLT_COLLIDE", oth, oth, 0, 0, 0, false);
 				
 				if		(Hlp_IsItem(wpn, ItMw_1H_Blessed_03) || Hlp_IsItem(wpn, ItMw_2H_Blessed_03))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*15/100);	}
@@ -75,12 +75,37 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth)
 		};
 	};
 	
+	/// SPL_PalAura
+	if (mAuraPalTime > 0 && (Npc_IsPlayer(slf) || Npc_IsPlayer(oth)))
+	{
+		mAuraPalPoints += dealtDmg;
+		if (mAuraPalPoints >= 1000 || hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX]/4)
+		{
+			if (mAuraPalPoints >= 1000) { mAuraPalPoints = 1000; };
+			
+			if		(mAuraPalType == 1) { Npc_SetShieldPoints (hero, 1, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnMP", hero, hero, 0, 0, 0, false); }
+			else if	(mAuraPalType == 2) { Npc_SetShieldPoints (hero, 0, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnSTR", hero, hero, 0, 0, 0, false); }
+			else if	(mAuraPalType == 3) { Npc_ChangeAttribute (hero, ATR_HITPOINTS, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnPOW", hero, hero, 0, 0, 0, false); };
+			
+			mAuraPalType = 0;
+			mAuraPalTime = 0;
+		};
+	};
+	
+	/// SPL_Stealth
+	if (slf.aivar[AIV_Invisible])
+	{
+		MOD_SetStealth(slf, 0);
+	};
+	
 	/// SPL_NecAura
+	/*
 	if (mAuraType == MAGIC_NEC && mAuraTime > 0 && Npc_GetDistToNpc(oth, slf) < 1000 && (Npc_IsPlayer(oth) || oth.aivar[AIV_PartyMember]))
 	{
 		B_MagicHurtNpc (oth, slf, (SPL_Prot_NecAura + hero.attribute[ATR_POWER]*SPL_Scaling_NecAura/100) / 2);
 		Wld_PlayEffect ("spellFX_NecAura_Origin", hero, slf, 0, 0, 0, false);
 	};
+	*/
 	
 	/// OTHER: Raven
 	if (Hlp_GetInstanceID(oth) == Hlp_GetInstanceID(Raven))
@@ -95,7 +120,7 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth)
 		}
 		else if (RavenBlitz >= 3) 
 		{
-			if (Hlp_Random(100) <= 50)
+			if (Hlp_Random(100) < 50)
 			{
 				RavenBlitz = 0;
 			};

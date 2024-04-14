@@ -1,40 +1,23 @@
 ///******************************************************************************************
-///	SPL_WaterFist
+/// SPL_WaterFist
 ///******************************************************************************************
 
-const int SPL_Cost_WaterFist			=	80;	//25
-const int SPL_Damage_WaterFist			=	80;	//125
-const int SPL_Scaling_WaterFist			=	150;
+const int SPL_Cost_WaterFist			=	100;
+const int SPL_Damage_WaterFist			=	100;
 
 ///******************************************************************************************
 instance Spell_WaterFist (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	damage_per_level					=	SPL_Damage_WaterFist;
-	damageType							=	DAM_MAGIC;
+	damageType							=	DAM_FLY;
 };
 
 func int Spell_Logic_WaterFist (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_WaterFist/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_WaterFist)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_WaterFist, manaInvested);
 };
 
 func void Spell_Cast_WaterFist()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_WaterFist/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_WaterFist;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_WaterFist);
 };

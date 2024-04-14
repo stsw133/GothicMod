@@ -1,7 +1,9 @@
 ///******************************************************************************************
+/// B_StopMagicShrink
+///******************************************************************************************
 func void B_StopMagicShrink()
 {
- 	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_AssessMagic);
+	Npc_PercEnable	(self, PERC_ASSESSMAGIC, B_AssessMagic);
 	Npc_ClearAIQueue(self);
 	AI_StandUp		(self);
 	
@@ -18,7 +20,7 @@ func void B_StopMagicShrink()
 };		
 
 ///******************************************************************************************
-///	ZS_MagicShrink
+/// ZS_MagicShrink
 ///******************************************************************************************
 func int ZS_MagicShrink()
 {

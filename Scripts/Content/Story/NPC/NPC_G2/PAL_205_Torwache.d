@@ -9,7 +9,7 @@ instance Pal_205_Torwache (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_Ambient;
 
 	/// ------ Attributes ------

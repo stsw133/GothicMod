@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	SPL_NightToDay
+/// SPL_NightToDay
 ///******************************************************************************************
 
 const int SPL_Cost_NightToDay			=	50;
@@ -17,10 +17,24 @@ instance Spell_NightToDay (C_Spell_Proto)
 	targetCollectElev					=	0;
 };
 
+func void Spell_Effect_NightToDay()
+{
+	if (SPL_IsActive_NightToDay)
+	{
+		if (Wld_IsTime(20,00, 08,00))
+		{
+			B_ScaleTime(20000);
+		}
+		else
+		{
+			SPL_IsActive_NightToDay = false;
+		};
+	};
+};
+
 func int Spell_Logic_NightToDay (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_NightToDay/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_NightToDay)
+	if (B_SpellLogic(self, default, SPL_Cost_NightToDay, manaInvested) == SPL_SENDCAST)
 	{
 		if (!SPL_IsActive_NightToDay && Wld_IsTime(20,00, 08,00))
 		{
@@ -37,16 +51,11 @@ func int Spell_Logic_NightToDay (var int manaInvested)
 
 func void Spell_Cast_NightToDay()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_NightToDay/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_NightToDay;
-	};
+	B_SpellCast (self, default, SPL_Cost_NightToDay);
 	
 	SPL_IsActive_NightToDay = true;
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	if (!FF_Active(Spell_Effect_NightToDay))
+	{
+		FF_ApplyOnceExt (Spell_Effect_NightToDay, 5, 1000);
+	};
 };

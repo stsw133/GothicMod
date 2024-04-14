@@ -7,22 +7,22 @@ prototype ItemPR_AnimalTrophy (C_Item)
 	TEXT[5]					= 	NAME_Value;
 };
 ///******************************************************************************************
-///	Furs
+/// Furs
 ///******************************************************************************************
-instance ItAt_HareFur (ItemPR_AnimalTrophy)
-{
-	name 					=	"Zajêcza skóra";
-	value 					=	5;
-	visual 					=	"ItAt_HareFur.3DS";
-	
-	description				= 	name;
-	COUNT[5]				=	value;
-};
 instance ItAt_GoatFur (ItemPR_AnimalTrophy)
 {
 	name 					=	"Kozia skóra";
 	value 					=	5;
 	visual 					=	"ItAt_GoatFur.3DS";
+	
+	description				= 	name;
+	COUNT[5]				=	value;
+};
+instance ItAt_HareFur (ItemPR_AnimalTrophy)
+{
+	name 					=	"Zajêcza skóra";
+	value 					=	5;
+	visual 					=	"ItAt_HareFur.3DS";
 	
 	description				= 	name;
 	COUNT[5]				=	value;
@@ -205,7 +205,7 @@ instance ItAt_Wing (ItemPR_AnimalTrophy)
 instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 {
 	name 					=	"Pióra harpii";
-	value 					=	15;
+	value 					=	25;
 	visual 					=	"ItAt_HarpyFeathers.3DS";
 	
 	description				= 	name;
@@ -541,7 +541,7 @@ instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
 {
 	name 					=	"£ój kretoszczura";
-	value 					=	5;
+	value 					=	15;
 	visual 					=	"ItMi_MoleratLubric.3DS";
 	
 	description				= 	name;
@@ -552,8 +552,8 @@ instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
 ///******************************************************************************************
 instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 {
-	name 					=	"Koœæ szkieletu";
-	value 					=	5;
+	name 					=	"Koœæ nieumar³ego";
+	value 					=	15;
 	visual 					=	"ItAt_SkeletonBone.3DS";
 	material 				=	MAT_STONE;
 	
@@ -562,8 +562,8 @@ instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 };
 instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 {
-	name 					=	"Czaszka";
-	value 					=	10;
+	name 					=	"Czaszka szkieleta-lorda";
+	value 					=	30;
 	visual 					=	"DT_SKELETON_V01_HEAD.3ds";
 	material 				=	MAT_STONE;
 	

@@ -9,19 +9,21 @@ func void STARTUP_GLOBAL()
 	LeGo_Init(LeGo_All);
 	ConsoleCommands();
 	
+	/// MOD
+	seed = Hlp_Random(999999999);
 	selectedHero = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHero"));
 	DIFF_Select(STR_ToInt(MEM_GetGothOpt("MOD", "difficulty")));
 	movieMode = STR_ToInt(MEM_GetGothOpt("MOD", "movieMode"));
 	
-	if (!movieMode)
-	{
-		QuickSlot_Init();
-	};
+	QuickSlot_Init();
 };
 
 func void INIT_GLOBAL()
 {
 	Game_InitGerman();
+	
+	/// MOD: loading textures
+	MOD_RandomLoadingTexture(default);
 	
 	/// MOD: shortcuts
 	//MemoKey1 = -1;
@@ -40,11 +42,13 @@ func void INIT_GLOBAL()
 	/// MOD: frame functions
 	FF_ApplyOnce(MOD_Damage);
 	
-	FF_ApplyOnce(Loop_healthBar);
-	FF_ApplyOnce(Loop_manaBar);
+	FF_ApplyOnce(Loop_hpBar);
+	FF_ApplyOnce(Loop_shieldPhBar);
+	FF_ApplyOnce(Loop_shieldMgBar);
+	FF_ApplyOnce(Loop_mpBar);
 	FF_ApplyOnce(Loop_auraBar);
-	FF_ApplyOnce(Loop_staminaBar);
-	FF_ApplyOnce(Loop_expBar);
+	FF_ApplyOnce(Loop_spBar);
+	FF_ApplyOnce(Loop_xpBar);
 	
 	FF_ApplyOnceExt (TT_5000, 5000, -1);
 	FF_ApplyOnceExt (TT_1000, 1000, -1);
@@ -367,7 +371,7 @@ func void STARTUP_ADDON_PART_CANYON_01 ()
 	Wld_InsertNpc 	(Minecrawler, 	"ADW_CANYON_MINE1_10");
 	Wld_InsertNpc 	(Minecrawler, 	"ADW_CANYON_MINE1_05");
 
-	Wld_InsertItem  (ItPl_GraveMoss,"FP_ITEM_CANYON_UNIQUE");  
+	Wld_InsertItem  (ItPl_Weak_Herb,"FP_ITEM_CANYON_UNIQUE");  
 	
 };
 func void INIT_SUB_ADDON_PART_CANYON_01 ()
@@ -506,7 +510,7 @@ FUNC VOID STARTUP_ADDON_PART_BANDITSCAMP_01()
 	
 	Wld_InsertItem (ItRi_MP_01,"FP_ITEM_BANDITSCAMP_03"); //TOLLES ITEM !!!
 	
-	Wld_InsertItem (ItSc_EleFreeze,"FP_ITEM_BANDITSCAMP_04"); 
+	Wld_InsertItem (ItSc_IceCube,"FP_ITEM_BANDITSCAMP_04"); 
 	Wld_InsertItem (ItPl_Speed_Herb_01,"FP_ITEM_BANDITSCAMP_05"); 
 	Wld_InsertItem (ItPo_Health_03,"FP_ITEM_BANDITSCAMP_06"); 
 	Wld_InsertItem (ItPo_Mana_03,"FP_ITEM_BANDITSCAMP_07"); 
@@ -956,7 +960,7 @@ FUNC VOID STARTUP_ADDON_PART_PIRATESCAMP_01 ()
 	Wld_InsertItem (ItMi_Shell,"FP_ITEMSPAWN_SHALLOWWATER_30");	
 	
 	
-	Wld_InsertItem (ItAm_Pirate_01,"FP_ITEMSPAWN_LONEBEACH_02");	//-->Feuerwaranstrand in der Höhle
+	Wld_InsertItem (ItAm_Monk_01,"FP_ITEMSPAWN_LONEBEACH_02");	//-->Feuerwaranstrand in der Höhle
 /*
 
 	//-------- Sonstige Item FP ------------
@@ -1130,7 +1134,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	
 	Wld_InsertNpc (Stoneguardian_NailedValleyShowcase_01,"ADW_VALLEY_SHOWCASE1_02");
 	Wld_InsertNpc (Stoneguardian_NailedValleyShowcase_02,"ADW_VALLEY_SHOWCASE1_03");
-	Wld_InsertItem (ItPl_GraveMoss,"FP_ITEM_VALLEY_02");
+	Wld_InsertItem (ItPl_Weak_Herb,"FP_ITEM_VALLEY_02");
 	
 	//Qurahodrons Grab
 	Wld_InsertItem (ItRi_STR_01,"FP_ITEM_VALLEY_12");
@@ -1429,7 +1433,7 @@ func void STARTUP_DEMONTOWER ()
 
 	Wld_InsertNpc				(Demon,"DT_E2_06");
 
-	Wld_InsertItem	(ItPl_GraveMoss,"FP_ITEM_XARDASALTERTURM_01");
+	Wld_InsertItem	(ItPl_Weak_Herb,"FP_ITEM_XARDASALTERTURM_01");
 	Wld_InsertNpc				(Skeleton_Warrior,"DT_E3_07");
 	Wld_InsertNpc				(Skeleton_Warrior,"DT_E3_04");
 
@@ -2466,7 +2470,7 @@ func void STARTUP_SURFACE ()
 	
 	Wld_InsertNpc	(Draconian,	"CASTLE_28");
 	
-	Wld_InsertItem	(ItPl_GraveMoss,"OW_ITEM_FIREHORT_01");
+	Wld_InsertItem	(ItPl_Weak_Herb,"OW_ITEM_FIREHORT_01");
 
 	
 		//-------Beim FireDragon--------//
@@ -3616,7 +3620,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc 	(Crypt_Skeleton_Room_02, "EVT_CRYPT_ROOM_02_SPAWNMAIN");
 	Wld_InsertNpc 	(Crypt_Skeleton_Room_03, "EVT_CRYPT_ROOM_03_SPAWNMAIN");
 	
- 	Wld_InsertItem 	(ItPl_GraveMoss, "EVT_CRYPT_ROOM_01_SPAWN_03");
+ 	Wld_InsertItem 	(ItPl_Weak_Herb, "EVT_CRYPT_ROOM_01_SPAWN_03");
  	Wld_InsertRandomStoneplate ("EVT_CRYPT_ROOM_FINAL_SPAWN_01");
  	Wld_InsertRandomStoneplate ("EVT_CRYPT_ROOM_02_SPAWN_05");
 	
@@ -4425,7 +4429,7 @@ FUNC VOID STARTUP_NewWorld_Part_Forest_01 ()
     //Stoneplates
     Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ITEM_FOREST_STPLATE_01");
     Wld_InsertRandomStoneplate ("FP_ITEM_FOREST_STPLATE_02");
-    Wld_InsertItem 	(ItPl_GraveMoss, "FP_ITEM_FOREST_STPLATE_04");
+    Wld_InsertItem 	(ItPl_Weak_Herb, "FP_ITEM_FOREST_STPLATE_04");
     Wld_InsertRandomStoneplate ("FP_ITEM_FOREST_STPLATE_06");
 };
 
@@ -4476,7 +4480,7 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 
 	//----- Schwarzer Troll -----
 	Wld_InsertNpc 	(Troll_Black, 			"NW_TROLLAREA_PATH_84");
-	Wld_InsertItem	(ItPl_SunHerb, "FP_NW_ITEM_TROLL_05");
+	Wld_InsertItem	(ItPl_Fire_Herb_01, "FP_NW_ITEM_TROLL_05");
 	Wld_InsertRandomStoneplate ("FP_NW_ITEM_TROLL_01");
 	Wld_InsertNpc 	(BAU_982_Grimbald, 		"TROLL");
 

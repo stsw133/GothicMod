@@ -1,12 +1,12 @@
 ///******************************************************************************************
-///	PC_Sleep
+/// PC_Sleep
 ///******************************************************************************************
 func void SLEEPABIT_S1()
 {
 	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
 		Ai_ProcessInfos(her);
 		
@@ -22,7 +22,7 @@ func void PC_Sleep (var int t)
 	AI_StopProcessInfos(self);
 	
 	PLAYER_MOBSI_PRODUCTION = MOBSI_NONE;
-	self.aivar[AIV_INVINCIBLE] = false;
+	self.aivar[AIV_Invisible] = false;
 	
 	if (Wld_IsTime(00,00,t,00))
 	{
@@ -75,7 +75,7 @@ func void PC_NoSleep_Info()
 {
 	AI_StopProcessInfos(self);
  	Wld_StopEffect("DEMENTOR_FX");
-	self.aivar[AIV_INVINCIBLE] = false;
+	self.aivar[AIV_Invisible] = false;
 	PLAYER_MOBSI_PRODUCTION = MOBSI_NONE;
 };
 ///******************************************************************************************

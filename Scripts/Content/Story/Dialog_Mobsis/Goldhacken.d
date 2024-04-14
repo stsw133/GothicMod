@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	MOBSI_GOLDHACKEN
+/// MOBSI_GOLDHACKEN
 ///******************************************************************************************
 
 var int GoldMob_01_Amount; const int GoldMob_01_AmounT_MAX = 5;
@@ -134,13 +134,13 @@ func void Goldhacken_S1()
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_GOLDHACKEN;
 		Ai_ProcessInfos(her);
 	};
 };
 ///******************************************************************************************
-///	Goldhacken Dialog abbrechen
+/// Goldhacken Dialog abbrechen
 ///******************************************************************************************
 
 var int GoldCounter;
@@ -170,7 +170,7 @@ func void PC_Goldhacken_End_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Goldhacken
+/// Goldhacken
 ///******************************************************************************************
 instance PC_Goldhacken_Addon_Hour (C_Info)
 {
@@ -248,7 +248,7 @@ func void PC_Goldhacken_Addon_Hour_Info()
 	};
 };
 ///******************************************************************************************
-///	Goldhacken Trümmerschlag
+/// Goldhacken Trümmerschlag
 ///******************************************************************************************
 instance PC_Goldhacken_Addon_TSchlag (C_Info)
 {
@@ -300,7 +300,7 @@ func void PC_Goldhacken_Addon_TSchlag_Info()
 	Truemmer_Count = 0;
 };
 ///******************************************************************************************
-///	Goldhacken Chance
+/// Goldhacken Chance
 ///******************************************************************************************
 instance PC_Goldhacken_Addon_Chance (C_Info)
 {

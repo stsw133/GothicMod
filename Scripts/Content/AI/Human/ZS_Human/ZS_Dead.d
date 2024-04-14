@@ -18,15 +18,18 @@ func void ZS_Dead()
 	B_DeletePetzCrime(self);
 	self.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
 	self.aivar[AIV_TAPOSITION] = false;
-	
-	/// MOD
-	if (self.aivar[AIV_DebuffID] == SPL_NecCurse && (Npc_IsPlayer(other) || other.aivar[AIV_PARTYMEMBER]))	{	Spell_Summon_NecCurse(other, self);	};
-	if (self.aivar[AIV_PartyMember] && self.guild == GIL_SUMMONED && NPC_NecSkeleton_Total > 0)				{	NPC_NecSkeleton_Total -= 1;			};
 };
 
 ///******************************************************************************************
 func int ZS_Dead_loop()
 {
+	/// MOD (bugfix)
+	if (self.attribute[ATR_HITPOINTS] > 0)
+	{
+		return LOOP_END;
+	};
+	
+	/// ...
 	if (!self.aivar[AIV_TAPOSITION])
 	{
 		B_DragonKillCounter(self);

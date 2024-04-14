@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_StopMagicSleep
+/// B_StopMagicSleep
 ///******************************************************************************************
 
 const int SPL_Time_Fear					=	5;
@@ -13,7 +13,7 @@ func int B_StopMagicFlee()
 };
 
 ///******************************************************************************************
-///	ZS_MagicSleep
+/// ZS_MagicSleep
 ///******************************************************************************************
 func void ZS_MagicFlee()
 {
@@ -21,8 +21,6 @@ func void ZS_MagicFlee()
 	{
 		AI_ContinueRoutine(self);
 	};
-
-	var int randy;
 	
 	Npc_PercEnable (self, PERC_ASSESSDAMAGE, B_StopMagicFlee);
 	Npc_PercEnable (self, PERC_ASSESSMAGIC, B_AssessMagic);
@@ -48,7 +46,7 @@ func void ZS_MagicFlee()
 	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	{
-		randy = Hlp_Random(3);
+		var int randy; randy = Hlp_Random(3);
 		if (randy == 0)	{	AI_PlayAniBS (self,	"T_STAND_2_FEAR_VICTIM1", BS_STAND);	};
 		if (randy == 1)	{	AI_PlayAniBS (self,	"T_STAND_2_FEAR_VICTIM2", BS_STAND);	};
 		if (randy == 2)	{	AI_PlayAniBS (self,	"T_STAND_2_FEAR_VICTIM3", BS_STAND);	};

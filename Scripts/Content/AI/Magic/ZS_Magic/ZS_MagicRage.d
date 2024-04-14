@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_StopMagicRage
+/// B_StopMagicRage
 ///******************************************************************************************
 func int B_StopMagicRage()
 {
@@ -7,7 +7,7 @@ func int B_StopMagicRage()
 };		
 
 ///******************************************************************************************
-///	ZS_MagicRage
+/// ZS_MagicRage
 ///******************************************************************************************
 func void ZS_MagicRage()
 {
@@ -41,16 +41,11 @@ func void ZS_MagicRage()
 	
 	B_ClearPerceptions(self);
     Wld_PlayEffect ("spellFX_Rage_TARGET", self, self, 0, 0, 0, false);
-	/*
+	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	{
-		AI_Wait		(self, 0.5);
-        AI_TurnToNpc(self, hero);
-        AI_Wait		(self, 0.5);
-        AI_PlayAni	(self, "T_GREETNOV");
-        AI_Wait		(self, 0.3);
+		AI_PlayAni (self, "T_PSI_VICTIM");
 	};
-	*/
 };
 
 func int ZS_MagicRage_Loop()
@@ -96,11 +91,10 @@ func void ZS_MagicRage_End()
         AI_PlayAni		(self, "T_DONTKNOW");
         AI_Wait			(self, 0.5);
     };
-	/*
+	
     if (self.attribute[ATR_HITPOINTS] < (self.attribute[ATR_HITPOINTS_MAX] / 2))
     {
         AI_StartState(self, ZS_HealSelf, 0, "");
         return;
     };
-	*/
 };

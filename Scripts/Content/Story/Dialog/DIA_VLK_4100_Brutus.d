@@ -543,8 +543,8 @@ func void DIA_Brutus_PERM4_Info ()
 			
 			Npc_SetTarget 		(self, other);
 			
-			self.aivar[AIV_INVINCIBLE] = FALSE; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
-			other.aivar[AIV_INVINCIBLE] = FALSE;
+			self.aivar[AIV_Invisible] = false; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
+			other.aivar[AIV_Invisible] = false;
 			
 			AI_StartState 		(self, ZS_Flee, 0, "");
 		 };		
@@ -592,9 +592,9 @@ func void DIA_Brutus_BESSEN_Info ()
 		
 	Npc_SetTarget 		(self, other);
 	
-	self.aivar[AIV_INVINCIBLE] = FALSE; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
-	other.aivar[AIV_INVINCIBLE] = FALSE;
-			
+	self.aivar[AIV_Invisible] = false; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
+	other.aivar[AIV_Invisible] = false;
+	
 	AI_StartState 		(self, ZS_Flee, 0, "");	
 	};
 };

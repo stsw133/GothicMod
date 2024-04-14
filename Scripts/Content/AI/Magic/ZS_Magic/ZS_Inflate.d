@@ -38,7 +38,7 @@ func int ZS_Inflate()
 		AI_PlayAniBS (self, "T_STAND_2_INFLATE_VICTIM", BS_UNCONSCIOUS);
 	};
 	
-	self.aivar[AIV_InflateStateTime] = 0;
+	self.aivar[AIV_MagicStateTime] = 0;
 };
 
 func int ZS_Inflate_Loop()
@@ -49,7 +49,7 @@ func int ZS_Inflate_Loop()
 		return LOOP_END;
 	};
 	
-	if (Npc_GetStateTime(self) != self.aivar[AIV_InflateStateTime])
+	if (Npc_GetStateTime(self) != self.aivar[AIV_MagicStateTime])
 	{
 		if		(Npc_GetStateTime(self) == 1)	{  Mdl_SetModelFatness (self, 1);	}
 		else if (Npc_GetStateTime(self) == 2)	{  Mdl_SetModelFatness (self, 3);	}
@@ -83,7 +83,7 @@ func int ZS_Inflate_Loop()
 		else if (Npc_GetStateTime(self) == 18)	{  Mdl_SetModelFatness (self, 1);	}
 		else if (Npc_GetStateTime(self) == 19)	{  Mdl_SetModelFatness (self, 1);	};
 		
-		self.aivar[AIV_InflateStateTime] = Npc_GetStateTime(self);
+		self.aivar[AIV_MagicStateTime] = Npc_GetStateTime(self);
 		
 		if (self.attribute[ATR_HITPOINTS] > SPL_Damage_Inflate)
 		{

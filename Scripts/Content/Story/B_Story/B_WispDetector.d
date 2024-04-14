@@ -99,7 +99,7 @@ func int B_MM_WispDetect()
 		if (Npc_GetDistToNpc(self, hero) < 2000)
 		&& (self.aivar[AIV_TAPOSITION] == ISINPOS)
 		{
-			self.aivar[AIV_SummonTime] = 0;
+			self.aivar[AIV_SummonTime] = MONSTER_SUMMON_TIME;	/// changed!!!
 			B_WispDetectedItem();
 			return LOOP_END;
 		}

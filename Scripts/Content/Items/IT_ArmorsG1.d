@@ -33,7 +33,7 @@ func void SetItArAttributes (var C_Item itm, var int sr, var int pr, var int fr,
 	itm.visual_skin 			=	skin;
 };
 ///******************************************************************************************
-///	OldCamp armors
+/// OldCamp
 ///******************************************************************************************
 instance ITAR_STT_L (ItemPR_Armor)
 {
@@ -98,7 +98,7 @@ instance ITAR_EBR_G (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	OldCamp armors (BABE)
+/// OldCamp (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_STT_L (ItemPR_Armor)
 {
@@ -140,7 +140,7 @@ instance ITAR_Babe_GRD_H (ItemPR_Armor)
 	description		=	"Ciê¿ki pancerz stra¿nika";
 };
 ///******************************************************************************************
-///	NewCamp armors
+/// NewCamp
 ///******************************************************************************************
 instance ITAR_ORG_L (ItemPR_Armor)
 {
@@ -162,7 +162,7 @@ instance ITAR_ORG_H (ItemPR_Armor)
 /// sld armors in IT_ArmorsG2 file
 
 ///******************************************************************************************
-///	NewCamp armors (BABE)
+/// NewCamp (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_ORG_L (ItemPR_Armor)
 {
@@ -184,7 +184,7 @@ instance ITAR_Babe_ORG_H (ItemPR_Armor)
 /// sld armors in IT_ArmorsG2 file
 
 ///******************************************************************************************
-///	PsiCamp armors
+/// PsiCamp
 ///******************************************************************************************
 instance ITAR_SLN_L (ItemPR_Armor)
 {
@@ -205,7 +205,7 @@ instance ITAR_SLN_H (ItemPR_Armor)
 	name 			=	"Zbroja nowicjusza";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLN_H.asc";
-	SetItArAttributes (self, 35,35,0,10,   0);	/// 8 level
+	SetItArAttributes (self, 30,30,10,10,   0);	/// 8 level
 };
 ///******************************************************************************************
 instance ITAR_SLT_L (ItemPR_Armor)
@@ -238,17 +238,17 @@ instance ITAR_SLG_L (ItemPR_Armor)
 	name 			=	"Szata Guru";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLG_L.asc";
-	SetItArAttributes (self, 50,50,25,25,   0);	/// 15 level
+	SetItArAttributes (self, 50,50,30,30,   0);	/// 16 level
 };
 instance ITAR_SLG_H (ItemPR_Armor)
 {
 	name 			=	"Zdobiona szata Guru";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_SLG_H.asc";
-	SetItArAttributes (self, 70,70,35,35,   0);	/// 21 level
+	SetItArAttributes (self, 75,75,45,45,   0);	/// 24 level
 };
 ///******************************************************************************************
-///	PsiCamp armors (BABE)
+/// PsiCamp (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_SLN_L (ItemPR_Armor)
 {
@@ -269,7 +269,7 @@ instance ITAR_Babe_SLN_H (ItemPR_Armor)
 	name 			=	"Zbroja nowicjusza";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_Babe_SLN_H.asc";
-	SetItArAttributes (self, 35,35,0,10,   0);	/// 8 level
+	SetItArAttributes (self, 30,30,10,10,   0);	/// 8 level
 };
 ///******************************************************************************************
 instance ITAR_Babe_SLT_L (ItemPR_Armor)
@@ -302,17 +302,17 @@ instance ITAR_Babe_SLG_L (ItemPR_Armor)
 	name 			=	"Szata Guru";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_Babe_SLG_L.asc";
-	SetItArAttributes (self, 50,50,25,25,   0);	/// 15 level
+	SetItArAttributes (self, 50,50,30,30,   0);	/// 16 level
 };
 instance ITAR_Babe_SLG_H (ItemPR_Armor)
 {
 	name 			=	"Zdobiona szata Guru";
 	visual 			=	"ItAr_Lester.3ds";
 	visual_change 	=	"Armor_Babe_SLG_H.asc";
-	SetItArAttributes (self, 70,70,35,35,   0);	/// 21 level
+	SetItArAttributes (self, 75,75,45,45,   0);	/// 24 level
 };
 ///******************************************************************************************
-///	Best armors
+/// Magic armors
 ///******************************************************************************************
 instance ITAR_ORE_M (ItemPR_Armor)
 {

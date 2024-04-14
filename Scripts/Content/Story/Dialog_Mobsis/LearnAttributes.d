@@ -1,11 +1,11 @@
 ///******************************************************************************************
-///	MOD_LearnAttributes
+/// MOD_LearnAttributes
 ///******************************************************************************************
 func void MOBSI_LearnAttributes_S1()
 {
 	//if (C_BodyStateContains(hero, BS_STAND) || C_BodyStateContains(hero, BS_ITEMINTERACT))
 	//{
-		hero.aivar[AIV_INVINCIBLE] = true;
+	//	hero.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_LearnAttributes;
 		AI_ProcessInfos(hero);
 		
@@ -13,7 +13,7 @@ func void MOBSI_LearnAttributes_S1()
 		AI_PlayAni (hero, "T_INNOS_S0_2_S1");
 	//};
 };
-func void MOBSI_LearnAttributes_Effect()
+func void MOBSI_LearnAttributes_Effect(var int attribute)
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayIdol)
 	{
@@ -21,8 +21,13 @@ func void MOBSI_LearnAttributes_Effect()
 	}
 	else
 	{
-		Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
-		Snd_Play("MFX_Heal_Cast");
+		if		(attribute == ATR_HITPOINTS_MAX)	{	Wld_PlayEffect ("spellFX_LearnHP", hero, hero, 0, 0, 0, false);		}
+		else if	(attribute == ATR_MANA_MAX)			{	Wld_PlayEffect ("spellFX_LearnMP", hero, hero, 0, 0, 0, false);		}
+		else if	(attribute == AIV_STAMINA_MAX)		{	Wld_PlayEffect ("spellFX_LearnSP", hero, hero, 0, 0, 0, false);		}
+		else if	(attribute == ATR_STRENGTH)			{	Wld_PlayEffect ("spellFX_LearnSTR", hero, hero, 0, 0, 0, false);	}
+		else if	(attribute == ATR_DEXTERITY)		{	Wld_PlayEffect ("spellFX_LearnDEX", hero, hero, 0, 0, 0, false);	}
+		else if	(attribute == ATR_POWER)			{	Wld_PlayEffect ("spellFX_LearnPOW", hero, hero, 0, 0, 0, false);	}
+		else										{	Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);	};
 	};
 };
 ///******************************************************************************************
@@ -98,10 +103,30 @@ func void PC_LearnAttributes_TEACH_MP_Info()
 	Info_AddChoice (PC_LearnAttributes_TEACH_MP, B_BuildLearnString(ConcatStrings(PRINT_LearnMP, IntToString(1)), B_GetLearnCostAttribute(hero, ATR_MANA_MAX)*1), PC_LearnAttributes_TEACH_MP_1);
 };
 ///******************************************************************************************
-instance PC_LearnAttributes_TEACH_STR (C_Info)
+instance PC_LearnAttributes_TEACH_SP (C_Info)
 {
 	npc		 							=	PC_Hero;
 	nr         							=	13;
+	condition							=	PC_LearnAttributes_Condition;
+	information							=	PC_LearnAttributes_TEACH_SP_Info;
+	permanent							=	true;
+	description							=	"Wzrost energii";
+};
+func void PC_LearnAttributes_TEACH_SP_Info()
+{
+	Info_ClearChoices(PC_LearnAttributes_TEACH_SP);
+
+	Info_AddChoice (PC_LearnAttributes_TEACH_SP, DIALOG_BACK, PC_LearnAttributes_TEACH_SP_BACK);
+	Info_AddChoice (PC_LearnAttributes_TEACH_SP, B_BuildLearnString(ConcatStrings(PRINT_LearnSP, IntToString(20)), B_GetLearnCostAttribute(hero, AIV_STAMINA_MAX)*20), PC_LearnAttributes_TEACH_SP_20);
+	Info_AddChoice (PC_LearnAttributes_TEACH_SP, B_BuildLearnString(ConcatStrings(PRINT_LearnSP, IntToString(10)), B_GetLearnCostAttribute(hero, AIV_STAMINA_MAX)*10), PC_LearnAttributes_TEACH_SP_10);
+	Info_AddChoice (PC_LearnAttributes_TEACH_SP, B_BuildLearnString(ConcatStrings(PRINT_LearnSP, IntToString(5)), B_GetLearnCostAttribute(hero, AIV_STAMINA_MAX)*5), PC_LearnAttributes_TEACH_SP_5);
+	Info_AddChoice (PC_LearnAttributes_TEACH_SP, B_BuildLearnString(ConcatStrings(PRINT_LearnSP, IntToString(1)), B_GetLearnCostAttribute(hero, AIV_STAMINA_MAX)*1), PC_LearnAttributes_TEACH_SP_1);
+};
+///******************************************************************************************
+instance PC_LearnAttributes_TEACH_STR (C_Info)
+{
+	npc		 							=	PC_Hero;
+	nr         							=	14;
 	condition							=	PC_LearnAttributes_Condition;
 	information							=	PC_LearnAttributes_TEACH_STR_Info;
 	permanent							=	true;
@@ -121,7 +146,7 @@ func void PC_LearnAttributes_TEACH_STR_Info()
 instance PC_LearnAttributes_TEACH_DEX (C_Info)
 {
 	npc		 							=	PC_Hero;
-	nr         							=	14;
+	nr         							=	15;
 	condition							=	PC_LearnAttributes_Condition;
 	information							=	PC_LearnAttributes_TEACH_DEX_Info;
 	permanent							=	true;
@@ -141,7 +166,7 @@ func void PC_LearnAttributes_TEACH_DEX_Info()
 instance PC_LearnAttributes_TEACH_POW (C_Info)
 {
 	npc		 							=	PC_Hero;
-	nr         							=	15;
+	nr         							=	16;
 	condition							=	PC_LearnAttributes_Condition;
 	information							=	PC_LearnAttributes_TEACH_POW_Info;
 	permanent							=	true;
@@ -164,22 +189,22 @@ func void PC_LearnAttributes_TEACH_HP_BACK()
 };
 func void PC_LearnAttributes_TEACH_HP_1()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 1))	{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 1))	{ MOBSI_LearnAttributes_Effect(ATR_HITPOINTS_MAX); };
 	PC_LearnAttributes_TEACH_HP_Info();
 };
 func void PC_LearnAttributes_TEACH_HP_5()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 5))	{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 5))	{ MOBSI_LearnAttributes_Effect(ATR_HITPOINTS_MAX); };
 	PC_LearnAttributes_TEACH_HP_Info();
 };
 func void PC_LearnAttributes_TEACH_HP_10()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 10))	{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 10))	{ MOBSI_LearnAttributes_Effect(ATR_HITPOINTS_MAX); };
 	PC_LearnAttributes_TEACH_HP_Info();
 };
 func void PC_LearnAttributes_TEACH_HP_20()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 20))	{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_HITPOINTS_MAX, 20))	{ MOBSI_LearnAttributes_Effect(ATR_HITPOINTS_MAX); };
 	PC_LearnAttributes_TEACH_HP_Info();
 };
 ///******************************************************************************************
@@ -189,23 +214,48 @@ func void PC_LearnAttributes_TEACH_MP_BACK()
 };
 func void PC_LearnAttributes_TEACH_MP_1()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 1))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 1))		{ MOBSI_LearnAttributes_Effect(ATR_MANA_MAX); };
 	PC_LearnAttributes_TEACH_MP_Info();
 };
 func void PC_LearnAttributes_TEACH_MP_5()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 5))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 5))		{ MOBSI_LearnAttributes_Effect(ATR_MANA_MAX); };
 	PC_LearnAttributes_TEACH_MP_Info();
 };
 func void PC_LearnAttributes_TEACH_MP_10()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 10))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 10))		{ MOBSI_LearnAttributes_Effect(ATR_MANA_MAX); };
 	PC_LearnAttributes_TEACH_MP_Info();
 };
 func void PC_LearnAttributes_TEACH_MP_20()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 20))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_MANA_MAX, 20))		{ MOBSI_LearnAttributes_Effect(ATR_MANA_MAX); };
 	PC_LearnAttributes_TEACH_MP_Info();
+};
+///******************************************************************************************
+func void PC_LearnAttributes_TEACH_SP_BACK()
+{
+	Info_ClearChoices(PC_LearnAttributes_TEACH_SP);
+};
+func void PC_LearnAttributes_TEACH_SP_1()
+{
+	if (B_TeachAttributePoints(hero, hero, AIV_STAMINA_MAX, 1))		{ MOBSI_LearnAttributes_Effect(AIV_STAMINA_MAX); };
+	PC_LearnAttributes_TEACH_SP_Info();
+};
+func void PC_LearnAttributes_TEACH_SP_5()
+{
+	if (B_TeachAttributePoints(hero, hero, AIV_STAMINA_MAX, 5))		{ MOBSI_LearnAttributes_Effect(AIV_STAMINA_MAX); };
+	PC_LearnAttributes_TEACH_SP_Info();
+};
+func void PC_LearnAttributes_TEACH_SP_10()
+{
+	if (B_TeachAttributePoints(hero, hero, AIV_STAMINA_MAX, 10))	{ MOBSI_LearnAttributes_Effect(AIV_STAMINA_MAX); };
+	PC_LearnAttributes_TEACH_SP_Info();
+};
+func void PC_LearnAttributes_TEACH_SP_20()
+{
+	if (B_TeachAttributePoints(hero, hero, AIV_STAMINA_MAX, 20))	{ MOBSI_LearnAttributes_Effect(AIV_STAMINA_MAX); };
+	PC_LearnAttributes_TEACH_SP_Info();
 };
 ///******************************************************************************************
 func void PC_LearnAttributes_TEACH_STR_BACK()
@@ -214,22 +264,22 @@ func void PC_LearnAttributes_TEACH_STR_BACK()
 };
 func void PC_LearnAttributes_TEACH_STR_1()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 1))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 1))		{ MOBSI_LearnAttributes_Effect(ATR_STRENGTH); };
 	PC_LearnAttributes_TEACH_STR_Info();
 };
 func void PC_LearnAttributes_TEACH_STR_5()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 5))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 5))		{ MOBSI_LearnAttributes_Effect(ATR_STRENGTH); };
 	PC_LearnAttributes_TEACH_STR_Info();
 };
 func void PC_LearnAttributes_TEACH_STR_10()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 10))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 10))		{ MOBSI_LearnAttributes_Effect(ATR_STRENGTH); };
 	PC_LearnAttributes_TEACH_STR_Info();
 };
 func void PC_LearnAttributes_TEACH_STR_20()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 20))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_STRENGTH, 20))		{ MOBSI_LearnAttributes_Effect(ATR_STRENGTH); };
 	PC_LearnAttributes_TEACH_STR_Info();
 };
 ///******************************************************************************************
@@ -239,22 +289,22 @@ func void PC_LearnAttributes_TEACH_DEX_BACK()
 };
 func void PC_LearnAttributes_TEACH_DEX_1()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 1))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 1))		{ MOBSI_LearnAttributes_Effect(ATR_DEXTERITY); };
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
 func void PC_LearnAttributes_TEACH_DEX_5()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 5))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 5))		{ MOBSI_LearnAttributes_Effect(ATR_DEXTERITY); };
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
 func void PC_LearnAttributes_TEACH_DEX_10()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 10))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 10))		{ MOBSI_LearnAttributes_Effect(ATR_DEXTERITY); };
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
 func void PC_LearnAttributes_TEACH_DEX_20()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 20))		{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_DEXTERITY, 20))		{ MOBSI_LearnAttributes_Effect(ATR_DEXTERITY); };
 	PC_LearnAttributes_TEACH_DEX_Info();
 };
 ///******************************************************************************************
@@ -264,21 +314,21 @@ func void PC_LearnAttributes_TEACH_POW_BACK()
 };
 func void PC_LearnAttributes_TEACH_POW_1()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 1))			{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 1))			{ MOBSI_LearnAttributes_Effect(ATR_POWER); };
 	PC_LearnAttributes_TEACH_POW_Info();
 };
 func void PC_LearnAttributes_TEACH_POW_5()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 5))			{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 5))			{ MOBSI_LearnAttributes_Effect(ATR_POWER); };
 	PC_LearnAttributes_TEACH_POW_Info();
 };
 func void PC_LearnAttributes_TEACH_POW_10()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 10))			{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 10))			{ MOBSI_LearnAttributes_Effect(ATR_POWER); };
 	PC_LearnAttributes_TEACH_POW_Info();
 };
 func void PC_LearnAttributes_TEACH_POW_20()
 {
-	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 20))			{ MOBSI_LearnAttributes_Effect(); };
+	if (B_TeachAttributePoints(hero, hero, ATR_POWER, 20))			{ MOBSI_LearnAttributes_Effect(ATR_POWER); };
 	PC_LearnAttributes_TEACH_POW_Info();
 };

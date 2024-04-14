@@ -1,12 +1,12 @@
 ///******************************************************************************************
-///	MOBSI_POTIONALCHEMY
+/// MOBSI_POTIONALCHEMY
 ///******************************************************************************************
 func void POTIONALCHEMY_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_POTIONALCHEMY;
 		Ai_ProcessInfos(her);
 	};
@@ -34,7 +34,7 @@ func void PC_PotionAlchemy_End_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Health
+/// Health
 ///******************************************************************************************
 instance PC_PotionAlchemy_Health_Start (C_Info)
 {
@@ -175,7 +175,7 @@ func void PC_ItPo_Health_05()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Mana
+/// Mana
 ///******************************************************************************************
 instance PC_PotionAlchemy_Mana_Start (C_Info)
 {
@@ -316,7 +316,7 @@ func void PC_ItPo_Mana_05()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Temp
+/// Temp
 ///******************************************************************************************
 instance PC_PotionAlchemy_Temp_Start (C_Info)
 {
@@ -370,11 +370,11 @@ func void PC_ItPo_Temp_Health()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Vitality_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
-		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Vitality_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Temp_Health);
 		Print(PRINT_AlchemySuccess);
@@ -390,11 +390,11 @@ func void PC_ItPo_Temp_Mana()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Celestial_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
-		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Celestial_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Temp_Mana);
 		Print(PRINT_AlchemySuccess);
@@ -467,7 +467,7 @@ func void PC_ItPo_Temp_POW()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Weak
+/// Weak
 ///******************************************************************************************
 instance PC_PotionAlchemy_Weak_Start (C_Info)
 {
@@ -520,12 +520,12 @@ func void PC_ItPo_Weak_BACK()
 func void PC_ItPo_Weak_Health()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Weak_Herb) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Vitality_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Weak_Herb);
+		Npc_RemoveInvItem (hero, ItPl_Vitality_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Weak_Health);
 		Print(PRINT_AlchemySuccess);
@@ -540,12 +540,12 @@ func void PC_ItPo_Weak_Health()
 func void PC_ItPo_Weak_Mana()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Weak_Herb) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Celestial_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Weak_Herb);
+		Npc_RemoveInvItem (hero, ItPl_Celestial_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Weak_Mana);
 		Print(PRINT_AlchemySuccess);
@@ -560,11 +560,11 @@ func void PC_ItPo_Weak_Mana()
 func void PC_ItPo_Weak_STR()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Weak_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Strength_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Weak_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Strength_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Weak_STR);
@@ -580,11 +580,11 @@ func void PC_ItPo_Weak_STR()
 func void PC_ItPo_Weak_DEX()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Weak_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Dex_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Weak_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Dex_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Weak_DEX);
@@ -600,11 +600,11 @@ func void PC_ItPo_Weak_DEX()
 func void PC_ItPo_Weak_POW()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Weak_Herb) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Power_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
+		Npc_RemoveInvItem (hero, ItPl_Weak_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Weak_POW);
@@ -618,7 +618,7 @@ func void PC_ItPo_Weak_POW()
 	B_ENDPRODUCTIONDIALOG();
 };
 ///******************************************************************************************
-///	Perm
+/// Perm
 ///******************************************************************************************
 instance PC_PotionAlchemy_Perm_Start (C_Info)
 {
@@ -684,11 +684,11 @@ func void PC_ItPo_Perm_Health()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Vitality_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Vitality_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Perm_Health);
 		Print(PRINT_AlchemySuccess);
@@ -704,11 +704,11 @@ func void PC_ItPo_Perm_Mana()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Celestial_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
+		Npc_RemoveInvItem (hero, ItPl_Celestial_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Perm_Mana);
 		Print(PRINT_AlchemySuccess);
@@ -784,11 +784,11 @@ func void PC_ItPo_Perm_Fire()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_SunHerb) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Fire_Herb_01) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-		Npc_RemoveInvItem (hero, ItPl_SunHerb);
+		Npc_RemoveInvItem (hero, ItPl_Fire_Herb_01);
 		
 		CreateInvItem (hero, ItPo_Perm_Fire);
 		Print(PRINT_AlchemySuccess);
@@ -1641,10 +1641,10 @@ func void PC_ItPo_Geist()
 func void PC_ItPo_Poison()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Mushroom_03) >= 4)
+	&& (Npc_HasItems(hero, ItPl_Mushroom_05) >= 4)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItems (hero, ItPl_Mushroom_03, 4);
+		Npc_RemoveInvItems (hero, ItPl_Mushroom_05, 4);
 		
 		CreateInvItem (hero, ItPo_Poison);
 		Print(PRINT_AlchemySuccess);

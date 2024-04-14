@@ -197,7 +197,7 @@ const int NPC_BURN_TICKS_PER_DAMAGE_POINT				=	1000;
 const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	50;
 const int NPC_DAM_DIVE_TIME								=	100;
 const int DAM_CRITICAL_MULTIPLIER						=	2;
-const int DAM_NOSTAMINA_PERCENT							=	50;
+const int DAM_NOSTAMINA_PERCENT							=	80;
 
 const int BLOOD_SIZE_DIVISOR							=	1000;
 const int BLOOD_DAMAGE_MAX								=	200;
@@ -471,9 +471,6 @@ const int SPELL_BAD					=	2;
 ///	SPELL INVEST CONSTS
 ///******************************************************************************************
 
-const int SPL_Cost_Scroll			=	5;
-const int SPL_Percent_Scroll		=	40;
-
 const int SPL_DONTINVEST 						=	0;
 const int SPL_RECEIVEINVEST						=	1;
 const int SPL_SENDCAST							=	2;
@@ -508,117 +505,112 @@ const int TARGET_TYPE_UNDEAD		=	32;
 
 /// basic spells
 const int SPL_Light					=	0;	/// improved!!!
-const int SPL_Heal					=	1;	/// changed!!!
+const int SPL_Heal					=	1;	/// improved!!!
+const int SPL_Telekinesis			=	2;	/// new!!!
 
 /// PAL spells
-const int SPL_PalBless				=	2;	/// new!!!
-const int SPL_PalFaith				=	3;	/// new!!!
-const int SPL_PalHolyBolt			=	4;	/// improved!!!
-const int SPL_PalGlory				=	5;	/// new!!!
-const int SPL_PalRepelEvil			=	6;	/// improved!!!
-const int SPL_PalJustice			=	7;	/// new!!!
-const int SPL_PalDestroyEvil		=	8;	/// improved!!!
-const int SPL_Reserved_9			=	9;
-
-/// npc spells
-const int SPL_ConcussionBolt		=	10;	/// improved!!!
-const int SPL_DeathBolt				=	11;	/// improved!!!
-const int SPL_DragonBall			=	12;	/// new!!!
-const int SPL_BlackDragonBall		=	13;	/// new!!!
-const int SPL_BlueFireball			=	14;	/// new!!!
-const int SPL_RedFireball			=	15;	/// new!!!
-const int SPL_GreenFireball			=	16;	/// new!!!
-const int SPL_YellowFireball		=	17;	/// new!!!
+const int SPL_PalBless				=	3;	/// new!!!
+const int SPL_PalFaith				=	4;	/// new!!! unfinished!!!
+const int SPL_PalHolyBolt			=	5;	/// improved!!!
+const int SPL_PalGlory				=	6;	/// new!!! unfinished!!!
+const int SPL_PalRepelEvil			=	7;	/// improved!!!
+const int SPL_PalJustice			=	8;	/// new!!! unfinished!!!
+const int SPL_PalDestroyEvil		=	9;	/// improved!!!
 
 /// common spells
+const int SPL_Resurrection			=	10;	/// new!!!
+const int SPL_Rage					=	11;	/// new!!!
+const int SPL_Seduction				=	12;	/// new!!!
+const int SPL_Reserved_13			=	13;
+const int SPL_Reserved_14			=	14;
+const int SPL_Reserved_15			=	15;
+const int SPL_Reserved_16			=	16;
+const int SPL_Reserved_17			=	17;
 const int SPL_NightToDay			=	18;	/// new!!!
 const int SPL_FireBolt				=	19;
 
 const int SPL_IceBolt				=	20;
-const int SPL_IceLance				=	21;
+const int SPL_Stealth				=	21;	/// new!!!
 const int SPL_SkullBolt				=	22;	/// new!!!
 const int SPL_InstantFireball		=	23;
 const int SPL_Zap					=	24;
-const int SPL_Whirlwind				=	25;
+const int SPL_Slimeball				=	25;	/// new!!! unfinished!!!
 const int SPL_WindFist				=	26;
 const int SPL_Sleep					=	27;
 const int SPL_Charm					=	28;
 const int SPL_LightningFlash		=	29;
 
 const int SPL_ChargeFireball		=	30;
-const int SPL_Rage					=	31;	/// new!!!
-const int SPL_Fear					=	32;
+const int SPL_Curse					=	31;	/// new!!! unfinished!!!
+const int SPL_Fear					=	32;	/// improved!!!
 const int SPL_IceCube				=	33;
 const int SPL_ChargeZap				=	34;
-const int SPL_Geyser				=	35;	/// improved!!!
+const int SPL_SummonGolem			=	35;	/// improved!!!
 const int SPL_DestroyUndead			=	36;
 const int SPL_Pyrokinesis			=	37;
 const int SPL_Firestorm				=	38;
 const int SPL_IceWave				=	39;
 
-const int SPL_WaterFist				=	40;
-const int SPL_Thunderstorm			=	41;
+const int SPL_SummonDemon			=	40;	/// improved!!!
+const int SPL_Explosion				=	41;	/// new!!! unfinished!!!
 const int SPL_Firerain				=	42;
 const int SPL_BreathOfDeath			=	43;
 const int SPL_MassDeath				=	44;
-const int SPL_SlowTime				=	45;	/// new!!!
+const int SPL_ArmyOfDarkness		=	45;	/// improved!!!
 const int SPL_Shrink				=	46;	/// changed!!!
-const int SPL_Telekinesis			=	47;	/// new!!!
-const int SPL_Inflate				=	48;
-const int SPL_Ghost					=	49;	/// new!!!
+const int SPL_Tame					=	47;	/// new!!!
+const int SPL_RunicEchoes			=	48;	/// new!!! unfinished!!!
+const int SPL_SlowTime				=	49;	/// new!!!
 
-const int SPL_GreenTentacle			=	50;
-const int SPL_SuckEnergy			=	51;
-const int SPL_Energyball			=	52;
-const int SPL_Swarm					=	53;
-const int SPL_Skull					=	54;
+const int SPL_HealingAura			=	50;	/// new!!! unfinished!!!
+const int SPL_StoneSkin				=	51;	/// new!!! unfinished!!!
+const int SPL_AirShield				=	52;	/// new!!! unfinished!!!
+const int SPL_FireShield			=	53;	/// new!!! unfinished!!!
+const int SPL_DarkBarrier			=	54;	/// new!!! unfinished!!!
+
+/// player spells
+const int SPL_BeliarRage			=	55;	/// improved!!!
+const int SPL_MasterOfDisaster		=	56;
 
 /// special spells
-const int SPL_MasterOfDisaster		=	55;
-const int SPL_BeliarRage			=	56;
 const int SPL_Teleport				=	57;	/// changed!!!
 const int SPL_Transform				=	58;	/// changed!!!
 const int SPL_Summon				=	59;	/// changed!!!
 
-/// MYS spells
-const int SPL_MysBall				=	60;	/// new!!!
-const int SPL_MysAura				=	61;	/// new!!!
-const int SPL_MysRoot				=	62;	/// new!!!
-const int SPL_MysTame				=	63;	/// new!!!
-const int SPL_MysEcho				=	64;	/// new!!!
-const int SPL_MysSlow 				=	65;	/// new!!!
+/// npc spells
+const int SPL_ConcussionSpell		=	60;	/// changed!!!
+const int SPL_DeathSpell			=	61;	/// changed!!!
+const int SPL_Dragonball			=	62;	/// new!!!
+const int SPL_BlackDragonball		=	63;	/// new!!!
+const int SPL_BlueFireball			=	64;	/// new!!!
+const int SPL_RedFireball			=	65;	/// new!!!
+const int SPL_Reserved_66			=	66;
+const int SPL_Reserved_67			=	67;
+const int SPL_Reserved_68 			=	68;
+const int SPL_Reserved_69			=	69;
 
-/// GEO spells
-const int SPL_GeoStone				=	66;	/// new!!!
-const int SPL_GeoAura				=	67;	/// new!!!
-const int SPL_GeoElevate 			=	68;	/// new!!!
-const int SPL_GeoGolem				=	69;	/// new!!!
-const int SPL_GeoQuake				=	70;	/// new!!!
-const int SPL_GeoCollapse			=	71;	/// new!!!
+/// common spells
+const int SPL_Thunderstorm			=	70;
+const int SPL_Whirlwind				=	71;
+const int SPL_WaterFist				=	72;	/// improved!!!
+const int SPL_IceLance				=	73;	/// changed!!!
+const int SPL_Inflate				=	74;
+const int SPL_Geyser	 			=	75;	/// improved!!!
+const int SPL_Fireburning			=	76;	/// new!!!
+const int SPL_ChainLightning		=	77;	/// new!!! unfinished!!!
+const int SPL_Hurricane				=	78;	/// new!!! unfinished!!!
+const int SPL_LightFlash			=	79;	/// new!!! unfinished!!!
 
-/// ELE spells
-const int SPL_EleLance				=	72;	/// new!!!
-const int SPL_EleAura				=	73;	/// new!!!
-const int SPL_EleFreeze				=	74;	/// new!!!
-const int SPL_EleHurricane 			=	75;	/// new!!!
-const int SPL_EleLightning			=	76;	/// new!!!
-const int SPL_EleThunderstorm		=	77;	/// new!!!
-
-/// PYR spells
-const int SPL_PyrFireball			=	78;	/// new!!!
-const int SPL_PyrAura				=	79;	/// new!!!
-const int SPL_PyrBurning			=	80;	/// new!!!
-const int SPL_PyrFirebomb			=	81;	/// new!!!
-const int SPL_PyrExplosion			=	82;	/// new!!!
-const int SPL_PyrFirerain			=	83;	/// new!!!
-
-/// NEC spells
-const int SPL_NecLifesteal			=	84;	/// new!!!
-const int SPL_NecAura				=	85;	/// new!!!
-const int SPL_NecCurse				=	86;	/// new!!!
-const int SPL_NecPlague				=	87;	/// new!!!
-const int SPL_NecDemon				=	88;	/// new!!!
-const int SPL_NecDeath				=	89;	/// new!!!
+const int SPL_Plague				=	80;	/// new!!! unfinished!!!
+const int SPL_Swarm					=	81;
+const int SPL_GreenTentacle			=	82;	/// changed!!!
+const int SPL_Earthquake			=	83;	/// new!!!
+const int SPL_Rock					=	84;	/// new!!!
+const int SPL_Mysticball			=	85;	/// new!!!
+const int SPL_SuckEnergy			=	86;	/// changed!!!
+const int SPL_Skull					=	87;
+const int SPL_Elevate				=	88;	/// new!!!
+const int SPL_Crush					=	89;	/// new!!! unfinished!!!
 
 /// ...
 const int SPL_Reserved_90			=	90;
@@ -642,116 +634,111 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	/// basic spells
 	"nLight",				// 0	SPL_Light
 	"nHeal",  				// 1	SPL_Heal
+	"Telekinesis",  		// 2	SPL_Telekinesis
 	
 	/// PAL spells
-	"PalHolyBolt",  		// 2	SPL_PalBless
-	"PalFaith",  			// 3	SPL_PalFaith
-	"PalHolyBolt",			// 4	SPL_PalHolyBolt
-	"PalGlory",  			// 5	SPL_PalGlory
-	"PalRepelEvil",  		// 6	SPL_PalDestroyEvil
-	"PalJustice",			// 7	SPL_PalJustice
-	"PalDestroyEvil",		// 8	SPL_PalDestroyEvil
-	"Light",				// 9	SPL_Reserved_9
-	
-	/// npc spells
-    "ConcussionBolt",		// 10	SPL_ConcussionBolt
-	"DeathBolt",			// 11	SPL_DeathBolt
-	"DragonBall",  			// 12	SPL_DragonBall
-	"BlackDragonBall",  	// 13	SPL_BlackDragonBall
-	"BlueFireball",			// 14	SPL_BlueFireball
-	"RedFireball",			// 15	SPL_RedFireball
-	"GreenFireball",		// 16	SPL_GreenFireball
-	"YellowFireball",		// 17	SPL_YellowFireball
+	"PalBless",  			// 3	SPL_PalBless
+	"PalFaith",  			// 4	SPL_PalFaith
+	"PalHolyBolt",			// 5	SPL_PalHolyBolt
+	"PalGlory",  			// 6	SPL_PalGlory
+	"PalRepelEvil",  		// 7	SPL_PalDestroyEvil
+	"PalJustice",			// 8	SPL_PalJustice
+	"PalDestroyEvil",		// 9	SPL_PalDestroyEvil
 	
 	/// common spells
+	"Resurrection",			// 10	SPL_Resurrection
+    "Rage",					// 11	SPL_Rage
+	"Seduction",  			// 12	SPL_Seduction
+	"Light",  				// 13	SPL_Reserved_13
+	"Light",				// 14	SPL_Reserved_14
+	"Light",				// 15	SPL_Reserved_15
+	"Light",				// 16	SPL_Reserved_16
+	"Light",				// 17	SPL_Reserved_17
 	"NightToDay",  			// 18	SPL_NightToDay
 	"FireBolt",				// 19	SPL_FireBolt
 	
 	"IceBolt",  			// 20	SPL_IceBolt
-	"IceLance",  			// 21	SPL_IceLance
+	"Stealth",  			// 21	SPL_Stealth
 	"SkullBolt",  			// 22	SPL_SkullBolt
 	"InstantFireball",  	// 23	SPL_InstantFireball
 	"Zap",					// 24	SPL_Zap
-	"Whirlwind",			// 25	SPL_Whirlwind
+	"Slimeball",			// 25	SPL_Slimeball
 	"WindFist",  			// 26	SPL_WindFist
 	"Sleep",  				// 27	SPL_Sleep
 	"Charm",  				// 28	SPL_Charm
 	"LightningFlash",		// 29	SPL_LightningFlash
 	
 	"ChargeFireball",  		// 30	SPL_ChargeFireball
-	"Rage",  				// 31	SPL_Rage
+	"Curse",  				// 31	SPL_Curse
 	"Fear",  				// 32	SPL_Fear
 	"Icecube",  			// 33	SPL_IceCube
 	"ChargeZap",  			// 34	SPL_ChargeZap
-	"Geyser",  				// 35	SPL_Geyser
+	"nSummonGolem",  		// 35	SPL_SummonGolem
 	"DestroyUndead",  		// 36	SPL_DestroyUndead
 	"Pyrokinesis",  		// 37	SPL_Pyrokinesis
 	"Firestorm", 			// 38	SPL_Firestorm
 	"IceWave",  			// 39	SPL_IceWave
 	
-	"Waterfist",  			// 40	SPL_WaterFist
-	"Thunderstorm",  		// 41	SPL_Thunderstorm
+	"nSummonDemon",  		// 40	SPL_SummonDemon
+	"Explosion",  			// 41	SPL_Explosion
 	"Firerain",  			// 42	SPL_Firerain
 	"BreathOfDeath",  		// 43	SPL_BreathOfDeath
 	"MassDeath",  			// 44	SPL_MassDeath
-	"SlowTime", 			// 45	SPL_SlowTime
+	"ArmyOfDarkness", 		// 45	SPL_ArmyOfDarkness
 	"Shrink",  				// 46	SPL_Shrink
-	"Telekinesis",  		// 47	SPL_Telekinesis
-	"Inflate",  			// 48	SPL_Inflate
-	"Ghost",  				// 49	SPL_Ghost
+	"Tame",  				// 47	SPL_Tame
+	"RunicEchoes",  		// 48	SPL_RunicEchoes
+	"SlowTime",  			// 49	SPL_SlowTime
 	
-	"GreenTentacle",  		// 50	SPL_GreenTentacle
-	"SuckEnergy",  			// 51	SPL_SuckEnergy
-	"Energyball", 			// 52	SPL_Energyball
-	"Swarm",  				// 53	SPL_Swarm
-	"Skull",  				// 54	SPL_Skull
+	"HealingAura",  		// 50	SPL_HealingAura
+	"StoneSkin",  			// 51	SPL_StoneSkin
+	"AirShield", 			// 52	SPL_AirShield
+	"FireShield",  			// 53	SPL_FireShield
+	"DarkBarrier",  		// 54	SPL_DarkBarrier
+	
+	/// player spells
+	"Energyball",  			// 55	SPL_BeliarRage
+	"MasterOfDisaster",  	// 56	SPL_MasterOfDisaster
 	
 	/// special spells
-	"MasterOfDisaster",  	// 55	SPL_MasterOfDisaster
-	"EnergyBall",  			// 56	SPL_BeliarRage
 	"Teleport",  			// 57	SPL_Teleport
 	"Transform",  			// 58	SPL_Transform
 	"Summon",  				// 59	SPL_Summon
 	
-	/// MYS spells
-	"MysBall",  			// 60	SPL_MysBall
-	"MysAura",  			// 61	SPL_MysAura
-	"MysRoot",  			// 62	SPL_MysRoot
-	"MysTame",  			// 63	SPL_MysTame
-	"MysEcho",  			// 64	SPL_MysEcho
-	"MysSlow",  			// 65	SPL_MysSlow
+	/// npc spells
+	"ConcussionSpell",		// 60	SPL_ConcussionSpell
+	"DeathSpell",			// 61	SPL_DeathSpell
+	"Dragonball",  			// 62	SPL_Dragonball
+	"BlackDragonball",  	// 63	SPL_BlackDragonball
+	"BlueFireball",			// 64	SPL_BlueFireball
+	"RedFireball",			// 65	SPL_RedFireball
+	"Light",				// 66	SPL_Reserved_66
+	"Light",				// 67	SPL_Reserved_67
+	"Light",				// 68	SPL_Reserved_68
+	"Light",				// 69	SPL_Reserved_69
 	
-	/// GEO spells
-	"GeoStone",  			// 66	SPL_GeoStone
-	"GeoAura",  			// 67	SPL_GeoAura
-	"GeoElevate",			// 68	SPL_GeoElevate
-	"GeoGolem",				// 69	SPL_GeoGolem
-	"GeoQuake",				// 70	SPL_GeoQuake
-	"GeoCollapse",  			// 71	SPL_GeoCollapse
+	/// common spells
+	"Thunderstorm",			// 70	SPL_Thunderstorm
+	"Whirlwind",  			// 71	SPL_Whirlwind
+	"WaterFist",  			// 72	SPL_WaterFist
+	"IceLance",  			// 73	SPL_IceLance
+	"Inflate",  			// 74	SPL_Inflate
+	"Geyser",  				// 75	SPL_Geyser
+	"Fireburning",  		// 76	SPL_Fireburning
+	"ChainLightning", 	 	// 77	SPL_ChainLightning
+	"Hurricane",  			// 78	SPL_Hurricane
+	"LightFlash",  			// 79	SPL_LightFlash
 	
-	/// ELE spells
-	"EleLance",  			// 72	SPL_EleLance
-	"EleAura",  			// 73	SPL_EleAura
-	"EleFreeze",  			// 74	SPL_EleFreeze
-	"EleHurricane",  		// 75	SPL_EleHurricane
-	"EleLightning",  		// 76	SPL_EleLightning
-	"EleThunderstorm",  	// 77	SPL_EleThunderstorm
-	
-	/// PYR spells
-	"PyrFireball",  		// 78	SPL_PyrFireball
-	"PyrAura",  			// 79	SPL_PyrAura
-	"PyrBurning",  			// 80	SPL_PyrBurning
-	"PyrFirebomb",			// 81	SPL_PyrFirebomb
-	"PyrExplosion", 		// 82	SPL_PyrExplosion
-	"PyrFirerain",  		// 83	SPL_PyrFirerain
-	
-	/// NEC spells
-	"NecLifesteal", 		// 84	SPL_NecLifesteal
-	"NecAura", 				// 85	SPL_NecAura
-	"NecCurse",  			// 86	SPL_NecCurse
-	"NecPlague",  			// 87	SPL_NecPlague
-	"NecDemon",  			// 88	SPL_NecDemon
-	"NecDeath",				// 89	SPL_NecDeath
+	"Plague",  				// 80	SPL_Plague
+	"Swarm",				// 81	SPL_Swarm
+	"GreenTentacle", 		// 82	SPL_GreenTentacle
+	"Earthquake",  			// 83	SPL_Earthquake
+	"Rock", 				// 84	SPL_Rock
+	"Mysticball", 			// 85	SPL_Mysticball
+	"SuckEnergy",  			// 86	SPL_SuckEnergy
+	"Skull",  				// 87	SPL_Skull
+	"Elevate",  			// 88	SPL_Elevate
+	"Crush",				// 89	SPL_Crush
 	
 	/// ...
 	"Light",				// 90	SPL_Reserved_90
@@ -776,116 +763,111 @@ const string spellFxAniLetters[MAX_SPELL] =
 	/// basic spells
 	"SLE",					// 0	SPL_Light
 	"HEA",  				// 1	SPL_Heal
+	"TEL",  				// 2	SPL_Telekinesis
 	
 	/// PAL spells
-	"SLE",  				// 2	SPL_PalBless
-	"HEA",  				// 3	SPL_PalFaith
-	"FBT",					// 4	SPL_PalHolyBolt
-	"HEA",  				// 5	SPL_PalGlory
-	"FBT",  				// 6	SPL_PalRepelEvil
- 	"HEA",					// 7	SPL_PalJustice
-	"FIB",					// 8	SPL_PalDestroyEvil
-	"XXX",					// 9	SPL_Reserved_9
-	
-	/// npc spells
-	"FBT",  				// 10	SPL_ConcussionBolt
-	"FBT",  				// 11	SPL_DeathBolt
-	"FBT",  				// 12	SPL_DragonBall
-	"FBT",  				// 13	SPL_BlackDragonBall
-	"FBT",  				// 14	SPL_BlueFireball
-	"FBT",  				// 15	SPL_RedFireball
-	"FBT",  				// 16	SPL_GreenFireball
-	"FBT",  				// 17	SPL_YellowFireball
+	"SLE",  				// 3	SPL_PalBless
+	"HEA",  				// 4	SPL_PalFaith
+	"FBT",					// 5	SPL_PalHolyBolt
+	"HEA",  				// 6	SPL_PalGlory
+	"FBT",  				// 7	SPL_PalRepelEvil
+ 	"HEA",					// 8	SPL_PalJustice
+	"FBT",					// 9	SPL_PalDestroyEvil
 	
 	/// common spells
+	"SUM",  				// 10	SPL_Resurrection
+	"SLE",  				// 11	SPL_Rage
+	"SLE",  				// 12	SPL_Seduction
+	"XXX",  				// 13	SPL_Reserved_13
+	"XXX",  				// 14	SPL_Reserved_14
+	"XXX",  				// 15	SPL_Reserved_15
+	"XXX",  				// 16	SPL_Reserved_16
+	"XXX",  				// 17	SPL_Reserved_17
 	"SLE",  				// 18	SPL_NightToDay
 	"FBT",  				// 19	SPL_FireBolt
 	
 	"FBT",  				// 20	SPL_IceBolt
-	"FBT",  				// 21	SPL_IceLance
+	"FEA",  				// 21	SPL_Stealth
 	"FBT",  				// 22	SPL_SkullBolt
 	"FBT",  				// 23	SPL_InstantFireball
 	"FBT",					// 24	SPL_Zap
-	"WHI",					// 25	SPL_Whirlwind
+	"FBT",					// 25	SPL_Slimeball
 	"WND",  				// 26	SPL_WindFist
 	"SLE",  				// 27	SPL_Sleep
 	"SLE",  				// 28	SPL_Charm
 	"WND",  				// 29	SPL_LightningFlash
 	
 	"FIB",  				// 30	SPL_ChargeFireball
-	"SLE",  				// 31	SPL_Rage
+	"FRZ",  				// 31	SPL_Curse
 	"FEA",  				// 32	SPL_Fear
 	"FRZ",  				// 33	SPL_IceCube
 	"FIB",  				// 34	SPL_ChargeZap
-	"WND",  				// 35	SPL_Geyser
+	"SUM",  				// 35	SPL_SummonGolem
 	"FIB",  				// 36	SPL_DestroyUndead
 	"FIB",  				// 37	SPL_Pyrokinesis
 	"FIB",  				// 38	SPL_Firestorm
 	"FEA",  				// 39	SPL_IceWave
 	
-	"WND",  				// 40	SPL_WaterFist
-	"STM",  				// 41	SPL_Thunderstorm
-	"FEA",  				// 42	SPL_Firerain
+	"SUM",  				// 40	SPL_SummonDemon
+	"EXP",  				// 41	SPL_Explosion
+	"STM",  				// 42	SPL_Firerain
 	"FIB",  				// 43	SPL_BreathOfDeath
 	"MSD",  				// 44	SPL_MassDeath
-	"MSD",  				// 45	SPL_SlowTime
+	"MSD",  				// 45	SPL_ArmyOfDarkness
 	"SLE",  				// 46	SPL_Shrink
-	"TEL",  				// 47	SPL_Telekinesis
-	"SLE",  				// 48	SPL_Inflate
-	"HEA",  				// 49	SPL_Ghost
+	"SLE",  				// 47	SPL_Tame
+	"MSD",  				// 48	SPL_RunicEchoes
+	"SLE",  				// 49	SPL_SlowTime
 	
-	"FRZ",  				// 50	SPL_GreenTentacle
-	"WND",  				// 51	SPL_SuckEnergy
-	"WND",  				// 52	SPL_Energyball
-	"FBT",  				// 53	SPL_Swarm
-	"WND",					// 54	SPL_Skull
+	"HEA",  				// 50	SPL_HealingAura
+	"HEA",  				// 51	SPL_StoneSkin
+	"HEA",  				// 52	SPL_AirShield
+	"HEA",  				// 53	SPL_FireShield
+	"HEA",  				// 54	SPL_DarkBarrier
+	
+	/// player spells
+	"WND",					// 55	SPL_BeliarRage
+	"FIB",					// 56	SPL_MasterOfDisaster
 	
 	/// special spells
-	"FIB",					// 55	SPL_MasterOfDisaster
-	"WND",					// 56	SPL_BeliarRage
 	"HEA",  				// 57	SPL_Teleport
 	"TRF",  				// 58	SPL_Transform
 	"SUM",  				// 59	SPL_Summon
 	
-	/// MYS spells
-	"FBT",  				// 60	SPL_MysBall
-	"FEA",  				// 61	SPL_MysAura
-	"FRZ",  				// 62	SPL_MysRoot
-	"FBT",  				// 63	SPL_MysTame
-	"EXP",  				// 64	SPL_MysEcho
-	"STM",  				// 65	SPL_MysSlow
+	/// npc spells
+	"FBT",  				// 60	SPL_ConcussionSpell
+	"FBT",  				// 61	SPL_DeathSpell
+	"FBT",  				// 62	SPL_Dragonball
+	"FBT",  				// 63	SPL_BlackDragonball
+	"FBT",  				// 64	SPL_BlueFireball
+	"FBT",  				// 65	SPL_RedFireball
+	"XXX",  				// 66	SPL_Reserved_66
+	"XXX",  				// 67	SPL_Reserved_67
+	"XXX",					// 68	SPL_Reserved_68
+	"XXX",					// 69	SPL_Reserved_69
 	
-	/// GEO spells
-	"FBT",  				// 66	SPL_GeoStone
-	"FEA",  				// 67	SPL_GeoAura
-	"SUM",					// 68	SPL_GeoElevate
-	"SUM",					// 69	SPL_GeoGolem
-	"FOT",					// 70	SPL_GeoQuake
-	"WHI",  				// 71	SPL_GeoCollapse
+	/// common spells
+	"STM",					// 70	SPL_Thunderstorm
+	"WHI",  				// 71	SPL_Whirlwind
+	"WND",  				// 72	SPL_WaterFist
+	"FBT",  				// 73	SPL_IceLance
+	"SLE",  				// 74	SPL_Inflate
+	"WND",  				// 75	SPL_Geyser
+	"PYR",  				// 76	SPL_Fireburning
+	"LIN",  				// 77	SPL_ChainLightning
+	"EXP",  				// 78	SPL_Hurricane
+	"LIN",  				// 79	SPL_LightFlash
 	
-	/// ELE spells
-	"FBT",  				// 72	SPL_EleLance
-	"FEA",  				// 73	SPL_EleAura
-	"FRZ",  				// 74	SPL_EleFreeze
-	"EXP",  				// 75	SPL_EleHurricane
-	"LIN",  				// 76	SPL_EleLightning
-	"STM",  				// 77	SPL_EleThunderstorm
-	
-	/// PYR spells
-	"FBT",  				// 78	SPL_PyrFireball
-	"FEA",  				// 79	SPL_PyrAura
-	"PYR",  				// 80	SPL_PyrBurning
-	"FBT",					// 81	SPL_PyrFirebomb
-	"EXP",  				// 82	SPL_PyrExplosion
-	"STM",  				// 83	SPL_PyrFirerain
-	
-	/// NEC spells
-	"WND",  				// 84	SPL_NecLifesteal
-	"FEA",  				// 85	SPL_NecAura
-	"SUM",  				// 86	SPL_NecCurse
-	"FBT",  				// 87	SPL_NecPlague
-	"SUM",  				// 88	SPL_NecDemon
-	"WND",					// 89	SPL_NecDeath
+	"FEA",  				// 80	SPL_Plague
+	"FBT",					// 81	SPL_Swarm
+	"WND",  				// 82	SPL_GreenTentacle
+	"FOT",  				// 83	SPL_Earthquake
+	"FBT",  				// 84	SPL_Rock
+	"FBT",  				// 85	SPL_Mysticball
+	"WND",  				// 86	SPL_SuckEnergy
+	"WND",  				// 87	SPL_Skull
+	"SUM",  				// 88	SPL_Elevate
+	"FOT",					// 89	SPL_Crush
 	
 	/// ...
 	"XXX",  				// 90	SPL_Reserved_90

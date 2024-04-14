@@ -1,12 +1,12 @@
 ///******************************************************************************************
-///	MOBSI_MAKEJOINT
+/// MOBSI_MAKEJOINT
 ///******************************************************************************************
 func void MOBSI_MAKEJOINT_S1()
 {
 	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
-		self.aivar[AIV_INVINCIBLE] = true;
+		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_MAKEJOINT;
 		Ai_ProcessInfos(her);
 	};

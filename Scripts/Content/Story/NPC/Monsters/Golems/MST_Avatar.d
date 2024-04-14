@@ -5,7 +5,9 @@ prototype Mst_Default_Avatar (C_Npc)
 	name								=	"Awatar";
 	guild								=	GIL_GOLEM;
 	aivar[AIV_MM_REAL_ID]				=	ID_AVATAR;
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	
+	/// ------ AI vars ------
+	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_BLUNT;
@@ -21,7 +23,7 @@ prototype Mst_Default_Avatar (C_Npc)
 	aivar[AIV_MM_FollowInWater] 		=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_Packhunter] 			=	false;
-	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;

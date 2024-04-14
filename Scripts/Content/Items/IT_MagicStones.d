@@ -53,7 +53,7 @@ prototype ItemPR_Summon (C_Item)
 	COUNT[5]				=	value;
 };
 ///******************************************************************************************
-///	Teleport magic stones
+/// Teleport magic stones
 ///******************************************************************************************
 instance ItTe_BigFarm (ItemPR_Teleport)
 {
@@ -96,7 +96,7 @@ instance ItTe_Xardas (ItemPR_Teleport)
 	TEXT[1]					= 	"Do Xardasa";
 };
 ///******************************************************************************************
-///	Transform magic stones
+/// Transform magic stones
 ///******************************************************************************************
 instance ItTr_DragonSnapper (ItemPR_Transform)
 {
@@ -147,7 +147,7 @@ instance ItTr_Wolf (ItemPR_Transform)
 	TEXT[1]					= 	"W wilka";
 };
 ///******************************************************************************************
-///	Summon magic stones
+/// Summon magic stones
 ///******************************************************************************************
 instance ItSu_Demon (ItemPR_Summon)
 {
@@ -178,7 +178,7 @@ instance ItSu_Zombie (ItemPR_Summon)
 	TEXT[1]					=	"Zombie";
 };
 ///******************************************************************************************
-///	MagicDust
+/// Magic dusts
 ///******************************************************************************************
 prototype ItemPR_MagicDust (C_Item)
 {
@@ -200,7 +200,7 @@ func void Use_ItMi_LifeDust()
 {
 	Npc_ChangeAttribute (self, ATR_HITPOINTS, ATR_HITPOINTS_MAX);
 };
-///******************************************************************************************
+
 instance ItMi_MagicDust (ItemPR_MagicDust)
 {
 	name 					=	"Esencja magii";
@@ -214,7 +214,7 @@ func void Use_ItMi_MagicDust()
 {
 	Npc_ChangeAttribute (self, ATR_MANA, ATR_MANA_MAX);
 };
-///******************************************************************************************
+
 instance ItMi_EnergyDust (ItemPR_MagicDust)
 {
 	name 					=	"Esencja energii";
@@ -228,7 +228,7 @@ func void Use_ItMi_EnergyDust()
 {
 	self.aivar[AIV_Stamina] = self.aivar[AIV_Stamina_MAX];
 };
-///******************************************************************************************
+
 instance ItMi_TimeDust (ItemPR_MagicDust)
 {
 	name 					=	"Esencja czasu";

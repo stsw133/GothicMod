@@ -1,10 +1,9 @@
 ///******************************************************************************************
-///	SPL_BeliarRage
+/// SPL_BeliarRage
 ///******************************************************************************************
 
-const int SPL_Cost_BeliarRage			=	20;	//100
-const int SPL_Damage_BeliarRage			=	20;	//200
-const int SPL_Scaling_BeliarRage		=	200;
+const int SPL_Cost_BeliarRage			=	20;
+const int SPL_Damage_BeliarRage			=	20;
 
 ///******************************************************************************************
 instance Spell_BeliarRage (C_Spell_Proto)
@@ -16,25 +15,10 @@ instance Spell_BeliarRage (C_Spell_Proto)
 
 func int Spell_Logic_BeliarRage (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_BeliarRage/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_BeliarRage)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_BeliarRage, manaInvested);
 };
 
 func void Spell_Cast_BeliarRage()
 {
-	if (Npc_GetActiveSpellIsScroll(self))
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_BeliarRage/SPL_Cost_Scroll;
-	}
-	else
-	{
-		self.attribute[ATR_MANA] -= SPL_Cost_BeliarRage;
-	};
-	
-	self.aivar[AIV_SelectSpell] += 1;
+	B_SpellCast (self, default, SPL_Cost_BeliarRage);
 };

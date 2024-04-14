@@ -10,6 +10,9 @@ const int true			=	1;
 const int decrease		=	0;
 const int increase		=	1;
 
+const int LOOP_CONTINUE =	0;
+const int LOOP_END		=	1;
+
 ///******************************************************************************************
 ///	AIV
 ///******************************************************************************************
@@ -32,7 +35,7 @@ const int AIV_NpcSawPlayerCommitDay			=	2;
 
 /// ------ Talk ------
 const int AIV_NpcStartedTalk				=	3;
-const int AIV_Invincible					=	4;
+const int AIV_Invisible						=	4;
 const int AIV_TalkedToPlayer				=	5;
 
 /// ------ Pickpocket ------
@@ -129,7 +132,6 @@ const int AIV_MM_FollowTime 				=	27;
 	const int FOLLOWTIME_SHORT			= 5;
 	const int FOLLOWTIME_MEDIUM			= 10;
 	const int FOLLOWTIME_LONG			= 20;
-
 const int AIV_MM_FollowInWater 				=	28;
 
 /// ------ Monster AIV: priority ------
@@ -348,13 +350,12 @@ const int AIV_DeathInvGiven					=	50;
 
 /// ------ Magic user ------
 const int AIV_MagicUser						=	51;	/// changed!!!
-	const int MAGIC_NEVER				= 0;
-	const int MAGIC_MYS					= 1;
-	const int MAGIC_GEO					= 2;
-	const int MAGIC_ELE					= 3;
-	const int MAGIC_PYR					= 4;
-	const int MAGIC_NEC					= 5;
-	const int MAGIC_OTHER				= 6;
+	const int MAGIC_MYS					= 2;
+	const int MAGIC_GEO					= 3;
+	const int MAGIC_ELE					= 4;
+	const int MAGIC_PYR					= 5;
+	const int MAGIC_NEC					= 6;
+	const int MAGIC_LUM					= 7;
 
 /// ------ Drop unconscious ------
 const int AIV_DropDeadAndKill				=	52;
@@ -368,7 +369,6 @@ const int AIV_IgnoreCrime					=	54;	/// changed!!!
 	const int IGNORE_Theft				= 1 << 1;
 	const int IGNORE_Sheepkiller		= 1 << 2;
 	const int IGNORE_Fear				= 1 << 3;
-
 const int AIV_IgnoreDisguise				=	55;	/// changed!!!
 	const int IGNORE_Armor				= 1 << 0;
 	const int IGNORE_FakeGuild			= 1 << 1;
@@ -384,64 +384,58 @@ const int AIV_NewsOverride					=	58;	/// changed!!!
 	const int NEWS_Ambient				= 1 << 0;
 	const int NEWS_ToughGuy				= 1 << 1;
 
-/// ------ Monster attack ------
+/// ------ Attack ------
 const int AIV_MaxDistToWp					=	59;
 const int AIV_OriginalFightTactic			=	60;
-
-/// ------ Assess enemy ------
 const int AIV_EnemyOverride					=	61;
-
-/// ------ Summon time ------
-const int AIV_SummonTime					=	62;
-
-/// ------ Attack ------
-const int AIV_FightDistCancel				=	63;
-const int AIV_LastFightComment				=	64;
+const int AIV_FightDistCancel				=	62;
+const int AIV_LastFightComment				=	63;
 
 /// ------ Special attributes ------
-const int AIV_LifeSteal						=	65;	/// new!!!
-const int AIV_DmgReflection					=	66;	/// new!!!
-const int AIV_AreaDmg						=	67; /// new!!!
+const int AIV_LifeSteal						=	64;	/// new!!!
+const int AIV_DmgReflection					=	65;	/// new!!!
+const int AIV_AreaDmg						=	66; /// new!!!
+const int AIV_Reserved_67					=	67;
 const int AIV_Reserved_68					=	68;
 
 /// ------ Love! ------
 const int AIV_Love							=	69; /// new (OBSOLETE) between 0 (0%) and 100'000 (100%), if girl have under 0 then she will not want to talk to you
 
-/// ------ Stamina ------
-const int AIV_Stamina						=	70;	/// new!!!
-const int AIV_Stamina_MAX					=	71;	/// new!!!
-
-/// ------ Story ------
-const int AIV_NoFightParker					=	72;
-const int AIV_Story							=	73;	/// changed!!!
-	const int STORY_IsRanger			= 1 << 0;
-	const int STORY_Bandit				= 1 << 1;
-	const int STORY_Esteban				= 1 << 2;
-
-/// ------ Visual ------
-const int AIV_Gender						=	74;
-	const int MALE						= 0;
-	const int FEMALE					= 1;
-	const int ORCMALE					= 2;
-const int AIV_BodyTex	 					=	75;
-const int AIV_SkinTex	 					=	76;
-const int AIV_FaceTex	 					=	77;
-const int AIV_TeethTex	 					=	78;
+/// ------ States ------
+const int AIV_StateTime						=	70;
+const int AIV_MagicStateTime 				=	71;
+const int AIV_SummonTime					=	72;
+const int AIV_ShrinkState					=	73;
+const int AIV_SlowTime						=	74;
+const int AIV_Reserved_75					=	75;
+const int AIV_Reserved_76					=	76;
+const int AIV_Reserved_77					=	77;
+const int AIV_Reserved_78					=	78;
 
 /// ------ Team ------
 const int AIV_PartyMember					=	79;
 const int AIV_FollowDist					=	80;
 
-/// ------ Magic states ------
-const int AIV_StateTime						=	81;
-const int AIV_ShrinkState 					=	82;
-const int AIV_FreezeStateTime				=	83;
-const int AIV_InflateStateTime				=	84;
-const int AIV_SwarmStateTime				=	85;
-const int AIV_SuckEnergyStateTime			=	86;
-const int AIV_WhirlwindStateTime			=	87;
-const int AIV_DebuffID						=	88;
-const int AIV_BuffID		 				=	89;
+/// ------ Stamina ------
+const int AIV_Stamina						=	81;	/// new!!!
+const int AIV_Stamina_MAX					=	82;	/// new!!!
+
+/// ------ Story ------
+const int AIV_NoFightParker					=	83;
+const int AIV_Story							=	84;	/// changed!!!
+	const int STORY_IsRanger			= 1 << 0;
+	const int STORY_Bandit				= 1 << 1;
+	const int STORY_Esteban				= 1 << 2;
+
+/// ------ Visual ------
+const int AIV_Gender						=	85;
+	const int MALE						= 0;
+	const int FEMALE					= 1;
+	const int ORCMALE					= 2;
+const int AIV_BodyTex	 					=	86;
+const int AIV_SkinTex	 					=	87;
+const int AIV_FaceTex	 					=	88;
+const int AIV_TeethTex	 					=	89;
 
 /// ...
 const int AIV_Reserved_90					=	90;
@@ -526,7 +520,7 @@ const int FIGHT_DIST_MONSTER_ATTACKRANGE	=	700;
 const int FIGHT_DIST_MONSTER_FLEE			=	300;
 const int FIGHT_DIST_DRAGON_MAGIC			=	700;
 
-const int MONSTER_THREATEN_TIME				=	4;
+const int MONSTER_THREATEN_TIME				=	3;	//4
 const int MONSTER_SUMMON_TIME				=	60;
 
 ///******************************************************************************************
@@ -553,8 +547,8 @@ const int WATCHFIGHT_DIST_MAX			=	2000;
 
 const int ZivilAnquatschDist 			=	400;
 
-const float RANGED_CHANCE_MINDIST		=	1500;
-const float RANGED_CHANCE_MAXDIST		=	4500;
+const float RANGED_CHANCE_MINDIST		=	2500;	//1500
+const float RANGED_CHANCE_MAXDIST		=	5000;	//4500
 
 ///******************************************************************************************
 ///	Zeit-Konstanten
@@ -613,19 +607,14 @@ const int FAI_Bear						=	45;
 const int FAI_Stoneguardian				=	46;
 
 ///******************************************************************************************
-///	Constants
-///******************************************************************************************
-
-const int LOOP_CONTINUE 			=	0;
-const int LOOP_END					=	1;
-
+/// Stats constants
 ///******************************************************************************************
 
 const int MAX_LEVEL					=	100;
 const int XP_PER_LEVEL				=	500;
 const int XP_PER_VICTORY			=	10;
 
-const int HP_PER_LEVEL				=	0;	//12
+const int HP_PER_LEVEL				=	2;	//12
 const int LP_PER_LEVEL				=	10;
 const int GOLD_PER_LP				=	20;
 
@@ -633,10 +622,12 @@ const int HP_PER_LP					=	4;
 const int MP_PER_LP					=	2;
 const int SP_PER_LP					=	5;
 
-/// for NPC
+/// for monsters
 const int AR_PER_LEVEL				=	5;
 const int MR_PER_LEVEL				=	5;
 
+///******************************************************************************************
+/// NPC types
 ///******************************************************************************************
 
 const int NPCTYPE_AMBIENT			=	0;
@@ -647,38 +638,40 @@ const int NPCTYPE_OCMAIN			=	4;
 const int NPCTYPE_BL_AMBIENT		=	5;
 const int NPCTYPE_TAL_AMBIENT		=	6;
 const int NPCTYPE_BL_MAIN			=	7;
-const int NPCTYPE_LOVE				=	8;
+const int NPCTYPE_LOVE				=	8;	/// new!!!
 
+///******************************************************************************************
+/// Mobsis
 ///******************************************************************************************
 
 const int MOBSI_NONE				=	0;
-const int MOBSI_SmithWeapon			=	1;
-const int MOBSI_SleepAbit			=	2;
-const int MOBSI_MakeRune			=	3;
-const int MOBSI_PotionAlchemy		=	4;
-const int MOBSI_PrayShrine			=	5;
-const int MOBSI_GoldHacken			=	6;
-const int MOBSI_PrayIdol			=	7;
 
-const int MOBSI_LearnAttributes		=	8;
+const int MOBSI_GoldHacken			=	1;
+const int MOBSI_OreHacken			=	2;	/// new!!!
+const int MOBSI_MakeAlcohol			=	3;	/// new!!!
+const int MOBSI_MakeJoint			=	4;	/// new!!!
+const int MOBSI_MakeRune			=	5;
+const int MOBSI_MakeScroll			=	6;	/// new!!!
+const int MOBSI_MakeTabak			=	7;	/// new!!!
+const int MOBSI_MakeWood			=	8;	/// new!!!
+const int MOBSI_MagicStone			=	9;	/// new!!!
+const int MOBSI_PotionAlchemy		=	10;
+const int MOBSI_PrayIdol			=	11;
+const int MOBSI_PrayShrine			=	12;
+const int MOBSI_SharpWeapon			=	13;	/// new!!!
+const int MOBSI_SleepAbit			=	14;
+const int MOBSI_SmithWeapon			=	15;
+const int MOBSI_UseCauldron			=	16;	/// new!!!
+const int MOBSI_UsePan				=	17;	/// new!!!
+const int MOBSI_UseStove			=	18;	/// new!!!
+const int MOBSI_UseWood				=	19;	/// new!!!
 
-const int MOBSI_OreHacken			=	9;
-const int MOBSI_MakeWood			=	10;
-const int MOBSI_SharpWeapon			=	11;
-const int MOBSI_UseStove			=	12;
-const int MOBSI_UsePan				=	13;
-const int MOBSI_UseCauldron			=	14;
-const int MOBSI_MagicStone			=	15;
-const int MOBSI_Wood				=	16;
-const int MOBSI_Tabak				=	17;
-const int MOBSI_MakeScroll			=	18;
-const int MOBSI_MakeAlcohol			=	19;
-const int MOBSI_MakeJoint			=	20;
+const int MOBSI_LearnAttributes		=	20;	/// new!!!
 
 var int PLAYER_MOBSI_PRODUCTION;
 
 ///******************************************************************************************
-///	Visual Constants
+/// Visual constants
 ///******************************************************************************************
 
 const int BodyTex_Default			=	0;

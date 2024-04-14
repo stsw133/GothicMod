@@ -251,9 +251,9 @@ func void DIA_Engrom_BESSEN_Info ()
 		
 	Npc_SetTarget 		(self, other);
 	
-	self.aivar[AIV_INVINCIBLE] = FALSE; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
-	other.aivar[AIV_INVINCIBLE] = FALSE;
-			
+	self.aivar[AIV_Invisible] = false; //HACK, weil durch AI_StartState (böse) Flag nicht zurückgesetzt wird 
+	other.aivar[AIV_Invisible] = false;
+	
 	AI_StartState 		(self, ZS_Flee, 0, "");	
 };
 

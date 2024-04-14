@@ -1,27 +1,23 @@
 ///******************************************************************************************
-///	SPL_PalBless
+/// SPL_PalBless
 ///******************************************************************************************
 
-const int SPL_Cost_PalBless				=	5;
+const int SPL_Cost_PalBless				=	10;
 
 ///******************************************************************************************
 instance Spell_PalBless (C_Spell_Proto)
 {
-	time_per_mana						=	0;
 	spelltype							=	SPELL_NEUTRAL;
-	targetCollectAlgo					=	TARGET_COLLECT_CASTER;
 	canTurnDuringInvest					=	false;
+	targetCollectAlgo					=	TARGET_COLLECT_CASTER;
+	targetCollectRange					=	0;
+	targetCollectAzi					=	0;
+	targetCollectElev					=	0;
 };
 
 func int Spell_Logic_PalBless (var int manaInvested)
 {
-	if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] >= SPL_Cost_PalBless/SPL_Cost_Scroll)
-	|| (self.attribute[ATR_MANA] >= SPL_Cost_PalBless)
-	{
-		return SPL_SENDCAST;
-	};
-	
-	return SPL_SENDSTOP;
+	return B_SpellLogic (self, default, SPL_Cost_PalBless, manaInvested);
 };
 
 func void Spell_Cast_PalBless()

@@ -19,7 +19,7 @@ prototype ItemPR_Ring (C_Item)
 	INV_ROTZ				=	INVCAM_Z_RING_STANDARD;
 };
 ///******************************************************************************************
-///	ProtPhysical
+/// ProtPhysical
 ///******************************************************************************************
 func void SetItRiAttributes_ProtPhysical (var C_Item itm, var int kap)
 {
@@ -52,7 +52,7 @@ instance ItRi_ProtPhysical_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	ProtMagic
+/// ProtMagical
 ///******************************************************************************************
 func void SetItRiAttributes_ProtMagical (var C_Item itm, var int kap)
 {
@@ -85,7 +85,7 @@ instance ItRi_ProtMagical_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	Hitpoints
+/// Hitpoints
 ///******************************************************************************************
 func void SetItRiAttributes_HP (var C_Item itm, var int kap)
 {
@@ -117,7 +117,7 @@ instance ItRi_HP_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	Mana
+/// Mana
 ///******************************************************************************************
 func void SetItRiAttributes_MP (var C_Item itm, var int kap)
 {
@@ -149,7 +149,7 @@ instance ItRi_MP_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	Stamina
+/// Stamina
 ///******************************************************************************************
 func void SetItRiAttributes_SP (var C_Item itm, var int kap)
 {
@@ -195,7 +195,7 @@ func void Equip_ItRi_SP_03()			{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
 func void UnEquip_ItRi_SP_03()			{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
 
 ///******************************************************************************************
-///	Strength
+/// Strength
 ///******************************************************************************************
 func void SetItRiAttributes_STR (var C_Item itm, var int kap)
 {
@@ -227,7 +227,7 @@ instance ItRi_STR_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	Dexterity
+/// Dexterity
 ///******************************************************************************************
 func void SetItRiAttributes_DEX (var C_Item itm, var int kap)
 {
@@ -259,7 +259,7 @@ instance ItRi_DEX_03 (ItemPR_Ring)
 };
 
 ///******************************************************************************************
-///	Power
+/// Power
 ///******************************************************************************************
 func void SetItRiAttributes_POW (var C_Item itm, var int kap)
 {
@@ -305,7 +305,7 @@ func void Equip_ItRi_POW_03()		{ Npc_AddPowerPoints(self, 10); };
 func void UnEquip_ItRi_POW_03()		{ Npc_AddPowerPoints(self, -10); };
 
 ///******************************************************************************************
-///	LifeSteal
+/// LifeSteal
 ///******************************************************************************************
 func void SetItRiAttributes_LS (var C_Item itm, var int kap)
 {
@@ -351,7 +351,7 @@ func void Equip_ItRi_LS_03()	{ self.aivar[AIV_LifeSteal] += 5; };
 func void UnEquip_ItRi_LS_03()	{ self.aivar[AIV_LifeSteal] -= 5; };
 
 ///******************************************************************************************
-///	DmgReflection
+/// DmgReflection
 ///******************************************************************************************
 func void SetItRiAttributes_DR (var C_Item itm, var int kap)
 {
@@ -397,7 +397,7 @@ func void Equip_ItRi_DR_03()	{ self.aivar[AIV_DmgReflection] += 5; };
 func void UnEquip_ItRi_DR_03()	{ self.aivar[AIV_DmgReflection] -= 5; };
 
 ///******************************************************************************************
-///	AreaDmg
+/// AreaDmg
 ///******************************************************************************************
 func void SetItRiAttributes_AD (var C_Item itm, var int kap)
 {

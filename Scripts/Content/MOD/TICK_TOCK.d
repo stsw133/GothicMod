@@ -35,7 +35,7 @@ func void TT_5000()
 		};
 		
 		/// skalowanie prêdkoœci postaci
-		NPC_SetTimeScale (hero, 95 + hero.attribute[ATR_DEXTERITY]/10);
+		//NPC_SetTimeScale (hero, 1000 + hero.attribute[ATR_DEXTERITY]);
 	};
 };
 
@@ -55,6 +55,10 @@ func void TT_1000_RGHP()
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpRegenPoints/10);
 		hpRegenPoints -= hpRegenPoints/10*10;
 	};
+	
+	/// gdy postaæ ma tarczê
+	if (mShieldPhPoints > 0) { mShieldPhPoints -= 1; };
+	if (mShieldMgPoints > 0) { mShieldMgPoints -= 1; };
 };
 func void TT_1000_RGMP()
 {
@@ -107,7 +111,9 @@ func void TT_1000()
 		///	dzia³anie mikstur (i jedzenia)
 		Potions_Process();
 		
-		/// efekty zaklêæ
+		/// efekty zaklêæ:
+		if (mAuraPalTime > 0) { mAuraPalTime -= 1; };
+		if (bsStealth > 0) { MOD_SetStealth(hero, bsStealth - 1); };
 		if (mAuraTime > 0)
 		{
 			if (mAuraType == MAGIC_MYS) { Npc_ChangeAttribute (hero, ATR_HITPOINTS, 5); };
@@ -130,28 +136,39 @@ func void TT_200()
 		return;
 	};
 	
-	if (inFightCounter > 0)
-	{
-		inFightCounter -= 1;
-		if (inFightCounter == 0)
-		{
-			SPL_AllDamage_MysBall = 0;
-		};
-	};
+	/// zmniejszenie spowolnienia
+	if (mSlowPoints > 0)	{	mSlowPoints -= 1;	};
+	if (mSlowTime > 0)		{	mSlowTime -= 1;		};
 	
-	/// zu¿ycie energii
+	/// zu¿ycie energii podczas biegu
 	if (bsSprint && C_BodyStateContains(hero, BS_RUN))
 	{
 		hero.aivar[AIV_Stamina] -= 2+bsArmor;
 	};
+	
+	/// zu¿ycie energii podczas walki & skalowanie zwinnoœci
 	if (C_BodyStateContains(hero, BS_HIT) || C_BodyStateContains(hero, BS_PARADE))
 	{
-		hero.aivar[AIV_Stamina] -= 3-usingForgedWeapon;
+		if (C_BodyStateContains(hero, BS_HIT) && !movieMode)
+		{
+			if (hero.aivar[AIV_Stamina] < 10)	{	NPC_SetTimeScale (hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
+			else								{	NPC_SetTimeScale (hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
+		};
+		hero.aivar[AIV_Stamina] -= 3+bsArmor-usingForgedWeapon;
+	}
+	else
+	{
+		NPC_SetTimeScale (hero, 1000 - mSlowPoints*10);
 	};
+	
+	/// odœwie¿enie stanu energii
 	Npc_StaminaRefresh(hero);
 	
 	/// stan atrybutów
 	ShowBarText();
+	
+	/// u¿ycie mobów
+	MOD_Mobs();
 };
 ///******************************************************************************************
 ///	Wywo³ywane co 5 milisekund
@@ -194,14 +211,18 @@ func void TT_5()
 	};
 	
 	/// ------ Klawisz skrótów ------
+	/*
 	if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
 	{
-		//AI_PlayAni (hero, "T_QUICKTURN");
+		AI_PlayAni (hero, "T_QUICKTURN");
 	};
+	*/
 	
 	/// ------ PPM ------
 	if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
 	{
+		o_hero = Hlp_GetNpc(hero);
+		
 		/// pokonanie przeciwnika
 		if (Npc_IsInFightMode(hero, FMODE_MELEE)) //Npc_HasReadiedMeleeWeapon(hero)
 		{
@@ -242,31 +263,18 @@ func void TT_5()
 		};
 	};
 	
-	/// ------ Efekty zaklêæ ------
-	if (SPL_IsActive_NightToDay)
-	{
-		if (Wld_IsTime(20,00, 08,00))
-		{
-			B_ScaleTime(20000);
-		}
-		else
-		{
-			SPL_IsActive_NightToDay = false;
-		};
-	};
-	
 	/// ------ Tryb filmowy ------
 	if (movieMode)
 	{
 		B_ScaleTime(75 + scaleTime);
 		
 		/// ------ Klawisze do skrótów animacji etc. ------
-		if		(MEM_KeyState(keyShortcuts1) == KEY_HOLD)	{	MovieMode_SetFaceAni();			}	/// animacje twarzy
+		if		(MEM_KeyState(KEY_F) == KEY_HOLD)			{	MovieMode_SetFaceAni();			}	/// animacje twarzy
 		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MovieMode_DialogGesture();		}	/// dialogi
-		else if (MEM_KeyState(keyInteract1) == KEY_HOLD)	{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
+		else if (MEM_KeyState(KEY_V) == KEY_HOLD)			{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
 		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
 		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// kierunek rêki
-		else if (MemoKey1 != -1)								{	MemoKey1 = -1;	MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
+		else if (MemoKey1 != -1)								{	MemoKey1 = -1; MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
 	};
 	
 	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------

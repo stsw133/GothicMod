@@ -113,7 +113,7 @@ func void B_ENTER_NEWWORLD_Kapitel_8()
 		
 		if (hero.guild == GIL_MIL || hero.guild == GIL_PAL)
 		{
-			Wld_InsertItem (ItAm_Rogue_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Bandit_01, "FP_ROAM_XARDAS_SECRET_26");
 		}
 		else if (hero.guild == GIL_SLD || hero.guild == GIL_DJG)
 		{
@@ -362,7 +362,7 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 		ShrineIsObsessed_NW_BIGMILL_MALAKSVERSTECK_02 	= true;
 		ShrineIsObsessed_NW_FARM3_BIGWOOD_02 			= true;
 		
-		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(9)), TEXT_Chapter_09, "chapter4.tga", "chapter_01.wav", 6000);
+		//B_ChangeChapter (9, NEWWORLD_ZEN);
 		EnterNW_Kapitel = 9;
 	};
 };
@@ -791,8 +791,7 @@ func void B_ENTER_NEWWORLD_Kapitel_11()
 		B_StartOtherRoutine	(Pal_240_Ritter, "ShipFree");
 		B_StartOtherRoutine	(Pal_241_Ritter, "ShipFree");
 		
-		IntroduceChapter (ConcatStrings(TEXT_Chapter, IntToString(11)), TEXT_Chapter_11, "chapter5.tga", "chapter_01.wav", 6000);
-		
+		//B_ChangeChapter (11, NEWWORLD_ZEN);
 		EnterNW_Kapitel = 11;
 	};
 	

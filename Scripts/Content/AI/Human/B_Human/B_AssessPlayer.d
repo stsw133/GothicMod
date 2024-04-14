@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void B_AssessPlayer()
 {
-	if (other.aivar[AIV_INVINCIBLE])
+	if (other.aivar[AIV_Invisible])
 	{
 		return;
 	};

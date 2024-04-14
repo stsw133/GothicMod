@@ -10,7 +10,7 @@ instance DMT_1211_Dementor (Npc_Default)
 	bodyStateInterruptableOverride		=	true;
 
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_OTHER;
+	aivar[AIV_MagicUser]				=	true;
 	aivar[AIV_EnemyOverride]			=	true;
 
 	/// ------ Attributes ------

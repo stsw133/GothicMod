@@ -3,6 +3,11 @@
 ///******************************************************************************************
 func void B_AssessTalk()
 {
+	if (bsStealth > 0)
+	{
+		return;
+	};
+	
 	if (C_BodyStateContains(self, BS_RUN))
 	&& (Npc_IsInState(self, ZS_FleeToWp))
 	{

@@ -939,7 +939,7 @@ func void DIA_Addon_Lares_RangerHelp_Moe()
 	AI_Output (self, other, "DIA_Addon_Lares_Moe_09_01"); //Chwila...
 	Info_ClearChoices (DIA_Addon_Lares_RangerHelp);
 	AI_StopProcessInfos (self);
-	other.aivar[AIV_INVINCIBLE] = FALSE;
+	other.aivar[AIV_Invisible] = false;
 	B_Attack (self, Moe, AR_GuardStopsFight, 0);
 };
 

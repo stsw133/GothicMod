@@ -10,7 +10,7 @@ instance PC_Mage_OW (Npc_Default)
 	npctype								=	NPCTYPE_FRIEND;
 	
 	/// ------ AI vars ------
-	aivar[AIV_MagicUser]				=	MAGIC_PYR;
+	aivar[AIV_MagicUser]				=	true;
 
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);

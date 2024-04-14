@@ -184,7 +184,7 @@ instance DIA_Sagitta_Sagitta_Herb		(C_INFO)
 
 func int DIA_Sagitta_Sagitta_Herb_Condition ()
 {	
-	if (Npc_HasItems (other,ItPl_SunHerb))
+	if (Npc_HasItems (other,ItPl_Fire_Herb_01))
 	&& (MIS_Sagitta_Herb == LOG_RUNNING)
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
 		{
@@ -195,7 +195,7 @@ func void DIA_Sagitta_Sagitta_Herb_Info ()
 {
 	AI_Output			(other, self, "DIA_Sagitta_Sagitta_Herb_15_00"); //Znalaz³em s³oneczny aloes.
 	AI_Output			(self, other, "DIA_Sagitta_Sagitta_Herb_17_01"); //Dziêkujê. Mo¿esz mnie pytaæ, o co tylko zechcesz.
-	B_GiveInvItems		(other, self, ItPl_SunHerb, 1);
+	B_GiveInvItems		(other, self, ItPl_Fire_Herb_01, 1);
 	self.aivar[AIV_CanOffer] = self.aivar[AIV_CanOffer] | OFFER_Teaching;
 	
 	MIS_Sagitta_Herb = LOG_SUCCESS;

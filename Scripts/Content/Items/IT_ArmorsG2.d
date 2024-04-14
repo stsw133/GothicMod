@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Farmer armors: BAU
+/// Farmer armors: BAU
 ///******************************************************************************************
 instance ITAR_BAU_00 (ItemPR_Armor)
 {
@@ -23,7 +23,7 @@ instance ITAR_BAU_02 (ItemPR_Armor)
 	SetItArAttributes (self, 5,5,0,0,   2);	/// 1 level
 };
 ///******************************************************************************************
-///	Farmer armors: BAU (BABE)
+/// Farmer armors: BAU (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_BAU_00 (ItemPR_Armor)	/// woman-dress maid (brown)
 {
@@ -68,7 +68,7 @@ instance ITAR_Babe_BAU_05 (ItemPR_Armor)	/// woman-dress darker brown
 	SetItArAttributes (self, 10,10,0,0,   5);	/// 2 level
 };
 ///******************************************************************************************
-///	Citizen armors: VLK
+/// Citizen armors: VLK
 ///******************************************************************************************
 instance ITAR_VLK_L_00 (ItemPR_Armor)	/// vlk harbor-district
 {
@@ -296,7 +296,7 @@ instance ITAR_VLK_H_15 (ItemPR_Armor)	/// vlk gray-brown
 	SetItArAttributes (self, 12,12,3,3,   15);	/// 3 level
 };
 ///******************************************************************************************
-///	Citizen armors: VLK (BABE)
+/// Citizen armors: VLK (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_VLK_L_00 (ItemPR_Armor)	/// woman-dress blue
 {
@@ -427,7 +427,7 @@ instance ITAR_Babe_VLK_H_05 (ItemPR_Armor)	/// woman-dress dark
 	SetItArAttributes (self, 10,10,0,0,   5);	/// 2 level
 };
 ///******************************************************************************************
-///	Craftsman armors
+/// Worker armors
 ///******************************************************************************************
 instance ITAR_Alchemist (ItemPR_Armor)
 {
@@ -480,7 +480,7 @@ instance ITAR_Judge (ItemPR_Armor)
 	SetItArAttributes (self, 20,20,4,0,   0);	/// 4 level
 };
 ///******************************************************************************************
-///	Craftsman armors (BABE)
+/// Worker armors (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_Nurse (ItemPR_Armor)
 {
@@ -490,7 +490,7 @@ instance ITAR_Babe_Nurse (ItemPR_Armor)
 	SetItArAttributes (self, 20,20,4,0,   0);	/// 4 level
 };
 ///******************************************************************************************
-///	Leather armors
+/// Leather armors
 ///******************************************************************************************
 instance ITAR_Leather_L (ItemPR_Armor)	/// wolf leather
 {
@@ -550,7 +550,7 @@ instance ITAR_DragonSnapper (ItemPR_Armor)
 	description		=	"Zbroja z ³usek zêbaczy";
 };
 ///******************************************************************************************
-///	Leather armors (BABE)
+/// Leather armors (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_Leather (ItemPR_Armor)
 {
@@ -570,7 +570,7 @@ instance ITAR_Babe_Crawler (ItemPR_Armor)
 	description		=	"Zbroja z p³ytek pe³zaczy";
 };
 ///******************************************************************************************
-///	Guard armors: MIL & ROY
+/// Guard armors: MIL & ROY
 ///******************************************************************************************
 instance ITAR_MIL_N (ItemPR_Armor)
 {
@@ -641,7 +641,7 @@ instance ITAR_ROY_H (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Guard armors: MIL & ROY (BABE)
+/// Guard armors: MIL & ROY (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_MIL_N (ItemPR_Armor)
 {
@@ -675,7 +675,7 @@ instance ITAR_Babe_MIL_H (ItemPR_Armor)
 	description		=	"Ciêzki pancerz stra¿y";
 };
 ///******************************************************************************************
-///	Dragon hunter armors: SLD & DJG
+/// Dragon hunter armors: SLD & DJG
 ///******************************************************************************************
 instance ITAR_SLD_N (ItemPR_Armor)
 {
@@ -746,7 +746,7 @@ instance ITAR_DJG_H (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Dragon hunter armors: SLD & DJG (BABE)
+/// Dragon hunter armors: SLD & DJG (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_SLD_L (ItemPR_Armor)
 {
@@ -798,7 +798,7 @@ instance ITAR_Babe_DJG_H (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Orc mercenary armors
+/// Orc mercenary armors
 ///******************************************************************************************
 instance ITAR_ORM_L (ItemPR_Armor)
 {
@@ -874,7 +874,7 @@ instance ITAR_ORW_H (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Mage armors: NOV & MAG & AMG
+/// Mage armors: NOV & MAG & AMG
 ///******************************************************************************************
 instance ITAR_NOV_L (ItemPR_Armor)
 {
@@ -966,7 +966,7 @@ instance ITAR_MAG_D (ItemPR_Armor)
 	SetItArAttributes (self, 120,120,90,90,   0);	/// 42 level
 };
 ///******************************************************************************************
-///	Mage armors: NOV & MAG & AMG (BABE)
+/// Mage armors: NOV & MAG & AMG (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_Mage (ItemPR_Armor)
 {
@@ -976,7 +976,7 @@ instance ITAR_Babe_Mage (ItemPR_Armor)
 	SetItArAttributes (self, 70,70,35,35,   0);	/// 21 level
 };
 ///******************************************************************************************
-///	Paladin armors: PAL
+/// Paladin armors: PAL
 ///******************************************************************************************
 instance ITAR_PAL_L (ItemPR_Armor)
 {
@@ -1064,7 +1064,7 @@ instance ITAR_PAL_G (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Assassin armors: AKO & PRI
+/// Assassin armors: AKO & PRI
 ///******************************************************************************************
 instance ITAR_AKO_L (ItemPR_Armor)
 {
@@ -1116,7 +1116,7 @@ instance ITAR_PRI_H (ItemPR_Armor)
 	description		=	"Ciê¿ki pancerz dem. zabójcy";
 };
 ///******************************************************************************************
-///	Prisoner armors: STRF
+/// Prisoner armors: STRF
 ///******************************************************************************************
 instance ITAR_Prisoner_L (ItemPR_Armor)
 {
@@ -1140,7 +1140,7 @@ instance ITAR_Prisoner_H (ItemPR_Armor)
 	SetItArAttributes (self, 4,4,0,0,   0);	/// 1 level
 };
 ///******************************************************************************************
-///	Prisoner armors: STRF (BABE)
+/// Prisoner armors: STRF (BABE)
 ///******************************************************************************************
 instance ITAR_Babe_Prisoner_L (ItemPR_Armor)
 {
@@ -1164,7 +1164,7 @@ instance ITAR_Babe_Prisoner_H (ItemPR_Armor)
 	SetItArAttributes (self, 4,4,0,0,   0);	/// 1 level
 };
 ///******************************************************************************************
-///	Bandit armors: BDT & RVN
+/// Bandit armors: BDT & RVN
 ///******************************************************************************************
 instance ITAR_Bandit (ItemPR_Armor)
 {
@@ -1207,7 +1207,7 @@ instance ITAR_RVN_H (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Pirate armors: PIR
+/// Pirate armors: PIR
 ///******************************************************************************************
 instance ITAR_PIR_L (ItemPR_Armor)
 {
@@ -1231,7 +1231,7 @@ instance ITAR_PIR_H (ItemPR_Armor)
 	SetItArAttributes (self, 60,60,15,15,   0);	/// 15 level
 };
 ///******************************************************************************************
-///	Ranger armors
+/// Ranger armors
 ///******************************************************************************************
 instance ITAR_Ranger_L (ItemPR_Armor)
 {
@@ -1248,7 +1248,7 @@ instance ITAR_Ranger_H (ItemPR_Armor)
 	SetItArAttributes (self, 55,55,15,15,   1);	/// 14 level
 };
 ///******************************************************************************************
-///	Dementor armors: DMT
+/// Dementor armors: DMT
 ///******************************************************************************************
 instance ITAR_Dementor (ItemPR_Armor)
 {
@@ -1304,7 +1304,7 @@ instance ITAR_SteamKnight (ItemPR_Armor)
 	on_unequip		=	UnEquip_HeavyArmor;
 };
 ///******************************************************************************************
-///	Other armors
+/// Other armors
 ///******************************************************************************************
 instance ITAR_Forest (ItemPR_Armor)
 {

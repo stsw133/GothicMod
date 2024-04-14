@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_StopPyro
+/// B_StopPyro
 ///******************************************************************************************
 
 const int SPL_PYRO_DAMAGE_PER_SEC = 40;
@@ -19,11 +19,12 @@ func void B_StopPyro()
 	{
 		Npc_SetTempAttitude (self, ATT_HOSTILE);
 	};
+	
 	AI_ContinueRoutine(self);
 };
 
 ///******************************************************************************************
-///	ZS_Pyro
+/// ZS_Pyro
 ///******************************************************************************************
 func int ZS_Pyro()
 {
@@ -37,6 +38,7 @@ func int ZS_Pyro()
 	{
 		AI_StandUpQuick(self);
 	};
+	
 	if (self.guild < GIL_SEPERATOR_HUM)
 	{
 		AI_PlayAni (self, "T_STAND_2_LIGHTNING_VICTIM");

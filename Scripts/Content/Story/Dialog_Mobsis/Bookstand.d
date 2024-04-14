@@ -1,10 +1,9 @@
 ///******************************************************************************************
-///	Bookstand_Alchemy
+/// Bookstand_Alchemy
 ///******************************************************************************************
 func void Use_BookstandALCHEMY1_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -56,8 +55,7 @@ func void Use_BookstandALCHEMY1_S1()
 ///******************************************************************************************
 func void Use_BookstandALCHEMY2_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -109,8 +107,7 @@ func void Use_BookstandALCHEMY2_S1()
 ///******************************************************************************************
 func void Use_BookstandALCHEMY3_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -159,12 +156,11 @@ func void Use_BookstandALCHEMY3_S1()
 };
 
 ///******************************************************************************************
-///	Bookstand_Animals
+/// Bookstand_Animals
 ///******************************************************************************************
 func void Use_BookstandAnimals1_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -210,8 +206,7 @@ func void Use_BookstandAnimals1_S1()
 ///******************************************************************************************
 func void Use_BookstandAnimals2_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -257,8 +252,7 @@ func void Use_BookstandAnimals2_S1()
 ///******************************************************************************************
 func void Use_BookstandAnimals3_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -305,8 +299,7 @@ func void Use_BookstandAnimals3_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory1_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -349,8 +342,7 @@ func void Use_BookstandHistory1_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory2_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -390,8 +382,7 @@ func void Use_BookstandHistory2_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory3_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -437,8 +428,7 @@ func void Use_BookstandHistory3_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rune_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -466,8 +456,7 @@ func void Use_Bookstand_Rune_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rune_02_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -495,8 +484,7 @@ func void Use_Bookstand_Rune_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Innos_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -524,8 +512,7 @@ func void Use_Bookstand_Innos_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Innos_02_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -553,8 +540,7 @@ func void Use_Bookstand_Innos_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -603,8 +589,7 @@ func void Use_Bookstand_Kreise_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_02_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -653,8 +638,7 @@ func void Use_Bookstand_Kreise_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_03_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -708,8 +692,7 @@ func void Use_Bookstand_Kreise_03_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_04_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -756,8 +739,7 @@ func void Use_Bookstand_Kreise_04_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_05_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -804,8 +786,7 @@ func void Use_Bookstand_Kreise_05_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_06_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -862,8 +843,7 @@ func void Use_Bookstand_Kreise_06_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rules_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -893,8 +873,7 @@ func void Use_Bookstand_Rules_01_S1()
 ///******************************************************************************************
 func void Use_Runemaking_KDW_CIRC1_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -962,12 +941,11 @@ func void Use_Runemaking_KDW_CIRC6_S1()
 };
 
 ///******************************************************************************************
-///	Bookstand_Dementor
+/// Bookstand_Dementor
 ///******************************************************************************************
 func void Use_BookstandDementor_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -981,12 +959,11 @@ func void Use_BookstandDementor_S1()
 };
 
 ///******************************************************************************************
-///	Bookstand_OldCamp
+/// Bookstand_OldCamp
 ///******************************************************************************************
 func void Bookstand_Milten_03_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -1024,8 +1001,7 @@ func void Bookstand_Milten_03_S1()
 ///******************************************************************************************
 func void Bookstand_Milten_02_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -1061,14 +1037,13 @@ func void Bookstand_Milten_02_S1()
 ///******************************************************************************************
 func void Bookstand_Milten_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
-		//	if (Npc_IsPlayer(self))
-		//	{
-		//		B_SetPlayerMap(ItWr_Map_OldWorld);
-		//	};
+		//if (Npc_IsPlayer(self))
+		//{
+		//	B_SetPlayerMap(ItWr_Map_OldWorld);
+		//};
 		
 		var int Document;
 		Document =	Doc_CreateMap		();
@@ -1083,8 +1058,7 @@ func void Bookstand_Milten_01_S1()
 ///******************************************************************************************
 func void Bookstand_Engor_01_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -1134,12 +1108,11 @@ func void Bookstand_Engor_01_S1()
 };
 
 ///******************************************************************************************
-///	Bookstand_Addon
+/// Bookstand_Addon
 ///******************************************************************************************
 func void Use_Bookstand_Addon_BL_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		var int nDocID;
@@ -1321,7 +1294,7 @@ func void Use_BookstandMaya()
 
 func void InitUse_BookstandMaya()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
 	{
 		if (!C_CanReadBookStand())

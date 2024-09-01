@@ -21,10 +21,13 @@ func int C_PlayerIsFakeBandit (var C_Npc slf, var C_Npc oth)
 	if (Npc_HasEquippedArmor(oth))
 	{
 		var C_Item itm; itm = Npc_GetEquippedArmor(oth);
-		if (Hlp_IsItem(itm, ITAR_Bandit))
+		if (Hlp_IsItem(itm, ITAR_BDT_L))
+		|| (Hlp_IsItem(itm, ITAR_BDT_M))
+		|| (Hlp_IsItem(itm, ITAR_BDT_H))
 		|| (Hlp_IsItem(itm, ITAR_RVN_L))
 		|| (Hlp_IsItem(itm, ITAR_RVN_M))
 		|| (Hlp_IsItem(itm, ITAR_RVN_H))
+		|| (Hlp_IsItem(itm, ITAR_Raven))
 		{
 			return true;
 		}

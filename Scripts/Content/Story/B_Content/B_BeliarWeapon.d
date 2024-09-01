@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	C_ScHasBeliarsWeapon
+/// C_ScHasBeliarsWeapon
 ///******************************************************************************************
 func int C_ScHasBeliarsWeapon()
 {
@@ -11,25 +11,25 @@ func int C_ScHasBeliarsWeapon()
 	};
 	
 	return false;
-};	
+};
 
 ///******************************************************************************************
-///	C_IsItemBeliarsWeapon
+/// C_IsItemBeliarsWeapon
 ///******************************************************************************************
-func int C_IsItemBeliarsWeapon(var C_Item Weap)
+func int C_IsItemBeliarsWeapon(var C_Item itm)
 {
-	if (Hlp_IsItem(Weap, ItMw_BeliarWeapon_Raven))
-	|| (Hlp_IsItem(Weap, ItMw_BeliarWeapon))
-	|| (Hlp_IsItem(Weap, ItRu_BeliarRage))
+	if (Hlp_IsItem(itm, ItMw_BeliarWeapon_Raven))
+	|| (Hlp_IsItem(itm, ItMw_BeliarWeapon))
+	|| (Hlp_IsItem(itm, ItRu_BeliarRage))
 	{
 		return true;
 	};
 	
 	return false;
-};	
+};
 
 ///******************************************************************************************
-///	C_ScHasReadiedBeliarsWeapon
+/// C_ScHasReadiedBeliarsWeapon
 ///******************************************************************************************
 func int C_ScHasReadiedBeliarsWeapon()
 {
@@ -43,7 +43,7 @@ func int C_ScHasReadiedBeliarsWeapon()
 };
 
 ///******************************************************************************************
-///	C_ScHasEquippedBeliarsWeapon
+/// C_ScHasEquippedBeliarsWeapon
 ///******************************************************************************************
 func int C_ScHasEquippedBeliarsWeapon()
 {
@@ -57,7 +57,7 @@ func int C_ScHasEquippedBeliarsWeapon()
 };
 
 ///******************************************************************************************
-///	B_ClearBeliarsWeapon
+/// B_ClearBeliarsWeapon
 ///******************************************************************************************
 func void B_ClearBeliarsWeapon()
 {
@@ -67,7 +67,7 @@ func void B_ClearBeliarsWeapon()
 };
 
 ///******************************************************************************************
-///	C_ScCanUpgradeBeliarsWeapon
+/// C_ScCanUpgradeBeliarsWeapon
 ///******************************************************************************************
 func int C_ScCanUpgradeBeliarsWeapon()
 {
@@ -80,7 +80,7 @@ func int C_ScCanUpgradeBeliarsWeapon()
 };
 
 ///******************************************************************************************
-///	B_UpgradeBeliarsWeapon
+/// B_UpgradeBeliarsWeapon
 ///******************************************************************************************
 func void B_UpgradeBeliarsWeapon()
 {

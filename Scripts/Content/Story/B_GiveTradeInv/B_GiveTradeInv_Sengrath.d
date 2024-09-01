@@ -21,9 +21,9 @@ func void B_GiveTradeInv_Sengrath (var C_Npc slf)
 		CreateInvItems (slf, ItSc_WindFist, 3);
 		CreateInvItems (slf, ItSc_Zap, 3);
 		
-		//CreateInvItems (slf, ItRi_Prot_Fire_02, 1);
-		//CreateInvItems (slf, ItBe_Addon_STR_10, 1);
-		//CreateInvItems (slf, ItBe_Addon_Prot_FIRE, 1);
+		CreateInvItems (slf, ItRi_Custody_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Str_02, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Fire_01, 1);
 		
 		Sengrath_ItemsGiven_Chapter = 8;
 	};

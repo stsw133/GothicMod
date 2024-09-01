@@ -19,8 +19,8 @@ func void B_GiveTradeInv_Engor (var C_Npc slf)
 		
 		CreateInvItems (slf, ItWr_Map_Oldworld, 1);
 		
-		//CreateInvItems (slf, ItRi_Prot_Total_01, 1);
-		//CreateInvItems (slf, ItAm_Prot_Fire_01, 1);
+		CreateInvItems (slf, ItAm_Prot_Fire_01, 1);
+		CreateInvItems (slf, ItRi_Prot_Blunt_01, 1);
 		
 		CreateInvItems (slf, ItSc_Firebolt, 3);
 		CreateInvItems (slf, ItSc_Firestorm, 3);

@@ -1,60 +1,63 @@
 ///******************************************************************************************
-/// IT_Food
-///******************************************************************************************
 
+var int foodBonus;
 var int foodBonusCounter;
-var int foodCounter;
-var int SchnellerHeringTime;
+var int schnellerHeringTime;
 
 /// ------ FoodCounter ------
 func void Npc_AddFoodCounter()
 {
 	if (Npc_IsPlayer(self))
 	{
-		foodCounter += 1;
-		if (foodCounter >= (20 + foodBonusCounter))
+		foodBonusCounter += 1;
+		if (foodBonusCounter >= (50 + foodBonus*2))
 		{
-			foodBonusCounter += 1;
-			foodCounter = 0;
-			B_RaiseAttribute (self, ATR_HITPOINTS_MAX, HP_PER_LP/2);
+			foodBonusCounter -= (50 + foodBonus*2);
+			if (MEM_ReadStatArr(RandomizedAttributesOrder, foodBonusCounter % 5) == ATR_HITPOINTS_MAX)
+			{
+				B_RaiseAttribute(self, ATR_HITPOINTS_MAX, 1*HP_PER_LP);
+			}
+			else if (MEM_ReadStatArr(RandomizedAttributesOrder, foodBonusCounter % 5) == ATR_MANA_MAX)
+			{
+				B_RaiseAttribute(self, ATR_MANA_MAX, 1*MP_PER_LP);
+			}
+			else
+			{
+				B_RaiseAttribute(self, MEM_ReadStatArr(RandomizedAttributesOrder, foodBonusCounter % 5), 1);
+			};
+			foodBonus += 1;
 		}
 		else
 		{
-			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(20 + foodBonusCounter - foodCounter), " pozosta³o do otrzymania bonusowych pkt. ¿ycia!"), FONT_ScreenSmall, COL_White, TIME_Print);
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(50 + foodBonus*2 - foodBonusCounter), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
 		};
 	};
 };
 
 /// ------ FoodTime ------
-func void Npc_AddFoodTime (var C_Npc slf, var int points, var int percents)
+func void Npc_AddFoodTime (var C_Npc slf, var int type, var int points, var int percent)
 {
-	var int totalPoints; totalPoints = points + slf.attribute[ATR_HITPOINTS_MAX]*percents/100;
-	if (digestionTime > 0)
+	var int totalPoints;
+	if (type == BarOrderHP)
 	{
-		totalPoints *= 2;
-	};
-	
-	if (Npc_IsPlayer(slf) && digestionTime == 0)
-	{
-		foodTime += totalPoints;
+		totalPoints = points + slf.attribute[ATR_HITPOINTS_MAX]*percent/100;
+		if (Npc_IsPlayer(slf)) { foodTime[BarOrderHP] += totalPoints; } else { Npc_ChangeAttribute (slf, ATR_HITPOINTS, totalPoints); };
 	}
-	else
+	else if (type == BarOrderMP)
 	{
-		Npc_ChangeAttribute (slf, ATR_HITPOINTS, totalPoints);
-	};
-};
-
-/// ------ DrinkTime ------
-func void Npc_AddDrinkTime (var C_Npc slf, var int points)
-{
-	if (Npc_IsPlayer(slf))
+		totalPoints = points + slf.attribute[ATR_MANA_MAX]*percent/100;
+		if (Npc_IsPlayer(slf)) { foodTime[BarOrderMP] += totalPoints; } else { Npc_ChangeAttribute (slf, ATR_MANA, totalPoints); };
+	}
+	else if (type == BarOrderSP)
 	{
-		drinkTime += points;
+		totalPoints = points + slf.aivar[AIV_Stamina_MAX]*percent/100;
+		if (Npc_IsPlayer(slf)) { foodTime[BarOrderSP] += totalPoints; };
+	}
+	else if (type == BarOrderXP)
+	{
+		totalPoints = points + slf.exp_next*percent/100;
+		if (Npc_IsPlayer(slf)) { foodTime[BarOrderXP] += totalPoints; };
 	};
-	//else
-	//{
-	//	slf.aivar[AIV_Stamina] += points;
-	//};
 };
 
 /// ------ AlcoholTime ------
@@ -63,7 +66,7 @@ func void Npc_AddAlcoholTime (var C_Npc slf, var int points)
 	if (Npc_IsPlayer(slf))
 	{
 		alcoholTime += points;
-		//B_GivePlayerExp(points/5);
+		Npc_AddFoodTime(slf, BarOrderXP, points/2, default);
 		
 		if (alcoholTime >= 100)
 		{
@@ -83,687 +86,1297 @@ func void Npc_AddAlcoholTime (var C_Npc slf, var int points)
 ///******************************************************************************************
 prototype ItemPR_Food (C_Item)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_LEATHER;
+	mainflag				=	ITEM_KAT_FOOD;
+	flags					=	ITEM_MULTI;
+	material				=	MAT_LEATHER;
 	TEXT[5]					=	NAME_Value;
 };
 prototype ItemPR_iFood (C_Item)
 {
-	mainflag 				=	ITEM_KAT_NONE;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_LEATHER;
+	mainflag				=	ITEM_KAT_FOOD;
+	flags					=	ITEM_MULTI;
+	material				=	MAT_LEATHER;
 	TEXT[5]					=	NAME_Value;
 };
+
 ///******************************************************************************************
-/// Inedible food
+/// Base components
 ///******************************************************************************************
-instance ItFo_Coconut (ItemPR_iFood)
+instance ItFo_Flour (ItemPR_iFood)
 {
-	name 					=	"Kokos";
-	visual 					=	"ItFo_Coconut.3DS";
-	value 					=	4;
+	name					=	"M¹ka";
+	value					=	20;
+	visual					=	"ItFo_Flour.3ds";
 	
 	description				=	name;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
+	inv_rotx				=	INVCAM_X_STONEPLATE_STANDARD;
 };
+
+instance ItFo_Salt (ItemPR_iFood)
+{
+	name					=	"Sól";
+	value					=	20;
+	visual					=	"ItFo_Salt.3ds";
+	
+	description				=	name;
+	COUNT[5]				=	value;
+	inv_rotx				=	INVCAM_X_STONEPLATE_STANDARD;
+};
+
+instance ItFo_Seeds (ItemPR_iFood)
+{
+	name					=	"Nasiona";
+	value					=	5;
+	visual					=	"ItFo_Seeds.3ds";
+	
+	description				=	name;
+	COUNT[5]				=	value;
+};
+
+instance ItFo_Spices (ItemPR_iFood)
+{
+	name					=	"Torebka przypraw";
+	value					=	100;
+	visual					=	"ItMi_Pocket_Red.3ds";
+	
+	description				=	name;
+	COUNT[5]				=	value;
+};
+
+instance ItFo_Sugar (ItemPR_iFood)
+{
+	name					=	"Cukier";
+	value					=	10;
+	visual					=	"ItFo_Sugar.3ds";
+	
+	description				=	name;
+	COUNT[5]				=	value;
+};
+
+///******************************************************************************************
+/// Raw food
+///******************************************************************************************
+
+/// scavenger egg in IT_AnimalTrophies file
+/*
 instance ItFo_Egg (ItemPR_iFood)
 {
-	name 					=	"Jajko";
-	visual 					=	"ItFo_Egg.3DS";
-	value 					=	2;
+	name					=	"Jajko";
+	value					=	3;
+	visual					=	"ItFo_Egg.3ds";
 	
 	description				=	name;
 	COUNT[5]				=	value;
 };
+*/
+
 instance ItFo_Fish (ItemPR_iFood)
 {
-	name 					=	"Ryba";
-	visual 					=	"ItFo_Fish.3DS";
-	value 					=	6;
+	name					=	"Ryba";
+	value					=	6;
+	visual					=	"ItFo_Fish.3ds";
 	
 	description				=	name;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
+
 instance ItFoMuttonRaw (ItemPR_iFood)
 {
-	name 					=	"Miêso";
-	visual 					=	"ItFoMuttonRaw.3DS";
-	value 					=	10;
+	name					=	"Twarde miêso";
+	value					=	6;
+	visual					=	"ItFoMuttonRaw.3ds";
 	
 	description				=	name;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
-instance ItFo_Addon_Pfeffer_01 (ItemPR_iFood)
-{
-	name 					=	"Torebka przypraw";
-	visual 					=	"ITMI_POCKET_RED.3DS";
-	value 					=	100;
-	
-	description				=	"Ziarna czerwonego pieprzu";
-	COUNT[5]				= 	value;
-};
-instance ItFo_PineApple (ItemPR_iFood)
-{
-	name 					=	"Ananas";
-	visual 					=	"ItFo_PineApple.3DS";
-	value 					=	4;
-	
-	description				=	name;
-	COUNT[5]				= 	value;
-};
+
 instance ItFo_Potato (ItemPR_iFood)
 {
-	name 					=	"Ziemniak";
-	visual 					=	"ItFo_Potato.3DS";
-	value 					=	2;
+	name					=	"Ziemniak";
+	value					=	3;
+	visual					=	"ItFo_Potato.3ds";
 	
 	description				=	name;
 	COUNT[5]				=	value;
 };
-instance ItFo_RottenMeat (ItemPR_iFood)
+
+instance ItFo_TastyMeatRaw (ItemPR_iFood)
 {
-	name 					=	"Zgni³e miêso";
-	visual 					=	"ItFo_RottenMeat.3DS";
-	value 					=	1;
+	name					=	"Smaczne miêso";
+	value					=	18;
+	visual					=	"ItFoMuttonRaw.3ds";
 	
 	description				=	name;
-	COUNT[5]				= 	value;
-};
-///******************************************************************************************
-/// Sugar
-///******************************************************************************************
-instance ItFo_Sugar (ItemPR_Food)
-{
-	name 					=	"Cukier";
-	value 					=	2;
-	visual 					=	"ItFo_Sugar.3ds";
-	material 				=	MAT_CLAY;
-	scemeName				=	"FOOD";
-	on_state[0]				=	Use_ItFo_Sugar;
-	
-	description				=	name;
-	TEXT[1]					= 	NAME_Bonus_Mana;
-	COUNT[1]				=	1;
 	COUNT[5]				=	value;
 };
-func void Use_ItFo_Sugar()
+
+instance ItFo_TenderMeatRaw (ItemPR_iFood)
 {
-	Npc_ChangeAttribute (self, ATR_MANA, 1);
+	name					=	"Delikatne miêso";
+	value					=	12;
+	visual					=	"ItFoMuttonRaw.3ds";
+	
+	description				=	name;
+	COUNT[5]				=	value;
 };
+
 ///******************************************************************************************
-/// Fruits & vegetables
+/// Light food (fruits & vegetables)
 ///******************************************************************************************
-prototype ItemPR_LightFood (C_Item)
+instance ItFo_Apple (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_LEATHER;
+	name					=	"Jab³ko";
+	value					=	5;
+	visual					=	"ItFo_Apple.3ds";
 	
-	value 					=	4;
-	on_state[0]				=	Use_ItFo_Fruit;
 	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Apple;
 	
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
 	COUNT[1]				=	2;
-	TEXT[1]					= 	NAME_Percent_FoodTime;
-	COUNT[1]				=	4;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	2;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Fruit()
+func void Use_ItFo_Apple()
 {
-	Npc_AddFoodTime (self, 2, 4);
+	Npc_AddFoodTime (self, BarOrderHP, 2, 2);
 	Npc_AddFoodCounter();
 };
+
+instance ItFo_Banana (ItemPR_Food)
+{
+	name					=	"Banan";
+	value					=	20;
+	visual					=	"ItFo_Banana.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Banana;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	2;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	2;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	5;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Banana()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 2, 2);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Coconut (ItemPR_Food)
+{
+	name					=	"Kokos";
+	value					=	20;
+	visual					=	"ItFo_Coconut.3ds";
+	
+	scemeName				=	"POTION";
+	on_state[0]				=	Use_ItFo_Coconut;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	2;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	2;
+	TEXT[3]					=	NAME_Bonus_SpTime;
+	COUNT[3]				=	10;
+	TEXT[4]					=	NAME_Bonus_XpTime;
+	COUNT[4]				=	5;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Coconut()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 2, default);
+	Npc_AddFoodTime (self, BarOrderMP, 2, default);
+	Npc_AddFoodTime (self, BarOrderSP, 10, default);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Grapes (ItemPR_Food)
+{
+	name					=	"Winogrono";
+	value					=	5;
+	visual					=	"ItFo_Grapes_01.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Grapes;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_MpTime;
+	COUNT[1]				=	4;
+	TEXT[2]					=	NAME_Percent_MpTime;
+	COUNT[2]				=	4;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Grapes()
+{
+	Npc_AddFoodTime (self, BarOrderMP, 4, 4);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Pear (ItemPR_Food)
+{
+	name					=	"Gruszka";
+	value					=	5;
+	visual					=	"ItFo_Pear.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Pear;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	2;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Pear()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 2, 2);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Pineapple (ItemPR_Food)
+{
+	name					=	"Ananas";
+	value					=	20;
+	visual					=	"ItFo_Pineapple.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Pineapple;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	2;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	2;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	5;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Pineapple()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 2, 2);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
-instance ItFo_Apple (ItemPR_LightFood)
+instance ItFo_BakedPotato (ItemPR_Food)
 {
-	name 					=	"Jab³ko";
-	visual 					=	"ItFo_Apple.3DS";
-	description				=	name;
-};
-instance ItFo_BakedPotato (ItemPR_LightFood)
-{
-	name 					=	"Pieczony ziemniak";
-	visual 					=	"ItFo_BakedPotato.3DS";
-	description				=	name;
-};
-instance ItFo_Banana (ItemPR_LightFood)
-{
-	name 					=	"Banan";
-	visual 					=	"ItFo_Banana.3DS";
-	description				=	name;
-};
-instance ItFo_Carrot (ItemPR_LightFood)
-{
-	name 					=	"Marchew";
-	visual 					=	"ItFo_Carrot.3DS";
-	description				=	name;
-};
-instance ItFo_MeatbugFlesh (ItemPR_LightFood)
-{
-	name 					=	"Miêso chrz¹szcza";
-	visual 					=	"ITAT_MEATBUGFLESH.3DS";
-	description				=	name;
-};
-instance ItFo_Onion (ItemPR_LightFood)
-{
-	name 					=	"Cebula";
-	visual 					=	"ItFo_Onion.3DS";
-	description				=	name;
-};
-instance ItFo_Pear (ItemPR_LightFood)
-{
-	name 					=	"Gruszka";
-	visual 					=	"ItFo_Pear.3DS";
-	description				=	name;
-};
-instance ItFo_Rice (ItemPR_LightFood)
-{
-	name 					=	"Ry¿";
+	name					=	"Pieczony ziemniak";
+	value					=	5;
+	visual					=	"ItFo_BakedPotato.3ds";
 	
-	material 				=	MAT_WOOD;
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_BakedPotato;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	5;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_BakedPotato()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 5, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Cabbage (ItemPR_Food)
+{
+	name					=	"Kapusta";
+	value					=	10;
+	visual					=	"NW_CITY_CABBAGE_01.3ds";
+	
 	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Cabbage;
 	
-	visual 					=	"ItFo_Rice.3ds";
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	8;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	2;
+	COUNT[5]				=	value;
 };
+func void Use_ItFo_Cabbage()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 8, 2);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Carrot (ItemPR_Food)
+{
+	name					=	"Marchew";
+	value					=	5;
+	visual					=	"ItFo_Carrot.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Carrot;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	3;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Carrot()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 3, 1);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Chili (ItemPR_Food)
+{
+	name					=	"Chili";
+	value					=	20;
+	visual					=	"ItFo_Chili.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Chili;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_Hp;
+	COUNT[1]				=	-20;
+	TEXT[2]					=	NAME_Bonus_XpTime;
+	COUNT[2]				=	20;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Chili()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -20);
+	Npc_AddFoodTime (self, BarOrderXP, 20, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Leek (ItemPR_Food)
+{
+	name					=	"Por";
+	value					=	5;
+	visual					=	"ItFo_Leek.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Leek;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	3;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	3;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Leek()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 3, default);
+	Npc_AddFoodTime (self, BarOrderMP, 3, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Onion (ItemPR_Food)
+{
+	name					=	"Cebula";
+	value					=	5;
+	visual					=	"ItFo_Onion.3ds";
+	
+	scemeName				=	"FOOD";
+	on_state[0]				=	Use_ItFo_Onion;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_Hp;
+	COUNT[1]				=	-2;
+	TEXT[2]					=	NAME_Bonus_HpTime;
+	COUNT[2]				=	8;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Onion()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
+	Npc_AddFoodTime (self, BarOrderHP, 8, default);
+	Npc_AddFoodCounter();
+};
+
+///******************************************************************************************
+instance ItFo_MeatbugFlesh (ItemPR_Food)
+{
+	name					=	"Owadzie miêso";
+	value					=	10;
+	visual					=	"ItAt_MeatbugFlesh.3ds";
+	
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_MeatbugFlesh;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	10;
+	TEXT[2]					=	NAME_Percent_Hp;
+	COUNT[2]				=	-2;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_MeatbugFlesh()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 10, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/50);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Standard food
 ///******************************************************************************************
-prototype ItemPR_StandardFood (C_Item)
+instance ItFo_Bread (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_LEATHER;
+	name					=	"Chleb";
+	value					=	10;
+	visual					=	"ItFo_Bread.3ds";
 	
-	value 					=	12;
-	on_state[0]				=	Use_ItFo_Standard;
 	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Bread;
 	
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
 	COUNT[1]				=	6;
-	TEXT[2]					= 	NAME_Percent_FoodTime;
-	COUNT[2]				=	15;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	4;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Standard()
+func void Use_ItFo_Bread()
 {
-	Npc_AddFoodTime (self, 6, 15);
+	Npc_AddFoodTime (self, BarOrderHP, 6, 4);
 	Npc_AddFoodCounter();
 };
+
 ///******************************************************************************************
-instance ItFo_Bread (ItemPR_StandardFood)
+instance ItFo_Cheese (ItemPR_Food)
 {
-	name 					=	"Chleb";
-	visual 					=	"ItFo_Bread.3DS";
+	name					=	"Ser";
+	value					=	12;
+	visual					=	"ItFo_Cheese.3ds";
+	
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Cheese;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	12;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	3;
+	COUNT[5]				=	value;
 };
-instance ItFo_Cheese (ItemPR_StandardFood)
+func void Use_ItFo_Cheese()
 {
-	name 					=	"Ser";
-	visual 					=	"ItFo_Cheese.3DS";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderHP, 12, 3);
+	Npc_AddFoodCounter();
 };
-instance ItFo_WhiteCheese (ItemPR_StandardFood)
+
+///******************************************************************************************
+instance ItFo_FriedFish (ItemPR_Food)
 {
-	name 					=	"Ser";
-	visual 					=	"ItFo_WhiteCheese.3DS";
+	name					=	"Sma¿ona ryba";
+	value					=	10;
+	visual					=	"ItFo_FriedFish.3ds";
+	
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_FriedFish;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	6;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	4;
+	COUNT[5]				=	value;
 };
-instance ItFo_FriedFish (ItemPR_StandardFood)
+func void Use_ItFo_FriedFish()
 {
-	name 					=	"Sma¿ona ryba";
-	visual 					=	"ItFo_FriedFish.3DS";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderHP, 6, 4);
+	Npc_AddFoodCounter();
 };
+
+///******************************************************************************************
+instance ItFo_Rice (ItemPR_Food)
+{
+	name					=	"Ry¿";
+	value					=	10;
+	visual					=	"ItFo_Rice.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Rice;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	7;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	3;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Rice()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 7, 3);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Meat
 ///******************************************************************************************
-prototype ItemPR_MeatFood (C_Item)
+instance ItFoMutton (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_LEATHER;
+	name					=	"Sma¿one twarde miêso";
+	value					=	10;
+	visual					=	"ItFoMutton.3ds";
 	
-	value 					=	20;
-	on_state[0]				=	Use_ItFo_Meat;
 	scemeName				=	"MEAT";
+	on_state[0]				=	Use_ItFoMutton;
 	
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
 	COUNT[1]				=	10;
-	TEXT[2]					= 	NAME_Percent_FoodTime;
-	COUNT[2]				=	30;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	5;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Meat()
+func void Use_ItFoMutton()
 {
-	Npc_AddFoodTime (self, 10, 30);
+	Npc_AddFoodTime (self, BarOrderHP, 10, 5);
 	Npc_AddFoodCounter();
 };
+
+instance ItFo_TastyMeat (ItemPR_Food)
+{
+	name					=	"Sma¿one smaczne miêso";
+	value					=	30;
+	visual					=	"ItFoMutton.3ds";
+	
+	scemeName				=	"MEAT";
+	on_state[0]				=	Use_ItFo_TastyMeat;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	30;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	15;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_TastyMeat()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 30, 15);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_TenderMeat (ItemPR_Food)
+{
+	name					=	"Sma¿one delikatne miêso";
+	value					=	20;
+	visual					=	"ItFoMutton.3ds";
+	
+	scemeName				=	"MEAT";
+	on_state[0]				=	Use_ItFo_TenderMeat;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	20;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	10;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_TenderMeat()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 20, 10);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
-instance ItFoMutton (ItemPR_MeatFood)
+instance ItFo_Sausage (ItemPR_Food)
 {
-	name 					=	"Sma¿one miêso";
-	visual 					=	"ItFoMutton.3DS";
+	name					=	"Kie³basa";
+	value					=	15;
+	visual					=	"ItFo_Sausage.3ds";
+	
+	scemeName				=	"MEAT";
+	on_state[0]				=	Use_ItFo_Sausage;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	9;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	9;
+	COUNT[5]				=	value;
 };
-instance ItFo_Bacon (ItemPR_MeatFood)
+func void Use_ItFo_Sausage()
 {
-	name 					=	"Szynka";
-	visual 					=	"ItFo_Bacon.3ds";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderHP, 9, 9);
+	Npc_AddFoodCounter();
 };
-instance ItFo_Sausage (ItemPR_MeatFood)
+
+///******************************************************************************************
+/// Luxury food
+///******************************************************************************************
+instance ItFo_Bacon (ItemPR_Food)
 {
-	name 					=	"Kie³basa";
-	visual 					=	"ItFo_Sausage.3DS";
+	name					=	"Szynka";
+	value					=	25;
+	visual					=	"ItFo_Bacon.3ds";
+	
+	scemeName				=	"MEAT";
+	on_state[0]				=	Use_ItFo_Bacon;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	30;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	10;
+	COUNT[5]				=	value;
 };
+func void Use_ItFo_Bacon()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 30, 10);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Oyster (ItemPR_Food)
+{
+	name					=	"Ostryga";
+	value					=	20;
+	visual					=	"ItFo_Oyster.3ds";
+	
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Oyster;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	10;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	1;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	10;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Oyster()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 10, default);
+	Npc_AddFoodTime (self, BarOrderMP, 1, default);
+	Npc_AddFoodTime (self, BarOrderXP, 10, default);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Sweets
 ///******************************************************************************************
-prototype ItemPR_SweetFood (C_Item)
+instance ItFo_Cake (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_STONE;
+	name					=	"Ciasto";
+	value					=	20;
+	visual					=	"ItFo_Cake.3ds";
 	
-	value 					=	20;
-	on_state[0]				=	Use_ItFo_Sweet;
 	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Cake;
 	
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
-	COUNT[1]				=	5;
-	TEXT[2]					= 	NAME_Percent_FoodTime;
-	COUNT[2]				=	5;
-	TEXT[3]					= 	NAME_Bonus_Mana;
-	COUNT[3]				= 	5;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
-};
-func void Use_ItFo_Sweet()
-{
-	Npc_AddFoodTime (self, 5, 5);
-	Npc_ChangeAttribute	(self, ATR_MANA, 5);
-};
-///******************************************************************************************
-instance ItFo_Honey (ItemPR_SweetFood)
-{
-	name 					=	"Miód";
-	visual 					=	"ItFo_Honey.3DS";
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	12;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	3;
+	TEXT[3]					=	NAME_Bonus_MpTime;
+	COUNT[3]				=	6;
+	COUNT[5]				=	value;
 };
-instance ItFo_Chocolate (ItemPR_SweetFood)
+func void Use_ItFo_Cake()
 {
-	name 					=	"Czekolada";
-	visual 					=	"ItFo_Chocolate.3DS";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderHP, 12, 3);
+	Npc_AddFoodTime (self, BarOrderMP, 6, default);
+	Npc_AddFoodCounter();
 };
-instance ItFo_Jam (ItemPR_SweetFood)
+
+instance ItFo_Chocolate (ItemPR_Food)
 {
-	name 					=	"D¿em";
-	visual 					=	"ItFo_Jam.3DS";
+	name					=	"Czekolada";
+	value					=	40;
+	visual					=	"ItFo_Chocolate.3ds";
+	
+	material				=	MAT_STONE;
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Chocolate;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	12;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	3;
+	TEXT[3]					=	NAME_Percent_MpTime;
+	COUNT[3]				=	20;
+	TEXT[4]					=	NAME_Bonus_XpTime;
+	COUNT[4]				=	20;
+	COUNT[5]				=	value;
 };
-instance ItFo_Cake (ItemPR_SweetFood)
+func void Use_ItFo_Chocolate()
 {
-	name 					=	"Ciasto";
-	visual 					=	"ItFo_Cake.3DS";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderHP, 12, 3);
+	Npc_AddFoodTime (self, BarOrderMP, default, 20);
+	Npc_AddFoodTime (self, BarOrderXP, 20, default);
+	Npc_AddFoodCounter();
 };
+
+instance ItFo_Honey (ItemPR_Food)
+{
+	name					=	"Miód";
+	value					=	20;
+	visual					=	"ItFo_Honey.3ds";
+	
+	material				=	MAT_STONE;
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Honey;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	8;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	4;
+	TEXT[3]					=	NAME_Bonus_MpTime;
+	COUNT[3]				=	8;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Honey()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 8, 8);
+	Npc_AddFoodTime (self, BarOrderMP, 8, default);
+	Npc_AddFoodCounter();
+};
+
+instance ItFo_Jam (ItemPR_Food)
+{
+	name					=	"D¿em";
+	value					=	20;
+	visual					=	"ItFo_Jam.3ds";
+	
+	material				=	MAT_STONE;
+	scemeName				=	"FOODHUGE";
+	on_state[0]				=	Use_ItFo_Jam;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	8;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	8;
+	TEXT[3]					=	NAME_Bonus_MpTime;
+	COUNT[3]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_ItFo_Jam()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 8, 8);
+	Npc_AddFoodTime (self, BarOrderMP, 2, default);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Stews
 ///******************************************************************************************
-prototype ItemPR_StewFood (C_Item)
+instance ItFo_Stew (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_WOOD;
+	name					=	"Gulasz";
+	value					=	20;
+	visual					=	"ItFo_Stew.3ds";
 	
-	value 					=	10;
-	on_state[0]				=	Use_ItFo_Stew;
+	material				=	MAT_WOOD;
 	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_Stew;
 	
 	description				=	name;
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
+	TEXT[1]					=	NAME_Bonus_HpTime;
 	COUNT[1]				=	2;
-	TEXT[2]					= 	NAME_Percent_FoodTime;
+	TEXT[2]					=	NAME_Percent_HpTime;
 	COUNT[2]				=	20;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 func void Use_ItFo_Stew()
 {
-	Npc_AddFoodTime (self, 2, 20);
+	Npc_AddFoodTime (self, BarOrderHP, 2, 20);
 	Npc_AddFoodCounter();
 };
-///******************************************************************************************
-instance ItFo_Stew (ItemPR_StewFood)
+
+instance ItFo_Addon_FireStew (ItemPR_Food)
 {
-	name 					=	"Gulasz";
-	visual 					=	"ItFo_Stew.3ds";
+	name					=	"Ognisty gulasz";
+	value					=	20;
+	visual					=	"ItFo_Stew.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_Addon_FireStew;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_Hp;
+	COUNT[1]				=	-10;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	25;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	200;
+	COUNT[5]				=	value;
 };
-instance ItFo_Addon_FireStew (ItemPR_StewFood)
+func void Use_ItFo_Addon_FireStew()
 {
-	name 					=	"Ognisty gulasz";
-	visual 					=	"ItFo_Stew.3ds";
-	on_state[0]				=	Use_XPStew;
-	description				= 	name;
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -10);
+	Npc_AddFoodTime (self, BarOrderHP, default, 25);
+	Npc_AddFoodTime (self, BarOrderXP, 200, default);
+	Npc_AddFoodCounter();
 };
-instance ItFo_Addon_MeatSoup (ItemPR_StewFood)
+
+instance ItFo_Addon_MeatSoup (ItemPR_Food)
 {
-	name 					=	"Gulasz miêsny";
-	visual 					=	"ItFo_Stew.3ds";
-	on_state[0]				=	Use_XPStew;
-	description				= 	name;
+	name					=	"Gulasz miêsny";
+	value					=	20;
+	visual					=	"ItFo_Stew.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_Addon_MeatSoup;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	40;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	4;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	200;
+	COUNT[5]				=	value;
 };
-instance ItFo_XPStew (ItemPR_StewFood)
+func void Use_ItFo_Addon_MeatSoup()
 {
-	name 					=	"Gulasz Thekli";
-	visual 					=	"ItFo_Stew.3ds";
-	on_state[0]				=	Use_XPStew;
-	description				= 	name;
+	Npc_AddFoodTime (self, BarOrderHP, 40, 4);
+	Npc_AddFoodTime (self, BarOrderXP, 200, default);
+	Npc_AddFoodCounter();
 };
-func void Use_XPStew()
+
+instance ItFo_XpStew (ItemPR_Food)
 {
-	Use_ItFo_Stew();
-	B_GivePlayerExp(200);
+	name					=	"Gulasz Thekli";
+	value					=	20;
+	visual					=	"ItFo_Stew.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_XpStew;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	2;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	20;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	200;
+	COUNT[5]				=	value;
 };
+func void Use_ItFo_XpStew()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 2, 20);
+	Npc_AddFoodTime (self, BarOrderXP, 200, default);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Soups
 ///******************************************************************************************
-prototype ItemPR_SoupFood (C_Item)
+instance ItFo_FishSoup (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_WOOD;
+	name					=	"Zupa rybna";
+	value					=	10;
+	visual					=	"ItFo_FishSoup.3ds";
 	
-	value 					=	10;
-	on_state[0]				=	Use_ItFo_Soup;
+	material				=	MAT_WOOD;
 	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_FishSoup;
 	
-	TEXT[1]					= 	NAME_Bonus_FoodTime;
-	COUNT[1]				=	6;
-	TEXT[2]					= 	NAME_Percent_FoodTime;
-	COUNT[2]				=	12;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	5;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	10;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Soup()
+func void Use_ItFo_FishSoup()
 {
-	Npc_AddFoodTime (self, 6, 12);
+	Npc_AddFoodTime (self, BarOrderHP, 5, 10);
 	Npc_AddFoodCounter();
 };
-///******************************************************************************************
-instance ItFo_FishSoup (ItemPR_SoupFood)
+
+instance ItFo_MushroomSoup (ItemPR_Food)
 {
-	name 					=	"Zupa rybna";
-	visual 					=	"ItFo_FishSoup.3ds";
+	name					=	"Zupa grzybowa";
+	value					=	10;
+	visual					=	"ItFo_MushroomSoup.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_MushroomSoup;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_MpTime;
+	COUNT[1]				=	15;
+	TEXT[2]					=	NAME_Percent_MpTime;
+	COUNT[2]				=	5;
+	COUNT[5]				=	value;
 };
-instance ItFo_MushroomSoup (ItemPR_SoupFood)
+func void Use_ItFo_MushroomSoup()
 {
-	name 					=	"Zupa grzybowa";
-	visual 					=	"ItFo_MushroomSoup.3ds";
-	description				=	name;
+	Npc_AddFoodTime (self, BarOrderMP, 15, 5);
+	Npc_AddFoodCounter();
 };
-instance ItFo_RiceSoup (ItemPR_SoupFood)
+
+instance ItFo_RiceSoup (ItemPR_Food)
 {
-	name 					=	"Zupa mleczna z ry¿em";
-	visual 					=	"ItFo_RiceSoup.3ds";
+	name					=	"Zupa mleczna z ry¿em";
+	value					=	10;
+	visual					=	"ItFo_RiceSoup.3ds";
+	
+	material				=	MAT_WOOD;
+	scemeName				=	"RICE";
+	on_state[0]				=	Use_ItFo_RiceSoup;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_HpTime;
+	COUNT[1]				=	7;
+	TEXT[2]					=	NAME_Percent_HpTime;
+	COUNT[2]				=	7;
+	COUNT[5]				=	value;
 };
+func void Use_ItFo_RiceSoup()
+{
+	Npc_AddFoodTime (self, BarOrderHP, 7, 7);
+	Npc_AddFoodCounter();
+};
+
 ///******************************************************************************************
 /// Water & milk
 ///******************************************************************************************
 instance ItFo_Water (ItemPR_Food)
 {
-	name 					=	"Woda";
-	value 					=	6;
-	visual 					=	"ItFo_Water.3ds";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTION";
+	name					=	"Woda";
+	value					=	6;
+	visual					=	"ItFo_Water.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
 	on_state[0]				=	Use_ItFo_Water;
 	
 	description				=	name;
-	TEXT[1]					= 	NAME_Bonus_DrinkTime;
+	TEXT[1]					=	NAME_Bonus_SpTime;
 	COUNT[1]				=	120;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Water()
 {
-	Npc_AddDrinkTime (self, 120);
+	Npc_AddFoodTime (self, BarOrderSP, 120, default);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
+
 ///******************************************************************************************
 instance ItFo_Milk (ItemPR_Food)
 {
-	name 					=	"Mleko";
-	value 					=	9;
-	visual 					=	"ItFo_Milk.3DS";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTION";
+	name					=	"Mleko";
+	value					=	9;
+	visual					=	"ItFo_Milk.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
 	on_state[0]				=	Use_ItFo_Milk;
 	
 	description				=	name;
-	TEXT[1]					= 	NAME_Bonus_DrinkTime;
+	TEXT[1]					=	NAME_Bonus_SpTime;
 	COUNT[1]				=	60;
-	TEXT[2]					= 	NAME_Bonus_FoodTime;
+	TEXT[2]					=	NAME_Bonus_HpTime;
 	COUNT[2]				=	6;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Milk()
 {
-	Npc_AddDrinkTime (self, 60);
-	Npc_AddFoodTime (self, 6, 0);
+	Npc_AddFoodTime (self, BarOrderSP, 60, default);
+	Npc_AddFoodTime (self, BarOrderHP, 6, default);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
+
 ///******************************************************************************************
 /// Beer
 ///******************************************************************************************
-prototype ItemPR_BeerFood (C_Item)
+instance ItFo_Beer (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_WOOD;
+	name					=	"Piwo";
+	value					=	12;
+	visual					=	"ItFo_Beer.3ds";
 	
-	value 					=	12;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTION";
 	on_state[0]				=	Use_ItFo_Beer;
-	scemeName				=	"POTIONFAST";
 	
-	TEXT[1]					= 	NAME_Bonus_DrinkTime;
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_SpTime;
 	COUNT[1]				=	40;
-	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	4;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	4;
 	TEXT[3]					=	NAME_Bonus_AlcoholTime;
 	COUNT[3]				=	20;
-	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Beer()
 {
-	Npc_AddDrinkTime (self, 40);
-	Npc_ChangeAttribute (self, ATR_MANA, 4);
-	Npc_AddAlcoholTime (self, 20);	/// 4 exp
+	Npc_AddAlcoholTime (self, 20);
+	Npc_AddFoodTime (self, BarOrderSP, 40, default);
+	Npc_AddFoodTime (self, BarOrderMP, 4, default);
 };
-///******************************************************************************************
-instance ItFo_Beer (ItemPR_BeerFood)
+
+instance ItFo_CoragonsBeer (ItemPR_Food)
 {
-	name 					=	"Piwo";
-	visual 					=	"ItFo_Beer.3DS";
-	description				=	name;
-};
-instance ItFo_CoragonsBeer (ItemPR_BeerFood)
-{
-	name 					=	"Piwo Coragona";
-	visual 					=	"ItFo_Beer.3DS";
+	name					=	"Piwo Coragona";
+	value					=	12;
+	visual					=	"ItFo_Beer.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
 	on_state[0]				=	Use_ItFo_CoragonsBeer;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_SpTime;
+	COUNT[1]				=	40;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	4;
+	TEXT[3]					=	NAME_Bonus_AlcoholTime;
+	COUNT[3]				=	20;
+	TEXT[4]					=	NAME_Bonus_XpTime;
+	COUNT[4]				=	200;
+	COUNT[5]				=	value;
 };
 func void Use_ItFo_CoragonsBeer()
 {
-	Use_ItFo_Beer();
-	B_GivePlayerExp(200);
+	Npc_AddAlcoholTime (self, 20);
+	Npc_AddFoodTime (self, BarOrderSP, 40, default);
+	Npc_AddFoodTime (self, BarOrderMP, 4, default);
+	Npc_AddFoodTime (self, BarOrderXP, 200, default);
 };
+
 ///******************************************************************************************
-/// Booze & Tequila & Wine
+/// Light alcohol
 ///******************************************************************************************
-prototype ItemPR_BoozeFood (C_Item)
+instance ItFo_Booze (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_GLAS;
+	name					=	"Gorza³a";
+	value					=	15;
+	visual					=	"ItFo_Booze.3ds";
 	
-	value 					=	15;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
 	on_state[0]				=	Use_ItFo_Booze;
-	scemeName				=	"POTION";
 	
+	description				=	name;
 	TEXT[1]					=	NAME_Bonus_AlcoholTime;
 	COUNT[1]				=	30;
-	TEXT[2]					= 	NAME_Bonus_Mana;
-	COUNT[2]				= 	5;
-	TEXT[5]					=	NAME_Value;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	5;
+	TEXT[3]					=	NAME_Percent_MpTime;
+	COUNT[3]				=	5;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Booze()
 {
-	Npc_AddAlcoholTime (self, 30);	/// 6 exp
-	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	Npc_AddAlcoholTime (self, 30);
+	Npc_AddFoodTime (self, BarOrderMP, 5, 5);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
-///******************************************************************************************
-instance ItFo_Booze (ItemPR_BoozeFood)
+
+instance ItFo_Tequila (ItemPR_Food)
 {
-	name 					=	"Gorza³a";
-	visual 					=	"ItFo_Booze.3DS";
+	name					=	"Tequila";
+	value					=	30;
+	visual					=	"ItFo_Tequila.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_Tequila;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_AlcoholTime;
+	COUNT[1]				=	50;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	5;
+	TEXT[3]					=	NAME_Percent_MpTime;
+	COUNT[3]				=	5;
+	COUNT[5]				=	value;
 };
-instance ItFo_Tequila (ItemPR_BoozeFood)
+func void Use_ItFo_Tequila()
 {
-	name 					=	"Tequila";
-	visual 					=	"ItFo_Tequila.3DS";
+	Npc_AddAlcoholTime (self, 50);
+	Npc_AddFoodTime (self, BarOrderMP, 5, 5);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+instance ItFo_Wine (ItemPR_Food)
+{
+	name					=	"Wino";
+	value					=	15;
+	visual					=	"ItFo_Wine.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_Wine;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_AlcoholTime;
+	COUNT[1]				=	20;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	10;
+	TEXT[3]					=	NAME_Percent_MpTime;
+	COUNT[3]				=	10;
+	COUNT[5]				=	value;
 };
-instance ItFo_Wine (ItemPR_BoozeFood)
+func void Use_ItFo_Wine()
 {
-	name 					=	"Wino";
-	visual 					=	"ItFo_Wine.3DS";
-	description				=	name;
+	Npc_AddAlcoholTime (self, 20);
+	Npc_AddFoodTime (self, BarOrderMP, 10, 10);
+	CreateInvItem (self, ItMi_EmptyBottle);
 };
-instance ItFo_SouthWine (ItemPR_BoozeFood)
+
+instance ItFo_SouthWine (ItemPR_Food)
 {
-	name 					=	"Wino z Wysp Po³udniowych";
-	visual 					=	"ItFo_Wine.3DS";
+	name					=	"Wino z Wysp Po³udniowych";
+	value					=	15;
+	visual					=	"ItFo_Wine.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
 	on_state[0]				=	Use_ItFo_SouthWine;
+	
 	description				=	name;
+	TEXT[1]					=	NAME_Bonus_AlcoholTime;
+	COUNT[1]				=	20;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	10;
+	TEXT[3]					=	NAME_Percent_MpTime;
+	COUNT[3]				=	10;
+	TEXT[4]					=	NAME_Bonus_XpTime;
+	COUNT[4]				=	200;
+	COUNT[5]				=	value;
 };
 func void Use_ItFo_SouthWine()
 {
-	Use_ItFo_Booze();
-	B_GivePlayerExp(200);
+	Npc_AddAlcoholTime (self, 20);
+	Npc_AddFoodTime (self, BarOrderMP, 10, 10);
+	Npc_AddFoodTime (self, BarOrderXP, 200, default);
+	CreateInvItem (self, ItMi_EmptyBottle);
 };
+
 ///******************************************************************************************
 /// Heavy alcohol
 ///******************************************************************************************
-prototype ItemPR_GrogFood (C_Item)
+instance ItFo_Addon_Grog (ItemPR_Food)
 {
-	mainflag 				=	ITEM_KAT_FOOD;
-	flags 					=	ITEM_MULTI;
-	material 				=	MAT_GLAS;
+	name					=	"Grog";
+	value					=	20;
+	visual					=	"ItMi_Rum_02.3ds";
 	
-	value 					=	20;
-	on_state[0]				=	Use_ItFo_Grog;
+	material				=	MAT_GLAS;
 	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_Grog;
 	
+	description				=	name;
 	TEXT[1]					=	NAME_Bonus_AlcoholTime;
 	COUNT[1]				=	50;
-	TEXT[2]					= 	NAME_Bonus_FoodTime;
+	TEXT[2]					=	NAME_Bonus_Hp;
 	COUNT[2]				=	1;
-	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
 func void Use_ItFo_Grog()
 {
-	Npc_AddAlcoholTime (self, 50);	/// 10 exp
-	Npc_AddFoodTime (self, 1, 0);
+	Npc_AddAlcoholTime (self, 50);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 1);
 };
-///******************************************************************************************
-instance ItFo_Addon_Grog (ItemPR_GrogFood)
-{
-	name					=	"Grog";
-	visual 					=	"ItMi_Rum_02.3ds";
-	description 			=	name;
-};
-instance ItFo_Addon_Hooch (ItemPR_GrogFood)
+
+instance ItFo_Addon_Hooch (ItemPR_Food)
 {
 	name					=	"Bimber";
-	visual 					=	"ItMi_Rum_02.3ds";
-	description 			=	name;
+	value					=	20;
+	visual					=	"ItMi_Rum_02.3ds";
+	
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_Hooch;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Bonus_AlcoholTime;
+	COUNT[1]				=	50;
+	TEXT[2]					=	NAME_Bonus_Mp;
+	COUNT[2]				=	1;
+	COUNT[5]				=	value;
 };
-///******************************************************************************************
+func void Use_ItFo_Hooch()
+{
+	Npc_AddAlcoholTime (self, 50);
+	Npc_ChangeAttribute (self, ATR_MANA, 1);
+};
+
 instance ItFo_Addon_Rum (ItemPR_Food)
 {
 	name					=	"Rum";
-	value 					=	30;
-	visual 					=	"ItMi_Rum_01.3ds";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTIONFAST";
-	on_state[0]				=	Use_ItFo_Addon_Rum;
+	value					=	30;
+	visual					=	"ItMi_Rum_01.3ds";
 	
-	description 			=	name;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_Rum;
+	
+	description				=	name;
 	TEXT[1]					=	NAME_Bonus_AlcoholTime;
 	COUNT[1]				=	80;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Addon_Rum()
+func void Use_ItFo_Rum()
 {
-	Npc_AddAlcoholTime (self, 80);	/// 16 exp
+	Npc_AddAlcoholTime (self, 80);
 };
-///******************************************************************************************
+
 instance ItFo_Addon_LousHammer (ItemPR_Food)
 {
 	name					=	"M³ot Lou";
-	value 					=	40;
-	visual 					=	"ItMi_Rum_04.3ds";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTIONFAST";
-	on_state[0]				=	Use_ItFo_Addon_LousHammer;
+	value					=	40;
+	visual					=	"ItMi_Rum_04.3ds";
 	
-	description 			=	name;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_LousHammer;
+	
+	description				=	name;
 	TEXT[1]					=	NAME_Bonus_AlcoholTime;
 	COUNT[1]				=	120;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Addon_LousHammer()
+func void Use_ItFo_LousHammer()
 {
-	Npc_AddAlcoholTime (self, 120);	/// 24 exp
-	hero.aivar[AIV_Stamina] = 0;
+	Npc_AddAlcoholTime (self, 120);
+	self.aivar[AIV_Stamina] = 0;
 };
-///******************************************************************************************
+
 instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 {
 	name					=	"Szybki ŒledŸ";
-	value 					=	50;
-	visual 					=	"ItMi_Rum_03.3ds";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTIONFAST";
-	on_state[0]				=	Use_ItFo_Addon_SchnellerHering;
+	value					=	50;
+	visual					=	"ItMi_Rum_03.3ds";
 	
-	description 			=	name;
-	TEXT[1]					= 	NAME_Duration;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_SchnellerHering;
+	
+	description				=	name;
+	TEXT[1]					=	NAME_Duration;
 	COUNT[1]				=	120;
-	TEXT[2]					= 	NAME_Bonus_SpMax;
-	COUNT[2]				= 	2;
+	TEXT[2]					=	NAME_Bonus_SpMax;
+	COUNT[2]				=	2;
 	TEXT[3]					=	"Trwale zmniejsza regeneracjê energii o 0.1";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Addon_SchnellerHering()
+func void Use_ItFo_SchnellerHering()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -771,37 +1384,39 @@ func void Use_ItFo_Addon_SchnellerHering()
 		B_RaiseAttribute (self, AIV_Stamina_MAX, 2);
 		spRegenPoints -= 1;
 	};
-	//self.aivar[AIV_Stamina] = 0;
 };
 func void End_ItFo_Addon_SchnellerHering()
 {
-	Npc_AddAlcoholTime (hero, 120);	/// 24 exp
+	Npc_AddAlcoholTime (hero, 120);
 	hero.aivar[AIV_Stamina] = 0;
 };
-///******************************************************************************************
+
 instance ItFo_Addon_SchlafHammer (ItemPR_Food)
 {
 	name					=	"Podwójny M³ot";
-	value 					=	60;
-	visual 					=	"ItMi_Rum_04.3ds";
-	material 				=	MAT_GLAS;
-	scemeName				=	"POTIONFAST";
-	on_state[0]				=	Use_ItFo_Addon_SchlafHammer;
+	value					=	60;
+	visual					=	"ItMi_Rum_04.3ds";
 	
-	description 			=	name;
+	material				=	MAT_GLAS;
+	scemeName				=	"POTIONFAST";
+	on_state[0]				=	Use_ItFo_SchlafHammer;
+	
+	description				=	name;
 	TEXT[1]					=	NAME_Bonus_AlcoholTime;
 	COUNT[1]				=	200;
 	TEXT[2]					=	"Niebezpieczny dla ¿ycia!";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
-func void Use_ItFo_Addon_SchlafHammer()
+func void Use_ItFo_SchlafHammer()
 {
-	Npc_AddAlcoholTime (self, 200);	/// 40 exp
+	Npc_AddAlcoholTime (self, 200);
 	self.aivar[AIV_Stamina] = 0;
 	
 	if (Npc_IsPlayer(self) && bsPoison >= 0)
 	{
 		self.attribute[ATR_HITPOINTS] /= 2;
+		MOD_SetPoison(bsPoison * 2);
+		
 		AI_PlayAni(self, "T_STAND_2_WOUNDED");
 		AI_PlayAni(self, "T_WOUNDED_2_STAND");
 	};

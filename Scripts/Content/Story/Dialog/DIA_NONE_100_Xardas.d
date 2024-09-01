@@ -81,7 +81,7 @@ FUNC INT DIA_Xardas_Hello_Condition()
 	return !movieMode;
 };
 FUNC VOID DIA_Xardas_Hello_Info()
-{	
+{
 	AI_Output (self ,other, "DIA_Addon_Xardas_Hello_14_00"); //Aha! Jesteœ ju¿. A ja straci³em nadziejê, ¿e siê jeszcze kiedyœ spotkamy.
 	AI_Output (other, self, "DIA_Addon_Xardas_Hello_15_01"); //Czujê siê... Czujê siê, jakbym kilka tygodni le¿a³ pod stert¹ g³azów.
 	AI_Output (self ,other, "DIA_Addon_Xardas_Hello_14_02"); //Hmm... Dok³adnie tak by³o. ¯ycie zawdziêczasz tylko i wy³¹cznie swemu magicznemu pancerzowi.
@@ -551,7 +551,7 @@ func void DIA_Xardas_ABOUTLESTER_Info ()
 	AI_Output (self, other, "DIA_Xardas_ABOUTLESTER_14_06"); //Jeœli ci ludzie rzeczywiœcie istniej¹, bêd¹ dla nas powa¿nym zagro¿eniem.
 	AI_Output (self, other, "DIA_Xardas_ABOUTLESTER_14_07"); //Niepokoi mnie to. Proszê, weŸ mój pierœcieñ. Bêdzie ciê chroni³ przed magi¹.
 	
-	B_GiveInvItems (self, other, ItRi_ProtMagical_01,1);
+	B_GiveInvItems (self, other, ItRi_Prot_Magic_01,1);
 	B_GivePlayerExp(100);
 
 };

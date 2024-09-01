@@ -1,5 +1,24 @@
 ///******************************************************************************************
-///	ACTIONS
+/// EXIT
+///******************************************************************************************
+instance DIA_Actions_EXIT (C_Info)
+{
+	nr									=	999;
+	condition							=	DIA_Actions_EXIT_Condition;
+	information							=	aExit;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func int DIA_Actions_EXIT_Condition()
+{
+	if (self.id == 50)
+	{
+		return true;
+	};
+};
+
+///******************************************************************************************
+/// ACTIONS
 ///******************************************************************************************
 instance DIA_Actions_JOIN (C_Info)
 {

@@ -16,7 +16,7 @@ func void Equip_HeavyArmor()
 	&& (bsArmor == 0)
 	{
 		bsArmor = 1;
-		Bar_Delete(Bar_spBar);
+		Bar_Delete(BarLoop_spBar);
 	};
 };
 func void UnEquip_HeavyArmor()
@@ -25,7 +25,7 @@ func void UnEquip_HeavyArmor()
 	&& (bsArmor == 1)
 	{
 		bsArmor = 0;
-		Bar_Delete(Bar_spBar);
+		Bar_Delete(BarLoop_spBar);
 	};
 };
 func void Disable_HeavyArmor()
@@ -34,7 +34,7 @@ func void Disable_HeavyArmor()
 	&&*/ (bsArmor != -1)
 	{
 		bsArmor = -1;
-		Bar_Delete(Bar_spBar);
+		Bar_Delete(BarLoop_spBar);
 	};
 };
 
@@ -45,7 +45,7 @@ func void MOD_ObsessionON()
 	&&*/ (bsObsession == 0)
 	{
 		bsObsession = 1;
-		Bar_Delete(Bar_mpBar);
+		Bar_Delete(BarLoop_mpBar);
 	};
 };
 func void MOD_ObsessionOFF()
@@ -54,7 +54,7 @@ func void MOD_ObsessionOFF()
 	&&*/ (bsObsession == 1)
 	{
 		bsObsession = 0;
-		Bar_Delete(Bar_mpBar);
+		Bar_Delete(BarLoop_mpBar);
 	};
 };
 
@@ -70,7 +70,7 @@ func void MOD_SetPoison(var int value)
 	if (bsPoison == 0 && value > 0)
 	|| (bsPoison > 0 && value <= 0)
 	{
-		Bar_Delete(Bar_hpBar);
+		Bar_Delete(BarLoop_hpBar);
 	};
 	bsPoison = value;
 };
@@ -109,3 +109,12 @@ func void MOD_SetStealth(var C_Npc slf, var int value)
 		};
 	};
 };
+
+/*
+HookEngineF(oCGame__HandleEvent, oCGame__HandleEvent_Len, MOD_HandleKeys);
+func void MOD_HandleKeys()
+{
+	var int key; key = MEM_ReadInt(ESP + 4);
+	if (QS_CheckKey(key, KEY_1))	{	QS_UseItem(1);	MEM_WriteInt(ESP + 4, -1);	};
+};
+*/

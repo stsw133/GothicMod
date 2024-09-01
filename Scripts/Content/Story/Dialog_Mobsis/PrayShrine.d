@@ -81,6 +81,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 		};
 	};
 };
+
 ///******************************************************************************************
 /// PrayShrine: end
 ///******************************************************************************************
@@ -96,14 +97,11 @@ instance PC_PrayShrine_End (C_Info)
 	npc									=	PC_Hero;
 	nr									=	999;
 	condition							=	PC_PrayShrine_Condition;
-	information							=	PC_PrayShrine_End_Info;
+	information							=	B_EndProductionDialog;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void PC_PrayShrine_End_Info()
-{
-	B_ENDPRODUCTIONDIALOG();
-};
+
 ///******************************************************************************************
 /// PrayShrine: heal shrine
 ///******************************************************************************************
@@ -174,6 +172,7 @@ func void PrayShrine_S1()
 		Ai_ProcessInfos(her);
 	};
 };
+
 ///******************************************************************************************
 /// PrayShrine: paladine
 ///******************************************************************************************
@@ -204,6 +203,7 @@ func void PC_PrayShrine_Paladine_Info()
 	PrintScreen ("...by w imiê twe dzielne walczyæ mog³y... ", -1, 39, FONT_ScreenSmall, 5);
 	PrintScreen ("...a¿ po zwyciêstwo lub œmieræ, którekolwiek ci milsze bêdzie.", -1, 42, FONT_ScreenSmall, 6);
 };
+
 ///******************************************************************************************
 /// PrayShrine: bless sword
 ///******************************************************************************************
@@ -265,6 +265,7 @@ func void PC_PrayShrine_BlessSword_Info()
 		AI_PrintScreen (PRINT_NotEnoughGold, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
 	};
 }; 
+
 ///******************************************************************************************
 /// PrayShrine: bless sword final
 ///******************************************************************************************
@@ -323,7 +324,8 @@ func void PC_PrayShrine_BlessSword_FINAL_Info()
 	{
 		AI_PrintScreen (PRINT_NoInnosTears, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
 	};
-}; 
+};
+
 ///******************************************************************************************
 /// PrayShrine: pray
 ///******************************************************************************************
@@ -372,7 +374,6 @@ func void PC_PrayShrine_Pray_Info()
 		};
 	};
 }; 
-
 ///******************************************************************************************
 func void PC_PrayShrine_Pray_Back()
 {

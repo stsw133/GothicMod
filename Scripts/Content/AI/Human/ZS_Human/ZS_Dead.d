@@ -18,6 +18,12 @@ func void ZS_Dead()
 	B_DeletePetzCrime(self);
 	self.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
 	self.aivar[AIV_TAPOSITION] = false;
+	
+	/// MOD
+	if (Npc_IsPlayer(self))
+	{
+		MOD_SetPoison(0);
+	};
 };
 
 ///******************************************************************************************

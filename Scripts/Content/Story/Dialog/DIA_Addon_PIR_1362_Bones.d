@@ -235,7 +235,7 @@ func VOID DIA_Addon_Bones_GiveArmor_Info()
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_03"); //Wolê ju¿ najciê¿sz¹ robotê u Grega.
 	AI_Output (other,self ,"DIA_Addon_Bones_GiveArmor_15_04"); //Pancerz.
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_05"); //A, tak. Oto on.
-	B_GiveInvItems (self,other,ITAR_Bandit,1);
+	B_GiveInvItems (self,other,ITAR_BDT_M,1);
 	AI_Output (self ,other,"DIA_Addon_Bones_GiveArmor_01_06"); //Uwa¿aj na siebie. I lepiej nie rób g³upich ¿artów pod nosem tych bandziorów.
 	self.flags = 0;
 	PIR_1320_Addon_Greg.flags = 0;

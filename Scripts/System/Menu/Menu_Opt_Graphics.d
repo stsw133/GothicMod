@@ -1,5 +1,7 @@
-
-instance MENU_OPT_GRAPHICS(C_MENU_DEF)
+///******************************************************************************************
+/// Graphic options
+///******************************************************************************************
+instance MENU_OPT_GRAPHICS (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENUITEM_GRA_HEADLINE";
@@ -17,7 +19,8 @@ instance MENU_OPT_GRAPHICS(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-instance MENUITEM_GRA_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_GRA_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "USTAWIENIA GRAFIKI";
 	type = MENU_ITEM_TEXT;
@@ -28,7 +31,8 @@ instance MENUITEM_GRA_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_GRA_TEXQUAL(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_GRA_TEXQUAL (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Tekstury";
@@ -40,8 +44,7 @@ instance MENUITEM_GRA_TEXQUAL(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_GRA_TEXQUAL_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_TEXQUAL_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -57,7 +60,7 @@ instance MENUITEM_GRA_TEXQUAL_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_GRA_MODEL_DETAIL(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_MODEL_DETAIL (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Modele";
@@ -69,8 +72,7 @@ instance MENUITEM_GRA_MODEL_DETAIL(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_GRA_MODEL_DETAIL_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_MODEL_DETAIL_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -86,7 +88,7 @@ instance MENUITEM_GRA_MODEL_DETAIL_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags | IT_PERF_OPTION;
 };
 
-instance MENUITEM_GRA_SIGHT(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_SIGHT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Zasiêg widzenia";
@@ -98,8 +100,7 @@ instance MENUITEM_GRA_SIGHT(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_GRA_SIGHT_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_SIGHT_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -115,7 +116,7 @@ instance MENUITEM_GRA_SIGHT_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
 
-instance MENUITEM_VOB_SIGHT(C_MENU_ITEM_DEF)
+instance MENUITEM_VOB_SIGHT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Zanikanie obiektów";
@@ -127,8 +128,7 @@ instance MENUITEM_VOB_SIGHT(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VOB_SIGHT_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_VOB_SIGHT_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -144,7 +144,7 @@ instance MENUITEM_VOB_SIGHT_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
 
-instance MENUITEM_GRA_SKY_EFFECTS(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_SKY_EFFECTS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Niebo";
@@ -156,8 +156,7 @@ instance MENUITEM_GRA_SKY_EFFECTS(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_GRA_SKY_EFFECTS_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_SKY_EFFECTS_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -173,7 +172,7 @@ instance MENUITEM_GRA_SKY_EFFECTS_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_GRA_BACK(C_MENU_ITEM_DEF)
+instance MENUITEM_GRA_BACK (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wróæ";
@@ -184,4 +183,3 @@ instance MENUITEM_GRA_BACK(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_BACK;
 	flags = flags | IT_TXT_CENTER;
 };
-

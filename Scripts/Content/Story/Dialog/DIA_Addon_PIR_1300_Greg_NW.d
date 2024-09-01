@@ -175,7 +175,7 @@ func void DIA_Addon_Greg_NW_Stadtwachen_Info ()
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Do miasta mog¹ wejœæ zbieracze zió³.", DIA_Addon_Greg_NW_Stadtwachen_constantino );
 	};
 
-	IF	((Npc_HasItems (other,ItAr_BAU_00)) || (Npc_HasItems (other,ItAr_BAU_01)))
+	IF	((Npc_HasItems (other,ItAr_BAU_L_00)) || (Npc_HasItems (other,ItAr_BAU_L_01)))
 	{
 		Info_AddChoice	(DIA_Addon_Greg_NW_Stadtwachen, "Powinni ciê wpuœciæ, jeœli za³o¿ysz ten strój rolnika.", DIA_Addon_Greg_NW_Stadtwachen_klamotten );
 	};
@@ -185,25 +185,25 @@ func void DIA_Addon_Greg_NW_Stadtwachen_klamotten ()
 {
 	AI_Output			(other, self, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_15_00"); //Powinni ciê wpuœciæ, jeœli za³o¿ysz ten strój rolnika.
 
-	if (Npc_HasItems (other,ItAr_BAU_00))
+	if (Npc_HasItems (other,ItAr_BAU_L_00))
 	{
-		B_GiveInvItems 		(other, self, ItAr_BAU_00,1);
+		B_GiveInvItems 		(other, self, ItAr_BAU_L_00,1);
 	}
 	else //ITAR_BAU_M
 	{
-		B_GiveInvItems 		(other, self, ITAR_BAU_01,1);
+		B_GiveInvItems 		(other, self, ITAR_BAU_L_01,1);
 	};
 
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_01"); //Tego mi w³aœnie trzeba. Wiedzia³em, ¿e mogê na ciebie liczyæ.
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_02"); //Nikt na mnie nie zwróci uwagi, jeœli przebiorê siê za wsiowego g³upka. Ha, ha!
 
-	if (Npc_HasItems (self,ItAr_BAU_00))
+	if (Npc_HasItems (self,ItAr_BAU_L_00))
 	{
-		AI_EquipArmor 		(self,ItAr_BAU_00);
+		AI_EquipArmor 		(self,ItAr_BAU_L_00);
 	}
 	else //ITAR_BAU_M
 	{
-		AI_EquipArmor 		(self,ITAR_BAU_01);
+		AI_EquipArmor 		(self,ITAR_BAU_L_01);
 	};
 	
 	AI_Output			(self, other, "DIA_Addon_Greg_NW_Stadtwachen_klamotten_01_03"); //Doskonale. Dobrze siê spisa³eœ. Oto obiecana zap³ata.
@@ -1210,7 +1210,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_Info ()
 	if ((Npc_HasItems (other,ItSe_GoldPocket100)) || (Npc_HasItems (other,itmi_gold)>= 100))
 	&& (Npc_HasItems (other,ItMi_GoldCup))
 	&& (Npc_HasItems (other,ItMi_SilverChalice))
-	&& (Npc_HasItems (other,ItAm_Barbarian_01))
+	&& (Npc_HasItems (other,ItAm_Str_01))
 		{
 			Info_AddChoice	(DIA_Addon_Greg_NW_FoundTreasure, "Oto twoje rzeczy.", DIA_Addon_Greg_NW_FoundTreasure_ja );
 		};
@@ -1236,7 +1236,7 @@ func void DIA_Addon_Greg_NW_FoundTreasure_ja ()
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_04"); //Srebrna misa.
 	};
-	if (B_GiveInvItems (other, self, ItAm_Barbarian_01,1))
+	if (B_GiveInvItems (other, self, ItAm_Str_01,1))
 	{
 		AI_Output			(other, self, "DIA_Addon_Greg_NW_FoundTreasure_ja_15_05"); //Amulet.
 	};

@@ -52,7 +52,8 @@ func void NpcFn_SetAttributesToLevel (var C_Npc slf, var int kap)
 	else if (slf.guild == GIL_MOLERAT)
 	|| (slf.guild == GIL_ZOMBIE)
 	{
-		slf.attribute[ATR_HITPOINTS_MAX] *= 3;
+		slf.attribute[ATR_HITPOINTS_MAX] = slf.attribute[ATR_HITPOINTS_MAX] * 2;
+		slf.attribute[ATR_STRENGTH] = slf.attribute[ATR_STRENGTH] * 4/5;
 	};
 	
 	/// less strength when damagetype in: DAM_FIRE, DAM_FLY, DAM_MAGIC (check better ones first because monsters can have multiple damage types)
@@ -68,7 +69,4 @@ func void NpcFn_SetAttributesToLevel (var C_Npc slf, var int kap)
 	slf.attribute[ATR_MANA]				=	slf.attribute[ATR_MANA_MAX];
 	slf.attribute[ATR_HITPOINTS]		=	slf.attribute[ATR_HITPOINTS_MAX];
 	slf.aivar[AIV_Stamina]				=	slf.aivar[AIV_Stamina_MAX];
-	
-	///#DEBUG
-	//Npc_SetTalentSkill (slf, NPC_TALENT_DIFFICULTY, dLevel);
 };

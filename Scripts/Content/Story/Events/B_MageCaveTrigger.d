@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	MAGECAVETRIGGER		
+/// MAGECAVETRIGGER
 ///******************************************************************************************
-func void B_MAGECAVETRIGGER()	
+func void B_MAGECAVETRIGGER()
 {
 	if (!Npc_IsDead(Magic_Golem))
 	&& (MIS_SCHNITZELJAGD == LOG_RUNNING)

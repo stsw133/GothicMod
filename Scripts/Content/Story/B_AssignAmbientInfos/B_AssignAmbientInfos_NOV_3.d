@@ -1,33 +1,30 @@
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_NOV_3_EXIT (C_Info)
 {
 	nr									=	999;
 	condition							=	aTrue;
-	information							=	DIA_NOV_3_EXIT_Info;
+	information							=	aExit;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void DIA_NOV_3_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
 
 var int Feger1_Permanent; 
 var int Feger2_Permanent;
 
 ///******************************************************************************************
-///	Fegen
+/// Fegen
 ///******************************************************************************************
 instance DIA_NOV_3_Fegen (C_Info)
 {
-	nr			= 2;
-	condition	= DIA_NOV_3_Fegen_Condition;
-	information	= DIA_NOV_3_Fegen_Info;
-	permanent	= TRUE;
-	description = "Potrzebujê pomocy w sprz¹taniu sal nowicjuszy.";
+	nr									=	2;
+	condition							=	DIA_NOV_3_Fegen_Condition;
+	information							=	DIA_NOV_3_Fegen_Info;
+	permanent							=	true;
+	description							=	"Potrzebujê pomocy w sprz¹taniu sal nowicjuszy.";
 };
 func int DIA_NOV_3_Fegen_Condition()
 {
@@ -42,7 +39,7 @@ func void DIA_NOV_3_Fegen_Info()
 {
 	AI_Output (other, self, "DIA_NOV_3_Fegen_15_00"); //Potrzebujê pomocy w sprz¹taniu sal nowicjuszy.
 	
-	if (Hlp_GetInstanceID(Feger1) == Hlp_GetInstanceID(self))
+	if (Hlp_GetinstanceID(Feger1) == Hlp_GetinstanceID(self))
 	{
 		if (NOV_Helfer < 1)
 		&& (!Feger1_Permanent)
@@ -72,7 +69,7 @@ func void DIA_NOV_3_Fegen_Info()
 		};
 	};
 	
-	if (Hlp_GetInstanceID(Feger2) == Hlp_GetInstanceID(self))
+	if (Hlp_GetinstanceID(Feger2) == Hlp_GetinstanceID(self))
 	{
 		if (!Feger2_Permanent)
 		{
@@ -94,8 +91,8 @@ func void DIA_NOV_3_Fegen_Info()
 		};
 	};
 	
-	if (Hlp_GetInstanceID(Feger1) != Hlp_GetInstanceID(self))
-	&& (Hlp_GetInstanceID(Feger2) != Hlp_GetInstanceID(self))
+	if (Hlp_GetinstanceID(Feger1) != Hlp_GetinstanceID(self))
+	&& (Hlp_GetinstanceID(Feger2) != Hlp_GetinstanceID(self))
 	{
 		AI_Output (self, other, "DIA_NOV_3_Fegen_03_07"); //Wykluczone - nie mam na to czasu. Poszukaj sobie kogoœ innego do pomocy.
 	};
@@ -122,8 +119,9 @@ func void DIA_NOV_3_Fegen_Ja()
 	
 	B_LogEntry (Topic_ParlanFegen, "Nowicjusz sprzed œwi¹tyni pomo¿e mi teraz posprz¹taæ komnaty.");
 };
+
 ///******************************************************************************************
-///	Wurst
+/// Wurst
 ///******************************************************************************************
 instance DIA_NOV_3_Wurst (C_Info)
 {
@@ -150,16 +148,18 @@ func void DIA_NOV_3_Wurst_Info()
 	
 	B_GiveInvItems (other, self, ItFo_SchafsWurst, 1);
 	Wurst_Gegeben += 1;
+	Npc_RemoveInvItem (self, ItFo_SchafsWurst);
 	
-	CreateInvItems (self, ITFO_Sausage, 1);
-	B_UseItem (self, ITFO_Sausage);
+	CreateInvItem (self, ItFo_Sausage);
+	B_UseItem (self, ItFo_Sausage);
 	
 	var string NovizeLeft; NovizeLeft = IntToString(13 - Wurst_Gegeben);
 	var string NovizeText; NovizeText = ConcatStrings(NovizeLeft, PRINT_NovizenLeft);
 	AI_PrintScreen (NovizeText, -1, YPOS_GOLDGIVEN, FONT_ScreenSmall, 2);
 };
+
 ///******************************************************************************************
-///	JOIN
+/// JOIN
 ///******************************************************************************************
 instance DIA_NOV_3_JOIN (C_Info)
 {
@@ -183,8 +183,9 @@ func void DIA_NOV_3_JOIN_Info()
 	AI_Output (self, other, "DIA_NOV_3_JOIN_03_02"); //Najwy¿szym zaszczytem, jakiego mo¿esz dost¹piæ w naszym zakonie, jest tytu³ maga Krêgu Ognia.
 	AI_Output (self, other, "DIA_NOV_3_JOIN_03_03"); //Bêdziesz musia³ ciê¿ko pracowaæ, by zas³u¿yæ na swoj¹ szansê.
 };
+
 ///******************************************************************************************
-///	PEOPLE
+/// PEOPLE
 ///******************************************************************************************
 instance DIA_NOV_3_PEOPLE (C_Info)
 {
@@ -200,8 +201,9 @@ func void DIA_NOV_3_PEOPLE_Info()
 	AI_Output (self, other, "DIA_NOV_3_PEOPLE_03_01"); //My, nowicjusze, s³u¿ymy magom Krêgu Ognia. Oni zaœ podlegaj¹ decyzjom Najwy¿szej Rady, w sk³ad której wchodz¹ trzej najpotê¿niejsi magowie.
 	AI_Output (self, other, "DIA_NOV_3_PEOPLE_03_02"); //Sprawami nowicjuszy zajmuje siê jednak Parlan. Prawie zawsze przesiaduje na dziedziñcu, nadzoruj¹c ich pracê.
 };
+
 ///******************************************************************************************
-///	LOCATION
+/// LOCATION
 ///******************************************************************************************
 instance DIA_NOV_3_LOCATION (C_Info)
 {
@@ -218,10 +220,11 @@ func void DIA_NOV_3_LOCATION_Info()
 	AI_Output (self, other, "DIA_NOV_3_LOCATION_03_02"); //Mamy te¿ bibliotekê, ale dostêp do niej posiadaj¹ jedynie magowie i wybrani nowicjusze.
 	AI_Output (self, other, "DIA_NOV_3_LOCATION_03_03"); //My, nowicjusze, dbamy o to, by niczego nie zabrak³o magom Krêgu Ognia.
 };
+
 ///******************************************************************************************
-///	STANDARD
+/// STANDARD
 ///******************************************************************************************
-instance DIA_NOV_3_STANDARD (C_INFO)
+instance DIA_NOV_3_STANDARD (C_Info)
 {
 	nr									=	10;
 	condition							=	aTrue;
@@ -288,11 +291,11 @@ func void DIA_NOV_3_STANDARD_Info()
 ///******************************************************************************************
 func void B_AssignAmbientInfos_NOV_3 (var C_Npc slf)
 {
-	DIA_NOV_3_EXIT.npc					= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_JOIN.npc					= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_PEOPLE.npc				= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_LOCATION.npc				= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_STANDARD.npc				= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_Fegen.npc					= Hlp_GetInstanceID(slf);
-	DIA_NOV_3_Wurst.npc					= Hlp_GetInstanceID(slf);
+	DIA_NOV_3_EXIT.npc					=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_JOIN.npc					=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_PEOPLE.npc				=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_LOCATION.npc				=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_STANDARD.npc				=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_Fegen.npc					=	Hlp_GetinstanceID(slf);
+	DIA_NOV_3_Wurst.npc					=	Hlp_GetinstanceID(slf);
 };

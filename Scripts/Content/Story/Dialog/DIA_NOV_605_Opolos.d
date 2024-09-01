@@ -288,7 +288,7 @@ FUNC VOID DIA_Opolos_TEACH_STR_BACK()
 };
 FUNC VOID DIA_Opolos_TEACH_STR_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
 	Info_AddChoice 		(DIA_Opolos_TEACH_STR,DIALOG_BACK,DIA_Opolos_TEACH_STR_BACK);		
@@ -297,7 +297,7 @@ FUNC VOID DIA_Opolos_TEACH_STR_1()
 };
 FUNC VOID DIA_Opolos_TEACH_STR_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Opolos_TEACH_STR);	
 	Info_AddChoice 		(DIA_Opolos_TEACH_STR,DIALOG_BACK,DIA_Opolos_TEACH_STR_BACK);		

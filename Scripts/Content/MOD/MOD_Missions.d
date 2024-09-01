@@ -1,5 +1,29 @@
 ///******************************************************************************************
-///	MOD_Missions
+/// MOD_Missions
+///******************************************************************************************
+func int aTrue()
+{
+	return true;
+};
+func int aTrueWhenTalk()
+{
+	if (Npc_IsInState(self, ZS_Talk))
+	{
+		return true;
+	};
+};
+func int aTrueIfNotRefuse()
+{
+	if (!Npc_RefuseTalk(self))
+	{
+		return true;
+	};
+};
+func void aExit()
+{
+	AI_StopProcessInfos(self);
+};
+
 ///******************************************************************************************
 
 var int QuestStep_AkilNeedHelp;				const string Quest_AkilNeedHelp				=	"Farmer w potrzebie";
@@ -223,76 +247,75 @@ const string Note_Special			=   "Miejsca specjalne";
 const string Note_Talents			=   "Opis talentów";
 const string Note_Teachers			=	"Lista nauczycieli";
 const string Note_Traders			=   "Lista handlarzy";
-const string Note_Girls				=	"Notki o dziewczynach";
 
 ///******************************************************************************************
 ///	SetQuestStatus
 ///******************************************************************************************
-func int SetQuestStatus (var string QuestName, var int OldStatus, var int NewStatus)
+func int SetQuestStatus (var string questName, var int oldStatus, var int newStatus)
 {
 	/// nowe zadanie
-	if (NewStatus == LOG_RUNNING)
-	&& (OldStatus == 0)
+	if (newStatus == LOG_RUNNING)
+	&& (oldStatus == 0)
 	{
-		Log_CreateTopic (QuestName, LOG_MISSION);
-		Log_SetTopicStatus (QuestName, LOG_RUNNING);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestRunning, QuestName), FONT_ScreenSmall, COL_QuestRunning, TIME_Print);
+		Log_CreateTopic (questName, LOG_MISSION);
+		Log_SetTopicStatus (questName, LOG_RUNNING);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestRunning, questName), FONT_ScreenSmall, COL_QuestRunning, TIME_Print);
 		return LOG_RUNNING;
 	};
 	/// zadanie w trakcie
-	if (NewStatus == LOG_PROGRESS || NewStatus == LOG_RUNNING)
-	&& (OldStatus == LOG_RUNNING)
+	if (newStatus == LOG_PROGRESS || newStatus == LOG_RUNNING)
+	&& (oldStatus == LOG_RUNNING)
 	{
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestProgress, QuestName), FONT_ScreenSmall, COL_QuestProgress, TIME_Print);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestProgress, questName), FONT_ScreenSmall, COL_QuestProgress, TIME_Print);
 		return LOG_RUNNING;
 	};
 	/// zadanie wykonane
-	if (NewStatus == LOG_SUCCESS)
-	&& (OldStatus == LOG_RUNNING || OldStatus == 0)
+	if (newStatus == LOG_SUCCESS)
+	&& (oldStatus == LOG_RUNNING || oldStatus == 0)
 	{
-		Log_SetTopicStatus (QuestName, LOG_SUCCESS);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestSuccess, QuestName), FONT_ScreenSmall, COL_QuestSuccess, TIME_Print);
+		Log_SetTopicStatus (questName, LOG_SUCCESS);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestSuccess, questName), FONT_ScreenSmall, COL_QuestSuccess, TIME_Print);
 		return LOG_SUCCESS;
 	};
 	/// zadanie nieudane
-	if (NewStatus == LOG_FAILED)
-	&& (OldStatus == LOG_RUNNING)
+	if (newStatus == LOG_FAILED)
+	&& (oldStatus == LOG_RUNNING)
 	{
-		Log_SetTopicStatus (QuestName, LOG_FAILED);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestFailed, QuestName), FONT_ScreenSmall, COL_QuestFailed, TIME_Print);
+		Log_SetTopicStatus (questName, LOG_FAILED);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestFailed, questName), FONT_ScreenSmall, COL_QuestFailed, TIME_Print);
 		return LOG_FAILED;
 	};
 	/// zadanie anulowane
-	if (NewStatus == LOG_CANCELED)
-	&& (OldStatus == LOG_RUNNING)
+	if (newStatus == LOG_CANCELED)
+	&& (oldStatus == LOG_RUNNING)
 	{
-		Log_SetTopicStatus (QuestName, 0);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestCanceled, QuestName), FONT_ScreenSmall, COL_QuestCanceled, TIME_Print);
+		Log_SetTopicStatus (questName, 0);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestCanceled, questName), FONT_ScreenSmall, COL_QuestCanceled, TIME_Print);
 		return 0;
 	};
 	/// przestarza³e zadanie
-	if (NewStatus == LOG_OBSOLETE)
-	&& (OldStatus == LOG_RUNNING)
+	if (newStatus == LOG_OBSOLETE)
+	&& (oldStatus == LOG_RUNNING)
 	{
-		Log_SetTopicStatus (QuestName, LOG_OBSOLETE);
-		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestObsolete, QuestName), FONT_ScreenSmall, COL_QuestObsolete, TIME_Print);
+		Log_SetTopicStatus (questName, LOG_OBSOLETE);
+		Print_ExtPrcnt (-1, YPOS_QuestEntry, ConcatStrings(PRINT_QuestObsolete, questName), FONT_ScreenSmall, COL_QuestObsolete, TIME_Print);
 		return LOG_OBSOLETE;
 	};
 	
-	return OldStatus;
+	return oldStatus;
 };
 
 ///******************************************************************************************
 ///	SetNoteEntry
 ///******************************************************************************************
-func void SetNoteEntry (var int Type, var string Topic, var string Entry)
+func void SetNoteEntry (var int type, var string topic, var string entry)
 {
-	if (Type == LOG_NOTE)
+	if (type == LOG_NOTE)
 	{
-		Log_CreateTopic (Topic, Type);
+		Log_CreateTopic (topic, type);
 	};
-	Log_AddEntry (Topic, Entry);
+	Log_AddEntry (topic, entry);
 	
 	Print_ExtPrcnt (-1, YPOS_LogEntry, PRINT_NewLogEntry, FONT_ScreenSmall, COL_White, TIME_Print);
-	//Snd_Play("LogEntry");
+	//Snd_Play("LogEntry");	/// disabled simply because this sound is annoying
 };

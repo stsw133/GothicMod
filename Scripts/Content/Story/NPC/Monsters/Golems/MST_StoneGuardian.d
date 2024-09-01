@@ -7,41 +7,42 @@ prototype MST_Default_StoneGuardian (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_STONEGUARDIAN;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_STONEGUARDIAN;
 	
 	NpcFn_SetAttributesToLevel (self, 20);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
-	senses								= 	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
+	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
 	bodyStateInterruptableOverride		=	true;
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_StoneGuardian()
 {
 	Mdl_SetVisual		(self, "StoneGuardian.mds");
-	Mdl_SetVisualBody	(self, "StG_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "StG_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance StoneGuardian (MST_Default_StoneGuardian)
 {
 	B_SetVisuals_StoneGuardian();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Stoneguardian_MineDead1 (MST_Default_StoneGuardian)
 {

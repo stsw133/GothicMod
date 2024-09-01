@@ -214,7 +214,6 @@ func int DIA_Addon_Erol_Stoneplates_Condition ()
 };
 
 var int StoneplatesCounter;
-const int Addon_ErolsStoneplatesOffer = (ItWr_StonePlate_HP.value + 5); //Joly:Kohle für eine StonePlateCommon
 
 func void DIA_Addon_Erol_Stoneplates_Info ()
 {
@@ -279,7 +278,7 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 		
 			AI_Output			(self, other, "DIA_Addon_Erol_Stoneplates_10_07"); //Oczywiœcie zap³acê ci za fatygê.
 
-			StoneplatesGeld	= (Addon_ErolsStoneplatesOffer * Npc_HasItems (self, ItWr_StonePlateCommon_Addon ));
+			StoneplatesGeld	= (10 * Npc_HasItems(self, ItWr_StonePlateCommon_Addon));
 		
 			CreateInvItems (self, ItMi_Gold, StoneplatesGeld); 
 			B_GiveInvItems (self, other, ItMi_Gold, StoneplatesGeld);
@@ -300,16 +299,16 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 	}
 	else
 	{
-			if (C_ScHasMagicStonePlate () == TRUE)
+			if (Npc_HasItems(other, ItWr_StonePlate))
 			{
-				AI_Output			(other, self, "DIA_Addon_Erol_Stoneplates_15_10"); //Mam tu coœ takiego...
-				AI_Output			(self, other, "DIA_Addon_Erol_Stoneplates_10_11"); //Nie, to nie to. Tamte tabliczki by³y nas¹czone magi¹.
-				AI_Output			(self, other, "DIA_Addon_Erol_Stoneplates_10_12"); //Mag, z którym ubi³em interes, nie bêdzie zainteresowany czymœ takim.
+				AI_Output (other, self, "DIA_Addon_Erol_Stoneplates_15_10"); //Mam tu coœ takiego...
+				AI_Output (self, other, "DIA_Addon_Erol_Stoneplates_10_11"); //Nie, to nie to. Tamte tabliczki by³y nas¹czone magi¹.
+				AI_Output (self, other, "DIA_Addon_Erol_Stoneplates_10_12"); //Mag, z którym ubi³em interes, nie bêdzie zainteresowany czymœ takim.
 			}
 			else
-			{			
-				AI_Output			(other, self, "DIA_Addon_Erol_Stoneplates_15_13"); //Ile ich brakuje?
-				AI_Output			(self, other, "DIA_Addon_Erol_Stoneplates_10_14"); //Aby ocaliæ dobre imiê, potrzebujê trzech.
+			{
+				AI_Output (other, self, "DIA_Addon_Erol_Stoneplates_15_13"); //Ile ich brakuje?
+				AI_Output (self, other, "DIA_Addon_Erol_Stoneplates_10_14"); //Aby ocaliæ dobre imiê, potrzebujê trzech.
 			}; 
 	};
 };
@@ -546,7 +545,7 @@ FUNC VOID DIA_Addon_Erol_Teach_Back ()
 
 FUNC VOID DIA_Addon_Erol_Teach_STR_1 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MAX);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MAX);
 	
 	Info_ClearChoices 	(DIA_Addon_Erol_Teach);
 	Info_AddChoice		(DIA_Addon_Erol_Teach, DIALOG_BACK, DIA_Addon_Erol_Teach_Back);
@@ -556,7 +555,7 @@ FUNC VOID DIA_Addon_Erol_Teach_STR_1 ()
 
 FUNC VOID DIA_Addon_Erol_Teach_STR_5 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MAX);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MAX);
 	
 	Info_ClearChoices 	(DIA_Addon_Erol_Teach);
 	Info_AddChoice		(DIA_Addon_Erol_Teach, DIALOG_BACK, DIA_Addon_Erol_Teach_Back);

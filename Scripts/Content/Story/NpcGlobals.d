@@ -365,6 +365,9 @@ var C_Npc Pepe;
 
 var C_Npc Garwig;
 
+///new!!!
+var C_Npc Gregy;
+
 ///******************************************************************************************
 ///	NPC Globals füllen
 ///******************************************************************************************
@@ -742,4 +745,7 @@ func void B_InitNpcGlobals()
 	Onar 			= Hlp_GetNpc (Bau_900_Onar);
 	Bodo			= Hlp_GetNpc (Bau_903_Bodo);
 	Pepe			= Hlp_GetNpc (Bau_912_Pepe);
+	
+	///new!!!
+	Gregy			=	Hlp_GetNpc(PIR_1302_Gregy);
 };

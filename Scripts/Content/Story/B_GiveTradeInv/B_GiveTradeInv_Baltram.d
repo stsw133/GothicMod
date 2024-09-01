@@ -14,7 +14,7 @@ func void B_GiveTradeInv_Baltram (var C_Npc slf)
 		CreateInvItems (slf, ItFo_Cheese, 2);
 		CreateInvItems (slf, ItFo_Water, 5);
 		
-		//CreateInvItems (slf, ItAm_Hp_01, 1);
+		CreateInvItems (slf, ItAm_Hp_01, 1);
 		
 		Baltram_ItemsGiven_Chapter = 7;
 	};

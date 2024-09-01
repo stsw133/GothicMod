@@ -22,8 +22,8 @@ func void B_GiveTradeInv_Addon_Erol (var C_Npc slf)
 		CreateInvItems (slf, ItMw_Streitaxt2, 1);
 		CreateInvItems (slf, ItMw_Zweihaender1, 1);
 		
-		//CreateInvItems (slf, ItRi_Prot_Edge_01, 1);
-		//CreateInvItems (slf, ItAm_Strg_01, 1);
+		CreateInvItems (slf, ItRi_Prot_Edge_01, 1);
+		CreateInvItems (slf, ItAm_Str_01, 1);
 		
 		Erol_ItemsGiven_Chapter = 7;
 	};

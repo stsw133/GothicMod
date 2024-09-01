@@ -330,7 +330,7 @@ FUNC VOID DIA_Dexter_Kill_Info()
 	
 	MIS_Steckbriefe = LOG_OBSOLETE;
 	B_CheckLog();
-	B_Greg_ComesToDexter ();
+	B_GregComesToDexter ();
 	Info_ClearChoices	(DIA_Dexter_Kill);
 	Info_AddChoice	(DIA_Dexter_Kill, DIALOG_END, DIA_Dexter_Kill_ENDE );
 };

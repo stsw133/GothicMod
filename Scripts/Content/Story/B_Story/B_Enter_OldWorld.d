@@ -1,9 +1,9 @@
 ///******************************************************************************************
-///	B_ENTER_OLDWORLD
-///******************************************************************************************
 
 var int EnterOW_Kapitel;
 
+///******************************************************************************************
+/// B_ENTER_OLDWORLD
 ///******************************************************************************************
 func void B_ENTER_OLDWORLD_Kapitel_7()
 {
@@ -132,6 +132,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 			{
 				Npc_RemoveInvItem (Sengrath, ItRw_Mil_Crossbow);
 	 		};
+			B_ClearDeadTrader(Sengrath);	/// new!!!
 	 		CreateInvItems (Sengrath, ItRw_SengrathsArmbrust_MIS, 1);
 	 		Sengrath_Missing = true;
 			B_KillNpc(Sengrath);
@@ -149,7 +150,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		Wld_InsertNpc (DJG_739_ToterDrachenjaeger, "OC1"); B_KillNpc (DJG_739_ToterDrachenjaeger);
 		Wld_InsertNpc (DJG_740_ToterDrachenjaeger, "OC1"); B_KillNpc (DJG_740_ToterDrachenjaeger);
 		
-		Npc_ExchangeRoutine	(Brutus,"Meatbugs");
+		Npc_ExchangeRoutine	(Brutus, "Meatbugs");
 		Wld_InsertNpc (Meatbug_Brutus1, "OC_FOLTER_SHARP");
 		Wld_InsertNpc (Meatbug_Brutus2, "OC_FOLTER_SHARP");
 		Wld_InsertNpc (Meatbug_Brutus3, "OC_FOLTER_SHARP");
@@ -186,7 +187,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		
 		Wld_InsertNpc (NONE_110_Urshak, "WP_INTRO_FALL");
 		
-		Wld_InsertNpc (Warg,"OC3");	
+		Wld_InsertNpc (Warg, "OC3");	
 		
 		Wld_InsertNpc (OrcWarrior_Roam, "OW_SCAVENGER_SPAWN_TREE");
 		Wld_InsertNpc (OrcElite_Roam, "OW_SCAVENGER_SPAWN_TREE");
@@ -473,7 +474,7 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "LOCATION_18_OUT");
 		Wld_InsertNpc (Draconian, "FP_ROAM_OW_ROCK_DRACONIAN_07");
-		Wld_InsertItem (ItSc_Fireburning, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
+		Wld_InsertItem (ItSc_Firestorm, "FP_ROAM_OW_ROCK_DRACONIAN_07_2");
 		
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_04");
 		Wld_InsertNpc (DragonSnapper, "FP_ROAM_OW_SCAVENGER_03_02");
@@ -555,7 +556,7 @@ func void B_ENTER_OLDWORLD_Kapitel_12()
 };
 
 ///******************************************************************************************
-///	B_ENTER_OLDWORLD
+/// B_ENTER_OLDWORLD
 ///******************************************************************************************
 func void B_ENTER_OLDWORLD()
 {

@@ -534,7 +534,7 @@ func void DIA_Addon_Skip_Grog_ring ()
 {
 	AI_Output			(other, self, "DIA_Addon_Skip_Grog_ring_15_00"); //Daj mi pierœcieñ.
 	AI_Output			(self, other, "DIA_Addon_Skip_Grog_ring_08_01"); //Proszê bardzo.
-	B_GiveInvItems (self, other, ItRi_ProtPhysical_01, 1);		
+	B_GiveInvItems (self, other, ItRi_Prot_Edge_01, 1);		
 	Info_ClearChoices	(DIA_Addon_Skip_Grog);
 };
 func void DIA_Addon_Skip_Grog_gold ()

@@ -57,8 +57,8 @@ func void B_GiveTradeInv_Lutero (var C_Npc slf)
 		CreateInvItems (slf, ItPo_Speed, 4);
 		CreateInvItems (slf, ItSc_Charm, 3);
 		
-		//CreateInvItems (slf, ItBe_Addon_DEX_10, 1);
-		//CreateInvItems (slf, ItRi_Dex_Strg_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Dex_02, 1);
+		CreateInvItems (slf, ItRi_Pow_01, 1);
 		
 		Lutero_ItemsGiven_Chapter = 9;
 	};

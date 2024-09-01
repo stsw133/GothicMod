@@ -2,7 +2,7 @@
 prototype ItemPR_MissionDoc (C_Item)
 {
 	mainflag 				=	ITEM_KAT_DOCS;
-	flags 					=	ITEM_MULTI|ITEM_MISSION;
+	flags 					=	ITEM_MULTI | ITEM_MISSION;
 };
 ///******************************************************************************************
 
@@ -18,23 +18,23 @@ var int MIS_Xardas_SCCanOpenIrdorathBook;
 var int SC_KnowsProspektorSalandril;
 var int SCKnowsRichterKomproBrief;
 var int Use_ItWr_Addon_BanditTrader_OneTime;
-var int Use_Map_NewWorld_Orcelite_MIS_OneTime;
-var int Use_RavensKidnapperMission_Addon_OneTime;
+var int Use_ItWr_Map_NewWorld_Orcelite_MIS_OneTime;
+var int Use_ItWr_RavensKidnapperMission_Addon_OneTime;
 
 ///******************************************************************************************
 /// Maps
 ///******************************************************************************************
-instance ItWR_Addon_TreasureMap (ItemPR_MissionDoc)
+instance ItWr_Addon_TreasureMap (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_TreasureMap;
+	on_state[0]		=	Use_ItWr_TreasureMap;
 	scemeName		=	"MAP";
 	
 	description		=	"Mapa do skarbu";
 	TEXT[1]			=	"Na mapie s¹ zaznaczone jakieœ miejsca.";
 };
-func void Use_TreasureMap()
+func void Use_ItWr_TreasureMap()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -54,11 +54,11 @@ instance ItWr_Map_Caves_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_Caves_MIS;
+	on_state[0]		=	Use_ItWr_Map_Caves_MIS;
 	scemeName		=	"MAP";
 	description		=	"Jaskinie Khorinis";
 };
-func void Use_Map_NewWorld_Caves_MIS()
+func void Use_ItWr_Map_Caves_MIS()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -78,7 +78,7 @@ instance ItWr_Map_NewWorld_Dexter (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_Dexter;
+	on_state[0]		=	Use_ItWr_Map_NewWorld_Dexter;
 	scemeName		=	"MAP";
 	
 	description		=	"Mapa terenów Khorinis";
@@ -86,7 +86,7 @@ instance ItWr_Map_NewWorld_Dexter (ItemPR_MissionDoc)
 	TEXT[1]			=	"gdzie mogê znaleŸæ szefa bandytów,";
 	TEXT[2]			=	"Dextera.";
 };
-func void Use_Map_NewWorld_Dexter()
+func void Use_ItWr_Map_NewWorld_Dexter()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -106,14 +106,14 @@ instance ItWr_Map_NewWorld_Ornaments_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa Nefariusa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_Ornaments;
+	on_state[0]		=	Use_ItWr_Map_NewWorld_Ornaments;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[0]			=	"Na mapie zaznaczono miejsca,";
 	TEXT[1]			=	"gdzie wed³ug Nefariusa znajduj¹ siê brakuj¹ce ornamenty.";
 };
-func void Use_Map_NewWorld_Ornaments()
+func void Use_ItWr_Map_NewWorld_Ornaments()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -133,11 +133,11 @@ instance ItWr_Map_OldWorld_Oremines_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_OldWorld_Oremines;
+	on_state[0]		=	Use_ItWr_Map_OldWorld_Oremines;
 	scemeName		=	"MAP";
 	description		=	"Mapa kopalni Garonda";
 };
-func void Use_Map_OldWorld_Oremines()
+func void Use_ItWr_Map_OldWorld_Oremines()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -157,11 +157,11 @@ instance ItWr_Map_Orcelite_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_Orcelite_MIS;
+	on_state[0]		=	Use_ItWr_Map_NewWorld_Orcelite_MIS;
 	scemeName		=	"MAP";
 	description		=	"Orkowa mapa wojenna";
 };
-func void Use_Map_NewWorld_Orcelite_MIS()
+func void Use_ItWr_Map_NewWorld_Orcelite_MIS()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -176,11 +176,11 @@ func void Use_Map_NewWorld_Orcelite_MIS()
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 	
-	if (!Use_Map_NewWorld_Orcelite_MIS_OneTime)
+	if (!Use_ItWr_Map_NewWorld_Orcelite_MIS_OneTime)
 	&& (MIS_KillOrkOberst != 0)
 	{
 		B_LogEntry (TOPIC_OrcElite, "Przy orkowym pu³kowniku znalaz³em dziwn¹ mapê. Wygl¹da jak plan dzia³añ wojennych tych stworzeñ.");
-		Use_Map_NewWorld_Orcelite_MIS_OneTime = true;
+		Use_ItWr_Map_NewWorld_Orcelite_MIS_OneTime = true;
 	};
 };
 ///******************************************************************************************
@@ -188,11 +188,11 @@ instance ItWr_Map_ShatteredGolem_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Bardzo stara mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_ShatteredGolem_Mis;
+	on_state[0]		=	Use_ItWr_Map_ShatteredGolem_Mis;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_Map_ShatteredGolem_Mis()
+func void Use_ItWr_Map_ShatteredGolem_Mis()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -212,11 +212,11 @@ instance ItWr_Map_Shrine_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Map_NewWorld_Shrine_MIS;
+	on_state[0]		=	Use_ItWr_Map_NewWorld_Shrine_MIS;
 	scemeName		=	"MAP";
 	description		=	"Mapa œwiêtych kapliczek";
 };
-func void Use_Map_NewWorld_Shrine_MIS()
+func void Use_ItWr_Map_NewWorld_Shrine_MIS()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -236,11 +236,11 @@ instance ItWr_Seamap_Irdorath (ItemPR_MissionDoc)
 {
 	name 			=	"Mapa morska";
 	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_Seamap_Irdorath;
+	on_state[0]		=	Use_ItWr_Seamap_Irdorath;
 	scemeName		=	"MAP";
 	description		=	"Mapa morska wyspy Irdorath";
 };
-func void Use_Seamap_Irdorath()
+func void Use_ItWr_Seamap_Irdorath()
 {
 	var int nDocID;
 	nDocID = 	Doc_CreateMap	();
@@ -280,7 +280,7 @@ instance ItWr_ManaRezept (ItemPR_Mission)
 {
 	name 			=	"Receptura";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=	Use_Recipe_ALCHEMY_Mana_01;
+	on_state[0]		=	Use_ItRe_ALCHEMY_Mana_01;
 	description		= 	"Receptura Neorasa";
 };
 instance ItWr_Martin_MilizEmpfehlung_Addon (ItemPR_Mission)
@@ -378,15 +378,15 @@ func void Use_ItWr_Addon_BanditTrader()
 	};
 };
 ///******************************************************************************************
-instance ITWR_Addon_FrancisAbrechnung_Mis (ItemPR_MissionDoc)
+instance ItWr_Addon_FrancisAbrechnung_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Wynagrodzenie";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_FrancisAbrechnung_Mis;
+	on_state[0]		=	Use_ItWr_FrancisAbrechnung_Mis;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_FrancisAbrechnung_Mis()
+func void Use_ItWr_FrancisAbrechnung_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -458,15 +458,15 @@ func void Use_FrancisAbrechnung_Mis()
 				B_Say (self, self, "$ADDON_THISLITTLEBASTARD");
 };
 ///******************************************************************************************
-instance ITWR_Addon_GregsLogbuch_Mis (ItemPR_MissionDoc)
+instance ItWr_Addon_GregsLogbuch_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Dziennik";
 	visual 			=	"ItWr_Book_01.3ds";
-	on_state[0]		=	Use_GregsLogbuch;
+	on_state[0]		=	Use_ItWr_GregsLogbuch;
 	scemeName		=	"MAP";
 	description		= 	"Dziennik Grega";
 };
-func void Use_GregsLogbuch()
+func void Use_ItWr_GregsLogbuch()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -492,17 +492,19 @@ func void Use_GregsLogbuch()
 				Greg_GaveArmorToBones = true;
 };
 ///******************************************************************************************
-instance ITWr_Addon_Joint_01 (ItemPR_MissionDoc)
+var int Green_Extrem;
+
+instance ItWr_Addon_Joint_01 (ItemPR_MissionDoc)
 {
 	name 			=	"Receptura";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Joint_Rezept_01;
+	on_state[0]		=   Use_ItWr_Joint_Rezept_01;
 	scemeName		=	"MAP";
 	
 	description 	=	"Zielony nowicjusz";
 	TEXT[0]			= 	"Le¿a³ w skrzyni Fortuna";
 };
-func void Use_Joint_Rezept_01()
+func void Use_ItWr_Joint_Rezept_01()
 {
 	Green_Extrem = true;
 	
@@ -530,13 +532,13 @@ instance ItWr_Addon_Hinweis_01 (ItemPR_MissionDoc)
 {
 	name 			=	"Wa¿na wiadomoœæ";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Hinweis_01;
+	on_state[0]		=   Use_ItWr_Hinweis_01;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Wisia³a w chacie na bagnie";
 };
-func void Use_Hinweis_01()
+func void Use_ItWr_Hinweis_01()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -564,13 +566,13 @@ instance ItWr_Addon_Hinweis_02 (ItemPR_MissionDoc)
 {
 	name 			=	"Wa¿na wiadomoœæ";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Hinweis_02;
+	on_state[0]		=   Use_ItWr_Hinweis_02;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Z gospody w obozie bandytów";
 };
-func void Use_Hinweis_02()
+func void Use_ItWr_Hinweis_02()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -598,13 +600,13 @@ instance ItWr_Addon_Lou_Rezept (ItemPR_MissionDoc)
 {
 	name 			=	"Przepis na M³ot Lou";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_LouRezept;
+	on_state[0]		=   Use_ItWr_LouRezept;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Jak przygotowaæ M³ot Lou.";
 };
-func void Use_LouRezept()
+func void Use_ItWr_LouRezept()
 {
 	Knows_LousHammer = true;
 	
@@ -635,13 +637,13 @@ instance ItWr_Addon_Lou_Rezept2 (ItemPR_MissionDoc)
 {
 	name 			=	"Przepis na podwójny M³ot Lou";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_LouRezept2;
+	on_state[0]		=   Use_ItWr_LouRezept2;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Jak przygotowaæ podwójny M³ot Lou.";
 };
-func void Use_LouRezept2()
+func void Use_ItWr_LouRezept2()
 {
 	Knows_SchlafHammer = true;
 	
@@ -667,13 +669,13 @@ instance ItWr_Addon_Piratentod (ItemPR_MissionDoc)
 {
 	name 			=	"Przepis na Szybkiego œledzia";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_RezeptPiratentod;
+	on_state[0]		=   Use_ItWr_RezeptPiratentod;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Przepis na przygotowanie Szybkiego œledzia.";
 };
-func void Use_RezeptPiratentod()
+func void Use_ItWr_RezeptPiratentod()
 {
 	Knows_SchnellerHering = true;
 	
@@ -702,13 +704,13 @@ instance ItWr_Addon_Pirates_01 (ItemPR_MissionDoc)
 {
 	name 			=	"Brudny papier";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Pirates_01;
+	on_state[0]		=   Use_ItWr_Pirates_01;
 	scemeName		=	"MAP";
 	
 	description 	=	name;
 	TEXT[0]			=	"Ten papier by³ w kieszeni Angusa.";
 };
-func void Use_Pirates_01()
+func void Use_ItWr_Pirates_01()
 {
 	Read_JuansText = true;
 	
@@ -737,7 +739,7 @@ instance ItMi_Addon_Stone_01 (ItemPR_MissionDoc)
 {
 	name 			=	"Czerwona kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_03.3ds";
-	on_state[0]		=	Use_Addon_Stone_01;
+	on_state[0]		=	Use_ItMi_Addon_Stone_01;
 	scemeName		=	"MAP";
 	
 	wear			= 	WEAR_EFFECT;
@@ -747,7 +749,7 @@ instance ItMi_Addon_Stone_01 (ItemPR_MissionDoc)
 	TEXT[2]			= 	"Czerwona kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_Addon_Stone_01()
+func void Use_ItMi_Addon_Stone_01()
 {
 	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
@@ -772,7 +774,7 @@ instance ItMi_Addon_Stone_05 (ItemPR_MissionDoc)
 {
 	name 			=	"¯ó³ta kamienna tablica"; 
 	visual 			=	"ItMi_StonePlate_Read_04.3ds";
-	on_state[0]		=	Use_Addon_Stone_05;
+	on_state[0]		=	Use_ItMi_Addon_Stone_05;
 	scemeName		=	"MAP";
 	
 	wear			= 	WEAR_EFFECT;
@@ -782,7 +784,7 @@ instance ItMi_Addon_Stone_05 (ItemPR_MissionDoc)
 	TEXT[2]			= 	"¯ó³ta kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_Addon_Stone_05()
+func void Use_ItMi_Addon_Stone_05()
 {
 	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
@@ -807,7 +809,7 @@ instance ItMi_Addon_Stone_03 (ItemPR_MissionDoc)
 {
 	name 			=	"Niebieska kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_05.3ds";
-	on_state[0]		=	Use_Addon_Stone_03;
+	on_state[0]		=	Use_ItMi_Addon_Stone_03;
 	scemeName		=	"MAP";
 	
 	wear			= 	WEAR_EFFECT;
@@ -817,7 +819,7 @@ instance ItMi_Addon_Stone_03 (ItemPR_MissionDoc)
 	TEXT[2]			= 	"Niebieska kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_Addon_Stone_03()
+func void Use_ItMi_Addon_Stone_03()
 {
 	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
@@ -844,7 +846,7 @@ instance ItMi_Addon_Stone_04 (ItemPR_MissionDoc)
 {
 	name 			=	"Zielona kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_01.3ds";
-	on_state[0]		=	Use_Addon_Stone_04;
+	on_state[0]		=	Use_ItMi_Addon_Stone_04;
 	scemeName		=	"MAP";
 	
 	wear			= 	WEAR_EFFECT;
@@ -854,7 +856,7 @@ instance ItMi_Addon_Stone_04 (ItemPR_MissionDoc)
 	TEXT[2]			= 	"Zielona kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_Addon_Stone_04()
+func void Use_ItMi_Addon_Stone_04()
 {
 	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
@@ -879,7 +881,7 @@ instance ItMi_Addon_Stone_02 (ItemPR_MissionDoc)
 {
 	name 			=	"Fioletowa kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_02.3ds";
-	on_state[0]		=	Use_Addon_Stone_02;
+	on_state[0]		=	Use_ItMi_Addon_Stone_02;
 	scemeName		=	"MAP";
 	
 	wear			= 	WEAR_EFFECT;
@@ -889,7 +891,7 @@ instance ItMi_Addon_Stone_02 (ItemPR_MissionDoc)
 	TEXT[2]			= 	"Fioletowa kamienna tablica";
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_Addon_Stone_02()
+func void Use_ItMi_Addon_Stone_02()
 {
 	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
 	{
@@ -918,13 +920,13 @@ instance ItWr_Addon_SUMMONANCIENTGHOST (ItemPR_MissionDoc)
 {
 	name 			=	"Przywo³anie Quarhodrona";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_SummonAncientGhost;
+	on_state[0]		=   Use_ItWr_SummonAncientGhost;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[1]			=	"Za pomoc¹ tego zwoju mo¿esz przywo³aæ Quarhodrona.";
 };
-func void Use_SummonAncientGhost()
+func void Use_ItWr_SummonAncientGhost()
 {
 	if (!SC_SummonedAncientGhost)
 	{
@@ -952,13 +954,13 @@ instance ItWr_Addon_William_01 (ItemPR_MissionDoc)
 {
 	name 			=	"Liœcik";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_William_01;
+	on_state[0]		=   Use_ItWr_William_01;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[0]			=	"Ten list mia³ przy sobie rybak William.";
 };
-func void Use_William_01()
+func void Use_ItWr_William_01()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -986,11 +988,11 @@ instance ItWr_BabosLetter_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_BabosLetter;
+	on_state[0]		=   Use_ItWr_BabosLetter;
 	scemeName		=	"MAP";
 	description		=	"List do Babo";
 };
-func void Use_BabosLetter()
+func void Use_ItWr_BabosLetter()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1012,11 +1014,11 @@ instance ItWr_BabosPinUp_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Portret";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_BabosPinUp;
+	on_state[0]		=   Use_ItWr_BabosPinUp;
 	scemeName		=	"MAP";
 	description		=	"Portret nagiej kobiety";
 };
-func void Use_BabosPinUp()
+func void Use_ItWr_BabosPinUp()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1029,14 +1031,14 @@ instance ItWr_BabosDocs_MIS	(ItemPR_MissionDoc)
 {
 	name 			=	"Zwitek papierów";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_BabosDocs;
+	on_state[0]		=   Use_ItWr_BabosDocs;
 	scemeName		=	"MAPSEALED";
 	
 	description		=	name;
 	TEXT[2]			=   "Kilka dokumentów";
 	TEXT[3]			=   "zwiniêtych w rulon.";
 };
-func void Use_BabosDocs()
+func void Use_ItWr_BabosDocs()
 {
 	BaboSDocsOpen = true;
 	CreateInvItem (self, ItWr_BabosLetter_MIS);
@@ -1047,11 +1049,11 @@ instance ItWr_BanditLetter_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Wiadomoœæ";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_BanditLetter;
+	on_state[0]		=   Use_ItWr_BanditLetter;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_BanditLetter()
+func void Use_ItWr_BanditLetter()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1089,11 +1091,11 @@ instance ItWr_Bloody_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Notatka";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_BloodMIS;
+	on_state[0]		=   Use_ItWr_BloodMIS;
 	scemeName		=	"MAPSEALED";
 	description		= 	"Trucizna krwiopijców";
 };
-func void Use_BloodMIS()
+func void Use_ItWr_BloodMIS()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1127,11 +1129,11 @@ instance ItWr_Canthars_KomproBrief_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Canthars_KomproBrief;
+	on_state[0]		=   Use_ItWr_Canthars_KomproBrief;
 	scemeName		=	"MAP";
 	description		= 	"List Canthara do Sary";
 };
-func void Use_Canthars_KomproBrief()
+func void Use_ItWr_Canthars_KomproBrief()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1165,13 +1167,13 @@ instance ItWr_CorneliusTagebuch_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Dziennik";
 	visual 			=	"ItWr_Book_01.3ds";
-	on_state[0]		=	Use_CorneliusTagebuch;
+	on_state[0]		=	Use_ItWr_CorneliusTagebuch;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[0]			=	"Dziennik Corneliusa.";
 };
-func void Use_CorneliusTagebuch()
+func void Use_ItWr_CorneliusTagebuch()
 {
 	Cornelius_IsLiar = true;
 	B_LogEntry (TOPIC_RESCUEBENNET, "Dziennik jest dowodem którego potrzebujê, aby uniewinniæ Benneta.");
@@ -1202,11 +1204,11 @@ instance ItWr_DementorObsessionBook_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Almanach Opêtanych";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_DementorObsessionBook;
+	on_state[0]		=	Use_ItWr_DementorObsessionBook;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_DementorObsessionBook()
+func void Use_ItWr_DementorObsessionBook()
 {
 	Wld_PlayEffect ("spellFX_Fear", hero, hero, 0, 0, 0, false);
 	Snd_Play("MFX_FEAR_CAST");
@@ -1283,11 +1285,11 @@ instance ItWr_Diary_BlackNovice_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Dziennik";
 	visual 			=	"ItWr_Book_02_04.3ds";
-	on_state[0]		=	Use_Diary_BlackNovice;
+	on_state[0]		=	Use_ItWr_Diary_BlackNovice;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_Diary_BlackNovice()
+func void Use_ItWr_Diary_BlackNovice()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1318,11 +1320,11 @@ instance ItWr_DiegosLetter_MIS (ItemPR_Mission)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=	Use_DiegosLetter_Mis;
+	on_state[0]		=	Use_ItWr_DiegosLetter_Mis;
 	scemeName		=	"MAP";
 	description		=	"List Diega do Gerbrandta";
 };
-func void Use_DiegosLetter_Mis()
+func void Use_ItWr_DiegosLetter_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1346,11 +1348,11 @@ instance ItWr_GilbertLetter (ItemPR_MissionDoc)
 {
 	name 			=	"Notatka";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_GilbertLetter;
+	on_state[0]		=   Use_ItWr_GilbertLetter;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_GilbertLetter()
+func void Use_ItWr_GilbertLetter()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1379,11 +1381,11 @@ instance ItWr_HallsofIrdorath_Mis (ItemPR_MissionDoc)
 {	
 	name 			=	"Dwór Irdorath";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_HallsofIrdorath;
+	on_state[0]		=	Use_ItWr_HallsofIrdorath;
 	scemeName		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_HallsofIrdorath()
+func void Use_ItWr_HallsofIrdorath()
 {  
 	if (MIS_Xardas_SCCanOpenIrdorathBook)
 	{
@@ -1416,11 +1418,11 @@ instance ItWr_HallsofIrdorath_Open_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Dwór Irdorath";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_HallsofIrdorath_Open;
+	on_state[0]		=	Use_ItWr_HallsofIrdorath_Open;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_HallsofIrdorath_Open()
+func void Use_ItWr_HallsofIrdorath_Open()
 {
 	if (!ItWr_SCReadsHallsofIrdorath)
 	{
@@ -1461,13 +1463,13 @@ instance ItWr_HalvorMessage	(ItemPR_MissionDoc)
 {
 	name 			=	"Œmierdz¹ca notatka";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_HalvorMessage;
+	on_state[0]		=   Use_ItWr_HalvorMessage;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[2]			=   "W rybie by³a schowana ta notatka.";
 };
-func void Use_HalvorMessage()
+func void Use_ItWr_HalvorMessage()
 {
 	Knows_Halvor = true;
 	
@@ -1495,11 +1497,11 @@ instance ItWr_KdwLetter (ItemPR_MissionDoc)
 {
 	name 			=	"Wiadomoœæ";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_KdwLetter;
+	on_state[0]		=   Use_ItWr_KdwLetter;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_KdwLetter()
+func void Use_ItWr_KdwLetter()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1525,11 +1527,11 @@ instance ItWr_Kraeuterliste (ItemPR_MissionDoc)
 {
 	name 			=	"Lista";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Kraeuterliste;
+	on_state[0]		=   Use_ItWr_Kraeuterliste;
 	scemeName		=	"MAP";
 	description		= 	"Lista zió³ Constantina";
 };
-func void Use_Kraeuterliste()
+func void Use_ItWr_Kraeuterliste()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1564,13 +1566,13 @@ instance ItWr_Krypta_Garon (ItemPR_MissionDoc)
 {
 	name 			=	"Stary list";
 	visual 			=	"ItWr_Scroll_02.3ds";
-	on_state[0]		=	Use_Krypta_Garon;
+	on_state[0]		=	Use_ItWr_Krypta_Garon;
 	scemeName		=	"MAP";
 	
 	description		= 	name;
 	TEXT[3]			=	"Pisany niepewn¹ rêk¹.";
 };
-func void Use_Krypta_Garon()
+func void Use_ItWr_Krypta_Garon()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1633,11 +1635,11 @@ instance ItWr_LetterForGorn_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_LetterForGorn;
+	on_state[0]		=   Use_ItWr_LetterForGorn;
 	scemeName		=	"MAP";
 	description		=	"List Miltena do Gorna";
 };
-func void Use_LetterForGorn()
+func void Use_ItWr_LetterForGorn()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1664,11 +1666,11 @@ instance ItWr_LuciasLoveLetter_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_LuciasLoveLetter_Addon;
+	on_state[0]		=   Use_ItWr_LuciasLoveLetter_Addon;
 	scemeName		=	"MAP";
 	description		=	"List po¿egnalny Lucii";
 };
-func void Use_LuciasLoveLetter_Addon()
+func void Use_ItWr_LuciasLoveLetter_Addon()
 {
 	Log_CreateTopic (TOPIC_Addon_Lucia, LOG_MISSION);
 	Log_SetTopicStatus (TOPIC_Addon_Lucia, LOG_RUNNING);
@@ -1699,11 +1701,11 @@ instance ItWr_Manowar (ItemPR_MissionDoc)
 {
 	name 			=	"Tekst";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_Manowar;
+	on_state[0]		=   Use_ItWr_Manowar;
 	scemeName		=	"MAP";
 	description		=	"S³owa pieœni";
 };
-func void Use_Manowar()
+func void Use_ItWr_Manowar()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1732,14 +1734,14 @@ instance ItWr_MinenAnteil_Mis (ItemPR_MissionDoc)
 	name 			=	"Udzia³ w kopalni rudy Khorinis";
 	value 			=	100;
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_MinenAnteil_Mis;
+	on_state[0]		=   Use_ItWr_MinenAnteil_Mis;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[5]			=	NAME_Value;
 	COUNT[5]		=	value;
 };
-func void Use_MinenAnteil_Mis()
+func void Use_ItWr_MinenAnteil_Mis()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1779,11 +1781,11 @@ instance ItWr_MorgahardTip (ItemPR_MissionDoc)
 {
 	name 			=	"List";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_MorgahardTip;
+	on_state[0]		=   Use_ItWr_MorgahardTip;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_MorgahardTip()
+func void Use_ItWr_MorgahardTip()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1808,14 +1810,14 @@ instance ItWr_Passage_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Propozycja Lee dla paladynów";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Passage;
+	on_state[0]		=   Use_ItWr_Passage;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[3]			=	"Dziêki tej wiadomoœci byæ mo¿e uda";
 	TEXT[4]			=   "mi siê porozmawiaæ z Lordem Hagenem.";
 };
-func void Use_Passage()
+func void Use_ItWr_Passage()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1843,11 +1845,11 @@ instance ItWr_Pfandbrief_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Weksel";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_Pfandbrief;
+	on_state[0]		=   Use_ItWr_Pfandbrief;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_Pfandbrief()
+func void Use_ItWr_Pfandbrief()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1875,13 +1877,13 @@ instance ItWr_Poster_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"List goñczy";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Poster;
+	on_state[0]		=   Use_ItWr_Poster;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[3]			=	"Moja podobizna!";
 };
-func void Use_Poster()
+func void Use_ItWr_Poster()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1894,11 +1896,11 @@ instance ItWr_PyrokarsObsessionList (ItemPR_MissionDoc)
 {
 	name 			=	"Magiczny list Pyrokara";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_PyrokarsObsessionList;
+	on_state[0]		=   Use_ItWr_PyrokarsObsessionList;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_PyrokarsObsessionList()
+func void Use_ItWr_PyrokarsObsessionList()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -1947,22 +1949,22 @@ instance ItWr_RavensKidnapperMission_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"Rozkazy";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_RavensKidnapperMission_Addon;
+	on_state[0]		=   Use_ItWr_RavensKidnapperMission_Addon;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	TEXT[2]			= 	"Zabra³em ten list";
 	TEXT[3]			= 	"bandycie Dexterowi.";
 };
-func void Use_RavensKidnapperMission_Addon()
+func void Use_ItWr_RavensKidnapperMission_Addon()
 {
- 	if (!Use_RavensKidnapperMission_Addon_OneTime)
+ 	if (!Use_ItWr_RavensKidnapperMission_Addon_OneTime)
  	&& (MIS_Addon_Vatras_WhereAreMissingPeople != 0)
  	{
 	 	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
 		B_LogEntry (TOPIC_Addon_WhoStolePeople, "Teraz mam to na piœmie. Kruk, dawny magnat, stoi za porwaniami mieszkañców Khorinis. Jego kryjówka znajduje siê gdzieœ za górami, w pó³nocno-wschodniej czêœci Khorinis. Vatras powinien zobaczyæ ten dokument.");
-		Use_RavensKidnapperMission_Addon_OneTime = true;
+		Use_ItWr_RavensKidnapperMission_Addon_OneTime = true;
 	};
 	
  	SCKnowsMissingPeopleAreInAddonWorld = true;
@@ -1991,11 +1993,11 @@ instance ItWr_RichterKomproBrief_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Zlecenie sêdziego";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_RichterKomproBrief;
+	on_state[0]		=   Use_ItWr_RichterKomproBrief;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_RichterKomproBrief()
+func void Use_ItWr_RichterKomproBrief()
 {
 	SCKnowsRichterKomproBrief = true;
 	
@@ -2023,13 +2025,13 @@ instance ItWr_SaturasFirstMessage_Addon_Sealed (ItemPR_MissionDoc)
 {
 	name 			=	"Zapieczêtowana wiadomoœæ";
 	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_SaturasFirstMessage;
+	on_state[0]		=   Use_ItWr_SaturasFirstMessage;
 	scemeName		=	"MAPSEALED";
 	
 	description		=	name;
 	TEXT[2]			=   "Ta wiadomoœæ zosta³a dok³adnie zapieczêtowana.";
 };
-func void Use_SaturasFirstMessage()
+func void Use_ItWr_SaturasFirstMessage()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2079,7 +2081,7 @@ instance ItWr_SaturasFirstMessage_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"Otwarta wiadomoœæ";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_SaturasFirstMessage;
+	on_state[0]		=   Use_ItWr_SaturasFirstMessage;
 	scemeName		=	"MAP";
 	
 	description		=	name;
@@ -2090,11 +2092,11 @@ instance ItWr_Schuldenbuch (ItemPR_MissionDoc)
 {
 	name 			=	"Ksiêga D³ugów";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_SchuldBuch;
+	on_state[0]		=	Use_ItWr_SchuldBuch;
 	scemeName		=	"MAP";
 	description		= 	"Ksiêga D³ugów Lehmara";
 };
-func void Use_SchuldBuch()
+func void Use_ItWr_SchuldBuch()
 {   
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2164,13 +2166,13 @@ instance ItWr_StonePlateCommon_Addon (ItemPR_MissionDoc)
 {
 	name 			=	"Stara kamienna tablica";
 	visual 			=	"ItMi_StonePlate_Read_06.3ds"; 
-	on_state[0]		=	Use_StonePlateCommon;
+	on_state[0]		=	Use_ItWr_StonePlateCommon;
 	scemeName		=	"MAP";
 	
 	description		=	name;
 	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_StonePlateCommon()
+func void Use_ItWr_StonePlateCommon()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
@@ -2243,11 +2245,11 @@ instance ItWr_VinosKellergeister_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Duch wina";
 	visual 			=	"ItWr_Book_02_05.3DS";
-	on_state[0]		=   Use_VinosKellergeister_Mis;
+	on_state[0]		=   Use_ItWr_VinosKellergeister_Mis;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_VinosKellergeister_Mis()
+func void Use_ItWr_VinosKellergeister_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2282,11 +2284,11 @@ instance ItWr_XardasBookForPyrokar_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Dwór Irdorath";
 	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_XardasBookForPyrokar;
+	on_state[0]		=	Use_ItWr_XardasBookForPyrokar;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_XardasBookForPyrokar()
+func void Use_ItWr_XardasBookForPyrokar()
 {
 	Print(PRINT_IrdorathBookDoesntOpen);
 	Wld_PlayEffect ("spellFX_Fear", self, self, 0, 0, 0, false);
@@ -2297,11 +2299,11 @@ instance ItWr_XardasLetterToOpenBook_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"List Xardasa";
 	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_XardasLetterToOpenBook;
+	on_state[0]		=   Use_ItWr_XardasLetterToOpenBook;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_XardasLetterToOpenBook()
+func void Use_ItWr_XardasLetterToOpenBook()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2340,11 +2342,11 @@ instance ItWr_XardasSeamapBook_Mis (ItemPR_MissionDoc)
 {
 	name 			=	"Zakurzona ksiêga";
 	visual 			=	"ItWr_Book_02_01.3ds";
-	on_state[0]		=	Use_XardasSeamapBook_Mis;
+	on_state[0]		=	Use_ItWr_XardasSeamapBook_Mis;
 	scemeName		=	"MAP";
 	description		=	name;
 };
-func void Use_XardasSeamapBook_Mis()
+func void Use_ItWr_XardasSeamapBook_Mis()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();
@@ -2398,11 +2400,11 @@ instance ItWr_ZugBruecke_MIS (ItemPR_MissionDoc)
 {
 	name 			=	"Stary list";
 	visual 			=	"ItWr_Scroll_01.3ds";
-	on_state[0]		=	Use_ZugBruecke;
+	on_state[0]		=	Use_ItWr_ZugBruecke;
 	scemeName		=	"MAP";
 	description		= 	name;
 };
-func void Use_ZugBruecke()
+func void Use_ItWr_ZugBruecke()
 {
 	var int nDocID;
 	nDocID = 	Doc_Create		();

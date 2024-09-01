@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_WispDetector
+/// B_WispDetector
 ///******************************************************************************************
 
 var int WispSearching;
@@ -29,7 +29,7 @@ func void B_GetWispDetectedItem()
 	AI_GotoItem (self, item);
 	
 	if (Npc_GetDistToItem(self, item) < 1000)
-	&& (Hlp_Random(100) <= 1)
+	&& (Hlp_Random(50) == 0)
 	{
 		Wld_PlayEffect ("spellFX_ItemAusbuddeln", item, item, 0, 0, 0, false);
 	};
@@ -122,7 +122,7 @@ func int B_MM_WispDetect()
 };
 
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_Addon_WispDetector_EXIT (C_INFO)
 {
@@ -140,7 +140,7 @@ func void DIA_Addon_WispDetector_EXIT_Info()
 };
 
 ///******************************************************************************************
-///	DetectItems
+/// DetectItems
 ///******************************************************************************************
 instance DIA_Addon_WispDetector_DetectItems (C_INFO)
 {
@@ -166,7 +166,7 @@ func void DIA_Addon_WispDetector_DetectItems_Info()
 	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Potrzebuję magicznych mikstur.", DIA_Addon_WispDetector_DetectItems_POTIONS);
 	Info_AddChoice		(DIA_Addon_WispDetector_DetectItems, "Poszukaj wszystkiego, co znajdziesz.", DIA_Addon_WispDetector_DetectItems_ALL);
 };
-
+///******************************************************************************************
 func void DIA_Addon_WispDetector_DetectItems_Follow()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_FollowMe_Wisp_15_00"); //Folge mir einfach.
@@ -174,7 +174,6 @@ func void DIA_Addon_WispDetector_DetectItems_Follow()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_Follow;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_ALL()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_ALL_15_00"); //Poszukaj wszystkiego, co znajdziesz.
@@ -182,7 +181,6 @@ func void DIA_Addon_WispDetector_DetectItems_ALL()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_ALL;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_POTIONS()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_POTIONS_15_00"); //Potrzebuję magicznych mikstur.
@@ -190,7 +188,6 @@ func void DIA_Addon_WispDetector_DetectItems_POTIONS()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_POTIONS;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_MAGIC()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_MAGIC_15_00"); //Potrzebuję pierścieni i amuletów.
@@ -198,7 +195,6 @@ func void DIA_Addon_WispDetector_DetectItems_MAGIC()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_MAGIC;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_FOOD()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_FOOD_15_00"); //Potrzebuję żywności i ziół.
@@ -206,7 +202,6 @@ func void DIA_Addon_WispDetector_DetectItems_FOOD()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_FOOD;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_NF()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_NF_15_00"); //Potrzebuję broni do walki wręcz.
@@ -214,7 +209,6 @@ func void DIA_Addon_WispDetector_DetectItems_NF()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_NF;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_FF()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_FF_15_00"); //Potrzebuję broni strzeleckiej i amunicji.
@@ -222,7 +216,6 @@ func void DIA_Addon_WispDetector_DetectItems_FF()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_FF;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_NONE()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_NONE_15_00"); //Potrzebuję złota, kluczy i innych przedmiotów.
@@ -230,7 +223,6 @@ func void DIA_Addon_WispDetector_DetectItems_NONE()
 	AI_StopProcessInfos(self);
 	WispSearching = WispSearch_NONE;
 };
-
 func void DIA_Addon_WispDetector_DetectItems_RUNE()
 {
 	AI_Output (other, self, "DIA_Addon_WispDetector_DetectItems_RUNE_15_00"); //Potrzebuję run i zwojów magicznych.
@@ -240,7 +232,7 @@ func void DIA_Addon_WispDetector_DetectItems_RUNE()
 };
 
 ///******************************************************************************************
-///	Follow
+/// Follow
 ///******************************************************************************************
 instance DIA_Addon_WispDetector_Follow (C_INFO)
 {

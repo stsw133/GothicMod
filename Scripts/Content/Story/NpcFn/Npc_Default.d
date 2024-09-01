@@ -16,6 +16,4 @@ prototype Npc_Default (C_Npc)
 	aivar[AIV_MM_FollowTime]			=	NPC_TIME_FOLLOW;
 	
 //	bodyStateInterruptableOverride		=	false;
-	
-	Npc_SetTalentSkill (self, NPC_TALENT_DIFFICULTY, dLevel);
 };

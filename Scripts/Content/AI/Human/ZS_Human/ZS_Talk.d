@@ -157,7 +157,7 @@ func int ZS_Talk_Loop()
 ///******************************************************************************************
 func void ZS_Talk_End()
 {
-	Npc_SetRefuseTalk(other, 20);
+	Npc_SetRefuseTalk (other, 20);
 	
 	if (C_NpcIsBotheredByPlayerRoomGuild(self))
 	|| (Wld_GetPlayerPortalGuild() == GIL_PUBLIC && Npc_GetAttitude(self, other) != ATT_FRIENDLY)

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	C_GetDistToCenter
+/// C_GetDistToCenter
 ///******************************************************************************************
 func int C_GetDistToCenter (var C_Npc slf, var int quarter)
 {
@@ -76,17 +76,18 @@ func int C_GetDistToCenter (var C_Npc slf, var int quarter)
 	else
 	{
 		printplus("WRONG Q-PARAMETER!");
-	};	
+	};
 	
 	return dist;
 };
 
 ///******************************************************************************************
-///	C_IsQuarterNearest
+/// C_IsQuarterNearest
 ///******************************************************************************************
 func int C_IsQuarterNearest (var C_Npc slf, var int quart)
 {
 	var int quartDist; quartDist = C_GetDistToCenter(slf, quart);
+	
 	if (quartDist <= C_GetDistToCenter(slf, Q_KASERNE))
 	&& (quartDist <= C_GetDistToCenter(slf, Q_GALGEN))
 	&& (quartDist <= C_GetDistToCenter(slf, Q_MARKT))
@@ -104,7 +105,7 @@ func int C_IsQuarterNearest (var C_Npc slf, var int quart)
 };
 
 ///******************************************************************************************
-///	C_NpcIsInQuarter
+/// C_NpcIsInQuarter
 ///******************************************************************************************
 func int C_NpcIsInQuarter (var C_Npc slf)
 {

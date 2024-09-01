@@ -11,8 +11,8 @@ instance WzA_17181_Angela (Npc_Default)
 	
 	/// ------ AI vars ------
 	aivar[AIV_FollowDist]				=	300;
-	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
-	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
+	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller | IGNORE_Fear;
+	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor | IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
@@ -30,7 +30,7 @@ instance WzA_17181_Angela (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, FEMALE, BodyTex_Nude+0, BodySkin_P, "Hum_Head_Babe4", FaceBabe_Angela, Teeth_Pretty, ITAR_Babe_VLK_M_05);
+	NpcFn_SetVisual		(self, FEMALE, BodyTex_Nude, BodySkin_P, "Hum_Head_Babe4", FaceBabe_P_Angela, Teeth_Pretty, ItAr_Babe_VLK_L_05);
 	Mdl_ApplyOverlayMds	(self, "Humans_Babe.mds");
 	Mdl_SetModelFatness	(self, 0);
 	

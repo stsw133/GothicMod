@@ -35,7 +35,7 @@ func void B_GiveTradeInv_Tandor (var C_Npc slf)
 		CreateInvItems (slf, ItRw_Crossbow_M_02, 1);
 		CreateInvItems (slf, ItRw_Crossbow_H_01, 1);
 		
-		//CreateInvItems (slf, ItAm_Prot_Total_01, 1);
+		CreateInvItems (slf, ItAm_Prot_Blunt_01, 1);
 		
 		Tandor_ItemsGiven_Chapter = 7;
 	};

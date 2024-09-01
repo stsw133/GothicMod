@@ -317,8 +317,8 @@ func void DIA_Addon_Saturas_Tokens_Info ()
 	AI_Output	(other, self, "DIA_Addon_Saturas_Tokens_15_00"); //Jeœli chodzi o relikty...
 	
 	if (DIA_Addon_Saturas_Tokens_OneTime == FALSE)
-	&& ((C_ScHasMagicStonePlate ())
-	|| (Npc_HasItems (other,ItWr_StonePlateCommon_Addon)))
+	&& ((Npc_HasItems(other, ItWr_StonePlate))
+	|| (Npc_HasItems(other, ItWr_StonePlateCommon_Addon)))
 	{
 		AI_Output	(other, self, "DIA_Addon_Saturas_Tokens_15_01"); //Wydaje mi siê, ¿e mam tu coœ dla ciebie.
 		AI_Output	(self, other, "DIA_Addon_Saturas_Tokens_14_02"); //Mamy ju¿ podobne kamienne tablice. Te ju¿ nam siê nie przydadz¹.

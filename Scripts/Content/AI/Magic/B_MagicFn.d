@@ -57,7 +57,7 @@ func void B_MagicHurtNpcArea(var C_Npc oth, var C_Npc slf)
 ///******************************************************************************************
 
 const int SPL_Cost_Scroll			=	5;
-const int SPL_Percent_Scroll		=	40;
+const int SPL_Percent_Scroll		=	20;
 
 ///******************************************************************************************
 func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaInvested)

@@ -29,8 +29,8 @@ func void B_GiveTradeInv_Orlan (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Bow_L_01, 1);
 		
-		//CreateInvItems (slf, ItBE_Addon_Leather_01, 1);
-		//CreateInvItems (slf, ItRi_Prot_Mage_02, 1);
+		CreateInvItems (slf, ItBE_Addon_Leather_01, 1);
+		CreateInvItems (slf, ItRi_Prot_Magic_01, 1);
 		
 		CreateInvItems (slf, ItTe_Taverne, 1);	/// moved!!!
 		
@@ -44,7 +44,7 @@ func void B_GiveTradeInv_Orlan (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 40);
 		CreateInvItems (slf, ItRw_Bolt, 45);
-		//CreateInvItems (slf, ItBe_Addon_DEX_5, 1);
+		CreateInvItems (slf, ItBe_Addon_Dex_01, 1);
 		
 		Orlan_ItemsGiven_Chapter = 8;
 	};
@@ -56,7 +56,7 @@ func void B_GiveTradeInv_Orlan (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 120);
 		CreateInvItems (slf, ItRw_Bolt, 115);
-		//CreateInvItems (slf, ItBe_Addon_Prot_EdgPoi, 1);
+		CreateInvItems (slf, ItBe_Addon_Mp_01, 1);
 		
 		Orlan_ItemsGiven_Chapter = 9;
 	};

@@ -4,10 +4,10 @@ prototype Mst_Default_Biter (C_Npc)
 	/// ------ Monster ------
 	name								=	"K¹sacz";
 	guild								=	GIL_SCAVENGER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_BITER;
+	aivar[AIV_MM_REAL_ID]				=	ID_BITER;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_SCAVENGER;
 	
 	NpcFn_SetAttributesToLevel (self, 10);
@@ -19,32 +19,26 @@ prototype Mst_Default_Biter (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Orcbiter()
 {
 	Mdl_SetVisual		(self, "Scavenger.mds");
+	Mdl_SetVisualBody	(self, "Sc2_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds (self, "Orcbiter.mds");
-	Mdl_SetVisualBody	(self, "Sc2_Body", 0, default, "", default, default, -1);
 };
 func void B_SetVisuals_Swampbiter()
 {
 	Mdl_SetVisual		(self, "Scavenger.mds");
+	Mdl_SetVisualBody	(self, "Sc2_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds (self, "Orcbiter.mds");
-	Mdl_SetVisualBody	(self, "Sc2_Swamp_Body", 0, default, "", default, default, -1);
-};
-func void B_SetVisuals_Demonbiter()
-{
-	Mdl_SetVisual		(self, "Scavenger.mds");
-	Mdl_ApplyOverlayMds (self, "Orcbiter.mds");
-	Mdl_SetVisualBody	(self, "Sc2_Demon_Body", 0, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Orcbiter (Mst_Default_Biter)
@@ -54,8 +48,4 @@ instance Orcbiter (Mst_Default_Biter)
 instance Swampbiter (Mst_Default_Biter)
 {
 	B_SetVisuals_Swampbiter();
-};
-instance Demonbiter (Mst_Default_Biter)
-{
-	B_SetVisuals_Demonbiter();
 };

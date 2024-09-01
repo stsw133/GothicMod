@@ -4,10 +4,10 @@ prototype Mst_Default_Bloodfly (C_Npc)
 	/// ------ Monster ------
 	name								=	"Krwiopijca";
 	guild								=	GIL_BLOODFLY;
-	aivar[AIV_MM_REAL_ID]				= 	ID_BLOODFLY;
+	aivar[AIV_MM_REAL_ID]				=	ID_BLOODFLY;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_BLOODFLY;
 	
 	NpcFn_SetAttributesToLevel (self, 5);
@@ -36,12 +36,12 @@ func void B_SetVisuals_Bloodfly()
 func void B_SetVisuals_Desertfly()
 {
 	Mdl_SetVisual		(self, "Bloodfly.mds");
-	Mdl_SetVisualBody	(self, "Blo_Desert_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Blo_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_Swampfly()
 {
 	Mdl_SetVisual		(self, "Bloodfly.mds");
-	Mdl_SetVisualBody	(self, "Blo_Swamp_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Blo_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Bloodfly (Mst_Default_Bloodfly)
@@ -61,6 +61,6 @@ instance Swampfly (Mst_Default_Bloodfly)
 instance Sleepfly (Mst_Default_Bloodfly)
 {
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_SleepStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_SleepStart]			=	OnlyRoutine;
 	B_SetVisuals_Bloodfly();
 };

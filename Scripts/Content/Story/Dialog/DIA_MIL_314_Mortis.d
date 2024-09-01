@@ -211,7 +211,7 @@ func void DIA_Mortis_Teach_BACK()
 };
 func void DIA_Mortis_Teach_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_LOW);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_LOW);
 	
 	Info_ClearChoices   (DIA_Mortis_Teach);
 	
@@ -223,7 +223,7 @@ func void DIA_Mortis_Teach_1()
 };
 func void DIA_Mortis_Teach_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_LOW);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_LOW);
 	
 	Info_ClearChoices   (DIA_Mortis_Teach);
 	

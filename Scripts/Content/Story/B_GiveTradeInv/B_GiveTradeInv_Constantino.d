@@ -59,7 +59,7 @@ func void B_GiveTradeInv_Constantino (var C_NPC slf)
 		CreateInvItems (slf, ItPl_Speed_Herb_01, 2);
 		CreateInvItems (slf, ItPl_SwampHerb, 1);
 		CreateInvItems (slf, ItPl_Temp_Herb, 2);
-		//CreateInvItems (slf, ItBe_Addon_Prot_FIRE, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Fire_01, 1);
 		
 		Constantino_ItemsGiven_Chapter = 9;
 	};

@@ -1,12 +1,12 @@
 ///******************************************************************************************
-///	B_WeaponSpecialDamage
-///******************************************************************************************
 
 const int BeliarWeaponSpecialDamage = 100;
 var int RavenBlitz;
 
 var int SPL_IsActive_PalBless;
 
+///******************************************************************************************
+/// B_WeaponSpecialDamage
 ///******************************************************************************************
 func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 {
@@ -23,35 +23,32 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 			if (oth.aivar[AIV_MM_REAL_ID] == ID_DRAGON_UNDEAD)
 			{
 				Wld_PlayEffect ("spellFX_BELIARSRAGE", slf, slf, 0, 0, 0, false);
-				B_MagicHurtNpc (oth, slf, BeliarWeaponSpecialDamage);
+				B_MagicHurtNpc (oth, slf, BeliarWeaponSpecialDamage + BeliarWeapon_LastUpgradeLvl);
 			}
 			else if (oth.flags != NPC_FLAG_IMMORTAL)
 			{
 				Wld_PlayEffect ("spellFX_BELIARSRAGE", oth, oth, 0, 0, 0, false);
-				B_MagicHurtNpc (slf, oth, BeliarWeaponSpecialDamage);
+				B_MagicHurtNpc (slf, oth, BeliarWeaponSpecialDamage + BeliarWeapon_LastUpgradeLvl);
 			};
 			
 			Wld_PlayEffect ("spellFX_BELIARSRAGE_COLLIDE", slf, slf, 0, 0, 0, false);
 		};
 		
 		/// POWER BASED DAMAGE
-		//if (!C_BodyStateContains(oth, BS_PARADE))
-		//{
-			if (Hlp_IsItem(wpn, ItMw_Stab_M_02))
-			{
-				dmg = slf.attribute[ATR_POWER] * 3 / 100;
-				
-				if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
-				else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
-			}
-			else if (Hlp_IsItem(wpn, ItMw_Stab_H_02))
-			{
-				dmg = slf.attribute[ATR_POWER] * 5 / 100;
-				
-				if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
-				else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
-			};
-		//};
+		if (Hlp_IsItem(wpn, ItMw_Stab_M_02))
+		{
+			dmg = slf.attribute[ATR_POWER] * 3 / 100;
+			
+			if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
+			else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
+		}
+		else if (Hlp_IsItem(wpn, ItMw_Stab_H_02))
+		{
+			dmg = slf.attribute[ATR_POWER] * 5 / 100;
+			
+			if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
+			else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
+		};
 		
 		/// SPL_PalBless
 		if (SPL_IsActive_PalBless)
@@ -120,7 +117,7 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 		}
 		else if (RavenBlitz >= 3) 
 		{
-			if (Hlp_Random(100) < 50)
+			if (Hlp_Random(2))
 			{
 				RavenBlitz = 0;
 			};
@@ -133,22 +130,24 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 };
 
 ///******************************************************************************************
+/// B_WeaponSpecialEffect
+///******************************************************************************************
 func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth)
 {
 	/// hero
 	if (Npc_IsPlayer(slf))
 	{
 		/// SELF FIGHT TEACH
-		SelfFightTeach_ADD (slf, slf.weapon-2);
+		if (slf.weapon >= 2)
+		{
+			SelfFightTeach_ADD (slf, slf.weapon-2);
+		};
 		
 		/// MANA REGENERATION
-		//if (!C_BodyStateContains(oth, BS_PARADE))
-		//{
-			var C_Item wpn; wpn = Npc_GetReadiedWeapon(slf);
-			
-			if      (Hlp_IsItem(wpn, ItMw_Stab_L_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 2);		}
-			else if (Hlp_IsItem(wpn, ItMw_Stab_M_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 6);		}
-			else if (Hlp_IsItem(wpn, ItMw_Stab_H_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 10);	};
-		//};
+		var C_Item wpn; wpn = Npc_GetReadiedWeapon(slf);
+		
+		if		(Hlp_IsItem(wpn, ItMw_Stab_L_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 2);		}
+		else if	(Hlp_IsItem(wpn, ItMw_Stab_M_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 6);		}
+		else if	(Hlp_IsItem(wpn, ItMw_Stab_H_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 10);	};
 	};
 };

@@ -4,14 +4,14 @@ prototype Mst_Default_Firebeast (C_Npc)
 	/// ------ Monster ------
 	name								=	"Ognista bestia";
 	guild								=	GIL_SHADOWBEAST_SKELETON;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SHADOWBEAST_DEMON;
+	aivar[AIV_MM_REAL_ID]				=	ID_SHADOWBEAST_FIRE;
 	effect								=	"SPELLFX_FIRESWORD_HIT";
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_FIRE;
+	damagetype							=	DAM_FIRE;
 	fight_tactic						=	FAI_SHADOWBEAST;
 	
-	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetAttributesToLevel (self, 40);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	protection[PROT_FIRE]				=	-1;
@@ -22,7 +22,7 @@ prototype Mst_Default_Firebeast (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -37,7 +37,7 @@ prototype Mst_Default_Firebeast (C_Npc)
 func void B_SetVisuals_Firebeast()
 {
 	Mdl_SetVisual		(self, "FireShadow.mds");
-	Mdl_SetVisualBody	(self, "Shadowbeast_Skeleton_Body", 1, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Sha_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Shadowbeast_Fire (Mst_Default_Firebeast)

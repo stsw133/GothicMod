@@ -818,7 +818,31 @@ instance Gil_Values(C_GILVALUES)
 	BLOOD_FLOW				[GIL_SUMMONED_GOLEM] = BLOOD_FLOW			[GIL_GOLEM];    
 	BLOOD_AMOUNT			[GIL_SUMMONED_GOLEM] = BLOOD_AMOUNT			[GIL_GOLEM];
 	BLOOD_MAX_DISTANCE		[GIL_SUMMONED_GOLEM] = BLOOD_MAX_DISTANCE	[GIL_GOLEM];    
-
+	
+/// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/// TIGER
+	
+	SWIM_TIME		 		[GIL_TIGER] = TIME_INFINITE;
+	DIVE_TIME		 		[GIL_TIGER] = 0;
+	WATER_DEPTH_KNEE 		[GIL_TIGER] = 50;
+	WATER_DEPTH_CHEST		[GIL_TIGER] = 120;
+	
+	STEP_HEIGHT		 		[GIL_TIGER] = 60;
+	JUMPLOW_HEIGHT	 		[GIL_TIGER] = 150;
+	JUMPMID_HEIGHT 			[GIL_TIGER] = 300;
+	
+	SLIDE_ANGLE		 		[GIL_TIGER] = 50;
+	DISABLE_AUTOROLL 		[GIL_TIGER] = 1;
+	SURFACE_ALIGN	 		[GIL_TIGER] = 2;
+	TURN_SPEED				[GIL_TIGER] = 240;
+	
+	FALLDOWN_HEIGHT			[GIL_TIGER] = 600;
+	FALLDOWN_DAMAGE			[GIL_TIGER] = 10;
+	
+	FIGHT_RANGE_BASE		[GIL_TIGER] = 150;
+	FIGHT_RANGE_FIST		[GIL_TIGER] = 200;
+	FIGHT_RANGE_G			[GIL_TIGER] = 200;
+	
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // DEMON (Demon und Demon Lord) - AUCH SUMMONED Demon (s.u.) beachten!
 

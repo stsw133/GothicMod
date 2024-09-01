@@ -32,7 +32,7 @@ func void Spell_Cast_Summon()
 		
 		if		(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Demon))			{	Wld_SpawnNpcRange(self, Demon, 1, 500);				Summoned = Hlp_GetNpc(Demon);			}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Gobbo_Skeleton))	{	Wld_SpawnNpcRange(self, Gobbo_Skeleton, 1, 500);	Summoned = Hlp_GetNpc(Gobbo_Skeleton);	}
-		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Golem))			{	Wld_SpawnNpcRange(self, Golem, 1, 500);				Summoned = Hlp_GetNpc(Golem);			}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Golem))			{	Wld_SpawnNpcRange(self, StoneGolem, 1, 500);		Summoned = Hlp_GetNpc(StoneGolem);		}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Skeleton))			{	Wld_SpawnNpcRange(self, Skeleton, 1, 500);			Summoned = Hlp_GetNpc(Skeleton);		}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_StoneGuardian))	{	Wld_SpawnNpcRange(self, StoneGuardian, 1, 500);		Summoned = Hlp_GetNpc(StoneGuardian);	}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSu_Wolf_Skeleton))	{	Wld_SpawnNpcRange(self, Wolf_Skeleton, 1, 500);		Summoned = Hlp_GetNpc(Wolf_Skeleton);	}

@@ -4,10 +4,10 @@ prototype Mst_Default_GoblinSkeleton (C_Npc)
 	/// ------ Monster ------
 	name								=	"Szkielet-goblin";
 	guild								=	GIL_SKELETON;
-	aivar[AIV_MM_REAL_ID]				= 	ID_GOBBO_SKELETON;
+	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_SKELETON;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
 	NpcFn_SetAttributesToLevel (self, 10);
@@ -19,18 +19,18 @@ prototype Mst_Default_GoblinSkeleton (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_LONG;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
 ///******************************************************************************************
 func void B_SetVisuals_GoblinSkeleton()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gobbo_Skeleton_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Gobbo_Skeleton_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
@@ -38,8 +38,9 @@ instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
 	B_SetVisuals_GoblinSkeleton();
 	EquipItem (self, ItMw_1h_MISC_Sword);
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Gobbo_SkeletonOWDemonTower (Mst_Default_GoblinSkeleton)
 {

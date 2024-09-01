@@ -48,7 +48,7 @@ func void B_GiveTradeInv_Addon_Cronos_ADW (var C_Npc slf)
 	{
 		CreateInvItems (slf, ItMi_Gold, 100);
 		
-		CreateInvItems (slf, ItAt_WaranFiretongue, 1);
+		CreateInvItems (slf, ItAt_FirewaranTongue, 1);
 		CreateInvItems (slf, ItMi_Coal, 2);
 		CreateInvItems (slf, ItMi_Flask, 10);
 		CreateInvItems (slf, ItMi_Pitch, 1);

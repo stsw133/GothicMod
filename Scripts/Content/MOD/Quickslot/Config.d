@@ -1,7 +1,7 @@
 // Config
 const string 	QS_BackgroundTexture 		= "QuickSlots_G3.TGA";
 const string 	QS_SlotFrameInInvTexture 	= "QS_ActiveSlotInv.TGA";
-const int 		QS_posY_OpenInv				= 128;
+const int 		QS_posY_OpenInv				= 0;	//128
 const int 		QS_SizeX					= 600;
 const int 		QS_SizeY					= 150;
 const int 		QS_SlotPosY					= 72;

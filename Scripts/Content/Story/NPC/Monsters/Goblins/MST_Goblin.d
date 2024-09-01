@@ -7,7 +7,7 @@ prototype Mst_Default_Goblin (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
 	NpcFn_SetAttributesToLevel (self, 4);
@@ -24,30 +24,20 @@ prototype Mst_Default_Goblin (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Goblin()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gob_Body", 0, default, "", default, default, -1);
-};
-func void B_SetVisuals_GoblinYellow()
-{
-	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gob_Yellow_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Gob_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Gobbo (Mst_Default_Goblin)
 {
 	B_SetVisuals_Goblin();
-	EquipItem (self, ItMw_1h_Goblin_01);
-};
-instance Gobbo_Yellow (Mst_Default_Goblin)
-{
-	name								=	"¯ó³ty goblin";
-	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_YELLOW;
-	
-	B_SetVisuals_GoblinYellow();
 	EquipItem (self, ItMw_1h_Goblin_01);
 };

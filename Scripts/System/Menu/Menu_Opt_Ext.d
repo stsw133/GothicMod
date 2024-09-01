@@ -1,5 +1,7 @@
-
-instance MENU_OPT_EXT(C_MENU_DEF)
+///******************************************************************************************
+/// Extended options
+///******************************************************************************************
+instance MENU_OPT_EXT (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENUITEM_EXT_HEADLINE";
@@ -21,7 +23,8 @@ instance MENU_OPT_EXT(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-instance MENUITEM_EXT_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_EXT_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "KONFIGURACJA ZAAWANSOWANA";
 	type = MENU_ITEM_TEXT;
@@ -32,7 +35,8 @@ instance MENUITEM_EXT_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_FFT(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_EXT_FFT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Fale";
@@ -44,8 +48,7 @@ instance MENUITEM_EXT_FFT(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_FFT_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_FFT_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -61,7 +64,7 @@ instance MENUITEM_EXT_FFT_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_WATERFADE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_WATERFADE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "PrzeŸroczystoœæ wody";
@@ -73,8 +76,7 @@ instance MENUITEM_EXT_WATERFADE(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_WATERFADE_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_WATERFADE_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -90,7 +92,7 @@ instance MENUITEM_EXT_WATERFADE_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_OBJWIND(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_OBJWIND (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wiatr";
@@ -102,8 +104,7 @@ instance MENUITEM_EXT_OBJWIND(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_OBJWIND_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_OBJWIND_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -119,7 +120,7 @@ instance MENUITEM_EXT_OBJWIND_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_CLOUDSHADOW(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_CLOUDSHADOW (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Cienie chmur";
@@ -131,8 +132,7 @@ instance MENUITEM_EXT_CLOUDSHADOW(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_CLOUDSHADOW_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_CLOUDSHADOW_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -148,7 +148,7 @@ instance MENUITEM_EXT_CLOUDSHADOW_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_AMBIENTPFX(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_AMBIENTPFX (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "DŸwiêki otoczenia";
@@ -160,8 +160,7 @@ instance MENUITEM_EXT_AMBIENTPFX(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_AMBIENTPFX_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_AMBIENTPFX_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -177,7 +176,7 @@ instance MENUITEM_EXT_AMBIENTPFX_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_ENVMAP(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_ENVMAP (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Odbicia";
@@ -189,8 +188,7 @@ instance MENUITEM_EXT_ENVMAP(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_ENVMAP_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_ENVMAP_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -206,7 +204,7 @@ instance MENUITEM_EXT_ENVMAP_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_EXT_RADIALFOG(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_RADIALFOG (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Mg³a";
@@ -218,8 +216,7 @@ instance MENUITEM_EXT_RADIALFOG(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_EXT_RADIALFOG_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_EXT_RADIALFOG_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -246,4 +243,3 @@ instance MENUITEM_EXT_BACK(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_BACK;
 	flags = flags | IT_TXT_CENTER;
 };
-

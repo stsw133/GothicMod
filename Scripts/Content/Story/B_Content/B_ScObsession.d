@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_ScObsession
+/// B_ScObsession
 ///******************************************************************************************
 
 const string PRINT_ScIsObsessed						=	"Czujesz, ¿e coœ ciê ciœnie i dusi!";
@@ -24,7 +24,7 @@ func void B_SetScObsessed (var C_Npc dementor)
 		AI_StopProcessInfos(dementor);
 	};
 	
-	if (!Npc_HasItems(hero, ItAm_ProtDementor))
+	if (!Npc_HasItems(hero, ItAm_Prot_Obsession))
 	{
 		MOD_ObsessionON();
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);

@@ -40,46 +40,43 @@ func int ZS_MM_Rtn_Summoned_Loop()
 	{
 		AI_GotoNpc (self, hero);
 	}
-	else
+	else if (Npc_GetStateTime(self) >= 1)
 	{
-		if (Npc_GetStateTime(self) >= 1)
+		if (!Npc_CanSeeNpc(self, hero))
 		{
-			if (!Npc_CanSeeNpc(self, hero))
-			{
-				AI_TurnToNpc (self, hero);
-			};
-			
-			/// changed!!!
-			if (self.aivar[AIV_SummonTime] > 0)
-			{
-				self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
-				
-				if (self.level == 0)
-				{
-					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
-					if (self.aivar[AIV_SummonTime] == 0)
-					{
-						Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
-					};
-				};
-			};
+			AI_TurnToNpc (self, hero);
+		};
+		
+		/// changed!!!
+		if (self.aivar[AIV_SummonTime] > 0)
+		{
+			self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
 			
 			if (self.level == 0)
 			{
-				if (self.aivar[AIV_SummonTime] > 0)
-				{
-					self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
-					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
-				};
+				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
 				if (self.aivar[AIV_SummonTime] == 0)
 				{
 					Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
 				};
 			};
-			
-			/// ...
-			Npc_SetStateTime (self, 0);
 		};
+		
+		if (self.level == 0)
+		{
+			if (self.aivar[AIV_SummonTime] > 0)
+			{
+				self.aivar[AIV_SummonTime] -= Npc_GetStateTime(self);
+				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/100);
+			};
+			if (self.aivar[AIV_SummonTime] == 0)
+			{
+				Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS]);
+			};
+		};
+		
+		/// ...
+		Npc_SetStateTime (self, 0);
 	};
 	
 	self.wp = Npc_GetNearestWP(self);

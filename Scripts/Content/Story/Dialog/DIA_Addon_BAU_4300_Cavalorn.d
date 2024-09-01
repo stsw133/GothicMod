@@ -878,7 +878,7 @@ func void B_Cavalorn_Triggered_Wohin ()
 func void DIA_Addon_Cavalorn_Triggered_OBack ()
 {
 	AI_UnequipArmor	(self);
-	CreateInvItems (self, ITAR_BAU_00, 1);	
+	CreateInvItems (self, ITAR_BAU_L_00, 1);
 	Npc_RemoveInvItems	(self, ITAR_Ranger_L, Npc_HasItems (self, ITAR_Ranger_L));
 	AI_EquipBestArmor (self); 
 	AI_Output			(other, self, "DIA_Addon_Cavalorn_Triggered_OBack_15_00"); //W takim razie pójdê do nich i odzyskam ornament.
@@ -889,7 +889,7 @@ func void DIA_Addon_Cavalorn_Triggered_OBack ()
 func void DIA_Addon_Cavalorn_Triggered_Pal ()
 {
 	AI_UnequipArmor	(self);
-	CreateInvItems (self, ITAR_BAU_00, 1);	
+	CreateInvItems (self, ITAR_BAU_L_00, 1);
 	Npc_RemoveInvItems	(self, ITAR_Ranger_L, Npc_HasItems (self, ITAR_Ranger_L));
 	AI_EquipBestArmor (self); 
 	AI_Output			(other, self, "DIA_Addon_Cavalorn_Triggered_Pal_15_00"); //Jeden z nas musi pójœæ do górnego miasta.

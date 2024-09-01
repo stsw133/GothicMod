@@ -26,7 +26,7 @@ func void B_GiveTradeInv_Kjorn (var C_Npc slf)
 		CreateInvItems (slf, ItFo_Cheese, 5);
 		CreateInvItems (slf, ItFoMutton, 5);
 		CreateInvItems (slf, ItFo_Stew, 5);
-		//CreateInvItems (slf, ItRi_Prot_Fire_02, 1);
+		CreateInvItems (slf, ItRi_Custody_01, 1);
 		
 		Kjorn_ItemsGiven_Chapter = 8;
 	};

@@ -10,7 +10,7 @@ func void B_GiveTradeInv_Addon_Juan (var C_Npc slf)
 	{
 		CreateInvItems (slf, ItMi_GoldNugget_Addon, 2);
 		
-		CreateInvItems (slf, ItFo_Addon_Pfeffer_01, 1);
+		CreateInvItems (slf, ItFo_Spices, 1);
 		CreateInvItems (slf, ItFo_Apple, 5);
 		CreateInvItems (slf, ItFo_Booze, 5);
 		CreateInvItems (slf, ItFo_Bread, 5);

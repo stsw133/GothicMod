@@ -7,10 +7,10 @@ const string FONT_ScreenSmall		=	"FONT_OLD_10_WHITE.TGA";
 const string FONT_Book				=	"FONT_10_BOOK.TGA";
 const string FONT_BookHeadline		=	"FONT_20_BOOK.TGA";
 
-const string TEXT_FONT_20 			=	"Font_old_20_white.tga";
-const string TEXT_FONT_10 			=	"Font_old_10_white.tga";
-const string TEXT_FONT_DEFAULT 		=	"Font_old_10_white.tga";
-const string TEXT_FONT_Inventory 	=	"Font_old_10_white.tga";
+const string TEXT_FONT_20			=	"Font_old_20_white.tga";
+const string TEXT_FONT_10			=	"Font_old_10_white.tga";
+const string TEXT_FONT_DEFAULT		=	"Font_old_10_white.tga";
+const string TEXT_FONT_Inventory	=	"Font_old_10_white.tga";
 
 const float VIEW_TIME_PER_CHAR		=	600;
 
@@ -29,6 +29,13 @@ const int ATR_REGENERATEMP			=	7;
 const int ATR_POWER					=	7;	/// new!!!
 
 const int ATR_INDEX_MAX				=	8;
+
+/// special indexes for item conditions
+const int ATR_THROW					=	9;	/// new!!!
+const int ATR_1H					=	10;
+const int ATR_2H					=	11;
+const int ATR_BOW					=	12;
+const int ATR_CBOW					=	13;
 
 ///******************************************************************************************
 ///	NPC FLAGS
@@ -88,7 +95,7 @@ const int INV_CAT_MAX				=	9;
 ///******************************************************************************************
 
 const int INV_MAX_WEAPONS			=    6;
-const int INV_MAX_ARMORS 			=    2;
+const int INV_MAX_ARMORS			=    2;
 const int INV_MAX_RUNES				= 1000;
 const int INV_MAX_FOOD				=   15;
 const int INV_MAX_DOCS				= 1000;
@@ -133,8 +140,8 @@ const int ITEM_RING				= 1 << 11;
 const int ITEM_AMULET			= 1 << 22;
 const int ITEM_BELT				= 1 << 24;
 /// attributes (flags)
-const int ITEM_DROPPED 			= 1 << 10;	/// INTERNAL!
-const int ITEM_MISSION 			= 1 << 12;
+const int ITEM_DROPPED			= 1 << 10;	/// INTERNAL!
+const int ITEM_MISSION			= 1 << 12;
 const int ITEM_MULTI			= 1 << 21;
 const int ITEM_NFOCUS			= 1 << 23;	/// INTERNAL!
 const int ITEM_CREATEAMMO		= 1 << 25;
@@ -334,7 +341,7 @@ const int GIL_MEATBUG					=	17;
 const int GIL_LIVESTOCK					=	18;	/// changed!!!
 const int GIL_GOBBO						=	19;
 const int GIL_GOBBO_SKELETON			=	20;
-const int GIL_SUMMONED_GOBBO_SKELETON 	=	21;
+const int GIL_SUMMONED_GOBBO_SKELETON	=	21;
 const int GIL_SCAVENGER					=	22;
 const int GIL_GIANT_RAT					=	23;
 const int GIL_GIANT_BUG					=	24;
@@ -410,7 +417,7 @@ class C_GILVALUES
 	var int		CLIMB_GROUND_ANGLE	[GIL_MAX];
 	var int		FIGHT_RANGE_BASE	[GIL_MAX];
 	var int		FIGHT_RANGE_FIST	[GIL_MAX];
-	var int 	FIGHT_RANGE_G		[GIL_MAX];
+	var int	FIGHT_RANGE_G		[GIL_MAX];
 	var int		FIGHT_RANGE_1HS		[GIL_MAX];
 	var int		FIGHT_RANGE_1HA		[GIL_MAX];
 	var int		FIGHT_RANGE_2HS		[GIL_MAX];
@@ -423,7 +430,7 @@ class C_GILVALUES
 	var int		BLOOD_FLOW			[GIL_MAX];		///	DEFAULT = 0;
 	var string  BLOOD_EMITTER		[GIL_MAX];		///	DEFAULT = "PFX_BLOOD";
 	var string  BLOOD_TEXTURE		[GIL_MAX];		///	DEFAULT = "ZBLOODSPLAT2.TGA";
-	var int 	TURN_SPEED			[GIL_MAX];		///	DEFAULT = 150;
+	var int	TURN_SPEED			[GIL_MAX];		///	DEFAULT = 150;
 };
 
 ///******************************************************************************************
@@ -471,22 +478,22 @@ const int SPELL_BAD					=	2;
 ///	SPELL INVEST CONSTS
 ///******************************************************************************************
 
-const int SPL_DONTINVEST 						=	0;
+const int SPL_DONTINVEST						=	0;
 const int SPL_RECEIVEINVEST						=	1;
 const int SPL_SENDCAST							=	2;
 const int SPL_SENDSTOP							=	3;
 const int SPL_NEXTLEVEL							=	4;
 const int SPL_STATUS_CANINVEST_NO_MANADEC		=	8;
-const int SPL_FORCEINVEST		 				=	1 << 16;
+const int SPL_FORCEINVEST						=	1 << 16;
 
 ///******************************************************************************************
 ///	SPELL TARGETS
 ///******************************************************************************************
 
-const int TARGET_COLLECT_NONE 					=	0;	/// target will be set by effect (range, azi, elev)
+const int TARGET_COLLECT_NONE					=	0;	/// target will be set by effect (range, azi, elev)
 const int TARGET_COLLECT_CASTER					=	1;	/// target is the caster
-const int TARGET_COLLECT_FOCUS 					=	2;	/// target is the focus vob
-const int TARGET_COLLECT_ALL 					=	3;	/// all targets in range will be assembled
+const int TARGET_COLLECT_FOCUS					=	2;	/// target is the focus vob
+const int TARGET_COLLECT_ALL					=	3;	/// all targets in range will be assembled
 const int TARGET_COLLECT_FOCUS_FALLBACK_NONE	=	4;	/// target is the focus vob, if the focus vob is not valid, the trajectory will be set by the effect
 const int TARGET_COLLECT_FOCUS_FALLBACK_CASTER	=	5;	/// target is the focus vob, if the focus vob is not valid, the target is the caster
 const int TARGET_COLLECT_ALL_FALLBACK_NONE		=	6;	/// if there are no valid targets, the trajectory will be set by the effect
@@ -586,7 +593,7 @@ const int SPL_BlueFireball			=	64;	/// new!!!
 const int SPL_RedFireball			=	65;	/// new!!!
 const int SPL_Reserved_66			=	66;
 const int SPL_Reserved_67			=	67;
-const int SPL_Reserved_68 			=	68;
+const int SPL_Reserved_68			=	68;
 const int SPL_Reserved_69			=	69;
 
 /// common spells
@@ -595,7 +602,7 @@ const int SPL_Whirlwind				=	71;
 const int SPL_WaterFist				=	72;	/// improved!!!
 const int SPL_IceLance				=	73;	/// changed!!!
 const int SPL_Inflate				=	74;
-const int SPL_Geyser	 			=	75;	/// improved!!!
+const int SPL_Geyser				=	75;	/// improved!!!
 const int SPL_Fireburning			=	76;	/// new!!!
 const int SPL_ChainLightning		=	77;	/// new!!! unfinished!!!
 const int SPL_Hurricane				=	78;	/// new!!! unfinished!!!
@@ -633,83 +640,83 @@ const string spellFxInstanceNames[MAX_SPELL] =
 {
 	/// basic spells
 	"nLight",				// 0	SPL_Light
-	"nHeal",  				// 1	SPL_Heal
-	"Telekinesis",  		// 2	SPL_Telekinesis
+	"nHeal",				// 1	SPL_Heal
+	"Telekinesis",			// 2	SPL_Telekinesis
 	
 	/// PAL spells
-	"PalBless",  			// 3	SPL_PalBless
-	"PalFaith",  			// 4	SPL_PalFaith
+	"PalBless",				// 3	SPL_PalBless
+	"PalFaith",				// 4	SPL_PalFaith
 	"PalHolyBolt",			// 5	SPL_PalHolyBolt
-	"PalGlory",  			// 6	SPL_PalGlory
-	"PalRepelEvil",  		// 7	SPL_PalDestroyEvil
+	"PalGlory",				// 6	SPL_PalGlory
+	"PalRepelEvil",			// 7	SPL_PalDestroyEvil
 	"PalJustice",			// 8	SPL_PalJustice
 	"PalDestroyEvil",		// 9	SPL_PalDestroyEvil
 	
 	/// common spells
 	"Resurrection",			// 10	SPL_Resurrection
     "Rage",					// 11	SPL_Rage
-	"Seduction",  			// 12	SPL_Seduction
-	"Light",  				// 13	SPL_Reserved_13
+	"Seduction",			// 12	SPL_Seduction
+	"Light",				// 13	SPL_Reserved_13
 	"Light",				// 14	SPL_Reserved_14
 	"Light",				// 15	SPL_Reserved_15
 	"Light",				// 16	SPL_Reserved_16
 	"Light",				// 17	SPL_Reserved_17
-	"NightToDay",  			// 18	SPL_NightToDay
+	"NightToDay",			// 18	SPL_NightToDay
 	"FireBolt",				// 19	SPL_FireBolt
 	
-	"IceBolt",  			// 20	SPL_IceBolt
-	"Stealth",  			// 21	SPL_Stealth
-	"SkullBolt",  			// 22	SPL_SkullBolt
-	"InstantFireball",  	// 23	SPL_InstantFireball
+	"IceBolt",				// 20	SPL_IceBolt
+	"Stealth",				// 21	SPL_Stealth
+	"SkullBolt",			// 22	SPL_SkullBolt
+	"InstantFireball",		// 23	SPL_InstantFireball
 	"Zap",					// 24	SPL_Zap
 	"Slimeball",			// 25	SPL_Slimeball
-	"WindFist",  			// 26	SPL_WindFist
-	"Sleep",  				// 27	SPL_Sleep
-	"Charm",  				// 28	SPL_Charm
+	"WindFist",				// 26	SPL_WindFist
+	"Sleep",				// 27	SPL_Sleep
+	"Charm",				// 28	SPL_Charm
 	"LightningFlash",		// 29	SPL_LightningFlash
 	
-	"ChargeFireball",  		// 30	SPL_ChargeFireball
-	"Curse",  				// 31	SPL_Curse
-	"Fear",  				// 32	SPL_Fear
-	"Icecube",  			// 33	SPL_IceCube
-	"ChargeZap",  			// 34	SPL_ChargeZap
-	"nSummonGolem",  		// 35	SPL_SummonGolem
-	"DestroyUndead",  		// 36	SPL_DestroyUndead
-	"Pyrokinesis",  		// 37	SPL_Pyrokinesis
-	"Firestorm", 			// 38	SPL_Firestorm
-	"IceWave",  			// 39	SPL_IceWave
+	"ChargeFireball",		// 30	SPL_ChargeFireball
+	"Curse",				// 31	SPL_Curse
+	"Fear",					// 32	SPL_Fear
+	"Icecube",				// 33	SPL_IceCube
+	"ChargeZap",			// 34	SPL_ChargeZap
+	"nSummonGolem",			// 35	SPL_SummonGolem
+	"DestroyUndead",		// 36	SPL_DestroyUndead
+	"Pyrokinesis",			// 37	SPL_Pyrokinesis
+	"Firestorm",			// 38	SPL_Firestorm
+	"IceWave",				// 39	SPL_IceWave
 	
-	"nSummonDemon",  		// 40	SPL_SummonDemon
-	"Explosion",  			// 41	SPL_Explosion
-	"Firerain",  			// 42	SPL_Firerain
-	"BreathOfDeath",  		// 43	SPL_BreathOfDeath
-	"MassDeath",  			// 44	SPL_MassDeath
-	"ArmyOfDarkness", 		// 45	SPL_ArmyOfDarkness
-	"Shrink",  				// 46	SPL_Shrink
-	"Tame",  				// 47	SPL_Tame
-	"RunicEchoes",  		// 48	SPL_RunicEchoes
-	"SlowTime",  			// 49	SPL_SlowTime
+	"nSummonDemon",			// 40	SPL_SummonDemon
+	"Explosion",			// 41	SPL_Explosion
+	"Firerain",				// 42	SPL_Firerain
+	"BreathOfDeath",		// 43	SPL_BreathOfDeath
+	"MassDeath",			// 44	SPL_MassDeath
+	"ArmyOfDarkness",		// 45	SPL_ArmyOfDarkness
+	"Shrink",				// 46	SPL_Shrink
+	"Tame",					// 47	SPL_Tame
+	"RunicEchoes",			// 48	SPL_RunicEchoes
+	"SlowTime",				// 49	SPL_SlowTime
 	
-	"HealingAura",  		// 50	SPL_HealingAura
-	"StoneSkin",  			// 51	SPL_StoneSkin
-	"AirShield", 			// 52	SPL_AirShield
-	"FireShield",  			// 53	SPL_FireShield
-	"DarkBarrier",  		// 54	SPL_DarkBarrier
+	"HealingAura",			// 50	SPL_HealingAura
+	"StoneSkin",			// 51	SPL_StoneSkin
+	"AirShield",			// 52	SPL_AirShield
+	"FireShield",			// 53	SPL_FireShield
+	"DarkBarrier",			// 54	SPL_DarkBarrier
 	
 	/// player spells
-	"Energyball",  			// 55	SPL_BeliarRage
-	"MasterOfDisaster",  	// 56	SPL_MasterOfDisaster
+	"Energyball",			// 55	SPL_BeliarRage
+	"MasterOfDisaster",		// 56	SPL_MasterOfDisaster
 	
 	/// special spells
-	"Teleport",  			// 57	SPL_Teleport
-	"Transform",  			// 58	SPL_Transform
-	"Summon",  				// 59	SPL_Summon
+	"Teleport",				// 57	SPL_Teleport
+	"Transform",			// 58	SPL_Transform
+	"Summon",				// 59	SPL_Summon
 	
 	/// npc spells
 	"ConcussionSpell",		// 60	SPL_ConcussionSpell
 	"DeathSpell",			// 61	SPL_DeathSpell
-	"Dragonball",  			// 62	SPL_Dragonball
-	"BlackDragonball",  	// 63	SPL_BlackDragonball
+	"Dragonball",			// 62	SPL_Dragonball
+	"BlackDragonball",		// 63	SPL_BlackDragonball
 	"BlueFireball",			// 64	SPL_BlueFireball
 	"RedFireball",			// 65	SPL_RedFireball
 	"Light",				// 66	SPL_Reserved_66
@@ -719,25 +726,25 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	
 	/// common spells
 	"Thunderstorm",			// 70	SPL_Thunderstorm
-	"Whirlwind",  			// 71	SPL_Whirlwind
-	"WaterFist",  			// 72	SPL_WaterFist
-	"IceLance",  			// 73	SPL_IceLance
-	"Inflate",  			// 74	SPL_Inflate
-	"Geyser",  				// 75	SPL_Geyser
-	"Fireburning",  		// 76	SPL_Fireburning
-	"ChainLightning", 	 	// 77	SPL_ChainLightning
-	"Hurricane",  			// 78	SPL_Hurricane
-	"LightFlash",  			// 79	SPL_LightFlash
+	"Whirlwind",			// 71	SPL_Whirlwind
+	"WaterFist",			// 72	SPL_WaterFist
+	"IceLance",				// 73	SPL_IceLance
+	"Inflate",				// 74	SPL_Inflate
+	"Geyser",				// 75	SPL_Geyser
+	"Fireburning",			// 76	SPL_Fireburning
+	"ChainLightning",		// 77	SPL_ChainLightning
+	"Hurricane",			// 78	SPL_Hurricane
+	"LightFlash",			// 79	SPL_LightFlash
 	
-	"Plague",  				// 80	SPL_Plague
+	"Plague",				// 80	SPL_Plague
 	"Swarm",				// 81	SPL_Swarm
-	"GreenTentacle", 		// 82	SPL_GreenTentacle
-	"Earthquake",  			// 83	SPL_Earthquake
-	"Rock", 				// 84	SPL_Rock
-	"Mysticball", 			// 85	SPL_Mysticball
-	"SuckEnergy",  			// 86	SPL_SuckEnergy
-	"Skull",  				// 87	SPL_Skull
-	"Elevate",  			// 88	SPL_Elevate
+	"GreenTentacle",		// 82	SPL_GreenTentacle
+	"Earthquake",			// 83	SPL_Earthquake
+	"Rock",					// 84	SPL_Rock
+	"Mysticball",			// 85	SPL_Mysticball
+	"SuckEnergy",			// 86	SPL_SuckEnergy
+	"Skull",				// 87	SPL_Skull
+	"Elevate",				// 88	SPL_Elevate
 	"Crush",				// 89	SPL_Crush
 	
 	/// ...
@@ -762,121 +769,121 @@ const string spellFxAniLetters[MAX_SPELL] =
 	
 	/// basic spells
 	"SLE",					// 0	SPL_Light
-	"HEA",  				// 1	SPL_Heal
-	"TEL",  				// 2	SPL_Telekinesis
+	"HEA",					// 1	SPL_Heal
+	"TEL",					// 2	SPL_Telekinesis
 	
 	/// PAL spells
-	"SLE",  				// 3	SPL_PalBless
-	"HEA",  				// 4	SPL_PalFaith
+	"SLE",					// 3	SPL_PalBless
+	"HEA",					// 4	SPL_PalFaith
 	"FBT",					// 5	SPL_PalHolyBolt
-	"HEA",  				// 6	SPL_PalGlory
-	"FBT",  				// 7	SPL_PalRepelEvil
- 	"HEA",					// 8	SPL_PalJustice
+	"HEA",					// 6	SPL_PalGlory
+	"FBT",					// 7	SPL_PalRepelEvil
+	"HEA",					// 8	SPL_PalJustice
 	"FBT",					// 9	SPL_PalDestroyEvil
 	
 	/// common spells
-	"SUM",  				// 10	SPL_Resurrection
-	"SLE",  				// 11	SPL_Rage
-	"SLE",  				// 12	SPL_Seduction
-	"XXX",  				// 13	SPL_Reserved_13
-	"XXX",  				// 14	SPL_Reserved_14
-	"XXX",  				// 15	SPL_Reserved_15
-	"XXX",  				// 16	SPL_Reserved_16
-	"XXX",  				// 17	SPL_Reserved_17
-	"SLE",  				// 18	SPL_NightToDay
-	"FBT",  				// 19	SPL_FireBolt
+	"SUM",					// 10	SPL_Resurrection
+	"SLE",					// 11	SPL_Rage
+	"SLE",					// 12	SPL_Seduction
+	"XXX",					// 13	SPL_Reserved_13
+	"XXX",					// 14	SPL_Reserved_14
+	"XXX",					// 15	SPL_Reserved_15
+	"XXX",					// 16	SPL_Reserved_16
+	"XXX",					// 17	SPL_Reserved_17
+	"SLE",					// 18	SPL_NightToDay
+	"FBT",					// 19	SPL_FireBolt
 	
-	"FBT",  				// 20	SPL_IceBolt
-	"FEA",  				// 21	SPL_Stealth
-	"FBT",  				// 22	SPL_SkullBolt
-	"FBT",  				// 23	SPL_InstantFireball
+	"FBT",					// 20	SPL_IceBolt
+	"FEA",					// 21	SPL_Stealth
+	"FBT",					// 22	SPL_SkullBolt
+	"FBT",					// 23	SPL_InstantFireball
 	"FBT",					// 24	SPL_Zap
 	"FBT",					// 25	SPL_Slimeball
-	"WND",  				// 26	SPL_WindFist
-	"SLE",  				// 27	SPL_Sleep
-	"SLE",  				// 28	SPL_Charm
-	"WND",  				// 29	SPL_LightningFlash
+	"WND",					// 26	SPL_WindFist
+	"SLE",					// 27	SPL_Sleep
+	"SLE",					// 28	SPL_Charm
+	"WND",					// 29	SPL_LightningFlash
 	
-	"FIB",  				// 30	SPL_ChargeFireball
-	"FRZ",  				// 31	SPL_Curse
-	"FEA",  				// 32	SPL_Fear
-	"FRZ",  				// 33	SPL_IceCube
-	"FIB",  				// 34	SPL_ChargeZap
-	"SUM",  				// 35	SPL_SummonGolem
-	"FIB",  				// 36	SPL_DestroyUndead
-	"FIB",  				// 37	SPL_Pyrokinesis
-	"FIB",  				// 38	SPL_Firestorm
-	"FEA",  				// 39	SPL_IceWave
+	"FIB",					// 30	SPL_ChargeFireball
+	"FRZ",					// 31	SPL_Curse
+	"FEA",					// 32	SPL_Fear
+	"FRZ",					// 33	SPL_IceCube
+	"FIB",					// 34	SPL_ChargeZap
+	"SUM",					// 35	SPL_SummonGolem
+	"FIB",					// 36	SPL_DestroyUndead
+	"FIB",					// 37	SPL_Pyrokinesis
+	"FIB",					// 38	SPL_Firestorm
+	"FEA",					// 39	SPL_IceWave
 	
-	"SUM",  				// 40	SPL_SummonDemon
-	"EXP",  				// 41	SPL_Explosion
-	"STM",  				// 42	SPL_Firerain
-	"FIB",  				// 43	SPL_BreathOfDeath
-	"MSD",  				// 44	SPL_MassDeath
-	"MSD",  				// 45	SPL_ArmyOfDarkness
-	"SLE",  				// 46	SPL_Shrink
-	"SLE",  				// 47	SPL_Tame
-	"MSD",  				// 48	SPL_RunicEchoes
-	"SLE",  				// 49	SPL_SlowTime
+	"SUM",					// 40	SPL_SummonDemon
+	"EXP",					// 41	SPL_Explosion
+	"STM",					// 42	SPL_Firerain
+	"FIB",					// 43	SPL_BreathOfDeath
+	"MSD",					// 44	SPL_MassDeath
+	"MSD",					// 45	SPL_ArmyOfDarkness
+	"SLE",					// 46	SPL_Shrink
+	"SLE",					// 47	SPL_Tame
+	"MSD",					// 48	SPL_RunicEchoes
+	"SLE",					// 49	SPL_SlowTime
 	
-	"HEA",  				// 50	SPL_HealingAura
-	"HEA",  				// 51	SPL_StoneSkin
-	"HEA",  				// 52	SPL_AirShield
-	"HEA",  				// 53	SPL_FireShield
-	"HEA",  				// 54	SPL_DarkBarrier
+	"HEA",					// 50	SPL_HealingAura
+	"HEA",					// 51	SPL_StoneSkin
+	"HEA",					// 52	SPL_AirShield
+	"HEA",					// 53	SPL_FireShield
+	"HEA",					// 54	SPL_DarkBarrier
 	
 	/// player spells
 	"WND",					// 55	SPL_BeliarRage
 	"FIB",					// 56	SPL_MasterOfDisaster
 	
 	/// special spells
-	"HEA",  				// 57	SPL_Teleport
-	"TRF",  				// 58	SPL_Transform
-	"SUM",  				// 59	SPL_Summon
+	"HEA",					// 57	SPL_Teleport
+	"TRF",					// 58	SPL_Transform
+	"SUM",					// 59	SPL_Summon
 	
 	/// npc spells
-	"FBT",  				// 60	SPL_ConcussionSpell
-	"FBT",  				// 61	SPL_DeathSpell
-	"FBT",  				// 62	SPL_Dragonball
-	"FBT",  				// 63	SPL_BlackDragonball
-	"FBT",  				// 64	SPL_BlueFireball
-	"FBT",  				// 65	SPL_RedFireball
-	"XXX",  				// 66	SPL_Reserved_66
-	"XXX",  				// 67	SPL_Reserved_67
+	"FBT",					// 60	SPL_ConcussionSpell
+	"FBT",					// 61	SPL_DeathSpell
+	"FBT",					// 62	SPL_Dragonball
+	"FBT",					// 63	SPL_BlackDragonball
+	"FBT",					// 64	SPL_BlueFireball
+	"FBT",					// 65	SPL_RedFireball
+	"XXX",					// 66	SPL_Reserved_66
+	"XXX",					// 67	SPL_Reserved_67
 	"XXX",					// 68	SPL_Reserved_68
 	"XXX",					// 69	SPL_Reserved_69
 	
 	/// common spells
 	"STM",					// 70	SPL_Thunderstorm
-	"WHI",  				// 71	SPL_Whirlwind
-	"WND",  				// 72	SPL_WaterFist
-	"FBT",  				// 73	SPL_IceLance
-	"SLE",  				// 74	SPL_Inflate
-	"WND",  				// 75	SPL_Geyser
-	"PYR",  				// 76	SPL_Fireburning
-	"LIN",  				// 77	SPL_ChainLightning
-	"EXP",  				// 78	SPL_Hurricane
-	"LIN",  				// 79	SPL_LightFlash
+	"WHI",					// 71	SPL_Whirlwind
+	"WND",					// 72	SPL_WaterFist
+	"FBT",					// 73	SPL_IceLance
+	"SLE",					// 74	SPL_Inflate
+	"WND",					// 75	SPL_Geyser
+	"PYR",					// 76	SPL_Fireburning
+	"LIN",					// 77	SPL_ChainLightning
+	"EXP",					// 78	SPL_Hurricane
+	"LIN",					// 79	SPL_LightFlash
 	
-	"FEA",  				// 80	SPL_Plague
+	"FEA",					// 80	SPL_Plague
 	"FBT",					// 81	SPL_Swarm
-	"WND",  				// 82	SPL_GreenTentacle
-	"FOT",  				// 83	SPL_Earthquake
-	"FBT",  				// 84	SPL_Rock
-	"FBT",  				// 85	SPL_Mysticball
-	"WND",  				// 86	SPL_SuckEnergy
-	"WND",  				// 87	SPL_Skull
-	"SUM",  				// 88	SPL_Elevate
+	"WND",					// 82	SPL_GreenTentacle
+	"FOT",					// 83	SPL_Earthquake
+	"FBT",					// 84	SPL_Rock
+	"FBT",					// 85	SPL_Mysticball
+	"WND",					// 86	SPL_SuckEnergy
+	"WND",					// 87	SPL_Skull
+	"SUM",					// 88	SPL_Elevate
 	"FOT",					// 89	SPL_Crush
 	
 	/// ...
-	"XXX",  				// 90	SPL_Reserved_90
-	"XXX",  				// 91	SPL_Reserved_91
-	"XXX",  				// 92	SPL_Reserved_92
-	"XXX",  				// 93	SPL_Reserved_93
-	"XXX",  				// 94	SPL_Reserved_94
-	"XXX",  				// 95	SPL_Reserved_95
-	"XXX",  				// 96	SPL_Reserved_96
+	"XXX",					// 90	SPL_Reserved_90
+	"XXX",					// 91	SPL_Reserved_91
+	"XXX",					// 92	SPL_Reserved_92
+	"XXX",					// 93	SPL_Reserved_93
+	"XXX",					// 94	SPL_Reserved_94
+	"XXX",					// 95	SPL_Reserved_95
+	"XXX",					// 96	SPL_Reserved_96
 	"XXX",					// 97	SPL_Reserved_97
 	"XXX",					// 98	SPL_Reserved_98
 	"XXX"					// 99	SPL_Reserved_99
@@ -886,36 +893,33 @@ const string spellFxAniLetters[MAX_SPELL] =
 ///	TALENTS
 ///******************************************************************************************
 
-const int NPC_TALENT_UNKNOWN			=	0;
-
 /// fight
+const int NPC_TALENT_THROW				=	0;	/// new!!!
 const int NPC_TALENT_1H					=	1;
 const int NPC_TALENT_2H					=	2;
 const int NPC_TALENT_BOW				=	3;
 const int NPC_TALENT_CROSSBOW			=	4;
-const int NPC_TALENT_2ndH				=	10;	/// new!!!
+const int NPC_TALENT_DUAL				=	9;	/// new!!!
+const int NPC_TALENT_SHIELD				=	10;	/// new!!!
 /// magic
 const int NPC_TALENT_MAGIC				=	7;
-const int NPC_TALENT_ENCHANTING			=	14;
-const int NPC_TALENT_LANGUAGE			=	17;
+const int NPC_TALENT_LANGUAGE			=	21;
 /// movement
 const int NPC_TALENT_SNEAK				=	8;
-const int NPC_TALENT_PRORUN				=	9;	/// new!!!
 const int NPC_TALENT_ACROBATIC			=	11;
 /// thief
 const int NPC_TALENT_PICKLOCK			=	5;
 const int NPC_TALENT_PICKPOCKET			=	6;	/// changed!!!
-const int NPC_TALENT_PERSUASION			=	12;	/// new!!!
+const int NPC_TALENT_PERSUASION			=	20;	/// new!!!
 /// craft
+const int NPC_TALENT_FLETCHERY			=	12;	/// new!!!
 const int NPC_TALENT_SMITH				=	13;
+const int NPC_TALENT_ENCHANTING			=	14;
 const int NPC_TALENT_ALCHEMY			=	15;
 const int NPC_TALENT_HUNTING			=	16;
-/// other
-const int NPC_TALENT_COOKING			=	18;	/// new!!!
-const int NPC_TALENT_PROTPOISON			=	19;	/// new!!!
-/// info
-const int NPC_TALENT_CHAPTER			=	20;	/// new!!!
-const int NPC_TALENT_DIFFICULTY			=	21;	/// new!!!
+const int NPC_TALENT_COOKING			=	17;	/// new!!!
+const int NPC_TALENT_MINING				=	18;	/// new!!!
+const int NPC_TALENT_ARMORY				=	19;	/// new!!!
 
 const int NPC_TALENT_MAX				=	22;
 
@@ -923,8 +927,8 @@ const int NPC_TALENT_MAX				=	22;
 ///	WORLD IDs
 ///******************************************************************************************
 
-const int NEWWORLD_ZEN 					=	1;
-const int OLDWORLD_ZEN 					=	2;
+const int NEWWORLD_ZEN					=	1;
+const int OLDWORLD_ZEN					=	2;
 const int DRAGONISLAND_ZEN				=	3;
 const int ADDONWORLD_ZEN				=	4;
 
@@ -932,13 +936,14 @@ const int ADDONWORLD_ZEN				=	4;
 ///	INV CAMERA CONSTS
 ///******************************************************************************************
 
-const int INVCAM_ENTF_RING_STANDARD 	=	400;
-const int INVCAM_ENTF_AMULETTE_STANDARD =	150;
-const int INVCAM_ENTF_MISC_STANDARD 	=	200;
-const int INVCAM_ENTF_MISC2_STANDARD 	=	250;
-const int INVCAM_ENTF_MISC3_STANDARD 	=	500;
-const int INVCAM_ENTF_MISC4_STANDARD 	=	650;
-const int INVCAM_ENTF_MISC5_STANDARD 	=	850;
-const int INVCAM_X_RING_STANDARD 		=	25;
-const int INVCAM_Z_RING_STANDARD 		=	45;
-const int INVCAM_X_STONEPLATE_STANDARD 	=	-90;
+const int INVCAM_ENTF_RING_STANDARD	=	400;
+const int INVCAM_ENTF_AMULET_STANDARD	=	150;
+const int INVCAM_ENTF_MISC_STANDARD	=	200;
+const int INVCAM_ENTF_MISC2_STANDARD	=	250;
+const int INVCAM_ENTF_MISC3_STANDARD	=	500;
+const int INVCAM_ENTF_MISC4_STANDARD	=	650;
+const int INVCAM_ENTF_MISC5_STANDARD	=	850;
+const int INVCAM_X_ARMOR_STANDARD		=	-45;
+const int INVCAM_X_RING_STANDARD		=	25;
+const int INVCAM_Z_RING_STANDARD		=	45;
+const int INVCAM_X_STONEPLATE_STANDARD	=	-90;

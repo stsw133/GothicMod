@@ -1227,8 +1227,8 @@ instance DIA_Addon_Vatras_Stoneplate (C_INFO)
 
 func int DIA_Addon_Vatras_Stoneplate_Condition ()
 {
-	if (C_ScHasMagicStonePlate () == TRUE)
-	&& (Npc_HasItems (other,ItWr_StonePlateCommon_Addon) >= 1)
+	if (Npc_HasItems(other, ItWr_StonePlate))
+	&& (Npc_HasItems(other, ItWr_StonePlateCommon_Addon) >= 1)
 	{
 		return TRUE;
 	};
@@ -1598,7 +1598,7 @@ func void DIA_Vatras_Teach_BACK()
 };
 func void DIA_Vatras_Teach_1()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_HIGH);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 1, T_HIGH);
 	
 	Info_ClearChoices   (DIA_Vatras_Teach);
 	
@@ -1610,7 +1610,7 @@ func void DIA_Vatras_Teach_1()
 };
 func void DIA_Vatras_Teach_5()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_HIGH);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 5, T_HIGH);
 	
 	Info_ClearChoices   (DIA_Vatras_Teach);
 	

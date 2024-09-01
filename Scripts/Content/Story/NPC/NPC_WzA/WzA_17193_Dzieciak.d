@@ -12,8 +12,8 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	
 	/// ------ AI vars ------
 	aivar[AIV_FollowDist]				=	300;
-	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder|IGNORE_Theft|IGNORE_Sheepkiller|IGNORE_Fear;
-	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor|IGNORE_FakeGuild;
+	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller | IGNORE_Fear;
+	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor | IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
@@ -28,7 +28,7 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Kid, Teeth_Normal, ITAR_VLK_L_00);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Kid, Teeth_Normal, ITAR_VLK_L_00);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_SetModelScale	(self, 0.75, 0.75, 0.75);
 	

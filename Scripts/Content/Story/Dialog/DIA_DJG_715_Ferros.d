@@ -390,25 +390,25 @@ FUNC VOID DIA_Ferros_Teach_Back ()
 
 FUNC VOID DIA_Ferros_Teach_STR_1 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Ferros_Teach_STR_1);
 };
 
 FUNC VOID DIA_Ferros_Teach_STR_5 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Ferros_Teach_STR_5);
 };
 
 FUNC VOID DIA_Ferros_Teach_DEX_1 ()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MED);
 	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Ferros_Teach_DEX_1);
 };
 
 FUNC VOID DIA_Ferros_Teach_DEX_5 ()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MED);
 	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Ferros_Teach_DEX_5);
 };
 */

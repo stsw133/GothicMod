@@ -1,9 +1,9 @@
 ///******************************************************************************************
-///	B_ENTER_NEWWORLD
-///******************************************************************************************
 
 var int EnterNW_Kapitel;
 
+///******************************************************************************************
+/// B_ENTER_NEWWORLD
 ///******************************************************************************************
 func void B_ENTER_NEWWORLD_Kapitel_7()
 {
@@ -113,15 +113,15 @@ func void B_ENTER_NEWWORLD_Kapitel_8()
 		
 		if (hero.guild == GIL_MIL || hero.guild == GIL_PAL)
 		{
-			Wld_InsertItem (ItAm_Bandit_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Dex_01, "FP_ROAM_XARDAS_SECRET_26");
 		}
 		else if (hero.guild == GIL_SLD || hero.guild == GIL_DJG)
 		{
-			Wld_InsertItem (ItAm_Druid_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Hp_01, "FP_ROAM_XARDAS_SECRET_26");
 		}
 		else
 		{
-			Wld_InsertItem (ItAm_Assassin_01, "FP_ROAM_XARDAS_SECRET_26");
+			Wld_InsertItem (ItAm_Sp_01, "FP_ROAM_XARDAS_SECRET_26");
 		};
 		
 		if (hero.guild == GIL_KDF)
@@ -172,7 +172,7 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 		
 		if (hero.guild == GIL_KDF)
 		{
-			B_KillNpc (Ulf);
+			B_KillNpc(Ulf);
 		};
 		
 		Wld_InsertNpc (Giant_Bug, "FP_ROAM_MEDIUMFOREST_KAP2_01");
@@ -351,10 +351,10 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 			Canthar_WiederRaus = true;
 		};
 		
- 		CreateInvItems (Lester, ItMw_1h_Bau_Axe, 1);
- 		CreateInvItems (Ehnim, ItAt_MoleratLubric, 1);
+		CreateInvItems (Lester, ItMw_1h_Bau_Axe, 1);
+		CreateInvItems (Ehnim, ItAt_MoleratLubric, 1);
 		
- 		ShrineIsObsessed_NW_TROLLAREA_PATH_37 			= true;
+		ShrineIsObsessed_NW_TROLLAREA_PATH_37 			= true;
 		ShrineIsObsessed_NW_FARM1_CONNECT_XARDAS 		= true;
 		ShrineIsObsessed_NW_TROLLAREA_PATH_66 			= true;
 		ShrineIsObsessed_NW_TROLLAREA_PATH_04 			= true;
@@ -713,7 +713,7 @@ func void B_ENTER_NEWWORLD_Kapitel_11()
 		
 		if (hero.guild == GIL_PAL)
 		{
-			Wld_InsertItem (ItAr_PAl_H, "FP_ITEM_PALFINALARMOR");
+			Wld_InsertItem (ItAr_PAL_H, "FP_ITEM_PALFINALARMOR");
 			Wld_InsertItem (ItMi_RuneBlank, "FP_NW_ITEM_LIBRARY_SEAMAP");
 		};
 		if (hero.guild == GIL_DJG)
@@ -822,7 +822,7 @@ func void B_ENTER_NEWWORLD_Kapitel_12()
 ///******************************************************************************************
 ///	B_ENTER_NEWWORLD
 ///******************************************************************************************
-func void B_ENTER_NEWWORLD()	
+func void B_ENTER_NEWWORLD()
 {
 	B_InitNpcGlobals();
 	if (Kapitel >= 7)	{	B_ENTER_NEWWORLD_Kapitel_7();	};

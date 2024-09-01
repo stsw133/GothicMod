@@ -1,5 +1,7 @@
-
-instance MENU_SAVEGAME_LOAD(C_MENU_DEF)
+///******************************************************************************************
+/// Load
+///******************************************************************************************
+instance MENU_SAVEGAME_LOAD (C_MENU_DEF)
 {
 	backpic = MENU_SAVELOAD_BACK_PIC;
 	items[0] = "MENUITEM_LOAD_HEADLINE";
@@ -36,7 +38,10 @@ instance MENU_SAVEGAME_LOAD(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-instance MENU_SAVEGAME_SAVE(C_MENU_DEF)
+///******************************************************************************************
+/// Save
+///******************************************************************************************
+instance MENU_SAVEGAME_SAVE (C_MENU_DEF)
 {
 	backpic = MENU_SAVELOAD_BACK_PIC;
 	items[0] = "MENUITEM_SAVE_HEADLINE";
@@ -72,7 +77,6 @@ instance MENU_SAVEGAME_SAVE(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-
 const int SAVEGAME_X1 = 1200;
 const int SAVEGAME_X2 = 5400;
 const int SAVEGAME_Y = 1200;
@@ -80,7 +84,8 @@ const int SAVEGAME_DY = 275;
 const int SAVEGAME_DX1 = 3500;
 const int SAVEGAME_DX2 = 1000;
 
-instance MENUITEM_LOAD_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_LOAD_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "WCZYTAJ";
 	type = MENU_ITEM_TEXT;
@@ -90,7 +95,7 @@ instance MENUITEM_LOAD_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_SAVE_HEADLINE(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "ZAPISZ";
 	type = MENU_ITEM_TEXT;
@@ -100,7 +105,8 @@ instance MENUITEM_SAVE_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_THUMBPIC(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_LOADSAVE_THUMBPIC (C_MENU_ITEM_DEF)
 {
 	backpic = "";
 	posx = SAVEGAME_X2;
@@ -110,7 +116,7 @@ instance MENUITEM_LOADSAVE_THUMBPIC(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_LEVELNAME(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_LEVELNAME (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "Œwiat:";
@@ -120,7 +126,7 @@ instance MENUITEM_LOADSAVE_LEVELNAME(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_LEVELNAME_VALUE(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_LEVELNAME_VALUE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "";
@@ -132,7 +138,7 @@ instance MENUITEM_LOADSAVE_LEVELNAME_VALUE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_DATETIME(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_DATETIME (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "Zapisane";
@@ -142,7 +148,7 @@ instance MENUITEM_LOADSAVE_DATETIME(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_DATETIME_VALUE(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_DATETIME_VALUE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "";
@@ -154,7 +160,7 @@ instance MENUITEM_LOADSAVE_DATETIME_VALUE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_GAMETIME(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_GAMETIME (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "Czas:";
@@ -164,7 +170,7 @@ instance MENUITEM_LOADSAVE_GAMETIME(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_GAMETIME_VALUE(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_GAMETIME_VALUE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "";
@@ -176,7 +182,7 @@ instance MENUITEM_LOADSAVE_GAMETIME_VALUE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_LOADSAVE_PLAYTIME_VALUE(C_MENU_ITEM_DEF)
+instance MENUITEM_LOADSAVE_PLAYTIME_VALUE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_TEXT;
 	text[0] = "";
@@ -188,7 +194,8 @@ instance MENUITEM_LOADSAVE_PLAYTIME_VALUE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_SAVE_BACK(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_SAVE_BACK (C_MENU_ITEM_DEF)
 {
 	text[0] = "Wróæ";
 	text[1] = "Wróæ";
@@ -196,14 +203,15 @@ instance MENUITEM_SAVE_BACK(C_MENU_ITEM_DEF)
 	posy = SAVEGAME_Y + (21 * SAVEGAME_DY);
 };
 
-instance MENUITEM_LOAD_BACK(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_BACK (C_MENU_ITEM_DEF)
 {
 	text[0] = "Wróæ";
 	posx = SAVEGAME_X1;
 	posy = SAVEGAME_Y + (21 * SAVEGAME_DY);
 };
 
-instance MENUITEM_SAVE_SLOT1(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_SAVE_SLOT1 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -220,7 +228,7 @@ instance MENUITEM_SAVE_SLOT1(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT2(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT2 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -237,7 +245,7 @@ instance MENUITEM_SAVE_SLOT2(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT3(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT3 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -254,7 +262,7 @@ instance MENUITEM_SAVE_SLOT3(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT4(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT4 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -271,7 +279,7 @@ instance MENUITEM_SAVE_SLOT4(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT5(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT5 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -288,7 +296,7 @@ instance MENUITEM_SAVE_SLOT5(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT6(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT6 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -305,7 +313,7 @@ instance MENUITEM_SAVE_SLOT6(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT7(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT7 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -322,7 +330,7 @@ instance MENUITEM_SAVE_SLOT7(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT8(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT8 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -339,7 +347,7 @@ instance MENUITEM_SAVE_SLOT8(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT9(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT9 (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[0] = "nieznane";
@@ -355,7 +363,7 @@ instance MENUITEM_SAVE_SLOT9(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT10(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT10 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -372,7 +380,7 @@ instance MENUITEM_SAVE_SLOT10(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT11(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT11 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -389,7 +397,7 @@ instance MENUITEM_SAVE_SLOT11(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT12(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT12 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -406,7 +414,7 @@ instance MENUITEM_SAVE_SLOT12(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT13(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT13 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -423,7 +431,7 @@ instance MENUITEM_SAVE_SLOT13(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT14(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT14 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -440,7 +448,7 @@ instance MENUITEM_SAVE_SLOT14(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT15(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT15 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -457,7 +465,7 @@ instance MENUITEM_SAVE_SLOT15(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT16(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT16 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -474,7 +482,7 @@ instance MENUITEM_SAVE_SLOT16(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT17(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT17 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -491,7 +499,7 @@ instance MENUITEM_SAVE_SLOT17(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT18(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT18 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -508,7 +516,7 @@ instance MENUITEM_SAVE_SLOT18(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT19(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT19 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -525,7 +533,7 @@ instance MENUITEM_SAVE_SLOT19(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_SAVE_SLOT20(C_MENU_ITEM_DEF)
+instance MENUITEM_SAVE_SLOT20 (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_INPUT_BACK_PIC;
 	type = MENU_ITEM_INPUT;
@@ -542,7 +550,8 @@ instance MENUITEM_SAVE_SLOT20(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT1(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_LOAD_SLOT1 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "1 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -555,7 +564,7 @@ instance MENUITEM_LOAD_SLOT1(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT2(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT2 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "2 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -568,7 +577,7 @@ instance MENUITEM_LOAD_SLOT2(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT3(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT3 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "3 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -581,7 +590,7 @@ instance MENUITEM_LOAD_SLOT3(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT4(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT4 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "4 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -594,7 +603,7 @@ instance MENUITEM_LOAD_SLOT4(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT5(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT5 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "5 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -607,7 +616,7 @@ instance MENUITEM_LOAD_SLOT5(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT6(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT6 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "6 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -620,7 +629,7 @@ instance MENUITEM_LOAD_SLOT6(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT7(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT7 (C_MENU_ITEM_DEF)
 {
 	text[0] = "nieznane";
 	text[1] = "7 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -633,7 +642,7 @@ instance MENUITEM_LOAD_SLOT7(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT8(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT8 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "8 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -646,7 +655,7 @@ instance MENUITEM_LOAD_SLOT8(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT9(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT9 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "9 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -659,7 +668,7 @@ instance MENUITEM_LOAD_SLOT9(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT10(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT10 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "10 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -672,7 +681,7 @@ instance MENUITEM_LOAD_SLOT10(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT11(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT11 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "11 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -685,7 +694,7 @@ instance MENUITEM_LOAD_SLOT11(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT12(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT12 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "12 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -698,7 +707,7 @@ instance MENUITEM_LOAD_SLOT12(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT13(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT13 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "13 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -711,7 +720,7 @@ instance MENUITEM_LOAD_SLOT13(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT14(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT14 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "14 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -724,7 +733,7 @@ instance MENUITEM_LOAD_SLOT14(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT15(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT15 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "15 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -737,7 +746,7 @@ instance MENUITEM_LOAD_SLOT15(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT16(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT16 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "16 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -750,7 +759,7 @@ instance MENUITEM_LOAD_SLOT16(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT17(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT17 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "17 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -763,7 +772,7 @@ instance MENUITEM_LOAD_SLOT17(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT18(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT18 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "18 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -776,7 +785,7 @@ instance MENUITEM_LOAD_SLOT18(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT19(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT19 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "19 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -789,7 +798,7 @@ instance MENUITEM_LOAD_SLOT19(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT20(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT20 (C_MENU_ITEM_DEF)
 {
 	text[0] = "---";
 	text[1] = "20 zapis - wciœnij [Enter], aby wczytaæ ten stan gry";
@@ -802,7 +811,7 @@ instance MENUITEM_LOAD_SLOT20(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 };
 
-instance MENUITEM_LOAD_SLOT0(C_MENU_ITEM_DEF)
+instance MENUITEM_LOAD_SLOT0 (C_MENU_ITEM_DEF)
 {
 	text[0] = "    - Szybki zapis -    ";
 	text[1] = "Wciœnij [Enter], aby wczytaæ wybrany stan gry";
@@ -818,4 +827,3 @@ instance MENUITEM_LOAD_SLOT0(C_MENU_ITEM_DEF)
 	hideifoptionset = "useQuickSaveKeys";
 	hideonvalue = 0;
 };
-

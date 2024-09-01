@@ -4,10 +4,10 @@ prototype Mst_Default_Demonicon (C_Npc)
 	/// ------ Monster ------
 	name								=	"Demonikon";
 	guild								=	GIL_DEMON;
-	aivar[AIV_MM_REAL_ID]				= 	ID_DEMONICON;
+	aivar[AIV_MM_REAL_ID]				=	ID_DEMONICON;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_MINECRAWLER;
 	
 	NpcFn_SetAttributesToLevel (self, 70);
@@ -17,9 +17,9 @@ prototype Mst_Default_Demonicon (C_Npc)
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
-	aivar[AIV_MM_FollowInWater] 		=	false;
+	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_LONG;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -30,8 +30,8 @@ prototype Mst_Default_Demonicon (C_Npc)
 ///******************************************************************************************
 func void B_SetVisuals_Demonicon()
 {
-	Mdl_SetVisual		(self, "SleepKeeper.mds");
-	Mdl_SetVisualBody	(self, "SleepKeeper_Body", 1, default, "", default, default, -1);
+	Mdl_SetVisual		(self, "Sleepkeeper.mds");
+	Mdl_SetVisualBody	(self, "Sleepkeeper_Body", 1, default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Demonicon (Mst_Default_Demonicon)

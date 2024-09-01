@@ -1,5 +1,7 @@
-
-instance MENU_LOG(C_MENU_DEF)
+///******************************************************************************************
+/// Log
+///******************************************************************************************
+instance MENU_LOG (C_MENU_DEF)
 {
 	items[0] = "MENU_ITEM_SEL_MISSIONS_ACT";
 	items[1] = "MENU_ITEM_SEL_MISSIONS_OLD";
@@ -23,7 +25,6 @@ instance MENU_LOG(C_MENU_DEF)
 	flags = flags | MENU_OVERTOP | MENU_NOANI;
 };
 
-
 const int LOG_ITEM_X1 = 1200;
 const int LOG_ITEM_DX1 = 1800;
 const int LOG_ITEM_LIST_X = 3000;
@@ -31,7 +32,8 @@ const int LOG_ITEM_LIST_Y = 1000;
 const int LOG_ITEM_LIST_HEIGHT = 6100;
 const int LOG_ITEM_LIST_WIDTH = 4500;
 
-instance MENU_ITEM_SEL_MISSIONS_ACT(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_SEL_MISSIONS_ACT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Obecne\nzadania";
 	posx = LOG_ITEM_X1;
@@ -44,7 +46,7 @@ instance MENU_ITEM_SEL_MISSIONS_ACT(C_MENU_ITEM_DEF)
 	onselaction_s[0] = "EFFECTS MENU_ITEM_LIST_MISSIONS_ACT";
 };
 
-instance MENU_ITEM_SEL_MISSIONS_OLD(C_MENU_ITEM_DEF)
+instance MENU_ITEM_SEL_MISSIONS_OLD (C_MENU_ITEM_DEF)
 {
 	text[0] = "Wykonane\nzadania";
 	posx = LOG_ITEM_X1;
@@ -57,7 +59,7 @@ instance MENU_ITEM_SEL_MISSIONS_OLD(C_MENU_ITEM_DEF)
 	onselaction_s[0] = "EFFECTS MENU_ITEM_LIST_MISSIONS_OLD";
 };
 
-instance MENU_ITEM_SEL_MISSIONS_FAILED(C_MENU_ITEM_DEF)
+instance MENU_ITEM_SEL_MISSIONS_FAILED (C_MENU_ITEM_DEF)
 {
 	text[0] = "Popsute\nzadania";
 	posx = LOG_ITEM_X1;
@@ -70,7 +72,7 @@ instance MENU_ITEM_SEL_MISSIONS_FAILED(C_MENU_ITEM_DEF)
 	onselaction_s[0] = "EFFECTS MENU_ITEM_LIST_MISSIONS_FAILED";
 };
 
-instance MENU_ITEM_SEL_LOG(C_MENU_ITEM_DEF)
+instance MENU_ITEM_SEL_LOG (C_MENU_ITEM_DEF)
 {
 	text[0] = "Informacje\nogólne";
 	posx = LOG_ITEM_X1;
@@ -83,7 +85,7 @@ instance MENU_ITEM_SEL_LOG(C_MENU_ITEM_DEF)
 	onselaction_s[0] = "EFFECTS MENU_ITEM_LIST_LOG";
 };
 
-instance MENU_ITEM_LIST_MISSIONS_ACT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_LIST_MISSIONS_ACT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_LISTBOX;
 	text[0] = "Bie¿¹ce misje";
@@ -100,7 +102,7 @@ instance MENU_ITEM_LIST_MISSIONS_ACT(C_MENU_ITEM_DEF)
 	framesizey = 0;
 };
 
-instance MENU_ITEM_LIST_MISSIONS_FAILED(C_MENU_ITEM_DEF)
+instance MENU_ITEM_LIST_MISSIONS_FAILED (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_LISTBOX;
 	text[0] = "Niezaliczone misje";
@@ -117,7 +119,7 @@ instance MENU_ITEM_LIST_MISSIONS_FAILED(C_MENU_ITEM_DEF)
 	framesizey = 0;
 };
 
-instance MENU_ITEM_LIST_MISSIONS_OLD(C_MENU_ITEM_DEF)
+instance MENU_ITEM_LIST_MISSIONS_OLD (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_LISTBOX;
 	text[0] = "Stare misje";
@@ -134,7 +136,7 @@ instance MENU_ITEM_LIST_MISSIONS_OLD(C_MENU_ITEM_DEF)
 	framesizey = 0;
 };
 
-instance MENU_ITEM_LIST_LOG(C_MENU_ITEM_DEF)
+instance MENU_ITEM_LIST_LOG (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_LISTBOX;
 	text[0] = "Dziennik";
@@ -151,7 +153,7 @@ instance MENU_ITEM_LIST_LOG(C_MENU_ITEM_DEF)
 	framesizey = 0;
 };
 
-instance MENU_ITEM_CONTENT_VIEWER(C_MENU_ITEM_DEF)
+instance MENU_ITEM_CONTENT_VIEWER (C_MENU_ITEM_DEF)
 {
 	text[0] = "brak zawartoœci";
 	posx = 0;
@@ -166,7 +168,7 @@ instance MENU_ITEM_CONTENT_VIEWER(C_MENU_ITEM_DEF)
 	backpic = LOG_VIEWER_BACK_PIC;
 };
 
-instance MENU_ITEM_DAY_TITLE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_DAY_TITLE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Dzieñ:";
 	posx = 1800;
@@ -175,7 +177,7 @@ instance MENU_ITEM_DAY_TITLE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_TIME_TITLE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TIME_TITLE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Czas:";
 	posx = 1500;
@@ -184,7 +186,7 @@ instance MENU_ITEM_TIME_TITLE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_DAY(C_MENU_ITEM_DEF)
+instance MENU_ITEM_DAY (C_MENU_ITEM_DEF)
 {
 	text[0] = "XX";
 	posx = 1500;
@@ -194,7 +196,7 @@ instance MENU_ITEM_DAY(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_TIME(C_MENU_ITEM_DEF)
+instance MENU_ITEM_TIME (C_MENU_ITEM_DEF)
 {
 	text[0] = "XX:XX";
 	posx = 2200;
@@ -202,4 +204,3 @@ instance MENU_ITEM_TIME(C_MENU_ITEM_DEF)
 	fontname = LOG_FONT_DATETIME;
 	flags = flags & ~IT_SELECTABLE;
 };
-

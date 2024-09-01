@@ -93,7 +93,7 @@ func void DIA_Vino_SeekWork_Info ()
 		{
 			AI_Output (self, other, "DIA_Vino_SeekWork_05_04"); //Jeœli chcesz siê zatrudniæ u Lobarta jako zwyk³y robotnik, to ostrzegam. Ludziom takim jak ty p³aci naprawdê marnie.
 		
-			if ( (Mob_HasItems("CHEST_LOBART", ITAR_Bau_00) == TRUE) || (Npc_HasItems (lobart, itar_bau_00) > 0) )
+			if ( (Mob_HasItems("CHEST_LOBART", ITAR_Bau_L_00) == TRUE) || (Npc_HasItems (lobart, itar_bau_L_00) > 0) )
 			&& (Lobart_Kleidung_Verkauft == FALSE)
 			&& ( (Npc_KnowsInfo (other, DIA_Lobart_KLEIDUNG)) || (Npc_KnowsInfo (other, DIA_Lobart_WorkNOW)) )
 			{

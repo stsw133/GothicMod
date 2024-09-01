@@ -1,10 +1,10 @@
 ///******************************************************************************************
-///	B_GiveInvItems
+/// B_GiveInvItems
 ///******************************************************************************************
-func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance, var int amount)
+func int B_GiveInvItems (var C_Npc slf, var C_Npc oth, var int itemInstance, var int amount)
 {
-	if (Npc_IsPlayer(giver))
-	&& (amount > Npc_HasItems(giver, itemInstance))
+	if (Npc_IsPlayer(slf))
+	&& (amount > Npc_HasItems(slf, itemInstance))
 	{
 		return false;
 	};
@@ -13,8 +13,9 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 		return true;
 	};
 	
-	Npc_RemoveInvItems (giver, itemInstance, amount);
-	CreateInvItems (taker, itemInstance, amount);
+	/// FUNC
+	Npc_RemoveInvItems (slf, itemInstance, amount);
+	CreateInvItems (oth, itemInstance, amount);
 	
 	/// display text
 	var string concatText; concatText = item.name;
@@ -24,11 +25,11 @@ func int B_GiveInvItems (var C_Npc giver, var C_Npc taker, var int itemInstance,
 	    concatText = ConcatStrings(ConcatStrings(IntToString(amount), " szt. "), concatText);
 	};
 	
-	if (Npc_IsPlayer(giver))
+	if (Npc_IsPlayer(slf))
 	{
 		PrintS_Ext (concatText, COL_ItemGiven);
 	}
-	else if Npc_IsPlayer(taker)
+	else if Npc_IsPlayer(oth)
 	{
 		PrintS_Ext (concatText, COL_ItemTaken);
 	};

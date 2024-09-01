@@ -1,464 +1,612 @@
 ///******************************************************************************************
 prototype ItemPR_Misc (C_Item)
 {
-	mainflag 				=	ITEM_KAT_NONE;
+	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-	TEXT[5]					= 	NAME_Value;
+	TEXT[5]					=	NAME_Value;
 };
+
 ///******************************************************************************************
 /// Nuggets
 ///******************************************************************************************
 prototype ItemPR_Nugget (C_Item)
 {
-	mainflag 				=	ITEM_KAT_NONE;
+	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-	material 				=	MAT_STONE;
-	TEXT[5]					= 	NAME_Value;
+	material				=	MAT_STONE;
+	TEXT[5]					=	NAME_Value;
 	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
-};
-///******************************************************************************************
-instance ItMi_IronNugget (ItemPR_Nugget)
-{
-	name 					=	"Bry³ka ¿elaza";
-	value 					=	5;
-	visual 					=	"ItMi_IronNugget.3ds";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia broni ze stali.";
-	COUNT[5]				= 	value;
-};
-instance ItMi_IronBar (ItemPR_Nugget)
-{
-	name 					=	"Sztabka ¿elaza";
-	value 					=	50;
-	visual 					=	"ItMi_IronBar.3ds";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia pancerzy.";
-	COUNT[5]				= 	value;
-};
-///******************************************************************************************
-instance ItMi_SilverNugget (ItemPR_Nugget)
-{
-	name 					=	"Bry³ka srebra";
-	value 					=	15;
-	visual 					=	"ItMi_SilverNugget.3ds";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia srebrnej bi¿uterii.";
-	COUNT[5]				= 	value;
-};
-instance ItMi_GoldNugget_Addon (ItemPR_Nugget)
-{
-	name 					=	"Bry³ka z³ota";
-	value 					=	30;
-	visual 					=	"ItMi_GoldNugget.3ds";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia z³otej bi¿uterii.";
-	COUNT[5]				=	value;
 };
 ///******************************************************************************************
 instance ItMi_Nugget (ItemPR_Nugget)
 {
-	name 					=	"Magiczna bry³ka";
-	value 					=	100;
-	visual 					=	"ItMi_Nugget.3ds";
+	name					=	"Magiczna bry³ka";
+	value					=	100;
+	visual					=	"ItMi_Nugget.3ds";
+	
 	effect					=	"SPELLFX_MANAPOTION";
 	
-	description				= 	"Niebieska magiczna ruda";
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia magicznych broni.";
+	description				=	"Niebieska magiczna ruda";
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia magicznych broni.";
 	COUNT[5]				=	value;
 };
 instance ItMi_RedNugget (ItemPR_Nugget)
 {
-	name 					=	"Magiczna bry³ka";
-	value 					=	100;
-	visual 					=	"ItMi_RedNugget.3ds";
+	name					=	"Magiczna bry³ka";
+	value					=	100;
+	visual					=	"ItMi_RedNugget.3ds";
+	
 	effect					=	"SPELLFX_HEALTHPOTION";
 	
-	description				= 	"Czerwona magiczna ruda";
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia ognistych broni.";
+	description				=	"Czerwona magiczna ruda";
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia ognistych broni.";
 	COUNT[5]				=	value;
 };
+
 ///******************************************************************************************
 /// Resources
 ///******************************************************************************************
-instance ItMi_Stone (ItemPR_Nugget)
-{
-	name 					=	"Kamieñ";
-	value 					=	0;
-	visual 					=	"ItMi_Stone.3ds";
-	
-	description				= 	name;
-	COUNT[5]				= 	value;
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
-};
 instance ItMi_Coal (ItemPR_Nugget)
 {
-	name 					=	"Wêgiel";
-	value 					=	10;
-	visual 					=	"ItMi_Coal.3ds";
+	name					=	"Wêgiel";
+	value					=	10;
+	visual					=	"ItMi_Coal.3ds";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
-	TEXT[1]					= 	"U¿ywany jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
+	description				=	name;
+	COUNT[5]				=	value;
+	TEXT[1]					=	"U¿ywany jako sk³adnik";
+	TEXT[2]					=	"stali i niektórych run.";
 	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
+};
+instance ItMi_Calcium (ItemPR_Nugget)
+{
+	name					=	"Wapno";
+	value					=	20;
+	visual					=	"ItMi_Calcium.3ds";
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywane jako sk³adnik";
+	TEXT[2]					=	"pergaminów i niektórych run.";
+	COUNT[5]				=	value;
 };
 instance ItMi_Quartz (ItemPR_Nugget)
 {
-	name 					=	"Kwarcyt";
-	value 					=	20;
-	visual 					=	"ItMi_Quartz.3ds";
+	name					=	"Kwarcyt";
+	value					=	10;
+	visual					=	"ItMi_Quartz.3ds";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
-	TEXT[1]					= 	"U¿ywany jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
+	description				=	name;
+	COUNT[5]				=	value;
+	TEXT[1]					=	"U¿ywany jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
 	INV_ZBIAS				=	INVCAM_ENTF_RING_STANDARD;
-};
-instance ItMi_Sulfur (ItemPR_Nugget)
-{
-	name 					=	"Siarka";
-	value 					=	20;
-	visual 					=	"ItMi_SulfurNugget.3DS";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	COUNT[5]				= 	value;
 };
 instance ItMi_Saltpeter (ItemPR_Nugget)
 {
-	name 					=	"Saletra";
-	value 					=	60;
-	visual 					=	"ItFo_Sugar.3DS";
+	name					=	"Saletra";
+	value					=	60;
+	visual					=	"ItFo_Sugar.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"bomb i niektórych run.";
-	COUNT[5]				= 	value;
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"bomb i niektórych run.";
+	COUNT[5]				=	value;
 };
+instance ItMi_Sulfur (ItemPR_Nugget)
+{
+	name					=	"Siarka";
+	value					=	20;
+	visual					=	"ItMi_Sulfur.3ds";
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
+	COUNT[5]				=	value;
+};
+
 ///******************************************************************************************
 /// Crystals
 ///******************************************************************************************
-instance ItMi_RockCrystal (ItemPR_Nugget)
-{
-	name 					=	"Kryszta³";
-	value 					=	25;
-	visual 					=	"ItMi_ShiningCrystal.3ds";
-	effect					=	"SPELLFX_CRYSTALGLOW";
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywany jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	COUNT[5]				= 	value;
-};
 instance ItMi_FireCrystal (ItemPR_Nugget)
 {
-	name 					=	"Kryszta³";
-	value 					=	50;
-	visual 					=	"ItMi_FireCrystal.3ds";
+	name					=	"Kryszta³";
+	value					=	50;
+	visual					=	"ItMi_FireCrystal.3ds";
+	
 	effect					=	"SPELLFX_FIRESWORD";
 	
-	description				= 	"Ognisty kryszta³";
-	TEXT[1]					= 	"U¿ywany jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	COUNT[5]				= 	value;
+	description				=	"Ognisty kryszta³";
+	TEXT[1]					=	"U¿ywany jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
+	COUNT[5]				=	value;
 };
-///******************************************************************************************
-/// Pearls
-///******************************************************************************************
-instance ItMi_WhitePearl (ItemPR_Nugget)
+instance ItMi_RockCrystal (ItemPR_Nugget)
 {
-	name 					=	"Per³a";
-	value 					=	100;
-	visual 					=	"ItMi_WhitePearl_01.3ds";
+	name					=	"Kryszta³";
+	value					=	25;
+	visual					=	"ItMi_ShiningCrystal.3ds";
 	
-	description				= 	"Bia³a per³a";
-	COUNT[5]				= 	value;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
-};
-instance ItMi_DarkPearl (ItemPR_Nugget)
-{
-	name					=	"Per³a";
-	value 					=	500;
-	visual 					=	"ItMi_DarkPearl.3ds";
-	
-	description				= 	"Czarna per³a";
-	COUNT[5]				= 	value;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
-};
-///******************************************************************************************
-var int Shell_Opener;
-
-instance ItMi_Shell (ItemPR_Misc)
-{
-	name 					=	"Muszla";
-	value 					=	5;
-	visual					=	"ItMi_Shell_01.3ds";
-	material				=	MAT_STONE;
-	
-	scemeName				=	"MAPSEALED";
-	on_state[0]				=	Use_Shell;
+	effect					=	"SPELLFX_CRYSTALGLOW";
 	
 	description				=	name;
-	TEXT[1]					= 	"Mo¿e zawieraæ per³ê lub";
-	TEXT[1]					= 	"rzadziej czarn¹ per³ê.";
+	TEXT[1]					=	"U¿ywany jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
 	COUNT[5]				=	value;
-	INV_ZBIAS				=	INVCAM_ENTF_MISC2_STANDARD;
 };
-func void Use_Shell()
-{
-	Shell_Opener += 1;
-	if (Shell_Opener % 25 == 0)
-	{
-		B_PlayerFindItem (ItMi_DarkPearl, 1);
-	}
-	else if (Shell_Opener % 5 == 1)
-	{
-		B_PlayerFindItem (ItMi_WhitePearl, 1);
-	}
-	else
-	{
-		//B_Say_Overlay (self, self, "$NOTHINGTOGET02");
-		Print (PRINT_NOTHINGTOGET02);
-	};
-};
+
 ///******************************************************************************************
 /// Alchemy
 ///******************************************************************************************
-instance ItMi_HolyWater (ItemPR_Misc)
+instance ItMi_Flask (ItemPR_Misc)
 {
-	name 					=	"Woda œwiêcona";
-	value 					=	15;
-	visual 					=	"ItMi_HolyWater.3ds";
-	material 				=	MAT_GLAS;
+	name					=	"Menzurka";
+	visual					=	"ItMi_Flask.3ds";
+	
+	material				=	MAT_GLAS;
+	value					=	5;
 	
 	description				=	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia run paladynów.";
+	TEXT[1]					=	"Baza do tworzenia";
+	TEXT[2]					=	"mikstur alchemicznych.";
+	COUNT[5]				=	value;
+};
+///******************************************************************************************
+instance ItMi_HolyWater (ItemPR_Misc)
+{
+	name					=	"Woda œwiêcona";
+	visual					=	"ItMi_HolyWater.3ds";
+	
+	material				=	MAT_GLAS;
+	value					=	15;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia run paladynów.";
 	COUNT[5]				=	value;
 };
 instance ItMi_Pitch (ItemPR_Misc)
 {
-	name 					=	"Smo³a";
-	value 					=	15;
-	visual 					=	"ItMi_Pitch.3DS";
-	material 				=	MAT_GLAS;
+	name					=	"Smo³a";
+	visual					=	"ItMi_Pitch.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	COUNT[5]				= 	value;
+	material				=	MAT_GLAS;
+	value					=	15;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
+	COUNT[5]				=	value;
 };
 instance ItMi_Resin (ItemPR_Misc)
 {
-	name 					=	"¯ywica";
-	value 					=	15;
-	visual 					=	"ItMi_Resin.3DS";
-	material 				=	MAT_GLAS;
+	name					=	"¯ywica";
+	visual					=	"ItMi_Resin.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia niektórych run.";
-	COUNT[5]				= 	value;
+	material				=	MAT_GLAS;
+	value					=	15;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia niektórych run.";
+	COUNT[5]				=	value;
 };
 instance ItMi_Quicksilver (ItemPR_Misc)
 {
-	name 					=	"Rtêæ";
-	value 					=	30;
-	visual 					=	"ItMi_Quicksilver.3DS";
-	material 				=	MAT_GLAS;
+	name					=	"Rtêæ";
+	visual					=	"ItMi_Quicksilver.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana jako sk³adnik";
-	TEXT[2]					= 	"tworzenia run emanuj¹cych aury.";
-	COUNT[5]				= 	value;
+	material				=	MAT_GLAS;
+	value					=	30;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia run emanuj¹cych aury.";
+	COUNT[5]				=	value;
 };
+
+///******************************************************************************************
+/// Enchanting
+///******************************************************************************************
+instance ItMi_Ink (ItemPR_Misc)
+{
+	name					=	"Atrament";
+	visual					=	"ItMi_Ink.3ds";
+	
+	material				=	MAT_GLAS;
+	value					=	30;
+	
+	description				=	"Magiczny atrament";
+	TEXT[1]					=	"Baza do tworzenia";
+	TEXT[2]					=	"magicznych zwojów.";
+	COUNT[5]				=	value;
+};
+instance ItMi_MagicPowder (ItemPR_Misc)
+{
+	name					=	"Magiczny proszek";
+	visual					=	"ItMi_Pocket_Blue.3ds";
+	
+	material				=	MAT_STONE;
+	value					=	20;
+	
+	effect					=	"SPELLFX_MANAPOTION";
+	
+	description				=	"Proszek z magicznej rudy";
+	TEXT[1]					=	"Sk³adnik przy tworzeniu";
+	TEXT[2]					=	"magicznych przedmiotów.";
+	COUNT[5]				=	value;
+};
+///******************************************************************************************
+/*
+instance ItMi_MagicStone (ItemPR_Misc)
+{
+	name					=	"Kamieñ zaklinania";
+	value					=	100;
+	visual					=	"ItMi_MagicStone.3ds";
+	material				=	MAT_STONE;
+	
+//	scemeName				=	"FASTUSE";
+//	on_state[0]				=	MOBSI_MagicStone_S1;
+	
+	description				=	name;
+	COUNT[5]				=	value;
+};
+*/
+instance ItMi_Scrolls (ItemPR_Misc)
+{
+	name					=	"Zestaw pergaminów";
+	visual					=	"ADDON_DUNGEON_SCROLLS_01.3ds";
+	
+	material				=	MAT_LEATHER;
+	value					=	20;
+	
+	description				=	name;
+	TEXT[1]					=	"Baza do tworzenia";
+	TEXT[2]					=	"magicznych zwojów.";
+	COUNT[5]				=	value;
+};
+instance ItMi_RuneBlank (ItemPR_Misc)
+{
+	name					=	"Kamieñ runiczny";
+	visual					=	"ItMi_RuneBlank.3ds";
+	
+	material				=	MAT_STONE;
+	value					=	50;
+	
+	description				=	name;
+	TEXT[1]					=	"Baza do tworzenia";
+	TEXT[2]					=	"magicznych run.";
+	COUNT[5]				=	value;
+};
+
 ///******************************************************************************************
 /// Smith
 ///******************************************************************************************
 prototype ItemPR_Swordraw (C_Item)
 {
-	mainflag 				=	ITEM_KAT_NONE;
+	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
-	material 				=	MAT_METAL;
-	value 					=	10;
 	
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					= 	"broni do walki wrêcz.";
-	TEXT[5]					= 	NAME_Value;
-	COUNT[5]				= 	value;
+	material				=	MAT_METAL;
+	value					=	10;
+	
+	TEXT[1]					=	"Baza do tworzenia";
+	TEXT[2]					=	"broni do walki wrêcz.";
+	TEXT[5]					=	NAME_Value;
+	COUNT[5]				=	value;
 };
 ///******************************************************************************************
 instance ItMiSwordraw (ItemPR_Swordraw)
 {
-	name 					=	"Surowa stal";
-	visual 					=	"ItMiSwordraw.3DS";
-	description				= 	name;
+	name					=	"Surowa stal";
+	visual					=	"ItMiSwordraw.3ds";
+	description				=	name;
 };
 instance ItMiSwordrawhot (ItemPR_Swordraw)
 {
-	name 					=	"Gor¹ca stal";
-	visual 					=	"ItMiSwordrawhot.3DS";
-	description				= 	name;
+	name					=	"Gor¹ca stal";
+	visual					=	"ItMiSwordrawhot.3ds";
+	description				=	name;
 };
 instance ItMiSwordbladehot (ItemPR_Swordraw)
 {
-	name 					=	"Gor¹ce ostrze";
-	visual 					=	"ItMiSwordbladehot.3DS";
-	description				= 	name;
+	name					=	"Gor¹ce ostrze";
+	visual					=	"ItMiSwordbladehot.3ds";
+	description				=	name;
 };
 instance ItMiSwordblade	(ItemPR_Swordraw)
 {
-	name 					=	"Ostrze";
-	visual 					=	"ItMiSwordblade.3DS";
-	description				= 	name;
+	name					=	"Ostrze";
+	visual					=	"ItMiSwordblade.3ds";
+	description				=	name;
 };
+///******************************************************************************************
+instance ItMi_Iron (ItemPR_Nugget)
+{
+	name					=	"Bry³a ¿elaza";
+	value					=	10;
+	visual					=	"ItMi_Iron.3ds";
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia stalowych broni.";
+	COUNT[5]				=	value;
+};
+instance ItMi_IronBar (ItemPR_Nugget)
+{
+	name					=	"Sztabka ¿elaza";
+	value					=	100;
+	visual					=	"ItMi_IronBar.3ds";
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana jako sk³adnik";
+	TEXT[2]					=	"tworzenia pancerzy.";
+	COUNT[5]				=	value;
+};
+
+///******************************************************************************************
+/// Theft
+///******************************************************************************************
+instance ItKe_LockPick (ItemPR_Misc)
+{
+	name					=	"Wytrych";
+	visual					=	"ItKe_Lockpick.3ds";
+	
+	material				=	MAT_METAL;
+	value					=	10;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywany do otwierania";
+	TEXT[2]					=	"zamkniêtych skrzyñ.";
+	COUNT[5]				=	value;
+};
+
 ///******************************************************************************************
 /// Joints
 ///******************************************************************************************
 prototype ItemPR_Joint (C_Item)
 {
-	name 					=	"Skrêt";
-	mainflag 				=	ITEM_KAT_NONE;
-	flags 					=	ITEM_MULTI;
+	name					=	"Skrêt";
+	mainflag				=	ITEM_KAT_NONE;
+	flags					=	ITEM_MULTI;
 	
-	visual 					=	"ItMi_Joint_US.3ds";
 	scemename				=	"JOINT";
 	material				=	MAT_LEATHER;
-	
-	description				= 	name;
-	TEXT[5]					= 	NAME_Value;
 };
 ///******************************************************************************************
 instance ItMi_Joint (ItemPR_Joint)
 {
-	value 					=	25;
-	on_state[0]				= 	Use_ItMi_Joint;
+	value					=	25;
+	visual					=	"ItMi_Joint_US.3ds";
+	on_state[0]				=	Use_ItMi_Joint;
 	
-	description				= 	"Skrêt bagiennego ziela";
-	TEXT[1]					= 	NAME_Bonus_HP;
+	description				=	"Skrêt bagiennego ziela";
+	TEXT[1]					=	NAME_Bonus_HP;
 	COUNT[1]				=	-5;
-	TEXT[2]					= 	NAME_Bonus_Mana;
+	TEXT[2]					=	NAME_Bonus_MpTime;
 	COUNT[2]				=	25;
-	TEXT[3]					=	NAME_Bonus_Exp;
+	TEXT[3]					=	NAME_Bonus_XpTime;
 	COUNT[3]				=	5;
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 func void Use_ItMi_Joint()
 {
-	if (Npc_IsPlayer(self))
-	{
-		B_GivePlayerExp(5);
-	};
-	Npc_ChangeAttribute (self, ATR_MANA, 25);
+	Npc_AddFoodTime (self, BarOrderMP, 25, default);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
 	Npc_ChangeAttribute (self, ATR_HITPOINTS, -5);
 };
 
 instance ItMi_SleJoint (ItemPR_Joint)
 {
-	value 					=	100;
-	on_state[0]				= 	Use_ItMi_SleJoint;
+	value					=	100;
+	visual					=	"ItMi_Joint_US.3ds";
+	on_state[0]				=	Use_ItMi_SleJoint;
 	
-	description				= 	"Skrêt 'Zielonego Nowicjusza'";
-	TEXT[1]					= 	NAME_Bonus_HP;
-	COUNT[1]				=	-20;
-	TEXT[2]					= 	NAME_Bonus_Mana;
+	description				=	"Skrêt 'Zielonego Nowicjusza'";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-25;
+	TEXT[2]					=	NAME_Bonus_MpTime;
 	COUNT[2]				=	100;
-	TEXT[3]					=	NAME_Bonus_Exp;
-	COUNT[3]				=	20;
-	COUNT[5]				= 	value;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	25;
+	COUNT[5]				=	value;
 };
 func void Use_ItMi_SleJoint()
 {
-	if (Npc_IsPlayer(self))
-	{
-		B_GivePlayerExp(20);
-	};
-	Npc_ChangeAttribute (self, ATR_MANA, 100);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -20);
+	Npc_AddFoodTime (self, BarOrderMP, 100, default);
+	Npc_AddFoodTime (self, BarOrderXP, 25, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -25);
 };
+
+instance ItMi_DesertJoint (ItemPR_Joint)
+{
+	value					=	25;
+	visual					=	"ItMi_Joint_US.3ds";
+	on_state[0]				=	Use_ItMi_DesertJoint;
+	
+	description				=	"Skrêt pustynnego ziela";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-5;
+	TEXT[2]					=	NAME_Bonus_SpTime;
+	COUNT[2]				=	75;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	5;
+	COUNT[5]				=	value;
+};
+func void Use_ItMi_DesertJoint()
+{
+	Npc_AddFoodTime (self, BarOrderSP, 75, default);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -5);
+};
+
 ///******************************************************************************************
 /// Tabak
 ///******************************************************************************************
-prototype ItemPR_Tabak (C_Item)
+instance ItMi_Tabak (C_Item)
 {
-	name 					=	"Tytoñ";
-	mainflag 				=	ITEM_KAT_NONE;
+	name					=	"Tytoñ";
+	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MULTI;
 	
-	value 					=	20;
-	visual 					=	"ItMi_Pocket_Green.3ds";
-	material 				=	MAT_LEATHER;
-	
-	TEXT[5]					= 	NAME_Value;
-	COUNT[5]				=	value;
-};
-///******************************************************************************************
-instance ItMi_Tabak (ItemPR_Tabak)
-{
-	value 					=	10;
+	value					=	10;
+	visual					=	"ItMi_Pocket_Green.3ds";
+	material				=	MAT_LEATHER;
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_MakeTabak_S1;
 	
 	description				=	name;
-	TEXT[1]					= 	"Baza do tworzenia";
+	TEXT[1]					=	"Baza do tworzenia";
 	TEXT[2]					=	"tytoniów smakowych.";
+	TEXT[5]					=	NAME_Value;
 	COUNT[5]				=	value;
 };
-instance ItMi_ChocolateTabak (ItemPR_Tabak)
+
+///******************************************************************************************
+instance ItMi_ChocolateTabak (ItemPR_Joint)
 {
-	description = "Tytoñ czekoladowy";
+	value					=	10;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_ChocolateTabak;
+	
+	description				=	"Skrêt czekoladowego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-2;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	10;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	5;
+	COUNT[5]				=	value;
 };
-instance ItMi_CoconutTabak (ItemPR_Tabak)
+func void Use_ItMi_ChocolateTabak()
 {
-	description = "Tytoñ kokosowy";
+	Npc_AddFoodTime (self, BarOrderMP, 10, default);
+	Npc_AddFoodTime (self, BarOrderXP, 5, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 };
-instance ItMi_FruitTabak (ItemPR_Tabak)
+
+instance ItMi_CoconutTabak (ItemPR_Joint)
 {
-	description = "Tytoñ owocowy";
+	value					=	6;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_CoconutTabak;
+	
+	description				=	"Skrêt kokosowego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-2;
+	TEXT[2]					=	NAME_Bonus_SpTime;
+	COUNT[2]				=	20;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	2;
+	COUNT[5]				=	value;
 };
-instance ItMi_HoneyTabak (ItemPR_Tabak)
+func void Use_ItMi_CoconutTabak()
 {
-	description = "Tytoñ miodowy";
+	Npc_AddFoodTime (self, BarOrderSP, 20, default);
+	Npc_AddFoodTime (self, BarOrderXP, 2, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 };
-instance ItMi_MushroomTabak (ItemPR_Tabak)
+
+instance ItMi_FruitTabak (ItemPR_Joint)
 {
-	description = "Tytoñ grzybowy";
+	value					=	4;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_FruitTabak;
+	
+	description				=	"Skrêt owocowego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-1;
+	TEXT[2]					=	NAME_Bonus_XpTime;
+	COUNT[2]				=	1;
+	COUNT[5]				=	value;
 };
-instance ItMi_SwampTabak (ItemPR_Tabak)
+func void Use_ItMi_FruitTabak()
 {
-	description = "Tytoñ zio³owy";
+	Npc_AddFoodTime (self, BarOrderXP, 1, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
 };
+
+instance ItMi_HoneyTabak (ItemPR_Joint)
+{
+	value					=	5;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_HoneyTabak;
+	
+	description				=	"Skrêt miodowego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-1;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	6;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	2;
+	COUNT[5]				=	value;
+};
+func void Use_ItMi_HoneyTabak()
+{
+	Npc_AddFoodTime (self, BarOrderMP, 6, default);
+	Npc_AddFoodTime (self, BarOrderXP, 2, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
+};
+
+instance ItMi_MushroomTabak (ItemPR_Joint)
+{
+	value					=	4;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_MushroomTabak;
+	
+	description				=	"Skrêt grzybowego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-1;
+	TEXT[2]					=	NAME_Bonus_XpTime;
+	COUNT[2]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_ItMi_MushroomTabak()
+{
+	Npc_AddFoodTime (self, BarOrderXP, 1, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
+};
+
+instance ItMi_SwampTabak (ItemPR_Joint)
+{
+	value					=	7;
+	visual					=	"ItMi_Joint.3ds";
+	on_state[0]				=	Use_ItMi_SwampTabak;
+	
+	description				=	"Skrêt zio³owego tytoniu";
+	TEXT[1]					=	NAME_Bonus_HP;
+	COUNT[1]				=	-3;
+	TEXT[2]					=	NAME_Bonus_MpTime;
+	COUNT[2]				=	9;
+	TEXT[3]					=	NAME_Bonus_XpTime;
+	COUNT[3]				=	1;
+	COUNT[5]				=	value;
+};
+func void Use_ItMi_SwampTabak()
+{
+	Npc_AddFoodTime (self, BarOrderMP, 9, default);
+	Npc_AddFoodTime (self, BarOrderXP, 1, default);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -3);
+};
+
 ///******************************************************************************************
 /// Torches
 ///******************************************************************************************
 prototype ItemPR_Torch (C_Item)
 {
-	name 					=	"Pochodnia";
-	mainflag 				=	ITEM_KAT_NONE;
-	flags					=	ITEM_TORCH|ITEM_MULTI;
-	material 				=	MAT_WOOD;
-	value 					=	5;
+	name					=	"Pochodnia";
+	mainflag				=	ITEM_KAT_NONE;
+	flags					=	ITEM_TORCH | ITEM_MULTI;
 	
-	description				= 	name;
-	TEXT[1]					= 	"Jednorazowe Ÿród³o œwiat³a.";
-	TEXT[5]					= 	NAME_Value;
-	COUNT[5]				= 	value;
+	material				=	MAT_WOOD;
+	value					=	5;
+	
+	description				=	name;
+	TEXT[1]					=	"Jednorazowe Ÿród³o œwiat³a.";
+	TEXT[5]					=	NAME_Value;
+	COUNT[5]				=	value;
 };
 ///******************************************************************************************
 instance ItLsTorch (ItemPR_Torch)
@@ -473,159 +621,59 @@ instance ItLsTorchburned (ItemPR_Torch)
 {
 	visual = "ItLs_TorchBurned_01.3ds";
 };
+
 ///******************************************************************************************
 /// Production
 ///******************************************************************************************
 instance ItMi_EmptyBottle (ItemPR_Misc)
 {
-	name 					=	"Butelka";
-	value 					=	4;
-	visual 					=	"ItMi_EmptyBottle.3ds";
-	material 				=	MAT_GLAS;
+	name					=	"Butelka";
+	visual					=	"ItMi_EmptyBottle.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"Baza do nape³niania";
-	TEXT[2]					= 	"wody, mleka, lekkich alkoholi...";
+	material				=	MAT_GLAS;
+	value					=	3;
+	
+	description				=	name;
+	TEXT[1]					=	"Baza do nape³niania";
+	TEXT[2]					=	"wody, mleka, lekkich alkoholi...";
 	COUNT[5]				=	value;
-};
-instance ItMi_Flask (ItemPR_Misc)
-{
-	name 					=	"Menzurka";
-	value 					=	5;
-	visual 					=	"ItMi_Flask.3ds";
-	material 				=	MAT_GLAS;
-	
-	description				= 	name;
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					= 	"mikstur alchemicznych.";
-	COUNT[5] 				= 	value;
-};
-instance ItMi_Ink (ItemPR_Misc)
-{
-	name 					=	"Atrament";
-	value 					=	10;
-	visual 					=	"ItMi_Ink.3DS";
-	material 				=	MAT_GLAS;
-	
-	description				= 	name;
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					=	"magicznych zwojów.";
-	COUNT[5]				= 	value;
-};
-instance ItMi_InkPen (ItemPR_Misc)
-{
-	name 					=	"Pióro atramentowe";
-	value 					=	10;
-	visual 					=	"ItMi_InkPen.3DS";
-	material 				=	MAT_LEATHER;
-	
-	scemeName				=	"FASTUSE";
-	on_state[0]				=	MOBSI_MakeScroll_S1;
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywane do tworzenia";
-	TEXT[2]					=	"magicznych zwojów.";
-	COUNT[5]				= 	value;
-};
-instance ItMi_InnosStatue (ItemPR_Misc)
-{
-	name 					=	"Pos¹¿ek Innosa";
-	value 					=	100;
-	visual 					=	"ItMi_InnosStatue.3DS";
-	material 				=	MAT_METAL;
-	
-	scemeName				=	"FASTUSE";
-	on_state[0]				=	MOBSI_LearnAttributes_S1;
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywany do wydawania";
-	TEXT[2]					=	"punktów nauki na atrybuty.";
-	COUNT[5]				= 	value;
-};
-instance ItKe_LockPick (ItemPR_Misc)
-{
-	name 					=	"Wytrych";
-	value 					=	10;
-	visual 					=	"ItKe_Lockpick.3ds";
-	material 				=	MAT_METAL;
-	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywany do otwierania";
-	TEXT[2]					=	"zamkniêtych skrzyñ.";
-	COUNT[5]				=	value;
-};
-/*
-instance ItMi_MagicStone (ItemPR_Misc)
-{
-	name 					=	"Kamieñ zaklinania";
-	value 					=	30;
-	visual 					=	"ItMi_MagicStone.3ds";
-	material 				=	MAT_STONE;
-	
-//	scemeName				=	"FASTUSE";
-//	on_state[0]				=	MOBSI_MagicStone_S1;
-	
-	description				= 	name;
-	COUNT[5]				= 	value;
-};
-*/
-instance ItMi_Scrolls (ItemPR_Misc)
-{
-	name 					=	"Pergaminy";
-	value 					=	10;
-	visual 					=	"ADDON_DUNGEON_SCROLLS_01.3DS";
-	material				=	MAT_LEATHER;
-	
-	description				= 	name;
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					=	"magicznych zwojów.";
-	COUNT[5]				=	value;
-};
-instance ItMi_RuneBlank (ItemPR_Misc)
-{
-	name 					=	"Kamieñ runiczny";
-	value 					=	50;
-	visual 					=	"ItMi_RuneBlank.3DS";
-	material 				=	MAT_STONE;
-	
-	description				= 	name;
-	TEXT[1]					= 	"Baza do tworzenia";
-	TEXT[2]					=	"magicznych run.";
-	COUNT[5] 				= 	value;
 };
 instance ItMi_Wood (ItemPR_Misc)
 {
-	name 					=	"Drewno";
-	value 					=	5;
-	visual 					=	"ITMI_WOOD.3DS";
+	name					=	"Drewno";
+	visual					=	"ItMi_Wood.3ds";
+	
 	material				=	MAT_WOOD;
+	value					=	3;
 	
 	scemeName				=	"FASTUSE";
 	on_state[0]				=	MOBSI_UseWood_S1;
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywane do tworzenia";
-	TEXT[2]					=	"strza³, pochodni, pergaminów...";
+	description				=	name;
+	TEXT[1]					=	"U¿ywane do tworzenia";
+	TEXT[2]					=	"strza³, pochodni...";
 	COUNT[5]				=	value;
 };
+
 ///******************************************************************************************
 /// Tools
 ///******************************************************************************************
 instance ItMi_Alarmhorn (ItemPR_Misc)
 {
-	name 					=	"Róg";
-	value 					=	10;
-	visual 					=	"ItMi_Alarmhorn.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Róg";
+	visual					=	"ItMi_Alarmhorn.3ds";
+	
+	material				=	MAT_WOOD;
+	value					=	10;
 	
 	scemeName				=	"HORN";
-	on_state[0]				=	Use_Alarmhorn;
+	on_state[0]				=	Use_ItMi_Alarmhorn;
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ycie zwabia orków.";
-	COUNT[5]				= 	value;
+	description				=	name;
+	TEXT[1]					=	"U¿ycie zwabia orków.";
+	COUNT[5]				=	value;
 };
-func void Use_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
+func void Use_ItMi_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
 {
 	if (Npc_IsPlayer(oth))
 	{
@@ -650,24 +698,25 @@ func void Use_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
 		};
 	};
 };
-func void Use_Alarmhorn()
+func void Use_ItMi_Alarmhorn()
 {
-	MOD_Broadcast (self, Use_Alarmhorn_Effect);
+	MOD_Broadcast (self, Use_ItMi_Alarmhorn_Effect);
 };
 instance ItMi_Broom (ItemPR_Misc)
 {
-	name 					=	"Miot³a";
-	value 					=	10;
-	visual 					=	"ItMi_Broom.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Miot³a";
+	visual					=	"ItMi_Broom.3ds";
+	
+	material				=	MAT_WOOD;
+	value					=	10;
 	
 	scemeName				=	"BROOM";
-	on_state[0]				=	Use_Broom;
+	on_state[0]				=	Use_ItMi_Broom;
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	description				=	name;
+	COUNT[5]				=	value;
 };
-func void Use_Broom()
+func void Use_ItMi_Broom()
 {
 	if (Npc_IsPlayer(self))
 	&& (Wld_GetPlayerPortalGuild() == GIL_NOV)
@@ -679,139 +728,185 @@ func void Use_Broom()
 };
 instance ItMi_Brush (ItemPR_Misc)
 {
-	name 					=	"Szczotka";
-	value 					=	5;
+	name					=	"Szczotka";
 	visual					=	"ItMi_Brush.3ds";
-	material 				=	MAT_WOOD;
+	
+	material				=	MAT_WOOD;
+	value					=	5;
 	
 	scemeName				=	"BRUSH";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	description				=	name;
+	COUNT[5]				=	value;
 };
 instance ItMi_FishingRod (ItemPR_Misc)
 {
-	name 					=	"Wêdka";
-	value 					=	15;
-	visual 					=	"ItMi_FishingRod.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Wêdka";
+	visual					=	"ItMi_FishingRod.3ds";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	material				=	MAT_WOOD;
+	value					=	15;
+	
+	description				=	name;
+	COUNT[5]				=	value;
 };
 instance ItMi_Hammer (ItemPR_Misc)
 {
-	name 					=	"M³otek";
-	value 					=	10;
-	visual 					=	"ItMi_Hammer.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"M³otek";
+	visual					=	"ItMi_Hammer.3ds";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	material				=	MAT_WOOD;
+	value					=	10;
+	
+	description				=	name;
+	COUNT[5]				=	value;
+};
+instance ItMi_InkPen (ItemPR_Misc)
+{
+	name					=	"Pióro atramentowe";
+	visual					=	"ItMi_InkPen.3ds";
+	
+	material				=	MAT_LEATHER;
+	value					=	10;
+	
+	scemeName				=	"FASTUSE";
+	on_state[0]				=	MOBSI_MakeScroll_S1;
+	
+	description				=	name;
+	TEXT[1]					=	"Narzêdzie do tworzenia";
+	TEXT[2]					=	"magicznych zwojów.";
+	COUNT[5]				=	value;
+};
+instance ItMi_InnosStatue (ItemPR_Misc)
+{
+	name					=	"Pos¹¿ek Innosa";
+	visual					=	"ItMi_InnosStatue.3ds";
+	
+	material				=	MAT_METAL;
+	value					=	100;
+	
+	scemeName				=	"FASTUSE";
+	on_state[0]				=	MOBSI_LearnAttributes_S1;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywany do wydawania";
+	TEXT[2]					=	"punktów nauki na atrybuty.";
+	COUNT[5]				=	value;
 };
 instance ItMi_Lute (ItemPR_Misc)
 {
-	name 					=	"Lutnia";
-	value 					=	15;
-	visual 					=	"ItMi_Lute.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Lutnia";
+	visual					=	"ItMi_Lute.3ds";
+	
+	material				=	MAT_WOOD;
+	value					=	15;
 	
 	scemeName				=	"LUTE";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	description				=	name;
+	COUNT[5]				=	value;
 };
 instance ItMi_Pan (ItemPR_Misc)
 {
-	name 					=	"Patelnia";
-	value 					=	20;
-	visual 					=	"ItMi_Pan.3DS";
-	material 				=	MAT_METAL;
+	name					=	"Patelnia";
+	visual					=	"ItMi_Pan.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana do sma¿enia";
+	material				=	MAT_METAL;
+	value					=	20;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana do sma¿enia";
 	TEXT[2]					=	"miêsa i ryb.";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 instance ItMi_PanFull (ItemPR_Misc)
 {
-	name 					=	"Patelnia";
-	value 					=	20;
-	visual 					=	"ItMi_PanFull.3DS";
-	material 				=	MAT_METAL;
+	name					=	"Patelnia";
+	visual					=	"ItMi_PanFull.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana do sma¿enia";
+	material				=	MAT_METAL;
+	value					=	20;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana do sma¿enia";
 	TEXT[2]					=	"miêsa i ryb.";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 instance ItMi_Pliers (ItemPR_Misc)
 {
-	name 					=	"¯uwaczka";
-	value 					=	10;
-	visual 					=	"ItMi_Pliers.3DS";
-	material 				=	MAT_METAL;
+	name					=	"¯uwaczka";
+	visual					=	"ItMi_Pliers.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana do tworzenia";
+	material				=	MAT_METAL;
+	value					=	10;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana do tworzenia";
 	TEXT[2]					=	"magicznych run.";
-	COUNT[5] 				= 	value;
+	COUNT[5]				=	value;
 };
 instance ItMi_Rake (ItemPR_Misc)
 {
-	name 					=	"Motyka";
-	value 					=	10;
-	visual 					=	"ItMi_Rake.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Motyka";
+	visual					=	"ItMi_Rake.3ds";
+	
+	material				=	MAT_WOOD;
+	value					=	10;
 	
 	scemeName				=	"RAKE";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	description				=	name;
+	COUNT[5]				=	value;
 };
 instance ItMi_Saw (ItemPR_Misc)
 {
-	name 					=	"Pi³a";
-	value 					=	20;
-	visual 					=	"ItMi_Saw.3DS";
-	material 				=	MAT_METAL;
+	name					=	"Pi³a";
+	visual					=	"ItMi_Saw.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana do pozyskiwania";
+	material				=	MAT_METAL;
+	value					=	20;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana do pozyskiwania";
 	TEXT[2]					=	"drewna z k³ód.";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 instance ItMi_Sextant (ItemPR_Misc)
 {
-	name 					=	"Sekstans";
-	value 					=	1200;
-	visual 					=	"ItMi_Sextant.3DS";
-	material 				=	MAT_METAL;
+	name					=	"Sekstans";
+	visual					=	"ItMi_Sextant.3ds";
 	
-	description				= 	name;
-	COUNT[5]				= 	value;
+	material				=	MAT_METAL;
+	value					=	1000;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywany w nawigacji";
+	TEXT[2]					=	"morskiej i astronomii.";
+	COUNT[5]				=	value;
 };
 instance ItMi_Scoop (ItemPR_Misc)
 {
-	name 					=	"Chochla";
-	value 					=	5;
-	visual 					=	"ItMi_Scoop.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Chochla";
+	visual					=	"ItMi_Scoop.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywana do gotowania";
+	material				=	MAT_WOOD;
+	value					=	5;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywana do gotowania";
 	TEXT[2]					=	"gulaszy i zup.";
-	COUNT[5]				= 	value;
+	COUNT[5]				=	value;
 };
 instance ItMi_Stomper (ItemPR_Misc)
 {
-	name 					=	"Rozdrabniacz";
-	value 					=	5;
-	visual 					=	"ItMi_Stomper.3DS";
-	material 				=	MAT_WOOD;
+	name					=	"Rozdrabniacz";
+	visual					=	"ItMi_Stomper.3ds";
 	
-	description				= 	name;
-	TEXT[1]					= 	"U¿ywany do tworzenia";
-	TEXT[2]					=	"tytoniu i skrêtów z ziela.";
-	COUNT[5] 				= 	value;
+	material				=	MAT_WOOD;
+	value					=	5;
+	
+	description				=	name;
+	TEXT[1]					=	"U¿ywany do tworzenia";
+	TEXT[2]					=	"tytoniu i zio³owych mieszanek.";
+	COUNT[5]				=	value;
 };

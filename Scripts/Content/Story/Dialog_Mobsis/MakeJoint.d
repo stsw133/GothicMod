@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void MOBSI_MAKEJOINT_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
 		self.aivar[AIV_Invisible] = true;
@@ -28,6 +28,9 @@ instance PC_MakeJoint_End (C_Info)
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
+
+///******************************************************************************************
+/// Joint
 ///******************************************************************************************
 instance PC_MakeJoint_Joint (C_INFO)
 {
@@ -53,6 +56,9 @@ func void PC_MakeJoint_Joint_Info()
 		B_ENDPRODUCTIONDIALOG();
 	};
 };
+
+///******************************************************************************************
+/// SleJoint
 ///******************************************************************************************
 instance PC_MakeJoint_SleJoint (C_INFO)
 {
@@ -61,18 +67,18 @@ instance PC_MakeJoint_SleJoint (C_INFO)
 	condition							=	PC_MakeJoint_Condition;
 	information							=	PC_MakeJoint_SleJoint_Info;
 	permanent							=	true;
-	description							=	"Zrób Zielonego Nowicjusza (bagienne ziele, rdest polny)";
+	description							=	"Zrób 'Zielonego Nowicjusza' (2 bagienne zio³a, rdest polny)";
 };
 func void PC_MakeJoint_SleJoint_Info()
 {
-	if (Npc_HasItems(hero, ItPl_SwampHerb) >= 1)
+	if (Npc_HasItems(hero, ItPl_SwampHerb) >= 2)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
 	{
-		Npc_RemoveInvItem (hero, ItPl_SwampHerb);
+		Npc_RemoveInvItems (hero, ItPl_SwampHerb, 2);
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		
 		CreateInvItem (hero, ItMi_SleJoint);
-		Print("Zwiniêto Zielonego Nowicjusza!");
+		Print("Zwiniêto 'Zielonego Nowicjusza'!");
 	}
 	else
 	{

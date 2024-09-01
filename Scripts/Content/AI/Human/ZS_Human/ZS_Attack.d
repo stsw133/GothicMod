@@ -53,14 +53,34 @@ func void ZS_Attack()
 	self.aivar[AIV_TAPOSITION] = 0;
 	self.aivar[AIV_HitByOtherNpc] = 0;
 	self.aivar[AIV_SelectSpell] = 0;
+	
+	/// MOD
+	if (self.guild == GIL_DMT)
+	{
+		Wld_StopEffect("DEMENTOR_FX");
+		Snd_Play("MFX_FEAR_CAST");
+	};
 };
 
 ///******************************************************************************************
 func int ZS_Attack_Loop()
 {
-	B_Greg_ComesToDexter();
+	B_GregComesToDexter();
 	
 	Npc_GetTarget(self);
+	
+	/// MOD
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gregy))
+	{
+		if (self.attribute[ATR_HITPOINTS] <= self.attribute[ATR_HITPOINTS_MAX]/2)
+		{
+			Npc_ClearAIQueue	(self);
+			B_ClearPerceptions	(self);
+			Npc_SetTarget 		(self, other);
+			AI_StartState 		(self, ZS_MM_Flee, false, "");
+			return LOOP_END;
+		};
+	};
 	
 	if (Npc_GetDistToNpc(self, other) > self.aivar[AIV_FightDistCancel])
 	{

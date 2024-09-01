@@ -7,10 +7,10 @@ prototype Mst_Default_Keiler (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_KEILER;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_WOLF;
 	
-	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetAttributesToLevel (self, 8);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -24,17 +24,18 @@ prototype Mst_Default_Keiler (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RoamStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Keiler()
 {
 	Mdl_SetVisual		(self, "Keiler.mds");
-	Mdl_SetVisualBody	(self, "Keiler_Body", 1, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Keiler_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Keiler (Mst_Default_Keiler)
 {
+	aivar[AIV_BodyTex] = 1;
 	B_SetVisuals_Keiler();
 };

@@ -3,7 +3,7 @@ prototype ItemPR_Key (C_Item)
 {
 	name 					=	"Klucz";
 	mainflag 				=	ITEM_KAT_NONE;
-	flags					=	ITEM_MULTI|ITEM_MISSION;
+	flags					=	ITEM_MULTI | ITEM_MISSION;
 	material 				=	MAT_METAL;
 	description				= 	name;
 };

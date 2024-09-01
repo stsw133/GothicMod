@@ -4,20 +4,25 @@
 func int C_WantToFlee (var C_Npc slf, var C_Npc oth)
 {
 //	return false;
- 	
+	
+	if (slf.aivar[AIV_IgnoreCrime] & IGNORE_Fear)
+	{
+		return false;
+	};
+	
 	if (slf.npctype == NPCTYPE_FRIEND)
-	|| (slf.aivar[AIV_PARTYMEMBER])
+	|| (slf.aivar[AIV_PartyMember])
 	|| (C_NpcIsGateGuard(slf))
 	{
 		return false;
 	};
 	
- 	if ((2*slf.level) < oth.level)
+	if ((2*slf.level) < oth.level)
 	&& (oth.guild > GIL_SEPERATOR_HUM)	/// new!!!
- 	{
+	{
 		return true;
- 	};
- 	
+	};
+	
 	return false;
 };
 
@@ -36,12 +41,12 @@ func int C_WantToRansack (var C_Npc slf)
 		return false;
 	};
 	
-	if (slf.guild == GIL_DMT)
-	|| (slf.guild == GIL_ORC)
-	|| (slf.guild == GIL_PAL)
+	if (slf.guild == GIL_PAL)
 	|| (slf.guild == GIL_KDF)
 	|| (slf.guild == GIL_NOV)
+	|| (slf.guild == GIL_DMT)
 	|| (slf.guild == GIL_KDW)
+	|| (slf.guild == GIL_ORC)
 	{
 		return false;
 	};

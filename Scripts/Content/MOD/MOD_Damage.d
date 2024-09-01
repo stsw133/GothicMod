@@ -59,8 +59,13 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 		{
 			var int atrDmg;
 			
-			if	(wpn.cond_atr[0] == default)	{ atrDmg = wpn.damageTotal;									}
-			else								{ atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH];	};
+			if		(wpn.cond_atr[0] == default)			{	atrDmg = wpn.damageTotal;																					}
+			else if	(wpn.cond_atr[0] == ATR_HITPOINTS_MAX)	{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_HITPOINTS_MAX]/2/HP_PER_LP;	}
+			else if	(wpn.cond_atr[0] == ATR_MANA_MAX)		{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_MANA_MAX]/2/MP_PER_LP;			}
+			else if	(wpn.cond_atr[0] == ATR_STRENGTH)		{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH];														}
+			else if	(wpn.cond_atr[0] == ATR_DEXTERITY)		{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_DEXTERITY]/2;					}
+			else if	(wpn.cond_atr[0] == ATR_POWER)			{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_POWER]/2;						}
+			else											{	atrDmg = wpn.damageTotal + slf.attribute[ATR_STRENGTH];														};
 			
 			/// if more than one type of damage
 			if (wpn.damageTotal > 0)
@@ -86,11 +91,11 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 	{
 		if (critType == ITEM_KAT_FF)
 		{
-			dmg = dmg * (1+DAM_CRITICAL_MULTIPLIER)/2;
+			dmg = dmg * (100+(DAM_CRITICAL_MULTIPLIER*100)) / 200 + dmg * slf.aivar[AIV_CritDamage] / 100;
 		}
 		else //if (critType == ITEM_KAT_NF)
 		{
-			dmg = dmg * DAM_CRITICAL_MULTIPLIER;
+			dmg = dmg * (DAM_CRITICAL_MULTIPLIER*100 + slf.aivar[AIV_CritDamage]) / 100;
 		};
 	};
 	
@@ -100,7 +105,7 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 		dmg = dmg * DAM_NOSTAMINA_PERCENT/100;
 	};
 	
-	/// additional player effects
+	/// additional effects against player
 	if (Npc_IsPlayer(oth))
 	{
 		/// shield
@@ -153,13 +158,23 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 		};
 	};
 	
+	/// damage increase (PAL spell & artifacts) & damage reduction (armor sets & artifacts)
+	if (Npc_IsPlayer(slf) && mDamageIncrease > 0)
+	{
+		dmg += dmg*mDamageIncrease/100;
+	}
+	else if (Npc_IsPlayer(oth) && mDamageReduction > 0)
+	{
+		dmg -= dmg*mDamageReduction/100;
+	};
+	
 	/// we check if we actually got any damage done & apply min-damage *only* if not spell attack
-	if (dmg < NPC_MINIMAL_DAMAGE)
+	if (dmg < NPC_MINIMAL_DAMAGE + slf.aivar[AIV_MinDamage])
 	{
 		if (!dmgDesc.hitPfx && !dmgDesc.visualFX)
 		|| ((dmgDesc.dmgMode & DAM_FIRE) > 0)
 		{
-			dmg = NPC_MINIMAL_DAMAGE;
+			dmg = NPC_MINIMAL_DAMAGE + slf.aivar[AIV_MinDamage];
 		}
 		else if (dmg < 0)
 		{
@@ -175,12 +190,11 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 	else if (Npc_IsPlayer(oth))
 	{
 		dmg = DIFF_Multiplier(dmg, INCREASE);
-	};
-	
+	}
 	/// NPC vs NPC
-	if ((!Npc_IsPlayer(slf) && !Npc_IsPlayer(oth)) || oth.flags == NPC_FLAG_IMPORTANT)
+	else if (oth.flags & NPC_FLAG_IMPORTANT)
 	{
-		dmg = dmg * NPC_MINIMAL_PERCENT/100;
+		dmg /= 10;
 		if (dmg < 1) { dmg = 1; };
 	};
 	
@@ -193,9 +207,9 @@ func int DMG_Calculate (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C
 	{
 		B_MagicHurtNpc (oth, slf, oth.aivar[AIV_DmgReflection]);
 	};
-	if (slf.aivar[AIV_AreaDmg] > 0)
+	if (slf.aivar[AIV_AreaDamage] > 0)
 	{
-		B_MagicHurtNpcArea_Damage = dmg*slf.aivar[AIV_AreaDmg]/100;
+		B_MagicHurtNpcArea_Damage = dmg*slf.aivar[AIV_AreaDamage]/100;
 		B_MagicHurtNpcArea_Victim = Hlp_GetNpc(oth);
 		MOD_Broadcast (slf, B_MagicHurtNpcArea);
 	};

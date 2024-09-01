@@ -28,6 +28,9 @@ instance PC_UseWood_End (C_Info)
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
+
+///******************************************************************************************
+/// Arrows
 ///******************************************************************************************
 instance PC_UseWood_Arrows (C_Info)
 {
@@ -63,6 +66,9 @@ func void PC_UseWood_Arrows_Info()
 //		B_EndProductionDialog();
 	};
 };
+
+///******************************************************************************************
+/// FireArrows
 ///******************************************************************************************
 instance PC_UseWood_FireArrows (C_Info)
 {
@@ -92,6 +98,9 @@ func void PC_UseWood_FireArrows_Info()
 //		B_EndProductionDialog();
 	};
 };
+
+///******************************************************************************************
+/// PoisonedArrows
 ///******************************************************************************************
 instance PC_UseWood_PoisonedArrows (C_Info)
 {
@@ -121,43 +130,14 @@ func void PC_UseWood_PoisonedArrows_Info()
 //		B_EndProductionDialog();
 	};
 };
+
 ///******************************************************************************************
-instance PC_UseWood_Scroll (C_Info)
-{
-	npc									=	PC_Hero;
-	nr									=	4;
-	condition							=	PC_UseWood_Scroll_Condition;
-	information							=	PC_UseWood_Scroll_Info;
-	permanent							=	true;
-	description							=	"Zrób pergaminy (drewno)";
-};
-func int PC_UseWood_Scroll_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_UseWood)
-	&& (Npc_GetTalentSkill(self, NPC_TALENT_ENCHANTING))
-	{
-		return true;
-	};
-};
-func void PC_UseWood_Scroll_Info()
-{
-	if (Npc_HasItems(hero, ItMi_Wood) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItMi_Wood);
-		CreateInvItem (hero, ItMi_Scrolls);
-		Print("Zrobiono pergaminy.");
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-//		B_EndProductionDialog();
-	};
-};
+/// Torch
 ///******************************************************************************************
 instance PC_UseWood_Torch (C_Info)
 {
 	npc									=	PC_Hero;
-	nr									=	5;
+	nr									=	4;
 	condition							=	PC_UseWood_Condition;
 	information							=	PC_UseWood_Torch_Info;
 	permanent							=	true;

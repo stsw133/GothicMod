@@ -12,7 +12,7 @@ func void B_GiveTradeInv_Karras (var C_Npc slf)
 		
 		//CreateInvItems (slf, ItSc_SumGobSkel, 1);
 		
-		//CreateInvItems (slf, ItRi_Prot_Total_01, 1);
+		CreateInvItems (slf, ItRi_Prot_Blunt_01, 1);
 		
 		Karras_ItemsGiven_Chapter = 7;
 	};

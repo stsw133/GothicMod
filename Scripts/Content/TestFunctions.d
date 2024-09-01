@@ -51,6 +51,7 @@ func string Give_FightSkills (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
+	B_AddFightSkill (hero, NPC_TALENT_THROW, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_1H, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_2H, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_BOW, paramInt);
@@ -70,22 +71,53 @@ func string Give_MagicSkills (var string parameter)
 
 func string Give_Talents (var string parameter)
 {
-	Npc_SetTalentSkill (hero, NPC_TALENT_2ndH, 3);
+	var int i;
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_DUAL, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_SHIELD, 1);
+	
 	Npc_SetTalentSkill (hero, NPC_TALENT_LANGUAGE, 1);
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_SNEAK, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ACROBATIC, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_PRORUN, 1);
+//	Npc_SetTalentSkill (hero, NPC_TALENT_SNEAK, 1);
+//	Npc_SetTalentSkill (hero, NPC_TALENT_ACROBATIC, 1);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_PICKLOCK, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 2);
+	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 1);
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_FLETCHERY, 3);
+	i = 0;
+	repeat(i, MAX_TALENT_FLETCHERY);
+	MEM_WriteStatArr(PLAYER_TALENT_FLETCHERY, i, true);
+	end;
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_SMITH, 3);
+	i = 0;
+	repeat(i, MAX_TALENT_SMITH);
+	MEM_WriteStatArr(PLAYER_TALENT_SMITH, i, true);
+	end;
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_ALCHEMY, 3);
+	i = 0;
+	repeat(i, MAX_TALENT_ALCHEMY);
+	MEM_WriteStatArr(PLAYER_TALENT_ALCHEMY, i, true);
+	end;
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_ENCHANTING, 3);
+	i = 0;
+	repeat(i, MAX_SPELL);
+	MEM_WriteStatArr(PLAYER_TALENT_ENCHANTING, i, true);
+	end;
+	
 	Npc_SetTalentSkill (hero, NPC_TALENT_HUNTING, 1);
+	i = 0;
+	repeat(i, MAX_TALENT_HUNTING);
+	MEM_WriteStatArr(PLAYER_TALENT_HUNTING, i, true);
+	end;
+	
+	Npc_SetTalentSkill (hero, NPC_TALENT_COOKING, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_MINING, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_ARMORY, 1);
 	
 	return "Otrzymano wszystkie talenty";
 };

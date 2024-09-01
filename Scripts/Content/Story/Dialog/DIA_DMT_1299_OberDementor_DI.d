@@ -86,7 +86,7 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_00"); //Doœæ tych bredni! Teraz nadejdzie twój koniec.
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_01"); //Twoje oczy zakryje ciemnoœæ, a twa dusza zniknie w zaœwiatach.
 
-	if (Npc_HasItems (other,ItAm_ProtDementor))
+	if (Npc_HasItems (other,ItAm_Prot_Obsession))
 	{
 	AI_Output			(other, self, "DIA_Schwarzmagier_HELLO_meister_15_02"); //Bez amuletu przyzwania dusz bêdzie mi trochê trudno.
 	}

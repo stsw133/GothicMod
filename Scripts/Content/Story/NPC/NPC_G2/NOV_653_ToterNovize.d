@@ -3,32 +3,32 @@ instance NOV_653_ToterNovize (Npc_Default)
 {
 	/// ------ General ------
 	name								=	Name_ToterNovize;
-	guild 								=	GIL_NOV;
-	id 									=	653;
-	voice 								=	3;
+	guild								=	GIL_NOV;
+	id									=	653;
+	voice								=	3;
 	npctype								=	NPCTYPE_AMBIENT;
-
+	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, FightTalent_Initiate);
-
+	NpcFn_SetFightSkills (self, 30);
+	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
-
+	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-
+	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Mordrag, 0, ITAR_Nov_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Mordrag, Teeth_Normal, ItAr_NOV_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Mage.mds");
-
+	
 	/// ------ Rtn ------
-	daily_routine 						=	Rtn_Start_653;
+	daily_routine						=	Rtn_Start_653;
 };
 
 func void Rtn_Start_653()
 {
-	TA_Sleep	(08,00,22,00, "NW_TROLLAREA_RITUALPATH_04");
-    TA_Sleep	(22,00,08,00, "NW_TROLLAREA_RITUALPATH_04");
+	TA_Sleep	(08,00, 22,00, "NW_TROLLAREA_RITUALPATH_04");
+	TA_Sleep	(22,00, 08,00, "NW_TROLLAREA_RITUALPATH_04");
 };

@@ -73,7 +73,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SEPERATOR_HUM,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -121,7 +121,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_DMT,				ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -171,7 +171,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_MEATBUG,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -221,7 +221,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_LIVESTOCK,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -271,7 +271,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GOBBO,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -321,7 +321,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -371,7 +371,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOBBO_SKELETON,	ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -421,7 +421,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SCAVENGER,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -471,7 +471,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GIANT_RAT,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -521,7 +521,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GIANT_BUG,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -571,7 +571,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_BLOODFLY,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -621,7 +621,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_WARAN,				ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -671,7 +671,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_WOLF,				ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -721,7 +721,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_WOLF,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -771,7 +771,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_MINECRAWLER,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -821,7 +821,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_LURKER,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -871,7 +871,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SKELETON,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -921,7 +921,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_SKELETON,	ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -971,7 +971,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SKELETON_MAGE,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1021,7 +1021,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_ZOMBIE,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1071,7 +1071,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SNAPPER,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -1121,7 +1121,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1171,7 +1171,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SHADOWBEAST_SKELETON,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1221,7 +1221,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_FRIENDLY,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_HARPY,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_HARPY,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_HARPY,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1271,7 +1271,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1321,7 +1321,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_FRIENDLY,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1344,55 +1344,55 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_UNDEADORC				);
 	B_SetMonsterAttitude	(GIL_TREANT,			ATT_NEUTRAL,	GIL_DRACONIAN				);
 	
-	/// ------ Stonegolem ------
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SEPERATOR_HUM			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_DMT						);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_MEATBUG					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_LIVESTOCK				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOBBO					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOBBO_SKELETON			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_GOBBO_SKELETON	);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SCAVENGER				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GIANT_RAT				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GIANT_BUG				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_BLOODFLY				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_WARAN					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_WOLF					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_WOLF			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_MINECRAWLER				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_LURKER					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SKELETON				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_SKELETON		);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SKELETON_MAGE			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_ZOMBIE					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SNAPPER					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SHADOWBEAST				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SHADOWBEAST_SKELETON	);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_HARPY					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOLEM					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GOLEM					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_DEMON					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_TROLL					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SWAMPSHARK				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_DRAGON					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_MOLERAT					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_ALLIGATOR				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_SWAMPGOLEM				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_STONEGUARDIAN			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_GARGOYLE				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_OGRE					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SummonedGuardian		);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SummonedZombie			);
-//	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_NEUTRAL					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_WILD					);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_HOSTILE,	GIL_SUMMONED				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_ORC						);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_FRIENDLY_ORC			);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_UNDEADORC				);
-	B_SetMonsterAttitude	(GIL_GOLEM,				ATT_NEUTRAL,	GIL_DRACONIAN				);
+	/// ------ Tiger ------
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SEPERATOR_HUM			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_DMT						);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_MEATBUG					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_LIVESTOCK				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_GOBBO					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_GOBBO_SKELETON			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED_GOBBO_SKELETON	);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SCAVENGER				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_GIANT_RAT				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_GIANT_BUG				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_BLOODFLY				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_WARAN					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_WOLF					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED_WOLF			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_MINECRAWLER				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_LURKER					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_SKELETON				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED_SKELETON		);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_SKELETON_MAGE			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_ZOMBIE					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_SNAPPER					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_SHADOWBEAST				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SHADOWBEAST_SKELETON	);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_HARPY					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_TREANT					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_FRIENDLY,	GIL_TIGER					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_DEMON					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_TROLL					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_SWAMPSHARK				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL,	GIL_DRAGON					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_MOLERAT					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL, 	GIL_ALLIGATOR				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL, 	GIL_SWAMPGOLEM				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL, 	GIL_STONEGUARDIAN			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_NEUTRAL, 	GIL_GARGOYLE				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE, 	GIL_OGRE					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE, 	GIL_SummonedGuardian		);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE, 	GIL_SummonedZombie			);
+//	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_NEUTRAL					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_WILD					);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_SUMMONED				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_ORC						);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_FRIENDLY_ORC			);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_UNDEADORC				);
+	B_SetMonsterAttitude	(GIL_TIGER,				ATT_HOSTILE,	GIL_DRACONIAN				);
 	
 	/// ------ Summoned golem ------
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_SEPERATOR_HUM			);
@@ -1421,7 +1421,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_GOLEM,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1471,7 +1471,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_DEMON,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_DEMON,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_DEMON,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1521,7 +1521,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED_DEMON,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1571,7 +1571,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_TROLL,				ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -1621,7 +1621,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SWAMPSHARK,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1671,7 +1671,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_DRAGON,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1721,7 +1721,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_MOLERAT,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1771,7 +1771,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_ALLIGATOR,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1821,7 +1821,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SWAMPGOLEM,		ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -1871,7 +1871,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_STONEGUARDIAN,		ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -1921,7 +1921,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_GARGOYLE,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -1971,7 +1971,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_OGRE,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_OGRE,				ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_OGRE,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2021,7 +2021,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDGuardian,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2071,7 +2071,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONEDZombie,	ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2121,7 +2121,7 @@ func void B_InitMonsterAttitudes()
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_HARPY					);
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_GOLEM					);
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_TREANT					);
-//	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_GOLEM					);
+//	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_HOSTILE,	GIL_TIGER					);
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_DEMON					);
 //	B_SetMonsterAttitude	(GIL_NEUTRAL,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -2171,7 +2171,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_WILD,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2221,7 +2221,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_HOSTILE,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_SUMMONED,			ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -2271,7 +2271,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_ORC,				ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_ORC,				ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_ORC,				ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2321,7 +2321,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_FRIENDLY_ORC,		ATT_NEUTRAL,	GIL_SUMMONED_DEMON			);
@@ -2371,7 +2371,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_HOSTILE,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_HOSTILE,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_FRIENDLY,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_UNDEADORC,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);
@@ -2421,7 +2421,7 @@ func void B_InitMonsterAttitudes()
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_HARPY					);
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_GOLEM					);
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_TREANT					);
-	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_GOLEM					);
+	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_TIGER					);
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_HOSTILE,	GIL_SUMMONED_GOLEM			);
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_NEUTRAL,	GIL_DEMON					);
 	B_SetMonsterAttitude	(GIL_DRACONIAN,			ATT_HOSTILE,	GIL_SUMMONED_DEMON			);

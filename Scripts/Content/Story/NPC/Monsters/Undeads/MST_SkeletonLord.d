@@ -4,11 +4,11 @@ prototype Mst_SkeletonLord (C_NPC)
 	/// ------ Monster ------
 	name								=	"Szkielet-lord";
 	guild								=	GIL_SKELETON;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SKELETON;
+	aivar[AIV_MM_REAL_ID]				=	ID_SKELETON;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
-	fight_tactic						=	FAI_HUMAN_MASTER;	
+	damagetype							=	DAM_BLUNT;
+	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	NpcFn_SetAttributesToLevel (self, 40);
 	NpcFn_SetMonsterProtection (self, level);
@@ -20,7 +20,7 @@ prototype Mst_SkeletonLord (C_NPC)
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
 	aivar[AIV_MM_FollowInWater]			=	false;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
@@ -30,12 +30,11 @@ prototype Mst_SkeletonLord (C_NPC)
 func void B_SetVisuals_SkeletonLord()
 {
 	Mdl_SetVisual		(self, "HumanS.mds");
-	//NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Ske_Head", default, default, ITAR_SKELETON);
-	Mdl_SetVisualBody	(self, "Ske_Body", 0, default, "Ske_Head", default, default, ITAR_SKELETON);
+	Mdl_SetVisualBody	(self, "Ske_Body", self.aivar[AIV_BodyTex], default, "Ske_Head", default, default, ITAR_Skeleton);
 	Mdl_ApplyOverlayMds (self, "humans_1hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_2hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
-	Mdl_ApplyOverlayMds (self, "humans_CBowT2.mds");
+	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
 ///******************************************************************************************
 instance Skeleton_Lord (Mst_SkeletonLord)
@@ -43,8 +42,9 @@ instance Skeleton_Lord (Mst_SkeletonLord)
 	B_SetVisuals_SkeletonLord();
 	EquipItem (self, ItMw_2H_Sword_M_01);
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Crypt_Skeleton_Lord (Mst_SkeletonLord)
 {

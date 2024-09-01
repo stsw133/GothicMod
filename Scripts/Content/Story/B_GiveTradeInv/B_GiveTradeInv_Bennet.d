@@ -13,7 +13,7 @@ func void B_GiveTradeInv_Bennet (var C_Npc slf)
 		CreateInvItems (slf, ItMiSwordraw, 3);
 		CreateInvItems (slf, ItMw_1H_Mace_L_04, 2);
 		
-		//CreateInvItems (slf, ItBe_Addon_SLD_01, 1);
+		CreateInvItems (slf, ItBe_Addon_SLD_01, 1);
 		
 		Bennet_ItemsGiven_Chapter = 7;
 	};
@@ -36,7 +36,7 @@ func void B_GiveTradeInv_Bennet (var C_Npc slf)
 		CreateInvItems (slf, ItMi_Nugget, 1);
 		CreateInvItems (slf, ItMiSwordraw, 3);
 		
-		//CreateInvItems (slf, ItBe_Addon_MC, 1);
+		CreateInvItems (slf, ItBe_Addon_Plates_01, 1);
 		
 		Bennet_ItemsGiven_Chapter = 9;
 	};

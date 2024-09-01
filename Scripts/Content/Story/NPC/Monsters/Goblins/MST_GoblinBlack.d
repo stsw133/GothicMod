@@ -7,7 +7,7 @@ prototype Mst_Default_GoblinBlack (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_BLACK;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
 	NpcFn_SetAttributesToLevel (self, 6);
@@ -24,13 +24,16 @@ prototype Mst_Default_GoblinBlack (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_GoblinBlack()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gob_Black_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Gob_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
 ///******************************************************************************************
@@ -39,8 +42,9 @@ instance Gobbo_Black (Mst_Default_GoblinBlack)
 	B_SetVisuals_GoblinBlack();
 	EquipItem (self, ItMw_1h_Goblin_02);
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Gobbo_DaronsStatuenKlauer (Mst_Default_GoblinBlack)
 {

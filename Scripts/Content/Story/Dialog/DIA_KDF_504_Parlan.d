@@ -842,7 +842,7 @@ FUNC VOID DIA_Parlan_TEACH_MANA_BACK()
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_1()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
@@ -851,7 +851,7 @@ FUNC VOID DIA_Parlan_TEACH_MANA_1()
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_5()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		

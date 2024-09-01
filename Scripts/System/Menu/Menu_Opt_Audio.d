@@ -1,5 +1,7 @@
-
-instance MENU_OPT_AUDIO(C_MENU_DEF)
+///******************************************************************************************
+/// Audio options
+///******************************************************************************************
+instance MENU_OPT_AUDIO (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENUITEM_AUDIO_HEADLINE";
@@ -25,7 +27,8 @@ instance MENU_OPT_AUDIO(C_MENU_DEF)
 
 const int MENU_SOUND_DY = 550;
 
-instance MENUITEM_AUDIO_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_AUDIO_HEADLINE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "USTAWIENIA DèWI KU";
@@ -37,7 +40,20 @@ instance MENUITEM_AUDIO_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_AUDIO_SFXVOL(C_MENU_ITEM_DEF)
+func int update_audiooptions()
+{
+	Update_ChoiceBox("MENUITEM_AUDIO_PROVIDER_CHOICE");
+	return true;
+};
+
+func int apply_audioresolution()
+{
+	Apply_Options_Audio();
+	return false;
+};
+
+///******************************************************************************************
+instance MENUITEM_AUDIO_SFXVOL (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "G≥oúnoúÊ efektÛw";
@@ -49,8 +65,7 @@ instance MENUITEM_AUDIO_SFXVOL(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_SFXVOL_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_SFXVOL_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -65,7 +80,7 @@ instance MENUITEM_AUDIO_SFXVOL_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_AUDIO_MUSICVOL(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_MUSICVOL (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "G≥oúnoúÊ muzyki";
@@ -77,8 +92,7 @@ instance MENUITEM_AUDIO_MUSICVOL(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_MUSICVOL_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_MUSICVOL_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -93,7 +107,7 @@ instance MENUITEM_AUDIO_MUSICVOL_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_AUDIO_MUSIC(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_MUSIC (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Muzyka";
@@ -105,8 +119,7 @@ instance MENUITEM_AUDIO_MUSIC(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_MUSIC_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_MUSIC_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -122,7 +135,7 @@ instance MENUITEM_AUDIO_MUSIC_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_AUDIO_PROVIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_PROVIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Sterownik düwiÍku";
@@ -134,8 +147,7 @@ instance MENUITEM_AUDIO_PROVIDER(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_PROVIDER_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_PROVIDER_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -152,7 +164,7 @@ instance MENUITEM_AUDIO_PROVIDER_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_AUDIO_SPEEKER(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_SPEEKER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Ust. g≥oúnikÛw";
@@ -164,8 +176,7 @@ instance MENUITEM_AUDIO_SPEEKER(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_SPEEKER_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_SPEEKER_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -181,7 +192,7 @@ instance MENUITEM_AUDIO_SPEEKER_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION;
 };
 
-instance MENUITEM_AUDIO_REVERB(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_REVERB (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Pog≥os otoczenia";
@@ -193,8 +204,7 @@ instance MENUITEM_AUDIO_REVERB(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_REVERB_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_REVERB_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -210,7 +220,7 @@ instance MENUITEM_AUDIO_REVERB_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_AUDIO_REVERB_SPEECH(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_REVERB_SPEECH (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Pog≥os mowy";
@@ -222,8 +232,7 @@ instance MENUITEM_AUDIO_REVERB_SPEECH(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_REVERB_SPEECH_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_REVERB_SPEECH_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -239,7 +248,7 @@ instance MENUITEM_AUDIO_REVERB_SPEECH_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION;
 };
 
-instance MENUITEM_AUDIO_SAMPLERATE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_SAMPLERATE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "PrÛbkowanie";
@@ -251,8 +260,7 @@ instance MENUITEM_AUDIO_SAMPLERATE(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_AUDIO_SAMPLERATE_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_SAMPLERATE_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -268,7 +276,7 @@ instance MENUITEM_AUDIO_SAMPLERATE_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_PERF_OPTION | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_AUDIO_BACK(C_MENU_ITEM_DEF)
+instance MENUITEM_AUDIO_BACK (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "WrÛÊ";
@@ -278,16 +286,4 @@ instance MENUITEM_AUDIO_BACK(C_MENU_ITEM_DEF)
 	dimy = MENU_SOUND_DY;
 	onselaction[0] = SEL_ACTION_BACK;
 	flags = flags | IT_TXT_CENTER;
-};
-
-func int update_audiooptions()
-{
-	Update_ChoiceBox("MENUITEM_AUDIO_PROVIDER_CHOICE");
-	return 1;
-};
-
-func int apply_audioresolution()
-{
-	Apply_Options_Audio();
-	return 0;
 };

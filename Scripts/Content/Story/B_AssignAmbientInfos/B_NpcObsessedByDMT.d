@@ -2,22 +2,17 @@
 
 var int NpcObsessedByDMT;
 
-var int NpcObsessedByDMT_Brutus;	//Joly: hat sein Buch Anfang 5. Kapitel
-var int NpcObsessedByDMT_Engrom;	//Joly: hat sein Buch Anfang 4. Kapitel
-var int NpcObsessedByDMT_Vino;		//Joly: hat sein Buch Anfang 3. Kapitel
-var int NpcObsessedByDMT_Malak;		//Joly: hat sein Buch Anfang 3. Kapitel
-var int NpcObsessedByDMT_Fernando;	//Joly: hat sein Buch Anfang 3. Kapitel
-var int NpcObsessedByDMT_Bromor;	//Joly: hat sein Buch Anfang 3. Kapitel
-var int NpcObsessedByDMT_Sekob;		//Joly: hat sein Buch Anfang 5. Kapitel
-var int NpcObsessedByDMT_Randolph;	//Joly: hat sein Buch Anfang 4. Kapitel
-
-func void B_DMTWurm()
-{
-	AI_Output (self, other, "DIA_NoName_ObsessedByDMT_19_00"); //Widzimy ciê, robaku. Nie uciekniesz nam.
-};
+var int NpcObsessedByDMT_Brutus;	/// chapter 11
+var int NpcObsessedByDMT_Engrom;	/// chapter 10
+var int NpcObsessedByDMT_Vino;		/// chapter 9
+var int NpcObsessedByDMT_Malak;		/// chapter 9
+var int NpcObsessedByDMT_Fernando;	/// chapter 9
+var int NpcObsessedByDMT_Bromor;	/// chapter 9
+var int NpcObsessedByDMT_Sekob;		/// chapter 11
+var int NpcObsessedByDMT_Randolph;	/// chapter 10
 
 ///******************************************************************************************
-///	B_NpcClearObsessionByDMT
+/// B_NpcClearObsessionByDMT
 ///******************************************************************************************
 func void B_NpcClearObsessionByDMT (var C_Npc medium)
 {
@@ -50,7 +45,7 @@ func void B_NpcClearObsessionByDMT (var C_Npc medium)
 };
 
 ///******************************************************************************************
-///	B_NpcObsessedByDMT
+/// B_NpcObsessedByDMT
 ///******************************************************************************************
 func void B_NpcObsessedByDMT (var C_Npc medium)
 {
@@ -79,8 +74,9 @@ func void B_NpcObsessedByDMT (var C_Npc medium)
 			}
 			else
 			{
-				B_DMTWurm();
+				AI_Output (self, other, "DIA_NoName_ObsessedByDMT_19_00"); //Widzimy ciê, robaku. Nie uciekniesz nam.
 			};
+			
 			NpcObsessedByDMT_Brutus = true;
 		}
 		/// Engrom
@@ -115,7 +111,8 @@ func void B_NpcObsessedByDMT (var C_Npc medium)
 		}
 		else
 		{
-			B_DMTWurm();
+			AI_Output (self, other, "DIA_NoName_ObsessedByDMT_19_00"); //Widzimy ciê, robaku. Nie uciekniesz nam.
+			
 			if (Hlp_GetInstanceID(medium) == Hlp_GetInstanceID(Bromor))
 			{
 				NpcObsessedByDMT_Bromor = true;

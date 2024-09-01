@@ -22,7 +22,7 @@ func void B_GiveTradeInv_Canthar (var C_Npc slf)
 		CreateInvItems (slf, ItMw_Schwert2, 2);
 		CreateInvItems (slf, ItMw_ShortSword5, 1);
 		
-		//CreateInvItems (slf, ItAm_Prot_Mage_01, 1);
+		CreateInvItems (slf, ItAm_Prot_Magic_01, 1);
 		
 		Canthar_ItemsGiven_Chapter = 7;
 	};

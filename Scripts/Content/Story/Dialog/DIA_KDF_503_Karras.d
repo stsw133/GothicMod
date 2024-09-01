@@ -715,8 +715,8 @@ FUNC VOID DIA_Karras_ItAm_Prot_BlackEye_Mis_Info()
 	if (KarrasMakesBlessedStone_Day<=(Wld_GetDay()-2))
 	{
 		AI_Output (self ,other,"DIA_Karras_ItAm_Prot_BlackEye_Mis_10_01"); //W³aœnie go skoñczy³em. Proszê, oto on. Czy¿ nie jest piêkny?
-		CreateInvItems (self, ItAm_ProtDementor, 1);									
-		B_GiveInvItems (self, other, ItAm_ProtDementor, 1);					
+		CreateInvItems (self, ItAm_Prot_Obsession, 1);									
+		B_GiveInvItems (self, other, ItAm_Prot_Obsession, 1);					
 		AI_Output (self ,other,"DIA_Karras_ItAm_Prot_BlackEye_Mis_10_02"); //Miej go zawsze przy sobie, a Poszukiwacze nie bêd¹ mogli wnikn¹æ w twój umys³.
 		AI_Output (other,self ,"DIA_Karras_ItAm_Prot_BlackEye_Mis_15_03"); //Dziêkujê.
 		B_LogEntry (TOPIC_DEMENTOREN,"Karras da³ mi amulet, który ochroni mnie przez mrocznym spojrzeniem Poszukiwaczy."); 

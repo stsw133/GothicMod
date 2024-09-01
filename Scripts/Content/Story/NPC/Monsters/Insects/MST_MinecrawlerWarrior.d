@@ -1,13 +1,13 @@
 ///******************************************************************************************
-prototype Mst_Default_MinecrawlerWarrior (C_Npc)			
+prototype Mst_Default_MinecrawlerWarrior (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Pe³zacz-wojownik";
 	guild								=	GIL_MINECRAWLER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_MINECRAWLERWARRIOR;
+	aivar[AIV_MM_REAL_ID]				=	ID_MINECRAWLERWARRIOR;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_MINECRAWLER;
 	
 	NpcFn_SetAttributesToLevel (self, 20);
@@ -19,7 +19,7 @@ prototype Mst_Default_MinecrawlerWarrior (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -31,12 +31,12 @@ prototype Mst_Default_MinecrawlerWarrior (C_Npc)
 func void B_SetVisuals_MinecrawlerWarrior()
 {
 	Mdl_SetVisual		(self, "Crawler.mds");
-	Mdl_SetVisualBody	(self, "Cr2_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Cr2_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_DesertcrawlerWarrior()
 {
 	Mdl_SetVisual		(self, "Crawler.mds");
-	Mdl_SetVisualBody	(self, "Cr2_Body", 1, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Cr2_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance MinecrawlerWarrior (Mst_Default_MinecrawlerWarrior)

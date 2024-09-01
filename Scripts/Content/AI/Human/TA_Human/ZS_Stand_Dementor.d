@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void ZS_Stand_Dementor()
 {
-	self.senses			=	SENSE_SEE|SENSE_HEAR|SENSE_SMELL;
+	self.senses			=	SENSE_SEE | SENSE_HEAR | SENSE_SMELL;
 	self.senses_range	=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
 	if (Npc_KnowsInfo(self, 1))

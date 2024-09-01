@@ -1,8 +1,17 @@
 ///******************************************************************************************
-///	B_ExecAmbientInfos
+/// B_ExecAmbientInfos
 ///******************************************************************************************
-func void B_ExecAmbientInfos()
+func int B_ExecAmbientInfos()
 {
+	if (self.npctype != NPCTYPE_AMBIENT)
+	&& (self.npctype != NPCTYPE_OCAMBIENT)
+	&& (self.npctype != NPCTYPE_BL_AMBIENT)
+	{
+		return false;
+	};
+	
+	return false;	/// temp!!!
+	
 	if (self.aivar[AIV_TalkedToPlayer] < Kapitel)
 	{
 		if (self.guild == GIL_PAL)
@@ -158,7 +167,7 @@ func void B_ExecAmbientInfos()
 			B_Say_Overlay (self, other, "$NotNow");
 		};
 		
-		self.aivar[AIV_TalkedToPlayer] = Kapitel;
+		//self.aivar[AIV_TalkedToPlayer] = Kapitel;
 	}
 	else
 	{
@@ -232,4 +241,6 @@ func void B_ExecAmbientInfos()
 			B_Say_Overlay (self, other, "$NotNow");
 		};
 	};
+	
+	return true;
 };

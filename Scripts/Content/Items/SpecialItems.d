@@ -155,13 +155,13 @@ instance ItMi_NA_Vodka (C_Item)
 	description				= 	name;
 };
 ///******************************************************************************************
-instance ItMe_iPenta_blue (C_Item)
+instance ItMe_iPenta_Blue (C_Item)
 {
 	name 					=	"Kr¹g magiczny";
 	mainflag 				=	ITEM_KAT_NONE;
 	flags 					=	ITEM_MISSION;
 	
-	visual 					=	"ITME_IPENTA.3DS";
+	visual 					=	"ITME_IPENTA.3ds";
 	effect					=	"spellfx_ipenta_blue";
 	
 	description				= 	name;
@@ -173,7 +173,7 @@ instance GreenScreen (C_Item)
 	mainflag				=	ITEM_KAT_NONE;
 	flags					=	ITEM_MISSION;
 	
-	visual					=	"GreenScreen.3DS";
+	visual					=	"GreenScreen.3ds";
 	material				=	MAT_STONE;
 	
 	description				=	name;

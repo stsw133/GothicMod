@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void MOBSI_MAKEALCOHOL_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
 		self.aivar[AIV_Invisible] = true;
@@ -28,6 +28,9 @@ func int PC_MakeAlcohol_End_Condition()
 		return true;
 	};
 };
+
+///******************************************************************************************
+/// Booze
 ///******************************************************************************************
 instance PC_MakeAlcohol_Booze (C_Info)
 {
@@ -63,6 +66,9 @@ func void PC_MakeAlcohol_Booze_Info()
 		B_ENDPRODUCTIONDIALOG();
 	};
 };
+
+///******************************************************************************************
+/// Tequila
 ///******************************************************************************************
 instance PC_MakeAlcohol_Tequila (C_Info)
 {
@@ -98,6 +104,9 @@ func void PC_MakeAlcohol_Tequila_Info()
 		B_ENDPRODUCTIONDIALOG();
 	};
 };
+
+///******************************************************************************************
+/// Wine
 ///******************************************************************************************
 instance PC_MakeAlcohol_Wine (C_Info)
 {

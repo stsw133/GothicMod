@@ -180,7 +180,7 @@ FUNC VOID DIA_Lutero_Kralle_Info()
 	else
 	{
 		AI_Output (self ,other,"DIA_Lutero_Hello_13_05"); //Oto pierœcieñ, który ci obieca³em.
-		B_GiveInvItems (self, other, ItRi_DR_01,1);
+		B_GiveInvItems (self, other, ItRi_Prot_Fire_01,1);
 	};
 };
 //************************************************************

@@ -22,13 +22,13 @@ func void Use_Bookstand_01_S1()
 		
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
 					
-					Doc_SetFont 	(nDocID, -1, FONT_Book); 	
-					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);  	
+					Doc_SetFont		(nDocID, -1, FONT_Book);	
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					
 					Doc_PrintLine	(nDocID,  0, "Próba Ognia");
 					Doc_PrintLine	(nDocID,  0, "");
@@ -63,11 +63,11 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -103,7 +103,7 @@ func void Use_FINALDRAGONEQUIPMENT_S1()
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_Show		(nDocID);
 		}
-		else
+		else if (hero.guild == GIL_DJG)
 		{
 			PLAYER_TALENT_SMITH[SMITH_1H_Special_05] = true;
 			PLAYER_TALENT_SMITH[SMITH_2H_Special_05] = true;

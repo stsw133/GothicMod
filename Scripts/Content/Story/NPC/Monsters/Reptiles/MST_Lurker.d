@@ -4,10 +4,10 @@ prototype Mst_Default_Lurker (C_Npc)
 	/// ------ Monster ------
 	name								=	"Topielec";
 	guild								=	GIL_LURKER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_LURKER;
+	aivar[AIV_MM_REAL_ID]				=	ID_LURKER;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_LURKER;
 	
 	NpcFn_SetAttributesToLevel (self, 13);
@@ -19,27 +19,29 @@ prototype Mst_Default_Lurker (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RoamStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Lurker()
 {
 	Mdl_SetVisual		(self, "Lurker.mds");
-	Mdl_SetVisualBody	(self, "Lur_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Lur_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Lurker (Mst_Default_Lurker)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(6);
 	B_SetVisuals_Lurker();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Kervo_Lurker1 (Mst_Default_Lurker)
 {

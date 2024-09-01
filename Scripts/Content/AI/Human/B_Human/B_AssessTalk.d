@@ -58,11 +58,8 @@ func void B_AssessTalk()
 		};
 		
 		/// MOD: ambient NPC does not want to talk
-		if (self.npctype == NPCTYPE_AMBIENT)
-		|| (self.npctype == NPCTYPE_OCAMBIENT)
-		|| (self.npctype == NPCTYPE_BL_AMBIENT)
+		if (B_ExecAmbientInfos())
 		{
-			B_ExecAmbientInfos();
 			return;
 		};
 	};

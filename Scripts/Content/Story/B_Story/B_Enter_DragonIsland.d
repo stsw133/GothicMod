@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_ENTER_DRAGONISLAND
+/// B_ENTER_DRAGONISLAND
 ///******************************************************************************************
 func void STARTUP_NEWWORLD_PART_DRAGON_ISLAND_01()
 {
@@ -271,8 +271,8 @@ func void STARTUP_DRAGONISLAND()
 	PlayVideo("SHIP.BIK");
 	
 	Log_CreateTopic (TOPIC_HallenVonIrdorath, LOG_MISSION);
-	Log_SetTopicStatus(TOPIC_HallenVonIrdorath, LOG_RUNNING);
-	Log_AddEntry (TOPIC_HallenVonIrdorath, "Wir haben die Insel des Feindes erreicht. Innos weiß, welche Kreaturen im Innern dieses Berges auf mich warten werden.");
+	Log_SetTopicStatus (TOPIC_HallenVonIrdorath, LOG_RUNNING);
+	Log_AddEntry (TOPIC_HallenVonIrdorath, "Dotarliœmy na wyspê wroga. Innos jeden wie, jakie stworzenia bêd¹ na mnie czekaæ w tej górze.");
 	
 	//B_ChangeChapter (12, DRAONISLAND_ZEN);
 };

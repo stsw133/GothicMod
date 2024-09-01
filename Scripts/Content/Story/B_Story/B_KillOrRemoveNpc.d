@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_KillNpc
+/// B_KillNpc
 ///******************************************************************************************
 func void B_KillNpc (var int npcInstance)
 {
@@ -10,12 +10,12 @@ func void B_KillNpc (var int npcInstance)
 	{
 		npc.flags = 0;
 		CreateInvItem (npc, ItMi_OldCoin);
-		Npc_ChangeAttribute	(npc, ATR_HITPOINTS, -npc.attribute[ATR_HITPOINTS_MAX]);
+		Npc_ChangeAttribute (npc, ATR_HITPOINTS, -npc.attribute[ATR_HITPOINTS_MAX]);
 	};
 };
 
 ///******************************************************************************************
-///	B_RemoveNpc
+/// B_RemoveNpc
 ///******************************************************************************************
 func void B_RemoveNpc (var int npcInstance)
 {

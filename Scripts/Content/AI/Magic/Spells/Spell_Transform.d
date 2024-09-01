@@ -69,12 +69,12 @@ func int Spell_Logic_Transform (var int manaInvested)
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfWolf))			{	Npc_SetActiveSpellInfo(self, Wolf);				}
 		else																		{	Npc_SetActiveSpellInfo(self, Meatbug);			};
 		
-		if (hpMaxPotionTime > 0)	{	hpMaxPotionTime = 1;	};
-		if (mpMaxPotionTime > 0)	{	mpMaxPotionTime = 1;	};
-		if (strPotionTime > 0)		{	strPotionTime = 1;		};
-		if (dexPotionTime > 0)		{	dexPotionTime = 1;		};
-		if (powPotionTime > 0)		{	powPotionTime = 1;		};
-		Potions_Process();
+		PotionTimed_ADD (ATR_HITPOINTS_MAX, default, default);
+		PotionTimed_ADD (ATR_MANA_MAX, default, default);
+		PotionTimed_ADD (ATR_STRENGTH, default, default);
+		PotionTimed_ADD (ATR_DEXTERITY, default, default);
+		PotionTimed_ADD (ATR_POWER, default, default);
+		PotionTimed_ADD (PROT_INDEX_MAX, default, default);
 		
 		return SPL_SENDCAST;
 	};

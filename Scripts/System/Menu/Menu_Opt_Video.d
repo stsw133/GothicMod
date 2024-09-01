@@ -1,5 +1,7 @@
-
-instance MENU_OPT_VIDEO(C_MENU_DEF)
+///******************************************************************************************
+/// Video options
+///******************************************************************************************
+instance MENU_OPT_VIDEO (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENUITEM_VID_HEADLINE";
@@ -17,7 +19,8 @@ instance MENU_OPT_VIDEO(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-instance MENUITEM_VID_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_VID_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "USTAWIENIA OBRAZU";
 	type = MENU_ITEM_TEXT;
@@ -28,7 +31,21 @@ instance MENUITEM_VID_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_VID_DEVICE(C_MENU_ITEM_DEF)
+func int update_videooptions()
+{
+	Update_ChoiceBox("MENUITEM_VID_DEVICE_CHOICE");
+	Update_ChoiceBox("MENUITEM_VID_RESOLUTION_CHOICE");
+	return true;
+};
+
+func int apply_videoresolution()
+{
+	Apply_Options_Video();
+	return false;
+};
+
+///******************************************************************************************
+instance MENUITEM_VID_DEVICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Karta graficzna";
@@ -40,8 +57,7 @@ instance MENUITEM_VID_DEVICE(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VID_DEVICE_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_DEVICE_CHOICE (C_MENU_ITEM_DEF)
 {
 	text[0] = "";
 	backpic = MENU_CHOICE_BACK_PIC;
@@ -58,7 +74,7 @@ instance MENUITEM_VID_DEVICE_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_NEEDS_RESTART;
 };
 
-instance MENUITEM_VID_RESOLUTION(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_RESOLUTION (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Rozdzielczoœæ";
@@ -71,8 +87,7 @@ instance MENUITEM_VID_RESOLUTION(C_MENU_ITEM_DEF)
 	oneventaction[1] = apply_videoresolution;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VID_RESOLUTION_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_RESOLUTION_CHOICE (C_MENU_ITEM_DEF)
 {
 	text[0] = "";
 	backpic = MENU_CHOICE_BACK_PIC;
@@ -88,7 +103,7 @@ instance MENUITEM_VID_RESOLUTION_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_NEEDS_APPLY;
 };
 
-instance MENUITEM_VID_BRIGHTNESS(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_BRIGHTNESS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Jasnoœæ";
@@ -100,8 +115,7 @@ instance MENUITEM_VID_BRIGHTNESS(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VID_BRIGHTNESS_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_BRIGHTNESS_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -116,7 +130,7 @@ instance MENUITEM_VID_BRIGHTNESS_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_VID_CONTRAST(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_CONTRAST (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Kontrast";
@@ -128,8 +142,7 @@ instance MENUITEM_VID_CONTRAST(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VID_CONTRAST_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_CONTRAST_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -144,7 +157,7 @@ instance MENUITEM_VID_CONTRAST_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_VID_GAMMA(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_GAMMA (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Gamma";
@@ -156,8 +169,7 @@ instance MENUITEM_VID_GAMMA(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-
-instance MENUITEM_VID_GAMMA_SLIDER(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_GAMMA_SLIDER (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_SLIDER_BACK_PIC;
 	type = MENU_ITEM_SLIDER;
@@ -172,7 +184,7 @@ instance MENUITEM_VID_GAMMA_SLIDER(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENUITEM_VID_BACK(C_MENU_ITEM_DEF)
+instance MENUITEM_VID_BACK (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wróæ";
@@ -182,17 +194,4 @@ instance MENUITEM_VID_BACK(C_MENU_ITEM_DEF)
 	dimy = MENU_DY;
 	onselaction[0] = SEL_ACTION_BACK;
 	flags = flags | IT_TXT_CENTER;
-};
-
-func int update_videooptions()
-{
-	Update_ChoiceBox("MENUITEM_VID_DEVICE_CHOICE");
-	Update_ChoiceBox("MENUITEM_VID_RESOLUTION_CHOICE");
-	return 1;
-};
-
-func int apply_videoresolution()
-{
-	Apply_Options_Video();
-	return 0;
 };

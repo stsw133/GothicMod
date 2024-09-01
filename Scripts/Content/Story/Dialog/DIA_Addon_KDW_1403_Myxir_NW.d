@@ -170,7 +170,7 @@ func void DIA_Addon_Myxir_Teach_Info()
 	
 	Info_ClearChoices (DIA_Addon_Myxir_Teach);
 	Info_AddChoice (DIA_Addon_Myxir_Teach, DIALOG_BACK, DIA_Addon_Myxir_Teach_BACK);
-	Info_AddChoice (DIA_Addon_Myxir_Teach, B_BuildLearnString(PRINT_LearnTalent_Language, B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true)),DIA_Addon_Myxir_Teach_LANGUAGE);
+	Info_AddChoice (DIA_Addon_Myxir_Teach, B_BuildLearnString(PRINT_LearnLanguage, B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true), default),DIA_Addon_Myxir_Teach_LANGUAGE);
 };
 
 func void DIA_Addon_Myxir_Teach_BACK()

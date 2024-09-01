@@ -1,7 +1,7 @@
 ///******************************************************************************************
-///	B_AWAKE_STONEGUARDIAN
+/// B_AWAKE_STONEGUARDIAN
 ///******************************************************************************************
-func void B_AWAKE_STONEGUARDIAN (var C_NPC slf)
+func void B_AWAKE_STONEGUARDIAN (var C_Npc slf)
 {
 	if (slf.aivar[AIV_EnemyOverride])
 	{

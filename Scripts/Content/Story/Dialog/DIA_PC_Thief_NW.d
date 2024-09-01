@@ -547,7 +547,7 @@ func void DIA_DiegoNW_Teach_BACK()
 // ------ 1 Geschick -----
 func void DIA_DiegoNW_TeachDEX_1()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MAX);
 
 	Info_ClearChoices	(DIA_DiegoNW_Teach);
 	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
@@ -558,7 +558,7 @@ func void DIA_DiegoNW_TeachDEX_1()
 // ------ 5 Geschick ------
 func void DIA_DiegoNW_TeachDEX_5()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MAX);
 	
 	Info_ClearChoices	(DIA_DiegoNW_Teach);
 	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);

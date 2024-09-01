@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void B_AssessTheft()
 {
-	if (!Npc_IsPlayer(other))
+	if (!Npc_IsPlayer(other) && Hlp_GetInstanceID(other) != Hlp_GetInstanceID(Gregy))
 	{
 		return;
 	};
@@ -49,5 +49,13 @@ func void B_AssessTheft()
 	
 	/// FUNC
 	B_Attack (self, other, AR_Theft, 0);
-	return;
+	
+	/// MOD
+	if (Hlp_GetInstanceID(other) == Hlp_GetInstanceID(Gregy))
+	{
+		Npc_ClearAIQueue	(other);
+		B_ClearPerceptions	(other);
+		Npc_SetTarget 		(other, self);
+		AI_StartState 		(other, ZS_MM_Flee, false, "");
+	};
 };

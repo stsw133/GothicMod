@@ -27,7 +27,7 @@ func void B_GiveTradeInv_Jora (var C_Npc slf)
 		CreateInvItems (slf, ItRw_Bow_M_04, 1);
 		CreateInvItems (slf, ItRw_Crossbow_L_02, 1);
 		
-		//CreateInvItems (slf, ItAm_Prot_Point_01, 1);
+		CreateInvItems (slf, ItAm_Prot_Point_01, 1);
 		
 		Jora_ItemsGiven_Chapter = 7;
 	};
@@ -66,7 +66,7 @@ func void B_GiveTradeInv_Jora (var C_Npc slf)
 	{
 		CreateInvItems (slf, ItMi_Gold, 150);
 		
-		//CreateInvItems (slf, ItBe_Addon_STR_10, 1);
+		CreateInvItems (slf, ItBe_Addon_Str_02, 1);
 		CreateInvItems (slf, ItMi_Rockcrystal, 1);
 		CreateInvItems (slf, ItPl_Health_Herb_03, 5);
 		CreateInvItems (slf, ItPl_Mana_Herb_02, 4);

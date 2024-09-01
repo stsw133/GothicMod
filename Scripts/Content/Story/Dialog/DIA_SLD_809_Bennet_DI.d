@@ -156,13 +156,13 @@ FUNC VOID DIA_Bennet_TeachSTR_Back ()
 
 FUNC VOID DIA_Bennet_TeachSTR_STR_1 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MAX);	 
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MAX);	 
 	Info_AddChoice		(DIA_Bennet_TeachSTR, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Bennet_TeachSTR_STR_1);
 };
 
 FUNC VOID DIA_Bennet_TeachSTR_STR_5 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MAX);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MAX);
 	Info_AddChoice		(DIA_Bennet_TeachSTR, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Bennet_TeachSTR_STR_5);
 };
 */

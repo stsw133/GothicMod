@@ -3,35 +3,35 @@ instance DJG_738_ToterDrachenjaeger (Npc_Default)
 {
 	/// ------ General ------
 	name								=	NAME_ToterDrachenjaeger;
-	guild 								=	GIL_DJG;
-	id 									=	738;
-	voice 								=	6;
+	guild								=	GIL_DJG;
+	id									=	738;
+	voice								=	6;
 	npctype								=	NPCTYPE_AMBIENT;
-
+	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, FightTalent_Strong-5);
-
+	NpcFn_SetFightSkills (self, 65);
+	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
-
+	
 	/// ------ Weapons ------
 	EquipItem (self, ItMw_1H_SLD_Sword);
-
+	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-
+	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Normal44, 0, ITAR_DJG_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_NormalBart17, Teeth_Normal, ItAr_DJG_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
-
+	
 	/// ------ Rtn ------
-	daily_routine 						=	Rtn_Start_738;
+	daily_routine						=	Rtn_Start_738;
 };
 
 func void Rtn_Start_738()
 {
-	TA_Sit_Bench	(08,00,23,00, "OW_ROCKDRAGON_09");
-    TA_Sit_Bench	(23,00,08,00, "OW_ROCKDRAGON_09");
+	TA_Sit_Bench	(08,00, 23,00, "OW_ROCKDRAGON_09");
+	TA_Sit_Bench	(23,00, 08,00, "OW_ROCKDRAGON_09");
 };

@@ -166,7 +166,7 @@ func void DIA_Vatras_DI_RAT_Info ()
 	AI_Output			(other, self, "DIA_Vatras_DI_RAT_15_00"); //Masz dla mnie jakieœ rady?
 	AI_Output			(self, other, "DIA_Vatras_DI_RAT_05_01"); //Trzymaj siê z dala od Poszukiwaczy. Pamiêtaj, ¿e ich spojrzenie mo¿e siê okazaæ zabójcze tak daleko od klasztoru.
 
-	if (Npc_HasItems (other,ItAm_ProtDementor))
+	if (Npc_HasItems (other,ItAm_Prot_Obsession))
 	{
 		AI_Output			(other, self, "DIA_Vatras_DI_RAT_15_02"); //Nie obawiaj siê, mam amulet przywo³ywania dusz.
 	};

@@ -1,40 +1,44 @@
 ///******************************************************************************************
-///	aSource
+/// aSource
 ///******************************************************************************************
 
 var oCNpc o_hero; //o_hero = Hlp_GetNpc(hero);
 var C_Npc o_other; //o_other = MEM_PtrToInst(o_hero.focus_vob);
 var oCItem o_item; //o_item = MEM_PtrToInst(o_hero.focus_vob);
 
-///******************************************************************************************
-
-var int seed;				/// world seed for random elements
-var int dLevel;				/// difficulty level: Easy | Medium | Hard | VeryHard
-var int gLevelA;			/// girlfriend love level (not sure/don't remember for what purpose it exists)
-var int talkingWithGirl;	/// also don't remember what was this for
-var int inFightCounter;
-
-var int selectedHero;		/// hero skin (select in New Game menu)
-var int noAnimTake;			/// fast item take (with no animation) on RMB
+/// game config
+var int dLevel;				/// difficulty level: Easy | Medium | Hard
 var int movieMode;			/// movie mode = enabled cheat mode, animation shortcuts etc.
-var int scaleTime;
+var int noAnimTake;			/// fast item take (with no animation) on RMB
+var int selectedHero;		/// hero skin (select in New Game menu)
+var int scaleTime;			/// the speed at which clock time passes
 
+/// natural regeneration
 var int hpRegenPower, hpRegenPoints;
 var int mpRegenPower, mpRegenPoints;
 var int spRegenPower, spRegenPoints;
 
-var int foodTime, drinkTime, alcoholTime;
-var int digestionTime;
+/// item regeneration
+var int foodTime[4], alcoholTime;
 
-var int mShieldPhPoints, mShieldMgPoints, mFinishPercent;
+/// shield & damage & finish percent
+var int mShieldPhPoints, mShieldMgPoints;
+var int mDamageIncrease, mDamageReduction;
+var int mFinishPercent;
+var int inFightCounter;
+
+/// aura
 var int mAuraType, mAuraPoints, mAuraTime;
 var int mAuraPalType, mAuraPalPoints, mAuraPalTime;
+
+/// slow
 var int mSlowPoints, mSlowTime;
 
+/// item spawn
 var int enableTimeDust;
 
 ///******************************************************************************************
-///	Colors (RGBA) & Time (seconds)
+/// Colors (RGBA) & Time (seconds)
 ///******************************************************************************************
 
 const int COL_Health			=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
@@ -53,9 +57,6 @@ const int COL_DamageShielded	=	(183<<16) | (223<<8) | (203<<0) | (255<<24);
 const int COL_ItemGiven			=	(255<<16) | (127<<8) | (127<<0) | (255<<24);
 const int COL_ItemTaken			=	(255<<16) | (223<<8) | (127<<0) | (255<<24);
 
-const int COL_ExpGained			=	(127<<16) | (255<<8) | (127<<0) | (255<<24);
-const int COL_LoveGained		=	(255<<16) | (191<<8) | (223<<0) | (255<<24);
-
 const int COL_QuestRunning		=	(255<<16) | (255<<8) | (127<<0) | (255<<24);
 const int COL_QuestProgress		=	(127<<16) | (191<<8) | (255<<0) | (255<<24);
 const int COL_QuestSuccess		=	(127<<16) | (255<<8) | (127<<0) | (255<<24);
@@ -70,12 +71,14 @@ const int TIME_LongerPrint		=	12;
 const int TIME_LongestPrint		=	20;
 
 ///******************************************************************************************
-///	Functions
+/// Functions
 ///******************************************************************************************
-func int atrue()
+func int RealToInt(var int r)
 {
-	return true;
+	return STR_ToInt(STR_Split(toStringf(r), ".", 0));
 };
+
+/// ------ Random ------
 func int Hlp_RandomRange (var int start, var int end)
 {
 	return (start + Hlp_Random(end - start + 1));

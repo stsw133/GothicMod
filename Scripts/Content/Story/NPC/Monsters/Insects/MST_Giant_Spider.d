@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_GiantSpider (C_Npc)			
+prototype Mst_Default_GiantSpider (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Olbrzymi paj¹k";
@@ -7,8 +7,8 @@ prototype Mst_Default_GiantSpider (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GIANT_SPIDER;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
-	fight_tactic						= 	FAI_MINECRAWLER;
+	damagetype							=	DAM_EDGE;
+	fight_tactic						=	FAI_MINECRAWLER;
 	
 	NpcFn_SetAttributesToLevel (self, 4);
 	NpcFn_SetMonsterProtection (self, level);
@@ -17,9 +17,9 @@ prototype Mst_Default_GiantSpider (C_Npc)
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
-	aivar[AIV_MM_FollowInWater] 		=	false;
+	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -31,7 +31,7 @@ prototype Mst_Default_GiantSpider (C_Npc)
 func void B_SetVisuals_GiantSpider()
 {
 	Mdl_SetVisual		(self, "Spdr.mds");
-	Mdl_SetVisualBody	(self, "Spdr_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Spdr_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Giant_Spider (Mst_Default_GiantSpider)

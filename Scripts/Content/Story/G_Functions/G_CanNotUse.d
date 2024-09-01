@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	G_CanNotUse
+/// G_CanNotUse
 ///******************************************************************************************
 
 const int COND_Level				=	31;
@@ -26,6 +26,7 @@ func void G_CanNotUse (var int bIsPlayer, var int nAttribute, var int nValue)
 		else if (nAttribute == ATR_MANA_MAX)		{	strAttributeMissing = PRINT_MANA_MAX_MISSING;		nAttributeValue = self.attribute[ATR_MANA_MAX]; 		}
 		else if (nAttribute == ATR_STRENGTH)		{	strAttributeMissing = PRINT_STRENGTH_MISSING;		nAttributeValue = self.attribute[ATR_STRENGTH]; 		}
 		else if (nAttribute == ATR_DEXTERITY)		{	strAttributeMissing = PRINT_DEXTERITY_MISSING;		nAttributeValue = self.attribute[ATR_DEXTERITY]; 		}
+		else if (nAttribute == ATR_POWER)			{	strAttributeMissing = PRINT_POWER_MISSING;			nAttributeValue = self.attribute[ATR_POWER]; 			}
 		else if (nAttribute == COND_Level)			{	strAttributeMissing = PRINT_LEVEL_MISSING;			nAttributeValue = self.level; 							}
 		else										{	strAttributeMissing = "";							nAttributeValue = 0; 									};
 		

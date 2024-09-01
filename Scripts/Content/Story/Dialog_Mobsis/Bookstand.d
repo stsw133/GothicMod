@@ -8,11 +8,11 @@ func void Use_BookstandALCHEMY1_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -42,13 +42,6 @@ func void Use_BookstandALCHEMY1_S1()
 					Doc_PrintLines	(nDocID,  1, "Warzenie ka¿dej mikstury maj¹cej sta³y i okreœlony wp³yw na cia³o lub umys³ wymaga u¿ycia roœliny, jak¹ jest w tym wypadku:");
 					Doc_PrintLines	(nDocID,  1, "Szczaw królewski");
 					Doc_Show		(nDocID);
-		/*
-		if (!Alchemy_1_permanent)
-		{
-			B_GivePlayerExp(25);
-			Alchemy_1_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -60,11 +53,11 @@ func void Use_BookstandALCHEMY2_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -94,13 +87,6 @@ func void Use_BookstandALCHEMY2_S1()
 					Doc_PrintLines	(nDocID,  1, "Warzenie ka¿dej mikstury maj¹cej sta³y i okreœlony wp³yw na cia³o lub umys³ wymaga u¿ycia roœliny, jak¹ jest w tym wypadku:");
 					Doc_PrintLines	(nDocID,  1, "Szczaw królewski");
 					Doc_Show		(nDocID);
-		/*
-		if (!Alchemy_2_permanent)
-		{
-			B_GivePlayerExp(25);
-			Alchemy_2_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -112,11 +98,11 @@ func void Use_BookstandALCHEMY3_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -145,13 +131,6 @@ func void Use_BookstandALCHEMY3_S1()
 					Doc_PrintLines	(nDocID,  1, "Mikstura szybkoœci ma mniej skomplikowan¹ recepturê (nie wymaga u¿ycia szczawiu królewskiego).");
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_Show		(nDocID);
-		/*
-		if (!Alchemy_3_permanent)
-		{
-			B_GivePlayerExp(25);
-			Alchemy_3_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -165,11 +144,11 @@ func void Use_BookstandAnimals1_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "£owy i zwierzyna");
@@ -193,13 +172,6 @@ func void Use_BookstandAnimals1_S1()
 					Doc_PrintLine	(nDocID,  1, "Pozyskiwanie szponów");
 					Doc_PrintLines	(nDocID,  1, "Mo¿na je praktykowaæ na jaszczurach, zêbaczach, topielcach i cieniostworach.");
 					Doc_Show		(nDocID);
-		/*
-		if (!Animals_1_permanent)
-		{
-			B_GivePlayerExp(25);
-			Animals_1_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -211,11 +183,11 @@ func void Use_BookstandAnimals2_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "£owy i zwierzyna");
@@ -239,13 +211,6 @@ func void Use_BookstandAnimals2_S1()
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLines	(nDocID,  1, "");
 					Doc_Show		(nDocID);
-		/*
-		if (!Animals_2_permanent)
-		{
-			B_GivePlayerExp(25);
-			Animals_2_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -257,11 +222,11 @@ func void Use_BookstandAnimals3_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "£owy i zwierzyna");
@@ -284,13 +249,6 @@ func void Use_BookstandAnimals3_S1()
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_Show		(nDocID);
-		/*
-		if (!Animals_3_permanent)
-		{
-			B_GivePlayerExp(25);
-			Animals_3_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -304,11 +262,11 @@ func void Use_BookstandHistory1_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	( nDocID,  2);
-					Doc_SetPage 	( nDocID,  0, "Book_RED_L.tga", false);
-					Doc_SetPage 	( nDocID,  1, "Book_RED_R.tga", false);
-					Doc_SetFont 	( nDocID, -1, FONT_Book);
+					Doc_SetPage		( nDocID,  0, "Book_RED_L.tga", false);
+					Doc_SetPage		( nDocID,  1, "Book_RED_R.tga", false);
+					Doc_SetFont		( nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	( nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	( nDocID,  0, "Sztuka walki");
@@ -329,13 +287,6 @@ func void Use_BookstandHistory1_S1()
 					Doc_PrintLine	( nDocID,  1, "");
 					Doc_PrintLines	( nDocID,  1, "");
 					Doc_Show		( nDocID);
-		/*
-		if (!History_1_permanent)
-		{
-			B_GivePlayerExp(25);
-			History_1_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -347,11 +298,11 @@ func void Use_BookstandHistory2_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_RED_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_RED_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_RED_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_RED_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Wyspa");
@@ -369,13 +320,6 @@ func void Use_BookstandHistory2_S1()
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLines	(nDocID,  1, "W centrum wyspy znajduje siê pradawny Klasztor Innosa zarz¹dzany przez Magów Ognia, którzy zajmuj¹ siê badaniem natury magii, alchemi¹ i wytwarzaniem win.");
 					Doc_Show		(nDocID);
-		/*
-		if (!History_2_permanent)
-		{
-			B_GivePlayerExp(25);
-			History_2_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -387,11 +331,11 @@ func void Use_BookstandHistory3_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_RED_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_RED_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_RED_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_RED_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Prawo wyspy");
@@ -413,13 +357,6 @@ func void Use_BookstandHistory3_S1()
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLines	(nDocID,  1, "");
 					Doc_Show		(nDocID);
-		/*
-		if (!History_2_permanent)
-		{
-			B_GivePlayerExp(25);
-			History_2_permanent = true;
-		};
-		*/
 	};
 };
 
@@ -433,11 +370,11 @@ func void Use_Bookstand_Rune_01_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();							
+		nDocID =	Doc_Create		();							
 					Doc_SetPages	(nDocID,  2);                         
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false); 
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book); 	
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false); 
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);	
 					
 					Doc_SetMargins	(nDocID,  0,  275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Strona 1");
@@ -461,11 +398,11 @@ func void Use_Bookstand_Rune_02_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Strona 1");
@@ -489,11 +426,11 @@ func void Use_Bookstand_Innos_01_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Strona 1");
@@ -517,11 +454,11 @@ func void Use_Bookstand_Innos_02_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();							
+		nDocID =	Doc_Create		();							
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Strona 1");
@@ -545,11 +482,11 @@ func void Use_Bookstand_Kreise_01_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "PIERWSZY KR¥G");
@@ -594,11 +531,11 @@ func void Use_Bookstand_Kreise_02_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "DRUGI KR¥G");
@@ -643,11 +580,11 @@ func void Use_Bookstand_Kreise_03_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "TRZECI KR¥G");
@@ -697,11 +634,11 @@ func void Use_Bookstand_Kreise_04_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "CZWARTY KR¥G");
@@ -744,11 +681,11 @@ func void Use_Bookstand_Kreise_05_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "PI¥TY KR¥G");
@@ -791,11 +728,11 @@ func void Use_Bookstand_Kreise_06_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "SZÓSTY KR¥G");
@@ -848,11 +785,11 @@ func void Use_Bookstand_Rules_01_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2 );
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Strona 1");
@@ -878,11 +815,11 @@ func void Use_Runemaking_KDW_CIRC1_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
@@ -950,10 +887,10 @@ func void Use_BookstandDementor_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Dementor_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Dementor_R.tga",	false);
+					Doc_SetPage		(nDocID,  0, "Book_Dementor_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Dementor_R.tga",	false);
 					Doc_Show		(nDocID);
 	};
 };
@@ -968,11 +905,11 @@ func void Bookstand_Milten_03_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -1006,11 +943,11 @@ func void Bookstand_Milten_02_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Mage_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Mage_R.tga",	false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -1048,7 +985,7 @@ func void Bookstand_Milten_01_S1()
 		var int Document;
 		Document =	Doc_CreateMap		();
 					Doc_SetPages		(Document, 1);
-					Doc_SetPage 		(Document, 0, "Map_OldWorld.tga", true);
+					Doc_SetPage			(Document, 0, "Map_OldWorld.tga", true);
 					Doc_SetLevel		(Document, "OldWorld\OldWorld.zen");
 					Doc_SetLevelCoords	(Document, -78500, 47500, 54000, -53000);
 					Doc_Show			(Document);
@@ -1063,11 +1000,11 @@ func void Bookstand_Engor_01_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Red_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Red_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Red_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Red_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -1117,11 +1054,11 @@ func void Use_Bookstand_Addon_BL_S1()
 	{
 		var int nDocID;
 		
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 					Doc_PrintLine	(nDocID,  0, "Kopalnia");
@@ -1299,11 +1236,11 @@ func void InitUse_BookstandMaya()
 	{
 		if (!C_CanReadBookStand())
 		{
-			StPl_nDocID = 	Doc_Create		();
+			StPl_nDocID =	Doc_Create		();
 							Doc_SetPages	(StPl_nDocID,  2);
-							Doc_SetPage 	(StPl_nDocID,  0, "Book_MayaGlyph_L.tga", false);
-							Doc_SetPage 	(StPl_nDocID,  1, "Book_MayaGlyph_R.tga", false);
-							Doc_SetFont 	(StPl_nDocID, -1, FONT_Book);
+							Doc_SetPage		(StPl_nDocID,  0, "Book_MayaGlyph_L.tga", false);
+							Doc_SetPage		(StPl_nDocID,  1, "Book_MayaGlyph_R.tga", false);
+							Doc_SetFont		(StPl_nDocID, -1, FONT_Book);
 							Doc_SetMargins	(StPl_nDocID,  0, 275, 20, 30, 20, 1);
 							Doc_Show		(StPl_nDocID);
 			
@@ -1315,9 +1252,9 @@ func void InitUse_BookstandMaya()
 			{
 				StPl_nDocID =	Doc_Create		();
 								Doc_SetPages	(StPl_nDocID,  2);
-								Doc_SetPage 	(StPl_nDocID,  0, "Book_MayaRead_L.tga", false);
-								Doc_SetPage 	(StPl_nDocID,  1, "Book_MayaRead_R.tga", false);
-								Doc_SetFont 	(StPl_nDocID, -1, FONT_Book);
+								Doc_SetPage		(StPl_nDocID,  0, "Book_MayaRead_L.tga", false);
+								Doc_SetPage		(StPl_nDocID,  1, "Book_MayaRead_R.tga", false);
+								Doc_SetFont		(StPl_nDocID, -1, FONT_Book);
 								Doc_SetMargins	(StPl_nDocID,  0, 275, 20, 30, 20, 1);
 								Use_BookstandMaya();
 								Doc_Show		(StPl_nDocID );
@@ -1328,7 +1265,7 @@ func void InitUse_BookstandMaya()
 	BookstandMayaArt = 0;
 };
 
-func void Use_BookstandMayaHierchary_01_S1()		
+func void Use_BookstandMayaHierchary_01_S1()
 {
 	BookstandMayaArt = 1;
 	InitUse_BookstandMaya();

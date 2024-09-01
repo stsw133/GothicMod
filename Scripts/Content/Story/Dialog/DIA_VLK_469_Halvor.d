@@ -240,10 +240,7 @@ FUNC VOID DIA_Halvor_MESSAGE_Okay()
 	Halvor_Deal = TRUE;
 	Diebesgilde_Okay = (Diebesgilde_Okay + 1);
 	//------------------------------------------------------
-	CreateInvItems 	   (self,ItSe_ErzFisch , 1);
-	CreateInvItems 	   (self,ItSe_GoldFisch, 1);
-	CreateInvItems 	   (self,ItSe_Ringfisch , 1);
-	CreateInvItems 	   (self,ItSe_LockpickFisch , 1);
+	CreateInvItems (self, ItSe_BigFish, 10);
 	//------------------------------------------------------
 	Info_ClearChoices (DIA_Halvor_MESSAGE);
 };

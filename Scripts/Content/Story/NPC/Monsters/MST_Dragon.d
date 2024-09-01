@@ -6,85 +6,73 @@ prototype Mst_Default_Dragon (C_Npc)
 	guild								=	GIL_DRAGON;
 	aivar[AIV_MM_REAL_ID]				=	ID_DRAGON;
 	npctype								=	NPCTYPE_MAIN;
+	bodyStateInterruptableOverride		=	true;
 	
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_FIRE;
+	damagetype							=	DAM_FIRE;
 	fight_tactic						=	FAI_DRAGON;
 	
 	NpcFn_SetAttributesToLevel (self, 80);
 	NpcFn_SetMonsterProtection (self, level);
-	
 	level *= 5;
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_DRAGON_ACTIVE_MAX;
 	
-	bodyStateInterruptableOverride		=	true;
-	
-	aivar[AIV_MM_FollowInWater] 		=	false;
+	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	aivar[AIV_MaxDistToWp]				=	1000;
-	aivar[AIV_OriginalFightTactic] 		=	FAI_DRAGON;
+	aivar[AIV_OriginalFightTactic]		=	FAI_DRAGON;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_Rtn_DragonRest;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
-func void B_SetVisuals_Dragon()
-{
-	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 0, default, "", default, default, -1);
-};
 func void B_SetVisuals_SwampDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 1, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_RockDragon()
 {
 	Mdl_SetVisual		(self, "Dragon_Rock.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 2, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Rock_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_FireDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 3, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_IceDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 4, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Ice_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_GoldDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 5, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Gold_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_BlackDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Body", 6, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_UndeadDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Dragon_Undead_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Drg_Undead_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
-instance Dragon (Mst_Default_Dragon)
-{
-	name						=	"Smok";
-	B_SetVisuals_Dragon();
-};
 instance Dragon_Swamp (Mst_Default_Dragon)
 {
 	name						=	"Bagienny smok";
@@ -114,12 +102,12 @@ instance Dragon_Gold (Mst_Default_Dragon)
 instance Dragon_Black (Mst_Default_Dragon)
 {
 	name						=	"Czarny smok";
-	aivar[AIV_MaxDistToWp]		=	0;
 	
 	NpcFn_SetAttributesToLevel (self, 90);
-	B_SetVisuals_BlackDragon();
-	
 	level *= 5;
+	
+	aivar[AIV_MaxDistToWp]		=	0;
+	B_SetVisuals_BlackDragon();
 };
 instance Dragon_Undead (Mst_Default_Dragon)
 {
@@ -128,7 +116,7 @@ instance Dragon_Undead (Mst_Default_Dragon)
 	effect						=	"spellfx_undead_dragon";
 	
 	NpcFn_SetAttributesToLevel (self, 100);
-	B_SetVisuals_UndeadDragon();
-	
 	level *= 5;
+	
+	B_SetVisuals_UndeadDragon();
 };

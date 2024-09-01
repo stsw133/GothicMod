@@ -123,7 +123,7 @@ prototype C_MENU_ITEM_DEF (C_MENU_ITEM)
 	posy					=	0;
 	dimx					=	-1;	/// -1 = AUTODETECT
 	dimy					=	-1;	/// -1 = AUTODETECT
-	flags					=	IT_CHROMAKEYED|IT_TRANSPARENT|IT_SELECTABLE;
+	flags					=	IT_CHROMAKEYED | IT_TRANSPARENT | IT_SELECTABLE;
 	
 	openDelayTime			=	0;
 	openDuration			=	-1;
@@ -153,7 +153,7 @@ prototype C_MENU_DEF (C_MENU)
 	dimy					=	8191;
 	alpha					=	254;	/// NOTE: Must be under 255 to support chroma keying, chroma color is black
 	items[0]				=	"ITEM_BACK";
-	flags					=	MENU_EXCLUSIVE|MENU_DONTSCALE_DIM|MENU_ALIGN_CENTER;
+	flags					=	MENU_EXCLUSIVE | MENU_DONTSCALE_DIM | MENU_ALIGN_CENTER;
 	eventTimerMSec			=	1000;	/// 1 second cycle with EVENT_TIMER
 	musicTheme				=	"";
 	defaultOutGame			=	-1;	/// no item is default

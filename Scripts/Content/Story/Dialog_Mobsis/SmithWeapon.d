@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void SMITHWEAPON_S1()
 {
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
+	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
 	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
 	{
 		self.aivar[AIV_Invisible] = true;
@@ -84,9 +84,9 @@ func void PC_ItMw_1H_BACK()
 };
 func void PC_ItMw_1H_Common()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		
 		CreateInvItem (hero, ItMw_1H_Common_01);
 		Print(PRINT_SmithSuccess);
@@ -100,9 +100,9 @@ func void PC_ItMw_1H_Common()
 };
 func void PC_ItMw_Schwert1()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		
 		CreateInvItem (hero, ItMw_Schwert1);
 		Print(PRINT_SmithSuccess);
@@ -116,9 +116,9 @@ func void PC_ItMw_Schwert1()
 };
 func void PC_ItMw_Schwert4()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 4);
 		
 		CreateInvItem (hero, ItMw_Schwert4);
 		Print(PRINT_SmithSuccess);
@@ -132,9 +132,9 @@ func void PC_ItMw_Schwert4()
 };
 func void PC_ItMw_Rubinklinge()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 4);
 		
 		CreateInvItem (hero, ItMw_Rubinklinge);
 		Print(PRINT_SmithSuccess);
@@ -148,9 +148,9 @@ func void PC_ItMw_Rubinklinge()
 };
 func void PC_ItMw_ElBastardo()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 5)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 5);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 5);
 		
 		CreateInvItem (hero, ItMw_ElBastardo);
 		Print(PRINT_SmithSuccess);
@@ -201,10 +201,10 @@ func void PC_ItMw_2H_BACK()
 };
 func void PC_ItMw_Streitaxt1()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 4)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 4)
 	&& (Npc_HasItems(hero, ItAt_Teeth) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 4);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 4);
 		Npc_RemoveInvItems (hero, ItAt_Teeth, 2);
 		
 		CreateInvItem (hero, ItMw_Streitaxt1);
@@ -219,9 +219,9 @@ func void PC_ItMw_Streitaxt1()
 };
 func void PC_ItMw_Avalon()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 6)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 6)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 6);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 6);
 		
 		CreateInvItem (hero, ItMw_Avalon);
 		Print(PRINT_SmithSuccess);
@@ -284,10 +284,10 @@ func void PC_ItMw_1hMagic_BACK()
 };
 func void PC_ItMw_1H_Special_01()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 2);
 		
 		CreateInvItem (hero, ItMw_1H_Special_01);
@@ -302,10 +302,10 @@ func void PC_ItMw_1H_Special_01()
 };
 func void PC_ItMw_1H_Special_02()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 3)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 3);
 		
 		CreateInvItem (hero, ItMw_1H_Special_02);
@@ -320,10 +320,10 @@ func void PC_ItMw_1H_Special_02()
 };
 func void PC_ItMw_1H_Special_03()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 4);
 		
 		CreateInvItem (hero, ItMw_1H_Special_03);
@@ -338,11 +338,11 @@ func void PC_ItMw_1H_Special_03()
 };
 func void PC_ItMw_1H_Special_04()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 5)
 	&& (Npc_HasItems(hero, ItAt_DragonBlood) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 5);
 		Npc_RemoveInvItems (hero, ItAt_DragonBlood, 5);
 		
@@ -425,10 +425,10 @@ func void PC_ItMw_2hMagic_BACK()
 };
 func void PC_ItMw_2H_Special_01()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 2);
 		
 		CreateInvItem (hero, ItMw_2H_Special_01);
@@ -443,10 +443,10 @@ func void PC_ItMw_2H_Special_01()
 };
 func void PC_ItMw_2H_Special_02()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 3)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 3);
 		
 		CreateInvItem (hero, ItMw_2H_Special_02);
@@ -461,10 +461,10 @@ func void PC_ItMw_2H_Special_02()
 };
 func void PC_ItMw_2H_Special_03()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 4);
 		
 		CreateInvItem (hero, ItMw_2H_Special_03);
@@ -479,11 +479,11 @@ func void PC_ItMw_2H_Special_03()
 };
 func void PC_ItMw_2H_Special_04()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_Nugget) >= 5)
 	&& (Npc_HasItems(hero, ItAt_DragonBlood) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_Nugget, 5);
 		Npc_RemoveInvItems (hero, ItAt_DragonBlood, 5);
 		
@@ -566,10 +566,10 @@ func void PC_ItMw_1hFire_BACK()
 };
 func void PC_ItMw_1H_Ignite_01()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 2);
 		
 		CreateInvItem (hero, ItMw_1H_Ignite_01);
@@ -584,10 +584,10 @@ func void PC_ItMw_1H_Ignite_01()
 };
 func void PC_ItMw_1H_Ignite_02()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 3)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 3);
 		
 		CreateInvItem (hero, ItMw_1H_Ignite_02);
@@ -602,10 +602,10 @@ func void PC_ItMw_1H_Ignite_02()
 };
 func void PC_ItMw_1H_Ignite_03()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 4);
 		
 		CreateInvItem (hero, ItMw_1H_Ignite_03);
@@ -620,11 +620,11 @@ func void PC_ItMw_1H_Ignite_03()
 };
 func void PC_ItMw_1H_Ignite_04()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 2)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 2)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 5)
 	&& (Npc_HasItems(hero, ItAt_DragonBlood) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 2);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 2);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 5);
 		Npc_RemoveInvItems (hero, ItAt_DragonBlood, 5);
 		
@@ -707,10 +707,10 @@ func void PC_ItMw_2hFire_BACK()
 };
 func void PC_ItMw_2H_Ignite_01()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 2)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 2);
 		
 		CreateInvItem (hero, ItMw_2H_Ignite_01);
@@ -725,10 +725,10 @@ func void PC_ItMw_2H_Ignite_01()
 };
 func void PC_ItMw_2H_Ignite_02()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 3)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 3);
 		
 		CreateInvItem (hero, ItMw_2H_Ignite_02);
@@ -743,10 +743,10 @@ func void PC_ItMw_2H_Ignite_02()
 };
 func void PC_ItMw_2H_Ignite_03()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 4)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 4);
 		
 		CreateInvItem (hero, ItMw_2H_Ignite_03);
@@ -761,11 +761,11 @@ func void PC_ItMw_2H_Ignite_03()
 };
 func void PC_ItMw_2H_Ignite_04()
 {
-	if (Npc_HasItems(hero, ItMi_IronNugget) >= 3)
+	if (Npc_HasItems(hero, ItMi_Iron) >= 3)
 	&& (Npc_HasItems(hero, ItMi_RedNugget) >= 5)
 	&& (Npc_HasItems(hero, ItAt_DragonBlood) >= 5)
 	{
-		Npc_RemoveInvItems (hero, ItMi_IronNugget, 3);
+		Npc_RemoveInvItems (hero, ItMi_Iron, 3);
 		Npc_RemoveInvItems (hero, ItMi_RedNugget, 5);
 		Npc_RemoveInvItems (hero, ItAt_DragonBlood, 5);
 		

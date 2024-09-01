@@ -24,7 +24,7 @@ func void B_GiveTradeInv_Sagitta (var C_Npc slf)
 		CreateInvItems (slf, ItRe_ALCHEMY_Health_04, 1);
 		CreateInvItems (slf, ItRe_ALCHEMY_Mana_04, 1);
 		
-		CreateInvItems (slf, ItFo_Addon_Pfeffer_01, 1);
+		CreateInvItems (slf, ItFo_Spices, 1);
 		
 		Sagitta_ItemsGiven_Chapter = 7;
 	};

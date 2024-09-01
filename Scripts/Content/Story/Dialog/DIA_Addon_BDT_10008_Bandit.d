@@ -115,7 +115,7 @@ FUNC VOID DIA_Addon_10008_Bandit_Teach_Back ()
 
 FUNC VOID DIA_Addon_10008_Bandit_Teach_STR_1 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 	
 	Info_ClearChoices 	(DIA_Addon_10008_Bandit_Teach);
 	Info_AddChoice		(DIA_Addon_10008_Bandit_Teach, DIALOG_BACK, DIA_Addon_10008_Bandit_Teach_Back);
@@ -125,7 +125,7 @@ FUNC VOID DIA_Addon_10008_Bandit_Teach_STR_1 ()
 
 FUNC VOID DIA_Addon_10008_Bandit_Teach_STR_5 ()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 	
 	Info_ClearChoices 	(DIA_Addon_10008_Bandit_Teach);
 	Info_AddChoice		(DIA_Addon_10008_Bandit_Teach, DIALOG_BACK, DIA_Addon_10008_Bandit_Teach_Back);

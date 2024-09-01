@@ -1,6 +1,4 @@
 ///******************************************************************************************
-///	B_ScUsesRake
-///******************************************************************************************
 
 var int RAKEPLACE[50];
 const int Greg_FirstSecret = 1;
@@ -10,11 +8,13 @@ const int RAKE_BUDDEL_DIST_MIN = 200;
 ///******************************************************************************************
 func void RakeTreasureSuccess (var C_Item itm)
 {
-	Wld_PlayEffect ("spellFX_ItemAusbuddeln", itm, itm, 0, 0, 0, false);
-	B_Say_Overlay (self, self, "$FOUNDTREASURE");
-	B_GivePlayerExp(50);
+	Wld_PlayEffect	("spellFX_ItemAusbuddeln", itm, itm, 0, 0, 0, false);
+	B_Say_Overlay	(self, self, "$FOUNDTREASURE");
+	B_GivePlayerExp	(100);
 };
 
+///******************************************************************************************
+/// B_ScUsesRake
 ///******************************************************************************************
 func void B_ScUsesRake (var C_Npc slf)
 {
@@ -58,11 +58,11 @@ func void B_SCGetTreasure_S1()
 		}
 		else if (Npc_GetDistToWP(hero, "NW_BIGMILL_FARM3_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[5])
 		{
-			Wld_InsertItem (ItAm_Barbarian_01, "NW_BIGMILL_FARM3_01");
+			Wld_InsertItem (ItAm_Prot_Point_01, "NW_BIGMILL_FARM3_01");
 			RAKEPLACE[5] = true;
-			RakeTreasureSuccess(ItAm_Barbarian_01);
+			RakeTreasureSuccess(ItAm_Prot_Point_01);
 		}
-		/// ADDONWORLD_ZEN
+		/// ADDONWORLD_ZEN - ENTRANCE
 		else if (Npc_GetDistToWP(hero, "ADW_ENTRANCE_RAKEPLACE_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[12])
 		{
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_ENTRANCE_RAKEPLACE_01");
@@ -72,7 +72,7 @@ func void B_SCGetTreasure_S1()
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_ENTRANCE_RAKEPLACE_02") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[13])
 		{
-			Wld_InsertRandomStoneplate ("ADW_ENTRANCE_RAKEPLACE_02");
+			Wld_InsertItem (ItWr_StonePlate, "ADW_ENTRANCE_RAKEPLACE_02");
 			RAKEPLACE[13] = true;
 			Wld_InsertItem (ItMi_GoldCup, "ADW_ENTRANCE_RAKEPLACE_02");
 			RakeTreasureSuccess(ItMi_GoldCup);
@@ -91,6 +91,7 @@ func void B_SCGetTreasure_S1()
 			Wld_InsertItem (ItMw_Schwert4, "ADW_ENTRANCE_RAKEPLACE_04");
 			RakeTreasureSuccess(ItMw_Schwert4);
 		}
+		/// ADDONWORLD_ZEN - VALLEY
 		else if (Npc_GetDistToWP(hero, "ADW_VALLEY_GREGTREASURE_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[16])
 		{
 			Wld_InsertItem (ItSe_GoldPocket100, "ADW_VALLEY_GREGTREASURE_01");
@@ -112,8 +113,8 @@ func void B_SCGetTreasure_S1()
 			Wld_InsertItem (ItPo_Health_Addon_04, "ADW_VALLEY_RAKEPLACE_02");
 			RAKEPLACE[18] = true;
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_VALLEY_RAKEPLACE_02");
-			Wld_InsertItem (ItSe_LockpickFisch, "ADW_VALLEY_RAKEPLACE_02");
-			RakeTreasureSuccess(ItSe_LockpickFisch);
+			Wld_InsertItem (ItSe_BigFish, "ADW_VALLEY_RAKEPLACE_02");
+			RakeTreasureSuccess(ItSe_BigFish);
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_VALLEY_RAKEPLACE_03") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[19])
 		{
@@ -123,13 +124,14 @@ func void B_SCGetTreasure_S1()
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_VALLEY_RAKEPLACE_03");
 			RakeTreasureSuccess(ItSe_GoldPocket50);
 		}
+		/// ADDONWORLD_ZEN - BANDITCAMP
 		else if (Npc_GetDistToWP(hero, "ADW_BANDITSCAMP_RAKEPLACE_01") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[20])
 		{
 			Wld_InsertItem (ItMi_HoneyTabak, "ADW_BANDITSCAMP_RAKEPLACE_01");
 			RAKEPLACE[20] = true;
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_BANDITSCAMP_RAKEPLACE_01");
-			Wld_InsertItem (ItAm_Paladin_01, "ADW_BANDITSCAMP_RAKEPLACE_01");
-			RakeTreasureSuccess(ItAm_Paladin_01);
+			Wld_InsertItem (ItPo_NightVision, "ADW_BANDITSCAMP_RAKEPLACE_01");	/// changed!!! (from ItAm_Addon_Mana)
+			RakeTreasureSuccess(ItPo_NightVision);
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_BANDITSCAMP_RAKEPLACE_02") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[21])
 		{
@@ -149,12 +151,13 @@ func void B_SCGetTreasure_S1()
 		{
 			Wld_InsertItem (ItWr_StonePlateCommon_Addon, "ADW_BANDITSCAMP_RAKEPLACE_04");
 			RAKEPLACE[23] = true;
-			Wld_InsertItem (ItRi_HP_01, "ADW_BANDITSCAMP_RAKEPLACE_04");
-			RakeTreasureSuccess(ItRi_HP_01);
+			Wld_InsertItem (ItRi_Hp_01, "ADW_BANDITSCAMP_RAKEPLACE_04");
+			RakeTreasureSuccess(ItRi_Hp_01);
 		}
+		/// ADDONWORLD_ZEN - CANYON
 		else if (Npc_GetDistToWP(hero, "ADW_CANYON_MINE1_11") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[24])
 		{
-			Wld_InsertItem (ItSE_Addon_FrancisChest, "ADW_CANYON_MINE1_11");
+			Wld_InsertItem (ItSe_Addon_FrancisChest, "ADW_CANYON_MINE1_11");
 			RAKEPLACE[24] = true;
 			RakeTreasureSuccess(ItSE_Addon_FrancisChest);
 		}
@@ -177,7 +180,7 @@ func void B_SCGetTreasure_S1()
 		{
 			Wld_InsertItem (ItSe_GoldPocket25, "ADW_CANYON_RAKEPLACE_03");
 			RAKEPLACE[27] = true;
-			Wld_InsertRandomStoneplate ("ADW_CANYON_RAKEPLACE_03");
+			Wld_InsertItem (ItWr_StonePlate, "ADW_CANYON_RAKEPLACE_03");
 			Wld_InsertItem (ItMi_Pitch, "ADW_CANYON_RAKEPLACE_03");
 			RakeTreasureSuccess(ItMi_Pitch);
 		}
@@ -185,7 +188,7 @@ func void B_SCGetTreasure_S1()
 		{
 			Wld_InsertItem (ItMi_SilverRing, "ADW_CANYON_RAKEPLACE_04");
 			RAKEPLACE[28] = true;
-			Wld_InsertRandomStoneplate ("ADW_CANYON_RAKEPLACE_04");
+			Wld_InsertItem (ItWr_StonePlate, "ADW_CANYON_RAKEPLACE_04");
 			Wld_InsertItem (ItMi_Sulfur, "ADW_CANYON_RAKEPLACE_04");
 			RakeTreasureSuccess(ItMi_Sulfur);
 		}
@@ -196,6 +199,7 @@ func void B_SCGetTreasure_S1()
 			Wld_InsertItem (ItAt_DragonBlood, "ADW_CANYON_RAKEPLACE_05");
 			RakeTreasureSuccess(ItAt_DragonBlood);
 		}
+		/// ADDONWORLD_ZEN - PIRATECAMP
 		else if (Npc_GetDistToWP(hero, "ADW_PIRATECAMP_GREGTREASURE_KOMPASS") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[30])
 		{
 			Wld_InsertItem (ItMi_GoldCompass, "ADW_PIRATECAMP_GREGTREASURE_KOMPASS");

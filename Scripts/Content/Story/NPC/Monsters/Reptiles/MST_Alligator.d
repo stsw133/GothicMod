@@ -4,10 +4,10 @@ prototype Mst_Default_Addon_Alligator (C_Npc)
 	/// ------ Monster ------
 	name								=	"Aligator";
 	guild								=	GIL_Alligator;
-	aivar[AIV_MM_REAL_ID]				= 	ID_Alligator;
+	aivar[AIV_MM_REAL_ID]				=	ID_Alligator;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_ALLIGATOR;
 	
 	NpcFn_SetAttributesToLevel (self, 15);
@@ -31,7 +31,7 @@ prototype Mst_Default_Addon_Alligator (C_Npc)
 func void B_SetVisuals_Alligator()
 {
 	Mdl_SetVisual		(self, "Alligator.mds");
-	Mdl_SetVisualBody	(self, "Kro_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Kro_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Alligator (Mst_Default_Addon_Alligator)

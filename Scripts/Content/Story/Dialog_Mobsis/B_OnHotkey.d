@@ -188,27 +188,33 @@ func void PLAYER_HOTKEY_LAME_POTION()
 {
 	if (!Npc_IsInState(hero, ZS_Dead))
 	{
-		if (Npc_HasItems(hero, ItPo_Mana_03))
-		&& (hero.attribute[ATR_MANA] <= hero.attribute[ATR_MANA_MAX] / 10)
+		if (Npc_HasItems(hero, ItPo_Mana_Addon_04))
+		&& (hero.attribute[ATR_MANA] < hero.attribute[ATR_MANA_MAX] / 10)
+		{
+			AI_UseItem (hero, ItPo_Mana_Addon_04);
+		}
+		else if (Npc_HasItems(hero, ItPo_Mana_03))
+		&& (hero.attribute[ATR_MANA] < hero.attribute[ATR_MANA_MAX] / 5)
 		{
 			AI_UseItem (hero, ItPo_Mana_03);
 		}
 		else if (Npc_HasItems(hero, ItPo_Mana_02))
-		&& (hero.attribute[ATR_MANA] <= hero.attribute[ATR_MANA_MAX] * 2 / 5)
+		&& (hero.attribute[ATR_MANA] < hero.attribute[ATR_MANA_MAX] / 2)
 		{
 			AI_UseItem (hero, ItPo_Mana_02);
 		}
 		else if (Npc_HasItems(hero, ItPo_Mana_01))
-		&& (hero.attribute[ATR_MANA] <= hero.attribute[ATR_MANA_MAX] * 7 / 10)
+		&& (hero.attribute[ATR_MANA] < hero.attribute[ATR_MANA_MAX])
 		{
 			AI_UseItem (hero, ItPo_Mana_01);
 		}
 		else if (hero.attribute[ATR_MANA] < hero.attribute[ATR_MANA_MAX])
 		{
-			if		(Npc_HasItems(hero, ItPo_Mana_01))	{	AI_UseItem (hero, ItPo_Mana_01);	}
-			else if (Npc_HasItems(hero, ItPo_Mana_02))	{	AI_UseItem (hero, ItPo_Mana_02);	}
-			else if (Npc_HasItems(hero, ItPo_Mana_03))	{	AI_UseItem (hero, ItPo_Mana_03);	}
-			else										{	Print("Brak mikstur many!");		};
+			if		(Npc_HasItems(hero, ItPo_Mana_01))			{	AI_UseItem (hero, ItPo_Mana_01);			}
+			else if (Npc_HasItems(hero, ItPo_Mana_02))			{	AI_UseItem (hero, ItPo_Mana_02);			}
+			else if (Npc_HasItems(hero, ItPo_Mana_03))			{	AI_UseItem (hero, ItPo_Mana_03);			}
+			else if (Npc_HasItems(hero, ItPo_Mana_Addon_04))	{	AI_UseItem (hero, ItPo_Mana_Addon_04);		}
+			else												{	Print("Brak mikstur many!");				};
 		}
 		else
 		{
@@ -221,27 +227,33 @@ func void PLAYER_HOTKEY_LAME_HEAL()
 {
 	if (!Npc_IsInState(hero, ZS_Dead))
 	{
-		if (Npc_HasItems(hero, ItPo_Health_03))
-		&& (hero.attribute[ATR_HITPOINTS] <= hero.attribute[ATR_HITPOINTS_MAX] / 10)
+		if (Npc_HasItems(hero, ItPo_Health_Addon_04))
+		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX] / 10)
+		{
+			AI_UseItem (hero, ItPo_Health_Addon_04);
+		}
+		else if (Npc_HasItems(hero, ItPo_Health_03))
+		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX] / 5)
 		{
 			AI_UseItem (hero, ItPo_Health_03);
 		}
 		else if (Npc_HasItems(hero, ItPo_Health_02))
-		&& (hero.attribute[ATR_HITPOINTS] <= hero.attribute[ATR_HITPOINTS_MAX] * 2 / 5)
+		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX] * 2)
 		{
 			AI_UseItem (hero, ItPo_Health_02);
 		}
 		else if (Npc_HasItems(hero, ItPo_Health_01))
-		&& (hero.attribute[ATR_HITPOINTS] <= hero.attribute[ATR_HITPOINTS_MAX] * 7 / 10)
+		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX])
 		{
 			AI_UseItem (hero, ItPo_Health_01);
 		}
 		else if (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX])
 		{
-			if		(Npc_HasItems(hero, ItPo_Health_01)){	AI_UseItem (hero, ItPo_Health_01);	}
-			else if (Npc_HasItems(hero, ItPo_Health_02)){	AI_UseItem (hero, ItPo_Health_02);	}
-			else if (Npc_HasItems(hero, ItPo_Health_03)){	AI_UseItem (hero, ItPo_Health_03);	}
-			else										{	Print("Brak mikstur leczniczych!");	};
+			if		(Npc_HasItems(hero, ItPo_Health_01))		{	AI_UseItem (hero, ItPo_Health_01);			}
+			else if (Npc_HasItems(hero, ItPo_Health_02))		{	AI_UseItem (hero, ItPo_Health_02);			}
+			else if (Npc_HasItems(hero, ItPo_Health_03))		{	AI_UseItem (hero, ItPo_Health_03);			}
+			else if (Npc_HasItems(hero, ItPo_Health_Addon_04))	{	AI_UseItem (hero, ItPo_Health_Addon_04);	}
+			else												{	Print("Brak mikstur leczniczych!");			};
 		}
 		else
 		{

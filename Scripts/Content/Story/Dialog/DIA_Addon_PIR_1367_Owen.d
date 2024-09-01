@@ -47,14 +47,18 @@ func void DIA_Addon_Owen_Hello_Info ()
 
 	var C_Item itm; itm = Npc_GetEquippedArmor(other);
 	
-	if ((Hlp_IsItem(itm, ItAr_Pir_M) == TRUE)
-	|| (Hlp_IsItem(itm, ItAr_Pir_L) == TRUE)
-	|| (Hlp_IsItem(itm, ItAr_Pir_H) == TRUE))
+	if (Hlp_IsItem(itm, ITAR_PIR_M))
+	|| (Hlp_IsItem(itm, ITAR_PIR_L))
+	|| (Hlp_IsItem(itm, ITAR_PIR_H))
 	{
 		AI_Output	(self, other, "DIA_Addon_Owen_Hello_13_03"); //Nosisz nasze barwy, ale nie znam ciê.
 	}
-	else if ((Hlp_IsItem(itm, ItAr_Bandit) == TRUE)
-	|| (Hlp_IsItem(itm, ITAR_RVN_L) == TRUE))
+	else if (Hlp_IsItem(itm, ITAR_BDT_L))
+	|| (Hlp_IsItem(itm, ITAR_BDT_M))
+	|| (Hlp_IsItem(itm, ITAR_BDT_H))
+	|| (Hlp_IsItem(itm, ITAR_RVN_L))
+	|| (Hlp_IsItem(itm, ITAR_RVN_M))
+	|| (Hlp_IsItem(itm, ITAR_RVN_H))
 	{
 	 	AI_Output	(self, other, "DIA_Addon_Owen_Hello_13_04"); //Prawdê mówi¹c, to tak.
 	}
@@ -221,7 +225,7 @@ func int DIA_Addon_Owen_runter_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-	&& (Npc_HasItems(Malcom, ItWr_StonePlate_HP) > 0)
+	&& (Npc_HasItems(Malcom, ItWr_StonePlate) > 0)
 	{
 		return TRUE;
 	};
@@ -248,7 +252,7 @@ func int DIA_Addon_Owen_MalcomDead_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-	&& (Npc_HasItems(Malcom, ItWr_StonePlate_HP) == 0)
+	&& (Npc_HasItems(Malcom, ItWr_StonePlate) == 0)
 	{
 		return TRUE;
 	};

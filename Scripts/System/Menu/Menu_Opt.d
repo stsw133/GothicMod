@@ -1,5 +1,7 @@
-
-instance MENU_OPTIONS(C_MENU_DEF)
+///******************************************************************************************
+/// Options
+///******************************************************************************************
+instance MENU_OPTIONS (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENUITEM_OPT_HEADING";
@@ -17,11 +19,11 @@ instance MENU_OPTIONS(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-
 const int MENU_OPT_DY = 600;
 const int MENU_OPT_START_Y = 2000;
 
-instance MENUITEM_OPT_HEADING(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_OPT_HEADING (C_MENU_ITEM_DEF)
 {
 	text[0] = "OPCJE";
 	type = MENU_ITEM_TEXT;
@@ -32,7 +34,14 @@ instance MENUITEM_OPT_HEADING(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_GAME(C_MENU_ITEM_DEF)
+func int update_perfoptions()
+{
+	Apply_Options_Performance();
+	return false;
+};
+
+///******************************************************************************************
+instance MENUITEM_OPT_GAME (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Ustawienia gry";
@@ -46,7 +55,7 @@ instance MENUITEM_OPT_GAME(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_GRAPHICS(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_GRAPHICS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Ustawienia grafiki";
@@ -60,7 +69,7 @@ instance MENUITEM_OPT_GRAPHICS(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_VIDEO(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_VIDEO (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Ustawienia obrazu";
@@ -74,7 +83,7 @@ instance MENUITEM_OPT_VIDEO(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_AUDIO(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_AUDIO (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Ustawienia dŸwiêku";
@@ -88,7 +97,7 @@ instance MENUITEM_OPT_AUDIO(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_CONTROLS(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_CONTROLS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Sterowanie";
@@ -102,7 +111,7 @@ instance MENUITEM_OPT_CONTROLS(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_EXT(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_EXT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Konfiguracja zaawansowana";
@@ -116,7 +125,7 @@ instance MENUITEM_OPT_EXT(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_PERF(C_MENU_ITEM_DEF)
+instance MENUITEM_PERF (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wydajnoœæ/Jakoœæ";
@@ -131,7 +140,7 @@ instance MENUITEM_PERF(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_PERF_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_PERF_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	text[0] = "Ust. w³asne#Du¿a wydajnoœæ|Œrednia jakoœæ|Wysoka jakoœæ";
@@ -147,7 +156,7 @@ instance MENUITEM_PERF_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_OPT_BACK(C_MENU_ITEM_DEF)
+instance MENUITEM_OPT_BACK (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wróæ";
@@ -158,11 +167,3 @@ instance MENUITEM_OPT_BACK(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_BACK;
 	flags = flags | IT_TXT_CENTER;
 };
-
-
-func int update_perfoptions()
-{
-	Apply_Options_Performance();
-	return 0;
-};
-

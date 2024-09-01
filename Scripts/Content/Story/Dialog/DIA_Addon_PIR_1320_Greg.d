@@ -526,7 +526,7 @@ FUNC VOID DIA_Addon_Greg_BanditGoldmine_Info()
 	AI_Output (self,other,"DIA_Addon_Greg_BanditGoldmine_01_02"); //Nikt nie mieszka³by wœród tych bagien roj¹cych siê od potworów, jeœli nie mia³by naprawdê solidnego powodu.
 	AI_Output (self,other,"DIA_Addon_Greg_BanditGoldmine_01_03"); //Dobra robota. Tu jest coœ dla ciebie.
 	
-	B_GiveInvItems (self,other,ItRi_STR_01,1);
+	B_GiveInvItems (self,other,ItRi_Str_01,1);
 	
 	B_LogEntry (TOPIC_Addon_ScoutBandits,"Poinformowa³em Grega o kopalni z³ota.");	
 	

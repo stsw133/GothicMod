@@ -7,10 +7,10 @@ prototype Mst_Default_Swampdrone (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_SWAMPDRONE;
 	
 	/// ------ Attributes ------
-	damagetype 							=	DAM_EDGE;
-	fight_tactic						= 	FAI_BLOODFLY;
+	damagetype							=	DAM_EDGE;
+	fight_tactic						=	FAI_BLOODFLY;
 	
-	NpcFn_SetAttributesToLevel (self, 9);
+	NpcFn_SetAttributesToLevel (self, 10);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -24,14 +24,14 @@ prototype Mst_Default_Swampdrone (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_WuselStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Swampdrone()
 {
 	Mdl_SetVisual		(self, "Swampdrone.mds");
-	Mdl_SetVisualBody	(self, "Swampdrone_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Swampdrone_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Swampdrone (Mst_Default_SwampDrone)

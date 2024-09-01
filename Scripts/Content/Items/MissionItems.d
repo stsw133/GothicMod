@@ -2,7 +2,7 @@
 prototype ItemPR_Mission (C_Item)
 {
 	mainflag 				=	ITEM_KAT_NONE;
-	flags 					=	ITEM_MULTI|ITEM_MISSION;
+	flags 					=	ITEM_MULTI | ITEM_MISSION;
 };
 ///******************************************************************************************
 
@@ -19,7 +19,7 @@ instance ItAm_InnosEye_Broken (ItemPR_Mission)
 	description		=	name;
 	TEXT[0]			=	TEXT_Innoseye_Setting;
 	TEXT[1]			=	"Klejnot jest martwy i pozbawiony mocy.";
-	INV_ZBIAS		=	INVCAM_ENTF_AMULETTE_STANDARD;
+	INV_ZBIAS		=	INVCAM_ENTF_AMULET_STANDARD;
 };
 instance ItAm_Mana_Angar_MIS (ItemPR_Mission)
 {
@@ -59,7 +59,7 @@ prototype Rangerring_prototype (C_Item)
 {
 	name 			=	"Pierœcieñ z akwamarynem";
 	mainflag 		=	ITEM_KAT_MAGIC;
-	flags 			=	ITEM_RING|ITEM_MISSION;
+	flags 			=	ITEM_RING | ITEM_MISSION;
 	
 	visual 			=	"ItRi_Hp_Mana_01.3ds"; 
 	material 		=	MAT_METAL;
@@ -156,7 +156,7 @@ prototype EffectItemprototype_Addon (C_Item)
 	
 	value 			=	5;
 	
-	visual 			=	"ItMi_Stone.3ds";
+	visual 			=	"ItMi_Coal.3ds";
 	material 		=	MAT_STONE;
 	
 	description		= 	name;
@@ -405,14 +405,14 @@ instance ItFo_HalvorFish_MIS (ItemPR_Mission)
 {	
 	name 			=	"Dziwna ryba";
 	visual 			=	"ItFo_Fish.3DS";
-	on_state[0]		=	Use_HalvorFish;
+	on_state[0]		=	Use_ItFo_HalvorFish;
 	scemeName		=	"MAPSEALED";
 	
 	description		=	"Dziwnie wygl¹daj¹ca ryba";
 	TEXT[2]			=	"Z t¹ ryb¹ jest coœ nie tak.";		
 	TEXT[3]			=	"Wygl¹da, jakby ktoœ j¹ pozszywa³...";
 };
-func void Use_HalvorFish()
+func void Use_ItFo_HalvorFish()
 {
 	CreateInvItem (self, ItWr_HalvorMessage);
 	Print("W tej rybie schowano jak¹œ notatkê.");
@@ -421,13 +421,13 @@ instance ItMi_Addon_GregsTreasureBottle_MIS	(ItemPR_Mission)
 {
 	name 			=	"Wiadomoœæ w butelce";
 	visual 			=	"ItMi_EmptyBottle.3DS";
-	on_state[0]		=   Use_GregsBottle;
+	on_state[0]		=   Use_ItMi_GregsBottle;
 	scemeName		=	"MAPSEALED";
 	
 	description		=	name;
 	TEXT[2]			=   "W œrodku jest kawa³ek papieru";
 };
-func void Use_GregsBottle()
+func void Use_ItMi_GregsBottle()
 {
 	CreateInvItem (self, ItMi_EmptyBottle);
 	B_PlayerFindItem (ItWr_Addon_TreasureMap, 1);
@@ -436,11 +436,11 @@ instance ItMi_GornsTreasure_MIS (ItemPR_Mission)
 {
 	name 			=	"Skórzana sakwa Gorna";
 	visual 			=	"ItMi_Pocket_Yellow.3ds";
-	on_state[0]		=   Use_GornsTreasure;
+	on_state[0]		=   Use_ItMi_GornsTreasure;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_GornsTreasure()
+func void Use_ItMi_GornsTreasure()
 {
 	Gorns_Beutel = true;
 	B_PlayerFindItem (ItMi_Gold, 250);
@@ -450,11 +450,11 @@ instance ItMi_KerolothsGeldbeutel_MIS (ItemPR_Mission)
 {
 	name 			=	"Skórzana torba Kerolotha";
 	visual 			=	"ItMi_Pocket.3ds";
-	on_state[0]		=   Use_KerolothsGeldbeutel;
+	on_state[0]		=   Use_ItMi_KerolothsGeldbeutel;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_KerolothsGeldbeutel()
+func void Use_ItMi_KerolothsGeldbeutel()
 {
 	CreateInvItem (self, ItMi_KerolothsGeldbeutelLeer_MIS);
 	B_PlayerFindItem (ItMi_Gold, 300);
@@ -464,11 +464,11 @@ instance ItMi_MalethsBanditGold (ItemPR_Mission)
 {
 	name 			=	"Sakwa pe³na z³ota!";
 	visual 			=	"ItMi_Pocket_Yellow.3ds";
-	on_state[0]		=   Use_MalethsBanditGold;
+	on_state[0]		=   Use_ItMi_MalethsBanditGold;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_MalethsBanditGold()
+func void Use_ItMi_MalethsBanditGold()
 {
 	B_PlayerFindItem (ItMi_Gold, 300);
 	Snd_Play("Geldbeutel");
@@ -477,11 +477,11 @@ instance ItSe_Addon_FrancisChest (ItemPR_Mission)
 {
 	name 			=	"Skrzynia ze skarbem";
 	visual 			=	"ItMi_GoldChest.3ds";
-	on_state[0]		=   Use_FrancisChest;
+	on_state[0]		=   Use_ItSe_FrancisChest;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_FrancisChest()
+func void Use_ItSe_FrancisChest()
 {
 	CreateInvItem (hero, ItMi_GoldChest);
 	CreateInvItem (hero, ItMw_GoldenSabre);
@@ -496,11 +496,11 @@ instance ItSe_CavalornsBeutel (ItemPR_Mission)
 {
 	name 			=	"Skórzana torba Cavalorna";
 	visual 			=	"ItMi_Pocket.3ds";
-	on_state[0]		=   Use_CavalornsBeutel;
+	on_state[0]		=   Use_ItSe_CavalornsBeutel;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_CavalornsBeutel()
+func void Use_ItSe_CavalornsBeutel()
 {
 	B_PlayerFindItem (ItMi_Nugget, 1);
 	SC_OpenedCavalornsBeutel = true;
@@ -512,11 +512,11 @@ instance ItSe_DiegosTreasure_Mis (ItemPR_Mission)
 {
 	name 			=	"Skórzana torba Diega";
 	visual 			=	"ItMi_Pocket.3ds";
-	on_state[0]		=   Use_DiegosTreasure;
+	on_state[0]		=   Use_ItSe_DiegosTreasure;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_DiegosTreasure()
+func void Use_ItSe_DiegosTreasure()
 {
 	OpenedDiegosBag = true;
 	B_PlayerFindItem (ItMi_Gold, 2000);
@@ -526,13 +526,13 @@ instance ItSe_Golemchest_Mis (ItemPR_Mission)
 {
 	name 			=	"Skórzany mieszek";
 	visual 			=	"ItMi_Pocket_Yellow.3ds";
-	on_state[0]		=   Use_GolemChest;
+	on_state[0]		=   Use_ItSe_GolemChest;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_GolemChest()
+func void Use_ItSe_GolemChest()
 {
-	B_PlayerFindItem (ItRi_AD_01, 1);
+	B_PlayerFindItem (ItRi_Prot_Blunt_01, 1);
 	B_PlayerFindItem (ItMi_Gold, 50);
 	Snd_Play("Geldbeutel");
 };
@@ -540,11 +540,11 @@ instance ItSe_HannasBeutel (ItemPR_Mission)
 {
 	name 			=	"Skórzany mieszek Hanny";
 	visual 			=	"ItMi_Pocket_White.3ds";
-	on_state[0]		=   Use_HannasBeutel;
+	on_state[0]		=   Use_ItSe_HannasBeutel;
 	scemename		=	"MAPSEALED";
 	description		=	name;
 };
-func void Use_HannasBeutel()
+func void Use_ItSe_HannasBeutel()
 {
 	B_PlayerFindItem (ItKe_Lockpick, 10);
 	B_PlayerFindItem (ItKe_ThiefTreasure, 1);

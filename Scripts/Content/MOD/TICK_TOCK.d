@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 var int TimeDust_WAIT;
-var string TimeDust_WP;
+var string TimeDust_WP, LostGregy_WP;
 
 var int keySprint1, keySprint2;
 var int keyNoanimtake1, keyNoanimtake2;
@@ -36,6 +36,21 @@ func void TT_5000()
 		
 		/// skalowanie prêdkoœci postaci
 		//NPC_SetTimeScale (hero, 1000 + hero.attribute[ATR_DEXTERITY]);
+	};
+	
+	/// Gregy
+	if (GregyIsYourFollower)
+	{
+		if (Npc_IsDead(Gregy))
+		{
+			PIR_1302_Gregy_Rise(Gregy);
+		};
+		
+		if (Npc_GetDistToNpc(Gregy, hero) > 10000 && Npc_GetDistToWP(hero, LostGregy_WP) > 1500)
+		{
+			AI_Teleport	(Gregy, LostGregy_WP);
+		};
+		LostGregy_WP = Npc_GetNearestWP(hero);
 	};
 };
 
@@ -163,9 +178,6 @@ func void TT_200()
 	
 	/// odœwie¿enie stanu energii
 	Npc_StaminaRefresh(hero);
-	
-	/// stan atrybutów
-	ShowBarText();
 	
 	/// u¿ycie mobów
 	MOD_Mobs();

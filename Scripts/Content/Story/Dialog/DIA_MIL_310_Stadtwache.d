@@ -117,8 +117,8 @@ func void DIA_Mil_310_Stadtwache_FirstWarn_Info()
 		}
  	 	 
  		// ------ als Bauer ------		
-		else if (Hlp_IsItem(itm, ItAr_Bau_00) == TRUE)
-		|| 		(Hlp_IsItem(itm, ItAr_Bau_01) == TRUE)
+		else if (Hlp_IsItem(itm, ItAr_Bau_L_00) == TRUE)
+		|| 		(Hlp_IsItem(itm, ItAr_Bau_L_01) == TRUE)
 		{
 			if (self.aivar[AIV_TalkedToPlayer] == TRUE)
 			{
@@ -349,7 +349,7 @@ FUNC INT DIA_Mil_310_Stadtwache_ZumSchmied_Condition()
 {	
 	var C_Item itm; itm = Npc_GetEquippedArmor(other);
 	
-	if ( (Hlp_IsItem(itm, ItAr_Bau_00) == TRUE) || (Hlp_IsItem(itm, ItAr_Bau_01) == TRUE) )
+	if ( (Hlp_IsItem(itm, ItAr_Bau_L_00) == TRUE) || (Hlp_IsItem(itm, ItAr_Bau_L_01) == TRUE) )
 	&& (Npc_KnowsInfo (other, DIA_Maleth_ToTheCity))
 	&& (Mil_310_schonmalreingelassen == FALSE)
 	{

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_GiantRat (C_Npc)			
+prototype Mst_Default_GiantRat (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Olbrzymi szczur";
@@ -7,10 +7,10 @@ prototype Mst_Default_GiantRat (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GIANT_RAT;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
-	fight_tactic						= 	FAI_GIANT_RAT;
+	damagetype							=	DAM_EDGE;
+	fight_tactic						=	FAI_GIANT_RAT;
 	
-	NpcFn_SetAttributesToLevel (self, 2);
+	NpcFn_SetAttributesToLevel (self, 3);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -20,7 +20,7 @@ prototype Mst_Default_GiantRat (C_Npc)
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
 	aivar[AIV_MM_FollowInWater]			=	false;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
@@ -31,13 +31,12 @@ prototype Mst_Default_GiantRat (C_Npc)
 func void B_SetVisuals_GiantRat()
 {
 	Mdl_SetVisual		(self, "Giant_Rat.mds");
-	Mdl_SetVisualBody	(self, "Giant_Rat_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Giant_Rat_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_GiantDesertRat()
 {
 	Mdl_SetVisual		(self, "Giant_Rat.mds");
-	Mdl_SetVisualBody	(self, "Giant_DesertRat_Body", 0, default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 1.15, 1.15, 1);
+	Mdl_SetVisualBody	(self, "Giant_DesertRat_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Giant_Rat (Mst_Default_GiantRat)
@@ -46,9 +45,5 @@ instance Giant_Rat (Mst_Default_GiantRat)
 };
 instance Giant_DesertRat (Mst_Default_GiantRat)
 {
-	name						=	"Pustynny szczur";
-	
-	NpcFn_SetAttributesToLevel (self, 4);
-	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_GiantDesertRat();
 };

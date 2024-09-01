@@ -30,7 +30,7 @@ func void B_GiveTradeInv_Khaled (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 30);
 		
-		//CreateInvItems (slf, ItBE_Addon_Leather_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Leather_01, 1);
 		
 		Khaled_ItemsGiven_Chapter = 7;
 	};
@@ -53,7 +53,7 @@ func void B_GiveTradeInv_Khaled (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 70);
 		CreateInvItems (slf, ItRw_Bolt, 50);
-		//CreateInvItems (slf, ItBe_Addon_Prot_Point, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Point_01, 1);
 		
 		CreateInvItems (slf, ItMi_Nugget, 1);
 		
@@ -65,8 +65,8 @@ func void B_GiveTradeInv_Khaled (var C_Npc slf)
 	{
 		CreateInvItems (slf, ItMi_Gold, 700);
 		
-		//CreateInvItems (slf, ItBe_Addon_Prot_Edge, 1);
-		//CreateInvItems (slf, ItBe_Addon_Prot_EdgPoi, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Edge_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Hp_01, 1);
 		CreateInvItems (slf, ItMiSwordraw, 1);
 		CreateInvItems (slf, ItRw_Arrow, 80);
 		CreateInvItems (slf, ItRw_Bolt, 60);

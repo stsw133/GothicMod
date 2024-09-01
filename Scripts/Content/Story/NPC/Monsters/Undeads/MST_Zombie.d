@@ -4,10 +4,10 @@ prototype Mst_Default_Zombie (C_Npc)
 	/// ------ Monster ------
 	name								=	"Zombie";
 	guild								=	GIL_ZOMBIE;
-	aivar[AIV_MM_REAL_ID]				= 	ID_ZOMBIE;
+	aivar[AIV_MM_REAL_ID]				=	ID_ZOMBIE;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_ZOMBIE;
 	
 	NpcFn_SetAttributesToLevel (self, 20);
@@ -21,24 +21,24 @@ prototype Mst_Default_Zombie (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_Zombie()
 {
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, -1);
+	Mdl_SetVisualBody	(self, "Zom_Body", self.aivar[AIV_BodyTex], self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, -1);
 };
 func void B_SetVisuals_MayaZombie()
 {
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_SKELETON);
+	Mdl_SetVisualBody	(self, "Zom_Body", self.aivar[AIV_BodyTex], self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_Skeleton);
 };
 ///******************************************************************************************
 instance Zombie (Mst_Default_Zombie)
@@ -50,25 +50,26 @@ instance Zombie (Mst_Default_Zombie)
 instance MayaZombie (Mst_Default_Zombie)
 {
 //	start_aistate						=	ZS_Pal_ZOMBIE;
-//	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+//	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	aivar[AIV_SkinTex] = Hlp_Random(2);
 	aivar[AIV_FaceTex] = Hlp_Random(2);
 	B_SetVisuals_MayaZombie();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Zombie_RavenGuard (Mst_Default_Zombie)
 {
-	name 								=	"S³uga Kruka";
+	name								=	"S³uga Kruka";
 	
 	aivar[AIV_SkinTex] = Hlp_Random(2);
 	aivar[AIV_FaceTex] = Hlp_Random(2);
 	Mdl_SetVisual		(self, "Zombie.mds");
-	Mdl_SetVisualBody 	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_RVN_M);
+	Mdl_SetVisualBody	(self, "Zom_Body", 0, self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_RVN_H);
 	
 	Npc_SetToFightMode (self, ItMw_1h_Mil_Sword);
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 };
 instance Zombie_Bloodwyn (Mst_Default_Zombie)
 {
@@ -81,7 +82,7 @@ instance Zombie_Bloodwyn (Mst_Default_Zombie)
 	Mdl_SetVisualBody	(self, "Zom_Body", 0, default, "Zom_Head", 0, default, ITAR_RVN_M);
 	
 	Npc_SetToFightMode (self, ItMw_1h_Mil_Sword);
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 };
 ///******************************************************************************************
 /*
@@ -97,10 +98,10 @@ func void ZS_Pal_ZOMBIE()
 func int ZS_Pal_ZOMBIE_Loop()
 {
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
-  	{
-  		AI_PlayAni (self, "T_DOWN");
-  		self.aivar[AIV_TAPOSITION] = ISINPOS;
-  	};
+ 	{
+ 		AI_PlayAni (self, "T_DOWN");
+ 		self.aivar[AIV_TAPOSITION] = ISINPOS;
+ 	};
 	return LOOP_CONTINUE;
 };
 func void ZS_Pal_ZOMBIE_END()

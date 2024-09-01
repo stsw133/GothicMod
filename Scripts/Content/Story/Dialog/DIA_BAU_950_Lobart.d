@@ -39,7 +39,7 @@ instance DIA_Lobart_STOLENCLOTHS		(C_INFO)
 
 func int DIA_Lobart_STOLENCLOTHS_Condition ()
 {
-	if (Mob_HasItems("CHEST_LOBART", ITAR_Bau_00) == FALSE)
+	if (Mob_HasItems("CHEST_LOBART", ITAR_Bau_L_00) == FALSE)
 	&& (Lobart_Kleidung_Verkauft == FALSE)
 	&& (hero.guild == GIL_NONE)
 	{
@@ -53,7 +53,7 @@ func void DIA_Lobart_STOLENCLOTHS_Info ()
 	
 	var C_Item heroArmor; heroArmor = Npc_GetEquippedArmor(other);
 	
-	if (Hlp_IsItem (heroArmor, ItAr_BAU_00) == TRUE)
+	if (Hlp_IsItem (heroArmor, ItAr_BAU_L_00) == TRUE)
 	{
 		AI_Output (self, other, "DIA_Lobart_STOLENCLOTHS_05_00"); //Nie wierzê! Ten drañ biega w MOICH ubraniach!
 	}	
@@ -73,7 +73,7 @@ func void DIA_Lobart_STOLENCLOTHS_Info ()
 	
 	Info_ClearChoices	(DIA_Lobart_STOLENCLOTHS);
 	Info_AddChoice		(DIA_Lobart_STOLENCLOTHS, "Zapomnij o tym!", 				DIA_Lobart_STOLENCLOTHS_ForgetIt );
-	if (Npc_HasItems (other, ItAr_BAU_00) > 0)
+	if (Npc_HasItems (other, ItAr_BAU_L_00) > 0)
 	{
 		Info_AddChoice		(DIA_Lobart_STOLENCLOTHS, "Proszê, weŸ je.", 	DIA_Lobart_STOLENCLOTHS_HereYouGo );
 	}
@@ -89,7 +89,7 @@ func void DIA_Lobart_STOLENCLOTHS_HereYouGo ()
 	AI_Output (self, other, "DIA_Lobart_STOLENCLOTHS_HereYouGo_05_01"); //Jeœli s¹ ci potrzebne, zap³aæ za nie!
 	AI_Output (self, other, "DIA_Lobart_STOLENCLOTHS_HereYouGo_05_02"); //Zrobi³byœ coœ po¿ytecznego!
 	
-	B_GiveInvItems (other, self, ItAr_BAU_00, 1);
+	B_GiveInvItems (other, self, ItAr_BAU_L_00, 1);
 	
 	Info_ClearChoices	(DIA_Lobart_STOLENCLOTHS);
 };
@@ -306,11 +306,11 @@ func void DIA_Lobart_BuyClothes_BUY()
 	
 	if (B_GiveInvItems (other, self, ItMi_gold, Wert_LobartsRuestung))
 	{
-		//if (Npc_HasItems(self,ItAr_BAU_00) > 0)
+		//if (Npc_HasItems(self,ItAr_BAU_L_00) > 0)
 		//{
 			AI_Output (self, other, "DIA_Lobart_BuyClothes_BUY_05_01"); //Tak, mój ch³opcze. Uczciwoœæ zawsze pop³aca. Proszê!
 			
-			B_GiveInvItems (self, other, ItAr_BAU_00, 1);
+			B_GiveInvItems (self, other, ItAr_BAU_L_00, 1);
 		//}
 		//else 
 		//{

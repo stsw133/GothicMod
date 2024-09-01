@@ -7,7 +7,7 @@ prototype Mst_Default_GoblinPirate (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_BANDIT;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
 	NpcFn_SetAttributesToLevel (self, 8);
@@ -24,13 +24,16 @@ prototype Mst_Default_GoblinPirate (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_GoblinPirate()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
-	Mdl_SetVisualBody	(self, "Gob_Pirate_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Gob_Pirate_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
 ///******************************************************************************************

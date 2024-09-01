@@ -31,8 +31,8 @@ func void Spell_Cast_nSummonGolem()
 			NPC_SummonedGolem.attribute[ATR_HITPOINTS] = 0;
 		};
 		
-		Wld_SpawnNpcRange (self, Golem, 1, 500);
-		NPC_SummonedGolem = Hlp_GetNpc(Golem);
+		Wld_SpawnNpcRange (self, StoneGolem, 1, 500);
+		NPC_SummonedGolem = Hlp_GetNpc(StoneGolem);
 		NpcFn_SetMonsterAsSummoned(NPC_SummonedGolem, false);
 		NPC_SummonedGolem.aivar[AIV_SummonTime] = -1;
 		//AI_PlayAniBS (NPC_SummonedGolem, "T_SPAWN", BS_UNCONSCIOUS);
@@ -55,6 +55,6 @@ func void Spell_Cast_nSummonGolem()
 	}
 	else
 	{
-		Wld_SpawnNpcRange (self, Golem, 1, 500);
+		Wld_SpawnNpcRange (self, StoneGolem, 1, 500);
 	};
 };

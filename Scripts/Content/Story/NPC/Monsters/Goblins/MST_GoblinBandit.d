@@ -7,7 +7,7 @@ prototype Mst_Default_GoblinBandit (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GOBBO_BANDIT;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOBBO;
 	
 	NpcFn_SetAttributesToLevel (self, 8);
@@ -24,7 +24,10 @@ prototype Mst_Default_GoblinBandit (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_GoblinBandit()

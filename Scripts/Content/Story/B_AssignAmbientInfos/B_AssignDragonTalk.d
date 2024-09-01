@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Main_1
+/// Main_1
 ///******************************************************************************************
 instance DIA_DragonTalk_Main_1 (C_Info)
 {
@@ -21,14 +21,14 @@ func void DIA_DragonTalk_Main_1_Info()
 	AI_Output (other, self, "DIA_DragonTalk_Main_1_15_00"); //Sługo ciemności! Co cię sprowadza do tego miejsca? Czy twoim jedynym celem jest sianie strachu i zniszczenia?
 	AI_Output (self, other, "DIA_DragonTalk_Main_1_20_01"); //Prawdziwy cel naszego przybycia do tego świata nigdy nie zostanie ci wyjawiony, człowiecze.
 	
-	Info_AddChoice (DIA_DragonTalk_Main_1, "Jak mam zmusić do mówienia pozostałe smoki?", DIA_DragonTalk_Main_1_reden);
-	Info_AddChoice (DIA_DragonTalk_Main_1, "Co muszę zrobić, aby ponownie cię wygnać?", DIA_DragonTalk_Main_1_verbannen);
+	//Info_AddChoice (DIA_DragonTalk_Main_1, "Jak mam zmusić do mówienia pozostałe smoki?", DIA_DragonTalk_Main_1_reden);
+	//Info_AddChoice (DIA_DragonTalk_Main_1, "Co muszę zrobić, aby ponownie cię wygnać?", DIA_DragonTalk_Main_1_verbannen);
 	
-	DragonTalk_Exit_Free = true;
+	DragonTalk_Exit_Free = true;/*
 };
 ///******************************************************************************************
 func void DIA_DragonTalk_Main_1_verbannen()
-{
+{*/
 	AI_Output (other, self, "DIA_DragonTalk_MAIN_1_verbannen_15_00"); //Na Innosa, co mam uczynić, by przegnać was precz z królestwa ludzi?
 	AI_Output (self, other, "DIA_DragonTalk_MAIN_1_verbannen_20_01"); //By tego dokonać, musiałbyś najpierw zrozumieć znaczenie naszego spotkania.
 	AI_Output (self, other, "DIA_DragonTalk_MAIN_1_verbannen_20_02"); //Ale żaden z nas nie wyjawi ci go z własnej woli.
@@ -56,8 +56,9 @@ func void DIA_DragonTalk_Main_1_reden()
 	AI_Output (self, other, "DIA_DragonTalk_MAIN_1_reden_20_01"); //Tylko moje serce pozwoli ci odnowić moc Oka.
 	AI_Output (self, other, "DIA_DragonTalk_MAIN_1_reden_20_02"); //Ale nigdy nie zdołasz wyrwać go z mojej piersi.
 };
+
 ///******************************************************************************************
-///	Main_2
+/// Main_2
 ///******************************************************************************************
 instance DIA_DragonTalk_Main_2 (C_Info)
 {
@@ -87,8 +88,9 @@ func void DIA_DragonTalk_Main_2_Info()
 	
 	DragonTalk_Exit_Free = true;
 };
+
 ///******************************************************************************************
-///	Main_3
+/// Main_3
 ///******************************************************************************************
 instance DIA_DragonTalk_Main_3 (C_Info)
 {
@@ -133,8 +135,9 @@ func void DIA_DragonTalk_Main_3_Info()
 	
 	DragonTalk_Exit_Free = true;
 };
+
 ///******************************************************************************************
-///	KommMit
+/// Main_4
 ///******************************************************************************************
 instance DIA_DragonTalk_Main_4 (C_Info)
 {
@@ -163,20 +166,23 @@ func void DIA_DragonTalk_Main_4_Info()
 	
 	Log_CreateTopic		(TOPIC_BuchHallenVonIrdorath, LOG_MISSION);
 	Log_SetTopicStatus	(TOPIC_BuchHallenVonIrdorath, LOG_RUNNING);
-	B_LogEntry			(TOPIC_BuchHallenVonIrdorath, "Władca smoków skrył się podobno w potężnym i świętym Dworze Irdorath. To brzmi jakoś znajomo. Gdzie to ja mogłem o tym czytać?"); 
+	B_LogEntry			(TOPIC_BuchHallenVonIrdorath, "Władca smoków skrył się podobno w potężnym i świętym Dworze Irdorath. To brzmi jakoś znajomo. Gdzie to ja mogłem o tym czytać?");
 	B_NPC_IsAliveCheck	(OLDWORLD_ZEN);
+	
 	DragonTalk_Exit_Free = true;
 };
+
 ///******************************************************************************************
 func void B_AssignDragonTalk_Main (var C_Npc slf)
 {
-	DIA_DragonTalk_Main_1.npc				= Hlp_GetInstanceID(slf);
-	DIA_DragonTalk_Main_2.npc				= Hlp_GetInstanceID(slf);
-	DIA_DragonTalk_Main_3.npc				= Hlp_GetInstanceID(slf);
-	DIA_DragonTalk_Main_4.npc				= Hlp_GetInstanceID(slf);	
+	DIA_DragonTalk_Main_1.npc			=	Hlp_GetInstanceID(slf);
+	DIA_DragonTalk_Main_2.npc			=	Hlp_GetInstanceID(slf);
+	DIA_DragonTalk_Main_3.npc			=	Hlp_GetInstanceID(slf);
+	DIA_DragonTalk_Main_4.npc			=	Hlp_GetInstanceID(slf);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_Dragon_Swamp_EXIT (C_Info)
 {
@@ -219,17 +225,18 @@ func void DIA_Dragon_Swamp_Exit_Info()
 		DJG_Biff_Stay = false;
 	};
 };
+
 ///******************************************************************************************
-///	Hello
+/// Hello
 ///******************************************************************************************
 instance DIA_Dragon_Swamp_Hello (C_Info)
 {
-	nr									= 5;
-	condition							= DIA_Dragon_Swamp_Hello_Condition;
-	information							= DIA_Dragon_Swamp_Hello_Info;
-	permanent							= false;
-	important							= true;
-};                       
+	nr									=	5;
+	condition							=	DIA_Dragon_Swamp_Hello_Condition;
+	information							=	DIA_Dragon_Swamp_Hello_Info;
+	permanent							=	false;
+	important							=	true;
+};
 func int DIA_Dragon_Swamp_Hello_Condition()
 {
 	if (Npc_HasItems(other, ItAm_InnosEye) >= 1)
@@ -239,7 +246,7 @@ func int DIA_Dragon_Swamp_Hello_Condition()
 	|| (Npc_HasItems(other, ItMw_2h_Ignite_05) >= 1)
 	{
 		return true;
-	};	
+	};
 };
 func void DIA_Dragon_Swamp_Hello_Info()
 {	
@@ -257,8 +264,9 @@ func void DIA_Dragon_Swamp_Hello_Info()
 	AI_Output (other, self, "DIA_Dragon_Swamp_Hello_15_06"); //Jestem wysłannikiem Innosa. Mam przy sobie święte Oko. Nie masz wyboru. Rób, co ci każę, albo spotka cię zasłużona kara.
 	AI_Output (self, other, "DIA_Dragon_Swamp_Hello_20_07"); //Aargh. Mów! Czego ode mnie chcesz?
 };
+
 ///******************************************************************************************
-///	WERBISTDU
+/// WERBISTDU
 ///******************************************************************************************
 instance DIA_Dragon_Swamp_WERBISTDU (C_Info)
 {
@@ -279,8 +287,9 @@ func void DIA_Dragon_Swamp_WERBISTDU_Info()
 	AI_Output (other, self, "DIA_Dragon_Swamp_WERBISTDU_15_00"); //Kim jesteś?
 	AI_Output (self, other, "DIA_Dragon_Swamp_WERBISTDU_20_01"); //Nazywam się Pandrodor. Dobrze ci radzę: uciekaj stąd, póki jeszcze możesz!
 };
+
 ///******************************************************************************************
-///	WOSINDDIEANDEREN
+/// WOSINDDIEANDEREN
 ///******************************************************************************************
 instance DIA_Dragon_Swamp_WOSINDDIEANDEREN (C_Info)
 {
@@ -303,17 +312,19 @@ func void DIA_Dragon_Swamp_WOSINDDIEANDEREN_Info()
 	AI_Output (self, other, "DIA_Dragon_Swamp_WOSINDDIEANDEREN_20_02"); //Każdy z nich sprawuje władzę nad jedną częścią świata.
 	AI_Output (self, other, "DIA_Dragon_Swamp_WOSINDDIEANDEREN_20_03"); //Szukaj żywiołów, a znajdziesz moich braci.
 };
+
 ///******************************************************************************************
 func void B_AssignDragonTalk_Swamp (var C_Npc slf)
 {
-	DIA_Dragon_Swamp_EXIT.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Swamp_Hello.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Swamp_WERBISTDU.npc			= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Swamp_WOSINDDIEANDEREN.npc	= Hlp_GetInstanceID(slf);
+	DIA_Dragon_Swamp_EXIT.npc				=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Swamp_Hello.npc				=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Swamp_WERBISTDU.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Swamp_WOSINDDIEANDEREN.npc	=	Hlp_GetInstanceID(slf);
 	B_AssignDragonTalk_Main(slf);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_Dragon_Rock_EXIT (C_Info)
 {
@@ -337,8 +348,9 @@ func void DIA_Dragon_Rock_Exit_Info()
 	DragonTalk_Exit_Free = false;
 	self.flags = 0;
 };
+
 ///******************************************************************************************
-///	Hello
+/// Hello
 ///******************************************************************************************
 instance DIA_Dragon_Rock_Hello (C_Info)
 {
@@ -372,8 +384,9 @@ func void DIA_Dragon_Rock_Hello_Info()
 	AI_Output (other, self, "DIA_Dragon_Rock_Add_15_00"); //Nie tak szybko! Mam tu Oko Innosa. Odpowiesz mi najpierw na moje pytania.
 	AI_Output (self, other, "DIA_Dragon_Rock_Hello_20_04"); //Aaargh. Pytaj więc!
 };
+
 ///******************************************************************************************
-///	WERBISTDU
+/// WERBISTDU
 ///******************************************************************************************
 instance DIA_Dragon_Rock_WERBISTDU (C_Info)
 {
@@ -394,8 +407,9 @@ func void DIA_Dragon_Rock_WERBISTDU_Info()
 	AI_Output (other, self, "DIA_Dragon_Rock_WERBISTDU_15_00"); //Kim jesteś?
 	AI_Output (self, other, "DIA_Dragon_Rock_WERBISTDU_20_01"); //Nazywam się Pedrakhan. Jak cię dopadnę, obedrę żywcem ze skóry!
 };
+
 ///******************************************************************************************
-///	HIERARCHIE
+/// HIERARCHIE
 ///******************************************************************************************
 instance DIA_Dragon_Rock_HIERARCHIE (C_Info)
 {
@@ -420,25 +434,27 @@ func void DIA_Dragon_Rock_HIERARCHIE_Info()
 	AI_Output (self, other, "DIA_Dragon_Rock_HIERARCHIE_20_04"); //Iskra życia płonie w huczącym ogniu tego świata. A przecież ogień spala całe życie, pozostawiając po nim ledwie garstkę popiołu.
 	AI_Output (self, other, "DIA_Dragon_Rock_HIERARCHIE_20_05"); //Wszystkie żywioły mają moc tworzenia i niszczenia. Ale tylko w wodzie, która stała się twarda jak skała, wszystko stanie się słupem soli, na którym życie jest niemożliwe.
 };
+
 ///******************************************************************************************
 func void B_AssignDragonTalk_Rock (var C_Npc slf)
 {
-	DIA_Dragon_Rock_EXIT.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Rock_Hello.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Rock_WERBISTDU.npc			= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Rock_HIERARCHIE.npc			= Hlp_GetInstanceID(slf);
-	B_AssignDragonTalk_Main(slf);	
+	DIA_Dragon_Rock_EXIT.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Rock_Hello.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Rock_WERBISTDU.npc		=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Rock_HIERARCHIE.npc		=	Hlp_GetInstanceID(slf);
+	B_AssignDragonTalk_Main(slf);
 };
+
 ///******************************************************************************************
 /// EXIT
 ///******************************************************************************************
 instance DIA_Dragon_Fire_EXIT (C_Info)
 {
-	nr									= 999;
-	condition							= DIA_Dragon_Fire_Exit_Condition;
-	information							= DIA_Dragon_Fire_Exit_Info;
-	permanent							= true;
-	description							= DIALOG_END;
+	nr									=	999;
+	condition							=	DIA_Dragon_Fire_Exit_Condition;
+	information							=	DIA_Dragon_Fire_Exit_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
 };
 func int DIA_Dragon_Fire_Exit_Condition()
 {
@@ -460,6 +476,7 @@ func void DIA_Dragon_Fire_Exit_Info()
 		DJG_Biff_Stay = false;
 	};
 };
+
 ///******************************************************************************************
 /// Hello
 ///******************************************************************************************
@@ -497,6 +514,7 @@ func void DIA_Dragon_Fire_Hello_Info()
 	AI_Output (other, self, "DIA_Dragon_Fire_Hello_15_05"); //Nie tak szybko, przyjacielu. Mam ze sobą Oko Innosa! Nie masz wyboru - odpowiesz na moje pytania albo zdechniesz w męczarniach.
 	AI_Output (self, other, "DIA_Dragon_Fire_Hello_20_06"); //Aaarh. Zatem pytaj, póki jeszcze możesz. Twoja władza nade mną wkrótce się skończy.
 };
+
 ///******************************************************************************************
 /// WerBistDu
 ///******************************************************************************************
@@ -520,6 +538,7 @@ func void DIA_Dragon_Fire_WerBistDu_Info()
 	AI_Output (self, other, "DIA_Dragon_Fire_WerBistDu_20_01"); //Nazywam się Feomathar. To wszystko, czego się o mnie dowiesz.
 	AI_Output (self, other, "DIA_Dragon_Fire_WerBistDu_20_02"); //Spalę cię na popiół, gdy tylko wyrwę się spod władzy Oka!
 };
+
 ///******************************************************************************************
 /// HORT
 ///******************************************************************************************
@@ -543,15 +562,17 @@ func void DIA_Dragon_Fire_HORT_Info()
 	AI_Output (self, other, "DIA_Dragon_Fire_HORT_20_01"); //W miejscu, do którego nigdy nie dotrzesz. Postaram się o to, gdy moc Oka osłabnie.
 	AI_Output (self, other, "DIA_Dragon_Fire_HORT_20_02"); //Ukryłem swoje skarby wysoko na rozgrzanych skałach, gdzie nie dotrze żadna pozbawiona skrzydeł istota!
 };
+
 ///******************************************************************************************
 func void B_AssignDragonTalk_Fire (var C_Npc slf)
 {
-	DIA_Dragon_Fire_EXIT.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Fire_Hello.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Fire_WerBistDu.npc			= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Fire_HORT.npc				= Hlp_GetInstanceID(slf);
+	DIA_Dragon_Fire_EXIT.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Fire_Hello.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Fire_WerBistDu.npc		=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Fire_HORT.npc			=	Hlp_GetInstanceID(slf);
 	B_AssignDragonTalk_Main(slf);
 };
+
 ///******************************************************************************************
 /// EXIT
 ///******************************************************************************************
@@ -588,6 +609,7 @@ func void DIA_Dragon_Ice_Exit_Info()
 	Wld_InsertNpc (Draconian, "FP_ROAM_OW_BLOODFLY_05_01");
 	Wld_InsertNpc (Draconian, "FP_ROAM_OW_BLOODFLY_05_01");
 };
+
 ///******************************************************************************************
 /// Hello
 ///******************************************************************************************
@@ -624,6 +646,7 @@ func void DIA_Dragon_Ice_Hello_Info()
 	AI_Output (other, self, "DIA_Dragon_Ice_Hello_15_04"); //Milcz! Na moc świętego Oka, które powierzono w moje ręce, zaklinam cię: odpowiedz na moje pytania!
 	AI_Output (self, other, "DIA_Dragon_Ice_Hello_20_05"); //Ha, ha, ha. Pytaj więc. Twoja wiedza i tak na nic ci się nie zda.
 };
+
 ///******************************************************************************************
 /// WERBISTDU
 ///******************************************************************************************
@@ -646,6 +669,7 @@ func void DIA_Dragon_Ice_WERBISTDU_Info()
 	AI_Output (other, self, "DIA_Dragon_Ice_WERBISTDU_15_00"); //Kim jesteś?
 	AI_Output (self, other, "DIA_Dragon_Ice_WERBISTDU_20_01"); //Jestem Finkregh, pan lodu i śniegu, Strażnik Spotkania, i ten, który zakończy twój nędzny żywot.
 };
+
 ///******************************************************************************************
 /// BELIAR
 ///******************************************************************************************
@@ -671,17 +695,19 @@ func void DIA_Dragon_Ice_BELIAR_Info()
 	AI_Output (self, other, "DIA_Dragon_Ice_BELIAR_20_03"); //Beliar nie tylko pozwolił na nasze przybycie. On KAZAŁ nam tutaj przybyć!
 	AI_Output (self, other, "DIA_Dragon_Ice_BELIAR_20_04"); //Wsłuchani w jego święte słowa, nie spoczniemy, póki nie spełni się jego wola.
 };
+
 ///******************************************************************************************
 func void B_AssignDragonTalk_Ice (var C_Npc slf)
 {
-	DIA_Dragon_Ice_EXIT.npc				= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Ice_Hello.npc			= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Ice_WERBISTDU.npc		= Hlp_GetInstanceID(slf);
-	DIA_Dragon_Ice_BELIAR.npc			= Hlp_GetInstanceID(slf);
+	DIA_Dragon_Ice_EXIT.npc				=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Ice_Hello.npc			=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Ice_WERBISTDU.npc		=	Hlp_GetInstanceID(slf);
+	DIA_Dragon_Ice_BELIAR.npc			=	Hlp_GetInstanceID(slf);
 	B_AssignDragonTalk_Main(slf);
 };
+
 ///******************************************************************************************
-/// BELIAR
+/// EXIT
 ///******************************************************************************************
 instance DIA_Dragon_Fire_Island_EXIT (C_Info)
 {
@@ -705,6 +731,7 @@ func void DIA_Dragon_Fire_Island_Exit_Info()
 	DragonTalk_Exit_Free = false;
 	self.flags = 0;
 };
+
 ///******************************************************************************************
 /// Hello
 ///******************************************************************************************
@@ -756,6 +783,7 @@ func void DIA_Dragon_Fire_Island_Hello_Info()
 	DragonTalk_Exit_Free = false;
 	self.flags = 0;
 };
+
 ///******************************************************************************************
 /// EXIT
 ///******************************************************************************************
@@ -781,6 +809,7 @@ func void DIA_Dragon_Undead_Exit_Info()
 	DragonTalk_Exit_Free = false;
 	self.flags = 0;
 };
+
 ///******************************************************************************************
 /// Hello
 ///******************************************************************************************
@@ -835,7 +864,7 @@ func void DIA_Dragon_Undead_Hello_Info()
 	Info_AddChoice (DIA_Dragon_Undead_Hello, "Dlaczego tu przybyłeś?", DIA_Dragon_Undead_Hello_warum);
 	Info_AddChoice (DIA_Dragon_Undead_Hello, "Kim jesteś?", DIA_Dragon_Undead_Hello_wer);
 	
-	B_LogEntry (TOPIC_HallenVonIrdorath, "Przeciwnikiem jest smok-ożywieniec. Muszę go zabić, zanim będę mógł opuścić tę przeklętą wyspę."); 
+	B_LogEntry (TOPIC_HallenVonIrdorath, "Przeciwnikiem jest smok-ożywieniec. Muszę go zabić, zanim będę mógł opuścić tę przeklętą wyspę.");
 };
 ///******************************************************************************************
 func void DIA_Dragon_Undead_Hello_wer()
@@ -893,6 +922,9 @@ func void DIA_Dragon_Undead_Hello_attack()
 	DragonTalk_Exit_Free = false;
 	self.flags = 0;
 };
+
+///******************************************************************************************
+/// B_AssignDragonTalk
 ///******************************************************************************************
 func void B_AssignDragonTalk (var C_Npc slf)
 {

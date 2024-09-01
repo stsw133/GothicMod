@@ -103,8 +103,8 @@ func void DIA_Mil_333_Stadtwache_FirstWarn_Info()
 		
 		// ------ ohne Rüstung ODER als Bauer ------
 		if (Npc_HasEquippedArmor(other) == FALSE)
-		|| (Hlp_IsItem(itm, ItAr_Bau_00) == TRUE)
-		|| (Hlp_IsItem(itm, ItAr_Bau_01) == TRUE)
+		|| (Hlp_IsItem(itm, ItAr_Bau_L_00) == TRUE)
+		|| (Hlp_IsItem(itm, ItAr_Bau_L_01) == TRUE)
 		{
 			AI_Output (other, self,"DIA_Mil_333_Stadtwache_FirstWarn_15_07"); //Tak?
 			AI_Output (self, other,"DIA_Mil_333_Stadtwache_FirstWarn_06_08"); //Wygl¹dasz na biedaka, nie potrzebujemy takich w naszym mieœcie.

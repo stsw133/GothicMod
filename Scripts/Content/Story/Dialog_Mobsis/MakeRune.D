@@ -51,7 +51,7 @@ instance PC_MakeScroll_End (C_Info)
 	npc									=	PC_Hero;
 	nr									=	999;
 	condition							=	PC_MakeScroll_End_Condition;
-	information							=	PC_MakeScroll_End_Info;
+	information							=	B_ENDPRODUCTIONDIALOG;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
@@ -62,12 +62,9 @@ func int PC_MakeScroll_End_Condition()
 		return true;
 	};
 };
-func void PC_MakeScroll_End_Info()
-{
-	B_ENDPRODUCTIONDIALOG();
-};
+
 ///******************************************************************************************\
-/// neutral
+/// Neutral
 ///******************************************************************************************
 instance PC_MakeRune_Neutral (C_Info)
 {
@@ -453,8 +450,9 @@ func void PC_ItRu_Shrink_Info()
 	
 	B_ENDPRODUCTIONDIALOG();
 };
+
 ///******************************************************************************************
-/// battle
+/// Battle
 ///******************************************************************************************
 instance PC_MakeRune_Battle (C_Info)
 {
@@ -1175,8 +1173,9 @@ func void PC_ItRu_ArmyOfDarkness_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
-/// special
+/// Special
 ///******************************************************************************************
 instance PC_MakeRune_Special (C_Info)
 {
@@ -1242,6 +1241,7 @@ func void PC_SPL_PalTeleportSecret_Create()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
+
 ///******************************************************************************************
 /// MYS
 ///******************************************************************************************
@@ -1495,6 +1495,7 @@ func void PC_ItRu_MysSlow_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
 /// GEO
 ///******************************************************************************************
@@ -1748,6 +1749,7 @@ func void PC_ItRu_GeoCollapse_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
 /// ELE
 ///******************************************************************************************
@@ -2001,6 +2003,7 @@ func void PC_ItRu_EleThunderstorm_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
 /// PYR
 ///******************************************************************************************
@@ -2162,10 +2165,10 @@ func void PC_ItRu_PyrFirebomb_Info()
 		Print(PRINT_ProdItemsMissing);
 	}
 	else if (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
-	&& (Npc_HasItems(hero, ItAt_WaranFireTongue) >= 1)
+	&& (Npc_HasItems(hero, ItAt_FirewaranTongue) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_Sulfur);
-		Npc_RemoveInvItem (hero, ItAt_WaranFireTongue);
+		Npc_RemoveInvItem (hero, ItAt_FirewaranTongue);
 		
 		if (PLAYER_MOBSI_PRODUCTION == MOBSI_MAKERUNE)
 		{
@@ -2254,6 +2257,7 @@ func void PC_ItRu_PyrFirerain_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
 /// NEC
 ///******************************************************************************************
@@ -2507,6 +2511,7 @@ func void PC_ItRu_NecDeath_Info()
 	B_ENDPRODUCTIONDIALOG();
 };
 */
+
 ///******************************************************************************************
 /// PAL
 ///******************************************************************************************

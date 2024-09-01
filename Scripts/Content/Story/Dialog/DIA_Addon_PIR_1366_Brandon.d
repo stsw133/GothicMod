@@ -278,7 +278,7 @@ FUNC VOID DIA_Addon_Brandon_TeachPlayer_Back()
 // ------------------------------------------------------------
 FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_1()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MED);
 	
 	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
 	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
@@ -290,7 +290,7 @@ FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_1()
 // ------------------------------------------------------------
 FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_5()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MED);
 	
 	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
 	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
@@ -302,7 +302,7 @@ FUNC VOID DIA_Addon_Brandon_TeachPlayer_DEX_5()
 // ------------------------------------------------------------
 FUNC VOID DIA_Addon_Brandon_TeachPlayer_STR_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 	
 	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
 	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);
@@ -314,7 +314,7 @@ FUNC VOID DIA_Addon_Brandon_TeachPlayer_STR_1()
 // ------------------------------------------------------------
 FUNC VOID DIA_Addon_Brandon_TeachPlayer_STR_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 
 	Info_ClearChoices (DIA_Addon_Brandon_TeachPlayer);
 	Info_AddChoice (DIA_Addon_Brandon_TeachPlayer,DIALOG_BACK,DIA_Addon_Brandon_TeachPlayer_Back);

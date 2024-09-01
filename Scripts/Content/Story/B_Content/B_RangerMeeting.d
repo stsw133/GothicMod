@@ -1,21 +1,21 @@
 ///******************************************************************************************
-///	B_RangerMeeting
+/// B_RangerMeeting
 ///******************************************************************************************
-func void B_MakeRangerReadyForMeeting (var C_Npc ranger)	
-{				
-	CreateInvItems	(ranger, ITAR_Ranger_L, 1);
-	AI_UnequipArmor	(ranger);
-	AI_EquipArmor	(ranger, ITAR_Ranger_L);
+func void B_MakeRangerReadyForMeeting (var C_Npc slf)
+{
+	CreateInvItems	(slf, ITAR_Ranger_L, 1);
+	AI_UnequipArmor	(slf);
+	AI_EquipArmor	(slf, ITAR_Ranger_L);
 	
-	ranger.npctype = NPCTYPE_FRIEND;
+	slf.npctype = NPCTYPE_FRIEND;
 };
 
 ///******************************************************************************************
-func void B_MakeRangerReadyToLeaveMeeting (var C_Npc ranger)
+func void B_MakeRangerReadyToLeaveMeeting (var C_Npc slf)
 {
-	AI_UnequipArmor		(ranger);
-	Npc_RemoveInvItems	(ranger, ITAR_Ranger_L, Npc_HasItems(Ranger, ITAR_Ranger_L));
-	AI_EquipBestArmor	(ranger);
+	AI_UnequipArmor		(slf);
+	Npc_RemoveInvItems	(slf, ITAR_Ranger_L, Npc_HasItems(slf, ITAR_Ranger_L));
+	AI_EquipBestArmor	(slf);
 };
 
 ///******************************************************************************************
@@ -82,24 +82,8 @@ func void B_RangerMeetingParking()
 	Lares_HaltsMaul = true;
 	B_StartOtherRoutine (Lares, "Parking");
 	B_StartOtherRoutine (Cord, "Parking");
-	
-	if (!Gaan.aivar[AIV_TalkedToPlayer])
-	{
-		B_StartOtherRoutine (Gaan, "Parking");
-	}
-	else
-	{
-		B_StartOtherRoutine (Gaan, "Parking");
-	};
-	
-	if (MIS_Addon_Martin_GetRangar == 0)
-	{
-		B_StartOtherRoutine	(Martin, "Parking");
-	}
-	else
-	{
-		B_StartOtherRoutine (Martin, "Parking");
-	};
+	B_StartOtherRoutine (Gaan, "Parking");
+	B_StartOtherRoutine (Martin, "Parking");
 };
 
 ///******************************************************************************************

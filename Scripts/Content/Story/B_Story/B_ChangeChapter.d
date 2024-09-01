@@ -4,7 +4,6 @@
 func void B_ChangeChapter (var int newKap, var int currentZen)
 {
 	Kapitel = newKap;
-	Npc_SetTalentSkill (hero, NPC_TALENT_CHAPTER, newKap);
 	
 	var string chapterNumber; chapterNumber = ConcatStrings("Rozdzia³ ", IntToString(newKap));
 	
@@ -21,7 +20,7 @@ func void B_ChangeChapter (var int newKap, var int currentZen)
 	else if (newKap == 11)	{	IntroduceChapter (chapterNumber, "Rozstanie",			"chapter_11.tga", "chapter_01.wav", 6000);	}
 	else if (newKap == 12)	{	IntroduceChapter (chapterNumber, "Dwór Irdorath",		"chapter_12.tga", "chapter_01.wav", 6000);	};
 	
- 	B_CheckLog();
+	B_CheckLog();
 	
 	if (currentZen == OLDWORLD_ZEN)	{	B_ENTER_OLDWORLD();	};
 	if (currentZen == NEWWORLD_ZEN)	{	B_ENTER_NEWWORLD();	};

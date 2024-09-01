@@ -79,7 +79,7 @@ func void QS_RenderHook()
 		return;
 	};
 	
-	var int posY; posY = 8192 - Print_ToVirtual(140, PS_Y); 
+	var int posY; posY = 8192 - Print_ToVirtual(110, PS_Y);	//140
 	if(QS_IsInvOpen()) {
 		posY = QS_posY_OpenInv;
 	};

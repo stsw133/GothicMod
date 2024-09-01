@@ -38,7 +38,7 @@ func void B_GiveTradeInv_Addon_Fisk (var C_Npc slf)
 		CreateInvItems (slf, ItMw_1h_Keule, 1);
 		CreateInvItems (slf, ItMw_2h_Keule, 1);
 		
-		//CreateInvItems (slf, ItRi_Prot_Edge_02, 1);
+		CreateInvItems (slf, ItRi_Tenacity_01, 1);
 		
 		Fisk_ItemsGiven_Chapter = 7;
 	};

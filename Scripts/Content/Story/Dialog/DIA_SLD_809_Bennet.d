@@ -687,8 +687,8 @@ func void DIA_Bennet_Present_Info ()
 		AI_Output	(other,self ,"DIA_Bennet_Present_15_14"); //I co?
 		AI_Output 	(self ,other,"DIA_Bennet_Present_06_15"); //Proszê, weŸ ten amulet. S¹dzê, ¿e tobie bardziej siê on przyda.
 	
-		CreateInvItems (self,ItAm_Druid_01,1); 
-		B_GiveInvItems (self,other,ItAm_Druid_01,1);
+		CreateInvItems (self,ItAm_Hp_01,1); 
+		B_GiveInvItems (self,other,ItAm_Hp_01,1);
 	};
 };
 

@@ -441,7 +441,7 @@ const string NAME_SPL_Crush					=	"Zmia¿d¿enie";
 ///******************************************************************************************
 const string TXT_TALENTS[NPC_TALENT_MAX] =
 {
-	"",							/// NPC_TALENT_UNKNOWN			= 0;
+	"Br. miotana:",				/// NPC_TALENT_THROW			= 0;
 	"Br. jednorêczna:",			/// NPC_TALENT_1H				= 1;
 	"Br. dwurêczna:",			/// NPC_TALENT_2H				= 2;
 	"£uki:",					/// NPC_TALENT_BOW				= 3;
@@ -450,45 +450,45 @@ const string TXT_TALENTS[NPC_TALENT_MAX] =
 	"Kradzie¿ kiesz.:",			/// NPC_TALENT_PICKPOCKET		= 6;
 	"Kr¹g magii:",				/// NPC_TALENT_MAGIC			= 7;
 	"Skradanie siê:",			/// NPC_TALENT_SNEAK			= 8;
-	"Pro-biegacz:",				/// NPC_TALENT_PRORUN			= 9;
-	"Druga broñ:",				/// NPC_TALENT_2ndH				= 10;
+	"Dwa miecze:",				/// NPC_TALENT_DUAL				= 9;
+	"Tarcze:",					/// NPC_TALENT_SHIELD			= 10;
 	"Akrobatyka:",				/// NPC_TALENT_ACROBATIC		= 11;
-	"Perswazja:",				/// NPC_TALENT_PERSUASION		= 12;
+	"£uczarstwo:",				/// NPC_TALENT_FLETCHERY		= 12;
 	"Kowalstwo:",				/// NPC_TALENT_SMITH			= 13;
 	"Zaklinanie:",				/// NPC_TALENT_ENCHANTING		= 14;
 	"Alchemia:",				/// NPC_TALENT_ALCHEMY			= 15;
 	"Myœliwstwo:",				/// NPC_TALENT_HUNTING			= 16;
-	"Staro¿. jêzyk:",			/// NPC_TALENT_LANGUAGE			= 17;
-	"Gotowanie:",				/// NPC_TALENT_COOKING			= 18;
-	"Odp. na trucizny:",		/// NPC_TALENT_PROTPOISON		= 19;
-	"Rozdzia³:",				/// NPC_TALENT_CHAPTER			= 20;
-	"Poz. trudn.:"				/// NPC_TALENT_DIFFICULTY		= 21;
+	"Gotowanie:",				/// NPC_TALENT_COOKING			= 17;
+	"Górnictwo:",				/// NPC_TALENT_MINING			= 18;
+	"P³atnerstwo:",				/// NPC_TALENT_ARMORY			= 19;
+	"Perswazja:",				/// NPC_TALENT_PERSUASION		= 20;
+	"Staro¿. jêzyk:"			/// NPC_TALENT_LANGUAGE			= 21;
 };
 
 const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 {
-	"",									/// NPC_TALENT_UNKNOWN		= 0;
+	"s³aby|œredni|silny",				/// NPC_TALENT_THROW		= 0;
 	"s³aby|œredni|silny",				/// NPC_TALENT_1H			= 1;
 	"s³aby|œredni|silny",				/// NPC_TALENT_2H			= 2;
 	"s³aby|œredni|silny",				/// NPC_TALENT_BOW			= 3;
 	"s³aby|œredni|silny",				/// NPC_TALENT_CROSSBOW		= 4;
 	"-|uczony",							/// NPC_TALENT_PICKLOCK		= 5;
-	"-|uczony",							/// NPC_TALENT_PICKPOCKET	= 6;
+	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_PICKPOCKET	= 6;
 	"-|1|2|3|4|5|6",					/// NPC_TALENT_MAGIC		= 7;
 	"-|uczony",							/// NPC_TALENT_SNEAK		= 8;
-	"-|uczony",							/// NPC_TALENT_PRORUN		= 9;
-	"-|tarcza|miecz|dowolna",			/// NPC_TALENT_2ndH			= 10;
+	"-|uczony",							/// NPC_TALENT_DUAL			= 9;
+	"-|uczony",							/// NPC_TALENT_SHIELD		= 10;
 	"-|uczony",							/// NPC_TALENT_ACROBATIC	= 11;
-	"-|uczony",							/// NPC_TALENT_PERSUASION	= 12;
-	"-|uczony",							/// NPC_TALENT_SMITH		= 13;
-	"-|uczony",							/// NPC_TALENT_ENCHANTING	= 14;
-	"-|uczony",							/// NPC_TALENT_ALCHEMY		= 15;
+	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_FLETCHERY	= 12;
+	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_SMITH		= 13;
+	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_ENCHANTING	= 14;
+	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_ALCHEMY		= 15;
 	"-|uczony",							/// NPC_TALENT_HUNTING		= 16;
-	"-|uczony",							/// NPC_TALENT_LANGUAGE		= 17;
-	"-|uczony",							/// NPC_TALENT_COOKING		= 18;
-	"-|uczony",							/// NPC_TALENT_PROTPOISON	= 19;
-	"0|1|2|3|4|5|6|7|8|9|10|11|12|12+",	/// NPC_TALENT_CHAPTER		= 20;
-	"³atwy|œredni|trudny|b. trudny"		/// NPC_TALENT_DIFFICULTY	= 21;
+	"-|uczony",							/// NPC_TALENT_COOKING		= 17;
+	"-|uczony",							/// NPC_TALENT_MINING		= 18;
+	"-|uczony",							/// NPC_TALENT_ARMORY		= 19;
+	"-|uczony",							/// NPC_TALENT_PERSUASION	= 20;
+	"-|uczony"							/// NPC_TALENT_LANGUAGE		= 21;
 };
 
 ///******************************************************************************************
@@ -603,49 +603,61 @@ const string NAME_DamageTrue				=	"Nieuchronne: ";
 const string NAME_DamageShielded			=	"Absorbowano: ";
 
 /// ------ protections ------
-const string NAME_Prot_Physical				=	"Odpornoœæ fizyczna: ";
-const string NAME_Prot_Magical				=	"Odpornoœæ magiczna: ";
-
-const string NAME_Prot_Edge					=	"Ochrona przed broni¹: ";
+const string NAME_Prot_Blunt				=	"Ochrona przed obuchem: ";
+const string NAME_Prot_Edge					=	"Ochrona przed ostrzami: ";
+const string NAME_Prot_Melee				=	"Ochrona przed broni¹: ";
 const string NAME_Prot_Point				=	"Ochrona przed pociskami: ";
 const string NAME_Prot_Fire					=	"Ochrona przed smoczym ogniem: ";
 const string NAME_Prot_Magic				=	"Ochrona przed magi¹: ";
 const string NAME_Prot_Total				=	"Ochrona ca³kowita: ";
 
 /// ------ bonuses ------
-const string NAME_Bonus_HP					=	"Premia punktów ¿ycia: ";
-const string NAME_Bonus_Mana				=	"Premia many: ";
-const string NAME_Bonus_Stamina				=	"Premia energii: ";
-const string NAME_Bonus_Exp					=	"Premia doœwiadczenia: ";
-const string NAME_Bonus_FoodTime			=	"Premia czasu regen. ¿ycia: ";
-const string NAME_Bonus_DrinkTime			=	"Premia czasu regen. energii: ";
+const string NAME_Bonus_Hp					=	"Odnowa ¿ycia: ";
+const string NAME_Bonus_Mp					=	"Odnowa many: ";
+const string NAME_Bonus_Sp					=	"Odnowa energii: ";
+const string NAME_Bonus_Xp					=	"Premia doœwiadczenia: ";
+const string NAME_Bonus_HpTime				=	"Czas odnowy ¿ycia: ";
+const string NAME_Bonus_MpTime				=	"Czas odnowy many: ";
+const string NAME_Bonus_SpTime				=	"Czas odnowy energii: ";
+const string NAME_Bonus_XpTime				=	"Czas bonusu doœwiadczenia: ";
 const string NAME_Bonus_AlcoholTime			=	"Si³a (czas) alkoholu: ";
 
-const string NAME_Percent_HP				=	"Premia % punktów ¿ycia: ";
-const string NAME_Percent_Mana				=	"Premia % many: ";
-const string NAME_Percent_Stamina			=	"Premia % energii: ";
-const string NAME_Percent_FoodTime			=	"Premia % czasu regen. ¿ycia: ";
+const string NAME_Percent_Hp				=	"Odnowa % ¿ycia: ";
+const string NAME_Percent_Mp				=	"Odnowa % many: ";
+const string NAME_Percent_Sp				=	"Odnowa % energii: ";
+const string NAME_Percent_HpTime			=	"Czas odnowy % ¿ycia: ";
+const string NAME_Percent_MpTime			=	"Czas odnowy % many: ";
+const string NAME_Percent_SpTime			=	"Czas odnowy % energii: ";
 
-const string NAME_Bonus_LP					=	"Premia do punktów nauki: ";
+const string NAME_Bonus_Lp					=	"Premia do punktów nauki: ";
+const string NAME_Bonus_AllBaseAtr			=	"Premia do bazowych atrybutów: ";
+const string NAME_Bonus_MostLearnedAtr		=	"Premia do wyuczonego atrybutu: ";
 const string NAME_Bonus_HpMax				=	"Premia do max. punktów ¿ycia: ";
 const string NAME_Bonus_MpMax				=	"Premia do max. many: ";
 const string NAME_Bonus_SpMax				=	"Premia do max. energii: ";
 const string NAME_Bonus_Str					=	"Premia do si³y: ";
 const string NAME_Bonus_Dex					=	"Premia do zrêcznoœci: ";
 const string NAME_Bonus_Pow					=	"Premia do mocy: ";
+const string NAME_Bonus_Prot				=	"Premia do ochrony: ";
+const string NAME_Bonus_Throw				=	"Premia do broni miotanej: ";
+const string NAME_Bonus_1h					=	"Premia do broni jednorêcznej: ";
+const string NAME_Bonus_2h					=	"Premia do broni dwurêcznej: ";
+const string NAME_Bonus_Bow					=	"Premia do ³uków: ";
+const string NAME_Bonus_Cbow				=	"Premia do kusz: ";
+const string NAME_Bonus_AreaDmg				=	"Premia do % obra¿eñ obszarowych: ";
+const string NAME_Bonus_CritDmg				=	"Premia do % obra¿eñ krytycznych: ";
+const string NAME_Bonus_Ls					=	"Premia do kradzie¿y ¿ycia: ";
+const string NAME_Bonus_MinDmg				=	"Premia do minimalnych obra¿eñ: ";
 const string NAME_Bonus_RgHp				=	"Premia do regen. ¿ycia: ";
-const string NAME_Bonus_LS					=	"Premia do kradzie¿y ¿ycia: ";
-const string NAME_Bonus_DR					=	"Premia do odbicia obra¿eñ: ";
-const string NAME_Bonus_AD					=	"Premia do % obra¿eñ obszarowych: ";
+
+const string NAME_Percent_Protection		=	"Premia do % odpornoœci: ";
+const string NAME_Percent_Damage			=	"Premia do % obra¿eñ: ";
 
 /// ------ weapon type ------
 const string NAME_OneHanded					=	"Broñ jednorêczna, zasiêg:";
 const string NAME_TwoHanded					=	"Broñ dwurêczna, zasiêg:";
 const string NAME_SecHanded					=	"Broñ pomocnicza";
 const string NAME_FastGun					=	"Broñ szybkostrzelna";
-
-const string NAME_Bonus_1H					=	"Broñ jednorêczna z bonusem, zasiêg: ";
-const string NAME_Bonus_2H					=	"Broñ dwurêczna z bonusem, zasiêg: ";
 
 ///******************************************************************************************
 ///	TEXT FOR LEARNING
@@ -657,7 +669,8 @@ const string PRINT_LP						=	" PN";
 const string PRINT_Money					=	" szt. z³ota";
 
 const string PRINT_NotEnoughLP				=	"Za ma³o punktów nauki!";
-const string Print_NotEnoughGold			=	"Za ma³o z³ota!";
+const string PRINT_NotEnoughGold			=	"Za ma³o z³ota!";
+const string PRINT_NoLearnOverPersonalMAX	=	"Maksimum dla tego nauczyciela wynosi ";
 
 /// ------ info ------
 const string PRINT_LearnLP					=	"Punkty nauki + ";
@@ -667,15 +680,15 @@ const string PRINT_LearnSP					=	"Max. energia + ";
 const string PRINT_LearnSTR					=	"Si³a + ";
 const string PRINT_LearnDEX					=	"Zrêcznoœæ + ";
 const string PRINT_LearnPOW					=	"Moc + ";
-const string PRINT_LearnLS					=	"Kradzie¿ ¿ycia + ";
-const string PRINT_LearnDR					=	"Odbicie obra¿eñ + ";
-const string PRINT_LearnAD					=	"% obra¿eñ obszarowych + ";
+const string PRINT_LearnProt				=	"Ochrona + ";
 
+const string PRINT_LearnThrow				=	"Broñ miotana + ";
 const string PRINT_Learn1h					=	"Broñ jednorêczna + ";
 const string PRINT_Learn2h					=	"Broñ dwurêczna + ";
 const string PRINT_LearnBow					=	"£uki + ";
 const string PRINT_LearnCBow				=	"Kusze + ";
 
+/*
 const string PRINT_LearnFight_1H_1			=	"Broñ jednorêczna: poziom 1/5";
 const string PRINT_LearnFight_1H_2			=	"Broñ jednorêczna: poziom 2/5";
 const string PRINT_LearnFight_1H_3			=	"Broñ jednorêczna: poziom 3/5";
@@ -696,8 +709,9 @@ const string PRINT_LearnFight_Crossbow_2	=	"Kusze: poziom 2/5";
 const string PRINT_LearnFight_Crossbow_3	=	"Kusze: poziom 3/5";
 const string PRINT_LearnFight_Crossbow_4	=	"Kusze: poziom 4/5";
 const string PRINT_LearnFight_Crossbow_5	=	"Kusze: poziom 5/5";
-const string PRINT_LearnFight_2ndH_1		=	"Tarcze: poziom 1/1";
-const string PRINT_LearnFight_2ndH_2		=	"Dwa miecze: poziom 1/1";
+*/
+const string PRINT_LearnDual				=	"Dwa miecze: poziom 1/1";
+const string PRINT_LearnShield				=	"Tarcze: poziom 1/1";
 
 const string PRINT_LearnMagic_1				=	"Magia: kr¹g 1/6";
 const string PRINT_LearnMagic_2				=	"Magia: kr¹g 2/6";
@@ -705,31 +719,30 @@ const string PRINT_LearnMagic_3				=	"Magia: kr¹g 3/6";
 const string PRINT_LearnMagic_4				=	"Magia: kr¹g 4/6";
 const string PRINT_LearnMagic_5				=	"Magia: kr¹g 5/6";
 const string PRINT_LearnMagic_6				=	"Magia: kr¹g 6/6";
-const string PRINT_LearnTalent_Enchanting	=	"Zaklinanie: poziom 1/1";
-const string PRINT_LearnTalent_Language		=	"Jêzyk staro¿ytnych: poziom 1/1";
+const string PRINT_LearnLanguage			=	"Jêzyk staro¿ytnych: poziom 1/1";
 
-const string PRINT_LearnTalent_Sneak		=	"Skradanie siê: poziom 1/1";
-const string PRINT_LearnTalent_ProRun		=	"Pro biegacz: poziom 1/1";
-const string PRINT_LearnTalent_Acrobatic	=	"Akrobatyka: poziom 1/1";
+const string PRINT_LearnPicklock			=	"W³amywanie siê: poziom 1/1";
+const string PRINT_LearnPickpocket_1		=	"Kradzie¿ kiesz.: poziom 1/3";
+const string PRINT_LearnPickpocket_2		=	"Kradzie¿ kiesz.: poziom 2/3";
+const string PRINT_LearnPickpocket_3		=	"Kradzie¿ kiesz.: poziom 3/3";
+const string PRINT_LearnPersuasion			=	"Perswazja: poziom 1/1";
 
-const string PRINT_LearnTalent_Picklock		=	"W³amywanie siê: poziom 1/1";
-const string PRINT_LearnTalent_Pickpocket	=	"Kradzie¿ kiesz.: poziom 1/1";
-const string PRINT_LearnTalent_Persuasion	=	"Perswazja: poziom 1/1";
-
-const string PRINT_LearnTalent_Smith		=	"Kowalstwo: poziom 1/1";
-const string PRINT_LearnTalent_Alchemy		=	"Alchemia: poziom 1/1";
-const string PRINT_LearnTalent_Hunting		=	"Myœlistwo: poziom 1/1";
-
-const string PRINT_LearnTalent_Cooking		=	"Gotowanie: poziom 1/1";
-const string PRINT_LearnTalent_ProtPoison	=	"Odpornoœæ na trucizny: poziom 1/1";
-
-/// ------ learning from NPC (OBSOLETE) ------
-const string PRINT_LearnMP1					=	"Mana + 2";
-const string PRINT_LearnMP5					=	"Mana + 10";
-const string PRINT_LearnSTR1				=	"Si³a + 1";
-const string PRINT_LearnSTR5				=	"Si³a + 5";
-const string PRINT_LearnDEX1				=	"Zrêcznoœæ + 1";
-const string PRINT_LearnDEX5				=	"Zrêcznoœæ + 5";
+const string PRINT_LearnFletchery_1			=	"£uczarstwo: poziom 1/3";
+const string PRINT_LearnFletchery_2			=	"£uczarstwo: poziom 2/3";
+const string PRINT_LearnFletchery_3			=	"£uczarstwo: poziom 3/3";
+const string PRINT_LearnSmith_1				=	"Kowalstwo: poziom 1/3";
+const string PRINT_LearnSmith_2				=	"Kowalstwo: poziom 2/3";
+const string PRINT_LearnSmith_3				=	"Kowalstwo: poziom 3/3";
+const string PRINT_LearnAlchemy_1			=	"Alchemia: poziom 1/3";
+const string PRINT_LearnAlchemy_2			=	"Alchemia: poziom 2/3";
+const string PRINT_LearnAlchemy_3			=	"Alchemia: poziom 3/3";
+const string PRINT_LearnEnchanting_1		=	"Zaklinanie: poziom 1/3";
+const string PRINT_LearnEnchanting_2		=	"Zaklinanie: poziom 2/3";
+const string PRINT_LearnEnchanting_3		=	"Zaklinanie: poziom 3/3";
+const string PRINT_LearnHunting				=	"Myœlistwo: poziom 1/1";
+const string PRINT_LearnCooking				=	"Gotowanie: poziom 1/1";
+const string PRINT_LearnMining				=	"Górnictwo: poziom 1/1";
+const string PRINT_LearnArmory				=	"P³atnerstwo: poziom 1/1";
 
 ///******************************************************************************************
 ///	B_GiveInvItems
@@ -790,7 +803,6 @@ const string DIALOG_ADDON_ATTENTAT_CONTRA 			=	"Chcê znaleŸæ tych ludzi, by wyst
 const string DIALOG_ADDON_MINE_DESCRIPTION			=	"Potrzebuj¹ ciê w kopalni. (Daj czerwony kamieñ)";
 const string DIALOG_ADDON_GOLD_DESCRIPTION			=	"Co muszê wiedzieæ o wydobyciu z³ota?";
 const string PRINT_ADDON_KNOWSBF					=	"Zdobyto wiedzê na temat ¿¹d³owej wydzieliny!";	
-const string PRINT_ADDON_HACKCHANCE					=	"Zwiêkszy³a siê umiejêtnoœæ wydobywania z³ota! (+";
 
 const string PRINT_ADDON_ENOUGHTALK					=	"Dosyæ gadania. Walczmy!";	
 const string PRINT_FullyHealed						=	"Ca³kowite uleczenie.";

@@ -23,7 +23,7 @@ func void B_GiveTradeInv_Isgaroth (var C_Npc slf)
 		//CreateInvItems (slf, ItSc_SumGobSkel, 2);
 		CreateInvItems (slf, ItSc_Zap, 5);
 		
-		//CreateInvItems (slf, ItRi_Hp_Mana_01, 1);
+		CreateInvItems (slf, ItRi_Sp_01, 1);
 		
 		Isgaroth_ItemsGiven_Chapter = 7;
 	};
@@ -102,7 +102,7 @@ func void B_GiveTradeInv_Isgaroth (var C_Npc slf)
 		CreateInvItems (slf, ItSc_TrfWarg, 1);
 		CreateInvItems (slf, ItSc_TrfWolf, 1);
 		
-		//CreateInvItems (slf, ItAm_Mana_01, 1);
+		CreateInvItems (slf, ItAm_Mp_01, 1);
 		
 		Isgaroth_ItemsGiven_Chapter = 10;
 	};

@@ -1,7 +1,7 @@
-//******************************************************************************************
-//	Controls
-//******************************************************************************************
-instance MENU_OPT_CONTROLS(C_MENU_DEF)
+///******************************************************************************************
+/// Control options
+///******************************************************************************************
+instance MENU_OPT_CONTROLS (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENU_ITEM_CHG_KEYS_HEADLINE";
@@ -61,7 +61,8 @@ const int CTRL_GROUP5 = 720;
 const int CTRL_GROUP6 = 900;
 const int CTRL_GROUP7 = 1080;
 
-instance MENU_ITEM_CHG_KEYS_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_CHG_KEYS_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "USTAWIENIA KONTROLERA";
 	type = MENU_ITEM_TEXT;
@@ -73,8 +74,8 @@ instance MENU_ITEM_CHG_KEYS_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-//******************************************************************************************
-instance MENU_ITEM_KEY_UP(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_KEY_UP (C_MENU_ITEM_DEF)
 {
 	text[0] = "Do przodu";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -85,7 +86,7 @@ instance MENU_ITEM_KEY_UP(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_UP(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_UP (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_KBDINPUT_BACK_PIC;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -99,8 +100,8 @@ instance MENU_ITEM_INP_UP(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_DOWN(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_DOWN (C_MENU_ITEM_DEF)
 {
 	text[0] = "Do ty³u";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -111,7 +112,7 @@ instance MENU_ITEM_KEY_DOWN(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_DOWN(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_DOWN (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -125,8 +126,8 @@ instance MENU_ITEM_INP_DOWN(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_LEFT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_LEFT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Skrêt w lewo";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -137,7 +138,7 @@ instance MENU_ITEM_KEY_LEFT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_LEFT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_LEFT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -151,8 +152,8 @@ instance MENU_ITEM_INP_LEFT(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = IT_CHROMAKEYED | IT_TRANSPARENT;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_RIGHT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_RIGHT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Skrêt w prawo";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -163,7 +164,7 @@ instance MENU_ITEM_KEY_RIGHT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_RIGHT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_RIGHT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -177,8 +178,8 @@ instance MENU_ITEM_INP_RIGHT(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_STRAFE_LEFT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_STRAFE_LEFT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Krok w lewo";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -189,7 +190,7 @@ instance MENU_ITEM_KEY_STRAFE_LEFT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_STRAFE_LEFT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_STRAFE_LEFT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -203,8 +204,8 @@ instance MENU_ITEM_INP_STRAFE_LEFT(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = IT_CHROMAKEYED | IT_TRANSPARENT;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_STRAFE_RIGHT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_STRAFE_RIGHT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Krok w prawo";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -215,7 +216,7 @@ instance MENU_ITEM_KEY_STRAFE_RIGHT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_STRAFE_RIGHT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_STRAFE_RIGHT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -229,8 +230,8 @@ instance MENU_ITEM_INP_STRAFE_RIGHT(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_JUMPCLIMBSTRAFE(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_JUMPCLIMBSTRAFE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Skok";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -241,7 +242,7 @@ instance MENU_ITEM_KEY_JUMPCLIMBSTRAFE(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_JUMPCLIMBSTRAFE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_JUMPCLIMBSTRAFE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -255,8 +256,8 @@ instance MENU_ITEM_INP_JUMPCLIMBSTRAFE(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_RUNMODETOGGLE(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_RUNMODETOGGLE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Chód/bieg";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -267,7 +268,7 @@ instance MENU_ITEM_KEY_RUNMODETOGGLE(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_RUNMODETOGGLE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_RUNMODETOGGLE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -281,8 +282,8 @@ instance MENU_ITEM_INP_RUNMODETOGGLE(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_SNEAK(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_SNEAK (C_MENU_ITEM_DEF)
 {
 	text[0] = "Skradanie siê";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -293,7 +294,7 @@ instance MENU_ITEM_KEY_SNEAK(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_SNEAK(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_SNEAK (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -307,8 +308,8 @@ instance MENU_ITEM_INP_SNEAK(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_ACTION(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_ACTION (C_MENU_ITEM_DEF)
 {
 	text[0] = "Dzia³anie";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -319,7 +320,7 @@ instance MENU_ITEM_KEY_ACTION(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_ACTION(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_ACTION (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -333,8 +334,8 @@ instance MENU_ITEM_INP_ACTION(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_WEAPON(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_WEAPON (C_MENU_ITEM_DEF)
 {
 	text[0] = "Postawa bojowa";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -345,7 +346,7 @@ instance MENU_ITEM_KEY_WEAPON(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_WEAPON(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_WEAPON (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -359,8 +360,8 @@ instance MENU_ITEM_INP_WEAPON(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_MAP(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_MAP (C_MENU_ITEM_DEF)
 {
 	text[0] = "Mapa";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -371,7 +372,7 @@ instance MENU_ITEM_KEY_MAP(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_MAP(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_MAP (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -385,8 +386,8 @@ instance MENU_ITEM_INP_MAP(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_LOOK(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_LOOK (C_MENU_ITEM_DEF)
 {
 	text[0] = "Rozgl¹danie siê";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -397,7 +398,7 @@ instance MENU_ITEM_KEY_LOOK(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_LOOK(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_LOOK (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -411,8 +412,8 @@ instance MENU_ITEM_INP_LOOK(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_LOOK_FP(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_LOOK_FP (C_MENU_ITEM_DEF)
 {
 	text[0] = "Widok FPP";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -423,7 +424,7 @@ instance MENU_ITEM_KEY_LOOK_FP(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_LOOK_FP(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_LOOK_FP (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -437,8 +438,8 @@ instance MENU_ITEM_INP_LOOK_FP(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_INVENTORY(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_INVENTORY (C_MENU_ITEM_DEF)
 {
 	text[0] = "Ekwipunek";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -449,7 +450,7 @@ instance MENU_ITEM_KEY_INVENTORY(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_INVENTORY(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_INVENTORY (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -463,8 +464,8 @@ instance MENU_ITEM_INP_INVENTORY(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_SCREEN_STATUS(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_SCREEN_STATUS (C_MENU_ITEM_DEF)
 {
 	text[0] = "Statystyki postaci";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -475,7 +476,7 @@ instance MENU_ITEM_KEY_SCREEN_STATUS(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_SCREEN_STATUS(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_SCREEN_STATUS (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -489,8 +490,8 @@ instance MENU_ITEM_INP_SCREEN_STATUS(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_SCREEN_LOG(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_SCREEN_LOG (C_MENU_ITEM_DEF)
 {
 	text[0] = "Dziennik zadañ";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -501,7 +502,7 @@ instance MENU_ITEM_KEY_SCREEN_LOG(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_SCREEN_LOG(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_SCREEN_LOG (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -515,65 +516,11 @@ instance MENU_ITEM_INP_SCREEN_LOG(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_NEXTMENU(C_MENU_ITEM_DEF)
-{
-	backpic = MENU_ITEM_BACK_PIC;
-	text[0] = "Wiêcej klawiszy...";
-	text[1] = "Konfiguracja dalszych klawiszy";
-	posx = CTRL_SP1_1 + 2500;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 17) + CTRL_GROUP5;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	onselaction_s[0] = "MENU_OPT_CONTROLS_EXTKEYS";
-	onselaction[0] = SEL_ACTION_STARTMENU;
-	flags = flags | IT_TXT_CENTER;
-//	hideifoptionsectionset = "GAME";
-//	hideifoptionset = "useGothic1Controls";
-//	hideonvalue = 1;
-};
-//******************************************************************************************
-instance MENU_ITEM_CHG_KEYS_SET_DEFAULT(C_MENU_ITEM_DEF)
-{
-	text[0] = "Ustawienia domyœlne";
-	text[1] = "Przywrócenie ustawieñ domyœlnych";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 18) + CTRL_GROUP6;
-	dimy = 300;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "SETDEFAULT";
-	fontname = MENU_FONT_SMALL;
-	flags = flags | IT_TXT_CENTER;
-};
-instance MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE(C_MENU_ITEM_DEF)
-{
-	text[0] = "Ustawienia alternatywne";
-	text[1] = "Wybór alternatywnych ustawieñ sterowania";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 19) + CTRL_GROUP6;
-	dimy = 300;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "SETALTERNATIVE";
-	fontname = MENU_FONT_SMALL;
-	flags = flags | IT_TXT_CENTER;
-};
-//******************************************************************************************
-instance MENU_ITEM_CHG_KEYS_BACK(C_MENU_ITEM_DEF)
-{
-	backpic = MENU_ITEM_BACK_PIC;
-	text[0] = "Wróæ";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 20) + CTRL_GROUP7;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	onselaction[0] = SEL_ACTION_BACK;
-	flags = flags | IT_TXT_CENTER;
-};
 
-//******************************************************************************************
-//	ExtKeys
-//******************************************************************************************
-instance MENU_OPT_CONTROLS_EXTKEYS(C_MENU_DEF)
+///******************************************************************************************
+/// Control options - extended
+///******************************************************************************************
+instance MENU_OPT_CONTROLS_EXTKEYS (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	items[0] = "MENU_ITEM_CHG_EXTKEYS_HEADLINE";
@@ -597,13 +544,15 @@ instance MENU_OPT_CONTROLS_EXTKEYS(C_MENU_DEF)
 	items[18] = "MENU_ITEM_INP_QUICKHEALTH";
 	items[19] = "MENU_ITEM_KEY_QUICKMANA";
 	items[20] = "MENU_ITEM_INP_QUICKMANA";
-	items[21] = "MENU_ITEM_CHG_KEYS_SET_DEFAULT";
-	items[22] = "MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE";
-	items[23] = "MENU_ITEM_CHG_KEYS_BACK";
+	items[21] = "MENU_ITEM_PREVMENU";
+	items[22] = "MENU_ITEM_CHG_KEYS_SET_DEFAULT";
+	items[23] = "MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE";
+	items[24] = "MENU_ITEM_CHG_KEYS_BACK";
 	flags = flags | MENU_SHOW_INFO;
 };
 
-instance MENU_ITEM_CHG_EXTKEYS_HEADLINE(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_CHG_EXTKEYS_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "STEROWANIE ZAAWANSOWANE";
 	type = MENU_ITEM_TEXT;
@@ -615,8 +564,8 @@ instance MENU_ITEM_CHG_EXTKEYS_HEADLINE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-//******************************************************************************************
-instance MENU_ITEM_KEY_SPRINT(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_KEY_SPRINT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Sprint";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -627,7 +576,7 @@ instance MENU_ITEM_KEY_SPRINT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_SPRINT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_SPRINT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -641,8 +590,8 @@ instance MENU_ITEM_INP_SPRINT(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_NOANIMTAKE(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_NOANIMTAKE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Kradz. kiesz.";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -653,7 +602,7 @@ instance MENU_ITEM_KEY_NOANIMTAKE(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_NOANIMTAKE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_NOANIMTAKE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -667,8 +616,8 @@ instance MENU_ITEM_INP_NOANIMTAKE(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_SHORTCUTS(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_SHORTCUTS (C_MENU_ITEM_DEF)
 {
 	text[0] = "Skróty";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -679,7 +628,7 @@ instance MENU_ITEM_KEY_SHORTCUTS(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_SHORTCUTS(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_SHORTCUTS (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -693,8 +642,8 @@ instance MENU_ITEM_INP_SHORTCUTS(C_MENU_ITEM_DEF)
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_INTERACT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_INTERACT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Interakcja";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -705,7 +654,7 @@ instance MENU_ITEM_KEY_INTERACT(C_MENU_ITEM_DEF)
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_INTERACT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_INTERACT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -720,8 +669,7 @@ instance MENU_ITEM_INP_INTERACT(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-//******************************************************************************************
-instance MENU_ITEM_KEY_WEAPON_LEFT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_KEY_WEAPON_LEFT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Atak z lewej";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -735,7 +683,7 @@ instance MENU_ITEM_KEY_WEAPON_LEFT(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-instance MENU_ITEM_INP_WEAPON_LEFT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_WEAPON_LEFT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -752,8 +700,8 @@ instance MENU_ITEM_INP_WEAPON_LEFT(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_WEAPON_RIGHT(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_WEAPON_RIGHT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Atak z prawej";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -767,7 +715,7 @@ instance MENU_ITEM_KEY_WEAPON_RIGHT(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-instance MENU_ITEM_INP_WEAPON_RIGHT(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_WEAPON_RIGHT (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -784,8 +732,8 @@ instance MENU_ITEM_INP_WEAPON_RIGHT(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_WEAPON_PARADE(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_WEAPON_PARADE (C_MENU_ITEM_DEF)
 {
 	text[0] = "Blok";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -799,7 +747,7 @@ instance MENU_ITEM_KEY_WEAPON_PARADE(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-instance MENU_ITEM_INP_WEAPON_PARADE(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_WEAPON_PARADE (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -816,8 +764,8 @@ instance MENU_ITEM_INP_WEAPON_PARADE(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_LOCKFOCUS(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_LOCKFOCUS (C_MENU_ITEM_DEF)
 {
 	text[0] = "Zablokowanie widoku";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -831,7 +779,7 @@ instance MENU_ITEM_KEY_LOCKFOCUS(C_MENU_ITEM_DEF)
 	hideifoptionset = "useGothic1Controls";
 	hideonvalue = 1;
 };
-instance MENU_ITEM_INP_LOCKFOCUS(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_LOCKFOCUS (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -848,8 +796,8 @@ instance MENU_ITEM_INP_LOCKFOCUS(C_MENU_ITEM_DEF)
 	hideonvalue = 1;
 	flags = flags & ~IT_SELECTABLE;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_QUICKHEALTH(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_QUICKHEALTH (C_MENU_ITEM_DEF)
 {
 	text[0] = "Mikstura lecznicza";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -863,7 +811,7 @@ instance MENU_ITEM_KEY_QUICKHEALTH(C_MENU_ITEM_DEF)
 	hideifoptionset = "usePotionKeys";
 	hideonvalue = 0;
 };
-instance MENU_ITEM_INP_QUICKHEALTH(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_QUICKHEALTH (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -880,8 +828,8 @@ instance MENU_ITEM_INP_QUICKHEALTH(C_MENU_ITEM_DEF)
 	hideifoptionset = "usePotionKeys";
 	hideonvalue = 0;
 };
-//******************************************************************************************
-instance MENU_ITEM_KEY_QUICKMANA(C_MENU_ITEM_DEF)
+
+instance MENU_ITEM_KEY_QUICKMANA (C_MENU_ITEM_DEF)
 {
 	text[0] = "Mikstura many";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
@@ -895,7 +843,7 @@ instance MENU_ITEM_KEY_QUICKMANA(C_MENU_ITEM_DEF)
 	hideifoptionset = "usePotionKeys";
 	hideonvalue = 0;
 };
-instance MENU_ITEM_INP_QUICKMANA(C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_QUICKMANA (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
@@ -911,4 +859,74 @@ instance MENU_ITEM_INP_QUICKMANA(C_MENU_ITEM_DEF)
 	hideifoptionsectionset = "GAME";
 	hideifoptionset = "usePotionKeys";
 	hideonvalue = 0;
+};
+
+///******************************************************************************************
+/// Control options - shared
+///******************************************************************************************
+instance MENU_ITEM_PREVMENU (C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Wiêcej klawiszy...";
+	text[1] = "Konfiguracja poprzednich klawiszy";
+	posx = CTRL_SP1_1 + 2500;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 17) + CTRL_GROUP5;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	onselaction_s[0] = "MENU_OPT_CONTROLS";
+	onselaction[0] = SEL_ACTION_STARTMENU;
+	flags = flags | IT_TXT_CENTER;
+};
+
+instance MENU_ITEM_NEXTMENU (C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Wiêcej klawiszy...";
+	text[1] = "Konfiguracja dalszych klawiszy";
+	posx = CTRL_SP1_1 + 2500;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 17) + CTRL_GROUP5;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	onselaction_s[0] = "MENU_OPT_CONTROLS_EXTKEYS";
+	onselaction[0] = SEL_ACTION_STARTMENU;
+	flags = flags | IT_TXT_CENTER;
+};
+
+///******************************************************************************************
+instance MENU_ITEM_CHG_KEYS_SET_DEFAULT (C_MENU_ITEM_DEF)
+{
+	text[0] = "Ustawienia domyœlne";
+	text[1] = "Przywrócenie ustawieñ domyœlnych";
+	posx = CTRL_SP1_1;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 18) + CTRL_GROUP6;
+	dimy = 300;
+	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
+	onselaction_s[0] = "SETDEFAULT";
+	fontname = MENU_FONT_SMALL;
+	flags = flags | IT_TXT_CENTER;
+};
+
+instance MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE (C_MENU_ITEM_DEF)
+{
+	text[0] = "Ustawienia alternatywne";
+	text[1] = "Wybór alternatywnych ustawieñ sterowania";
+	posx = CTRL_SP1_1;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 19) + CTRL_GROUP6;
+	dimy = 300;
+	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
+	onselaction_s[0] = "SETALTERNATIVE";
+	fontname = MENU_FONT_SMALL;
+	flags = flags | IT_TXT_CENTER;
+};
+
+instance MENU_ITEM_CHG_KEYS_BACK (C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Wróæ";
+	posx = CTRL_SP1_1;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 20) + CTRL_GROUP7;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	onselaction[0] = SEL_ACTION_BACK;
+	flags = flags | IT_TXT_CENTER;
 };

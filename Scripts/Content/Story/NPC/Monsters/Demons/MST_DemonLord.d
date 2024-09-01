@@ -7,7 +7,7 @@ prototype Mst_Default_DemonLord (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_DEMON_LORD;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_FIRE;
+	damagetype							=	DAM_FIRE;
 	fight_tactic						=	FAI_DEMON;
 	
 	NpcFn_SetAttributesToLevel (self, 60);
@@ -17,29 +17,30 @@ prototype Mst_Default_DemonLord (C_Npc)
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
-	aivar[AIV_MM_FollowInWater] 		=	true;
+	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	false;
+	aivar[AIV_MM_Packhunter]			=	false;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
 ///******************************************************************************************
 func void B_SetVisuals_DemonLord()
 {
 	Mdl_SetVisual		(self, "Demon.mds");
-	Mdl_SetVisualBody	(self, "Dem2_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dem2_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance DemonLord (Mst_Default_DemonLord)
 {
 	B_SetVisuals_DemonLord();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Xardas_DT_DemonLord (Mst_Default_DemonLord)
 {

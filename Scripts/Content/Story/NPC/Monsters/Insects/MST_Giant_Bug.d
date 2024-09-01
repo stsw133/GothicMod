@@ -7,7 +7,7 @@ prototype Mst_Default_GiantBug (C_Npc)
 	aivar[AIV_MM_REAL_ID]				=	ID_GIANT_BUG;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_GIANT_BUG;
 	
 	NpcFn_SetAttributesToLevel (self, 8);
@@ -19,7 +19,7 @@ prototype Mst_Default_GiantBug (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -31,15 +31,16 @@ prototype Mst_Default_GiantBug (C_Npc)
 func void B_SetVisuals_GiantBug()
 {
 	Mdl_SetVisual		(self, "Giant_Bug.mds");
-	Mdl_SetVisualBody	(self, "Giant_Bug_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Giant_Bug_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Giant_Bug (Mst_Default_GiantBug)
 {
 	B_SetVisuals_GiantBug();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Giant_Bug_VinoRitual1 (Mst_Default_GiantBug)
 {

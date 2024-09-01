@@ -19,9 +19,9 @@ func void B_GiveTradeInv_Hakon (var C_Npc slf)
 		CreateInvItems (slf, ItMw_ShortSword4, 1);
 		CreateInvItems (slf, ItMw_Streitkolben, 1);
 		
-		//CreateInvItems (slf, ItBE_Addon_Leather_01, 1);
-		//CreateInvItems (slf, ItBE_Addon_MIL_01, 1);
-		//CreateInvItems (slf, ItAm_Prot_Edge_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Leather_01, 1);
+		CreateInvItems (slf, ItBe_Addon_MIL_01, 1);
+		CreateInvItems (slf, ItAm_Prot_Edge_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 7;
 	};
@@ -47,7 +47,7 @@ func void B_GiveTradeInv_Hakon (var C_Npc slf)
 		CreateInvItems (slf, ItMw_Streitkolben, 1);
 		
 		CreateInvItems (slf, ItMiSwordraw, 5);
-		//CreateInvItems (slf, ItBe_Addon_Prot_Point, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Point_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 9;
 	};
@@ -58,8 +58,8 @@ func void B_GiveTradeInv_Hakon (var C_Npc slf)
 		CreateInvItems (slf, ItMi_Gold, 150);
 		
 		CreateInvItems (slf, ItMiSwordraw, 5);
-		//CreateInvItems (slf, ItBe_Addon_Prot_EDGE, 1);
-		//CreateInvItems (slf, ItBe_Addon_Prot_TOTAL, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Edge_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Blunt_01, 1);
 		
 		Hakon_ItemsGiven_Chapter = 10;
 	};

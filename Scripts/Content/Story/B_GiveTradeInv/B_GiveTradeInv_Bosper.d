@@ -17,8 +17,8 @@ func void B_GiveTradeInv_Bosper (var C_Npc slf)
 		CreateInvItems (slf, ItRw_Bow_L_03, 2);
 		CreateInvItems (slf, ItRw_Bow_L_04, 1);
 		
-		//CreateInvItems (slf, ItBE_Addon_Leather_01, 1);
-		CreateInvItems (slf, ItRi_Dex_02, 1);
+		CreateInvItems (slf, ItBe_Addon_Leather_01, 1);
+		CreateInvItems (slf, ItRi_Asa_02, 1);
 		
 		Bosper_ItemsGiven_Chapter = 7;
 	};
@@ -30,7 +30,7 @@ func void B_GiveTradeInv_Bosper (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 50);
 		CreateInvItems (slf, ItRw_Bolt, 50);
-		//CreateInvItems (slf, ItBe_Addon_DEX_5, 1);
+		CreateInvItems (slf, ItBe_Addon_Dex_01, 1);
 		
 		CreateInvItems (slf, ItRw_Bow_M_01, 1);
 		CreateInvItems (slf, ItRw_Bow_M_02, 1);
@@ -47,7 +47,7 @@ func void B_GiveTradeInv_Bosper (var C_Npc slf)
 		
 		CreateInvItems (slf, ItRw_Arrow, 100);
 		CreateInvItems (slf, ItRw_Bolt, 100);
-		//CreateInvItems (slf, ItBe_Addon_DEX_10, 1);
+		CreateInvItems (slf, ItBe_Addon_Dex_02, 1);
 		
 		Bosper_ItemsGiven_Chapter = 9;
 	};

@@ -1,45 +1,26 @@
 ///******************************************************************************************
-func void B_DIA_BDT_10XX_Fluechtling_Stimme7()
-{
-	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_07_00"); //Nie ma mowy! Nie wrócê do wiêzienia!
-};
-func void B_DIA_BDT_10XX_Fluechtling_Stimme6()
-{
-	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_06_00"); //Nie przyszed³eœ chyba po to, ¿eby zabraæ nas z powrotem do wiêzienia, co?
-};
-///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_BDT_1031_Fluechtling_EXIT (C_Info)
 {
 	npc									=	BDT_1031_Fluechtling;
 	nr									=	999;
 	condition							=	aTrue;
-	information							=	DIA_BDT_1031_Fluechtling_EXIT_Info;
+	information							=	aExit;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void DIA_BDT_1031_Fluechtling_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
-///	Tip1
+/// Tip1
 ///******************************************************************************************
 instance DIA_BDT_1031_Fluechtling_Tip1 (C_Info)
 {
 	npc									=	BDT_1031_Fluechtling;
 	nr									=	2;
-	condition							=	DIA_BDT_1031_Fluechtling_Tip1_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1031_Fluechtling_Tip1_Info;
 	important							=	true;
-};
-func int DIA_BDT_1031_Fluechtling_Tip1_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
 };
 func void DIA_BDT_1031_Fluechtling_Tip1_Info()
 {
@@ -85,103 +66,79 @@ func void DIA_BDT_1031_Fluechtling_Tip1_frei_verbrechen()
 	AI_Output (other, self, "DIA_BDT_1031_Fluechtling_Tip1_frei_verbrechen_15_00"); //Co takiego zrobi³eœ?
 	AI_Output (self, other, "DIA_BDT_1031_Fluechtling_Tip1_frei_verbrechen_07_01"); //Nie twoja sprawa.
 };
+
 ///******************************************************************************************
-///	PERM
+/// PERM
 ///******************************************************************************************
 instance DIA_BDT_1031_Fluechtling_PERM (C_Info)
 {
 	npc									=	BDT_1031_Fluechtling;
 	nr									=	3;
-	condition							=	DIA_BDT_1031_Fluechtling_PERM_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1031_Fluechtling_PERM_Info;
 	important							=	true;
 	permanent							=	true;
 };
-func int DIA_BDT_1031_Fluechtling_PERM_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
-};
 func void DIA_BDT_1031_Fluechtling_PERM_Info()
 {
-	B_DIA_BDT_10XX_Fluechtling_Stimme7();
+	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_07_00"); //Nie ma mowy! Nie wrócê do wiêzienia!
 	AI_StopProcessInfos(self);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_BDT_1032_Fluechtling_EXIT (C_Info)
 {
 	npc									=	BDT_1032_Fluechtling;
 	nr									=	999;
 	condition							=	aTrue;
-	information							=	DIA_BDT_1032_Fluechtling_EXIT_Info;
+	information							=	aExit;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void DIA_BDT_1032_Fluechtling_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
-///	PERM
+/// PERM
 ///******************************************************************************************
 instance DIA_BDT_1032_Fluechtling_PERM (C_Info)
 {
 	npc									= 	BDT_1032_Fluechtling;
 	nr									= 	2;
-	condition							= 	DIA_BDT_1032_Fluechtling_PERM_Condition;
+	condition							= 	aTrueWhenTalk;
 	information							= 	DIA_BDT_1032_Fluechtling_PERM_Info;
 	important							= 	true;
 	permanent							= 	true;
 };
-func int DIA_BDT_1032_Fluechtling_PERM_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
-};
 func void DIA_BDT_1032_Fluechtling_PERM_Info()
 {
-	B_DIA_BDT_10XX_Fluechtling_Stimme6();
+	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_06_00"); //Nie przyszed³eœ chyba po to, ¿eby zabraæ nas z powrotem do wiêzienia, co?
 	AI_StopProcessInfos(self);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_BDT_1033_Fluechtling_EXIT (C_Info)
 {
 	npc									=	BDT_1033_Fluechtling;
 	nr									=	999;
 	condition							=	aTrue;
-	information							=	DIA_BDT_1033_Fluechtling_EXIT_Info;
+	information							=	aExit;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void DIA_BDT_1033_Fluechtling_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
-///	Tip2
+/// Tip2
 ///******************************************************************************************
 instance DIA_BDT_1033_Fluechtling_Tip2 (C_Info)
 {
 	npc									=	BDT_1033_Fluechtling;
 	nr									=	2;
-	condition							=	DIA_BDT_1033_Fluechtling_Tip2_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1033_Fluechtling_Tip2_Info;
 	important							=	true;
-};
-func int DIA_BDT_1033_Fluechtling_Tip2_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
 };
 func void DIA_BDT_1033_Fluechtling_Tip2_Info()
 {
@@ -221,107 +178,83 @@ func void DIA_BDT_1033_Fluechtling_Tip2_frei_verbrechen()
 	AI_Output (other, self, "DIA_BDT_1033_Fluechtling_Tip2_frei_verbrechen_15_00"); //Narobi³eœ w portki ze strachu?
 	AI_Output (self, other, "DIA_BDT_1033_Fluechtling_Tip2_frei_verbrechen_07_01"); //Gadaj zdrów, to nie na ciebie czeka szubienica.
 };
+
 ///******************************************************************************************
-///	PERM
+/// PERM
 ///******************************************************************************************
 instance DIA_BDT_1033_Fluechtling_PERM (C_Info)
 {
 	npc									=	BDT_1033_Fluechtling;
 	nr									=	3;
-	condition							=	DIA_BDT_1033_Fluechtling_PERM_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1033_Fluechtling_PERM_Info;
 	important							=	true;
 	permanent							=	true;
 };
-func int DIA_BDT_1033_Fluechtling_PERM_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
-};
 func void DIA_BDT_1033_Fluechtling_PERM_Info()
 {
-	B_DIA_BDT_10XX_Fluechtling_Stimme7();
+	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_07_00"); //Nie ma mowy! Nie wrócê do wiêzienia!
 	AI_StopProcessInfos(self);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_BDT_1034_Fluechtling_EXIT (C_Info)
 {
 	npc									=	BDT_1034_Fluechtling;
 	nr									=	999;
 	condition							=	aTrue;
-	information							=	DIA_BDT_1034_Fluechtling_EXIT_Info;
+	information							=	aExit;
 	permanent							=	true;
 	description							=	DIALOG_END;
 };
-func void DIA_BDT_1034_Fluechtling_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
-///	PERM
+/// PERM
 ///******************************************************************************************
 instance DIA_BDT_1034_Fluechtling_PERM (C_Info)
 {
 	npc									=	BDT_1034_Fluechtling;
 	nr									=	2;
-	condition							=	DIA_BDT_1034_Fluechtling_PERM_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1034_Fluechtling_PERM_Info;
 	important							=	true;
 	permanent							=	true;
 };
-func int DIA_BDT_1034_Fluechtling_PERM_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
-};
 func void DIA_BDT_1034_Fluechtling_PERM_Info()
 {
-	B_DIA_BDT_10XX_Fluechtling_Stimme6();
+	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_06_00"); //Nie przyszed³eœ chyba po to, ¿eby zabraæ nas z powrotem do wiêzienia, co?
 	AI_StopProcessInfos(self);
 };
+
 ///******************************************************************************************
-///	EXIT
+/// EXIT
 ///******************************************************************************************
 instance DIA_BDT_1035_Fluechtling_EXIT (C_Info)
 {
-	npc									= BDT_1035_Fluechtling;
-	nr									= 999;
-	condition							= aTrue;
-	information							= DIA_BDT_1035_Fluechtling_EXIT_Info;
-	permanent							= true;
-	description							= DIALOG_END;
+	npc									=	BDT_1035_Fluechtling;
+	nr									=	999;
+	condition							=	aTrue;
+	information							=	aExit;
+	permanent							=	true;
+	description							=	DIALOG_END;
 };
-func void DIA_BDT_1035_Fluechtling_EXIT_Info()
-{
-	AI_StopProcessInfos(self);
-};
+
 ///******************************************************************************************
-///	PERM
+/// PERM
 ///******************************************************************************************
 instance DIA_BDT_1035_Fluechtling_PERM (C_Info)
 {
 	npc									=	BDT_1035_Fluechtling;
 	nr									=	2;
-	condition							=	DIA_BDT_1035_Fluechtling_PERM_Condition;
+	condition							=	aTrueWhenTalk;
 	information							=	DIA_BDT_1035_Fluechtling_PERM_Info;
 	important							=	true;
 	permanent							=	true;
 };
-func int DIA_BDT_1035_Fluechtling_PERM_Condition()
-{
-	if (Npc_IsInState(self, ZS_Talk))
-	{
-		return true;
-	};
-};
 func void DIA_BDT_1035_Fluechtling_PERM_Info()
 {
-	B_DIA_BDT_10XX_Fluechtling_Stimme7();
+	AI_Output (self, other, "DIA_B_DIA_BDT_10XX_Fluechtling_07_00"); //Nie ma mowy! Nie wrócê do wiêzienia!
 	AI_StopProcessInfos(self);
 };

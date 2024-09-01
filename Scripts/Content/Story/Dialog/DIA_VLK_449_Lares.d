@@ -2106,7 +2106,7 @@ func void DIA_Lares_TEACH_BACK()
 };
 func void DIA_Lares_TEACH_1()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Lares_TEACH);
 	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
@@ -2117,7 +2117,7 @@ func void DIA_Lares_TEACH_1()
 };
 func void DIA_Lares_TEACH_5()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Lares_TEACH);
 	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
@@ -2128,7 +2128,7 @@ func void DIA_Lares_TEACH_5()
 };
 func void DIA_Lares_TEACHSTR_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_LOW);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_LOW);
 	
 	Info_ClearChoices   (DIA_Lares_TEACH);
 	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);
@@ -2139,7 +2139,7 @@ func void DIA_Lares_TEACHSTR_1()
 };
 func void DIA_Lares_TEACHSTR_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_LOW);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_LOW);
 	
 	Info_ClearChoices   (DIA_Lares_TEACH);
 	Info_AddChoice 		(DIA_Lares_TEACH, DIALOG_BACK, DIA_Lares_TEACH_BACK);

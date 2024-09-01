@@ -1,25 +1,25 @@
 ///******************************************************************************************
-///	NewGame
+/// NewGame
 ///******************************************************************************************
-instance MENU_NEWGAME(C_MENU_DEF)
+instance MENU_NEWGAME (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
-	items[0] = "MENUITEM_NEWGAME_HERO";
-	items[1] = "MENUITEM_NEWGAME_HERO_CHOICE";
-	items[2] = "MENUITEM_NEWGAME_DIFF";
-	items[3] = "MENUITEM_NEWGAME_DIFF_CHOICE";
-	items[4] = "MENUITEM_NEWGAME_MOVIEMODE";
-	items[5] = "MENUITEM_NEWGAME_MOVIEMODE_CHOICE";
-	items[6] = "MENUITEM_NEWGAME_HEADING";
+	items[0] = "MENUITEM_NEWGAME_HEADLINE";
+	items[1] = "MENUITEM_NEWGAME_HERO";
+	items[2] = "MENUITEM_NEWGAME_HERO_CHOICE";
+	items[3] = "MENUITEM_NEWGAME_DIFF";
+	items[4] = "MENUITEM_NEWGAME_DIFF_CHOICE";
+	items[5] = "MENUITEM_NEWGAME_MOVIEMODE";
+	items[6] = "MENUITEM_NEWGAME_MOVIEMODE_CHOICE";
 	items[7] = "MENUITEM_NEWGAME_ACCEPT";
 	items[8] = "MENUITEM_NEWGAME_BACK";
-	defaultoutgame = 0;
-	defaultingame = 0;
+	defaultoutgame = 1;
+	defaultingame = 1;
 	flags = flags | MENU_SHOW_INFO;
 };
 
 ///******************************************************************************************
-instance MENUITEM_NEWGAME_HEADING(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_HEADLINE (C_MENU_ITEM_DEF)
 {
 	text[0] = "NOWA GRA";
 	type = MENU_ITEM_TEXT;
@@ -31,7 +31,7 @@ instance MENUITEM_NEWGAME_HEADING(C_MENU_ITEM_DEF)
 };
 
 ///******************************************************************************************
-instance MENUITEM_NEWGAME_HERO(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_HERO (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Skórka postaci";
@@ -43,7 +43,7 @@ instance MENUITEM_NEWGAME_HERO(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-instance MENUITEM_NEWGAME_HERO_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_HERO_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -58,8 +58,8 @@ instance MENUITEM_NEWGAME_HERO_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-///******************************************************************************************
-instance MENUITEM_NEWGAME_DIFF(C_MENU_ITEM_DEF)
+
+instance MENUITEM_NEWGAME_DIFF (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Poziom trudnoœci";
@@ -71,7 +71,7 @@ instance MENUITEM_NEWGAME_DIFF(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-instance MENUITEM_NEWGAME_DIFF_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_DIFF_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -86,12 +86,12 @@ instance MENUITEM_NEWGAME_DIFF_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
-///******************************************************************************************
-instance MENUITEM_NEWGAME_MOVIEMODE(C_MENU_ITEM_DEF)
+
+instance MENUITEM_NEWGAME_MOVIEMODE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Tryb filmowy";
-	text[1] = "Skróty klawiszowe i zmiany pod machinimê";
+	text[1] = "Skróty klawiszowe i ustawienia pod machinimê";
 	posx = 700;
 	posy = MENU_START_Y + (MENU_DY * 2);
 	dimx = 4700;
@@ -99,7 +99,7 @@ instance MENUITEM_NEWGAME_MOVIEMODE(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_UNDEF;
 	flags = flags | IT_EFFECTS_NEXT;
 };
-instance MENUITEM_NEWGAME_MOVIEMODE_CHOICE(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_MOVIEMODE_CHOICE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_CHOICE_BACK_PIC;
 	type = MENU_ITEM_CHOICEBOX;
@@ -114,8 +114,9 @@ instance MENUITEM_NEWGAME_MOVIEMODE_CHOICE(C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;
 };
+
 ///******************************************************************************************
-instance MENUITEM_NEWGAME_ACCEPT(C_MENU_ITEM_DEF)
+instance MENUITEM_NEWGAME_ACCEPT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "PotwierdŸ";
@@ -128,7 +129,8 @@ instance MENUITEM_NEWGAME_ACCEPT(C_MENU_ITEM_DEF)
 	onselaction_s[0] = "NEW_GAME";
 	flags = flags | IT_TXT_CENTER;
 };
-instance MENUITEM_NEWGAME_BACK(C_MENU_ITEM_DEF)
+
+instance MENUITEM_NEWGAME_BACK (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wróæ";

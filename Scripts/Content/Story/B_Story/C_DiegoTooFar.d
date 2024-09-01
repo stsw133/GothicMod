@@ -14,6 +14,8 @@ const int LOC_ORCBARRIER		=	11;
 const int LOC_ORCBARRIER_FAR	=	12;
 
 ///******************************************************************************************
+/// C_DiegoTooFar
+///******************************************************************************************
 func int C_DiegoTooFar (var int tolerance)
 {
 	if (Npc_GetDistToWP(hero, "SPAWN_OW_SHADOWBEAST_10_01") < (4000 + tolerance))

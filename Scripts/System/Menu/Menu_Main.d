@@ -1,5 +1,7 @@
-
-instance MENU_MAIN(C_MENU_DEF)
+///******************************************************************************************
+/// Main
+///******************************************************************************************
+instance MENU_MAIN (C_MENU_DEF)
 {
 	backpic = MENU_BACK_PIC;
 	musictheme = "SYS_Menu";
@@ -18,14 +20,54 @@ instance MENU_MAIN(C_MENU_DEF)
 	flags = flags | MENU_SHOW_INFO;
 };
 
-const int MENU_MAIN_DY = 550;
 const int MENU_MAIN_Y = 2500;
+const int MENU_MAIN_DY = 550;
 
-instance MENUITEM_MAIN_NEWGAME(C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENUITEM_MAIN_HEADLINE (C_MENU_ITEM_DEF)
+{
+	//backpic = "menu_gothicshadow.tga";
+	posx = 200;
+	posy = 200;
+	dimx = 7800;
+	dimy = 2400;
+	alphamode = "BLEND";
+	alpha = 220;
+	flags = flags | IT_TXT_CENTER;
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENUITEM_MAIN_HEADLINE2 (C_MENU_ITEM_DEF)
+{
+	backpic = "menu_gothic.tga";
+	posx = 200;
+	posy = 200;
+	dimx = 7800;
+	dimy = 2400;
+	alphamode = "BLEND";
+	alpha = 255;
+	flags = flags | IT_TXT_CENTER;
+	flags = flags & ~IT_SELECTABLE;
+};
+
+func int showintro()
+{
+	PlayVideo("intro.bik");
+	return true;
+};
+
+func int showcredits()
+{
+	PlayVideo("credits.bik");
+	return true;
+};
+
+///******************************************************************************************
+instance MENUITEM_MAIN_NEWGAME (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Nowa gra";
-	text[1] = "Rozpocznij now¹ przygodê";
+//	text[1] = "Rozpocznij now¹ przygodê";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 0);
 	dimx = 8192;
@@ -35,11 +77,11 @@ instance MENUITEM_MAIN_NEWGAME(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_MAIN_SAVEGAME_LOAD(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_SAVEGAME_LOAD (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wczytaj";
-	text[1] = "Kontynuuj zapisan¹ grê";
+//	text[1] = "Kontynuuj zapisan¹ grê";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 1);
 	dimx = 8192;
@@ -49,11 +91,11 @@ instance MENUITEM_MAIN_SAVEGAME_LOAD(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_MAIN_SAVEGAME_SAVE(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_SAVEGAME_SAVE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Zapisz";
-	text[1] = "Zapisz obecny stan rozgrywki";
+//	text[1] = "Zapisz obecny stan rozgrywki";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 2);
 	dimx = 8192;
@@ -63,11 +105,11 @@ instance MENUITEM_MAIN_SAVEGAME_SAVE(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_ONLY_IN_GAME;
 };
 
-instance MENUITEM_MAIN_RESUME(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_RESUME (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wznów";
-	text[1] = "Wznów trwaj¹c¹ rozgrywkê";
+//	text[1] = "Wznów trwaj¹c¹ rozgrywkê";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 3);
 	dimx = 8192;
@@ -76,11 +118,11 @@ instance MENUITEM_MAIN_RESUME(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER | IT_ONLY_IN_GAME;
 };
 
-instance MENUITEM_MAIN_OPTIONS(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_OPTIONS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Opcje";
-	text[1] = "Ustawienia rozgrywki, dŸwiêku i grafiki.";
+//	text[1] = "Ustawienia rozgrywki, dŸwiêku i grafiki.";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 4);
 	dimx = 8192;
@@ -90,11 +132,11 @@ instance MENUITEM_MAIN_OPTIONS(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_MAIN_INTRO(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_INTRO (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Wprowadzenie";
-	text[1] = "Odtwórz film wprowadzaj¹cy";
+//	text[1] = "Odtwórz film wprowadzaj¹cy";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 5);
 	dimx = 8192;
@@ -104,11 +146,11 @@ instance MENUITEM_MAIN_INTRO(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_MAIN_CREDITS(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_CREDITS (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Twórcy gry";
-	text[1] = "Lista twórców gry";
+//	text[1] = "Lista twórców gry";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 6);
 	dimx = 8192;
@@ -118,11 +160,11 @@ instance MENUITEM_MAIN_CREDITS(C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
-instance MENUITEM_MAIN_EXIT(C_MENU_ITEM_DEF)
+instance MENUITEM_MAIN_EXIT (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "WyjdŸ";
-	text[1] = "Powrót do systemu Windows";
+//	text[1] = "Powrót do systemu Windows";
 	posx = 0;
 	posy = MENU_MAIN_Y + (MENU_MAIN_DY * 7);
 	dimx = 8192;
@@ -130,42 +172,4 @@ instance MENUITEM_MAIN_EXIT(C_MENU_ITEM_DEF)
 	onselaction[0] = SEL_ACTION_STARTMENU;
 	onselaction_s[0] = "MENU_LEAVE_GAME";
 	flags = flags | IT_TXT_CENTER;
-};
-
-instance MENUITEM_MAIN_HEADLINE2(C_MENU_ITEM_DEF)
-{
-	backpic = "menu_gothic.tga";
-	posx = 250;
-	posy = 500;
-	dimx = 7900;
-	dimy = 2300;
-	alphamode = "BLEND";
-	alpha = 255;
-	flags = flags | IT_TXT_CENTER;
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENUITEM_MAIN_HEADLINE(C_MENU_ITEM_DEF)
-{
-	backpic = "menu_gothicshadow.tga";
-	posx = 250;
-	posy = 500;
-	dimx = 7900;
-	dimy = 2300;
-	alphamode = "BLEND";
-	alpha = 220;
-	flags = flags | IT_TXT_CENTER;
-	flags = flags & ~IT_SELECTABLE;
-};
-
-func int showintro()
-{
-	PlayVideo("intro.bik");
-	return 1;
-};
-
-func int showcredits()
-{
-	PlayVideo("credits.bik");
-	return 1;
 };

@@ -9,7 +9,7 @@ prototype Mst_Default_Wisp (C_Npc)
 	aivar[AIV_MagicUser]				=	true;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_MAGIC;
+	damagetype							=	DAM_MAGIC;
 	fight_tactic						=	FAI_BLOODFLY;
 	
 	NpcFn_SetAttributesToLevel (self, 5);
@@ -41,7 +41,7 @@ prototype Mst_Default_Wisp (C_Npc)
 func void B_SetVisuals_Wisp()
 {
 	Mdl_SetVisual		(self, "Irrlicht.mds");
-	Mdl_SetVisualBody	(self, "Irrlicht_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Irrlicht_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Wisp (Mst_Default_Wisp)

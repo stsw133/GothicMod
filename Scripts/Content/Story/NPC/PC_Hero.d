@@ -15,8 +15,6 @@ instance PC_Hero (Npc_Default)
 	exp_next							=	0;
 	lp									=	0;
 	
-	//Npc_SetTrueGuild (self, GIL_NONE);
-	
 	/// ------ Attributes ------
 	attribute[ATR_HITPOINTS_MAX]		=	10*HP_PER_LP;
 	attribute[ATR_MANA_MAX]				=	10*MP_PER_LP;
@@ -30,9 +28,6 @@ instance PC_Hero (Npc_Default)
 	
 	/// ------ Fight ------
 	//NpcFn_SetFightSkills (self, 10);
-	
-	/// ------ Talents ------
-	Npc_SetTalentValue (self, NPC_TALENT_MAGIC, attribute[ATR_POWER]);
 	
 	/// ------ Visuals ------
 	NpcFn_SetHeroVisual (self, selectedHero);

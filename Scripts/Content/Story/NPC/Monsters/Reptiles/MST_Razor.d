@@ -4,10 +4,10 @@ prototype Mst_Default_Razor (C_Npc)
 	/// ------ Monster ------
 	name								=	"Brzytwiak";
 	guild								=	GIL_SNAPPER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_RAZOR;
+	aivar[AIV_MM_REAL_ID]				=	ID_RAZOR;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_SNAPPER;
 	
 	NpcFn_SetAttributesToLevel (self, 18);
@@ -31,15 +31,16 @@ prototype Mst_Default_Razor (C_Npc)
 func void B_SetVisuals_Razor()
 {
 	Mdl_SetVisual		(self, "Razor.mds");
-	Mdl_SetVisualBody	(self, "Raz_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Raz_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Razor (Mst_Default_Razor)
 {
 	B_SetVisuals_Razor();
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance CanyonRazor01 (Mst_Default_Razor)
 {

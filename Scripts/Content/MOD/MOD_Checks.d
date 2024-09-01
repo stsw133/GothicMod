@@ -15,16 +15,6 @@ func void Npc_AttributesRefresh()
 	//Npc_AddPowerPoints(self, 0);
 };
 
-/// ------ Power ------
-func void Npc_AddPowerPoints (var C_Npc slf, var int points)
-{
-	slf.attribute[ATR_POWER] += points;
-	if (Npc_IsPlayer(slf))
-	{
-		Npc_SetTalentValue (slf, NPC_TALENT_MAGIC, slf.attribute[ATR_POWER]);
-	};
-};
-
 /// ------ Shield ------
 func void Npc_SetShieldPoints (var C_Npc slf, var int type, var int points)
 {

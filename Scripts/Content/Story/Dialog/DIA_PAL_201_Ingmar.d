@@ -171,7 +171,7 @@ func void DIA_Ingmar_Teach_BACK()
 };
 func void DIA_Ingmar_Teach_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MAX);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MAX);
 	
 	Info_ClearChoices   (DIA_Ingmar_Teach);
 	
@@ -183,7 +183,7 @@ func void DIA_Ingmar_Teach_1()
 };
 func void DIA_Ingmar_Teach_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MAX);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MAX);
 	
 	Info_ClearChoices   (DIA_Ingmar_Teach);
 	

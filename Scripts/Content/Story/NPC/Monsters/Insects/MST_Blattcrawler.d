@@ -4,10 +4,10 @@ prototype Mst_Default_Blattcrawler (C_Npc)
 	/// ------ Monster ------
 	name								=	"Polny pe³zacz";
 	guild								=	GIL_MINECRAWLER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_BLATTCRAWLER;
+	aivar[AIV_MM_REAL_ID]				=	ID_BLATTCRAWLER;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_EDGE;
+	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_MINECRAWLER;
 	
 	NpcFn_SetAttributesToLevel (self, 11);
@@ -21,7 +21,7 @@ prototype Mst_Default_Blattcrawler (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
 	
 	/// ------ Rtn ------
@@ -33,7 +33,7 @@ prototype Mst_Default_Blattcrawler (C_Npc)
 func void B_SetVisuals_Blattcrawler()
 {
 	Mdl_SetVisual		(self, "Blattcrawler.mds");
-	Mdl_SetVisualBody	(self, "Blattcrawler_Body", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Blattcrawler_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 ///******************************************************************************************
 instance Blattcrawler (Mst_Default_Blattcrawler)

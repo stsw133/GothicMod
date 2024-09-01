@@ -343,11 +343,11 @@ instance ItMw_1H_Goblin_04 (ItemPR_MeleeWeapon)
 ///******************************************************************************************
 /// Orc weapons
 ///******************************************************************************************
-instance ItMw_2H_Draconian (ItemPR_MeleeWeapon)
+instance ItMw_2h_OrcDagger_01 (ItemPR_MeleeWeapon)
 {
 	name 					=	"Krush Drak";
-	visual 					=	"ItMw_2H_Draconian.3DS";
-	SetItMwAttributes (self, ITEM_2HD_SWD, 35,DAM_EDGE, 105,ATR_STRENGTH, 100, 1);
+	visual 					=	"ItMw_2h_OrcDagger_01.3DS";
+	SetItMwAttributes (self, ITEM_2HD_SWD, 25,DAM_EDGE, 75,ATR_STRENGTH, 100, 1);
 };
 /// ------ Axe ------
 instance ItMw_2H_OrcAxe_01 (ItemPR_MeleeWeapon)

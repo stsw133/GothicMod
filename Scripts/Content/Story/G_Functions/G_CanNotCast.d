@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	G_CanNotCast
+/// G_CanNotCast
 ///******************************************************************************************
 func void G_CanNotCast (var int bIsPlayer, var int nCircleNeeded, var int nCirclePossessed)
 {

@@ -4,10 +4,10 @@ prototype Mst_Default_SkeletonWarrior (C_Npc)
 	/// ------ Monster ------
 	name								=	"Szkielet-wojownik";
 	guild								=	GIL_SKELETON;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SKELETON;
+	aivar[AIV_MM_REAL_ID]				=	ID_SKELETON;
 	
 	/// ------ Attributes & FT ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	NpcFn_SetAttributesToLevel (self, 30);
@@ -19,23 +19,23 @@ prototype Mst_Default_SkeletonWarrior (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter] 			=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
 	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart] 			=	OnlyRoutine;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
 ///******************************************************************************************
 func void B_SetVisuals_SkeletonWarrior()
 {
 	Mdl_SetVisual		(self, "HumanS.mds");
-	Mdl_SetVisualBody	(self, "Ske_Body2", 0, default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Ske_Body2", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds (self, "humans_skeleton.mds");
 	Mdl_ApplyOverlayMds (self, "humans_1hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_2hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
-	Mdl_ApplyOverlayMds (self, "humans_CBowT2.mds");
+	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
 ///******************************************************************************************
 instance Skeleton_Warrior (Mst_Default_SkeletonWarrior)
@@ -54,15 +54,16 @@ instance Summoned_Skeleton_Warrior (Mst_Default_SkeletonWarrior)
 {
 	name								=	"Przyzwany szkielet-wojownik";
 	guild								=	GIL_SUMMONED;
-	aivar[AIV_MM_REAL_ID]				= 	ID_SUMMONED;
+	aivar[AIV_MM_REAL_ID]				=	ID_SUMMONED;
 	
 	NpcFn_SetAttributesToLevel (self, level);
 	
 	B_SetVisuals_SkeletonWarrior();
 	EquipItem (self, ItMw_2H_Sword_M_01);
 };
+
 ///******************************************************************************************
-///	QuestMonsters
+/// QuestMonsters
 ///******************************************************************************************
 instance Crypt_Skeleton_Room_01 (Mst_Default_SkeletonWarrior)
 {

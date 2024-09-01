@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	B_RemoveQuarhodron
+/// B_RemoveQuarhodron
 ///******************************************************************************************
 
 var int B_RemoveQuarhodron_OneTime;
@@ -15,8 +15,8 @@ func int B_RemoveGhost()
 		if (SC_SummonedAncientGhost)
 		&& (!B_RemoveQuarhodron_OneTime)
 		{
-			AI_Teleport (NONE_ADDON_111_Quarhodron, "TOT");
-			B_RemoveNpc (NONE_ADDON_111_Quarhodron);
+			AI_Teleport	(NONE_ADDON_111_Quarhodron, "TOT");
+			B_RemoveNpc	(NONE_ADDON_111_Quarhodron);
 			Snd_Play("MFX_GhostVoice");
 			Snd_Play("MFX_Firestorm_Cast");
 			B_RemoveQuarhodron_OneTime = true;
@@ -29,8 +29,8 @@ func int B_RemoveGhost()
 		if (SC_TookRhademesTrap)
 		&& (!B_RemoveRhademes_OneTime)
 		{
-			AI_Teleport (NONE_ADDON_112_Rhademes, "TOT");
-			B_RemoveNpc (NONE_ADDON_112_Rhademes);
+			AI_Teleport	(NONE_ADDON_112_Rhademes, "TOT");
+			B_RemoveNpc	(NONE_ADDON_112_Rhademes);
 			if (SC_TalkedToRhademAfter)
 			{
 				Snd_Play("MFX_GhostVoice");

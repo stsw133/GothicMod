@@ -41,7 +41,7 @@ func void ZS_Guide_Player()
 	
 	B_ResetAll(self);
 	
-	self.senses			=	SENSE_SEE|SENSE_HEAR|SENSE_SMELL;
+	self.senses			=	SENSE_SEE | SENSE_HEAR | SENSE_SMELL;
 	self.senses_range	=	2000;
 	
 	Npc_SetPercTime (self, 1);

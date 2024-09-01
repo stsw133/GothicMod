@@ -614,8 +614,8 @@ func void DIA_Neoras_FOUNDDRAGONEGG_irgendwas ()
 	AI_Output			(self, other, "DIA_Neoras_FOUNDDRAGONEGG_irgendwas_01_01"); //Mmh. Gut. Dann nimm diesen magischen Ring. Er wird dir sicherlich helfen, deine Feinde zu bezwingen.
 	AI_Output			(self, other, "DIA_Neoras_FOUNDDRAGONEGG_irgendwas_01_02"); //Bêdzie ciê chroni³ przed atakami magicznych istot.
 
-	CreateInvItems 		(self, ItRi_ProtMagical_01, 1);									
-	B_GiveInvItems 		(self, other, ItRi_ProtMagical_01, 1);
+	CreateInvItems 		(self, ItRi_Prot_Magic_01, 1);									
+	B_GiveInvItems 		(self, other, ItRi_Prot_Magic_01, 1);
 						
 	Info_ClearChoices	(DIA_Neoras_FOUNDDRAGONEGG);
 };

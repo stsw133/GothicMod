@@ -271,7 +271,7 @@ func void DIA_DiegoOw_TEACH_BACK()
 };
 func void DIA_DiegoOw_TEACHDEX_1()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MAX);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MAX);
 	
 	Info_ClearChoices   (DIA_DiegoOw_TEACH);
 	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
@@ -282,7 +282,7 @@ func void DIA_DiegoOw_TEACHDEX_1()
 };
 func void DIA_DiegoOw_TEACHDEX_5()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MAX);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MAX);
 	
 	Info_ClearChoices   (DIA_DiegoOw_TEACH);
 	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
@@ -293,7 +293,7 @@ func void DIA_DiegoOw_TEACHDEX_5()
 };
 func void DIA_DiegoOw_TEACHSTR_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_DiegoOw_TEACH);
 	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);
@@ -304,7 +304,7 @@ func void DIA_DiegoOw_TEACHSTR_1()
 };
 func void DIA_DiegoOw_TEACHSTR_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_DiegoOw_TEACH);
 	Info_AddChoice 		(DIA_DiegoOw_TEACH, DIALOG_BACK, DIA_DiegoOw_TEACH_BACK);

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// B_PiratesGoHome
+///******************************************************************************************
 func void B_Addon_PiratesGoHome()
 {
 	Skip.aivar[AIV_PARTYMEMBER] = false;
@@ -57,6 +59,7 @@ func void B_Addon_PiratesFollowAgain()
 		return;
 	};
 	
+	/// FUNC
 	if (Npc_GetDistToNpc(hero, Skip) <= 2000)
 	&& (!Npc_IsDead(Skip))
 	&& (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(Skip))

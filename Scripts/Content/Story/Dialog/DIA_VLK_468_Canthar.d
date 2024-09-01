@@ -133,8 +133,8 @@ FUNC VOID DIA_Canthar_Hallo_Info()
 	}
 	
 	// ------ Bauernkleidung ------
-	else if (Hlp_IsItem (itm, ItAr_Bau_00)) 
-	|| 		(Hlp_IsItem (itm, ItAr_Bau_01))
+	else if (Hlp_IsItem (itm, ItAr_Bau_L_00)) 
+	|| 		(Hlp_IsItem (itm, ItAr_Bau_L_01))
 	{
 		AI_Output (self, other,"DIA_Canthar_HelloArmor_09_06");	//Wie läuft die Arbeit, Bauersmann?
 			

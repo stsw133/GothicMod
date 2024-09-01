@@ -319,7 +319,7 @@ func void DIA_Addon_Lucia_TEACH_BACK()
 };
 func void DIA_Addon_Lucia_TEACH_1()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Addon_Lucia_TEACH);
 	
@@ -331,7 +331,7 @@ func void DIA_Addon_Lucia_TEACH_1()
 };
 func void DIA_Addon_Lucia_TEACH_5()
 {
-	B_TeachAttributePoints (self, other, ATR_DEXTERITY, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Addon_Lucia_TEACH);
 	

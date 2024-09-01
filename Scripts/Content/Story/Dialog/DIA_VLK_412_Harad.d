@@ -794,7 +794,7 @@ func void DIA_Harad_TeachSTR_BACK()
 
 func void DIA_Harad_TeachSTR_1()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
 
 	Info_ClearChoices	(DIA_Harad_TeachSTR);
 	Info_AddChoice		(DIA_Harad_TeachSTR, DIALOG_BACK, DIA_Harad_TeachSTR_BACK);
@@ -805,7 +805,7 @@ func void DIA_Harad_TeachSTR_1()
 // ------ 5 Stärke ------
 func void DIA_Harad_TeachSTR_5()
 {
-	B_TeachAttributePoints (self, other, ATR_STRENGTH, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
 	
 	Info_ClearChoices	(DIA_Harad_TeachSTR);
 	Info_AddChoice		(DIA_Harad_TeachSTR, DIALOG_BACK, DIA_Harad_TeachSTR_BACK);

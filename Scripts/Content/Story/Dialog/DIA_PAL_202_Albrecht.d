@@ -256,7 +256,7 @@ func void DIA_Albrecht_Teach_BACK()
 };
 func void DIA_Albrecht_Teach_1()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 1, T_MED);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	
@@ -268,7 +268,7 @@ func void DIA_Albrecht_Teach_1()
 };
 func void DIA_Albrecht_Teach_5()
 {
-	B_TeachAttributePoints (self, other, ATR_MANA_MAX, 5, T_MED);
+	B_TeachAttribute (self, other, ATR_MANA_MAX, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	

@@ -10,9 +10,9 @@ func void B_GiveTradeInv_Zuris (var C_Npc slf)
 	{
 		CreateInvItems (slf, ItMi_Gold, 100);
 		
-		//CreateInvItems (slf, ItAm_Hp_Mana_01, 1);
-		//CreateInvItems (slf, ItBe_Addon_Prot_MAGIC, 1);
-		CreateInvItems (slf, ItFo_Addon_Pfeffer_01, 1);
+		CreateInvItems (slf, ItAm_Sp_01, 1);
+		CreateInvItems (slf, ItBe_Addon_Prot_Magic_01, 1);
+		CreateInvItems (slf, ItFo_Spices, 1);
 		CreateInvItems (slf, ItMi_FruitTabak, 2);
 		CreateInvItems (slf, ItPo_Health_01, 10);
 		CreateInvItems (slf, ItPo_Health_Addon_04, 2);

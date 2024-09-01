@@ -198,7 +198,7 @@ func void DIA_Addon_Huno_Armor_Buy()
 	{	
 		AI_Output (self, other, "DIA_Addon_Huno_Armor_Buy_06_01"); //Wyglπda nieüle.
 		
-		B_GiveInvItems (self, other,ITAR_RVN_L,1);
+		B_GiveInvItems (self, other,ITAR_BDT_H,1);
 	}
 	else
 	{

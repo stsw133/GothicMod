@@ -267,8 +267,8 @@ func void DIA_Addon_Fernando_BanditTrader_ja ()
 	CreateInvItems (self, ItMi_Gold, 200);									
 	B_GiveInvItems (self, other, ItMi_Gold, 200);		
 	AI_Output			(self, other, "DIA_Addon_Fernando_BanditTrader_ja_14_02"); //Jeszcze pierœcieñ i jesteœmy kwita.
-	CreateInvItems (self, ItRi_LS_01, 1);									
-	B_GiveInvItems (self, other, ItRi_LS_01, 1);		
+	CreateInvItems (self, ItRi_Prot_Point_01, 1);									
+	B_GiveInvItems (self, other, ItRi_Prot_Point_01, 1);		
 	Info_ClearChoices	(DIA_Addon_Fernando_BanditTrader);
 };
 func void DIA_Addon_Fernando_BanditTrader_nein ()

@@ -28,7 +28,6 @@ func int DIFF_Multiplier (var int points, var int type)
 func void DIFF_Select (var int diff)
 {
 	dLevel = diff;
-	Npc_SetTalentSkill (hero, NPC_TALENT_DIFFICULTY, dLevel);
 	
 	if		(dLevel == DIFF_E)		{	var_DIFF_Percent = DIFF_Percent[DIFF_E];	}
 	else if	(dLevel == DIFF_M)		{	var_DIFF_Percent = DIFF_Percent[DIFF_M];	}

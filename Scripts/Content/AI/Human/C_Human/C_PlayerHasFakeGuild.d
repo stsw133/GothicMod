@@ -3,12 +3,12 @@
 ///******************************************************************************************
 func int C_PlayerIsFakeBandit (var C_Npc slf, var C_Npc oth)
 {
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild)
 	{
 		return false;
 	};
@@ -51,12 +51,12 @@ func int C_PlayerIsFakeBandit (var C_Npc slf, var C_Npc oth)
 ///******************************************************************************************
 func int C_PlayerIsFakePirate (var C_Npc slf, var C_Npc oth)
 {
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild)
 	{
 		return false;
 	};
@@ -172,12 +172,12 @@ func int C_PlayerWearsGuildArmor (var C_Npc slf, var int guild)
 ///******************************************************************************************
 func int C_PlayerHasFakeGuild (var C_Npc slf, var C_Npc oth)
 {
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_Armor)
 	{
 		return false;
 	};
 	
-	if ((slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild) > 0)
+	if (slf.aivar[AIV_IgnoreDisguise] & IGNORE_FakeGuild)
 	{
 		return false;
 	};

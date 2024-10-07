@@ -18,13 +18,13 @@ instance WzA_17180_Lucyna (Npc_Default)
 	
 	/// ------ Attribute ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_AddFightSkills (self, FightTalent_Medium);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Assassin_03);
+	EquipItem (self, ItMw_1h_Vlk_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Dog
+///******************************************************************************************
 prototype Mst_Default_Dog (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Dog (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Dog()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Dog()
 	Mdl_SetVisualBody	(self, "Dog_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Dog (Mst_Default_Dog)
 {

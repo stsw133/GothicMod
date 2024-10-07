@@ -14,7 +14,7 @@ func void B_AddFightSkill (var C_Npc slf, var int talent, var int percent)
 {
 	MEM_WriteStatArr(slf.hitchance, talent, MEM_ReadStatArr(slf.hitchance, talent) + percent);
 	
-	if (slf.aivar[AIV_Gender] < ORCMALE)
+	if (slf.guild < GIL_SEPERATOR_HUM && slf.aivar[AIV_Gender] < ORCMALE)
 	{
 		if		(MEM_ReadStatArr(slf.hitchance, talent) > 60)	{	Npc_SetTalentSkill (slf, talent, 2);	}
 		else if	(MEM_ReadStatArr(slf.hitchance, talent) > 30)	{	Npc_SetTalentSkill (slf, talent, 1);	}

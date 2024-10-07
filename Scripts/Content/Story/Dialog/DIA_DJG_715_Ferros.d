@@ -144,7 +144,7 @@ FUNC VOID DIA_DJG_715_Ferros_OldCamp_Info()
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"¯yczê powodzenia w poszukiwaniach.",DIA_DJG_715_Ferros_OldCamp_No);
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"Co dostanê, jeœli uda mi siê odzyskaæ twój miecz?",DIA_DJG_715_Ferros_OldCamp_Price);
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"Odnajdê twój miecz.",DIA_DJG_715_Ferros_OldCamp_Yes);
-	Wld_InsertItem		(ItMW_1H_FerrosSword_Mis , "FP_OW_ITEM_08"); 
+	Wld_InsertItem		(ItMW_1H_FerrosSword_MIS , "FP_OW_ITEM_08"); 
 	MIS_FerrosSword = LOG_RUNNING; 
 	
 	Log_CreateTopic (TOPIC_FerrosSword, LOG_MISSION);
@@ -373,10 +373,10 @@ FUNC VOID DIA_Ferros_Teach_Info()
 	/*
 	Info_ClearChoices (DIA_Ferros_Teach);
 	Info_AddChoice		(DIA_Ferros_Teach, DIALOG_BACK, DIA_Ferros_Teach_Back);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Ferros_Teach_STR_1);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5			, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Ferros_Teach_STR_5);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Ferros_Teach_DEX_1);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Ferros_Teach_DEX_5);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1, B_GetLearnCostAttribute(other, ATR_STRENGTH, 1))		,DIA_Ferros_Teach_STR_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5, B_GetLearnCostAttribute(other, ATR_STRENGTH, 5))		,DIA_Ferros_Teach_STR_5);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 1))	,DIA_Ferros_Teach_DEX_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 5))	,DIA_Ferros_Teach_DEX_5);
 	*/
 	B_RaiseAttribute(other, ATR_STRENGTH, 2);
 	};
@@ -391,25 +391,25 @@ FUNC VOID DIA_Ferros_Teach_Back ()
 FUNC VOID DIA_Ferros_Teach_STR_1 ()
 {
 	B_TeachAttribute (self, other, ATR_STRENGTH, 1, T_MED);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1			, B_GetLearnCostAttribute(other, ATR_STRENGTH))			,DIA_Ferros_Teach_STR_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR1, B_GetLearnCostAttribute(other, ATR_STRENGTH, 1))		,DIA_Ferros_Teach_STR_1);
 };
 
 FUNC VOID DIA_Ferros_Teach_STR_5 ()
 {
 	B_TeachAttribute (self, other, ATR_STRENGTH, 5, T_MED);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5		, B_GetLearnCostAttribute(other, ATR_STRENGTH)*5)		,DIA_Ferros_Teach_STR_5);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnSTR5, B_GetLearnCostAttribute(other, ATR_STRENGTH, 5))		,DIA_Ferros_Teach_STR_5);
 };
 
 FUNC VOID DIA_Ferros_Teach_DEX_1 ()
 {
 	B_TeachAttribute (self, other, ATR_DEXTERITY, 1, T_MED);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))		,DIA_Ferros_Teach_DEX_1);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 1))	,DIA_Ferros_Teach_DEX_1);
 };
 
 FUNC VOID DIA_Ferros_Teach_DEX_5 ()
 {
 	B_TeachAttribute (self, other, ATR_DEXTERITY, 5, T_MED);
-	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)		,DIA_Ferros_Teach_DEX_5);
+	Info_AddChoice		(DIA_Ferros_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 5))	,DIA_Ferros_Teach_DEX_5);
 };
 */
 //*********************************************************************

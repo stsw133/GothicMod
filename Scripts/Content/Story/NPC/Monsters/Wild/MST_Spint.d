@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Spint
+///******************************************************************************************
 prototype Mst_Default_Spint (C_Npc)
 {
 	/// ------ Monster ------
@@ -11,7 +13,7 @@ prototype Mst_Default_Spint (C_Npc)
 	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_SCAVENGER;
 	
-	NpcFn_SetAttributesToLevel (self, 3);
+	NpcFn_SetAttributesToLevel (self, 4);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -31,12 +33,16 @@ prototype Mst_Default_Spint (C_Npc)
 	aivar[AIV_MM_EatGroundEnd]			=	22;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Spint()
 {
 	Mdl_SetVisual		(self, "Scavenger.mds");
 	Mdl_SetVisualBody	(self, "Spint_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Spint (Mst_Default_Spint)
 {

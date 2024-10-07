@@ -1,9 +1,10 @@
 ///******************************************************************************************
-///	MOD_Defeated
+/// MOD_Defeated
 ///******************************************************************************************
 func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 {
-	if (Npc_IsPlayer(slf) || slf.aivar[AIV_PARTYMEMBER])
+	//if (Npc_IsPlayer(slf) || slf.aivar[AIV_PARTYMEMBER])
+	if ((oth.aivar[AIV_DamageDealtByPlayer]*2) >= oth.attribute[ATR_HITPOINTS_MAX])
 	{
 		if (!oth.aivar[AIV_VictoryExpGiven])
 		{
@@ -17,12 +18,6 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 	/// DEAD
 	if (mode == DBP_Killed)
 	{
-		if (oth.aivar[AIV_MM_REAL_ID] == ID_SWAMPDRONE && Npc_GetDistToNpc(oth, hero) < 300)
-		{
-			//hero.attribute[ATR_HITPOINTS] -= hero.attribute[ATR_HITPOINTS_MAX]/5;
-			MOD_SetPoison(bsPoison + 2);
-		};
-		
 		/// mission counters
 		if (C_IAmCanyonRazor(oth))
 		{
@@ -32,6 +27,7 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 				B_CountCanyonRazor();
 			};
 		};
+		
 		if (Hlp_GetInstanceID(oth) == Hlp_GetInstanceID(DiegoOW))
 		{
 			Diego_IsDead = true;
@@ -102,6 +98,7 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 	/// UNCONSCIOUS
 	else if (mode == DBP_Defeated)
 	{
+		/// mission counters
 		if (oth.guild < GIL_SEPERATOR_HUM)
 		&& (Npc_IsPlayer(slf))
 		{
@@ -118,5 +115,13 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 		{
 			Dar_LostAgainstCipher = true;
 		};
+	};
+	
+	
+	/// AUTO LOOT
+	if (Npc_IsPlayer(slf) || slf.aivar[AIV_PartyMember])
+	&& (STR_ToInt(MEM_GetGothOpt("MOD", "autoLoot")))
+	{
+		B_GiveNpcInventory (oth, slf);
 	};
 };

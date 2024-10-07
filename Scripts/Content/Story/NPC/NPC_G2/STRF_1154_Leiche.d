@@ -10,7 +10,7 @@ instance STRF_1154_Leiche (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 2);
-	NpcFn_SetFightSkills (self, 15);
+	NpcFn_AddFightSkills (self, 15);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

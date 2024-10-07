@@ -18,7 +18,7 @@ instance WzA_17131_Ignaz (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_AddFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

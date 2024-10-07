@@ -18,7 +18,7 @@ instance WzA_17224_Konioniowicz (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_AddFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

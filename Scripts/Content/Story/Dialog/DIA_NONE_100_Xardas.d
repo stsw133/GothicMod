@@ -30,7 +30,6 @@ FUNC VOID DIA_Xardas_FirstEXIT_Info()
 	AI_StopProcessInfos(self);
 	
 	B_ChangeChapter (7, NEWWORLD_ZEN);
-	
 	B_GivePlayerExp(0);
 	
 	Npc_ExchangeRoutine (self, "START");

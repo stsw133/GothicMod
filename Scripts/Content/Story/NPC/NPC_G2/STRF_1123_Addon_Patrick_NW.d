@@ -13,7 +13,7 @@ instance STRF_1123_Addon_Patrick_NW (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

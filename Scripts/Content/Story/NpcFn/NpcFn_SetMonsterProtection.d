@@ -1,103 +1,85 @@
 ///******************************************************************************************
-///	NpcFn_SetMonsterProtection
+/// NpcFn_SetMonsterProtection
 ///******************************************************************************************
-func int NpcFn_ProtectionSqrt (var int x) /// should be used with x between 0 and 25 (if you need up to 100 or maybe even more then remove condition "x < 25"
+
+const int MonsterProtectionValues[25] =
 {
-	var int a; a = 0;
-	var int b; b = 0;
-	
-	var int i;
-	repeat(i, 10);
-	if ((a + b*2 + 1) <= x)
-	{
-		a += b*2 + 1;
-		b += 1;
-	}
-	else
-	{
-		if (x < 25 && x - a > 0)
-		{
-			return NpcFn_ProtectionSqrt(x - a) + b * x;
-		};
-		return b * x;
-	};
-	end;
-	return b * x;
+	0, 1, 3, 5, 8,
+	11, 15, 19, 23, 27,
+	32, 36, 42, 47, 52,
+	58, 64, 70, 76, 83,
+	89, 96, 103, 110, 118
 };
+
+///******************************************************************************************
+func int NpcFn_GetMonsterProtection (var int level)
+{
+	if (level < 0)
+	{
+		return 0;
+	};
+	
+	/// FUNC
+	if (level < 25)
+	{
+		return MEM_ReadStatArr(MonsterProtectionValues, level);
+	};
+	
+	return level * 5;
+};
+
 ///******************************************************************************************
 func void NpcFn_SetMonsterProtection (var C_Npc slf, var int kap)
 {
-//	slf.protection[PROT_BLUNT]		=	kap * AR_PER_LEVEL;
-//	slf.protection[PROT_EDGE]		=	kap * AR_PER_LEVEL;
-//	slf.protection[PROT_POINT]		=	kap * AR_PER_LEVEL;
-//	slf.protection[PROT_FIRE]		=	kap * MR_PER_LEVEL;
-//	slf.protection[PROT_FLY]		=	kap * MR_PER_LEVEL;
-//	slf.protection[PROT_MAGIC]		=	kap * MR_PER_LEVEL;
-//	slf.protection[PROT_BARRIER]	=	kap * MR_PER_LEVEL;
-
-	var int prot;
-	if (kap < 25)
-	{
-		prot = NpcFn_ProtectionSqrt(kap);
-		slf.protection[PROT_BLUNT]		=	prot;
-		slf.protection[PROT_EDGE]		=	prot;
-		slf.protection[PROT_POINT]		=	prot;
-		slf.protection[PROT_FIRE]		=	prot;
-		slf.protection[PROT_FLY]		=	prot;
-		slf.protection[PROT_MAGIC]		=	prot;
-		slf.protection[PROT_BARRIER]	=	prot;
-	}
-	else
-	{
-		prot = NpcFn_ProtectionSqrt(25);
-		slf.protection[PROT_BLUNT]		=	prot + (kap - 25)*AR_PER_LEVEL;
-		slf.protection[PROT_EDGE]		=	prot + (kap - 25)*AR_PER_LEVEL;
-		slf.protection[PROT_POINT]		=	prot + (kap - 25)*AR_PER_LEVEL;
-		slf.protection[PROT_FIRE]		=	prot + (kap - 25)*MR_PER_LEVEL;
-		slf.protection[PROT_FLY]		=	prot + (kap - 25)*MR_PER_LEVEL;
-		slf.protection[PROT_MAGIC]		=	prot + (kap - 25)*MR_PER_LEVEL;
-		slf.protection[PROT_BARRIER]	=	prot + (kap - 25)*MR_PER_LEVEL;
-	};
+	var int prot; prot = NpcFn_GetMonsterProtection(kap);
+	
+	slf.protection[PROT_BLUNT]		=	prot;
+	slf.protection[PROT_EDGE]		=	prot;
+	slf.protection[PROT_POINT]		=	prot;
+	slf.protection[PROT_FIRE]		=	prot;
+	slf.protection[PROT_FLY]		=	prot;
+	slf.protection[PROT_MAGIC]		=	prot;
+	slf.protection[PROT_BARRIER]	=	prot;
 	
 	/// additional changes based on: material of monster (stones, bones, wood), dexterity of monster etc.
 	if (slf.guild == GIL_BLOODFLY)
 	{
-		slf.protection[PROT_EDGE]		/=	2;
-		slf.protection[PROT_POINT]		=	0;
+		slf.protection[PROT_EDGE]		=	prot/2;
+		slf.protection[PROT_POINT]		=	prot/2;
 	}
-	else if (slf.guild == GIL_DEMON)
-	|| (slf.guild == GIL_DRAGON)
+	else if	(slf.guild == GIL_DEMON)
+	||		(slf.guild == GIL_DRAGON)
 	{
-		slf.protection[PROT_FIRE]		*=	2;
+		slf.protection[PROT_FIRE]		=	prot*2;
 	}
-	else if (slf.guild == GIL_MOLERAT)
-	|| (slf.guild == GIL_ZOMBIE)
+	else if	(slf.guild == GIL_MOLERAT)
+	||		(slf.guild == GIL_ZOMBIE)
 	{
-		slf.protection[PROT_BLUNT]		/=	2;
-		slf.protection[PROT_EDGE]		/=	2;
-		slf.protection[PROT_POINT]		/=	2;
-		slf.protection[PROT_FIRE]		/=	2;
-		slf.protection[PROT_MAGIC]		/=	2;
-		slf.protection[PROT_BARRIER]	/=	2;
+		slf.protection[PROT_BLUNT]		=	prot*2/3;
+		slf.protection[PROT_EDGE]		=	prot*2/3;
+		slf.protection[PROT_POINT]		=	prot*2/3;
+		slf.protection[PROT_FIRE]		=	prot*2/3;
+		slf.protection[PROT_MAGIC]		=	prot*2/3;
+		slf.protection[PROT_BARRIER]	=	prot*2/3;
 	}
-	else if (slf.guild == GIL_GARGOYLE)
-	|| (slf.guild == GIL_GOBBO_SKELETON)
-	|| (slf.guild == GIL_GOLEM)
-	|| (slf.guild == GIL_SHADOWBEAST_SKELETON)
-	|| (slf.guild == GIL_SKELETON)
-	|| (slf.guild == GIL_SKELETON_MAGE)
-	|| (slf.guild == GIL_STONEGUARDIAN)
-	|| (slf.guild == GIL_SWAMPGOLEM)
+	else if	(slf.guild == GIL_GARGOYLE)
+	||		(slf.guild == GIL_GOBBO_SKELETON)
+	||		(slf.guild == GIL_GOLEM)
+	||		(slf.guild == GIL_SHADOWBEAST_SKELETON)
+	||		(slf.guild == GIL_SKELETON)
+	||		(slf.guild == GIL_SKELETON_MAGE)
+	||		(slf.guild == GIL_STONEGUARDIAN)
+	||		(slf.guild == GIL_SWAMPGOLEM)
 	{
-		slf.protection[PROT_BLUNT]		/=	2;
-		slf.protection[PROT_EDGE]		+=	slf.protection[PROT_EDGE]/2;
-		slf.protection[PROT_POINT]		*=	2;
+		slf.protection[PROT_BLUNT]		=	prot/2;
+		slf.protection[PROT_EDGE]		=	prot*3/2;
+		slf.protection[PROT_POINT]		=	prot*2;
 	}
 	else if (slf.guild == GIL_TREANT)
 	{
-		slf.protection[PROT_BLUNT]		+=	slf.protection[PROT_BLUNT]/2;
-		slf.protection[PROT_EDGE]		/=	2;
-		slf.protection[PROT_POINT]		*=	2;
+		slf.protection[PROT_BLUNT]		=	prot*3/2;
+		slf.protection[PROT_EDGE]		=	prot/2;
+		slf.protection[PROT_POINT]		=	prot*2;
 		slf.protection[PROT_FIRE]		=	0;
 	}
 	else if (slf.guild == GIL_TROLL)

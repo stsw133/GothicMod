@@ -16,7 +16,7 @@ instance STRF_1122_Addon_Pardos (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 12);
-	NpcFn_SetFightSkills (self, 60);
+	NpcFn_AddFightSkills (self, 60);
 	slf.attribute[ATR_HITPOINTS]		/=	2;
 	
 	/// ------ FT ------

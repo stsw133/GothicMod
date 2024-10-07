@@ -13,7 +13,7 @@ instance BDT_10018_Addon_Torwache (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, 60);
+	NpcFn_AddFightSkills (self, 60);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

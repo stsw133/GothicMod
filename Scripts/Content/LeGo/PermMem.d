@@ -90,6 +90,7 @@ func void MEM_ArraySortFunc(var int stream, var func fnc) {
 //========================================
 const int HandlesPointer = 0;
 const int HandlesInstance = 0;
+const int HandlesWrapped = 0;
 var int nextHandle; 
 var int _PM_ArrayElements;
 var int _PM_Inst;
@@ -178,6 +179,7 @@ func void release(var int h) {
     if (!Hlp_IsValidHandle(h)) { return; };
 	_HT_Remove(HandlesPointer, h);
 	_HT_Remove(HandlesInstance, h);
+    MEM_ArrayRemoveValue(HandlesWrapped, h);
 };
 
 //========================================
@@ -248,15 +250,16 @@ func void foreachHndl(var int inst, var func fnc) {
     MEM_Copy(z.array, a, l);
     var int i; i = 0;
     var int o; o = MEM_GetFuncPtr(fnc);
-    var int p; p = MEM_StackPos.position;
+    var zCPar_Symbol fsymb; fsymb = _^(MEM_GetSymbolByIndex(MEM_GetFuncID(fnc)));
     while(i < l);
         var int h; h = MEM_ReadInt(a+(i<<2)); //handle
         if(_HT_Get(HandlesPointer, h)) {
             h;
             MEM_CallByPtr(o);
-            if(MEM_PopIntResult() == rBreak) {
-                break;
-                // i = l;
+            if(fsymb.offset) {
+                if(MEM_PopIntResult() == rBreak) {
+                    break;
+                };
             };
         };
         i += 1;
@@ -294,7 +297,11 @@ func void delete(var int h) {
         MEMINT_StackPushInst(symbCls);
         MEM_CallByID(fnc);
     };
-    clear(h);
+    if (MEM_ArrayIndexOf(HandlesWrapped, h) != -1) {
+        release(h);
+    } else {
+        clear(h);
+    };
 };
 
 //========================================
@@ -341,6 +348,7 @@ func int new(var int inst) {
         //Falls das Array nicht existiert neu anlegen.
         HandlesPointer = _HT_Create();
         HandlesInstance = _HT_Create();
+        HandlesWrapped = MEM_ArrayCreate();
     };
     ptr = create(inst);
 	_HT_Insert(HandlesPointer, ptr, nextHandle);
@@ -358,11 +366,13 @@ func int wrap(var int inst, var int ptr) {
         //Falls das Array nicht existiert neu anlegen.
         HandlesPointer = _HT_Create();
         HandlesInstance = _HT_Create();
+        HandlesWrapped = MEM_ArrayCreate();
     };
 	
 	_HT_Insert(HandlesPointer, ptr, nextHandle);
 	_HT_Insert(HandlesInstance, inst, nextHandle);
     _PM_AddToForeachTable(nextHandle);
+    MEM_ArrayInsert(HandlesWrapped, nextHandle);
     return nextHandle; //das erste Handle ist somit 1
 };
 
@@ -418,8 +428,10 @@ func void _PM_Reset() {
 		_HT_ForEach(HandlesPointer, _deleteAll);
 		_HT_Destroy(HandlesPointer);
 		_HT_Destroy(HandlesInstance);
+		MEM_ArrayFree(HandlesWrapped);
 		HandlesPointer = 0;
 		HandlesInstance = 0;
+		HandlesWrapped = 0;
     };
 	MEM_Info("Resetting done.");
 };
@@ -1072,8 +1084,8 @@ func void _PM_Archive_HTSub(var int key, var int val) {
 		MEM_Call(List_Create);
 		PM_HandleList = MEM_PopIntResult();
 	} else {
-		/* List_InsertSorted(PM_HandleList, key, List_CmpAscending); */
-		PM_HandleList; key; MEM_GetFuncID(List_CmpAscending);
+		/* List_InsertSorted(PM_HandleList, key, List_CmpAscendingUnsigned); */
+		PM_HandleList; key; MEM_GetFuncID(List_CmpAscendingUnsigned);
 		MEM_Call(List_InsertSorted);
 	};
 };
@@ -1115,6 +1127,9 @@ func void _PM_Archive() {
 	if (PM_HandleList) {
 		PM_HandleList; MEM_GetFuncID(_PM_Archive_ListSub);
 		MEM_Call(List_ForF);
+
+		PM_HandleList;
+		MEM_Call(List_Destroy);
 	};
 
 	PM_HandleList = 0;
@@ -1212,6 +1227,23 @@ func void _PM_ReadClass() {
     _PM_Tabs -= 1;
 };
 
+func void _PM_SkipClass() {
+    if(STR_Compare(_PM_TextLine(), "{")) {
+        _PM_Error(ConcatStrings("'{' erwartet. ", _PM_Head.instName));
+        return;
+    };
+
+    _PM_Tabs += 1;
+
+    var int p; p = MEM_StackPos.position;
+    var string str; str = _PM_TextLine();
+    if (STR_Compare(str, "}")) {
+        MEM_StackPos.position = p;
+    };
+
+    _PM_Tabs -= 1;
+};
+
 func void _PM_ReadSaveStruct() {
     // Speicherkopf vorbereiten
     if(_PM_HeadPtr) {
@@ -1237,12 +1269,20 @@ func void _PM_ReadSaveStruct() {
     _PM_Head.inst = MEM_FindParserSymbol(_PM_Head.instName);
     if(_PM_Head.inst == -1) {
         _PM_Error(ConcatStrings("Unbekannte Instanz: ", _PM_Head.instName));
+        _PM_SkipClass();
+        _PM_Head = MEM_NullToInst();
+        free(_PM_HeadPtr, _PM_SaveStruct@);
+        _PM_HeadPtr = 0;
         return;
     };
 
     var int classPtr; classPtr = MEM_GetParserSymbol(_PM_Head.className);
     if(!classPtr) {
         _PM_Error(ConcatStrings("Unbekannte Klasse: ", _PM_Head.className));
+        _PM_SkipClass();
+        _PM_Head = MEM_NullToInst();
+        free(_PM_HeadPtr, _PM_SaveStruct@);
+        _PM_HeadPtr = 0;
         return;
     };
 
@@ -1419,6 +1459,7 @@ func void _PM_Unarchive() {
 
     HandlesPointer = _HT_Create();
     HandlesInstance = _HT_Create();
+    HandlesWrapped = MEM_ArrayCreate();
 
     var int p; p = MEM_StackPos.position;
     str = _PM_TextLine();
@@ -1429,13 +1470,15 @@ func void _PM_Unarchive() {
 
         _PM_ReadSaveStruct();
         _PM_SearchObjCache = "";
-        _PM_SaveStructToInst();
+        if (_PM_HeadPtr) {
+            _PM_SaveStructToInst();
+
+            _HT_Insert(HandlesPointer, _PM_Head.currOffs, i);
+            _HT_Insert(HandlesInstance, _PM_Head.inst, i);
+        };
 
         BR_NextLine();
         _PM_Line += 1;
-
-        _HT_Insert(HandlesPointer, _PM_Head.currOffs, i);
-        _HT_Insert(HandlesInstance, _PM_Head.inst, i);
 
         MEM_StackPos.position = p;
     }
@@ -1649,8 +1692,16 @@ func string PM_LoadString(var string name) {
     return os.content;
 };
 
+func void _PM_EmptyFunc_void() {};
+func void _PM_EmptyFunc_int(var int i) {};
+func void _PM_EmptyFunc_int_int(var int i, var int j) {};
+
 func int PM_LoadFuncID(var string name) {
-    return MEM_FindParserSymbol(PM_LoadString(name));
+    var int funcID; funcID = MEM_FindParserSymbol(PM_LoadString(name));
+    if (funcID == -1) {
+        funcID = MEM_GetFuncID(_PM_EmptyFunc_int); // Most common function signature in LeGo classes
+    };
+    return funcID;
 };
 
 func int PM_LoadFuncOffset(var string name) {

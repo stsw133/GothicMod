@@ -825,9 +825,9 @@ func void DIA_Parlan_TEACH_MANA_Info ()
 		AI_Output (other, self, "DIA_Parlan_TEACH_MANA_15_00"); //Chcia³bym powiêkszyæ swoje magiczne zdolnoœci.
 		
 		Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
-		Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+		Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);
+		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Parlan_TEACH_MANA_1);
+		Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Parlan_TEACH_MANA_5);
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_BACK()
 {
@@ -845,18 +845,18 @@ FUNC VOID DIA_Parlan_TEACH_MANA_1()
 	B_TeachAttribute (self, other, ATR_MANA_MAX, 1, T_MED);
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
-	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Parlan_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Parlan_TEACH_MANA_5);
 };
 FUNC VOID DIA_Parlan_TEACH_MANA_5()
 {
 	B_TeachAttribute (self, other, ATR_MANA_MAX, 5, T_MED);
 	
 	Info_ClearChoices   (DIA_Parlan_TEACH_MANA);	
-	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Parlan_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Parlan_TEACH_MANA_5);
+	Info_AddChoice 		(DIA_Parlan_TEACH_MANA,DIALOG_BACK,DIA_Parlan_TEACH_MANA_BACK);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Parlan_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Parlan_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Parlan_TEACH_MANA_5);
 };
 */
 ///////////////////////////////////////////////////////////////////////

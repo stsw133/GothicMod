@@ -10,7 +10,7 @@ instance PIR_1368_Addon_Malcom (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 10);
+	NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

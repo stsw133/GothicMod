@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Warg
+///******************************************************************************************
 prototype Mst_Default_Warg (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Warg (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Warg()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_DesertWarg()
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Warg_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Warg (Mst_Default_Warg)
 {

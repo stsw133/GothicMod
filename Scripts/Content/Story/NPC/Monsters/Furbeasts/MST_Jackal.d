@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Jackal
+///******************************************************************************************
 prototype Mst_Default_Jackal (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Jackal (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Jackal()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Jackal()
 	Mdl_SetVisualBody	(self, "Jackal_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.95, 0.95, 0.95);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Jackal (Mst_Default_Jackal)
 {

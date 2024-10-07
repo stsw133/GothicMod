@@ -13,7 +13,7 @@ func int B_DragonKillCounter (var C_Npc currDragon)
 	{
 		if (!RavenIsDead)
 		{
-			PlayVideoEx	("EXTRO_RAVEN.BIK", true, false);
+			PlayVideoEx ("EXTRO_RAVEN.BIK", true, false);
 			RavenIsDead = true;
 			B_RemoveNpc(Myxir_ADW);
 		};
@@ -26,7 +26,7 @@ func int B_DragonKillCounter (var C_Npc currDragon)
 		Log_SetTopicStatus (TOPIC_BackToShip, LOG_RUNNING);
 		B_LogEntry (TOPIC_BackToShip, "Wróg pokonany. Tym razem nie bêdê gniæ pod ska³ami, wracam na okrêt.");
 		
-		AI_Teleport	(hero, "UNDEAD_ENDTELEPORT");
+		AI_Teleport (hero, "UNDEAD_ENDTELEPORT");
 		
 		if		(hero.guild == GIL_MIL)	{ PlayVideoEx ("EXTRO_PAL.BIK", true, false); }
 		else if (hero.guild == GIL_DJG)	{ PlayVideoEx ("EXTRO_DJG.BIK", true, false); }
@@ -39,9 +39,9 @@ func int B_DragonKillCounter (var C_Npc currDragon)
 		if (Hlp_GetInstanceID(currDragon) == Hlp_GetInstanceID(SwampDragon))
 		{
 			PrintScreen	("Smocza zdolnoœæ: regeneracja", -1, -1, FONT_SCREEN, 2);
-			hpRegenPower += 5;
-			mpRegenPower += 5;
-			spRegenPower += 5;
+			regenPower[BarOrderHP] += 5;
+			regenPower[BarOrderMP] += 5;
+			regenPower[BarOrderSP] += 5;
 		}
 		else if (Hlp_GetInstanceID(currDragon) == Hlp_GetInstanceID(RockDragon))
 		{

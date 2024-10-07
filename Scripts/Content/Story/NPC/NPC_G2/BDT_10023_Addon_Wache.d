@@ -10,7 +10,7 @@ instance BDT_10023_Addon_Wache (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 60);
+	NpcFn_AddFightSkills (self, 60);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

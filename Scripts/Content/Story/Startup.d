@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Startup und Init Funktionen der Level-zen-files
+/// Startup und Init Funktionen der Level-zen-files
 ///******************************************************************************************
 func void STARTUP_GLOBAL()
 {
@@ -7,15 +7,29 @@ func void STARTUP_GLOBAL()
 	
 	MEM_InitAll();
 	LeGo_Init(LeGo_All);
-	ConsoleCommands();
 	
-	/// MOD
-	selectedHero = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHero"));
+	/// MOD: options
+	selectedHeroSkin = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHeroSkin"));
 	DIFF_Select(STR_ToInt(MEM_GetGothOpt("MOD", "difficulty")));
 	movieMode = STR_ToInt(MEM_GetGothOpt("MOD", "movieMode"));
 	
+	/// MOD: hook engine
+	MOD_Damage();
+	MOD_ItemFn();
+	MOD_Keys();
+	MOD_Menu();
+	MOD_MoveFn();
 	QuickSlot_Init();
-	MOD_StatusMenu_Init();
+	
+	if (!movieMode)
+	{
+		MOD_DisableCheats();
+	};
+	
+	/// MOD: register
+	ConsoleCommands();
+	
+	/// MOD: other
 	InitRandomizedAttributesOrder();
 };
 
@@ -26,25 +40,14 @@ func void INIT_GLOBAL()
 	/// MOD: loading textures
 	MOD_RandomLoadingTexture(default);
 	
-	/// MOD: shortcuts
-	//MemoKey1 = -1;
-	//MemoKey2 = -1;
-	keySprint1 = MEM_GetKey("keySprint");
-	keySprint2 = MEM_GetSecondaryKey("keySprint");
-	keyNoAnimTake1 = MEM_GetKey("keyNoAnimTake");
-	keyNoAnimTake2 = MEM_GetSecondaryKey("keyNoAnimTake");
-	keyInteract1 = MEM_GetKey("keyInteract");
-	keyInteract2 = MEM_GetSecondaryKey("keyInteract");
-	keyShortcuts1 = MEM_GetKey("keyShortcuts");
-	keyShortcuts2 = MEM_GetSecondaryKey("keyShortcuts");
-	
-	noAnimTake = STR_ToInt(MEM_GetGothOpt("MOD", "noAnimTake"));
+	/// MOD: hook engine
+	//FF_ApplyOnce(MOD_Damage);
+	//FF_ApplyOnce(MOD_ItemFn);
+	//FF_ApplyOnce(MOD_MoveFn);
 	
 	/// MOD: frame functions
-	FF_ApplyOnce(MOD_Damage);
-	
 	FF_ApplyOnce(Loop_dvBar);
-	FF_ApplyOnce(Loop_hpBar); FF_ApplyOnce(Loop_shieldPhBar); FF_ApplyOnce(Loop_shieldMgBar);
+	FF_ApplyOnce(Loop_hpBar); FF_ApplyOnce(Loop_shieldBar);
 	FF_ApplyOnce(Loop_mpBar); FF_ApplyOnce(Loop_auraBar);
 	FF_ApplyOnce(Loop_spBar);
 	FF_ApplyOnce(Loop_xpBar);
@@ -55,12 +58,10 @@ func void INIT_GLOBAL()
 	FF_ApplyOnceExt (TT_5, 5, -1);
 	
 	/// MOD: hero visual
-	NpcFn_SetHeroVisual (hero, selectedHero);
+	NpcFn_SetHeroVisual (hero, selectedHeroSkin);
 	
-	if (movieMode)
-	{
-		MEM_Game.game_testmode = true;
-	};
+	/// MOD: test mode
+	MEM_Game.game_testmode = movieMode;
 };
 
 ///******************************************************************************************
@@ -4181,7 +4182,7 @@ FUNC VOID STARTUP_NewWorld_Part_Forest_01 ()
 	// VINOSKELLEREI
 	Wld_InsertNpc 		(Giant_Rat ,"NW_FOREST_VINOSKELLEREI_01"); 
 	Wld_InsertNpc 		(Giant_Rat ,"NW_FOREST_VINOSKELLEREI_01"); 
-	Wld_InsertItem 		(ItWr_VinosKellergeister_Mis ,"FP_ITEM_NW_VINOKELLEREI"); 
+	Wld_InsertItem 		(ItWr_VinosKellergeister_MIS ,"FP_ITEM_NW_VINOKELLEREI"); 
 
 	// ----------- Lighthouse ------------
 	

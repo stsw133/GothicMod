@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_Sheep (C_Npc)		
+/// Sheep
+///******************************************************************************************
+prototype Mst_Default_Sheep (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Owca";
@@ -20,6 +22,7 @@ prototype Mst_Default_Sheep (C_Npc)
 	
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Sheep()
 {
@@ -31,6 +34,9 @@ func void B_SetVisuals_Hammel()
 	Mdl_SetVisual		(self, "Sheep.mds");
 	Mdl_SetVisualBody	(self, "Hammel_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Sheep (Mst_Default_Sheep)
 {
@@ -66,6 +72,7 @@ instance Follow_Sheep_AKIL (Mst_Default_Sheep)
 	
 	B_SetVisuals_Sheep();
 };
+
 ///******************************************************************************************
 instance Balthasar_Sheep1 (Mst_Default_Sheep)
 {

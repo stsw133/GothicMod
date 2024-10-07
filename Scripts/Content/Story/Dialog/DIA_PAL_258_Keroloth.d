@@ -100,11 +100,11 @@ INSTANCE DIA_Keroloth_Udar(C_INFO)
 	information	= DIA_Keroloth_Udar_Info;
 	permanent	= FALSE;
 	description = "A co z walk¹ na dystans?";
-};                       
+};
 
 FUNC INT DIA_Keroloth_Udar_Condition()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	&& (Keroloths_BeutelLeer == FALSE)
 	{
 		return TRUE;

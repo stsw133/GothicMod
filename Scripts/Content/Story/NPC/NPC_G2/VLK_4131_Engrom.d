@@ -10,7 +10,7 @@ instance VLK_4131_Engrom (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 45);
+	NpcFn_AddFightSkills (self, 45);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

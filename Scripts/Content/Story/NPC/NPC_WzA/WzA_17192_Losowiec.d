@@ -24,7 +24,7 @@ instance WzA_17192_Losowiec (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_AddFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;

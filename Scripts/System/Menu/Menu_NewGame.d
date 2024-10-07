@@ -53,7 +53,7 @@ instance MENUITEM_NEWGAME_HERO_CHOICE (C_MENU_ITEM_DEF)
 	posy = MENU_START_Y + (MENU_DY * 0) + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
-	onchgsetoption = "selectedHero";
+	onchgsetoption = "selectedHeroSkin";
 	onchgsetoptionsection = "MOD";
 	flags = flags & ~IT_SELECTABLE;
 	flags = flags | IT_PERF_OPTION | IT_TXT_CENTER;

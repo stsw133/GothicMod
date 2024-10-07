@@ -1,54 +1,45 @@
 ///******************************************************************************************
-///	MOD_PotionEffects
-///******************************************************************************************
-
-var int hpPotionPointsPerSec, hpPotionTime;	/// HP potion duration
-var int mpPotionPointsPerSec, mpPotionTime;	/// MP potion duration
-var int spPotionPointsPerSec, spPotionTime;	/// SP potion duration
-
-var int timedPotionPoints[9];
-var int timedPotionTime[9];
-
+/// MOD_PotionEffects
 ///******************************************************************************************
 func void PotionRG_ADD (var int attribute, var int pointsPerSec, var int totalPoints, var int totalPercents)
 {
 	if (attribute == ATR_HITPOINTS)
 	{
-		if (hpPotionTime == 0)
+		if (regenPotionTime[BarOrderHP] == 0)
 		{
 			Wld_PlayEffect ("SPELLFX_HEALTHPOTION", hero, hero, 0, 0, 0, false);
 		};
 		
-		hpPotionPointsPerSec = pointsPerSec;
-		if (hpPotionPointsPerSec != 0)
+		regenPotionPointsPerSec[BarOrderHP] = pointsPerSec;
+		if (regenPotionPointsPerSec[BarOrderHP] != 0)
 		{
-			hpPotionTime = (totalPoints + hero.attribute[ATR_HITPOINTS_MAX]*totalPercents/100) / hpPotionPointsPerSec;
+			regenPotionTime[BarOrderHP] = (totalPoints + hero.attribute[ATR_HITPOINTS_MAX]*totalPercents/100) / regenPotionPointsPerSec[BarOrderHP];
 		};
 	}
 	else if (attribute == ATR_MANA)
 	{
-		if (mpPotionTime == 0)
+		if (regenPotionTime[BarOrderMP] == 0)
 		{
 			Wld_PlayEffect ("SPELLFX_MANAPOTION", hero, hero, 0, 0, 0, false);
 		};
 		
-		mpPotionPointsPerSec = pointsPerSec;
-		if (mpPotionPointsPerSec != 0)
+		regenPotionPointsPerSec[BarOrderMP] = pointsPerSec;
+		if (regenPotionPointsPerSec[BarOrderMP] != 0)
 		{
-			mpPotionTime = (totalPoints + hero.attribute[ATR_MANA_MAX]*totalPercents/100) / mpPotionPointsPerSec;
+			regenPotionTime[BarOrderMP] = (totalPoints + hero.attribute[ATR_MANA_MAX]*totalPercents/100) / regenPotionPointsPerSec[BarOrderMP];
 		};
 	}
 	else if (attribute == AIV_Stamina)
 	{
-		if (spPotionTime == 0)
+		if (regenPotionTime[BarOrderSP] == 0)
 		{
 			Wld_PlayEffect ("SPELLFX_YELLOWPOTION", hero, hero, 0, 0, 0, false);
 		};
 		
-		spPotionPointsPerSec = pointsPerSec;
-		if (spPotionPointsPerSec != 0)
+		regenPotionPointsPerSec[BarOrderSP] = pointsPerSec;
+		if (regenPotionPointsPerSec[BarOrderSP] != 0)
 		{
-			spPotionTime = (totalPoints + hero.aivar[AIV_Stamina_MAX]*totalPercents/100) / spPotionPointsPerSec;
+			regenPotionTime[BarOrderSP] = (totalPoints + hero.aivar[AIV_Stamina_MAX]*totalPercents/100) / regenPotionPointsPerSec[BarOrderSP];
 		};
 	};
 };
@@ -116,96 +107,88 @@ func void PotionTimed_ADD (var int attribute, var int points, var int time)
 		
 		Npc_ChangeAttribute(hero, ATR_POWER, timedPotionPoints[ATR_POWER]);
 	}
-	else if (attribute == PROT_INDEX_MAX)
+	else if (attribute == ATR_PROT)
 	{
-		if (timedPotionTime[PROT_INDEX_MAX] > 0)
+		if (timedPotionTime[ATR_PROT] > 0)
 		{
-			hero.protection[PROT_BLUNT] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_EDGE] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_POINT] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_FIRE] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_MAGIC] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_BARRIER] -= timedPotionPoints[PROT_INDEX_MAX];
+			hero.protection[PROT_BLUNT] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_EDGE] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_POINT] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_FIRE] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_MAGIC] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_BARRIER] -= timedPotionPoints[ATR_PROT];
 		};
 		
-		timedPotionPoints[PROT_INDEX_MAX] = points;
-		timedPotionTime[PROT_INDEX_MAX] = time;
+		timedPotionPoints[ATR_PROT] = points;
+		timedPotionTime[ATR_PROT] = time;
 		
-		hero.protection[PROT_BLUNT] += timedPotionPoints[PROT_INDEX_MAX];
-		hero.protection[PROT_EDGE] += timedPotionPoints[PROT_INDEX_MAX];
-		hero.protection[PROT_POINT] += timedPotionPoints[PROT_INDEX_MAX];
-		hero.protection[PROT_FIRE] += timedPotionPoints[PROT_INDEX_MAX];
-		hero.protection[PROT_MAGIC] += timedPotionPoints[PROT_INDEX_MAX];
-		hero.protection[PROT_BARRIER] += timedPotionPoints[PROT_INDEX_MAX];
+		hero.protection[PROT_BLUNT] += timedPotionPoints[ATR_PROT];
+		hero.protection[PROT_EDGE] += timedPotionPoints[ATR_PROT];
+		hero.protection[PROT_POINT] += timedPotionPoints[ATR_PROT];
+		hero.protection[PROT_FIRE] += timedPotionPoints[ATR_PROT];
+		hero.protection[PROT_MAGIC] += timedPotionPoints[ATR_PROT];
+		hero.protection[PROT_BARRIER] += timedPotionPoints[ATR_PROT];
 	};
 };
 
 ///******************************************************************************************
 func void Potions_Process()
 {
-	/// REGEN POTIONS or FOOD, DRINKS, ALCOHOL
+	/// REGEN POTIONS or FOOD & DRINKS
 	/// hp
-	if (hpPotionTime > 0)
+	if (regenPotionTime[BarOrderHP] > 0)
 	{
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpPotionPointsPerSec);
-		hpPotionTime -= 1;
-		if (hpPotionTime == 0)
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, regenPotionPointsPerSec[BarOrderHP]);
+		regenPotionTime[BarOrderHP] -= 1;
+		if (regenPotionTime[BarOrderHP] == 0)
 		{
 			Wld_StopEffect("SPELLFX_HEALTHPOTION");
 		};
 	}
-	else if (foodTime[0] > 0)
+	else if (foodTime[BarOrderHP] > 0)
 	{
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);
-		foodTime[0] -= 1;
+		foodTime[BarOrderHP] -= 1;
 	};
 	/// mp
-	if (mpPotionTime > 0)
+	if (regenPotionTime[BarOrderMP] > 0)
 	{
-		Npc_ChangeAttribute (hero, ATR_MANA, mpPotionPointsPerSec);
-		mpPotionTime -= 1;
-		if (mpPotionTime == 0)
+		Npc_ChangeAttribute (hero, ATR_MANA, regenPotionPointsPerSec[BarOrderMP]);
+		regenPotionTime[BarOrderMP] -= 1;
+		if (regenPotionTime[BarOrderMP] == 0)
 		{
 			Wld_StopEffect("SPELLFX_MANAPOTION");
 		};
 	}
-	else if (foodTime[1] > 0)
+	else if (foodTime[BarOrderMP] > 0)
 	{
 		Npc_ChangeAttribute (hero, ATR_MANA, 1);
-		foodTime[1] -= 1;
+		foodTime[BarOrderMP] -= 1;
 	};
 	/// sp
-	if (spPotionTime > 0)
+	if (regenPotionTime[BarOrderSP] > 0)
 	{
-		hero.aivar[AIV_Stamina] += spPotionPointsPerSec;
-		spPotionTime -= 1;
-		if (spPotionTime == 0)
+		hero.aivar[AIV_Stamina] += regenPotionPointsPerSec[BarOrderSP];
+		regenPotionTime[BarOrderSP] -= 1;
+		if (regenPotionTime[BarOrderSP] == 0)
 		{
 			Wld_StopEffect("SPELLFX_YELLOWPOTION");
 		};
 	}
-	else if (foodTime[2] > 0)
+	else if (foodTime[BarOrderSP] > 0)
 	{
 		hero.aivar[AIV_Stamina] += 1;
-		foodTime[2] -= 1;
+		foodTime[BarOrderSP] -= 1;
 	};
 	/// xp
-	if (foodTime[3] > 0)
+	if (foodTime[BarOrderXP] > 0)
 	{
 		hero.exp += 1;
 		if (hero.exp >= hero.exp_next)
 		{
 			B_GivePlayerExp(0);
 		};
-		foodTime[3] -= 1;
-	};
-	if (alcoholTime > 0)
-	{
-		alcoholTime -= 1;
-		if (alcoholTime == 0)
-		{
-			Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKEN.MDS");
-		};
+		foodTime[BarOrderXP] -= 1;
 	};
 	
 	/// TIMED MAX ATTRIBUTE POTIONS
@@ -219,10 +202,6 @@ func void Potions_Process()
 		else if (timedPotionTime[ATR_HITPOINTS_MAX] == 0)
 		{
 			Npc_ChangeAttribute(hero, ATR_HITPOINTS_MAX, -timedPotionPoints[ATR_HITPOINTS_MAX]*HP_PER_LP);
-			//if (hero.attribute[ATR_HITPOINTS] > hero.attribute[ATR_HITPOINTS_MAX])
-			//{
-			//	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
-			//};
 		};
 	};
 	if (timedPotionTime[ATR_MANA_MAX] > 0)
@@ -235,11 +214,6 @@ func void Potions_Process()
 		else if (timedPotionTime[ATR_MANA_MAX] == 0)
 		{
 			Npc_ChangeAttribute(hero, ATR_MANA_MAX, -timedPotionPoints[ATR_MANA_MAX]*MP_PER_LP);
-			//Npc_AttributesRefresh();
-			//if (hero.attribute[ATR_MANA] > hero.attribute[ATR_MANA_MAX])
-			//{
-			//	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-			//};
 		};
 	};
 	if (timedPotionTime[ATR_STRENGTH] > 0)
@@ -278,21 +252,21 @@ func void Potions_Process()
 			Npc_ChangeAttribute(hero, ATR_POWER, -timedPotionPoints[ATR_POWER]);
 		};
 	};
-	if (timedPotionTime[PROT_INDEX_MAX] > 0)
+	if (timedPotionTime[ATR_PROT] > 0)
 	{
-		timedPotionTime[PROT_INDEX_MAX] -= 1;
-		if (timedPotionTime[PROT_INDEX_MAX] == 10)
+		timedPotionTime[ATR_PROT] -= 1;
+		if (timedPotionTime[ATR_PROT] == 10)
 		{
 			Print_ExtPrcnt (-1, YPOS_ExpGained, "Pozosta³o 10 sekund do koñca czasowego eliksiru ochrony!", FONT_ScreenSmall, COL_Negative, TIME_Print);
 		}
-		else if (timedPotionTime[PROT_INDEX_MAX] == 0)
+		else if (timedPotionTime[ATR_PROT] == 0)
 		{
-			hero.protection[PROT_BLUNT] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_EDGE] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_POINT] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_FIRE] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_MAGIC] -= timedPotionPoints[PROT_INDEX_MAX];
-			hero.protection[PROT_BARRIER] -= timedPotionPoints[PROT_INDEX_MAX];
+			hero.protection[PROT_BLUNT] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_EDGE] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_POINT] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_FIRE] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_MAGIC] -= timedPotionPoints[ATR_PROT];
+			hero.protection[PROT_BARRIER] -= timedPotionPoints[ATR_PROT];
 		};
 	};
 };

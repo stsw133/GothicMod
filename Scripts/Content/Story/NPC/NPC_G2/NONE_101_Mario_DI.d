@@ -16,7 +16,7 @@ instance None_101_Mario_DI (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, 95);
+	NpcFn_AddFightSkills (self, 95);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

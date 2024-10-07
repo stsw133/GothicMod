@@ -11,7 +11,7 @@ instance DIA_Teach_JOIN (C_Info)
 };
 func int DIA_Teach_JOIN_Condition()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching))
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	{
 		return true;
 	};
@@ -27,7 +27,12 @@ func void DIA_Teach_JOIN_Info()
 	/// THROW
 	if (Npc_GetTalentValue(other, NPC_TALENT_THROW) < Npc_GetTalentValue(self, NPC_TALENT_THROW))
 	{
-		
+		if (true == false)
+		{
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnThrow, IntToString(10)), B_GetLearnCostTalent(other, NPC_TALENT_THROW, 10), true), DIA_Teach_JOIN_Throw_10);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnThrow, IntToString(5)), B_GetLearnCostTalent(other, NPC_TALENT_THROW, 5), true), DIA_Teach_JOIN_Throw_5);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnThrow, IntToString(1)), B_GetLearnCostTalent(other, NPC_TALENT_THROW, 1), true), DIA_Teach_JOIN_Throw_1);
+		};
 	};
 	/// 1H
 	if (Npc_GetTalentValue(other, NPC_TALENT_1H) < Npc_GetTalentValue(self, NPC_TALENT_1H))
@@ -45,9 +50,9 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == PIR_1353_Addon_Morgan)
 		|| (Hlp_GetInstanceID(self) == MIL_312_Wulfgar && (other.guild != GIL_SLD && other.guild != GIL_DJG))
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(10)), B_GetLearnCostAttribute(other, NPC_TALENT_1H)*10, true), DIA_Teach_JOIN_1h_10);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(5)), B_GetLearnCostAttribute(other, NPC_TALENT_1H)*5, true), DIA_Teach_JOIN_1h_5);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(1)), B_GetLearnCostAttribute(other, NPC_TALENT_1H)*1, true), DIA_Teach_JOIN_1h_1);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(10)), B_GetLearnCostTalent(other, NPC_TALENT_1H, 10), true), DIA_Teach_JOIN_1h_10);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(5)), B_GetLearnCostTalent(other, NPC_TALENT_1H, 5), true), DIA_Teach_JOIN_1h_5);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn1h, IntToString(1)), B_GetLearnCostTalent(other, NPC_TALENT_1H, 1), true), DIA_Teach_JOIN_1h_1);
 		};
 	};
 	/// 2H
@@ -67,9 +72,9 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == PIR_1354_Addon_Henry)
 		|| (Hlp_GetInstanceID(self) == Mil_312_Wulfgar && (other.guild != GIL_SLD && other.guild != GIL_DJG))
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(10)), B_GetLearnCostAttribute(other, NPC_TALENT_2H)*10, true), DIA_Teach_JOIN_2h_10);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(5)), B_GetLearnCostAttribute(other, NPC_TALENT_2H)*5, true), DIA_Teach_JOIN_2h_5);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(1)), B_GetLearnCostAttribute(other, NPC_TALENT_2H)*1, true), DIA_Teach_JOIN_2h_1);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(10)), B_GetLearnCostTalent(other, NPC_TALENT_2H, 10), true), DIA_Teach_JOIN_2h_10);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(5)), B_GetLearnCostTalent(other, NPC_TALENT_2H, 5), true), DIA_Teach_JOIN_2h_5);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_Learn2h, IntToString(1)), B_GetLearnCostTalent(other, NPC_TALENT_2H, 1), true), DIA_Teach_JOIN_2h_1);
 		};
 	};
 	/// BOW
@@ -83,9 +88,9 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == PIR_1352_Addon_AlligatorJack)
 		|| (Hlp_GetInstanceID(self) == PC_Thief_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(10)), B_GetLearnCostAttribute(other, NPC_TALENT_BOW)*10, true), DIA_Teach_JOIN_Bow_10);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(5)), B_GetLearnCostAttribute(other, NPC_TALENT_BOW)*5, true), DIA_Teach_JOIN_Bow_5);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(1)), B_GetLearnCostAttribute(other, NPC_TALENT_BOW)*1, true), DIA_Teach_JOIN_Bow_1);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(10)), B_GetLearnCostTalent(other, NPC_TALENT_BOW, 10), true), DIA_Teach_JOIN_Bow_10);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(5)), B_GetLearnCostTalent(other, NPC_TALENT_BOW, 5), true), DIA_Teach_JOIN_Bow_5);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnBow, IntToString(1)), B_GetLearnCostTalent(other, NPC_TALENT_BOW, 1), true), DIA_Teach_JOIN_Bow_1);
 		};
 	};
 	/// CROSSBOW
@@ -98,9 +103,9 @@ func void DIA_Teach_JOIN_Info()
 		|| (Hlp_GetInstanceID(self) == PIR_1354_Addon_Henry)
 		|| (Hlp_GetInstanceID(self) == SLD_811_Wolf_DI)
 		{
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(10)), B_GetLearnCostAttribute(other, NPC_TALENT_CROSSBOW)*10, true), DIA_Teach_JOIN_Cbow_10);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(5)), B_GetLearnCostAttribute(other, NPC_TALENT_CROSSBOW)*5, true), DIA_Teach_JOIN_Cbow_5);
-			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(1)), B_GetLearnCostAttribute(other, NPC_TALENT_CROSSBOW)*1, true), DIA_Teach_JOIN_Cbow_1);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(10)), B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 10), true), DIA_Teach_JOIN_Cbow_10);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(5)), B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 5), true), DIA_Teach_JOIN_Cbow_5);
+			Info_AddChoice (DIA_Teach_JOIN, B_BuildLearnString(ConcatStrings(PRINT_LearnCBow, IntToString(1)), B_GetLearnCostTalent(other, NPC_TALENT_CROSSBOW, 1), true), DIA_Teach_JOIN_Cbow_1);
 		};
 	};
 	/// MAGIC
@@ -318,85 +323,85 @@ func void DIA_Teach_JOIN_DEX_10()
 ///******************************************************************************************
 func void DIA_Teach_JOIN_Throw_1()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_THROW, 1);
+	B_TeachTalent (self, other, NPC_TALENT_THROW, 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Throw_5()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_THROW, 5);
+	B_TeachTalent (self, other, NPC_TALENT_THROW, 5);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Throw_10()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_THROW, 10);
+	B_TeachTalent (self, other, NPC_TALENT_THROW, 10);
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
 func void DIA_Teach_JOIN_1h_1()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_1H, 1);
+	B_TeachTalent (self, other, NPC_TALENT_1H, 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_1h_5()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_1H, 5);
+	B_TeachTalent (self, other, NPC_TALENT_1H, 5);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_1h_10()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_1H, 10);
+	B_TeachTalent (self, other, NPC_TALENT_1H, 10);
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
 func void DIA_Teach_JOIN_2h_1()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_2H, 1);
+	B_TeachTalent (self, other, NPC_TALENT_2H, 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_2h_5()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_2H, 5);
+	B_TeachTalent (self, other, NPC_TALENT_2H, 5);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_2h_10()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_2H, 10);
+	B_TeachTalent (self, other, NPC_TALENT_2H, 10);
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
 func void DIA_Teach_JOIN_Bow_1()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_BOW, 1);
+	B_TeachTalent (self, other, NPC_TALENT_BOW, 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Bow_5()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_BOW, 5);
+	B_TeachTalent (self, other, NPC_TALENT_BOW, 5);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Bow_10()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_BOW, 10);
+	B_TeachTalent (self, other, NPC_TALENT_BOW, 10);
 	DIA_Teach_JOIN_Info();
 };
 
 ///******************************************************************************************
 func void DIA_Teach_JOIN_Cbow_1()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_CROSSBOW, 1);
+	B_TeachTalent (self, other, NPC_TALENT_CROSSBOW, 1);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Cbow_5()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_CROSSBOW, 5);
+	B_TeachTalent (self, other, NPC_TALENT_CROSSBOW, 5);
 	DIA_Teach_JOIN_Info();
 };
 func void DIA_Teach_JOIN_Cbow_10()
 {
-	B_TeachHitchance (self, other, NPC_TALENT_CROSSBOW, 10);
+	B_TeachTalent (self, other, NPC_TALENT_CROSSBOW, 10);
 	DIA_Teach_JOIN_Info();
 };
 

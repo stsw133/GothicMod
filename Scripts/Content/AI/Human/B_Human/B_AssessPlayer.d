@@ -32,7 +32,7 @@ func void B_AssessPlayer()
 		};
 	};
 	
-	if (B_AssessEnemy())	
+	if (B_AssessEnemy())
 	{
 		return;
 	};

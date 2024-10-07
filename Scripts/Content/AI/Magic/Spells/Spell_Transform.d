@@ -74,7 +74,7 @@ func int Spell_Logic_Transform (var int manaInvested)
 		PotionTimed_ADD (ATR_STRENGTH, default, default);
 		PotionTimed_ADD (ATR_DEXTERITY, default, default);
 		PotionTimed_ADD (ATR_POWER, default, default);
-		PotionTimed_ADD (PROT_INDEX_MAX, default, default);
+		PotionTimed_ADD (ATR_PROT, default, default);
 		
 		return SPL_SENDCAST;
 	};

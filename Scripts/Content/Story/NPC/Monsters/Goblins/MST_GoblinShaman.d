@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GoblinShaman
+///******************************************************************************************
 prototype Mst_Default_GoblinShaman (C_Npc)
 {
 	/// ------ Monster ------
@@ -32,6 +34,7 @@ prototype Mst_Default_GoblinShaman (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GoblinShaman()
 {
@@ -39,6 +42,9 @@ func void B_SetVisuals_GoblinShaman()
 	Mdl_SetVisualBody	(self, "Gob_Shaman_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gobbo_Shaman (Mst_Default_GoblinShaman)
 {

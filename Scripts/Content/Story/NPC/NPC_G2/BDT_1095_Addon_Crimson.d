@@ -10,7 +10,7 @@ instance BDT_1095_Addon_Crimson (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 75);
+	NpcFn_AddFightSkills (self, 75);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

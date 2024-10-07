@@ -13,7 +13,7 @@ instance BDT_1014_Bandit_L (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 5);
-	NpcFn_SetFightSkills (self, 10);
+	NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

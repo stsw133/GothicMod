@@ -19,7 +19,7 @@ instance PIR_1302_Gregy (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 10);
+	NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_GOBBO;

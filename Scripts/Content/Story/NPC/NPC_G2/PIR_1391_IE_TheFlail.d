@@ -10,7 +10,7 @@ instance PIR_1391_IE_TheFlail(Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 5);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

@@ -19,7 +19,7 @@ instance WzA_17196_Chinczyk (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_AddFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

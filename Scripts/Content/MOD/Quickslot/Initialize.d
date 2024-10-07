@@ -30,7 +30,7 @@ func void QS_InitHooks()
 	
 	HookEngineF(oCNpc__SetAsPlayer,
 				oCNpc__SetAsPlayer_Len,
-				QS_SwitchHeroFix);				
+				QS_SwitchHeroFix);
 	
 	HookEngineF(oCAIHuman__PC_WeaponMove,
 				oCAIHuman__PC_WeaponMove_Len,
@@ -62,7 +62,7 @@ func void QS_InitHooks()
 				QS_RemoveInvNumber_FF);	
 
 	// Fix keyWeapon in using oCItemContainer
-	HookEngineF(6914805 /*006982F5*/, 8, Hook_ReturnFalse); 						
+	HookEngineF(6914805 /*006982F5*/, 8, Hook_ReturnFalse);
 	HookEngineF(6935581 /*0069D41D*/, 8, Hook_ReturnFalse);
 };
 
@@ -89,7 +89,7 @@ func void QS_InitBaseData()
 		MEM_WriteInt (QS_RenderWorld + zCWorld__bIsInventoryWorld_offset, true);
 	};
 };
-				
+
 func int QuickSlot_InitOnce()
 {
 	// Check LeGo flags
@@ -131,7 +131,7 @@ func void QuickSlot_Init()
 			MEM_Warn("Failed to initialize Quicklot");
 			return;
 		};
-		QuickSlot_Inited = 1;
+		QuickSlot_Inited = true;
 	};
 	QuickSlot_InitAlways();
 	MEM_Info("QuickSlot successfull inited!");
@@ -142,4 +142,3 @@ func void QuickSlot_OnLoadFirstWorld()
 	// Initalize in "Startup_YouFirstWorldName"
 	QS_LastWeaponSlot = -1;
 };
-

@@ -1,10 +1,12 @@
 ///******************************************************************************************
+/// DragonSnapper
+///******************************************************************************************
 prototype Mst_Default_DragonSnapper (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Smoczy zêbacz";
 	guild								=	GIL_SNAPPER;
-	aivar[AIV_MM_REAL_ID]				= 	ID_DRAGONSNAPPER;
+	aivar[AIV_MM_REAL_ID]				=	ID_DRAGONSNAPPER;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
@@ -27,6 +29,7 @@ prototype Mst_Default_DragonSnapper (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_DemonSnapper()
 {
@@ -40,6 +43,9 @@ func void B_SetVisuals_DragonSnapper()
 	Mdl_SetVisualBody	(self, "Raz_Dragon_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.2, 1.2, 1.2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance DemonSnapper (Mst_Default_DragonSnapper)
 {

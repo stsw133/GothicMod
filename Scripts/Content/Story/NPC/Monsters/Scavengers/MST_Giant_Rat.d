@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GiantRat
+///******************************************************************************************
 prototype Mst_Default_GiantRat (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_GiantRat (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GiantRat()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_GiantDesertRat()
 	Mdl_SetVisual		(self, "Giant_Rat.mds");
 	Mdl_SetVisualBody	(self, "Giant_DesertRat_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Giant_Rat (Mst_Default_GiantRat)
 {

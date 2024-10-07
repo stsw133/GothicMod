@@ -314,8 +314,8 @@ func void B_ENTER_NEWWORLD_Kapitel_9()
 		
 		if (hero.guild == GIL_KDF)
 		{
-			Wld_InsertItem (ItMi_KarrasBlessedStone_Mis, "FP_ITEM_FARM1_03");
-			Wld_InsertItem (ItMi_KarrasBlessedStone_Mis, "FP_NW_ITEM_TROLL_10");
+			Wld_InsertItem (ItMi_KarrasBlessedStone_MIS, "FP_ITEM_FARM1_03");
+			Wld_InsertItem (ItMi_KarrasBlessedStone_MIS, "FP_NW_ITEM_TROLL_10");
 			B_StartOtherRoutine (Hilda, "KRANK");
 			
 			if (!Npc_IsDead(Vino))

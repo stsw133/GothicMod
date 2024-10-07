@@ -10,7 +10,7 @@ instance BDT_10308_Addon_RangerBandit_L (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 40);
+	NpcFn_AddFightSkills (self, 40);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

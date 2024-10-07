@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// WolfSkeleton
+///******************************************************************************************
 prototype Mst_Default_WolfSkeleton (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_WolfSkeleton (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_WolfSkeleton()
 {
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Wol_Skeleton_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Wolf_Skeleton (Mst_Default_WolfSkeleton)
 {

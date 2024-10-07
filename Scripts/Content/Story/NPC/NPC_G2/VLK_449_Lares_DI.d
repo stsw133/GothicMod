@@ -16,7 +16,7 @@ instance VLK_449_Lares_DI (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 35);
+	NpcFn_AddFightSkills (self, 35);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

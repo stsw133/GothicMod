@@ -14,7 +14,7 @@ instance NONE_110_Urshak (NPC_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;

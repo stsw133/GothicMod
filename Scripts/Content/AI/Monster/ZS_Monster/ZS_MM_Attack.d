@@ -244,6 +244,7 @@ func void ZS_MM_Attack_End()
 	if (!self.aivar[AIV_PartyMember])
 	{
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
+		self.aivar[AIV_DamageDealtByPlayer] = 0;
 	};
 	
 	/// ...

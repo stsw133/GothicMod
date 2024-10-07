@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	NpcFn_SetMonsterAsSummoned
+/// NpcFn_SetMonsterAsSummoned
 ///******************************************************************************************
 func void NpcFn_SetMonsterAsSummoned (var C_Npc slf, var int keepNatural)
 {

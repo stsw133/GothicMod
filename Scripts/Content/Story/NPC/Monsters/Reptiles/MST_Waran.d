@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Waran
+///******************************************************************************************
 prototype Mst_Default_Waran (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Waran (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Waran()
 {
@@ -43,6 +46,9 @@ func void B_SetVisuals_MountainWaran()
 	Mdl_SetVisual		(self, "Waran.mds");
 	Mdl_SetVisualBody	(self, "War_Mountain_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Waran (Mst_Default_Waran)
 {

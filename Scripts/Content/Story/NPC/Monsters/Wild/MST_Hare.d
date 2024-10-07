@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_Hare (C_Npc)		
+/// Hare
+///******************************************************************************************
+prototype Mst_Default_Hare (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Zaj¹c";
@@ -25,12 +27,16 @@ prototype Mst_Default_Hare (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Hare()
 {
 	Mdl_SetVisual		(self, "Zaic.mds");
 	Mdl_SetVisualBody	(self, "Zaic_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Hare (Mst_Default_Hare)
 {

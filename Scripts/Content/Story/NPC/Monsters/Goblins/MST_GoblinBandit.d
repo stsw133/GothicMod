@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GoblinBandit
+///******************************************************************************************
 prototype Mst_Default_GoblinBandit (C_Npc)
 {
 	/// ------ Monster ------
@@ -29,6 +31,7 @@ prototype Mst_Default_GoblinBandit (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GoblinBandit()
 {
@@ -36,6 +39,9 @@ func void B_SetVisuals_GoblinBandit()
 	Mdl_SetVisualBody	(self, "Gob_Bandit_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gobbo_Bandit (Mst_Default_GoblinBandit)
 {

@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	Classes
+/// Classes
 ///******************************************************************************************
 /// WARNING: do not change order of fields in engine classes - it will cause game to crash instantly!
 
@@ -58,7 +58,7 @@ class C_Npc
 	
 	/// ...
 	var int		bodyStateInterruptableOverride;	/// if this is set to true, the NPC can't be interrupted in any action (e.g. BS_FLAG_INTERRUPTABLE for anis is being ignored)
-	var int     noFocus;						/// if "noFocus" is set to true, the focus name and health bar will not be drawn of this nsc (hi, stefan!)
+	var int		noFocus;						/// if "noFocus" is set to true, the focus name and health bar will not be drawn of this nsc (hi, stefan!)
 };
 
 ///******************************************************************************************
@@ -84,10 +84,10 @@ class C_Mission
 class C_Item
 {
 	var int		id;
-	var string  name, nameID;
+	var string	name, nameID;
 	var int		hp, hp_max;
 	
-	var int     mainflag, flags;
+	var int		mainflag, flags;
 	var int		weight, value;
 	
 	/// WEAPON
@@ -123,18 +123,18 @@ class C_Item
 	
 	/// VISUAL
 	var string	visual;
-	var string  visual_change;
-	var string  effect;
+	var string	visual_change;
+	var string	effect;
 	var int		visual_skin;
 	
 	/// USAGE
-	var string 	scemeName;
+	var string	scemeName;
 	var int		material;
 	// var string	pfx;
 	var int		munition;
 	
 	/// MAGIC
-	var int 	spell;
+	var int		spell;
 	var int		range;
 	var int		mag_circle;
 	
@@ -144,11 +144,11 @@ class C_Item
 	var int		count[ITM_TEXT_MAX];
 	
 	/// INVENTORY
-	var int	    inv_zbias;
+	var int		inv_zbias;
 	var	int		inv_rotx;
-	var int 	inv_roty;
-	var int 	inv_rotz;
-	var int 	inv_animate;
+	var int		inv_roty;
+	var int		inv_rotz;
+	var int		inv_animate;
 };
 
 ///******************************************************************************************
@@ -217,7 +217,7 @@ class C_Spell
 };
 
 ///******************************************************************************************
-///	Globale Klasseninstanzen
+/// Globale Klasseninstanzen
 ///******************************************************************************************
 instance self, other (C_Npc);
 instance victim (C_Npc);

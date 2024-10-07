@@ -240,8 +240,8 @@ func void DIA_Albrecht_Teach_Info ()
 	/*
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_Teach_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))	,DIA_Albrecht_Teach_5);
 	*/
 	B_RaiseAttribute(other, ATR_MANA_MAX, 2);
 };
@@ -261,8 +261,8 @@ func void DIA_Albrecht_Teach_1()
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_TEACH_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))	,DIA_Albrecht_Teach_5);
 	
 	
 };
@@ -273,8 +273,8 @@ func void DIA_Albrecht_Teach_5()
 	Info_ClearChoices   (DIA_Albrecht_Teach);
 	
 	Info_AddChoice 		(DIA_Albrecht_Teach, DIALOG_BACK, DIA_Albrecht_Teach_BACK);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1	, B_GetLearnCostAttribute(other, ATR_MANA_MAX))	,DIA_Albrecht_Teach_1);
-	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5	, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)	,DIA_Albrecht_Teach_5);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP1, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))	,DIA_Albrecht_Teach_1);
+	Info_AddChoice		(DIA_Albrecht_Teach, B_BuildLearnString(PRINT_LearnMP5, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))	,DIA_Albrecht_Teach_5);
 	
 	
 };

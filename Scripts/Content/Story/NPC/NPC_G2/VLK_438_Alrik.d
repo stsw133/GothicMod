@@ -18,7 +18,7 @@ instance VLK_438_Alrik (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 20);
+	NpcFn_AddFightSkills (self, 20);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

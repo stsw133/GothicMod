@@ -14,7 +14,7 @@ instance VLK_445_Ramirez (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 60);
+	NpcFn_AddFightSkills (self, 60);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

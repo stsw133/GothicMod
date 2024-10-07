@@ -18,8 +18,8 @@ instance WzA_17193_Dzieciak (Npc_Default)
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Attributes ------
-	NpcFn_SetAttributesToLevel (self, MAX_LEVEL);
-	NpcFn_SetFightSkills (self, 100);
+	NpcFn_SetAttributesToLevel (self, 100);
+	NpcFn_AddFightSkills (self, 100);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

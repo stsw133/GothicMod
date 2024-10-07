@@ -23,7 +23,7 @@ instance WzA_17201_Kesakhikebad (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_AddFightSkills (self, FightTalent_Medium);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GiantSnapper
+///******************************************************************************************
 prototype Mst_Default_GiantSnapper (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_GiantSnapper (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GiantSnapper()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_GiantSnapper()
 	Mdl_SetVisualBody	(self, "Sna_Giant_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 2, 1.8, 2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance GiantSnapper (Mst_Default_GiantSnapper)
 {

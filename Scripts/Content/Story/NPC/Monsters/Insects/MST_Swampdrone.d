@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Swampdrone
+///******************************************************************************************
 prototype Mst_Default_Swampdrone (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,14 +29,18 @@ prototype Mst_Default_Swampdrone (C_Npc)
 	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Swampdrone()
 {
 	Mdl_SetVisual		(self, "Swampdrone.mds");
 	Mdl_SetVisualBody	(self, "Swampdrone_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
 ///******************************************************************************************
-instance Swampdrone (Mst_Default_SwampDrone)
+/// Monsters
+///******************************************************************************************
+instance Swampdrone (Mst_Default_Swampdrone)
 {
 	B_SetVisuals_SwampDrone();
 };

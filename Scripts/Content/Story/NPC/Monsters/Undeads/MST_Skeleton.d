@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Skeleton
+///******************************************************************************************
 prototype Mst_Default_Skeleton (C_Npc)
 {
 	/// ------ Monster ------
@@ -26,6 +28,7 @@ prototype Mst_Default_Skeleton (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Skeleton()
 {
@@ -37,6 +40,9 @@ func void B_SetVisuals_Skeleton()
 	Mdl_ApplyOverlayMds (self, "humans_BowT1.mds");
 	Mdl_ApplyOverlayMds (self, "humans_CbowT1.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Skeleton (Mst_Default_Skeleton)
 {

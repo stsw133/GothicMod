@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GoblinBlack
+///******************************************************************************************
 prototype Mst_Default_GoblinBlack (C_Npc)
 {
 	/// ------ Monster ------
@@ -29,6 +31,7 @@ prototype Mst_Default_GoblinBlack (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GoblinBlack()
 {
@@ -36,6 +39,9 @@ func void B_SetVisuals_GoblinBlack()
 	Mdl_SetVisualBody	(self, "Gob_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.05, 1.05, 1.05);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gobbo_Black (Mst_Default_GoblinBlack)
 {

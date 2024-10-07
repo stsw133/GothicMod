@@ -14,7 +14,7 @@ instance Mil_328_Miliz (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 33);
+	NpcFn_AddFightSkills (self, 33);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

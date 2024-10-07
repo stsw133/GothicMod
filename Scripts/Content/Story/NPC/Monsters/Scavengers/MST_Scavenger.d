@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Scavenger
+///******************************************************************************************
 prototype Mst_Default_Scavenger (C_Npc)
 {
 	/// ------ Monster ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Scavenger (C_Npc)
 	aivar[AIV_MM_EatGroundEnd]			=	22;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Scavenger()
 {
@@ -55,6 +58,9 @@ func void B_SetVisuals_DemonScavenger()
 	Mdl_SetVisualBody	(self, "Sca_Demon_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.15, 1.15, 1.15);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Scavenger (Mst_Default_Scavenger)
 {
@@ -72,8 +78,8 @@ instance SnowScavenger (Mst_Default_Scavenger)
 };
 instance Scavenger_Demon (Mst_Default_Scavenger)
 {
-	name						=	"Demoniczny œcierwojad";
-	aivar[AIV_MM_REAL_ID]		=	ID_SCAVENGER_DEMON;
+	name								=	"Preriowy œcierwojad";
+	aivar[AIV_MM_REAL_ID]				=	ID_SCAVENGER_DEMON;
 	
 	NpcFn_SetAttributesToLevel (self, 15);
 	NpcFn_SetMonsterProtection (self, level);

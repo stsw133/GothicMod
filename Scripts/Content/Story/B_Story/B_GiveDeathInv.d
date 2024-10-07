@@ -146,14 +146,14 @@ func void B_GiveDeathInv (var C_Npc slf)
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_GOAT)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_HARE)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_SPINT)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_SCAVENGER)				{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
 	if (slf.aivar[AIV_MM_REAL_ID] == ID_KEILER)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_JACKAL)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_WOLF)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_ICEWOLF)				{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_WARG)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_TIGER)					{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
-	if (slf.aivar[AIV_MM_REAL_ID] == ID_SHADOWBEAST)			{	CreateInvItems (slf, ItFoMuttonRaw		, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SCAVENGER)				{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_JACKAL)					{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_WOLF)					{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_ICEWOLF)				{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_WARG)					{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_TIGER)					{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
+	if (slf.aivar[AIV_MM_REAL_ID] == ID_SHADOWBEAST)			{	CreateInvItems (slf, ItFo_MeatBadRaw	, 1);	};
 	
 	/// ------ Plates ------
 	if (PLAYER_TALENT_HUNTING[HUNTING_Plates])

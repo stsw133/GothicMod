@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Zodd
+///******************************************************************************************
 prototype Mst_Default_Zodd (C_Npc)
 {
 	/// ------ Monster ------
@@ -11,7 +13,7 @@ prototype Mst_Default_Zodd (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 45);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Zodd (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Zodd()
 {
@@ -37,6 +40,9 @@ func void B_SetVisuals_Zodd()
 	Mdl_SetVisualBody	(self, "Zodd_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.2, 1.2, 1.2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Zodd (Mst_Default_Zodd)
 {

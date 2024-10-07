@@ -14,7 +14,7 @@ instance STRF_1140_Addon_Sklave (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 10);
+	NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

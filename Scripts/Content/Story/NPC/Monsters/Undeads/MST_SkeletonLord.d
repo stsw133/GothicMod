@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_SkeletonLord (C_NPC)
+/// SkeletonLord
+///******************************************************************************************
+prototype Mst_SkeletonLord (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Szkielet-lord";
@@ -26,6 +28,7 @@ prototype Mst_SkeletonLord (C_NPC)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_SkeletonLord()
 {
@@ -36,6 +39,9 @@ func void B_SetVisuals_SkeletonLord()
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Skeleton_Lord (Mst_SkeletonLord)
 {
@@ -57,6 +63,7 @@ instance Crypt_Skeleton_Lord (Mst_SkeletonLord)
 	EquipItem (self, ItMw_2H_Sword_M_01);
 	CreateInvItems (self, ItMi_Gold, 300);
 };
+
 ///******************************************************************************************
 instance Skeleton_Lord_Archol (Mst_SkeletonLord)
 {

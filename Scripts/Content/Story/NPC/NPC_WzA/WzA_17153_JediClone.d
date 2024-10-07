@@ -18,7 +18,7 @@ instance WzA_17153_JediClone (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, FightTalent_Strong);
+	NpcFn_AddFightSkills (self, FightTalent_Strong);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

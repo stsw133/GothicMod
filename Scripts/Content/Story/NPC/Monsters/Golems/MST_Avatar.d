@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Avatar
+///******************************************************************************************
 prototype Mst_Default_Avatar (C_Npc)
 {
 	/// ------ Monster ------
@@ -13,7 +15,7 @@ prototype Mst_Default_Avatar (C_Npc)
 	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_GOLEM;
 	
-	NpcFn_SetAttributesToLevel (self, 50);
+	NpcFn_SetAttributesToLevel (self, 60);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Avatar (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Avatar()
 {
@@ -37,6 +40,9 @@ func void B_SetVisuals_Avatar()
 	Mdl_SetVisualBody	(self, "Avatar_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.2, 1.2, 1.2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Avatar (Mst_Default_Avatar)
 {

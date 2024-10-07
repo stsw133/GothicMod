@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Troll
+///******************************************************************************************
 prototype Mst_Default_Troll (C_Npc)
 {
 	/// ------ Monster ------
@@ -31,6 +33,7 @@ prototype Mst_Default_Troll (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Troll()
 {
@@ -47,6 +50,9 @@ func void B_SetVisuals_SnowTroll()
 	Mdl_SetVisual		(self, "Troll.mds");
 	Mdl_SetVisualBody	(self, "Tro_Snow_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Troll (Mst_Default_Troll)
 {

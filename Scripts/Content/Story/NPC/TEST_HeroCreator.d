@@ -17,8 +17,8 @@ instance HC (Npc_Default)
 	aivar[AIV_FollowDist]				=	300;
 	
 	/// ------ Attributes ------
-	NpcFn_SetAttributesToLevel (self, MAX_LEVEL);
-	NpcFn_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_SetAttributesToLevel (self, 100);
+	NpcFn_AddFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
@@ -33,63 +33,63 @@ instance HC (Npc_Default)
 
 func void Rtn_Start_50()
 {
-	TA_Guide_Player	(08,00, 20,00, "XXX");
-	TA_Guide_Player	(20,00, 08,00, "XXX");
+	TA_Guide_Player (08,00, 20,00, "XXX");
+	TA_Guide_Player (20,00, 08,00, "XXX");
 };
 func void Rtn_Follow_50()
 {
-	TA_Follow_Player	(08,00, 20,00, "XXX");
-	TA_Follow_Player	(20,00, 08,00, "XXX");
+	TA_Follow_Player (08,00, 20,00, "XXX");
+	TA_Follow_Player (20,00, 08,00, "XXX");
 };
 func void Rtn_Smalltalk_50()
 {
-	TA_Smalltalk	(08,00, 20,00, "XXX");
-	TA_Smalltalk	(20,00, 08,00, "XXX");
+	TA_Smalltalk (08,00, 20,00, "XXX");
+	TA_Smalltalk (20,00, 08,00, "XXX");
 };
 func void Rtn_Sleep_50()
 {
-	TA_Sleep	(08,00, 20,00, "XXX");
-	TA_Sleep	(20,00, 08,00, "XXX");
+	TA_Sleep (08,00, 20,00, "XXX");
+	TA_Sleep (20,00, 08,00, "XXX");
 };
 func void Rtn_Dance_50()
 {
-	TA_Dance	(08,00, 20,00, "XXX");
-	TA_Dance	(20,00, 08,00, "XXX");
+	TA_Dance (08,00, 20,00, "XXX");
+	TA_Dance (20,00, 08,00, "XXX");
 };
 func void Rtn_Stand_Eating_50()
 {
-	TA_Stand_Eating	(08,00, 20,00, "XXX");
-	TA_Stand_Eating	(20,00, 08,00, "XXX");
+	TA_Stand_Eating (08,00, 20,00, "XXX");
+	TA_Stand_Eating (20,00, 08,00, "XXX");
 };
 func void Rtn_Stand_Drinking_50()
 {
-	TA_Stand_Drinking	(08,00, 20,00, "XXX");
-	TA_Stand_Drinking	(20,00, 08,00, "XXX");
+	TA_Stand_Drinking (08,00, 20,00, "XXX");
+	TA_Stand_Drinking (20,00, 08,00, "XXX");
 };
 func void Rtn_Pick_Ore_50()
 {
-	TA_Pick_Ore	(08,00, 20,00, "XXX");
-	TA_Pick_Ore	(20,00, 08,00, "XXX");
+	TA_Pick_Ore (08,00, 20,00, "XXX");
+	TA_Pick_Ore (20,00, 08,00, "XXX");
 };
 func void Rtn_Potion_Alchemy_50()
 {
-	TA_Potion_Alchemy	(08,00, 20,00, "XXX");
-	TA_Potion_Alchemy	(20,00, 08,00, "XXX");
+	TA_Potion_Alchemy (08,00, 20,00, "XXX");
+	TA_Potion_Alchemy (20,00, 08,00, "XXX");
 };
 func void Rtn_Read_Bookstand_50()
 {
-	TA_Read_Bookstand	(08,00, 20,00, "XXX");
-	TA_Read_Bookstand	(20,00, 08,00, "XXX");
+	TA_Read_Bookstand (08,00, 20,00, "XXX");
+	TA_Read_Bookstand (20,00, 08,00, "XXX");
 };
 func void Rtn_Sit_Chair_50()
 {
-	TA_Sit_Chair	(08,00, 20,00, "XXX");
-	TA_Sit_Chair	(20,00, 08,00, "XXX");
+	TA_Sit_Chair (08,00, 20,00, "XXX");
+	TA_Sit_Chair (20,00, 08,00, "XXX");
 };
 func void Rtn_Smoke_Joint_50()
 {
-	TA_Smoke_Joint	(08,00, 20,00, "XXX");
-	TA_Smoke_Joint	(20,00, 08,00, "XXX");
+	TA_Smoke_Joint (08,00, 20,00, "XXX");
+	TA_Smoke_Joint (20,00, 08,00, "XXX");
 };
 
 ///******************************************************************************************
@@ -147,6 +147,7 @@ func void Change_HC_Visual()
 	PrintScreen	("Skóra:", -1, 34, "FONT_OLD_10_WHITE.TGA", 4);
 	PrintScreen	(IntToString(self.aivar[AIV_SkinTex]), -1, 36, "FONT_OLD_10_WHITE.TGA", 4);
 };
+
 ///******************************************************************************************
 /// EXIT
 ///******************************************************************************************
@@ -332,7 +333,7 @@ func void DIA_HC_ResetFace()
 };
 
 ///******************************************************************************************
-///	HEAD
+/// HEAD
 ///******************************************************************************************
 instance DIA_HC_Choose_HeadMesh (C_Info)
 {
@@ -638,7 +639,7 @@ func void DIA_HC_NextBody()
 	self.aivar[AIV_BodyTex] += 1;
 	Change_HC_Visual();
 	DIA_HC_Body_Info();
-};             
+};
 func void DIA_HC_PreviousBody()
 {
 	self.aivar[AIV_BodyTex] -= 1;
@@ -695,7 +696,7 @@ func void DIA_HC_NextSkin()
 	self.aivar[AIV_SkinTex] += 1;
 	Change_HC_Visual();
 	DIA_HC_Skin_Info();
-};                
+};
 func void DIA_HC_PreviousSkin()
 {	
 	self.aivar[AIV_SkinTex] -= 1;

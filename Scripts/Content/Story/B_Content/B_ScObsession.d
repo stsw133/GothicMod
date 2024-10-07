@@ -2,7 +2,7 @@
 /// B_ScObsession
 ///******************************************************************************************
 
-const string PRINT_ScIsObsessed						=	"Czujesz, ¿e coœ ciê ciœnie i dusi!";
+const string PRINT_ScIsObsessed					=	"Czujesz, ¿e coœ ciê ciœnie i dusi!";
 
 ///******************************************************************************************
 func void B_ClearScObsession (var C_Npc heiler)
@@ -12,7 +12,7 @@ func void B_ClearScObsession (var C_Npc heiler)
 		AI_StopProcessInfos(heiler);
 	};
 	
-	MOD_ObsessionOFF();
+	MOD_SetObsession(false);
 	PrintScreen	("Czujesz ulgê.", -1, -1, FONT_Screen, 3);
 };
 
@@ -26,7 +26,7 @@ func void B_SetScObsessed (var C_Npc dementor)
 	
 	if (!Npc_HasItems(hero, ItAm_Prot_Obsession))
 	{
-		MOD_ObsessionON();
+		MOD_SetObsession(true);
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 	};
 };

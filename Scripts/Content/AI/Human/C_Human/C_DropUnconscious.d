@@ -3,6 +3,13 @@
 ///******************************************************************************************
 func int C_DropUnconscious()
 {
+	/// MOD
+	//if (self.flags & NPC_FLAG_IMPORTANT)
+	//{
+	//	return false;
+	//};
+	
+	/// ...
 	if (other.guild > GIL_SEPERATOR_HUM)
 	|| (other.guild == GIL_DMT)
 	|| (other.guild == GIL_BDT)

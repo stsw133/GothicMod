@@ -40,7 +40,7 @@ func void Spell_Cast_PalFaith()
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, SPL_Heal_Heal);
 	};
 	
-	//Npc_SetShieldPoints (self, 1, SPL_Effect_PalAura + self.attribute[ATR_POWER]/2);
+	//Npc_SetShieldPoints (self, SPL_Effect_PalAura + self.attribute[ATR_POWER]/2);
 };
 
 ///******************************************************************************************
@@ -74,7 +74,7 @@ func void Spell_Cast_PalGlory()
 		Npc_ChangeAttribute (self, ATR_HITPOINTS, SPL_Heal_Heal);
 	};
 	
-	//Npc_SetShieldPoints (self, 0, SPL_Effect_PalAura + self.attribute[ATR_POWER]/2);
+	//Npc_SetShieldPoints (self, SPL_Effect_PalAura + self.attribute[ATR_POWER]/2);
 };
 
 ///******************************************************************************************

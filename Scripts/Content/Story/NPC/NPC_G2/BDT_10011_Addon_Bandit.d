@@ -10,7 +10,7 @@ instance BDT_10011_Addon_Bandit (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

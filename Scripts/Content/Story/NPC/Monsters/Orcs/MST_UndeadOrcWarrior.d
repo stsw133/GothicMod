@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// UndeadOrcWarrior
+///******************************************************************************************
 prototype Mst_Default_UndeadOrcWarrior (C_Npc)
 {
 	/// ------ Monster ------
@@ -11,7 +13,7 @@ prototype Mst_Default_UndeadOrcWarrior (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -30,12 +32,16 @@ prototype Mst_Default_UndeadOrcWarrior (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_UndeadOrcWarrior()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "UOW_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance UndeadOrcWarrior (Mst_Default_UndeadOrcWarrior)
 {

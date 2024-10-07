@@ -19,7 +19,7 @@ instance WzA_17150_Yoda (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 90);
-	NpcFn_SetFightSkills (self, FightTalent_Master);
+	NpcFn_AddFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

@@ -300,8 +300,8 @@ func void DIA_Addon_Merdarion_ADW_TEACH_MANA_Info ()
 		
 		Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
 		Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
-		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
-		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5		, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1		, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+		Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5		, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
 };
 FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK()
 {
@@ -320,8 +320,8 @@ FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_1()
 	
 	Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
 };
 FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_5()
 {
@@ -329,7 +329,7 @@ FUNC VOID DIA_Addon_Merdarion_ADW_TEACH_MANA_5()
 	
 	Info_ClearChoices   (DIA_Addon_Merdarion_ADW_TEACH_MANA);	
 	Info_AddChoice 		(DIA_Addon_Merdarion_ADW_TEACH_MANA,DIALOG_BACK,DIA_Addon_Merdarion_ADW_TEACH_MANA_BACK);		
-	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX))			,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
-	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX)*5)		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP1			, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 1))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_1);
+	Info_AddChoice		(DIA_Addon_Merdarion_ADW_TEACH_MANA, B_BuildLearnString(PRINT_LearnMP5			, B_GetLearnCostAttribute(other, ATR_MANA_MAX, 5))		,DIA_Addon_Merdarion_ADW_TEACH_MANA_5);
 };
 */

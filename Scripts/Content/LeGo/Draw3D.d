@@ -104,7 +104,7 @@ func void SetLineColor(var int hndl, var int color) {
 //========================================
 func int LineVisible(var int hndl) {
     if (!Hlp_IsValidHandle(hndl)) {
-        return false;
+        return FALSE;
     };
 
     var Line itm; itm = get(hndl);
@@ -132,7 +132,7 @@ func void ShowLine(var int hndl) {
     };
 
     var Line itm; itm = get(hndl);
-    itm.visible = true;
+    itm.visible = TRUE;
 };
 
 //========================================
@@ -144,7 +144,7 @@ func void HideLine(var int hndl) {
     };
 
     var Line itm; itm = get(hndl);
-    itm.visible = false;
+    itm.visible = FALSE;
 };
 
 //========================================
@@ -248,7 +248,7 @@ func void SetSphereColor(var int hndl, var int color) {
 //========================================
 func int SphereVisible(var int hndl) {
     if (!Hlp_IsValidHandle(hndl)) {
-        return false;
+        return FALSE;
     };
 
     var Sphere itm; itm = get(hndl);
@@ -276,7 +276,7 @@ func void ShowSphere(var int hndl) {
     };
 
     var Sphere itm; itm = get(hndl);
-    itm.visible = true;
+    itm.visible = TRUE;
 };
 
 //========================================
@@ -288,7 +288,7 @@ func void HideSphere(var int hndl) {
     };
 
     var Sphere itm; itm = get(hndl);
-    itm.visible = false;
+    itm.visible = FALSE;
 };
 
 //========================================
@@ -389,7 +389,7 @@ func void SetBBoxColor(var int hndl, var int color) {
 //========================================
 func int BBoxVisible(var int hndl) {
     if (!Hlp_IsValidHandle(hndl)) {
-        return false;
+        return FALSE;
     };
 
     var BBox itm; itm = get(hndl);
@@ -417,7 +417,7 @@ func void ShowBBox(var int hndl) {
     };
 
     var BBox itm; itm = get(hndl);
-    itm.visible = true;
+    itm.visible = TRUE;
 };
 
 //========================================
@@ -429,7 +429,7 @@ func void HideBBox(var int hndl) {
     };
 
     var BBox itm; itm = get(hndl);
-    itm.visible = false;
+    itm.visible = FALSE;
 };
 
 //========================================
@@ -511,7 +511,7 @@ func void SetOBBoxColor(var int hndl, var int color) {
 //========================================
 func int OBBoxVisible(var int hndl) {
     if (!Hlp_IsValidHandle(hndl)) {
-        return false;
+        return FALSE;
     };
 
     var OBBox itm; itm = get(hndl);
@@ -539,7 +539,7 @@ func void ShowOBBox(var int hndl) {
     };
 
     var OBBox itm; itm = get(hndl);
-    itm.visible = true;
+    itm.visible = TRUE;
 };
 
 //========================================
@@ -551,7 +551,7 @@ func void HideOBBox(var int hndl) {
     };
 
     var OBBox itm; itm = get(hndl);
-    itm.visible = false;
+    itm.visible = FALSE;
 };
 
 //========================================

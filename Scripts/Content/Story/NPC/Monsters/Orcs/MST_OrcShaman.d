@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// OrcShaman
+///******************************************************************************************
 prototype Mst_Default_OrcShaman (C_Npc)
 {
 	/// ------ Monster ------
@@ -16,7 +18,7 @@ prototype Mst_Default_OrcShaman (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -35,12 +37,16 @@ prototype Mst_Default_OrcShaman (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_OrcShaman()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "Orc_Shaman_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Shaman", self.aivar[AIV_FaceTex], default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance OrcShaman_Sit (Mst_Default_OrcShaman)
 {

@@ -15,7 +15,7 @@ instance PC_Thief_DI (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, 80);
+	NpcFn_AddFightSkills (self, 80);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

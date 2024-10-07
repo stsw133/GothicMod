@@ -14,7 +14,7 @@ instance BDT_1090_Addon_Raven (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 90);
+	NpcFn_AddFightSkills (self, 90);
 	
 	attribute[ATR_MANA_MAX] = 6666666; /// because he needs to be able to wield BeliarWeapon
 	

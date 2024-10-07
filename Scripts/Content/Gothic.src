@@ -1,15 +1,11 @@
 _INTERN\Constants.d
 _INTERN\Classes.d
-
-AI\AI_INTERN\AI_Constants.d
-
 _INTERN\Ikarus_Const_G2.d
 _INTERN\EngineClasses_G2\*.d
 _INTERN\Ikarus.d
 _INTERN\Float.d
-MOD\aSource.d
-LeGo\Header_G2.src
 
+AI\AI_INTERN\AI_Constants.d
 AI\AI_INTERN\BodyStates.d
 AI\AI_INTERN\Focus.d
 AI\AI_INTERN\Npc_SetToMad.d
@@ -17,18 +13,21 @@ AI\AI_INTERN\PrintDebug.d
 AI\AI_INTERN\PrintPlus.d
 AI\AI_INTERN\Species.d
 
+MOD\aSource.d
+MOD\bSource.d
+LeGo\Header_G2.src
+
 STORY\Text.d
 STORY\StoryGlobals.d
 STORY\NpcGlobals.d
 STORY\SVM.d
-
 STORY\NpcFn\NpcFn_SetVisual.d
+
 MOD\MOD_BodyStates.d
 MOD\MOD_Broadcast.d
 MOD\MOD_Checks.d
 MOD\MOD_Difficulty.d
 MOD\MOD_HeroReset.d
-MOD\MOD_Menu.d
 
 AI\HUMAN\B_RefreshArmor.d
 AI\HUMAN\Guilds.d
@@ -59,16 +58,15 @@ STORY\B_Story\C_DiegoTooFar.d
 STORY\B_Story\B_AddFightSkill.d
 STORY\B_Story\B_GivePlayerExp.d
 
-MOD\MOD_Bars.d
-MOD\MOD_Missions.d
 MOD\MOD_PotionEffects.d
+MOD\MOD_Quests.d
 MOD\MOD_SelfFightTeach.d
 
 STORY\B_Story\B_RaiseAttribute.d
 STORY\B_Story\B_LogEntry.d
 STORY\B_Story\B_GetDayPlus.d
 STORY\B_Story\B_StartOtherRoutine.d
-STORY\B_Story\B_KillOrRemoveNpc.d
+STORY\B_Story\B_RemoveNpc.d
 
 STORY\B_Content\B_RangerMeeting.d
 STORY\B_Content\B_ScObsession.d
@@ -78,12 +76,11 @@ STORY\B_Content\B_Upgrade_Hero_HackChance.d
 STORY\B_Content\B_CountCanyonRazor.d
 STORY\B_Content\B_MalcomExident.d
 STORY\B_Content\B_RemoveQuarhodron.d
-STORY\B_Content\B_PlayerFindItem.d
 
 STORY\B_Story\B_GiveInvItems.d
 STORY\B_Story\B_WispDetector.d
 
-AI\AI_INTERN\PERCEPTION.d
+AI\AI_INTERN\Perception.d
 AI\AI_INTERN\Npc_Plunder_Is_Empty.d
 AI\AI_INTERN\B_DeSynchronize.d
 AI\AI_INTERN\B_RefreshAtInsert.d
@@ -94,13 +91,11 @@ ITEMS\SpecialItems.d
 ITEMS\GiveAll.d
 
 MOD\MOD_Defeated.d
-MOD\MOD_Masteries.d
 MOD\Quickslot\Quickslot.src
 
 STORY\B_Content\B_ScUsesRake.d
 
 STORY\B_Story\B_GetLearnCost.d
-STORY\B_Story\B_BuildLearnString.d
 STORY\B_Story\B_Teach.d
 STORY\B_Story\B_UseItem.d
 
@@ -153,10 +148,6 @@ AI\HUMAN\B_Human\B_RemoveWeapon.d
 
 STORY\NpcFn\*.d
 
-MOD\MOD_Assassination.d
-MOD\MOD_ItemFn.d
-MOD\MOD_Pickpocket.d
-
 STORY\B_AssignAmbientInfos\B_Announce_Herold.d
 STORY\B_AssignAmbientInfos\B_Preach_Vatras.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos_*.d
@@ -174,30 +165,30 @@ STORY\B_Story\B_GiveAmbientInv.d
 STORY\B_Story\B_GiveDeathInv.d
 
 STORY\Events\B_AWAKE_STONEGUARDIAN.d
-Story\Events\B_EVENT_PORTAL_EARTHQUAKE.d
-Story\Events\EVT_TELEPORTSTATION_FUNC.d
+STORY\Events\B_EVENT_PORTAL_EARTHQUAKE.d
+STORY\Events\EVT_TELEPORTSTATION_FUNC.d
 
 AI\HUMAN\TA.d
 AI\HUMAN\TA_Human\*.d
 
 STORY\Dialog_Mobsis\*.d
 
-STORY\NPC\*.d
-STORY\NPC\NPC_G2\*.d
-STORY\NPC\NPC_New\*.d
-STORY\NPC\NPC_WzA\*.d
-STORY\NPC\Monsters\*.d
-STORY\NPC\Monsters\Demons\*.d
-STORY\NPC\Monsters\Farm\*.d
-STORY\NPC\Monsters\Furbeasts\*.d
-STORY\NPC\Monsters\Goblins\*.d
-STORY\NPC\Monsters\Golems\*.d
-STORY\NPC\Monsters\Insects\*.d
-STORY\NPC\Monsters\Orcs\*.d
-STORY\NPC\Monsters\Reptiles\*.d
-STORY\NPC\Monsters\Scavengers\*.d
-STORY\NPC\Monsters\Undeads\*.d
-STORY\NPC\Monsters\Wild\*.d
+STORY\Npc\*.d
+STORY\Npc\NPC_G2\*.d
+STORY\Npc\NPC_New\*.d
+STORY\Npc\NPC_WzA\*.d
+STORY\Npc\Monsters\*.d
+STORY\Npc\Monsters\Demons\*.d
+STORY\Npc\Monsters\Farm\*.d
+STORY\Npc\Monsters\Furbeasts\*.d
+STORY\Npc\Monsters\Goblins\*.d
+STORY\Npc\Monsters\Golems\*.d
+STORY\Npc\Monsters\Insects\*.d
+STORY\Npc\Monsters\Orcs\*.d
+STORY\Npc\Monsters\Reptiles\*.d
+STORY\Npc\Monsters\Scavengers\*.d
+STORY\Npc\Monsters\Undeads\*.d
+STORY\Npc\Monsters\Wild\*.d
 
 STORY\B_GiveTradeInv\B_ClearRuneInv.d
 STORY\B_GiveTradeInv\B_GiveTradeInv_*.d
@@ -227,7 +218,7 @@ STORY\G_Functions\G_CanSteal.d
 STORY\G_Functions\G_PickLock.d
 
 STORY\B_Story\B_InitGuildAttitudes.d
-STORY\B_Story\B_NPC_IsAliveCheck.d
+STORY\B_Story\B_Npc_IsAliveCheck.d
 STORY\B_AssignAmbientInfos\B_AssignDragonTalk.d
 STORY\B_AssignAmbientInfos\B_AssignDementorTalk.d
 STORY\B_AssignAmbientInfos\B_AssignORC_AntiPaladinTalk.d
@@ -261,9 +252,16 @@ AI\MONSTER\ZS_Monster\*.d
 STORY\Events\*.d
 STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
+MOD\MOD_Assassination.d
+MOD\MOD_Bars.d
 MOD\MOD_Damage.d
+MOD\MOD_ItemFn.d
+MOD\MOD_Menu.d
 MOD\MOD_Mobs.d
+MOD\MOD_MoveFn.d
 MOD\MOD_MovieMode.d
+MOD\MOD_Pickpocket.d
+MOD\MOD_Keys.d
 MOD\TICK_TOCK.d
 TestFunctions.d
 

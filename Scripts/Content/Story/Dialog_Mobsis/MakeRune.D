@@ -1231,7 +1231,7 @@ func void PC_SPL_PalTeleportSecret_Create()
 	if (Npc_HasItems(hero, ItMi_HolyWater) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItMi_HolyWater);
-		CreateInvItem (hero, ItTe_MonasteryUnderground);
+		CreateInvItem (hero, ItTe_SecretChamber);
 		Print(PRINT_RuneSuccess);
 	}
 	else 

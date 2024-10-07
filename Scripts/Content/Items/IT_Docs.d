@@ -18,24 +18,25 @@ func int B_SetPlayerMap (var int MapInstance)
 ///******************************************************************************************
 prototype ItemPR_Map (C_Item)
 {
-	name					=	"Mapa";
-	mainflag				=	ITEM_KAT_DOCS;
-	flags					=	ITEM_MULTI;
+	name						=	"Mapa";
+	mainflag					=	ITEM_KAT_DOCS;
+	flags						=	ITEM_MULTI;
 	
-	material				=	MAT_LEATHER;
-	scemeName				=	"MAP";
+	material					=	MAT_LEATHER;
+	scemeName					=	"MAP";
 	
-	TEXT[5]					=	NAME_Value;
+	TEXT[5]						=	NAME_Value;
 };
+
 ///******************************************************************************************
 instance ItWr_Map_NewWorld (ItemPR_Map)
 {
-	value					=	200;
-	visual					=	"ItWr_Map_01.3DS";
-	on_state[0]				=	Use_ItWr_Map_NewWorld;
+	value						=	200;
+	visual						=	"ItWr_Map_01.3DS";
+	on_state[0]					=	Use_ItWr_Map_NewWorld;
 	
-	description				=	"Mapa terenów Khorinis";
-	COUNT[5]				=	value;
+	description					=	"Mapa terenów Khorinis";
+	COUNT[5]					=	value;
 };
 func void Use_ItWr_Map_NewWorld()
 {
@@ -49,15 +50,16 @@ func void Use_ItWr_Map_NewWorld()
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_NewWorld_City (ItemPR_Map)
 {
-	value					=	50;
-	visual					=	"ItWr_Map_01.3DS";
-	on_state[0]				=	Use_ItWr_Map_NewWorld_City;
+	value						=	50;
+	visual						=	"ItWr_Map_01.3DS";
+	on_state[0]					=	Use_ItWr_Map_NewWorld_City;
 	
-	description				=	"Mapa miasta Khorinis";
-	COUNT[5]				=	value;
+	description					=	"Mapa miasta Khorinis";
+	COUNT[5]					=	value;
 };
 func void Use_ItWr_Map_NewWorld_City()
 {
@@ -71,15 +73,16 @@ func void Use_ItWr_Map_NewWorld_City()
 				Doc_SetLevelCoords	(Document, -6900, 11800, 21600, -9400);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_OldWorld (ItemPR_Map)
 {
-	value					=	200;
-	visual					=	"ItWr_Map_01.3DS";
-	on_state[0]				=	Use_ItWr_Map_OldWorld;
+	value						=	200;
+	visual						=	"ItWr_Map_01.3DS";
+	on_state[0]					=	Use_ItWr_Map_OldWorld;
 	
-	description				=	"Mapa Górniczej Doliny";
-	COUNT[5]				=	value;
+	description					=	"Mapa Górniczej Doliny";
+	COUNT[5]					=	value;
 };
 func void Use_ItWr_Map_OldWorld()
 {
@@ -93,15 +96,16 @@ func void Use_ItWr_Map_OldWorld()
 				Doc_SetLevelCoords	(Document, -78500, 47500, 54000, -53000);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_AddonWorld (ItemPR_Map)
 {
-	value					=	200;
-	visual					=	"ItWr_Map_01.3DS";
-	on_state[0]				=	Use_ItWr_Map_AddonWorld;
+	value						=	200;
+	visual						=	"ItWr_Map_01.3DS";
+	on_state[0]					=	Use_ItWr_Map_AddonWorld;
 	
-	description				=	"Zapomniana dolina budowniczych";
-	COUNT[5]				=	value;
+	description					=	"Zapomniana dolina budowniczych";
+	COUNT[5]					=	value;
 };
 func void Use_ItWr_Map_AddonWorld()
 {
@@ -121,26 +125,26 @@ func void Use_ItWr_Map_AddonWorld()
 ///******************************************************************************************
 instance ItWr_StonePlate (C_Item)
 {
-	name 					=	"Kamienna tabliczka";
-	mainflag 				=	ITEM_KAT_NONE;
-	flags 					=	ITEM_MULTI;
+	name						=	"Kamienna tabliczka";
+	mainflag					=	ITEM_KAT_NONE;
+	flags						=	ITEM_MULTI;
 	
-	value 					=	10;
-	material				=	MAT_STONE;
+	value						=	10;
+	material					=	MAT_STONE;
 	var int random; random = Hlp_Random(5);
-	if		(random == 0)	{ visual = "ItMi_StonePlate_PowerUp_01.3ds"; }
-	else if	(random == 1)	{ visual = "ItMi_StonePlate_PowerUp_02.3ds"; }
-	else if	(random == 2)	{ visual = "ItMi_StonePlate_PowerUp_03.3ds"; }
-	else if	(random == 3)	{ visual = "ItMi_StonePlate_PowerUp_04.3ds"; }
-	else					{ visual = "ItMi_StonePlate_PowerUp_05.3ds"; };
+	if		(random == 0)		{ visual = "ItMi_StonePlate_PowerUp_01.3ds"; }
+	else if	(random == 1)		{ visual = "ItMi_StonePlate_PowerUp_02.3ds"; }
+	else if	(random == 2)		{ visual = "ItMi_StonePlate_PowerUp_03.3ds"; }
+	else if	(random == 3)		{ visual = "ItMi_StonePlate_PowerUp_04.3ds"; }
+	else						{ visual = "ItMi_StonePlate_PowerUp_05.3ds"; };
 	
-	scemename				=	"MAPSEALED";
-	on_state[0]				=	Use_ItWr_StonePlate;
+	scemename					=	"MAPSEALED";
+	on_state[0]					=	Use_ItWr_StonePlate;
 	
-	description				=	name;
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				= 	value;
-	inv_rotx				=	INVCAM_X_STONEPLATE_STANDARD;
+	description					=	name;
+	TEXT[5]						=	NAME_Value;
+	COUNT[5]					=	value;
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItWr_StonePlate()
 {
@@ -160,32 +164,34 @@ func void Use_ItWr_StonePlate()
 ///******************************************************************************************
 prototype ItemPR_BookLp (C_Item)
 {
-	name					=	"Ksi¹¿ka";
-	mainflag				=	ITEM_KAT_DOCS;
-	flags					=	ITEM_MULTI;
+	name						=	"Ksi¹¿ka";
+	mainflag					=	ITEM_KAT_DOCS;
+	flags						=	ITEM_MULTI;
 	
-	value					=	400;
-	material				=	MAT_LEATHER;
-	scemeName				=	"MAPSEALED";
+	value						=	400;
+	material					=	MAT_LEATHER;
+	scemeName					=	"MAPSEALED";
 	
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				=	value;
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
+	TEXT[5]						=	NAME_Value;
+	COUNT[5]					=	value;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
+
 prototype ItemPR_BookXp (C_Item)
 {
-	name					=	"Ksi¹¿ka";
-	mainflag				=	ITEM_KAT_DOCS;
-	flags					=	ITEM_MULTI;
+	name						=	"Ksi¹¿ka";
+	mainflag					=	ITEM_KAT_DOCS;
+	flags						=	ITEM_MULTI;
 	
-	value					=	20;
-	material				=	MAT_LEATHER;
-	scemeName				=	"MAPSEALED";
+	value						=	20;
+	material					=	MAT_LEATHER;
+	scemeName					=	"MAPSEALED";
 	
-	TEXT[5]					=	NAME_Value;
-	COUNT[5]				=	value;
-	INV_ZBIAS				=	INVCAM_ENTF_MISC_STANDARD;
+	TEXT[5]						=	NAME_Value;
+	COUNT[5]					=	value;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
+
 ///******************************************************************************************
 
 var int Bonus_ItWr_Book_Fight1H;
@@ -213,13 +219,13 @@ var int Bonus_ItWr_Book[100];
 ///******************************************************************************************
 instance ItWr_Book_Fight1H (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_04.3ds";
-	on_state[0]				=	Use_ItWr_Book_Fight1H;
+	visual						=	"ItWr_Book_02_04.3ds";
+	on_state[0]					=	Use_ItWr_Book_Fight1H;
 	
 	if (Bonus_ItWr_Book_Fight1H)
-	{ description			=	"Kunszt obronny po³udniowców (przeczytane)"; }
+	{ description				=	"Kunszt obronny po³udniowców (przeczytane)"; }
 	else
-	{ description			=	"Kunszt obronny po³udniowców"; };
+	{ description				=	"Kunszt obronny po³udniowców"; };
 };
 func void Use_ItWr_Book_Fight1H()
 {
@@ -236,7 +242,7 @@ func void Use_ItWr_Book_Fight1H()
 				Doc_SetPage		(nDocID,  1, "Book_Red_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLines	(nDocID,  0, "Kunszt obronny po³udniowców");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -247,16 +253,17 @@ func void Use_ItWr_Book_Fight1H()
 				Doc_PrintLines	(nDocID,  1, "Prawdopodobnie najs³ynniejszym manewrem wywodz¹cym siê z po³udnia jest jednorêczny blok po³¹czony z krokiem wstecz: cofniêcie siê pozwala na zmniejszenie si³y wrogiego ciosu i umo¿liwia przyjêcie postawy u³atwiaj¹cej wyprowadzenie kontrataku.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Fight2H (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_03.3ds";
-	on_state[0]				=	Use_ItWr_Book_Fight2H;
+	visual						=	"ItWr_Book_02_03.3ds";
+	on_state[0]					=	Use_ItWr_Book_Fight2H;
 	
 	if (Bonus_ItWr_Book_Fight2H)
-	{ description			=	"Bloki dwurêczne (przeczytane)"; }
+	{ description				=	"Bloki dwurêczne (przeczytane)"; }
 	else
-	{ description			=	"Bloki dwurêczne"; };
+	{ description				=	"Bloki dwurêczne"; };
 };
 func void Use_ItWr_Book_Fight2H()
 {
@@ -273,7 +280,7 @@ func void Use_ItWr_Book_Fight2H()
 				Doc_SetPage		(nDocID,  1, "Book_Red_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLines	(nDocID,  0, "Bloki dwurêczne");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -284,16 +291,17 @@ func void Use_ItWr_Book_Fight2H()
 				Doc_PrintLines	(nDocID,  1, "Zatrzymany w ten sposób przeciwnik traci inicjatywê i ³atwiej go potem skutecznie zaatakowaæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_StarPower (ItemPR_BookLp) 
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_StarPower;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_StarPower;
 	
 	if (Bonus_ItWr_Book_StarPower)
-	{ description			=	"Boska moc gwiazd (przeczytane)"; }
+	{ description				=	"Boska moc gwiazd (przeczytane)"; }
 	else
-	{ description			=	"Boska moc gwiazd"; };
+	{ description				=	"Boska moc gwiazd"; };
 };
 func void Use_ItWr_Book_StarPower()
 {
@@ -322,16 +330,17 @@ func void Use_ItWr_Book_StarPower()
 				Doc_PrintLines	(nDocID,  1, "Jeœli taka sytuacja siê powtórzy, niechaj Innos ma nas w swej opiece, albowiem od stuleci nie by³o poœród nas jego Wybrañca.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_GodsGift (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_01.3ds";
-	on_state[0]				=	Use_ItWr_Book_GodsGift;
+	visual						=	"ItWr_Book_02_01.3ds";
+	on_state[0]					=	Use_ItWr_Book_GodsGift;
 	
 	if (Bonus_ItWr_Book_GodsGift)
-	{ description			=	"Dar od bogów (przeczytane)"; }
+	{ description				=	"Dar od bogów (przeczytane)"; }
 	else
-	{ description			=	"Dar od bogów"; };
+	{ description				=	"Dar od bogów"; };
 };
 func void Use_ItWr_Book_GodsGift()
 {
@@ -348,8 +357,8 @@ func void Use_ItWr_Book_GodsGift()
 				Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
- 				Doc_PrintLine	(nDocID,  0, "Magia");
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
+				Doc_PrintLine	(nDocID,  0, "Magia");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Dar od bogów");
@@ -363,16 +372,17 @@ func void Use_ItWr_Book_GodsGift()
 				Doc_PrintLine	(nDocID,  1, "Barthos z Laran");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_SecretsOfMagic (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_SecretsOfMagic;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_SecretsOfMagic;
 	
 	if (Bonus_ItWr_Book_SecretsOfMagic)
-	{ description			=	"Tajniki magii (przeczytane)"; }
+	{ description				=	"Tajniki magii (przeczytane)"; }
 	else
-	{ description			=	"Tajniki magii"; };
+	{ description				=	"Tajniki magii"; };
 };
 func void Use_ItWr_Book_SecretsOfMagic()
 {
@@ -389,7 +399,7 @@ func void Use_ItWr_Book_SecretsOfMagic()
 				Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0,  275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLine	(nDocID,  0, "Tajniki magii");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -403,16 +413,17 @@ func void Use_ItWr_Book_SecretsOfMagic()
 				Doc_PrintLine	(nDocID,  1, "Barthos z Laran");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_PowerfulArt (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_03.3ds";
-	on_state[0]				=	Use_ItWr_Book_PowerfulArt;
+	visual						=	"ItWr_Book_02_03.3ds";
+	on_state[0]					=	Use_ItWr_Book_PowerfulArt;
 	
 	if (Bonus_ItWr_Book_PowerfulArt)
-	{ description			=	"Wszechpotê¿na sztuka (przeczytane)"; }
+	{ description				=	"Wszechpotê¿na sztuka (przeczytane)"; }
 	else
-	{ description			=	"Wszechpotê¿na sztuka"; };
+	{ description				=	"Wszechpotê¿na sztuka"; };
 };
 func void Use_ItWr_Book_PowerfulArt()
 {
@@ -429,7 +440,7 @@ func void Use_ItWr_Book_PowerfulArt()
 				Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLine	(nDocID,  0, "Wszechpotê¿na sztuka");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -444,16 +455,17 @@ func void Use_ItWr_Book_PowerfulArt()
 				Doc_PrintLines	(nDocID,  1, "Z ka¿dym nowym dniem roœlina staje siê wiêksza i silniejsza. Tak samo jest z magusem. Na pocz¹tku nauki jego si³y s¹ w¹t³e, lecz z czasem okrzepnie, staj¹c siê potê¿niejszym. Ci¹g³e d¹¿enie do absolutnej perfekcji powinno byæ nadrzêdnym celem ka¿dego adepta magii. Ziarno potêgi dane im przez bogów jest bowiem najcenniejszym darem, jakie œmiertelnik mo¿e otrzymaæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Elementare (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_04.3ds";
-	on_state[0]				=	Use_ItWr_Book_Elementare;
+	visual						=	"ItWr_Book_02_04.3ds";
+	on_state[0]					=	Use_ItWr_Book_Elementare;
 	
 	if (Bonus_ItWr_Book_Elementare)
-	{ description			=	"Arcanum ¿ywio³ów (przeczytane)"; }
+	{ description				=	"Arcanum ¿ywio³ów (przeczytane)"; }
 	else
-	{ description			=	"Arcanum ¿ywio³ów"; };
+	{ description				=	"Arcanum ¿ywio³ów"; };
 };
 func void Use_ItWr_Book_Elementare()
 {
@@ -470,7 +482,7 @@ func void Use_ItWr_Book_Elementare()
 				Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLine	(nDocID,  0, "Arcanum ¿ywio³ów");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -485,16 +497,17 @@ func void Use_ItWr_Book_Elementare()
 				Doc_PrintLines	(nDocID,  1, "Ka¿dy ¿ywio³, w swej najczystszej formie, ujawnia powi¹zania z magi¹. Oczywiœcie, naturalne manifestacje takich powi¹zañ nale¿¹ do rzadkoœci i s¹ skrzêtnie poszukiwane. Zdolnoœæ magusa do kontrolowania potêgi ¿ywio³ów stanowi ostateczny dowód, i¿ magia jest najczystszym i najwspanialszym dobrem obecnym w naszej egzystencji.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_RealPower (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_RealPower;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_RealPower;
 	
 	if (Bonus_ItWr_Book_RealPower)
-	{ description			=	"Prawdziwa moc (przeczytane)"; }
+	{ description				=	"Prawdziwa moc (przeczytane)"; }
 	else
-	{ description			=	"Prawdziwa moc"; };
+	{ description				=	"Prawdziwa moc"; };
 };
 func void Use_ItWr_Book_RealPower()
 {
@@ -511,7 +524,7 @@ func void Use_ItWr_Book_RealPower()
 				Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga", false);
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont	(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLine	(nDocID,  0, "Prawdziwa moc");
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -526,16 +539,17 @@ func void Use_ItWr_Book_RealPower()
 				Doc_PrintLines	(nDocID,  1, "Gdy magus osi¹gnie poziom, który pozwoli mu wykroczyæ poza granice ludzkiej egzystencji, wstêpuje do œwiata niedostêpnego zwyk³ym œmiertelnikom. Mo¿e prze³amywaæ bariery czasu i przestrzeni, i nawet œmieræ - ostateczna bariera - nie jest mu straszna.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_MagicOre (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_MagicOre;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_MagicOre;
 	
 	if (Bonus_ItWr_Book_MagicOre)
-	{ description			=	"Magiczna ruda (przeczytane)"; }
+	{ description				=	"Magiczna ruda (przeczytane)"; }
 	else
-	{ description			=	"Magiczna ruda"; };
+	{ description				=	"Magiczna ruda"; };
 };
 func void Use_ItWr_Book_MagicOre()
 {
@@ -562,16 +576,17 @@ func void Use_ItWr_Book_MagicOre()
 				Doc_PrintLines	(nDocID,  1, "Magiczna broñ przebije ka¿dy pancerz i pogruchocze ka¿d¹ tarczê. Zaiste, królewski to orê¿ i królewsk¹ cenê trzeba zap³aciæ za choæby sztylet wykuty z tego szlachetnego kruszcu. Tako¿ surow¹ cenê p³ac¹ górnicy pracuj¹cy w kopalniach. Rudê nie³atwo oddzieliæ od skalnych pok³adów, tak jakby z ca³ych si³ walczy³a, by pozostaæ w ³onie matki Ziemi.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Varant1 (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_04.3ds";
-	on_state[0]				=	Use_ItWr_Book_Varant1;
+	visual						=	"ItWr_Book_02_04.3ds";
+	on_state[0]					=	Use_ItWr_Book_Varant1;
 	
 	if (Bonus_ItWr_Book_Varant1)
-	{ description			=	"Bitwa o Varrant Tom 1 (przeczytane)"; }
+	{ description				=	"Bitwa o Varrant Tom 1 (przeczytane)"; }
 	else
-	{ description			=	"Bitwa o Varrant Tom 1"; };
+	{ description				=	"Bitwa o Varrant Tom 1"; };
 };
 func void Use_ItWr_Book_Varant1()
 {
@@ -594,22 +609,23 @@ func void Use_ItWr_Book_Varant1()
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
 				Doc_SetFont		(nDocID,  1, FONT_Book);
-				Doc_PrintLine	(nDocID,  1, "");					
+				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "  Najpierw jednak postanowi³ przeci¹æ ich linie zaopatrzenia...");
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "...Gellon poleg³ a jego armia posz³a w rozsypkê. Ale Rhobar nie zamierza³ daæ przeciwnikowi chwili wytchnienia i rzuci³ swe si³y na pozosta³e oddzia³y wroga. Tu jednak Lukkor rzuci³ siê na królewskich znienacka i zada³ straszliwy cios wyczerpanym wojskom Rhobara...");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Varant2 (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_Varant2;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_Varant2;
 	
 	if (Bonus_ItWr_Book_Varant2)
-	{ description			=	"Bitwa o Varrant Tom 2 (przeczytane)"; }
+	{ description				=	"Bitwa o Varrant Tom 2 (przeczytane)"; }
 	else
-	{ description			=	"Bitwa o Varrant Tom 2"; };
+	{ description				=	"Bitwa o Varrant Tom 2"; };
 };
 func void Use_ItWr_Book_Varant2()
 {
@@ -636,16 +652,17 @@ func void Use_ItWr_Book_Varant2()
 				Doc_PrintLines	(nDocID,  1, "Ale teraz jego armia znalaz³a siê w potrzasku. Sytuacja zda³a siê byæ beznadziejna, choæ jego wojska przewy¿sza³y si³y królewskie liczb¹ i wyposa¿eniem. Oto jeden z Myrtañskich bohaterów, mê¿ny genera³ imieniem Lee, zwabi³ przeciwnika w pu³apkê. Na podmok³ej, bagnistej ziemi ciê¿ka kawaleria Lukkora nie mia³a szans w starciu ze zwinnymi ¿o³nierzami Lee. Zdziesi¹tkowane oddzia³y Varantu wkrótce musia³y uznaæ wy¿szoœæ przeciwnika. Lukkor zosta³ pokonany.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_MyrthanianPoetry (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_MyrthanianPoetry;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_MyrthanianPoetry;
 	
 	if (Bonus_ItWr_Book_MyrthanianPoetry)
-	{ description			=	"Poezja myrtañska (przeczytane)"; }
+	{ description				=	"Poezja myrtañska (przeczytane)"; }
 	else
-	{ description			=	"Poezja myrtañska"; };
+	{ description				=	"Poezja myrtañska"; };
 };
 func void Use_ItWr_Book_MyrthanianPoetry()
 {
@@ -691,16 +708,17 @@ func void Use_ItWr_Book_MyrthanianPoetry()
 				Doc_PrintLines	(nDocID,  1, "Bo nie masz ju¿ jednoœci na tym œwiecie.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom1 (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_01.3ds";
-	on_state[0]				=	Use_ItWr_Book_GodsWisdom1;
+	visual						=	"ItWr_Book_02_01.3ds";
+	on_state[0]					=	Use_ItWr_Book_GodsWisdom1;
 	
 	if (Bonus_ItWr_Book_GodsWisdom1)
-	{ description			=	"M¹droœæ bogów Tom 1 (przeczytane)"; }
+	{ description				=	"M¹droœæ bogów Tom 1 (przeczytane)"; }
 	else
-	{ description			=	"M¹droœæ bogów Tom 1"; };
+	{ description				=	"M¹droœæ bogów Tom 1"; };
 };
 func void Use_ItWr_Book_GodsWisdom1()
 {
@@ -731,16 +749,17 @@ func void Use_ItWr_Book_GodsWisdom1()
 				Doc_PrintLines	(nDocID,  1, "S³owa Beliara: A ktokolwiek wyst¹pi przeciw woli bo¿ej, ze mn¹ bêdzie mia³ do czynienia. Na jego cia³o ból zeœlê okrutny, a jego duch pójdzie ze mn¹ do krainy wiecznej ciemnoœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom2 (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_GodsWisdom2;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_GodsWisdom2;
 	
 	if (Bonus_ItWr_Book_GodsWisdom2)
-	{ description			=	"M¹droœæ bogów Tom 2 (przeczytane)"; }
+	{ description				=	"M¹droœæ bogów Tom 2 (przeczytane)"; }
 	else
-	{ description			=	"M¹droœæ bogów Tom 2"; };
+	{ description				=	"M¹droœæ bogów Tom 2"; };
 };
 func void Use_ItWr_Book_GodsWisdom2()
 {
@@ -767,16 +786,17 @@ func void Use_ItWr_Book_GodsWisdom2()
 				Doc_PrintLines	(nDocID,  1, "Dlatego Innos postanowi³ zostawiæ ludzkoœæ pod opiek¹ Adanosa i uda³ siê na spoczynek. Lecz Beliar p³on¹³ z zazdroœci, gdy¿ ludzie bali siê go i nie oddawali mu czci. Tedy postanowi³ Beliar stworzyæ cz³owieka, który modli³by siê tylko do niego. Ale cz³owiek ów by³ jako wszyscy inni, i ba³ siê Beliara i nie oddawa³ mu czci. Bóg nocy rozz³oœci³ siê i zabi³ cz³owieka krzycz¹c: Dobrze! Bójcie siê mnie zatem, ale czeœæ oddacie mi, choæby po œmierci. Tymi s³owy ustanowi³ Beliar œmieræ - kres ¿ywota ludzkiego."	);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_GodsWisdom3 (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_03.3ds";
-	on_state[0]				=	Use_ItWr_Book_GodsWisdom3;
+	visual						=	"ItWr_Book_02_03.3ds";
+	on_state[0]					=	Use_ItWr_Book_GodsWisdom3;
 	
 	if (Bonus_ItWr_Book_GodsWisdom3)
-	{ description			=	"M¹droœæ bogów Tom 3 (przeczytane)"; }
+	{ description				=	"M¹droœæ bogów Tom 3 (przeczytane)"; }
 	else
-	{ description			=	"M¹droœæ bogów Tom 3"; };
+	{ description				=	"M¹droœæ bogów Tom 3"; };
 };
 func void Use_ItWr_Book_GodsWisdom3()
 {
@@ -794,7 +814,7 @@ func void Use_ItWr_Book_GodsWisdom3()
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 				Doc_SetFont		(nDocID,  0, FONT_Book);
-  				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Innos pozwoli³, by ludzie mogli go us³yszeæ i przemawiaæ do niego. Pozwoli³ im równie¿ czyniæ cuda i nazwa³ je magi¹. Dziêki magii, ludzie zaczêli zmieniaæ œwiat wedle swego upodobania, jedni m¹drze, inni g³upio. Widz¹c to, Innos zabra³ dar magii ludziom g³upim i pozostawi³ go w rêkach ludzi œwiat³ych. Obdarzy³ ich równie¿ innymi ³askami, czyni¹c swoimi kap³anami i nadaj¹c im miano magów.");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
@@ -803,16 +823,17 @@ func void Use_ItWr_Book_GodsWisdom3()
 				Doc_PrintLines	(nDocID,  1, "Ludzie czcili kap³anów Innosa i oddawali im czeœæ, ale wielu magów odwróci³o siê od Innosa i uciek³o siê pod opiekê jego boskiego brata - Adanosa. Kasta magów uleg³a rozbiciu. Ci, którzy pod¹¿ali za bogiem m¹droœci nazwali siebie magami Krêgu Wody. Wyznawcy Innosa nazywani zaœ byli Magami Ognia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Hunting (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_02.3ds";
-	on_state[0]				=	Use_ItWr_Book_Hunting;
+	visual						=	"ItWr_Book_02_02.3ds";
+	on_state[0]					=	Use_ItWr_Book_Hunting;
 	
 	if (Bonus_ItWr_Book_Hunting)
-	{ description			=	"£owy i zwierzyna (przeczytane)"; }
+	{ description				=	"£owy i zwierzyna (przeczytane)"; }
 	else
-	{ description			=	"£owy i zwierzyna"; };
+	{ description				=	"£owy i zwierzyna"; };
 };
 func void Use_ItWr_Book_Hunting()
 {
@@ -839,16 +860,17 @@ func void Use_ItWr_Book_Hunting()
 				Doc_PrintLines	(nDocID,  1, "Polowanie z ³ukiem ma swe pocz¹tki w czasach staro¿ytnych. W ci¹gu ca³ych tysi¹cleci nie zasz³y w technikach ³owieckich wiêksze zmiany i tak ju¿ najprawdopodobniej pozostanie. Jakie czynniki wp³ywaj¹ tak naprawdê na skutecznoœæ pos³ugiwania siê ³ukiem? To w³aœnie rozpoznanie tych czynników czyni prawdziwego mistrza ³ucznictwa.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Fight (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_03.3ds";
-	on_state[0]				=	Use_ItWr_Book_Fight;
+	visual						=	"ItWr_Book_02_03.3ds";
+	on_state[0]					=	Use_ItWr_Book_Fight;
 	
 	if (Bonus_ItWr_Book_Fight)
-	{ description			=	"Sztuka walki (przeczytane)"; }
+	{ description				=	"Sztuka walki (przeczytane)"; }
 	else
-	{ description			=	"Sztuka walki"; };
+	{ description				=	"Sztuka walki"; };
 };
 func void Use_ItWr_Book_Fight()
 {
@@ -866,35 +888,36 @@ func void Use_ItWr_Book_Fight()
 				
 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 				Doc_SetFont		(nDocID,  0, FONT_Book);
- 				Doc_PrintLine	(nDocID,  0, "");
- 				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Od 2000 lat nauki mistrzów kszta³tuj¹ rozwój sztuki walki.");
- 				Doc_PrintLine	(nDocID,  0, "");
- 				Doc_PrintLine	(nDocID,  0, "");
-  				Doc_PrintLines	(nDocID,  0, "Zrêcznoœæ, opanowanie, szybkoœæ, zdolnoœæ obserwacji i b³yskawicznego podejmowania decyzji - wszystkie te umiejêtnoœci nale¿y bezustannie doskonaliæ. Jedynie doskona³a koordynacja ruchów i zachowanie w³aœciwej postawy pozwol¹ na prawid³owy rozwój twych umiejêtnoœci.");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_PrintLines	(nDocID,  0, "Zrêcznoœæ, opanowanie, szybkoœæ, zdolnoœæ obserwacji i b³yskawicznego podejmowania decyzji - wszystkie te umiejêtnoœci nale¿y bezustannie doskonaliæ. Jedynie doskona³a koordynacja ruchów i zachowanie w³aœciwej postawy pozwol¹ na prawid³owy rozwój twych umiejêtnoœci.");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
 				Doc_SetFont		(nDocID,  1, FONT_Book);
- 				Doc_PrintLine	(nDocID,  1, "");
- 				Doc_PrintLine	(nDocID,  1, "");
- 				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "Przes³anie duchowych i cielesnych nauk Mistrza przetrwa³o wiele lat.");
- 				Doc_PrintLine	(nDocID,  1, "");
- 				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "Jego niepospolity sukces by³ natchnieniem dla kolejnych pokoleñ. Œwiat zmienia³ siê bez przerwy, ale idealna harmonia si³ duchowych i sprawnoœci cia³a pozosta³a niezmienn¹.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Astronomy (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_Astronomy;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_Astronomy;
 	
 	if (Bonus_ItWr_Book_Astronomy)
-	{ description			=	"Astronomia (przeczytane)"; }
+	{ description				=	"Astronomia (przeczytane)"; }
 	else
-	{ description			=	"Astronomia"; };
+	{ description				=	"Astronomia"; };
 };
 func void Use_ItWr_Book_Astronomy()
 {
@@ -925,16 +948,17 @@ func void Use_ItWr_Book_Astronomy()
 				Doc_PrintLines	(nDocID,  1, "Obserwuj¹c ruch ksiê¿yca na nocnym niebie ustaliliœmy d³ugoœæ roku i stworzyliœmy pierwszy kalendarz.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Focus (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_Focus;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_Focus;
 	
 	if (Bonus_ItWr_Book_Focus)
-	{ description			=	"Kamienie ogniskuj¹ce (przeczytane)"; }
+	{ description				=	"Kamienie ogniskuj¹ce (przeczytane)"; }
 	else
-	{ description			=	"Kamienie ogniskuj¹ce"; };
+	{ description				=	"Kamienie ogniskuj¹ce"; };
 };
 func void Use_ItWr_Book_Focus()
 {
@@ -968,16 +992,17 @@ func void Use_ItWr_Book_Focus()
 				Doc_PrintLines	(nDocID,  1, "Zatem, Mêdrcze - otwórz sw¹ duszê na s³owa staro¿ytnej potêgi.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_Golem (ItemPR_BookLp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_Golem;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_Golem;
 	
 	if (Bonus_ItWr_Book_Golem)
-	{ description			=	"Arcanum Golum (przeczytane)"; }
+	{ description				=	"Arcanum Golum (przeczytane)"; }
 	else
-	{ description			=	"Arcanum Golum"; };
+	{ description				=	"Arcanum Golum"; };
 };
 func void Use_ItWr_Book_Golem()
 {
@@ -1013,13 +1038,13 @@ func void Use_ItWr_Book_Golem()
 ///******************************************************************************************
 instance ItWr_Book_000 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_000;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_000;
 	
 	if (Bonus_ItWr_Book[0])
-	{ description			=	"Alchemia (przeczytane)"; }
+	{ description				=	"Alchemia (przeczytane)"; }
 	else
-	{ description			=	"Alchemia"; };
+	{ description				=	"Alchemia"; };
 };
 func void Use_ItWr_Book_000()
 {
@@ -1049,16 +1074,17 @@ func void Use_ItWr_Book_000()
 				Doc_PrintLines	(nDocID,  1, "Ka¿da pomy³ka mo¿e prowadziæ do nieprzewidzianych rezultatów, dlatego starannoœæ jest najwa¿niejsza.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_001 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_001;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_001;
 	
 	if (Bonus_ItWr_Book[1])
-	{ description			=	"Kowalstwo (przeczytane)"; }
+	{ description				=	"Kowalstwo (przeczytane)"; }
 	else
-	{ description			=	"Kowalstwo"; };
+	{ description				=	"Kowalstwo"; };
 };
 func void Use_ItWr_Book_001()
 {
@@ -1086,16 +1112,17 @@ func void Use_ItWr_Book_001()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e odpowiednie uderzenia m³otem musz¹ byæ równomierne, a ich si³a dostosowana do rodzaju metalu, z którym pracujesz.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_002 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_002;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_002;
 	
 	if (Bonus_ItWr_Book[2])
-	{ description			=	"Myœlistwo (przeczytane)"; }
+	{ description				=	"Myœlistwo (przeczytane)"; }
 	else
-	{ description			=	"Myœlistwo"; };
+	{ description				=	"Myœlistwo"; };
 };
 func void Use_ItWr_Book_002()
 {
@@ -1125,16 +1152,17 @@ func void Use_ItWr_Book_002()
 				Doc_PrintLines	(nDocID,  1, "Cierpliwoœæ i umiejêtnoœæ pozostawania niezauwa¿onym s¹ kluczowe.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_003 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_003;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_003;
 	
 	if (Bonus_ItWr_Book[3])
-	{ description			=	"£ucznictwo (przeczytane)"; }
+	{ description				=	"£ucznictwo (przeczytane)"; }
 	else
-	{ description			=	"£ucznictwo"; };
+	{ description				=	"£ucznictwo"; };
 };
 func void Use_ItWr_Book_003()
 {
@@ -1164,16 +1192,17 @@ func void Use_ItWr_Book_003()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿dy ³ucznik musi byæ jednym z ³ukiem, czuæ jego napiêcie i wiedzieæ, kiedy puœciæ ciêciwê.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_004 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_004;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_004;
 	
 	if (Bonus_ItWr_Book[4])
-	{ description			=	"Kusznictwo (przeczytane)"; }
+	{ description				=	"Kusznictwo (przeczytane)"; }
 	else
-	{ description			=	"Kusznictwo"; };
+	{ description				=	"Kusznictwo"; };
 };
 func void Use_ItWr_Book_004()
 {
@@ -1203,16 +1232,17 @@ func void Use_ItWr_Book_004()
 				Doc_PrintLines	(nDocID,  1, "Ka¿dy strza³ musi byæ oddany z pe³nym przekonaniem, ¿e trafi w cel.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_005 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_005;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_005;
 	
 	if (Bonus_ItWr_Book[5])
-	{ description			=	"Prowadzenie œledztw (przeczytane)"; }
+	{ description				=	"Prowadzenie œledztw (przeczytane)"; }
 	else
-	{ description			=	"Prowadzenie œledztw"; };
+	{ description				=	"Prowadzenie œledztw"; };
 };
 func void Use_ItWr_Book_005()
 {
@@ -1242,16 +1272,17 @@ func void Use_ItWr_Book_005()
 				Doc_PrintLines	(nDocID,  1, "Najwa¿niejsze to po³¹czyæ wszystkie elementy uk³adanki w jedn¹ spójn¹ ca³oœæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_006 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_006;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_006;
 	
 	if (Bonus_ItWr_Book[6])
-	{ description			=	"Otwieranie zamków (przeczytane)"; }
+	{ description				=	"Otwieranie zamków (przeczytane)"; }
 	else
-	{ description			=	"Otwieranie zamków"; };
+	{ description				=	"Otwieranie zamków"; };
 };
 func void Use_ItWr_Book_006()
 {
@@ -1279,16 +1310,17 @@ func void Use_ItWr_Book_006()
 				Doc_PrintLines	(nDocID,  1, "Cierpliwoœæ i precyzja s¹ kluczowe, aby zamek ust¹pi³ bez uszkodzeñ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_007 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_007;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_007;
 	
 	if (Bonus_ItWr_Book[7])
-	{ description			=	"Kradzie¿ kieszonkowa (przeczytane)"; }
+	{ description				=	"Kradzie¿ kieszonkowa (przeczytane)"; }
 	else
-	{ description			=	"Kradzie¿ kieszonkowa"; };
+	{ description				=	"Kradzie¿ kieszonkowa"; };
 };
 func void Use_ItWr_Book_007()
 {
@@ -1316,16 +1348,17 @@ func void Use_ItWr_Book_007()
 				Doc_PrintLines	(nDocID,  1, "Szybkim, pewnym ruchem wyci¹gnij cel z jej kieszeni lub torby, dbaj¹c o to, aby twoje ruchy by³y naturalne i niezauwa¿alne.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_008 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_008;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_008;
 	
 	if (Bonus_ItWr_Book[8])
-	{ description			=	"Obróbka drewna (przeczytane)"; }
+	{ description				=	"Obróbka drewna (przeczytane)"; }
 	else
-	{ description			=	"Obróbka drewna"; };
+	{ description				=	"Obróbka drewna"; };
 };
 func void Use_ItWr_Book_008()
 {
@@ -1355,16 +1388,17 @@ func void Use_ItWr_Book_008()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby zawsze pracowaæ zgodnie z kierunkiem s³ojów drewna.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_009 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_009;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_009;
 	
 	if (Bonus_ItWr_Book[9])
-	{ description			=	"Gotowanie (przeczytane)"; }
+	{ description				=	"Gotowanie (przeczytane)"; }
 	else
-	{ description			=	"Gotowanie"; };
+	{ description				=	"Gotowanie"; };
 };
 func void Use_ItWr_Book_009()
 {
@@ -1392,16 +1426,17 @@ func void Use_ItWr_Book_009()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e najwa¿niejszym sk³adnikiem ka¿dej potrawy jest mi³oœæ do gotowania.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_010 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_010;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_010;
 	
 	if (Bonus_ItWr_Book[10])
-	{ description			=	"¯eglarstwo (przeczytane)"; }
+	{ description				=	"¯eglarstwo (przeczytane)"; }
 	else
-	{ description			=	"¯eglarstwo"; };
+	{ description				=	"¯eglarstwo"; };
 };
 func void Use_ItWr_Book_010()
 {
@@ -1431,16 +1466,17 @@ func void Use_ItWr_Book_010()
 				Doc_PrintLines	(nDocID,  1, "Trzymaj kurs i nie traæ wiary nawet w najtrudniejszych warunkach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_011 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_011;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_011;
 	
 	if (Bonus_ItWr_Book[11])
-	{ description			=	"Przepisywanie magicznych zwojów (przeczytane)"; }
+	{ description				=	"Przepisywanie magicznych zwojów (przeczytane)"; }
 	else
-	{ description			=	"Przepisywanie magicznych zwojów"; };
+	{ description				=	"Przepisywanie magicznych zwojów"; };
 };
 func void Use_ItWr_Book_011()
 {
@@ -1470,16 +1506,17 @@ func void Use_ItWr_Book_011()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e najmniejszy b³¹d mo¿e zmieniæ efekt zaklêcia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_012 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_012;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_012;
 	
 	if (Bonus_ItWr_Book[12])
-	{ description			=	"Skradanie siê (przeczytane)"; }
+	{ description				=	"Skradanie siê (przeczytane)"; }
 	else
-	{ description			=	"Skradanie siê"; };
+	{ description				=	"Skradanie siê"; };
 };
 func void Use_ItWr_Book_012()
 {
@@ -1509,16 +1546,17 @@ func void Use_ItWr_Book_012()
 				Doc_PrintLines	(nDocID,  1, "Kluczowe jest poznanie terenu i obserwacja rutynowych zachowañ twoich celów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_013 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_013;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_013;
 	
 	if (Bonus_ItWr_Book[13])
-	{ description			=	"Akrobatyka (przeczytane)"; }
+	{ description				=	"Akrobatyka (przeczytane)"; }
 	else
-	{ description			=	"Akrobatyka"; };
+	{ description				=	"Akrobatyka"; };
 };
 func void Use_ItWr_Book_013()
 {
@@ -1548,16 +1586,17 @@ func void Use_ItWr_Book_013()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e perfekcja w akrobatyce to wynik d³ugich godzin ciê¿kiej pracy i determinacji.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_014 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_014;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_014;
 	
 	if (Bonus_ItWr_Book[14])
-	{ description			=	"Po³ykanie ognia (przeczytane)"; }
+	{ description				=	"Po³ykanie ognia (przeczytane)"; }
 	else
-	{ description			=	"Po³ykanie ognia"; };
+	{ description				=	"Po³ykanie ognia"; };
 };
 func void Use_ItWr_Book_014()
 {
@@ -1587,16 +1626,17 @@ func void Use_ItWr_Book_014()
 				Doc_PrintLines	(nDocID,  1, "Æwicz cierpliwie i zawsze zachowuj najwy¿sze œrodki ostro¿noœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_015 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_015;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_015;
 	
 	if (Bonus_ItWr_Book[15])
-	{ description			=	"Poezja (przeczytane)"; }
+	{ description				=	"Poezja (przeczytane)"; }
 	else
-	{ description			=	"Poezja"; };
+	{ description				=	"Poezja"; };
 };
 func void Use_ItWr_Book_015()
 {
@@ -1626,16 +1666,17 @@ func void Use_ItWr_Book_015()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿da strofa to obraz malowany s³owami, który powinien poruszaæ duszê czytelnika.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_016 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_016;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_016;
 	
 	if (Bonus_ItWr_Book[16])
-	{ description			=	"Dowodzenie oddzia³em (przeczytane)"; }
+	{ description				=	"Dowodzenie oddzia³em (przeczytane)"; }
 	else
-	{ description			=	"Dowodzenie oddzia³em"; };
+	{ description				=	"Dowodzenie oddzia³em"; };
 };
 func void Use_ItWr_Book_016()
 {
@@ -1665,16 +1706,17 @@ func void Use_ItWr_Book_016()
 				Doc_PrintLines	(nDocID,  1, "Przywództwo to nie tylko w³adza, ale i odpowiedzialnoœæ za ¿ycie podkomendnych.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_017 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_017;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_017;
 	
 	if (Bonus_ItWr_Book[17])
-	{ description			=	"Górnictwo (przeczytane)"; }
+	{ description				=	"Górnictwo (przeczytane)"; }
 	else
-	{ description			=	"Górnictwo"; };
+	{ description				=	"Górnictwo"; };
 };
 func void Use_ItWr_Book_017()
 {
@@ -1704,16 +1746,17 @@ func void Use_ItWr_Book_017()
 				Doc_PrintLines	(nDocID,  1, "Ka¿de uderzenie kilofa powinno byæ przemyœlane, a bezpieczeñstwo twoje i twoich wspó³pracowników zawsze na pierwszym miejscu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_018 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_018;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_018;
 	
 	if (Bonus_ItWr_Book[18])
-	{ description			=	"£owienie ryb (przeczytane)"; }
+	{ description				=	"£owienie ryb (przeczytane)"; }
 	else
-	{ description			=	"£owienie ryb"; };
+	{ description				=	"£owienie ryb"; };
 };
 func void Use_ItWr_Book_018()
 {
@@ -1743,16 +1786,17 @@ func void Use_ItWr_Book_018()
 				Doc_PrintLines	(nDocID,  1, "Obserwuj zachowanie wody i ucz siê jej tajemnic, aby zwiêkszyæ swoje szanse na udane po³owy.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_019 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_019;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_019;
 	
 	if (Bonus_ItWr_Book[19])
-	{ description			=	"Zielarstwo (przeczytane)"; }
+	{ description				=	"Zielarstwo (przeczytane)"; }
 	else
-	{ description			=	"Zielarstwo"; };
+	{ description				=	"Zielarstwo"; };
 };
 func void Use_ItWr_Book_019()
 {
@@ -1782,16 +1826,17 @@ func void Use_ItWr_Book_019()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dok³adna wiedza na temat roœlin jest kluczem do skutecznych mikstur.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_020 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_020;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_020;
 	
 	if (Bonus_ItWr_Book[20])
-	{ description			=	"RzeŸnictwo (przeczytane)"; }
+	{ description				=	"RzeŸnictwo (przeczytane)"; }
 	else
-	{ description			=	"RzeŸnictwo"; };
+	{ description				=	"RzeŸnictwo"; };
 };
 func void Use_ItWr_Book_020()
 {
@@ -1821,16 +1866,17 @@ func void Use_ItWr_Book_020()
 				Doc_PrintLines	(nDocID,  1, "Dobrze zaostrzony nó¿ jest twoim najwa¿niejszym narzêdziem, a umiejêtnoœæ w³aœciwego dzielenia tuszy kluczem do sukcesu w tym rzemioœle.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_021 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_021;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_021;
 	
 	if (Bonus_ItWr_Book[21])
-	{ description			=	"Ostrzenie broni (przeczytane)"; }
+	{ description				=	"Ostrzenie broni (przeczytane)"; }
 	else
-	{ description			=	"Ostrzenie broni"; };
+	{ description				=	"Ostrzenie broni"; };
 };
 func void Use_ItWr_Book_021()
 {
@@ -1860,16 +1906,17 @@ func void Use_ItWr_Book_021()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dobrze naostrzona broñ jest bardziej skuteczna i bezpieczniejsza w u¿yciu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_022 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_022;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_022;
 	
 	if (Bonus_ItWr_Book[22])
-	{ description			=	"Stosowanie specjalnych strza³ (przeczytane)"; }
+	{ description				=	"Stosowanie specjalnych strza³ (przeczytane)"; }
 	else
-	{ description			=	"Stosowanie specjalnych strza³"; };
+	{ description				=	"Stosowanie specjalnych strza³"; };
 };
 func void Use_ItWr_Book_022()
 {
@@ -1899,16 +1946,17 @@ func void Use_ItWr_Book_022()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby przechowywaæ te strza³y osobno i zachowaæ ostro¿noœæ przy ich u¿ywaniu, aby nie zatruæ samego siebie.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_023 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_023;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_023;
 	
 	if (Bonus_ItWr_Book[23])
-	{ description			=	"Przetapianie metali szlachetnych (przeczytane)"; }
+	{ description				=	"Przetapianie metali szlachetnych (przeczytane)"; }
 	else
-	{ description			=	"Przetapianie metali szlachetnych"; };
+	{ description				=	"Przetapianie metali szlachetnych"; };
 };
 func void Use_ItWr_Book_023()
 {
@@ -1940,16 +1988,17 @@ func void Use_ItWr_Book_023()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby zawsze pracowaæ w dobrze wentylowanym pomieszczeniu i nosiæ odpowiednie zabezpieczenia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_024 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_024;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_024;
 	
 	if (Bonus_ItWr_Book[24])
-	{ description			=	"Utwardzanie pancerzy (przeczytane)"; }
+	{ description				=	"Utwardzanie pancerzy (przeczytane)"; }
 	else
-	{ description			=	"Utwardzanie pancerzy"; };
+	{ description				=	"Utwardzanie pancerzy"; };
 };
 func void Use_ItWr_Book_024()
 {
@@ -1979,16 +2028,17 @@ func void Use_ItWr_Book_024()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby póŸniej odpuszczaæ pancerz, aby zapobiec jego kruchoœci i zapewniæ elastycznoœæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_025 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_025;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_025;
 	
 	if (Bonus_ItWr_Book[25])
-	{ description			=	"Walka dwoma mieczami (przeczytane)"; }
+	{ description				=	"Walka dwoma mieczami (przeczytane)"; }
 	else
-	{ description			=	"Walka dwoma mieczami"; };
+	{ description				=	"Walka dwoma mieczami"; };
 };
 func void Use_ItWr_Book_025()
 {
@@ -2018,16 +2068,17 @@ func void Use_ItWr_Book_025()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e walka dwoma mieczami to sztuka, która wymaga zarówno si³y, jak i strategii.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_026 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_026;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_026;
 	
 	if (Bonus_ItWr_Book[26])
-	{ description			=	"Pos³ugiwanie siê tarczami (przeczytane)"; }
+	{ description				=	"Pos³ugiwanie siê tarczami (przeczytane)"; }
 	else
-	{ description			=	"Pos³ugiwanie siê tarczami"; };
+	{ description				=	"Pos³ugiwanie siê tarczami"; };
 };
 func void Use_ItWr_Book_026()
 {
@@ -2057,16 +2108,17 @@ func void Use_ItWr_Book_026()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dobra tarcza to przed³u¿enie twojego ramienia i czêœæ twojej strategii bojowej.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_027 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_027;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_027;
 	
 	if (Bonus_ItWr_Book[27])
-	{ description			=	"Broñ miotana (przeczytane)"; }
+	{ description				=	"Broñ miotana (przeczytane)"; }
 	else
-	{ description			=	"Broñ miotana"; };
+	{ description				=	"Broñ miotana"; };
 };
 func void Use_ItWr_Book_027()
 {
@@ -2096,16 +2148,17 @@ func void Use_ItWr_Book_027()
 				Doc_PrintLines	(nDocID,  1, "Ka¿dy rzut powinien byæ pewny i kontrolowany, aby maksymalnie zwiêkszyæ skutecznoœæ na polu walki.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_028 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_028;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_028;
 	
 	if (Bonus_ItWr_Book[28])
-	{ description			=	"Archeologia (przeczytane)"; }
+	{ description				=	"Archeologia (przeczytane)"; }
 	else
-	{ description			=	"Archeologia"; };
+	{ description				=	"Archeologia"; };
 };
 func void Use_ItWr_Book_028()
 {
@@ -2135,16 +2188,17 @@ func void Use_ItWr_Book_028()
 				Doc_PrintLines	(nDocID,  1, "Dokumentuj ka¿dy etap prac i analizuj znalezione przedmioty, aby zrekonstruowaæ historiê z przesz³oœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_029 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_029;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_029;
 	
 	if (Bonus_ItWr_Book[29])
-	{ description			=	"Broñ d³uga (przeczytane)"; }
+	{ description				=	"Broñ d³uga (przeczytane)"; }
 	else
-	{ description			=	"Broñ d³uga"; };
+	{ description				=	"Broñ d³uga"; };
 };
 func void Use_ItWr_Book_029()
 {
@@ -2174,16 +2228,17 @@ func void Use_ItWr_Book_029()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e d³ugoœæ broni jest zarówno atutem, jak i wyzwaniem – musisz umieæ sprawnie manewrowaæ w ciasnych przestrzeniach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_030 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_030;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_030;
 	
 	if (Bonus_ItWr_Book[30])
-	{ description			=	"Magiczne kostury (przeczytane)"; }
+	{ description				=	"Magiczne kostury (przeczytane)"; }
 	else
-	{ description			=	"Magiczne kostury"; };
+	{ description				=	"Magiczne kostury"; };
 };
 func void Use_ItWr_Book_030()
 {
@@ -2213,16 +2268,17 @@ func void Use_ItWr_Book_030()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e kostur to nie tylko narzêdzie ofensywne, ale równie¿ defensywne, umo¿liwiaj¹ce tworzenie barier i os³on.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_031 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_031;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_031;
 	
 	if (Bonus_ItWr_Book[31])
-	{ description			=	"Œcinanie drzew (przeczytane)"; }
+	{ description				=	"Œcinanie drzew (przeczytane)"; }
 	else
-	{ description			=	"Œcinanie drzew"; };
+	{ description				=	"Œcinanie drzew"; };
 };
 func void Use_ItWr_Book_031()
 {
@@ -2252,16 +2308,17 @@ func void Use_ItWr_Book_031()
 				Doc_PrintLines	(nDocID,  1, "Œciête drzewa przetwarzaj na deski, belki czy opa³, dbaj¹c o minimalizacjê marnotrawstwa.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_032 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_032;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_032;
 	
 	if (Bonus_ItWr_Book[32])
-	{ description			=	"Tworzenie broni dystansowych (przeczytane)"; }
+	{ description				=	"Tworzenie broni dystansowych (przeczytane)"; }
 	else
-	{ description			=	"Tworzenie broni dystansowych"; };
+	{ description				=	"Tworzenie broni dystansowych"; };
 };
 func void Use_ItWr_Book_032()
 {
@@ -2291,16 +2348,17 @@ func void Use_ItWr_Book_032()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e jakoœæ twojego rzemios³a wp³ywa na skutecznoœæ broni.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_033 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_033;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_033;
 	
 	if (Bonus_ItWr_Book[33])
-	{ description			=	"Obuchy czy broñ ciêta (przeczytane)"; }
+	{ description				=	"Obuchy czy broñ ciêta (przeczytane)"; }
 	else
-	{ description			=	"Obuchy czy broñ ciêta"; };
+	{ description				=	"Obuchy czy broñ ciêta"; };
 };
 func void Use_ItWr_Book_033()
 {
@@ -2330,16 +2388,17 @@ func void Use_ItWr_Book_033()
 				Doc_PrintLines	(nDocID,  1, "Wybór broni powinien zale¿eæ od rodzaju przeciwnika i sytuacji na polu bitwy.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_034 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_034;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_034;
 	
 	if (Bonus_ItWr_Book[34])
-	{ description			=	"Architektura (przeczytane)"; }
+	{ description				=	"Architektura (przeczytane)"; }
 	else
-	{ description			=	"Architektura"; };
+	{ description				=	"Architektura"; };
 };
 func void Use_ItWr_Book_034()
 {
@@ -2369,16 +2428,17 @@ func void Use_ItWr_Book_034()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj o estetyce – harmonijnie zaprojektowane budynki podnosz¹ wartoœæ i komfort ¿ycia mieszkañców.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_035 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_035;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_035;
 	
 	if (Bonus_ItWr_Book[35])
-	{ description			=	"Siedliska bandytów (przeczytane)"; }
+	{ description				=	"Siedliska bandytów (przeczytane)"; }
 	else
-	{ description			=	"Siedliska bandytów"; };
+	{ description				=	"Siedliska bandytów"; };
 };
 func void Use_ItWr_Book_035()
 {
@@ -2408,16 +2468,17 @@ func void Use_ItWr_Book_035()
 				Doc_PrintLines	(nDocID,  1, "Zbieraj informacje od miejscowej ludnoœci, aby znaæ aktualne zagro¿enia i unikaæ niebezpiecznych szlaków.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_036 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_036;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_036;
 	
 	if (Bonus_ItWr_Book[36])
-	{ description			=	"Kultyœci (przeczytane)"; }
+	{ description				=	"Kultyœci (przeczytane)"; }
 	else
-	{ description			=	"Kultyœci"; };
+	{ description				=	"Kultyœci"; };
 };
 func void Use_ItWr_Book_036()
 {
@@ -2447,16 +2508,17 @@ func void Use_ItWr_Book_036()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e kultystyczne sekty mog¹ byæ bardzo niebezpieczne, a ich liderzy zazwyczaj maj¹ siln¹ charyzmê i potrafi¹ manipulowaæ swoimi wyznawcami.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_037 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_037;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_037;
 	
 	if (Bonus_ItWr_Book[37])
-	{ description			=	"Wykorzystanie siarki (przeczytane)"; }
+	{ description				=	"Wykorzystanie siarki (przeczytane)"; }
 	else
-	{ description			=	"Wykorzystanie siarki"; };
+	{ description				=	"Wykorzystanie siarki"; };
 };
 func void Use_ItWr_Book_037()
 {
@@ -2484,16 +2546,17 @@ func void Use_ItWr_Book_037()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby zawsze dok³adnie mierzyæ iloœci u¿ywanych sk³adników i przeprowadzaæ eksperymenty w kontrolowanych warunkach, aby unikn¹æ niebezpiecznych wybuchów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_038 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_038;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_038;
 	
 	if (Bonus_ItWr_Book[38])
-	{ description			=	"Wykorzystanie ¿ywicy (przeczytane)"; }
+	{ description				=	"Wykorzystanie ¿ywicy (przeczytane)"; }
 	else
-	{ description			=	"Wykorzystanie ¿ywicy"; };
+	{ description				=	"Wykorzystanie ¿ywicy"; };
 };
 func void Use_ItWr_Book_038()
 {
@@ -2523,16 +2586,17 @@ func void Use_ItWr_Book_038()
 				Doc_PrintLines	(nDocID,  1, "Zbieraj ¿ywicê z drzew ostro¿nie, aby nie uszkodziæ roœliny i zapewniæ jej ci¹g³¹ produkcjê.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_039 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_039;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_039;
 	
 	if (Bonus_ItWr_Book[39])
-	{ description			=	"Kartografia (przeczytane)"; }
+	{ description				=	"Kartografia (przeczytane)"; }
 	else
-	{ description			=	"Kartografia"; };
+	{ description				=	"Kartografia"; };
 };
 func void Use_ItWr_Book_039()
 {
@@ -2562,16 +2626,17 @@ func void Use_ItWr_Book_039()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dok³adna mapa jest nieocenionym narzêdziem dla podró¿ników i wojskowych.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_040 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_040;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_040;
 	
 	if (Bonus_ItWr_Book[40])
-	{ description			=	"Gwardia królewska (przeczytane)"; }
+	{ description				=	"Gwardia królewska (przeczytane)"; }
 	else
-	{ description			=	"Gwardia królewska"; };
+	{ description				=	"Gwardia królewska"; };
 };
 func void Use_ItWr_Book_040()
 {
@@ -2599,16 +2664,17 @@ func void Use_ItWr_Book_040()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e gwardzista musi byæ nie tylko doskona³ym wojownikiem, ale równie¿ lojalnym s³ug¹, gotowym poœwiêciæ ¿ycie dla swojego w³adcy.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_041 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_041;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_041;
 	
 	if (Bonus_ItWr_Book[41])
-	{ description			=	"Gildia Magów (przeczytane)"; }
+	{ description				=	"Gildia Magów (przeczytane)"; }
 	else
-	{ description			=	"Gildia Magów"; };
+	{ description				=	"Gildia Magów"; };
 };
 func void Use_ItWr_Book_041()
 {
@@ -2638,16 +2704,17 @@ func void Use_ItWr_Book_041()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e w gildii wa¿na jest nie tylko moc, ale i m¹droœæ oraz etyka u¿ycia magii.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_042 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_042;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_042;
 	
 	if (Bonus_ItWr_Book[42])
-	{ description			=	"£owcy smoków (przeczytane)"; }
+	{ description				=	"£owcy smoków (przeczytane)"; }
 	else
-	{ description			=	"£owcy smoków"; };
+	{ description				=	"£owcy smoków"; };
 };
 func void Use_ItWr_Book_042()
 {
@@ -2677,16 +2744,17 @@ func void Use_ItWr_Book_042()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e smoki s¹ niezwykle inteligentne i niebezpieczne, a polowanie na nie wymaga nie tylko odwagi, ale i sprytu oraz doœwiadczenia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_043 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_043;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_043;
 	
 	if (Bonus_ItWr_Book[43])
-	{ description			=	"Paladyni (przeczytane)"; }
+	{ description				=	"Paladyni (przeczytane)"; }
 	else
-	{ description			=	"Paladyni"; };
+	{ description				=	"Paladyni"; };
 };
 func void Use_ItWr_Book_043()
 {
@@ -2716,16 +2784,17 @@ func void Use_ItWr_Book_043()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e bycie paladynem to nie tylko przywilej, ale i ogromna odpowiedzialnoœæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_044 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_044;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_044;
 	
 	if (Bonus_ItWr_Book[44])
-	{ description			=	"Lud asasynów (przeczytane)"; }
+	{ description				=	"Lud asasynów (przeczytane)"; }
 	else
-	{ description			=	"Lud asasynów"; };
+	{ description				=	"Lud asasynów"; };
 };
 func void Use_ItWr_Book_044()
 {
@@ -2755,16 +2824,17 @@ func void Use_ItWr_Book_044()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e asasyn dzia³a szybko, precyzyjnie i bez œladu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_045 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_045;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_045;
 	
 	if (Bonus_ItWr_Book[45])
-	{ description			=	"Trofea zwierzêce (przeczytane)"; }
+	{ description				=	"Trofea zwierzêce (przeczytane)"; }
 	else
-	{ description			=	"Trofea zwierzêce"; };
+	{ description				=	"Trofea zwierzêce"; };
 };
 func void Use_ItWr_Book_045()
 {
@@ -2794,16 +2864,17 @@ func void Use_ItWr_Book_045()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿da czêœæ zwierzêcia mo¿e mieæ swoje zastosowanie, a troska o detale zwiêksza wartoœæ zdobytych trofeów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_046 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_046;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_046;
 	
 	if (Bonus_ItWr_Book[46])
-	{ description			=	"Produkcja alkoholu (przeczytane)"; }
+	{ description				=	"Produkcja alkoholu (przeczytane)"; }
 	else
-	{ description			=	"Produkcja alkoholu"; };
+	{ description				=	"Produkcja alkoholu"; };
 };
 func void Use_ItWr_Book_046()
 {
@@ -2833,16 +2904,17 @@ func void Use_ItWr_Book_046()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby pracowaæ w kontrolowanych warunkach aby uzyskaæ bezpieczny i wysokiej jakoœci produkt.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_047 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_047;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_047;
 	
 	if (Bonus_ItWr_Book[47])
-	{ description			=	"Produkcja serów i wypieków (przeczytane)"; }
+	{ description				=	"Produkcja serów i wypieków (przeczytane)"; }
 	else
-	{ description			=	"Produkcja serów i wypieków"; };
+	{ description				=	"Produkcja serów i wypieków"; };
 };
 func void Use_ItWr_Book_047()
 {
@@ -2872,16 +2944,17 @@ func void Use_ItWr_Book_047()
 				Doc_PrintLines	(nDocID,  1, "Po wyroœniêciu ciasto formuj i piecz w odpowiedniej temperaturze.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_048 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_048;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_048;
 	
 	if (Bonus_ItWr_Book[48])
-	{ description			=	"Waga broni (przeczytane)"; }
+	{ description				=	"Waga broni (przeczytane)"; }
 	else
-	{ description			=	"Waga broni"; };
+	{ description				=	"Waga broni"; };
 };
 func void Use_ItWr_Book_048()
 {
@@ -2911,16 +2984,17 @@ func void Use_ItWr_Book_048()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e broñ lekka wymaga zrêcznoœci i szybkoœci, podczas gdy broñ ciê¿ka wymaga si³y i wytrzyma³oœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_049 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_049;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_049;
 	
 	if (Bonus_ItWr_Book[49])
-	{ description			=	"Kamienie szlachetne (przeczytane)"; }
+	{ description				=	"Kamienie szlachetne (przeczytane)"; }
 	else
-	{ description			=	"Kamienie szlachetne"; };
+	{ description				=	"Kamienie szlachetne"; };
 };
 func void Use_ItWr_Book_049()
 {
@@ -2950,16 +3024,17 @@ func void Use_ItWr_Book_049()
 				Doc_PrintLines	(nDocID,  1, "Czêsto uwa¿a siê je za kamienie przynosz¹ce szczêœcie i ochronê.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_050 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_050;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_050;
 	
 	if (Bonus_ItWr_Book[50])
-	{ description			=	"Zastosowanie rtêci (przeczytane)"; }
+	{ description				=	"Zastosowanie rtêci (przeczytane)"; }
 	else
-	{ description			=	"Zastosowanie rtêci"; };
+	{ description				=	"Zastosowanie rtêci"; };
 };
 func void Use_ItWr_Book_050()
 {
@@ -2987,16 +3062,17 @@ func void Use_ItWr_Book_050()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e rtêæ jest toksyczna, wiêc zawsze pracuj z ni¹ w odpowiednio wentylowanych pomieszczeniach i u¿ywaj zabezpieczeñ, aby unikn¹æ zatrucia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_051 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_051;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_051;
 	
 	if (Bonus_ItWr_Book[51])
-	{ description			=	"Tworzenie tytoniu (przeczytane)"; }
+	{ description				=	"Tworzenie tytoniu (przeczytane)"; }
 	else
-	{ description			=	"Tworzenie tytoniu"; };
+	{ description				=	"Tworzenie tytoniu"; };
 };
 func void Use_ItWr_Book_051()
 {
@@ -3026,16 +3102,17 @@ func void Use_ItWr_Book_051()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿dy etap produkcji wp³ywa na ostateczny smak i jakoœæ tytoniu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_052 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_052;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_052;
 	
 	if (Bonus_ItWr_Book[52])
-	{ description			=	"Wyrób atramentu (przeczytane)"; }
+	{ description				=	"Wyrób atramentu (przeczytane)"; }
 	else
-	{ description			=	"Wyrób atramentu"; };
+	{ description				=	"Wyrób atramentu"; };
 };
 func void Use_ItWr_Book_052()
 {
@@ -3063,16 +3140,17 @@ func void Use_ItWr_Book_052()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby przechowywaæ atrament w szczelnych pojemnikach, aby zapobiec jego wysychaniu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_053 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_053;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_053;
 	
 	if (Bonus_ItWr_Book[53])
-	{ description			=	"Traktowanie ran (przeczytane)"; }
+	{ description				=	"Traktowanie ran (przeczytane)"; }
 	else
-	{ description			=	"Traktowanie ran"; };
+	{ description				=	"Traktowanie ran"; };
 };
 func void Use_ItWr_Book_053()
 {
@@ -3102,16 +3180,17 @@ func void Use_ItWr_Book_053()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, aby regularnie zmieniaæ opatrunki i monitorowaæ stan rany. Jeœli zauwa¿ysz oznaki infekcji, natychmiast skonsultuj siê z medykiem.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_054 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_054;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_054;
 	
 	if (Bonus_ItWr_Book[54])
-	{ description			=	"Oswajanie zwierz¹t (przeczytane)"; }
+	{ description				=	"Oswajanie zwierz¹t (przeczytane)"; }
 	else
-	{ description			=	"Oswajanie zwierz¹t"; };
+	{ description				=	"Oswajanie zwierz¹t"; };
 };
 func void Use_ItWr_Book_054()
 {
@@ -3141,16 +3220,17 @@ func void Use_ItWr_Book_054()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿de zwierzê jest inne i mo¿e wymagaæ indywidualnego podejœcia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_055 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_055;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_055;
 	
 	if (Bonus_ItWr_Book[55])
-	{ description			=	"Technika sprintu (przeczytane)"; }
+	{ description				=	"Technika sprintu (przeczytane)"; }
 	else
-	{ description			=	"Technika sprintu"; };
+	{ description				=	"Technika sprintu"; };
 };
 func void Use_ItWr_Book_055()
 {
@@ -3180,16 +3260,17 @@ func void Use_ItWr_Book_055()
 				Doc_PrintLines	(nDocID,  1, "Pracuj nad rozwijaniem si³y miêœni nóg oraz technik¹, aby zmaksymalizowaæ swoj¹ prêdkoœæ i wydolnoœæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_056 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_056;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_056;
 	
 	if (Bonus_ItWr_Book[56])
-	{ description			=	"Przygotowywanie s³odyczy (przeczytane)"; }
+	{ description				=	"Przygotowywanie s³odyczy (przeczytane)"; }
 	else
-	{ description			=	"Przygotowywanie s³odyczy"; };
+	{ description				=	"Przygotowywanie s³odyczy"; };
 };
 func void Use_ItWr_Book_056()
 {
@@ -3219,16 +3300,17 @@ func void Use_ItWr_Book_056()
 				Doc_PrintLines	(nDocID,  1, "Dodaj sok z cytryny, aby podkreœliæ smak i przed³u¿yæ trwa³oœæ. Przechowuj d¿em w sterylizowanych s³oikach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_057 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_057;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_057;
 	
 	if (Bonus_ItWr_Book[57])
-	{ description			=	"Skuteczne handlowanie (przeczytane)"; }
+	{ description				=	"Skuteczne handlowanie (przeczytane)"; }
 	else
-	{ description			=	"Skuteczne handlowanie"; };
+	{ description				=	"Skuteczne handlowanie"; };
 };
 func void Use_ItWr_Book_057()
 {
@@ -3258,16 +3340,17 @@ func void Use_ItWr_Book_057()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e lojalni klienci to klucz do d³ugoterminowego sukcesu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_058 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_058;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_058;
 	
 	if (Bonus_ItWr_Book[58])
-	{ description			=	"Wypasanie zwierz¹t (przeczytane)"; }
+	{ description				=	"Wypasanie zwierz¹t (przeczytane)"; }
 	else
-	{ description			=	"Wypasanie zwierz¹t"; };
+	{ description				=	"Wypasanie zwierz¹t"; };
 };
 func void Use_ItWr_Book_058()
 {
@@ -3297,16 +3380,17 @@ func void Use_ItWr_Book_058()
 				Doc_PrintLines	(nDocID,  1, "Przemieszczaj stado, aby unikn¹æ nadmiernego wypasu jednego obszaru i zapewniæ równomierny wzrost roœlinnoœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_059 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_059;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_059;
 	
 	if (Bonus_ItWr_Book[59])
-	{ description			=	"Zastraszenie i przekupstwo (przeczytane)"; }
+	{ description				=	"Zastraszenie i przekupstwo (przeczytane)"; }
 	else
-	{ description			=	"Zastraszenie i przekupstwo"; };
+	{ description				=	"Zastraszenie i przekupstwo"; };
 };
 func void Use_ItWr_Book_059()
 {
@@ -3336,16 +3420,17 @@ func void Use_ItWr_Book_059()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e obie metody nios¹ ryzyko i mog¹ prowadziæ do nieprzewidzianych konsekwencji, jeœli zostan¹ Ÿle zastosowane.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_060 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_060;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_060;
 	
 	if (Bonus_ItWr_Book[60])
-	{ description			=	"Krawiectwo (przeczytane)"; }
+	{ description				=	"Krawiectwo (przeczytane)"; }
 	else
-	{ description			=	"Krawiectwo"; };
+	{ description				=	"Krawiectwo"; };
 };
 func void Use_ItWr_Book_060()
 {
@@ -3375,16 +3460,17 @@ func void Use_ItWr_Book_060()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dobrze wykonana odzie¿ to po³¹czenie funkcjonalnoœci i stylu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_061 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_061;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_061;
 	
 	if (Bonus_ItWr_Book[61])
-	{ description			=	"Gra w szachy (przeczytane)"; }
+	{ description				=	"Gra w szachy (przeczytane)"; }
 	else
-	{ description			=	"Gra w szachy"; };
+	{ description				=	"Gra w szachy"; };
 };
 func void Use_ItWr_Book_061()
 {
@@ -3414,16 +3500,17 @@ func void Use_ItWr_Book_061()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e szachy to nie tylko gra umiejêtnoœci, ale tak¿e cierpliwoœci i koncentracji.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_062 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_062;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_062;
 	
 	if (Bonus_ItWr_Book[62])
-	{ description			=	"Biedota i szlachta (przeczytane)"; }
+	{ description				=	"Biedota i szlachta (przeczytane)"; }
 	else
-	{ description			=	"Biedota i szlachta"; };
+	{ description				=	"Biedota i szlachta"; };
 };
 func void Use_ItWr_Book_062()
 {
@@ -3453,16 +3540,17 @@ func void Use_ItWr_Book_062()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿de spo³eczeñstwo ma swoj¹ strukturê, która wp³ywa na ¿ycie jednostek.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_063 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_063;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_063;
 	
 	if (Bonus_ItWr_Book[63])
-	{ description			=	"Grzybiarstwo (przeczytane)"; }
+	{ description				=	"Grzybiarstwo (przeczytane)"; }
 	else
-	{ description			=	"Grzybiarstwo"; };
+	{ description				=	"Grzybiarstwo"; };
 };
 func void Use_ItWr_Book_063()
 {
@@ -3492,16 +3580,17 @@ func void Use_ItWr_Book_063()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e znajomoœæ szczegó³ów, takich jak kszta³t kapelusza i trzonu, oraz œrodowiska, w którym roœnie grzyb, jest kluczowa dla bezpiecznego grzybobrania.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_064 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_064;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_064;
 	
 	if (Bonus_ItWr_Book[64])
-	{ description			=	"Surowce naturalne (przeczytane)"; }
+	{ description				=	"Surowce naturalne (przeczytane)"; }
 	else
-	{ description			=	"Surowce naturalne"; };
+	{ description				=	"Surowce naturalne"; };
 };
 func void Use_ItWr_Book_064()
 {
@@ -3531,16 +3620,17 @@ func void Use_ItWr_Book_064()
 				Doc_PrintLines	(nDocID,  1, "Jego w³aœciwoœci redukuj¹ce s¹ kluczowe w procesach metalurgicznych.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_065 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_065;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_065;
 	
 	if (Bonus_ItWr_Book[65])
-	{ description			=	"Siarka i saletra (przeczytane)"; }
+	{ description				=	"Siarka i saletra (przeczytane)"; }
 	else
-	{ description			=	"Siarka i saletra"; };
+	{ description				=	"Siarka i saletra"; };
 };
 func void Use_ItWr_Book_065()
 {
@@ -3568,16 +3658,17 @@ func void Use_ItWr_Book_065()
 				Doc_PrintLines	(nDocID,  1, "Kombinacja saletry i siarki tworzy podstawê wielu reakcji chemicznych, które maj¹ szerokie zastosowanie w przemyœle i magii.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_066 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_066;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_066;
 	
 	if (Bonus_ItWr_Book[66])
-	{ description			=	"Czerwona magiczna ruda (przeczytane)"; }
+	{ description				=	"Czerwona magiczna ruda (przeczytane)"; }
 	else
-	{ description			=	"Czerwona magiczna ruda"; };
+	{ description				=	"Czerwona magiczna ruda"; };
 };
 func void Use_ItWr_Book_066()
 {
@@ -3605,16 +3696,17 @@ func void Use_ItWr_Book_066()
 				Doc_PrintLines	(nDocID,  1, "Obróbka tej rudy wymaga zaawansowanych umiejêtnoœci kowalskich i magicznych, aby w pe³ni wykorzystaæ jej potencja³.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_067 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_067;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_067;
 	
 	if (Bonus_ItWr_Book[67])
-	{ description			=	"Magia iluzji (przeczytane)"; }
+	{ description				=	"Magia iluzji (przeczytane)"; }
 	else
-	{ description			=	"Magia iluzji"; };
+	{ description				=	"Magia iluzji"; };
 };
 func void Use_ItWr_Book_067()
 {
@@ -3642,16 +3734,17 @@ func void Use_ItWr_Book_067()
 				Doc_PrintLines	(nDocID,  1, "Opanowanie tej sztuki wymaga du¿ej wyobraŸni i precyzyjnej kontroli magicznych energii.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_068 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_068;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_068;
 	
 	if (Bonus_ItWr_Book[68])
-	{ description			=	"Dyplomacja (przeczytane)"; }
+	{ description				=	"Dyplomacja (przeczytane)"; }
 	else
-	{ description			=	"Dyplomacja"; };
+	{ description				=	"Dyplomacja"; };
 };
 func void Use_ItWr_Book_068()
 {
@@ -3681,16 +3774,17 @@ func void Use_ItWr_Book_068()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dyplomacja to nie tylko sztuka s³ów, ale tak¿e gestów i niewerbalnych sygna³ów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_069 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_069;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_069;
 	
 	if (Bonus_ItWr_Book[69])
-	{ description			=	"Etykieta dworska (przeczytane)"; }
+	{ description				=	"Etykieta dworska (przeczytane)"; }
 	else
-	{ description			=	"Etykieta dworska"; };
+	{ description				=	"Etykieta dworska"; };
 };
 func void Use_ItWr_Book_069()
 {
@@ -3720,16 +3814,17 @@ func void Use_ItWr_Book_069()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e etykieta to nie tylko zewnêtrzne zachowanie, ale tak¿e wewnêtrzna postawa szacunku i uprzejmoœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_070 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_070;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_070;
 	
 	if (Bonus_ItWr_Book[70])
-	{ description			=	"Opowiadanie historii (przeczytane)"; }
+	{ description				=	"Opowiadanie historii (przeczytane)"; }
 	else
-	{ description			=	"Opowiadanie historii"; };
+	{ description				=	"Opowiadanie historii"; };
 };
 func void Use_ItWr_Book_070()
 {
@@ -3759,16 +3854,17 @@ func void Use_ItWr_Book_070()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e dobra historia to taka, która pozostaje w pamiêci na d³ugo po jej wys³uchaniu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_071 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_071;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_071;
 	
 	if (Bonus_ItWr_Book[71])
-	{ description			=	"Hodowla pszczó³ (przeczytane)"; }
+	{ description				=	"Hodowla pszczó³ (przeczytane)"; }
 	else
-	{ description			=	"Hodowla pszczó³"; };
+	{ description				=	"Hodowla pszczó³"; };
 };
 func void Use_ItWr_Book_071()
 {
@@ -3798,16 +3894,17 @@ func void Use_ItWr_Book_071()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e pszczo³y odgrywaj¹ kluczow¹ rolê w zapylaniu roœlin, a ich ochrona jest istotna dla ekosystemu.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_072 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_072;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_072;
 	
 	if (Bonus_ItWr_Book[72])
-	{ description			=	"Jubilerstwo (przeczytane)"; }
+	{ description				=	"Jubilerstwo (przeczytane)"; }
 	else
-	{ description			=	"Jubilerstwo"; };
+	{ description				=	"Jubilerstwo"; };
 };
 func void Use_ItWr_Book_072()
 {
@@ -3837,16 +3934,17 @@ func void Use_ItWr_Book_072()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿da sztuka bi¿uterii powinna byæ nie tylko estetyczna, ale i trwa³a.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_073 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_073;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_073;
 	
 	if (Bonus_ItWr_Book[73])
-	{ description			=	"Ceramika (przeczytane)"; }
+	{ description				=	"Ceramika (przeczytane)"; }
 	else
-	{ description			=	"Ceramika"; };
+	{ description				=	"Ceramika"; };
 };
 func void Use_ItWr_Book_073()
 {
@@ -3876,16 +3974,17 @@ func void Use_ItWr_Book_073()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿de naczynie, miska czy rzeŸba to unikalne dzie³o, które odzwierciedla indywidualny styl i umiejêtnoœci twórcy.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_074 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_074;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_074;
 	
 	if (Bonus_ItWr_Book[74])
-	{ description			=	"Tworzenie pergaminów (przeczytane)"; }
+	{ description				=	"Tworzenie pergaminów (przeczytane)"; }
 	else
-	{ description			=	"Tworzenie pergaminów"; };
+	{ description				=	"Tworzenie pergaminów"; };
 };
 func void Use_ItWr_Book_074()
 {
@@ -3915,16 +4014,17 @@ func void Use_ItWr_Book_074()
 				Doc_PrintLines	(nDocID,  1, "Pergaminy s¹ nastêpnie przycinane do odpowiednich rozmiarów i gotowe do zapisu magicznych run czy staro¿ytnych tekstów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_075 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_075;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_075;
 	
 	if (Bonus_ItWr_Book[75])
-	{ description			=	"Struganie strza³ (przeczytane)"; }
+	{ description				=	"Struganie strza³ (przeczytane)"; }
 	else
-	{ description			=	"Struganie strza³"; };
+	{ description				=	"Struganie strza³"; };
 };
 func void Use_ItWr_Book_075()
 {
@@ -3954,16 +4054,17 @@ func void Use_ItWr_Book_075()
 				Doc_PrintLines	(nDocID,  1, "Ka¿da strza³a musi byæ idealnie prosta, z dobrze wywa¿onym grotem i piórami na koñcu, aby zapewniæ celnoœæ i zasiêg.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_076 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_076;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_076;
 	
 	if (Bonus_ItWr_Book[76])
-	{ description			=	"Rolnictwo (przeczytane)"; }
+	{ description				=	"Rolnictwo (przeczytane)"; }
 	else
-	{ description			=	"Rolnictwo"; };
+	{ description				=	"Rolnictwo"; };
 };
 func void Use_ItWr_Book_076()
 {
@@ -3993,16 +4094,17 @@ func void Use_ItWr_Book_076()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e odpowiednia pielêgnacja, takie jak odchwaszczanie i nawo¿enie, znacz¹co wp³ywa na jakoœæ i iloœæ plonów.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_077 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_077;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_077;
 	
 	if (Bonus_ItWr_Book[77])
-	{ description			=	"Wspó³praca w walce (przeczytane)"; }
+	{ description				=	"Wspó³praca w walce (przeczytane)"; }
 	else
-	{ description			=	"Wspó³praca w walce"; };
+	{ description				=	"Wspó³praca w walce"; };
 };
 func void Use_ItWr_Book_077()
 {
@@ -4032,16 +4134,17 @@ func void Use_ItWr_Book_077()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e zgrana dru¿yna jest znacznie silniejsza ni¿ suma jej poszczególnych cz³onków.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_078 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_078;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_078;
 	
 	if (Bonus_ItWr_Book[78])
-	{ description			=	"Sztuka uwodzenia (przeczytane)"; }
+	{ description				=	"Sztuka uwodzenia (przeczytane)"; }
 	else
-	{ description			=	"Sztuka uwodzenia"; };
+	{ description				=	"Sztuka uwodzenia"; };
 };
 func void Use_ItWr_Book_078()
 {
@@ -4071,16 +4174,17 @@ func void Use_ItWr_Book_078()
 				Doc_PrintLines	(nDocID,  1, "Wykorzystuj subtelne gesty, spojrzenia i komplementy, aby zbudowaæ napiêcie i zainteresowanie.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_079 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_079;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_079;
 	
 	if (Bonus_ItWr_Book[79])
-	{ description			=	"Astronomia (przeczytane)"; }
+	{ description				=	"Astronomia (przeczytane)"; }
 	else
-	{ description			=	"Astronomia"; };
+	{ description				=	"Astronomia"; };
 };
 func void Use_ItWr_Book_079()
 {
@@ -4110,16 +4214,17 @@ func void Use_ItWr_Book_079()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e astronomia nie tylko pozwala na naukowe odkrycia, ale tak¿e inspiruje i zachwyca swoj¹ niezmierzonoœci¹.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_080 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_080;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_080;
 	
 	if (Bonus_ItWr_Book[80])
-	{ description			=	"RzeŸbiarstwo (przeczytane)"; }
+	{ description				=	"RzeŸbiarstwo (przeczytane)"; }
 	else
-	{ description			=	"RzeŸbiarstwo"; };
+	{ description				=	"RzeŸbiarstwo"; };
 };
 func void Use_ItWr_Book_080()
 {
@@ -4149,16 +4254,17 @@ func void Use_ItWr_Book_080()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿da rzeŸba powinna odzwierciedlaæ twoj¹ wizjê i emocje, nadaj¹c martwym materia³om ¿ycie.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_081 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_081;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_081;
 	
 	if (Bonus_ItWr_Book[81])
-	{ description			=	"Kaligrafia (przeczytane)"; }
+	{ description				=	"Kaligrafia (przeczytane)"; }
 	else
-	{ description			=	"Kaligrafia"; };
+	{ description				=	"Kaligrafia"; };
 };
 func void Use_ItWr_Book_081()
 {
@@ -4188,16 +4294,17 @@ func void Use_ItWr_Book_081()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e kaligrafia to nie tylko estetyka, ale tak¿e sposób wyra¿ania myœli i uczuæ.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_082 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_082;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_082;
 	
 	if (Bonus_ItWr_Book[82])
-	{ description			=	"Tkactwo (przeczytane)"; }
+	{ description				=	"Tkactwo (przeczytane)"; }
 	else
-	{ description			=	"Tkactwo"; };
+	{ description				=	"Tkactwo"; };
 };
 func void Use_ItWr_Book_082()
 {
@@ -4227,16 +4334,17 @@ func void Use_ItWr_Book_082()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e tkactwo wymaga precyzji i cierpliwoœci, ale efekty mog¹ byæ zarówno artystyczne, jak i praktyczne.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_083 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_083;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_083;
 	
 	if (Bonus_ItWr_Book[83])
-	{ description			=	"Maskowanie (przeczytane)"; }
+	{ description				=	"Maskowanie (przeczytane)"; }
 	else
-	{ description			=	"Maskowanie"; };
+	{ description				=	"Maskowanie"; };
 };
 func void Use_ItWr_Book_083()
 {
@@ -4266,16 +4374,17 @@ func void Use_ItWr_Book_083()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e umiejêtne poruszanie siê i minimalizowanie ha³asu s¹ równie wa¿ne jak samo maskowanie.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_084 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_084;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_084;
 	
 	if (Bonus_ItWr_Book[84])
-	{ description			=	"Leczenie magi¹ (przeczytane)"; }
+	{ description				=	"Leczenie magi¹ (przeczytane)"; }
 	else
-	{ description			=	"Leczenie magi¹"; };
+	{ description				=	"Leczenie magi¹"; };
 };
 func void Use_ItWr_Book_084()
 {
@@ -4305,16 +4414,17 @@ func void Use_ItWr_Book_084()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e odpowiednie przygotowanie i medytacja mog¹ znacznie zwiêkszyæ efektywnoœæ leczenia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_085 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_085;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_085;
 	
 	if (Bonus_ItWr_Book[85])
-	{ description			=	"Negocjacje (przeczytane)"; }
+	{ description				=	"Negocjacje (przeczytane)"; }
 	else
-	{ description			=	"Negocjacje"; };
+	{ description				=	"Negocjacje"; };
 };
 func void Use_ItWr_Book_085()
 {
@@ -4344,16 +4454,17 @@ func void Use_ItWr_Book_085()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e cierpliwoœæ, opanowanie i umiejêtnoœæ czytania mowy cia³a s¹ nieocenione w skutecznych negocjacjach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_086 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_086;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_086;
 	
 	if (Bonus_ItWr_Book[86])
-	{ description			=	"Magiczne amulety (przeczytane)"; }
+	{ description				=	"Magiczne amulety (przeczytane)"; }
 	else
-	{ description			=	"Magiczne amulety"; };
+	{ description				=	"Magiczne amulety"; };
 };
 func void Use_ItWr_Book_086()
 {
@@ -4383,16 +4494,17 @@ func void Use_ItWr_Book_086()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e amulet nabiera mocy równie¿ dziêki wierze i intencji jego w³aœciciela.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_087 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_087;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_087;
 	
 	if (Bonus_ItWr_Book[87])
-	{ description			=	"Rozbrajanie pu³apek (przeczytane)"; }
+	{ description				=	"Rozbrajanie pu³apek (przeczytane)"; }
 	else
-	{ description			=	"Rozbrajanie pu³apek"; };
+	{ description				=	"Rozbrajanie pu³apek"; };
 };
 func void Use_ItWr_Book_087()
 {
@@ -4422,16 +4534,17 @@ func void Use_ItWr_Book_087()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e najwa¿niejsze jest zachowanie spokoju i ostro¿noœci, aby unikn¹æ przypadkowego uruchomienia pu³apki.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_088 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_088;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_088;
 	
 	if (Bonus_ItWr_Book[88])
-	{ description			=	"Tworzenie mozaik (przeczytane)"; }
+	{ description				=	"Tworzenie mozaik (przeczytane)"; }
 	else
-	{ description			=	"Tworzenie mozaik"; };
+	{ description				=	"Tworzenie mozaik"; };
 };
 func void Use_ItWr_Book_088()
 {
@@ -4461,16 +4574,17 @@ func void Use_ItWr_Book_088()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e ka¿da mozaika opowiada historiê i mo¿e byæ wyrazem twojej kreatywnoœci.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_089 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_089;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_089;
 	
 	if (Bonus_ItWr_Book[89])
-	{ description			=	"Zaklinanie broni (przeczytane)"; }
+	{ description				=	"Zaklinanie broni (przeczytane)"; }
 	else
-	{ description			=	"Zaklinanie broni"; };
+	{ description				=	"Zaklinanie broni"; };
 };
 func void Use_ItWr_Book_089()
 {
@@ -4500,16 +4614,17 @@ func void Use_ItWr_Book_089()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e zaklêta broñ jest potê¿nym narzêdziem, które wymaga odpowiedzialnego u¿ycia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_090 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_090;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_090;
 	
 	if (Bonus_ItWr_Book[90])
-	{ description			=	"Kolonizacja (przeczytane)"; }
+	{ description				=	"Kolonizacja (przeczytane)"; }
 	else
-	{ description			=	"Kolonizacja"; };
+	{ description				=	"Kolonizacja"; };
 };
 func void Use_ItWr_Book_090()
 {
@@ -4539,16 +4654,17 @@ func void Use_ItWr_Book_090()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e budowanie nowych osiedli to proces stopniowy, który wymaga wytrwa³oœci, wspó³pracy i zdolnoœci do adaptacji w nieznanych warunkach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_091 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_091;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_091;
 	
 	if (Bonus_ItWr_Book[91])
-	{ description			=	"Magazynowanie i transport (przeczytane)"; }
+	{ description				=	"Magazynowanie i transport (przeczytane)"; }
 	else
-	{ description			=	"Magazynowanie i transport"; };
+	{ description				=	"Magazynowanie i transport"; };
 };
 func void Use_ItWr_Book_091()
 {
@@ -4578,16 +4694,17 @@ func void Use_ItWr_Book_091()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e efektywne zarz¹dzanie zasobami i terminowe dostawy to fundamenty udanej logistyki.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_092 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_092;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_092;
 	
 	if (Bonus_ItWr_Book[92])
-	{ description			=	"Meteorologia (przeczytane)"; }
+	{ description				=	"Meteorologia (przeczytane)"; }
 	else
-	{ description			=	"Meteorologia"; };
+	{ description				=	"Meteorologia"; };
 };
 func void Use_ItWr_Book_092()
 {
@@ -4617,16 +4734,17 @@ func void Use_ItWr_Book_092()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e prognozowanie pogody to nie tylko analiza danych, ale tak¿e umiejêtnoœæ interpretacji i przewidywania zjawisk atmosferycznych na podstawie zdobytej wiedzy i doœwiadczenia.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_093 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_093;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_093;
 	
 	if (Bonus_ItWr_Book[93])
-	{ description			=	"Tworzenie witra¿y (przeczytane)"; }
+	{ description				=	"Tworzenie witra¿y (przeczytane)"; }
 	else
-	{ description			=	"Tworzenie witra¿y"; };
+	{ description				=	"Tworzenie witra¿y"; };
 };
 func void Use_ItWr_Book_093()
 {
@@ -4656,16 +4774,17 @@ func void Use_ItWr_Book_093()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e witra¿e s¹ nie tylko dekoracyjne, ale tak¿e mog¹ opowiadaæ historie i wprowadzaæ magiczn¹ atmosferê do wnêtrz.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_094 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_094;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_094;
 	
 	if (Bonus_ItWr_Book[94])
-	{ description			=	"Przewodzenie karawanom (przeczytane)"; }
+	{ description				=	"Przewodzenie karawanom (przeczytane)"; }
 	else
-	{ description			=	"Przewodzenie karawanom"; };
+	{ description				=	"Przewodzenie karawanom"; };
 };
 func void Use_ItWr_Book_094()
 {
@@ -4695,16 +4814,17 @@ func void Use_ItWr_Book_094()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e skuteczne przewodzenie karawanom wymaga cierpliwoœci, doœwiadczenia i umiejêtnoœci radzenia sobie w trudnych sytuacjach.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_095 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_095;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_095;
 	
 	if (Bonus_ItWr_Book[95])
-	{ description			=	"Machiny oblê¿nicze (przeczytane)"; }
+	{ description				=	"Machiny oblê¿nicze (przeczytane)"; }
 	else
-	{ description			=	"Machiny oblê¿nicze"; };
+	{ description				=	"Machiny oblê¿nicze"; };
 };
 func void Use_ItWr_Book_095()
 {
@@ -4734,16 +4854,17 @@ func void Use_ItWr_Book_095()
 				Doc_PrintLines	(nDocID,  1, "Upewnij siê, ¿e wszystkie czêœci s¹ w dobrym stanie i odpowiednio nasmarowane, a operatorzy dobrze wyszkoleni, aby maksymalnie wykorzystaæ potencja³ machin oblê¿niczych.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_096 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_096;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_096;
 	
 	if (Bonus_ItWr_Book[96])
-	{ description			=	"Prowadzenie karczmy (przeczytane)"; }
+	{ description				=	"Prowadzenie karczmy (przeczytane)"; }
 	else
-	{ description			=	"Prowadzenie karczmy"; };
+	{ description				=	"Prowadzenie karczmy"; };
 };
 func void Use_ItWr_Book_096()
 {
@@ -4773,16 +4894,17 @@ func void Use_ItWr_Book_096()
 				Doc_PrintLines	(nDocID,  1, "Dobrze przemyœlana logistyka dostaw oraz zarz¹dzanie personelem to klucz do sukcesu ka¿dej karczmy.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_097 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_097;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_097;
 	
 	if (Bonus_ItWr_Book[97])
-	{ description			=	"¯ycie klasztorne (przeczytane)"; }
+	{ description				=	"¯ycie klasztorne (przeczytane)"; }
 	else
-	{ description			=	"¯ycie klasztorne"; };
+	{ description				=	"¯ycie klasztorne"; };
 };
 func void Use_ItWr_Book_097()
 {
@@ -4812,16 +4934,17 @@ func void Use_ItWr_Book_097()
 				Doc_PrintLines	(nDocID,  1, "Wspó³praca i wzajemne wsparcie s¹ fundamentami ¿ycia klasztornego, a dyscyplina i pokora pomagaj¹ w duchowym rozwoju.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_098 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_098;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_098;
 	
 	if (Bonus_ItWr_Book[98])
-	{ description			=	"Kryptografia (przeczytane)"; }
+	{ description				=	"Kryptografia (przeczytane)"; }
 	else
-	{ description			=	"Kryptografia"; };
+	{ description				=	"Kryptografia"; };
 };
 func void Use_ItWr_Book_098()
 {
@@ -4851,16 +4974,17 @@ func void Use_ItWr_Book_098()
 				Doc_PrintLines	(nDocID,  1, "Pamiêtaj, ¿e skuteczna kryptografia wymaga nie tylko znajomoœci technik, ale tak¿e kreatywnoœci w tworzeniu nowych metod ochrony informacji.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Book_099 (ItemPR_BookXp)
 {
-	visual					=	"ItWr_Book_02_05.3ds";
-	on_state[0]				=	Use_ItWr_Book_099;
+	visual						=	"ItWr_Book_02_05.3ds";
+	on_state[0]					=	Use_ItWr_Book_099;
 	
 	if (Bonus_ItWr_Book[99])
-	{ description			=	"Praca zwiadowcy (przeczytane)"; }
+	{ description				=	"Praca zwiadowcy (przeczytane)"; }
 	else
-	{ description			=	"Praca zwiadowcy"; };
+	{ description				=	"Praca zwiadowcy"; };
 };
 func void Use_ItWr_Book_099()
 {

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Biter
+///******************************************************************************************
 prototype Mst_Default_Biter (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Biter (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Orcbiter()
 {
@@ -40,6 +43,9 @@ func void B_SetVisuals_Swampbiter()
 	Mdl_SetVisualBody	(self, "Sc2_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds (self, "Orcbiter.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Orcbiter (Mst_Default_Biter)
 {

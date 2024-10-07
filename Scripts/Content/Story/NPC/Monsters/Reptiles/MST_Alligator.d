@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Alligator
+///******************************************************************************************
 prototype Mst_Default_Addon_Alligator (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Addon_Alligator (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_ALLIGATOR;
 	
-	NpcFn_SetAttributesToLevel (self, 15);
+	NpcFn_SetAttributesToLevel (self, 20);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,12 +29,16 @@ prototype Mst_Default_Addon_Alligator (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Alligator()
 {
 	Mdl_SetVisual		(self, "Alligator.mds");
 	Mdl_SetVisualBody	(self, "Kro_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Alligator (Mst_Default_Addon_Alligator)
 {

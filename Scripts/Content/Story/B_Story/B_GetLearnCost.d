@@ -1,105 +1,61 @@
 ///******************************************************************************************
 
-var int LearnedAttribute_Hp;
-var int LearnedAttribute_Mp;
-var int LearnedAttribute_Str;
-var int LearnedAttribute_Dex;
-var int LearnedAttribute_Pow;
-
-var int LearnedHitchance_Throw;
-var int LearnedHitchance_1h;
-var int LearnedHitchance_2h;
-var int LearnedHitchance_Bow;
-var int LearnedHitchance_Cbow;
+var int LearnedAttribute[ATR_INDEX_MAX];
 
 ///******************************************************************************************
 /// B_GetLearnCostAttribute
 ///******************************************************************************************
-func int B_GetLearnCostAttribute (var C_Npc oth, var int attrib)
+func int B_GetLearnCostAttribute (var C_Npc oth, var int attrib, var int points)
 {
 	var int kosten; kosten = 0;
+	var int currentValue;
+	var int multiplier;
 	
-	if (attrib == ATR_HITPOINTS_MAX)
+	if (attrib >= 0 && attrib < ATR_INDEX_MAX)
 	{
-		if		(LearnedAttribute_Hp >= 160 && oth.guild != GIL_MIL)	{	kosten = 5;	}
-		else if	(LearnedAttribute_Hp >= 120)							{	kosten = 4;	}
-		else if	(LearnedAttribute_Hp >= 80)								{	kosten = 3;	}
-		else if	(LearnedAttribute_Hp >= 40)								{	kosten = 2;	}
-		else															{	kosten = 1;	};
+		currentValue = MEM_ReadStatArr(LearnedAttribute, attrib);
 	}
-	else if (attrib == ATR_MANA_MAX)
+	else
 	{
-		if		(LearnedAttribute_Mp >= 160 && oth.guild != GIL_PAL)	{	kosten = 5;	}
-		else if	(LearnedAttribute_Mp >= 120)							{	kosten = 4;	}
-		else if	(LearnedAttribute_Mp >= 80)								{	kosten = 3;	}
-		else if	(LearnedAttribute_Mp >= 40)								{	kosten = 2;	}
-		else															{	kosten = 1;	};
-	}
-	else if (attrib == ATR_STRENGTH)
-	{
-		if		(LearnedAttribute_Str >= 160 && oth.guild != GIL_DJG)	{	kosten = 5;	}
-		else if	(LearnedAttribute_Str >= 120)							{	kosten = 4;	}
-		else if	(LearnedAttribute_Str >= 80)							{	kosten = 3;	}
-		else if	(LearnedAttribute_Str >= 40)							{	kosten = 2;	}
-		else															{	kosten = 1;	};
-	}
-	else if (attrib == ATR_DEXTERITY)
-	{
-		if		(LearnedAttribute_Dex >= 160 && oth.guild != GIL_SLD)	{	kosten = 5;	}
-		else if	(LearnedAttribute_Dex >= 120)							{	kosten = 4;	}
-		else if	(LearnedAttribute_Dex >= 80)							{	kosten = 3;	}
-		else if	(LearnedAttribute_Dex >= 40)							{	kosten = 2;	}
-		else															{	kosten = 1;	};
-	}
-	else if (attrib == ATR_POWER)
-	{
-		if		(LearnedAttribute_Pow >= 160 && oth.guild != GIL_KDF)	{	kosten = 5;	}
-		else if	(LearnedAttribute_Pow >= 120)							{	kosten = 4;	}
-		else if	(LearnedAttribute_Pow >= 80)							{	kosten = 3;	}
-		else if	(LearnedAttribute_Pow >= 40)							{	kosten = 2;	}
-		else															{	kosten = 1;	};
+		return points;
 	};
 	
-	return kosten;
-};
-
-///******************************************************************************************
-/// B_GetLearnCostHitchance
-///******************************************************************************************
-func int B_GetLearnCostHitchance (var C_Npc oth, var int talent)
-{
-	var int kosten; kosten = 0;
-	
-	if (talent == NPC_TALENT_THROW)
-	{
-		if		(LearnedHitchance_Throw >= 80)	{	kosten = 3;	}
-		else if	(LearnedHitchance_Throw >= 40)	{	kosten = 2;	}
-		else									{	kosten = 1;	};
-	}
-	else if (talent == NPC_TALENT_1H)
-	{
-		if		(LearnedHitchance_1h >= 80)		{	kosten = 3;	}
-		else if	(LearnedHitchance_1h >= 40)		{	kosten = 2;	}
-		else									{	kosten = 1;	};
-	}
-	else if (talent == NPC_TALENT_2H)
-	{
-		if		(LearnedHitchance_2h >= 80)		{	kosten = 3;	}
-		else if	(LearnedHitchance_2h >= 40)		{	kosten = 2;	}
-		else									{	kosten = 1;	};
-	}
-	else if (talent == NPC_TALENT_BOW)
-	{
-		if		(LearnedHitchance_Bow >= 80)	{	kosten = 3;	}
-		else if	(LearnedHitchance_Bow >= 40)	{	kosten = 2;	}
-		else									{	kosten = 1;	};
-	}
-	else if (talent == NPC_TALENT_CROSSBOW)
-	{
-		if		(LearnedHitchance_Cbow >= 80)	{	kosten = 3;	}
-		else if	(LearnedHitchance_Cbow >= 40)	{	kosten = 2;	}
-		else									{	kosten = 1;	};
-	};
+	var int i; i = 0;
+	repeat(i, points);
+		if (currentValue >= 200)
+		{
+			if (oth.guild == GIL_MIL && attrib == ATR_HITPOINTS_MAX)
+			|| (oth.guild == GIL_PAL && attrib == ATR_MANA_MAX)
+			|| (oth.guild == GIL_DJG && attrib == ATR_STRENGTH)
+			|| (oth.guild == GIL_SLD && attrib == ATR_DEXTERITY)
+			|| (oth.guild == GIL_KDF && attrib == ATR_POWER)
+			{
+				multiplier = 4;
+			}
+			else
+			{
+				multiplier = 5;
+			};
+		}
+		else if (currentValue >= 150)
+		{
+			multiplier = 4;
+		}
+		else if (currentValue >= 100)
+		{
+			multiplier = 3;
+		}
+		else if (currentValue >= 50)
+		{
+			multiplier = 2;
+		}
+		else
+		{
+			multiplier = 1;
+		};
+		kosten += multiplier;
+		currentValue += 1;
+	end;
 	
 	return kosten;
 };
@@ -112,21 +68,9 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	var int kosten; kosten = 0;
 	
 	/// FIGHT
-	if (talent == NPC_TALENT_1H)
+	if (talent < MAX_HITCHANCE)
 	{
-		kosten = 30;
-	}
-	else if (talent == NPC_TALENT_2H)
-	{
-		kosten = 30;
-	}
-	else if (talent == NPC_TALENT_BOW)
-	{
-		kosten = 30;
-	}
-	else if (talent == NPC_TALENT_CROSSBOW)
-	{
-		kosten = 30;
+		kosten = 1;
 	}
 	else if (talent == NPC_TALENT_DUAL)
 	{
@@ -173,9 +117,7 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	}
 	else if (talent == NPC_TALENT_PICKPOCKET)
 	{
-		if		(skill == 1)	{	kosten = 5;		}
-		else if	(skill == 2)	{	kosten = 10;	}
-		else if	(skill == 3)	{	kosten = 15;	};
+		kosten = 10;
 	}
 	else if (talent == NPC_TALENT_PERSUASION)
 	{
@@ -184,30 +126,42 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	/// FLETCHERY
 	else if (talent == NPC_TALENT_FLETCHERY)
 	{
+		kosten = 1;
+		/*
 		if		(skill == 1)	{	kosten = 5;		}
 		else if	(skill == 2)	{	kosten = 10;	}
 		else if	(skill == 3)	{	kosten = 15;	};
+		*/
 	}
 	/// SMITH
 	else if (talent == NPC_TALENT_SMITH)
 	{
+		kosten = 1;
+		/*
 		if		(skill == 1)	{	kosten = 5;		}
 		else if	(skill == 2)	{	kosten = 10;	}
 		else if	(skill == 3)	{	kosten = 15;	};
+		*/
 	}
 	/// ENCHANTING
 	else if (talent == NPC_TALENT_ENCHANTING)
 	{
+		kosten = 1;
+		/*
 		if		(skill == 1)	{	kosten = 5;		}
 		else if	(skill == 2)	{	kosten = 10;	}
 		else if	(skill == 3)	{	kosten = 15;	};
+		*/
 	}
 	/// ALCHEMY
 	else if (talent == NPC_TALENT_ALCHEMY)
 	{
+		kosten = 1;
+		/*
 		if		(skill == 1)	{	kosten = 5;		}
 		else if	(skill == 2)	{	kosten = 10;	}
 		else if	(skill == 3)	{	kosten = 15;	};
+		*/
 	}
 	/// HUNTING
 	else if (talent == NPC_TALENT_HUNTING)
@@ -244,6 +198,29 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	
 	return kosten;
 };
+
+///******************************************************************************************
+/// B_BuildLearnString
+///******************************************************************************************
+func string B_BuildLearnString (var string text, var int kosten, var int payMoney)
+{
+	var string concatText; concatText = ConcatStrings(text, PRINT_Kosten);
+	
+	if (kosten > 0)
+	{
+		concatText = ConcatStrings(concatText, IntToString(kosten));
+		concatText = ConcatStrings(concatText, PRINT_LP);
+	};
+	
+	if (payMoney)
+	{
+		concatText = ConcatStrings(concatText, IntToString(kosten * GOLD_PER_LP));
+		concatText = ConcatStrings(concatText, PRINT_MONEY);
+	};
+	
+	return concatText;
+};
+
 /*
 ///******************************************************************************************
 /// B_GetMostLearnAttribute
@@ -286,6 +263,6 @@ func int B_GetMostLearnAttribute()
 		return ATR_POWER;
 	};
 	
-	return 0;
+	return default;
 };
 */

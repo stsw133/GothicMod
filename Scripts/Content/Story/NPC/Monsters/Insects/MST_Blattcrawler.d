@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_Blattcrawler (C_Npc)			
+/// Blattcrawler
+///******************************************************************************************
+prototype Mst_Default_Blattcrawler (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Polny pe³zacz";
@@ -29,12 +31,16 @@ prototype Mst_Default_Blattcrawler (C_Npc)
 	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Blattcrawler()
 {
 	Mdl_SetVisual		(self, "Blattcrawler.mds");
 	Mdl_SetVisualBody	(self, "Blattcrawler_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Blattcrawler (Mst_Default_Blattcrawler)
 {

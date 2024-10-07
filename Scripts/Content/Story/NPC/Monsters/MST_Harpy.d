@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Harpy
+///******************************************************************************************
 prototype Mst_Default_Harpy (C_Npc)
 {
 	/// ------ Monster ------
@@ -24,6 +26,7 @@ prototype Mst_Default_Harpy (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Harpy()
 {
@@ -42,6 +45,9 @@ func void B_SetVisuals_DragonHarpy()
 	Mdl_SetVisualBody	(self, "Har_Dragon_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.2, 1.15, 1.2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Harpie (Mst_Default_Harpy)
 {

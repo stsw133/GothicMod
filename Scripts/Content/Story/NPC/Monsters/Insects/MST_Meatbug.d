@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_Meatbug (C_Npc)			
+/// Meatbug
+///******************************************************************************************
+prototype Mst_Default_Meatbug (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Chrz¹szcz";
@@ -22,6 +24,7 @@ prototype Mst_Default_Meatbug (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Meatbug()
 {
@@ -33,6 +36,9 @@ func void B_SetVisuals_Inkbug()
 	Mdl_SetVisual		(self, "Meatbug.mds");
 	Mdl_SetVisualBody	(self, "Mbg_Ink_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Meatbug (Mst_Default_Meatbug)
 {

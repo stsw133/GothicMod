@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	MOB NAMES
+/// MOB NAMES
 ///******************************************************************************************
 
 const string MOBNAME_CRATE						=	"Skrzynia";
@@ -137,7 +137,45 @@ const string MOBNAME_ADDON_TELEPORT_04			=	"Do doliny";
 const string MOBNAME_ADDON_TELEPORT_05			=	"Do kanionu";
 
 ///******************************************************************************************
-///	GUILD NAMES
+/// AMBIENT NPC NAMES
+///******************************************************************************************
+
+const string NAME_Paladin				=	"Paladyn";
+const string NAME_Miliz					=	"Stra¿nik miejski";
+const string NAME_Torwache				=	"Stra¿nik bramy";
+const string NAME_Tuerwache				=	"Stra¿nik wrót";
+const string NAME_Stadtwache			=	"Stra¿nik miejski";
+const string NAME_Arbeiter				=	"Robotnik";
+const string NAME_Ritter				=	"Rycerz";
+const string NAME_Wache					=	"Stra¿nik";
+const string NAME_Buerger				=	"Obywatel";
+const string NAME_Buergerin				=	"Obywatelka";
+const string NAME_Magd					=	"S³u¿ka";
+const string NAME_Magier				=	"Mag";
+const string NAME_Novize				=	"Nowicjusz";
+const string NAME_Drachenjaeger			=	"£owca smoków";
+const string NAME_ToterDrachenjaeger	=	"Martwy ³owca smoków";
+const string NAME_Soeldner				=	"Najemnik";
+const string NAME_Bauer					=	"Farmer";
+const string NAME_Baeuerin				=	"Farmerka";
+const string NAME_Bandit				=	"Bandyta";
+const string NAME_Halsabschneider		=	"No¿ownik";
+const string NAME_Straefling			=	"Skazaniec";
+const string NAME_Waffenknecht			=	"Knecht";
+const string NAME_Dementor				=	"Poszukiwacz";
+const string NAME_ToterNovize			=	"Martwy nowicjusz";
+const string NAME_Antipaldin			=	"Herszt orków";
+const string NAME_Schiffswache			=	"Stra¿nik okrêtu";
+const string NAME_Fluechtling			=	"Uciekinier";
+
+const string NAME_Pirat					=	"Pirat";
+const string NAME_Guard					=	"Stra¿nik";
+const string NAME_EstebanGuard			=	"Ochroniarz";
+const string NAME_Sklave				=	"Niewolnik";
+const string NAME_Buddler				=	"Kopacz";
+
+///******************************************************************************************
+/// GUILD NAMES
 ///******************************************************************************************
 const string TXT_GUILDS[GIL_MAX] =
 {
@@ -210,7 +248,7 @@ const string TXT_GUILDS[GIL_MAX] =
 };
 
 ///******************************************************************************************
-///	SPELL NAMES
+/// SPELL NAMES
 ///******************************************************************************************
 const string TXT_SPELLS[MAX_SPELL] =
 {
@@ -225,11 +263,11 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"Œwiêta strza³a",			// 5	SPL_PalHolyBolt
 	"Chwa³a",					// 6	SPL_PalGlory
 	"Wygnanie z³a",				// 7	SPL_PalRepelEvil
-  	"Sprawiedliwoœæ",			// 8	SPL_PalJustice
-  	"Zniszczenie z³a",			// 9	SPL_PalDestroyEvil
+ 	"Sprawiedliwoœæ",			// 8	SPL_PalJustice
+ 	"Zniszczenie z³a",			// 9	SPL_PalDestroyEvil
 	
 	/// common spells
- 	"Wskrzeszenie",				// 10	SPL_Resurrection
+	"Wskrzeszenie",				// 10	SPL_Resurrection
 	"Sza³",						// 11	SPL_Rage
 	"Uwodzenie",				// 12	SPL_Seduction
 	"TXT_SPL_RESERVED_13",		// 13	SPL_Reserved_13
@@ -337,47 +375,47 @@ const string TXT_SPELLS[MAX_SPELL] =
 };
 
 /// basic spells
-const string NAME_SPL_Light					=	"Œwiat³o";
-const string NAME_SPL_Heal					=	"Uleczenie";
-const string NAME_SPL_Telekinesis			=	"Teleport przedmiotu";
+const string NAME_SPL_Light						=	"Œwiat³o";
+const string NAME_SPL_Heal						=	"Uleczenie";
+const string NAME_SPL_Telekinesis				=	"Teleport przedmiotu";
 
 /// PAL spells
-const string NAME_SPL_PalBless				=	"B³ogos³awieñstwo";
-const string NAME_SPL_PalFaith				=	"Wiara";
-const string NAME_SPL_PalHolyBolt			=	"Œwiêta strza³a";
-const string NAME_SPL_PalGlory				=	"Chwa³a";
-const string NAME_SPL_PalRepelEvil			=	"Wygnanie z³a";
-const string NAME_SPL_PalJustice			=	"Sprawiedliwoœæ";
-const string NAME_SPL_PalDestroyEvil		=	"Zniszczenie z³a";
+const string NAME_SPL_PalBless					=	"B³ogos³awieñstwo";
+const string NAME_SPL_PalFaith					=	"Wiara";
+const string NAME_SPL_PalHolyBolt				=	"Œwiêta strza³a";
+const string NAME_SPL_PalGlory					=	"Chwa³a";
+const string NAME_SPL_PalRepelEvil				=	"Wygnanie z³a";
+const string NAME_SPL_PalJustice				=	"Sprawiedliwoœæ";
+const string NAME_SPL_PalDestroyEvil			=	"Zniszczenie z³a";
 
 /// common spells
-const string NAME_SPL_Resurrection			=	"Wskrzeszenie";
-const string NAME_SPL_Rage					=	"Sza³";
-const string NAME_SPL_Seduction				=	"Uwodzenie";
-const string NAME_SPL_NightToDay			=	"Noc w dzieñ";
-const string NAME_SPL_FireBolt				=	"Ognista strza³a";
+const string NAME_SPL_Resurrection				=	"Wskrzeszenie";
+const string NAME_SPL_Rage						=	"Sza³";
+const string NAME_SPL_Seduction					=	"Uwodzenie";
+const string NAME_SPL_NightToDay				=	"Noc w dzieñ";
+const string NAME_SPL_FireBolt					=	"Ognista strza³a";
 
-const string NAME_SPL_IceBolt				=	"Lodowa strza³a";
-const string NAME_SPL_Stealth				=	"Ukrycie";
-const string NAME_SPL_SkullBolt				=	"Szept umar³ych";
-const string NAME_SPL_InstantFireball		=	"Kula ognia";
-const string NAME_SPL_Zap					=	"Ma³a b³yskawica";
-const string NAME_SPL_SlimeBall				=	"Kula szlamu";
-const string NAME_SPL_WindFist				=	"Piêœæ wichru";
-const string NAME_SPL_Sleep					=	"Uœpienie";
-const string NAME_SPL_Charm					=	"Amnezja";
-const string NAME_SPL_LightningFlash		=	"B³yskawica";
+const string NAME_SPL_IceBolt					=	"Lodowa strza³a";
+const string NAME_SPL_Stealth					=	"Ukrycie";
+const string NAME_SPL_SkullBolt					=	"Szept umar³ych";
+const string NAME_SPL_InstantFireball			=	"Kula ognia";
+const string NAME_SPL_Zap						=	"Ma³a b³yskawica";
+const string NAME_SPL_SlimeBall					=	"Kula szlamu";
+const string NAME_SPL_WindFist					=	"Piêœæ wichru";
+const string NAME_SPL_Sleep						=	"Uœpienie";
+const string NAME_SPL_Charm						=	"Amnezja";
+const string NAME_SPL_LightningFlash			=	"B³yskawica";
 
-const string NAME_SPL_ChargeFireball		=	"Du¿a kula ognia";
-const string NAME_SPL_Curse					=	"Kl¹twa";
-const string NAME_SPL_Fear					=	"Strach";
-const string NAME_SPL_IceCube				=	"Bry³a lodu";
-const string NAME_SPL_ChargeZap				=	"Piorun kulisty";
-const string NAME_SPL_SummonGolem			=	"Tworzenie golema";
-const string NAME_SPL_DestroyUndead			=	"Zniszczenie nieumar³ych";
-const string NAME_SPL_Pyrokinesis			=	"Du¿a burza ognista";
-const string NAME_SPL_Firestorm				=	"Ma³a burza ognista";
-const string NAME_SPL_IceWave				=	"Lodowa fala";
+const string NAME_SPL_ChargeFireball			=	"Du¿a kula ognia";
+const string NAME_SPL_Curse						=	"Kl¹twa";
+const string NAME_SPL_Fear						=	"Strach";
+const string NAME_SPL_IceCube					=	"Bry³a lodu";
+const string NAME_SPL_ChargeZap					=	"Piorun kulisty";
+const string NAME_SPL_SummonGolem				=	"Tworzenie golema";
+const string NAME_SPL_DestroyUndead				=	"Zniszczenie nieumar³ych";
+const string NAME_SPL_Pyrokinesis				=	"Du¿a burza ognista";
+const string NAME_SPL_Firestorm					=	"Ma³a burza ognista";
+const string NAME_SPL_IceWave					=	"Lodowa fala";
 
 const string NAME_SPL_SummonDemon			=	"Przyzwanie demona";
 const string NAME_SPL_Explosion				=	"Eksplozja";
@@ -437,7 +475,7 @@ const string NAME_SPL_Elevate				=	"Piedesta³";
 const string NAME_SPL_Crush					=	"Zmia¿d¿enie";
 
 ///******************************************************************************************
-///	TALENTS NAMES
+/// TALENTS NAMES
 ///******************************************************************************************
 const string TXT_TALENTS[NPC_TALENT_MAX] =
 {
@@ -467,32 +505,32 @@ const string TXT_TALENTS[NPC_TALENT_MAX] =
 
 const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 {
-	"s³aby|œredni|silny",				/// NPC_TALENT_THROW		= 0;
-	"s³aby|œredni|silny",				/// NPC_TALENT_1H			= 1;
-	"s³aby|œredni|silny",				/// NPC_TALENT_2H			= 2;
-	"s³aby|œredni|silny",				/// NPC_TALENT_BOW			= 3;
-	"s³aby|œredni|silny",				/// NPC_TALENT_CROSSBOW		= 4;
-	"-|uczony",							/// NPC_TALENT_PICKLOCK		= 5;
-	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_PICKPOCKET	= 6;
-	"-|1|2|3|4|5|6",					/// NPC_TALENT_MAGIC		= 7;
-	"-|uczony",							/// NPC_TALENT_SNEAK		= 8;
-	"-|uczony",							/// NPC_TALENT_DUAL			= 9;
-	"-|uczony",							/// NPC_TALENT_SHIELD		= 10;
-	"-|uczony",							/// NPC_TALENT_ACROBATIC	= 11;
-	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_FLETCHERY	= 12;
-	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_SMITH		= 13;
-	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_ENCHANTING	= 14;
-	"-|podst.|zaawans.|mistrz",			/// NPC_TALENT_ALCHEMY		= 15;
-	"-|uczony",							/// NPC_TALENT_HUNTING		= 16;
-	"-|uczony",							/// NPC_TALENT_COOKING		= 17;
-	"-|uczony",							/// NPC_TALENT_MINING		= 18;
-	"-|uczony",							/// NPC_TALENT_ARMORY		= 19;
-	"-|uczony",							/// NPC_TALENT_PERSUASION	= 20;
-	"-|uczony"							/// NPC_TALENT_LANGUAGE		= 21;
+	"s³aby|œredni|silny",		/// NPC_TALENT_THROW			= 0;
+	"s³aby|œredni|silny",		/// NPC_TALENT_1H				= 1;
+	"s³aby|œredni|silny",		/// NPC_TALENT_2H				= 2;
+	"s³aby|œredni|silny",		/// NPC_TALENT_BOW				= 3;
+	"s³aby|œredni|silny",		/// NPC_TALENT_CROSSBOW			= 4;
+	"-|uczony",					/// NPC_TALENT_PICKLOCK			= 5;
+	"-|uczony",					/// NPC_TALENT_PICKPOCKET		= 6;
+	"-|1|2|3|4|5|6",			/// NPC_TALENT_MAGIC			= 7;
+	"-|uczony",					/// NPC_TALENT_SNEAK			= 8;
+	"-|uczony",					/// NPC_TALENT_DUAL				= 9;
+	"-|uczony",					/// NPC_TALENT_SHIELD			= 10;
+	"-|uczony",					/// NPC_TALENT_ACROBATIC		= 11;
+	"-|uczony",					/// NPC_TALENT_FLETCHERY		= 12;
+	"-|uczony",					/// NPC_TALENT_SMITH			= 13;
+	"-|uczony",					/// NPC_TALENT_ENCHANTING		= 14;
+	"-|uczony",					/// NPC_TALENT_ALCHEMY			= 15;
+	"-|uczony",					/// NPC_TALENT_HUNTING			= 16;
+	"-|uczony",					/// NPC_TALENT_COOKING			= 17;
+	"-|uczony",					/// NPC_TALENT_MINING			= 18;
+	"-|uczony",					/// NPC_TALENT_ARMORY			= 19;
+	"-|uczony",					/// NPC_TALENT_PERSUASION		= 20;
+	"-|uczony"					/// NPC_TALENT_LANGUAGE			= 21;
 };
 
 ///******************************************************************************************
-///	INV CATEGORY NAMES
+/// INV CATEGORY NAMES
 ///******************************************************************************************
 const string TXT_INV_CAT[INV_CAT_MAX] =
 {
@@ -508,63 +546,25 @@ const string TXT_INV_CAT[INV_CAT_MAX] =
 };
 
 ///******************************************************************************************
-///	AMBIENT NPC NAMES
-///******************************************************************************************
-
-const string NAME_Paladin					=	"Paladyn";
-const string NAME_Miliz						=	"Stra¿nik miejski";
-const string NAME_Torwache					=	"Stra¿nik bramy";
-const string NAME_Tuerwache					=	"Stra¿nik wrót";
-const string NAME_Stadtwache				=	"Stra¿nik miejski";
-const string NAME_Arbeiter					=	"Robotnik";
-const string NAME_Ritter					=	"Rycerz";
-const string NAME_Wache						=	"Stra¿nik";
-const string NAME_Buerger					=	"Obywatel";
-const string NAME_Buergerin					=	"Obywatelka";
-const string NAME_Magd						=	"S³u¿ka";
-const string NAME_Magier					=	"Mag";
-const string NAME_Novize					=	"Nowicjusz";
-const string NAME_Drachenjaeger				=	"£owca smoków";
-const string NAME_ToterDrachenjaeger		=	"Martwy ³owca smoków";
-const string NAME_Soeldner					=	"Najemnik";
-const string NAME_Bauer						=	"Farmer";
-const string NAME_Baeuerin					=	"Farmerka";
-const string NAME_Bandit					=	"Bandyta";
-const string NAME_Halsabschneider			=	"No¿ownik";
-const string NAME_Straefling				=	"Skazaniec";
-const string NAME_Waffenknecht				=	"Knecht";
-const string NAME_Dementor					=	"Poszukiwacz";
-const string NAME_ToterNovize				=	"Martwy nowicjusz";
-const string NAME_Antipaldin				=	"Herszt orków";
-const string NAME_Schiffswache				=	"Stra¿nik okrêtu";
-const string NAME_Fluechtling				=	"Uciekinier";
-
-const string NAME_Pirat						=	"Pirat";
-const string NAME_Guard						=	"Stra¿nik";
-const string NAME_EstebanGuard				=	"Ochroniarz";
-const string NAME_Sklave					=	"Niewolnik";
-const string NAME_Buddler					=	"Kopacz";
-
-///******************************************************************************************
-///	DIALOG OPTIONS
+/// DIALOG OPTIONS
 ///******************************************************************************************
 
 const string DIALOG_BACK					=	"WRÓÆ";
 const string DIALOG_END						=	"KONIEC";
 
 const string DIALOG_PERSUASION				=	"(Perswazja)";
-const string DIALOG_TEACH					=	"(Nauka)";
-const string DIALOG_TRADE					=	"(Handel)";
+const string DIALOG_TEACH					=	"Ucz mnie.";
+const string DIALOG_TRADE					=	"Poka¿ mi swoje towary.";
 
 ///******************************************************************************************
-///	TEXT FOR INVENTORY
+/// TEXT FOR INVENTORY
 ///******************************************************************************************
 
 const string NAME_Currency					=	"Z³oto: ";
 const string PRINT_Trade_Not_Enough_Gold	=	"Brakuje ci z³ota na zakup tego przedmiotu.";
 
 ///******************************************************************************************
-///	TEXT FOR ITEMS
+/// TEXT FOR ITEMS
 ///******************************************************************************************
 
 const string NAME_Value						=	"Wartoœæ: ";
@@ -596,8 +596,6 @@ const string NAME_MaxDamage					=	"Max. obra¿enia: ";
 const string NAME_DamagePerSec				=	"Obra¿enia/sek.: ";
 const string NAME_EffectPerSec				=	"Efekt/sek.: ";
 const string NAME_HealingPerCast			=	"Uleczenie: ";
-const string NAME_LevelPerCast				=	"Max. poziom celu: ";
-const string NAME_ScalingPerPower			=	"Skalowanie na 100% dod. mocy: ";
 
 const string NAME_DamageTrue				=	"Nieuchronne: ";
 const string NAME_DamageShielded			=	"Absorbowano: ";
@@ -660,7 +658,7 @@ const string NAME_SecHanded					=	"Broñ pomocnicza";
 const string NAME_FastGun					=	"Broñ szybkostrzelna";
 
 ///******************************************************************************************
-///	TEXT FOR LEARNING
+/// TEXT FOR LEARNING
 ///******************************************************************************************
 
 /// ------ conditions ------
@@ -687,29 +685,6 @@ const string PRINT_Learn1h					=	"Broñ jednorêczna + ";
 const string PRINT_Learn2h					=	"Broñ dwurêczna + ";
 const string PRINT_LearnBow					=	"£uki + ";
 const string PRINT_LearnCBow				=	"Kusze + ";
-
-/*
-const string PRINT_LearnFight_1H_1			=	"Broñ jednorêczna: poziom 1/5";
-const string PRINT_LearnFight_1H_2			=	"Broñ jednorêczna: poziom 2/5";
-const string PRINT_LearnFight_1H_3			=	"Broñ jednorêczna: poziom 3/5";
-const string PRINT_LearnFight_1H_4			=	"Broñ jednorêczna: poziom 4/5";
-const string PRINT_LearnFight_1H_5			=	"Broñ jednorêczna: poziom 5/5";
-const string PRINT_LearnFight_2H_1			=	"Broñ dwurêczna: poziom 1/5";
-const string PRINT_LearnFight_2H_2			=	"Broñ dwurêczna: poziom 2/5";
-const string PRINT_LearnFight_2H_3			=	"Broñ dwurêczna: poziom 3/5";
-const string PRINT_LearnFight_2H_4			=	"Broñ dwurêczna: poziom 4/5";
-const string PRINT_LearnFight_2H_5			=	"Broñ dwurêczna: poziom 5/5";
-const string PRINT_LearnFight_Bow_1			=	"£uki: poziom 1/5";
-const string PRINT_LearnFight_Bow_2			=	"£uki: poziom 2/5";
-const string PRINT_LearnFight_Bow_3			=	"£uki: poziom 3/5";
-const string PRINT_LearnFight_Bow_4			=	"£uki: poziom 4/5";
-const string PRINT_LearnFight_Bow_5			=	"£uki: poziom 5/5";
-const string PRINT_LearnFight_Crossbow_1	=	"Kusze: poziom 1/5";
-const string PRINT_LearnFight_Crossbow_2	=	"Kusze: poziom 2/5";
-const string PRINT_LearnFight_Crossbow_3	=	"Kusze: poziom 3/5";
-const string PRINT_LearnFight_Crossbow_4	=	"Kusze: poziom 4/5";
-const string PRINT_LearnFight_Crossbow_5	=	"Kusze: poziom 5/5";
-*/
 const string PRINT_LearnDual				=	"Dwa miecze: poziom 1/1";
 const string PRINT_LearnShield				=	"Tarcze: poziom 1/1";
 
@@ -745,21 +720,19 @@ const string PRINT_LearnMining				=	"Górnictwo: poziom 1/1";
 const string PRINT_LearnArmory				=	"P³atnerstwo: poziom 1/1";
 
 ///******************************************************************************************
-///	B_GiveInvItems
+/// B_GiveInvItems
 ///******************************************************************************************
 
-const string PRINT_Addon_gegeben			=	" - oddano";
 const string PRINT_GoldGegeben				=	" szt. z³ota - oddano";
 const string PRINT_ItemGegeben				=	" przedmiot - oddano";
 const string PRINT_ItemsGegeben				=	" przedm. - oddano";
 
-const string PRINT_Addon_erhalten			=	" - otrzymano";
 const string PRINT_GoldErhalten				=	" szt. z³ota - otrzymano";
 const string PRINT_ItemErhalten				=	" przedmiot - otrzymano";
 const string PRINT_ItemsErhalten			=	" przedm. - otrzymano";
 
 ///******************************************************************************************
-///	Dialog_Mobsis
+/// Dialog_Mobsis
 ///******************************************************************************************
 
 const string PRINT_SleepOver				=	"Po porz¹dnym œnie czujesz siê wypoczêty.";
@@ -775,7 +748,7 @@ const string PRINT_ProdItemsMissing			=	"Za ma³o sk³adników!";
 const string PRINT_NoInnosTears				=	"Brakuje ci '£ez Innosa'.";
 
 ///******************************************************************************************
-///	B_RefuseAction
+/// B_RefuseAction
 ///******************************************************************************************
 
 const string PRINT_KeyMissing				=	"Potrzebujê w³aœciwego klucza.";
@@ -793,45 +766,33 @@ const string PRINT_NOTHINGTOGET02			=	"Nic tu nie ma...";
 const string PRINT_NOTHINGTOGET03			=	"Nie ma czego rabowaæ...";
 
 ///******************************************************************************************
-///	TEXT FOR STORY
+/// TEXT FOR STORY
 ///******************************************************************************************
 
-const string DIALOG_ADDON_ATTENTAT_DESCRIPTION 		=	"Co wiesz o próbie zabójstwa Estebana?";
-const string DIALOG_ADDON_ATTENTAT_PRO 				=	"Zabijê tych zdrajców.";
-const string DIALOG_ADDON_ATTENTAT_CONTRA 			=	"Chcê znaleŸæ tych ludzi, by wyst¹piæ przeciwko Estebanowi.";
+const string DIALOG_ADDON_ATTENTAT_DESCRIPTION		=	"Co wiesz o próbie zabójstwa Estebana?";
+const string DIALOG_ADDON_ATTENTAT_PRO				=	"Zabijê tych zdrajców.";
+const string DIALOG_ADDON_ATTENTAT_CONTRA			=	"Chcê znaleŸæ tych ludzi, by wyst¹piæ przeciwko Estebanowi.";
 
 const string DIALOG_ADDON_MINE_DESCRIPTION			=	"Potrzebuj¹ ciê w kopalni. (Daj czerwony kamieñ)";
 const string DIALOG_ADDON_GOLD_DESCRIPTION			=	"Co muszê wiedzieæ o wydobyciu z³ota?";
-const string PRINT_ADDON_KNOWSBF					=	"Zdobyto wiedzê na temat ¿¹d³owej wydzieliny!";	
+const string PRINT_ADDON_KNOWSBF					=	"Zdobyto wiedzê na temat ¿¹d³owej wydzieliny!";
 
-const string PRINT_ADDON_ENOUGHTALK					=	"Dosyæ gadania. Walczmy!";	
+const string PRINT_ADDON_ENOUGHTALK					=	"Dosyæ gadania. Walczmy!";
 const string PRINT_FullyHealed						=	"Ca³kowite uleczenie.";
 
 const string PRINT_NumberLeft						=	" pozosta³o";
 const string PRINT_NovizenLeft						=	" - pozostali nowicjusze";
 
-const string PRINT_FoundGold10						=	"Znaleziono 10 szt. z³ota";
-const string PRINT_FoundGold25						=	"Znaleziono 25 szt. z³ota";
-const string PRINT_FoundGold50						=	"Znaleziono 50 szt. z³ota";
-const string PRINT_FoundGold100						=	"Znaleziono 100 szt. z³ota";
-const string PRINT_FoundGold250						=	"Znaleziono 250 szt. z³ota";
-const string PRINT_FoundScroll						=	"Znaleziono magiczny zwój";
-const string PRINT_FoundPotion						=	"Znaleziono miksturê";
-const string PRINT_FoundMap							=	"Znaleziono mapê";
-const string PRINT_FoundRuneBlank					=	"Znaleziono runê";
-const string PRINT_FoundLockpick					=	"Znaleziono wytrych";
-
 const string PRINT_BanditArmor						=	"Kto nosi tê zbrojê, nale¿y do bandytów.";
 
 ///******************************************************************************************
-///	TEXT FOR QUESTS
+/// TEXT FOR QUESTS
 ///******************************************************************************************
 
 const string PRINT_LevelUp					=	"Kolejny poziom!";
 
 const string PRINT_AddExp					=	"Doœwiadczenie + ";
 const string PRINT_AddProgress				=	"Postêp + ";
-const string PRINT_AddLove					=	"Punkty u dziewczyny + ";
 
 const string PRINT_QuestRunning				=	"NOWE ZADANIE: ";
 const string PRINT_QuestSuccess				=	"ZADANIE WYKONANE: ";
@@ -843,7 +804,7 @@ const string PRINT_QuestProgress			=	"ZADANIE W TRAKCIE: ";
 const string PRINT_NewLogEntry				=	"Nowy wpis w dzienniku";
 
 ///******************************************************************************************
-///	TEXT POSITIONS
+/// TEXT POSITIONS
 ///******************************************************************************************
 
 const int YPOS_GoldGiven					=	34;
@@ -858,17 +819,17 @@ const int YPOS_ExpGained					=	54;
 const int YPOS_ProgGained					=	57;
 
 ///******************************************************************************************
-///	G_Functions
+/// G_Functions
 ///******************************************************************************************
 
 const string PRINT_LEVEL_MISSING			=	" poz. za ma³o";
+const string PRINT_HITPOINTS_MISSING		=	" pkt. trafieñ za ma³o";
+const string PRINT_HITPOINTS_MAX_MISSING	=	" max. pkt. ¿ycia za ma³o";
+const string PRINT_MANA_MISSING				=	" pkt. many za ma³o";
+const string PRINT_MANA_MAX_MISSING			=	" max. pkt. many za ma³o";
 const string PRINT_STRENGTH_MISSING			=	" pkt. si³y za ma³o";
 const string PRINT_DEXTERITY_MISSING		=	" pkt. zrêcznoœci za ma³o";
 const string PRINT_POWER_MISSING			=	" pkt. mocy za ma³o";
-const string PRINT_MANA_MISSING				=	" pkt. many za ma³o";
-const string PRINT_MANA_MAX_MISSING			=	" max. pkt. many za ma³o";
-const string PRINT_HITPOINTS_MISSING		=	" pkt. trafieñ za ma³o";
-const string PRINT_HITPOINTS_MAX_MISSING	=	" max. pkt. ¿ycia za ma³o";
 const string PRINT_MAGCIRCLES_MISSING		=	" kr. magii za ma³o";
 
 ///******************************************************************************************

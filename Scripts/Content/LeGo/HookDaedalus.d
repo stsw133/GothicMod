@@ -12,7 +12,7 @@ const int _DH_htbl = 0;
 //========================================
 func int IsHookD(var int funcID) {
     if (!_DH_htbl) {
-        return false;
+        return FALSE;
     };
 
     return _HT_Has(_DH_htbl, funcID);
@@ -40,27 +40,16 @@ func void HookDaedalusFunc(var func hooked, var func hook) {
         var int numBytes; numBytes = 0;
         while(numBytes < 5);
             var int tok; tok = MEM_ReadByte(targetPtr+numBytes);
-            if (tok == zPAR_TOK_CALL)
-            || (tok == zPAR_TOK_CALLEXTERN)
-            || (tok == zPAR_TOK_PUSHINT)
-            || (tok == zPAR_TOK_PUSHVAR)
-            || (tok == zPAR_TOK_PUSHINST)
-            || (tok == zPAR_TOK_JUMP)
-            || (tok == zPAR_TOK_JUMPF)
-            || (tok == zPAR_TOK_SETINSTANCE) {
-                numBytes += 5;
-            } else {
-                numBytes += 1;
-                if (tok == zPAR_TOK_RET) && (numBytes < 5) {
-                    MEM_Error("HOOKDAEDALUS: Function too short to be hooked!");
-                    return;
-                };
+            numBytes += Token_GetSize(tok);
+            if (tok == zPAR_TOK_RET) && (numBytes < 5) {
+                MEM_Error("HOOKDAEDALUS: Function too short to be hooked!");
+                return;
             };
         end;
 
         // Secure byte code to be overwritten by jump
         var int codeToRun; codeToRun = MEM_Alloc(numBytes+5);
-        MEM_CopyBytes(targetPtr, codeToRun, numBytes);
+        Tokens_Copy(targetPtr, codeToRun, numBytes);
         MEM_WriteByte(codeToRun+numBytes, zPAR_TOK_JUMP);
         MEM_WriteInt(codeToRun+numBytes+1, targetOff+numBytes);
 

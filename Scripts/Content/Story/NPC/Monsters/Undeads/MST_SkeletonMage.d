@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_SkeletonMage (C_Npc)			
+/// SkeletonMage
+///******************************************************************************************
+prototype Mst_Default_SkeletonMage (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Szkielet-mag";
@@ -29,6 +31,7 @@ prototype Mst_Default_SkeletonMage (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_SkeletonMage()
 {
@@ -36,6 +39,9 @@ func void B_SetVisuals_SkeletonMage()
 	Mdl_SetVisualBody	(self, "Ske_Fly_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds (self, "humans_skeleton_fly.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Skeleton_Mage (Mst_Default_SkeletonMage)
 {

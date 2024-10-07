@@ -13,7 +13,7 @@ instance VLK_466_Gernod (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 40);
+	NpcFn_AddFightSkills (self, 40);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

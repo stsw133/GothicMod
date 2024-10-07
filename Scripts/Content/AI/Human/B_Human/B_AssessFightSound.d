@@ -66,6 +66,7 @@ func void B_AssessFightSound()
 			B_MemorizePlayerCrime (self, other, CRIME_SHEEPKILLER);
 			return;
 		};
+		
 		return;
 	};
 	
@@ -111,6 +112,7 @@ func void B_AssessFightSound()
 			B_Attack (self, other, AR_GuildEnemy, 0);
 			return;
 		};
+		
 		return;
 	};
 	
@@ -121,15 +123,15 @@ func void B_AssessFightSound()
 	&& (other.guild == GIL_BDT || victim.guild == GIL_BDT)
 	&& (self.guild == GIL_BDT)
 	{
-		if ((self.aivar[AIV_Story] & STORY_Esteban) > 0)
-		&& ((other.aivar[AIV_Story] & STORY_Esteban) > 0)
+		if (self.aivar[AIV_Story] & STORY_Esteban)
+		&& (other.aivar[AIV_Story] & STORY_Esteban)
 		{
 			B_Attack (self, victim, AR_NONE, 0);
 			return;
 		};
 		
-		if ((self.aivar[AIV_Story] & STORY_Esteban) > 0)
-		&& ((victim.aivar[AIV_Story] & STORY_Esteban) > 0)
+		if (self.aivar[AIV_Story] & STORY_Esteban)
+		&& (victim.aivar[AIV_Story] & STORY_Esteban)
 		{
 			B_Attack (self, other, AR_NONE, 0);
 			return;
@@ -144,8 +146,8 @@ func void B_AssessFightSound()
 			return;
 		};
 		
-		if ((other.aivar[AIV_Story] & STORY_Bandit) > 0)
-		|| ((victim.aivar[AIV_Story] & STORY_Bandit) > 0)
+		if (other.aivar[AIV_Story] & STORY_Bandit)
+		|| (victim.aivar[AIV_Story] & STORY_Bandit)
 		{
 			Npc_ClearAIQueue	(self);
 			B_ClearPerceptions	(self);
@@ -275,6 +277,7 @@ func void B_AssessFightSound()
 		{
 			B_Attack (self, victim, AR_GuardCalledToThief, 0);
 		};
+		
 		return;
 	};
 	
@@ -287,6 +290,7 @@ func void B_AssessFightSound()
 		{
 			B_Attack (self, other, AR_GuardCalledToThief, 0);
 		};
+		
 		return;
 	};
 	

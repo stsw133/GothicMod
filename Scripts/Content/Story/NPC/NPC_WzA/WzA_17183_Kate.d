@@ -18,13 +18,13 @@ instance WzA_17183_Kate (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_AddFightSkills (self, FightTalent_Medium);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Assassin_04);
+	EquipItem (self, ItMw_1h_Vlk_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

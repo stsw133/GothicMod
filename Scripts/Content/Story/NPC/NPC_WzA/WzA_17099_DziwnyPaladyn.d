@@ -18,7 +18,7 @@ instance WzA_17099_Paladin (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, FightTalent_Strong);
+	NpcFn_AddFightSkills (self, FightTalent_Strong);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

@@ -10,7 +10,7 @@ instance VLK_421_Valentino (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 70);
+	NpcFn_AddFightSkills (self, 70);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

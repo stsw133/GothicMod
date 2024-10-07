@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Minecrawler
+///******************************************************************************************
 prototype Mst_Default_Minecrawler (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Minecrawler (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_MINECRAWLER;
 	
-	NpcFn_SetAttributesToLevel (self, 12);
+	NpcFn_SetAttributesToLevel (self, 15);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Minecrawler (C_Npc)
 	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Minecrawler()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_Desertcrawler()
 	Mdl_SetVisual		(self, "Crawler.mds");
 	Mdl_SetVisualBody	(self, "Crw_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Minecrawler (Mst_Default_Minecrawler)
 {

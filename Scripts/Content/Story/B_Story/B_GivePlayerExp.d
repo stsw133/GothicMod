@@ -12,14 +12,12 @@ func void B_GivePlayerExp (var int points)
 	};
 	
 	if (hero.exp >= hero.exp_next)
-	&& (hero.level < MAX_LEVEL)
 	{
-		hero.exp -= hero.exp_next;
 		hero.level += 1;
-		hero.LP += LP_PER_LEVEL;
+		hero.lp += LP_PER_LEVEL;
 		
-		if (hero.level >= MAX_LEVEL)	{	hero.exp_next = 1;							}
-		else							{	hero.exp_next += hero.level*XP_PER_LEVEL;	};
+		hero.exp -= hero.exp_next;
+		hero.exp_next += (hero.level+1)*XP_PER_LEVEL;
 		
 		hero.attribute[ATR_HITPOINTS_MAX] += HP_PER_LEVEL;
 		hero.attribute[ATR_HITPOINTS] += HP_PER_LEVEL;

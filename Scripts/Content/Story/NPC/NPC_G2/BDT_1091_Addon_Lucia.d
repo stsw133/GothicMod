@@ -10,7 +10,7 @@ instance BDT_1091_Addon_Lucia (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 25);
+	NpcFn_AddFightSkills (self, 25);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

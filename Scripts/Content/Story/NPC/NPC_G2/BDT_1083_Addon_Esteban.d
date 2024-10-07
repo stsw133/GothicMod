@@ -14,7 +14,7 @@ instance BDT_1083_Addon_Esteban (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

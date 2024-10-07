@@ -23,6 +23,73 @@ func string Give_All (var string parameter)
 	return "Otrzymano wszystkie przedmioty";
 };
 
+func string Give_Armors (var string parameter)
+{
+	Func_All_Items_Armor(hero);
+	Func_All_Items_Helms(hero);
+	
+	return "Otrzymano wszystkie pancerze i he³my";
+};
+
+func string Give_Artifacts (var string parameter)
+{
+	Func_All_Items_Artifacts(hero);
+	
+	return "Otrzymano wszystkie artefakty";
+};
+
+func string Give_Food (var string parameter)
+{
+	Func_All_Items_Food(hero);
+	
+	return "Otrzymano wszystkie posi³ki i napoje";
+};
+
+func string Give_Meshes (var string parameter)
+{
+	Func_All_Items_Meshes(hero);
+	
+	return "Otrzymano wszystkie obiekty";
+};
+
+func string Give_Misc (var string parameter)
+{
+	Func_All_Items_AnimalTrophy(hero);
+	Func_All_Items_Misc(hero);
+	
+	return "Otrzymano wszystkie trofea, narzêdzia i surowce";
+};
+
+func string Give_Potions (var string parameter)
+{
+	Func_All_Items_Plants(hero);
+	Func_All_Items_Potions(hero);
+	
+	return "Otrzymano wszystkie mikstury i zio³a";
+};
+
+func string Give_Spells (var string parameter)
+{
+	Func_All_Items_Spells(hero);
+	
+	return "Otrzymano wszystkie zaklêcia";
+};
+
+func string Give_Weapons (var string parameter)
+{
+	Func_All_Items_MeleeWeapons(hero);
+	Func_All_Items_RangedWeapons(hero);
+	
+	return "Otrzymano wszystkie bronie";
+};
+
+func string Give_Written (var string parameter)
+{
+	Func_All_Items_Written(hero);
+	
+	return "Otrzymano wszystkie dokumenty";
+};
+
 func string Give_Gold (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
@@ -162,13 +229,13 @@ func string Set_GameMode (var string parameter)
 
 /// set time scaling
 ///******************************************************************************************
-func string Set_ScaleTime (var string parameter)
+func string Set_ScaleWorldTime (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
-	scaleTime = paramInt;
+	scaleWorldTime = paramInt;
 	
-	return ConcatStrings("Ustawiono skalowanie czasu na ", IntToString(paramInt));
+	return ConcatStrings("Ustawiono skalowanie czasu œwiata na ", IntToString(paramInt));
 };
 func string Set_Speed (var string parameter)
 {
@@ -177,11 +244,11 @@ func string Set_Speed (var string parameter)
 	o_other = MEM_PtrToInst(o_hero.focus_vob);
 	if (Hlp_IsValidNpc(o_other))
 	{
-		NPC_SetTimeScale (o_other, paramInt * 10);
+		Npc_SetSpeed (o_other, paramInt * 10);
 	}
 	else
 	{
-		NPC_SetTimeScale (hero, paramInt * 10);
+		Npc_SetSpeed (hero, paramInt * 10);
 	};
 	
 	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% szybkoœci postaci");
@@ -196,11 +263,11 @@ func string Set_BodyVisibility (var string parameter)
 	o_other = MEM_PtrToInst(o_hero.focus_vob);
 	if (Hlp_IsValidNpc(o_other))
 	{
-		B_SetNpcVisibilityPercent (o_other, paramInt);
+		Npc_SetVisibilityPercent (o_other, paramInt);
 	}
 	else
 	{
-		B_SetNpcVisibilityPercent (hero, paramInt);
+		Npc_SetVisibilityPercent (hero, paramInt);
 	};
 	
 	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% widocznoœci postaci");
@@ -537,6 +604,7 @@ func string Action_TurnToMe (var string parameter)
 	
 	return "";
 };
+
 ///******************************************************************************************
 func string Action_Mass_Fear (var string parameter)
 {
@@ -565,6 +633,7 @@ func string Action_Mass_TurnToMe (var string parameter)
 	return "";
 };
 
+/// uncategorized
 ///******************************************************************************************
 func string Test (var string parameter)
 {
@@ -606,11 +675,20 @@ func string Test (var string parameter)
 };
 
 ///******************************************************************************************
-///	ConsoleCommands
+/// ConsoleCommands
 ///******************************************************************************************
 func void ConsoleCommands()
 {
 	CC_Register(Give_All, "Give All", "");
+	CC_Register(Give_Armors, "Give Armors", "");
+	CC_Register(Give_Artifacts, "Give Artifacts", "");
+	CC_Register(Give_Food, "Give Food", "");
+	CC_Register(Give_Meshes, "Give Meshes", "");
+	CC_Register(Give_Misc, "Give Misc", "");
+	CC_Register(Give_Potions, "Give Potions", "");
+	CC_Register(Give_Spells, "Give Spells", "");
+	CC_Register(Give_Weapons, "Give Weapons", "");
+	CC_Register(Give_Written, "Give Written", "");
 	CC_Register(Give_Gold, "Give Gold", "");
 	
 	CC_Register(Give_Attributes, "Give Attributes", "");
@@ -622,7 +700,7 @@ func void ConsoleCommands()
 	CC_Register(Set_Diff, "Set Diff", "");
 	CC_Register(Set_GameMode, "Set GameMode", "");
 	
-	CC_Register(Set_ScaleTime, "Set ScaleTime", "");
+	CC_Register(Set_ScaleWorldTime, "Set ScaleWorldTime", "");
 	CC_Register(Set_Speed, "Set Speed", "");
 	CC_Register(Set_BodyVisibility, "Set BodyVisibility", "");
 	CC_Register(Set_SetSellingValuePercent, "Set SellingValuePercent", "");

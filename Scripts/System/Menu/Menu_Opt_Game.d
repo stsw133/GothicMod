@@ -270,9 +270,11 @@ instance MENU_OPT_GAME_EXTOPTIONS (C_MENU_DEF)
 	items[0] = "MENUITEM_GAME_HEADLINE";
 	items[1] = "MENUITEM_GAME_ANIWIN";
 	items[2] = "MENUITEM_GAME_ANIWIN_CHOICE";
-	items[3] = "MENUITEM_GAME_NOANIMTAKE";
-	items[4] = "MENUITEM_GAME_NOANIMTAKE_CHOICE";
-	items[5] = "MENUITEM_GAME_BACK";
+	items[3] = "MENUITEM_GAME_AUTOLOOT";
+	items[4] = "MENUITEM_GAME_AUTOLOOT_CHOICE";
+	items[5] = "MENUITEM_GAME_NOANIMTAKE";
+	items[6] = "MENUITEM_GAME_NOANIMTAKE_CHOICE";
+	items[7] = "MENUITEM_GAME_BACK";
 	flags = flags | MENU_SHOW_INFO;
 };
 
@@ -305,13 +307,41 @@ instance MENUITEM_GAME_ANIWIN_CHOICE (C_MENU_ITEM_DEF)
 	flags = flags | IT_TXT_CENTER;
 };
 
+instance MENUITEM_GAME_AUTOLOOT (C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Auto-grabie¿";
+	text[1] = "W³¹czenie/wy³¹czenie automatycznej grabie¿y pokonanego przeciwnika";
+	posx = 500;
+	posy = MENU_START_Y + (MENU_SOUND_DY * 1);
+	dimx = 5100;
+	dimy = 750;
+	onselaction[0] = SEL_ACTION_UNDEF;
+	flags = flags | IT_EFFECTS_NEXT;
+};
+instance MENUITEM_GAME_AUTOLOOT_CHOICE (C_MENU_ITEM_DEF)
+{
+	backpic = MENU_CHOICE_BACK_PIC;
+	type = MENU_ITEM_CHOICEBOX;
+	text[0] = "Nie|Tak";
+	fontname = MENU_FONT_SMALL;
+	posx = 5692;
+	posy = MENU_START_Y + (MENU_SOUND_DY * 1) + MENU_CHOICE_YPLUS;
+	dimx = MENU_SLIDER_DX;
+	dimy = MENU_CHOICE_DY;
+	onchgsetoption = "autoLoot";
+	onchgsetoptionsection = "MOD";
+	flags = flags & ~IT_SELECTABLE;
+	flags = flags | IT_TXT_CENTER;
+};
+
 instance MENUITEM_GAME_NOANIMTAKE (C_MENU_ITEM_DEF)
 {
 	backpic = MENU_ITEM_BACK_PIC;
 	text[0] = "Podnoszenie bez anim.";
 	text[1] = "W³¹czenie/wy³¹czenie podnoszenia przedmiotów bez animacji";
 	posx = 500;
-	posy = MENU_START_Y + (MENU_SOUND_DY * 1);
+	posy = MENU_START_Y + (MENU_SOUND_DY * 2);
 	dimx = 5100;
 	dimy = 750;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -324,7 +354,7 @@ instance MENUITEM_GAME_NOANIMTAKE_CHOICE (C_MENU_ITEM_DEF)
 	text[0] = "Nie|Tak";
 	fontname = MENU_FONT_SMALL;
 	posx = 5692;
-	posy = MENU_START_Y + (MENU_SOUND_DY * 1) + MENU_CHOICE_YPLUS;
+	posy = MENU_START_Y + (MENU_SOUND_DY * 2) + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "noAnimTake";

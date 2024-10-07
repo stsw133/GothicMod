@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Firebeast
+///******************************************************************************************
 prototype Mst_Default_Firebeast (C_Npc)
 {
 	/// ------ Monster ------
@@ -33,17 +35,24 @@ prototype Mst_Default_Firebeast (C_Npc)
 	aivar[AIV_MM_RoamEnd]				=	6;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Firebeast()
 {
 	Mdl_SetVisual		(self, "FireShadow.mds");
 	Mdl_SetVisualBody	(self, "Sha_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Shadowbeast_Fire (Mst_Default_Firebeast)
 {
 	B_SetVisuals_Firebeast();
 };
+
+///******************************************************************************************
+/// QuestMonsters
 ///******************************************************************************************
 instance Shadowbeast_Fire_CanyonLib (Mst_Default_Firebeast)
 {

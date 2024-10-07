@@ -14,7 +14,7 @@ instance BDT_1075_Addon_Fortuno (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 75);
+	NpcFn_AddFightSkills (self, 75);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

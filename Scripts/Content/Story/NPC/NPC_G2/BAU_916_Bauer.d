@@ -10,7 +10,7 @@ instance BAU_916_Bauer (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 15);
+	NpcFn_AddFightSkills (self, 15);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

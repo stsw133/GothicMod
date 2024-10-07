@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Demonicon
+///******************************************************************************************
 prototype Mst_Default_Demonicon (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_Demonicon (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Demonicon()
 {
 	Mdl_SetVisual		(self, "Sleepkeeper.mds");
 	Mdl_SetVisualBody	(self, "Sleepkeeper_Body", 1, default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Demonicon (Mst_Default_Demonicon)
 {

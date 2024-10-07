@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Lurker
+///******************************************************************************************
 prototype Mst_Default_Lurker (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Lurker (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_LURKER;
 	
-	NpcFn_SetAttributesToLevel (self, 13);
+	NpcFn_SetAttributesToLevel (self, 12);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,12 +29,16 @@ prototype Mst_Default_Lurker (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Lurker()
 {
 	Mdl_SetVisual		(self, "Lurker.mds");
 	Mdl_SetVisualBody	(self, "Lur_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Lurker (Mst_Default_Lurker)
 {
@@ -79,6 +85,7 @@ instance Kervo_Lurker6 (Mst_Default_Lurker)
 	aivar[AIV_MaxDistToWp]				=	500;
 	aivar[AIV_OriginalFightTactic]		=	FAI_LURKER;
 };
+
 ///******************************************************************************************
 instance BeachLurker1 (Mst_Default_Lurker)
 {

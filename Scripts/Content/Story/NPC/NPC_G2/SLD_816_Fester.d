@@ -10,7 +10,7 @@ instance SLD_816_Fester (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	B_AddFightSkill (self, NPC_TALENT_BOW, 30);
 	
 	/// ------ FT ------

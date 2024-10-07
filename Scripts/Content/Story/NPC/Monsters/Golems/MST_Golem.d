@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Golem
+///******************************************************************************************
 prototype Mst_Default_Golem (C_Npc)
 {
 	/// ------ Monster ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Golem (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_AncientGolem()
 {
@@ -86,6 +89,9 @@ func void B_SetVisuals_WaterGolem()
 	Mdl_SetVisual		(self, "SwampGolem.mds");
 	Mdl_SetVisualBody	(self, "Gol_Water_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance AncientGolem (Mst_Default_Golem)
 {
@@ -95,10 +101,6 @@ instance CrystalGolem (Mst_Default_Golem)
 {
 	//effect = "SPELLFX_CRYSTALGLOW";
 	effect = "SPELLFX_GLOW";
-	
-	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetMonsterProtection (self, level);
-	
 	B_SetVisuals_CrystalGolem();
 };
 instance DarkmudGolem (Mst_Default_Golem)
@@ -144,6 +146,7 @@ instance WaterGolem (Mst_Default_Golem)
 	aivar[AIV_MM_REAL_ID]				=	ID_SWAMPGOLEM;
 	B_SetVisuals_WaterGolem();
 };
+
 ///******************************************************************************************
 /// Shattered_Golem
 ///******************************************************************************************
@@ -184,6 +187,7 @@ func void B_GolemRise()
 		self.aivar[AIV_MM_RestStart]	=	OnlyRoutine;
 	};	
 };
+
 ///******************************************************************************************
 instance Shattered_Golem (Mst_Default_Golem)
 {
@@ -199,6 +203,7 @@ instance Shattered_Golem (Mst_Default_Golem)
 	start_aistate						=	ZS_GolemDown;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 /// QuestMonsters
 ///******************************************************************************************
@@ -212,6 +217,7 @@ instance Golem_Magic (Mst_Default_Golem)
 	B_SetVisuals_StoneGolem();
 	Mdl_SetModelScale (self, 0.9, 0.9, 0.9);
 };
+
 ///******************************************************************************************
 instance Golem_Valley (Mst_Default_Golem)
 {
@@ -219,6 +225,7 @@ instance Golem_Valley (Mst_Default_Golem)
 	aivar[AIV_MaxDistToWp]				=	1500;
 	aivar[AIV_OriginalFightTactic]		=	FAI_GOLEM;
 };
+
 ///******************************************************************************************
 instance Golem_Sylvio1 (Mst_Default_Golem)
 {

@@ -23,10 +23,12 @@ func void ZS_Unconscious()
 	AI_StopPointAt		(self);
 	AI_UnequipWeapons	(self);
 	
+//	B_GiveTradeInv		(self);
+	B_ClearRuneInv		(self);
+	
 	MOD_Defeated (other, self, DBP_Defeated);
 	
-	if (self.guild < GIL_SEPERATOR_HUM)
-	&& (Npc_IsPlayer(other))
+	if (Npc_IsPlayer(other) && self.guild < GIL_SEPERATOR_HUM)
 	{
 		self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_LOST;
 		
@@ -34,9 +36,8 @@ func void ZS_Unconscious()
 		{
 			self.aivar[AIV_ArenaFight] = AF_AFTER;
 		};
-	};
-	
-	if (Npc_IsPlayer(self))
+	}
+	else if (Npc_IsPlayer(self))
 	{
 		other.aivar[AIV_LastFightAgainstPlayer] = FIGHT_WON;
 		
@@ -45,10 +46,6 @@ func void ZS_Unconscious()
 			other.aivar[AIV_ArenaFight] = AF_AFTER;
 		};
 	};
-	
-	/// MOD (to check if it is even neeeded)
-	B_GiveTradeInv(self);
-	B_ClearRuneInv(self);
 };
 
 ///******************************************************************************************

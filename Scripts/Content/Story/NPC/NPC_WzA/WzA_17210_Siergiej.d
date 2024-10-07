@@ -18,7 +18,7 @@ instance WzA_17210_Vladimir (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 70);
-	NpcFn_SetFightSkills (self, FightTalent_Master);
+	NpcFn_AddFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

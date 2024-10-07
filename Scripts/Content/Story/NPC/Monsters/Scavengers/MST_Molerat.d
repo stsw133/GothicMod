@@ -1,13 +1,19 @@
 ///******************************************************************************************
+/// Molerat
+///******************************************************************************************
 prototype Mst_Default_Molerat (C_Npc)
 {
 	/// ------ Monster ------
+	name								=	"Kretoszczur";
 	guild								=	GIL_MOLERAT;
 	aivar[AIV_MM_REAL_ID]				=	ID_MOLERAT;
 	
 	/// ------ Attributes & FT ------
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_MOLERAT;
+	
+	NpcFn_SetAttributesToLevel (self, 5);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
 	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
@@ -23,6 +29,7 @@ prototype Mst_Default_Molerat (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Molerat()
 {
@@ -46,31 +53,23 @@ func void B_SetVisuals_Mountainrat()
 	Mdl_SetModelScale	(self, 1.35, 1.3, 1.35);
 	Mdl_SetModelFatness	(self, 2);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Molerat (Mst_Default_Molerat)
 {
-	name								=	"Kretoszczur";
-	
-	NpcFn_SetAttributesToLevel (self, 5);
-	NpcFn_SetMonsterProtection (self, level);
-	
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Molerat();
 };
 instance Sandrat (Mst_Default_Molerat)
 {
 	name								=	"Piaskoszczur";
-	
-	NpcFn_SetAttributesToLevel (self, 5);
-	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_Sandrat();
 };
 instance Swamprat (Mst_Default_Molerat)
 {
 	name								=	"Bagnoszczur";
-	
-	NpcFn_SetAttributesToLevel (self, 5);
-	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_Swamprat();
 };
 instance Mountainrat (Mst_Default_Molerat)

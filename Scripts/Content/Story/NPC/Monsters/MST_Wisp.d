@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Wisp
+///******************************************************************************************
 prototype Mst_Default_Wisp (C_Npc)
 {
 	/// ------ Monster ------
@@ -24,30 +26,35 @@ prototype Mst_Default_Wisp (C_Npc)
 	protection[PROT_BARRIER]			=	0;
 	
 	/// ------ Senses & Ranges ------
-	senses								=	SENSE_HEAR | SENSE_SEE | SENSE_SMELL;
+	senses								=	/*SENSE_HEAR | SENSE_SEE |*/ SENSE_SMELL;
 	senses_range						=	PERC_DIST_MONSTER_ACTIVE_MAX;
 	
 	aivar[AIV_MM_FollowInWater]			=	true;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
 	aivar[AIV_MM_Packhunter]			=	false;
-	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Wisp()
 {
 	Mdl_SetVisual		(self, "Irrlicht.mds");
 	Mdl_SetVisualBody	(self, "Irrlicht_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Wisp (Mst_Default_Wisp)
 {
 	B_SetVisuals_Wisp();
 };
+
 ///******************************************************************************************
 instance Wisp_Detector (Mst_Default_Wisp)
 {

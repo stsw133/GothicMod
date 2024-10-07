@@ -8,7 +8,7 @@ func void B_KillNpc (var int npcInstance)
 	if (Hlp_IsValidNpc(npc))
 	&& (!Npc_IsDead(npc))
 	{
-		npc.flags = 0;
+		npc.flags = default;
 		CreateInvItem (npc, ItMi_OldCoin);
 		Npc_ChangeAttribute (npc, ATR_HITPOINTS, -npc.attribute[ATR_HITPOINTS_MAX]);
 	};
@@ -24,7 +24,7 @@ func void B_RemoveNpc (var int npcInstance)
 	if (Hlp_IsValidNpc(npc))
 	&& (!Npc_IsDead(npc))
 	{
-		npc.flags = 0;
+		npc.flags = default;
 		AI_Teleport (npc, "TOT");
 		B_StartOtherRoutine (npc, "TOT");
 		Npc_ChangeAttribute (npc, ATR_HITPOINTS, -npc.attribute[ATR_HITPOINTS_MAX]);

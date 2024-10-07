@@ -1,16 +1,18 @@
 ///******************************************************************************************
+/// Ashwaran
+///******************************************************************************************
 prototype Mst_Default_Ashwaran (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Jaszczur popielny";
 	guild								=	GIL_WARAN;
-	aivar[AIV_MM_REAL_ID]				= 	ID_WARAN;
+	aivar[AIV_MM_REAL_ID]				=	ID_WARAN;
 	
 	/// ------ Attributes & FT ------
 	damagetype 							=	DAM_EDGE;
 	fight_tactic						=	FAI_WARAN;
 	
-	NpcFn_SetAttributesToLevel (self, 25);
+	NpcFn_SetAttributesToLevel (self, 30);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Ashwaran (C_Npc)
 	aivar[AIV_MM_RoamStart] 			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Ashwaran()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Ashwaran()
 	Mdl_SetVisualBody	(self, "War_Ash_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 1.15, 1.25, 1.15);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Ashwaran (Mst_Default_Ashwaran)
 {

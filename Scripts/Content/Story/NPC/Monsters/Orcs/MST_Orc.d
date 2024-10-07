@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Orc
+///******************************************************************************************
 prototype Mst_Default_Orc (C_Npc)
 {
 	/// ------ Monster ------
@@ -13,7 +15,7 @@ prototype Mst_Default_Orc (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 15);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -32,15 +34,19 @@ prototype Mst_Default_Orc (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Orc()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "Orc_Orc_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Orc (Mst_Default_Orc)
 {
 	B_SetVisuals_Orc();
-//	EquipItem (self, ItMw_2H_OrcAxe_01);
+	EquipItem (self, ItMw_2H_OrcDagger_01);
 };

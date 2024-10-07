@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// TrollBlack
+///******************************************************************************************
 prototype Mst_Default_TrollBlack (C_Npc)
 {
 	/// ------ Monster ------
@@ -31,6 +33,7 @@ prototype Mst_Default_TrollBlack (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_TrollBlack()
 {
@@ -42,6 +45,9 @@ func void B_SetVisuals_TrollCavern()
 	Mdl_SetVisual		(self, "Troll.mds");
 	Mdl_SetVisualBody	(self, "Tro_Cavern_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Troll_Black (Mst_Default_TrollBlack)
 {

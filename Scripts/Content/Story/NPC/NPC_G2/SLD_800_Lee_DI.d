@@ -15,7 +15,7 @@ instance SLD_800_Lee_DI (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 70);
+	NpcFn_AddFightSkills (self, 70);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

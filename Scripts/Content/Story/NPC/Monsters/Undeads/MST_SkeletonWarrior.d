@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// SkeletonWarrior
+///******************************************************************************************
 prototype Mst_Default_SkeletonWarrior (C_Npc)
 {
 	/// ------ Monster ------
@@ -26,6 +28,7 @@ prototype Mst_Default_SkeletonWarrior (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_SkeletonWarrior()
 {
@@ -37,6 +40,9 @@ func void B_SetVisuals_SkeletonWarrior()
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Skeleton_Warrior (Mst_Default_SkeletonWarrior)
 {
@@ -49,6 +55,7 @@ instance Skeleton_Archer (Mst_Default_SkeletonWarrior)
 	EquipItem (self, ItMw_1h_MISC_Sword);
 	EquipItem (self, ItRw_Bow_M_01);
 };
+
 ///******************************************************************************************
 instance Summoned_Skeleton_Warrior (Mst_Default_SkeletonWarrior)
 {
@@ -92,6 +99,7 @@ instance Crypt_Skeleton_Room_03 (Mst_Default_SkeletonWarrior)
 	EquipItem (self, ItMw_2H_Sword_M_01);
 	CreateInvItem (self, ItKe_EVT_CRYPT_03);
 };
+
 ///******************************************************************************************
 instance Skeleton_Archol1 (Mst_Default_SkeletonWarrior)
 {
@@ -129,6 +137,7 @@ instance Skeleton_Archol6 (Mst_Default_SkeletonWarrior)
 	B_SetVisuals_SkeletonWarrior();
 	EquipItem (self, ItMw_2H_Sword_M_01);
 };
+
 ///******************************************************************************************
 instance Skeleton_Mario1 (Mst_Default_SkeletonWarrior)
 {

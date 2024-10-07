@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Bloodfly
+///******************************************************************************************
 prototype Mst_Default_Bloodfly (C_Npc)
 {
 	/// ------ Monster ------
@@ -24,9 +26,10 @@ prototype Mst_Default_Bloodfly (C_Npc)
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;	
+	aivar[AIV_MM_WuselStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Bloodfly()
 {
@@ -43,6 +46,9 @@ func void B_SetVisuals_Swampfly()
 	Mdl_SetVisual		(self, "Bloodfly.mds");
 	Mdl_SetVisualBody	(self, "Blo_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Bloodfly (Mst_Default_Bloodfly)
 {
@@ -57,6 +63,7 @@ instance Swampfly (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Swampfly();
 };
+
 ///******************************************************************************************
 instance Sleepfly (Mst_Default_Bloodfly)
 {

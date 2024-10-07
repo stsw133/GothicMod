@@ -11,7 +11,7 @@ instance DIA_Trade_JOIN (C_Info)
 };
 func int DIA_Trade_JOIN_Condition()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Trading))
+	if (self.aivar[AIV_CanOffer] & OFFER_Trading)
 	{
 		return true;
 	};

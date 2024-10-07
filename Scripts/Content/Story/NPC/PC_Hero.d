@@ -10,10 +10,8 @@ instance PC_Hero (Npc_Default)
 	bodyStateInterruptableOverride		=	true;
 	
 	/// ------ XP ------
-	level								=	0;
 	exp									=	0;
-	exp_next							=	0;
-	lp									=	0;
+	exp_next							=	500;
 	
 	/// ------ Attributes ------
 	attribute[ATR_HITPOINTS_MAX]		=	10*HP_PER_LP;
@@ -27,10 +25,10 @@ instance PC_Hero (Npc_Default)
 	attribute[ATR_MANA]					=	attribute[ATR_MANA_MAX];
 	
 	/// ------ Fight ------
-	//NpcFn_SetFightSkills (self, 10);
+	//NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ Visuals ------
-	NpcFn_SetHeroVisual (self, selectedHero);
+	NpcFn_SetHeroVisual (self, selectedHeroSkin);
 	
 	/// ------ Other ------
 	/*

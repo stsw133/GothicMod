@@ -15,11 +15,11 @@ func void BR_Savegame() {
 
 
 func void _LeGo_ChangeLevelHookBegin() {
-    _LeGo_LevelChangeIsExecuted = true;
+    _LeGo_LevelChangeIsExecuted = TRUE;
 };
 
 func void _LeGo_ChangeLevelHookEnd() {
-    _LeGo_LevelChangeIsExecuted = false;
+    _LeGo_LevelChangeIsExecuted = FALSE;
     _LeGo_LevelChangeCounter = 0;
 };
 
@@ -111,6 +111,13 @@ func void _BR_LoadGame() {
         };
         BR_Savegame();
         BR_Close();
+    } else if(_LeGo_Flags & LeGo_PermMem) {
+        // If PermMem was not part of a previous version of the mod, initialize it fresh (copied from LeGo_InitAlways)
+        _PM_Reset();
+        HandlesPointer = _HT_Create();
+        HandlesInstance = _HT_Create();
+        HandlesWrapped = MEM_ArrayCreate();
+        _PM_CreateForeachTable();
     };
     if(_LeGo_Flags & LeGo_Gamestate) {
         _Gamestate_Init(Gamestate_Loaded);

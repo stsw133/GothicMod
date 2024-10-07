@@ -13,7 +13,7 @@ instance KDF_508_Gorax (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 30);
+	NpcFn_AddFightSkills (self, 30);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

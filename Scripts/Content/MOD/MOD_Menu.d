@@ -1,11 +1,16 @@
 ///******************************************************************************************
 /// MOD_Menu
 ///******************************************************************************************
+func void MOD_UpdateLogMenu()
+{
+	var string test; test = "TEST";
+	//MOD_UpdateStatusMenuItem("MENU_ITEM_DAY_TITLE", test);
+};
+
+///******************************************************************************************
 func void MOD_UpdateStatusMenuItem(var string name, var string val)
 {
-	var int itPtr;
-	itPtr = MEM_GetMenuItemByString(name);
-	
+	var int itPtr; itPtr = MEM_GetMenuItemByString(name);
 	if (!itPtr)
 	{
 		MEM_Error(ConcatStrings("MOD_UpdateStatusMenuItem: invalid menu item: ", name));
@@ -18,20 +23,10 @@ func void MOD_UpdateStatusMenuItem(var string name, var string val)
 	CALL__thiscall(itPtr, 5114800);
 };
 
-func void MOD_StatusMenu_Init()
-{
-	const int done = false;
-	if (!done)
-	{
-		HookEngineF(4707920, 6, MOD_UpdateStatusMenu);
-		done = true;
-	};
-};
-
 ///******************************************************************************************
 func void MOD_UpdateStatusMenu()
 {
-	/// chapter
+	/// chapter & difficulty level
 	var string chapter; chapter = ConcatStrings("Rozdzia³ ", IntToString(Kapitel));
 	
 	if		(dLevel == DIFF_E)	{	chapter = ConcatStrings(chapter, " (³atwy)");		}
@@ -46,6 +41,21 @@ func void MOD_UpdateStatusMenu()
 	
 	/// prot edge
 	MOD_UpdateStatusMenuItem("MENU_ITEM_ARMOR_5", IntToString(hero.protection[PROT_EDGE]));
+};
+
+///******************************************************************************************
+/// MOD_Menu
+///******************************************************************************************
+func void MOD_Menu()
+{
+	const int done = false;
+	if (!done)
+	{
+		HookEngineF(4707920, 6, MOD_UpdateStatusMenu);
+		//HookEngineF(7591360, 6, MOD_UpdateLogMenu);
+		//MemoryProtectionOverride(7591360, 4);
+		done = true;
+	};
 };
 
 ///******************************************************************************************
@@ -75,5 +85,24 @@ func void MOD_RandomLoadingTexture(var int type)
 		
 		if (rand == 0)	{ MOD_SetLoadingTexture("LOAD_01.tga"); }
 		else			{ MOD_SetLoadingTexture("LOAD_02.tga"); };
+	};
+};
+
+///******************************************************************************************
+/// MOD_DisableCheats
+///******************************************************************************************
+func void _MOD_DisableCheats()
+{
+	var int onOffPtr; onOffPtr = ESP+4;
+	MEM_WriteInt(onOffPtr, false);
+};
+
+func void MOD_DisableCheats()
+{
+	const int init = false;
+	if (!init)
+	{
+		HookEngineF(7126880, 6, _MOD_DisableCheats);
+		init = true;
 	};
 };

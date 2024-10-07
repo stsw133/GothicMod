@@ -29,24 +29,30 @@ func int _TAL_CheckSize(var int zCArr) {
 
 func void TAL_SetValue(var c_npc npc, var int talent, var int value) {
 	if (!Hlp_IsValidNpc(npc)) { return; };
-	if (!npc.aivar[AIV_TALENT]) {
+	if (!Hlp_IsValidHandle(npc.aivar[AIV_TALENT])) {
 		npc.aivar[AIV_TALENT] = _TAL_CreateArray();
 	};
 	_TAL_CheckSize(npc.aivar[AIV_TALENT]);
+	if (talent >= _nrTalents) {
+		return;
+	};
 	MEM_ArrayWrite(getPtr(npc.aivar[AIV_TALENT]), talent, value);
 };
 
 func int TAL_GetValue(var c_npc npc, var int talent) {
 	if (!Hlp_IsValidNpc(npc)) { return -1; };
-	if (!npc.aivar[AIV_TALENT]) {
+	if (!Hlp_IsValidHandle(npc.aivar[AIV_TALENT])) {
 		return 0;
 	};
 	_TAL_CheckSize(npc.aivar[AIV_TALENT]);
+	if (talent >= _nrTalents) {
+		return 0;
+	};
 	MEM_ArrayRead(getPtr(npc.aivar[AIV_TALENT]), talent);
 };
 
 func int Npc_GetID(var c_npc slf) {
-    if (!slf.aivar[AIV_TALENT]) {
+    if (!Hlp_IsValidHandle(slf.aivar[AIV_TALENT])) {
             slf.aivar[AIV_TALENT] = _TAL_CreateArray();
     };
     return slf.aivar[AIV_TALENT];

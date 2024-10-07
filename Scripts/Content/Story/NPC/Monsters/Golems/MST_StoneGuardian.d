@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// StoneGuardian
+///******************************************************************************************
 prototype MST_Default_StoneGuardian (C_Npc)
 {
 	/// ------ Monster ------
@@ -29,12 +31,16 @@ prototype MST_Default_StoneGuardian (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_StoneGuardian()
 {
 	Mdl_SetVisual		(self, "StoneGuardian.mds");
 	Mdl_SetVisualBody	(self, "StG_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance StoneGuardian (MST_Default_StoneGuardian)
 {
@@ -60,6 +66,7 @@ instance Stoneguardian_MineDead4 (MST_Default_StoneGuardian)
 {
 	B_SetVisuals_Stoneguardian();
 };
+
 ///******************************************************************************************
 instance Stoneguardian_Dead1 (MST_Default_StoneGuardian)
 {
@@ -78,12 +85,14 @@ instance Stoneguardian_MerdarionsSchluessel	(MST_Default_StoneGuardian)
 	B_SetVisuals_Stoneguardian();
 	CreateInvItem (self, ITKE_PORTALTEMPELWALKTHROUGH_ADDON);
 };
+
 ///******************************************************************************************
 instance Stoneguardian_Ornament (MST_Default_StoneGuardian)
 {
 	B_SetVisuals_Stoneguardian();
 	CreateInvItem (self, ItMi_Ornament_Addon);
 };
+
 ///******************************************************************************************
 instance Stoneguardian_Heiler (MST_Default_StoneGuardian)
 {
@@ -120,6 +129,7 @@ instance Stoneguardian_Sani06 (MST_Default_StoneGuardian)
 	B_SetVisuals_Stoneguardian();
 	aivar[AIV_EnemyOverride] = true;
 };
+
 ///******************************************************************************************
 instance Stoneguardian_NailedPortalADW1 (MST_Default_StoneGuardian)
 {
@@ -135,6 +145,7 @@ instance Stoneguardian_NailedPortalADW2 (MST_Default_StoneGuardian)
 	aivar[AIV_OriginalFightTactic] = FAI_STONEGUARDIAN;
 	B_SetVisuals_Stoneguardian();
 };
+
 ///******************************************************************************************
 instance Stoneguardian_NailedValleyShowcase_01 (MST_Default_StoneGuardian)
 {
@@ -148,6 +159,7 @@ instance Stoneguardian_NailedValleyShowcase_02 (MST_Default_StoneGuardian)
 	aivar[AIV_OriginalFightTactic] = FAI_STONEGUARDIAN;
 	B_SetVisuals_Stoneguardian();
 };
+
 ///******************************************************************************************
 instance Stoneguardian_ADANOSTEMPELENTRANCE_01 (MST_Default_StoneGuardian)
 {
@@ -177,6 +189,7 @@ instance Stoneguardian_ADANOSTEMPELENTRANCE_04 (MST_Default_StoneGuardian)
 	aivar[AIV_OriginalFightTactic] = FAI_STONEGUARDIAN;
 	B_SetVisuals_Stoneguardian();
 };
+
 ///******************************************************************************************
 instance Stoneguardian_TREASUREPITS_05A (MST_Default_StoneGuardian)
 {
@@ -220,6 +233,7 @@ instance Stoneguardian_TREASUREPITS_05F (MST_Default_StoneGuardian)
 	aivar[AIV_OriginalFightTactic] = FAI_STONEGUARDIAN;
 	B_SetVisuals_Stoneguardian();
 };
+
 ///******************************************************************************************
 instance Stoneguardian_TREASUREPITS_09A (MST_Default_StoneGuardian)
 {
@@ -262,7 +276,8 @@ instance Stoneguardian_TREASUREPITS_09F (MST_Default_StoneGuardian)
 	aivar[AIV_MaxDistToWp] = 2900;
 	aivar[AIV_OriginalFightTactic] = FAI_STONEGUARDIAN;
 	B_SetVisuals_Stoneguardian();
-};    
+};
+
 ///******************************************************************************************
 instance Stoneguardian_RHADEMES_14A (MST_Default_StoneGuardian)
 {

@@ -13,7 +13,7 @@ instance PAL_266_Ritter (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 75);
+	NpcFn_AddFightSkills (self, 75);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

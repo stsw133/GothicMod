@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GoblinSkeleton
+///******************************************************************************************
 prototype Mst_Default_GoblinSkeleton (C_Npc)
 {
 	/// ------ Monster ------
@@ -26,12 +28,16 @@ prototype Mst_Default_GoblinSkeleton (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GoblinSkeleton()
 {
 	Mdl_SetVisual		(self, "Gobbo.mds");
 	Mdl_SetVisualBody	(self, "Gobbo_Skeleton_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
 {

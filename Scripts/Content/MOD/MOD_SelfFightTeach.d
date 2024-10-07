@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	MOD_SelfFightTeach
+/// MOD_SelfFightTeach
 ///******************************************************************************************
 
 const int SelfFightTeach_Diff		=	100;	/// number of hits needed to +1%
@@ -9,8 +9,13 @@ var int SelfFightTeach_Progress[5];
 var int SelfFightTeach_Level[5];
 
 ///******************************************************************************************
-func void SelfFightTeach_ADD (var C_Npc slf, var int talent)
+func void SelfFightTeach_ADD(var C_Npc slf, var int talent)
 {
+	if (talent < 0 || talent >= MAX_HITCHANCE)
+	{
+		return;
+	};
+	
 	if (MEM_ReadStatArr(slf.hitchance, talent) < 100) && (MEM_ReadStatArr(SelfFightTeach_Level, talent) < SelfFightTeach_MaxLevel)
 	{
 		MEM_WriteStatArr(SelfFightTeach_Progress, talent, MEM_ReadStatArr(SelfFightTeach_Progress, talent) + 1);

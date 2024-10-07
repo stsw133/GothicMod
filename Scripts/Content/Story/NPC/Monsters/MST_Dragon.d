@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Dragon
+///******************************************************************************************
 prototype Mst_Default_Dragon (C_Npc)
 {
 	/// ------ Monster ------
@@ -36,6 +38,7 @@ prototype Mst_Default_Dragon (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_SwampDragon()
 {
@@ -72,6 +75,9 @@ func void B_SetVisuals_UndeadDragon()
 	Mdl_SetVisual		(self, "Dragon.mds");
 	Mdl_SetVisualBody	(self, "Drg_Undead_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Dragon_Swamp (Mst_Default_Dragon)
 {

@@ -13,7 +13,7 @@
 |*                              auf Ikarus                               *|
 |*                                                                       *|
 \*************************************************************************/
-const string LeGo_Version = "LeGo 2.5.1";
+const string LeGo_Version = "LeGo 2.8.0";
 
 const int LeGo_PrintS          = 1<<0;  // Interface.d
 const int LeGo_HookEngine      = 1<<1;  // HookEngine.d
@@ -70,6 +70,7 @@ func void LeGo_InitFlags(var int f) {
     if(f & LeGo_EventHandler)   { f = f | LeGo_PermMem; };
     if(f & LeGo_View)           { f = f | LeGo_PermMem; };
     if(f & LeGo_Interface)      { f = f | LeGo_PermMem | LeGo_AI_Function; };
+    if(f & LeGo_Trialoge)       { f = f | LeGo_AI_Function; };
 	if(f & LeGo_AI_Function)	{ f = f | LeGo_HookEngine; };
     if(f & LeGo_Sprite)         { f = f | LeGo_PermMem; };
 	if(f & LeGo_Names)			{ f = f | LeGo_PermMem; };
@@ -108,6 +109,7 @@ func void LeGo_InitAlways(var int f) {
 			_PM_Reset();
 			HandlesPointer = _HT_Create();
 			HandlesInstance = _HT_Create();
+			HandlesWrapped = MEM_ArrayCreate();
 			_PM_CreateForeachTable();
 		};
 	};
@@ -137,45 +139,53 @@ func void LeGo_InitAlways(var int f) {
         };
     };
 
-    if(!_LeGo_Loaded) {
-
-
-        if(f & LeGo_Gamestate) {
+    if(f & LeGo_Gamestate) {
+        if(!_LeGo_Loaded) {
             _Gamestate_Init(Gamestate_NewGame);
         };
+    };
 
-        if(f & LeGo_Buttons) {
-            FF_Apply(Buttons_Do);
-        };
+    if(f & LeGo_Buttons) {
+        FF_ApplyOnce(Buttons_Do);
+    };
 
-        if(f & LeGo_Bloodsplats) {
-            FF_Apply(_Bloodsplats_Loop);
-        };
+    if(f & LeGo_Bloodsplats) {
+        FF_ApplyOnce(_Bloodsplats_Loop);
+    };
 
-        if(f & LeGo_Anim8) {
-            FF_ApplyGT(_Anim8_FFLoop);
-        };
+    if(f & LeGo_Anim8) {
+        FF_ApplyOnceGT(_Anim8_FFLoop);
+    };
 
-        if(f & LeGo_Cursor) {
+    if(f & LeGo_Cursor) {
+        if (!Hlp_IsValidHandle(Cursor_Event)) {
             Cursor_Event = Event_Create();
         };
+    };
 
-        if (f & LeGo_Render) {
-            _render_list = new(zCList@);
+    if (f & LeGo_Buffs) {
+        if (!Hlp_IsValidHandle(bufflist_hero)) {
+            Bufflist_Init();
         };
-        if (f & LeGo_Buffs) {
-                Bufflist_Init();
+    };
+
+    if (f & LeGo_Names) {
+        if (!_LeGo_Loaded) || (!_nrTalents) {
+            Talent_Names = TAL_CreateTalent();
         };
-
-        if (f & LeGo_Names) {
-			Talent_Names = TAL_CreateTalent();
-		};
-
     };
 
     if (f & LeGo_Render) {
+        if (!Hlp_IsValidHandle(_render_list)) {
+            _render_list = new(zCList@);
+        };
         _Render_RestorePointer();
         GameState_AddListener(_Render_RestorePointer_Listener);
+    };
+
+    if (f & LeGo_Bars) {
+        // Reset bar visibility updating status (in case of quick-load)
+        _Bar_Update_Status = -1;
     };
 };
 
@@ -237,6 +247,11 @@ func void LeGo_InitGamestart(var int f) {
 
     if(f & LeGo_Interface) {
         Print_fixPS();
+    };
+
+    if(f & LeGo_Bars) {
+        HookEngineF(oCGame__UpdateScreenResolution_end, 6, _Bar_UpdateResolution);
+        HookEngineF(oCGame__UpdateStatus_start, 6, _Bar_Update);
     };
 };
 

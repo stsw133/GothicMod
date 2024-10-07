@@ -18,7 +18,7 @@ instance WzA_17101_Szymon (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_AddFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

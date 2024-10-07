@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	MOD_Difficulty
+/// MOD_Difficulty
 ///******************************************************************************************
 
 const int DIFF_E	=	0;	/// easy
@@ -17,7 +17,7 @@ const int DIFF_Percent[4] =
 };
 
 ///******************************************************************************************
-func int DIFF_Multiplier (var int points, var int type)
+func int DIFF_Multiplier(var int points, var int type)
 {
 	if		(type == decrease)	{	return (points * 100) / (var_DIFF_Percent + 100);		}
 	else if (type == increase)	{	return points + ((points * var_DIFF_Percent) / 100);	}
@@ -25,7 +25,7 @@ func int DIFF_Multiplier (var int points, var int type)
 };
 
 ///******************************************************************************************
-func void DIFF_Select (var int diff)
+func void DIFF_Select(var int diff)
 {
 	dLevel = diff;
 	

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// ShadowbeastSkeleton
+///******************************************************************************************
 prototype Mst_Default_ShadowbeastSkeleton (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_ShadowbeastSkeleton (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_ShadowbeastSkeleton()
 {
 	Mdl_SetVisual		(self, "Shadow.mds");
 	Mdl_SetVisualBody	(self, "Sha_Skeleton_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Shadowbeast_Skeleton (Mst_Default_ShadowbeastSkeleton)
 {

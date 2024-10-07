@@ -1,17 +1,69 @@
 ///******************************************************************************************
-///	Wartoœci u¿ywane w Tick Tocku
+/// TICK_TOCK
 ///******************************************************************************************
 
 var int TimeDust_WAIT;
 var string TimeDust_WP, LostGregy_WP;
 
-var int keySprint1, keySprint2;
-var int keyNoanimtake1, keyNoanimtake2;
-var int keyInteract1, keyInteract2;
-var int keyShortcuts1, keyShortcuts2;
+///******************************************************************************************
+/// Natural regeneration
+///******************************************************************************************
+
+/// ------ HP regen ------
+func void TT_1000_RGHP()
+{
+	/// if player IS NOT poisoned
+	if (bsPoison > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -bsPoison);
+	}
+	else
+	{
+		regenPoints[BarOrderHP] += regenPower[BarOrderHP];
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, regenPoints[BarOrderHP]/10);
+		regenPoints[BarOrderHP] -= regenPoints[BarOrderHP]/10*10;
+	};
+	
+	/// if player has magical shield
+	if (mShieldPoints > 0) { mShieldPoints -= 1; };
+};
+
+/// ------ MP regen ------
+func void TT_1000_RGMP()
+{
+	/// if player IS NOT obsessed
+	if (bsObsession == 0)
+	{
+		regenPoints[BarOrderMP] += regenPower[BarOrderMP] + Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC)*10;
+		Npc_ChangeAttribute (hero, ATR_MANA, regenPoints[BarOrderMP]/10);
+		regenPoints[BarOrderMP] -= regenPoints[BarOrderMP]/10*10;
+	};
+};
+
+/// ------ SP regen ------
+func void TT_1000_RGSP()
+{
+	/// SchnellerHering effect
+	if (SchnellerHeringTime > 0)
+	{
+		SchnellerHeringTime -= 1;
+		if (SchnellerHeringTime == 0)
+		{
+			End_ItFo_Addon_SchnellerHering();
+		};
+	}
+	/// if player DO NOT sprint and DO NOT jump
+	else if (!(C_BodyStateContains(hero, BS_RUN) && bsSprint) && !C_BodyStateContains(hero, BS_JUMP))
+	{
+		regenPoints[BarOrderSP] += 50 + regenPower[BarOrderSP];
+		hero.aivar[AIV_Stamina] += regenPoints[BarOrderSP]/10;
+		regenPoints[BarOrderSP] -= regenPoints[BarOrderSP]/10*10;
+		Npc_StaminaRefresh(hero);
+	};
+};
 
 ///******************************************************************************************
-///	Wywo³ywane co 5 sekund
+/// Every 5 seconds
 ///******************************************************************************************
 func void TT_5000()
 {
@@ -22,9 +74,9 @@ func void TT_5000()
 	
 	if (!Npc_IsDead(hero))
 	{
-		/// magiczny py³ do zaklêcia spowolnienia czasu
+		/// magic dust for time slow spell
 		TimeDust_WAIT += 1;
-		if (TimeDust_WAIT == 360)	/// co 30 minut
+		if (TimeDust_WAIT == 360)	/// every 30 minutes
 		{
 			TimeDust_WAIT = 0;
 			if (enableTimeDust)
@@ -34,8 +86,34 @@ func void TT_5000()
 			TimeDust_WP = Npc_GetNearestWP(hero);
 		};
 		
-		/// skalowanie prêdkoœci postaci
-		//NPC_SetTimeScale (hero, 1000 + hero.attribute[ATR_DEXTERITY]);
+		/// player speed scale
+		//Npc_SetSpeed (hero, 1000 + hero.attribute[ATR_DEXTERITY]);
+	};
+	
+	/// sleep timer
+	if (sleepTimer > 0)
+	{
+		sleepTimer -= 1;
+		if (sleepTimer == 0)
+		{
+			Print("Jesteœ ju¿ dostatecznie zmêczony aby zasn¹æ.");
+		};
+	};
+	
+	/// alcohol timer
+	if (alcoholTime > 0)
+	{
+		hero.exp += 1;
+		if (hero.exp >= hero.exp_next)
+		{
+			B_GivePlayerExp(0);
+		};
+		
+		alcoholTime -= 1;
+		if (alcoholTime == 0)
+		{
+			Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKEN.mds");
+		};
 	};
 	
 	/// Gregy
@@ -55,59 +133,7 @@ func void TT_5000()
 };
 
 ///******************************************************************************************
-///	Regeneracja ¿ycia, many, energii
-///******************************************************************************************
-func void TT_1000_RGHP()
-{
-	/// gdy postaæ jest zatruta
-	if (bsPoison > 0)
-	{
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -bsPoison);
-	}
-	else
-	{
-		hpRegenPoints += hpRegenPower;
-		Npc_ChangeAttribute (hero, ATR_HITPOINTS, hpRegenPoints/10);
-		hpRegenPoints -= hpRegenPoints/10*10;
-	};
-	
-	/// gdy postaæ ma tarczê
-	if (mShieldPhPoints > 0) { mShieldPhPoints -= 1; };
-	if (mShieldMgPoints > 0) { mShieldMgPoints -= 1; };
-};
-func void TT_1000_RGMP()
-{
-	/// gdy postaæ NIE jest pod wp³ywem kl¹twy poszukiwaczy
-	if (bsObsession == 0)
-	{
-		mpRegenPoints += Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC)*10 + mpRegenPower;
-		Npc_ChangeAttribute (hero, ATR_MANA, mpRegenPoints/10);
-		mpRegenPoints -= mpRegenPoints/10*10;
-	};
-};
-func void TT_1000_RGSP()
-{
-	/// dzia³anie Szybkiego Œledzia
-	if (SchnellerHeringTime > 0)
-	{
-		SchnellerHeringTime -= 1;
-		if (SchnellerHeringTime == 0)
-		{
-			End_ItFo_Addon_SchnellerHering();
-		};
-	}
-	/// gdy postaæ NIE biegnie sprintem ani NIE skacze
-	else if (!(C_BodyStateContains(hero, BS_RUN) && bsSprint) && !C_BodyStateContains(hero, BS_JUMP))
-	{
-		spRegenPoints += 50 + spRegenPower;
-		hero.aivar[AIV_Stamina] += spRegenPoints/10;
-		spRegenPoints -= spRegenPoints/10*10;
-		Npc_StaminaRefresh(hero);
-	};
-};
-
-///******************************************************************************************
-///	Wywo³ywane co 1 sekundê
+/// Every 1 second
 ///******************************************************************************************
 func void TT_1000()
 {
@@ -118,15 +144,15 @@ func void TT_1000()
 	
 	if (!Npc_IsDead(hero))
 	{
-		/// regeneracja
+		/// natural regeneration
 		TT_1000_RGHP();
 		TT_1000_RGMP();
 		TT_1000_RGSP();
 		
-		///	dzia³anie mikstur (i jedzenia)
+		///	potions process & food
 		Potions_Process();
 		
-		/// efekty zaklêæ:
+		/// spell effects
 		if (mAuraPalTime > 0) { mAuraPalTime -= 1; };
 		if (bsStealth > 0) { MOD_SetStealth(hero, bsStealth - 1); };
 		if (mAuraTime > 0)
@@ -136,13 +162,16 @@ func void TT_1000()
 			mAuraTime -= 1;
 			if (mAuraTime == 0)
 			{
-				B_SetMagicAura (0, 0, 0);
+				B_SetMagicAura (default, 0, 0);
 			};
 		};
 	};
+	
+	if (inFightCounter > 0) { inFightCounter -= 1; };
 };
+
 ///******************************************************************************************
-///	Wywo³ywane co 200 milisekund
+/// Every 200 miliseconds
 ///******************************************************************************************
 func void TT_200()
 {
@@ -151,39 +180,40 @@ func void TT_200()
 		return;
 	};
 	
-	/// zmniejszenie spowolnienia
+	/// reduce slowdown
 	if (mSlowPoints > 0)	{	mSlowPoints -= 1;	};
 	if (mSlowTime > 0)		{	mSlowTime -= 1;		};
 	
-	/// zu¿ycie energii podczas biegu
+	/// reduce stamina while sprinting
 	if (bsSprint && C_BodyStateContains(hero, BS_RUN))
 	{
 		hero.aivar[AIV_Stamina] -= 2+bsArmor;
 	};
 	
-	/// zu¿ycie energii podczas walki & skalowanie zwinnoœci
+	/// reduce stamina while fighting & scale dexterity
 	if (C_BodyStateContains(hero, BS_HIT) || C_BodyStateContains(hero, BS_PARADE))
 	{
 		if (C_BodyStateContains(hero, BS_HIT) && !movieMode)
 		{
-			if (hero.aivar[AIV_Stamina] < 10)	{	NPC_SetTimeScale (hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
-			else								{	NPC_SetTimeScale (hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
+			if (hero.aivar[AIV_Stamina] < 10)	{	Npc_SetSpeed (hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
+			else								{	Npc_SetSpeed (hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
 		};
 		hero.aivar[AIV_Stamina] -= 3+bsArmor-usingForgedWeapon;
 	}
 	else
 	{
-		NPC_SetTimeScale (hero, 1000 - mSlowPoints*10);
+		Npc_SetSpeed (hero, 1000 - mSlowPoints*10);
 	};
 	
-	/// odœwie¿enie stanu energii
+	/// refresh stamina
 	Npc_StaminaRefresh(hero);
 	
-	/// u¿ycie mobów
+	/// use mobs
 	MOD_Mobs();
 };
+
 ///******************************************************************************************
-///	Wywo³ywane co 5 milisekund
+/// Every 5 miliseconds
 ///******************************************************************************************
 func void TT_5()
 {
@@ -192,9 +222,9 @@ func void TT_5()
 		return;
 	};
 	
-	/// ------ Klawisz sprintu ------
-	if (MEM_KeyState(keySprint1) == KEY_HOLD || MEM_KeyState(keySprint2) == KEY_HOLD)
-	&& (hero.aivar[AIV_Stamina] > 0 && bsArmor < 1 && alcoholTime <= 0)
+	/// ------ sprint key ------
+	if (MEM_KeyState(MEM_GetKey("keySprint")) == KEY_HOLD || MEM_KeyState(MEM_GetSecondaryKey("keySprint")) == KEY_HOLD)
+	&& (hero.aivar[AIV_Stamina] > 0 && bsArmor < 1 && !alcoholTime && !inFightCounter)
 	{
 		if (bsSprint == 0)
 		{
@@ -222,78 +252,24 @@ func void TT_5()
 		};
 	};
 	
-	/// ------ Klawisz skrótów ------
-	/*
-	if (MEM_KeyState(keyShortcuts1) == KEY_PRESSED || MEM_KeyState(keyShortcuts2) == KEY_PRESSED)
-	{
-		AI_PlayAni (hero, "T_QUICKTURN");
-	};
-	*/
-	
-	/// ------ PPM ------
-	if (MEM_KeyState(keyNoanimtake1) == KEY_PRESSED || MEM_KeyState(keyNoanimtake2) == KEY_PRESSED)
-	{
-		o_hero = Hlp_GetNpc(hero);
-		
-		/// pokonanie przeciwnika
-		if (Npc_IsInFightMode(hero, FMODE_MELEE)) //Npc_HasReadiedMeleeWeapon(hero)
-		{
-			o_item = Npc_GetReadiedWeapon(hero);
-			o_other = MEM_PtrToInst(o_hero.focus_vob);
-			
-			//MOD_Assassination (hero, o_other, o_item);
-		}
-		/// kradzie¿ kieszonkowa
-		else if (Npc_GetTalentSkill(hero, NPC_TALENT_PICKPOCKET))
-		{
-			o_other = MEM_PtrToInst(o_hero.focus_vob);
-			
-			if (!Npc_IsDead(o_other))
-			&& (!Npc_CanSeeNpc(o_other, hero) || Npc_IsInState(o_other, ZS_Sleep))
-			&& (Npc_GetDistToNpc(hero, o_other) < NPC_ATTACK_FINISH_DISTANCE)
-			{
-				MOD_Pickpocket (hero, o_other);
-			};
-		};
-		
-		/// szybkie podnoszenie przedmiotów
-		if (noAnimTake && !C_BodyStateContains(hero, BS_INVENTORY) && !C_BodyStateContains(hero, BS_TAKEITEM))
-		{
-			o_item = MEM_PtrToInst(o_hero.focus_vob);
-			
-			if (Hlp_IsValidItem(o_item))
-			{
-				if (Npc_GetDistToItem(hero, o_item) < (NPC_ATTACK_FINISH_DISTANCE * 2))
-				{
-					MOD_MoveItemIntoInventory (hero, o_item);
-				}
-				else
-				{
-					Print("Przedmiot jest za daleko!");
-				};
-			};
-		};
-	};
-	
-	/// ------ Tryb filmowy ------
+	/// ------ movie mode ------
 	if (movieMode)
 	{
-		B_ScaleTime(75 + scaleTime);
+		Wld_AddWorldTime(75 + scaleWorldTime);
 		
-		/// ------ Klawisze do skrótów animacji etc. ------
-		if		(MEM_KeyState(KEY_F) == KEY_HOLD)			{	MovieMode_SetFaceAni();			}	/// animacje twarzy
-		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MovieMode_DialogGesture();		}	/// dialogi
-		else if (MEM_KeyState(KEY_V) == KEY_HOLD)			{	MovieMode_ExecSubScript();		}	/// mniejsze skrypty
-		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// kierunek g³owy
-		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// kierunek rêki
-		else if (MemoKey1 != -1)								{	MemoKey1 = -1; MemoKey2 = -1;	};	/// wyzerowanie klawiszy wspomagaj¹cych
+		/// ------ ani shortcut keys etc. ------
+		if		(MEM_KeyState(KEY_F) == KEY_HOLD)			{	MovieMode_SetFaceAni();			}	/// face ani
+		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MovieMode_DialogGesture();		}	/// dialogs
+		else if (MEM_KeyState(KEY_V) == KEY_HOLD)			{	MovieMode_ExecSubScript();		}	/// sub scripts
+		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// head direction
+		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// arm direction
+		else if (MemoKey1 != -1)								{	MemoKey1 = -1; MemoKey2 = -1;	};	/// reset helper keys
 	};
 	
-	/// ------ Klawisz ukrycia interfejsu / klawisze kamery ------
+	/// ------ hide GUI key & camera key ------
 	if (MEM_KeyState(KEY_F1) == KEY_PRESSED)
 	{
-		if (MEM_Game.game_drawall)	{	MEM_Game.game_drawall = false;	}
-		else						{	MEM_Game.game_drawall = true;	};
+		MEM_Game.game_drawall = !MEM_Game.game_drawall;
 	};
 	if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
 	{

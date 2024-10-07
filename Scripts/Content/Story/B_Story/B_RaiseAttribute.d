@@ -18,17 +18,17 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 		slf.attribute[ATR_HITPOINTS] += points;
 		concatText = ConcatStrings(PRINT_LearnHp, IntToString(points));
 		
-		if (slf.attribute[ATR_HITPOINTS_MAX] >= 200 - slf.level*HP_PER_LEVEL - foodBonus)
-		&& (bsArmor != -1)
+		if (slf.attribute[ATR_HITPOINTS_MAX] >= (100*HP_PER_LP - slf.level*HP_PER_LEVEL))
+		&& (bsPoison != IMMUNE)
+		{
+			MOD_SetPoison(IMMUNE);
+			PrintScreen	("Premia do odpornoœci na trucizny!", -1, 55, FONT_Screen, TIME_ShortPrint);
+		}
+		else if (slf.attribute[ATR_HITPOINTS_MAX] >= (50*HP_PER_LP - slf.level*HP_PER_LEVEL))
+		&& (bsArmor != IMMUNE)
 		{
 			Disable_HeavyArmor();
 			PrintScreen	("Premia do lekkoœci pancerzy!", -1, 55, FONT_Screen, TIME_ShortPrint);
-		}
-		else if (slf.attribute[ATR_HITPOINTS_MAX] >= 400 - slf.level*HP_PER_LEVEL - foodBonus)
-		&& (bsPoison != -1)
-		{
-			MOD_SetPoison(-1);
-			PrintScreen	("Premia do odpornoœci na trucizny!", -1, 55, FONT_Screen, TIME_ShortPrint);
 		};
 	}
 	/// MP
@@ -57,17 +57,17 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 		slf.attribute[ATR_DEXTERITY] += points;
 		concatText = ConcatStrings(PRINT_LearnDex, IntToString(points));
 		
-		if (slf.attribute[ATR_DEXTERITY] >= 50)
-		&& (!Npc_GetTalentSkill(slf, NPC_TALENT_SNEAK))
-		{
-			Npc_SetTalentSkill (slf, NPC_TALENT_SNEAK, true);
-			PrintScreen	("Premia do skradania!", -1, 55, FONT_Screen, TIME_ShortPrint);
-		};
 		if (slf.attribute[ATR_DEXTERITY] >= 100)
 		&& (!Npc_GetTalentSkill(slf, NPC_TALENT_ACROBATIC))
 		{
 			Npc_SetTalentSkill (slf, NPC_TALENT_ACROBATIC, true);
 			PrintScreen	("Premia do akrobatyki!", -1, 55, FONT_Screen, TIME_ShortPrint);
+		}
+		else if (slf.attribute[ATR_DEXTERITY] >= 50)
+		&& (!Npc_GetTalentSkill(slf, NPC_TALENT_SNEAK))
+		{
+			Npc_SetTalentSkill (slf, NPC_TALENT_SNEAK, true);
+			PrintScreen	("Premia do skradania!", -1, 55, FONT_Screen, TIME_ShortPrint);
 		};
 	}
 	/// POW
@@ -77,7 +77,7 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 		concatText = ConcatStrings(PRINT_LearnPow, IntToString(points));
 	}
 	/// PROT
-	else if (attrib == PROT_INDEX_MAX)
+	else if (attrib == ATR_PROT)
 	{
 		slf.protection[PROT_BLUNT] += points;
 		slf.protection[PROT_EDGE] += points;

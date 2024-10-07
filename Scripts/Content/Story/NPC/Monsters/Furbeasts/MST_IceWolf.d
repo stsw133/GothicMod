@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// IceWolf
+///******************************************************************************************
 prototype Mst_Default_IceWolf (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_IceWolf (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_IceWolf()
 {
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "SnoWol_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance IceWolf (Mst_Default_IceWolf)
 {

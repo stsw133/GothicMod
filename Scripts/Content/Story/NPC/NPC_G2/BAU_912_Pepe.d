@@ -10,7 +10,7 @@ instance BAU_912_Pepe (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 10);
+	NpcFn_AddFightSkills (self, 10);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

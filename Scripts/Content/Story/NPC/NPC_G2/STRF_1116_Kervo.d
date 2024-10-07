@@ -10,7 +10,7 @@ instance STRF_1116_Kervo (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 5);
+	NpcFn_AddFightSkills (self, 5);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

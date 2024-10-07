@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// DemonLord
+///******************************************************************************************
 prototype Mst_Default_DemonLord (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_DemonLord (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_DemonLord()
 {
 	Mdl_SetVisual		(self, "Demon.mds");
 	Mdl_SetVisualBody	(self, "Dem2_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance DemonLord (Mst_Default_DemonLord)
 {

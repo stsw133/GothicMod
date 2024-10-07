@@ -531,8 +531,8 @@ FUNC VOID DIA_DiegoNW_Teach_Info()
 	
 	Info_ClearChoices	(DIA_DiegoNW_Teach);
 	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 1))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 5))	,DIA_DiegoNW_TeachDEX_5);
 };
 
 func void DIA_DiegoNW_Teach_BACK()
@@ -551,8 +551,8 @@ func void DIA_DiegoNW_TeachDEX_1()
 
 	Info_ClearChoices	(DIA_DiegoNW_Teach);
 	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 1))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 5))	,DIA_DiegoNW_TeachDEX_5);
 };
 
 // ------ 5 Geschick ------
@@ -562,8 +562,8 @@ func void DIA_DiegoNW_TeachDEX_5()
 	
 	Info_ClearChoices	(DIA_DiegoNW_Teach);
 	Info_AddChoice		(DIA_DiegoNW_Teach, DIALOG_BACK, DIA_DiegoNW_Teach_BACK);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY))	,DIA_DiegoNW_TeachDEX_1);
-	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY)*5)	,DIA_DiegoNW_TeachDEX_5);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX1, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 1))	,DIA_DiegoNW_TeachDEX_1);
+	Info_AddChoice		(DIA_DiegoNW_Teach, B_BuildLearnString(PRINT_LearnDEX5, B_GetLearnCostAttribute(other, ATR_DEXTERITY, 5))	,DIA_DiegoNW_TeachDEX_5);
 };
 */
 //######################################
@@ -585,7 +585,7 @@ instance DIA_DiegoNW_KnowWhereEnemy		(C_INFO)
 	description	 = 	"Zamierzam opuœciæ Khorinis.";
 };
 
-func int DIA_DiegoNW_KnowWhereEnemy_Condition ()
+func int DIA_DiegoNW_KnowWhereEnemy_Condition()
 {	
 	if (MIS_SCKnowsWayToIrdorath == TRUE)
 	&& (Diego_IsOnBoard == FALSE) 

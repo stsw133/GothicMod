@@ -18,7 +18,7 @@ instance WzA_17223_Paliglup (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 35);
-	NpcFn_SetFightSkills (self, FightTalent_Initiate);
+	NpcFn_AddFightSkills (self, FightTalent_Initiate);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

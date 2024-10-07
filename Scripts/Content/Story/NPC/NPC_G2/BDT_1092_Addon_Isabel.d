@@ -13,7 +13,7 @@ instance BDT_1092_Addon_Isabel (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 25);
+	NpcFn_AddFightSkills (self, 25);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

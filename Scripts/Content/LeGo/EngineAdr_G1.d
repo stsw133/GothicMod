@@ -22,6 +22,9 @@ const int oCGame__changeLevelEnd                    = 6542428; //0x63D45C Hook: 
 const int oCGame__Render                            = 6544352; //Hook: FrameFunctions
 const int oCGame__RenderX                           = 6544518; //
 const int oCGame__UpdateStatus                      = 6526632; //Hook: Focusnames
+const int oCGame__UpdateStatus_start                = 6524816; //0x638F90 Hook: Bars
+const int oCGame__UpdateScreenResolution            = 6523984; //0x638C50 unused, kept for compatibility
+const int oCGame__UpdateScreenResolution_end        = 6524736; //0x638F40 Hook: Bars
 const int oCItem__Render                            = 6762352; //
 const int oCNpc__CloseInventory                     = 7058164; // Hook: Quickslots
 //const int oCNpc__DropUnconscious                    = 7560880; //0x735EB0 Hook: Shields*/
@@ -36,7 +39,7 @@ const int oCNpc__EV_PlayAni                         = 7020080; // Hook: AI_Funct
 const int oCNpc__OpenInventory                      = 7057568; //0x6BB0A0 Hook: Quickslots | Hook:Inv
 const int oCNpc__OpenInventory2                    = 7057813; // 6BB195
 const int oCNpc__PutInSlot                          = 6969664; //0x6A5940 - ported
-const int oCNpc__RemoveFromSlot                     = 7643760; //0x74A270
+const int oCNpc__RemoveFromSlot                     = 6971008; //0x6A5E80
 const int oCNpc__UnequipItem                        = 6880192; // Hook: Shields
 //const int oCNpc__UseItem                            = 7584784; //0x73BC10
 const int oCNpc__StartDialogAniX                    = 7021070; //
@@ -108,6 +111,9 @@ const int sub_4D3D90_X                              = 5013602; //0x4C8062 Hook: 
 const int zCConsole__Register                       = 7182656; //0x6D9940
 const int zCConsoleOutputOverwriteAddr              = 6573691; //0x644E7B Hook: ConsoleCommands
 const int zcon_address_lego                         = 9291168; //0x8DC5A0 // zcon_address is defined in Ikarus but only for Gothic2!
+const int malloc_adr                                = 7712198; //0x75ADC6
+const int free_adr                                  = 7712111; //0x75AD6F
+const int memcpy_adr                                = 7846464; //0x77BA40
 const int zCOptions_dir_string_offset               = 120;     //0x78     // The class zCOption is defined incorrectly in Ikarus for Gothic1!
 const int zCOption__ParmValue                       = 4586784; //0X45FD20
 const int zCWorld__AdvanceClock                     = 6257280; //0x5F7A80 Hook: Draw3D
@@ -116,6 +122,7 @@ const int zCLineCache__Line3D                       = 5224976; //0x4FBA10
 const int zTBSphere3D__Draw                         = 5440832; //0x530540
 const int zTBBox3D__Draw                            = 5447312; //0x531E90
 const int zCOBBox3D__Draw                           = 5451040; //0x532D20
+const int zString__vtbl                             = 8193768; //0x7D06E8
 
 // mark56 | not used
 // inv
@@ -134,6 +141,21 @@ const int zCModelAni__GetAniName                    = 5759840; // .text:0057E360
 const int zCModel__GetAniIDFromAniName              = 4713552; // .text:0047EC50
 
 
+//========================================
+// More class offsets
+//========================================
+const int zCParser_datastack_stack_offset =   88; //0x0058
+const int zCParser_datastack_sptr_offset  = 4184; //0x1058
+
+//========================================
+// More assembly op codes
+//========================================
+// 2 Bytes
+const int ASMINT_OP_subESPplus      =   60547; //0xEC83
+// 3 Bytes
+const int ASMINT_OP_movEAXtoESPplus = 2376841; //0x244489
+const int ASMINT_OP_movESPplusToEAX = 2376843; //0x24448B
+const int ASMINT_OP_pushESPplus     = 2389247; //0x2474FF
 
 //========================================
 // Missing Item flag
@@ -260,7 +282,7 @@ func int oCNpc_PutInSlot(var c_npc slf, var string SlotName, var int oCVobPtr, v
 //========================================
 func void oCNpc_RemoveFromSlot(var c_npc slf, var string SlotName, var int retVal, var int SlotID) {
     CALL_IntParam(SlotID);
-    CALL_IntParam(retVal);
+    CALL_PutRetValTo(_@(retVal));
     CALL_zStringPtrParam(SlotName);
     CALL__thiscall(MEM_InstToPtr(slf), oCNpc__RemoveFromSlot);
 };

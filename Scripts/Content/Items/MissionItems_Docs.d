@@ -1,9 +1,10 @@
 ///******************************************************************************************
 prototype ItemPR_MissionDoc (C_Item)
 {
-	mainflag 				=	ITEM_KAT_DOCS;
-	flags 					=	ITEM_MULTI | ITEM_MISSION;
+	mainflag					=	ITEM_KAT_DOCS;
+	flags						=	ITEM_MULTI | ITEM_MISSION;
 };
+
 ///******************************************************************************************
 
 var int BabosDocsOpen;
@@ -26,13 +27,14 @@ var int Use_ItWr_RavensKidnapperMission_Addon_OneTime;
 ///******************************************************************************************
 instance ItWr_Addon_TreasureMap (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_TreasureMap;
-	scemeName		=	"MAP";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
 	
-	description		=	"Mapa do skarbu";
-	TEXT[1]			=	"Na mapie s¹ zaznaczone jakieœ miejsca.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_TreasureMap;
+	
+	description					=	"Mapa do skarbu";
+	TEXT[1]						=	"Na mapie s¹ zaznaczone jakieœ miejsca.";
 };
 func void Use_ItWr_TreasureMap()
 {
@@ -44,19 +46,22 @@ func void Use_ItWr_TreasureMap()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_AddonWorld_Treasures.tga", true);
-				Doc_SetLevel        (Document, "Addon\AddonWorld.zen");
-   				Doc_SetLevelCoords  (Document, -47783, 36300, 43949, -32300);
-   				Doc_Show			(Document);
+				Doc_SetPage			(Document, 0, "Map_AddonWorld_Treasures.tga", true);
+				Doc_SetLevel		(Document, "Addon\AddonWorld.zen");
+				Doc_SetLevelCoords	(Document, -47783, 36300, 43949, -32300);
+				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_Caves_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_Caves_MIS;
-	scemeName		=	"MAP";
-	description		=	"Jaskinie Khorinis";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_Caves_MIS;
+	
+	description					=	"Jaskinie Khorinis";
 };
 func void Use_ItWr_Map_Caves_MIS()
 {
@@ -68,23 +73,25 @@ func void Use_ItWr_Map_Caves_MIS()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_Caves.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_Caves.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_NewWorld_Dexter (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_NewWorld_Dexter;
-	scemeName		=	"MAP";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
 	
-	description		=	"Mapa terenów Khorinis";
-	TEXT[0]			=	"Skip zaznaczy³ miejsce,";
-	TEXT[1]			=	"gdzie mogê znaleŸæ szefa bandytów,";
-	TEXT[2]			=	"Dextera.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_NewWorld_Dexter;
+	
+	description					=	"Mapa terenów Khorinis";
+	TEXT[0]						=	"Skip zaznaczy³ miejsce,";
+	TEXT[1]						=	"gdzie mogê znaleŸæ szefa bandytów,";
+	TEXT[2]						=	"Dextera.";
 };
 func void Use_ItWr_Map_NewWorld_Dexter()
 {
@@ -96,22 +103,24 @@ func void Use_ItWr_Map_NewWorld_Dexter()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_Dexter.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_Dexter.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_NewWorld_Ornaments_Addon (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa Nefariusa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_NewWorld_Ornaments;
-	scemeName		=	"MAP";
+	name						=	"Mapa Nefariusa";
+	visual						=	"ItWr_Map_01.3ds";
 	
-	description		=	name;
-	TEXT[0]			=	"Na mapie zaznaczono miejsca,";
-	TEXT[1]			=	"gdzie wed³ug Nefariusa znajduj¹ siê brakuj¹ce ornamenty.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_NewWorld_Ornaments;
+	
+	description					=	name;
+	TEXT[0]						=	"Na mapie zaznaczono miejsca,";
+	TEXT[1]						=	"gdzie wed³ug Nefariusa znajduj¹ siê brakuj¹ce ornamenty.";
 };
 func void Use_ItWr_Map_NewWorld_Ornaments()
 {
@@ -123,19 +132,22 @@ func void Use_ItWr_Map_NewWorld_Ornaments()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_Ornaments.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_Ornaments.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_OldWorld_Oremines_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_OldWorld_Oremines;
-	scemeName		=	"MAP";
-	description		=	"Mapa kopalni Garonda";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_OldWorld_Oremines;
+	
+	description					=	"Mapa kopalni Garonda";
 };
 func void Use_ItWr_Map_OldWorld_Oremines()
 {
@@ -147,19 +159,22 @@ func void Use_ItWr_Map_OldWorld_Oremines()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_OldWorld_Oremines.tga", true);
+				Doc_SetPage			(Document, 0, "Map_OldWorld_Oremines.tga", true);
 				Doc_SetLevel		(Document, "OldWorld\OldWorld.zen");
 				Doc_SetLevelCoords	(Document, -78500, 47500, 54000, -53000);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_Orcelite_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_NewWorld_Orcelite_MIS;
-	scemeName		=	"MAP";
-	description		=	"Orkowa mapa wojenna";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_NewWorld_Orcelite_MIS;
+	
+	description					=	"Orkowa mapa wojenna";
 };
 func void Use_ItWr_Map_NewWorld_Orcelite_MIS()
 {
@@ -171,7 +186,7 @@ func void Use_ItWr_Map_NewWorld_Orcelite_MIS()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_Orcelite.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_Orcelite.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
@@ -183,16 +198,19 @@ func void Use_ItWr_Map_NewWorld_Orcelite_MIS()
 		Use_ItWr_Map_NewWorld_Orcelite_MIS_OneTime = true;
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_Map_ShatteredGolem_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Bardzo stara mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_ShatteredGolem_Mis;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Bardzo stara mapa";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_ShatteredGolem_MIS;
+	
+	description					=	name;
 };
-func void Use_ItWr_Map_ShatteredGolem_Mis()
+func void Use_ItWr_Map_ShatteredGolem_MIS()
 {
 	if (Npc_IsPlayer(self))
 	{
@@ -202,19 +220,22 @@ func void Use_ItWr_Map_ShatteredGolem_Mis()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_ShatteredGolem.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_ShatteredGolem.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Map_Shrine_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Map_NewWorld_Shrine_MIS;
-	scemeName		=	"MAP";
-	description		=	"Mapa œwiêtych kapliczek";
+	name						=	"Mapa";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Map_NewWorld_Shrine_MIS;
+	
+	description					=	"Mapa œwiêtych kapliczek";
 };
 func void Use_ItWr_Map_NewWorld_Shrine_MIS()
 {
@@ -226,26 +247,29 @@ func void Use_ItWr_Map_NewWorld_Shrine_MIS()
 	var int Document;
 	Document =	Doc_CreateMap		();
 				Doc_SetPages		(Document, 1);
-				Doc_SetPage 		(Document, 0, "Map_NewWorld_Shrine.tga", true);
+				Doc_SetPage			(Document, 0, "Map_NewWorld_Shrine.tga", true);
 				Doc_SetLevel		(Document, "NewWorld\NewWorld.zen");
 				Doc_SetLevelCoords	(Document, -28000, 50500, 95500, -42500);
 				Doc_Show			(Document);
 };
+
 ///******************************************************************************************
 instance ItWr_Seamap_Irdorath (ItemPR_MissionDoc)
 {
-	name 			=	"Mapa morska";
-	visual 			=	"ItWr_Map_01.3DS";
-	on_state[0]		=	Use_ItWr_Seamap_Irdorath;
-	scemeName		=	"MAP";
-	description		=	"Mapa morska wyspy Irdorath";
+	name						=	"Mapa morska";
+	visual						=	"ItWr_Map_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Seamap_Irdorath;
+	
+	description					=	"Mapa morska wyspy Irdorath";
 };
 func void Use_ItWr_Seamap_Irdorath()
 {
 	var int nDocID;
-	nDocID = 	Doc_CreateMap	();
+	nDocID =	Doc_CreateMap	();
 				Doc_SetPages	(nDocID, 1);
-				Doc_SetPage 	(nDocID, 0, "Map_NewWorld_Seamap.tga", true);
+				Doc_SetPage		(nDocID, 0, "Map_NewWorld_Seamap.tga", true);
 				Doc_Show		(nDocID);
 	
 	if (!MIS_ShipIsFree)
@@ -257,8 +281,8 @@ func void Use_ItWr_Seamap_Irdorath()
 	if (!MIS_SCKnowsWayToIrdorath)
 	{
 		Log_CreateTopic (TOPIC_SHIP, LOG_MISSION);
-	    Log_SetTopicStatus (TOPIC_SHIP, LOG_RUNNING);
-	    B_LogEntry (TOPIC_SHIP, "Wygl¹da na to, ¿e muszê siê dostaæ na wyspê nieprzyjaciela. Bêdê potrzebowa³ statku, za³ogi i kapitana.");
+		Log_SetTopicStatus (TOPIC_SHIP, LOG_RUNNING);
+		B_LogEntry (TOPIC_SHIP, "Wygl¹da na to, ¿e muszê siê dostaæ na wyspê nieprzyjaciela. Bêdê potrzebowa³ statku, za³ogi i kapitana.");
 		B_GivePlayerExp(2000);
 	};
 	
@@ -270,91 +294,106 @@ func void Use_ItWr_Seamap_Irdorath()
 ///******************************************************************************************
 instance ItWr_ForgedShipLetter_MIS (ItemPR_Mission)
 {
-	name 			=	"Akt okrêtowy";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	description		=	name;
-	TEXT[2]			=	"Upowa¿nienie";
-	TEXT[3]			=   "do korzystania z okrêtu paladynów.";
+	name						=	"Akt okrêtowy";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	description					=	name;
+	TEXT[2]						=	"Upowa¿nienie";
+	TEXT[3]						=	"do korzystania z okrêtu paladynów.";
 };
+
 instance ItWr_ManaRezept (ItemPR_Mission)
 {
-	name 			=	"Receptura";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=	Use_ItRe_ALCHEMY_Mana_01;
-	description		= 	"Receptura Neorasa";
+	name						=	"Receptura";
+	visual						=	"ItWr_Scroll_01.3ds";
+	on_state[0]					=	Use_ItRe_ALCHEMY_Mana_01;
+	description					=	"Receptura Neorasa";
 };
+
 instance ItWr_Martin_MilizEmpfehlung_Addon (ItemPR_Mission)
 {
-	name 			=	"List polecaj¹cy";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	description		=  	"List polecaj¹cy dla Lorda Andre";
-	TEXT[2]			= 	"Powinien mi umo¿liwiæ";
-	TEXT[3]			= 	"wst¹pienie w szeregi stra¿y.";
+	name						=	"List polecaj¹cy";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	description					=	"List polecaj¹cy dla Lorda Andre";
+	TEXT[2]						=	"Powinien mi umo¿liwiæ";
+	TEXT[3]						=	"wst¹pienie w szeregi stra¿y.";
 };
+
 instance ItWr_PaladinLetter_MIS (ItemPR_Mission)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	description		=	"List Garonda do Hagena";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_02.3ds";
+	description					=	"List Garonda do Hagena";
 };
+
 instance ItWr_Passierschein	(ItemPR_Mission)
 {
-	name 			=	"Przepustka";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	description		=	name;
-	TEXT[3]			=	"Dziêki tym dokumentom nie";
-	TEXT[4]			=   "zatrzymaj¹ mnie stra¿nicy miejscy.";
+	name						=	"Przepustka";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	description					=	name;
+	TEXT[3]						=	"Dziêki tym dokumentom nie";
+	TEXT[4]						=	"zatrzymaj¹ mnie stra¿nicy miejscy.";
 };
+
 instance ItWr_PermissionToWearInnosEye_MIS (ItemPR_Mission)
 {
-	name 			=	"List polecaj¹cy";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	description		=	"List polecaj¹cy dla Pyrokara";
+	name						=	"List polecaj¹cy";
+	visual						=	"ItWr_Scroll_01.3ds";
+	description					=	"List polecaj¹cy dla Pyrokara";
 };
+
 instance ItWr_Vatras2Saturas_FindRaven (ItemPR_Mission)
 {
-	name 			=	"Przesy³ka";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	description		=   "Wiadomoœæ Vatrasa dla Saturasa";
+	name						=	"Przesy³ka";
+	visual						=	"ItWr_Scroll_02.3ds";
+	description					=	"Wiadomoœæ Vatrasa dla Saturasa";
 };
+
 instance ItWr_VatrasMessage	(ItemPR_Mission)
 {
-	name 			=	"Zapieczêtowana wiadomoœæ";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	description		=	name;
-	TEXT[2]			=   "Wiadomoœæ od Vatrasa";
-	TEXT[3]			=   "do Magów Ognia.";
+	name						=	"Zapieczêtowana wiadomoœæ";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	description					=	name;
+	TEXT[2]						=	"Wiadomoœæ od Vatrasa";
+	TEXT[3]						=	"do Magów Ognia.";
 };
+
 instance ItWr_Vatras_KDFEmpfehlung_Addon (ItemPR_Mission)
 {
-	name 			=	"List polecaj¹cy";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	description		=  	"List polecaj¹cy od Vatrasa";
-	TEXT[2]			= 	"Powinien pomóc mi";
-	TEXT[3]			= 	"wejœæ do klasztoru Magów Ognia";
-	TEXT[4]			= 	"bez zap³aty.";
+	name						=	"List polecaj¹cy";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	description					=	"List polecaj¹cy od Vatrasa";
+	TEXT[2]						=	"Powinien pomóc mi";
+	TEXT[3]						=	"wejœæ do klasztoru Magów Ognia";
+	TEXT[4]						=	"bez zap³aty.";
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_BanditTrader (ItemPR_MissionDoc)
 {
-	name 			=	"Dostawa";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_Addon_BanditTrader;
-	scemeName		=	"MAP";
+	name						=	"Dostawa";
+	visual						=	"ItWr_Scroll_02.3ds";
 	
-	description		=	name;
-	TEXT[2]			= 	"Zabra³em ten list bandytom";
-	TEXT[3]			= 	"za farm¹ Sekoba.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Addon_BanditTrader;
+	
+	description					=	name;
+	TEXT[2]						=	"Zabra³em ten list bandytom";
+	TEXT[3]						=	"za farm¹ Sekoba.";
 };
 func void Use_ItWr_Addon_BanditTrader()
 {
- 	BanditTrader_Lieferung_Gelesen = true;
+	BanditTrader_Lieferung_Gelesen = true;
 	
- 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	var int nDocID;
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLines	(nDocID,  0, "");
@@ -377,26 +416,29 @@ func void Use_ItWr_Addon_BanditTrader()
 		Use_ItWr_Addon_BanditTrader_OneTime = true;
 	};
 };
+
 ///******************************************************************************************
-instance ItWr_Addon_FrancisAbrechnung_Mis (ItemPR_MissionDoc)
+instance ItWr_Addon_FrancisAbrechnung_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Wynagrodzenie";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_FrancisAbrechnung_Mis;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Wynagrodzenie";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_FrancisAbrechnung_MIS;
+	
+	description					=	name;
 };
-func void Use_ItWr_FrancisAbrechnung_Mis()
+func void Use_ItWr_FrancisAbrechnung_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
- 				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
+				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Statek kupiecki 'Syrena'");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Suma ³upów: 14560");
@@ -425,10 +467,10 @@ func void Use_ItWr_FrancisAbrechnung_Mis()
 				Doc_PrintLine	(nDocID,  0, "");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
- 				Doc_PrintLine	(nDocID,  1, "");
+				Doc_SetFont		(nDocID,  1, FONT_Book);
+				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLine	(nDocID,  1, "Statek handlowy 'Nico'");
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLine	(nDocID,  1, "Suma ³upów: 9970");
 				Doc_PrintLine	(nDocID,  1, "----------------------");
@@ -457,32 +499,35 @@ func void Use_ItWr_FrancisAbrechnung_Mis()
 				
 				B_Say (self, self, "$ADDON_THISLITTLEBASTARD");
 };
+
 ///******************************************************************************************
-instance ItWr_Addon_GregsLogbuch_Mis (ItemPR_MissionDoc)
+instance ItWr_Addon_GregsLogbuch_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Dziennik";
-	visual 			=	"ItWr_Book_01.3ds";
-	on_state[0]		=	Use_ItWr_GregsLogbuch;
-	scemeName		=	"MAP";
-	description		= 	"Dziennik Grega";
+	name						=	"Dziennik";
+	visual						=	"ItWr_Book_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_GregsLogbuch;
+	
+	description					=	"Dziennik Grega";
 };
 func void Use_ItWr_GregsLogbuch()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLines	(nDocID,  0, "Mam ju¿ doœæ tej pla¿y! Wokó³ tylko piasek. Nie mogê nawet spaæ, bo mnie wszêdzie swêdzi. Czas, ¿eby Kruk w koñcu sypn¹³ z³otem za wiêŸniów i ¿ebyœmy w koñcu st¹d odp³ynêli. Coœ mi siê zdaje, ¿e muszê powa¿nie pogadaæ z tym bufonem.");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Co ten pacan sobie wyobra¿a? Kaza³ odprawiæ mnie z kwitkiem swoim œmierdz¹cym najemnikom. Wkrótce siê dowie, z kim ma do czynienia. Na pocz¹tek za³atwiê tego s³u¿alca Bloodwyna.");
 				Doc_PrintLines	(nDocID,  0, "Jeœli wkrótce nie zap³aci, bêdê musia³ zrobiæ siê naprawdê niemi³y.");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLines	(nDocID,  1, "Bandyci siê rozzuchwalili. Wci¹¿ nie zap³acili za ostatni transport. Po prostu za ma³o wiemy. Muszê wybadaæ, co planuje Kruk.");
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "Wezmê wiêkszoœæ za³ogi na kontynent i zabezpieczymy rudê. Francis zostanie z paroma ludŸmi i ufortyfikuje obóz.");
@@ -491,32 +536,34 @@ func void Use_ItWr_GregsLogbuch()
 				
 				Greg_GaveArmorToBones = true;
 };
+
 ///******************************************************************************************
 var int Green_Extrem;
 
 instance ItWr_Addon_Joint_01 (ItemPR_MissionDoc)
 {
-	name 			=	"Receptura";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Joint_Rezept_01;
-	scemeName		=	"MAP";
+	name						=	"Receptura";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	"Zielony nowicjusz";
-	TEXT[0]			= 	"Le¿a³ w skrzyni Fortuna";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Joint_Rezept_01;
+	
+	description					=	"Zielony nowicjusz";
+	TEXT[0]						=	"Le¿a³ w skrzyni Fortuna";
 };
 func void Use_ItWr_Joint_Rezept_01()
 {
 	Green_Extrem = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLine	(nDocID,  0, "Zielony nowicjusz");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "(...) Te ³odygi mo¿na ca³kiem nieŸle zwijaæ, ale nie ma porównania z tym, co mieliœmy w obozie na bagnie.");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -527,28 +574,30 @@ func void Use_ItWr_Joint_Rezept_01()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Hinweis_01 (ItemPR_MissionDoc)
 {
-	name 			=	"Wa¿na wiadomoœæ";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Hinweis_01;
-	scemeName		=	"MAP";
+	name						=	"Wa¿na wiadomoœæ";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Wisia³a w chacie na bagnie";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Hinweis_01;
+	
+	description					=	name;
+	TEXT[0]						=	"Wisia³a w chacie na bagnie";
 };
 func void Use_ItWr_Hinweis_01()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Hej ludzie,");
 				Doc_PrintLines	(nDocID,  0, "Rzeczy z tych skrzyñ s¹ tylko na nag³e wypadki.");
@@ -561,28 +610,30 @@ func void Use_ItWr_Hinweis_01()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Hinweis_02 (ItemPR_MissionDoc)
 {
-	name 			=	"Wa¿na wiadomoœæ";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Hinweis_02;
-	scemeName		=	"MAP";
+	name						=	"Wa¿na wiadomoœæ";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Z gospody w obozie bandytów";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Hinweis_02;
+	
+	description					=	name;
+	TEXT[0]						=	"Z gospody w obozie bandytów";
 };
 func void Use_ItWr_Hinweis_02()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Hej ludzie,");
 				Doc_PrintLines	(nDocID,  0, "");
@@ -595,29 +646,31 @@ func void Use_ItWr_Hinweis_02()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Lou_Rezept (ItemPR_MissionDoc)
 {
-	name 			=	"Przepis na M³ot Lou";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_LouRezept;
-	scemeName		=	"MAP";
+	name						=	"Przepis na M³ot Lou";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Jak przygotowaæ M³ot Lou.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_LouRezept;
+	
+	description					=	name;
+	TEXT[0]						=	"Jak przygotowaæ M³ot Lou.";
 };
 func void Use_ItWr_LouRezept()
 {
 	Knows_LousHammer = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "Przepis na M³ot Lou");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Sk³adniki mocnej nalewki:");
@@ -632,29 +685,31 @@ func void Use_ItWr_LouRezept()
 				Doc_PrintLines	(nDocID,  0, "Wed³ug starego œlepca lepiej nie wdychaæ wyziewów!");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Lou_Rezept2 (ItemPR_MissionDoc)
 {
-	name 			=	"Przepis na podwójny M³ot Lou";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_LouRezept2;
-	scemeName		=	"MAP";
+	name						=	"Przepis na podwójny M³ot Lou";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Jak przygotowaæ podwójny M³ot Lou.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_LouRezept2;
+	
+	description					=	name;
+	TEXT[0]						=	"Jak przygotowaæ podwójny M³ot Lou.";
 };
 func void Use_ItWr_LouRezept2()
 {
 	Knows_SchlafHammer = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "Podwójny M³ot Lou");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "WeŸ stary, dobry M³ot Lou i przedestyluj go jeszcze raz");
@@ -664,30 +719,32 @@ func void Use_ItWr_LouRezept2()
 				Doc_PrintLines	(nDocID,  0, "Profan mo¿e od tego nie tylko oœlepn¹æ, ale te¿ ca³kiem wyzion¹æ ducha.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Piratentod (ItemPR_MissionDoc)
 {
-	name 			=	"Przepis na Szybkiego œledzia";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_RezeptPiratentod;
-	scemeName		=	"MAP";
+	name						=	"Przepis na Szybkiego œledzia";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Przepis na przygotowanie Szybkiego œledzia.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_RezeptPiratentod;
+	
+	description					=	name;
+	TEXT[0]						=	"Przepis na przygotowanie Szybkiego œledzia.";
 };
 func void Use_ItWr_RezeptPiratentod()
 {
 	Knows_SchnellerHering = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Szybki œledŸ (mój przepis)");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Ma³y klinek dla porz¹dnych ch³opaków");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -699,30 +756,32 @@ func void Use_ItWr_RezeptPiratentod()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_Pirates_01 (ItemPR_MissionDoc)
 {
-	name 			=	"Brudny papier";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Pirates_01;
-	scemeName		=	"MAP";
+	name						=	"Brudny papier";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description 	=	name;
-	TEXT[0]			=	"Ten papier by³ w kieszeni Angusa.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Pirates_01;
+	
+	description					=	name;
+	TEXT[0]						=	"Ten papier by³ w kieszeni Angusa.";
 };
 func void Use_ItWr_Pirates_01()
 {
 	Read_JuansText = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Ihr Piraten,");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Za³atwcie dla nas ostatni ³adunek.");
@@ -734,30 +793,32 @@ func void Use_ItWr_Pirates_01()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItMi_Addon_Stone_01 (ItemPR_MissionDoc)
 {
-	name 			=	"Czerwona kamienna tablica";
-	visual 			=	"ItMi_StonePlate_Read_03.3ds";
-	on_state[0]		=	Use_ItMi_Addon_Stone_01;
-	scemeName		=	"MAP";
+	name						=	"Czerwona kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_03.3ds";
 	
-	wear			= 	WEAR_EFFECT;
-	effect			=	"SPELLFX_WEAKGLIMMER";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItMi_Addon_Stone_01;
 	
-	description		=	name;
-	TEXT[2]			= 	"Czerwona kamienna tablica";
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	wear						=	WEAR_EFFECT;
+	effect						=	"SPELLFX_WEAKGLIMMER";
+	
+	description					=	name;
+	TEXT[2]						=	"Czerwona kamienna tablica";
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItMi_Addon_Stone_01()
 {
-	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Adanos_Stoneplate_02.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_02.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "My, trzej pozostali przywódcy Rady Piêciu, za³o¿yliœmy pu³apki w œwi¹tyni i zapieczêtowaliœmy jej wejœcie. Oby miecz na zawsze ju¿ pozosta³ w mroku.");
@@ -769,30 +830,32 @@ func void Use_ItMi_Addon_Stone_01()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
 instance ItMi_Addon_Stone_05 (ItemPR_MissionDoc)
 {
-	name 			=	"¯ó³ta kamienna tablica"; 
-	visual 			=	"ItMi_StonePlate_Read_04.3ds";
-	on_state[0]		=	Use_ItMi_Addon_Stone_05;
-	scemeName		=	"MAP";
+	name						=	"¯ó³ta kamienna tablica"; 
+	visual						=	"ItMi_StonePlate_Read_04.3ds";
 	
-	wear			= 	WEAR_EFFECT;
-	effect			=	"SPELLFX_WEAKGLIMMER";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItMi_Addon_Stone_05;
 	
-	description		=	name;
-	TEXT[2]			= 	"¯ó³ta kamienna tablica";
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	wear						=	WEAR_EFFECT;
+	effect						=	"SPELLFX_WEAKGLIMMER";
+	
+	description					=	name;
+	TEXT[2]						=	"¯ó³ta kamienna tablica";
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItMi_Addon_Stone_05()
 {
-	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Adanos_Stoneplate_01.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_01.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "Ja, który sprzeciwi³em siê rozkazom trójki, zbudowa³em pierwsz¹ pu³apkê. I tylko ja znam w³aœciwe wrota.");
@@ -804,30 +867,32 @@ func void Use_ItMi_Addon_Stone_05()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
 instance ItMi_Addon_Stone_03 (ItemPR_MissionDoc)
 {
-	name 			=	"Niebieska kamienna tablica";
-	visual 			=	"ItMi_StonePlate_Read_05.3ds";
-	on_state[0]		=	Use_ItMi_Addon_Stone_03;
-	scemeName		=	"MAP";
+	name						=	"Niebieska kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_05.3ds";
 	
-	wear			= 	WEAR_EFFECT;
-	effect			=	"SPELLFX_WEAKGLIMMER";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItMi_Addon_Stone_03;
 	
-	description		=	name;
-	TEXT[2]			= 	"Niebieska kamienna tablica";
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	wear						=	WEAR_EFFECT;
+	effect						=	"SPELLFX_WEAKGLIMMER";
+	
+	description					=	name;
+	TEXT[2]						=	"Niebieska kamienna tablica";
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItMi_Addon_Stone_03()
 {
-	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Adanos_Stoneplate_03.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_03.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "KHARDIMON przygotowa³ drug¹ pu³apkê. Tylko ten, kto nie zejdzie ze œcie¿ki œwiat³a, dotrze do trzeciej komnaty.");
@@ -841,30 +906,32 @@ func void Use_ItMi_Addon_Stone_03()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
 instance ItMi_Addon_Stone_04 (ItemPR_MissionDoc)
 {
-	name 			=	"Zielona kamienna tablica";
-	visual 			=	"ItMi_StonePlate_Read_01.3ds";
-	on_state[0]		=	Use_ItMi_Addon_Stone_04;
-	scemeName		=	"MAP";
+	name						=	"Zielona kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_01.3ds";
 	
-	wear			= 	WEAR_EFFECT;
-	effect			=	"SPELLFX_WEAKGLIMMER";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItMi_Addon_Stone_04;
 	
-	description		=	name;
-	TEXT[2]			= 	"Zielona kamienna tablica";
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	wear						=	WEAR_EFFECT;
+	effect						=	"SPELLFX_WEAKGLIMMER";
+	
+	description					=	name;
+	TEXT[2]						=	"Zielona kamienna tablica";
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItMi_Addon_Stone_04()
 {
-	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Adanos_Stoneplate_04.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_04.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "Trzecia pu³apka zosta³a zbudowana przez QUARHODRONA i jedynie on wie, jak otworzyæ bramê.");
@@ -876,30 +943,32 @@ func void Use_ItMi_Addon_Stone_04()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
 instance ItMi_Addon_Stone_02 (ItemPR_MissionDoc)
 {
-	name 			=	"Fioletowa kamienna tablica";
-	visual 			=	"ItMi_StonePlate_Read_02.3ds";
-	on_state[0]		=	Use_ItMi_Addon_Stone_02;
-	scemeName		=	"MAP";
+	name						=	"Fioletowa kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_02.3ds";
 	
-	wear			= 	WEAR_EFFECT;
-	effect			=	"SPELLFX_WEAKGLIMMER";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItMi_Addon_Stone_02;
 	
-	description		=	name;
-	TEXT[2]			= 	"Fioletowa kamienna tablica";
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	wear						=	WEAR_EFFECT;
+	effect						=	"SPELLFX_WEAKGLIMMER";
+	
+	description					=	name;
+	TEXT[2]						=	"Fioletowa kamienna tablica";
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItMi_Addon_Stone_02()
 {
-	if (Npc_GetTalentSkill(hero, NPC_TALENT_LANGUAGE))
+	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Adanos_Stoneplate_05.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage	(nDocID,  0, "Adanos_Stoneplate_05.tga", false);
+					Doc_SetFont	(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLines	(nDocID,  0, "QUARHODRON by³ te¿ tym, który z pomoc¹ KHARDIMONA zapieczêtowa³ zewnêtrzn¹ bramê œwi¹tyni. ¯aden z nich nie prze¿y³ tego rytua³u.");
@@ -915,16 +984,18 @@ func void Use_ItMi_Addon_Stone_02()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_SUMMONANCIENTGHOST (ItemPR_MissionDoc)
 {
-	name 			=	"Przywo³anie Quarhodrona";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_SummonAncientGhost;
-	scemeName		=	"MAP";
+	name						=	"Przywo³anie Quarhodrona";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[1]			=	"Za pomoc¹ tego zwoju mo¿esz przywo³aæ Quarhodrona.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_SummonAncientGhost;
+	
+	description					=	name;
+	TEXT[1]						=	"Za pomoc¹ tego zwoju mo¿esz przywo³aæ Quarhodrona.";
 };
 func void Use_ItWr_SummonAncientGhost()
 {
@@ -935,42 +1006,44 @@ func void Use_ItWr_SummonAncientGhost()
 		if (Npc_GetDistToWP(self, "ADW_ANCIENTGHOST") < 1000)
 		{
 			Wld_InsertNpc (NONE_ADDON_111_Quarhodron, "ADW_ANCIENTGHOST");
-	 		Wld_PlayEffect ("spellFX_Maya_Ghost", NONE_ADDON_111_Quarhodron, NONE_ADDON_111_Quarhodron, 0, 0, 0, false);
-	 		Wld_PlayEffect ("SPELLFX_LIGHTSTAR_WHITE", NONE_ADDON_111_Quarhodron, NONE_ADDON_111_Quarhodron, 0, 0, 0, false);
-	 		Snd_Play("MFX_GhostVoice");
-	 		Snd_Play("MFX_Firestorm_Cast");
-	 		Snd_Play("MFX_Lightning_Origin");
-	 		SC_SummonedAncientGhost = true;
+			Wld_PlayEffect ("spellFX_Maya_Ghost", NONE_ADDON_111_Quarhodron, NONE_ADDON_111_Quarhodron, 0, 0, 0, false);
+			Wld_PlayEffect ("SPELLFX_LIGHTSTAR_WHITE", NONE_ADDON_111_Quarhodron, NONE_ADDON_111_Quarhodron, 0, 0, 0, false);
+			Snd_Play("MFX_GhostVoice");
+			Snd_Play("MFX_Firestorm_Cast");
+			Snd_Play("MFX_Lightning_Origin");
+			SC_SummonedAncientGhost = true;
 			Npc_RemoveInvItem (self, ItWr_Addon_SUMMONANCIENTGHOST);
-	    }
+		}
 		else
 		{
 			B_Say (self, self, "$ADDON_ANCIENTGHOST_NOTNEAR");
 		};
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_Addon_William_01 (ItemPR_MissionDoc)
 {
-	name 			=	"Liœcik";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_William_01;
-	scemeName		=	"MAP";
+	name						=	"Liœcik";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[0]			=	"Ten list mia³ przy sobie rybak William.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_William_01;
+	
+	description					=	name;
+	TEXT[0]						=	"Ten list mia³ przy sobie rybak William.";
 };
 func void Use_ItWr_William_01()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "Williamie,");
 				Doc_PrintLines	(nDocID,  0, "Kiedy ksiê¿yc jest w pe³ni, stra¿nicy s¹ rozkojarzeni.");
@@ -983,22 +1056,25 @@ func void Use_ItWr_William_01()
 				Doc_PrintLine	(nDocID,  0, "Ktoœ, kto dobrze Ci ¿yczy");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_BabosLetter_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_BabosLetter;
-	scemeName		=	"MAP";
-	description		=	"List do Babo";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_BabosLetter;
+	
+	description					=	"List do Babo";
 };
 func void Use_ItWr_BabosLetter()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Drogi Babo,");
@@ -1009,34 +1085,39 @@ func void Use_ItWr_BabosLetter()
 				Doc_PrintLines	(nDocID,  0, "Fehta i Bonka");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_BabosPinUp_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Portret";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_BabosPinUp;
-	scemeName		=	"MAP";
-	description		=	"Portret nagiej kobiety";
+	name						=	"Portret";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_BabosPinUp;
+	
+	description					=	"Portret nagiej kobiety";
 };
 func void Use_ItWr_BabosPinUp()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID, 1);
-				Doc_SetPage		(nDocID, 0, "Map_Pinup.TGA", false);
+				Doc_SetPage		(nDocID, 0, "Map_Pinup.tga", false);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_BabosDocs_MIS	(ItemPR_MissionDoc)
 {
-	name 			=	"Zwitek papierów";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_BabosDocs;
-	scemeName		=	"MAPSEALED";
+	name						=	"Zwitek papierów";
+	visual						=	"ItWr_Scroll_02.3ds";
 	
-	description		=	name;
-	TEXT[2]			=   "Kilka dokumentów";
-	TEXT[3]			=   "zwiniêtych w rulon.";
+	scemeName					=	"MAPSEALED";
+	on_state[0]					=	Use_ItWr_BabosDocs;
+	
+	description					=	name;
+	TEXT[2]						=	"Kilka dokumentów";
+	TEXT[3]						=	"zwiniêtych w rulon.";
 };
 func void Use_ItWr_BabosDocs()
 {
@@ -1044,21 +1125,24 @@ func void Use_ItWr_BabosDocs()
 	CreateInvItem (self, ItWr_BabosLetter_MIS);
 	CreateInvItem (self, ItWr_BabosPinUp_MIS);
 };
+
 ///******************************************************************************************
 instance ItWr_BanditLetter_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Wiadomoœæ";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_BanditLetter;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Wiadomoœæ";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_BanditLetter;
+	
+	description					=	name;
 };
 func void Use_ItWr_BanditLetter()
-{   
+{
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
@@ -1086,22 +1170,25 @@ func void Use_ItWr_BanditLetter()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Bloody_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Notatka";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_BloodMIS;
-	scemeName		=	"MAPSEALED";
-	description		= 	"Trucizna krwiopijców";
+	name						=	"Notatka";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAPSEALED";
+	on_state[0]					=	Use_ItWr_BloodMIS;
+	
+	description					=	"Trucizna krwiopijców";
 };
 func void Use_ItWr_BloodMIS()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1124,21 +1211,24 @@ func void Use_ItWr_BloodMIS()
 		B_GivePlayerExp(100);
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_Canthars_KomproBrief_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Canthars_KomproBrief;
-	scemeName		=	"MAP";
-	description		= 	"List Canthara do Sary";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Canthars_KomproBrief;
+	
+	description					=	"List Canthara do Sary";
 };
 func void Use_ItWr_Canthars_KomproBrief()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
@@ -1162,16 +1252,18 @@ func void Use_ItWr_Canthars_KomproBrief()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
-instance ItWr_CorneliusTagebuch_Mis (ItemPR_MissionDoc) 
+instance ItWr_CorneliusTagebuch_MIS (ItemPR_MissionDoc) 
 {
-	name 			=	"Dziennik";
-	visual 			=	"ItWr_Book_01.3ds";
-	on_state[0]		=	Use_ItWr_CorneliusTagebuch;
-	scemeName		=	"MAP";
+	name						=	"Dziennik";
+	visual						=	"ItWr_Book_01.3ds";
 	
-	description		=	name;
-	TEXT[0]			=	"Dziennik Corneliusa.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_CorneliusTagebuch;
+	
+	description					=	name;
+	TEXT[0]						=	"Dziennik Corneliusa.";
 };
 func void Use_ItWr_CorneliusTagebuch()
 {
@@ -1179,13 +1271,13 @@ func void Use_ItWr_CorneliusTagebuch()
 	B_LogEntry (TOPIC_RESCUEBENNET, "Dziennik jest dowodem którego potrzebujê, aby uniewinniæ Benneta.");
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Jeœli Larius nadal bêdzie postêpowa³ w ten sposób, nic tu po mnie.");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1199,14 +1291,17 @@ func void Use_ItWr_CorneliusTagebuch()
 				Doc_PrintLines	(nDocID,  1, "Sta³o siê - aresztowali jednego z najemników. Zamierzam dotrzymaæ danego s³owa.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_DementorObsessionBook_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Almanach Opêtanych";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_DementorObsessionBook;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Almanach Opêtanych";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_DementorObsessionBook;
+	
+	description					=	name;
 };
 func void Use_ItWr_DementorObsessionBook()
 {
@@ -1218,15 +1313,15 @@ func void Use_ItWr_DementorObsessionBook()
 	if (hero.guild == GIL_KDF)
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
-					Doc_SetPage 	(nDocID,  0, "BOOK_MAGE_L.tga", false);
-					Doc_SetPage 	(nDocID,  1, "BOOK_MAGE_R.tga", false);
+					Doc_SetPage		(nDocID,  0, "BOOK_MAGE_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "BOOK_MAGE_R.tga", false);
 					
-		 			Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-					Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
-	 				Doc_PrintLine	(nDocID,  0, "");
-					Doc_SetFont 	(nDocID,  0, FONT_Book);
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_SetFont		(nDocID,  0, FONT_Book);
 					Doc_PrintLines	(nDocID,  0, "edef Kon dirandorix");
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_PrintLine	(nDocID,  0, "");
@@ -1244,8 +1339,8 @@ func void Use_ItWr_DementorObsessionBook()
 					Doc_PrintLines	(nDocID,  0, "em piratoram endro");
 					
 					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-					Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-					Doc_SetFont 	(nDocID,  1, FONT_Book);
+					Doc_SetFont		(nDocID,  1, FONT_BookHeadline);
+					Doc_SetFont		(nDocID,  1, FONT_Book);
 					Doc_PrintLine	(nDocID,  1, "");
 					Doc_PrintLine	(nDocID,  1, "");
 					
@@ -1280,33 +1375,36 @@ func void Use_ItWr_DementorObsessionBook()
 					Doc_Show		(nDocID);
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_Diary_BlackNovice_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Dziennik";
-	visual 			=	"ItWr_Book_02_04.3ds";
-	on_state[0]		=	Use_ItWr_Diary_BlackNovice;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Dziennik";
+	visual						=	"ItWr_Book_02_04.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Diary_BlackNovice;
+	
+	description					=	name;
 };
 func void Use_ItWr_Diary_BlackNovice()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "BOOK_RED_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "BOOK_RED_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "BOOK_RED_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "BOOK_RED_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Ju¿ od 36 dni czekam na wezwanie. Zaczynam w¹tpiæ, czy siê doczekam - mimo ¿e zrobi³em wszystko, o co mnie proszono. Lata³em dla nich i przynosi³em ró¿ne rzeczy jak jakiœ lokaj.");
 				Doc_PrintLines	(nDocID,  0, "Klucznik nakaza³ mi zamkniêcie krat, ale jeszcze siê do tego nie zabra³em. Jak tak dalej pójdzie, to ka¿dy bêdzie sobie móg³ po prostu wejœæ przez bramê...");
 				Doc_PrintLines	(nDocID,  0, "Szkoda, ¿e nie pamiêtam w³aœciwych kombinacji.");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "Bardzo dawno ju¿ nie zakrada³em siê do wielkiej komnaty i nie mogê siê doczekaæ spotkania z Mistrzem. Ciekaw jestem, czy pozwol¹ mi na nie, gdy ju¿ do nich do³¹czê.");
 				Doc_PrintLine	(nDocID,  1, "");
@@ -1315,22 +1413,25 @@ func void Use_ItWr_Diary_BlackNovice()
 	
 	B_LogEntry (TOPIC_HallenVonIrdorath, "Dziennik ucznia czarnego maga wspomina o komnatach z dŸwigniami, kluczniku, kombinacji prze³¹czników... Trzeba to zapamiêtaæ, nigdy nie wiadomo, kiedy mo¿e siê przydaæ."); 
 };
+
 ///******************************************************************************************
 instance ItWr_DiegosLetter_MIS (ItemPR_Mission)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=	Use_ItWr_DiegosLetter_Mis;
-	scemeName		=	"MAP";
-	description		=	"List Diega do Gerbrandta";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_DiegosLetter_MIS;
+	
+	description					=	"List Diega do Gerbrandta";
 };
-func void Use_ItWr_DiegosLetter_Mis()
+func void Use_ItWr_DiegosLetter_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Gerbrandt, ");
@@ -1343,22 +1444,25 @@ func void Use_ItWr_DiegosLetter_Mis()
 				Doc_PrintLine	(nDocID,  0, "Diego");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_GilbertLetter (ItemPR_MissionDoc)
 {
-	name 			=	"Notatka";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_GilbertLetter;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Notatka";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_GilbertLetter;
+	
+	description					=	name;
 };
 func void Use_ItWr_GilbertLetter()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1374,16 +1478,19 @@ func void Use_ItWr_GilbertLetter()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 const string PRINT_IrdorathBookDoesntOpen			=	"Nie mo¿na otworzyæ ok³adki tej ksiêgi.";
 
-instance ItWr_HallsofIrdorath_Mis (ItemPR_MissionDoc) 
+instance ItWr_HallsofIrdorath_MIS (ItemPR_MissionDoc) 
 {	
-	name 			=	"Dwór Irdorath";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_HallsofIrdorath;
-	scemeName		=	"MAPSEALED";
-	description		=	name;
+	name						=	"Dwór Irdorath";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAPSEALED";
+	on_state[0]					=	Use_ItWr_HallsofIrdorath;
+	
+	description					=	name;
 };
 func void Use_ItWr_HallsofIrdorath()
 {  
@@ -1391,7 +1498,7 @@ func void Use_ItWr_HallsofIrdorath()
 	{
 		B_Say (self, self, "$SCOPENSIRDORATHBOOK");
 		
-  		Wld_PlayEffect ("spellFX_LIGHTSTAR_WHITE", self, self, 0, 0, 0, false);
+ 		Wld_PlayEffect ("spellFX_LIGHTSTAR_WHITE", self, self, 0, 0, 0, false);
 		Snd_Play("SFX_HealObsession");
 		
 		CreateInvItem (self, ItWr_HallsofIrdorath_Open_Mis);
@@ -1413,14 +1520,17 @@ func void Use_ItWr_HallsofIrdorath()
 		Snd_Play("MFX_FEAR_CAST");
 	};
 };
+
 ///******************************************************************************************
-instance ItWr_HallsofIrdorath_Open_Mis (ItemPR_MissionDoc)
+instance ItWr_HallsofIrdorath_Open_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Dwór Irdorath";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_HallsofIrdorath_Open;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Dwór Irdorath";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_HallsofIrdorath_Open;
+	
+	description					=	name;
 };
 func void Use_ItWr_HallsofIrdorath_Open()
 {
@@ -1432,23 +1542,23 @@ func void Use_ItWr_HallsofIrdorath_Open()
 	ItWr_SCReadsHallsofIrdorath = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "BOOK_MAGE_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "BOOK_MAGE_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "BOOK_MAGE_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "BOOK_MAGE_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
- 				Doc_PrintLine	(nDocID,  0, "");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "...tak oto ukry³em wejœcie do biblioteki za zamaskowanymi drzwiami, by uchroniæ moje zapiski ze œwi¹tyñ Beliara.");
 				Doc_PrintLines	(nDocID,  0, "Gdyby dowiedzieli siê o nich moi bracia, mogliby je pochopnie zniszczyæ.");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-				Doc_PrintLine	(nDocID,  1, "");										
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_BookHeadline);
+				Doc_PrintLine	(nDocID,  1, "");
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "Teraz zaœ wiedz¹ tylko, ¿e œwi¹tynie te niegdyœ istnia³y.");
 				Doc_PrintLine	(nDocID,  1, "");
@@ -1458,25 +1568,27 @@ func void Use_ItWr_HallsofIrdorath_Open()
 				Doc_PrintLines	(nDocID,  1, "Ten klucz otwiera ostatnie drzwi.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_HalvorMessage	(ItemPR_MissionDoc)
 {
-	name 			=	"Œmierdz¹ca notatka";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_HalvorMessage;
-	scemeName		=	"MAP";
+	name						=	"Œmierdz¹ca notatka";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[2]			=   "W rybie by³a schowana ta notatka.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_HalvorMessage;
+	
+	description					=	name;
+	TEXT[2]						=	"W rybie by³a schowana ta notatka.";
 };
 func void Use_ItWr_HalvorMessage()
 {
 	Knows_Halvor = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
@@ -1492,22 +1604,25 @@ func void Use_ItWr_HalvorMessage()
 				Doc_PrintLine	(nDocID,  0, "     Halvor");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_KdwLetter (ItemPR_MissionDoc)
 {
-	name 			=	"Wiadomoœæ";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_KdwLetter;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Wiadomoœæ";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_KdwLetter;
+	
+	description					=	name;
 };
 func void Use_ItWr_KdwLetter()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1522,22 +1637,25 @@ func void Use_ItWr_KdwLetter()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Kraeuterliste (ItemPR_MissionDoc)
 {
-	name 			=	"Lista";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Kraeuterliste;
-	scemeName		=	"MAP";
-	description		= 	"Lista zió³ Constantina";
+	name						=	"Lista";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Kraeuterliste;
+	
+	description					=	"Lista zió³ Constantina";
 };
 func void Use_ItWr_Kraeuterliste()
-{   
+{
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1561,24 +1679,26 @@ func void Use_ItWr_Kraeuterliste()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Krypta_Garon (ItemPR_MissionDoc)
 {
-	name 			=	"Stary list";
-	visual 			=	"ItWr_Scroll_02.3ds";
-	on_state[0]		=	Use_ItWr_Krypta_Garon;
-	scemeName		=	"MAP";
+	name						=	"Stary list";
+	visual						=	"ItWr_Scroll_02.3ds";
 	
-	description		= 	name;
-	TEXT[3]			=	"Pisany niepewn¹ rêk¹.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Krypta_Garon;
+	
+	description					=	name;
+	TEXT[3]						=	"Pisany niepewn¹ rêk¹.";
 };
 func void Use_ItWr_Krypta_Garon()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1597,22 +1717,25 @@ func void Use_ItWr_Krypta_Garon()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_LastDoorToUndeadDrgDI_MIS	(ItemPR_MissionDoc)
 {
-	name 			=	"Zwój czarnego maga";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_LastDoorToUndeadDrgDI_MIS;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Zwój czarnego maga";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_LastDoorToUndeadDrgDI_MIS;
+	
+	description					=	name;
 };
 func void Use_ItWr_LastDoorToUndeadDrgDI_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLines	(nDocID,  0, "");
@@ -1630,22 +1753,25 @@ func void Use_ItWr_LastDoorToUndeadDrgDI_MIS()
 	
 	B_LogEntry (TOPIC_HallenVonIrdorath, "S³owa KHADOSH EMEM KADAR mo¿na by³o odczytaæ ze zwoju czarnego maga. Brzmi jak zaklêcie, ale do czego siê odnosi i czym jest Oko Mocy? "); 
 };
+
 ///******************************************************************************************
 instance ItWr_LetterForGorn_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_LetterForGorn;
-	scemeName		=	"MAP";
-	description		=	"List Miltena do Gorna";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_LetterForGorn;
+	
+	description					=	"List Miltena do Gorna";
 };
 func void Use_ItWr_LetterForGorn()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLine	(nDocID,  0, " ");
@@ -1661,14 +1787,17 @@ func void Use_ItWr_LetterForGorn()
 				Doc_PrintLine	(nDocID,  0, "Milten ");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_LuciasLoveLetter_Addon (ItemPR_MissionDoc)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_LuciasLoveLetter_Addon;
-	scemeName		=	"MAP";
-	description		=	"List po¿egnalny Lucii";
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_LuciasLoveLetter_Addon;
+	
+	description					=	"List po¿egnalny Lucii";
 };
 func void Use_ItWr_LuciasLoveLetter_Addon()
 {
@@ -1678,10 +1807,10 @@ func void Use_ItWr_LuciasLoveLetter_Addon()
 	MIS_LuciasLetter = LOG_RUNNING;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1696,22 +1825,25 @@ func void Use_ItWr_LuciasLoveLetter_Addon()
 				Doc_PrintLine	(nDocID,  0, "     Lucia");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Manowar (ItemPR_MissionDoc)
 {
-	name 			=	"Tekst";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_Manowar;
-	scemeName		=	"MAP";
-	description		=	"S³owa pieœni";
+	name						=	"Tekst";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Manowar;
+	
+	description					=	"S³owa pieœni";
 };
 func void Use_ItWr_Manowar()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1728,25 +1860,27 @@ func void Use_ItWr_Manowar()
 				Doc_PrintLines	(nDocID,  0, "bom jest wojownikiem Innosa.");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
-instance ItWr_MinenAnteil_Mis (ItemPR_MissionDoc)
+instance ItWr_MinenAnteil_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Udzia³ w kopalni rudy Khorinis";
-	value 			=	100;
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_MinenAnteil_Mis;
-	scemeName		=	"MAP";
+	name						=	"Udzia³ w kopalni rudy Khorinis";
+	value						=	100;
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[5]			=	NAME_Value;
-	COUNT[5]		=	value;
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_MinenAnteil_MIS;
+	
+	description					=	name;
+	TEXT[5]						=	NAME_Value;
+	COUNT[5]					=	value;
 };
-func void Use_ItWr_MinenAnteil_Mis()
-{   
+func void Use_ItWr_MinenAnteil_MIS()
+{
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Udzia³ w kopalni rudy");
@@ -1776,21 +1910,24 @@ func void Use_ItWr_MinenAnteil_Mis()
 		ItWr_MinenAnteil_Mis_OneTime = true;
 	};
 };
+
 ///******************************************************************************************
 instance ItWr_MorgahardTip (ItemPR_MissionDoc)
 {
-	name 			=	"List";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_MorgahardTip;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"List";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_MorgahardTip;
+	
+	description					=	name;
 };
 func void Use_ItWr_MorgahardTip()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1805,25 +1942,27 @@ func void Use_ItWr_MorgahardTip()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Passage_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Propozycja Lee dla paladynów";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Passage;
-	scemeName		=	"MAP";
+	name						=	"Propozycja Lee dla paladynów";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[3]			=	"Dziêki tej wiadomoœci byæ mo¿e uda";
-	TEXT[4]			=   "mi siê porozmawiaæ z Lordem Hagenem.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Passage;
+	
+	description					=	name;
+	TEXT[3]						=	"Dziêki tej wiadomoœci byæ mo¿e uda";
+	TEXT[4]						=	"mi siê porozmawiaæ z Lordem Hagenem.";
 };
 func void Use_ItWr_Passage()
-{   
+{
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1840,22 +1979,25 @@ func void Use_ItWr_Passage()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 }; 
+
 ///******************************************************************************************
 instance ItWr_Pfandbrief_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Weksel";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_Pfandbrief;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Weksel";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Pfandbrief;
+	
+	description					=	name;
 };
 func void Use_ItWr_Pfandbrief()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -1872,45 +2014,50 @@ func void Use_ItWr_Pfandbrief()
 				Doc_PrintLine	(nDocID,  0, "Lehmar, lichwiarz");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Poster_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"List goñczy";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_Poster;
-	scemeName		=	"MAP";
+	name						=	"List goñczy";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[3]			=	"Moja podobizna!";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_Poster;
+	
+	description					=	name;
+	TEXT[3]						=	"Moja podobizna!";
 };
 func void Use_ItWr_Poster()
 {
 	var int nDocID;
 	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID, 1);
-				Doc_SetPage		(nDocID, 0, "Gesucht.TGA", false);
+				Doc_SetPage		(nDocID, 0, "Gesucht.tga", false);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_PyrokarsObsessionList (ItemPR_MissionDoc)
 {
-	name 			=	"Magiczny list Pyrokara";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_PyrokarsObsessionList;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Magiczny list Pyrokara";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_PyrokarsObsessionList;
+	
+	description					=	name;
 };
 func void Use_ItWr_PyrokarsObsessionList()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Opêtani");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				
 				if (Kapitel >= 9)
 				{
@@ -1944,35 +2091,37 @@ func void Use_ItWr_PyrokarsObsessionList()
 				};
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_RavensKidnapperMission_Addon (ItemPR_MissionDoc)
 {
-	name 			=	"Rozkazy";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_RavensKidnapperMission_Addon;
-	scemeName		=	"MAP";
+	name						=	"Rozkazy";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[2]			= 	"Zabra³em ten list";
-	TEXT[3]			= 	"bandycie Dexterowi.";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_RavensKidnapperMission_Addon;
+	
+	description					=	name;
+	TEXT[2]						=	"Zabra³em ten list";
+	TEXT[3]						=	"bandycie Dexterowi.";
 };
 func void Use_ItWr_RavensKidnapperMission_Addon()
 {
- 	if (!Use_ItWr_RavensKidnapperMission_Addon_OneTime)
- 	&& (MIS_Addon_Vatras_WhereAreMissingPeople != 0)
- 	{
-	 	Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
+	if (!Use_ItWr_RavensKidnapperMission_Addon_OneTime)
+	&& (MIS_Addon_Vatras_WhereAreMissingPeople != 0)
+	{
+		Log_CreateTopic (TOPIC_Addon_WhoStolePeople, LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_Addon_WhoStolePeople, LOG_RUNNING);
 		B_LogEntry (TOPIC_Addon_WhoStolePeople, "Teraz mam to na piœmie. Kruk, dawny magnat, stoi za porwaniami mieszkañców Khorinis. Jego kryjówka znajduje siê gdzieœ za górami, w pó³nocno-wschodniej czêœci Khorinis. Vatras powinien zobaczyæ ten dokument.");
 		Use_ItWr_RavensKidnapperMission_Addon_OneTime = true;
 	};
 	
- 	SCKnowsMissingPeopleAreInAddonWorld = true;
+	SCKnowsMissingPeopleAreInAddonWorld = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
@@ -1988,24 +2137,27 @@ func void Use_ItWr_RavensKidnapperMission_Addon()
 				Doc_PrintLine	(nDocID,  0, "     Kruk");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_RichterKomproBrief_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Zlecenie sêdziego";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_RichterKomproBrief;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Zlecenie sêdziego";
+	visual						=	"ItWr_Scroll_02.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_RichterKomproBrief;
+	
+	description					=	name;
 };
 func void Use_ItWr_RichterKomproBrief()
 {
 	SCKnowsRichterKomproBrief = true;
 	
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "");
@@ -2020,24 +2172,26 @@ func void Use_ItWr_RichterKomproBrief()
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_SaturasFirstMessage_Addon_Sealed (ItemPR_MissionDoc)
 {
-	name 			=	"Zapieczêtowana wiadomoœæ";
-	visual 			=	"ItWr_Scroll_02.3DS";
-	on_state[0]		=   Use_ItWr_SaturasFirstMessage;
-	scemeName		=	"MAPSEALED";
+	name						=	"Zapieczêtowana wiadomoœæ";
+	visual						=	"ItWr_Scroll_02.3ds";
 	
-	description		=	name;
-	TEXT[2]			=   "Ta wiadomoœæ zosta³a dok³adnie zapieczêtowana.";
+	scemeName					=	"MAPSEALED";
+	on_state[0]					=	Use_ItWr_SaturasFirstMessage;
+	
+	description					=	name;
+	TEXT[2]						=	"Ta wiadomoœæ zosta³a dok³adnie zapieczêtowana.";
 };
 func void Use_ItWr_SaturasFirstMessage()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				
 				Doc_PrintLine	(nDocID,  0, "Szanowny Vatrasie,");
@@ -2054,7 +2208,7 @@ func void Use_ItWr_SaturasFirstMessage()
 				Doc_PrintLine	(nDocID,  0, "Saturas");
 				Doc_Show		(nDocID);
 	
-	if (QuestStep_CavalornLetter != LOG_SUCCESS)
+	if (QuestStatus_CavalornLetter != LOG_SUCCESS)
 	{
 		Log_CreateTopic (TOPIC_Addon_KDW, LOG_MISSION);
 		Log_SetTopicStatus (TOPIC_Addon_KDW, LOG_RUNNING);
@@ -2076,39 +2230,44 @@ func void Use_ItWr_SaturasFirstMessage()
 	CreateInvItem (self, ItWr_SaturasFirstMessage_Addon);
 	SC_KnowsRanger = true;
 };
+
 ///******************************************************************************************
 instance ItWr_SaturasFirstMessage_Addon (ItemPR_MissionDoc)
 {
-	name 			=	"Otwarta wiadomoœæ";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_SaturasFirstMessage;
-	scemeName		=	"MAP";
+	name						=	"Otwarta wiadomoœæ";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[2]			=	"List Saturasa do Vatrasa";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_SaturasFirstMessage;
+	
+	description					=	name;
+	TEXT[2]						=	"List Saturasa do Vatrasa";
 };
+
 ///******************************************************************************************
 instance ItWr_Schuldenbuch (ItemPR_MissionDoc)
 {
-	name 			=	"Ksiêga D³ugów";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_SchuldBuch;
-	scemeName		=	"MAP";
-	description		= 	"Ksiêga D³ugów Lehmara";
+	name						=	"Ksiêga D³ugów";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_SchuldBuch;
+	
+	description					=	"Ksiêga D³ugów Lehmara";
 };
 func void Use_ItWr_SchuldBuch()
-{   
+{
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "Book_Brown_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "Book_Brown_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "Book_Brown_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
- 				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Umowy i d³ugi");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Ja, Mistrz Thorben, stolarz z Khorinis, jestem winien sz.p. Lehmarowi 200 monet.");
 				Doc_PrintLine	(nDocID,  0, "");
@@ -2121,7 +2280,7 @@ func void Use_ItWr_SchuldBuch()
 				Doc_PrintLine	(nDocID,  0, "");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLine	(nDocID,  1, "");
@@ -2131,22 +2290,25 @@ func void Use_ItWr_SchuldBuch()
 				Doc_PrintLines	(nDocID,  1, "");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_Silvestro_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Wiadomoœæ";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_Itwr_Silvestro;
-	scemeName		=	"MAP";
-	description		=	"Wiadomoœæ od Silvestra";
+	name						=	"Wiadomoœæ";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_Itwr_Silvestro;
+	
+	description					=	"Wiadomoœæ od Silvestra";
 };
 func void Use_Itwr_Silvestro()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLine	(nDocID,  0, "Od królewskiego paladyna Silvestra");
@@ -2161,26 +2323,28 @@ func void Use_Itwr_Silvestro()
 				Doc_PrintLine	(nDocID,  0, "Silvestro");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_StonePlateCommon_Addon (ItemPR_MissionDoc)
 {
-	name 			=	"Stara kamienna tablica";
-	visual 			=	"ItMi_StonePlate_Read_06.3ds"; 
-	on_state[0]		=	Use_ItWr_StonePlateCommon;
-	scemeName		=	"MAP";
+	name						=	"Stara kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_06.3ds";
 	
-	description		=	name;
-	inv_rotx		=	INVCAM_X_STONEPLATE_STANDARD;
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_StonePlateCommon;
+	
+	description					=	name;
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 func void Use_ItWr_StonePlateCommon()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
-		nDocID = 	Doc_Create		();
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage 	(nDocID,  0, "Maya_Stoneplate_03.TGA", false);
-					Doc_SetFont 	(nDocID, -1, FONT_Book);
+					Doc_SetPage	(nDocID,  0, "Maya_Stoneplate_03.tga", false);
+					Doc_SetFont	(nDocID, -1, FONT_Book);
 					
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
@@ -2199,23 +2363,25 @@ func void Use_ItWr_StonePlateCommon()
 		B_Say (self, self, "$CANTREADTHIS");
 	};
 };
+
 ///******************************************************************************************
-instance ItWr_UseLampIdiot_Mis (ItemPR_MissionDoc)
+instance ItWr_UseLampIdiot_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Podniszczony list";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_UseLampIdiot_Mis;
-	scemeName		=	"MAP";
+	name						=	"Podniszczony list";
+	visual						=	"ItWr_Scroll_01.3ds";
 	
-	description		=	name;
-	TEXT[0]			=	"z ksiêgi 'Dwór Irdorath'";
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_UseLampIdiot_MIS;
+	
+	description					=	name;
+	TEXT[0]						=	"z ksiêgi 'Dwór Irdorath'";
 };
-func void Use_ItWr_UseLampIdiot_Mis()
+func void Use_ItWr_UseLampIdiot_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage		(nDocID,  0, "letters.TGA", false);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
 				Doc_SetFont		(nDocID, -1, FONT_BookHeadline);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
@@ -2240,28 +2406,31 @@ func void Use_ItWr_UseLampIdiot_Mis()
 				Doc_SetMargins	(nDocID, -1, 200, 50, 50, 50, 1);
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
-instance ItWr_VinosKellergeister_Mis (ItemPR_MissionDoc)
+instance ItWr_VinosKellergeister_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Duch wina";
-	visual 			=	"ItWr_Book_02_05.3DS";
-	on_state[0]		=   Use_ItWr_VinosKellergeister_Mis;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Duch wina";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_VinosKellergeister_MIS;
+	
+	description					=	name;
 };
-func void Use_ItWr_VinosKellergeister_Mis()
+func void Use_ItWr_VinosKellergeister_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "BOOK_RED_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "BOOK_RED_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "BOOK_RED_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "BOOK_RED_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
- 				Doc_PrintLine	(nDocID,  0, "");
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Potêga winnego grona");
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "...W swoim czasie spróbowa³em niejednego, ale ten owoc, który dosta³em w zesz³ym tygodniu z zagranicy... przekroczy³ wszystkie oczekiwania...");
@@ -2271,22 +2440,25 @@ func void Use_ItWr_VinosKellergeister_Mis()
 				Doc_PrintLines	(nDocID,  0, "");
 				
 				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
+				Doc_SetFont		(nDocID,  1, FONT_BookHeadline);
+				Doc_SetFont		(nDocID,  1, FONT_Book);
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "...nie jest Ÿle, ale ca³y czas martwiê siê, ¿e ktoœ mo¿e mnie z³apaæ w mojej tajnej pracowni. Nie mam pojêcia, co zrobiliby stra¿nicy, gdyby siê o tym wszystkim dowiedzieli. Byæ mo¿e wyrzuciliby mnie poza Barierê...");
 				Doc_PrintLine	(nDocID,  1, "");
 				Doc_PrintLines	(nDocID,  1, "...Nabrali podejrzeñ. Muszê wszystko zostawiæ, dopóki sprawa troszkê nie przycichnie i nie nabiorê pewnoœci, ¿e nikt mnie ju¿ nie podejrzewa...");
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
-instance ItWr_XardasBookForPyrokar_Mis (ItemPR_MissionDoc)
+instance ItWr_XardasBookForPyrokar_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Dwór Irdorath";
-	visual 			=	"ItWr_Book_02_05.3ds";
-	on_state[0]		=	Use_ItWr_XardasBookForPyrokar;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Dwór Irdorath";
+	visual						=	"ItWr_Book_02_05.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_XardasBookForPyrokar;
+	
+	description					=	name;
 };
 func void Use_ItWr_XardasBookForPyrokar()
 {
@@ -2294,22 +2466,25 @@ func void Use_ItWr_XardasBookForPyrokar()
 	Wld_PlayEffect ("spellFX_Fear", self, self, 0, 0, 0, false);
 	Snd_Play("MFX_FEAR_CAST");
 };
+
 ///******************************************************************************************
 instance ItWr_XardasLetterToOpenBook_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"List Xardasa";
-	visual 			=	"ItWr_Scroll_01.3DS";
-	on_state[0]		=   Use_ItWr_XardasLetterToOpenBook;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"List Xardasa";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_XardasLetterToOpenBook;
+	
+	description					=	name;
 };
 func void Use_ItWr_XardasLetterToOpenBook()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID, -1, FONT_Book);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID, -1, FONT_Book);
 				
 				Doc_SetMargins	(nDocID, -1, 50, 50, 50, 50, 1);
 				Doc_PrintLines	(nDocID,  0, "");
@@ -2335,87 +2510,95 @@ func void Use_ItWr_XardasLetterToOpenBook()
 	{
 		B_LogEntry (TOPIC_BuchHallenVonIrdorath, "W swoim liœcie Xardas poinformowa³ mnie, jakie s³owa otwieraj¹ ksiêgê DWÓR IRDORATH.");
 	};
+	
 	MIS_Xardas_SCCanOpenIrdorathBook = true;
 };
+
 ///******************************************************************************************
-instance ItWr_XardasSeamapBook_Mis (ItemPR_MissionDoc) 
+instance ItWr_XardasSeamapBook_MIS (ItemPR_MissionDoc) 
 {
-	name 			=	"Zakurzona ksiêga";
-	visual 			=	"ItWr_Book_02_01.3ds";
-	on_state[0]		=	Use_ItWr_XardasSeamapBook_Mis;
-	scemeName		=	"MAP";
-	description		=	name;
+	name						=	"Zakurzona ksiêga";
+	visual						=	"ItWr_Book_02_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_XardasSeamapBook_MIS;
+	
+	description					=	name;
 };
-func void Use_ItWr_XardasSeamapBook_Mis()
+func void Use_ItWr_XardasSeamapBook_MIS()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  2);
-				Doc_SetPage 	(nDocID,  0, "BOOK_BROWN_L.tga", false);
-				Doc_SetPage 	(nDocID,  1, "BOOK_BROWN_R.tga", false);
+				Doc_SetPage		(nDocID,  0, "BOOK_BROWN_L.tga", false);
+				Doc_SetPage		(nDocID,  1, "BOOK_BROWN_R.tga", false);
 				
- 				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
- 				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "...Jestem pewien, ¿e ta budowla to Dwór Irdorath. Znajduje siê on na niewielkiej wyspie, ca³kiem blisko przystani w Khorinis. Nie ma w¹tpliwoœci, ¿e Beliara interesuje ruda z kopalñ...");
 				Doc_PrintLines	(nDocID,  0, "");
+			
+				if (hero.guild == GIL_PAL)
+				{
+					Doc_PrintLines	(nDocID,  0, "...Im s¹ potê¿niejsi, tym bardziej przydatni bêd¹ dla niego jako o¿ywieñczy s³udzy. Pokonanie tych upad³ych paladynów to nie³atwe zadanie. Jeden z nich wpad³ w moje rêce. Mam tylko nadziejê, ¿e pozostali nie dowiedz¹ siê o nim...");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_SetFont		(nDocID,  1, FONT_BookHeadline);
+					Doc_SetFont		(nDocID,  1, FONT_Book);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "...Upad³y paladyn nie reaguje na ¿adne bodŸce. Jego zbrojê i inne przedmioty schowa³em w tylnej komorze. Drzwi mo¿na otworzyæ tylko od wewn¹trz, wiêc stworzy³em na tê okazjê specjaln¹ runê teleportacji. Instrukcje s¹ w almanachu, by móg³ je znaleŸæ Wybraniec...");
+				}
+				else if (hero.guild == GIL_KDF)
+				{
+					Doc_PrintLines	(nDocID,  0, "...Znaki s¹ jasne! Gdy przybêdzie Wybrany, przyda siê mu ka¿da pomoc. Beliar i tak jest ju¿ zbyt silny. Zgromadzi³em tu na wszelki wypadek kilka przydatnych artefaktów. Podejrzewam, ¿e Wybraniec bêdzie jednym z nas,");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_SetFont	(nDocID,  1, FONT_BookHeadline);
+					Doc_SetFont	(nDocID,  1, FONT_Book);
+					Doc_PrintLines	(nDocID,  1, "dlatego spisa³em dla niego instrukcje w almanachu.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "...Nie mam ju¿ z³udzeñ. Jesteœmy bezbronni wobec wyroków losu. Gdy Beliar odpowiednio uroœnie w si³ê, spróbuje przej¹æ w³adzê nad ca³ym œwiatem. Muszê znaleŸæ Wybrañca!");
+				}
+				else if (hero.guild == GIL_DJG)
+				{
+					Doc_PrintLines	(nDocID,  0, "...Wybuchnie wojna, która zadecyduje o losach œwiata. Chyba jestem jedynym, który potrafi odczytaæ znaki. Pozostali po prostu je ignoruj¹. Wybraniec nadejdzie, a jego przyjœcie bêdzie oznaczaæ pocz¹tek wojny. Odwieczna rywalizacja mo¿e zostaæ rozstrzygniêta.");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_SetFont	(nDocID,  1, FONT_BookHeadline);
+					Doc_SetFont	(nDocID,  1, FONT_Book);
+					Doc_PrintLines	(nDocID,  1, "Nie bêdê sta³ bezczynnie, pozwalaj¹c innym decydowaæ o losach œwiata.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "...Ze staro¿ytnych pism dowiedzia³em siê, jak stworzyæ legendarn¹ broñ pradawnych Smoczych Mistrzów. Nie wiem jednak, gdzie szukaæ potrzebnych sk³adników. Na wszelki wypadek zapisa³em wszystko w almanachu. Kto wie, mo¿e przyjdzie nam walczyæ tak¿e ze smokami.");
+				};
 				
-			if (hero.guild == GIL_PAL)
-			{
-				Doc_PrintLines	(nDocID,  0, "...Im s¹ potê¿niejsi, tym bardziej przydatni bêd¹ dla niego jako o¿ywieñczy s³udzy. Pokonanie tych upad³ych paladynów to nie³atwe zadanie. Jeden z nich wpad³ w moje rêce. Mam tylko nadziejê, ¿e pozostali nie dowiedz¹ siê o nim...");
-				
-				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
-				Doc_PrintLine	(nDocID,  1, "");
-				Doc_PrintLines	(nDocID,  1, "...Upad³y paladyn nie reaguje na ¿adne bodŸce. Jego zbrojê i inne przedmioty schowa³em w tylnej komorze. Drzwi mo¿na otworzyæ tylko od wewn¹trz, wiêc stworzy³em na tê okazjê specjaln¹ runê teleportacji. Instrukcje s¹ w almanachu, by móg³ je znaleŸæ Wybraniec...");
-			}
-			else if (hero.guild == GIL_KDF)
-			{
-				Doc_PrintLines	(nDocID,  0, "...Znaki s¹ jasne! Gdy przybêdzie Wybrany, przyda siê mu ka¿da pomoc. Beliar i tak jest ju¿ zbyt silny. Zgromadzi³em tu na wszelki wypadek kilka przydatnych artefaktów. Podejrzewam, ¿e Wybraniec bêdzie jednym z nas,");
-				
-				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
-				Doc_PrintLines	(nDocID,  1, "dlatego spisa³em dla niego instrukcje w almanachu.");
-				Doc_PrintLine	(nDocID,  1, "");
-				Doc_PrintLines	(nDocID,  1, "...Nie mam ju¿ z³udzeñ. Jesteœmy bezbronni wobec wyroków losu. Gdy Beliar odpowiednio uroœnie w si³ê, spróbuje przej¹æ w³adzê nad ca³ym œwiatem. Muszê znaleŸæ Wybrañca!");
-			}
-			else if (hero.guild == GIL_DJG)
-			{
-				Doc_PrintLines	(nDocID,  0, "...Wybuchnie wojna, która zadecyduje o losach œwiata. Chyba jestem jedynym, który potrafi odczytaæ znaki. Pozostali po prostu je ignoruj¹. Wybraniec nadejdzie, a jego przyjœcie bêdzie oznaczaæ pocz¹tek wojny. Odwieczna rywalizacja mo¿e zostaæ rozstrzygniêta.");
-				
-				Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
-				Doc_SetFont 	(nDocID,  1, FONT_BookHeadline);
-				Doc_SetFont 	(nDocID,  1, FONT_Book);
-				Doc_PrintLines	(nDocID,  1, "Nie bêdê sta³ bezczynnie, pozwalaj¹c innym decydowaæ o losach œwiata.");
-				Doc_PrintLine	(nDocID,  1, "");
-				Doc_PrintLines	(nDocID,  1, "...Ze staro¿ytnych pism dowiedzia³em siê, jak stworzyæ legendarn¹ broñ pradawnych Smoczych Mistrzów. Nie wiem jednak, gdzie szukaæ potrzebnych sk³adników. Na wszelki wypadek zapisa³em wszystko w almanachu. Kto wie, mo¿e przyjdzie nam walczyæ tak¿e ze smokami.");
-			};
 				Doc_Show		(nDocID);
 };
+
 ///******************************************************************************************
 instance ItWr_ZugBruecke_MIS (ItemPR_MissionDoc)
 {
-	name 			=	"Stary list";
-	visual 			=	"ItWr_Scroll_01.3ds";
-	on_state[0]		=	Use_ItWr_ZugBruecke;
-	scemeName		=	"MAP";
-	description		= 	name;
+	name						=	"Stary list";
+	visual						=	"ItWr_Scroll_01.3ds";
+	
+	scemeName					=	"MAP";
+	on_state[0]					=	Use_ItWr_ZugBruecke;
+	
+	description					=	name;
 };
 func void Use_ItWr_ZugBruecke()
 {
 	var int nDocID;
-	nDocID = 	Doc_Create		();
+	nDocID =	Doc_Create		();
 				Doc_SetPages	(nDocID,  1);
-				Doc_SetPage 	(nDocID,  0, "letters.TGA", false);
-				Doc_SetFont 	(nDocID,  0, FONT_BookHeadline);
+				Doc_SetPage		(nDocID,  0, "letters.tga", false);
+				Doc_SetFont		(nDocID,  0, FONT_BookHeadline);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "   Ostatnie ostrze¿enie!");
 				Doc_SetMargins	(nDocID, -1, 50, 50, 70, 50, 1);
-				Doc_SetFont 	(nDocID,  0, FONT_Book);
+				Doc_SetFont		(nDocID,  0, FONT_Book);
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLine	(nDocID,  0, "");
 				Doc_PrintLines	(nDocID,  0, "Nic mnie nie obchodzi, czy uda siê wam przeleŸæ przez most z drugiej strony. Dla mnie mo¿ecie piec siê w piekle.");

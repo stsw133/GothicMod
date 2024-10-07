@@ -18,7 +18,7 @@ instance WzA_17080_Konrad (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 80);
-	NpcFn_SetFightSkills (self, FightTalent_Master);
+	NpcFn_AddFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

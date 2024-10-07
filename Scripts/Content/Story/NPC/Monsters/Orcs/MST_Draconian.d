@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Draconian
+///******************************************************************************************
 prototype Mst_Default_Draconian (C_Npc)
 {
 	/// ------ Monster ------
@@ -11,7 +13,7 @@ prototype Mst_Default_Draconian (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 35);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -30,12 +32,16 @@ prototype Mst_Default_Draconian (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Draconian()
 {
 	Mdl_SetVisual		(self, "Draconian.mds");
 	Mdl_SetVisualBody	(self, "Drc_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Draconian (Mst_Default_Draconian)
 {

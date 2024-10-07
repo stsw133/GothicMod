@@ -175,7 +175,7 @@ instance DIA_Wulfgar_Advantage		(C_INFO)
 
 func int DIA_Wulfgar_Advantage_Condition ()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -204,7 +204,7 @@ instance DIA_Wulfgar_HowToBegin	(C_INFO)
 
 func int DIA_Wulfgar_HowToBegin_Condition ()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	|| (other.guild != GIL_NONE)
 	{
 		return TRUE;
@@ -237,7 +237,7 @@ INSTANCE DIA_Wulfgar_Teach(C_INFO)
 
 FUNC INT DIA_Wulfgar_Teach_Condition()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	&& (other.guild == GIL_SLD || other.guild == GIL_DJG)
 	{
 		return TRUE;

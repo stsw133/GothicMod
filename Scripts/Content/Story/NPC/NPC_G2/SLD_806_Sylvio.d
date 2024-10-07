@@ -11,7 +11,7 @@ instance SLD_806_Sylvio (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

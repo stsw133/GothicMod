@@ -10,7 +10,7 @@ instance BAU_984_Niclas (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 40);
+	NpcFn_AddFightSkills (self, 40);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

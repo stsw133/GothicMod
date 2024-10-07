@@ -18,7 +18,7 @@ const int _CC_List = 0; // Non-persistent record of all CCs
 //========================================
 func int CC_Active(var func function) {
     if (!_CC_List) {
-        return false;
+        return FALSE;
     };
 
     var int symID; symID = MEM_GetFuncID(function);
@@ -28,11 +28,11 @@ func int CC_Active(var func function) {
     repeat(i, a.numInArray); var int i;
         var CCItem cc; cc = _^(MEM_ReadIntArray(a.array, i));
         if (cc.fncID == symID) {
-            return true;
+            return TRUE;
         };
     end;
 
-    return false;
+    return FALSE;
 };
 
 //========================================

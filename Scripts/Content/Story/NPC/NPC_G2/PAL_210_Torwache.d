@@ -13,7 +13,7 @@ instance Pal_210_Torwache (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 55);
+	NpcFn_AddFightSkills (self, 55);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

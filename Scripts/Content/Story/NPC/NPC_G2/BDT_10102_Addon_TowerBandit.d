@@ -10,7 +10,7 @@ instance BDT_10102_Addon_TowerBandit (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 10);
-	NpcFn_SetFightSkills (self, 60);
+	NpcFn_AddFightSkills (self, 60);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

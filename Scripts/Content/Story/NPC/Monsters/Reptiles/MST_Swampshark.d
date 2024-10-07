@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Swampshark
+///******************************************************************************************
 prototype Mst_Default_Swampshark (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Swampshark (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Swampshark()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_Desertshark()
 	Mdl_SetVisual		(self, "Swampshark.mds");
 	Mdl_SetVisualBody	(self, "Swa_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Swampshark (Mst_Default_Swampshark)
 {

@@ -1,8 +1,7 @@
 ///******************************************************************************************
-///	MOD_BodyStates
+/// MOD_BodyStates
 ///******************************************************************************************
 
-//var int bsDrunk;
 var int bsArmor;
 var int bsObsession;
 var int bsPoison;
@@ -39,23 +38,19 @@ func void Disable_HeavyArmor()
 };
 
 /// ------ Obsession ------
-func void MOD_ObsessionON()
+func void MOD_SetObsession(var int value)
 {
-	if /*(Npc_IsPlayer(self))
-	&&*/ (bsObsession == 0)
+	if (bsObsession == -1)
 	{
-		bsObsession = 1;
+		return;
+	};
+	
+	if (!bsObsession && value)
+	|| (bsObsession && !value)
+	{
 		Bar_Delete(BarLoop_mpBar);
 	};
-};
-func void MOD_ObsessionOFF()
-{
-	if /*(Npc_IsPlayer(self))
-	&&*/ (bsObsession == 1)
-	{
-		bsObsession = 0;
-		Bar_Delete(BarLoop_mpBar);
-	};
+	bsObsession = value;
 };
 
 /// ------ Poison ------
@@ -76,45 +71,45 @@ func void MOD_SetPoison(var int value)
 };
 
 /// ------ Stealth ------
-func void MOD_SetStealth(var C_Npc slf, var int value)
+func void MOD_SetStealth(var C_Npc slf, var int time)
 {
-	if (value > 0)
+	if (!Npc_IsPlayer(slf))
 	{
-		if (Npc_IsPlayer(slf) && !slf.aivar[AIV_Invisible])
+		return;
+	};
+	
+	if (time > 0)
+	{
+		if (!slf.aivar[AIV_Invisible])
 		{
-			//B_SetNpcVisibilityPercent (slf, 10);
+			//Npc_SetVisibilityPercent (slf, 10);
 			slf.flags = slf.flags | NPC_FLAG_GHOST;
 			
-			if (selectedHero >= 0) { NpcFn_SetHeroVisual (slf, -selectedHero-1); };
+			if (selectedHeroSkin >= 0)
+			{
+				NpcFn_SetHeroVisual(slf, -selectedHeroSkin-1);
+			};
+			
 			slf.aivar[AIV_Invisible] = true;
 		};
-		if (Npc_IsPlayer(slf))
-		{
-			bsStealth = value;
-		};
+		
+		bsStealth = time;
 	}
 	else
 	{
-		//B_SetNpcVisibilityPercent (slf, 100);
+		//Npc_SetVisibilityPercent (slf, 100);
 		slf.flags = slf.flags & ~NPC_FLAG_GHOST;
 		
 		if (!Npc_IsInState(slf, ZS_TALK))
 		{
 			slf.aivar[AIV_Invisible] = false;
 		};
-		if (Npc_IsPlayer(slf))
+		
+		if (selectedHeroSkin < 0)
 		{
-			if (selectedHero < 0) { NpcFn_SetHeroVisual (slf, -selectedHero-1); };
-			bsStealth = 0;
+			NpcFn_SetHeroVisual(slf, -selectedHeroSkin-1);
 		};
+		
+		bsStealth = 0;
 	};
 };
-
-/*
-HookEngineF(oCGame__HandleEvent, oCGame__HandleEvent_Len, MOD_HandleKeys);
-func void MOD_HandleKeys()
-{
-	var int key; key = MEM_ReadInt(ESP + 4);
-	if (QS_CheckKey(key, KEY_1))	{	QS_UseItem(1);	MEM_WriteInt(ESP + 4, -1);	};
-};
-*/

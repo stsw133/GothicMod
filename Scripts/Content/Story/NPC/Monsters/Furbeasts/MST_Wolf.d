@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Wolf
+///******************************************************************************************
 prototype Mst_Default_Wolf (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Wolf (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Wolf()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_BlackWolf()
 	Mdl_SetVisual		(self, "Wolf.mds");
 	Mdl_SetVisualBody	(self, "Wol_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Wolf (Mst_Default_Wolf)
 {
@@ -56,6 +62,7 @@ instance BlackWolf (Mst_Default_Wolf)
 	NpcFn_SetMonsterProtection (self, level);
 	B_SetVisuals_BlackWolf();
 };
+
 ///******************************************************************************************
 instance PEPES_YWolf1 (Mst_Default_Wolf)
 {

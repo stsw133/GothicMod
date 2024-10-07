@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Snapper
+///******************************************************************************************
 prototype Mst_Default_Snapper (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Snapper (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_SNAPPER;
 	
-	NpcFn_SetAttributesToLevel (self, 12);
+	NpcFn_SetAttributesToLevel (self, 15);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Snapper (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Snapper()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_DesertSnapper()
 	Mdl_SetVisual		(self, "Snapper.mds");
 	Mdl_SetVisualBody	(self, "Sna_Desert_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Snapper (Mst_Default_Snapper)
 {
@@ -95,6 +101,7 @@ instance NewMine_LeadSnapper (Mst_Default_Snapper)
 	
 	CreateInvItem (self, ItAt_ClawLeader);
 };
+
 ///******************************************************************************************
 instance Grimbald_Snapper1 (Mst_Default_Snapper)
 {

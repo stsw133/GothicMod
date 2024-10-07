@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Mummy
+///******************************************************************************************
 prototype Mst_Default_Mummy (C_Npc)
 {
 	/// ------ Monster ------
@@ -29,12 +31,16 @@ prototype Mst_Default_Mummy (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Mummy()
 {
 	Mdl_SetVisual		(self, "Zombie.mds");
 	Mdl_SetVisualBody	(self, "Mum_Body", self.aivar[AIV_BodyTex], default, "Mum_Head", self.aivar[AIV_BodyTex], default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Mummy (Mst_Default_Mummy)
 {

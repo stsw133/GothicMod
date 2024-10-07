@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// OrcAssassin
+///******************************************************************************************
 prototype Mst_Default_OrcAssassin (C_Npc)
 {
 	/// ------ Monster ------
@@ -13,7 +15,7 @@ prototype Mst_Default_OrcAssassin (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 30);
-	NpcFn_SetFightSkills (self, 70);
+	NpcFn_AddFightSkills (self, 70);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -28,12 +30,16 @@ prototype Mst_Default_OrcAssassin (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_OrcAssassin()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "Orc_Dark_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance OrcAssassin (Mst_Default_OrcAssassin)
 {

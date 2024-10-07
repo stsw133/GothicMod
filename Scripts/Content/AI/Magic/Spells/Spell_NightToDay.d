@@ -23,7 +23,7 @@ func void Spell_Effect_NightToDay()
 	{
 		if (Wld_IsTime(20,00, 08,00))
 		{
-			B_ScaleTime(20000);
+			Wld_AddWorldTime(20000);
 		}
 		else
 		{

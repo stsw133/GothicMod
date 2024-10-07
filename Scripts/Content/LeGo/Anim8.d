@@ -39,13 +39,17 @@ func void A8Head_UnArchiver(var A8Head this) {
     if(PM_Exists("dif"))   { this.dif  = PM_LoadInt("dif");      };
     if(PM_Exists("ddif"))  { this.ddif = PM_LoadInt("ddif");     };
     this.queue = PM_Load("queue");
-};
 
-func void A8Head_Delete(var A8Head this) {
-    if (this.dfnc) {
-        MEM_CallByPtr(this.dfnc);
+    // Fix function signature of invalid functions
+    if (this.dfnc == MEM_GetFuncPtr(_PM_EmptyFunc_int)) {
+        this.dfnc = MEM_GetFuncPtr(_PM_EmptyFunc_void);
+    };
+    if (this.fnc == MEM_GetFuncPtr(_PM_EmptyFunc_int)) && (this.data) {
+        this.fnc = MEM_GetFuncPtr(_PM_EmptyFunc_int_int);
     };
 };
+
+
 
 func void A8Head_Empty(var A8Head h) {
     if(!h.queue) { return; };
@@ -57,6 +61,13 @@ func void A8Head_Empty(var A8Head h) {
 func void A8Head_EmptySub(var int node) {
     if(Hlp_IsValidHandle(MEM_ReadInt(node))) {
         delete(MEM_ReadInt(node));
+    };
+};
+
+func void A8Head_Delete(var A8Head this) {
+	A8Head_Empty(this);
+    if (this.dfnc) {
+        MEM_CallByPtr(this.dfnc);
     };
 };
 
@@ -150,7 +161,7 @@ func void _Anim8_Ext(var int hndl, var int targetVal, var int timeSpan, var int 
     };
       //if((h.value == c.target) && (!UseQueue)) { interpol = A8_Wait; }; // This seemed to be useless and responsible for a bug
     c.startVal = h.value;
-    c.startTime = Timer();
+    c.startTime = TimerGT();
     c.timeSpan = mkf(timeSpan);
     c.interpol = interpol;
     _Anim8_SetVelo(h, c);
@@ -161,30 +172,11 @@ func void _Anim8_Ext(var int hndl, var int targetVal, var int timeSpan, var int 
 // [intern] FF-Loop
 //========================================
 func void _Anim8_FFLoop() {
-    MEM_PushIntParam(A8Head@);
-    MEM_GetFuncID(_Anim8_Loop);
-    MEM_StackPos.position = foreachHndl_ptr;
+    foreachHndl(A8Head@, _Anim8_Loop);
 };
 func int _Anim8_Loop(var int hndl) {
     var A8Head h; h = get(hndl);
     if(!h.queue) {
-        return rContinue;
-    };
-    if(h.queue < 1048576) {
-        var int s; s = SB_New();
-        SB ("A8 sucks. Handle ");
-        SBi(hndl);
-        SB (" of instance ");
-        SB (_PM_InstName(getInst(hndl)));
-        SB (" messed up with a queue of ");
-        SBi(h.queue);
-        SB (". I will ignore it.");
-        SB (STR_Unescape("\n"));
-        SB ("The pointer was ");
-        SBi(getPtr(hndl));
-        SB ("...");
-        MEM_Warn(SB_ToString());
-        SB_Destroy();
         return rContinue;
     };
     if(!List_HasLength(h.queue, 2)) {
@@ -200,7 +192,7 @@ func int _Anim8_Loop(var int hndl) {
     var A8Command c; c = get(ldata);
 
     // Eigentliche Interpolierung
-    var int t; t = mkf(Timer() - c.startTime);
+    var int t; t = mkf(TimerGT() - c.startTime);
 
     if(c.interpol&&c.interpol < A8_Wait) {
         if(c.interpol == A8_Constant) {
@@ -235,6 +227,10 @@ func int _Anim8_Loop(var int hndl) {
             roundf(h.value);
         };
         MEM_CallByPtr(h.fnc);
+        // Might have been deleted just now
+        if (!Hlp_IsValidHandle(hndl)) {
+            return rContinue;
+        };
     };
 
     if(gef(t, c.timeSpan)) {
@@ -249,7 +245,7 @@ func int _Anim8_Loop(var int hndl) {
             };
             c = get(ldata);
             c.startVal = h.value;
-            c.startTime = Timer();
+            c.startTime = TimerGT();
             _Anim8_SetVelo(h, c);
         }
         else if(h.dif) {
@@ -261,6 +257,7 @@ func int _Anim8_Loop(var int hndl) {
             delete(hndl);
         };
     };
+    return rContinue;
 };
 
 //========================================

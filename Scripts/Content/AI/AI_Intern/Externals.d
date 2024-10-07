@@ -1,10 +1,10 @@
 ///******************************************************************************************
-///	Externals
+/// Externals
 ///******************************************************************************************
 
 /// ------ Prints ------
-func void	Print 						(var string s0) { };
-func void	PrintMulti 					(var string s0, var string s1, var string s2, var string s3, var string s4) { };
+func void	Print						(var string s0) { };
+func void	PrintMulti					(var string s0, var string s1, var string s2, var string s3, var string s4) { };
 func void	PrintDebug					(var string s) { };
 func void	PrintScreen					(var int dialogNr, var string msg, var int posx, var int posy, var string font, var int timeSec) { };
 
@@ -19,23 +19,23 @@ func int	Hlp_GetInstanceID			(var C_Npc npc) { return 0; };
 func int	Hlp_GetInstanceID			(var C_Item item) { return 0; };
 
 /// ------ Time ------
-func void	AI_Wait 					(var C_Npc n0, var float n1) { };
+func void	AI_Wait						(var C_Npc n0, var float n1) { };
 func int	Npc_GetStateTime			(var C_Npc self) { return 0; };
 func void	Npc_SetStateTime			(var C_Npc self, var int seconds) { };
 func int	Wld_GetDay					() { };
 func int	Wld_IsTime					(var int hour1, var int min1, var int hour2, var int min2) { return 0; };
 
 /// ------ Spawn ------
-func void 	Wld_InsertNpc				(var int npcInstance, var string spawnPoint) { };
-func void 	Wld_InsertNpcAndRespawn 	(var int instance, var string spawnPoint, var float spawnDelay)
+func void	Wld_InsertNpc				(var int npcInstance, var string spawnPoint) { };
+func void	Wld_InsertNpcAndRespawn		(var int instance, var string spawnPoint, var float spawnDelay)
 
 func void	Wld_InsertItem				(var int itemInstance, var string spawnPoint) { };
-func int	Wld_RemoveItem          	(var C_Item item) { };
+func int	Wld_RemoveItem				(var C_Item item) { };
 
 /// ------ Animations ------
-func void	AI_PlayAni 					(var C_Npc n0, var string s0) { };
+func void	AI_PlayAni					(var C_Npc n0, var string s0) { };
 func void	AI_StandUp					(var C_Npc self) { };
-func void	AI_StandUpQuick 			(var C_Npc self)
+func void	AI_StandUpQuick				(var C_Npc self)
 func void	AI_Quicklook				(var C_Npc self, var C_Npc other) { };
 func void	AI_LookAt					(var C_Npc self, var string name) { };
 func void	AI_LookAtNpc				(var C_Npc self, var C_Npc other) { };
@@ -60,17 +60,17 @@ func int	Wld_GetMobState				(var C_Npc self, var string schemeName);
 func void	AI_SetWalkmode				(var C_Npc n, var int n0) { };
 func void	AI_GotoWP					(var C_Npc n0, var string s0) { };
 func void	AI_GotoFP					(var C_Npc self, var string fpName) { };
-func void	AI_GotoNextFP 				(var C_Npc self, var string fpName) { };
+func void	AI_GotoNextFP				(var C_Npc self, var string fpName) { };
 func void	AI_GotoNpc					(var C_Npc self, var C_Npc other) { };
 func void	AI_GotoItem					(var C_Npc self, var C_Item item) { };
-func void	AI_GotoSound 				(var C_Npc n0) { };
+func void	AI_GotoSound				(var C_Npc n0) { };
 func void	AI_Teleport					(var C_Npc self, var string waypoint);
 
 func string	Npc_GetNearestWP			(var C_Npc self) { return ""; };
 func string	Npc_GetNextWP				(var C_Npc self) { return ""; };
 
 func int	Wld_IsFPAvailable			(var C_Npc self, var string fpName) { };
-func int	Wld_IsNextFPAvailable   	(var C_Npc self, var string fpName)
+func int	Wld_IsNextFPAvailable		(var C_Npc self, var string fpName)
 func int	Npc_IsOnFP					(var C_Npc self, var string name)
 func int	Npc_IsWayBlocked			(var C_Npc self) { };
 
@@ -106,25 +106,25 @@ func void	Npc_SetToFightMode			(var C_Npc self, var int weapon) { };
 func int	Npc_IsInFightMode			(var C_Npc self, var int fmode) { return 0; };
 
 /// ------ Weapons ------
-func void	AI_DrawWeapon 				(var C_Npc n0) { };
+func void	AI_DrawWeapon				(var C_Npc n0) { };
 func void	AI_ReadyMeleeWeapon			(var C_Npc self) { };
 func void	AI_ReadyRangedWeapon		(var C_Npc self) { };
-func void	AI_RemoveWeapon 			(var C_Npc n0) { };
+func void	AI_RemoveWeapon				(var C_Npc n0) { };
 
 func C_Item	Npc_GetReadiedWeapon		(var C_Npc n0) { };
 
 func int	Npc_HasReadiedWeapon		(var C_Npc self) { return 0; };
-func int	Npc_HasReadiedMeleeWeapon 	(var C_Npc self) { return 0; };
+func int	Npc_HasReadiedMeleeWeapon	(var C_Npc self) { return 0; };
 func int	Npc_HasReadiedRangedWeapon	(var C_Npc self) { return 0; };
 func int	Npc_HasRangedWeaponWithAmmo	(var C_Npc npc)
 
 /// ------ Targets ------
 func int	Npc_GetTarget				(var C_Npc self)
-func int	Npc_GetNextTarget 			(var C_Npc self)
-func int	Npc_IsNextTargetAvailable 	(var C_Npc self)
+func int	Npc_GetNextTarget			(var C_Npc self)
+func int	Npc_IsNextTargetAvailable	(var C_Npc self)
 func void	Npc_SetTarget 				(var C_Npc self, var C_Npc other)
 func void	AI_Attack					(var C_Npc self)
-func void	AI_FinishingMove 			(var C_Npc self, var C_Npc other)
+func void	AI_FinishingMove			(var C_Npc self, var C_Npc other)
 func void	AI_Defend					(var C_Npc self)
 
 func void	AI_Flee						(var C_Npc self) { };
@@ -149,7 +149,7 @@ func void	Mob_CreateItems				(var string mobName, var int itemInstance, var int 
 func int	Mob_HasItems				(var string mobName, var int itemInstance) { return 0; };
 
 /// ------ Equip items ------
-func void	EquipItem 					(var C_Npc n0, var int n1) { };
+func void	EquipItem					(var C_Npc n0, var int n1) { };
 func void	AI_EquipBestMeleeWeapon		(var C_Npc self) { };
 func void	AI_EquipBestRangedWeapon	(var C_Npc self) { };
 func void	AI_EquipBestArmor			(var C_Npc self) { };
@@ -157,9 +157,9 @@ func void	AI_UnequipWeapons			(var C_Npc self) { };
 func void	AI_UnequipArmor				(var C_Npc self) { };
 func void	AI_EquipArmor				(var C_Npc owner, var C_Item armor_from_owners_inventory)
 
-func C_Item	Npc_GetEquippedMeleeWeapon 	(var C_Npc n0) { };
-func C_Item	Npc_GetEquippedRangedWeapon (var C_Npc n0) { };
-func C_Item	Npc_GetEquippedArmor 		(var C_Npc n0) { };
+func C_Item	Npc_GetEquippedMeleeWeapon	(var C_Npc n0) { };
+func C_Item	Npc_GetEquippedRangedWeapon	(var C_Npc n0) { };
+func C_Item	Npc_GetEquippedArmor		(var C_Npc n0) { };
 
 func int	Npc_HasEquippedWeapon		(var C_Npc self) { return 0; };
 func int	Npc_HasEquippedMeleeWeapon	(var C_Npc self) { return 0; };
@@ -167,18 +167,18 @@ func int	Npc_HasEquippedRangedWeapon	(var C_Npc self) { return 0; };
 func int	Npc_HasEquippedArmor		(var C_Npc self) { return 0; };
 
 /// ------ Ownership ------
-func int  	Npc_OwnedByNpc				(var C_Item item, var C_Npc npc) { return 0; };
-func int  	Npc_OwnedByGuild			(var C_Item item, var int guild) { return 0; };
-func int 	Npc_IsDetectedMobOwnedByNpc	(var C_Npc user, var C_Npc owner ) { return 0; };
-func int 	Npc_IsDetectedMobOwnedByGuild(var C_Npc user, var int ownerguild ) { return 0; };
+func int	Npc_OwnedByNpc				(var C_Item item, var C_Npc npc) { return 0; };
+func int	Npc_OwnedByGuild			(var C_Item item, var int guild) { return 0; };
+func int	Npc_IsDetectedMobOwnedByNpc	(var C_Npc user, var C_Npc owner ) { return 0; };
+func int	Npc_IsDetectedMobOwnedByGuild(var C_Npc user, var int ownerguild ) { return 0; };
 
 /// ------ Trade ------
-func void	Npc_GiveItem 				(var C_Npc n0, var C_Item n1, var C_Npc n2) { };
+func void	Npc_GiveItem				(var C_Npc n0, var C_Item n1, var C_Npc n2) { };
 func int	Npc_StartItemReactModules	(var C_Npc self, var C_Npc other, var C_Item item) { return 0; };
 func int	Npc_HasOffered				(var C_Npc self, var C_Npc other, var int itemInstance) { return 0; };
 
 ///******************************************************************************************
-///	GAME, SESSION, VIDEO, CHAPTER
+/// GAME, SESSION, VIDEO, CHAPTER
 ///******************************************************************************************
 
 func void	ExitGame					() { };
@@ -189,7 +189,7 @@ func void	SetPercentDone				(var int PercentDone) { };
 func void	IntroduceChapter			(var string Titel, var string Untertitel, var string Texture, var string Sound, var int WaitTime) { };
 
 ///******************************************************************************************
-///	MAPS and DOCUMENTS
+/// MAPS and DOCUMENTS
 ///******************************************************************************************
 
 func int	Doc_Create					() { };
@@ -205,21 +205,21 @@ func void	Doc_PrintLines				(var int Document, var int Page, var string Text) { 
 func void	Doc_Show					(var int Document) { };
 
 ///******************************************************************************************
-///	DIALOGS
+/// DIALOGS
 ///******************************************************************************************
 
 func void	AI_Output					(var C_Npc self, var C_Npc target, var string outputName) { };
 func void	AI_OutputSVM				(var C_Npc self, var C_Npc target, var string svmname) { };
 func void	AI_OutputSVM_Overlay		(var C_Npc self, var C_Npc target, var string svmname) { };
 func void	AI_WaitTillEnd				(var C_Npc self, var C_Npc other) { };
-func void	AI_Ask 						(var C_Npc self, var func anserYes, var func answerNo) { };
-func void	AI_AskText              	(var C_Npc self, var func funcYes, var func funcNo, var string strYes, var string strNo);
+func void	AI_Ask						(var C_Npc self, var func anserYes, var func answerNo) { };
+func void	AI_AskText					(var C_Npc self, var func funcYes, var func funcNo, var string strYes, var string strNo);
 func void	AI_WaitForQuestion			(var C_Npc self, var func scriptFunc) { };
 func void	Npc_SetRefuseTalk			(var C_Npc self, var int timeSec) { };
 func int	Npc_RefuseTalk				(var C_Npc self) { return 0; };
 
 ///******************************************************************************************
-///	NEWS
+/// NEWS
 ///******************************************************************************************
 
 func void	Npc_MemoryEntry				(var C_Npc self, var int source, var C_Npc offender, var int newsid, var C_Npc victim) { };
@@ -228,16 +228,16 @@ func int	Npc_HasNews					(var C_Npc self, var int newsID, var C_Npc offender, va
 func int	Npc_IsNewsGossip			(var C_Npc self, var int newsNumber) { };
 func C_Npc	Npc_GetNewsWitness			(var C_Npc self, var int newsNumber) { };
 func C_Npc	Npc_GetNewsVictim			(var C_Npc self, var int newsNumber) { };
-func C_Npc	Npc_GetNewsOffender 		(var C_Npc self, var int newsNumber) { return 0; };
+func C_Npc	Npc_GetNewsOffender			(var C_Npc self, var int newsNumber) { return 0; };
 
 ///******************************************************************************************
-///	MISSIONS
+/// MISSIONS
 ///******************************************************************************************
 
-func int	Npc_IsDead 					(var C_Npc n0) { return 0; };
-func int	Npc_KnowsInfo 				(var C_Npc self, var int infoInstance) { return 0; };
+func int	Npc_IsDead					(var C_Npc n0) { return 0; };
+func int	Npc_KnowsInfo				(var C_Npc self, var int infoInstance) { return 0; };
 func int	Npc_CheckInfo				(var C_Npc npc, var int important) { return 0; };
-func int	NPC_GiveInfo				(var C_Npc npc, var int important) { return 0; };
+func int	Npc_GiveInfo				(var C_Npc npc, var int important) { return 0; };
 func int	Npc_CheckAvailableMission	(var C_Npc npc, var int missionState, var int important) { return 0; };
 func int	Npc_CheckRunningMission		(var C_Npc npc, var int important) { return 0; };
 func int	Npc_CheckOfferMission		(var C_Npc npc, var int important) { return 0; };
@@ -247,7 +247,7 @@ func int	Mis_OnTime					(var int missionName) { return 0; };
 func void	AI_StopProcessInfos			(var C_Npc npc)
 
 ///******************************************************************************************
-///	PLAYER
+/// PLAYER
 ///******************************************************************************************
 
 func int	Npc_IsPlayer				(var C_Npc player) { return 0; };
@@ -255,7 +255,7 @@ func int	Wld_DetectPlayer			(var C_Npc self) { return 0; };
 func int	Npc_HasDetectedNpc			(var C_Npc self, var C_Npc other) { return 0; };
 
 ///******************************************************************************************
-///	Get distances
+/// Get distances
 ///******************************************************************************************
 
 func int	Npc_IsNear					(var C_Npc self, var C_Npc  other) { return 0; };
@@ -267,7 +267,7 @@ func int	Npc_GetDistToPlayer			(var C_Npc npc1) { return 0; };
 func int	Snd_GetDistToSource			(var C_Npc self) { return 0; };
 
 ///******************************************************************************************
-///	GUILDS and ATTITUDE
+/// GUILDS and ATTITUDE
 ///******************************************************************************************
 
 func int	Npc_GetTrueGuild			(var C_Npc npc) { return 0; };
@@ -283,16 +283,16 @@ func int	Wld_GetGuildAttitude		(var int guild1, var int guild2) { return 0; };
 func void	Wld_SetGuildAttitude		(var int guild1, var int attitude, var int guild2) { };
 
 func void	Wld_ExchangeGuildAttitudes	(var string name) { };
-func int	Npc_GetGuildAttitude 		(var C_Npc npc, var C_Npc npc) { return 0; };
+func int	Npc_GetGuildAttitude		(var C_Npc npc, var C_Npc npc) { return 0; };
 func void	Npc_SetKnowsPlayer			(var C_Npc self, var C_Npc player) { };
 func int	Npc_KnowsPlayer				(var C_Npc self, var C_Npc player) { return 0; };
 
 ///******************************************************************************************
-///	TA / ZS
+/// TA / ZS
 ///******************************************************************************************
 
 func void	AI_StartState				(var C_Npc self, var func what, var int stateBehaviour, var string wpName) { };
-func void	Npc_ClearAIQueue 			(var C_Npc self) { };
+func void	Npc_ClearAIQueue			(var C_Npc self) { };
 func void	AI_SetNpcsToState			(var C_Npc self, var func aiStateFunc, var int radius) {};
 
 func int	Npc_IsInState				(var C_Npc self, var func state) { return 0; };
@@ -314,14 +314,14 @@ func void	TA_EndOverlay				(var C_Npc self) { };
 func void	TA_RemoveOverlay			(var C_Npc self) { };
 
 ///******************************************************************************************
-///	SCALING
+/// SCALING
 ///******************************************************************************************
 
 func void	Mdl_SetModelScale			(var C_Npc self, var float x, var float y, var float z) { };
 func void	Mdl_SetModelFatness			(var C_Npc self, var float fatness) { };
 
 ///******************************************************************************************
-///	ATTRIBUTES, TALENTS
+/// ATTRIBUTES, TALENTS
 ///******************************************************************************************
 
 func void	Npc_ChangeAttribute			(var C_Npc self, var int atr, var int value) { };
@@ -329,7 +329,7 @@ func int	Npc_HasTalent				(var C_Npc self, var int tal) { return 0; };
 func int	Npc_HasFightTalent			(var C_Npc self, var int tal) { return 0; };
 
 ///******************************************************************************************
-///	MAGIC
+/// MAGIC
 ///******************************************************************************************
 
 func void	Npc_CreateSpell				(var C_Npc self, var int spellnr) { };
@@ -341,16 +341,16 @@ func int	Npc_GetLastHitSpellID		(var C_Npc self) { return 0; };
 func int	Npc_GetLastHitSpellCat		(var C_Npc self) { return 0; };
 
 func int	Npc_GetActiveSpellCat		(var C_Npc self) { return 0; };
-func int	Npc_SetActiveSpellInfo 		(var C_Npc npc, var int i1) { return 0; };
+func int	Npc_SetActiveSpellInfo		(var C_Npc npc, var int i1) { return 0; };
 func int	Npc_GetActiveSpellLevel		(var C_Npc self)
 
-func void	AI_ReadySpell  				(var C_Npc self, var int spellID, var int investMana);
+func void	AI_ReadySpell				(var C_Npc self, var int spellID, var int investMana);
 func void	AI_UnreadySpell				(var C_Npc self);
 
-func int	Npc_HasSpell   				(var C_Npc self, var int spellID);
+func int	Npc_HasSpell				(var C_Npc self, var int spellID);
 
 ///******************************************************************************************
-///	PERCEPTION
+/// PERCEPTION
 ///******************************************************************************************
 
 func void	Npc_PercEnable				(var C_Npc self, var int percID, var func function) { };
@@ -358,14 +358,14 @@ func void	Npc_PercDisable				(var C_Npc self, var int percID) { };
 func void	Npc_SetPercTime				(var C_Npc self, var float seconds) { };
 
 func void	Perc_SetRange				(var int percID, var int range) { };
-func void	Npc_SendPassivePerc 		(var C_Npc npc1, var int Perc_type, var C_Npc npc2, var C_Npc npc3) { };
+func void	Npc_SendPassivePerc			(var C_Npc npc1, var int Perc_type, var C_Npc npc2, var C_Npc npc3) { };
 func void	Npc_SendSinglePerc			(var C_Npc self, var C_Npc target, var int percID) { };
 
 func void	Npc_PerceiveAll				(var C_Npc self) { };
-func int	Wld_DetectNpc   			(var C_Npc self, var int instance, var func aiState, var int guild) { return 0; };
+func int	Wld_DetectNpc				(var C_Npc self, var int instance, var func aiState, var int guild) { return 0; };
 var int		Wld_DetectNpcEx				(var C_Npc self, var int npcInstance, var func aiState, var int guild, var int detectPlayer)
 func int	Wld_DetectItem				(var C_Npc self, var int flags) { return 0; };
-func string	Npc_GetDetectedMob 			(var C_Npc self) { return 0; };
+func string	Npc_GetDetectedMob			(var C_Npc self) { return 0; };
 
 func int	Npc_CanSeeNpc				(var C_Npc npc1, var C_Npc npc2) { return 0; };
 func int	Npc_CanSeeNpcFreeLOS		(var C_Npc self, var C_Npc other) { };
@@ -373,39 +373,39 @@ func int	Npc_CanSeeItem				(var C_Npc npc1, var C_Item item) { return 0; };
 func int	Npc_CanSeeSource			(var C_Npc self) { return 0; };
 
 ///******************************************************************************************
-///	CUTSCENES
+/// CUTSCENES
 ///******************************************************************************************
 
-func void	TA_CS 						(var C_Npc self, var string csName, var string roleName) { };
+func void	TA_CS						(var C_Npc self, var string csName, var string roleName) { };
 func void	AI_PlayCutscene				(var C_Npc self, var string csName) { };
 func int	Hlp_CutscenePlayed			(var string csName) { return 0; };
-func int	Npc_IsInCutscene 			(var C_Npc self) { return 0; };
+func int	Npc_IsInCutscene			(var C_Npc self) { return 0; };
 
 ///******************************************************************************************
-///	SOUND
+/// SOUND
 ///******************************************************************************************
 
-func void	Snd_Play 					(var string s0) { };
-func void	Snd_Play3D 					(var C_Npc n0, var string s1) { };
+func void	Snd_Play					(var string s0) { };
+func void	Snd_Play3D					(var C_Npc n0, var string s1) { };
 
 func int	Snd_IsSourceNpc				(var C_Npc self) { return 0; };
 func int	Snd_IsSourceItem			(var C_Npc self) { return 0; };
 
 ///******************************************************************************************
-///	ROOM
+/// ROOM
 ///******************************************************************************************
 
-func void	Wld_AssignRoomToGuild 		(var string s0, var int guild) { };
-func void	Wld_AssignRoomToNpc 		(var string s0, var C_Npc roomowner) { };
-func C_Npc	Wld_GetPlayerPortalOwner 	()
-func int	Wld_GetPlayerPortalGuild 	()
+func void	Wld_AssignRoomToGuild		(var string s0, var int guild) { };
+func void	Wld_AssignRoomToNpc			(var string s0, var C_Npc roomowner) { };
+func C_Npc	Wld_GetPlayerPortalOwner	()
+func int	Wld_GetPlayerPortalGuild	()
 func C_Npc	Wld_GetFormerPlayerPortalOwner	()
 func int	Wld_GetFormerPlayerPortalGuild	()
 func int	Npc_IsPlayerInMyRoom		(var C_Npc npc)
 func int	Npc_WasPlayerInMyRoom		(var C_Npc npc)
 
 ///******************************************************************************************
-///	System functions
+/// System functions
 ///******************************************************************************************
 
 func string	IntToString					(var int x) { };
@@ -418,7 +418,7 @@ func void	PrintDebugInstCh			(int ch, string text) { };
 func void	PrintDebugCh				(int ch, string text) { };
 
 ///******************************************************************************************
-///	Log entries
+/// Log entries
 ///******************************************************************************************
 
 func void	Log_CreateTopic				(var string name, var int section)
@@ -426,7 +426,7 @@ func void	Log_SetTopicStatus			(var string name, var int status)
 func void	Log_AddEntry				(var string topic, var string entry)
 
 ///******************************************************************************************
-///	LANGUAGES
+/// LANGUAGES
 ///******************************************************************************************
 
 func void	Game_InitGerman				() { };

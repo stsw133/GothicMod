@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Razor
+///******************************************************************************************
 prototype Mst_Default_Razor (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Razor (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_SNAPPER;
 	
-	NpcFn_SetAttributesToLevel (self, 18);
+	NpcFn_SetAttributesToLevel (self, 20);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,12 +29,16 @@ prototype Mst_Default_Razor (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Razor()
 {
 	Mdl_SetVisual		(self, "Razor.mds");
 	Mdl_SetVisualBody	(self, "Raz_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Razor (Mst_Default_Razor)
 {

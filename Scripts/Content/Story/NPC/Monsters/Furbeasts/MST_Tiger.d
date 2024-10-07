@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Tiger
+///******************************************************************************************
 prototype Mst_Default_Tiger (C_Npc)
 {
 	/// ------ Monster ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Tiger (C_Npc)
 	aivar[AIV_MM_RoamEnd]				=	6;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Tiger()
 {
@@ -49,6 +52,9 @@ func void B_SetVisuals_Leopard()
 	Mdl_SetVisualBody	(self, "Tig_Leopard_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Tiger (Mst_Default_Tiger)
 {

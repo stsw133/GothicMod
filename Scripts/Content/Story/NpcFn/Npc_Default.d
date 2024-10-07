@@ -1,5 +1,5 @@
 ///******************************************************************************************
-///	NPC Prototype
+/// NPC Prototype
 ///******************************************************************************************
 prototype Npc_Default (C_Npc)
 {
@@ -7,7 +7,7 @@ prototype Npc_Default (C_Npc)
 	/// in NpcFn_SetAttributesToLevel.d
 	
 	/// ------ Other ------
-	damagetype 							=	DAM_BLUNT;
+	damagetype							=	DAM_BLUNT;
 	
 	senses								=	SENSE_HEAR | SENSE_SEE;
 	senses_range						=	PERC_DIST_ACTIVE_MAX;

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GiantSpider
+///******************************************************************************************
 prototype Mst_Default_GiantSpider (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_GiantSpider (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GiantSpider()
 {
 	Mdl_SetVisual		(self, "Spdr.mds");
 	Mdl_SetVisualBody	(self, "Spdr_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Giant_Spider (Mst_Default_GiantSpider)
 {

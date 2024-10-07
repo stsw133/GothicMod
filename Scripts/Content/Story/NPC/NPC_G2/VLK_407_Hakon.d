@@ -10,7 +10,7 @@ instance VLK_407_Hakon (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 50);
+	NpcFn_AddFightSkills (self, 50);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

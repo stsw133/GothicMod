@@ -80,8 +80,8 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 		{
 			if (mAuraPalPoints >= 1000) { mAuraPalPoints = 1000; };
 			
-			if		(mAuraPalType == 1) { Npc_SetShieldPoints (hero, 1, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnMP", hero, hero, 0, 0, 0, false); }
-			else if	(mAuraPalType == 2) { Npc_SetShieldPoints (hero, 0, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnSTR", hero, hero, 0, 0, 0, false); }
+			if		(mAuraPalType == 1) { Npc_SetShieldPoints (hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnMP", hero, hero, 0, 0, 0, false); }
+			else if	(mAuraPalType == 2) { Npc_SetShieldPoints (hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnSTR", hero, hero, 0, 0, 0, false); }
 			else if	(mAuraPalType == 3) { Npc_ChangeAttribute (hero, ATR_HITPOINTS, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnPOW", hero, hero, 0, 0, 0, false); };
 			
 			mAuraPalType = 0;
@@ -138,10 +138,7 @@ func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth)
 	if (Npc_IsPlayer(slf))
 	{
 		/// SELF FIGHT TEACH
-		if (slf.weapon >= 2)
-		{
-			SelfFightTeach_ADD (slf, slf.weapon-2);
-		};
+		SelfFightTeach_ADD (slf, slf.weapon-2);
 		
 		/// MANA REGENERATION
 		var C_Item wpn; wpn = Npc_GetReadiedWeapon(slf);

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// OrcChampion
+///******************************************************************************************
 prototype Mst_Default_OrcChampion (C_Npc)
 {
 	/// ------ Monster ------
@@ -13,7 +15,7 @@ prototype Mst_Default_OrcChampion (C_Npc)
 	fight_tactic						=	FAI_ORC;
 	
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 70);
+	NpcFn_AddFightSkills (self, 70);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -28,12 +30,16 @@ prototype Mst_Default_OrcChampion (C_Npc)
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_OrcChampion()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
 	Mdl_SetVisualBody	(self, "Orc_Champion_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance OrcElite_AntiPaladin (Mst_Default_OrcChampion)
 {
@@ -102,6 +108,7 @@ instance OrcElite_AntiPaladin3 (Mst_Default_OrcChampion)
 	start_aistate						=	ZS_MM_Rtn_DragonRest;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 };
+
 ///******************************************************************************************
 instance OrkElite_AntiPaladinOrkOberst_DI (Mst_Default_OrcChampion)
 {

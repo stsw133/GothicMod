@@ -13,7 +13,7 @@ instance Pal_213_Schiffswache (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, 68);
+	NpcFn_AddFightSkills (self, 68);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_NAILED;

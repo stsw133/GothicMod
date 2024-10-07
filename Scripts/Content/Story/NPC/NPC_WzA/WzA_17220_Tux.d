@@ -18,7 +18,7 @@ instance WzA_17220_Tux (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, FightTalent_Medium);
+	NpcFn_AddFightSkills (self, FightTalent_Medium);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

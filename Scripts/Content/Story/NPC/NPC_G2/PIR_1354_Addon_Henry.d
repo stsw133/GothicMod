@@ -13,7 +13,7 @@ instance PIR_1354_Addon_Henry (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 50);
-	NpcFn_SetFightSkills (self, 90);
+	NpcFn_AddFightSkills (self, 90);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

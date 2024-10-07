@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Gargoyle
+///******************************************************************************************
 prototype Mst_Default_Gargoyle (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_Gargoyle (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Gargoyle()
 {
 	Mdl_SetVisual		(self, "Harpie.mds");
 	Mdl_SetVisualBody	(self, "Gol_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gargoyle (Mst_Default_Gargoyle)
 {

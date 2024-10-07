@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void B_MM_AssessPlayer()
 {
-	if (other.aivar[AIV_Invisible]) 
+	if (other.aivar[AIV_Invisible])
 	{
 		return;
 	};
@@ -33,7 +33,7 @@ func void B_MM_AssessPlayer()
 		};
 	};
 	
-	if (self.aivar[AIV_PARTYMEMBER])
+	if (self.aivar[AIV_PartyMember])
 	{
 		if (Npc_GetDistToNpc(self, hero) < 500)
 		&& (!C_BodyStateContains(self, BS_STAND))
@@ -42,5 +42,16 @@ func void B_MM_AssessPlayer()
 			AI_StandUp		(self);
 			AI_TurnToNpc	(self, hero);
 		};
+	};
+};
+
+///******************************************************************************************
+/// B_MM_Trampling (MOD)
+///******************************************************************************************
+func void B_MM_Trampling()
+{
+	if (Npc_GetHeightToNpc(self, other) > 60 && Npc_GetDistToNpc(self, other) < 180)
+	{
+		B_MagicHurtNpc (other, self, self.attribute[ATR_HITPOINTS_MAX]);
 	};
 };

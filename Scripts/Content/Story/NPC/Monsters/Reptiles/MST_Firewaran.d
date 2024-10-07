@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Firewaran
+///******************************************************************************************
 prototype Mst_Default_Firewaran (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Firewaran (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Firewaran()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Firewaran()
 	Mdl_SetVisualBody	(self, "War_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_ApplyOverlayMds	(self, "Firewaran.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance FireWaran (Mst_Default_Firewaran)
 {

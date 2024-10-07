@@ -352,11 +352,11 @@ INSTANCE DIA_Hokurn_Teach(C_INFO)
 	information	= DIA_Hokurn_Teach_Info;
 	permanent	= TRUE;
 	description = "Dobra. Bierzmy siê do nauki.";
-};                       
+};
 
 FUNC INT DIA_Hokurn_Teach_Condition()
 {
-	if ((self.aivar[AIV_CanOffer] & OFFER_Teaching) > 0)
+	if (self.aivar[AIV_CanOffer] & OFFER_Teaching)
 	&& (HokurnLastDrink < Wld_GetDay())
 	{
 		return TRUE;

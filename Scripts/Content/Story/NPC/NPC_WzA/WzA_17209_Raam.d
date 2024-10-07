@@ -25,7 +25,7 @@ instance WzA_17209_Raam (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 90);
-	NpcFn_SetFightSkills (self, FightTalent_Master);
+	NpcFn_AddFightSkills (self, FightTalent_Master);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;

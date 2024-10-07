@@ -662,7 +662,7 @@ INSTANCE DIA_Karras_KarrasBlessedStone   (C_INFO)
 FUNC INT DIA_Karras_KarrasBlessedStone_Condition()
 {
 	if (hero.guild == GIL_KDF)
-	&& (Npc_HasItems (other,ItMi_KarrasBlessedStone_Mis))
+	&& (Npc_HasItems (other,ItMi_KarrasBlessedStone_MIS))
 	&& (MIS_Karras_FindBlessedStone == LOG_RUNNING)
 	{
 		return TRUE;
@@ -672,7 +672,7 @@ var int KarrasMakesBlessedStone_Day;
 FUNC VOID DIA_Karras_KarrasBlessedStone_Info()
 {
 	AI_Output (other,self ,"DIA_Karras_KarrasBlessedStone_15_00"); //Mam tutaj kamieñ z b³ogos³awionej ziemi.
-	B_GiveInvItems (other, self, ItMi_KarrasBlessedStone_Mis,1);
+	B_GiveInvItems (other, self, ItMi_KarrasBlessedStone_MIS,1);
 	AI_Output (self ,other,"DIA_Karras_KarrasBlessedStone_10_01"); //Dobrze. Mam nadziejê, ¿e ¿adna z kapliczek na tym nie ucierpia³a.
 	AI_Output (self ,other,"DIA_Karras_KarrasBlessedStone_10_02"); //Dobrze. Sporz¹dzê z niego ochronny amulet, który bêdzie ciê strzeg³ przed mrocznym spojrzeniem Poszukiwaczy.
 	AI_Output (self ,other,"DIA_Karras_KarrasBlessedStone_10_03"); //Daj mi trochê czasu. Niezw³ocznie przyst¹piê do pracy.
@@ -687,7 +687,7 @@ FUNC VOID DIA_Karras_KarrasBlessedStone_Info()
 //	ItAm_Prot_BlackEye_Mis
 //********************************************************************
 
-INSTANCE DIA_Karras_ItAm_Prot_BlackEye_Mis   (C_INFO)
+INSTANCE DIA_Karras_ItAm_Prot_BlackEye_MIS   (C_INFO)
 {
 	npc         = KDF_503_Karras;
 	nr          = 2;

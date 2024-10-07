@@ -201,7 +201,7 @@ func void B_CreateAmbientInv (var C_Npc slf)
 		if		(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Shell);			}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_SilverNugget);		}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItSe_GoldPocket25);		}
-		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Saltpeter);		}
+		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Sulfur);			}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItPo_Health_01);		};
 	}
 	else if (slf.aivar[AIV_MM_REAL_ID] == ID_GOBBO)
@@ -340,10 +340,10 @@ func void B_CreateAmbientInv (var C_Npc slf)
 	else if (slf.aivar[AIV_MM_REAL_ID] == ID_ZODD)
 	{
 		if		(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItPo_Health_01);		}
-		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Sulfur);			}
+		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Pitch);			}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Tabak);			}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItAt_KeilerFur);		}
-		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Saltpeter);		}
+		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItMi_Sulfur);			}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItAt_DrgSnapperHorn);	}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItFo_Chocolate);		}
 		else if	(Hlp_Random(2) == 0)	{	CreateInvItem (slf, ItFo_Addon_Rum);		};

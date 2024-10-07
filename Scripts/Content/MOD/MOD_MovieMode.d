@@ -1,11 +1,10 @@
 ///******************************************************************************************
-///	MOD_MovieMode
+/// MOD_MovieMode
 ///******************************************************************************************
 
 var int MemoKey1;
 var int MemoKey2;
 
-///******************************************************************************************
 func void MovieMode_SetMemoKeys()
 {
 	if (MEM_KeyState(KEY_NUMPAD0) == KEY_PRESSED)	{	if (MemoKey1 != -1)	{	MemoKey2 = 0;	}	else	{	MemoKey1 = 0;	};	};
@@ -21,7 +20,7 @@ func void MovieMode_SetMemoKeys()
 };
 
 ///******************************************************************************************
-///	Key Functions
+/// Key Functions
 ///******************************************************************************************
 func void MovieMode_SetFaceAni()
 {
@@ -51,6 +50,7 @@ func void MovieMode_SetFaceAni()
 		MemoKey2 = -1;
 	};
 };
+
 ///******************************************************************************************
 func void MovieMode_DialogGesture()
 {
@@ -96,6 +96,7 @@ func void MovieMode_DialogGesture()
 		MemoKey2 = -1;
 	};
 };
+
 ///******************************************************************************************
 func void MovieMode_ExecSubScript()
 {
@@ -110,16 +111,17 @@ func void MovieMode_ExecSubScript()
 		//o_hero = Hlp_GetNpc(hero);
 		//o_other = MEM_PtrToInst(o_hero.focus_vob);
 		
-		if		(MemoKey1 == 1)		{	B_LookAtNpc(o_other, hero);								}
-		else if (MemoKey1 == 2)		{	B_StopLookAt(o_other);									}
-		else if (MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other, "VISEME", 1, -1);				}
-		else if (MemoKey1 == 4)		{	B_TurnToNpc (o_other, hero);							}
-		else if (MemoKey1 == 5)		{	AI_TurnAway (o_other, hero);							}
-		else if (MemoKey1 == 6)		{	B_Say_Overlay (o_other, o_other, "$Aargh_1");			};
+		if		(MemoKey1 == 1)		{	B_LookAtNpc(o_other, hero);						}
+		else if (MemoKey1 == 2)		{	B_StopLookAt(o_other);							}
+		else if (MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other, "VISEME", 1, -1);		}
+		else if (MemoKey1 == 4)		{	B_TurnToNpc (o_other, hero);					}
+		else if (MemoKey1 == 5)		{	AI_TurnAway (o_other, hero);					}
+		else if (MemoKey1 == 6)		{	B_Say_Overlay (o_other, o_other, "$Aargh_1");	};
 		
 		MemoKey1 = -1;
 	};
 };
+
 ///******************************************************************************************
 func void MovieMode_SetHeadDirection()
 {
@@ -141,6 +143,7 @@ func void MovieMode_SetHeadDirection()
 		MemoKey1 = -1;
 	};
 };
+
 func void MovieMode_SetArmDirection()
 {
 	MovieMode_SetMemoKeys();

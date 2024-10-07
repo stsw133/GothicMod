@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Gorilla
+///******************************************************************************************
 prototype Mst_Default_Gorilla (C_Npc)
 {
 	/// ------ Monster ------
@@ -10,7 +12,7 @@ prototype Mst_Default_Gorilla (C_Npc)
 	damagetype							=	DAM_BLUNT;
 	fight_tactic						=	FAI_TROLL;
 	
-	NpcFn_SetAttributesToLevel (self, 15);
+	NpcFn_SetAttributesToLevel (self, 20);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Gorilla (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Gorilla()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Gorilla()
 	Mdl_SetVisualBody	(self, "Tro_Gorilla_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.45, 0.5, 0.4);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Gorilla (Mst_Default_Gorilla)
 {

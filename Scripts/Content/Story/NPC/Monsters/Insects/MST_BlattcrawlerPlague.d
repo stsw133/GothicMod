@@ -1,5 +1,5 @@
 ///******************************************************************************************
-prototype Mst_Default_BlattcrawlerPlague (C_Npc)			
+prototype Mst_Default_BlattcrawlerPlague (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Plugawy pe³zacz";

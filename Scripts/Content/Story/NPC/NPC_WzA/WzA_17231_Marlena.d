@@ -18,7 +18,7 @@ instance WzA_17231_Marlena (Npc_Default)
 	
 	/// ------ Attribute ------
 	NpcFn_SetAttributesToLevel (self, 35);
-	NpcFn_SetFightSkills (self, FightTalent_Weak);
+	NpcFn_AddFightSkills (self, FightTalent_Weak);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_NORMAL;

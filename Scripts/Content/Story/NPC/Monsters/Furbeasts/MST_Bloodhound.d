@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Bloodhound
+///******************************************************************************************
 prototype Mst_Default_Bloodhound (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Bloodhound (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Bloodhound()
 {
@@ -38,6 +41,9 @@ func void B_SetVisuals_Lizardhound()
 	Mdl_SetVisual		(self, "Shadow.mds");
 	Mdl_SetVisualBody	(self, "Bhd_Lizard_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Bloodhound (Mst_Default_Bloodhound)
 {

@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Treant
+///******************************************************************************************
 prototype Mst_Default_Treant (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,6 +29,7 @@ prototype Mst_Default_Treant (C_Npc)
 	aivar[AIV_MM_SleepStart]			=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Treant()
 {
@@ -34,6 +37,9 @@ func void B_SetVisuals_Treant()
 	Mdl_SetVisualBody	(self, "Treant_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 //	Mdl_SetModelScale	(self, 1, 1.2, 1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Treant (Mst_Default_Treant)
 {

@@ -13,7 +13,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		else
 		{
 			Snd_Play3D (self, "PICKLOCK_SUCCESS");
-			Print("Brzmi nie≈∫le.");
+			Print("Brzmi nieüle.");
 		};
 	}
 	else
@@ -21,7 +21,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		if (bBrokenOpen)
 		{
 			Snd_Play3D (self, "PICKLOCK_BROKEN");
-			Print("Wytrych siƒô z≈Çama≈Ç.");
+			Print("Wytrych siÍ z≥ama≥.");
 			
 			if (Hlp_Random(4) == 0)
 			{
@@ -31,7 +31,7 @@ func void G_PickLock (var int bSuccess, var int bBrokenOpen)
 		else
 		{
 			Snd_Play3D (self, "PICKLOCK_FAILURE");
-			Print("Cholera... Spr√≥buj ponownie.");
+			Print("Cholera... SprÛbuj ponownie.");
 		};
 	};
 };

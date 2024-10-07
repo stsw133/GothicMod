@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// SteamKnight
+///******************************************************************************************
 prototype Mst_Default_SteamKnight (C_Npc)
 {
 	/// ------ Monster ------
@@ -37,6 +39,9 @@ func void B_SetVisuals_SteamKnight()
 	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance SteamKnight (Mst_Default_SteamKnight)
 {

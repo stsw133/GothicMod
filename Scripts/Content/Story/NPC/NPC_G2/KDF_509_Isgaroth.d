@@ -13,7 +13,7 @@ instance KDF_509_Isgaroth (Npc_Default)
 	
 	/// ------ Attribute ------
 	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetFightSkills (self, 90);
+	NpcFn_AddFightSkills (self, 90);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

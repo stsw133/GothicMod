@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// GiantBug
+///******************************************************************************************
 prototype Mst_Default_GiantBug (C_Npc)
 {
 	/// ------ Monster ------
@@ -27,12 +29,16 @@ prototype Mst_Default_GiantBug (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_GiantBug()
 {
 	Mdl_SetVisual		(self, "Giant_Bug.mds");
 	Mdl_SetVisualBody	(self, "Giant_Bug_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Giant_Bug (Mst_Default_GiantBug)
 {
@@ -50,6 +56,7 @@ instance Giant_Bug_VinoRitual2 (Mst_Default_GiantBug)
 {
 	B_SetVisuals_GiantBug();
 };
+
 ///******************************************************************************************
 instance Lobarts_Giant_Bug1 (Mst_Default_GiantBug)	
 {

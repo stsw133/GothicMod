@@ -1,5 +1,7 @@
 ///******************************************************************************************
-prototype Mst_Default_Goat (C_Npc)		
+/// Goat
+///******************************************************************************************
+prototype Mst_Default_Goat (C_Npc)
 {
 	/// ------ Monster ------
 	name								=	"Koza";
@@ -23,12 +25,16 @@ prototype Mst_Default_Goat (C_Npc)
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Goat()
 {
 	Mdl_SetVisual		(self, "Ziege.mds");
 	Mdl_SetVisualBody	(self, "Ziege_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Goat (Mst_Default_Goat)
 {

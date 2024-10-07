@@ -10,7 +10,7 @@ instance PIR_1301_Addon_Skip_NW (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 40);
-	NpcFn_SetFightSkills (self, 70);
+	NpcFn_AddFightSkills (self, 70);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_MASTER;

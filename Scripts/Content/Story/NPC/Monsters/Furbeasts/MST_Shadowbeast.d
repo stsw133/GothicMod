@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Shadowbeast
+///******************************************************************************************
 prototype Mst_Default_Shadowbeast (C_Npc)
 {
 	/// ------ Monster ------
@@ -30,6 +32,7 @@ prototype Mst_Default_Shadowbeast (C_Npc)
 	aivar[AIV_MM_RoamEnd]				=	6;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Shadowbeast()
 {
@@ -46,6 +49,9 @@ func void B_SetVisuals_Snowbeast()
 	Mdl_SetVisual		(self, "Shadow.mds");
 	Mdl_SetVisualBody	(self, "Sha_Snow_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Shadowbeast (Mst_Default_ShadowBeast)
 {

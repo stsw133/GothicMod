@@ -32,27 +32,6 @@ func int Render_AddItem(var int itemInst, var int x1, var int y1, var int x2, va
     return +Render_AddItemPrio(itemInst, x1, y1, x2, y2, 0);
 };
 
-func int Render_AddItemPxl(var int itemInst, var int x1, var int y1, var int x2, var int y2) {
-    return +Render_AddItemPrio(itemInst, 
-    Print_ToVirtual(x1, PS_X), 
-    Print_ToVirtual(y1, PS_Y), 
-    Print_ToVirtual(x2, PS_X), 
-    Print_ToVirtual(y2, PS_Y), 0);
-};
-
-func int Render_AddItemCenter(var int itemInst, var int x, var int y, var int w, var int h)
-{
-    return Render_AddItem(itemInst, x-(w>>1), y-(h>>1), x+((w+1)>>1), y+((h+1)>>1));
-};
-
-func int Render_AddItemCenterPxl(var int itemInst, var int x1, var int y1, var int x2, var int y2) {
-    return Render_AddItemCenter(itemInst, 
-    Print_ToVirtual(x1, PS_X), 
-    Print_ToVirtual(y1, PS_Y), 
-    Print_ToVirtual(x2, PS_X), 
-    Print_ToVirtual(y2, PS_Y));
-};
-
 func int Render_AddViewPrio(var int view, var int priority) {
     var int h; h = new(RenderItem@);
     var RenderItem itm; itm = get(h);
@@ -123,7 +102,7 @@ func void _Render_Hook_Sub(var int list) {
             SB_Destroy();
             oCItem_Render(itm.itmPtr, _render_wld, View_GetPtr(itm.view), floatNULL);
 
-        } else if ((itm.view_open) && (itm.view)) {
+        } else if ((itm.view_open) && (Hlp_IsValidHandle(itm.view))) {
             View_Render(itm.view);
         };
     };
@@ -172,9 +151,6 @@ func void _Render_Init() {
     // Welt zum Rendern
     _render_wld = create(oWorld@);
     CALL__thiscall(_render_wld, zCWorld__zCWorld);
-	
-	var oWorld w; w = MEM_PtrToInst(_render_wld);
-    w.m_bIsInventoryWorld = 1;
 
 	/* G2 only, using offset due to G1G2 compatibility
    var oWorld w; w = MEM_PtrToInst(_render_wld);

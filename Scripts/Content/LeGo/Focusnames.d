@@ -24,7 +24,7 @@ func void _Focusnames()
 	{
 		o_item = MEM_PtrToInst(o_hero.focus_vob);
 		
-		if		((o_item.flags & ITEM_MISSION) > 0)							{	col = RGBA (128, 192, 255, 255);	}
+		if		(o_item.flags & ITEM_MISSION)								{	col = RGBA (128, 192, 255, 255);	}
 		else if (o_item.mainflag == ITEM_KAT_NONE && o_item.value >= 100)	{	col = RGBA (255, 224, 128, 255);	};
 	};
 	

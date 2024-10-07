@@ -1,4 +1,6 @@
 ///******************************************************************************************
+/// Zombie
+///******************************************************************************************
 prototype Mst_Default_Zombie (C_Npc)
 {
 	/// ------ Monster ------
@@ -29,6 +31,7 @@ prototype Mst_Default_Zombie (C_Npc)
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
 };
+
 ///******************************************************************************************
 func void B_SetVisuals_Zombie()
 {
@@ -40,6 +43,9 @@ func void B_SetVisuals_MayaZombie()
 	Mdl_SetVisual		(self, "Zombie.mds");
 	Mdl_SetVisualBody	(self, "Zom_Body", self.aivar[AIV_BodyTex], self.aivar[AIV_SkinTex], "Zom_Head", self.aivar[AIV_FaceTex], default, ITAR_Skeleton);
 };
+
+///******************************************************************************************
+/// Monsters
 ///******************************************************************************************
 instance Zombie (Mst_Default_Zombie)
 {
@@ -84,6 +90,7 @@ instance Zombie_Bloodwyn (Mst_Default_Zombie)
 	Npc_SetToFightMode (self, ItMw_1h_Mil_Sword);
 	damagetype							=	DAM_EDGE;
 };
+
 ///******************************************************************************************
 /*
 func void ZS_Pal_ZOMBIE()
@@ -120,6 +127,7 @@ func void B_Pal_ZOMBIE_RISE()
 	};
 };
 */
+
 ///******************************************************************************************
 instance MayaZombie_Totenw (Mst_Default_Zombie)
 {

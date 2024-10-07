@@ -33,7 +33,7 @@ func int C_IsTakenItemMyPossession (var C_Npc slf, var C_Npc oth, var C_Item itm
 		return true;
 	};
 	
-	if ((itm.flags & ITEM_DROPPED) > 0)
+	if (itm.flags & ITEM_DROPPED)
 	{
 		return false;
 	};

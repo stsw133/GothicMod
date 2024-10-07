@@ -10,7 +10,7 @@ instance NOV_611_Novize (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 15);
+	NpcFn_AddFightSkills (self, 15);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;

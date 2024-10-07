@@ -10,7 +10,7 @@ instance BAU_963_Malak (Npc_Default)
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 20);
-	NpcFn_SetFightSkills (self, 35);
+	NpcFn_AddFightSkills (self, 35);
 	
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_STRONG;

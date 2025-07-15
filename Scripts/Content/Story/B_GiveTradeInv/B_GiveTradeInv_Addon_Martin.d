@@ -13,8 +13,8 @@ func void B_GiveTradeInv_Addon_Martin (var C_Npc slf)
 		CreateInvItems (slf, ItSc_PalGlory, 1);
 		CreateInvItems (slf, ItSc_PalHolyBolt, 2);
 		
-		CreateInvItems (slf, ItMW_Addon_Hacker_1h_01, 1);
-		CreateInvItems (slf, ItMW_Addon_Hacker_2h_01, 1);
+		CreateInvItems (slf, ItMw_1h_Machete_02, 1);
+		CreateInvItems (slf, ItMw_2h_Machete_02, 1);
 		CreateInvItems (slf, ItMw_Meisterdegen, 1);
 		CreateInvItems (slf, ItMw_Runenschwert, 1);
 		CreateInvItems (slf, ItMw_Schwert2, 2);

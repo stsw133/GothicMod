@@ -14,12 +14,12 @@ func void NpcFn_SetVisual (var C_Npc slf, var int gender, var int bodyTex, var i
 	
 	if (gender >= ORCMALE)
 	{
-		Mdl_SetVisual (slf, "ORC.MDS");
+		Mdl_SetVisual (slf, "ORC.mds");
 		Mdl_SetVisualBody (slf, "Orc_orc_Body", bodyTex, skinTex, headMesh, faceTex, teethTex, armorInstance);
 	}
 	else
 	{
-		Mdl_SetVisual (slf, "HUMANS.MDS");
+		Mdl_SetVisual (slf, "HUMANS.mds");
 		
 		if (gender == FEMALE)	{	Mdl_SetVisualBody (slf,	"Hum_Body_Babe0", bodyTex, skinTex, headMesh, faceTex, teethTex, armorInstance);	}
 		else					{	Mdl_SetVisualBody (slf, "Hum_Body_Naked0", bodyTex, skinTex, headMesh, faceTex, teethTex, armorInstance);	};

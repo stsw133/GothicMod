@@ -16,7 +16,7 @@ instance VLK_406_Herold (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Vlk_Dagger);
+	EquipItem (self, ItMw0_1h_Vlk_Dagger);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

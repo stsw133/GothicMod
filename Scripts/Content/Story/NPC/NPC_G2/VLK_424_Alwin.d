@@ -19,7 +19,7 @@ instance Vlk_424_Alwin (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Vlk_Axe);
+	EquipItem (self, ItMw0_1h_Vlk_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

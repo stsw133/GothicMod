@@ -20,7 +20,7 @@ instance BAU_935_Bronko (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Bau_Axe);
+	EquipItem (self, ItMw0_2h_Bau_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

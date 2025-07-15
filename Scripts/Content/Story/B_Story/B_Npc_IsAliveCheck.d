@@ -69,7 +69,7 @@ func void B_NPC_IsAliveCheck (var int Zen)
 				B_RemoveNpc(SLD_Gorn_OWCheck);
 			};
 			
-	   		var C_Npc SLD_Sylvio_OWCheck; SLD_Sylvio_OWCheck = Hlp_GetNpc(SLD_806_Sylvio);
+			var C_Npc SLD_Sylvio_OWCheck; SLD_Sylvio_OWCheck = Hlp_GetNpc(SLD_806_Sylvio);
 			if (Npc_IsDead(SLD_Sylvio_OWCheck))
 			{
 				SLD_Sylvio_is_alive = false;
@@ -97,7 +97,7 @@ func void B_NPC_IsAliveCheck (var int Zen)
 				B_RemoveNpc(GornDJG_NWCheck);
 			};
 			
-	   		var C_Npc DJG_Angar_NWCheck; DJG_Angar_NWCheck = Hlp_GetNpc(DJG_Angar);
+			var C_Npc DJG_Angar_NWCheck; DJG_Angar_NWCheck = Hlp_GetNpc(DJG_Angar);
 			if (Npc_IsDead(DJG_Angar))
 			{
 				DJG_Angar_is_alive = false;

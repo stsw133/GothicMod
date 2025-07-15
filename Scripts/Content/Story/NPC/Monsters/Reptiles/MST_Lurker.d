@@ -1,4 +1,8 @@
 ///******************************************************************************************
+
+var int GiveAmbientInvCounter_Lurker;
+
+///******************************************************************************************
 /// Lurker
 ///******************************************************************************************
 prototype Mst_Default_Lurker (C_Npc)
@@ -28,6 +32,13 @@ prototype Mst_Default_Lurker (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	GiveAmbientInvCounter_Lurker += 1;
+	if (GiveAmbientInvCounter_Lurker % 5 == 0)
+	{
+		CreateInvItem (self, ItFo_Fish);
+	};
 };
 
 ///******************************************************************************************

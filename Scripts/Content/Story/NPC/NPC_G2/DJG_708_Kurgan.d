@@ -16,8 +16,8 @@ instance DJG_708_Kurgan (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
-	EquipItem (self, ItRw_Crossbow_M_01);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
+	EquipItem (self, ItRw0_Crossbow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

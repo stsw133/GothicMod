@@ -46,7 +46,7 @@ func void B_SetVisuals_GoblinBlack()
 instance Gobbo_Black (Mst_Default_GoblinBlack)
 {
 	B_SetVisuals_GoblinBlack();
-	EquipItem (self, ItMw_1h_Goblin_02);
+	EquipItem (self, ItMw_1h_GobboMace_02);
 };
 
 ///******************************************************************************************
@@ -57,6 +57,6 @@ instance Gobbo_DaronsStatuenKlauer (Mst_Default_GoblinBlack)
 	name								=	"Goblin-z³odziej";
 	
 	B_SetVisuals_GoblinBlack();
-	EquipItem (self, ItMw_1h_Goblin_02);
+	EquipItem (self, ItMw_1h_GobboMace_02);
 	CreateInvItem (self, ItMi_LostInnosStatue_Daron);
 };

@@ -3,36 +3,40 @@
 ///******************************************************************************************
 func void SMITHWEAPON_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SMITHWEAPON;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
-}; 
-///******************************************************************************************
-instance PC_SmithWeapon_End (C_Info)
-{
-	npc									=	PC_Hero;
-	nr									=	999;
-	condition							=	PC_SmithWeapon_End_Condition;
-	information							=	PC_SmithWeapon_End_Info;
-	permanent							=	true;
-	description							=	DIALOG_END;
 };
-func int PC_SmithWeapon_End_Condition()
+
+func int PC_SmithWeapon_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SMITHWEAPON)
 	{
 		return true;
 	};
 };
-func void PC_SmithWeapon_End_Info()
+
+///******************************************************************************************
+/// EXIT
+///******************************************************************************************
+instance PC_SmithWeapon_EXIT (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	999;
+	condition							=	PC_SmithWeapon_Condition;
+	information							=	PC_SmithWeapon_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void PC_SmithWeapon_EXIT_Info()
 {
 	CreateInvItem (hero, ItMiSwordRaw);
 	B_ENDPRODUCTIONDIALOG();
 };
+
 ///******************************************************************************************
 instance PC_SmithWeapon_1hSwords (C_Info)
 {
@@ -72,7 +76,7 @@ func void PC_SmithWeapon_1hSwords_Info()
 	{
 		Info_AddChoice (PC_SmithWeapon_1hSwords, "Dobry miecz (3 bry³ki ¿elaza)", PC_ItMw_Schwert1);
 	};
-	if (PLAYER_TALENT_SMITH[SMITH_1H_Common])
+	if (PLAYER_TALENT_SMITH[SMITH_1H_Common_01])
 	{
 		Info_AddChoice (PC_SmithWeapon_1hSwords, "Miecz (2 bry³ki ¿elaza)", PC_ItMw_1H_Common);
 	};

@@ -19,7 +19,7 @@ instance Pal_213_Schiffswache (Npc_Default)
 	fight_tactic						=	FAI_NAILED;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_PAL_Sword);
+	EquipItem (self, ItMw0_2H_PAL_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

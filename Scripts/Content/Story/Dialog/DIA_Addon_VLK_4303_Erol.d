@@ -299,7 +299,11 @@ func void DIA_Addon_Erol_Stoneplates_Info ()
 	}
 	else
 	{
-			if (Npc_HasItems(other, ItWr_StonePlate))
+			if (Npc_HasItems(other, ItWr_StonePlate_01))
+			|| (Npc_HasItems(other, ItWr_StonePlate_02))
+			|| (Npc_HasItems(other, ItWr_StonePlate_03))
+			|| (Npc_HasItems(other, ItWr_StonePlate_04))
+			|| (Npc_HasItems(other, ItWr_StonePlate_05))
 			{
 				AI_Output (other, self, "DIA_Addon_Erol_Stoneplates_15_10"); //Mam tu coœ takiego...
 				AI_Output (self, other, "DIA_Addon_Erol_Stoneplates_10_11"); //Nie, to nie to. Tamte tabliczki by³y nas¹czone magi¹.

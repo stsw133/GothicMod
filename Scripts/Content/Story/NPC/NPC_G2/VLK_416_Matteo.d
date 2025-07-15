@@ -16,7 +16,7 @@ instance VLK_416_Matteo (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_VLK_Sword);
+	EquipItem (self, ItMw0_1H_VLK_Sword);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Gomez, Teeth_Normal, ItAr_VLK_L_07);

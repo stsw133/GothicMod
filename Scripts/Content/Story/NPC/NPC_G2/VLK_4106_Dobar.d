@@ -16,7 +16,7 @@ instance VLK_4106_Dobar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Vlk_Axe);
+	EquipItem (self, ItMw0_1H_Vlk_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

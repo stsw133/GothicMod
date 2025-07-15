@@ -7,7 +7,7 @@ prototype Mst_Default_OrcScout (C_Npc)
 	name								=	"Ork-zwiadowca";
 	voice								=	18;
 	guild								=	GIL_ORC;
-	aivar[AIV_MM_REAL_ID]				=	ID_ORCWARRIOR;
+	aivar[AIV_MM_REAL_ID]				=	ID_ORCSOLDIER;
 	aivar[AIV_FaceTex]					=	Hlp_Random(12);
 	
 	/// ------ Attributes & FT ------

@@ -16,7 +16,7 @@ instance BAU_954_Maleth (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Axe);
+	EquipItem (self, ItMw0_1h_Bau_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

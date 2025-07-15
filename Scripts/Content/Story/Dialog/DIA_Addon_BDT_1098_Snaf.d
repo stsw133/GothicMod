@@ -139,7 +139,7 @@ FUNC VOID DIA_Addon_Snaf_Booze_Info()
 	AI_Output (self, other, "DIA_Addon_Snaf_Booze_01_02");//Teraz mo¿esz trochê skosztowaæ. To doda ci si³.
 	AI_Output (self, other, "DIA_Addon_Snaf_Booze_01_03");//Poczekaj, jeœli bêdziesz potrzebowaæ pomocy, wszystkie informacje masz u mnie za darmo.
 	Snaf_Tip_Kosten = 0;
-	B_GiveInvItems (self, other, ItFo_Addon_FireStew,1);
+	B_GiveInvItems (self, other, ItFo_Spaghetti,1);
 	MIS_SnafHammer = LOG_SUCCESS;
 	B_GivePlayerExp(150);
 };

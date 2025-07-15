@@ -19,7 +19,7 @@ instance VLK_4302_Addon_Elvrich (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Axe);
+	EquipItem (self, ItMw0_1h_VLK_Axe);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Pony", Face_B_Normal01, Teeth_Normal, ItAr_BAU_L_03);

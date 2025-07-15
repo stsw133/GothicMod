@@ -17,7 +17,7 @@ instance PC_Thief_NW (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_SLD_Sword);
+	EquipItem (self, ItMw0_1H_SLD_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

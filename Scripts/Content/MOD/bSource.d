@@ -85,7 +85,6 @@ func void Npc_SetSpeed(var C_Npc slf, var int permille)
 	};
 	
 	var int ptr; ptr = oCNPC_GetModel(slf);
-	
 	var int f; f = divf(mkf(permille), mkf(1000));
 	MEM_WriteInt(ptr+508, f);
 };
@@ -114,14 +113,44 @@ func void Wld_AddWorldTime(var int x)
 	MEM_WorldTimer.worldTime = addf(MEM_WorldTimer.worldTime, world_timer);
 };
 
+func int Wld_GetTime()
+{
+	if		(Wld_IsTime(00,00, 01,00))	{	return 0;	}
+	else if	(Wld_IsTime(01,00, 02,00))	{	return 1;	}
+	else if	(Wld_IsTime(02,00, 03,00))	{	return 2;	}
+	else if	(Wld_IsTime(03,00, 04,00))	{	return 3;	}
+	else if	(Wld_IsTime(04,00, 05,00))	{	return 4;	}
+	else if	(Wld_IsTime(05,00, 06,00))	{	return 5;	}
+	else if	(Wld_IsTime(06,00, 07,00))	{	return 6;	}
+	else if	(Wld_IsTime(07,00, 08,00))	{	return 7;	}
+	else if	(Wld_IsTime(08,00, 09,00))	{	return 8;	}
+	else if	(Wld_IsTime(09,00, 10,00))	{	return 9;	}
+	else if	(Wld_IsTime(10,00, 11,00))	{	return 10;	}
+	else if	(Wld_IsTime(11,00, 12,00))	{	return 11;	}
+	else if	(Wld_IsTime(12,00, 13,00))	{	return 12;	}
+	else if	(Wld_IsTime(13,00, 14,00))	{	return 13;	}
+	else if	(Wld_IsTime(14,00, 15,00))	{	return 14;	}
+	else if	(Wld_IsTime(15,00, 16,00))	{	return 15;	}
+	else if	(Wld_IsTime(16,00, 17,00))	{	return 16;	}
+	else if	(Wld_IsTime(17,00, 18,00))	{	return 17;	}
+	else if	(Wld_IsTime(18,00, 19,00))	{	return 18;	}
+	else if	(Wld_IsTime(19,00, 20,00))	{	return 19;	}
+	else if	(Wld_IsTime(20,00, 21,00))	{	return 20;	}
+	else if	(Wld_IsTime(21,00, 22,00))	{	return 21;	}
+	else if	(Wld_IsTime(22,00, 23,00))	{	return 22;	}
+	else if	(Wld_IsTime(23,00, 00,00))	{	return 23;	};
+	
+	return -1;
+};
+
 ///******************************************************************************************
 /// Trading
 ///******************************************************************************************
 func void B_SetSellingValuePercent(var int percent)
 {
 	percent = divf(mkf(percent), mkf(100));
-	MEM_WriteInt (11211032, percent);
-	MEM_WriteInt (MEM_ReadInt(MEM_InformationMan.DlgTrade + 248) + 268, percent);
+	MEM_WriteInt(11211032, percent);
+	MEM_WriteInt(MEM_ReadInt(MEM_InformationMan.DlgTrade + 248) + 268, percent);
 };
 
 func int C_IsInventoryOpen()

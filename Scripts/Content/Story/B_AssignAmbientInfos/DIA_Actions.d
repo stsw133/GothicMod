@@ -39,6 +39,7 @@ func void DIA_Actions_JOIN_Info()
 {
 	Info_ClearChoices(DIA_Actions_JOIN);
 
+	Info_AddChoice (DIA_Actions_JOIN, "Pilnuj", DIA_Actions_JOIN_StandHalberd);
 	Info_AddChoice (DIA_Actions_JOIN, "Jedz", DIA_Actions_JOIN_StandEating);
 	Info_AddChoice (DIA_Actions_JOIN, "Pij", DIA_Actions_JOIN_StandDrinking);
 	Info_AddChoice (DIA_Actions_JOIN, "Pal ziele", DIA_Actions_JOIN_SmokeJoint);
@@ -123,5 +124,11 @@ func void DIA_Actions_JOIN_StandEating()
 {
 	AI_StopProcessInfos(self);
 	Npc_ExchangeRoutine (self, "Stand_Eating");
+	self.aivar[AIV_PartyMember] = false;
+};
+func void DIA_Actions_JOIN_StandHalberd()
+{
+	AI_StopProcessInfos(self);
+	Npc_ExchangeRoutine (self, "Stand_Halberd");
 	self.aivar[AIV_PartyMember] = false;
 };

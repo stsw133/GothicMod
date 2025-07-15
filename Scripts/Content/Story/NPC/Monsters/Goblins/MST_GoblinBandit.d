@@ -47,5 +47,5 @@ instance Gobbo_Bandit (Mst_Default_GoblinBandit)
 {
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_GoblinBandit();
-	EquipItem (self, ItMw_1h_Goblin_03);
+	EquipItem (self, ItMw_1h_GobboMace_03);
 };

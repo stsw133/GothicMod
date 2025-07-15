@@ -631,10 +631,9 @@ func void UnEquip_ArmorSet_Leather()
 ///******************************************************************************************
 instance ITAR_Leather_L (ItemPR_Armor)	/// wolf leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór wilków";
 	visual						=	"ItAr_Leather_L.3ds";
 	visual_change				=	"Armor_Leather_L.asc";
-	description					=	"Pancerz ze skór wilków";
 	SetItArAttributes (self, 25,20,5,0,   0);	/// 5 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -643,10 +642,9 @@ instance ITAR_Leather_L (ItemPR_Armor)	/// wolf leather
 
 instance ITAR_Leather_M (ItemPR_Armor)	/// wolf leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór wilków";
 	visual						=	"ItAr_Leather_M.3ds";
 	visual_change				=	"Armor_Leather_L.asc";
-	description					=	"Pancerz ze skór wilków";
 	SetItArAttributes (self, 30,25,10,5,   1);	/// 7 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -655,10 +653,9 @@ instance ITAR_Leather_M (ItemPR_Armor)	/// wolf leather
 
 instance ITAR_Leather_T (ItemPR_Armor)	/// tiger leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór tygrysów";
 	visual						=	"ItAr_Leather_T.3ds";
 	visual_change				=	"Armor_Leather_M.asc";
-	description					=	"Pancerz ze skór tygrysów";
 	SetItArAttributes (self, 40,35,15,10,   0);	/// 10 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -667,10 +664,9 @@ instance ITAR_Leather_T (ItemPR_Armor)	/// tiger leather
 
 instance ITAR_Leather_S (ItemPR_Armor)	/// shadowbeast leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór cieniostworów";
 	visual						=	"ItAr_Leather_S.3ds";
 	visual_change				=	"Armor_Leather_M.asc";
-	description					=	"Pancerz ze skór cieniostworów";
 	SetItArAttributes (self, 60,55,25,20,   1);	/// 16 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -679,10 +675,9 @@ instance ITAR_Leather_S (ItemPR_Armor)	/// shadowbeast leather
 
 instance ITAR_Leather_H (ItemPR_Armor)	/// troll leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór trolli";
 	visual						=	"ItAr_Leather_H.3ds";
 	visual_change				=	"Armor_Leather_H.asc";
-	description					=	"Pancerz ze skór trolli";
 	SetItArAttributes (self, 80,75,35,30,   0);	/// 22 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -691,10 +686,9 @@ instance ITAR_Leather_H (ItemPR_Armor)	/// troll leather
 
 instance ITAR_Leather_B (ItemPR_Armor)	/// black troll leather
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór czarnych trolli";
 	visual						=	"ItAr_Leather_B.3ds";
 	visual_change				=	"Armor_Leather_H.asc";
-	description					=	"Pancerz ze skór czarnych trolli";
 	SetItArAttributes (self, 85,80,40,35,   1);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -706,10 +700,9 @@ instance ITAR_Leather_B (ItemPR_Armor)	/// black troll leather
 ///******************************************************************************************
 instance ITAR_Babe_Leather (ItemPR_Armor)
 {
-	name						=	"Skórzany pancerz";
+	name						=	"Pancerz ze skór wilków";
 	visual						=	"ItAr_Leather_L.3ds";
 	visual_change				=	"Armor_Babe_Leather.asc";
-	description					=	"Pancerz ze skór wilków";
 	SetItArAttributes (self, 25,20,5,0,   0);	/// 5 level
 	
 	on_equip					=	Equip_ArmorSet_Leather;
@@ -741,10 +734,9 @@ func void UnEquip_ArmorSet_Plates()
 ///******************************************************************************************
 instance ITAR_Crawler (ItemPR_Armor)
 {
-	name							=	"Zbroja p³ytowa";
+	name							=	"Zbroja z p³ytek pe³zaczy";
 	visual							=	"ItAr_Crawler.3ds";
 	visual_change					=	"Armor_Crawler.asc";
-	description						=	"Zbroja z p³ytek pe³zaczy";
 	SetItArAttributes (self, 50,60,15,5,   0);	/// 13 level
 	
 	on_equip						=	Equip_ArmorSet_Plates;
@@ -753,10 +745,9 @@ instance ITAR_Crawler (ItemPR_Armor)
 
 instance ITAR_DragonSnapper (ItemPR_Armor)
 {
-	name							=	"Zbroja p³ytowa";
+	name							=	"Zbroja z ³usek zêbaczy";
 	visual							=	"ItAr_DragonSnapper.3ds";
 	visual_change					=	"Armor_Crawler.asc";
-	description						=	"Zbroja z ³usek zêbaczy";
 	SetItArAttributes (self, 70,80,35,5,   1);	/// 19 level
 	
 	on_equip						=	Equip_ArmorSet_Plates;
@@ -768,10 +759,9 @@ instance ITAR_DragonSnapper (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_Babe_Crawler (ItemPR_Armor)
 {
-	name							=	"Zbroja p³ytowa";
+	name							=	"Zbroja z p³ytek pe³zaczy";
 	visual							=	"ItAr_Crawler.3ds";
 	visual_change					=	"Armor_Babe_Crawler.asc";
-	description						=	"Zbroja z p³ytek pe³zaczy";
 	SetItArAttributes (self, 50,60,15,5,   0);	/// 13 level
 	
 	on_equip						=	Equip_ArmorSet_Plates;
@@ -834,10 +824,9 @@ instance ITAR_MIL_N (ItemPR_Armor)
 
 instance ITAR_MIL_L (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Lekki pancerz stra¿y";
 	visual						=	"ItAr_MIL_L.3DS";
 	visual_change				=	"Armor_MIL_L.asc";
-	description					=	"Lekki pancerz stra¿y";
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -846,10 +835,9 @@ instance ITAR_MIL_L (ItemPR_Armor)
 
 instance ITAR_MIL_M (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Œredni pancerz stra¿y";
 	visual						=	"ItAr_MIL_M.3DS";
 	visual_change				=	"Armor_MIL_M.asc";
-	description					=	"Œredni pancerz stra¿y";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -858,10 +846,9 @@ instance ITAR_MIL_M (ItemPR_Armor)
 
 instance ITAR_MIL_H (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Ciêzki pancerz stra¿y";
 	visual						=	"ItAr_MIL_H.3DS";
 	visual_change				=	"Armor_MIL_H.asc";
-	description					=	"Ciêzki pancerz stra¿y";
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -871,10 +858,9 @@ instance ITAR_MIL_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_ROY_L (ItemPR_Armor)
 {
-	name						=	"Pancerz gwardii królewskiej";
+	name						=	"Lekki pancerz gwardii królewskiej";
 	visual						=	"ItAr_ROY_L.3ds";
 	visual_change				=	"Armor_Roy_L.asc";
-	description					=	"Lekki pancerz gwardii królewskiej";
 	SetItArAttributes (self, 120,120,60,60,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -884,10 +870,9 @@ instance ITAR_ROY_L (ItemPR_Armor)
 
 instance ITAR_ROY_M (ItemPR_Armor)
 {
-	name						=	"Pancerz gwardii królewskiej";
+	name						=	"Œredni pancerz gwardii królewskiej";
 	visual						=	"ItAr_ROY_M.3ds";
 	visual_change				=	"Armor_Roy_M.asc";
-	description					=	"Œredni pancerz gwardii królewskiej";
 	SetItArAttributes (self, 135,135,75,75,   0);	/// 42 level
 	
 	material					=	MAT_METAL;
@@ -897,10 +882,9 @@ instance ITAR_ROY_M (ItemPR_Armor)
 
 instance ITAR_ROY_H (ItemPR_Armor)
 {
-	name						=	"Pancerz gwardii królewskiej";
+	name						=	"Ciê¿ki pancerz gwardii królewskiej";
 	visual						=	"ItAr_ROY_H.3ds";
 	visual_change				=	"Armor_Roy_H.asc";
-	description					=	"Ciê¿ki pancerz gwardii królewskiej";
 	SetItArAttributes (self, 150,150,90,90,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -924,10 +908,9 @@ instance ITAR_Babe_MIL_N (ItemPR_Armor)
 
 instance ITAR_Babe_MIL_L (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Lekki pancerz stra¿y";
 	visual						=	"ItAr_MIL_L.3DS";
 	visual_change				=	"Armor_Babe_MIL_L.asc";
-	description					=	"Lekki pancerz stra¿y";
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -936,10 +919,9 @@ instance ITAR_Babe_MIL_L (ItemPR_Armor)
 
 instance ITAR_Babe_MIL_M (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Œredni pancerz stra¿y";
 	visual						=	"ItAr_MIL_M.3DS";
 	visual_change				=	"Armor_Babe_MIL_M.asc";
-	description					=	"Œredni pancerz stra¿y";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -948,10 +930,9 @@ instance ITAR_Babe_MIL_M (ItemPR_Armor)
 
 instance ITAR_Babe_MIL_H (ItemPR_Armor)
 {
-	name						=	"Pancerz stra¿y";
+	name						=	"Ciêzki pancerz stra¿y";
 	visual						=	"ItAr_MIL_H.3DS";
 	visual_change				=	"Armor_Babe_MIL_H.asc";
-	description					=	"Ciêzki pancerz stra¿y";
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_MIL;
@@ -1014,10 +995,9 @@ instance ITAR_SLD_N (ItemPR_Armor)
 
 instance ITAR_SLD_L (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Lekki pancerz najemnika";
 	visual						=	"ItAr_SLD_L.3ds";
 	visual_change				=	"Armor_SLD_L.asc";
-	description					=	"Lekki pancerz najemnika";
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1026,10 +1006,9 @@ instance ITAR_SLD_L (ItemPR_Armor)
 
 instance ITAR_SLD_M (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Œredni pancerz najemnika";
 	visual						=	"ItAr_SLD_M.3ds";
 	visual_change				=	"Armor_SLD_M.asc";
-	description					=	"Œredni pancerz najemnika";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1038,10 +1017,9 @@ instance ITAR_SLD_M (ItemPR_Armor)
 
 instance ITAR_SLD_H (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Ciê¿ki pancerz najemnika";
 	visual						=	"ItAr_SLD_H.3ds";
 	visual_change				=	"Armor_SLD_H.asc";
-	description					=	"Ciê¿ki pancerz najemnika";
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1051,10 +1029,9 @@ instance ITAR_SLD_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_DJG_L (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy smoków";
+	name						=	"Lekki pancerz ³owcy smoków";
 	visual						=	"ItAr_DJG_L.3ds";
 	visual_change				=	"Armor_DJG_L.asc";
-	description					=	"Lekki pancerz ³owcy smoków";
 	SetItArAttributes (self, 120,120,80,40,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -1064,10 +1041,9 @@ instance ITAR_DJG_L (ItemPR_Armor)
 
 instance ITAR_DJG_M (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy smoków";
+	name						=	"Œredni pancerz ³owcy smoków";
 	visual						=	"ItAr_DJG_M.3ds";
 	visual_change				=	"Armor_DJG_M.asc";
-	description					=	"Œredni pancerz ³owcy smoków";
 	SetItArAttributes (self, 135,135,95,55,   0);	/// 42 level
 	
 	material					=	MAT_METAL;
@@ -1077,10 +1053,9 @@ instance ITAR_DJG_M (ItemPR_Armor)
 
 instance ITAR_DJG_H (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy smoków";
+	name						=	"Ciê¿ki pancerz ³owcy smoków";
 	visual						=	"ItAr_DJG_H.3ds";
 	visual_change				=	"Armor_DJG_H.asc";
-	description					=	"Ciê¿ki pancerz ³owcy smoków";
 	SetItArAttributes (self, 150,150,110,70,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1093,10 +1068,9 @@ instance ITAR_DJG_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_Babe_SLD_L (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Lekki pancerz najemnika";
 	visual						=	"ItAr_SLD_L.3ds";
 	visual_change				=	"Armor_Babe_SLD_L.asc";
-	description					=	"Lekki pancerz najemnika";
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1105,10 +1079,9 @@ instance ITAR_Babe_SLD_L (ItemPR_Armor)
 
 instance ITAR_Babe_SLD_M (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Œredni pancerz najemnika";
 	visual						=	"ItAr_SLD_M.3ds";
 	visual_change				=	"Armor_Babe_SLD_M.asc";
-	description					=	"Œredni pancerz najemnika";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1117,10 +1090,9 @@ instance ITAR_Babe_SLD_M (ItemPR_Armor)
 
 instance ITAR_Babe_SLD_H (ItemPR_Armor)
 {
-	name						=	"Pancerz najemnika";
+	name						=	"Ciê¿ki pancerz najemnika";
 	visual						=	"ItAr_SLD_H.3ds";
 	visual_change				=	"Armor_Babe_SLD_H.asc";
-	description					=	"Ciê¿ki pancerz najemnika";
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_SLD;
@@ -1130,10 +1102,9 @@ instance ITAR_Babe_SLD_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_Babe_DJG_L (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy smoków";
+	name						=	"Lekki pancerz ³owcy smoków";
 	visual						=	"ItAr_DJG_L.3ds";
 	visual_change				=	"Armor_Babe_DJG_L.asc";
-	description					=	"Lekki pancerz ³owcy smoków";
 	SetItArAttributes (self, 120,120,80,40,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -1143,10 +1114,9 @@ instance ITAR_Babe_DJG_L (ItemPR_Armor)
 
 instance ITAR_Babe_DJG_H (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy smoków";
+	name						=	"Ciê¿ki pancerz ³owcy smoków";
 	visual						=	"ItAr_DJG_H.3ds";
 	visual_change				=	"Armor_Babe_DJG_H.asc";
-	description					=	"Ciê¿ki pancerz ³owcy smoków";
 	SetItArAttributes (self, 150,150,110,70,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1181,10 +1151,9 @@ func void UnEquip_ArmorSet_ORW()
 ///******************************************************************************************
 instance ITAR_ORW_L (ItemPR_Armor)
 {
-	name						=	"Pancerz wojownika orków";
+	name						=	"Lekki pancerz wojownika orków";
 	visual						=	"ItAr_ORW_L.3ds";
 	visual_change				=	"Armor_ORW_L.asc";
-	description					=	"Lekki pancerz wojownika orków";
 	SetItArAttributes (self, 120,120,80,40,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -1194,10 +1163,9 @@ instance ITAR_ORW_L (ItemPR_Armor)
 
 instance ITAR_ORW_M (ItemPR_Armor)
 {
-	name						=	"Pancerz wojownika orków";
+	name						=	"Œredni pancerz wojownika orków";
 	visual						=	"ItAr_ORW_M.3ds";
 	visual_change				=	"Armor_ORW_M.asc";
-	description					=	"Œredni pancerz wojownika orków";
 	SetItArAttributes (self, 135,135,95,55,   0);	/// 42 level
 	
 	material					=	MAT_METAL;
@@ -1207,10 +1175,9 @@ instance ITAR_ORW_M (ItemPR_Armor)
 
 instance ITAR_ORW_H (ItemPR_Armor)
 {
-	name						=	"Pancerz wojownika orków";
+	name						=	"Ciê¿ki pancerz wojownika orków";
 	visual						=	"ItAr_ORW_H.3ds";
 	visual_change				=	"Armor_ORW_H.asc";
-	description					=	"Ciê¿ki pancerz wojownika orków";
 	SetItArAttributes (self, 150,150,110,70,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1254,10 +1221,9 @@ instance ITAR_NOV_L (ItemPR_Armor)
 
 instance ITAR_NOV_H (ItemPR_Armor)
 {
-	name						=	"Szata nowicjusza";
+	name						=	"Szata starszego nowicjusza";
 	visual						=	"ItAr_NOV_H.3ds";
 	visual_change				=	"Armor_NOV_H.asc";
-	description					=	"Szata starszego nowicjusza";
 	SetItArAttributes (self, 30,30,5,15,   0);	/// 8 level
 	
 	on_equip					=	Equip_ArmorSet_NOV;
@@ -1301,10 +1267,9 @@ func void UnEquip_ArmorSet_MAG()
 ///******************************************************************************************
 instance ITAR_MAG_L (ItemPR_Armor)
 {
-	name						=	"Szata maga";
+	name						=	"Lekka szata maga";
 	visual						=	"ItAr_MAG_L.3ds";
 	visual_change				=	"Armor_MAG_L.asc";
-	description					=	"Lekka szata maga";
 	SetItArAttributes (self, 40,40,20,20,   0);	/// 12 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1313,10 +1278,9 @@ instance ITAR_MAG_L (ItemPR_Armor)
 
 instance ITAR_MAG_M (ItemPR_Armor)
 {
-	name						=	"Szata maga";
+	name						=	"Œrednia szata maga";
 	visual						=	"ItAr_MAG_M.3ds";
 	visual_change				=	"Armor_MAG_M.asc";
-	description					=	"Œrednia szata maga";
 	SetItArAttributes (self, 60,60,30,30,   0);	/// 18 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1325,10 +1289,9 @@ instance ITAR_MAG_M (ItemPR_Armor)
 
 instance ITAR_MAG_H (ItemPR_Armor)
 {
-	name						=	"Szata maga";
+	name						=	"Ciê¿ka szata maga";
 	visual						=	"ItAr_MAG_H.3ds";
 	visual_change				=	"Armor_MAG_H.asc";
-	description					=	"Ciê¿ka szata maga";
 	SetItArAttributes (self, 80,80,40,40,   0);	/// 24 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1338,10 +1301,9 @@ instance ITAR_MAG_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_AMG_L (ItemPR_Armor)
 {
-	name						=	"Szata arcymaga";
+	name						=	"Lekka szata arcymaga";
 	visual						=	"ItAr_AMG_L.3ds";
 	visual_change				=	"Armor_AMG_L.asc";
-	description					=	"Lekka szata arcymaga";
 	SetItArAttributes (self, 105,105,75,75,   0);	/// 36 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1350,10 +1312,9 @@ instance ITAR_AMG_L (ItemPR_Armor)
 
 instance ITAR_AMG_M (ItemPR_Armor)
 {
-	name						=	"Szata arcymaga";
+	name						=	"Œrednia szata arcymaga";
 	visual						=	"ItAr_AMG_M.3ds";
 	visual_change				=	"Armor_AMG_M.asc";
-	description					=	"Œrednia szata arcymaga";
 	SetItArAttributes (self, 120,120,90,90,   0);	/// 42 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1362,10 +1323,9 @@ instance ITAR_AMG_M (ItemPR_Armor)
 
 instance ITAR_AMG_H (ItemPR_Armor)
 {
-	name						=	"Szata arcymaga";
+	name						=	"Ciê¿ka szata arcymaga";
 	visual						=	"ItAr_AMG_H.3ds";
 	visual_change				=	"Armor_AMG_H.asc";
-	description					=	"Ciê¿ka szata arcymaga";
 	SetItArAttributes (self, 135,135,105,105,   0);	/// 48 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1375,10 +1335,9 @@ instance ITAR_AMG_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_MAG_A (ItemPR_Armor)
 {
-	name						=	"Szata maga";
+	name						=	"Szata maga wody";
 	visual						=	"ItAr_MAG_A.3ds";
 	visual_change				=	"Armor_MAG_A.asc";
-	description					=	"Szata maga wody";
 	SetItArAttributes (self, 120,120,90,90,   0);	/// 42 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1387,10 +1346,9 @@ instance ITAR_MAG_A (ItemPR_Armor)
 
 instance ITAR_MAG_B (ItemPR_Armor)
 {
-	name						=	"Szata maga";
+	name						=	"Szata mrocznego maga";
 	visual						=	"ItAr_MAG_B.3ds";
 	visual_change				=	"Armor_MAG_B.asc";
-	description					=	"Szata mrocznego maga";
 	SetItArAttributes (self, 120,120,90,90,   0);	/// 42 level
 	
 	on_equip					=	Equip_ArmorSet_MAG;
@@ -1438,10 +1396,9 @@ func void UnEquip_ArmorSet_PAL()
 ///******************************************************************************************
 instance ITAR_PAL_L (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Lekki pancerz paladyna";
 	visual						=	"ItAr_PAL_L.3ds";
 	visual_change				=	"Armor_PAL_L.asc";
-	description					=	"Lekki pancerz paladyna";
 	SetItArAttributes (self, 120,120,50,70,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -1451,10 +1408,9 @@ instance ITAR_PAL_L (ItemPR_Armor)
 
 instance ITAR_PAL_M (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Œredni pancerz paladyna";
 	visual						=	"ItAr_PAL_M.3ds";
 	visual_change				=	"Armor_PAL_M.asc";
-	description					=	"Œredni pancerz paladyna";
 	SetItArAttributes (self, 135,135,65,85,   0);	/// 42 level
 	
 	material					=	MAT_METAL;
@@ -1464,10 +1420,9 @@ instance ITAR_PAL_M (ItemPR_Armor)
 
 instance ITAR_PAL_H (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Ciê¿ki pancerz paladyna";
 	visual						=	"ItAr_PAL_H.3ds";
 	visual_change				=	"Armor_PAL_H.asc";
-	description					=	"Ciê¿ki pancerz paladyna";
 	SetItArAttributes (self, 150,150,80,100,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1478,10 +1433,9 @@ instance ITAR_PAL_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_PAL_D (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Pancerz mrocznego paladyna";
 	visual						=	"ItAr_PAL_D.3ds";
 	visual_change				=	"Armor_PAL_H.asc";
-	description					=	"Pancerz mrocznego paladyna";
 	SetItArAttributes (self, 150,150,80,100,   1);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1491,10 +1445,9 @@ instance ITAR_PAL_D (ItemPR_Armor)
 
 instance ITAR_PAL_T (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Pancerz stra¿nika czasu";
 	visual						=	"ItAr_Pal_T.3ds";
 	visual_change				=	"Armor_PAL_H.asc";
-	description					=	"Pancerz stra¿nika czasu";
 	SetItArAttributes (self, 150,150,80,100,   2);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1504,10 +1457,9 @@ instance ITAR_PAL_T (ItemPR_Armor)
 
 instance ITAR_PAL_U (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Pancerz rycerzy podziemia";
 	visual						=	"ItAr_Pal_U.3ds";
 	visual_change				=	"Armor_PAL_H.asc";
-	description					=	"Pancerz rycerzy podziemia";
 	SetItArAttributes (self, 150,150,80,100,   3);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1517,10 +1469,9 @@ instance ITAR_PAL_U (ItemPR_Armor)
 
 instance ITAR_PAL_G (ItemPR_Armor)
 {
-	name						=	"Pancerz paladyna";
+	name						=	"Pancerz paladyna-genera³a";
 	visual						=	"ItAr_Pal_G.3ds";
 	visual_change				=	"Armor_PAL_H.asc";
-	description					=	"Pancerz paladyna-genera³a";
 	SetItArAttributes (self, 150,150,80,100,   4);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1533,10 +1484,9 @@ instance ITAR_PAL_G (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_ORM_L (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy demonów";
+	name						=	"Lekki pancerz ³owcy demonów";
 	visual						=	"ItAr_ORM_L.3ds";
 	visual_change				=	"Armor_ORM_L.asc";
-	description					=	"Lekki pancerz ³owcy demonów";
 	SetItArAttributes (self, 120,120,80,40,   0);	/// 36 level
 	
 	material					=	MAT_METAL;
@@ -1546,10 +1496,9 @@ instance ITAR_ORM_L (ItemPR_Armor)
 
 instance ITAR_ORM_M (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy demonów";
+	name						=	"Œredni pancerz ³owcy demonów";
 	visual						=	"ItAr_ORM_M.3ds";
 	visual_change				=	"Armor_ORM_M.asc";
-	description					=	"Œredni pancerz ³owcy demonów";
 	SetItArAttributes (self, 135,135,95,55,   0);	/// 42 level
 	
 	material					=	MAT_METAL;
@@ -1559,10 +1508,9 @@ instance ITAR_ORM_M (ItemPR_Armor)
 
 instance ITAR_ORM_H (ItemPR_Armor)
 {
-	name						=	"Pancerz ³owcy demonów";
+	name						=	"Ciê¿ki pancerz ³owcy demonów";
 	visual						=	"ItAr_ORM_H.3ds";
 	visual_change				=	"Armor_ORM_H.asc";
-	description					=	"Ciê¿ki pancerz ³owcy demonów";
 	SetItArAttributes (self, 150,150,110,70,   0);	/// 48 level
 	
 	material					=	MAT_METAL;
@@ -1575,56 +1523,50 @@ instance ITAR_ORM_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_AKO_L (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Lekki pancerz zabójcy";
 	visual						=	"ITAR_AKO_L.3ds";
 	visual_change				=	"Armor_AKO_L.asc";
-	description					=	"Lekki pancerz zabójcy";
 	SetItArAttributes (self, 45,45,5,5,   0);	/// 12 level
 };
 
 instance ITAR_AKO_M (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Œredni pancerz zabójcy";
 	visual						=	"ITAR_AKO_M.3ds";
 	visual_change				=	"Armor_AKO_M.asc";
-	description					=	"Ciê¿ki pancerz zabójcy";
 	SetItArAttributes (self, 65,65,15,15,   0);	/// 18 level
 };
 
 instance ITAR_AKO_H (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Ciê¿ki pancerz zabójcy";
 	visual						=	"ITAR_AKO_M.3ds";
 	visual_change				=	"Armor_AKO_M.asc";
-	description					=	"Ciê¿ki pancerz zabójcy";
 	SetItArAttributes (self, 85,85,25,25,   0);	/// 24 level
 };
 
 ///******************************************************************************************
 instance ITAR_PRI_L (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Lekki pancerz dem. zabójcy";
 	visual						=	"ITAR_PRI_L.3ds";
 	visual_change				=	"Armor_PRI_L.asc";
-	description					=	"Lekki pancerz dem. zabójcy";
 	SetItArAttributes (self, 115,115,55,55,   0);	/// 36 level
 };
 
 instance ITAR_PRI_M (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Œredni pancerz dem. zabójcy";
 	visual						=	"ITAR_PRI_M.3ds";
 	visual_change				=	"Armor_PRI_M.asc";
-	description					=	"Œredni pancerz dem. zabójcy";
 	SetItArAttributes (self, 130,130,70,70,   0);	/// 42 level
 };
 
 instance ITAR_PRI_H (ItemPR_Armor)
 {
-	name						=	"Pancerz zabójcy";
+	name						=	"Ciê¿ki pancerz dem. zabójcy";
 	visual						=	"ITAR_PRI_M.3ds";
 	visual_change				=	"Armor_PRI_M.asc";
-	description					=	"Ciê¿ki pancerz dem. zabójcy";
 	SetItArAttributes (self, 145,145,85,85,   0);	/// 48 level
 };
 
@@ -1687,30 +1629,27 @@ instance ITAR_Babe_Prisoner_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_BDT_L (ItemPR_Armor)
 {
-	name						=	"Pancerz bandyty";
+	name						=	"Lekki pancerz bandyty";
 	visual						=	"ITAR_BDT_L.3ds";
 	visual_change				=	"Armor_BDT_L.asc";
-	description					=	"Lekki pancerz bandyty";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 25,20,5,0,   0);	/// 5 level
 };
 
 instance ITAR_BDT_M (ItemPR_Armor)
 {
-	name						=	"Pancerz bandyty";
+	name						=	"Œredni pancerz bandyty";
 	visual						=	"ITAR_BDT_M.3ds";
 	visual_change				=	"Armor_BDT_M.asc";
-	description					=	"Œredni pancerz bandyty";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 30,30,0,0,   0);	/// 6 level
 };
 
 instance ITAR_BDT_H (ItemPR_Armor)
 {
-	name						=	"Pancerz bandyty";
+	name						=	"Ciê¿ki pancerz bandyty";
 	visual						=	"ITAR_BDT_H.3ds";
 	visual_change				=	"Armor_BDT_H.asc";
-	description					=	"Ciê¿ki pancerz bandyty";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 35,35,5,5,   0);	/// 8 level
 };
@@ -1718,30 +1657,27 @@ instance ITAR_BDT_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_RVN_L (ItemPR_Armor)
 {
-	name						=	"Pancerz ludzi Kruka";
+	name						=	"Lekki pancerz ludzi Kruka";
 	visual						=	"ItAr_RVN_L.3ds";
 	visual_change				=	"Armor_RVN_L.asc";
-	description					=	"Lekki pancerz ludzi Kruka";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 };
 
 instance ITAR_RVN_M (ItemPR_Armor)
 {
-	name						=	"Pancerz ludzi Kruka";
+	name						=	"Œredni pancerz ludzi Kruka";
 	visual						=	"ItAr_RVN_M.3ds";
 	visual_change				=	"Armor_RVN_M.asc";
-	description					=	"Œredni pancerz ludzi Kruka";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 };
 
 instance ITAR_RVN_H (ItemPR_Armor)
 {
-	name						=	"Pancerz ludzi Kruka";
+	name						=	"Ciê¿ki pancerz ludzi Kruka";
 	visual						=	"ItAr_RVN_H.3ds";
 	visual_change				=	"Armor_RVN_H.asc";
-	description					=	"Ciê¿ki pancerz ludzi Kruka";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 };
@@ -1751,7 +1687,6 @@ instance ITAR_Raven (ItemPR_Armor)
 	name						=	"Pancerz Kruka";
 	visual						=	"ItAr_Raven.3ds";
 	visual_change				=	"Armor_Raven.asc";
-	description					=	"Pancerz Kruka";
 	TEXT[4]						=	PRINT_BanditArmor;
 	SetItArAttributes (self, 150,150,90,90,   0);	/// 48 level
 	

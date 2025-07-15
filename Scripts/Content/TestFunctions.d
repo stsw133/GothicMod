@@ -1,93 +1,107 @@
 ///******************************************************************************************
-///	TestFunctions
+/// TestFunctions
 ///******************************************************************************************
 
 /// give items
 ///******************************************************************************************
 func string Give_All (var string parameter)
 {
-	Func_All_Items_AnimalTrophy(hero);
-	Func_All_Items_Armor(hero);
-	Func_All_Items_Artifacts(hero);
-	Func_All_Items_Food(hero);
-	Func_All_Items_Helms(hero);
-	Func_All_Items_MeleeWeapons(hero);
-	Func_All_Items_Misc(hero);
-	Func_All_Items_Plants(hero);
-	Func_All_Items_Potions(hero);
-	Func_All_Items_RangedWeapons(hero);
-	Func_All_Items_Spells(hero);
-	Func_All_Items_Written(hero);
-	Func_All_Items_Meshes(hero);
+	GiveAll_Amulets(hero);
+	GiveAll_AnimalTrophies(hero);
+	GiveAll_Armors(hero);
+	GiveAll_Belts(hero);
+	GiveAll_Food(hero);
+	GiveAll_Hairs(hero);
+	GiveAll_Helms(hero);
+	GiveAll_MeleeWeapons(hero);
+	GiveAll_Meshes(hero);
+	GiveAll_Misc(hero);
+	GiveAll_Munition(hero);
+	GiveAll_Plants(hero);
+	GiveAll_Potions(hero);
+	GiveAll_RangedWeapons(hero);
+	GiveAll_Recipes(hero);
+	GiveAll_Rings(hero);
+	GiveAll_Runes(hero);
+	GiveAll_Stoneplates(hero);
+	GiveAll_Valuables(hero);
+	GiveAll_Written(hero);
 	
 	return "Otrzymano wszystkie przedmioty";
 };
 
 func string Give_Armors (var string parameter)
 {
-	Func_All_Items_Armor(hero);
-	Func_All_Items_Helms(hero);
+	GiveAll_Armors(hero);
+	GiveAll_Hairs(hero);
+	GiveAll_Helms(hero);
 	
 	return "Otrzymano wszystkie pancerze i he³my";
 };
 
 func string Give_Artifacts (var string parameter)
 {
-	Func_All_Items_Artifacts(hero);
+	GiveAll_Amulets(hero);
+	GiveAll_Belts(hero);
+	GiveAll_Rings(hero);
 	
-	return "Otrzymano wszystkie artefakty";
+	return "Otrzymano wszystkie amulety, pierœcienie i pasy";
 };
 
 func string Give_Food (var string parameter)
 {
-	Func_All_Items_Food(hero);
+	GiveAll_Food(hero);
 	
 	return "Otrzymano wszystkie posi³ki i napoje";
 };
 
 func string Give_Meshes (var string parameter)
 {
-	Func_All_Items_Meshes(hero);
+	GiveAll_Meshes(hero);
 	
 	return "Otrzymano wszystkie obiekty";
 };
 
 func string Give_Misc (var string parameter)
 {
-	Func_All_Items_AnimalTrophy(hero);
-	Func_All_Items_Misc(hero);
+	GiveAll_AnimalTrophies(hero);
+	GiveAll_Misc(hero);
+	GiveAll_Valuables(hero);
 	
-	return "Otrzymano wszystkie trofea, narzêdzia i surowce";
+	return "Otrzymano wszystkie trofea, kosztownoœci, narzêdzia i surowce";
 };
 
 func string Give_Potions (var string parameter)
 {
-	Func_All_Items_Plants(hero);
-	Func_All_Items_Potions(hero);
+	GiveAll_Plants(hero);
+	GiveAll_Potions(hero);
 	
 	return "Otrzymano wszystkie mikstury i zio³a";
 };
 
 func string Give_Spells (var string parameter)
 {
-	Func_All_Items_Spells(hero);
+	GiveAll_Runes(hero);
 	
-	return "Otrzymano wszystkie zaklêcia";
+	return "Otrzymano wszystkie runy";
 };
 
 func string Give_Weapons (var string parameter)
 {
-	Func_All_Items_MeleeWeapons(hero);
-	Func_All_Items_RangedWeapons(hero);
+	GiveAll_MeleeWeapons(hero);
+	GiveAll_Munition(hero);
+	GiveAll_RangedWeapons(hero);
 	
 	return "Otrzymano wszystkie bronie";
 };
 
 func string Give_Written (var string parameter)
 {
-	Func_All_Items_Written(hero);
+	GiveAll_Recipes(hero);
+	GiveAll_Stoneplates(hero);
+	GiveAll_Written(hero);
 	
-	return "Otrzymano wszystkie dokumenty";
+	return "Otrzymano wszystkie ksi¹¿ki, mapy, receptury i tablice";
 };
 
 func string Give_Gold (var string parameter)
@@ -118,7 +132,6 @@ func string Give_FightSkills (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
-	B_AddFightSkill (hero, NPC_TALENT_THROW, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_1H, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_2H, paramInt);
 	B_AddFightSkill (hero, NPC_TALENT_BOW, paramInt);
@@ -149,7 +162,7 @@ func string Give_Talents (var string parameter)
 //	Npc_SetTalentSkill (hero, NPC_TALENT_ACROBATIC, 1);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_PICKLOCK, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 3);
+	Npc_SetTalentSkill (hero, NPC_TALENT_PICKPOCKET, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_PERSUASION, 1);
 	
 	Npc_SetTalentSkill (hero, NPC_TALENT_FLETCHERY, 3);
@@ -182,9 +195,9 @@ func string Give_Talents (var string parameter)
 	MEM_WriteStatArr(PLAYER_TALENT_HUNTING, i, true);
 	end;
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_COOKING, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_MINING, 1);
-	Npc_SetTalentSkill (hero, NPC_TALENT_ARMORY, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_17, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_18, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_19, 1);
 	
 	return "Otrzymano wszystkie talenty";
 };
@@ -198,8 +211,17 @@ func string Give_Exp (var string parameter)
 	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " punktów doœwiadczenia");
 };
 
-/// set diff level & movie mode
+/// set game & movie mode
 ///******************************************************************************************
+func string Set_Chapter (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	B_ChangeChapter (paramInt, CurrentLevel);
+	
+	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), " rozdzia³");
+};
+
 func string Set_Diff (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
@@ -207,9 +229,9 @@ func string Set_Diff (var string parameter)
 	DIFF_Select(paramInt);
 	
 	if		(dLevel == DIFF_E)	{	return "Ustawiono ³atwy poziom trudnoœci";		}
-	else if (dLevel == DIFF_M)	{	return "Ustawiono œredni poziom trudnoœci";		}
-	else if (dLevel == DIFF_H)	{	return "Ustawiono trudny poziom trudnoœci";		}
-	else if (dLevel == DIFF_V)	{	return "Ustawiono b. trudny poziom trudnoœci";	}
+	else if	(dLevel == DIFF_M)	{	return "Ustawiono œredni poziom trudnoœci";		}
+	else if	(dLevel == DIFF_H)	{	return "Ustawiono trudny poziom trudnoœci";		}
+	else if	(dLevel == DIFF_V)	{	return "Ustawiono b. trudny poziom trudnoœci";	}
 	else						{	return "Nieprawid³owy poziom trudnoœci";		};
 };
 
@@ -227,34 +249,25 @@ func string Set_GameMode (var string parameter)
 	};
 };
 
-/// set time scaling
-///******************************************************************************************
-func string Set_ScaleWorldTime (var string parameter)
+func string Set_SellingValuePercent (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
-	scaleWorldTime = paramInt;
+	B_SetSellingValuePercent(paramInt);
 	
-	return ConcatStrings("Ustawiono skalowanie czasu œwiata na ", IntToString(paramInt));
-};
-func string Set_Speed (var string parameter)
-{
-	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
-	
-	o_other = MEM_PtrToInst(o_hero.focus_vob);
-	if (Hlp_IsValidNpc(o_other))
-	{
-		Npc_SetSpeed (o_other, paramInt * 10);
-	}
-	else
-	{
-		Npc_SetSpeed (hero, paramInt * 10);
-	};
-	
-	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% szybkoœci postaci");
+	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% przelicznika sprzeda¿y");
 };
 
-/// set body visibility
+func string Set_View (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	MOD_MovieMode_SetCamera(paramInt);
+	
+	return ConcatStrings("Zapisano kamerê pod slotem ", IntToString(paramInt));
+};
+
+/// set world & npc
 ///******************************************************************************************
 func string Set_BodyVisibility (var string parameter)
 {
@@ -273,19 +286,32 @@ func string Set_BodyVisibility (var string parameter)
 	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% widocznoœci postaci");
 };
 
-/// set selling value percent
-///******************************************************************************************
-func string Set_SetSellingValuePercent (var string parameter)
+func string Set_ScaleWorldTime (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
-	B_SetSellingValuePercent(paramInt);
+	scaleWorldTime = paramInt;
 	
-	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% przelicznika sprzeda¿y");
+	return ConcatStrings("Ustawiono skalowanie czasu œwiata na ", IntToString(paramInt));
 };
 
-/// set weather
-///******************************************************************************************
+func string Set_Speed (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	o_other = MEM_PtrToInst(o_hero.focus_vob);
+	if (Hlp_IsValidNpc(o_other))
+	{
+		Npc_SetSpeed (o_other, paramInt * 10);
+	}
+	else
+	{
+		Npc_SetSpeed (hero, paramInt * 10);
+	};
+	
+	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% szybkoœci postaci");
+};
+
 func string Set_Weather (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
@@ -376,24 +402,24 @@ func string Update_Visual_SkinTex (var string parameter)
 	
 	return ConcatStrings("Ustawiono teksturê skóry na ", IntToString(paramInt));
 };
-/* THIS FUNCTION THROWS ERROR
+
 func string Update_Visual_HeadMesh (var string parameter)
 {
 	o_other = MEM_PtrToInst(o_hero.focus_vob);
 	if (Hlp_IsValidNpc(o_other))
 	{
-		o_other.name[4] = parameter;
+		MEM_WriteStatStringArr(o_other.name, 4, parameter);
 		NpcFn_UpdateVisual(o_other);
 	}
 	else
 	{
-		hero.name[4] = parameter;
+		MEM_WriteStatStringArr(hero.name, 4, parameter);
 		NpcFn_UpdateVisual(hero);
 	};
 	
 	return ConcatStrings("Ustawiono model g³owy na ", parameter);
 };
-*/
+
 func string Update_Visual_FaceTex (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
@@ -473,6 +499,7 @@ func string Reset_OverlayMDS (var string parameter)
 	
 	return "Zresetowano animacje poruszania siê";
 };
+
 func string Reset_FightOverlayMDS (var string parameter)
 {
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_1HST1.MDS");
@@ -514,6 +541,41 @@ func string Reset_Talk (var string parameter)
 	
 	return "Zresetowano proces rozmowy";
 };
+
+/// assign ani
+///******************************************************************************************
+func string Assign_Ani_0_Self (var string parameter)	{	return MOD_MovieMode_SetAni(0,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_1_Self (var string parameter)	{	return MOD_MovieMode_SetAni(1,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_2_Self (var string parameter)	{	return MOD_MovieMode_SetAni(2,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_3_Self (var string parameter)	{	return MOD_MovieMode_SetAni(3,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_4_Self (var string parameter)	{	return MOD_MovieMode_SetAni(4,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_5_Self (var string parameter)	{	return MOD_MovieMode_SetAni(5,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_6_Self (var string parameter)	{	return MOD_MovieMode_SetAni(6,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_7_Self (var string parameter)	{	return MOD_MovieMode_SetAni(7,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_8_Self (var string parameter)	{	return MOD_MovieMode_SetAni(8,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_9_Self (var string parameter)	{	return MOD_MovieMode_SetAni(9,	TARGET_COLLECT_CASTER,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+
+func string Assign_Ani_0_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(0,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_1_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(1,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_2_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(2,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_3_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(3,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_4_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(4,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_5_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(5,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_6_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(6,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_7_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(7,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_8_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(8,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_9_Focus (var string parameter)	{	return MOD_MovieMode_SetAni(9,	TARGET_COLLECT_FOCUS,	STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+
+func string Assign_Ani_0_All (var string parameter)		{	return MOD_MovieMode_SetAni(0,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_1_All (var string parameter)		{	return MOD_MovieMode_SetAni(1,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_2_All (var string parameter)		{	return MOD_MovieMode_SetAni(2,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_3_All (var string parameter)		{	return MOD_MovieMode_SetAni(3,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_4_All (var string parameter)		{	return MOD_MovieMode_SetAni(4,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_5_All (var string parameter)		{	return MOD_MovieMode_SetAni(5,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_6_All (var string parameter)		{	return MOD_MovieMode_SetAni(6,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_7_All (var string parameter)		{	return MOD_MovieMode_SetAni(7,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_8_All (var string parameter)		{	return MOD_MovieMode_SetAni(8,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
+func string Assign_Ani_9_All (var string parameter)		{	return MOD_MovieMode_SetAni(9,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
 
 /// events
 ///******************************************************************************************
@@ -699,11 +761,12 @@ func void ConsoleCommands()
 	
 	CC_Register(Set_Diff, "Set Diff", "");
 	CC_Register(Set_GameMode, "Set GameMode", "");
+	CC_Register(Set_SellingValuePercent, "Set SellingValuePercent", "");
+	CC_Register(Set_View, "Set View", "");
 	
+	CC_Register(Set_BodyVisibility, "Set BodyVisibility", "");
 	CC_Register(Set_ScaleWorldTime, "Set ScaleWorldTime", "");
 	CC_Register(Set_Speed, "Set Speed", "");
-	CC_Register(Set_BodyVisibility, "Set BodyVisibility", "");
-	CC_Register(Set_SetSellingValuePercent, "Set SellingValuePercent", "");
 	CC_Register(Set_Weather, "Set Weather", "");
 	
 	CC_Register(Update_Visual_All, "Update Visual All", "");
@@ -718,6 +781,37 @@ func void ConsoleCommands()
 	CC_Register(Reset_OverlayMDS, "Reset OverlayMDS", "");
 	CC_Register(Reset_FightOverlayMDS, "Reset FightOverlayMDS", "");
 	CC_Register(Reset_Talk, "Reset Talk", "");
+	
+	CC_Register(Assign_Ani_0_Self, "Assign Ani 0 Self", "");
+	CC_Register(Assign_Ani_1_Self, "Assign Ani 1 Self", "");
+	CC_Register(Assign_Ani_2_Self, "Assign Ani 2 Self", "");
+	CC_Register(Assign_Ani_3_Self, "Assign Ani 3 Self", "");
+	CC_Register(Assign_Ani_4_Self, "Assign Ani 4 Self", "");
+	CC_Register(Assign_Ani_5_Self, "Assign Ani 5 Self", "");
+	CC_Register(Assign_Ani_6_Self, "Assign Ani 6 Self", "");
+	CC_Register(Assign_Ani_7_Self, "Assign Ani 7 Self", "");
+	CC_Register(Assign_Ani_8_Self, "Assign Ani 8 Self", "");
+	CC_Register(Assign_Ani_9_Self, "Assign Ani 9 Self", "");
+	CC_Register(Assign_Ani_0_Focus, "Assign Ani 0 Focus", "");
+	CC_Register(Assign_Ani_1_Focus, "Assign Ani 1 Focus", "");
+	CC_Register(Assign_Ani_2_Focus, "Assign Ani 2 Focus", "");
+	CC_Register(Assign_Ani_3_Focus, "Assign Ani 3 Focus", "");
+	CC_Register(Assign_Ani_4_Focus, "Assign Ani 4 Focus", "");
+	CC_Register(Assign_Ani_5_Focus, "Assign Ani 5 Focus", "");
+	CC_Register(Assign_Ani_6_Focus, "Assign Ani 6 Focus", "");
+	CC_Register(Assign_Ani_7_Focus, "Assign Ani 7 Focus", "");
+	CC_Register(Assign_Ani_8_Focus, "Assign Ani 8 Focus", "");
+	CC_Register(Assign_Ani_9_Focus, "Assign Ani 9 Focus", "");
+	CC_Register(Assign_Ani_0_All, "Assign Ani 0 All", "");
+	CC_Register(Assign_Ani_1_All, "Assign Ani 1 All", "");
+	CC_Register(Assign_Ani_2_All, "Assign Ani 2 All", "");
+	CC_Register(Assign_Ani_3_All, "Assign Ani 3 All", "");
+	CC_Register(Assign_Ani_4_All, "Assign Ani 4 All", "");
+	CC_Register(Assign_Ani_5_All, "Assign Ani 5 All", "");
+	CC_Register(Assign_Ani_6_All, "Assign Ani 6 All", "");
+	CC_Register(Assign_Ani_7_All, "Assign Ani 7 All", "");
+	CC_Register(Assign_Ani_8_All, "Assign Ani 8 All", "");
+	CC_Register(Assign_Ani_9_All, "Assign Ani 9 All", "");
 	
 	CC_Register(Action_DrawWeapon, "Action DrawWeapon", "");
 	CC_Register(Action_KillMe, "Action KillMe", "");

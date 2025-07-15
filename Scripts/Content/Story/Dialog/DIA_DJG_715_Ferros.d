@@ -144,7 +144,7 @@ FUNC VOID DIA_DJG_715_Ferros_OldCamp_Info()
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"¯yczê powodzenia w poszukiwaniach.",DIA_DJG_715_Ferros_OldCamp_No);
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"Co dostanê, jeœli uda mi siê odzyskaæ twój miecz?",DIA_DJG_715_Ferros_OldCamp_Price);
 	Info_AddChoice (DIA_DJG_715_Ferros_OldCamp,"Odnajdê twój miecz.",DIA_DJG_715_Ferros_OldCamp_Yes);
-	Wld_InsertItem		(ItMW_1H_FerrosSword_MIS , "FP_OW_ITEM_08"); 
+	Wld_InsertItem		(ItMw_1h_FerrosSword , "FP_OW_ITEM_08"); 
 	MIS_FerrosSword = LOG_RUNNING; 
 	
 	Log_CreateTopic (TOPIC_FerrosSword, LOG_MISSION);
@@ -322,7 +322,7 @@ INSTANCE DIA_DJG_715_Ferros_FerrosHisSword   (C_INFO)
 FUNC INT DIA_DJG_715_Ferros_FerrosHisSword_Condition()
 {
 	IF 	(	(MIS_FerrosSword == LOG_RUNNING) 
-	&&	(Npc_HasItems (other,ItMW_1H_FerrosSword_Mis) >= 1))
+	&&	(Npc_HasItems (other,ItMw_1h_FerrosSword) >= 1))
 	{
 		return TRUE;
 	};
@@ -331,7 +331,7 @@ FUNC INT DIA_DJG_715_Ferros_FerrosHisSword_Condition()
 FUNC VOID DIA_DJG_715_Ferros_FerrosHisSword_Info()
 {
 	AI_Output (other,self ,"DIA_DJG_715_Ferros_FerrosHisSword_15_00"); //Znalaz³em twój miecz.
-	B_GiveInvItems (other,self,ItMw_1h_FerrosSword_Mis,1);
+	B_GiveInvItems (other,self,ItMw_1h_FerrosSword,1);
 	B_Ferros_FerrosAnySword_Yes2 ();
 	MIS_FerrosSword = LOG_SUCCESS;	
 	B_GivePlayerExp(400);

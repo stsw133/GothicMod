@@ -16,7 +16,7 @@ instance BDT_10015_Addon_Emilio (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Axe_L_01);
+	EquipItem (self, ItMw0_2h_Axe_L_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

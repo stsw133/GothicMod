@@ -19,7 +19,7 @@ instance BDT_1072_Addon_Logan (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
 	EquipItem (self, ItRw_Bow_M_02);
 	
 	/// ------ Inventory ------

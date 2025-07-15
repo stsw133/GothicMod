@@ -31,6 +31,8 @@ func void STARTUP_GLOBAL()
 	
 	/// MOD: other
 	InitRandomizedAttributesOrder();
+	InitRandomizedHitchanceOrder();
+	InitRandomizedStoneplateOrder();
 };
 
 func void INIT_GLOBAL()
@@ -389,7 +391,7 @@ func void INIT_ADDON_PART_CANYON_01 ()
 //------------------------------------------------------------
 //		Addon World ENTRANCE
 //------------------------------------------------------------
-func void STARTUP_ADDON_PART_ENTRANCE_01 ()
+func void STARTUP_ADDON_PART_ENTRANCE_01()
 {
 	Wld_InsertNpc (KDW_14000_Addon_Saturas_ADW   ,"ADW_ENTRANCE");
 	Wld_InsertNpc (KDW_14010_Addon_Cronos_ADW    ,"ADW_ENTRANCE");
@@ -454,7 +456,7 @@ func void STARTUP_ADDON_PART_ENTRANCE_01 ()
 	
 	//Items
 	Wld_InsertItem (ItWr_StonePlateCommon_Addon,"FP_ITEM_ADWPORTAL_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_ADWPORTAL_02");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ITEM_ADWPORTAL_02");
 	
 	Wld_InsertItem (ItRi_MinDmg_01, "FP_ITEM_ENTRANCE_09"); 
 	
@@ -844,6 +846,8 @@ FUNC VOID STARTUP_ADDON_PART_PIRATESCAMP_01 ()
 	Wld_InsertNpc (PIR_1370_Addon_Angus,"STRAND");			//tot
 	Wld_InsertNpc (PIR_1371_Addon_Hank ,"STRAND");			//tot
 	
+	Wld_InsertNpc (PIR_1302_Gregy, "STRAND");	///new!!!
+	
 	
 	//--------- Turm Banditen-------------------------
 	
@@ -1168,7 +1172,7 @@ func void STARTUP_OLDCAMP ()
 	Wld_InsertItem (ItKE_ErzbaronFlur,"FP_ITEM_OC_01");
 	Wld_InsertItem (ItKE_ErzbaronRaum,"FP_ITEM_OC_02");
 
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_ORK_OC_04_2");
+	Wld_InsertItem (ItWr_StonePlate_03, "FP_ROAM_ORK_OC_04_2");
 
 	
 	// Foltermeister
@@ -1464,19 +1468,19 @@ func void STARTUP_SURFACE ()
 	Wld_InsertItem (ItWr_KDWLetter,"FP_ITEM_OW_01");
 	Wld_InsertItem (ItWr_GilbertLetter,"FP_ITEM_OW_02");
 	
-	Wld_InsertItem (ItWr_StonePlate, "OW_ITEM_ROCKHORT_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_REST_ORK_OC_29");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_ORK_04");
+	Wld_InsertItem (ItWr_StonePlate_04, "OW_ITEM_ROCKHORT_01");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_REST_ORK_OC_29");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_ROAM_ORK_04");
 	Wld_InsertItem (ItWr_StonePlateCommon_Addon,"FP_ROAM_OW_WARAN_DEMON_02");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_ITEM_SPECIAL_01");
-	Wld_InsertItem (ItWr_StonePlate, "OW_ITEM_ICEHORT_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_OW_ITEM_05");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_OW_LURKER_NC_LAKE_03");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_ITEM_SPECIAL_01");
+	Wld_InsertItem (ItWr_StonePlate_03, "OW_ITEM_ICEHORT_01");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_OW_ITEM_05");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_OW_LURKER_NC_LAKE_03");
 	Wld_InsertItem (ItWr_StonePlateCommon_Addon  ,"FP_ROAM_OW_WOLF_NEAR_SHADOW3");
-	Wld_InsertItem (ItWr_StonePlate, "FP_OW_GORNS_VERSTECK");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_OW_GOBBO_CAVE03_02");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_OW_WARAN_EBENE_02_01");
-	Wld_InsertItem (ItWr_StonePlate, "OW_ITEM_ROCKHORT_02");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_OW_GORNS_VERSTECK");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_OW_GOBBO_CAVE03_02");
+	Wld_InsertItem (ItWr_StonePlate_03, "FP_ROAM_OW_WARAN_EBENE_02_01");
+	Wld_InsertItem (ItWr_StonePlate_04, "OW_ITEM_ROCKHORT_02");
 	Wld_InsertItem (ItPl_Dex_Herb_01   ,"OW_ITEM_ROCKHORT_02");
 	Wld_InsertItem (ItPl_Dex_Herb_01   ,"FP_ROAM_OW_LURKER_NC_LAKE_03");
 	
@@ -2904,9 +2908,9 @@ func void STARTUP_NewWorld_Part_City_01()
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_03");//
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_05");//
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_07");//
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_INSEL_07");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_INSEL_07");
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_09");//
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_INSEL_10");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_ROAM_INSEL_10");
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_11");//
 	Wld_InsertNpc		(Waran					, "FP_ROAM_INSEL_13");//
 
@@ -2915,7 +2919,7 @@ func void STARTUP_NewWorld_Part_City_01()
 	//------ Muscheln --------
 	//-------------------------------------
 	Wld_InsertItem (ItMi_Shell, "FP_SHELLSPAWN_CITY_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_SHELLSPAWN_CITY_02");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_SHELLSPAWN_CITY_02");
 	Wld_InsertItem (ItMi_Shell, "FP_SHELLSPAWN_CITY_02");
 	Wld_InsertItem (ItMi_Shell, "FP_SHELLSPAWN_CITY_03");
 	Wld_InsertItem (ItMi_Shell, "FP_SHELLSPAWN_CITY_04");
@@ -3117,7 +3121,7 @@ func void STARTUP_NewWorld_Part_Farm_01()
 
 	Wld_InsertNpc		(Giant_Bug_VinoRitual1, 	"NW_FARM1_OUT_15");	
 	Wld_InsertNpc		(Giant_Bug_VinoRitual2, 	"NW_FARM1_OUT_15");	
-	Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_HERB_11");
+	Wld_InsertItem (ItWr_StonePlate_03, "FP_ITEM_HERB_11");
 
 	//---Kapitel2 Waldgraben---
 	Wld_InsertNpc		(Bloodfly,	"NW_FARM1_CITYWALL_02_B"); 
@@ -3152,7 +3156,7 @@ func void STARTUP_NewWorld_Part_Farm_01()
 	Wld_InsertNpc		(BDT_1001_Bandit_L, 	"NW_FARM1_BANDITS_CAVE_07");
 	Wld_InsertNpc		(BDT_1002_Bandit_L, 	"NW_FARM1_BANDITS_CAVE_08");
 	
-	Wld_InsertItem (ItWr_StonePlate, "FP_STAND_DEMENTOR_KDF_29");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_STAND_DEMENTOR_KDF_29");
 	
 	Wld_InsertNpc		(BDT_1001_Bandit_L, 	"NW_FARM1_BANDITS_CAVE_03");
 };
@@ -3261,10 +3265,6 @@ func void STARTUP_NewWorld_Part_Xardas_01()
 	//ADDON	
 	Wld_InsertNpc		(Bau_4300_Addon_Cavalorn, 		"NW_XARDAS_START");
 	Wld_InsertNpc		(PIR_1300_Addon_Greg_NW, 		"FARM1");
-	
-	
-	///new!!!
-	Wld_InsertNpc (PIR_1302_Gregy, "START");
 };
 
 	func void INIT_SUB_NewWorld_Part_Xardas_01()
@@ -3321,7 +3321,7 @@ FUNC VOID STARTUP_NewWorld_Part_Monastery_01 ()
 	Wld_InsertNpc 	(Scavenger, 			"NW_PATH_TO_MONASTER_AREA_11");
 
 	Wld_InsertNpc 	(Scavenger, 			"NW_PATH_TO_MONASTER_MONSTER22");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_NW_PATH_TO_MONASTER_MONSTER22_03");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_NW_NW_PATH_TO_MONASTER_MONSTER22_03");
 	Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, 			"FP_ITEM_MONASTERY_01");
 
 	Wld_InsertNpc 	(Scavenger, 			"NW_PATH_TO_MONASTER_AREA_01");
@@ -3395,7 +3395,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc (Lurker, "NW_BIGMILL_FIELD_MONSTER_03");
 	Wld_InsertNpc (Lurker, "NW_BIGMILL_FIELD_MONSTER_03");
 
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_BIGMILL_FIELD_MONSTER_04_03");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_ROAM_NW_BIGMILL_FIELD_MONSTER_04_03");
 	
 	Wld_InsertNpc (Giant_Bug, "NW_BIGMILL_FIELD_MONSTER_01");
 	Wld_InsertNpc (Giant_Bug, "NW_BIGMILL_FIELD_MONSTER_01");
@@ -3623,12 +3623,12 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc 	(Crypt_Skeleton_Room_03, "EVT_CRYPT_ROOM_03_SPAWNMAIN");
 	
  	Wld_InsertItem 	(ItPl_GraveMoss, "EVT_CRYPT_ROOM_01_SPAWN_03");
- 	Wld_InsertItem (ItWr_StonePlate, "EVT_CRYPT_ROOM_FINAL_SPAWN_01");
- 	Wld_InsertItem (ItWr_StonePlate, "EVT_CRYPT_ROOM_02_SPAWN_05");
+ 	Wld_InsertItem (ItWr_StonePlate_02, "EVT_CRYPT_ROOM_FINAL_SPAWN_01");
+ 	Wld_InsertItem (ItWr_StonePlate_03, "EVT_CRYPT_ROOM_02_SPAWN_05");
 	
 	//Castlemines
 	
-	Wld_InsertItem (ItWr_StonePlate, "FP_STAND_DEMENTOR_KDF_12");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_STAND_DEMENTOR_KDF_12");
 	Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_SIT_CAMPFIRE_TOWER_01");
 	
 	Wld_InsertNpc 	(BDT_1040_Bandit_L, 	"NW_CASTLEMINE_01");
@@ -3661,7 +3661,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
  	
 	Wld_InsertNpc 	(Troll, 				"NW_CASTLEMINE_TROLL_08");
 	Wld_InsertNpc 	(Troll, 				"NW_CASTLEMINE_TROLL_07");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_CASTLEMILL_TROLL_05");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_CASTLEMILL_TROLL_05");
 
 	Wld_InsertNpc 	(Skeleton_Warrior, 				"FP_ROAM_CASTLEMINE2_01");
 	Wld_InsertNpc 	(Skeleton_Warrior, 				"FP_ROAM_CASTLEMINE2_02");
@@ -3686,7 +3686,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc 	(Gobbo_Warrior, 			"FP_ROAM_NW_BIGFARMFORESTCAVE_02");
 	Wld_InsertNpc 	(Gobbo_Black, 			"FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	Wld_InsertNpc 	(Gobbo_Black, 			"FP_ROAM_NW_BIGFARMFORESTCAVE_04");
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_BIGFARMFORESTCAVE_EGG");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_NW_ITEM_BIGFARMFORESTCAVE_EGG");
 
 	Wld_InsertNpc 	(Gobbo, 			"FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	Wld_InsertNpc 	(Gobbo_Black, 			"FP_ROAM_BIGFARM_LAKE_CAVE_07");
@@ -3772,7 +3772,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
 	Wld_InsertNpc 	(Skeleton, 			"NW_CRYPT_MONSTER04");
 	Wld_InsertNpc 	(Skeleton_Warrior, 					"NW_CRYPT_MONSTER04");
 	Wld_InsertNpc 	(Skeleton, 			"NW_CRYPT_MONSTER04");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_CRYPT_MONSTER04_02");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_NW_CRYPT_MONSTER04_02");
 
 	Wld_InsertNpc 	(Skeleton, 			"NW_CRYPT_MONSTER06");
 	Wld_InsertNpc 	(Skeleton, 			"NW_CRYPT_MONSTER06");
@@ -3860,7 +3860,7 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
  	//TAVERNECAVE1
  	//Wld_InsertNpc 	(Molerat, 			"WP_BIGFARM_TAVERNCAVE2_01");
  	//Wld_InsertNpc 	(Molerat, 			"WP_BIGFARM_TAVERNCAVE2_02");
- 	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_WP_BIGFARM_TAVERNCAVE2_02_01");
+ 	Wld_InsertItem (ItWr_StonePlate_03, "FP_ROAM_WP_BIGFARM_TAVERNCAVE2_02_01");
  	
  	
  	//ADDON
@@ -3880,33 +3880,33 @@ FUNC VOID STARTUP_NewWorld_Part_GreatPeasant_01 ()
   	Wld_InsertNpc 	(BDT_10314_Addon_RangerBandit_M, 	"NW_FARM4_WOOD_RANGERBANDITS_05");
   	Wld_InsertItem 	(ItWr_LuciasLoveLetter_Addon, 	"FP_ITEM_NW_FARM4_WOOD_LUCIASLETTER");
   	
-  	Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_GREATPEASANT_STPLATE_05");
+  	Wld_InsertItem (ItWr_StonePlate_04, "FP_ITEM_GREATPEASANT_STPLATE_05");
   	Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ITEM_GREATPEASANT_STPLATE_07");
-  	Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_GREATPEASANT_STPLATE_08");
+  	Wld_InsertItem (ItWr_StonePlate_05, "FP_ITEM_GREATPEASANT_STPLATE_08");
 
 	//Die Spur der Banditen:
  	
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_STAND_DEMENTOR_05");
-    Wld_InsertItem (ItWr_StonePlate, "FP_STAND_DEMENTOR_09");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_FARM3_PATH_11_SMALLRIVER_09");
-    Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_FARM3_PATH_11_SMALLRIVER_05");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_FARM3_BIGWOOD_02_04");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_BIGMILL_FARM3_01");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_STAND_DEMENTOR_03");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_BIGMILL_FARM3_03_02");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_STAND_DEMENTOR_07");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_BIGFARM_ALLEE_08_N2");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_STAND_DEMENTOR_02");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_FARM4_SHEEP_02");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_FARM4_WOOD_MONSTER_MORE_02");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_NW_FARM4_WOOD_LUCIASLETTER");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ROAM_NW_FARM4_WOOD_MONSTER_N_17");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_STAND_DEMENTOR_05");
+    Wld_InsertItem (ItWr_StonePlate_01, "FP_STAND_DEMENTOR_09");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_FARM3_PATH_11_SMALLRIVER_09");
+    Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_NW_FARM3_PATH_11_SMALLRIVER_05");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_FARM3_BIGWOOD_02_04");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_BIGMILL_FARM3_01");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_STAND_DEMENTOR_03");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_BIGMILL_FARM3_03_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_STAND_DEMENTOR_07");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_BIGFARM_ALLEE_08_N2");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_STAND_DEMENTOR_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_FARM4_SHEEP_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_FARM4_WOOD_MONSTER_MORE_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_NW_FARM4_WOOD_LUCIASLETTER");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ROAM_NW_FARM4_WOOD_MONSTER_N_17");
 
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_01");
-    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_01");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_02");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_03");
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_04");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_01");
+    Wld_InsertItem (ItWr_StonePlate_03, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_01");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_03");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_GREATPEASANT_FERNANDOSWEAPONS_04");
     Wld_InsertItem 	(ItWr_Addon_BanditTrader, "FP_ITEM_NW_FARM4_WOOD_FERNANDOLETTER");
  
 	//****************************************************************************************
@@ -3970,7 +3970,7 @@ FUNC VOID STARTUP_NewWorld_Part_Pass_To_OW_01 ()
 	
 	Wld_InsertNpc 	(PAL_297_Ritter, "NW_PASS_01");
 	Wld_InsertNpc 	(PAL_298_Ritter, "NW_PASS_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_PASS_01");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_ITEM_PASS_01");
 
 	Wld_InsertNpc	(Wolf,"NW_PASS_06");
 	Wld_InsertNpc	(Wolf,"NW_PASS_06");
@@ -4124,7 +4124,7 @@ FUNC VOID STARTUP_NewWorld_Part_Forest_01 ()
 	
 	// ------- Küste ------
 	Wld_InsertNpc 	(Waran, "FP_ROAM_SHIPWRECK_04"); 
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_SHIPWRECK_03");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_SHIPWRECK_03");
 	Wld_InsertNpc 	(Waran, "FP_ROAM_SHIPWRECK_01"); 
 	
 	//ADDON Wld_InsertNpc	(Waran,"FP_ROAM_FISHERCOAST_01");	
@@ -4425,14 +4425,14 @@ FUNC VOID STARTUP_NewWorld_Part_Forest_01 ()
     Wld_InsertNpc 	(BDT_10304_Addon_RangerBandit_M, "NW_FARM2_TO_TAVERN_RANGERBANDITS_01");
     Wld_InsertNpc 	(BDT_10305_Addon_RangerBandit_L, "NW_FARM2_TO_TAVERN_RANGERBANDITS_01");
     
-    Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_ITEM_FOREST_BANDITTRADER_01");
-	Wld_InsertItem 	(ItMw_Addon_BanditTrader, "FP_SMALLTALK_NW_FARM2_TO_TAVERN_08_02");
+    Wld_InsertItem 	(ItMw_BanditTrader, "FP_ITEM_FOREST_BANDITTRADER_01");
+	Wld_InsertItem 	(ItMw_BanditTrader, "FP_SMALLTALK_NW_FARM2_TO_TAVERN_08_02");
  
     //Stoneplates
     Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ITEM_FOREST_STPLATE_01");
-    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_FOREST_STPLATE_02");
+    Wld_InsertItem (ItWr_StonePlate_01, "FP_ITEM_FOREST_STPLATE_02");
     Wld_InsertItem 	(ItPl_GraveMoss, "FP_ITEM_FOREST_STPLATE_04");
-    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_FOREST_STPLATE_06");
+    Wld_InsertItem (ItWr_StonePlate_02, "FP_ITEM_FOREST_STPLATE_06");
 };
 
 	FUNC VOID INIT_SUB_NewWorld_Part_Forest_01()
@@ -4476,14 +4476,14 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	Wld_InsertNpc 	(Minecrawler, 			"NW_MAGECAVE_23");
 	Wld_InsertNpc 	(MinecrawlerWarrior, 	"NW_MAGECAVE_27");
 	Wld_InsertNpc 	(MinecrawlerWarrior, 	"NW_MAGECAVE_27");
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_MAGECAVE_EGG");
+	Wld_InsertItem (ItWr_StonePlate_03, "FP_NW_ITEM_MAGECAVE_EGG");
 
 
 
 	//----- Schwarzer Troll -----
 	Wld_InsertNpc 	(Troll_Black, 			"NW_TROLLAREA_PATH_84");
 	Wld_InsertItem	(ItPl_Health_Herb_04, "FP_NW_ITEM_TROLL_05");
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_TROLL_01");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_NW_ITEM_TROLL_01");
 	Wld_InsertNpc 	(BAU_982_Grimbald, 		"TROLL");
 
 	//----- Der Weg -----
@@ -4528,9 +4528,9 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	
 	Wld_InsertNpc 	(Shadowbeast, 	"FP_ROAM_NW_TROLLAREA_RUINS_10");
 	
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_TROLL_07");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_NW_ITEM_TROLL_07");
 	Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, 	"FP_NW_ITEM_TROLL_08");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_PORTALTEMPEL_26");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_ROAM_NW_TROLLAREA_PORTALTEMPEL_26");
 
 	
 	//in der Maya-Höhle
@@ -4542,7 +4542,7 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	
 	//Gobbos in 2. Höhle
 	Wld_InsertNpc 	(Gobbo_Black, 	"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
 	Wld_InsertNpc 	(Gobbo_Black, 	"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
 	Wld_InsertNpc 	(Gobbo_Black, 	"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
 	
@@ -4604,13 +4604,13 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 				Wld_InsertNpc 	(Stoneguardian_Dead3, 		"PORTAL");
 				B_KillNpc 		(Stoneguardian_Dead3); 
 				
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_06");
+			    Wld_InsertItem (ItWr_StonePlate_03, "FP_ITEM_TROLLAREA_STPLATE_06");
 			    Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ITEM_TROLLAREA_STPLATE_07");
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_08");
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_09");
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_12");
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_13");
-			    Wld_InsertItem (ItWr_StonePlate, "FP_ITEM_TROLLAREA_STPLATE_14");
+			    Wld_InsertItem (ItWr_StonePlate_04, "FP_ITEM_TROLLAREA_STPLATE_08");
+			    Wld_InsertItem (ItWr_StonePlate_05, "FP_ITEM_TROLLAREA_STPLATE_09");
+			    Wld_InsertItem (ItWr_StonePlate_01, "FP_ITEM_TROLLAREA_STPLATE_12");
+			    Wld_InsertItem (ItWr_StonePlate_02, "FP_ITEM_TROLLAREA_STPLATE_13");
+			    Wld_InsertItem (ItWr_StonePlate_03, "FP_ITEM_TROLLAREA_STPLATE_14");
 			    Wld_InsertItem 	(ItWr_StonePlateCommon_Addon, "FP_ROAM_NW_TROLLAREA_PORTALTEMPEL_DEADALLIGATOR");
 			 
  				//ADDON
@@ -4621,9 +4621,9 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	
 	Wld_InsertNpc 	(Wolf, 		"NW_TROLLAREA_PATH_66_MONSTER");
 	Wld_InsertNpc 	(Wolf, 		"NW_TROLLAREA_PATH_66_MONSTER");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_PATH_66_MONSTER_03");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_ROAM_NW_TROLLAREA_PATH_66_MONSTER_03");
 
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_TROLL_03");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_NW_ITEM_TROLL_03");
 
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_PLANE_07");
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_PLANE_07");
@@ -4632,8 +4632,8 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	Wld_InsertNpc 	(Molerat, 		"NW_TROLLAREA_NOVCHASE_01");
 
 	Wld_InsertNpc 	(Bloodfly, 		"NW_TROLLAREA_PATH_38_MONSTER");
-	Wld_InsertItem (ItWr_StonePlate, "FP_NW_ITEM_TROLL_02");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_PATH_38_MONSTER_02");
+	Wld_InsertItem (ItWr_StonePlate_01, "FP_NW_ITEM_TROLL_02");
+	Wld_InsertItem (ItWr_StonePlate_02, "FP_ROAM_NW_TROLLAREA_PATH_38_MONSTER_02");
 	Wld_InsertNpc 	(Bloodfly, 		"NW_TROLLAREA_PATH_38_MONSTER");
 
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_PLANE_04");
@@ -4662,7 +4662,7 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 
 	Wld_InsertNpc 	(Molerat, 		"NW_TROLLAREA_RITUALFOREST_04_MONSTER");
 	Wld_InsertNpc 	(Molerat, 		"NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_RITUAL_08_02");
+	Wld_InsertItem (ItWr_StonePlate_03, "FP_ROAM_NW_TROLLAREA_RITUAL_08_02");
 
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_RITUALPATH_04");
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_RITUALPATH_04");
@@ -4676,7 +4676,7 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	Wld_InsertNpc 	(Bloodfly, 		"NW_TROLLAREA_RITUALPATH_032");
 
 	Wld_InsertNpc 	(Wisp, 		"NW_TROLLAREA_PLANE_01");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_PLANE_01_01");
+	Wld_InsertItem (ItWr_StonePlate_04, "FP_ROAM_NW_TROLLAREA_PLANE_01_01");
 
 	Wld_InsertNpc 	(Scavenger, 		"NW_TROLLAREA_PATH_22_MONSTER");
 
@@ -4713,7 +4713,7 @@ FUNC VOID STARTUP_NewWorld_Part_TrollArea_01 ()
 	
 	//RIVERSIDECAVE
 	Wld_InsertNpc 	(Shadowbeast, 	"NW_TROLLAREA_RIVERSIDECAVE_02");
-	Wld_InsertItem (ItWr_StonePlate, "FP_ROAM_NW_TROLLAREA_RIVERSIDECAVE_01_03");
+	Wld_InsertItem (ItWr_StonePlate_05, "FP_ROAM_NW_TROLLAREA_RIVERSIDECAVE_01_03");
 	
 	Wld_InsertNpc 	(Shadowbeast, 	"NW_TROLLAREA_RIVERSIDECAVE_07");
 		

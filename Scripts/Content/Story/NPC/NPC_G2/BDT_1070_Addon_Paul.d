@@ -16,7 +16,7 @@ instance BDT_1070_Addon_Paul (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Axe);
+	EquipItem (self, ItMw0_1h_Sld_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

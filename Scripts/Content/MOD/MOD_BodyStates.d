@@ -5,6 +5,7 @@
 var int bsArmor;
 var int bsObsession;
 var int bsPoison;
+var int bsRested;
 var int bsSprint;
 var int bsStealth;
 

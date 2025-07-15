@@ -16,8 +16,8 @@ instance BDT_1022_LeuchtturmBandit (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Axe);
-	EquipItem (self, ItRw_Mil_Crossbow);
+	EquipItem (self, ItMw0_1h_Sld_Axe);
+	EquipItem (self, itRw0_Crossbow_L_02);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

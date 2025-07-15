@@ -37,6 +37,20 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 		slf.attribute[ATR_MANA_MAX] += points;
 		slf.attribute[ATR_MANA] += points;
 		concatText = ConcatStrings(PRINT_LearnMp, IntToString(points));
+		/*
+		if (slf.attribute[ATR_MANA_MAX] >= (100*MP_PER_LP))
+		//&& (!bsCanMeditate)
+		{
+			// ???
+			PrintScreen	("Premia do ???!", -1, 55, FONT_Screen, TIME_ShortPrint);
+		}
+		else if (slf.attribute[ATR_MANA_MAX] >= (50*MP_PER_LP))
+		&& (bsRested != IMMUNE)
+		{
+			bsRested = IMMUNE;
+			PrintScreen	("Premia do zasypiania!", -1, 55, FONT_Screen, TIME_ShortPrint);
+		};
+		*/
 	}
 	/// SP
 	else if (attrib == AIV_Stamina_MAX)
@@ -120,4 +134,15 @@ func void InitRandomizedAttributesOrder()
 		MEM_WriteStatArr(RandomizedAttributesOrder, i, MEM_ReadStatArr(values, index));
 		MEM_WriteStatArr(used, index, true);
 	end;
+};
+
+func void PfxRandomizedAttributesOrder(var int attributeIndex)
+{
+	if		(attributeIndex == ATR_HITPOINTS_MAX)	{	B_RaiseAttribute(self, ATR_HITPOINTS_MAX, 1*HP_PER_LP); Wld_PlayEffect("spellFX_LearnHP", hero, hero, 0, 0, 0, false);	}
+	else if	(attributeIndex == ATR_MANA_MAX)		{	B_RaiseAttribute(self, ATR_MANA_MAX, 1*MP_PER_LP); Wld_PlayEffect("spellFX_LearnMP", hero, hero, 0, 0, 0, false);		}
+	else if	(attributeIndex == AIV_STAMINA_MAX)		{	B_RaiseAttribute(self, AIV_STAMINA_MAX, 1*SP_PER_LP); Wld_PlayEffect("spellFX_LearnSP", hero, hero, 0, 0, 0, false);		}
+	else if	(attributeIndex == ATR_STRENGTH)		{	B_RaiseAttribute(self, ATR_STRENGTH, 1); Wld_PlayEffect("spellFX_LearnSTR", hero, hero, 0, 0, 0, false);					}
+	else if	(attributeIndex == ATR_DEXTERITY)		{	B_RaiseAttribute(self, ATR_DEXTERITY, 1); Wld_PlayEffect("spellFX_LearnDEX", hero, hero, 0, 0, 0, false);				}
+	else if	(attributeIndex == ATR_POWER)			{	B_RaiseAttribute(self, ATR_POWER, 1); Wld_PlayEffect("spellFX_LearnPOW", hero, hero, 0, 0, 0, false);					}
+	else											{	B_RaiseAttribute(self, attributeIndex, 1); Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);			};
 };

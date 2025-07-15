@@ -26,7 +26,7 @@ func void B_RefreshAtInsert()
 			|| (self.guild == GIL_PIR)
 			|| (self.guild == GIL_BDT)
 			{
-				CreateInvItem (self, ItMw_1h_Bau_Mace);
+				CreateInvItem (self, ItMw0_1h_Bau_Mace);
 			};
 		};
 	};

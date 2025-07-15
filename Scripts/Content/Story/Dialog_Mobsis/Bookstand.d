@@ -1,13 +1,17 @@
 ///******************************************************************************************
+
+var int Bonus_Bookstand[32];
+
+///******************************************************************************************
 /// Bookstand_Alchemy
 ///******************************************************************************************
 func void Use_BookstandALCHEMY1_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[0])	{	B_GivePlayerExp(25); Bonus_Bookstand[0] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -48,11 +52,11 @@ func void Use_BookstandALCHEMY1_S1()
 ///******************************************************************************************
 func void Use_BookstandALCHEMY2_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[1])	{	B_GivePlayerExp(25); Bonus_Bookstand[1] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -93,11 +97,11 @@ func void Use_BookstandALCHEMY2_S1()
 ///******************************************************************************************
 func void Use_BookstandALCHEMY3_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[2])	{	B_GivePlayerExp(25); Bonus_Bookstand[2] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -139,11 +143,11 @@ func void Use_BookstandALCHEMY3_S1()
 ///******************************************************************************************
 func void Use_BookstandAnimals1_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[3])	{	B_GivePlayerExp(25); Bonus_Bookstand[3] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
@@ -178,11 +182,11 @@ func void Use_BookstandAnimals1_S1()
 ///******************************************************************************************
 func void Use_BookstandAnimals2_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[4])	{	B_GivePlayerExp(25); Bonus_Bookstand[4] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
@@ -217,11 +221,11 @@ func void Use_BookstandAnimals2_S1()
 ///******************************************************************************************
 func void Use_BookstandAnimals3_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[5])	{	B_GivePlayerExp(25); Bonus_Bookstand[5] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
@@ -257,11 +261,11 @@ func void Use_BookstandAnimals3_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory1_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[6])	{	B_GivePlayerExp(25); Bonus_Bookstand[6] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	( nDocID,  2);
 					Doc_SetPage		( nDocID,  0, "Book_RED_L.tga", false);
@@ -293,11 +297,11 @@ func void Use_BookstandHistory1_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory2_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[7])	{	B_GivePlayerExp(25); Bonus_Bookstand[7] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_RED_L.tga", false);
@@ -326,11 +330,11 @@ func void Use_BookstandHistory2_S1()
 ///******************************************************************************************
 func void Use_BookstandHistory3_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[8])	{	B_GivePlayerExp(25); Bonus_Bookstand[8] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_RED_L.tga", false);
@@ -365,13 +369,13 @@ func void Use_BookstandHistory3_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rune_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[9])	{	B_GivePlayerExp(25); Bonus_Bookstand[9] = true;	};
 		
-		nDocID =	Doc_Create		();							
-					Doc_SetPages	(nDocID,  2);                         
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false); 
 					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
 					Doc_SetFont		(nDocID, -1, FONT_Book);	
@@ -393,11 +397,11 @@ func void Use_Bookstand_Rune_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rune_02_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[10])	{	B_GivePlayerExp(25); Bonus_Bookstand[10] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -421,11 +425,11 @@ func void Use_Bookstand_Rune_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Innos_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[11])	{	B_GivePlayerExp(25); Bonus_Bookstand[11] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -449,12 +453,12 @@ func void Use_Bookstand_Innos_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Innos_02_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[12])	{	B_GivePlayerExp(25); Bonus_Bookstand[12] = true;	};
 		
-		nDocID =	Doc_Create		();							
+		var int nDocID;
+		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
 					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
@@ -477,11 +481,11 @@ func void Use_Bookstand_Innos_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[13])	{	B_GivePlayerExp(25); Bonus_Bookstand[13] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -526,11 +530,11 @@ func void Use_Bookstand_Kreise_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_02_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[14])	{	B_GivePlayerExp(25); Bonus_Bookstand[14] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -575,11 +579,11 @@ func void Use_Bookstand_Kreise_02_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_03_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[15])	{	B_GivePlayerExp(25); Bonus_Bookstand[15] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -629,11 +633,11 @@ func void Use_Bookstand_Kreise_03_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_04_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[16])	{	B_GivePlayerExp(25); Bonus_Bookstand[16] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -676,11 +680,11 @@ func void Use_Bookstand_Kreise_04_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_05_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[17])	{	B_GivePlayerExp(25); Bonus_Bookstand[17] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -723,11 +727,11 @@ func void Use_Bookstand_Kreise_05_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Kreise_06_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[18])	{	B_GivePlayerExp(25); Bonus_Bookstand[18] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -780,11 +784,11 @@ func void Use_Bookstand_Kreise_06_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Rules_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[19])	{	B_GivePlayerExp(25); Bonus_Bookstand[19] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2 );
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -810,11 +814,11 @@ func void Use_Bookstand_Rules_01_S1()
 ///******************************************************************************************
 func void Use_Runemaking_KDW_CIRC1_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[20])	{	B_GivePlayerExp(25); Bonus_Bookstand[20] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -858,23 +862,238 @@ func void Use_Runemaking_KDW_CIRC1_S1()
 
 func void Use_Runemaking_KDW_CIRC2_S1()
 {
-	Use_Runemaking_KDW_CIRC1_S1();
+	if (Npc_IsPlayer(self))
+	{
+		if (!Bonus_Bookstand[21])	{	B_GivePlayerExp(25); Bonus_Bookstand[21] = true;	};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Runy wody i sk³adniki potrzebne do ich stworzenia.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wir");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Lodowa lanca");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Gejzer");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Grom");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wodna piêœæ");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "Ska³a krystaliczna");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Tworzenie runy wymaga jednej sztuki lub porcji odpowiedniego sk³adnika.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Trzeba te¿ znaæ w³aœciwe zaklêcie, dysponowaæ zwojem, na którym je spisano oraz pustym kamieniem runicznym.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Dopiero po spe³nieniu tych wszystkich warunków mo¿na rozpocz¹æ pracê przy stole runicznym.");
+					Doc_Show		(nDocID);
+	};
 };
 func void Use_Runemaking_KDW_CIRC3_S1()
 {
-	Use_Runemaking_KDW_CIRC1_S1();
+	if (Npc_IsPlayer(self))
+	{
+		if (!Bonus_Bookstand[22])	{	B_GivePlayerExp(25); Bonus_Bookstand[22] = true;	};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Runy wody i sk³adniki potrzebne do ich stworzenia.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wir");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Lodowa lanca");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Gejzer");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Grom");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wodna piêœæ");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "Ska³a krystaliczna");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Tworzenie runy wymaga jednej sztuki lub porcji odpowiedniego sk³adnika.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Trzeba te¿ znaæ w³aœciwe zaklêcie, dysponowaæ zwojem, na którym je spisano oraz pustym kamieniem runicznym.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Dopiero po spe³nieniu tych wszystkich warunków mo¿na rozpocz¹æ pracê przy stole runicznym.");
+					Doc_Show		(nDocID);
+	};
 };
 func void Use_Runemaking_KDW_CIRC4_S1()
 {
-	Use_Runemaking_KDW_CIRC1_S1();
+	if (Npc_IsPlayer(self))
+	{
+		if (!Bonus_Bookstand[23])	{	B_GivePlayerExp(25); Bonus_Bookstand[23] = true;	};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Runy wody i sk³adniki potrzebne do ich stworzenia.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wir");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Lodowa lanca");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Gejzer");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Grom");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wodna piêœæ");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "Ska³a krystaliczna");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Tworzenie runy wymaga jednej sztuki lub porcji odpowiedniego sk³adnika.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Trzeba te¿ znaæ w³aœciwe zaklêcie, dysponowaæ zwojem, na którym je spisano oraz pustym kamieniem runicznym.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Dopiero po spe³nieniu tych wszystkich warunków mo¿na rozpocz¹æ pracê przy stole runicznym.");
+					Doc_Show		(nDocID);
+	};
 };
 func void Use_Runemaking_KDW_CIRC5_S1()
 {
-	Use_Runemaking_KDW_CIRC1_S1();
+	if (Npc_IsPlayer(self))
+	{
+		if (!Bonus_Bookstand[24])	{	B_GivePlayerExp(25); Bonus_Bookstand[24] = true;	};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Runy wody i sk³adniki potrzebne do ich stworzenia.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wir");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Lodowa lanca");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Gejzer");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Grom");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wodna piêœæ");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "Ska³a krystaliczna");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Tworzenie runy wymaga jednej sztuki lub porcji odpowiedniego sk³adnika.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Trzeba te¿ znaæ w³aœciwe zaklêcie, dysponowaæ zwojem, na którym je spisano oraz pustym kamieniem runicznym.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Dopiero po spe³nieniu tych wszystkich warunków mo¿na rozpocz¹æ pracê przy stole runicznym.");
+					Doc_Show		(nDocID);
+	};
 };
 func void Use_Runemaking_KDW_CIRC6_S1()
 {
-	Use_Runemaking_KDW_CIRC1_S1();
+	if (Npc_IsPlayer(self))
+	{
+		if (!Bonus_Bookstand[25])	{	B_GivePlayerExp(25); Bonus_Bookstand[25] = true;	};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "Wodny Kr¹g");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Runy wody i sk³adniki potrzebne do ich stworzenia.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wir");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Lodowa lanca");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Gejzer");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Grom");
+					Doc_PrintLine	(nDocID,  0, "Kwarcyt");
+					Doc_PrintLine	(nDocID,  0, "Skrzyd³a krwiopijcy");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "Wodna piêœæ");
+					Doc_PrintLine	(nDocID,  0, "Akwamaryn");
+					Doc_PrintLine	(nDocID,  0, "Ska³a krystaliczna");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Tworzenie runy wymaga jednej sztuki lub porcji odpowiedniego sk³adnika.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Trzeba te¿ znaæ w³aœciwe zaklêcie, dysponowaæ zwojem, na którym je spisano oraz pustym kamieniem runicznym.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Dopiero po spe³nieniu tych wszystkich warunków mo¿na rozpocz¹æ pracê przy stole runicznym.");
+					Doc_Show		(nDocID);
+	};
 };
 
 ///******************************************************************************************
@@ -882,11 +1101,11 @@ func void Use_Runemaking_KDW_CIRC6_S1()
 ///******************************************************************************************
 func void Use_BookstandDementor_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[26])	{	B_GivePlayerExp(25); Bonus_Bookstand[26] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Dementor_L.tga", false);
@@ -900,11 +1119,11 @@ func void Use_BookstandDementor_S1()
 ///******************************************************************************************
 func void Bookstand_Milten_03_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[27])	{	B_GivePlayerExp(25); Bonus_Bookstand[27] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
@@ -938,11 +1157,11 @@ func void Bookstand_Milten_03_S1()
 ///******************************************************************************************
 func void Bookstand_Milten_02_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[28])	{	B_GivePlayerExp(25); Bonus_Bookstand[28] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
@@ -974,32 +1193,28 @@ func void Bookstand_Milten_02_S1()
 ///******************************************************************************************
 func void Bookstand_Milten_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		//if (Npc_IsPlayer(self))
-		//{
-		//	B_SetPlayerMap(ItWr_Map_OldWorld);
-		//};
+		if (!Bonus_Bookstand[29])	{	B_GivePlayerExp(25); Bonus_Bookstand[29] = true;	};
 		
-		var int Document;
-		Document =	Doc_CreateMap		();
-					Doc_SetPages		(Document, 1);
-					Doc_SetPage			(Document, 0, "Map_OldWorld.tga", true);
-					Doc_SetLevel		(Document, "OldWorld\OldWorld.zen");
-					Doc_SetLevelCoords	(Document, -78500, 47500, 54000, -53000);
-					Doc_Show			(Document);
+		var int nDocID;
+		nDocID =	Doc_CreateMap		();
+					Doc_SetPages		(nDocID, 1);
+					Doc_SetPage			(nDocID, 0, "Map_OldWorld.tga", true);
+					Doc_SetLevel		(nDocID, "OldWorld\OldWorld.zen");
+					Doc_SetLevelCoords	(nDocID, -78500, 47500, 54000, -53000);
+					Doc_Show			(nDocID);
 	};
 };
 
 ///******************************************************************************************
 func void Bookstand_Engor_01_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[30])	{	B_GivePlayerExp(25); Bonus_Bookstand[30] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Red_L.tga", false);
@@ -1049,11 +1264,11 @@ func void Bookstand_Engor_01_S1()
 ///******************************************************************************************
 func void Use_Bookstand_Addon_BL_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		var int nDocID;
+		if (!Bonus_Bookstand[31])	{	B_GivePlayerExp(25); Bonus_Bookstand[31] = true;	};
 		
+		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  2);
 					Doc_SetPage		(nDocID,  0, "Book_Brown_L.tga", false);
@@ -1231,8 +1446,7 @@ func void Use_BookstandMaya()
 
 func void InitUse_BookstandMaya()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		if (!C_CanReadBookStand())
 		{
@@ -1327,5 +1541,138 @@ func void Use_BookstandMayaHierchary_05_S1()
 	{
 		B_GivePlayerExp(100);
 		BookstandMayaHierchary_5_permanent = true;
+	};
+};
+
+///******************************************************************************************
+/// BookstandMission
+///******************************************************************************************
+
+var int MakeRune_FireBolt;
+var int MakeRune_MasterOfDisaster;
+var int MakeRune_SecretTeleport;
+
+///******************************************************************************************
+func void Use_Bookstand_01_S1()
+{
+	if (Npc_IsPlayer(self))
+	{
+		if (self.guild == GIL_NOV)
+		{
+			KNOWS_FIRE_CONTEST = true;
+			Log_CreateTopic (TOPIC_FireContest, LOG_MISSION);
+			Log_SetTopicStatus (TOPIC_FireContest, LOG_RUNNING);
+			B_LogEntry (TOPIC_FireContest, "Jako nowicjusz mam prawo za¿¹daæ Próby Ognia, a ka¿dy z trzech magów nale¿¹cych do Najwy¿szej Rady przydzieli mi jakieœ zadanie. Po ukoñczeniu wszystkich misji zostanê przyjêty do Krêgu Ognia.");
+		};
+		
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					
+					Doc_SetFont		(nDocID, -1, FONT_Book);	
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					
+					Doc_PrintLine	(nDocID,  0, "Próba Ognia");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLine	(nDocID,  0, "");
+					
+					Doc_PrintLines	(nDocID,  0, "Nowicjusz mo¿e uwa¿aæ, ¿e jest gotowy na do³¹czenie do Krêgu Ognia, ale nie od razu dost¹pi tego zaszczytu. Gdy dobrze siê zastanowi i nadal bêdzie uparcie d¹¿yæ do swego celu, to mo¿e skorzystaæ z prawa za¿¹dania Próby, nie mo¿e mu odmówiæ ¿aden mag. Ca³a procedura nie ogranicza siê do Próby Magii - kandydat musi równie¿ zostaæ oœwiecony przez p³omienie, gdy wyrazi tak¹ wolê przed Najwy¿sz¹ Rad¹, stanie przed PRÓB¹ OGNIA,");
+					
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "która sprawdzi jego zrêcznoœæ, si³ê i m¹droœæ. Ka¿de z trzech zadañ zostanie zlecone przez innego cz³onka Najwy¿szej Rady i dopiero po wykonaniu wszystkich trzech kandydat bêdzie móg³ z³o¿yæ Przysiêgê Ognia i zbrataæ siê z p³omieniami.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Taka jest wola Innosa i tako¿ siê stanie.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Najwy¿sza Rada");
+					Doc_Show		(nDocID);
+	};
+};
+
+///******************************************************************************************
+
+var int FinalDragonEquipment_Once;
+
+///******************************************************************************************
+func void Use_FINALDRAGONEQUIPMENT_S1()
+{
+	if (Npc_IsPlayer(self))
+	{
+		var int nDocID;
+		nDocID =	Doc_Create		();
+					Doc_SetPages	(nDocID,  2);
+					Doc_SetPage		(nDocID,  0, "Book_Mage_L.tga", false);
+					Doc_SetPage		(nDocID,  1, "Book_Mage_R.tga",	false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
+					
+					Doc_SetMargins	(nDocID,  0, 275, 20, 30, 20, 1);
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "...Mam nadziejê, ¿e Bariera ochroni rudê przed zakusami Beliara. Król w swej naiwnoœci wierzy, ¿e stworzyliœmy j¹, ¿eby nie dopuœciæ do ucieczek. Niechaj nadal tak s¹dzi, jeœli dziêki temu uda siê nam osi¹gn¹æ nasze odleglejsze cele. Mo¿emy tylko marzyæ o czasie na przygotowanie siê do nadchodz¹cej walki. To na ni¹ skierujê ca³¹ sw¹ moc, gdy tylko Bariera dooko³a Górniczej Doliny zostanie ukoñczona.");
+					Doc_PrintLines	(nDocID,  0, "");
+		
+		if (self.guild == GIL_KDF)
+		{
+			PlayerGetsAmulettOfDeath = true;
+			MakeRune_MasterOfDisaster = true;
+			B_LogEntry (TOPIC_TalentRunes, "Sk³adniki runy 'œwiêty pocisk': 1 porcja wody œwiêconej, nie potrzeba zwoju z zaklêciem");
+			
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "...Na runicznym stole obla³em wod¹ œwiêcon¹, zgodnie z instrukcjami, pusty kamieñ runiczny. Kamieñ uleg³ zniszczeniu... To zaklêcie jest chyba przeznaczone tylko dla Wybrañca.");
+					Doc_PrintLines	(nDocID,  1, "Na stra¿y klasztoru pozostawi³em œwiêt¹ Aurê Innosa. Przeor bêdzie o ni¹ dba³, dopóki nie objawi siê Wybraniec.");
+					Doc_PrintLines	(nDocID,  1, "£zy Innosa mog¹ odegraæ ogromn¹ rolê w nadchodz¹cej walce, niebezpiecznie wiêc trzymaæ je na widoku publicznym. Lepiej schowam je tu, w bibliotece.");
+					Doc_Show		(nDocID);
+		}
+		else if (self.guild == GIL_PAL)
+		{
+			PAL_KnowsAbout_FINAL_BLESSING = true;
+			MakeRune_SecretTeleport = true;
+			Log_CreateTopic (TOPIC_TalentRunes, LOG_NOTE);
+			B_LogEntry (TOPIC_TalentRunes, "Tworzenie run wymaga u¿ycia odpowiednich sk³adników. Ca³y proces wymaga jeszcze odpowiedniego sto³u i pustego kamienia runicznego.");
+			B_LogEntry (TOPIC_TalentRunes, "Sk³adniki runy 'Tajny teleport': 1 porcja ³ez Innosa");
+			
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Aby móc siê dostaæ do ukrytego miejsca, musisz stworzyæ specjaln¹ runê teleportuj¹c¹ - bêdzie ci do tego potrzebny pusty kamieñ runiczny i ma³a buteleczka wody œwiêconej.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Jestem prawie pewien, ¿e paladyni wykorzystywali ³zy Innosa w dawno zapomnianym rytuale znanym jako Konsekracja Miecza. Za pomoc¹ znalezionej wczeœniej ma³ej buteleczki powinienem wiêc nadaæ konsekrowanej broni dodatkow¹ moc.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_Show		(nDocID);
+		}
+		else if (self.guild == GIL_DJG)
+		{
+			PLAYER_TALENT_SMITH[SMITH_1H_Special_05] = true;
+			PLAYER_TALENT_SMITH[SMITH_2H_Special_05] = true;
+			PLAYER_TALENT_SMITH[SMITH_1H_Ignite_05] = true;
+			PLAYER_TALENT_SMITH[SMITH_2H_Ignite_05] = true;
+			
+			Log_CreateTopic (TOPIC_TalentSmith, LOG_NOTE);
+			B_LogEntry (TOPIC_TalentSmith, "Jeœli zechcê wykuæ jak¹œ broñ, to po pierwsze bêdzie mi potrzebny kawa³ surowej stali, który trzeba rozgrzaæ do czerwonoœci w kuŸni, a nastêpnie ukszta³towaæ na kowadle. Nadanie broni jakichœ specjalnych charakterystyk bêdzie wymaga³o u¿ycia dodatkowych sk³adników.");
+			B_LogEntry (TOPIC_TalentSmith, "Dodanie na przyk³ad czterech bry³ek rudy i piêciu porcji smoczej krwi umo¿liwi mi wykucie magicznego ostrza na smoki, a");
+			B_LogEntry (TOPIC_TalentSmith, "piêciu bry³ek rudy i piêciu porcji smoczej krwi - du¿ego magicznego ostrza na smoki.");
+			PlayerGetsFinalDJGArmor = true;
+			
+					Doc_SetMargins	(nDocID, -1, 30, 20, 275, 20, 1);
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Fragment ksiêgi 'Broñ smoczego pana'.");
+					Doc_PrintLines	(nDocID,  1, "Aby zbroicy ze smoczych ³usek twardoœci nielichej dodaæ, pokryæ trza ³uski takowe rud¹ w dolinie na wyspie Karynis kopan¹.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "By ostrze poœlednie zdatnym dla smoczego pana uczyniæ, krwi¹ smoków oblaæ je nale¿y. Piêæ porcji posoki sprawi, ¿e ostrze ostre niezwykle bêdzie i moc niezrównan¹ zyska.");
+					Doc_PrintLine	(nDocID,  1, "");
+					Doc_PrintLines	(nDocID,  1, "Uwaga: nazwa 'Karynis' nawi¹zuje prawdopodobnie do obszarów znanych obecnie jako Khorinis.");
+					Doc_Show		(nDocID);
+		};
+		
+		if (!FinalDragonEquipment_Once)
+		{
+			B_GivePlayerExp(1000);
+			FinalDragonEquipment_Once = true;
+		};
 	};
 };

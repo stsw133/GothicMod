@@ -19,7 +19,7 @@ instance STRF_1126_Addon_Telbor_NW (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_Axe_L_01);
+	EquipItem (self, ItMw0_2H_Axe_L_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

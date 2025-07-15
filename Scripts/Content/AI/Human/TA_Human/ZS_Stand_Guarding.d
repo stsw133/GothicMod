@@ -9,7 +9,7 @@ func void ZS_Stand_Guarding()
 	AI_SetWalkmode	(self, NPC_WALK);
 	
 	if (Npc_GetDistToWP(self,self.wp) > TA_DIST_SELFWP_MAX)
-    {
+	{
 		AI_GotoWP (self, self.wp);
 	};
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
@@ -21,9 +21,9 @@ func int ZS_Stand_Guarding_loop()
 	{
 		AI_AlignToFP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
-  		{
-  			self.aivar[AIV_TAPOSITION] = NOTINPOS;
-  		};
+		{
+			self.aivar[AIV_TAPOSITION] = NOTINPOS;
+		};
 	}
 	else if (Wld_IsFPAvailable(self, "STAND"))
 	{
@@ -37,9 +37,9 @@ func int ZS_Stand_Guarding_loop()
 	{
 		AI_AlignToWP(self);
 		if (self.aivar[AIV_TAPOSITION] == NOTINPOS_WALK)
-  		{
-  			self.aivar[AIV_TAPOSITION] = NOTINPOS;
-  		};
+		{
+			self.aivar[AIV_TAPOSITION] = NOTINPOS;
+		};
 	};
 	
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
@@ -66,5 +66,5 @@ func int ZS_Stand_Guarding_loop()
 
 func void ZS_Stand_Guarding_end()
 {
-    AI_PlayAni (self, "T_HGUARD_2_STAND");
+	AI_PlayAni (self, "T_HGUARD_2_STAND");
 };

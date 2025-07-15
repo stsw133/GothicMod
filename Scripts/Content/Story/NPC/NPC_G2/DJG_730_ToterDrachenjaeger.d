@@ -16,7 +16,7 @@ instance DJG_730_ToterDrachenjaeger (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_SLD_Sword);
+	EquipItem (self, ItMw0_2H_SLD_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

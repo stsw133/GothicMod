@@ -17,8 +17,8 @@ instance PC_Fighter_NW_nach_DJG (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Axe);
-	EquipItem (self, ItRw_Crossbow_M_01);
+	EquipItem (self, ItMw0_2h_Sld_Axe);
+	EquipItem (self, ItRw0_Crossbow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

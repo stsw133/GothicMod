@@ -19,7 +19,7 @@ instance SLD_841_Engardo (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Sword);
+	EquipItem (self, ItMw0_2h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -7,7 +7,7 @@ prototype Mst_Default_OrcGuardian (C_Npc)
 	name								=	"Ork-stra¿nik";
 	voice								=	18;
 	guild								=	GIL_ORC;
-	aivar[AIV_MM_REAL_ID]				=	ID_ORCWARRIOR;
+	aivar[AIV_MM_REAL_ID]				=	ID_ORCGUARDIAN;
 	aivar[AIV_FaceTex]					=	Hlp_Random(12);
 	
 	/// ------ Attributes & FT ------
@@ -44,8 +44,9 @@ func void B_SetVisuals_OrcGuardian()
 instance OrcGuardian (Mst_Default_OrcGuardian)
 {
 	B_SetVisuals_OrcGuardian();
-	EquipItem (self, ItMw_2H_OrcSword_01);
+	//EquipItem (self, ItMw_2H_OrcSword_01);
+	EquipItem (self, ItMw_2H_OrcHalberd_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 };

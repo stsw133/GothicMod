@@ -19,7 +19,7 @@ instance BDT_1052_Wegelagerer (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_SLD_Sword);
+	EquipItem (self, ItMw0_2h_SLD_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

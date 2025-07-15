@@ -1,17 +1,13 @@
 ///******************************************************************************************
 func void B_BlitzInArsch()
 {
-	var int BlitzInArsch_Hitpoints;
-	var int Abzug;
-	
-	BlitzInArsch_Hitpoints = (hero.attribute[ATR_HITPOINTS]*4) / 5;
+	var int BlitzInArsch_Hitpoints; BlitzInArsch_Hitpoints = (hero.attribute[ATR_HITPOINTS]*4) / 5;
 	if (BlitzInArsch_Hitpoints < 2)
 	{
 		BlitzInArsch_Hitpoints = 2;
 	};
 	
-	Abzug = hero.attribute[ATR_HITPOINTS]-BlitzInArsch_Hitpoints;
-	
+	var int Abzug; Abzug = hero.attribute[ATR_HITPOINTS]-BlitzInArsch_Hitpoints;
 	if (Abzug > 0)
 	{
 		var string concatText1;	var string concatText2;
@@ -26,13 +22,12 @@ func void B_BlitzInArsch()
 ///******************************************************************************************
 func void PrayIdol_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{	
 		Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_PRAYIDOL;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
 };
 

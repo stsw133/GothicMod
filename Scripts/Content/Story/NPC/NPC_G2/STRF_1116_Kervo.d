@@ -16,7 +16,7 @@ instance STRF_1116_Kervo (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_VLK_Axe);
+	EquipItem (self, ItMw0_1H_VLK_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

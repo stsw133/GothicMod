@@ -19,13 +19,13 @@ instance Mil_305_Torwache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Mil_Sword);
+	EquipItem (self, ItMw0_1h_Mil_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_N_Normal01, Teeth_Normal, ItAr_ROY_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_N_Normal01, Teeth_Normal, ItAr_PAL_L);
 	Mdl_SetModelFatness	(self, 0.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	

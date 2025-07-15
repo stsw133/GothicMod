@@ -22,7 +22,7 @@ instance SLD_800_Lee (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Sword);
+	EquipItem (self, ItMw0_2h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

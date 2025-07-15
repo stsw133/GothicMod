@@ -16,7 +16,7 @@ instance BDT_1033_Fluechtling (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_SLD_Sword);
+	EquipItem (self, ItMw0_1h_SLD_Sword);
 	CreateInvItem (self, ItWr_MorgahardTip);
 	
 	/// ------ Inventory ------

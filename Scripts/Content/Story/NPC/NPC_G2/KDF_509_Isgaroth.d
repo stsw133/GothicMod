@@ -11,7 +11,7 @@ instance KDF_509_Isgaroth (Npc_Default)
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	true;
 	
-	/// ------ Attribute ------
+	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 60);
 	NpcFn_AddFightSkills (self, 90);
 	

@@ -17,8 +17,8 @@ instance SLD_801_Torlof (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Sword);
-	EquipItem (self, ItRw_Sld_Bow);
+	EquipItem (self, ItMw0_2h_Sld_Sword);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

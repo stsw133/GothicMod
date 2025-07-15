@@ -19,8 +19,8 @@ instance DJG_700_Sylvio (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Equippte Waffen ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
-	EquipItem (self, ItRw_Crossbow_M_01);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
+	EquipItem (self, ItRw0_Crossbow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

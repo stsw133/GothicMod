@@ -19,7 +19,7 @@ instance BDT_1027_Bandit_H (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Mace);
+	EquipItem (self, ItMw0_1h_VLK_Mace);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

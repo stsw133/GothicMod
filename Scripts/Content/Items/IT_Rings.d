@@ -767,8 +767,8 @@ func void SetItRiAttributes_Throw (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Throw_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_THROW;
-	itm.change_value[0]			=	kap;
+	//itm.change_atr[0]			=	ATR_THROW;
+	//itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Throw;
 	itm.COUNT[1]				=	itm.change_value[0];
@@ -794,7 +794,7 @@ func void SetItRiAttributes_1h (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_1h_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_1H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_1h;
@@ -821,7 +821,7 @@ func void SetItRiAttributes_2h (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_2h_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_2H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_2h;
@@ -848,7 +848,7 @@ func void SetItRiAttributes_Bow (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Bow_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_BOW;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Bow;
@@ -875,7 +875,7 @@ func void SetItRiAttributes_Cbow (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Cbow_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_CBOW;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Cbow;
@@ -924,7 +924,7 @@ instance ItRi_Master_01 (ItemPR_Ring)
 };
 func void Equip_ItRi_Master_01()
 {
-	self.hitchance[NPC_TALENT_THROW] += 3;
+	//self.hitchance[NPC_TALENT_THROW] += 3;
 	self.hitchance[NPC_TALENT_1H] += 3;
 	self.hitchance[NPC_TALENT_2H] += 3;
 	self.hitchance[NPC_TALENT_BOW] += 3;
@@ -932,7 +932,7 @@ func void Equip_ItRi_Master_01()
 };
 func void UnEquip_ItRi_Master_01()
 {
-	self.hitchance[NPC_TALENT_THROW] -= 3;
+	//self.hitchance[NPC_TALENT_THROW] -= 3;
 	self.hitchance[NPC_TALENT_1H] -= 3;
 	self.hitchance[NPC_TALENT_2H] -= 3;
 	self.hitchance[NPC_TALENT_BOW] -= 3;
@@ -948,7 +948,7 @@ instance ItRi_Master_02 (ItemPR_Ring)
 };
 func void Equip_ItRi_Master_02()
 {
-	self.hitchance[NPC_TALENT_THROW] += 6;
+	//self.hitchance[NPC_TALENT_THROW] += 6;
 	self.hitchance[NPC_TALENT_1H] += 6;
 	self.hitchance[NPC_TALENT_2H] += 6;
 	self.hitchance[NPC_TALENT_BOW] += 6;
@@ -956,7 +956,7 @@ func void Equip_ItRi_Master_02()
 };
 func void UnEquip_ItRi_Master_02()
 {
-	self.hitchance[NPC_TALENT_THROW] -= 6;
+	//self.hitchance[NPC_TALENT_THROW] -= 6;
 	self.hitchance[NPC_TALENT_1H] -= 6;
 	self.hitchance[NPC_TALENT_2H] -= 6;
 	self.hitchance[NPC_TALENT_BOW] -= 6;
@@ -970,11 +970,11 @@ func void SetItRiAttributes_Innovation (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Throw_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_THROW;
-	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_1H;
+	//itm.change_atr[0]			=	ATR_THROW;
+	//itm.change_value[0]			=	kap;
+	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[1]			=	kap;
-	itm.change_atr[2]			=	ATR_2H;
+	itm.change_atr[2]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[2]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Throw;
@@ -1005,9 +1005,9 @@ func void SetItRiAttributes_Precision (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_1h_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_1H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_BOW;
+	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	itm.change_value[1]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_1h;
@@ -1036,9 +1036,9 @@ func void SetItRiAttributes_Domination (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_2h_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_2H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_CBOW;
+	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	itm.change_value[1]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_2h;
@@ -1067,9 +1067,9 @@ func void SetItRiAttributes_Motivation (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Bow_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_2H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_BOW;
+	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	itm.change_value[1]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_2h;
@@ -1098,9 +1098,9 @@ func void SetItRiAttributes_Liberation (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItRi_Cbow_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_1H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_CBOW;
+	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	itm.change_value[1]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_1h;

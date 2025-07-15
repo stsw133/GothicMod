@@ -448,7 +448,7 @@ func void DIA_Addon_Martin_Fernando_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_00"); //Jeœli chodzi o tego handlarza broni¹...
 
-	if 	(Npc_HasItems (other,ItMw_Addon_BanditTrader))
+	if 	(Npc_HasItems (other,ItMw_BanditTrader))
 	||(Npc_HasItems (other,ItRi_Addon_BanditTrader))
 	||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
 	||(Fernando_HatsZugegeben == TRUE)
@@ -459,13 +459,13 @@ func void DIA_Addon_Martin_Fernando_Info ()
 		FernandoHints = 0;
 		
 		if 	(
-			(Npc_HasItems (other,ItMw_Addon_BanditTrader))
+			(Npc_HasItems (other,ItMw_BanditTrader))
 			||(Npc_HasItems (other,ItRi_Addon_BanditTrader))
 			||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
 			)
 			{
 				
-				if (Npc_HasItems (other,ItMw_Addon_BanditTrader))
+				if (Npc_HasItems (other,ItMw_BanditTrader))
 				{
 					AI_Output	(other, self, "DIA_Addon_Martin_Fernando_15_02"); //Ten pa³asz zabra³em bandytom. Na g³owicy wyciêto literê F.
 					FernandoHints = (FernandoHints + 1);

@@ -16,7 +16,7 @@ instance VLK_4303_Addon_Erol (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_VLK_Sword);
+	EquipItem (self, ItMw0_1H_VLK_Sword);
 	CreateInvItems (self, ItPo_Health_01, 3);
 	
 	/// ------ Visuals ------

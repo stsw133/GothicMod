@@ -19,7 +19,7 @@ instance PIR_1364_Addon_PIRAT (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR1hSword);
+	EquipItem (self, ItMw0_Piratensaebel);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_N_NormalBart_Dusty, Teeth_Normal, ItAr_PIR_L);

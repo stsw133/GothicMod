@@ -19,7 +19,7 @@ instance PIR_1365_Addon_Matt (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR2hAxe);
+	EquipItem (self, ItMw0_Schlachtaxt);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_N_Normal14, Teeth_Normal, ItAr_PIR_L);

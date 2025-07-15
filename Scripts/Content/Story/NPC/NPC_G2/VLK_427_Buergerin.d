@@ -15,9 +15,11 @@ instance VLK_427_Buergerin (Npc_Default)
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
+	/// ------ Weapons ------
+	EquipItem (self, ItMw0_1h_Vlk_Dagger);
+	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-	EquipItem (self, ItMw_1h_Vlk_Dagger);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_BabeHair", FaceBabe_N_HairAndCloth, Teeth_Pretty, ItAr_Babe_BAU_H_00);

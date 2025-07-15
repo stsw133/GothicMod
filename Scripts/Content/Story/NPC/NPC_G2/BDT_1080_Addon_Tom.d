@@ -16,7 +16,7 @@ instance BDT_1080_Addon_Tom (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ElBastardo);
+	EquipItem (self, ItMw0_ElBastardo);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

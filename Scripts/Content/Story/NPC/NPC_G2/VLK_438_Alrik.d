@@ -24,7 +24,7 @@ instance VLK_438_Alrik (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem(self, ItMw_1h_Bau_Mace);
+	EquipItem(self, ItMw0_1h_Bau_Mace);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_N_Bloodwyn, Teeth_Normal, ItAr_Vlk_L_03);

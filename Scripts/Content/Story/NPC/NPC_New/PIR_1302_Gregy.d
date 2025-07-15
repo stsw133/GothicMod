@@ -41,13 +41,13 @@ instance PIR_1302_Gregy (Npc_Default)
 
 func void Rtn_Start_1302()
 {
-	TA_Sit_Campfire	(08,00, 20,00, "START");
-	TA_Sit_Campfire	(20,00, 08,00, "START");
+	TA_Sit_Campfire	(08,00, 20,00, "ADW_PIRATECAMP_BEACH_29");
+	TA_Sit_Campfire	(20,00, 08,00, "ADW_PIRATECAMP_BEACH_29");
 };
 func void Rtn_Follow_1302()
 {
-	TA_Follow_Player_Gregy	(08,00, 20,00, "START");
-	TA_Follow_Player_Gregy	(20,00, 08,00, "START");
+	TA_Follow_Player_Gregy	(08,00, 20,00, "ADW_PIRATECAMP_BEACH_29");
+	TA_Follow_Player_Gregy	(20,00, 08,00, "ADW_PIRATECAMP_BEACH_29");
 };
 func void Rtn_Sleep_1302()
 {

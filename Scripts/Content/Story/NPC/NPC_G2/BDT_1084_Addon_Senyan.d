@@ -20,7 +20,7 @@ instance BDT_1084_Addon_Senyan (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Mil_Sword);
+	EquipItem (self, ItMw0_1h_Mil_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -16,8 +16,8 @@ instance VLK_4132_Talbin_NW (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
-	EquipItem (self, ItRW_SLD_Bow);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

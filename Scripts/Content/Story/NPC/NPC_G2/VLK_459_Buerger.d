@@ -16,7 +16,7 @@ instance VLK_459_Buerger (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Mace);
+	EquipItem (self, ItMw0_1h_VLK_Mace);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

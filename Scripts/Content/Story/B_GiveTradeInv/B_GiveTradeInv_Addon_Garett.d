@@ -14,10 +14,10 @@ func void B_GiveTradeInv_Addon_Garett (var C_Npc slf)
 		CreateInvItems (slf, ItPo_Health_Addon_04, 1);
 		
 		CreateInvItems (slf, ItMw_2h_Axe_L_01, 1);
-		CreateInvItems (slf, ItMw_Addon_Hacker_1h_01, 1);
-		CreateInvItems (slf, ItMw_Addon_Hacker_1h_02, 1);
-		CreateInvItems (slf, ItMw_Addon_Hacker_2h_01, 1);
-		CreateInvItems (slf, ItMw_Addon_Hacker_2h_02, 1);
+		CreateInvItems (slf, ItMw_1h_Machete_01, 1);
+		CreateInvItems (slf, ItMw_1h_Machete_02, 1);
+		CreateInvItems (slf, ItMw_2h_Machete_01, 1);
+		CreateInvItems (slf, ItMw_2h_Machete_02, 1);
 		CreateInvItems (slf, ItMw_Orkschlaechter, 1);
 		CreateInvItems (slf, ItMw_Schiffsaxt, 1);
 		CreateInvItems (slf, ItMw_ShortSword3, 1);

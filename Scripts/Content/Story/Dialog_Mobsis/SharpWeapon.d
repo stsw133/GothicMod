@@ -3,28 +3,31 @@
 ///******************************************************************************************
 func void MOBSI_SHARPWEAPON_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SharpWeapon;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
 }; 
-///******************************************************************************************
-instance PC_SharpWeapon_End (C_Info)
-{
-	npc									=	PC_Hero;
-	nr									=	999;
-	condition							=	PC_SharpWeapon_End_Condition;
-	information							=	B_EndProductionDialog;
-	permanent							=	true;
-	description							=	DIALOG_END;
-};
-func int PC_SharpWeapon_End_Condition()
+
+func int PC_SharpWeapon_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SharpWeapon)
 	{
 		return true;
 	};
+};
+
+///******************************************************************************************
+/// EXIT
+///******************************************************************************************
+instance PC_SharpWeapon_EXIT (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	999;
+	condition							=	PC_SharpWeapon_Condition;
+	information							=	B_EndProductionDialog;
+	permanent							=	true;
+	description							=	DIALOG_END;
 };

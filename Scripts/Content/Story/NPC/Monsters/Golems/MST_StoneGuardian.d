@@ -1,4 +1,8 @@
 ///******************************************************************************************
+
+var int GiveAmbientInvCounter_StoneGuardian;
+
+///******************************************************************************************
 /// StoneGuardian
 ///******************************************************************************************
 prototype MST_Default_StoneGuardian (C_Npc)
@@ -30,6 +34,13 @@ prototype MST_Default_StoneGuardian (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	GiveAmbientInvCounter_StoneGuardian += 1;
+	if (GiveAmbientInvCounter_StoneGuardian % 8 == 0)
+	{
+		GiveStoneplateByIndex(self, MEM_ReadStatArr(RandomizedStoneplateOrder, (GiveAmbientInvCounter_StoneGuardian/8) % 5));
+	};
 };
 
 ///******************************************************************************************

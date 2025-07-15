@@ -16,8 +16,8 @@ instance PIR_1301_Addon_Skip_NW (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
-	EquipItem (self, ItRw_SLD_Bow);
+	EquipItem (self, ItMw0_ShortSword2);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_N_Skip, Teeth_Normal, ItAr_PIR_L);

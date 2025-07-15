@@ -16,7 +16,7 @@ instance PIR_1362_Addon_Bones (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR2hAxe);
+	EquipItem (self, ItMw0_Schlachtaxt);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_N_NormalBart10, Teeth_Normal, ItAr_PIR_M);

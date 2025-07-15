@@ -60,7 +60,7 @@ func void DIA_Addon_Saturas_Nefarius_Info ()
 	AI_Output (other, self, "DIA_ADDON_Saturas_Nefarius_15_02"); //Nie obawiaj siê. Znajdê je i przyniosê tutaj.
 	
 	if (ORNAMENT_SWITCHED_FOREST == FALSE)
-	&& (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments_Addon))
+	&& (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments))
 	{
 		AI_Output (self, other, "DIA_ADDON_Saturas_Nefarius_14_03"); //Wiesz przynajmniej, gdzie masz szukaæ?
 		AI_Output (other, self, "DIA_ADDON_Saturas_Nefarius_15_04"); //Nefarius da³ mi mapê...

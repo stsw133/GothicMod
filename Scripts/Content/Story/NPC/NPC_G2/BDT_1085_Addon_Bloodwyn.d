@@ -19,7 +19,7 @@ instance BDT_1085_Addon_Bloodwyn (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Sword);
+	EquipItem (self, ItMw0_2h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItKe_Addon_Bloodwyn_01);

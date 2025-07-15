@@ -16,8 +16,8 @@ instance BDT_10001_Addon_Bandit_L (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
-	EquipItem (self, ItRw_Mil_Crossbow);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
+	EquipItem (self, itRw0_Crossbow_L_02);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

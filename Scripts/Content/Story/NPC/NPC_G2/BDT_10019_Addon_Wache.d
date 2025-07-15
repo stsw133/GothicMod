@@ -17,7 +17,7 @@ instance BDT_10019_Addon_Wache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Krummschwert);
+	EquipItem (self, ItMw0_Krummschwert);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

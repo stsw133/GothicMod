@@ -46,7 +46,8 @@ func void NpcFn_SetAttributesToLevel (var C_Npc slf, var int kap)
 	{
 		slf.attribute[ATR_HITPOINTS_MAX]	=	slf.attribute[ATR_HITPOINTS_MAX] / 2;	/// only 50% HP
 	}
-	else if (slf.guild == GIL_MOLERAT || slf.guild == GIL_ZOMBIE)
+	else if (slf.guild == GIL_MOLERAT)
+	|| (slf.guild == GIL_ZOMBIE)
 	{
 		slf.attribute[ATR_HITPOINTS_MAX]	=	slf.attribute[ATR_HITPOINTS_MAX] * 2;	/// 200% HP
 		slf.attribute[ATR_STRENGTH]			=	slf.attribute[ATR_STRENGTH] * 4/5;		/// only 80% strength

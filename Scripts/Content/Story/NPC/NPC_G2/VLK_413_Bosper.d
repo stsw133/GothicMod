@@ -16,8 +16,8 @@ instance VLK_413_Bosper (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_VLK_Dagger);
-	EquipItem (self, ItRw_SLD_Bow);
+	EquipItem (self, ItMw0_1H_VLK_Dagger);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_L_Tough_Santino, Teeth_Normal, ItAr_Hunter);

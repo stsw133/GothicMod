@@ -19,7 +19,7 @@ instance NONE_ADDON_115_Eremit (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Nude, BodySkin_N, "Hum_Head_Psionic", Face_N_Weak_BaalNetbek, Teeth_Normal, -1);

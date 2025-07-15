@@ -225,7 +225,7 @@ func int DIA_Addon_Owen_runter_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-	&& (Npc_HasItems(Malcom, ItWr_StonePlate) > 0)
+	&& (Npc_HasItems(Malcom, ItWr_StonePlate_05) > 0)
 	{
 		return TRUE;
 	};
@@ -252,7 +252,7 @@ func int DIA_Addon_Owen_MalcomDead_Condition ()
 {
 	if (Npc_KnowsInfo (other, DIA_Addon_Owen_MalcomStunt))
 	&& (MIS_Owen_FindMalcom == LOG_RUNNING)
-	&& (Npc_HasItems(Malcom, ItWr_StonePlate) == 0)
+	&& (Npc_HasItems(Malcom, ItWr_StonePlate_05) == 0)
 	{
 		return TRUE;
 	};

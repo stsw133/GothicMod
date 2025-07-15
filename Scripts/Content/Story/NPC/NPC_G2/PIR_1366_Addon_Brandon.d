@@ -19,7 +19,7 @@ instance PIR_1366_Addon_Brandon (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR1hAxe);
+	EquipItem (self, ItMw0_Schiffsaxt);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItPo_Health_03);

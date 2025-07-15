@@ -19,7 +19,7 @@ instance PIR_1354_Addon_Henry (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Krummschwert);
+	EquipItem (self, ItMw0_Krummschwert);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_FatBald", Face_P_Normal01, Teeth_Normal, ItAr_PIR_M);

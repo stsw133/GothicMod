@@ -19,7 +19,7 @@ instance Pal_206_Ritter (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_Pal_Sword);
+	EquipItem (self, ItMw0_2H_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

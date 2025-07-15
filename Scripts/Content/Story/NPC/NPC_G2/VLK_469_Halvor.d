@@ -19,7 +19,7 @@ instance VLK_469_Halvor (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mace_L_03);
+	EquipItem (self, ItMw0_1H_Mace_L_03);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_NormalBart11, Teeth_Normal, ItAr_Vlk_L_09);

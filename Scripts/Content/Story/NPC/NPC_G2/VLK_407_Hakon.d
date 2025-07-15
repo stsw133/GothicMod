@@ -16,7 +16,7 @@ instance VLK_407_Hakon (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
+	EquipItem (self, ItMw0_ShortSword2);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_N_NormalBart20, Teeth_Normal, ItAr_VLK_L_14);

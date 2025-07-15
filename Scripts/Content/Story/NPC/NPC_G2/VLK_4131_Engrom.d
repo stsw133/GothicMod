@@ -16,8 +16,8 @@ instance VLK_4131_Engrom (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Axe);
-	EquipItem (self, ItRW_MIL_Crossbow);
+	EquipItem (self, ItMw0_1h_VLK_Axe);
+	EquipItem (self, itRw0_Crossbow_L_02);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -16,7 +16,7 @@ instance BDT_1099_Addon_Huno (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

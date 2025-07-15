@@ -37,7 +37,7 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 		{
 			if (C_DropUnconscious())
 			{
-				MadKillerCount += 1; 
+				MadKillerCount += 1;
 			};
 			
 			if (oth.guild == GIL_GIANT_BUG)

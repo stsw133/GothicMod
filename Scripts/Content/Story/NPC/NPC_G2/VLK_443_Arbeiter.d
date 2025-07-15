@@ -19,7 +19,7 @@ instance VLK_443_Arbeiter (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mace_L_04);
+	EquipItem (self, ItMw0_1H_Mace_L_04);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -1,6 +1,29 @@
 ///******************************************************************************************
-/// MOBSI_GOLDHACKEN
+/// MOBSI_GoldHacken
 ///******************************************************************************************
+func void Goldhacken_S1()
+{
+	if (Npc_IsPlayer(self))
+	{
+		self.aivar[AIV_Invisible] = true;
+		PLAYER_MOBSI_PRODUCTION = MOBSI_GOLDHACKEN;
+		Ai_ProcessInfos(self);
+	};
+};
+
+func int PC_Goldhacken_Condition()
+{
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
+	{
+		return true;
+	};
+};
+
+///******************************************************************************************
+
+var int GoldCounter;
+var int Learn_by_doing;
+var int Truemmer_Count;
 
 var int GoldMob_01_Amount; const int GoldMob_01_AmounT_MAX = 5;
 var int GoldMob_02_Amount; const int GoldMob_02_AmounT_MAX = 5;
@@ -129,41 +152,18 @@ func int B_GoldMob_Bestimmung()
 	
 	return false;
 };
-func void Goldhacken_S1()
-{
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
-	{
-		self.aivar[AIV_Invisible] = true;
-		PLAYER_MOBSI_PRODUCTION = MOBSI_GOLDHACKEN;
-		Ai_ProcessInfos(her);
-	};
-};
 
 ///******************************************************************************************
-/// Goldhacken Dialog abbrechen
+/// EXIT
 ///******************************************************************************************
-
-var int GoldCounter;
-var int Learn_by_doing;
-var int Truemmer_Count;
-
-///******************************************************************************************
-instance PC_Goldhacken_End (C_Info)
+instance PC_Goldhacken_EXIT (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
-	condition							=	PC_Goldhacken_End_Condition;
+	condition							=	PC_Goldhacken_Condition;
 	information							=	PC_Goldhacken_End_Info;
 	permanent							=	true;
 	description							=	DIALOG_END;
-};
-func int PC_Goldhacken_End_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
-	{	
-		return true;
-	};
 };
 func void PC_Goldhacken_End_Info()
 {
@@ -178,17 +178,10 @@ instance PC_Goldhacken_Addon_Hour (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	2;
-	condition							=	PC_Goldhacken_Addon_Hour_Condition;
+	condition							=	PC_Goldhacken_Condition;
 	information							=	PC_Goldhacken_Addon_Hour_Info;
 	permanent							=	true;
 	description							=	"Od³up trochê."; 
-};
-func int PC_Goldhacken_Addon_Hour_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
-	{
-		return true;
-	};
 };
 func void PC_Goldhacken_Addon_Hour_Info()
 {
@@ -310,17 +303,10 @@ instance PC_Goldhacken_Addon_Chance (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	998;
-	condition							=	PC_Goldhacken_Addon_Chance_Condition;
+	condition							=	PC_Goldhacken_Condition;
 	information							=	PC_Goldhacken_Addon_Chance_Info;
 	permanent							=	true;
 	description							=	"(Ocena zdolnoœci)";
-};
-func int PC_Goldhacken_Addon_Chance_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_GOLDHACKEN)
-	{
-		return true;
-	};
 };
 func void PC_Goldhacken_Addon_Chance_Info()
 {

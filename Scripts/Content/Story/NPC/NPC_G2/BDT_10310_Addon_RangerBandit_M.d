@@ -16,7 +16,7 @@ instance BDT_10310_Addon_RangerBandit_M (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Sword);
+	EquipItem (self, ItMw0_1h_VLK_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

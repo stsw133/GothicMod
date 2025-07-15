@@ -36,7 +36,7 @@ func int C_GregsPiratesTooFar()
 ///******************************************************************************************
 func int C_HowManyPiratesInParty()
 {
-	return 
+	return
 	(
 		Skip.aivar[AIV_PARTYMEMBER]
 		+ Matt.aivar[AIV_PARTYMEMBER]

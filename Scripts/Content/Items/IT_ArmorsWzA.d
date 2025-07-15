@@ -127,7 +127,7 @@ instance ITAR_ACRONA_EBR_M (ItemPR_Armor)
 
 instance ITAR_ACRONA_EBR_H (ItemPR_Armor)
 {
-	name						=	"Akroñski pancerz bojowy";
+	name						=	"Akroñska zbroja genera³a";
 	visual						=	"ItAr_Acrona_EBR.3ds";
 	visual_change				=	"ARMOR_ACRONA_EBR.asc";
 	SetItArAttributes (self, 135,135,75,75,   1);	/// 48 level
@@ -139,7 +139,7 @@ instance ITAR_ACRONA_EBR_H (ItemPR_Armor)
 
 instance ITAR_ACRONA_EBR_K (ItemPR_Armor)
 {
-	name						=	"Akroñski pancerz bojowy";
+	name						=	"Akroñska zbroja królewska";
 	visual						=	"ItAr_Acrona_King.3ds";
 	visual_change				=	"ARMOR_ACRONA_EBR.asc";
 	SetItArAttributes (self, 150,150,90,90,   2);	/// 48 level
@@ -237,28 +237,25 @@ instance ITAR_NA_IronHero (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_SW_Jedi_L (ItemPR_Armor)
 {
-	name						=	"Szata Jedi";
+	name						=	"Lekka szata Jedi";
 	visual						=	"ItAr_SW_Jedi_L.3ds";
 	visual_change				=	"ARMOR_SW_Jedi_L.asc";
-	description					=	"Lekka szata Jedi";
 	SetItArAttributes (self, 50,50,25,25,   0);	/// 15 level
 };
 
 instance ITAR_SW_Jedi_M (ItemPR_Armor)
 {
-	name						=	"Szata Jedi";
+	name						=	"Œrednia szata Jedi";
 	visual						=	"ItAr_SW_Jedi_M.3ds";
 	visual_change				=	"ARMOR_SW_Jedi_M.asc";
-	description					=	"Œrednia szata Jedi";
 	SetItArAttributes (self, 80,80,40,40,   1);	/// 24 level
 };
 
 instance ITAR_SW_Jedi_H (ItemPR_Armor)
 {
-	name						=	"Szata Jedi";
+	name						=	"Ciê¿ka szata Jedi";
 	visual						=	"ItAr_SW_Jedi_H.3ds";
 	visual_change				=	"ARMOR_SW_Jedi_H.asc";
-	description					=	"Ciê¿ka szata Jedi";
 	SetItArAttributes (self, 105,105,75,75,   2);	/// 36 level
 };
 
@@ -433,7 +430,7 @@ instance ITAR_ORG_Red_P (ItemPR_Armor)
 
 instance ITAR_ORG_Red_L (ItemPR_Armor)
 {
-	name						=	"Pancerz czerwonego bandyty";
+	name						=	"Lekki pancerz czerwonego bandyty";
 	visual						=	"ItAr_BDT_M.3ds";
 	visual_change				=	"Armor_ORG_L.asc";
 	SetItArAttributes (self, 20,20,0,0,   1);	/// 4 level
@@ -441,7 +438,7 @@ instance ITAR_ORG_Red_L (ItemPR_Armor)
 
 instance ITAR_ORG_Red_M (ItemPR_Armor)
 {
-	name						=	"Pancerz czerwonego bandyty";
+	name						=	"Œredni pancerz czerwonego bandyty";
 	visual						=	"ItAr_BDT_H.3ds";
 	visual_change				=	"Armor_ORG_H.asc";
 	SetItArAttributes (self, 35,35,5,5,   1);	/// 8 level
@@ -449,7 +446,7 @@ instance ITAR_ORG_Red_M (ItemPR_Armor)
 
 instance ITAR_ORG_Red_H (ItemPR_Armor)
 {
-	name						=	"Pancerz czerwonego bandyty";
+	name						=	"Ciê¿ki pancerz czerwonego bandyty";
 	visual						=	"ItAr_SLD_L.3ds";
 	visual_change				=	"Armor_SLD_L.asc";
 	SetItArAttributes (self, 50,50,10,10,   1);	/// 12 level
@@ -460,91 +457,81 @@ instance ITAR_ORG_Red_H (ItemPR_Armor)
 ///******************************************************************************************
 instance ITAR_Orc_Soldier (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz ¿o³nierza";
 	visual						=	"ItAr_SLD_L.3ds";
 	visual_change				=	"Orc_Soldier_Body.asc";
-	description					=	"Orkowy pancerz ¿o³nierza";
 	SetItArAttributes (self, 50,50,10,10,   0);	/// 12 level
 };
 
 instance ITAR_Orc_Dark (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Mroczny orkowy pancerz";
 	visual						=	"ItAr_RVN_M.3ds";
 	visual_change				=	"Orc_Dark_Body.asc";
-	description					=	"Mroczny orkowy pancerz";
 	SetItArAttributes (self, 45,45,15,15,   0);	/// 12 level
 };
 
 instance ITAR_Orc_Warrior (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz wojownika";
 	visual						=	"ItAr_SLD_M.3ds";
 	visual_change				=	"Orc_Warrior_Body.asc";
-	description					=	"Orkowy pancerz wojownika";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 };
 
 instance ITAR_Orc_Guardian (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz stra¿nika";
 	visual						=	"ItAr_MIL_M.3ds";
 	visual_change				=	"Orc_Guardian_Body.asc";
-	description					=	"Orkowy pancerz stra¿nika";
 	SetItArAttributes (self, 70,70,20,20,   0);	/// 18 level
 };
 
 instance ITAR_Orc_Shaman (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz szamana";
 	visual						=	"ItAr_MAG_L.3ds";
 	visual_change				=	"Orc_Shaman_Body.asc";
-	description					=	"Orkowy pancerz szamana";
 	SetItArAttributes (self, 60,60,30,30,   0);	/// 18 level
 };
 
 instance ITAR_Orc_Templer (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz stra¿y œwi¹tynnej";
 	visual						=	"ItAr_SLT_M.3ds";
 	visual_change				=	"Orc_Templer_Body.asc";
-	description					=	"Orkowy pancerz stra¿y œwi¹tynnej";
 	SetItArAttributes (self, 90,90,30,30,   0);	/// 24 level
 };
 
 instance ITAR_Orc_Elite (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Elitarny orkowy pancerz";
 	visual						=	"ItAr_ORW_M.3ds";
 	visual_change				=	"Orc_Elite_Body.asc";
-	description					=	"Elitarny orkowy pancerz";
 	SetItArAttributes (self, 120,120,60,60,   0);	/// 36 level
 };
 
 instance ITAR_Orc_Champion (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Mistrzowski orkowy pancerz";
 	visual						=	"ItAr_ORW_H.3ds";
 	visual_change				=	"Orc_Champion_Body.asc";
-	description					=	"Mistrzowski orkowy pancerz";
 	SetItArAttributes (self, 150,150,90,90,   0);	/// 48 level
 };
 
 instance ITAR_Orc_King (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Królewski orkowy pancerz";
 	visual						=	"ItAr_EBR_G.3ds";
 	visual_change				=	"Orc_King_Body.asc";
-	description					=	"Królewski orkowy pancerz";
 	SetItArAttributes (self, 180,180,120,120,   0);	/// 60 level
 };
 
 ///******************************************************************************************
 instance ITAR_Orc_Paladin (ItemPR_Armor)
 {
-	name						=	"Orkowy pancerz";
+	name						=	"Orkowy pancerz paladyna";
 	visual						=	"ItAr_PAL_H.3ds";
 	visual_change				=	"Orc_Paladin_Body.asc";
-	description					=	"Orkowy pancerz paladyna";
 	SetItArAttributes (self, 150,150,80,100,   0);	/// 48 level
 };

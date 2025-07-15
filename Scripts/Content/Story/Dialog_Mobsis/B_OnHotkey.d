@@ -5,182 +5,108 @@ func int B_GetBestPlayerMap()
 {
 	if (CurrentLevel == NEWWORLD_ZEN)
 	{
-		if (Npc_HasItems(hero, ItWr_Map_NewWorld) >= 1)
-		{
-			return ItWr_Map_NewWorld;
-		}
-		else if (Npc_HasItems(hero, ItWr_Map_Shrine_MIS) >= 1)
-		{
-			return ItWr_Map_Shrine_MIS;
-		}
-		else if	(Npc_HasItems(hero, ItWr_Map_Caves_MIS) >= 1)
-		{
-			return ItWr_Map_Caves_MIS;
-		}
-		else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Ornaments_Addon) >= 1)
-		{
-			return ItWr_Map_NewWorld_Ornaments_Addon;
-		}
-		else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Dexter) >= 1)
-		{
-			return ItWr_Map_NewWorld_Dexter;
-		}
-		else if (Npc_HasItems(hero, ItWr_Map_ShatteredGolem_MIS) >= 1)
-		{
-			return ItWr_Map_ShatteredGolem_MIS;
-		}
-		else if (Npc_HasItems(hero, ItWr_Map_Orcelite_MIS) >= 1)
-		{
-			return ItWr_Map_Orcelite_MIS;
-		}
-		else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_City) >= 1)
-		{
-			return ItWr_Map_NewWorld_City;
-		};
+		if		(Npc_HasItems(hero, ItWr_Map_NewWorld))					{	return ItWr_Map_NewWorld;				}
+		else if	(Npc_HasItems(hero, ItWr_Map_Shrine_MIS))				{	return ItWr_Map_Shrine_MIS;				}
+		else if	(Npc_HasItems(hero, ItWr_Map_Caves_MIS))				{	return ItWr_Map_Caves_MIS;				}
+		else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_Ornaments))		{	return ItWr_Map_NewWorld_Ornaments;		}
+		else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_Dexter))			{	return ItWr_Map_NewWorld_Dexter;		}
+		else if	(Npc_HasItems(hero, ItWr_Map_ShatteredGolem_MIS))		{	return ItWr_Map_ShatteredGolem_MIS;		}
+		else if	(Npc_HasItems(hero, ItWr_Map_Orcelite_MIS))				{	return ItWr_Map_Orcelite_MIS;			}
+		else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_City))			{	return ItWr_Map_NewWorld_City;			};
 	}
 	else if (CurrentLevel == OLDWORLD_ZEN)
 	{
-		if (Npc_HasItems(hero, ItWr_Map_OldWorld) >= 1)
-		{
-			return ItWr_Map_OldWorld;
-		}
-		else if	(Npc_HasItems(hero, ItWr_Map_OldWorld_Oremines_MIS) >= 1)
-		{
-			return ItWr_Map_OldWorld_Oremines_MIS;
-		};
+		if		(Npc_HasItems(hero, ItWr_Map_OldWorld))					{	return ItWr_Map_OldWorld;				}
+		else if	(Npc_HasItems(hero, ItWr_Map_OldWorld_Oremines_MIS))	{	return ItWr_Map_OldWorld_Oremines_MIS;	};
 	}
 	else if (CurrentLevel == ADDONWORLD_ZEN)
 	{
-		if (Npc_HasItems(hero, ItWr_Map_AddonWorld) >= 1)
-		{
-			return ItWr_Map_AddonWorld;
-		}
-		else if (Npc_HasItems(hero, ItWr_Addon_TreasureMap) >= 1)
-		{
-			return ItWr_Addon_TreasureMap;
-		};
+		if		(Npc_HasItems(hero, ItWr_Map_AddonWorld))				{	return ItWr_Map_AddonWorld;				}
+		else if	(Npc_HasItems(hero, ItWr_Addon_TreasureMap))			{	return ItWr_Addon_TreasureMap;			};
 	};
 	
-	return 0;
+	return default;
 };
 
 ///******************************************************************************************
 func int B_GetAnyPlayerMap()
 {
-	if (Npc_HasItems(hero, ItWr_Map_NewWorld) >= 1)
-	{
-		return ItWr_Map_NewWorld;
-	}
-	else if (Npc_HasItems(hero, ItWr_Map_Shrine_MIS) >= 1)
-	{
-		return ItWr_Map_Shrine_MIS;
-	}
-	else if	(Npc_HasItems(hero, ItWr_Map_Caves_MIS) >= 1)
-	{
-		return ItWr_Map_Caves_MIS;
-	}
-	else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Ornaments_Addon) >= 1)
-	{
-		return ItWr_Map_NewWorld_Ornaments_Addon;
-	}
-	else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Dexter) >= 1)
-	{
-		return ItWr_Map_NewWorld_Dexter;
-	}
-	else if (Npc_HasItems(hero, ItWr_Map_ShatteredGolem_MIS) >= 1)
-	{
-		return ItWr_Map_ShatteredGolem_MIS;
-	}
-	else if (Npc_HasItems(hero, ItWr_Map_Orcelite_MIS) >= 1)
-	{
-		return ItWr_Map_Orcelite_MIS;
-	}
-	else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_City) >= 1)
-	{
-		return ItWr_Map_NewWorld_City;
-	}
-	else if	(Npc_HasItems(hero, ItWr_Map_OldWorld) >= 1)
-	{
-		return ItWr_Map_OldWorld;
-	}
-	else if	(Npc_HasItems(hero, ItWr_Map_OldWorld_Oremines_MIS) >= 1)
-	{
-		return ItWr_Map_OldWorld_Oremines_MIS;
-	}
-	else if	(Npc_HasItems(hero, ItWr_Map_AddonWorld) >= 1)
-	{
-		return ItWr_Map_AddonWorld;
-	}
-	else if (Npc_HasItems(hero, ItWr_Addon_TreasureMap) >= 1)
-	{
-		return ItWr_Addon_TreasureMap;
-	};
+	if		(Npc_HasItems(hero, ItWr_Map_NewWorld))						{	return ItWr_Map_NewWorld;				}
+	else if	(Npc_HasItems(hero, ItWr_Map_Shrine_MIS))					{	return ItWr_Map_Shrine_MIS;				}
+	else if	(Npc_HasItems(hero, ItWr_Map_Caves_MIS))					{	return ItWr_Map_Caves_MIS;				}
+	else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Ornaments))			{	return ItWr_Map_NewWorld_Ornaments;		}
+	else if (Npc_HasItems(hero, ItWr_Map_NewWorld_Dexter))				{	return ItWr_Map_NewWorld_Dexter;		}
+	else if (Npc_HasItems(hero, ItWr_Map_ShatteredGolem_MIS))			{	return ItWr_Map_ShatteredGolem_MIS;		}
+	else if (Npc_HasItems(hero, ItWr_Map_Orcelite_MIS))					{	return ItWr_Map_Orcelite_MIS;			}
+	else if	(Npc_HasItems(hero, ItWr_Map_NewWorld_City))				{	return ItWr_Map_NewWorld_City;			}
+	else if	(Npc_HasItems(hero, ItWr_Map_OldWorld))						{	return ItWr_Map_OldWorld;				}
+	else if	(Npc_HasItems(hero, ItWr_Map_OldWorld_Oremines_MIS))		{	return ItWr_Map_OldWorld_Oremines_MIS;	}
+	else if	(Npc_HasItems(hero, ItWr_Map_AddonWorld))					{	return ItWr_Map_AddonWorld;				}
+	else if (Npc_HasItems(hero, ItWr_Addon_TreasureMap))				{	return ItWr_Addon_TreasureMap;			};
 	
-	return 0;
+	return default;
 };
 
 ///******************************************************************************************
 func int PLAYER_HOTKEY_SCREEN_MAP()
 {
+	/// check if player has his current map
 	var int OldInstance; OldInstance = PlayerMapInstance;
 	
-	if ((OldInstance > 0) && (Npc_HasItems(hero, OldInstance) < 1))
+	if (OldInstance > default && !Npc_HasItems(hero, OldInstance))
 	{
-		OldInstance = 0;
+		OldInstance = default;
 	};
 	B_SetPlayerMap(OldInstance);
 	
+	/// check current ZEN and if map matches it
 	var int NewInstance; NewInstance = OldInstance;
 	
-	if (CurrentLevel != NEWWORLD_ZEN)
+	if (CurrentLevel != NEWWORLD_ZEN && (
+		OldInstance == ItWr_Map_Caves_MIS
+	 || OldInstance == ItWr_Map_NewWorld
+	 || OldInstance == ItWr_Map_NewWorld_City
+	 || OldInstance == ItWr_Map_NewWorld_Dexter
+	 || OldInstance == ItWr_Map_NewWorld_Ornaments
+	 || OldInstance == ItWr_Map_Orcelite_MIS
+	 || OldInstance == ItWr_Map_Shrine_MIS
+	 || OldInstance == ItWr_Map_ShatteredGolem_MIS)) 
 	{
-		if (OldInstance == ItWr_Map_Caves_MIS)
-		|| (OldInstance == ItWr_Map_NewWorld)
-		|| (OldInstance == ItWr_Map_NewWorld_City)
-		|| (OldInstance == ItWr_Map_NewWorld_Dexter)
-		|| (OldInstance == ItWr_Map_NewWorld_Ornaments_Addon)
-		|| (OldInstance == ItWr_Map_Orcelite_MIS)
-		|| (OldInstance == ItWr_Map_Shrine_MIS)
-		|| (OldInstance == ItWr_Map_ShatteredGolem_MIS)
-		{
-			NewInstance = 0;
-		};
-	};
-	if (CurrentLevel != OLDWORLD_ZEN)
+		NewInstance = default;
+	}
+	else if (CurrentLevel != OLDWORLD_ZEN && (
+		OldInstance == ItWr_Map_OldWorld
+	 || OldInstance == ItWr_Map_OldWorld_Oremines_MIS))
 	{
-		if (OldInstance == ItWr_Map_OldWorld)
-		|| (OldInstance == ItWr_Map_OldWorld_Oremines_MIS)
-		{
-			NewInstance = 0;
-		};
-	};
-	if (CurrentLevel != ADDONWORLD_ZEN)
+		NewInstance = default;
+	}
+	else if (CurrentLevel != ADDONWORLD_ZEN && (
+		OldInstance == ItWr_Map_AddonWorld
+	 || OldInstance == ItWr_Addon_TreasureMap))
 	{
-		if (OldInstance == ItWr_Map_AddonWorld)
-		|| (OldInstance == ItWr_Addon_TreasureMap)
-		{
-			NewInstance = 0;
-		};
+		NewInstance = default;
 	};
 	
-	if (NewInstance <= 0)
+	/// try best map
+	if (NewInstance <= default)
 	{
 		NewInstance = B_GetBestPlayerMap();
 	};
-	if ((NewInstance <= 0) && (OldInstance <= 0))
+	
+	/// try any map
+	if (NewInstance <= default && OldInstance <= default)
 	{
 		NewInstance = B_GetAnyPlayerMap();
 	};
 	
-	if (NewInstance > 0)
+	/// set new map
+	if (NewInstance > default)
 	{
 		B_SetPlayerMap(NewInstance);
 		return NewInstance;
-	}
-	else
-	{
-		return OldInstance;
 	};
+	
+	return OldInstance;
 };
 
 ///******************************************************************************************
@@ -238,7 +164,7 @@ func void PLAYER_HOTKEY_LAME_HEAL()
 			AI_UseItem (hero, ItPo_Health_03);
 		}
 		else if (Npc_HasItems(hero, ItPo_Health_02))
-		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX] * 2)
+		&& (hero.attribute[ATR_HITPOINTS] < hero.attribute[ATR_HITPOINTS_MAX] / 2)
 		{
 			AI_UseItem (hero, ItPo_Health_02);
 		}

@@ -110,7 +110,7 @@ func void DIA_Addon_Eremit_Teach_Info ()
 	Info_AddChoice (DIA_Addon_Eremit_Teach, DIALOG_BACK, DIA_Addon_Eremit_Teach_No);
 	if (Npc_GetTalentSkill(other, NPC_TALENT_LANGUAGE) == false)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Teach, B_BuildLearnString(PRINT_LearnLanguage , B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true), default),DIA_Addon_Eremit_Teach_Yes);
+		Info_AddChoice (DIA_Addon_Eremit_Teach, B_BuildLearnString(PRINT_LearnLanguage , B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, 1), GOLD_PER_LP),DIA_Addon_Eremit_Teach_Yes);
 	};
 };
 
@@ -121,7 +121,7 @@ func void DIA_Addon_Eremit_Teach_No()
 
 func void DIA_Addon_Eremit_Teach_Yes()
 {
-	if (B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, true))
+	if (B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, 1, GOLD_PER_LP))
 	{
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_27"); //To naprawdê bardzo proste. 'G' oznacza 'O', 'T' oznacza 'H', a 'I' to 'C'.
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_28"); //Kiedy to opanujesz, reszta przyjdzie z ³atwoœci¹...
@@ -363,7 +363,7 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_22"); //Mogê ci daæ parê starych kamiennych tablic.
 		AI_Output (self, other, "DIA_Addon_Eremit_Add_04_23"); //Masz, weŸ je. Zawsze mogê znaleŸæ wiêcej.
 		
-		B_GiveInvItems (self, other, ItWr_StonePlate, 1);
+		B_GiveInvItems (self, other, ItWr_StonePlate_04, 1);
 		B_GiveInvItems (self, other, ItWr_StonePlateCommon_Addon, 1);
 		
 		MIS_Eremit_Klamotten = LOG_SUCCESS;

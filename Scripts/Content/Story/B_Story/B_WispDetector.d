@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 var int WispSearching;
-const int WispSearch_Follow 	=	1;
+const int WispSearch_Follow		=	1;
 const int WispSearch_ALL		=	2;
 const int WispSearch_POTIONS	=	3;
 const int WispSearch_MAGIC		=	4;
@@ -124,7 +124,7 @@ func int B_MM_WispDetect()
 ///******************************************************************************************
 /// EXIT
 ///******************************************************************************************
-instance DIA_Addon_WispDetector_EXIT (C_INFO)
+instance DIA_Addon_WispDetector_EXIT (C_Info)
 {
 	npc								=	Wisp_Detector;
 	nr								=	999;
@@ -142,7 +142,7 @@ func void DIA_Addon_WispDetector_EXIT_Info()
 ///******************************************************************************************
 /// DetectItems
 ///******************************************************************************************
-instance DIA_Addon_WispDetector_DetectItems (C_INFO)
+instance DIA_Addon_WispDetector_DetectItems (C_Info)
 {
 	npc								=	Wisp_Detector;
 	nr								=	5;
@@ -234,7 +234,7 @@ func void DIA_Addon_WispDetector_DetectItems_RUNE()
 ///******************************************************************************************
 /// Follow
 ///******************************************************************************************
-instance DIA_Addon_WispDetector_Follow (C_INFO)
+instance DIA_Addon_WispDetector_Follow (C_Info)
 {
 	npc								=	Wisp_Detector;
 	nr								=	5;

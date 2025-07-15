@@ -18,7 +18,7 @@ func void B_GiveTradeInv_Zuris (var C_Npc slf)
 		CreateInvItems (slf, ItPo_Health_Addon_04, 2);
 		CreateInvItems (slf, ItPo_Mana_01, 10);
 		CreateInvItems (slf, ItPo_Mana_Addon_04, 2);
-		CreateInvItems (slf, ItWr_Book_StarPower, 1);
+		CreateInvItems (slf, ItWr_BookLp_StarPower, 1);
 		
 		CreateInvItems (slf, ItSc_Curse, 1);
 		CreateInvItems (slf, ItSc_DestroyUndead, 3);

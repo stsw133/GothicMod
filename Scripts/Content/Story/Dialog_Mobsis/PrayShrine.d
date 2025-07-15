@@ -1,6 +1,7 @@
 ///******************************************************************************************
+/// MOBSI_PrayShrine
+///******************************************************************************************
 
-var int PrayDay;
 var int ShrineIsObsessed;
 var int SHRINEHEALING;
 var int SHRINESHEALED;
@@ -14,12 +15,12 @@ var int ShrineIsObsessed_NW_BIGMILL_MALAKSVERSTECK_02;
 var int ShrineIsObsessed_NW_FARM3_BIGWOOD_02;
 
 ///******************************************************************************************
-func void C_IsShrineObsessed (var C_NPC slf)
+func void C_IsShrineObsessed (var C_Npc slf)
 {
-	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(hero))
+	if (Npc_IsPlayer(slf))
 	{
 		ShrineIsObsessed = true;
-		if ((Npc_GetDistToWP(hero, "NW_TROLLAREA_PATH_37") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_37)
+		if ((Npc_GetDistToWP(slf, "NW_TROLLAREA_PATH_37") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_37)
 		{
 			if (SHRINEHEALING)
 			{
@@ -27,7 +28,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "NW_FARM1_CONNECT_XARDAS") < 2000) && ShrineIsObsessed_NW_FARM1_CONNECT_XARDAS)
+		else if ((Npc_GetDistToWP(slf, "NW_FARM1_CONNECT_XARDAS") < 2000) && ShrineIsObsessed_NW_FARM1_CONNECT_XARDAS)
 		{
 			if (SHRINEHEALING)
 			{
@@ -35,7 +36,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "NW_TROLLAREA_PATH_66") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_66)
+		else if ((Npc_GetDistToWP(slf, "NW_TROLLAREA_PATH_66") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_66)
 		{
 			if (SHRINEHEALING)
 			{
@@ -43,7 +44,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "NW_TROLLAREA_PATH_04") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_04)
+		else if ((Npc_GetDistToWP(slf, "NW_TROLLAREA_PATH_04") < 2000) && ShrineIsObsessed_NW_TROLLAREA_PATH_04)
 		{
 			if (SHRINEHEALING)
 			{
@@ -51,7 +52,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "SAGITTA") < 2000) && ShrineIsObsessed_SAGITTA)
+		else if ((Npc_GetDistToWP(slf, "SAGITTA") < 2000) && ShrineIsObsessed_SAGITTA)
 		{
 			if (SHRINEHEALING)
 			{
@@ -59,7 +60,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "NW_BIGMILL_MALAKSVERSTECK_02") < 2000) && ShrineIsObsessed_NW_BIGMILL_MALAKSVERSTECK_02)
+		else if ((Npc_GetDistToWP(slf, "NW_BIGMILL_MALAKSVERSTECK_02") < 2000) && ShrineIsObsessed_NW_BIGMILL_MALAKSVERSTECK_02)
 		{
 			if (SHRINEHEALING)
 			{
@@ -67,7 +68,7 @@ func void C_IsShrineObsessed (var C_NPC slf)
 				ShrineIsObsessed = false;
 			};
 		}
-		else if ((Npc_GetDistToWP(hero, "NW_FARM3_BIGWOOD_02") < 2000) && ShrineIsObsessed_NW_FARM3_BIGWOOD_02)
+		else if ((Npc_GetDistToWP(slf, "NW_FARM3_BIGWOOD_02") < 2000) && ShrineIsObsessed_NW_FARM3_BIGWOOD_02)
 		{
 			if (SHRINEHEALING)
 			{
@@ -83,16 +84,34 @@ func void C_IsShrineObsessed (var C_NPC slf)
 };
 
 ///******************************************************************************************
-/// PrayShrine: end
-///******************************************************************************************
+func void PrayShrine_S1()
+{
+	if (Npc_IsPlayer(self))
+	{
+		C_IsShrineObsessed(self);
+		if (ShrineIsObsessed == true)
+		{
+			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
+		};
+		
+		self.aivar[AIV_Invisible] = true;
+		PLAYER_MOBSI_PRODUCTION = MOBSI_PrayShrine;
+		AI_ProcessInfos(self);
+	};
+};
+
 func int PC_PrayShrine_Condition()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayShrine)
 	{
 		return true;
 	};
 };
-instance PC_PrayShrine_End (C_Info)
+
+///******************************************************************************************
+/// EXIT
+///******************************************************************************************
+instance PC_PrayShrine_EXIT (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
@@ -103,21 +122,21 @@ instance PC_PrayShrine_End (C_Info)
 };
 
 ///******************************************************************************************
-/// PrayShrine: heal shrine
+/// Heal shrine
 ///******************************************************************************************
-instance PC_PrayShrine_HEALSHRINE (C_Info)
+instance PC_PrayShrine_HealShrine (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	1;
-	condition							=	PC_PrayShrine_HEALSHRINE_Condition;
-	information							=	PC_PrayShrine_HEALSHRINE_Info;
+	condition							=	PC_PrayShrine_HealShrine_Condition;
+	information							=	PC_PrayShrine_HealShrine_Info;
 	permanent							=	true;
 	description							=	"Oczyœæ œwi¹tyniê";
 };
 
-func int PC_PrayShrine_HEALSHRINE_Condition()
+func int PC_PrayShrine_HealShrine_Condition()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayShrine)
 	&& (Npc_HasItems(hero, ItMi_HolyWater))
 	&& (ShrineIsObsessed)
 	&& (MIS_Ulthar_HeileSchreine_PAL == LOG_RUNNING)
@@ -126,7 +145,7 @@ func int PC_PrayShrine_HEALSHRINE_Condition()
 	};
 };
 
-func void PC_PrayShrine_HEALSHRINE_Info()
+func void PC_PrayShrine_HealShrine_Info()
 {
 	Wld_PlayEffect ("spellFX_HealShrine", hero, hero, 0, 0, 0, false);
 	Snd_Play("MFX_Heal_Cast");
@@ -152,29 +171,11 @@ func void PC_PrayShrine_HEALSHRINE_Info()
 		MIS_Ulthar_HeileSchreine_PAL = LOG_SUCCESS;
 	};
 	B_GivePlayerExp(100);
-	B_ENDPRODUCTIONDIALOG();
+	B_EndProductionDialog();
 }; 
-///******************************************************************************************
-func void PrayShrine_S1()
-{
-	var C_NPC her; her = Hlp_GetNpc(PC_Hero);
-	
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
-	{
-		C_IsShrineObsessed(self);
-		if (ShrineIsObsessed == true)
-		{
-			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
-		};
-		
-		self.aivar[AIV_Invisible] = true;
-		PLAYER_MOBSI_PRODUCTION = MOBSI_PrayShrine;
-		Ai_ProcessInfos(her);
-	};
-};
 
 ///******************************************************************************************
-/// PrayShrine: paladine
+/// Pray for paladins
 ///******************************************************************************************
 instance PC_PrayShrine_Paladine (C_Info)
 {
@@ -188,7 +189,7 @@ instance PC_PrayShrine_Paladine (C_Info)
 
 func int PC_PrayShrine_Paladine_Condition()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayShrine)
 	&& (MIS_MardukBeten == LOG_RUNNING)
 	&& (Kapitel == 7)
 	{
@@ -205,7 +206,7 @@ func void PC_PrayShrine_Paladine_Info()
 };
 
 ///******************************************************************************************
-/// PrayShrine: bless sword
+/// Bless sword
 ///******************************************************************************************
 instance PC_PrayShrine_BlessSword (C_Info)
 {
@@ -219,10 +220,10 @@ instance PC_PrayShrine_BlessSword (C_Info)
 
 func int PC_PrayShrine_BlessSword_Condition()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayShrine)
 	&& (hero.guild == GIL_PAL)
-	&& (Npc_GetDistToWP (hero,"NW_MONASTERY_CHAPELL_02") <= 500)
-	&& ((Npc_HasItems(hero, ItMw_1H_Blessed_01) >= 1) || (Npc_HasItems(hero, ItMw_2H_Blessed_01) >= 1))
+	&& (Npc_GetDistToWP(hero,"NW_MONASTERY_CHAPELL_02") <= 500)
+	&& (Npc_HasItems(hero, ItMw_1H_Blessed_01) || Npc_HasItems(hero, ItMw_2H_Blessed_01))
 	{
 		return true;
 	};
@@ -243,7 +244,7 @@ func void PC_PrayShrine_BlessSword_Info()
 		var string concatDonation; concatDonation = ConcatStrings (IntToString(5000), PRINT_GoldGegeben);
 		AI_PrintScreen (concatDonation, -1, YPOS_GoldGiven, FONT_ScreenSmall, 2);
 		
-		if (Npc_HasItems(hero, ItMw_2H_Blessed_01) >= 1)
+		if (Npc_HasItems(hero, ItMw_2H_Blessed_01))
 		{
 			Npc_RemoveInvItem (hero, ItMw_2H_Blessed_01);
 			CreateInvItem (hero, ItMw_2H_Blessed_02);
@@ -267,7 +268,7 @@ func void PC_PrayShrine_BlessSword_Info()
 }; 
 
 ///******************************************************************************************
-/// PrayShrine: bless sword final
+/// Bless sword - final
 ///******************************************************************************************
 instance PC_PrayShrine_BlessSword_Final (C_Info)
 {
@@ -281,17 +282,17 @@ instance PC_PrayShrine_BlessSword_Final (C_Info)
 
 func int PC_PrayShrine_BlessSword_Final_Condition()
 {
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PRAYSHRINE)
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_PrayShrine)
 	&& (hero.guild == GIL_PAL)
 	&& (Npc_GetDistToWP(hero, "NW_MONASTERY_CHAPELL_02") <= 500)
 	&& (PAL_KnowsAbout_FINAL_BLESSING)
-	&& (Npc_HasItems(hero, ItMw_1H_Blessed_02) >= 1 || Npc_HasItems(hero, ItMw_2H_Blessed_02) >= 1)
+	&& (Npc_HasItems(hero, ItMw_1H_Blessed_02) || Npc_HasItems(hero, ItMw_2H_Blessed_02))
 	{
 		return true;
 	};
 };
 
-func void PC_PrayShrine_BlessSword_FINAL_Info()
+func void PC_PrayShrine_BlessSword_Final_Info()
 {
 	if (ShrineIsObsessed)
 	{
@@ -327,7 +328,31 @@ func void PC_PrayShrine_BlessSword_FINAL_Info()
 };
 
 ///******************************************************************************************
-/// PrayShrine: pray
+/// Pray
+///******************************************************************************************
+
+const string Print_ThankfulInnos = "Innos dziêkuje ci za modlitwê.";
+var int PrayDay;
+
+/// ------ PrayCounter ------
+var int RandAtrPrayCounter;
+func void Npc_AddPrayCounter(var int value)
+{
+	if (Npc_IsPlayer(self))
+	{
+		RandAtrPrayCounter += value;
+		if (RandAtrPrayCounter/1000) > ((RandAtrPrayCounter-value)/1000)
+		{
+			PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrPrayCounter/1000 % 5));
+			if (RandAtrPrayCounter >= 5000)	{	RandAtrPrayCounter -= 5000;	};
+		}
+		else
+		{
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrPrayCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
+		};
+	};
+};
+
 ///******************************************************************************************
 instance PC_PrayShrine_Pray (C_Info)
 {
@@ -338,7 +363,6 @@ instance PC_PrayShrine_Pray (C_Info)
 	permanent							=	true;
 	description							=	"Módl siê";
 };
-
 func void PC_PrayShrine_Pray_Info()
 {
 	if (ShrineIsObsessed)
@@ -350,41 +374,40 @@ func void PC_PrayShrine_Pray_Info()
 	else
 	{
 		Info_ClearChoices	(PC_PrayShrine_Pray);
-		Info_AddChoice		(PC_PrayShrine_Pray, Dialog_Back, PC_PrayShrine_Pray_Back);
+		Info_AddChoice		(PC_PrayShrine_Pray, Dialog_Back, PC_PrayShrine_Pray_BACK);
 		
-		if (PrayDay != Wld_GetDay())
+		if (PrayDay != (Wld_GetDay() + 1))
 		{
+			if (Npc_HasItems(hero, ItMi_Gold) >= 100)
+			{
+				Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 100 sztuk z³ota.", PC_PrayShrine_Pray_BigPay);
+			};
+			if (Npc_HasItems(hero, ItMi_Gold) >= 50)
+			{
+				Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 50 sztuk z³ota.", PC_PrayShrine_Pray_MediumPay);
+			};
+			if (Npc_HasItems(hero, ItMi_Gold) >= 25)
+			{
+				Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 25 sztuk z³ota.", PC_PrayShrine_Pray_SmallPay);
+			};
+			
 			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ.", PC_PrayShrine_Pray_NoPay);
 		}
 		else
 		{
 			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê znów dzisiaj pomodliæ.", PC_PrayShrine_Pray_NoPay);
 		};
-		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 10)
-		{
-			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 10 sztuk z³ota.", PC_PrayShrine_Pray_SmallPay);
-		};
-		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 100)
-		{
-			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 100 sztuk z³ota.", PC_PrayShrine_Pray_MediumPay);
-		};
-		if (PrayDay != Wld_GetDay() && Npc_HasItems(hero, ItMi_Gold) >= 1000)
-		{
-			Info_AddChoice (PC_PrayShrine_Pray, "Chcê siê pomodliæ i z³o¿yæ ofiarê 1000 sztuk z³ota.", PC_PrayShrine_Pray_BigPay);
-		};
 	};
-}; 
+};
 ///******************************************************************************************
-func void PC_PrayShrine_Pray_Back()
+func void PC_PrayShrine_Pray_BACK()
 {
 	Info_ClearChoices(PC_PrayShrine_Pray);
 };
 
-const string Print_ThankfulInnos = "Innos dziêkuje ci za modlitwê.";
-
 func void PC_PrayShrine_Pray_NoPay()
 {
-	PrayDay = Wld_GetDay();
+	PrayDay = Wld_GetDay() + 1;
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
 	
@@ -393,10 +416,11 @@ func void PC_PrayShrine_Pray_NoPay()
 
 func void PC_PrayShrine_Pray_SmallPay()
 {
-	Npc_RemoveInvItems (hero, ItMi_Gold, 10);
-	B_GivePlayerExp(10);
+	Npc_RemoveInvItems (hero, ItMi_Gold, 25); B_GivePlayerExp(25); Npc_AddPrayCounter(25);
+	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
+	MOD_SetPoison(0);
 	
-	PrayDay = Wld_GetDay();
+	PrayDay = Wld_GetDay() + 1;
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
 	
@@ -405,10 +429,11 @@ func void PC_PrayShrine_Pray_SmallPay()
 
 func void PC_PrayShrine_Pray_MediumPay()
 {
-	Npc_RemoveInvItems (hero, ItMi_Gold, 100);
-	B_GivePlayerExp(100);
+	Npc_RemoveInvItems (hero, ItMi_Gold, 50); B_GivePlayerExp(50); Npc_AddPrayCounter(50);
+	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
+	MOD_SetPoison(0);
 	
-	PrayDay = Wld_GetDay();
+	PrayDay = Wld_GetDay() + 1;
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
 	
@@ -417,10 +442,11 @@ func void PC_PrayShrine_Pray_MediumPay()
 
 func void PC_PrayShrine_Pray_BigPay()
 {
-	Npc_RemoveInvItems (hero, ItMi_Gold, 1000);
-	B_GivePlayerExp(1000);
+	Npc_RemoveInvItems (hero, ItMi_Gold, 100); B_GivePlayerExp(100); Npc_AddPrayCounter(100);
+	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
+	MOD_SetPoison(0);
 	
-	PrayDay = Wld_GetDay();
+	PrayDay = Wld_GetDay() + 1;
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	PrintScreen (Print_ThankfulInnos, -1, -1, FONT_SCREEN, 2);
 	

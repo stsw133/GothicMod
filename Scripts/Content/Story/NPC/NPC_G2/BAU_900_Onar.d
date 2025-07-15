@@ -17,7 +17,7 @@ instance BAU_900_Onar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Inventory ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -26,12 +26,37 @@ func void B_AddFightSkill (var C_Npc slf, var int talent, var int percent)
 	{
 		var string concatText;
 		
-		if		(talent == NPC_TALENT_THROW)	{	concatText = ConcatStrings(PRINT_LearnThrow, IntToString(percent));	}
-		else if	(talent == NPC_TALENT_1H)		{	concatText = ConcatStrings(PRINT_Learn1h, IntToString(percent));	}
+		if		(talent == NPC_TALENT_1H)		{	concatText = ConcatStrings(PRINT_Learn1h, IntToString(percent));	}
 		else if	(talent == NPC_TALENT_2H)		{	concatText = ConcatStrings(PRINT_Learn2h, IntToString(percent));	}
 		else if	(talent == NPC_TALENT_BOW)		{	concatText = ConcatStrings(PRINT_LearnBow, IntToString(percent));	}
 		else if	(talent == NPC_TALENT_CROSSBOW)	{	concatText = ConcatStrings(PRINT_LearnCBow, IntToString(percent));	};
 		
 		PrintScreen	(concatText, -1, -1, FONT_SCREEN, 2);
 	};
+};
+
+///******************************************************************************************
+var int RandomizedHitchanceOrder[4];
+
+func void InitRandomizedHitchanceOrder()
+{
+	const int values[4] = { NPC_TALENT_1H, NPC_TALENT_2H, NPC_TALENT_BOW, NPC_TALENT_CROSSBOW };
+	var int used[4];
+	
+	var int i;
+	repeat(i, 4);
+		var int index; index = Hlp_Random(4);
+		var int foundUnused; foundUnused = false;
+		
+		var int j;
+		repeat(j, 4);
+			if (MEM_ReadStatArr(used, index))
+			{
+				index = (index + 1) % 4;
+			};
+		end;
+		
+		MEM_WriteStatArr(RandomizedHitchanceOrder, i, MEM_ReadStatArr(values, index));
+		MEM_WriteStatArr(used, index, true);
+	end;
 };

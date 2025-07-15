@@ -16,8 +16,8 @@ instance BAU_983_Dragomir (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_SLD_Sword);
-	EquipItem (self, itRw_Mil_Crossbow);
+	EquipItem (self, ItMw0_1h_SLD_Sword);
+	EquipItem (self, itRw0_Crossbow_L_02);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

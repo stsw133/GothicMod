@@ -16,7 +16,7 @@ instance VLK_412_Harad (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mace_L_04);
+	EquipItem (self, ItMw0_1H_Mace_L_04);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_FatBald", Face_N_NormalBart20, Teeth_Normal, ItAr_Smith);

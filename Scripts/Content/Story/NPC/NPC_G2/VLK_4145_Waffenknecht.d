@@ -16,7 +16,7 @@ instance VLK_4145_Waffenknecht (Npc_Default)
 	fight_tactic						=	FAI_NAILED;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mil_Sword);
+	EquipItem (self, ItMw0_1H_Mil_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

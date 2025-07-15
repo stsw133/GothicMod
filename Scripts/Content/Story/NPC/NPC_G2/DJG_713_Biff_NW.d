@@ -21,7 +21,7 @@ instance DJG_713_Biff_NW (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Axe);
+	EquipItem (self, ItMw0_2h_Sld_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

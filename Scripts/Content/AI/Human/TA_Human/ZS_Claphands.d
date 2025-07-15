@@ -15,7 +15,7 @@ func void ZS_Claphands()
 	self.aivar[AIV_TAPOSITION] = NOTINPOS;
 };
 
-func int ZS_Claphands_LOOP()
+func int ZS_Claphands_Loop()
 {
 	if (Npc_IsOnFP(self, "CLAPHANDS"))
  	{
@@ -55,7 +55,7 @@ func int ZS_Claphands_LOOP()
 	return LOOP_CONTINUE;
 };
 
-func void ZS_CLAPHANDS_END()
+func void ZS_Claphand_End()
 {
 	AI_PlayAni (self, "T_CLAPHANDS_2_STAND");
 };

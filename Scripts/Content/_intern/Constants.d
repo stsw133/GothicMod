@@ -17,10 +17,10 @@ const int LOOP_END						=	1;
 /// Fonts & time per char
 ///******************************************************************************************
 
-const string FONT_Screen				=	"FONT_OLD_20_WHITE.TGA";
-const string FONT_ScreenSmall			=	"FONT_OLD_10_WHITE.TGA";
-const string FONT_Book					=	"FONT_10_BOOK.TGA";
-const string FONT_BookHeadline			=	"FONT_20_BOOK.TGA";
+const string FONT_Screen				=	"FONT_OLD_20_WHITE.tga";
+const string FONT_ScreenSmall			=	"FONT_OLD_10_WHITE.tga";
+const string FONT_Book					=	"FONT_10_BOOK.tga";
+const string FONT_BookHeadline			=	"FONT_20_BOOK.tga";
 
 const string TEXT_FONT_20				=	"Font_old_20_white.tga";
 const string TEXT_FONT_10				=	"Font_old_10_white.tga";
@@ -45,13 +45,6 @@ const int ATR_REGENERATEMP				=	7;	/// obsolete!!!
 const int ATR_POWER						=	7;	/// new!!!
 
 const int ATR_INDEX_MAX					=	8;
-
-/// MOD: special indexes for item conditions
-const int ATR_THROW						=	9;	/// new!!!
-const int ATR_1H						=	10;
-const int ATR_2H						=	11;
-const int ATR_BOW						=	12;
-const int ATR_CBOW						=	13;
 
 ///******************************************************************************************
 /// NPC FLAGS
@@ -110,14 +103,14 @@ const int INV_CAT_MAX					=	9;
 /// INVENTORY CAPACITIES
 ///******************************************************************************************
 
-const int INV_MAX_WEAPONS				=    6;
-const int INV_MAX_ARMORS				=    2;
-const int INV_MAX_RUNES					= 1000;
-const int INV_MAX_FOOD					=   15;
-const int INV_MAX_DOCS					= 1000;
-const int INV_MAX_POTIONS				= 1000;
-const int INV_MAX_MAGIC					= 1000;
-const int INV_MAX_MISC					= 1000;
+const int INV_MAX_WEAPONS				=	6;
+const int INV_MAX_ARMORS				=	2;
+const int INV_MAX_RUNES					=	1000;
+const int INV_MAX_FOOD					=	15;
+const int INV_MAX_DOCS					=	1000;
+const int INV_MAX_POTIONS				=	1000;
+const int INV_MAX_MAGIC					=	1000;
+const int INV_MAX_MISC					=	1000;
 
 ///******************************************************************************************
 /// ITEM TEXTS
@@ -143,12 +136,12 @@ const int ITEM_KAT_RUNE					=	1 <<  9;
 const int ITEM_KAT_MAGIC				=	1 << 31;
 const int ITEM_KAT_KEYS					=	ITEM_KAT_NONE;
 /// weapon type (flags)
-const int ITEM_DAG						=	1 << 13;	/// OBSOLETE!
+const int ITEM_DAG						=	1 << 13;		/// OBSOLETE!
 const int ITEM_SWD						=	1 << 14;
 const int ITEM_AXE						=	1 << 15;
 const int ITEM_2HD_SWD					=	1 << 16;
 const int ITEM_2HD_AXE					=	1 << 17;
-const int ITEM_SHIELD					=	1 << 18;	/// OBSOLETE!
+const int ITEM_SHIELD					=	1 << 18;		/// OBSOLETE!
 const int ITEM_BOW						=	1 << 19;
 const int ITEM_CROSSBOW					=	1 << 20;
 /// magic type (flags)
@@ -156,16 +149,16 @@ const int ITEM_RING						=	1 << 11;
 const int ITEM_AMULET					=	1 << 22;
 const int ITEM_BELT						=	1 << 24;
 /// attributes (flags)
-const int ITEM_DROPPED					=	1 << 10;	/// INTERNAL!
+const int ITEM_DROPPED					=	1 << 10;		/// INTERNAL!
 const int ITEM_MISSION					=	1 << 12;
 const int ITEM_MULTI					=	1 << 21;
-const int ITEM_NFOCUS					=	1 << 23;	/// INTERNAL!
+const int ITEM_NFOCUS					=	1 << 23;		/// INTERNAL!
 const int ITEM_CREATEAMMO				=	1 << 25;
 const int ITEM_NSPLIT					=	1 << 26;
-const int ITEM_DRINK					=	1 << 27;	/// OBSOLETE!
+const int ITEM_DRINK					=	1 << 27;		/// OBSOLETE!
 const int ITEM_TORCH					=	1 << 28;
-const int ITEM_THROW					=	1 << 29;	/// OBSOLETE!
-const int ITEM_ACTIVE					=	1 << 30;	/// INTERNAL!
+const int ITEM_THROW					=	1 << 29;		/// OBSOLETE!
+const int ITEM_ACTIVE					=	1 << 30;		/// INTERNAL!
 
 ///******************************************************************************************
 /// DAMAGE TYPES v2.0 (FLAGS)
@@ -215,23 +208,23 @@ const int PROT_INDEX_MAX				=	DAM_INDEX_MAX;
 /// OTHER DAMAGE CONSTANTS
 ///******************************************************************************************
 
-const int NPC_ATTACK_FINISH_DISTANCE					=	180;
-const int NPC_BURN_TICKS_PER_DAMAGE_POINT				=	1000;
-const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL			=	50;
-const int NPC_DAM_DIVE_TIME								=	100;
-const int DAM_CRITICAL_MULTIPLIER						=	2;
-const int DAM_NOSTAMINA_PERCENT							=	80;	/// new!!!
+const int NPC_ATTACK_FINISH_DISTANCE				=	180;
+const int NPC_BURN_TICKS_PER_DAMAGE_POINT			=	1000;
+const int NPC_BURN_DAMAGE_POINTS_PER_INTERVALL		=	50;
+const int NPC_DAM_DIVE_TIME							=	100;
+const int DAM_CRITICAL_MULTIPLIER					=	2;
+const int DAM_NOSTAMINA_PERCENT						=	80;	/// new!!!
 
-const int BLOOD_SIZE_DIVISOR							=	1000;
-const int BLOOD_DAMAGE_MAX								=	200;
+const int BLOOD_SIZE_DIVISOR						=	1000;
+const int BLOOD_DAMAGE_MAX							=	200;
 
-const int DAMAGE_FLY_CM_MAX								=	2000;
-const int DAMAGE_FLY_CM_MIN								=	300;
-const int DAMAGE_FLY_CM_PER_POINT						=	5;
+const int DAMAGE_FLY_CM_MAX							=	2000;
+const int DAMAGE_FLY_CM_MIN							=	300;
+const int DAMAGE_FLY_CM_PER_POINT					=	5;
 
-const int IMMUNE										=	-1;
+const int IMMUNE									=	-1;
 
-const float NPC_COLLISION_CORRECTION_SCALER				=	0.75;
+const float NPC_COLLISION_CORRECTION_SCALER			=	0.75;
 
 ///******************************************************************************************
 /// SENSES
@@ -246,39 +239,39 @@ const int SENSE_SMELL					=	1 << 2;
 ///******************************************************************************************
 
 /// ACTIVE
-const int PERC_ASSESSPLAYER				=   1;
-const int PERC_ASSESSENEMY				=   2;
-const int PERC_ASSESSFIGHTER			=   3;
-const int PERC_ASSESSBODY				=   4;
-const int PERC_ASSESSITEM				=   5;
+const int PERC_ASSESSPLAYER				=	1;
+const int PERC_ASSESSENEMY				=	2;
+const int PERC_ASSESSFIGHTER			=	3;
+const int PERC_ASSESSBODY				=	4;
+const int PERC_ASSESSITEM				=	5;
 /// PASSIVE
-const int PERC_ASSESSMURDER				=   6;
-const int PERC_ASSESSDEFEAT				=   7;
-const int PERC_ASSESSDAMAGE				=   8;
-const int PERC_ASSESSOTHERSDAMAGE		=   9;
-const int PERC_ASSESSTHREAT				=  10;
-const int PERC_ASSESSREMOVEWEAPON		=  11;
-const int PERC_OBSERVEINTRUDER			=  12;
-const int PERC_ASSESSFIGHTSOUND			=  13;
-const int PERC_ASSESSQUIETSOUND			=  14;
-const int PERC_ASSESSWARN				=  15;
-const int PERC_CATCHTHIEF				=  16;
-const int PERC_ASSESSTHEFT				=  17;
-const int PERC_ASSESSCALL				=  18;
-const int PERC_ASSESSTALK				=  19;
-const int PERC_ASSESSGIVENITEM			=  20;
-const int PERC_ASSESSFAKEGUILD			=  21;
-const int PERC_MOVEMOB					=  22;
-const int PERC_MOVENPC					=  23;
-const int PERC_DRAWWEAPON				=  24;
-const int PERC_OBSERVESUSPECT			=  25;
-const int PERC_NPCCOMMAND				=  26;
-const int PERC_ASSESSMAGIC				=  27;
-const int PERC_ASSESSSTOPMAGIC			=  28;
-const int PERC_ASSESSCASTER				=  29;
-const int PERC_ASSESSSURPRISE			=  30;
-const int PERC_ASSESSENTERROOM			=  31;
-const int PERC_ASSESSUSEMOB				=  32;
+const int PERC_ASSESSMURDER				=	6;
+const int PERC_ASSESSDEFEAT				=	7;
+const int PERC_ASSESSDAMAGE				=	8;
+const int PERC_ASSESSOTHERSDAMAGE		=	9;
+const int PERC_ASSESSTHREAT				=	10;
+const int PERC_ASSESSREMOVEWEAPON		=	11;
+const int PERC_OBSERVEINTRUDER			=	12;
+const int PERC_ASSESSFIGHTSOUND			=	13;
+const int PERC_ASSESSQUIETSOUND			=	14;
+const int PERC_ASSESSWARN				=	15;
+const int PERC_CATCHTHIEF				=	16;
+const int PERC_ASSESSTHEFT				=	17;
+const int PERC_ASSESSCALL				=	18;
+const int PERC_ASSESSTALK				=	19;
+const int PERC_ASSESSGIVENITEM			=	20;
+const int PERC_ASSESSFAKEGUILD			=	21;
+const int PERC_MOVEMOB					=	22;
+const int PERC_MOVENPC					=	23;
+const int PERC_DRAWWEAPON				=	24;
+const int PERC_OBSERVESUSPECT			=	25;
+const int PERC_NPCCOMMAND				=	26;
+const int PERC_ASSESSMAGIC				=	27;
+const int PERC_ASSESSSTOPMAGIC			=	28;
+const int PERC_ASSESSCASTER				=	29;
+const int PERC_ASSESSSURPRISE			=	30;
+const int PERC_ASSESSENTERROOM			=	31;
+const int PERC_ASSESSUSEMOB				=	32;
 
 ///******************************************************************************************
 /// NEWS SPREAD MODE
@@ -908,8 +901,9 @@ const string spellFxAniLetters[MAX_SPELL] =
 /// TALENTS
 ///******************************************************************************************
 
+/// extraction
+const int NPC_TALENT_EXTRACTION			=	0;	/// new!!!
 /// fight
-const int NPC_TALENT_THROW				=	0;	/// new!!!
 const int NPC_TALENT_1H					=	1;
 const int NPC_TALENT_2H					=	2;
 const int NPC_TALENT_BOW				=	3;
@@ -932,9 +926,10 @@ const int NPC_TALENT_SMITH				=	13;
 const int NPC_TALENT_ENCHANTING			=	14;	/// extended!!!
 const int NPC_TALENT_ALCHEMY			=	15;
 const int NPC_TALENT_HUNTING			=	16;
-const int NPC_TALENT_COOKING			=	17;	/// new!!!
-const int NPC_TALENT_MINING				=	18;	/// new!!!
-const int NPC_TALENT_ARMORY				=	19;	/// new!!!
+/// unknown
+const int NPC_TALENT_17					=	17;	/// new!!!
+const int NPC_TALENT_18					=	18;	/// new!!!
+const int NPC_TALENT_19					=	19;	/// new!!!
 
 const int NPC_TALENT_MAX				=	22;
 
@@ -946,6 +941,8 @@ const int NEWWORLD_ZEN					=	1;
 const int OLDWORLD_ZEN					=	2;
 const int DRAGONISLAND_ZEN				=	3;
 const int ADDONWORLD_ZEN				=	4;
+
+const int ZEN_MAX						=	5;
 
 ///******************************************************************************************
 /// INV CAMERA CONSTS

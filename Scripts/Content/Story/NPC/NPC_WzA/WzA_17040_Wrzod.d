@@ -24,7 +24,7 @@ instance WzA_17040_Wrzod (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Club_01);
+	EquipItem (self, ItMw_MudClub);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

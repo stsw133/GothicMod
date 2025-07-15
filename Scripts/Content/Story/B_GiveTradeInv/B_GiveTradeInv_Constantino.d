@@ -15,7 +15,7 @@ func void B_GiveTradeInv_Constantino (var C_NPC slf)
 		CreateInvItems (slf, ItMi_Flask, 5);
 		CreateInvItems (slf, ItRe_ALCHEMY_Health_04, 1);
 		CreateInvItems (slf, ItRe_ALCHEMY_Mana_04, 1);
-		CreateInvItems (slf, ItWr_Book_StarPower, 1);
+		CreateInvItems (slf, ItWr_BookLp_StarPower, 1);
 		
 		Constantino_ItemsGiven_Chapter = 7;
 	};

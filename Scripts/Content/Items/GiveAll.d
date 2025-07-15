@@ -1,7 +1,40 @@
 ///******************************************************************************************
 /// GiveAll
 ///******************************************************************************************
-func void Func_All_Items_AnimalTrophy (var C_Npc slf)
+func void GiveAll_Amulets (var C_Npc slf)
+{
+	CreateInvItem (slf, ItAm_Prot_Blunt_01);
+	CreateInvItem (slf, ItAm_Prot_Edge_01);
+	CreateInvItem (slf, ItAm_Prot_Point_01);
+	CreateInvItem (slf, ItAm_Prot_Fire_01);
+	CreateInvItem (slf, ItAm_Prot_Magic_01);
+	CreateInvItem (slf, ItAm_Prot_Total_01);
+	CreateInvItem (slf, ItAm_Hp_01);
+	CreateInvItem (slf, ItAm_Mp_01);
+	CreateInvItem (slf, ItAm_Sp_01);
+	CreateInvItem (slf, ItAm_Str_01);
+	CreateInvItem (slf, ItAm_Dex_01);
+	CreateInvItem (slf, ItAm_Pow_01);
+	CreateInvItem (slf, ItAm_Enlightment_01);
+	CreateInvItem (slf, ItAm_Throw_01);
+	CreateInvItem (slf, ItAm_1h_01);
+	CreateInvItem (slf, ItAm_2h_01);
+	CreateInvItem (slf, ItAm_Bow_01);
+	CreateInvItem (slf, ItAm_Cbow_01);
+	CreateInvItem (slf, ItAm_Master_01);
+	CreateInvItem (slf, ItAm_CritDmg_01);
+	CreateInvItem (slf, ItAm_Ls_01);
+	CreateInvItem (slf, ItAm_MinDmg_01);
+	
+	CreateInvItem (slf, ItAm_Orc_01);
+	CreateInvItem (slf, ItAm_Orc_02);
+	CreateInvItem (slf, ItAm_Orc_03);
+	CreateInvItem (slf, ItAm_Orc_04);
+	CreateInvItem (slf, ItAm_Orc_05);
+};
+
+///******************************************************************************************
+func void GiveAll_AnimalTrophies (var C_Npc slf)
 {
 	/// blood
 	CreateInvItems (slf, ItAt_DragonBlood, 10);
@@ -59,17 +92,15 @@ func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 	CreateInvItems (slf, ItAt_BugMandibles, 10);
 	CreateInvItems (slf, ItAt_CrawlerMandibles, 10);
 	
-	/// plates
+	/// plates & scales
 	CreateInvItems (slf, ItAt_CrawlerPlate, 10);
-	
-	/// scales
 	CreateInvItems (slf, ItAt_DrgSnapperScale, 10);
 	CreateInvItems (slf, ItAt_DragonScale, 10);
 	
 	/// skins
 	CreateInvItems (slf, ItAt_WaranSkin, 10);
-	CreateInvItems (slf, ItAt_SnapperSkin, 10);
 	CreateInvItems (slf, ItAt_LurkerSkin, 10);
+	CreateInvItems (slf, ItAt_SnapperSkin, 10);
 	CreateInvItems (slf, ItAt_AlligatorSkin, 10);
 	CreateInvItems (slf, ItAt_RazorSkin, 10);
 	CreateInvItems (slf, ItAt_FirewaranSkin, 10);
@@ -78,6 +109,7 @@ func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 	
 	/// stings & secretion
 	CreateInvItems (slf, ItAt_Sting, 10);
+	CreateInvItems (slf, ItAt_Ink, 10);
 	CreateInvItems (slf, ItAt_Poison, 10);
 	
 	/// teeth
@@ -97,7 +129,7 @@ func void Func_All_Items_AnimalTrophy (var C_Npc slf)
 };
 
 ///******************************************************************************************
-func void Func_All_Items_Armor (var C_Npc slf)
+func void GiveAll_Armors (var C_Npc slf)
 {
 	/// old camp
 	CreateInvItem (slf, ITAR_STT_L);
@@ -381,39 +413,8 @@ func void Func_All_Items_Armor (var C_Npc slf)
 };
 
 ///******************************************************************************************
-func void Func_All_Items_Artifacts (var C_Npc slf)
+func void GiveAll_Belts (var C_Npc slf)
 {
-	/// amulets
-	CreateInvItem (slf, ItAm_Prot_Blunt_01);
-	CreateInvItem (slf, ItAm_Prot_Edge_01);
-	CreateInvItem (slf, ItAm_Prot_Point_01);
-	CreateInvItem (slf, ItAm_Prot_Fire_01);
-	CreateInvItem (slf, ItAm_Prot_Magic_01);
-	CreateInvItem (slf, ItAm_Prot_Total_01);
-	CreateInvItem (slf, ItAm_Hp_01);
-	CreateInvItem (slf, ItAm_Mp_01);
-	CreateInvItem (slf, ItAm_Sp_01);
-	CreateInvItem (slf, ItAm_Str_01);
-	CreateInvItem (slf, ItAm_Dex_01);
-	CreateInvItem (slf, ItAm_Pow_01);
-	CreateInvItem (slf, ItAm_Enlightment_01);
-	CreateInvItem (slf, ItAm_Throw_01);
-	CreateInvItem (slf, ItAm_1h_01);
-	CreateInvItem (slf, ItAm_2h_01);
-	CreateInvItem (slf, ItAm_Bow_01);
-	CreateInvItem (slf, ItAm_Cbow_01);
-	CreateInvItem (slf, ItAm_Master_01);
-	CreateInvItem (slf, ItAm_CritDmg_01);
-	CreateInvItem (slf, ItAm_Ls_01);
-	CreateInvItem (slf, ItAm_MinDmg_01);
-	
-	CreateInvItem (slf, ItAm_Orc_01);
-	CreateInvItem (slf, ItAm_Orc_02);
-	CreateInvItem (slf, ItAm_Orc_03);
-	CreateInvItem (slf, ItAm_Orc_04);
-	CreateInvItem (slf, ItAm_Orc_05);
-	
-	/// belts
 	CreateInvItem (slf, ItBe_Addon_Leather_01);
 	CreateInvItem (slf, ItBe_Addon_Plates_01);
 	CreateInvItem (slf, ItBe_Addon_MIL_01);
@@ -430,100 +431,57 @@ func void Func_All_Items_Artifacts (var C_Npc slf)
 	CreateInvItem (slf, ItBe_Addon_Str_01);
 	CreateInvItem (slf, ItBe_Addon_Dex_01);
 	CreateInvItem (slf, ItBe_Addon_Pow_01);
-	
-	/// rings
-	CreateInvItem (slf, ItRi_Prot_Blunt_01);
-	CreateInvItem (slf, ItRi_Prot_Edge_01);
-	CreateInvItem (slf, ItRi_Prot_Point_01);
-	CreateInvItem (slf, ItRi_Prot_Fire_01);
-	CreateInvItem (slf, ItRi_Prot_Magic_01);
-	CreateInvItem (slf, ItRi_Prot_Total_01);
-	CreateInvItem (slf, ItRi_Persistence_01);
-	CreateInvItem (slf, ItRi_Tenacity_01);
-	CreateInvItem (slf, ItRi_Harmony_01);
-	CreateInvItem (slf, ItRi_Custody_01);
-	CreateInvItem (slf, ItRi_Wisdom_01);
-	CreateInvItem (slf, ItRi_Eternity_01);
-	CreateInvItem (slf, ItRi_Hp_01);
-	CreateInvItem (slf, ItRi_Mp_01);
-	CreateInvItem (slf, ItRi_Sp_01);
-	CreateInvItem (slf, ItRi_Str_01);
-	CreateInvItem (slf, ItRi_Dex_01);
-	CreateInvItem (slf, ItRi_Pow_01);
-	CreateInvItem (slf, ItRi_Enlightment_01);
-	CreateInvItem (slf, ItRi_Roy_01);
-	CreateInvItem (slf, ItRi_Pal_01);
-	CreateInvItem (slf, ItRi_Djg_01);
-	CreateInvItem (slf, ItRi_Asa_01);
-	CreateInvItem (slf, ItRi_Mag_01);
-	CreateInvItem (slf, ItRi_Throw_01);
-	CreateInvItem (slf, ItRi_1h_01);
-	CreateInvItem (slf, ItRi_2h_01);
-	CreateInvItem (slf, ItRi_Bow_01);
-	CreateInvItem (slf, ItRi_Cbow_01);
-	CreateInvItem (slf, ItRi_Master_01);
-	CreateInvItem (slf, ItRi_Innovation_01);
-	CreateInvItem (slf, ItRi_Precision_01);
-	CreateInvItem (slf, ItRi_Domination_01);
-	CreateInvItem (slf, ItRi_Motivation_01);
-	CreateInvItem (slf, ItRi_Liberation_01);
-	CreateInvItem (slf, ItRi_Destruction_01);
-	CreateInvItem (slf, ItRi_CritDmg_01);
-	CreateInvItem (slf, ItRi_AreaDmg_01);
-	CreateInvItem (slf, ItRi_Ls_01);
-	CreateInvItem (slf, ItRi_MinDmg_01);
 };
 
 ///******************************************************************************************
-func void Func_All_Items_Food (var C_Npc slf)
+func void GiveAll_Food (var C_Npc slf)
 {
 	/// base components
-	CreateInvItems (slf, ItFo_Flour, 10);
-	CreateInvItems (slf, ItFo_Salt, 10);
-	CreateInvItems (slf, ItFo_Seeds, 10);
-	CreateInvItems (slf, ItFo_Spices, 10);
-	CreateInvItems (slf, ItFo_Sugar, 10);
+	CreateInvItem (slf, ItFo_Flour);
+	CreateInvItem (slf, ItFo_Herbs);
+	CreateInvItem (slf, ItFo_Oil);
+	CreateInvItem (slf, ItFo_Salt);
+	CreateInvItem (slf, ItFo_Spices);
 	
 	/// raw food
+	CreateInvItems (slf, ItFo_Coconut, 10);
 	//CreateInvItems (slf, ItFo_Egg, 10);
 	CreateInvItems (slf, ItFo_Fish, 10);
-	CreateInvItems (slf, ItFo_MeatBadRaw, 10);
-	CreateInvItems (slf, ItFo_MeatGoodRaw, 10);
+	CreateInvItems (slf, ItFo_BadMeatRaw, 10);
+	CreateInvItems (slf, ItFo_FatMeatRaw, 10);
 	CreateInvItems (slf, ItFoMuttonRaw, 10);
 	CreateInvItems (slf, ItFo_Potato, 10);
+	CreateInvItems (slf, ItFo_Seeds, 10);
 	
-	/// light food
+	/// fruits
 	CreateInvItems (slf, ItFo_Apple, 10);
 	CreateInvItems (slf, ItFo_Banana, 10);
-	CreateInvItems (slf, ItFo_Coconut, 10);
 	CreateInvItems (slf, ItFo_Grapes, 10);
 	CreateInvItems (slf, ItFo_Pear, 10);
-	CreateInvItems (slf, ItFo_Pineapple, 10);
 	
-	CreateInvItems (slf, ItFo_BakedPotato, 10);
+	/// vegetables
 	CreateInvItems (slf, ItFo_Cabbage, 10);
 	CreateInvItems (slf, ItFo_Carrot, 10);
 	CreateInvItems (slf, ItFo_Chili, 10);
 	CreateInvItems (slf, ItFo_Leek, 10);
 	CreateInvItems (slf, ItFo_Onion, 10);
-	
-	CreateInvItems (slf, ItFo_MeatbugFlesh, 10);
+	CreateInvItems (slf, ItFo_Parsley, 10);
 	
 	/// standard food
 	CreateInvItems (slf, ItFo_Bread, 10);
 	CreateInvItems (slf, ItFo_Cheese, 10);
-	CreateInvItems (slf, ItFo_FriedFish, 10);
+	CreateInvItems (slf, ItFo_MeatbugFlesh, 10);
 	CreateInvItems (slf, ItFo_Rice, 10);
 	
 	/// meat
-	CreateInvItems (slf, ItFo_MeatBad, 10);
-	CreateInvItems (slf, ItFo_MeatGood, 10);
+	CreateInvItems (slf, ItFo_BadMeat, 10);
+	CreateInvItems (slf, ItFo_FatMeat, 10);
 	CreateInvItems (slf, ItFoMutton, 10);
 	
+	CreateInvItems (slf, ItFo_Bacon, 10);
 	CreateInvItems (slf, ItFo_Sausage, 10);
 	
-	/// luxury food
-	CreateInvItems (slf, ItFo_Bacon, 10);
+	/// sea food
 	CreateInvItems (slf, ItFo_Oyster, 10);
 	
 	/// sweets
@@ -532,23 +490,58 @@ func void Func_All_Items_Food (var C_Npc slf)
 	CreateInvItems (slf, ItFo_Honey, 10);
 	CreateInvItems (slf, ItFo_Jam, 10);
 	
-	/// stews
+	/// dishes
+	CreateInvItems (slf, ItFo_BugPulp, 10);
+	CreateInvItems (slf, ItFo_ForestStew, 10);
+	CreateInvItems (slf, ItFo_FriedPasta, 10);
+	CreateInvItems (slf, ItFo_HoneyOatmeal, 10);
+	CreateInvItems (slf, ItFo_JamPaste, 10);
+	CreateInvItems (slf, ItFo_MeatCauldron, 10);
+	CreateInvItems (slf, ItFo_MeatStew, 10);
+	CreateInvItems (slf, ItFo_Pilaf, 10);
+	CreateInvItems (slf, ItFo_Puree, 10);
+	CreateInvItems (slf, ItFo_Salad, 10);
+	CreateInvItems (slf, ItFo_ScrambledEggs, 10);
+	CreateInvItems (slf, ItFo_Spaghetti, 10);
+	CreateInvItems (slf, ItFo_SpicyStew, 10);
 	CreateInvItems (slf, ItFo_Stew, 10);
+	CreateInvItems (slf, ItFo_StewedVegetables, 10);
+	CreateInvItems (slf, ItFo_WineStew, 10);
 	
 	/// soups
+	CreateInvItems (slf, ItFo_BerrySoup, 10);
+	CreateInvItems (slf, ItFo_CabbageSoup, 10);
+	CreateInvItems (slf, ItFo_CheeseSoup, 10);
 	CreateInvItems (slf, ItFo_FishSoup, 10);
+	CreateInvItems (slf, ItFo_GreenSoup, 10);
+	CreateInvItems (slf, ItFo_HoneySoup, 10);
+	CreateInvItems (slf, ItFo_MilkSoup, 10);
 	CreateInvItems (slf, ItFo_MushroomSoup, 10);
-	CreateInvItems (slf, ItFo_RiceSoup, 10);
+	CreateInvItems (slf, ItFo_OnionSoup, 10);
+	CreateInvItems (slf, ItFo_OysterSoup, 10);
+	CreateInvItems (slf, ItFo_SausageSoup, 10);
+	CreateInvItems (slf, ItFo_SpicySoup, 10);
 	
-	/// water & milk
+	/// compotes & decotions
+	CreateInvItems (slf, ItFo_AppleCompote, 10);
+	CreateInvItems (slf, ItFo_BerryCompote, 10);
+	CreateInvItems (slf, ItFo_BlueDecoction, 10);
+	
+	/// water & milk & juice
 	CreateInvItems (slf, ItFo_Water, 10);
 	CreateInvItems (slf, ItFo_Milk, 10);
+	CreateInvItems (slf, ItFo_BananaJuice, 10);
+	CreateInvItems (slf, ItFo_BerryJuice, 10);
 	
-	/// light alcohol
+	/// beer
 	CreateInvItems (slf, ItFo_Beer, 10);
 	
+	/// light alcohol
 	CreateInvItems (slf, ItFo_Booze, 10);
-	CreateInvItems (slf, ItFo_Tequila, 10);
+	CreateInvItems (slf, ItFo_DarkBeer, 10);
+	CreateInvItems (slf, ItFo_Mead, 10);
+	CreateInvItems (slf, ItFo_Sake, 10);
+	CreateInvItems (slf, ItFo_SourWine, 10);
 	CreateInvItems (slf, ItFo_Wine, 10);
 	
 	/// heavy alcohol
@@ -561,7 +554,23 @@ func void Func_All_Items_Food (var C_Npc slf)
 };
 
 ///******************************************************************************************
-func void Func_All_Items_Helms (var C_Npc slf)
+func void GiveAll_Hairs (var C_Npc slf)
+{
+	/// male hairs
+	CreateInvItem (slf, ItHa_Geralt);
+	CreateInvItem (slf, ItHa_Harad);
+	CreateInvItem (slf, ItHa_Mohawk);
+	CreateInvItem (slf, ItHa_Rhobar);
+	
+	/// female hairs
+	CreateInvItem (slf, ItHa_Curly_Blonde);
+	CreateInvItem (slf, ItHa_Noctis_Blonde);
+	CreateInvItem (slf, ItHa_Sonja_Black);
+	CreateInvItem (slf, ItHa_Sonja_Brown);
+};
+
+///******************************************************************************************
+func void GiveAll_Helms (var C_Npc slf)
 {
 	/// citizen helms: VLK
 	CreateInvItem (slf, ItHe_Cap);
@@ -606,209 +615,228 @@ func void Func_All_Items_Helms (var C_Npc slf)
 	/// special helms
 	CreateInvItem (slf, ItHe_ChristmasCap);
 	CreateInvItem (slf, ItHe_OrcHead);
-	
-	/// male hairs
-	CreateInvItem (slf, ItHa_Geralt);
-	CreateInvItem (slf, ItHa_Harad);
-	CreateInvItem (slf, ItHa_Mohawk);
-	CreateInvItem (slf, ItHa_Rhobar);
-	
-	/// female hairs
-	CreateInvItem (slf, ItHa_Curly_Blonde);
-	CreateInvItem (slf, ItHa_Noctis_Blonde);
-	CreateInvItem (slf, ItHa_Sonja_Black);
-	CreateInvItem (slf, ItHa_Sonja_Brown);
 };
 
 ///******************************************************************************************
-func void Func_All_Items_MeleeWeapons (var C_Npc slf)
+func void GiveAll_MeleeWeapons (var C_Npc slf)
 {
 	/// junk
-	CreateInvItem (slf, ItMw_1h_Bau_Mace);
-	CreateInvItem (slf, ItMw_1h_MISC_Sword);
-	CreateInvItem (slf, ItMw_Addon_Hacker_1h_02);
+	CreateInvItem (slf, ItMw_1h_Woodsword);
+	CreateInvItem (slf, ItMw_2h_Woodsword);
+	
+	CreateInvItem (slf, ItMw_1h_Misc_Sword);
+	CreateInvItem (slf, ItMw_1h_Machete_01);
+	CreateInvItem (slf, ItMw_2h_Scythe_01);
 	CreateInvItem (slf, ItMw_1h_Misc_Axe);
 	CreateInvItem (slf, ItMw_2h_Sword_M_01);
-	CreateInvItem (slf, ItMw_Addon_Hacker_2h_02);
-	CreateInvItem (slf, ItMw_2h_OldScythe);
+	CreateInvItem (slf, ItMw_2h_Machete_01);
 	
-	/// npc
-	CreateInvItem (slf, ItMw_1h_Mace_L_01);
-	CreateInvItem (slf, ItMw_1h_Mace_L_03);
-	CreateInvItem (slf, ItMw_1h_Mil_Sword);
-	CreateInvItem (slf, ItMw_1h_Pal_Sword);
-	CreateInvItem (slf, ItMw_2h_Pal_Sword);
-	CreateInvItem (slf, ItMw_1h_Vlk_Mace);
-	CreateInvItem (slf, ItMw_1h_Vlk_Dagger);
-	CreateInvItem (slf, ItMw_1h_Mace_L_04);
-	CreateInvItem (slf, ItMw_1h_Vlk_Axe);
-	CreateInvItem (slf, ItMw_1h_Vlk_Sword);
-	CreateInvItem (slf, ItMw_1h_Nov_Mace);
-	CreateInvItem (slf, ItMw_RangerStaff_Addon);
-	CreateInvItem (slf, ItMw_1h_Sld_Axe);
-	CreateInvItem (slf, ItMw_1h_Sld_Sword);
-	CreateInvItem (slf, ItMw_2h_Sld_Axe);
-	CreateInvItem (slf, ItMw_2h_Sld_Sword);
-	CreateInvItem (slf, ItMw_1h_Bau_Axe);
-	CreateInvItem (slf, ItMw_Sense);
-	CreateInvItem (slf, ItMw_2h_Scythe);
-	CreateInvItem (slf, ItMw_Nagelknueppel);
-	CreateInvItem (slf, ItMw_Addon_BanditTrader);
-	CreateInvItem (slf, ItMw_2h_Axe_L_01);
-	CreateInvItem (slf, ItMw_Addon_PIR1hAxe);
-	CreateInvItem (slf, ItMw_Addon_PIR1hSword);
-	CreateInvItem (slf, ItMw_Addon_PIR2hAxe);
-	CreateInvItem (slf, ItMw_Addon_PIR2hSword);
-	CreateInvItem (slf, ItMw_1h_NordmarSword);
-	CreateInvItem (slf, ItMw_Addon_Nomad);
+	/// goblin & orc
+	CreateInvItem (slf, ItMw_1h_GobboMace_01);
+	CreateInvItem (slf, ItMw_1h_GobboMace_02);
+	CreateInvItem (slf, ItMw_1h_GobboMace_03);
+	CreateInvItem (slf, ItMw_1h_GobboMace_04);
 	
-	/// goblin
-	CreateInvItem (slf, ItMw_1h_Goblin_01);
-	CreateInvItem (slf, ItMw_1h_Goblin_02);
-	CreateInvItem (slf, ItMw_1h_Goblin_03);
-	CreateInvItem (slf, ItMw_1h_Goblin_04);
-	
-	/// orc
-	CreateInvItem (slf, ItMw_2h_OrcDagger_01);
 	CreateInvItem (slf, ItMw_2h_OrcAxe_01);
 	CreateInvItem (slf, ItMw_2h_OrcAxe_02);
 	CreateInvItem (slf, ItMw_2h_OrcAxe_03);
 	CreateInvItem (slf, ItMw_2h_OrcAxe_04);
-	CreateInvItem (slf, ItMw_2h_OrcMace_01);
-	CreateInvItem (slf, ItMw_2h_OrcMace_02);
-	CreateInvItem (slf, ItMw_2h_OrcStaff_01);
+	
+	CreateInvItem (slf, ItMw_2h_OrcDagger_01);
 	CreateInvItem (slf, ItMw_2h_OrcSword_01);
 	CreateInvItem (slf, ItMw_2h_OrcSword_02);
 	CreateInvItem (slf, ItMw_2h_OrcElite_01);
 	
+	CreateInvItem (slf, ItMw_2h_OrcStaff_01);
+	CreateInvItem (slf, ItMw_2h_OrcMace_01);
+	CreateInvItem (slf, ItMw_2h_OrcMace_02);
+	
 	/// chapter 1
-	CreateInvItem (slf, ItMw_1h_Sword_L_03);
+	CreateInvItem (slf, ItMw_1h_Bau_Mace);
+	CreateInvItem (slf, ItMw_1h_Mace_L_01);
+	CreateInvItem (slf, ItMw_1h_Bau_Axe);
+	CreateInvItem (slf, ItMw_1h_Vlk_Mace);
+	CreateInvItem (slf, ItMw_1h_Mace_L_03);
+	CreateInvItem (slf, ItMw_1h_Vlk_Dagger);
+	CreateInvItem (slf, ItMw_1h_Dagger_01);
+	CreateInvItem (slf, ItMw_Sense);
+	CreateInvItem (slf, ItMw_MudClub);
+	CreateInvItem (slf, ItMw_Zwirbelschwert);
+	CreateInvItem (slf, ItMw_Nagelknueppel);
 	CreateInvItem (slf, ItMw_ShortSword1);
-	CreateInvItem (slf, ItMw_ShortSword2);
-	CreateInvItem (slf, ItMw_1h_Dyaebl);
-	CreateInvItem (slf, ItMw_ShortSword3);
+	CreateInvItem (slf, ItMw_1h_Mace_L_04);
+	CreateInvItem (slf, ItMw_2h_Axe_L_01);
 	CreateInvItem (slf, ItMw_2h_Bau_Axe);
-	CreateInvItem (slf, ItMw_Nagelkeule);
+	CreateInvItem (slf, ItMw_1h_Sword_L_03);
+	CreateInvItem (slf, ItMw_1h_Vlk_Axe);
+	CreateInvItem (slf, ItMw_1h_Vlk_Sword);
+	CreateInvItem (slf, ItMw_LongSpear1);
+	CreateInvItem (slf, ItMw_ShortSword2);
+	CreateInvItem (slf, ItMw_BanditTrader);
+	CreateInvItem (slf, ItMw_1h_Sld_Axe);
+	CreateInvItem (slf, ItMw_1h_Sld_Sword);
+	CreateInvItem (slf, ItMw_1h_Nov_Mace);
+	CreateInvItem (slf, ItMw_ShortSword3);
+	CreateInvItem (slf, ItMw_LongSpear2);
+	CreateInvItem (slf, ItMw_Dyaebl);
 	CreateInvItem (slf, ItMw_ShortSword4);
+	CreateInvItem (slf, ItMw_Nagelkeule);
+	CreateInvItem (slf, ItMw_1h_Mil_Sword);
+	CreateInvItem (slf, ItMw_2h_Scythe_02);
+	CreateInvItem (slf, ItMw_1h_Common_01);
+	CreateInvItem (slf, ItMw_Kriegssichel);
 	CreateInvItem (slf, ItMw_ShortSword5);
-	CreateInvItem (slf, ItMw_Kriegskeule);
+	CreateInvItem (slf, ItMw_1h_Keule);
 	CreateInvItem (slf, ItMw_Richtstab);
+	CreateInvItem (slf, ItMw_Kriegskeule);
+	CreateInvItem (slf, ItMw_1h_Sword_01);
+	CreateInvItem (slf, ItMw_2h_Sld_Axe);
+	CreateInvItem (slf, ItMw_2h_Sld_Sword);
+	CreateInvItem (slf, ItMw_Blutpfanne);
 	CreateInvItem (slf, ItMw_Kriegshammer1);
+	CreateInvItem (slf, ItMw_1h_Machete_02);
 	CreateInvItem (slf, ItMw_Hellebarde);
+	CreateInvItem (slf, ItMw_FaustSchwert);
 	CreateInvItem (slf, ItMw_Nagelkeule2);
 	CreateInvItem (slf, ItMw_Schiffsaxt);
-	
-	CreateInvItem (slf, ItMw_1h_Common_01);
+	CreateInvItem (slf, ItMw_1h_Pal_Sword);
+	CreateInvItem (slf, ItMw_2h_Scythe_03);
 	CreateInvItem (slf, ItMw_Schwert1);
+	CreateInvItem (slf, ItMw_Rubindolch);
 	
 	/// chapter 2
 	CreateInvItem (slf, ItMw_Schwert);
-	CreateInvItem (slf, ItMw_2h_WarScythe);
+	CreateInvItem (slf, ItMw_LongGlaive1);
 	CreateInvItem (slf, ItMw_Piratensaebel);
+	CreateInvItem (slf, ItMw_Breitschwert1);
+	CreateInvItem (slf, ItMw_Schwarzeaxt1);
+	CreateInvItem (slf, ItMw_Schwarzeaxt2);
 	CreateInvItem (slf, ItMw_Stabkeule);
-	CreateInvItem (slf, ItMw_FaustSchwert);
+	CreateInvItem (slf, ItMw_Breitschwert2);
 	CreateInvItem (slf, ItMw_Steinbrecher);
-	CreateInvItem (slf, ItMw_Addon_Hacker_1h_01);
+	CreateInvItem (slf, ItMw_1h_LongSword_01);
+	CreateInvItem (slf, ItMw_Bastardschwert1);
 	CreateInvItem (slf, ItMw_Zweihaender1);
+	CreateInvItem (slf, ItMw_Schlaeferfluch);
 	CreateInvItem (slf, ItMw_Spicker);
 	CreateInvItem (slf, ItMw_Streitaxt1);
-	CreateInvItem (slf, ItMw_GoldenSabre);
-	CreateInvItem (slf, ItMw_KriegsSense);
+	CreateInvItem (slf, ItMw_Ritterschwert);
+	CreateInvItem (slf, ItMw_Nordmarschwert);
+	CreateInvItem (slf, ItMw_Kriegssense);
+	CreateInvItem (slf, ItMw_Schwert4);
+	CreateInvItem (slf, ItMw_Rabenschnabel);
+	CreateInvItem (slf, ItMw_Nomadensaebel);
+	CreateInvItem (slf, ItMw_Adelsschwert);
 	CreateInvItem (slf, ItMw_Schwert2);
 	CreateInvItem (slf, ItMw_Doppelaxt);
 	CreateInvItem (slf, ItMw_Bartaxt);
+	CreateInvItem (slf, ItMw_Rapier);
 	
-	CreateInvItem (slf, ItMw_Schwert4);
-	CreateInvItem (slf, ItMw_1H_Special_01);
-	CreateInvItem (slf, ItMw_2H_Special_01);
-	CreateInvItem (slf, ItMw_1H_Ignite_01);
-	CreateInvItem (slf, ItMw_2H_Ignite_01);
+	CreateInvItem (slf, ItMw_1h_Special_01);
+	CreateInvItem (slf, ItMw_2h_Special_01);
+	CreateInvItem (slf, ItMw_1h_Ignite_01);
+	CreateInvItem (slf, ItMw_2h_Ignite_01);
 	
 	/// chapter 3
+	CreateInvItem (slf, ItMw_Zweihandaxt);
+	CreateInvItem (slf, ItMw_Zweihandhammer);
+	CreateInvItem (slf, ItMw_Bastardschwert2);
+	CreateInvItem (slf, ItMw_Breitschwert3);
+	CreateInvItem (slf, ItMw_Streitkolben);
+	CreateInvItem (slf, ItMw_2h_Common_01);
+	CreateInvItem (slf, ItMw_2h_Machete_02);
+	CreateInvItem (slf, ItMw_2h_Pal_Sword);
+	CreateInvItem (slf, ItMw_Rubinklinge);
+	CreateInvItem (slf, ItMw_Nachtbann);
+	CreateInvItem (slf, ItMw_2h_Keule);
 	CreateInvItem (slf, ItMw_Morgenstern);
 	CreateInvItem (slf, ItMw_Zweihaender2);
+	CreateInvItem (slf, ItMw_Schatzsaebel);
 	CreateInvItem (slf, ItMw_Schwert3);
-	CreateInvItem (slf, ItMw_Streitkolben);
-	CreateInvItem (slf, ItMw_Rapier);
-	CreateInvItem (slf, ItMw_Addon_Hacker_2h_01);
-	CreateInvItem (slf, ItMw_Rabenschnabel);
 	CreateInvItem (slf, ItMw_Runenschwert);
 	CreateInvItem (slf, ItMw_Inquisitor);
 	CreateInvItem (slf, ItMw_Schwert5);
+	CreateInvItem (slf, ItMw_Florett);
+	CreateInvItem (slf, ItMw_Hausordnung);
+	CreateInvItem (slf, ItMw_Stachelkeule);
 	CreateInvItem (slf, ItMw_Streitaxt2);
+	CreateInvItem (slf, ItMw_Bastardschwert3);
 	CreateInvItem (slf, ItMw_Zweihaender3);
 	CreateInvItem (slf, ItMw_Kriegshammer2);
+	CreateInvItem (slf, ItMw_Runenschwert2);
+	CreateInvItem (slf, ItMw_ElBastardo);
 	CreateInvItem (slf, ItMw_Meisterdegen);
 	
-	CreateInvItem (slf, ItMw_Rubinklinge);
-	CreateInvItem (slf, ItMw_ElBastardo);
-	CreateInvItem (slf, ItMw_1H_Special_02);
-	CreateInvItem (slf, ItMw_2H_Special_02);
-	CreateInvItem (slf, ItMw_1H_Ignite_02);
-	CreateInvItem (slf, ItMw_2H_Ignite_02);
+	CreateInvItem (slf, ItMw_1h_Special_02);
+	CreateInvItem (slf, ItMw_2h_Special_02);
+	CreateInvItem (slf, ItMw_1h_Ignite_02);
+	CreateInvItem (slf, ItMw_2h_Ignite_02);
 	
 	/// chapter 4
 	CreateInvItem (slf, ItMw_Folteraxt);
+	CreateInvItem (slf, ItMw_Krummsaebel);
 	CreateInvItem (slf, ItMw_Orkschlaechter);
+	CreateInvItem (slf, ItMw_Ahnenschwert);
 	CreateInvItem (slf, ItMw_Zweihaender4);
 	CreateInvItem (slf, ItMw_Schlachtaxt);
+	CreateInvItem (slf, ItMw_Wargskralle);
+	CreateInvItem (slf, ItMw_Avalis);
 	CreateInvItem (slf, ItMw_Barbarenstreitaxt);
 	CreateInvItem (slf, ItMw_Krummschwert);
 	
-	CreateInvItem (slf, ItMw_Avalon);
-	CreateInvItem (slf, ItMw_1H_Special_03);
-	CreateInvItem (slf, ItMw_2H_Special_03);
-	CreateInvItem (slf, ItMw_1H_Ignite_03);
-	CreateInvItem (slf, ItMw_2H_Ignite_03);
+	CreateInvItem (slf, ItMw_1h_Special_03);
+	CreateInvItem (slf, ItMw_2h_Special_03);
+	CreateInvItem (slf, ItMw_1h_Ignite_03);
+	CreateInvItem (slf, ItMw_2h_Ignite_03);
 	
 	/// chapter 5
 	CreateInvItem (slf, ItMw_Sturmbringer);
+	CreateInvItem (slf, ItMw_Avalon);
 	CreateInvItem (slf, ItMw_Drachenschneide);
 	CreateInvItem (slf, ItMw_Berserkeraxt);
+	CreateInvItem (slf, ItMw_Seelenernter);
 	
-	CreateInvItem (slf, ItMw_1H_Special_04);
-	CreateInvItem (slf, ItMw_2H_Special_04);
-	CreateInvItem (slf, ItMw_1H_Ignite_04);
-	CreateInvItem (slf, ItMw_2H_Ignite_04);
+	CreateInvItem (slf, ItMw_1h_Special_04);
+	CreateInvItem (slf, ItMw_2h_Special_04);
+	CreateInvItem (slf, ItMw_1h_Ignite_04);
+	CreateInvItem (slf, ItMw_2h_Ignite_04);
 	
-	/// other
-	CreateInvItem (slf, ItMw_1h_Keule);
-	CreateInvItem (slf, ItMw_2h_Keule);
-	CreateInvItem (slf, ItMw_Addon_Betty);
+	/// ROY
+	
 	
 	/// DJG
-	CreateInvItem (slf, ItMw_1H_Special_05);
-	CreateInvItem (slf, ItMw_2H_Special_05);
-	CreateInvItem (slf, ItMw_1H_Ignite_05);
-	CreateInvItem (slf, ItMw_2H_Ignite_05);
+	CreateInvItem (slf, ItMw_1h_Special_05);
+	CreateInvItem (slf, ItMw_2h_Special_05);
+	CreateInvItem (slf, ItMw_1h_Ignite_05);
+	CreateInvItem (slf, ItMw_2h_Ignite_05);
 	
 	/// MAG
 	CreateInvItem (slf, ItMw_Stab_L_01);
+	CreateInvItem (slf, ItMw_Stab_L_02);
+	CreateInvItem (slf, ItMw_Stab_L_03);
 	CreateInvItem (slf, ItMw_Stab_M_01);
 	CreateInvItem (slf, ItMw_Stab_M_02);
+	CreateInvItem (slf, ItMw_Stab_M_03);
 	CreateInvItem (slf, ItMw_Stab_H_01);
 	CreateInvItem (slf, ItMw_Stab_H_02);
+	CreateInvItem (slf, ItMw_Stab_H_03);
+	CreateInvItem (slf, ItMw_Stab_A_01);
+	CreateInvItem (slf, ItMw_Stab_A_02);
+	CreateInvItem (slf, ItMw_Stab_A_03);
 	
 	/// PAL
-	CreateInvItem (slf, ItMw_1H_Blessed_01);
-	CreateInvItem (slf, ItMw_2H_Blessed_01);
-	CreateInvItem (slf, ItMw_1H_Blessed_02);
-	CreateInvItem (slf, ItMw_2H_Blessed_02);
-	CreateInvItem (slf, ItMw_1H_Blessed_03);
-	CreateInvItem (slf, ItMw_2H_Blessed_03);
+	CreateInvItem (slf, ItMw_1h_Blessed_01);
+	CreateInvItem (slf, ItMw_2h_Blessed_01);
+	CreateInvItem (slf, ItMw_1h_Blessed_02);
+	CreateInvItem (slf, ItMw_2h_Blessed_02);
+	CreateInvItem (slf, ItMw_1h_Blessed_03);
+	CreateInvItem (slf, ItMw_2h_Blessed_03);
 	
-	CreateInvItem (slf, ItMw_1H_Innos);
-	CreateInvItem (slf, ItMw_2H_Innos);
+	CreateInvItem (slf, ItMw_1h_Innos);
+	CreateInvItem (slf, ItMw_2h_Innos);
 	
 	/// ASA
 	
-	
-	/// mission
-	CreateInvItem (slf, ItMw_AlriksSword_Mis);
-	CreateInvItem (slf, ItMw_2h_Rod);
-	CreateInvItem (slf, Holy_Hammer_MIS);
-	CreateInvItem (slf, ItMw_1H_FerrosSword_Mis);
-	CreateInvItem (slf, ItMw_BeliarWeapon);
 	
 	/// iron
 	CreateInvItem (slf, ItMw_Iron_Axe);
@@ -840,507 +868,21 @@ func void Func_All_Items_MeleeWeapons (var C_Npc slf)
 	
 	/// wza
 	CreateInvItem (slf, ItMw_Broom);
-	CreateInvItem (slf, ItMw_Pan);
-	CreateInvItem (slf, ItMw_1H_Club_01);
-	CreateInvItem (slf, ItMw_Spade);
-	CreateInvItem (slf, ItMw_MegaPan);
-	CreateInvItem (slf, ItMw_FireSword);
 	CreateInvItem (slf, ItMw_BusterSword);
 	CreateInvItem (slf, ItMw_Chainsaw);
 	CreateInvItem (slf, ItMw_LightSaber);
+	
+	/// mission
+	CreateInvItem (slf, ItMw_AlriksSword);
+	CreateInvItem (slf, ItMw_2h_Rod);
+	CreateInvItem (slf, Holy_Hammer_MIS);
+	CreateInvItem (slf, ItMw_1h_FerrosSword);
+	CreateInvItem (slf, ItMw_Addon_Betty);
+	CreateInvItem (slf, ItMw_BeliarWeapon);
 };
 
 ///******************************************************************************************
-func void Func_All_Items_Misc (var C_Npc slf)
-{
-	/// alchemy
-	CreateInvItems (slf, ItMi_Flask, 10);
-	CreateInvItems (slf, ItMi_Quicksilver, 10);
-	
-	/// enchanting
-	CreateInvItems (slf, ItMi_Ink, 10);
-	CreateInvItems (slf, ItMi_MagicPowder, 10);
-	CreateInvItems (slf, ItMi_RuneBlank, 10);
-	CreateInvItems (slf, ItMi_Scrolls, 10);
-	
-	/// holy items
-	CreateInvItems (slf, ItMi_HolyWater, 10);
-	CreateInvItem (slf, ItMi_InnosStatue);
-	
-	/// joints
-	CreateInvItems (slf, ItMi_Joint, 10);
-	CreateInvItems (slf, ItMi_SleJoint, 10);
-	CreateInvItems (slf, ItMi_DesertJoint, 10);
-	
-	/// resources
-	CreateInvItems (slf, ItMi_Calcium, 10);
-	CreateInvItems (slf, ItMi_Coal, 10);
-	CreateInvItems (slf, ItMi_Iron, 10);
-	CreateInvItems (slf, ItMi_Quartz, 10);
-	CreateInvItems (slf, ItMi_RockCrystal, 10);
-	CreateInvItems (slf, ItMi_Sulfur, 10);
-	
-	CreateInvItems (slf, ItMi_Nugget, 10);
-	CreateInvItems (slf, ItMi_RedNugget, 10);
-	
-	/// smith
-	CreateInvItems (slf, ItMiSwordraw, 10);
-	CreateInvItems (slf, ItMiSwordrawhot, 10);
-	CreateInvItems (slf, ItMiSwordbladehot, 10);
-	CreateInvItems (slf, ItMiSwordblade, 10);
-	
-	/// tabak
-	CreateInvItems (slf, ItMi_Tabak, 10);
-	CreateInvItems (slf, ItMi_ChocolateTabak, 10);
-	CreateInvItems (slf, ItMi_CoconutTabak, 10);
-	CreateInvItems (slf, ItMi_FruitTabak, 10);
-	CreateInvItems (slf, ItMi_HoneyTabak, 10);
-	CreateInvItems (slf, ItMi_MushroomTabak, 10);
-	CreateInvItems (slf, ItMi_SwampTabak, 10);
-	
-	/// tools
-	CreateInvItem (slf, ItMi_Alarmhorn);
-	CreateInvItem (slf, ItMi_Broom);
-	CreateInvItem (slf, ItMi_Brush);
-	CreateInvItem (slf, ItMi_FishingRod);
-	CreateInvItem (slf, ItMi_Hammer);
-	CreateInvItem (slf, ItMi_InkPen);
-	CreateInvItem (slf, ItMi_Lute);
-	CreateInvItem (slf, ItMi_Pan);
-	CreateInvItem (slf, ItMi_PanFull);
-	CreateInvItem (slf, ItMi_Pliers);
-	CreateInvItem (slf, ItMi_Rake);
-	CreateInvItem (slf, ItMi_Saw);
-	CreateInvItem (slf, ItMi_Sextant);
-	CreateInvItem (slf, ItMi_Scoop);
-	CreateInvItem (slf, ItMi_Stomper);
-	
-	/// torches
-	CreateInvItems (slf, ItLsTorch, 10);
-	
-	CreateInvItems (slf, ItMi_Pitch, 10);
-	CreateInvItems (slf, ItMi_Resin, 10);
-	
-	/// uncategorized
-	CreateInvItems (slf, ItMi_EmptyBottle, 10);
-	CreateInvItems (slf, ItKe_Lockpick, 10);
-	
-	/// coins
-	CreateInvItems (slf, ItMi_Gold, 1000);
-	CreateInvItems (slf, ItMi_FortuneCoin, 10);
-	CreateInvItems (slf, ItMi_AncientCoin, 10);
-	CreateInvItems (slf, ItMi_OrcCoin, 10);
-	
-	/// gold pockets
-	CreateInvItem (slf, ItSe_GoldPocket25);
-	CreateInvItem (slf, ItSe_GoldPocket50);
-	CreateInvItem (slf, ItSe_GoldPocket100);
-	CreateInvItem (slf, ItSe_GoldPocket200);
-	
-	/// silver
-	CreateInvItems (slf, ItMi_SilverNugget, 10);
-	CreateInvItem (slf, ItMi_SilverCandleHolder);
-	CreateInvItem (slf, ItMi_SilverChalice);
-	CreateInvItem (slf, ItMi_SilverCup);
-	CreateInvItem (slf, ItMi_SilverNecklace);
-	CreateInvItem (slf, ItMi_SilverPlate);
-	CreateInvItem (slf, ItMi_SilverRing);
-	
-	/// gold
-	CreateInvItems (slf, ItMi_GoldNugget_Addon, 10);
-	CreateInvItem (slf, ItMi_GoldCandleHolder);
-	CreateInvItem (slf, ItMi_GoldChalice);
-	CreateInvItem (slf, ItMi_GoldCup);
-	CreateInvItem (slf, ItMi_GoldNecklace);
-	CreateInvItem (slf, ItMi_GoldPlate);
-	CreateInvItem (slf, ItMi_GoldRing);
-	
-	/// chests
-	CreateInvItem (slf, ItMi_GoldChest);
-	CreateInvItem (slf, ItMi_JeweleryChest);
-	
-	/// gems
-	CreateInvItem (slf, ItMi_Aquamarine);
-	CreateInvItem (slf, ItMi_Emerald);
-	CreateInvItem (slf, ItMi_Ruby);
-	CreateInvItem (slf, ItMi_Diamond);
-	
-	/// pearls
-	CreateInvItems (slf, ItMi_WhitePearl, 10);
-	CreateInvItems (slf, ItMi_DarkPearl, 10);
-	
-	/// containers
-	CreateInvItems (slf, ItMi_Shell, 10);
-	CreateInvItems (slf, ItSe_BigFish, 10);
-	CreateInvItems (slf, ItSe_OldChest, 10);
-};
-
-///******************************************************************************************
-func void Func_All_Items_Plants (var C_Npc slf)
-{
-	/// componenets
-	CreateInvItems (slf, ItPl_Temp_Herb, 10);
-	CreateInvItems (slf, ItPl_Perm_Herb, 10);
-	
-	CreateInvItems (slf, ItPl_GraveMoss, 10);
-	CreateInvItems (slf, ItPl_MountainMoss, 10);
-	
-	/// health
-	CreateInvItems (slf, ItPl_Health_Herb_01, 10);
-	CreateInvItems (slf, ItPl_Health_Herb_02, 10);
-	CreateInvItems (slf, ItPl_Health_Herb_03, 10);
-	
-	/// mana
-	CreateInvItems (slf, ItPl_Mana_Herb_01, 10);
-	CreateInvItems (slf, ItPl_Mana_Herb_02, 10);
-	CreateInvItems (slf, ItPl_Mana_Herb_03, 10);
-	
-	/// stamina
-	CreateInvItems (slf, ItPl_Speed_Herb_01, 10);
-	
-	/// perception
-	CreateInvItems (slf, ItPl_SwampHerb, 10);
-	CreateInvItems (slf, ItPl_DesertHerb, 10);
-	
-	/// perm
-	CreateInvItems (slf, ItPl_Health_Herb_04, 10);
-	CreateInvItems (slf, ItPl_Mana_Herb_04, 10);
-	CreateInvItems (slf, ItPl_Strength_Herb_01, 10);
-	CreateInvItems (slf, ItPl_Dex_Herb_01, 10);
-	CreateInvItems (slf, ItPl_Power_Herb_01, 10);
-	CreateInvItems (slf, ItPl_Prot_Herb_01, 10);
-	
-	/// mushrooms
-	CreateInvItems (slf, ItPl_Mushroom_01, 10);
-	CreateInvItems (slf, ItPl_Mushroom_02, 10);
-	CreateInvItems (slf, ItPl_Mushroom_03, 10);
-	CreateInvItems (slf, ItPl_Mushroom_04, 10);
-	CreateInvItems (slf, ItPl_Mushroom_05, 10);
-	CreateInvItems (slf, ItPl_Mushroom_06, 10);
-	CreateInvItems (slf, ItPl_Mushroom_07, 10);
-	CreateInvItems (slf, ItPl_Mushroom_08, 10);
-	
-	/// common
-	CreateInvItems (slf, ItPl_Cactus, 10);
-	CreateInvItems (slf, ItPl_Forestberry, 10);
-	CreateInvItems (slf, ItPl_Planeberry, 10);
-	CreateInvItems (slf, ItPl_Blueplant, 10);
-	
-	/// other
-	CreateInvItems (slf, ItPl_Beet, 10);
-	CreateInvItems (slf, ItPl_Weed, 10);
-};
-
-///******************************************************************************************
-func void Func_All_Items_Potions (var C_Npc slf)
-{
-	/// health
-	CreateInvItems (slf, ItPo_Health_01, 10);
-	CreateInvItems (slf, ItPo_Health_02, 10);
-	CreateInvItems (slf, ItPo_Health_03, 10);
-	CreateInvItems (slf, ItPo_Health_Addon_04, 10);
-	
-	/// mana
-	CreateInvItems (slf, ItPo_Mana_01, 10);
-	CreateInvItems (slf, ItPo_Mana_02, 10);
-	CreateInvItems (slf, ItPo_Mana_03, 10);
-	CreateInvItems (slf, ItPo_Mana_Addon_04, 10);
-	
-	/// stamina
-	CreateInvItems (slf, ItPo_Stamina, 10);
-	
-	/// mixed
-	CreateInvItems (slf, ItPo_Blueplant, 10);
-	
-	/// time
-	CreateInvItems (slf, ItPo_Time_Health, 10);
-	CreateInvItems (slf, ItPo_Time_Mana, 10);
-	CreateInvItems (slf, ItPo_Time_Str, 10);
-	CreateInvItems (slf, ItPo_Time_Dex, 10);
-	CreateInvItems (slf, ItPo_Time_Pow, 10);
-	CreateInvItems (slf, ItPo_Time_Prot, 10);
-	
-	/// weak
-	CreateInvItems (slf, ItPo_Weak_Health, 10);
-	CreateInvItems (slf, ItPo_Weak_Mana, 10);
-	CreateInvItems (slf, ItPo_Weak_Str, 10);
-	CreateInvItems (slf, ItPo_Weak_Dex, 10);
-	CreateInvItems (slf, ItPo_Weak_Pow, 10);
-	
-	/// perm
-	CreateInvItems (slf, ItPo_Perm_Health, 10);
-	CreateInvItems (slf, ItPo_Perm_Mana, 10);
-	CreateInvItems (slf, ItPo_Perm_Str, 10);
-	CreateInvItems (slf, ItPo_Perm_Dex, 10);
-	CreateInvItems (slf, ItPo_Perm_Pow, 10);
-	CreateInvItems (slf, ItPo_Perm_Prot, 10);
-	
-	/// speed
-	CreateInvItems (slf, ItPo_Lightness, 10);
-	CreateInvItems (slf, ItPo_Speed, 10);
-	
-	/// other
-	CreateInvItems (slf, ItPo_Geist, 10);
-	CreateInvItems (slf, ItPo_HealObsession, 10);
-	CreateInvItems (slf, ItPo_NightVision, 10);
-	CreateInvItems (slf, ItPo_Poison, 10);
-	
-	/// transform
-	CreateInvItem (slf, ItSc_TrfAlligator);
-	CreateInvItem (slf, ItSc_TrfBiter);
-	CreateInvItem (slf, ItSc_TrfBloodfly);
-	CreateInvItem (slf, ItSc_TrfBloodhound);
-	CreateInvItem (slf, ItSc_TrfDemon);
-	CreateInvItem (slf, ItSc_TrfDragonSnapper);
-	CreateInvItem (slf, ItSc_TrfFireWaran);
-	CreateInvItem (slf, ItSc_TrfGiantBug);
-	CreateInvItem (slf, ItSc_TrfGiantRat);
-	CreateInvItem (slf, ItSc_TrfGiantSpider);
-	CreateInvItem (slf, ItSc_TrfGoat);
-	CreateInvItem (slf, ItSc_TrfGoblin);
-	CreateInvItem (slf, ItSc_TrfGorilla);
-	CreateInvItem (slf, ItSc_TrfHare);
-	CreateInvItem (slf, ItSc_TrfHarpy);
-	CreateInvItem (slf, ItSc_TrfKeiler);
-	CreateInvItem (slf, ItSc_TrfLurker);
-	CreateInvItem (slf, ItSc_TrfMinecrawler);
-	CreateInvItem (slf, ItSc_TrfMolerat);
-	CreateInvItem (slf, ItSc_TrfScavenger);
-	CreateInvItem (slf, ItSc_TrfShadowbeast);
-	CreateInvItem (slf, ItSc_TrfSheep);
-	CreateInvItem (slf, ItSc_TrfSnapper);
-	CreateInvItem (slf, ItSc_TrfSpint);
-	CreateInvItem (slf, ItSc_TrfSwampshark);
-	CreateInvItem (slf, ItSc_TrfTiger);
-	CreateInvItem (slf, ItSc_TrfTroll);
-	CreateInvItem (slf, ItSc_TrfWaran);
-	CreateInvItem (slf, ItSc_TrfWarg);
-	CreateInvItem (slf, ItSc_TrfWolf);
-	
-	/// special
-	CreateInvItem (slf, ItPo_DragonEggDrink);
-	CreateInvItem (slf, ItPo_MegaDrink);
-	CreateInvItem (slf, ItPo_InnosTears);
-};
-
-///******************************************************************************************
-func void Func_All_Items_RangedWeapons (var C_Npc slf)
-{
-	/// bows
-	CreateInvItem (slf, ItRw_Bow_L_01);
-	CreateInvItem (slf, ItRw_Bow_L_02);
-	CreateInvItem (slf, ItRw_Sld_Bow);
-	CreateInvItem (slf, ItRw_Bow_L_03);
-	CreateInvItem (slf, ItRw_Bow_L_04);
-	CreateInvItem (slf, ItRw_Ske_Bow);
-	CreateInvItem (slf, ItRw_Bow_M_01);
-	CreateInvItem (slf, ItRw_Bow_M_02);
-	CreateInvItem (slf, ItRw_Bow_M_03);
-	CreateInvItem (slf, ItRw_Bow_M_04);
-	CreateInvItem (slf, ItRw_Bow_H_01);
-	CreateInvItem (slf, ItRw_Bow_H_02);
-	CreateInvItem (slf, ItRw_Bow_H_03);
-	CreateInvItem (slf, ItRw_Bow_H_04);
-	
-	/// crossbows
-	CreateInvItem (slf, ItRw_Crossbow_L_01);
-	CreateInvItem (slf, ItRw_Mil_Crossbow);
-	CreateInvItem (slf, ItRw_Crossbow_L_02);
-	CreateInvItem (slf, ItRw_Orc_Crossbow);
-	CreateInvItem (slf, ItRw_Crossbow_M_01);
-	CreateInvItem (slf, ItRw_Crossbow_M_02);
-	CreateInvItem (slf, ItRw_Crossbow_H_01);
-	CreateInvItem (slf, ItRw_Crossbow_H_02);
-	
-	/// guns
-	CreateInvItem (slf, ItRw_Gun1);
-//	CreateInvItem (slf, ItRw_NWO_Gun);
-	CreateInvItem (slf, ItRw_Gun2);
-	CreateInvItem (slf, ItRw_Gun3);
-	CreateInvItem (slf, ItRw_Gun4);
-	CreateInvItem (slf, ItRw_Gun5);
-	CreateInvItem (slf, ItRw_Gun6);
-	CreateInvItem (slf, ItRw_Gun7);
-	CreateInvItem (slf, ItRw_Gun8);
-	CreateInvItem (slf, ItRw_Gun9);
-	
-	/// heavy guns
-	CreateInvItem (slf, ItRw_HGun1);
-	CreateInvItem (slf, ItRw_HGun2);
-	CreateInvItem (slf, ItRw_HGun3);
-	CreateInvItem (slf, ItRw_HGun4);
-	
-	/// arrows
-	CreateInvItems (slf, ItRw_Arrow, 1000);
-	CreateInvItems (slf, ItRw_sArrow, 100);
-	CreateInvItems (slf, ItRw_fArrow, 100);
-	CreateInvItems (slf, ItRw_pArrow, 100);
-	
-	/// bolts
-	CreateInvItems (slf, ItRw_Bolt, 1000);
-	CreateInvItems (slf, ItRw_sBolt, 100);
-	
-	/// ammo
-	CreateInvItems (slf, ItRw_Ammo, 1000);
-	
-	/// heavy ammo
-	CreateInvItems (slf, ItRw_HAmmo, 10);
-	CreateInvItems (slf, ItRw_BAmmo, 10);
-	
-	/// ammo boxes
-	CreateInvItem (slf, ItSe_AmmoBox);
-	CreateInvItem (slf, ItSe_HAmmoBox);
-};
-
-///******************************************************************************************
-func void Func_All_Items_Spells (var C_Npc slf)
-{
-	/// basic
-	CreateInvItem (slf, ItRu_Light);
-	CreateInvItem (slf, ItRu_Heal);
-	CreateInvItem (slf, ItRu_Telekinesis);
-	
-	/// PAL
-	CreateInvItem (slf, ItRu_PalBless);
-	CreateInvItem (slf, ItRu_PalFaith);
-	CreateInvItem (slf, ItRu_PalHolyBolt);
-	CreateInvItem (slf, ItRu_PalGlory);
-	CreateInvItem (slf, ItRu_PalRepelEvil);
-	CreateInvItem (slf, ItRu_PalJustice);
-	CreateInvItem (slf, ItRu_PalDestroyEvil);
-	
-	/// common
-	CreateInvItem (slf, ItRu_Resurrection);
-	CreateInvItem (slf, ItRu_Rage);
-	CreateInvItem (slf, ItRu_Seduction);
-	CreateInvItem (slf, ItRu_NightToDay);
-	CreateInvItem (slf, ItRu_FireBolt);
-	
-	CreateInvItem (slf, ItRu_IceBolt);
-	CreateInvItem (slf, ItRu_Stealth);
-	CreateInvItem (slf, ItRu_SkullBolt);
-	CreateInvItem (slf, ItRu_InstantFireball);
-	CreateInvItem (slf, ItRu_Zap);
-	CreateInvItem (slf, ItRu_Slimeball);
-	CreateInvItem (slf, ItRu_WindFist);
-	CreateInvItem (slf, ItRu_Sleep);
-	CreateInvItem (slf, ItRu_Charm);
-	CreateInvItem (slf, ItRu_LightningFlash);
-	
-	CreateInvItem (slf, ItRu_ChargeFireball);
-	CreateInvItem (slf, ItRu_Curse);
-	CreateInvItem (slf, ItRu_Fear);
-	CreateInvItem (slf, ItRu_IceCube);
-	CreateInvItem (slf, ItRu_ChargeZap);
-	CreateInvItem (slf, ItRu_SummonGolem);
-	CreateInvItem (slf, ItRu_DestroyUndead);
-	CreateInvItem (slf, ItRu_Pyrokinesis);
-	CreateInvItem (slf, ItRu_Firestorm);
-	CreateInvItem (slf, ItRu_IceWave);
-	
-	CreateInvItem (slf, ItRu_SummonDemon);
-	CreateInvItem (slf, ItRu_Explosion);
-	CreateInvItem (slf, ItRu_Firerain);
-	CreateInvItem (slf, ItRu_BreathOfDeath);
-	CreateInvItem (slf, ItRu_MassDeath);
-	CreateInvItem (slf, ItRu_ArmyOfDarkness);
-	CreateInvItem (slf, ItRu_Shrink);
-	CreateInvItem (slf, ItRu_Tame);
-	CreateInvItem (slf, ItRu_RunicEchoes);
-	CreateInvItem (slf, ItRu_SlowTime);
-	
-	CreateInvItem (slf, ItRu_HealingAura);
-	CreateInvItem (slf, ItRu_StoneSkin);
-	CreateInvItem (slf, ItRu_AirShield);
-	CreateInvItem (slf, ItRu_FireShield);
-	CreateInvItem (slf, ItRu_DarkBarrier);
-	
-	/// player
-	CreateInvItem (slf, ItRu_MasterOfDisaster);
-	CreateInvItem (slf, ItRu_BeliarRage);
-	
-	/// special
-	//CreateInvItem (slf, ItRu_Teleport);
-	//CreateInvItem (slf, ItRu_Transform);
-	//CreateInvItem (slf, ItRu_Summon);
-	
-	/// npc
-	CreateInvItem (slf, ItRu_ConcussionSpell);
-	CreateInvItem (slf, ItRu_DeathSpell);
-	CreateInvItem (slf, ItRu_DragonBall);
-	CreateInvItem (slf, ItRu_BlackDragonBall);
-	CreateInvItem (slf, ItRu_BlueFireball);
-	CreateInvItem (slf, ItRu_RedFireball);
-	
-	/// common
-	CreateInvItem (slf, ItRu_Thunderstorm);
-	CreateInvItem (slf, ItRu_Whirlwind);
-	CreateInvItem (slf, ItRu_WaterFist);
-	CreateInvItem (slf, ItRu_IceLance);
-	CreateInvItem (slf, ItRu_Inflate);
-	CreateInvItem (slf, ItRu_Geyser);
-	CreateInvItem (slf, ItRu_Fireburning);
-	CreateInvItem (slf, ItRu_ChainLightning);
-	CreateInvItem (slf, ItRu_Hurricane);
-	CreateInvItem (slf, ItRu_LightFlash);
-	
-	CreateInvItem (slf, ItRu_Plague);
-	CreateInvItem (slf, ItRu_Swarm);
-	CreateInvItem (slf, ItRu_Greententacle);
-	CreateInvItem (slf, ItRu_Earthquake);
-	CreateInvItem (slf, ItRu_Rock);
-	CreateInvItem (slf, ItRu_Mysticball);
-	CreateInvItem (slf, ItRu_SuckEnergy);
-	CreateInvItem (slf, ItRu_Skull);
-	CreateInvItem (slf, ItRu_Elevate);
-	CreateInvItem (slf, ItRu_Crush);
-};
-
-///******************************************************************************************
-func void Func_All_Items_Written (var C_Npc slf)
-{
-	/// maps
-	CreateInvItem (slf, ItWr_Map_NewWorld);
-	CreateInvItem (slf, ItWr_Map_NewWorld_City);
-	CreateInvItem (slf, ItWr_Map_OldWorld);
-	CreateInvItem (slf, ItWr_Map_AddonWorld);
-	
-	/// books
-	CreateInvItem (slf, ItWr_Book_Fight1H);
-	CreateInvItem (slf, ItWr_Book_Fight2H);
-	CreateInvItem (slf, ItWr_Book_StarPower);
-	CreateInvItem (slf, ItWr_Book_GodsGift);
-	CreateInvItem (slf, ItWr_Book_SecretsOfMagic);
-	CreateInvItem (slf, ItWr_Book_PowerfulArt);
-	CreateInvItem (slf, ItWr_Book_Elementare);
-	CreateInvItem (slf, ItWr_Book_RealPower);
-	CreateInvItem (slf, ItWr_Book_MagicOre);
-	CreateInvItem (slf, ItWr_Book_Varant1);
-	CreateInvItem (slf, ItWr_Book_Varant2);
-	CreateInvItem (slf, ItWr_Book_MyrthanianPoetry);
-	CreateInvItem (slf, ItWr_Book_GodsWisdom1);
-	CreateInvItem (slf, ItWr_Book_GodsWisdom2);
-	CreateInvItem (slf, ItWr_Book_GodsWisdom3);
-	CreateInvItem (slf, ItWr_Book_Hunting);
-	CreateInvItem (slf, ItWr_Book_Fight);
-	CreateInvItem (slf, ItWr_Book_Astronomy);
-	CreateInvItem (slf, ItWr_Book_Focus);
-	CreateInvItem (slf, ItWr_Book_Golem);
-	
-	/// stoneplates
-	CreateInvItems (slf, ItWr_StonePlate, 10);
-	//CreateInvItem (slf, ItWr_StonePlate_HP);
-	//CreateInvItem (slf, ItWr_StonePlate_MP);
-	//CreateInvItem (slf, ItWr_StonePlate_STR);
-	//CreateInvItem (slf, ItWr_StonePlate_DEX);
-	//CreateInvItem (slf, ItWr_StonePlate_POW);
-	
-	/// recipes
-	
-};
-
-///******************************************************************************************
-func void Func_All_Items_Meshes (var C_Npc slf)
+func void GiveAll_Meshes (var C_Npc slf)
 {
 	/// bodies
 	CreateInvItem (slf, ItMe_Orc);
@@ -1504,4 +1046,820 @@ func void Func_All_Items_Meshes (var C_Npc slf)
 	CreateInvItem (slf, ItMe_Tent_02);
 	CreateInvItem (slf, ItMe_Tent_03);
 	CreateInvItem (slf, ItMe_Tent_04);
+};
+
+///******************************************************************************************
+func void GiveAll_Misc (var C_Npc slf)
+{
+	/// alchemy
+	CreateInvItems (slf, ItMi_Flask, 10);
+	CreateInvItems (slf, ItMi_HolyWater, 10);
+	CreateInvItems (slf, ItMi_Quicksilver, 10);
+	
+	/// enchanting
+	CreateInvItems (slf, ItMi_Ink, 10);
+	CreateInvItems (slf, ItMi_MagicPowder, 10);
+	CreateInvItems (slf, ItMi_RuneBlank, 10);
+	CreateInvItems (slf, ItMi_Scrolls, 10);
+	
+	/// fletchery
+	CreateInvItems (slf, ItMi_Arrowhead, 10);
+	CreateInvItems (slf, ItMi_BlackPowder, 10);
+	CreateInvItems (slf, ItMi_Wood, 10);
+	
+	/// resources
+	CreateInvItems (slf, ItMi_Calcium, 10);
+	CreateInvItems (slf, ItMi_Coal, 10);
+	CreateInvItems (slf, ItMi_Iron, 10);
+	CreateInvItems (slf, ItMi_Quartz, 10);
+	CreateInvItems (slf, ItMi_RockCrystal, 10);
+	CreateInvItems (slf, ItMi_Saltpeter, 10);
+	CreateInvItems (slf, ItMi_Sulfur, 10);
+	
+	CreateInvItems (slf, ItMi_Nugget, 10);
+	CreateInvItems (slf, ItMi_RedNugget, 10);
+	
+	/// smith
+	CreateInvItems (slf, ItMiSwordraw, 10);
+	CreateInvItems (slf, ItMiSwordrawhot, 10);
+	CreateInvItems (slf, ItMiSwordbladehot, 10);
+	CreateInvItems (slf, ItMiSwordblade, 10);
+	
+	/// tools
+	CreateInvItem (slf, ItMi_Alarmhorn);
+	CreateInvItem (slf, ItMi_Broom);
+	CreateInvItem (slf, ItMi_Brush);
+	CreateInvItem (slf, ItMi_Dice);
+	CreateInvItem (slf, ItMi_FishingRod);
+	CreateInvItem (slf, ItMi_Hammer);
+	CreateInvItem (slf, ItMi_InkPen);
+	CreateInvItem (slf, ItMi_Knife);
+	CreateInvItem (slf, ItMi_Lute);
+	CreateInvItem (slf, ItMi_Pan);
+	CreateInvItem (slf, ItMi_PanFull);
+	CreateInvItem (slf, ItMi_Pliers);
+	CreateInvItem (slf, ItMi_Rake);
+	CreateInvItem (slf, ItMi_Saw);
+	CreateInvItem (slf, ItMi_Scoop);
+	CreateInvItem (slf, ItMi_Sextant);
+	CreateInvItem (slf, ItMi_Spade);
+	CreateInvItem (slf, ItMi_Stomper);
+	CreateInvItem (slf, ItMi_Woodaxe);
+	
+	/// torches
+	CreateInvItems (slf, ItLsTorch, 10);
+	
+	CreateInvItems (slf, ItMi_Pitch, 10);
+	CreateInvItems (slf, ItMi_Resin, 10);
+	
+	/// uncategorized
+	CreateInvItems (slf, ItMi_EmptyBottle, 10);
+	CreateInvItems (slf, ItKe_Lockpick, 10);
+};
+
+///******************************************************************************************
+func void GiveAll_Munition (var C_Npc slf)
+{
+	/// arrows
+	CreateInvItems (slf, ItRw_Arrow, 1000);
+	CreateInvItems (slf, ItRw_SharpArrow, 100);
+	CreateInvItems (slf, ItRw_HuntingArrow, 100);
+	CreateInvItems (slf, ItRw_QuartzArrow, 100);
+	CreateInvItems (slf, ItRw_BangArrow, 100);
+	CreateInvItems (slf, ItRw_FireArrow, 100);
+	CreateInvItems (slf, ItRw_PoisonArrow, 100);
+	CreateInvItems (slf, ItRw_ExplosiveArrow, 100);
+	CreateInvItems (slf, ItRw_MagicArrow, 100);
+	
+	/// bolts
+	CreateInvItems (slf, ItRw_Bolt, 1000);
+	CreateInvItems (slf, ItRw_SharpBolt, 100);
+	CreateInvItems (slf, ItRw_MagicBolt, 100);
+	
+	/// ammo
+	CreateInvItems (slf, ItRw_Ammo, 1000);
+	CreateInvItems (slf, ItRw_HAmmo, 10);
+	CreateInvItems (slf, ItRw_BAmmo, 10);
+	
+	/// ammo boxes
+	CreateInvItem (slf, ItSe_AmmoBox_01);
+	CreateInvItem (slf, ItSe_AmmoBox_02);
+	CreateInvItem (slf, ItSe_AmmoBox_03);
+};
+
+///******************************************************************************************
+func void GiveAll_Plants (var C_Npc slf)
+{
+	/// componenets
+	CreateInvItems (slf, ItPl_Temp_Herb, 10);
+	CreateInvItems (slf, ItPl_Perm_Herb, 10);
+	
+	/// health
+	CreateInvItems (slf, ItPl_Health_Herb_01, 10);
+	CreateInvItems (slf, ItPl_Health_Herb_02, 10);
+	CreateInvItems (slf, ItPl_Health_Herb_03, 10);
+	
+	/// mana
+	CreateInvItems (slf, ItPl_Mana_Herb_01, 10);
+	CreateInvItems (slf, ItPl_Mana_Herb_02, 10);
+	CreateInvItems (slf, ItPl_Mana_Herb_03, 10);
+	
+	/// stamina
+	CreateInvItems (slf, ItPl_Speed_Herb_01, 10);
+	
+	/// perception
+	CreateInvItems (slf, ItPl_SwampHerb, 10);
+	CreateInvItems (slf, ItPl_DesertHerb, 10);
+	
+	/// perm
+	CreateInvItems (slf, ItPl_Health_Herb_04, 10);
+	CreateInvItems (slf, ItPl_Mana_Herb_04, 10);
+	CreateInvItems (slf, ItPl_Strength_Herb_01, 10);
+	CreateInvItems (slf, ItPl_Dex_Herb_01, 10);
+	CreateInvItems (slf, ItPl_Power_Herb_01, 10);
+	
+	/// other
+	CreateInvItems (slf, ItPl_Blueplant, 10);
+	CreateInvItems (slf, ItPl_GraveMoss, 10);
+	CreateInvItems (slf, ItPl_MountainMoss, 10);
+	CreateInvItems (slf, ItPl_Purpleplant, 10);
+	CreateInvItems (slf, ItPl_Seaweed, 10);
+	CreateInvItems (slf, ItPl_Stonereed, 10);
+	
+	/// mushrooms
+	CreateInvItems (slf, ItPl_Mushroom_01, 10);
+	CreateInvItems (slf, ItPl_Mushroom_02, 10);
+	CreateInvItems (slf, ItPl_Mushroom_03, 10);
+	CreateInvItems (slf, ItPl_Mushroom_04, 10);
+	CreateInvItems (slf, ItPl_Mushroom_05, 10);
+	CreateInvItems (slf, ItPl_Mushroom_06, 10);
+	CreateInvItems (slf, ItPl_Mushroom_07, 10);
+	CreateInvItems (slf, ItPl_Mushroom_08, 10);
+	
+	/// common
+	CreateInvItems (slf, ItPl_Beet, 10);
+	CreateInvItems (slf, ItPl_Forestberry, 10);
+	CreateInvItems (slf, ItPl_Planeberry, 10);
+	CreateInvItems (slf, ItPl_Weed, 10);
+	
+	/// joints
+	CreateInvItems (slf, ItMi_DesertJoint, 10);
+	CreateInvItems (slf, ItMi_Joint, 10);
+	CreateInvItems (slf, ItMi_SleJoint, 10);
+	
+	/// tabak
+	CreateInvItems (slf, ItMi_Tabak, 10);
+	CreateInvItems (slf, ItMi_ChocolateTabak, 10);
+	CreateInvItems (slf, ItMi_CoconutTabak, 10);
+	CreateInvItems (slf, ItMi_FruitTabak, 10);
+	CreateInvItems (slf, ItMi_HoneyTabak, 10);
+	CreateInvItems (slf, ItMi_MushroomTabak, 10);
+	CreateInvItems (slf, ItMi_SwampTabak, 10);
+};
+
+///******************************************************************************************
+func void GiveAll_Potions (var C_Npc slf)
+{
+	/// health
+	CreateInvItems (slf, ItPo_Health_01, 10);
+	CreateInvItems (slf, ItPo_Health_02, 10);
+	CreateInvItems (slf, ItPo_Health_03, 10);
+	CreateInvItems (slf, ItPo_Health_Addon_04, 10);
+	CreateInvItems (slf, ItPo_Health_Addon_05, 10);
+	CreateInvItems (slf, ItPo_Health_Addon_06, 10);
+	
+	/// mana
+	CreateInvItems (slf, ItPo_Mana_01, 10);
+	CreateInvItems (slf, ItPo_Mana_02, 10);
+	CreateInvItems (slf, ItPo_Mana_03, 10);
+	CreateInvItems (slf, ItPo_Mana_Addon_04, 10);
+	CreateInvItems (slf, ItPo_Mana_Addon_05, 10);
+	CreateInvItems (slf, ItPo_Mana_Addon_06, 10);
+	
+	/// stamina
+	CreateInvItems (slf, ItPo_Stamina_01, 10);
+	CreateInvItems (slf, ItPo_Stamina_02, 10);
+	CreateInvItems (slf, ItPo_Stamina_03, 10);
+	CreateInvItems (slf, ItPo_Stamina_Addon_04, 10);
+	CreateInvItems (slf, ItPo_Stamina_Addon_05, 10);
+	CreateInvItems (slf, ItPo_Stamina_Addon_06, 10);
+	
+	/// blueplant
+	CreateInvItems (slf, ItPo_Blueplant_01, 10);
+	CreateInvItems (slf, ItPo_Blueplant_02, 10);
+	CreateInvItems (slf, ItPo_Blueplant_03, 10);
+	CreateInvItems (slf, ItPo_Blueplant_Addon_04, 10);
+	CreateInvItems (slf, ItPo_Blueplant_Addon_05, 10);
+	CreateInvItems (slf, ItPo_Blueplant_Addon_06, 10);
+	
+	/// shield
+	CreateInvItems (slf, ItPo_Shield_01, 10);
+	CreateInvItems (slf, ItPo_Shield_02, 10);
+	CreateInvItems (slf, ItPo_Shield_03, 10);
+	
+	/// temp
+	CreateInvItems (slf, ItPo_Temp_Health, 10);
+	CreateInvItems (slf, ItPo_Temp_Mana, 10);
+	CreateInvItems (slf, ItPo_Temp_Stamina, 10);
+	CreateInvItems (slf, ItPo_Temp_Str, 10);
+	CreateInvItems (slf, ItPo_Temp_Dex, 10);
+	CreateInvItems (slf, ItPo_Temp_Pow, 10);
+	CreateInvItems (slf, ItPo_Temp_Prot, 10);
+	
+	/// perm
+	CreateInvItems (slf, ItPo_Perm_Health, 10);
+	CreateInvItems (slf, ItPo_Perm_Mana, 10);
+	CreateInvItems (slf, ItPo_Perm_Stamina, 10);
+	CreateInvItems (slf, ItPo_Perm_Str, 10);
+	CreateInvItems (slf, ItPo_Perm_Dex, 10);
+	CreateInvItems (slf, ItPo_Perm_Pow, 10);
+	CreateInvItems (slf, ItPo_Perm_Prot, 10);
+	
+	/// other
+	CreateInvItems (slf, ItPo_Flame, 10);
+	CreateInvItems (slf, ItPo_Geist, 10);
+	CreateInvItems (slf, ItPo_HealObsession, 10);
+	CreateInvItems (slf, ItPo_NightVision, 10);
+	CreateInvItems (slf, ItPo_Poison, 10);
+	CreateInvItems (slf, ItPo_Speed, 10);
+	CreateInvItems (slf, ItPo_Stealth, 10);
+	CreateInvItems (slf, ItPo_Underwater, 10);
+	
+	/// transform
+	CreateInvItem (slf, ItSc_TrfAlligator);
+	CreateInvItem (slf, ItSc_TrfBiter);
+	CreateInvItem (slf, ItSc_TrfBloodfly);
+	CreateInvItem (slf, ItSc_TrfBloodhound);
+	CreateInvItem (slf, ItSc_TrfDemon);
+	CreateInvItem (slf, ItSc_TrfDragonSnapper);
+	CreateInvItem (slf, ItSc_TrfFireWaran);
+	CreateInvItem (slf, ItSc_TrfGiantBug);
+	CreateInvItem (slf, ItSc_TrfGiantRat);
+	CreateInvItem (slf, ItSc_TrfGiantSpider);
+	CreateInvItem (slf, ItSc_TrfGoat);
+	CreateInvItem (slf, ItSc_TrfGoblin);
+	CreateInvItem (slf, ItSc_TrfGorilla);
+	CreateInvItem (slf, ItSc_TrfHare);
+	CreateInvItem (slf, ItSc_TrfHarpy);
+	CreateInvItem (slf, ItSc_TrfKeiler);
+	CreateInvItem (slf, ItSc_TrfLurker);
+	CreateInvItem (slf, ItSc_TrfMinecrawler);
+	CreateInvItem (slf, ItSc_TrfMolerat);
+	CreateInvItem (slf, ItSc_TrfScavenger);
+	CreateInvItem (slf, ItSc_TrfShadowbeast);
+	CreateInvItem (slf, ItSc_TrfSheep);
+	CreateInvItem (slf, ItSc_TrfSnapper);
+	CreateInvItem (slf, ItSc_TrfSpint);
+	CreateInvItem (slf, ItSc_TrfSwampshark);
+	CreateInvItem (slf, ItSc_TrfTiger);
+	CreateInvItem (slf, ItSc_TrfTroll);
+	CreateInvItem (slf, ItSc_TrfWaran);
+	CreateInvItem (slf, ItSc_TrfWarg);
+	CreateInvItem (slf, ItSc_TrfWolf);
+	
+	/// special
+	CreateInvItem (slf, ItPo_DragonEggDrink);
+	CreateInvItem (slf, ItPo_Ghost);
+	CreateInvItem (slf, ItPo_InnosTears);
+	CreateInvItem (slf, ItPo_MegaDrink);
+};
+
+///******************************************************************************************
+func void GiveAll_RangedWeapons (var C_Npc slf)
+{
+	/// bows
+	CreateInvItem (slf, ItRw_Bow_L_01);
+	CreateInvItem (slf, ItRw_Bow_L_02);
+	CreateInvItem (slf, ItRw_Bow_L_03);
+	CreateInvItem (slf, ItRw_Bow_L_04);
+	CreateInvItem (slf, ItRw_Bow_M_01);
+	CreateInvItem (slf, ItRw_Bow_M_02);
+	CreateInvItem (slf, ItRw_Bow_M_03);
+	CreateInvItem (slf, ItRw_Bow_M_04);
+	CreateInvItem (slf, ItRw_Bow_M_05);
+	CreateInvItem (slf, ItRw_Bow_M_06);
+	CreateInvItem (slf, ItRw_Bow_M_07);
+	CreateInvItem (slf, ItRw_Bow_M_08);
+	CreateInvItem (slf, ItRw_Bow_H_01);
+	CreateInvItem (slf, ItRw_Bow_H_02);
+	CreateInvItem (slf, ItRw_Bow_H_03);
+	CreateInvItem (slf, ItRw_Bow_H_04);
+	
+	/// crossbows
+	CreateInvItem (slf, ItRw_Crossbow_L_01);
+	CreateInvItem (slf, ItRw_Crossbow_L_02);
+	CreateInvItem (slf, ItRw_Crossbow_M_01);
+	CreateInvItem (slf, ItRw_Crossbow_M_02);
+	CreateInvItem (slf, ItRw_Crossbow_H_01);
+	CreateInvItem (slf, ItRw_Crossbow_H_02);
+	
+	/// guns
+	CreateInvItem (slf, ItRw_Gun1);
+	CreateInvItem (slf, ItRw_Gun2);
+	CreateInvItem (slf, ItRw_Gun3);
+	CreateInvItem (slf, ItRw_Gun4);
+	CreateInvItem (slf, ItRw_Gun5);
+	CreateInvItem (slf, ItRw_Gun6);
+	CreateInvItem (slf, ItRw_Gun7);
+	CreateInvItem (slf, ItRw_Gun8);
+	CreateInvItem (slf, ItRw_Gun9);
+	
+	/// heavy guns
+	CreateInvItem (slf, ItRw_HGun1);
+	CreateInvItem (slf, ItRw_HGun2);
+	CreateInvItem (slf, ItRw_HGun3);
+	CreateInvItem (slf, ItRw_HGun4);
+};
+
+///******************************************************************************************
+func void GiveAll_Recipes (var C_Npc slf)
+{
+	/// fletchery
+	CreateInvItem (slf, ItRe_FLETCHERY_Ammo);
+	
+	/// cooking
+	CreateInvItem (slf, ItRe_COOKING_BugPulp);
+	CreateInvItem (slf, ItRe_COOKING_ForestStew);
+	CreateInvItem (slf, ItRe_COOKING_FriedPasta);
+	CreateInvItem (slf, ItRe_COOKING_HoneyOatmeal);
+	CreateInvItem (slf, ItRe_COOKING_JamPaste);
+	CreateInvItem (slf, ItRe_COOKING_MeatCauldron);
+	CreateInvItem (slf, ItRe_COOKING_MeatStew);
+	CreateInvItem (slf, ItRe_COOKING_Pilaf);
+	CreateInvItem (slf, ItRe_COOKING_Puree);
+	CreateInvItem (slf, ItRe_COOKING_Salad);
+	CreateInvItem (slf, ItRe_COOKING_ScrambledEggs);
+	CreateInvItem (slf, ItRe_COOKING_Spaghetti);
+	CreateInvItem (slf, ItRe_COOKING_SpicyStew);
+	CreateInvItem (slf, ItRe_COOKING_Stew);
+	CreateInvItem (slf, ItRe_COOKING_StewedVegetables);
+	CreateInvItem (slf, ItRe_COOKING_WineStew);
+	
+	CreateInvItem (slf, ItRe_COOKING_BerrySoup);
+	CreateInvItem (slf, ItRe_COOKING_CabbageSoup);
+	CreateInvItem (slf, ItRe_COOKING_CheeseSoup);
+	CreateInvItem (slf, ItRe_COOKING_FishSoup);
+	CreateInvItem (slf, ItRe_COOKING_GreenSoup);
+	CreateInvItem (slf, ItRe_COOKING_HoneySoup);
+	CreateInvItem (slf, ItRe_COOKING_MilkSoup);
+	CreateInvItem (slf, ItRe_COOKING_MushroomSoup);
+	CreateInvItem (slf, ItRe_COOKING_OnionSoup);
+	CreateInvItem (slf, ItRe_COOKING_OysterSoup);
+	CreateInvItem (slf, ItRe_COOKING_SausageSoup);
+	CreateInvItem (slf, ItRe_COOKING_SpicySoup);
+	CreateInvItem (slf, ItRe_COOKING_AppleCompote);
+	CreateInvItem (slf, ItRe_COOKING_BerryCompote);
+	CreateInvItem (slf, ItRe_COOKING_PearCompote);
+	CreateInvItem (slf, ItRe_COOKING_BlueDecoction);
+	
+	CreateInvItem (slf, ItRe_COOKING_Booze);
+	CreateInvItem (slf, ItRe_COOKING_Mead);
+	CreateInvItem (slf, ItRe_COOKING_Sake);
+	CreateInvItem (slf, ItRe_COOKING_SourWine);
+	CreateInvItem (slf, ItRe_COOKING_Wine);
+};
+
+///******************************************************************************************
+func void GiveAll_Rings (var C_Npc slf)
+{
+	CreateInvItem (slf, ItRi_Prot_Blunt_01);
+	CreateInvItem (slf, ItRi_Prot_Edge_01);
+	CreateInvItem (slf, ItRi_Prot_Point_01);
+	CreateInvItem (slf, ItRi_Prot_Fire_01);
+	CreateInvItem (slf, ItRi_Prot_Magic_01);
+	CreateInvItem (slf, ItRi_Prot_Total_01);
+	CreateInvItem (slf, ItRi_Persistence_01);
+	CreateInvItem (slf, ItRi_Tenacity_01);
+	CreateInvItem (slf, ItRi_Harmony_01);
+	CreateInvItem (slf, ItRi_Custody_01);
+	CreateInvItem (slf, ItRi_Wisdom_01);
+	CreateInvItem (slf, ItRi_Eternity_01);
+	CreateInvItem (slf, ItRi_Hp_01);
+	CreateInvItem (slf, ItRi_Mp_01);
+	CreateInvItem (slf, ItRi_Sp_01);
+	CreateInvItem (slf, ItRi_Str_01);
+	CreateInvItem (slf, ItRi_Dex_01);
+	CreateInvItem (slf, ItRi_Pow_01);
+	CreateInvItem (slf, ItRi_Enlightment_01);
+	CreateInvItem (slf, ItRi_Roy_01);
+	CreateInvItem (slf, ItRi_Pal_01);
+	CreateInvItem (slf, ItRi_Djg_01);
+	CreateInvItem (slf, ItRi_Asa_01);
+	CreateInvItem (slf, ItRi_Mag_01);
+	CreateInvItem (slf, ItRi_Throw_01);
+	CreateInvItem (slf, ItRi_1h_01);
+	CreateInvItem (slf, ItRi_2h_01);
+	CreateInvItem (slf, ItRi_Bow_01);
+	CreateInvItem (slf, ItRi_Cbow_01);
+	CreateInvItem (slf, ItRi_Master_01);
+	CreateInvItem (slf, ItRi_Innovation_01);
+	CreateInvItem (slf, ItRi_Precision_01);
+	CreateInvItem (slf, ItRi_Domination_01);
+	CreateInvItem (slf, ItRi_Motivation_01);
+	CreateInvItem (slf, ItRi_Liberation_01);
+	CreateInvItem (slf, ItRi_Destruction_01);
+	CreateInvItem (slf, ItRi_CritDmg_01);
+	CreateInvItem (slf, ItRi_AreaDmg_01);
+	CreateInvItem (slf, ItRi_Ls_01);
+	CreateInvItem (slf, ItRi_MinDmg_01);
+};
+
+///******************************************************************************************
+func void GiveAll_Runes (var C_Npc slf)
+{
+	/// basic
+	CreateInvItem (slf, ItRu_Light);
+	CreateInvItem (slf, ItRu_Heal);
+	CreateInvItem (slf, ItRu_Telekinesis);
+	
+	/// PAL
+	CreateInvItem (slf, ItRu_PalBless);
+	CreateInvItem (slf, ItRu_PalFaith);
+	CreateInvItem (slf, ItRu_PalHolyBolt);
+	CreateInvItem (slf, ItRu_PalGlory);
+	CreateInvItem (slf, ItRu_PalRepelEvil);
+	CreateInvItem (slf, ItRu_PalJustice);
+	CreateInvItem (slf, ItRu_PalDestroyEvil);
+	
+	/// common
+	CreateInvItem (slf, ItRu_Resurrection);
+	CreateInvItem (slf, ItRu_Rage);
+	CreateInvItem (slf, ItRu_Seduction);
+	CreateInvItem (slf, ItRu_NightToDay);
+	CreateInvItem (slf, ItRu_FireBolt);
+	
+	CreateInvItem (slf, ItRu_IceBolt);
+	CreateInvItem (slf, ItRu_Stealth);
+	CreateInvItem (slf, ItRu_SkullBolt);
+	CreateInvItem (slf, ItRu_InstantFireball);
+	CreateInvItem (slf, ItRu_Zap);
+	CreateInvItem (slf, ItRu_Slimeball);
+	CreateInvItem (slf, ItRu_WindFist);
+	CreateInvItem (slf, ItRu_Sleep);
+	CreateInvItem (slf, ItRu_Charm);
+	CreateInvItem (slf, ItRu_LightningFlash);
+	
+	CreateInvItem (slf, ItRu_ChargeFireball);
+	CreateInvItem (slf, ItRu_Curse);
+	CreateInvItem (slf, ItRu_Fear);
+	CreateInvItem (slf, ItRu_IceCube);
+	CreateInvItem (slf, ItRu_ChargeZap);
+	CreateInvItem (slf, ItRu_SummonGolem);
+	CreateInvItem (slf, ItRu_DestroyUndead);
+	CreateInvItem (slf, ItRu_Pyrokinesis);
+	CreateInvItem (slf, ItRu_Firestorm);
+	CreateInvItem (slf, ItRu_IceWave);
+	
+	CreateInvItem (slf, ItRu_SummonDemon);
+	CreateInvItem (slf, ItRu_Explosion);
+	CreateInvItem (slf, ItRu_Firerain);
+	CreateInvItem (slf, ItRu_BreathOfDeath);
+	CreateInvItem (slf, ItRu_MassDeath);
+	CreateInvItem (slf, ItRu_ArmyOfDarkness);
+	CreateInvItem (slf, ItRu_Shrink);
+	CreateInvItem (slf, ItRu_Tame);
+	CreateInvItem (slf, ItRu_RunicEchoes);
+	CreateInvItem (slf, ItRu_SlowTime);
+	
+	CreateInvItem (slf, ItRu_HealingAura);
+	CreateInvItem (slf, ItRu_StoneSkin);
+	CreateInvItem (slf, ItRu_AirShield);
+	CreateInvItem (slf, ItRu_FireShield);
+	CreateInvItem (slf, ItRu_DarkBarrier);
+	
+	/// player
+	CreateInvItem (slf, ItRu_MasterOfDisaster);
+	CreateInvItem (slf, ItRu_BeliarRage);
+	
+	/// special
+	//CreateInvItem (slf, ItRu_Teleport);
+	//CreateInvItem (slf, ItRu_Transform);
+	//CreateInvItem (slf, ItRu_Summon);
+	
+	/// npc
+	CreateInvItem (slf, ItRu_ConcussionSpell);
+	CreateInvItem (slf, ItRu_DeathSpell);
+	CreateInvItem (slf, ItRu_DragonBall);
+	CreateInvItem (slf, ItRu_BlackDragonBall);
+	CreateInvItem (slf, ItRu_BlueFireball);
+	CreateInvItem (slf, ItRu_RedFireball);
+	
+	/// common
+	CreateInvItem (slf, ItRu_Thunderstorm);
+	CreateInvItem (slf, ItRu_Whirlwind);
+	CreateInvItem (slf, ItRu_WaterFist);
+	CreateInvItem (slf, ItRu_IceLance);
+	CreateInvItem (slf, ItRu_Inflate);
+	CreateInvItem (slf, ItRu_Geyser);
+	CreateInvItem (slf, ItRu_Fireburning);
+	CreateInvItem (slf, ItRu_ChainLightning);
+	CreateInvItem (slf, ItRu_Hurricane);
+	CreateInvItem (slf, ItRu_LightFlash);
+	
+	CreateInvItem (slf, ItRu_Plague);
+	CreateInvItem (slf, ItRu_Swarm);
+	CreateInvItem (slf, ItRu_Greententacle);
+	CreateInvItem (slf, ItRu_Earthquake);
+	CreateInvItem (slf, ItRu_Rock);
+	CreateInvItem (slf, ItRu_Mysticball);
+	CreateInvItem (slf, ItRu_SuckEnergy);
+	CreateInvItem (slf, ItRu_Skull);
+	CreateInvItem (slf, ItRu_Elevate);
+	CreateInvItem (slf, ItRu_Crush);
+};
+
+///******************************************************************************************
+func void GiveAll_Stoneplates (var C_Npc slf)
+{
+	/// stoneplates
+	CreateInvItems (slf, ItWr_Stoneplate_01, 10);
+	CreateInvItems (slf, ItWr_Stoneplate_02, 10);
+	CreateInvItems (slf, ItWr_Stoneplate_03, 10);
+	CreateInvItems (slf, ItWr_Stoneplate_04, 10);
+	CreateInvItems (slf, ItWr_Stoneplate_05, 10);
+	
+	/// recipes
+	CreateInvItem (slf, ItRe_FLETCHERY_Ammo);
+	
+	CreateInvItem (slf, ItRe_COOKING_BugPulp);
+	CreateInvItem (slf, ItRe_COOKING_ForestStew);
+	CreateInvItem (slf, ItRe_COOKING_FriedPasta);
+	CreateInvItem (slf, ItRe_COOKING_HoneyOatmeal);
+	CreateInvItem (slf, ItRe_COOKING_JamPaste);
+	CreateInvItem (slf, ItRe_COOKING_MeatCauldron);
+	CreateInvItem (slf, ItRe_COOKING_MeatStew);
+	CreateInvItem (slf, ItRe_COOKING_Pilaf);
+	CreateInvItem (slf, ItRe_COOKING_Puree);
+	CreateInvItem (slf, ItRe_COOKING_Salad);
+	CreateInvItem (slf, ItRe_COOKING_ScrambledEggs);
+	CreateInvItem (slf, ItRe_COOKING_Spaghetti);
+	CreateInvItem (slf, ItRe_COOKING_SpicyStew);
+	CreateInvItem (slf, ItRe_COOKING_Stew);
+	CreateInvItem (slf, ItRe_COOKING_StewedVegetables);
+	CreateInvItem (slf, ItRe_COOKING_WineStew);
+	
+	CreateInvItem (slf, ItRe_COOKING_BerrySoup);
+	CreateInvItem (slf, ItRe_COOKING_CabbageSoup);
+	CreateInvItem (slf, ItRe_COOKING_CheeseSoup);
+	CreateInvItem (slf, ItRe_COOKING_FishSoup);
+	CreateInvItem (slf, ItRe_COOKING_GreenSoup);
+	CreateInvItem (slf, ItRe_COOKING_HoneySoup);
+	CreateInvItem (slf, ItRe_COOKING_MilkSoup);
+	CreateInvItem (slf, ItRe_COOKING_MushroomSoup);
+	CreateInvItem (slf, ItRe_COOKING_OnionSoup);
+	CreateInvItem (slf, ItRe_COOKING_OysterSoup);
+	CreateInvItem (slf, ItRe_COOKING_SausageSoup);
+	CreateInvItem (slf, ItRe_COOKING_SpicySoup);
+	CreateInvItem (slf, ItRe_COOKING_AppleCompote);
+	CreateInvItem (slf, ItRe_COOKING_BerryCompote);
+	CreateInvItem (slf, ItRe_COOKING_PearCompote);
+	CreateInvItem (slf, ItRe_COOKING_BlueDecoction);
+	
+	CreateInvItem (slf, ItRe_COOKING_Booze);
+	CreateInvItem (slf, ItRe_COOKING_Mead);
+	CreateInvItem (slf, ItRe_COOKING_Sake);
+	CreateInvItem (slf, ItRe_COOKING_SourWine);
+	CreateInvItem (slf, ItRe_COOKING_Wine);
+};
+
+///******************************************************************************************
+func void GiveAll_Valuables (var C_Npc slf)
+{
+	/// coins
+	CreateInvItems (slf, ItMi_Gold, 1000);
+	CreateInvItems (slf, ItMi_FortuneCoin, 10);
+	CreateInvItems (slf, ItMi_AncientCoin, 10);
+	CreateInvItems (slf, ItMi_OrcCoin, 10);
+	
+	/// gold pockets
+	CreateInvItem (slf, ItSe_GoldPocket10);
+	CreateInvItem (slf, ItSe_GoldPocket25);
+	CreateInvItem (slf, ItSe_GoldPocket50);
+	CreateInvItem (slf, ItSe_GoldPocket100);
+	CreateInvItem (slf, ItSe_GoldPocket200);
+	
+	/// silver
+	CreateInvItems (slf, ItMi_SilverNugget, 10);
+	CreateInvItem (slf, ItMi_SilverCandleHolder);
+	CreateInvItem (slf, ItMi_SilverChalice);
+	CreateInvItem (slf, ItMi_SilverCup);
+	CreateInvItem (slf, ItMi_SilverNecklace);
+	CreateInvItem (slf, ItMi_SilverPlate);
+	CreateInvItem (slf, ItMi_SilverRing);
+	
+	/// gold
+	CreateInvItems (slf, ItMi_GoldNugget_Addon, 10);
+	CreateInvItem (slf, ItMi_GoldCandleHolder);
+	CreateInvItem (slf, ItMi_GoldChalice);
+	CreateInvItem (slf, ItMi_GoldCompass);
+	CreateInvItem (slf, ItMi_GoldCup);
+	CreateInvItem (slf, ItMi_GoldNecklace);
+	CreateInvItem (slf, ItMi_GoldPlate);
+	CreateInvItem (slf, ItMi_GoldRing);
+	
+	/// chests
+	CreateInvItem (slf, ItMi_GoldChest);
+	CreateInvItem (slf, ItMi_JeweleryChest);
+	
+	/// statues
+	CreateInvItem (slf, ItMi_InnosStatue);
+	
+	/// gems
+	CreateInvItem (slf, ItMi_Aquamarine);
+	CreateInvItem (slf, ItMi_Emerald);
+	CreateInvItem (slf, ItMi_Ruby);
+	CreateInvItem (slf, ItMi_Diamond);
+	
+	/// pearls
+	CreateInvItems (slf, ItMi_WhitePearl, 10);
+	CreateInvItems (slf, ItMi_DarkPearl, 10);
+	
+	/// containers
+	CreateInvItems (slf, ItMi_Shell, 10);
+	CreateInvItems (slf, ItSe_BigFish, 10);
+	CreateInvItems (slf, ItSe_OldChest, 10);
+};
+
+///******************************************************************************************
+func void GiveAll_Written (var C_Npc slf)
+{
+	/// lp books
+	CreateInvItem (slf, ItWr_BookLp_Fight1H);
+	CreateInvItem (slf, ItWr_BookLp_Fight2H);
+	CreateInvItem (slf, ItWr_BookLp_StarPower);
+	CreateInvItem (slf, ItWr_BookLp_GodsGift);
+	CreateInvItem (slf, ItWr_BookLp_SecretsOfMagic);
+	CreateInvItem (slf, ItWr_BookLp_PowerfulArt);
+	CreateInvItem (slf, ItWr_BookLp_Elementare);
+	CreateInvItem (slf, ItWr_BookLp_RealPower);
+	CreateInvItem (slf, ItWr_BookLp_MagicOre);
+	CreateInvItem (slf, ItWr_BookLp_Varant1);
+	CreateInvItem (slf, ItWr_BookLp_Varant2);
+	CreateInvItem (slf, ItWr_BookLp_MyrthanianPoetry);
+	CreateInvItem (slf, ItWr_BookLp_GodsWisdom1);
+	CreateInvItem (slf, ItWr_BookLp_GodsWisdom2);
+	CreateInvItem (slf, ItWr_BookLp_GodsWisdom3);
+	CreateInvItem (slf, ItWr_BookLp_Hunting);
+	CreateInvItem (slf, ItWr_BookLp_Fight);
+	CreateInvItem (slf, ItWr_BookLp_Astronomy);
+	CreateInvItem (slf, ItWr_BookLp_Focus);
+	CreateInvItem (slf, ItWr_BookLp_Golem);
+	
+	/// xp books
+	CreateInvItem (slf, ItWr_BookXp_000);
+	CreateInvItem (slf, ItWr_BookXp_001);
+	CreateInvItem (slf, ItWr_BookXp_002);
+	CreateInvItem (slf, ItWr_BookXp_003);
+	CreateInvItem (slf, ItWr_BookXp_004);
+	CreateInvItem (slf, ItWr_BookXp_005);
+	CreateInvItem (slf, ItWr_BookXp_006);
+	CreateInvItem (slf, ItWr_BookXp_007);
+	CreateInvItem (slf, ItWr_BookXp_008);
+	CreateInvItem (slf, ItWr_BookXp_009);
+	CreateInvItem (slf, ItWr_BookXp_010);
+	CreateInvItem (slf, ItWr_BookXp_011);
+	CreateInvItem (slf, ItWr_BookXp_012);
+	CreateInvItem (slf, ItWr_BookXp_013);
+	CreateInvItem (slf, ItWr_BookXp_014);
+	CreateInvItem (slf, ItWr_BookXp_015);
+	CreateInvItem (slf, ItWr_BookXp_016);
+	CreateInvItem (slf, ItWr_BookXp_017);
+	CreateInvItem (slf, ItWr_BookXp_018);
+	CreateInvItem (slf, ItWr_BookXp_019);
+	CreateInvItem (slf, ItWr_BookXp_020);
+	CreateInvItem (slf, ItWr_BookXp_021);
+	CreateInvItem (slf, ItWr_BookXp_022);
+	CreateInvItem (slf, ItWr_BookXp_023);
+	CreateInvItem (slf, ItWr_BookXp_024);
+	CreateInvItem (slf, ItWr_BookXp_025);
+	CreateInvItem (slf, ItWr_BookXp_026);
+	CreateInvItem (slf, ItWr_BookXp_027);
+	CreateInvItem (slf, ItWr_BookXp_028);
+	CreateInvItem (slf, ItWr_BookXp_029);
+	CreateInvItem (slf, ItWr_BookXp_030);
+	CreateInvItem (slf, ItWr_BookXp_031);
+	CreateInvItem (slf, ItWr_BookXp_032);
+	CreateInvItem (slf, ItWr_BookXp_033);
+	CreateInvItem (slf, ItWr_BookXp_034);
+	CreateInvItem (slf, ItWr_BookXp_035);
+	CreateInvItem (slf, ItWr_BookXp_036);
+	CreateInvItem (slf, ItWr_BookXp_037);
+	CreateInvItem (slf, ItWr_BookXp_038);
+	CreateInvItem (slf, ItWr_BookXp_039);
+	CreateInvItem (slf, ItWr_BookXp_040);
+	CreateInvItem (slf, ItWr_BookXp_041);
+	CreateInvItem (slf, ItWr_BookXp_042);
+	CreateInvItem (slf, ItWr_BookXp_043);
+	CreateInvItem (slf, ItWr_BookXp_044);
+	CreateInvItem (slf, ItWr_BookXp_045);
+	CreateInvItem (slf, ItWr_BookXp_046);
+	CreateInvItem (slf, ItWr_BookXp_047);
+	CreateInvItem (slf, ItWr_BookXp_048);
+	CreateInvItem (slf, ItWr_BookXp_049);
+	CreateInvItem (slf, ItWr_BookXp_050);
+	CreateInvItem (slf, ItWr_BookXp_051);
+	CreateInvItem (slf, ItWr_BookXp_052);
+	CreateInvItem (slf, ItWr_BookXp_053);
+	CreateInvItem (slf, ItWr_BookXp_054);
+	CreateInvItem (slf, ItWr_BookXp_055);
+	CreateInvItem (slf, ItWr_BookXp_056);
+	CreateInvItem (slf, ItWr_BookXp_057);
+	CreateInvItem (slf, ItWr_BookXp_058);
+	CreateInvItem (slf, ItWr_BookXp_059);
+	CreateInvItem (slf, ItWr_BookXp_060);
+	CreateInvItem (slf, ItWr_BookXp_061);
+	CreateInvItem (slf, ItWr_BookXp_062);
+	CreateInvItem (slf, ItWr_BookXp_063);
+	CreateInvItem (slf, ItWr_BookXp_064);
+	CreateInvItem (slf, ItWr_BookXp_065);
+	CreateInvItem (slf, ItWr_BookXp_066);
+	CreateInvItem (slf, ItWr_BookXp_067);
+	CreateInvItem (slf, ItWr_BookXp_068);
+	CreateInvItem (slf, ItWr_BookXp_069);
+	CreateInvItem (slf, ItWr_BookXp_070);
+	CreateInvItem (slf, ItWr_BookXp_071);
+	CreateInvItem (slf, ItWr_BookXp_072);
+	CreateInvItem (slf, ItWr_BookXp_073);
+	CreateInvItem (slf, ItWr_BookXp_074);
+	CreateInvItem (slf, ItWr_BookXp_075);
+	CreateInvItem (slf, ItWr_BookXp_076);
+	CreateInvItem (slf, ItWr_BookXp_077);
+	CreateInvItem (slf, ItWr_BookXp_078);
+	CreateInvItem (slf, ItWr_BookXp_079);
+	CreateInvItem (slf, ItWr_BookXp_080);
+	CreateInvItem (slf, ItWr_BookXp_081);
+	CreateInvItem (slf, ItWr_BookXp_082);
+	CreateInvItem (slf, ItWr_BookXp_083);
+	CreateInvItem (slf, ItWr_BookXp_084);
+	CreateInvItem (slf, ItWr_BookXp_085);
+	CreateInvItem (slf, ItWr_BookXp_086);
+	CreateInvItem (slf, ItWr_BookXp_087);
+	CreateInvItem (slf, ItWr_BookXp_088);
+	CreateInvItem (slf, ItWr_BookXp_089);
+	CreateInvItem (slf, ItWr_BookXp_090);
+	CreateInvItem (slf, ItWr_BookXp_091);
+	CreateInvItem (slf, ItWr_BookXp_092);
+	CreateInvItem (slf, ItWr_BookXp_093);
+	CreateInvItem (slf, ItWr_BookXp_094);
+	CreateInvItem (slf, ItWr_BookXp_095);
+	CreateInvItem (slf, ItWr_BookXp_096);
+	CreateInvItem (slf, ItWr_BookXp_097);
+	CreateInvItem (slf, ItWr_BookXp_098);
+	CreateInvItem (slf, ItWr_BookXp_099);
+	CreateInvItem (slf, ItWr_BookXp_100);
+	CreateInvItem (slf, ItWr_BookXp_101);
+	CreateInvItem (slf, ItWr_BookXp_102);
+	CreateInvItem (slf, ItWr_BookXp_103);
+	CreateInvItem (slf, ItWr_BookXp_104);
+	CreateInvItem (slf, ItWr_BookXp_105);
+	CreateInvItem (slf, ItWr_BookXp_106);
+	CreateInvItem (slf, ItWr_BookXp_107);
+	CreateInvItem (slf, ItWr_BookXp_108);
+	CreateInvItem (slf, ItWr_BookXp_109);
+	CreateInvItem (slf, ItWr_BookXp_110);
+	CreateInvItem (slf, ItWr_BookXp_111);
+	CreateInvItem (slf, ItWr_BookXp_112);
+	CreateInvItem (slf, ItWr_BookXp_113);
+	CreateInvItem (slf, ItWr_BookXp_114);
+	CreateInvItem (slf, ItWr_BookXp_115);
+	CreateInvItem (slf, ItWr_BookXp_116);
+	CreateInvItem (slf, ItWr_BookXp_117);
+	CreateInvItem (slf, ItWr_BookXp_118);
+	CreateInvItem (slf, ItWr_BookXp_119);
+	CreateInvItem (slf, ItWr_BookXp_120);
+	CreateInvItem (slf, ItWr_BookXp_121);
+	CreateInvItem (slf, ItWr_BookXp_122);
+	CreateInvItem (slf, ItWr_BookXp_123);
+	CreateInvItem (slf, ItWr_BookXp_124);
+	CreateInvItem (slf, ItWr_BookXp_125);
+	CreateInvItem (slf, ItWr_BookXp_126);
+	CreateInvItem (slf, ItWr_BookXp_127);
+	CreateInvItem (slf, ItWr_BookXp_128);
+	CreateInvItem (slf, ItWr_BookXp_129);
+	CreateInvItem (slf, ItWr_BookXp_130);
+	CreateInvItem (slf, ItWr_BookXp_131);
+	CreateInvItem (slf, ItWr_BookXp_132);
+	CreateInvItem (slf, ItWr_BookXp_133);
+	CreateInvItem (slf, ItWr_BookXp_134);
+	CreateInvItem (slf, ItWr_BookXp_135);
+	CreateInvItem (slf, ItWr_BookXp_136);
+	CreateInvItem (slf, ItWr_BookXp_137);
+	CreateInvItem (slf, ItWr_BookXp_138);
+	CreateInvItem (slf, ItWr_BookXp_139);
+	CreateInvItem (slf, ItWr_BookXp_140);
+	CreateInvItem (slf, ItWr_BookXp_141);
+	CreateInvItem (slf, ItWr_BookXp_142);
+	CreateInvItem (slf, ItWr_BookXp_143);
+	CreateInvItem (slf, ItWr_BookXp_144);
+	CreateInvItem (slf, ItWr_BookXp_145);
+	CreateInvItem (slf, ItWr_BookXp_146);
+	CreateInvItem (slf, ItWr_BookXp_147);
+	CreateInvItem (slf, ItWr_BookXp_148);
+	CreateInvItem (slf, ItWr_BookXp_149);
+	
+	/// maps
+	CreateInvItem (slf, ItWr_Map_NewWorld);
+	CreateInvItem (slf, ItWr_Map_NewWorld_City);
+	CreateInvItem (slf, ItWr_Map_OldWorld);
+	CreateInvItem (slf, ItWr_Map_AddonWorld);
 };

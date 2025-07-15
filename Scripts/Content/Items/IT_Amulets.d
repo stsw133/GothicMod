@@ -450,8 +450,8 @@ func void SetItAmAttributes_Throw (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItAm_Throw_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_THROW;
-	itm.change_value[0]			=	kap;
+	//itm.change_atr[0]			=	ATR_THROW;
+	//itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Throw;
 	itm.COUNT[1]				=	itm.change_value[0];
@@ -477,7 +477,7 @@ func void SetItAmAttributes_1h (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItAm_1h_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_1H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_1h;
@@ -504,7 +504,7 @@ func void SetItAmAttributes_2h (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItAm_2h_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_2H;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_2h;
@@ -531,7 +531,7 @@ func void SetItAmAttributes_Bow (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItAm_Bow_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_BOW;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Bow;
@@ -558,7 +558,7 @@ func void SetItAmAttributes_Cbow (var C_Item itm, var int kap)
 {
 	itm.visual					=	"ItAm_Cbow_01.3ds";
 	
-	itm.change_atr[0]			=	ATR_CBOW;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	itm.change_value[0]			=	kap;
 	
 	itm.TEXT[1]					=	NAME_Bonus_Cbow;
@@ -607,7 +607,7 @@ instance ItAm_Master_01 (ItemPR_Amulet)
 };
 func void Equip_ItAm_Master_01()
 {
-	self.hitchance[NPC_TALENT_THROW] += 6;
+	//self.hitchance[NPC_TALENT_THROW] += 6;
 	self.hitchance[NPC_TALENT_1H] += 6;
 	self.hitchance[NPC_TALENT_2H] += 6;
 	self.hitchance[NPC_TALENT_BOW] += 6;
@@ -615,7 +615,7 @@ func void Equip_ItAm_Master_01()
 };
 func void UnEquip_ItAm_Master_01()
 {
-	self.hitchance[NPC_TALENT_THROW] -= 6;
+	//self.hitchance[NPC_TALENT_THROW] -= 6;
 	self.hitchance[NPC_TALENT_1H] -= 6;
 	self.hitchance[NPC_TALENT_2H] -= 6;
 	self.hitchance[NPC_TALENT_BOW] -= 6;
@@ -631,7 +631,7 @@ instance ItAm_Master_02 (ItemPR_Amulet)
 };
 func void Equip_ItAm_Master_02()
 {
-	self.hitchance[NPC_TALENT_THROW] += 12;
+	//self.hitchance[NPC_TALENT_THROW] += 12;
 	self.hitchance[NPC_TALENT_1H] += 12;
 	self.hitchance[NPC_TALENT_2H] += 12;
 	self.hitchance[NPC_TALENT_BOW] += 12;
@@ -639,7 +639,7 @@ func void Equip_ItAm_Master_02()
 };
 func void UnEquip_ItAm_Master_02()
 {
-	self.hitchance[NPC_TALENT_THROW] -= 12;
+	//self.hitchance[NPC_TALENT_THROW] -= 12;
 	self.hitchance[NPC_TALENT_1H] -= 12;
 	self.hitchance[NPC_TALENT_2H] -= 12;
 	self.hitchance[NPC_TALENT_BOW] -= 12;
@@ -751,8 +751,8 @@ instance ItAm_Orc_01 (ItemPR_AmuletOrc)
 	
 	change_atr[0]				=	ATR_HITPOINTS_MAX;
 	change_value[0]				=	10*HP_PER_LP;
-	change_atr[1]				=	ATR_THROW;
-	change_value[1]				=	10;
+	//change_atr[1]				=	ATR_THROW;
+	//change_value[1]				=	10;
 	
 	protection[PROT_MAGIC]		=	10;
 	protection[PROT_BARRIER]	=	10;
@@ -772,7 +772,7 @@ instance ItAm_Orc_02 (ItemPR_AmuletOrc)
 	
 	change_atr[0]				=	ATR_STRENGTH;
 	change_value[0]				=	10;
-	change_atr[1]				=	ATR_1H;
+	change_atr[1]				=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	change_value[1]				=	10;
 	
 	protection[PROT_BLUNT]		=	10;
@@ -792,7 +792,7 @@ instance ItAm_Orc_03 (ItemPR_AmuletOrc)
 	
 	change_atr[0]				=	ATR_DEXTERITY;
 	change_value[0]				=	10;
-	change_atr[1]				=	ATR_2H;
+	change_atr[1]				=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	change_value[1]				=	10;
 	
 	protection[PROT_POINT]		=	10;
@@ -812,7 +812,7 @@ instance ItAm_Orc_04 (ItemPR_AmuletOrc)
 	
 	change_atr[0]				=	ATR_POWER;
 	change_value[0]				=	10;
-	change_atr[1]				=	ATR_BOW;
+	change_atr[1]				=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	change_value[1]				=	10;
 	
 	protection[PROT_FIRE]		=	10;
@@ -832,7 +832,7 @@ instance ItAm_Orc_05 (ItemPR_AmuletOrc)
 	
 	change_atr[0]				=	ATR_MANA_MAX;
 	change_value[0]				=	10;
-	change_atr[1]				=	ATR_CBOW;
+	change_atr[1]				=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	change_value[1]				=	10;
 	
 	protection[PROT_EDGE]		=	10;

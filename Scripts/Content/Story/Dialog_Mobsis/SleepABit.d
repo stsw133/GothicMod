@@ -1,25 +1,20 @@
 ///******************************************************************************************
-/// PC_Sleep
-///******************************************************************************************
-
-var int sleepTimer;
-
+/// MOBSI_SleepABit
 ///******************************************************************************************
 func void SleepABit_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
-		if (sleepTimer > 0)
+		if (bsRested > 0)
 		{
 			AI_UseMob (self, "BEDHIGH", -1);
-			Print("Nie jesteœ jeszcze dostatecznie zmêczony!");
+			Print(ConcatStrings(ConcatStrings("Nie jesteœ jeszcze dostatecznie zmêczony! Brakuje ", IntToString(bsRested)), " sekund."));
 			return;
 		};
 		
 		self.aivar[AIV_Invisible] = true;
-		PLAYER_MOBSI_PRODUCTION = MOBSI_SLEEPABIT;
-		AI_ProcessInfos(her);
+		PLAYER_MOBSI_PRODUCTION = MOBSI_SleepABit;
+		AI_ProcessInfos(self);
 		
 		if (bsObsession > 0)
 		{
@@ -36,6 +31,15 @@ func void SleepABit_S1()
 		//};
 	};
 };
+
+func int PC_SleepABit_Condition()
+{
+	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SleepABit)
+	{
+		return true;
+	};
+};
+
 ///******************************************************************************************
 func void PC_Sleep (var int t)
 {
@@ -62,31 +66,17 @@ func void PC_Sleep (var int t)
 	}
 	else
 	{
+		if (bsRested != IMMUNE)	{	bsRested = 400;	};	///new!!! - about 8 hours in-game
+		
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-		hero.aivar[AIV_Stamina] = hero.aivar[AIV_Stamina_MAX];
 		PrintScreen	(PRINT_SleepOver, -1, -1, FONT_Screen, 2);
-		
-		/// MOD
-		sleepTimer = 400;	/// about 8 hours in-game
 	};
+	hero.aivar[AIV_Stamina] = hero.aivar[AIV_Stamina_MAX];
 	
 	PrintGlobals(PD_ITEM_MOBSI);
 	Npc_SendPassivePerc (hero, PERC_ASSESSENTERROOM, null, hero);
-	
-	/// MOD
-	if (GregyIsYourFollower)
-	{
-		if (Npc_IsDead(Gregy) && Npc_GetDistToNpc(Gregy, hero) > (1 << 31) - 1)
-		{
-			Wld_InsertNpc (PIR_1302_Gregy, Npc_GetNearestWP(hero));
-			Gregy = Hlp_GetNpc(PIR_1302_Gregy);
-		};
-		PIR_1302_Gregy_Rise(Gregy);
-		
-		Gregy.attribute[ATR_HITPOINTS] = Gregy.attribute[ATR_HITPOINTS_MAX];
-		AI_Teleport	(Gregy, Npc_GetNearestWP(hero));
-	};
+	GregyTeleportIfTooFar(); /// MOD
 };
 
 ///******************************************************************************************
@@ -96,17 +86,10 @@ instance PC_NoSleep (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	999;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_NoSleep_Info;
 	permanent							=	true;
 	description							=	DIALOG_END;
-};
-func int PC_NoSleep_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION == MOBSI_SLEEPABIT)
-	{
-		return true;
-	};
 };
 func void PC_NoSleep_Info()
 {
@@ -128,7 +111,7 @@ func void PC_NoSleep_Info()
 instance PC_SleepTime_8 (C_Info)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_SleepTime_8_Info;
 	permanent							=	true;
 	description							=	"Odpoczywaj do rana";
@@ -144,7 +127,7 @@ func void PC_SleepTime_8_Info()
 instance PC_SleepTime_12 (C_Info)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_SleepTime_12_Info;
 	permanent							=	true;
 	description							=	"Odpoczywaj do po³udnia";
@@ -160,7 +143,7 @@ func void PC_SleepTime_12_Info()
 instance PC_SleepTime_16 (C_Info)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_SleepTime_16_Info;
 	permanent							=	true;
 	description							=	"Odpoczywaj do popo³udnia";
@@ -176,7 +159,7 @@ func void PC_SleepTime_16_Info()
 instance PC_SleepTime_20 (C_Info)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_SleepTime_20_Info;
 	permanent							=	true;
 	description							=	"Odpoczywaj do wieczora";
@@ -192,7 +175,7 @@ func void PC_SleepTime_20_Info()
 instance PC_SleepTime_0 (C_Info)
 {
 	npc									=	PC_Hero;
-	condition							=	PC_NoSleep_Condition;
+	condition							=	PC_SleepABit_Condition;
 	information							=	PC_SleepTime_0_Info;
 	permanent							=	true;
 	description							=	"Odpoczywaj do pó³nocy";

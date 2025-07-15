@@ -19,8 +19,8 @@ instance BAU_4300_Addon_Cavalorn (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
-	EquipItem (self, ItRw_Sld_Bow);
+	EquipItem (self, ItMw0_ShortSword2);
+	EquipItem (self, ItRw0_Bow_M_01);
 	CreateInvItem (self, ITAR_Leather_L);
 	
 	/// ------ Visuals ------

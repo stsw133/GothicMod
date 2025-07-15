@@ -16,8 +16,8 @@ instance BAU_984_Niclas (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_SLD_Sword);
-	EquipItem (self, itRw_SLD_BOW);
+	EquipItem (self, ItMw0_1h_SLD_Sword);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

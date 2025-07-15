@@ -72,7 +72,7 @@ func void B_SCGetTreasure_S1()
 		}
 		else if (Npc_GetDistToWP(hero, "ADW_ENTRANCE_RAKEPLACE_02") < RAKE_BUDDEL_DIST_MIN && !RAKEPLACE[13])
 		{
-			Wld_InsertItem (ItWr_StonePlate, "ADW_ENTRANCE_RAKEPLACE_02");
+			Wld_InsertItem (ItWr_StonePlate_01, "ADW_ENTRANCE_RAKEPLACE_02");
 			RAKEPLACE[13] = true;
 			Wld_InsertItem (ItMi_GoldCup, "ADW_ENTRANCE_RAKEPLACE_02");
 			RakeTreasureSuccess(ItMi_GoldCup);
@@ -180,7 +180,7 @@ func void B_SCGetTreasure_S1()
 		{
 			Wld_InsertItem (ItSe_GoldPocket25, "ADW_CANYON_RAKEPLACE_03");
 			RAKEPLACE[27] = true;
-			Wld_InsertItem (ItWr_StonePlate, "ADW_CANYON_RAKEPLACE_03");
+			Wld_InsertItem (ItWr_StonePlate_02, "ADW_CANYON_RAKEPLACE_03");
 			Wld_InsertItem (ItMi_Pitch, "ADW_CANYON_RAKEPLACE_03");
 			RakeTreasureSuccess(ItMi_Pitch);
 		}
@@ -188,7 +188,7 @@ func void B_SCGetTreasure_S1()
 		{
 			Wld_InsertItem (ItMi_SilverRing, "ADW_CANYON_RAKEPLACE_04");
 			RAKEPLACE[28] = true;
-			Wld_InsertItem (ItWr_StonePlate, "ADW_CANYON_RAKEPLACE_04");
+			Wld_InsertItem (ItWr_StonePlate_03, "ADW_CANYON_RAKEPLACE_04");
 			Wld_InsertItem (ItMi_Sulfur, "ADW_CANYON_RAKEPLACE_04");
 			RakeTreasureSuccess(ItMi_Sulfur);
 		}

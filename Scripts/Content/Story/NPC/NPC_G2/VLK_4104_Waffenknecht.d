@@ -16,7 +16,7 @@ instance VLK_4104_Waffenknecht (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Vlk_Dagger);
+	EquipItem (self, ItMw0_1H_Vlk_Dagger);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -16,7 +16,7 @@ instance PIR_1370_Addon_Angus (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR2hAxe);
+	EquipItem (self, ItMw0_Schlachtaxt);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItRi_Addon_MorgansRing_Mission);

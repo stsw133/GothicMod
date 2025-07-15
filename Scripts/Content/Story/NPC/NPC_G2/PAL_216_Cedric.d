@@ -19,7 +19,7 @@ instance Pal_216_Cedric (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Pal_Sword);
+	EquipItem (self, ItMw0_1H_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

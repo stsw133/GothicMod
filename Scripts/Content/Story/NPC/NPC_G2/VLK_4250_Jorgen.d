@@ -16,7 +16,7 @@ instance VLK_4250_Jorgen (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Axe);
+	EquipItem (self, ItMw0_1h_Bau_Axe);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

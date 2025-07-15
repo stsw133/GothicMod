@@ -16,7 +16,7 @@ instance VLK_470_Sarah (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Vlk_Sword);
+	EquipItem (self, ItMw0_1h_Vlk_Sword);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, FEMALE, BodyTex_Default, BodySkin_N, "Hum_Head_Babe", FaceBabe_N_Syra, Teeth_Pretty, ItAr_Babe_VLK_L_00);

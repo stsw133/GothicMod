@@ -16,7 +16,7 @@ instance PIR_1360_Addon_PIRAT (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Vlk_Dagger);
+	EquipItem (self, ItMw0_1h_Vlk_Dagger);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Fighter", Face_L_Ratford, Teeth_Normal, ItAr_PIR_L);

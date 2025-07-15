@@ -49,5 +49,5 @@ instance Skeleton_Dark (Mst_Default_SkeletonDark)
 {
 	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_SkeletonDark();
-	EquipItem (self, ItMw_2H_OldScythe);
+	EquipItem (self, ItMw_2h_Scythe_01);
 };

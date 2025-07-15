@@ -230,7 +230,8 @@ const int AIV_MM_Real_ID					=	43;
 	const int ID_ORC					= 1 + ID_SUMMONED_UNDEAD;
 	const int ID_ORCSOLDIER				= 1 + ID_ORC;
 	const int ID_ORCWARRIOR				= 1 + ID_ORCSOLDIER;
-	const int ID_ORCSHAMAN				= 1 + ID_ORCWARRIOR;
+	const int ID_ORCGUARDIAN			= 1 + ID_ORCWARRIOR;
+	const int ID_ORCSHAMAN				= 1 + ID_ORCGUARDIAN;
 	const int ID_ORCELITE				= 1 + ID_ORCSHAMAN;
 	const int ID_ORCCHAMPION			= 1 + ID_ORCELITE;
 	const int ID_UNDEADORCWARRIOR		= 1 + ID_ORCCHAMPION;
@@ -553,26 +554,24 @@ const int MOBSI_NONE					=	0;
 
 const int MOBSI_GoldHacken				=	1;
 const int MOBSI_OreHacken				=	2;	/// new!!!
-const int MOBSI_MakeAlcohol				=	3;	/// new!!!
-const int MOBSI_MakeJoint				=	4;	/// new!!!
-const int MOBSI_MakeRune				=	5;
-const int MOBSI_MakeScroll				=	6;	/// new!!!
-const int MOBSI_MakeTabak				=	7;	/// new!!!
-const int MOBSI_MakeWood				=	8;	/// new!!!
-const int MOBSI_MagicStone				=	9;	/// new!!!
-const int MOBSI_PotionAlchemy			=	10;
-const int MOBSI_PrayIdol				=	11;	/// extended!!!
-const int MOBSI_PrayShrine				=	12;	/// extended!!!
-const int MOBSI_SharpWeapon				=	13;	/// new!!!
-const int MOBSI_SleepAbit				=	14;
-const int MOBSI_SmithWeapon				=	15;
-const int MOBSI_UseCauldron				=	16;	/// new!!!
-const int MOBSI_UseFur					=	17;	/// new!!!
-const int MOBSI_UsePan					=	18;	/// new!!!
-const int MOBSI_UseStove				=	19;	/// new!!!
-const int MOBSI_UseWood					=	20;	/// new!!!
+const int MOBSI_MakeRune				=	3;
+const int MOBSI_MakeScroll				=	4;	/// new!!!
+const int MOBSI_MagicStone				=	5;	/// new!!!
+const int MOBSI_PotionAlchemy			=	6;
+const int MOBSI_PrayIdol				=	7;	/// extended!!!
+const int MOBSI_PrayShrine				=	8;	/// extended!!!
+const int MOBSI_RestABit				=	9;	/// new!!!
+const int MOBSI_SharpWeapon				=	10;	/// new!!!
+const int MOBSI_SleepAbit				=	11;
+const int MOBSI_SmithWeapon				=	12;
+const int MOBSI_UseCauldron				=	13;	/// new!!!
+const int MOBSI_UseHerb					=	14;	/// new!!!
+const int MOBSI_UseKnife				=	15;	/// new!!!
+const int MOBSI_UsePan					=	16;	/// new!!!
+const int MOBSI_UseStove				=	17;	/// new!!!
+const int MOBSI_UseWoodaxe				=	18;	/// new!!!
 
-const int MOBSI_LearnAttributes			=	21;	/// new!!!
+const int MOBSI_LearnAttributes			=	19;	/// new!!!
 
 var int PLAYER_MOBSI_PRODUCTION;
 

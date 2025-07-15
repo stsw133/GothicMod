@@ -1,4 +1,8 @@
 ///******************************************************************************************
+
+var int GiveAmbientInvCounter_GiantBug;
+
+///******************************************************************************************
 /// GiantBug
 ///******************************************************************************************
 prototype Mst_Default_GiantBug (C_Npc)
@@ -28,6 +32,13 @@ prototype Mst_Default_GiantBug (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	GiveAmbientInvCounter_GiantBug += 1;
+	if (GiveAmbientInvCounter_GiantBug % 3 == 0)
+	{
+		CreateInvItem (self, ItFo_Seeds);
+	};
 };
 
 ///******************************************************************************************

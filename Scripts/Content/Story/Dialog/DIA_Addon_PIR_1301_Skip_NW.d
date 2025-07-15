@@ -373,7 +373,7 @@ func void DIA_Addon_Skip_NW_Name_Info ()
 	
 	if (Npc_HasItems (other,ItWr_Map_NewWorld) == FALSE)
 	{
-		if (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments_Addon) == TRUE)
+		if (Npc_HasItems (other,ItWr_Map_NewWorld_Ornaments) == TRUE)
 		|| (Npc_HasItems (other,ItWr_Map_Shrine_MIS) == TRUE)
 		|| (Npc_HasItems (other,ItWr_Map_Caves_MIS) == TRUE)
 		{

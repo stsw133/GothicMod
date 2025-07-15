@@ -1,30 +1,36 @@
 ///******************************************************************************************
 /// C_DropUnconscious
 ///******************************************************************************************
-func int C_DropUnconscious()
+func int C_DropUnconsciousBase(var C_Npc slf, var C_Npc oth)
 {
 	/// MOD
-	//if (self.flags & NPC_FLAG_IMPORTANT)
+	//if (oth.flags & NPC_FLAG_IMPORTANT)
 	//{
-	//	return false;
+	//	return true;
 	//};
 	
 	/// ...
-	if (other.guild > GIL_SEPERATOR_HUM)
-	|| (other.guild == GIL_DMT)
-	|| (other.guild == GIL_BDT)
-	|| (other.aivar[AIV_DropDeadAndKill])
+	if (slf.guild > GIL_SEPERATOR_HUM)
+	|| (slf.guild == GIL_DMT)
+	|| (slf.guild == GIL_BDT)
+	|| (slf.aivar[AIV_DropDeadAndKill])
 	{
 		return false;
 	};
 	
-	if (self.guild < GIL_SEPERATOR_HUM)
-	&& (self.guild != GIL_DMT)
-	&& (self.guild != GIL_BDT)
-	&& (!self.aivar[AIV_DropDeadAndKill])
+	if (oth.guild < GIL_SEPERATOR_HUM)
+	&& (oth.guild != GIL_DMT)
+	&& (oth.guild != GIL_BDT)
+	&& (!oth.aivar[AIV_DropDeadAndKill])
 	{
 		return true;
 	};
 	
 	return false;
+};
+
+///******************************************************************************************
+func int C_DropUnconscious()
+{
+	return C_DropUnconsciousBase(other, self);
 };

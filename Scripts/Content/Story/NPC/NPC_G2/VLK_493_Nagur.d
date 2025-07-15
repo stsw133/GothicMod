@@ -19,7 +19,7 @@ instance VLK_493_Nagur (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Sword);
+	EquipItem (self, ItMw0_1h_VLK_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

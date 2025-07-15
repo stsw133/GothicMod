@@ -16,11 +16,11 @@ instance BDT_10400_Addon_DeadBandit (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItMi_Gold, 50);
-	CreateInvItems (self, ItWr_StonePlate, 2);	/// changed!!!
+	CreateInvItems (self, ItWr_StonePlate_01, 2);	/// changed!!!
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_L_Ian, Teeth_Normal, ItAr_BDT_M);

@@ -26,7 +26,7 @@ instance WzA_17020_Burak (Npc_Default)
 	/// ------ Weapons ------
 	//EquipItem (self, ItMw_ShortSword2);
 	//EquipItem (self, ItMw_Rapier);
-	EquipItem (self, ItMw_Pan);
+	EquipItem (self, ItMi_Pan);
 	CreateInvItem (self, ITAR_VLK_H_13);
 	
 	/// ------ Inventory ------

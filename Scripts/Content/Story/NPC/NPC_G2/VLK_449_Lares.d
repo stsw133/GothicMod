@@ -22,7 +22,7 @@ instance VLK_449_Lares (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Schwert3);
+	EquipItem (self, ItMw0_Schwert3);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItMw_Schwert3);

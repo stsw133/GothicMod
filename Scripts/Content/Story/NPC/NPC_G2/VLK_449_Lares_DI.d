@@ -22,7 +22,7 @@ instance VLK_449_Lares_DI (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_SLD_Sword);
+	EquipItem (self, ItMw0_1h_SLD_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

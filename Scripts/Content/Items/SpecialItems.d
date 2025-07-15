@@ -97,6 +97,7 @@ instance ItLsTorchFirespit (ItemPR_Instrument)
 {
 	visual						=	"ITLSTORCHBURNING.zen";
 	scemeName					=	"FIRESPIT";
+	description					=	name;
 };
 
 ///******************************************************************************************

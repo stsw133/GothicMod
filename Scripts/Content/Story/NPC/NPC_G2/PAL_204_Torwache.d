@@ -20,7 +20,7 @@ instance Pal_204_Torwache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_Pal_Sword);
+	EquipItem (self, ItMw0_2H_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
@@ -36,6 +36,6 @@ instance Pal_204_Torwache (Npc_Default)
 
 func void Rtn_Start_204()
 {
-	TA_Guard_Passage	(08,00, 23,00, "NW_CITYHALL_GUARD_01");
-	TA_Guard_Passage	(23,00, 08,00, "NW_CITYHALL_GUARD_01");
+	TA_Stand_Halberd	(08,00, 23,00, "NW_CITYHALL_GUARD_01");
+	TA_Stand_Halberd	(23,00, 08,00, "NW_CITYHALL_GUARD_01");
 };

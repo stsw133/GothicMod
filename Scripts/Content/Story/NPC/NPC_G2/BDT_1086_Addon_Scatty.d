@@ -16,7 +16,7 @@ instance BDT_1086_Addon_Scatty (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Schwert5);
+	EquipItem (self, ItMw0_Schwert5);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItMi_GoldNugget_Addon, 5);

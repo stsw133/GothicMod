@@ -19,7 +19,7 @@ instance VLK_4301_Addon_Farim (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
 	CreateInvItem (self, ItMi_Aquamarine);
 	
 	/// ------ Inventory ------

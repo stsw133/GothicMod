@@ -16,8 +16,8 @@ instance PIR_1368_Addon_Malcom (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR1hAxe);
-	CreateInvItem (self, ItWr_StonePlate);	/// changed!!!
+	EquipItem (self, ItMw0_Schiffsaxt);
+	CreateInvItem (self, ItWr_StonePlate_05);	/// changed!!!
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Pony", Face_N_Normal_Sly, Teeth_Normal, ItAr_PIR_L);

@@ -38,7 +38,7 @@ func void SetItHeAttributes (var C_Item itm, var int sr, var int pr, var int fr,
 instance ItHe_Cap (ItemPR_Helm)
 {
 	name						=	"Czapka";
-	visual						=	"ItHe_Cap.3DS";
+	visual						=	"ItHe_Cap.3ds";
 	material					=	MAT_LEATHER;
 	SetItHeAttributes (self, 0,0,0,5);	/// 5 level
 };
@@ -54,9 +54,9 @@ instance ItHe_Hat (ItemPR_Helm)
 instance ItHe_Spectacles (ItemPR_Helm)
 {
 	name						=	"Okulary";
-	visual						=	"ItHe_Spectacles.3DS";
+	visual						=	"ItHe_Spectacles.3ds";
 	material					=	MAT_GLAS;
-	SetItHeAttributes (self, 0,0,5,0);	/// 5 level
+	SetItHeAttributes (self, 0,5,0,0);	/// 5 level
 };
 
 ///******************************************************************************************
@@ -257,7 +257,7 @@ instance ItHe_Slave (ItemPR_Helm)
 {
 	name						=	"Kajdany";
 	visual						=	"ItHe_Slave.3ds";
-	SetItHeAttributes (self, 1,1,1,1);	/// 4 level
+	SetItHeAttributes (self, 1,1,1,0);	/// 3 level
 };
 
 ///******************************************************************************************
@@ -303,7 +303,7 @@ instance ItHe_SteamKnight (ItemPR_Helm)
 instance ItHe_ChristmasCap (ItemPR_Helm)
 {
 	name						=	"Czapka";
-	visual						=	"ItHe_ChristmasCap.3DS";
+	visual						=	"ItHe_ChristmasCap.3ds";
 	material					=	MAT_LEATHER;
 	description					=	"Œwi¹teczna czapka";
 	SetItHeAttributes (self, 0,0,0,5);	/// 5 level

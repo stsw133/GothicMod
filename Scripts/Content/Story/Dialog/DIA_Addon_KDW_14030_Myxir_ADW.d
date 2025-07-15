@@ -283,7 +283,7 @@ func void DIA_Addon_Myxir_ADW_Teach_Info()
 	
 	Info_ClearChoices (DIA_Addon_Myxir_ADW_Teach);
 	Info_AddChoice (DIA_Addon_Myxir_ADW_Teach,DIALOG_BACK,DIA_Addon_Myxir_ADW_Teach_BACK);
-	Info_AddChoice (DIA_Addon_Myxir_ADW_Teach, B_BuildLearnString(PRINT_LearnLanguage, B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, true), default),DIA_Addon_Myxir_ADW_Teach_LANGUAGE);
+	Info_AddChoice (DIA_Addon_Myxir_ADW_Teach, B_BuildLearnString(PRINT_LearnLanguage, B_GetLearnCostTalent(other, NPC_TALENT_LANGUAGE, 1), GOLD_PER_LP),DIA_Addon_Myxir_ADW_Teach_LANGUAGE);
 };
 
 func void DIA_Addon_Myxir_ADW_Teach_BACK()
@@ -292,7 +292,7 @@ func void DIA_Addon_Myxir_ADW_Teach_BACK()
 };
 func void DIA_Addon_Myxir_ADW_Teach_LANGUAGE()
 {
-	if (B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, true))
+	if (B_TeachTalent(self, other, NPC_TALENT_LANGUAGE, 1, GOLD_PER_LP))
 	{
 		AI_Output (self, other, "DIA_Addon_Myxir_TeachL1_12_01"); //Teksty pisane w jêzyku wieœniaków traktuj¹ zwykle o sprawach przyziemnych: pracy, mi³oœci, zaopatrzeniu czy ¿ywnoœci.
 		AI_Output (self, other, "DIA_Addon_Myxir_TeachL2_12_01"); //Teksty pisane w jêzyku wojowników dotycz¹ zwykle wojny i broni. Nauczysz siê wielu przydatnych rzeczy.

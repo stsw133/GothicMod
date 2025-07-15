@@ -45,5 +45,5 @@ func void B_SetVisuals_Goblin()
 instance Gobbo (Mst_Default_Goblin)
 {
 	B_SetVisuals_Goblin();
-	EquipItem (self, ItMw_1h_Goblin_01);
+	EquipItem (self, ItMw_1h_GobboMace_01);
 };

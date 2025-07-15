@@ -185,9 +185,9 @@ func int ZS_MM_Attack_Loop()
 	|| (self.guild == GIL_SUMMONED_SKELETON)
 	|| (self.guild > GIL_SEPERATOR_ORC)
 	{
-		B_CreateAmmo(self);
+		B_CreateAmmo		(self);
 		Npc_ChangeAttribute	(self, ATR_MANA, ATR_MANA_MAX);
-		B_SelectWeapon (self, other);
+		B_SelectWeapon		(self, other);
 	};
 	
 	if (Hlp_IsValidNpc(other))

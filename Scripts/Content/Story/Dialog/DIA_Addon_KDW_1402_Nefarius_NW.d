@@ -138,8 +138,8 @@ func void DIA_Addon_Nefarius_SCbringOrnaments_Info ()
 	AI_Output	(self, other, "DIA_Addon_Nefarius_SCbringOrnaments_05_05"); //Z pomoc¹ Merdariona przet³umaczy³em niektóre inskrypcje.
 	AI_Output	(self, other, "DIA_Addon_Nefarius_SCbringOrnaments_05_06"); //Zawieraj¹ wskazówki co do miejsca ukrycia fragmentów.
 	AI_Output	(self, other, "DIA_Addon_Nefarius_SCbringOrnaments_05_07"); //Masz. Zaznaczy³em niektóre miejsca na tej mapie.
-	CreateInvItems (self, ItWr_Map_NewWorld_Ornaments_Addon, 1);									
-	B_GiveInvItems (self, other, ItWr_Map_NewWorld_Ornaments_Addon, 1);		
+	CreateInvItems (self, ItWr_Map_NewWorld_Ornaments, 1);									
+	B_GiveInvItems (self, other, ItWr_Map_NewWorld_Ornaments, 1);		
 	MIS_Addon_Nefarius_BringMissingOrnaments = LOG_RUNNING;
 
 	Log_CreateTopic (TOPIC_Addon_Ornament, LOG_MISSION);

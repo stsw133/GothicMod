@@ -16,7 +16,7 @@ instance PIR_1371_Addon_Hank (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR1hSword);
+	EquipItem (self, ItMw0_Piratensaebel);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Lefty, Teeth_Normal, ItAr_PIR_L);

@@ -16,7 +16,7 @@ instance None_101_Mario (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_SLD_SWORD);
+	EquipItem (self, ItMw0_2h_SLD_SWORD);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

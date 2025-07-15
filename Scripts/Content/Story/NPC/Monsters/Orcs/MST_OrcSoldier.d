@@ -7,7 +7,7 @@ prototype Mst_Default_OrcSoldier (C_Npc)
 	name								=	"Ork-¿o³nierz";
 	voice								=	18;
 	guild								=	GIL_ORC;
-	aivar[AIV_MM_REAL_ID]				=	ID_ORCWARRIOR;
+	aivar[AIV_MM_REAL_ID]				=	ID_ORCSOLDIER;
 	aivar[AIV_FaceTex]					=	Hlp_Random(12);
 	
 	/// ------ Attributes & FT ------

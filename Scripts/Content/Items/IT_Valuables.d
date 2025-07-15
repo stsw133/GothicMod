@@ -37,7 +37,7 @@ instance ItMi_AncientCoin (ItemPR_Coin)
 	visual						=	"ItMi_Coin_01.3ds";
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywane w staro¿ytnej cywilizacji.";
+	TEXT[0]						=	"U¿ywane w staro¿ytnej cywilizacji.";
 	TEXT[1]						=	"Chêtnie skupowane przez kolekcjonerów.";
 };
 
@@ -47,7 +47,7 @@ instance ItMi_FortuneCoin (ItemPR_Coin)
 	visual						=	"ItMi_Coin_02.3ds";
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywane w staro¿ytnej cywilizacji.";
+	TEXT[0]						=	"U¿ywane w staro¿ytnej cywilizacji.";
 	TEXT[1]						=	"Chêtnie skupowane przez kolekcjonerów.";
 };
 
@@ -57,7 +57,7 @@ instance ItMi_OrcCoin (ItemPR_Coin)
 	visual						=	"ItMi_Coin_03.3ds";
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywane przez orków do handlu.";
+	TEXT[0]						=	"U¿ywane przez orków do handlu.";
 };
 
 ///******************************************************************************************
@@ -77,6 +77,20 @@ prototype ItemPR_GoldPocket (C_Item)
 };
 
 ///******************************************************************************************
+instance ItSe_GoldPocket10 (ItemPR_GoldPocket)
+{
+	value						=	10;
+	visual						=	"ItMi_Pocket.3ds";
+	on_state[0]					=	Use_ItSe_GoldPocket10;
+	COUNT[5]					=	value;
+};
+func void Use_ItSe_GoldPocket10()
+{
+	var int items; items = Npc_HasItems(self, ItSe_GoldPocket10);
+	Npc_RemoveInvItems (self, ItSe_GoldPocket10, items);
+	B_PlayerFindItem (ItMi_Gold, items*10 + 10);
+};
+
 instance ItSe_GoldPocket25 (ItemPR_GoldPocket)
 {
 	value						=	25;
@@ -158,8 +172,7 @@ instance ItMi_SilverNugget (ItemPR_Nugget)
 	visual						=	"ItMi_SilverNugget.3ds";
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywana jako sk³adnik";
-	TEXT[2]						=	"tworzenia wyrobów ze srebra.";
+	TEXT[0]						=	"Sk³adnik wyrobów ze srebra.";
 	COUNT[5]					=	value;
 };
 
@@ -228,8 +241,7 @@ instance ItMi_GoldNugget_Addon (ItemPR_Nugget)
 	visual						=	"ItMi_GoldNugget.3ds";
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywana jako sk³adnik";
-	TEXT[2]						=	"tworzenia wyrobów ze z³ota.";
+	TEXT[0]						=	"Sk³adnik wyrobów ze z³ota.";
 	COUNT[5]					=	value;
 };
 
@@ -280,8 +292,19 @@ instance ItMi_GoldRing (ItemPR_GoldMisc)
 };
 
 ///******************************************************************************************
-/// Chests
+/// Valuables
 ///******************************************************************************************
+instance ItMi_InnosStatue (ItemPR_Misc)
+{
+	name						=	"Pos¹¿ek Innosa";
+	value						=	100;
+	visual						=	"ItMi_InnosStatue.3ds";
+	material					=	MAT_METAL;
+	
+	description					=	name;
+	COUNT[5]					=	value;
+};
+
 instance ItMi_GoldChest (ItemPR_Misc)
 {
 	name						=	"Z³ota skrzyneczka";
@@ -315,8 +338,8 @@ instance ItMi_Aquamarine (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywany jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -328,9 +351,13 @@ instance ItMi_Emerald (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywany jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	75;
+	INV_ROTY					=	180;
+	INV_ROTZ					=	180;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 instance ItMi_Ruby (ItemPR_Misc)
@@ -341,9 +368,13 @@ instance ItMi_Ruby (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywany jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	75;
+	INV_ROTY					=	180;
+	INV_ROTZ					=	180;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 instance ItMi_Diamond (ItemPR_Misc)
@@ -354,8 +385,8 @@ instance ItMi_Diamond (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywany jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -370,8 +401,8 @@ instance ItMi_WhitePearl (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywana jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
@@ -384,14 +415,14 @@ instance ItMi_DarkPearl (ItemPR_Misc)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywana jako sk³adnik";
-	TEXT[2]						=	"tworzenia niektórych run.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 ///******************************************************************************************
-/// Shells
+/// Containers
 ///******************************************************************************************
 instance ItMi_Shell (ItemPR_Misc)
 {
@@ -404,8 +435,8 @@ instance ItMi_Shell (ItemPR_Misc)
 	on_state[0]					=	Use_ItMi_Shell;
 	
 	description					=	name;
-	TEXT[1]						=	"Mo¿e zawieraæ per³ê lub";
-	TEXT[2]						=	"rzadziej czarn¹ per³ê.";
+	TEXT[0]						=	"Mo¿e zawieraæ per³ê lub";
+	TEXT[1]						=	"rzadziej czarn¹ per³ê.";
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC2_STANDARD;
 };
@@ -447,8 +478,6 @@ func void Use_ItMi_Shell()
 };
 
 ///******************************************************************************************
-/// Secret fish
-///******************************************************************************************
 instance ItSe_BigFish (ItemPR_Misc)
 {
 	name						=	"Ciê¿ka ryba";
@@ -460,7 +489,7 @@ instance ItSe_BigFish (ItemPR_Misc)
 	on_state[0]					=	Use_ItSe_BigFish;
 	
 	description					=	name;
-	TEXT[2]						=	"W tej rybie coœ schowano.";
+	TEXT[0]						=	"W tej rybie coœ schowano.";
 	COUNT[5]					=	value;
 };
 func void Use_ItSe_BigFish()
@@ -525,8 +554,6 @@ func void Use_ItSe_BigFish()
 };
 
 ///******************************************************************************************
-/// Old chests
-///******************************************************************************************
 instance ItSe_OldChest (ItemPR_Misc)
 {
 	name						=	"Stara skrzynka";
@@ -538,7 +565,7 @@ instance ItSe_OldChest (ItemPR_Misc)
 	on_state[0]					=	Use_ItSe_OldChest;
 	
 	description					=	name;
-	TEXT[2]						=	"W tej skrzynce coœ schowano.";
+	TEXT[0]						=	"W tej skrzynce coœ schowano.";
 	COUNT[5]					=	value;
 };
 func void Use_ItSe_OldChest()
@@ -561,258 +588,264 @@ func void Use_ItSe_OldChest()
 	};
 	
 	var int items; items = Npc_HasItems(self, ItSe_OldChest);
+	//var int lockpicks; lockpicks = Npc_HasItems(self, ItKe_Lockpick);
+	//if (items > lockpicks)
+	//{
+	//	items = lockpicks;
+	//};
 	Npc_RemoveInvItems (self, ItSe_OldChest, items);
+	//Npc_RemoveInvItems (self, ItKe_Lockpick, items);
 	
 	var int i;
 	repeat(i, items + 1);
 	OldChest_Opener += 1;
 	
-	if (OldChest_Opener == 1)
+	if (OldChest_Opener == 1)		/// 60 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 2)
+	else if (OldChest_Opener == 2)	/// 70 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 3)
+	else if (OldChest_Opener == 3)	/// 80 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 4)
+	else if (OldChest_Opener == 4)	/// 90 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 5)
+	else if (OldChest_Opener == 5)	/// 100 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 6)
+	else if (OldChest_Opener == 6)	/// 110 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 7)
+	else if (OldChest_Opener == 7)	/// 120 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 8)
+	else if (OldChest_Opener == 8)	/// 130 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 9)
+	else if (OldChest_Opener == 9)	/// 140 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 10)
+	else if (OldChest_Opener == 10)	/// 150 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 11)
+	else if (OldChest_Opener == 11)	/// 160 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 12)
+	else if (OldChest_Opener == 12)	/// 170 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 13)
+	else if (OldChest_Opener == 13)	/// 180 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 14)
+	else if (OldChest_Opener == 14)	/// 190 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 15)
+	else if (OldChest_Opener == 15)	/// 200 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 16)
+	else if (OldChest_Opener == 16)	/// 210 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 17)
+	else if (OldChest_Opener == 17)	/// 220 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 18)
+	else if (OldChest_Opener == 18)	/// 230 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 19)
+	else if (OldChest_Opener == 19)	/// 240 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 20)
+	else if (OldChest_Opener == 20)	/// 250 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 21)
+	else if (OldChest_Opener == 21)	/// 260 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 22)
+	else if (OldChest_Opener == 22)	/// 270 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 23)
+	else if (OldChest_Opener == 23)	/// 280 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 24)
+	else if (OldChest_Opener == 24)	/// 290 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 25)
+	else if (OldChest_Opener == 25)	/// 300 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 26)
+	else if (OldChest_Opener == 26)	/// 310 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 27)
+	else if (OldChest_Opener == 27)	/// 320 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 28)
+	else if (OldChest_Opener == 28)	/// 330 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 29)
+	else if (OldChest_Opener == 29)	/// 340 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 30)
+	else if (OldChest_Opener == 30)	/// 350 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 31)
+	else if (OldChest_Opener == 31)	/// 360 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 32)
+	else if (OldChest_Opener == 32)	/// 370 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 33)
+	else if (OldChest_Opener == 33)	/// 380 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 34)
+	else if (OldChest_Opener == 34)	/// 390 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 35)
+	else if (OldChest_Opener == 35)	/// 400 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 36)
+	else if (OldChest_Opener == 36)	/// 410 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 37)
+	else if (OldChest_Opener == 37)	/// 420 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 38)
+	else if (OldChest_Opener == 38)	/// 430 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 39)
+	else if (OldChest_Opener == 39)	/// 440 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 40)
+	else if (OldChest_Opener == 40)	/// 450 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 41)
+	else if (OldChest_Opener == 41)	/// 460 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 42)
+	else if (OldChest_Opener == 42)	/// 470 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 43)
+	else if (OldChest_Opener == 43)	/// 480 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 44)
+	else if (OldChest_Opener == 44)	/// 490 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 45)
+	else if (OldChest_Opener == 45)	/// 500 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 46)
+	else if (OldChest_Opener == 46)	/// 510 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 47)
+	else if (OldChest_Opener == 47)	/// 520 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 48)
+	else if (OldChest_Opener == 48)	/// 530 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 49)
+	else if (OldChest_Opener == 49)	/// 540 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
-	else if (OldChest_Opener == 50)
+	else if (OldChest_Opener == 50)	/// 550 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);

@@ -16,7 +16,7 @@ instance PIR_1350_Addon_Francis (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Schwert1); 
+	EquipItem (self, ItMw0_Schwert1);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItKe_Greg_ADDON_MIS);

@@ -16,7 +16,7 @@ instance Mil_337_Mika (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Mil_Sword);
+	EquipItem (self, ItMw0_1h_Mil_Sword);
 	CreateInvItems (self, ItPo_Health_01, 4);
 	
 	/// ------ Inventory ------

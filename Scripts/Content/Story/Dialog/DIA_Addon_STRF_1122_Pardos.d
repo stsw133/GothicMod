@@ -113,7 +113,7 @@ FUNC VOID DIA_Addon_Pardos_trank_Info()
 	{
 		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj eliksir leczniczy",DIA_Addon_Pardos_trank_03);
 	};
-	if Npc_HasItems (other, ItFo_Addon_Meatsoup)
+	if Npc_HasItems (other, ItFo_MeatStew)
 	{
 		Info_AddChoice (DIA_Addon_Pardos_trank,"Daj gulasz miêsny",DIA_Addon_Pardos_trank_Soup);
 	};
@@ -172,9 +172,9 @@ FUNC VOID DIA_Addon_Pardos_trank_Soup()
 {
 	AI_Output (other, self, "DIA_Addon_Pardos_trank_soup_15_00");//Zjedz trochê gulaszu.
 	
-	if B_GiveInvItems (other, self, ItFo_Addon_Meatsoup,1)
+	if B_GiveInvItems (other, self, ItFo_MeatStew,1)
 	{
-		B_UseItem 	(self,ItFo_Addon_Meatsoup);
+		B_UseItem 	(self,ItFo_MeatStew);
 	};	
 	AI_Output (self, other, "DIA_Addon_Pardos_trank_03_01");//Dziêkujê. Powinienem szybko odzyskaæ si³y.
 	B_GivePlayerExp(400);

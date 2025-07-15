@@ -16,7 +16,7 @@ instance BDT_10021_Addon_Wache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Zweihaender4);
+	EquipItem (self, ItMw0_Zweihaender4);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

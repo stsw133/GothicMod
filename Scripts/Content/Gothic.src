@@ -114,6 +114,7 @@ AI\HUMAN\B_Human\B_CallGuards.d
 AI\HUMAN\B_Human\B_CreateAmmo.d
 
 AI\HUMAN\C_Human\C_WantToAttack.d
+AI\MONSTER\C_Monster\*.d
 
 AI\MAGIC\B_MagicFn.d
 AI\MAGIC\B_ReadySpell.d
@@ -154,6 +155,7 @@ STORY\B_AssignAmbientInfos\B_AssignAmbientInfos_*.d
 STORY\B_AssignAmbientInfos\B_AssignReactions.d
 STORY\B_AssignAmbientInfos\B_AssignCityGuide.d
 STORY\B_AssignAmbientInfos\B_AssignAmbientInfos.d
+STORY\B_AssignAmbientInfos\B_Gregy.d
 
 AI\MAGIC\B_AssessMagic.d
 AI\MAGIC\C_CanNpcCollideWithSpell.d
@@ -226,18 +228,6 @@ STORY\B_AssignAmbientInfos\B_NpcObsessedByDMT.d
 STORY\B_AssignAmbientInfos\B_LastWarningVatras.d
 STORY\B_Content\B_GregIsBack.d
 
-STORY\B_Story\B_ENTER_ADDONWORLD.d
-STORY\B_Story\B_ENTER_OLDWORLD.d
-STORY\B_Story\B_ENTER_NEWWORLD.d
-STORY\B_Story\B_ChangeChapter.d
-STORY\B_Content\B_CaptainConditions.d
-STORY\B_Content\B_CaptainCallsAllOnBoard.d
-STORY\B_Content\B_PiratesGoHome.d
-
-STORY\DIALOG\*.d
-STORY\B_AssignAmbientInfos\*.d
-
-AI\MONSTER\C_Monster\*.d
 AI\MONSTER\B_Monster\B_MonsterAttitudes.d
 AI\MONSTER\B_Monster\B_MM_AssessBody.d
 AI\MONSTER\B_Monster\B_MM_AssessDamage.d
@@ -249,8 +239,15 @@ AI\MONSTER\Rtn_Monster\ZS_MM_Rtn_*.d
 AI\MONSTER\Rtn_Monster\ZS_MM_AllScheduler.d
 AI\MONSTER\ZS_Monster\*.d
 
+STORY\B_Story\B_ENTER_*.d
+STORY\B_Story\B_ChangeChapter.d
+STORY\B_Content\B_CaptainConditions.d
+STORY\B_Content\B_CaptainCallsAllOnBoard.d
+STORY\B_Content\B_PiratesGoHome.d
+
+STORY\DIALOG\*.d
+STORY\B_AssignAmbientInfos\*.d
 STORY\Events\*.d
-STORY\B_Story\B_ENTER_DRAGONISLAND.d
 
 MOD\MOD_Assassination.d
 MOD\MOD_Bars.d

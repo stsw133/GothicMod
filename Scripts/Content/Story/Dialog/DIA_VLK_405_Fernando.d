@@ -166,7 +166,7 @@ func int DIA_Addon_Fernando_BanditTrader_Condition ()
 	if (Npc_KnowsInfo (other, DIA_Fernando_Hello))
 	&& (NpcObsessedByDMT_Fernando == FALSE)
 	&& 	(
-		(Npc_HasItems (other,ItMw_Addon_BanditTrader))
+		(Npc_HasItems (other,ItMw_BanditTrader))
 		||(Npc_HasItems (other,ItRi_Addon_BanditTrader))
 		||((Npc_HasItems (other,ItWr_Addon_BanditTrader))&&(BanditTrader_Lieferung_Gelesen == TRUE))
 		)
@@ -194,12 +194,12 @@ func void DIA_Addon_Fernando_BanditTrader_Info ()
 	{
 		AI_Output	(other, self, "DIA_Addon_Fernando_BanditTrader_15_03"); //Mam te¿ pierœcieñ gildii kupców zamorskich Araxos - a ty jesteœ przecie¿ kupcem zamorskim, prawda?
 
-		if	(Npc_HasItems (other,ItMw_Addon_BanditTrader))
+		if	(Npc_HasItems (other,ItMw_BanditTrader))
 		{
 		AI_Output	(other, self, "DIA_Addon_Fernando_BanditTrader_15_04"); //Nie mówi¹c ju¿ o tym, ¿e bandyckie miecze s¹ oznaczone twoimi inicja³ami.
 		};
 	}
-	else //nur (Npc_HasItems (other,ItMw_Addon_BanditTrader))
+	else //nur (Npc_HasItems (other,ItMw_BanditTrader))
 	{
 		AI_Output	(other, self, "DIA_Addon_Fernando_BanditTrader_15_05"); //Miecze, których u¿ywali bandyci, by³y oznaczone twoimi inicja³ami.
 	};
@@ -258,7 +258,7 @@ func void DIA_Addon_Fernando_BanditTrader_ja ()
 { 
 	AI_Output			(other, self, "DIA_Addon_Fernando_BanditTrader_ja_15_00"); //Dobra, umowa stoi.
 	B_GivePlayerExp(100);
-	Npc_RemoveInvItems	(hero ,ItMw_Addon_BanditTrader, Npc_HasItems (other,ItMw_Addon_BanditTrader));
+	Npc_RemoveInvItems	(hero ,ItMw_BanditTrader, Npc_HasItems (other,ItMw_BanditTrader));
 	Npc_RemoveInvItem	(hero ,ItRi_Addon_BanditTrader);
 	Npc_RemoveInvItem	(hero ,ItWr_Addon_BanditTrader);
 

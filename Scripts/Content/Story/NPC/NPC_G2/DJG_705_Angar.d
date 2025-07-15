@@ -16,7 +16,7 @@ instance DJG_705_Angar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Zweihaender2);
+	EquipItem (self, ItMw0_Zweihaender2);
 	CreateInvItems (self, ItPo_Health_03, 6);
 	CreateInvItem (self, ItMi_OldCoin);
 	

@@ -239,7 +239,7 @@ FUNC VOID DIA_Alrik_WannaFight_Info()
 	Info_ClearChoices 	(DIA_Alrik_WannaFight);
 	
 	// ------ EXIT: Wenn Alrik schonmal verloren, nächster Kampf erst, wenn Alrik das bessere Schwert hat ------
-	if ( (Alrik_ArenaKampfVerloren > 0) && (Npc_HasItems (self, ItMW_AlriksSword_Mis) == 0) )
+	if ( (Alrik_ArenaKampfVerloren > 0) && (Npc_HasItems (self, ItMw_AlriksSword) == 0) )
 	|| (Npc_HasEquippedMeleeWeapon (self) == FALSE)
 	{
 		if (MIS_Alrik_Sword == LOG_SUCCESS) //Wenn nach Schwert-Mission niedergeschlagen und Schwert weggenommen
@@ -574,7 +574,7 @@ INSTANCE DIA_Alrik_HaveSword(C_INFO)
 
 FUNC INT DIA_Alrik_HaveSword_Condition()
 {
-	IF (Npc_HasItems (other,ItMw_AlriksSword_Mis) > 0)
+	IF (Npc_HasItems (other,ItMw_AlriksSword) > 0)
 	{
 		return TRUE;
 	};	
@@ -583,7 +583,7 @@ FUNC INT DIA_Alrik_HaveSword_Condition()
 FUNC VOID DIA_Alrik_HaveSword_Info()
 {	
 	AI_Output (other,self ,"DIA_Alrik_HaveSword_15_00"); //Mam twój miecz!
-	B_GiveInvItems (other,self,ItMW_AlriksSword_Mis,1);
+	B_GiveInvItems (other,self,ItMw_AlriksSword,1);
 	
 	if (MIS_Alrik_Sword != LOG_SUCCESS)
 	{

@@ -16,7 +16,7 @@ instance VLK_403_Gerbrandt (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Vlk_Mace);
+	EquipItem (self, ItMw0_1h_Vlk_Mace);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

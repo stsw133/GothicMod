@@ -16,7 +16,7 @@ instance BDT_10004_Addon_Finn (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Axe_L_01);
+	EquipItem (self, ItMw0_2h_Axe_L_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

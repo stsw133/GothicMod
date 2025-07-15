@@ -21,7 +21,7 @@ instance PAL_2002_Leiche (Npc_Default)
 	/// ------ Inventory ------
 	CreateInvItem (self, ItWr_Silvestro_MIS);
 	CreateInvItems (self, ItPO_Mana_02, 2);
-	CreateInvItems (self, ItmI_Gold, 100);
+	CreateInvItems (self, ItMi_Gold, 100);
 	CreateInvItems (self, ItPo_Health_02, 2);
 	
 	/// ------ Visuals ------

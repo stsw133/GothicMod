@@ -18,9 +18,11 @@ instance VLK_471_Edda (Npc_Default)
 	/// ------ FT ------
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
+	/// ------ Weapons ------
+	EquipItem (self, ItMw0_1h_Vlk_Dagger);
+	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
-	EquipItem (self, ItMw_1h_Vlk_Dagger);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, FEMALE, BodyTex_Default, BodySkin_B, "Hum_Head_Babe", FaceBabe_B_Chani, Teeth_Pretty, ItAr_Babe_VLK_L_03);

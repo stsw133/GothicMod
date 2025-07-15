@@ -22,20 +22,18 @@ func int B_GetLearnCostAttribute (var C_Npc oth, var int attrib, var int points)
 	
 	var int i; i = 0;
 	repeat(i, points);
-		if (currentValue >= 200)
+		if (currentValue >= 100)
+		&& ((oth.guild == GIL_MIL && attrib == ATR_HITPOINTS_MAX)
+		 || (oth.guild == GIL_PAL && attrib == ATR_MANA_MAX)
+		 || (oth.guild == GIL_DJG && attrib == ATR_STRENGTH)
+		 || (oth.guild == GIL_SLD && attrib == ATR_DEXTERITY)
+		 || (oth.guild == GIL_KDF && attrib == ATR_POWER))
 		{
-			if (oth.guild == GIL_MIL && attrib == ATR_HITPOINTS_MAX)
-			|| (oth.guild == GIL_PAL && attrib == ATR_MANA_MAX)
-			|| (oth.guild == GIL_DJG && attrib == ATR_STRENGTH)
-			|| (oth.guild == GIL_SLD && attrib == ATR_DEXTERITY)
-			|| (oth.guild == GIL_KDF && attrib == ATR_POWER)
-			{
-				multiplier = 4;
-			}
-			else
-			{
-				multiplier = 5;
-			};
+			multiplier = 3;
+		}
+		else if (currentValue >= 200)
+		{
+			multiplier = 5;
 		}
 		else if (currentValue >= 150)
 		{
@@ -70,27 +68,24 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	/// FIGHT
 	if (talent < MAX_HITCHANCE)
 	{
-		kosten = 1;
+		kosten = skill;
 	}
-	else if (talent == NPC_TALENT_DUAL)
-	{
-		kosten = 30;
-	}
-	else if (talent == NPC_TALENT_SHIELD)
+	else if	(talent == NPC_TALENT_DUAL)
+	||		(talent == NPC_TALENT_SHIELD)
 	{
 		kosten = 30;
 	}
 	/// MAGIC
-	else if (talent == NPC_TALENT_MAGIC)
+	else if	(talent == NPC_TALENT_MAGIC)
 	{
 		kosten = 25;
 	}
-	else if (talent == NPC_TALENT_LANGUAGE)
+	else if	(talent == NPC_TALENT_LANGUAGE)
 	{
 		kosten = 10;
 	}
 	/*
-	else if (talent == NPC_TALENT_WISPDETECTOR)
+	else if	(talent == NPC_TALENT_WISPDETECTOR)
 	{
 		if		(skill == WISPSKILL_NF)				{	kosten = 0;		}
 		else if	(skill == WISPSKILL_FF)				{	kosten = 1;		}
@@ -100,68 +95,35 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		else if	(skill == WISPSKILL_FOOD)			{	kosten = 1;		}
 		else if	(skill == WISPSKILL_POTIONS)		{	kosten = 1;		};
 	}
-	/// MOVEMENT
-	else if (talent == NPC_TALENT_SNEAK)
-	{
-		kosten = 5;
-	}
-	else if (talent == NPC_TALENT_ACROBATIC)
-	{
-		kosten = 5;
-	}
 	*/
-	/// THIEF
-	else if (talent == NPC_TALENT_PICKLOCK)
+	/// MOVEMENT
+	else if	(talent == NPC_TALENT_SNEAK)
+	||		(talent == NPC_TALENT_ACROBATIC)
 	{
-		kosten = 10;
+		kosten = 5;
 	}
-	else if (talent == NPC_TALENT_PICKPOCKET)
+	/// THIEVERY
+	else if	(talent == NPC_TALENT_PICKLOCK)
+	||		(talent == NPC_TALENT_PICKPOCKET)
+	||		(talent == NPC_TALENT_PERSUASION)
 	{
-		kosten = 10;
+		var int thiefTalents; thiefTalents = Npc_GetTalentSkill(other, NPC_TALENT_PICKLOCK)
+										   + Npc_GetTalentSkill(other, NPC_TALENT_PICKPOCKET)
+										   + Npc_GetTalentSkill(other, NPC_TALENT_PERSUASION);
+		
+		if		(thiefTalents < 1)					{	kosten = 10;	}
+		else if	(thiefTalents < 2)					{	kosten = 20;	}
+		else if	(thiefTalents < 3)					{	kosten = 30;	};
 	}
-	else if (talent == NPC_TALENT_PERSUASION)
+	/// CRAFTS
+	else if	(talent == NPC_TALENT_FLETCHERY)
+	||		(talent == NPC_TALENT_SMITH)
+	||		(talent == NPC_TALENT_ENCHANTING)
+	||		(talent == NPC_TALENT_ALCHEMY)
 	{
-		kosten = 10;
-	}
-	/// FLETCHERY
-	else if (talent == NPC_TALENT_FLETCHERY)
-	{
-		kosten = 1;
-		/*
-		if		(skill == 1)	{	kosten = 5;		}
-		else if	(skill == 2)	{	kosten = 10;	}
-		else if	(skill == 3)	{	kosten = 15;	};
-		*/
-	}
-	/// SMITH
-	else if (talent == NPC_TALENT_SMITH)
-	{
-		kosten = 1;
-		/*
-		if		(skill == 1)	{	kosten = 5;		}
-		else if	(skill == 2)	{	kosten = 10;	}
-		else if	(skill == 3)	{	kosten = 15;	};
-		*/
-	}
-	/// ENCHANTING
-	else if (talent == NPC_TALENT_ENCHANTING)
-	{
-		kosten = 1;
-		/*
-		if		(skill == 1)	{	kosten = 5;		}
-		else if	(skill == 2)	{	kosten = 10;	}
-		else if	(skill == 3)	{	kosten = 15;	};
-		*/
-	}
-	/// ALCHEMY
-	else if (talent == NPC_TALENT_ALCHEMY)
-	{
-		kosten = 1;
-		/*
-		if		(skill == 1)	{	kosten = 5;		}
-		else if	(skill == 2)	{	kosten = 10;	}
-		else if	(skill == 3)	{	kosten = 15;	};
-		*/
+		if		(skill == 1)						{	kosten = 10;	}
+		else if	(skill == 2)						{	kosten = 20;	}
+		else if	(skill == 3)						{	kosten = 30;	};
 	}
 	/// HUNTING
 	else if (talent == NPC_TALENT_HUNTING)
@@ -180,18 +142,10 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		else if	(skill == HUNTING_Tongues)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Wings)			{	kosten = 1;		};
 	}
-	/// COOKING
-	else if (talent == NPC_TALENT_COOKING)
-	{
-		kosten = 10;
-	}
-	/// MINING
-	else if (talent == NPC_TALENT_MINING)
-	{
-		kosten = 10;
-	}
-	/// ARMORY
-	else if (talent == NPC_TALENT_ARMORY)
+	/// OTHER
+	else if	(talent == NPC_TALENT_17)
+	||		(talent == NPC_TALENT_18)
+	||		(talent == NPC_TALENT_19)
 	{
 		kosten = 10;
 	};
@@ -202,7 +156,7 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 ///******************************************************************************************
 /// B_BuildLearnString
 ///******************************************************************************************
-func string B_BuildLearnString (var string text, var int kosten, var int payMoney)
+func string B_BuildLearnString (var string text, var int kosten, var int moneyPerLp)
 {
 	var string concatText; concatText = ConcatStrings(text, PRINT_Kosten);
 	
@@ -212,10 +166,11 @@ func string B_BuildLearnString (var string text, var int kosten, var int payMone
 		concatText = ConcatStrings(concatText, PRINT_LP);
 	};
 	
-	if (payMoney)
+	if (moneyPerLp > 0)
 	{
-		concatText = ConcatStrings(concatText, IntToString(kosten * GOLD_PER_LP));
-		concatText = ConcatStrings(concatText, PRINT_MONEY);
+		concatText = ConcatStrings(concatText, ", ");
+		concatText = ConcatStrings(concatText, IntToString(kosten * moneyPerLp));
+		concatText = ConcatStrings(concatText, PRINT_Money);
 	};
 	
 	return concatText;

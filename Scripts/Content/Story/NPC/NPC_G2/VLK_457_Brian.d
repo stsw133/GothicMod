@@ -16,7 +16,7 @@ instance VLK_457_Brian (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Axe);
+	EquipItem (self, ItMw0_1h_VLK_Axe);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Fighter", Face_B_Normal_Kirgo, Teeth_Normal, ItAr_Smith);

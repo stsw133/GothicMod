@@ -23,7 +23,7 @@ instance STRF_1118_Addon_Patrick (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_Axe_L_01);
+	EquipItem (self, ItMw0_2H_Axe_L_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

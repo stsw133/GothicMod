@@ -7,7 +7,7 @@ instance DIA_Trade_JOIN (C_Info)
 	condition							=	DIA_Trade_JOIN_Condition;
 	information							=	DIA_Trade_JOIN_Info;
 	permanent							=	true;
-	description							=	"(Handel)";
+	description							=	DIALOG_TRADE;
 };
 func int DIA_Trade_JOIN_Condition()
 {

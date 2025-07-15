@@ -19,7 +19,7 @@ instance SLD_805_Cord (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

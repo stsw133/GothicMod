@@ -487,8 +487,8 @@ func void DIA_Addon_Lares_GetRangerArmor_weapons ()
 	AI_Output	(other, self, "DIA_Addon_Lares_GetRangerArmor_weapons_15_00"); //A co z broni¹?
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_weapons_09_01"); //Broni¹ Krêgu jest pika, ale ka¿dy cz³onek mo¿e u¿ywaæ tego, z czym jest najlepiej zaznajomiony.
 	AI_Output	(self, other, "DIA_Addon_Lares_GetRangerArmor_weapons_09_02"); //Oto jedna z naszych pik. Jakoœ nigdy nie potrafi³em siê do niej przyzwyczaiæ - mo¿e tobie lepiej pójdzie.
-	CreateInvItems (self, ItMw_RangerStaff_Addon, 1);									
-	B_GiveInvItems (self, other, ItMw_RangerStaff_Addon, 1);		
+	CreateInvItems (self, ItMw_Stab_L_01, 1);									
+	B_GiveInvItems (self, other, ItMw_Stab_L_01, 1);		
 };
 func void DIA_Addon_Lares_GetRangerArmor_end ()
 {

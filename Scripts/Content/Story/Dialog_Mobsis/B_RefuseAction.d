@@ -72,7 +72,7 @@ func void PLAYER_MOB_WRONG_SIDE()
 	AI_PlayAni (self, "T_DONTKNOW");
 };
 
-///******************************************************************************************
+/// ------ Not enough gold for trade ------
 func void PLAYER_TRADE_NOT_ENOUGH_GOLD()
 {
 	Print(PRINT_Trade_Not_Enough_Gold);

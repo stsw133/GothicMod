@@ -16,7 +16,7 @@ instance PIR_1367_Addon_Owen (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_PIR1hAxe);
+	EquipItem (self, ItMw0_Schiffsaxt);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Normal16, Teeth_Normal, ItAr_PIR_L);

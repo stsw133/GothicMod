@@ -1,19 +1,4 @@
 ///******************************************************************************************
-func void PIR_1302_Gregy_Rise(var C_Npc slf)
-{
-	if (Npc_IsDead(slf) && Npc_GetDistToNpc(slf, hero) > 3000)
-	{
-		slf.attribute[ATR_HITPOINTS] = 1;
-		AI_PlayAni (slf, "T_FALLEN_2_STAND");
-		AI_PlayAni (slf, "R_ROAM2");
-	};
-	
-	B_SetAttitude (slf, ATT_FRIENDLY);
-	slf.aivar[AIV_PartyMember] = true;
-	B_StartOtherRoutine (slf, "FOLLOW");
-};
-
-///******************************************************************************************
 func void B_AssessFollowPlayer_Gregy()
 {
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(DiegoOW))

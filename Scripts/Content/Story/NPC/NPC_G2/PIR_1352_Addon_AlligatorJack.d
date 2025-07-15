@@ -19,7 +19,7 @@ instance PIR_1352_Addon_AlligatorJack (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Piratensaebel);
+	EquipItem (self, ItMw0_Piratensaebel);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItPo_Health_02, 4);

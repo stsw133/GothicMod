@@ -1,28 +1,18 @@
-///******************************************************************************************
-
-var int foodBonus, foodBonusCounter;
-var int schnellerHeringTime;
-
 /// ------ FoodCounter ------
-func void Npc_AddFoodCounter()
+var int RandAtrFoodCounter;
+func void Npc_AddFoodCounter(var int value)
 {
 	if (Npc_IsPlayer(self))
 	{
-		foodBonusCounter += 1;
-		if (foodBonusCounter >= (100 + foodBonus*5))
+		RandAtrFoodCounter += value;
+		if (RandAtrFoodCounter/1000) > ((RandAtrFoodCounter-value)/1000)
 		{
-			foodBonusCounter -= (100 + foodBonus*5);
-			
-			var int raisedAttribute; raisedAttribute = MEM_ReadStatArr(RandomizedAttributesOrder, foodBonusCounter % 5);
-			if		(raisedAttribute == ATR_HITPOINTS_MAX)	{ B_RaiseAttribute(self, ATR_HITPOINTS_MAX, 1*HP_PER_LP); }
-			else if	(raisedAttribute == ATR_MANA_MAX)		{ B_RaiseAttribute(self, ATR_MANA_MAX, 1*MP_PER_LP); }
-			else											{ B_RaiseAttribute(self, raisedAttribute, 1); };
-			
-			foodBonus += 1;
+			PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrFoodCounter/1000 % 5));
+			if (RandAtrFoodCounter >= 5000)	{	RandAtrFoodCounter -= 5000;	};
 		}
 		else
 		{
-			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(100 + foodBonus*5 - foodBonusCounter), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrFoodCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
 		};
 	};
 };
@@ -60,7 +50,7 @@ func void Npc_AddAlcoholTime (var C_Npc slf, var int points)
 		
 		if (alcoholTime >= 10)	/// 0.5 permilles
 		{
-			Mdl_ApplyOverlayMDS (self, "HUMANS_DRUNKEN.mds");
+			Mdl_ApplyOverlayMDS (slf, "HUMANS_DRUNKEN.mds");
 		};
 		if (alcoholTime >= 60)	/// 3 permilles
 		{
@@ -69,7 +59,7 @@ func void Npc_AddAlcoholTime (var C_Npc slf, var int points)
 	}
 	else if (points >= 20)
 	{
-		Mdl_ApplyOverlayMDSTimed (self, "HUMANS_DRUNKEN.mds", points*1000);
+		Mdl_ApplyOverlayMDSTimed (slf, "HUMANS_DRUNKEN.mds", points*1000);
 	};
 };
 
@@ -100,29 +90,47 @@ instance ItFo_Flour (ItemPR_iFood)
 	visual						=	"ItFo_Flour.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw,";
+	TEXT[1]						=	"który mo¿na u¿yæ wielokrotnie.";
 	COUNT[5]					=	value;
 	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
+};
+
+instance ItFo_Herbs (ItemPR_iFood)
+{
+	name						=	"Torebka zió³";
+	value						=	100;
+	visual						=	"ItMi_Pocket_Green.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw,";
+	TEXT[1]						=	"który mo¿na u¿yæ wielokrotnie.";
+	COUNT[5]					=	value;
+};
+
+instance ItFo_Oil (ItemPR_iFood)
+{
+	name						=	"Olej rzepakowy";
+	value						=	20;
+	visual						=	"ItFo_Oil.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw,";
+	TEXT[1]						=	"który mo¿na u¿yæ wielokrotnie.";
+	COUNT[5]					=	value;
 };
 
 instance ItFo_Salt (ItemPR_iFood)
 {
-	name						=	"Sól";
+	name						=	"Woreczek soli";
 	value						=	20;
 	visual						=	"ItFo_Salt.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw,";
+	TEXT[1]						=	"który mo¿na u¿yæ wielokrotnie.";
 	COUNT[5]					=	value;
 	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
-};
-
-instance ItFo_Seeds (ItemPR_iFood)
-{
-	name						=	"Nasiona";
-	value						=	5;
-	visual						=	"ItFo_Seeds.3ds";
-	
-	description					=	name;
-	COUNT[5]					=	value;
 };
 
 instance ItFo_Spices (ItemPR_iFood)
@@ -132,22 +140,25 @@ instance ItFo_Spices (ItemPR_iFood)
 	visual						=	"ItMi_Pocket_Red.3ds";
 	
 	description					=	name;
-	COUNT[5]					=	value;
-};
-
-instance ItFo_Sugar (ItemPR_iFood)
-{
-	name						=	"Cukier";
-	value						=	10;
-	visual						=	"ItFo_Sugar.3ds";
-	
-	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw,";
+	TEXT[1]						=	"który mo¿na u¿yæ wielokrotnie.";
 	COUNT[5]					=	value;
 };
 
 ///******************************************************************************************
 /// Raw food
 ///******************************************************************************************
+instance ItFo_Coconut (ItemPR_iFood)
+{
+	name						=	"Kokos";
+	value						=	10;
+	visual						=	"ItFo_Coconut.3ds";
+	
+	description					=	name;
+	TEXT[1]						=	"U¿ywany do tworzenia";
+	TEXT[2]						=	"tytoniu kokosowego.";
+	COUNT[5]					=	value;
+};
 
 /// scavenger egg (10 gold value) in IT_AnimalTrophies file
 /*
@@ -158,6 +169,7 @@ instance ItFo_Egg (ItemPR_iFood)
 	visual						=	"ItFo_Egg.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 */
@@ -165,40 +177,44 @@ instance ItFo_Egg (ItemPR_iFood)
 instance ItFo_Fish (ItemPR_iFood)
 {
 	name						=	"Ryba";
-	value						=	8;
+	value						=	6;
 	visual						=	"ItFo_Fish.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 
-instance ItFo_MeatBadRaw (ItemPR_iFood)
+instance ItFo_BadMeatRaw (ItemPR_iFood)
 {
 	name						=	"Twarde miêso";
-	value						=	8;
-	visual						=	"ItFoMuttonRaw.3ds";
+	value						=	6;
+	visual						=	"ItFo_BadMeatRaw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 
-instance ItFo_MeatGoodRaw (ItemPR_iFood)
+instance ItFo_FatMeatRaw (ItemPR_iFood)
 {
-	name						=	"Delikatne miêso";
-	value						=	24;
-	visual						=	"ItFoMuttonRaw.3ds";
+	name						=	"T³uste miêso";
+	value						=	9;
+	visual						=	"ItFo_FatMeatRaw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 
 instance ItFoMuttonRaw (ItemPR_iFood)
 {
 	name						=	"Miêso";
-	value						=	16;
+	value						=	12;
 	visual						=	"ItFoMuttonRaw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 
@@ -209,7 +225,20 @@ instance ItFo_Potato (ItemPR_iFood)
 	visual						=	"ItFo_Potato.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
+};
+
+instance ItFo_Seeds (ItemPR_iFood)
+{
+	name						=	"Nasiona";
+	value						=	2;
+	visual						=	"ItFo_Seeds.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	COUNT[5]					=	value;
+	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
 
 ///******************************************************************************************
@@ -225,34 +254,57 @@ instance ItFo_Apple (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Apple;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik soków i gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Apple()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 4);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	Npc_AddFoodCounter(5);
+};
+
+instance ItFo_Banana (ItemPR_Food)
+{
+	name						=	"Banan";
+	value						=	5;
+	visual						=	"ItFo_Banana.3ds";
+	
+	scemeName					=	"FOOD";
+	on_state[0]					=	Use_ItFo_Banana;
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik soków i gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	4;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Banana()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	Npc_AddFoodCounter(5);
 };
 
 instance ItFo_Grapes (ItemPR_Food)
 {
 	name						=	"Winogrono";
 	value						=	5;
-	visual						=	"ItFo_Grapes_01.3ds";
+	visual						=	"ItFo_Grapes.3ds";
 	
 	scemeName					=	"FOOD";
 	on_state[0]					=	Use_ItFo_Grapes;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_MpTime;
+	TEXT[0]						=	"Sk³adnik win i gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Mp;
 	COUNT[1]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Grapes()
 {
-	Npc_AddFoodTime (self, BarOrderMP, 4);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_MANA, 4);
+	Npc_AddFoodCounter(5);
 };
 
 instance ItFo_Pear (ItemPR_Food)
@@ -265,118 +317,23 @@ instance ItFo_Pear (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Pear;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	4;
+	TEXT[0]						=	"Sk³adnik soków i gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	2;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	2;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Pear()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 4);
-	Npc_AddFoodCounter();
-};
-
-///******************************************************************************************
-instance ItFo_Banana (ItemPR_Food)
-{
-	name						=	"Banan";
-	value						=	15;
-	visual						=	"ItFo_Banana.3ds";
-	
-	scemeName					=	"FOOD";
-	on_state[0]					=	Use_ItFo_Banana;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	4;
-	TEXT[2]						=	NAME_Bonus_XpTime;
-	COUNT[2]					=	5;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Banana()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 4);
-	Npc_AddFoodTime (self, BarOrderXP, 5);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_Coconut (ItemPR_Food)
-{
-	name						=	"Kokos";
-	value						=	20;
-	visual						=	"ItFo_Coconut.3ds";
-	
-	scemeName					=	"POTION";
-	on_state[0]					=	Use_ItFo_Coconut;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	3;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	3;
-	TEXT[3]						=	NAME_Bonus_SpTime;
-	COUNT[3]					=	30;
-	TEXT[4]						=	NAME_Bonus_XpTime;
-	COUNT[4]					=	5;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Coconut()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 3);
-	Npc_AddFoodTime (self, BarOrderMP, 3);
-	Npc_AddFoodTime (self, BarOrderSP, 30);
-	Npc_AddFoodTime (self, BarOrderXP, 5);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_Pineapple (ItemPR_Food)
-{
-	name						=	"Ananas";
-	value						=	20;
-	visual						=	"ItFo_Pineapple.3ds";
-	
-	scemeName					=	"FOOD";
-	on_state[0]					=	Use_ItFo_Pineapple;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	8;
-	TEXT[2]						=	NAME_Bonus_SpTime;
-	COUNT[2]					=	10;
-	TEXT[3]						=	NAME_Bonus_XpTime;
-	COUNT[3]					=	5;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Pineapple()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodTime (self, BarOrderSP, 10);
-	Npc_AddFoodTime (self, BarOrderXP, 5);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 2);
+	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_AddFoodCounter(5);
 };
 
 ///******************************************************************************************
 /// Vegetables
 ///******************************************************************************************
-instance ItFo_BakedPotato (ItemPR_Food)
-{
-	name						=	"Pieczony ziemniak";
-	value						=	3;
-	visual						=	"ItFo_BakedPotato.3ds";
-	
-	scemeName					=	"FOOD";
-	on_state[0]					=	Use_ItFo_BakedPotato;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	3;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_BakedPotato()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 3);
-//	Npc_AddFoodCounter();
-};
-
 instance ItFo_Cabbage (ItemPR_Food)
 {
 	name						=	"Kapusta";
@@ -387,14 +344,15 @@ instance ItFo_Cabbage (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Cabbage;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	8;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Cabbage()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 8);
+	Npc_AddFoodCounter(8);
 };
 
 instance ItFo_Carrot (ItemPR_Food)
@@ -407,14 +365,15 @@ instance ItFo_Carrot (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Carrot;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Carrot()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 4);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	Npc_AddFoodCounter(5);
 };
 
 instance ItFo_Chili (ItemPR_Food)
@@ -427,17 +386,18 @@ instance ItFo_Chili (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Chili;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	TEXT[1]						=	NAME_Bonus_Hp;
-	COUNT[1]					=	-10;
-	TEXT[2]						=	NAME_Bonus_XpTime;
-	COUNT[2]					=	10;
+	COUNT[1]					=	-20;
+	TEXT[2]						=	NAME_Bonus_Xp;
+	COUNT[2]					=	20;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Chili()
 {
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -10);
-	Npc_AddFoodTime (self, BarOrderXP, 10);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -20);
+	if (Npc_IsPlayer(self)) { B_GivePlayerExp(20); };
+	Npc_AddFoodCounter(5);
 };
 
 instance ItFo_Leek (ItemPR_Food)
@@ -450,17 +410,18 @@ instance ItFo_Leek (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Leek;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	2;
-	TEXT[2]						=	NAME_Bonus_MpTime;
+	TEXT[2]						=	NAME_Bonus_Mp;
 	COUNT[2]					=	2;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Leek()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 2);
-	Npc_AddFoodTime (self, BarOrderMP, 2);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 2);
+	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_AddFoodCounter(5);
 };
 
 instance ItFo_Onion (ItemPR_Food)
@@ -473,35 +434,36 @@ instance ItFo_Onion (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Onion;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Onion()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 4);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	Npc_AddFoodCounter(5);
 };
 
-///******************************************************************************************
-instance ItFo_MeatbugFlesh (ItemPR_Food)
+instance ItFo_Parsley (ItemPR_Food)
 {
-	name						=	"Owadzie miêso";
-	value						=	10;
-	visual						=	"ItAt_MeatbugFlesh.3ds";
+	name						=	"Pietruszka";
+	value						=	5;
+	visual						=	"ItFo_Parsley.3ds";
 	
-	scemeName					=	"FOODHUGE";
-	on_state[0]					=	Use_ItFo_MeatbugFlesh;
+	scemeName					=	"FOOD";
+	on_state[0]					=	Use_ItFo_Parsley;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_Hp;
-	COUNT[1]					=	10;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Mp;
+	COUNT[1]					=	4;
 	COUNT[5]					=	value;
 };
-func void Use_ItFo_MeatbugFlesh()
+func void Use_ItFo_Parsley()
 {
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, 10);
-//	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_MANA, 4);
+	Npc_AddFoodCounter(5);
 };
 
 ///******************************************************************************************
@@ -517,14 +479,57 @@ instance ItFo_Bread (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Bread;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	8;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Bread()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 8);
+	Npc_AddFoodCounter(8);
+};
+
+instance ItFo_Cheese (ItemPR_Food)
+{
+	name						=	"Ser";
+	value						=	12;
+	visual						=	"ItFo_Cheese.3ds";
+	
+	scemeName					=	"FOODHUGE";
+	on_state[0]					=	Use_ItFo_Cheese;
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	12;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Cheese()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 12);
+	Npc_AddFoodCounter(12);
+};
+
+instance ItFo_MeatbugFlesh (ItemPR_Food)
+{
+	name						=	"Owadzie miêso";
+	value						=	7;
+	visual						=	"ItAt_MeatbugFlesh.3ds";
+	
+	scemeName					=	"FOODHUGE";
+	on_state[0]					=	Use_ItFo_MeatbugFlesh;
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	6;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_MeatbugFlesh()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 6);
+	Npc_AddFoodCounter(7);
 };
 
 instance ItFo_Rice (ItemPR_Food)
@@ -538,122 +543,108 @@ instance ItFo_Rice (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Rice;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	8;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	5;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	3;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Rice()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodCounter();
-};
-
-///******************************************************************************************
-instance ItFo_Cheese (ItemPR_Food)
-{
-	name						=	"Ser";
-	value						=	12;
-	visual						=	"ItFo_Cheese.3ds";
-	
-	scemeName					=	"FOODHUGE";
-	on_state[0]					=	Use_ItFo_Cheese;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	12;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Cheese()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 12);
-	Npc_AddFoodCounter();
-};
-
-///******************************************************************************************
-instance ItFo_FriedFish (ItemPR_Food)
-{
-	name						=	"Sma¿ona ryba";
-	value						=	10;
-	visual						=	"ItFo_FriedFish.3ds";
-	
-	scemeName					=	"FOODHUGE";
-	on_state[0]					=	Use_ItFo_FriedFish;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	10;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_FriedFish()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 10);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 5);
+	Npc_ChangeAttribute (self, ATR_MANA, 3);
+	Npc_AddFoodCounter(8);
 };
 
 ///******************************************************************************************
 /// Meat
 ///******************************************************************************************
-instance ItFo_MeatBad (ItemPR_Food)
+instance ItFo_BadMeat (ItemPR_Food)
 {
 	name						=	"Sma¿one twarde miêso";
-	value						=	10;
-	visual						=	"ItFoMutton.3ds";
+	value						=	8;
+	visual						=	"ItFo_BadMeat.3ds";
 	
 	scemeName					=	"MEAT";
-	on_state[0]					=	Use_ItFo_MeatBad;
+	on_state[0]					=	Use_ItFo_BadMeat;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	10;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	8;
 	COUNT[5]					=	value;
 };
-func void Use_ItFo_MeatBad()
+func void Use_ItFo_BadMeat()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 10);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 8);
+	Npc_AddFoodCounter(8);
 };
 
-instance ItFo_MeatGood (ItemPR_Food)
+instance ItFo_FatMeat (ItemPR_Food)
 {
-	name						=	"Sma¿one delikatne miêso";
-	value						=	30;
-	visual						=	"ItFoMutton.3ds";
+	name						=	"Sma¿one t³uste miêso";
+	value						=	12;
+	visual						=	"ItFo_FatMeat.3ds";
 	
 	scemeName					=	"MEAT";
-	on_state[0]					=	Use_ItFo_MeatGood;
+	on_state[0]					=	Use_ItFo_FatMeat;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	30;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	12;
 	COUNT[5]					=	value;
 };
-func void Use_ItFo_MeatGood()
+func void Use_ItFo_FatMeat()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 30);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 12);
+	Npc_AddFoodCounter(12);
 };
 
 instance ItFoMutton (ItemPR_Food)
 {
 	name						=	"Sma¿one miêso";
-	value						=	20;
+	value						=	16;
 	visual						=	"ItFoMutton.3ds";
 	
 	scemeName					=	"MEAT";
 	on_state[0]					=	Use_ItFoMutton;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	20;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	16;
 	COUNT[5]					=	value;
 };
 func void Use_ItFoMutton()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 20);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 16);
+	Npc_AddFoodCounter(16);
 };
 
 ///******************************************************************************************
+instance ItFo_Bacon (ItemPR_Food)
+{
+	name						=	"Szynka";
+	value						=	20;
+	visual						=	"ItFo_Bacon.3ds";
+	
+	scemeName					=	"MEAT";
+	on_state[0]					=	Use_ItFo_Bacon;
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	20;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Bacon()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 20);
+	Npc_AddFoodCounter(20);
+};
+
 instance ItFo_Sausage (ItemPR_Food)
 {
 	name						=	"Kie³basa";
@@ -664,39 +655,20 @@ instance ItFo_Sausage (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Sausage;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	15;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Sausage()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 15);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 15);
+	Npc_AddFoodCounter(15);
 };
 
 ///******************************************************************************************
-/// Luxury food
+/// Sea food
 ///******************************************************************************************
-instance ItFo_Bacon (ItemPR_Food)
-{
-	name						=	"Szynka";
-	value						=	25;
-	visual						=	"ItFo_Bacon.3ds";
-	
-	scemeName					=	"MEAT";
-	on_state[0]					=	Use_ItFo_Bacon;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	25;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Bacon()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 25);
-	Npc_AddFoodCounter();
-};
-
 instance ItFo_Oyster (ItemPR_Food)
 {
 	name						=	"Ostryga";
@@ -707,20 +679,21 @@ instance ItFo_Oyster (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Oyster;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	5;
-	TEXT[2]						=	NAME_Bonus_MpTime;
+	TEXT[2]						=	NAME_Bonus_Mp;
 	COUNT[2]					=	5;
-	TEXT[3]						=	NAME_Bonus_XpTime;
+	TEXT[3]						=	NAME_Bonus_Xp;
 	COUNT[3]					=	5;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Oyster()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 5);
-	Npc_AddFoodTime (self, BarOrderMP, 5);
-	Npc_AddFoodTime (self, BarOrderXP, 5);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 5);
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	if (Npc_IsPlayer(self)) { B_GivePlayerExp(5); };
+	Npc_AddFoodCounter(10);
 };
 
 ///******************************************************************************************
@@ -736,257 +709,94 @@ instance ItFo_Cake (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Cake;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
+	TEXT[1]						=	NAME_Bonus_Hp;
 	COUNT[1]					=	10;
-	TEXT[3]						=	NAME_Bonus_MpTime;
-	COUNT[3]					=	10;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Cake()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 10);
-	Npc_AddFoodTime (self, BarOrderMP, 10);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 10);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	Npc_AddFoodCounter(20);
 };
 
 instance ItFo_Chocolate (ItemPR_Food)
 {
 	name						=	"Czekolada";
-	value						=	40;
+	value						=	30;
 	visual						=	"ItFo_Chocolate.3ds";
 	
-	material					=	MAT_STONE;
+	material					=	MAT_GLAS;
 	scemeName					=	"FOODHUGE";
 	on_state[0]					=	Use_ItFo_Chocolate;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	8;
-	TEXT[2]						=	NAME_Percent_MpTime;
-	COUNT[2]					=	10;
-	TEXT[3]						=	NAME_Bonus_XpTime;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	7;
+	TEXT[2]						=	NAME_Percent_Mp;
+	COUNT[2]					=	7;
+	TEXT[3]						=	NAME_Bonus_Xp;
 	COUNT[3]					=	10;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Chocolate()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodTime (self, BarOrderMP, 10);
-	Npc_AddFoodTime (self, BarOrderXP, 10);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 7);
+	Npc_ChangeAttribute (self, ATR_MANA, 7);
+	if (Npc_IsPlayer(self)) { B_GivePlayerExp(10); };
+	Npc_AddFoodCounter(15);
 };
 
 instance ItFo_Honey (ItemPR_Food)
 {
 	name						=	"Miód";
-	value						=	20;
+	value						=	15;
 	visual						=	"ItFo_Honey.3ds";
 	
-	material					=	MAT_STONE;
+	material					=	MAT_GLAS;
 	scemeName					=	"FOODHUGE";
 	on_state[0]					=	Use_ItFo_Honey;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	8;
-	TEXT[3]						=	NAME_Bonus_MpTime;
-	COUNT[3]					=	12;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	4;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Honey()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 8);
-	Npc_AddFoodTime (self, BarOrderMP, 12);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	Npc_AddFoodCounter(15);
 };
 
 instance ItFo_Jam (ItemPR_Food)
 {
 	name						=	"D¿em";
-	value						=	20;
+	value						=	15;
 	visual						=	"ItFo_Jam.3ds";
 	
-	material					=	MAT_STONE;
+	material					=	MAT_GLAS;
 	scemeName					=	"FOODHUGE";
 	on_state[0]					=	Use_ItFo_Jam;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	12;
-	TEXT[3]						=	NAME_Bonus_MpTime;
-	COUNT[3]					=	8;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	10;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Jam()
 {
-	Npc_AddFoodTime (self, BarOrderHP, 12);
-	Npc_AddFoodTime (self, BarOrderMP, 8);
-	Npc_AddFoodCounter();
-};
-
-///******************************************************************************************
-/// Stews
-///******************************************************************************************
-instance ItFo_Stew (ItemPR_Food)
-{
-	name						=	"Gulasz";
-	value						=	20;
-	visual						=	"ItFo_Stew.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_Stew;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	24;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Stew()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 24);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_Addon_FireStew (ItemPR_Food)
-{
-	name						=	"Ognisty gulasz";
-	value						=	20;
-	visual						=	"ItFo_Stew.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_Addon_FireStew;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_Hp;
-	COUNT[1]					=	-10;
-	TEXT[2]						=	NAME_Bonus_HpTime;
-	COUNT[2]					=	36;
-	TEXT[3]						=	NAME_Bonus_Xp;
-	COUNT[3]					=	200;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Addon_FireStew()
-{
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -10);
-	Npc_AddFoodTime (self, BarOrderHP, 36);
-	B_GivePlayerExp(200);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_Addon_MeatSoup (ItemPR_Food)
-{
-	name						=	"Gulasz miêsny";
-	value						=	20;
-	visual						=	"ItFo_Stew.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_Addon_MeatSoup;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	24;
-	TEXT[3]						=	NAME_Bonus_Xp;
-	COUNT[3]					=	200;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_Addon_MeatSoup()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 24);
-	B_GivePlayerExp(200);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_XpStew (ItemPR_Food)
-{
-	name						=	"Gulasz Thekli";
-	value						=	20;
-	visual						=	"ItFo_Stew.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_XpStew;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	24;
-	TEXT[3]						=	NAME_Bonus_Xp;
-	COUNT[3]					=	200;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_XpStew()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 24);
-	B_GivePlayerExp(200);
-	Npc_AddFoodCounter();
-};
-
-///******************************************************************************************
-/// Soups
-///******************************************************************************************
-instance ItFo_FishSoup (ItemPR_Food)
-{
-	name						=	"Zupa rybna";
-	value						=	10;
-	visual						=	"ItFo_FishSoup.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_FishSoup;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	12;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_FishSoup()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 12);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_MushroomSoup (ItemPR_Food)
-{
-	name						=	"Zupa grzybowa";
-	value						=	10;
-	visual						=	"ItFo_MushroomSoup.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_MushroomSoup;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_MpTime;
-	COUNT[1]					=	12;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_MushroomSoup()
-{
-	Npc_AddFoodTime (self, BarOrderMP, 12);
-	Npc_AddFoodCounter();
-};
-
-instance ItFo_RiceSoup (ItemPR_Food)
-{
-	name						=	"Zupa mleczna z ry¿em";
-	value						=	10;
-	visual						=	"ItFo_RiceSoup.3ds";
-	
-	material					=	MAT_WOOD;
-	scemeName					=	"RICE";
-	on_state[0]					=	Use_ItFo_RiceSoup;
-	
-	description					=	name;
-	TEXT[1]						=	NAME_Bonus_HpTime;
-	COUNT[1]					=	12;
-	COUNT[5]					=	value;
-};
-func void Use_ItFo_RiceSoup()
-{
-	Npc_AddFoodTime (self, BarOrderHP, 12);
-	Npc_AddFoodCounter();
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 10);
+	Npc_ChangeAttribute (self, ATR_MANA, 4);
+	Npc_AddFoodCounter(15);
 };
 
 ///******************************************************************************************
@@ -995,7 +805,7 @@ func void Use_ItFo_RiceSoup()
 instance ItFo_Water (ItemPR_Food)
 {
 	name						=	"Woda";
-	value						=	5;
+	value						=	5; //-3 for bottle = 2
 	visual						=	"ItFo_Water.3ds";
 	
 	material					=	MAT_GLAS;
@@ -1003,21 +813,21 @@ instance ItFo_Water (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Water;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_SpTime;
-	COUNT[1]					=	50;
+	TEXT[0]						=	"Sk³adnik mikstur i zup.";
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	100;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Water()
 {
-	Npc_AddFoodTime (self, BarOrderSP, 50);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] = self.aivar[AIV_STAMINA_MAX]; };
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 
-///******************************************************************************************
 instance ItFo_Milk (ItemPR_Food)
 {
 	name						=	"Mleko";
-	value						=	8;
+	value						=	8; //-3 for bottle = 5
 	visual						=	"ItFo_Milk.3ds";
 	
 	material					=	MAT_GLAS;
@@ -1025,16 +835,68 @@ instance ItFo_Milk (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Milk;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_SpTime;
-	COUNT[1]					=	30;
-	TEXT[2]						=	NAME_Bonus_HpTime;
-	COUNT[2]					=	3;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	60;
+	TEXT[2]						=	NAME_Bonus_Hp;
+	COUNT[2]					=	4;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Milk()
 {
-	Npc_AddFoodTime (self, BarOrderSP, 30);
-	Npc_AddFoodTime (self, BarOrderHP, 3);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*3/5; };
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 4);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+///******************************************************************************************
+/// Juice
+///******************************************************************************************
+instance ItFo_BananaJuice (ItemPR_Food)
+{
+	name						=	"Sok bananowy";
+	value						=	9; //-3 for bottle = 6
+	visual						=	"ItFo_BananaJuice.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_BananaJuice;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	60;
+	TEXT[2]						=	NAME_Bonus_Hp;
+	COUNT[2]					=	6;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BananaJuice()
+{
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*3/5; };
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 6);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+instance ItFo_BerryJuice (ItemPR_Food)
+{
+	name						=	"Sok jagodowy";
+	value						=	9; //-3 for bottle = 6
+	visual						=	"ItFo_BerryJuice.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_BerryJuice;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	60;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	6;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BerryJuice()
+{
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*3/5; };
+	Npc_ChangeAttribute (self, ATR_MANA, 6);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 
@@ -1048,22 +910,23 @@ instance ItFo_Beer (ItemPR_Food)
 	visual						=	"ItFo_Beer.3ds";
 	
 	material					=	MAT_GLAS;
-	scemeName					=	"POTION";
+	scemeName					=	"POTIONFAST";
 	on_state[0]					=	Use_ItFo_Beer;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_SpTime;
-	COUNT[1]					=	20;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	4;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	8;
 	TEXT[3]						=	NAME_Bonus_AlcoholTime;
 	COUNT[3]					=	2;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Beer()
 {
-	Npc_AddFoodTime (self, BarOrderSP, 20);
-	Npc_AddFoodTime (self, BarOrderMP, 4);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*2/5; };
+	Npc_ChangeAttribute (self, ATR_MANA, 8);
 	Npc_AddAlcoholTime (self, 2);
 };
 
@@ -1078,10 +941,10 @@ instance ItFo_CoragonsBeer (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_CoragonsBeer;
 	
 	description					=	name;
-	TEXT[1]						=	NAME_Bonus_SpTime;
-	COUNT[1]					=	20;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	4;
+	TEXT[1]						=	NAME_Percent_Sp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	8;
 	TEXT[3]						=	NAME_Bonus_AlcoholTime;
 	COUNT[3]					=	2;
 	TEXT[4]						=	NAME_Bonus_Xp;
@@ -1090,8 +953,8 @@ instance ItFo_CoragonsBeer (ItemPR_Food)
 };
 func void Use_ItFo_CoragonsBeer()
 {
-	Npc_AddFoodTime (self, BarOrderSP, 20);
-	Npc_AddFoodTime (self, BarOrderMP, 4);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*2/5; };
+	Npc_ChangeAttribute (self, ATR_MANA, 8);
 	Npc_AddAlcoholTime (self, 2);
 	B_GivePlayerExp(200);
 };
@@ -1102,7 +965,7 @@ func void Use_ItFo_CoragonsBeer()
 instance ItFo_Booze (ItemPR_Food)
 {
 	name						=	"Gorza³a";
-	value						=	15;
+	value						=	10; //-3 for bottle = 7
 	visual						=	"ItFo_Booze.3ds";
 	
 	material					=	MAT_GLAS;
@@ -1112,45 +975,141 @@ instance ItFo_Booze (ItemPR_Food)
 	description					=	name;
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
 	COUNT[1]					=	5;
-	TEXT[2]						=	NAME_Bonus_MpTime;
+	TEXT[2]						=	NAME_Bonus_Mp;
 	COUNT[2]					=	3;
+	TEXT[3]						=	NAME_Percent_Sp;
+	COUNT[3]					=	20;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Booze()
 {
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/5; };
+	Npc_ChangeAttribute (self, ATR_MANA, 3);
 	Npc_AddAlcoholTime (self, 5);
-	Npc_AddFoodTime (self, BarOrderMP, 3);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 
-instance ItFo_Tequila (ItemPR_Food)
+instance ItFo_DarkBeer (ItemPR_Food)
 {
-	name						=	"Tequila";
-	value						=	30;
-	visual						=	"ItFo_Tequila.3ds";
+	name						=	"Ciemne piwo";
+	value						=	10; //-3 for bottle = 7
+	visual						=	"ItFo_DarkBeer.3ds";
 	
 	material					=	MAT_GLAS;
 	scemeName					=	"POTIONFAST";
-	on_state[0]					=	Use_ItFo_Tequila;
+	on_state[0]					=	Use_ItFo_DarkBeer;
 	
 	description					=	name;
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
-	COUNT[1]					=	10;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	8;
+	COUNT[1]					=	3;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	5;
+	TEXT[3]						=	NAME_Percent_Sp;
+	COUNT[3]					=	30;
 	COUNT[5]					=	value;
 };
-func void Use_ItFo_Tequila()
+func void Use_ItFo_DarkBeer()
 {
-	Npc_AddAlcoholTime (self, 10);
-	Npc_AddFoodTime (self, BarOrderMP, 8);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]*3/10; };
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	Npc_AddAlcoholTime (self, 3);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+instance ItFo_Mead (ItemPR_Food)
+{
+	name						=	"Miód pitny";
+	value						=	10; //-3 for bottle = 7
+	visual						=	"ItFo_Mead.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_Mead;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_AlcoholTime;
+	COUNT[1]					=	2;
+	TEXT[2]						=	NAME_Bonus_Hp;
+	COUNT[2]					=	2;
+	TEXT[3]						=	NAME_Bonus_Mp;
+	COUNT[3]					=	4;
+	TEXT[4]						=	NAME_Percent_Sp;
+	COUNT[4]					=	20;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Mead()
+{
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/5; };
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 2);
+	Npc_ChangeAttribute (self, ATR_MANA, 4);
+	Npc_AddAlcoholTime (self, 2);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+instance ItFo_Sake (ItemPR_Food)
+{
+	name						=	"Ry¿ówka";
+	value						=	10; //-3 for bottle = 7
+	visual						=	"ItFo_Sake.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_Sake;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_AlcoholTime;
+	COUNT[1]					=	4;
+	TEXT[2]						=	NAME_Bonus_Hp;
+	COUNT[2]					=	3;
+	TEXT[3]						=	NAME_Bonus_Mp;
+	COUNT[3]					=	2;
+	TEXT[4]						=	NAME_Percent_Sp;
+	COUNT[4]					=	20;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Sake()
+{
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/5; };
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 3);
+	Npc_ChangeAttribute (self, ATR_MANA, 2);
+	Npc_AddAlcoholTime (self, 4);
+	CreateInvItem (self, ItMi_EmptyBottle);
+};
+
+instance ItFo_SourWine (ItemPR_Food)
+{
+	name						=	"Kwaœne wino";
+	value						=	10; //-3 for bottle = 7
+	visual						=	"ItFo_SourWine.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_SourWine;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_AlcoholTime;
+	COUNT[1]					=	2;
+	TEXT[2]						=	NAME_Bonus_Hp;
+	COUNT[2]					=	3;
+	TEXT[3]						=	NAME_Bonus_Mp;
+	COUNT[3]					=	3;
+	TEXT[4]						=	NAME_Percent_Sp;
+	COUNT[4]					=	25;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_SourWine()
+{
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/4; };
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 3);
+	Npc_ChangeAttribute (self, ATR_MANA, 3);
+	Npc_AddAlcoholTime (self, 2);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 
 instance ItFo_Wine (ItemPR_Food)
 {
 	name						=	"Wino";
-	value						=	15;
+	value						=	10; //-3 for bottle = 7
 	visual						=	"ItFo_Wine.3ds";
 	
 	material					=	MAT_GLAS;
@@ -1158,23 +1117,27 @@ instance ItFo_Wine (ItemPR_Food)
 	on_state[0]					=	Use_ItFo_Wine;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
-	COUNT[1]					=	3;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	8;
+	COUNT[1]					=	2;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	6;
+	TEXT[3]						=	NAME_Percent_Sp;
+	COUNT[3]					=	25;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Wine()
 {
-	Npc_AddAlcoholTime (self, 3);
-	Npc_AddFoodTime (self, BarOrderMP, 8);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/4; };
+	Npc_ChangeAttribute (self, ATR_MANA, 6);
+	Npc_AddAlcoholTime (self, 2);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
 
 instance ItFo_SouthWine (ItemPR_Food)
 {
 	name						=	"Wino z Wysp Po³udniowych";
-	value						=	15;
+	value						=	10; //-3 for bottle = 7
 	visual						=	"ItFo_Wine.3ds";
 	
 	material					=	MAT_GLAS;
@@ -1183,17 +1146,20 @@ instance ItFo_SouthWine (ItemPR_Food)
 	
 	description					=	name;
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
-	COUNT[1]					=	3;
-	TEXT[2]						=	NAME_Bonus_MpTime;
-	COUNT[2]					=	8;
+	COUNT[1]					=	2;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	6;
+	TEXT[3]						=	NAME_Percent_Sp;
+	COUNT[3]					=	25;
 	TEXT[4]						=	NAME_Bonus_Xp;
 	COUNT[4]					=	200;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_SouthWine()
 {
-	Npc_AddAlcoholTime (self, 3);
-	Npc_AddFoodTime (self, BarOrderMP, 8);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += self.aivar[AIV_STAMINA_MAX]/4; };
+	Npc_ChangeAttribute (self, ATR_MANA, 6);
+	Npc_AddAlcoholTime (self, 2);
 	B_GivePlayerExp(200);
 	CreateInvItem (self, ItMi_EmptyBottle);
 };
@@ -1215,13 +1181,13 @@ instance ItFo_Addon_Grog (ItemPR_Food)
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
 	COUNT[1]					=	5;
 	TEXT[2]						=	NAME_Bonus_Hp;
-	COUNT[2]					=	7;
+	COUNT[2]					=	12;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Grog()
 {
 	Npc_AddAlcoholTime (self, 5);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, 7);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 12);
 };
 
 instance ItFo_Addon_Hooch (ItemPR_Food)
@@ -1238,13 +1204,13 @@ instance ItFo_Addon_Hooch (ItemPR_Food)
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
 	COUNT[1]					=	5;
 	TEXT[2]						=	NAME_Bonus_Mp;
-	COUNT[2]					=	7;
+	COUNT[2]					=	12;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Hooch()
 {
 	Npc_AddAlcoholTime (self, 5);
-	Npc_ChangeAttribute (self, ATR_MANA, 7);
+	Npc_ChangeAttribute (self, ATR_MANA, 12);
 };
 
 instance ItFo_Addon_Rum (ItemPR_Food)
@@ -1261,16 +1227,16 @@ instance ItFo_Addon_Rum (ItemPR_Food)
 	TEXT[1]						=	NAME_Bonus_AlcoholTime;
 	COUNT[1]					=	10;
 	TEXT[2]						=	NAME_Bonus_Hp;
-	COUNT[2]					=	3;
+	COUNT[2]					=	7;
 	TEXT[2]						=	NAME_Bonus_Mp;
-	COUNT[2]					=	3;
+	COUNT[2]					=	7;
 	COUNT[5]					=	value;
 };
 func void Use_ItFo_Rum()
 {
 	Npc_AddAlcoholTime (self, 10);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, 3);
-	Npc_ChangeAttribute (self, ATR_MANA, 3);
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 7);
+	Npc_ChangeAttribute (self, ATR_MANA, 7);
 };
 
 instance ItFo_Addon_LousHammer (ItemPR_Food)
@@ -1294,6 +1260,7 @@ func void Use_ItFo_LousHammer()
 	self.aivar[AIV_Stamina] = 0;
 };
 
+var int SchnellerHeringTime;
 instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 {
 	name						=	"Szybki ŒledŸ";
@@ -1356,4 +1323,823 @@ func void Use_ItFo_SchlafHammer()
 		AI_PlayAni(self, "T_STAND_2_WOUNDED");
 		AI_PlayAni(self, "T_WOUNDED_2_STAND");
 	};
+};
+
+///******************************************************************************************
+/// Dishes
+///******************************************************************************************
+instance ItFo_BugPulp (ItemPR_Food)
+{
+	name						=	"Owadzia papka";
+	value						=	18;
+	visual						=	"ItFo_BugPulp.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_BugPulp;
+	
+	description					=	"Owadzia papka z nasionami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	30;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BugPulp()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 30);
+	Npc_AddFoodCounter(18);
+};
+
+instance ItFo_ForestStew (ItemPR_Food)
+{
+	name						=	"Gulasz leœny";
+	value						=	30;
+	visual						=	"ItFo_ForestStew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_ForestStew;
+	
+	description					=	"Gulasz z miêsa leœnego";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_ForestStew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	Npc_AddFoodCounter(30);
+};
+
+instance ItFo_FriedPasta (ItemPR_Food)
+{
+	name						=	"Sma¿ony makaron";
+	value						=	24;
+	visual						=	"ItFo_FriedPasta.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_FriedPasta;
+	
+	description					=	"Sma¿ony makaron z cebul¹ i zio³ami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_FriedPasta()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_AddFoodCounter(24);
+};
+
+instance ItFo_HoneyOatmeal (ItemPR_Food)
+{
+	name						=	"Miodowa owsianka";
+	value						=	40;
+	visual						=	"ItFo_HoneyOatmeal.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_HoneyOatmeal;
+	
+	description					=	"Miodowa owsianka z jab³kami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	30;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	60;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_HoneyOatmeal()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_ChangeAttribute (self, ATR_MANA, 30);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 60; };
+	Npc_AddFoodCounter(40);
+};
+
+instance ItFo_JamPaste (ItemPR_Food)
+{
+	name						=	"Pasta owocowa z d¿emem";
+	value						=	45;
+	visual						=	"ItFo_JamPaste.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_JamPaste;
+	
+	description					=	"Pasta owocowa z d¿emem i winogronami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	30;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	50;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_JamPaste()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 30);
+	Npc_ChangeAttribute (self, ATR_MANA, 50);
+	Npc_AddFoodCounter(45);
+};
+
+instance ItFo_MeatCauldron (ItemPR_Food)
+{
+	name						=	"Miêsny kocio³ek";
+	value						=	50;
+	visual						=	"ItFo_MeatCauldron.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_MeatCauldron;
+	
+	description					=	"Miêsny kocio³ek z ziemniakami i cebul¹";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_MeatCauldron()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 100);
+	Npc_AddFoodCounter(50);
+};
+
+instance ItFo_MeatStew (ItemPR_Food)
+{
+	name						=	"Gulasz miêsny";
+	value						=	30;
+	visual						=	"ItFo_MeatStew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_MeatStew;
+	
+	description					=	"Gulasz miêsny z warzywami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_MeatStew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 35);
+	Npc_ChangeAttribute (self, ATR_MANA, 35);
+	Npc_AddFoodCounter(30);
+};
+
+instance ItFo_Pilaf (ItemPR_Food)
+{
+	name						=	"Pilaf";
+	value						=	30;
+	visual						=	"ItFo_Pilaf.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_Pilaf;
+	
+	description					=	"Ry¿ z miêsem i warzywami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	50;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	5;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Pilaf()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 50);
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	Npc_AddFoodCounter(30);
+};
+
+instance ItFo_Puree (ItemPR_Food)
+{
+	name						=	"Puree";
+	value						=	36;
+	visual						=	"ItFo_Puree.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_Puree;
+	
+	description					=	"Purre ziemniaczane z cebul¹";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	70;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Puree()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 70);
+	Npc_AddFoodCounter(36);
+};
+
+instance ItFo_Salad (ItemPR_Food)
+{
+	name						=	"Sa³atka";
+	value						=	22;
+	visual						=	"ItFo_Salad.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_Salad;
+	
+	description					=	"Sa³atka warzywna";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	25;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Salad()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 25);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	Npc_AddFoodCounter(22);
+};
+
+instance ItFo_ScrambledEggs (ItemPR_Food)
+{
+	name						=	"Jajecznica";
+	value						=	40;
+	visual						=	"ItFo_ScrambledEggs.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_ScrambledEggs;
+	
+	description					=	"Jajecznica z cebul¹";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	75;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_ScrambledEggs()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 75);
+	Npc_AddFoodCounter(40);
+};
+
+instance ItFo_Spaghetti (ItemPR_Food)
+{
+	name						=	"Spaghetti";
+	value						=	38;
+	visual						=	"ItFo_Spaghetti.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_Spaghetti;
+	
+	description					=	"Ostre spaghetti";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	35;
+	TEXT[2]						=	NAME_Bonus_Xp;
+	COUNT[2]					=	20;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Spaghetti()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 35);
+	if (Npc_IsPlayer(self)) { B_GivePlayerExp(20); };
+	Npc_AddFoodCounter(38);
+};
+
+instance ItFo_SpicyStew (ItemPR_Food)
+{
+	name						=	"Ostry gulasz";
+	value						=	30;
+	visual						=	"ItFo_SpicyStew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_SpicyStew;
+	
+	description					=	"Ostry gulasz z ry¿em i grzybami";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	45;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	15;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_SpicyStew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 45);
+	Npc_ChangeAttribute (self, ATR_MANA, 15);
+	Npc_AddFoodCounter(30);
+};
+
+instance ItFo_Stew (ItemPR_Food)
+{
+	name						=	"Gulasz";
+	value						=	20;
+	visual						=	"ItFo_Stew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_Stew;
+	
+	description					=	"Gulasz warzywny";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	30;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	5;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_Stew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 30);
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	Npc_AddFoodCounter(20);
+};
+
+instance ItFo_StewedVegetables (ItemPR_Food)
+{
+	name						=	"Duszone warzywa";
+	value						=	26;
+	visual						=	"ItFo_StewedVegetables.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_StewedVegetables;
+	
+	description					=	"Duszone warzywa z jajkiem";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	50;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_StewedVegetables()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 50);
+	Npc_AddFoodCounter(26);
+};
+
+instance ItFo_WineStew (ItemPR_Food)
+{
+	name						=	"Gulasz na winie";
+	value						=	50;
+	visual						=	"ItFo_WineStew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_WineStew;
+	
+	description					=	"Gulasz na winie z dzika";
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	65;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	25;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	25;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_WineStew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 65);
+	Npc_ChangeAttribute (self, ATR_MANA, 25);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 25; };
+	Npc_AddFoodCounter(50);
+};
+
+instance ItFo_XpStew (ItemPR_Food)
+{
+	name						=	"Gulasz Thekli";
+	value						=	20;
+	visual						=	"ItFo_Stew.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_XpStew;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	50;
+	TEXT[3]						=	NAME_Bonus_Xp;
+	COUNT[3]					=	200;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_XpStew()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 50);
+	B_GivePlayerExp(200);
+	Npc_AddFoodCounter(20);
+};
+
+///******************************************************************************************
+/// Soups
+///******************************************************************************************
+instance ItFo_BerrySoup (ItemPR_Food)
+{
+	name						=	"Zupa owocowa";
+	value						=	24;
+	visual						=	"ItFo_BerrySoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_BerrySoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	35;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BerrySoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 35);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(24);
+};
+
+instance ItFo_CabbageSoup (ItemPR_Food)
+{
+	name						=	"Kapuœniak";
+	value						=	38;
+	visual						=	"ItFo_CabbageSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_CabbageSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	65;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_CabbageSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 65);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(38);
+};
+
+instance ItFo_CheeseSoup (ItemPR_Food)
+{
+	name						=	"Zupa serowa na piwie";
+	value						=	34;
+	visual						=	"ItFo_CheeseSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_CheeseSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_CheeseSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(34);
+};
+
+instance ItFo_FishSoup (ItemPR_Food)
+{
+	name						=	"Zupa rybna";
+	value						=	15;
+	visual						=	"ItFo_FishSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_FishSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	25;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_FishSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 25);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(15);
+};
+
+instance ItFo_GreenSoup (ItemPR_Food)
+{
+	name						=	"Zupa z pora";
+	value						=	14;
+	visual						=	"ItFo_GreenSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_GreenSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	10;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_GreenSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 10);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(14);
+};
+
+instance ItFo_HoneySoup (ItemPR_Food)
+{
+	name						=	"Ry¿anka z miodem";
+	value						=	25;
+	visual						=	"ItFo_HoneySoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_HoneySoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	20;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	30;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_HoneySoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 20);
+	Npc_ChangeAttribute (self, ATR_MANA, 30);
+	Npc_AddFoodCounter(25);
+};
+
+instance ItFo_MilkSoup (ItemPR_Food)
+{
+	name						=	"Zupa mleczna";
+	value						=	18;
+	visual						=	"ItFo_MilkSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_MilkSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	25;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	5;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	60;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_MilkSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 25);
+	Npc_ChangeAttribute (self, ATR_MANA, 5);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 60; };
+	Npc_AddFoodCounter(18);
+};
+
+instance ItFo_MushroomSoup (ItemPR_Food)
+{
+	name						=	"Zupa grzybowa";
+	value						=	20;
+	visual						=	"ItFo_MushroomSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_MushroomSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	10;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	20;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_MushroomSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 10);
+	Npc_ChangeAttribute (self, ATR_MANA, 20);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(20);
+};
+
+instance ItFo_OnionSoup (ItemPR_Food)
+{
+	name						=	"Zupa cebulowa";
+	value						=	22;
+	visual						=	"ItFo_OnionSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_OnionSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	35;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	100;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_OnionSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 35);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	Npc_AddFoodCounter(22);
+};
+
+instance ItFo_OysterSoup (ItemPR_Food)
+{
+	name						=	"Zupa z ostryg";
+	value						=	40;
+	visual						=	"ItFo_OysterSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_OysterSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	20;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	60;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_OysterSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_ChangeAttribute (self, ATR_MANA, 20);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 60; };
+	Npc_AddFoodCounter(40);
+};
+
+instance ItFo_SausageSoup (ItemPR_Food)
+{
+	name						=	"Zupa piwna z kie³bas¹";
+	value						=	32;
+	visual						=	"ItFo_SausageSoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_SausageSoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	40;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	10;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	40;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_SausageSoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 40);
+	Npc_ChangeAttribute (self, ATR_MANA, 10);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 40; };
+	Npc_AddFoodCounter(32);
+};
+
+instance ItFo_SpicySoup (ItemPR_Food)
+{
+	name						=	"Ostra zupa";
+	value						=	38;
+	visual						=	"ItFo_SpicySoup.3ds";
+	
+	material					=	MAT_WOOD;
+	scemeName					=	"RICE";
+	on_state[0]					=	Use_ItFo_SpicySoup;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	30;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	100;
+	TEXT[3]						=	NAME_Bonus_Xp;
+	COUNT[3]					=	20;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_SpicySoup()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 30);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 100; };
+	if (Npc_IsPlayer(self)) { B_GivePlayerExp(20); };
+	Npc_AddFoodCounter(38);
+};
+
+///******************************************************************************************
+/// Compotes & decoctions
+///******************************************************************************************
+instance ItFo_AppleCompote (ItemPR_Food)
+{
+	name						=	"Kompot jab³kowy";
+	value						=	15; //-3 for bottle = 12
+	visual						=	"ItFo_AppleCompote.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_AppleCompote;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	16;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	80;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_AppleCompote()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 16);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 80; };
+	CreateInvItem (self, ItMi_EmptyBottle);
+	Npc_AddFoodCounter(12);
+};
+
+instance ItFo_BerryCompote (ItemPR_Food)
+{
+	name						=	"Kompot jagodowy";
+	value						=	15; //-3 for bottle = 12
+	visual						=	"ItFo_BerryCompote.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_BerryCompote;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	12;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	4;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	80;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BerryCompote()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 12);
+	Npc_ChangeAttribute (self, ATR_MANA, 4);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 80; };
+	CreateInvItem (self, ItMi_EmptyBottle);
+	Npc_AddFoodCounter(12);
+};
+
+instance ItFo_PearCompote (ItemPR_Food)
+{
+	name						=	"Kompot gruszkowy";
+	value						=	15; //-3 for bottle = 12
+	visual						=	"ItFo_PearCompote.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_PearCompote;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Hp;
+	COUNT[1]					=	8;
+	TEXT[2]						=	NAME_Bonus_Mp;
+	COUNT[2]					=	8;
+	TEXT[3]						=	NAME_Bonus_Sp;
+	COUNT[3]					=	80;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_PearCompote()
+{
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, 8);
+	Npc_ChangeAttribute (self, ATR_MANA, 8);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 80; };
+	CreateInvItem (self, ItMi_EmptyBottle);
+	Npc_AddFoodCounter(12);
+};
+
+instance ItFo_BlueDecoction (ItemPR_Food)
+{
+	name						=	"Wywar z serafisu";
+	value						=	25; //-3 for bottle = 22
+	visual						=	"ItFo_BlueDecoction.3ds";
+	
+	material					=	MAT_GLAS;
+	scemeName					=	"POTIONFAST";
+	on_state[0]					=	Use_ItFo_BlueDecoction;
+	
+	description					=	name;
+	TEXT[1]						=	NAME_Bonus_Mp;
+	COUNT[1]					=	35;
+	TEXT[2]						=	NAME_Bonus_Sp;
+	COUNT[2]					=	35;
+	COUNT[5]					=	value;
+};
+func void Use_ItFo_BlueDecoction()
+{
+	Npc_ChangeAttribute (self, ATR_MANA, 35);
+	if (Npc_IsPlayer(self)) { self.aivar[AIV_STAMINA] += 35; };
+	CreateInvItem (self, ItMi_EmptyBottle);
 };

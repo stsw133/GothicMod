@@ -21,7 +21,7 @@ instance PC_Psionic_DI (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self,ItMw_Kriegshammer2);
+	EquipItem (self, ItMw0_Kriegshammer2);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

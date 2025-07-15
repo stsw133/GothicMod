@@ -5,14 +5,12 @@
 func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C_Npc slf, var C_Npc oth, var int spellId, var int spellLvl)
 {
 	var int finalDmg; finalDmg = 0;
+	var int dontKill; dontKill = false;
 	
 	var int curDmg; curDmg = 0;
 	var int curProt; curProt = 0;
 	var C_Item itemWpn; if (dmgDesc.itemWeapon > 0) { itemWpn = MEM_PtrToInst(dmgDesc.itemWeapon); } else { itemWpn = MEM_NullToInst(); };
 	var C_Item usedWpn; usedWpn = Npc_GetReadiedWeapon(slf);
-	
-	/// shield absorption
-	var int dmgShielded; dmgShielded = 0;
 	
 	/// we add all the damage types to a sum of damage
 	var int i; i = 0;
@@ -38,14 +36,35 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 		{
 			var int atrDmg;
 			
-			if		(usedWpn.cond_atr[0] == ATR_HITPOINTS_MAX)	{	atrDmg = usedWpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_HITPOINTS_MAX]/2/HP_PER_LP;	}
-			else if	(usedWpn.cond_atr[0] == ATR_MANA_MAX)		{	atrDmg = usedWpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_MANA_MAX]/2/MP_PER_LP;			}
-			else if	(usedWpn.cond_atr[0] == ATR_STRENGTH)		{	atrDmg = usedWpn.damageTotal + slf.attribute[ATR_STRENGTH];														}
-			else if	(usedWpn.cond_atr[0] == ATR_DEXTERITY)		{	atrDmg = usedWpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_DEXTERITY]/2;					}
-			else if	(usedWpn.cond_atr[0] == ATR_POWER)			{	atrDmg = usedWpn.damageTotal + slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_POWER]/2;						}
-			else												{	atrDmg = usedWpn.damageTotal;																					};
+			if		(usedWpn.cond_atr[0] == ATR_HITPOINTS_MAX)	{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_HITPOINTS_MAX]/2/HP_PER_LP;	}
+			else if	(usedWpn.cond_atr[0] == ATR_MANA_MAX)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_MANA_MAX]/2/MP_PER_LP;		}
+			else if	(usedWpn.cond_atr[0] == ATR_STRENGTH)		{	atrDmg = slf.attribute[ATR_STRENGTH];													}
+			else if	(usedWpn.cond_atr[0] == ATR_DEXTERITY)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_DEXTERITY]/2;				}
+			else if	(usedWpn.cond_atr[0] == ATR_POWER)			{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_POWER]/2;					};
 			
-			/// if more than one type of damage
+			/// if hit is critical (MOD)
+			var int critChance; critChance = Hlp_Random(100);
+			
+			if ((usedWpn.flags & ITEM_AXE || usedWpn.flags & ITEM_SWD) && critChance < slf.hitchance[NPC_TALENT_1H])
+			|| ((usedWpn.flags & ITEM_2HD_AXE || usedWpn.flags & ITEM_2HD_SWD) && critChance < slf.hitchance[NPC_TALENT_2H])
+			|| ((usedWpn.flags & ITEM_BOW) && critChance < slf.hitchance[NPC_TALENT_BOW])
+			|| ((usedWpn.flags & ITEM_CROSSBOW) && critChance < slf.hitchance[NPC_TALENT_CROSSBOW])
+			{
+				atrDmg = (atrDmg + usedWpn.damageTotal) * (100+slf.aivar[AIV_CritDamage]) / 100;
+			}
+			else
+			{
+				atrDmg = (atrDmg + usedWpn.damageTotal) * 3/4;
+			};
+			
+			/// munition special damage
+			if (dmgDesc.weaponMode == 4)
+			{
+				dontKill = C_DropUnconsciousBase(slf, oth);
+				atrDmg += B_MunitionSpecialDamage(slf, oth, itemWpn);
+			};
+			
+			/// calculate damage + divide if more than one type of damage
 			if (usedWpn.damageTotal > 0)
 			{
 				curDmg = (atrDmg + MEM_ReadStatArr(slf.damage, i)) * MEM_ReadStatArr(usedWpn.damage, i) / usedWpn.damageTotal;
@@ -61,25 +80,6 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	};
 	end;
 	
-	/// if hit is critical (MOD)
-	if (dmgDesc.itemWeapon)
-	{
-		var int critChance; critChance = Hlp_Random(100);
-		
-		/// ranged
-		if ((usedWpn.flags & ITEM_BOW) && critChance < slf.hitchance[NPC_TALENT_BOW])
-		|| ((usedWpn.flags & ITEM_CROSSBOW) && critChance < slf.hitchance[NPC_TALENT_CROSSBOW])
-		{
-			finalDmg = finalDmg * (100+(DAM_CRITICAL_MULTIPLIER*100)) / 200 + finalDmg * slf.aivar[AIV_CritDamage] / 100; /// +50% dmg
-		}
-		/// melee
-		else if ((usedWpn.flags & ITEM_AXE || usedWpn.flags & ITEM_SWD) && critChance < slf.hitchance[NPC_TALENT_1H])
-		|| ((usedWpn.flags & ITEM_2HD_AXE || usedWpn.flags & ITEM_2HD_SWD) && critChance < slf.hitchance[NPC_TALENT_2H])
-		{
-			finalDmg = finalDmg * (DAM_CRITICAL_MULTIPLIER*100 + slf.aivar[AIV_CritDamage]) / 100; /// +100% dmg
-		};
-	};
-	
 	/// stamina divider
 	if (Npc_IsPlayer(slf) && slf.aivar[AIV_Stamina] < 10)
 	{
@@ -88,6 +88,9 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 			finalDmg = finalDmg * DAM_NOSTAMINA_PERCENT/100;
 		};
 	};
+	
+	/// shield absorption
+	var int dmgShielded; dmgShielded = 0;
 	
 	/// additional effects against player
 	if (Npc_IsPlayer(oth))
@@ -123,7 +126,7 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 		};
 	};
 	
-	/// damage increase (PAL spell & artifacts) & damage reduction (armor sets & artifacts)
+	/// damage increase (artifacts & PAL spell) & damage reduction (artifacts & armor sets)
 	if (Npc_IsPlayer(slf) && mDamageIncrease > 0)
 	{
 		finalDmg += finalDmg * mDamageIncrease / 100;
@@ -133,7 +136,7 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 		finalDmg -= finalDmg * mDamageReduction / 100;
 	};
 	
-	/// we check if we actually got any damage done & apply min-damage *only* if not spell attack
+	/// check if we actually got any damage done & apply min-damage *only* if not spell attack
 	if (finalDmg < NPC_MINIMAL_DAMAGE + slf.aivar[AIV_MinDamage])
 	{
 		if (!dmgDesc.hitPfx && !dmgDesc.visualFX)
@@ -147,27 +150,27 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 		};
 	};
 	
-	/// difficulty multiplier
+	/// NPC vs PLAYER
 	if (Npc_IsPlayer(slf))
 	{
-		finalDmg = DIFF_Multiplier(finalDmg, DECREASE);
+		finalDmg = DIFF_Multiplier(finalDmg, DECREASE);	/// difficulty multiplier
 		inFightCounter = 5;	/// for sprint block
 	}
 	else if (Npc_IsPlayer(oth))
 	{
-		finalDmg = DIFF_Multiplier(finalDmg, INCREASE);
+		finalDmg = DIFF_Multiplier(finalDmg, INCREASE);	/// difficulty multiplier
 		inFightCounter = 5;	/// for sprint block
 	}
 	/// NPC vs NPC
 	else //if (oth.flags & NPC_FLAG_IMPORTANT)
 	{
-		finalDmg /= 10;
+		finalDmg /= 5;
 		if (finalDmg < 1) { finalDmg = 1; };
 	};
 	
 	/// special damage, LS, DR, AD, ...
-	B_WeaponSpecialDamage (slf, oth, finalDmg);
-	B_WeaponSpecialEffect (slf, oth);
+	B_WeaponSpecialDamage (slf, oth, usedWpn, finalDmg);
+	B_WeaponSpecialEffect (slf, oth, usedWpn);
 	
 	if (slf.aivar[AIV_LifeSteal] > 0)
 	{
@@ -198,19 +201,19 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	};
 	
 	/// display damage
-	if (dmgShielded > 0)
-	{
-		PrintS_Ext(ConcatStrings(NAME_DamageShielded, IntToString(dmgShielded)), COL_DamageShielded);
-	};
+	if (dmgShielded > 0)				{ PrintS_Ext(ConcatStrings(NAME_DamageShielded, IntToString(dmgShielded)), COL_DamageShielded); };
+	
 	if (finalDmg > 0)
 	{
 		if		(Npc_IsPlayer(oth))		{ PrintS_Ext(ConcatStrings(NAME_Damage, IntToString(finalDmg)), COL_DamageTaken); }
 		else if	(Npc_IsPlayer(slf))		{ PrintS_Ext(ConcatStrings(NAME_Damage, IntToString(finalDmg)), COL_DamageGiven); };
 	};
 	
-	
-	//dmgDesc.dmgDontKill
-	
+	/// don't kill
+	if (dontKill && oth.attribute[ATR_HITPOINTS] > 1 && (oth.attribute[ATR_HITPOINTS] - finalDmg) <= 0)
+	{
+		finalDmg = oth.attribute[ATR_HITPOINTS] - 1;
+	};
 	
 	return finalDmg;
 };

@@ -69,7 +69,7 @@ FUNC VOID DIA_Addon_10008_Bandit_soup_Info()
 	AI_Output (other, self, "DIA_Addon_10008_Bandit_soup_15_00");//Jesteœ kopaczem?
 	AI_Output (self, other, "DIA_Addon_10008_Bandit_soup_01_01");//To przez te spodnie? Nie, noszê je, bo s¹ wygodne.
 	AI_Output (self, other, "DIA_Addon_10008_Bandit_soup_01_02");//Gotujê gulasz. Masz, spróbuj, nabierzesz si³.
-	B_GiveInvItems (self, other, ItFo_Addon_Meatsoup,1);
+	B_GiveInvItems (self, other, ItFo_MeatStew,1);
 	AI_Output (self, other, "DIA_Addon_10008_Bandit_soup_01_03");//Trzeba zawsze æwiczyæ, ¿eby nabraæ si³ - na zewn¹trz czyha wiele niebezpieczeñstw.
 //	AI_Output (self, other, "DIA_Addon_10008_Bandit_soup_01_04");//Jeœli chcesz, mogê ci pomóc nabraæ si³.
 	

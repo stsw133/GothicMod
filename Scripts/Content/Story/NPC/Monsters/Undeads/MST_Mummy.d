@@ -24,12 +24,15 @@ prototype Mst_Default_Mummy (C_Npc)
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_SHORT;
 	aivar[AIV_MM_Packhunter]			=	false;
-	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 
 ///******************************************************************************************

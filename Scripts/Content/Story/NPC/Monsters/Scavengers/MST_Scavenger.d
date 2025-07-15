@@ -1,4 +1,8 @@
 ///******************************************************************************************
+
+var int GiveAmbientInvCounter_Scavenger;
+
+///******************************************************************************************
 /// Scavenger
 ///******************************************************************************************
 prototype Mst_Default_Scavenger (C_Npc)
@@ -31,6 +35,13 @@ prototype Mst_Default_Scavenger (C_Npc)
 	aivar[AIV_MM_EatGroundStart]		=	6;
 	aivar[AIV_MM_EatGroundEnd]			=	22;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	GiveAmbientInvCounter_Scavenger += 1;
+	if (GiveAmbientInvCounter_Scavenger % 4 == 0)
+	{
+		CreateInvItem (self, ItAt_ScavengerEgg);
+	};
 };
 
 ///******************************************************************************************

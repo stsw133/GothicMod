@@ -19,7 +19,7 @@ instance VLK_461_Carl (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mace_L_04);
+	EquipItem (self, ItMw0_1H_Mace_L_04);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

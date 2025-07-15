@@ -16,7 +16,7 @@ instance VLK_409_Zuris (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_VLK_Dagger);
+	EquipItem (self, ItMw0_1H_VLK_Dagger);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_N_ImportantGrey, Teeth_Normal, ItAr_VLK_L_08);

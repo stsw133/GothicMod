@@ -16,7 +16,7 @@ instance BDT_10401_Addon_DeadBandit (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Sld_Sword);
+	EquipItem (self, ItMw0_2h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItMi_GoldChalice);

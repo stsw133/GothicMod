@@ -15,9 +15,9 @@ instance Spell_Tame (C_Spell_Proto)
 
 func int Spell_Logic_Tame (var int manaInvested)
 {
-	if (other.guild < GIL_SEPERATOR_HUM || other.guild > GIL_SEPERATOR_ORC || C_NpcIsUndead(other))
+	if (!C_NpcIsAnimal(other))
 	{
-		Print("U¿ycie niedozwolone na ludziach, orkach oraz nieumar³ych!");
+		Print("U¿ycie dozwolone jedynie na zwierzêtach!");
 		return SPL_SENDSTOP;
 	};
 	
@@ -38,7 +38,7 @@ func void Spell_Cast_Tame()
 		//	AI_ContinueRoutine (NPC_TamedMonster);
 		//};
 		
-		if (other.guild > GIL_SEPERATOR_HUM && other.guild < GIL_SEPERATOR_ORC && !C_NpcIsUndead(other))
+		if (C_NpcIsAnimal(other))
 		{
 			//NPC_TamedMonster = Hlp_GetNpc(other);
 			//NpcFn_SetMonsterAsSummoned(NPC_TamedMonster, true);

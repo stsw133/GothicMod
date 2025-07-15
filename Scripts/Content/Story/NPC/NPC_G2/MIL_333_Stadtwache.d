@@ -19,7 +19,7 @@ instance Mil_333_Stadtwache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Mil_Sword);
+	EquipItem (self, ItMw0_1h_Mil_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

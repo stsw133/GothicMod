@@ -128,9 +128,9 @@ func void B_ENTER_OLDWORLD_Kapitel_10()
 		if (!Npc_IsDead(Sengrath))
 		{
 			B_StartOtherRoutine	(Sengrath, "ORCBARRIER");
-			if (Npc_HasItems(Sengrath, ItRw_Mil_Crossbow))
+			if (Npc_HasItems(Sengrath, ItRw0_Crossbow_L_02))
 			{
-				Npc_RemoveInvItem (Sengrath, ItRw_Mil_Crossbow);
+				Npc_RemoveInvItem (Sengrath, ItRw0_Crossbow_L_02);
 	 		};
 			B_ClearDeadTrader(Sengrath);	/// new!!!
 	 		CreateInvItems (Sengrath, ItRw_SengrathsArmbrust_MIS, 1);

@@ -8,13 +8,12 @@ var int SPL_IsActive_PalBless;
 ///******************************************************************************************
 /// B_WeaponSpecialDamage
 ///******************************************************************************************
-func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
+func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var C_Item wpn, var int dealtDmg)
 {
 	/// hero
 	if (Npc_IsPlayer(slf))
 	{
 		var int dmg;
-		var C_Item wpn; wpn = Npc_GetReadiedWeapon(slf);
 		
 		/// BeliarWeapon
 		if (C_ScHasReadiedBeliarsWeapon())
@@ -32,22 +31,6 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 			};
 			
 			Wld_PlayEffect ("spellFX_BELIARSRAGE_COLLIDE", slf, slf, 0, 0, 0, false);
-		};
-		
-		/// POWER BASED DAMAGE
-		if (Hlp_IsItem(wpn, ItMw_Stab_M_02))
-		{
-			dmg = slf.attribute[ATR_POWER] * 3 / 100;
-			
-			if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
-			else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
-		}
-		else if (Hlp_IsItem(wpn, ItMw_Stab_H_02))
-		{
-			dmg = slf.attribute[ATR_POWER] * 5 / 100;
-			
-			if (oth.attribute[ATR_HITPOINTS] > dmg)	{	B_MagicHurtNpc (slf, oth, dmg);									}
-			else									{	B_MagicHurtNpc (slf, oth, oth.attribute[ATR_HITPOINTS] - 1);	};
 		};
 		
 		/// SPL_PalBless
@@ -80,9 +63,9 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 		{
 			if (mAuraPalPoints >= 1000) { mAuraPalPoints = 1000; };
 			
-			if		(mAuraPalType == 1) { Npc_SetShieldPoints (hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnMP", hero, hero, 0, 0, 0, false); }
-			else if	(mAuraPalType == 2) { Npc_SetShieldPoints (hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnSTR", hero, hero, 0, 0, 0, false); }
-			else if	(mAuraPalType == 3) { Npc_ChangeAttribute (hero, ATR_HITPOINTS, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect ("spellFX_LearnPOW", hero, hero, 0, 0, 0, false); };
+			if		(mAuraPalType == 1) { Npc_SetShieldPoints(hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect("spellFX_LearnMP", hero, hero, 0, 0, 0, false); }
+			else if	(mAuraPalType == 2) { Npc_SetShieldPoints(hero, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect("spellFX_LearnSTR", hero, hero, 0, 0, 0, false); }
+			else if	(mAuraPalType == 3) { Npc_ChangeAttribute(hero, ATR_HITPOINTS, (mAuraPalPoints*(200+hero.attribute[ATR_POWER]))/2000); Wld_PlayEffect("spellFX_LearnPOW", hero, hero, 0, 0, 0, false); };
 			
 			mAuraPalType = 0;
 			mAuraPalTime = 0;
@@ -132,7 +115,7 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var int dealtDmg)
 ///******************************************************************************************
 /// B_WeaponSpecialEffect
 ///******************************************************************************************
-func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth)
+func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth, var C_Item wpn)
 {
 	/// hero
 	if (Npc_IsPlayer(slf))
@@ -141,10 +124,91 @@ func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth)
 		SelfFightTeach_ADD (slf, slf.weapon-2);
 		
 		/// MANA REGENERATION
-		var C_Item wpn; wpn = Npc_GetReadiedWeapon(slf);
-		
-		if		(Hlp_IsItem(wpn, ItMw_Stab_L_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 2);		}
-		else if	(Hlp_IsItem(wpn, ItMw_Stab_M_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 6);		}
-		else if	(Hlp_IsItem(wpn, ItMw_Stab_H_01))	{	Npc_ChangeAttribute (slf, ATR_MANA, 10);	};
+		if (wpn.cond_atr[0] == ATR_POWER)
+		{
+			Npc_ChangeAttribute (slf, ATR_MANA, slf.attribute[ATR_POWER]/20);
+		};
 	};
+};
+
+///******************************************************************************************
+/// B_MunitionSpecialDamage
+///******************************************************************************************
+func void B_MunitionSpecialBangEffect(var C_Npc oth, var C_Npc slf)
+{
+	if (Npc_IsPlayer(oth))
+	{
+		return;
+	};
+	
+	if ((oth.senses & SENSE_HEAR) && (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5))
+	{
+		AI_Wait		(oth, 2);
+		B_ResetAll	(oth);
+		AI_StandUp	(oth);
+		
+		if (oth.guild > GIL_SEPERATOR_ORC)
+		{
+			AI_SetWalkmode (oth, NPC_RUN);
+			AI_GotoNpc (oth, slf);
+		}
+		else
+		{
+			B_TurnToNpc (oth, slf);
+			B_LookAtNpc (oth, slf);
+		};
+	};
+};
+func void B_MunitionSpecialBang(var C_Npc oth)
+{
+	Snd_Play("MFX_Fireball_Collide1");
+	MOD_Broadcast (oth, B_MunitionSpecialBangEffect);
+};
+
+///******************************************************************************************
+func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
+{
+	var int dmg; dmg = 0;
+	
+	/// sharp arrow
+	if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_SharpArrow))
+	{
+		dmg = itm.COUNT[1];
+	}
+	/// hunting arrow
+	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_HuntingArrow))
+	{
+		if (C_NpcIsAnimal(oth))
+		{
+			dmg = itm.COUNT[1];
+		}
+		else
+		{
+			dmg = itm.COUNT[2];
+		};
+	}
+	/// quartz arrow
+	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_QuartzArrow))
+	{
+		if (oth.protection[PROT_POINT] < 100)
+		{
+			dmg = itm.COUNT[1];
+		}
+		else
+		{
+			dmg = itm.COUNT[2];
+		};
+	}
+	/// bang arrow
+	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_BangArrow))
+	{
+		B_MunitionSpecialBang(oth);
+	}
+	/// magic arrow
+	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_MagicArrow))
+	{
+		dmg = itm.COUNT[1];
+	};
+	
+	return dmg;
 };

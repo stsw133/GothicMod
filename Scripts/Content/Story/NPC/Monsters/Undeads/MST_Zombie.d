@@ -30,6 +30,9 @@ prototype Mst_Default_Zombie (C_Npc)
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
 	Npc_SetToFistMode(self);
+	
+	/// ------ Inventory ------
+	B_CreateAmbientInv(self);
 };
 
 ///******************************************************************************************

@@ -20,7 +20,7 @@ instance VLK_480_Fellan (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
+	EquipItem (self, ItMw0_ShortSword2);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -20,7 +20,7 @@ instance VLK_4100_Brutus (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Vlk_Dagger);
+	EquipItem (self, ItMw0_1H_Vlk_Dagger);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

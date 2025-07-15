@@ -26,14 +26,15 @@ func void MOD_HeroReset (var C_Npc slf)
 	slf.attribute[ATR_MANA]					=	slf.attribute[ATR_MANA_MAX];
 	
 	/// ------ Fight ------
-	slf.hitchance[NPC_TALENT_THROW]			=	default;
 	slf.hitchance[NPC_TALENT_1H]			=	default;
 	slf.hitchance[NPC_TALENT_2H]			=	default;
 	slf.hitchance[NPC_TALENT_BOW]			=	default;
 	slf.hitchance[NPC_TALENT_CROSSBOW]		=	default;
 	
 	/// ------ Talents ------
-	Npc_SetTalentSkill (slf, NPC_TALENT_THROW, default);
+	slf.hitchance[NPC_TALENT_EXTRACTION]	=	default;
+	Npc_SetTalentSkill (slf, NPC_TALENT_EXTRACTION, default);
+	
 	Npc_SetTalentSkill (slf, NPC_TALENT_1H, default);
 	Npc_SetTalentSkill (slf, NPC_TALENT_2H, default);
 	Npc_SetTalentSkill (slf, NPC_TALENT_BOW, default);
@@ -62,9 +63,9 @@ func void MOD_HeroReset (var C_Npc slf)
 	Npc_SetTalentSkill (slf, NPC_TALENT_HUNTING, default);
 	Npc_SetTalentValue (slf, NPC_TALENT_HUNTING, default);
 	
-	Npc_SetTalentSkill (slf, NPC_TALENT_COOKING, default);
-	Npc_SetTalentSkill (slf, NPC_TALENT_MINING, default);
-	Npc_SetTalentSkill (slf, NPC_TALENT_ARMORY, default);
+	Npc_SetTalentSkill (slf, NPC_TALENT_17, default);
+	Npc_SetTalentSkill (slf, NPC_TALENT_18, default);
+	Npc_SetTalentSkill (slf, NPC_TALENT_19, default);
 	
 	if (Npc_IsPlayer(slf))
 	{

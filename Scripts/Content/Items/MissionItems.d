@@ -358,6 +358,13 @@ instance ItMi_FireCrystal (ItemPR_Mission)
 	description					=	name;
 };
 
+instance ItMi_Firewood (ItemPR_Mission)
+{
+	name						=	"Drewno opa³owe";
+	visual						=	"ItMi_Firewood.3ds";
+	description					=	name;
+};
+
 instance ItMi_SkipPaket (ItemPR_Mission)
 {
 	name						=	"Paczka dla Skipa";
@@ -398,13 +405,6 @@ instance ItMi_WeaponBag (ItemPR_Mission)
 {
 	name						=	"Paczka z broni¹";
 	visual						=	"NW_CITY_WEAPON_BAG_01.3ds";
-	description					=	name;
-};
-
-instance ItMi_Wood (ItemPR_Mission)
-{
-	name						=	"Drewno opa³owe";
-	visual						=	"ItMi_Wood.3ds";
 	description					=	name;
 };
 
@@ -450,7 +450,7 @@ instance ItMw_UluMulu (ItemPR_Mission)
 instance ItRw_Bow_L_03_MIS (ItemPR_Mission)
 {
 	name						=	"£uk myœliwski Bospera";
-	visual						=	"ItRw_Bow_M_01.mms";
+	visual						=	"ItRw_Bow_L_03.mms";
 	description					=	name;
 };
 
@@ -509,7 +509,7 @@ func void Use_ItMi_GregsBottle()
 instance ItMi_GornsTreasure_MIS (ItemPR_Mission)
 {
 	name						=	"Skórzana sakwa Gorna";
-	visual						=	"ItMi_Pocket_Yellow.3ds";
+	visual						=	"ItMi_Pocket_Gold.3ds";
 	
 	scemename					=	"MAPSEALED";
 	on_state[0]					=	Use_ItMi_GornsTreasure;
@@ -544,7 +544,7 @@ func void Use_ItMi_KerolothsGeldbeutel()
 instance ItMi_MalethsBanditGold (ItemPR_Mission)
 {
 	name						=	"Sakwa pe³na z³ota!";
-	visual						=	"ItMi_Pocket_Yellow.3ds";
+	visual						=	"ItMi_Pocket_Gold.3ds";
 	
 	scemename					=	"MAPSEALED";
 	on_state[0]					=	Use_ItMi_MalethsBanditGold;
@@ -570,7 +570,7 @@ instance ItSe_Addon_FrancisChest (ItemPR_Mission)
 func void Use_ItSe_FrancisChest()
 {
 	CreateInvItem (self, ItMi_GoldChest);
-	CreateInvItem (self, ItMw_GoldenSabre);
+	CreateInvItem (self, ItMw_Dyaebl);
 	CreateInvItems (self, Itmi_Gold, 150);
 	CreateInvItem (self, ItMi_GoldCup);
 	CreateInvItem (self, ItMi_SilverNecklace);
@@ -618,7 +618,7 @@ func void Use_ItSe_DiegosTreasure()
 instance ItSe_Golemchest_MIS (ItemPR_Mission)
 {
 	name						=	"Skórzany mieszek";
-	visual						=	"ItMi_Pocket_Yellow.3ds";
+	visual						=	"ItMi_Pocket_Gold.3ds";
 	
 	scemename					=	"MAPSEALED";
 	on_state[0]					=	Use_ItSe_GolemChest;

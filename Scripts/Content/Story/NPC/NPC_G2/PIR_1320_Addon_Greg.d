@@ -20,7 +20,7 @@ instance PIR_1320_Addon_Greg (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Piratensaebel);
+	EquipItem (self, ItMw0_Piratensaebel);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

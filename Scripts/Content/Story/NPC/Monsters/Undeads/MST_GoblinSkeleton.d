@@ -42,7 +42,7 @@ func void B_SetVisuals_GoblinSkeleton()
 instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
 {
 	B_SetVisuals_GoblinSkeleton();
-	EquipItem (self, ItMw_1h_MISC_Sword);
+	EquipItem (self, ItMw_1h_Misc_Sword);
 };
 
 ///******************************************************************************************
@@ -51,5 +51,5 @@ instance Gobbo_Skeleton (Mst_Default_GoblinSkeleton)
 instance Gobbo_SkeletonOWDemonTower (Mst_Default_GoblinSkeleton)
 {
 	B_SetVisuals_GoblinSkeleton();
-	EquipItem (self, ItMw_1h_Goblin_04);
+	EquipItem (self, ItMw_1h_GobboMace_04);
 };

@@ -1227,8 +1227,7 @@ instance DIA_Addon_Vatras_Stoneplate (C_INFO)
 
 func int DIA_Addon_Vatras_Stoneplate_Condition ()
 {
-	if (Npc_HasItems(other, ItWr_StonePlate))
-	&& (Npc_HasItems(other, ItWr_StonePlateCommon_Addon) >= 1)
+	if (Npc_HasItems(other, ItWr_StonePlateCommon_Addon) >= 1)
 	{
 		return TRUE;
 	};

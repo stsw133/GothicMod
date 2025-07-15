@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 var int TimeDust_WAIT;
-var string TimeDust_WP, LostGregy_WP;
+var string TimeDust_WP;
 
 ///******************************************************************************************
 /// Natural regeneration
@@ -12,11 +12,12 @@ var string TimeDust_WP, LostGregy_WP;
 /// ------ HP regen ------
 func void TT_1000_RGHP()
 {
-	/// if player IS NOT poisoned
+	/// if player IS poisoned
 	if (bsPoison > 0)
 	{
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -bsPoison);
 	}
+	/// if player IS NOT poisoned
 	else
 	{
 		regenPoints[BarOrderHP] += regenPower[BarOrderHP];
@@ -91,12 +92,12 @@ func void TT_5000()
 	};
 	
 	/// sleep timer
-	if (sleepTimer > 0)
+	if (bsRested > 0)
 	{
-		sleepTimer -= 1;
-		if (sleepTimer == 0)
+		bsRested -= 1;
+		if (bsRested == 0)
 		{
-			Print("Jesteœ ju¿ dostatecznie zmêczony aby zasn¹æ.");
+			Print("Jesteœ ju¿ dostatecznie zmêczony by zasn¹æ.");
 		};
 	};
 	
@@ -117,19 +118,7 @@ func void TT_5000()
 	};
 	
 	/// Gregy
-	if (GregyIsYourFollower)
-	{
-		if (Npc_IsDead(Gregy))
-		{
-			PIR_1302_Gregy_Rise(Gregy);
-		};
-		
-		if (Npc_GetDistToNpc(Gregy, hero) > 10000 && Npc_GetDistToWP(hero, LostGregy_WP) > 1500)
-		{
-			AI_Teleport	(Gregy, LostGregy_WP);
-		};
-		LostGregy_WP = Npc_GetNearestWP(hero);
-	};
+	GregyRefreshStatus();
 };
 
 ///******************************************************************************************
@@ -157,7 +146,7 @@ func void TT_1000()
 		if (bsStealth > 0) { MOD_SetStealth(hero, bsStealth - 1); };
 		if (mAuraTime > 0)
 		{
-			if (mAuraType == MAGIC_MYS) { Npc_ChangeAttribute (hero, ATR_HITPOINTS, 5); };
+			if (mAuraType == MAGIC_MYS) { Npc_ChangeAttribute(hero, ATR_HITPOINTS, 5); };
 			
 			mAuraTime -= 1;
 			if (mAuraTime == 0)
@@ -185,9 +174,9 @@ func void TT_200()
 	if (mSlowTime > 0)		{	mSlowTime -= 1;		};
 	
 	/// reduce stamina while sprinting
-	if (bsSprint && C_BodyStateContains(hero, BS_RUN))
+	if ((C_BodyStateContains(hero, BS_RUN) && bsSprint) || C_BodyStateContains(hero, BS_JUMP))
 	{
-		hero.aivar[AIV_Stamina] -= 2+bsArmor;
+		hero.aivar[AIV_Stamina] -= (2+bsArmor)*2;
 	};
 	
 	/// reduce stamina while fighting & scale dexterity
@@ -195,8 +184,8 @@ func void TT_200()
 	{
 		if (C_BodyStateContains(hero, BS_HIT) && !movieMode)
 		{
-			if (hero.aivar[AIV_Stamina] < 10)	{	Npc_SetSpeed (hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
-			else								{	Npc_SetSpeed (hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
+			if (hero.aivar[AIV_Stamina] < 10)	{	Npc_SetSpeed(hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
+			else								{	Npc_SetSpeed(hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
 		};
 		hero.aivar[AIV_Stamina] -= 3+bsArmor-usingForgedWeapon;
 	}
@@ -258,21 +247,24 @@ func void TT_5()
 		Wld_AddWorldTime(75 + scaleWorldTime);
 		
 		/// ------ ani shortcut keys etc. ------
-		if		(MEM_KeyState(KEY_F) == KEY_HOLD)			{	MovieMode_SetFaceAni();			}	/// face ani
-		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MovieMode_DialogGesture();		}	/// dialogs
-		else if (MEM_KeyState(KEY_V) == KEY_HOLD)			{	MovieMode_ExecSubScript();		}	/// sub scripts
-		else if (MEM_KeyState(KEY_COMMA) == KEY_HOLD)		{	MovieMode_SetHeadDirection();	}	/// head direction
-		else if (MEM_KeyState(KEY_PERIOD) == KEY_HOLD)		{	MovieMode_SetArmDirection();	}	/// arm direction
-		else if (MemoKey1 != -1)								{	MemoKey1 = -1; MemoKey2 = -1;	};	/// reset helper keys
+		if		(MEM_KeyState(KEY_V) == KEY_HOLD)			{	MOD_MovieMode_DoAni();				}	/// ani
+		else if (MEM_KeyState(KEY_Z) == KEY_HOLD)			{	MOD_MovieMode_DoDialogGesture();	}	/// dialogs
+		else if	(MEM_KeyState(KEY_F) == KEY_HOLD)			{	MOD_MovieMode_DoFaceAni();			}	/// face ani
+		else if (MEM_KeyState(KEY_DECIMAL) == KEY_HOLD)		{	MOD_MovieMode_ExecSubScript();		}	/// sub scripts
+		else if (MOD_MemoKey1 != -1)							{	MOD_MemoKey1 = -1; MOD_MemoKey2 = -1;	};	/// reset helper keys
 	};
 	
-	/// ------ hide GUI key & camera key ------
+	/// ------ hide GUI & camera keys ------
 	if (MEM_KeyState(KEY_F1) == KEY_PRESSED)
 	{
 		MEM_Game.game_drawall = !MEM_Game.game_drawall;
-	};
-	if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
+	}
+	else if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
 	{
 		AI_Wait (hero, 0.1);
+	}
+	else if (MEM_KeyState(KEY_F10) == KEY_HOLD)
+	{
+		MOD_MovieMode_DoCamera();
 	};
 };

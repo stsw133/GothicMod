@@ -20,7 +20,7 @@ instance Pal_205_Torwache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Pal_Sword);
+	EquipItem (self, ItMw0_1H_Pal_Sword);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Weak05, Teeth_Normal, ItAr_PAL_L);

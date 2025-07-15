@@ -16,7 +16,7 @@ instance PIR_1357_Addon_Garett (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Piratensaebel);
+	EquipItem (self, ItMw0_Piratensaebel);
 	
 	/// ------ Inventory ------
 	CreateInvItem (self, ItBe_Addon_Hp_01);

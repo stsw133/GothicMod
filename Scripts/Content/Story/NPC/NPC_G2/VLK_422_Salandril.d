@@ -16,7 +16,7 @@ instance VLK_422_Salandril (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_VLK_Dagger);
+	EquipItem (self, ItMw0_1h_VLK_Dagger);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

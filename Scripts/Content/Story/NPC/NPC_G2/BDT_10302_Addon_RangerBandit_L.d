@@ -16,7 +16,7 @@ instance BDT_10302_Addon_RangerBandit_L (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_BanditTrader);
+	EquipItem (self, ItMw0_BanditTrader);
 	CreateInvItem (self, ItWr_StonePlateCommon_Addon);
 	
 	/// ------ Inventory ------

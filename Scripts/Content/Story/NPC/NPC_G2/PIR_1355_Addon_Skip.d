@@ -19,8 +19,8 @@ instance PIR_1355_Addon_Skip (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
-	EquipItem (self, ItRw_SLD_Bow);
+	EquipItem (self, ItMw0_ShortSword2);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItPo_Health_03, 2);

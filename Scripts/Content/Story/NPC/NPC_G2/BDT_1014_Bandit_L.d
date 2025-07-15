@@ -19,7 +19,7 @@ instance BDT_1014_Bandit_L (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Nagelknueppel);
+	EquipItem (self, ItMw0_Nagelknueppel);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

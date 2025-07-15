@@ -471,7 +471,7 @@ func void DIA_Jora_AlriksSchwert_Info ()
 	AI_Output (self, other, "DIA_Jora_AlriksSchwert_08_01"); //Chodzi ci o tego obdartusa, który wymieni³ swoj¹ broñ na parê pochodni i kawa³ków miêsa?
 	AI_Output (other, self, "DIA_Jora_AlriksSchwert_15_02"); //Tak, o niego.
 	
-	if (Npc_HasItems (self, ItMw_AlriksSword_Mis) > 0)
+	if (Npc_HasItems (self, ItMw_AlriksSword) > 0)
 	{
 		AI_Output (self, other, "DIA_Jora_AlriksSchwert_08_03"); //Wci¹¿ mam ten miecz.
 		AI_Output (other, self, "DIA_Jora_AlriksSchwert_15_04"); //Ile za niego chcesz?
@@ -479,7 +479,7 @@ func void DIA_Jora_AlriksSchwert_Info ()
 		{
 			AI_Output (self, other, "DIA_Jora_AlriksSchwert_08_05"); //Có¿ - jak dla ciebie...
 			AI_Output (self, other, "DIA_Jora_AlriksSchwert_08_06"); //A co mi tam! Masz, trzymaj. W koñcu pomog³eœ mi odzyskaæ moje z³oto...
-			B_GiveInvItems (self, other, ItMw_AlriksSword_Mis, 1);
+			B_GiveInvItems (self, other, ItMw_AlriksSword, 1);
 		}
 		else
 		{
@@ -508,7 +508,7 @@ instance DIA_Jora_BUYAlriksSchwert	(C_INFO)
 func int DIA_Jora_BUYAlriksSchwert_Condition ()
 {
 	if (Npc_KnowsInfo(other, DIA_Jora_AlriksSchwert))
-	&& (Npc_HasItems (self, ItMw_AlriksSword_Mis) > 0)
+	&& (Npc_HasItems (self, ItMw_AlriksSword) > 0)
 	{
 		return TRUE;
 	};
@@ -528,7 +528,7 @@ func void DIA_Jora_BUYAlriksSchwert_Info ()
 		//else
 		//{
 			AI_Output (self, other, "DIA_Jora_BUYAlriksSchwert_08_04"); //Proszê - to by³ dobry interes.
-			B_GiveInvItems (self, other, ItMw_AlriksSword_Mis, 1);
+			B_GiveInvItems (self, other, ItMw_AlriksSword, 1);
 		//};
 	}
 	else

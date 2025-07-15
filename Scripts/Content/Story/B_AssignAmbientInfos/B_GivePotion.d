@@ -17,7 +17,6 @@ func int DIA_Addon_GivePotion_Condition()
 		if (Npc_HasItems(other, ItPo_Health_01) >= 1)
 		|| (Npc_HasItems(other, ItPo_Health_02) >= 1)
 		|| (Npc_HasItems(other, ItPo_Health_03) >= 1)
-		|| (Npc_HasItems(other, ItPo_Health_Addon_04) >= 1)
 		{
 			return true;
 		};
@@ -28,23 +27,20 @@ func void DIA_Addon_GivePotion_Info()
 	Info_ClearChoices	(DIA_Addon_GivePotion);
 	Info_AddChoice		(DIA_Addon_GivePotion, DIALOG_BACK, DIA_Addon_GivePotion_BACK);
 	
-	if (Npc_HasItems(other, ItPo_Health_Addon_04) >= 1)
-	{
-		Info_AddChoice	(DIA_Addon_GivePotion,"(Daj potê¿ny eliksir leczniczy)",DIA_Addon_GivePotion_ItPo_Health_04);
-	};
 	if (Npc_HasItems(other, ItPo_Health_03) >= 1)
 	{
-		Info_AddChoice	(DIA_Addon_GivePotion,"(Daj silny eliksir leczniczy)",DIA_Addon_GivePotion_ItPo_Health_03);
+		Info_AddChoice	(DIA_Addon_GivePotion, "(Daj eliksir leczniczy)", DIA_Addon_GivePotion_ItPo_Health_03);
 	};
 	if (Npc_HasItems(other, ItPo_Health_02) >= 1)
 	{
-		Info_AddChoice	(DIA_Addon_GivePotion,"(Daj eliksir leczniczy)",DIA_Addon_GivePotion_ItPo_Health_02);
+		Info_AddChoice	(DIA_Addon_GivePotion, "(Daj ekstrakt leczniczy)", DIA_Addon_GivePotion_ItPo_Health_02);
 	};
 	if (Npc_HasItems(other, ItPo_Health_01) >= 1)
 	{
-		Info_AddChoice	(DIA_Addon_GivePotion,"(Daj s³aby eliksir leczniczy)",DIA_Addon_GivePotion_ItPo_Health_01);
+		Info_AddChoice	(DIA_Addon_GivePotion, "(Daj esencjê lecznicz¹)", DIA_Addon_GivePotion_ItPo_Health_01);
 	};
 };
+
 ///******************************************************************************************
 func void B_Addon_DrinkPotion()
 {
@@ -52,36 +48,34 @@ func void B_Addon_DrinkPotion()
 	
 	if (self.attribute[ATR_HITPOINTS] < self.attribute[ATR_HITPOINTS_MAX])
 	{
-		if		(Npc_HasItems(self, ItPo_Health_Addon_04) > 0)	{	B_UseItem (self, ItPo_Health_Addon_04);	}
-		else if	(Npc_HasItems(self, ItPo_Health_03) > 0)		{	B_UseItem (self, ItPo_Health_03);		}
-		else if	(Npc_HasItems(self, ItPo_Health_02) > 0)		{	B_UseItem (self, ItPo_Health_02);		}
-		else if	(Npc_HasItems(self, ItPo_Health_01) > 0)		{	B_UseItem (self, ItPo_Health_01);		};
+		if		(Npc_HasItems(self, ItPo_Health_03) > 0)	{	B_UseItem (self, ItPo_Health_03);	}
+		else if	(Npc_HasItems(self, ItPo_Health_02) > 0)	{	B_UseItem (self, ItPo_Health_02);	}
+		else if	(Npc_HasItems(self, ItPo_Health_01) > 0)	{	B_UseItem (self, ItPo_Health_01);	};
 	};
 	
 	Info_ClearChoices(DIA_Addon_GivePotion);
 };
+
 func void DIA_Addon_GivePotion_BACK()
 {
 	Info_ClearChoices(DIA_Addon_GivePotion);
 };
-func void DIA_Addon_GivePotion_ItPo_Health_04()
+
+func void DIA_Addon_GivePotion_ItPo_Health_01()
 {
-	B_GiveInvItems (other, self, ItPo_Health_Addon_04, 1);
+	B_GiveInvItems (other, self, ItPo_Health_01, 1);
 	B_Addon_DrinkPotion();
 };
-func void DIA_Addon_GivePotion_ItPo_Health_03()
-{
-	B_GiveInvItems (other, self, ItPo_Health_03, 1);
-	B_Addon_DrinkPotion();
-};
+
 func void DIA_Addon_GivePotion_ItPo_Health_02()
 {
 	B_GiveInvItems (other, self, ItPo_Health_02, 1);
 	B_Addon_DrinkPotion();
 };
-func void DIA_Addon_GivePotion_ItPo_Health_01()
+
+func void DIA_Addon_GivePotion_ItPo_Health_03()
 {
-	B_GiveInvItems (other, self, ItPo_Health_01, 1);
+	B_GiveInvItems (other, self, ItPo_Health_03, 1);
 	B_Addon_DrinkPotion();
 };
 

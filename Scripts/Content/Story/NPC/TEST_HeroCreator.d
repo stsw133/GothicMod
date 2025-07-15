@@ -10,6 +10,7 @@ instance HC (Npc_Default)
 	npctype								=	NPCTYPE_MAIN;
 	
 	/// ------ Aivars ------
+	aivar[AIV_CanOffer]					=	OFFER_Teaching;
 	aivar[AIV_IgnoreCrime]				=	IGNORE_Murder | IGNORE_Theft | IGNORE_Sheepkiller | IGNORE_Fear;
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor | IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
@@ -90,6 +91,11 @@ func void Rtn_Smoke_Joint_50()
 {
 	TA_Smoke_Joint (08,00, 20,00, "XXX");
 	TA_Smoke_Joint (20,00, 08,00, "XXX");
+};
+func void Rtn_Stand_Halberd_50()
+{
+	TA_Stand_Halberd (08,00, 20,00, "XXX");
+	TA_Stand_Halberd (20,00, 08,00, "XXX");
 };
 
 ///******************************************************************************************

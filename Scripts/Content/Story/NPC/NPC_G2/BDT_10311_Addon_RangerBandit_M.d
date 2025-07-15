@@ -16,8 +16,8 @@ instance BDT_10311_Addon_RangerBandit_M (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Addon_BanditTrader);
-	EquipItem (self, ItRw_SLD_Bow);
+	EquipItem (self, ItMw0_BanditTrader);
+	EquipItem (self, ItRw0_Bow_M_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

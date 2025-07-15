@@ -17,8 +17,8 @@ instance SLD_816_Fester (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Axe);
-	EquipItem (self, ItRw_Sld_Bow);
+	EquipItem (self, ItMw0_1h_Sld_Axe);
+	EquipItem (self, ItRw0_Bow_M_01);
 	CreateInvItems (self, ItRw_Arrow, 10);
 	
 	/// ------ Inventory ------

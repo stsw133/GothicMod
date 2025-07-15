@@ -160,7 +160,11 @@ FUNC VOID DIA_Addon_Thorus_GoodOldPerm_Info()
 //----------------------------------------------------------------------
 FUNC INT C_PlayerHasWrongToken ()
 {
-	if (Npc_HasItems(hero, ItWr_StonePlate))
+	if (Npc_HasItems(hero, ItWr_StonePlate_01))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_02))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_03))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_04))
+	|| (Npc_HasItems(hero, ItWr_StonePlate_05))
 	|| (Npc_HasItems(hero, ItWr_StonePlateCommon_Addon) >= 1)//Klar.
 	|| (Npc_HasItems(hero, ItMi_Addon_Stone_02) >= 1)
 	|| (Npc_HasItems(hero, ItMi_Addon_Stone_03) >= 1)

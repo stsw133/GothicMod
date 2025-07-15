@@ -16,7 +16,7 @@ instance VLK_408_Jora (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_AlriksSword_MIS);
+	EquipItem (self, ItMw_AlriksSword);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Normal02, Teeth_Normal, ItAr_VLK_L_11);

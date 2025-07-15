@@ -16,7 +16,7 @@ instance VLK_417_Constantino (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_N_OldBald_Jeremiah, Teeth_Normal, ItAr_Alchemist);

@@ -16,7 +16,7 @@ instance VLK_4108_Engor (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Mil_Sword);
+	EquipItem (self, ItMw0_1H_Mil_Sword);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_L_Jackal, Teeth_Normal, ItAr_MIL_L);

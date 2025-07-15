@@ -3,26 +3,24 @@
 ///******************************************************************************************
 func void MAKERUNE_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKERUNE;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
 };
+
 func void MOBSI_MAKESCROLL_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_MAKESCROLL;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
 };
+
 ///******************************************************************************************
 instance PC_MakeRune_End (C_Info)
 {

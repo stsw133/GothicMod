@@ -19,7 +19,7 @@ instance VLK_434_Borka (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Bau_Mace);
+	EquipItem (self, ItMw0_1h_Bau_Mace);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItMi_Joint, 20);

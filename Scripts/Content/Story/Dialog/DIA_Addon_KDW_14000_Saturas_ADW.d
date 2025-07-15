@@ -316,8 +316,12 @@ func void DIA_Addon_Saturas_Tokens_Info ()
 {
 	AI_Output	(other, self, "DIA_Addon_Saturas_Tokens_15_00"); //Jeœli chodzi o relikty...
 	
-	if (DIA_Addon_Saturas_Tokens_OneTime == FALSE)
-	&& ((Npc_HasItems(other, ItWr_StonePlate))
+	if (!DIA_Addon_Saturas_Tokens_OneTime)
+	&& ((Npc_HasItems(other, ItWr_StonePlate_01))
+	|| (Npc_HasItems(other, ItWr_StonePlate_02))
+	|| (Npc_HasItems(other, ItWr_StonePlate_03))
+	|| (Npc_HasItems(other, ItWr_StonePlate_04))
+	|| (Npc_HasItems(other, ItWr_StonePlate_05))
 	|| (Npc_HasItems(other, ItWr_StonePlateCommon_Addon)))
 	{
 		AI_Output	(other, self, "DIA_Addon_Saturas_Tokens_15_01"); //Wydaje mi siê, ¿e mam tu coœ dla ciebie.
@@ -330,11 +334,11 @@ func void DIA_Addon_Saturas_Tokens_Info ()
 	var int BroughtToken;BroughtToken = 0;
 	var int XP_BroughtTokens;XP_BroughtTokens = 0;
 	
-	if ((Npc_HasItems (other,ItMi_Addon_Stone_01)) && (Saturas_SCFound_ItMi_Addon_Stone_01 == FALSE))
-	|| ((Npc_HasItems (other,ItMi_Addon_Stone_02)) && (Saturas_SCFound_ItMi_Addon_Stone_02 == FALSE))
-	|| ((Npc_HasItems (other,ItMi_Addon_Stone_03)) && (Saturas_SCFound_ItMi_Addon_Stone_03 == FALSE))
-	|| ((Npc_HasItems (other,ItMi_Addon_Stone_04)) && (Saturas_SCFound_ItMi_Addon_Stone_04 == FALSE))
-	|| ((Npc_HasItems (other,ItMi_Addon_Stone_05)) && (Saturas_SCFound_ItMi_Addon_Stone_05 == FALSE))
+	if ((Npc_HasItems (other,ItMi_Addon_Stone_01)) && (!Saturas_SCFound_ItMi_Addon_Stone_01))
+	|| ((Npc_HasItems (other,ItMi_Addon_Stone_02)) && (!Saturas_SCFound_ItMi_Addon_Stone_02))
+	|| ((Npc_HasItems (other,ItMi_Addon_Stone_03)) && (!Saturas_SCFound_ItMi_Addon_Stone_03))
+	|| ((Npc_HasItems (other,ItMi_Addon_Stone_04)) && (!Saturas_SCFound_ItMi_Addon_Stone_04))
+	|| ((Npc_HasItems (other,ItMi_Addon_Stone_05)) && (!Saturas_SCFound_ItMi_Addon_Stone_05))
 	{	
 		AI_Output	(other, self, "DIA_Addon_Saturas_Tokens_15_04"); //A to mo¿ecie wykorzystaæ?
 		AI_Output	(self, other, "DIA_Addon_Saturas_Tokens_14_05"); //Wygl¹da nieŸle. Gdzie to znalaz³eœ?

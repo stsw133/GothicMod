@@ -22,7 +22,7 @@ instance None_101_Mario_DI (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Sturmbringer);
+	EquipItem (self, ItMw0_Sturmbringer);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

@@ -110,7 +110,7 @@ func void Use_ItWr_Map_NewWorld_Dexter()
 };
 
 ///******************************************************************************************
-instance ItWr_Map_NewWorld_Ornaments_Addon (ItemPR_MissionDoc)
+instance ItWr_Map_NewWorld_Ornaments (ItemPR_MissionDoc)
 {
 	name						=	"Mapa Nefariusa";
 	visual						=	"ItWr_Map_01.3ds";
@@ -126,7 +126,7 @@ func void Use_ItWr_Map_NewWorld_Ornaments()
 {
 	if (Npc_IsPlayer(self))
 	{
-		B_SetPlayerMap(ItWr_Map_NewWorld_Ornaments_Addon);
+		B_SetPlayerMap(ItWr_Map_NewWorld_Ornaments);
 	};
 	
 	var int Document;
@@ -832,33 +832,37 @@ func void Use_ItMi_Addon_Stone_01()
 };
 
 ///******************************************************************************************
-instance ItMi_Addon_Stone_05 (ItemPR_MissionDoc)
+instance ItMi_Addon_Stone_02 (ItemPR_MissionDoc)
 {
-	name						=	"¯ó³ta kamienna tablica"; 
-	visual						=	"ItMi_StonePlate_Read_04.3ds";
+	name						=	"Fioletowa kamienna tablica";
+	visual						=	"ItMi_StonePlate_Read_02.3ds";
 	
 	scemeName					=	"MAP";
-	on_state[0]					=	Use_ItMi_Addon_Stone_05;
+	on_state[0]					=	Use_ItMi_Addon_Stone_02;
 	
 	wear						=	WEAR_EFFECT;
 	effect						=	"SPELLFX_WEAKGLIMMER";
 	
 	description					=	name;
-	TEXT[2]						=	"¯ó³ta kamienna tablica";
+	TEXT[2]						=	"Fioletowa kamienna tablica";
 	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_ItMi_Addon_Stone_05()
+func void Use_ItMi_Addon_Stone_02()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_01.tga", false);
-					Doc_SetFont		(nDocID, -1, FONT_Book);
+					Doc_SetPage	(nDocID,  0, "Adanos_Stoneplate_05.tga", false);
+					Doc_SetFont	(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
-					Doc_PrintLines	(nDocID,  0, "Ja, który sprzeciwi³em siê rozkazom trójki, zbudowa³em pierwsz¹ pu³apkê. I tylko ja znam w³aœciwe wrota.");
+					Doc_PrintLines	(nDocID,  0, "QUARHODRON by³ te¿ tym, który z pomoc¹ KHARDIMONA zapieczêtowa³ zewnêtrzn¹ bramê œwi¹tyni. ¯aden z nich nie prze¿y³ tego rytua³u.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Jedynie ja pozosta³em, aby byæ œwiadkiem tych wydarzeñ.");
+					Doc_PrintLine	(nDocID,  0, "");
+					Doc_PrintLines	(nDocID,  0, "Oby RADEMES przez ca³¹ wiecznoœæ gni³ wewn¹trz œwi¹tyni!");
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_Show		(nDocID);
 	}
@@ -945,37 +949,33 @@ func void Use_ItMi_Addon_Stone_04()
 };
 
 ///******************************************************************************************
-instance ItMi_Addon_Stone_02 (ItemPR_MissionDoc)
+instance ItMi_Addon_Stone_05 (ItemPR_MissionDoc)
 {
-	name						=	"Fioletowa kamienna tablica";
-	visual						=	"ItMi_StonePlate_Read_02.3ds";
+	name						=	"¯ó³ta kamienna tablica"; 
+	visual						=	"ItMi_StonePlate_Read_04.3ds";
 	
 	scemeName					=	"MAP";
-	on_state[0]					=	Use_ItMi_Addon_Stone_02;
+	on_state[0]					=	Use_ItMi_Addon_Stone_05;
 	
 	wear						=	WEAR_EFFECT;
 	effect						=	"SPELLFX_WEAKGLIMMER";
 	
 	description					=	name;
-	TEXT[2]						=	"Fioletowa kamienna tablica";
+	TEXT[2]						=	"¯ó³ta kamienna tablica";
 	inv_rotx					=	INVCAM_X_STONEPLATE_STANDARD;
 };
-func void Use_ItMi_Addon_Stone_02()
+func void Use_ItMi_Addon_Stone_05()
 {
 	if (Npc_GetTalentSkill(self, NPC_TALENT_LANGUAGE))
 	{
 		var int nDocID;
 		nDocID =	Doc_Create		();
 					Doc_SetPages	(nDocID,  1);
-					Doc_SetPage	(nDocID,  0, "Adanos_Stoneplate_05.tga", false);
-					Doc_SetFont	(nDocID, -1, FONT_Book);
+					Doc_SetPage		(nDocID,  0, "Adanos_Stoneplate_01.tga", false);
+					Doc_SetFont		(nDocID, -1, FONT_Book);
 					Doc_SetMargins	(nDocID, -1, 70, 50, 90, 50, 1);
 					Doc_PrintLine	(nDocID,  0, "");
-					Doc_PrintLines	(nDocID,  0, "QUARHODRON by³ te¿ tym, który z pomoc¹ KHARDIMONA zapieczêtowa³ zewnêtrzn¹ bramê œwi¹tyni. ¯aden z nich nie prze¿y³ tego rytua³u.");
-					Doc_PrintLine	(nDocID,  0, "");
-					Doc_PrintLines	(nDocID,  0, "Jedynie ja pozosta³em, aby byæ œwiadkiem tych wydarzeñ.");
-					Doc_PrintLine	(nDocID,  0, "");
-					Doc_PrintLines	(nDocID,  0, "Oby RADEMES przez ca³¹ wiecznoœæ gni³ wewn¹trz œwi¹tyni!");
+					Doc_PrintLines	(nDocID,  0, "Ja, który sprzeciwi³em siê rozkazom trójki, zbudowa³em pierwsz¹ pu³apkê. I tylko ja znam w³aœciwe wrota.");
 					Doc_PrintLine	(nDocID,  0, "");
 					Doc_Show		(nDocID);
 	}

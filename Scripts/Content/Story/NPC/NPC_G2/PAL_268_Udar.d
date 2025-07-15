@@ -19,8 +19,8 @@ instance PAL_268_Udar (Npc_Default)
 	fight_tactic						=	FAI_NAILED;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Pal_Sword);
-	EquipItem (self, ItRw_Crossbow_H_01);
+	EquipItem (self, ItMw0_2h_Pal_Sword);
+	EquipItem (self, ItRw0_Crossbow_H_01);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

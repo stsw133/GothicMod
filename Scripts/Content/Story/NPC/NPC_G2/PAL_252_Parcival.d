@@ -19,7 +19,7 @@ instance PAL_252_Parcival (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Pal_Sword);
+	EquipItem (self, ItMw0_1h_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

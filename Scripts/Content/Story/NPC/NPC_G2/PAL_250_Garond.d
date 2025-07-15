@@ -23,7 +23,7 @@ instance PAL_250_Garond (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_MASTER;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2h_Pal_Sword);
+	EquipItem (self, ItMw0_2h_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

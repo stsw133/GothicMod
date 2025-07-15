@@ -19,8 +19,8 @@ instance PAL_267_Sengrath (Npc_Default)
 	fight_tactic						=	FAI_NAILED;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Pal_Sword);
-	EquipItem (self, ItRw_Mil_Crossbow);
+	EquipItem (self, ItMw0_1h_Pal_Sword);
+	EquipItem (self, itRw0_Crossbow_L_02);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

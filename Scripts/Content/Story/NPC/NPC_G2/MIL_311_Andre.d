@@ -22,13 +22,13 @@ instance Mil_311_Andre (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Mil_Sword);
+	EquipItem (self, ItMw0_1h_Mil_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Weak12, Teeth_Normal, ItAr_ROY_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Weak12, Teeth_Normal, ItAr_PAL_M);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	

@@ -400,7 +400,7 @@ INSTANCE DIA_Hyglas_HaveBook   (C_INFO)
 FUNC INT DIA_Hyglas_HaveBook_Condition()
 {
 	if (Npc_KnowsInfo (other,DIA_Hyglas_BringBook))
-	&& (Npc_HasItems (other,ItWr_Book_StarPower) >= 1)
+	&& (Npc_HasItems (other,ItWr_BookLp_StarPower) >= 1)
 	{
 		return TRUE;
 	};	
@@ -418,7 +418,7 @@ FUNC VOID DIA_Hyglas_HaveBook_Info()
 		AI_Output (self ,other,"DIA_Hyglas_HaveBook_14_02"); //A wiêc jednak zmieni³eœ zdanie. Bardzo dobrze. Gdzie jest ksiêga?
 	};		
 		
-	B_GiveInvItems (other,self,ItWr_Book_StarPower,1);
+	B_GiveInvItems (other,self,ItWr_BookLp_StarPower,1);
 	
 	Mis_HyglasBringBook = LOG_SUCCESS;
 	B_GivePlayerExp(300);

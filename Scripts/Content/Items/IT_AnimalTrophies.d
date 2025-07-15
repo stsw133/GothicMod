@@ -18,6 +18,11 @@ prototype ItemPR_AnimalBlood (C_Item)
 	
 	visual						=	"ItAt_Blood.3ds";
 	material					=	MAT_LEATHER;
+	
+	TEXT[0]						=	"Bazowy sk³adnik";
+	TEXT[1]						=	"mikstur transformacji.";
+	INV_ROTZ					=	-30;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 instance ItAt_AlligatorBlood (ItemPR_AnimalBlood)	{ description = "Krew aligatora"; };
@@ -59,7 +64,11 @@ instance ItAt_DragonBlood (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_DragonBlood.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
+	INV_ROTZ					=	-30;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 ///******************************************************************************************
@@ -73,6 +82,8 @@ instance ItAt_GoblinBone (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -84,6 +95,8 @@ instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -95,9 +108,11 @@ instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[1]						=	"U¿ywana jako sk³adnik";
-	TEXT[2]						=	"tworzenia run nekromancji.";
+	TEXT[0]						=	"Bazowy sk³adnik";
+	TEXT[1]						=	"run i zwojów nekromancji.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	180;
+	INV_ROTZ					=	90;
 };
 
 ///******************************************************************************************
@@ -110,6 +125,8 @@ instance ItAt_Claw (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_Claw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -120,6 +137,8 @@ instance ItAt_LurkerClaw (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_LurkerClaw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -130,6 +149,8 @@ instance ItAt_DemonClaw (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_DemonClaw.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -143,6 +164,7 @@ instance ItAt_ScavengerEgg (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_ScavengerEgg.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik gotowanych potraw.";
 	COUNT[5]					=	value;
 };
 
@@ -153,6 +175,8 @@ instance ItAt_CrawlerEgg (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_CrawlerEgg.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych";
+	TEXT[1]						=	"mikstur alchemicznych.";
 	COUNT[5]					=	value;
 };
 
@@ -163,6 +187,8 @@ instance ItAt_DragonEgg_MIS	(ItemPR_AnimalTrophy)
 	visual						=	"ItAt_DragonEgg.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych";
+	TEXT[1]						=	"mikstur alchemicznych.";
 	COUNT[5]					=	value;
 };
 
@@ -172,10 +198,12 @@ instance ItAt_DragonEgg_MIS	(ItemPR_AnimalTrophy)
 instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 {
 	name						=	"Pióra harpii";
-	value						=	25;
+	value						=	15;
 	visual						=	"ItAt_HarpyFeathers.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórej amunicji,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -184,55 +212,55 @@ instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 ///******************************************************************************************
 instance ItAt_GoatFur (ItemPR_AnimalTrophy)
 {
-	name						=	"Kozia skóra";
+	name						=	"Skóra kozy";
 	value						=	10;
 	visual						=	"ItAt_GoatFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pergaminów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_HareFur (ItemPR_AnimalTrophy)
 {
-	name						=	"Zajêcza skóra";
+	name						=	"Skóra zaj¹ca";
 	value						=	10;
 	visual						=	"ItAt_HareFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pergaminów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_SheepFur (ItemPR_AnimalTrophy)
 {
-	name						=	"Owcza skóra";
+	name						=	"Skóra owcy";
 	value						=	10;
 	visual						=	"ItAt_SheepFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pergaminów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 ///******************************************************************************************
 instance ItAt_GiantRatFur (ItemPR_AnimalTrophy)
 {
-	name						=	"Szczurza skóra";
+	name						=	"Skóra szczura";
 	value						=	5;
 	visual						=	"ItAt_GiantRatFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_JackalFur (ItemPR_AnimalTrophy)
@@ -241,11 +269,11 @@ instance ItAt_JackalFur (ItemPR_AnimalTrophy)
 	value						=	5;
 	visual						=	"ItAt_JackalFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_KeilerFur (ItemPR_AnimalTrophy)
@@ -254,11 +282,11 @@ instance ItAt_KeilerFur (ItemPR_AnimalTrophy)
 	value						=	10;
 	visual						=	"ItAt_KeilerFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_WolfFur (ItemPR_AnimalTrophy)
@@ -267,11 +295,11 @@ instance ItAt_WolfFur (ItemPR_AnimalTrophy)
 	value						=	10;
 	visual						=	"ItAt_WolfFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_IceWolfFur (ItemPR_AnimalTrophy)
@@ -280,11 +308,11 @@ instance ItAt_IceWolfFur (ItemPR_AnimalTrophy)
 	value						=	20;
 	visual						=	"ItAt_IceWolfFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_WargFur (ItemPR_AnimalTrophy)
@@ -293,11 +321,11 @@ instance ItAt_WargFur (ItemPR_AnimalTrophy)
 	value						=	30;
 	visual						=	"ItAt_WargFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_BloodhoundFur (ItemPR_AnimalTrophy)
@@ -307,7 +335,10 @@ instance ItAt_BloodhoundFur (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_BloodhoundFur.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_TigerFur (ItemPR_AnimalTrophy)
@@ -316,11 +347,11 @@ instance ItAt_TigerFur (ItemPR_AnimalTrophy)
 	value						=	100;
 	visual						=	"ItAt_TigerFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_ShadowFur (ItemPR_AnimalTrophy)
@@ -329,11 +360,11 @@ instance ItAt_ShadowFur (ItemPR_AnimalTrophy)
 	value						=	200;
 	visual						=	"ItAt_ShadowFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_TrollFur (ItemPR_AnimalTrophy)
@@ -342,11 +373,11 @@ instance ItAt_TrollFur (ItemPR_AnimalTrophy)
 	value						=	300;
 	visual						=	"ItAt_TrollFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_TrollBlackFur (ItemPR_AnimalTrophy)
@@ -355,11 +386,11 @@ instance ItAt_TrollBlackFur (ItemPR_AnimalTrophy)
 	value						=	350;
 	visual						=	"ItAt_TrollBlackFur.3ds";
 	
-	scemeName					=	"FASTUSE";
-	on_state[0]					=	MOBSI_UseFur_S1;
-	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 ///******************************************************************************************
@@ -373,6 +404,8 @@ instance ItAt_GargoyleHeart (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -384,6 +417,8 @@ instance ItAt_GolemHeart (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -394,6 +429,8 @@ instance ItAt_DemonHeart (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_DemonHeart.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -404,6 +441,8 @@ instance ItAt_DragonHeart (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_FireDragonHeart.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -415,6 +454,8 @@ instance ItAt_UndeadDragonSoulStone (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
@@ -430,6 +471,8 @@ instance ItAt_ShadowHorn (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -441,6 +484,8 @@ instance ItAt_DrgSnapperHorn (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -450,7 +495,7 @@ instance ItAt_DrgSnapperHorn (ItemPR_AnimalTrophy)
 instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
 {
 	name						=	"£ój kretoszczura";
-	value						=	15;
+	value						=	10;
 	visual						=	"ItMi_MoleratLubric.3ds";
 	
 	description					=	name;
@@ -467,6 +512,8 @@ instance ItAt_BugMandibles (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_BugMandibles.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -477,11 +524,13 @@ instance ItAt_CrawlerMandibles (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_CrawlerMandibles.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
 ///******************************************************************************************
-/// Plates
+/// Plates & Scales
 ///******************************************************************************************
 instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 {
@@ -490,11 +539,11 @@ instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_CrawlerPlate.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy p³ytowych.";
 	COUNT[5]					=	value;
 };
 
-///******************************************************************************************
-/// Scales
 ///******************************************************************************************
 instance ItAt_DrgSnapperScale (ItemPR_AnimalTrophy)
 {
@@ -504,6 +553,8 @@ instance ItAt_DrgSnapperScale (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy p³ytowych.";
 	COUNT[5]					=	value;
 };
 
@@ -515,6 +566,8 @@ instance ItAt_DragonScale (ItemPR_AnimalTrophy)
 	material					=	MAT_STONE;
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy p³ytowych.";
 	COUNT[5]					=	value;
 };
 
@@ -528,17 +581,10 @@ instance ItAt_WaranSkin (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_WaranSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
-};
-
-instance ItAt_SnapperSkin (ItemPR_AnimalTrophy)
-{
-	name						=	"Skóra zêbacza";
-	value						=	15;
-	visual						=	"ItAt_SnapperSkin.3ds";
-	
-	description					=	name;
-	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_LurkerSkin (ItemPR_AnimalTrophy)
@@ -548,37 +594,62 @@ instance ItAt_LurkerSkin (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_LurkerSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
+};
+
+instance ItAt_SnapperSkin (ItemPR_AnimalTrophy)
+{
+	name						=	"Skóra zêbacza";
+	value						=	30;
+	visual						=	"ItAt_SnapperSkin.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
+	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_AlligatorSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra aligatora";
-	value						=	30;
+	value						=	50;
 	visual						=	"ItAt_AlligatorSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_RazorSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra brzytwiaka";
-	value						=	30;
+	value						=	75;
 	visual						=	"ItAt_RazorSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_FirewaranSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra ognistego jaszczura";
-	value						=	50;
+	value						=	100;
 	visual						=	"ItAt_FirewaranSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_SharkSkin (ItemPR_AnimalTrophy)
@@ -588,7 +659,10 @@ instance ItAt_SharkSkin (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_SharkSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 instance ItAt_GiantSnapperSkin (ItemPR_AnimalTrophy)
@@ -598,7 +672,10 @@ instance ItAt_GiantSnapperSkin (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_GiantSnapperSkin.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
 };
 
 ///******************************************************************************************
@@ -611,6 +688,8 @@ instance ItAt_Sting (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_Sting.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -622,7 +701,11 @@ instance ItAt_Ink (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_Ink.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"U¿ywany do tworzenia";
+	TEXT[1]						=	"magicznego atramentu.";
 	COUNT[5]					=	value;
+	INV_ROTZ					=	-30;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 instance ItAt_Poison (ItemPR_AnimalTrophy)
@@ -632,7 +715,11 @@ instance ItAt_Poison (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_Poison.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"U¿ywana do tworzenia";
+	TEXT[1]						=	"truj¹cych preparatów.";
 	COUNT[5]					=	value;
+	INV_ROTZ					=	-30;
+	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
 ///******************************************************************************************
@@ -645,16 +732,20 @@ instance ItAt_Teeth (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_Teeth.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"U¿ywane jako sk³adnik";
+	TEXT[1]						=	"myœliwskich strza³.";
 	COUNT[5]					=	value;
 };
 
 instance ItAt_KeilerTusk (ItemPR_AnimalTrophy)
 {
 	name						=	"Kie³ dzika";
-	value						=	15;
+	value						=	20;
 	visual						=	"ItAt_KeilerTusk.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -665,6 +756,8 @@ instance ItAt_SharkTeeth (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_SharkTeeth.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -675,6 +768,8 @@ instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_TrollTooth.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_RING_STANDARD;
 };
@@ -689,6 +784,8 @@ instance ItAt_FirewaranTongue (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_FirewaranTongue.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -699,6 +796,8 @@ instance ItAt_DragonTongue (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_FirewaranTongue.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -707,11 +806,13 @@ instance ItAt_DragonTongue (ItemPR_AnimalTrophy)
 ///******************************************************************************************
 instance ItAt_Wing (ItemPR_AnimalTrophy)
 {
-	name						=	"Skrzyd³o";
+	name						=	"Skrzyd³o krwiopijcy";
 	value						=	5;
 	visual						=	"ItAt_Wing.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -722,6 +823,8 @@ instance ItAt_SwampdroneWing (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_SwampdroneWing.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -732,5 +835,8 @@ instance ItAt_DemonWing (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_DemonWing.3ds";
 	
 	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
+	INV_ROTX					=	90;
 };

@@ -16,7 +16,7 @@ instance PIR_1353_Addon_Morgan (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Doppelaxt);
+	EquipItem (self, ItMw0_Doppelaxt);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_FatBald", Face_L_Tough_Santino, Teeth_Normal, ItAr_PIR_M);

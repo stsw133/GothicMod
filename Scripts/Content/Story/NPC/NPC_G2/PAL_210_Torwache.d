@@ -19,7 +19,7 @@ instance Pal_210_Torwache (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_2H_Pal_Sword);
+	EquipItem (self, ItMw0_2H_Pal_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

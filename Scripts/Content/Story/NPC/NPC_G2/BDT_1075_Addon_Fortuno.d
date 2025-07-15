@@ -20,7 +20,7 @@ instance BDT_1075_Addon_Fortuno (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1H_Sword_L_03);
+	EquipItem (self, ItMw0_1H_Sword_L_03);
 	
 	/// ------ Inventory ------
 	CreateInvItems (self, ItMi_Joint, 5);

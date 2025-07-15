@@ -46,5 +46,5 @@ func void B_SetVisuals_GoblinPirate()
 instance Gobbo_Pirate (Mst_Default_GoblinPirate)
 {
 	B_SetVisuals_GoblinPirate();
-	EquipItem (self, ItMw_1h_Goblin_03);
+	EquipItem (self, ItMw_1h_GobboMace_03);
 };

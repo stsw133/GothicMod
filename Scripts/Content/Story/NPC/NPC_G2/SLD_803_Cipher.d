@@ -16,13 +16,13 @@ instance SLD_803_Cipher (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_STRONG;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_1h_Sld_Sword);
+	EquipItem (self, ItMw0_1h_Sld_Sword);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	CreateInvItems (self, ItRw_Arrow, 50);
 	CreateInvItem (self, ItRw_Bow_L_02);
-	CreateInvItem (self, ItRw_Sld_Bow);
+	CreateInvItem (self, ItRw0_Bow_M_01);
 	CreateInvItem (self, ItMw_2H_OrcAxe_01);
 	CreateInvItems (self, ItLsTorch, 8);
 	

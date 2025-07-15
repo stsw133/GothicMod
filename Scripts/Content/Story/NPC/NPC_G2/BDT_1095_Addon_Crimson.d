@@ -16,7 +16,7 @@ instance BDT_1095_Addon_Crimson (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Sense);
+	EquipItem (self, ItMw0_Sense);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

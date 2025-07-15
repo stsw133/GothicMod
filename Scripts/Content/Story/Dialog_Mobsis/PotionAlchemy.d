@@ -3,32 +3,35 @@
 ///******************************************************************************************
 func void POTIONALCHEMY_S1()
 {
-	var C_Npc her; her = Hlp_GetNpc(PC_Hero);
-	if (Hlp_GetinstanceID(self) == Hlp_GetinstanceID(her))
+	if (Npc_IsPlayer(self))
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION = MOBSI_POTIONALCHEMY;
-		Ai_ProcessInfos(her);
+		Ai_ProcessInfos(self);
 	};
 };
-///******************************************************************************************
-instance PC_PotionAlchemy_End (C_Info)
-{
-	npc									=	PC_Hero;
-	nr									=	999;
-	condition							=	PC_PotionAlchemy_End_Condition;
-	information							=	PC_PotionAlchemy_End_Info;
-	permanent							=	true;
-	description							=	DIALOG_END;
-};
-func int PC_PotionAlchemy_End_Condition()
+
+func int PC_PotionAlchemy_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION == MOBSI_POTIONALCHEMY)
 	{
 		return true;
 	};
 };
-func void PC_PotionAlchemy_End_Info()
+
+///******************************************************************************************
+/// EXIT
+///******************************************************************************************
+instance PC_PotionAlchemy_EXIT (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	999;
+	condition							=	PC_PotionAlchemy_Condition;
+	information							=	PC_PotionAlchemy_EXIT_Info;
+	permanent							=	true;
+	description							=	DIALOG_END;
+};
+func void PC_PotionAlchemy_EXIT_Info()
 {
 	CreateInvItem (hero, ItMi_Flask);
 	B_ENDPRODUCTIONDIALOG();
@@ -319,18 +322,18 @@ func void PC_ItPo_Mana_05()
 };
 
 ///******************************************************************************************
-/// Time
+/// Temp
 ///******************************************************************************************
-instance PC_PotionAlchemy_Time_Start (C_Info)
+instance PC_PotionAlchemy_Temp_Start (C_Info)
 {
 	npc									=	PC_Hero;
 	nr									=	3;
-	condition							=	PC_PotionAlchemy_Time_Start_Condition;
-	information							=	PC_PotionAlchemy_Time_Start_Info;
+	condition							=	PC_PotionAlchemy_Temp_Start_Condition;
+	information							=	PC_PotionAlchemy_Temp_Start_Info;
 	permanent							=	true;
 	description							=	"Przygotuj mikstury czasowo zwiêkszaj¹ce atrybuty";
 };
-func int PC_PotionAlchemy_Time_Start_Condition()
+func int PC_PotionAlchemy_Temp_Start_Condition()
 {
 	if (PLAYER_MOBSI_PRODUCTION	== MOBSI_POTIONALCHEMY)
 	&& (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 1)
@@ -338,38 +341,38 @@ func int PC_PotionAlchemy_Time_Start_Condition()
 		return true;
 	};
 };
-func void PC_PotionAlchemy_Time_Start_Info()
+func void PC_PotionAlchemy_Temp_Start_Info()
 {
-	Info_ClearChoices	(PC_PotionAlchemy_Time_Start);
-	Info_AddChoice		(PC_PotionAlchemy_Time_Start, DIALOG_BACK, PC_ItPo_Time_BACK);
+	Info_ClearChoices	(PC_PotionAlchemy_Temp_Start);
+	Info_AddChoice		(PC_PotionAlchemy_Temp_Start, DIALOG_BACK, PC_ItPo_Temp_BACK);
 	
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Time_Pow])
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Pow])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Time_Start, "Eliksir mocy (wampirza ró¿a, rdest polny, woda)", PC_ItPo_Time_Pow);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir mocy (wampirza ró¿a, rdest polny, woda)", PC_ItPo_Temp_Pow);
 	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Time_Dex])
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Dex])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Time_Start, "Eliksir zrêcznoœci (goblinia jagoda, rdest polny, woda)", PC_ItPo_Time_Dex);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir zrêcznoœci (goblinia jagoda, rdest polny, woda)", PC_ItPo_Temp_Dex);
 	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Time_Str])
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Str])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Time_Start, "Eliksir si³y (smoczy korzeñ, rdest polny, woda)", PC_ItPo_Time_Str);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir si³y (smoczy korzeñ, rdest polny, woda)", PC_ItPo_Temp_Str);
 	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Time_Mana])
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Mana])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Time_Start, "Eliksir ducha (wilcza miêta, rdest polny, woda)", PC_ItPo_Time_Mana);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ducha (wilcza miêta, rdest polny, woda)", PC_ItPo_Temp_Mana);
 	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Time_Health])
+	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Temp_Health])
 	{
-		Info_AddChoice (PC_PotionAlchemy_Time_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, rdest polny, woda)", PC_ItPo_Time_Health);
+		Info_AddChoice (PC_PotionAlchemy_Temp_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, rdest polny, woda)", PC_ItPo_Temp_Health);
 	};
 };
 ///******************************************************************************************
-func void PC_ItPo_Time_BACK()
+func void PC_ItPo_Temp_BACK()
 {
-	Info_ClearChoices(PC_PotionAlchemy_Time_Start);
+	Info_ClearChoices(PC_PotionAlchemy_Temp_Start);
 };
-func void PC_ItPo_Time_Health()
+func void PC_ItPo_Temp_Health()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -379,7 +382,7 @@ func void PC_ItPo_Time_Health()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
 		
-		CreateInvItem (hero, ItPo_Time_Health);
+		CreateInvItem (hero, ItPo_Temp_Health);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -389,7 +392,7 @@ func void PC_ItPo_Time_Health()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Time_Mana()
+func void PC_ItPo_Temp_Mana()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -399,7 +402,7 @@ func void PC_ItPo_Time_Mana()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
 		
-		CreateInvItem (hero, ItPo_Time_Mana);
+		CreateInvItem (hero, ItPo_Temp_Mana);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -409,7 +412,7 @@ func void PC_ItPo_Time_Mana()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Time_Str()
+func void PC_ItPo_Temp_Str()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -419,7 +422,7 @@ func void PC_ItPo_Time_Str()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Strength_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Time_Str);
+		CreateInvItem (hero, ItPo_Temp_Str);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -429,7 +432,7 @@ func void PC_ItPo_Time_Str()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Time_Dex()
+func void PC_ItPo_Temp_Dex()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -439,7 +442,7 @@ func void PC_ItPo_Time_Dex()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Dex_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Time_Dex);
+		CreateInvItem (hero, ItPo_Temp_Dex);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -449,7 +452,7 @@ func void PC_ItPo_Time_Dex()
 	};
 	B_ENDPRODUCTIONDIALOG();
 };
-func void PC_ItPo_Time_Pow()
+func void PC_ItPo_Temp_Pow()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Temp_Herb) >= 1)
@@ -459,159 +462,7 @@ func void PC_ItPo_Time_Pow()
 		Npc_RemoveInvItem (hero, ItPl_Temp_Herb);
 		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
 		
-		CreateInvItem (hero, ItPo_Time_Pow);
-		Print(PRINT_AlchemySuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItem (hero, ItMi_Flask);
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-
-///******************************************************************************************
-/// Weak
-///******************************************************************************************
-instance PC_PotionAlchemy_Weak_Start (C_Info)
-{
-	npc									=	PC_Hero;
-	nr									=	4;
-	condition							=	PC_PotionAlchemy_Weak_Start_Condition;
-	information							=	PC_PotionAlchemy_Weak_Start_Info;
-	permanent							=	true;
-	description							=	"Przygotuj mikstury os³abiaj¹ce atrybuty";
-};
-func int PC_PotionAlchemy_Weak_Start_Condition()
-{
-	if (PLAYER_MOBSI_PRODUCTION	== MOBSI_POTIONALCHEMY)
-	&& (Npc_GetTalentSkill(hero, NPC_TALENT_ALCHEMY) >= 1)
-	{
-		return true;
-	};
-};
-func void PC_PotionAlchemy_Weak_Start_Info()
-{
-	Info_ClearChoices	(PC_PotionAlchemy_Weak_Start);
-	Info_AddChoice		(PC_PotionAlchemy_Weak_Start, DIALOG_BACK, PC_ItPo_Weak_BACK);
-	
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Pow])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir mocy (wampirza ró¿a, cmentarny mech, woda)", PC_ItPo_Weak_Pow);
-	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Dex])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir zrêcznoœci (goblinia jagoda, cmentarny mech, woda)", PC_ItPo_Weak_Dex);
-	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Str])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir si³y (smoczy korzeñ, cmentarny mech, woda)", PC_ItPo_Weak_Str);
-	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Mana])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir ducha (wilcza miêta, cmentarny mech, woda)", PC_ItPo_Weak_Mana);
-	};
-	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Weak_Health])
-	{
-		Info_AddChoice (PC_PotionAlchemy_Weak_Start, "Eliksir ¿ywotnoœci (krwawy rumianek, cmentarny mech, woda)", PC_ItPo_Weak_Health);
-	};
-};
-///******************************************************************************************
-func void PC_ItPo_Weak_BACK()
-{
-	Info_ClearChoices(PC_PotionAlchemy_Weak_Start);
-};
-func void PC_ItPo_Weak_Health()
-{
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Health_Herb_04) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Health_Herb_04);
-		
-		CreateInvItem (hero, ItPo_Weak_Health);
-		Print(PRINT_AlchemySuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItem (hero, ItMi_Flask);
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItPo_Weak_Mana()
-{
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Mana_Herb_04) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Mana_Herb_04);
-		
-		CreateInvItem (hero, ItPo_Weak_Mana);
-		Print(PRINT_AlchemySuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItem (hero, ItMi_Flask);
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItPo_Weak_Str()
-{
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Strength_Herb_01) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Strength_Herb_01);
-		
-		CreateInvItem (hero, ItPo_Weak_Str);
-		Print(PRINT_AlchemySuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItem (hero, ItMi_Flask);
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItPo_Weak_Dex()
-{
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Dex_Herb_01) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Dex_Herb_01);
-		
-		CreateInvItem (hero, ItPo_Weak_Dex);
-		Print(PRINT_AlchemySuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItem (hero, ItMi_Flask);
-	};
-	B_ENDPRODUCTIONDIALOG();
-};
-func void PC_ItPo_Weak_Pow()
-{
-	if (Npc_HasItems(hero, ItFo_Water) >= 1)
-	&& (Npc_HasItems(hero, ItPl_GraveMoss) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Power_Herb_01) >= 1)
-	{
-		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
-		Npc_RemoveInvItem (hero, ItPl_GraveMoss);
-		Npc_RemoveInvItem (hero, ItPl_Power_Herb_01);
-		
-		CreateInvItem (hero, ItPo_Weak_Pow);
+		CreateInvItem (hero, ItPo_Temp_Pow);
 		Print(PRINT_AlchemySuccess);
 	}
 	else
@@ -785,11 +636,11 @@ func void PC_ItPo_Perm_Prot()
 {
 	if (Npc_HasItems(hero, ItFo_Water) >= 1)
 	&& (Npc_HasItems(hero, ItPl_Perm_Herb) >= 1)
-	&& (Npc_HasItems(hero, ItPl_Prot_Herb_01) >= 1)
+	&& (Npc_HasItems(hero, ItPl_Stonereed) >= 1)
 	{
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		Npc_RemoveInvItem (hero, ItPl_Perm_Herb);
-		Npc_RemoveInvItem (hero, ItPl_Prot_Herb_01);
+		Npc_RemoveInvItem (hero, ItPl_Stonereed);
 		
 		CreateInvItem (hero, ItPo_Perm_Prot);
 		Print(PRINT_AlchemySuccess);
@@ -1734,6 +1585,68 @@ func void PC_ItFo_Addon_SchnellerHering()
 		
 		CreateInvItem (hero, ItFo_Addon_SchnellerHering);
 		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+
+///******************************************************************************************
+/// Misc
+///******************************************************************************************
+instance PC_PotionAlchemy_Misc_Start (C_Info)
+{
+	npc									=	PC_Hero;
+	nr									=	10;
+	condition							=	PC_PotionAlchemy_Condition;
+	information							=	PC_PotionAlchemy_Misc_Start_Info;
+	permanent							=	true;
+	description							=	"Stwórz inne przedmioty...";
+};
+func void PC_PotionAlchemy_Misc_Start_Info()
+{
+	Info_ClearChoices(PC_PotionAlchemy_Misc_Start);
+	Info_AddChoice (PC_PotionAlchemy_Misc_Start, DIALOG_BACK, PC_ItPo_Misc_BACK);
+	Info_AddChoice (PC_PotionAlchemy_Misc_Start, "5x magiczny proch (magiczna bry³ka)", PC_ItMi_MagicPowder);
+	Info_AddChoice (PC_PotionAlchemy_Misc_Start, "5x czarny proch (2 saletry, siarka, wêgiel)", PC_ItMi_BlackPowder);
+};
+
+///******************************************************************************************
+func void PC_ItPo_Misc_BACK()
+{
+	Info_ClearChoices(PC_PotionAlchemy_Misc_Start);
+};
+func void PC_ItMi_BlackPowder()
+{
+	if (Npc_HasItems(hero, ItMi_Saltpeter) >= 2)
+	&& (Npc_HasItems(hero, ItMi_Sulfur) >= 1)
+	&& (Npc_HasItems(hero, ItMi_Coal) >= 1)
+	{
+		Npc_RemoveInvItems (hero, ItMi_Saltpeter, 2);
+		Npc_RemoveInvItem (hero, ItMi_Sulfur);
+		Npc_RemoveInvItem (hero, ItMi_Coal);
+		
+		CreateInvItems (hero, ItMi_Saltpeter, 5);
+		Print(PRINT_CraftSuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+		CreateInvItem (hero, ItMi_Flask);
+	};
+	B_ENDPRODUCTIONDIALOG();
+};
+func void PC_ItMi_MagicPowder()
+{
+	if (Npc_HasItems(hero, ItMi_Nugget) >= 1)
+	{
+		Npc_RemoveInvItem (hero, ItMi_Nugget);
+		
+		CreateInvItems (hero, ItMi_MagicPowder, 5);
+		Print(PRINT_CraftSuccess);
 	}
 	else
 	{

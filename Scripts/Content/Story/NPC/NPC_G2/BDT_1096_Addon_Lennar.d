@@ -16,7 +16,7 @@ instance BDT_1096_Addon_Lennar (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_NORMAL;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_Nagelknueppel);
+	EquipItem (self, ItMw0_Nagelknueppel);
 	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);

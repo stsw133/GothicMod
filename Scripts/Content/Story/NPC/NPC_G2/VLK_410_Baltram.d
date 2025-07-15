@@ -19,7 +19,7 @@ instance VLK_410_Baltram (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Weapons ------
-	EquipItem (self, ItMw_ShortSword2);
+	EquipItem (self, ItMw0_ShortSword2);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Weak_Markus_Kark, Teeth_Normal, ItAr_VLK_L_13);

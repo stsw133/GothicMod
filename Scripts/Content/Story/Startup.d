@@ -16,7 +16,6 @@ func void STARTUP_GLOBAL()
 	/// MOD: hook engine
 	MOD_Damage();
 	MOD_ItemFn();
-	MOD_Keys();
 	MOD_Menu();
 	MOD_MoveFn();
 	QuickSlot_Init();
@@ -1141,7 +1140,7 @@ FUNC VOID STARTUP_ADDON_PART_VALLEY_01 ()
 	Wld_InsertItem (ItPl_GraveMoss,"FP_ITEM_VALLEY_02");
 	
 	//Qurahodrons Grab
-	Wld_InsertItem (ItRi_Destruction_01, "FP_ITEM_VALLEY_12");
+	Wld_InsertItem (ItRi_CounterDmg_01, "FP_ITEM_VALLEY_12");
 };
 
 FUNC VOID INIT_SUB_ADDON_PART_VALLEY_01 ()
@@ -2771,7 +2770,7 @@ func void STARTUP_NewWorld_Part_City_01()
 		
 	Wld_InsertItem			(ItAt_MoleratLubric,"FP_ITEM_SHIP_07");	//zur Sicherheit für Vinos Brennerei!
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_01"); 
-	Wld_InsertItem			(ItRi_Eternity_01, "FP_ITEM_SHIP_02");
+	Wld_InsertItem			(ItRi_Reflection_01, "FP_ITEM_SHIP_02");
 	Wld_InsertItem			(ItPo_Mana_03,"FP_ITEM_SHIP_03");
 	Wld_InsertItem			(ItSe_GoldPocket25,"FP_ITEM_SHIP_04");
 	Wld_InsertItem			(ItPo_Speed,"FP_ITEM_SHIP_05");
@@ -4751,13 +4750,10 @@ FUNC VOID STARTUP_NewWorld()
 		PlayVideo ("INTRO.BIK");
 		PlayVideo ("Addon_Title.BIK");
 	};
-	
-	//-----Addon Talent Goldhacken---------
-	Hero_HackChance = 10;
 };
 FUNC VOID INIT_NewWorld()
 {
-    B_InitMonsterAttitudes ();
+	B_InitMonsterAttitudes ();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals ();
 	

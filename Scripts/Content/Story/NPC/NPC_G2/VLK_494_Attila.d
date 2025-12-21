@@ -26,7 +26,7 @@ instance VLK_494_Attila (Npc_Default)
 	CreateInvItem (self, ItKe_ThiefGuildKey_MIS);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_L_Tough_Santino, Teeth_Normal, ItAr_Leather_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_L, "Hum_Head_Bald", Face_L_Tough_Santino, Teeth_Normal, ItAr_Leather_L2);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	

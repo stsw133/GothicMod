@@ -26,7 +26,7 @@ instance BDT_1013_Bandit_L (Npc_Default)
 	CreateInvItem (self, ItWr_Poster_MIS);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_N_Homer, Teeth_Normal, ItAr_BDT_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_N_Homer, Teeth_Normal, ITAR_Leather_BDT);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	

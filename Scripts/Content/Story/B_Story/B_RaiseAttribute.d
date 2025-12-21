@@ -19,13 +19,13 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 		concatText = ConcatStrings(PRINT_LearnHp, IntToString(points));
 		
 		if (slf.attribute[ATR_HITPOINTS_MAX] >= (100*HP_PER_LP - slf.level*HP_PER_LEVEL))
-		&& (bsPoison != IMMUNE)
+		&& (ATS[ATS_PoisonPoints] != IMMUNE)
 		{
 			MOD_SetPoison(IMMUNE);
 			PrintScreen	("Premia do odpornoœci na trucizny!", -1, 55, FONT_Screen, TIME_ShortPrint);
 		}
 		else if (slf.attribute[ATR_HITPOINTS_MAX] >= (50*HP_PER_LP - slf.level*HP_PER_LEVEL))
-		&& (bsArmor != IMMUNE)
+		&& (ATS[ATS_HeavyArmor] != IMMUNE)
 		{
 			Disable_HeavyArmor();
 			PrintScreen	("Premia do lekkoœci pancerzy!", -1, 55, FONT_Screen, TIME_ShortPrint);
@@ -45,9 +45,9 @@ func void B_RaiseAttribute (var C_Npc slf, var int attrib, var int points)
 			PrintScreen	("Premia do ???!", -1, 55, FONT_Screen, TIME_ShortPrint);
 		}
 		else if (slf.attribute[ATR_MANA_MAX] >= (50*MP_PER_LP))
-		&& (bsRested != IMMUNE)
+		&& (ATS[ATS_RestedTime] != IMMUNE)
 		{
-			bsRested = IMMUNE;
+			ATS[ATS_RestedTime] = IMMUNE;
 			PrintScreen	("Premia do zasypiania!", -1, 55, FONT_Screen, TIME_ShortPrint);
 		};
 		*/

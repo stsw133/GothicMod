@@ -20,18 +20,22 @@ const int DIFF_Percent[4] =
 func int DIFF_Multiplier(var int points, var int type)
 {
 	if		(type == decrease)	{	return (points * 100) / (var_DIFF_Percent + 100);		}
-	else if (type == increase)	{	return points + ((points * var_DIFF_Percent) / 100);	}
+	else if (type == increase)	{	return points + ((points * var_DIFF_Percent) / 100);		}
 	else						{	return points;											};
 };
 
 ///******************************************************************************************
 func void DIFF_Select(var int diff)
 {
-	dLevel = diff;
+	if (diff < DIFF_E || diff > DIFF_V)
+	{
+		MEM_Warn(ConcatStrings("DIFF_Select: invalid difficulty value: ", IntToString(diff)));
+		dLevel = DIFF_M;
+	}
+	else
+	{
+		dLevel = diff;
+	};
 	
-	if		(dLevel == DIFF_E)		{	var_DIFF_Percent = DIFF_Percent[DIFF_E];	}
-	else if	(dLevel == DIFF_M)		{	var_DIFF_Percent = DIFF_Percent[DIFF_M];	}
-	else if	(dLevel == DIFF_H)		{	var_DIFF_Percent = DIFF_Percent[DIFF_H];	}
-	else if	(dLevel == DIFF_V)		{	var_DIFF_Percent = DIFF_Percent[DIFF_V];	}
-	else							{	var_DIFF_Percent = DIFF_Percent[DIFF_M];	};
+	var_DIFF_Percent = MEM_ReadIntArray(_@(DIFF_Percent), dLevel);
 };

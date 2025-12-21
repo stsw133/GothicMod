@@ -80,7 +80,7 @@ func void DIA_Schwarzmagier_HELLO_meister ()
 	Wld_PlayEffect	("SFX_Circle",  self, self, 0, 0, 0, FALSE );
 	AI_PlayAni		(self,"T_PRACTICEMAGIC5");
 	
-	bsObsession += 100;
+	MOD_SetObsession(true);
 	B_SetScObsessed(hero);
 	
 	AI_Output			(self, other, "DIA_Schwarzmagier_HELLO_meister_09_00"); //Doœæ tych bredni! Teraz nadejdzie twój koniec.

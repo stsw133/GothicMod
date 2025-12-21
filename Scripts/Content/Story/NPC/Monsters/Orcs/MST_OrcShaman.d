@@ -8,7 +8,7 @@ prototype Mst_Default_OrcShaman (C_Npc)
 	voice								=	18;
 	guild								=	GIL_ORC;
 	aivar[AIV_MM_REAL_ID]				=	ID_ORCSHAMAN;
-	aivar[AIV_FaceTex]					=	Hlp_RandomRange(50,58);
+	aivar[AIV_FaceTex]					=	r_MinMax(50,58);
 	
 	/// ------ AI vars ------
 	aivar[AIV_MagicUser]				=	true;
@@ -51,7 +51,7 @@ func void B_SetVisuals_OrcShaman()
 instance OrcShaman_Sit (Mst_Default_OrcShaman)
 {
 	B_SetVisuals_OrcShaman();
-	EquipItem (self, ItMw_2H_OrcStaff_01);
+	EquipItem (self, ItMw_2h_OrcStaff_01);
 };
 
 ///******************************************************************************************
@@ -64,6 +64,23 @@ instance OrcShaman_Hosh_Pak (Mst_Default_OrcShaman)
 	NpcFn_SetAttributesToLevel (self, 50);
 	NpcFn_SetMonsterProtection (self, level);
 	
+	aivar[AIV_BodyTex] = 1;
 	B_SetVisuals_OrcShaman();
-	EquipItem (self, ItMw_2H_OrcStaff_01);
+	EquipItem (self, ItMw_2h_OrcStaff_01);
+};
+
+instance OrcShaman_Sit_CanyonLibraryKey (Mst_Default_OrcCommander)
+{
+	name								=	"Wódz Hordy";
+	
+	NpcFn_SetAttributesToLevel (self, 40);
+	NpcFn_SetMonsterProtection (self, level);
+	
+	aivar[AIV_BodyTex] = 1;
+	B_SetVisuals_OrcShaman();
+	EquipItem (self, ItMw_2h_OrcSword_02);
+	CreateInvItem (self, ITKE_CANYONLIBRARY_HIERARCHY_BOOKS_ADDON);
+	
+	start_aistate						=	ZS_MM_AllScheduler;
+	aivar[AIV_MM_OrcSitStart]			=	OnlyRoutine;
 };

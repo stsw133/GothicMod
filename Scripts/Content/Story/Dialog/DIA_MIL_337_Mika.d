@@ -128,7 +128,7 @@ func void DIA_Mika_WASGEFAEHRLICH_Info ()
 {
 	AI_Output			(other, self, "DIA_Mika_WASGEFAEHRLICH_15_00"); //Co to za straszliwe niebezpieczeñstwa?
 	AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_01"); //Wiele rzeczy.
-	if (other.protection[PROT_EDGE]	< ITAR_Leather_L.protection [PROT_EDGE])	//Joly: kleiner als die Lederrüstung
+	if (other.protection[PROT_EDGE]	< 20)	//Joly: kleiner als die Lederrüstung
 	{
 		AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_02"); //Na przyk³ad bandyci. Takiego s³abeusza jak ty zjedz¹ ¿ywcem na œniadanie.
 		AI_Output			(self, other, "DIA_Mika_WASGEFAEHRLICH_12_03"); //Jeœli nie wpadniesz w rêce bandytów, zajm¹ siê tob¹ dzikie bestie i najemnicy grasuj¹cy w tych lasach.

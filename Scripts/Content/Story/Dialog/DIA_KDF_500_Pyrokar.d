@@ -1445,10 +1445,10 @@ instance DIA_Pyrokar_SCOBSESSED		(C_INFO)
 
 func int DIA_Pyrokar_SCOBSESSED_Condition ()
 {
-	if (bsObsession > 0)
-		{
-				return TRUE;
-		};
+	if (ATS[ATS_IsObsessed])
+	{
+		return TRUE;
+	};
 };
 
 var int Got_HealObsession_Day;
@@ -1576,7 +1576,7 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 		AI_Output			(self, other, "DIA_Pyrokar_AlmanachBringen_11_04"); //Dobrze siê spisa³eœ, ale obawiam siê, ¿e to jeszcze nie wszystkie. Szukaj dalej.
 		
 	}
-	else if	(AlmanachCounter <= 8)
+	else if	(AlmanachCounter <= 7)
 	{
 		AI_Output			(self, other, "DIA_Pyrokar_AlmanachBringen_11_05"); //Wiele ju¿ odnalaz³eœ, ale obawiam siê, ¿e to jeszcze nie wszystkie.
 	}
@@ -1587,11 +1587,11 @@ func void DIA_Pyrokar_AlmanachBringen_Info ()
 	};
 
 	AI_Output			(self, other, "DIA_Pyrokar_AlmanachBringen_11_08"); //Przyjmij od klasztoru ten dar. Pomo¿e ci on, gdy staniesz twarz¹ w twarz ze z³em.
-	if (DIA_Pyrokar_AlmanachBringen_OneTime == FALSE)
+	if (!DIA_Pyrokar_AlmanachBringen_OneTime)
 	{
 		AI_Output			(self, other, "DIA_Pyrokar_AlmanachBringen_11_09"); //I zagl¹daj co jakiœ czas do mojego magicznego listu!
 		AI_Output			(self, other, "DIA_Pyrokar_AlmanachBringen_11_10"); //Wrogowie mog¹ zaatakowaæ ludzi, których imion jeszcze nie poznaliœmy.
-		DIA_Pyrokar_AlmanachBringen_OneTime = TRUE; 
+		DIA_Pyrokar_AlmanachBringen_OneTime = true; 
 	};
 	AlmanachGeld	= (AlmanachCount * PyrokarsAlmanachOffer);
 

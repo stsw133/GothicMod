@@ -22,7 +22,7 @@ instance BDT_10015_Addon_Emilio (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_NormalBart01, Teeth_Normal, ItAr_Prisoner_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_NormalBart01, Teeth_Normal, ItAr_STRF_H);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	

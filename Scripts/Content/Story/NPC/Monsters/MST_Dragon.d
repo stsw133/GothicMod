@@ -43,37 +43,37 @@ prototype Mst_Default_Dragon (C_Npc)
 func void B_SetVisuals_SwampDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Swamp_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_RockDragon()
 {
 	Mdl_SetVisual		(self, "Dragon_Rock.mds");
-	Mdl_SetVisualBody	(self, "Drg_Rock_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Rock_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_FireDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Fire_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_IceDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Ice_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Ice_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_GoldDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Gold_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Gold_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_BlackDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Black_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 func void B_SetVisuals_UndeadDragon()
 {
 	Mdl_SetVisual		(self, "Dragon.mds");
-	Mdl_SetVisualBody	(self, "Drg_Undead_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Dragon_Undead_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 };
 
 ///******************************************************************************************

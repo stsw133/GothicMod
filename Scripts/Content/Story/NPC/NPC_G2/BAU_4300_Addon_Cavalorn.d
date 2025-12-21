@@ -21,7 +21,7 @@ instance BAU_4300_Addon_Cavalorn (Npc_Default)
 	/// ------ Weapons ------
 	EquipItem (self, ItMw0_ShortSword2);
 	EquipItem (self, ItRw0_Bow_M_01);
-	CreateInvItem (self, ITAR_Leather_L);
+	CreateInvItem (self, ITAR_Leather_L2);
 	
 	/// ------ Visuals ------
 	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Psionic", Face_B_Cavalorn, Teeth_Normal, ItAr_Ranger_L);

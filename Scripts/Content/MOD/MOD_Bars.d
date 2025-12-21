@@ -101,8 +101,8 @@ func void Loop_hpBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_hpBar))
 	{
-		if (bsPoison > 0)	{	BarLoop_hpBar = Bar_Create(poisonBar);	}
-		else				{	BarLoop_hpBar = Bar_Create(healthBar);	};
+		if (ATS[ATS_PoisonPoints] > 0)	{	BarLoop_hpBar = Bar_Create(poisonBar);	}
+		else							{	BarLoop_hpBar = Bar_Create(healthBar);	};
 	};
 	
 	Bar_SetMax (BarLoop_hpBar, hero.attribute[ATR_HITPOINTS_MAX]);
@@ -137,8 +137,8 @@ func void Loop_hpBar()
 	};
 	BarTextView_hpBar.text = BarText_hpBar;
 	
-	if (bsPoison > 0)	{	BarTextView_hpBar.color = COL_Negative;	}
-	else				{	BarTextView_hpBar.color = COL_Health;	};
+	if (ATS[ATS_PoisonPoints] > 0)	{	BarTextView_hpBar.color = COL_Negative;	}
+	else							{	BarTextView_hpBar.color = COL_Health;	};
 };
 
 /// shieldBar
@@ -150,7 +150,7 @@ func void Loop_shieldBar()
 	};
 	
 	Bar_SetMax (BarLoop_shieldBar, hero.attribute[ATR_HITPOINTS_MAX]);
-	Bar_SetValue (BarLoop_shieldBar, mShieldPoints);
+	Bar_SetValue (BarLoop_shieldBar, ATS[ATS_ShieldPoints]);
 };
 
 /// mpBar
@@ -159,8 +159,8 @@ func void Loop_mpBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_mpBar))
 	{
-		if (bsObsession > 0)	{	BarLoop_mpBar = Bar_Create(obsessionBar);	}
-		else					{	BarLoop_mpBar = Bar_Create(manaBar);		};
+		if (ATS[ATS_IsObsessed])	{	BarLoop_mpBar = Bar_Create(obsessionBar);	}
+		else						{	BarLoop_mpBar = Bar_Create(manaBar);		};
 	};
 	
 	Bar_SetMax (BarLoop_mpBar, hero.attribute[ATR_MANA_MAX]);
@@ -195,8 +195,8 @@ func void Loop_mpBar()
 	};
 	BarTextView_mpBar.text = BarText_mpBar;
 	
-	if (bsObsession > 0)	{	BarTextView_mpBar.color = COL_Negative;	}
-	else					{	BarTextView_mpBar.color = COL_Mana;		};
+	if (ATS[ATS_IsObsessed])	{	BarTextView_mpBar.color = COL_Negative;	}
+	else						{	BarTextView_mpBar.color = COL_Mana;		};
 };
 
 /// auraBar
@@ -217,8 +217,8 @@ func void Loop_spBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_spBar))
 	{
-		if (bsArmor > 0)	{	BarLoop_spBar = Bar_Create(harmorBar);	}
-		else				{	BarLoop_spBar = Bar_Create(staminaBar);	};
+		if (ATS[ATS_HeavyArmor] > 0)	{	BarLoop_spBar = Bar_Create(harmorBar);	}
+		else							{	BarLoop_spBar = Bar_Create(staminaBar);	};
 	};
 	
 	Bar_SetMax (BarLoop_spBar, hero.aivar[AIV_Stamina_MAX]);
@@ -253,8 +253,8 @@ func void Loop_spBar()
 	};
 	BarTextView_spBar.text = BarText_spBar;
 	
-	if (bsArmor > 0)	{	BarTextView_spBar.color = COL_Negative;	}
-	else				{	BarTextView_spBar.color = COL_Stamina;	};
+	if (ATS[ATS_HeavyArmor] > 0)	{	BarTextView_spBar.color = COL_Negative;	}
+	else							{	BarTextView_spBar.color = COL_Stamina;	};
 };
 
 /// xpBar

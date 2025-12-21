@@ -603,251 +603,298 @@ func void Use_ItSe_OldChest()
 	if (OldChest_Opener == 1)		/// 60 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 2)	/// 70 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 3)	/// 80 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItRw_Arrow, 5);
+		B_PlayerFindItem (ItMi_Gold, 5);
 	}
 	else if (OldChest_Opener == 4)	/// 90 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverNugget, 1);
+		B_PlayerFindItem (ItMi_Gold, 16);
 	}
 	else if (OldChest_Opener == 5)	/// 100 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 25);
 	}
 	else if (OldChest_Opener == 6)	/// 110 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 35);
 	}
 	else if (OldChest_Opener == 7)	/// 120 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_SilverNugget, 1);
+		B_PlayerFindItem (ItMi_Gold, 21);
 	}
 	else if (OldChest_Opener == 8)	/// 130 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 7);
 	}
 	else if (OldChest_Opener == 9)	/// 140 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 40);
 	}
 	else if (OldChest_Opener == 10)	/// 150 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 50);
 	}
 	else if (OldChest_Opener == 11)	/// 160 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 12)	/// 170 gold
 	{
+		B_PlayerFindItem (ItPo_Mana_03, 1);
 		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 13)	/// 180 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 5);
 	}
 	else if (OldChest_Opener == 14)	/// 190 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 15)	/// 200 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 52);
 	}
 	else if (OldChest_Opener == 16)	/// 210 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItMi_SilverNugget, 2);
+		B_PlayerFindItem (ItMi_Gold, 14);
 	}
 	else if (OldChest_Opener == 17)	/// 220 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_InnosStatue, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 45);
 	}
 	else if (OldChest_Opener == 18)	/// 230 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_InnosStatue, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 55);
 	}
 	else if (OldChest_Opener == 19)	/// 240 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_InnosStatue, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 40);
 	}
 	else if (OldChest_Opener == 20)	/// 250 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverCup, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 25);
 	}
 	else if (OldChest_Opener == 21)	/// 260 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverRing, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 35);
 	}
 	else if (OldChest_Opener == 22)	/// 270 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverNecklace, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 70);
 	}
 	else if (OldChest_Opener == 23)	/// 280 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverPlate, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 107);
 	}
 	else if (OldChest_Opener == 24)	/// 290 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItMi_SilverCandleHolder, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 115);
 	}
 	else if (OldChest_Opener == 25)	/// 300 gold
 	{
+		B_PlayerFindItem (ItMi_GoldRing, 1);
 		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
 	}
 	else if (OldChest_Opener == 26)	/// 310 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItMi_GoldCup, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 27)	/// 320 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChalice, 1);
+		B_PlayerFindItem (ItMi_SilverNugget, 1);
+		B_PlayerFindItem (ItMi_Gold, 46);
 	}
 	else if (OldChest_Opener == 28)	/// 330 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldCandleHolder, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 32);
 	}
 	else if (OldChest_Opener == 29)	/// 340 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldPlate, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 30)	/// 350 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldCompass, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 25);
 	}
 	else if (OldChest_Opener == 31)	/// 360 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldNecklace, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 32)	/// 370 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldCandleHolder, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 33)	/// 380 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldPlate, 1);
+		B_PlayerFindItem (ItMi_InnosStatue, 1);
+		B_PlayerFindItem (ItMi_Gold, 30);
 	}
 	else if (OldChest_Opener == 34)	/// 390 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldNecklace, 1);
+		B_PlayerFindItem (ItMi_SilverChalice, 1);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 35)	/// 400 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverNecklace, 1);
+		B_PlayerFindItem (ItMi_SilverRing, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 75);
 	}
 	else if (OldChest_Opener == 36)	/// 410 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverPlate, 1);
+		B_PlayerFindItem (ItMi_SilverCup, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 85);
 	}
 	else if (OldChest_Opener == 37)	/// 420 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverCandleHolder, 1);
+		B_PlayerFindItem (ItMi_SilverChalice, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 122);
 	}
 	else if (OldChest_Opener == 38)	/// 430 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverRing, 1);
+		B_PlayerFindItem (ItMi_SilverNecklace, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 80);
 	}
 	else if (OldChest_Opener == 39)	/// 440 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_SilverPlate, 1);
+		B_PlayerFindItem (ItMi_SilverCup, 1);
+		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 90);
 	}
 	else if (OldChest_Opener == 40)	/// 450 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItMi_GoldChalice, 1);
+		B_PlayerFindItem (ItMi_SilverRing, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 25);
 	}
 	else if (OldChest_Opener == 41)	/// 460 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldCompass, 1);
+		B_PlayerFindItem (ItMi_SilverPlate, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 42)	/// 470 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldCup, 1);
+		B_PlayerFindItem (ItMi_SilverChalice, 1);
+		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
+		B_PlayerFindItem (ItMi_Gold, 47);
 	}
 	else if (OldChest_Opener == 43)	/// 480 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldNecklace, 1);
+		B_PlayerFindItem (ItMi_SilverNecklace, 1);
+		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItMi_Gold, 5);
 	}
 	else if (OldChest_Opener == 44)	/// 490 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldRing, 1);
+		B_PlayerFindItem (ItMi_SilverCandleHolder, 1);
+		B_PlayerFindItem (ItMi_InnosStatue, 1);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 45)	/// 500 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
 	}
 	else if (OldChest_Opener == 46)	/// 510 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 47)	/// 520 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 48)	/// 530 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
+		B_PlayerFindItem (ItMi_Gold, 30);
 	}
 	else if (OldChest_Opener == 49)	/// 540 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
+		B_PlayerFindItem (ItMi_SilverNugget, 1);
+		B_PlayerFindItem (ItMi_Gold, 16);
 	}
 	else if (OldChest_Opener == 50)	/// 550 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItMi_GoldChest, 1);
 		B_PlayerFindItem (ItPo_Mana_01, 1);
 	};
 	end;

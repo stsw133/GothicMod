@@ -19,7 +19,7 @@ prototype ItemPR_Spell (C_Item)
 instance ItRu_Light (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_Light.3ds";
+	visual						=	"ItRu_00.3ds";
 	
 	spell						=	SPL_Light;
 	mag_circle					=	1;
@@ -36,7 +36,7 @@ instance ItRu_Light (ItemPR_Spell)
 instance ItRu_Heal (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_01.3ds";
 	
 	spell						=	SPL_Heal;
 	mag_circle					=	2;
@@ -53,7 +53,7 @@ instance ItRu_Heal (ItemPR_Spell)
 instance ItRu_Telekinesis (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_LightHeal.3ds";
+	visual						=	"ItRu_02.3ds";
 	
 	spell						=	SPL_Telekinesis;
 	mag_circle					=	1;
@@ -68,13 +68,44 @@ instance ItRu_Telekinesis (ItemPR_Spell)
 ///*******************************************************************************************
 /// PAL spells
 ///*******************************************************************************************
-instance ItRu_PalBless (ItemPR_Spell)
+instance ItRu_PalLight (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_PalLight.3ds";
+	visual						=	"ItRu_00P.3ds";
+	
+	spell						=	SPL_Light;
+	cond_value[2]				=	SPL_Cost_Light;
+	
+	description					=	NAME_SPL_Light;
+	COUNT[0]					=	mag_circle;
+	COUNT[1]					=	cond_value[2];
+	TEXT[2]						=	NAME_Duration;
+	COUNT[2]					=	SPL_Time_Light;
+	COUNT[5]					=	value;
+};
+
+instance ItRu_PalHeal (ItemPR_Spell)
+{
+	value						=	240;
+	visual						=	"ItRu_01P.3ds";
+	
+	spell						=	SPL_Heal;
+	cond_value[2]				=	SPL_Cost_Heal;
+	
+	description					=	NAME_SPL_Heal;
+	COUNT[0]					=	mag_circle;
+	COUNT[1]					=	cond_value[2];
+	TEXT[2]						=	NAME_HealingPerCast;
+	COUNT[2]					=	SPL_Heal_Heal;
+	COUNT[5]					=	value;
+};
+
+instance ItRu_PalBless (ItemPR_Spell)
+{
+	value						=	240;
+	visual						=	"ItRu_03P.3ds";
 	
 	spell						=	SPL_PalBless;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalBless;
 	
 	description					=	NAME_SPL_PalBless;
@@ -88,11 +119,10 @@ instance ItRu_PalBless (ItemPR_Spell)
 
 instance ItRu_PalFaith (ItemPR_Spell)
 {
-	value						=	240;
-	visual						=	"ItRu_PalLightHeal.3ds";
+	value						=	360;
+	visual						=	"ItRu_04P.3ds";
 	
 	spell						=	SPL_PalFaith;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalFaith;
 	
 	description					=	NAME_SPL_PalFaith;
@@ -103,11 +133,10 @@ instance ItRu_PalFaith (ItemPR_Spell)
 
 instance ItRu_PalHolyBolt (ItemPR_Spell)
 {
-	value						=	240;
-	visual						=	"ItRu_PalHolyBolt.3ds";
+	value						=	360;
+	visual						=	"ItRu_05P.3ds";
 	
 	spell						=	SPL_PalHolyBolt;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalHolyBolt;
 	
 	description					=	NAME_SPL_PalHolyBolt;
@@ -120,11 +149,10 @@ instance ItRu_PalHolyBolt (ItemPR_Spell)
 
 instance ItRu_PalGlory (ItemPR_Spell)
 {
-	value						=	400;
-	visual						=	"ItRu_PalMediumHeal.3ds";
+	value						=	480;
+	visual						=	"ItRu_06P.3ds";
 	
 	spell						=	SPL_PalGlory;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalGlory;
 	
 	description					=	NAME_SPL_PalGlory;
@@ -135,11 +163,10 @@ instance ItRu_PalGlory (ItemPR_Spell)
 
 instance ItRu_PalRepelEvil (ItemPR_Spell)
 {
-	value						=	400;
-	visual						=	"ItRu_PalRepelEvil.3ds";
+	value						=	480;
+	visual						=	"ItRu_07P.3ds";
 	
 	spell						=	SPL_PalRepelEvil;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalRepelEvil;
 	
 	description					=	NAME_SPL_PalRepelEvil;
@@ -154,11 +181,10 @@ instance ItRu_PalRepelEvil (ItemPR_Spell)
 
 instance ItRu_PalJustice (ItemPR_Spell)
 {
-	value						=	640;
-	visual						=	"ItRu_PalFullHeal.3ds";
+	value						=	600;
+	visual						=	"ItRu_08P.3ds";
 	
 	spell						=	SPL_PalJustice;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalJustice;
 	
 	description					=	NAME_SPL_PalJustice;
@@ -169,11 +195,10 @@ instance ItRu_PalJustice (ItemPR_Spell)
 
 instance ItRu_PalDestroyEvil (ItemPR_Spell)
 {
-	value						=	640;
-	visual						=	"ItRu_PalDestroyEvil.3ds";
+	value						=	600;
+	visual						=	"ItRu_09P.3ds";
 	
 	spell						=	SPL_PalDestroyEvil;
-	mag_circle					=	0;
 	cond_value[2]				=	SPL_Cost_PalDestroyEvil;
 	
 	description					=	NAME_SPL_PalDestroyEvil;
@@ -192,7 +217,7 @@ instance ItRu_PalDestroyEvil (ItemPR_Spell)
 instance ItRu_Resurrection (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MasterOfDesaster.3ds";
+	visual						=	"ItRu_10.3ds";
 	
 	spell						=	SPL_Resurrection;
 	mag_circle					=	2;
@@ -207,7 +232,7 @@ instance ItRu_Resurrection (ItemPR_Spell)
 instance ItRu_Rage (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Fear.3ds";
+	visual						=	"ItRu_11.3ds";
 	
 	spell						=	SPL_Rage;
 	mag_circle					=	5;
@@ -222,7 +247,7 @@ instance ItRu_Rage (ItemPR_Spell)
 instance ItRu_Seduction (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Sleep.3ds";
+	visual						=	"ItRu_12.3ds";
 	
 	spell						=	SPL_Seduction;
 	mag_circle					=	3;
@@ -237,7 +262,7 @@ instance ItRu_Seduction (ItemPR_Spell)
 instance ItRu_NightToDay (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_Light.3ds";
+	visual						=	"ItRu_18.3ds";
 	
 	spell						=	SPL_NightToDay;
 	mag_circle					=	2;
@@ -252,7 +277,7 @@ instance ItRu_NightToDay (ItemPR_Spell)
 instance ItRu_FireBolt (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_FireBolt.3ds";
+	visual						=	"ItRu_19.3ds";
 	
 	spell						=	SPL_FireBolt;
 	mag_circle					=	1;
@@ -270,7 +295,7 @@ instance ItRu_FireBolt (ItemPR_Spell)
 instance ItRu_IceBolt (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_IceBolt.3ds";
+	visual						=	"ItRu_20.3ds";
 	
 	spell						=	SPL_IceBolt;
 	mag_circle					=	1;
@@ -287,7 +312,7 @@ instance ItRu_IceBolt (ItemPR_Spell)
 instance ItRu_Stealth (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_FullHeal.3ds";
+	visual						=	"ItRu_21.3ds";
 	
 	spell						=	SPL_Stealth;
 	mag_circle					=	4;
@@ -302,7 +327,7 @@ instance ItRu_Stealth (ItemPR_Spell)
 instance ItRu_SkullBolt (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_SumSkel.3ds";
+	visual						=	"ItRu_22.3ds";
 	
 	spell						=	SPL_SkullBolt;
 	mag_circle					=	1;
@@ -319,7 +344,7 @@ instance ItRu_SkullBolt (ItemPR_Spell)
 instance ItRu_InstantFireball (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_23.3ds";
 	
 	spell						=	SPL_InstantFireball;
 	mag_circle					=	1;
@@ -336,7 +361,7 @@ instance ItRu_InstantFireball (ItemPR_Spell)
 instance ItRu_Zap (ItemPR_Spell)
 {
 	value						=	80;
-	visual						=	"ItRu_Zap.3ds";
+	visual						=	"ItRu_24.3ds";
 	
 	spell						=	SPL_Zap;
 	mag_circle					=	1;
@@ -353,7 +378,7 @@ instance ItRu_Zap (ItemPR_Spell)
 instance ItRu_Slimeball (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_25.3ds";
 	
 	spell						=	SPL_Slimeball;
 	mag_circle					=	1;
@@ -370,7 +395,7 @@ instance ItRu_Slimeball (ItemPR_Spell)
 instance ItRu_WindFist (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_WindFist.3ds";
+	visual						=	"ItRu_26.3ds";
 	
 	spell						=	SPL_WindFist;
 	mag_circle					=	2;
@@ -392,7 +417,7 @@ instance ItRu_WindFist (ItemPR_Spell)
 instance ItRu_Sleep (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_Sleep.3ds";
+	visual						=	"ItRu_27.3ds";
 	
 	spell						=	SPL_Sleep;
 	mag_circle					=	2;
@@ -409,7 +434,7 @@ instance ItRu_Sleep (ItemPR_Spell)
 instance ItRu_Charm (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Sleep.3ds";
+	visual						=	"ItRu_28.3ds";
 	
 	spell						=	SPL_Charm;
 	mag_circle					=	3;
@@ -424,7 +449,7 @@ instance ItRu_Charm (ItemPR_Spell)
 instance ItRu_LightningFlash (ItemPR_Spell)
 {
 	value						=	360;
-	visual						=	"ItRu_LightningFlash.3ds";
+	visual						=	"ItRu_29.3ds";
 	
 	spell						=	SPL_LightningFlash;
 	mag_circle					=	4;
@@ -442,7 +467,7 @@ instance ItRu_LightningFlash (ItemPR_Spell)
 instance ItRu_ChargeFireball (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_ChargeFireball.3ds";
+	visual						=	"ItRu_30.3ds";
 	
 	spell						=	SPL_ChargeFireball;
 	mag_circle					=	4;
@@ -464,7 +489,7 @@ instance ItRu_ChargeFireball (ItemPR_Spell)
 instance ItRu_Curse (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_SumSkel.3ds";
+	visual						=	"ItRu_31.3ds";
 	
 	spell						=	SPL_Curse;
 	mag_circle					=	3;
@@ -479,7 +504,7 @@ instance ItRu_Curse (ItemPR_Spell)
 instance ItRu_Fear (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Fear.3ds";
+	visual						=	"ItRu_32.3ds";
 	
 	spell						=	SPL_Fear;
 	mag_circle					=	3;
@@ -496,7 +521,7 @@ instance ItRu_Fear (ItemPR_Spell)
 instance ItRu_IceCube (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_IceCube.3ds";
+	visual						=	"ItRu_33.3ds";
 	
 	spell						=	SPL_IceCube;
 	mag_circle					=	3;
@@ -517,7 +542,7 @@ instance ItRu_IceCube (ItemPR_Spell)
 instance ItRu_ChargeZap (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Thunderball.3ds";
+	visual						=	"ItRu_34.3ds";
 	
 	spell						=	SPL_ChargeZap;
 	mag_circle					=	3;
@@ -539,7 +564,7 @@ instance ItRu_ChargeZap (ItemPR_Spell)
 instance ItRu_SummonGolem (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_SumGol.3ds";
+	visual						=	"ItRu_35.3ds";
 	
 	spell						=	SPL_SummonGolem;
 	mag_circle					=	4;
@@ -554,7 +579,7 @@ instance ItRu_SummonGolem (ItemPR_Spell)
 instance ItRu_DestroyUndead (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_HarmUndead.3ds";
+	visual						=	"ItRu_36.3ds";
 	
 	spell						=	SPL_DestroyUndead;
 	mag_circle					=	4;
@@ -571,7 +596,7 @@ instance ItRu_DestroyUndead (ItemPR_Spell)
 instance ItRu_Pyrokinesis (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Pyrokinesis.3ds";
+	visual						=	"ItRu_37.3ds";
 	
 	spell						=	SPL_Pyrokinesis;
 	mag_circle					=	5;
@@ -593,7 +618,7 @@ instance ItRu_Pyrokinesis (ItemPR_Spell)
 instance ItRu_Firestorm (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Firestorm.3ds";
+	visual						=	"ItRu_38.3ds";
 	
 	spell						=	SPL_Firestorm;
 	mag_circle					=	3;
@@ -610,7 +635,7 @@ instance ItRu_Firestorm (ItemPR_Spell)
 instance ItRu_IceWave (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_IceWave.3ds";
+	visual						=	"ItRu_39.3ds";
 	
 	spell						=	SPL_IceWave;
 	mag_circle					=	5;
@@ -632,7 +657,7 @@ instance ItRu_IceWave (ItemPR_Spell)
 instance ItRu_SummonDemon (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_SumDemon.3ds";
+	visual						=	"ItRu_40.3ds";
 	
 	spell						=	SPL_SummonDemon;
 	mag_circle					=	5;
@@ -647,7 +672,7 @@ instance ItRu_SummonDemon (ItemPR_Spell)
 instance ItRu_Explosion (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Pyrokinesis.3ds";
+	visual						=	"ItRu_41.3ds";
 	
 	spell						=	SPL_Explosion;
 	mag_circle					=	5;
@@ -664,7 +689,7 @@ instance ItRu_Explosion (ItemPR_Spell)
 instance ItRu_Firerain (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_Firerain.3ds";
+	visual						=	"ItRu_42.3ds";
 	
 	spell						=	SPL_Firerain;
 	mag_circle					=	6;
@@ -681,7 +706,7 @@ instance ItRu_Firerain (ItemPR_Spell)
 instance ItRu_BreathOfDeath (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_BreathOfDeath.3ds";
+	visual						=	"ItRu_43.3ds";
 	
 	spell						=	SPL_BreathOfDeath;
 	mag_circle					=	6;
@@ -698,7 +723,7 @@ instance ItRu_BreathOfDeath (ItemPR_Spell)
 instance ItRu_MassDeath (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_MassDeath.3ds";
+	visual						=	"ItRu_44.3ds";
 	
 	spell						=	SPL_MassDeath;
 	mag_circle					=	6;
@@ -715,7 +740,7 @@ instance ItRu_MassDeath (ItemPR_Spell)
 instance ItRu_ArmyOfDarkness (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_ArmyOfDarkness.3ds";
+	visual						=	"ItRu_45.3ds";
 	
 	spell						=	SPL_ArmyOfDarkness;
 	mag_circle					=	6;
@@ -730,7 +755,7 @@ instance ItRu_ArmyOfDarkness (ItemPR_Spell)
 instance ItRu_Shrink (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_Shrink.3ds";
+	visual						=	"ItRu_46.3ds";
 	
 	spell						=	SPL_Shrink;
 	mag_circle					=	6;
@@ -745,7 +770,7 @@ instance ItRu_Shrink (ItemPR_Spell)
 instance ItRu_Tame (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_SumWolf.3ds";
+	visual						=	"ItRu_47.3ds";
 	
 	spell						=	SPL_Tame;
 	mag_circle					=	4;
@@ -760,7 +785,7 @@ instance ItRu_Tame (ItemPR_Spell)
 instance ItRu_RunicEchoes (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_MassDeath.3ds";
+	visual						=	"ItRu_48.3ds";
 	
 	spell						=	SPL_RunicEchoes;
 	mag_circle					=	5;
@@ -777,7 +802,7 @@ instance ItRu_RunicEchoes (ItemPR_Spell)
 instance ItRu_SlowTime (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_Shrink.3ds";
+	visual						=	"ItRu_49.3ds";
 	
 	spell						=	SPL_SlowTime;
 	mag_circle					=	6;
@@ -795,7 +820,7 @@ instance ItRu_SlowTime (ItemPR_Spell)
 instance ItRu_HealingAura (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_50.3ds";
 	
 	spell						=	SPL_HealingAura;
 	mag_circle					=	2;
@@ -810,7 +835,7 @@ instance ItRu_HealingAura (ItemPR_Spell)
 instance ItRu_StoneSkin (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_51.3ds";
 	
 	spell						=	SPL_StoneSkin;
 	mag_circle					=	2;
@@ -825,7 +850,7 @@ instance ItRu_StoneSkin (ItemPR_Spell)
 instance ItRu_AirShield (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_52.3ds";
 	
 	spell						=	SPL_AirShield;
 	mag_circle					=	2;
@@ -840,7 +865,7 @@ instance ItRu_AirShield (ItemPR_Spell)
 instance ItRu_FireShield (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_53.3ds";
 	
 	spell						=	SPL_FireShield;
 	mag_circle					=	2;
@@ -855,7 +880,7 @@ instance ItRu_FireShield (ItemPR_Spell)
 instance ItRu_DarkBarrier (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_MediumHeal.3ds";
+	visual						=	"ItRu_54.3ds";
 	
 	spell						=	SPL_DarkBarrier;
 	mag_circle					=	2;
@@ -873,7 +898,7 @@ instance ItRu_DarkBarrier (ItemPR_Spell)
 instance ItRu_MasterOfDisaster (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_MasterOfDesaster.3ds";
+	visual						=	"ItRu_55.3ds";
 	
 	spell						=	SPL_MasterOfDisaster;
 	mag_circle					=	5;
@@ -890,7 +915,7 @@ instance ItRu_MasterOfDisaster (ItemPR_Spell)
 instance ItRu_BeliarRage (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_Beliar04.3ds";
+	visual						=	"ItRu_56.3ds";
 	
 	spell						=	SPL_BeliarRage;
 	mag_circle					=	1;
@@ -910,21 +935,21 @@ instance ItRu_BeliarRage (ItemPR_Spell)
 /*
 instance ItRu_Teleport (ItemPR_Spell)
 {
-	visual						=	"ItMi_StoneOfTeleport.3ds";
+	visual						=	"ItRu_57.3ds";
 	spell						=	SPL_Teleport;
 	description					=	NAME_SPL_Teleport;
 };
 
 instance ItRu_Transform (ItemPR_Spell)
 {
-	visual						=	"ItMi_StoneOfTransform.3ds";
+	visual						=	"ItRu_58.3ds";
 	spell						=	SPL_Transform;
 	description					=	NAME_SPL_Transform;
 };
 
 instance ItRu_Summon (ItemPR_Spell)
 {
-	visual						=	"ItMi_StoneOfSummon.3ds";
+	visual						=	"ItRu_59.3ds";
 	spell						=	SPL_Summon;
 	description					=	NAME_SPL_Summon;
 };
@@ -935,42 +960,42 @@ instance ItRu_Summon (ItemPR_Spell)
 ///*******************************************************************************************
 instance ItRu_ConcussionSpell (ItemPR_Spell)
 {
-	visual						=	"ItRu_PalHolyBolt.3ds";
+	visual						=	"ItRu_60.3ds";
 	spell						=	SPL_ConcussionSpell;
 	description					=	NAME_SPL_ConcussionSpell;
 };
 
 instance ItRu_DeathSpell (ItemPR_Spell)
 {
-	visual						=	"ItRu_PalHolyBolt.3ds";
+	visual						=	"ItRu_61.3ds";
 	spell						=	SPL_DeathSpell;
 	description					=	NAME_SPL_DeathSpell;
 };
 
 instance ItRu_DragonBall (ItemPR_Spell)
 {
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_62.3ds";
 	spell						=	SPL_DragonBall;
 	description					=	NAME_SPL_DragonBall;
 };
 
 instance ItRu_BlackDragonBall (ItemPR_Spell)
 {
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_63.3ds";
 	spell						=	SPL_BlackDragonBall;
 	description					=	NAME_SPL_BlackDragonBall;
 };
 
 instance ItRu_BlueFireball (ItemPR_Spell)
 {
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_64.3ds";
 	spell						=	SPL_BlueFireball;
 	description					=	NAME_SPL_BlueFireball;
 };
 
 instance ItRu_RedFireball (ItemPR_Spell)
 {
-	visual						=	"ItRu_InstantFireball.3ds";
+	visual						=	"ItRu_65.3ds";
 	spell						=	SPL_RedFireball;
 	description					=	NAME_SPL_RedFireball;
 };
@@ -981,7 +1006,7 @@ instance ItRu_RedFireball (ItemPR_Spell)
 instance ItRu_Thunderstorm (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Water05.3ds";
+	visual						=	"ItRu_70.3ds";
 	
 	spell						=	SPL_Thunderstorm;
 	mag_circle					=	5;
@@ -998,7 +1023,7 @@ instance ItRu_Thunderstorm (ItemPR_Spell)
 instance ItRu_Whirlwind (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_Water02.3ds";
+	visual						=	"ItRu_71.3ds";
 	
 	spell						=	SPL_Whirlwind;
 	mag_circle					=	2;
@@ -1015,7 +1040,7 @@ instance ItRu_Whirlwind (ItemPR_Spell)
 instance ItRu_WaterFist (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_Water03.3ds";
+	visual						=	"ItRu_72.3ds";
 	
 	spell						=	SPL_WaterFist;
 	mag_circle					=	4;
@@ -1032,7 +1057,7 @@ instance ItRu_WaterFist (ItemPR_Spell)
 instance ItRu_IceLance (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_Water04.3ds";
+	visual						=	"ItRu_73.3ds";
 	
 	spell						=	SPL_IceLance;
 	mag_circle					=	1;
@@ -1049,7 +1074,7 @@ instance ItRu_IceLance (ItemPR_Spell)
 instance ItRu_Inflate (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_Water01.3ds";
+	visual						=	"ItRu_74.3ds";
 	
 	spell						=	SPL_Inflate;
 	mag_circle					=	4;
@@ -1064,7 +1089,7 @@ instance ItRu_Inflate (ItemPR_Spell)
 instance ItRu_Geyser (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Water01.3ds";
+	visual						=	"ItRu_75.3ds";
 	
 	spell						=	SPL_Geyser;
 	mag_circle					=	3;
@@ -1081,7 +1106,7 @@ instance ItRu_Geyser (ItemPR_Spell)
 instance ItRu_Fireburning (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Firestorm.3ds";
+	visual						=	"ItRu_76.3ds";
 	
 	spell						=	SPL_Fireburning;
 	mag_circle					=	3;
@@ -1098,7 +1123,7 @@ instance ItRu_Fireburning (ItemPR_Spell)
 instance ItRu_ChainLightning (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_Thunderball.3ds";
+	visual						=	"ItRu_77.3ds";
 	
 	spell						=	SPL_ChainLightning;
 	mag_circle					=	4;
@@ -1115,7 +1140,7 @@ instance ItRu_ChainLightning (ItemPR_Spell)
 instance ItRu_Hurricane (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_WindFist.3ds";
+	visual						=	"ItRu_78.3ds";
 	
 	spell						=	SPL_Hurricane;
 	mag_circle					=	4;
@@ -1132,7 +1157,7 @@ instance ItRu_Hurricane (ItemPR_Spell)
 instance ItRu_LightFlash (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Light.3ds";
+	visual						=	"ItRu_79.3ds";
 	
 	spell						=	SPL_LightFlash;
 	mag_circle					=	5;
@@ -1150,7 +1175,7 @@ instance ItRu_LightFlash (ItemPR_Spell)
 instance ItRu_Plague (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_Beliar02.3ds";
+	visual						=	"ItRu_80.3ds";
 	
 	spell						=	SPL_Plague;
 	mag_circle					=	4;
@@ -1167,7 +1192,7 @@ instance ItRu_Plague (ItemPR_Spell)
 instance ItRu_Swarm (ItemPR_Spell)
 {
 	value						=	400;
-	visual						=	"ItRu_Beliar02.3ds";
+	visual						=	"ItRu_81.3ds";
 	
 	spell						=	SPL_Swarm;
 	mag_circle					=	4;
@@ -1184,7 +1209,7 @@ instance ItRu_Swarm (ItemPR_Spell)
 instance ItRu_Greententacle (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_Beliar03.3ds";
+	visual						=	"ItRu_82.3ds";
 	
 	spell						=	SPL_Greententacle;
 	mag_circle					=	3;
@@ -1203,7 +1228,7 @@ instance ItRu_Greententacle (ItemPR_Spell)
 instance ItRu_Earthquake (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_IceWave.3ds";
+	visual						=	"ItRu_83.3ds";
 	
 	spell						=	SPL_Earthquake;
 	mag_circle					=	5;
@@ -1220,7 +1245,7 @@ instance ItRu_Earthquake (ItemPR_Spell)
 instance ItRu_Rock (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_Water04.3ds";
+	visual						=	"ItRu_84.3ds";
 	
 	spell						=	SPL_Rock;
 	mag_circle					=	1;
@@ -1237,7 +1262,7 @@ instance ItRu_Rock (ItemPR_Spell)
 instance ItRu_Mysticball (ItemPR_Spell)
 {
 	value						=	100;
-	visual						=	"ItRu_Beliar04.3ds";
+	visual						=	"ItRu_85.3ds";
 	
 	spell						=	SPL_Mysticball;
 	mag_circle					=	1;
@@ -1254,7 +1279,7 @@ instance ItRu_Mysticball (ItemPR_Spell)
 instance ItRu_SuckEnergy (ItemPR_Spell)
 {
 	value						=	200;
-	visual						=	"ItRu_Beliar01.3ds";
+	visual						=	"ItRu_86.3ds";
 	
 	spell						=	SPL_SuckEnergy;
 	mag_circle					=	2;
@@ -1271,7 +1296,7 @@ instance ItRu_SuckEnergy (ItemPR_Spell)
 instance ItRu_Skull (ItemPR_Spell)
 {
 	value						=	500;
-	visual						=	"ItRu_Beliar05.3ds";
+	visual						=	"ItRu_87.3ds";
 	
 	spell						=	SPL_Skull;
 	mag_circle					=	5;
@@ -1288,7 +1313,7 @@ instance ItRu_Skull (ItemPR_Spell)
 instance ItRu_Elevate (ItemPR_Spell)
 {
 	value						=	300;
-	visual						=	"ItRu_IceCube.3ds";
+	visual						=	"ItRu_88.3ds";
 	
 	spell						=	SPL_Elevate;
 	mag_circle					=	3;
@@ -1304,7 +1329,7 @@ instance ItRu_Elevate (ItemPR_Spell)
 instance ItRu_Crush (ItemPR_Spell)
 {
 	value						=	600;
-	visual						=	"ItRu_Beliar05.3ds";
+	visual						=	"ItRu_89.3ds";
 	
 	spell						=	SPL_Crush;
 	mag_circle					=	6;

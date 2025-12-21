@@ -43,8 +43,8 @@ func void B_SetVisuals_OrcWarrior()
 ///******************************************************************************************
 instance OrcWarrior_Rest (Mst_Default_OrcWarrior)
 {
-	B_SetVisuals_OrcSoldier();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	B_SetVisuals_OrcWarrior();
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -52,15 +52,15 @@ instance OrcWarrior_Rest (Mst_Default_OrcWarrior)
 instance OrcWarrior_Roam (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
 };
 instance OrcWarrior_Sit (Mst_Default_OrcWarrior)
 {
-	B_SetVisuals_OrcSoldier();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	B_SetVisuals_OrcWarrior();
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_OrcSitStart]			=	OnlyRoutine;
@@ -72,7 +72,7 @@ instance OrcWarrior_Sit (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart1 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -80,7 +80,7 @@ instance OrcWarrior_Lobart1 (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart2 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -88,7 +88,7 @@ instance OrcWarrior_Lobart2 (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart3 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -96,7 +96,7 @@ instance OrcWarrior_Lobart3 (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart4 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -104,7 +104,7 @@ instance OrcWarrior_Lobart4 (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart5 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -112,7 +112,7 @@ instance OrcWarrior_Lobart5 (Mst_Default_OrcWarrior)
 instance OrcWarrior_Lobart6 (Mst_Default_OrcWarrior)
 {
 	B_SetVisuals_OrcWarrior();
-	EquipItem (self, ItMw_2H_OrcAxe_03);
+	EquipItem (self, ItMw_2h_OrcAxe_03);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;

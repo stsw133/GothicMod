@@ -18,6 +18,13 @@ func void ZS_MM_Attack()
 	
 	B_ValidateOther();
 	
+	/// MOD: overcome damage
+	//if (other.aivar[AIV_Overcome] > 0 && C_BodyStateContains(self, BS_PARADE))
+	//{
+	//	B_MagicHurtNpc (other, self, other.aivar[AIV_Overcome]);
+	//};
+	
+	/// ...
 	if (self.guild == GIL_LIVESTOCK && self.level <= 1)
 	|| (self.guild == GIL_WILD && self.level <= 1)
 	{
@@ -30,7 +37,7 @@ func void ZS_MM_Attack()
 	
 	/// FUNC
 	AI_StandUp		(self);
-	AI_SetWalkmode 	(self, NPC_RUN);
+	AI_SetWalkmode	(self, NPC_RUN);
 	
 	Npc_SendPassivePerc	(self, PERC_ASSESSWARN,	other, self);
 	
@@ -46,6 +53,21 @@ func int ZS_MM_Attack_Loop()
 {
 	Npc_GetTarget(self);
 	
+	/// MOD: counter logic
+	if (Npc_IsPlayer(other))
+	{
+		if (C_BodyStateContains(other, BS_PARADE))
+		&& (C_BodyStateContains(self, BS_HIT))
+		{
+			ATS[ATS_CounterHit] = true;
+		}
+		else if (C_BodyStateContains(self, BS_PARADE))
+		{
+			ATS[ATS_CounterHit] = false;
+		};
+	};
+	
+	/// ...
 	if (self.guild == GIL_DRAGON)
 	|| (self.aivar[AIV_MM_Real_ID] == ID_AVATAR) /// new!!!
 	{
@@ -240,11 +262,17 @@ func int ZS_MM_Attack_Loop()
 ///******************************************************************************************
 func void ZS_MM_Attack_End()
 {
-	/// MOD
+	/// MOD: reset HP to full
 	if (!self.aivar[AIV_PartyMember])
 	{
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 		self.aivar[AIV_DamageDealtByPlayer] = 0;
+	};
+	
+	/// MOD: ASD
+	if (ATS[ATS_AfterSpellHit] == Hlp_GetInstanceID(self))
+	{
+		ATS[ATS_AfterSpellHit] = default;
 	};
 	
 	/// ...

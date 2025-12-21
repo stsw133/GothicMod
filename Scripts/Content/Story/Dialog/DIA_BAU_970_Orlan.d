@@ -402,12 +402,12 @@ func void DIA_Orlan_RUESTUNG_Buy ()
 {
 	AI_Output				(other, self,"DIA_Orlan_RUESTUNG_Buy_15_00"); //Kupiê ten skórzany pancerz.
 
-	if (B_GiveInvItems		(other, self, ItMi_Gold, ITAR_Leather_L.value))
+	if (B_GiveInvItems		(other, self, ItMi_Gold, 250))
 		{
 			AI_Output			(self, other,"DIA_Orlan_RUESTUNG_Buy_05_01"); //M¹dra decyzja.
 
-			CreateInvItems 		(self, ItAr_Leather_L, 1);
-			B_GiveInvItems		(self, other, ItAr_Leather_L, 1);
+			CreateInvItems 		(self, ItAr_Leather_L1, 1);
+			B_GiveInvItems		(self, other, ItAr_Leather_L1, 1);
 			AI_EquipBestArmor	(other);
 			DIA_Orlan_RUESTUNG_noPerm = TRUE;
 		}

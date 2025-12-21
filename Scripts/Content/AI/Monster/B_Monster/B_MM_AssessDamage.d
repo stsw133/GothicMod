@@ -7,8 +7,8 @@ func void B_MM_AssessDamage()
 	
 //	B_BeliarsWeaponSpecialDamage (other, self);
 	
-	/// MOD: FinishPercent
-	if (Npc_IsPlayer(other) && mFinishPercent > 0 && (self.attribute[ATR_HITPOINTS]*100/self.attribute[ATR_HITPOINTS_MAX]) <= mFinishPercent)
+	/// MOD: finish % threshold
+	if (Npc_IsPlayer(other) && ATS[ATS_FinishTsh] > 0 && (self.attribute[ATR_HITPOINTS]*100/self.attribute[ATR_HITPOINTS_MAX]) <= ATS[ATS_FinishTsh])
 	{
 		B_MagicHurtNpc (other, self, self.attribute[ATR_HITPOINTS]);
 		Wld_PlayEffect ("VOB_BURN_CHILD1", self, self, 0, 0, 0, false);

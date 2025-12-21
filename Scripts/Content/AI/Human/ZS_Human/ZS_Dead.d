@@ -22,7 +22,7 @@ func void ZS_Dead()
 	
 	if (self.aivar[AIV_MM_REAL_ID] == ID_SWAMPDRONE && Npc_GetDistToNpc(self, hero) < 300)
 	{
-		MOD_SetPoison(bsPoison + 2);
+		MOD_SetPoison(ATS[ATS_PoisonPoints] + 2);
 	};
 	
 	/// MOD
@@ -38,7 +38,7 @@ func int ZS_Dead_Loop()
 	/// MOD (temporary)
 	if (self.flags & NPC_FLAG_IMPORTANT)
 	{
-		self.attribute[ATR_HITPOINTS] = 1;
+		self.attribute[ATR_HITPOINTS] = 2;
 		AI_Wait (self, 10);
 		AI_PlayAniBS (self, "T_WOUNDEDB_2_STAND", BS_UNCONSCIOUS);
 	};

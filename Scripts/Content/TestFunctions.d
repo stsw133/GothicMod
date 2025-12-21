@@ -23,6 +23,7 @@ func string Give_All (var string parameter)
 	GiveAll_Recipes(hero);
 	GiveAll_Rings(hero);
 	GiveAll_Runes(hero);
+	GiveAll_Shields(hero);
 	GiveAll_Stoneplates(hero);
 	GiveAll_Valuables(hero);
 	GiveAll_Written(hero);
@@ -91,6 +92,7 @@ func string Give_Weapons (var string parameter)
 	GiveAll_MeleeWeapons(hero);
 	GiveAll_Munition(hero);
 	GiveAll_RangedWeapons(hero);
+	GiveAll_Shields(hero);
 	
 	return "Otrzymano wszystkie bronie";
 };
@@ -195,7 +197,9 @@ func string Give_Talents (var string parameter)
 	MEM_WriteStatArr(PLAYER_TALENT_HUNTING, i, true);
 	end;
 	
-	Npc_SetTalentSkill (hero, NPC_TALENT_17, 1);
+	Npc_SetTalentSkill (hero, NPC_TALENT_EXTRACTION, 1);
+	Npc_SetTalentValue (hero, NPC_TALENT_EXTRACTION, 100);
+	
 	Npc_SetTalentSkill (hero, NPC_TALENT_18, 1);
 	Npc_SetTalentSkill (hero, NPC_TALENT_19, 1);
 	
@@ -209,6 +213,17 @@ func string Give_Exp (var string parameter)
 	B_GivePlayerExp(paramInt);
 	
 	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " punktów doœwiadczenia");
+};
+
+/// save camera
+///******************************************************************************************
+func string Save_Camera (var string parameter)
+{
+	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
+	
+	MOD_MovieMode_SaveCamera(paramInt);
+	
+	return ConcatStrings("Zapisano kamerê pod slotem ", IntToString(paramInt));
 };
 
 /// set game & movie mode
@@ -256,15 +271,6 @@ func string Set_SellingValuePercent (var string parameter)
 	B_SetSellingValuePercent(paramInt);
 	
 	return ConcatStrings(ConcatStrings("Ustawiono ", IntToString(paramInt)), "% przelicznika sprzeda¿y");
-};
-
-func string Set_View (var string parameter)
-{
-	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
-	
-	MOD_MovieMode_SetCamera(paramInt);
-	
-	return ConcatStrings("Zapisano kamerê pod slotem ", IntToString(paramInt));
 };
 
 /// set world & npc
@@ -759,10 +765,11 @@ func void ConsoleCommands()
 	CC_Register(Give_Talents, "Give Talents", "");
 	CC_Register(Give_Exp, "Give Exp", "");
 	
+	CC_Register(Save_Camera, "Save Camera", "");
+	
 	CC_Register(Set_Diff, "Set Diff", "");
 	CC_Register(Set_GameMode, "Set GameMode", "");
 	CC_Register(Set_SellingValuePercent, "Set SellingValuePercent", "");
-	CC_Register(Set_View, "Set View", "");
 	
 	CC_Register(Set_BodyVisibility, "Set BodyVisibility", "");
 	CC_Register(Set_ScaleWorldTime, "Set ScaleWorldTime", "");

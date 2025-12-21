@@ -28,7 +28,7 @@ instance STRF_1121_Addon_Telbor (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+0, BodySkin_B, "Hum_Head_FatBald", Face_B_Normal01, Teeth_Normal, ItAr_Prisoner_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+0, BodySkin_B, "Hum_Head_FatBald", Face_B_Normal01, Teeth_Normal, ItAr_STRF_L);
 	Mdl_SetModelFatness	(self, 2);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	

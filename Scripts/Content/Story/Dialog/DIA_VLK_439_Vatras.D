@@ -2400,10 +2400,10 @@ instance DIA_Vatras_OBSESSION		(C_INFO)
 
 func int DIA_Vatras_OBSESSION_Condition ()
 {
-	if (bsObsession > 0)
-		{
-				return TRUE;
-		};
+	if (ATS[ATS_IsObsessed])
+	{
+		return TRUE;
+	};
 };
 
 func void DIA_Vatras_OBSESSION_Info ()

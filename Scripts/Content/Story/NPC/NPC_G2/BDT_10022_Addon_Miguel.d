@@ -26,7 +26,7 @@ instance BDT_10022_Addon_Miguel (Npc_Default)
 	CreateInvItems (self, ItPo_Mana_01, 7);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_OldMan_Gravo, Teeth_Normal, ItAr_BDT_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_OldMan_Gravo, Teeth_Normal, ITAR_BDT_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	

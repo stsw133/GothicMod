@@ -19,7 +19,7 @@ instance BDT_10030_Addon_Buddler (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_NormalBart_Cronos, Teeth_Normal, ItAr_Prisoner_H);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_P, "Hum_Head_Thief", Face_P_NormalBart_Cronos, Teeth_Normal, ItAr_STRF_H);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	

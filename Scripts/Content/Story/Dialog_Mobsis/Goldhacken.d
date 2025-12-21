@@ -47,6 +47,11 @@ var int GoldMob_19_Amount; const int GoldMob_19_AmounT_MAX = 18;
 var int GoldMob_20_Amount; const int GoldMob_20_AmounT_MAX = 19;
 
 ///******************************************************************************************
+func void Goldhacken_UpdateHackChance()
+{
+	Hero_HackChance = Npc_GetTalentValue(hero, NPC_TALENT_EXTRACTION);
+};
+
 func int B_GoldMob_Bestimmung()
 {
 	if (Hlp_StrCmp(Npc_GetNearestWP(self),"ADW_MINE_PICK_01") && GoldMob_01_Amount_MAX > GoldMob_01_Amount)
@@ -185,6 +190,7 @@ instance PC_Goldhacken_Addon_Hour (C_Info)
 };
 func void PC_Goldhacken_Addon_Hour_Info()
 {
+	Goldhacken_UpdateHackChance();
 	Learn_by_doing += 1;
 	
 	if (Learn_by_doing == 10)
@@ -310,6 +316,7 @@ instance PC_Goldhacken_Addon_Chance (C_Info)
 };
 func void PC_Goldhacken_Addon_Chance_Info()
 {
+	Goldhacken_UpdateHackChance();
 	var string ConcatText;
 	
 	if (Hero_HackChance < 20)

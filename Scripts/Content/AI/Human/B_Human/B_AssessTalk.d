@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void B_AssessTalk()
 {
-	if (bsStealth > 0)
+	if (ATS[ATS_StealthTime] > 0)
 	{
 		return;
 	};

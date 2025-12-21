@@ -207,8 +207,9 @@ func void MOD_MovieMode_ExecSubScript()
 ///******************************************************************************************
 
 var int MOD_MovieMode_CamPos[120];
+var int MOD_MovieMode_CamSaved[10];
 
-func void MOD_MovieMode_SetCamera (var int slot)
+func void MOD_MovieMode_SaveCamera (var int slot)
 {
 	if (slot < 0 || slot > 9)
 	{
@@ -225,14 +226,29 @@ func void MOD_MovieMode_SetCamera (var int slot)
 		MEM_WriteStatArr(MOD_MovieMode_CamPos, slot*12 + i, MEM_ReadStatArr(cam.trafoObjToWorld, i));
 	};
 	end;
+	
+	MEM_WriteStatArr(MOD_MovieMode_CamSaved, slot, 1);
 };
 
-func void MOD_MovieMode_DoCamera()
+func void MOD_MovieMode_GetCamera()
 {
 	MOD_SetMemoKeys();
 	
-	if (MOD_MemoKey1 != -1)
+	if (MOD_MemoKey1 == -1)
 	{
+		return;
+	};
+	
+	if (MOD_MemoKey1 < 0 || MOD_MemoKey1 > 9)
+	{
+		MOD_MemoKey1 = -1;
+		return;
+	};
+	
+	if (!MEM_ReadStatArr(MOD_MovieMode_CamSaved, MOD_MemoKey1))
+	{
+		Print(ConcatStrings("Brak zapisanej kamery pod ", IntToString(MOD_MemoKey1)));
+		MOD_MemoKey1 = -1;
 		return;
 	};
 	

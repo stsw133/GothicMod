@@ -23,7 +23,7 @@ instance STRF_1130_Addon_Sklave (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+0, BodySkin_L, "Hum_Head_Psionic", Face_L_ToughBart_Quentin, Teeth_Normal, ItAr_Prisoner_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+0, BodySkin_L, "Hum_Head_Psionic", Face_L_ToughBart_Quentin, Teeth_Normal, ItAr_STRF_L);
 	Mdl_SetModelFatness	(self, -1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	

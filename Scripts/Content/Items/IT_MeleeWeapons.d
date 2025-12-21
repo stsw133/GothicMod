@@ -1197,20 +1197,20 @@ instance ItMw_Steel_WarHammer (ItemPR_MeleeWeaponM)	{	name = "Stalowy m³ot wojen
 /// WzA weapons
 ///******************************************************************************************
 instance ItMw_Broom (ItemPR_MeleeWeaponW)			{	name = "Miot³a";						visual = "ItMi_Broom.3ds";						SetItMwAttributes (self, ITEM_2HD_AXE, 10,DAM_BLUNT, 10,ATR_STRENGTH, 150, 10, WEAPON_Default);		};
-instance ItMw_BusterSword (ItemPR_MeleeWeaponM)		{	name = "Ogromny tasak";					visual = "ItMw_2h_BusterSword.3ds";				SetItMwAttributes (self, ITEM_2HD_SWD, 200,DAM_EDGE, 200,ATR_STRENGTH, 180, 100, WEAPON_Default);		};
+instance ItMw_BusterSword (ItemPR_MeleeWeaponM)		{	name = "Ogromny tasak";					visual = "ItMw_2h_BusterSword.3ds";				SetItMwAttributes (self, ITEM_2HD_SWD, 200,DAM_EDGE, 200,ATR_STRENGTH, 150, 100, WEAPON_Default);		};
 instance ItMw_ChainSaw (ItemPR_MeleeWeaponM)		{	name = "Pi³a ³añcuchowa";				visual = "ItMw_1h_Chainsaw.3ds";				SetItMwAttributes (self, ITEM_SWD, 200,DAM_EDGE, 100,ATR_STRENGTH, 100, 100, WEAPON_Default);			};
 
 instance ItMw_LightSaber (ItemPR_MeleeWeaponM)		{	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber.3ds";					SetItMwAttributes (self, ITEM_SWD, 300,DAM_INVALID, 150,ATR_DEXTERITY, 0, 100, WEAPON_Default);		};
-instance ItMw_LightSaber_Red (ItemPR_MeleeWeaponM)	{	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Red.3ds";				SetItMwAttributes (self, ITEM_2HD_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);	};
-instance ItMw_LightSaber_Green (ItemPR_MeleeWeaponM){	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Green.3ds";			SetItMwAttributes (self, ITEM_2HD_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);	};
-instance ItMw_LightSaber_Blue (ItemPR_MeleeWeaponM)	{	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Blue.3ds";			SetItMwAttributes (self, ITEM_2HD_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);	};
+instance ItMw_LightSaber_Red (ItemPR_MeleeWeaponM)	{	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Red.3ds";				SetItMwAttributes (self, ITEM_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);		};
+instance ItMw_LightSaber_Green (ItemPR_MeleeWeaponM){	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Green.3ds";			SetItMwAttributes (self, ITEM_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);		};
+instance ItMw_LightSaber_Blue (ItemPR_MeleeWeaponM)	{	name = "Miecz œwietlny";				visual = "ItMw_Lightsaber_Blue.3ds";			SetItMwAttributes (self, ITEM_SWD, 300,DAM_EDGE, 150,ATR_DEXTERITY, 120, 100, WEAPON_Default);		};
 
 ///******************************************************************************************
 /// Mission weapons
 ///******************************************************************************************
 instance ItMw_AlriksSword (ItemPR_MeleeWeaponM)		{	name = "Miecz Alrika";					visual = "ItMw_025_1h_sld_sword_01.3ds";		SetItMwAttributes (self, ITEM_SWD|ITEM_MISSION, 30,DAM_EDGE, 30,ATR_STRENGTH, 70, 20, WEAPON_Default);		};
 instance ItMw_2h_Rod (ItemPR_MeleeWeaponM)			{	name = "Miecz dwurêczny Roda";			visual = "ItMw_035_2h_sld_sword_01.3ds";		SetItMwAttributes (self, ITEM_2HD_SWD|ITEM_MISSION, 50,DAM_EDGE, 50,ATR_STRENGTH, 130, 20, WEAPON_Default);	};
-instance Holy_Hammer_MIS (ItemPR_MeleeWeaponM)		{	name = "Œwiêty m³ot"; owner = Nov_608_Garwig; visual = "ItMw_030_2h_kdf_hammer_01.3ds";	SetItMwAttributes (self, ITEM_AXE|ITEM_MISSION, 50,DAM_BLUNT, 0,ATR_STRENGTH, 100, 0, WEAPON_Default);		};
+instance Holy_Hammer_MIS (ItemPR_MeleeWeaponM)		{	name = "Œwiêty m³ot"; owner = Nov_608_Garwig; visual = "ItMw_030_2h_kdf_hammer_01.3ds";	SetItMwAttributes (self, ITEM_AXE|ITEM_MISSION, 50,DAM_BLUNT, 20,ATR_STRENGTH, 100, 0, WEAPON_Default);		};
 instance ItMw_1h_FerrosSword (ItemPR_MeleeWeaponM)	{	name = "Miecz Ferosa";					visual = "ItMw_060_1h_Sword_smith_03.3ds";		SetItMwAttributes (self, ITEM_SWD|ITEM_MISSION, 100,DAM_EDGE, 90,ATR_STRENGTH, 90, 20, WEAPON_Default);		};
 instance ItMw_Addon_Betty (ItemPR_MeleeWeaponM)		{	name = "Betty"; 						visual = "ItMw_065_1h_sword_bastard_03.3ds";	SetItMwAttributes (self, ITEM_SWD, 130,DAM_EDGE, 115,ATR_DEXTERITY, 100, 50, WEAPON_Default);					};
 

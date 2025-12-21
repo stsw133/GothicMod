@@ -315,11 +315,11 @@ instance DIA_Sagitta_OBSESSION		(C_INFO)
 
 func int DIA_Sagitta_OBSESSION_Condition ()
 {
-	if (bsObsession > 0)
+	if (ATS[ATS_IsObsessed])
 	&& (Npc_KnowsInfo(other, DIA_Sagitta_HALLO))
-		{
-				return TRUE;
-		};
+	{
+			return TRUE;
+	};
 };
 
 func void DIA_Sagitta_OBSESSION_Info ()

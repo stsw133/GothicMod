@@ -4,7 +4,7 @@
 func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 {
 	//if (Npc_IsPlayer(slf) || slf.aivar[AIV_PARTYMEMBER])
-	if ((oth.aivar[AIV_DamageDealtByPlayer]*2) >= oth.attribute[ATR_HITPOINTS_MAX])
+	if ((oth.aivar[AIV_DamageDealtByPlayer]*2) >= oth.attribute[ATR_HITPOINTS_MAX])	///new!!!
 	{
 		if (!oth.aivar[AIV_VictoryExpGiven])
 		{
@@ -85,7 +85,14 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 			};
 		};
 		
-		/// MOD:
+		/// MOD: necromancer's HP & MP restoration
+		if (ATS[ATS_NecroRestore] > 0)
+		{
+			Npc_ChangeAttribute (slf, ATR_HITPOINTS, ATS[ATS_NecroRestore]*oth.level/100);
+			Npc_ChangeAttribute (slf, ATR_MANA, ATS[ATS_NecroRestore]*oth.level/100);
+		};
+		
+		/// MOD: gold dragon skill
 		//if (Npc_IsPlayer(slf))
 		//{
 		//	if (dragonSkillGold)

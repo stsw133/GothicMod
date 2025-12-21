@@ -18,7 +18,7 @@ instance WzA_17201_Kesakhikebad (Npc_Default)
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, ORCMALE, 0, default, "Orc_Head_Warrior", 2, default, ITAR_Orc_Guardian);
+	NpcFn_SetVisual		(self, ORCMALE, 0, default, "Orc_Head_Warrior", 5, default, ITAR_Orc_Guardian);
 	Mdl_SetModelFatness	(self, 0);
 	
 	/// ------ Attributes ------

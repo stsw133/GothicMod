@@ -8,6 +8,8 @@ prototype ItemPR_Potion (C_Item)
 	scemeName					=	"POTIONFAST";
 	
 	TEXT[5]						=	NAME_Value;
+	INV_ROTX					=	10;
+	INV_ZBIAS					=	150;
 };
 
 prototype ItemPR_PotionTrf (C_Item)
@@ -15,13 +17,12 @@ prototype ItemPR_PotionTrf (C_Item)
 	mainflag					=	ITEM_KAT_RUNE;	/// quickslots don't work with ITEM_KAT_POTIONS
 	flags						=	ITEM_MULTI;
 	
-	visual						=	"ItPo_Transform.3ds";
 	material					=	MAT_GLAS;
 	spell						=	SPL_Transform;
 	
 	TEXT[5]						=	NAME_Value;
-	INV_ROTX					=	30;
-	//INV_ROTZ					=	INVCAM_Z_RING_STANDARD;
+	INV_ROTX					=	10;
+	INV_ZBIAS					=	150;
 };
 
 ///******************************************************************************************
@@ -61,6 +62,7 @@ instance ItPo_Health_02 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Hp;
 	COUNT[1]					=	50;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Health_02()
 {
@@ -83,6 +85,7 @@ instance ItPo_Health_03 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Hp;
 	COUNT[1]					=	75;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Health_03()
 {
@@ -136,6 +139,7 @@ instance ItPo_Health_Addon_05 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	4;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Health_Addon_05()
 {
@@ -164,6 +168,7 @@ instance ItPo_Health_Addon_06 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	5;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Health_Addon_06()
 {
@@ -211,6 +216,7 @@ instance ItPo_Mana_02 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Mp;
 	COUNT[1]					=	50;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Mana_02()
 {
@@ -229,6 +235,7 @@ instance ItPo_Mana_03 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Mp;
 	COUNT[1]					=	75;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Mana_03()
 {
@@ -277,6 +284,7 @@ instance ItPo_Mana_Addon_05 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	4;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Mana_Addon_05()
 {
@@ -304,6 +312,7 @@ instance ItPo_Mana_Addon_06 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	5;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Mana_Addon_06()
 {
@@ -350,6 +359,7 @@ instance ItPo_Stamina_02 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Sp;
 	COUNT[1]					=	50;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Stamina_02()
 {
@@ -368,6 +378,7 @@ instance ItPo_Stamina_03 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Sp;
 	COUNT[1]					=	75;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Stamina_03()
 {
@@ -416,6 +427,7 @@ instance ItPo_Stamina_Addon_05 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	8;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Stamina_Addon_05()
 {
@@ -443,6 +455,7 @@ instance ItPo_Stamina_Addon_06 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	10;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Stamina_Addon_06()
 {
@@ -494,6 +507,7 @@ instance ItPo_Blueplant_02 (ItemPR_Potion)
 	TEXT[2]						=	NAME_Percent_Mp;
 	COUNT[2]					=	40;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Blueplant_02()
 {
@@ -515,6 +529,7 @@ instance ItPo_Blueplant_03 (ItemPR_Potion)
 	TEXT[2]						=	NAME_Percent_Mp;
 	COUNT[2]					=	60;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Blueplant_03()
 {
@@ -570,6 +585,7 @@ instance ItPo_Blueplant_Addon_05 (ItemPR_Potion)
 	TEXT[3]						=	NAME_EffectPerSec;
 	COUNT[3]					=	3;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Blueplant_Addon_05()
 {
@@ -601,6 +617,7 @@ instance ItPo_Blueplant_Addon_06 (ItemPR_Potion)
 	TEXT[3]						=	NAME_EffectPerSec;
 	COUNT[3]					=	4;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Blueplant_Addon_06()
 {
@@ -634,10 +651,7 @@ instance ItPo_Shield_01 (ItemPR_Potion)
 };
 func void Use_ItPo_Shield_01()
 {
-	if (Npc_IsPlayer(self))
-	{
-		Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*3/10);
-	};
+	Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*3/10);
 };
 
 instance ItPo_Shield_02 (ItemPR_Potion)
@@ -652,13 +666,11 @@ instance ItPo_Shield_02 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Sh;
 	COUNT[1]					=	60;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Shield_02()
 {
-	if (Npc_IsPlayer(self))
-	{
-		Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*3/5);
-	};
+	Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*3/5);
 };
 
 instance ItPo_Shield_03 (ItemPR_Potion)
@@ -673,13 +685,11 @@ instance ItPo_Shield_03 (ItemPR_Potion)
 	TEXT[1]						=	NAME_Percent_Sh;
 	COUNT[1]					=	90;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Shield_03()
 {
-	if (Npc_IsPlayer(self))
-	{
-		Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*9/10);
-	};
+	Npc_SetShieldPoints (self, self.attribute[ATR_HITPOINTS_MAX]*9/10);
 };
 /*
 ///******************************************************************************************
@@ -720,6 +730,7 @@ instance ItPo_Shield_Addon_05 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	3;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Shield_Addon_05()
 {
@@ -743,6 +754,7 @@ instance ItPo_Shield_Addon_06 (ItemPR_Potion)
 	TEXT[2]						=	NAME_EffectPerSec;
 	COUNT[2]					=	4;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Shield_Addon_06()
 {
@@ -1069,22 +1081,6 @@ func void Use_ItPo_Perm_Prot()
 ///******************************************************************************************
 /// Utility
 ///******************************************************************************************
-instance ItPo_Flame (ItemPR_Potion)
-{
-	name						=	"Esencja p³omienia";
-	value						=	100;
-	
-	visual						=	"ItPo_Flame.3ds";
-	on_state[0]					=	Use_Flame;
-	
-	description					=	name;
-	COUNT[5]					=	value;
-};
-func void Use_Flame()
-{
-	
-};
-
 instance ItPo_Geist (ItemPR_Potion)
 {
 	name						=	"Mikstura jasnoœci umys³u";
@@ -1153,6 +1149,18 @@ func void Use_ItPo_NightVision()
 	};
 };
 
+instance ItPo_Perfume (ItemPR_Potion)
+{
+	name						=	"Perfumy";
+	value						=	100;
+	
+	visual						=	"ItPo_Perfume.3ds";
+	scemeName					=	"MAP";
+	
+	description					=	name;
+	COUNT[5]					=	value;
+};
+
 instance ItPo_Poison (ItemPR_Potion)
 {
 	name						=	"Trucizna";
@@ -1165,12 +1173,13 @@ instance ItPo_Poison (ItemPR_Potion)
 	TEXT[1]						=	"S³u¿y do zatruwania";
 	TEXT[2]						=	"broni i strza³.";
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	130;
 };
 func void Use_ItPo_Poison()
 {
 	if (Npc_IsPlayer(self))
 	{
-		MOD_SetPoison(bsPoison + HP_PER_LP);
+		MOD_SetPoison(ATS[ATS_PoisonPoints] + HP_PER_LP);
 	};
 };
 
@@ -1186,6 +1195,7 @@ instance ItPo_Speed (ItemPR_Potion)
 	TEXT[1]						=	NAME_Duration;
 	COUNT[1]					=	300;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Speed()
 {
@@ -1206,6 +1216,7 @@ instance ItPo_Stealth (ItemPR_Potion)
 	TEXT[2]						=	NAME_Bonus_Xp;
 	COUNT[2]					=	50;
 	COUNT[5]					=	value;
+	INV_ZBIAS					=	140;
 };
 func void Use_ItPo_Stealth()
 {
@@ -1235,45 +1246,54 @@ func void Use_ItPo_Underwater()
 {
 	if (Npc_IsPlayer(self))
 	{
-		//o_hero.divetime = mkf(RealToInt(o_hero.divetime) + 600);
-		//o_hero.divectr = mkf(RealToInt(o_hero.divectr) + 600);
+		if (ATS[ATS_UnderwaterTime] == 0)
+		{
+			o_hero.divetime = addf(o_hero.divetime, mkf(570000));
+			o_hero.divectr = addf(o_hero.divectr, mkf(570000));
+		};
+		ATS[ATS_UnderwaterTime] = 600;
 		B_GivePlayerExp(50);
 	};
+};
+func void End_ItPo_Underwater()
+{
+	o_hero.divetime = subf(o_hero.divetime, mkf(570000));
+	o_hero.divectr = o_hero.divetime;
 };
 
 ///******************************************************************************************
 /// Transform
 ///******************************************************************************************
-instance ItSc_TrfAlligator (ItemPR_PotionTrf)		{	name = "W aligatora";			description = name;	value = 200;	COUNT[5] = value;	};
-instance ItSc_TrfBiter (ItemPR_PotionTrf)			{	name = "W k¹sacza";				description = name;	value = 150;	COUNT[5] = value;	};
-instance ItSc_TrfBloodfly (ItemPR_PotionTrf)		{	name = "W krwiopijcê";			description = name;	value = 125;	COUNT[5] = value;	};
-instance ItSc_TrfBloodhound (ItemPR_PotionTrf)		{	name = "W krwawego ogara";		description = name;	value = 225;	COUNT[5] = value;	};
-instance ItSc_TrfDemon (ItemPR_PotionTrf)			{	name = "W demona";				description = name;	value = 350;	COUNT[5] = value;	};
-instance ItSc_TrfDragonSnapper (ItemPR_PotionTrf)	{	name = "W smoczego zêbacza";	description = name;	value = 300;	COUNT[5] = value;	};
-instance ItSc_TrfFireWaran (ItemPR_PotionTrf)		{	name = "W ognistego jaszczura";	description = name;	value = 200;	COUNT[5] = value;	};
-instance ItSc_TrfGiantBug (ItemPR_PotionTrf)		{	name = "W poln¹ bestiê";		description = name;	value = 140;	COUNT[5] = value;	};
-instance ItSc_TrfGiantRat (ItemPR_PotionTrf)		{	name = "W olbrzymiego szczura";	description = name;	value = 115;	COUNT[5] = value;	};
-instance ItSc_TrfGiantSpider (ItemPR_PotionTrf)		{	name = "W olbrzymiego paj¹ka";	description = name;	value = 120;	COUNT[5] = value;	};
-instance ItSc_TrfGoat (ItemPR_PotionTrf)			{	name = "W kozê";				description = name;	value = 105;	COUNT[5] = value;	};
-instance ItSc_TrfGoblin (ItemPR_PotionTrf)			{	name = "W goblina";				description = name;	value = 120;	COUNT[5] = value;	};
-instance ItSc_TrfGorilla (ItemPR_PotionTrf)			{	name = "W goryla";				description = name;	value = 200;	COUNT[5] = value;	};
-instance ItSc_TrfHare (ItemPR_PotionTrf)			{	name = "W zaj¹ca";				description = name;	value = 105;	COUNT[5] = value;	};
-instance ItSc_TrfHarpy (ItemPR_PotionTrf)			{	name = "W harpiê";				description = name;	value = 175;	COUNT[5] = value;	};
-instance ItSc_TrfKeiler (ItemPR_PotionTrf)			{	name = "W dzika";				description = name;	value = 140;	COUNT[5] = value;	};
-instance ItSc_TrfLurker (ItemPR_PotionTrf)			{	name = "W topielca";			description = name;	value = 160;	COUNT[5] = value;	};
-instance ItSc_TrfMinecrawler (ItemPR_PotionTrf)		{	name = "W pe³zacza";			description = name;	value = 175;	COUNT[5] = value;	};
-instance ItSc_TrfMolerat (ItemPR_PotionTrf)			{	name = "W kretoszczura";		description = name;	value = 125;	COUNT[5] = value;	};
-instance ItSc_TrfScavenger (ItemPR_PotionTrf)		{	name = "W œcierwojada";			description = name;	value = 125;	COUNT[5] = value;	};
-instance ItSc_TrfShadowbeast (ItemPR_PotionTrf)		{	name = "W cieniostwora";		description = name;	value = 275;	COUNT[5] = value;	};
-instance ItSc_TrfSheep (ItemPR_PotionTrf)			{	name = "W owcê";				description = name;	value = 105;	COUNT[5] = value;	};
-instance ItSc_TrfSnapper (ItemPR_PotionTrf)			{	name = "W zêbacza";				description = name;	value = 175;	COUNT[5] = value;	};
-instance ItSc_TrfSpint (ItemPR_PotionTrf)			{	name = "W spinta";				description = name;	value = 120;	COUNT[5] = value;	};
-instance ItSc_TrfSwampshark (ItemPR_PotionTrf)		{	name = "W b³otnego wê¿¹";		description = name;	value = 250;	COUNT[5] = value;	};
-instance ItSc_TrfTiger (ItemPR_PotionTrf)			{	name = "W tygrysa";				description = name;	value = 200;	COUNT[5] = value;	};
-instance ItSc_TrfTroll (ItemPR_PotionTrf)			{	name = "W trolla";				description = name;	value = 400;	COUNT[5] = value;	};
-instance ItSc_TrfWaran (ItemPR_PotionTrf)			{	name = "W jaszczura";			description = name;	value =	160;	COUNT[5] = value;	};
-instance ItSc_TrfWarg (ItemPR_PotionTrf)			{	name = "W warga";				description = name;	value =	190;	COUNT[5] = value;	};
-instance ItSc_TrfWolf (ItemPR_PotionTrf)			{	name = "W wilka";				description = name;	value =	130;	COUNT[5] = value;	};
+instance ItSc_TrfAlligator (ItemPR_PotionTrf)		{	name = "W aligatora";			visual = "ItPo_Transform.3ds";	description = name;	value = 200;	COUNT[5] = value;	};
+instance ItSc_TrfBiter (ItemPR_PotionTrf)			{	name = "W k¹sacza";				visual = "ItPo_Transform.3ds";	description = name;	value = 150;	COUNT[5] = value;	};
+instance ItSc_TrfBloodfly (ItemPR_PotionTrf)		{	name = "W krwiopijcê";			visual = "ItPo_Transform.3ds";	description = name;	value = 125;	COUNT[5] = value;	};
+instance ItSc_TrfBloodhound (ItemPR_PotionTrf)		{	name = "W krwawego ogara";		visual = "ItPo_Transform.3ds";	description = name;	value = 225;	COUNT[5] = value;	};
+instance ItSc_TrfDemon (ItemPR_PotionTrf)			{	name = "W demona";				visual = "ItPo_Transform.3ds";	description = name;	value = 350;	COUNT[5] = value;	};
+instance ItSc_TrfDragonSnapper (ItemPR_PotionTrf)	{	name = "W smoczego zêbacza";	visual = "ItPo_Transform.3ds";	description = name;	value = 300;	COUNT[5] = value;	};
+instance ItSc_TrfFireWaran (ItemPR_PotionTrf)		{	name = "W ognistego jaszczura";	visual = "ItPo_Transform.3ds";	description = name;	value = 200;	COUNT[5] = value;	};
+instance ItSc_TrfGiantBug (ItemPR_PotionTrf)		{	name = "W poln¹ bestiê";		visual = "ItPo_Transform.3ds";	description = name;	value = 140;	COUNT[5] = value;	};
+instance ItSc_TrfGiantRat (ItemPR_PotionTrf)		{	name = "W olbrzymiego szczura";	visual = "ItPo_Transform.3ds";	description = name;	value = 115;	COUNT[5] = value;	};
+instance ItSc_TrfGiantSpider (ItemPR_PotionTrf)		{	name = "W olbrzymiego paj¹ka";	visual = "ItPo_Transform.3ds";	description = name;	value = 120;	COUNT[5] = value;	};
+instance ItSc_TrfGoat (ItemPR_PotionTrf)			{	name = "W kozê";				visual = "ItPo_Transform.3ds";	description = name;	value = 105;	COUNT[5] = value;	};
+instance ItSc_TrfGoblin (ItemPR_PotionTrf)			{	name = "W goblina";				visual = "ItPo_Transform.3ds";	description = name;	value = 120;	COUNT[5] = value;	};
+instance ItSc_TrfGorilla (ItemPR_PotionTrf)			{	name = "W goryla";				visual = "ItPo_Transform.3ds";	description = name;	value = 200;	COUNT[5] = value;	};
+instance ItSc_TrfHare (ItemPR_PotionTrf)			{	name = "W zaj¹ca";				visual = "ItPo_Transform.3ds";	description = name;	value = 105;	COUNT[5] = value;	};
+instance ItSc_TrfHarpy (ItemPR_PotionTrf)			{	name = "W harpiê";				visual = "ItPo_Transform.3ds";	description = name;	value = 175;	COUNT[5] = value;	};
+instance ItSc_TrfKeiler (ItemPR_PotionTrf)			{	name = "W dzika";				visual = "ItPo_Transform.3ds";	description = name;	value = 140;	COUNT[5] = value;	};
+instance ItSc_TrfLurker (ItemPR_PotionTrf)			{	name = "W topielca";			visual = "ItPo_Transform.3ds";	description = name;	value = 160;	COUNT[5] = value;	};
+instance ItSc_TrfMinecrawler (ItemPR_PotionTrf)		{	name = "W pe³zacza";			visual = "ItPo_Transform.3ds";	description = name;	value = 175;	COUNT[5] = value;	};
+instance ItSc_TrfMolerat (ItemPR_PotionTrf)			{	name = "W kretoszczura";		visual = "ItPo_Transform.3ds";	description = name;	value = 125;	COUNT[5] = value;	};
+instance ItSc_TrfScavenger (ItemPR_PotionTrf)		{	name = "W œcierwojada";			visual = "ItPo_Transform.3ds";	description = name;	value = 125;	COUNT[5] = value;	};
+instance ItSc_TrfShadowbeast (ItemPR_PotionTrf)		{	name = "W cieniostwora";		visual = "ItPo_Transform.3ds";	description = name;	value = 275;	COUNT[5] = value;	};
+instance ItSc_TrfSheep (ItemPR_PotionTrf)			{	name = "W owcê";				visual = "ItPo_Transform.3ds";	description = name;	value = 105;	COUNT[5] = value;	};
+instance ItSc_TrfSnapper (ItemPR_PotionTrf)			{	name = "W zêbacza";				visual = "ItPo_Transform.3ds";	description = name;	value = 175;	COUNT[5] = value;	};
+instance ItSc_TrfSpint (ItemPR_PotionTrf)			{	name = "W spinta";				visual = "ItPo_Transform.3ds";	description = name;	value = 120;	COUNT[5] = value;	};
+instance ItSc_TrfSwampshark (ItemPR_PotionTrf)		{	name = "W b³otnego wê¿¹";		visual = "ItPo_Transform.3ds";	description = name;	value = 250;	COUNT[5] = value;	};
+instance ItSc_TrfTiger (ItemPR_PotionTrf)			{	name = "W tygrysa";				visual = "ItPo_Transform.3ds";	description = name;	value = 200;	COUNT[5] = value;	};
+instance ItSc_TrfTroll (ItemPR_PotionTrf)			{	name = "W trolla";				visual = "ItPo_Transform.3ds";	description = name;	value = 400;	COUNT[5] = value;	};
+instance ItSc_TrfWaran (ItemPR_PotionTrf)			{	name = "W jaszczura";			visual = "ItPo_Transform.3ds";	description = name;	value =	160;	COUNT[5] = value;	};
+instance ItSc_TrfWarg (ItemPR_PotionTrf)			{	name = "W warga";				visual = "ItPo_Transform.3ds";	description = name;	value =	190;	COUNT[5] = value;	};
+instance ItSc_TrfWolf (ItemPR_PotionTrf)			{	name = "W wilka";				visual = "ItPo_Transform.3ds";	description = name;	value =	130;	COUNT[5] = value;	};
 
 ///******************************************************************************************
 /// Special
@@ -1331,8 +1351,9 @@ func void Use_ItPo_Ghost()
 instance ItPo_InnosTears (ItemPR_Potion)
 {
 	name						=	"£zy Innosa";
-//	value						=	50;
+	flags						=	ITEM_AMULET | ITEM_MISSION;
 	
+//	value						=	50;
 	visual						=	"ItPo_Innos.3ds";
 	on_state[0]					=	Use_ItPo_InnosTears;
 	
@@ -1345,7 +1366,7 @@ instance ItPo_InnosTears (ItemPR_Potion)
 };
 func void Use_ItPo_InnosTears()
 {
-	if (self.guild == GIL_KDF)
+	if (Npc_IsPlayer(self) && self.guild == GIL_KDF)
 	{
 		Wld_PlayEffect ("spellFX_LIGHTSTAR_BLUE", self, self, 0, 0, 0, false);
 		Snd_Play ("SFX_HealObsession");
@@ -1364,7 +1385,7 @@ instance ItPo_MegaDrink (ItemPR_Potion)
 	name						=	"Embarla Firgasto";
 	value						=	1500;
 	
-	visual						=	"ItPo_Irdorath.3ds";
+	visual						=	"ItPo_Dragon.3ds";
 	on_state[0]					=	Use_ItPo_MegaDrink;
 	
 	wear						=	WEAR_EFFECT;

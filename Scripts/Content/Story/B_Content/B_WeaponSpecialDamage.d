@@ -39,15 +39,15 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var C_Item wpn, v
 			if (slf.attribute[ATR_MANA] >= SPL_Cost_PalBless)
 			{
 				Npc_ChangeAttribute (slf, ATR_MANA, -SPL_Cost_PalBless);
-				Wld_PlayEffect ("spellFX_PALHOLYBOLT_COLLIDE", oth, oth, 0, 0, 0, false);
+				Wld_PlayEffect ("spellFX_PALBLESS_COLLIDE", oth, oth, 0, 0, 0, false);
 				
-				if		(Hlp_IsItem(wpn, ItMw_1H_Blessed_03) || Hlp_IsItem(wpn, ItMw_2H_Blessed_03))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*15/100);	}
-				else if	(Hlp_IsItem(wpn, ItMw_1H_Blessed_02) || Hlp_IsItem(wpn, ItMw_2H_Blessed_02))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*13/100);	}
-				else if	(Hlp_IsItem(wpn, ItMw_1H_Blessed_01) || Hlp_IsItem(wpn, ItMw_2H_Blessed_01))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*11/100);	}
-				else if	(Hlp_IsItem(wpn, ItMw_1H_Pal_Sword) || Hlp_IsItem(wpn, ItMw_2H_Pal_Sword))		{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*7/100);	}
+				if		(Hlp_IsItem(wpn, ItMw_1h_Blessed_03) || Hlp_IsItem(wpn, ItMw_2h_Blessed_03))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*15/100);	}
+				else if	(Hlp_IsItem(wpn, ItMw_1h_Blessed_02) || Hlp_IsItem(wpn, ItMw_2h_Blessed_02))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*13/100);	}
+				else if	(Hlp_IsItem(wpn, ItMw_1h_Blessed_01) || Hlp_IsItem(wpn, ItMw_2h_Blessed_01))	{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*11/100);	}
+				else if	(Hlp_IsItem(wpn, ItMw_1h_Pal_Sword) || Hlp_IsItem(wpn, ItMw_2h_Pal_Sword))		{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*7/100);	}
 				else																					{	B_MagicHurtNpc (slf, oth, slf.attribute[ATR_MANA_MAX]*5/100);	};
-			}
-			else
+			};
+			if (slf.attribute[ATR_MANA] < SPL_Cost_PalBless)
 			{
 				SPL_IsActive_PalBless = false;
 				Wld_StopEffect("SPELLFX_PALBLESS_GLOW");

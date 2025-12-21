@@ -20,7 +20,7 @@ instance STRF_1141_Addon_Sklave (Npc_Default)
 	fight_tactic						=	FAI_HUMAN_COWARD;
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+1, BodySkin_P, "Hum_Head_Bald", Face_P_NormalBart01, Teeth_Normal, ItAr_Prisoner_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Dressed+1, BodySkin_P, "Hum_Head_Bald", Face_P_NormalBart01, Teeth_Normal, ItAr_STRF_L);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Tired.mds");
 	

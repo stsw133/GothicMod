@@ -52,6 +52,7 @@ func void B_SetVisuals_MountainWaran()
 ///******************************************************************************************
 instance Waran (Mst_Default_Waran)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Waran();
 };
 instance DesertWaran (Mst_Default_Waran)

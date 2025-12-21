@@ -1,19 +1,18 @@
 ///******************************************************************************************
-/// Zodd
+/// SkeletonArcher
 ///******************************************************************************************
-prototype Mst_Default_Zodd (C_Npc)
+prototype Mst_Default_SkeletonArcher (C_Npc)
 {
 	/// ------ Monster ------
-	name								=	"Zodd";
-	guild								=	GIL_DEMON;
-	aivar[AIV_MM_REAL_ID]				=	ID_ZODD;
+	name								=	"Szkielet-³ucznik";
+	guild								=	GIL_SKELETON;
+	aivar[AIV_MM_REAL_ID]				=	ID_SKELETON;
 	
 	/// ------ Attributes & FT ------
 	damagetype							=	DAM_BLUNT;
-	fight_tactic						=	FAI_ORC;
+	fight_tactic						=	FAI_HUMAN_STRONG;
 	
-	NpcFn_SetAttributesToLevel (self, 45);
-	NpcFn_AddFightSkills (self, 50);
+	NpcFn_SetAttributesToLevel (self, 30);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------
@@ -22,30 +21,32 @@ prototype Mst_Default_Zodd (C_Npc)
 	
 	aivar[AIV_MM_FollowInWater]			=	false;
 	aivar[AIV_MM_FollowTime]			=	FOLLOWTIME_MEDIUM;
-	aivar[AIV_MM_Packhunter]			=	false;
-	aivar[AIV_MM_ThreatenBeforeAttack]	=	true;
+	aivar[AIV_MM_Packhunter]			=	true;
+	aivar[AIV_MM_ThreatenBeforeAttack]	=	false;
 	
 	/// ------ Rtn ------
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
-	
-	/// ------ Inventory ------
-	B_CreateAmbientInv(self);
 };
 
 ///******************************************************************************************
-func void B_SetVisuals_Zodd()
+func void B_SetVisuals_SkeletonArcher()
 {
-	Mdl_SetVisual		(self, "Orc.mds");
-	Mdl_SetVisualBody	(self, "Zodd_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 1.2, 1.2, 1.2);
+	Mdl_SetVisual		(self, "HumanS.mds");
+	Mdl_SetVisualBody	(self, "Ske_Body2", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_ApplyOverlayMds (self, "humans_skeleton.mds");
+	Mdl_ApplyOverlayMds (self, "humans_1hST1.mds");
+	Mdl_ApplyOverlayMds (self, "humans_2hST1.mds");
+	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
+	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
 };
 
 ///******************************************************************************************
 /// Monsters
 ///******************************************************************************************
-instance Zodd (Mst_Default_Zodd)
+instance Skeleton_Archer (Mst_Default_SkeletonArcher)
 {
-	B_SetVisuals_Zodd();
-//	EquipItem (self, ItMw_2H_OrcMace_02);
+	B_SetVisuals_SkeletonArcher();
+	EquipItem (self, ItMw_1h_MISC_Sword);
+	EquipItem (self, ItRw0_Bow_M_01);
 };

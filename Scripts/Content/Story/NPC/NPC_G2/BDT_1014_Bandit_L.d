@@ -27,7 +27,7 @@ instance BDT_1014_Bandit_L (Npc_Default)
 	CreateInvItem (self, ItWr_SaturasFirstMessage_Addon_Sealed);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_N_Mud, Teeth_Normal, ItAr_BDT_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Psionic", Face_N_Mud, Teeth_Normal, ITAR_Leather_BDT);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	

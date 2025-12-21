@@ -48,5 +48,5 @@ func void B_SetVisuals_Orc()
 instance Orc (Mst_Default_Orc)
 {
 	B_SetVisuals_Orc();
-	EquipItem (self, ItMw_2H_OrcDagger_01);
+	EquipItem (self, ItMw_2h_OrcAxe_01);
 };

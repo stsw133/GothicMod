@@ -103,11 +103,11 @@ instance DIA_Vatras_DI_OBSESSION		(C_INFO)
 
 func int DIA_Vatras_DI_OBSESSION_Condition ()
 {
-	if (bsObsession > 0)
-	&&  (Npc_IsDead(UndeadDragon) == FALSE)
-		{
-				return TRUE;
-		};
+	if (ATS[ATS_IsObsessed])
+	&& (Npc_IsDead(UndeadDragon) == FALSE)
+	{
+		return TRUE;
+	};
 };
 var int DIA_Vatras_DI_OBSESSION_Info_OneTime;
 func void DIA_Vatras_DI_OBSESSION_Info ()
@@ -156,10 +156,10 @@ instance DIA_Vatras_DI_RAT		(C_INFO)
 func int DIA_Vatras_DI_RAT_Condition ()
 {	
 	if (Npc_IsDead(UndeadDragon) == FALSE)
-	&& (bsObsession == 0)
-		{
-				return TRUE;
-		};
+	&& (!ATS[ATS_IsObsessed])
+	{
+		return TRUE;
+	};
 };
 func void DIA_Vatras_DI_RAT_Info ()
 {

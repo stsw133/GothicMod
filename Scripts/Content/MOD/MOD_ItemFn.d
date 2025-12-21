@@ -3,6 +3,11 @@
 ///******************************************************************************************
 func void MOD_CanDropItem()
 {
+	if (movieMode)
+	{
+		return;
+	};
+
 	var int selectedItemPtr;
 	var int container; container = ECX; // oCNpcInventory*
 	
@@ -33,6 +38,11 @@ func void MOD_CanDropItem()
 ///******************************************************************************************
 func void MOD_CanSellItem()
 {
+	if (movieMode)
+	{
+		return;
+	};
+	
 	if (!C_IsInventoryOpen())
 	{
 		return;

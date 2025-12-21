@@ -43,5 +43,6 @@ func void B_SetVisuals_Firewaran()
 ///******************************************************************************************
 instance FireWaran (Mst_Default_Firewaran)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Firewaran();
 };

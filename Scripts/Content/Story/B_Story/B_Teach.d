@@ -94,14 +94,8 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int sk
 	oth.lp -= kosten;
 	B_GiveInvItems (oth, slf, ItMi_Gold, money);
 	
-	/// EXTRACTION
-	if (talent == NPC_TALENT_MAGIC)
-	{
-		slf.hitchance[NPC_TALENT_EXTRACTION] += skill;
-		PrintScreen (ConcatStrings(PRINT_LearnExtraction, IntToString(skill)), -1, -1, FONT_Screen, 2);
-	}
 	/// FIGHT
-	else if (talent < MAX_HITCHANCE)
+	if (talent < MAX_HITCHANCE)
 	{
 		B_AddFightSkill (oth, talent, skill);
 	}
@@ -202,13 +196,14 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int sk
 		MEM_WriteStatArr(PLAYER_TALENT_HUNTING, skill, true);
 		PrintScreen	(PRINT_LearnHunting, -1, -1, FONT_SCREEN, 2);
 	}
-	/*
-	/// COOKING
-	else if (talent == NPC_TALENT_17)
+	/// EXTRACTION
+	else if (talent == NPC_TALENT_EXTRACTION)
 	{
 		Npc_SetTalentSkill (oth, talent, true);
-		PrintScreen	(PRINT_LearnCooking, -1, -1, FONT_SCREEN, 2);
+		Npc_SetTalentValue (oth, talent, Npc_GetTalentValue(oth, talent)+skill);
+		PrintScreen	(ConcatStrings(PRINT_LearnExtraction, IntToString(skill)), -1, -1, FONT_SCREEN, 2);
 	}
+	/*
 	/// MINING
 	else if (talent == NPC_TALENT_18)
 	{

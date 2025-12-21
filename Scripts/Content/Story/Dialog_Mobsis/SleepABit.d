@@ -5,10 +5,10 @@ func void SleepABit_S1()
 {
 	if (Npc_IsPlayer(self))
 	{
-		if (bsRested > 0)
+		if (ATS[ATS_RestedTime] > 0)
 		{
 			AI_UseMob (self, "BEDHIGH", -1);
-			Print(ConcatStrings(ConcatStrings("Nie jesteœ jeszcze dostatecznie zmêczony! Brakuje ", IntToString(bsRested)), " sekund."));
+			Print(ConcatStrings(ConcatStrings("Nie jesteœ jeszcze dostatecznie zmêczony! Brakuje ", IntToString(ATS[ATS_RestedTime])), " sekund."));
 			return;
 		};
 		
@@ -16,7 +16,7 @@ func void SleepABit_S1()
 		PLAYER_MOBSI_PRODUCTION = MOBSI_SleepABit;
 		AI_ProcessInfos(self);
 		
-		if (bsObsession > 0)
+		if (ATS[ATS_IsObsessed])
 		{
 			Wld_PlayEffect ("DEMENTOR_FX", hero, hero, 0, 0, 0, false);
 		};
@@ -60,13 +60,13 @@ func void PC_Sleep (var int t)
 	
 	Wld_StopEffect("DEMENTOR_FX");
 	
-	if (bsObsession > 0)
+	if (ATS[ATS_IsObsessed])
 	{
  		PrintScreen (PRINT_SleepOverObsessed, -1, -1, FONT_Screen, 2);
 	}
 	else
 	{
-		if (bsRested != IMMUNE)	{	bsRested = 400;	};	///new!!! - about 8 hours in-game
+		if (ATS[ATS_RestedTime] != IMMUNE)	{	ATS[ATS_RestedTime] = 400;	};	///new!!! - about 8 hours in-game
 		
 		hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];

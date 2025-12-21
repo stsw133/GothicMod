@@ -44,7 +44,7 @@ func void B_SetVisuals_OrcCommander()
 instance OrcCommander (Mst_Default_OrcCommander)
 {
 	B_SetVisuals_OrcCommander();
-	EquipItem (self, ItMw_2H_OrcSword_02);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -53,13 +53,34 @@ instance OrcCommander (Mst_Default_OrcCommander)
 ///******************************************************************************************
 /// QuestMonsters
 ///******************************************************************************************
-instance OrcShaman_Sit_CanyonLibraryKey (Mst_Default_OrcCommander)
+instance OrkElite_AntiPaladinOrkOberst (Mst_Default_OrcChampion)
 {
-	name								=	"Wódz Hordy";
+	name								=	"Ork-pu³kownik";
+	
+	NpcFn_SetAttributesToLevel (self, 55);
+	NpcFn_SetMonsterProtection (self, level);
 	
 	B_SetVisuals_OrcCommander();
-	EquipItem (self, ItMw_2H_OrcSword_02);
-	CreateInvItem (self, ITKE_CANYONLIBRARY_HIERARCHY_BOOKS_ADDON);
+	EquipItem (self, ItMw_2h_OrcElite_01);
+	CreateInvItem (self, ItRi_OrcEliteRing);
+	CreateInvItem (self, ItWr_Map_Orcelite_MIS);
+	
+	start_aistate						=	ZS_MM_AllScheduler;
+	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
+};
+
+instance OrkElite_AntiPaladinOrkOberst_DI (Mst_Default_OrcChampion)
+{
+	name								=	"Ork-genera³";
+	aivar[AIV_EnemyOverride]			=	true;
+	
+	NpcFn_SetAttributesToLevel (self, 60);
+	NpcFn_SetMonsterProtection (self, level);
+	
+	B_SetVisuals_OrcCommander();
+	EquipItem (self, ItMw_2h_OrcElite_01);
+	CreateInvItem (self, ItRi_OrcEliteRing);
+	CreateInvItem (self, ItKe_OrkKnastDI_MIS);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_OrcSitStart]			=	OnlyRoutine;

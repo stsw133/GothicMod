@@ -266,85 +266,12 @@ func void DIA_HC_Gender_Info()
 };
 
 ///******************************************************************************************
-/// FACE
-///******************************************************************************************
-instance DIA_HC_Face (C_Info)
-{
-	npc									=	HC;
-	nr									=	3;
-	condition							=	aTrue;
-	information							=	DIA_HC_Face_Info;
-	permanent							=	true;
-	description							=	"Wybór twarzy";
-};
-func void DIA_HC_Face_Info()
-{
-	Info_ClearChoices(DIA_HC_Face);
-	
-	Info_AddChoice (DIA_HC_Face, DIALOG_BACK, DIA_HC_Face_BACK);
-	Info_AddChoice (DIA_HC_Face, "Domyœlna twarz", DIA_HC_ResetFace);
-	Info_AddChoice (DIA_HC_Face, "Poprzednie 50 twarzy", DIA_HC_PreviousFace50);
-	Info_AddChoice (DIA_HC_Face, "Nastêpne 50 twarzy", DIA_HC_NextFace50);
-	Info_AddChoice (DIA_HC_Face, "Poprzednie 10 twarzy", DIA_HC_PreviousFace10);
-	Info_AddChoice (DIA_HC_Face, "Nastêpne 10 twarzy", DIA_HC_NextFace10);
-	Info_AddChoice (DIA_HC_Face, "Poprzednia twarz", DIA_HC_PreviousFace);
-	Info_AddChoice (DIA_HC_Face, "Nastêpna twarz", DIA_HC_NextFace);
-};
-///******************************************************************************************
-func void DIA_HC_Face_BACK()
-{
-	Info_ClearChoices(DIA_HC_Face);
-};
-func void DIA_HC_NextFace()
-{
-	self.aivar[AIV_FaceTex] += 1;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_PreviousFace()
-{
-	self.aivar[AIV_FaceTex] -= 1;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_NextFace10()
-{
-	self.aivar[AIV_FaceTex] += 10;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_PreviousFace10()
-{
-	self.aivar[AIV_FaceTex] -= 10;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_NextFace50()
-{
-	self.aivar[AIV_FaceTex] += 50;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_PreviousFace50()
-{
-	self.aivar[AIV_FaceTex] -= 50;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-func void DIA_HC_ResetFace()
-{
-	self.aivar[AIV_FaceTex] = 0;
-	Change_HC_Visual();
-	DIA_HC_Face_Info();
-};
-
-///******************************************************************************************
 /// HEAD
 ///******************************************************************************************
 instance DIA_HC_Choose_HeadMesh (C_Info)
 {
 	npc									=	HC;
-	nr									=	4;
+	nr									=	3;
 	condition							=	aTrue;
 	information							=	DIA_HC_Choose_HeadMesh_Info;
 	permanent							=	true;
@@ -610,6 +537,79 @@ func void DIA_HC_Choose_HeadMesh_M_14()
 func void DIA_HC_Choose_HeadMesh_Back()
 {
 	Info_ClearChoices(DIA_HC_Choose_HeadMesh);
+};
+
+///******************************************************************************************
+/// FACE
+///******************************************************************************************
+instance DIA_HC_Face (C_Info)
+{
+	npc									=	HC;
+	nr									=	4;
+	condition							=	aTrue;
+	information							=	DIA_HC_Face_Info;
+	permanent							=	true;
+	description							=	"Wybór twarzy";
+};
+func void DIA_HC_Face_Info()
+{
+	Info_ClearChoices(DIA_HC_Face);
+	
+	Info_AddChoice (DIA_HC_Face, DIALOG_BACK, DIA_HC_Face_BACK);
+	Info_AddChoice (DIA_HC_Face, "Domyœlna twarz", DIA_HC_ResetFace);
+	Info_AddChoice (DIA_HC_Face, "Poprzednie 50 twarzy", DIA_HC_PreviousFace50);
+	Info_AddChoice (DIA_HC_Face, "Nastêpne 50 twarzy", DIA_HC_NextFace50);
+	Info_AddChoice (DIA_HC_Face, "Poprzednie 10 twarzy", DIA_HC_PreviousFace10);
+	Info_AddChoice (DIA_HC_Face, "Nastêpne 10 twarzy", DIA_HC_NextFace10);
+	Info_AddChoice (DIA_HC_Face, "Poprzednia twarz", DIA_HC_PreviousFace);
+	Info_AddChoice (DIA_HC_Face, "Nastêpna twarz", DIA_HC_NextFace);
+};
+///******************************************************************************************
+func void DIA_HC_Face_BACK()
+{
+	Info_ClearChoices(DIA_HC_Face);
+};
+func void DIA_HC_NextFace()
+{
+	self.aivar[AIV_FaceTex] += 1;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_PreviousFace()
+{
+	self.aivar[AIV_FaceTex] -= 1;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_NextFace10()
+{
+	self.aivar[AIV_FaceTex] += 10;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_PreviousFace10()
+{
+	self.aivar[AIV_FaceTex] -= 10;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_NextFace50()
+{
+	self.aivar[AIV_FaceTex] += 50;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_PreviousFace50()
+{
+	self.aivar[AIV_FaceTex] -= 50;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
+};
+func void DIA_HC_ResetFace()
+{
+	self.aivar[AIV_FaceTex] = 0;
+	Change_HC_Visual();
+	DIA_HC_Face_Info();
 };
 
 ///******************************************************************************************

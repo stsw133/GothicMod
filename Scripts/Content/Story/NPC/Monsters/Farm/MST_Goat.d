@@ -38,5 +38,6 @@ func void B_SetVisuals_Goat()
 ///******************************************************************************************
 instance Goat (Mst_Default_Goat)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(4);
 	B_SetVisuals_Goat();
 };

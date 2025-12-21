@@ -20,12 +20,6 @@ var int regenPotionPointsPerSec[3], regenPotionTime[3];
 var int timedPotionPoints[ATR_INDEX_MAX], timedPotionTime[ATR_INDEX_MAX];
 var int foodTime[4], alcoholTime;
 
-/// damage & magical shield & finish percent
-var int mDamageIncrease, mDamageReduction;
-var int mShieldPoints;
-var int mFinishPercent;
-var int inFightCounter;
-
 /// magic aura
 var int mAuraType, mAuraPoints, mAuraTime;
 var int mAuraPalType, mAuraPalPoints, mAuraPalTime;

@@ -44,8 +44,7 @@ func void B_SetVisuals_OrcGuardian()
 instance OrcGuardian (Mst_Default_OrcGuardian)
 {
 	B_SetVisuals_OrcGuardian();
-	//EquipItem (self, ItMw_2H_OrcSword_01);
-	EquipItem (self, ItMw_2H_OrcHalberd_01);
+	EquipItem (self, ItMw_2h_OrcHalberd_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;

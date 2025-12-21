@@ -18,7 +18,8 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	if ((dmgDesc.dmgMode & (1 << i)) == (1 << i))
 	{
 		curDmg = MEM_ReadStatArr(dmgDesc.dmgArray, i);
-		curProt = MEM_ReadStatArr(oth.protection, i);
+		curProt = MEM_ReadStatArr(oth.protection, i) - slf.aivar[AIV_Penetration];
+		if (curProt < 0) { curProt = 0; };
 		
 		/// fist damage
 		if (dmgDesc.weaponMode == 1 && slf.guild < GIL_SEPERATOR_HUM)
@@ -26,10 +27,10 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 			curDmg = slf.attribute[ATR_STRENGTH] / 2;
 		}
 		/// spell damage
-		else if ((spellId > 0 && !dmgDesc.itemWeapon))
+		else if (!dmgDesc.itemWeapon && spellId > 0)
 		{
-			if (curDmg >= 100)		{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER];		}
-			else if (curDmg > 0)	{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER]/2;	};
+			if		(curDmg >= 100)	{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER];		}
+			else if	(curDmg > 0)	{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER]/2;	};
 		}
 		/// weapon damage
 		else if (dmgDesc.itemWeapon && (dmgDesc.weaponMode == 2 || dmgDesc.weaponMode == 4))
@@ -50,11 +51,18 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 			|| ((usedWpn.flags & ITEM_BOW) && critChance < slf.hitchance[NPC_TALENT_BOW])
 			|| ((usedWpn.flags & ITEM_CROSSBOW) && critChance < slf.hitchance[NPC_TALENT_CROSSBOW])
 			{
-				atrDmg = (atrDmg + usedWpn.damageTotal) * (100+slf.aivar[AIV_CritDamage]) / 100;
+				if (ATS[ATS_CritDmg] > 0 && Npc_IsPlayer(slf))
+				{
+					atrDmg = (atrDmg + usedWpn.damageTotal) * (100+slf.aivar[ATS_CritDmg]) / 100;
+				}
+				else
+				{
+					atrDmg = atrDmg + usedWpn.damageTotal;
+				};
 			}
 			else
 			{
-				atrDmg = (atrDmg + usedWpn.damageTotal) * 3/4;
+				atrDmg = (atrDmg + usedWpn.damageTotal) / 2;
 			};
 			
 			/// munition special damage
@@ -80,34 +88,61 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	};
 	end;
 	
-	/// stamina divider
-	if (Npc_IsPlayer(slf) && slf.aivar[AIV_Stamina] < 10)
-	{
-		if (itemWpn.mainflag == ITEM_KAT_NF || usedWpn.flags & ITEM_BOW)
-		{
-			finalDmg = finalDmg * DAM_NOSTAMINA_PERCENT/100;
-		};
-	};
-	
 	/// shield absorption
 	var int dmgShielded; dmgShielded = 0;
 	
+	/// additional effects for player
+	if (Npc_IsPlayer(slf))
+	{
+		/// ASD, CD, ...
+		if (ATS[ATS_AfterSpellDmg] > 0)
+		{
+			if (!dmgDesc.itemWeapon && spellId > 0)
+			{
+				ATS[ATS_AfterSpellHit] = Hlp_GetInstanceID(oth);
+			}
+			else if (dmgDesc.itemWeapon && ATS[ATS_AfterSpellHit] == Hlp_GetInstanceID(oth))
+			{
+				finalDmg += ATS[ATS_AfterSpellDmg];
+			};
+		};
+		
+		if (ATS[ATS_ComboDmg] > 0)
+		{
+			finalDmg += ATS[ATS_ComboDmg]*ATS[ATS_InFightHits];
+		};
+		
+		if (ATS[ATS_OverloadDmg] > 0 && ATS[ATS_OverloadTime] >= 5)
+		{
+			finalDmg += ATS[ATS_OverloadDmg]*slf.attribute[ATR_HITPOINTS_MAX]/100;
+			ATS[ATS_OverloadTime] = 0;
+		};
+		
+		/// stamina divider
+		if (slf.aivar[AIV_Stamina] < 10)
+		{
+			if (itemWpn.mainflag == ITEM_KAT_NF || usedWpn.flags & ITEM_BOW)
+			{
+				finalDmg = finalDmg * DAM_NOSTAMINA_PERCENT/100;
+			};
+		};
+	}
 	/// additional effects against player
-	if (Npc_IsPlayer(oth))
+	else if (Npc_IsPlayer(oth))
 	{
 		/// magic shield
-		if (mShieldPoints > 0 && finalDmg > 0)
+		if (ATS[ATS_ShieldPoints] > 0 && finalDmg > 0)
 		{
-			if (finalDmg > mShieldPoints)
+			if (finalDmg > ATS[ATS_ShieldPoints])
 			{
-				dmgShielded = mShieldPoints;
-				finalDmg -= mShieldPoints;
-				mShieldPoints = 0;
+				dmgShielded = ATS[ATS_ShieldPoints];
+				finalDmg -= ATS[ATS_ShieldPoints];
+				ATS[ATS_ShieldPoints] = 0;
 			}
 			else
 			{
 				dmgShielded = finalDmg;
-				mShieldPoints -= finalDmg;
+				ATS[ATS_ShieldPoints] -= finalDmg;
 				finalDmg = 0;
 			};
 		};
@@ -121,20 +156,44 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 			|| (slf.aivar[AIV_MM_Real_ID] == ID_SWAMPDRONE)
 			|| (slf.aivar[AIV_MM_Real_ID] == ID_SWAMPSHARK)
 			{
-				MOD_SetPoison(bsPoison + (slf.level-1)/10 + 1);
+				MOD_SetPoison(ATS[ATS_PoisonPoints] + (slf.level-1)/10 + 1);
+			};
+		};
+	}
+	/// additional effects when NPC vs NPC
+	else
+	{
+		/// orc amulets
+		if (ATS[ATS_OrcAmuletType])
+		{
+			if (slf.guild > GIL_SEPERATOR_ORC && slf.aivar[AIV_PartyMember])
+			{
+				if (ATS[ATS_OrcAmuletType] == 2 && dmgDesc.itemWeapon && dmgDesc.weaponMode == 2)
+				{
+					finalDmg += 25;
+				}
+				else if (ATS[ATS_OrcAmuletType] == 3 && dmgDesc.itemWeapon && dmgDesc.weaponMode == 4)
+				{
+					finalDmg += 30;
+				}
+				else if (ATS[ATS_OrcAmuletType] == 4 && !dmgDesc.itemWeapon && spellId > 0)
+				{
+					finalDmg += 30;
+				};
+			}
+			else if (oth.guild > GIL_SEPERATOR_ORC && oth.aivar[AIV_PartyMember])
+			{
+				if (ATS[ATS_OrcAmuletType] == 1)
+				{
+					finalDmg -= 20;
+				};
 			};
 		};
 	};
 	
-	/// damage increase (artifacts & PAL spell) & damage reduction (artifacts & armor sets)
-	if (Npc_IsPlayer(slf) && mDamageIncrease > 0)
-	{
-		finalDmg += finalDmg * mDamageIncrease / 100;
-	}
-	else if (Npc_IsPlayer(oth) && mDamageReduction > 0)
-	{
-		finalDmg -= finalDmg * mDamageReduction / 100;
-	};
+	/// damage increase (artifacts & PAL spell) + damage reduction (artifacts & armor sets)
+	if		(Npc_IsPlayer(slf) && ATS[ATS_DmgDealtIncr] > 0)	{ finalDmg += finalDmg*ATS[ATS_DmgDealtIncr]/100; }
+	else if	(Npc_IsPlayer(oth) && ATS[ATS_DmgTakenDecr] > 0)	{ finalDmg -= finalDmg*ATS[ATS_DmgTakenDecr]/100; };
 	
 	/// check if we actually got any damage done & apply min-damage *only* if not spell attack
 	if (finalDmg < NPC_MINIMAL_DAMAGE + slf.aivar[AIV_MinDamage])
@@ -150,41 +209,82 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 		};
 	};
 	
-	/// NPC vs PLAYER
+	/// PLAYER vs NPC
 	if (Npc_IsPlayer(slf))
 	{
 		finalDmg = DIFF_Multiplier(finalDmg, DECREASE);	/// difficulty multiplier
-		inFightCounter = 5;	/// for sprint block
+		ATS[ATS_InFightTime] = 5;	/// for sprint block
+		ATS[ATS_InFightHits] += 1;
+		
+		/// counter dmg
+		if (ATS[ATS_CounterDmg] > 0 && ATS[ATS_CounterHit])
+		{
+			B_MagicHurtNpc (slf, oth, ATS[ATS_CounterDmg]);
+			ATS[ATS_CounterHit] = false;
+		};
 	}
+	/// NPC vs PLAYER
 	else if (Npc_IsPlayer(oth))
 	{
 		finalDmg = DIFF_Multiplier(finalDmg, INCREASE);	/// difficulty multiplier
-		inFightCounter = 5;	/// for sprint block
+		ATS[ATS_InFightTime] = 5;	/// for sprint block
+		ATS[ATS_CounterHit] = false;
 	}
 	/// NPC vs NPC
-	else //if (oth.flags & NPC_FLAG_IMPORTANT)
+	else if (!movieMode) //&& (oth.flags & NPC_FLAG_IMPORTANT)
 	{
 		finalDmg /= 5;
 		if (finalDmg < 1) { finalDmg = 1; };
 	};
 	
-	/// special damage, LS, DR, AD, ...
+	/// special weapon damage
 	B_WeaponSpecialDamage (slf, oth, usedWpn, finalDmg);
 	B_WeaponSpecialEffect (slf, oth, usedWpn);
 	
-	if (slf.aivar[AIV_LifeSteal] > 0)
+	/// AE, AD, BD, LS, Redirect, Reflect, ...
+	if (ATS[ATS_AllyEnhancement] > 0 && slf.aivar[AIV_PartyMember])
+	&& (hero.attribute[ATR_MANA] >= ATS[ATS_AllyEnhancement]/4)
 	{
-		Npc_ChangeAttribute (slf, ATR_HITPOINTS, slf.aivar[AIV_LifeSteal]);
+		Npc_ChangeAttribute(hero, ATR_MANA, -ATS[ATS_AllyEnhancement]/4);
+		finalDmg += ATS[ATS_AllyEnhancement];
 	};
-	if (oth.aivar[AIV_DmgReflection] > 0)
-	{
-		B_MagicHurtNpc (oth, slf, oth.aivar[AIV_DmgReflection]);
-	};
+	
 	if (slf.aivar[AIV_AreaDamage] > 0)
 	{
 		B_MagicHurtNpcArea_Damage = finalDmg * slf.aivar[AIV_AreaDamage] / 100;
 		B_MagicHurtNpcArea_Victim = Hlp_GetNpc(oth);
 		MOD_Broadcast (slf, B_MagicHurtNpcArea);
+	};
+	
+	if (ATS[ATS_GoldDmg] > 0 && (ATS[ATS_InFightHits] % 3) == 0)
+	&& (Npc_IsPlayer(slf) && Npc_HasItems(slf, ItMi_Gold) >= ATS[ATS_GoldDmg]/5)
+	{
+		B_MagicHurtNpc (slf, oth, ATS[ATS_GoldDmg]);
+		Npc_RemoveInvItems(slf, ItMi_Gold, ATS[ATS_GoldDmg]/5);
+	};
+	
+	if (ATS[ATS_BackstabDmg] > 0 && !Npc_CanSeeNpc(oth, slf))
+	&& (Npc_IsPlayer(slf) && !Npc_IsInState(oth, ZS_Attack) && !Npc_IsInState(oth, ZS_MM_Attack))
+	{
+		B_MagicHurtNpc (slf, oth, ATS[ATS_BackstabDmg]*oth.attribute[ATR_HITPOINTS_MAX]/100);
+	};
+	
+	if (slf.aivar[AIV_LifeSteal] > 0)
+	{
+		Npc_ChangeAttribute (slf, ATR_HITPOINTS, slf.aivar[AIV_LifeSteal]);
+	};
+	
+	if (ATS[ATS_RedirectDmg] > 0)
+	&& (oth.aivar[AIV_PartyMember] && !Npc_IsPlayer(slf))
+	{
+		var int redirectedDmg; redirectedDmg = finalDmg*ATS[ATS_RedirectDmg]/100;
+		finalDmg -= redirectedDmg;
+		B_MagicHurtNpc (slf, hero, redirectedDmg);
+	};
+	
+	if (oth.aivar[AIV_Reflection] > 0)
+	{
+		B_MagicHurtNpc (oth, slf, oth.aivar[AIV_Reflection]);
 	};
 	
 	/// for new exp system
@@ -202,7 +302,6 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	
 	/// display damage
 	if (dmgShielded > 0)				{ PrintS_Ext(ConcatStrings(NAME_DamageShielded, IntToString(dmgShielded)), COL_DamageShielded); };
-	
 	if (finalDmg > 0)
 	{
 		if		(Npc_IsPlayer(oth))		{ PrintS_Ext(ConcatStrings(NAME_Damage, IntToString(finalDmg)), COL_DamageTaken); }

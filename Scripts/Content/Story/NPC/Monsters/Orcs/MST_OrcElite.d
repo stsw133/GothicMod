@@ -44,7 +44,7 @@ func void B_SetVisuals_OrcElite()
 instance OrcElite_Rest (Mst_Default_OrcElite)
 {
 	B_SetVisuals_OrcElite();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
@@ -52,7 +52,7 @@ instance OrcElite_Rest (Mst_Default_OrcElite)
 instance OrcElite_Roam (Mst_Default_OrcElite)
 {
 	B_SetVisuals_OrcElite();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -66,7 +66,7 @@ instance OrcElite_DIOberst1_Rest (Mst_Default_OrcElite)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcElite();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -76,7 +76,7 @@ instance OrcElite_DIOberst2_Rest (Mst_Default_OrcElite)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcElite();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -86,7 +86,7 @@ instance OrcElite_DIOberst3_Rest (Mst_Default_OrcElite)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcElite();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcElite_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;

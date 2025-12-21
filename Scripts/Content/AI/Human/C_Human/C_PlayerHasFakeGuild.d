@@ -21,8 +21,8 @@ func int C_PlayerIsFakeBandit (var C_Npc slf, var C_Npc oth)
 	if (Npc_HasEquippedArmor(oth))
 	{
 		var C_Item itm; itm = Npc_GetEquippedArmor(oth);
-		if (Hlp_IsItem(itm, ITAR_BDT_L))
-		|| (Hlp_IsItem(itm, ITAR_BDT_M))
+		if (Hlp_IsItem(itm, ITAR_Leather_BDT))
+		|| (Hlp_IsItem(itm, ITAR_BDT_L))
 		|| (Hlp_IsItem(itm, ITAR_BDT_H))
 		|| (Hlp_IsItem(itm, ITAR_RVN_L))
 		|| (Hlp_IsItem(itm, ITAR_RVN_M))
@@ -153,11 +153,13 @@ func int C_PlayerWearsGuildArmor (var C_Npc slf, var int guild)
 	};
 	*/
 	if (guild == GIL_OUT)
-	&& (Hlp_IsItem(itm, ITAR_Leather_L)
+	&& (Hlp_IsItem(itm, ITAR_Leather_L1)
+	 || Hlp_IsItem(itm, ITAR_Leather_L2)
+	 || Hlp_IsItem(itm, ITAR_Leather_L3)
 	 || Hlp_IsItem(itm, ITAR_Leather_T)
 	 || Hlp_IsItem(itm, ITAR_Leather_S)
-	 || Hlp_IsItem(itm, ITAR_Leather_H)
-	 || Hlp_IsItem(itm, ITAR_Leather_B)
+	 || Hlp_IsItem(itm, ITAR_Leather_H1)
+	 || Hlp_IsItem(itm, ITAR_Leather_H2)
 	 || Hlp_IsItem(itm, ITAR_Crawler)
 	 || Hlp_IsItem(itm, ITAR_DragonSnapper))
 	{

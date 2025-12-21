@@ -349,7 +349,7 @@ func void B_CreateAmbientInv (var C_Npc slf)
 		else if	(Hlp_Random(2))			{	CreateInvItem (slf, ItMi_FireCrystal);		}
 		else if	(Hlp_Random(2))			{	CreateInvItem (slf, ItMi_RedNugget);		};
 	}
-	else if (slf.aivar[AIV_MM_REAL_ID] == ID_ZODD)
+	else if (slf.aivar[AIV_MM_REAL_ID] == ID_WEREWOLF)
 	{
 		if		(Hlp_Random(2))			{	CreateInvItem (slf, ItPo_Health_01);		}
 		else if	(Hlp_Random(2))			{	CreateInvItem (slf, ItMi_Pitch);			}

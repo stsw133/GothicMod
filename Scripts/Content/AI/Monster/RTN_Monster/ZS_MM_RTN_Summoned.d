@@ -1,7 +1,10 @@
 ///******************************************************************************************
 func void B_SummonedAssessTalk()
 {
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
+	if (self.guild == GIL_SUMMONED)
+	{
+		Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]);
+	};
 };
 
 ///******************************************************************************************

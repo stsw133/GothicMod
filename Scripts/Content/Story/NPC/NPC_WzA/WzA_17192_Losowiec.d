@@ -17,7 +17,7 @@ instance WzA_17192_Losowiec (Npc_Default)
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
 	
 	/// ------ Visuals ------
-	aivar[AIV_FaceTex] = Hlp_RandomRange(1,5);
+	aivar[AIV_FaceTex] = r_MinMax(1,5);
 	
 	NpcFn_SetVisual		(self, ORCMALE, BodyTex_Default, BodySkin_N, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], Teeth_Normal, -1);
 	Mdl_SetModelFatness	(self, 0);

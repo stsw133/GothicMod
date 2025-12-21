@@ -38,14 +38,14 @@ func void NpcFn_SetHeroVisual (var C_Npc slf, var int skin)
 {
 	selectedHeroSkin = skin;
 	
-	if		(skin < 0)	{	Mdl_SetVisualBody (slf, "Hum_Body_Invisible", default, default, "", default, default, -1);							}
-	else if	(skin == 0)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 0, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);						}
-	else if	(skin == 1)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 1, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);						}
-	else if	(skin == 2)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 2, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);						}
-	else if	(skin == 3)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 3, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);						}
-	else if	(skin == 4)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 4, "Hum_Head_Fighter", Face_N_Witcher, Teeth_Normal, -1);				}
-	else if	(skin == 5)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Fighter", Face_N_MikeKayne, Teeth_Normal, -1);	}
-	else				{	NpcFn_SetVisual (slf, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);			};
+	if		(skin < 0)	{	Mdl_SetVisualBody (slf, "Hum_Body_Invisible", default, default, "", default, default, -1);						}
+	else if	(skin == 0)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 0, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
+	else if	(skin == 1)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 1, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
+	else if	(skin == 2)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 2, "Hum_Head_Pony", Face_Player, Teeth_Normal, -1);					}
+	else if	(skin == 3)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 3, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);					}
+	else if	(skin == 4)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Player, 4, "Hum_Head_Fighter", Face_N_Witcher, Teeth_Normal, -1);			}
+	else if	(skin == 5)	{	NpcFn_SetVisual (slf, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_MikeKayne, Teeth_Normal, -1);	}
+	else				{	NpcFn_SetVisual (slf, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_Player, Teeth_Normal, -1);		};
 	
 	//Mdl_SetModelFatness (slf, 0);
 };

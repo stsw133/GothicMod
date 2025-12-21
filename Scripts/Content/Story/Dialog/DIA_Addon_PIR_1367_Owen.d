@@ -53,8 +53,8 @@ func void DIA_Addon_Owen_Hello_Info ()
 	{
 		AI_Output	(self, other, "DIA_Addon_Owen_Hello_13_03"); //Nosisz nasze barwy, ale nie znam ciê.
 	}
-	else if (Hlp_IsItem(itm, ITAR_BDT_L))
-	|| (Hlp_IsItem(itm, ITAR_BDT_M))
+	else if (Hlp_IsItem(itm, ITAR_Leather_BDT))
+	|| (Hlp_IsItem(itm, ITAR_BDT_L))
 	|| (Hlp_IsItem(itm, ITAR_BDT_H))
 	|| (Hlp_IsItem(itm, ITAR_RVN_L))
 	|| (Hlp_IsItem(itm, ITAR_RVN_M))

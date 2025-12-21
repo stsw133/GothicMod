@@ -1,11 +1,26 @@
 ///******************************************************************************************
 /// MOD_Keys
 ///******************************************************************************************
-func void MOD_PressKey()
+func int MOD_IsKeyHold(var string option)
 {
-	var int key; key = ESI;
-	var int pressed; pressed = MEM_ReadByte(MEMINT_KeyToggle_Offset + ESI);
+	var int keyPrimary; keyPrimary = MEM_GetKey(option);
+	if (keyPrimary && MEM_KeyState(keyPrimary) == KEY_HOLD)
+	{
+		return true;
+	};
 	
+	var int keySecondary; keySecondary = MEM_GetSecondaryKey(option);
+	if (keySecondary && MEM_KeyState(keySecondary) == KEY_HOLD)
+	{
+		return true;
+	};
+	
+	return false;
+};
+
+///******************************************************************************************
+func void MOD_HandleInteractionHotkey()
+{
 	/// ------ shortcuts key ------
 	/*
 	if ((key == MEM_GetKey("keyShortcuts") || key == MEM_GetSecondaryKey("keyShortcuts")) && pressed)
@@ -15,7 +30,8 @@ func void MOD_PressKey()
 	*/
 	
 	/// ------ RMB ------
-	if ((key == MEM_GetKey("keyNoAnimTake") || key == MEM_GetSecondaryKey("keyNoAnimTake")) && pressed)
+	if (MEM_KeyState(MEM_GetKey("keyNoAnimTake")) == KEY_PRESSED)
+	|| (MEM_KeyState(MEM_GetSecondaryKey("keyNoAnimTake")) == KEY_PRESSED)
 	{
 		o_hero = Hlp_GetNpc(hero);
 		
@@ -78,10 +94,4 @@ func void MOD_PressKey()
 			};
 		};
 	};
-};
-
-///******************************************************************************************
-func void MOD_Keys()
-{
-	HookEngineF(7328820, 6, MOD_PressKey);
 };

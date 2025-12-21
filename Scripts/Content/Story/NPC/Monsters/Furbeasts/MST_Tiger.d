@@ -37,19 +37,25 @@ prototype Mst_Default_Tiger (C_Npc)
 func void B_SetVisuals_Tiger()
 {
 	Mdl_SetVisual		(self, "StonePuma.mds");
-	Mdl_SetVisualBody	(self, "Tig_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Tgr_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
 func void B_SetVisuals_SnowTiger()
 {
 	Mdl_SetVisual		(self, "StonePuma.mds");
-	Mdl_SetVisualBody	(self, "Tig_Snow_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Tgr_Snow_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
 func void B_SetVisuals_Leopard()
 {
 	Mdl_SetVisual		(self, "StonePuma.mds");
-	Mdl_SetVisualBody	(self, "Tig_Leopard_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetVisualBody	(self, "Tgr_Leopard_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
+	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
+};
+func void B_SetVisuals_Puma()
+{
+	Mdl_SetVisual		(self, "StonePuma.mds");
+	Mdl_SetVisualBody	(self, "Tgr_Puma_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
 	Mdl_SetModelScale	(self, 0.9, 0.9, 0.9);
 };
 
@@ -68,4 +74,9 @@ instance Leopard (Mst_Default_Tiger)
 {
 	name								=	"Lampart";
 	B_SetVisuals_Leopard();
+};
+instance Puma (Mst_Default_Tiger)
+{
+	name								=	"Puma";
+	B_SetVisuals_Puma();
 };

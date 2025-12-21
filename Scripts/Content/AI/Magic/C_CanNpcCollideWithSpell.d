@@ -159,7 +159,7 @@ func int C_CanNpcCollideWithSpell (var int spellType)
 	{
 		if (Npc_IsPlayer(self))
 		{
-			MOD_SetPoison(bsPoison+1);
+			MOD_SetPoison(ATS[ATS_PoisonPoints]+1);
 			mSlowPoints += (100 - mSlowPoints) / 5;
 		};
 		

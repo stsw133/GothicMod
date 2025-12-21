@@ -154,7 +154,7 @@ func void DIA_Matteo_LEATHER_Info ()
 	{	
 		AI_Output (self, other, "DIA_Matteo_LEATHER_09_01"); //Na pewno ci siê spodoba.
 
-		B_GiveInvItems 	(self, other, ItAr_Leather_L, 1);
+		B_GiveInvItems 	(self, other, ItAr_Leather_L1, 1);
 		Matteo_LeatherBought = TRUE;
 	}
 	else 

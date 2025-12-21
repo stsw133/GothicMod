@@ -28,6 +28,9 @@ instance WzA_17203_OrcPaladin (Npc_Default)
 	/// ------ FT ------
 	fight_tactic						=	FAI_ORC;
 	
+	/// ------ Weapons ------
+	EquipItem (self, ItMw_2h_Pal_Sword);
+	
 	/// ------ Inventory ------
 	B_CreateAmbientInv(self);
 	

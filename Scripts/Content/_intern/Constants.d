@@ -901,9 +901,8 @@ const string spellFxAniLetters[MAX_SPELL] =
 /// TALENTS
 ///******************************************************************************************
 
-/// extraction
-const int NPC_TALENT_EXTRACTION			=	0;	/// new!!!
 /// fight
+const int NPC_TALENT_00					=	0;	/// new!!!
 const int NPC_TALENT_1H					=	1;
 const int NPC_TALENT_2H					=	2;
 const int NPC_TALENT_BOW				=	3;
@@ -925,9 +924,9 @@ const int NPC_TALENT_FLETCHERY			=	12;	/// new!!!
 const int NPC_TALENT_SMITH				=	13;
 const int NPC_TALENT_ENCHANTING			=	14;	/// extended!!!
 const int NPC_TALENT_ALCHEMY			=	15;
+/// secondary
 const int NPC_TALENT_HUNTING			=	16;
-/// unknown
-const int NPC_TALENT_17					=	17;	/// new!!!
+const int NPC_TALENT_EXTRACTION			=	17;	/// new!!!
 const int NPC_TALENT_18					=	18;	/// new!!!
 const int NPC_TALENT_19					=	19;	/// new!!!
 

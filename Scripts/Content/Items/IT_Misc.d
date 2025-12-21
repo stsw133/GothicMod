@@ -347,7 +347,8 @@ func void Use_ItMi_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
 		return;
 	};
 	
-	if ((oth.senses & SENSE_HEAR) && (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5))
+	if (oth.senses & SENSE_HEAR)
+	&& (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5)
 	{
 		AI_Wait		(oth, 2);
 		B_ResetAll	(oth);
@@ -460,7 +461,7 @@ instance ItMi_InkPen (ItemPR_Misc)
 
 instance ItMi_Knife (ItemPR_Misc)
 {
-	name						=	"Nó¿";
+	name						=	"Nó¿ do strugania";
 	value						=	10;
 	visual						=	"ItMi_Knife.3ds";
 	material					=	MAT_METAL;
@@ -483,9 +484,36 @@ instance ItMi_Lute (ItemPR_Misc)
 	material					=	MAT_WOOD;
 	
 	scemeName					=	"LUTE";
+	on_state[0]					=	Use_ItMi_Lute;
 	
 	description					=	name;
 	COUNT[5]					=	value;
+};
+func void Use_ItMi_Lute_Effect(var C_Npc oth, var C_Npc slf)
+{
+	if (Npc_IsPlayer(oth))
+	{
+		return;
+	};
+	
+	if (oth.aivar[AIV_MM_REAL_ID] == ID_SPINT)
+	&& (oth.senses & SENSE_HEAR)
+	&& (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5)
+	{
+		AI_Wait		(oth, 2);
+		//B_ResetAll	(oth);
+		AI_StandUp	(oth);
+		
+		AI_SetWalkmode (oth, NPC_RUN);
+		AI_GotoNpc (oth, hero);
+		
+		NpcFn_SetMonsterAsSummoned(oth, true);
+		oth.aivar[AIV_SummonTime] = -1;
+	};
+};
+func void Use_ItMi_Lute()
+{
+	MOD_Broadcast (self, Use_ItMi_Lute_Effect);
 };
 
 instance ItMi_Pan (ItemPR_MeleeWeaponM)

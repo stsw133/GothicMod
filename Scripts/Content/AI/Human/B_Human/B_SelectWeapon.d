@@ -57,7 +57,7 @@ func void B_SelectWeapon (var C_Npc slf, var C_Npc oth)
 	
 	if (Npc_IsInFightMode(slf, FMODE_FAR))
 	{
-		if (Npc_GetDistToNpc(slf, oth) > FIGHT_DIST_RANGED_INNER) 
+		if (Npc_GetDistToNpc(slf, oth) > FIGHT_DIST_RANGED_INNER)
 		|| (!Npc_HasEquippedMeleeWeapon(slf))
 		{
 			return;
@@ -87,7 +87,7 @@ func void B_SelectWeapon (var C_Npc slf, var C_Npc oth)
 	
 	if (Npc_HasEquippedRangedWeapon(slf))
 	&& (Npc_GetDistToNpc(slf, oth) > FIGHT_DIST_RANGED_INNER)
-	&& (C_NpcHasAttackReasonToKill(slf) || Npc_GetAttitude(slf, oth) == ATT_HOSTILE)
+	//&& (C_NpcHasAttackReasonToKill(slf) || Npc_GetAttitude(slf, other) == ATT_HOSTILE)
 	{
 		if (!Npc_IsInFightMode(slf, FMODE_NONE))
 		{

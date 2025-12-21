@@ -58,7 +58,7 @@ func int B_DragonKillCounter (var C_Npc currDragon)
 		else if (Hlp_GetInstanceID(currDragon) == Hlp_GetInstanceID(FireDragon))
 		{
 			PrintScreen	("Smocza zdolnoœæ: destrukcja", -1, -1, FONT_SCREEN, 2);
-			mFinishPercent += 5;
+			ATS[ATS_FinishTsh] += 5;
 		}
 		else if (Hlp_GetInstanceID(currDragon) == Hlp_GetInstanceID(IceDragon))
 		{

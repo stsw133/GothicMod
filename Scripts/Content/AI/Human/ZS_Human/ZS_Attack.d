@@ -11,10 +11,17 @@ func void B_AssessSurprise()
 func void ZS_Attack()
 {
 	Perception_Set_Minimal();
-	
 	Npc_PercEnable (self, PERC_ASSESSSURPRISE, B_AssessSurprise);
 	
 	B_ValidateOther();
+	
+	/// MOD: overcome damage
+	//if (other.aivar[AIV_Overcome] > 0 && C_BodyStateContains(self, BS_PARADE))
+	//{
+	//	B_MagicHurtNpc (other, self, other.aivar[AIV_Overcome]);
+	//};
+	
+	/// ...
 	self.aivar[AIV_LASTTARGET] = Hlp_GetInstanceID(other);
 	
 	if (C_WantToFlee(self, other))
@@ -54,7 +61,7 @@ func void ZS_Attack()
 	self.aivar[AIV_HitByOtherNpc] = 0;
 	self.aivar[AIV_SelectSpell] = 0;
 	
-	/// MOD
+	/// MOD: bug prevent for Dementors since they auto-close talk dialog
 	if (self.guild == GIL_DMT)
 	{
 		Wld_StopEffect("DEMENTOR_FX");
@@ -69,7 +76,21 @@ func int ZS_Attack_Loop()
 	
 	Npc_GetTarget(self);
 	
-	/// MOD
+	/// MOD: counter logic
+	if (Npc_IsPlayer(other))
+	{
+		if (C_BodyStateContains(other, BS_PARADE))
+		&& (C_BodyStateContains(self, BS_HIT))
+		{
+			ATS[ATS_CounterHit] = true;
+		}
+		else if (C_BodyStateContains(self, BS_PARADE))
+		{
+			ATS[ATS_CounterHit] = false;
+		};
+	};
+	
+	/// MOD: Gregy
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(Gregy))
 	{
 		if (self.attribute[ATR_HITPOINTS] <= self.attribute[ATR_HITPOINTS_MAX]/2)
@@ -82,6 +103,7 @@ func int ZS_Attack_Loop()
 		};
 	};
 	
+	/// ...
 	if (Npc_GetDistToNpc(self, other) > self.aivar[AIV_FightDistCancel])
 	{
 		Npc_ClearAIQueue(self);
@@ -267,11 +289,17 @@ func int ZS_Attack_Loop()
 ///******************************************************************************************
 func void ZS_Attack_End()
 {
-	/// MOD
+	/// MOD: reset HP to full
 	if (!self.aivar[AIV_PartyMember])
 	{
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 		self.aivar[AIV_DamageDealtByPlayer] = 0;
+	};
+	
+	/// MOD: ASD
+	if (ATS[ATS_AfterSpellHit] == Hlp_GetInstanceID(self))
+	{
+		ATS[ATS_AfterSpellHit] = default;
 	};
 	
 	/// ...

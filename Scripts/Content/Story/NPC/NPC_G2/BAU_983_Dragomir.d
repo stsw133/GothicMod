@@ -23,7 +23,7 @@ instance BAU_983_Dragomir (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Tough_Lee_ähnlich, Teeth_Normal, ItAr_Leather_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_Tough_Lee_ähnlich, Teeth_Normal, ItAr_Leather_L1);
 	Mdl_SetModelFatness	(self, 1);
 	Mdl_ApplyOverlayMds	(self, "Humans_Relaxed.mds");
 	

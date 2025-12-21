@@ -152,7 +152,7 @@ instance spellFX_Telekinesis_ITEM (CFx_Base_Proto)
 ///******************************************************************************************
 instance spellFX_PalBless (CFx_Base_Proto)
 {
-	visname_S					=	"MFX_Heal_INIT";
+	visname_S					=	"MFX_PalBless_INIT";
 	emtrjmode_s					=	"FIXED";
 	emTrjOriginNode				=	"ZS_RIGHTHAND";
 };
@@ -174,7 +174,7 @@ instance spellFX_PalBless_START (CFx_Base_Proto)
 
 instance SPELLFX_PalBless_GLOW (CFx_Base_Proto)
 {
-	visname_s					=	"MFX_PALBLESS";
+	visname_s					=	"MFX_PalBless_GLOW";
 	visAlpha					=	1;
 	visalphablendfunc_s			=	"ADD";
 	emtrjmode_s					=	"FIXED";
@@ -186,11 +186,19 @@ instance SPELLFX_PalBless_GLOW (CFx_Base_Proto)
 	emselfrotvel_s				=	"0 0 0";
 	secsperdamage				=	-1;
 	emAdjustShpToOrigin			=	true;
-	lightPresetname				=	"JUSTWHITE";
+	lightPresetname				=	"AURA";
 };
-instance SPELLFX_PALBLESS_GLOW_KEY_CAST (C_ParticleFXEmitKey)
+instance SPELLFX_PalBless_GLOW_KEY_CAST (C_ParticleFXEmitKey)
 {
 	lightrange					=	100;
+};
+
+instance spellFX_PalBless_COLLIDE (CFx_Base_Proto)
+{
+	visname_S 				=	"MFX_PalHolyBolt_Collide";
+	visAlpha				=	1;
+	emtrjmode_s 			=	"FIXED";
+	sfxid					=	"Torch_Enlight";
 };
 
 ///******************************************************************************************
@@ -2448,7 +2456,7 @@ instance spellFX_MysGhost_COLLIDEFX (CFx_Base_Proto)
 	sfxid						=	"MFX_Icelance_Collide";
 };
 
-instance SPELLFX_MysGhost_GLOW (CFX_BASE_PROTO)
+instance SPELLFX_MysGhost_GLOW (CFx_Base_Proto)
 {
 	visname_s					=	"MFX_MysGhost_GLOW";
 	visAlpha					=	1;
@@ -2490,7 +2498,7 @@ instance spellFX_MysRoot_KEY_COLLIDE (C_ParticleFXEmitKey)
 {
 };
 
-instance spellFX_MysRoot_Bridge (CFX_BASE_PROTO)
+instance spellFX_MysRoot_Bridge (CFx_Base_Proto)
 {
 	visname_S					=	"MFX_MysRoot_CAST";
 	visAlpha					=	1;

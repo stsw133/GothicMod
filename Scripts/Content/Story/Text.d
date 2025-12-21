@@ -479,54 +479,54 @@ const string NAME_SPL_Crush					=	"Zmia¿d¿enie";
 ///******************************************************************************************
 const string TXT_TALENTS[NPC_TALENT_MAX] =
 {
-	"Pozysk. surowców:",			/// NPC_TALENT_EXTRACTION		= 0;
-	"Br. jednorêczna:",				/// NPC_TALENT_1H				= 1;
-	"Br. dwurêczna:",				/// NPC_TALENT_2H				= 2;
-	"£uki:",						/// NPC_TALENT_BOW				= 3;
-	"Kusze:",						/// NPC_TALENT_CROSSBOW			= 4;
-	"Otwier. zamków:",				/// NPC_TALENT_PICKLOCK			= 5;
-	"Kradzie¿ kiesz.:",				/// NPC_TALENT_PICKPOCKET		= 6;
-	"Kr¹g magii:",					/// NPC_TALENT_MAGIC			= 7;
-	"Skradanie siê:",				/// NPC_TALENT_SNEAK			= 8;
-	"Dwa miecze:",					/// NPC_TALENT_DUAL				= 9;
-	"Tarcze:",						/// NPC_TALENT_SHIELD			= 10;
-	"Akrobatyka:",					/// NPC_TALENT_ACROBATIC		= 11;
-	"£uczarstwo:",					/// NPC_TALENT_FLETCHERY		= 12;
-	"Kowalstwo:",					/// NPC_TALENT_SMITH			= 13;
-	"Zaklinanie:",					/// NPC_TALENT_ENCHANTING		= 14;
-	"Alchemia:",					/// NPC_TALENT_ALCHEMY			= 15;
-	"Myœliwstwo:",					/// NPC_TALENT_HUNTING			= 16;
-	"Gotowanie:",					/// NPC_TALENT_17				= 17;
-	"Górnictwo:",					/// NPC_TALENT_18				= 18;
-	"P³atnerstwo:",					/// NPC_TALENT_19				= 19;
-	"Perswazja:",					/// NPC_TALENT_PERSUASION		= 20;
-	"Staro¿. jêzyk:"				/// NPC_TALENT_LANGUAGE			= 21;
+	"???:",							/// NPC_TALENT_00			= 0;
+	"Br. jednorêczna:",				/// NPC_TALENT_1H			= 1;
+	"Br. dwurêczna:",				/// NPC_TALENT_2H			= 2;
+	"£uki:",						/// NPC_TALENT_BOW			= 3;
+	"Kusze:",						/// NPC_TALENT_CROSSBOW		= 4;
+	"Otwier. zamków:",				/// NPC_TALENT_PICKLOCK		= 5;
+	"Kradzie¿ kiesz.:",				/// NPC_TALENT_PICKPOCKET	= 6;
+	"Kr¹g magii:",					/// NPC_TALENT_MAGIC		= 7;
+	"Skradanie siê:",				/// NPC_TALENT_SNEAK		= 8;
+	"Dwa miecze:",					/// NPC_TALENT_DUAL			= 9;
+	"Tarcze:",						/// NPC_TALENT_SHIELD		= 10;
+	"Akrobatyka:",					/// NPC_TALENT_ACROBATIC	= 11;
+	"£uczarstwo:",					/// NPC_TALENT_FLETCHERY	= 12;
+	"Kowalstwo:",					/// NPC_TALENT_SMITH		= 13;
+	"Zaklinanie:",					/// NPC_TALENT_ENCHANTING	= 14;
+	"Alchemia:",					/// NPC_TALENT_ALCHEMY		= 15;
+	"Myœliwstwo:",					/// NPC_TALENT_HUNTING		= 16;
+	"Pozysk. surowców:",			/// NPC_TALENT_EXTRACTION	= 17;
+	"???:",							/// NPC_TALENT_18			= 18;
+	"???:",							/// NPC_TALENT_19			= 19;
+	"Perswazja:",					/// NPC_TALENT_PERSUASION	= 20;
+	"Staro¿. jêzyk:"				/// NPC_TALENT_LANGUAGE		= 21;
 };
 
 const string TXT_TALENTS_SKILLS[NPC_TALENT_MAX] =
 {
-	"s³aby|œredni|silny",			/// NPC_TALENT_EXTRACTION		= 0;
-	"s³aby|œredni|silny",			/// NPC_TALENT_1H				= 1;
-	"s³aby|œredni|silny",			/// NPC_TALENT_2H				= 2;
-	"s³aby|œredni|silny",			/// NPC_TALENT_BOW				= 3;
-	"s³aby|œredni|silny",			/// NPC_TALENT_CROSSBOW			= 4;
-	"-|uczony",						/// NPC_TALENT_PICKLOCK			= 5;
-	"-|uczony",						/// NPC_TALENT_PICKPOCKET		= 6;
-	"-|1|2|3|4|5|6",				/// NPC_TALENT_MAGIC			= 7;
-	"-|uczony",						/// NPC_TALENT_SNEAK			= 8;
-	"-|uczony",						/// NPC_TALENT_DUAL				= 9;
-	"-|uczony",						/// NPC_TALENT_SHIELD			= 10;
-	"-|uczony",						/// NPC_TALENT_ACROBATIC		= 11;
-	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_FLETCHERY		= 12;
-	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_SMITH			= 13;
-	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_ENCHANTING		= 14;
-	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_ALCHEMY			= 15;
-	"-|uczony",						/// NPC_TALENT_HUNTING			= 16;
-	"-|uczony",						/// NPC_TALENT_17				= 17;
-	"-|uczony",						/// NPC_TALENT_18				= 18;
-	"-|uczony",						/// NPC_TALENT_19				= 19;
-	"-|uczony",						/// NPC_TALENT_PERSUASION		= 20;
-	"-|uczony"						/// NPC_TALENT_LANGUAGE			= 21;
+	"s³aby|œredni|silny",			/// NPC_TALENT_00			= 0;
+	"s³aby|œredni|silny",			/// NPC_TALENT_1H			= 1;
+	"s³aby|œredni|silny",			/// NPC_TALENT_2H			= 2;
+	"s³aby|œredni|silny",			/// NPC_TALENT_BOW			= 3;
+	"s³aby|œredni|silny",			/// NPC_TALENT_CROSSBOW		= 4;
+	"-|uczony",						/// NPC_TALENT_PICKLOCK		= 5;
+	"-|uczony",						/// NPC_TALENT_PICKPOCKET	= 6;
+	"-|1|2|3|4|5|6",				/// NPC_TALENT_MAGIC		= 7;
+	"-|uczony",						/// NPC_TALENT_SNEAK		= 8;
+	"-|uczony",						/// NPC_TALENT_DUAL			= 9;
+	"-|uczony",						/// NPC_TALENT_SHIELD		= 10;
+	"-|uczony",						/// NPC_TALENT_ACROBATIC	= 11;
+	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_FLETCHERY	= 12;
+	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_SMITH		= 13;
+	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_ENCHANTING	= 14;
+	"-|pocz¹tk.|zaawans.|mistrz",	/// NPC_TALENT_ALCHEMY		= 15;
+	"-|uczony",						/// NPC_TALENT_HUNTING		= 16;
+	"-|uczony",						/// NPC_TALENT_EXTRACTION	= 17;
+	"-|uczony",						/// NPC_TALENT_18			= 18;
+	"-|uczony",						/// NPC_TALENT_19			= 19;
+	"-|uczony",						/// NPC_TALENT_PERSUASION	= 20;
+	"-|uczony"						/// NPC_TALENT_LANGUAGE		= 21;
 };
 
 ///******************************************************************************************
@@ -612,6 +612,10 @@ const string NAME_Prot_Fire					=	"Ochrona przed smoczym ogniem: ";
 const string NAME_Prot_Magic				=	"Ochrona przed magi¹: ";
 const string NAME_Prot_Total				=	"Ochrona ca³kowita: ";
 
+const string PRINT_BanditArmor				=	"Kto nosi tê zbrojê, nale¿y do bandytów.";
+const string PRINT_HeavyArmor				=	"Ciê¿ka zbroja, ochrona przed obuchem: ";
+const string PRINT_LightArmor				=	"Lekka zbroja, ochrona przed obuchem: ";
+
 /// ------ bonuses ------
 const string NAME_Bonus_Hp					=	"Odnowa ¿ycia: ";
 const string NAME_Bonus_Mp					=	"Odnowa many: ";
@@ -632,28 +636,28 @@ const string NAME_Percent_MpTime			=	"Czas odnowy % many: ";
 const string NAME_Percent_SpTime			=	"Czas odnowy % energii: ";
 
 const string NAME_Bonus_Lp					=	"Premia do punktów nauki: ";
-const string NAME_Bonus_AllBaseAtr			=	"Premia do bazowych atrybutów: ";
-const string NAME_Bonus_MostLearnedAtr		=	"Premia do wyuczonego atrybutu: ";
 const string NAME_Bonus_HpMax				=	"Premia do max. punktów ¿ycia: ";
 const string NAME_Bonus_MpMax				=	"Premia do max. many: ";
 const string NAME_Bonus_SpMax				=	"Premia do max. energii: ";
 const string NAME_Bonus_Str					=	"Premia do si³y: ";
 const string NAME_Bonus_Dex					=	"Premia do zrêcznoœci: ";
 const string NAME_Bonus_Pow					=	"Premia do mocy: ";
+
 const string NAME_Bonus_Prot				=	"Premia do ochrony: ";
-const string NAME_Bonus_Throw				=	"Premia do broni miotanej: ";
+const string NAME_Bonus_Talent0				=	"Premia do talentu0: ";
 const string NAME_Bonus_1h					=	"Premia do broni jednorêcznej: ";
 const string NAME_Bonus_2h					=	"Premia do broni dwurêcznej: ";
 const string NAME_Bonus_Bow					=	"Premia do ³uków: ";
 const string NAME_Bonus_Cbow				=	"Premia do kusz: ";
-const string NAME_Bonus_AreaDmg				=	"Premia do % obra¿eñ obszarowych: ";
-const string NAME_Bonus_CritDmg				=	"Premia do % obra¿eñ krytycznych: ";
-const string NAME_Bonus_Ls					=	"Premia do kradzie¿y ¿ycia: ";
-const string NAME_Bonus_MinDmg				=	"Premia do minimalnych obra¿eñ: ";
-const string NAME_Bonus_RgHp				=	"Premia do regen. ¿ycia: ";
 
-const string NAME_Percent_Protection		=	"Premia do % odpornoœci: ";
-const string NAME_Percent_Damage			=	"Premia do % obra¿eñ: ";
+const string NAME_Bonus_AreaDmg				=	"Premia do % obra¿eñ obszarowych: ";
+const string NAME_Bonus_CounterDmg			=	"Premia do obra¿eñ kontrataku: ";
+const string NAME_Bonus_CritDmg				=	"Premia do % obra¿eñ krytycznych: ";
+const string NAME_Bonus_MinDmg				=	"Premia do minimalnych obra¿eñ: ";
+const string NAME_Bonus_Ls					=	"Premia do kradzie¿y ¿ycia: ";
+const string NAME_Bonus_Penetration			=	"Premia do przebicia pancerza: ";
+const string NAME_Bonus_Reflection			=	"Premia do odbicia obra¿eñ: ";
+const string NAME_Bonus_RgHp				=	"Premia do regen. ¿ycia: ";
 
 /// ------ weapon type ------
 const string NAME_OneHanded					=	"Broñ jednorêczna, zasiêg:";
@@ -684,7 +688,6 @@ const string PRINT_LearnDEX					=	"Zrêcznoœæ + ";
 const string PRINT_LearnPOW					=	"Moc + ";
 const string PRINT_LearnProt				=	"Ochrona + ";
 
-const string PRINT_LearnExtraction			=	"Pozysk. surowców + ";
 const string PRINT_Learn1h					=	"Broñ jednorêczna + ";
 const string PRINT_Learn2h					=	"Broñ dwurêczna + ";
 const string PRINT_LearnBow					=	"£uki + ";
@@ -718,7 +721,9 @@ const string PRINT_LearnAlchemy_3			=	"Alchemia: poziom 3/3";
 const string PRINT_LearnEnchanting_1		=	"Zaklinanie: poziom 1/3";
 const string PRINT_LearnEnchanting_2		=	"Zaklinanie: poziom 2/3";
 const string PRINT_LearnEnchanting_3		=	"Zaklinanie: poziom 3/3";
+
 const string PRINT_LearnHunting				=	"Myœlistwo: poziom 1/1";
+const string PRINT_LearnExtraction			=	"Pozysk. surowców + ";
 
 ///******************************************************************************************
 /// B_GiveInvItems
@@ -787,8 +792,6 @@ const string PRINT_FullyHealed						=	"Ca³kowite uleczenie.";
 const string PRINT_NumberLeft						=	" pozosta³o";
 const string PRINT_NovizenLeft						=	" - pozostali nowicjusze";
 
-const string PRINT_BanditArmor						=	"Kto nosi tê zbrojê, nale¿y do bandytów.";
-
 ///******************************************************************************************
 /// TEXT FOR QUESTS
 ///******************************************************************************************
@@ -834,6 +837,8 @@ const string PRINT_MANA_MAX_MISSING			=	" max. pkt. many za ma³o";
 const string PRINT_STRENGTH_MISSING			=	" pkt. si³y za ma³o";
 const string PRINT_DEXTERITY_MISSING		=	" pkt. zrêcznoœci za ma³o";
 const string PRINT_POWER_MISSING			=	" pkt. mocy za ma³o";
+const string PRINT_STAMINA_MISSING			=	" pkt. energii za ma³o";
+const string PRINT_STAMINA_MAX_MISSING		=	" max. pkt. energii za ma³o";
 const string PRINT_MAGCIRCLES_MISSING		=	" kr. magii za ma³o";
 
 ///******************************************************************************************

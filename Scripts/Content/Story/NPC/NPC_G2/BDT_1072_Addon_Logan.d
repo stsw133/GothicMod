@@ -26,7 +26,7 @@ instance BDT_1072_Addon_Logan (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_N_Cipher, Teeth_Normal, ItAr_BDT_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Thief", Face_N_Cipher, Teeth_Normal, ITAR_BDT_L);
 	Mdl_SetModelFatness	(self, -0.5);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	

@@ -202,7 +202,7 @@ instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 	visual						=	"ItAt_HarpyFeathers.3ds";
 	
 	description					=	name;
-	TEXT[0]						=	"Sk³adnik niektórej amunicji,";
+	TEXT[0]						=	"Sk³adnik czêœci amunicji,";
 	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 };

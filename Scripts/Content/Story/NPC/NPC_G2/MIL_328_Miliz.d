@@ -26,7 +26,7 @@ instance Mil_328_Miliz (Npc_Default)
 	CreateInvItem (self, ItKe_Storage);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_NormalBart17, Teeth_Normal, ItAr_Leather_L);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_N, "Hum_Head_Bald", Face_N_NormalBart17, Teeth_Normal, ItAr_Leather_L2);
 	Mdl_SetModelFatness	(self, 0);
 	Mdl_ApplyOverlayMds	(self, "Humans_Militia.mds");
 	

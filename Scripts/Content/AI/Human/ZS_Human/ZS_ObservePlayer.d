@@ -33,7 +33,7 @@ func void ZS_ObservePlayer()
 		};
 	};
 	
-	self.aivar[AIV_StateTime] = Hlp_RandomRange(1, 2);
+	self.aivar[AIV_StateTime] = r_MinMax(1, 2);
 };
 
 ///******************************************************************************************
@@ -58,7 +58,7 @@ func int ZS_ObservePlayer_Loop()
 			B_TurnToNpc (self, other);
 		};
 		
-		self.aivar[AIV_StateTime] = Hlp_RandomRange(1, 2);
+		self.aivar[AIV_StateTime] = r_MinMax(1, 2);
 		Npc_SetStateTime (self, 0);
 	};
 	

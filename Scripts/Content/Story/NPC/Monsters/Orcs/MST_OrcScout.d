@@ -35,7 +35,7 @@ prototype Mst_Default_OrcScout (C_Npc)
 func void B_SetVisuals_OrcScout()
 {
 	Mdl_SetVisual		(self, "Orc.mds");
-	Mdl_SetVisualBody	(self, "Orc_Soldier_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
+	Mdl_SetVisualBody	(self, "Orc_Scout_Body", self.aivar[AIV_BodyTex], default, "Orc_Head_Warrior", self.aivar[AIV_FaceTex], default, -1);
 };
 
 ///******************************************************************************************
@@ -44,7 +44,7 @@ func void B_SetVisuals_OrcScout()
 instance OrcScout_Rest (Mst_Default_OrcScout)
 {
 	B_SetVisuals_OrcScout();
-	EquipItem (self, ItMw_2H_OrcAxe_01);
+	EquipItem (self, ItMw_2h_OrcAxe_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -52,7 +52,7 @@ instance OrcScout_Rest (Mst_Default_OrcScout)
 instance OrcScout_Roam (Mst_Default_OrcScout)
 {
 	B_SetVisuals_OrcScout();
-	EquipItem (self, ItMw_2H_OrcAxe_01);
+	EquipItem (self, ItMw_2h_OrcAxe_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart]				=	OnlyRoutine;
@@ -60,7 +60,7 @@ instance OrcScout_Roam (Mst_Default_OrcScout)
 instance OrcScout_Sit (Mst_Default_OrcScout)
 {
 	B_SetVisuals_OrcScout();
-	EquipItem (self, ItMw_2H_OrcAxe_01);
+	EquipItem (self, ItMw_2h_OrcAxe_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_OrcSitStart]			=	OnlyRoutine;
@@ -72,7 +72,7 @@ instance OrcScout_Sit (Mst_Default_OrcScout)
 instance OrcWarrior_Harad (Mst_Default_OrcScout)
 {
 	B_SetVisuals_OrcScout();
-	EquipItem (self, ItMw_2H_OrcAxe_01);
+	EquipItem (self, ItMw_2h_OrcAxe_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;

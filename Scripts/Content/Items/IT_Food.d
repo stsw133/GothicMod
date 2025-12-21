@@ -54,7 +54,7 @@ func void Npc_AddAlcoholTime (var C_Npc slf, var int points)
 		};
 		if (alcoholTime >= 60)	/// 3 permilles
 		{
-			MOD_SetPoison(bsPoison + 1);
+			MOD_SetPoison(ATS[ATS_PoisonPoints] + 1);
 		};
 	}
 	else if (points >= 20)
@@ -1315,10 +1315,10 @@ func void Use_ItFo_SchlafHammer()
 	Npc_AddAlcoholTime (self, 25);
 	self.aivar[AIV_Stamina] = 0;
 	
-	if (Npc_IsPlayer(self) && bsPoison >= 0)
+	if (Npc_IsPlayer(self) && ATS[ATS_PoisonPoints] >= 0)
 	{
 		self.attribute[ATR_HITPOINTS] /= 2;
-		MOD_SetPoison(bsPoison * 2);
+		MOD_SetPoison(ATS[ATS_PoisonPoints] * 2);
 		
 		AI_PlayAni(self, "T_STAND_2_WOUNDED");
 		AI_PlayAni(self, "T_WOUNDED_2_STAND");

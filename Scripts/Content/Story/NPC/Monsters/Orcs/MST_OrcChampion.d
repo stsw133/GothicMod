@@ -44,23 +44,8 @@ func void B_SetVisuals_OrcChampion()
 instance OrcElite_AntiPaladin (Mst_Default_OrcChampion)
 {
 	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcAxe_04);
 	CreateInvItem (self, ItRi_OrcEliteRing);
-	
-	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
-};
-instance OrkElite_AntiPaladinOrkOberst (Mst_Default_OrcChampion)
-{
-	name								=	"Ork-pu³kownik";
-	
-	NpcFn_SetAttributesToLevel (self, 55);
-	NpcFn_SetMonsterProtection (self, level);
-	
-	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
-	CreateInvItem (self, ItRi_OrcEliteRing);
-	CreateInvItem (self, ItWr_Map_Orcelite_MIS);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
@@ -76,7 +61,7 @@ instance OrcElite_AntiPaladin1 (Mst_Default_OrcChampion)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcAxe_04);
 	CreateInvItem (self, ItRi_OrcEliteRing);
 	
 	start_aistate						=	ZS_MM_Rtn_DragonRest;
@@ -89,7 +74,7 @@ instance OrcElite_AntiPaladin2 (Mst_Default_OrcChampion)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcAxe_04);
 	CreateInvItem (self, ItRi_OrcEliteRing);
 	
 	start_aistate						=	ZS_MM_Rtn_DragonRest;
@@ -102,27 +87,9 @@ instance OrcElite_AntiPaladin3 (Mst_Default_OrcChampion)
 	aivar[AIV_EnemyOverride]			=	true;
 	
 	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
+	EquipItem (self, ItMw_2h_OrcAxe_04);
 	CreateInvItem (self, ItRi_OrcEliteRing);
 	
 	start_aistate						=	ZS_MM_Rtn_DragonRest;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;
-};
-
-///******************************************************************************************
-instance OrkElite_AntiPaladinOrkOberst_DI (Mst_Default_OrcChampion)
-{
-	name								=	"Ork-genera³";
-	aivar[AIV_EnemyOverride]			=	true;
-	
-	NpcFn_SetAttributesToLevel (self, 60);
-	NpcFn_SetMonsterProtection (self, level);
-	
-	B_SetVisuals_OrcChampion();
-	EquipItem (self, ItMw_2H_OrcElite_01);
-	CreateInvItem (self, ItKe_OrkKnastDI_MIS);
-	CreateInvItem (self, ItRi_OrcEliteRing);
-	
-	start_aistate						=	ZS_MM_AllScheduler;
-	aivar[AIV_MM_OrcSitStart]			=	OnlyRoutine;
 };

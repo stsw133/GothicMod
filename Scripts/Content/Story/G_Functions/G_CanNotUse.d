@@ -2,7 +2,8 @@
 /// G_CanNotUse
 ///******************************************************************************************
 
-const int COND_Level				=	31;
+const int COND_Level				=	31;	/// new!!!
+const int COND_AIVAR				=	52;	/// new!!!
 
 ///******************************************************************************************
 func void G_CanNotUse (var int bIsPlayer, var int nAttribute, var int nValue)
@@ -20,15 +21,17 @@ func void G_CanNotUse (var int bIsPlayer, var int nAttribute, var int nValue)
 	}
 	else
 	{
-		if		(nAttribute == ATR_HITPOINTS)		{	strAttributeMissing = PRINT_HITPOINTS_MISSING;		nAttributeValue = self.attribute[ATR_HITPOINTS];		}
-		else if (nAttribute == ATR_HITPOINTS_MAX)	{	strAttributeMissing = PRINT_HITPOINTS_MAX_MISSING;	nAttributeValue = self.attribute[ATR_HITPOINTS_MAX];	}
-		else if (nAttribute == ATR_MANA)			{	strAttributeMissing = PRINT_MANA_MISSING;			nAttributeValue = self.attribute[ATR_MANA];				}
-		else if (nAttribute == ATR_MANA_MAX)		{	strAttributeMissing = PRINT_MANA_MAX_MISSING;		nAttributeValue = self.attribute[ATR_MANA_MAX];			}
-		else if (nAttribute == ATR_STRENGTH)		{	strAttributeMissing = PRINT_STRENGTH_MISSING;		nAttributeValue = self.attribute[ATR_STRENGTH];			}
-		else if (nAttribute == ATR_DEXTERITY)		{	strAttributeMissing = PRINT_DEXTERITY_MISSING;		nAttributeValue = self.attribute[ATR_DEXTERITY];		}
-		else if (nAttribute == ATR_POWER)			{	strAttributeMissing = PRINT_POWER_MISSING;			nAttributeValue = self.attribute[ATR_POWER];			}
-		else if (nAttribute == COND_Level)			{	strAttributeMissing = PRINT_LEVEL_MISSING;			nAttributeValue = self.level;							}
-		else										{	strAttributeMissing = "";							nAttributeValue = default;								};
+		if		(nAttribute == ATR_HITPOINTS)				{	strAttributeMissing = PRINT_HITPOINTS_MISSING;		nAttributeValue = self.attribute[ATR_HITPOINTS];		}
+		else if (nAttribute == ATR_HITPOINTS_MAX)			{	strAttributeMissing = PRINT_HITPOINTS_MAX_MISSING;	nAttributeValue = self.attribute[ATR_HITPOINTS_MAX];	}
+		else if (nAttribute == ATR_MANA)					{	strAttributeMissing = PRINT_MANA_MISSING;			nAttributeValue = self.attribute[ATR_MANA];				}
+		else if (nAttribute == ATR_MANA_MAX)				{	strAttributeMissing = PRINT_MANA_MAX_MISSING;		nAttributeValue = self.attribute[ATR_MANA_MAX];			}
+		else if (nAttribute == ATR_STRENGTH)				{	strAttributeMissing = PRINT_STRENGTH_MISSING;		nAttributeValue = self.attribute[ATR_STRENGTH];			}
+		else if (nAttribute == ATR_DEXTERITY)				{	strAttributeMissing = PRINT_DEXTERITY_MISSING;		nAttributeValue = self.attribute[ATR_DEXTERITY];		}
+		else if (nAttribute == ATR_POWER)					{	strAttributeMissing = PRINT_POWER_MISSING;			nAttributeValue = self.attribute[ATR_POWER];			}
+		else if (nAttribute == COND_AIVAR+AIV_Stamina)		{	strAttributeMissing = PRINT_STAMINA_MISSING;		nAttributeValue = self.aivar[AIV_Stamina];				}
+		else if (nAttribute == COND_AIVAR+AIV_Stamina_MAX)	{	strAttributeMissing = PRINT_STAMINA_MAX_MISSING;	nAttributeValue = self.aivar[AIV_Stamina_MAX];			}
+		else if (nAttribute == COND_Level)					{	strAttributeMissing = PRINT_LEVEL_MISSING;			nAttributeValue = self.level;							}
+		else												{	strAttributeMissing = "";							nAttributeValue = default;								};
 		
 		var int nDifference; nDifference = nValue - nAttributeValue;
 		var string strDifference; strDifference = IntToString(nDifference);

@@ -297,17 +297,25 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿k¹ szatê maga", DIA_Addon_Eremit_Klamotten_KdF_H);
 	};
 	*/
-	if (Npc_HasItems (other, ITAR_Leather_L) > 0)
+	if (Npc_HasItems (other, ITAR_Leather_L1) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz", DIA_Addon_Eremit_Klamotten_Leather);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz I", DIA_Addon_Eremit_Klamotten_Leather_L1);
+	};
+	if (Npc_HasItems (other, ITAR_Leather_L2) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz II", DIA_Addon_Eremit_Klamotten_Leather_L2);
+	};
+	if (Npc_HasItems (other, ITAR_Leather_L3) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz III", DIA_Addon_Eremit_Klamotten_Leather_L3);
+	};
+	if (Npc_HasItems (other, ITAR_Leather_BDT) > 0)
+	{
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj skórzany pancerz bandyty", DIA_Addon_Eremit_Klamotten_Leather_BDT);
 	};
 	if (Npc_HasItems (other, ITAR_BDT_L) > 0)
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekki pancerz bandyty", DIA_Addon_Eremit_Klamotten_BDT_L);
-	};
-	if (Npc_HasItems (other, ITAR_BDT_M) > 0)
-	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj œredni pancerz bandyty", DIA_Addon_Eremit_Klamotten_BDT_M);
 	};
 	if (Npc_HasItems (other, ITAR_BDT_H) > 0)
 	{
@@ -341,13 +349,13 @@ func void DIA_Addon_Eremit_Klamotten_Info ()
 	{
 		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿k¹ zbrojê stra¿nika œwi¹tynnego", DIA_Addon_Eremit_Klamotten_CorAngar);
 	};
-	if (Npc_HasItems (other, ITAR_Prisoner_L) > 0)
+	if (Npc_HasItems (other, ITAR_STRF_L) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekkie spodnie kopacza", DIA_Addon_Eremit_Klamotten_Prisoner_L);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj lekkie spodnie kopacza", DIA_Addon_Eremit_Klamotten_STRF_L);
 	};
-	if (Npc_HasItems (other, ITAR_Prisoner_H) > 0)
+	if (Npc_HasItems (other, ITAR_STRF_H) > 0)
 	{
-		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿kie spodnie kopacza", DIA_Addon_Eremit_Klamotten_Prisoner_H);
+		Info_AddChoice (DIA_Addon_Eremit_Klamotten, "Daj ciê¿kie spodnie kopacza", DIA_Addon_Eremit_Klamotten_STRF_H);
 	};
 	if (Npc_HasItems (other, ITAR_Dementor) > 0)
 	{
@@ -548,19 +556,29 @@ func void DIA_Addon_Eremit_Klamotten_KdF_H()
 	B_GiveInvItems (other, self, ITAR_MAG_H, 1);
 	B_Eremit_Tatsache();
 };
-func void DIA_Addon_Eremit_Klamotten_Leather()
+func void DIA_Addon_Eremit_Klamotten_Leather_L1()
 {
-	B_GiveInvItems (other, self, ITAR_Leather_L, 1);
+	B_GiveInvItems (other, self, ITAR_Leather_L1, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Leather_L2()
+{
+	B_GiveInvItems (other, self, ITAR_Leather_L2, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Leather_L3()
+{
+	B_GiveInvItems (other, self, ITAR_Leather_L3, 1);
+	B_Eremit_Tatsache();
+};
+func void DIA_Addon_Eremit_Klamotten_Leather_BDT()
+{
+	B_GiveInvItems (other, self, ITAR_Leather_BDT, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_BDT_L()
 {
 	B_GiveInvItems (other, self, ITAR_BDT_L, 1);
-	B_Eremit_Tatsache();
-};
-func void DIA_Addon_Eremit_Klamotten_BDT_M()
-{
-	B_GiveInvItems (other, self, ITAR_BDT_M, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_BDT_H()
@@ -603,14 +621,14 @@ func void DIA_Addon_Eremit_Klamotten_CorAngar()
 	B_GiveInvItems (other, self, ITAR_SLT_H, 1);
 	B_Eremit_Tatsache();
 };
-func void DIA_Addon_Eremit_Klamotten_Prisoner_L()
+func void DIA_Addon_Eremit_Klamotten_STRF_L()
 {
-	B_GiveInvItems (other, self, ITAR_Prisoner_L, 1);
+	B_GiveInvItems (other, self, ITAR_STRF_L, 1);
 	B_Eremit_Tatsache();
 };
-func void DIA_Addon_Eremit_Klamotten_Prisoner_H()
+func void DIA_Addon_Eremit_Klamotten_STRF_H()
 {
-	B_GiveInvItems (other, self, ITAR_Prisoner_H, 1);
+	B_GiveInvItems (other, self, ITAR_STRF_H, 1);
 	B_Eremit_Tatsache();
 };
 func void DIA_Addon_Eremit_Klamotten_Dementor()

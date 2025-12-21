@@ -50,8 +50,9 @@ func void B_MM_AssessPlayer()
 ///******************************************************************************************
 func void B_MM_Trampling()
 {
-	if (Npc_GetHeightToNpc(self, other) > 60 && Npc_GetDistToNpc(self, other) < 180)
+	if (Npc_GetHeightToNpc(self, other) > 40 && Npc_GetDistToNpc(self, other) < 120)
 	{
+		Snd_Play("FIG_SwordFinal");
 		B_MagicHurtNpc (other, self, self.attribute[ATR_HITPOINTS_MAX]);
 	};
 };

@@ -137,7 +137,7 @@ instance spellFX_ThunderStorm_Screenblend (CFx_Base_Proto)
 */
 
 //******************************************************************************************
-instance spellFX_Skull (CFX_BASE_PROTO)
+instance spellFX_Skull (CFx_Base_Proto)
 {
 	visname_s				=	"MFX_SKULL_INIT";
 	visalpha				=	1;
@@ -171,7 +171,7 @@ instance spellFX_Skull_KEY_CAST (C_ParticleFXEmitKey)
 	sfxisambient			=	1;
 };
 
-instance spellFX_Skull_Skull (CFX_BASE_PROTO)
+instance spellFX_Skull_Skull (CFx_Base_Proto)
 {
 	visname_s				=	"MFX_SKULL_CAST";
 	emtrjmode_s				=	"TARGET SPLINE RANDOM";
@@ -422,7 +422,7 @@ instance spellFX_Icelance_COLLIDEFX (CFx_Base_Proto)
 */
 
 //******************************************************************************************
-instance SPELLFX_WATERFIST (CFX_BASE_PROTO)
+instance SPELLFX_WATERFIST (CFx_Base_Proto)
 {
 	visname_s				=	"MFX_WATERFIST_INIT";
 	visalpha				=	1;
@@ -484,7 +484,7 @@ instance spellFX_Waterfist_COLLIDEDYNFX (CFx_Base_Proto)
 	sfxisambient			=	1;
 };
 
-instance SPELLFX_WATERFIST_ABYSS (CFX_BASE_PROTO)
+instance SPELLFX_WATERFIST_ABYSS (CFx_Base_Proto)
 {
 	visname_s				=	"MFX_WATERFIST_CAST";
 	visalpha				=	1;
@@ -580,7 +580,7 @@ instance spellFX_Greententacle_KEY_COLLIDE (C_ParticleFXEmitKey)
 {
 };
 
-instance spellFX_Greententacle_Bridge (CFX_BASE_PROTO)
+instance spellFX_Greententacle_Bridge (CFx_Base_Proto)
 {
 	visname_S 				=	"MFX_GREENTENTACLE_CAST";
 	visalpha				=	1;
@@ -4611,7 +4611,7 @@ instance SLEEP_BLEND (CFx_Base_Proto)
 //******************************************************************************************
 //	Special Effects
 //******************************************************************************************
-instance SPELLFX_FIREARMOR (CFX_BASE_PROTO)
+instance SPELLFX_FIREARMOR (CFx_Base_Proto)
 {
 	visname_s				=	"FIRE_MODEL_KAIRO";
 	visalpha				=	1;
@@ -4636,7 +4636,7 @@ instance SPELLFX_FIREARMOR_KEY_CAST (C_PARTICLEFXEMITKEY)
 	lightrange				=	500;
 };
 
-instance SPELLFX_FIREARMOR_SMOKE (CFX_BASE_PROTO)
+instance SPELLFX_FIREARMOR_SMOKE (CFx_Base_Proto)
 {
 	visname_s				=	"SMOKE_MODEL_KAIRO";
 	visalpha				=	1;
@@ -4660,7 +4660,7 @@ instance SPELLFX_FIREARMOR_SMOKE_KEY_CAST (C_PARTICLEFXEMITKEY)
 };
 
 //******************************************************************************************
-instance SPELLFX_FIRESWORD (CFX_BASE_PROTO)
+instance SPELLFX_FIRESWORD (CFx_Base_Proto)
 {
 	visname_S 				=	"FIRE_SWORD";
 	visAlpha				=	1;
@@ -4669,7 +4669,7 @@ instance SPELLFX_FIRESWORD (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_FIRESWORDBLACK (CFX_BASE_PROTO)
+instance SPELLFX_FIRESWORDBLACK (CFx_Base_Proto)
 {
 	visname_S 				=	"FIRE_SWORDBLACK";
 	visAlpha				=	1;
@@ -4683,7 +4683,7 @@ instance SPELLFX_FIRESWORDBLACK_KEY_CAST (C_PARTICLEFXEMITKEY)
 	lightrange				=	200;
 };
 
-instance SPELLFX_FIRESWORD_ATTACK (CFX_BASE_PROTO)
+instance SPELLFX_FIRESWORD_ATTACK (CFx_Base_Proto)
 {
 	visname_S				=	"FIRE_SWORD_ATTACK";
 	emTrjOriginNode			=	"ZS_RIGHTHAND";
@@ -4692,7 +4692,7 @@ instance SPELLFX_FIRESWORD_ATTACK (CFX_BASE_PROTO)
 	emAdjustShpToOrigin 	=	1;
 };
 
-instance SPELLFX_FIRESWORD_HIT (CFX_BASE_PROTO)
+instance SPELLFX_FIRESWORD_HIT (CFx_Base_Proto)
 {
 	visname_S				=	"FIRE_SWORD_HIT";
 	emTrjOriginNode			=	"ZS_RIGHTHAND";
@@ -4741,7 +4741,7 @@ instance SPELLFX_FIRESWORD_KEY_INVEST_5 (C_PARTICLEFXEMITKEY)
 };
 
 //******************************************************************************************
-instance SPELLFX_MAGESTAFF1 (CFX_BASE_PROTO)
+instance SPELLFX_MAGESTAFF1 (CFx_Base_Proto)
 {
 	visname_S 				=	"MAGESTAFF1";
 	visAlpha				=	1;
@@ -4750,7 +4750,7 @@ instance SPELLFX_MAGESTAFF1 (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_MAGESTAFF2 (CFX_BASE_PROTO)
+instance SPELLFX_MAGESTAFF2 (CFx_Base_Proto)
 {
 	visname_S 				=	"MAGESTAFF2";
 	visAlpha				=	1;
@@ -4759,7 +4759,7 @@ instance SPELLFX_MAGESTAFF2 (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_MAGESTAFF3 (CFX_BASE_PROTO)
+instance SPELLFX_MAGESTAFF3 (CFx_Base_Proto)
 {
 	visname_S 				=	"MAGESTAFF3";
 	visAlpha				=	1;
@@ -4768,7 +4768,7 @@ instance SPELLFX_MAGESTAFF3 (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_MAGESTAFF4 (CFX_BASE_PROTO)
+instance SPELLFX_MAGESTAFF4 (CFx_Base_Proto)
 {
 	visname_S 				=	"MAGESTAFF4";
 	visAlpha				=	1;
@@ -4777,7 +4777,7 @@ instance SPELLFX_MAGESTAFF4 (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_MAGESTAFF5 (CFX_BASE_PROTO)
+instance SPELLFX_MAGESTAFF5 (CFx_Base_Proto)
 {
 	visname_S 				=	"MAGESTAFF5";
 	visAlpha				=	1;
@@ -4787,7 +4787,7 @@ instance SPELLFX_MAGESTAFF5 (CFX_BASE_PROTO)
 };
 
 //******************************************************************************************
-instance SPELLFX_BOW (CFX_BASE_PROTO)
+instance SPELLFX_BOW (CFx_Base_Proto)
 {
 	visname_s				=	"MAGIC_BOW";
 	visalpha				=	1;
@@ -4802,7 +4802,7 @@ instance SPELLFX_BOW (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_FIREBOW (CFX_BASE_PROTO)
+instance SPELLFX_FIREBOW (CFx_Base_Proto)
 {
 	visname_s				=	"FIRE_BOW";
 	visalpha				=	1;
@@ -4817,7 +4817,7 @@ instance SPELLFX_FIREBOW (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_ARROW (CFX_BASE_PROTO)
+instance SPELLFX_ARROW (CFx_Base_Proto)
 {
 	visname_s				=	"MAGIC_ARROW";
 	visalpha				=	1;
@@ -4848,7 +4848,7 @@ instance SPELLFX_ARROW_KEY_INVEST_3 (C_PARTICLEFXEMITKEY)
 	lightrange				=	400;
 };
 
-instance SPELLFX_FIREARROW (CFX_BASE_PROTO)
+instance SPELLFX_FIREARROW (CFx_Base_Proto)
 {
 	visname_s				=	"FIRE_ARROW";
 	visalpha				=	1;
@@ -4880,7 +4880,7 @@ instance SPELLFX_FIREARROW_KEY_INVEST_3 (C_PARTICLEFXEMITKEY)
 };
 
 //******************************************************************************************
-instance SPELLFX_CROSSBOW (CFX_BASE_PROTO)
+instance SPELLFX_CROSSBOW (CFx_Base_Proto)
 {
 	visname_s				=	"MAGIC_CROSSBOW";
 	visalpha				=	1;
@@ -4895,7 +4895,7 @@ instance SPELLFX_CROSSBOW (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_BOLT (CFX_BASE_PROTO)
+instance SPELLFX_BOLT (CFx_Base_Proto)
 {
 	visname_s				=	"MAGIC_BOLT";
 	visalpha				=	1;
@@ -4917,7 +4917,7 @@ instance SPELLFX_BOLT_KEY_CAST (C_PARTICLEFXEMITKEY)
 };
 
 //******************************************************************************************
-instance SPELLFX_ITEMGLIMMER (CFX_BASE_PROTO)
+instance SPELLFX_ITEMGLIMMER (CFx_Base_Proto)
 {
 	visname_s				=	"ITEM_GLIMMER";
 	visalpha				=	1;
@@ -4933,7 +4933,7 @@ instance SPELLFX_ITEMGLIMMER (CFX_BASE_PROTO)
 };
 
 //******************************************************************************************
-instance SPELLFX_HEALTHPOTION (CFX_BASE_PROTO)
+instance SPELLFX_HEALTHPOTION (CFx_Base_Proto)
 {
 	visname_s				=	"HEALTH_POTION";
 	visalpha				=	1;
@@ -4948,7 +4948,7 @@ instance SPELLFX_HEALTHPOTION (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_MANAPOTION (CFX_BASE_PROTO)
+instance SPELLFX_MANAPOTION (CFx_Base_Proto)
 {
 	visname_s				=	"MANA_POTION";
 	visalpha				=	1;
@@ -4963,7 +4963,7 @@ instance SPELLFX_MANAPOTION (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_YELLOWPOTION (CFX_BASE_PROTO)
+instance SPELLFX_YELLOWPOTION (CFx_Base_Proto)
 {
 	visname_s				=	"YELLOW_POTION";
 	visalpha				=	1;
@@ -4978,7 +4978,7 @@ instance SPELLFX_YELLOWPOTION (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_PURPLEPOTION (CFX_BASE_PROTO)
+instance SPELLFX_PURPLEPOTION (CFx_Base_Proto)
 {
 	visname_s				=	"PURPLE_POTION";
 	visalpha				=	1;
@@ -4994,7 +4994,7 @@ instance SPELLFX_PURPLEPOTION (CFX_BASE_PROTO)
 };
 
 //******************************************************************************************
-instance SPELLFX_WEAKGLIMMER (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER";
 	visalpha				=	1;
@@ -5009,7 +5009,7 @@ instance SPELLFX_WEAKGLIMMER (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_RED (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_RED (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_RED";
 	visalpha				=	1;
@@ -5024,7 +5024,7 @@ instance SPELLFX_WEAKGLIMMER_RED (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_BLUE (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_BLUE (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_BLUE";
 	visalpha				=	1;
@@ -5039,7 +5039,7 @@ instance SPELLFX_WEAKGLIMMER_BLUE (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_YELLOW (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_YELLOW (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_YELLOW";
 	visalpha				=	1;
@@ -5054,7 +5054,7 @@ instance SPELLFX_WEAKGLIMMER_YELLOW (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_GREEN (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_GREEN (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_GREEN";
 	visalpha				=	1;
@@ -5069,7 +5069,7 @@ instance SPELLFX_WEAKGLIMMER_GREEN (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_LBLUE (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_LBLUE (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_LBLUE";
 	visalpha				=	1;
@@ -5084,7 +5084,7 @@ instance SPELLFX_WEAKGLIMMER_LBLUE (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_WEAKGLIMMER_PURPLE (CFX_BASE_PROTO)
+instance SPELLFX_WEAKGLIMMER_PURPLE (CFx_Base_Proto)
 {
 	visname_s				=	"WEAK_GLIMMER_PURPLE";
 	visalpha				=	1;
@@ -5100,7 +5100,7 @@ instance SPELLFX_WEAKGLIMMER_PURPLE (CFX_BASE_PROTO)
 };
 
 //******************************************************************************************
-instance SPELLFX_ITEMSTARS (CFX_BASE_PROTO)
+instance SPELLFX_ITEMSTARS (CFx_Base_Proto)
 {
 	visname_s				=	"ITEM_STARS";
 	visalpha				=	1;
@@ -5115,7 +5115,7 @@ instance SPELLFX_ITEMSTARS (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_ITEMSTARS_RED (CFX_BASE_PROTO)
+instance SPELLFX_ITEMSTARS_RED (CFx_Base_Proto)
 {
 	visname_s				=	"ITEM_STARS_RED";
 	visalpha				=	1;
@@ -5130,7 +5130,7 @@ instance SPELLFX_ITEMSTARS_RED (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_ITEMSTARS_BLUE (CFX_BASE_PROTO)
+instance SPELLFX_ITEMSTARS_BLUE (CFx_Base_Proto)
 {
 	visname_s				=	"ITEM_STARS_BLUE";
 	visalpha				=	1;
@@ -5145,7 +5145,7 @@ instance SPELLFX_ITEMSTARS_BLUE (CFX_BASE_PROTO)
 	emAdjustShpToOrigin		=	1;
 };
 
-instance SPELLFX_ITEMSTARS_YELLOW (CFX_BASE_PROTO)
+instance SPELLFX_ITEMSTARS_YELLOW (CFx_Base_Proto)
 {
 	visname_s				=	"ITEM_STARS_YELLOW";
 	visalpha				=	1;
@@ -5161,7 +5161,7 @@ instance SPELLFX_ITEMSTARS_YELLOW (CFX_BASE_PROTO)
 };
 
 //******************************************************************************************
-instance SPELLFX_GLOW (CFX_BASE_PROTO)
+instance SPELLFX_GLOW (CFx_Base_Proto)
 {
 	visname_s				=	"GOLD_GLOW";
 	visalpha				=	1;
@@ -5182,7 +5182,7 @@ instance SPELLFX_GLOW_KEY_CAST (C_PARTICLEFXEMITKEY)
 };
 
 //******************************************************************************************
-instance SPELLFX_UNDEAD_DRAGON (CFX_BASE_PROTO)
+instance SPELLFX_UNDEAD_DRAGON (CFx_Base_Proto)
 {
 	visname_s				=	"UNDEAD_DRAGON";
 	visalpha				=	1;
@@ -5203,7 +5203,7 @@ instance SPELLFX_UNDEAD_DRAGON (CFX_BASE_PROTO)
 	emFXCreatedOwnTrj		=	1;	// alle children dieses fx haben eine eigene flugbahn!!!
 };
 
-instance SPELLFX_DRAGONEYE_LEFT (CFX_BASE_PROTO)
+instance SPELLFX_DRAGONEYE_LEFT (CFx_Base_Proto)
 {
 	visname_s				=	"DRAGON_EYE_LEFT";
 	visalpha				=	1;
@@ -5223,7 +5223,7 @@ instance SPELLFX_DRAGONEYE_LEFT (CFX_BASE_PROTO)
 	emFXCreatedOwnTrj		=	1;	// alle children dieses fx haben eine eigene flugbahn!!!
 };
 
-instance SPELLFX_DRAGONEYE_RIGHT (CFX_BASE_PROTO)
+instance SPELLFX_DRAGONEYE_RIGHT (CFx_Base_Proto)
 {
 	visname_s				=	"DRAGON_EYE_RIGHT";
 	visalpha				=	1;

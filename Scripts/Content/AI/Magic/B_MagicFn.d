@@ -6,6 +6,11 @@ func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int dmg)
 	if (dmg > 0)
 	{
 		Npc_ChangeAttribute (oth, ATR_HITPOINTS, -dmg);
+		
+		if (Npc_IsPlayer(slf))
+		{
+			oth.aivar[AIV_DamageDealtByPlayer] += dmg;
+		};
 	};
 	
 	if (Npc_IsDead(oth))

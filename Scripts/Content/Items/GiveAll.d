@@ -22,15 +22,18 @@ func void GiveAll_Amulets (var C_Npc slf)
 	CreateInvItem (slf, ItAm_Bow_01);
 	CreateInvItem (slf, ItAm_Cbow_01);
 	CreateInvItem (slf, ItAm_Master_01);
-	CreateInvItem (slf, ItAm_CritDmg_01);
-	CreateInvItem (slf, ItAm_Ls_01);
-	CreateInvItem (slf, ItAm_MinDmg_01);
+	CreateInvItem (slf, ItAm_Penetration_01);
+	CreateInvItem (slf, ItAm_OverloadDmg_01);
 	
 	CreateInvItem (slf, ItAm_Orc_01);
 	CreateInvItem (slf, ItAm_Orc_02);
 	CreateInvItem (slf, ItAm_Orc_03);
 	CreateInvItem (slf, ItAm_Orc_04);
-	CreateInvItem (slf, ItAm_Orc_05);
+	
+	CreateInvItem (slf, ItAm_Addon_WispDetector);
+	CreateInvItem (slf, ItAm_InnosAura);
+	CreateInvItem (slf, ItAm_InnosEye);
+	CreateInvItem (slf, ItAm_Prot_Obsession);
 };
 
 ///******************************************************************************************
@@ -131,285 +134,290 @@ func void GiveAll_AnimalTrophies (var C_Npc slf)
 ///******************************************************************************************
 func void GiveAll_Armors (var C_Npc slf)
 {
-	/// old camp
-	CreateInvItem (slf, ITAR_STT_L);
-	CreateInvItem (slf, ITAR_STT_H);
-	CreateInvItem (slf, ITAR_GRD_L);
-	CreateInvItem (slf, ITAR_GRD_M);
-	CreateInvItem (slf, ITAR_GRD_H);
-	CreateInvItem (slf, ITAR_EBR_M);
-	CreateInvItem (slf, ITAR_EBR_G);
-	/// old camp (BABE)
-	CreateInvItem (slf, ITAR_Babe_STT_L);
-	CreateInvItem (slf, ITAR_Babe_STT_H);
-	CreateInvItem (slf, ITAR_Babe_GRD_L);
-	CreateInvItem (slf, ITAR_Babe_GRD_M);
-	CreateInvItem (slf, ITAR_Babe_GRD_H);
-	
-	///	new camp
-	CreateInvItem (slf, ITAR_ORG_L);
-	CreateInvItem (slf, ITAR_ORG_H);
-	///	new camp (BABE)
-	CreateInvItem (slf, ITAR_Babe_ORG_L);
-	CreateInvItem (slf, ITAR_Babe_ORG_H);
-	
-	///	psi camp
-	CreateInvItem (slf, ITAR_SLN_L);
-	CreateInvItem (slf, ITAR_SLN_M);
-	CreateInvItem (slf, ITAR_SLN_H);
-	CreateInvItem (slf, ITAR_SLT_L);
-	CreateInvItem (slf, ITAR_SLT_M);
-	CreateInvItem (slf, ITAR_SLT_H);
-	CreateInvItem (slf, ITAR_SLG_L);
-	CreateInvItem (slf, ITAR_SLG_H);
-	///	psi camp (BABE)
-	CreateInvItem (slf, ITAR_Babe_SLN_L);
-	CreateInvItem (slf, ITAR_Babe_SLN_M);
-	CreateInvItem (slf, ITAR_Babe_SLN_H);
-	CreateInvItem (slf, ITAR_Babe_SLT_L);
-	CreateInvItem (slf, ITAR_Babe_SLT_M);
-	CreateInvItem (slf, ITAR_Babe_SLT_H);
-	CreateInvItem (slf, ITAR_Babe_SLG_L);
-	CreateInvItem (slf, ITAR_Babe_SLG_H);
-	
-	///	magic armors
-	CreateInvItem (slf, ITAR_ORE_M);
-	CreateInvItem (slf, ITAR_ORE_H);
-	
-	///	farmer armors: BAU
-	CreateInvItem (slf, ITAR_BAU_L_00); CreateInvItem (slf, ITAR_BAU_H_00);
-	CreateInvItem (slf, ITAR_BAU_L_01); CreateInvItem (slf, ITAR_BAU_H_01);
-	CreateInvItem (slf, ITAR_BAU_L_02); CreateInvItem (slf, ITAR_BAU_H_02);
-	CreateInvItem (slf, ITAR_BAU_L_03); CreateInvItem (slf, ITAR_BAU_H_03);
-	///	farmer armors: BAU (BABE)
-	CreateInvItem (slf, ITAR_Babe_BAU_L_00); CreateInvItem (slf, ITAR_Babe_BAU_H_00);
-	CreateInvItem (slf, ITAR_Babe_BAU_L_01); CreateInvItem (slf, ITAR_Babe_BAU_H_01);
-	
-	///	citizen armors: VLK
-	CreateInvItem (slf, ITAR_VLK_L_00); CreateInvItem (slf, ITAR_VLK_H_00);
-	CreateInvItem (slf, ITAR_VLK_L_01); CreateInvItem (slf, ITAR_VLK_H_01);
-	CreateInvItem (slf, ITAR_VLK_L_02); CreateInvItem (slf, ITAR_VLK_H_02);
-	CreateInvItem (slf, ITAR_VLK_L_03); CreateInvItem (slf, ITAR_VLK_H_03);
-	CreateInvItem (slf, ITAR_VLK_L_04); CreateInvItem (slf, ITAR_VLK_H_04);
-	CreateInvItem (slf, ITAR_VLK_L_05); CreateInvItem (slf, ITAR_VLK_H_05);
-	CreateInvItem (slf, ITAR_VLK_L_06); CreateInvItem (slf, ITAR_VLK_H_06);
-	CreateInvItem (slf, ITAR_VLK_L_07); CreateInvItem (slf, ITAR_VLK_H_07);
-	CreateInvItem (slf, ITAR_VLK_L_08); CreateInvItem (slf, ITAR_VLK_H_08);
-	CreateInvItem (slf, ITAR_VLK_L_09); CreateInvItem (slf, ITAR_VLK_H_09);
-	CreateInvItem (slf, ITAR_VLK_L_10); CreateInvItem (slf, ITAR_VLK_H_10);
-	CreateInvItem (slf, ITAR_VLK_L_11); CreateInvItem (slf, ITAR_VLK_H_11);
-	CreateInvItem (slf, ITAR_VLK_L_12); CreateInvItem (slf, ITAR_VLK_H_12);
-	CreateInvItem (slf, ITAR_VLK_L_13); CreateInvItem (slf, ITAR_VLK_H_13);
-	CreateInvItem (slf, ITAR_VLK_L_14); CreateInvItem (slf, ITAR_VLK_H_14);
-	CreateInvItem (slf, ITAR_VLK_L_15); CreateInvItem (slf, ITAR_VLK_H_15);
-	///	citizen armors: VLK (BABE)
-	CreateInvItem (slf, ITAR_Babe_VLK_L_00); CreateInvItem (slf, ITAR_Babe_VLK_X_00); CreateInvItem (slf, ITAR_Babe_VLK_H_00);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_01); CreateInvItem (slf, ITAR_Babe_VLK_X_01); CreateInvItem (slf, ITAR_Babe_VLK_H_01);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_02); CreateInvItem (slf, ITAR_Babe_VLK_X_02); CreateInvItem (slf, ITAR_Babe_VLK_H_02);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_03); CreateInvItem (slf, ITAR_Babe_VLK_X_03); CreateInvItem (slf, ITAR_Babe_VLK_H_03);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_04); CreateInvItem (slf, ITAR_Babe_VLK_X_04);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_05); CreateInvItem (slf, ITAR_Babe_VLK_X_05);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_06); CreateInvItem (slf, ITAR_Babe_VLK_X_06);
-	CreateInvItem (slf, ITAR_Babe_VLK_L_07); CreateInvItem (slf, ITAR_Babe_VLK_X_07);
-	
-	///	worker armors
-	CreateInvItem (slf, ITAR_Alchemist);
-	CreateInvItem (slf, ITAR_Barkeeper);
-	CreateInvItem (slf, ITAR_Butcher);
-	CreateInvItem (slf, ITAR_Cook);
-	CreateInvItem (slf, ITAR_Hunter);
-	CreateInvItem (slf, ITAR_Judge);
-	CreateInvItem (slf, ITAR_Smith);
-	///	worker armors (BABE)
-	CreateInvItem (slf, ITAR_Babe_Nurse);
-	
-	///	leather armors
-	CreateInvItem (slf, ITAR_Leather_L);
-	CreateInvItem (slf, ITAR_Leather_M);
-	CreateInvItem (slf, ITAR_Leather_T);
-	CreateInvItem (slf, ITAR_Leather_S);
-	CreateInvItem (slf, ITAR_Leather_H);
-	CreateInvItem (slf, ITAR_Leather_B);
-	CreateInvItem (slf, ITAR_Crawler);
-	CreateInvItem (slf, ITAR_DragonSnapper);
-	///	leather armors (BABE)
-	CreateInvItem (slf, ITAR_Babe_Leather);
-	CreateInvItem (slf, ITAR_Babe_Crawler);
-	
-	///	guard armors: MIL & ROY
-	CreateInvItem (slf, ITAR_MIL_N);
-	CreateInvItem (slf, ITAR_MIL_L);
-	CreateInvItem (slf, ITAR_MIL_M);
-	CreateInvItem (slf, ITAR_MIL_H);
-	CreateInvItem (slf, ITAR_ROY_L);
-	CreateInvItem (slf, ITAR_ROY_M);
-	CreateInvItem (slf, ITAR_ROY_H);
-	///	guard armors: MIL & ROY (BABE)
-	CreateInvItem (slf, ITAR_Babe_MIL_N);
-	CreateInvItem (slf, ITAR_Babe_MIL_L);
-	CreateInvItem (slf, ITAR_Babe_MIL_M);
-	CreateInvItem (slf, ITAR_Babe_MIL_H);
-	
-	///	dragon hunter armors: SLD & DJG
-	CreateInvItem (slf, ITAR_SLD_N);
-	CreateInvItem (slf, ITAR_SLD_L);
-	CreateInvItem (slf, ITAR_SLD_M);
-	CreateInvItem (slf, ITAR_SLD_H);
-	CreateInvItem (slf, ITAR_DJG_L);
-	CreateInvItem (slf, ITAR_DJG_M);
-	CreateInvItem (slf, ITAR_DJG_H);
-	///	dragon hunter armors: SLD & DJG (BABE)
-	CreateInvItem (slf, ITAR_Babe_SLD_L);
-	CreateInvItem (slf, ITAR_Babe_SLD_M);
-	CreateInvItem (slf, ITAR_Babe_SLD_H);
-	CreateInvItem (slf, ITAR_Babe_DJG_L);
-	CreateInvItem (slf, ITAR_Babe_DJG_H);
-	
-	///	orc mercenary armors
-	CreateInvItem (slf, ITAR_ORM_L);
-	CreateInvItem (slf, ITAR_ORM_M);
-	CreateInvItem (slf, ITAR_ORM_H);
-	CreateInvItem (slf, ITAR_ORW_L);
-	CreateInvItem (slf, ITAR_ORW_M);
-	CreateInvItem (slf, ITAR_ORW_H);
-	
-	///	mage armors: NOV
-	CreateInvItem (slf, ITAR_NOV_L);
-	CreateInvItem (slf, ITAR_NOV_H);
-	CreateInvItem (slf, ITAR_NOV_A);
-	
-	///	mage armors: MAG & AMG
-	CreateInvItem (slf, ITAR_MAG_L);
-	CreateInvItem (slf, ITAR_MAG_M);
-	CreateInvItem (slf, ITAR_MAG_H);
-	CreateInvItem (slf, ITAR_AMG_L);
-	CreateInvItem (slf, ITAR_AMG_M);
-	CreateInvItem (slf, ITAR_AMG_H);
-	CreateInvItem (slf, ITAR_MAG_A);
-	CreateInvItem (slf, ITAR_MAG_B);
-	///	mage armors: MAG & AMG (BABE)
-	CreateInvItem (slf, ITAR_Babe_Mage);
-	
-	///	paladin armors: PAL
-	CreateInvItem (slf, ITAR_PAL_L);
-	CreateInvItem (slf, ITAR_PAL_M);
-	CreateInvItem (slf, ITAR_PAL_H);
-	CreateInvItem (slf, ITAR_PAL_D);
-	CreateInvItem (slf, ITAR_PAL_T);
-	CreateInvItem (slf, ITAR_PAL_U);
-	CreateInvItem (slf, ITAR_PAL_G);
-	
-	///	assassin armors: AKO & PRI
-	CreateInvItem (slf, ITAR_AKO_L);
-	CreateInvItem (slf, ITAR_AKO_M);
-	CreateInvItem (slf, ITAR_AKO_H);
-	CreateInvItem (slf, ITAR_PRI_L);
-	CreateInvItem (slf, ITAR_PRI_M);
-	CreateInvItem (slf, ITAR_PRI_H);
-	
-	///	prisoner armors: STRF
-	CreateInvItem (slf, ITAR_Prisoner_L);
-	CreateInvItem (slf, ITAR_Prisoner_S);
-	CreateInvItem (slf, ITAR_Prisoner_H);
-	///	prisoner armors: STRF (BABE)
-	CreateInvItem (slf, ITAR_Babe_Prisoner_L);
-	CreateInvItem (slf, ITAR_Babe_Prisoner_S);
-	CreateInvItem (slf, ITAR_Babe_Prisoner_H);
-	
-	///	bandit armors: BDT & RVN
-	CreateInvItem (slf, ITAR_BDT_L);
-	CreateInvItem (slf, ITAR_BDT_M);
-	CreateInvItem (slf, ITAR_BDT_H);
-	CreateInvItem (slf, ITAR_RVN_L);
-	CreateInvItem (slf, ITAR_RVN_M);
-	CreateInvItem (slf, ITAR_RVN_H);
-	CreateInvItem (slf, ITAR_Raven);
-	
-	///	pirate armors: PIR
-	CreateInvItem (slf, ITAR_PIR_L);
-	CreateInvItem (slf, ITAR_PIR_M);
-	CreateInvItem (slf, ITAR_PIR_H);
-	
-	///	ranger armors
-	CreateInvItem (slf, ITAR_Ranger_L);
-	CreateInvItem (slf, ITAR_Ranger_H);
-	
-	///	dementor armors: DMT
-	CreateInvItem (slf, ITAR_Dementor);
-	CreateInvItem (slf, ITAR_Demaster);
-	
-	///	forest armors
-	CreateInvItem (slf, ITAR_WoodRunner);
-	CreateInvItem (slf, ITAR_Druid);
-	
-	///	desert armors
-	CreateInvItem (slf, ITAR_Nomad);
-	
-	/// special armors
-	CreateInvItem (slf, ITAR_Jarkhendar);
-	CreateInvItem (slf, ITAR_Skeleton);
-	CreateInvItem (slf, ITAR_SteamKnight);
-	
-	///	WzA: farmer armors
-	CreateInvItem (slf, ITAR_ACRONA_BAU_00);
-	CreateInvItem (slf, ITAR_ACRONA_BAU_01);
-	CreateInvItem (slf, ITAR_ACRONA_WORKER);
-	
-	///	WzA: pirate armors
-	CreateInvItem (slf, ITAR_ACRONA_PIR_L);
-	CreateInvItem (slf, ITAR_ACRONA_PIR_M);
-	
-	///	WzA: soldier armors
-	CreateInvItem (slf, ITAR_ACRONA_SOLDIER_M);
-	CreateInvItem (slf, ITAR_ACRONA_SOLDIER_H);
-	CreateInvItem (slf, ITAR_ACRONA_KNIGHT);
-	
-	///	WzA: templer armors
-	CreateInvItem (slf, ITAR_ACRONA_TEMPLER_M);
-	CreateInvItem (slf, ITAR_ACRONA_TEMPLER_H);
-	CreateInvItem (slf, ITAR_ACRONA_MAGE);
-	
-	///	WzA: baron armors
-	CreateInvItem (slf, ITAR_ACRONA_EBR_M);
-	CreateInvItem (slf, ITAR_ACRONA_EBR_H);
-	CreateInvItem (slf, ITAR_ACRONA_EBR_K);
-	CreateInvItem (slf, ITAR_ACRONA_LORD);
-	CreateInvItem (slf, ITAR_ACRONA_KING);
-	
-	///	WzA: NewAge armors
-	CreateInvItem (slf, ITAR_NA_JaJ);
-	CreateInvItem (slf, ITAR_NA_JP);
-	CreateInvItem (slf, ITAR_NA_Vest);
-	CreateInvItem (slf, ITAR_NA_SaT);
-	
-	///	WzA: hero armors
-	CreateInvItem (slf, ITAR_NA_SuperHero);
-	CreateInvItem (slf, ITAR_NA_IronHero);
-	
-	///	WzA: StarWars armors
-	CreateInvItem (slf, ITAR_SW_Jedi_L);
-	CreateInvItem (slf, ITAR_SW_Jedi_M);
-	CreateInvItem (slf, ITAR_SW_Jedi_H);
-	CreateInvItem (slf, ITAR_SW_Sith);
-	CreateInvItem (slf, ITAR_SW_Vader);
-	
-	///	WzA: chaos armors
-	CreateInvItem (slf, ITAR_iChaos_Blue);		CreateInvItem (slf, ITAR_aChaos_Blue);
-	CreateInvItem (slf, ITAR_iChaos_Red);		CreateInvItem (slf, ITAR_aChaos_Red);
-	CreateInvItem (slf, ITAR_iChaos_Green);		CreateInvItem (slf, ITAR_aChaos_Green);
-	CreateInvItem (slf, ITAR_iChaos_Yellow);	CreateInvItem (slf, ITAR_aChaos_Yellow);
-	CreateInvItem (slf, ITAR_iChaos_Magenta);	CreateInvItem (slf, ITAR_aChaos_Magenta);
-	CreateInvItem (slf, ITAR_iChaos_Cyan);		CreateInvItem (slf, ITAR_aChaos_Cyan);
-												CreateInvItem (slf, ITAR_aChaos_Pink);
-	
-	///	WzA: polish armors
-	CreateInvItem (slf, ITAR_Polish);
-	
-	///	WzA: red bandit armors
-	CreateInvItem (slf, ITAR_ORG_Red_P);
-	CreateInvItem (slf, ITAR_ORG_Red_L);
-	CreateInvItem (slf, ITAR_ORG_Red_M);
-	CreateInvItem (slf, ITAR_ORG_Red_H);
+	/// for MALE
+	if (slf.aivar[AIV_Gender] == MALE)
+	{
+		///	prisoner armors: STRF
+		CreateInvItem (slf, ITAR_STRF_L);
+		CreateInvItem (slf, ITAR_STRF_S);
+		CreateInvItem (slf, ITAR_STRF_B);
+		CreateInvItem (slf, ITAR_STRF_H);
+		/// old camp
+		CreateInvItem (slf, ITAR_STT_P);
+		CreateInvItem (slf, ITAR_STT_L);
+		CreateInvItem (slf, ITAR_STT_H);
+		CreateInvItem (slf, ITAR_GRD_L);
+		CreateInvItem (slf, ITAR_GRD_M);
+		CreateInvItem (slf, ITAR_GRD_H);
+		CreateInvItem (slf, ITAR_EBR_M);
+		CreateInvItem (slf, ITAR_EBR_G);
+		CreateInvItem (slf, ITAR_EBR_H);
+		///	new camp
+		CreateInvItem (slf, ITAR_ORG_L);
+		CreateInvItem (slf, ITAR_ORG_M);
+		CreateInvItem (slf, ITAR_ORG_H);
+		///	psi camp
+		CreateInvItem (slf, ITAR_SLN_L);
+		CreateInvItem (slf, ITAR_SLN_M);
+		CreateInvItem (slf, ITAR_SLN_H);
+		CreateInvItem (slf, ITAR_SLT_L);
+		CreateInvItem (slf, ITAR_SLT_M);
+		CreateInvItem (slf, ITAR_SLT_H);
+		CreateInvItem (slf, ITAR_SLG_L);
+		CreateInvItem (slf, ITAR_SLG_H);
+		///	magic armors
+		CreateInvItem (slf, ITAR_ORE_M);
+		CreateInvItem (slf, ITAR_ORE_H);
+		
+		///	farmer armors: BAU
+		CreateInvItem (slf, ITAR_BAU_L_00); CreateInvItem (slf, ITAR_BAU_H_00);
+		CreateInvItem (slf, ITAR_BAU_L_01); CreateInvItem (slf, ITAR_BAU_H_01);
+		CreateInvItem (slf, ITAR_BAU_L_02); CreateInvItem (slf, ITAR_BAU_H_02);
+		CreateInvItem (slf, ITAR_BAU_L_03); CreateInvItem (slf, ITAR_BAU_H_03);
+		///	citizen armors: VLK
+		CreateInvItem (slf, ITAR_VLK_L_00); CreateInvItem (slf, ITAR_VLK_H_00);
+		CreateInvItem (slf, ITAR_VLK_L_01); CreateInvItem (slf, ITAR_VLK_H_01);
+		CreateInvItem (slf, ITAR_VLK_L_02); CreateInvItem (slf, ITAR_VLK_H_02);
+		CreateInvItem (slf, ITAR_VLK_L_03); CreateInvItem (slf, ITAR_VLK_H_03);
+		CreateInvItem (slf, ITAR_VLK_L_04); CreateInvItem (slf, ITAR_VLK_H_04);
+		CreateInvItem (slf, ITAR_VLK_L_05); CreateInvItem (slf, ITAR_VLK_H_05);
+		CreateInvItem (slf, ITAR_VLK_L_06); CreateInvItem (slf, ITAR_VLK_H_06);
+		CreateInvItem (slf, ITAR_VLK_L_07); CreateInvItem (slf, ITAR_VLK_H_07);
+		CreateInvItem (slf, ITAR_VLK_L_08); CreateInvItem (slf, ITAR_VLK_H_08);
+		CreateInvItem (slf, ITAR_VLK_L_09); CreateInvItem (slf, ITAR_VLK_H_09);
+		CreateInvItem (slf, ITAR_VLK_L_10); CreateInvItem (slf, ITAR_VLK_H_10);
+		CreateInvItem (slf, ITAR_VLK_L_11); CreateInvItem (slf, ITAR_VLK_H_11);
+		CreateInvItem (slf, ITAR_VLK_L_12); CreateInvItem (slf, ITAR_VLK_H_12);
+		CreateInvItem (slf, ITAR_VLK_L_13); CreateInvItem (slf, ITAR_VLK_H_13);
+		CreateInvItem (slf, ITAR_VLK_L_14); CreateInvItem (slf, ITAR_VLK_H_14);
+		CreateInvItem (slf, ITAR_VLK_L_15); CreateInvItem (slf, ITAR_VLK_H_15);
+		CreateInvItem (slf, ITAR_VLK_BDT);
+		///	worker armors
+		CreateInvItem (slf, ITAR_Alchemist);
+		CreateInvItem (slf, ITAR_Barkeeper);
+		CreateInvItem (slf, ITAR_Butcher);
+		CreateInvItem (slf, ITAR_Cook);
+		CreateInvItem (slf, ITAR_Smith);
+		CreateInvItem (slf, ITAR_Hunter);
+		CreateInvItem (slf, ITAR_Judge);
+		
+		///	leather armors
+		CreateInvItem (slf, ITAR_Leather_L1);
+		CreateInvItem (slf, ITAR_Leather_L2);
+		CreateInvItem (slf, ITAR_Leather_L3);
+		CreateInvItem (slf, ITAR_Leather_T);
+		CreateInvItem (slf, ITAR_Leather_S);
+		CreateInvItem (slf, ITAR_Leather_H1);
+		CreateInvItem (slf, ITAR_Leather_H2);
+		CreateInvItem (slf, ITAR_Leather_BDT);
+		///	plate armors
+		CreateInvItem (slf, ITAR_Crawler);
+		CreateInvItem (slf, ITAR_DragonSnapper);
+		///	guard armors: MIL & ROY
+		CreateInvItem (slf, ITAR_MIL_N);
+		CreateInvItem (slf, ITAR_MIL_L);
+		CreateInvItem (slf, ITAR_MIL_M);
+		CreateInvItem (slf, ITAR_MIL_H);
+		CreateInvItem (slf, ITAR_ROY_L);
+		CreateInvItem (slf, ITAR_ROY_M);
+		CreateInvItem (slf, ITAR_ROY_H);
+		///	dragon hunter armors: SLD & DJG
+		CreateInvItem (slf, ITAR_SLD_N);
+		CreateInvItem (slf, ITAR_SLD_L);
+		CreateInvItem (slf, ITAR_SLD_M);
+		CreateInvItem (slf, ITAR_SLD_H);
+		CreateInvItem (slf, ITAR_DJG_L);
+		CreateInvItem (slf, ITAR_DJG_M);
+		CreateInvItem (slf, ITAR_DJG_H);
+		///	orc warrior armors
+		CreateInvItem (slf, ITAR_ORW_L);
+		CreateInvItem (slf, ITAR_ORW_M);
+		CreateInvItem (slf, ITAR_ORW_H);
+		///	mage armors: NOV
+		CreateInvItem (slf, ITAR_NOV_L);
+		CreateInvItem (slf, ITAR_NOV_H);
+		CreateInvItem (slf, ITAR_NOV_A);
+		///	mage armors: MAG & AMG
+		CreateInvItem (slf, ITAR_MAG_L);
+		CreateInvItem (slf, ITAR_MAG_M);
+		CreateInvItem (slf, ITAR_MAG_H);
+		CreateInvItem (slf, ITAR_AMG_L);
+		CreateInvItem (slf, ITAR_AMG_M);
+		CreateInvItem (slf, ITAR_AMG_H);
+		CreateInvItem (slf, ITAR_MAG_A);
+		CreateInvItem (slf, ITAR_MAG_B);
+		///	paladin armors: PAL
+		CreateInvItem (slf, ITAR_PAL_L);
+		CreateInvItem (slf, ITAR_PAL_M);
+		CreateInvItem (slf, ITAR_PAL_H);
+		CreateInvItem (slf, ITAR_PAL_D);
+		CreateInvItem (slf, ITAR_PAL_T);
+		CreateInvItem (slf, ITAR_PAL_U);
+		CreateInvItem (slf, ITAR_PAL_G);
+		///	demon hunter armors
+		CreateInvItem (slf, ITAR_ORM_L);
+		CreateInvItem (slf, ITAR_ORM_M);
+		CreateInvItem (slf, ITAR_ORM_H);
+		///	assassin armors: AKO & PRI
+		CreateInvItem (slf, ITAR_AKO_L);
+		CreateInvItem (slf, ITAR_AKO_M);
+		CreateInvItem (slf, ITAR_AKO_H);
+		CreateInvItem (slf, ITAR_PRI_L);
+		CreateInvItem (slf, ITAR_PRI_M);
+		CreateInvItem (slf, ITAR_PRI_H);
+		///	bandit armors: BDT & RVN
+		CreateInvItem (slf, ITAR_BDT_L);
+		CreateInvItem (slf, ITAR_BDT_H);
+		CreateInvItem (slf, ITAR_RVN_L);
+		CreateInvItem (slf, ITAR_RVN_M);
+		CreateInvItem (slf, ITAR_RVN_H);
+		CreateInvItem (slf, ITAR_Raven);
+		///	pirate armors: PIR
+		CreateInvItem (slf, ITAR_PIR_P);
+		CreateInvItem (slf, ITAR_PIR_L);
+		CreateInvItem (slf, ITAR_PIR_M);
+		CreateInvItem (slf, ITAR_PIR_H);
+		///	dementor armors: DMT
+		CreateInvItem (slf, ITAR_Dementor);
+		CreateInvItem (slf, ITAR_Demaster);
+		///	desert armors
+		CreateInvItem (slf, ITAR_Nomad);
+		///	forest armors
+		CreateInvItem (slf, ITAR_WoodRunner);
+		CreateInvItem (slf, ITAR_Druid);
+		/// nordmar armors
+		CreateInvItem (slf, ITAR_Nordmar_N);
+		CreateInvItem (slf, ITAR_Nordmar_L);
+		CreateInvItem (slf, ITAR_Nordmar_M);
+		CreateInvItem (slf, ITAR_Nordmar_H);
+		///	ranger armors
+		CreateInvItem (slf, ITAR_Ranger_L);
+		CreateInvItem (slf, ITAR_Ranger_H);
+		/// special armors
+		CreateInvItem (slf, ITAR_Jarkhendar);
+		CreateInvItem (slf, ITAR_Skeleton);
+		CreateInvItem (slf, ITAR_SteamKnight);
+		
+		///	WzA: farmer armors
+		CreateInvItem (slf, ITAR_Acrona_BAU_00);
+		CreateInvItem (slf, ITAR_Acrona_BAU_01);
+		CreateInvItem (slf, ITAR_Acrona_Worker);
+		///	WzA: pirate armors
+		CreateInvItem (slf, ITAR_Acrona_PIR_L);
+		CreateInvItem (slf, ITAR_Acrona_PIR_M);
+		CreateInvItem (slf, ITAR_Acrona_PIR_H);
+		///	WzA: soldier armors
+		CreateInvItem (slf, ITAR_Acrona_Soldier_M);
+		CreateInvItem (slf, ITAR_Acrona_Soldier_H);
+		CreateInvItem (slf, ITAR_Acrona_Knight);
+		///	WzA: templer armors
+		CreateInvItem (slf, ITAR_Acrona_Templer_M);
+		CreateInvItem (slf, ITAR_Acrona_Templer_H);
+		CreateInvItem (slf, ITAR_Acrona_Mage);
+		///	WzA: baron armors
+		CreateInvItem (slf, ITAR_Acrona_EBR_M);
+		CreateInvItem (slf, ITAR_Acrona_EBR_H);
+		CreateInvItem (slf, ITAR_Acrona_EBR_K);
+		CreateInvItem (slf, ITAR_Acrona_Lord);
+		CreateInvItem (slf, ITAR_Acrona_King);
+		///	WzA: NewAge armors
+		CreateInvItem (slf, ITAR_NA_JaJ);
+		CreateInvItem (slf, ITAR_NA_JP);
+		CreateInvItem (slf, ITAR_NA_Vest);
+		CreateInvItem (slf, ITAR_NA_SaT);
+		///	WzA: hero armors
+		CreateInvItem (slf, ITAR_NA_SuperHero);
+		CreateInvItem (slf, ITAR_NA_IronHero);
+		///	WzA: StarWars armors
+		CreateInvItem (slf, ITAR_SW_Jedi_L);
+		CreateInvItem (slf, ITAR_SW_Jedi_M);
+		CreateInvItem (slf, ITAR_SW_Jedi_H);
+		CreateInvItem (slf, ITAR_SW_Sith);
+		CreateInvItem (slf, ITAR_SW_Vader);
+		///	WzA: chaos armors
+		CreateInvItem (slf, ITAR_iChaos_Blue);		CreateInvItem (slf, ITAR_aChaos_Blue);
+		CreateInvItem (slf, ITAR_iChaos_Red);		CreateInvItem (slf, ITAR_aChaos_Red);
+		CreateInvItem (slf, ITAR_iChaos_Green);		CreateInvItem (slf, ITAR_aChaos_Green);
+		CreateInvItem (slf, ITAR_iChaos_Yellow);	CreateInvItem (slf, ITAR_aChaos_Yellow);
+		CreateInvItem (slf, ITAR_iChaos_Magenta);	CreateInvItem (slf, ITAR_aChaos_Magenta);
+		CreateInvItem (slf, ITAR_iChaos_Cyan);		CreateInvItem (slf, ITAR_aChaos_Cyan);
+													CreateInvItem (slf, ITAR_aChaos_Pink);
+		///	WzA: polish armors
+		CreateInvItem (slf, ITAR_Polish);
+		CreateInvItem (slf, ITAR_Priest);
+		///	WzA: red bandit armors
+		CreateInvItem (slf, ITAR_ORG_Red_P);
+		CreateInvItem (slf, ITAR_ORG_Red_L);
+		CreateInvItem (slf, ITAR_ORG_Red_M);
+		CreateInvItem (slf, ITAR_ORG_Red_H);
+	}
+	/// for FEMALE
+	else if (slf.aivar[AIV_Gender] == FEMALE)
+	{
+		///	prisoner armors: STRF (BABE)
+		CreateInvItem (slf, ITAR_Babe_STRF_L);
+		CreateInvItem (slf, ITAR_Babe_STRF_S);
+		CreateInvItem (slf, ITAR_Babe_STRF_B);
+		CreateInvItem (slf, ITAR_Babe_STRF_H);
+		/// old camp (BABE)
+		CreateInvItem (slf, ITAR_Babe_STT_P);
+		CreateInvItem (slf, ITAR_Babe_STT_L);
+		CreateInvItem (slf, ITAR_Babe_STT_H);
+		CreateInvItem (slf, ITAR_Babe_GRD_L);
+		CreateInvItem (slf, ITAR_Babe_GRD_M);
+		CreateInvItem (slf, ITAR_Babe_GRD_H);
+		///	new camp (BABE)
+		CreateInvItem (slf, ITAR_Babe_ORG_L);
+		CreateInvItem (slf, ITAR_Babe_ORG_M);
+		///	psi camp (BABE)
+		CreateInvItem (slf, ITAR_Babe_SLN_L);
+		CreateInvItem (slf, ITAR_Babe_SLN_M);
+		CreateInvItem (slf, ITAR_Babe_SLN_H);
+		CreateInvItem (slf, ITAR_Babe_SLT_L);
+		CreateInvItem (slf, ITAR_Babe_SLT_M);
+		CreateInvItem (slf, ITAR_Babe_SLT_H);
+		CreateInvItem (slf, ITAR_Babe_SLG_L);
+		CreateInvItem (slf, ITAR_Babe_SLG_H);
+		
+		///	farmer armors: BAU (BABE)
+		CreateInvItem (slf, ITAR_Babe_BAU_L_00); CreateInvItem (slf, ITAR_Babe_BAU_H_00);
+		CreateInvItem (slf, ITAR_Babe_BAU_L_01); CreateInvItem (slf, ITAR_Babe_BAU_H_01);
+		CreateInvItem (slf, ITAR_Babe_BAU_L_02); CreateInvItem (slf, ITAR_Babe_BAU_H_02);
+		///	citizen armors: VLK (BABE)
+		CreateInvItem (slf, ITAR_Babe_VLK_L_00); CreateInvItem (slf, ITAR_Babe_VLK_X_00); CreateInvItem (slf, ITAR_Babe_VLK_H_00); CreateInvItem (slf, ITAR_Babe_VLK_N_00);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_01); CreateInvItem (slf, ITAR_Babe_VLK_X_01); CreateInvItem (slf, ITAR_Babe_VLK_H_01); CreateInvItem (slf, ITAR_Babe_VLK_N_01);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_02); CreateInvItem (slf, ITAR_Babe_VLK_X_02); CreateInvItem (slf, ITAR_Babe_VLK_H_02); CreateInvItem (slf, ITAR_Babe_VLK_N_02);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_03); CreateInvItem (slf, ITAR_Babe_VLK_X_03); CreateInvItem (slf, ITAR_Babe_VLK_H_03);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_04); CreateInvItem (slf, ITAR_Babe_VLK_X_04); CreateInvItem (slf, ITAR_Babe_VLK_H_04);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_05); CreateInvItem (slf, ITAR_Babe_VLK_X_05); CreateInvItem (slf, ITAR_Babe_VLK_H_05);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_06); CreateInvItem (slf, ITAR_Babe_VLK_X_06);
+		CreateInvItem (slf, ITAR_Babe_VLK_L_07); CreateInvItem (slf, ITAR_Babe_VLK_X_07);
+		/// nordmar armors: VLK (BABE)
+		CreateInvItem (slf, ITAR_Babe_Nordmar_L_00); CreateInvItem (slf, ITAR_Babe_Nordmar_H_00);
+		CreateInvItem (slf, ITAR_Babe_Nordmar_L_01); CreateInvItem (slf, ITAR_Babe_Nordmar_H_01);
+		CreateInvItem (slf, ITAR_Babe_Nordmar_L_02); CreateInvItem (slf, ITAR_Babe_Nordmar_H_02);
+		CreateInvItem (slf, ITAR_Babe_Nordmar_L_03);
+		///	worker armors (BABE)
+		CreateInvItem (slf, ITAR_Babe_Nurse);
+		
+		///	leather armors (BABE)
+		CreateInvItem (slf, ITAR_Babe_Leather);
+		///	plate armors (BABE)
+		CreateInvItem (slf, ITAR_Babe_Crawler);
+		///	guard armors: MIL & ROY (BABE)
+		CreateInvItem (slf, ITAR_Babe_MIL_N);
+		CreateInvItem (slf, ITAR_Babe_MIL_L);
+		CreateInvItem (slf, ITAR_Babe_MIL_M);
+		CreateInvItem (slf, ITAR_Babe_MIL_H);
+		///	dragon hunter armors: SLD & DJG (BABE)
+		CreateInvItem (slf, ITAR_Babe_SLD_L);
+		CreateInvItem (slf, ITAR_Babe_SLD_M);
+		CreateInvItem (slf, ITAR_Babe_SLD_H);
+		CreateInvItem (slf, ITAR_Babe_DJG_L);
+		CreateInvItem (slf, ITAR_Babe_DJG_H);
+		///	mage armors: MAG & AMG (BABE)
+		CreateInvItem (slf, ITAR_Babe_Mage);
+	};
 };
 
 ///******************************************************************************************
@@ -525,6 +533,7 @@ func void GiveAll_Food (var C_Npc slf)
 	/// compotes & decotions
 	CreateInvItems (slf, ItFo_AppleCompote, 10);
 	CreateInvItems (slf, ItFo_BerryCompote, 10);
+	CreateInvItems (slf, ItFo_PearCompote, 10);
 	CreateInvItems (slf, ItFo_BlueDecoction, 10);
 	
 	/// water & milk & juice
@@ -556,17 +565,22 @@ func void GiveAll_Food (var C_Npc slf)
 ///******************************************************************************************
 func void GiveAll_Hairs (var C_Npc slf)
 {
-	/// male hairs
-	CreateInvItem (slf, ItHa_Geralt);
-	CreateInvItem (slf, ItHa_Harad);
-	CreateInvItem (slf, ItHa_Mohawk);
-	CreateInvItem (slf, ItHa_Rhobar);
-	
-	/// female hairs
-	CreateInvItem (slf, ItHa_Curly_Blonde);
-	CreateInvItem (slf, ItHa_Noctis_Blonde);
-	CreateInvItem (slf, ItHa_Sonja_Black);
-	CreateInvItem (slf, ItHa_Sonja_Brown);
+	/// for MALE
+	if (slf.aivar[AIV_Gender] == MALE)
+	{
+		CreateInvItem (slf, ItHa_Geralt);
+		CreateInvItem (slf, ItHa_Harad);
+		CreateInvItem (slf, ItHa_Mohawk);
+		CreateInvItem (slf, ItHa_Rhobar);
+	}
+	/// for FEMALE
+	else if (slf.aivar[AIV_Gender] == FEMALE)
+	{
+		CreateInvItem (slf, ItHa_Curly_Blonde);
+		CreateInvItem (slf, ItHa_Noctis_Blonde);
+		CreateInvItem (slf, ItHa_Sonja_Black);
+		CreateInvItem (slf, ItHa_Sonja_Brown);
+	};
 };
 
 ///******************************************************************************************
@@ -1276,10 +1290,10 @@ func void GiveAll_Potions (var C_Npc slf)
 	CreateInvItems (slf, ItPo_Perm_Prot, 10);
 	
 	/// other
-	CreateInvItems (slf, ItPo_Flame, 10);
 	CreateInvItems (slf, ItPo_Geist, 10);
 	CreateInvItems (slf, ItPo_HealObsession, 10);
 	CreateInvItems (slf, ItPo_NightVision, 10);
+	CreateInvItems (slf, ItPo_Perfume, 10);
 	CreateInvItems (slf, ItPo_Poison, 10);
 	CreateInvItems (slf, ItPo_Speed, 10);
 	CreateInvItems (slf, ItPo_Stealth, 10);
@@ -1433,7 +1447,7 @@ func void GiveAll_Rings (var C_Npc slf)
 	CreateInvItem (slf, ItRi_Harmony_01);
 	CreateInvItem (slf, ItRi_Custody_01);
 	CreateInvItem (slf, ItRi_Wisdom_01);
-	CreateInvItem (slf, ItRi_Eternity_01);
+	CreateInvItem (slf, ItRi_Reflection_01);
 	CreateInvItem (slf, ItRi_Hp_01);
 	CreateInvItem (slf, ItRi_Mp_01);
 	CreateInvItem (slf, ItRi_Sp_01);
@@ -1452,16 +1466,20 @@ func void GiveAll_Rings (var C_Npc slf)
 	CreateInvItem (slf, ItRi_Bow_01);
 	CreateInvItem (slf, ItRi_Cbow_01);
 	CreateInvItem (slf, ItRi_Master_01);
-	CreateInvItem (slf, ItRi_Innovation_01);
-	CreateInvItem (slf, ItRi_Precision_01);
-	CreateInvItem (slf, ItRi_Domination_01);
-	CreateInvItem (slf, ItRi_Motivation_01);
-	CreateInvItem (slf, ItRi_Liberation_01);
-	CreateInvItem (slf, ItRi_Destruction_01);
+	CreateInvItem (slf, ItRi_BackstabDmg_01);
+	CreateInvItem (slf, ItRi_CounterDmg_01);
 	CreateInvItem (slf, ItRi_CritDmg_01);
-	CreateInvItem (slf, ItRi_AreaDmg_01);
-	CreateInvItem (slf, ItRi_Ls_01);
 	CreateInvItem (slf, ItRi_MinDmg_01);
+	CreateInvItem (slf, ItRi_AfterSpellDmg_01);
+	CreateInvItem (slf, ItRi_ComboDmg_01);
+	CreateInvItem (slf, ItRi_Penetration_01);
+	CreateInvItem (slf, ItRi_AreaDmg_01);
+	CreateInvItem (slf, ItRi_OverloadDmg_01);
+	CreateInvItem (slf, ItRi_GoldDmg_01);
+	CreateInvItem (slf, ItRi_Enhancement_01);
+	CreateInvItem (slf, ItRi_Redirect_01);
+	CreateInvItem (slf, ItRi_Ls_01);
+	CreateInvItem (slf, ItRi_Necro_01);
 };
 
 ///******************************************************************************************
@@ -1569,6 +1587,28 @@ func void GiveAll_Runes (var C_Npc slf)
 };
 
 ///******************************************************************************************
+func void GiveAll_Shields (var C_Npc slf)
+{
+	/// common	
+	CreateInvItem (slf, ItSh_Broken);
+	CreateInvItem (slf, ItSh_Round);
+	CreateInvItem (slf, ItSh_Crest);
+	
+	/// DJG
+	CreateInvItem (slf, ItSh_Djg);
+	
+	/// PAL
+	CreateInvItem (slf, ItSh_Pal_01);
+	CreateInvItem (slf, ItSh_Pal_02);
+	CreateInvItem (slf, ItSh_Pal_03);
+	CreateInvItem (slf, ItSh_King);
+	
+	/// SKE
+	CreateInvItem (slf, ItSh_Dark_01);
+	CreateInvItem (slf, ItSh_Dark_02);
+};
+
+///******************************************************************************************
 func void GiveAll_Stoneplates (var C_Npc slf)
 {
 	/// stoneplates
@@ -1577,49 +1617,6 @@ func void GiveAll_Stoneplates (var C_Npc slf)
 	CreateInvItems (slf, ItWr_Stoneplate_03, 10);
 	CreateInvItems (slf, ItWr_Stoneplate_04, 10);
 	CreateInvItems (slf, ItWr_Stoneplate_05, 10);
-	
-	/// recipes
-	CreateInvItem (slf, ItRe_FLETCHERY_Ammo);
-	
-	CreateInvItem (slf, ItRe_COOKING_BugPulp);
-	CreateInvItem (slf, ItRe_COOKING_ForestStew);
-	CreateInvItem (slf, ItRe_COOKING_FriedPasta);
-	CreateInvItem (slf, ItRe_COOKING_HoneyOatmeal);
-	CreateInvItem (slf, ItRe_COOKING_JamPaste);
-	CreateInvItem (slf, ItRe_COOKING_MeatCauldron);
-	CreateInvItem (slf, ItRe_COOKING_MeatStew);
-	CreateInvItem (slf, ItRe_COOKING_Pilaf);
-	CreateInvItem (slf, ItRe_COOKING_Puree);
-	CreateInvItem (slf, ItRe_COOKING_Salad);
-	CreateInvItem (slf, ItRe_COOKING_ScrambledEggs);
-	CreateInvItem (slf, ItRe_COOKING_Spaghetti);
-	CreateInvItem (slf, ItRe_COOKING_SpicyStew);
-	CreateInvItem (slf, ItRe_COOKING_Stew);
-	CreateInvItem (slf, ItRe_COOKING_StewedVegetables);
-	CreateInvItem (slf, ItRe_COOKING_WineStew);
-	
-	CreateInvItem (slf, ItRe_COOKING_BerrySoup);
-	CreateInvItem (slf, ItRe_COOKING_CabbageSoup);
-	CreateInvItem (slf, ItRe_COOKING_CheeseSoup);
-	CreateInvItem (slf, ItRe_COOKING_FishSoup);
-	CreateInvItem (slf, ItRe_COOKING_GreenSoup);
-	CreateInvItem (slf, ItRe_COOKING_HoneySoup);
-	CreateInvItem (slf, ItRe_COOKING_MilkSoup);
-	CreateInvItem (slf, ItRe_COOKING_MushroomSoup);
-	CreateInvItem (slf, ItRe_COOKING_OnionSoup);
-	CreateInvItem (slf, ItRe_COOKING_OysterSoup);
-	CreateInvItem (slf, ItRe_COOKING_SausageSoup);
-	CreateInvItem (slf, ItRe_COOKING_SpicySoup);
-	CreateInvItem (slf, ItRe_COOKING_AppleCompote);
-	CreateInvItem (slf, ItRe_COOKING_BerryCompote);
-	CreateInvItem (slf, ItRe_COOKING_PearCompote);
-	CreateInvItem (slf, ItRe_COOKING_BlueDecoction);
-	
-	CreateInvItem (slf, ItRe_COOKING_Booze);
-	CreateInvItem (slf, ItRe_COOKING_Mead);
-	CreateInvItem (slf, ItRe_COOKING_Sake);
-	CreateInvItem (slf, ItRe_COOKING_SourWine);
-	CreateInvItem (slf, ItRe_COOKING_Wine);
 };
 
 ///******************************************************************************************

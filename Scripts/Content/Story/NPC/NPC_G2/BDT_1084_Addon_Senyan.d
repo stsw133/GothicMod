@@ -26,7 +26,7 @@ instance BDT_1084_Addon_Senyan (Npc_Default)
 	B_CreateAmbientInv(self);
 	
 	/// ------ Visuals ------
-	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_B_Tough_Pacho, Teeth_Normal, ItAr_BDT_M);
+	NpcFn_SetVisual		(self, MALE, BodyTex_Default, BodySkin_B, "Hum_Head_Bald", Face_B_Tough_Pacho, Teeth_Normal, ITAR_BDT_L);
 	Mdl_SetModelFatness	(self, 0.75);
 	Mdl_ApplyOverlayMds	(self, "Humans_Arrogance.mds");
 	

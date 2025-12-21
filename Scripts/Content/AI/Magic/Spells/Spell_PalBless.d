@@ -22,6 +22,8 @@ func int Spell_Logic_PalBless (var int manaInvested)
 
 func void Spell_Cast_PalBless()
 {
+	B_SpellCast (self, default, 0);
+	
 	if (Npc_IsPlayer(self))
 	{
 		if (!SPL_IsActive_PalBless)

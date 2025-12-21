@@ -1,11 +1,8 @@
 ///******************************************************************************************
 prototype ItemPR_Ring (C_Item)
 {
-	name						=	"Pierœcieñ";
 	mainflag					=	ITEM_KAT_MAGIC;
 	flags						=	ITEM_RING;
-	
-	value						=	600;
 	material					=	MAT_METAL;
 	
 	on_equip					=	Npc_AttributesRefresh;
@@ -15,7 +12,6 @@ prototype ItemPR_Ring (C_Item)
 	effect						=	"SPELLFX_ITEMGLIMMER";
 	
 	TEXT[5]						=	NAME_Value;
-	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC2_STANDARD;
 	INV_ROTX					=	INVCAM_X_RING_STANDARD;
 	INV_ROTZ					=	INVCAM_Z_RING_STANDARD;
@@ -26,25 +22,31 @@ prototype ItemPR_Ring (C_Item)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtBlunt (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Blunt_01.3ds";
 	
 	itm.protection[PROT_BLUNT]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Blunt;
 	itm.COUNT[1]				=	itm.protection[PROT_BLUNT];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Blunt_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony przed obuchem";
-	SetItRiAttributes_ProtBlunt (self, 5);
+	name						=	"Pierœcieñ ochrony przed obuchem I";
+	SetItRiAttributes_ProtBlunt (self, 4);
 };
-
 instance ItRi_Prot_Blunt_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony przed obuchem";
-	SetItRiAttributes_ProtBlunt (self, 10);
+	name						=	"Pierœcieñ ochrony przed obuchem II";
+	SetItRiAttributes_ProtBlunt (self, 8);
+};
+instance ItRi_Prot_Blunt_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony przed obuchem III";
+	SetItRiAttributes_ProtBlunt (self, 12);
 };
 
 ///******************************************************************************************
@@ -52,25 +54,31 @@ instance ItRi_Prot_Blunt_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtEdge (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Edge_01.3ds";
 	
 	itm.protection[PROT_EDGE]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Edge;
 	itm.COUNT[1]				=	itm.protection[PROT_EDGE];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Edge_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony przed ostrzami";
-	SetItRiAttributes_ProtEdge (self, 5);
+	name						=	"Pierœcieñ ochrony przed ostrzami I";
+	SetItRiAttributes_ProtEdge (self, 4);
 };
-
 instance ItRi_Prot_Edge_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony przed ostrzami";
-	SetItRiAttributes_ProtEdge (self, 10);
+	name						=	"Pierœcieñ ochrony przed ostrzami II";
+	SetItRiAttributes_ProtEdge (self, 8);
+};
+instance ItRi_Prot_Edge_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony przed ostrzami III";
+	SetItRiAttributes_ProtEdge (self, 12);
 };
 
 ///******************************************************************************************
@@ -78,25 +86,31 @@ instance ItRi_Prot_Edge_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtPoint (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Point_01.3ds";
 	
 	itm.protection[PROT_POINT]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Point;
 	itm.COUNT[1]				=	itm.protection[PROT_POINT];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Point_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony przed pociskami";
-	SetItRiAttributes_ProtPoint (self, 5);
+	name						=	"Pierœcieñ ochrony przed pociskami I";
+	SetItRiAttributes_ProtPoint (self, 4);
 };
-
 instance ItRi_Prot_Point_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony przed pociskami";
-	SetItRiAttributes_ProtPoint (self, 10);
+	name						=	"Pierœcieñ ochrony przed pociskami II";
+	SetItRiAttributes_ProtPoint (self, 8);
+};
+instance ItRi_Prot_Point_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony przed pociskami III";
+	SetItRiAttributes_ProtPoint (self, 12);
 };
 
 ///******************************************************************************************
@@ -104,25 +118,31 @@ instance ItRi_Prot_Point_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtFire (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Fire_01.3ds";
 	
 	itm.protection[PROT_FIRE]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Fire;
 	itm.COUNT[1]				=	itm.protection[PROT_FIRE];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Fire_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony przed ogniem";
-	SetItRiAttributes_ProtFire (self, 5);
+	name						=	"Pierœcieñ ochrony przed ogniem I";
+	SetItRiAttributes_ProtFire (self, 4);
 };
-
 instance ItRi_Prot_Fire_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony przed ogniem";
-	SetItRiAttributes_ProtFire (self, 10);
+	name						=	"Pierœcieñ ochrony przed ogniem II";
+	SetItRiAttributes_ProtFire (self, 8);
+};
+instance ItRi_Prot_Fire_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony przed ogniem III";
+	SetItRiAttributes_ProtFire (self, 12);
 };
 
 ///******************************************************************************************
@@ -130,26 +150,32 @@ instance ItRi_Prot_Fire_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtMagic (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Mage_01.3ds";
 	
 	itm.protection[PROT_MAGIC]		=	kap;
 	itm.protection[PROT_BARRIER]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Magic;
 	itm.COUNT[1]				=	itm.protection[PROT_MAGIC];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Magic_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony przed magi¹";
-	SetItRiAttributes_ProtMagic (self, 5);
+	name						=	"Pierœcieñ ochrony przed magi¹ I";
+	SetItRiAttributes_ProtMagic (self, 4);
 };
-
 instance ItRi_Prot_Magic_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony przed magi¹";
-	SetItRiAttributes_ProtMagic (self, 10);
+	name						=	"Pierœcieñ ochrony przed magi¹ II";
+	SetItRiAttributes_ProtMagic (self, 8);
+};
+instance ItRi_Prot_Magic_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony przed magi¹ III";
+	SetItRiAttributes_ProtMagic (self, 12);
 };
 
 ///******************************************************************************************
@@ -157,6 +183,7 @@ instance ItRi_Prot_Magic_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_ProtTotal (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Prot_Total_01.3ds";
 	
 	itm.protection[PROT_BLUNT]		=	kap;
@@ -166,6 +193,7 @@ func void SetItRiAttributes_ProtTotal (var C_Item itm, var int kap)
 	itm.protection[PROT_MAGIC]		=	kap;
 	itm.protection[PROT_BARRIER]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[0]					=	NAME_Prot_Blunt;
 	itm.COUNT[0]				=	itm.protection[PROT_BLUNT];
 	itm.TEXT[1]					=	NAME_Prot_Edge;
@@ -176,18 +204,22 @@ func void SetItRiAttributes_ProtTotal (var C_Item itm, var int kap)
 	itm.COUNT[3]				=	itm.protection[PROT_FIRE];
 	itm.TEXT[4]					=	NAME_Prot_Magic;
 	itm.COUNT[4]				=	itm.protection[PROT_MAGIC];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Prot_Total_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ochrony ca³kowitej";
-	SetItRiAttributes_ProtTotal (self, 3);
+	name						=	"Pierœcieñ ochrony ca³kowitej I";
+	SetItRiAttributes_ProtTotal (self, 2);
 };
-
 instance ItRi_Prot_Total_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ochrony ca³kowitej";
+	name						=	"Pierœcieñ ochrony ca³kowitej II";
+	SetItRiAttributes_ProtTotal (self, 4);
+};
+instance ItRi_Prot_Total_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ochrony ca³kowitej III";
 	SetItRiAttributes_ProtTotal (self, 6);
 };
 
@@ -196,28 +228,34 @@ instance ItRi_Prot_Total_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Persistence (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*120;
 	itm.visual					=	"ItRi_Prot_Blunt_02.3ds";
 	
 	itm.protection[PROT_BLUNT]	=	kap;
 	itm.protection[PROT_POINT]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Blunt;
 	itm.COUNT[1]				=	itm.protection[PROT_BLUNT];
 	itm.TEXT[2]					=	NAME_Prot_Point;
 	itm.COUNT[2]				=	itm.protection[PROT_POINT];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Persistence_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ wytrwa³oœci";
-	SetItRiAttributes_Persistence (self, 4);
+	name						=	"Pierœcieñ wytrwa³oœci I";
+	SetItRiAttributes_Persistence (self, 3);
 };
-
 instance ItRi_Persistence_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ wytrwa³oœci";
-	SetItRiAttributes_Persistence (self, 8);
+	name						=	"Pierœcieñ wytrwa³oœci II";
+	SetItRiAttributes_Persistence (self, 6);
+};
+instance ItRi_Persistence_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ wytrwa³oœci III";
+	SetItRiAttributes_Persistence (self, 9);
 };
 
 ///******************************************************************************************
@@ -225,28 +263,34 @@ instance ItRi_Persistence_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Tenacity (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*120;
 	itm.visual					=	"ItRi_Prot_Edge_02.3ds";
 	
 	itm.protection[PROT_EDGE]	=	kap;
 	itm.protection[PROT_FIRE]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Edge;
 	itm.COUNT[1]				=	itm.protection[PROT_EDGE];
 	itm.TEXT[2]					=	NAME_Prot_Fire;
 	itm.COUNT[2]				=	itm.protection[PROT_FIRE];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Tenacity_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ nieustêpliwoœci";
-	SetItRiAttributes_Tenacity (self, 4);
+	name						=	"Pierœcieñ nieustêpliwoœci I";
+	SetItRiAttributes_Tenacity (self, 3);
 };
-
 instance ItRi_Tenacity_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ nieustêpliwoœci";
-	SetItRiAttributes_Tenacity (self, 8);
+	name						=	"Pierœcieñ nieustêpliwoœci II";
+	SetItRiAttributes_Tenacity (self, 6);
+};
+instance ItRi_Tenacity_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ nieustêpliwoœci III";
+	SetItRiAttributes_Tenacity (self, 9);
 };
 
 ///******************************************************************************************
@@ -254,29 +298,35 @@ instance ItRi_Tenacity_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Harmony (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*120;
 	itm.visual					=	"ItRi_Prot_Point_02.3ds";
 	
 	itm.protection[PROT_POINT]		=	kap;
 	itm.protection[PROT_MAGIC]		=	kap;
 	itm.protection[PROT_BARRIER]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Point;
 	itm.COUNT[1]				=	itm.protection[PROT_POINT];
 	itm.TEXT[2]					=	NAME_Prot_Magic;
 	itm.COUNT[2]				=	itm.protection[PROT_MAGIC];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Harmony_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ harmonii";
-	SetItRiAttributes_Harmony (self, 4);
+	name						=	"Pierœcieñ harmonii I";
+	SetItRiAttributes_Harmony (self, 3);
 };
-
 instance ItRi_Harmony_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ harmonii";
-	SetItRiAttributes_Harmony (self, 8);
+	name						=	"Pierœcieñ harmonii II";
+	SetItRiAttributes_Harmony (self, 6);
+};
+instance ItRi_Harmony_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ harmonii III";
+	SetItRiAttributes_Harmony (self, 9);
 };
 
 ///******************************************************************************************
@@ -284,28 +334,34 @@ instance ItRi_Harmony_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Custody (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*120;
 	itm.visual					=	"ItRi_Prot_Fire_02.3ds";
 	
 	itm.protection[PROT_FIRE]	=	kap;
 	itm.protection[PROT_BLUNT]	=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Fire;
 	itm.COUNT[1]				=	itm.protection[PROT_FIRE];
 	itm.TEXT[2]					=	NAME_Prot_Blunt;
 	itm.COUNT[2]				=	itm.protection[PROT_BLUNT];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Custody_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ nadzoru";
-	SetItRiAttributes_Custody (self, 4);
+	name						=	"Pierœcieñ nadzoru I";
+	SetItRiAttributes_Custody (self, 3);
 };
-
 instance ItRi_Custody_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ nadzoru";
-	SetItRiAttributes_Custody (self, 8);
+	name						=	"Pierœcieñ nadzoru II";
+	SetItRiAttributes_Custody (self, 6);
+};
+instance ItRi_Custody_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ nadzoru III";
+	SetItRiAttributes_Custody (self, 9);
 };
 
 ///******************************************************************************************
@@ -313,88 +369,101 @@ instance ItRi_Custody_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Wisdom (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*120;
 	itm.visual					=	"ItRi_Prot_Mage_02.3ds";
 	
 	itm.protection[PROT_MAGIC]		=	kap;
 	itm.protection[PROT_BARRIER]	=	kap;
 	itm.protection[PROT_EDGE]		=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Prot_Magic;
 	itm.COUNT[1]				=	itm.protection[PROT_MAGIC];
 	itm.TEXT[2]					=	NAME_Prot_Edge;
 	itm.COUNT[2]				=	itm.protection[PROT_EDGE];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Wisdom_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ m¹droœci";
-	SetItRiAttributes_Wisdom (self, 4);
+	name						=	"Pierœcieñ m¹droœci I";
+	SetItRiAttributes_Wisdom (self, 3);
 };
-
 instance ItRi_Wisdom_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ m¹droœci";
-	SetItRiAttributes_Wisdom (self, 8);
+	name						=	"Pierœcieñ m¹droœci II";
+	SetItRiAttributes_Wisdom (self, 6);
+};
+instance ItRi_Wisdom_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ m¹droœci III";
+	SetItRiAttributes_Wisdom (self, 9);
 };
 
 ///******************************************************************************************
-/// Eternity
+/// Reflection
 ///******************************************************************************************
-func void SetItRiAttributes_Eternity (var C_Item itm, var int kap)
+func void SetItRiAttributes_Reflection (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Prot_Total_02.3ds";
 	
-	itm.TEXT[1]					=	NAME_Percent_Protection;
-	itm.COUNT[2]				=	kap;
+	itm.change_atr[0]			=	COND_AIVAR+AIV_Reflection;
+	itm.change_value[0]			=	kap;
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_Reflection;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
-instance ItRi_Eternity_01 (ItemPR_Ring)
+instance ItRi_Reflection_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ wiecznoœci";
-	on_equip					=	Equip_ItRi_Eternity_01;
-	on_unequip					=	UnEquip_ItRi_Eternity_01;
-	SetItRiAttributes_Eternity (self, 5);
+	name						=	"Pierœcieñ odbicia obra¿eñ I";
+	SetItRiAttributes_Reflection (self, 4);
 };
-func void Equip_ItRi_Eternity_01()		{ if (Npc_IsPlayer(self)) { mDamageReduction += 5; }; };
-func void UnEquip_ItRi_Eternity_01()	{ if (Npc_IsPlayer(self)) { mDamageReduction -= 5; }; };
-
-instance ItRi_Eternity_02 (ItemPR_Ring)
+instance ItRi_Reflection_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ wiecznoœci";
-	on_equip					=	Equip_ItRi_Eternity_02;
-	on_unequip					=	UnEquip_ItRi_Eternity_02;
-	SetItRiAttributes_Eternity (self, 10);
+	name						=	"Pierœcieñ odbicia obra¿eñ II";
+	SetItRiAttributes_Reflection (self, 8);
 };
-func void Equip_ItRi_Eternity_02()		{ if (Npc_IsPlayer(self)) { mDamageReduction += 10; }; };
-func void UnEquip_ItRi_Eternity_02()	{ if (Npc_IsPlayer(self)) { mDamageReduction -= 10; }; };
+instance ItRi_Reflection_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ odbicia obra¿eñ III";
+	SetItRiAttributes_Reflection (self, 12);
+};
 
 ///******************************************************************************************
 /// Hitpoints
 ///******************************************************************************************
 func void SetItRiAttributes_Hp (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Hp_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_HITPOINTS_MAX;
 	itm.change_value[0]			=	kap*HP_PER_LP;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_HpMax;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Hp_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ¿ycia";
-	SetItRiAttributes_Hp (self, 5);
+	name						=	"Pierœcieñ ¿ycia I";
+	SetItRiAttributes_Hp (self, 4);
 };
-
 instance ItRi_Hp_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ¿ycia";
-	SetItRiAttributes_Hp (self, 10);
+	name						=	"Pierœcieñ ¿ycia II";
+	SetItRiAttributes_Hp (self, 8);
+};
+instance ItRi_Hp_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ¿ycia III";
+	SetItRiAttributes_Hp (self, 12);
 };
 
 ///******************************************************************************************
@@ -402,26 +471,32 @@ instance ItRi_Hp_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Mp (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Mp_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_MANA_MAX;
 	itm.change_value[0]			=	kap*MP_PER_LP;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_MpMax;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Mp_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ many";
-	SetItRiAttributes_Mp (self, 5);
+	name						=	"Pierœcieñ many I";
+	SetItRiAttributes_Mp (self, 4);
 };
-
 instance ItRi_Mp_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ many";
-	SetItRiAttributes_Mp (self, 10);
+	name						=	"Pierœcieñ many II";
+	SetItRiAttributes_Mp (self, 8);
+};
+instance ItRi_Mp_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ many III";
+	SetItRiAttributes_Mp (self, 12);
 };
 
 ///******************************************************************************************
@@ -429,58 +504,65 @@ instance ItRi_Mp_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Sp (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Sp_01.3ds";
 	
+	itm.change_atr[0]			=	COND_AIVAR+AIV_Stamina_MAX;
+	itm.change_value[0]			=	kap*SP_PER_LP;
+	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_SpMax;
-	itm.COUNT[1]				=	kap*SP_PER_LP;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Sp_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ energii";
-	on_equip					=	Equip_ItRi_Sp_01;
-	on_unequip					=	UnEquip_ItRi_Sp_01;
-	SetItRiAttributes_Sp (self, 5);
+	name						=	"Pierœcieñ energii I";
+	SetItRiAttributes_Sp (self, 4);
 };
-func void Equip_ItRi_Sp_01()			{ self.aivar[AIV_Stamina_MAX] += 5*SP_PER_LP; };
-func void UnEquip_ItRi_Sp_01()			{ self.aivar[AIV_Stamina_MAX] -= 5*SP_PER_LP; };
-
 instance ItRi_Sp_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ energii";
-	on_equip					=	Equip_ItRi_Sp_02;
-	on_unequip					=	UnEquip_ItRi_Sp_02;
-	SetItRiAttributes_Sp (self, 10);
+	name						=	"Pierœcieñ energii II";
+	SetItRiAttributes_Sp (self, 8);
 };
-func void Equip_ItRi_Sp_02()			{ self.aivar[AIV_Stamina_MAX] += 10*SP_PER_LP; };
-func void UnEquip_ItRi_Sp_02()			{ self.aivar[AIV_Stamina_MAX] -= 10*SP_PER_LP; };
+instance ItRi_Sp_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ energii III";
+	SetItRiAttributes_Sp (self, 12);
+};
 
 ///******************************************************************************************
 /// Strength
 ///******************************************************************************************
 func void SetItRiAttributes_Str (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Str_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_STRENGTH;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Str;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Str_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ si³y";
-	SetItRiAttributes_Str (self, 5);
+	name						=	"Pierœcieñ si³y I";
+	SetItRiAttributes_Str (self, 4);
 };
-
 instance ItRi_Str_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ si³y";
-	SetItRiAttributes_Str (self, 10);
+	name						=	"Pierœcieñ si³y II";
+	SetItRiAttributes_Str (self, 8);
+};
+instance ItRi_Str_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ si³y III";
+	SetItRiAttributes_Str (self, 12);
 };
 
 ///******************************************************************************************
@@ -488,26 +570,32 @@ instance ItRi_Str_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Dex (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Dex_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_DEXTERITY;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Dex;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Dex_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ zrêcznoœci";
-	SetItRiAttributes_Dex (self, 5);
+	name						=	"Pierœcieñ zrêcznoœci I";
+	SetItRiAttributes_Dex (self, 4);
 };
-
 instance ItRi_Dex_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ zrêcznoœci";
-	SetItRiAttributes_Dex (self, 10);
+	name						=	"Pierœcieñ zrêcznoœci II";
+	SetItRiAttributes_Dex (self, 8);
+};
+instance ItRi_Dex_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ zrêcznoœci III";
+	SetItRiAttributes_Dex (self, 12);
 };
 
 ///******************************************************************************************
@@ -515,26 +603,32 @@ instance ItRi_Dex_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Pow (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Pow_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_POWER;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Pow;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Pow_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ mocy";
-	SetItRiAttributes_Pow (self, 5);
+	name						=	"Pierœcieñ mocy I";
+	SetItRiAttributes_Pow (self, 4);
 };
-
 instance ItRi_Pow_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ mocy";
-	SetItRiAttributes_Pow (self, 10);
+	name						=	"Pierœcieñ mocy II";
+	SetItRiAttributes_Pow (self, 8);
+};
+instance ItRi_Pow_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ mocy III";
+	SetItRiAttributes_Pow (self, 12);
 };
 
 ///******************************************************************************************
@@ -542,8 +636,10 @@ instance ItRi_Pow_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Enlightment (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_HpMana_01.3ds";
 	
+	itm.description				=	itm.name;
 	itm.TEXT[0]					=	NAME_Bonus_HpMax;
 	itm.COUNT[0]				=	kap*HP_PER_LP;
 	itm.TEXT[1]					=	NAME_Bonus_MpMax;
@@ -554,41 +650,65 @@ func void SetItRiAttributes_Enlightment (var C_Item itm, var int kap)
 	itm.COUNT[3]				=	kap;
 	itm.TEXT[4]					=	NAME_Bonus_Pow;
 	itm.COUNT[4]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Enlightment_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ oœwiecenia";
+	name						=	"Pierœcieñ oœwiecenia I";
 	on_equip					=	Equip_ItRi_Enlightment_01;
 	on_unequip					=	UnEquip_ItRi_Enlightment_01;
-	SetItRiAttributes_Enlightment (self, 3);
+	SetItRiAttributes_Enlightment (self, 2);
 };
 func void Equip_ItRi_Enlightment_01()
 {
-	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, 3*HP_PER_LP);
-	Npc_ChangeAttribute(self, ATR_MANA_MAX, 3*MP_PER_LP);
-	Npc_ChangeAttribute(self, ATR_STRENGTH, 3);
-	Npc_ChangeAttribute(self, ATR_DEXTERITY, 3);
-	Npc_ChangeAttribute(self, ATR_POWER, 3);
+	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, 2*HP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_MANA_MAX, 2*MP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_STRENGTH, 2);
+	Npc_ChangeAttribute(self, ATR_DEXTERITY, 2);
+	Npc_ChangeAttribute(self, ATR_POWER, 2);
 };
 func void UnEquip_ItRi_Enlightment_01()
 {
-	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -3*HP_PER_LP);
-	Npc_ChangeAttribute(self, ATR_MANA_MAX, -3*MP_PER_LP);
-	Npc_ChangeAttribute(self, ATR_STRENGTH, -3);
-	Npc_ChangeAttribute(self, ATR_DEXTERITY, -3);
-	Npc_ChangeAttribute(self, ATR_POWER, -3);
+	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -2*HP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_MANA_MAX, -2*MP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_STRENGTH, -2);
+	Npc_ChangeAttribute(self, ATR_DEXTERITY, -2);
+	Npc_ChangeAttribute(self, ATR_POWER, -2);
 };
 
 instance ItRi_Enlightment_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ oœwiecenia";
+	name						=	"Pierœcieñ oœwiecenia II";
 	on_equip					=	Equip_ItRi_Enlightment_02;
 	on_unequip					=	UnEquip_ItRi_Enlightment_02;
-	SetItRiAttributes_Enlightment (self, 6);
+	SetItRiAttributes_Enlightment (self, 4);
 };
 func void Equip_ItRi_Enlightment_02()
+{
+	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, 4*HP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_MANA_MAX, 4*MP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_STRENGTH, 4);
+	Npc_ChangeAttribute(self, ATR_DEXTERITY, 4);
+	Npc_ChangeAttribute(self, ATR_POWER, 4);
+};
+func void UnEquip_ItRi_Enlightment_02()
+{
+	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -4*HP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_MANA_MAX, -4*MP_PER_LP);
+	Npc_ChangeAttribute(self, ATR_STRENGTH, -4);
+	Npc_ChangeAttribute(self, ATR_DEXTERITY, -4);
+	Npc_ChangeAttribute(self, ATR_POWER, -4);
+};
+
+instance ItRi_Enlightment_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ oœwiecenia III";
+	on_equip					=	Equip_ItRi_Enlightment_03;
+	on_unequip					=	UnEquip_ItRi_Enlightment_03;
+	SetItRiAttributes_Enlightment (self, 6);
+};
+func void Equip_ItRi_Enlightment_03()
 {
 	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, 6*HP_PER_LP);
 	Npc_ChangeAttribute(self, ATR_MANA_MAX, 6*MP_PER_LP);
@@ -596,7 +716,7 @@ func void Equip_ItRi_Enlightment_02()
 	Npc_ChangeAttribute(self, ATR_DEXTERITY, 6);
 	Npc_ChangeAttribute(self, ATR_POWER, 6);
 };
-func void UnEquip_ItRi_Enlightment_02()
+func void UnEquip_ItRi_Enlightment_03()
 {
 	Npc_ChangeAttribute(self, ATR_HITPOINTS_MAX, -6*HP_PER_LP);
 	Npc_ChangeAttribute(self, ATR_MANA_MAX, -6*MP_PER_LP);
@@ -610,6 +730,7 @@ func void UnEquip_ItRi_Enlightment_02()
 ///******************************************************************************************
 func void SetItRiAttributes_Roy (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Hp_02.3ds";
 	
 	itm.change_atr[0]			=	ATR_HITPOINTS_MAX;
@@ -617,23 +738,28 @@ func void SetItRiAttributes_Roy (var C_Item itm, var int kap)
 	itm.change_atr[1]			=	ATR_DEXTERITY;
 	itm.change_value[1]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_HpMax;
 	itm.COUNT[1]				=	itm.change_value[0];
 	itm.TEXT[2]					=	NAME_Bonus_Dex;
 	itm.COUNT[2]				=	itm.change_value[1];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Roy_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ gwardzisty";
-	SetItRiAttributes_Roy (self, 4);
+	name						=	"Pierœcieñ gwardzisty I";
+	SetItRiAttributes_Roy (self, 3);
 };
-
 instance ItRi_Roy_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ gwardzisty";
-	SetItRiAttributes_Roy (self, 8);
+	name						=	"Pierœcieñ gwardzisty II";
+	SetItRiAttributes_Roy (self, 6);
+};
+instance ItRi_Roy_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ gwardzisty III";
+	SetItRiAttributes_Roy (self, 9);
 };
 
 ///******************************************************************************************
@@ -641,6 +767,7 @@ instance ItRi_Roy_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Pal (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Mp_02.3ds";
 	
 	itm.change_atr[0]			=	ATR_MANA_MAX;
@@ -648,23 +775,28 @@ func void SetItRiAttributes_Pal (var C_Item itm, var int kap)
 	itm.change_atr[1]			=	ATR_STRENGTH;
 	itm.change_value[1]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_MpMax;
 	itm.COUNT[1]				=	itm.change_value[0];
 	itm.TEXT[2]					=	NAME_Bonus_Str;
 	itm.COUNT[2]				=	itm.change_value[1];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Pal_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ paladyna";
-	SetItRiAttributes_Pal (self, 4);
+	name						=	"Pierœcieñ paladyna I";
+	SetItRiAttributes_Pal (self, 3);
 };
-
 instance ItRi_Pal_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ paladyna";
-	SetItRiAttributes_Pal (self, 8);
+	name						=	"Pierœcieñ paladyna II";
+	SetItRiAttributes_Pal (self, 6);
+};
+instance ItRi_Pal_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ paladyna III";
+	SetItRiAttributes_Pal (self, 9);
 };
 
 ///******************************************************************************************
@@ -672,6 +804,7 @@ instance ItRi_Pal_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Djg (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Str_02.3ds";
 	
 	itm.change_atr[0]			=	ATR_STRENGTH;
@@ -679,23 +812,28 @@ func void SetItRiAttributes_Djg (var C_Item itm, var int kap)
 	itm.change_atr[1]			=	ATR_HITPOINTS_MAX;
 	itm.change_value[1]			=	kap*HP_PER_LP;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Str;
 	itm.COUNT[1]				=	itm.change_value[0];
 	itm.TEXT[2]					=	NAME_Bonus_HpMax;
 	itm.COUNT[2]				=	itm.change_value[1];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Djg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ³owcy smoków";
-	SetItRiAttributes_Djg (self, 4);
+	name						=	"Pierœcieñ ³owcy smoków I";
+	SetItRiAttributes_Djg (self, 3);
 };
-
 instance ItRi_Djg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ³owcy smoków";
-	SetItRiAttributes_Djg (self, 8);
+	name						=	"Pierœcieñ ³owcy smoków II";
+	SetItRiAttributes_Djg (self, 6);
+};
+instance ItRi_Djg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ³owcy smoków III";
+	SetItRiAttributes_Djg (self, 9);
 };
 
 ///******************************************************************************************
@@ -703,6 +841,7 @@ instance ItRi_Djg_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Asa (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Dex_02.3ds";
 	
 	itm.change_atr[0]			=	ATR_DEXTERITY;
@@ -710,23 +849,28 @@ func void SetItRiAttributes_Asa (var C_Item itm, var int kap)
 	itm.change_atr[1]			=	ATR_POWER;
 	itm.change_value[1]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Dex;
 	itm.COUNT[1]				=	itm.change_value[0];
 	itm.TEXT[2]					=	NAME_Bonus_Pow;
 	itm.COUNT[2]				=	itm.change_value[1];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Asa_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ zabójcy";
-	SetItRiAttributes_Asa (self, 4);
+	name						=	"Pierœcieñ zabójcy I";
+	SetItRiAttributes_Asa (self, 3);
 };
-
 instance ItRi_Asa_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ zabójcy";
-	SetItRiAttributes_Asa (self, 8);
+	name						=	"Pierœcieñ zabójcy II";
+	SetItRiAttributes_Asa (self, 6);
+};
+instance ItRi_Asa_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ zabójcy III";
+	SetItRiAttributes_Asa (self, 9);
 };
 
 ///******************************************************************************************
@@ -734,6 +878,7 @@ instance ItRi_Asa_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Mag (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Pow_02.3ds";
 	
 	itm.change_atr[0]			=	ATR_POWER;
@@ -741,23 +886,28 @@ func void SetItRiAttributes_Mag (var C_Item itm, var int kap)
 	itm.change_atr[1]			=	ATR_MANA_MAX;
 	itm.change_value[1]			=	kap*MP_PER_LP;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Pow;
 	itm.COUNT[1]				=	itm.change_value[0];
 	itm.TEXT[2]					=	NAME_Bonus_MpMax;
 	itm.COUNT[2]				=	itm.change_value[1];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Mag_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ maga";
-	SetItRiAttributes_Mag (self, 4);
+	name						=	"Pierœcieñ maga I";
+	SetItRiAttributes_Mag (self, 3);
 };
-
 instance ItRi_Mag_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ maga";
-	SetItRiAttributes_Mag (self, 8);
+	name						=	"Pierœcieñ maga II";
+	SetItRiAttributes_Mag (self, 6);
+};
+instance ItRi_Mag_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ maga III";
+	SetItRiAttributes_Mag (self, 9);
 };
 
 ///******************************************************************************************
@@ -765,26 +915,32 @@ instance ItRi_Mag_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Throw (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Throw_01.3ds";
 	
-	//itm.change_atr[0]			=	ATR_THROW;
-	//itm.change_value[0]			=	kap;
+	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_00;
+	itm.change_value[0]			=	kap;
 	
-	itm.TEXT[1]					=	NAME_Bonus_Throw;
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_Talent0;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Throw_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ miotacza";
-	SetItRiAttributes_Throw (self, 5);
+	name						=	"Pierœcieñ miotacza I";
+	SetItRiAttributes_Throw (self, 4);
 };
-
 instance ItRi_Throw_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ miotacza";
-	SetItRiAttributes_Throw (self, 10);
+	name						=	"Pierœcieñ miotacza II";
+	SetItRiAttributes_Throw (self, 8);
+};
+instance ItRi_Throw_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ miotacza III";
+	SetItRiAttributes_Throw (self, 12);
 };
 
 ///******************************************************************************************
@@ -792,26 +948,32 @@ instance ItRi_Throw_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_1h (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_1h_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_1h;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_1h_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ szermierza";
-	SetItRiAttributes_1h (self, 5);
+	name						=	"Pierœcieñ szermierza I";
+	SetItRiAttributes_1h (self, 4);
 };
-
 instance ItRi_1h_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ szermierza";
-	SetItRiAttributes_1h (self, 10);
+	name						=	"Pierœcieñ szermierza II";
+	SetItRiAttributes_1h (self, 8);
+};
+instance ItRi_1h_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ szermierza III";
+	SetItRiAttributes_1h (self, 12);
 };
 
 ///******************************************************************************************
@@ -819,26 +981,32 @@ instance ItRi_1h_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_2h (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_2h_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_2h;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_2h_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ wojownika";
-	SetItRiAttributes_2h (self, 5);
+	name						=	"Pierœcieñ wojownika I";
+	SetItRiAttributes_2h (self, 4);
 };
-
 instance ItRi_2h_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ wojownika";
-	SetItRiAttributes_2h (self, 10);
+	name						=	"Pierœcieñ wojownika II";
+	SetItRiAttributes_2h (self, 8);
+};
+instance ItRi_2h_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ wojownika III";
+	SetItRiAttributes_2h (self, 12);
 };
 
 ///******************************************************************************************
@@ -846,26 +1014,32 @@ instance ItRi_2h_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Bow (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Bow_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Bow;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Bow_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ ³ucznika";
-	SetItRiAttributes_Bow (self, 5);
+	name						=	"Pierœcieñ ³ucznika I";
+	SetItRiAttributes_Bow (self, 4);
 };
-
 instance ItRi_Bow_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ ³ucznika";
-	SetItRiAttributes_Bow (self, 10);
+	name						=	"Pierœcieñ ³ucznika II";
+	SetItRiAttributes_Bow (self, 8);
+};
+instance ItRi_Bow_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ³ucznika III";
+	SetItRiAttributes_Bow (self, 12);
 };
 
 ///******************************************************************************************
@@ -873,26 +1047,32 @@ instance ItRi_Bow_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Cbow (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Cbow_01.3ds";
 	
 	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
 	itm.change_value[0]			=	kap;
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_Cbow;
 	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Cbow_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ kusznika";
-	SetItRiAttributes_Cbow (self, 5);
+	name						=	"Pierœcieñ kusznika I";
+	SetItRiAttributes_Cbow (self, 4);
 };
-
 instance ItRi_Cbow_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ kusznika";
-	SetItRiAttributes_Cbow (self, 10);
+	name						=	"Pierœcieñ kusznika II";
+	SetItRiAttributes_Cbow (self, 8);
+};
+instance ItRi_Cbow_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kusznika III";
+	SetItRiAttributes_Cbow (self, 12);
 };
 
 ///******************************************************************************************
@@ -900,10 +1080,12 @@ instance ItRi_Cbow_02 (ItemPR_Ring)
 ///******************************************************************************************
 func void SetItRiAttributes_Master (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*150;
 	itm.visual					=	"ItRi_Master_01.3ds";
 	
-	itm.TEXT[0]					=	NAME_Bonus_Throw;
-	itm.COUNT[0]				=	kap;
+	itm.description				=	itm.name;
+//	itm.TEXT[0]					=	NAME_Bonus_Talent0;
+//	itm.COUNT[0]				=	kap;
 	itm.TEXT[1]					=	NAME_Bonus_1h;
 	itm.COUNT[1]				=	kap;
 	itm.TEXT[2]					=	NAME_Bonus_2h;
@@ -912,51 +1094,75 @@ func void SetItRiAttributes_Master (var C_Item itm, var int kap)
 	itm.COUNT[3]				=	kap;
 	itm.TEXT[4]					=	NAME_Bonus_CBow;
 	itm.COUNT[4]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Master_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ mistrza broni";
+	name						=	"Pierœcieñ mistrza broni I";
 	on_equip					=	Equip_ItRi_Master_01;
 	on_unequip					=	UnEquip_ItRi_Master_01;
-	SetItRiAttributes_Master (self, 3);
+	SetItRiAttributes_Master (self, 2);
 };
 func void Equip_ItRi_Master_01()
 {
-	//self.hitchance[NPC_TALENT_THROW] += 3;
-	self.hitchance[NPC_TALENT_1H] += 3;
-	self.hitchance[NPC_TALENT_2H] += 3;
-	self.hitchance[NPC_TALENT_BOW] += 3;
-	self.hitchance[NPC_TALENT_CROSSBOW] += 3;
+//	self.hitchance[NPC_TALENT_00] += 2;
+	self.hitchance[NPC_TALENT_1H] += 2;
+	self.hitchance[NPC_TALENT_2H] += 2;
+	self.hitchance[NPC_TALENT_BOW] += 2;
+	self.hitchance[NPC_TALENT_CROSSBOW] += 2;
 };
 func void UnEquip_ItRi_Master_01()
 {
-	//self.hitchance[NPC_TALENT_THROW] -= 3;
-	self.hitchance[NPC_TALENT_1H] -= 3;
-	self.hitchance[NPC_TALENT_2H] -= 3;
-	self.hitchance[NPC_TALENT_BOW] -= 3;
-	self.hitchance[NPC_TALENT_CROSSBOW] -= 3;
+//	self.hitchance[NPC_TALENT_00] -= 2;
+	self.hitchance[NPC_TALENT_1H] -= 2;
+	self.hitchance[NPC_TALENT_2H] -= 2;
+	self.hitchance[NPC_TALENT_BOW] -= 2;
+	self.hitchance[NPC_TALENT_CROSSBOW] -= 2;
 };
 
 instance ItRi_Master_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ mistrza broni";
+	name						=	"Pierœcieñ mistrza broni II";
 	on_equip					=	Equip_ItRi_Master_02;
 	on_unequip					=	UnEquip_ItRi_Master_02;
-	SetItRiAttributes_Master (self, 6);
+	SetItRiAttributes_Master (self, 4);
 };
 func void Equip_ItRi_Master_02()
 {
-	//self.hitchance[NPC_TALENT_THROW] += 6;
+//	self.hitchance[NPC_TALENT_00] += 4;
+	self.hitchance[NPC_TALENT_1H] += 4;
+	self.hitchance[NPC_TALENT_2H] += 4;
+	self.hitchance[NPC_TALENT_BOW] += 4;
+	self.hitchance[NPC_TALENT_CROSSBOW] += 4;
+};
+func void UnEquip_ItRi_Master_02()
+{
+//	self.hitchance[NPC_TALENT_00] -= 4;
+	self.hitchance[NPC_TALENT_1H] -= 4;
+	self.hitchance[NPC_TALENT_2H] -= 4;
+	self.hitchance[NPC_TALENT_BOW] -= 4;
+	self.hitchance[NPC_TALENT_CROSSBOW] -= 4;
+};
+
+instance ItRi_Master_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ mistrza broni III";
+	on_equip					=	Equip_ItRi_Master_03;
+	on_unequip					=	UnEquip_ItRi_Master_03;
+	SetItRiAttributes_Master (self, 6);
+};
+func void Equip_ItRi_Master_03()
+{
+//	self.hitchance[NPC_TALENT_00] += 6;
 	self.hitchance[NPC_TALENT_1H] += 6;
 	self.hitchance[NPC_TALENT_2H] += 6;
 	self.hitchance[NPC_TALENT_BOW] += 6;
 	self.hitchance[NPC_TALENT_CROSSBOW] += 6;
 };
-func void UnEquip_ItRi_Master_02()
+func void UnEquip_ItRi_Master_03()
 {
-	//self.hitchance[NPC_TALENT_THROW] -= 6;
+//	self.hitchance[NPC_TALENT_00] -= 6;
 	self.hitchance[NPC_TALENT_1H] -= 6;
 	self.hitchance[NPC_TALENT_2H] -= 6;
 	self.hitchance[NPC_TALENT_BOW] -= 6;
@@ -964,451 +1170,584 @@ func void UnEquip_ItRi_Master_02()
 };
 
 ///******************************************************************************************
-/// Innovation
+/// Backstab damage
 ///******************************************************************************************
-func void SetItRiAttributes_Innovation (var C_Item itm, var int kap)
+func void SetItRiAttributes_BackstabDmg (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_Throw_02.3ds";
 	
-	//itm.change_atr[0]			=	ATR_THROW;
-	//itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
-	itm.change_value[1]			=	kap;
-	itm.change_atr[2]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
-	itm.change_value[2]			=	kap;
-	
-	itm.TEXT[1]					=	NAME_Bonus_Throw;
-	itm.COUNT[1]				=	itm.change_value[0];
-	itm.TEXT[2]					=	NAME_Bonus_1h;
-	itm.COUNT[2]				=	itm.change_value[1];
-	itm.TEXT[3]					=	NAME_Bonus_2h;
-	itm.COUNT[3]				=	itm.change_value[2];
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Rozpoczêcie walki od ataku";
+	itm.TEXT[2]					=	"w plecy zadaje dodatkowe";
+	itm.TEXT[3]					=	"obra¿enia równe % ¿ycia wroga:";
+	itm.COUNT[3]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
-instance ItRi_Innovation_01 (ItemPR_Ring)
+instance ItRi_BackstabDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ innowacji";
-	SetItRiAttributes_Innovation (self, 4);
+	name						=	"Pierœcieñ ciosu w plecy I";
+	on_equip					=	Equip_ItRi_BackstabDmg_01;
+	on_unequip					=	UnEquip_ItRi_BackstabDmg_01;
+	SetItRiAttributes_BackstabDmg (self, 4);
 };
+func void Equip_ItRi_BackstabDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] += 4; }; };
+func void UnEquip_ItRi_BackstabDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] -= 4; }; };
 
-instance ItRi_Innovation_02 (ItemPR_Ring)
+instance ItRi_BackstabDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ innowacji";
-	SetItRiAttributes_Innovation (self, 8);
+	name						=	"Pierœcieñ ciosu w plecy II";
+	on_equip					=	Equip_ItRi_BackstabDmg_02;
+	on_unequip					=	UnEquip_ItRi_BackstabDmg_02;
+	SetItRiAttributes_BackstabDmg (self, 8);
 };
+func void Equip_ItRi_BackstabDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] += 8; }; };
+func void UnEquip_ItRi_BackstabDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] -= 8; }; };
+
+instance ItRi_BackstabDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ ciosu w plecy III";
+	on_equip					=	Equip_ItRi_BackstabDmg_03;
+	on_unequip					=	UnEquip_ItRi_BackstabDmg_03;
+	SetItRiAttributes_BackstabDmg (self, 12);
+};
+func void Equip_ItRi_BackstabDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] += 12; }; };
+func void UnEquip_ItRi_BackstabDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_BackstabDmg] -= 12; }; };
 
 ///******************************************************************************************
-/// Precision
+/// Counter damage
 ///******************************************************************************************
-func void SetItRiAttributes_Precision (var C_Item itm, var int kap)
+func void SetItRiAttributes_CounterDmg (var C_Item itm, var int kap)
 {
+	itm.value					=	kap*100;
 	itm.visual					=	"ItRi_1h_02.3ds";
 	
-	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
-	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
-	itm.change_value[1]			=	kap;
-	
-	itm.TEXT[1]					=	NAME_Bonus_1h;
-	itm.COUNT[1]				=	itm.change_value[0];
-	itm.TEXT[2]					=	NAME_Bonus_Bow;
-	itm.COUNT[2]				=	itm.change_value[1];
-};
-
-///******************************************************************************************
-instance ItRi_Precision_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ precyzji";
-	SetItRiAttributes_Precision (self, 4);
-};
-
-instance ItRi_Precision_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ precyzji";
-	SetItRiAttributes_Precision (self, 8);
-};
-
-///******************************************************************************************
-/// Domination
-///******************************************************************************************
-func void SetItRiAttributes_Domination (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_2h_02.3ds";
-	
-	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
-	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
-	itm.change_value[1]			=	kap;
-	
-	itm.TEXT[1]					=	NAME_Bonus_2h;
-	itm.COUNT[1]				=	itm.change_value[0];
-	itm.TEXT[2]					=	NAME_Bonus_Cbow;
-	itm.COUNT[2]				=	itm.change_value[1];
-};
-
-///******************************************************************************************
-instance ItRi_Domination_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ dominacji";
-	SetItRiAttributes_Domination (self, 4);
-};
-
-instance ItRi_Domination_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ dominacji";
-	SetItRiAttributes_Domination (self, 8);
-};
-
-///******************************************************************************************
-/// Motivation
-///******************************************************************************************
-func void SetItRiAttributes_Motivation (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_Bow_02.3ds";
-	
-	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_2H;
-	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_BOW;
-	itm.change_value[1]			=	kap;
-	
-	itm.TEXT[1]					=	NAME_Bonus_2h;
-	itm.COUNT[1]				=	itm.change_value[0];
-	itm.TEXT[2]					=	NAME_Bonus_Bow;
-	itm.COUNT[2]				=	itm.change_value[1];
-};
-
-///******************************************************************************************
-instance ItRi_Motivation_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ determinacji";
-	SetItRiAttributes_Motivation (self, 4);
-};
-
-instance ItRi_Motivation_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ determinacji";
-	SetItRiAttributes_Motivation (self, 8);
-};
-
-///******************************************************************************************
-/// Liberation
-///******************************************************************************************
-func void SetItRiAttributes_Liberation (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_Cbow_02.3ds";
-	
-	itm.change_atr[0]			=	ATR_INDEX_MAX+1+NPC_TALENT_1H;
-	itm.change_value[0]			=	kap;
-	itm.change_atr[1]			=	ATR_INDEX_MAX+1+NPC_TALENT_CROSSBOW;
-	itm.change_value[1]			=	kap;
-	
-	itm.TEXT[1]					=	NAME_Bonus_1h;
-	itm.COUNT[1]				=	itm.change_value[0];
-	itm.TEXT[2]					=	NAME_Bonus_Cbow;
-	itm.COUNT[2]				=	itm.change_value[1];
-};
-
-///******************************************************************************************
-instance ItRi_Liberation_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ oswobodzenia";
-	SetItRiAttributes_Liberation (self, 4);
-};
-
-instance ItRi_Liberation_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ oswobodzenia";
-	SetItRiAttributes_Liberation (self, 8);
-};
-
-///******************************************************************************************
-/// Destruction
-///******************************************************************************************
-func void SetItRiAttributes_Destruction (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_Master_02.3ds";
-	
-	itm.TEXT[1]					=	NAME_Percent_Damage;
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_CounterDmg;
 	itm.COUNT[1]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
-instance ItRi_Destruction_01 (ItemPR_Ring)
+instance ItRi_CounterDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ destrukcji";
-	on_equip					=	Equip_ItRi_Destruction_01;
-	on_unequip					=	UnEquip_ItRi_Destruction_01;
-	SetItRiAttributes_Destruction (self, 5);
+	name						=	"Pierœcieñ obra¿eñ kontrataku I";
+	on_equip					=	Equip_ItRi_CounterDmg_01;
+	on_unequip					=	UnEquip_ItRi_CounterDmg_01;
+	SetItRiAttributes_CounterDmg (self, 4);
 };
-func void Equip_ItRi_Destruction_01()	{ if (Npc_IsPlayer(self)) { mDamageIncrease += 5; }; };
-func void UnEquip_ItRi_Destruction_01()	{ if (Npc_IsPlayer(self)) { mDamageIncrease -= 5; }; };
+func void Equip_ItRi_CounterDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] += 4; }; };
+func void UnEquip_ItRi_CounterDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] -= 4; }; };
 
-instance ItRi_Destruction_02 (ItemPR_Ring)
+instance ItRi_CounterDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ destrukcji";
-	on_equip					=	Equip_ItRi_Destruction_02;
-	on_unequip					=	UnEquip_ItRi_Destruction_02;
-	SetItRiAttributes_Destruction (self, 10);
+	name						=	"Pierœcieñ obra¿eñ kontrataku II";
+	on_equip					=	Equip_ItRi_CounterDmg_02;
+	on_unequip					=	UnEquip_ItRi_CounterDmg_02;
+	SetItRiAttributes_CounterDmg (self, 8);
 };
-func void Equip_ItRi_Destruction_02()	{ if (Npc_IsPlayer(self)) { mDamageIncrease += 10; }; };
-func void UnEquip_ItRi_Destruction_02()	{ if (Npc_IsPlayer(self)) { mDamageIncrease -= 10; }; };
+func void Equip_ItRi_CounterDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] += 8; }; };
+func void UnEquip_ItRi_CounterDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] -= 8; }; };
+
+instance ItRi_CounterDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ obra¿eñ kontrataku III";
+	on_equip					=	Equip_ItRi_CounterDmg_03;
+	on_unequip					=	UnEquip_ItRi_CounterDmg_03;
+	SetItRiAttributes_CounterDmg (self, 12);
+};
+func void Equip_ItRi_CounterDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] += 12; }; };
+func void UnEquip_ItRi_CounterDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_CounterDmg] -= 12; }; };
 
 ///******************************************************************************************
 /// Crit damage
 ///******************************************************************************************
 func void SetItRiAttributes_CritDmg (var C_Item itm, var int kap)
 {
-	itm.visual					=	"ItRi_Crit_01.3ds";
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_2h_02.3ds";
 	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_CritDmg;
 	itm.COUNT[1]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_CritDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ obra¿eñ krytycznych";
+	name						=	"Pierœcieñ obra¿eñ krytycznych I";
 	on_equip					=	Equip_ItRi_CritDmg_01;
 	on_unequip					=	UnEquip_ItRi_CritDmg_01;
-	SetItRiAttributes_CritDmg (self, 6);
+	SetItRiAttributes_CritDmg (self, 4);
 };
-func void Equip_ItRi_CritDmg_01()		{ self.aivar[AIV_CritDamage] += 6; };
-func void UnEquip_ItRi_CritDmg_01()		{ self.aivar[AIV_CritDamage] -= 6; };
+func void Equip_ItRi_CritDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] += 4; }; };
+func void UnEquip_ItRi_CritDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] -= 4; }; };
 
 instance ItRi_CritDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ obra¿eñ krytycznych";
+	name						=	"Pierœcieñ obra¿eñ krytycznych II";
 	on_equip					=	Equip_ItRi_CritDmg_02;
 	on_unequip					=	UnEquip_ItRi_CritDmg_02;
+	SetItRiAttributes_CritDmg (self, 8);
+};
+func void Equip_ItRi_CritDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] += 8; }; };
+func void UnEquip_ItRi_CritDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] -= 8; }; };
+
+instance ItRi_CritDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ obra¿eñ krytycznych III";
+	on_equip					=	Equip_ItRi_CritDmg_03;
+	on_unequip					=	UnEquip_ItRi_CritDmg_03;
 	SetItRiAttributes_CritDmg (self, 12);
 };
-func void Equip_ItRi_CritDmg_02()		{ self.aivar[AIV_CritDamage] += 12; };
-func void UnEquip_ItRi_CritDmg_02()		{ self.aivar[AIV_CritDamage] -= 12; };
-
-///******************************************************************************************
-/// Area damage
-///******************************************************************************************
-func void SetItRiAttributes_AreaDmg (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_Crit_02.3ds";
-	
-	itm.TEXT[1]					=	NAME_Bonus_AreaDmg;
-	itm.COUNT[1]				=	kap;
-};
-
-///******************************************************************************************
-instance ItRi_AreaDmg_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ obra¿eñ obszarowych";
-	on_equip					=	Equip_ItRi_AreaDmg_01;
-	on_unequip					=	UnEquip_ItRi_AreaDmg_01;
-	SetItRiAttributes_AreaDmg (self, 6);
-};
-func void Equip_ItRi_AreaDmg_01()		{ self.aivar[AIV_AreaDamage] += 6; };
-func void UnEquip_ItRi_AreaDmg_01()		{ self.aivar[AIV_AreaDamage] -= 6; };
-
-instance ItRi_AreaDmg_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ obra¿eñ obszarowych";
-	on_equip					=	Equip_ItRi_AreaDmg_02;
-	on_unequip					=	UnEquip_ItRi_AreaDmg_02;
-	SetItRiAttributes_AreaDmg (self, 12);
-};
-func void Equip_ItRi_AreaDmg_02()		{ self.aivar[AIV_CritDamage] += 12; };
-func void UnEquip_ItRi_AreaDmg_02()		{ self.aivar[AIV_CritDamage] -= 12; };
-
-///******************************************************************************************
-/// Life steal
-///******************************************************************************************
-func void SetItRiAttributes_Ls (var C_Item itm, var int kap)
-{
-	itm.visual					=	"ItRi_Ls_01.3ds";
-	
-	itm.TEXT[1]					=	NAME_Bonus_Ls;
-	itm.COUNT[1]				=	kap;
-};
-
-///******************************************************************************************
-instance ItRi_Ls_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ kradzie¿y ¿ycia";
-	on_equip					=	Equip_ItRi_Ls_01;
-	on_unequip					=	UnEquip_ItRi_Ls_01;
-	SetItRiAttributes_Ls (self, 1);
-};
-func void Equip_ItRi_Ls_01()			{ self.aivar[AIV_LifeSteal] += 1; };
-func void UnEquip_ItRi_Ls_01()			{ self.aivar[AIV_LifeSteal] -= 1; };
-
-instance ItRi_Ls_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ kradzie¿y ¿ycia";
-	on_equip					=	Equip_ItRi_Ls_02;
-	on_unequip					=	UnEquip_ItRi_Ls_02;
-	SetItRiAttributes_Ls (self, 2);
-};
-func void Equip_ItRi_Ls_02()			{ self.aivar[AIV_LifeSteal] += 2; };
-func void UnEquip_ItRi_Ls_02()			{ self.aivar[AIV_LifeSteal] -= 2; };
+func void Equip_ItRi_CritDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] += 12; }; };
+func void UnEquip_ItRi_CritDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_CritDmg] -= 12; }; };
 
 ///******************************************************************************************
 /// Minimal damage
 ///******************************************************************************************
 func void SetItRiAttributes_MinDmg (var C_Item itm, var int kap)
 {
-	itm.visual					=	"ItRi_MinDmg_01.3ds";
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_Bow_02.3ds";
 	
+	itm.change_atr[0]			=	COND_AIVAR+AIV_MinDamage;
+	itm.change_value[0]			=	kap;
+	
+	itm.description				=	itm.name;
 	itm.TEXT[1]					=	NAME_Bonus_MinDmg;
-	itm.COUNT[1]				=	kap;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_MinDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ równowagi";
-	on_equip					=	Equip_ItRi_MinDmg_01;
-	on_unequip					=	UnEquip_ItRi_MinDmg_01;
+	name						=	"Pierœcieñ równowagi I";
 	SetItRiAttributes_MinDmg (self, 4);
 };
-func void Equip_ItRi_MinDmg_01()		{ self.aivar[AIV_MinDamage] += 4; };
-func void UnEquip_ItRi_MinDmg_01()		{ self.aivar[AIV_MinDamage] -= 4; };
-
 instance ItRi_MinDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ równowagi";
-	on_equip					=	Equip_ItRi_MinDmg_02;
-	on_unequip					=	UnEquip_ItRi_MinDmg_02;
+	name						=	"Pierœcieñ równowagi II";
 	SetItRiAttributes_MinDmg (self, 8);
 };
-func void Equip_ItRi_MinDmg_02()		{ self.aivar[AIV_MinDamage] += 8; };
-func void UnEquip_ItRi_MinDmg_02()		{ self.aivar[AIV_MinDamage] -= 8; };
-/*
-///******************************************************************************************
-/// Life
-///******************************************************************************************
-func void SetItRiAttributes_Life (var C_Item itm, var int kap)
+instance ItRi_MinDmg_03 (ItemPR_Ring)
 {
-	itm.visual					=	"ItRi_Life_01.3ds";
+	name						=	"Pierœcieñ równowagi III";
+	SetItRiAttributes_MinDmg (self, 12);
+};
+
+///******************************************************************************************
+/// After spell damage
+///******************************************************************************************
+func void SetItRiAttributes_AfterSpellDmg (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_Cbow_02.3ds";
 	
-	itm.TEXT[1]					=	"Otrzymanie obra¿eñ regeneruje";
-	itm.TEXT[2]					=	"zdrowie pobliskich sojuszników o:";
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Obra¿enia broni po";
+	itm.TEXT[2]					=	"u¿yciu zaklêcia:";
 	itm.COUNT[2]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
-instance ItRi_Life_01 (ItemPR_Ring)
+instance ItRi_AfterSpellDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ poœwiêcenia";
-	on_equip					=	Equip_ItRi_Life_01;
-	on_unequip					=	UnEquip_ItRi_Life_01;
-	SetItRiAttributes_Life (self, 3);
+	name						=	"Pierœcieñ pomagiczny I";
+	on_equip					=	Equip_ItRi_AfterSpellDmg_01;
+	on_unequip					=	UnEquip_ItRi_AfterSpellDmg_01;
+	SetItRiAttributes_AfterSpellDmg (self, 4);
 };
-func void Equip_ItRi_Life_01()			{ if (Npc_IsPlayer(self)) { mHeroToAlliesRegen += 3; }; };
-func void UnEquip_ItRi_Life_01()		{ if (Npc_IsPlayer(self)) { mHeroToAlliesRegen -= 3; }; };
+func void Equip_ItRi_AfterSpellDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] += 4; }; };
+func void UnEquip_ItRi_AfterSpellDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] -= 4; }; };
 
-instance ItRi_Life_02 (ItemPR_Ring)
+instance ItRi_AfterSpellDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ poœwiêcenia";
-	on_equip					=	Equip_ItRi_Life_02;
-	on_unequip					=	UnEquip_ItRi_Life_02;
-	SetItRiAttributes_Life (self, 6);
+	name						=	"Pierœcieñ pomagiczny II";
+	on_equip					=	Equip_ItRi_AfterSpellDmg_02;
+	on_unequip					=	UnEquip_ItRi_AfterSpellDmg_02;
+	SetItRiAttributes_AfterSpellDmg (self, 8);
 };
-func void Equip_ItRi_Life_02()			{ if (Npc_IsPlayer(self)) { mHeroToAlliesRegen += 6; }; };
-func void UnEquip_ItRi_Life_02()		{ if (Npc_IsPlayer(self)) { mHeroToAlliesRegen -= 6; }; };
+func void Equip_ItRi_AfterSpellDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] += 8; }; };
+func void UnEquip_ItRi_AfterSpellDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] -= 8; }; };
+
+instance ItRi_AfterSpellDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ pomagiczny III";
+	on_equip					=	Equip_ItRi_AfterSpellDmg_03;
+	on_unequip					=	UnEquip_ItRi_AfterSpellDmg_03;
+	SetItRiAttributes_AfterSpellDmg (self, 12);
+};
+func void Equip_ItRi_AfterSpellDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] += 12; }; };
+func void UnEquip_ItRi_AfterSpellDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AfterSpellDmg] -= 12; }; };
 
 ///******************************************************************************************
-/// Druid
+/// Combo damage
 ///******************************************************************************************
-func void SetItRiAttributes_Druid (var C_Item itm, var int kap)
+func void SetItRiAttributes_ComboDmg (var C_Item itm, var int kap)
 {
-	itm.visual					=	"ItRi_Life_02.3ds";
+	itm.value					=	kap*400;
+	itm.visual					=	"ItRi_Master_02.3ds";
 	
-	itm.TEXT[1]					=	"Zwiêksza efektywnoœæ przemian o:";
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Zwiêkszenie obra¿eñ za";
+	itm.TEXT[2]					=	"ka¿de kolejne trafienie:";
+	itm.COUNT[2]				=	kap;
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_ComboDmg_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kombinacji uderzeñ I";
+	on_equip					=	Equip_ItRi_ComboDmg_01;
+	on_unequip					=	UnEquip_ItRi_ComboDmg_01;
+	SetItRiAttributes_ComboDmg (self, 1);
+};
+func void Equip_ItRi_ComboDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] += 1; }; };
+func void UnEquip_ItRi_ComboDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] -= 1; }; };
+
+instance ItRi_ComboDmg_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kombinacji uderzeñ II";
+	on_equip					=	Equip_ItRi_ComboDmg_02;
+	on_unequip					=	UnEquip_ItRi_ComboDmg_02;
+	SetItRiAttributes_ComboDmg (self, 2);
+};
+func void Equip_ItRi_ComboDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] += 2; }; };
+func void UnEquip_ItRi_ComboDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] -= 2; }; };
+
+instance ItRi_ComboDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kombinacji uderzeñ III";
+	on_equip					=	Equip_ItRi_ComboDmg_03;
+	on_unequip					=	UnEquip_ItRi_ComboDmg_03;
+	SetItRiAttributes_ComboDmg (self, 3);
+};
+func void Equip_ItRi_ComboDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] += 3; }; };
+func void UnEquip_ItRi_ComboDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_ComboDmg] -= 3; }; };
+
+///******************************************************************************************
+/// Penetration
+///******************************************************************************************
+func void SetItRiAttributes_Penetration (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_Penetration_01.3ds";
+	
+	itm.change_atr[0]			=	COND_AIVAR+AIV_Penetration;
+	itm.change_value[0]			=	kap;
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_Penetration;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_Penetration_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przebicia pancerza I";
+	SetItRiAttributes_Penetration (self, 4);
+};
+instance ItRi_Penetration_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przebicia pancerza II";
+	SetItRiAttributes_Penetration (self, 8);
+};
+instance ItRi_Penetration_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przebicia pancerza III";
+	SetItRiAttributes_Penetration (self, 12);
+};
+
+///******************************************************************************************
+/// Area damage
+///******************************************************************************************
+func void SetItRiAttributes_AreaDmg (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*75;
+	itm.visual					=	"ItRi_Penetration_02.3ds";
+	
+	itm.change_atr[0]			=	COND_AIVAR+AIV_AreaDamage;
+	itm.change_value[0]			=	kap;
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_AreaDmg;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_AreaDmg_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ obra¿eñ obszarowych I";
+	SetItRiAttributes_AreaDmg (self, 6);
+};
+instance ItRi_AreaDmg_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ obra¿eñ obszarowych II";
+	SetItRiAttributes_AreaDmg (self, 12);
+};
+instance ItRi_AreaDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ obra¿eñ obszarowych II";
+	SetItRiAttributes_AreaDmg (self, 18);
+};
+
+///******************************************************************************************
+/// Overload damage
+///******************************************************************************************
+func void SetItRiAttributes_OverloadDmg (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*150;
+	itm.visual					=	"ItRi_Overload_01.3ds";
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Po 5 sekundach zadasz obra¿enia";
+	itm.TEXT[2]					=	"wynosz¹ce % twojego max. ¿ycia:";
+	itm.COUNT[2]				=	kap;
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_OverloadDmg_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przeci¹¿enia I";
+	on_equip					=	Equip_ItRi_OverloadDmg_01;
+	on_unequip					=	UnEquip_ItRi_OverloadDmg_01;
+	SetItRiAttributes_OverloadDmg (self, 3);
+};
+func void Equip_ItRi_OverloadDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] += 3; }; };
+func void UnEquip_ItRi_OverloadDmg_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] -= 3; }; };
+
+instance ItRi_OverloadDmg_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przeci¹¿enia II";
+	on_equip					=	Equip_ItRi_OverloadDmg_02;
+	on_unequip					=	UnEquip_ItRi_OverloadDmg_02;
+	SetItRiAttributes_OverloadDmg (self, 6);
+};
+func void Equip_ItRi_OverloadDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] += 6; }; };
+func void UnEquip_ItRi_OverloadDmg_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] -= 6; }; };
+
+instance ItRi_OverloadDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przeci¹¿enia III";
+	on_equip					=	Equip_ItRi_OverloadDmg_03;
+	on_unequip					=	UnEquip_ItRi_OverloadDmg_03;
+	SetItRiAttributes_OverloadDmg (self, 9);
+};
+func void Equip_ItRi_OverloadDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] += 9; }; };
+func void UnEquip_ItRi_OverloadDmg_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_OverloadDmg] -= 9; }; };
+
+///******************************************************************************************
+/// Gold to damage
+///******************************************************************************************
+func void SetItRiAttributes_GoldDmg (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*150;
+	itm.visual					=	"ItRi_Gold_01.3ds";
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Co 3 atak zadaje dod. obra¿enia:";
 	itm.COUNT[1]				=	kap;
+	itm.TEXT[2]					=	"Ale zu¿ywa z³ote monety:";
+	itm.COUNT[2]				=	kap/5;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
-instance ItRi_Druid_01 (ItemPR_Ring)
+instance ItRi_GoldDmg_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ druida";
-	on_equip					=	Equip_ItRi_Druid_01;
-	on_unequip					=	UnEquip_ItRi_Druid_01;
-	SetItRiAttributes_Druid (self, 10);
+	name						=	"Pierœcieñ z³otych obra¿eñ I";
+	on_equip					=	Equip_ItRi_GoldDmg_01;
+	on_unequip					=	UnEquip_ItRi_GoldDmg_01;
+	SetItRiAttributes_GoldDmg (self, 5);
 };
-func void Equip_ItRi_Druid_01()			{ if (Npc_IsPlayer(self)) { mTransformerPower += 10; }; };
-func void UnEquip_ItRi_Druid_01()		{ if (Npc_IsPlayer(self)) { mTransformerPower -= 10; }; };
+func void Equip_ItRi_GoldDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] += 5; }; };
+func void UnEquip_ItRi_GoldDmg_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] -= 5; }; };
 
-instance ItRi_Druid_02 (ItemPR_Ring)
+instance ItRi_GoldDmg_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ druida";
-	on_equip					=	Equip_ItRi_Druid_02;
-	on_unequip					=	UnEquip_ItRi_Druid_02;
-	SetItRiAttributes_Druid (self, 20);
+	name						=	"Pierœcieñ z³otych obra¿eñ II";
+	on_equip					=	Equip_ItRi_GoldDmg_02;
+	on_unequip					=	UnEquip_ItRi_GoldDmg_02;
+	SetItRiAttributes_GoldDmg (self, 10);
 };
-func void Equip_ItRi_Druid_02()			{ if (Npc_IsPlayer(self)) { mTransformerPower += 20; }; };
-func void UnEquip_ItRi_Druid_02()		{ if (Npc_IsPlayer(self)) { mTransformerPower -= 20; }; };
+func void Equip_ItRi_GoldDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] += 10; }; };
+func void UnEquip_ItRi_GoldDmg_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] -= 10; }; };
+
+instance ItRi_GoldDmg_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ z³otych obra¿eñ III";
+	on_equip					=	Equip_ItRi_GoldDmg_03;
+	on_unequip					=	UnEquip_ItRi_GoldDmg_03;
+	SetItRiAttributes_GoldDmg (self, 15);
+};
+func void Equip_ItRi_GoldDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] += 15; }; };
+func void UnEquip_ItRi_GoldDmg_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_GoldDmg] -= 15; }; };
 
 ///******************************************************************************************
-/// Death
+/// Ally enhancement
 ///******************************************************************************************
-func void SetItRiAttributes_Death (var C_Item itm, var int kap)
+func void SetItRiAttributes_Enhancement (var C_Item itm, var int kap)
 {
-	itm.visual					=	"ItRi_Death_01.3ds";
+	itm.value					=	kap*200;
+	itm.visual					=	"ItRi_Ally_01.3ds";
 	
-	itm.TEXT[1]					=	"Otrzymanie obra¿eñ przez sojusznika";
-	itm.TEXT[2]					=	"regeneruje twoje zdrowie o:";
-	itm.COUNT[2]				=	kap;
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Wzmacnia obra¿enia sojuszników o:";
+	itm.COUNT[1]				=	kap;
+	itm.TEXT[2]					=	"Koszt many ka¿dego trafienia:";
+	itm.COUNT[2]				=	kap/4;
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_Enhancement_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ wzmocnienia I";
+	on_equip					=	Equip_ItRi_Enhancement_01;
+	on_unequip					=	UnEquip_ItRi_Enhancement_01;
+	SetItRiAttributes_Enhancement (self, 4);
+};
+func void Equip_ItRi_Enhancement_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] += 4; }; };
+func void UnEquip_ItRi_Enhancement_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] -= 4; }; };
+
+instance ItRi_Enhancement_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ wzmocnienia II";
+	on_equip					=	Equip_ItRi_Enhancement_02;
+	on_unequip					=	UnEquip_ItRi_Enhancement_02;
+	SetItRiAttributes_Enhancement (self, 8);
+};
+func void Equip_ItRi_Enhancement_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] += 8; }; };
+func void UnEquip_ItRi_Enhancement_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] -= 8; }; };
+
+instance ItRi_Enhancement_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ wzmocnienia III";
+	on_equip					=	Equip_ItRi_Enhancement_03;
+	on_unequip					=	UnEquip_ItRi_Enhancement_03;
+	SetItRiAttributes_Enhancement (self, 12);
+};
+func void Equip_ItRi_Enhancement_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] += 12; }; };
+func void UnEquip_ItRi_Enhancement_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_AllyEnhancement] -= 12; }; };
+
+///******************************************************************************************
+/// Redirect
+///******************************************************************************************
+func void SetItRiAttributes_Redirect (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_Ally_02.3ds";
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Przekierowuje % obra¿eñ:";
+	itm.COUNT[1]				=	kap;
+	itm.TEXT[2]					=	"zadanych sojusznikowi.";
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_Redirect_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przekierowania obra¿eñ I";
+	on_equip					=	Equip_ItRi_Redirect_01;
+	on_unequip					=	UnEquip_ItRi_Redirect_01;
+	SetItRiAttributes_Redirect (self, 10);
+};
+func void Equip_ItRi_Redirect_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] += 10; }; };
+func void UnEquip_ItRi_Redirect_01()	{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] -= 10; }; };
+
+instance ItRi_Redirect_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przekierowania obra¿eñ II";
+	on_equip					=	Equip_ItRi_Redirect_02;
+	on_unequip					=	UnEquip_ItRi_Redirect_02;
+	SetItRiAttributes_Redirect (self, 20);
+};
+func void Equip_ItRi_Redirect_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] += 20; }; };
+func void UnEquip_ItRi_Redirect_02()	{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] -= 20; }; };
+
+instance ItRi_Redirect_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ przekierowania obra¿eñ III";
+	on_equip					=	Equip_ItRi_Redirect_03;
+	on_unequip					=	UnEquip_ItRi_Redirect_03;
+	SetItRiAttributes_Redirect (self, 30);
+};
+func void Equip_ItRi_Redirect_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] += 30; }; };
+func void UnEquip_ItRi_Redirect_03()	{ if (Npc_IsPlayer(self)) { ATS[ATS_RedirectDmg] -= 30; }; };
+
+///******************************************************************************************
+/// Life steal
+///******************************************************************************************
+func void SetItRiAttributes_Ls (var C_Item itm, var int kap)
+{
+	itm.value					=	kap*200;
+	itm.visual					=	"ItRi_LifeSteal_01.3ds";
+	
+	itm.change_atr[0]			=	COND_AIVAR+AIV_LifeSteal;
+	itm.change_value[0]			=	kap;
+	
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	NAME_Bonus_Ls;
+	itm.COUNT[1]				=	itm.change_value[0];
+	itm.COUNT[5]				=	itm.value;
+};
+
+instance ItRi_Ls_01 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kradzie¿y ¿ycia I";
+	SetItRiAttributes_Ls (self, 2);
+};
+instance ItRi_Ls_02 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kradzie¿y ¿ycia II";
+	SetItRiAttributes_Ls (self, 4);
+};
+instance ItRi_Ls_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ kradzie¿y ¿ycia III";
+	SetItRiAttributes_Ls (self, 6);
 };
 
 ///******************************************************************************************
-instance ItRi_Death_01 (ItemPR_Ring)
-{
-	description					=	"Pierœcieñ cierpienia";
-	on_equip					=	Equip_ItRi_Death_01;
-	on_unequip					=	UnEquip_ItRi_Death_01;
-	SetItRiAttributes_Death (self, 1);
-};
-func void Equip_ItRi_Death_01()			{ if (Npc_IsPlayer(self)) { mAlliesToHeroRegen += 1; }; };
-func void UnEquip_ItRi_Death_01()		{ if (Npc_IsPlayer(self)) { mAlliesToHeroRegen -= 1; }; };
-
-instance ItRi_Death_02 (ItemPR_Ring)
-{
-	description					=	"Ulepsz. pierœcieñ cierpienia";
-	on_equip					=	Equip_ItRi_Death_02;
-	on_unequip					=	UnEquip_ItRi_Death_02;
-	SetItRiAttributes_Death (self, 2);
-};
-func void Equip_ItRi_Death_02()			{ if (Npc_IsPlayer(self)) { mAlliesToHeroRegen += 2; }; };
-func void UnEquip_ItRi_Death_02()		{ if (Npc_IsPlayer(self)) { mAlliesToHeroRegen -= 2; }; };
-
-///******************************************************************************************
-/// Necromancer
+/// Necro restore
 ///******************************************************************************************
 func void SetItRiAttributes_Necro (var C_Item itm, var int kap)
 {
-	itm.visual					=	"ItRi_Death_02.3ds";
+	itm.value					=	kap*100;
+	itm.visual					=	"ItRi_LifeSteal_02.3ds";
 	
-	itm.TEXT[1]					=	"Zwiêksza efektywnoœæ przywo³añ o:";
-	itm.COUNT[1]				=	kap;
+	itm.description				=	itm.name;
+	itm.TEXT[1]					=	"Przywraca ¿ycie i manê";
+	itm.TEXT[2]					=	"za % poziomu poleg³ego:";
+	itm.COUNT[2]				=	kap;
+	itm.COUNT[5]				=	itm.value;
 };
 
-///******************************************************************************************
 instance ItRi_Necro_01 (ItemPR_Ring)
 {
-	description					=	"Pierœcieñ nekromanty";
+	name						=	"Pierœcieñ nekromanty I";
 	on_equip					=	Equip_ItRi_Necro_01;
 	on_unequip					=	UnEquip_ItRi_Necro_01;
-	SetItRiAttributes_Necro (self, 5);
+	SetItRiAttributes_Necro (self, 10);
 };
-func void Equip_ItRi_Necro_01()			{ if (Npc_IsPlayer(self)) { mSummonerPower += 5; }; };
-func void UnEquip_ItRi_Necro_01()		{ if (Npc_IsPlayer(self)) { mSummonerPower -= 5; }; };
+func void Equip_ItRi_Necro_01()			{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] += 10; }; };
+func void UnEquip_ItRi_Necro_01()		{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] -= 10; }; };
 
 instance ItRi_Necro_02 (ItemPR_Ring)
 {
-	description					=	"Ulepsz. pierœcieñ nekromanty";
+	name						=	"Pierœcieñ nekromanty II";
 	on_equip					=	Equip_ItRi_Necro_02;
 	on_unequip					=	UnEquip_ItRi_Necro_02;
-	SetItRiAttributes_Necro (self, 10);
+	SetItRiAttributes_Necro (self, 20);
 };
-func void Equip_ItRi_Necro_02()			{ if (Npc_IsPlayer(self)) { mSummonerPower += 10; }; };
-func void UnEquip_ItRi_Necro_02()		{ if (Npc_IsPlayer(self)) { mSummonerPower -= 10; }; };
-*/
+func void Equip_ItRi_Necro_02()			{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] += 20; }; };
+func void UnEquip_ItRi_Necro_02()		{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] -= 20; }; };
+
+instance ItRi_Necro_03 (ItemPR_Ring)
+{
+	name						=	"Pierœcieñ nekromanty III";
+	on_equip					=	Equip_ItRi_Necro_03;
+	on_unequip					=	UnEquip_ItRi_Necro_03;
+	SetItRiAttributes_Necro (self, 30);
+};
+func void Equip_ItRi_Necro_03()			{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] += 30; }; };
+func void UnEquip_ItRi_Necro_03()		{ if (Npc_IsPlayer(self)) { ATS[ATS_NecroRestore] -= 30; }; };

@@ -106,7 +106,7 @@ instance ItPl_Mana_Herb_03 (ItemPR_Plant)
 };
 
 ///******************************************************************************************
-/// Speed
+/// Stamina (and Speed)
 ///******************************************************************************************
 instance ItPl_Speed_Herb_01 (ItemPR_Plant)
 {
@@ -116,6 +116,31 @@ instance ItPl_Speed_Herb_01 (ItemPR_Plant)
 	
 	description					=	name;
 	TEXT[0]						=	"Sk³adnik mikstur energii.";
+	COUNT[5]					=	value;
+};
+
+///******************************************************************************************
+/// Mix
+///******************************************************************************************
+instance ItPl_Blueplant (ItemPR_Plant)
+{
+	name						=	"Serafis";
+	value						=	10;
+	visual						=	"ItPl_Blueplant.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik mikstur ¿ycia i many.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Purpleplant (ItemPR_Plant)
+{
+	name						=	"Kwiat œwitu";
+	value						=	10;
+	visual						=	"ItPl_Purpleplant.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik mikstur ¿ycia i many.";
 	COUNT[5]					=	value;
 };
 
@@ -188,32 +213,7 @@ instance ItPl_MountainMoss (ItemPR_Plant)
 };
 
 ///******************************************************************************************
-/// Water
-///******************************************************************************************
-instance ItPl_Seaweed (ItemPR_Plant)
-{
-	name						=	"Wodorosty";
-	value						=	25;
-	visual						=	"ItPl_Seaweed.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik mikstur oddychania pod wod¹.";
-	COUNT[5]					=	value;
-};
-
-instance ItPl_Stonereed (ItemPR_Plant)
-{
-	name						=	"Kamienna trzcina";
-	value						=	25;
-	visual						=	"ItPl_Stonereed.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik mikstur ochronnych.";
-	COUNT[5]					=	value;
-};
-
-///******************************************************************************************
-/// Perm
+/// Attribute enhancers
 ///******************************************************************************************
 instance ItPl_Health_Herb_04 (ItemPR_Plant)
 {
@@ -271,27 +271,27 @@ instance ItPl_Power_Herb_01 (ItemPR_Plant)
 };
 
 ///******************************************************************************************
-/// Other
+/// Near water
 ///******************************************************************************************
-instance ItPl_Blueplant (ItemPR_Plant)
+instance ItPl_Seaweed (ItemPR_Plant)
 {
-	name						=	"Serafis";
-	value						=	10;
-	visual						=	"ItPl_Blueplant.3ds";
+	name						=	"Wodorosty";
+	value						=	25;
+	visual						=	"ItPl_Seaweed.3ds";
 	
 	description					=	name;
-	TEXT[0]						=	"Sk³adnik mikstur ¿ycia i many.";
+	TEXT[0]						=	"Sk³adnik mikstur oddychania pod wod¹.";
 	COUNT[5]					=	value;
 };
 
-instance ItPl_Purpleplant (ItemPR_Plant)
+instance ItPl_Stonereed (ItemPR_Plant)
 {
-	name						=	"Kwiat œwitu";
-	value						=	10;
-	visual						=	"ItPl_Purpleplant.3ds";
+	name						=	"Kamienna trzcina";
+	value						=	50;
+	visual						=	"ItPl_Stonereed.3ds";
 	
 	description					=	name;
-	TEXT[0]						=	"Sk³adnik mikstur ¿ycia i many.";
+	TEXT[0]						=	"Sk³adnik mikstur ochronnych.";
 	COUNT[5]					=	value;
 };
 
@@ -479,22 +479,16 @@ instance ItMi_DesertJoint (ItemPR_Joint)
 {
 	value						=	25;
 	visual						=	"ItMi_Joint_US.3ds";
-	on_state[0]					=	Use_ItMi_DesertJoint;
+	on_state[0]					=	Use_ItMi_Joint;
 	
 	description					=	"Skrêt pustynnego ziela";
 	TEXT[1]						=	NAME_Percent_Hp;
 	COUNT[1]					=	-10;
-	TEXT[2]						=	NAME_Bonus_SpTime;
-	COUNT[2]					=	250;
+	TEXT[2]						=	NAME_Bonus_MpTime;
+	COUNT[2]					=	50;
 	TEXT[3]						=	NAME_Bonus_XpTime;
 	COUNT[3]					=	10;
 	COUNT[5]					=	value;
-};
-func void Use_ItMi_DesertJoint()
-{
-	Npc_AddFoodTime (self, BarOrderSP, 250);
-	Npc_AddFoodTime (self, BarOrderXP, 10);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/10);
 };
 
 instance ItMi_Joint (ItemPR_Joint)
@@ -514,9 +508,9 @@ instance ItMi_Joint (ItemPR_Joint)
 };
 func void Use_ItMi_Joint()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/10);
 	Npc_AddFoodTime (self, BarOrderMP, 50);
 	Npc_AddFoodTime (self, BarOrderXP, 10);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/10);
 };
 
 instance ItMi_SleJoint (ItemPR_Joint)
@@ -527,7 +521,7 @@ instance ItMi_SleJoint (ItemPR_Joint)
 	
 	description					=	"Skrêt 'Zielonego Nowicjusza'";
 	TEXT[1]						=	NAME_Percent_Hp;
-	COUNT[1]					=	50;
+	COUNT[1]					=	-50;
 	TEXT[2]						=	NAME_Bonus_MpTime;
 	COUNT[2]					=	200;
 	TEXT[3]						=	NAME_Bonus_XpTime;
@@ -536,9 +530,9 @@ instance ItMi_SleJoint (ItemPR_Joint)
 };
 func void Use_ItMi_SleJoint()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/2);
 	Npc_AddFoodTime (self, BarOrderMP, 200);
 	Npc_AddFoodTime (self, BarOrderXP, 50);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -self.attribute[ATR_HITPOINTS_MAX]/2);
 };
 
 ///******************************************************************************************
@@ -579,9 +573,9 @@ instance ItMi_ChocolateTabak (ItemPR_Joint)
 };
 func void Use_ItMi_ChocolateTabak()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 	Npc_AddFoodTime (self, BarOrderMP, 10);
 	Npc_AddFoodTime (self, BarOrderXP, 5);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 };
 
 instance ItMi_CoconutTabak (ItemPR_Joint)
@@ -601,9 +595,9 @@ instance ItMi_CoconutTabak (ItemPR_Joint)
 };
 func void Use_ItMi_CoconutTabak()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 	Npc_AddFoodTime (self, BarOrderSP, 20);
 	Npc_AddFoodTime (self, BarOrderXP, 2);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -2);
 };
 
 instance ItMi_FruitTabak (ItemPR_Joint)
@@ -616,13 +610,13 @@ instance ItMi_FruitTabak (ItemPR_Joint)
 	TEXT[1]						=	NAME_Bonus_HP;
 	COUNT[1]					=	-1;
 	TEXT[2]						=	NAME_Bonus_XpTime;
-	COUNT[2]					=	1;
+	COUNT[2]					=	2;
 	COUNT[5]					=	value;
 };
 func void Use_ItMi_FruitTabak()
 {
-	Npc_AddFoodTime (self, BarOrderXP, 1);
 	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
+	Npc_AddFoodTime (self, BarOrderXP, 2);
 };
 
 instance ItMi_HoneyTabak (ItemPR_Joint)
@@ -642,9 +636,9 @@ instance ItMi_HoneyTabak (ItemPR_Joint)
 };
 func void Use_ItMi_HoneyTabak()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
 	Npc_AddFoodTime (self, BarOrderMP, 6);
 	Npc_AddFoodTime (self, BarOrderXP, 2);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
 };
 
 instance ItMi_MushroomTabak (ItemPR_Joint)
@@ -657,13 +651,13 @@ instance ItMi_MushroomTabak (ItemPR_Joint)
 	TEXT[1]						=	NAME_Bonus_HP;
 	COUNT[1]					=	-1;
 	TEXT[2]						=	NAME_Bonus_XpTime;
-	COUNT[2]					=	1;
+	COUNT[2]					=	2;
 	COUNT[5]					=	value;
 };
 func void Use_ItMi_MushroomTabak()
 {
-	Npc_AddFoodTime (self, BarOrderXP, 1);
 	Npc_ChangeAttribute (self, ATR_HITPOINTS, -1);
+	Npc_AddFoodTime (self, BarOrderXP, 2);
 };
 
 instance ItMi_SwampTabak (ItemPR_Joint)
@@ -683,7 +677,7 @@ instance ItMi_SwampTabak (ItemPR_Joint)
 };
 func void Use_ItMi_SwampTabak()
 {
+	Npc_ChangeAttribute (self, ATR_HITPOINTS, -3);
 	Npc_AddFoodTime (self, BarOrderMP, 9);
 	Npc_AddFoodTime (self, BarOrderXP, 1);
-	Npc_ChangeAttribute (self, ATR_HITPOINTS, -3);
 };

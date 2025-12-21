@@ -46,5 +46,5 @@ func void B_SetVisuals_UndeadOrcWarrior()
 instance UndeadOrcWarrior (Mst_Default_UndeadOrcWarrior)
 {
 	B_SetVisuals_UndeadOrcWarrior();
-	EquipItem (self, ItMw_2H_OrcMace_01);
+	EquipItem (self, ItMw_2h_OrcMace_01);
 };

@@ -1307,7 +1307,7 @@ func void Use_ItWr_DementorObsessionBook()
 {
 	Wld_PlayEffect ("spellFX_Fear", hero, hero, 0, 0, 0, false);
 	Snd_Play("MFX_FEAR_CAST");
-	bsObsession = true;
+	MOD_SetObsession(true);
 	B_SetScObsessed(hero);
 	
 	if (hero.guild == GIL_KDF)

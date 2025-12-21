@@ -108,10 +108,10 @@ func void ZS_Pal_ZOMBIE()
 func int ZS_Pal_ZOMBIE_Loop()
 {
 	if (self.aivar[AIV_TAPOSITION] == NOTINPOS)
- 	{
- 		AI_PlayAni (self, "T_DOWN");
- 		self.aivar[AIV_TAPOSITION] = ISINPOS;
- 	};
+	{
+		AI_PlayAni (self, "T_DOWN");
+		self.aivar[AIV_TAPOSITION] = ISINPOS;
+	};
 	return LOOP_CONTINUE;
 };
 func void ZS_Pal_ZOMBIE_END()

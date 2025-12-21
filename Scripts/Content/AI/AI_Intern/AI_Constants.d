@@ -236,7 +236,7 @@ const int AIV_MM_Real_ID					=	43;
 	const int ID_ORCCHAMPION			= 1 + ID_ORCELITE;
 	const int ID_UNDEADORCWARRIOR		= 1 + ID_ORCCHAMPION;
 	const int ID_DRACONIAN				= 1 + ID_UNDEADORCWARRIOR;
-	const int ID_ZODD					= 1 + ID_DRACONIAN;
+	const int ID_WEREWOLF				= 1 + ID_DRACONIAN;
 
 /// ------ Monster AIV: last body ------
 const int AIV_MM_LastBody					=	44;
@@ -305,12 +305,12 @@ const int AIV_FightDistCancel				=	62;
 const int AIV_LastFightComment				=	63;
 
 /// ------ Special attributes ------
-const int AIV_CritDamage					=	64;	/// new!!!
+const int AIV_AreaDamage					=	64;	/// new!!!
 const int AIV_LifeSteal						=	65;	/// new!!!
-const int AIV_AreaDamage					=	66; /// new!!!
-const int AIV_DmgReflection					=	67; /// new!!!
-const int AIV_MinDamage						=	68; /// new!!!
-const int AIV_Reserved_69					=	69;
+const int AIV_MinDamage						=	66;	/// new!!!
+const int AIV_Overcome						=	67;	/// new!!!
+const int AIV_Penetration					=	68;	/// new!!!
+const int AIV_Reflection					=	69;	/// new!!!
 
 /// ------ States ------
 const int AIV_StateTime						=	70;
@@ -584,9 +584,9 @@ const int BodyTex_Default				=	0;
 const int BodyTex_Player				=	1;
 const int BodyTex_Tattoo				=	2;
 const int BodyTex_Nude					=	3;
-const int BodyTex_Dressed				=	10;
+const int BodyTex_Dressed				=	5;
 
-const int BodyTex_MAX				=	16;
+const int BodyTex_MAX				=	14;
 
 /// ------ Skins ------
 const int BodySkin_N					=	0;	/// Normal
@@ -687,6 +687,8 @@ const int Face_N_Dooku					=	71;
 const int Face_Agent					=	72;
 const int Face_N_Kid					=	73;
 const int Face_P_Grandpa				=	74;
+const int Face_N_Palipies				=	75;
+const int Face_N_Bykonowicz				=	76;
 
 /// normal
 const int Face_P_ToughBald				=	100;
@@ -851,6 +853,9 @@ const int FaceBabe_N_Hure				=	23;
 const int FaceBabe_N_Anne				=	24;
 const int FaceBabe_B_RedLocks2			=	25;
 const int FaceBabe_L_Charlotte2			=	26;
+const int FaceBabe_N_NrdBlonde			=	27;
+const int FaceBabe_N_NrdBrown			=	28;
+const int FaceBabe_N_CurlyBrown			=	29;
 
 /// wza (BABE)
 const int FaceBabe_N_Lucyna				=	30;

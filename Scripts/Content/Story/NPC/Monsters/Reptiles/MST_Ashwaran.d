@@ -35,7 +35,7 @@ func void B_SetVisuals_Ashwaran()
 {
 	Mdl_SetVisual		(self, "Waran.mds");
 	Mdl_SetVisualBody	(self, "War_Ash_Body", self.aivar[AIV_BodyTex], default, "", default, default, -1);
-	Mdl_SetModelScale	(self, 1.15, 1.25, 1.15);
+	Mdl_SetModelScale	(self, 1.15, 1.2, 1.15);
 };
 
 ///******************************************************************************************

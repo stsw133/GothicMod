@@ -8,7 +8,7 @@ prototype Mst_Default_OrcTempler (C_Npc)
 	voice								=	18;
 	guild								=	GIL_ORC;
 	aivar[AIV_MM_REAL_ID]				=	ID_ORCWARRIOR;
-	aivar[AIV_FaceTex]					=	Hlp_RandomRange(50,58);
+	aivar[AIV_FaceTex]					=	r_MinMax(50,58);
 	
 	/// ------ Attributes & FT ------
 	damagetype							=	DAM_BLUNT;
@@ -44,7 +44,7 @@ func void B_SetVisuals_OrcTempler()
 instance OrcTempler (Mst_Default_OrcTempler)
 {
 	B_SetVisuals_OrcTempler();
-	EquipItem (self, ItMw_2H_OrcSword_01);
+	EquipItem (self, ItMw_2h_OrcSword_01);
 	
 	start_aistate						=	ZS_MM_AllScheduler;
 	aivar[AIV_MM_RestStart]				=	OnlyRoutine;

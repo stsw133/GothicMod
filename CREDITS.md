@@ -125,6 +125,12 @@ Skontaktuj się ze mną jeśli:
 
 ---
 
+- **Autor:** Maliksoft
+- **Opis:** Wiele tekstur pancerzy.
+- **Źródło:** https://themodders.org/index.php?topic=23709.0
+
+---
+
 - **Autor:** mark56
 - **Opis:** Model okularów i szkieletów.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=398
@@ -132,7 +138,7 @@ Skontaktuj się ze mną jeśli:
 ---
 
 - **Autor:** Mighty_He-Man
-- **Opis:** Tekstury kilku pancerzy np. nowicjusz magów wody, skórzane pancerze.
+- **Opis:** Tekstury pancerzy np. nowicjusz magów wody, skórzane pancerze.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=856
 
 ---
@@ -173,6 +179,12 @@ Skontaktuj się ze mną jeśli:
 
 ---
 
+- **Autor:** Redmatixx
+- **Opis:** Tekstury kilku pancerzy.
+- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=911
+
+---
+
 - **Autor:** Rolland
 - **Opis:** Modele broni i kilku pancerzy np. średni pancerz paladyna.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=755
@@ -192,13 +204,13 @@ Skontaktuj się ze mną jeśli:
 ---
 
 - **Autor:** sepher
-- **Opis:** Modele kilku broni np. miecz nordmarczyka.
+- **Opis:** Tekstury twarzy i modele kilku broni np. miecz nordmarczyka.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=812
 
 ---
 
 - **Autor:** Situ
-- **Opis:** Tekstury kilku pancerzy np. strój rzeźnika, stroje mieszkańców
+- **Opis:** Tekstury kilku pancerzy np. strój rzeźnika, stroje mieszkańców.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=688
 
 ---
@@ -236,9 +248,3 @@ Skontaktuj się ze mną jeśli:
 - **Autor:** Wenumbr
 - **Opis:** Tekstury kilku pancerzy np. Steampunk.
 - **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=879
-
----
-
-- **Autor:** 
-- **Opis:** 
-- **Źródło:** 

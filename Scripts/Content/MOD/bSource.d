@@ -6,12 +6,6 @@ func int RealToInt(var int r)
 	return STR_ToInt(STR_Split(toStringf(r), ".", 0));
 };
 
-/// ------ Random ------
-func int Hlp_RandomRange(var int start, var int end)
-{
-	return (start + Hlp_Random(end - start + 1));
-};
-
 ///******************************************************************************************
 /// Animations
 ///******************************************************************************************

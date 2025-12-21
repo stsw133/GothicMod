@@ -37,8 +37,8 @@ func void B_SetVisuals_SkeletonWarrior()
 	Mdl_ApplyOverlayMds (self, "humans_skeleton.mds");
 	Mdl_ApplyOverlayMds (self, "humans_1hST2.mds");
 	Mdl_ApplyOverlayMds (self, "humans_2hST2.mds");
-	Mdl_ApplyOverlayMds (self, "humans_BowT2.mds");
-	Mdl_ApplyOverlayMds (self, "humans_CbowT2.mds");
+	Mdl_ApplyOverlayMds (self, "humans_BowT1.mds");
+	Mdl_ApplyOverlayMds (self, "humans_CbowT1.mds");
 };
 
 ///******************************************************************************************
@@ -48,12 +48,6 @@ instance Skeleton_Warrior (Mst_Default_SkeletonWarrior)
 {
 	B_SetVisuals_SkeletonWarrior();
 	EquipItem (self, ItMw_2H_Sword_M_01);
-};
-instance Skeleton_Archer (Mst_Default_SkeletonWarrior)
-{
-	B_SetVisuals_SkeletonWarrior();
-	EquipItem (self, ItMw_1h_MISC_Sword);
-	EquipItem (self, ItRw_Bow_M_01);
 };
 
 ///******************************************************************************************

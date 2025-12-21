@@ -42,6 +42,7 @@ func void B_SetVisuals_Demon()
 ///******************************************************************************************
 instance Demon (Mst_Default_Demon)
 {
+	aivar[AIV_BodyTex] = Hlp_Random(2);
 	B_SetVisuals_Demon();
 };
 

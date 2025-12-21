@@ -142,9 +142,13 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 		else if	(skill == HUNTING_Tongues)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Wings)			{	kosten = 1;		};
 	}
+	/// EXTRACTION
+	else if (talent == NPC_TALENT_EXTRACTION)
+	{
+		kosten = skill;
+	}
 	/// OTHER
-	else if	(talent == NPC_TALENT_17)
-	||		(talent == NPC_TALENT_18)
+	else if	(talent == NPC_TALENT_18)
 	||		(talent == NPC_TALENT_19)
 	{
 		kosten = 10;

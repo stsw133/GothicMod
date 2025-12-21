@@ -233,7 +233,7 @@ func void PC_PrayShrine_BlessSword_Info()
 {
 	if (ShrineIsObsessed)
 	{
-		bsObsession += 1;
+		MOD_SetObsession(true);
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		Snd_Play("DEM_Die");
 	}
@@ -296,7 +296,7 @@ func void PC_PrayShrine_BlessSword_Final_Info()
 {
 	if (ShrineIsObsessed)
 	{
-		bsObsession += 1;
+		MOD_SetObsession(true);
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		Snd_Play("DEM_Die");
 	}
@@ -367,7 +367,7 @@ func void PC_PrayShrine_Pray_Info()
 {
 	if (ShrineIsObsessed)
 	{
-		bsObsession += 1;
+		MOD_SetObsession(true);
 		PrintScreen	(PRINT_SCIsObsessed, -1, -1, FONT_Screen, 2);
 		Snd_Play("DEM_Die");
 	}

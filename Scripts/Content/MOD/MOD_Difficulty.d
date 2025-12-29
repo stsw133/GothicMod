@@ -37,5 +37,5 @@ func void DIFF_Select(var int diff)
 		dLevel = diff;
 	};
 	
-	var_DIFF_Percent = MEM_ReadIntArray(_@(DIFF_Percent), dLevel);
+	var_DIFF_Percent = MEM_ReadStatArr(DIFF_Percent, dLevel);
 };

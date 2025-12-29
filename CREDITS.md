@@ -1,250 +1,446 @@
-Część elementów w moim modzie pochodzi z innych modów lub forów, ale docelowo w oficjalnej wersji jak najwięcej z nich zostanie zastąpione oryginalnymi materiałami.
-Skontaktuj się ze mną jeśli:
-- twoje dzieła występują w modzie a zostałeś pominięty na poniższej liście
-- nie chcesz aby twoje dzieła zostały wykorzystane w modzie
+Projekt **GothicMod** korzysta z materiałów pochodzących z innych modów oraz zasobów udostępnionych publicznie przez społeczność Gothic.
+
+Celem projektu jest stopniowe zastępowanie zapożyczonych elementów oryginalnymi materiałami, jednak do czasu oficjalnego wydania część z nich nadal pozostaje w użyciu — głównie w celach testowych, prototypowych lub technicznych.
+
+Jeżeli:
+- Twoje materiały zostały wykorzystane w projekcie, a nie znajdują się na poniższej liście  
+- Nie życzysz sobie dalszego wykorzystania swoich zasobów w tym modzie  
+
+proszę o kontakt — odpowiednie zmiany zostaną wprowadzone niezwłocznie.
+
+Poniżej znajduje się lista autorów, modów oraz źródeł, z których pochodzą wykorzystane materiały.
+
+## Mody
+
+**Mod:** Podróżnik: za liniami wroga
+**Zakres:** Modele broni palnej i niektórych pancerzy.
+**Link:** —
 
 ---
 
-- **Autor:** Addins45
-- **Opis:** Model szabli.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1151&cat=0&page=0&order=0&searchcat=4
+**Mod:** Returning
+**Zakres:** Modele i animacje niektórych potworów.
+**Link:** —
 
 ---
 
-- **Autor:** Aragnis
-- **Opis:** Tekstura szaty maga wody.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=876
+**Mod:** Velaya
+**Zakres:** Modele i tekstury kobiecych pancerzy.
+**Link:** —
 
 ---
 
-- **Autor:** Berengar
-- **Opis:** Tekstury kilku pancerzy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=680
+**Mod:** Złote Wrota
+**Zakres:** Model i animacje drzewca.
+**Link:** —
+
+## Autorzy indywidualni
+
+**Autor:** Addins45
+**Zakres:** Model szabli.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1151
 
 ---
 
-- **Autor:** Bezio
-- **Opis:** Rescale tekstur twarzy oraz ranny styl chodzenia.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=839
+**Autor:** Aragnis
+**Zakres:** Tekstura szaty maga wody.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1695
 
 ---
 
-- **Autor:** BlackBat
-- **Opis:** Model i tekstura skórzanego hełmu.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1311&cat=0&page=0&order=0&searchcat=4
+**Autor:** Berengar
+**Zakres:** Tekstury kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1147
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1156
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1157
 
 ---
 
-- **Autor:** BlackNapalm
-- **Opis:** Model rośliny.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=268&cat=0&page=118&order=0
+**Autor:** Bezio
+**Zakres:** Rescale tekstur twarzy oraz ranny styl chodzenia.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1550
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1554
 
 ---
 
-- **Autor:** Bloodfly91
-- **Opis:** Modele drewnianych mieczy i tekstury kilku pancerzy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=725
+**Autor:** BlackBat
+**Zakres:** Model i tekstura skórzanego hełmu.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1311
 
 ---
 
-- **Autor:** Cadaver
-- **Opis:** Tekstura szaty maga ognia.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1184&cat=0&page=0&order=0&searchcat=4
+**Autor:** BlackNapalm
+**Zakres:** Model rośliny.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=268
 
 ---
 
-- **Autor:** CeeX [DB]
-- **Opis:** Tekstury kilku pancerzy. Modele niektórych przedmiotów np. noża.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=265
+**Autor:** blackpirate
+**Zakres:** Model skarbu bez orkowego sztandaru.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1668
 
 ---
 
-- **Autor:** Dalai Zoll
-- **Opis:** Tekstury kozy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=940&cat=0&page=69&order=0
+**Autor:** Bloodfly91
+**Zakres:** Modele drewnianych mieczy i tekstury kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1496
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1497
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1740
 
 ---
 
-- **Autor:** dennis15
-- **Opis:** Tekstury kilku pancerzy i potworów.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=468
+**Autor:** Cadaver
+**Zakres:** Tekstura szaty maga ognia.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1184
 
 ---
 
-- **Autor:** Fish2033
-- **Opis:** Modele i tekstury kilku przedmiotów do jedzenia np. marchew, gruszka, chili, kokos, ziemniak.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1082&cat=0&page=0&order=0&searchcat=4
+**Autor:** CeeX [DB]
+**Zakres:** Tekstury kilku pancerzy i modele niektórych przedmiotów.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=360
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=364
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=368
 
 ---
 
-- **Autor:** Frilester Stallone
-- **Opis:** Tekstura ciężkiej szaty nowicjusza magów ognia.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=740&cat=0&page=82&order=0
+**Autor:** Dalai Zoll
+**Zakres:** Tekstury kozy.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=940
 
 ---
 
-- **Autor:** Gottfried
-- **Opis:** Model miecza i tekstura wilka/psa.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=205
+**Autor:** dennis15
+**Zakres:** Tekstury pancerzy i potworów.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=722
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=863
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1095
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1098
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1102
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1103
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1109
 
 ---
 
-- **Autor:** Herobrine
-- **Opis:** Animacje orków i goblinów.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=641
+**Autor:** dorin448
+**Zakres:** Model jednoręcznego Uriziela.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1466
 
 ---
 
-- **Autor:** Ingeborg
-- **Opis:** Tekstury strojów szlacheckich.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=658
+**Autor:** Draxes
+**Zakres:** Model i tekstura kryształowego golema.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1410
 
 ---
 
-- **Autor:** Jedaith
-- **Opis:** Tekstura orka-wojownika i mrocznego pancerza.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=198
+**Autor:** Fisk2033
+**Zakres:** Modele i tekstury kilku przedmiotów do jedzenia.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1082
 
 ---
 
-- **Autor:** Korikan
-- **Opis:** Modele i tekstury łuków.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1623&cat=0&page=0&order=0&searchcat=4
+**Autor:** Frilester Stallone
+**Zakres:** Tekstura ciężkiej szaty nowicjusza magów ognia.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=740
 
 ---
 
-- **Autor:** König Rhobar II
-- **Opis:** Modele atramentu i pióra.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=37&cat=0&page=135&order=0
+**Autor:** Gothiccrawler
+**Zakres:** Tekstura czarnego skórzanego pancerza.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1718
 
 ---
 
-- **Autor:** Lobos
-- **Opis:** Model broni typu glewia.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1713&cat=11&page=0&order=0
+**Autor:** Gottfried
+**Zakres:** Model miecza wirującego i tekstura wilka/psa.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=407
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=609
 
 ---
 
-- **Autor:** Maliksoft
-- **Opis:** Wiele tekstur pancerzy.
-- **Źródło:** https://themodders.org/index.php?topic=23709.0
+**Autor:** Herobrine
+**Zakres:** Animacje orków i goblinów.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1351
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1352
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1353
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1393
 
 ---
 
-- **Autor:** mark56
-- **Opis:** Model okularów i szkieletów.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=398
+**Autor:** Ingeborg
+**Zakres:** Tekstury strojów szlacheckich i model młota.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1172
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1209
 
 ---
 
-- **Autor:** Mighty_He-Man
-- **Opis:** Tekstury pancerzy np. nowicjusz magów wody, skórzane pancerze.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=856
+**Autor:** Jedaith
+**Zakres:** Tekstura orka-wojownika.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=473
 
 ---
 
-- **Autor:** MonsterMadness
-- **Opis:** Tekstury wielu potworów np. goryla, bagiennego krwiopijcy, smoczego zębacza, pustynnego węża, harpii. Tekstury kilku przedmiotów np. mikstura Innosa. Tekstury kilku pancerzy np. mrocznego paladyna, druida.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=654
+**Autor:** Korikan
+**Zakres:** Modele i tekstury łuków.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1623
 
 ---
 
-- **Autor:** mud-freak
-- **Opis:** Czyste tekstury run i zwojów oraz skrypty niektórych zaklęć (Elevate, Explosion, Quake).
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=151
+**Autor:** König Rhobar II
+**Zakres:** Modele atramentu i pióra.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=37
 
 ---
 
-- **Autor:** nneka.
-- **Opis:** Model miecza.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=406&cat=11&page=10&order=0
+**Autor:** Lobos
+**Zakres:** Model broni typu glewia.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1713
 
 ---
 
-- **Autor:** PaulosK
-- **Opis:** Model czapki świątecznej.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=804&cat=0&page=77&order=0
+**Autor:** Maliksoft
+**Zakres:** Wiele tekstur pancerzy.
+**Link:** https://themodders.org/index.php?topic=23709.0
 
 ---
 
-- **Autor:** Player140
-- **Opis:** Model miecza świetlnego.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=355&cat=0&page=111&order=0
+**Autor:** mark56
+**Zakres:** Model okularów i szkieletów.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1178
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1336
 
 ---
 
-- **Autor:** pyrika
-- **Opis:** Model i tekstura ludzkiego pancerza i hełmu orka-elity. Tekstury strojów obywatela.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=513
+**Autor:** Matteo
+**Zakres:** Model miecza.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1570
 
 ---
 
-- **Autor:** Redmatixx
-- **Opis:** Tekstury kilku pancerzy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=911
+**Autor:** Mighty_He-Man
+**Zakres:** Tekstury pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1648
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1649
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1661
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1678
 
 ---
 
-- **Autor:** Rolland
-- **Opis:** Modele broni i kilku pancerzy np. średni pancerz paladyna.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=755
+**Autor:** MonsterMadness
+**Zakres:** Tekstury wielu potworów, kilku przedmiotów i kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=999
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1000
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1004
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1008
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1056
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1060
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1064
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1065
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1066
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1071
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1111
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1143
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1159
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1191
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1194
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1195
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1201
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1231
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1290
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1292
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1433
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1448
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1451
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1452
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1455
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1519
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1527
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1547
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1604
 
 ---
 
-- **Autor:** roXtar
-- **Opis:** Model hełmu Śniącego i niektórych broni np. kosy, szponów.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=155
+**Autor:** mud-freak
+**Zakres:** Czyste tekstury run i zwojów oraz skrypty niektórych zaklęć.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1304
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1332
 
 ---
 
-- **Autor:** RysaPL
-- **Opis:** Tekstury wielu pancerzy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=520
+**Autor:** nneka.
+**Zakres:** Model miecza.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=406
 
 ---
 
-- **Autor:** sepher
-- **Opis:** Tekstury twarzy i modele kilku broni np. miecz nordmarczyka.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=812
+**Autor:** PaulosK
+**Zakres:** Model czapki świątecznej.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=804
 
 ---
 
-- **Autor:** Situ
-- **Opis:** Tekstury kilku pancerzy np. strój rzeźnika, stroje mieszkańców.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=688
+**Autor:** Player140
+**Zakres:** Model miecza świetlnego.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=355
 
 ---
 
-- **Autor:** Sl0h
-- **Opis:** Modele i tekstury kobiecych pancerzy.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=892
+**Autor:** pyrika
+**Zakres:** Tekstury kilku pancerzy i potworów.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=706
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=734
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=765
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=837
 
 ---
 
-- **Autor:** SpikeZz
-- **Opis:** Modele halabard, animacje ich trzymania dla ludzi i orków, skrypt czynności dla strażników.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=823
+**Autor:** Redmatixx
+**Zakres:** Tekstury kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1846
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1852
 
 ---
 
-- **Autor:** TheSeeker
-- **Opis:** Pancerz Iron Mana.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=984&cat=0&page=0&order=0&searchcat=4
+**Autor:** Rolland
+**Zakres:** Modele broni i kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1378
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1400
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1416
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1420
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1640
 
 ---
 
-- **Autor:** ThomasBausBneu
-- **Opis:** Modele broni dla goblinów.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=591&cat=0&page=92&order=0
+**Autor:** roXtar
+**Zakres:** Model hełmu Śniącego i niektórych broni.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=217
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=218
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=219
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=223
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=224
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=226
 
 ---
 
-- **Autor:** Ultimadbz94
-- **Opis:** Modele kilku broni.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=482
+**Autor:** RysaPL
+**Zakres:** Tekstury wielu pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=726
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=728
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=729
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=967
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=968
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=969
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=973
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=976
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=978
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=979
 
 ---
 
-- **Autor:** Wenumbr
-- **Opis:** Tekstury kilku pancerzy np. Steampunk.
-- **Źródło:** https://www.worldofgothic.de/?go=moddb&paras=?action=cat&searchcat=4&searchkey=879
+**Autor:** sepher
+**Zakres:** Tekstury twarzy i modele kilku broni.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1428
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1521
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1549
+
+---
+
+**Autor:** Situ
+**Zakres:** Tekstury wielu pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1232
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1233
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1235
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1236
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1238
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1240
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1242
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1244
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1247
+
+---
+
+**Autor:** Sl0h
+**Zakres:** Modele i tekstury kobiecych pancerzy oraz Zodd.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1748
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1752
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1754
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1755
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1756
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1757
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1759
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1760
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1775
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1776
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1777
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1778
+
+---
+
+**Autor:** SpikeZz
+**Zakres:** Modele halabard, animacje ich trzymania dla ludzi i orków, skrypt czynności dla strażników.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1463
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1464
+
+---
+
+**Autor:** szapp
+**Zakres:** Skrypty na możliwość przeglądania kategorii w ekwipunku oraz na zaklęcie otwierania skrzyń.
+**Link:**
+- https://github.com/szapp/CatInv
+- https://github.com/szapp/FirstMageKit
+
+---
+
+**Autor:** TheEternal
+**Zakres:** Tekstura pancerza płytkowego.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=1180
+
+---
+
+**Autor:** TheSeeker
+**Zakres:** Pancerz Iron Mana.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=984
+
+---
+
+**Autor:** ThomasBausBneu
+**Zakres:** Modele broni dla goblinów.
+**Link:** https://www.worldofgothic.de/?go=moddb&action=view&fileID=591
+
+---
+
+**Autor:** Ultimadbz94
+**Zakres:** Modele kilku broni.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=909
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=980
+
+---
+
+**Autor:** Wenumbr
+**Zakres:** Tekstury kilku pancerzy.
+**Linki:**
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1703
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1705
+- https://www.worldofgothic.de/?go=moddb&action=view&fileID=1706

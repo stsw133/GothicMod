@@ -202,6 +202,32 @@ instance ItSc_Seduction (ItemPR_Scroll)
 	COUNT[5]					=	value;
 };
 
+instance ItSc_MindControl (ItemPR_Scroll)
+{
+	value						=	125;
+	visual						=	"ItSc_Fear.3ds";
+	
+	spell						=	SPL_MindControl;
+	cond_value[2]				=	SPL_Cost_MindControl*SPL_Percent_Scroll/100;
+	
+	description					=	NAME_SPL_MindControl;
+	COUNT[1]					=	cond_value[2];
+	COUNT[5]					=	value;
+};
+
+instance ItSc_PickLock (ItemPR_Scroll)
+{
+	value						=	75;
+	visual						=	"ItSc_Light.3ds";
+	
+	spell						=	SPL_PickLock;
+	cond_value[2]				=	SPL_Cost_PickLock*SPL_Percent_Scroll/100;
+	
+	description					=	NAME_SPL_PickLock;
+	COUNT[1]					=	cond_value[2];
+	COUNT[5]					=	value;
+};
+
 instance ItSc_NightToDay (ItemPR_Scroll)
 {
 	value						=	50;

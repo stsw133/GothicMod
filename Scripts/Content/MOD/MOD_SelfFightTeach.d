@@ -2,7 +2,7 @@
 /// MOD_SelfFightTeach
 ///******************************************************************************************
 
-const int SelfFightTeach_Diff		=	100;	/// number of hits needed to +1%
+const int SelfFightTeach_Diff		=	100;		/// number of hits needed to +1%
 const int SelfFightTeach_MaxLevel	=	10;		/// max. number of self teached points of fight skill
 
 var int SelfFightTeach_Progress[5];

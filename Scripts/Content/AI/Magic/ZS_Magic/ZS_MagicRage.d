@@ -58,8 +58,8 @@ func int ZS_MagicRage_Loop()
 		{
             var int rnd; rnd = Hlp_Random(100);
             if		(rnd <= 40)	{	Snd_Play3D(self, "SVM_1_BERZERK");	}
-            else if (rnd <= 80)	{	Snd_Play3D(self, "SVM_2_BERZERK");	}
-            else if (rnd <= 99)	{	Snd_Play3D(self, "SVM_3_BERZERK");	};
+            else if	(rnd <= 80)	{	Snd_Play3D(self, "SVM_2_BERZERK");	}
+            else if	(rnd <= 99)	{	Snd_Play3D(self, "SVM_3_BERZERK");	};
         };
 		
         Npc_SetTarget (self, other);

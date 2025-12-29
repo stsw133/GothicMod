@@ -1,54 +1,86 @@
 ///******************************************************************************************
-/// XP books
-///******************************************************************************************
-
-var int RandAtrDocsCounter;
-func void Npc_AddDocsCounter(var int index, var int volume)
+func int BookXp_FlatIndex(var int bookIndex, var int volume)
 {
-	if (Npc_IsPlayer(self))
+	return bookIndex * 3 + (volume - 1);
+};
+
+func string BookXp_Description(var int book, var string description, var int volume)
+{
+	var int bookIndex; bookIndex = book - 1;
+	var int cur; cur = BookXp_FlatIndex(bookIndex, volume);
+	
+	if		(volume == 1)	{	description = ConcatStrings(description, " I");		}
+	else if	(volume == 2)	{	description = ConcatStrings(description, " II");	}
+	else if	(volume == 3)	{	description = ConcatStrings(description, " III");	};
+	
+	if (!MEM_ReadStatArr(Bonus_ItWr_BookXp, cur))
 	{
-		var int value; value = volume*25 + 25;
+		return description;
+	}
+	else
+	{
+		return ConcatStrings(description, " (przeczytane)");
+	};
+};
+
+///******************************************************************************************
+var int RandAtrDocsCounter;
+func void Npc_AddDocsCounter(var int book, var int volume)
+{
+	if (!Npc_IsPlayer(self))
+	{
+		return;
+	};
+	
+	var int bookIndex; bookIndex = book - 1;
+	var int value; value = volume*25 + 25;
+	var int cur; cur = BookXp_FlatIndex(bookIndex, volume);
+	
+	if (volume > 1)
+	{
+		var int prev; prev = BookXp_FlatIndex(bookIndex, volume - 1);
+		if (!MEM_ReadStatArr(Bonus_ItWr_BookXp, prev))
+		{
+			B_Say(self, self, "$CANTUNDERSTANDTHIS");
+			return;
+		};
+	};
+	
+	if (!MEM_ReadStatArr(Bonus_ItWr_BookXp, cur))
+	{
+		B_GivePlayerExp(value * 2);
+		MEM_WriteStatArr(Bonus_ItWr_BookXp, cur, true);
 		
-		if (volume > 1 && !MEM_ReadStatArr(Bonus_ItWr_BookXp, index - volume + 1))
+		RandAtrDocsCounter += value;
+		if (RandAtrDocsCounter/1000) > ((RandAtrDocsCounter-value)/1000)
 		{
-			B_Say (self, self, "$CANTUNDERSTANDTHIS");
+			PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrDocsCounter/1000 % 5));
+			if (RandAtrDocsCounter >= 5000)	{	RandAtrDocsCounter -= 5000;	};
 		}
-		else if (!MEM_ReadStatArr(Bonus_ItWr_BookXp, index))
+		else
 		{
-			B_GivePlayerExp(value * 2);
-			MEM_WriteStatArr(Bonus_ItWr_BookXp, index, true);
-			
-			RandAtrDocsCounter += value;
-			if (RandAtrDocsCounter/1000) > ((RandAtrDocsCounter-value)/1000)
-			{
-				PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrDocsCounter/1000 % 5));
-				if (RandAtrDocsCounter >= 5000)	{	RandAtrDocsCounter -= 5000;	};
-			}
-			else
-			{
-				Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrDocsCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
-			};
+			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrDocsCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
 		};
 	};
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_000 (ItemPR_BookXp)
+/// XP books
+///******************************************************************************************
+instance ItWr_BookXp_01a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_000;
+	on_state[0]					=	Use_ItWr_BookXp_01a;
 	
-	if (Bonus_ItWr_BookXp[0])	{	description = "Na granicy œwiat³a I (przeczytane)";	}
-	else						{	description = "Na granicy œwiat³a I";				};
-	
+	description					=	BookXp_Description(1, "Na granicy œwiat³a", 1);
 	TEXT[0]						=	"Zapiski mistrza Telariona z Uniwersytetu Arkanów,";
 	TEXT[1]						=	"sporz¹dzone podczas podró¿y badawczej";
 	TEXT[2]						=	"do Doliny Mgie³, roku 37 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_000()
+func void Use_ItWr_BookXp_01a()
 {
-	Npc_AddDocsCounter(0, 1);
-	CreateInvItem(self, ItWr_BookXp_000);
+	Npc_AddDocsCounter(1, 1);
+	CreateInvItem(self, ItWr_BookXp_01a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -79,22 +111,20 @@ func void Use_ItWr_BookXp_000()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_001 (ItemPR_BookXp)
+instance ItWr_BookXp_01b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_001;
+	on_state[0]					=	Use_ItWr_BookXp_01b;
 	
-	if (Bonus_ItWr_BookXp[1])	{	description = "Na granicy œwiat³a II (przeczytane)";	}
-	else						{	description = "Na granicy œwiat³a II";					};
-	
+	description					=	BookXp_Description(1, "Na granicy œwiat³a", 2);
 	TEXT[0]						=	"Zapiski mistrza Telariona z Uniwersytetu Arkanów,";
 	TEXT[1]						=	"sporz¹dzone podczas podró¿y badawczej";
 	TEXT[2]						=	"do Doliny Mgie³, roku 37 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_001()
+func void Use_ItWr_BookXp_01b()
 {
 	Npc_AddDocsCounter(1, 2);
-	CreateInvItem(self, ItWr_BookXp_001);
+	CreateInvItem(self, ItWr_BookXp_01b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -123,21 +153,19 @@ func void Use_ItWr_BookXp_001()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_002 (ItemPR_BookXp)
+instance ItWr_BookXp_02a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_002;
+	on_state[0]					=	Use_ItWr_BookXp_02a;
 	
-	if (Bonus_ItWr_BookXp[2])	{	description = "Cisza poœród wzgórz I (przeczytane)";	}
-	else						{	description = "Cisza poœród wzgórz I";					};
-	
+	description					=	BookXp_Description(2, "Cisza poœród wzgórz", 1);
 	TEXT[0]						=	"Fragment dzienników badawczych brata Envalda,";
 	TEXT[1]						=	"klasztor w Treomarze. Rok 22 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_002()
+func void Use_ItWr_BookXp_02a()
 {
 	Npc_AddDocsCounter(2, 1);
-	CreateInvItem(self, ItWr_BookXp_002);
+	CreateInvItem(self, ItWr_BookXp_02a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -168,21 +196,19 @@ func void Use_ItWr_BookXp_002()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_003 (ItemPR_BookXp)
+instance ItWr_BookXp_02b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_003;
+	on_state[0]					=	Use_ItWr_BookXp_02b;
 	
-	if (Bonus_ItWr_BookXp[3])	{	description = "Cisza poœród wzgórz II (przeczytane)";	}
-	else						{	description = "Cisza poœród wzgórz II";					};
-	
+	description					=	BookXp_Description(2, "Cisza poœród wzgórz", 2);
 	TEXT[0]						=	"Fragment dzienników badawczych brata Envalda,";
 	TEXT[1]						=	"klasztor w Treomarze. Rok 22 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_003()
+func void Use_ItWr_BookXp_02b()
 {
-	Npc_AddDocsCounter(3, 2);
-	CreateInvItem(self, ItWr_BookXp_003);
+	Npc_AddDocsCounter(2, 2);
+	CreateInvItem(self, ItWr_BookXp_02b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -213,22 +239,20 @@ func void Use_ItWr_BookXp_003()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_004 (ItemPR_BookXp)
+instance ItWr_BookXp_03a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_004;
+	on_state[0]					=	Use_ItWr_BookXp_03a;
 	
-	if (Bonus_ItWr_BookXp[4])	{	description = "Uwiêziony g³os I (przeczytane)";	}
-	else						{	description = "Uwiêziony g³os I";				};
-	
+	description					=	BookXp_Description(3, "Uwiêziony g³os", 1);
 	TEXT[0]						=	"Esej autorstwa Arcymaga Relmira,";
 	TEXT[1]						=	"sporz¹dzony na polecenie Rady Piêciu.";
 	TEXT[2]						=	"Zakazany do kopiowania bez zgody.";
 };
-func void Use_ItWr_BookXp_004()
+func void Use_ItWr_BookXp_03a()
 {
-	Npc_AddDocsCounter(4, 1);
-	CreateInvItem(self, ItWr_BookXp_004);
+	Npc_AddDocsCounter(3, 1);
+	CreateInvItem(self, ItWr_BookXp_03a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -259,22 +283,20 @@ func void Use_ItWr_BookXp_004()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_005 (ItemPR_BookXp)
+instance ItWr_BookXp_03b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_005;
+	on_state[0]					=	Use_ItWr_BookXp_03b;
 	
-	if (Bonus_ItWr_BookXp[5])	{	description = "Uwiêziony g³os II (przeczytane)";	}
-	else						{	description = "Uwiêziony g³os II";					};
-	
+	description					=	BookXp_Description(3, "Uwiêziony g³os", 2);
 	TEXT[0]						=	"Esej autorstwa Arcymaga Relmira,";
 	TEXT[1]						=	"sporz¹dzony na polecenie Rady Piêciu.";
 	TEXT[2]						=	"Zakazany do kopiowania bez zgody.";
 };
-func void Use_ItWr_BookXp_005()
+func void Use_ItWr_BookXp_03b()
 {
-	Npc_AddDocsCounter(5, 2);
-	CreateInvItem(self, ItWr_BookXp_005);
+	Npc_AddDocsCounter(3, 2);
+	CreateInvItem(self, ItWr_BookXp_03b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -307,22 +329,20 @@ func void Use_ItWr_BookXp_005()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_006 (ItemPR_BookXp)
+instance ItWr_BookXp_04a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_006;
+	on_state[0]					=	Use_ItWr_BookXp_04a;
 	
-	if (Bonus_ItWr_BookXp[6])	{	description = "Mowa kamieni I (przeczytane)";	}
-	else						{	description = "Mowa kamieni I";					};
-	
+	description					=	BookXp_Description(4, "Mowa kamieni", 1);
 	TEXT[0]						=	"Notatki starszego badacza run,";
 	TEXT[1]						=	"mistrza Virellona z Akademii Loryjskiej.";
 	TEXT[2]						=	"Rok 49 po Wielkiej Erupcji.";
 };
-func void Use_ItWr_BookXp_006()
+func void Use_ItWr_BookXp_04a()
 {
-	Npc_AddDocsCounter(6, 1);
-	CreateInvItem(self, ItWr_BookXp_006);
+	Npc_AddDocsCounter(4, 1);
+	CreateInvItem(self, ItWr_BookXp_04a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -353,22 +373,20 @@ func void Use_ItWr_BookXp_006()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_007 (ItemPR_BookXp)
+instance ItWr_BookXp_04b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_007;
+	on_state[0]					=	Use_ItWr_BookXp_04b;
 	
-	if (Bonus_ItWr_BookXp[7])	{	description = "Mowa kamieni II (przeczytane)";	}
-	else						{	description = "Mowa kamieni II";				};
-	
+	description					=	BookXp_Description(4, "Mowa kamieni", 2);
 	TEXT[0]						=	"Notatki starszego badacza run,";
 	TEXT[1]						=	"mistrza Virellona z Akademii Loryjskiej.";
 	TEXT[2]						=	"Rok 49 po Wielkiej Erupcji.";
 };
-func void Use_ItWr_BookXp_007()
+func void Use_ItWr_BookXp_04b()
 {
 	Npc_AddDocsCounter(7, 2);
-	CreateInvItem(self, ItWr_BookXp_007);
+	CreateInvItem(self, ItWr_BookXp_04b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -399,22 +417,20 @@ func void Use_ItWr_BookXp_007()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_008 (ItemPR_BookXp)
+instance ItWr_BookXp_05a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_008;
+	on_state[0]					=	Use_ItWr_BookXp_05a;
 	
-	if (Bonus_ItWr_BookXp[8])	{	description = "Prze³amanie wzoru I (przeczytane)";	}
-	else						{	description = "Prze³amanie wzoru I";				};
-	
+	description					=	BookXp_Description(5, "Prze³amanie wzoru", 1);
 	TEXT[0]						=	"Fragmenty dziennika mistrza Albrechtusa,";
 	TEXT[1]						=	"wyklêtego alchemika z Martwego Krêgu.";
 	TEXT[2]						=	"Spisane potajemnie w roku 16 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_008()
+func void Use_ItWr_BookXp_05a()
 {
-	Npc_AddDocsCounter(8, 1);
-	CreateInvItem(self, ItWr_BookXp_008);
+	Npc_AddDocsCounter(5, 1);
+	CreateInvItem(self, ItWr_BookXp_05a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -445,22 +461,20 @@ func void Use_ItWr_BookXp_008()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_009 (ItemPR_BookXp)
+instance ItWr_BookXp_05b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_009;
+	on_state[0]					=	Use_ItWr_BookXp_05b;
 	
-	if (Bonus_ItWr_BookXp[9])	{	description = "Prze³amanie wzoru II (przeczytane)";	}
-	else						{	description = "Prze³amanie wzoru II";				};
-	
+	description					=	BookXp_Description(5, "Prze³amanie wzoru", 2);
 	TEXT[0]						=	"Fragmenty dziennika mistrza Albrechtusa,";
 	TEXT[1]						=	"wyklêtego alchemika z Martwego Krêgu.";
 	TEXT[2]						=	"Spisane potajemnie w roku 16 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_009()
+func void Use_ItWr_BookXp_05b()
 {
-	Npc_AddDocsCounter(9, 2);
-	CreateInvItem(self, ItWr_BookXp_009);
+	Npc_AddDocsCounter(5, 2);
+	CreateInvItem(self, ItWr_BookXp_05b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -491,22 +505,20 @@ func void Use_ItWr_BookXp_009()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_010 (ItemPR_BookXp)
+instance ItWr_BookXp_06a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_010;
+	on_state[0]					=	Use_ItWr_BookXp_06a;
 	
-	if (Bonus_ItWr_BookXp[10])	{	description = "W cieniu Prze³êczy I (przeczytane)";	}
-	else						{	description = "W cieniu Prze³êczy I";				};
-	
+	description					=	BookXp_Description(6, "W cieniu Prze³êczy", 1);
 	TEXT[0]						=	"Zapiski Harlena Gorretha, podró¿nika";
 	TEXT[1]						=	"i kartografa z królestwa Ilvar.";
 	TEXT[2]						=	"Znalezione przy jego ciele w dolinie Ysnar.";
 };
-func void Use_ItWr_BookXp_010()
+func void Use_ItWr_BookXp_06a()
 {
-	Npc_AddDocsCounter(10, 1);
-	CreateInvItem(self, ItWr_BookXp_010);
+	Npc_AddDocsCounter(6, 1);
+	CreateInvItem(self, ItWr_BookXp_06a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -537,22 +549,20 @@ func void Use_ItWr_BookXp_010()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_011 (ItemPR_BookXp)
+instance ItWr_BookXp_06b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_011;
+	on_state[0]					=	Use_ItWr_BookXp_06b;
 	
-	if (Bonus_ItWr_BookXp[11])	{	description = "W cieniu Prze³êczy II (przeczytane)";	}
-	else						{	description = "W cieniu Prze³êczy II";					};
-	
+	description					=	BookXp_Description(6, "W cieniu Prze³êczy", 2);
 	TEXT[0]						=	"Zapiski Harlena Gorretha, podró¿nika";
 	TEXT[1]						=	"i kartografa z królestwa Ilvar.";
 	TEXT[2]						=	"Znalezione przy jego ciele w dolinie Ysnar.";
 };
-func void Use_ItWr_BookXp_011()
+func void Use_ItWr_BookXp_06b()
 {
-	Npc_AddDocsCounter(11, 2);
-	CreateInvItem(self, ItWr_BookXp_011);
+	Npc_AddDocsCounter(6, 2);
+	CreateInvItem(self, ItWr_BookXp_06b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -583,22 +593,20 @@ func void Use_ItWr_BookXp_011()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_012 (ItemPR_BookXp)
+instance ItWr_BookXp_07a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_012;
+	on_state[0]					=	Use_ItWr_BookXp_07a;
 	
-	if (Bonus_ItWr_BookXp[12])	{	description = "Oko w szafirze I (przeczytane)";	}
-	else						{	description = "Oko w szafirze I";				};
-	
+	description					=	BookXp_Description(7, "Oko w szafirze", 1);
 	TEXT[0]						=	"Rêkopis brata Melverena,";
 	TEXT[1]						=	"przechowywany w Ksiêdze Zakazów.";
 	TEXT[2]						=	"Przed lektur¹ wymagana zgoda Arcyopata.";
 };
-func void Use_ItWr_BookXp_012()
+func void Use_ItWr_BookXp_07a()
 {
-	Npc_AddDocsCounter(12, 1);
-	CreateInvItem(self, ItWr_BookXp_012);
+	Npc_AddDocsCounter(7, 1);
+	CreateInvItem(self, ItWr_BookXp_07a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -629,22 +637,20 @@ func void Use_ItWr_BookXp_012()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_013 (ItemPR_BookXp)
+instance ItWr_BookXp_07b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_013;
+	on_state[0]					=	Use_ItWr_BookXp_07b;
 	
-	if (Bonus_ItWr_BookXp[13])	{	description = "Oko w szafirze II (przeczytane)";	}
-	else						{	description = "Oko w szafirze II";					};
-	
+	description					=	BookXp_Description(7, "Oko w szafirze", 2);
 	TEXT[0]						=	"Rêkopis brata Melverena,";
 	TEXT[1]						=	"przechowywany w Ksiêdze Zakazów.";
 	TEXT[2]						=	"Przed lektur¹ wymagana zgoda Arcyopata.";
 };
-func void Use_ItWr_BookXp_013()
+func void Use_ItWr_BookXp_07b()
 {
-	Npc_AddDocsCounter(13, 2);
-	CreateInvItem(self, ItWr_BookXp_013);
+	Npc_AddDocsCounter(7, 2);
+	CreateInvItem(self, ItWr_BookXp_07b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -677,22 +683,20 @@ func void Use_ItWr_BookXp_013()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_014 (ItemPR_BookXp)
+instance ItWr_BookXp_08a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_014;
+	on_state[0]					=	Use_ItWr_BookXp_08a;
 	
-	if (Bonus_ItWr_BookXp[14])	{	description = "Kult rozumu I (przeczytane)";	}
-	else						{	description = "Kult rozumu I";				};
-	
+	description					=	BookXp_Description(8, "Kult rozumu", 1);
 	TEXT[0]						=	"Fragment zapisków Dorella z Imroth,";
 	TEXT[1]						=	"ostatniego ¿yj¹cego cz³onka Rady Dziewiêciu.";
 	TEXT[2]						=	"Spisano na wygnaniu, rok 7 po Ciszy.";
 };
-func void Use_ItWr_BookXp_014()
+func void Use_ItWr_BookXp_08a()
 {
-	Npc_AddDocsCounter(14, 1);
-	CreateInvItem(self, ItWr_BookXp_014);
+	Npc_AddDocsCounter(8, 1);
+	CreateInvItem(self, ItWr_BookXp_08a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -725,22 +729,20 @@ func void Use_ItWr_BookXp_014()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_015 (ItemPR_BookXp)
+instance ItWr_BookXp_08b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_015;
+	on_state[0]					=	Use_ItWr_BookXp_08b;
 	
-	if (Bonus_ItWr_BookXp[15])	{	description = "Kult rozumu II (przeczytane)";	}
-	else						{	description = "Kult rozumu II";					};
-	
+	description					=	BookXp_Description(8, "Kult rozumu", 2);
 	TEXT[0]						=	"Fragment zapisków Dorella z Imroth,";
 	TEXT[1]						=	"ostatniego ¿yj¹cego cz³onka Rady Dziewiêciu.";
 	TEXT[2]						=	"Spisano na wygnaniu, rok 7 po Ciszy.";
 };
-func void Use_ItWr_BookXp_015()
+func void Use_ItWr_BookXp_08b()
 {
-	Npc_AddDocsCounter(15, 2);
-	CreateInvItem(self, ItWr_BookXp_015);
+	Npc_AddDocsCounter(8, 2);
+	CreateInvItem(self, ItWr_BookXp_08b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -773,22 +775,20 @@ func void Use_ItWr_BookXp_015()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_016 (ItemPR_BookXp)
+instance ItWr_BookXp_09a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_016;
+	on_state[0]					=	Use_ItWr_BookXp_09a;
 	
-	if (Bonus_ItWr_BookXp[16])	{	description = "Z wnêtrza bestii I (przeczytane)";	}
-	else						{	description = "Z wnêtrza bestii I";					};
-	
+	description					=	BookXp_Description(9, "Z wnêtrza bestii", 1);
 	TEXT[0]						=	"Zapiski Ebrama z Harn,";
 	TEXT[1]						=	"by³ego uzdrowiciela, skryby i pustelnika.";
 	TEXT[2]						=	"Odrzucone przez wszystkie szko³y uczone.";
 };
-func void Use_ItWr_BookXp_016()
+func void Use_ItWr_BookXp_09a()
 {
-	Npc_AddDocsCounter(16, 1);
-	CreateInvItem(self, ItWr_BookXp_016);
+	Npc_AddDocsCounter(9, 1);
+	CreateInvItem(self, ItWr_BookXp_09a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -819,22 +819,20 @@ func void Use_ItWr_BookXp_016()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_017 (ItemPR_BookXp)
+instance ItWr_BookXp_09b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_017;
+	on_state[0]					=	Use_ItWr_BookXp_09b;
 	
-	if (Bonus_ItWr_BookXp[17])	{	description = "Z wnêtrza bestii II (przeczytane)";	}
-	else						{	description = "Z wnêtrza bestii II";				};
-	
+	description					=	BookXp_Description(9, "Z wnêtrza bestii", 2);
 	TEXT[0]						=	"Zapiski Ebrama z Harn,";
 	TEXT[1]						=	"by³ego uzdrowiciela, skryby i pustelnika.";
 	TEXT[2]						=	"Odrzucone przez wszystkie szko³y uczone.";
 };
-func void Use_ItWr_BookXp_017()
+func void Use_ItWr_BookXp_09b()
 {
-	Npc_AddDocsCounter(17, 2);
-	CreateInvItem(self, ItWr_BookXp_017);
+	Npc_AddDocsCounter(9, 2);
+	CreateInvItem(self, ItWr_BookXp_09b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -865,22 +863,20 @@ func void Use_ItWr_BookXp_017()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_018 (ItemPR_BookXp)
+instance ItWr_BookXp_10a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_018;
+	on_state[0]					=	Use_ItWr_BookXp_10a;
 	
-	if (Bonus_ItWr_BookXp[18])	{	description = "Koœæ ponad duszê I (przeczytane)";	}
-	else						{	description = "Koœæ ponad duszê I";					};
-	
+	description					=	BookXp_Description(10, "Koœæ ponad duszê", 1);
 	TEXT[0]						=	"Notatki archiwisty Elmarina z Wydzia³u";
 	TEXT[1]						=	"Religii Porzuconych. Klasztor w Trystan,";
 	TEXT[2]						=	"rok 61 po Drugim Pochodzie.";
 };
-func void Use_ItWr_BookXp_018()
+func void Use_ItWr_BookXp_10a()
 {
-	Npc_AddDocsCounter(18, 1);
-	CreateInvItem(self, ItWr_BookXp_018);
+	Npc_AddDocsCounter(10, 1);
+	CreateInvItem(self, ItWr_BookXp_10a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -907,22 +903,20 @@ func void Use_ItWr_BookXp_018()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_019 (ItemPR_BookXp)
+instance ItWr_BookXp_10b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_019;
+	on_state[0]					=	Use_ItWr_BookXp_10b;
 	
-	if (Bonus_ItWr_BookXp[19])	{	description = "Koœæ ponad duszê II (przeczytane)";	}
-	else						{	description = "Koœæ ponad duszê II";				};
-	
+	description					=	BookXp_Description(10, "Koœæ ponad duszê", 2);
 	TEXT[0]						=	"Notatki archiwisty Elmarina z Wydzia³u";
 	TEXT[1]						=	"Religii Porzuconych. Klasztor w Trystan,";
 	TEXT[2]						=	"rok 61 po Drugim Pochodzie.";
 };
-func void Use_ItWr_BookXp_019()
+func void Use_ItWr_BookXp_10b()
 {
-	Npc_AddDocsCounter(19, 2);
-	CreateInvItem(self, ItWr_BookXp_019);
+	Npc_AddDocsCounter(10, 2);
+	CreateInvItem(self, ItWr_BookXp_10b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -951,22 +945,20 @@ func void Use_ItWr_BookXp_019()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_020 (ItemPR_BookXp)
+instance ItWr_BookXp_11a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_020;
+	on_state[0]					=	Use_ItWr_BookXp_11a;
 	
-	if (Bonus_ItWr_BookXp[20])	{	description = "Ziemia nie zapomina I (przeczytane)";	}
-	else						{	description = "Ziemia nie zapomina I";					};
-	
+	description					=	BookXp_Description(11, "Ziemia nie zapomina", 1);
 	TEXT[0]						=	"Zapiski oficjalne sporz¹dzone przez kartografa";
 	TEXT[1]						=	"Gorthena Lestvala na zlecenie Rady Miejskiej Vael.";
 	TEXT[2]						=	"Rok 48 po Drugim Roz³amie.";
 };
-func void Use_ItWr_BookXp_020()
+func void Use_ItWr_BookXp_11a()
 {
-	Npc_AddDocsCounter(20, 1);
-	CreateInvItem(self, ItWr_BookXp_020);
+	Npc_AddDocsCounter(11, 1);
+	CreateInvItem(self, ItWr_BookXp_11a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -997,22 +989,20 @@ func void Use_ItWr_BookXp_020()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_021 (ItemPR_BookXp)
+instance ItWr_BookXp_11b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_021;
+	on_state[0]					=	Use_ItWr_BookXp_11b;
 	
-	if (Bonus_ItWr_BookXp[21])	{	description = "Ziemia nie zapomina II (przeczytane)";	}
-	else						{	description = "Ziemia nie zapomina II";					};
-	
+	description					=	BookXp_Description(11, "Ziemia nie zapomina", 2);
 	TEXT[0]						=	"Zapiski oficjalne sporz¹dzone przez kartografa";
 	TEXT[1]						=	"Gorthena Lestvala na zlecenie Rady Miejskiej Vael.";
 	TEXT[2]						=	"Rok 48 po Drugim Roz³amie.";
 };
-func void Use_ItWr_BookXp_021()
+func void Use_ItWr_BookXp_11b()
 {
-	Npc_AddDocsCounter(21, 2);
-	CreateInvItem(self, ItWr_BookXp_021);
+	Npc_AddDocsCounter(11, 2);
+	CreateInvItem(self, ItWr_BookXp_11b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1041,22 +1031,20 @@ func void Use_ItWr_BookXp_021()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_022 (ItemPR_BookXp)
+instance ItWr_BookXp_12a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_022;
+	on_state[0]					=	Use_ItWr_BookXp_12a;
 	
-	if (Bonus_ItWr_BookXp[22])	{	description = "Kl¹twa ¿ycia I (przeczytane)";	}
-	else						{	description = "Kl¹twa ¿ycia I";					};
-	
+	description					=	BookXp_Description(12, "Kl¹twa ¿ycia", 1);
 	TEXT[0]						=	"Zapiski medyka królewskiego Raltana Vossara.";
 	TEXT[1]						=	"Spisano w roku 73 po Wojnie Trzech Bram.";
 	TEXT[2]						=	"Zbiór zdeponowany w archiwum medycznym Therelis.";
 };
-func void Use_ItWr_BookXp_022()
+func void Use_ItWr_BookXp_12a()
 {
-	Npc_AddDocsCounter(22, 1);
-	CreateInvItem(self, ItWr_BookXp_022);
+	Npc_AddDocsCounter(12, 1);
+	CreateInvItem(self, ItWr_BookXp_12a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1085,22 +1073,20 @@ func void Use_ItWr_BookXp_022()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_023 (ItemPR_BookXp)
+instance ItWr_BookXp_12b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_023;
+	on_state[0]					=	Use_ItWr_BookXp_12b;
 	
-	if (Bonus_ItWr_BookXp[23])	{	description = "Kl¹twa ¿ycia II (przeczytane)";	}
-	else						{	description = "Kl¹twa ¿ycia II";				};
-	
+	description					=	BookXp_Description(12, "Kl¹twa ¿ycia", 2);
 	TEXT[0]						=	"Zapiski medyka królewskiego Raltana Vossara.";
 	TEXT[1]						=	"Spisano w roku 73 po Wojnie Trzech Bram.";
 	TEXT[2]						=	"Zbiór zdeponowany w archiwum medycznym Therelis.";
 };
-func void Use_ItWr_BookXp_023()
+func void Use_ItWr_BookXp_12b()
 {
-	Npc_AddDocsCounter(23, 2);
-	CreateInvItem(self, ItWr_BookXp_023);
+	Npc_AddDocsCounter(12, 2);
+	CreateInvItem(self, ItWr_BookXp_12b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1129,22 +1115,20 @@ func void Use_ItWr_BookXp_023()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_024 (ItemPR_BookXp)
+instance ItWr_BookXp_13a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_024;
+	on_state[0]					=	Use_ItWr_BookXp_13a;
 	
-	if (Bonus_ItWr_BookXp[24])	{	description = "O wymazywaniu imion I (przeczytane)";	}
-	else						{	description = "O wymazywaniu imion I";					};
-	
+	description					=	BookXp_Description(13, "O wymazywaniu imion", 1);
 	TEXT[0]						=	"Fragment traktatu autorstwa nieznanego skryby,";
 	TEXT[1]						=	"odnaleziony w archiwach Starego Opactwa w Orne.";
 	TEXT[2]						=	"Kopia sporz¹dzona z zachowanych zwojów.";
 };
-func void Use_ItWr_BookXp_024()
+func void Use_ItWr_BookXp_13a()
 {
-	Npc_AddDocsCounter(24, 1);
-	CreateInvItem(self, ItWr_BookXp_024);
+	Npc_AddDocsCounter(13, 1);
+	CreateInvItem(self, ItWr_BookXp_13a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1175,22 +1159,20 @@ func void Use_ItWr_BookXp_024()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_025 (ItemPR_BookXp)
+instance ItWr_BookXp_13b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_025;
+	on_state[0]					=	Use_ItWr_BookXp_13b;
 	
-	if (Bonus_ItWr_BookXp[25])	{	description = "O wymazywaniu imion II (przeczytane)";	}
-	else						{	description = "O wymazywaniu imion II";					};
-	
+	description					=	BookXp_Description(13, "O wymazywaniu imion", 2);
 	TEXT[0]						=	"Fragment traktatu autorstwa nieznanego skryby,";
 	TEXT[1]						=	"odnaleziony w archiwach Starego Opactwa w Orne.";
 	TEXT[2]						=	"Kopia sporz¹dzona z zachowanych zwojów.";
 };
-func void Use_ItWr_BookXp_025()
+func void Use_ItWr_BookXp_13b()
 {
-	Npc_AddDocsCounter(25, 2);
-	CreateInvItem(self, ItWr_BookXp_025);
+	Npc_AddDocsCounter(13, 2);
+	CreateInvItem(self, ItWr_BookXp_13b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1223,22 +1205,20 @@ func void Use_ItWr_BookXp_025()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_026 (ItemPR_BookXp)
+instance ItWr_BookXp_14a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_026;
+	on_state[0]					=	Use_ItWr_BookXp_14a;
 	
-	if (Bonus_ItWr_BookXp[26])	{	description = "O skórze I (przeczytane)";	}
-	else						{	description = "O skórze I";					};
-	
+	description					=	BookXp_Description(14, "O skórze", 1);
 	TEXT[0]						=	"Fragment podrêcznika mistrza Edgara";
 	TEXT[1]						=	"z warsztatu przy wschodnim targu w Karthil.";
 	TEXT[2]						=	"Zakazany przez cech za „zbyt dosadny ton”.";
 };
-func void Use_ItWr_BookXp_026()
+func void Use_ItWr_BookXp_14a()
 {
-	Npc_AddDocsCounter(26, 1);
-	CreateInvItem(self, ItWr_BookXp_026);
+	Npc_AddDocsCounter(14, 1);
+	CreateInvItem(self, ItWr_BookXp_14a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1269,22 +1249,20 @@ func void Use_ItWr_BookXp_026()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_027 (ItemPR_BookXp)
+instance ItWr_BookXp_14b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_027;
+	on_state[0]					=	Use_ItWr_BookXp_14b;
 	
-	if (Bonus_ItWr_BookXp[27])	{	description = "O skórze II (przeczytane)";	}
-	else						{	description = "O skórze II";				};
-	
+	description					=	BookXp_Description(14, "O skórze", 2);
 	TEXT[0]						=	"Fragment podrêcznika mistrza Edgara";
 	TEXT[1]						=	"z warsztatu przy wschodnim targu w Karthil.";
 	TEXT[2]						=	"Zakazany przez cech za „zbyt dosadny ton”.";
 };
-func void Use_ItWr_BookXp_027()
+func void Use_ItWr_BookXp_14b()
 {
-	Npc_AddDocsCounter(27, 2);
-	CreateInvItem(self, ItWr_BookXp_027);
+	Npc_AddDocsCounter(14, 2);
+	CreateInvItem(self, ItWr_BookXp_14b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1313,22 +1291,20 @@ func void Use_ItWr_BookXp_027()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_028 (ItemPR_BookXp)
+instance ItWr_BookXp_15a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_028;
+	on_state[0]					=	Use_ItWr_BookXp_15a;
 	
-	if (Bonus_ItWr_BookXp[28])	{	description = "Bitwa w cieœninie I (przeczytane)";	}
-	else						{	description = "Bitwa w cieœninie I";				};
-	
+	description					=	BookXp_Description(15, "Bitwa w cieœninie", 1);
 	TEXT[0]						=	"Spisane przez kapitana Arvonna Vel Tern,";
 	TEXT[1]						=	"by³ego dowódcê ¿aglowca „Gniew Po³udnia”.";
 	TEXT[2]						=	"Fragment pamiêtnika odnalezionego w Myrth.";
 };
-func void Use_ItWr_BookXp_028()
+func void Use_ItWr_BookXp_15a()
 {
-	Npc_AddDocsCounter(28, 1);
-	CreateInvItem(self, ItWr_BookXp_028);
+	Npc_AddDocsCounter(15, 1);
+	CreateInvItem(self, ItWr_BookXp_15a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1361,22 +1337,20 @@ func void Use_ItWr_BookXp_028()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_029 (ItemPR_BookXp)
+instance ItWr_BookXp_15b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_029;
+	on_state[0]					=	Use_ItWr_BookXp_15b;
 	
-	if (Bonus_ItWr_BookXp[29])	{	description = "Bitwa w cieœninie II (przeczytane)";	}
-	else						{	description = "Bitwa w cieœninie II";				};
-	
+	description					=	BookXp_Description(15, "Bitwa w cieœninie", 2);
 	TEXT[0]						=	"Spisane przez kapitana Arvonna Vel Tern,";
 	TEXT[1]						=	"by³ego dowódcê ¿aglowca „Gniew Po³udnia”.";
 	TEXT[2]						=	"Fragment pamiêtnika odnalezionego w Myrth.";
 };
-func void Use_ItWr_BookXp_029()
+func void Use_ItWr_BookXp_15b()
 {
-	Npc_AddDocsCounter(29, 2);
-	CreateInvItem(self, ItWr_BookXp_029);
+	Npc_AddDocsCounter(15, 2);
+	CreateInvItem(self, ItWr_BookXp_15b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1407,22 +1381,20 @@ func void Use_ItWr_BookXp_029()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_030 (ItemPR_BookXp)
+instance ItWr_BookXp_16a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_030;
+	on_state[0]					=	Use_ItWr_BookXp_16a;
 	
-	if (Bonus_ItWr_BookXp[30])	{	description = "Milczenie bogów I (przeczytane)";	}
-	else						{	description = "Milczenie bogów I";					};
-	
+	description					=	BookXp_Description(16, "Milczenie bogów", 1);
 	TEXT[0]						=	"Fragment pokutnej ksiêgi brata Alinora,";
 	TEXT[1]						=	"spisany w klasztorze na Wzgórzach Kruka.";
 	TEXT[2]						=	"Nigdy nie w³¹czony do oficjalnego kanonu.";
 };
-func void Use_ItWr_BookXp_030()
+func void Use_ItWr_BookXp_16a()
 {
-	Npc_AddDocsCounter(30, 1);
-	CreateInvItem(self, ItWr_BookXp_030);
+	Npc_AddDocsCounter(16, 1);
+	CreateInvItem(self, ItWr_BookXp_16a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1453,22 +1425,20 @@ func void Use_ItWr_BookXp_030()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_031 (ItemPR_BookXp)
+instance ItWr_BookXp_16b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_031;
+	on_state[0]					=	Use_ItWr_BookXp_16b;
 	
-	if (Bonus_ItWr_BookXp[31])	{	description = "Milczenie bogów II (przeczytane)";	}
-	else						{	description = "Milczenie bogów II";					};
-	
+	description					=	BookXp_Description(16, "Milczenie bogów", 2);
 	TEXT[0]						=	"Fragment pokutnej ksiêgi brata Alinora,";
 	TEXT[1]						=	"spisany w klasztorze na Wzgórzach Kruka.";
 	TEXT[2]						=	"Nigdy nie w³¹czony do oficjalnego kanonu.";
 };
-func void Use_ItWr_BookXp_031()
+func void Use_ItWr_BookXp_16b()
 {
-	Npc_AddDocsCounter(31, 2);
-	CreateInvItem(self, ItWr_BookXp_031);
+	Npc_AddDocsCounter(16, 2);
+	CreateInvItem(self, ItWr_BookXp_16b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1501,22 +1471,20 @@ func void Use_ItWr_BookXp_031()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_032 (ItemPR_BookXp)
+instance ItWr_BookXp_17a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_032;
+	on_state[0]					=	Use_ItWr_BookXp_17a;
 	
-	if (Bonus_ItWr_BookXp[32])	{	description = "Z popio³ów nocy I (przeczytane)";	}
-	else						{	description = "Z popio³ów nocy I";					};
-	
+	description					=	BookXp_Description(17, "Z popio³ów nocy", 1);
 	TEXT[0]						=	"Spisane przez rycerza Edricha,";
 	TEXT[1]						=	"jednego ze œwiadków Bitwy pod Bramant.";
 	TEXT[2]						=	"Przechowywane w kaplicy Œwiêtego P³omienia.";
 };
-func void Use_ItWr_BookXp_032()
+func void Use_ItWr_BookXp_17a()
 {
-	Npc_AddDocsCounter(32, 1);
-	CreateInvItem(self, ItWr_BookXp_032);
+	Npc_AddDocsCounter(17, 1);
+	CreateInvItem(self, ItWr_BookXp_17a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1549,22 +1517,20 @@ func void Use_ItWr_BookXp_032()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_033 (ItemPR_BookXp)
+instance ItWr_BookXp_17b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_033;
+	on_state[0]					=	Use_ItWr_BookXp_17b;
 	
-	if (Bonus_ItWr_BookXp[33])	{	description = "Z popio³ów nocy II (przeczytane)";	}
-	else						{	description = "Z popio³ów nocy II";					};
-	
+	description					=	BookXp_Description(17, "Z popio³ów nocy", 2);
 	TEXT[0]						=	"Spisane przez rycerza Edricha,";
 	TEXT[1]						=	"jednego ze œwiadków Bitwy pod Bramant.";
 	TEXT[2]						=	"Przechowywane w kaplicy Œwiêtego P³omienia.";
 };
-func void Use_ItWr_BookXp_033()
+func void Use_ItWr_BookXp_17b()
 {
-	Npc_AddDocsCounter(33, 2);
-	CreateInvItem(self, ItWr_BookXp_033);
+	Npc_AddDocsCounter(17, 2);
+	CreateInvItem(self, ItWr_BookXp_17b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1597,22 +1563,20 @@ func void Use_ItWr_BookXp_033()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_034 (ItemPR_BookXp)
+instance ItWr_BookXp_18a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_034;
+	on_state[0]					=	Use_ItWr_BookXp_18a;
 	
-	if (Bonus_ItWr_BookXp[34])	{	description = "Bez pieczêci I (przeczytane)";	}
-	else						{	description = "Bez pieczêci I";					};
-	
+	description					=	BookXp_Description(18, "Bez pieczêci", 1);
 	TEXT[0]						=	"Testament spisany przez Sirela Doventa,";
 	TEXT[1]						=	"by³ego skryby wojskowego,";
 	TEXT[2]						=	"wiêzionego w Podziemiach Wrót Zachodnich.";
 };
-func void Use_ItWr_BookXp_034()
+func void Use_ItWr_BookXp_18a()
 {
-	Npc_AddDocsCounter(34, 1);
-	CreateInvItem(self, ItWr_BookXp_034);
+	Npc_AddDocsCounter(18, 1);
+	CreateInvItem(self, ItWr_BookXp_18a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1643,22 +1607,20 @@ func void Use_ItWr_BookXp_034()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_035 (ItemPR_BookXp)
+instance ItWr_BookXp_18b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_035;
+	on_state[0]					=	Use_ItWr_BookXp_18b;
 	
-	if (Bonus_ItWr_BookXp[35])	{	description = "Bez pieczêci II (przeczytane)";	}
-	else						{	description = "Bez pieczêci II";				};
-	
+	description					=	BookXp_Description(18, "Bez pieczêci", 2);
 	TEXT[0]						=	"Testament spisany przez Sirela Doventa,";
 	TEXT[1]						=	"by³ego skryby wojskowego,";
 	TEXT[2]						=	"wiêzionego w Podziemiach Wrót Zachodnich.";
 };
-func void Use_ItWr_BookXp_035()
+func void Use_ItWr_BookXp_18b()
 {
-	Npc_AddDocsCounter(35, 2);
-	CreateInvItem(self, ItWr_BookXp_035);
+	Npc_AddDocsCounter(18, 2);
+	CreateInvItem(self, ItWr_BookXp_18b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1689,22 +1651,20 @@ func void Use_ItWr_BookXp_035()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_036 (ItemPR_BookXp)
+instance ItWr_BookXp_19a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_036;
+	on_state[0]					=	Use_ItWr_BookXp_19a;
 	
-	if (Bonus_ItWr_BookXp[36])	{	description = "Deszczowa noc I (przeczytane)";	}
-	else						{	description = "Deszczowa noc I";				};
-	
+	description					=	BookXp_Description(19, "Deszczowa noc", 1);
 	TEXT[0]						=	"Fragment prywatnego dziennika.";
 	TEXT[1]						=	"Czêœæ stron by³a mokra, czêœæ nadpalona.";
 	TEXT[2]						=	"Nazwisko autora nieczytelne.";
 };
-func void Use_ItWr_BookXp_036()
+func void Use_ItWr_BookXp_19a()
 {
-	Npc_AddDocsCounter(36, 1);
-	CreateInvItem(self, ItWr_BookXp_036);
+	Npc_AddDocsCounter(19, 1);
+	CreateInvItem(self, ItWr_BookXp_19a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1733,22 +1693,20 @@ func void Use_ItWr_BookXp_036()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_037 (ItemPR_BookXp)
+instance ItWr_BookXp_19b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_037;
+	on_state[0]					=	Use_ItWr_BookXp_19b;
 	
-	if (Bonus_ItWr_BookXp[37])	{	description = "Deszczowa noc II (przeczytane)";	}
-	else						{	description = "Deszczowa noc II";				};
-	
+	description					=	BookXp_Description(19, "Deszczowa noc", 2);
 	TEXT[0]						=	"Fragment prywatnego dziennika.";
 	TEXT[1]						=	"Czêœæ stron by³a mokra, czêœæ nadpalona.";
 	TEXT[2]						=	"Nazwisko autora nieczytelne.";
 };
-func void Use_ItWr_BookXp_037()
+func void Use_ItWr_BookXp_19b()
 {
-	Npc_AddDocsCounter(37, 2);
-	CreateInvItem(self, ItWr_BookXp_037);
+	Npc_AddDocsCounter(19, 2);
+	CreateInvItem(self, ItWr_BookXp_19b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1781,21 +1739,19 @@ func void Use_ItWr_BookXp_037()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_038 (ItemPR_BookXp)
+instance ItWr_BookXp_20a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_038;
+	on_state[0]					=	Use_ItWr_BookXp_20a;
 	
-	if (Bonus_ItWr_BookXp[38])	{	description = "Niepos³uszne ostrza I (przeczytane)";	}
-	else						{	description = "Niepos³uszne ostrza I";					};
-	
+	description					=	BookXp_Description(20, "Niepos³uszne ostrza", 1);
 	TEXT[0]						=	"Zapiski mistrza Olbrechta,";
 	TEXT[1]						=	"dawniej kowala przy królewskim dworze.";
 };
-func void Use_ItWr_BookXp_038()
+func void Use_ItWr_BookXp_20a()
 {
-	Npc_AddDocsCounter(38, 1);
-	CreateInvItem(self, ItWr_BookXp_038);
+	Npc_AddDocsCounter(20, 1);
+	CreateInvItem(self, ItWr_BookXp_20a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1824,21 +1780,19 @@ func void Use_ItWr_BookXp_038()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_039 (ItemPR_BookXp)
+instance ItWr_BookXp_20b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_039;
+	on_state[0]					=	Use_ItWr_BookXp_20b;
 	
-	if (Bonus_ItWr_BookXp[39])	{	description = "Niepos³uszne ostrza II (przeczytane)";	}
-	else						{	description = "Niepos³uszne ostrza II";					};
-	
+	description					=	BookXp_Description(20, "Niepos³uszne ostrza", 2);
 	TEXT[0]						=	"Zapiski mistrza Olbrechta,";
 	TEXT[1]						=	"dawniej kowala przy królewskim dworze.";
 };
-func void Use_ItWr_BookXp_039()
+func void Use_ItWr_BookXp_20b()
 {
-	Npc_AddDocsCounter(39, 2);
-	CreateInvItem(self, ItWr_BookXp_039);
+	Npc_AddDocsCounter(20, 2);
+	CreateInvItem(self, ItWr_BookXp_20b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1871,22 +1825,20 @@ func void Use_ItWr_BookXp_039()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_040 (ItemPR_BookXp)
+instance ItWr_BookXp_21a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_040;
+	on_state[0]					=	Use_ItWr_BookXp_21a;
 	
-	if (Bonus_ItWr_BookXp[40])	{	description = "Dziennik z Szybu VII I (przeczytane)";	}
-	else						{	description = "Dziennik z Szybu VII I";					};
-	
+	description					=	BookXp_Description(21, "Dziennik z Szybu VII", 1);
 	TEXT[0]						=	"Zapiski znalezione przy ciele górnika";
 	TEXT[1]						=	"w zawa³ach kopalni królewskiej pod Rendor.";
 	TEXT[2]						=	"Brak dalszych wpisów po dniu dziewi¹tym.";
 };
-func void Use_ItWr_BookXp_040()
+func void Use_ItWr_BookXp_21a()
 {
-	Npc_AddDocsCounter(40, 1);
-	CreateInvItem(self, ItWr_BookXp_040);
+	Npc_AddDocsCounter(21, 1);
+	CreateInvItem(self, ItWr_BookXp_21a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1917,22 +1869,20 @@ func void Use_ItWr_BookXp_040()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_041 (ItemPR_BookXp)
+instance ItWr_BookXp_21b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_041;
+	on_state[0]					=	Use_ItWr_BookXp_21b;
 	
-	if (Bonus_ItWr_BookXp[41])	{	description = "Dziennik z Szybu VII II (przeczytane)";	}
-	else						{	description = "Dziennik z Szybu VII II";				};
-	
+	description					=	BookXp_Description(21, "Dziennik z Szybu VII", 2);
 	TEXT[0]						=	"Zapiski znalezione przy ciele górnika";
 	TEXT[1]						=	"w zawa³ach kopalni królewskiej pod Rendor.";
 	TEXT[2]						=	"Brak dalszych wpisów po dniu dziewi¹tym.";
 };
-func void Use_ItWr_BookXp_041()
+func void Use_ItWr_BookXp_21b()
 {
-	Npc_AddDocsCounter(41, 2);
-	CreateInvItem(self, ItWr_BookXp_041);
+	Npc_AddDocsCounter(21, 2);
+	CreateInvItem(self, ItWr_BookXp_21b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -1966,22 +1916,20 @@ func void Use_ItWr_BookXp_041()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_042 (ItemPR_BookXp)
+instance ItWr_BookXp_22a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_042;
+	on_state[0]					=	Use_ItWr_BookXp_22a;
 	
-	if (Bonus_ItWr_BookXp[42])	{	description = "Spod fundamentów I (przeczytane)";	}
-	else						{	description = "Spod fundamentów I";					};
-	
+	description					=	BookXp_Description(22, "Spod fundamentów", 1);
 	TEXT[0]						=	"Spisane przez mistrza murarskiego";
 	TEXT[1]						=	"Ervona Halda, odnalezione w ruinach";
 	TEXT[2]						=	"klasztoru Arnem. Tekst czêœciowo przepalony.";
 };
-func void Use_ItWr_BookXp_042()
+func void Use_ItWr_BookXp_22a()
 {
-	Npc_AddDocsCounter(42, 1);
-	CreateInvItem(self, ItWr_BookXp_042);
+	Npc_AddDocsCounter(22, 1);
+	CreateInvItem(self, ItWr_BookXp_22a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2012,22 +1960,20 @@ func void Use_ItWr_BookXp_042()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_043 (ItemPR_BookXp)
+instance ItWr_BookXp_22b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_043;
+	on_state[0]					=	Use_ItWr_BookXp_22b;
 	
-	if (Bonus_ItWr_BookXp[43])	{	description = "Spod fundamentów II (przeczytane)";	}
-	else						{	description = "Spod fundamentów II";				};
-	
+	description					=	BookXp_Description(22, "Spod fundamentów", 2);
 	TEXT[0]						=	"Spisane przez mistrza murarskiego";
 	TEXT[1]						=	"Ervona Halda, odnalezione w ruinach";
 	TEXT[2]						=	"klasztoru Arnem. Tekst czêœciowo przepalony.";
 };
-func void Use_ItWr_BookXp_043()
+func void Use_ItWr_BookXp_22b()
 {
-	Npc_AddDocsCounter(43, 2);
-	CreateInvItem(self, ItWr_BookXp_043);
+	Npc_AddDocsCounter(22, 2);
+	CreateInvItem(self, ItWr_BookXp_22b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2056,21 +2002,19 @@ func void Use_ItWr_BookXp_043()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_044 (ItemPR_BookXp)
+instance ItWr_BookXp_23a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_044;
+	on_state[0]					=	Use_ItWr_BookXp_23a;
 	
-	if (Bonus_ItWr_BookXp[44])	{	description = "Niezmienne niebo I (przeczytane)";	}
-	else						{	description = "Niezmienne niebo I";					};
-	
+	description					=	BookXp_Description(23, "Niezmienne niebo", 1);
 	TEXT[0]						=	"Dziennik latarnika z przyl¹dka Rauenstein,";
 	TEXT[1]						=	"rok 18 po trzecim wielkim przyp³ywie.";
 };
-func void Use_ItWr_BookXp_044()
+func void Use_ItWr_BookXp_23a()
 {
-	Npc_AddDocsCounter(44, 1);
-	CreateInvItem(self, ItWr_BookXp_044);
+	Npc_AddDocsCounter(23, 1);
+	CreateInvItem(self, ItWr_BookXp_23a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2104,21 +2048,19 @@ func void Use_ItWr_BookXp_044()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_045 (ItemPR_BookXp)
+instance ItWr_BookXp_23b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_045;
+	on_state[0]					=	Use_ItWr_BookXp_23b;
 	
-	if (Bonus_ItWr_BookXp[45])	{	description = "Niezmienne niebo II (przeczytane)";	}
-	else						{	description = "Niezmienne niebo II";				};
-	
+	description					=	BookXp_Description(23, "Niezmienne niebo", 2);
 	TEXT[0]						=	"Dziennik latarnika z przyl¹dka Rauenstein,";
 	TEXT[1]						=	"rok 18 po trzecim wielkim przyp³ywie.";
 };
-func void Use_ItWr_BookXp_045()
+func void Use_ItWr_BookXp_23b()
 {
-	Npc_AddDocsCounter(45, 2);
-	CreateInvItem(self, ItWr_BookXp_045);
+	Npc_AddDocsCounter(23, 2);
+	CreateInvItem(self, ItWr_BookXp_23b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2152,22 +2094,20 @@ func void Use_ItWr_BookXp_045()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_046 (ItemPR_BookXp)
+instance ItWr_BookXp_24a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_046;
+	on_state[0]					=	Use_ItWr_BookXp_24a;
 	
-	if (Bonus_ItWr_BookXp[46])	{	description = "W cieniu stodo³y I (przeczytane)";	}
-	else						{	description = "W cieniu stodo³y I";					};
-	
+	description					=	BookXp_Description(24, "W cieniu stodo³y", 1);
 	TEXT[0]						=	"Zanotowane przez Edrena Halma,";
 	TEXT[1]						=	"pisarza podró¿nego, w okolicach";
 	TEXT[2]						=	"Górnego Wergolu, roku 43 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_046()
+func void Use_ItWr_BookXp_24a()
 {
-	Npc_AddDocsCounter(46, 1);
-	CreateInvItem(self, ItWr_BookXp_046);
+	Npc_AddDocsCounter(24, 1);
+	CreateInvItem(self, ItWr_BookXp_24a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2197,22 +2137,20 @@ func void Use_ItWr_BookXp_046()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_047 (ItemPR_BookXp)
+instance ItWr_BookXp_24b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_047;
+	on_state[0]					=	Use_ItWr_BookXp_24b;
 	
-	if (Bonus_ItWr_BookXp[47])	{	description = "W cieniu stodo³y II (przeczytane)";	}
-	else						{	description = "W cieniu stodo³y II";				};
-	
+	description					=	BookXp_Description(24, "W cieniu stodo³y", 2);
 	TEXT[0]						=	"Zanotowane przez Edrena Halma,";
 	TEXT[1]						=	"pisarza podró¿nego, w okolicach";
 	TEXT[2]						=	"Górnego Wergolu, roku 43 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_047()
+func void Use_ItWr_BookXp_24b()
 {
-	Npc_AddDocsCounter(47, 2);
-	CreateInvItem(self, ItWr_BookXp_047);
+	Npc_AddDocsCounter(24, 2);
+	CreateInvItem(self, ItWr_BookXp_24b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2251,22 +2189,20 @@ func void Use_ItWr_BookXp_047()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_048 (ItemPR_BookXp)
+instance ItWr_BookXp_25a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_048;
+	on_state[0]					=	Use_ItWr_BookXp_25a;
 	
-	if (Bonus_ItWr_BookXp[48])	{	description = "Na s³owie go mam I (przeczytane)";	}
-	else						{	description = "Na s³owie go mam I";					};
-	
+	description					=	BookXp_Description(25, "Na s³owie go mam", 1);
 	TEXT[0]						=	"Dokument spisany przez Egdara,";
 	TEXT[1]						=	"by³ego œledczego garnizonu Górnego Wergolu.";
 	TEXT[2]						=	"Przechowywany w archiwum stra¿y.";
 };
-func void Use_ItWr_BookXp_048()
+func void Use_ItWr_BookXp_25a()
 {
-	Npc_AddDocsCounter(48, 1);
-	CreateInvItem(self, ItWr_BookXp_048);
+	Npc_AddDocsCounter(25, 1);
+	CreateInvItem(self, ItWr_BookXp_25a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2299,22 +2235,20 @@ func void Use_ItWr_BookXp_048()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_049 (ItemPR_BookXp)
+instance ItWr_BookXp_25b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_049;
+	on_state[0]					=	Use_ItWr_BookXp_25b;
 	
-	if (Bonus_ItWr_BookXp[49])	{	description = "Na s³owie go mam II (przeczytane)";	}
-	else						{	description = "Na s³owie go mam II";				};
-	
+	description					=	BookXp_Description(25, "Na s³owie go mam", 2);
 	TEXT[0]						=	"Dokument spisany przez Egdara,";
 	TEXT[1]						=	"by³ego œledczego garnizonu Górnego Wergolu.";
 	TEXT[2]						=	"Przechowywany w archiwum stra¿y.";
 };
-func void Use_ItWr_BookXp_049()
+func void Use_ItWr_BookXp_25b()
 {
-	Npc_AddDocsCounter(49, 2);
-	CreateInvItem(self, ItWr_BookXp_049);
+	Npc_AddDocsCounter(25, 2);
+	CreateInvItem(self, ItWr_BookXp_25b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2351,22 +2285,20 @@ func void Use_ItWr_BookXp_049()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_050 (ItemPR_BookXp)
+instance ItWr_BookXp_26a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_050;
+	on_state[0]					=	Use_ItWr_BookXp_26a;
 	
-	if (Bonus_ItWr_BookXp[50])	{	description = "Z drugiej strony szk³a I (przeczytane)";	}
-	else						{	description = "Z drugiej strony szk³a I";				};
-	
+	description					=	BookXp_Description(26, "Z drugiej strony szk³a", 1);
 	TEXT[0]						=	"Spisano z notatek uczonego Eirena Halbricha,";
 	TEXT[1]						=	"badaj¹cego zjawiska optyczne w klasztorze";
 	TEXT[2]						=	"Porthalm. Rok 17 po Drugim Trzêsieniu.";
 };
-func void Use_ItWr_BookXp_050()
+func void Use_ItWr_BookXp_26a()
 {
-	Npc_AddDocsCounter(50, 1);
-	CreateInvItem(self, ItWr_BookXp_050);
+	Npc_AddDocsCounter(26, 1);
+	CreateInvItem(self, ItWr_BookXp_26a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2397,22 +2329,20 @@ func void Use_ItWr_BookXp_050()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_051 (ItemPR_BookXp)
+instance ItWr_BookXp_26b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_051;
+	on_state[0]					=	Use_ItWr_BookXp_26b;
 	
-	if (Bonus_ItWr_BookXp[51])	{	description = "Z drugiej strony szk³a II (przeczytane)";	}
-	else						{	description = "Z drugiej strony szk³a II";					};
-	
+	description					=	BookXp_Description(26, "Z drugiej strony szk³a", 2);
 	TEXT[0]						=	"Spisano z notatek uczonego Eirena Halbricha,";
 	TEXT[1]						=	"badaj¹cego zjawiska optyczne w klasztorze";
 	TEXT[2]						=	"Porthalm. Rok 17 po Drugim Trzêsieniu.";
 };
-func void Use_ItWr_BookXp_051()
+func void Use_ItWr_BookXp_26b()
 {
-	Npc_AddDocsCounter(51, 2);
-	CreateInvItem(self, ItWr_BookXp_051);
+	Npc_AddDocsCounter(26, 2);
+	CreateInvItem(self, ItWr_BookXp_26b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2441,22 +2371,20 @@ func void Use_ItWr_BookXp_051()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_052 (ItemPR_BookXp)
+instance ItWr_BookXp_27a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_052;
+	on_state[0]					=	Use_ItWr_BookXp_27a;
 	
-	if (Bonus_ItWr_BookXp[52])	{	description = "Na granicy sacrum I (przeczytane)";	}
-	else						{	description = "Na granicy sacrum I";				};
-	
+	description					=	BookXp_Description(27, "Na granicy sacrum", 1);
 	TEXT[0]						=	"Autor: mistrz Maglan z Archiwum Œwitu,";
 	TEXT[1]						=	"by³y cz³onek Krêgu Œwiat³a.";
 	TEXT[2]						=	"Rok 48 po Trzecim Przebudzeniu.";
 };
-func void Use_ItWr_BookXp_052()
+func void Use_ItWr_BookXp_27a()
 {
-	Npc_AddDocsCounter(52, 1);
-	CreateInvItem(self, ItWr_BookXp_052);
+	Npc_AddDocsCounter(27, 1);
+	CreateInvItem(self, ItWr_BookXp_27a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2487,22 +2415,20 @@ func void Use_ItWr_BookXp_052()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_053 (ItemPR_BookXp)
+instance ItWr_BookXp_27b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_053;
+	on_state[0]					=	Use_ItWr_BookXp_27b;
 	
-	if (Bonus_ItWr_BookXp[53])	{	description = "Na granicy sacrum II (przeczytane)";	}
-	else						{	description = "Na granicy sacrum II";				};
-	
+	description					=	BookXp_Description(27, "Na granicy sacrum", 2);
 	TEXT[0]						=	"Autor: mistrz Maglan z Archiwum Œwitu,";
 	TEXT[1]						=	"by³y cz³onek Krêgu Œwiat³a.";
 	TEXT[2]						=	"Rok 48 po Trzecim Przebudzeniu.";
 };
-func void Use_ItWr_BookXp_053()
+func void Use_ItWr_BookXp_27b()
 {
-	Npc_AddDocsCounter(53, 2);
-	CreateInvItem(self, ItWr_BookXp_053);
+	Npc_AddDocsCounter(27, 2);
+	CreateInvItem(self, ItWr_BookXp_27b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2535,22 +2461,20 @@ func void Use_ItWr_BookXp_053()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_054 (ItemPR_BookXp)
+instance ItWr_BookXp_28a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_054;
+	on_state[0]					=	Use_ItWr_BookXp_28a;
 	
-	if (Bonus_ItWr_BookXp[54])	{	description = "Cienie bez imienia I (przeczytane)";	}
-	else						{	description = "Cienie bez imienia I";				};
-	
+	description					=	BookXp_Description(28, "Cienie bez imienia", 1);
 	TEXT[0]						=	"Spisano z zapisków mistrza nekromancji";
 	TEXT[1]						=	"Ralkara Morna, niegdyœ ucznia Krêgu Wody,";
 	TEXT[2]						=	"póŸniej wygnanego. Odnaleziono w ruinach Yrras.";
 };
-func void Use_ItWr_BookXp_054()
+func void Use_ItWr_BookXp_28a()
 {
-	Npc_AddDocsCounter(54, 1);
-	CreateInvItem(self, ItWr_BookXp_054);
+	Npc_AddDocsCounter(28, 1);
+	CreateInvItem(self, ItWr_BookXp_28a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2583,22 +2507,20 @@ func void Use_ItWr_BookXp_054()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_055 (ItemPR_BookXp)
+instance ItWr_BookXp_28b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_055;
+	on_state[0]					=	Use_ItWr_BookXp_28b;
 	
-	if (Bonus_ItWr_BookXp[55])	{	description = "Cienie bez imienia II (przeczytane)";	}
-	else						{	description = "Cienie bez imienia II";					};
-	
+	description					=	BookXp_Description(28, "Cienie bez imienia", 2);
 	TEXT[0]						=	"Spisano z zapisków mistrza nekromancji";
 	TEXT[1]						=	"Ralkara Morna, niegdyœ ucznia Krêgu Wody,";
 	TEXT[2]						=	"póŸniej wygnanego. Odnaleziono w ruinach Yrras.";
 };
-func void Use_ItWr_BookXp_055()
+func void Use_ItWr_BookXp_28b()
 {
-	Npc_AddDocsCounter(55, 2);
-	CreateInvItem(self, ItWr_BookXp_055);
+	Npc_AddDocsCounter(28, 2);
+	CreateInvItem(self, ItWr_BookXp_28b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2629,22 +2551,20 @@ func void Use_ItWr_BookXp_055()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_056 (ItemPR_BookXp)
+instance ItWr_BookXp_29a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_056;
+	on_state[0]					=	Use_ItWr_BookXp_29a;
 	
-	if (Bonus_ItWr_BookXp[56])	{	description = "Cia³o bez g³osu I (przeczytane)";	}
-	else						{	description = "Cia³o bez g³osu I";					};
-	
+	description					=	BookXp_Description(29, "Cia³o bez g³osu", 1);
 	TEXT[0]						=	"Spisane przez Adepta Nemerana,";
 	TEXT[1]						=	"ostatniego ucznia mistrza Allirema,";
 	TEXT[2]						=	"rok 41 po Ciszy Wewnêtrznej Bramy.";
 };
-func void Use_ItWr_BookXp_056()
+func void Use_ItWr_BookXp_29a()
 {
-	Npc_AddDocsCounter(56, 1);
-	CreateInvItem(self, ItWr_BookXp_056);
+	Npc_AddDocsCounter(29, 1);
+	CreateInvItem(self, ItWr_BookXp_29a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2675,22 +2595,20 @@ func void Use_ItWr_BookXp_056()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_057 (ItemPR_BookXp)
+instance ItWr_BookXp_29b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_057;
+	on_state[0]					=	Use_ItWr_BookXp_29b;
 	
-	if (Bonus_ItWr_BookXp[57])	{	description = "Cia³o bez g³osu II (przeczytane)";	}
-	else						{	description = "Cia³o bez g³osu II";					};
-	
+	description					=	BookXp_Description(29, "Cia³o bez g³osu", 2);
 	TEXT[0]						=	"Spisane przez Adepta Nemerana,";
 	TEXT[1]						=	"ostatniego ucznia mistrza Allirema,";
 	TEXT[2]						=	"rok 41 po Ciszy Wewnêtrznej Bramy.";
 };
-func void Use_ItWr_BookXp_057()
+func void Use_ItWr_BookXp_29b()
 {
-	Npc_AddDocsCounter(57, 2);
-	CreateInvItem(self, ItWr_BookXp_057);
+	Npc_AddDocsCounter(29, 2);
+	CreateInvItem(self, ItWr_BookXp_29b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2722,22 +2640,20 @@ func void Use_ItWr_BookXp_057()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_058 (ItemPR_BookXp)
+instance ItWr_BookXp_30a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_058;
+	on_state[0]					=	Use_ItWr_BookXp_30a;
 	
-	if (Bonus_ItWr_BookXp[58])	{	description = "O grach I (przeczytane)";	}
-	else						{	description = "O grach I";					};
-	
+	description					=	BookXp_Description(30, "O grach", 1);
 	TEXT[0]						=	"Spisane przez uczonego Ambria,";
 	TEXT[1]						=	"o popularnych formach rozrywki ró¿nych";
 	TEXT[2]						=	"warstw spo³ecznych Archolos i kontynentu.";
 };
-func void Use_ItWr_BookXp_058()
+func void Use_ItWr_BookXp_30a()
 {
-	Npc_AddDocsCounter(58, 1);
-	CreateInvItem(self, ItWr_BookXp_058);
+	Npc_AddDocsCounter(30, 1);
+	CreateInvItem(self, ItWr_BookXp_30a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2768,22 +2684,20 @@ func void Use_ItWr_BookXp_058()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_059 (ItemPR_BookXp)
+instance ItWr_BookXp_30b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_059;
+	on_state[0]					=	Use_ItWr_BookXp_30b;
 	
-	if (Bonus_ItWr_BookXp[59])	{	description = "O grach II (przeczytane)";	}
-	else						{	description = "O grach II";					};
-	
+	description					=	BookXp_Description(30, "O grach", 2);
 	TEXT[0]						=	"Spisane przez uczonego Ambria,";
 	TEXT[1]						=	"o popularnych formach rozrywki ró¿nych";
 	TEXT[2]						=	"warstw spo³ecznych Archolos i kontynentu.";
 };
-func void Use_ItWr_BookXp_059()
+func void Use_ItWr_BookXp_30b()
 {
-	Npc_AddDocsCounter(59, 2);
-	CreateInvItem(self, ItWr_BookXp_059);
+	Npc_AddDocsCounter(30, 2);
+	CreateInvItem(self, ItWr_BookXp_30b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2816,22 +2730,20 @@ func void Use_ItWr_BookXp_059()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_060 (ItemPR_BookXp)
+instance ItWr_BookXp_31a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_060;
+	on_state[0]					=	Use_ItWr_BookXp_31a;
 	
-	if (Bonus_ItWr_BookXp[60])	{	description = "Godzina œmierci I (przeczytane)";	}
-	else						{	description = "Godzina œmierci I";					};
-	
+	description					=	BookXp_Description(31, "Godzina œmierci", 1);
 	TEXT[0]						=	"Ostatnie zapiski mistrza Deirama,";
 	TEXT[1]						=	"zegarmistrza z pó³nocnego";
 	TEXT[2]						=	"kwarta³u Gildenvy, rok nieznany.";
 };
-func void Use_ItWr_BookXp_060()
+func void Use_ItWr_BookXp_31a()
 {
-	Npc_AddDocsCounter(60, 1);
-	CreateInvItem(self, ItWr_BookXp_060);
+	Npc_AddDocsCounter(31, 1);
+	CreateInvItem(self, ItWr_BookXp_31a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2862,22 +2774,20 @@ func void Use_ItWr_BookXp_060()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_061 (ItemPR_BookXp)
+instance ItWr_BookXp_31b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_061;
+	on_state[0]					=	Use_ItWr_BookXp_31b;
 	
-	if (Bonus_ItWr_BookXp[61])	{	description = "Godzina œmierci II (przeczytane)";	}
-	else						{	description = "Godzina œmierci II";					};
-	
+	description					=	BookXp_Description(31, "Godzina œmierci", 2);
 	TEXT[0]						=	"Ostatnie zapiski mistrza Deirama,";
 	TEXT[1]						=	"zegarmistrza z pó³nocnego";
 	TEXT[2]						=	"kwarta³u Gildenvy, rok nieznany.";
 };
-func void Use_ItWr_BookXp_061()
+func void Use_ItWr_BookXp_31b()
 {
-	Npc_AddDocsCounter(61, 2);
-	CreateInvItem(self, ItWr_BookXp_061);
+	Npc_AddDocsCounter(31, 2);
+	CreateInvItem(self, ItWr_BookXp_31b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2908,22 +2818,20 @@ func void Use_ItWr_BookXp_061()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_062 (ItemPR_BookXp)
+instance ItWr_BookXp_32a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_062;
+	on_state[0]					=	Use_ItWr_BookXp_32a;
 	
-	if (Bonus_ItWr_BookXp[62])	{	description = "Jak rodz¹ siê potwory I (przeczytane)";	}
-	else						{	description = "Jak rodz¹ siê potwory I";				};
-	
+	description					=	BookXp_Description(32, "Jak rodz¹ siê potwory", 1);
 	TEXT[0]						=	"Zapisy kap³ana Enratha z Domu Równowagi,";
 	TEXT[1]						=	"sporz¹dzone w œwi¹tyni Adanosa w Setarze,";
 	TEXT[2]						=	"rok 93 po Zawarciu Trzeciego Rozejmu.";
 };
-func void Use_ItWr_BookXp_062()
+func void Use_ItWr_BookXp_32a()
 {
-	Npc_AddDocsCounter(62, 1);
-	CreateInvItem(self, ItWr_BookXp_062);
+	Npc_AddDocsCounter(32, 1);
+	CreateInvItem(self, ItWr_BookXp_32a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -2956,22 +2864,20 @@ func void Use_ItWr_BookXp_062()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_063 (ItemPR_BookXp)
+instance ItWr_BookXp_32b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_063;
+	on_state[0]					=	Use_ItWr_BookXp_32b;
 	
-	if (Bonus_ItWr_BookXp[63])	{	description = "Jak rodz¹ siê potwory II (przeczytane)";	}
-	else						{	description = "Jak rodz¹ siê potwory II";				};
-	
+	description					=	BookXp_Description(32, "Jak rodz¹ siê potwory", 2);
 	TEXT[0]						=	"Zapisy kap³ana Enratha z Domu Równowagi,";
 	TEXT[1]						=	"sporz¹dzone w œwi¹tyni Adanosa w Setarze,";
 	TEXT[2]						=	"rok 93 po Zawarciu Trzeciego Rozejmu.";
 };
-func void Use_ItWr_BookXp_063()
+func void Use_ItWr_BookXp_32b()
 {
-	Npc_AddDocsCounter(63, 2);
-	CreateInvItem(self, ItWr_BookXp_063);
+	Npc_AddDocsCounter(32, 2);
+	CreateInvItem(self, ItWr_BookXp_32b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3006,22 +2912,20 @@ func void Use_ItWr_BookXp_063()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_064 (ItemPR_BookXp)
+instance ItWr_BookXp_33a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_064;
+	on_state[0]					=	Use_ItWr_BookXp_33a;
 	
-	if (Bonus_ItWr_BookXp[64])	{	description = "Zeznanie Gorina I (przeczytane)";	}
-	else						{	description = "Zeznanie Gorina I";					};
-	
+	description					=	BookXp_Description(33, "Zeznanie Gorina", 1);
 	TEXT[0]						=	"Spisane przez skrybê miejskiego garnizonu,";
 	TEXT[1]						=	"w obecnoœci porucznika Ervana.";
 	TEXT[2]						=	"Zeznaje niejaki Gorin zwany „Szybkim”.";
 };
-func void Use_ItWr_BookXp_064()
+func void Use_ItWr_BookXp_33a()
 {
-	Npc_AddDocsCounter(64, 1);
-	CreateInvItem(self, ItWr_BookXp_064);
+	Npc_AddDocsCounter(33, 1);
+	CreateInvItem(self, ItWr_BookXp_33a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3054,22 +2958,20 @@ func void Use_ItWr_BookXp_064()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_065 (ItemPR_BookXp)
+instance ItWr_BookXp_33b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_065;
+	on_state[0]					=	Use_ItWr_BookXp_33b;
 	
-	if (Bonus_ItWr_BookXp[65])	{	description = "Zeznanie Gorina II (przeczytane)";	}
-	else						{	description = "Zeznanie Gorina II";					};
-	
+	description					=	BookXp_Description(33, "Zeznanie Gorina", 2);
 	TEXT[0]						=	"Spisane przez skrybê miejskiego garnizonu,";
 	TEXT[1]						=	"w obecnoœci porucznika Ervana.";
 	TEXT[2]						=	"Zeznaje niejaki Gorin zwany „Szybkim”.";
 };
-func void Use_ItWr_BookXp_065()
+func void Use_ItWr_BookXp_33b()
 {
-	Npc_AddDocsCounter(65, 2);
-	CreateInvItem(self, ItWr_BookXp_065);
+	Npc_AddDocsCounter(33, 2);
+	CreateInvItem(self, ItWr_BookXp_33b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3102,22 +3004,20 @@ func void Use_ItWr_BookXp_065()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_066 (ItemPR_BookXp)
+instance ItWr_BookXp_34a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_066;
+	on_state[0]					=	Use_ItWr_BookXp_34a;
 	
-	if (Bonus_ItWr_BookXp[66])	{	description = "Granice magii I (przeczytane)";	}
-	else						{	description = "Granice magii I";				};
-	
+	description					=	BookXp_Description(34, "Granice magii", 1);
 	TEXT[0]						=	"Spisane przez mistrza Thaeliona";
 	TEXT[1]						=	"z klasztoru Adanosa w dolinie Setary,";
 	TEXT[2]						=	"w 12 roku po ustanowieniu Rady Piêciu.";
 };
-func void Use_ItWr_BookXp_066()
+func void Use_ItWr_BookXp_34a()
 {
-	Npc_AddDocsCounter(66, 1);
-	CreateInvItem(self, ItWr_BookXp_066);
+	Npc_AddDocsCounter(34, 1);
+	CreateInvItem(self, ItWr_BookXp_34a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3148,22 +3048,20 @@ func void Use_ItWr_BookXp_066()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_067 (ItemPR_BookXp)
+instance ItWr_BookXp_34b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_067;
+	on_state[0]					=	Use_ItWr_BookXp_34b;
 	
-	if (Bonus_ItWr_BookXp[67])	{	description = "Granice magii II (przeczytane)";	}
-	else						{	description = "Granice magii II";				};
-	
+	description					=	BookXp_Description(34, "Granice magii", 2);
 	TEXT[0]						=	"Spisane przez mistrza Thaeliona";
 	TEXT[1]						=	"z klasztoru Adanosa w dolinie Setary,";
 	TEXT[2]						=	"w 12 roku po ustanowieniu Rady Piêciu.";
 };
-func void Use_ItWr_BookXp_067()
+func void Use_ItWr_BookXp_34b()
 {
-	Npc_AddDocsCounter(67, 2);
-	CreateInvItem(self, ItWr_BookXp_067);
+	Npc_AddDocsCounter(34, 2);
+	CreateInvItem(self, ItWr_BookXp_34b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3196,22 +3094,20 @@ func void Use_ItWr_BookXp_067()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_068 (ItemPR_BookXp)
+instance ItWr_BookXp_35a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_068;
+	on_state[0]					=	Use_ItWr_BookXp_35a;
 	
-	if (Bonus_ItWr_BookXp[68])	{	description = "Nie moje wspomnienia I (przeczytane)";	}
-	else						{	description = "Nie moje wspomnienia I";					};
-	
+	description					=	BookXp_Description(35, "Nie moje wspomnienia", 1);
 	TEXT[0]						=	"Fragment dziennika Ternina z Aredan,";
 	TEXT[1]						=	"stra¿nika miejskiego. Przejêty po jego znikniêciu,";
 	TEXT[3]						=	"obecnie przechowywany w archiwum stra¿y.";
 };
-func void Use_ItWr_BookXp_068()
+func void Use_ItWr_BookXp_35a()
 {
-	Npc_AddDocsCounter(68, 1);
-	CreateInvItem(self, ItWr_BookXp_068);
+	Npc_AddDocsCounter(35, 1);
+	CreateInvItem(self, ItWr_BookXp_35a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3242,22 +3138,20 @@ func void Use_ItWr_BookXp_068()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_069 (ItemPR_BookXp)
+instance ItWr_BookXp_35b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_069;
+	on_state[0]					=	Use_ItWr_BookXp_35b;
 	
-	if (Bonus_ItWr_BookXp[69])	{	description = "Nie moje wspomnienia II (przeczytane)";	}
-	else						{	description = "Nie moje wspomnienia II";				};
-	
+	description					=	BookXp_Description(35, "Nie moje wspomnienia", 2);
 	TEXT[0]						=	"Fragment dziennika Ternina z Aredan,";
 	TEXT[1]						=	"stra¿nika miejskiego. Przejêty po jego znikniêciu,";
 	TEXT[3]						=	"obecnie przechowywany w archiwum stra¿y.";
 };
-func void Use_ItWr_BookXp_069()
+func void Use_ItWr_BookXp_35b()
 {
-	Npc_AddDocsCounter(69, 2);
-	CreateInvItem(self, ItWr_BookXp_069);
+	Npc_AddDocsCounter(35, 2);
+	CreateInvItem(self, ItWr_BookXp_35b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3288,22 +3182,20 @@ func void Use_ItWr_BookXp_069()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_070 (ItemPR_BookXp)
+instance ItWr_BookXp_36a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_070;
+	on_state[0]					=	Use_ItWr_BookXp_36a;
 	
-	if (Bonus_ItWr_BookXp[70])	{	description = "Lud rz¹dz¹cy I (przeczytane)";	}
-	else						{	description = "Lud rz¹dz¹cy I";					};
-	
+	description					=	BookXp_Description(36, "Lud rz¹dz¹cy samym sob¹", 1);
 	TEXT[0]						=	"Spisane przez lorda Emerika z rodu Langvenn,";
 	TEXT[1]						=	"po wieczerzy z panem Aldorem z Warthall,";
 	TEXT[2]						=	"roku 214 po Koronacji Rodu Wewnêtrznego.";
 };
-func void Use_ItWr_BookXp_070()
+func void Use_ItWr_BookXp_36a()
 {
-	Npc_AddDocsCounter(70, 1);
-	CreateInvItem(self, ItWr_BookXp_070);
+	Npc_AddDocsCounter(36, 1);
+	CreateInvItem(self, ItWr_BookXp_36a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3334,22 +3226,20 @@ func void Use_ItWr_BookXp_070()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_071 (ItemPR_BookXp)
+instance ItWr_BookXp_36b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_071;
+	on_state[0]					=	Use_ItWr_BookXp_36b;
 	
-	if (Bonus_ItWr_BookXp[71])	{	description = "Lud rz¹dz¹cy II (przeczytane)";	}
-	else						{	description = "Lud rz¹dz¹cy II";				};
-	
+	description					=	BookXp_Description(36, "Lud rz¹dz¹cy samym sob¹", 2);
 	TEXT[0]						=	"Spisane przez lorda Emerika z rodu Langvenn,";
 	TEXT[1]						=	"po wieczerzy z panem Aldorem z Warthall,";
 	TEXT[2]						=	"roku 214 po Koronacji Rodu Wewnêtrznego.";
 };
-func void Use_ItWr_BookXp_071()
+func void Use_ItWr_BookXp_36b()
 {
-	Npc_AddDocsCounter(71, 2);
-	CreateInvItem(self, ItWr_BookXp_071);
+	Npc_AddDocsCounter(36, 2);
+	CreateInvItem(self, ItWr_BookXp_36b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3380,22 +3270,20 @@ func void Use_ItWr_BookXp_071()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_072 (ItemPR_BookXp)
+instance ItWr_BookXp_37a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_072;
+	on_state[0]					=	Use_ItWr_BookXp_37a;
 	
-	if (Bonus_ItWr_BookXp[72])	{	description = "Rozwa¿ania kata I (przeczytane)";	}
-	else						{	description = "Rozwa¿ania kata I";					};
-	
+	description					=	BookXp_Description(37, "Rozwa¿ania kata", 1);
 	TEXT[0]						=	"Spisane przez Lewarka z Dareth,";
 	TEXT[1]						=	"urzêdowego wykonawcê wyroków";
 	TEXT[2]						=	"Królewskiej Marchii Pó³nocnej.";
 };
-func void Use_ItWr_BookXp_072()
+func void Use_ItWr_BookXp_37a()
 {
-	Npc_AddDocsCounter(72, 1);
-	CreateInvItem(self, ItWr_BookXp_072);
+	Npc_AddDocsCounter(37, 1);
+	CreateInvItem(self, ItWr_BookXp_37a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3426,22 +3314,20 @@ func void Use_ItWr_BookXp_072()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_073 (ItemPR_BookXp)
+instance ItWr_BookXp_37b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_073;
+	on_state[0]					=	Use_ItWr_BookXp_37b;
 	
-	if (Bonus_ItWr_BookXp[73])	{	description = "Rozwa¿ania kata II (przeczytane)";	}
-	else						{	description = "Rozwa¿ania kata II";					};
-	
+	description					=	BookXp_Description(37, "Rozwa¿ania kata", 2);
 	TEXT[0]						=	"Spisane przez Lewarka z Dareth,";
 	TEXT[1]						=	"urzêdowego wykonawcê wyroków";
 	TEXT[2]						=	"Królewskiej Marchii Pó³nocnej.";
 };
-func void Use_ItWr_BookXp_073()
+func void Use_ItWr_BookXp_37b()
 {
-	Npc_AddDocsCounter(73, 2);
-	CreateInvItem(self, ItWr_BookXp_073);
+	Npc_AddDocsCounter(37, 2);
+	CreateInvItem(self, ItWr_BookXp_37b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3476,22 +3362,20 @@ func void Use_ItWr_BookXp_073()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_074 (ItemPR_BookXp)
+instance ItWr_BookXp_38a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_074;
+	on_state[0]					=	Use_ItWr_BookXp_38a;
 	
-	if (Bonus_ItWr_BookXp[74])	{	description = "Uœmiech z porcelany I (przeczytane)";	}
-	else						{	description = "Uœmiech z porcelany I";					};
-	
+	description					=	BookXp_Description(38, "Uœmiech z porcelany", 1);
 	TEXT[0]						=	"Fragmenty prywatnych zapisków królewskiego";
 	TEXT[1]						=	"b³azna znanego jako „Pstryczek”. Orygina³";
 	TEXT[2]						=	"znaleziono schowany pod pod³og¹ w starej komnacie.";
 };
-func void Use_ItWr_BookXp_074()
+func void Use_ItWr_BookXp_38a()
 {
-	Npc_AddDocsCounter(74, 1);
-	CreateInvItem(self, ItWr_BookXp_074);
+	Npc_AddDocsCounter(38, 1);
+	CreateInvItem(self, ItWr_BookXp_38a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3522,22 +3406,20 @@ func void Use_ItWr_BookXp_074()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_075 (ItemPR_BookXp)
+instance ItWr_BookXp_38b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_075;
+	on_state[0]					=	Use_ItWr_BookXp_38b;
 	
-	if (Bonus_ItWr_BookXp[75])	{	description = "Uœmiech z porcelany II (przeczytane)";	}
-	else						{	description = "Uœmiech z porcelany II";					};
-	
+	description					=	BookXp_Description(38, "Uœmiech z porcelany", 2);
 	TEXT[0]						=	"Fragmenty prywatnych zapisków królewskiego";
 	TEXT[1]						=	"b³azna znanego jako „Pstryczek”. Orygina³";
 	TEXT[2]						=	"znaleziono schowany pod pod³og¹ w starej komnacie.";
 };
-func void Use_ItWr_BookXp_075()
+func void Use_ItWr_BookXp_38b()
 {
-	Npc_AddDocsCounter(75, 2);
-	CreateInvItem(self, ItWr_BookXp_075);
+	Npc_AddDocsCounter(38, 2);
+	CreateInvItem(self, ItWr_BookXp_38b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3568,22 +3450,20 @@ func void Use_ItWr_BookXp_075()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_076 (ItemPR_BookXp)
+instance ItWr_BookXp_39a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_076;
+	on_state[0]					=	Use_ItWr_BookXp_39a;
 	
-	if (Bonus_ItWr_BookXp[76])	{	description = "Era bez snów I (przeczytane)";	}
-	else						{	description = "Era bez snów I";					};
-	
+	description					=	BookXp_Description(39, "Era bez snów", 1);
 	TEXT[0]						=	"Fragmenty dziennika alchemika";
 	TEXT[1]						=	"Wernarda z Farrin, odnalezione";
 	TEXT[2]						=	"w zrujnowanej wie¿y badawczej.";
 };
-func void Use_ItWr_BookXp_076()
+func void Use_ItWr_BookXp_39a()
 {
-	Npc_AddDocsCounter(76, 1);
-	CreateInvItem(self, ItWr_BookXp_076);
+	Npc_AddDocsCounter(39, 1);
+	CreateInvItem(self, ItWr_BookXp_39a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3610,22 +3490,20 @@ func void Use_ItWr_BookXp_076()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_077 (ItemPR_BookXp)
+instance ItWr_BookXp_39b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_077;
+	on_state[0]					=	Use_ItWr_BookXp_39b;
 	
-	if (Bonus_ItWr_BookXp[77])	{	description = "Era bez snów II (przeczytane)";	}
-	else						{	description = "Era bez snów II";				};
-	
+	description					=	BookXp_Description(39, "Era bez snów", 2);
 	TEXT[0]						=	"Fragmenty dziennika alchemika";
 	TEXT[1]						=	"Wernarda z Farrin, odnalezione";
 	TEXT[2]						=	"w zrujnowanej wie¿y badawczej.";
 };
-func void Use_ItWr_BookXp_077()
+func void Use_ItWr_BookXp_39b()
 {
-	Npc_AddDocsCounter(77, 2);
-	CreateInvItem(self, ItWr_BookXp_077);
+	Npc_AddDocsCounter(39, 2);
+	CreateInvItem(self, ItWr_BookXp_39b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3657,22 +3535,20 @@ func void Use_ItWr_BookXp_077()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_078 (ItemPR_BookXp)
+instance ItWr_BookXp_40a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_078;
+	on_state[0]					=	Use_ItWr_BookXp_40a;
 	
-	if (Bonus_ItWr_BookXp[78])	{	description = "Na ³añcuchu wolnoœci I (przeczytane)";	}
-	else						{	description = "Na ³añcuchu wolnoœci I";					};
-	
+	description					=	BookXp_Description(40, "Na ³añcuchu wolnoœci", 1);
 	TEXT[0]						=	"Fragment osobistego dziennika niewolnika";
 	TEXT[1]						=	"wyzwolonego dekretem cesarskim.";
 	TEXT[2]						=	"Autor nieznany z imienia.";
 };
-func void Use_ItWr_BookXp_078()
+func void Use_ItWr_BookXp_40a()
 {
-	Npc_AddDocsCounter(78, 1);
-	CreateInvItem(self, ItWr_BookXp_078);
+	Npc_AddDocsCounter(40, 1);
+	CreateInvItem(self, ItWr_BookXp_40a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3701,22 +3577,20 @@ func void Use_ItWr_BookXp_078()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_079 (ItemPR_BookXp)
+instance ItWr_BookXp_40b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_079;
+	on_state[0]					=	Use_ItWr_BookXp_40b;
 	
-	if (Bonus_ItWr_BookXp[79])	{	description = "Na ³añcuchu wolnoœci II (przeczytane)";	}
-	else						{	description = "Na ³añcuchu wolnoœci II";				};
-	
+	description					=	BookXp_Description(40, "Na ³añcuchu wolnoœci", 2);
 	TEXT[0]						=	"Fragment osobistego dziennika niewolnika";
 	TEXT[1]						=	"wyzwolonego dekretem cesarskim.";
 	TEXT[2]						=	"Autor nieznany z imienia.";
 };
-func void Use_ItWr_BookXp_079()
+func void Use_ItWr_BookXp_40b()
 {
-	Npc_AddDocsCounter(79, 2);
-	CreateInvItem(self, ItWr_BookXp_079);
+	Npc_AddDocsCounter(40, 2);
+	CreateInvItem(self, ItWr_BookXp_40b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3749,22 +3623,20 @@ func void Use_ItWr_BookXp_079()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_080 (ItemPR_BookXp)
+instance ItWr_BookXp_41a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_080;
+	on_state[0]					=	Use_ItWr_BookXp_41a;
 	
-	if (Bonus_ItWr_BookXp[80])	{	description = "Kazania bez s³uchaczy I (przeczytane)";	}
-	else						{	description = "Kazania bez s³uchaczy I";				};
-	
+	description					=	BookXp_Description(41, "Kazania bez s³uchaczy", 1);
 	TEXT[0]						=	"Fragmenty dziennika kap³ana Meriona";
 	TEXT[1]						=	"z kaplicy Innosa w Kar Belfir,";
 	TEXT[2]						=	"odnalezione lata po upadku osady.";
 };
-func void Use_ItWr_BookXp_080()
+func void Use_ItWr_BookXp_41a()
 {
-	Npc_AddDocsCounter(80, 1);
-	CreateInvItem(self, ItWr_BookXp_080);
+	Npc_AddDocsCounter(41, 1);
+	CreateInvItem(self, ItWr_BookXp_41a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3798,22 +3670,20 @@ func void Use_ItWr_BookXp_080()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_081 (ItemPR_BookXp)
+instance ItWr_BookXp_41b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_081;
+	on_state[0]					=	Use_ItWr_BookXp_41b;
 	
-	if (Bonus_ItWr_BookXp[81])	{	description = "Kazania bez s³uchaczy II (przeczytane)";	}
-	else						{	description = "Kazania bez s³uchaczy II";				};
-	
+	description					=	BookXp_Description(41, "Kazania bez s³uchaczy", 2);
 	TEXT[0]						=	"Fragmenty dziennika kap³ana Meriona";
 	TEXT[1]						=	"z kaplicy Innosa w Kar Belfir,";
 	TEXT[2]						=	"odnalezione lata po upadku osady.";
 };
-func void Use_ItWr_BookXp_081()
+func void Use_ItWr_BookXp_41b()
 {
-	Npc_AddDocsCounter(81, 2);
-	CreateInvItem(self, ItWr_BookXp_081);
+	Npc_AddDocsCounter(41, 2);
+	CreateInvItem(self, ItWr_BookXp_41b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3850,22 +3720,20 @@ func void Use_ItWr_BookXp_081()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_082 (ItemPR_BookXp)
+instance ItWr_BookXp_42a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_082;
+	on_state[0]					=	Use_ItWr_BookXp_42a;
 	
-	if (Bonus_ItWr_BookXp[82])	{	description = "Stra¿ w cieniu g³odu I (przeczytane)";	}
-	else						{	description = "Stra¿ w cieniu g³odu I";					};
-	
+	description					=	BookXp_Description(42, "Stra¿ w cieniu g³odu", 1);
 	TEXT[0]						=	"Fragmenty notatnika kapitana Werrana";
 	TEXT[1]						=	"w czasie wielkiego g³odu w Roku Ognia.";
 	TEXT[2]						=	"Zapiski ujawniono dopiero po jego œmierci.";
 };
-func void Use_ItWr_BookXp_082()
+func void Use_ItWr_BookXp_42a()
 {
-	Npc_AddDocsCounter(82, 1);
-	CreateInvItem(self, ItWr_BookXp_082);
+	Npc_AddDocsCounter(42, 1);
+	CreateInvItem(self, ItWr_BookXp_42a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3893,22 +3761,20 @@ func void Use_ItWr_BookXp_082()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_083 (ItemPR_BookXp)
+instance ItWr_BookXp_42b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_083;
+	on_state[0]					=	Use_ItWr_BookXp_42b;
 	
-	if (Bonus_ItWr_BookXp[83])	{	description = "Stra¿ w cieniu g³odu II (przeczytane)";	}
-	else						{	description = "Stra¿ w cieniu g³odu II";				};
-	
+	description					=	BookXp_Description(42, "Stra¿ w cieniu g³odu", 2);
 	TEXT[0]						=	"Fragmenty notatnika kapitana Werrana";
 	TEXT[1]						=	"w czasie wielkiego g³odu w Roku Ognia.";
 	TEXT[2]						=	"Zapiski ujawniono dopiero po jego œmierci.";
 };
-func void Use_ItWr_BookXp_083()
+func void Use_ItWr_BookXp_42b()
 {
-	Npc_AddDocsCounter(83, 2);
-	CreateInvItem(self, ItWr_BookXp_083);
+	Npc_AddDocsCounter(42, 2);
+	CreateInvItem(self, ItWr_BookXp_42b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3939,22 +3805,20 @@ func void Use_ItWr_BookXp_083()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_084 (ItemPR_BookXp)
+instance ItWr_BookXp_43a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_084;
+	on_state[0]					=	Use_ItWr_BookXp_43a;
 	
-	if (Bonus_ItWr_BookXp[84])	{	description = "Zanim zrozumia³em I (przeczytane)";	}
-	else						{	description = "Zanim zrozumia³em I";				};
-	
+	description					=	BookXp_Description(43, "Zanim zrozumia³em", 1);
 	TEXT[0]						=	"Spisane przez Emerona z Daranthor,";
 	TEXT[1]						=	"w ostatnim roku jego ¿ycia. Rêkopis";
 	TEXT[2]						=	"odnaleziono nad brzegiem jeziora Elen-Tir.";
 };
-func void Use_ItWr_BookXp_084()
+func void Use_ItWr_BookXp_43a()
 {
-	Npc_AddDocsCounter(84, 1);
-	CreateInvItem(self, ItWr_BookXp_084);
+	Npc_AddDocsCounter(43, 1);
+	CreateInvItem(self, ItWr_BookXp_43a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -3985,22 +3849,20 @@ func void Use_ItWr_BookXp_084()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_085 (ItemPR_BookXp)
+instance ItWr_BookXp_43b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_085;
+	on_state[0]					=	Use_ItWr_BookXp_43b;
 	
-	if (Bonus_ItWr_BookXp[85])	{	description = "Zanim zrozumia³em II (przeczytane)";	}
-	else						{	description = "Zanim zrozumia³em II";				};
-	
+	description					=	BookXp_Description(43, "Zanim zrozumia³em", 2);
 	TEXT[0]						=	"Spisane przez Emerona z Daranthor,";
 	TEXT[1]						=	"w ostatnim roku jego ¿ycia. Rêkopis";
 	TEXT[2]						=	"odnaleziono nad brzegiem jeziora Elen-Tir.";
 };
-func void Use_ItWr_BookXp_085()
+func void Use_ItWr_BookXp_43b()
 {
-	Npc_AddDocsCounter(85, 2);
-	CreateInvItem(self, ItWr_BookXp_085);
+	Npc_AddDocsCounter(43, 2);
+	CreateInvItem(self, ItWr_BookXp_43b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4033,22 +3895,20 @@ func void Use_ItWr_BookXp_085()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_086 (ItemPR_BookXp)
+instance ItWr_BookXp_44a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_086;
+	on_state[0]					=	Use_ItWr_BookXp_44a;
 	
-	if (Bonus_ItWr_BookXp[86])	{	description = "Cud narzêdzi I (przeczytane)";	}
-	else						{	description = "Cud narzêdzi I";					};
-	
+	description					=	BookXp_Description(44, "Cud narzêdzi", 1);
 	TEXT[0]						=	"Notatki wynalazcy Seldrana z Warsztatu";
 	TEXT[1]						=	"Pó³nocnego Krêgu, sporz¹dzone";
 	TEXT[2]						=	"w latach 9–14 po Trzecim Przesileniu.";
 };
-func void Use_ItWr_BookXp_086()
+func void Use_ItWr_BookXp_44a()
 {
-	Npc_AddDocsCounter(86, 1);
-	CreateInvItem(self, ItWr_BookXp_086);
+	Npc_AddDocsCounter(44, 1);
+	CreateInvItem(self, ItWr_BookXp_44a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4078,22 +3938,20 @@ func void Use_ItWr_BookXp_086()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_087 (ItemPR_BookXp)
+instance ItWr_BookXp_44b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_087;
+	on_state[0]					=	Use_ItWr_BookXp_44b;
 	
-	if (Bonus_ItWr_BookXp[87])	{	description = "Cud narzêdzi II (przeczytane)";	}
-	else						{	description = "Cud narzêdzi II";				};
-	
+	description					=	BookXp_Description(44, "Cud narzêdzi", 2);
 	TEXT[0]						=	"Notatki wynalazcy Seldrana z Warsztatu";
 	TEXT[1]						=	"Pó³nocnego Krêgu, sporz¹dzone";
 	TEXT[2]						=	"w latach 9–14 po Trzecim Przesileniu.";
 };
-func void Use_ItWr_BookXp_087()
+func void Use_ItWr_BookXp_44b()
 {
-	Npc_AddDocsCounter(87, 2);
-	CreateInvItem(self, ItWr_BookXp_087);
+	Npc_AddDocsCounter(44, 2);
+	CreateInvItem(self, ItWr_BookXp_44b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4127,22 +3985,20 @@ func void Use_ItWr_BookXp_087()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_088 (ItemPR_BookXp)
+instance ItWr_BookXp_45a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_088;
+	on_state[0]					=	Use_ItWr_BookXp_45a;
 	
-	if (Bonus_ItWr_BookXp[88])	{	description = "Na skraju poznania I (przeczytane)";	}
-	else						{	description = "Na skraju poznania I";				};
-	
+	description					=	BookXp_Description(45, "Na skraju poznania", 1);
 	TEXT[0]						=	"Zapisy eksperymentalne mistrza Calverna";
 	TEXT[1]						=	"z Wie¿y Zachodniej,";
 	TEXT[2]						=	"rok 42 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_088()
+func void Use_ItWr_BookXp_45a()
 {
-	Npc_AddDocsCounter(88, 1);
-	CreateInvItem(self, ItWr_BookXp_088);
+	Npc_AddDocsCounter(45, 1);
+	CreateInvItem(self, ItWr_BookXp_45a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4173,22 +4029,20 @@ func void Use_ItWr_BookXp_088()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_089 (ItemPR_BookXp)
+instance ItWr_BookXp_45b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_089;
+	on_state[0]					=	Use_ItWr_BookXp_45b;
 	
-	if (Bonus_ItWr_BookXp[89])	{	description = "Na skraju poznania II (przeczytane)";	}
-	else						{	description = "Na skraju poznania II";					};
-	
+	description					=	BookXp_Description(45, "Na skraju poznania", 2);
 	TEXT[0]						=	"Zapisy eksperymentalne mistrza Calverna";
 	TEXT[1]						=	"z Wie¿y Zachodniej,";
 	TEXT[2]						=	"rok 42 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_089()
+func void Use_ItWr_BookXp_45b()
 {
-	Npc_AddDocsCounter(89, 2);
-	CreateInvItem(self, ItWr_BookXp_089);
+	Npc_AddDocsCounter(45, 2);
+	CreateInvItem(self, ItWr_BookXp_45b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4223,22 +4077,20 @@ func void Use_ItWr_BookXp_089()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_090 (ItemPR_BookXp)
+instance ItWr_BookXp_46a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_090;
+	on_state[0]					=	Use_ItWr_BookXp_46a;
 	
-	if (Bonus_ItWr_BookXp[90])	{	description = "Anomalnie g³êbinowe I (przeczytane)";	}
-	else						{	description = "Anomalnie g³êbinowe I";					};
-	
+	description					=	BookXp_Description(46, "Anomalnie g³êbinowe", 1);
 	TEXT[0]						=	"Zapisy mistrza Geolitha z Krêgu";
 	TEXT[1]						=	"Kartografów, spisane podczas wyprawy";
 	TEXT[2]						=	"do podziemnych warstw Gór Starych.";
 };
-func void Use_ItWr_BookXp_090()
+func void Use_ItWr_BookXp_46a()
 {
-	Npc_AddDocsCounter(90, 1);
-	CreateInvItem(self, ItWr_BookXp_090);
+	Npc_AddDocsCounter(46, 1);
+	CreateInvItem(self, ItWr_BookXp_46a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4269,22 +4121,20 @@ func void Use_ItWr_BookXp_090()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_091 (ItemPR_BookXp)
+instance ItWr_BookXp_46b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_091;
+	on_state[0]					=	Use_ItWr_BookXp_46b;
 	
-	if (Bonus_ItWr_BookXp[91])	{	description = "Anomalnie g³êbinowe II (przeczytane)";	}
-	else						{	description = "Anomalnie g³êbinowe II";					};
-	
+	description					=	BookXp_Description(46, "Anomalnie g³êbinowe", 2);
 	TEXT[0]						=	"Zapisy mistrza Geolitha z Krêgu";
 	TEXT[1]						=	"Kartografów, spisane podczas wyprawy";
 	TEXT[2]						=	"do podziemnych warstw Gór Starych.";
 };
-func void Use_ItWr_BookXp_091()
+func void Use_ItWr_BookXp_46b()
 {
-	Npc_AddDocsCounter(91, 2);
-	CreateInvItem(self, ItWr_BookXp_091);
+	Npc_AddDocsCounter(46, 2);
+	CreateInvItem(self, ItWr_BookXp_46b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4315,22 +4165,20 @@ func void Use_ItWr_BookXp_091()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_092 (ItemPR_BookXp)
+instance ItWr_BookXp_47a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_092;
+	on_state[0]					=	Use_ItWr_BookXp_47a;
 	
-	if (Bonus_ItWr_BookXp[92])	{	description = "Sny proroka I (przeczytane)";	}
-	else						{	description = "Sny proroka I";					};
-	
+	description					=	BookXp_Description(47, "Sny proroka", 1);
 	TEXT[0]						=	"Odpis fragmentów pergaminu";
 	TEXT[1]						=	"odnalezionego w ruinach œwi¹tyni Ylath,";
 	TEXT[2]						=	"wed³ug zapisu kustosza Gildii Wiedzy.";
 };
-func void Use_ItWr_BookXp_092()
+func void Use_ItWr_BookXp_47a()
 {
-	Npc_AddDocsCounter(92, 1);
-	CreateInvItem(self, ItWr_BookXp_092);
+	Npc_AddDocsCounter(47, 1);
+	CreateInvItem(self, ItWr_BookXp_47a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4363,22 +4211,20 @@ func void Use_ItWr_BookXp_092()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_093 (ItemPR_BookXp)
+instance ItWr_BookXp_47b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_093;
+	on_state[0]					=	Use_ItWr_BookXp_47b;
 	
-	if (Bonus_ItWr_BookXp[93])	{	description = "Sny proroka II (przeczytane)";	}
-	else						{	description = "Sny proroka II";					};
-	
+	description					=	BookXp_Description(47, "Sny proroka", 2);
 	TEXT[0]						=	"Odpis fragmentów pergaminu";
 	TEXT[1]						=	"odnalezionego w ruinach œwi¹tyni Ylath,";
 	TEXT[2]						=	"wed³ug zapisu kustosza Gildii Wiedzy.";
 };
-func void Use_ItWr_BookXp_093()
+func void Use_ItWr_BookXp_47b()
 {
-	Npc_AddDocsCounter(93, 2);
-	CreateInvItem(self, ItWr_BookXp_093);
+	Npc_AddDocsCounter(47, 2);
+	CreateInvItem(self, ItWr_BookXp_47b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4413,22 +4259,20 @@ func void Use_ItWr_BookXp_093()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_094 (ItemPR_BookXp)
+instance ItWr_BookXp_48a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_094;
+	on_state[0]					=	Use_ItWr_BookXp_48a;
 	
-	if (Bonus_ItWr_BookXp[94])	{	description = "Pod powierzchni¹ I (przeczytane)";	}
-	else						{	description = "Pod powierzchni¹ I";					};
-	
+	description					=	BookXp_Description(48, "Pod powierzchni¹", 1);
 	TEXT[0]						=	"Zapiski mistrza Neromenesa, maga wody";
 	TEXT[1]						=	"z klasztoru Adanosa na Archolos,";
 	TEXT[2]						=	"rok 88 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_094()
+func void Use_ItWr_BookXp_48a()
 {
-	Npc_AddDocsCounter(94, 1);
-	CreateInvItem(self, ItWr_BookXp_094);
+	Npc_AddDocsCounter(48, 1);
+	CreateInvItem(self, ItWr_BookXp_48a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4459,22 +4303,20 @@ func void Use_ItWr_BookXp_094()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_095 (ItemPR_BookXp)
+instance ItWr_BookXp_48b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_095;
+	on_state[0]					=	Use_ItWr_BookXp_48b;
 	
-	if (Bonus_ItWr_BookXp[95])	{	description = "Pod powierzchni¹ II (przeczytane)";	}
-	else						{	description = "Pod powierzchni¹ II";				};
-	
+	description					=	BookXp_Description(48, "Pod powierzchni¹", 2);
 	TEXT[0]						=	"Zapiski mistrza Neromenesa, maga wody";
 	TEXT[1]						=	"z klasztoru Adanosa na Archolos,";
 	TEXT[2]						=	"rok 88 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_095()
+func void Use_ItWr_BookXp_48b()
 {
-	Npc_AddDocsCounter(95, 2);
-	CreateInvItem(self, ItWr_BookXp_095);
+	Npc_AddDocsCounter(48, 2);
+	CreateInvItem(self, ItWr_BookXp_48b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4507,22 +4349,20 @@ func void Use_ItWr_BookXp_095()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_096 (ItemPR_BookXp)
+instance ItWr_BookXp_49a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_096;
+	on_state[0]					=	Use_ItWr_BookXp_49a;
 	
-	if (Bonus_ItWr_BookXp[96])	{	description = "Z cia³a i py³u I (przeczytane)";	}
-	else						{	description = "Z cia³a i py³u I";				};
-	
+	description					=	BookXp_Description(49, "Z cia³a i py³u", 1);
 	TEXT[0]						=	"Zapisy mistrza Elendora z Komnaty Transmutacyjnej";
 	TEXT[1]						=	"Wie¿y Wewnêtrznej, spisane po cyklu badañ";
 	TEXT[2]						=	"nad przyczyn¹ ruchu bytów nieorganicznych.";
 };
-func void Use_ItWr_BookXp_096()
+func void Use_ItWr_BookXp_49a()
 {
-	Npc_AddDocsCounter(96, 1);
-	CreateInvItem(self, ItWr_BookXp_096);
+	Npc_AddDocsCounter(49, 1);
+	CreateInvItem(self, ItWr_BookXp_49a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4553,22 +4393,20 @@ func void Use_ItWr_BookXp_096()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_097 (ItemPR_BookXp)
+instance ItWr_BookXp_49b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_097;
+	on_state[0]					=	Use_ItWr_BookXp_49b;
 	
-	if (Bonus_ItWr_BookXp[97])	{	description = "Z cia³a i py³u II (przeczytane)";	}
-	else						{	description = "Z cia³a i py³u II";					};
-	
+	description					=	BookXp_Description(49, "Z cia³a i py³u", 2);
 	TEXT[0]						=	"Zapisy mistrza Elendora z Komnaty Transmutacyjnej";
 	TEXT[1]						=	"Wie¿y Wewnêtrznej, spisane po cyklu badañ";
 	TEXT[2]						=	"nad przyczyn¹ ruchu bytów nieorganicznych.";
 };
-func void Use_ItWr_BookXp_097()
+func void Use_ItWr_BookXp_49b()
 {
-	Npc_AddDocsCounter(97, 2);
-	CreateInvItem(self, ItWr_BookXp_097);
+	Npc_AddDocsCounter(49, 2);
+	CreateInvItem(self, ItWr_BookXp_49b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4599,22 +4437,20 @@ func void Use_ItWr_BookXp_097()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_098 (ItemPR_BookXp)
+instance ItWr_BookXp_50a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_098;
+	on_state[0]					=	Use_ItWr_BookXp_50a;
 	
-	if (Bonus_ItWr_BookXp[98])	{	description = "Flet z kana³ów I (przeczytane)";	}
-	else						{	description = "Flet z kana³ów I";				};
-	
+	description					=	BookXp_Description(50, "Flet z kana³ów", 1);
 	TEXT[0]						=	"Sprawozdanie spisane przez kartografa";
 	TEXT[1]						=	"i historyka Trymonesa";
 	TEXT[2]						=	"z ramienia Stra¿y Archiwalnej.";
 };
-func void Use_ItWr_BookXp_098()
+func void Use_ItWr_BookXp_50a()
 {
-	Npc_AddDocsCounter(98, 1);
-	CreateInvItem(self, ItWr_BookXp_098);
+	Npc_AddDocsCounter(50, 1);
+	CreateInvItem(self, ItWr_BookXp_50a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4645,22 +4481,20 @@ func void Use_ItWr_BookXp_098()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_099 (ItemPR_BookXp)
+instance ItWr_BookXp_50b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_099;
+	on_state[0]					=	Use_ItWr_BookXp_50b;
 	
-	if (Bonus_ItWr_BookXp[99])	{	description = "Flet z kana³ów II (przeczytane)";	}
-	else						{	description = "Flet z kana³ów II";					};
-	
+	description					=	BookXp_Description(50, "Flet z kana³ów", 2);
 	TEXT[0]						=	"Sprawozdanie spisane przez kartografa";
 	TEXT[1]						=	"i historyka Trymonesa";
 	TEXT[2]						=	"z ramienia Stra¿y Archiwalnej.";
 };
-func void Use_ItWr_BookXp_099()
+func void Use_ItWr_BookXp_50b()
 {
-	Npc_AddDocsCounter(99, 2);
-	CreateInvItem(self, ItWr_BookXp_099);
+	Npc_AddDocsCounter(50, 2);
+	CreateInvItem(self, ItWr_BookXp_50b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4689,22 +4523,20 @@ func void Use_ItWr_BookXp_099()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_100 (ItemPR_BookXp)
+instance ItWr_BookXp_51a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_100;
+	on_state[0]					=	Use_ItWr_BookXp_51a;
 	
-	if (Bonus_ItWr_BookXp[100])	{	description = "Cieñ w œwietle I (przeczytane)";	}
-	else						{	description = "Cieñ w œwietle I";				};
-	
+	description					=	BookXp_Description(51, "Cieñ w œwietle", 1);
 	TEXT[0]						=	"Zapiski mistrza Aronthela z Akademii Œwiat³a,";
 	TEXT[1]						=	"spisane po odnalezieniu zw³ok mrocznego";
 	TEXT[2]						=	"czarnoksiê¿nika w ruinach Kal’Azar.";
 };
-func void Use_ItWr_BookXp_100()
+func void Use_ItWr_BookXp_51a()
 {
-	Npc_AddDocsCounter(100, 1);
-	CreateInvItem(self, ItWr_BookXp_100);
+	Npc_AddDocsCounter(51, 1);
+	CreateInvItem(self, ItWr_BookXp_51a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4735,22 +4567,20 @@ func void Use_ItWr_BookXp_100()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_101 (ItemPR_BookXp)
+instance ItWr_BookXp_51b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_101;
+	on_state[0]					=	Use_ItWr_BookXp_51b;
 	
-	if (Bonus_ItWr_BookXp[101])	{	description = "Cieñ w œwietle II (przeczytane)";	}
-	else						{	description = "Cieñ w œwietle II";					};
-	
+	description					=	BookXp_Description(51, "Cieñ w œwietle", 2);
 	TEXT[0]						=	"Zapiski mistrza Aronthela z Akademii Œwiat³a,";
 	TEXT[1]						=	"spisane po odnalezieniu zw³ok mrocznego";
 	TEXT[2]						=	"czarnoksiê¿nika w ruinach Kal’Azar.";
 };
-func void Use_ItWr_BookXp_101()
+func void Use_ItWr_BookXp_51b()
 {
-	Npc_AddDocsCounter(101, 2);
-	CreateInvItem(self, ItWr_BookXp_101);
+	Npc_AddDocsCounter(51, 2);
+	CreateInvItem(self, ItWr_BookXp_51b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4781,22 +4611,20 @@ func void Use_ItWr_BookXp_101()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_102 (ItemPR_BookXp)
+instance ItWr_BookXp_52a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_102;
+	on_state[0]					=	Use_ItWr_BookXp_52a;
 	
-	if (Bonus_ItWr_BookXp[102])	{	description = "Kaplice bez bogów I (przeczytane)";	}
-	else						{	description = "Kaplice bez bogów I";				};
-	
+	description					=	BookXp_Description(52, "Kaplice bez bogów", 1);
 	TEXT[0]						=	"Zapiski mistrza Eronthala z Gildii Wiedzy,";
 	TEXT[1]						=	"spisane podczas badañ ruin";
 	TEXT[2]						=	"wschodniego wybrze¿a.";
 };
-func void Use_ItWr_BookXp_102()
+func void Use_ItWr_BookXp_52a()
 {
-	Npc_AddDocsCounter(102, 1);
-	CreateInvItem(self, ItWr_BookXp_102);
+	Npc_AddDocsCounter(52, 1);
+	CreateInvItem(self, ItWr_BookXp_52a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4826,22 +4654,20 @@ func void Use_ItWr_BookXp_102()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_103 (ItemPR_BookXp)
+instance ItWr_BookXp_52b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_103;
+	on_state[0]					=	Use_ItWr_BookXp_52b;
 	
-	if (Bonus_ItWr_BookXp[103])	{	description = "Kaplice bez bogów II (przeczytane)";	}
-	else						{	description = "Kaplice bez bogów II";				};
-	
+	description					=	BookXp_Description(52, "Kaplice bez bogów", 2);
 	TEXT[0]						=	"Zapiski mistrza Eronthala z Gildii Wiedzy,";
 	TEXT[1]						=	"spisane podczas badañ ruin";
 	TEXT[2]						=	"wschodniego wybrze¿a.";
 };
-func void Use_ItWr_BookXp_103()
+func void Use_ItWr_BookXp_52b()
 {
-	Npc_AddDocsCounter(103, 2);
-	CreateInvItem(self, ItWr_BookXp_103);
+	Npc_AddDocsCounter(52, 2);
+	CreateInvItem(self, ItWr_BookXp_52b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4872,22 +4698,20 @@ func void Use_ItWr_BookXp_103()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_104 (ItemPR_BookXp)
+instance ItWr_BookXp_53a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_104;
+	on_state[0]					=	Use_ItWr_BookXp_53a;
 	
-	if (Bonus_ItWr_BookXp[104])	{	description = "Niewidzialne wiêzy I (przeczytane)";	}
-	else						{	description = "Niewidzialne wiêzy I";				};
-	
+	description					=	BookXp_Description(53, "Niewidzialne wiêzy", 1);
 	TEXT[0]						=	"Notatki mistrza Iscarniona z Wie¿y Syntezy,";
 	TEXT[1]						=	"sporz¹dzone po analizie przypadków";
 	TEXT[2]						=	"spontanicznych powi¹zañ duchowych.";
 };
-func void Use_ItWr_BookXp_104()
+func void Use_ItWr_BookXp_53a()
 {
-	Npc_AddDocsCounter(104, 1);
-	CreateInvItem(self, ItWr_BookXp_104);
+	Npc_AddDocsCounter(53, 1);
+	CreateInvItem(self, ItWr_BookXp_53a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4920,22 +4744,20 @@ func void Use_ItWr_BookXp_104()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_105 (ItemPR_BookXp)
+instance ItWr_BookXp_53b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_105;
+	on_state[0]					=	Use_ItWr_BookXp_53b;
 	
-	if (Bonus_ItWr_BookXp[105])	{	description = "Niewidzialne wiêzy II (przeczytane)";	}
-	else						{	description = "Niewidzialne wiêzy II";					};
-	
+	description					=	BookXp_Description(53, "Niewidzialne wiêzy", 2);
 	TEXT[0]						=	"Notatki mistrza Iscarniona z Wie¿y Syntezy,";
 	TEXT[1]						=	"sporz¹dzone po analizie przypadków";
 	TEXT[2]						=	"spontanicznych powi¹zañ duchowych.";
 };
-func void Use_ItWr_BookXp_105()
+func void Use_ItWr_BookXp_53b()
 {
-	Npc_AddDocsCounter(105, 2);
-	CreateInvItem(self, ItWr_BookXp_105);
+	Npc_AddDocsCounter(53, 2);
+	CreateInvItem(self, ItWr_BookXp_53b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -4966,22 +4788,20 @@ func void Use_ItWr_BookXp_105()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_106 (ItemPR_BookXp)
+instance ItWr_BookXp_54a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_106;
+	on_state[0]					=	Use_ItWr_BookXp_54a;
 	
-	if (Bonus_ItWr_BookXp[106])	{	description = "Domena snów I (przeczytane)";	}
-	else						{	description = "Domena snów I";					};
-	
+	description					=	BookXp_Description(54, "Domena snów", 1);
 	TEXT[0]						=	"Zapiski mistrza Aeremona z Komnaty Snu przy";
 	TEXT[1]						=	"Wie¿y Ciszy, prowadzone przez siedem lat";
 	TEXT[2]						=	"eksperymentów i obserwacji.";
 };
-func void Use_ItWr_BookXp_106()
+func void Use_ItWr_BookXp_54a()
 {
-	Npc_AddDocsCounter(106, 1);
-	CreateInvItem(self, ItWr_BookXp_106);
+	Npc_AddDocsCounter(54, 1);
+	CreateInvItem(self, ItWr_BookXp_54a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5012,22 +4832,20 @@ func void Use_ItWr_BookXp_106()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_107 (ItemPR_BookXp)
+instance ItWr_BookXp_54b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_107;
+	on_state[0]					=	Use_ItWr_BookXp_54b;
 	
-	if (Bonus_ItWr_BookXp[107])	{	description = "Domena snów II (przeczytane)";	}
-	else						{	description = "Domena snów II";					};
-	
+	description					=	BookXp_Description(54, "Domena snów", 2);
 	TEXT[0]						=	"Zapiski mistrza Aeremona z Komnaty Snu przy";
 	TEXT[1]						=	"Wie¿y Ciszy, prowadzone przez siedem lat";
 	TEXT[2]						=	"eksperymentów i obserwacji.";
 };
-func void Use_ItWr_BookXp_107()
+func void Use_ItWr_BookXp_54b()
 {
-	Npc_AddDocsCounter(107, 2);
-	CreateInvItem(self, ItWr_BookXp_107);
+	Npc_AddDocsCounter(54, 2);
+	CreateInvItem(self, ItWr_BookXp_54b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5056,22 +4874,20 @@ func void Use_ItWr_BookXp_107()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_108 (ItemPR_BookXp)
+instance ItWr_BookXp_55a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_108;
+	on_state[0]					=	Use_ItWr_BookXp_55a;
 	
-	if (Bonus_ItWr_BookXp[108])	{	description = "Miasto pod miastem I (przeczytane)";	}
-	else						{	description = "Miasto pod miastem I";				};
-	
+	description					=	BookXp_Description(55, "Miasto pod miastem", 1);
 	TEXT[0]						=	"Zapiski mistrza Kalderana z Gildii Geomantów,";
 	TEXT[1]						=	"sporz¹dzone podczas trzeciej ekspedycji";
 	TEXT[2]						=	"do podziemi pod Thar Korran.";
 };
-func void Use_ItWr_BookXp_108()
+func void Use_ItWr_BookXp_55a()
 {
-	Npc_AddDocsCounter(108, 1);
-	CreateInvItem(self, ItWr_BookXp_108);
+	Npc_AddDocsCounter(55, 1);
+	CreateInvItem(self, ItWr_BookXp_55a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5102,22 +4918,20 @@ func void Use_ItWr_BookXp_108()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_109 (ItemPR_BookXp)
+instance ItWr_BookXp_55b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_109;
+	on_state[0]					=	Use_ItWr_BookXp_55b;
 	
-	if (Bonus_ItWr_BookXp[109])	{	description = "Miasto pod miastem II (przeczytane)";	}
-	else						{	description = "Miasto pod miastem II";					};
-	
+	description					=	BookXp_Description(55, "Miasto pod miastem", 2);
 	TEXT[0]						=	"Zapiski mistrza Kalderana z Gildii Geomantów,";
 	TEXT[1]						=	"sporz¹dzone podczas trzeciej ekspedycji";
 	TEXT[2]						=	"do podziemi pod Thar Korran.";
 };
-func void Use_ItWr_BookXp_109()
+func void Use_ItWr_BookXp_55b()
 {
-	Npc_AddDocsCounter(109, 2);
-	CreateInvItem(self, ItWr_BookXp_109);
+	Npc_AddDocsCounter(55, 2);
+	CreateInvItem(self, ItWr_BookXp_55b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5148,22 +4962,20 @@ func void Use_ItWr_BookXp_109()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_110 (ItemPR_BookXp)
+instance ItWr_BookXp_56a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_110;
+	on_state[0]					=	Use_ItWr_BookXp_56a;
 	
-	if (Bonus_ItWr_BookXp[110])	{	description = "O druidach I (przeczytane)";	}
-	else						{	description = "O druidach I";				};
-	
+	description					=	BookXp_Description(56, "O druidach", 1);
 	TEXT[0]						=	"Zapiski kap³ana Arveliona";
 	TEXT[1]						=	"z klasztoru Adanosa na Archolos,";
 	TEXT[2]						=	"spisane po latach pielgrzymek.";
 };
-func void Use_ItWr_BookXp_110()
+func void Use_ItWr_BookXp_56a()
 {
-	Npc_AddDocsCounter(110, 1);
-	CreateInvItem(self, ItWr_BookXp_110);
+	Npc_AddDocsCounter(56, 1);
+	CreateInvItem(self, ItWr_BookXp_56a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5190,22 +5002,20 @@ func void Use_ItWr_BookXp_110()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_111 (ItemPR_BookXp)
+instance ItWr_BookXp_56b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_111;
+	on_state[0]					=	Use_ItWr_BookXp_56b;
 	
-	if (Bonus_ItWr_BookXp[111])	{	description = "O druidach II (przeczytane)";	}
-	else						{	description = "O druidach II";					};
-	
+	description					=	BookXp_Description(56, "O druidach", 2);
 	TEXT[0]						=	"Zapiski kap³ana Arveliona";
 	TEXT[1]						=	"z klasztoru Adanosa na Archolos,";
 	TEXT[2]						=	"spisane po latach pielgrzymek.";
 };
-func void Use_ItWr_BookXp_111()
+func void Use_ItWr_BookXp_56b()
 {
-	Npc_AddDocsCounter(111, 2);
-	CreateInvItem(self, ItWr_BookXp_111);
+	Npc_AddDocsCounter(56, 2);
+	CreateInvItem(self, ItWr_BookXp_56b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5232,22 +5042,20 @@ func void Use_ItWr_BookXp_111()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_112 (ItemPR_BookXp)
+instance ItWr_BookXp_57a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_112;
+	on_state[0]					=	Use_ItWr_BookXp_57a;
 	
-	if (Bonus_ItWr_BookXp[112])	{	description = "O wojnie bez bitwy I (przeczytane)";	}
-	else						{	description = "O wojnie bez bitwy I";				};
-	
+	description					=	BookXp_Description(57, "O wojnie bez bitwy", 1);
 	TEXT[0]						=	"Notatki stratega Marnolda,";
 	TEXT[1]						=	"sporz¹dzone na zlecenie rady królewskiej";
 	TEXT[2]						=	"po upadku twierdzy Vardem.";
 };
-func void Use_ItWr_BookXp_112()
+func void Use_ItWr_BookXp_57a()
 {
-	Npc_AddDocsCounter(112, 1);
-	CreateInvItem(self, ItWr_BookXp_112);
+	Npc_AddDocsCounter(57, 1);
+	CreateInvItem(self, ItWr_BookXp_57a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5278,22 +5086,20 @@ func void Use_ItWr_BookXp_112()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_113 (ItemPR_BookXp)
+instance ItWr_BookXp_57b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_113;
+	on_state[0]					=	Use_ItWr_BookXp_57b;
 	
-	if (Bonus_ItWr_BookXp[113])	{	description = "O wojnie bez bitwy II (przeczytane)";	}
-	else						{	description = "O wojnie bez bitwy II";					};
-	
+	description					=	BookXp_Description(57, "O wojnie bez bitwy", 2);
 	TEXT[0]						=	"Notatki stratega Marnolda,";
 	TEXT[1]						=	"sporz¹dzone na zlecenie rady królewskiej";
 	TEXT[2]						=	"po upadku twierdzy Vardem.";
 };
-func void Use_ItWr_BookXp_113()
+func void Use_ItWr_BookXp_57b()
 {
-	Npc_AddDocsCounter(113, 2);
-	CreateInvItem(self, ItWr_BookXp_113);
+	Npc_AddDocsCounter(57, 2);
+	CreateInvItem(self, ItWr_BookXp_57b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5322,22 +5128,20 @@ func void Use_ItWr_BookXp_113()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_114 (ItemPR_BookXp)
+instance ItWr_BookXp_58a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_114;
+	on_state[0]					=	Use_ItWr_BookXp_58a;
 	
-	if (Bonus_ItWr_BookXp[114])	{	description = "Niezbieralne podatki I (przeczytane)";	}
-	else						{	description = "Niezbieralne podatki I";					};
-	
+	description					=	BookXp_Description(58, "Niezbieralne podatki", 1);
 	TEXT[0]						=	"Zapiski poborcy królewskiego Yerenwalda,";
 	TEXT[1]						=	"oddelegowanego do prowincji Dolna Hartia,";
 	TEXT[2]						=	"rok 91 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_114()
+func void Use_ItWr_BookXp_58a()
 {
-	Npc_AddDocsCounter(114, 1);
-	CreateInvItem(self, ItWr_BookXp_114);
+	Npc_AddDocsCounter(58, 1);
+	CreateInvItem(self, ItWr_BookXp_58a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5366,22 +5170,20 @@ func void Use_ItWr_BookXp_114()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_115 (ItemPR_BookXp)
+instance ItWr_BookXp_58b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_115;
+	on_state[0]					=	Use_ItWr_BookXp_58b;
 	
-	if (Bonus_ItWr_BookXp[115])	{	description = "Niezbieralne podatki II (przeczytane)";	}
-	else						{	description = "Niezbieralne podatki II";				};
-	
+	description					=	BookXp_Description(58, "Niezbieralne podatki", 2);
 	TEXT[0]						=	"Zapiski poborcy królewskiego Yerenwalda,";
 	TEXT[1]						=	"oddelegowanego do prowincji Dolna Hartia,";
 	TEXT[2]						=	"rok 91 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_115()
+func void Use_ItWr_BookXp_58b()
 {
-	Npc_AddDocsCounter(115, 2);
-	CreateInvItem(self, ItWr_BookXp_115);
+	Npc_AddDocsCounter(58, 2);
+	CreateInvItem(self, ItWr_BookXp_58b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5410,22 +5212,20 @@ func void Use_ItWr_BookXp_115()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_116 (ItemPR_BookXp)
+instance ItWr_BookXp_59a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_116;
+	on_state[0]					=	Use_ItWr_BookXp_59a;
 	
-	if (Bonus_ItWr_BookXp[116])	{	description = "Historia o zielarce I (przeczytane)";	}
-	else						{	description = "Historia o zielarce I";					};
-	
+	description					=	BookXp_Description(59, "Historia o zielarce", 1);
 	TEXT[0]						=	"Zapiski kap³ana Solimara z Bractwa Ognia,";
 	TEXT[1]						=	"klasztor w Geldern,";
 	TEXT[2]						=	"rok 94 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_116()
+func void Use_ItWr_BookXp_59a()
 {
-	Npc_AddDocsCounter(116, 1);
-	CreateInvItem(self, ItWr_BookXp_116);
+	Npc_AddDocsCounter(59, 1);
+	CreateInvItem(self, ItWr_BookXp_59a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5456,22 +5256,20 @@ func void Use_ItWr_BookXp_116()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_117 (ItemPR_BookXp)
+instance ItWr_BookXp_59b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_117;
+	on_state[0]					=	Use_ItWr_BookXp_59b;
 	
-	if (Bonus_ItWr_BookXp[117])	{	description = "Historia o zielarce II (przeczytane)";	}
-	else						{	description = "Historia o zielarce II";					};
-	
+	description					=	BookXp_Description(59, "Historia o zielarce", 2);
 	TEXT[0]						=	"Zapiski kap³ana Solimara z Bractwa Ognia,";
 	TEXT[1]						=	"klasztor w Geldern,";
 	TEXT[2]						=	"rok 94 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_117()
+func void Use_ItWr_BookXp_59b()
 {
-	Npc_AddDocsCounter(117, 2);
-	CreateInvItem(self, ItWr_BookXp_117);
+	Npc_AddDocsCounter(59, 2);
+	CreateInvItem(self, ItWr_BookXp_59b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5500,22 +5298,20 @@ func void Use_ItWr_BookXp_117()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_118 (ItemPR_BookXp)
+instance ItWr_BookXp_60a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_118;
+	on_state[0]					=	Use_ItWr_BookXp_60a;
 	
-	if (Bonus_ItWr_BookXp[118])	{	description = "Z Doliny Szeptów I (przeczytane)";	}
-	else						{	description = "Z Doliny Szeptów I";					};
-	
+	description					=	BookXp_Description(60, "Z Doliny Szeptów", 1);
 	TEXT[0]						=	"Praca badawcza mistrza Garinosa z Archiwum";
 	TEXT[1]						=	"Wewnêtrznego Bractwa Wiedzy w Geldern,";
 	TEXT[2]						=	"rok 76 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_118()
+func void Use_ItWr_BookXp_60a()
 {
-	Npc_AddDocsCounter(118, 1);
-	CreateInvItem(self, ItWr_BookXp_118);
+	Npc_AddDocsCounter(60, 1);
+	CreateInvItem(self, ItWr_BookXp_60a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5544,22 +5340,20 @@ func void Use_ItWr_BookXp_118()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_119 (ItemPR_BookXp)
+instance ItWr_BookXp_60b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_119;
+	on_state[0]					=	Use_ItWr_BookXp_60b;
 	
-	if (Bonus_ItWr_BookXp[119])	{	description = "Z Doliny Szeptów II (przeczytane)";	}
-	else						{	description = "Z Doliny Szeptów II";				};
-	
+	description					=	BookXp_Description(60, "Z Doliny Szeptów", 2);
 	TEXT[0]						=	"Praca badawcza mistrza Garinosa z Archiwum";
 	TEXT[1]						=	"Wewnêtrznego Bractwa Wiedzy w Geldern,";
 	TEXT[2]						=	"rok 76 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_119()
+func void Use_ItWr_BookXp_60b()
 {
-	Npc_AddDocsCounter(119, 2);
-	CreateInvItem(self, ItWr_BookXp_119);
+	Npc_AddDocsCounter(60, 2);
+	CreateInvItem(self, ItWr_BookXp_60b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5588,22 +5382,20 @@ func void Use_ItWr_BookXp_119()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_120 (ItemPR_BookXp)
+instance ItWr_BookXp_61a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_120;
+	on_state[0]					=	Use_ItWr_BookXp_61a;
 	
-	if (Bonus_ItWr_BookXp[120])	{	description = "Zapomniany król I (przeczytane)";	}
-	else						{	description = "Zapomniany król I";					};
-	
+	description					=	BookXp_Description(61, "Zapomniany król", 1);
 	TEXT[0]						=	"Notatki badawcze Elratha";
 	TEXT[1]						=	"z Izby Pamiêci w Setarrif.";
 	TEXT[2]						=	"Rok 118 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_120()
+func void Use_ItWr_BookXp_61a()
 {
-	Npc_AddDocsCounter(120, 1);
-	CreateInvItem(self, ItWr_BookXp_120);
+	Npc_AddDocsCounter(61, 1);
+	CreateInvItem(self, ItWr_BookXp_61a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5634,22 +5426,20 @@ func void Use_ItWr_BookXp_120()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_121 (ItemPR_BookXp)
+instance ItWr_BookXp_61b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_01.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_121;
+	on_state[0]					=	Use_ItWr_BookXp_61b;
 	
-	if (Bonus_ItWr_BookXp[121])	{	description = "Zapomniany król II (przeczytane)";	}
-	else						{	description = "Zapomniany król II";					};
-	
+	description					=	BookXp_Description(61, "Zapomniany król", 2);
 	TEXT[0]						=	"Notatki badawcze Elratha";
 	TEXT[1]						=	"z Izby Pamiêci w Setarrif.";
 	TEXT[2]						=	"Rok 118 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_121()
+func void Use_ItWr_BookXp_61b()
 {
-	Npc_AddDocsCounter(121, 2);
-	CreateInvItem(self, ItWr_BookXp_121);
+	Npc_AddDocsCounter(61, 2);
+	CreateInvItem(self, ItWr_BookXp_61b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5680,22 +5470,20 @@ func void Use_ItWr_BookXp_121()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_122 (ItemPR_BookXp)
+instance ItWr_BookXp_62a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_122;
+	on_state[0]					=	Use_ItWr_BookXp_62a;
 	
-	if (Bonus_ItWr_BookXp[122])	{	description = "Niebezpieczna wiedza I (przeczytane)";	}
-	else						{	description = "Niebezpieczna wiedza I";					};
-	
+	description					=	BookXp_Description(62, "Niebezpieczna wiedza", 1);
 	TEXT[0]						=	"Rozwa¿ania starego uczonego";
 	TEXT[1]						=	"spisane w opactwie Uthar,";
 	TEXT[2]						=	"na rok przed jego œmierci¹.";
 };
-func void Use_ItWr_BookXp_122()
+func void Use_ItWr_BookXp_62a()
 {
-	Npc_AddDocsCounter(122, 1);
-	CreateInvItem(self, ItWr_BookXp_122);
+	Npc_AddDocsCounter(62, 1);
+	CreateInvItem(self, ItWr_BookXp_62a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5724,22 +5512,20 @@ func void Use_ItWr_BookXp_122()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_123 (ItemPR_BookXp)
+instance ItWr_BookXp_62b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_02.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_123;
+	on_state[0]					=	Use_ItWr_BookXp_62b;
 	
-	if (Bonus_ItWr_BookXp[123])	{	description = "Niebezpieczna wiedza II (przeczytane)";	}
-	else						{	description = "Niebezpieczna wiedza II";				};
-	
+	description					=	BookXp_Description(62, "Niebezpieczna wiedza", 2);
 	TEXT[0]						=	"Rozwa¿ania starego uczonego";
 	TEXT[1]						=	"spisane w opactwie Uthar,";
 	TEXT[2]						=	"na rok przed jego œmierci¹.";
 };
-func void Use_ItWr_BookXp_123()
+func void Use_ItWr_BookXp_62b()
 {
-	Npc_AddDocsCounter(123, 2);
-	CreateInvItem(self, ItWr_BookXp_123);
+	Npc_AddDocsCounter(62, 2);
+	CreateInvItem(self, ItWr_BookXp_62b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5768,22 +5554,20 @@ func void Use_ItWr_BookXp_123()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_124 (ItemPR_BookXp)
+instance ItWr_BookXp_63a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_124;
+	on_state[0]					=	Use_ItWr_BookXp_63a;
 	
-	if (Bonus_ItWr_BookXp[124])	{	description = "Mowa bez s³ów I (przeczytane)";	}
-	else						{	description = "Mowa bez s³ów I";				};
-	
+	description					=	BookXp_Description(63, "Mowa bez s³ów", 1);
 	TEXT[0]						=	"Spisane przez starego ober¿ystê";
 	TEXT[1]						=	"z po³udniowej marchii, na marginesie";
 	TEXT[2]						=	"rachmistrzowego pergaminu. Rok nieznany.";
 };
-func void Use_ItWr_BookXp_124()
+func void Use_ItWr_BookXp_63a()
 {
-	Npc_AddDocsCounter(124, 1);
-	CreateInvItem(self, ItWr_BookXp_124);
+	Npc_AddDocsCounter(63, 1);
+	CreateInvItem(self, ItWr_BookXp_63a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5812,22 +5596,20 @@ func void Use_ItWr_BookXp_124()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_125 (ItemPR_BookXp)
+instance ItWr_BookXp_63b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_03.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_125;
+	on_state[0]					=	Use_ItWr_BookXp_63b;
 	
-	if (Bonus_ItWr_BookXp[125])	{	description = "Mowa bez s³ów II (przeczytane)";	}
-	else						{	description = "Mowa bez s³ów II";				};
-	
+	description					=	BookXp_Description(63, "Mowa bez s³ów", 2);
 	TEXT[0]						=	"Spisane przez starego ober¿ystê";
 	TEXT[1]						=	"z po³udniowej marchii, na marginesie";
 	TEXT[2]						=	"rachmistrzowego pergaminu. Rok nieznany.";
 };
-func void Use_ItWr_BookXp_125()
+func void Use_ItWr_BookXp_63b()
 {
-	Npc_AddDocsCounter(125, 2);
-	CreateInvItem(self, ItWr_BookXp_095);
+	Npc_AddDocsCounter(63, 2);
+	CreateInvItem(self, ItWr_BookXp_63b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5856,22 +5638,20 @@ func void Use_ItWr_BookXp_125()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_126 (ItemPR_BookXp)
+instance ItWr_BookXp_64a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_126;
+	on_state[0]					=	Use_ItWr_BookXp_64a;
 	
-	if (Bonus_ItWr_BookXp[126])	{	description = "Targi przed œwitem I (przeczytane)";	}
-	else						{	description = "Targi przed œwitem I";				};
-	
+	description					=	BookXp_Description(64, "Targi przed œwitem", 1);
 	TEXT[0]						=	"Spisane przez obserwatora miejskiego";
 	TEXT[1]						=	"handlu w Setarrif, nieoficjalnie,";
 	TEXT[2]						=	"na pergaminach ksi¹g podatkowych.";
 };
-func void Use_ItWr_BookXp_126()
+func void Use_ItWr_BookXp_64a()
 {
-	Npc_AddDocsCounter(126, 1);
-	CreateInvItem(self, ItWr_BookXp_126);
+	Npc_AddDocsCounter(64, 1);
+	CreateInvItem(self, ItWr_BookXp_64a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5902,22 +5682,20 @@ func void Use_ItWr_BookXp_126()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_127 (ItemPR_BookXp)
+instance ItWr_BookXp_64b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_04.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_127;
-	
-	if (Bonus_ItWr_BookXp[127])	{	description = "Targi przed œwitem II (przeczytane)";	}
-	else						{	description = "Targi przed œwitem II";					};
-	
+	on_state[0]					=	Use_ItWr_BookXp_64b;
+		
+	description					=	BookXp_Description(64, "Targi przed œwitem", 2);
 	TEXT[0]						=	"Spisane przez obserwatora miejskiego";
 	TEXT[1]						=	"handlu w Setarrif, nieoficjalnie,";
 	TEXT[2]						=	"na pergaminach ksi¹g podatkowych.";
 };
-func void Use_ItWr_BookXp_127()
+func void Use_ItWr_BookXp_64b()
 {
-	Npc_AddDocsCounter(127, 2);
-	CreateInvItem(self, ItWr_BookXp_127);
+	Npc_AddDocsCounter(64, 2);
+	CreateInvItem(self, ItWr_BookXp_64b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5944,22 +5722,20 @@ func void Use_ItWr_BookXp_127()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_128 (ItemPR_BookXp)
+instance ItWr_BookXp_65a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_128;
+	on_state[0]					=	Use_ItWr_BookXp_65a;
 	
-	if (Bonus_ItWr_BookXp[128])	{	description = "NiedŸwiedŸ z prze³êczy I (przeczytane)";	}
-	else						{	description = "NiedŸwiedŸ z prze³êczy I";				};
-	
+	description					=	BookXp_Description(65, "NiedŸwiedŸ z prze³êczy", 1);
 	TEXT[0]						=	"Spisana przez skalnego skrybê Yorrika";
 	TEXT[1]						=	"z klanu M³ota, w szeœædziesi¹t¹ zimê";
 	TEXT[2]						=	"po bitwie o Próg Krwi.";
 };
-func void Use_ItWr_BookXp_128()
+func void Use_ItWr_BookXp_65a()
 {
-	Npc_AddDocsCounter(128, 1);
-	CreateInvItem(self, ItWr_BookXp_128);
+	Npc_AddDocsCounter(65, 1);
+	CreateInvItem(self, ItWr_BookXp_65a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -5986,22 +5762,20 @@ func void Use_ItWr_BookXp_128()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_129 (ItemPR_BookXp)
+instance ItWr_BookXp_65b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_05.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_129;
+	on_state[0]					=	Use_ItWr_BookXp_65b;
 	
-	if (Bonus_ItWr_BookXp[129])	{	description = "NiedŸwiedŸ z prze³êczy II (przeczytane)";	}
-	else						{	description = "NiedŸwiedŸ z prze³êczy II";					};
-	
+	description					=	BookXp_Description(65, "NiedŸwiedŸ z prze³êczy", 2);
 	TEXT[0]						=	"Spisana przez skalnego skrybê Yorrika";
 	TEXT[1]						=	"z klanu M³ota, w szeœædziesi¹t¹ zimê";
 	TEXT[2]						=	"po bitwie o Próg Krwi.";
 };
-func void Use_ItWr_BookXp_129()
+func void Use_ItWr_BookXp_65b()
 {
-	Npc_AddDocsCounter(129, 2);
-	CreateInvItem(self, ItWr_BookXp_129);
+	Npc_AddDocsCounter(65, 2);
+	CreateInvItem(self, ItWr_BookXp_65b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6028,22 +5802,20 @@ func void Use_ItWr_BookXp_129()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_130 (ItemPR_BookXp)
+instance ItWr_BookXp_66a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_130;
+	on_state[0]					=	Use_ItWr_BookXp_66a;
 	
-	if (Bonus_ItWr_BookXp[130])	{	description = "Smoki podziemne I (przeczytane)";	}
-	else						{	description = "Smoki podziemne I";					};
-	
+	description					=	BookXp_Description(66, "Smoki podziemne", 1);
 	TEXT[0]						=	"Urywki z prywatnego dziennika Erasila";
 	TEXT[1]						=	"z Gildii Uczonych Myrtany, odnalezione";
 	TEXT[2]						=	"po jego zaginiêciu w okolicach Gór Cieni.";
 };
-func void Use_ItWr_BookXp_130()
+func void Use_ItWr_BookXp_66a()
 {
-	Npc_AddDocsCounter(130, 1);
-	CreateInvItem(self, ItWr_BookXp_130);
+	Npc_AddDocsCounter(66, 1);
+	CreateInvItem(self, ItWr_BookXp_66a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6072,22 +5844,20 @@ func void Use_ItWr_BookXp_130()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_131 (ItemPR_BookXp)
+instance ItWr_BookXp_66b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_06.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_131;
+	on_state[0]					=	Use_ItWr_BookXp_66b;
 	
-	if (Bonus_ItWr_BookXp[131])	{	description = "Smoki podziemne II (przeczytane)";	}
-	else						{	description = "Smoki podziemne II";					};
-	
+	description					=	BookXp_Description(66, "Smoki podziemne", 2);
 	TEXT[0]						=	"Urywki z prywatnego dziennika Erasila";
 	TEXT[1]						=	"z Gildii Uczonych Myrtany, odnalezione";
 	TEXT[2]						=	"po jego zaginiêciu w okolicach Gór Cieni.";
 };
-func void Use_ItWr_BookXp_131()
+func void Use_ItWr_BookXp_66b()
 {
-	Npc_AddDocsCounter(131, 2);
-	CreateInvItem(self, ItWr_BookXp_131);
+	Npc_AddDocsCounter(66, 2);
+	CreateInvItem(self, ItWr_BookXp_66b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6116,22 +5886,20 @@ func void Use_ItWr_BookXp_131()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_132 (ItemPR_BookXp)
+instance ItWr_BookXp_67a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_132;
+	on_state[0]					=	Use_ItWr_BookXp_67a;
 	
-	if (Bonus_ItWr_BookXp[132])	{	description = "Sztuka trumien I (przeczytane)";	}
-	else						{	description = "Sztuka trumien I";				};
-	
+	description					=	BookXp_Description(67, "Sztuka trumien", 1);
 	TEXT[0]						=	"Spisane przez miejskiego rejestratora";
 	TEXT[1]						=	"z Dol Arelin. Rok nieoznaczony,";
 	TEXT[2]						=	"przypuszczalnie za rz¹dów arcyregenta Velrasa.";
 };
-func void Use_ItWr_BookXp_132()
+func void Use_ItWr_BookXp_67a()
 {
-	Npc_AddDocsCounter(132, 1);
-	CreateInvItem(self, ItWr_BookXp_132);
+	Npc_AddDocsCounter(67, 1);
+	CreateInvItem(self, ItWr_BookXp_67a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6162,22 +5930,20 @@ func void Use_ItWr_BookXp_132()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_133 (ItemPR_BookXp)
+instance ItWr_BookXp_67b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_07.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_133;
+	on_state[0]					=	Use_ItWr_BookXp_67b;
 	
-	if (Bonus_ItWr_BookXp[133])	{	description = "Sztuka trumien II (przeczytane)";	}
-	else						{	description = "Sztuka trumien II";					};
-	
+	description					=	BookXp_Description(67, "Sztuka trumien", 2);
 	TEXT[0]						=	"Spisane przez miejskiego rejestratora";
 	TEXT[1]						=	"z Dol Arelin. Rok nieoznaczony,";
 	TEXT[2]						=	"przypuszczalnie za rz¹dów arcyregenta Velrasa.";
 };
-func void Use_ItWr_BookXp_133()
+func void Use_ItWr_BookXp_67b()
 {
-	Npc_AddDocsCounter(133, 2);
-	CreateInvItem(self, ItWr_BookXp_133);
+	Npc_AddDocsCounter(67, 2);
+	CreateInvItem(self, ItWr_BookXp_67b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6208,22 +5974,20 @@ func void Use_ItWr_BookXp_133()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_134 (ItemPR_BookXp)
+instance ItWr_BookXp_68a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_134;
+	on_state[0]					=	Use_ItWr_BookXp_68a;
 	
-	if (Bonus_ItWr_BookXp[134])	{	description = "Œwiêta bez czci I (przeczytane)";	}
-	else						{	description = "Œwiêta bez czci I";					};
-	
+	description					=	BookXp_Description(68, "Œwiêta bez czci", 1);
 	TEXT[0]						=	"Notatki kap³ana Emdora z klasztoru Dagnor,";
 	TEXT[1]						=	"nieprzeznaczone do publikacji.";
 	TEXT[2]						=	"Odnalezione po jego znikniêciu.";
 };
-func void Use_ItWr_BookXp_134()
+func void Use_ItWr_BookXp_68a()
 {
-	Npc_AddDocsCounter(134, 1);
-	CreateInvItem(self, ItWr_BookXp_134);
+	Npc_AddDocsCounter(68, 1);
+	CreateInvItem(self, ItWr_BookXp_68a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6252,22 +6016,20 @@ func void Use_ItWr_BookXp_134()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_135 (ItemPR_BookXp)
+instance ItWr_BookXp_68b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_08.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_135;
+	on_state[0]					=	Use_ItWr_BookXp_68b;
 	
-	if (Bonus_ItWr_BookXp[135])	{	description = "Œwiêta bez czci II (przeczytane)";	}
-	else						{	description = "Œwiêta bez czci II";					};
-	
+	description					=	BookXp_Description(68, "Œwiêta bez czci", 2);
 	TEXT[0]						=	"Notatki kap³ana Emdora z klasztoru Dagnor,";
 	TEXT[1]						=	"nieprzeznaczone do publikacji.";
 	TEXT[2]						=	"Odnalezione po jego znikniêciu.";
 };
-func void Use_ItWr_BookXp_135()
+func void Use_ItWr_BookXp_68b()
 {
-	Npc_AddDocsCounter(135, 2);
-	CreateInvItem(self, ItWr_BookXp_135);
+	Npc_AddDocsCounter(68, 2);
+	CreateInvItem(self, ItWr_BookXp_68b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6296,22 +6058,20 @@ func void Use_ItWr_BookXp_135()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_136 (ItemPR_BookXp)
+instance ItWr_BookXp_69a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_136;
+	on_state[0]					=	Use_ItWr_BookXp_69a;
 	
-	if (Bonus_ItWr_BookXp[136])	{	description = "Czym jest mur I (przeczytane)";	}
-	else						{	description = "Czym jest mur I";				};
-	
+	description					=	BookXp_Description(69, "Czym jest mur", 1);
 	TEXT[0]						=	"Spisane przez emerytowanego oficera";
 	TEXT[1]						=	"Milicji Królewskiej, nieznane nazwisko.";
 	TEXT[2]						=	"Odkryte w starych rejestrach w Forn Halem.";
 };
-func void Use_ItWr_BookXp_136()
+func void Use_ItWr_BookXp_69a()
 {
-	Npc_AddDocsCounter(136, 1);
-	CreateInvItem(self, ItWr_BookXp_136);
+	Npc_AddDocsCounter(69, 1);
+	CreateInvItem(self, ItWr_BookXp_69a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6338,22 +6098,20 @@ func void Use_ItWr_BookXp_136()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_137 (ItemPR_BookXp)
+instance ItWr_BookXp_69b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_09.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_137;
+	on_state[0]					=	Use_ItWr_BookXp_69b;
 	
-	if (Bonus_ItWr_BookXp[137])	{	description = "Czym jest mur II (przeczytane)";	}
-	else						{	description = "Czym jest mur II";				};
-	
+	description					=	BookXp_Description(69, "Czym jest mur", 2);
 	TEXT[0]						=	"Spisane przez emerytowanego oficera";
 	TEXT[1]						=	"Milicji Królewskiej, nieznane nazwisko.";
 	TEXT[2]						=	"Odkryte w starych rejestrach w Forn Halem.";
 };
-func void Use_ItWr_BookXp_137()
+func void Use_ItWr_BookXp_69b()
 {
-	Npc_AddDocsCounter(137, 2);
-	CreateInvItem(self, ItWr_BookXp_137);
+	Npc_AddDocsCounter(69, 2);
+	CreateInvItem(self, ItWr_BookXp_69b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6382,22 +6140,20 @@ func void Use_ItWr_BookXp_137()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_138 (ItemPR_BookXp)
+instance ItWr_BookXp_70a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_138;
+	on_state[0]					=	Use_ItWr_BookXp_70a;
 	
-	if (Bonus_ItWr_BookXp[138])	{	description = "Zmiany w naturze I (przeczytane)";	}
-	else						{	description = "Zmiany w naturze I";					};
-	
+	description					=	BookXp_Description(70, "Zmiany w naturze", 1);
 	TEXT[0]						=	"Zapiski mistrza Anthariona";
 	TEXT[1]						=	"z Akademii Wiedzy w Setarath,";
 	TEXT[2]						=	"spisane w roku 88 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_138()
+func void Use_ItWr_BookXp_70a()
 {
-	Npc_AddDocsCounter(138, 1);
-	CreateInvItem(self, ItWr_BookXp_138);
+	Npc_AddDocsCounter(70, 1);
+	CreateInvItem(self, ItWr_BookXp_70a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6424,22 +6180,20 @@ func void Use_ItWr_BookXp_138()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_139 (ItemPR_BookXp)
+instance ItWr_BookXp_70b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_10.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_139;
+	on_state[0]					=	Use_ItWr_BookXp_70b;
 	
-	if (Bonus_ItWr_BookXp[139])	{	description = "Zmiany w naturze II (przeczytane)";	}
-	else						{	description = "Zmiany w naturze II";				};
-	
+	description					=	BookXp_Description(70, "Zmiany w naturze", 2);
 	TEXT[0]						=	"Zapiski mistrza Anthariona";
 	TEXT[1]						=	"z Akademii Wiedzy w Setarath,";
 	TEXT[2]						=	"spisane w roku 88 po Drugim Z³¹czeniu.";
 };
-func void Use_ItWr_BookXp_139()
+func void Use_ItWr_BookXp_70b()
 {
-	Npc_AddDocsCounter(139, 2);
-	CreateInvItem(self, ItWr_BookXp_139);
+	Npc_AddDocsCounter(70, 2);
+	CreateInvItem(self, ItWr_BookXp_70b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6466,22 +6220,20 @@ func void Use_ItWr_BookXp_139()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_140 (ItemPR_BookXp)
+instance ItWr_BookXp_71a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_140;
+	on_state[0]					=	Use_ItWr_BookXp_71a;
 	
-	if (Bonus_ItWr_BookXp[140])	{	description = "O ostrzu i o ciosie I (przeczytane)";	}
-	else						{	description = "O ostrzu i o ciosie I";					};
-	
+	description					=	BookXp_Description(71, "O ostrzu i o ciosie", 1);
 	TEXT[0]						=	"Relacja z pojedynku wojownika Po³udnia";
 	TEXT[1]						=	"i wojownika Pó³nocy spisana przez";
 	TEXT[2]						=	"Arena Gathrosa, podró¿nika z Khorinis.";
 };
-func void Use_ItWr_BookXp_140()
+func void Use_ItWr_BookXp_71a()
 {
-	Npc_AddDocsCounter(140, 1);
-	CreateInvItem(self, ItWr_BookXp_140);
+	Npc_AddDocsCounter(71, 1);
+	CreateInvItem(self, ItWr_BookXp_71a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6508,22 +6260,20 @@ func void Use_ItWr_BookXp_140()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_141 (ItemPR_BookXp)
+instance ItWr_BookXp_71b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_11.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_141;
+	on_state[0]					=	Use_ItWr_BookXp_71b;
 	
-	if (Bonus_ItWr_BookXp[141])	{	description = "O ostrzu i o ciosie II (przeczytane)";	}
-	else						{	description = "O ostrzu i o ciosie II";					};
-	
+	description					=	BookXp_Description(71, "O ostrzu i o ciosie", 2);
 	TEXT[0]						=	"Relacja z pojedynku wojownika Po³udnia";
 	TEXT[1]						=	"i wojownika Pó³nocy spisana przez";
 	TEXT[2]						=	"Arena Gathrosa, podró¿nika z Khorinis.";
 };
-func void Use_ItWr_BookXp_141()
+func void Use_ItWr_BookXp_71b()
 {
-	Npc_AddDocsCounter(141, 2);
-	CreateInvItem(self, ItWr_BookXp_141);
+	Npc_AddDocsCounter(71, 2);
+	CreateInvItem(self, ItWr_BookXp_71b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6554,22 +6304,20 @@ func void Use_ItWr_BookXp_141()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_142 (ItemPR_BookXp)
+instance ItWr_BookXp_72a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_142;
+	on_state[0]					=	Use_ItWr_BookXp_72a;
 	
-	if (Bonus_ItWr_BookXp[142])	{	description = "Sztuka zabijania I (przeczytane)";	}
-	else						{	description = "Sztuka zabijania I";					};
-	
+	description					=	BookXp_Description(72, "Sztuka zabijania", 1);
 	TEXT[0]						=	"Spisane przez Darion'a z Al Shedim,";
 	TEXT[1]						=	"dawnego Mistrza Cieni,";
 	TEXT[2]						=	"w roku 38 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_142()
+func void Use_ItWr_BookXp_72a()
 {
-	Npc_AddDocsCounter(142, 1);
-	CreateInvItem(self, ItWr_BookXp_142);
+	Npc_AddDocsCounter(72, 1);
+	CreateInvItem(self, ItWr_BookXp_72a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6599,22 +6347,20 @@ func void Use_ItWr_BookXp_142()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_143 (ItemPR_BookXp)
+instance ItWr_BookXp_72b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_12.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_143;
+	on_state[0]					=	Use_ItWr_BookXp_72b;
 	
-	if (Bonus_ItWr_BookXp[143])	{	description = "Sztuka zabijania II (przeczytane)";	}
-	else						{	description = "Sztuka zabijania II";				};
-	
+	description					=	BookXp_Description(72, "Sztuka zabijania", 2);
 	TEXT[0]						=	"Spisane przez Darion'a z Al Shedim,";
 	TEXT[1]						=	"dawnego Mistrza Cieni,";
 	TEXT[2]						=	"w roku 38 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_143()
+func void Use_ItWr_BookXp_72b()
 {
-	Npc_AddDocsCounter(143, 2);
-	CreateInvItem(self, ItWr_BookXp_143);
+	Npc_AddDocsCounter(72, 2);
+	CreateInvItem(self, ItWr_BookXp_72b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6646,22 +6392,20 @@ func void Use_ItWr_BookXp_143()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_144 (ItemPR_BookXp)
+instance ItWr_BookXp_73a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_144;
+	on_state[0]					=	Use_ItWr_BookXp_73a;
 	
-	if (Bonus_ItWr_BookXp[144])	{	description = "Wœród cieniostworów I (przeczytane)";	}
-	else						{	description = "Wœród cieniostworów I";					};
-	
+	description					=	BookXp_Description(73, "Wœród cieniostworów", 1);
 	TEXT[0]						=	"Spisane przez Werrana,";
 	TEXT[1]						=	"myœliwego z Górskiego Krêgu,";
 	TEXT[2]						=	"w roku 42 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_144()
+func void Use_ItWr_BookXp_73a()
 {
-	Npc_AddDocsCounter(144, 1);
-	CreateInvItem(self, ItWr_BookXp_144);
+	Npc_AddDocsCounter(73, 1);
+	CreateInvItem(self, ItWr_BookXp_73a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6693,22 +6437,20 @@ func void Use_ItWr_BookXp_144()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_145 (ItemPR_BookXp)
+instance ItWr_BookXp_73b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_13.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_145;
+	on_state[0]					=	Use_ItWr_BookXp_73b;
 	
-	if (Bonus_ItWr_BookXp[145])	{	description = "Wœród cieniostworów II (przeczytane)";	}
-	else						{	description = "Wœród cieniostworów II";					};
-	
+	description					=	BookXp_Description(73, "Wœród cieniostworów", 2);
 	TEXT[0]						=	"Spisane przez Werrana,";
 	TEXT[1]						=	"myœliwego z Górskiego Krêgu,";
 	TEXT[2]						=	"w roku 42 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_145()
+func void Use_ItWr_BookXp_73b()
 {
-	Npc_AddDocsCounter(145, 2);
-	CreateInvItem(self, ItWr_BookXp_145);
+	Npc_AddDocsCounter(73, 2);
+	CreateInvItem(self, ItWr_BookXp_73b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6738,22 +6480,20 @@ func void Use_ItWr_BookXp_145()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_146 (ItemPR_BookXp)
+instance ItWr_BookXp_74a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_146;
+	on_state[0]					=	Use_ItWr_BookXp_74a;
 	
-	if (Bonus_ItWr_BookXp[146])	{	description = "Upadek Z³otego Liœcia I (przeczytane)";	}
-	else						{	description = "Upadek Z³otego Liœcia I";				};
-	
+	description					=	BookXp_Description(74, "Upadek Z³otego Liœcia", 1);
 	TEXT[0]						=	"Spisane przez Malviana,";
 	TEXT[1]						=	"archiwistê klasztoru Innosa w Khorinis,";
 	TEXT[2]						=	"rok 49 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_146()
+func void Use_ItWr_BookXp_74a()
 {
-	Npc_AddDocsCounter(146, 1);
-	CreateInvItem(self, ItWr_BookXp_146);
+	Npc_AddDocsCounter(74, 1);
+	CreateInvItem(self, ItWr_BookXp_74a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6782,22 +6522,20 @@ func void Use_ItWr_BookXp_146()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_147 (ItemPR_BookXp)
+instance ItWr_BookXp_74b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_14.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_147;
+	on_state[0]					=	Use_ItWr_BookXp_74b;
 	
-	if (Bonus_ItWr_BookXp[147])	{	description = "Upadek Z³otego Liœcia II (przeczytane)";	}
-	else						{	description = "Upadek Z³otego Liœcia II";					};
-	
+	description					=	BookXp_Description(74, "Upadek Z³otego Liœcia", 2);
 	TEXT[0]						=	"Spisane przez Malviana,";
 	TEXT[1]						=	"archiwistê klasztoru Innosa w Khorinis,";
 	TEXT[2]						=	"rok 49 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_147()
+func void Use_ItWr_BookXp_74b()
 {
-	Npc_AddDocsCounter(147, 2);
-	CreateInvItem(self, ItWr_BookXp_147);
+	Npc_AddDocsCounter(74, 2);
+	CreateInvItem(self, ItWr_BookXp_74b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6824,22 +6562,20 @@ func void Use_ItWr_BookXp_147()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_148 (ItemPR_BookXp)
+instance ItWr_BookXp_75a (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_148;
+	on_state[0]					=	Use_ItWr_BookXp_75a;
 	
-	if (Bonus_ItWr_BookXp[148])	{	description = "Honor i jego cenie I (przeczytane)";	}
-	else						{	description = "Honor i jego cenie I";				};
-	
+	description					=	BookXp_Description(75, "Honor i jego cenie", 1);
 	TEXT[0]						=	"Spisane przez Eryka z Geldern,";
 	TEXT[1]						=	"dawnego dowódcê wojskowego, w samotnoœci,";
 	TEXT[2]						=	"rok 51 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_148()
+func void Use_ItWr_BookXp_75a()
 {
-	Npc_AddDocsCounter(148, 1);
-	CreateInvItem(self, ItWr_BookXp_148);
+	Npc_AddDocsCounter(75, 1);
+	CreateInvItem(self, ItWr_BookXp_75a);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();
@@ -6866,22 +6602,20 @@ func void Use_ItWr_BookXp_148()
 };
 
 ///******************************************************************************************
-instance ItWr_BookXp_149 (ItemPR_BookXp)
+instance ItWr_BookXp_75b (ItemPR_BookXp)
 {
 	visual						=	"ItWr_BookXp_15.3ds";
-	on_state[0]					=	Use_ItWr_BookXp_149;
+	on_state[0]					=	Use_ItWr_BookXp_75b;
 	
-	if (Bonus_ItWr_BookXp[149])	{	description = "Honor i jego cenie II (przeczytane)";	}
-	else						{	description = "Honor i jego cenie II";					};
-	
+	description					=	BookXp_Description(75, "Honor i jego cenie", 2);
 	TEXT[0]						=	"Spisane przez Eryka z Geldern,";
 	TEXT[1]						=	"dawnego dowódcê wojskowego, w samotnoœci,";
 	TEXT[2]						=	"rok 51 po Wojnie Smoków.";
 };
-func void Use_ItWr_BookXp_149()
+func void Use_ItWr_BookXp_75b()
 {
-	Npc_AddDocsCounter(149, 2);
-	CreateInvItem(self, ItWr_BookXp_149);
+	Npc_AddDocsCounter(75, 2);
+	CreateInvItem(self, ItWr_BookXp_75b);
 	
 	var int nDocID;
 	nDocID =	Doc_Create		();

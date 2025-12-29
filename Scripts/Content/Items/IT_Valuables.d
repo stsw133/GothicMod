@@ -1,10 +1,4 @@
 ///******************************************************************************************
-
-var int BigFish_Opener;
-var int OldChest_Opener;
-var int Shell_Opener;
-
-///******************************************************************************************
 /// Coins
 ///******************************************************************************************
 prototype ItemPR_Coin (C_Item)
@@ -440,6 +434,7 @@ instance ItMi_Shell (ItemPR_Misc)
 	COUNT[5]					=	value;
 	INV_ZBIAS					=	INVCAM_ENTF_MISC2_STANDARD;
 };
+var int Shell_Opener;
 func void Use_ItMi_Shell()
 {
 	var int items; items = Npc_HasItems(self, ItMi_Shell);
@@ -492,6 +487,7 @@ instance ItSe_BigFish (ItemPR_Misc)
 	TEXT[0]						=	"W tej rybie coœ schowano.";
 	COUNT[5]					=	value;
 };
+var int BigFish_Opener;
 func void Use_ItSe_BigFish()
 {
 	var int items; items = Npc_HasItems(self, ItSe_BigFish);
@@ -568,6 +564,7 @@ instance ItSe_OldChest (ItemPR_Misc)
 	TEXT[0]						=	"W tej skrzynce coœ schowano.";
 	COUNT[5]					=	value;
 };
+var int OldChest_Opener;
 func void Use_ItSe_OldChest()
 {
 	if (!Npc_GetTalentSkill(self, NPC_TALENT_PICKLOCK) || !Npc_HasItems(self, ItKe_Lockpick))
@@ -586,6 +583,7 @@ func void Use_ItSe_OldChest()
 		CreateInvItem (self, ItSe_OldChest);
 		return;
 	};
+	Snd_Play3D (self, "PICKLOCK_UNLOCK");
 	
 	var int items; items = Npc_HasItems(self, ItSe_OldChest);
 	//var int lockpicks; lockpicks = Npc_HasItems(self, ItKe_Lockpick);
@@ -602,91 +600,96 @@ func void Use_ItSe_OldChest()
 	
 	if (OldChest_Opener == 1)		/// 60 gold
 	{
-		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItMi_Gold, 10);
+		B_PlayerFindItem (ItPo_Shield_01, 1);
+		B_PlayerFindItem (ItRw_Bolt, 8);
+		B_PlayerFindItem (ItMi_Gold, 5);
 	}
 	else if (OldChest_Opener == 2)	/// 70 gold
 	{
-		B_PlayerFindItem (ItPo_Mana_01, 1);
-		B_PlayerFindItem (ItMi_Gold, 20);
+		B_PlayerFindItem (ItPo_Stamina_Addon_04, 1);
+		B_PlayerFindItem (ItRw_Arrow, 8);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 3)	/// 80 gold
 	{
 		B_PlayerFindItem (ItPo_Health_01, 1);
-		B_PlayerFindItem (ItRw_Arrow, 5);
-		B_PlayerFindItem (ItMi_Gold, 5);
+		B_PlayerFindItem (ItMi_Sulfur, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 4)	/// 90 gold
 	{
 		B_PlayerFindItem (ItPo_Mana_01, 1);
-		B_PlayerFindItem (ItMi_SilverNugget, 1);
+		B_PlayerFindItem (ItMi_Quartz, 1);
 		B_PlayerFindItem (ItMi_Gold, 16);
 	}
 	else if (OldChest_Opener == 5)	/// 100 gold
 	{
-		B_PlayerFindItem (ItPo_Health_02, 1);
-		B_PlayerFindItem (ItMi_Gold, 25);
+		B_PlayerFindItem (ItSc_LightHeal, 1);
+		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 6)	/// 110 gold
 	{
-		B_PlayerFindItem (ItPo_Mana_02, 1);
-		B_PlayerFindItem (ItMi_Gold, 35);
+		B_PlayerFindItem (ItPo_Shield_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 7)	/// 120 gold
 	{
-		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItPo_Stamina_Addon_05, 1);
 		B_PlayerFindItem (ItMi_SilverNugget, 1);
-		B_PlayerFindItem (ItMi_Gold, 21);
+		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 8)	/// 130 gold
 	{
+		B_PlayerFindItem (ItSc_Telekinesis, 1);
 		B_PlayerFindItem (ItPo_Mana_02, 1);
 		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
-		B_PlayerFindItem (ItMi_Gold, 7);
 	}
 	else if (OldChest_Opener == 9)	/// 140 gold
 	{
 		B_PlayerFindItem (ItPo_Health_03, 1);
-		B_PlayerFindItem (ItMi_Gold, 40);
+		B_PlayerFindItem (ItRw_Arrow, 15);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 10)	/// 150 gold
 	{
 		B_PlayerFindItem (ItPo_Mana_03, 1);
-		B_PlayerFindItem (ItMi_Gold, 50);
+		B_PlayerFindItem (ItRw_Bolt, 15);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 11)	/// 160 gold
 	{
-		B_PlayerFindItem (ItPo_Health_03, 1);
-		B_PlayerFindItem (ItPo_Mana_01, 1);
-		B_PlayerFindItem (ItMi_Gold, 10);
+		B_PlayerFindItem (ItRi_Prot_Point_01, 1);
+		B_PlayerFindItem (ItPo_Health_02, 1);
+		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 12)	/// 170 gold
 	{
-		B_PlayerFindItem (ItPo_Mana_03, 1);
-		B_PlayerFindItem (ItPo_Health_01, 1);
+		B_PlayerFindItem (ItRi_Prot_Fire_01, 1);
+		B_PlayerFindItem (ItPo_Mana_02, 1);
 		B_PlayerFindItem (ItMi_Gold, 20);
 	}
 	else if (OldChest_Opener == 13)	/// 180 gold
 	{
-		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItPo_Shield_03, 1);
 		B_PlayerFindItem (ItPo_Health_02, 1);
-		B_PlayerFindItem (ItMi_Gold, 5);
+		B_PlayerFindItem (ItMi_Gold, 10);
 	}
 	else if (OldChest_Opener == 14)	/// 190 gold
 	{
-		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItPo_Stamina_Addon_06, 1);
 		B_PlayerFindItem (ItPo_Mana_02, 1);
 		B_PlayerFindItem (ItMi_Gold, 15);
 	}
 	else if (OldChest_Opener == 15)	/// 200 gold
 	{
-		B_PlayerFindItem (ItPo_Health_03, 1);
+		B_PlayerFindItem (ItSc_InstantFireball, 1);
 		B_PlayerFindItem (ItMi_GoldNugget_Addon, 1);
 		B_PlayerFindItem (ItMi_Gold, 52);
 	}
 	else if (OldChest_Opener == 16)	/// 210 gold
 	{
-		B_PlayerFindItem (ItPo_Mana_03, 1);
+		B_PlayerFindItem (ItSc_ChargeFireball, 1);
 		B_PlayerFindItem (ItMi_SilverNugget, 2);
 		B_PlayerFindItem (ItMi_Gold, 14);
 	}

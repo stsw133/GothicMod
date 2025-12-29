@@ -1260,7 +1260,29 @@ func void Use_ItFo_LousHammer()
 	self.aivar[AIV_Stamina] = 0;
 };
 
-var int SchnellerHeringTime;
+///******************************************************************************************
+func void Buff_SchnellerHering_OnApply (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	B_RaiseAttribute (slf, AIV_Stamina_MAX, 2);
+	if (Npc_IsPlayer(slf)) { regenPoints[BarOrderSP] -= 1; };
+};
+func void Buff_SchnellerHering_OnRemoved (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	Npc_AddAlcoholTime (slf, 15);
+	slf.aivar[AIV_Stamina] = 0;
+};
+instance Buff_SchnellerHering (lCBuff)
+{
+	name						=	"Szybki åledü";
+	bufftype					=	BUFF_NEUTRAL;
+	durationMS					=	120000;
+	onApply						=	SAVE_GetFuncID(Buff_SchnellerHering_OnApply);
+	onRemoved					=	SAVE_GetFuncID(Buff_SchnellerHering_OnRemoved);
+	buffTex						=	"BUFF_HERRING.tga";
+};
+
 instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 {
 	name						=	"Szybki åledü";
@@ -1281,19 +1303,10 @@ instance ItFo_Addon_SchnellerHering (ItemPR_Food)
 };
 func void Use_ItFo_SchnellerHering()
 {
-	if (Npc_IsPlayer(self))
-	{
-		SchnellerHeringTime = 120;
-		B_RaiseAttribute (self, AIV_Stamina_MAX, 2);
-		regenPoints[BarOrderSP] -= 1;
-	};
-};
-func void End_ItFo_Addon_SchnellerHering()
-{
-	Npc_AddAlcoholTime (hero, 15);
-	hero.aivar[AIV_Stamina] = 0;
+	Buff_ApplyOrRefresh (self, Buff_SchnellerHering);
 };
 
+///******************************************************************************************
 instance ItFo_Addon_SchlafHammer (ItemPR_Food)
 {
 	name						=	"PodwÛjny M≥ot";

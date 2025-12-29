@@ -1,14 +1,124 @@
 ///******************************************************************************************
 /// MOD_Damage
-///     Calculate
+///     Calculate helpers
+///******************************************************************************************
+
+/// get type prot
+func int MOD_DamageGetProtectionForType (var C_Npc slf, var C_Npc oth, var int dmgIndex)
+{
+	var int curProt; curProt = MEM_ReadStatArr(oth.protection, dmgIndex) - slf.aivar[AIV_Penetration];
+	if (curProt < 0)
+	{
+		curProt = 0;
+	};
+	
+	return curProt;
+};
+
+/// calculate base fist dmg
+func int MOD_DamageCalculateFistDamage (var C_Npc slf)
+{
+	return slf.attribute[ATR_STRENGTH] / 2;
+};
+
+/// calculate base spell dmg
+func int MOD_DamageCalculateSpellDamage (var int curDmg, var C_Npc slf, var int spellLvl)
+{
+	if		(curDmg >= 50)	{	curDmg = curDmg*spellLvl + slf.attribute[ATR_POWER];	}
+	else if	(curDmg > 0)	{	curDmg = curDmg*spellLvl + slf.attribute[ATR_POWER]/2;	};
+	
+	return curDmg;
+};
+
+/// calculate base weapon dmg
+func int MOD_DamageGetWeaponAttributeDamage (var C_Item usedWpn, var C_Npc slf)
+{
+	var int atrDmg;
+	
+	if		(usedWpn.cond_atr[0] == ATR_HITPOINTS_MAX)	{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_HITPOINTS_MAX]/HP_PER_LP/2;	}
+	else if	(usedWpn.cond_atr[0] == ATR_MANA_MAX)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_MANA_MAX]/MP_PER_LP/2;		}
+	else if	(usedWpn.cond_atr[0] == ATR_STRENGTH)		{	atrDmg = slf.attribute[ATR_STRENGTH];													}
+	else if	(usedWpn.cond_atr[0] == ATR_DEXTERITY)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_DEXTERITY]/2;				}
+	else if	(usedWpn.cond_atr[0] == ATR_POWER)			{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_POWER]/2;					};
+	
+	return atrDmg;
+};
+
+/// if hit is critical (MOD)
+func int MOD_DamageApplyCritical (var int atrDmg, var C_Item usedWpn, var C_Npc slf)
+{
+	var int critChance; critChance = Hlp_Random(100);
+	
+	if ((usedWpn.flags & ITEM_AXE || usedWpn.flags & ITEM_SWD) && critChance < slf.hitchance[NPC_TALENT_1H])
+	|| ((usedWpn.flags & ITEM_2HD_AXE || usedWpn.flags & ITEM_2HD_SWD) && critChance < slf.hitchance[NPC_TALENT_2H])
+	|| ((usedWpn.flags & ITEM_BOW) && critChance < slf.hitchance[NPC_TALENT_BOW])
+	|| ((usedWpn.flags & ITEM_CROSSBOW) && critChance < slf.hitchance[NPC_TALENT_CROSSBOW])
+	{
+		if (ATS[ATS_CritDmg] > 0 && Npc_IsPlayer(slf))
+		{
+			atrDmg = (atrDmg + usedWpn.damageTotal) * (100+slf.aivar[ATS_CritDmg]) / 100;
+		}
+		else
+		{
+			atrDmg = atrDmg + usedWpn.damageTotal;
+		};
+	}
+	else
+	{
+		atrDmg = (atrDmg + usedWpn.damageTotal) / 2;
+	};
+	
+	return atrDmg;
+};
+
+/// munition special damage
+func int MOD_DamageApplyMunitionEffects (var oSDamageDescriptor dmgDesc, var int atrDmg, var C_Npc slf, var C_Npc oth, var C_Item itemWpn)
+{
+	if (dmgDesc.weaponMode == 4)
+	{
+		atrDmg += B_MunitionSpecialDamage(slf, oth, itemWpn);
+	};
+	
+	return atrDmg;
+};
+
+/// calculate weapon dmg
+func int MOD_DamageCalculateWeaponDamage (var oSDamageDescriptor dmgDesc, var int dmgIndex, var C_Npc slf, var C_Npc oth, var C_Item usedWpn, var C_Item itemWpn)
+{
+	if (!(dmgDesc.itemWeapon && (dmgDesc.weaponMode == 2 || dmgDesc.weaponMode == 4)))
+	{
+		return 0;
+	};
+	
+	var int atrDmg; atrDmg = MOD_DamageGetWeaponAttributeDamage(usedWpn, slf);
+	atrDmg = MOD_DamageApplyCritical(atrDmg, usedWpn, slf);
+	atrDmg = MOD_DamageApplyMunitionEffects(dmgDesc, atrDmg, slf, oth, itemWpn);
+	
+	if (usedWpn.damageTotal > 0)
+	{
+		return (atrDmg + MEM_ReadStatArr(slf.damage, dmgIndex)) * MEM_ReadStatArr(usedWpn.damage, dmgIndex) / usedWpn.damageTotal;
+	};
+	
+	return 0;
+};
+
+/// substract protection from damage (MOD)
+func int MOD_DamageApplyProtection (var int curDmg, var int curProt)
+{
+	return (curDmg - curProt + curDmg - (curDmg * curProt / (curProt + 100))) / 2;
+};
+
+///******************************************************************************************
+/// MOD_Damage
+///     Calculate total damage
 ///******************************************************************************************
 func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_IsHit, var C_Npc slf, var C_Npc oth, var int spellId, var int spellLvl)
 {
 	var int finalDmg; finalDmg = 0;
-	var int dontKill; dontKill = false;
-	
 	var int curDmg; curDmg = 0;
 	var int curProt; curProt = 0;
+	var int dmgShielded; dmgShielded = 0;
+	var int dontKill; if (dmgDesc.weaponMode == 4) { dontKill = C_DropUnconsciousBase(slf, oth); } else { dontKill = false; };
 	var C_Item itemWpn; if (dmgDesc.itemWeapon > 0) { itemWpn = MEM_PtrToInst(dmgDesc.itemWeapon); } else { itemWpn = MEM_NullToInst(); };
 	var C_Item usedWpn; usedWpn = Npc_GetReadiedWeapon(slf);
 	
@@ -18,78 +128,32 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	if ((dmgDesc.dmgMode & (1 << i)) == (1 << i))
 	{
 		curDmg = MEM_ReadStatArr(dmgDesc.dmgArray, i);
-		curProt = MEM_ReadStatArr(oth.protection, i) - slf.aivar[AIV_Penetration];
-		if (curProt < 0) { curProt = 0; };
+		curProt = MOD_DamageGetProtectionForType(slf, oth, i);
 		
 		/// fist damage
 		if (dmgDesc.weaponMode == 1 && slf.guild < GIL_SEPERATOR_HUM)
 		{
-			curDmg = slf.attribute[ATR_STRENGTH] / 2;
+			curDmg = MOD_DamageCalculateFistDamage(slf);
 		}
 		/// spell damage
 		else if (!dmgDesc.itemWeapon && spellId > 0)
 		{
-			if		(curDmg >= 100)	{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER];		}
-			else if	(curDmg > 0)	{	curDmg = curDmg * spellLvl + slf.attribute[ATR_POWER]/2;	};
+			curDmg = MOD_DamageCalculateSpellDamage(curDmg, slf, spellLvl);
 		}
 		/// weapon damage
 		else if (dmgDesc.itemWeapon && (dmgDesc.weaponMode == 2 || dmgDesc.weaponMode == 4))
 		{
-			var int atrDmg;
-			
-			if		(usedWpn.cond_atr[0] == ATR_HITPOINTS_MAX)	{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_HITPOINTS_MAX]/2/HP_PER_LP;	}
-			else if	(usedWpn.cond_atr[0] == ATR_MANA_MAX)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_MANA_MAX]/2/MP_PER_LP;		}
-			else if	(usedWpn.cond_atr[0] == ATR_STRENGTH)		{	atrDmg = slf.attribute[ATR_STRENGTH];													}
-			else if	(usedWpn.cond_atr[0] == ATR_DEXTERITY)		{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_DEXTERITY]/2;				}
-			else if	(usedWpn.cond_atr[0] == ATR_POWER)			{	atrDmg = slf.attribute[ATR_STRENGTH]/2 + slf.attribute[ATR_POWER]/2;					};
-			
-			/// if hit is critical (MOD)
-			var int critChance; critChance = Hlp_Random(100);
-			
-			if ((usedWpn.flags & ITEM_AXE || usedWpn.flags & ITEM_SWD) && critChance < slf.hitchance[NPC_TALENT_1H])
-			|| ((usedWpn.flags & ITEM_2HD_AXE || usedWpn.flags & ITEM_2HD_SWD) && critChance < slf.hitchance[NPC_TALENT_2H])
-			|| ((usedWpn.flags & ITEM_BOW) && critChance < slf.hitchance[NPC_TALENT_BOW])
-			|| ((usedWpn.flags & ITEM_CROSSBOW) && critChance < slf.hitchance[NPC_TALENT_CROSSBOW])
-			{
-				if (ATS[ATS_CritDmg] > 0 && Npc_IsPlayer(slf))
-				{
-					atrDmg = (atrDmg + usedWpn.damageTotal) * (100+slf.aivar[ATS_CritDmg]) / 100;
-				}
-				else
-				{
-					atrDmg = atrDmg + usedWpn.damageTotal;
-				};
-			}
-			else
-			{
-				atrDmg = (atrDmg + usedWpn.damageTotal) / 2;
-			};
-			
-			/// munition special damage
-			if (dmgDesc.weaponMode == 4)
-			{
-				dontKill = C_DropUnconsciousBase(slf, oth);
-				atrDmg += B_MunitionSpecialDamage(slf, oth, itemWpn);
-			};
-			
-			/// calculate damage + divide if more than one type of damage
-			if (usedWpn.damageTotal > 0)
-			{
-				curDmg = (atrDmg + MEM_ReadStatArr(slf.damage, i)) * MEM_ReadStatArr(usedWpn.damage, i) / usedWpn.damageTotal;
-			};
+			curDmg = MOD_DamageCalculateWeaponDamage(dmgDesc, i, slf, oth, usedWpn, itemWpn);
 		};
 		
 		/// substract protection from damage (MOD)
-		curDmg = (curDmg - curProt + curDmg - (curDmg * curProt / (curProt + 100))) / 2;
+		curDmg = MOD_DamageApplyProtection(curDmg, curProt);
 		if (curDmg > 0)
 		{
 			finalDmg += curDmg;
 		};
 	};
 	end;
-	
-	/// shield absorption
-	var int dmgShielded; dmgShielded = 0;
 	
 	/// additional effects for player
 	if (Npc_IsPlayer(slf))
@@ -319,7 +383,7 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 
 ///******************************************************************************************
 /// MOD_Damage
-///     OnDmg
+///     CheckDmg
 ///******************************************************************************************
 func int MOD_CheckDmg (var int victimPtr, var int attackerPtr, var int dmg, var int dmgDescriptorPtr, var int dmg_IsHit)
 {
@@ -376,42 +440,47 @@ func void MOD_OnDmg()
 };
 
 ///******************************************************************************************
+/// MOD_Damage
+///     Disable damage animation
+///******************************************************************************************
+/*
 func void MOD_DisableDmgAnimation()
 {
-	EAX = 0;
-	
-	/*
-	var C_NPC slf;
-	slf = _^ (ECX);
+	var C_Npc slf; slf = _^ (ECX);
 	
 	var oSDamageDescriptor dmgDescriptor;
 	dmgDescriptor = _^ (MEM_ReadInt (ESP + 4));
 	
 	//Enable by default (seems like oCNpc__Interrupt is called right after oCNpc__OnDamage_Anim)
-	NPC_Interrupt_SetEnabled (TRUE);
+	NPC_Interrupt_SetEnabled(true);
 	
 	//If damage was inflicted by Barrier (no attackerNpc) player was not thrown away
-	if (!dmgDescriptor.attackerNpc) { return; };
+	if (!dmgDescriptor.attackerNpc)
+	{
+		return;
+	};
 	
-	if (C_NPC_IsPlayer (slf))
+	if (C_NPC_IsPlayer(slf))
 	{
 		//If player is not in fight mode, we can apply animations and interruption
-		if (!NPC_IsInFightMode (slf, FMODE_FIST))
-		&& (!NPC_IsInFightMode (slf, FMODE_MELEE))
-		&& (!NPC_IsInFightMode (slf, FMODE_FAR))
-		&& (!NPC_IsInFightMode (slf, FMODE_MAGIC)) {
+		if (!NPC_IsInFightMode(slf, FMODE_FIST))
+		&& (!NPC_IsInFightMode(slf, FMODE_MELEE))
+		&& (!NPC_IsInFightMode(slf, FMODE_FAR))
+		&& (!NPC_IsInFightMode(slf, FMODE_MAGIC))
+		{
 			return;
 		};
 		
 		//We need to find out damageType
 		var int damageType; damageType = 0;
 	
-		var C_NPC oth;
-		oth = _^ (dmgDescriptor.attackerNpc);
+		var C_Npc oth;
+		oth = _^(dmgDescriptor.attackerNpc);
 		
 		//Spell
 		if (dmgDescriptor.spellID != 0)
-		&& (dmgDescriptor.spellID != -1) {
+		&& (dmgDescriptor.spellID != -1)
+		{
 			//Seems like damageType = dmgDescriptor.spellLevel
 			damageType = dmgDescriptor.spellLevel;
 		};
@@ -419,42 +488,51 @@ func void MOD_DisableDmgAnimation()
 		var C_Item weapon;
 		
 		//Weapon
-		if (dmgDescriptor.itemWeapon != 0) {
-			
+		if (dmgDescriptor.itemWeapon != 0)
+		{
 			weapon = _^ (dmgDescriptor.itemWeapon);
 			
 			//Ranged weapon has spellID == -1
 			//In case of ranged weapon dmgDescriptor.itemWeapon returns amunition
 			//So we have to check either Readied weapon or Equipped weapon (fingers crossed NPC didn't switch these that fast)
-			if (dmgDescriptor.spellID == -1) {
-				if (NPC_IsInFightMode(oth, FMODE_FAR)) {
-					weapon = NPC_GetReadiedWeapon (oth);
-				} else if (NPC_HasEquippedRangedWeapon (oth)) {
-					weapon = NPC_GetEquippedRangedWeapon (oth);
+			if (dmgDescriptor.spellID == -1)
+			{
+				if (NPC_IsInFightMode(oth, FMODE_FAR))
+				{
+					weapon = NPC_GetReadiedWeapon(oth);
+				}
+				else if (NPC_HasEquippedRangedWeapon(oth))
+				{
+					weapon = NPC_GetEquippedRangedWeapon(oth);
 				};
 			};
-		
+			
 			//Get weapon damageType
 			damageType = weapon.damageType;
-		//Fist mode - get NPC damageType
-		} else {
+		}
+		else
+		{
+			//Fist mode - get NPC damageType
 			damageType = oth.damageType;
 		};
 		
 		//If damage was inflicted by Troll (DAM_FLY) player was not thrown away - so don't do anything here
-		if (damageType & DAM_FLY) { return; };
+		if (damageType & DAM_FLY)
+		{
+			return;
+		};
 		
-		if (damageType != 0) {
+		if (damageType != 0)
+		{
 			//EAX = 0 will disable animation T_STUMBLE / T_STUMBLEB / T_GOTHIT / (maybe more animations ?)
 			EAX = 0;
 			
 			//Disable interruption for player
-			NPC_Interrupt_SetEnabled (FALSE);
+			NPC_Interrupt_SetEnabled(false);
 		};
 	};
-	*/
 };
-
+*/
 ///******************************************************************************************
 /// MOD_Damage
 ///******************************************************************************************

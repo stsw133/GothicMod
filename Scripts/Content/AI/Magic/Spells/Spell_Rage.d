@@ -21,13 +21,17 @@ func void Spell_Cast_Rage()
 {
 	B_SpellCast (self, 3, SPL_Cost_Rage);
 	
+	if (self.id == 1299)	//DMT_1299_OberDementor_DI
+	{
+		AI_SetNpcsToState (self, ZS_MagicRage, 3000);
+		return;
+	};
+	
 	if (!C_BodyStateContains(other, BS_SWIM) && !C_BodyStateContains(other, BS_DIVE))
 	&& (!C_NpcIsDown(other) && Npc_GetDistToNpc(self, other) <= 1000)
 	{
 		Npc_ClearAIQueue	(other);
 		B_ClearPerceptions	(other);
 		AI_StartState		(other, ZS_MagicRage, 0, "");
-		
-//		AI_SetNpcsToState (self, ZS_MagicRage, 1000);
 	};
 };

@@ -134,7 +134,28 @@ func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth, var C_Item wpn)
 ///******************************************************************************************
 /// B_MunitionSpecialDamage
 ///******************************************************************************************
-func void B_MunitionSpecialBangEffect(var C_Npc oth, var C_Npc slf)
+func void Buff_FireArrowBurn_OnApply (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	Wld_PlayEffect ("VOB_MAGICBURN", slf, slf, 0, 0, 0, false);
+};
+func void Buff_FireArrowBurn_OnTick (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	B_MagicHurtNpc (hero, slf, 5);
+};
+instance Buff_FireArrowBurn (lCBuff)
+{
+	name												=	"Podpalenie";
+	bufftype											=	BUFF_BAD;
+	durationMS											=	4000;
+	tickMS												=	1000;
+	onApply												=	SAVE_GetFuncID(Buff_FireArrowBurn_OnApply);
+	onTick												=	SAVE_GetFuncID(Buff_FireArrowBurn_OnTick);
+};
+
+///******************************************************************************************
+func void B_MunitionSpecialBangEffect (var C_Npc oth, var C_Npc slf)
 {
 	if (Npc_IsPlayer(oth))
 	{
@@ -159,9 +180,9 @@ func void B_MunitionSpecialBangEffect(var C_Npc oth, var C_Npc slf)
 		};
 	};
 };
-func void B_MunitionSpecialBang(var C_Npc oth)
+func void B_MunitionSpecialBang (var C_Npc oth)
 {
-	Snd_Play("MFX_Fireball_Collide1");
+	Snd_Play3D (oth, "MFX_EXPLOSION_CAST");
 	MOD_Broadcast (oth, B_MunitionSpecialBangEffect);
 };
 
@@ -169,14 +190,15 @@ func void B_MunitionSpecialBang(var C_Npc oth)
 func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
 {
 	var int dmg; dmg = 0;
+	var int itmID; itmID = Hlp_GetInstanceID(itm);
 	
 	/// sharp arrow
-	if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_SharpArrow))
+	if (itmID == Hlp_GetInstanceID(ItRw_SharpArrow))
 	{
 		dmg = itm.COUNT[1];
 	}
 	/// hunting arrow
-	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_HuntingArrow))
+	else if (itmID == Hlp_GetInstanceID(ItRw_HuntingArrow))
 	{
 		if (C_NpcIsAnimal(oth))
 		{
@@ -188,7 +210,7 @@ func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
 		};
 	}
 	/// quartz arrow
-	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_QuartzArrow))
+	else if (itmID == Hlp_GetInstanceID(ItRw_QuartzArrow))
 	{
 		if (oth.protection[PROT_POINT] < 100)
 		{
@@ -200,12 +222,17 @@ func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
 		};
 	}
 	/// bang arrow
-	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_BangArrow))
+	else if (itmID == Hlp_GetInstanceID(ItRw_BangArrow))
 	{
 		B_MunitionSpecialBang(oth);
 	}
+	/// fire arrow
+	else if (itmID == Hlp_GetInstanceID(ItRw_FireArrow))
+	{
+		Buff_ApplyOrRefresh (oth, Buff_Fire);
+	}
 	/// magic arrow
-	else if (Hlp_GetInstanceID(itm) == Hlp_GetInstanceID(ItRw_MagicArrow))
+	else if (itmID == Hlp_GetInstanceID(ItRw_MagicArrow))
 	{
 		dmg = itm.COUNT[1];
 	};

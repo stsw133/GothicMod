@@ -9,7 +9,7 @@ func int RealToInt(var int r)
 ///******************************************************************************************
 /// Animations
 ///******************************************************************************************
-func int oCNPC_GetModel(var int npc)
+func int oCNpc_GetModel(var int npc)
 {
 	CALL__thiscall(MEM_InstToPtr(npc), 7571232);
 	return CALL_RetValAsInt();
@@ -94,7 +94,6 @@ func void Npc_SetVisibilityPercent(var C_Npc slf, var int visibility)
 	Npc._zCVob_visualAlpha = divf(mkf(visibility), mkf(100));
 	Npc._zCVob_bitfield[0] = Npc._zCVob_bitfield[0] & ~zCVob_bitfield0_castDynShadow;
 };
-
 
 ///******************************************************************************************
 /// World

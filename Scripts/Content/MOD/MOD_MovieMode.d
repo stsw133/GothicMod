@@ -2,31 +2,195 @@
 /// MOD_MovieMode
 ///******************************************************************************************
 
-var int MOD_MemoKey1;
-var int MOD_MemoKey2;
-
-func void MOD_SetMemoKeys()
-{
-	if (MEM_KeyState(KEY_NUMPAD0) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 0;	}	else	{	MOD_MemoKey1 = 0;	};	};
-	if (MEM_KeyState(KEY_NUMPAD1) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 1;	}	else	{	MOD_MemoKey1 = 1;	};	};
-	if (MEM_KeyState(KEY_NUMPAD2) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 2;	}	else	{	MOD_MemoKey1 = 2;	};	};
-	if (MEM_KeyState(KEY_NUMPAD3) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 3;	}	else	{	MOD_MemoKey1 = 3;	};	};
-	if (MEM_KeyState(KEY_NUMPAD4) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 4;	}	else	{	MOD_MemoKey1 = 4;	};	};
-	if (MEM_KeyState(KEY_NUMPAD5) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 5;	}	else	{	MOD_MemoKey1 = 5;	};	};
-	if (MEM_KeyState(KEY_NUMPAD6) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 6;	}	else	{	MOD_MemoKey1 = 6;	};	};
-	if (MEM_KeyState(KEY_NUMPAD7) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 7;	}	else	{	MOD_MemoKey1 = 7;	};	};
-	if (MEM_KeyState(KEY_NUMPAD8) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 8;	}	else	{	MOD_MemoKey1 = 8;	};	};
-	if (MEM_KeyState(KEY_NUMPAD9) == KEY_PRESSED)	{	if (MOD_MemoKey1 != -1)	{	MOD_MemoKey2 = 9;	}	else	{	MOD_MemoKey1 = 9;	};	};
-};
-
-///******************************************************************************************
-/// MOD_MovieMode_Ani
-///******************************************************************************************
+var int MOD_MovieMode_SelectedSet;
 
 var string MOD_MemoKey_CurrentAni;
 var string MOD_MemoKey_Ani[10];
 var int MOD_MemoKey_AniParams[10];
 
+var int MOD_MovieMode_CamPos[120];
+var int MOD_MovieMode_CamSaved[10];
+
+///******************************************************************************************
+func int MOD_MovieMode_ReadNumpadKey()
+{
+	if (MEM_KeyState(KEY_NUMPAD1) == KEY_PRESSED)	{ return 1; };
+	if (MEM_KeyState(KEY_NUMPAD2) == KEY_PRESSED)	{ return 2; };
+	if (MEM_KeyState(KEY_NUMPAD3) == KEY_PRESSED)	{ return 3; };
+	if (MEM_KeyState(KEY_NUMPAD4) == KEY_PRESSED)	{ return 4; };
+	if (MEM_KeyState(KEY_NUMPAD5) == KEY_PRESSED)	{ return 5; };
+	if (MEM_KeyState(KEY_NUMPAD6) == KEY_PRESSED)	{ return 6; };
+	if (MEM_KeyState(KEY_NUMPAD7) == KEY_PRESSED)	{ return 7; };
+	if (MEM_KeyState(KEY_NUMPAD8) == KEY_PRESSED)	{ return 8; };
+	if (MEM_KeyState(KEY_NUMPAD9) == KEY_PRESSED)	{ return 9; };
+	if (MEM_KeyState(KEY_NUMPAD0) == KEY_PRESSED)	{ return 0; };
+	
+	return -1;
+};
+
+///******************************************************************************************
+func void MOD_MovieMode_SelectSet()
+{
+	var int selected; selected = MOD_MovieMode_ReadNumpadKey();
+	if (selected < 1 || selected > 9)
+	{
+		return;
+	};
+	
+	MOD_MovieMode_SelectedSet = selected;
+	Print(ConcatStrings("Wybrano zestaw ", IntToString(selected)));
+};
+
+func int MOD_MovieMode_PrepareTarget()
+{
+	o_hero = Hlp_GetNpc(hero);
+	if (Hlp_Is_oCNpc(o_hero.focus_vob))
+	{
+		o_other = MEM_PtrToInst(o_hero.focus_vob);
+		return true;
+	};
+	
+	return false;
+};
+
+func void MOD_MovieMode_ExecuteAction(var int actionIndex)
+{
+	if (MOD_MovieMode_SelectedSet < 1)
+	{
+		MOD_MovieMode_SelectedSet = 1;
+	};
+	
+	if (MOD_MovieMode_SelectedSet == 1)
+	{
+		if		(actionIndex == 1)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_01"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 2)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_02"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 3)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_03"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 4)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_04"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 5)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_05"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 6)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_06"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 7)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_07"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 8)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_08"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 9)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_09"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 2)
+	{
+		if		(actionIndex == 1)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_10"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 2)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_11"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 3)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_12"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 4)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_13"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 5)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_14"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 6)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_15"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 7)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_16"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 8)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_17"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	}
+		else if	(actionIndex == 9)	{	AI_PlayAni(hero, "T_DIALOGGESTURE_18"); Mdl_StartFaceAni(hero, "VISEME", 1, -1);	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 3)
+	{
+		if		(actionIndex == 1)	{	Mdl_StartFaceAni(hero, "S_NEUTRAL", 1, -1);		}
+		else if	(actionIndex == 2)	{	Mdl_StartFaceAni(hero, "S_EYESCLOSED", 0.5, -1);	}
+		else if	(actionIndex == 3)	{	Mdl_StartFaceAni(hero, "S_EYESCLOSED", 1, -1);	}
+		else if	(actionIndex == 4)	{	Mdl_StartFaceAni(hero, "S_FRIGHTENED", 1, -1);	}
+		else if	(actionIndex == 5)	{	Mdl_StartFaceAni(hero, "S_FRIENDLY", 0.5, -1);	}
+		else if	(actionIndex == 6)	{	Mdl_StartFaceAni(hero, "T_HURT", 1, -1);			}
+		else if	(actionIndex == 7)	{	Mdl_StartFaceAni(hero, "S_ANGRY", 1, -1);		}
+		else if	(actionIndex == 8)	{	Mdl_StartFaceAni(hero, "S_HOSTILE", 1, -1);		}
+		else if	(actionIndex == 9)	{	Mdl_StartFaceAni(hero, "VISEME", 0.5, -1);		};
+	}
+	else if (MOD_MovieMode_SelectedSet == 4)
+	{
+		if		(actionIndex == 1)	{	AI_PlayAni(hero, "T_QUICKTURN");		}
+		else if	(actionIndex == 2)	{	AI_PlayAni(hero, "S_RUN");				}
+		else if	(actionIndex == 3)	{	AI_PlayAni(hero, "S_WALK");				}
+		else if	(actionIndex == 4)	{	AI_PlayAni(hero, "T_GESTURE_TELL");		}
+		else if	(actionIndex == 5)	{	AI_PlayAni(hero, "T_GESTURE_YES");		}
+		else if	(actionIndex == 6)	{	AI_PlayAni(hero, "T_GESTURE_NO");		}
+		else if	(actionIndex == 7)	{	AI_PlayAni(hero, "T_GESTURE_SHRUG");	}
+		else if	(actionIndex == 8)	{	AI_PlayAni(hero, "T_GESTURE_MAKE");		}
+		else if	(actionIndex == 9)	{	AI_PlayAni(hero, "T_GESTURE_OFFER");	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 5)
+	{
+		//if		(actionIndex == 1)	{	MOD_MovieMode_SaveCamera(1);	}
+		//else if	(actionIndex == 2)	{	MOD_MovieMode_SaveCamera(2);	}
+		//else if	(actionIndex == 3)	{	MOD_MovieMode_SaveCamera(3);	}
+		//else if	(actionIndex == 4)	{	MOD_MovieMode_SaveCamera(4);	}
+		//else if	(actionIndex == 5)	{	MOD_MovieMode_SaveCamera(5);	}
+		//else if	(actionIndex == 6)	{	MOD_MovieMode_SaveCamera(6);	}
+		//else if	(actionIndex == 7)	{	MOD_MovieMode_SaveCamera(7);	}
+		//else if	(actionIndex == 8)	{	MOD_MovieMode_SaveCamera(8);	}
+		//else if	(actionIndex == 9)	{	MOD_MovieMode_SaveCamera(9);	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 6)
+	{
+		//if		(actionIndex == 1)	{	MOD_MovieMode_LoadCameraSlot(1);	}
+		//else if (actionIndex == 2)	{	MOD_MovieMode_LoadCameraSlot(2);	}
+		//else if (actionIndex == 3)	{	MOD_MovieMode_LoadCameraSlot(3);	}
+		//else if (actionIndex == 4)	{	MOD_MovieMode_LoadCameraSlot(4);	}
+		//else if (actionIndex == 5)	{	MOD_MovieMode_LoadCameraSlot(5);	}
+		//else if (actionIndex == 6)	{	MOD_MovieMode_LoadCameraSlot(6);	}
+		//else if (actionIndex == 7)	{	MOD_MovieMode_LoadCameraSlot(7);	}
+		//else if (actionIndex == 8)	{	MOD_MovieMode_LoadCameraSlot(8);	}
+		//else if (actionIndex == 9)	{	MOD_MovieMode_LoadCameraSlot(9);	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 7)
+	{
+		if		(actionIndex == 1)	{	AI_PlayAni(hero, "C_LOOK_7");	}
+		else if	(actionIndex == 2)	{	AI_PlayAni(hero, "C_LOOK_8");	}
+		else if	(actionIndex == 3)	{	AI_PlayAni(hero, "C_LOOK_9");	}
+		else if	(actionIndex == 4)	{	AI_PlayAni(hero, "C_LOOK_4");	}
+		else if	(actionIndex == 5)	{	AI_PlayAni(hero, "C_LOOK_5");	}
+		else if	(actionIndex == 6)	{	AI_PlayAni(hero, "C_LOOK_6");	}
+		else if	(actionIndex == 7)	{	AI_PlayAni(hero, "C_LOOK_1");	}
+		else if	(actionIndex == 8)	{	AI_PlayAni(hero, "C_LOOK_2");	}
+		else if	(actionIndex == 9)	{	AI_PlayAni(hero, "C_LOOK_3");	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 8)
+	{
+		if		(actionIndex == 1)	{	AI_PlayAni(hero, "C_POINT_7");	}
+		else if	(actionIndex == 2)	{	AI_PlayAni(hero, "C_POINT_8");	}
+		else if	(actionIndex == 3)	{	AI_PlayAni(hero, "C_POINT_9");	}
+		else if	(actionIndex == 4)	{	AI_PlayAni(hero, "C_POINT_4");	}
+		else if	(actionIndex == 5)	{	AI_PlayAni(hero, "C_POINT_5");	}
+		else if	(actionIndex == 6)	{	AI_PlayAni(hero, "C_POINT_6");	}
+		else if	(actionIndex == 7)	{	AI_PlayAni(hero, "C_POINT_1");	}
+		else if	(actionIndex == 8)	{	AI_PlayAni(hero, "C_POINT_2");	}
+		else if	(actionIndex == 9)	{	AI_PlayAni(hero, "C_POINT_3");	};
+	}
+	else if (MOD_MovieMode_SelectedSet == 9)
+	{
+		if (!MOD_MovieMode_PrepareTarget())
+		{
+			Print("Brak postaci w fokusie.");
+			return;
+		};
+		
+		if		(actionIndex == 1)	{	B_LookAtNpc(o_other, hero);						}
+		else if	(actionIndex == 2)	{	B_StopLookAt(o_other);							}
+		else if	(actionIndex == 3)	{	B_TurnToNpc(o_other, hero);						}
+		else if	(actionIndex == 4)	{	AI_TurnAway(o_other, hero);						}
+		else if	(actionIndex == 5)	{	B_Say_Overlay(o_other, o_other, "$Aargh_1");	}
+		else if	(actionIndex == 6)	{	AI_PlayAni(o_other, "T_DIALOGGESTURE_01");		}
+		else if	(actionIndex == 7)	{	AI_PlayAni(o_other, "C_LOOK_2");				}
+		else if	(actionIndex == 8)	{	AI_PlayAni(o_other, "C_POINT_5");				}
+		else if	(actionIndex == 9)	{	AI_PlayAni(o_other, "C_POINT_9");				};
+	};
+};
+
+func void MOD_MovieMode_ExecuteSet()
+{
+	var int actionIndex; actionIndex = MOD_MovieMode_ReadNumpadKey();
+	if (actionIndex < 1 || actionIndex > 9)
+	{
+		return;
+	};
+	
+	MOD_MovieMode_ExecuteAction(actionIndex);
+	Print(ConcatStrings("Wykonano akcjê ", IntToString(actionIndex)));
+};
+
+///******************************************************************************************
+/// MOD_MovieMode: animations
+///******************************************************************************************
 func string MOD_MovieMode_SetAni(var int slot, var int type, var string ani)
 {
 	if (slot >= 0 && slot <= 9)
@@ -45,22 +209,22 @@ func void MOD_MovieMode_DoAni_All(var C_Npc oth, var C_Npc slf)
 
 func void MOD_MovieMode_DoAni()
 {
-	MOD_SetMemoKeys();
+	var int slot; slot = MOD_MovieMode_ReadNumpadKey();
 	
 	if (MEM_KeyState(MEM_GetKey("keyDown")) == KEY_PRESSED || MEM_KeyState(MEM_GetSecondaryKey("keyDown")) == KEY_PRESSED)
 	{
 		AI_PlayAni (hero, "T_QUICKTURN");
 		return;
 	}
-	else if (MOD_MemoKey1 == -1)
+	else if (slot < 0 || slot > 9)
 	{
 		return;
 	};
 	
-	var string parameter; parameter = MEM_ReadStatStringArr(MOD_MemoKey_Ani, MOD_MemoKey1);
+	var string parameter; parameter = MEM_ReadStatStringArr(MOD_MemoKey_Ani, slot);
 	if (!Hlp_StrCmp(parameter, ""))
 	{
-		var int type; type = MEM_ReadStatArr(MOD_MemoKey_AniParams, MOD_MemoKey1);
+		var int type; type = MEM_ReadStatArr(MOD_MemoKey_AniParams, slot);
 		
 		if (type == TARGET_COLLECT_CASTER)
 		{
@@ -78,137 +242,12 @@ func void MOD_MovieMode_DoAni()
 		};
 	};
 	
-	Print(ConcatStrings("V ", IntToString(MOD_MemoKey1)));
-	MOD_MemoKey1 = -1;
+	Print(ConcatStrings("key: ", IntToString(slot)));
 };
 
 ///******************************************************************************************
-/// MOD_MovieMode_DialogGesture
+/// MOD_MoveMode: camera
 ///******************************************************************************************
-func void MOD_MovieMode_DoDialogGesture()
-{
-	MOD_SetMemoKeys();
-	
-	if (MOD_MemoKey2 == -1)
-	{
-		return;
-	};
-	
-	if		((MOD_MemoKey1*10 + MOD_MemoKey2) <= 21)		{	Mdl_StartFaceAni (hero, "VISEME", 1.0, -1);	}
-	else if	(MOD_MemoKey1 == 2 && MOD_MemoKey2 == 2)	{	Mdl_StartFaceAni (hero, "VISEME", 0.8, -1);	}
-	else if	(MOD_MemoKey1 == 2 && MOD_MemoKey2 == 3)	{	Mdl_StartFaceAni (hero, "VISEME", 0.6, -1);	}
-	else if	(MOD_MemoKey1 == 2 && MOD_MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "VISEME", 0.4, -1);	}
-	else if	(MOD_MemoKey1 == 2 && MOD_MemoKey2 == 5)	{	Mdl_StartFaceAni (hero, "VISEME", 0.2, -1);	};
-	
-	if		(MOD_MemoKey1 == 0 && MOD_MemoKey2 == 1)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_01");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 2)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_02");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 3)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_03");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 4)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_04");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 5)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_05");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 6)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_06");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 7)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_07");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 8)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_08");	}
-	else if (MOD_MemoKey1 == 0 && MOD_MemoKey2 == 9)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_09");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 0)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_10");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 1)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_11");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 2)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_12");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 3)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_13");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 4)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_14");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 5)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_15");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 6)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_16");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 7)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_17");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 8)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_18");	}
-	else if (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 9)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_19");	}
-	else if (MOD_MemoKey1 == 2 && MOD_MemoKey2 == 0)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_20");	}
-	else if (MOD_MemoKey1 == 2 && MOD_MemoKey2 == 1)	{	AI_PlayAni (hero, "T_DIALOGGESTURE_21");	}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 1)	{	AI_PlayAni (hero, "C_LOOK_7");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 2)	{	AI_PlayAni (hero, "C_LOOK_8");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 3)	{	AI_PlayAni (hero, "C_LOOK_9");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 4)	{	AI_PlayAni (hero, "C_LOOK_4");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 5)	{	AI_PlayAni (hero, "C_LOOK_5");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 6)	{	AI_PlayAni (hero, "C_LOOK_6");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 7)	{	AI_PlayAni (hero, "C_LOOK_1");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 8)	{	AI_PlayAni (hero, "C_LOOK_2");				}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 9)	{	AI_PlayAni (hero, "C_LOOK_3");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 1)	{	AI_PlayAni (hero, "C_POINT_7");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 2)	{	AI_PlayAni (hero, "C_POINT_8");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 3)	{	AI_PlayAni (hero, "C_POINT_9");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 4)	{	AI_PlayAni (hero, "C_POINT_4");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 5)	{	AI_PlayAni (hero, "C_POINT_5");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 6)	{	AI_PlayAni (hero, "C_POINT_6");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 7)	{	AI_PlayAni (hero, "C_POINT_1");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 8)	{	AI_PlayAni (hero, "C_POINT_2");				}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 9)	{	AI_PlayAni (hero, "C_POINT_3");				};
-	
-	Print(ConcatStrings(ConcatStrings("Z ", IntToString(MOD_MemoKey1)), IntToString(MOD_MemoKey2)));
-	//MOD_MemoKey1 = -1;
-	MOD_MemoKey2 = -1;
-};
-
-///******************************************************************************************
-/// MOD_MovieMode_FaceAni
-///******************************************************************************************
-func void MOD_MovieMode_DoFaceAni()
-{
-	MOD_SetMemoKeys();
-	
-	if (MOD_MemoKey2 == -1)
-	{
-		return;
-	};
-	
-	if		(MOD_MemoKey1 == 1 && MOD_MemoKey2 == 1)											{	Mdl_StartFaceAni (hero, "S_NEUTRAL", 1, -1);			}
-	else if (MOD_MemoKey1 == 2 && MOD_MemoKey2 == 2)											{	Mdl_StartFaceAni (hero, "S_EYESCLOSED", 1, -1);		}
-	else if (MOD_MemoKey1 == 2 && MOD_MemoKey2 == 1) || (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 2)	{	Mdl_StartFaceAni (hero, "S_EYESCLOSED", 0.4, -1);	}
-	else if (MOD_MemoKey1 == 3 && MOD_MemoKey2 == 3)											{	Mdl_StartFaceAni (hero, "T_HURT", 1, -1);			}
-	else if (MOD_MemoKey1 == 3 && MOD_MemoKey2 == 1) || (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 3)	{	Mdl_StartFaceAni (hero, "T_HURT", 0.5, -1);			}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 4)											{	Mdl_StartFaceAni (hero, "S_ANGRY", 1, -1);			}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 1) || (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_ANGRY", 0.6, -1);			}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 6) || (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_HOSTILE", 1, -1);			}
-	else if (MOD_MemoKey1 == 4 && MOD_MemoKey2 == 5) || (MOD_MemoKey1 == 5 && MOD_MemoKey2 == 4)	{	Mdl_StartFaceAni (hero, "S_HOSTILE", 0.5, -1);		}
-	else if (MOD_MemoKey1 == 5 && MOD_MemoKey2 == 5)											{	Mdl_StartFaceAni (hero, "S_FRIGHTENED", 1, -1);		}
-	else if (MOD_MemoKey1 == 5 && MOD_MemoKey2 == 1) || (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 5)	{	Mdl_StartFaceAni (hero, "S_FRIGHTENED", 0.5, -1);	}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 6) 											{	Mdl_StartFaceAni (hero, "S_FRIENDLY", 1, -1);		}
-	else if (MOD_MemoKey1 == 6 && MOD_MemoKey2 == 1) || (MOD_MemoKey1 == 1 && MOD_MemoKey2 == 6)	{	Mdl_StartFaceAni (hero, "S_FRIENDLY", 0.4, -1);		};
-	
-	Print(ConcatStrings(ConcatStrings("F ", IntToString(MOD_MemoKey1)), IntToString(MOD_MemoKey2)));
-	//MOD_MemoKey1 = -1;
-	MOD_MemoKey2 = -1;
-};
-
-///******************************************************************************************
-/// MOD_MovieMode_SubScript
-///******************************************************************************************
-func void MOD_MovieMode_ExecSubScript()
-{
-	MOD_SetMemoKeys();
-	
-	if (MOD_MemoKey2 == -1)
-	{
-		return;
-	};
-	
-	//o_hero = Hlp_GetNpc(hero);
-	//o_other = MEM_PtrToInst(o_hero.focus_vob);
-	
-	if		(MOD_MemoKey1 == 1)		{	B_LookAtNpc(o_other, hero);						}
-	else if	(MOD_MemoKey1 == 2)		{	B_StopLookAt(o_other);							}
-	else if	(MOD_MemoKey1 == 3)		{	Mdl_StartFaceAni(o_other, "VISEME", 1, -1);		}
-	else if	(MOD_MemoKey1 == 4)		{	B_TurnToNpc (o_other, hero);					}
-	else if	(MOD_MemoKey1 == 5)		{	AI_TurnAway (o_other, hero);					}
-	else if	(MOD_MemoKey1 == 6)		{	B_Say_Overlay (o_other, o_other, "$Aargh_1");	};
-	
-	Print(ConcatStrings("NumDel ", IntToString(MOD_MemoKey1)));
-	MOD_MemoKey1 = -1;
-};
-
-///******************************************************************************************
-/// MOD_MoveMode_Camera
-///******************************************************************************************
-
-var int MOD_MovieMode_CamPos[120];
-var int MOD_MovieMode_CamSaved[10];
-
 func void MOD_MovieMode_SaveCamera (var int slot)
 {
 	if (slot < 0 || slot > 9)
@@ -232,23 +271,16 @@ func void MOD_MovieMode_SaveCamera (var int slot)
 
 func void MOD_MovieMode_GetCamera()
 {
-	MOD_SetMemoKeys();
+	var int slot; slot = MOD_MovieMode_ReadNumpadKey();
 	
-	if (MOD_MemoKey1 == -1)
+	if (slot < 0 || slot > 9)
 	{
 		return;
 	};
 	
-	if (MOD_MemoKey1 < 0 || MOD_MemoKey1 > 9)
+	if (!MEM_ReadStatArr(MOD_MovieMode_CamSaved, slot))
 	{
-		MOD_MemoKey1 = -1;
-		return;
-	};
-	
-	if (!MEM_ReadStatArr(MOD_MovieMode_CamSaved, MOD_MemoKey1))
-	{
-		Print(ConcatStrings("Brak zapisanej kamery pod ", IntToString(MOD_MemoKey1)));
-		MOD_MemoKey1 = -1;
+		Print(ConcatStrings("Brak zapisanej kamery pod ", IntToString(slot)));
 		return;
 	};
 	
@@ -259,9 +291,7 @@ func void MOD_MovieMode_GetCamera()
 	repeat(i, 12);
 	if (i != 4)
 	{
-		MEM_WriteStatArr(cam.trafoObjToWorld, i, MEM_ReadStatArr(MOD_MovieMode_CamPos, MOD_MemoKey1*12 + i));
+		MEM_WriteStatArr(cam.trafoObjToWorld, i, MEM_ReadStatArr(MOD_MovieMode_CamPos, slot*12 + i));
 	};
 	end;
-	
-	MOD_MemoKey1 = -1;
 };

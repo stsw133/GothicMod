@@ -1,23 +1,25 @@
 ///******************************************************************************************
 /// TICK_TOCK
+///      Variables
 ///******************************************************************************************
 
 var int TimeDust_WAIT;
 var string TimeDust_WP;
 
 ///******************************************************************************************
-/// Natural regeneration
+/// TICK_TOCK
+///      Natural regeneration
 ///******************************************************************************************
 
 /// ------ HP regen ------
-func void TT_1000_RGHP()
+func void TT_1000_RegenHP()
 {
 	/// if player IS poisoned
 	if (ATS[ATS_PoisonPoints] > 0)
 	{
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, -ATS[ATS_PoisonPoints]);
 	}
-	/// if player IS NOT poisoned
+	/// HP regen (if player IS NOT poisoned)
 	else
 	{
 		regenPoints[BarOrderHP] += regenPower[BarOrderHP];
@@ -27,180 +29,202 @@ func void TT_1000_RGHP()
 };
 
 /// ------ MP regen ------
-func void TT_1000_RGMP()
+func void TT_1000_RegenMP()
 {
-	/// if player IS NOT obsessed
-	if (!ATS[ATS_IsObsessed])
-	{
-		regenPoints[BarOrderMP] += regenPower[BarOrderMP] + Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC)*10;
-		Npc_ChangeAttribute (hero, ATR_MANA, regenPoints[BarOrderMP]/10);
-		regenPoints[BarOrderMP] -= regenPoints[BarOrderMP]/10*10;
-	};
-};
-
-/// ------ SP regen ------
-func void TT_1000_RGSP()
-{
-	/// SchnellerHering effect
-	if (SchnellerHeringTime > 0)
-	{
-		SchnellerHeringTime -= 1;
-		if (SchnellerHeringTime == 0)
-		{
-			End_ItFo_Addon_SchnellerHering();
-		};
-	}
-	/// if player DO NOT sprint and DO NOT jump
-	else if (!(C_BodyStateContains(hero, BS_RUN) && ATS[ATS_SprintState]) && !C_BodyStateContains(hero, BS_JUMP))
-	{
-		regenPoints[BarOrderSP] += 50 + regenPower[BarOrderSP];
-		hero.aivar[AIV_Stamina] += regenPoints[BarOrderSP]/10;
-		regenPoints[BarOrderSP] -= regenPoints[BarOrderSP]/10*10;
-		Npc_StaminaRefresh(hero);
-	};
-};
-
-/// ------ counters drop ------
-func void TT_1000_CsDrop()
-{
-	/// if player has magical shield
-	if (ATS[ATS_ShieldPoints] > 0)
-	{
-		ATS[ATS_ShieldPoints] -= 1;
-	};
-	/// if player has underwater time
-	if (ATS[ATS_UnderwaterTime] > 0)
-	{
-		ATS[ATS_UnderwaterTime] -= 1;
-		if (ATS[ATS_UnderwaterTime] == 0)
-		{
-			End_ItPo_Underwater();
-		};
-	};
-};
-
-///******************************************************************************************
-/// Every 5 seconds
-///******************************************************************************************
-func void TT_5000()
-{
-	if (MEM_Game.pause_screen)
+	/// no regen if player IS obsessed
+	if (ATS[ATS_IsObsessed])
 	{
 		return;
 	};
 	
-	if (!Npc_IsDead(hero))
+	/// MP regen
+	regenPoints[BarOrderMP] += regenPower[BarOrderMP];
+	Npc_ChangeAttribute (hero, ATR_MANA, regenPoints[BarOrderMP]/10);
+	regenPoints[BarOrderMP] -= regenPoints[BarOrderMP]/10*10;
+};
+
+/// ------ SP regen ------
+func void TT_1000_RegenSP()
+{
+	/// no regen if player runs
+	if (C_BodyStateContains(hero, BS_RUN) && ATS[ATS_SprintState])
 	{
-		/// magic dust for time slow spell
-		TimeDust_WAIT += 1;
-		if (TimeDust_WAIT == 360)	/// every 30 minutes
-		{
-			TimeDust_WAIT = 0;
-			if (enableTimeDust)
-			{
-				Wld_InsertItem (ItMi_TimeDust, TimeDust_WP);
-			};
-			TimeDust_WP = Npc_GetNearestWP(hero);
-		};
-		
-		/// player speed scale
-		//Npc_SetSpeed (hero, 1000 + hero.attribute[ATR_DEXTERITY]);
+		return;
 	};
 	
-	/// sleep timer
-	if (ATS[ATS_RestedTime] > 0)
+	/// no regen if player jumps
+	if (C_BodyStateContains(hero, BS_JUMP))
 	{
-		ATS[ATS_RestedTime] -= 1;
-		if (ATS[ATS_RestedTime] == 0)
-		{
-			Print("Jesteœ ju¿ dostatecznie zmêczony by zasn¹æ.");
-		};
+		return;
 	};
 	
-	/// alcohol timer
-	if (alcoholTime > 0)
+	/// no regen if player has SchnellerHering effect
+	if (Buff_Has(hero, Buff_SchnellerHering))
+	{
+		return;
+	};
+	
+	/// SP regen
+	regenPoints[BarOrderSP] += 50 + regenPower[BarOrderSP];
+	hero.aivar[AIV_Stamina] += regenPoints[BarOrderSP]/10;
+	regenPoints[BarOrderSP] -= regenPoints[BarOrderSP]/10*10;
+	Npc_StaminaRefresh(hero);
+};
+
+/// ------ Potions ------
+func void TT_1000_PotionsProcess()
+{
+	/// REGEN POTIONS or FOOD & DRINKS
+	/// hp
+	if (regenPotionTime[BarOrderHP] > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, regenPotionPointsPerSec[BarOrderHP]);
+		regenPotionTime[BarOrderHP] -= 1;
+		if (regenPotionTime[BarOrderHP] == 0) { Wld_StopEffect("SPELLFX_HEALTHPOTION_NPC"); };
+	}
+	else if (foodTime[BarOrderHP] > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);
+		foodTime[BarOrderHP] -= 1;
+	};
+	/// mp
+	if (regenPotionTime[BarOrderMP] > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_MANA, regenPotionPointsPerSec[BarOrderMP]);
+		regenPotionTime[BarOrderMP] -= 1;
+		if (regenPotionTime[BarOrderMP] == 0) { Wld_StopEffect("SPELLFX_MANAPOTION_NPC"); };
+	}
+	else if (foodTime[BarOrderMP] > 0)
+	{
+		Npc_ChangeAttribute (hero, ATR_MANA, 1);
+		foodTime[BarOrderMP] -= 1;
+	};
+	/// sp
+	if (regenPotionTime[BarOrderSP] > 0)
+	{
+		hero.aivar[AIV_Stamina] += regenPotionPointsPerSec[BarOrderSP];
+		regenPotionTime[BarOrderSP] -= 1;
+		if (regenPotionTime[BarOrderSP] == 0) { Wld_StopEffect("SPELLFX_YELLOWPOTION_NPC"); };
+	}
+	else if (foodTime[BarOrderSP] > 0)
+	{
+		hero.aivar[AIV_Stamina] += 1;
+		foodTime[BarOrderSP] -= 1;
+	};
+	/// xp
+	if (foodTime[BarOrderXP] > 0)
 	{
 		hero.exp += 1;
 		if (hero.exp >= hero.exp_next)
 		{
 			B_GivePlayerExp(0);
 		};
-		
-		alcoholTime -= 1;
-		if (alcoholTime == 0)
-		{
-			Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKEN.mds");
-		};
-	};
-	
-	/// Gregy
-	GregyRefreshStatus();
-};
-
-///******************************************************************************************
-/// Every 1 second
-///******************************************************************************************
-func void TT_1000()
-{
-	if (MEM_Game.pause_screen)
-	{
-		return;
-	};
-	
-	if (!Npc_IsDead(hero))
-	{
-		/// natural regeneration
-		TT_1000_RGHP();
-		TT_1000_RGMP();
-		TT_1000_RGSP();
-		TT_1000_CsDrop();
-		
-		///	potions process & food
-		Potions_Process();
-		
-		/// spell effects
-		if (mAuraPalTime > 0) { mAuraPalTime -= 1; };
-		if (ATS[ATS_StealthTime] > 0) { MOD_SetStealth(hero, ATS[ATS_StealthTime] - 1); };
-		if (mAuraTime > 0)
-		{
-			if (mAuraType == MAGIC_MYS) { Npc_ChangeAttribute(hero, ATR_HITPOINTS, 5); };
-			
-			mAuraTime -= 1;
-			if (mAuraTime == 0)
-			{
-				B_SetMagicAura (default, 0, 0);
-			};
-		};
-	};
-	
-	/// in fight time & hits
-	if (ATS[ATS_InFightTime] > 0)
-	{
-		ATS[ATS_InFightTime] -= 1;
-		ATS[ATS_OverloadTime] += 1;
-		
-		if (ATS[ATS_InFightTime] == 0)
-		{
-			ATS[ATS_InFightHits] = 0;
-			ATS[ATS_OverloadTime] = 0;
-		};
+		foodTime[BarOrderXP] -= 1;
 	};
 };
 
 ///******************************************************************************************
-/// Every 200 miliseconds
+/// TICK_TOCK
+///      Counter drops
 ///******************************************************************************************
-func void TT_200()
+
+/// ------ time dust ------
+func void TT_5000_HandleTimeDust()
 {
-	if (MEM_Game.pause_screen)
+	if (Npc_IsDead(hero))
 	{
 		return;
 	};
 	
-	/// reduce slowdown
+	TimeDust_WAIT += 1;
+	if (TimeDust_WAIT == 360) /// every 30 minutes (360*5s=1800s)
+	{
+		TimeDust_WAIT = 0;
+		if (enableTimeDust)
+		{
+			Wld_InsertItem (ItMi_TimeDust, TimeDust_WP);
+		};
+		TimeDust_WP = Npc_GetNearestWP(hero);
+	};
+};
+
+/// ------ rest timer ------
+func void TT_5000_HandleRestTimer()
+{
+	if (ATS[ATS_RestedTime] <= 0)
+	{
+		return;
+	};
+	
+	ATS[ATS_RestedTime] -= 1;
+	if (ATS[ATS_RestedTime] == 0)
+	{
+		Print("Jesteœ ju¿ dostatecznie zmêczony by zasn¹æ.");
+	};
+};
+
+/// ------ alcohol timer ------
+func void TT_5000_HandleAlcoholTimer()
+{
+	if (alcoholTime <= 0)
+	{
+		return;
+	};
+	
+	hero.exp += 1;
+	if (hero.exp >= hero.exp_next) { B_GivePlayerExp(0); };
+	
+	alcoholTime -= 1;
+	if (alcoholTime == 0)
+	{
+		Mdl_RemoveOverlayMDS (hero, "HUMANS_DRUNKEN.mds");
+	};
+};
+
+/// ------ spell effects ------
+func void TT_1000_HandleSpellEffects()
+{
+	if (ATS[ATS_ShieldPoints] > 0) { ATS[ATS_ShieldPoints] -= 1; }; /// if player has magical shield
+	if (mAuraPalTime > 0) { mAuraPalTime -= 1; };
+	if (ATS[ATS_PerfumeTime] > 0) { ATS[ATS_PerfumeTime] -= 1; };
+	if (ATS[ATS_StealthTime] > 0) { MOD_SetStealth(hero, ATS[ATS_StealthTime] - 1); };
+	if (mAuraTime > 0)
+	{
+		if (mAuraType == MAGIC_MYS) { Npc_ChangeAttribute(hero, ATR_HITPOINTS, 5); };
+		
+		mAuraTime -= 1;
+		if (mAuraTime == 0) { B_SetMagicAura (default, 0, 0); };
+	};
+};
+
+/// ------ fight timers ------
+func void TT_1000_HandleFightTimers()
+{
+	if (ATS[ATS_InFightTime] <= 0)
+	{
+		return;
+	};
+	
+	ATS[ATS_InFightTime] -= 1;
+	ATS[ATS_OverloadTime] += 1;
+	
+	if (ATS[ATS_InFightTime] == 0)
+	{
+		ATS[ATS_InFightHits] = 0;
+		ATS[ATS_OverloadTime] = 0;
+	};
+};
+
+/// ------ slowdown ------
+func void TT_200_ReduceSlowdown()
+{
 	if (mSlowPoints > 0)	{	mSlowPoints -= 1;	};
 	if (mSlowTime > 0)		{	mSlowTime -= 1;		};
-	
+};
+
+/// ------ stamina ------
+func void TT_200_HandleStamina()
+{
 	/// reduce stamina while sprinting
 	if ((C_BodyStateContains(hero, BS_RUN) && ATS[ATS_SprintState]) || C_BodyStateContains(hero, BS_JUMP))
 	{
@@ -224,78 +248,83 @@ func void TT_200()
 	
 	/// refresh stamina
 	Npc_StaminaRefresh(hero);
-	
-	/// use mobs
-	MOD_Mobs();
 };
 
 ///******************************************************************************************
-/// Every 5 miliseconds
+/// Every 5 seconds
 ///******************************************************************************************
-func void TT_5()
+func void TT_5000()
 {
-	if (MEM_Game.pause_screen || Npc_IsDead(hero))
+	if (MEM_Game.pause_screen)
 	{
 		return;
 	};
 	
-	/// ------ interaction key ------
-	MOD_HandleInteractionHotkey();
-	
-	/// ------ sprint key ------
-	if (MEM_KeyState(MEM_GetKey("keySprint")) == KEY_HOLD || MEM_KeyState(MEM_GetSecondaryKey("keySprint")) == KEY_HOLD)
-	&& ((hero.aivar[AIV_Stamina] > 0 && ATS[ATS_HeavyArmor] < 1 && !alcoholTime && !ATS[ATS_InFightTime]) || movieMode)
+	TT_5000_HandleTimeDust();
+	TT_5000_HandleRestTimer();
+	TT_5000_HandleAlcoholTimer();
+	GregyRefreshStatus(); /// handle Gregy
+};
+
+///******************************************************************************************
+/// Every 1 second
+///******************************************************************************************
+func void TT_1000()
+{
+	if (MEM_Game.pause_screen)
 	{
-		if (ATS[ATS_SprintState] == 0)
-		{
-			ATS[ATS_SprintState] = 1;
-		};
-		if (ATS[ATS_SprintState] == 1)
-		{
-			if (!C_BodyStateContains(hero, BS_FALL) && !C_BodyStateContains(hero, BS_JUMP))
-			{
-				ATS[ATS_SprintState] = 2;
-				Mdl_ApplyOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
-			};
-		};
-	}
-	else
-	{
-		if (ATS[ATS_SprintState] == 2)
-		{
-			ATS[ATS_SprintState] = 3;
-		};
-		if (ATS[ATS_SprintState] == 3)
-		{
-			ATS[ATS_SprintState] = 0;
-			Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
-		};
+		return;
 	};
 	
-	/// ------ movie mode ------
+	if (!Npc_IsDead(hero))
+	{
+		/// natural regeneration
+		TT_1000_RegenHP();
+		TT_1000_RegenMP();
+		TT_1000_RegenSP();
+		TT_1000_PotionsProcess();
+		/// spell effects
+		TT_1000_HandleSpellEffects();
+	};
+	
+	TT_1000_HandleFightTimers(); /// in fight time & hits
+};
+
+///******************************************************************************************
+/// Every 200 miliseconds
+///******************************************************************************************
+func void TT_200()
+{
+	if (MEM_Game.pause_screen)
+	{
+		return;
+	};
+	
+	TT_200_ReduceSlowdown();	/// reduce slowdown
+	TT_200_HandleStamina();		/// reduce stamina
+	MOD_Mobs();					/// use mobs
+	
+	/// time scale for movie mode
 	if (movieMode)
 	{
 		Wld_AddWorldTime(75 + scaleWorldTime);
-		
-		/// ------ ani shortcut keys etc. ------
-		if		(MOD_IsKeyHold("keyMovieModeAni"))		{	MOD_MovieMode_DoAni();				}	/// ani
-		else if	(MOD_IsKeyHold("keyMovieModeDialog"))	{	MOD_MovieMode_DoDialogGesture();	}	/// dialogs
-		else if	(MOD_IsKeyHold("keyMovieModeFace"))		{	MOD_MovieMode_DoFaceAni();			}	/// face ani
-		else if	(MOD_IsKeyHold("keyMovieModeScript"))	{	MOD_MovieMode_ExecSubScript();		}	/// sub scripts
-		else if	(MOD_MemoKey1 != -1)						{	MOD_MemoKey1 = -1; MOD_MemoKey2 = -1;	};	/// reset helper keys
+	};
+};
+
+///******************************************************************************************
+/// Every 8 miliseconds
+///******************************************************************************************
+func void TT_8()
+{
+	if (MEM_Game.pause_screen)
+	{
+		return;
 	};
 	
-	/// ------ hide GUI & camera keys ------
-	if (MEM_KeyState(KEY_F1) == KEY_PRESSED)
+	if (!Npc_IsDead(hero))
 	{
-		MEM_Game.game_drawall = !MEM_Game.game_drawall;
-	}
-	else if (MEM_KeyState(KEY_F9) == KEY_PRESSED)
-	{
-		AI_Wait (hero, 0.1);
-	}
-	else if (MEM_KeyState(KEY_F10) == KEY_HOLD)
-	{
-		MOD_MovieMode_GetCamera();
+		MOD_HandleInteractionHotkey();	/// interaction key
+		MOD_HandleSprintHotkey();		/// sprint key
 	};
+	MOD_HandleGuiAndCameraKeys();	/// GUI and camera keys
 };

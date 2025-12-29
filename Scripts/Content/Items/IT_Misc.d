@@ -725,7 +725,7 @@ instance ItMi_EmptyBottle (ItemPR_Misc)
 	COUNT[5]					=	value;
 };
 
-instance ItKe_LockPick (ItemPR_Misc)
+instance ItKe_Lockpick (ItemPR_Misc)
 {
 	name						=	"Wytrych";
 	value						=	10;

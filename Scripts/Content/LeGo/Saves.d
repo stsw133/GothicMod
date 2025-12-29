@@ -105,7 +105,12 @@ func void _BR_LoadGame() {
         // Quicksave
         slot = 0;
     };
-    if(BR_OpenFile(_BIN_GetSavefilePath(slot))) {
+    var string savefile; savefile = _BIN_GetSavefilePath(slot);
+    if(!_BIN_FileExists(savefile)) {
+        return;
+    };
+
+    if(BR_OpenFile(savefile)) {
         if(_LeGo_Flags & LeGo_PermMem) {
             _PM_UnArchive();
         };

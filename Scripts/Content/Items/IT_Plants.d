@@ -133,17 +133,6 @@ instance ItPl_Blueplant (ItemPR_Plant)
 	COUNT[5]					=	value;
 };
 
-instance ItPl_Purpleplant (ItemPR_Plant)
-{
-	name						=	"Kwiat œwitu";
-	value						=	10;
-	visual						=	"ItPl_Purpleplant.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik mikstur ¿ycia i many.";
-	COUNT[5]					=	value;
-};
-
 ///******************************************************************************************
 /// Perception
 ///******************************************************************************************
@@ -271,7 +260,7 @@ instance ItPl_Power_Herb_01 (ItemPR_Plant)
 };
 
 ///******************************************************************************************
-/// Near water
+/// Special
 ///******************************************************************************************
 instance ItPl_Seaweed (ItemPR_Plant)
 {
@@ -295,97 +284,14 @@ instance ItPl_Stonereed (ItemPR_Plant)
 	COUNT[5]					=	value;
 };
 
-///******************************************************************************************
-/// Mushrooms
-///******************************************************************************************
-instance ItPl_Mushroom_01 (ItemPR_Plant)
+instance ItPl_Purpleplant (ItemPR_Plant)
 {
-	name						=	"Mu³owy grzyb";
-	value						=	5;
-	visual						=	"ItPl_Mushroom_01.3ds";
+	name						=	"Kwiat œwitu";
+	value						=	25;
+	visual						=	"ItPl_Purpleplant.3ds";
 	
 	description					=	name;
-	TEXT[0]						=	"Sk³adnik posi³ków o ³agodnym smaku.";
-	COUNT[5]					=	value;
-};
-
-instance ItPl_Mushroom_02 (ItemPR_Plant)
-{
-	name						=	"Du¿y mu³owy grzyb";
-	value						=	10;
-	visual						=	"ItPl_Mushroom_02.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik posi³ków o ³agodnym smaku.";
-	COUNT[5]					=	value;
-};
-
-///******************************************************************************************
-instance ItPl_Mushroom_03 (ItemPR_Plant)
-{
-	name						=	"Piekielnik";
-	value						=	5;
-	visual						=	"ItPl_Mushroom_cave_01.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik posi³ków o ostrym smaku.";
-	COUNT[5]					=	value;
-};
-
-instance ItPl_Mushroom_04 (ItemPR_Plant)
-{
-	name						=	"Du¿y piekielnik";
-	value						=	10;
-	visual						=	"ItPl_Mushroom_cave_02.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik posi³ków o ostrym smaku.";
-	COUNT[5]					=	value;
-};
-
-///******************************************************************************************
-instance ItPl_Mushroom_05 (ItemPR_Plant)
-{
-	name						=	"Truj¹cy grzyb";
-	value						=	5;
-	visual						=	"ItPl_Mushroom_venom_01.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik trucizn lub odtrutek.";
-	COUNT[5]					=	value;
-};
-
-instance ItPl_Mushroom_06 (ItemPR_Plant)
-{
-	name						=	"Du¿y truj¹cy grzyb";
-	value						=	10;
-	visual						=	"ItPl_Mushroom_venom_02.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik trucizn lub odtrutek.";
-	COUNT[5]					=	value;
-};
-
-///******************************************************************************************
-instance ItPl_Mushroom_07 (ItemPR_Plant)
-{
-	name						=	"Ksiê¿ycowa rosa";
-	value						=	5;
-	visual						=	"ItPl_Mushroom_magic_01.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik lekarstw antymagicznych.";
-	COUNT[5]					=	value;
-};
-
-instance ItPl_Mushroom_08 (ItemPR_Plant)
-{
-	name						=	"Du¿a ksiê¿ycowa rosa";
-	value						=	10;
-	visual						=	"ItPl_Mushroom_magic_02.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik lekarstw antymagicznych.";
+	TEXT[0]						=	"Sk³adnik mikstur widzenia w ciemnoœci.";
 	COUNT[5]					=	value;
 };
 
@@ -458,6 +364,97 @@ instance ItPl_Weed (ItemPR_Plant)
 	visual						=	"ItPl_Weed.3ds";
 	
 	description					=	name;
+	COUNT[5]					=	value;
+};
+
+///******************************************************************************************
+/// Mushrooms
+///******************************************************************************************
+instance ItPl_Mushroom_01 (ItemPR_Plant)
+{
+	name						=	"Mu³owy grzyb";
+	value						=	5;
+	visual						=	"ItPl_Mushroom_01.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik posi³ków o ³agodnym smaku.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_02 (ItemPR_Plant)
+{
+	name						=	"Du¿y mu³owy grzyb";
+	value						=	10;
+	visual						=	"ItPl_Mushroom_02.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik posi³ków o ³agodnym smaku.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_03 (ItemPR_Plant)
+{
+	name						=	"Piekielnik";
+	value						=	5;
+	visual						=	"ItPl_Mushroom_cave_01.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik posi³ków o ostrym smaku.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_04 (ItemPR_Plant)
+{
+	name						=	"Du¿y piekielnik";
+	value						=	10;
+	visual						=	"ItPl_Mushroom_cave_02.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik posi³ków o ostrym smaku.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_05 (ItemPR_Plant)
+{
+	name						=	"Truj¹cy grzyb";
+	value						=	5;
+	visual						=	"ItPl_Mushroom_venom_01.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik trucizn lub odtrutek.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_06 (ItemPR_Plant)
+{
+	name						=	"Du¿y truj¹cy grzyb";
+	value						=	10;
+	visual						=	"ItPl_Mushroom_venom_02.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik trucizn lub odtrutek.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_07 (ItemPR_Plant)
+{
+	name						=	"Ksiê¿ycowa rosa";
+	value						=	5;
+	visual						=	"ItPl_Mushroom_magic_01.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik lekarstw antymagicznych.";
+	COUNT[5]					=	value;
+};
+
+instance ItPl_Mushroom_08 (ItemPR_Plant)
+{
+	name						=	"Du¿a ksiê¿ycowa rosa";
+	value						=	10;
+	visual						=	"ItPl_Mushroom_magic_02.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik lekarstw antymagicznych.";
 	COUNT[5]					=	value;
 };
 

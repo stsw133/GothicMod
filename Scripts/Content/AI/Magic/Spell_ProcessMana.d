@@ -23,6 +23,8 @@ func int Spell_ProcessMana (var int manaInvested)
 	else if (activeSpell == SPL_Resurrection		)	{	return	Spell_Logic_Resurrection		(manaInvested);	}
 	else if (activeSpell == SPL_Rage				)	{	return	Spell_Logic_Rage				(manaInvested);	}
 	else if (activeSpell == SPL_Seduction			)	{	return	Spell_Logic_Seduction			(manaInvested);	}
+	else if (activeSpell == SPL_MindControl			)	{	return	Spell_Logic_MindControl			(manaInvested);	}
+	else if (activeSpell == SPL_PickLock			)	{	return	Spell_Logic_PickLock			(manaInvested);	}
 	else if (activeSpell == SPL_NightToDay			)	{	return	Spell_Logic_NightToDay			(manaInvested);	}
 	else if (activeSpell == SPL_FireBolt			)	{	return	Spell_Logic_FireBolt			(manaInvested);	}
 	
@@ -114,7 +116,8 @@ func int Spell_ProcessMana_Release (var int manaInvested)
 	var int activeSpell; activeSpell = Npc_GetActiveSpell(self);
 	
 	/// common spells
-	if		(activeSpell == SPL_WindFist		)	{	return SPL_SENDCAST;	}
+	if		(activeSpell == SPL_PickLock		)	{	return SPL_SENDCAST;	}
+	else if	(activeSpell == SPL_WindFist		)	{	return SPL_SENDCAST;	}
 	else if	(activeSpell == SPL_ChargeFireball	)	{	return SPL_SENDCAST;	}
 	else if	(activeSpell == SPL_ChargeZap		)	{	return SPL_SENDCAST;	}
 	else if	(activeSpell == SPL_Pyrokinesis		)	{	return SPL_SENDCAST;	}

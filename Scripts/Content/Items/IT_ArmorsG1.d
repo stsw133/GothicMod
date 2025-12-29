@@ -45,6 +45,7 @@ func void SetItArAttributes (var C_Item itm, var int br, var int er, var int pr,
 	itm.protection[PROT_BARRIER]	=	mr;
 	
 	itm.description				=	itm.name;
+	itm.COUNT[0]				=	br;
 	itm.COUNT[1]				=	er;
 	itm.COUNT[2]				=	pr;
 	itm.COUNT[3]				=	fr;

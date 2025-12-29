@@ -1,8 +1,13 @@
-const int zCWorld_DIMENSION = 3; //achwas
-const int zCWorld_VobHashTable_Offset = 600; //0x0258
-const int VOB_HASHTABLE_SIZE = 2048;
+///******************************************************************************************
+/// World
+///******************************************************************************************
 
-class oWorld {
+const int zCWorld_DIMENSION				=	3;
+const int zCWorld_VobHashTable_Offset	=	600; //0x0258
+const int VOB_HASHTABLE_SIZE			=	2048;
+
+class oWorld
+{
 /*0x0000*/    var int    _vtbl;
             //Object
 /*0x0004*/    var int    _zCObject_refCtr;

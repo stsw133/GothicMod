@@ -2,8 +2,8 @@
 /// SPL_Firebolt
 ///******************************************************************************************
 
-const int SPL_Cost_Firebolt				=	10;
-const int SPL_Damage_Firebolt			=	50;
+const int SPL_Cost_Firebolt				=	5;
+const int SPL_Damage_Firebolt			=	25;
 
 ///******************************************************************************************
 instance Spell_Firebolt (C_Spell_Proto)
@@ -23,11 +23,11 @@ func void Spell_Cast_Firebolt()
 };
 /*
 ///******************************************************************************************
-///	SPL_Firebolt
+/// SPL_Firebolt
 ///******************************************************************************************
 
-const int SPL_Cost_Firebolt				=	10;
-const int SPL_Damage_Firebolt			=	50;
+const int SPL_Cost_Firebolt				=	5;
+const int SPL_Damage_Firebolt			=	25;
 
 const int SPL_TimingCast_Firebolt		=	2000;
 const int SPL_Timing_Firebolt			=	800;

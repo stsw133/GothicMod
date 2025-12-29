@@ -528,34 +528,28 @@ instance MENU_OPT_CONTROLS_EXTKEYS (C_MENU_DEF)
 	items[2] = "MENU_ITEM_INP_SPRINT";
 	items[3] = "MENU_ITEM_KEY_NOANIMTAKE";
 	items[4] = "MENU_ITEM_INP_NOANIMTAKE";
-	items[5] = "MENU_ITEM_KEY_SHORTCUTS";
-	items[6] = "MENU_ITEM_INP_SHORTCUTS";
-	items[7] = "MENU_ITEM_KEY_INTERACT";
-	items[8] = "MENU_ITEM_INP_INTERACT";
-	items[9] = "MENU_ITEM_KEY_MOVIEMODE_ANI";
-	items[10] = "MENU_ITEM_INP_MOVIEMODE_ANI";
-	items[11] = "MENU_ITEM_KEY_MOVIEMODE_DIALOG";
-	items[12] = "MENU_ITEM_INP_MOVIEMODE_DIALOG";
-	items[13] = "MENU_ITEM_KEY_MOVIEMODE_FACE";
-	items[14] = "MENU_ITEM_INP_MOVIEMODE_FACE";
-	items[15] = "MENU_ITEM_KEY_MOVIEMODE_SCRIPT";
-	items[16] = "MENU_ITEM_INP_MOVIEMODE_SCRIPT";
-	items[17] = "MENU_ITEM_KEY_WEAPON_LEFT";
-	items[18] = "MENU_ITEM_INP_WEAPON_LEFT";
-	items[19] = "MENU_ITEM_KEY_WEAPON_RIGHT";
-	items[20] = "MENU_ITEM_INP_WEAPON_RIGHT";
-	items[21] = "MENU_ITEM_KEY_WEAPON_PARADE";
-	items[22] = "MENU_ITEM_INP_WEAPON_PARADE";
-	items[23] = "MENU_ITEM_KEY_LOCKFOCUS";
-	items[24] = "MENU_ITEM_INP_LOCKFOCUS";
-	items[25] = "MENU_ITEM_KEY_QUICKHEALTH";
-	items[26] = "MENU_ITEM_INP_QUICKHEALTH";
-	items[27] = "MENU_ITEM_KEY_QUICKMANA";
-	items[28] = "MENU_ITEM_INP_QUICKMANA";
-	items[29] = "MENU_ITEM_PREVMENU";
-	items[30] = "MENU_ITEM_CHG_KEYS_SET_DEFAULT";
-	items[31] = "MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE";
-	items[32] = "MENU_ITEM_CHG_KEYS_BACK";
+	items[5] = "MENU_ITEM_KEY_MOVIEMODE_EXECUTEANI";
+	items[6] = "MENU_ITEM_INP_MOVIEMODE_EXECUTEANI";
+	items[7] = "MENU_ITEM_KEY_MOVIEMODE_SELECTSET";
+	items[8] = "MENU_ITEM_INP_MOVIEMODE_SELECTSET";
+	items[9] = "MENU_ITEM_KEY_MOVIEMODE_EXECUTESET";
+	items[10] = "MENU_ITEM_INP_MOVIEMODE_EXECUTESET";
+	items[11] = "MENU_ITEM_KEY_WEAPON_LEFT";
+	items[12] = "MENU_ITEM_INP_WEAPON_LEFT";
+	items[13] = "MENU_ITEM_KEY_WEAPON_RIGHT";
+	items[14] = "MENU_ITEM_INP_WEAPON_RIGHT";
+	items[15] = "MENU_ITEM_KEY_WEAPON_PARADE";
+	items[16] = "MENU_ITEM_INP_WEAPON_PARADE";
+	items[17] = "MENU_ITEM_KEY_LOCKFOCUS";
+	items[18] = "MENU_ITEM_INP_LOCKFOCUS";
+	items[19] = "MENU_ITEM_KEY_QUICKHEALTH";
+	items[20] = "MENU_ITEM_INP_QUICKHEALTH";
+	items[21] = "MENU_ITEM_KEY_QUICKMANA";
+	items[22] = "MENU_ITEM_INP_QUICKMANA";
+	items[23] = "MENU_ITEM_PREVMENU";
+	items[24] = "MENU_ITEM_CHG_KEYS_SET_DEFAULT";
+	items[25] = "MENU_ITEM_CHG_KEYS_SET_ALTERNATIVE";
+	items[26] = "MENU_ITEM_CHG_KEYS_BACK";
 	flags = flags | MENU_SHOW_INFO;
 };
 
@@ -625,168 +619,92 @@ instance MENU_ITEM_INP_NOANIMTAKE (C_MENU_ITEM_DEF)
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_KEY_SHORTCUTS (C_MENU_ITEM_DEF)
-{
-	text[0] = "Skróty";
-	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 2) + CTRL_GROUP1;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_SHORTCUTS";
-	fontname = MENU_FONT_SMALL;
-	flags = flags;
-};
-instance MENU_ITEM_INP_SHORTCUTS (C_MENU_ITEM_DEF)
-{
-	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
-	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 2) + CTRL_GROUP1;
-	dimx = CTRL_DIMX;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyShortcuts";
-	onchgsetoptionsection = "KEYS";
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_KEY_INTERACT (C_MENU_ITEM_DEF)
-{
-	text[0] = "Interakcja";
-	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 3) + CTRL_GROUP1;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_INTERACT";
-	fontname = MENU_FONT_SMALL;
-	flags = flags;
-};
-instance MENU_ITEM_INP_INTERACT (C_MENU_ITEM_DEF)
-{
-	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
-	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 3) + CTRL_GROUP1;
-	dimx = CTRL_DIMX;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyInteract";
-	onchgsetoptionsection = "KEYS";
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_KEY_MOVIEMODE_ANI (C_MENU_ITEM_DEF)
+///******************************************************************************************
+instance MENU_ITEM_KEY_MOVIEMODE_EXECUTEANI (C_MENU_ITEM_DEF)
 {
 	text[0] = "Film: animacje";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 2) + CTRL_GROUP3;
+	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
+	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_EXECUTEANI";
+	fontname = MENU_FONT_SMALL;
+	flags = flags;
+};
+instance MENU_ITEM_INP_MOVIEMODE_EXECUTEANI (C_MENU_ITEM_DEF)
+{
+	type = MENU_ITEM_INPUT;
+	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
+	posx = CTRL_SP1_2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 2) + CTRL_GROUP3;
+	dimx = CTRL_DIMX;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	backpic = MENU_KBDINPUT_BACK_PIC;
+	onchgsetoption = "keyMovieModeExecuteAni";
+	onchgsetoptionsection = "KEYS";
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENU_ITEM_KEY_MOVIEMODE_SELECTSET (C_MENU_ITEM_DEF)
+{
+	text[0] = "Film: wybór zestawu";
+	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
+	posx = CTRL_SP1_1;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 3) + CTRL_GROUP3;
+	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
+	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_SELECTSET";
+	fontname = MENU_FONT_SMALL;
+	flags = flags;
+};
+instance MENU_ITEM_INP_MOVIEMODE_SELECTSET (C_MENU_ITEM_DEF)
+{
+	type = MENU_ITEM_INPUT;
+	text[1] = "Wcinij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
+	posx = CTRL_SP1_2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 3) + CTRL_GROUP3;
+	dimx = CTRL_DIMX;
+	dimy = 300;
+	fontname = MENU_FONT_SMALL;
+	backpic = MENU_KBDINPUT_BACK_PIC;
+	onchgsetoption = "keyMovieModeSelectSet";
+	onchgsetoptionsection = "KEYS";
+	flags = flags & ~IT_SELECTABLE;
+};
+
+instance MENU_ITEM_KEY_MOVIEMODE_EXECUTESET (C_MENU_ITEM_DEF)
+{
+	text[0] = "Film: akcje zestawu";
+	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
+	posx = CTRL_SP1_1;
 	posy = CTRL_Y_START + (CTRL_Y_STEP * 4) + CTRL_GROUP3;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_ANI";
+	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_EXECUTE";
 	fontname = MENU_FONT_SMALL;
 	flags = flags;
 };
-instance MENU_ITEM_INP_MOVIEMODE_ANI (C_MENU_ITEM_DEF)
+instance MENU_ITEM_INP_MOVIEMODE_EXECUTESET (C_MENU_ITEM_DEF)
 {
 	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
+	text[1] = "Wcinij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
 	posy = CTRL_Y_START + (CTRL_Y_STEP * 4) + CTRL_GROUP3;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
 	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyMovieModeAni";
+	onchgsetoption = "keyMovieModeExecuteSet";
 	onchgsetoptionsection = "KEYS";
 	flags = flags & ~IT_SELECTABLE;
 };
 
-instance MENU_ITEM_KEY_MOVIEMODE_DIALOG (C_MENU_ITEM_DEF)
-{
-	text[0] = "Film: gesty";
-	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 5) + CTRL_GROUP3;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_DIALOG";
-	fontname = MENU_FONT_SMALL;
-	flags = flags;
-};
-instance MENU_ITEM_INP_MOVIEMODE_DIALOG (C_MENU_ITEM_DEF)
-{
-	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
-	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 5) + CTRL_GROUP3;
-	dimx = CTRL_DIMX;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyMovieModeDialog";
-	onchgsetoptionsection = "KEYS";
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_KEY_MOVIEMODE_FACE (C_MENU_ITEM_DEF)
-{
-	text[0] = "Film: mimika";
-	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 6) + CTRL_GROUP3;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_FACE";
-	fontname = MENU_FONT_SMALL;
-	flags = flags;
-};
-instance MENU_ITEM_INP_MOVIEMODE_FACE (C_MENU_ITEM_DEF)
-{
-	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
-	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 6) + CTRL_GROUP3;
-	dimx = CTRL_DIMX;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyMovieModeFace";
-	onchgsetoptionsection = "KEYS";
-	flags = flags & ~IT_SELECTABLE;
-};
-
-instance MENU_ITEM_KEY_MOVIEMODE_SCRIPT (C_MENU_ITEM_DEF)
-{
-	text[0] = "Film: skrypt";
-	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
-	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 7) + CTRL_GROUP3;
-	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
-	onselaction_s[0] = "RUN MENU_ITEM_INP_MOVIEMODE_SCRIPT";
-	fontname = MENU_FONT_SMALL;
-	flags = flags;
-};
-instance MENU_ITEM_INP_MOVIEMODE_SCRIPT (C_MENU_ITEM_DEF)
-{
-	type = MENU_ITEM_INPUT;
-	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
-	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 7) + CTRL_GROUP3;
-	dimx = CTRL_DIMX;
-	dimy = 300;
-	fontname = MENU_FONT_SMALL;
-	backpic = MENU_KBDINPUT_BACK_PIC;
-	onchgsetoption = "keyMovieModeScript";
-	onchgsetoptionsection = "KEYS";
-	flags = flags & ~IT_SELECTABLE;
-};
-
+///******************************************************************************************
 instance MENU_ITEM_KEY_WEAPON_LEFT (C_MENU_ITEM_DEF)
 {
 	text[0] = "Atak z lewej";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 8) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 5) + CTRL_GROUP2;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_WEAPON_LEFT";
 	fontname = MENU_FONT_SMALL;
@@ -800,7 +718,7 @@ instance MENU_ITEM_INP_WEAPON_LEFT (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 8) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 5) + CTRL_GROUP2;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
@@ -818,7 +736,7 @@ instance MENU_ITEM_KEY_WEAPON_RIGHT (C_MENU_ITEM_DEF)
 	text[0] = "Atak z prawej";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 9) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 6) + CTRL_GROUP2;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_WEAPON_RIGHT";
 	fontname = MENU_FONT_SMALL;
@@ -832,7 +750,7 @@ instance MENU_ITEM_INP_WEAPON_RIGHT (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 9) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 6) + CTRL_GROUP2;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
@@ -850,7 +768,7 @@ instance MENU_ITEM_KEY_WEAPON_PARADE (C_MENU_ITEM_DEF)
 	text[0] = "Blok";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 10) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 7) + CTRL_GROUP2;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_WEAPON_PARADE";
 	fontname = MENU_FONT_SMALL;
@@ -864,7 +782,7 @@ instance MENU_ITEM_INP_WEAPON_PARADE (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 10) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 7) + CTRL_GROUP2;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
@@ -882,7 +800,7 @@ instance MENU_ITEM_KEY_LOCKFOCUS (C_MENU_ITEM_DEF)
 	text[0] = "Zablokowanie widoku";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 11) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 8) + CTRL_GROUP2;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_LOCKFOCUS";
 	fontname = MENU_FONT_SMALL;
@@ -896,7 +814,7 @@ instance MENU_ITEM_INP_LOCKFOCUS (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 11) + CTRL_GROUP2;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 8) + CTRL_GROUP2;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
@@ -914,7 +832,7 @@ instance MENU_ITEM_KEY_QUICKHEALTH (C_MENU_ITEM_DEF)
 	text[0] = "Mikstura lecznicza";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 12) + CTRL_GROUP3;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 9) + CTRL_GROUP3;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_QUICKHEALTH";
 	fontname = MENU_FONT_SMALL;
@@ -928,7 +846,7 @@ instance MENU_ITEM_INP_QUICKHEALTH (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 12) + CTRL_GROUP3;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 9) + CTRL_GROUP3;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
@@ -946,7 +864,7 @@ instance MENU_ITEM_KEY_QUICKMANA (C_MENU_ITEM_DEF)
 	text[0] = "Mikstura many";
 	text[1] = "[Del] anuluje wybór, [Enter] zatwierdza nowy.";
 	posx = CTRL_SP1_1;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 13) + CTRL_GROUP3;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 10) + CTRL_GROUP3;
 	onselaction[0] = SEL_ACTION_EXECCOMMANDS;
 	onselaction_s[0] = "RUN MENU_ITEM_INP_QUICKMANA";
 	fontname = MENU_FONT_SMALL;
@@ -960,7 +878,7 @@ instance MENU_ITEM_INP_QUICKMANA (C_MENU_ITEM_DEF)
 	type = MENU_ITEM_INPUT;
 	text[1] = "Wciœnij klawisz maj¹cy odpowiadaæ za dan¹ czynnoœæ.";
 	posx = CTRL_SP1_2;
-	posy = CTRL_Y_START + (CTRL_Y_STEP * 13) + CTRL_GROUP3;
+	posy = CTRL_Y_START + (CTRL_Y_STEP * 10) + CTRL_GROUP3;
 	dimx = CTRL_DIMX;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;

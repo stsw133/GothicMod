@@ -2,8 +2,8 @@
 /// SPL_IceBolt
 ///******************************************************************************************
 
-const int SPL_Cost_IceBolt				=	10;
-const int SPL_Damage_IceBolt			=	50;
+const int SPL_Cost_IceBolt				=	5;
+const int SPL_Damage_IceBolt			=	25;
 
 ///******************************************************************************************
 instance Spell_IceBolt (C_Spell_Proto)

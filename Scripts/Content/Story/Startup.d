@@ -4,31 +4,15 @@
 func void STARTUP_GLOBAL()
 {
 	Game_InitGerman();
-	
 	MEM_InitAll();
 	LeGo_Init(LeGo_All);
 	
 	/// MOD: options
-	selectedHeroSkin = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHeroSkin"));
 	DIFF_Select(STR_ToInt(MEM_GetGothOpt("MOD", "difficulty")));
+	selectedHeroSkin = STR_ToInt(MEM_GetGothOpt("MOD", "selectedHeroSkin"));
 	movieMode = STR_ToInt(MEM_GetGothOpt("MOD", "movieMode"));
 	
-	/// MOD: hook engine
-	MOD_Damage();
-	MOD_ItemFn();
-	MOD_Menu();
-	MOD_MoveFn();
-	QuickSlot_Init();
-	
-	if (!movieMode)
-	{
-		MOD_DisableCheats();
-	};
-	
-	/// MOD: register
-	ConsoleCommands();
-	
-	/// MOD: other
+	/// MOD: init randomized orders
 	InitRandomizedAttributesOrder();
 	InitRandomizedHitchanceOrder();
 	InitRandomizedStoneplateOrder();
@@ -37,31 +21,44 @@ func void STARTUP_GLOBAL()
 func void INIT_GLOBAL()
 {
 	Game_InitGerman();
+	MEM_InitAll();
+	LeGo_Init(LeGo_All | LeGo_Buffs);
 	
-	/// MOD: loading textures
+	/// MOD: loading texture
 	MOD_RandomLoadingTexture(default);
 	
-	/// MOD: hook engine
-	//FF_ApplyOnce(MOD_Damage);
-	//FF_ApplyOnce(MOD_ItemFn);
-	//FF_ApplyOnce(MOD_MoveFn);
+	///// MOD: engine hooks
+	MOD_Damage();
+	MOD_ItemFn();
+	MOD_Menu();
+	MOD_MoveFn();
 	
-	/// MOD: frame functions
+	CatInv_Init();
+	QuickSlot_Init();
+	Spell_PickLock_Init();
+	
+	/// MOD: register commands & disable cheats
+	if (!movieMode) { MOD_DisableCheats(); };
+	
+	/// MOD: bars
+	Bars_Reset();
 	FF_ApplyOnce(Loop_dvBar);
 	FF_ApplyOnce(Loop_hpBar); FF_ApplyOnce(Loop_shieldBar);
 	FF_ApplyOnce(Loop_mpBar); FF_ApplyOnce(Loop_auraBar);
 	FF_ApplyOnce(Loop_spBar);
 	FF_ApplyOnce(Loop_xpBar);
 	
+	/// MOD: frame functions
 	FF_ApplyOnceExt (TT_5000, 5000, -1);
 	FF_ApplyOnceExt (TT_1000, 1000, -1);
 	FF_ApplyOnceExt (TT_200, 200, -1);
-	FF_ApplyOnceExt (TT_5, 5, -1);
+	FF_ApplyOnceExt (TT_8, 8, -1);
 	
-	/// MOD: hero visual
-	NpcFn_SetHeroVisual (hero, selectedHeroSkin);
+	/// MOD: update hero skin
+	if (hero.id == 0) { NpcFn_SetHeroVisual (hero, selectedHeroSkin); };
 	
-	/// MOD: test mode
+	/// MOD: register commands & test mode
+	if (movieMode) { ConsoleCommands(); };
 	MEM_Game.game_testmode = movieMode;
 };
 

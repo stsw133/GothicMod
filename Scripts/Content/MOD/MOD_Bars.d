@@ -9,7 +9,7 @@ instance diveBar(GothicBar)				{ x = 100; y = Print_Screen[PS_Y]-100; backTex = 
 instance healthBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-80; backTex = "Bar_Back.tga"; barTex = "Bar_Health.tga"; };
 instance poisonBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-80; backTex = "Bar_Back.tga"; barTex = "Bar_Negative.tga"; };
 
-/// shield bars
+/// shield bar
 instance shieldBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-75; backTex = "Alpha.tga"; barTex = "Bar_Progress.tga"; height = 10; };
 
 /// MP bars
@@ -52,6 +52,23 @@ var int BarPrinter_hpBar; var string BarText_hpBar; var zCViewText BarTextView_h
 var int BarPrinter_mpBar; var string BarText_mpBar; var zCViewText BarTextView_mpBar;
 var int BarPrinter_spBar; var string BarText_spBar; var zCViewText BarTextView_spBar;
 var int BarPrinter_xpBar; var string BarText_xpBar; var zCViewText BarTextView_xpBar;
+
+func void Bars_Reset()
+{
+	Bar_Delete(BarLoop_dvBar);		BarLoop_dvBar = 0;
+	Bar_Delete(BarLoop_hpBar);		BarLoop_hpBar = 0;
+	Bar_Delete(BarLoop_shieldBar);	BarLoop_shieldBar = 0;
+	Bar_Delete(BarLoop_mpBar);		BarLoop_mpBar = 0;
+	Bar_Delete(BarLoop_auraBar);	BarLoop_auraBar = 0;
+	Bar_Delete(BarLoop_spBar);		BarLoop_spBar = 0;
+	Bar_Delete(BarLoop_xpBar);		BarLoop_xpBar = 0;
+	
+	BarPrinter_dvBar = 0; BarText_dvBar = ""; BarTextView_dvBar = _^(0);
+	BarPrinter_hpBar = 0; BarText_hpBar = ""; BarTextView_hpBar = _^(0);
+	BarPrinter_mpBar = 0; BarText_mpBar = ""; BarTextView_mpBar = _^(0);
+	BarPrinter_spBar = 0; BarText_spBar = ""; BarTextView_spBar = _^(0);
+	BarPrinter_xpBar = 0; BarText_xpBar = ""; BarTextView_xpBar = _^(0);
+};
 
 /// dvBar
 func void Loop_dvBar()

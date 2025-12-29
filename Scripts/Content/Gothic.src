@@ -57,7 +57,6 @@ STORY\B_Story\C_DiegoTooFar.d
 STORY\B_Story\B_AddFightSkill.d
 STORY\B_Story\B_GivePlayerExp.d
 
-MOD\MOD_PotionEffects.d
 MOD\MOD_Quests.d
 MOD\MOD_SelfFightTeach.d
 
@@ -92,6 +91,7 @@ ITEMS\SpecialItems.d
 ITEMS\GiveAll.d
 
 MOD\MOD_Defeated.d
+MOD\CatInv\CatInv.src
 MOD\Quickslot\Quickslot.src
 
 STORY\B_Content\B_ScUsesRake.d
@@ -121,6 +121,8 @@ AI\MAGIC\B_MagicFn.d
 AI\MAGIC\B_ReadySpell.d
 AI\MAGIC\B_SelectSpell.d
 AI\MAGIC\C_Spell_Proto.d
+
+MOD\MOD_Buffs.d
 
 STORY\B_Content\B_BeliarWeapon.d
 STORY\B_Content\B_WeaponSpecialDamage.d
@@ -250,7 +252,6 @@ STORY\DIALOG\*.d
 STORY\B_AssignAmbientInfos\*.d
 STORY\Events\*.d
 
-MOD\MOD_Assassination.d
 MOD\MOD_Bars.d
 MOD\MOD_Damage.d
 MOD\MOD_ItemFn.d

@@ -7,7 +7,7 @@ func void MOBSI_UseHerb_S1()
 	{
 		self.aivar[AIV_Invisible] = true;
 		PLAYER_MOBSI_PRODUCTION	= MOBSI_UseHerb;
-		Ai_ProcessInfos(self);
+		AI_ProcessInfos(self);
 	};
 };
 
@@ -51,7 +51,7 @@ func void PC_UseHerb_Joint_Info()
 	
 	if (Green_Extrem)
 	{
-		Info_AddChoice (PC_UseHerb_Joint, "Zwiñ 'Zielonego Nowicjusza' (2x bagienne ziele, rdest polny)", PC_UseHerb_Joint_SleJoint);
+		Info_AddChoice (PC_UseHerb_Joint, "Zwiñ 'Zielonego Nowicjusza' (2 bagienne zio³a, rdest polny)", PC_UseHerb_Joint_SleJoint);
 	};
 	Info_AddChoice (PC_UseHerb_Joint, "Zwiñ skrêta z bagiennego ziela (bagienne ziele)", PC_UseHerb_Joint_SwampJoint);
 	Info_AddChoice (PC_UseHerb_Joint, "Zwiñ skrêta z pustynnego ziela (pustynne ziele)", PC_UseHerb_Joint_DesertJoint);
@@ -132,8 +132,8 @@ func void PC_UseHerb_Tabak_Info()
 	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ grzybowy (piekielnik, tytoñ)", PC_UseHerb_Tabak_Mushroom03);
 	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ grzybowy (mu³owy grzyb, tytoñ)", PC_UseHerb_Tabak_Mushroom01);
 	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ kokosowy (kokos, tytoñ)", PC_UseHerb_Tabak_Coconut);
-	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ owocowy (2x gruszka, tytoñ)", PC_UseHerb_Tabak_Pear);
-	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ owocowy (2x jab³ko, tytoñ)", PC_UseHerb_Tabak_Apple);
+	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ owocowy (2 gruszki, tytoñ)", PC_UseHerb_Tabak_Pear);
+	Info_AddChoice (PC_UseHerb_Tabak, "Stwórz tytoñ owocowy (2 jab³ka, tytoñ)", PC_UseHerb_Tabak_Apple);
 };
 
 ///******************************************************************************************

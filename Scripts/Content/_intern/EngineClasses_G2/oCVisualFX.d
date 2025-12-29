@@ -1,3 +1,6 @@
+///******************************************************************************************
+/// VisualFX
+///******************************************************************************************
 class oCVisualFX
 {
 	var int _vtbl; //0
@@ -6,24 +9,24 @@ class oCVisualFX
 	var int hashIndex; //8	unsigned short hashIndex;
 	var int hashNext; //12	zCObject* hashNext;
 	var string objectName; //16	zSTRING objectName
-
+	
 	var int globalVobTreeNode; // 0x0024 zCTree<zCVob>*
 	var int lastTimeDrawn; // 0x0028 zTFrameCtr
 	var int lastTimeCollected; // 0x002C zDWORD
-
+	
 	var int vobLeafList_array; // 0x0030 zCBspLeaf**
 	var int vobLeafList_numAlloc; // 0x0034 int
 	var int vobLeafList_numInArray; // 0x0038 int
-
+	
 	var int trafoObjToWorld[16]; // 0x003C zMATRIX4
-
+	
 	var int bbox3D_mins[3]; // 0x007C zPOINT3
 	var int bbox3D_maxs[3]; // 0x0088 zPOINT3
-
+	
 	var int touchVobList_array; // 0x0094 zCVob**
 	var int touchVobList_numAlloc; // 0x0098 int
 	var int touchVobList_numInArray; // 0x009C int
-
+	
 	var int type; // 0x00A0 zTVobType
 	var int groundShadowSizePacked; // 0x00A4 zDWORD
 	var int homeWorld; // 0x00A8 zCWorld*
@@ -42,7 +45,7 @@ class oCVisualFX
 	var int bitfield[5]; // 0x00E4 zCVob_bitfieldX_Xxx
 	var int m_poCollisionObjectClass; // 0x00F8 zCCollisionObjectDef*
 	var int m_poCollisionObject; // 0x00FC zCCollisionObject*
-
+	
 	var string visName_S; //zSTRING // sizeof 14h offset 100h
 	var string visSize_S; //zSTRING // sizeof 14h offset 114h
 	var int visAlpha; //float // sizeof 04h offset 128h
@@ -82,7 +85,7 @@ class oCVisualFX
 	var int emInvestNextKeyDuration; //float // sizeof 04h offset 2A0h
 	var int emFlyGravity; //float // sizeof 04h offset 2A4h
 	var string emSelfRotVel_S; //zSTRING // sizeof 14h offset 2A8h
-
+	
 	var string userString[3]; //zSTRING ; // sizeof 3Ch offset 2BCh
 	var string lightPresetName; //zSTRING // sizeof 14h offset 2F8h
 	var string sfxID; //zSTRING // sizeof 14h offset 30Ch
@@ -106,49 +109,49 @@ class oCVisualFX
 	var int fxInvestOriginInitialized; //int // sizeof 04h offset 374h
 	var int fxInvestTargetInitialized; //int // sizeof 04h offset 378h
 	var int fxInvestStopped; //int // sizeof 04h offset 37Ch
-
+	
 	var int fxList_array; //oCVisualFX*
 	var int fxList_numAlloc; //int
 	var int fxList_numInArray;//int
-
+	
 	var int childList_array; //oCVisualFX*
 	var int childList_numAlloc; //int
 	var int childList_numInArray;//int
-
+	
 	var int emKeyList_array; //oCEmitterKey*
 	var int emKeyList_numAlloc; //int
 	var int emKeyList_numInArray;//int
-
+	
 	var int vobList_array; //zCVob*
 	var int vobList_numAlloc; //int
 	var int vobList_numInArray;//int
-
+	
 	var int ignoreVobList_array; //zCVob*
 	var int ignoreVobList_numAlloc; //int
 	var int ignoreVobList_numInArray;//int
-
+	
 	var int allowedCollisionVobList_array; //zCVob*
 	var int allowedCollisionVobList_numAlloc; //int
 	var int allowedCollisionVobList_numInArray;//int
-
+	
 	var int collidedVobs_array; //zCVob*
 	var int collidedVobs_numAlloc; //int
 	var int collidedVobs_numInArray;//int
-
+	
 	var int queuedCollisions_array; //zSVisualFXColl
 	var int queuedCollisions_numAlloc; //int
 	var int queuedCollisions_numInArray;//int
-
+	
 	var int trajectory_keyList_array; //zCPositionKey*
 	var int trajectory_keyList_numAlloc; //int
 	var int trajectory_keyList_numInArray;//int
-
+	
 	var int trajectory_spl; //zCKBSpline* // sizeof 04h offset 0Ch
 	var int trajectory_mode; //int // sizeof 04h offset 10h
 	var int trajectory_length; //float // sizeof 04h offset 14h
 	var int trajectory_res[16]; //zMAT4 // sizeof 40h offset 18h
 	var int trajectory_lastKey; //int // sizeof 04h offset 58h
-
+	
 	var int earthQuake; //zCEarthquake* // sizeof 04h offset 43Ch
 	var int screenFX; //zCVobScreenFX* // sizeof 04h offset 440h
 	var int screenFXTime; //float // sizeof 04h offset 444h
@@ -200,7 +203,7 @@ class oCVisualFX
 	var int spellTargetTypes; //int // sizeof 04h offset 534h
 	var int savePpsValue; //float // sizeof 04h offset 538h
 	var int saveVisSizeStart[2]; //zVEC2 // sizeof 08h offset 53Ch
-
+	
 	var int transRing0[3];
 	var int transRing1[3];
 	var int transRing2[3];
@@ -211,7 +214,7 @@ class oCVisualFX
 	var int transRing7[3];
 	var int transRing8[3];
 	var int transRing9[3];
-
+	
 	var int ringPos; //int // sizeof 04h offset 5BCh
 	var int emTrjFollowHitLastCheck; //int // sizeof 04h offset 5C0h
 	var int bIsProjectile; //int // sizeof 04h offset 5C4h

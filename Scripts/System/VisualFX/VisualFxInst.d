@@ -3124,7 +3124,7 @@ instance spellFX_MassDeath_COLLIDEDYNFX (CFx_Base_Proto)
 	emTrjOriginNode 		=	"BIP01";
 	emFXCreatedOwnTrj 		=	1;
 	emtrjmode_s 			=	"FIXED";
-	sfxid					=	"MFX_MassdeatH_Target";
+	sfxid					=	"MFX_Massdeath_Target";
 };
 
 //******************************************************************************************

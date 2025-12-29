@@ -20,6 +20,7 @@ func int B_TeachAttribute (var C_Npc slf, var C_Npc oth, var int attrib, var int
 		return false;
 	};
 	
+	/// MOD: learning attributes now costs money
 	if (Npc_HasItems(oth, ItMi_Gold) < money)
 	{
 		PrintScreen (Print_NotEnoughGold, -1, -1, FONT_Screen, 2);
@@ -70,6 +71,7 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int sk
 		return false;
 	};
 	
+	/// MOD: learning talents now costs money
 	if (Npc_HasItems(oth, ItMi_Gold) < money)
 	{
 		PrintScreen (Print_NotEnoughGold, -1, -1, FONT_Screen, 2);
@@ -113,6 +115,7 @@ func int B_TeachTalent (var C_Npc slf, var C_Npc oth, var int talent, var int sk
 	else if (talent == NPC_TALENT_MAGIC)
 	{
 		Npc_SetTalentSkill (oth, talent, skill);
+		if (Npc_IsPlayer(oth)) { regenPower[BarOrderMP] += 5; };	/// new!!!
 		
 		if		(skill == 1)	{	PrintScreen	(PRINT_LearnMagic_1, -1, -1, FONT_SCREEN, 2);	}
 		else if	(skill == 2)	{	PrintScreen	(PRINT_LearnMagic_2, -1, -1, FONT_SCREEN, 2);	}

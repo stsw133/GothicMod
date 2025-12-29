@@ -100,6 +100,7 @@ func void ZS_Talk()
 		};
 		
 		/// MOD: assign special dialogs
+		DIA_Actions_EXIT.npc = Hlp_GetInstanceID(self);
 		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);
 		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);
 		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);

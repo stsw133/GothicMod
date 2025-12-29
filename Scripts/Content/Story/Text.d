@@ -270,11 +270,11 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"Wskrzeszenie",				// 10	SPL_Resurrection
 	"Sza³",						// 11	SPL_Rage
 	"Uwodzenie",				// 12	SPL_Seduction
-	"TXT_SPL_RESERVED_13",		// 13	SPL_Reserved_13
+	"Kontrola umys³u",			// 13	SPL_MindControl
 	"TXT_SPL_RESERVED_14",		// 14	SPL_Reserved_14
 	"TXT_SPL_RESERVED_15",		// 15	SPL_Reserved_15
 	"TXT_SPL_RESERVED_16",		// 16	SPL_Reserved_16
-	"TXT_SPL_RESERVED_17",		// 17	SPL_Reserved_17
+	"Otwieranie zamków",		// 17	SPL_PickLock
 	"Noc w dzieñ",				// 18	SPL_NightToDay
 	"Ognista strza³a",			// 19	SPL_FireBolt
 	
@@ -392,6 +392,8 @@ const string NAME_SPL_PalDestroyEvil		=	"Zniszczenie z³a";
 const string NAME_SPL_Resurrection			=	"Wskrzeszenie";
 const string NAME_SPL_Rage					=	"Sza³";
 const string NAME_SPL_Seduction				=	"Uwodzenie";
+const string NAME_SPL_MindControl			=	"Kontrola umys³u";
+const string NAME_SPL_PickLock				=	"Otwieranie zamków";
 const string NAME_SPL_NightToDay			=	"Noc w dzieñ";
 const string NAME_SPL_FireBolt				=	"Ognista strza³a";
 
@@ -631,9 +633,6 @@ const string NAME_Percent_Hp				=	"Odnowa % ¿ycia: ";
 const string NAME_Percent_Mp				=	"Odnowa % many: ";
 const string NAME_Percent_Sp				=	"Odnowa % energii: ";
 const string NAME_Percent_Sh				=	"Premia % os³ony: ";
-const string NAME_Percent_HpTime			=	"Czas odnowy % ¿ycia: ";
-const string NAME_Percent_MpTime			=	"Czas odnowy % many: ";
-const string NAME_Percent_SpTime			=	"Czas odnowy % energii: ";
 
 const string NAME_Bonus_Lp					=	"Premia do punktów nauki: ";
 const string NAME_Bonus_HpMax				=	"Premia do max. punktów ¿ycia: ";

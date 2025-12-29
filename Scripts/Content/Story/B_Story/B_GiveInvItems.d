@@ -64,34 +64,7 @@ func void B_PlayerFindItem (var int itm, var int amount)
 };
 
 ///******************************************************************************************
-/// B_GiveInventory
-///******************************************************************************************
-
-/*
-func void Mob_RemoveItems (var string mobname, var int instance, var int amount)
-{
-	var int mobPtr; mobPtr = MEM_SearchVobByName(mobname);
-	var oCMobContainer mob; mob = _^(mobPtr);
-	var oCNpc helper; helper = Hlp_GetNpc(loa_ban_6829_Leibwache);
-	helper.inventory2_inventory_next = mob.containList_next;
-	mob.containList_next = 0;
-	Npc_RemoveInvItems(helper, instance, amount);
-	mob.containList_next = helper.inventory2_inventory_next;
-	helper.inventory2_inventory_next = 0;
-};
-
-func void B_GiveMobInventory (var int mobPtr, var C_Npc oth)
-{
-	var oCMobContainer mob; mob = _^(mobPtr);
-	oth.inventory2_inventory_next = mob.containList_next;
-	mob.containList_next = 0;
-	//Npc_RemoveInvItems(oth, instance, amount);
-	//B_PlayerFindItem (oth, itmID, amount);
-	mob.containList_next = oth.inventory2_inventory_next;
-	oth.inventory2_inventory_next = 0;
-};
-*/
-
+/// B_GiveNpcInventory
 ///******************************************************************************************
 func void B_GiveNpcInventory (var C_Npc slf, var C_Npc oth)
 {
@@ -120,4 +93,68 @@ func void B_GiveNpcInventory (var C_Npc slf, var C_Npc oth)
 		i += 1;
 		MEM_StackPos.position = loopStart;
 	};
+};
+
+///******************************************************************************************
+/// B_MoveItemToNpcInv
+///******************************************************************************************
+func void B_MoveItemToNpcInv (var C_Npc oth, var oCItem itm)
+{
+	var int itmID; itmID = Hlp_GetInstanceID(itm);
+	
+	CreateInvItems (oth, itmID, itm.amount);
+	
+	if (Npc_IsPlayer(oth))
+	{
+		var string concatText; concatText = itm.name;
+		
+		if (itm.amount > 1)
+		{
+			concatText = ConcatStrings(concatText, ConcatStrings(" x", IntToString(itm.amount)));
+		};
+		
+		PrintS_Ext (concatText, COL_ItemTaken);
+	};
+};
+
+///******************************************************************************************
+/// B_GiveContainerInventory
+///******************************************************************************************
+func int B_GiveContainerInventory (var oCMobContainer mob, var C_Npc oth)
+{
+	var int movedItems; movedItems = 0;
+	
+	if (mob.containList_data)
+	{
+		var oCItem itm; itm = _^(mob.containList_data);
+		B_MoveItemToNpcInv (oth, itm);
+		Wld_RemoveItem(itm);
+		movedItems += 1;
+	};
+	
+	var int entryPtr; entryPtr = mob.containList_next;
+	var int loopStart; loopStart = MEM_StackPos.position;
+	
+	if (entryPtr)
+	{
+		var zCListSort entry; entry = _^(entryPtr);
+		var int nextPtr; nextPtr = entry.next;
+		
+		if (entry.data)
+		{
+			var oCItem listItem; listItem = _^(entry.data);
+			B_MoveItemToNpcInv (oth, listItem);
+			Wld_RemoveItem(listItem);
+			movedItems += 1;
+		};
+		
+		entryPtr = nextPtr;
+		MEM_StackPos.position = loopStart;
+	};
+	
+	mob.containList_data = 0;
+	mob.containList_next = 0;
+	mob.contains = "";
+	
+	return movedItems;
 };

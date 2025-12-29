@@ -124,7 +124,6 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 		};
 	};
 	
-	
 	/// AUTO LOOT
 	if (Npc_IsPlayer(slf) || slf.aivar[AIV_PartyMember])
 	&& (STR_ToInt(MEM_GetGothOpt("MOD", "autoLoot")))

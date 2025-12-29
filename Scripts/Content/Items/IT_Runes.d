@@ -259,6 +259,36 @@ instance ItRu_Seduction (ItemPR_Spell)
 	COUNT[5]					=	value;
 };
 
+instance ItRu_MindControl (ItemPR_Spell)
+{
+	value						=	500;
+	visual						=	"ItRu_13.3ds";
+	
+	spell						=	SPL_MindControl;
+	mag_circle					=	5;
+	cond_value[2]				=	SPL_Cost_MindControl;
+	
+	description					=	NAME_SPL_MindControl;
+	COUNT[0]					=	mag_circle;
+	COUNT[1]					=	cond_value[2];
+	COUNT[5]					=	value;
+};
+
+instance ItRu_PickLock (ItemPR_Spell)
+{
+	value						=	300;
+	visual						=	"ItRu_17.3ds";
+	
+	spell						=	SPL_PickLock;
+	mag_circle					=	3;
+	cond_value[2]				=	SPL_Cost_PickLock;
+	
+	description					=	NAME_SPL_PickLock;
+	COUNT[0]					=	mag_circle;
+	COUNT[1]					=	cond_value[2];
+	COUNT[5]					=	value;
+};
+
 instance ItRu_NightToDay (ItemPR_Spell)
 {
 	value						=	200;

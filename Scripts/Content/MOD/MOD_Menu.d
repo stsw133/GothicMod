@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void MOD_UpdateLogMenu()
 {
-	var string test; test = "TEST";
+	var string test; test = "TEST UpdateLogMenu";
 	//MOD_UpdateStatusMenuItem("MENU_ITEM_DAY_TITLE", test);
 };
 

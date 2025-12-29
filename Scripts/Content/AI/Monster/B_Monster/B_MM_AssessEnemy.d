@@ -45,6 +45,15 @@ func void B_MM_AssessEnemy()
 		return;
 	};
 	
+	/// new!!!
+	if (Npc_IsPlayer(other))
+	&& (ATS[ATS_PerfumeTime] > 0)
+	&& (self.aivar[AIV_MM_Real_ID] == ID_BLOODFLY || self.aivar[AIV_MM_Real_ID] == ID_SWAMPDRONE)
+	{
+		return;
+	};
+	
+	/// ...
 	if (C_BodyStateContains(other, BS_SWIM) || C_BodyStateContains(other, BS_DIVE))
 	&& (!self.aivar[AIV_MM_FollowInWater])
 	{

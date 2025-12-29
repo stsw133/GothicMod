@@ -37,25 +37,25 @@ const int AIV_AttackReason					=	9;
 	const int AR_ClearRoom				= 2;
 	const int AR_GuardCalledToRoom		= 3;
 	const int AR_MonsterVsHuman			= 4;
-	const int AR_MonsterMurderedHuman 	= 5;
+	const int AR_MonsterMurderedHuman	= 5;
 	const int AR_SheepKiller			= 6;
 	const int AR_Theft					= 7;
 	const int AR_UseMob					= 8;
-	const int AR_GuardCalledToThief 	= 9;
-	const int AR_ReactToWeapon			= 10;
+	const int AR_GuardCalledToThief	= 9;
+	const int AR_ReactToWeapon				= 10;
 	const int AR_ReactToDamage			= 11;
 	const int AR_GuardStopsFight		= 12;
 	const int AR_GuardCalledToKill		= 13;
 	const int AR_GuildEnemy				= 14;
 	const int AR_HumanMurderedHuman		= 15;
-	const int AR_MonsterCloseToGate 	= 16;
+	const int AR_MonsterCloseToGate		= 16;
 	const int AR_GuardStopsIntruder		= 17;
 	const int AR_SuddenEnemyInferno		= 18;
 	const int AR_KILL					= 19;
-const int AIV_LastPlayerAR					=	10;
+const int AIV_LastPlayerAR					=	10;	///				[ORG: AIV_RANSACKED]
 
 /// ------ Ransack body ------
-const int AIV_Ransacked						=	11;
+const int AIV_Ransacked						=	11;	///				[ORG: AIV_DeathInvGiven]
 
 /// ------ Guard passage ------
 const int AIV_GuardPassage_Status			=	12;	/// merged!!!
@@ -66,18 +66,18 @@ const int AIV_GuardPassage_Status			=	12;	/// merged!!!
 const int AIV_LastDistToWP					=	13;
 
 /// ------ TA position ------
-const int AIV_TaPosition					=	14;
+const int AIV_TaPosition					=	14;	///				[ORG: AIV_PASSGATE]
 	const int IsInPos					= 0;
 	const int NotInPos					= 1;
 	const int NotInPos_Walk				= 2;
 
 /// ------ Defeated by player ------
-const int AIV_DefeatedByPlayer				=	15;	/// merged!!!
+const int AIV_DefeatedByPlayer				=	15;	/// merged!!!	[ORG: AIV_PARTYMEMBER]
 	const int DBP_NONE					= 0;
 	const int DBP_Defeated				= 1;
 	const int DBP_Killed				= 2;
 const int AIV_VictoryExpGiven				=	16;
-const int AIV_DamageDealtByPlayer			=	17;	/// new!!!
+const int AIV_DamageDealtByPlayer			=	17;	/// new!!!		[ORG: AIV_Gender]
 
 /// ------ Stand eating ------
 const int AIV_Food							=	18;
@@ -87,7 +87,7 @@ const int AIV_Food							=	18;
 	const int FOOD_Bread				= 3;
 
 /// ------ Spells ------
-const int AIV_SpellLevel					=	19;
+const int AIV_SpellLevel					=	19;	///				[ORG: AIV_TAPOSITION]
 const int AIV_SelectSpell					=	20;
 
 /// ------ Observe player ------
@@ -103,40 +103,40 @@ const int AIV_WaitBeforeAttack				=	23;
 const int AIV_LastAbsolutionLevel			=	24;
 
 /// ------ Load game ------
-const int AIV_LoadGame						=	25;
+const int AIV_LoadGame						=	25;	///				[ORG: AIV_ToughGuyNewsOverride]
 
 /// ------ Monster AIV: threaten ------
 const int AIV_MM_ThreatenBeforeAttack		=	26;
 
 /// ------ Monster AIV: follow ------
-const int AIV_MM_FollowTime 				=	27;
+const int AIV_MM_FollowTime					=	27;
 	const int FOLLOWTIME_SHORT			= 5;
 	const int FOLLOWTIME_MEDIUM			= 10;
 	const int FOLLOWTIME_LONG			= 20;
-const int AIV_MM_FollowInWater 				=	28;
+const int AIV_MM_FollowInWater				=	28;
 
 /// ------ Monster AIV: priority ------
-const int AIV_MM_Priority 					=	29;
-	const int PRIO_EAT 					= 0;
-	const int PRIO_ATTACK 				= 1;
+const int AIV_MM_Priority					=	29;
+	const int PRIO_EAT					= 0;
+	const int PRIO_ATTACK				= 1;
 
 /// ------ Monster AIV: routine ------
-const int AIV_MM_SleepStart 				=	30;
-const int AIV_MM_SleepEnd 					=	31;
-const int AIV_MM_RestStart 					=	32;
-const int AIV_MM_RestEnd 					=	33;
-const int AIV_MM_RoamStart 					=	34;
-const int AIV_MM_RoamEnd 					=	35;
-const int AIV_MM_EatGroundStart 			=	36;
-const int AIV_MM_EatGroundEnd 				=	37;
-const int AIV_MM_WuselStart 				=	38;
-const int AIV_MM_WuselEnd 					=	39;
+const int AIV_MM_SleepStart					=	30;
+const int AIV_MM_SleepEnd					=	31;
+const int AIV_MM_RestStart					=	32;
+const int AIV_MM_RestEnd					=	33;
+const int AIV_MM_RoamStart					=	34;
+const int AIV_MM_RoamEnd					=	35;
+const int AIV_MM_EatGroundStart				=	36;
+const int AIV_MM_EatGroundEnd				=	37;
+const int AIV_MM_WuselStart					=	38;
+const int AIV_MM_WuselEnd					=	39;
 const int AIV_MM_OrcSitStart				=	40;
 const int AIV_MM_OrcSitEnd					=	41;
-	const int OnlyRoutine 				= -1;
+	const int OnlyRoutine				= -1;
 
 /// ------ Monster AIV: packhunter ------
-const int AIV_MM_Packhunter					=	42;
+const int AIV_MM_Packhunter					=	42;	///				[ORG: AIV_MM_ShrinkState]
 
 /// ------ Monster ID ------
 const int AIV_MM_Real_ID					=	43;
@@ -252,12 +252,12 @@ const int AIV_ArenaFight					=	45;
 const int AIV_CrimeAbsolutionLevel			=	46;
 
 /// ------ In-Fight ------
-const int AIV_Reserved_47					=	47;
-const int AIV_ComboHit						=	48;	/// new!!!
+const int AIV_Reserved_47					=	47;	///				[ORG: AIV_LastPlayerAR]
+const int AIV_ComboHit						=	48;	/// new!!!		[ORG: AIV_DuelLost]
 
 /// ------ Inventory ------
 const int AIV_ChapterInv					=	49;
-const int AIV_DeathInvGiven					=	50;
+const int AIV_DeathInvGiven					=	50;	///				[ORG: AIV_MM_Packhunter]
 
 /// ------ Magic user ------
 const int AIV_MagicUser						=	51;	/// extended!!!
@@ -272,22 +272,22 @@ const int AIV_MagicUser						=	51;	/// extended!!!
 const int AIV_DropDeadAndKill				=	52;
 
 /// ------ Can offer ------
-const int AIV_CanOffer						=	53;	/// new!!!
+const int AIV_CanOffer						=	53;	/// new!!!		[ORG: AIV_FreezeStateTime]
 	const int OFFER_Teaching			= 1 << 0;
 	const int OFFER_Trading				= 1 << 1;
 
 /// ------ Ignoring ------
-const int AIV_IgnoreCrime					=	54;	/// merged!!!
+const int AIV_IgnoreCrime					=	54;	/// merged!!!	[ORG: AIV_IGNORE_Murder]
 	const int IGNORE_Murder				= 1 << 0;
 	const int IGNORE_Theft				= 1 << 1;
 	const int IGNORE_Sheepkiller		= 1 << 2;
 	const int IGNORE_Fear				= 1 << 3;
-const int AIV_IgnoreDisguise				=	55;	/// merged!!!
+const int AIV_IgnoreDisguise				=	55;	/// merged!!!	[ORG: AIV_IGNORE_Theft]
 	const int IGNORE_Armor				= 1 << 0;
 	const int IGNORE_FakeGuild			= 1 << 1;
 
 /// ------ Dist ------
-const int AIV_Dist							=	56;
+const int AIV_Dist							=	56;	///				[ORG: AIV_IGNORE_Sheepkiller]
 
 /// ------ Ignore attack crime ------
 const int AIV_ToughGuy						=	57;
@@ -301,52 +301,52 @@ const int AIV_NewsOverride					=	58;	/// merged!!!
 const int AIV_MaxDistToWp					=	59;
 const int AIV_OriginalFightTactic			=	60;
 const int AIV_EnemyOverride					=	61;
-const int AIV_FightDistCancel				=	62;
-const int AIV_LastFightComment				=	63;
+const int AIV_FightDistCancel				=	62;	///				[ORG: AIV_SummonTime]
+const int AIV_LastFightComment				=	63;	///				[ORG: AIV_FightDistCancel]
 
 /// ------ Special attributes ------
-const int AIV_AreaDamage					=	64;	/// new!!!
-const int AIV_LifeSteal						=	65;	/// new!!!
-const int AIV_MinDamage						=	66;	/// new!!!
-const int AIV_Overcome						=	67;	/// new!!!
-const int AIV_Penetration					=	68;	/// new!!!
-const int AIV_Reflection					=	69;	/// new!!!
+const int AIV_AreaDamage					=	64;	/// new!!!		[ORG: AIV_LastFightComment]
+const int AIV_LifeSteal						=	65;	/// new!!!		[ORG: AIV_LOADGAME]
+const int AIV_MinDamage						=	66;	/// new!!!		[ORG: AIV_DefeatedByPlayer]
+const int AIV_Overcome						=	67;	/// new!!!		[ORG: AIV_KilledByPlayer]
+const int AIV_Penetration					=	68;	/// new!!!		[ORG: AIV_StateTime]
+const int AIV_Reflection					=	69;	/// new!!!		[ORG: AIV_Dist]
 
 /// ------ States ------
-const int AIV_StateTime						=	70;
-const int AIV_MagicStateTime 				=	71;
-const int AIV_SummonTime					=	72;
-const int AIV_ShrinkState					=	73;
-const int AIV_SlowTime						=	74;	/// new!!!
-const int AIV_Reserved_75					=	75;
-const int AIV_Reserved_76					=	76;
-const int AIV_Reserved_77					=	77;
-const int AIV_Reserved_78					=	78;
+const int AIV_StateTime						=	70;	///				[ORG: AIV_IgnoresFakeGuild]
+const int AIV_MagicStateTime				=	71;	///				[ORG: AIV_NoFightParker]
+const int AIV_SummonTime					=	72;	///				[ORG: AIV_NPCIsRanger]
+const int AIV_ShrinkState					=	73;	///				[ORG: AIV_IgnoresArmor]
+const int AIV_SlowTime						=	74;	/// new!!!		[ORG: AIV_StoryBandit]
+const int AIV_Poison						=	75;	/// new!!!		[ORG: AIV_StoryBandit_Esteban]
+const int AIV_Reserved_76					=	76;	///				[ORG: AIV_WhirlwindStateTime]
+const int AIV_Reserved_77					=	77;	///				[ORG: AIV_InflateStateTime]
+const int AIV_Reserved_78					=	78;	///				[ORG: AIV_SwarmStateTime]
 
 /// ------ Team ------
-const int AIV_PartyMember					=	79;
+const int AIV_PartyMember					=	79;	///				[ORG: AIV_SuckEnergyStateTime]
 const int AIV_FollowDist					=	80;
 
 /// ------ Stamina ------
-const int AIV_Stamina						=	81;	/// new!!!
-const int AIV_Stamina_MAX					=	82;	/// new!!!
+const int AIV_Stamina						=	81;	/// new!!!		[ORG: REAL_STRENGTH]
+const int AIV_Stamina_MAX					=	82;	/// new!!!		[ORG: REAL_DEXTERITY]
 
 /// ------ Story ------
-const int AIV_NoFightParker					=	83;
-const int AIV_Story							=	84;	/// merged!!!
+const int AIV_NoFightParker					=	83;	///				[ORG: REAL_MANA_MAX]
+const int AIV_Story							=	84;	/// merged!!!	[ORG: REAL_TALENT_1H]
 	const int STORY_IsRanger			= 1 << 0;
 	const int STORY_Bandit				= 1 << 1;
 	const int STORY_Esteban				= 1 << 2;
 
 /// ------ Visual ------
-const int AIV_Gender						=	85;	/// new!!!
+const int AIV_Gender						=	85;	/// new!!!		[ORG: REAL_TALENT_2H]
 	const int MALE						= 0;
 	const int FEMALE					= 1;
 	const int ORCMALE					= 2;
-const int AIV_BodyTex	 					=	86;	/// new!!!
-const int AIV_SkinTex	 					=	87;	/// new!!!
-const int AIV_FaceTex	 					=	88;	/// new!!!
-const int AIV_TeethTex	 					=	89;	/// new!!!
+const int AIV_BodyTex						=	86;	/// new!!!		[ORG: REAL_TALENT_BOW]
+const int AIV_SkinTex						=	87;	/// new!!!		[ORG: REAL_TALENT_CROSSBOW]
+const int AIV_FaceTex						=	88;	/// new!!!		[ORG: AIV_SpellLevel]
+const int AIV_TeethTex						=	89;	/// new!!!
 
 /// ...
 const int AIV_Reserved_90					=	90;
@@ -410,13 +410,13 @@ const int LOC_ALL						=	6;
 /// Districts
 ///******************************************************************************************
 
-const int Q_KASERNE 					=	1;
-const int Q_GALGEN 						=	2;
-const int Q_MARKT 						=	3;
-const int Q_TEMPEL 						=	4;
-const int Q_UNTERSTADT 					=	5;
-const int Q_HAFEN 						=	6;
-const int Q_OBERSTADT 					=	7;
+const int Q_KASERNE						=	1;
+const int Q_GALGEN						=	2;
+const int Q_MARKT						=	3;
+const int Q_TEMPEL						=	4;
+const int Q_UNTERSTADT					=	5;
+const int Q_HAFEN						=	6;
+const int Q_OBERSTADT					=	7;
 
 ///******************************************************************************************
 /// Aktive Wahrnehmung der MONSTER
@@ -456,7 +456,7 @@ const int FIGHT_DIST_CANCEL				=	3500;
 const int WATCHFIGHT_DIST_MIN			=	400;	//300
 const int WATCHFIGHT_DIST_MAX			=	2000;
 
-const int ZivilAnquatschDist 			=	400;
+const int ZivilAnquatschDist			=	400;
 
 const float RANGED_CHANCE_MINDIST		=	2500;	//1500
 const float RANGED_CHANCE_MAXDIST		=	5000;	//4500
@@ -465,7 +465,7 @@ const float RANGED_CHANCE_MAXDIST		=	5000;	//4500
 /// Zeit-Konstanten
 ///******************************************************************************************
 
-const int NPC_ANGRY_TIME 				=	120;
+const int NPC_ANGRY_TIME				=	120;
 const int HAI_TIME_UNCONSCIOUS			=	10;	//20
 const int NPC_TIME_FOLLOW				=	10;
 
@@ -611,8 +611,8 @@ const int TeethTex_MAX				=	6;
 const int Face_Player					=	0;
 
 /// main
-const int Face_N_Gomez 					=	1;
-const int Face_N_Scar 					=	2;
+const int Face_N_Gomez					=	1;
+const int Face_N_Scar					=	2;
 const int Face_N_Raven					=	3;
 const int Face_N_Bullit					=	4;
 const int Face_B_Thorus					=	5;
@@ -838,7 +838,7 @@ const int FaceBabe_N_Amazon				=	9;
 /// normal (BABE)
 const int FaceBabe_N_PinkHair			=	10;
 const int FaceBabe_N_HairAndCloth		=	11;
-const int FaceBabe_N_WhiteCloth			= 	12;
+const int FaceBabe_N_WhiteCloth			=	12;
 const int FaceBabe_N_GreyCloth			=	13;
 const int FaceBabe_N_Brown				=	14;
 const int FaceBabe_N_VlkBlonde			=	15;

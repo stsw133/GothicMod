@@ -8,23 +8,34 @@ const int 		QS_SlotPosY					= 72;
 const int 		QS_SlotSize					= 64;
 
 // Debugging
-var int QS_DebugLevel;	
+var int QS_DebugLevel;
 const int QS_Debug_Off 			= 0;
 const int QS_Debug_Only_zSpy 	= 1;
 const int QS_Debug_All 			= 2;
 
+func int QS_IsEnabled()
+{
+	return STR_ToInt(MEM_GetGothOpt("MOD", "quickSlots"));
+};
+
 func int QS_RenderOnScreen()
 {
+	if (!QS_IsEnabled())
+	{
+		return false;
+	};
+	
 	var oCNpc her; her = Hlp_GetNpc(hero);
 	
-	if (MEM_Game.singleStep
-	|| !MEM_Game.game_drawall
-	|| !Hlp_IsValidHandle(QS_BackgroundView)
-	|| !InfoManager_hasFinished()
-	|| !MEM_Game.showPlayerStatus
-	|| hero.guild > GIL_SEPERATOR_HUM
-	|| Npc_IsInState(hero, ZS_Dead)
-	|| her.interactMob)	{
+	if (MEM_Game.singleStep)
+	|| (!MEM_Game.game_drawall)
+	|| (!Hlp_IsValidHandle(QS_BackgroundView))
+	|| (!InfoManager_hasFinished())
+	|| (!MEM_Game.showPlayerStatus)
+	|| (hero.guild > GIL_SEPERATOR_HUM)
+	|| (Npc_IsInState(hero, ZS_Dead))
+	|| (her.interactMob)
+	{
 		return false;
 	};
 	
@@ -34,11 +45,11 @@ func int QS_RenderOnScreen()
 func int QS_CanUseItem(var oCNpc her)
 {
 	if(!QS_RenderOnScreen()
-	|| !(C_BodyStateContains(hero, BS_STAND) 
+	|| !(C_BodyStateContains(hero, BS_STAND)
 		|| C_BodyStateContains(hero, BS_WALK)
-		|| C_BodyStateContains(hero, BS_SNEAK) 
+		|| C_BodyStateContains(hero, BS_SNEAK)
 		|| C_BodyStateContains(hero, BS_RUN) 
-		|| C_BodyStateContains(hero, BS_SPRINT))	
+		|| C_BodyStateContains(hero, BS_SPRINT))
 	|| QS_IsInvOpen()
 	|| MEM_ReadInt(zCConsole__cur_console)
 	|| Npc_IsInState(hero, ZS_Unconscious))
@@ -46,24 +57,24 @@ func int QS_CanUseItem(var oCNpc her)
 		return false;
 	};
 	return true;
-};	
-
-// Get position for render item
-func int QS_GetPosX(var int nr)
-{
-	if(nr == 1)	{ return 52; };
-	if(nr == 2)	{ return 107; };
-	if(nr == 3)	{ return 162; };
-	if(nr == 4)	{ return 217; };
-	if(nr == 5)	{ return 272; };
-	if(nr == 6)	{ return 327; };
-	if(nr == 7)	{ return 382; };
-	if(nr == 8)	{ return 438; };
-	if(nr == 9)	{ return 493; };
-	if(nr == 0)	{ return 548; };
 };
 
-func int QS_CanEquipItem(var C_NPC npc, var int itemPtr)
+// Get position for render item
+func int QS_GetPosX (var int nr)
+{
+	if (nr == 1)	{ return 52; };
+	if (nr == 2)	{ return 107; };
+	if (nr == 3)	{ return 162; };
+	if (nr == 4)	{ return 217; };
+	if (nr == 5)	{ return 272; };
+	if (nr == 6)	{ return 327; };
+	if (nr == 7)	{ return 382; };
+	if (nr == 8)	{ return 438; };
+	if (nr == 9)	{ return 493; };
+	if (nr == 0)	{ return 548; };
+};
+
+func int QS_CanEquipItem (var C_Npc npc, var int itemPtr)
 {
 	var c_npc slf; slf = Hlp_GetNpc(npc);
 	
@@ -79,11 +90,12 @@ func int QS_CanDrawWeapon()
 	CALL__thiscall(_@(hero), oCNpc__CanDrawWeapon);
 	canDrawWeapon = CALL_RetValAsInt();
 	
-	var int checkAnis; checkAnis = 	QS_IsAniActive("T_MAG_2_MAGRUN") 	|| 
-									QS_IsAniActive("T_MAGMOVE_2_MOVE") 	||
-									QS_IsAniActive("T_MOVE_2_MAGMOVE");
-																
-	if(canDrawWeapon && !checkAnis) {
+	var int checkAnis; checkAnis = QS_IsAniActive("T_MAG_2_MAGRUN")
+								|| QS_IsAniActive("T_MAGMOVE_2_MOVE")
+								|| QS_IsAniActive("T_MOVE_2_MAGMOVE");
+	
+	if (canDrawWeapon && !checkAnis)
+	{
 		return true;
 	};
 	
@@ -91,6 +103,7 @@ func int QS_CanDrawWeapon()
 };
 
 // Set color of slot number (inventory)
-func int QS_GetSlotColor()	{
+func int QS_GetSlotColor()
+{
 	return RGBA(255, 180, 0, 255);
 };

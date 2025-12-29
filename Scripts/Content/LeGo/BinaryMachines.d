@@ -249,6 +249,19 @@ func void BW_Close() {
   BinaryReader
   ============*/
 
+func int _BIN_FileExists(var string file) {
+    _bin_prefix = "_BIN_FileExists";
+    if(!_BIN_nRunning()) { return 0; };
+
+    var int handle; handle = WIN_CreateFile(file, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+    if(handle == -1) {
+        return 0;
+    };
+
+    WIN_CloseHandle(handle);
+    return 1;
+};
+
 func int BR_OpenFile(var string file) {
     _bin_prefix = "BR_OpenFile";
     if(!_BIN_nRunning()) { return 0; };

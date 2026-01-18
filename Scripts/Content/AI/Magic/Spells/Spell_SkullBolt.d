@@ -2,8 +2,8 @@
 /// SPL_SkullBolt
 ///******************************************************************************************
 
-const int SPL_Cost_SkullBolt			=	15;
-const int SPL_Damage_SkullBolt			=	75;
+const int SPL_Cost_SkullBolt			=	5;
+const int SPL_Damage_SkullBolt			=	25;
 
 ///******************************************************************************************
 instance Spell_SkullBolt (C_Spell_Proto)

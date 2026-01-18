@@ -2,8 +2,7 @@
 /// SPL_SummonDemon
 ///******************************************************************************************
 
-const int SPL_Cost_SummonDemon			=	200;
-var C_Npc NPC_SummonedDemon;
+const int SPL_Cost_SummonDemon			=	100;
 
 ///******************************************************************************************
 instance Spell_SummonDemon (C_Spell_Proto)
@@ -26,32 +25,34 @@ func void Spell_Cast_nSummonDemon()
 	
 	if (Npc_IsPlayer(self))
 	{
-		if (!Npc_IsDead(NPC_SummonedDemon))
-		{
-			NPC_SummonedDemon.attribute[ATR_HITPOINTS] = 0;
-		};
+		Spell_ResetPlayerManagedCreatures();
 		
 		Wld_SpawnNpcRange (self, Demon, 1, 500);
-		NPC_SummonedDemon = Hlp_GetNpc(Demon);
-		NpcFn_SetMonsterAsSummoned(NPC_SummonedDemon, false);
-		NPC_SummonedDemon.aivar[AIV_SummonTime] = -1;
-		//AI_PlayAniBS (NPC_SummonedDemon, "T_SPAWN", BS_UNCONSCIOUS);
+		var C_Npc Summoned; Summoned = Hlp_GetNpc(Demon);
+		NpcFn_SetMonsterAsSummoned(Summoned, false);
+		Summoned.aivar[AIV_SummonTime] = -1;
 		
-		NPC_SummonedDemon.attribute[ATR_HITPOINTS_MAX] = 500 + other.attribute[ATR_POWER];
-		NPC_SummonedDemon.attribute[ATR_HITPOINTS] = NPC_SummonedDemon.attribute[ATR_HITPOINTS_MAX];
-		NPC_SummonedDemon.attribute[ATR_MANA_MAX] = 250 + other.attribute[ATR_POWER]/2;
-		NPC_SummonedDemon.attribute[ATR_MANA] = NPC_SummonedDemon.attribute[ATR_MANA_MAX];
-		NPC_SummonedDemon.attribute[ATR_STRENGTH] = 125 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.attribute[ATR_DEXTERITY] = 125 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.attribute[ATR_POWER] = 125 + other.attribute[ATR_POWER]/5;
+		//Npc_ClearAIQueue	(Summoned);
+		//AI_PlayAni			(Summoned, "T_SPAWN");
+		//AI_Wait				(Summoned, 2);
 		
-		NPC_SummonedDemon.protection[PROT_BARRIER] = 200 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_BLUNT] = 200 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_EDGE] = 200 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_FIRE] = 300 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_FLY] = 200 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_MAGIC] = 200 + other.attribute[ATR_POWER]/5;
-		NPC_SummonedDemon.protection[PROT_POINT] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.attribute[ATR_HITPOINTS_MAX] = 500 + other.attribute[ATR_POWER];
+		Summoned.attribute[ATR_HITPOINTS] = Summoned.attribute[ATR_HITPOINTS_MAX];
+		Summoned.attribute[ATR_MANA_MAX] = 250 + other.attribute[ATR_POWER]/2;
+		Summoned.attribute[ATR_MANA] = Summoned.attribute[ATR_MANA_MAX];
+		Summoned.attribute[ATR_STRENGTH] = 125 + other.attribute[ATR_POWER]/5;
+		Summoned.attribute[ATR_DEXTERITY] = 125 + other.attribute[ATR_POWER]/5;
+		Summoned.attribute[ATR_POWER] = 125 + other.attribute[ATR_POWER]/5;
+		
+		Summoned.protection[PROT_BARRIER] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_BLUNT] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_EDGE] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_FIRE] = 300 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_FLY] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_MAGIC] = 200 + other.attribute[ATR_POWER]/5;
+		Summoned.protection[PROT_POINT] = 200 + other.attribute[ATR_POWER]/5;
+		
+		Spell_SetPlayerManagedCreature (0, Summoned);
 	}
 	else
 	{

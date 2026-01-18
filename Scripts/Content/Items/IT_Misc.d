@@ -104,23 +104,13 @@ instance ItMi_Scrolls (ItemPR_Misc)
 	description					=	name;
 	TEXT[0]						=	"Baza do tworzenia";
 	TEXT[1]						=	"magicznych zwojów.";
+	TEXT[2]						=	"Zawiera 4 pergaminy.";
 	COUNT[5]					=	value;
 };
 
 ///******************************************************************************************
 /// Fletchery
 ///******************************************************************************************
-instance ItMi_Arrowhead (ItemPR_Misc)
-{
-	name						=	"Grot";
-	value						=	3;
-	visual						=	"ItMi_Arrowhead.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Baza do tworzenia amunicji.";
-	COUNT[5]					=	value;
-};
-
 instance ItMi_BlackPowder (ItemPR_Misc)
 {
 	name						=	"Czarny proch";
@@ -137,12 +127,13 @@ instance ItMi_BlackPowder (ItemPR_Misc)
 
 instance ItMi_Wood (ItemPR_Misc)
 {
-	name						=	"Drewno";
-	value						=	10;
+	name						=	"Drewno do wyrobu broni";
+	value						=	20;
 	visual						=	"ItMi_Wood.3ds";
 	
 	description					=	name;
-	TEXT[0]						=	"U¿ywane do tworzenia amunicji.";
+	TEXT[0]						=	"U¿ywane do tworzenia ³uków, kusz,";
+	TEXT[1]						=	"toporów, m³otów, kijów bojowych.";
 	COUNT[5]					=	value;
 };
 

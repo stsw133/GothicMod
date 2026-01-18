@@ -4527,7 +4527,7 @@ instance MFX_NecAura_BRIDGE (C_ParticleFx)
 };
 
 ///******************************************************************************************
-instance MFX_NecPlague_INIT (C_ParticleFx)
+instance MFX_Plague_INIT (C_ParticleFx)
 {
 	ppsvalue = 50;
 	ppsscalekeys_s = "1";
@@ -4565,7 +4565,7 @@ instance MFX_NecPlague_INIT (C_ParticleFx)
 	visalphaend = 255;
 };
 
-instance MFX_NecPlague_CAST (C_ParticleFx)
+instance MFX_Plague_CAST (C_ParticleFx)
 {
 	ppsvalue = 50;
 	ppsscalekeys_s = "1";
@@ -4603,7 +4603,7 @@ instance MFX_NecPlague_CAST (C_ParticleFx)
 	useemittersfor = true;
 };
 
-instance MFX_NecPlague_TARGET1 (C_ParticleFx)
+instance MFX_Plague_TARGET1 (C_ParticleFx)
 {
 	ppsvalue = 80;
 	ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1";
@@ -4640,7 +4640,7 @@ instance MFX_NecPlague_TARGET1 (C_ParticleFx)
 	useemittersfor = true;
 };
 
-instance MFX_NecPlague_TARGET2 (C_ParticleFx)
+instance MFX_Plague_TARGET2 (C_ParticleFx)
 {
 	ppsvalue = 80;
 	ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1";
@@ -4678,7 +4678,7 @@ instance MFX_NecPlague_TARGET2 (C_ParticleFx)
 	useemittersfor = true;
 };
 
-instance MFX_NecPlague_TARGET3 (C_ParticleFx)
+instance MFX_Plague_TARGET3 (C_ParticleFx)
 {
 	ppsvalue = 80;
 	ppsscalekeys_s = "1 1 1 1 1 1 1 1 1 1";

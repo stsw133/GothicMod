@@ -2382,9 +2382,9 @@ instance spellFX_NecAura_Origin (CFx_Base_Proto)
 };
 
 ///******************************************************************************************
-instance spellFX_NecPlague (CFx_Base_Proto)
+instance spellFX_Plague (CFx_Base_Proto)
 {
-	visname_S					=	"MFX_NecPlague_INIT";
+	visname_S					=	"MFX_Plague_INIT";
 	emtrjmode_s					=	"FIXED";
 	emTrjOriginNode				=	"ZS_RIGHTHAND";
 	emtrjloopmode_s				=	"NONE";
@@ -2399,18 +2399,45 @@ instance spellFX_NecPlague (CFx_Base_Proto)
 	emTrjTargetRange			=	20;
 	emTrjTargetElev				=	0;
 };
-instance spellFX_NecPlague_KEY_CAST (C_ParticleFXEmitKey)
+instance spellFX_Plague_KEY_CAST (C_ParticleFXEmitKey)
 {
-	visname_S					=	"MFX_SWARM_CAST";
+	visname_S					=	"MFX_Plague_CAST";
 	emtrjmode_s					=	"TARGET";
 	emtrjeasevel				=	500;
 	emCheckCollision			=	true;
 	sfxid						=	"MFX_Swarm_Cast";
 };
-instance spellFX_NecPlague_KEY_COLLIDE (C_ParticleFXEmitKey)
+instance spellFX_Plague_KEY_COLLIDE (C_ParticleFXEmitKey)
 {
 	emtrjeasevel				=	0.000001;
 	pfx_ppsisloopingchg			=	true;
+};
+
+instance spellFX_Plague_TARGET (CFx_Base_Proto)
+{
+	visname_S					=	"MFX_Plague_TARGET1";
+	emtrjmode_s					=	"FIXED";
+	emTrjOriginNode				=	"BIP01";
+	emtrjloopmode_s				=	"NONE";
+	emtrjeasefunc_s				=	"LINEAR";
+	emFXCreate_S				=	"spellFX_Plague_TARGET_2";
+};
+instance spellFX_Plague_TARGET_2 (CFx_Base_Proto)
+{
+	visname_S					=	"MFX_Plague_TARGET2";
+	emtrjmode_s					=	"FIXED";
+	emTrjOriginNode				=	"BIP01";
+	emtrjloopmode_s				=	"NONE";
+	emtrjeasefunc_s				=	"LINEAR";
+	emFXCreate_S				=	"spellFX_Plague_TARGET_3";
+};
+instance spellFX_Plague_TARGET_3 (CFx_Base_Proto)
+{
+	visname_S					=	"MFX_Plague_TARGET3";
+	emtrjmode_s					=	"FIXED";
+	emTrjOriginNode				=	"BIP01";
+	emtrjloopmode_s				=	"NONE";
+	emtrjeasefunc_s				=	"LINEAR";
 };
 
 ///******************************************************************************************

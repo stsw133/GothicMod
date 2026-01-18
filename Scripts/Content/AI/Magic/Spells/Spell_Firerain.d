@@ -2,8 +2,8 @@
 /// SPL_Firerain
 ///******************************************************************************************
 
-const int SPL_Cost_Firerain				=	300;
-const int SPL_Damage_Firerain			=	600;
+const int SPL_Cost_Firerain				=	150;
+const int SPL_Damage_Firerain			=	150;
 
 ///******************************************************************************************
 instance Spell_Firerain (C_Spell_Proto)

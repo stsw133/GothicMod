@@ -47,7 +47,7 @@ func void B_MM_AssessEnemy()
 	
 	/// new!!!
 	if (Npc_IsPlayer(other))
-	&& (ATS[ATS_PerfumeTime] > 0)
+	&& (Buff_Has(other, Buff_PotionPerfume))
 	&& (self.aivar[AIV_MM_Real_ID] == ID_BLOODFLY || self.aivar[AIV_MM_Real_ID] == ID_SWAMPDRONE)
 	{
 		return;

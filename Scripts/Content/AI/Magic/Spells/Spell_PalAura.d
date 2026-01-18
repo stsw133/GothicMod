@@ -5,9 +5,9 @@
 const int SPL_Time_PalAura				=	60;
 const int SPL_Effect_PalAura			=	100;
 
-const int SPL_Cost_PalFaith				=	20;
-const int SPL_Cost_PalGlory				=	80;
-const int SPL_Cost_PalJustice			=	200;
+const int SPL_Cost_PalFaith				=	10;
+const int SPL_Cost_PalGlory				=	30;
+const int SPL_Cost_PalJustice			=	50;
 
 ///******************************************************************************************
 instance Spell_PalFaith (C_Spell_Proto)

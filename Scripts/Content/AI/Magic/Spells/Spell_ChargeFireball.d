@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 const int SPL_Cost_ChargeFireball		=	50;
-const int SPL_Damage_ChargeFireball 	=	125;
+const int SPL_Damage_ChargeFireball 	=	100;
 
 ///******************************************************************************************
 instance Spell_ChargeFireball (C_Spell_Proto)

@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 const int SPL_Cost_Pyrokinesis			=	75;
-const int SPL_Damage_Pyrokinesis 		=	175;
+const int SPL_Damage_Pyrokinesis 		=	150;
 
 ///******************************************************************************************
 instance Spell_Pyrokinesis (C_Spell_Proto)

@@ -1,5 +1,36 @@
 ///******************************************************************************************
-/// Sound Effects
+/// Monster sounds
+///******************************************************************************************
+
+/// Bear
+	instance BEAR_Ambient					(C_SFX_DEF) {file= "BEAR_Ambient01.wav";			vol = 50;			};
+	instance BEAR_Ambient_A1				(C_SFX_DEF) {file= "BEAR_Ambient02.wav";			vol = 50;			};
+	instance BEAR_Ambient_A2				(C_SFX_DEF) {file= "nosound.wav";					vol = 0;			};
+	instance BEAR_Ambient_A3				(C_SFX_DEF) {file= "nosound.wav";					vol = 0;			};
+	instance BEAR_Ambient_Short				(C_SFX_DEF) {file= "SHA_Ambient_Short01.wav";		vol = 50;			};
+	instance BEAR_Ambient_Short_A1			(C_SFX_DEF) {file= "SHA_Ambient_Short02.wav";		vol = 50;			};
+	instance BEAR_Ambient_Short_A2			(C_SFX_DEF) {file= "SHA_Ambient_Short03.wav";		vol = 50;			};
+	instance BEAR_Ambient_Short_A3			(C_SFX_DEF) {file= "nosound.wav";					vol = 0;			};
+	instance BEAR_Ambient_Short_A4			(C_SFX_DEF) {file= "nosound.wav";					vol = 0;			};
+	instance BEAR_Ambient_Short_A5			(C_SFX_DEF) {file= "nosound.wav";					vol = 0;			};
+	instance BEAR_Attack					(C_SFX_DEF) {file= "BEAR_Attack01.wav";				vol = 100;			};
+	instance BEAR_Attack_A1					(C_SFX_DEF) {file= "BEAR_Attack02.wav";				vol = 100;			};
+	instance BEAR_Attack_A2					(C_SFX_DEF) {file= "BEAR_Attack03.wav";				vol = 100;			};
+	instance BEAR_Attack_A3					(C_SFX_DEF) {file= "BEAR_Attack04.wav";				vol = 100;			};
+	instance BEAR_Die						(C_SFX_DEF) {file= "BEAR_Die01.wav";				vol = 127;			};
+	instance BEAR_Hurt						(C_SFX_DEF) {file= "BEAR_Hurt01.wav";				vol = 100;			};
+	instance BEAR_Hurt_A1					(C_SFX_DEF) {file= "BEAR_Hurt02.wav";				vol = 100;			};
+	instance BEAR_Hurt_A2					(C_SFX_DEF) {file= "BEAR_Hurt03.wav";				vol = 100;			};
+	instance BEAR_Hurt_A3					(C_SFX_DEF) {file= "BEAR_Hurt04.wav";				vol = 100;			};
+	instance BEAR_Roar						(C_SFX_DEF) {file= "BEAR_Roar01.wav";				vol = 127;			};
+	instance BEAR_Roar_A1					(C_SFX_DEF) {file= "BEAR_Roar02.wav";				vol = 127;			};
+	instance BEAR_Warn						(C_SFX_DEF) {file= "BEAR_Warn01.wav";				vol = 127;			};
+	instance BEAR_Warn_A1					(C_SFX_DEF) {file= "BEAR_Warn02.wav";				vol = 127;			};
+	instance BEAR_Whine						(C_SFX_DEF) {file= "BEAR_Whine01.wav";				vol = 50;			};
+	instance BEAR_Whine_A1					(C_SFX_DEF) {file= "BEAR_Whine02.wav";				vol = 50;			};
+
+///******************************************************************************************
+/// Spell sounds
 ///******************************************************************************************
 
 /// SPL_Glory

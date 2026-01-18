@@ -2,8 +2,8 @@
 /// SPL_BreathOfDeath
 ///******************************************************************************************
 
-const int SPL_Cost_BreathOfDeath		=	300;
-const int SPL_Damage_BreathOfDeath		=	900;
+const int SPL_Cost_BreathOfDeath		=	150;
+const int SPL_Damage_BreathOfDeath		=	300;
 
 ///******************************************************************************************
 instance Spell_BreathOfDeath (C_Spell_Proto)

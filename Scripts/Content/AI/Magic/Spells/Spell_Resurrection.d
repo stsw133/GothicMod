@@ -2,7 +2,7 @@
 /// SPL_Resurrection
 ///******************************************************************************************
 
-const int SPL_Cost_Resurrection			=	50;
+const int SPL_Cost_Resurrection			=	30;
 
 ///******************************************************************************************
 instance Spell_Resurrection (C_Spell_Proto)

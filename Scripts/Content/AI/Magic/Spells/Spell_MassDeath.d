@@ -2,8 +2,8 @@
 /// SPL_MassDeath
 ///******************************************************************************************
 
-const int SPL_Cost_MassDeath			=	400;
-const int SPL_Damage_MassDeath			=	400;
+const int SPL_Cost_MassDeath			=	200;
+const int SPL_Damage_MassDeath			=	200;
 
 ///******************************************************************************************
 instance Spell_MassDeath (C_Spell_Proto)

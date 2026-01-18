@@ -102,6 +102,7 @@ func void ZS_Talk()
 		/// MOD: assign special dialogs
 		DIA_Actions_EXIT.npc = Hlp_GetInstanceID(self);
 		DIA_Actions_JOIN.npc = Hlp_GetInstanceID(self);
+		DIA_HigherLower_JOIN.npc = Hlp_GetInstanceID(self);
 		DIA_Teach_JOIN.npc = Hlp_GetInstanceID(self);
 		DIA_Trade_JOIN.npc = Hlp_GetInstanceID(self);
 		
@@ -122,9 +123,9 @@ func void ZS_Talk()
 ///******************************************************************************************
 func int ZS_Talk_Loop()
 {
-   	if (InfoManager_HasFinished())
-   	&& (zsTalkBugfix)
-   	{
+	if (InfoManager_HasFinished())
+	&& (zsTalkBugfix)
+	{
 		self.aivar[AIV_Invisible] = false;
 		other.aivar[AIV_Invisible] = false;
 		self.aivar[AIV_NpcStartedTalk] = false;
@@ -141,18 +142,18 @@ func int ZS_Talk_Loop()
 		};
 		
 		return LOOP_END;
-  	}
-  	else
-   	{
+	}
+	else
+	{
 		if (MEM_InformationMan.IsWaitingForOpen && MEM_InformationMan.IsWaitingForEnd)
 		{
 			MEM_InformationMan.IsDone = true;
 			AI_ProcessInfos(self);
 		};
 		
-   		zsTalkBugfix = true;
-   		return LOOP_CONTINUE;
-   	};
+		zsTalkBugfix = true;
+		return LOOP_CONTINUE;
+	};
 };
 
 ///******************************************************************************************

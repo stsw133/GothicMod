@@ -3,7 +3,7 @@
 ///******************************************************************************************
 
 const int SPL_Cost_ChargeZap			=	30;
-const int SPL_Damage_ChargeZap 			=	60;
+const int SPL_Damage_ChargeZap 			=	50;
 
 ///******************************************************************************************
 instance Spell_ChargeZap (C_Spell_Proto)

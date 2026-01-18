@@ -2,7 +2,7 @@
 /// SPL_Elevate
 ///******************************************************************************************
 
-const int SPL_Cost_Elevate				=	75;
+const int SPL_Cost_Elevate				=	50;
 const int SPL_Time_Elevate				=	60;
 
 const int SPL_STEP_Elevate				=	0;

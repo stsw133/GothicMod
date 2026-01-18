@@ -1257,6 +1257,14 @@ func void Use_ItPo_NightVision()
 };
 
 ///******************************************************************************************
+instance Buff_PotionPerfume (lCBuff)
+{
+	name						=	"Perfumy";
+	bufftype					=	BUFF_GOOD;
+	durationMS					=	600000;
+	buffTex						=	"BUFF_PERFUME.tga";
+};
+
 instance ItPo_Perfume (ItemPR_Potion)
 {
 	name						=	"Perfumy";
@@ -1274,10 +1282,7 @@ instance ItPo_Perfume (ItemPR_Potion)
 };
 func void Use_ItPo_Perfume()
 {
-	if (Npc_IsPlayer(self))
-	{
-		ATS[ATS_PerfumeTime] = 600;
-	};
+	Buff_ApplyOrRefresh (self, Buff_PotionPerfume);
 };
 
 ///******************************************************************************************
@@ -1299,7 +1304,7 @@ func void Use_ItPo_Poison()
 {
 	if (Npc_IsPlayer(self))
 	{
-		MOD_SetPoison(ATS[ATS_PoisonPoints] + HP_PER_LP);
+		MOD_SetPoison(ATS[ATS_PoisonPoints] + HP_PER_LP*2);
 	};
 };
 
@@ -1398,6 +1403,7 @@ func void Use_ItPo_Underwater()
 /// Transform
 ///******************************************************************************************
 instance ItSc_TrfAlligator (ItemPR_PotionTrf)		{	name = "W aligatora";			description = name;	value = 200;	COUNT[5] = value;	};
+instance ItSc_TrfBear (ItemPR_PotionTrf)			{	name = "W niedŸwiedzia";		description = name;	value = 250;	COUNT[5] = value;	};
 instance ItSc_TrfBiter (ItemPR_PotionTrf)			{	name = "W k¹sacza";				description = name;	value = 150;	COUNT[5] = value;	};
 instance ItSc_TrfBloodfly (ItemPR_PotionTrf)		{	name = "W krwiopijcê";			description = name;	value = 125;	COUNT[5] = value;	};
 instance ItSc_TrfBloodhound (ItemPR_PotionTrf)		{	name = "W krwawego ogara";		description = name;	value = 225;	COUNT[5] = value;	};
@@ -1421,7 +1427,7 @@ instance ItSc_TrfShadowbeast (ItemPR_PotionTrf)		{	name = "W cieniostwora";		des
 instance ItSc_TrfSheep (ItemPR_PotionTrf)			{	name = "W owcê";				description = name;	value = 105;	COUNT[5] = value;	};
 instance ItSc_TrfSnapper (ItemPR_PotionTrf)			{	name = "W zêbacza";				description = name;	value = 175;	COUNT[5] = value;	};
 instance ItSc_TrfSpint (ItemPR_PotionTrf)			{	name = "W spinta";				description = name;	value = 120;	COUNT[5] = value;	};
-instance ItSc_TrfSwampshark (ItemPR_PotionTrf)		{	name = "W b³otnego wê¿¹";		description = name;	value = 250;	COUNT[5] = value;	};
+instance ItSc_TrfSwampshark (ItemPR_PotionTrf)		{	name = "W b³otnego wê¿a";		description = name;	value = 250;	COUNT[5] = value;	};
 instance ItSc_TrfTiger (ItemPR_PotionTrf)			{	name = "W tygrysa";				description = name;	value = 200;	COUNT[5] = value;	};
 instance ItSc_TrfTroll (ItemPR_PotionTrf)			{	name = "W trolla";				description = name;	value = 400;	COUNT[5] = value;	};
 instance ItSc_TrfWaran (ItemPR_PotionTrf)			{	name = "W jaszczura";			description = name;	value =	160;	COUNT[5] = value;	};

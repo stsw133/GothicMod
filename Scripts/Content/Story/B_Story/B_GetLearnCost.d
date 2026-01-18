@@ -129,18 +129,22 @@ func int B_GetLearnCostTalent (var C_Npc oth, var int talent, var int skill)
 	else if (talent == NPC_TALENT_HUNTING)
 	{
 		if		(skill == HUNTING_Blood) 			{	kosten = 3;		}
+		else if	(skill == HUNTING_Bones)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Claws)			{	kosten = 3;		}
+		else if	(skill == HUNTING_Fat) 				{	kosten = 1;		}
 		else if	(skill == HUNTING_Furs) 			{	kosten = 5;		}
 		else if	(skill == HUNTING_Hearts)			{	kosten = 3;		}
 		else if	(skill == HUNTING_Horns)			{	kosten = 2;		}
 		else if	(skill == HUNTING_Mandibles)		{	kosten = 2;		}
 		else if	(skill == HUNTING_Plates)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Scales)			{	kosten = 2;		}
-		else if	(skill == HUNTING_Skins)			{	kosten = 3;		}
+		else if	(skill == HUNTING_Skins)			{	kosten = 5;		}
 		else if	(skill == HUNTING_Stings)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Teeth)			{	kosten = 3;		}
+		else if	(skill == HUNTING_Tendons)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Tongues)			{	kosten = 1;		}
 		else if	(skill == HUNTING_Wings)			{	kosten = 1;		};
+		// total: 35 LP
 	}
 	/// EXTRACTION
 	else if (talent == NPC_TALENT_EXTRACTION)

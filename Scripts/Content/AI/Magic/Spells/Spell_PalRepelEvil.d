@@ -2,8 +2,8 @@
 /// SPL_PalRepelEvil
 ///******************************************************************************************
 
-const int SPL_Cost_PalRepelEvil			=	80;
-const int SPL_Damage_PalRepelEvil		=	400;
+const int SPL_Cost_PalRepelEvil			=	30;
+const int SPL_Damage_PalRepelEvil		=	200;
 
 ///******************************************************************************************
 instance Spell_PalRepelEvil (C_Spell_Proto)

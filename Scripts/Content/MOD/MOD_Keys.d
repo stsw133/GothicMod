@@ -101,9 +101,16 @@ func void MOD_HandleInteractionHotkey()
 ///******************************************************************************************
 func void MOD_HandleSprintHotkey()
 {
+	var int sprintAllowed; sprintAllowed =
+		!C_IsInventoryOpen()
+		&& (movieMode
+			|| (hero.aivar[AIV_Stamina] > 0
+				&& ATS[ATS_HeavyArmor] < 1
+				&& !ATS[ATS_InFightTime]
+				&& !alcoholTime));
+	
 	/// ------ default: Shift ------
-	if (MOD_IsKeyHold("keySprint"))
-	&& ((hero.aivar[AIV_Stamina] > 0 && ATS[ATS_HeavyArmor] < 1 && !alcoholTime && !ATS[ATS_InFightTime]) || movieMode)
+	if (MOD_IsKeyHold("keySprint") && sprintAllowed)
 	{
 		if (ATS[ATS_SprintState] == 0)
 		{

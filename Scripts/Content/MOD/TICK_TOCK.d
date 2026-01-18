@@ -186,7 +186,6 @@ func void TT_1000_HandleSpellEffects()
 {
 	if (ATS[ATS_ShieldPoints] > 0) { ATS[ATS_ShieldPoints] -= 1; }; /// if player has magical shield
 	if (mAuraPalTime > 0) { mAuraPalTime -= 1; };
-	if (ATS[ATS_PerfumeTime] > 0) { ATS[ATS_PerfumeTime] -= 1; };
 	if (ATS[ATS_StealthTime] > 0) { MOD_SetStealth(hero, ATS[ATS_StealthTime] - 1); };
 	if (mAuraTime > 0)
 	{

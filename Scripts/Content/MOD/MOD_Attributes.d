@@ -5,13 +5,11 @@
 
 const int ATS_HeavyArmor				=	0;
 const int ATS_IsObsessed				=	1;
-const int ATS_PerfumeTime				=	2;
-const int ATS_PoisonPoints				=	3;
-const int ATS_RestedTime				=	4;
-const int ATS_ShieldPoints				=	5;
-const int ATS_SprintState				=	6;
-const int ATS_StealthTime				=	7;
-const int ATS_UnderwaterTime			=	8;
+const int ATS_PoisonPoints				=	2;
+const int ATS_RestedTime				=	3;
+const int ATS_ShieldPoints				=	4;
+const int ATS_SprintState				=	5;
+const int ATS_StealthTime				=	6;
 
 const int ATS_DmgDealtIncr				=	10;
 const int ATS_DmgTakenDecr				=	11;

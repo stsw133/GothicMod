@@ -2,8 +2,8 @@
 /// SPL_IceWave
 ///******************************************************************************************
 
-const int SPL_Cost_IceWave				=	200;
-const int SPL_Damage_IceWave			=	25;
+const int SPL_Cost_IceWave				=	100;
+const int SPL_Damage_IceWave			=	5;
 
 ///******************************************************************************************
 instance Spell_IceWave (C_Spell_Proto)

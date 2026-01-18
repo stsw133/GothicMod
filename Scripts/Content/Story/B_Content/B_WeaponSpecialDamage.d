@@ -6,6 +6,60 @@ var int RavenBlitz;
 var int SPL_IsActive_PalBless;
 
 ///******************************************************************************************
+/// MOD_Buffs
+///******************************************************************************************
+
+/// ------ Fire ------
+func void Buff_Fire_OnApply (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	Wld_PlayEffect ("VOB_MAGICBURN", slf, slf, 0, 0, 0, false);
+};
+func void Buff_Fire_OnTick (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	if (!Npc_IsDead(slf)) { B_MagicHurtNpc (hero, slf, NPC_BURN_DAMAGE_POINTS_PER_INTERVALL); };
+};
+instance Buff_Fire (lCBuff)
+{
+	name								=	"Podpalenie";
+	bufftype							=	BUFF_BAD;
+	durationMS							=	4000;
+	tickMS								=	NPC_BURN_TICKS_PER_DAMAGE_POINT;
+	onApply								=	SAVE_GetFuncID(Buff_Fire_OnApply);
+	onTick								=	SAVE_GetFuncID(Buff_Fire_OnTick);
+	buffTex								=	"BUFF_FIRE.tga";
+};
+
+/// ------ Poison ------
+func void Buff_Poison_OnApply (var int bh)
+{
+	//var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	//Wld_PlayEffect ("VOB_MAGICBURN", slf, slf, 0, 0, 0, false);
+};
+func void Buff_Poison_OnTick (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	if (!Npc_IsDead(slf)) { B_MagicHurtNpc (hero, slf, slf.aivar[AIV_Poison]); };
+};
+func void Buff_Poison_OnRemoved (var int bh)
+{
+	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
+	slf.aivar[AIV_Poison] = 0;
+};
+instance Buff_Poison (lCBuff)
+{
+	name								=	"Zatrucie";
+	bufftype							=	BUFF_BAD;
+	durationMS							=	10000;
+	tickMS								=	1000;
+//	onApply								=	SAVE_GetFuncID(Buff_Poison_OnApply);
+	onTick								=	SAVE_GetFuncID(Buff_Poison_OnTick);
+	onRemoved							=	SAVE_GetFuncID(Buff_Poison_OnRemoved);
+	buffTex								=	"BUFF_POISON.tga";
+};
+
+///******************************************************************************************
 /// B_WeaponSpecialDamage
 ///******************************************************************************************
 func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var C_Item wpn, var int dealtDmg)
@@ -134,27 +188,6 @@ func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth, var C_Item wpn)
 ///******************************************************************************************
 /// B_MunitionSpecialDamage
 ///******************************************************************************************
-func void Buff_FireArrowBurn_OnApply (var int bh)
-{
-	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
-	Wld_PlayEffect ("VOB_MAGICBURN", slf, slf, 0, 0, 0, false);
-};
-func void Buff_FireArrowBurn_OnTick (var int bh)
-{
-	var int ptr; ptr = Buff_GetNpc(bh); if (!ptr) { return; }; var C_Npc slf; slf = _^(ptr);
-	B_MagicHurtNpc (hero, slf, 5);
-};
-instance Buff_FireArrowBurn (lCBuff)
-{
-	name												=	"Podpalenie";
-	bufftype											=	BUFF_BAD;
-	durationMS											=	4000;
-	tickMS												=	1000;
-	onApply												=	SAVE_GetFuncID(Buff_FireArrowBurn_OnApply);
-	onTick												=	SAVE_GetFuncID(Buff_FireArrowBurn_OnTick);
-};
-
-///******************************************************************************************
 func void B_MunitionSpecialBangEffect (var C_Npc oth, var C_Npc slf)
 {
 	if (Npc_IsPlayer(oth))
@@ -187,7 +220,7 @@ func void B_MunitionSpecialBang (var C_Npc oth)
 };
 
 ///******************************************************************************************
-func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
+func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm, var int currDmg)
 {
 	var int dmg; dmg = 0;
 	var int itmID; itmID = Hlp_GetInstanceID(itm);
@@ -229,12 +262,33 @@ func int B_MunitionSpecialDamage(var C_Npc slf, var C_Npc oth, var C_Item itm)
 	/// fire arrow
 	else if (itmID == Hlp_GetInstanceID(ItRw_FireArrow))
 	{
-		Buff_ApplyOrRefresh (oth, Buff_Fire);
+		if (currDmg + itm.damageTotal > 0)
+		{
+			Buff_ApplyOrRefresh (oth, Buff_Fire);
+		};
+	}
+	/// poison arrow
+	else if (itmID == Hlp_GetInstanceID(ItRw_PoisonArrow))
+	{
+		if (currDmg + itm.damageTotal > 0)
+		{
+			oth.aivar[AIV_Poison] += HP_PER_LP;
+			Buff_ApplyOrRefresh (oth, Buff_Poison);
+		};
 	}
 	/// magic arrow
 	else if (itmID == Hlp_GetInstanceID(ItRw_MagicArrow))
 	{
 		dmg = itm.COUNT[1];
+	}
+	/// deadly poison arrow
+	else if (itmID == Hlp_GetInstanceID(ItRw_DeadlyPoisonArrow))
+	{
+		if (currDmg + itm.damageTotal > 0)
+		{
+			oth.aivar[AIV_Poison] += HP_PER_LP*2;
+			Buff_ApplyOrRefresh (oth, Buff_Poison);
+		};
 	};
 	
 	return dmg;

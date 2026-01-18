@@ -3,7 +3,7 @@
 ///******************************************************************************************
 func void B_CheerFight()
 {
-	if (Npc_GetStateTime(self) <= 2) 			
+	if (Npc_GetStateTime(self) <= 2)
 	{
 		return;
 	};
@@ -186,4 +186,11 @@ func int ZS_WatchFight_Loop()
 func void ZS_WatchFight_End()
 {
 	//AI_PlayAni (self, "T_WATCHFIGHT_2_STAND");
+	
+	/// MOD (bugfix)
+	if (Npc_IsDead(victim))
+	{
+		B_AssessMurder();
+		return;
+	};
 };

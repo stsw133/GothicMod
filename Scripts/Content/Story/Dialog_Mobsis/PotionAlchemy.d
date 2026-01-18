@@ -1929,6 +1929,7 @@ func void PC_PotionAlchemy_Transform_Start_Info()
 	if (PLAYER_TALENT_ALCHEMY[ALCHEMY_Transform])
 	{
 		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w aligatora (5 fiolek krwi, rtêæ, woda)", PC_ItPo_TrfAlligator);
+		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w niedŸwiedzia (5 fiolek krwi, rtêæ, woda)", PC_ItPo_TrfBear);
 		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w k¹sacza (5 fiolek krwi, rtêæ, woda)", PC_ItPo_TrfBiter);
 		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwiopijcê (5 fiolek krwi, rtêæ, woda)", PC_ItPo_TrfBloodfly);
 		Info_AddChoice (PC_PotionAlchemy_Transform_Start, "Przemiana w krwawego ogara (5 fiolek krwi, rtêæ, woda)", PC_ItPo_TrfBloodhound);
@@ -1978,6 +1979,27 @@ func void PC_ItPo_TrfAlligator()
 		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
 		
 		CreateInvItem (hero, ItSc_TrfAlligator);
+		Npc_RemoveInvItem (hero, ItMi_Flask);
+		Print(PRINT_AlchemySuccess);
+	}
+	else
+	{
+		Print(PRINT_ProdItemsMissing);
+	};
+	PC_PotionAlchemy_Transform_Start_Info();
+};
+
+func void PC_ItPo_TrfBear()
+{
+	if (Npc_HasItems(hero, ItAt_BearBlood) >= 5)
+	&& (Npc_HasItems(hero, ItMi_Quicksilver) >= 1)
+	&& (Npc_HasItems(hero, ItFo_Water) >= 1)
+	{
+		Npc_RemoveInvItems (hero, ItAt_BearBlood, 5);
+		Npc_RemoveInvItem (hero, ItMi_Quicksilver);
+		Npc_RemoveInvItem (hero, ItFo_Water); CreateInvItem (hero, ItMi_EmptyBottle);
+		
+		CreateInvItem (hero, ItSc_TrfBear);
 		Npc_RemoveInvItem (hero, ItMi_Flask);
 		Print(PRINT_AlchemySuccess);
 	}

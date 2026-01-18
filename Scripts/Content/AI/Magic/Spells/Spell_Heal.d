@@ -2,8 +2,8 @@
 /// SPL_Heal
 ///******************************************************************************************
 
-const int SPL_Cost_Heal					=	50;
-const int SPL_Heal_Heal					=	50*HP_PER_LP;
+const int SPL_Cost_Heal					=	20;
+const int SPL_Heal_Heal					=	100;
 
 ///******************************************************************************************
 instance Spell_Heal (C_Spell_Proto)

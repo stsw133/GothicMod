@@ -187,6 +187,7 @@ instance ItPl_GraveMoss (ItemPR_Plant)
 	
 	description					=	name;
 	TEXT[0]						=	"Sk³adnik lekarstw i odstraszaczy.";
+	TEXT[1]						=	"Sk³adnik niektórych run i zwojów.";
 	COUNT[5]					=	value;
 };
 
@@ -198,6 +199,7 @@ instance ItPl_MountainMoss (ItemPR_Plant)
 	
 	description					=	name;
 	TEXT[0]						=	"Sk³adnik lekarstw i odstraszaczy.";
+	TEXT[1]						=	"Sk³adnik niektórych run i zwojów.";
 	COUNT[5]					=	value;
 };
 

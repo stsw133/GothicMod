@@ -2,7 +2,7 @@
 /// SPL_Inflate
 ///******************************************************************************************
 
-const int SPL_Cost_Inflate				=	125;
+const int SPL_Cost_Inflate				=	100;
 const int SPL_Damage_Inflate			=	0;
 const int SPL_Time_Inflate				=	20;
 

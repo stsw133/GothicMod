@@ -2,7 +2,7 @@
 /// SPL_ArmyOfDarkness
 ///******************************************************************************************
 
-const int SPL_Cost_ArmyOfDarkness		=	300;
+const int SPL_Cost_ArmyOfDarkness		=	150;
 
 ///******************************************************************************************
 instance Spell_ArmyOfDarkness (C_Spell_Proto)
@@ -20,10 +20,19 @@ func void Spell_Cast_ArmyOfDarkness()
 {
 	B_SpellCast (self, default, SPL_Cost_ArmyOfDarkness);
 	
-	var C_Npc Summoned;
-	Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false);
-	Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false);
-	Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false);
-	Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false);
-	Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false);
+	if (Npc_IsPlayer(self))
+	{
+		Spell_ResetPlayerManagedCreatures();
+		
+		var C_Npc Summoned;
+		Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false); Spell_SetPlayerManagedCreature(0, Summoned);
+		Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false); Spell_SetPlayerManagedCreature(1, Summoned);
+		Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false); Spell_SetPlayerManagedCreature(2, Summoned);
+		Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false); Spell_SetPlayerManagedCreature(3, Summoned);
+		Wld_SpawnNpcRange(self, Skeleton, 1, 800); Summoned = Hlp_GetNpc(Skeleton); NpcFn_SetMonsterAsSummoned(Summoned, false); Spell_SetPlayerManagedCreature(4, Summoned);
+	}
+	else
+	{
+		Wld_SpawnNpcRange(self, Skeleton, 5, 800);
+	};
 };

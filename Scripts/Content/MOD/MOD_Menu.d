@@ -32,7 +32,8 @@ func void MOD_UpdateStatusMenu()
 	if		(dLevel == DIFF_E)	{	chapter = ConcatStrings(chapter, " (³atwy)");		}
 	else if	(dLevel == DIFF_M)	{	chapter = ConcatStrings(chapter, " (œredni)");		}
 	else if	(dLevel == DIFF_H)	{	chapter = ConcatStrings(chapter, " (trudny)");		}
-	else if	(dLevel == DIFF_V)	{	chapter = ConcatStrings(chapter, " (b. trudny)");	};
+	else if	(dLevel == DIFF_V)	{	chapter = ConcatStrings(chapter, " (b. trudny)");	}
+	else if	(dLevel == DIFF_C)	{	chapter = ConcatStrings(chapter, " (w³asny)");		};
 	
 	MOD_UpdateStatusMenuItem("MENU_ITEM_CHAPTER", chapter);
 	

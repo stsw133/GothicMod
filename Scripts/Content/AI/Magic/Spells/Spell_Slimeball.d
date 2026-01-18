@@ -2,8 +2,8 @@
 /// SPL_Slimeball
 ///******************************************************************************************
 
-const int SPL_Cost_Slimeball			=	25;
-const int SPL_Damage_Slimeball			=	25;
+const int SPL_Cost_Slimeball			=	15;
+const int SPL_Damage_Slimeball			=	15;
 
 ///******************************************************************************************
 instance Spell_Slimeball (C_Spell_Proto)

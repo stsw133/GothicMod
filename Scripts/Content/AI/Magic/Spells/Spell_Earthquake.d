@@ -2,8 +2,8 @@
 /// SPL_Earthquake
 ///******************************************************************************************
 
-const int SPL_Cost_Earthquake			=	200;
-const int SPL_Damage_Earthquake			=	100;
+const int SPL_Cost_Earthquake			=	100;
+const int SPL_Damage_Earthquake			=	50;
 
 ///******************************************************************************************
 instance Spell_Earthquake (C_Spell_Proto)

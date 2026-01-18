@@ -15,6 +15,7 @@ instance WzA_17020_Burak (Npc_Default)
 	aivar[AIV_IgnoreDisguise]			=	IGNORE_Armor | IGNORE_FakeGuild;
 	aivar[AIV_ToughGuy]					=	true;
 	aivar[AIV_NewsOverride]				=	NEWS_ToughGuy;
+	aivar[AIV_CanOffer]					=	OFFER_Games;
 	
 	/// ------ Attributes ------
 	NpcFn_SetAttributesToLevel (self, 30);

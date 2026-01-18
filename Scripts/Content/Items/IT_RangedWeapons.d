@@ -64,17 +64,15 @@ prototype ItemPR_Bow (C_Item)
 	flags						=	ITEM_BOW;
 	material					=	MAT_WOOD;
 	
-	munition					=	ITRW_ARROW;
+	munition					=	ItRw_Arrow;
 	on_equip					=	Equip_Bow_CHECK;
 	on_unequip					=	UnEquip_Bow_CHECK;
 };
-
-///******************************************************************************************
 func void Equip_Bow_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_bow = ITRW_ARROW;
+		if (SelectedMunition[MUNTYPE_BOW] == default)	{ SelectedMunition[MUNTYPE_BOW] = ItRw_Arrow; };
 		ARROW_CHECK();
 	};
 };
@@ -82,11 +80,10 @@ func void UnEquip_Bow_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_bow = 0;
+		//SelectedMunition[MUNTYPE_BOW] = 0;
 		ARROW_CHECK();
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = ITRW_ARROW;
-		self.damage[DAM_INDEX_POINT] = 0;
+		//itm.munition = ItRw_Arrow;
 	};
 };
 
@@ -164,17 +161,15 @@ prototype ItemPR_Crossbow (C_Item)
 	flags						=	ITEM_CROSSBOW;
 	material					=	MAT_WOOD;
 	
-	munition					=	ITRW_BOLT;
+	munition					=	ItRw_Bolt;
 	on_equip					=	Equip_Crossbow_CHECK;
 	on_unequip					=	UnEquip_Crossbow_CHECK;
 };
-
-///******************************************************************************************
 func void Equip_Crossbow_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_cbow = ITRW_BOLT;
+		if (SelectedMunition[MUNTYPE_CBOW] == default)	{ SelectedMunition[MUNTYPE_CBOW] = ItRw_Bolt; };
 		BOLT_CHECK();
 	};
 };
@@ -182,26 +177,25 @@ func void UnEquip_Crossbow_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_cbow = 0;
+		//SelectedMunition[MUNTYPE_CBOW] = 0;
 		BOLT_CHECK();
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = ITRW_BOLT;
-		self.damage[DAM_INDEX_POINT] = 0;
+		//itm.munition = ItRw_Bolt;
 	};
 };
 
 ///******************************************************************************************
-instance ItRw_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Default);		};
-instance ItRw0_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Wornout);		};
-instance ItRw3_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Forged);			};
+instance ItRw_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Default);		};
+instance ItRw0_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Wornout);		};
+instance ItRw3_Crossbow_L_01 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_01.mms";				SetItRwAttributes (self, 30,DAM_POINT, 25,ATR_STRENGTH, 140, WEAPON_Forged);		};
 
-instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Default);		};
-instance ItRw0_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Wornout);		};
-instance ItRw3_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Ma³a kusza";					visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Forged);			};
+instance ItRw_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Default);		};
+instance ItRw0_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Wornout);		};
+instance ItRw3_Crossbow_L_02 (ItemPR_Crossbow)		{	name = "Kusza myœliwska";				visual = "ItRw_Crossbow_L_02.mms";				SetItRwAttributes (self, 60,DAM_POINT, 50,ATR_STRENGTH, 140, WEAPON_Forged);		};
 
 instance ItRw_Crossbow_M_01 (ItemPR_Crossbow)		{	name = "Kusza";							visual = "ItRw_Crossbow_M_01.mms";				SetItRwAttributes (self, 90,DAM_POINT, 75,ATR_STRENGTH, 140, WEAPON_Default);		};
 instance ItRw0_Crossbow_M_01 (ItemPR_Crossbow)		{	name = "Kusza";							visual = "ItRw_Crossbow_M_01.mms";				SetItRwAttributes (self, 90,DAM_POINT, 75,ATR_STRENGTH, 140, WEAPON_Wornout);		};
-instance ItRw3_Crossbow_M_01 (ItemPR_Crossbow)		{	name = "Kusza";							visual = "ItRw_Crossbow_M_01.mms";				SetItRwAttributes (self, 90,DAM_POINT, 75,ATR_STRENGTH, 140, WEAPON_Forged);			};
+instance ItRw3_Crossbow_M_01 (ItemPR_Crossbow)		{	name = "Kusza";							visual = "ItRw_Crossbow_M_01.mms";				SetItRwAttributes (self, 90,DAM_POINT, 75,ATR_STRENGTH, 140, WEAPON_Forged);		};
 
 instance ItRw_Crossbow_M_02 (ItemPR_Crossbow)		{	name = "Kusza bojowa";					visual = "ItRw_Crossbow_M_02.mms";				SetItRwAttributes (self, 120,DAM_POINT, 100,ATR_STRENGTH, 140, WEAPON_Default);		};
 instance ItRw0_Crossbow_M_02 (ItemPR_Crossbow)		{	name = "Kusza bojowa";					visual = "ItRw_Crossbow_M_02.mms";				SetItRwAttributes (self, 120,DAM_POINT, 100,ATR_STRENGTH, 140, WEAPON_Wornout);		};
@@ -224,17 +218,15 @@ prototype ItemPR_Gun (C_Item)
 	flags						=	ITEM_CROSSBOW;
 	material					=	MAT_METAL;
 	
-	munition					=	ITRW_AMMO;
+	munition					=	ItRw_Ammo;
 	on_equip					=	Equip_Gun_CHECK;
 	on_unequip					=	UnEquip_Gun_CHECK;
 };
-
-///******************************************************************************************
 func void Equip_Gun_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_gun = ITRW_AMMO;
+		if (SelectedMunition[MUNTYPE_GUN] == default)	{ SelectedMunition[MUNTYPE_GUN] = ItRw_Ammo; };
 		AMMO_CHECK();
 	};
 };
@@ -242,11 +234,10 @@ func void UnEquip_Gun_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_gun = 0;
+		//SelectedMunition[MUNTYPE_GUN] = 0;
 		AMMO_CHECK();
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = ITRW_AMMO;
-		self.damage[DAM_INDEX_POINT] = 0;
+		//itm.munition = ItRw_Ammo;
 	};
 };
 
@@ -270,17 +261,15 @@ prototype ItemPR_HeavyGun (C_Item)
 	flags						=	ITEM_BOW;
 	material					=	MAT_METAL;
 	
-	munition					=	ITRW_HAMMO;
+	munition					=	ItRw_HAmmo;
 	on_equip					=	Equip_HeavyGun_CHECK;
 	on_unequip					=	UnEquip_HeavyGun_CHECK;
 };
-
-///******************************************************************************************
 func void Equip_HeavyGun_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_hgun = ITRW_HAMMO;
+		if (SelectedMunition[MUNTYPE_HGUN] == default)	{ SelectedMunition[MUNTYPE_HGUN] = ItRw_HAmmo; };
 		HEAVYAMMO_CHECK();
 	};
 };
@@ -288,11 +277,10 @@ func void UnEquip_HeavyGun_CHECK()
 {
 	if (Npc_IsPlayer(self))
 	{
-		muntype_hgun = 0;
+		//SelectedMunition[MUNTYPE_HGUN] = 0;
 		HEAVYAMMO_CHECK();
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = ITRW_HAMMO;
-		self.damage[DAM_INDEX_POINT] = 0;
+		//itm.munition = ItRw_HAmmo;
 	};
 };
 

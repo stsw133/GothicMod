@@ -16,6 +16,20 @@ func void STARTUP_GLOBAL()
 	InitRandomizedAttributesOrder();
 	InitRandomizedHitchanceOrder();
 	InitRandomizedStoneplateOrder();
+	
+	/// MOD: custom difficulty level
+	if (dLevel == DIFF_C)
+	{
+		customDamageGivenPercent = STR_ToInt(MEM_GetGothOpt("MOD", "customDamageGivenPercent"));				/// damage multiplier for player attacks (percentage steps of 20)
+		customDamageTakenPercent = STR_ToInt(MEM_GetGothOpt("MOD", "customDamageTakenPercent"));				/// damage multiplier for damage taken (percentage steps of 20)
+		customStaminaPenaltyEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customStaminaPenaltyEnabled"));			/// stamina mechanic toggle (0 = off, 1 = reduced damage/animation at 0 stamina)
+		customNpcDamageReductionEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customNpcDamageReductionEnabled"));	/// reduced damage between NPCs (MOD_Damage.d setting)
+		customScrollManaCostMode = STR_ToInt(MEM_GetGothOpt("MOD", "customScrollManaCostMode"));				/// scroll mana cost mode (0 = 20% mana, 1 = flat 5 mana)
+		customFoodAndBookBonusEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customFoodAndBookBonusEnabled"));		/// permanent bonuses for 1000 food points and 1000 book points
+		customNpcFleeEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customNpcFleeEnabled"));						/// NPC fleeing behavior (0 = never flee, 1 = can flee)
+		customImmortalityMode = STR_ToInt(MEM_GetGothOpt("MOD", "customImmortalityMode"));						/// immortality mode (0 = NPC_FLAG_IMMORTAL, 1 = NPC_FLAG_IMPORTANT)
+		customNaturalRegenEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customNaturalRegenEnabled"));				/// natural regeneration toggle for regenPower table
+	};
 };
 
 func void INIT_GLOBAL()

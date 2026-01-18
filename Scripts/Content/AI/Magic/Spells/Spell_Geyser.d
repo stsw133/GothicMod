@@ -2,8 +2,8 @@
 /// SPL_Geyser
 ///******************************************************************************************
 
-const int SPL_Cost_Geyser				=	75;
-const int SPL_Damage_Geyser				=	150;
+const int SPL_Cost_Geyser				=	50;
+const int SPL_Damage_Geyser				=	75;
 
 ///******************************************************************************************
 instance Spell_Geyser (C_Spell_Proto)

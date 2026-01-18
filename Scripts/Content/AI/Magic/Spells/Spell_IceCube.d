@@ -2,8 +2,8 @@
 /// SPL_IceCube
 ///******************************************************************************************
 
-const int SPL_Cost_IceCube				=	75;
-const int SPL_Damage_IceCube			=	25;
+const int SPL_Cost_IceCube				=	50;
+const int SPL_Damage_IceCube			=	5;
 
 ///******************************************************************************************
 instance Spell_IceCube (C_Spell_Proto)

@@ -29,12 +29,4 @@ instance PC_Hero (Npc_Default)
 	
 	/// ------ Visuals ------
 	NpcFn_SetHeroVisual (self, selectedHeroSkin);
-	
-	/// ------ Other ------
-	/*
-	if (!MovieMode)
-	{
-		Mdl_ApplyOverlayMds (self, "Humans_Player.mds");
-	};
-	*/
 };

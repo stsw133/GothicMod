@@ -2,7 +2,7 @@
 /// SPL_Teleport
 ///******************************************************************************************
 
-const int SPL_Cost_Teleport				=	0;
+const int SPL_Cost_Teleport				=	10;
 
 ///******************************************************************************************
 func int B_TryToTeleport (var int Level, var string TelWP)

@@ -2,17 +2,17 @@
 /// NpcSpells
 ///******************************************************************************************
 
-const int SPL_Cost_ConcussionSpell		=	60;
-const int SPL_Damage_ConcussionSpell	=	300;
+const int SPL_Cost_ConcussionSpell		=	50;
+const int SPL_Damage_ConcussionSpell	=	100;
 
-const int SPL_Cost_DeathSpell			=	60;
-const int SPL_Damage_DeathSpell			=	300;
+const int SPL_Cost_DeathSpell			=	50;
+const int SPL_Damage_DeathSpell			=	100;
 
-const int SPL_Cost_Dragonball			=	80;
-const int SPL_Damage_Dragonball			=	400;
+const int SPL_Cost_Dragonball			=	100;
+const int SPL_Damage_Dragonball			=	200;
 
-const int SPL_Cost_BlackDragonball		=	100;
-const int SPL_Damage_BlackDragonball	=	500;
+const int SPL_Cost_BlackDragonball		=	150;
+const int SPL_Damage_BlackDragonball	=	300;
 
 const int SPL_Cost_ColorFireball		=	50;
 const int SPL_Damage_ColorFireball		=	250;

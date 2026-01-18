@@ -57,6 +57,10 @@ func void GiveAll_AnimalTrophies (var C_Npc slf)
 	CreateInvItems (slf, ItAt_CrawlerEgg, 10);
 	CreateInvItems (slf, ItAt_DragonEgg_MIS, 10);
 	
+	/// fat
+	CreateInvItems (slf, ItAt_MoleratLubric, 10);
+	CreateInvItems (slf, ItAt_BearFat, 10);
+	
 	/// feathers
 	CreateInvItems (slf, ItAt_HarpyFeathers, 10);
 	
@@ -73,6 +77,7 @@ func void GiveAll_AnimalTrophies (var C_Npc slf)
 	CreateInvItems (slf, ItAt_WargFur, 10);
 	CreateInvItems (slf, ItAt_BloodhoundFur, 10);
 	CreateInvItems (slf, ItAt_TigerFur, 10);
+	CreateInvItems (slf, ItAt_BearFur, 10);
 	CreateInvItems (slf, ItAt_ShadowFur, 10);
 	CreateInvItems (slf, ItAt_TrollFur, 10);
 	CreateInvItems (slf, ItAt_TrollBlackFur, 10);
@@ -87,9 +92,6 @@ func void GiveAll_AnimalTrophies (var C_Npc slf)
 	/// horns
 	CreateInvItems (slf, ItAt_ShadowHorn, 10);
 	CreateInvItems (slf, ItAt_DrgSnapperHorn, 10);
-	
-	/// lubric
-	CreateInvItems (slf, ItAt_MoleratLubric, 10);
 	
 	/// mandibles
 	CreateInvItems (slf, ItAt_BugMandibles, 10);
@@ -1077,7 +1079,6 @@ func void GiveAll_Misc (var C_Npc slf)
 	CreateInvItems (slf, ItMi_Scrolls, 10);
 	
 	/// fletchery
-	CreateInvItems (slf, ItMi_Arrowhead, 10);
 	CreateInvItems (slf, ItMi_BlackPowder, 10);
 	CreateInvItems (slf, ItMi_Wood, 10);
 	
@@ -1144,6 +1145,7 @@ func void GiveAll_Munition (var C_Npc slf)
 	CreateInvItems (slf, ItRw_PoisonArrow, 100);
 	CreateInvItems (slf, ItRw_ExplosiveArrow, 100);
 	CreateInvItems (slf, ItRw_MagicArrow, 100);
+	CreateInvItems (slf, ItRw_DeadlyPoisonArrow, 100);
 	
 	/// bolts
 	CreateInvItems (slf, ItRw_Bolt, 1000);
@@ -1304,6 +1306,7 @@ func void GiveAll_Potions (var C_Npc slf)
 	
 	/// transform
 	CreateInvItem (slf, ItSc_TrfAlligator);
+	CreateInvItem (slf, ItSc_TrfBear);
 	CreateInvItem (slf, ItSc_TrfBiter);
 	CreateInvItem (slf, ItSc_TrfBloodfly);
 	CreateInvItem (slf, ItSc_TrfBloodhound);
@@ -1393,6 +1396,40 @@ func void GiveAll_Recipes (var C_Npc slf)
 {
 	/// fletchery
 	CreateInvItem (slf, ItRe_FLETCHERY_Ammo);
+	CreateInvItem (slf, ItRe_FLETCHERY_HuntingAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_QuartzAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_BangAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_FireAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_PoisonAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_ExplosiveAmmo);
+	CreateInvItem (slf, ItRe_FLETCHERY_MagicAmmo);
+	
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_L_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_L_02);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_L_03);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_L_04);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_02);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_03);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_04);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_05);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_06);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_07);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_M_08);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_H_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_H_02);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_H_03);
+	CreateInvItem (slf, ItRe_FLETCHERY_Bow_H_04);
+	
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_L_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_L_02);
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_M_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_M_02);
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_H_01);
+	CreateInvItem (slf, ItRe_FLETCHERY_CBow_H_02);
+	
+	/// smith
+	
 	
 	/// alchemy
 	CreateInvItem (slf, ItRe_ALCHEMY_Health_01);
@@ -1465,6 +1502,90 @@ func void GiveAll_Recipes (var C_Npc slf)
 	
 	CreateInvItem (slf, ItRe_ALCHEMY_MegaDrink);
 	CreateInvItem (slf, ItRe_ALCHEMY_Transform);
+	
+	/// enchanting
+	CreateInvItem (slf, ItRe_ENCHANTING_Light);
+	CreateInvItem (slf, ItRe_ENCHANTING_Heal);
+	CreateInvItem (slf, ItRe_ENCHANTING_Telekinesis);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalBless);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalFaith);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalHolyBolt);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalGlory);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalRepelEvil);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalJustice);
+	CreateInvItem (slf, ItRe_ENCHANTING_PalDestroyEvil);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_Resurrection);
+	CreateInvItem (slf, ItRe_ENCHANTING_Rage);
+	CreateInvItem (slf, ItRe_ENCHANTING_Seduction);
+	CreateInvItem (slf, ItRe_ENCHANTING_MindControl);
+	CreateInvItem (slf, ItRe_ENCHANTING_PickLock);
+	CreateInvItem (slf, ItRe_ENCHANTING_NightToDay);
+	CreateInvItem (slf, ItRe_ENCHANTING_FireBolt);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_IceBolt);
+	CreateInvItem (slf, ItRe_ENCHANTING_Stealth);
+	CreateInvItem (slf, ItRe_ENCHANTING_SkullBolt);
+	CreateInvItem (slf, ItRe_ENCHANTING_InstantFireball);
+	CreateInvItem (slf, ItRe_ENCHANTING_Zap);
+	CreateInvItem (slf, ItRe_ENCHANTING_Slimeball);
+	CreateInvItem (slf, ItRe_ENCHANTING_WindFist);
+	CreateInvItem (slf, ItRe_ENCHANTING_Sleep);
+	CreateInvItem (slf, ItRe_ENCHANTING_Charm);
+	CreateInvItem (slf, ItRe_ENCHANTING_LightningFlash);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_ChargeFireball);
+	CreateInvItem (slf, ItRe_ENCHANTING_Curse);
+	CreateInvItem (slf, ItRe_ENCHANTING_Fear);
+	CreateInvItem (slf, ItRe_ENCHANTING_IceCube);
+	CreateInvItem (slf, ItRe_ENCHANTING_ChargeZap);
+	CreateInvItem (slf, ItRe_ENCHANTING_SummonGolem);
+	CreateInvItem (slf, ItRe_ENCHANTING_DestroyUndead);
+	CreateInvItem (slf, ItRe_ENCHANTING_Pyrokinesis);
+	CreateInvItem (slf, ItRe_ENCHANTING_Firestorm);
+	CreateInvItem (slf, ItRe_ENCHANTING_IceWave);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_SummonDemon);
+	CreateInvItem (slf, ItRe_ENCHANTING_Explosion);
+	CreateInvItem (slf, ItRe_ENCHANTING_Firerain);
+	CreateInvItem (slf, ItRe_ENCHANTING_BreathOfDeath);
+	CreateInvItem (slf, ItRe_ENCHANTING_MassDeath);
+	CreateInvItem (slf, ItRe_ENCHANTING_ArmyOfDarkness);
+	CreateInvItem (slf, ItRe_ENCHANTING_Shrink);
+	CreateInvItem (slf, ItRe_ENCHANTING_Tame);
+	CreateInvItem (slf, ItRe_ENCHANTING_RunicEchoes);
+	CreateInvItem (slf, ItRe_ENCHANTING_SlowTime);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_HealingAura);
+	CreateInvItem (slf, ItRe_ENCHANTING_StoneSkin);
+	CreateInvItem (slf, ItRe_ENCHANTING_AirShield);
+	CreateInvItem (slf, ItRe_ENCHANTING_FireShield);
+	CreateInvItem (slf, ItRe_ENCHANTING_DarkBarrier);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_Dragonball);
+	CreateInvItem (slf, ItRe_ENCHANTING_BlackDragonball);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_Thunderstorm);
+	CreateInvItem (slf, ItRe_ENCHANTING_Whirlwind);
+	CreateInvItem (slf, ItRe_ENCHANTING_WaterFist);
+	CreateInvItem (slf, ItRe_ENCHANTING_IceLance);
+	CreateInvItem (slf, ItRe_ENCHANTING_Inflate);
+	CreateInvItem (slf, ItRe_ENCHANTING_Geyser);
+	CreateInvItem (slf, ItRe_ENCHANTING_Fireburning);
+	CreateInvItem (slf, ItRe_ENCHANTING_ChainLightning);
+	CreateInvItem (slf, ItRe_ENCHANTING_Hurricane);
+	CreateInvItem (slf, ItRe_ENCHANTING_LightFlash);
+	
+	CreateInvItem (slf, ItRe_ENCHANTING_Plague);
+	CreateInvItem (slf, ItRe_ENCHANTING_Swarm);
+	CreateInvItem (slf, ItRe_ENCHANTING_Greententacle);
+	CreateInvItem (slf, ItRe_ENCHANTING_Earthquake);
+	CreateInvItem (slf, ItRe_ENCHANTING_Rock);
+	CreateInvItem (slf, ItRe_ENCHANTING_Mysticball);
+	CreateInvItem (slf, ItRe_ENCHANTING_SuckEnergy);
+	CreateInvItem (slf, ItRe_ENCHANTING_Skull);
+	CreateInvItem (slf, ItRe_ENCHANTING_Elevate);
+	CreateInvItem (slf, ItRe_ENCHANTING_Crush);
 	
 	/// cooking
 	CreateInvItem (slf, ItRe_COOKING_BugPulp);

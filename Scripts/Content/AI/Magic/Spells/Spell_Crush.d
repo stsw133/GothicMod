@@ -2,8 +2,8 @@
 /// SPL_Crush
 ///******************************************************************************************
 
-const int SPL_Cost_Crush				=	300;
-const int SPL_Damage_Crush				=	750;
+const int SPL_Cost_Crush				=	150;
+const int SPL_Damage_Crush				=	300;
 
 ///******************************************************************************************
 instance Spell_Crush (C_Spell_Proto)

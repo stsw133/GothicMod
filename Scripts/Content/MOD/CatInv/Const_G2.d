@@ -8,7 +8,6 @@
  * identify the original author.
  */
 
-
 const int CatInv_invCatOrder                                           =  9137120; //0x8B6BE0
 const int CatInv_oCItemContainer___vftable                             =  8635564; //0x83C4AC
 const int CatInv_oCItemContainer__ActivateNextContainer                =  7381328; //0x70A150
@@ -111,7 +110,6 @@ const int CatInv_INV_CAT_GROUPS[/*INV_CAT_MAX*/ 9] = {
     /*ITEM_KAT_DOCS*/    (1 <<  6),                                                        // INV_DOC     DOCS
     /*ITEM_KAT_NONE*/    (1 <<  0) | /*ITEM_KAT_LIGHT*/ (1 <<  8)                          // INV_MISC    OTHER
 };
-
 
 const int CatInv_ASMINT_OP_nop4times = -1869574000; //0x90909090
 const int CatInv_ASMINT_OP_add4ESP   = -1878735741; //83 C4 04 90   add  esp, 4h

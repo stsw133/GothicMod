@@ -2,8 +2,8 @@
 /// SPL_Curse
 ///******************************************************************************************
 
-const int SPL_Cost_Curse				=	75;
-const int SPL_Damage_Curse				=	75;
+const int SPL_Cost_Curse				=	50;
+const int SPL_Damage_Curse				=	25;
 
 ///******************************************************************************************
 instance Spell_Curse (C_Spell_Proto)

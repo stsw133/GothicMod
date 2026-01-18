@@ -2,8 +2,8 @@
 /// SPL_DestroyUndead
 ///******************************************************************************************
 
-const int SPL_Cost_DestroyUndead		=	125;
-const int SPL_Damage_DestroyUndead		=	1500;
+const int SPL_Cost_DestroyUndead		=	75;
+const int SPL_Damage_DestroyUndead		=	500;
 
 ///******************************************************************************************
 instance Spell_DestroyUndead (C_Spell_Proto)

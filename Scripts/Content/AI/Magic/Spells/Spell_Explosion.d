@@ -2,8 +2,8 @@
 /// SPL_Explosion
 ///******************************************************************************************
 
-const int SPL_Cost_Explosion			=	200;
-const int SPL_Damage_Explosion			=	100;
+const int SPL_Cost_Explosion			=	100;
+const int SPL_Damage_Explosion			=	50;
 
 ///******************************************************************************************
 instance Spell_Explosion (C_Spell_Proto)

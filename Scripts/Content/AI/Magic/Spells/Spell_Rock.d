@@ -2,8 +2,8 @@
 /// SPL_Rock
 ///******************************************************************************************
 
-const int SPL_Cost_Rock					=	25;
-const int SPL_Damage_Rock				=	100;
+const int SPL_Cost_Rock					=	15;
+const int SPL_Damage_Rock				=	50;
 
 ///******************************************************************************************
 instance Spell_Rock (C_Spell_Proto)

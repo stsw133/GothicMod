@@ -2,7 +2,7 @@
 /// SPL_Charm
 ///******************************************************************************************
 
-const int SPL_Cost_Charm				=	75;
+const int SPL_Cost_Charm				=	50;
 
 ///******************************************************************************************
 instance Spell_Charm (C_Spell_Proto)
@@ -26,8 +26,8 @@ func void Spell_Cast_Charm()
 	};
 	
 	B_DeletePetzCrime(other);
- 	other.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
- 	other.aivar[AIV_LastFightAgainstPlayer] = FIGHT_NONE;
+	other.aivar[AIV_NpcSawPlayerCommit] = CRIME_NONE;
+	other.aivar[AIV_LastFightAgainstPlayer] = FIGHT_NONE;
 	
 	if (Wld_GetGuildAttitude(other.guild, self.guild) != ATT_HOSTILE)
 	&& (Npc_GetAttitude(other, self) == ATT_HOSTILE)

@@ -2,8 +2,8 @@
 /// SPL_Firestorm
 ///******************************************************************************************
 
-const int SPL_Cost_Firestorm			=	50;
-const int SPL_Damage_Firestorm			=	200;
+const int SPL_Cost_Firestorm			=	30;
+const int SPL_Damage_Firestorm			=	75;
 
 ///******************************************************************************************
 instance Spell_Firestorm (C_Spell_Proto)

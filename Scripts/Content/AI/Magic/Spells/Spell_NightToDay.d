@@ -2,7 +2,7 @@
 /// SPL_NightToDay
 ///******************************************************************************************
 
-const int SPL_Cost_NightToDay			=	50;
+const int SPL_Cost_NightToDay			=	30;
 var int SPL_IsActive_NightToDay;
 
 ///******************************************************************************************
@@ -23,7 +23,13 @@ func void Spell_Effect_NightToDay()
 	{
 		if (Wld_IsTime(20,00, 08,00))
 		{
+			SPL_IsActive_NightToDay += 1;
 			Wld_AddWorldTime(20000);
+			if ((SPL_IsActive_NightToDay % 10) == 0)
+			{
+				Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);
+				hero.aivar[AIV_Stamina] += 1;
+			};
 		}
 		else
 		{

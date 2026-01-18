@@ -47,44 +47,33 @@ const int FLETCHERY_FireAmmo			=	5;
 const int FLETCHERY_ExplosiveAmmo		=	6;
 const int FLETCHERY_MagicAmmo			=	7;
 
-const int FLETCHERY_Bow_L_01			=	10;
-const int FLETCHERY_Bow_L_02			=	11;
-const int FLETCHERY_Bow_L_03			=	12;
-const int FLETCHERY_Bow_L_04			=	13;
-const int FLETCHERY_Bow_M_01			=	14;
-const int FLETCHERY_Bow_M_02			=	15;
-const int FLETCHERY_Bow_M_03			=	16;
-const int FLETCHERY_Bow_M_04			=	17;
-const int FLETCHERY_Bow_M_05			=	18;
-const int FLETCHERY_Bow_M_06			=	19;
-const int FLETCHERY_Bow_M_07			=	20;
-const int FLETCHERY_Bow_M_08			=	21;
-const int FLETCHERY_Bow_H_01			=	22;
-const int FLETCHERY_Bow_H_02			=	23;
-const int FLETCHERY_Bow_H_03			=	24;
-const int FLETCHERY_Bow_H_04			=	25;
+const int FLETCHERY_Bow_L_01			=	8;
+const int FLETCHERY_Bow_L_02			=	9;
+const int FLETCHERY_Bow_L_03			=	10;
+const int FLETCHERY_Bow_L_04			=	11;
+const int FLETCHERY_Bow_M_01			=	12;
+const int FLETCHERY_Bow_M_02			=	13;
+const int FLETCHERY_Bow_M_03			=	14;
+const int FLETCHERY_Bow_M_04			=	15;
+const int FLETCHERY_Bow_M_05			=	16;
+const int FLETCHERY_Bow_M_06			=	17;
+const int FLETCHERY_Bow_M_07			=	18;
+const int FLETCHERY_Bow_M_08			=	19;
+const int FLETCHERY_Bow_H_01			=	20;
+const int FLETCHERY_Bow_H_02			=	21;
+const int FLETCHERY_Bow_H_03			=	22;
+const int FLETCHERY_Bow_H_04			=	23;
 
-const int FLETCHERY_CBow_L_01			=	26;
-const int FLETCHERY_CBow_L_02			=	27;
-const int FLETCHERY_CBow_M_01			=	28;
-const int FLETCHERY_CBow_M_02			=	29;
-const int FLETCHERY_CBow_H_01			=	30;
-const int FLETCHERY_CBow_H_02			=	31;
+const int FLETCHERY_CBow_L_01			=	24;
+const int FLETCHERY_CBow_L_02			=	25;
+const int FLETCHERY_CBow_M_01			=	26;
+const int FLETCHERY_CBow_M_02			=	27;
+const int FLETCHERY_CBow_H_01			=	28;
+const int FLETCHERY_CBow_H_02			=	29;
 
-const int MAX_TALENT_FLETCHERY			=	32;
+const int MAX_TALENT_FLETCHERY			=	30;
 
 var int PLAYER_TALENT_FLETCHERY[MAX_TALENT_FLETCHERY];
-
-///******************************************************************************************
-
-func void Use_ItRe_FLETCHERY_Ammo()				{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Ammo);			};
-func void Use_ItRe_FLETCHERY_HuntingAmmo()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_HuntingAmmo);	};
-func void Use_ItRe_FLETCHERY_QuartzAmmo()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_QuartzAmmo);		};
-func void Use_ItRe_FLETCHERY_BangAmmo()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_BangAmmo);		};
-func void Use_ItRe_FLETCHERY_FireAmmo()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_FireAmmo);		};
-func void Use_ItRe_FLETCHERY_PoisonAmmo()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_PoisonAmmo);		};
-func void Use_ItRe_FLETCHERY_ExplosiveAmmo()	{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_ExplosiveAmmo);	};
-func void Use_ItRe_FLETCHERY_MagicAmmo()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_MagicAmmo);		};
 
 ///******************************************************************************************
 instance ItRe_FLETCHERY_Ammo (ItemPR_Recipe)
@@ -93,12 +82,16 @@ instance ItRe_FLETCHERY_Ammo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_1.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_Ammo;
 	
-	description					=	"Instrukta¿ wyrobu zwyk³ej amunicji";
+	description					=	"Instrukta¿ wyrobu zwyk³ej amunicji (10 szt)";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-10x grot";
+	TEXT[1]						=	"-1x bry³a ¿elaza";
 	TEXT[2]						=	"-1x laga";
 	TEXT[3]						=	"-1x pióra harpii";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Ammo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Ammo);
 };
 
 instance ItRe_FLETCHERY_HuntingAmmo (ItemPR_Recipe)
@@ -107,12 +100,16 @@ instance ItRe_FLETCHERY_HuntingAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_1.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_HuntingAmmo;
 	
-	description					=	"Instrukta¿ wyrobu myœliwskiej amunicji";
+	description					=	"Instrukta¿ wyrobu myœliwskiej amunicji (20 szt)";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³y";
+	TEXT[1]						=	"-4x k³y";
 	TEXT[2]						=	"-1x laga";
 	TEXT[3]						=	"-1x pióra harpii";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_HuntingAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_HuntingAmmo);
 };
 
 instance ItRe_FLETCHERY_QuartzAmmo (ItemPR_Recipe)
@@ -121,12 +118,16 @@ instance ItRe_FLETCHERY_QuartzAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_1.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_QuartzAmmo;
 	
-	description					=	"Instrukta¿ wyrobu kwarcytowej amunicji";
+	description					=	"Instrukta¿ wyrobu kwarcytowej amunicji (10 szt)";
 	COUNT[0]					=	1;
 	TEXT[1]						=	"-1x kwarcyt";
 	TEXT[2]						=	"-1x laga";
 	TEXT[3]						=	"-1x pióra harpii";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_QuartzAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_QuartzAmmo);
 };
 
 instance ItRe_FLETCHERY_BangAmmo (ItemPR_Recipe)
@@ -135,11 +136,15 @@ instance ItRe_FLETCHERY_BangAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_2.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_BangAmmo;
 	
-	description					=	"Instrukta¿ wyrobu hukowej amunicji";
+	description					=	"Instrukta¿ wyrobu hukowej amunicji (10 szt)";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-10x strza³a";
+	TEXT[1]						=	"-10x amunicja";
 	TEXT[2]						=	"-1x czarny proch";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_BangAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_BangAmmo);
 };
 
 instance ItRe_FLETCHERY_FireAmmo (ItemPR_Recipe)
@@ -148,11 +153,15 @@ instance ItRe_FLETCHERY_FireAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_2.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_FireAmmo;
 	
-	description					=	"Instrukta¿ wyrobu ognistej amunicji";
+	description					=	"Instrukta¿ wyrobu ognistej amunicji (10 szt)";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-10x strza³a";
+	TEXT[1]						=	"-10x amunicja";
 	TEXT[2]						=	"-1x smo³a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_FireAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_FireAmmo);
 };
 
 instance ItRe_FLETCHERY_PoisonAmmo (ItemPR_Recipe)
@@ -161,11 +170,15 @@ instance ItRe_FLETCHERY_PoisonAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_2.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_PoisonAmmo;
 	
-	description					=	"Instrukta¿ wyrobu zatrutej amunicji";
+	description					=	"Instrukta¿ wyrobu zatrutej amunicji (10 szt)";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-50x strza³a";
-	TEXT[2]						=	"-1x trucizna";
+	TEXT[1]						=	"-10x amunicja";
+	TEXT[2]						=	"-1x truj¹ca wydzielina LUB 1x trucizna";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_PoisonAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_PoisonAmmo);
 };
 
 instance ItRe_FLETCHERY_ExplosiveAmmo (ItemPR_Recipe)
@@ -174,12 +187,16 @@ instance ItRe_FLETCHERY_ExplosiveAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_3.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_ExplosiveAmmo;
 	
-	description					=	"Instrukta¿ wyrobu wybuchowej amunicji";
+	description					=	"Instrukta¿ wyrobu wybuchowej amunicji (10 szt)";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x magiczna czerwona bry³ka";
+	TEXT[1]						=	"-1x magiczna czerwona ruda";
 	TEXT[2]						=	"-1x laga";
 	TEXT[3]						=	"-1x pióra harpii";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_ExplosiveAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_ExplosiveAmmo);
 };
 
 instance ItRe_FLETCHERY_MagicAmmo (ItemPR_Recipe)
@@ -188,32 +205,17 @@ instance ItRe_FLETCHERY_MagicAmmo (ItemPR_Recipe)
 	visual						=	"ItRe_FletcheryAmmo_3.3ds";
 	on_state[0]					=	Use_ItRe_FLETCHERY_MagicAmmo;
 	
-	description					=	"Instrukta¿ wyrobu magicznej amunicji";
+	description					=	"Instrukta¿ wyrobu magicznej amunicji (10 szt)";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x magiczna niebieska bry³ka";
+	TEXT[1]						=	"-1x magiczna niebieska ruda";
 	TEXT[2]						=	"-1x laga";
 	TEXT[3]						=	"-1x pióra harpii";
 	COUNT[5]					=	value;
 };
-
-///******************************************************************************************
-
-func void Use_ItRe_FLETCHERY_Bow_L_01()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_01);		};
-func void Use_ItRe_FLETCHERY_Bow_L_02()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_02);		};
-func void Use_ItRe_FLETCHERY_Bow_L_03()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_03);		};
-func void Use_ItRe_FLETCHERY_Bow_L_04()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_04);		};
-func void Use_ItRe_FLETCHERY_Bow_M_01()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_01);		};
-func void Use_ItRe_FLETCHERY_Bow_M_02()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_02);		};
-func void Use_ItRe_FLETCHERY_Bow_M_03()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_03);		};
-func void Use_ItRe_FLETCHERY_Bow_M_04()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_04);		};
-func void Use_ItRe_FLETCHERY_Bow_M_05()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_05);		};
-func void Use_ItRe_FLETCHERY_Bow_M_06()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_06);		};
-func void Use_ItRe_FLETCHERY_Bow_M_07()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_07);		};
-func void Use_ItRe_FLETCHERY_Bow_M_08()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_08);		};
-func void Use_ItRe_FLETCHERY_Bow_H_01()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_01);		};
-func void Use_ItRe_FLETCHERY_Bow_H_02()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_02);		};
-func void Use_ItRe_FLETCHERY_Bow_H_03()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_03);		};
-func void Use_ItRe_FLETCHERY_Bow_H_04()			{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_04);		};
+func void Use_ItRe_FLETCHERY_MagicAmmo()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_MagicAmmo);
+};
 
 ///******************************************************************************************
 instance ItRe_FLETCHERY_Bow_L_01 (ItemPR_Recipe)
@@ -224,9 +226,15 @@ instance ItRe_FLETCHERY_Bow_L_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat krótkiego ³uku";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-2x œciêgna";
+	TEXT[3]						=	"-2x skóra szczura";
+	TEXT[4]						=	"-2x pazury";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_L_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_01);
 };
 
 instance ItRe_FLETCHERY_Bow_L_02 (ItemPR_Recipe)
@@ -237,9 +245,15 @@ instance ItRe_FLETCHERY_Bow_L_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku wierzbowego";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra wilka";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-2x œciêgna";
+	TEXT[3]						=	"-2x skóra owcy";
+	TEXT[4]						=	"-4x szpon topielca";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_L_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_02);
 };
 
 instance ItRe_FLETCHERY_Bow_L_03 (ItemPR_Recipe)
@@ -250,9 +264,15 @@ instance ItRe_FLETCHERY_Bow_L_03 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku myœliwskiego";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra zêbacza";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-3x œciêgna";
+	TEXT[3]						=	"-2x skóra dzika";
+	TEXT[4]						=	"-5x kie³ dzika";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_L_03()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_03);
 };
 
 instance ItRe_FLETCHERY_Bow_L_04 (ItemPR_Recipe)
@@ -263,9 +283,15 @@ instance ItRe_FLETCHERY_Bow_L_04 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku koœcianego";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra brzytwiaka";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-3x œciêgna";
+	TEXT[3]						=	"-2x skóra jaszczura";
+	TEXT[4]						=	"-10x koœæ szkieletu";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_L_04()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_L_04);
 };
 
 instance ItRe_FLETCHERY_Bow_M_01 (ItemPR_Recipe)
@@ -276,9 +302,15 @@ instance ItRe_FLETCHERY_Bow_M_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku kompozytowego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra warga";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-4x œciêgna";
+	TEXT[3]						=	"-2x skóra zêbacza";
+	TEXT[4]						=	"-3x k³y b³otnego wê¿a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_01);
 };
 
 instance ItRe_FLETCHERY_Bow_M_02 (ItemPR_Recipe)
@@ -289,9 +321,15 @@ instance ItRe_FLETCHERY_Bow_M_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku jesionowego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra ogara";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-4x œciêgna";
+	TEXT[3]						=	"-2x skóra krwawego ogara";
+	TEXT[4]						=	"-3x k³y b³otnego wê¿a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_02);
 };
 
 instance ItRe_FLETCHERY_Bow_M_03 (ItemPR_Recipe)
@@ -302,9 +340,15 @@ instance ItRe_FLETCHERY_Bow_M_03 (ItemPR_Recipe)
 	
 	description					=	"Schemat d³ugiego ³uku";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra ognistego jaszczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-5x œciêgna";
+	TEXT[3]						=	"-2x skóra aligatora";
+	TEXT[4]						=	"-3x kie³ trolla";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_03()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_03);
 };
 
 instance ItRe_FLETCHERY_Bow_M_04 (ItemPR_Recipe)
@@ -315,9 +359,15 @@ instance ItRe_FLETCHERY_Bow_M_04 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku dêbowego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra tygrysa";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-5x œciêgna";
+	TEXT[3]						=	"-2x skóra brzytwiaka";
+	TEXT[4]						=	"-3x kie³ trolla";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_04()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_04);
 };
 
 instance ItRe_FLETCHERY_Bow_M_05 (ItemPR_Recipe)
@@ -328,9 +378,15 @@ instance ItRe_FLETCHERY_Bow_M_05 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku bukowego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra tygrysa";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-5x œciêgna + ³ój kretoszczura";
+	TEXT[3]						=	"-2x skóra ognistego jaszczura";
+	TEXT[4]						=	"-4x k³y b³otnego wê¿a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_05()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_05);
 };
 
 instance ItRe_FLETCHERY_Bow_M_06 (ItemPR_Recipe)
@@ -341,9 +397,15 @@ instance ItRe_FLETCHERY_Bow_M_06 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku klonowego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra tygrysa";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-5x œciêgna + ³ój kretoszczura";
+	TEXT[3]						=	"-2x skóra tygrysa";
+	TEXT[4]						=	"-4x k³y b³otnego wê¿a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_06()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_06);
 };
 
 instance ItRe_FLETCHERY_Bow_M_07 (ItemPR_Recipe)
@@ -354,9 +416,15 @@ instance ItRe_FLETCHERY_Bow_M_07 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku ¿o³nierskiego";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra tygrysa";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-6x œciêgna + ³ój kretoszczura";
+	TEXT[3]						=	"-2x skóra niedŸwiedzia";
+	TEXT[4]						=	"-3x róg smoczego zêbacza";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_07()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_07);
 };
 
 instance ItRe_FLETCHERY_Bow_M_08 (ItemPR_Recipe)
@@ -367,9 +435,15 @@ instance ItRe_FLETCHERY_Bow_M_08 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku z poro¿a";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra tygrysa";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-6x œciêgna + ³ój kretoszczura";
+	TEXT[3]						=	"-2x skóra czarnego niedŸwiedzia";
+	TEXT[4]						=	"-3x róg smoczego zêbacza";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_M_08()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_M_08);
 };
 
 instance ItRe_FLETCHERY_Bow_H_01 (ItemPR_Recipe)
@@ -380,9 +454,15 @@ instance ItRe_FLETCHERY_Bow_H_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat ³uku wojennego";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra cieniostwora";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-6x œciêgna + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra cieniostwora";
+	TEXT[4]						=	"-2x róg cieniostwora";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_H_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_01);
 };
 
 instance ItRe_FLETCHERY_Bow_H_02 (ItemPR_Recipe)
@@ -393,9 +473,15 @@ instance ItRe_FLETCHERY_Bow_H_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat pogromcy orków";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra olbrzymiego zêbacza";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-6x œciêgna + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra olbrzymiego zêbacza";
+	TEXT[4]						=	"-2x róg cieniostwora";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_H_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_02);
 };
 
 instance ItRe_FLETCHERY_Bow_H_03 (ItemPR_Recipe)
@@ -406,9 +492,15 @@ instance ItRe_FLETCHERY_Bow_H_03 (ItemPR_Recipe)
 	
 	description					=	"Schemat gromow³adnego";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra trolla";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-7x œciêgna + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra trolla";
+	TEXT[4]						=	"-4x jêzyk smoka";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_Bow_H_03()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_03);
 };
 
 instance ItRe_FLETCHERY_Bow_H_04 (ItemPR_Recipe)
@@ -419,19 +511,16 @@ instance ItRe_FLETCHERY_Bow_H_04 (ItemPR_Recipe)
 	
 	description					=	"Schemat smoczego ³uku";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra czarnego trolla";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-7x œciêgna + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra czarnego trolla";
+	TEXT[4]						=	"-4x jêzyk smoka";
 	COUNT[5]					=	value;
 };
-
-///******************************************************************************************
-
-func void Use_ItRe_FLETCHERY_CBow_L_01()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_L_01);		};
-func void Use_ItRe_FLETCHERY_CBow_L_02()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_L_02);		};
-func void Use_ItRe_FLETCHERY_CBow_M_01()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_M_01);		};
-func void Use_ItRe_FLETCHERY_CBow_M_02()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_M_02);		};
-func void Use_ItRe_FLETCHERY_CBow_H_01()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_H_01);		};
-func void Use_ItRe_FLETCHERY_CBow_H_02()		{	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_H_02);		};
+func void Use_ItRe_FLETCHERY_Bow_H_04()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_Bow_H_04);
+};
 
 ///******************************************************************************************
 instance ItRe_FLETCHERY_CBow_L_01 (ItemPR_Recipe)
@@ -442,9 +531,15 @@ instance ItRe_FLETCHERY_CBow_L_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat kuszy myœliwskiej";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-2x œciêgna + bry³a ¿elaza";
+	TEXT[3]						=	"-2x skóra owcy";
+	TEXT[4]						=	"-4x szpon topielca";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_L_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_L_01);
 };
 
 instance ItRe_FLETCHERY_CBow_L_02 (ItemPR_Recipe)
@@ -455,9 +550,15 @@ instance ItRe_FLETCHERY_CBow_L_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat ma³ej kuszy";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-3x œciêgna + bry³a ¿elaza";
+	TEXT[3]						=	"-2x skóra jaszczura";
+	TEXT[4]						=	"-10x koœæ szkieletu";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_L_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 1, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_L_02);
 };
 
 instance ItRe_FLETCHERY_CBow_M_01 (ItemPR_Recipe)
@@ -468,9 +569,15 @@ instance ItRe_FLETCHERY_CBow_M_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat kuszy";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-4x œciêgna + bry³a ¿elaza";
+	TEXT[3]						=	"-2x skóra brzytwiaka";
+	TEXT[4]						=	"-3x kie³ trolla";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_M_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_M_01);
 };
 
 instance ItRe_FLETCHERY_CBow_M_02 (ItemPR_Recipe)
@@ -481,9 +588,15 @@ instance ItRe_FLETCHERY_CBow_M_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat kuszy bojowej";
 	COUNT[0]					=	2;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-5x œciêgna + bry³a ¿elaza + ³ój kretoszczura";
+	TEXT[3]						=	"-2x skóra czarnego niedŸwiedzia";
+	TEXT[4]						=	"-3x róg smoczego zêbacza";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_M_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 2, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_M_02);
 };
 
 instance ItRe_FLETCHERY_CBow_H_01 (ItemPR_Recipe)
@@ -494,9 +607,15 @@ instance ItRe_FLETCHERY_CBow_H_01 (ItemPR_Recipe)
 	
 	description					=	"Schemat ciê¿kiej kuszy";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-6x œciêgna + bry³a ¿elaza + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra olbrzymiego zêbacza";
+	TEXT[4]						=	"-2x róg cieniostwora";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_H_01()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_H_01);
 };
 
 instance ItRe_FLETCHERY_CBow_H_02 (ItemPR_Recipe)
@@ -507,9 +626,15 @@ instance ItRe_FLETCHERY_CBow_H_02 (ItemPR_Recipe)
 	
 	description					=	"Schemat smoczej kuszy";
 	COUNT[0]					=	3;
-	TEXT[1]						=	"-1x k³oda";
-	TEXT[2]						=	"-1x skóra szczura";
+	TEXT[1]						=	"-1x drewno do produkcji broni";
+	TEXT[2]						=	"-7x œciêgna + bry³a ¿elaza + sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x skóra czarnego trolla";
+	TEXT[4]						=	"-4x jêzyk smoka";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_FLETCHERY_CBow_H_02()
+{
+	ReadRecipe(NPC_TALENT_FLETCHERY, 3, PLAYER_TALENT_FLETCHERY, FLETCHERY_CBow_H_02);
 };
 
 ///******************************************************************************************
@@ -2195,397 +2320,1338 @@ func void Use_ItRe_ALCHEMY_Transform()
 var int PLAYER_TALENT_ENCHANTING[MAX_SPELL];
 
 ///******************************************************************************************
-
-func void Use_ItRe_ENCHANTING_Light()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Light);				};
-func void Use_ItRe_ENCHANTING_Heal()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Heal);				};
-func void Use_ItRe_ENCHANTING_SlowTime()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_SlowTime);			};
-func void Use_ItRe_ENCHANTING_NightToDay()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_NightToDay);			};
-func void Use_ItRe_ENCHANTING_Telekinesis()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Telekinesis);		};
-func void Use_ItRe_ENCHANTING_FireBolt()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_FireBolt);			};
-func void Use_ItRe_ENCHANTING_IceBolt()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_IceBolt);			};
-func void Use_ItRe_ENCHANTING_Zap()				{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Zap);				};
-func void Use_ItRe_ENCHANTING_SkullBolt()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_SkullBolt);			};
-func void Use_ItRe_ENCHANTING_WindFist()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_WindFist);			};
-func void Use_ItRe_ENCHANTING_Sleep()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Sleep);				};
-func void Use_ItRe_ENCHANTING_Charm()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Charm);				};
-func void Use_ItRe_ENCHANTING_LightningFlash()	{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_LightningFlash);		};
-func void Use_ItRe_ENCHANTING_ChargeFireball()	{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_ChargeFireball);		};
-func void Use_ItRe_ENCHANTING_Whirlwind()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Whirlwind);			};
-func void Use_ItRe_ENCHANTING_Fear()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Fear);				};
-func void Use_ItRe_ENCHANTING_Rage()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Rage);				};
-func void Use_ItRe_ENCHANTING_ChargeZap()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_ChargeZap);			};
-func void Use_ItRe_ENCHANTING_Geyser()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Geyser);				};
-func void Use_ItRe_ENCHANTING_WaterFist()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_WaterFist);			};
-func void Use_ItRe_ENCHANTING_Pyrokinesis()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Pyrokinesis);		};
-func void Use_ItRe_ENCHANTING_IceLance()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_IceLance);			};
-func void Use_ItRe_ENCHANTING_IceWave()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_IceWave);			};
-func void Use_ItRe_ENCHANTING_Inflate()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Inflate);			};
-func void Use_ItRe_ENCHANTING_DragonBall()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_DragonBall);			};
-func void Use_ItRe_ENCHANTING_BlackDragonBall()	{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_BlackDragonBall);	};
-func void Use_ItRe_ENCHANTING_BreathOfDeath()	{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_BreathOfDeath);		};
-func void Use_ItRe_ENCHANTING_MassDeath()		{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_MassDeath);			};
-func void Use_ItRe_ENCHANTING_ArmyOfDarkness()	{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_ArmyOfDarkness);		};
-func void Use_ItRe_ENCHANTING_Shrink()			{	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Shrink);				};
-
-///******************************************************************************************
 instance ItRe_ENCHANTING_Light (ItemPR_Recipe)
 {
-	value						=	100;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Light;
 	
 	description					=	"Przepis na 'Œwiat³o'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"ze z³otej monety.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x z³ota moneta";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Light()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Light);
 };
 
 instance ItRe_ENCHANTING_Heal (ItemPR_Recipe)
 {
-	value						=	200;
+	value						=	100;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Heal;
 	
 	description					=	"Przepis na 'Uleczenie'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z zio³a leczniczego.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x roœlina lecznicza";
+	TEXT[3]						=	"-1x ziele lecznicze";
+	TEXT[4]						=	"-1x korzeñ leczniczy";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_SlowTime (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Heal()
 {
-	value						=	600;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_SlowTime;
-	
-	description					=	"Przepis na 'Spowolnienie czasu'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"ze szmaragdu i 10 cz¹steczek czasu.";
-	COUNT[5]					=	value;
-};
-
-instance ItRe_ENCHANTING_NightToDay (ItemPR_Recipe)
-{
-	value						=	300;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_NightToDay;
-	
-	description					=	"Przepis na 'Noc w dzieñ'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z owczej skóry i 5 cz¹steczek czasu.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Heal);
 };
 
 instance ItRe_ENCHANTING_Telekinesis (ItemPR_Recipe)
 {
-	value						=	100;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Telekinesis;
 	
 	description					=	"Przepis na 'Telekineza'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z monety fortuny.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x moneta fortuny";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Telekinesis()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Telekinesis);
+};
+
+instance ItRe_ENCHANTING_PalBless (ItemPR_Recipe)
+{
+	value						=	50;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalBless;
+	
+	description					=	"Przepis na 'B³ogos³awieñstwo'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalBless()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_PalBless);
+};
+
+instance ItRe_ENCHANTING_PalFaith (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalFaith;
+	
+	description					=	"Przepis na 'Wiara'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x bry³ka srebra";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalFaith()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_PalFaith);
+};
+
+instance ItRe_ENCHANTING_PalHolyBolt (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalHolyBolt;
+	
+	description					=	"Przepis na 'Œwiêty pocisk'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x bry³ka srebra";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalHolyBolt()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_PalHolyBolt);
+};
+
+instance ItRe_ENCHANTING_PalGlory (ItemPR_Recipe)
+{
+	value						=	175;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalGlory;
+	
+	description					=	"Przepis na 'Chwa³a'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x bia³a per³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalGlory()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_PalGlory);
+};
+
+instance ItRe_ENCHANTING_PalRepelEvil (ItemPR_Recipe)
+{
+	value						=	175;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalRepelEvil;
+	
+	description					=	"Przepis na 'Wygnanie z³a'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x bia³a per³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalRepelEvil()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_PalRepelEvil);
+};
+
+instance ItRe_ENCHANTING_PalJustice (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalJustice;
+	
+	description					=	"Przepis na 'Sprawiedliwoœæ'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x diament";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalJustice()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_PalJustice);
+};
+
+instance ItRe_ENCHANTING_PalDestroyEvil (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PalDestroyEvil;
+	
+	description					=	"Przepis na 'Zniszczenie z³a'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x diament";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PalDestroyEvil()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_PalDestroyEvil);
+};
+
+///******************************************************************************************
+instance ItRe_ENCHANTING_Resurrection (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Resurrection;
+	
+	description					=	"Przepis na 'Wskrzeszenie'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-2x mech";
+	TEXT[3]						=	"-1x woda œwiêcona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Resurrection()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Resurrection);
+};
+
+instance ItRe_ENCHANTING_Rage (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Rage;
+	
+	description					=	"Przepis na 'Sza³'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x jajo pe³zacza";
+	TEXT[3]						=	"-1x szpon demona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Rage()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Rage);
+};
+
+instance ItRe_ENCHANTING_Seduction (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Seduction;
+	
+	description					=	"Przepis na 'Uwodzenie'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x perfumy";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Seduction()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Seduction);
+};
+
+instance ItRe_ENCHANTING_MindControl (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_MindControl;
+	
+	description					=	"Przepis na 'Kontrola umys³u'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x jajo pe³zacza";
+	TEXT[3]						=	"-1x ¿uwaczki pe³zacza";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_MindControl()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_MindControl);
+};
+
+instance ItRe_ENCHANTING_PickLock (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_PickLock;
+	
+	description					=	"Przepis na 'Otwieranie zamków'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x wytrych";
+	TEXT[3]						=	"-1x bry³ka z³ota";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_PickLock()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_PickLock);
+};
+
+instance ItRe_ENCHANTING_NightToDay (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_NightToDay;
+	
+	description					=	"Przepis na 'Noc w dzieñ'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x owcza skóra";
+	TEXT[3]						=	"-1x kwiat œwitu";
+	TEXT[4]						=	"-5x cz¹steczka czasu";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_NightToDay()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_NightToDay);
 };
 
 instance ItRe_ENCHANTING_FireBolt (ItemPR_Recipe)
 {
-	value						=	100;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_FireBolt;
 	
 	description					=	"Przepis na 'Ognisty pocisk'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z siarki.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x siarka";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_ENCHANTING_FireBolt()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_FireBolt);
+};
 
+///******************************************************************************************
 instance ItRe_ENCHANTING_IceBolt (ItemPR_Recipe)
 {
-	value						=	100;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_IceBolt;
 	
 	description					=	"Przepis na 'Lodowy pocisk'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z kryszta³u.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kryszta³";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_IceBolt()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_IceBolt);
+};
+
+instance ItRe_ENCHANTING_Stealth (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Stealth;
+	
+	description					=	"Przepis na 'Ukrycie'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-2x bagienne lub pustynne ziele";
+	TEXT[3]						=	"-1x skóra b³otnego wê¿a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Stealth()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Stealth);
+};
+
+instance ItRe_ENCHANTING_SkullBolt (ItemPR_Recipe)
+{
+	value						=	50;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_SkullBolt;
+	
+	description					=	"Przepis na 'Szept umar³ych'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x czaszka";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_SkullBolt()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_SkullBolt);
+};
+
+instance ItRe_ENCHANTING_InstantFireball (ItemPR_Recipe)
+{
+	value						=	50;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_InstantFireball;
+	
+	description					=	"Przepis na 'Kula ognia'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x smo³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_InstantFireball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_InstantFireball);
 };
 
 instance ItRe_ENCHANTING_Zap (ItemPR_Recipe)
 {
-	value						=	100;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Zap;
 	
 	description					=	"Przepis na 'Ma³a b³yskawica'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z bry³ki srebra.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bry³ka srebra";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_SkullBolt (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Zap()
 {
-	value						=	100;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Zap);
+};
+
+instance ItRe_ENCHANTING_Slimeball (ItemPR_Recipe)
+{
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_SkullBolt;
+	on_state[0]					=	Use_ItRe_ENCHANTING_Zap;
 	
-	description					=	"Przepis na 'Krzyk umar³ych'";
+	description					=	"Przepis na 'Kula szlamu'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z czaszki.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bagienne lub pustynne ziele";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Slimeball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Slimeball);
 };
 
 instance ItRe_ENCHANTING_WindFist (ItemPR_Recipe)
 {
-	value						=	200;
+	value						=	100;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_WindFist;
 	
 	description					=	"Przepis na 'Piêœæ wichru'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z wêgla i pazurów.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x wêgiel";
+	TEXT[3]						=	"-5x skrzyd³o krwiopijcy";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_WindFist()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_WindFist);
 };
 
 instance ItRe_ENCHANTING_Sleep (ItemPR_Recipe)
 {
-	value						=	200;
+	value						=	100;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Sleep;
 	
 	description					=	"Przepis na 'Uœpienie'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z bagiennego ziela.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x owcza skóra";
+	TEXT[3]						=	"-1x bagienne lun pustynne ziele";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Sleep()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Sleep);
 };
 
 instance ItRe_ENCHANTING_Charm (ItemPR_Recipe)
 {
-	value						=	300;
-	visual						=	"ItRe_Enchanting_1.3ds";
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Charm;
 	
 	description					=	"Przepis na 'Amnezja'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z bagiennego ziela i ¿uwaczek polnej bestii.";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bagienne lub pustynne ziele";
+	TEXT[3]						=	"-1x k³y b³otnego wê¿a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Charm()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Charm);
 };
 
 instance ItRe_ENCHANTING_LightningFlash (ItemPR_Recipe)
 {
-	value						=	400;
-	visual						=	"ItRe_Enchanting_1.3ds";
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_LightningFlash;
 	
 	description					=	"Przepis na 'B³yskawica'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z bry³ki ¿elaza i szponów topielca.";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bry³ka srebra";
+	TEXT[3]						=	"-1x róg smoczego zêbacza";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_ENCHANTING_LightningFlash()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_LightningFlash);
+};
 
+///*******************************************************************************************
 instance ItRe_ENCHANTING_ChargeFireball (ItemPR_Recipe)
 {
-	value						=	400;
-	visual						=	"ItRe_Enchanting_1.3ds";
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_ChargeFireball;
 	
 	description					=	"Przepis na 'Du¿a kula ognia'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z ognistego kryszta³u i smo³y.";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x smo³a";
+	TEXT[3]						=	"-1x jêzyk ognistego jaszczura";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_ChargeFireball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_ChargeFireball);
+};
+
+instance ItRe_ENCHANTING_Curse (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Curse;
+	
+	description					=	"Przepis na 'Kl¹twa'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x koœæ szkieletu";
+	TEXT[3]						=	"-2x czaszka";
+	TEXT[4]						=	"-3x koœæ goblina";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Curse()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Curse);
+};
+
+instance ItRe_ENCHANTING_Fear (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Fear;
+	
+	description					=	"Przepis na 'Strach'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-2x skrzyd³o demona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Fear()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Fear);
+};
+
+instance ItRe_ENCHANTING_IceCube (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_IceCube;
+	
+	description					=	"Przepis na 'Zamro¿enie'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kryszta³";
+	TEXT[3]						=	"-1x bia³a per³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_IceCube()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_IceCube);
+};
+
+instance ItRe_ENCHANTING_ChargeZap (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_ChargeZap;
+	
+	description					=	"Przepis na 'Piorun kulisty'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bry³ka srebra";
+	TEXT[3]						=	"-2x kie³ dzika";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_ChargeZap()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_ChargeZap);
+};
+
+instance ItRe_ENCHANTING_SummonGolem (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_SummonGolem;
+	
+	description					=	"Przepis na 'Tworzenie golema'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x serce golema";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_SummonGolem()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_SummonGolem);
+};
+
+instance ItRe_ENCHANTING_DestroyUndead (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_DestroyUndead;
+	
+	description					=	"Przepis na 'Zniszczenie nieumar³ych'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x woda œwiêcona";
+	TEXT[3]						=	"-1x czaszka";
+	TEXT[4]						=	"-5x koœæ goblina";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_DestroyUndead()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_DestroyUndead);
+};
+
+instance ItRe_ENCHANTING_Pyrokinesis (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Pyrokinesis;
+	
+	description					=	"Przepis na 'Du¿a burza ognista'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x siarka";
+	TEXT[3]						=	"-1x saletra";
+	TEXT[4]						=	"-1x jêzyk smoka";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Pyrokinesis()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Pyrokinesis);
+};
+
+instance ItRe_ENCHANTING_Firestorm (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Firestorm;
+	
+	description					=	"Przepis na 'Ma³a burza ognista'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x siarka";
+	TEXT[3]						=	"-1x saletra";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Firestorm()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Firestorm);
+};
+
+instance ItRe_ENCHANTING_IceWave (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_IceWave;
+	
+	description					=	"Przepis na 'Lodowa fala'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kryszta³";
+	TEXT[3]						=	"-1x bia³a per³a";
+	TEXT[4]						=	"-1x akwamaryn";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_IceWave()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_IceWave);
+};
+
+///*******************************************************************************************
+instance ItRe_ENCHANTING_SummonDemon (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_SummonDemon;
+	
+	description					=	"Przepis na 'Przyzwanie demona'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x serce demona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_SummonDemon()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_SummonDemon);
+};
+
+instance ItRe_ENCHANTING_Explosion (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Explosion;
+	
+	description					=	"Przepis na 'Eksplozja'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x smo³a";
+	TEXT[3]						=	"-3x czarny proch";
+	TEXT[4]						=	"-1x jêzyk ognistego jaszczura";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Explosion()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Explosion);
+};
+
+instance ItRe_ENCHANTING_Firerain (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Firerain;
+	
+	description					=	"Przepis na 'Deszcz ognia'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x smo³a";
+	TEXT[3]						=	"-1x rubin";
+	TEXT[4]						=	"-1x jêzyk ognistego jaszczura";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Firerain()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Firerain);
+};
+
+instance ItRe_ENCHANTING_BreathOfDeath (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_BreathOfDeath;
+	
+	description					=	"Przepis na 'Tchnienie œmierci'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x wêgiel";
+	TEXT[3]						=	"-1x czarna per³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_BreathOfDeath()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_BreathOfDeath);
+};
+
+instance ItRe_ENCHANTING_MassDeath (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_MassDeath;
+	
+	description					=	"Przepis na 'Fala œmierci'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x diament";
+	TEXT[3]						=	"-1x smocza krew";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_MassDeath()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_MassDeath);
+};
+
+instance ItRe_ENCHANTING_ArmyOfDarkness (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_ArmyOfDarkness;
+	
+	description					=	"Przepis na 'Armia ciemnoœci'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-5x koœæ szkieletu";
+	TEXT[3]						=	"-5x czaszka";
+	TEXT[4]						=	"-10x koœæ goblina";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_ArmyOfDarkness()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_ArmyOfDarkness);
+};
+
+instance ItRe_ENCHANTING_Shrink (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Shrink;
+	
+	description					=	"Przepis na 'Zmniejszenie potwora'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x jajo pe³zacza";
+	TEXT[3]						=	"-2x kie³ trolla";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Shrink()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Shrink);
+};
+
+instance ItRe_ENCHANTING_Tame (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Tame;
+	
+	description					=	"Przepis na 'Oswojenie'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿ywica";
+	TEXT[3]						=	"-1x skóra niedŸwiedzia";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Tame()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Tame);
+};
+
+instance ItRe_ENCHANTING_RunicEchoes (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_RunicEchoes;
+	
+	description					=	"Przepis na 'Runiczne echa'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿ywica";
+	TEXT[3]						=	"-1x szmaragd";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_RunicEchoes()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_RunicEchoes);
+};
+
+instance ItRe_ENCHANTING_SlowTime (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_SlowTime;
+	
+	description					=	"Przepis na 'Spowolnienie czasu'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿ywica";
+	TEXT[3]						=	"-1x diament";
+	TEXT[4]						=	"-10x cz¹steczka czasu";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_SlowTime()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_SlowTime);
+};
+
+///*******************************************************************************************
+instance ItRe_ENCHANTING_HealingAura (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_HealingAura;
+	
+	description					=	"Przepis na 'Aura lecznicza'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x rtêæ";
+	TEXT[3]						=	"-1x ¿ywica";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_HealingAura()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_HealingAura);
+};
+
+instance ItRe_ENCHANTING_StoneSkin (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_StoneSkin;
+	
+	description					=	"Przepis na 'Kamienna skóra'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x rtêæ";
+	TEXT[3]						=	"-1x kwarcyt";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_StoneSkin()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_StoneSkin);
+};
+
+instance ItRe_ENCHANTING_AirShield (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_AirShield;
+	
+	description					=	"Przepis na 'Tarcza powietrza'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x rtêæ";
+	TEXT[3]						=	"-1x kryszta³";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_AirShield()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_AirShield);
+};
+
+instance ItRe_ENCHANTING_FireShield (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_FireShield;
+	
+	description					=	"Przepis na 'Tarcza ognia'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x rtêæ";
+	TEXT[3]						=	"-1x smo³a";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_FireShield()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_FireShield);
+};
+
+instance ItRe_ENCHANTING_DarkBarrier (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_DarkBarrier;
+	
+	description					=	"Przepis na 'Mroczna bariera'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x rtêæ";
+	TEXT[3]						=	"-1x koœæ szkieletu";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_DarkBarrier()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_DarkBarrier);
+};
+
+///*******************************************************************************************
+instance ItRe_ENCHANTING_Dragonball (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Dragonball;
+	
+	description					=	"Przepis na 'Smocza kula'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x serce smoka";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Dragonball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Dragonball);
+};
+
+instance ItRe_ENCHANTING_BlackDragonball (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_BlackDragonball;
+	
+	description					=	"Przepis na 'Czarna smocza kula'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kamieñ duszy smoka-o¿ywieñca";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_BlackDragonball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_BlackDragonball);
+};
+
+///*******************************************************************************************
+instance ItRe_ENCHANTING_Thunderstorm (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Thunderstorm;
+	
+	description					=	"Przepis na 'Burza gradowa'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kryszta³";
+	TEXT[3]						=	"-1x bia³a per³a";
+	TEXT[4]						=	"-1x akwamaryn";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Thunderstorm()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Thunderstorm);
 };
 
 instance ItRe_ENCHANTING_Whirlwind (ItemPR_Recipe)
 {
-	value						=	200;
+	value						=	100;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Whirlwind;
 	
 	description					=	"Przepis na 'Wir'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"ze skrzyde³ i wody.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x skrzyd³o trutnia";
+	TEXT[3]						=	"-1x woda";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_Fear (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Whirlwind()
 {
-	value						=	200;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_Fear;
-	
-	description					=	"Przepis na 'Strach'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"ze skrzyde³.";
-	COUNT[5]					=	value;
-};
-
-instance ItRe_ENCHANTING_Rage (ItemPR_Recipe)
-{
-	value						=	400;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_Rage;
-	
-	description					=	"Przepis na 'Œlep¹ furiê'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z krwi demona.";
-	COUNT[5]					=	value;
-};
-
-instance ItRe_ENCHANTING_ChargeZap (ItemPR_Recipe)
-{
-	value						=	300;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_ChargeZap;
-	
-	description					=	"Przepis na 'Piorun kulisty'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z bry³ki ¿elaza i pazurów.";
-	COUNT[5]					=	value;
-};
-
-instance ItRe_ENCHANTING_Geyser (ItemPR_Recipe)
-{
-	value						=	300;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_Geyser;
-	
-	description					=	"Przepis na 'Gejzer'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z akwamarynu.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Whirlwind);
 };
 
 instance ItRe_ENCHANTING_WaterFist (ItemPR_Recipe)
 {
-	value						=	400;
-	visual						=	"ItRe_Enchanting_1.3ds";
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_WaterFist;
 	
 	description					=	"Przepis na 'Wodna piêœæ'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z akwamarynu i wody.";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x akwamaryn";
+	TEXT[3]						=	"-1x woda";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_Pyrokinesis (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_WaterFist()
 {
-	value						=	500;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_Pyrokinesis;
-	
-	description					=	"Przepis na 'Du¿a burza ognista'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z ognistego kryszta³u i saletry.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_WaterFist);
 };
 
 instance ItRe_ENCHANTING_IceLance (ItemPR_Recipe)
 {
-	value						=	200;
+	value						=	50;
 	visual						=	"ItRe_Enchanting_1.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_IceLance;
 	
 	description					=	"Przepis na 'Lodowa lanca'";
 	COUNT[0]					=	1;
-	TEXT[1]						=	"z bia³ej per³y.";
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kryszta³";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_IceWave (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_IceLance()
 {
-	value						=	500;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_IceWave;
-	
-	description					=	"Przepis na 'Lodowa fala'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z bia³ej per³y i akwamarynu.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_IceLance);
 };
 
 instance ItRe_ENCHANTING_Inflate (ItemPR_Recipe)
 {
-	value						=	300;
-	visual						=	"ItRe_Enchanting_1.3ds";
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
 	on_state[0]					=	Use_ItRe_ENCHANTING_Inflate;
 	
 	description					=	"Przepis na 'Spuchniêcie'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z wody i ³oju kretoszczura.";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-2x sad³o niedŸwiedzia";
+	TEXT[3]						=	"-2x ³ój kretoszczura";
+	TEXT[4]						=	"-1x woda";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_DragonBall (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Inflate()
 {
-	value						=	400;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_DragonBall;
-	
-	description					=	"Przepis na 'Smocz¹ kulê'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z serca smoka.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Inflate);
 };
 
-instance ItRe_ENCHANTING_BlackDragonBall (ItemPR_Recipe)
+instance ItRe_ENCHANTING_Geyser (ItemPR_Recipe)
 {
-	value						=	500;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_BlackDragonBall;
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Geyser;
 	
-	description					=	"Przepis na 'Czarn¹ smocz¹ kulê'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z kamienia duszy smoka-o¿ywieñca.";
+	description					=	"Przepis na 'Gejzer'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x akwamaryn";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_BreathOfDeath (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Geyser()
 {
-	value						=	600;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_BreathOfDeath;
-	
-	description					=	"Przepis na 'Tchnienie œmierci'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z wêgla i czarnej per³y.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Geyser);
 };
 
-instance ItRe_ENCHANTING_MassDeath (ItemPR_Recipe)
+instance ItRe_ENCHANTING_Fireburning (ItemPR_Recipe)
 {
-	value						=	600;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_MassDeath;
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Fireburning;
 	
-	description					=	"Przepis na 'Fala œmierci'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z krwi demona i czarnej per³y.";
+	description					=	"Przepis na 'Pyrokineza'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x smo³a";
+	TEXT[3]						=	"-1x saletra";
 	COUNT[5]					=	value;
 };
-
-instance ItRe_ENCHANTING_ArmyOfDarkness (ItemPR_Recipe)
+func void Use_ItRe_ENCHANTING_Fireburning()
 {
-	value						=	600;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_ArmyOfDarkness;
-	
-	description					=	"Przepis na 'Armia ciemnoœci'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z koœci szkieletu i czarnej per³y.";
-	COUNT[5]					=	value;
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Fireburning);
 };
 
-instance ItRe_ENCHANTING_Shrink (ItemPR_Recipe)
+instance ItRe_ENCHANTING_ChainLightning (ItemPR_Recipe)
 {
-	value						=	600;
-	visual						=	"ItRe_Enchanting_1.3ds";
-	on_state[0]					=	Use_ItRe_ENCHANTING_Shrink;
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_ChainLightning;
 	
-	description					=	"Przepis na 'Zmniejszenie potwora'";
-	COUNT[0]					=	1;
-	TEXT[1]						=	"z k³a trolla i jaja pe³zacza.";
+	description					=	"Przepis na '£añcuch piorunów'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-2x bry³ka srebra";
+	TEXT[3]						=	"-1x bia³a per³a";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_ChainLightning()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_ChainLightning);
+};
+
+instance ItRe_ENCHANTING_Hurricane (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Hurricane;
+	
+	description					=	"Przepis na 'Huragan'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x wêgiel";
+	TEXT[3]						=	"-5x skrzyd³o trutnia";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Hurricane()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Hurricane);
+};
+
+instance ItRe_ENCHANTING_LightFlash (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_LightFlash;
+	
+	description					=	"Przepis na 'Oœlepienie'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x bry³ka z³ota";
+	TEXT[3]						=	"-1x róg cieniostwora";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_LightFlash()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_LightFlash);
+};
+
+///*******************************************************************************************
+instance ItRe_ENCHANTING_Plague (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Plague;
+	
+	description					=	"Przepis na 'Plaga'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x koœæ szkieletu";
+	TEXT[3]						=	"-2x truj¹ca wydzielina";
+	TEXT[4]						=	"-2x szpon demona";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Plague()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Plague);
+};
+
+instance ItRe_ENCHANTING_Swarm (ItemPR_Recipe)
+{
+	value						=	200;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Swarm;
+	
+	description					=	"Przepis na 'Rój owadów'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-3x ¿¹d³o";
+	TEXT[3]						=	"-2x ¿uwaczki polnej bestii";
+	TEXT[4]						=	"-1x ¿uwaczki pe³zacza";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Swarm()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Swarm);
+};
+
+instance ItRe_ENCHANTING_Greententacle (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Greententacle;
+	
+	description					=	"Przepis na 'Korzeñ'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿ywica";
+	TEXT[3]						=	"-2x korzeñ many";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Greententacle()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 2, PLAYER_TALENT_ENCHANTING, SPL_Greententacle);
+};
+
+instance ItRe_ENCHANTING_Earthquake (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Earthquake;
+	
+	description					=	"Przepis na 'Trzêsienie ziemi'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kwarcyt";
+	TEXT[3]						=	"-3x serce gargulca";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Earthquake()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Earthquake);
+};
+
+instance ItRe_ENCHANTING_Rock (ItemPR_Recipe)
+{
+	value						=	50;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Rock;
+	
+	description					=	"Przepis na 'G³az'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kwarcyt";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Rock()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Rock);
+};
+
+instance ItRe_ENCHANTING_Mysticball (ItemPR_Recipe)
+{
+	value						=	50;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Mysticball;
+	
+	description					=	"Przepis na 'Mistyczny pocisk'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿ywica";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Mysticball()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_Mysticball);
+};
+
+instance ItRe_ENCHANTING_SuckEnergy (ItemPR_Recipe)
+{
+	value						=	100;
+	visual						=	"ItRe_Enchanting_1.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_SuckEnergy;
+	
+	description					=	"Przepis na 'Kradzie¿ ¿ycia'";
+	COUNT[0]					=	1;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x ¿¹d³o";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_SuckEnergy()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 1, PLAYER_TALENT_ENCHANTING, SPL_SuckEnergy);
+};
+
+instance ItRe_ENCHANTING_Skull (ItemPR_Recipe)
+{
+	value						=	250;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Skull;
+	
+	description					=	"Przepis na 'Krzyk umar³ych'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x czaszka";
+	TEXT[3]						=	"-1x rubin";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Skull()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Skull);
+};
+
+instance ItRe_ENCHANTING_Elevate (ItemPR_Recipe)
+{
+	value						=	150;
+	visual						=	"ItRe_Enchanting_2.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Elevate;
+	
+	description					=	"Przepis na 'Piedesta³'";
+	COUNT[0]					=	2;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kwarcyt";
+	TEXT[2]						=	"-1x serce gargulca";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Elevate()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Elevate);
+};
+
+instance ItRe_ENCHANTING_Crush (ItemPR_Recipe)
+{
+	value						=	300;
+	visual						=	"ItRe_Enchanting_3.3ds";
+	on_state[0]					=	Use_ItRe_ENCHANTING_Crush;
+	
+	description					=	"Przepis na 'Zmia¿d¿enie'";
+	COUNT[0]					=	3;
+	TEXT[1]						=	"-1x runa LUB 1x pergaminy + magiczny atrament";
+	TEXT[2]						=	"-1x kwarcyt";
+	TEXT[3]						=	"-1x diament";
+	COUNT[5]					=	value;
+};
+func void Use_ItRe_ENCHANTING_Crush()
+{
+	ReadRecipe(NPC_TALENT_ENCHANTING, 3, PLAYER_TALENT_ENCHANTING, SPL_Crush);
 };
 
 ///******************************************************************************************
@@ -2593,20 +3659,23 @@ instance ItRe_ENCHANTING_Shrink (ItemPR_Recipe)
 ///******************************************************************************************
 
 const int HUNTING_Blood					=	0;
-const int HUNTING_Claws					=	1;
-const int HUNTING_Furs					=	2;
-const int HUNTING_Hearts				=	3;
-const int HUNTING_Horns					=	4;
-const int HUNTING_Mandibles				=	5;
-const int HUNTING_Plates				=	6;
-const int HUNTING_Scales				=	7;
-const int HUNTING_Skins					=	8;
-const int HUNTING_Stings				=	9;
-const int HUNTING_Teeth					=	10;
-const int HUNTING_Tongues				=	11;
-const int HUNTING_Wings					=	12;
+const int HUNTING_Bones					=	1;
+const int HUNTING_Claws					=	2;
+const int HUNTING_Fat					=	3;
+const int HUNTING_Furs					=	4;
+const int HUNTING_Hearts				=	5;
+const int HUNTING_Horns					=	6;
+const int HUNTING_Mandibles				=	7;
+const int HUNTING_Plates				=	8;
+const int HUNTING_Scales				=	9;
+const int HUNTING_Skins					=	10;
+const int HUNTING_Stings				=	11;
+const int HUNTING_Teeth					=	12;
+const int HUNTING_Tendons				=	13;
+const int HUNTING_Tongues				=	14;
+const int HUNTING_Wings					=	15;
 
-const int MAX_TALENT_HUNTING			=	13;
+const int MAX_TALENT_HUNTING			=	16;
 
 var int PLAYER_TALENT_HUNTING[MAX_TALENT_HUNTING];
 

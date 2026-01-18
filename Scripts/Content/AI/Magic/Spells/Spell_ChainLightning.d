@@ -2,8 +2,8 @@
 /// SPL_ChainLightning
 ///******************************************************************************************
 
-const int SPL_Cost_ChainLightning		=	125;
-const int SPL_Damage_ChainLightning		=	125;
+const int SPL_Cost_ChainLightning		=	100;
+const int SPL_Damage_ChainLightning		=	50;
 
 ///******************************************************************************************
 instance Spell_ChainLightning (C_Spell_Proto)

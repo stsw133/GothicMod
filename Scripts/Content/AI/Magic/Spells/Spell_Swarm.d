@@ -2,8 +2,8 @@
 /// SPL_Swarm
 ///******************************************************************************************
 
-const int SPL_Cost_Swarm				=	125;
-const int SPL_Damage_Swarm				=	125;
+const int SPL_Cost_Swarm				=	75;
+const int SPL_Damage_Swarm				=	25;
 const int SPL_Time_Swarm				=	5;
 
 ///******************************************************************************************

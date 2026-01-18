@@ -3,13 +3,13 @@
 ///******************************************************************************************
 
 const int SPL_Cost_BeliarRage			=	20;
-const int SPL_Damage_BeliarRage			=	20;
+const int SPL_Damage_BeliarRage			=	0;
 
 ///******************************************************************************************
 instance Spell_BeliarRage (C_Spell_Proto)
 {
 	time_per_mana						=	0;
-	damage_per_level					=	SPL_Damage_BeliarRage+(BeliarWeapon_LastUpgradeLvl*3);
+	damage_per_level					=	SPL_Damage_BeliarRage+(BeliarWeapon_LastUpgradeLvl*2);
 	damageType							=	DAM_MAGIC;
 };
 

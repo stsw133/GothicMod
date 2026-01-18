@@ -76,7 +76,7 @@ func int MOD_DamageApplyMunitionEffects (var oSDamageDescriptor dmgDesc, var int
 {
 	if (dmgDesc.weaponMode == 4)
 	{
-		atrDmg += B_MunitionSpecialDamage(slf, oth, itemWpn);
+		atrDmg += B_MunitionSpecialDamage(slf, oth, itemWpn, atrDmg);
 	};
 	
 	return atrDmg;
@@ -373,9 +373,16 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	};
 	
 	/// don't kill
-	if (dontKill && oth.attribute[ATR_HITPOINTS] > 1 && (oth.attribute[ATR_HITPOINTS] - finalDmg) <= 0)
+	if (dontKill || (oth.flags & NPC_FLAG_IMPORTANT))
 	{
-		finalDmg = oth.attribute[ATR_HITPOINTS] - 1;
+		if (oth.attribute[ATR_HITPOINTS] <= 1)
+		{
+			finalDmg = 0;
+		}
+		else if ((oth.attribute[ATR_HITPOINTS] - finalDmg) <= 0)
+		{
+			finalDmg = oth.attribute[ATR_HITPOINTS] - 1;
+		};
 	};
 	
 	return finalDmg;

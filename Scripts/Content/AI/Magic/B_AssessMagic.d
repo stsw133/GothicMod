@@ -36,7 +36,6 @@ func void B_AssessMagic()
 			Summoned.protection[PROT_MAGIC] = 50 + other.attribute[ATR_POWER]/5;
 			Summoned.protection[PROT_POINT] = 50 + other.attribute[ATR_POWER]/5;
 		};
-		
 		return;
 	};
 	/// ------ Fear ------

@@ -14,7 +14,6 @@ AI\AI_INTERN\PrintPlus.d
 AI\AI_INTERN\Species.d
 
 MOD\aSource.d
-MOD\bSource.d
 LeGo\Header_G2.src
 
 STORY\Text.d
@@ -90,6 +89,7 @@ ITEMS\MissionItems*.d
 ITEMS\SpecialItems.d
 ITEMS\GiveAll.d
 
+MOD\MOD_ItemFn.d
 MOD\MOD_Defeated.d
 MOD\CatInv\CatInv.src
 MOD\Quickslot\Quickslot.src
@@ -117,12 +117,12 @@ AI\HUMAN\B_Human\B_CreateAmmo.d
 AI\HUMAN\C_Human\C_WantToAttack.d
 AI\MONSTER\C_Monster\*.d
 
-AI\MAGIC\B_MagicFn.d
+AI\MAGIC\B_MagicHurtNpc.d
+AI\MAGIC\B_SpellSummon.d
+AI\MAGIC\B_SpellLogic.d
 AI\MAGIC\B_ReadySpell.d
 AI\MAGIC\B_SelectSpell.d
 AI\MAGIC\C_Spell_Proto.d
-
-MOD\MOD_Buffs.d
 
 STORY\B_Content\B_BeliarWeapon.d
 STORY\B_Content\B_WeaponSpecialDamage.d
@@ -254,7 +254,6 @@ STORY\Events\*.d
 
 MOD\MOD_Bars.d
 MOD\MOD_Damage.d
-MOD\MOD_ItemFn.d
 MOD\MOD_Menu.d
 MOD\MOD_Mobs.d
 MOD\MOD_MoveFn.d

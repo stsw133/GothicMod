@@ -292,7 +292,7 @@ const string TXT_SPELLS[MAX_SPELL] =
 	"Du¿a kula ognia",			// 30	SPL_ChargeFireball
 	"Kl¹twa",					// 31	SPL_Curse
 	"Strach",					// 32	SPL_Fear
-	"Bry³a lodu",				// 33	SPL_IceCube
+	"Zamro¿enie",				// 33	SPL_IceCube
 	"Piorun kulisty",			// 34	SPL_ChargeZap
 	"Tworzenie golema",			// 35	SPL_SummonGolem
 	"Zniszczenie nieumar³ych",	// 36	SPL_DestroyUndead
@@ -411,7 +411,7 @@ const string NAME_SPL_LightningFlash		=	"B³yskawica";
 const string NAME_SPL_ChargeFireball		=	"Du¿a kula ognia";
 const string NAME_SPL_Curse					=	"Kl¹twa";
 const string NAME_SPL_Fear					=	"Strach";
-const string NAME_SPL_IceCube				=	"Bry³a lodu";
+const string NAME_SPL_IceCube				=	"Zamro¿enie";
 const string NAME_SPL_ChargeZap				=	"Piorun kulisty";
 const string NAME_SPL_SummonGolem			=	"Tworzenie golema";
 const string NAME_SPL_DestroyUndead			=	"Zniszczenie nieumar³ych";
@@ -746,6 +746,7 @@ const string PRINT_SleepOverObsessed		=	"Koszmary senne nie pozwalaj¹ ci nale¿yc
 const string PRINT_AlchemySuccess			=	"Uwarzono miksturê!";
 const string PRINT_CookingSuccess			=	"Ugotowano potrawê!";
 const string PRINT_CraftSuccess				=	"Stworzono przedmiot!";
+const string PRINT_FletcherySuccess			=	"Stworzono broñ!";
 const string PRINT_JewelerySuccess			=	"Ulepszono bi¿uteriê!";
 const string PRINT_MagicStoneSuccess		=	"Zaczarowano druidzki kamieñ!";
 const string PRINT_RuneSuccess				=	"Stworzono runê!";

@@ -146,6 +146,7 @@ func string Give_MagicSkills (var string parameter)
 {
 	var int paramInt; paramInt = STR_ToInt(STR_SubStr(parameter, 1, STR_Len(parameter) - 1));
 	
+	regenPower[BarOrderMP] += (paramInt - Npc_GetTalentSkill(hero, NPC_TALENT_MAGIC)) * 5;
 	Npc_SetTalentSkill (hero, NPC_TALENT_MAGIC, paramInt);
 	
 	return ConcatStrings(ConcatStrings("Otrzymano ", IntToString(paramInt)), " kr¹g magii");
@@ -247,6 +248,7 @@ func string Set_Diff (var string parameter)
 	else if	(dLevel == DIFF_M)	{	return "Ustawiono œredni poziom trudnoœci";		}
 	else if	(dLevel == DIFF_H)	{	return "Ustawiono trudny poziom trudnoœci";		}
 	else if	(dLevel == DIFF_V)	{	return "Ustawiono b. trudny poziom trudnoœci";	}
+	else if	(dLevel == DIFF_C)	{	return "Ustawiono w³asny poziom trudnoœci";		}
 	else						{	return "Nieprawid³owy poziom trudnoœci";		};
 };
 
@@ -485,7 +487,6 @@ func string Reset_Inventory (var string parameter)
 ///******************************************************************************************
 func string Reset_OverlayMDS (var string parameter)
 {
-	Mdl_RemoveOverlayMDS (hero, "HUMANS_PLAYER.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_FASTRUN.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_SPRINT.MDS");
 	Mdl_RemoveOverlayMDS (hero, "HUMANS_FLEE.MDS");
@@ -582,124 +583,6 @@ func string Assign_Ani_6_All (var string parameter)		{	return MOD_MovieMode_SetA
 func string Assign_Ani_7_All (var string parameter)		{	return MOD_MovieMode_SetAni(7,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
 func string Assign_Ani_8_All (var string parameter)		{	return MOD_MovieMode_SetAni(8,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
 func string Assign_Ani_9_All (var string parameter)		{	return MOD_MovieMode_SetAni(9,	TARGET_COLLECT_ALL,		STR_SubStr(parameter, 1, STR_Len(parameter) - 1));	};
-
-/// events
-///******************************************************************************************
-func string Action_DrawWeapon (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_DrawWeapon (o_other);
-	
-	return "";
-};
-
-func string Action_KillMe (var string parameter)
-{
-	hero.attribute[ATR_HITPOINTS] = 0;
-	
-	return "";
-};
-
-func string Action_LookAtMe (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	B_LookAtNpc (o_other, hero);
-	
-	return "";
-};
-
-func string Action_ObserveMe (var string parameter)
-{
-	B_StopLookAt(o_other);
-	AI_StartState (o_other, ZS_ObservePlayer, true, "");
-	
-	return "";
-};
-
-func string Action_PointAtMe (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_PointAtNpc (o_other, hero);
-	
-	return "";
-};
-
-func string Action_RemoveWeapon (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_RemoveWeapon (o_other);
-	
-	return "";
-};
-
-func string Action_StopLookAtMe (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	B_StopLookAt (o_other);
-	
-	return "";
-};
-
-func string Action_StopPointAtMe (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_StopPointAt (o_other);
-	
-	return "";
-};
-
-func string Action_TeleportAway (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_Teleport(o_other, "TOT");
-	
-	return ConcatStrings(ConcatStrings("Wys³a³eœ ", o_other.name), " w zaœwiaty");
-};
-
-func string Action_TurnAway (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	AI_TurnAway (o_other, hero);
-	
-	return "";
-};
-
-func string Action_TurnToMe (var string parameter)
-{
-	Npc_ClearAIQueue(o_other);
-	B_TurnToNpc (o_other, hero);
-	B_LookAtNpc (o_other, hero);
-	
-	return "";
-};
-
-///******************************************************************************************
-func string Action_Mass_Fear (var string parameter)
-{
-	AI_SetNpcsToState (hero, ZS_MagicFlee, 1000);
-	
-	return "";
-};
-
-func string Action_Mass_DrawWeapon (var string parameter)
-{
-	return "";
-};
-
-func string Action_Mass_UndrawWeapon (var string parameter)
-{
-	return "";
-};
-
-func string Action_Mass_LookAtMe (var string parameter)
-{
-	return "";
-};
-
-func string Action_Mass_TurnToMe (var string parameter)
-{
-	return "";
-};
 
 /// uncategorized
 ///******************************************************************************************
@@ -819,24 +702,6 @@ func void ConsoleCommands()
 	CC_Register(Assign_Ani_7_All, "Assign Ani 7 All", "");
 	CC_Register(Assign_Ani_8_All, "Assign Ani 8 All", "");
 	CC_Register(Assign_Ani_9_All, "Assign Ani 9 All", "");
-	
-	CC_Register(Action_DrawWeapon, "Action DrawWeapon", "");
-	CC_Register(Action_KillMe, "Action KillMe", "");
-	CC_Register(Action_LookAtMe, "Action LookAtMe", "");
-	CC_Register(Action_ObserveMe, "Action ObserveMe", "");
-	CC_Register(Action_PointAtMe, "Action PointAtMe", "");
-	CC_Register(Action_RemoveWeapon, "Action RemoveWeapon", "");
-	CC_Register(Action_StopLookAtMe, "Action StopLookAtMe", "");
-	CC_Register(Action_StopPointAtMe, "Action StopPointAtMe", "");
-	CC_Register(Action_TeleportAway, "Action TeleportAway", "");
-	CC_Register(Action_TurnAway, "Action TurnAway", "");
-	CC_Register(Action_TurnToMe, "Action TurnToMe", "");
-	
-	CC_Register(Action_Mass_Fear, "Action Mass Fear", "");
-	CC_Register(Action_Mass_DrawWeapon, "Action Mass DrawWeapon", "");
-	CC_Register(Action_Mass_UndrawWeapon, "Action Mass UndrawWeapon", "");
-	CC_Register(Action_Mass_LookAtMe, "Action Mass LookAtMe", "");
-	CC_Register(Action_Mass_TurnToMe, "Action Mass TurnToMe", "");
 	
 	CC_Register(Test, "Test", "");
 };

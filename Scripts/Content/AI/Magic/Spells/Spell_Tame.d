@@ -2,8 +2,7 @@
 /// SPL_Tame
 ///******************************************************************************************
 
-const int SPL_Cost_Tame					=	125;
-//var C_Npc NPC_TamedMonster;
+const int SPL_Cost_Tame					=	75;
 
 ///******************************************************************************************
 instance Spell_Tame (C_Spell_Proto)
@@ -30,19 +29,12 @@ func void Spell_Cast_Tame()
 	
 	if (Npc_IsPlayer(self))
 	{
-		//if (!Npc_IsDead(NPC_TamedMonster))
-		//{
-		//	NPC_TamedMonster.aivar[AIV_PartyMember] = false;
-		//	NPC_TamedMonster.aivar[AIV_SummonTime] = 0;
-		//	B_SetAttitude (NPC_TamedMonster, ATT_HOSTILE);
-		//	AI_ContinueRoutine (NPC_TamedMonster);
-		//};
+		Spell_ResetPlayerManagedCreatures();
 		
 		if (C_NpcIsAnimal(other))
 		{
-			//NPC_TamedMonster = Hlp_GetNpc(other);
-			//NpcFn_SetMonsterAsSummoned(NPC_TamedMonster, true);
 			NpcFn_SetMonsterAsSummoned(other, true);
+			Spell_SetPlayerManagedCreature (0, other);
 			Wld_PlayEffect ("spellFX_Tame_GROUND", other, other, 0, 0, 0, false);
 		};
 	};

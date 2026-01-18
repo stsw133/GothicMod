@@ -822,20 +822,35 @@ func void DIA_Bosper_SellFur_Info ()
 {
 	AI_Output (other, self, "DIA_Bosper_SellFur_15_00"); //Mam dla ciebie kilka skór...
 	
-	if (Npc_HasItems(other, ItAt_SheepFur) > 0)
+	if (Npc_HasItems(other, ItAt_GoatFur) > 0)
+	|| (Npc_HasItems(other, ItAt_HareFur) > 0)
+	|| (Npc_HasItems(other, ItAt_SheepFur) > 0)
+	//|| (Npc_HasItems(other, ItAt_GiantRatFur) > 0)
+	|| (Npc_HasItems(other, ItAt_JackalFur) > 0)
+	|| (Npc_HasItems(other, ItAt_KeilerFur) > 0)
 	|| (Npc_HasItems(other, ItAt_WolfFur) > 0)
+	|| (Npc_HasItems(other, ItAt_IceWolfFur) > 0)
 	|| (Npc_HasItems(other, ItAt_WargFur) > 0)
+	|| (Npc_HasItems(other, ItAt_BloodhoundFur) > 0)
+	|| (Npc_HasItems(other, ItAt_TigerFur) > 0)
+	|| (Npc_HasItems(other, ItAt_BearFur) > 0)
+	|| (Npc_HasItems(other, ItAt_BearBlackFur) > 0)
 	|| (Npc_HasItems(other, ItAt_ShadowFur) > 0)
 	|| (Npc_HasItems(other, ItAt_TrollFur) > 0)
 	|| (Npc_HasItems(other, ItAt_TrollBlackFur) > 0)
-	|| (Npc_HasItems(other, ItAt_KeilerFur) > 0)
 	{
-		
-		if (Npc_HasItems(other, ItAt_KeilerFur) > 0)
+		if (Npc_HasItems(other, ItAt_GoatFur) > 0)
 		{
-			AI_Wait (self,3);
-			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_KeilerFur) * ItAt_KeilerFur.value) );
-			B_GiveInvItems(other, self, ItAt_KeilerFur, Npc_HasItems(other, ItAt_KeilerFur));
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_GoatFur) * ItAt_GoatFur.value) );
+			B_GiveInvItems(other, self, ItAt_GoatFur, Npc_HasItems(other, ItAt_GoatFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_HareFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_HareFur) * ItAt_HareFur.value) );
+			B_GiveInvItems(other, self, ItAt_HareFur, Npc_HasItems(other, ItAt_HareFur));
 		};
 		
 		if (Npc_HasItems(other, ItAt_SheepFur) > 0)
@@ -844,14 +859,43 @@ func void DIA_Bosper_SellFur_Info ()
 			AI_Output (other, self, "DIA_Bosper_SellFur_15_02"); //Nawet bym o tym nie pomyœla³...
 			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_SheepFur) * ItAt_SheepFur.value) );
 			B_GiveInvItems(other, self, ItAt_SheepFur, Npc_HasItems(other, ItAt_SheepFur));
-				
+		};
+		
+		//if (Npc_HasItems(other, ItAt_GiantRatFur) > 0)
+		//{
+		//	AI_Wait (self, 2);
+		//	B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_GiantRatFur) * ItAt_GiantRatFur.value) );
+		//	B_GiveInvItems(other, self, ItAt_GiantRatFur, Npc_HasItems(other, ItAt_GiantRatFur));
+		//};
+		
+		if (Npc_HasItems(other, ItAt_JackalFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_JackalFur) * ItAt_JackalFur.value) );
+			B_GiveInvItems(other, self, ItAt_JackalFur, Npc_HasItems(other, ItAt_JackalFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_KeilerFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_KeilerFur) * ItAt_KeilerFur.value) );
+			B_GiveInvItems(other, self, ItAt_KeilerFur, Npc_HasItems(other, ItAt_KeilerFur));
 		};
 		
 		if (Npc_HasItems(other, ItAt_WolfFur) > 0)
+		|| (Npc_HasItems(other, ItAt_IceWolfFur) > 0)
 		{
 			AI_Output (self, other, "DIA_Bosper_SellFur_11_03"); //Wilcza skóra, nieŸle...
-			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_WolfFur) * ItAt_WolfFur.value) );
-			B_GiveInvItems(other, self, ItAt_WolfFur, Npc_HasItems(other, ItAt_WolfFur));
+			if (Npc_HasItems(other, ItAt_WolfFur) > 0)
+			{
+				B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_WolfFur) * ItAt_WolfFur.value) );
+				B_GiveInvItems(other, self, ItAt_WolfFur, Npc_HasItems(other, ItAt_WolfFur));
+			};
+			if (Npc_HasItems(other, ItAt_IceWolfFur) > 0)
+			{
+				B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_IceWolfFur) * ItAt_IceWolfFur.value) );
+				B_GiveInvItems(other, self, ItAt_IceWolfFur, Npc_HasItems(other, ItAt_IceWolfFur));
+			};
 		};
 		
 		if (Npc_HasItems(other, ItAt_WargFur) > 0)
@@ -859,6 +903,34 @@ func void DIA_Bosper_SellFur_Info ()
 			AI_Output (self, other, "DIA_Bosper_SellFur_11_04"); //Skóra warga? Te bestie s¹ niebezpieczne...
 			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_WargFur) * ItAt_WargFur.value) );
 			B_GiveInvItems(other, self, ItAt_WargFur, Npc_HasItems(other, ItAt_WargFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_BloodhoundFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_BloodhoundFur) * ItAt_BloodhoundFur.value/2) );
+			B_GiveInvItems(other, self, ItAt_BloodhoundFur, Npc_HasItems(other, ItAt_BloodhoundFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_TigerFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_TigerFur) * ItAt_TigerFur.value) );
+			B_GiveInvItems(other, self, ItAt_TigerFur, Npc_HasItems(other, ItAt_TigerFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_BearFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_BearFur) * ItAt_BearFur.value*4/5) );
+			B_GiveInvItems(other, self, ItAt_BearFur, Npc_HasItems(other, ItAt_BearFur));
+		};
+		
+		if (Npc_HasItems(other, ItAt_BearBlackFur) > 0)
+		{
+			AI_Wait (self, 2);
+			B_GiveInvItems(self, other, itmi_gold, (Npc_HasItems(other, ItAt_BearBlackFur) * ItAt_BearBlackFur.value*4/5) );
+			B_GiveInvItems(other, self, ItAt_BearBlackFur, Npc_HasItems(other, ItAt_BearBlackFur));
 		};
 		
 		if (Npc_HasItems(other, ItAt_ShadowFur) > 0)
@@ -871,14 +943,14 @@ func void DIA_Bosper_SellFur_Info ()
 		if (Npc_HasItems(other, ItAt_TrollFur) > 0)
 		|| (Npc_HasItems(other, ItAt_TrollBlackFur) > 0)
 		{
-			if (Bosper_TrollFurSold == FALSE)
+			if (!Bosper_TrollFurSold)
 			{
 				AI_Output (self, other, "DIA_Bosper_SellFur_11_06"); //A co TO za skóra?
 				AI_Output (other, self, "DIA_Bosper_SellFur_15_07"); //Zdar³em j¹ z trolla.
 				AI_Output (self, other, "DIA_Bosper_SellFur_11_08"); //To... to jest warte ma³¹ fortunê.
-				Bosper_TrollFurSold == TRUE;
+				Bosper_TrollFurSold == true;
 			}
-			else //TRUE
+			else
 			{
 				AI_Output (self, other, "DIA_Bosper_SellFur_11_09"); //Kolejna trollowa skóra... Czy ty na nie polujesz?
 				AI_Output (other, self, "DIA_Bosper_SellFur_15_10"); //Nie, po prostu korzystam z ka¿dej okazji...

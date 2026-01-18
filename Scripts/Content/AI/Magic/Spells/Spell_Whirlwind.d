@@ -2,7 +2,7 @@
 /// SPL_Whirlwind
 ///******************************************************************************************
 
-const int SPL_Cost_Whirlwind			=	50;
+const int SPL_Cost_Whirlwind			=	30;
 const int SPL_Damage_Whirlwind			=	0;
 const int SPL_Time_Whirlwind			=	10;
 

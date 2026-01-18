@@ -2,9 +2,9 @@
 /// SPL_SuckEnergy
 ///******************************************************************************************
 
-const int SPL_Cost_SuckEnergy			=	50;
-const int SPL_Damage_SuckEnergy			=	100;
-const int SPL_Time_SuckEnergy			=	10;
+const int SPL_Cost_SuckEnergy			=	15;
+const int SPL_Damage_SuckEnergy			=	50;
+const int SPL_Time_SuckEnergy			=	0;
 
 ///******************************************************************************************
 instance Spell_SuckEnergy (C_Spell_Proto)

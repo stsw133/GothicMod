@@ -2,9 +2,9 @@
 /// SPL_Greententacle
 ///******************************************************************************************
 
-const int SPL_Cost_Greententacle		=	75;
+const int SPL_Cost_Greententacle		=	50;
+const int SPL_Damage_Greententacle		=	5;
 const int SPL_Time_Greententacle		=	20;
-const int SPL_Damage_Greententacle		=	0;
 
 ///******************************************************************************************
 instance Spell_Greententacle (C_Spell_Proto)

@@ -35,7 +35,7 @@ func void ZS_Dead()
 ///******************************************************************************************
 func int ZS_Dead_Loop()
 {
-	/// MOD (temporary)
+	/// MOD (propably temporary)
 	if (self.flags & NPC_FLAG_IMPORTANT)
 	{
 		self.attribute[ATR_HITPOINTS] = 2;

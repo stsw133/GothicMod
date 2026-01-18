@@ -77,7 +77,7 @@ func void B_SetMagicAura (var int type, var int points, var int time)
 };
 ///******************************************************************************************
 
-const int SPL_Cost_Aura					=	50;
+const int SPL_Cost_Aura					=	30;
 const int SPL_Prot_Aura					=	5;
 const int SPL_Time_Aura					=	60;
 

@@ -2,8 +2,8 @@
 /// SPL_Hurricane
 ///******************************************************************************************
 
-const int SPL_Cost_Hurricane			=	125;
-const int SPL_Damage_Hurricane			=	125;
+const int SPL_Cost_Hurricane			=	75;
+const int SPL_Damage_Hurricane			=	50;
 
 ///******************************************************************************************
 instance Spell_Hurricane (C_Spell_Proto)

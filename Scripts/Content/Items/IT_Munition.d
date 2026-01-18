@@ -1,113 +1,86 @@
 ///******************************************************************************************
 
-var int muntype_bow;
-var int muntype_cbow;
-var int muntype_gun;
-var int muntype_hgun;
+const int MUNTYPE_BOW			=	0;
+const int MUNTYPE_CBOW			=	1;
+const int MUNTYPE_GUN			=	2;
+const int MUNTYPE_HGUN			=	3;
+
+const int MUNTYPE_MAX			=	4;
+
+var int SelectedMunition[MUNTYPE_MAX];
 
 ///******************************************************************************************
-prototype ItemPR_Arrow (C_Item)
+func void ChangeSelectedMunitionFlag (var int munType, var C_Item itm)
 {
-	name						=	"Strza³a";
-	mainflag					=	ITEM_KAT_MUN;
-	flags						=	ITEM_MULTI;
-	
-	material					=	MAT_WOOD;
-	scemename					=	"FASTUSE";
-	
-	TEXT[5]						=	NAME_Value;
+	if (Hlp_GetinstanceID(itm) == MEM_ReadStatArr(SelectedMunition, munType))
+	{
+		itm.flags = ITEM_MULTI|ITEM_ACTIVE;
+	}
+	else
+	{
+		itm.flags = ITEM_MULTI;
+	};
 };
 
-prototype ItemPR_Bolt (C_Item)
+func void RefreshMunitionInventory (var int munition)
 {
-	name						=	"Be³t";
-	mainflag					=	ITEM_KAT_MUN;
-	flags						=	ITEM_MULTI;
-	
-	material					=	MAT_WOOD;
-	scemename					=	"FASTUSE";
-	
-	TEXT[5]						=	NAME_Value;
-};
-
-prototype ItemPR_Ammo (C_Item)
-{
-	name						=	"Nabój";
-	mainflag					=	ITEM_KAT_MUN;
-	flags						=	ITEM_MULTI;
-	
-	material					=	MAT_METAL;
-	scemename					=	"FASTUSE";
-	
-	TEXT[5]						=	NAME_Value;
-};
-
-prototype ItemPR_HAmmo (C_Item)
-{
-	name						=	"Pocisk";
-	mainflag					=	ITEM_KAT_MUN;
-	flags						=	ITEM_MULTI;
-	
-	material					=	MAT_METAL;
-	scemename					=	"FASTUSE";
-	
-	TEXT[5]						=	NAME_Value;
-};
-
-///******************************************************************************************
-func void SetItRwAttributes_Arrow (var C_Item itm)
-{
-	if (Hlp_GetinstanceID(itm) != muntype_bow)	{	itm.flags = ITEM_MULTI;				}
-	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
-};
-func void SetItRwAttributes_Bolt (var C_Item itm)
-{
-	if (Hlp_GetinstanceID(itm) != muntype_cbow)	{	itm.flags = ITEM_MULTI;				}
-	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
-};
-func void SetItRwAttributes_Ammo (var C_Item itm)
-{
-	if (Hlp_GetinstanceID(itm) != muntype_gun)	{	itm.flags = ITEM_MULTI;				}
-	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
-};
-func void SetItRwAttributes_HAmmo (var C_Item itm)
-{
-	if (Hlp_GetinstanceID(itm) != muntype_hgun)	{	itm.flags = ITEM_MULTI;				}
-	else										{	itm.flags = ITEM_MULTI|ITEM_ACTIVE;	};
+	var int quantity; quantity = Npc_HasItems(self, munition);
+	if (quantity > 0)
+	{
+		Npc_RemoveInvItems (self, munition, quantity);
+		CreateInvItems (self, munition, quantity);
+	};
 };
 
 ///******************************************************************************************
 /// Arrows
 ///******************************************************************************************
+prototype ItemPR_Arrow (C_Item)
+{
+	mainflag					=	ITEM_KAT_MUN;
+	flags						=	ITEM_MULTI;
+	
+	material					=	MAT_WOOD;
+	scemename					=	"FASTUSE";
+	
+	TEXT[5]						=	NAME_Value;
+	inv_rotx					=	60;
+	inv_roty					=	-45;
+	inv_rotz					=	-135;
+};
+
+///******************************************************************************************
 instance ItRw_Arrow (ItemPR_Arrow)
 {
+	name						=	"Strza³a";
 	value						=	5;
 	visual						=	"ItRw_Arrow.3ds";
 	on_state[0]					=	Use_ItRw_Arrow;
 	
 	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_SharpArrow (ItemPR_Arrow)
 {
+	name						=	"Ostra strza³a";
 	value						=	5;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_SharpArrow.3ds";
 	on_state[0]					=	Use_ItRw_SharpArrow;
 	
-	description					=	"Ostra strza³a";
+	description					=	name;
 	TEXT[1]						=	NAME_Dam_Point;
 	COUNT[1]					=	10;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_HuntingArrow (ItemPR_Arrow)
 {
 	name						=	"Strza³a myœliwska";
 	value						=	4;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_HuntingArrow.3ds";
 	on_state[0]					=	Use_ItRw_HuntingArrow;
 	
 	description					=	name;
@@ -116,14 +89,14 @@ instance ItRw_HuntingArrow (ItemPR_Arrow)
 	TEXT[2]						=	"Dodatkowe obra¿enia vs pozostali:";
 	COUNT[2]					=	-20;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_QuartzArrow (ItemPR_Arrow)
 {
 	name						=	"Strza³a kwarcytowa";
 	value						=	4;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_QuartzArrow.3ds";
 	on_state[0]					=	Use_ItRw_QuartzArrow;
 	
 	description					=	name;
@@ -132,14 +105,14 @@ instance ItRw_QuartzArrow (ItemPR_Arrow)
 	TEXT[2]						=	"Dodatkowe obra¿enia gdy cel > 100 ochrony:";
 	COUNT[2]					=	-20;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_BangArrow (ItemPR_Arrow)
 {
 	name						=	"Strza³a hukowa";
 	value						=	7;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_BangArrow.3ds";
 	on_state[0]					=	Use_ItRw_BangArrow;
 	
 	description					=	name;
@@ -147,55 +120,69 @@ instance ItRw_BangArrow (ItemPR_Arrow)
 	TEXT[2]						=	"odstraszaj¹cy zwierzêta i";
 	TEXT[3]						=	"wabi¹cy ludzi i potwory.";
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_FireArrow (ItemPR_Arrow)
 {
+	name						=	"Ognista strza³a";
 	value						=	7;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_FireArrow.3ds";
 	on_state[0]					=	Use_ItRw_FireArrow;
-	effect						=	"spellfx_firesword";
 	
-	description					=	"Ognista strza³a";
+	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_PoisonArrow (ItemPR_Arrow)
 {
+	name						=	"Zatruta strza³a";
 	value						=	7;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_PoisonArrow.3ds";
 	on_state[0]					=	Use_ItRw_PoisonArrow;
 	
-	description					=	"Zatruta strza³a";
+	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_ExplosiveArrow (ItemPR_Arrow)
 {
+	name						=	"Eksploduj¹ca strza³a";
 	value						=	15;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_ExplosiveArrow.3ds";
 	on_state[0]					=	Use_ItRw_ExplosiveArrow;
 	
-	description					=	"Eksploduj¹ca strza³a";
+	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 instance ItRw_MagicArrow (ItemPR_Arrow)
 {
+	name						=	"Magiczna strza³a";
 	value						=	15;
-	visual						=	"ItRw_Arrow.3ds";
+	visual						=	"ItRw_MagicArrow.3ds";
 	on_state[0]					=	Use_ItRw_MagicArrow;
-	effect						=	"SPELLFX_ARROW";
 	
-	description					=	"Magiczna strza³a";
+	description					=	name;
 	TEXT[1]						=	NAME_Dam_Point;
 	COUNT[1]					=	30;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Arrow(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
+};
+
+instance ItRw_DeadlyPoisonArrow (ItemPR_Arrow)
+{
+	name						=	"Silnie zatruta strza³a";
+	value						=	15;
+	visual						=	"ItRw_DeadlyPoisonArrow.3ds";
+	on_state[0]					=	Use_ItRw_DeadlyPoisonArrow;
+	
+	description					=	name;
+	COUNT[5]					=	value;
+	ChangeSelectedMunitionFlag(MUNTYPE_BOW, self);
 };
 
 ///******************************************************************************************
@@ -212,6 +199,7 @@ func int Npc_IsEquippedItem_Bow (var C_Npc slf)
 	|| (itm.munition == ItRw_PoisonArrow)
 	|| (itm.munition == ItRw_ExplosiveArrow)
 	|| (itm.munition == ItRw_MagicArrow)
+	|| (itm.munition == ItRw_DeadlyPoisonArrow)
 	{
 		return true;
 	};
@@ -219,131 +207,99 @@ func int Npc_IsEquippedItem_Bow (var C_Npc slf)
 	return false;
 };
 
-///******************************************************************************************
 func void ARROW_CHECK()
 {
-	var int Quantity;
-	
-	/// normal
-	Quantity = Npc_HasItems(self, ItRw_Arrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_Arrow, Quantity);
-		CreateInvItems (self, ItRw_Arrow, Quantity);
-	};
-	/// sharpened
-	Quantity = Npc_HasItems(self, ItRw_SharpArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_SharpArrow, Quantity);
-		CreateInvItems (self, ItRw_SharpArrow, Quantity);
-	};
-	/// hunting
-	Quantity = Npc_HasItems(self, ItRw_HuntingArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_HuntingArrow, Quantity);
-		CreateInvItems (self, ItRw_HuntingArrow, Quantity);
-	};
-	/// quartz
-	Quantity = Npc_HasItems(self, ItRw_QuartzArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_QuartzArrow, Quantity);
-		CreateInvItems (self, ItRw_QuartzArrow, Quantity);
-	};
-	/// bang
-	Quantity = Npc_HasItems(self, ItRw_BangArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_BangArrow, Quantity);
-		CreateInvItems (self, ItRw_BangArrow, Quantity);
-	};
-	/// fire
-	Quantity = Npc_HasItems(self, ItRw_FireArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_FireArrow, Quantity);
-		CreateInvItems (self, ItRw_FireArrow, Quantity);
-	};
-	/// poison
-	Quantity = Npc_HasItems(self, ItRw_PoisonArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_PoisonArrow, Quantity);
-		CreateInvItems (self, ItRw_PoisonArrow, Quantity);
-	};
-	/// explosive
-	Quantity = Npc_HasItems(self, ItRw_ExplosiveArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_ExplosiveArrow, Quantity);
-		CreateInvItems (self, ItRw_ExplosiveArrow, Quantity);
-	};
-	/// magic
-	Quantity = Npc_HasItems(self, ItRw_MagicArrow);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_MagicArrow, Quantity);
-		CreateInvItems (self, ItRw_MagicArrow, Quantity);
-	};
+	RefreshMunitionInventory(ItRw_Arrow);
+	RefreshMunitionInventory(ItRw_SharpArrow);
+	RefreshMunitionInventory(ItRw_HuntingArrow);
+	RefreshMunitionInventory(ItRw_QuartzArrow);
+	RefreshMunitionInventory(ItRw_BangArrow);
+	RefreshMunitionInventory(ItRw_FireArrow);
+	RefreshMunitionInventory(ItRw_PoisonArrow);
+	RefreshMunitionInventory(ItRw_ExplosiveArrow);
+	RefreshMunitionInventory(ItRw_MagicArrow);
+	RefreshMunitionInventory(ItRw_DeadlyPoisonArrow);
 	
 	if (Npc_IsEquippedItem_Bow(self))
 	{
-		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = muntype_bow;
+		var C_Item itm; itm = Npc_GetEquippedRangedWeapon(self);
+		itm.munition = SelectedMunition[MUNTYPE_BOW];
 	};
 };
 
-///******************************************************************************************
-func void Use_ItRw_Arrow()			{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_Arrow; ARROW_CHECK(); };				};
-func void Use_ItRw_SharpArrow()		{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_SharpArrow; ARROW_CHECK(); };		};
-func void Use_ItRw_HuntingArrow()	{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_HuntingArrow; ARROW_CHECK(); };		};
-func void Use_ItRw_QuartzArrow()	{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_QuartzArrow; ARROW_CHECK(); };		};
-func void Use_ItRw_BangArrow()		{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_BangArrow; ARROW_CHECK(); };			};
-func void Use_ItRw_FireArrow()		{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_FireArrow; ARROW_CHECK(); };			};
-func void Use_ItRw_PoisonArrow()	{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_PoisonArrow; ARROW_CHECK(); };		};
-func void Use_ItRw_ExplosiveArrow()	{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_ExplosiveArrow; ARROW_CHECK(); };	};
-func void Use_ItRw_MagicArrow()		{	if (Npc_IsEquippedItem_Bow(self)) { muntype_bow = ItRw_MagicArrow; ARROW_CHECK(); };		};
+func void SelectBowMunition(var int munition)
+{
+	if (Npc_IsEquippedItem_Bow(self))
+	{
+		SelectedMunition[MUNTYPE_BOW] = munition;
+		ARROW_CHECK();
+	};
+};
+
+func void Use_ItRw_Arrow()				{	SelectBowMunition(ItRw_Arrow);				};
+func void Use_ItRw_SharpArrow()			{	SelectBowMunition(ItRw_SharpArrow);			};
+func void Use_ItRw_HuntingArrow()		{	SelectBowMunition(ItRw_HuntingArrow);		};
+func void Use_ItRw_QuartzArrow()		{	SelectBowMunition(ItRw_QuartzArrow);		};
+func void Use_ItRw_BangArrow()			{	SelectBowMunition(ItRw_BangArrow);			};
+func void Use_ItRw_FireArrow()			{	SelectBowMunition(ItRw_FireArrow);			};
+func void Use_ItRw_PoisonArrow()		{	SelectBowMunition(ItRw_PoisonArrow);		};
+func void Use_ItRw_ExplosiveArrow()		{	SelectBowMunition(ItRw_ExplosiveArrow);		};
+func void Use_ItRw_MagicArrow()			{	SelectBowMunition(ItRw_MagicArrow);			};
+func void Use_ItRw_DeadlyPoisonArrow()	{	SelectBowMunition(ItRw_DeadlyPoisonArrow);	};
 
 ///******************************************************************************************
 /// Bolts
 ///******************************************************************************************
+prototype ItemPR_Bolt (C_Item)
+{
+	mainflag					=	ITEM_KAT_MUN;
+	flags						=	ITEM_MULTI;
+	
+	material					=	MAT_WOOD;
+	scemename					=	"FASTUSE";
+	
+	TEXT[5]						=	NAME_Value;
+};
+
+///******************************************************************************************
 instance ItRw_Bolt (ItemPR_Bolt)
 {
+	name						=	"Be³t";
 	value						=	5;
 	visual						=	"ItRw_Bolt.3ds";
 	on_state[0]					=	Use_ItRw_Bolt;
 	
 	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Bolt(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_CBOW, self);
 };
 
 instance ItRw_SharpBolt (ItemPR_Bolt)
 {
+	name						=	"Ostry be³t";
 	value						=	5;
-	visual						=	"ItRw_Bolt.3ds";
+	visual						=	"ItRw_SharpBolt.3ds";
 	on_state[0]					=	Use_ItRw_SharpBolt;
 	
-	description					=	"Ostry be³t";
+	description					=	name;
 	TEXT[1]						=	NAME_Dam_Point;
 	COUNT[1]					=	10;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Bolt(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_CBOW, self);
 };
 
 instance ItRw_MagicBolt (ItemPR_Bolt)
 {
+	name						=	"Magiczny be³t";
 	value						=	15;
-	visual						=	"ItRw_Bolt.3ds";
+	visual						=	"ItRw_MagicBolt.3ds";
 	on_state[0]					=	Use_ItRw_MagicBolt;
 	
-	description					=	"Magiczny be³t";
+	description					=	name;
 	TEXT[1]						=	NAME_Dam_Point;
 	COUNT[1]					=	30;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Bolt(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_CBOW, self);
 };
 
 ///******************************************************************************************
@@ -361,57 +317,57 @@ func int Npc_IsEquippedItem_Crossbow (var C_Npc slf)
 	return false;
 };
 
-///******************************************************************************************
 func void BOLT_CHECK()
 {
-	var int Quantity;
-	
-	/// normal
-	Quantity = Npc_HasItems(self, ItRw_Bolt);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_Bolt, Quantity);
-		CreateInvItems (self, ItRw_Bolt, Quantity);
-	};
-	/// sharpened
-	Quantity = Npc_HasItems(self, ItRw_SharpBolt);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_SharpBolt, Quantity);
-		CreateInvItems (self, ItRw_SharpBolt, Quantity);
-	};
-	/// magic
-	Quantity = Npc_HasItems(self, ItRw_MagicBolt);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_MagicBolt, Quantity);
-		CreateInvItems (self, ItRw_MagicBolt, Quantity);
-	};
+	RefreshMunitionInventory(ItRw_Bolt);
+	RefreshMunitionInventory(ItRw_SharpBolt);
+	RefreshMunitionInventory(ItRw_MagicBolt);
 	
 	if (Npc_IsEquippedItem_Crossbow(self))
 	{
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = muntype_cbow;
+		itm.munition = SelectedMunition[MUNTYPE_CBOW];
 	};
 };
 
-///******************************************************************************************
-func void Use_ItRw_Bolt()			{	if (Npc_IsEquippedItem_Crossbow(self)) { muntype_cbow = ItRw_Bolt; BOLT_CHECK(); };			};
-func void Use_ItRw_SharpBolt()		{	if (Npc_IsEquippedItem_Crossbow(self)) { muntype_cbow = ItRw_SharpBolt; BOLT_CHECK(); };	};
-func void Use_ItRw_MagicBolt()		{	if (Npc_IsEquippedItem_Crossbow(self)) { muntype_cbow = ItRw_MagicBolt; BOLT_CHECK(); };	};
+func void SelectCrossbowMunition(var int munition)
+{
+	if (Npc_IsEquippedItem_Crossbow(self))
+	{
+		SelectedMunition[MUNTYPE_CBOW] = munition;
+		BOLT_CHECK();
+	};
+};
+
+func void Use_ItRw_Bolt()		{	SelectCrossbowMunition(ItRw_Bolt);		};
+func void Use_ItRw_SharpBolt()	{	SelectCrossbowMunition(ItRw_SharpBolt);	};
+func void Use_ItRw_MagicBolt()	{	SelectCrossbowMunition(ItRw_MagicBolt);	};
 
 ///******************************************************************************************
 /// Ammo
 ///******************************************************************************************
+prototype ItemPR_Ammo (C_Item)
+{
+	mainflag					=	ITEM_KAT_MUN;
+	flags						=	ITEM_MULTI;
+	
+	material					=	MAT_METAL;
+	scemename					=	"FASTUSE";
+	
+	TEXT[5]						=	NAME_Value;
+};
+
+///******************************************************************************************
 instance ItRw_Ammo (ItemPR_Ammo)
 {
+	name						=	"Nabój";
 	value						=	5;
 	visual						=	"ItRw_Ammo.3ds";
 	on_state[0]					=	Use_ItRw_Ammo;
 	
 	description					=	name;
 	COUNT[5]					=	value;
-	SetItRwAttributes_Ammo(self);
+	ChangeSelectedMunitionFlag(MUNTYPE_GUN, self);
 };
 
 ///******************************************************************************************
@@ -427,51 +383,64 @@ func int Npc_IsEquippedItem_Gun (var C_Npc slf)
 	return false;
 };
 
-///******************************************************************************************
 func void AMMO_CHECK()
 {
-	var int Quantity;
-	
-	/// normal
-	Quantity = Npc_HasItems(self, ItRw_Ammo);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_Ammo, Quantity);
-		CreateInvItems (self, ItRw_Ammo, Quantity);
-	};
+	RefreshMunitionInventory(ItRw_Ammo);
 	
 	if (Npc_IsEquippedItem_Gun(self))
 	{
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = muntype_gun;
+		itm.munition = SelectedMunition[MUNTYPE_GUN];
 	};
 };
 
-///******************************************************************************************
-func void Use_ItRw_Ammo()			{	if (Npc_IsEquippedItem_Gun(self)) { muntype_gun = ItRw_Ammo; AMMO_CHECK(); };				};
+func void SelectGunMunition(var int munition)
+{
+	if (Npc_IsEquippedItem_Gun(self))
+	{
+		SelectedMunition[MUNTYPE_GUN] = munition;
+		AMMO_CHECK();
+	};
+};
+
+func void Use_ItRw_Ammo()	{	SelectGunMunition(ItRw_Ammo);	};
 
 ///******************************************************************************************
 /// Heavy ammo
 ///******************************************************************************************
+prototype ItemPR_HAmmo (C_Item)
+{
+	mainflag					=	ITEM_KAT_MUN;
+	flags						=	ITEM_MULTI;
+	
+	material					=	MAT_METAL;
+	scemename					=	"FASTUSE";
+	
+	TEXT[5]						=	NAME_Value;
+};
+
+///******************************************************************************************
 instance ItRw_HAmmo (ItemPR_HAmmo)
 {
+	name						=	"Ciê¿ki pocisk";
 	value						=	50;
 	visual						=	"ItRw_HeavyAmmo.3ds";
 	on_state[0]					=	Use_ItRw_HAmmo;
 	
-	description					=	"Ciê¿ki pocisk";
-	SetItRwAttributes_HAmmo(self);
+	description					=	name;
+	ChangeSelectedMunitionFlag(MUNTYPE_HGUN, self);
 };
 
 instance ItRw_BAmmo (ItemPR_HAmmo)
 {
+	name						=	"Bio-pocisk";
 	value						=	50;
 	visual						=	"ItRw_BioAmmo.3ds";
 	on_state[0]					=	Use_ItRw_BAmmo;
 	effect						=	"SPELLFX_BIOAMMO";
 	
-	description					=	"Bio-pocisk";
-	SetItRwAttributes_HAmmo(self);
+	description					=	name;
+	ChangeSelectedMunitionFlag(MUNTYPE_HGUN, self);
 };
 
 ///******************************************************************************************
@@ -488,36 +457,29 @@ func int Npc_IsEquippedItem_HeavyGun (var C_Npc slf)
 	return false;
 };
 
-///******************************************************************************************
 func void HEAVYAMMO_CHECK()
 {
-	var int Quantity;
-	
-	/// normal
-	Quantity = Npc_HasItems(self, ItRw_HAmmo);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_HAmmo, Quantity);
-		CreateInvItems (self, ItRw_HAmmo, Quantity);
-	};
-	/// bio
-	Quantity = Npc_HasItems(self, ItRw_BAmmo);
-	if (Quantity > 0)
-	{
-		Npc_RemoveInvItems (self, ItRw_BAmmo, Quantity);
-		CreateInvItems (self, ItRw_BAmmo, Quantity);
-	};
+	RefreshMunitionInventory(ItRw_HAmmo);
+	RefreshMunitionInventory(ItRw_BAmmo);
 	
 	if (Npc_IsEquippedItem_HeavyGun(self))
 	{
 		var C_Item itm;	itm = Npc_GetEquippedRangedWeapon(self);
-		itm.munition = muntype_hgun;
+		itm.munition = SelectedMunition[MUNTYPE_HGUN];
 	};
 };
 
-///******************************************************************************************
-func void Use_ItRw_HAmmo()			{	if (Npc_IsEquippedItem_HeavyGun(self)) { muntype_hgun = ItRw_HAmmo; HEAVYAMMO_CHECK(); };	};
-func void Use_ItRw_BAmmo()			{	if (Npc_IsEquippedItem_HeavyGun(self)) { muntype_hgun = ItRw_BAmmo; HEAVYAMMO_CHECK(); };	};
+func void SelectHeavyGunMunition(var int munition)
+{
+	if (Npc_IsEquippedItem_HeavyGun(self))
+	{
+		SelectedMunition[MUNTYPE_HGUN] = munition;
+		HEAVYAMMO_CHECK();
+	};
+};
+
+func void Use_ItRw_HAmmo()	{	SelectBowMunition(ItRw_HAmmo);	};
+func void Use_ItRw_BAmmo()	{	SelectBowMunition(ItRw_BAmmo);	};
 
 ///******************************************************************************************
 /// Ammo boxes
@@ -536,7 +498,7 @@ instance ItSe_AmmoBox_01 (C_Item)
 	on_state[0]					=	Use_AmmoBox_01;
 	
 	description					=	name;
-	TEXT[2]						=	"W œrodku znajduj¹ siê 24 naboje.";
+	TEXT[2]						=	"W œrodku jest 24 nabojów.";
 	TEXT[5]						=	NAME_Value;
 	COUNT[5]					=	value;
 };
@@ -561,7 +523,7 @@ instance ItSe_AmmoBox_02 (C_Item)
 	on_state[0]					=	Use_AmmoBox_02;
 	
 	description					=	name;
-	TEXT[2]						=	"W œrodku znajduj¹ siê 36 naboje.";
+	TEXT[2]						=	"W œrodku jest 36 nabojów.";
 	TEXT[5]						=	NAME_Value;
 	COUNT[5]					=	value;
 };
@@ -585,8 +547,8 @@ instance ItSe_AmmoBox_03 (C_Item)
 	scemename					=	"MAPSEALED";
 	on_state[0]					=	Use_AmmoBox_03;
 	
-	description					=	"Pud³o z ciê¿k¹ amunicj¹";
-	TEXT[2]						=	"W œrodku znajduje siê 48 pocisków.";
+	description					=	name;
+	TEXT[2]						=	"W œrodku jest 48 nabojów.";
 	TEXT[5]						=	NAME_Value;
 	COUNT[5]					=	value;
 };

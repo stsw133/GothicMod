@@ -38,6 +38,7 @@ func int Spell_Logic_Transform (var int manaInvested)
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTr_Warg))				{	Npc_SetActiveSpellInfo(self, Warg);				}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItTr_Wolf))				{	Npc_SetActiveSpellInfo(self, Wolf);				}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfAlligator))		{	Npc_SetActiveSpellInfo(self, Alligator);		}
+		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfBear))			{	Npc_SetActiveSpellInfo(self, Bear);				}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfBiter))			{	Npc_SetActiveSpellInfo(self, OrcBiter);			}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfBloodfly))		{	Npc_SetActiveSpellInfo(self, Bloodfly);			}
 		else if	(Hlp_GetInstanceID(it) == Hlp_GetInstanceID(ItSc_TrfBloodhound))	{	Npc_SetActiveSpellInfo(self, Bloodhound);		}

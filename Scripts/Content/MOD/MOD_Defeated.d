@@ -127,7 +127,17 @@ func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 	/// AUTO LOOT
 	if (Npc_IsPlayer(slf) || slf.aivar[AIV_PartyMember])
 	&& (STR_ToInt(MEM_GetGothOpt("MOD", "autoLoot")))
+	&& (Wld_GetPlayerPortalGuild() <= GIL_NONE)
 	{
 		B_GiveNpcInventory (oth, slf);
+		
+		if (Wld_DetectItem(slf, ITEM_KAT_NF) || Wld_DetectItem(slf, ITEM_KAT_FF))
+		{
+			if (Hlp_IsValidItem(item))
+			{
+				var oCItem itm; itm = _^(item);
+				MOD_MoveItemIntoInventory (slf, itm);
+			};
+		};
 	};
 };

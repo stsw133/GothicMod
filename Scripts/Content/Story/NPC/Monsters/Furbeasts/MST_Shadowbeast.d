@@ -12,7 +12,7 @@ prototype Mst_Default_Shadowbeast (C_Npc)
 	damagetype							=	DAM_EDGE;
 	fight_tactic						=	FAI_SHADOWBEAST;
 	
-	NpcFn_SetAttributesToLevel (self, 35);
+	NpcFn_SetAttributesToLevel (self, 40);
 	NpcFn_SetMonsterProtection (self, level);
 	
 	/// ------ Senses & Ranges ------

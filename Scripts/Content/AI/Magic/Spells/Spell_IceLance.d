@@ -2,8 +2,8 @@
 /// SPL_IceLance
 ///******************************************************************************************
 
-const int SPL_Cost_IceLance				=	25;
-const int SPL_Damage_IceLance			=	100;
+const int SPL_Cost_IceLance				=	15;
+const int SPL_Damage_IceLance			=	50;
 
 ///******************************************************************************************
 instance Spell_IceLance (C_Spell_Proto)

@@ -2,8 +2,8 @@
 /// SPL_Fireburning
 ///******************************************************************************************
 
-const int SPL_Cost_Fireburning			=	75;
-const int SPL_Damage_Fireburning		=	75;
+const int SPL_Cost_Fireburning			=	50;
+const int SPL_Damage_Fireburning		=	25;
 
 ///******************************************************************************************
 instance Spell_Fireburning (C_Spell_Proto)

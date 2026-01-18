@@ -2,8 +2,8 @@
 /// SPL_Zap
 ///******************************************************************************************
 
-const int SPL_Cost_Zap					=	15;
-const int SPL_Damage_Zap				=	60;
+const int SPL_Cost_Zap					=	10;
+const int SPL_Damage_Zap				=	30;
 
 ///******************************************************************************************
 instance Spell_Zap (C_Spell_Proto)

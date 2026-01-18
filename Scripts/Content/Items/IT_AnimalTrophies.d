@@ -26,6 +26,7 @@ prototype ItemPR_AnimalBlood (C_Item)
 };
 
 instance ItAt_AlligatorBlood (ItemPR_AnimalBlood)	{ description = "Krew aligatora"; };
+instance ItAt_BearBlood (ItemPR_AnimalBlood)		{ description = "Krew niedŸwiedzia"; };
 instance ItAt_BiterBlood (ItemPR_AnimalBlood)		{ description = "Krew k¹sacza"; };
 instance ItAt_BloodflyBlood (ItemPR_AnimalBlood)	{ description = "Krew krwiopijcy"; };
 instance ItAt_BloodhoundBlood (ItemPR_AnimalBlood)	{ description = "Krew krwawego ogara"; };
@@ -90,26 +91,26 @@ instance ItAt_GoblinBone (ItemPR_AnimalTrophy)
 instance ItAt_SkeletonBone (ItemPR_AnimalTrophy)
 {
 	name						=	"Koœæ nieumar³ego";
-	value						=	5;
+	value						=	15;
 	visual						=	"ItAt_SkeletonBone.3ds";
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[0]						=	"Sk³adnik niektórych broni,";
-	TEXT[1]						=	"artefaktów, run i zwojów.";
+	TEXT[0]						=	"Bazowy sk³adnik";
+	TEXT[1]						=	"run i zwojów nekromancji.";
 	COUNT[5]					=	value;
 };
 
 instance ItAt_SkeletonSkull (ItemPR_AnimalTrophy)
 {
 	name						=	"Czaszka nieumar³ego";
-	value						=	15;
+	value						=	25;
 	visual						=	"Ske_Head.mms";
 	material					=	MAT_STONE;
 	
 	description					=	name;
-	TEXT[0]						=	"Bazowy sk³adnik";
-	TEXT[1]						=	"run i zwojów nekromancji.";
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
 	COUNT[5]					=	value;
 	INV_ROTX					=	180;
 	INV_ROTZ					=	90;
@@ -171,7 +172,7 @@ instance ItAt_ScavengerEgg (ItemPR_AnimalTrophy)
 instance ItAt_CrawlerEgg (ItemPR_AnimalTrophy)
 {
 	name						=	"Jajo pe³zacza";
-	value						=	100;
+	value						=	200;
 	visual						=	"ItAt_CrawlerEgg.3ds";
 	
 	description					=	name;
@@ -193,12 +194,39 @@ instance ItAt_DragonEgg_MIS	(ItemPR_AnimalTrophy)
 };
 
 ///******************************************************************************************
+/// Fat
+///******************************************************************************************
+instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
+{
+	name						=	"£ój kretoszczura";
+	value						=	20;
+	visual						=	"ItAt_MoleratLubric.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik lepszych";
+	TEXT[1]						=	"³uków i kusz.";
+	COUNT[5]					=	value;
+};
+
+instance ItAt_BearFat (ItemPR_AnimalTrophy)
+{
+	name						=	"Sad³o niedŸwiedzia";
+	value						=	40;
+	visual						=	"ItAt_BearFat.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik lepszych";
+	TEXT[1]						=	"³uków i kusz.";
+	COUNT[5]					=	value;
+};
+
+///******************************************************************************************
 /// Feathers
 ///******************************************************************************************
 instance ItAt_HarpyFeathers (ItemPR_AnimalTrophy)
 {
 	name						=	"Pióra harpii";
-	value						=	15;
+	value						=	10;
 	visual						=	"ItAt_HarpyFeathers.3ds";
 	
 	description					=	name;
@@ -354,6 +382,32 @@ instance ItAt_TigerFur (ItemPR_AnimalTrophy)
 	INV_ROTX					=	-90;
 };
 
+instance ItAt_BearFur (ItemPR_AnimalTrophy)
+{
+	name						=	"Skóra niedŸwiedzia";
+	value						=	150;
+	visual						=	"ItAt_BearFur.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
+	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
+};
+
+instance ItAt_BearBlackFur (ItemPR_AnimalTrophy)
+{
+	name						=	"Skóra czarnego niedŸwiedzia";
+	value						=	175;
+	visual						=	"ItAt_BearBlackFur.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"pasów i pancerzy skórzanych.";
+	COUNT[5]					=	value;
+	INV_ROTX					=	-90;
+};
+
 instance ItAt_ShadowFur (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra cieniostwora";
@@ -490,19 +544,6 @@ instance ItAt_DrgSnapperHorn (ItemPR_AnimalTrophy)
 };
 
 ///******************************************************************************************
-/// Lubric
-///******************************************************************************************
-instance ItAt_MoleratLubric (ItemPR_AnimalTrophy)
-{
-	name						=	"£ój kretoszczura";
-	value						=	10;
-	visual						=	"ItMi_MoleratLubric.3ds";
-	
-	description					=	name;
-	COUNT[5]					=	value;
-};
-
-///******************************************************************************************
 /// Mandibles
 ///******************************************************************************************
 instance ItAt_BugMandibles (ItemPR_AnimalTrophy)
@@ -544,11 +585,10 @@ instance ItAt_CrawlerPlate (ItemPR_AnimalTrophy)
 	COUNT[5]					=	value;
 };
 
-///******************************************************************************************
 instance ItAt_DrgSnapperScale (ItemPR_AnimalTrophy)
 {
 	name						=	"£uski smoczego zêbacza";
-	value						=	40;
+	value						=	80;
 	visual						=	"ItAt_DrgSnapperScale.3ds";
 	material					=	MAT_STONE;
 	
@@ -590,7 +630,7 @@ instance ItAt_WaranSkin (ItemPR_AnimalTrophy)
 instance ItAt_LurkerSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra topielca";
-	value						=	25;
+	value						=	20;
 	visual						=	"ItAt_LurkerSkin.3ds";
 	
 	description					=	name;
@@ -616,7 +656,7 @@ instance ItAt_SnapperSkin (ItemPR_AnimalTrophy)
 instance ItAt_AlligatorSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra aligatora";
-	value						=	50;
+	value						=	60;
 	visual						=	"ItAt_AlligatorSkin.3ds";
 	
 	description					=	name;
@@ -642,7 +682,7 @@ instance ItAt_RazorSkin (ItemPR_AnimalTrophy)
 instance ItAt_FirewaranSkin (ItemPR_AnimalTrophy)
 {
 	name						=	"Skóra ognistego jaszczura";
-	value						=	100;
+	value						=	90;
 	visual						=	"ItAt_FirewaranSkin.3ds";
 	
 	description					=	name;
@@ -679,20 +719,7 @@ instance ItAt_GiantSnapperSkin (ItemPR_AnimalTrophy)
 };
 
 ///******************************************************************************************
-/// Stings & Secretion
-///******************************************************************************************
-instance ItAt_Sting (ItemPR_AnimalTrophy)
-{
-	name						=	"¯¹d³o";
-	value						=	20;
-	visual						=	"ItAt_Sting.3ds";
-	
-	description					=	name;
-	TEXT[0]						=	"Sk³adnik niektórych broni,";
-	TEXT[1]						=	"artefaktów, run i zwojów.";
-	COUNT[5]					=	value;
-};
-
+///  Secretion & Stings
 ///******************************************************************************************
 instance ItAt_Ink (ItemPR_AnimalTrophy)
 {
@@ -722,6 +749,18 @@ instance ItAt_Poison (ItemPR_AnimalTrophy)
 	INV_ZBIAS					=	INVCAM_ENTF_MISC_STANDARD;
 };
 
+instance ItAt_Sting (ItemPR_AnimalTrophy)
+{
+	name						=	"¯¹d³o";
+	value						=	30;
+	visual						=	"ItAt_Sting.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik niektórych broni,";
+	TEXT[1]						=	"artefaktów, run i zwojów.";
+	COUNT[5]					=	value;
+};
+
 ///******************************************************************************************
 /// Teeth
 ///******************************************************************************************
@@ -740,7 +779,7 @@ instance ItAt_Teeth (ItemPR_AnimalTrophy)
 instance ItAt_KeilerTusk (ItemPR_AnimalTrophy)
 {
 	name						=	"Kie³ dzika";
-	value						=	20;
+	value						=	30;
 	visual						=	"ItAt_KeilerTusk.3ds";
 	
 	description					=	name;
@@ -752,7 +791,7 @@ instance ItAt_KeilerTusk (ItemPR_AnimalTrophy)
 instance ItAt_SharkTeeth (ItemPR_AnimalTrophy)
 {
 	name						=	"K³y b³otnego wê¿a";
-	value						=	100;
+	value						=	120;
 	visual						=	"ItAt_SharkTeeth.3ds";
 	
 	description					=	name;
@@ -764,7 +803,7 @@ instance ItAt_SharkTeeth (ItemPR_AnimalTrophy)
 instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
 {
 	name						=	"Kie³ trolla";
-	value						=	100;
+	value						=	150;
 	visual						=	"ItAt_TrollTooth.3ds";
 	
 	description					=	name;
@@ -775,12 +814,27 @@ instance ItAt_TrollTooth (ItemPR_AnimalTrophy)
 };
 
 ///******************************************************************************************
+/// Tendons
+///******************************************************************************************
+instance ItAt_Tendons (ItemPR_AnimalTrophy)
+{
+	name						=	"Œciêgna";
+	value						=	10;
+	visual						=	"ItAt_Tendons.3ds";
+	
+	description					=	name;
+	TEXT[0]						=	"Sk³adnik ciêciw u¿ywanych";
+	TEXT[1]						=	"do tworzenia ³uków i kusz.";
+	COUNT[5]					=	value;
+};
+
+///******************************************************************************************
 /// Tongues
 ///******************************************************************************************
 instance ItAt_FirewaranTongue (ItemPR_AnimalTrophy)
 {
 	name						=	"Jêzyk ognistego jaszczura";
-	value						=	50;
+	value						=	120;
 	visual						=	"ItAt_FirewaranTongue.3ds";
 	
 	description					=	name;
@@ -792,7 +846,7 @@ instance ItAt_FirewaranTongue (ItemPR_AnimalTrophy)
 instance ItAt_DragonTongue (ItemPR_AnimalTrophy)
 {
 	name						=	"Jêzyk smoka";
-	value						=	100;
+	value						=	200;
 	visual						=	"ItAt_FirewaranTongue.3ds";
 	
 	description					=	name;
@@ -831,7 +885,7 @@ instance ItAt_SwampdroneWing (ItemPR_AnimalTrophy)
 instance ItAt_DemonWing (ItemPR_AnimalTrophy)
 {
 	name						=	"Skrzyd³o demona";
-	value						=	50;
+	value						=	35;
 	visual						=	"ItAt_DemonWing.3ds";
 	
 	description					=	name;

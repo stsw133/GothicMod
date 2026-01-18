@@ -198,7 +198,7 @@ func void MOD_MoveItemIntoInventory (var C_Npc slf, var oCItem itm)
 		return;
 	};
 	
-	Npc_SendPassivePerc (hero, PERC_ASSESSTHEFT, hero, hero);
+	Npc_SendPassivePerc (slf, PERC_ASSESSTHEFT, slf, slf);
 	itm.flags = ITEM_NFOCUS;
 	Wld_RemoveItem(itm);
 	CreateInvItems (slf, Hlp_GetInstanceID(itm), itm.amount);

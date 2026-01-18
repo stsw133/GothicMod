@@ -2,8 +2,8 @@
 /// SPL_RunicEchoes
 ///******************************************************************************************
 
-const int SPL_Cost_RunicEchoes			=	200;
-const int SPL_Damage_RunicEchoes		=	200;
+const int SPL_Cost_RunicEchoes			=	100;
+const int SPL_Damage_RunicEchoes		=	0;
 
 ///******************************************************************************************
 instance Spell_RunicEchoes (C_Spell_Proto)

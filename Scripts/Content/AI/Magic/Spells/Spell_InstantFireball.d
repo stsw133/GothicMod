@@ -2,8 +2,8 @@
 /// SPL_InstantFireball
 ///******************************************************************************************
 
-const int SPL_Cost_InstantFireball		=	25;
-const int SPL_Damage_InstantFireball	=	100;
+const int SPL_Cost_InstantFireball		=	15;
+const int SPL_Damage_InstantFireball	=	50;
 
 ///******************************************************************************************
 instance Spell_InstantFireball (C_Spell_Proto)

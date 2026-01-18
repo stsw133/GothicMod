@@ -2,8 +2,8 @@
 /// SPL_MasterOfDisaster
 ///******************************************************************************************
 
-const int SPL_Cost_MasterOfDisaster		=	150;
-const int SPL_Damage_MasterOfDisaster	=	600;
+const int SPL_Cost_MasterOfDisaster		=	100;
+const int SPL_Damage_MasterOfDisaster	=	300;
 
 ///******************************************************************************************
 instance Spell_MasterOfDisaster (C_Spell_Proto)

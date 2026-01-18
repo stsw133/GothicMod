@@ -110,27 +110,27 @@ func void MOD_MovieMode_ExecuteAction(var int actionIndex)
 	}
 	else if (MOD_MovieMode_SelectedSet == 5)
 	{
-		//if		(actionIndex == 1)	{	MOD_MovieMode_SaveCamera(1);	}
-		//else if	(actionIndex == 2)	{	MOD_MovieMode_SaveCamera(2);	}
-		//else if	(actionIndex == 3)	{	MOD_MovieMode_SaveCamera(3);	}
-		//else if	(actionIndex == 4)	{	MOD_MovieMode_SaveCamera(4);	}
-		//else if	(actionIndex == 5)	{	MOD_MovieMode_SaveCamera(5);	}
-		//else if	(actionIndex == 6)	{	MOD_MovieMode_SaveCamera(6);	}
-		//else if	(actionIndex == 7)	{	MOD_MovieMode_SaveCamera(7);	}
-		//else if	(actionIndex == 8)	{	MOD_MovieMode_SaveCamera(8);	}
-		//else if	(actionIndex == 9)	{	MOD_MovieMode_SaveCamera(9);	};
+		if (!MOD_MovieMode_PrepareTarget())
+		{
+			Print("Brak postaci w fokusie.");
+			return;
+		};
+		Npc_ClearAIQueue(o_other);
+		
+		if		(actionIndex == 1)	{	AI_DrawWeapon(o_other);									}
+		else if	(actionIndex == 2)	{	AI_RemoveWeapon(o_other);								}
+		else if	(actionIndex == 3)	{	AI_PointAtNpc(o_other, hero);							}
+		else if	(actionIndex == 4)	{	AI_StopPointAt(o_other);								}
+		else if	(actionIndex == 5)	{	B_LookAtNpc(o_other, hero);								}
+		else if	(actionIndex == 6)	{	B_StopLookAt(o_other);									}
+		else if	(actionIndex == 7)	{	B_TurnToNpc(o_other, hero); B_LookAtNpc(o_other, hero);	}
+		else if	(actionIndex == 8)	{	AI_TurnAway(o_other, hero);								}
+		else if	(actionIndex == 9)	{	Npc_ClearAIQueue(o_other); AI_Teleport(o_other, "TOT");	};
 	}
 	else if (MOD_MovieMode_SelectedSet == 6)
 	{
-		//if		(actionIndex == 1)	{	MOD_MovieMode_LoadCameraSlot(1);	}
-		//else if (actionIndex == 2)	{	MOD_MovieMode_LoadCameraSlot(2);	}
-		//else if (actionIndex == 3)	{	MOD_MovieMode_LoadCameraSlot(3);	}
-		//else if (actionIndex == 4)	{	MOD_MovieMode_LoadCameraSlot(4);	}
-		//else if (actionIndex == 5)	{	MOD_MovieMode_LoadCameraSlot(5);	}
-		//else if (actionIndex == 6)	{	MOD_MovieMode_LoadCameraSlot(6);	}
-		//else if (actionIndex == 7)	{	MOD_MovieMode_LoadCameraSlot(7);	}
-		//else if (actionIndex == 8)	{	MOD_MovieMode_LoadCameraSlot(8);	}
-		//else if (actionIndex == 9)	{	MOD_MovieMode_LoadCameraSlot(9);	};
+		if		(actionIndex == 1)	{	AI_SetNpcsToState(hero, ZS_ObservePlayer, 1000);		}
+		else if	(actionIndex == 2)	{	AI_SetNpcsToState(hero, ZS_MagicFlee, 1000);			};
 	}
 	else if (MOD_MovieMode_SelectedSet == 7)
 	{
@@ -158,21 +158,7 @@ func void MOD_MovieMode_ExecuteAction(var int actionIndex)
 	}
 	else if (MOD_MovieMode_SelectedSet == 9)
 	{
-		if (!MOD_MovieMode_PrepareTarget())
-		{
-			Print("Brak postaci w fokusie.");
-			return;
-		};
 		
-		if		(actionIndex == 1)	{	B_LookAtNpc(o_other, hero);						}
-		else if	(actionIndex == 2)	{	B_StopLookAt(o_other);							}
-		else if	(actionIndex == 3)	{	B_TurnToNpc(o_other, hero);						}
-		else if	(actionIndex == 4)	{	AI_TurnAway(o_other, hero);						}
-		else if	(actionIndex == 5)	{	B_Say_Overlay(o_other, o_other, "$Aargh_1");	}
-		else if	(actionIndex == 6)	{	AI_PlayAni(o_other, "T_DIALOGGESTURE_01");		}
-		else if	(actionIndex == 7)	{	AI_PlayAni(o_other, "C_LOOK_2");				}
-		else if	(actionIndex == 8)	{	AI_PlayAni(o_other, "C_POINT_5");				}
-		else if	(actionIndex == 9)	{	AI_PlayAni(o_other, "C_POINT_9");				};
 	};
 };
 

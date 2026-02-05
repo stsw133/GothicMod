@@ -46,14 +46,14 @@ func void Spell_Plague_TryApply (var C_Npc oth, var C_Npc slf, var int range)
 	Buff_ApplyOrRefresh (oth, Buff_Plague);
 };
 
-func void Spell_Plague_Initial (var C_Npc oth, var C_Npc slf)
+func void Spell_Plague_Initial (var C_Npc oth, var C_Npc src)
 {
-	Spell_Plague_TryApply (oth, slf, SPL_Plague_InitialRange);
+	Spell_Plague_TryApply (oth, src, SPL_Plague_InitialRange);
 };
 
-func void Spell_Plague_Spread (var C_Npc oth, var C_Npc slf)
+func void Spell_Plague_Spread (var C_Npc oth, var C_Npc src)
 {
-	Spell_Plague_TryApply (oth, slf, SPL_Plague_SpreadRange);
+	Spell_Plague_TryApply (oth, src, SPL_Plague_SpreadRange);
 };
 
 ///******************************************************************************************

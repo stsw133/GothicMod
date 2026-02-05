@@ -1,43 +1,4 @@
 ///******************************************************************************************
-/// MOD_Bars
-///******************************************************************************************
-
-/// dive bar
-instance diveBar(GothicBar)				{ x = 100; y = Print_Screen[PS_Y]-100; backTex = "Bar_Back.tga"; barTex = "Bar_Misc.tga"; };
-
-/// HP bars
-instance healthBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-80; backTex = "Bar_Back.tga"; barTex = "Bar_Health.tga"; };
-instance poisonBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-80; backTex = "Bar_Back.tga"; barTex = "Bar_Negative.tga"; };
-
-/// shield bar
-instance shieldBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-75; backTex = "Alpha.tga"; barTex = "Bar_Progress.tga"; height = 10; };
-
-/// MP bars
-instance manaBar(GothicBar)				{ x = 100; y = Print_Screen[PS_Y]-60; backTex = "Bar_Back.tga"; barTex = "Bar_Mana.tga"; };
-instance obsessionBar(GothicBar)		{ x = 100; y = Print_Screen[PS_Y]-60; backTex = "Bar_Back.tga"; barTex = "Bar_Negative.tga"; };
-
-/// aura bar
-instance auraBar(GothicBar)				{ x = 100; y = Print_Screen[PS_Y]-55; backTex = "Alpha.tga"; barTex = "Bar_Progress.tga"; height = 10; };
-
-/// SP bars
-instance staminaBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-40; backTex = "Bar_Back.tga"; barTex = "Bar_Stamina.tga"; };
-instance harmorBar(GothicBar)			{ x = 100; y = Print_Screen[PS_Y]-40; backTex = "Bar_Back.tga"; barTex = "Bar_Negative.tga"; };
-
-/// XP bar
-instance expBar(GothicBar)				{ x = 100; y = Print_Screen[PS_Y]-20; backTex = "Bar_Back.tga"; barTex = "Bar_Exp.tga"; };
-
-///******************************************************************************************
-func int BarLoop_RenderOnScreen()
-{
-	if (!MEM_Game.showPlayerStatus || !InfoManager_hasFinished())
-	{
-		return false;
-	};
-	
-	return true;
-};
-
-///******************************************************************************************
 /// MOD_BarLoop
 ///******************************************************************************************
 
@@ -52,6 +13,16 @@ var int BarPrinter_hpBar; var string BarText_hpBar; var zCViewText BarTextView_h
 var int BarPrinter_mpBar; var string BarText_mpBar; var zCViewText BarTextView_mpBar;
 var int BarPrinter_spBar; var string BarText_spBar; var zCViewText BarTextView_spBar;
 var int BarPrinter_xpBar; var string BarText_xpBar; var zCViewText BarTextView_xpBar;
+
+func int BarLoop_RenderOnScreen()
+{
+	if (!MEM_Game.showPlayerStatus || !InfoManager_hasFinished())
+	{
+		return false;
+	};
+	
+	return true;
+};
 
 func void Bars_Reset()
 {
@@ -69,6 +40,18 @@ func void Bars_Reset()
 	BarPrinter_spBar = 0; BarText_spBar = ""; BarTextView_spBar = _^(0);
 	BarPrinter_xpBar = 0; BarText_xpBar = ""; BarTextView_xpBar = _^(0);
 };
+
+///******************************************************************************************
+/// MOD_Bars
+///******************************************************************************************
+
+instance diveBar(GothicBar)		{ x = 100; y = Print_Screen[PS_Y]-100; backTex = "Bar_Back.tga"; barTex = "Bar_Misc.tga"; };
+instance healthBar(GothicBar)	{ x = 100; y = Print_Screen[PS_Y]-80;  backTex = "Bar_Back.tga"; barTex = "Bar_Health.tga"; };
+instance shieldBar(GothicBar)	{ x = 100; y = Print_Screen[PS_Y]-75;  backTex = "Alpha.tga";    barTex = "Bar_Progress.tga"; height = 10; };
+instance manaBar(GothicBar)		{ x = 100; y = Print_Screen[PS_Y]-60;  backTex = "Bar_Back.tga"; barTex = "Bar_Mana.tga"; };
+instance auraBar(GothicBar)		{ x = 100; y = Print_Screen[PS_Y]-55;  backTex = "Alpha.tga";    barTex = "Bar_Progress.tga"; height = 10; };
+instance staminaBar(GothicBar)	{ x = 100; y = Print_Screen[PS_Y]-40;  backTex = "Bar_Back.tga"; barTex = "Bar_Stamina.tga"; };
+instance expBar(GothicBar)		{ x = 100; y = Print_Screen[PS_Y]-20;  backTex = "Bar_Back.tga"; barTex = "Bar_Exp.tga"; };
 
 /// dvBar
 func void Loop_dvBar()
@@ -118,9 +101,11 @@ func void Loop_hpBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_hpBar))
 	{
-		if (ATS[ATS_PoisonPoints] > 0)	{	BarLoop_hpBar = Bar_Create(poisonBar);	}
-		else							{	BarLoop_hpBar = Bar_Create(healthBar);	};
+		BarLoop_hpBar = Bar_Create(healthBar);
 	};
+	
+	if (ATS[ATS_PoisonPoints] > 0)	{	Bar_SetBarTexture(BarLoop_hpBar, "Bar_Negative.tga");	}
+	else							{	Bar_SetBarTexture(BarLoop_hpBar, "Bar_Health.tga");		};
 	
 	Bar_SetMax (BarLoop_hpBar, hero.attribute[ATR_HITPOINTS_MAX]);
 	Bar_SetValue (BarLoop_hpBar, hero.attribute[ATR_HITPOINTS]);
@@ -176,9 +161,11 @@ func void Loop_mpBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_mpBar))
 	{
-		if (ATS[ATS_IsObsessed])	{	BarLoop_mpBar = Bar_Create(obsessionBar);	}
-		else						{	BarLoop_mpBar = Bar_Create(manaBar);		};
+		BarLoop_mpBar = Bar_Create(manaBar);
 	};
+	
+	if (ATS[ATS_IsObsessed])	{	Bar_SetBarTexture(BarLoop_mpBar, "Bar_Negative.tga");	}
+	else						{	Bar_SetBarTexture(BarLoop_mpBar, "Bar_Mana.tga");		};
 	
 	Bar_SetMax (BarLoop_mpBar, hero.attribute[ATR_MANA_MAX]);
 	Bar_SetValue (BarLoop_mpBar, hero.attribute[ATR_MANA]);
@@ -234,9 +221,11 @@ func void Loop_spBar()
 	/// VALUE
 	if (!Hlp_IsValidHandle(BarLoop_spBar))
 	{
-		if (ATS[ATS_HeavyArmor] > 0)	{	BarLoop_spBar = Bar_Create(harmorBar);	}
-		else							{	BarLoop_spBar = Bar_Create(staminaBar);	};
+		BarLoop_spBar = Bar_Create(staminaBar);
 	};
+	
+	if (ATS[ATS_HeavyArmor] > 0)	{	Bar_SetBarTexture(BarLoop_spBar, "Bar_Negative.tga");	}
+	else							{	Bar_SetBarTexture(BarLoop_spBar, "Bar_Stamina.tga");	};
 	
 	Bar_SetMax (BarLoop_spBar, hero.aivar[AIV_Stamina_MAX]);
 	Bar_SetValue (BarLoop_spBar, hero.aivar[AIV_Stamina]);

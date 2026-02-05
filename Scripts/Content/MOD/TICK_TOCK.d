@@ -22,7 +22,9 @@ func void TT_1000_RegenHP()
 	/// HP regen (if player IS NOT poisoned)
 	else
 	{
-		regenPoints[BarOrderHP] += regenPower[BarOrderHP];
+		if (dLevel != DIFF_C || customNaturalRegenEnabled)	{	regenPoints[BarOrderHP] += regenPower[BarOrderHP];	}
+		else												{	regenPoints[BarOrderHP] += 0;						};
+		
 		Npc_ChangeAttribute (hero, ATR_HITPOINTS, regenPoints[BarOrderHP]/10);
 		regenPoints[BarOrderHP] -= regenPoints[BarOrderHP]/10*10;
 	};
@@ -38,7 +40,9 @@ func void TT_1000_RegenMP()
 	};
 	
 	/// MP regen
-	regenPoints[BarOrderMP] += regenPower[BarOrderMP];
+	if (dLevel != DIFF_C || customNaturalRegenEnabled)	{	regenPoints[BarOrderMP] += regenPower[BarOrderMP];	}
+	else												{	regenPoints[BarOrderMP] += 0;						};
+	
 	Npc_ChangeAttribute (hero, ATR_MANA, regenPoints[BarOrderMP]/10);
 	regenPoints[BarOrderMP] -= regenPoints[BarOrderMP]/10*10;
 };
@@ -65,7 +69,9 @@ func void TT_1000_RegenSP()
 	};
 	
 	/// SP regen
-	regenPoints[BarOrderSP] += 50 + regenPower[BarOrderSP];
+	if (dLevel != DIFF_C || customNaturalRegenEnabled)	{	regenPoints[BarOrderSP] += 50+regenPower[BarOrderSP];	}
+	else												{	regenPoints[BarOrderSP] += 50;							};
+	
 	hero.aivar[AIV_Stamina] += regenPoints[BarOrderSP]/10;
 	regenPoints[BarOrderSP] -= regenPoints[BarOrderSP]/10*10;
 	Npc_StaminaRefresh(hero);
@@ -235,8 +241,9 @@ func void TT_200_HandleStamina()
 	{
 		if (C_BodyStateContains(hero, BS_HIT) && !movieMode)
 		{
-			if (hero.aivar[AIV_Stamina] < 10)	{	Npc_SetSpeed(hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
-			else								{	Npc_SetSpeed(hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
+			var int lowerAttackSpeed; lowerAttackSpeed = !(dLevel == DIFF_C && !customStaminaPenaltyEnabled) && hero.aivar[AIV_Stamina] < 10;
+			if (lowerAttackSpeed)	{	Npc_SetSpeed(hero, 800 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	}
+			else					{	Npc_SetSpeed(hero, 1000 - mSlowPoints*10 + hero.attribute[ATR_DEXTERITY]);	};
 		};
 		hero.aivar[AIV_Stamina] -= 3+ATS[ATS_HeavyArmor]-usingForgedWeapon;
 	}

@@ -23,7 +23,7 @@ func void B_AssessFollowPlayer_Gregy()
 	{
 		Npc_ClearAIQueue(self);
 		AI_StandUp(self);
-		B_LookAtNpc(self, hero); /// new!!!
+		B_LookAtNpc(self, hero);
 		self.aivar[AIV_TAPOSITION] = true;
 	}
 	else
@@ -55,7 +55,7 @@ func int ZS_Follow_Player_Gregy_Loop()
 	Npc_PerceiveAll(self);
 	
 	Wld_DetectItem(self, ITEM_KAT_NF | ITEM_KAT_FF | ITEM_KAT_MUN | ITEM_KAT_NONE | ITEM_KAT_KEYS | ITEM_KAT_LIGHT | ITEM_KAT_ARMOR | ITEM_KAT_RUNE | ITEM_KAT_DOCS | ITEM_KAT_MAGIC | ITEM_KAT_FOOD | ITEM_KAT_POTIONS);
-	if (Hlp_IsValidItem(item) && item.value > 0 && Npc_GetDistToItem(self, item) < 500 && Npc_GetHeightToItem(self, item) < 100)
+	if (Hlp_IsValidItem(item) && item.value > 0 && Npc_GetDistToItem(self, item) < 500 && Npc_GetHeightToItem(self, item) < 150)
 	{
 		AI_GotoItem (self, item);
 		AI_TakeItem (self, item);
@@ -73,8 +73,6 @@ func int ZS_Follow_Player_Gregy_Loop()
 	{
 		if (!C_BodyStateContains(self, BS_SWIM))
 		{
-			//if (Npc_GetDistToNpc(self, hero) > 1000 && !Npc_CanSeeNpc(hero, self))	{ AI_SetWalkmode (self, NPC_WALK); }
-			//else																	{ AI_SetWalkmode (self, NPC_RUN); };
 			AI_SetWalkmode (self, NPC_RUN);
 		};
 		

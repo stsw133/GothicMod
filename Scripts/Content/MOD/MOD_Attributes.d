@@ -52,7 +52,6 @@ func void Equip_HeavyArmor()
 	&& (ATS[ATS_HeavyArmor] == false)
 	{
 		ATS[ATS_HeavyArmor] = true;
-		Bar_Delete(BarLoop_spBar);
 	};
 };
 func void UnEquip_HeavyArmor()
@@ -61,7 +60,6 @@ func void UnEquip_HeavyArmor()
 	&& (ATS[ATS_HeavyArmor] == true)
 	{
 		ATS[ATS_HeavyArmor] = false;
-		Bar_Delete(BarLoop_spBar);
 	};
 };
 func void Disable_HeavyArmor()
@@ -69,41 +67,25 @@ func void Disable_HeavyArmor()
 	if (ATS[ATS_HeavyArmor] != IMMUNE)
 	{
 		ATS[ATS_HeavyArmor] = IMMUNE;
-		Bar_Delete(BarLoop_spBar);
 	};
 };
 
 /// ------ Obsession ------
 func void MOD_SetObsession(var int value)
 {
-	if (ATS[ATS_IsObsessed] == IMMUNE)
+	if (ATS[ATS_IsObsessed] != IMMUNE)
 	{
-		return;
+		ATS[ATS_IsObsessed] = value;
 	};
-	
-	if (!ATS[ATS_IsObsessed] && value)
-	|| (ATS[ATS_IsObsessed] && !value)
-	{
-		Bar_Delete(BarLoop_mpBar);
-	};
-	ATS[ATS_IsObsessed] = value;
 };
 
 /// ------ Poison ------
 func void MOD_SetPoison(var int value)
 {
-	if /*(!Npc_IsPlayer(self))
-	||*/ (ATS[ATS_PoisonPoints] == -1)
+	if (ATS[ATS_PoisonPoints] != IMMUNE)
 	{
-		return;
+		ATS[ATS_PoisonPoints] = value;
 	};
-	
-	if (ATS[ATS_PoisonPoints] == 0 && value > 0)
-	|| (ATS[ATS_PoisonPoints] > 0 && value <= 0)
-	{
-		Bar_Delete(BarLoop_hpBar);
-	};
-	ATS[ATS_PoisonPoints] = value;
 };
 
 /// ------ Refresh ------

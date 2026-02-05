@@ -3,15 +3,27 @@
 const int SPL_Cost_Scroll			=	5;
 const int SPL_Percent_Scroll		=	20;
 
+func int B_SpellScrollManaCost (var int cost)
+{
+	if (dLevel == DIFF_C && !customScrollManaCostMode)
+	{
+		return SPL_Cost_Scroll;
+	};
+	
+	return cost * SPL_Percent_Scroll / 100;
+};
+
 ///******************************************************************************************
 /// B_SpellLogic
 ///******************************************************************************************
 func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaInvested)
 {
+	var int scrollCost; scrollCost = B_SpellScrollManaCost(cost);
+	
 	/// DEFAULT TYPE
 	if (type == default)
 	{
-		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= scrollCost)
 		|| (slf.attribute[ATR_MANA] >= cost)
 		{
 			return SPL_SENDCAST;
@@ -22,7 +34,7 @@ func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaIn
 	/// INVEST TYPE
 	if (type == 1)
 	{
-		if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] < cost*SPL_Percent_Scroll/100)
+		if (Npc_GetActiveSpellIsScroll(self) && self.attribute[ATR_MANA] < scrollCost)
 		|| (self.attribute[ATR_MANA] < cost)
 		{
 			return SPL_DONTINVEST;
@@ -30,27 +42,27 @@ func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaIn
 		
 		var int newSpellLevel; newSpellLevel = 0;
 		
-		if ((Npc_GetActiveSpellIsScroll(self) && manaInvested <= cost*1*SPL_Percent_Scroll/100) || (manaInvested <= cost*1))
+		if ((Npc_GetActiveSpellIsScroll(self) && manaInvested <= scrollCost*1) || (manaInvested <= cost*1))
 		{
 			self.aivar[AIV_SpellLevel] = 1;
 			return SPL_STATUS_CANINVEST_NO_MANADEC;
 		}
-		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*1*SPL_Percent_Scroll/100) || (manaInvested > cost*1))
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > scrollCost*1) || (manaInvested > cost*1))
 		&& (self.aivar[AIV_SpellLevel] <= 1)
 		{
 			newSpellLevel = 2;
 		}
-		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*2*SPL_Percent_Scroll/100) || (manaInvested > cost*2))
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > scrollCost*2) || (manaInvested > cost*2))
 		&& (self.aivar[AIV_SpellLevel] <= 2)
 		{
 			newSpellLevel = 3;
 		}
-		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*3*SPL_Percent_Scroll/100) || (manaInvested > cost*3))
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > scrollCost*3) || (manaInvested > cost*3))
 		&& (self.aivar[AIV_SpellLevel] <= 3)
 		{
 			newSpellLevel = 4;
 		}
-		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > cost*3*SPL_Percent_Scroll/100) || (manaInvested > cost*3))
+		else if ((Npc_GetActiveSpellIsScroll(self) && manaInvested > scrollCost*3) || (manaInvested > cost*3))
 		&& (self.aivar[AIV_SpellLevel] == 4)
 		{
 			return SPL_DONTINVEST;
@@ -60,7 +72,7 @@ func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaIn
 		{
 			if (Npc_GetActiveSpellIsScroll(self))
 			{
-				self.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
+				self.attribute[ATR_MANA] -= scrollCost;
 			}
 			else
 			{
@@ -83,9 +95,9 @@ func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaIn
 		
 		if (manaInvested == 0)
 		{
-			if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+			if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= scrollCost)
 			{
-				slf.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
+				slf.attribute[ATR_MANA] -= scrollCost;
 			}
 			else if (slf.attribute[ATR_MANA] >= cost)
 			{
@@ -102,7 +114,7 @@ func int B_SpellLogic (var C_Npc slf, var int type, var int cost, var int manaIn
 	/// MIN LEVEL
 	if (type == 3)
 	{
-		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= cost*SPL_Percent_Scroll/100)
+		if (Npc_GetActiveSpellIsScroll(slf) && slf.attribute[ATR_MANA] >= scrollCost)
 		|| (slf.attribute[ATR_MANA] >= cost)
 		{
 			if ((other.level*5 - 50 - slf.attribute[ATR_POWER]) <= 0)
@@ -129,7 +141,7 @@ func void B_SpellCast (var C_Npc slf, var int type, var int cost)
 {
 	if (Npc_GetActiveSpellIsScroll(slf))
 	{
-		slf.attribute[ATR_MANA] -= cost*SPL_Percent_Scroll/100;
+		slf.attribute[ATR_MANA] -= B_SpellScrollManaCost(cost);
 	}
 	else
 	{

@@ -10,6 +10,23 @@ const int FightTalent_Strong		=	80;
 const int FightTalent_Master		=	100;
 
 ///******************************************************************************************
+func void Shield_UpdateOverlay (var C_Npc slf)
+{
+	Mdl_RemoveOverlayMds (slf, "HUMANS_1HST2SH.MDS");
+	Mdl_RemoveOverlayMds (slf, "HUMANS_1HST1SH.MDS");
+	
+	var int skill; skill = Npc_GetTalentSkill(slf, NPC_TALENT_1H);
+	if (skill == 1)
+	{
+		Mdl_ApplyOverlayMds (slf, "HUMANS_1HST1SH.MDS");
+	}
+	else if (skill >= 2)
+	{
+		Mdl_ApplyOverlayMds (slf, "HUMANS_1HST2SH.MDS");
+	};
+};
+
+///******************************************************************************************
 func void B_AddFightSkill (var C_Npc slf, var int talent, var int percent)
 {
 	MEM_WriteStatArr(slf.hitchance, talent, MEM_ReadStatArr(slf.hitchance, talent) + percent);
@@ -19,6 +36,11 @@ func void B_AddFightSkill (var C_Npc slf, var int talent, var int percent)
 		if		(MEM_ReadStatArr(slf.hitchance, talent) > 60)	{	Npc_SetTalentSkill (slf, talent, 2);	}
 		else if	(MEM_ReadStatArr(slf.hitchance, talent) > 30)	{	Npc_SetTalentSkill (slf, talent, 1);	}
 		else													{	Npc_SetTalentSkill (slf, talent, 0);	};
+	};
+	
+	if (talent == NPC_TALENT_1H && (slf.aivar[AIV_WearsWeapon] & WEARS_Shield))
+	{
+		Shield_UpdateOverlay(slf);
 	};
 	
 	/// PrintScreen

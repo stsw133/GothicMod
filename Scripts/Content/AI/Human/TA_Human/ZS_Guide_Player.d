@@ -54,7 +54,11 @@ func void ZS_Guide_Player()
 
 func int ZS_Guide_Player_Loop()
 {
-	if (Npc_GetDistToNpc(self, hero) > 800)
+	if (STR_Compare(self.wp, "XXX") || STR_Compare(hero.wp, "XXX")) /// MOD: warning fix
+	{
+		B_AssessGuidePlayer();
+	}
+	else if (Npc_GetDistToNpc(self, hero) > 800)
 	&& (Npc_GetDistToWP(self, self.wp) < Npc_GetDistToWP(hero, self.wp))
 	{
 		B_AssessGuidePlayer();

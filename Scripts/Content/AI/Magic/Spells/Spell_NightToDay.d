@@ -25,7 +25,7 @@ func void Spell_Effect_NightToDay()
 		{
 			SPL_IsActive_NightToDay += 1;
 			Wld_AddWorldTime(20000);
-			if ((SPL_IsActive_NightToDay % 10) == 0)
+			if ((SPL_IsActive_NightToDay % 20) == 0)
 			{
 				Npc_ChangeAttribute (hero, ATR_HITPOINTS, 1);
 				hero.aivar[AIV_Stamina] += 1;

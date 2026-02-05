@@ -86,7 +86,7 @@ instance ItRu_PalLight (ItemPR_Spell)
 
 instance ItRu_PalHeal (ItemPR_Spell)
 {
-	value						=	240;
+	value						=	200;
 	visual						=	"ItRu_01P.3ds";
 	
 	spell						=	SPL_Heal;
@@ -102,7 +102,7 @@ instance ItRu_PalHeal (ItemPR_Spell)
 
 instance ItRu_PalBless (ItemPR_Spell)
 {
-	value						=	240;
+	value						=	100;
 	visual						=	"ItRu_03P.3ds";
 	
 	spell						=	SPL_PalBless;
@@ -119,7 +119,7 @@ instance ItRu_PalBless (ItemPR_Spell)
 
 instance ItRu_PalFaith (ItemPR_Spell)
 {
-	value						=	360;
+	value						=	200;
 	visual						=	"ItRu_04P.3ds";
 	
 	spell						=	SPL_PalFaith;
@@ -133,7 +133,7 @@ instance ItRu_PalFaith (ItemPR_Spell)
 
 instance ItRu_PalHolyBolt (ItemPR_Spell)
 {
-	value						=	360;
+	value						=	200;
 	visual						=	"ItRu_05P.3ds";
 	
 	spell						=	SPL_PalHolyBolt;
@@ -149,7 +149,7 @@ instance ItRu_PalHolyBolt (ItemPR_Spell)
 
 instance ItRu_PalGlory (ItemPR_Spell)
 {
-	value						=	480;
+	value						=	350;
 	visual						=	"ItRu_06P.3ds";
 	
 	spell						=	SPL_PalGlory;
@@ -163,7 +163,7 @@ instance ItRu_PalGlory (ItemPR_Spell)
 
 instance ItRu_PalRepelEvil (ItemPR_Spell)
 {
-	value						=	480;
+	value						=	350;
 	visual						=	"ItRu_07P.3ds";
 	
 	spell						=	SPL_PalRepelEvil;
@@ -181,7 +181,7 @@ instance ItRu_PalRepelEvil (ItemPR_Spell)
 
 instance ItRu_PalJustice (ItemPR_Spell)
 {
-	value						=	600;
+	value						=	500;
 	visual						=	"ItRu_08P.3ds";
 	
 	spell						=	SPL_PalJustice;
@@ -195,7 +195,7 @@ instance ItRu_PalJustice (ItemPR_Spell)
 
 instance ItRu_PalDestroyEvil (ItemPR_Spell)
 {
-	value						=	600;
+	value						=	500;
 	visual						=	"ItRu_09P.3ds";
 	
 	spell						=	SPL_PalDestroyEvil;

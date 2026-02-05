@@ -132,14 +132,13 @@ func void B_WeaponSpecialDamage (var C_Npc slf, var C_Npc oth, var C_Item wpn, v
 		MOD_SetStealth(slf, 0);
 	};
 	
-	/// SPL_NecAura
-	/*
-	if (mAuraType == MAGIC_NEC && mAuraTime > 0 && Npc_GetDistToNpc(oth, slf) < 1000 && (Npc_IsPlayer(oth) || oth.aivar[AIV_PartyMember]))
+	/// SPL_DarkBarrier
+	if (dealtDmg > 0)
 	{
-		B_MagicHurtNpc (oth, slf, (SPL_Prot_NecAura + hero.attribute[ATR_POWER]*SPL_Scaling_NecAura/100) / 2);
-		Wld_PlayEffect ("spellFX_NecAura_Origin", hero, slf, 0, 0, 0, false);
+		//Spell_DarkBarrier_Damage = dealtDmg;
+		//Spell_DarkBarrier_Victim = Hlp_GetNpc(oth);
+		//MOD_BroadcastEx (slf, Spell_DarkBarrier_AssessCollect, true, false, false);
 	};
-	*/
 	
 	/// OTHER: Raven
 	if (Hlp_GetInstanceID(oth) == Hlp_GetInstanceID(Raven))
@@ -188,29 +187,40 @@ func void B_WeaponSpecialEffect (var C_Npc slf, var C_Npc oth, var C_Item wpn)
 ///******************************************************************************************
 /// B_MunitionSpecialDamage
 ///******************************************************************************************
-func void B_MunitionSpecialBangEffect (var C_Npc oth, var C_Npc slf)
+func void B_MunitionSpecialBangEffect (var C_Npc oth, var C_Npc src)
 {
 	if (Npc_IsPlayer(oth))
 	{
 		return;
 	};
 	
-	if ((oth.senses & SENSE_HEAR) && (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5))
+	if (!((oth.senses & SENSE_HEAR) && Npc_GetDistToNpc(src, oth) < oth.senses_range*5))
 	{
-		AI_Wait		(oth, 2);
-		B_ResetAll	(oth);
-		AI_StandUp	(oth);
-		
-		if (oth.guild > GIL_SEPERATOR_ORC)
+		return;
+	};
+	
+	AI_Wait		(oth, 2);
+	B_ResetAll	(oth);
+	AI_StandUp	(oth);
+	
+	if (C_NpcIsAnimal(oth))
+	|| (oth.guild <= GIL_SEPERATOR_HUM && C_WantToFlee(oth, src))
+	|| (oth.guild != GIL_ORC && oth.guild != GIL_FRIENDLY_ORC && oth.level < src.level)
+	{
+		Npc_SetTarget(oth, src);
+		if (oth.guild > GIL_SEPERATOR_HUM)
 		{
-			AI_SetWalkmode (oth, NPC_RUN);
-			AI_GotoNpc (oth, slf);
+			AI_StartState (oth, ZS_MM_Flee, 0, "");
 		}
 		else
 		{
-			B_TurnToNpc (oth, slf);
-			B_LookAtNpc (oth, slf);
+			AI_StartState (oth, ZS_Flee, 0, "");
 		};
+	}
+	else
+	{
+		AI_SetWalkmode (oth, NPC_RUN);
+		AI_GotoNpc (oth, src);
 	};
 };
 func void B_MunitionSpecialBang (var C_Npc oth)

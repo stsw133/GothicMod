@@ -331,30 +331,31 @@ instance ItMi_Alarmhorn (ItemPR_Misc)
 	TEXT[0]						=	"U¿ycie zwabia orków.";
 	COUNT[5]					=	value;
 };
-func void Use_ItMi_Alarmhorn_Effect(var C_Npc oth, var C_Npc slf)
+func void Use_ItMi_Alarmhorn_Effect(var C_Npc oth, var C_Npc src)
 {
 	if (Npc_IsPlayer(oth))
 	{
 		return;
 	};
 	
-	if (oth.senses & SENSE_HEAR)
-	&& (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5)
+	if (!((oth.senses & SENSE_HEAR) || Npc_GetDistToNpc(src, oth) < oth.senses_range*5))
 	{
-		AI_Wait		(oth, 2);
-		B_ResetAll	(oth);
-		AI_StandUp	(oth);
-		
-		if (oth.guild > GIL_SEPERATOR_ORC)
-		{
-			AI_SetWalkmode (oth, NPC_RUN);
-			AI_GotoNpc (oth, slf);
-		}
-		else
-		{
-			B_TurnToNpc (oth, slf);
-			B_LookAtNpc (oth, slf);
-		};
+		return;
+	};
+	
+	AI_Wait		(oth, 2);
+	B_ResetAll	(oth);
+	AI_StandUp	(oth);
+	
+	if (oth.guild > GIL_SEPERATOR_ORC)
+	{
+		AI_SetWalkmode (oth, NPC_RUN);
+		AI_GotoNpc (oth, src);
+	}
+	else
+	{
+		B_TurnToNpc (oth, src);
+		B_LookAtNpc (oth, src);
 	};
 };
 func void Use_ItMi_Alarmhorn()
@@ -480,7 +481,7 @@ instance ItMi_Lute (ItemPR_Misc)
 	description					=	name;
 	COUNT[5]					=	value;
 };
-func void Use_ItMi_Lute_Effect(var C_Npc oth, var C_Npc slf)
+func void Use_ItMi_Lute_Effect(var C_Npc oth, var C_Npc src)
 {
 	if (Npc_IsPlayer(oth))
 	{
@@ -489,14 +490,14 @@ func void Use_ItMi_Lute_Effect(var C_Npc oth, var C_Npc slf)
 	
 	if (oth.aivar[AIV_MM_REAL_ID] == ID_SPINT)
 	&& (oth.senses & SENSE_HEAR)
-	&& (Npc_GetDistToNpc(slf, oth) < oth.senses_range*5)
+	&& (Npc_GetDistToNpc(src, oth) < oth.senses_range*5)
 	{
 		AI_Wait		(oth, 2);
-		//B_ResetAll	(oth);
+		B_ResetAll	(oth);
 		AI_StandUp	(oth);
 		
 		AI_SetWalkmode (oth, NPC_RUN);
-		AI_GotoNpc (oth, hero);
+		AI_GotoNpc (oth, src);
 		
 		NpcFn_SetMonsterAsSummoned(oth, true);
 		oth.aivar[AIV_SummonTime] = -1;

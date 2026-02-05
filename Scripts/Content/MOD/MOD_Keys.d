@@ -151,7 +151,7 @@ func void MOD_HandleGuiAndCameraKeys()
 	{
 		AI_Wait (hero, 0.1);
 	}
-	else if (MEM_KeyState(KEY_F10) == KEY_PRESSED)
+	else if (MEM_KeyState(KEY_F10) == KEY_HOLD)
 	{
 		MOD_MovieMode_GetCamera();
 	}

@@ -600,7 +600,7 @@ const int SPL_Dragonball				=	62;	/// new!!!					[ORG: SPL_Deathball]
 const int SPL_BlackDragonball			=	63;	/// new!!!					[ORG: SPL_ConcussionBolt]
 const int SPL_BlueFireball				=	64;	/// new!!!					[ORG: SPL_Reserved_64]
 const int SPL_RedFireball				=	65;	/// new!!!					[ORG: SPL_Reserved_65]
-const int SPL_Reserved_66				=	66;	///							[ORG: SPL_Reserved_66]
+const int SPL_EvilFireball				=	66;	///							[ORG: SPL_Reserved_66]
 const int SPL_Reserved_67				=	67;	///							[ORG: SPL_Reserved_67]
 const int SPL_Reserved_68				=	68;	///							[ORG: SPL_Reserved_68]
 const int SPL_Reserved_69				=	69;	///							[ORG: SPL_Reserved_69]
@@ -728,7 +728,7 @@ const string spellFxInstanceNames[MAX_SPELL] =
 	"BlackDragonball",		// 63	SPL_BlackDragonball
 	"BlueFireball",			// 64	SPL_BlueFireball
 	"RedFireball",			// 65	SPL_RedFireball
-	"Light",				// 66	SPL_Reserved_66
+	"SPL_EvilFireball",		// 66	SPL_EvilFireball
 	"Light",				// 67	SPL_Reserved_67
 	"Light",				// 68	SPL_Reserved_68
 	"Light",				// 69	SPL_Reserved_69
@@ -814,7 +814,7 @@ const string spellFxAniLetters[MAX_SPELL] =
 	"WND",					// 29	SPL_LightningFlash
 	
 	"FIB",					// 30	SPL_ChargeFireball
-	"FRZ",					// 31	SPL_Curse
+	"WND",					// 31	SPL_Curse
 	"FEA",					// 32	SPL_Fear
 	"FRZ",					// 33	SPL_IceCube
 	"FIB",					// 34	SPL_ChargeZap
@@ -857,7 +857,7 @@ const string spellFxAniLetters[MAX_SPELL] =
 	"FBT",					// 63	SPL_BlackDragonball
 	"FBT",					// 64	SPL_BlueFireball
 	"FBT",					// 65	SPL_RedFireball
-	"XXX",					// 66	SPL_Reserved_66
+	"FBT",					// 66	SPL_EvilFireball
 	"XXX",					// 67	SPL_Reserved_67
 	"XXX",					// 68	SPL_Reserved_68
 	"XXX",					// 69	SPL_Reserved_69

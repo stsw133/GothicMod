@@ -27,6 +27,11 @@ func string BookXp_Description(var int book, var string description, var int vol
 var int RandAtrDocsCounter;
 func void Npc_AddDocsCounter(var int book, var int volume)
 {
+	if (dLevel == DIFF_C && !customFoodAndBookBonusEnabled)
+	{
+		return;
+	};
+	
 	if (!Npc_IsPlayer(self))
 	{
 		return;

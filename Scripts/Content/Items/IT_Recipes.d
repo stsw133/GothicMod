@@ -767,16 +767,6 @@ const int MAX_TALENT_SMITH				=	27;
 var int PLAYER_TALENT_SMITH[MAX_TALENT_SMITH];
 
 ///******************************************************************************************
-
-func void Use_ItRe_SMITH_1H_Common_01()			{	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_1H_Common_01);				};
-func void Use_ItRe_SMITH_Schwert1()				{	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_Schwert1);					};
-func void Use_ItRe_SMITH_Schwert4()				{	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_Schwert4);					};
-func void Use_ItRe_SMITH_Rubinklinge()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_Rubinklinge);				};
-func void Use_ItRe_SMITH_ElBastardo()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_ElBastardo);					};
-func void Use_ItRe_SMITH_Streitaxt1()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_Streitaxt1);					};
-func void Use_ItRe_SMITH_Avalon()				{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_Avalon);						};
-
-///******************************************************************************************
 instance ItRe_SMITH_1H_Common_01 (ItemPR_Recipe)
 {
 	value						=	50;
@@ -787,6 +777,10 @@ instance ItRe_SMITH_1H_Common_01 (ItemPR_Recipe)
 	COUNT[0]					=	1;
 	TEXT[1]						=	"z 2 bry³ek ¿elaza.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_1H_Common_01()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_1H_Common_01);
 };
 
 instance ItRe_SMITH_Schwert1 (ItemPR_Recipe)
@@ -800,6 +794,10 @@ instance ItRe_SMITH_Schwert1 (ItemPR_Recipe)
 	TEXT[1]						=	"z 3 bry³ek ¿elaza.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_Schwert1()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_Schwert1);
+};
 
 instance ItRe_SMITH_Schwert4 (ItemPR_Recipe)
 {
@@ -811,6 +809,10 @@ instance ItRe_SMITH_Schwert4 (ItemPR_Recipe)
 	COUNT[0]					=	1;
 	TEXT[1]						=	"z 4 bry³ek ¿elaza.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_Schwert4()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 1, PLAYER_TALENT_SMITH, SMITH_Schwert4);
 };
 
 instance ItRe_SMITH_Rubinklinge (ItemPR_Recipe)
@@ -824,6 +826,10 @@ instance ItRe_SMITH_Rubinklinge (ItemPR_Recipe)
 	TEXT[1]						=	"z 4 bry³ek ¿elaza.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_Rubinklinge()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_Rubinklinge);
+};
 
 instance ItRe_SMITH_ElBastardo (ItemPR_Recipe)
 {
@@ -835,6 +841,10 @@ instance ItRe_SMITH_ElBastardo (ItemPR_Recipe)
 	COUNT[0]					=	2;
 	TEXT[1]						=	"z 5 bry³ek ¿elaza.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_ElBastardo()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_ElBastardo);
 };
 
 instance ItRe_SMITH_Streitaxt1 (ItemPR_Recipe)
@@ -849,6 +859,10 @@ instance ItRe_SMITH_Streitaxt1 (ItemPR_Recipe)
 	TEXT[2]						=	"i 2 k³ów.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_Streitaxt1()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_Streitaxt1);
+};
 
 instance ItRe_SMITH_Avalon (ItemPR_Recipe)
 {
@@ -862,25 +876,10 @@ instance ItRe_SMITH_Avalon (ItemPR_Recipe)
 	TEXT[2]						=	"i 2 bry³ek srebra.";
 	COUNT[5]					=	value;
 };
-
-///******************************************************************************************
-
-func void Use_ItRe_SMITH_1H_Special_01()		{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Special_01);				};
-func void Use_ItRe_SMITH_2H_Special_01()		{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Special_01);				};
-func void Use_ItRe_SMITH_1H_Special_02()		{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Special_02);				};
-func void Use_ItRe_SMITH_2H_Special_02()		{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Special_02);				};
-func void Use_ItRe_SMITH_1H_Special_03()		{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Special_03);				};
-func void Use_ItRe_SMITH_2H_Special_03()		{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Special_03);				};
-func void Use_ItRe_SMITH_1H_Special_04()		{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Special_04);				};
-func void Use_ItRe_SMITH_2H_Special_04()		{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Special_04);				};
-func void Use_ItRe_SMITH_1H_Ignite_01()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_01);				};
-func void Use_ItRe_SMITH_2H_Ignite_01()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_01);				};
-func void Use_ItRe_SMITH_1H_Ignite_02()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_02);				};
-func void Use_ItRe_SMITH_2H_Ignite_02()			{	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_02);				};
-func void Use_ItRe_SMITH_1H_Ignite_03()			{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_03);				};
-func void Use_ItRe_SMITH_2H_Ignite_03()			{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_03);				};
-func void Use_ItRe_SMITH_1H_Ignite_04()			{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_04);				};
-func void Use_ItRe_SMITH_2H_Ignite_04()			{	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_04);				};
+func void Use_ItRe_SMITH_Avalon()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_Avalon);
+};
 
 ///******************************************************************************************
 instance ItRe_SMITH_1H_Special_01 (ItemPR_Recipe)
@@ -895,6 +894,10 @@ instance ItRe_SMITH_1H_Special_01 (ItemPR_Recipe)
 	TEXT[2]						=	"i 2 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Special_01()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Special_01);
+};
 
 instance ItRe_SMITH_2H_Special_01 (ItemPR_Recipe)
 {
@@ -907,6 +910,10 @@ instance ItRe_SMITH_2H_Special_01 (ItemPR_Recipe)
 	TEXT[1]						=	"z 3 bry³ek ¿elaza";
 	TEXT[2]						=	"i 2 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_2H_Special_01()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Special_01);
 };
 
 instance ItRe_SMITH_1H_Special_02 (ItemPR_Recipe)
@@ -921,6 +928,10 @@ instance ItRe_SMITH_1H_Special_02 (ItemPR_Recipe)
 	TEXT[2]						=	"i 3 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Special_02()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Special_02);
+};
 
 instance ItRe_SMITH_2H_Special_02 (ItemPR_Recipe)
 {
@@ -933,6 +944,10 @@ instance ItRe_SMITH_2H_Special_02 (ItemPR_Recipe)
 	TEXT[1]						=	"z 3 bry³ek ¿elaza";
 	TEXT[2]						=	"i 3 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_2H_Special_02()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Special_02);
 };
 
 instance ItRe_SMITH_1H_Special_03 (ItemPR_Recipe)
@@ -947,6 +962,10 @@ instance ItRe_SMITH_1H_Special_03 (ItemPR_Recipe)
 	TEXT[2]						=	"i 4 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Special_03()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Special_03);
+};
 
 instance ItRe_SMITH_2H_Special_03 (ItemPR_Recipe)
 {
@@ -959,6 +978,10 @@ instance ItRe_SMITH_2H_Special_03 (ItemPR_Recipe)
 	TEXT[1]						=	"z 3 bry³ek ¿elaza";
 	TEXT[2]						=	"i 4 bry³ek niebieskiej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_2H_Special_03()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Special_03);
 };
 
 instance ItRe_SMITH_1H_Special_04 (ItemPR_Recipe)
@@ -974,6 +997,10 @@ instance ItRe_SMITH_1H_Special_04 (ItemPR_Recipe)
 	TEXT[3]						=	"i 8 fiolek smoczej krwi.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Special_04()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Special_04);
+};
 
 instance ItRe_SMITH_2H_Special_04 (ItemPR_Recipe)
 {
@@ -988,6 +1015,10 @@ instance ItRe_SMITH_2H_Special_04 (ItemPR_Recipe)
 	TEXT[3]						=	"i 8 fiolek smoczej krwi.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_2H_Special_04()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Special_04);
+};
 
 instance ItRe_SMITH_1H_Ignite_01 (ItemPR_Recipe)
 {
@@ -1000,6 +1031,10 @@ instance ItRe_SMITH_1H_Ignite_01 (ItemPR_Recipe)
 	TEXT[1]						=	"z 2 bry³ek ¿elaza";
 	TEXT[2]						=	"i 2 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_1H_Ignite_01()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_01);
 };
 
 instance ItRe_SMITH_2H_Ignite_01 (ItemPR_Recipe)
@@ -1014,6 +1049,10 @@ instance ItRe_SMITH_2H_Ignite_01 (ItemPR_Recipe)
 	TEXT[2]						=	"i 2 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_2H_Ignite_01()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_01);
+};
 
 instance ItRe_SMITH_1H_Ignite_02 (ItemPR_Recipe)
 {
@@ -1026,6 +1065,10 @@ instance ItRe_SMITH_1H_Ignite_02 (ItemPR_Recipe)
 	TEXT[1]						=	"z 2 bry³ek ¿elaza";
 	TEXT[2]						=	"i 3 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_1H_Ignite_02()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_02);
 };
 
 instance ItRe_SMITH_2H_Ignite_02 (ItemPR_Recipe)
@@ -1040,6 +1083,10 @@ instance ItRe_SMITH_2H_Ignite_02 (ItemPR_Recipe)
 	TEXT[2]						=	"i 3 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_2H_Ignite_02()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 2, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_02);
+};
 
 instance ItRe_SMITH_1H_Ignite_03 (ItemPR_Recipe)
 {
@@ -1053,6 +1100,10 @@ instance ItRe_SMITH_1H_Ignite_03 (ItemPR_Recipe)
 	TEXT[2]						=	"i 4 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Ignite_03()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_03);
+};
 
 instance ItRe_SMITH_2H_Ignite_03 (ItemPR_Recipe)
 {
@@ -1065,6 +1116,10 @@ instance ItRe_SMITH_2H_Ignite_03 (ItemPR_Recipe)
 	TEXT[1]						=	"z 3 bry³ek ¿elaza";
 	TEXT[2]						=	"i 4 bry³ek czerwonej rudy.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_2H_Ignite_03()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_03);
 };
 
 instance ItRe_SMITH_1H_Ignite_04 (ItemPR_Recipe)
@@ -1080,6 +1135,10 @@ instance ItRe_SMITH_1H_Ignite_04 (ItemPR_Recipe)
 	TEXT[3]						=	"i 8 fiolek smoczej krwi.";
 	COUNT[5]					=	value;
 };
+func void Use_ItRe_SMITH_1H_Ignite_04()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_1H_Ignite_04);
+};
 
 instance ItRe_SMITH_2H_Ignite_04 (ItemPR_Recipe)
 {
@@ -1093,6 +1152,10 @@ instance ItRe_SMITH_2H_Ignite_04 (ItemPR_Recipe)
 	TEXT[2]						=	"i 5 bry³ek czerwonej rudy";
 	TEXT[3]						=	"i 8 fiolek smoczej krwi.";
 	COUNT[5]					=	value;
+};
+func void Use_ItRe_SMITH_2H_Ignite_04()
+{
+	ReadRecipe(NPC_TALENT_SMITH, 3, PLAYER_TALENT_SMITH, SMITH_2H_Ignite_04);
 };
 
 ///******************************************************************************************

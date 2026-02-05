@@ -3,12 +3,14 @@
 ///******************************************************************************************
 func void MOD_Defeated (var C_Npc slf, var C_Npc oth, var int mode)
 {
-	//if (Npc_IsPlayer(slf) || slf.aivar[AIV_PARTYMEMBER])
-	if ((oth.aivar[AIV_DamageDealtByPlayer]*2) >= oth.attribute[ATR_HITPOINTS_MAX])	///new!!!
+	var int expMode; if (dLevel == DIFF_C) { expMode = customKillExpMode; } else { expMode = 1; };
+	
+	if (expMode == 0 && (Npc_IsPlayer(slf) || slf.aivar[AIV_PARTYMEMBER]))
+	|| (expMode == 1 && oth.aivar[AIV_DamageDealtByPlayer] > 0)	///new!!!
 	{
 		if (!oth.aivar[AIV_VictoryExpGiven])
 		{
-			B_GivePlayerExp(oth.level * XP_PER_VICTORY);
+			B_GivePlayerExp(oth.level * MOD_GetExpVictoryPercent());
 			oth.aivar[AIV_VictoryExpGiven] = true;
 		};
 		

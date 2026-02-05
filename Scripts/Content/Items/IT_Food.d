@@ -2,18 +2,25 @@
 var int RandAtrFoodCounter;
 func void Npc_AddFoodCounter(var int value)
 {
-	if (Npc_IsPlayer(self))
+	if (dLevel == DIFF_C && !customFoodAndBookBonusEnabled)
 	{
-		RandAtrFoodCounter += value;
-		if (RandAtrFoodCounter/1000) > ((RandAtrFoodCounter-value)/1000)
-		{
-			PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrFoodCounter/1000 % 5));
-			if (RandAtrFoodCounter >= 5000)	{	RandAtrFoodCounter -= 5000;	};
-		}
-		else
-		{
-			Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrFoodCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
-		};
+		return;
+	};
+	
+	if (!Npc_IsPlayer(self))
+	{
+		return;
+	};
+	
+	RandAtrFoodCounter += value;
+	if (RandAtrFoodCounter/1000) > ((RandAtrFoodCounter-value)/1000)
+	{
+		PfxRandomizedAttributesOrder(MEM_ReadStatArr(RandomizedAttributesOrder, RandAtrFoodCounter/1000 % 5));
+		if (RandAtrFoodCounter >= 5000)	{	RandAtrFoodCounter -= 5000;	};
+	}
+	else
+	{
+		Print_ExtPrcnt (-1, YPOS_ExpGained, ConcatStrings(IntToString(1000 - (RandAtrFoodCounter%1000)), " pozosta³o do bonusu!"), FONT_ScreenSmall, COL_White, TIME_Print);
 	};
 };
 

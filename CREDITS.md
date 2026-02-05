@@ -12,6 +12,12 @@ Poniżej znajduje się lista autorów, modów oraz źródeł, z których pochodz
 
 ## Mody
 
+**Mod:** Kroniki Myrtany
+**Zakres:** Model i animacje niedźwiedzia oraz modele kilku ziół.
+**Link:** —
+
+---
+
 **Mod:** Podróżnik: za liniami wroga
 **Zakres:** Modele broni palnej i niektórych pancerzy.
 **Link:** —

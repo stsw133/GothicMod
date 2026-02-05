@@ -84,3 +84,46 @@ func void DIA_Gregy_HALLO_Info()
 	
 	AI_StopProcessInfos(self);
 };
+
+///******************************************************************************************
+/// INVENTORY DEAL
+///******************************************************************************************
+instance DIA_Gregy_InventoryDeal (C_Info)
+{
+	npc									=	PIR_1302_Gregy;
+	nr									=	2;
+	condition							=	DIA_Gregy_InventoryDeal_Condition;
+	information							=	DIA_Gregy_InventoryDeal_Info;
+	permanent							=	true;
+	description							=	"Oddaj mi swój ekwipunek, dam ci coœ na z¹b.";
+};
+func int DIA_Gregy_InventoryDeal_Condition()
+{
+	if (Npc_HasItems(other, ItFo_Booze) > 0)
+	|| (Npc_HasItems(other, ItMi_Joint) > 0)
+	{
+		return true;
+	};
+	
+	return false;
+};
+func void DIA_Gregy_InventoryDeal_Info()
+{
+	if (!DIA_Gregy_InventoryDeal_Condition())
+	{
+		return;
+	};
+	
+	if (Npc_HasItems(other, ItFo_Booze) > 0)
+	{
+		B_GiveInvItems(other, self, ItFo_Booze, 1);
+		AI_UseItem(self, ItFo_Booze);
+	}
+	else if (Npc_HasItems(other, ItMi_Joint) > 0)
+	{
+		B_GiveInvItems(other, self, ItMi_Joint, 1);
+		AI_UseItem(self, ItMi_Joint);
+	};
+	
+	B_GiveNpcInventory(self, other);
+};

@@ -903,8 +903,8 @@ instance MENU_ITEM_PREVMENU (C_MENU_ITEM_DEF)
 	posy = CTRL_Y_START + (CTRL_Y_STEP * 17) + CTRL_GROUP5;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
-	onselaction_s[0] = "MENU_OPT_CONTROLS";
 	onselaction[0] = SEL_ACTION_STARTMENU;
+	onselaction_s[0] = "MENU_OPT_CONTROLS";
 	flags = flags | IT_TXT_CENTER;
 };
 
@@ -917,8 +917,8 @@ instance MENU_ITEM_NEXTMENU (C_MENU_ITEM_DEF)
 	posy = CTRL_Y_START + (CTRL_Y_STEP * 17) + CTRL_GROUP5;
 	dimy = 300;
 	fontname = MENU_FONT_SMALL;
-	onselaction_s[0] = "MENU_OPT_CONTROLS_EXTKEYS";
 	onselaction[0] = SEL_ACTION_STARTMENU;
+	onselaction_s[0] = "MENU_OPT_CONTROLS_EXTKEYS";
 	flags = flags | IT_TXT_CENTER;
 };
 

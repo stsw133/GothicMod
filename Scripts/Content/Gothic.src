@@ -82,6 +82,7 @@ AI\AI_INTERN\Npc_Plunder_Is_Empty.d
 AI\AI_INTERN\B_DeSynchronize.d
 AI\AI_INTERN\B_RefreshAtInsert.d
 
+STORY\NpcFn\NpcFn_AddFightSkills.d
 STORY\NpcFn\NpcFn_SetMonsterAsSummoned.d
 
 ITEMS\IT_*.d

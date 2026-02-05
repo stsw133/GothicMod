@@ -41,3 +41,86 @@ func void DIFF_Select(var int diff)
 	
 	var_DIFF_Percent = MEM_ReadStatArr(DIFF_Percent, dLevel);
 };
+
+///******************************************************************************************
+/// MOD_Difficulty
+///     Customs
+///******************************************************************************************
+func int MOD_GetLpPerLevel()
+{
+	if (dLevel != DIFF_C)
+	{
+		return LP_PER_LEVEL;
+	};
+	
+	if (customLpPerLevel < 0)
+	{
+		return LP_PER_LEVEL;
+	};
+	
+	return customLpPerLevel*2;
+};
+
+///******************************************************************************************
+func int MOD_GetHpPerLevel()
+{
+	if (dLevel != DIFF_C)
+	{
+		return HP_PER_LEVEL;
+	};
+	
+	if (customHpPerLevel < 0)
+	{
+		return HP_PER_LEVEL;
+	};
+	
+	return customHpPerLevel*2;
+};
+
+///******************************************************************************************
+func int MOD_GetMpPerLevel()
+{
+	if (dLevel != DIFF_C)
+	{
+		return 0;
+	};
+	
+	if (customMpPerLevel < 0)
+	{
+		return 0;
+	};
+	
+	return customMpPerLevel*1;
+};
+
+///******************************************************************************************
+func int MOD_GetSpPerLevel()
+{
+	if (dLevel != DIFF_C)
+	{
+		return 1;
+	};
+	
+	if (customSpPerLevel < 0)
+	{
+		return 1;
+	};
+	
+	return customSpPerLevel*1;
+};
+
+///******************************************************************************************
+func int MOD_GetExpVictoryPercent()
+{
+	if (dLevel != DIFF_C)
+	{
+		return XP_PER_VICTORY;
+	};
+	
+	if (customExpVictoryPercent < 0)
+	{
+		return XP_PER_VICTORY;
+	};
+	
+	return customExpVictoryPercent+1;
+};

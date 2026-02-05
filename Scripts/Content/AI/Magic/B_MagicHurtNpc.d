@@ -9,12 +9,21 @@ func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int dmg)
 {
 	if (dmg > 0)
 	{
-		Npc_ChangeAttribute (oth, ATR_HITPOINTS, -dmg);
-		
-		if (Npc_IsPlayer(slf))
+		var int appliedDmg; appliedDmg = dmg;
+		if (appliedDmg > oth.attribute[ATR_HITPOINTS])
 		{
-			oth.aivar[AIV_DamageDealtByPlayer] += dmg;
+			appliedDmg = oth.attribute[ATR_HITPOINTS];
 		};
+		if (Npc_IsPlayer(slf) || slf.aivar[AIV_PartyMember])
+		{
+			oth.aivar[AIV_DamageDealtByPlayer] += appliedDmg;
+		}
+		else
+		{
+			oth.aivar[AIV_DamageDealtByPlayer] -= appliedDmg;
+		};
+		
+		Npc_ChangeAttribute (oth, ATR_HITPOINTS, -dmg);
 	};
 	
 	if (Npc_IsDead(oth))
@@ -43,16 +52,16 @@ func void B_MagicHurtNpc (var C_Npc slf, var C_Npc oth, var int dmg)
 	};
 };
 
-func void B_MagicHurtNpcArea(var C_Npc oth, var C_Npc slf)
+func void B_MagicHurtNpcArea(var C_Npc oth, var C_Npc src)
 {
-	if (Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(B_MagicHurtNpcArea_Victim))
-	|| (!Npc_IsPlayer(slf) && oth.guild == slf.guild)
+	if (Hlp_GetInstanceID(src) == Hlp_GetInstanceID(B_MagicHurtNpcArea_Victim))
+	|| (!Npc_IsPlayer(src) && oth.guild == src.guild)
 	{
 		return;
 	};
 	
 	if (Npc_GetDistToNpc(B_MagicHurtNpcArea_Victim, oth) < NPC_ATTACK_FINISH_DISTANCE)
 	{
-		B_MagicHurtNpc (slf, oth, B_MagicHurtNpcArea_Damage);
+		B_MagicHurtNpc (src, oth, B_MagicHurtNpcArea_Damage);
 	};
 };

@@ -108,6 +108,26 @@ func int MOD_DamageApplyProtection (var int curDmg, var int curProt)
 	return (curDmg - curProt + curDmg - (curDmg * curProt / (curProt + 100))) / 2;
 };
 
+/// calculate custom damage percent
+func int MOD_CalculateDamagePercent (var int type, var int curDmg)
+{
+	if (dLevel != DIFF_C)
+	{
+		return DIFF_Multiplier(curDmg, type);
+	};
+	
+	var int percent;
+	if		(type == DECREASE)	{	percent = (customDamageGivenPercent + 1) * 20;	}
+	else if	(type == INCREASE)	{	percent = (customDamageTakenPercent + 1) * 20;	};
+	
+	if (percent <= 0)
+	{
+		percent = 100;
+	};
+	
+	return curDmg * percent / 100;
+};
+
 ///******************************************************************************************
 /// MOD_Damage
 ///     Calculate total damage
@@ -276,7 +296,7 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	/// PLAYER vs NPC
 	if (Npc_IsPlayer(slf))
 	{
-		finalDmg = DIFF_Multiplier(finalDmg, DECREASE);	/// difficulty multiplier
+		finalDmg = MOD_CalculateDamagePercent(DECREASE, finalDmg);	/// difficulty multiplier
 		ATS[ATS_InFightTime] = 5;	/// for sprint block
 		ATS[ATS_InFightHits] += 1;
 		
@@ -290,12 +310,12 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	/// NPC vs PLAYER
 	else if (Npc_IsPlayer(oth))
 	{
-		finalDmg = DIFF_Multiplier(finalDmg, INCREASE);	/// difficulty multiplier
+		finalDmg = MOD_CalculateDamagePercent(INCREASE, finalDmg);	/// difficulty multiplier
 		ATS[ATS_InFightTime] = 5;	/// for sprint block
 		ATS[ATS_CounterHit] = false;
 	}
 	/// NPC vs NPC
-	else if (!movieMode) //&& (oth.flags & NPC_FLAG_IMPORTANT)
+	else if ((dLevel != DIFF_C || customNpcDamageReductionEnabled) && !movieMode)
 	{
 		finalDmg /= 5;
 		if (finalDmg < 1) { finalDmg = 1; };
@@ -352,16 +372,18 @@ func int MOD_DamageCalculateTotal (var oSDamageDescriptor dmgDesc, var int dmg_I
 	};
 	
 	/// for new exp system
+	var int appliedDmg; appliedDmg = finalDmg;
+	if (appliedDmg > oth.attribute[ATR_HITPOINTS])
+	{
+		appliedDmg = oth.attribute[ATR_HITPOINTS];
+	};
 	if (Npc_IsPlayer(slf) || slf.aivar[AIV_PartyMember])
 	{
-		if (finalDmg > oth.attribute[ATR_HITPOINTS])
-		{
-			oth.aivar[AIV_DamageDealtByPlayer] += oth.attribute[ATR_HITPOINTS];
-		}
-		else
-		{
-			oth.aivar[AIV_DamageDealtByPlayer] += finalDmg;
-		};
+		oth.aivar[AIV_DamageDealtByPlayer] += appliedDmg;
+	}
+	else
+	{
+		oth.aivar[AIV_DamageDealtByPlayer] -= appliedDmg;
 	};
 	
 	/// display damage

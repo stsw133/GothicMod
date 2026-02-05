@@ -188,7 +188,7 @@ func string MOD_MovieMode_SetAni(var int slot, var int type, var string ani)
 	return "";
 };
 
-func void MOD_MovieMode_DoAni_All(var C_Npc oth, var C_Npc slf)
+func void MOD_MovieMode_DoAni_All(var C_Npc oth, var C_Npc src)
 {
 	AI_PlayAni (oth, MOD_MemoKey_CurrentAni);
 };

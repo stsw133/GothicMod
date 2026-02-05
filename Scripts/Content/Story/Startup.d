@@ -27,8 +27,13 @@ func void STARTUP_GLOBAL()
 		customScrollManaCostMode = STR_ToInt(MEM_GetGothOpt("MOD", "customScrollManaCostMode"));				/// scroll mana cost mode (0 = 20% mana, 1 = flat 5 mana)
 		customFoodAndBookBonusEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customFoodAndBookBonusEnabled"));		/// permanent bonuses for 1000 food points and 1000 book points
 		customNpcFleeEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customNpcFleeEnabled"));						/// NPC fleeing behavior (0 = never flee, 1 = can flee)
-		customImmortalityMode = STR_ToInt(MEM_GetGothOpt("MOD", "customImmortalityMode"));						/// immortality mode (0 = NPC_FLAG_IMMORTAL, 1 = NPC_FLAG_IMPORTANT)
+		customKillExpMode = STR_ToInt(MEM_GetGothOpt("MOD", "customKillExpMode"));								/// kill exp mode (0 = last hit, 1 = most damage)
 		customNaturalRegenEnabled = STR_ToInt(MEM_GetGothOpt("MOD", "customNaturalRegenEnabled"));				/// natural regeneration toggle for regenPower table
+		customLpPerLevel = STR_ToInt(MEM_GetGothOpt("MOD", "customLpPerLevel"));								/// LP gained per level (choice index)
+		customHpPerLevel = STR_ToInt(MEM_GetGothOpt("MOD", "customHpPerLevel"));								/// HP gained per level (choice index)
+		customMpPerLevel = STR_ToInt(MEM_GetGothOpt("MOD", "customMpPerLevel"));								/// MP gained per level (choice index)
+		customSpPerLevel = STR_ToInt(MEM_GetGothOpt("MOD", "customSpPerLevel"));								/// SP gained per level (choice index)
+		customExpVictoryPercent = STR_ToInt(MEM_GetGothOpt("MOD", "customExpVictoryPercent"));					/// XP gained for victories (choice index)
 	};
 };
 

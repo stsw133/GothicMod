@@ -11,32 +11,12 @@ func void B_AssessMagic()
 	/// ------ Curse ------
 	if (Npc_GetLastHitSpellID(self) == SPL_Curse)
 	{
-		if (Npc_IsDead(self) && self.guild < GIL_SEPERATOR_HUM && self.level > 0)
+		var int bh; bh = Buff_Has(self, Buff_Curse);
+		if (bh)
 		{
-			Wld_PlayEffect ("spellFX_SummonCreature_ORIGIN", self, self, 0, 0, 0, false);
-			
-			var C_Npc Victim; Victim = Hlp_GetNpc(self);
-			Wld_SpawnNpcRange (self, Skeleton, 1, 100);
-			var C_Npc Summoned; Summoned = Hlp_GetNpc(Skeleton);
-			NpcFn_SetMonsterAsSummoned(Summoned, false);
-			
-			Summoned.attribute[ATR_HITPOINTS_MAX] = 200 + Victim.attribute[ATR_HITPOINTS_MAX]/5;
-			Summoned.attribute[ATR_HITPOINTS] = Summoned.attribute[ATR_HITPOINTS_MAX];
-			Summoned.attribute[ATR_MANA_MAX] = 100 + Victim.attribute[ATR_MANA_MAX]/5;
-			Summoned.attribute[ATR_MANA] = Summoned.attribute[ATR_MANA_MAX];
-			Summoned.attribute[ATR_STRENGTH] = 50 + Victim.attribute[ATR_STRENGTH]/5;
-			Summoned.attribute[ATR_DEXTERITY] = 50 + Victim.attribute[ATR_DEXTERITY]/5;
-			Summoned.attribute[ATR_POWER] = 50 + Victim.attribute[ATR_POWER]/5;
-			
-			Summoned.protection[PROT_BARRIER] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_BLUNT] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_EDGE] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_FIRE] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_FLY] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_MAGIC] = 50 + other.attribute[ATR_POWER]/5;
-			Summoned.protection[PROT_POINT] = 50 + other.attribute[ATR_POWER]/5;
+			Buff_Remove(bh);
 		};
-		return;
+		Buff_Apply (self, Buff_Curse);
 	};
 	/// ------ Fear ------
 	if (Npc_GetLastHitSpellID(self) == SPL_Fear)

@@ -4935,18 +4935,19 @@ func void MEMINT_SetupExceptionHandler() {
 //************************************************
 
 func void MEMINT_ReplaceLoggingFunctions() {
-    const int init = 0;
-    if (!init) {
-        init = true;
-        
-        MEM_Info("This will be the last Ikarus message printed with PrintDebug and prefix 'U: Skript:'. Subsequent messages will be printed with prefix 'Q:'.");
-        MEM_ReplaceFunc(MEM_SendToSpy, MEMINT_SendToSpy_Implementation);
-        MEM_Info("Ikarus log functions now print in colour with prefix 'Q:'.");
-        
-        MEM_ReplaceFunc(MEM_PrintStackTrace, MEMINT_PrintStackTrace_Implementation);
-        
-        MEMINT_SetupExceptionHandler();
-    };
+	/// MOD: temporary disabled...
+    //const int init = 0;
+    //if (!init) {
+    //    init = true;
+    //    
+    //    MEM_Info("This will be the last Ikarus message printed with PrintDebug and prefix 'U: Skript:'. Subsequent messages will be printed with prefix 'Q:'.");
+    //    MEM_ReplaceFunc(MEM_SendToSpy, MEMINT_SendToSpy_Implementation);
+    //    MEM_Info("Ikarus log functions now print in colour with prefix 'Q:'.");
+    //    
+    //    MEM_ReplaceFunc(MEM_PrintStackTrace, MEMINT_PrintStackTrace_Implementation);
+    //    
+    //    MEMINT_SetupExceptionHandler();
+    //};
 };
 
 //#################################################

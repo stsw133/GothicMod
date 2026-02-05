@@ -15,9 +15,9 @@ instance Spell_Resurrection (C_Spell_Proto)
 	targetCollectElev					=	0;
 };
 
-func void Spell_Effect_Resurrection(var C_Npc oth, var C_Npc slf)
+func void Spell_Effect_Resurrection(var C_Npc oth, var C_Npc src)
 {
-	if (Npc_GetDistToNpc(slf, oth) < 1000 && oth.attribute[ATR_HITPOINTS] < 1 && Npc_GetPermAttitude(oth, slf) != ATT_HOSTILE)
+	if (Npc_GetDistToNpc(src, oth) < 1000 && oth.attribute[ATR_HITPOINTS] < 1 && Npc_GetPermAttitude(oth, src) != ATT_HOSTILE)
 	{
 		oth.attribute[ATR_HITPOINTS] = 1;
 		

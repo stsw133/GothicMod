@@ -251,7 +251,8 @@ const int AIV_ArenaFight					=	45;
 const int AIV_CrimeAbsolutionLevel			=	46;
 
 /// ------ In-Fight ------
-const int AIV_Reserved_47					=	47;	///				[ORG: AIV_LastPlayerAR]
+const int AIV_WearsWeapon					=	47;	///				[ORG: AIV_LastPlayerAR]
+	const int WEARS_Shield				= 1 << 0;
 const int AIV_ComboHit						=	48;	/// new!!!		[ORG: AIV_DuelLost]
 
 /// ------ Inventory ------

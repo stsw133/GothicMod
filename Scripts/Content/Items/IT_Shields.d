@@ -14,32 +14,14 @@ prototype ItemPR_Shield (C_Item)
 	TEXT[4]						=	NAME_Prot_Magic;
 	TEXT[5]						=	NAME_Value;
 };
-
 func void Equip_Shield()
 {
-	//if(SCATTY_TEACH_PERM1 == TRUE)
-	//{
-	//	if(SCATTY_TEACH_PERM2 == TRUE)
-	//	{
-	//		SHIELD_EQUIP = TRUE;
-	//		Mdl_ApplyOverlayMds(self,"HUMANS_1HST2SH.MDS");
-	//	}
-	//	else
-	//	{
-	//		SHIELD_EQUIP = TRUE;
-			Mdl_ApplyOverlayMds(self,"HUMANS_1HST1SH.MDS");
-	//	};
-	//}
-	//else if(Npc_IsPlayer(self))
-	//{
-	//	AI_UnequipWeapons(hero);
-	//	PrintScreen("Brak umiejêtnoœci!",-1,-1,FONT_Screen,3);
-	//};
+	self.aivar[AIV_WearsWeapon] = self.aivar[AIV_WearsWeapon] | WEARS_Shield;
+	Shield_UpdateOverlay(self);
 };
-
 func void UnEquip_Shield()
 {
-	//SHIELD_EQUIP = FALSE;
+	self.aivar[AIV_WearsWeapon] = self.aivar[AIV_WearsWeapon] & ~WEARS_Shield;
 	Mdl_RemoveOverlayMds (self, "HUMANS_1HST2SH.MDS");
 	Mdl_RemoveOverlayMds (self, "HUMANS_1HST1SH.MDS");
 };

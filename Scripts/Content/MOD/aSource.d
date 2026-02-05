@@ -31,15 +31,21 @@ var int mSlowPoints, mSlowTime;
 var int enableTimeDust;
 
 /// custom difficulty options
-var int customDamageGivenPercent;
-var int customDamageTakenPercent;
 var int customStaminaPenaltyEnabled;
 var int customNpcDamageReductionEnabled;
 var int customScrollManaCostMode;
 var int customFoodAndBookBonusEnabled;
 var int customNpcFleeEnabled;
-var int customImmortalityMode;
+var int customKillExpMode;
 var int customNaturalRegenEnabled;
+
+var int customDamageGivenPercent;
+var int customDamageTakenPercent;
+var int customLpPerLevel;
+var int customHpPerLevel;
+var int customMpPerLevel;
+var int customSpPerLevel;
+var int customExpVictoryPercent;
 
 ///******************************************************************************************
 /// Colors & Time
